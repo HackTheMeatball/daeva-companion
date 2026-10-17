@@ -123,8 +123,8 @@ export function storyTargetOf(c) {
 export function teleportOf(c, target, here, { preferRun = false, walk: walkThis = false, gain = TRAVEL_RULES.teleportGain, R, kibs = KIBELISKS } = {}) {
   const T = target && target.pt;
   if (preferRun || walkThis || !here || !T || !(T.anchor in kibs) || T.m == null) return null;
-  if (!boundSet(c, { R, kibs }).has(T.anchor)) return null;
   const walk = placeDist(here.pt, T);
   const go = walk === null ? !!here.zone && here.zone !== (target.zone || null) : walk - T.m >= gain;
-  return go ? { kib: T.anchor, name: kibs[T.anchor].name, m: T.m, walk } : null;
+  /* the bound check last: it walks the save (the geometry is cheap) */
+  return go && boundSet(c, { R, kibs }).has(T.anchor) ? { kib: T.anchor, name: kibs[T.anchor].name, m: T.m, walk } : null;
 }
