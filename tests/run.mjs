@@ -147,6 +147,9 @@ const runOne = (name, attempt = 0) => new Promise(resolve => {
     if (!ok && attempt < retries) { results[name] = { fails: (out.match(/^FAIL .*/gm) || []).concat(problems).map(l => l.slice(0, 160)) }; console.log(`retry ${name} (failed: ${results[name].fails.slice(0, 3).join(' | ') || 'exit ' + code})`); return resolve(runOne(name, attempt + 1)); }
     results[name] = { ok, line: `${ok ? (attempt ? 'FLAKY' : 'PASS ') : 'FAIL '} ${name.padEnd(8)} ${((Date.now() - t) / 1000).toFixed(0).padStart(4)} s  ${nOk || nFail ? `${nOk} ok, ${nFail} FAIL · ` : ''}${last.slice(0, 120)}${problems.length ? ' · ' + problems.slice(0, 3).join(' | ') : ''}${ok && attempt ? ' · first run: ' + firstFails.slice(0, 3).join(' | ') : ''}` };
     console.log(results[name].line);
+    // A suite near its time budget prints a WARNING line into its own output only; echo it into the main log so CI
+    // shows it and the pipeline's review sees it (P15 merged on a lucky re-run of the invariant hang guard, 2026-10-17).
+    for (const w of out.match(/^WARNING .*took longer than.*$/gm) || []) console.log(w.slice(0, 200));
     resolve();
   });
 });
