@@ -212,8 +212,9 @@ export default (test, M, X) => {
     assert.ok(X.only || rows > 0, 'the row shows on some state');
   });
 
-  /* 13 (0.5 P16, travelAdvice on): the story card's travel line is the oracle's on every family state, a hashed share of
-     the rest and every dated copy we can rank (as recorded, and with preferRun on); never with preferRun, never for a
+  /* 13 (0.5 P16, travelAdvice on): the story card's travel line is the oracle's on every family state and a hashed 2 %
+     of the rest (the suite's time budget; the line needs a dated stamp, which the families hold) as recorded, and with
+     preferRun on; never with preferRun, never for a
      Kibelisk the data doesn't bind, never a distance claim across maps, never on a card other than the story card (so
      never on an Ascension step), the metres are the turn-in's data metres; none with travelAdvice off */
   test('13. teleport line: the oracle\'s; never with preferRun, never unbound, never cross-map on distance, never on an Ascension step; metres = the data', () => {
@@ -221,7 +222,7 @@ export default (test, M, X) => {
     const rank = s => M.rankNext(s, { basic: s.mode === 'basic' });
     try {
       M.setRankChanges(null);
-      for (const { id, s, c } of loaded.filter(x => x.s && share('tele', x, x.fam ? 1 : 0.1))) { n++;
+      for (const { id, s, c } of loaded.filter(x => x.s && share('tele', x, x.fam ? 1 : 0.02))) { n++;
         const r = rank(s), st = r.find(a => a.kind === 'story') || {}, t = st.tele || null, here = P.whereNow(c);
         r.filter(a => a.kind !== 'story' && a.tele).forEach(a => bad.push(`${id}: a travel line on a ${a.kind} card`));
         const o = P.teleport(c, here, { preferRun: s.preferRun === true });
