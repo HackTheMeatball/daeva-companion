@@ -36,7 +36,7 @@ from 2026-10-14 and are older than this register; where they differ, this regist
 | aion2.inven.co.kr | Full, facts only | Korean class boards and guides | Korean data: a preview only. Inven terms: no copying of its own posts without consent | 2026-10-18 | BGS §2 |
 | aionbuilds.com | Full | Class guides, tier list, player-shared builds | — | 2026-10-18 | BGS §3a |
 | aion2maps.com | Full, reuse unknown | Per-class build and macro guides | robots blocks AI training crawlers only | 2026-10-18 | BGS §3a |
-| aion2.app | **Spot**: never the only source (owner, 2026-10-18, `docs/DECISIONS.md`; amends Q3) | Item and skill database | Terms: "personal, non-commercial… not to: Scrape, copy, or redistribute". Not `/api/`, `/admin`, `/account`, `/login` | terms read for `2026-10-data-sources.md` §10 (2026-10), robots 2026-10-18 | BGS §1; `2026-10-data-sources.md` §10 |
+| aion2.app | **Spot**: never the only source (owner, 2026-10-18, `docs/DECISIONS.md`; amends Q3) | Item and skill database | Terms: "personal, non-commercial… not to: Scrape, copy, or redistribute". Not `/api/`, `/admin`, `/account`, `/login`. Non-commercial terms: review before monetising | terms read for `2026-10-data-sources.md` §10 (2026-10), robots 2026-10-18 | BGS §1; `2026-10-data-sources.md` §10 |
 | aion2t.com | **Spot**: never the only source (same owner decision as aion2.app) | News and guides (aion2.app's sister site) | Same terms as aion2.app. Guides are collected: credit the original author | 2026-10-18 | BGS §1 |
 | daevacompanion.com, *.daevacompanion.com | Own app | The live site | — | — | `docs/DEPLOY.md` |
 | daevapath.com, *.daevapath.com | Own app | Forwards (301) to daevacompanion.com | — | — | `docs/DECISIONS.md` D1c |
