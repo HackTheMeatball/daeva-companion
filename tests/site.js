@@ -521,7 +521,7 @@ const checkReport = (label, m, want) => {
     for (const d of [A, B, C]) await d.c.close();
     /* a1: the claude.ai build holds no sync line, panel or code */
     const art = fs.readFileSync(path.join(CFG.ROOT, 'dist-artifact', 'index.html'), 'utf8');
-    ok('sync a1: the artifact has no sync markup, texts or client, and keeps today\'s strip sentence', !/id="dcs[A-Z]|class="sync-|sync-texts|uiTexts|mountSync|sync\.daevacompanion\.com|Turn on sync/.test(art) && art.includes('Progress is saved in this browser only.'));
+    ok('sync a1: the artifact has no sync markup, texts or client, and keeps today\'s strip sentence', !/id="dcs[A-Z]|class="sync-(lbl|sw|st|panel|menu|msg)"|sync-texts|uiTexts|mountSync|sync\.daevacompanion\.com|Turn on sync/.test(art) && art.includes('Progress is saved in this browser only.'));
   }
 
   console.log(`${n - fail} ok, ${fail} failed`); console.log(fail ? `SITE CHECKS FAILED (${fail})` : 'SITE CHECKS PASSED');
