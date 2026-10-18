@@ -24,8 +24,10 @@ for (const f of readdirSync(join(ROOT, 'tests/core')).filter(f => f.endsWith('.t
   (await import(pathToFileURL(join(ROOT, 'tests/core', f)).href)).default(test, M);
   await R.settle();
 }
-const ms = performance.now() - t0;
-console.log(`\n${R.n - R.fail}/${R.n} core checks passed in ${(ms / 1000).toFixed(2)} s (bundle ${tBuild.toFixed(0)} ms)`);
-if (ms > 5000) { console.log('FAIL core suite took longer than 5 s'); R.failed(); }
+const ms = performance.now() - t0, tChecks = ms - tBuild;
+console.log(`\n${R.n - R.fail}/${R.n} core checks passed in ${(ms / 1000).toFixed(2)} s (checks ${(tChecks / 1000).toFixed(2)} s, bundle ${tBuild.toFixed(0)} ms)`);
+// Two budgets, set by "slowest seen + 0.5 s, rounded up to 0.5 s" (owner OK 2026-10-18, #222): checks 5 s, bundle 3 s.
+if (tChecks > 5000) { console.log('FAIL core checks took longer than 5 s'); R.failed(); }
+if (tBuild > 3000) { console.log('FAIL core bundle took longer than 3 s'); R.failed(); }
 console.log(R.fail ? `CORE CHECKS FAILED: ${R.fail}` : 'CORE CHECKS PASSED');
 process.exit(R.fail ? 1 : 0);

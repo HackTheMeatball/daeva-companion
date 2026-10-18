@@ -22,7 +22,7 @@
      journey  the user's save from Lv 27 to 45 by clicking; fails on any "!!" line except the known harness issue below
      golden   golden master: ~2,000 generated saves, Next up / milestones / Journey / dungeons / stored state vs
               tests/golden/snapshots (tests/golden/README.md; `node tests/golden.js --record` after an intended change)
-     core     the pure core (src/core/) in Node, no browser: state, migrations, catalog, requirements, Next up (< 5 s)
+     core     the pure core (src/core/) in Node, no browser: state, migrations, catalog, requirements, Next up (checks < 5 s, bundle < 3 s)
      equiv    Node, no browser: the requirement evaluator and the page's gate functions vs the frozen 0.2 gate rules over the
               2,000 golden states (< 30 s; tests/equiv.mjs). In the `checks` shard (ci.yml has no step of its own for it)
      invariant Node, no browser: over 10,000 seeded states, Next up never offers a blocked or done node, judged by an
