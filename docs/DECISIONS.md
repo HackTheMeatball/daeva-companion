@@ -3,6 +3,12 @@
 Decisions the owner made, so every department works from the same answers. Newest first. Product calls belong to the
 owner; the CEO records them here and in the department charters they affect.
 
+## 2026-10-18
+
+| # | Topic | Decision |
+|---|---|---|
+| — | Sync hosting and money (`owner-ok-sync-hosting` for 0.6 P21; docs/design/sync.md §6 S1 and S2) | Owner, typed in the pipeline thread 2026-10-18 12:57 AM ET: "Sync hosting OK: Cloudflare Workers + R2, free tier, usage alert". S1: option A, Cloudflare Workers + R2 in the existing Cloudflare account. S2: the owner pays, the service stays inside the free tier, and a usage alert is set, with the storage ceiling (sync.md §4) as the hard stop and no card-backed scaling beyond it. Not covered by this OK: the Durable Objects fallback (if R2's conditional write falls short, ask again), and S3–S5, which keep their recommended defaults until decided. |
+
 ## 2026-10-17
 
 | # | Topic | Decision |
