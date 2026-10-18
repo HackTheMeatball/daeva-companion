@@ -22,6 +22,9 @@ on:
     types: [completed]
   schedule:
     - cron: '7,22,37,52 * * * *'
+  # GitHub ran the cron about once per 3 h in 0.6 (10 of ~96 a day), so Build Pipeline's 20-min PR check also
+  # dispatches this sweep while anything is open (Kaizen (Gale), 0.6 scorecard, 2026-10-18).
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -29,7 +32,7 @@ permissions:
 jobs:
   restart:
     if: |
-      github.event_name == 'schedule' ||
+      github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' ||
       github.event.workflow_run.run_attempt == 1 &&
       (github.event.workflow_run.conclusion == 'failure' || github.event.workflow_run.conclusion == 'cancelled' ||
        github.event.workflow_run.conclusion == 'timed_out')
@@ -49,7 +52,7 @@ jobs:
             const recent = async (q) => (await github.rest.actions.listWorkflowRuns({ owner, repo, status: 'completed', per_page: 30, ...q })).data.workflow_runs
               // Not "cancelled": a Kickoff pick job dropped while pending (concurrency) ends that way and needs no re-run.
               .filter((r) => r.run_attempt === 1 && ['failure', 'timed_out'].includes(r.conclusion) && Date.now() - Date.parse(r.updated_at) < 90 * 60e3);
-            const runs = context.eventName === 'schedule'
+            const runs = (context.eventName === 'schedule' || context.eventName === 'workflow_dispatch')
               ? [...await recent({ workflow_id: 'kickoff.yml' }), ...await recent({ workflow_id: 'ci.yml', branch: 'main' })]
               : [context.payload.workflow_run];
             for (const wr of runs) {
@@ -72,7 +75,7 @@ jobs:
             // wakes for it. Kickoff's refresh only sees PRs open at merge time: P4b's PR #177 opened 8 min after the
             // merge it conflicted with and had no CI until someone noticed (2026-10-17). Start pipeline step=merge for it; pipeline runs at most
             // one merge per PR per main commit, so this repeats nothing.
-            if (context.eventName === 'schedule') {
+            if (context.eventName === 'schedule' || context.eventName === 'workflow_dispatch') {
               const open = (await github.paginate(github.rest.pulls.list, { owner, repo, state: 'open', base: 'main', per_page: 100 }))
                 .filter((p) => !p.draft && /^claude\//.test(p.head.ref) && !p.labels.some((l) => ['hold', 'stuck'].includes(l.name)));
               for (const p of open) {
