@@ -1,0 +1,671 @@
+{
+  "$schema": "../../schema/stigmas.schema.json",
+  "schemaVersion": 2,
+  "collection": "stigmas",
+  "class": "spiritmaster",
+  "records": [
+    {
+      "id": "stigma:spiritmaster:assault-terror",
+      "key": "Assault Terror",
+      "name": "Assault Terror",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:spiritmaster:assault-terror:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+20% caster's Attack for 5s"
+        },
+        {
+          "id": "spec:spiritmaster:assault-terror:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "500 MP damage on hit"
+        },
+        {
+          "id": "spec:spiritmaster:assault-terror:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+10m range"
+        },
+        {
+          "id": "spec:spiritmaster:assault-terror:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+20% Fear Chance"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/assault-terror",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (spiritmaster research §2.2, §4)."
+      ]
+    },
+    {
+      "id": "stigma:spiritmaster:command-proxy",
+      "key": "Command: Proxy",
+      "name": "Command: Proxy",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:spiritmaster:command-proxy:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+2s Command: Proxy duration"
+        },
+        {
+          "id": "spec:spiritmaster:command-proxy:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+10% PVP Damage Tolerance increase and +5% PvP Damage Tolerance increase to Spirit"
+        },
+        {
+          "id": "spec:spiritmaster:command-proxy:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "x1.5 [Spirit Protection] effect during Command: Proxy"
+        },
+        {
+          "id": "spec:spiritmaster:command-proxy:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "Restores 3% of Spirit's HP every 1s for Command: Proxy duration"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/command-proxy",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (spiritmaster research §2.2, §4)."
+      ]
+    },
+    {
+      "id": "stigma:spiritmaster:cry-of-terror",
+      "key": "Cry of Terror",
+      "name": "Cry of Terror",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:spiritmaster:cry-of-terror:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "Root for 5s on hit"
+        },
+        {
+          "id": "spec:spiritmaster:cry-of-terror:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "Up to +20% damage when more targets hit"
+        },
+        {
+          "id": "spec:spiritmaster:cry-of-terror:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+2s Fear duration"
+        },
+        {
+          "id": "spec:spiritmaster:cry-of-terror:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+20% Fear Chance"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/cry-of-terror",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (spiritmaster research §2.2, §4)."
+      ]
+    },
+    {
+      "id": "stigma:spiritmaster:cursed-cloud",
+      "key": "Cursed Cloud",
+      "name": "Cursed Cloud",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:spiritmaster:cursed-cloud:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "-1,000 enemy Max Stamina during Damage over Time"
+        },
+        {
+          "id": "spec:spiritmaster:cursed-cloud:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "-20% Max HP of PC targets during Damage over Time"
+        },
+        {
+          "id": "spec:spiritmaster:cursed-cloud:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+10s Damage over Time duration"
+        },
+        {
+          "id": "spec:spiritmaster:cursed-cloud:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "-30% Status Effect Resist during Damage over Time"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/cursed-cloud",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (spiritmaster research §2.2, §4)."
+      ]
+    },
+    {
+      "id": "stigma:spiritmaster:enhance-spirits-benediction",
+      "key": "Enhance: Spirit's Benediction",
+      "name": "Enhance: Spirit's Benediction",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:spiritmaster:enhance-spirits-benediction:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "Restores 10% of Max HP on cast"
+        },
+        {
+          "id": "spec:spiritmaster:enhance-spirits-benediction:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "x1.5 [Spirit Strike] Damage Boost effect"
+        },
+        {
+          "id": "spec:spiritmaster:enhance-spirits-benediction:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "x1.5 activation chance and amount healed from [Spirit Communion]"
+        },
+        {
+          "id": "spec:spiritmaster:enhance-spirits-benediction:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+25% PvE Damage Boost and Damage Tolerance, +12.5% PvP Damage Boost and Damage Tolerance for caster and Spirit"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/enhance-spirits-benediction",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (spiritmaster research §2.2, §4)."
+      ]
+    },
+    {
+      "id": "stigma:spiritmaster:flame-blessing",
+      "key": "Flame Blessing",
+      "name": "Flame Blessing",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:spiritmaster:flame-blessing:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+100 Accuracy"
+        },
+        {
+          "id": "spec:spiritmaster:flame-blessing:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+100 Critical Hit"
+        },
+        {
+          "id": "spec:spiritmaster:flame-blessing:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+10% Critical Damage Boost"
+        },
+        {
+          "id": "spec:spiritmaster:flame-blessing:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "-50% extra damage cooldown"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/flame-blessing",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (spiritmaster research §2.2, §4)."
+      ]
+    },
+    {
+      "id": "stigma:spiritmaster:jointstrike-corrode",
+      "key": "Jointstrike: Corrode",
+      "name": "Jointstrike: Corrode",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:spiritmaster:jointstrike-corrode:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+15% extra damage taken from Spirit during Corrode"
+        },
+        {
+          "id": "spec:spiritmaster:jointstrike-corrode:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "-20% Combat Speed on hit for 10s"
+        },
+        {
+          "id": "spec:spiritmaster:jointstrike-corrode:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "-70% Incoming Heal during Corrode"
+        },
+        {
+          "id": "spec:spiritmaster:jointstrike-corrode:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+10s Corrode effect duration"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/jointstrike-corrode",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (spiritmaster research §2.2, §4)."
+      ]
+    },
+    {
+      "id": "stigma:spiritmaster:jointstrike-destructive-attack",
+      "key": "Jointstrike: Destructive Attack",
+      "name": "Jointstrike: Destructive Attack",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:spiritmaster:jointstrike-destructive-attack:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "Changes to Charge Skill, dealing up to 200% more [Jointstrike: Destructive Attack] damage"
+        },
+        {
+          "id": "spec:spiritmaster:jointstrike-destructive-attack:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+30% Skill Speed"
+        },
+        {
+          "id": "spec:spiritmaster:jointstrike-destructive-attack:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "Critical Hit on hit"
+        },
+        {
+          "id": "spec:spiritmaster:jointstrike-destructive-attack:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "Reset [Jointstrike: Curse] and [Jointstrike: Corrode] cooldown on landing [Jointstrike: Destructive Attack] first hit"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/jointstrike-destructive-attack",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (spiritmaster research §2.2, §4)."
+      ]
+    },
+    {
+      "id": "stigma:spiritmaster:kaisinels-power",
+      "key": "Kaisinel's Power",
+      "name": "Kaisinel's Power",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:spiritmaster:kaisinels-power:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+150 Block and Evasion"
+        },
+        {
+          "id": "spec:spiritmaster:kaisinels-power:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+15% Status Effect Resist"
+        },
+        {
+          "id": "spec:spiritmaster:kaisinels-power:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+150 Accuracy"
+        },
+        {
+          "id": "spec:spiritmaster:kaisinels-power:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+15% Status Effect Chance"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/kaisinels-power",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (spiritmaster research §2.2, §4)."
+      ]
+    },
+    {
+      "id": "stigma:spiritmaster:magic-block",
+      "key": "Magic Block",
+      "name": "Magic Block",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:spiritmaster:magic-block:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "50% chance to inflict Root for 5s on hit"
+        },
+        {
+          "id": "spec:spiritmaster:magic-block:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "-1,000 enemy Max Stamina for 5s on hit"
+        },
+        {
+          "id": "spec:spiritmaster:magic-block:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+2s Seal duration"
+        },
+        {
+          "id": "spec:spiritmaster:magic-block:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+25% Seal chance"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/magic-block",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (spiritmaster research §2.2, §4)."
+      ]
+    },
+    {
+      "id": "stigma:spiritmaster:seize-magic",
+      "key": "Seize Magic",
+      "name": "Seize Magic",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:spiritmaster:seize-magic:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "Removes up to 3 buffs"
+        },
+        {
+          "id": "spec:spiritmaster:seize-magic:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "Inflicts Seal for 5s when removing 3 or more buffs"
+        },
+        {
+          "id": "spec:spiritmaster:seize-magic:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "Removes up to 5 buffs"
+        },
+        {
+          "id": "spec:spiritmaster:seize-magic:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "-30s cooldown"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/seize-magic",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (spiritmaster research §2.2, §4)."
+      ]
+    },
+    {
+      "id": "stigma:spiritmaster:siphon",
+      "key": "Siphon",
+      "name": "Siphon",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:spiritmaster:siphon:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+20% Skill Speed"
+        },
+        {
+          "id": "spec:spiritmaster:siphon:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+5% HP absorbed"
+        },
+        {
+          "id": "spec:spiritmaster:siphon:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "30% of Max HP as Protective Shield for 30s on use"
+        },
+        {
+          "id": "spec:spiritmaster:siphon:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "Stun for 3s on hit"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/siphon",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (spiritmaster research §2.2, §4)."
+      ]
+    },
+    {
+      "id": "stigma:spiritmaster:summon-ancient-spirit",
+      "key": "Summon: Ancient Spirit",
+      "name": "Summon: Ancient Spirit",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:spiritmaster:summon-ancient-spirit:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+10% Ancient Spirit Attack"
+        },
+        {
+          "id": "spec:spiritmaster:summon-ancient-spirit:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "x1.5 [Spirit's Descent] activation chance and damage for 30s"
+        },
+        {
+          "id": "spec:spiritmaster:summon-ancient-spirit:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "Ancient Spirit uses skill after 5 basic attacks"
+        },
+        {
+          "id": "spec:spiritmaster:summon-ancient-spirit:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+20% Ancient Spirit Stats"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/summon-ancient-spirit",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (spiritmaster research §2.2, §4)."
+      ]
+    }
+  ]
+}

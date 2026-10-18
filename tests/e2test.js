@@ -170,11 +170,11 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
   ok(`Sources card lists every URL in the data files (${dataUrls.size})`, !missing.length, missing);
   /* a hidden class's pack (0.6 P4 Gladiator, release "hidden") ships nothing to this page: none of its own URLs is on the
      card, and every one is in DATA_SOURCES.md. The Ranger (P22) was hidden too until 0.6 P5 released it with its guide
-     pack, so one hidden pack is left; the Ranger's own URLs are checked the same way below (its page lists them, this
-     Assassin page doesn't) */
+     pack, so one hidden pack was left; 0.7 P3 (#346) adds the Spiritmaster, hidden, so two. The Ranger's own URLs are
+     checked the same way below (its page lists them, this Assassin page doesn't) */
   { const ds = require('fs').readFileSync(require('path').join(__dirname, '..', 'data', 'DATA_SOURCES.md'), 'utf8'), hid = [...V1.hiddenUrls], oth = [...V1.otherUrls];
     ok(`hidden class packs (${V1.hiddenDirs.length}): their ${hid.length} URLs are in DATA_SOURCES.md and none is on the Sources card`,
-      V1.hiddenDirs.length === 1 && hid.length > 0 && hid.every(u => ds.includes('](' + u + ')') && !hrefs.has(norm(u))), hid.filter(u => !ds.includes('](' + u + ')') || hrefs.has(norm(u))));
+      V1.hiddenDirs.length === 2 && hid.length > 0 && hid.every(u => ds.includes('](' + u + ')') && !hrefs.has(norm(u))), hid.filter(u => !ds.includes('](' + u + ')') || hrefs.has(norm(u))));
     ok(`other released classes (${V1.otherClasses.join(', ')}): their ${oth.length} own URLs are in DATA_SOURCES.md and none is on the Assassin's Sources card`,
       JSON.stringify(V1.otherClasses) === '["ranger"]' && oth.length > 0 && oth.every(u => ds.includes('](' + u + ')') && !hrefs.has(norm(u))), oth.filter(u => !ds.includes('](' + u + ')') || hrefs.has(norm(u)))); }
   ok('Sources links: no nofollow / sponsored / ugc', links.every(([, r]) => !/nofollow|sponsored|ugc/.test(r)));

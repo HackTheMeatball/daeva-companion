@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/classes.schema.json",
+  "schemaVersion": 2,
+  "collection": "classes",
+  "class": "spiritmaster",
+  "records": [
+    {
+      "id": "class:spiritmaster",
+      "class": "spiritmaster",
+      "name": "Spiritmaster",
+      "release": "hidden",
+      "defaultBuild": "build:spiritmaster:guide",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/spiritmaster",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "notes": [
+        "Hidden until a 0.7 guide item adds its guide pack (data/packs/aion2/asmodian/spiritmaster/, which defines build:spiritmaster:guide) and lists it in the class picker."
+      ]
+    }
+  ]
+}
