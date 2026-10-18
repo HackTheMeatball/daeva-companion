@@ -190,7 +190,9 @@ body.basic #nowStar .ns-card.first { animation: nsPulse 2.2s ease-in-out infinit
 .ns-away button { background: none; border: 0; padding: 0; font: inherit; color: var(--accent-text); cursor: pointer; }
 .ns-away button:hover { text-decoration: underline; }
 html.pip, html.pip body { height: 100%; }
-html.pip body { margin: 0; padding: var(--space-8); box-sizing: border-box; background: var(--bg); display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
+html.pip { background: var(--bg); }
+html.pip #nowStar, html.pip #nowStar.wide { background: var(--panel) !important; border: 1px solid var(--line) !important; border-radius: var(--radius-12); padding: var(--space-16); }
+html.pip body { margin: 0; padding: var(--space-8); box-sizing: border-box; background-color: var(--bg); display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
 html.pip #nowStar, html.pip #nowStar.wide { margin: 0 !important; flex: 1 1 0; min-height: 0; display: flex !important; flex-direction: column; height: auto !important; overflow: hidden; }
 html.pip #nowStar .ns-sec { margin: 0 0 var(--space-6); }
 html.pip #nowStar .ns-pop { display: none; }

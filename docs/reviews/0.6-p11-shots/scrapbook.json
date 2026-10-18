@@ -1,0 +1,4 @@
+[
+  { "case": "popout", "kind": "before-after", "title": "Next up pop-out looks like the app",
+    "caption": "The pop-out window now holds Next up in a rounded card on the app background, instead of a flat square panel. The window frame stays the browser's." }
+]
