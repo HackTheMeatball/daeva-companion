@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/classes.schema.json",
+  "schemaVersion": 2,
+  "collection": "classes",
+  "class": "ranger",
+  "records": [
+    {
+      "id": "class:ranger",
+      "class": "ranger",
+      "name": "Ranger",
+      "release": "hidden",
+      "defaultBuild": "build:ranger:guide",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/ranger",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "notes": [
+        "Hidden until 0.6 P5 adds its guide pack (data/packs/aion2/asmodian/ranger/, which defines build:ranger:guide) and lists it in the class picker."
+      ]
+    }
+  ]
+}

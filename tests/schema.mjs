@@ -192,6 +192,12 @@ if (g) {
     && glColl('stigmas.json') === 13 && glColl('board-nodes.json') === 537 && g.report.checks.some(x => x.check.startsWith('aion2/classes/gladiator: board:triniel: 117 nodes')), gl && [glColl('skills.json'), glColl('board-nodes.json')]);
   const glWords = /gladiator|Keen Strike|Lunge Stance|Zikel's Blessing|110113/i, glIn = [g.module, g.gateModule, g.proposedModule, g.placeModule].filter(m => glWords.test(m)).map(m => m.match(glWords)[0]);
   ok('the Assassin bundle carries no Gladiator record (generated, gate, proposed and place modules)', !glIn.length, glIn);
+  /* 0.6 P22: the Ranger class pack, the same way (quest text names NPC Rangers, so the leak check matches record ids and skill names) */
+  const rg = (g.idle || []).find(x => x.pack === 'aion2/classes/ranger'), rgColl = f => rg ? rg.all.filter(x => x.file.endsWith('/' + f)).length : 0;
+  ok('idle class pack aion2/classes/ranger: 1 class, 22 skills, 13 stigmas, 537 board nodes, checked by the generator', !!rg && rgColl('class.json') === 1 && rgColl('skills.json') === 22
+    && rgColl('stigmas.json') === 13 && rgColl('board-nodes.json') === 537 && g.report.checks.some(x => x.check.startsWith('aion2/classes/ranger: board:triniel: 117 nodes')), rg && [rgColl('skills.json'), rgColl('board-nodes.json')]);
+  const rgWords = /(class|skill|stigma|spec|node|build):ranger\b|Tempest Shot|Hunter's Soul|Vaizel's Authority|Bow of Blessing/i, rgIn = [g.module, g.gateModule, g.proposedModule, g.placeModule].filter(m => rgWords.test(m)).map(m => m.match(rgWords)[0]);
+  ok('the Assassin bundle carries no Ranger record (generated, gate, proposed and place modules)', !rgIn.length, rgIn);
   const GL = 'aion2/classes/gladiator', editJson = (root, f, fn) => { const p = join(root, GL, f), d = JSON.parse(readFileSync(p, 'utf8')); fn(d); writeFileSync(p, JSON.stringify(d)); };
   const idleFails = (label, mutate, re) => { let g1 = null; try { g1 = generate({ root: packsCopy(label, mutate) }); } catch (e) { ok('generator runs: ' + label, false, e.message); return; }
     ok('generator rejects: ' + label, g1.failed.some(x => re.test(x.check)), g1.failed.map(x => x.check).slice(0, 5)); };
