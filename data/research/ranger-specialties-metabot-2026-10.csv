@@ -1,0 +1,113 @@
+id,skill,n,skillLv,text,build,checkedAt,status,page_url
+spec:ranger:snipe:1,skill:ranger:snipe,1,8,+20% MP restored,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/snipe
+spec:ranger:snipe:2,skill:ranger:snipe,2,8,"Absorbs 70, 70% HP",0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/snipe
+spec:ranger:snipe:3,skill:ranger:snipe,3,8,+50% Multi-Hit on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/snipe
+spec:ranger:snipe:4,skill:ranger:snipe,4,12,-1s [Deadshot] cooldown on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/snipe
+spec:ranger:snipe:5,skill:ranger:snipe,5,16,Adds [Tempest Arrow] Chain Skill,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/snipe
+spec:ranger:tempest-shot:1,skill:ranger:tempest-shot,1,8,-20% MP consumed,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/tempest-shot
+spec:ranger:tempest-shot:2,skill:ranger:tempest-shot,2,8,+10% skill Critical Hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/tempest-shot
+spec:ranger:tempest-shot:3,skill:ranger:tempest-shot,3,8,Deals up to 12% more damage when less targets are hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/tempest-shot
+spec:ranger:tempest-shot:4,skill:ranger:tempest-shot,4,12,5% chance to inflict Knock Back on Critical Hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/tempest-shot
+spec:ranger:tempest-shot:5,skill:ranger:tempest-shot,5,16,+20% Skill Speed,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/tempest-shot
+spec:ranger:snare-shot:1,skill:ranger:snare-shot,1,8,+20% Move Speed reduction,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/snare-shot
+spec:ranger:snare-shot:2,skill:ranger:snare-shot,2,8,+20% Skill Speed,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/snare-shot
+spec:ranger:snare-shot:3,skill:ranger:snare-shot,3,8,Changes to mobile skill,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/snare-shot
+spec:ranger:snare-shot:4,skill:ranger:snare-shot,4,12,Adds [Shackling Arrow] Chain Skill,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/snare-shot
+spec:ranger:snare-shot:5,skill:ranger:snare-shot,5,16,+2s Slow and Root duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/snare-shot
+spec:ranger:marking-shot:1,skill:ranger:marking-shot,1,8,+5% Perfect Chance for the duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/marking-shot
+spec:ranger:marking-shot:2,skill:ranger:marking-shot,2,8,30% chance to inflict Knock Back on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/marking-shot
+spec:ranger:marking-shot:3,skill:ranger:marking-shot,3,8,+5s duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/marking-shot
+spec:ranger:marking-shot:4,skill:ranger:marking-shot,4,12,+1 consecutive use,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/marking-shot
+spec:ranger:marking-shot:5,skill:ranger:marking-shot,5,16,Ignores Block and Evasion and lands as a Critical Hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/marking-shot
+spec:ranger:drill-dart:1,skill:ranger:drill-dart,1,8,"Absorbs 300, 300% HP",0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/drill-dart
+spec:ranger:drill-dart:2,skill:ranger:drill-dart,2,8,+2s Bleed duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/drill-dart
+spec:ranger:drill-dart:3,skill:ranger:drill-dart,3,8,+20% Skill Speed,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/drill-dart
+spec:ranger:drill-dart:4,skill:ranger:drill-dart,4,12,Multi-Hit on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/drill-dart
+spec:ranger:drill-dart:5,skill:ranger:drill-dart,5,16,Activates [Drill Dart] 1 extra time,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/drill-dart
+spec:ranger:arrow-scattershot:1,skill:ranger:arrow-scattershot,1,8,"Absorbs 500, 500% HP",0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/arrow-scattershot
+spec:ranger:arrow-scattershot:2,skill:ranger:arrow-scattershot,2,8,Restores 120 MP on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/arrow-scattershot
+spec:ranger:arrow-scattershot:3,skill:ranger:arrow-scattershot,3,8,Changes to mobile skill,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/arrow-scattershot
+spec:ranger:arrow-scattershot:4,skill:ranger:arrow-scattershot,4,12,Multi-Hit on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/arrow-scattershot
+spec:ranger:arrow-scattershot:5,skill:ranger:arrow-scattershot,5,16,-1s all cooldowns on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/arrow-scattershot
+spec:ranger:gale-arrow:1,skill:ranger:gale-arrow,1,8,+5s duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/gale-arrow
+spec:ranger:gale-arrow:2,skill:ranger:gale-arrow,2,8,50% chance to inflict Knock Back on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/gale-arrow
+spec:ranger:gale-arrow:3,skill:ranger:gale-arrow,3,8,Changes to mobile skill,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/gale-arrow
+spec:ranger:gale-arrow:4,skill:ranger:gale-arrow,4,12,"Increases Combat Speed, PvE Damage Boost, and PvP Damage Boost when less targets hit",0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/gale-arrow
+spec:ranger:gale-arrow:5,skill:ranger:gale-arrow,5,16,-10s cooldown,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/gale-arrow
+spec:ranger:explosion-trap:1,skill:ranger:explosion-trap,1,8,Pulls enemies on explosion,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/explosion-trap
+spec:ranger:explosion-trap:2,skill:ranger:explosion-trap,2,8,+1s Stun duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/explosion-trap
+spec:ranger:explosion-trap:3,skill:ranger:explosion-trap,3,8,Extra damage after 3s on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/explosion-trap
+spec:ranger:explosion-trap:4,skill:ranger:explosion-trap,4,12,+20% Stun Chance,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/explosion-trap
+spec:ranger:explosion-trap:5,skill:ranger:explosion-trap,5,16,+1 consecutive use,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/explosion-trap
+spec:ranger:burst-arrow:1,skill:ranger:burst-arrow,1,8,"Absorbs 1000, 1000% HP",0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/burst-arrow
+spec:ranger:burst-arrow:2,skill:ranger:burst-arrow,2,8,+50% Multi-Hit on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/burst-arrow
+spec:ranger:burst-arrow:3,skill:ranger:burst-arrow,3,8,Changes to mobile skill,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/burst-arrow
+spec:ranger:burst-arrow:4,skill:ranger:burst-arrow,4,12,Up to +20% damage when less targets hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/burst-arrow
+spec:ranger:burst-arrow:5,skill:ranger:burst-arrow,5,16,25% chance to reset cooldown on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/burst-arrow
+spec:ranger:suppressing-arrow:1,skill:ranger:suppressing-arrow,1,8,+50% Multi-Hit on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/suppressing-arrow
+spec:ranger:suppressing-arrow:2,skill:ranger:suppressing-arrow,2,8,+1s Stun duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/suppressing-arrow
+spec:ranger:suppressing-arrow:3,skill:ranger:suppressing-arrow,3,8,+20% Skill Speed,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/suppressing-arrow
+spec:ranger:suppressing-arrow:4,skill:ranger:suppressing-arrow,4,12,+20% Stun Chance,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/suppressing-arrow
+spec:ranger:suppressing-arrow:5,skill:ranger:suppressing-arrow,5,16,25% chance to reset cooldown on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/suppressing-arrow
+spec:ranger:deadshot:1,skill:ranger:deadshot,1,8,Removes MP consumed,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/deadshot
+spec:ranger:deadshot:2,skill:ranger:deadshot,2,8,+30% Skill Speed,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/deadshot
+spec:ranger:deadshot:3,skill:ranger:deadshot,3,8,Changes to mobile skill,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/deadshot
+spec:ranger:deadshot:4,skill:ranger:deadshot,4,12,Ignores Block and Evasion and lands as Multi-Hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/deadshot
+spec:ranger:deadshot:5,skill:ranger:deadshot,5,16,[Deadshot] grants extra damage on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/deadshot
+spec:ranger:defiance:1,skill:ranger:defiance,1,8,Adds [Lightning Arrow] Chain Skill,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/defiance-ranger
+spec:ranger:defiance:2,skill:ranger:defiance,2,8,"Restores 1,000 Stamina on using [Defiance]",0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/defiance-ranger
+spec:ranger:defiance:3,skill:ranger:defiance,3,8,Restores 20% HP on using [Defiance],0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/defiance-ranger
+spec:ranger:defiance:4,skill:ranger:defiance,4,12,+2s Tenacity duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/defiance-ranger
+spec:ranger:defiance:5,skill:ranger:defiance,5,16,+50% PvE Damage Tolerance and +25% PvP Damage Tolerance for Tenacity duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/defiance-ranger
+spec:ranger:explosive-arrow:1,stigma:ranger:explosive-arrow,1,5,-15s cooldown,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/explosive-arrow
+spec:ranger:explosive-arrow:2,stigma:ranger:explosive-arrow,2,10,+10% additional damage to targets afflicted with Slow or Root,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/explosive-arrow
+spec:ranger:explosive-arrow:3,stigma:ranger:explosive-arrow,3,15,Critical Hit on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/explosive-arrow
+spec:ranger:explosive-arrow:4,stigma:ranger:explosive-arrow,4,20,+20% additional damage to targets afflicted with Slow or Root,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/explosive-arrow
+spec:ranger:illusory-arrow:1,stigma:ranger:illusory-arrow,1,5,+1s Blind duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/illusory-arrow
+spec:ranger:illusory-arrow:2,stigma:ranger:illusory-arrow,2,10,Changes to AoE Skill,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/illusory-arrow
+spec:ranger:illusory-arrow:3,stigma:ranger:illusory-arrow,3,15,Inflicts Slow for 5s on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/illusory-arrow
+spec:ranger:illusory-arrow:4,stigma:ranger:illusory-arrow,4,20,+1 consecutive use,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/illusory-arrow
+spec:ranger:arrow-storm:1,stigma:ranger:arrow-storm,1,5,Up to +20% max damage when more targets hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/arrow-storm
+spec:ranger:arrow-storm:2,stigma:ranger:arrow-storm,2,10,Inflicts Slow for 10s on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/arrow-storm
+spec:ranger:arrow-storm:3,stigma:ranger:arrow-storm,3,15,+1s Stun duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/arrow-storm
+spec:ranger:arrow-storm:4,stigma:ranger:arrow-storm,4,20,+25% Stun Chance,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/arrow-storm
+spec:ranger:vaizels-authority:1,stigma:ranger:vaizels-authority,1,5,+10% Perfect Chance for the duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/vaizels-authority
+spec:ranger:vaizels-authority:2,stigma:ranger:vaizels-authority,2,10,x1.5 [Focused Eye] effect for the duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/vaizels-authority
+spec:ranger:vaizels-authority:3,stigma:ranger:vaizels-authority,3,15,x1.5 [Hunter's Soul] effect for the duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/vaizels-authority
+spec:ranger:vaizels-authority:4,stigma:ranger:vaizels-authority,4,20,50% chance to reduce all skill cooldowns by 1s on Critical Hit for the duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/vaizels-authority
+spec:ranger:stealth:1,stigma:ranger:stealth,1,5,Critical Hit on attack during Stealth,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/stealth
+spec:ranger:stealth:2,stigma:ranger:stealth,2,10,+20% Move Speed for the duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/stealth
+spec:ranger:stealth:3,stigma:ranger:stealth,3,15,Available in combat,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/stealth
+spec:ranger:stealth:4,stigma:ranger:stealth,4,20,+10s Stealth duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/stealth
+spec:ranger:assault-smite:1,stigma:ranger:assault-smite,1,5,+20% Attack for 5s on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/assault-smite
+spec:ranger:assault-smite:2,stigma:ranger:assault-smite,2,10,500 MP damage on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/assault-smite
+spec:ranger:assault-smite:3,stigma:ranger:assault-smite,3,15,+10m range,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/assault-smite
+spec:ranger:assault-smite:4,stigma:ranger:assault-smite,4,20,+20% Stun Chance,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/assault-smite
+spec:ranger:supporting-fire:1,stigma:ranger:supporting-fire,1,5,+25% activation chance,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/supporting-fire
+spec:ranger:supporting-fire:2,stigma:ranger:supporting-fire,2,10,+15s duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/supporting-fire
+spec:ranger:supporting-fire:3,stigma:ranger:supporting-fire,3,15,-30s cooldown,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/supporting-fire
+spec:ranger:supporting-fire:4,stigma:ranger:supporting-fire,4,20,Critical Hit on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/supporting-fire
+spec:ranger:bow-of-blessing:1,stigma:ranger:bow-of-blessing,1,5,+50% Multi-Hit Chance for duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/bow-of-blessing
+spec:ranger:bow-of-blessing:2,stigma:ranger:bow-of-blessing,2,10,Increases Attack proportional to Critical Hit for the duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/bow-of-blessing
+spec:ranger:bow-of-blessing:3,stigma:ranger:bow-of-blessing,3,15,+20% Critical Damage Boost for the duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/bow-of-blessing
+spec:ranger:bow-of-blessing:4,stigma:ranger:bow-of-blessing,4,20,+7% Double Chance for the duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/bow-of-blessing
+spec:ranger:sealing-arrow:1,stigma:ranger:sealing-arrow,1,5,50% chance to inflict Root for 5s on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/sealing-arrow
+spec:ranger:sealing-arrow:2,stigma:ranger:sealing-arrow,2,10,"-1,000 enemy Max Stamina for 5s on hit",0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/sealing-arrow
+spec:ranger:sealing-arrow:3,stigma:ranger:sealing-arrow,3,15,+2s Seal duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/sealing-arrow
+spec:ranger:sealing-arrow:4,stigma:ranger:sealing-arrow,4,20,+25% Seal chance,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/sealing-arrow
+spec:ranger:ambush-kick:1,stigma:ranger:ambush-kick,1,5,+5m Range,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/ambush-kick
+spec:ranger:ambush-kick:2,stigma:ranger:ambush-kick,2,10,10% Max HP Protective Shield for 5s on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/ambush-kick
+spec:ranger:ambush-kick:3,stigma:ranger:ambush-kick,3,15,50% chance to inflict Stun for 3s on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/ambush-kick
+spec:ranger:ambush-kick:4,stigma:ranger:ambush-kick,4,20,+50% Stun Chance,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/ambush-kick
+spec:ranger:mother-natures-breath:1,stigma:ranger:mother-natures-breath,1,5,Removes and grants immunity to Damage over Time effects,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/mother-natures-breath
+spec:ranger:mother-natures-breath:2,stigma:ranger:mother-natures-breath,2,10,x1.5 [Vigilant Eye] effect for the duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/mother-natures-breath
+spec:ranger:mother-natures-breath:3,stigma:ranger:mother-natures-breath,3,15,x1.5 [Unyielding Resolve] effect for the duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/mother-natures-breath
+spec:ranger:mother-natures-breath:4,stigma:ranger:mother-natures-breath,4,20,+20% PvE Damage Tolerance increase and +10% PvP Damage Tolerance increase,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/mother-natures-breath
+spec:ranger:griffon-arrow:1,stigma:ranger:griffon-arrow,1,5,Changes to mobile skill,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/griffon-arrow
+spec:ranger:griffon-arrow:2,stigma:ranger:griffon-arrow,2,10,+5s Damage over Time duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/griffon-arrow
+spec:ranger:griffon-arrow:3,stigma:ranger:griffon-arrow,3,15,Enhanced Crimson Flames - Extra damage when hit while afflicted with Crimson Flames,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/griffon-arrow
+spec:ranger:griffon-arrow:4,stigma:ranger:griffon-arrow,4,20,-50% Damage over Time intervals,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/griffon-arrow
+spec:ranger:ensnaring-trap:1,stigma:ranger:ensnaring-trap,1,5,Adds [Guerilla Strike] Chain Skill,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/ensnaring-trap
+spec:ranger:ensnaring-trap:2,stigma:ranger:ensnaring-trap,2,10,Removes up to 2 buffs,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/ensnaring-trap
+spec:ranger:ensnaring-trap:3,stigma:ranger:ensnaring-trap,3,15,+1s Airborne duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/ensnaring-trap
+spec:ranger:ensnaring-trap:4,stigma:ranger:ensnaring-trap,4,20,-30s cooldown,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/ensnaring-trap

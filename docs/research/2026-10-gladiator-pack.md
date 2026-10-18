@@ -137,7 +137,8 @@ Two cautions for P5: Murderous Burst is learned at Lv 25, so its Zikel pair is n
 Isaac's To-do covers "who levels which class" (D8) and a quick in-game check. This pack does not ask him anything;
 it only narrows what the check needs to cover:
 
-1. **D8 answer.** If he names a class other than Gladiator, P4 and P5 for Gladiator stop and this pack waits for 0.7;
+1. **D8 answer: Ranger** (owner, 1:41 AM ET 18 Oct), so this Gladiator pack is parked for a later minor; see
+   [`2026-10-ranger-pack.md`](2026-10-ranger-pack.md). Original note: if the owner names a class other than Gladiator, P4 and P5 for Gladiator stop and this pack waits;
    a new research pack for that class is about 40 requests (this run's size).
 2. **Three learn levels** in the Skills window, suggested: Mocking Blade 3, Rush Strike 10, Ruinous Blow 14.
 3. **One flat gate (optional, cheap):** at Lv 21 or higher, is Experienced Counterstrike's skill Lv 3 open? (Yes =
@@ -169,7 +170,7 @@ for the pipeline, not part of P4 (P4 owns only Gladiator files).
 ## 6. Fetching record
 
 Policy followed (CLAUDE.md "Fetching"): robots.txt and the terms page first, User-Agent
-`DaevaCompanionResearch/0.1 (+https://daevacompanion.com)`, one request at a time, at least 5 s apart (under 12 per
+`DaevaCompanionResearch/0.1 (+https://daevacompanion.com)`, one request at a time, at least 5 s apart (at most 12 per
 minute), stop on 403 / 429 / a challenge page. **42 requests, all to metabot.gg, all 200**, 11:13–11:19 PM ET on
 17 Oct. Pages cached in the session scratchpad only.
 

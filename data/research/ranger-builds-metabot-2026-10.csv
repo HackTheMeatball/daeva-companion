@@ -1,0 +1,39 @@
+build,voice,kind,order,name,value,status,checkedAt,page_url,notes
+leveling-1-45,editorial,skill-target,1,Snipe,Lv 10,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,2,Tempest Shot,Lv 10,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,3,Marking Shot,Lv 10,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,4,Drill Dart,Lv 10,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,5,Gale Arrow,Lv 10,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,6,Burst Arrow,Lv 10,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,7,Deadshot,Lv 10,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,8,Focused Eye,Lv 10,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,9,Hunter's Resolve,Lv 10,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,10,Snare Shot,Lv 7,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,11,Concentrated Fire,Lv 5,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,stigma-slot,1,Vaizel's Authority,"slot 1 (Lv 22), stigma Lv 8",single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger/build,
+leveling-1-45,editorial,stigma-slot,2,Bow of Blessing,"slot 2 (Lv 27), stigma Lv 7",single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger/build,
+leveling-1-45,editorial,stigma-slot,3,Supporting Fire,"slot 3 (Lv 32), stigma Lv 5",single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger/build,
+leveling-1-45,editorial,stigma-slot,4,Griffon Arrow,"slot 4 (Lv 37), stigma Lv 4",single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger/build,
+endgame-pve-top-players,"aggregate (151 tracked Lv 45 players, updated ~2026-10-03)",stigma-slot,1,Vaizel's Authority,"slot 1 (Lv 22), pick 93%",single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger/build,
+endgame-pve-top-players,"aggregate (151 tracked Lv 45 players, updated ~2026-10-03)",stigma-slot,2,Bow of Blessing,"slot 2 (Lv 27), pick 87%",single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger/build,
+endgame-pve-top-players,"aggregate (151 tracked Lv 45 players, updated ~2026-10-03)",stigma-slot,3,Supporting Fire,"slot 3 (Lv 32), pick 75%",single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger/build,
+endgame-pve-top-players,"aggregate (151 tracked Lv 45 players, updated ~2026-10-03)",stigma-slot,4,Griffon Arrow,"slot 4 (Lv 37), pick 60%",single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger/build,
+endgame-pve-top-players,aggregate,core-skill,1,Deadshot,99% pick,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger/build,
+endgame-pve-top-players,aggregate,core-skill,2,Snipe,99% pick,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger/build,
+endgame-pve-top-players,aggregate,core-skill,3,Gale Arrow,99% pick,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger/build,
+endgame-pve-top-players,aggregate,core-skill,4,Tempest Shot,99% pick,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger/build,
+endgame-pve-top-players,aggregate,core-skill,5,Marking Shot,99% pick,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger/build,
+endgame-pve-top-players,aggregate,core-skill,6,Drill Dart,99% pick,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger/build,
+endgame-pve-top-players,aggregate,core-skill,7,Burst Arrow,99% pick,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger/build,
+class-builds-guide,editorial (as of 2026-10-06),stigma-slot,1,Vaizel's Authority,slot 1 (Lv 22),single-source,2026-10-18,https://metabot.gg/en/aion-2/guides/class-builds-guide,same order as the leveling build and the top players
+class-builds-guide,editorial (as of 2026-10-06),stigma-slot,2,Bow of Blessing,slot 2 (Lv 27),single-source,2026-10-18,https://metabot.gg/en/aion-2/guides/class-builds-guide,same order as the leveling build and the top players
+class-builds-guide,editorial (as of 2026-10-06),stigma-slot,3,Supporting Fire,slot 3 (Lv 32),single-source,2026-10-18,https://metabot.gg/en/aion-2/guides/class-builds-guide,same order as the leveling build and the top players
+class-builds-guide,editorial (as of 2026-10-06),stigma-slot,4,Griffon Arrow,slot 4 (Lv 37),single-source,2026-10-18,https://metabot.gg/en/aion-2/guides/class-builds-guide,same order as the leveling build and the top players
+class-page-stat-priority,editorial,stat-priority,1,Attack,,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger,class-builds guide top 3 agrees: Attack > Critical Hit > Accuracy Bonus
+class-page-stat-priority,editorial,stat-priority,2,Critical Hit,,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger,class-builds guide top 3 agrees: Attack > Critical Hit > Accuracy Bonus
+class-page-stat-priority,editorial,stat-priority,3,Accuracy Bonus,,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger,class-builds guide top 3 agrees: Attack > Critical Hit > Accuracy Bonus
+class-page-stat-priority,editorial,stat-priority,4,Evasion Bonus,,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger,class-builds guide top 3 agrees: Attack > Critical Hit > Accuracy Bonus
+class-page-stat-priority,editorial,stat-priority,5,HP,,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger,class-builds guide top 3 agrees: Attack > Critical Hit > Accuracy Bonus
+class-page-daevanion-path,editorial,board-path,1,Nezekan: Hunter's Resolve and Focused Eye node pairs,,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger,
+class-page-daevanion-path,editorial,board-path,2,Zikel: Rooting Eye and Hunter's Soul,,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger,Hunter's Soul is learned at Lv 25; Zikel opens at Lv 20
+leveling-1-45,editorial,rotation,1,"Mark for Precision, slow the pack, burst arrow on slowed targets, gale arrow, charged deadshot while Precision is up, then dart and basics",,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/ranger/build,paraphrased; P5 must write its own text
