@@ -2,8 +2,8 @@
    (src/core/state.js). Each function takes a save and returns a new one; the input is never written, and every slot the
    call doesn't change is the same object as before. The slot id comes from the caller (the page's newId) and is never
    derived from the name, class or level; the name stays in the character, never in a key, a file name, a URL or a log. */
-import { isRemoved, newChar } from "./state.js";
-import { lastChangeOf } from "./sync.js";
+import { isRemoved, newChar, withName } from "./state.js";
+import { lastChangeOf, mtSecOf } from "./sync.js";
 
 /* A name: control characters and runs of white space become one space, trimmed, at most NAME_MAX characters (code points,
    so a cut never splits one). Anything that isn't a string gives "". */
@@ -30,10 +30,11 @@ export function switchChar(state, id) {
   return { ...state, current: id };
 }
 
-/* Give slot id a new name (cleanName; "" clears it). Only that slot changes. */
-export function renameChar(state, id, name) {
+/* Give slot id a new name (cleanName; "" clears it). Only that slot changes. now (ms) stamps the name (mt.name,
+   src/core/state.js withName) when it changed, so merge() carries the rename to the other devices. */
+export function renameChar(state, id, name, now = 0) {
   const c = slotOf(state, id);
-  return { ...state, chars: { ...state.chars, [id]: { ...c, name: cleanName(name) } } };
+  return { ...state, chars: { ...state.chars, [id]: withName(c, cleanName(name), mtSecOf(now)) } };
 }
 
 /* Remove slot id; the last character is never removed. If it was current, the first remaining character (save order) is.

@@ -35,13 +35,17 @@ export async function coreBundle() {
   return import('data:text/javascript;base64,' + Buffer.from(r.outputFiles[0].text).toString('base64'));
 }
 
-/* A suite runner: test(name, fn) prints ok / FAIL lines (tests/run.mjs counts them) and counts failures. */
+/* A suite runner: test(name, fn) prints ok / FAIL lines (tests/run.mjs counts them) and counts failures. An async fn
+   (0.6 P21: WebCrypto) runs after the async tests before it, one at a time; settle() waits for them all (core.mjs calls
+   it after each test file, so a file's async tests finish before the next file loads). */
 export function runner() {
-  let n = 0, fail = 0;
+  let n = 0, fail = 0, queue = Promise.resolve();
+  const report = (name, e) => { if (!e) { console.log('ok   ' + name); return; } fail++; console.log('FAIL ' + name + '  · ' + String(e && e.message || e).split('\n').slice(0, 6).join(' | ').slice(0, 600)); };
   const test = (name, fn) => {
     n++;
-    try { fn(); console.log('ok   ' + name); }
-    catch (e) { fail++; console.log('FAIL ' + name + '  · ' + String(e && e.message || e).split('\n').slice(0, 6).join(' | ').slice(0, 600)); }
+    if (fn.constructor.name === 'AsyncFunction') { queue = queue.then(() => fn()).then(() => report(name), e => report(name, e || new Error('rejected'))); return; }
+    try { fn(); report(name); }
+    catch (e) { report(name, e || new Error('threw')); }
   };
-  return { test, get n() { return n; }, get fail() { return fail; }, failed() { fail++; } };
+  return { test, settle: () => queue, get n() { return n; }, get fail() { return fail; }, failed() { fail++; } };
 }
