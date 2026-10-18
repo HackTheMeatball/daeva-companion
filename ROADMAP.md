@@ -81,6 +81,12 @@ until the pass is written down and reviewed. Patches (0.X.Y) skip it.
 6. **Write and review.** The plan goes into this file and the #114 queue in one PR, written by one session and
    reviewed by a separate one that didn't write it. Then the planner queues the items, top of the lane map first.
 
+**Release gate (owner, 2026-10-18 6:24 AM ET), for every release, patches included.** When every item of a release has
+merged, the Release Planner sends Game Data Check (Gretchen) `PRE-RELEASE CHECK <version>` and tells Build Pipeline (Gus)
+`DATA OK <version>` only after she answers `DATA OK`; Gus queues and ships the release item only then. A `DATA HOLD`
+means the named data is fixed first. Stall Watch (Mike) flags a check unanswered after 60 min. If data lands on main
+after her check, she re-runs it before the tag.
+
 ## How an objective is worked
 
 1. **Problem**: what's wrong or missing, in a sentence or two.
@@ -481,7 +487,7 @@ fix round 2 on Opus; K3 and K9 (Kickoff writes the build card; golden split by s
 thread. Re-derived #114 limits: M code 80 min, M–L 80 min, L 120 min, S 16, S–M 20, M docs 41; build cap 5; build
 routing unchanged. The rows are in the scorecard and in the PR of this pass for #222.
 
-**Moved out of 0.6 (Release Planner, 2026-10-18 5:35 AM ET; now 0.6.1, see below), per the waves rule below:** every other 0.6 item had merged (P19, PR #320, 4:37 AM ET) and two owner inputs were still missing, so **P13** (story-quest icon, waits on the owner's icon crop; Metabot has none, PR #289) and **P15** (respec walk-through, waits on the owner's in-game key screens) move to 0.7, and R ships 0.6.0 without them. First planned for 0.7; Isaac moved them to a 0.6.1 patch at 6:05 AM ET ("anything outstanding we just patch tomorrow"). Their gates are renamed `owner-ok-story-icon` and `owner-ok-keys` (recorded as an "Owner, typed" DECISIONS row when the input arrives) so kickoff can read them. Their issues (#272, #274) stay open for 0.6.1.
+**Moved out of 0.6 (Release Planner, 2026-10-18 5:35 AM ET; now 0.6.1, see below), per the waves rule below:** every other 0.6 item had merged (P19, PR #320, 4:37 AM ET) and two owner inputs were still missing, so **P13** (story-quest icon, waits on the owner's icon crop; Metabot has none, PR #289) and **P15** (respec walk-through, waits on the owner's in-game key screens) move out, and R ships 0.6.0 without them. First planned for 0.7; Isaac moved them to a 0.6.1 patch at 6:05 AM ET ("anything outstanding we just patch tomorrow"). Their gates are renamed `owner-ok-story-icon` and `owner-ok-keys` (recorded as an "Owner, typed" DECISIONS row when the input arrives) so kickoff can read them. Their issues (#272, #274) stay open for 0.6.1.
 
 #### Audit (step 2), against `main` at `aab1032` (0.5.0)
 
