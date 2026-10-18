@@ -34,6 +34,6 @@ S.
 
 ## Lanes, model, order
 
-Lanes: golden. Model: Sonnet. Stall limit: 44 min (S).
+Lanes: golden. Model: Opus (golden snapshots are Opus-only, #114 routing). Stall limit: 44 min (S).
 
 After: none.

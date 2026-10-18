@@ -36,6 +36,6 @@ The card HTML files with the headings, `src/styles/app.css` and card stylesheets
 
 ## Lanes, model, order
 
-Lanes: a11y, main.js. Model: Sonnet. Stall limit: 20 min (S–M).
+Lanes: a11y, main.js. Model: Opus (golden snapshots are Opus-only, #114 routing). Stall limit: 20 min (S–M).
 
-After: none. (Shares the a11y lane with F3 and app.css with F2, so kickoff runs it after them.)
+After: none. (The `main.js` lane stands for `src/styles/app.css`, which F4 shares with F2; lanes keep them from running at once.)
