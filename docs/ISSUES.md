@@ -97,14 +97,31 @@ on purpose: the guide shows nothing rather than an unverified value.
   | sk-ambush.png, sk-assault-stance.png, sk-defense-break.png, sk-exploit-weakness.png, sk-heart-gore.png | | |
   | sk-insignia-explosion.png, sk-quick-slice.png, sk-rear-smite.png, sk-savage-roar.png, sk-shadowstrike.png | | |
   | st-illusive-clone.png, st-savage-fang.png, st-swift-contract.png, st-triniels-dagger.png | | |
-- **Ranger skill and stigma icons: none added yet** (0.6 P5, #264, 2026-10-18). The Ranger guide ships without icons:
-  every Ranger skill and stigma shows the initials square on the site and in `dist-artifact` (no `/_blob/` id needed, no
-  icon path in the data). Metabot is the approved source under the standing icon OK, but this run fetched nothing (time
-  budget); the icons are listed here for a follow-up fetch (Metabot skill / stigma pages, robots.txt and terms first),
-  each then recorded in the table above with its page, file URL and date:
-  - skills (11 in the guide's plan): Snipe, Tempest Shot, Marking Shot, Drill Dart, Gale Arrow, Burst Arrow, Deadshot,
-    Focused Eye, Hunter's Resolve, Snare Shot, Concentrated Fire;
-  - stigmas (4 in the plan): Vaizel's Authority, Bow of Blessing, Supporting Fire, Griffon Arrow.
+- **Ranger skill and stigma icons: fetched, not yet in the app** (0.6 P5 shipped without them, #264; fetched
+  2026-10-18 7:17–7:21 AM ET for 0.6.1 F5, gate `research-ranger-icons`, docs/research/2026-10-ranger-icons.md). All 15
+  planned icons (11 skills, 4 stigmas) came from Metabot; none lacks an approved source. They are staged in
+  `data/packs/aion2/asmodian/ranger/icons/` (256 px WebP → 128 px PNG, like the Assassin's) because the build rejects an
+  unreferenced PNG in `src/assets/icons/`; F5 moves them there and wires them. Until then the Ranger guide shows the
+  initials square.
+
+  | File | Name | Source page | File URL | Retrieved |
+  |---|---|---|---|---|
+  | sk-snipe.png | Snipe | <https://metabot.gg/en/aion-2/skills/snipe> | <https://metabot.gg/web/aion2/skills/14020000.webp> | 2026-10-18 |
+  | sk-tempest-shot.png | Tempest Shot | <https://metabot.gg/en/aion-2/skills/tempest-shot> | <https://metabot.gg/web/aion2/skills/14340000.webp> | 2026-10-18 |
+  | sk-marking-shot.png | Marking Shot | <https://metabot.gg/en/aion-2/skills/marking-shot> | <https://metabot.gg/web/aion2/skills/14090000.webp> | 2026-10-18 |
+  | sk-drill-dart.png | Drill Dart | <https://metabot.gg/en/aion-2/skills/drill-dart> | <https://metabot.gg/web/aion2/skills/14050000.webp> | 2026-10-18 |
+  | sk-gale-arrow.png | Gale Arrow | <https://metabot.gg/en/aion-2/skills/gale-arrow> | <https://metabot.gg/web/aion2/skills/14110000.webp> | 2026-10-18 |
+  | sk-burst-arrow.png | Burst Arrow | <https://metabot.gg/en/aion-2/skills/burst-arrow> | <https://metabot.gg/web/aion2/skills/14080000.webp> | 2026-10-18 |
+  | sk-deadshot.png | Deadshot | <https://metabot.gg/en/aion-2/skills/deadshot> | <https://metabot.gg/web/aion2/skills/14010000.webp> | 2026-10-18 |
+  | sk-focused-eye.png | Focused Eye | <https://metabot.gg/en/aion-2/skills/focused-eye> | <https://metabot.gg/web/aion2/skills/14740000.webp> | 2026-10-18 |
+  | sk-hunters-resolve.png | Hunter's Resolve | <https://metabot.gg/en/aion-2/skills/hunters-resolve> | <https://metabot.gg/web/aion2/skills/14750000.webp> | 2026-10-18 |
+  | sk-snare-shot.png | Snare Shot | <https://metabot.gg/en/aion-2/skills/snare-shot> | <https://metabot.gg/web/aion2/skills/14130000.webp> | 2026-10-18 |
+  | sk-concentrated-fire.png | Concentrated Fire | <https://metabot.gg/en/aion-2/skills/concentrated-fire> | <https://metabot.gg/web/aion2/skills/14720000.webp> | 2026-10-18 |
+  | st-vaizels-authority.png | Vaizel's Authority | <https://metabot.gg/en/aion-2/skills/vaizels-authority> | <https://metabot.gg/web/aion2/skills/14310000.webp> | 2026-10-18 |
+  | st-bow-of-blessing.png | Bow of Blessing | <https://metabot.gg/en/aion-2/skills/bow-of-blessing> | <https://metabot.gg/web/aion2/skills/14220000.webp> | 2026-10-18 |
+  | st-supporting-fire.png | Supporting Fire | <https://metabot.gg/en/aion-2/skills/supporting-fire> | <https://metabot.gg/web/aion2/skills/14380000.webp> | 2026-10-18 |
+  | st-griffon-arrow.png | Griffon Arrow | <https://metabot.gg/en/aion-2/skills/griffon-arrow> | <https://metabot.gg/web/aion2/skills/14060000.webp> | 2026-10-18 |
+
 - **Story-quest icon: no approved source found yet** (0.6 gate `research-story-icon`, for P13; searched 2026-10-18
   3:12–3:21 AM ET). The owner's OK for the game's yellow story-quest icon is #254 note 7. The plan's source is Metabot
   first, else a file the owner supplies.
