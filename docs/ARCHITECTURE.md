@@ -90,8 +90,10 @@ Characters are added, switched, renamed and removed by the pure functions of `sr
 trimmed, white space folded, at most `NAME_MAX` code points) and `removeChar` (never the last slot; a removed current
 moves `current` to the first remaining slot). Each returns a new save and leaves every other slot the same object. The
 class a new character may have comes from the pack's `classes` (`packClasses`; a pack without it offers its
-`character`), so only a class with a guide pack can be picked. `merge()` keeps a slot found on one side only, so a removed
-character comes back from another device's save until 0.6 (sync) records removals.
+`character`), so only a class with a guide pack can be picked. A removed character leaves a tombstone
+`chars[id] = { id, deletedAt }` (ms, 0.6 P20; never older than its last change) so `merge()` doesn't bring it back;
+every reader of `chars` skips tombstones (`isRemoved`, `liveChars` in `src/core/state.js`). docs/design/sync.md §2
+"Removed characters" has the merge rule.
 
 | Field | Meaning |
 |---|---|
@@ -122,7 +124,10 @@ character against `mt` and stamps what changed with the write's time, bumped pas
 Lamport bump, so a device with a slow clock still wins with a newer edit), and sets `savedAt`; writes that change only
 view settings leave `savedAt` alone, so a reload stores the same text. A v5 save is born with `mt` (the fresh start
 stamps its defaults at time 0). `merge(local, remote)` (not used by the UI yet) works per slot id: a slot on one side
-only is kept, a slot on both sides keeps the later change per item; `v` / `savedAt` take the larger; `current`, the
+only is kept, a slot on both sides keeps the later change per item; a slot's newest removal (a tombstone, or a revived
+character's `removedAt`) drops every item changed at or before it, so only edits made after a removal bring a character
+back, and a slot with none left stays the tombstone (a save left with no character gets a new one on load);
+`v` / `savedAt` take the larger; `current`, the
 view settings and `backup` stay the local save's;
 `lastConfirmedLocation(char)` derives the zone of the newest dated tick of a located item (the pack's `locate`), skipping
 the keys the pack's `skipLocation` names (AION 2: steps with `ascensionQuest`, from `data/packs/aion2/asmodian/assassin/guide/steps.json`, emitted onto the GATES items by `tools/gen/gen.mjs`).

@@ -110,8 +110,32 @@ client simply re-syncs on load after an update.
   back from the cloud copy. 0.5 lane C (if the switcher can delete) or 0.6 lane C needs a dated slot tombstone (for
   example `chars[id] = { id, deletedAt }`, or a top-level `mt.chars{id}`). That **is** a save-shape addition: a decision
   for the planner before 0.5 lane C, not taken here.
+  **Decided and built in 0.6 P20 (#279), see "Removed characters" below.**
 - **F4 Slots on join.** A fresh browser makes its own random slot id, so a plain merge on join would add an empty
   `assassin-lvl1` character next to the synced one. §1's adopt rule avoids it; lane C's tests pin it.
+
+**Removed characters** (F3, decided in 0.6 P20, #279). Inside `companion-save-v5`, no key bump (old saves have no
+tombstones):
+
+- `removeChar(state, id, now)` leaves the tombstone `chars[id] = { id, deletedAt }` (ms) in the slot: no name, class or
+  progress stays. `deletedAt` is `now`, or the character's last change if that is later (a clock set back), so a
+  removal is never older than what it removed. Readers skip tombstones (`isRemoved`, `liveChars` in
+  `src/core/state.js`): the switcher, switch / rename / remove (`no such slot`), `loadState` (no defaults laid under a
+  tombstone), `parseExport` (an export's current slot is a character). Export files keep the tombstones (an older
+  backup merged later must not bring the character back).
+- `merge()`: the slot's newest removal on either side cuts every item (per-item stamp) changed at or before it, in
+  seconds; a tie goes to the removal. Nothing left: the slot stays the tombstone (the later `deletedAt` of two).
+- **An edit after the removal** (a device that hadn't seen it) brings the character back with the items changed after
+  the removal, nothing older; it keeps `removedAt` (the removal's time), so a later merge with an older copy cuts that
+  copy too. Chosen over "the whole character comes back" because only this keeps `merge()` associative (once a merge
+  drops a stale copy, its items are gone; with the cut they never count, in any order), which §2 step 5's convergence
+  rests on; and over "removal always wins" because no change a player made after the removal is lost. The cost: a
+  revived character shows only its newer progress (an older level falls back to the default).
+- Each device removed the other's character: the merge leaves none (the honest result, still commutative and
+  associative); `loadState` then adds a new empty character and makes it current, next to the tombstones. A removed
+  current slot shows the first remaining character (merge and load).
+- Tests (`core`): `chars remove + merge …`, `merge tombstone: …`, and `merge with tombstones: commutative /
+  associative / idempotent` over generated saves with removals before, at and after the other side's edits.
 
 ## 3. Privacy
 
