@@ -82,58 +82,58 @@
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L07-q08-before-A": [
-    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","b":"Lv 6–8","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside it (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]},
+    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","b":"Lv 6–8","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside the prison compound (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Ambush 3 → 4","s":"Needs Lv 9 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
     {"t":"Buy Exploit Weakness 2 → 3","s":"Needs Lv 9 · 2 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L07-q08-before-B": [
-    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside it (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]}
+    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside the prison compound (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]}
   ],
   "level/L07-q08-lvonly-A": [
-    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","b":"Lv 6–8","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside it (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]},
+    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","b":"Lv 6–8","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside the prison compound (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Ambush 3 → 4","s":"Needs Lv 9 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
     {"t":"Buy Exploit Weakness 2 → 3","s":"Needs Lv 9 · 2 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L07-q08-lvonly-B": [
-    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside it (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]}
+    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside the prison compound (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]}
   ],
   "level/L07-q08-none-A": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 6–8"},
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside it (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]},
+    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside the prison compound (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
     {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 4 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "level/L07-q08-none-B": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside it (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]}
+    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside the prison compound (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]}
   ],
   "level/L07-q08-rnd1p50-A": [
-    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","b":"Lv 6–8","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside it (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]},
+    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","b":"Lv 6–8","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside the prison compound (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 2 → 3","s":"Needs Lv 9 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 2 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Heart Gore 3 → 4","s":"Needs Lv 10 · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "level/L07-q08-rnd1p50-B": [
-    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside it (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]}
+    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside the prison compound (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]}
   ],
   "level/L07-q08-rnd2p85-A": [
-    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","b":"Lv 6–8","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside it (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]},
+    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","b":"Lv 6–8","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside the prison compound (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Storm Rampage 2 → 3","s":"Needs Lv 8 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 2 → 3","s":"Needs Lv 9 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L07-q08-rnd2p85-B": [
-    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside it (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]}
+    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside the prison compound (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]}
   ],
   "level/L07-q09-before-A": [
     {"t":"Story: The Longest Night","s":"Needs Lv 9: you're 7. Level up first.","c":"","b":"Lv 6–8"},
@@ -157,58 +157,58 @@
     {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "level/L08-q08-before-A": [
-    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","b":"Lv 6–8","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside it (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]},
+    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","b":"Lv 6–8","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside the prison compound (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]},
     {"t":"Buy Ambush 3 → 4","s":"Needs Lv 9 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
     {"t":"Buy Exploit Weakness 2 → 3","s":"Needs Lv 9 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "level/L08-q08-before-B": [
-    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside it (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]}
+    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside the prison compound (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]}
   ],
   "level/L08-q08-lvonly-A": [
-    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","b":"Lv 6–8","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside it (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]},
+    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","b":"Lv 6–8","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside the prison compound (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]},
     {"t":"Buy Ambush 3 → 4","s":"Needs Lv 9 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
     {"t":"Buy Exploit Weakness 2 → 3","s":"Needs Lv 9 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "level/L08-q08-lvonly-B": [
-    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside it (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]}
+    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside the prison compound (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]}
   ],
   "level/L08-q08-none-A": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 6–8"},
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside it (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]},
+    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside the prison compound (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]},
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
     {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"},
     {"t":"Buy Assault Stance 1 → 2","s":"Needs Lv 13 · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 13–14"}
   ],
   "level/L08-q08-none-B": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside it (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]}
+    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside the prison compound (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]}
   ],
   "level/L08-q08-rnd1p50-A": [
-    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","b":"Lv 6–8","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside it (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]},
+    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","b":"Lv 6–8","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside the prison compound (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]},
     {"t":"Buy Exploit Weakness 2 → 3","s":"Needs Lv 9 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Heart Gore 3 → 4","s":"Needs Lv 10 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"},
     {"t":"Buy Savage Roar 4 → 5","s":"Needs Lv 10 · 2 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L08-q08-rnd1p50-B": [
-    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside it (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]}
+    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside the prison compound (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]}
   ],
   "level/L08-q08-rnd2p85-A": [
-    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","b":"Lv 6–8","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside it (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]},
+    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","b":"Lv 6–8","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside the prison compound (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]},
     {"t":"Buy Exploit Weakness 2 → 3","s":"Needs Lv 9 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Heart Gore 3 → 4","s":"Needs Lv 10 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"},
     {"t":"Buy Savage Roar 4 → 5","s":"Needs Lv 10 · 2 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L08-q08-rnd2p85-B": [
-    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside it (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]}
+    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside the prison compound (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]}
   ],
   "level/L08-q09-before-A": [
     {"t":"Story: The Longest Night","s":"Needs Lv 9: you're 8. Level up first.","c":"","b":"Lv 6–8"},

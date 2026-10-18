@@ -28,7 +28,7 @@
     {"t":"Complete \"The Being Beneath the Lake\"","s":"Lv 6 milestone · 4 levels away · opens on \"The Being Beneath the Lake\" · 3 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "bind/L03-q02-none-A": [
-    {"t":"Story: Shadow Forest","s":"0/3 objectives · then Isolated Lake","c":"primary \"Turned in\" story","o":["Search Munihelle Forest investigate it with Maard (Kibelisk: Witch's Cabin)","Find Maard near the village talk to Maard (Kibelisk: Aldelle Village)","Turn in Pelleir (Village Chief), Aldelle Village"]},
+    {"t":"Story: Shadow Forest","s":"0/3 objectives · then Isolated Lake","c":"primary \"Turned in\" story","o":["Search Munihelle Forest investigate Munihelle Forest with Maard (Kibelisk: Witch's Cabin)","Find Maard near the village talk to Maard (Kibelisk: Aldelle Village)","Turn in Pelleir (Village Chief), Aldelle Village"]},
     {"t":"Buy Heart Gore 1 → 2","s":"Needs Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 2 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 1 → 2","s":"Needs Lv 6 · 3 levels away","c":"tag \"Later\"","f":"later"},
