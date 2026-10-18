@@ -25,7 +25,7 @@
           "id": "spec:assassin:ambush:2",
           "n": 2,
           "skillLv": 8,
-          "text": "Absorbs 300, 300% HP"
+          "text": "Absorbs 3% HP"
         },
         {
           "id": "spec:assassin:ambush:3",
@@ -60,15 +60,34 @@
             "scheme": "metabot",
             "value": "0.0.4387.0"
           }
+        },
+        {
+          "url": "https://daevaguides.com/en/assassin/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-18",
+          "note": "Class guide shows the specialty text for spec:assassin:ambush:2 (Game Data Check, #358)"
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/assassin/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-18",
+          "note": "Class guide shows the specialty text for spec:assassin:ambush:2 (Game Data Check, #358)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-18",
       "status": "verified",
       "fieldStatus": {
         "levelGate": "inferred"
       },
       "notes": [
         "levelGate: no gate in the v1 data (skill page not fetched); \"stepped\" assumed, not used by the guide build."
+      ],
+      "conflicts": [
+        "spec:assassin:ambush:2 text: Metabot's skill page prints \"Absorbs 300, 300% HP\" (an unfilled template; its number is the percent x 100). Game text \"Absorbs 3% HP\" per daevaguides and aion2turkiye (mmo-codex agrees) (2026-10-18, #358)."
       ]
     },
     {
@@ -346,7 +365,7 @@
           "id": "spec:assassin:heart-gore:1",
           "n": 1,
           "skillLv": 8,
-          "text": "Absorbs 70, 70% HP"
+          "text": "Absorbs 0.7% HP"
         },
         {
           "id": "spec:assassin:heart-gore:2",
@@ -377,10 +396,29 @@
       "sources": [
         {
           "url": "https://metabot.gg/en/aion-2/skills/heart-gore"
+        },
+        {
+          "url": "https://daevaguides.com/en/assassin/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-18",
+          "note": "Class guide shows the specialty text for spec:assassin:heart-gore:1 (Game Data Check, #358)"
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/assassin/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-18",
+          "note": "Class guide shows the specialty text for spec:assassin:heart-gore:1 (Game Data Check, #358)"
         }
       ],
-      "verifiedAt": "2026-10-12",
-      "status": "verified"
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "conflicts": [
+        "spec:assassin:heart-gore:1 text: Metabot's skill page prints \"Absorbs 70, 70% HP\" (an unfilled template; its number is the percent x 100). Game text \"Absorbs 0.7% HP\" per daevaguides and aion2turkiye (mmo-codex agrees) (2026-10-18, #358)."
+      ]
     },
     {
       "id": "skill:assassin:heightened-sixth-sense",
@@ -567,7 +605,7 @@
           "id": "spec:assassin:quick-slice:2",
           "n": 2,
           "skillLv": 8,
-          "text": "Absorbs 70, 70% HP"
+          "text": "Absorbs 0.7% HP"
         },
         {
           "id": "spec:assassin:quick-slice:3",
@@ -591,10 +629,29 @@
       "sources": [
         {
           "url": "https://metabot.gg/en/aion-2/skills/quick-slice"
+        },
+        {
+          "url": "https://daevaguides.com/en/assassin/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-18",
+          "note": "Class guide shows the specialty text for spec:assassin:quick-slice:2 (Game Data Check, #358)"
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/assassin/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-18",
+          "note": "Class guide shows the specialty text for spec:assassin:quick-slice:2 (Game Data Check, #358)"
         }
       ],
-      "verifiedAt": "2026-10-12",
-      "status": "verified"
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "conflicts": [
+        "spec:assassin:quick-slice:2 text: Metabot's skill page prints \"Absorbs 70, 70% HP\" (an unfilled template; its number is the percent x 100). Game text \"Absorbs 0.7% HP\" per daevaguides and aion2turkiye (mmo-codex agrees) (2026-10-18, #358)."
+      ]
     },
     {
       "id": "skill:assassin:rear-smite",
@@ -731,9 +788,25 @@
             "scheme": "metabot",
             "value": "0.0.4387.0"
           }
+        },
+        {
+          "url": "https://daevaguides.com/en/assassin/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-18",
+          "note": "Class guide shows the specialty text for spec:assassin:shadow-fall:1 (Game Data Check, #358)"
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/assassin/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-18",
+          "note": "Class guide shows the specialty text for spec:assassin:shadow-fall:1 (Game Data Check, #358)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-18",
       "status": "verified",
       "fieldStatus": {
         "levelGate": "inferred"
@@ -746,7 +819,7 @@
           "id": "spec:assassin:shadow-fall:1",
           "n": 1,
           "skillLv": 8,
-          "text": "Absorbs 1000, 1000% HP"
+          "text": "Absorbs 10% HP"
         },
         {
           "id": "spec:assassin:shadow-fall:2",
@@ -772,6 +845,9 @@
           "skillLv": 16,
           "text": "Can be used on targets afflicted with Blind"
         }
+      ],
+      "conflicts": [
+        "spec:assassin:shadow-fall:1 text: Metabot's skill page prints \"Absorbs 1000, 1000% HP\" (an unfilled template; its number is the percent x 100). Game text \"Absorbs 10% HP\" per daevaguides and aion2turkiye (mmo-codex agrees) (2026-10-18, #358)."
       ]
     },
     {
@@ -855,7 +931,7 @@
           "id": "spec:assassin:storm-rampage:1",
           "n": 1,
           "skillLv": 8,
-          "text": "Absorbs 500, 500% HP"
+          "text": "Absorbs 5% HP"
         },
         {
           "id": "spec:assassin:storm-rampage:2",
@@ -885,10 +961,29 @@
       "sources": [
         {
           "url": "https://metabot.gg/en/aion-2/skills/storm-rampage"
+        },
+        {
+          "url": "https://daevaguides.com/en/assassin/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-18",
+          "note": "Class guide shows the specialty text for spec:assassin:storm-rampage:1 (Game Data Check, #358)"
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/assassin/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-18",
+          "note": "Class guide shows the specialty text for spec:assassin:storm-rampage:1 (Game Data Check, #358)"
         }
       ],
-      "verifiedAt": "2026-10-12",
-      "status": "verified"
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "conflicts": [
+        "spec:assassin:storm-rampage:1 text: Metabot's skill page prints \"Absorbs 500, 500% HP\" (an unfilled template; its number is the percent x 100). Game text \"Absorbs 5% HP\" per daevaguides and aion2turkiye (mmo-codex agrees) (2026-10-18, #358)."
+      ]
     },
     {
       "id": "skill:assassin:whirlwind-slice",

@@ -661,6 +661,7 @@ function checkIdleClass({ root, pack, check }) {
     const cs = r.specialtyChoices || [], want = r.availableLv ? '[5,10,15,20]' : r.type === 'active' ? '[8,8,8,12,16]' : '[]';
     check(`${P}${r.id}: specialty levels ${want}, ids spec:${cls.class}:<slug>:<n>`, JSON.stringify(cs.map(c => c.skillLv)) === want
       && cs.every((c, i) => c.n === i + 1 && c.id === `spec:${cls.class}:${r.id.split(':')[2]}:${c.n}`), cs.map(c => c.id));
+    for (const c of cs) check(`${P}${c.id}: no unfilled "N, N%" specialty text (#358)`, !/\d+, \d+%/.test(c.text), c.text);
   }
   return { pack, all };
 }
