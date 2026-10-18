@@ -1,0 +1,28 @@
+/* The first-run welcome (0.6 P17, src/cards/welcome.html; S1 W1 / W2): one card above the page's columns, the card shell
+   of every card. The primary button is the green Next up button; on phones both buttons are full width, 44 px tall. */
+.welcome { margin-bottom: var(--space-16); }
+.welcome[hidden], .welstep[hidden] { display: none; }
+.welstep { display: grid; gap: var(--space-10); max-width: 640px; }
+.welstep p { margin: 0; }
+.welcome .welh { margin: 0 0 var(--space-4); font: 400 20px var(--display); letter-spacing: 0; text-transform: none; color: var(--fg); }
+.welbtns { display: flex; flex-wrap: wrap; gap: var(--space-8); margin-top: var(--space-6); }
+.welbtns button { min-height: 44px; padding: 0 var(--space-18); border-radius: var(--radius-12); border: 1px solid var(--line); background: var(--panel-2); color: var(--fg);
+  font: 600 14px var(--body); cursor: pointer; }
+.welbtns button:hover { border-color: var(--accent); }
+.welbtns button.primary { background: linear-gradient(180deg, var(--go-hi), var(--go-lo)); color: var(--go-ink); border-color: var(--go-line); box-shadow: var(--shadow-go); }
+.wellegal { color: var(--muted); font-size: 12px; }
+.welfld { display: grid; gap: var(--space-4); }
+.welfld > label { font: 500 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.welslide { display: flex; align-items: center; gap: var(--space-12); }
+.welslide input { flex: 1; min-width: 0; }
+.welslide output { font: 600 14px var(--mono); min-width: 6ch; text-align: right; }
+.welfld select { min-height: 44px; width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: var(--radius-6); background: var(--panel-2); color: var(--fg);
+  font: 15px var(--body); padding: 0 var(--space-10); }
+.welfld select:focus { border-color: var(--accent); }
+.welhint { color: var(--muted); font-size: 12px; }
+.welwill { margin: 0; padding-left: var(--space-18); display: grid; gap: var(--space-4); font-size: 13px; }
+.welwill li.no { color: var(--muted); }
+@media (max-width: 600px) {
+  .welbtns { flex-direction: column; }
+  .welbtns button { width: 100%; }
+}

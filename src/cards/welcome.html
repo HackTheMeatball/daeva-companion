@@ -1,0 +1,18 @@
+  <section class="card welcome" id="welcomeCard" aria-labelledby="welHead" hidden>
+    <div class="welstep" id="welIntro">
+      <h2 class="welh" id="welHead">Welcome to Daeva Companion</h2>
+      <p>A step-by-step leveling guide for AION 2: Next up always shows your next move.</p>
+      <p>Tick a step when you finish it in game.</p>
+      <p>Press Level up when you level up in game.</p>
+      <div class="welbtns"><button type="button" class="primary" id="welStart">Start at Lv 1</button><button type="button" id="welJoin">I’m already Lv …</button></div>
+      <p class="wellegal">Unofficial guide. Not affiliated with or endorsed by NCSoft.</p>
+    </div>
+    <form class="welstep" id="welForm" aria-labelledby="welFormHead" hidden>
+      <h2 class="welh" id="welFormHead">Your level</h2>
+      <div class="welfld"><label for="welLv">Level</label><div class="welslide"><input type="range" id="welLv" class="lvl-range" min="1" max="45" value="1"><output id="welLvOut" for="welLv">Lv 1</output></div></div>
+      <div class="welfld"><label for="welQuest">Story quest you’re on</label><select id="welQuest" aria-describedby="welQuestHint"></select>
+        <span class="welhint" id="welQuestHint">Pre-filled with the first story quest at that level; change it if you’re further along.</span></div>
+      <ul class="welwill"><li id="welWillLv">Level set to 1</li><li>Story quests before the one above marked done</li><li class="no">Regional quests, dungeons, skills, Daevanion and stigmas stay unticked; Next up lists what you may have missed</li></ul>
+      <div class="welbtns"><button type="submit" class="primary" id="welGo">Start at Lv 1</button><button type="button" id="welBack">Back</button></div>
+    </form>
+  </section>

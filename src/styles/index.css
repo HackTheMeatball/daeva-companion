@@ -4,6 +4,7 @@
    rule it used to lose to (same element, property and specificity) stays in app.css. */
 @import "app.css";
 @import "cards/characters.css";
+@import "cards/welcome.css";
 @import "packs/aion2/progress.css";
 @import "cards/journey.css";
 @import "cards/ahead.css";
