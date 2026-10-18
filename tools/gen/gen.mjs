@@ -599,6 +599,12 @@ export function generateAll({ root = DEFAULT_ROOT, packs = guidePacks(root), don
   const perClass = Object.keys(first).filter(n => CLASS_TABLES.includes(n) || !same(n)), shared = Object.keys(first).filter(n => !perClass.includes(n));
   return { packs, results, tables, shared, perClass, failed: packs.flatMap(id => results[id].failed.map(c => ({ ...c, pack: id }))) };
 }
+/* One class's chunk (a classic script, before minifying): it sets self.DAEVA_CLASS to the class's tables only when the
+   page's loader chose that class (self.DAEVA_PACK). omit: tables not shipped; nulls: tables shipped as null (build --sizes). */
+export const classChunk = (a, id, { omit = new Set(), nulls = new Set() } = {}) => {
+  const t = a.tables[id], names = a.perClass.filter(n => !omit.has(n)).sort();
+  return `if(self.DAEVA_PACK===${JSON.stringify(id)})self.DAEVA_CLASS={${names.map(n => `${JSON.stringify(n)}:${nulls.has(n) ? 'null' : JSON.stringify(t[n])}`).join(',\n')}};\n`;
+};
 
 /* ------------------------------------------------------------------ data/DATA_SOURCES.md */
 export function dataSourcesMd(g) {

@@ -9,7 +9,7 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { generate, generateAll } from '../tools/gen/gen.mjs';
+import { classChunk as chunkOf, generate, generateAll } from '../tools/gen/gen.mjs';
 import { DEFAULT_PACK } from '../tools/gen/packs.mjs';
 import { dataFiles } from '../tools/gen/validate.mjs';
 
@@ -53,10 +53,7 @@ export const genAll = () => {
   return (all = a);
 };
 export const splitClasses = () => { perClass = new Set(genAll().perClass); };
-export const classChunk = id => {
-  const t = genAll().tables[id], names = genAll().perClass.filter(n => !pruned.has(n)).sort();
-  return `if(self.DAEVA_PACK===${JSON.stringify(id)})self.DAEVA_CLASS={${names.map(n => `${JSON.stringify(n)}:${dropped.has(n) ? 'null' : JSON.stringify(t[n])}`).join(',\n')}};\n`;
-};
+export const classChunk = id => chunkOf(genAll(), id, { omit: pruned, nulls: dropped });
 /* The tables of generated.js are served in name order (0.6 P1). They are independent `export const` lines, so the order is
    free; gzip only matches text within 32 KB, and of the orders tried (generator, name, size up, size down) this one came out
    smallest. Re-check with `node scripts/build.mjs --sizes` if a data change moves the page gzip size by more than ~100 B. */
