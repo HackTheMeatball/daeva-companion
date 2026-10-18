@@ -43,7 +43,8 @@ import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { gzipSync } from 'node:zlib';
 import { build, transform } from 'esbuild';
-import { dropTables, genModule, genResult, generatedData, generatedNames, pruneTables, staleGenerated, unusedTables } from './generated-data.mjs';
+import { classChunk, dropTables, genAll, genModule, genResult, generatedData, generatedNames, pruneTables, splitClasses, staleGenerated, unusedTables } from './generated-data.mjs';
+import { DEFAULT_PACK } from '../tools/gen/packs.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const P = (...p) => join(ROOT, ...p);
@@ -76,10 +77,30 @@ const SCRIPT_TAG = /^<script type="module" src="([\w.-]+\.js)"><\/script>\n/gm;
    copy in src/ would shadow nothing but mislead, so the build refuses it). The esbuild plugin is shared with the Node
    core tests. A schema error or a failed data check stops the build. */
 if (staleGenerated()) die(`${staleGenerated()} exists: the build makes that module from data/** (tools/gen/gen.mjs); delete the file`);
-try { genModule(); } catch (e) { die(e.message); }
+try { genModule(); genAll(); } catch (e) { die(e.message); }
 pruneTables(unusedTables());
+/* per-class loading (0.6 P2, docs/ARCHITECTURE.md §4): the page bundle holds the shared tables; each playable class (guide
+   pack) gets a chunk of its own tables (classChunk), and a small loader before the app script picks the current
+   character's class from the stored save (its `pack`; the default pack when there is none or it isn't shipped) and sets
+   self.DAEVA_PACK. The site loads that one chunk as its own file (packs/<id>.<hash>.js, precached; document.write keeps
+   it before the app script, which reads it at once); the claude.ai build can't fetch, so every chunk is inlined there. */
+splitClasses();
+const CLASS_PACKS = genAll().packs;
+if (!CLASS_PACKS.includes(DEFAULT_PACK)) die(`the default pack ${DEFAULT_PACK} is not a guide pack below data/packs`);
+const SAVE_KEY = (readFileSync(P('src/core/state.js'), 'utf8').match(/^export const KEY = "([\w-]+)";$/m) || [])[1] || die('src/core/state.js: no `export const KEY = "…";`');
+const minChunk = async id => (await transform(classChunk(id), { loader: 'js', minifyWhitespace: true, minifySyntax: true, minifyIdentifiers: false, charset: 'utf8', legalComments: 'inline' })
+  .catch(x => die(`class chunk ${id}: ${x.message}`))).code;
+let chunks = Object.fromEntries(await Promise.all(CLASS_PACKS.map(async id => [id, await minChunk(id)])));
+for (const [id, js] of Object.entries(chunks)) if (/<\/script/i.test(js)) die(`class chunk ${id} contains "</script"`);
+const chunkFile = id => `packs/${id.replace(/\//g, '-')}.${createHash('sha256').update(chunks[id]).digest('hex').slice(0, 8)}.js`;
+const pickClass = files => `(()=>{const F=${JSON.stringify(files)};let p;try{const s=JSON.parse(localStorage.getItem(${JSON.stringify(SAVE_KEY)}));p=s.chars[s.current].pack}catch(e){}` +
+  `if(!F[p])p=${JSON.stringify(DEFAULT_PACK)};self.DAEVA_PACK=p;`;
+/* what goes before the app script: the site's loader, or (claude.ai, and the checks below) the loader and every chunk */
+const siteClasses = () => `<script>\n${pickClass(Object.fromEntries(CLASS_PACKS.map(id => [id, chunkFile(id)])))}document.write('<script src="'+F[p]+'"><\\/script>')})();\n</script>\n`;
+const allClasses = () => `<script>\n${pickClass(Object.fromEntries(CLASS_PACKS.map(id => [id, 1])))}})();\n</script>\n<script>\n${CLASS_PACKS.map(id => chunks[id]).join('')}</script>\n`;
 /* the game pack the page loads (0.4 P8): src/main.js imports it as the module "pack", the pack's shell.js, so the shell
-   names no game (docs/design/0.4-engine-contract.md §5); one pack, always loaded, until per-pack loading (0.6) */
+   names no game (docs/design/0.4-engine-contract.md §5); one game's code, always loaded; its class data comes per class
+   (the chunks above) */
 const PAGE_PACK = 'aion2';
 const bundleOne = async entry => {
   const r = await build({ absWorkingDir: ROOT, entryPoints: ['src/' + entry], bundle: true, write: false, format: 'esm', platform: 'browser',
@@ -134,9 +155,11 @@ const readCss = (f, seen) => {
   seen.add(f); cssUsed.add(f);
   return plainCss(f, readFileSync(P('src', f), 'utf8')).replace(IMPORT, (_, g) => { const css = readCss(join(dirname(f), g).split('\\').join('/'), seen); return css.endsWith('\n') ? css : css + '\n'; });
 };
-const inline = (html, seen = new Set()) => html
+/* classes: the class loader (and chunks) placed before the app script, main.js */
+const inline = (html, classes = allClasses(), seen = new Set()) => html
   .replace(STYLE_TAG, (_, f) => { const css = readCss(f, seen); if (/<\/style/i.test(css)) die(`src/${f} contains "</style"`); if (/^\s*@import\b/m.test(css)) die(`src/${f}: an @import the build can't inline (one per line: @import "X.css";)`); return `<style>\n${css}</style>\n`; })
-  .replace(SCRIPT_TAG, (_, f) => `<script>\n${bundle(f)}</script>\n`);
+  .replace(SCRIPT_TAG, (_, f) => (f === 'main.js' ? classes : '') + `<script>\n${bundle(f)}</script>\n`);
+if (!shell.includes('<script type="module" src="main.js"></script>\n')) die('src/index.html: no <script type="module" src="main.js"> (the class loader goes before it)');
 if (!shell.match(STYLE_TAG) || !shell.match(SCRIPT_TAG)) die('src/index.html: no <link rel="stylesheet" href="styles/…"> or <script type="module" src="…"> to inline');
 for (const m of shell.matchAll(/<(link rel="stylesheet"|script)[^>]*>/g)) if (!/^<(link rel="stylesheet" href="styles\/[\w.-]+\.css"|script type="module" src="[\w.-]+\.js")>$/.test(m[0]) && m[0] !== '<script>')
   die(`src/index.html: "${m[0]}" is not a tag the build inlines (one per line, styles/X.css or X.js)`);
@@ -195,7 +218,7 @@ const fontInline = Object.values(fontB64).reduce((n, b) => n + b.length, 0);
 if (fontInline > FONT_INLINE_MAX) die(`inlined fonts are ${(fontInline / 1024).toFixed(0)} KB, over ${FONT_INLINE_MAX / 1024} KB`);
 
 /* web page */
-const web = tightHtml(stamp(src.replace(/^[ \t]*<!-- @(end-)?web-only -->\n/gm, ''), 'site'));
+const web = tightHtml(stamp(inline(shell, siteClasses()).replace(/^[ \t]*<!-- @(end-)?web-only -->\n/gm, ''), 'site'));
 if (/__APP_(VERSION|BUILD)__/.test(web)) die('dist/index.html still contains a placeholder');
 if (!web.startsWith('<!doctype html>')) die('dist/index.html must start with <!doctype html>');
 
@@ -247,10 +270,13 @@ cpSync(P('public'), DIST, { recursive: true });
 cpSync(P('src/assets'), join(DIST, 'assets'), { recursive: true });
 writeFileSync(join(DIST, 'index.html'), web);
 writeFileSync(join(ART, 'index.html'), art);
+mkdirSync(join(DIST, 'packs'));
+for (const id of CLASS_PACKS) writeFileSync(join(DIST, chunkFile(id)), chunks[id]);
 
-/* service worker: build id = hash of everything it caches */
+/* service worker: build id = hash of everything it caches; the class chunks are precached (offline after the first visit) */
 const files = walk(DIST).map(f => relative(DIST, f).split('\\').join('/')).sort();
-const precache = ['./', ...files.filter(f => f === 'index.html' || f === 'manifest.webmanifest' || f === 'favicon.svg' || /^(assets\/icons|icons)\/.+\.png$/.test(f) || /^assets\/fonts\/.+\.woff2$/.test(f))];
+const precache = ['./', ...files.filter(f => f === 'index.html' || f === 'manifest.webmanifest' || f === 'favicon.svg' || /^(assets\/icons|icons)\/.+\.png$/.test(f) || /^assets\/fonts\/.+\.woff2$/.test(f) || /^packs\/[\w.-]+\.js$/.test(f))];
+for (const id of CLASS_PACKS) if (!precache.includes(chunkFile(id))) die(`class chunk ${chunkFile(id)} is not precached`);
 const h = createHash('sha256');
 for (const f of files) h.update(f + '\0').update(readFileSync(join(DIST, f)));
 h.update(readFileSync(P('src/sw.js')));
@@ -263,13 +289,16 @@ writeFileSync(join(DIST, 'build.json'), JSON.stringify({ build: BUILD }) + '\n')
 const kb = f => (statSync(f).size / 1024).toFixed(1) + ' KB';
 console.log(`build ${BUILD} · v${VERSION}`);
 console.log(`  dist/index.html            ${kb(join(DIST, 'index.html'))} · ${walk(DIST).length} files · precache ${precache.length}`);
+for (const id of CLASS_PACKS) console.log(`  ${('dist/' + chunkFile(id)).padEnd(26)} ${kb(join(DIST, chunkFile(id)))} · class chunk of ${id} (${genAll().perClass.length} tables; ${genAll().shared.length} shared in index.html)`);
 console.log(`  dist-artifact/index.html   ${kb(join(ART, 'index.html'))} · ${[...used].filter(n => blobs[n]).length} icons as /_blob/<id>${[...used].some(n => blobs[n] === null) ? ` · ${[...used].filter(n => blobs[n] === null).length} without a blob id (initials there)` : ''} · ${fontsUsed.size} fonts inlined once each (${(fontInline / 1024).toFixed(1)} KB base64)`);
 
 /* page budgets (0.4 P7): about 1.3x the 0.3.0 numbers; a PR that raises one says why (docs/ARCHITECTURE.md §4). The element
-   budget is checked by the `site` suite. */
+   budget is checked by the `site` suite. The site page is dist/index.html plus its largest class chunk (0.6 P2): what a
+   visit loads. */
+const bigChunk = CLASS_PACKS.map(id => chunks[id]).sort((a, b) => Buffer.byteLength(b) - Buffer.byteLength(a))[0];
 const BUDGETS = [
-  ['dist/index.html bytes', Buffer.byteLength(web), 870000],
-  ['dist/index.html gzip -9 bytes', gzipSync(web, { level: 9 }).length, 200000],
+  ['site page bytes (index + chunk)', Buffer.byteLength(web) + Buffer.byteLength(bigChunk), 870000],
+  ['site page gzip -9 bytes', gzipSync(web, { level: 9 }).length + gzipSync(bigChunk, { level: 9 }).length, 200000],
   ['dist-artifact/index.html bytes', Buffer.byteLength(art), 1030000],
 ];
 /* node scripts/build.mjs --sizes (0.6 P1): where the page's gzip bytes go. A generated data table's row is its marginal cost:
@@ -280,14 +309,16 @@ if (process.argv.includes('--sizes')) {
   const rows = [];
   const add = (group, name, text) => rows.push([group, name, Buffer.byteLength(text), gz(text)]);
   const gen = genResult();
-  const whole = gz(inline(shell)), keep = minified;
+  /* measured on the page with every class chunk inlined (with one class: the site's index.html plus its chunk) */
+  const whole = gz(inline(shell)), keep = minified, keepChunks = chunks;
   const tables = [gen.module, gen.gateModule, gen.proposedModule, gen.placeModule].flatMap(m => [...m.matchAll(/^export const (\w+) = (.*);$/gm)].map(x => [x[1], x[2].length]));
   for (const [name, raw] of tables) {
     dropTables([name]);
     minified = await minifyAll(Object.fromEntries(await Promise.all(Object.keys(bundles).map(async e => [e, await bundleOne(e)]))));
+    chunks = Object.fromEntries(await Promise.all(CLASS_PACKS.map(async id => [id, await minChunk(id)])));
     rows.push(['data table', name, raw, whole - gz(inline(shell))]);
   }
-  dropTables([]); minified = keep;
+  dropTables([]); minified = keep; chunks = keepChunks;
   for (const f of walk(P('src')).map(f => relative(P('src'), f).split('\\').join('/')).sort()) {
     if (f.endsWith('.css')) add('stylesheet', f, plainCss(f, readFileSync(P('src', f), 'utf8')));
     else if (f.endsWith('.js') && !/^(site|sw)\.js$/.test(f) && !f.startsWith('assets/')) add('script module', f, readFileSync(P('src', f), 'utf8'));

@@ -9,7 +9,7 @@
        committed) for review; `npm run gen:check` fails if DATA_SOURCES.md is not current.
      - tests (core, e4) call generate() for the values the page should carry.
    Fails (throws / exit 1) on a schema error, a failed cross-record check or an unknown data major version. */
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { basename, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
@@ -570,7 +570,34 @@ export function generate(opts = {}) {
   report.stats = { checks: report.checks.length, failed: failed.length, rq: RQ_STATS, sources: Object.fromEntries(SOURCES.map(s => [s.id, s.links.length])), constants: Object.keys(C).length,
     gateNodes: Object.keys(GATE_GRAPH.nodes).length, places: Object.keys(NODE_PLACE).length, kibelisks: kibs.length };
   return { module, gateModule, proposedModule, placeModule, constants: C, gateGraph: GATE_GRAPH, gateProposed: GATE_PROPOSED, nodePlace: NODE_PLACE, kibelisks: KIBELISKS,
-    report, failed, sources: SOURCES, siteName, label, all, B };
+    travelRules: TRAVEL_RULES, report, failed, sources: SOURCES, siteName, label, all, B };
+}
+
+/* ------------------------------------------------------------------ one table set per class (0.6 P2) */
+/* A playable class is a guide pack (kind "guide"; it `uses` its class pack): the pack id a character stores (`pack`).
+   generateAll() compiles each guide pack's chain on its own (every check runs per chain) and splits the tables:
+   CLASS_TABLES are read from the guide and class packs (the build, the guide's milestones, steps, tips, claims, its gates)
+   and always go in the class's own set; every other table comes from the shared game and faction packs and is kept once,
+   unless it differs between two classes, which moves it to the class sets too. scripts/build.mjs ships the shared
+   tables in the page and each class set as its own chunk (docs/ARCHITECTURE.md §4, DATA-FORMAT-V2 §2.1). */
+export const CLASS_TABLES = ['SP_EXTRA', 'DV_BOARDS', 'SOURCES', 'CONF', 'GUIDE_GATES', 'GUIDE_STEPS', 'TIPS', 'STAT_TIERS', 'STAT_SRC', 'STIGMA_PLAN', 'ST_TARGETS',
+  'SP_SKILLS_CORE', 'RMB_ROWS', 'E_ORDER', 'SP_ICONS', 'STIGMA_ICON', 'GATE_GRAPH', 'GATE_PROPOSED'];
+/* every table of one result by name, in module order (generated.js, gate-graph.js, gate-proposed.js, place.js) */
+export const tablesOf = g => ({ ...g.constants, GATE_GRAPH: g.gateGraph, GATE_PROPOSED: g.gateProposed, NODE_PLACE: g.nodePlace, KIBELISKS: g.kibelisks, TRAVEL_RULES: g.travelRules });
+/* the guide packs below a packs root, by id */
+export const guidePacks = (root = DEFAULT_ROOT) => {
+  const ids = [], walk = d => { for (const e of readdirSync(d, { withFileTypes: true }).sort((a, b) => a.name < b.name ? -1 : 1)) if (e.isDirectory()) walk(join(d, e.name));
+    else if (e.name === 'pack.json') { const m = JSON.parse(readFileSync(join(d, e.name), 'utf8')); if (m.kind === 'guide') ids.push(m.id); } };
+  walk(root); return ids.sort();
+};
+/* opts: root; packs (default: every guide pack); done: { id: result } already generated (the build's default pack) */
+export function generateAll({ root = DEFAULT_ROOT, packs = guidePacks(root), done = {} } = {}) {
+  if (!packs.length) throw new Error('no guide pack (kind "guide") below ' + root);
+  const results = Object.fromEntries(packs.map(id => [id, done[id] || generate({ root, pack: id })]));
+  const tables = Object.fromEntries(packs.map(id => [id, tablesOf(results[id])])), first = tables[packs[0]];
+  const same = n => packs.every(id => JSON.stringify(tables[id][n]) === JSON.stringify(first[n]));
+  const perClass = Object.keys(first).filter(n => CLASS_TABLES.includes(n) || !same(n)), shared = Object.keys(first).filter(n => !perClass.includes(n));
+  return { packs, results, tables, shared, perClass, failed: packs.flatMap(id => results[id].failed.map(c => ({ ...c, pack: id }))) };
 }
 
 /* ------------------------------------------------------------------ data/DATA_SOURCES.md */
