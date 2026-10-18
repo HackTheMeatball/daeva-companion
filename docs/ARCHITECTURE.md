@@ -345,7 +345,9 @@ produced the v1 files (provenance; they no longer match `data/`). `tools/history
   name declared in two page modules (every `.js` under `src/` but `site.js` / `sw.js`) or in a module and the generated
   data (esbuild would rename one of them), and so does a name that comes out of a bundle renamed (`X` → `X2`: a module
   used `X` without importing it). CSS is not passed through esbuild: its printer rewrites values (unquoted `url()`, one
-  `unicode-range` entry per line) that the claude.ai font conversion and the test font blocker read. Instead a line
+  `unicode-range` entry per line) that the claude.ai font conversion and the test font blocker read. The build only
+  strips comments and the white space around `{ } ; , >`, after `:` and before `!important`, and the last `;` of a rule
+  (`plainCss`, 0.6 P1; quoted strings are skipped; `fonts.css` is left as written). A line
   `@import "X.css";` in an inlined stylesheet is replaced by that file as it is (0.4 P4d; path relative to the importing
   file, recursively): `src/styles/index.css` lists `app.css` and the card stylesheets that way. A missing file, a file
   imported twice, an `@import` in another form, or a `.css` file under `src/styles/` that nothing links or imports stops
@@ -357,6 +359,18 @@ produced the v1 files (provenance; they no longer match `data/`). `tools/history
   build id = hash of all cached files) and `dist-artifact/index.html` (web-only blocks removed before inlining, so
   `site.js` is never in it; icons → `/_blob/<id>`; the `styles/fonts.css` link replaced by a script that holds each
   font file once in base64 and registers the same faces with the FontFace API; capped at 150 KB).
+- **Page size** (0.6 P1: gzip -9 of `dist/index.html` 182,302 B → 169,956 B, 85% of the budget, no visible change, no change
+  to `data/**`). Three build-only cuts: the stylesheets lose comments and layout white space (above; about 10 KB gzip,
+  the largest share); the markup outside `<style>` and `<script>` loses indentation and blank lines (`tightHtml`; the
+  build stops if the shell ever gets a `<pre>` or `<textarea>`); and the page bundle leaves out a generated table that
+  no file under `src/` names (`unusedTables()` / `pruneTables()` in `scripts/generated-data.mjs`: `QUESTS_X`,
+  `QUEST_STEPS_X`, `QUEST_LOC_X`, `RQ_STATS` today; the generator still makes them for its checks and the Node core
+  tests still see every table; a name that only appears in a comment counts as used). The tables of `generated.js`
+  are also served in name order, which gzip's 32 KB window happened to like best (re-check after a big data change).
+  `node scripts/build.mjs --sizes` prints where the gzip bytes go: for each generated table its marginal cost (page
+  size minus the page with that table bundled as `null`), for every other part (script modules, stylesheets as shipped,
+  card markup, fonts) its size gzipped alone, so those rows overlap and don't add up to the page. Measure with it
+  before cutting; record row-encoding of the tables was tried and made the page larger (gzip already folds repeated keys).
 - **Page budgets** (0.4 P7, about 1.3x the 0.3.0 numbers; the build prints each with its limit and % used): `dist/index.html`
   870,000 B (0.3.0: 669,290), its gzip -9 200,000 B (153,871) and `dist-artifact/index.html` 1,030,000 B (790,763) fail the
   build (`BUDGETS` in `scripts/build.mjs`); 6,200 elements in a fresh browser at 390 px (4,741) fail the `site` suite

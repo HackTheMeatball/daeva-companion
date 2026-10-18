@@ -43,7 +43,7 @@ import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { gzipSync } from 'node:zlib';
 import { build, transform } from 'esbuild';
-import { genModule, generatedData, generatedNames, staleGenerated } from './generated-data.mjs';
+import { dropTables, genModule, genResult, generatedData, generatedNames, pruneTables, staleGenerated, unusedTables } from './generated-data.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const P = (...p) => join(ROOT, ...p);
@@ -77,6 +77,7 @@ const SCRIPT_TAG = /^<script type="module" src="([\w.-]+\.js)"><\/script>\n/gm;
    core tests. A schema error or a failed data check stops the build. */
 if (staleGenerated()) die(`${staleGenerated()} exists: the build makes that module from data/** (tools/gen/gen.mjs); delete the file`);
 try { genModule(); } catch (e) { die(e.message); }
+pruneTables(unusedTables());
 /* the game pack the page loads (0.4 P8): src/main.js imports it as the module "pack", the pack's shell.js, so the shell
    names no game (docs/design/0.4-engine-contract.md §5); one pack, always loaded, until per-pack loading (0.6) */
 const PAGE_PACK = 'aion2';
@@ -114,18 +115,24 @@ for (const [e, js] of Object.entries(bundles)) {
 }
 /* whitespace and syntax minification of each checked bundle (0.5 P20), identifiers untouched: a separate transform, since
    minifySyntax inside the bundling step renames top-level names (update → update3) */
-const minified = Object.fromEntries(await Promise.all(Object.entries(bundles).map(async ([e, js]) =>
-  [e, (await transform(js, { loader: 'js', minifyWhitespace: true, minifySyntax: true, minifyIdentifiers: false, charset: 'utf8', legalComments: 'inline' }).catch(x => die(`src/${e}: minify: ${x.message}`))).code])));
+const minifyAll = bs => Promise.all(Object.entries(bs).map(async ([e, js]) =>
+  [e, (await transform(js, { loader: 'js', minifyWhitespace: true, minifySyntax: true, minifyIdentifiers: false, charset: 'utf8', legalComments: 'inline' }).catch(x => die(`src/${e}: minify: ${x.message}`))).code])).then(Object.fromEntries);
+let minified = await minifyAll(bundles);
 const bundle = entry => minified[entry];
 /* @import lines (0.4 P4d): a line '@import "X.css";' in a stylesheet is replaced by that file (path relative to the importing
    file) as it is, recursively, so src/styles/index.css (app.css, then one file per card) inlines as one stylesheet. A
    missing file or one imported twice stops the build; so does a .css file under src/styles/ that nothing links or imports. */
 const IMPORT = /^@import "([\w./-]+\.css)";\n/gm, cssUsed = new Set();
+/* comments, the last ; of a rule and the white space around { } ; , > and after : in a stylesheet are not shipped (0.6 P1; no value, selector or
+   string is rewritten; quoted strings are skipped; @import lines keep their own line). styles/fonts.css stays as
+   written: the claude.ai font conversion and the test font blocker read its lines. */
+const plainCss = (f, css) => f === 'styles/fonts.css' ? css : css.replace(/\/\*[\s\S]*?\*\//g, '')
+  .replace(/("(?:[^"\\\n]|\\.)*"|'(?:[^'\\\n]|\\.)*')|^@import [^\n]*\n|\s*;\s*\}\s*|\s*([{};,>~])\s*|\s+!important|:\s+/gm, (m, str, p) => str ? str : m.startsWith('@import') ? m : p ? p : m.includes('}') ? '}' : m.includes('!') ? '!important' : ':').trim() + '\n';
 const readCss = (f, seen) => {
   if (!existsSync(P('src', f))) die(`src/${f} is missing (an @import or <link> names it)`);
   if (seen.has(f)) die(`src/${f} is imported twice`);
   seen.add(f); cssUsed.add(f);
-  return readFileSync(P('src', f), 'utf8').replace(IMPORT, (_, g) => { const css = readCss(join(dirname(f), g).split('\\').join('/'), seen); return css.endsWith('\n') ? css : css + '\n'; });
+  return plainCss(f, readFileSync(P('src', f), 'utf8')).replace(IMPORT, (_, g) => { const css = readCss(join(dirname(f), g).split('\\').join('/'), seen); return css.endsWith('\n') ? css : css + '\n'; });
 };
 const inline = (html, seen = new Set()) => html
   .replace(STYLE_TAG, (_, f) => { const css = readCss(f, seen); if (/<\/style/i.test(css)) die(`src/${f} contains "</style"`); if (/^\s*@import\b/m.test(css)) die(`src/${f}: an @import the build can't inline (one per line: @import "X.css";)`); return `<style>\n${css}</style>\n`; })
@@ -134,6 +141,11 @@ if (!shell.match(STYLE_TAG) || !shell.match(SCRIPT_TAG)) die('src/index.html: no
 for (const m of shell.matchAll(/<(link rel="stylesheet"|script)[^>]*>/g)) if (!/^<(link rel="stylesheet" href="styles\/[\w.-]+\.css"|script type="module" src="[\w.-]+\.js")>$/.test(m[0]) && m[0] !== '<script>')
   die(`src/index.html: "${m[0]}" is not a tag the build inlines (one per line, styles/X.css or X.js)`);
 const src = inline(shell); /* the whole page, markers kept: what the checks below read */
+/* markup outside <style> and <script> loses its indentation and blank lines (0.6 P1): a line break renders as the same
+   single space as a line break plus indent (the page has no <pre> or <textarea>; the build checks) */
+const tightHtml = html => html.split(/(<(style|script)\b[\s\S]*?<\/\2>)/).filter((_, i) => i % 3 !== 2)
+  .map((part, i) => i % 2 ? part : part.replace(/^[ \t]+|[ \t]+$/gm, '').replace(/\n{2,}/g, '\n')).join('');
+if (/<(pre|textarea)\b/i.test(src)) die('src/ has a <pre> or <textarea>: tightHtml would change its text');
 for (const f of walk(P('src/styles')).map(f => relative(P('src'), f).split('\\').join('/')).filter(f => f.endsWith('.css')))
   if (!cssUsed.has(f)) die(`src/${f} is not linked from src/index.html or imported by a stylesheet (src/styles/index.css lists the card styles)`);
 const blobs = JSON.parse(readFileSync(P('scripts/artifact-blobs.json'), 'utf8'));
@@ -183,7 +195,7 @@ const fontInline = Object.values(fontB64).reduce((n, b) => n + b.length, 0);
 if (fontInline > FONT_INLINE_MAX) die(`inlined fonts are ${(fontInline / 1024).toFixed(0)} KB, over ${FONT_INLINE_MAX / 1024} KB`);
 
 /* web page */
-const web = stamp(src.replace(/^[ \t]*<!-- @(end-)?web-only -->\n/gm, ''), 'site');
+const web = tightHtml(stamp(src.replace(/^[ \t]*<!-- @(end-)?web-only -->\n/gm, ''), 'site'));
 if (/__APP_(VERSION|BUILD)__/.test(web)) die('dist/index.html still contains a placeholder');
 if (!web.startsWith('<!doctype html>')) die('dist/index.html must start with <!doctype html>');
 
@@ -223,8 +235,8 @@ if (!art.includes(FONTS_TAG)) die('src/index.html: the styles/fonts.css <link> i
    artifact: null in scripts/artifact-blobs.json. The artifact build drops it (its quoted path becomes ""), so the page
    shows the initials square there, as before the icon existed. Such an icon may only be referenced as a quoted string. */
 const NO_BLOB = /(["'])assets\/icons\/([\w-]+)\.png\1/g;
-art = stamp(inline(art).replace(NO_BLOB, (m, q, n) => blobs[n] === null ? q + q : m)
-  .replace(ICON_RE, (_, n) => blobs[n] ? '/_blob/' + blobs[n] : die(`assets/icons/${n}.png has no blob id and is not a quoted string`)), 'claude.ai');
+art = tightHtml(stamp(inline(art).replace(NO_BLOB, (m, q, n) => blobs[n] === null ? q + q : m)
+  .replace(ICON_RE, (_, n) => blobs[n] ? '/_blob/' + blobs[n] : die(`assets/icons/${n}.png has no blob id and is not a quoted string`)), 'claude.ai'));
 if (art.includes('@font-face')) die('dist-artifact/index.html still has an @font-face rule');
 for (const bad of ['__APP_VERSION__', '__APP_BUILD__', 'assets/icons/', 'assets/fonts/', 'fonts.googleapis', 'fonts.gstatic', 'serviceWorker', 'manifest.webmanifest', '<!doctype', '<head>', '<body>'])
   if (art.includes(bad)) die(`dist-artifact/index.html still contains "${bad}"`);
@@ -260,6 +272,35 @@ const BUDGETS = [
   ['dist/index.html gzip -9 bytes', gzipSync(web, { level: 9 }).length, 200000],
   ['dist-artifact/index.html bytes', Buffer.byteLength(art), 1030000],
 ];
+/* node scripts/build.mjs --sizes (0.6 P1): where the page's gzip bytes go. A generated data table's row is its marginal cost:
+   the page's gzip -9 size minus the size with that table bundled as null. Every other row is the part gzipped on its own,
+   so those rows overlap (gzip shares repeated text across parts) and don't add up to the page. */
+if (process.argv.includes('--sizes')) {
+  const gz = s => gzipSync(s, { level: 9 }).length;
+  const rows = [];
+  const add = (group, name, text) => rows.push([group, name, Buffer.byteLength(text), gz(text)]);
+  const gen = genResult();
+  const whole = gz(inline(shell)), keep = minified;
+  const tables = [gen.module, gen.gateModule, gen.proposedModule, gen.placeModule].flatMap(m => [...m.matchAll(/^export const (\w+) = (.*);$/gm)].map(x => [x[1], x[2].length]));
+  for (const [name, raw] of tables) {
+    dropTables([name]);
+    minified = await minifyAll(Object.fromEntries(await Promise.all(Object.keys(bundles).map(async e => [e, await bundleOne(e)]))));
+    rows.push(['data table', name, raw, whole - gz(inline(shell))]);
+  }
+  dropTables([]); minified = keep;
+  for (const f of walk(P('src')).map(f => relative(P('src'), f).split('\\').join('/')).sort()) {
+    if (f.endsWith('.css')) add('stylesheet', f, plainCss(f, readFileSync(P('src', f), 'utf8')));
+    else if (f.endsWith('.js') && !/^(site|sw)\.js$/.test(f) && !f.startsWith('assets/')) add('script module', f, readFileSync(P('src', f), 'utf8'));
+    else if (f.startsWith('cards/') || /^packs\/[\w-]+\/cards\//.test(f)) add('card markup', f, readFileSync(P('src', f), 'utf8'));
+  }
+  add('asset', 'fonts (base64, artifact only)', JSON.stringify(fontB64));
+  add('page', 'src/index.html shell', shell);
+  add('page', 'dist/index.html (whole)', web);
+  console.log('\n  gzip -9 bytes per part of the page (data tables: marginal cost; other rows: alone, so they overlap)\n');
+  console.log('  ' + 'group'.padEnd(14) + 'part'.padEnd(52) + 'raw B'.padStart(9) + 'gzip B'.padStart(9));
+  for (const [g, n, raw, z] of rows.sort((a, b) => a[0].localeCompare(b[0]) || b[3] - a[3]).filter(r => r[3] >= 300 || r[0] === 'page'))
+    console.log('  ' + g.padEnd(14) + n.padEnd(52) + String(raw).padStart(9) + String(z).padStart(9));
+}
 for (const [name, n, max] of BUDGETS) console.log(`  budget ${name.padEnd(32)} ${String(n).padStart(9)} / ${max} (${(100 * n / max).toFixed(0)}%)`);
 for (const [name, n, max] of BUDGETS) if (n > max) die(`budget "${name}": ${n} is over the limit ${max}`);
 if (!existsSync(join(DIST, 'CNAME'))) die('dist/CNAME missing');
