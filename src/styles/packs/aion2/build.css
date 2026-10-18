@@ -59,6 +59,7 @@
 .st-later li { display: grid; grid-template-columns: auto auto; gap: var(--space-2) var(--space-8); align-items: center; }
 .st-later .sk.ghost { border-style: dashed; opacity: .75; display: inline-flex; align-items: center; gap: var(--space-6); }
 .st-later .sk.ghost .st-mini { width: 16px; height: 16px; border-radius: var(--radius-3); }
+#rotPlay img.st-mini, #rotNote img.st-mini { width: 18px; height: 18px; border-radius: var(--radius-4); object-fit: cover; margin-right: var(--space-6); vertical-align: -4px; }
 .st-later .lt-lv { font: 600 11px var(--mono); color: var(--muted); }
 .st-later .lt-where { grid-column: 1 / -1; font-size: 12px; color: var(--muted); }
 /* Phones: a slimmer Build tab so it clears the cards' right edge. */

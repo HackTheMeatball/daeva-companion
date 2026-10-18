@@ -35,19 +35,22 @@ function stLaterHTML() {
     return `<li><span class="sk ghost">${stIco(x.name, "st-mini")}${x.name}</span><span class="lt-lv">Lv ${x.lv}</span><span class="lt-where">E, row ${r}${r === 0 ? " (fires first)" : ""}${below.length ? ` · ${below.join(", ")} move${below.length === 1 ? "s" : ""} down one` : ""}</span></li>`; }).join("");
   return `<div class="st-later"><span class="khead">Coming to E</span><ul>${rows}</ul></div>`;
 }
+/* The icon (or initials) before a name: skills as in the chain, stigmas (E) with their own art. Decorative: the name is the text. */
+const ico = (n, stig) => stig ? stIco(n, "st-mini") : spMini(n);
+const nameIco = (n, stig) => ico(n, stig) + n;
 function renderRotation() {
   const lv = char(state).level, { rmb, q, e } = rotKeys(char(state), lv);
   const before = e.filter(n => n === "Illusive Clone" || n === "Swift Contract"), after = e.filter(n => !before.includes(n));
   const steps = [];
-  if (before.length) steps.push(`<b>E</b> ${before.join(" + ")}`);
-  if (q.length) steps.push(`<b>Q</b> ${spMini(q[0])}${q[0]} to get behind the target`);
-  if (after.length) steps.push(`<b>E</b> ${after.join(", then ")}`);
+  if (before.length) steps.push(`<b>E</b> ${before.map(n => nameIco(n, true)).join(" + ")}`);
+  if (q.length) steps.push(`<b>Q</b> ${nameIco(q[0])} to get behind the target`);
+  if (after.length) steps.push(`<b>E</b> ${after.map(n => nameIco(n, true)).join(", then ")}`);
   steps.push(`<b>Hold</b> right + left click`);
   document.getElementById("rotLv").textContent = `at Lv ${lv}`;
   document.getElementById("rotPlay").innerHTML = steps.map(x => `<li>${x}</li>`).join("");
   document.getElementById("rotChain").innerHTML = rmb.map((n, i) => `<li><span class="dot"></span><span>${spMini(n)}${n}</span></li>`).join("");
   const nw = rotNew(lv);
-  document.getElementById("rotNote").innerHTML = nw.length ? `<b class="rot-new">New</b> ${nw.map(x => `put <b>${x.n}</b> on ${rotWhere(x)}`).join("; ")}. The key grid below shows the full setup; closing this panel clears this note.` : "";
+  document.getElementById("rotNote").innerHTML = nw.length ? `<b class="rot-new">New</b> ${nw.map(x => `put ${ico(x.n, x.stig)}<b>${x.n}</b> on ${rotWhere(x)}`).join("; ")}. The key grid below shows the full setup; closing this panel clears this note.` : "";
   const tb = document.getElementById("sdNew"); if (tb) tb.hidden = !nw.length;
   const bt = document.getElementById("tabBuild"); if (bt) bt.classList.toggle("has-new", !!nw.length);
   if (nw.length) { const ks = document.querySelector("#statDrawer details.mini"); if (ks) ks.open = true; }
