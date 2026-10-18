@@ -756,7 +756,7 @@ Derived completions are never in the save, so there is nothing to merge for them
 |---|---|---|---|
 | Q1 | Un-ticks survive sync? | Yes: per-item change time | §13.3 |
 | Q2 | Display settings sync? | No, per device | §13.2 |
-| Q3 | Sites with unread terms | Facts with links, only where robots and terms don't forbid automated reading; Wikily, gamers4.life, aion2.app by a person or not at all; aion2.th.gl stays dropped | §5.1 `access`, `withdrawn` |
+| Q3 | Sites with unread terms | Facts with links, only where robots and terms don't forbid automated reading; Wikily, gamers4.life, aion2.app by a person or not at all; aion2.th.gl stays dropped. *Amended 2026-10-18: aion2.app and aion2t.com may get spot checks (`docs/DECISIONS.md`, `docs/research/SOURCES.md`).* | §5.1 `access`, `withdrawn` |
 | — | Metabot "non-commercial" | Site stays free of ads and donations; ask Metabot before any change (DECISIONS) | `licence.conditions` lets the build list affected records |
 | Q4 | Owner screens | Top authority; disagreements kept; cited by short code + game version | §5.4 |
 | — | Builds per class | One guide build + up to two credited alternatives | §8.1 |
