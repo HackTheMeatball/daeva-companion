@@ -1,0 +1,671 @@
+{
+  "$schema": "../../schema/stigmas.schema.json",
+  "schemaVersion": 2,
+  "collection": "stigmas",
+  "class": "ranger",
+  "records": [
+    {
+      "id": "stigma:ranger:ambush-kick",
+      "key": "Ambush Kick",
+      "name": "Ambush Kick",
+      "availableLv": 22,
+      "maxLevel": 40,
+      "specialtyChoices": [
+        {
+          "id": "spec:ranger:ambush-kick:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+5m Range"
+        },
+        {
+          "id": "spec:ranger:ambush-kick:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "10% Max HP Protective Shield for 5s on hit"
+        },
+        {
+          "id": "spec:ranger:ambush-kick:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "50% chance to inflict Stun for 3s on hit"
+        },
+        {
+          "id": "spec:ranger:ambush-kick:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+50% Stun Chance"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/ambush-kick",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 40: Metabot only (this skill page); Metabot's Ranger class page text says 25. A leveling guide does not reach it, so no owner check is asked (ranger research §4)."
+      ]
+    },
+    {
+      "id": "stigma:ranger:arrow-storm",
+      "key": "Arrow Storm",
+      "name": "Arrow Storm",
+      "availableLv": 22,
+      "maxLevel": 40,
+      "specialtyChoices": [
+        {
+          "id": "spec:ranger:arrow-storm:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "Up to +20% max damage when more targets hit"
+        },
+        {
+          "id": "spec:ranger:arrow-storm:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "Inflicts Slow for 10s on hit"
+        },
+        {
+          "id": "spec:ranger:arrow-storm:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+1s Stun duration"
+        },
+        {
+          "id": "spec:ranger:arrow-storm:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+25% Stun Chance"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/arrow-storm",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 40: Metabot only (this skill page); Metabot's Ranger class page text says 25. A leveling guide does not reach it, so no owner check is asked (ranger research §4)."
+      ]
+    },
+    {
+      "id": "stigma:ranger:assault-smite",
+      "key": "Assault Smite",
+      "name": "Assault Smite",
+      "availableLv": 22,
+      "maxLevel": 40,
+      "specialtyChoices": [
+        {
+          "id": "spec:ranger:assault-smite:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+20% Attack for 5s on hit"
+        },
+        {
+          "id": "spec:ranger:assault-smite:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "500 MP damage on hit"
+        },
+        {
+          "id": "spec:ranger:assault-smite:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+10m range"
+        },
+        {
+          "id": "spec:ranger:assault-smite:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+20% Stun Chance"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/assault-smite",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 40: Metabot only (this skill page); Metabot's Ranger class page text says 25. A leveling guide does not reach it, so no owner check is asked (ranger research §4)."
+      ]
+    },
+    {
+      "id": "stigma:ranger:bow-of-blessing",
+      "key": "Bow of Blessing",
+      "name": "Bow of Blessing",
+      "availableLv": 22,
+      "maxLevel": 40,
+      "specialtyChoices": [
+        {
+          "id": "spec:ranger:bow-of-blessing:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+50% Multi-Hit Chance for duration"
+        },
+        {
+          "id": "spec:ranger:bow-of-blessing:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "Increases Attack proportional to Critical Hit for the duration"
+        },
+        {
+          "id": "spec:ranger:bow-of-blessing:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+20% Critical Damage Boost for the duration"
+        },
+        {
+          "id": "spec:ranger:bow-of-blessing:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+7% Double Chance for the duration"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/bow-of-blessing",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 40: Metabot only (this skill page); Metabot's Ranger class page text says 25. A leveling guide does not reach it, so no owner check is asked (ranger research §4)."
+      ]
+    },
+    {
+      "id": "stigma:ranger:ensnaring-trap",
+      "key": "Ensnaring Trap",
+      "name": "Ensnaring Trap",
+      "availableLv": 22,
+      "maxLevel": 40,
+      "specialtyChoices": [
+        {
+          "id": "spec:ranger:ensnaring-trap:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "Adds [Guerilla Strike] Chain Skill"
+        },
+        {
+          "id": "spec:ranger:ensnaring-trap:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "Removes up to 2 buffs"
+        },
+        {
+          "id": "spec:ranger:ensnaring-trap:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+1s Airborne duration"
+        },
+        {
+          "id": "spec:ranger:ensnaring-trap:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "-30s cooldown"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/ensnaring-trap",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 40: Metabot only (this skill page); Metabot's Ranger class page text says 25. A leveling guide does not reach it, so no owner check is asked (ranger research §4)."
+      ]
+    },
+    {
+      "id": "stigma:ranger:explosive-arrow",
+      "key": "Explosive Arrow",
+      "name": "Explosive Arrow",
+      "availableLv": 22,
+      "maxLevel": 40,
+      "specialtyChoices": [
+        {
+          "id": "spec:ranger:explosive-arrow:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "-15s cooldown"
+        },
+        {
+          "id": "spec:ranger:explosive-arrow:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+10% additional damage to targets afflicted with Slow or Root"
+        },
+        {
+          "id": "spec:ranger:explosive-arrow:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "Critical Hit on hit"
+        },
+        {
+          "id": "spec:ranger:explosive-arrow:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+20% additional damage to targets afflicted with Slow or Root"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/explosive-arrow",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 40: Metabot only (this skill page); Metabot's Ranger class page text says 25. A leveling guide does not reach it, so no owner check is asked (ranger research §4)."
+      ]
+    },
+    {
+      "id": "stigma:ranger:griffon-arrow",
+      "key": "Griffon Arrow",
+      "name": "Griffon Arrow",
+      "availableLv": 22,
+      "maxLevel": 40,
+      "specialtyChoices": [
+        {
+          "id": "spec:ranger:griffon-arrow:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "Changes to mobile skill"
+        },
+        {
+          "id": "spec:ranger:griffon-arrow:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+5s Damage over Time duration"
+        },
+        {
+          "id": "spec:ranger:griffon-arrow:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "Enhanced Crimson Flames - Extra damage when hit while afflicted with Crimson Flames"
+        },
+        {
+          "id": "spec:ranger:griffon-arrow:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "-50% Damage over Time intervals"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/griffon-arrow",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 40: Metabot only (this skill page); Metabot's Ranger class page text says 25. A leveling guide does not reach it, so no owner check is asked (ranger research §4)."
+      ]
+    },
+    {
+      "id": "stigma:ranger:illusory-arrow",
+      "key": "Illusory Arrow",
+      "name": "Illusory Arrow",
+      "availableLv": 22,
+      "maxLevel": 40,
+      "specialtyChoices": [
+        {
+          "id": "spec:ranger:illusory-arrow:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+1s Blind duration"
+        },
+        {
+          "id": "spec:ranger:illusory-arrow:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "Changes to AoE Skill"
+        },
+        {
+          "id": "spec:ranger:illusory-arrow:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "Inflicts Slow for 5s on hit"
+        },
+        {
+          "id": "spec:ranger:illusory-arrow:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+1 consecutive use"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/illusory-arrow",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 40: Metabot only (this skill page); Metabot's Ranger class page text says 25. A leveling guide does not reach it, so no owner check is asked (ranger research §4)."
+      ]
+    },
+    {
+      "id": "stigma:ranger:mother-natures-breath",
+      "key": "Mother Nature's Breath",
+      "name": "Mother Nature's Breath",
+      "availableLv": 22,
+      "maxLevel": 40,
+      "specialtyChoices": [
+        {
+          "id": "spec:ranger:mother-natures-breath:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "Removes and grants immunity to Damage over Time effects"
+        },
+        {
+          "id": "spec:ranger:mother-natures-breath:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "x1.5 [Vigilant Eye] effect for the duration"
+        },
+        {
+          "id": "spec:ranger:mother-natures-breath:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "x1.5 [Unyielding Resolve] effect for the duration"
+        },
+        {
+          "id": "spec:ranger:mother-natures-breath:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+20% PvE Damage Tolerance increase and +10% PvP Damage Tolerance increase"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/mother-natures-breath",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 40: Metabot only (this skill page); Metabot's Ranger class page text says 25. A leveling guide does not reach it, so no owner check is asked (ranger research §4)."
+      ]
+    },
+    {
+      "id": "stigma:ranger:sealing-arrow",
+      "key": "Sealing Arrow",
+      "name": "Sealing Arrow",
+      "availableLv": 22,
+      "maxLevel": 40,
+      "specialtyChoices": [
+        {
+          "id": "spec:ranger:sealing-arrow:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "50% chance to inflict Root for 5s on hit"
+        },
+        {
+          "id": "spec:ranger:sealing-arrow:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "-1,000 enemy Max Stamina for 5s on hit"
+        },
+        {
+          "id": "spec:ranger:sealing-arrow:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+2s Seal duration"
+        },
+        {
+          "id": "spec:ranger:sealing-arrow:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+25% Seal chance"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/sealing-arrow",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 40: Metabot only (this skill page); Metabot's Ranger class page text says 25. A leveling guide does not reach it, so no owner check is asked (ranger research §4)."
+      ]
+    },
+    {
+      "id": "stigma:ranger:stealth",
+      "key": "Stealth",
+      "name": "Stealth",
+      "availableLv": 22,
+      "maxLevel": 40,
+      "specialtyChoices": [
+        {
+          "id": "spec:ranger:stealth:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "Critical Hit on attack during Stealth"
+        },
+        {
+          "id": "spec:ranger:stealth:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+20% Move Speed for the duration"
+        },
+        {
+          "id": "spec:ranger:stealth:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "Available in combat"
+        },
+        {
+          "id": "spec:ranger:stealth:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+10s Stealth duration"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/stealth",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 40: Metabot only (this skill page); Metabot's Ranger class page text says 25. A leveling guide does not reach it, so no owner check is asked (ranger research §4)."
+      ]
+    },
+    {
+      "id": "stigma:ranger:supporting-fire",
+      "key": "Supporting Fire",
+      "name": "Supporting Fire",
+      "availableLv": 22,
+      "maxLevel": 40,
+      "specialtyChoices": [
+        {
+          "id": "spec:ranger:supporting-fire:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+25% activation chance"
+        },
+        {
+          "id": "spec:ranger:supporting-fire:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+15s duration"
+        },
+        {
+          "id": "spec:ranger:supporting-fire:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "-30s cooldown"
+        },
+        {
+          "id": "spec:ranger:supporting-fire:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "Critical Hit on hit"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/supporting-fire",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 40: Metabot only (this skill page); Metabot's Ranger class page text says 25. A leveling guide does not reach it, so no owner check is asked (ranger research §4)."
+      ]
+    },
+    {
+      "id": "stigma:ranger:vaizels-authority",
+      "key": "Vaizel's Authority",
+      "name": "Vaizel's Authority",
+      "availableLv": 22,
+      "maxLevel": 40,
+      "specialtyChoices": [
+        {
+          "id": "spec:ranger:vaizels-authority:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+10% Perfect Chance for the duration"
+        },
+        {
+          "id": "spec:ranger:vaizels-authority:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "x1.5 [Focused Eye] effect for the duration"
+        },
+        {
+          "id": "spec:ranger:vaizels-authority:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "x1.5 [Hunter's Soul] effect for the duration"
+        },
+        {
+          "id": "spec:ranger:vaizels-authority:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "50% chance to reduce all skill cooldowns by 1s on Critical Hit for the duration"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/vaizels-authority",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 40: Metabot only (this skill page); Metabot's Ranger class page text says 25. A leveling guide does not reach it, so no owner check is asked (ranger research §4)."
+      ]
+    }
+  ]
+}
