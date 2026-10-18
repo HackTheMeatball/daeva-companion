@@ -50,12 +50,12 @@ Candidates came from web search results (titles and URLs only) plus the sites al
 - **Fail, terms ban bots or crawling (2 new + 2 earlier):** bluestacks.com, invenglobal.com; earlier: dbaion2.ru /
   .online, gamers4.life. aion2.app was not re-checked: its terms (read in `2026-10-data-sources.md` §10) ban scraping,
   copying and redistribution. Read on their own words that is tier 2 (spot checks), but owner decision Q3
-  (2026-10-14, `docs/DATA-FORMAT-V2.md` §14.1) says aion2.app is read "by a person or not at all", so it stays
-  **human-only** until the owner decides otherwise. It is an item/skill database, not a build guide. Its sister site **aion2t.com** (news and guides) is the same operator: same terms text dated 26 Apr 2026
+  (2026-10-14, `docs/DATA-FORMAT-V2.md` §14.1) said aion2.app is read "by a person or not at all"; the owner amended that on 2026-10-18 5:31 AM ET (spot checks,
+  never the only source), so it is **Spot**. It is an item/skill database, not a build guide. Its sister site **aion2t.com** (news and guides) is the same operator: same terms text dated 26 Apr 2026
   ("personal, non-commercial purposes only… not to: Scrape, copy, or redistribute Site content without permission"),
   terms contact `contact@aion2.app`, images and the Database link served from aion2.app; robots.txt allows all but
   `/api/`, `/admin`, `/account`, `/login` and query URLs of `/dps-top` and `/leaderboard`. Same verdict as aion2.app:
-  human-only under Q3 until the owner decides. Checked at the owner's request, 2:55 AM ET (robots.txt of both, aion2t.com home and `/terms`).
+  **Spot** under the 2026-10-18 owner decision. Checked at the owner's request, 2:55 AM ET (robots.txt of both, aion2t.com home and `/terms`).
 - **Fail, can't be read by a session (7):** aion2.gaming.tools, games.gg, mobalytics.gg, eloboost24.eu, icy-veins.com (403 challenge),
   thegameswiki.com (429 Vercel checkpoint), timesaver.gg (connection reset twice).
 - **Never fetched by rule:** aion2.th.gl, Game8.

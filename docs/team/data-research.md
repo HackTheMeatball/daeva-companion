@@ -4,7 +4,8 @@
 Confidence cards, and re-checks after game patches.
 
 **Source policy** (CLAUDE.md is authoritative): two independent sources, or game-database fields (Metabot quest/skill
-pages, aion2.gaming.tools, aion2.th.gl; Metabot and Wikily count as one), or the owner's in-game screens. Otherwise
+pages, aion2.gaming.tools read by the owner in a browser; Metabot and Wikily count as one; aion2.th.gl is never a
+source, see below), or the owner's in-game screens. Otherwise
 leave it out or label it *single source* / *inferred* / *disputed*. thegameswiki: facts only, never wording. No Game8.
 
 **Standing checklist**
@@ -36,6 +37,7 @@ leave it out or label it *single source* / *inferred* / *disputed*. thegameswiki
 - Research sessions run in the "Research (open web)" environment (Full network); code, review and docs sessions in "Daeva Companion" (custom allowed sites). The plain "Default" environment is unused.
 
 ## Standing notes
-- aion2.gaming.tools and thegameswiki often block scripted reads; aion2.th.gl and metabot.gg usually work via curl.
+- aion2.gaming.tools (403) and thegameswiki (429) block scripted reads: owner browser only (`docs/research/SOURCES.md`).
+  metabot.gg usually works via curl.
 - Ascension quests (Asmodian, Lv 1–45): Perceives (5), Hears the Voice (22), Dreams (32), Witnesses the Nightmare (45);
   Swears the Oath is 49 (beyond the cap). "Daeva Trapped in a Nightmare" (Lv 45 story) is not yet in our story data.
