@@ -6,6 +6,7 @@ import { STIGMA_ICON, STIGMA_PLAN, ST_COST, ST_TARGETS } from "../data/build.js"
 import { eputK } from "../catalog.js";
 import { shardsFromLv, slotLevelMet, stigmaEquipOpen } from "../requirements.js";
 import { stTip } from "./shared.js";
+import { wireTerms } from "../terms.js";
 import { aion2State as state, aion2Save as save, aion2Update as update, aion2RenderNow as renderNow, aion2FitSkills as fitSkills, aion2FadeScroll as fadeScroll, aion2RewardToast as rewardToast, aion2Chime as chime, aion2StIco as stIco, aion2MainEl as mainEl, aion2STIGMA_SLOTS as STIGMA_SLOTS, aion2StPlan as stPlan, aion2StLvOf as stLvOf } from "./page.js";
 
 /* Stigma card: the four slots from the milestones (22 / 27 / 32 / 37). Ticking "equipped" here is the same tick as the
@@ -97,6 +98,7 @@ function stOtherDone(f, keep) { if (!f || !f.isConnected) return; const v = f.va
 /* the card's buttons, the pick, the shards box (from render(), once; the Next up pop-out adds the click handlers to
    its own document) */
 function aion2StigmasMount() {
+  wireTerms(document.getElementById("stCard"));
   document.addEventListener("keydown", e => { const f = e.target.closest && e.target.closest("[data-stother]"); if (!f) return; if (e.key === "Enter") { e.preventDefault(); stOtherDone(f, true); } else if (e.key === "Escape") stOtherDone(f, false); });
   document.addEventListener("focusout", e => { const f = e.target.closest && e.target.closest("[data-stother]"); if (f) setTimeout(() => stOtherDone(f, true), 0); });
   [stTickClick, stUpClick, stLvClick].forEach(f => document.addEventListener("click", f));

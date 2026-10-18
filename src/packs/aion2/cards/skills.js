@@ -8,6 +8,7 @@ import { spCostTxt } from "../catalog.js";
 import { planReachOf, skillBonusOf, skillBuy, skillLvOf, skillOpen, skillPoints } from "../requirements.js";
 import { tipPop } from "./shared.js";
 import { keyChip } from "../hotkeys.js";
+import { wireTerms } from "../terms.js";
 import { renderCollection } from "./progress.js";
 import { renderRotation } from "./build.js";
 import { renderDaevanion } from "./daevanion.js";
@@ -94,6 +95,7 @@ const bonusTip = x => `+${x} skill level${x === 1 ? "" : "s"} from your ticked D
 const spBonus = n => { const x = skillBonusOf(char(state), n); return x ? ` <span class="spbonus" title="${bonusTip(x)}">(+${x})</span>` : ""; };
 /* Sync levels, the stones box, the hero's button (from render(), once) */
 function aion2SkillsMount() {
+  wireTerms(document.getElementById("spCard"));
   /* Sync: set each plan skill's level from the game; ticks lines up to that level and unticks the rest.
      Specialty picks are left as they are. Points are not changed (the game's own counter is the truth). */
   const syncGrid = document.getElementById("syncGrid");

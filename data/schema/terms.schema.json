@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/terms.schema.json",
+  "title": "Game terms explained (packs/<game>/terms.json)",
+  "description": "0.6 P18: a game word the guide uses and one sentence that explains it, in our own words, each from two sources or the owner's screens (status verified; tools/gen/gen.mjs checks it). Compiled to TERMS; a card marks the term's first use with data-term=\"<id>\" (docs/design/0.6-onboarding-mockup.md §1.4).",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "terms"
+    },
+    "records": {
+      "type": "array",
+      "maxItems": 12,
+      "items": {
+        "$ref": "#/$defs/term"
+      }
+    }
+  },
+  "$defs": {
+    "term": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/provenance"
+        }
+      ],
+      "required": [
+        "id",
+        "term",
+        "text"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^term:[a-z0-9-]+$"
+        },
+        "term": {
+          "description": "The word as the guide writes it.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "text": {
+          "description": "One sentence, at most 140 characters, our own words (never a source's wording).",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 140,
+          "pattern": "^[^.!?]+[.!?]$"
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  },
+  "type": "object"
+}

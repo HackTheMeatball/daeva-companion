@@ -1,0 +1,8 @@
+[
+  { "case": "t1-skills-daevanion-advanced-390", "kind": "before-after", "title": "A term explained on a phone",
+    "caption": "The first \"Daevanion\" on the Skills card has a dotted underline and a small ?; tapping it opens one sentence right under the line." },
+  { "case": "dt1-skills-specialty-advanced-1500", "kind": "before-after", "title": "A term explained on desktop",
+    "caption": "On desktop hover or focus opens it too and a click keeps it open; here \"specialty\" says what a specialty is and when its slots open." },
+  { "case": "stigmas-stigma-advanced-390", "kind": "before-after", "title": "Stigma explained",
+    "caption": "The Stigmas card's Slots marks \"stigma\" the same way: how you learn one and the four slot levels." }
+]
