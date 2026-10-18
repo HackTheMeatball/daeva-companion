@@ -100,6 +100,11 @@ const checkReport = (label, m, want) => {
     await p.reload(); await p.waitForTimeout(700);
     const off = await p.evaluate(() => ({ cards: document.querySelectorAll('#nowStar .ns-card').length, lv: char(state).level, broken: [...document.images].filter(i => i.complete && i.naturalWidth === 0 && i.getAttribute('src')).length }));
     ok('offline: the app shell, icons and saved progress load from the cache', off.cards > 0 && off.lv === 27 && off.broken === 0, off);
+    /* 0.6 P2: the class's own tables are a file of their own (dist/packs/<id>.<hash>.js), precached */
+    const offChunk = await p.evaluate(() => ({ pack: self.DAEVA_PACK, pack2: char(state).pack, tables: !!self.DAEVA_CLASS && Object.keys(self.DAEVA_CLASS).length,
+      file: performance.getEntriesByType('resource').map(e => new URL(e.name).pathname).filter(x => /\/packs\/[\w.-]+\.js$/.test(x)), html: [...document.scripts].filter(s => s.src).map(s => new URL(s.src).pathname) }));
+    ok('offline: the current character\'s class chunk (packs/<id>.<hash>.js) loads from the service worker cache', offChunk.pack === offChunk.pack2 && offChunk.tables > 0 && offChunk.file.length === 1
+      && offChunk.html.some(x => x === offChunk.file[0]) && fs.readFileSync(path.join(CFG.ROOT, 'dist', 'sw.js'), 'utf8').includes(`"${offChunk.file[0].slice(1)}"`), offChunk);
     await ctx.setOffline(false);
     ok('no page errors, failed requests or 4xx/5xx (the blocked font files aside)', !errs.length && !bad.length, { errs, bad });
     const third = reqs.filter(u => !u.startsWith(CFG.BASE + '/') && !/^(data|blob):/.test(u));
@@ -317,7 +322,11 @@ const checkReport = (label, m, want) => {
     const ids = [...art.matchAll(/\/_blob\/([0-9a-f]{32})/g)].map(x => x[1]), known = new Set(Object.values(blobs).filter(Boolean));
     ok('artifact build: every icon is a known /_blob/ id, no relative icon paths', ids.length >= known.size && ids.every(i => known.has(i)) && [...known].every(i => ids.includes(i)) && !/assets\/icons\//.test(art), ids.length);
     /* Icons with no blob id yet (null: added after the artifact was frozen) ship on the site only; the artifact shows initials. */
-    const noBlob = Object.keys(blobs).filter(n => blobs[n] === null), web = fs.readFileSync(path.join(CFG.ROOT, 'dist', 'index.html'), 'utf8');
+    /* the site build: dist/index.html and its class chunks (0.6 P2: the class tables, skill icons among them, ship in dist/packs/) */
+    const chunkFiles = fs.readdirSync(path.join(CFG.ROOT, 'dist', 'packs')).filter(f => f.endsWith('.js'));
+    const noBlob = Object.keys(blobs).filter(n => blobs[n] === null), web = [path.join(CFG.ROOT, 'dist', 'index.html'), ...chunkFiles.map(f => path.join(CFG.ROOT, 'dist', 'packs', f))].map(f => fs.readFileSync(f, 'utf8')).join('\n');
+    ok('artifact build: one file with every class chunk inlined (no script src, no fetch of dist/packs/)', chunkFiles.length > 0 && !/<script[^>]* src=|packs\/[\w.-]+\.js/.test(art)
+      && chunkFiles.every(f => { const id = fs.readFileSync(path.join(CFG.ROOT, 'dist', 'packs', f), 'utf8').match(/^self\.DAEVA_PACK==="([\w/-]+)"/); return id && art.includes(`self.DAEVA_PACK==="${id[1]}"&&(self.DAEVA_CLASS=`); }), chunkFiles);
     ok('artifact build: icons without a blob id are on the site build and in dist/assets/icons, absent from the artifact', noBlob.every(n => web.includes(`assets/icons/${n}.png`) && fs.existsSync(path.join(CFG.ROOT, 'dist', 'assets', 'icons', n + '.png')) && !art.includes(n + '.png')), noBlob);
     ok('artifact build: no service worker, manifest, canonical or document skeleton', !/serviceWorker|manifest\.webmanifest|rel="canonical"|<!doctype|<head>|<body>/i.test(art) && art.startsWith('<title>'));
     const ctx = await b.newContext({ viewport: { width: 1500, height: 1000 } });

@@ -1,6 +1,7 @@
 /* Pack conformance (0.4 P6, docs/plans/0.4/P6-fake-pack.md): what every pack chain passes, run for the AION 2 Assassin chain
-   and for a fake game (tests/fixtures/packs/fakegame/: a game pack and a guide pack, three story quests, one milestone
-   with two steps, one source site). "The engine holds no AION 2" is proved by running it on a game that isn't AION 2.
+   and for a fake game (tests/fixtures/packs/fakegame/: a game pack with three story quests and one source site, and two
+   guide packs, i.e. two classes, each one milestone with two steps). "The engine holds no AION 2" is proved by running it
+   on a game that isn't AION 2.
      1. the generator (tools/gen/gen.mjs generate({ root, pack }), the CLI's --root / --pack) builds it with 0 failed
         checks: engine checks for every pack, a pack's own checks only where its manifests declare them (P6a);
      2. a fresh v5 save through memoryStorage: Lv 1 on the first story quest;
@@ -8,7 +9,10 @@
         Next up on; the gated step (the first step whose gate waits on a quest being turned in) stays out until then;
      4. save, reload, merge() with itself: unchanged;
      5. the fake chain (the engine, src/core/ and src/cards/, plus the fake pack's code) loads no module of a pack
-        under src/packs/ (esbuild's import graph).
+        under src/packs/ (esbuild's import graph);
+     6. per-class loading (0.6 P2): generateAll() compiles the two classes to two table sets and two chunks, the game's
+        tables once; a page state (shared tables + the loader's chunk) for one class holds none of the other's records,
+        and the second class's chain passes steps 2-4 on its own engine.
    The AION 2 chain runs on M (tests/support/core-bundle.mjs, the bundle the core suite tests); the fake chain on a bundle
    of its own built here, so the two packs never share an engine instance. Node only: the fake game has no page build. */
 import { cpSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
@@ -17,7 +21,8 @@ import { dirname, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import assert from 'node:assert/strict';
 import { build } from 'esbuild';
-import { generate } from '../../tools/gen/gen.mjs';
+import { runInNewContext } from 'node:vm';
+import { classChunk, generate, generateAll } from '../../tools/gen/gen.mjs';
 import { DEFAULT_PACK, DEFAULT_ROOT } from '../../tools/gen/packs.mjs';
 import { generatedData } from '../../scripts/generated-data.mjs';
 
@@ -33,20 +38,23 @@ const gen = opts => { try { const g = generate(opts); return { g, failed: g.fail
    planted engine import of src/packs/aion2/ still builds and shows up in the import graph (step 5) instead of failing
    the build. Returns the namespace and the bundle's inputs (paths relative to the repo, virtual modules as "ns:path"). */
 const fakeGen = gen({ root: FAKE_ROOT, pack: FAKE_PACK });
-const fakeData = { name: 'fakegame-data', setup(b) {
+/* the fake game's second class (0.6 P2): its own guide pack on the same game pack */
+const FAKE_PACK_B = 'fakegame/guide-b', fakeGenB = gen({ root: FAKE_ROOT, pack: FAKE_PACK_B });
+const fakeData = g => ({ name: 'fakegame-data', setup(b) {
   b.onResolve({ filter: /^fakegame:data$/ }, () => ({ path: 'data', namespace: 'fakegame' }));
-  b.onLoad({ filter: /.*/, namespace: 'fakegame' }, () => ({ contents: fakeGen.g.module + fakeGen.g.gateModule + fakeGen.g.proposedModule, loader: 'js' }));
-} };
-const fakeBundle = async () => {
+  b.onLoad({ filter: /.*/, namespace: 'fakegame' }, () => ({ contents: g.module + g.gateModule + g.proposedModule, loader: 'js' }));
+} });
+const fakeBundle = async (g = fakeGen.g) => {
   const js = d => readdirSync(join(ROOT, 'src', d)).filter(f => f.endsWith('.js')).sort().map(f => `export * from "./${d}/${f}";`);
   const ENTRY = [...js('core'), ...js('cards'),
     `import { fakegamePack } from ${JSON.stringify(FAKE_CODE)};`, 'import { usePack as __usePack } from "./core/pack.js";', '__usePack(fakegamePack);'].join('\n');
   const r = await build({ stdin: { contents: ENTRY, resolveDir: join(ROOT, 'src'), loader: 'js', sourcefile: 'fakegame-entry.js' }, absWorkingDir: ROOT,
-    bundle: true, write: false, metafile: true, format: 'esm', platform: 'neutral', treeShaking: false, logLevel: 'silent', plugins: [fakeData, generatedData] });
+    bundle: true, write: false, metafile: true, format: 'esm', platform: 'neutral', treeShaking: false, logLevel: 'silent', plugins: [fakeData(g), generatedData] });
   const inputs = Object.keys(r.metafile.inputs).map(p => /^[\w-]+:/.test(p) ? p : relative(ROOT, resolve(ROOT, p)).split(sep).join('/'));
   return { E: await import('data:text/javascript;base64,' + Buffer.from(r.outputFiles[0].text).toString('base64')), inputs };
 };
 const FAKE = fakeGen.g ? await fakeBundle() : null;
+const FAKE_B = fakeGenB.g ? await fakeBundle(fakeGenB.g) : null;
 
 /* The shell's "Turned in" (src/main.js), the part the engine sees: every objective done, then the next quest, or
    storyEnd on the last one. */
@@ -163,5 +171,41 @@ export default (test, M) => {
     const packs = FAKE.inputs.filter(p => p.startsWith('src/packs/') || p.startsWith('generated:'));
     assert.deepEqual(packs, [], `${packs.length} pack module(s) loaded: ${packs.slice(0, 4).join(', ')}`);
     assert.ok(FAKE.inputs.includes('tests/fixtures/packs/fakegame/fakegame.js') && FAKE.inputs.includes('src/core/nextup.js'), JSON.stringify(FAKE.inputs));
+  });
+
+  /* ---------- per-class loading (0.6 P2): the fake game's two classes (guide packs fakegame/guide and fakegame/guide-b) ---------- */
+  const C = 'conformance [fakegame, two classes]';
+  const all = (() => { try { return generateAll({ root: FAKE_ROOT }); } catch (e) { return { error: e.message }; } })();
+  const sharedOf = id => Object.fromEntries(all.shared.map(n => [n, all.tables[id][n]]));
+  test(`${C} 6: the generator compiles one table set per class pack, keyed by pack id; the game pack's tables once`, () => {
+    assert.equal(all.error, undefined);
+    assert.deepEqual(all.packs, [FAKE_PACK, FAKE_PACK_B]);
+    assert.deepEqual(all.failed, []);
+    assert.ok(['QUESTS', 'QUEST_STEPS', 'STORY_END'].every(n => all.shared.includes(n)), JSON.stringify(all.shared));
+    assert.ok(['GUIDE_GATES', 'GATE_GRAPH', 'GATE_PROPOSED'].every(n => all.perClass.includes(n)), JSON.stringify(all.perClass));
+    assert.deepEqual(sharedOf(FAKE_PACK), sharedOf(FAKE_PACK_B), 'a shared table is the same for both classes');
+  });
+  test(`${C} 6: the two classes compile to two chunks, each holding its own records only; the shared tables hold neither`, () => {
+    const [a, b] = all.packs.map(id => classChunk(all, id));
+    assert.notEqual(a, b);
+    assert.ok(a.includes('"f2:0"') && !/"g3[:"]/.test(a), 'chunk A: f2 steps, no g3');
+    assert.ok(b.includes('"g3:0"') && !/"f2[:"]/.test(b), 'chunk B: g3 steps, no f2');
+    assert.ok(!/"(f2|g3)[:"]/.test(JSON.stringify(sharedOf(FAKE_PACK))), 'no class record in the shared tables');
+  });
+  test(`${C} 6: with every chunk on the page (the claude.ai build), the loader's choice sets one class: a page state for class A never contains class B's records`, () => {
+    for (const [id, own, other] of [[FAKE_PACK, 'f2', 'g3'], [FAKE_PACK_B, 'g3', 'f2']]) {
+      const self = { DAEVA_PACK: id };
+      for (const p of all.packs) runInNewContext(classChunk(all, p), { self });
+      const page = JSON.stringify({ shared: sharedOf(id), cls: self.DAEVA_CLASS });
+      assert.ok(self.DAEVA_CLASS && page.includes(`"${own}:0"`) && !new RegExp(`"${other}[:"]`).test(page), `${id}: ${page.slice(0, 200)}`);
+    }
+  });
+  if (!FAKE_B) return;
+  runChain(test, `conformance [${FAKE_PACK_B}]`, FAKE_B.E);
+  test(`${C} 6: each class's engine runs on its own steps only`, () => {
+    const keys = E => Object.keys(E.activePack().data.graph.nodes).join(' ');
+    assert.ok(/\bf2:0\b/.test(keys(FAKE.E)) && !/\bg3:/.test(keys(FAKE.E)), keys(FAKE.E));
+    assert.ok(/\bg3:0\b/.test(keys(FAKE_B.E)) && !/\bf2:/.test(keys(FAKE_B.E)), keys(FAKE_B.E));
+    assert.deepEqual(FAKE_B.E.activePack().data.graph, all.tables[FAKE_PACK_B].GATE_GRAPH);
   });
 };

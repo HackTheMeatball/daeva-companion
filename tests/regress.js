@@ -9,7 +9,8 @@ const CUR = CFG.CUR;
 const { writeSave, flatFixture } = require('./support/save');
 const QUICK = process.argv.includes('--quick'), NOSHOTS = process.argv.includes('--noshots');
 const J = p => JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8'));
-const SRC = fs.readFileSync(CFG.PAGE, 'utf8');
+/* the page source: dist/index.html and its class chunks (0.6 P2: the guide's text is in dist/packs/) */
+const SRC = [CFG.PAGE, ...fs.readdirSync(path.join(path.dirname(CFG.PAGE), 'packs')).map(f => path.join(path.dirname(CFG.PAGE), 'packs', f))].map(f => fs.readFileSync(f, 'utf8')).join('\n');
 const V1 = require('./support/v1view'), RQD = V1.rq, CH = V1.chains; /* the v1-shaped view of data/** (0.2 step 5b) */
 fs.mkdirSync(SHOTS, { recursive: true });
 const results = []; let hardFail = 0, softFail = 0;

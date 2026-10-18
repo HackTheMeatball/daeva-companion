@@ -9,7 +9,8 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { generate } from '../tools/gen/gen.mjs';
+import { classChunk as chunkOf, generate, generateAll } from '../tools/gen/gen.mjs';
+import { DEFAULT_PACK } from '../tools/gen/packs.mjs';
 import { dataFiles } from '../tools/gen/validate.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -38,7 +39,21 @@ export const unusedTables = () => {
 };
 export const pruneTables = names => { pruned = new Set(names); };
 const srcFiles = () => { const walk = d => readdirSync(d, { withFileTypes: true }).flatMap(e => e.isDirectory() ? walk(join(d, e.name)) : /\.(js|html)$/.test(e.name) ? [join(d, e.name)] : []); return walk(P('src')); };
-const served = text => !dropped.size && !pruned.size ? text : text.replace(/^export const (\w+) = .*;\n?/gm, (line, n) => pruned.has(n) ? '' : dropped.has(n) ? `export const ${n} = null;\n` : line);
+const served = text => !dropped.size && !pruned.size && !perClass.size ? text : text.replace(/^export const (\w+) = .*;\n?/gm, (line, n) => pruned.has(n) ? '' : dropped.has(n) ? `export const ${n} = null;\n`
+  : perClass.has(n) ? `export const ${n} = DAEVA_CLASS.${n};\n` : line);
+/* Per-class loading (0.6 P2, tools/gen/gen.mjs generateAll): every guide pack compiled on its own. The page build calls
+   splitClasses(): the modules then serve a per-class table as `export const X = DAEVA_CLASS.X;` (a page global the class
+   chunk sets) and classChunk(id) is that class's tables as one classic script, which sets DAEVA_CLASS only when the
+   loader chose it (self.DAEVA_PACK). The Node core tests don't split, so they still see every table's value. */
+let all = null, perClass = new Set();
+export const genAll = () => {
+  if (all) return all;
+  const a = generateAll({ done: { [DEFAULT_PACK]: genResult() } });
+  if (a.failed.length) throw new Error(`data checks failed (${a.failed.length}): ` + a.failed.slice(0, 5).map(c => `${c.pack}: ${c.check}`).join('; ') + ' (run npm run gen)');
+  return (all = a);
+};
+export const splitClasses = () => { perClass = new Set(genAll().perClass); };
+export const classChunk = id => chunkOf(genAll(), id, { omit: pruned, nulls: dropped });
 /* The tables of generated.js are served in name order (0.6 P1). They are independent `export const` lines, so the order is
    free; gzip only matches text within 32 KB, and of the orders tried (generator, name, size up, size down) this one came out
    smallest. Re-check with `node scripts/build.mjs --sizes` if a data change moves the page gzip size by more than ~100 B. */

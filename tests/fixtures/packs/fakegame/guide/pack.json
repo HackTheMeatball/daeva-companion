@@ -1,2 +1,2 @@
-{ "$schema": "../../../../../data/schema/pack.schema.json", "schemaVersion": 2, "id": "fakegame/guide", "kind": "guide", "name": "Fake game guide", "parent": "fakegame",
-  "files": ["story-quests.json", "milestones.json", "steps.json"] }
+{ "$schema": "../../../../../data/schema/pack.schema.json", "schemaVersion": 2, "id": "fakegame/guide", "kind": "guide", "name": "Fake game guide (class A)", "parent": "fakegame",
+  "files": ["milestones.json", "steps.json"] }

@@ -1,5 +1,6 @@
 /* Service worker for the standalone site (never part of the claude.ai build).
-   scripts/build.mjs fills in the build id (content hash) and the precache list (app shell, icons, fonts).
+   scripts/build.mjs fills in the build id (content hash) and the precache list (app shell, icons, fonts, and the class
+   chunks packs/<id>.<hash>.js, 0.6 P2, so the page loads its class offline after the first visit).
    - index.html / navigations to the app: network first, cached copy when offline.
    - other same-origin files: cache first (the cache is replaced as a whole when the build changes).
    - Nothing cross-origin is handled: the fonts are served from this site since 0.1.5. */

@@ -1,0 +1,6 @@
+{ "$schema": "../../../../../data/schema/steps.schema.json", "schemaVersion": 2, "collection": "steps", "records": [
+  { "id": "g3:0", "key": "g3:0", "milestone": "g3", "order": 10, "text": "<b>Climb the tower.</b>",
+    "requires": { "all": [{ "level": 3, "basis": "rule" }, { "story": "sq:10003", "is": "reached", "basis": "rule" }] }, "completesWith": ["tick"] },
+  { "id": "g3:1", "key": "g3:1", "milestone": "g3", "order": 20, "text": "<b>Raise the flag.</b>",
+    "requires": { "all": [{ "level": 3, "basis": "rule" }, { "story": "sq:10002", "is": "turnedIn", "basis": "rule" }] }, "completesWith": ["tick"] }
+] }
