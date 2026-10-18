@@ -8,7 +8,7 @@
       "id": "class:ranger",
       "class": "ranger",
       "name": "Ranger",
-      "release": "hidden",
+      "release": "released",
       "defaultBuild": "build:ranger:guide",
       "sources": [
         {
@@ -23,7 +23,7 @@
       "verifiedAt": "2026-10-18",
       "status": "verified",
       "notes": [
-        "Hidden until 0.6 P5 adds its guide pack (data/packs/aion2/asmodian/ranger/, which defines build:ranger:guide) and lists it in the class picker."
+        "Released in 0.6 P5 (#264): its guide pack (data/packs/aion2/asmodian/ranger/) defines build:ranger:guide and the class picker lists it."
       ]
     }
   ]

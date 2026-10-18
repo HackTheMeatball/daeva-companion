@@ -6,7 +6,7 @@
 import { cpSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { ROOT, validateAll, validateDoc } from '../tools/gen/validate.mjs';
-import { dataSourcesMd, generate } from '../tools/gen/gen.mjs';
+import { dataSourcesMd, generate, guidePacks } from '../tools/gen/gen.mjs';
 
 let n = 0, fail = 0;
 const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' : 'FAIL ') + name + (!c && d !== undefined ? '  · ' + JSON.stringify(d).slice(0, 900) : '')); if (!c) fail++; };
@@ -75,7 +75,10 @@ let g = null;
 try { g = generate(); } catch (e) { ok('generator runs', false, e.message); }
 if (g) {
   ok(`generator: ${g.report.checks.length} cross-record checks pass`, !g.failed.length, g.failed.slice(0, 10));
-  ok('data/DATA_SOURCES.md is current (npm run gen)', readFileSync(join(ROOT, 'data/DATA_SOURCES.md'), 'utf8') === dataSourcesMd(g));
+  /* 0.6 P5: it lists every guide pack's pages (the Ranger's too) */
+  const otherIds = guidePacks().filter(id => id !== 'aion2/asmodian/assassin'), others = otherIds.map(id => generate({ pack: id }));
+  ok('data/DATA_SOURCES.md is current (npm run gen)', readFileSync(join(ROOT, 'data/DATA_SOURCES.md'), 'utf8') === dataSourcesMd(g, others));
+  others.forEach((o, i) => ok(`guide pack ${otherIds[i]}: ${o.report.checks.length} cross-record checks pass`, !o.failed.length, o.failed.slice(0, 10)));
   /* proposals never reach the page's data module: it is byte-identical without them (0.2 behaviour unchanged) */
   let g0 = null; try { g0 = generate({ dropProposed: true }); } catch (e) { ok('generator runs without proposals', false, e.message); }
   if (g0) ok(`proposed 0.3 gates are not in the data module: identical without the ${g.report.proposed.length} proposals`, g0.module === g.module && g.report.proposed.length > 0);
@@ -192,10 +195,12 @@ if (g) {
     && glColl('stigmas.json') === 13 && glColl('board-nodes.json') === 537 && g.report.checks.some(x => x.check.startsWith('aion2/classes/gladiator: board:triniel: 117 nodes')), gl && [glColl('skills.json'), glColl('board-nodes.json')]);
   const glWords = /gladiator|Keen Strike|Lunge Stance|Zikel's Blessing|110113/i, glIn = [g.module, g.gateModule, g.proposedModule, g.placeModule].filter(m => glWords.test(m)).map(m => m.match(glWords)[0]);
   ok('the Assassin bundle carries no Gladiator record (generated, gate, proposed and place modules)', !glIn.length, glIn);
-  /* 0.6 P22: the Ranger class pack, the same way (quest text names NPC Rangers, so the leak check matches record ids and skill names) */
-  const rg = (g.idle || []).find(x => x.pack === 'aion2/classes/ranger'), rgColl = f => rg ? rg.all.filter(x => x.file.endsWith('/' + f)).length : 0;
-  ok('idle class pack aion2/classes/ranger: 1 class, 22 skills, 13 stigmas, 537 board nodes, checked by the generator', !!rg && rgColl('class.json') === 1 && rgColl('skills.json') === 22
-    && rgColl('stigmas.json') === 13 && rgColl('board-nodes.json') === 537 && g.report.checks.some(x => x.check.startsWith('aion2/classes/ranger: board:triniel: 117 nodes')), rg && [rgColl('skills.json'), rgColl('board-nodes.json')]);
+  /* 0.6 P22 added the Ranger class pack idle; 0.6 P5 gave it its guide pack (aion2/asmodian/ranger), so it is no longer idle
+     and compiles through that guide's own chain. The leak check below still holds: the Assassin bundle carries none of it
+     (quest text names NPC Rangers, so it matches record ids and skill names). */
+  const rgG = others[otherIds.indexOf('aion2/asmodian/ranger')], rgColl = f => rgG ? rgG.all.filter(x => x.file.startsWith('data/packs/aion2/classes/ranger/') && x.file.endsWith('/' + f)).length : 0;
+  ok('the Ranger class pack is no longer idle; its guide pack compiles 1 class, 22 skills, 13 stigmas, 537 board nodes', !(g.idle || []).some(x => x.pack === 'aion2/classes/ranger') && !!rgG
+    && rgColl('class.json') === 1 && rgColl('skills.json') === 22 && rgColl('stigmas.json') === 13 && rgColl('board-nodes.json') === 537, [rgColl('skills.json'), rgColl('board-nodes.json')]);
   const rgWords = /(class|skill|stigma|spec|node|build):ranger\b|Tempest Shot|Hunter's Soul|Vaizel's Authority|Bow of Blessing/i, rgIn = [g.module, g.gateModule, g.proposedModule, g.placeModule].filter(m => rgWords.test(m)).map(m => m.match(rgWords)[0]);
   ok('the Assassin bundle carries no Ranger record (generated, gate, proposed and place modules)', !rgIn.length, rgIn);
   const GL = 'aion2/classes/gladiator', editJson = (root, f, fn) => { const p = join(root, GL, f), d = JSON.parse(readFileSync(p, 'utf8')); fn(d); writeFileSync(p, JSON.stringify(d)); };

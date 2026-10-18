@@ -1,0 +1,47 @@
+{
+  "$schema": "../../../schema/confidence.schema.json",
+  "schemaVersion": 2,
+  "collection": "confidence",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "conf:core-order",
+      "group": "single-source",
+      "order": 180,
+      "text": "Ranger skill points (Snipe, Tempest Shot, Marking Shot, Drill Dart, Gale Arrow, Burst Arrow, Deadshot, Focused Eye, Hunter's Resolve to 10; {skillOrderSingle} after them): Metabot's leveling build. The order between them is its list order.",
+      "placeholders": [
+        "skillOrderSingle"
+      ]
+    },
+    {
+      "id": "conf:first-nodes",
+      "group": "single-source",
+      "order": 185,
+      "text": "First Daevanion nodes (Nezekan's Hunter's Resolve and Focused Eye pairs, then Zikel's Rooting Eye and Hunter's Soul): Metabot's Ranger page."
+    },
+    {
+      "id": "conf:learn-levels",
+      "group": "verified",
+      "order": 45,
+      "text": "Ranger learn levels (Marking Shot 3, Burst Arrow 10, Deadshot 14 and the rest): Metabot's skill pages (game data)."
+    },
+    {
+      "id": "conf:stat-tiers",
+      "group": "single-source",
+      "order": 186,
+      "text": "Stat priority (Attack, Critical Hit, Accuracy Bonus): Metabot's Ranger page and class-builds guide (one site)."
+    },
+    {
+      "id": "conf:stigma-plan",
+      "group": "single-source",
+      "order": 187,
+      "text": "Stigmas Vaizel's Authority, Bow of Blessing, Supporting Fire, Griffon Arrow, raised to 8 / 7 / 5 / 4: Metabot's leveling build, its top players and its class-builds guide agree (one site)."
+    },
+    {
+      "id": "conf:stigmas",
+      "group": "verified",
+      "order": 40,
+      "text": "Stigma slots 22 / 27 / 32 / 37; every stigma learnable at 22; shard cost per level (Metabot, allthings.how)."
+    }
+  ]
+}

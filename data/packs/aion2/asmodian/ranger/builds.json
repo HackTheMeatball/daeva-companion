@@ -1,0 +1,401 @@
+{
+  "$schema": "../../schema/builds.schema.json",
+  "schemaVersion": 2,
+  "collection": "builds",
+  "class": "ranger",
+  "records": [
+    {
+      "id": "build:ranger:guide",
+      "class": "ranger",
+      "name": "Guide build",
+      "origin": "guide",
+      "statPriority": {
+        "tiers": [
+          [
+            "Attack"
+          ],
+          [
+            "Critical Hit"
+          ],
+          [
+            "Accuracy Bonus"
+          ]
+        ],
+        "from": {
+          "Attack": "BG",
+          "Critical Hit": "BG",
+          "Accuracy Bonus": "G"
+        },
+        "status": "single-source",
+        "sources": [
+          {
+            "url": "https://metabot.gg/en/aion-2/classes/ranger",
+            "checkedAt": "2026-10-18"
+          },
+          {
+            "url": "https://metabot.gg/en/aion-2/guides/class-builds-guide",
+            "checkedAt": "2026-10-18"
+          }
+        ],
+        "note": "Metabot's class page (Attack, Critical Hit, Accuracy Bonus, Evasion Bonus, HP) and its class-builds guide (same top three) are one site: single source (claim C50). Only the top three are shown. from: B = board stat nodes / corners, G = gear (guide's reading of the board's stat labels)."
+      },
+      "skillOrder": [
+        {
+          "skill": "skill:ranger:snipe",
+          "core": true,
+          "status": "single-source",
+          "basis": "Metabot leveling build (to Lv 10)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/ranger/build",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:ranger:tempest-shot",
+          "core": true,
+          "status": "single-source",
+          "basis": "Metabot leveling build (to Lv 10)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/ranger/build",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:ranger:marking-shot",
+          "core": true,
+          "status": "single-source",
+          "basis": "Metabot leveling build (to Lv 10)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/ranger/build",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:ranger:drill-dart",
+          "core": true,
+          "status": "single-source",
+          "basis": "Metabot leveling build (to Lv 10)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/ranger/build",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:ranger:gale-arrow",
+          "core": true,
+          "status": "single-source",
+          "basis": "Metabot leveling build (to Lv 10)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/ranger/build",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:ranger:burst-arrow",
+          "core": true,
+          "status": "single-source",
+          "basis": "Metabot leveling build (to Lv 10)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/ranger/build",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:ranger:deadshot",
+          "core": true,
+          "status": "single-source",
+          "basis": "Metabot leveling build (to Lv 10)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/ranger/build",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:ranger:focused-eye",
+          "core": true,
+          "status": "single-source",
+          "basis": "Metabot leveling build (to Lv 10)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/ranger/build",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:ranger:hunters-resolve",
+          "core": true,
+          "status": "single-source",
+          "basis": "Metabot leveling build (to Lv 10)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/ranger/build",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:ranger:snare-shot",
+          "core": false,
+          "status": "single-source",
+          "basis": "Metabot leveling build (Snare Shot to Lv 7)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/ranger/build",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:ranger:concentrated-fire",
+          "core": false,
+          "status": "single-source",
+          "basis": "Metabot leveling build (Concentrated Fire to Lv 5)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/ranger/build",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        }
+      ],
+      "skillOrderNotes": {
+        "interleave": "Metabot lists skill targets, not a training order (docs/research/2026-10-ranger-pack.md §3): the list order is kept as the guide's order, an inference.",
+        "budget": "Core nine to Lv 10 = 9 × 21 = 189 points; Snare Shot to 7 = 9, Concentrated Fire to 5 = 5. LEVEL_POINTS[45] = 203 plus Wisdom Stones."
+      },
+      "specialtyPicks": {},
+      "stigmaSlots": [
+        "stigma:ranger:vaizels-authority",
+        "stigma:ranger:bow-of-blessing",
+        "stigma:ranger:supporting-fire",
+        "stigma:ranger:griffon-arrow"
+      ],
+      "stigmaTargets": [
+        {
+          "stigma": "stigma:ranger:vaizels-authority",
+          "level": 8
+        },
+        {
+          "stigma": "stigma:ranger:bow-of-blessing",
+          "level": 7
+        },
+        {
+          "stigma": "stigma:ranger:supporting-fire",
+          "level": 5
+        },
+        {
+          "stigma": "stigma:ranger:griffon-arrow",
+          "level": 4
+        }
+      ],
+      "boardPlan": [
+        {
+          "node": "node:ranger:nezekan:r7c10",
+          "label": "Hunter's Resolve · 1 of 2",
+          "milestone": "g12",
+          "order": 20,
+          "requires": {
+            "level": 12,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "single-source"
+        },
+        {
+          "node": "node:ranger:nezekan:r11c3",
+          "label": "Hunter's Resolve · 2 of 2",
+          "milestone": "g12",
+          "order": 30,
+          "requires": {
+            "level": 12,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "single-source"
+        },
+        {
+          "node": "node:ranger:nezekan:r9c6",
+          "label": "Focused Eye · 1 of 2",
+          "milestone": "g12",
+          "order": 40,
+          "requires": {
+            "level": 12,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "single-source"
+        },
+        {
+          "node": "node:ranger:nezekan:r5c13",
+          "label": "Focused Eye · 2 of 2",
+          "milestone": "g12",
+          "order": 50,
+          "requires": {
+            "level": 12,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "single-source"
+        },
+        {
+          "node": "node:ranger:zikel:r7c10",
+          "label": "Rooting Eye · 1 of 2",
+          "milestone": "g20",
+          "order": 30,
+          "requires": {
+            "level": 20,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "single-source"
+        },
+        {
+          "node": "node:ranger:zikel:r11c4",
+          "label": "Rooting Eye · 2 of 2",
+          "milestone": "g20",
+          "order": 40,
+          "requires": {
+            "level": 20,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "single-source"
+        },
+        {
+          "node": "node:ranger:zikel:r4c5",
+          "label": "Hunter's Soul · 1 of 2",
+          "via": "Hunter's Soul is learned at Lv 25",
+          "milestone": "g20",
+          "order": 50,
+          "requires": {
+            "level": 25,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/skills/hunters-soul",
+                "fields": [
+                  "learnLv"
+                ],
+                "checkedAt": "2026-10-18"
+              }
+            ],
+            "note": "the skill's learn level (the board opens at 20)"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "single-source"
+        },
+        {
+          "node": "node:ranger:zikel:r10c9",
+          "label": "Hunter's Soul · 2 of 2",
+          "via": "Hunter's Soul is learned at Lv 25",
+          "milestone": "g20",
+          "order": 60,
+          "requires": {
+            "level": 25,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/skills/hunters-soul",
+                "fields": [
+                  "learnLv"
+                ],
+                "checkedAt": "2026-10-18"
+              }
+            ],
+            "note": "the skill's learn level (the board opens at 20)"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "single-source"
+        }
+      ],
+      "keyStacks": {
+        "eOrder": [
+          "stigma:ranger:vaizels-authority",
+          "stigma:ranger:bow-of-blessing",
+          "stigma:ranger:supporting-fire",
+          "stigma:ranger:griffon-arrow"
+        ],
+        "status": "inferred",
+        "sources": [
+          {
+            "inferred": "No source gives the Ranger a key setup; the guide shows none (no right-click stack, so the Build drawer has no Rotation section). eOrder is the slot order, only for the Next up stigma card."
+          }
+        ]
+      },
+      "texts": {
+        "nezekan-plan": "From Metabot's Ranger page: the two Hunter's Resolve and the two Focused Eye nodes first.",
+        "stat-note": "B board · G gear. Metabot's Ranger ranking only (one site); later stats: Evasion Bonus, HP."
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/ranger/build",
+          "checkedAt": "2026-10-18",
+          "fields": [
+            "skillOrder",
+            "stigmaSlots",
+            "stigmaTargets"
+          ],
+          "note": "Leveling build (editorial, rated C); its top-player panel (151 Lv 45 players) picks the same four stigmas in the same order."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/ranger",
+          "checkedAt": "2026-10-18",
+          "fields": [
+            "boardPlan",
+            "statPriority"
+          ],
+          "note": "Class page: stat order and the board path (Nezekan Hunter's Resolve and Focused Eye pairs, then Zikel Rooting Eye and Hunter's Soul)."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/guides/class-builds-guide",
+          "checkedAt": "2026-10-18",
+          "fields": [
+            "stigmaSlots"
+          ],
+          "note": "Class-builds guide: the same four stigmas in the same order (same site)."
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "single-source",
+      "notes": [
+        "0.6 P5 (#264), from docs/research/2026-10-ranger-pack.md §3: every advice field rests on Metabot alone (three pages, one site), so it is single-source (claims C50–C53). No specialty picks: no source names any.",
+        "Learn levels of Marking Shot (3), Burst Arrow (10) and Deadshot (14): Metabot plus mmo-codex.com, daevaguides.com and aion2-guides.info, which may share upstream data (claim C54)."
+      ],
+      "claims": [
+        "C51",
+        "C52",
+        "C53"
+      ]
+    }
+  ]
+}

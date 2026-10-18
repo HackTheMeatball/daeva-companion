@@ -1,0 +1,226 @@
+{
+  "$schema": "../../../schema/claims.schema.json",
+  "schemaVersion": 2,
+  "collection": "claims",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "C02",
+      "claim": "Each skill gains one level every 3 character levels after you learn it.",
+      "verdict": "wrong",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/heart-gore",
+          "note": "Skill pages list the character level each skill level needs (learn level + 3 per level) and the 1 / 2 / 4 point costs"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/snipe",
+          "note": "The Ranger's skill pages show the same rule (docs/research/2026-10-ranger-pack.md §2.1)"
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-15-alt-03",
+            "checkedAt": "2026-10-15",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Skill window at Lv 7: Savage Roar Lv 4 needs Lv 10 for Lv 5 and costs 2 points; Storm Rampage Lv 2 needs Lv 8 for Lv 3"
+          }
+        },
+        {
+          "url": "https://allthings.how/?p=215236",
+          "quote": "Skill points arrive automatically as your character levels"
+        },
+        {
+          "url": "https://thegameswiki.com/aion-2/wiki/skills-and-specialties",
+          "quote": "mastery skills are learned automatically when the character reaches the required level; levels beyond 10 come from items, Arcana and Daevanion boards"
+        }
+      ],
+      "action": "rewrite",
+      "newText": "<p>Skills don't level up by themselves: you spend points, and each skill level also needs a character level. Skill level L opens at the level you learned the skill + 3 × (L − 2). Snipe, learned at Lv 1, reaches skill level 5 at Lv 10. Each level costs 1 point (levels 2–4), 2 points (5–7) or 4 points (8–10).</p>",
+      "note": "The Assassin guide's claim C02, with the Ranger's Snipe as the example (learned at Lv 1, Metabot). The rule is the game's (rule:skill-level-gate, rule:skill-point-cost); the owner's screens are from an Assassin.",
+      "verifiedAt": "2026-10-15",
+      "appliesTo": [
+        "tip:wisdom",
+        "rule:skill-level-gate",
+        "rule:skill-point-cost"
+      ]
+    },
+    {
+      "id": "C22",
+      "claim": "Board node costs: grey stat 1, green passive 2, blue active 3, orange corner 4 (+1.5%); Azphel paid with Azphel points from PvP shops.",
+      "verdict": "verified",
+      "sources": [
+        {
+          "url": "https://gamewith.ai/aion2/en/daevanion-planner/assassin",
+          "quote": "1 for common, 2 for rare, 3 for epic and 4 for unique nodes"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/guides/daevanion-guide",
+          "quote": "stat 1 (rare 2), active 3, passive 2, corner 4 (+1.5%); Azphel: Azphel currency, 0 skill nodes",
+          "note": "via R3 data/build.partial.notes.txt"
+        },
+        {
+          "url": "https://thegameswiki.com/aion-2/wiki/daeva-system-and-daevanion-board",
+          "quote": "Azphel crystal is made by Material Conversion from 10 Fragment: Azphel's Trace and 5 Odyle ... also sold in the Abyss shop for Abyss Points"
+        },
+        {
+          "url": "https://mein-mmo.de/en/aion-2-arkana-daevanion-pet-you-need-to-understand-and-master-these-3-systems,1589883/2/",
+          "quote": "Fragments are earned through victorious participation in the weekly battleground ... Some crystals can also be bought with Abyss Points"
+        }
+      ],
+      "action": "rewrite",
+      "newText": "<b>Azphel [[tip:daevanion|Daevanion board]] opens.</b> Stat nodes only, paid with Azphel crystals (from battleground fragments or Abyss Points), not Daevanion Crystals.",
+      "note": "The Assassin guide's claim C22, unchanged: the Ranger's 537 board positions have the same type, grade and cost as the Assassin's (docs/research/2026-10-ranger-pack.md §1, 0 differences by script).",
+      "appliesTo": [
+        "g45:2",
+        "tip:daevanion",
+        "conf:boards",
+        "board:nezekan",
+        "board:zikel",
+        "board:vaizel",
+        "board:triniel",
+        "board:azphel"
+      ],
+      "verifiedAt": "2026-10-12"
+    },
+    {
+      "id": "C28b",
+      "claim": "Stigma slots 22/27/32/37 (five sources); regional quest names and levels (allthings.how, Selphie1999).",
+      "verdict": "verified",
+      "sources": [],
+      "action": "keep",
+      "note": "The Assassin guide's claim C28b. The Ranger's 13 stigma pages also learn at Lv 22 (Metabot, docs/research/2026-10-ranger-pack.md §2.2).",
+      "appliesTo": [
+        "tip:stigma",
+        "conf:stigmas"
+      ],
+      "verifiedAt": "2026-10-12"
+    },
+    {
+      "id": "C39",
+      "claim": "\"The One Who Hears the Voice\" (Lv 22) is open by the time the story reaches \"Daeva in a Dream\".",
+      "verdict": "single-source",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/daeva-in-a-dream-asmodian",
+          "quote": "complete The One Who Hears the Voice",
+          "note": "The wrapper quest's objective (Metabot steps): the Ascension quest must be open by then, so the gate is never early (prereq-gates §5)."
+        }
+      ],
+      "action": "keep",
+      "note": "The Assassin guide's claim C39 (the story is the faction's, not the class's). Owner decision 2026-10-16: no separate in-game check; the gate stands on its source (prereq-gates §11 check 6).",
+      "appliesTo": [
+        "g22:0",
+        "asc:hears-the-voice"
+      ],
+      "verifiedAt": "2026-10-16"
+    },
+    {
+      "id": "C50",
+      "claim": "Ranger stat priority: Attack, Critical Hit, Accuracy Bonus (then Evasion Bonus, HP).",
+      "verdict": "single-source",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/ranger",
+          "quote": "Attack; Critical Hit; Accuracy Bonus; Evasion Bonus; HP"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/guides/class-builds-guide",
+          "note": "Same top three; same site, so not a second source."
+        }
+      ],
+      "action": "keep",
+      "note": "Editorial text on one site (docs/research/2026-10-ranger-pack.md §3). The Build drawer shows the top three and says the ranking is Metabot's only.",
+      "appliesTo": [
+        "build:3",
+        "conf:stat-tiers"
+      ],
+      "verifiedAt": "2026-10-18"
+    },
+    {
+      "id": "C51",
+      "claim": "Ranger stigmas by slot: Vaizel's Authority (22), Bow of Blessing (27), Supporting Fire (32), Griffon Arrow (37); raised to 8 / 7 / 5 / 4.",
+      "verdict": "single-source",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/ranger/build",
+          "note": "Leveling build (editorial) and its top-player panel (151 Lv 45 players: 93% / 87% / 75% / 60% per slot) agree."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/guides/class-builds-guide",
+          "note": "Same four in the same order; same site."
+        }
+      ],
+      "action": "keep",
+      "note": "Three Metabot views agree, with no conflict, but they are one site: single source (issue #264 no-gos: editorial build pages are one source).",
+      "appliesTo": [
+        "build:ranger:guide",
+        "conf:stigma-plan"
+      ],
+      "verifiedAt": "2026-10-18"
+    },
+    {
+      "id": "C52",
+      "claim": "Ranger skill points: Snipe, Tempest Shot, Marking Shot, Drill Dart, Gale Arrow, Burst Arrow, Deadshot, Focused Eye and Hunter's Resolve to Lv 10; Snare Shot to 7, Concentrated Fire to 5.",
+      "verdict": "single-source",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/ranger/build",
+          "note": "Skill targets in listed order; the page states no training order."
+        }
+      ],
+      "action": "keep",
+      "note": "The order between them is the page's list order, an inference (skillOrderNotes.interleave).",
+      "appliesTo": [
+        "build:ranger:guide",
+        "conf:core-order"
+      ],
+      "verifiedAt": "2026-10-18"
+    },
+    {
+      "id": "C53",
+      "claim": "Ranger first Daevanion nodes: Nezekan's two Hunter's Resolve and two Focused Eye nodes, then Zikel's Rooting Eye and Hunter's Soul.",
+      "verdict": "single-source",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/ranger",
+          "note": "Class page board path (editorial). Node positions from the Ranger board data (aion2/classes/ranger, Metabot Daevanion page)."
+        }
+      ],
+      "action": "keep",
+      "note": "Hunter's Soul is learned at Lv 25 (Metabot skill page), after Zikel opens at Lv 20, so its two nodes wait for Lv 25.",
+      "appliesTo": [
+        "build:ranger:guide",
+        "conf:first-nodes"
+      ],
+      "verifiedAt": "2026-10-18"
+    },
+    {
+      "id": "C54",
+      "claim": "Learn levels: Marking Shot 3, Burst Arrow 10, Deadshot 14.",
+      "verdict": "verified",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/marking-shot",
+          "note": "Game-database field (learn level)."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/burst-arrow",
+          "note": "Game-database field (learn level)."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/deadshot",
+          "note": "Game-database field (learn level)."
+        }
+      ],
+      "action": "keep",
+      "note": "Metabot's skill pages are game-database fields, which the data policy accepts on their own. The Ranger research session (2026-10-18) also found the same levels on mmo-codex.com (all three), daevaguides.com and aion2-guides.info (Burst Arrow, Deadshot); those sites may share upstream data (mmo-codex credits the game client via aion2.app), so they are not counted as independent. No owner screen yet: the owner's Lv 1 Ranger Skills window would settle it.",
+      "appliesTo": [
+        "conf:learn-levels"
+      ],
+      "verifiedAt": "2026-10-18"
+    }
+  ]
+}
