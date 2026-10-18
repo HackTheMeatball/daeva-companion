@@ -1,0 +1,4 @@
+[
+  { "case": "daevanion-board-line-1366", "kind": "before-after", "title": "Board line stays inside the card",
+    "caption": "At Lv 20 on a desktop, with the Nezekan board just opened, \"0 of 10 acquired\" now wraps under the board name instead of running off the Daevanion card." }
+]

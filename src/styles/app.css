@@ -505,6 +505,10 @@ header.top .nowstar { align-self: end; }
 .dvbh-top { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-10); font: 600 10px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 .dvbh-n { letter-spacing: 0; text-transform: none; font-size: 11px; }
 .dvbh-k, .dvbh-n { white-space: nowrap; }
+/* when name and count don't fit on one line (a new board's gold "New" tag at desktop width), the count wraps under the
+   name, still at the right, instead of running past the card (0.6.1 F4, #321 note 11) */
+.dvbh-top { flex-wrap: wrap; row-gap: var(--space-2); }
+.dvbh-n { margin-left: auto; }
 .dvbh.new .dvbh-k { color: var(--gold); }
 .dvbh.full .dvbh-n { color: var(--good); }
 .dvbh-bar { display: block; height: 3px; border-radius: var(--radius-2); background: var(--line); margin-top: var(--space-6); overflow: hidden; }

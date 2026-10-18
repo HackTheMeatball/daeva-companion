@@ -7,5 +7,6 @@
 .card.lockcard { border-style: dashed; }
 .lockcard .lockline { margin: 0; line-height: 24px; color: var(--gold-light); font: 500 12px/24px var(--mono); letter-spacing: .06em; }
 .lockcard .lockline .keychip { vertical-align: middle; color: var(--gold-light); border-color: var(--gold-55); }
-.lockcard h2 { margin: var(--space-8) 0 0; }
+/* the card's name, drawn like a card's h2 but not one: the card keeps its own h2, so the outline has each card once (0.6.1 F4) */
+.lockcard .lockname { margin: var(--space-8) 0 0; font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
 .lockcard .lockbar { height: 10px; width: 80%; border-radius: var(--radius-bar); background: var(--line); margin-top: var(--space-10); }
