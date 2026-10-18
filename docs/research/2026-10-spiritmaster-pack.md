@@ -169,10 +169,11 @@ GUESS-grade support, not stated values.
 **Verdict:** all 22 learn levels and the stepped / flat gates are two-source (Metabot + mmo-codex). The owner's Skills
 screenshot is optional.
 
-**One disagreement, for Game Data Check, not acted on:** mmo-codex quotes a creator's pre-launch global test (18 Sep)
-saying stigma slots open "at levels 22, 27 and ≈36, the fourth later". Metabot's build page and class-builds guide say
-22 / 27 / 32 / 37, which our Assassin data already holds as verified ([classes-and-gaps](2026-10-classes-and-gaps.md) §2.2, grade A). The "≈" and the
-test date suggest an estimate from before launch; no change proposed.
+**Superseded claim, not used:** mmo-codex quotes a creator's pre-launch global test (18 Sep) saying stigma slots
+open "at levels 22, 27 and ≈36, the fourth later". That test is superseded. Game Data Check read Metabot's
+[content unlocks](https://metabot.gg/en/aion-2/content-unlocks) page ("Unlocked by level", global client) on 18 Oct:
+slots open at Lv 22 / 27 / 32 / 37, as the build page and the class-builds guide also say. Nothing in this pack
+depends on the mmo-codex claim; #361 adds that Metabot reference to the stigma-slot records.
 
 Requests: [`spiritmaster-second-sources-2026-10.requests.log`](../../data/research/spiritmaster-second-sources-2026-10.requests.log),
 6 requests: two robots.txt files, the mmo-codex Spiritmaster page, a guessed daevaguides `/en/spiritmaster/` (404),
