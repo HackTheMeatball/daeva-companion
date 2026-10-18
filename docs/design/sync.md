@@ -304,3 +304,10 @@ Per the plan, these go to the tracker as a To-do only when 0.6 lane C is next.
   §7 client list, with the HKDF and AES-GCM results checked against `node:crypto` and the sync id pinned for a fixed
   code. Not yet: the `online` event retry and "Not synced yet" status (0.7 UI), and the `site` checks on the Export file
   and *Report a problem* link (no code to leak there until 0.7 stores one).
+
+## 9. Going live (0.7 P8, #382)
+
+The site mounts the sync line only when `SYNC_LIVE` (`src/shell/sync-host-http.js`) is true; it ships **false**, so
+players see no switch, no panel and make no request to `SYNC_BASE` until the server exists. Tests turn it on with an
+injected `window.__dcSyncTest = true` (`tests/site.js`), never a URL parameter. The item that deploys the server (0.7 P5,
+#348) turns sync on with one change: `SYNC_LIVE = true`.

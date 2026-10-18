@@ -1,5 +1,5 @@
 import { mountSync } from "./cards/sync.js";
-import { SYNC_BASE, httpSyncHost, webSyncEnv } from "./shell/sync-host-http.js";
+import { SYNC_BASE, SYNC_LIVE, httpSyncHost, webSyncEnv } from "./shell/sync-host-http.js";
 import SYNC_TEXTS from "../data/ui/sync-texts.json";
 /* Ask the browser to keep this site's storage, so the progress in localStorage isn't evicted (Safari / iOS can clear it
    after 7 days without a visit). Standalone site only. Chrome, Edge and Safari decide without asking; Firefox may show a
@@ -49,7 +49,10 @@ import SYNC_TEXTS from "../data/ui/sync-texts.json";
 /* Sync (0.7 P6, docs/design/0.7-sync-mockup.md): the line in the save strip (src/cards/sync.js) over the HTTP host, with
    the texts from data/ui/sync-texts.json. A progress save (webStorage.set of the save's key, from main.js's storeState)
    schedules a round 30 s later; the card's own writes of a merged save don't. */
-{
+if (!SYNC_LIVE && window.__dcSyncTest !== true) {
+  /* the server isn't live (SYNC_LIVE): drop the line's markup so the strip reads as before P6 */
+  for (const id of ["dcsLine", "dcsMenu", "dcsPanel", "dcsMsg"]) { const e = document.getElementById(id); if (e) e.remove(); }
+} else {
   const host = httpSyncHost(SYNC_BASE, (url, init) => fetch(url, init));
   const pageSet = webStorage.set;
   let own = false;

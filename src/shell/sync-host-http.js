@@ -7,6 +7,10 @@
    body. A request that can't reach the host rejects (the client reports "offline"). */
 /* the sync host's origin (0.7 P6; the one place it is written) */
 export const SYNC_BASE = "https://sync.daevacompanion.com";
+/* Whether the site mounts the sync line at all (0.7 P8). False until the sync server is deployed (0.7 P5, #348): the
+   item that deploys it flips this to true, nothing else. While false the line's markup is removed and nothing is requested.
+   Tests set window.__dcSyncTest before the page script runs (an injected flag, never a URL parameter). */
+export const SYNC_LIVE = false;
 export function httpSyncHost(base, fetchFn) {
   const send = (method, id, token, headers = {}, body) => fetchFn(`${base}/v1/s/${id}`, {
     method, headers: { Authorization: `Bearer ${token}`, ...headers }, body,
