@@ -92,7 +92,9 @@ async function load(p, state, mode) {
     ok(`axe ${id}: no violations outside the allowlist`, !bad.length, bad);
     /* the pass above only covers the Active / Passive chip's contrast if the chip is on screen in this state (0.2.7) */
     const chips = await p.evaluate(() => [...document.querySelectorAll('.sptype')].filter(e => { const r = e.getBoundingClientRect(); return r.width > 0 && r.height > 0 && getComputedStyle(e).visibility !== 'hidden'; }).length);
-    ok(`axe ${id}: .sptype chips visible in the axed state (${chips})`, chips > 0, chips);
+    /* a fresh Lv 1 character has no Skills card (0.6 P16: it opens at Lv 4), so its chips are axed in the lv27 / lv45 states */
+    if (sn === 'fresh') ok(`axe ${id}: the Skills card is locked at Lv 1, so no .sptype chip is on screen (${chips})`, chips === 0 && await p.evaluate(() => document.getElementById('spCard').hidden), chips);
+    else ok(`axe ${id}: .sptype chips visible in the axed state (${chips})`, chips > 0, chips);
     /* and the green "(+x)" skill bonus (0.6 P9) only where ticked Daevanion nodes add levels: the Lv 45 fixture's in Advanced (Sync levels open; Basic hides
        the card's footer and its fully bought plan leaves no level arrow) */
     if (sn === 'lv45' && mode === 'advanced') {
