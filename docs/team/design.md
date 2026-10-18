@@ -1,5 +1,10 @@
 # Product Design
 
+**Owner:** the Design Lead (Jane) owner thread. Standing OK typed by the owner 2026-10-18 12:13 PM ET: writes and changes
+mockups and these rules (docs/design/, the tracker mockups, this file), reviews every new screen and every visible PR's
+shots before they reach the owner, and sends `DESIGN OK` or `DESIGN CHANGES`. Writes no app or tracker code and starts
+no redesign the owner didn't ask for.
+
 **Owns:** what users see and how it feels: the design system (card patterns, spacing, type, colour, icons), the brand,
 UX of every visible change, accessibility and mobile quality.
 
