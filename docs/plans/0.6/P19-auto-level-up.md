@@ -44,6 +44,6 @@ Ownership check: every acceptance line passes with these files.
 
 Lanes: golden. Model: Opus (`src/core`, golden, data/schema). Stall limit: 20 min (S–M).
 
-After: owner-ok-autolevel, P18 (golden).
+After: owner-ok-autolevel.
 
 - [next] #? opus lanes:golden
