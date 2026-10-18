@@ -5,7 +5,7 @@
 import { definePack } from "../../core/pack.js";
 import { GATE_GRAPH } from "./data/gate-graph.js";
 import { GATE_PROPOSED } from "./data/gate-proposed.js";
-import { QUESTS, QUEST_STEPS, QUEST_STEP_NOTES } from "./data/story.js";
+import { QUESTS, QUEST_STEP_NOTES } from "./data/story.js";
 import { GATES, STEPS } from "./data/milestones.js";
 import { GATE_CHANGES, KEPT_RULES, aion2Transforms } from "./rules.js";
 import { hopName, isAscensionKey, objLow, objSubs, storyHereOf, storyRecGate, zoneOfKey } from "./requirements.js";
@@ -15,16 +15,19 @@ import { aion2Cards } from "./cards/index.js";
 import { aion2Text } from "./text.js";
 import { aion2NowRenderers } from "./cards/nextup-kinds.js";
 import { aion2RowHooks, aion2RowRenderers } from "./cards/rows.js";
-import { aion2Place } from "./travel.js";
+import { aion2Place, stepsShownOf } from "./travel.js";
 
 /* The guide pack (data/packs/aion2/asmodian/assassin/pack.json) and its class (data/packs/aion2/classes/assassin): the one
    class with a guide pack, so the only playable class (`classes`); tests/core/state.test.mjs checks both against data/. */
 export const PACK = "aion2/asmodian/assassin";
 export const CLASS = "assassin";
 
+/* the objectives as shown: no mention of a Kibelisk bind that happens at the objective (0.6 P12, travel.js stepsShownOf) */
+const SHOWN = stepsShownOf(GATE_GRAPH);
+
 export const aion2Pack = definePack({
   id: "aion2",
-  data: { graph: GATE_GRAPH, proposed: GATE_PROPOSED, story: { quests: QUESTS, steps: QUEST_STEPS, notes: QUEST_STEP_NOTES } },
+  data: { graph: GATE_GRAPH, proposed: GATE_PROPOSED, story: { quests: QUESTS, steps: SHOWN.steps, notes: QUEST_STEP_NOTES } },
   catalog: {
     milestones: GATES, routes: STEPS,
     /* Sealed Dungeons (and their heading) and board nodes are tracked in their own cards, not as milestone rows; regional
@@ -51,7 +54,7 @@ export const aion2Pack = definePack({
   keptRules: KEPT_RULES,
   gateChanges: GATE_CHANGES,
   graphTransforms: aion2Transforms,
-  story: { levelGate: storyRecGate, isTalkOnly: objLow, subs: objSubs, here: storyHereOf, meanwhile: aion2Meanwhile, cardFields: aion2StoryFields },
+  story: { levelGate: storyRecGate, isTalkOnly: t => objLow(t) || SHOWN.only.has(t), subs: objSubs, here: storyHereOf, meanwhile: aion2Meanwhile, cardFields: aion2StoryFields },
   hopName,
   locate: zoneOfKey,
   skipLocation: isAscensionKey,

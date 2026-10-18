@@ -263,7 +263,7 @@
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 4 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L04-q03-rnd141p95-A-stfull": [
-    {"t":"Story: Isolated Lake","s":"0/4 objectives · then The Being Beneath the Lake","c":"primary \"Turned in\" story","o":["Remove the hazards at the lake defeat the beasts at the lake (Kibelisk: Witch's Cabin)","Check the Veil Jewel at Tunapre Lake check the Veil Jewel (Kibelisk: Witch's Cabin)","Go to Elvida's residence (Kibelisk: Witch's Cabin)","+1 more after these"]},
+    {"t":"Story: Isolated Lake","s":"0/4 objectives · then The Being Beneath the Lake","c":"primary \"Turned in\" story","o":["Remove the hazards at the lake defeat the beasts at the lake (Kibelisk: Witch's Cabin)","Check the Veil Jewel at Tunapre Lake check the Veil Jewel (Kibelisk: Witch's Cabin)","Go to Elvida's residence","+1 more after these"]},
     {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Ambush 2 → 3","s":"Needs Lv 6 · 2 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 1 → 2","s":"Needs Lv 6 · 2 levels away","c":"tag \"Later\"","f":"later"},

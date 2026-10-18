@@ -6,11 +6,13 @@ import { char } from "../../../core/state.js";
 import { LEVEL_POINTS } from "../data/build.js";
 import { AREA_ITEMS, RQ_K, bandOf } from "../catalog.js";
 import { dvFromLv, shardsFromLv } from "../requirements.js";
+import { markerDropped } from "../travel.js";
 
 const aion2JourneyParts = {
   reqOpens: "the steps with a story chip and the regional quests below",
-  /* "Objective — detail (Place)": the place in brackets at the end of the detail */
-  subPlace: t => ((t.split(" — ")[1] || "").match(/\(([^)]*)\)\s*$/) || [])[1],
+  /* "Objective — detail (Place)": the place in brackets at the end of the detail; none for a "(Kibelisk: X)" the
+     checklist drops because the bind happens at the objective (0.6 P12, travel.js markerDropped) */
+  subPlace: t => markerDropped(t) ? "" : ((t.split(" — ")[1] || "").match(/\(([^)]*)\)\s*$/) || [])[1],
   onLevel(state, v) {
     if (char(state).dvTotal) char(state).dvTotal = Math.max(0, char(state).dvTotal + dvFromLv(v) - dvFromLv(char(state).level));
     /* Shards on hand follow level changes the same way crystals do (down too, so fixing a mis-click undoes it). */

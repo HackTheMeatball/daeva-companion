@@ -638,7 +638,7 @@
     "track": ["Triniel board next · 1 to go Lv 40"],
     "ring": "0%",
     "prog": ["Quests 2 0/58","Dungeons 53 0/60","Strongholds 12 0/15"],
-    "subs": {"head":"Objectives 2/5","items":3,"on":0,"end":""}
+    "subs": {"head":"Objectives 1/4","items":3,"on":0,"end":""}
   },
   "random/L39-q06-before-A-stready": {
     "prev": "Spread Your Wings Lv 6",

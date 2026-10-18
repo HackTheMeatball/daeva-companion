@@ -108,6 +108,36 @@ export function nudgeOf(c, { R = TRAVEL_RULES.bindRadius, nudge = TRAVEL_RULES.n
   return { kib: T.anchor, name: kibs[T.anchor].name, m: T.m, key: "bind:" + T.anchor, via: x.id, npc: (QUEST_LOC[c.quest] || {}).turnin || null };
 }
 
+/* ---------- Binds that happen at an objective (0.6 P12; owner 2026-10-17, #254 note 6) ---------- */
+/* The game binds a Kibelisk on its own at an objective within R of it, so the app doesn't tell the player to: a step's
+   "(Kibelisk: X)" marker is dropped from what it shows when the step's point (steps[].at) is within R of X; a step that is
+   only "Bind with the X Kibelisk" is hidden (done on arrival, counted done like a talk-only step) when the next step's
+   point is within R of X. Derived from the data, which keeps the source's text; logic (storyHereOf, aion2Place) still
+   reads the raw QUEST_STEPS. graph: the gate graph (pack.js passes it: the pack isn't set yet when it is built). →
+   [{ quest, i, kib (its name), m, only }] in story-graph order; checks.mjs prints the same list for the owner. */
+const BIND_ONLY = /^Bind with the (.+) Kibelisk(?: \(Kibelisk: ([^)]+)\))?$/;
+export function autoBindsOf(graph, { R = TRAVEL_RULES.bindRadius, kibs = KIBELISKS } = {}) {
+  const out = [];
+  for (const [id, n] of Object.entries(graph.nodes)) {
+    const L = n.kind === "story" && QUEST_STEPS[n.key], pts = ((NODE_PLACE[id] || {}).pts || {}).steps || []; if (!L) continue;
+    const at = i => pts.find(p => p.i === i), near = (p, name) => !!p && p.anchor in kibs && kibs[p.anchor].name === name && p.m != null && p.m <= R;
+    L.forEach((t, i) => { const b = t.match(BIND_ONLY), m = t.match(TRAVEL_MARK), p = at(i) || (b ? at(i + 1) : null);
+      if (b && (!b[2] || b[2] === b[1]) && near(p, b[1])) out.push({ quest: n.key, i, kib: b[1], m: p.m, only: true });
+      else if (!b && m && near(at(i), m[1])) out.push({ quest: n.key, i, kib: m[1], m: at(i).m, only: false }); });
+  }
+  return out;
+}
+/* What the checklists show (the pack's data.story.steps): QUEST_STEPS with those markers dropped, same indices; and the
+   bind-only steps' texts (the pack's story.isTalkOnly hides them). */
+export function stepsShownOf(graph, o) {
+  const steps = Object.fromEntries(Object.entries(QUEST_STEPS).map(([q, L]) => [q, [...L]])), only = new Set();
+  autoBindsOf(graph, o).forEach(x => { if (x.only) only.add(QUEST_STEPS[x.quest][x.i]); else steps[x.quest][x.i] = steps[x.quest][x.i].replace(/\s*\(Kibelisk: [^)]+\)/, ""); });
+  return { steps, only };
+}
+/* Is this source text (a QUEST_STEPS line) one whose "(Kibelisk: X)" the checklists drop? For the pack's hooks that get the
+   source text (the Journey card's sub-checklist place, journey-sections.js subPlace). */
+export const markerDropped = t => perPack("autoBindDropped", p => new Set(autoBindsOf(p.data.graph).filter(x => !x.only).map(x => QUEST_STEPS[x.quest][x.i]))).has(t);
+
 /* ---------- Teleport vs walk (design §8.3) ---------- */
 /* The story card's target (design §3): the next open objective's point, else the turn-in. Objectives have no points
    yet, so the target is the current quest's turn-in once every objective the card shows (o.shown: their indices, the
