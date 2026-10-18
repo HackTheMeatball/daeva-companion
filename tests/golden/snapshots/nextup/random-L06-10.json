@@ -209,10 +209,10 @@
   ],
   "random/L09-q03-before-B-objs": [
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
-    {"t":"Story: Isolated Lake","s":"0/4 objectives · then The Being Beneath the Lake","c":"primary \"Turned in\" story","o":["Remove the hazards at the lake defeat the beasts at the lake (Kibelisk: Witch's Cabin)","Check the Veil Jewel at Tunapre Lake check the Veil Jewel (Kibelisk: Witch's Cabin)","Go to Elvida's residence (Kibelisk: Witch's Cabin)","+1 more after these"]}
+    {"t":"Story: Isolated Lake","s":"0/4 objectives · then The Being Beneath the Lake","c":"primary \"Turned in\" story","o":["Remove the hazards at the lake defeat the beasts at the lake (Kibelisk: Witch's Cabin)","Check the Veil Jewel at Tunapre Lake check the Veil Jewel (Kibelisk: Witch's Cabin)","Go to Elvida's residence","+1 more after these"]}
   ],
   "random/L09-q07-rnd124p95-A": [
-    {"t":"Story: Prison Compound Infiltration Plan","s":"0/5 objectives · then Brigade Prison Compound Infiltration Operation","c":"primary \"Turned in\" story","b":"Lv 9","o":["Find information on the Azrakar Brigade Prison Compound defeat Azrakar Watcher investigate the Azrakar Brigade Command Kibelisk: Abandoned Barracks Site","Deliver the information to Anders talk to Anders (Kibelisk: Abandoned Barracks Site)","Obtain the key from Balaur collect the key (Kibelisk: Abandoned Barracks Site)","+2 more after these"]},
+    {"t":"Story: Prison Compound Infiltration Plan","s":"0/5 objectives · then Brigade Prison Compound Infiltration Operation","c":"primary \"Turned in\" story","b":"Lv 9","o":["Find information on the Azrakar Brigade Prison Compound defeat Azrakar Watcher investigate the Azrakar Brigade Command Kibelisk: Abandoned Barracks Site","Deliver the information to Anders talk to Anders","Obtain the key from Balaur collect the key (Kibelisk: Abandoned Barracks Site)","+2 more after these"]},
     {"t":"Buy Heart Gore 3 → 4","s":"Needs Lv 10 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"},
     {"t":"Buy Savage Roar 4 → 5","s":"Needs Lv 10 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 4 → 5","s":"Needs Lv 10 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -347,14 +347,14 @@
     {"t":"Story: A Village in the Fog","s":"0/2 objectives · then Prepare to Escape","c":"primary \"Turned in\" story","o":["Remember Aldelle Village bind with the Kibelisk","Turn in Ellin (Villager), Aldelle Village"]}
   ],
   "random/L10-q04-rnd136p80-B-stwait": [
-    {"t":"Story: The Being Beneath the Lake","s":"0/5 objectives · then Spread Your Wings","c":"primary \"Turned in\" story","o":["Bind with the Witch's Cabin Kibelisk (Kibelisk: Witch's Cabin)","Check the journal Elvida mentioned check the Timeworn Journal check the Worn Tome Kibelisk: Witch's Cabin","Go to the path beneath the lake enter Tunapre Lake Cave (Kibelisk: Witch's Cabin)","+2 more after these"]},
+    {"t":"Story: The Being Beneath the Lake","s":"0/4 objectives · then Spread Your Wings","c":"primary \"Turned in\" story","o":["Check the journal Elvida mentioned check the Timeworn Journal check the Worn Tome Kibelisk: Witch's Cabin","Go to the path beneath the lake enter Tunapre Lake Cave (Kibelisk: Witch's Cabin)","Learn to fly enter the Ascension Subspace","+1 more after these"]},
     {"t":"Clear Treasure Hunter's Residence","s":"Dredgion Crash Site · Kibelisk: Temporary Investigation Base · Lv 10–14 · 12/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 160 m away · 1 open at your level"}
   ],
   "random/L10-q06-lvonly-B-stwait": [
     {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
     {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
-    {"t":"Story: Signs of a Crash Landing","s":"0/5 objectives · then Prison Compound Infiltration Plan","c":"primary \"Turned in\" story","o":["Go to Anturn Cliff go to Milred (Kibelisk: Witch's Cabin)","Search the airship at the top of Anturn Cliff ride the Updraft to the top (Kibelisk: Witch's Cabin)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+2 more after these"]},
+    {"t":"Story: Signs of a Crash Landing","s":"0/5 objectives · then Prison Compound Infiltration Plan","c":"primary \"Turned in\" story","o":["Go to Anturn Cliff go to Milred (Kibelisk: Witch's Cabin)","Search the airship at the top of Anturn Cliff ride the Updraft to the top (Kibelisk: Witch's Cabin)","Return to Aldelle Village go to Aldelle Village","+2 more after these"]},
     {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
     {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"}
   ],

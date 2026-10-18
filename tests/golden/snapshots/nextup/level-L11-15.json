@@ -8,7 +8,7 @@
     {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · 2 levels away · opens on \"Urgent Pursuit\" · 6 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "level/L11-q14-before-A": [
-    {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Go to the Temporary Investigation Base talk to Niror (Kibelisk: Temporary Investigation Base)","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk: Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
+    {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Go to the Temporary Investigation Base talk to Niror","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk: Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"},
     {"t":"Buy Ambush 4 → 5","s":"Needs Lv 12 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 3 → 4","s":"Needs Lv 12 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -16,11 +16,11 @@
     {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · 2 levels away · opens on \"Urgent Pursuit\" · 3 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "level/L11-q14-before-B": [
-    {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","o":["Go to the Temporary Investigation Base talk to Niror (Kibelisk: Temporary Investigation Base)","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk: Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
+    {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","o":["Go to the Temporary Investigation Base talk to Niror","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk: Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"}
   ],
   "level/L11-q14-lvonly-A": [
-    {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Go to the Temporary Investigation Base talk to Niror (Kibelisk: Temporary Investigation Base)","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk: Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
+    {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Go to the Temporary Investigation Base talk to Niror","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk: Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"},
     {"t":"Buy Ambush 4 → 5","s":"Needs Lv 12 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 3 → 4","s":"Needs Lv 12 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -28,7 +28,7 @@
     {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · 2 levels away · opens on \"Urgent Pursuit\" · 3 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "level/L11-q14-lvonly-B": [
-    {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","o":["Go to the Temporary Investigation Base talk to Niror (Kibelisk: Temporary Investigation Base)","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk: Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
+    {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","o":["Go to the Temporary Investigation Base talk to Niror","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk: Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"}
   ],
   "level/L11-q14-none-A": [
@@ -40,7 +40,7 @@
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
-    {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Go to the Temporary Investigation Base talk to Niror (Kibelisk: Temporary Investigation Base)","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk: Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
+    {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Go to the Temporary Investigation Base talk to Niror","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk: Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
     {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 13 open at your level"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"}
   ],
@@ -50,7 +50,7 @@
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
-    {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","o":["Go to the Temporary Investigation Base talk to Niror (Kibelisk: Temporary Investigation Base)","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk: Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
+    {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","o":["Go to the Temporary Investigation Base talk to Niror","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk: Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
     {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 13 open at your level"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"}
   ],
@@ -59,7 +59,7 @@
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0","b":"Missed · Lv 9"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
-    {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Go to the Temporary Investigation Base talk to Niror (Kibelisk: Temporary Investigation Base)","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk: Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
+    {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Go to the Temporary Investigation Base talk to Niror","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk: Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
     {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 7/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 6 open at your level"},
     {"t":"Buy Exploit Weakness 3 → 4","s":"Needs Lv 12 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Heart Gore 4 → 5","s":"Needs Lv 13 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 13–14"}
@@ -69,12 +69,12 @@
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
-    {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","o":["Go to the Temporary Investigation Base talk to Niror (Kibelisk: Temporary Investigation Base)","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk: Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
+    {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","o":["Go to the Temporary Investigation Base talk to Niror","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk: Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
     {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 7/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 6 open at your level"}
   ],
   "level/L11-q14-rnd2p85-A": [
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom","b":"Missed · Lv 10–12"},
-    {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Go to the Temporary Investigation Base talk to Niror (Kibelisk: Temporary Investigation Base)","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk: Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
+    {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Go to the Temporary Investigation Base talk to Niror","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk: Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
     {"t":"Clear Dusk Pit","s":"Calderon Canyon · Kibelisk: Quai Campsite · Lv 10–14 · 11/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Quai Campsite is 200 m away · 2 open at your level"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 12/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 1 open"},
     {"t":"Buy Exploit Weakness 3 → 4","s":"Needs Lv 12 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -84,7 +84,7 @@
   ],
   "level/L11-q14-rnd2p85-B": [
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
-    {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","o":["Go to the Temporary Investigation Base talk to Niror (Kibelisk: Temporary Investigation Base)","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk: Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
+    {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","o":["Go to the Temporary Investigation Base talk to Niror","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk: Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
     {"t":"Clear Dusk Pit","s":"Calderon Canyon · Kibelisk: Quai Campsite · Lv 10–14 · 11/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Quai Campsite is 200 m away · 2 open at your level"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 12/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 1 open"}
   ],
@@ -115,7 +115,7 @@
     {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · 1 level away · opens on \"Urgent Pursuit\" · 4 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "level/L12-q16-before-A": [
-    {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
+    {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Meet Baba at Quai Campsite go inside","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
     {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
     {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"},
     {"t":"Buy Heart Gore 4 → 5","s":"Needs Lv 13 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 13–14"},
@@ -124,12 +124,12 @@
     {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · 1 level away · opens on \"Urgent Pursuit\" · 1 quest ahead","c":"tag \"Later\"","f":"later"}
   ],
   "level/L12-q16-before-B": [
-    {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
+    {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
     {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
     {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"}
   ],
   "level/L12-q16-lvonly-A": [
-    {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
+    {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Meet Baba at Quai Campsite go inside","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
     {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
     {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"},
     {"t":"Buy Heart Gore 4 → 5","s":"Needs Lv 13 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 13–14"},
@@ -138,7 +138,7 @@
     {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · 1 level away · opens on \"Urgent Pursuit\" · 1 quest ahead","c":"tag \"Later\"","f":"later"}
   ],
   "level/L12-q16-lvonly-B": [
-    {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
+    {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
     {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
     {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"}
   ],
@@ -151,7 +151,7 @@
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
-    {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
+    {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Meet Baba at Quai Campsite go inside","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
     {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
     {"t":"Clear Dusk Pit","s":"Calderon Canyon (near your story step) · Kibelisk: Quai Campsite · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Quai Campsite is 200 m away · 13 open at your level"},
     {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"}
@@ -162,7 +162,7 @@
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
-    {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
+    {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
     {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
     {"t":"Clear Dusk Pit","s":"Calderon Canyon (near your story step) · Kibelisk: Quai Campsite · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Quai Campsite is 200 m away · 13 open at your level"},
     {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"}
@@ -175,7 +175,7 @@
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0","b":"Missed · Lv 9"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
-    {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
+    {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Meet Baba at Quai Campsite go inside","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
     {"t":"Clear Dusk Pit","s":"Calderon Canyon (near your story step) · Kibelisk: Quai Campsite · Lv 10–14 · 7/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Quai Campsite is 200 m away · 6 open at your level"}
   ],
   "level/L12-q16-rnd1p50-B": [
@@ -183,12 +183,12 @@
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
-    {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
+    {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
     {"t":"Clear Dusk Pit","s":"Calderon Canyon (near your story step) · Kibelisk: Quai Campsite · Lv 10–14 · 7/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Quai Campsite is 200 m away · 6 open at your level"}
   ],
   "level/L12-q16-rnd2p85-A": [
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom","b":"Missed · Lv 10–12"},
-    {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
+    {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Meet Baba at Quai Campsite go inside","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
     {"t":"Clear Dusk Pit","s":"Calderon Canyon (near your story step) · Kibelisk: Quai Campsite · Lv 10–14 · 11/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Quai Campsite is 200 m away · 2 open at your level"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk: Safe Haven Cliff · 12/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 1 open"},
     {"t":"Buy Heart Gore 4 → 5","s":"Needs Lv 13 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 13–14"},
@@ -198,7 +198,7 @@
   ],
   "level/L12-q16-rnd2p85-B": [
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
-    {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
+    {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
     {"t":"Clear Dusk Pit","s":"Calderon Canyon (near your story step) · Kibelisk: Quai Campsite · Lv 10–14 · 11/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Quai Campsite is 200 m away · 2 open at your level"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk: Safe Haven Cliff · 12/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 1 open"}
   ],
@@ -343,7 +343,7 @@
     {"t":"Complete \"Buried Atrocities\"","s":"Lv 16 milestone · 3 levels away · opens on \"Buried Atrocities\" · set your quest","c":"tag \"Later\"","f":"later","b":"Lv 16–18"}
   ],
   "level/L14-q16-lvonly-A": [
-    {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","b":"Lv 13–14","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
+    {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","b":"Lv 13–14","o":["Meet Baba at Quai Campsite go inside","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202051","x":["+1 waiting on the story Spooky Specters In my game"]},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk: Safe Haven Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 1 open"},
     {"t":"Buy Ambush 5 → 6","s":"Needs Lv 15 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 15"},
@@ -460,7 +460,7 @@
   ],
   "level/L15-q17-lvonly-A": [
     {"t":"Buy Insignia Explosion 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 15"},
-    {"t":"Story: Urgent Pursuit","s":"0/5 objectives · then Cemetery Cleanup","c":"primary \"Turned in\" story","o":["Find out where the broker is talk to Tagar (Kibelisk: Gravekeeper Camp)","Eliminate the hindrance defeat Corrupted Karas Handmaiden defeat Hungry Dead Kibelisk: Gravekeeper Camp","Investigate the Shaded Cave enter the Shaded Cave (Kibelisk: Gravekeeper Camp)","+2 more after these"]},
+    {"t":"Story: Urgent Pursuit","s":"0/5 objectives · then Cemetery Cleanup","c":"primary \"Turned in\" story","o":["Find out where the broker is talk to Tagar","Eliminate the hindrance defeat Corrupted Karas Handmaiden defeat Hungry Dead Kibelisk: Gravekeeper Camp","Investigate the Shaded Cave enter the Shaded Cave (Kibelisk: Gravekeeper Camp)","+2 more after these"]},
     {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 11 open at your level"},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
     {"t":"Buy Heart Gore 5 → 6","s":"Needs Lv 16 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 16–18"},

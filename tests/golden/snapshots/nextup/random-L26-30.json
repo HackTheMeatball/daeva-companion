@@ -1,7 +1,7 @@
 {
   "random/L26-q06-before-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 25–26"},
-    {"t":"Story: Signs of a Crash Landing","s":"0/5 objectives · then Prison Compound Infiltration Plan","c":"primary \"Turned in\" story","o":["Go to Anturn Cliff go to Milred (Kibelisk: Witch's Cabin)","Search the airship at the top of Anturn Cliff ride the Updraft to the top (Kibelisk: Witch's Cabin)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+2 more after these"]},
+    {"t":"Story: Signs of a Crash Landing","s":"0/5 objectives · then Prison Compound Infiltration Plan","c":"primary \"Turned in\" story","o":["Go to Anturn Cliff go to Milred (Kibelisk: Witch's Cabin)","Search the airship at the top of Anturn Cliff ride the Updraft to the top (Kibelisk: Witch's Cabin)","Return to Aldelle Village go to Aldelle Village","+2 more after these"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202010","x":["+10 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game"]},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
     {"t":"Buy Ambush 9 → 10","s":"Needs Lv 27 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 27"},
@@ -11,7 +11,7 @@
   ],
   "random/L26-q17-all-B-sppts": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-    {"t":"Story: Urgent Pursuit","s":"0/5 objectives · then Cemetery Cleanup","c":"primary \"Turned in\" story","o":["Find out where the broker is talk to Tagar (Kibelisk: Gravekeeper Camp)","Eliminate the hindrance defeat Corrupted Karas Handmaiden defeat Hungry Dead Kibelisk: Gravekeeper Camp","Investigate the Shaded Cave enter the Shaded Cave (Kibelisk: Gravekeeper Camp)","+2 more after these"]}
+    {"t":"Story: Urgent Pursuit","s":"0/5 objectives · then Cemetery Cleanup","c":"primary \"Turned in\" story","o":["Find out where the broker is talk to Tagar","Eliminate the hindrance defeat Corrupted Karas Handmaiden defeat Hungry Dead Kibelisk: Gravekeeper Camp","Investigate the Shaded Cave enter the Shaded Cave (Kibelisk: Gravekeeper Camp)","+2 more after these"]}
   ],
   "random/L26-q24-all-A-sppts": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
@@ -113,7 +113,7 @@
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Story: Urgent Pursuit","s":"0/5 objectives · then Cemetery Cleanup","c":"primary \"Turned in\" story","o":["Find out where the broker is talk to Tagar (Kibelisk: Gravekeeper Camp)","Eliminate the hindrance defeat Corrupted Karas Handmaiden defeat Hungry Dead Kibelisk: Gravekeeper Camp","Investigate the Shaded Cave enter the Shaded Cave (Kibelisk: Gravekeeper Camp)","+2 more after these"]},
+    {"t":"Story: Urgent Pursuit","s":"0/5 objectives · then Cemetery Cleanup","c":"primary \"Turned in\" story","o":["Find out where the broker is talk to Tagar","Eliminate the hindrance defeat Corrupted Karas Handmaiden defeat Hungry Dead Kibelisk: Gravekeeper Camp","Investigate the Shaded Cave enter the Shaded Cave (Kibelisk: Gravekeeper Camp)","+2 more after these"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202062","x":["+1 waiting on the story Fight Poison with Poison In my game"]},
     {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 28)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"}
@@ -399,7 +399,7 @@
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
-    {"t":"Story: The Being Beneath the Lake","s":"0/5 objectives · then Spread Your Wings","c":"primary \"Turned in\" story","b":"Lv 28–29","o":["Bind with the Witch's Cabin Kibelisk (Kibelisk: Witch's Cabin)","Check the journal Elvida mentioned check the Timeworn Journal check the Worn Tome Kibelisk: Witch's Cabin","Go to the path beneath the lake enter Tunapre Lake Cave (Kibelisk: Witch's Cabin)","+2 more after these"]},
+    {"t":"Story: The Being Beneath the Lake","s":"0/4 objectives · then Spread Your Wings","c":"primary \"Turned in\" story","b":"Lv 28–29","o":["Check the journal Elvida mentioned check the Timeworn Journal check the Worn Tome Kibelisk: Witch's Cabin","Go to the path beneath the lake enter Tunapre Lake Cave (Kibelisk: Witch's Cabin)","Learn to fly enter the Ascension Subspace","+1 more after these"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202044","x":["+14 waiting on the story Shugo-of-All-Trades: Asmodian In my game Spooky Specters In my game Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk: Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 36 open at your level"},
     {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 8 open"}
@@ -413,7 +413,7 @@
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
-    {"t":"Story: Signs of a Crash Landing","s":"0/5 objectives · then Prison Compound Infiltration Plan","c":"primary \"Turned in\" story","b":"Lv 28–29","o":["Go to Anturn Cliff go to Milred (Kibelisk: Witch's Cabin)","Search the airship at the top of Anturn Cliff ride the Updraft to the top (Kibelisk: Witch's Cabin)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+2 more after these"]},
+    {"t":"Story: Signs of a Crash Landing","s":"0/5 objectives · then Prison Compound Infiltration Plan","c":"primary \"Turned in\" story","b":"Lv 28–29","o":["Go to Anturn Cliff go to Milred (Kibelisk: Witch's Cabin)","Search the airship at the top of Anturn Cliff ride the Updraft to the top (Kibelisk: Witch's Cabin)","Return to Aldelle Village go to Aldelle Village","+2 more after these"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202044","x":["+14 waiting on the story Shugo-of-All-Trades: Asmodian In my game Spooky Specters In my game Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk: Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 36 open at your level"},
     {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 8 open"}
@@ -435,7 +435,7 @@
   ],
   "random/L29-q14-before-A-filters": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 28–29"},
-    {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","o":["Go to the Temporary Investigation Base talk to Niror (Kibelisk: Temporary Investigation Base)","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk: Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
+    {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","o":["Go to the Temporary Investigation Base talk to Niror","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk: Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202010","x":["+11 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game"]},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 5 open"},
     {"t":"Buy Exploit Weakness 9 → 10","s":"Needs Lv 30 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"},
@@ -450,7 +450,7 @@
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Zikel board opens","s":"Missed · Lv 20 Zikel board","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
-    {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","b":"Lv 28–29","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
+    {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","b":"Lv 28–29","o":["Meet Baba at Quai Campsite go inside","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
     {"t":"Clear High Priest's Ruins","s":"Dranactus · Kibelisk: Briskwind Shelter · Lv 25–29 · 4/5","c":"go \"Show\" areas:25","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Briskwind Shelter is 300 m away · 5 open at your level"},
     {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 30)","c":"tag \"Needs 1 shard\""}
   ],
