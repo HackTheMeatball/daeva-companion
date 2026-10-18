@@ -46,6 +46,6 @@ Lanes: gen, golden. Model: Opus (golden, guide data). Stall limit: 120 min (L).
 The owner gate: offering the Gladiator on the site only makes the two builds' pickers differ, which CLAUDE.md ("both
 builds visually identical") leaves to the owner.
 
-After: P1, research-gladiator-guide, owner-ok-artifact-classes
+After: P1, research-gladiator-guide, owner-ok-0.7-artifact-classes.
 
 - [next] #345 opus lanes:gen,golden
