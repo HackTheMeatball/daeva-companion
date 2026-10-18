@@ -680,6 +680,7 @@ body.basic aside.rail { align-content: start; }
 /* Toast with an Undo button. */
 #rwToast.has-undo { pointer-events: auto; display: flex; align-items: center; gap: var(--space-10); }
 #rwToast.has-undo.show { animation-duration: 6s; }
+@media (max-width: 600px) { #rwToast { bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom) + var(--space-12)); } }
 #rwToast .tu { font: 600 12px var(--mono); padding: var(--space-2) var(--space-9); border-radius: var(--radius-6); border: 1px solid var(--line); background: var(--panel-2); color: var(--accent-text); cursor: pointer; }
 /* Export / import progress (footer). */
 .xfer { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-8) var(--space-14); font-size: 13px; color: var(--muted); padding: 0 var(--space-4); }

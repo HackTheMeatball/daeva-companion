@@ -69,12 +69,12 @@
 @media (max-width: 600px) {
   .statdrawer { display: block; top: auto !important; left: 0; bottom: 0; }
   .sd-tab { display: none; }
-  .sd-scrim { display: block; position: fixed; left: 0; right: 0; bottom: 0; top: var(--lvlbar-h, 0px); background: var(--shade-99); opacity: 0; visibility: hidden; transition: opacity .2s, visibility .2s; pointer-events: auto; }
+  .sd-scrim { display: block; position: fixed; left: 0; right: 0; bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom)); top: var(--lvlbar-h, 0px); background: var(--shade-99); opacity: 0; visibility: hidden; transition: opacity .2s, visibility .2s; pointer-events: auto; }
   .statdrawer.open .sd-scrim { opacity: 1; visibility: visible; }
   /* the bar pins to the top while the sheet is open (it may sit mid-page at scroll 0) and stays above the scrim */
   body:has(#statDrawer.open) .lvlbar { position: fixed; top: 0; left: 0; right: 0; margin: 0; z-index: 60; }
-  .sd-panel, .statdrawer.open .sd-panel { position: fixed; left: 0; right: 0; bottom: 0; width: auto; box-sizing: border-box; border: 1px solid var(--line); border-bottom: 0; border-radius: var(--radius-12) var(--radius-12) 0 0;
-    padding: var(--space-8) var(--space-16) calc(var(--space-16) + env(safe-area-inset-bottom)); max-height: calc(100vh - var(--lvlbar-h, 0px) - 32px); max-height: calc(100dvh - var(--lvlbar-h, 0px) - 32px);
+  .sd-panel, .statdrawer.open .sd-panel { position: fixed; left: 0; right: 0; bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom)); width: auto; box-sizing: border-box; border: 1px solid var(--line); border-bottom: 0; border-radius: var(--radius-12) var(--radius-12) 0 0;
+    padding: var(--space-8) var(--space-16) var(--space-16); max-height: calc(100vh - var(--lvlbar-h, 0px) - var(--tabbar-h) - env(safe-area-inset-bottom) - 32px); max-height: calc(100dvh - var(--lvlbar-h, 0px) - var(--tabbar-h) - env(safe-area-inset-bottom) - 32px);
     box-shadow: var(--shadow-float); transition: transform .2s; }
   /* visible at once on open (focus moves in on the next frame); hidden only after the slide down */
   .statdrawer:not(.open) .sd-panel { transform: translateY(100%); visibility: hidden; transition: transform .2s, visibility 0s .2s; border-width: 0; box-shadow: none; padding: var(--space-8) var(--space-16) 0; }
