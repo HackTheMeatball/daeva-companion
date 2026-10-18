@@ -270,7 +270,7 @@ function placeLocks(ctx) {
     if (!lock || !faded) return;
     sh.setAttribute("aria-label", lock.label);
     const key = lock.key ? `&nbsp;·&nbsp;<kbd class="keychip">${lock.key}</kbd>` : "";
-    sh.innerHTML = `<div aria-hidden="true"><p class="lockline">${lock.text}${key}</p><h2>${x.name}</h2><div class="lockbar"></div></div>`;
+    sh.innerHTML = `<div aria-hidden="true"><p class="lockline">${lock.text}${key}</p><p class="lockname">${x.name}</p><div class="lockbar"></div></div>`;
   });
 }
 /* Fill the Skills card down to the height of its neighbours: drop Coming up rows that don't fit (min 3). */

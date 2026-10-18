@@ -40,6 +40,10 @@
 .area-list .item.arow > label { flex: 1; min-width: 0; }
 .ztr { font: 500 11px var(--body); color: var(--muted); text-decoration: none; margin-left: var(--space-4); }
 .ztr:hover { color: var(--fg); text-decoration: underline; }
+/* a 24 px pointer target (0.6.1 F4, #321 note 9; app.css "Pointer targets"): the header's 12 px top padding takes most of
+   it, so the area doesn't reach the zone's first row under it */
+.ztr { position: relative; }
+.ztr::before { content: ""; position: absolute; inset: calc(-1 * var(--space-8)) 0 calc(-1 * var(--space-4)); }
 .sh-note.ok { color: var(--good); }
 /* Region headers above their rows; rows a step smaller */
 .zone-h { align-items: baseline; padding: var(--space-12) 0 var(--space-4); }

@@ -28,7 +28,9 @@
       follow-up) is a ticked, disabled box named "<row>: done in the story" with that tooltip, axe-clean; the same rows
       in both modes; moving the story back shows the stored false again (box enabled, save untouched).
   11. Ascension bar (0.3 E8, same saves as 10): shown in Basic and Advanced, a progressbar named "Ascension" with its value
-      (aria-valuenow / max / valuetext), the same label in both modes, axe-clean. */
+      (aria-valuenow / max / valuetext), the same label in both modes, axe-clean.
+  15. Headings and the board line (0.6.1 F4): no empty heading, no two h2 with the same name (locked-card shells
+      included); the Daevanion board line inside its card at desktop widths in the shipped fonts. */
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path'); const CFG = require('./config');
 const { writeSave, clearSave, flatFixture } = require('./support/save');
 const AXE = fs.readFileSync(require.resolve('axe-core/axe.min.js'), 'utf8');
@@ -46,7 +48,9 @@ const ALLOW = {
 /* the controls given a hit area in 0.1.6 (src/styles/app.css, "Pointer targets of at least 24 px") and before */
 const HIT = ['.tip', '.tipbtn', '#nowStar .q-cb', '#stCard .st-lvctl button', '.modeseg button', '.sec .ns-pop', '.sd-close',
   '.zone-btn', '.ms-name', '.nsinfo', '#nowStar .ns-pin', '.trk-sum',
-  '#nowStar .rq-wait > summary', '.jfilt-btn', '.jfilt-x', '.dvi', '#stCard .st-chg .st-pick'];
+  '#nowStar .rq-wait > summary', '.jfilt-btn', '.jfilt-x', '.dvi', '#stCard .st-chg .st-pick',
+  /* 0.6.1 F4 (#321 note 9): the Next up objective checkboxes (their label is the target) and the Dungeons "N traces" links */
+  '#nowStar .ns-obj label', '.ztr'];
 
 /* touch: the primary buttons that get 44 px, and the glyphs in fixed boxes that keep their size (icons, not text) */
 const PRIMARY = '.lvlup-btn, .ns-btn.primary, #nowStar .ns-card .ns-go, .dvbuy';
@@ -146,6 +150,53 @@ async function load(p, state, mode) {
     await ctx.close();
   }
   info('allowed axe rules still violated (node count over all runs)', seen);
+
+  /* ---------- 15. headings and the Daevanion board line (0.6.1 F4, #321 notes 9 and 11) ---------- */
+  /* No heading in the DOM is empty, and no two h2 share a name (a locked card's shell used to carry a second "Skills" /
+     "Daevanion" / "Stigmas" h2 next to the card's own, kept after the card opened): 1500 / 390 px × fresh / Lv 20 / Lv 27 /
+     Lv 45 × Basic / Advanced, and a fresh save levelled to 45 in place (every shell made, then hidden). */
+  const headings = p => p.evaluate(() => {
+    const hs = [...document.querySelectorAll('h1, h2, h3, h4, h5, h6, [role=heading]')];
+    const desc = h => h.tagName.toLowerCase() + (h.id ? '#' + h.id : '') + ' in #' + ((h.parentElement && h.parentElement.closest('[id]')) || {}).id;
+    const names = {}; hs.filter(h => h.tagName === 'H2').forEach(h => { const n = h.textContent.replace(/\s+/g, ' ').trim(); (names[n] = names[n] || []).push(desc(h)); });
+    return { empty: hs.filter(h => !h.textContent.trim()).map(desc), dup: Object.entries(names).filter(([, v]) => v.length > 1) };
+  });
+  for (const width of [1500, 390]) for (const sn of ['fresh', 'lv20', 'lv27', 'lv45']) for (const mode of ['basic', 'advanced']) {
+    const id = `headings ${sn} ${mode} ${width}px`, { ctx, p } = await page(width);
+    await load(p, sn === 'lv20' ? 'fixture20' : typeof STATES[sn] === 'function' ? STATES[sn]() : STATES[sn], mode);
+    let r = await headings(p);
+    ok(`${id}: no empty heading`, !r.empty.length, r.empty);
+    ok(`${id}: no two h2 with the same name (the card headings once each)`, !r.dup.length, r.dup);
+    if (sn === 'fresh') {
+      await p.evaluate(() => { char(state).level = 45; update(); });
+      r = await headings(p);
+      ok(`${id}, levelled to 45 in place: no empty heading, no two h2 with the same name`, !r.empty.length && !r.dup.length, r);
+    }
+    await ctx.close();
+  }
+  /* The board line ("Nezekan board New · 0 of 10 acquired") stays inside the Daevanion card at desktop widths, at Lv 20
+     with the board just opened (the player's report: nothing bought, the gold "New" tag) and in the Lv 20 fixture, in the
+     shipped fonts (the suites block web fonts, so the check adds Figtree and JetBrains Mono itself, as section 12 does). */
+  const FONTS = [['Figtree', 'figtree-latin', ['400', '500', '600', '700']], ['JetBrains Mono', 'jetbrains-mono-latin', ['400', '600']]]
+    .map(([fam, file, ws]) => [fam, fs.readFileSync(path.join(__dirname, '..', 'src', 'assets', 'fonts', file + '.woff2')).toString('base64'), ws]);
+  for (const [sn, st] of [['lv20 new board', { level: 20, quest: 'Cemetery Cleanup', checks: {}, open: {} }], ['lv20 fixture', 'fixture20']]) {
+    const { ctx, p } = await page(1500);
+    await load(p, st, 'advanced');
+    const r = [];
+    for (const width of [1500, 1440, 1366, 1280, 1100, 1024, 900]) {
+      await p.setViewportSize({ width, height: 1000 });
+      r.push(await p.evaluate(async FONTS => {
+        for (const [fam, b64, ws] of FONTS) for (const weight of ws) document.fonts.add(await new FontFace(fam, Uint8Array.from(atob(b64), ch => ch.charCodeAt(0)), { weight }).load());
+        await document.fonts.ready; await new Promise(res => requestAnimationFrame(() => requestAnimationFrame(res)));
+        const card = document.getElementById('dvBox'), top = card && card.querySelector('#dvBoard .dvbh-top');
+        if (!top || !top.offsetParent) return { w: innerWidth, shown: false };
+        const cr = card.getBoundingClientRect(), tr = top.getBoundingClientRect(), right = Math.max(...[top, ...top.querySelectorAll('*')].map(e => e.getBoundingClientRect().right));
+        return { w: innerWidth, shown: true, text: top.textContent, isNew: !!top.querySelector('.dvb-new'), right: Math.round(right), line: Math.round(tr.right), card: Math.round(cr.right), inside: right <= tr.right + 0.5 && right <= cr.right + 0.5 };
+      }, FONTS));
+    }
+    ok(`board line ${sn} advanced: inside the Daevanion card at ${r.map(x => x.w).join(' / ')} px (shipped fonts)`, r.every(x => x.shown && x.inside && x.isNew === (sn === 'lv20 new board')), r.filter(x => !x.shown || !x.inside || x.isNew !== (sn === 'lv20 new board')));
+    await ctx.close();
+  }
 
   /* ---------- 3. reduced motion ---------- */
   for (const motion of ['reduce', 'no-preference']) {

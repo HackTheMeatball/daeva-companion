@@ -45,8 +45,18 @@
 @keyframes nsRise { from { transform: translateY(26px); opacity: 0; } to { transform: none; } }
 @media (prefers-reduced-motion: reduce) { .rise, .nowstar .ns-primary { animation: none; transition: none; } }
 /* Story objectives inside the Next up top card */
-.ns-obj { list-style: none; margin: var(--space-4) 0 0; padding: var(--space-8) 0 0; border-top: 1px solid var(--line); display: grid; gap: var(--space-2); }
-.ns-obj li { max-height: 80px; overflow: hidden; transition: opacity .45s ease, max-height .4s ease .1s, padding .4s ease .1s; padding: var(--space-3) 0; }
+.ns-obj { list-style: none; margin: var(--space-4) 0 0; padding: var(--space-7) 0 0; border-top: 1px solid var(--line); display: grid; gap: 0; }
+.ns-obj li { max-height: 80px; overflow: hidden; transition: opacity .45s ease, max-height .4s ease .1s, padding .4s ease .1s; padding: var(--space-4) 0; }
+.ns-obj > li:last-child { margin-bottom: calc(-1 * var(--space-1)); }
+/* Pointer targets of at least 24 px (0.6.1 F4, #321 note 9; app.css "Pointer targets"): an objective's label is its
+   checkbox's target, grown by an invisible ::before inside its row's padding (the row clips what leaves it). The rows keep
+   their places: 4 px padding and no gap is the old 3 px + 2 px gap + 3 px, one px less above the first row and below the
+   last. The parts under an objective get 3 px padding (was 1) so their 24 px areas don't reach each other. */
+#nowStar .ns-obj label { position: relative; }
+#nowStar .ns-obj label::before { content: ""; position: absolute; inset: calc(-1 * var(--space-4)) 0; }
+#nowStar .ns-obj input { position: relative; z-index: 1; } /* the box itself stays on top of its label's area */
+#nowStar .ns-obj .qs-sub li { padding: var(--space-3) 0 !important; overflow: visible; }
+#nowStar .ns-obj .qs-sub label::before { inset: calc(-1 * var(--space-5)) 0; }
 .ns-obj small { display: block; color: var(--muted); font-size: 11.5px; }
 .ns-obj li.on b, .ns-obj li.on small { color: var(--good); }
 .ns-obj-more { font-size: 11.5px; color: var(--muted); padding-left: var(--space-25) !important; }
