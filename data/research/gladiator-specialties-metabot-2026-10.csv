@@ -1,0 +1,113 @@
+id,skill,n,skillLv,text,build,checkedAt,status,page_url
+spec:gladiator:keen-strike:1,skill:gladiator:keen-strike,1,8,+20% MP restored,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/keen-strike
+spec:gladiator:keen-strike:2,skill:gladiator:keen-strike,2,8,"Absorbs 100, 100% HP",0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/keen-strike
+spec:gladiator:keen-strike:3,skill:gladiator:keen-strike,3,8,+50% Multi-Hit on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/keen-strike
+spec:gladiator:keen-strike:4,skill:gladiator:keen-strike,4,12,-1s [Ruinous Blow] cooldown on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/keen-strike
+spec:gladiator:keen-strike:5,skill:gladiator:keen-strike,5,16,Adds [Reckless Strike] Chain Skill,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/keen-strike
+spec:gladiator:rending-blow:1,skill:gladiator:rending-blow,1,8,-20% MP consumed,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/rending-blow
+spec:gladiator:rending-blow:2,skill:gladiator:rending-blow,2,8,+200 Block while using skill,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/rending-blow
+spec:gladiator:rending-blow:3,skill:gladiator:rending-blow,3,8,Changes to mobile skill,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/rending-blow
+spec:gladiator:rending-blow:4,skill:gladiator:rending-blow,4,12,Deals up to 12% more damage when less targets are hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/rending-blow
+spec:gladiator:rending-blow:5,skill:gladiator:rending-blow,5,16,Restores 50 MP on landing a Critical Hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/rending-blow
+spec:gladiator:leaping-slam:1,skill:gladiator:leaping-slam,1,8,Prepare for Battle effect on the caster for 3s,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/leaping-slam
+spec:gladiator:leaping-slam:2,skill:gladiator:leaping-slam,2,8,50% chance to trigger [Ankle Slice] on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/leaping-slam
+spec:gladiator:leaping-slam:3,skill:gladiator:leaping-slam,3,8,Resets cooldown on defeating an enemy,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/leaping-slam
+spec:gladiator:leaping-slam:4,skill:gladiator:leaping-slam,4,12,+20% PvE Damage Tolerance and +10 PvP Damage Tolerance for 3s,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/leaping-slam
+spec:gladiator:leaping-slam:5,skill:gladiator:leaping-slam,5,16,Changes to AoE skill and pulls in enemies,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/leaping-slam
+spec:gladiator:mocking-blade:1,skill:gladiator:mocking-blade,1,8,"Absorbs 400, 400% HP, absorbs 1500, 1500% HP of target with Incapacitated Immunity",0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/mocking-blade
+spec:gladiator:mocking-blade:2,skill:gladiator:mocking-blade,2,8,Changes to AoE damage on down strike,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/mocking-blade
+spec:gladiator:mocking-blade:3,skill:gladiator:mocking-blade,3,8,Adds 2 additional strikes,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/mocking-blade
+spec:gladiator:mocking-blade:4,skill:gladiator:mocking-blade,4,12,+1s Knockdown duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/mocking-blade
+spec:gladiator:mocking-blade:5,skill:gladiator:mocking-blade,5,16,Ignores Block and Evasion and lands as Multi-Hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/mocking-blade
+spec:gladiator:overhead-slam:1,skill:gladiator:overhead-slam,1,8,"Absorbs 70, 70% HP",0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/overhead-slam
+spec:gladiator:overhead-slam:2,skill:gladiator:overhead-slam,2,8,Changes to AoE Skill,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/overhead-slam
+spec:gladiator:overhead-slam:3,skill:gladiator:overhead-slam,3,8,Adds [Upward Strike] Chain Skill,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/overhead-slam
+spec:gladiator:overhead-slam:4,skill:gladiator:overhead-slam,4,12,Critical Hit on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/overhead-slam
+spec:gladiator:overhead-slam:5,skill:gladiator:overhead-slam,5,16,Remove cooldown,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/overhead-slam
+spec:gladiator:sword-aura-rampage:1,skill:gladiator:sword-aura-rampage,1,8,"Absorbs 500, 500% HP",0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/sword-aura-rampage
+spec:gladiator:sword-aura-rampage:2,skill:gladiator:sword-aura-rampage,2,8,Restores 120 MP,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/sword-aura-rampage
+spec:gladiator:sword-aura-rampage:3,skill:gladiator:sword-aura-rampage,3,8,Changes to mobile skill,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/sword-aura-rampage
+spec:gladiator:sword-aura-rampage:4,skill:gladiator:sword-aura-rampage,4,12,Multi-Hit on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/sword-aura-rampage
+spec:gladiator:sword-aura-rampage:5,skill:gladiator:sword-aura-rampage,5,16,-1s all skill cooldowns on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/sword-aura-rampage
+spec:gladiator:ankle-slice:1,skill:gladiator:ankle-slice,1,8,30% chance to inflict Knockdown for 3s on landing [Ankle Slice],0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/ankle-slice
+spec:gladiator:ankle-slice:2,skill:gladiator:ankle-slice,2,8,Adds [Ankle Smash] Chain Skill,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/ankle-slice
+spec:gladiator:ankle-slice:3,skill:gladiator:ankle-slice,3,8,+16m [Ankle Slice] range,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/ankle-slice
+spec:gladiator:ankle-slice:4,skill:gladiator:ankle-slice,4,12,Ignores Block and Evasion and lands as Multi-Hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/ankle-slice
+spec:gladiator:ankle-slice:5,skill:gladiator:ankle-slice,5,16,25% chance to reset [Ankle Slice] cooldown on Block,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/ankle-slice
+spec:gladiator:crushing-wave:1,skill:gladiator:crushing-wave,1,8,"Absorbs 200, 200% HP",0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/crushing-wave
+spec:gladiator:crushing-wave:2,skill:gladiator:crushing-wave,2,8,Restores 50 MP on landing a Critical Hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/crushing-wave
+spec:gladiator:crushing-wave:3,skill:gladiator:crushing-wave,3,8,Up to +20% damage when more targets hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/crushing-wave
+spec:gladiator:crushing-wave:4,skill:gladiator:crushing-wave,4,12,Resets cooldown on landing a Critical Hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/crushing-wave
+spec:gladiator:crushing-wave:5,skill:gladiator:crushing-wave,5,16,50% chance to pull,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/crushing-wave
+spec:gladiator:rush-strike:1,skill:gladiator:rush-strike,1,8,Restores 300 Stamina on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/rush-strike
+spec:gladiator:rush-strike:2,skill:gladiator:rush-strike,2,8,+10m range,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/rush-strike
+spec:gladiator:rush-strike:3,skill:gladiator:rush-strike,3,8,Changes to Charge Skill and deals AoE damage,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/rush-strike
+spec:gladiator:rush-strike:4,skill:gladiator:rush-strike,4,12,-10s cooldown,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/rush-strike
+spec:gladiator:rush-strike:5,skill:gladiator:rush-strike,5,16,+25% Knockdown Chance,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/rush-strike
+spec:gladiator:aerial-snare:1,skill:gladiator:aerial-snare,1,8,Multi-Hit on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/aerial-snare
+spec:gladiator:aerial-snare:2,skill:gladiator:aerial-snare,2,8,+25% [Aerial Snare] Airborne Chance,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/aerial-snare
+spec:gladiator:aerial-snare:3,skill:gladiator:aerial-snare,3,8,+100% damage to targets with Incapacitated Immunity,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/aerial-snare
+spec:gladiator:aerial-snare:4,skill:gladiator:aerial-snare,4,12,Adds [Forced Fall] Chain Skill,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/aerial-snare
+spec:gladiator:aerial-snare:5,skill:gladiator:aerial-snare,5,16,-50% [Aerial Snare] cooldown,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/aerial-snare
+spec:gladiator:ruinous-blow:1,skill:gladiator:ruinous-blow,1,8,+20% Skill Speed,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/ruinous-blow
+spec:gladiator:ruinous-blow:2,skill:gladiator:ruinous-blow,2,8,+12.5m Range,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/ruinous-blow
+spec:gladiator:ruinous-blow:3,skill:gladiator:ruinous-blow,3,8,+30% Skill Critical Hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/ruinous-blow
+spec:gladiator:ruinous-blow:4,skill:gladiator:ruinous-blow,4,12,Extra damage on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/ruinous-blow
+spec:gladiator:ruinous-blow:5,skill:gladiator:ruinous-blow,5,16,Ignores Block and Evasion and lands as Multi-Hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/ruinous-blow
+spec:gladiator:defiance:1,skill:gladiator:defiance,1,8,Adds [Wrath Burst] Chain Skill,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/defiance
+spec:gladiator:defiance:2,skill:gladiator:defiance,2,8,"Restores 1,000 Stamina on using [Defiance]",0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/defiance
+spec:gladiator:defiance:3,skill:gladiator:defiance,3,8,Restores 20% HP on using [Defiance],0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/defiance
+spec:gladiator:defiance:4,skill:gladiator:defiance,4,12,+2s Tenacity duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/defiance
+spec:gladiator:defiance:5,skill:gladiator:defiance,5,16,+50% PvE Damage Tolerance and +25% PvP Damage Tolerance for Tenacity duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/defiance
+spec:gladiator:blade-toss:1,stigma:gladiator:blade-toss,1,5,+20% [Blade Toss] Incoming Heal reduction,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/blade-toss
+spec:gladiator:blade-toss:2,stigma:gladiator:blade-toss,2,10,[Blade Toss] inflicts Slow for 5s,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/blade-toss
+spec:gladiator:blade-toss:3,stigma:gladiator:blade-toss,3,15,[Blade Toss] breaks Protective Shields,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/blade-toss
+spec:gladiator:blade-toss:4,stigma:gladiator:blade-toss,4,20,[Blade Dance] has 30% chance to inflict Knockdown for 3s,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/blade-toss
+spec:gladiator:forced-restraint:1,stigma:gladiator:forced-restraint,1,5,50% chance to inflict Root for 5s,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/forced-restraint
+spec:gladiator:forced-restraint:2,stigma:gladiator:forced-restraint,2,10,"-1,000 Stamina",0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/forced-restraint
+spec:gladiator:forced-restraint:3,stigma:gladiator:forced-restraint,3,15,+2s Seal duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/forced-restraint
+spec:gladiator:forced-restraint:4,stigma:gladiator:forced-restraint,4,20,+25% Seal chance,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/forced-restraint
+spec:gladiator:wrath-wave:1,stigma:gladiator:wrath-wave,1,5,Up to +20% damage when more targets hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/wrath-wave
+spec:gladiator:wrath-wave:2,stigma:gladiator:wrath-wave,2,10,Reduces Attack by 20% for 5s,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/wrath-wave
+spec:gladiator:wrath-wave:3,stigma:gladiator:wrath-wave,3,15,Deals damage 1 additional time,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/wrath-wave
+spec:gladiator:wrath-wave:4,stigma:gladiator:wrath-wave,4,20,+25% Knockdown Chance,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/wrath-wave
+spec:gladiator:lunge-stance:1,stigma:gladiator:lunge-stance,1,5,+5% Double Chance for the duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/lunge-stance
+spec:gladiator:lunge-stance:2,stigma:gladiator:lunge-stance,2,10,Increases Move Speed by 20% for the duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/lunge-stance
+spec:gladiator:lunge-stance:3,stigma:gladiator:lunge-stance,3,15,x1.5 [Identify Weakness] effect for the duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/lunge-stance
+spec:gladiator:lunge-stance:4,stigma:gladiator:lunge-stance,4,20,50% chance to reduce all skill cooldowns by 1s on Critical Hit for the duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/lunge-stance
+spec:gladiator:tenaciousness:1,stigma:gladiator:tenaciousness,1,5,+100% Incoming Heal,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/tenaciousness
+spec:gladiator:tenaciousness:2,stigma:gladiator:tenaciousness,2,10,Restores 20% Max HP when the effect ends,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/tenaciousness
+spec:gladiator:tenaciousness:3,stigma:gladiator:tenaciousness,3,15,+20% Attack,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/tenaciousness
+spec:gladiator:tenaciousness:4,stigma:gladiator:tenaciousness,4,20,Trigger [Tenaciousness] when afflicted with Impact-type status,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/tenaciousness
+spec:gladiator:assault-strike:1,stigma:gladiator:assault-strike,1,5,+20% Attack for 5s on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/assault-strike
+spec:gladiator:assault-strike:2,stigma:gladiator:assault-strike,2,10,500 MP damage on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/assault-strike
+spec:gladiator:assault-strike:3,stigma:gladiator:assault-strike,3,15,+10m range,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/assault-strike
+spec:gladiator:assault-strike:4,stigma:gladiator:assault-strike,4,20,+20% Knockdown Chance,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/assault-strike
+spec:gladiator:fracturing-rush:1,stigma:gladiator:fracturing-rush,1,5,+2 max targets hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/fracturing-rush
+spec:gladiator:fracturing-rush:2,stigma:gladiator:fracturing-rush,2,10,Adds [Destructive Rush] Chain Skill,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/fracturing-rush
+spec:gladiator:fracturing-rush:3,stigma:gladiator:fracturing-rush,3,15,+20% Root Chance,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/fracturing-rush
+spec:gladiator:fracturing-rush:4,stigma:gladiator:fracturing-rush,4,20,50% chance to inflict Airborne for 3s,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/fracturing-rush
+spec:gladiator:zikels-blessing:1,stigma:gladiator:zikels-blessing,1,5,+50% Stagger Gauge Damage,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/zikels-blessing
+spec:gladiator:zikels-blessing:2,stigma:gladiator:zikels-blessing,2,10,+10% PvE Damage Boost and +5% PvP Damage Boost,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/zikels-blessing
+spec:gladiator:zikels-blessing:3,stigma:gladiator:zikels-blessing,3,15,+50% Multi-Hit chance,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/zikels-blessing
+spec:gladiator:zikels-blessing:4,stigma:gladiator:zikels-blessing,4,20,+20% Status Effect Chance,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/zikels-blessing
+spec:gladiator:lifestealing-blade:1,stigma:gladiator:lifestealing-blade,1,5,Up to +20% damage when more targets hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/lifestealing-blade
+spec:gladiator:lifestealing-blade:2,stigma:gladiator:lifestealing-blade,2,10,Predation effect on party members for 20s,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/lifestealing-blade
+spec:gladiator:lifestealing-blade:3,stigma:gladiator:lifestealing-blade,3,15,-30s cooldown,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/lifestealing-blade
+spec:gladiator:lifestealing-blade:4,stigma:gladiator:lifestealing-blade,4,20,+5% HP absorbed,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/lifestealing-blade
+spec:gladiator:rage-burst:1,stigma:gladiator:rage-burst,1,5,-15s [Rage Burst] cooldown,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/rage-burst
+spec:gladiator:rage-burst:2,stigma:gladiator:rage-burst,2,10,+10% Attack reduction,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/rage-burst
+spec:gladiator:rage-burst:3,stigma:gladiator:rage-burst,3,15,Critical Hit on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/rage-burst
+spec:gladiator:rage-burst:4,stigma:gladiator:rage-burst,4,20,+10% PvE Damage Boost increase and +5% PvP Damage Boost increase,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/rage-burst
+spec:gladiator:focused-block:1,stigma:gladiator:focused-block,1,5,+1 consecutive use,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/focused-block
+spec:gladiator:focused-block:2,stigma:gladiator:focused-block,2,10,Changes to mobile skill,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/focused-block
+spec:gladiator:focused-block:3,stigma:gladiator:focused-block,3,15,+20% Move Speed for 3s on Parry,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/focused-block
+spec:gladiator:focused-block:4,stigma:gladiator:focused-block,4,20,Restores 10% HP once on Parry,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/focused-block
+spec:gladiator:wave-armor:1,stigma:gladiator:wave-armor,1,5,"Absorbs 200, 200% HP",0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/wave-armor
+spec:gladiator:wave-armor:2,stigma:gladiator:wave-armor,2,10,x1.5 [Experienced Counterstrike] effect for the duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/wave-armor
+spec:gladiator:wave-armor:3,stigma:gladiator:wave-armor,3,15,x1.5 [Murderous Burst] effect for the duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/wave-armor
+spec:gladiator:wave-armor:4,stigma:gladiator:wave-armor,4,20,Reflects 10% of damage taken,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/wave-armor
+spec:gladiator:armor-of-balance:1,stigma:gladiator:armor-of-balance,1,5,+20% Ailment-type and Mental-type Resist,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/armor-of-balance
+spec:gladiator:armor-of-balance:2,stigma:gladiator:armor-of-balance,2,10,x1.5 [Blood Absorption] effect for the duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/armor-of-balance
+spec:gladiator:armor-of-balance:3,stigma:gladiator:armor-of-balance,3,15,x1.5 [Protection Armor] effect for the duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/armor-of-balance
+spec:gladiator:armor-of-balance:4,stigma:gladiator:armor-of-balance,4,20,+50% Impact-type Resist increase,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/armor-of-balance
