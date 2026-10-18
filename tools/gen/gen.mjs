@@ -9,7 +9,7 @@
        committed) for review; `npm run gen:check` fails if DATA_SOURCES.md is not current.
      - tests (core, e4) call generate() for the values the page should carry.
    Fails (throws / exit 1) on a schema error, a failed cross-record check or an unknown data major version. */
-import { mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { basename, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
@@ -553,7 +553,8 @@ export function generate(opts = {}) {
   /* ---------------------------------------------------------------- class packs no guide uses yet (0.6 P4) */
   /* A class pack is compiled only through a guide pack's chain; one that no guide uses yet (the Gladiator before P5) is
      still validated and checked here, and its records' URLs go to DATA_SOURCES.md, but nothing of it reaches a module. */
-  const idle = idleClassPacks(opts.root || DEFAULT_ROOT).map(id => checkIdleClass({ root: opts.root || DEFAULT_ROOT, pack: id, check, known }));
+  const idle = idleOf(opts.root || DEFAULT_ROOT);
+  for (const x of idle) { for (const c of x.checks) check(...c); for (const { r, file } of x.all) if (known.has(r.id)) check(`${x.pack}: id unique repo-wide: ${r.id}`, false, file); }
 
   const failed = report.checks.filter(c => !c.pass);
   /* ---------------------------------------------------------------- the module */
@@ -589,11 +590,21 @@ export const idleClassPacks = (root = DEFAULT_ROOT) => {
     else if (e.name === 'pack.json') { const m = JSON.parse(readFileSync(join(d, e.name), 'utf8')); if (m.kind === 'class' && !used.has(m.id)) ids.push(m.id); } };
   walk(root); return ids.sort();
 };
+/* the idle packs' checks don't depend on the bundle being compiled: kept per packs root while their files (and the
+   manifests, which decide what is idle) are unchanged, so the tests' many generate() calls pay for them once */
+const idleCache = new Map();
+const idleOf = root => {
+  const ids = idleClassPacks(root), sig = JSON.stringify(ids.flatMap(id => resolvePacks({ root, pack: id }).files.map(f => { const s = statSync(f.abs); return [f.rel, s.size, s.mtimeMs]; })));
+  const hit = idleCache.get(root);
+  if (hit && hit.sig === sig) return hit.idle;
+  const idle = ids.map(id => { const checks = []; return { ...checkIdleClass({ root, pack: id, check: (...c) => checks.push(c) }), checks }; });
+  idleCache.set(root, { sig, idle }); return idle;
+};
 /* One idle class pack: schema-validates its files (throws like loadBundle) and checks its records against the game pack's
-   boards: ids unique repo-wide (known: the bundle's ids), keys unique, class-scoped ids, every record cites a page, the
-   class is hidden, skill nodes resolve and match their skill's boardNodes, board totals (points, skill and stat nodes)
-   match boards.json, specialty ids and levels. Returns { pack, all: [{ r, file }] } for DATA_SOURCES.md. */
-function checkIdleClass({ root, pack, check, known }) {
+   boards: ids unique within the pack (generate() checks them against the bundle's), keys unique, class-scoped ids, every
+   record cites a page, the class is hidden, skill nodes resolve and match their skill's boardNodes, board totals (points,
+   skill and stat nodes) match boards.json, specialty ids and levels. Returns { pack, all: [{ r, file }] } for DATA_SOURCES.md. */
+function checkIdleClass({ root, pack, check }) {
   const { files } = resolvePacks({ root, pack }), errs = [], docs = [];
   for (const f of files) {
     const d = JSON.parse(readFileSync(f.abs, 'utf8')), e = validateDoc(f.abs, d);
@@ -607,7 +618,7 @@ function checkIdleClass({ root, pack, check, known }) {
   const [cls] = recs('classes'), skills = recs('skills'), stigmas = recs('stigmas'), nodes = recs('boardNodes'), P = pack + ': ';
   const skById = Object.fromEntries(skills.map(s => [s.id, s]));
   check(P + 'one class record, hidden (no guide pack offers it)', recs('classes').length === 1 && cls.release === 'hidden', cls && cls.release);
-  { const ids = new Set(known), keys = new Set();
+  { const ids = new Set(), keys = new Set();
     for (const { r, file } of all) { if (ids.has(r.id)) check(P + 'id unique repo-wide: ' + r.id, false, file); ids.add(r.id); }
     for (const n of nodes) { if (keys.has(n.key)) check(P + 'save key unique: ' + n.key, false); keys.add(n.key); } }
   for (const { r } of all) check(`${P}${r.id}: cites a page`, urlsIn(r.sources).length > 0);

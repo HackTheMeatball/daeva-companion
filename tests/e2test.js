@@ -168,6 +168,11 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
   const norm = u => { try { return new URL(u).href; } catch (e) { return u; } };
   const missing = [...dataUrls].filter(u => !hrefs.has(norm(u)) && !/^https?:\/\/metabot\.gg\/en\/aion-2\/quests\/daeva-trapped/.test(u));
   ok(`Sources card lists every URL in the data files (${dataUrls.size})`, !missing.length, missing);
+  /* a hidden class's pack (0.6 P4 Gladiator, release "hidden") ships nothing to this page: none of its own URLs is on the
+     card, and every one is in DATA_SOURCES.md */
+  { const ds = require('fs').readFileSync(require('path').join(__dirname, '..', 'data', 'DATA_SOURCES.md'), 'utf8'), hid = [...V1.hiddenUrls];
+    ok(`hidden class packs (${V1.hiddenDirs.length}): their ${hid.length} URLs are in DATA_SOURCES.md and none is on the Sources card`,
+      V1.hiddenDirs.length === 1 && hid.length > 0 && hid.every(u => ds.includes('](' + u + ')') && !hrefs.has(norm(u))), hid.filter(u => !ds.includes('](' + u + ')') || hrefs.has(norm(u)))); }
   ok('Sources links: no nofollow / sponsored / ugc', links.every(([, r]) => !/nofollow|sponsored|ugc/.test(r)));
   /* 10. No new external requests (fonts only, as before) */
   ok('no external requests besides Google Fonts', [...reqs].every(u => /^https:\/\/fonts\.(googleapis|gstatic)\.com\//.test(u)), [...reqs]); /* stylesheet + the font files it names (only where the network allows) */

@@ -19,6 +19,12 @@ const story45 = Object.fromEntries(story.filter(s => s.lv > 40).map(s => [s.name
 const edits = JSON.parse(fs.readFileSync(path.join(ROOT, 'tests', 'fixtures', 'claims-v1-edits.json'), 'utf8')).claims;
 const claims = recs('claims').map(c => ({ ...c, edits: (edits.find(e => e.id === c.id) || {}).edits || [] }));
 const build = recs('builds').find(b => b.origin === 'guide'), skills = Object.fromEntries(recs('skills').map(s => [s.id, s.name]));
-const urls = new Set(); const w = v => { if (typeof v === 'string') (v.match(/https?:\/\/[^\s)\]'"]+/g) || []).forEach(u => urls.add(u.replace(/[.,;]+$/, ''))); else if (v && typeof v === 'object') Object.values(v).forEach(w); };
-docs.filter(d => d.collection !== 'sources').forEach(d => w(d.records)); docs.filter(d => d.collection === 'sources').forEach(d => w(d.pages || []));
-module.exports = { rq, chains, story45, claims, build: { spOrderAfterCore: { order: build.skillOrder.filter(e => !e.core).map(e => skills[e.skill]) } }, dataUrls: urls };
+/* the URLs the page's Sources card must list. A class pack whose class is hidden (release "hidden": data only, not
+   offered, 0.6 P4 Gladiator) ships nothing to the page, so its URLs are hiddenUrls instead (in DATA_SOURCES.md, never
+   on the card); the class becomes checked here when its release flips. */
+const hiddenDirs = DATA_FILES.filter((f, i) => docs[i].collection === 'classes' && docs[i].records.every(r => r.release === 'hidden')).map(f => path.dirname(f) + path.sep);
+const isHidden = f => hiddenDirs.some(d => f.startsWith(d));
+const urlsOf = keep => { const urls = new Set(); const w = v => { if (typeof v === 'string') (v.match(/https?:\/\/[^\s)\]'"]+/g) || []).forEach(u => urls.add(u.replace(/[.,;]+$/, ''))); else if (v && typeof v === 'object') Object.values(v).forEach(w); };
+  docs.forEach((d, i) => { if (!keep(DATA_FILES[i])) return; if (d.collection !== 'sources') w(d.records); else w(d.pages || []); }); return urls; };
+const urls = urlsOf(f => !isHidden(f)), shownUrls = new Set(urls), hiddenUrls = new Set([...urlsOf(isHidden)].filter(u => !shownUrls.has(u)));
+module.exports = { rq, chains, story45, claims, build: { spOrderAfterCore: { order: build.skillOrder.filter(e => !e.core).map(e => skills[e.skill]) } }, dataUrls: urls, hiddenUrls, hiddenDirs };
