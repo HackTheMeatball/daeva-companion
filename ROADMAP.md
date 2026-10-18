@@ -599,7 +599,10 @@ To-dos the hour this plan merges (scorecard K4), each with its recommendation an
 4. **Sync hosting and money** (`owner-ok-sync-hosting`, docs/design/sync.md §6 S1 + S2; blocks P21 and 0.7's server,
    not red): recommended Cloudflare Workers + R2 in the existing account, free tier with a usage alert.
 5. **Gladiator spot check** (`owner-check-gladiator`, blocks P5, not red until P4 merges): who will level which class
-   (D8), and on a Gladiator: the stigma max level (Metabot FAQ says 25, Assassin is 40) and three skill learn levels.
+   (D8; default "Gladiator is fine"), and one Skills-window screen from a Lv 1 Gladiator to check three learn levels
+   (Mocking Blade Lv 3, Rush Strike Lv 10, Ruinous Blow Lv 14). Not asked: the stigma max level (Metabot 25, Assassin
+   40): the Gladiator research session (2026-10-18) counts about 30 stigma points by Lv 45 against 75 for stigma
+   Lv 20, so a leveling guide never reaches it (not re-checked here); `maxLevel` ships labelled single source.
 
 Not blockers (the recommendation applies unless the owner says otherwise):
 
