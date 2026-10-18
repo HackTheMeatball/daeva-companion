@@ -112,3 +112,34 @@ Same policy and User-Agent as the Gladiator run. robots.txt and the terms page w
 (within the 24 h cache). **38 requests, all to metabot.gg, all 200**, 2:10–2:14 AM ET on 18 Oct, at least 5 s apart:
 the class page, the build page, the Daevanion page and 35 skill pages. The class-builds guide row comes from the
 cached Gladiator-run copy (no new request). Not touched: any other host.
+
+## 6. Second sources for the three learn levels (owner input 5)
+
+Run 18 Oct 2026, 2:38–2:43 AM ET, after the owner asked for the other allowed sites to be checked. Site rules for each
+host are in [`2026-10-build-guide-sources.md`](2026-10-build-guide-sources.md) (#309); this run re-read robots.txt on
+all 12 hosts (all allow AI readers) and mmo-codex's `/terms/` (bans scraping and republication only, so spot checks
+are allowed). Facts only; no page copies kept.
+
+| Skill | Metabot | [mmo-codex](https://mmo-codex.com/games/aion-2/classes/ranger/) | [daevaguides](https://daevaguides.com/en/ranger/) | [aion2-guides.info](https://aion2-guides.info/en/ranger/) |
+|---|---|---|---|---|
+| Marking Shot | 3 | 3 ("there from level 3") | not stated as a level | listed under "Lv 1" (GUESS: order met, not unlock level) |
+| Burst Arrow | 10 | 10 | 10 | 10 |
+| Deadshot | 14 | 14 ("unlocks only at character level 14") | 14 | 14 |
+
+Also matching Metabot on these pages: Drill Dart 4, Gale Arrow 7, Explosion Trap 8, Defiance 16 (mmo-codex,
+daevaguides), and Rooting Eye 17, Melee Fire 21, Revitalization Contract 23, Hunter's Soul 25 (mmo-codex).
+
+**How independent these are (inferred, not proven):**
+
+- mmo-codex says its numbers come from the game client "through aion2.app". aion2.app is a site we don't read by
+  script (its terms ban bots), so this is client data at second hand, not a copy of Metabot.
+- aion2-guides.info is a compilation of other creators' guides (#309), so it doesn't count as its own source.
+- daevaguides doesn't say where its levels come from.
+
+**Verdict:** Burst Arrow 10 and Deadshot 14 have Metabot plus mmo-codex and daevaguides: two-source, with the caveat
+that they may share upstream data. Marking Shot 3 has Metabot plus mmo-codex only. The owner's Skills screenshot is
+now optional; if it arrives, it replaces these as the second source.
+
+Requests: [`ranger-second-sources-2026-10.requests.log`](../../data/research/ranger-second-sources-2026-10.requests.log),
+45 requests, one at a time and at least 5 s apart per host (robots.txt, guessed `/terms` URLs that returned 404,
+sitemaps, mmo-codex `/terms/`, and four Ranger pages). Nothing else on these hosts was read.
