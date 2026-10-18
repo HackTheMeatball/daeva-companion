@@ -2,6 +2,10 @@
 .sync-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--space-6) var(--space-12); margin: var(--space-8) 0 var(--space-10); }
 .sync-grid label { display: flex; justify-content: space-between; align-items: center; gap: var(--space-8); font-size: 13px; }
 .sync-grid input { width: 52px; font: 600 14px var(--mono); color: var(--fg); background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--radius-6); padding: var(--space-3) var(--space-6); }
+/* the green "(+x)" from ticked Daevanion nodes (0.6 P9); in Sync levels a fixed slot so the boxes stay aligned */
+.spbonus { color: var(--good); font: 600 12px var(--mono); white-space: nowrap; }
+.syncv { display: inline-flex; align-items: center; gap: var(--space-4); }
+.sync-grid .spbonus { display: inline-block; min-width: 4ch; }
 .tfoot #spRespec { margin-left: auto; }
 #syncMsg { font-size: 12.5px; margin-left: var(--space-8); }
 .sphero .dvbar-l i { font-style: normal; font-weight: 500; color: var(--muted); }

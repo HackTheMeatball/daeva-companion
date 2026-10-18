@@ -5,7 +5,7 @@ import { char } from "../../../core/state.js";
 import { ITEMS } from "../data/items.js";
 import { LEVEL_POINTS, SP_ICONS, SP_SKILLS, SP_STEPS } from "../data/build.js";
 import { spCostTxt } from "../catalog.js";
-import { planReachOf, skillBuy, skillLvOf, skillOpen, skillPoints } from "../requirements.js";
+import { planReachOf, skillBonusOf, skillBuy, skillLvOf, skillOpen, skillPoints } from "../requirements.js";
 import { tipPop } from "./shared.js";
 import { renderCollection } from "./progress.js";
 import { renderRotation } from "./build.js";
@@ -45,7 +45,7 @@ function renderNext() {
     const pct = hero.spec ? (locked ? 0 : 100) : Math.min(100, Math.max(0, pts / cost * 100));
     heroHTML = `<div class="sphero ${state_}${hero.spec ? " spec" : ""}">` +
       `<div class="dvhead">${SP_ICONS[hero.s.n] ? `<span class="dvico spico art"><img src="${SP_ICONS[hero.s.n]}" alt="" loading="lazy" onerror="this.remove()"></span>` : `<span class="dvico spico ini" aria-hidden="true">${ini(hero.s.n)}</span>`}` +
-      `<div class="dvtext"><span class="spname">${hero.s.n} ${spType(hero.s)} ${hero.spec ? `<em>specialty${hero.slot > 1 ? " " + hero.slot : ""}</em>` :`<span class="lvarr">${hero.L - 1} → ${hero.L}</span>`}</span><small title="${sub.replace(/<[^>]+>/g, "")}">${sub}</small>` +
+      `<div class="dvtext"><span class="spname">${hero.s.n} ${spType(hero.s)} ${hero.spec ? `<em>specialty${hero.slot > 1 ? " " + hero.slot : ""}</em>` :`<span class="lvarr">${hero.L - 1} → ${hero.L}${spBonus(hero.s.n)}</span>`}</span><small title="${sub.replace(/<[^>]+>/g, "")}">${sub}</small>` +
       (hero.spec || locked ? `<span class="dvbar-ph"></span>` : `<div class="dvbar"><div class="dvtrack"><span style="width:${pct}%"></span></div><span class="dvbar-l" title="You have ${pts} point${pts === 1 ? "" : "s"}; this upgrade costs ${cost}"><b>${Math.min(pts, cost)}</b> of ${cost} pt${cost === 1 ? "" : "s"}</span></div>`) + `</div></div>` +
       `<div class="buyrow">${ok ? `<button type="button" class="dvbuy" id="spBuy">${btn}</button>` : `<div class="buystat">${btn}${tipPop("stones")}</div>`}</div>` +
 
@@ -72,8 +72,11 @@ function renderNext() {
        status like the Stigmas card's slot row, not the green "points covered" ✓); slot 3 is past what points and plan nodes reach (Q5) */
     if (x.spec) return `<li class="isspec" title="Specialty slot ${x.slot}: ${specSub(x).replace(/<[^>]+>/g, "")} · ${avail ? "available now" : `at skill Lv ${x.slotLv} (yours: ${skillLvOf(char(state), x)})`}${planReachOf(x) < x.slotLv ? ` · the plan's skill points and board nodes reach skill Lv ${planReachOf(x)}` : ""}">` +
       `<span class="sname">${spMini(x.s.n)}${x.s.n} ${spType(x.s)} <span class="spectag">${x.slot > 1 ? "slot " + x.slot : "spec"}</span></span><span class="slv${avail ? " now" : ""}">${avail ? "now" : "skill " + x.slotLv}</span><span class="sst"></span></li>`;
-    return `<li title="${spCostTxt(x)} · ${avail ? "available now" : "Lv " + x.req} · ${short > 0 ? `${short} short by then` : "points covered"}${x.s.single ? ` · single source (${x.s.single})` : ""}"><span class="sname">${spMini(x.s.n)}${x.s.n} ${spType(x.s)} <span class="lvarr">${x.L - 1} → ${x.L}</span></span><span class="slv${avail ? " now" : ""}">${avail ? "now" : "Lv " + x.req}</span><span class="sst ${short > 0 ? "short" : "ok"}">${short > 0 ? `−${short}` : "✓"}</span></li>`;
+    return `<li title="${spCostTxt(x)} · ${avail ? "available now" : "Lv " + x.req} · ${short > 0 ? `${short} short by then` : "points covered"}${x.s.single ? ` · single source (${x.s.single})` : ""}"><span class="sname">${spMini(x.s.n)}${x.s.n} ${spType(x.s)} <span class="lvarr">${x.L - 1} → ${x.L}${spBonus(x.s.n)}</span></span><span class="slv${avail ? " now" : ""}">${avail ? "now" : "Lv " + x.req}</span><span class="sst ${short > 0 ? "short" : "ok"}">${short > 0 ? `−${short}` : "✓"}</span></li>`;
   }).join("") + `</ul>` : "";
+  /* Sync levels: the box is the base level; the green bonus beside it, as in the game's tooltip title */
+  SP_SKILLS.forEach((s, i) => { const b = document.getElementById("syncB" + i), x = skillBonusOf(char(state), s.n);
+    b.textContent = x ? `(+${x})` : ""; b.title = x ? bonusTip(x) : ""; });
   const ptsIn = document.getElementById("spPts");
   if (document.activeElement !== ptsIn) ptsIn.value = stones;
   document.getElementById("spLv").textContent = `${fromLevels} earned from levels`;
@@ -85,12 +88,15 @@ function renderNext() {
 }
 /* Active / Passive tag (0.2.7): skills.json "type" via the compiled s.passive flag; text, not colour only */
 const spType = s => `<span class="sptype">${s.passive ? "Passive" : "Active"}</span>`;
+/* the game's green "(+x)" (0.6 P9): levels the ticked Daevanion nodes add to the skill; nothing when none do */
+const bonusTip = x => `+${x} skill level${x === 1 ? "" : "s"} from your ticked Daevanion nodes`;
+const spBonus = n => { const x = skillBonusOf(char(state), n); return x ? ` <span class="spbonus" title="${bonusTip(x)}">(+${x})</span>` : ""; };
 /* Sync levels, the stones box, the hero's button (from render(), once) */
 function aion2SkillsMount() {
   /* Sync: set each plan skill's level from the game; ticks lines up to that level and unticks the rest.
      Specialty picks are left as they are. Points are not changed (the game's own counter is the truth). */
   const syncGrid = document.getElementById("syncGrid");
-  syncGrid.innerHTML = SP_SKILLS.map((s, i) => `<label for="sync${i}">${s.n}<input id="sync${i}" type="number" min="1" max="10" inputmode="numeric"></label>`).join("");
+  syncGrid.innerHTML = SP_SKILLS.map((s, i) => `<label for="sync${i}">${s.n}<span class="syncv"><input id="sync${i}" type="number" min="1" max="10" inputmode="numeric"><span class="spbonus" id="syncB${i}"></span></span></label>`).join("");
   document.getElementById("syncBox").addEventListener("toggle", e => {
     if (!e.target.open) return;
     SP_SKILLS.forEach((s, i) => {

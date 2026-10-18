@@ -93,6 +93,12 @@ async function load(p, state, mode) {
     /* the pass above only covers the Active / Passive chip's contrast if the chip is on screen in this state (0.2.7) */
     const chips = await p.evaluate(() => [...document.querySelectorAll('.sptype')].filter(e => { const r = e.getBoundingClientRect(); return r.width > 0 && r.height > 0 && getComputedStyle(e).visibility !== 'hidden'; }).length);
     ok(`axe ${id}: .sptype chips visible in the axed state (${chips})`, chips > 0, chips);
+    /* and the green "(+x)" skill bonus (0.6 P9) only where ticked Daevanion nodes add levels: the Lv 45 fixture's in Advanced (Sync levels open; Basic hides
+       the card's footer and its fully bought plan leaves no level arrow) */
+    if (sn === 'lv45' && mode === 'advanced') {
+      const bonus = await p.evaluate(() => [...document.querySelectorAll('.spbonus')].filter(e => { const r = e.getBoundingClientRect(); return e.textContent && r.width > 0 && r.height > 0 && getComputedStyle(e).visibility !== 'hidden'; }).length);
+      ok(`axe ${id}: green skill bonuses visible in the axed state (${bonus})`, bonus > 0, bonus);
+    }
     res.filter(v => ALLOW[v.id]).forEach(v => { seen[v.id] = (seen[v.id] || 0) + v.n; });
     const names = await p.evaluate(() => [...document.querySelectorAll('button')].map(x => ({ n: (x.getAttribute('aria-label') || x.textContent || x.title || '').replace(/\s+/g, ' ').trim(), c: x.className })));
     ok(`names ${id}: no "What is ?" button, every button named`, !names.some(x => /What is\s*\?/.test(x.n)) && names.every(x => x.n), names.filter(x => !x.n || /What is\s*\?/.test(x.n)));
