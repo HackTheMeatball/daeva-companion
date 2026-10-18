@@ -21,6 +21,10 @@ export const ENGINE_FIELDS = [
 export const charFields = () => [...ENGINE_FIELDS, ...Object.keys(activePack().charFields)];
 export const CHAR_META = ["id", "pack", "class", "name", "created"];
 export const char = state => state.chars[state.current];
+/* A removed character (0.6 P20) leaves a tombstone in its slot: { id, deletedAt } (ms), so merge() (src/core/sync.js)
+   doesn't bring it back from another save. Every reader of chars skips it: liveChars(state) is the list of the characters. */
+export const isRemoved = c => !!c && typeof c === "object" && !Array.isArray(c) && "deletedAt" in c;
+export const liveChars = state => Object.values(state.chars).filter(c => !isRemoved(c));
 
 /* The label (owner, 2026-10-16): <name>-<class>-lvl<level>, the name part left out while the name is empty. Derived on
    read, never stored, and never put in a storage key, a file name, a URL or a log (it may carry the player's name). */
@@ -44,24 +48,32 @@ export function newSave({ now = 0, id }) {
   return { v: SAVE_V, current: c.id, chars: { [c.id]: c }, ...DEFAULT() };
 }
 
-/* A stored v5 save: an object with v 5 and a current slot that holds a character. Nothing else is read. */
+/* A stored v5 save: an object with v 5 and a current slot that holds a character or a tombstone. Nothing else is read. */
 const isObj = x => !!x && typeof x === "object" && !Array.isArray(x);
 const isV5 = s => isObj(s) && s.v === SAVE_V && isObj(s.chars) && typeof s.current === "string" && isObj(s.chars[s.current]);
 
 /* The state from the stored text (null = no save). Anything that isn't a v5 save (unreadable text, another shape) gives
    a new save, as if there were none. hadSave: a v5 save was loaded. opts { now (ms), newId () → slot id } make the new
-   save; newId is only called then. */
+   save; newId is only called then. A save whose current slot is a tombstone (merge() removed it, 0.6 P20) shows the
+   first remaining character; one with no character left (each device removed the other's) gets a new one, current,
+   next to the tombstones (newId is called for it too). */
 export function loadState(raw, { now = 0, newId } = {}) {
   let s = null;
   try { s = JSON.parse(raw || "null"); } catch (e) { s = null; }
   if (!isV5(s)) return { state: newSave({ now, id: newId && newId() }), hadSave: false };
   const state = Object.assign(DEFAULT(), s);
-  Object.entries(state.chars).forEach(([k, c]) => { if (isObj(c)) state.chars[k] = Object.assign(CHAR_DEFAULT(), c); else delete state.chars[k]; });
+  Object.entries(state.chars).forEach(([k, c]) => { if (!isObj(c)) delete state.chars[k]; else if (!isRemoved(c)) state.chars[k] = Object.assign(CHAR_DEFAULT(), c); });
+  if (isRemoved(state.chars[state.current])) {
+    const first = Object.keys(state.chars).find(k => !isRemoved(state.chars[k]));
+    if (first) state.current = first;
+    else { const c = newChar({ now, id: newId && newId() }); state.chars[c.id] = c; state.current = c.id; }
+  }
   return { state, hadSave: true };
 }
-/* An imported file's text: the parsed save when it is a v5 export, else null (a pre-0.4 export, or not a save). */
+/* An imported file's text: the parsed save when it is a v5 export (its current slot a character: an export is written
+   from a loaded save), else null (a pre-0.4 export, or not a save). */
 export function parseExport(raw) {
   let s = null;
   try { s = JSON.parse(raw); } catch (e) { return null; }
-  return isV5(s) ? s : null;
+  return isV5(s) && !isRemoved(s.chars[s.current]) ? s : null;
 }

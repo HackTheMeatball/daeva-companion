@@ -115,6 +115,85 @@ export default (test, M) => {
     for (let i = 0; i + 1 < saves.length; i++) { const m = M.merge(saves[i], saves[i + 1]);
       assert.deepEqual(M.merge(m, m), m, `m ${i}`); assert.deepEqual(S(M.merge(m, saves[i])), S(m), `m+a ${i}`); assert.deepEqual(S(M.merge(m, saves[i + 1])), S(m), `m+b ${i}`); }
   });
+  /* ---------- removed characters (0.6 P20): tombstones ---------- */
+  /* genSave's saves, some with a character removed (removeChar at a time in the saves' range, so removals before, at and
+     after the other saves' edits all happen), some edited again after the removal */
+  const tombSaves = Array.from({ length: 36 }, (_, i) => {
+    const s = genSave(M, 2000 + i), r = rng(3000 + i);
+    if (!(SLOT_B in s.chars) || r() < 0.25) return s;
+    const id = r() < 0.5 ? TEST_SLOT : SLOT_B, t = Math.floor(r() * 7) * 1000;
+    let x = M.removeChar(s, id, t);
+    if (r() < 0.4) { x = clone(x); C(x).checks['g6:0'] = r() < 0.5; M.stampSave(x, t + 2000); }
+    return clone(x);
+  });
+  test('merge with tombstones: generated saves have tombstones on either slot, and plain slots', () => {
+    const t = tombSaves.filter(s => Object.values(s.chars).some(M.isRemoved));
+    assert.ok(t.some(s => M.isRemoved(s.chars[TEST_SLOT])) && t.some(s => M.isRemoved(s.chars[SLOT_B])) && t.length < tombSaves.length, t.length);
+    const revived = []; for (const a of tombSaves) for (const b of tombSaves) { const m = M.merge(a, b); Object.values(m.chars).forEach(c => { if ('removedAt' in c) revived.push(c); }); }
+    assert.ok(revived.length > 0, 'some merges bring a character back with its newer edits');
+  });
+  test('merge with tombstones: commutative (synced part) over generated save pairs', () => {
+    const all = [...tombSaves, ...saves.slice(0, 12)];
+    for (let i = 0; i < all.length; i++) for (let j = i + 1; j < all.length; j++)
+      assert.deepEqual(S(M.merge(all[i], all[j])), S(M.merge(all[j], all[i])), `${i} × ${j}`);
+  });
+  test('merge with tombstones: associative (synced part) over generated save triples', () => {
+    const all = [...tombSaves, ...saves.slice(0, 12)];
+    for (let i = 0; i + 2 < all.length; i++) for (const [a, b, c] of [[i, i + 1, i + 2], [i + 2, i, i + 1]])
+      assert.deepEqual(S(M.merge(M.merge(all[a], all[b]), all[c])), S(M.merge(all[a], M.merge(all[b], all[c]))), `${a} ${b} ${c}`);
+  });
+  test('merge with tombstones: idempotent: merge(a, a) = a, merge(m, m) = m, merge(m, a) = m; every result loads with a character', () => {
+    tombSaves.filter(s => C(s).mt).forEach((a, i) => assert.deepEqual(M.merge(a, a), a, `save ${i}`));
+    for (let i = 0; i + 1 < tombSaves.length; i++) { const a = tombSaves[i], b = tombSaves[i + 1], m = M.merge(a, b);
+      assert.deepEqual(M.merge(m, m), m, `m ${i}`); assert.deepEqual(S(M.merge(m, a)), S(m), `m+a ${i}`); assert.deepEqual(S(M.merge(m, b)), S(m), `m+b ${i}`);
+      const r = M.loadState(JSON.stringify(m), { newId: () => 'new-slot' });
+      assert.ok(r.hadSave && !M.isRemoved(C(r.state)) && (M.liveChars(m).length === 0 || !M.isRemoved(C(m))), `m ${i} loads with a current character`); }
+  });
+  /* the core cases: A removes character B (SLOT_B) at T; B's device still has it */
+  const twoDevices = () => {
+    const base = load(M, { checks: {}, level: 20, quest: '' }, 0).state;
+    base.chars[SLOT_B] = { ...clone(base.chars[TEST_SLOT]), id: SLOT_B, level: 30 }; base.chars[SLOT_B].checks['g6:0'] = true; M.stamp(base.chars[SLOT_B], 100);
+    return base;
+  };
+  test('merge tombstone: remove on A, merge B\'s older save: it stays removed (both orders), the tombstone is kept', () => {
+    const base = twoDevices(), a = M.removeChar(clone(base), SLOT_B, 200000), b = clone(base);
+    b.chars[SLOT_B].checks['g22:1'] = true; M.stamp(b.chars[SLOT_B], 150);
+    for (const m of [M.merge(a, b), M.merge(b, a)]) { assert.deepEqual(m.chars[SLOT_B], { id: SLOT_B, deletedAt: 200000 }); assert.deepEqual(m.chars[TEST_SLOT], base.chars[TEST_SLOT]); }
+    assert.deepEqual(M.merge(M.merge(a, b), b), M.merge(a, b), 'merging the old copy again changes nothing');
+  });
+  test('merge tombstone: an edit on B after the removal brings the character back with the edits made after it, nothing older', () => {
+    const base = twoDevices(), a = M.removeChar(clone(base), SLOT_B, 200000), b = clone(base);
+    b.chars[SLOT_B].checks['g22:1'] = true; b.chars[SLOT_B].level = 31; M.stamp(b.chars[SLOT_B], 300);
+    for (const m of [M.merge(a, b), M.merge(b, a)]) {
+      const c = m.chars[SLOT_B];
+      assert.ok(!M.isRemoved(c)); assert.equal(c.removedAt, 200000);
+      assert.deepEqual(c.checks, { 'g22:1': true }, 'the tick from before the removal stays removed'); assert.equal(c.level, 31);
+      assert.deepEqual(c.mt, { checks: { 'g22:1': [300, true] }, level: [300, 31] });
+      assert.deepEqual([c.id, c.class, c.pack], [SLOT_B, base.chars[SLOT_B].class, base.chars[SLOT_B].pack]);
+      assert.deepEqual(S(M.merge(m, base)), S(m), 'a still older copy (the base) is cut too: removedAt travels with the character');
+    }
+  });
+  test('merge tombstone: an edit at the removal\'s second is before it (the removal wins ties); two removals keep the later one', () => {
+    const base = twoDevices(), a = M.removeChar(clone(base), SLOT_B, 200500), b = clone(base);
+    b.chars[SLOT_B].level = 31; M.stamp(b.chars[SLOT_B], 200);
+    assert.deepEqual(M.merge(a, b).chars[SLOT_B], { id: SLOT_B, deletedAt: 200500 });
+    const a2 = M.removeChar(clone(base), SLOT_B, 250000);
+    for (const m of [M.merge(a, a2), M.merge(a2, a)]) assert.deepEqual(m.chars[SLOT_B], { id: SLOT_B, deletedAt: 250000 });
+  });
+  test('merge tombstone: each side removed the other\'s character: both stay removed; the load adds a new character (no crash, no fresh start)', () => {
+    const base = twoDevices(), a = M.removeChar(clone(base), TEST_SLOT, 400000), b = M.removeChar(clone(base), SLOT_B, 500000);
+    for (const m of [M.merge(a, b), M.merge(b, a)]) {
+      assert.deepEqual(m.chars, { [TEST_SLOT]: { id: TEST_SLOT, deletedAt: 400000 }, [SLOT_B]: { id: SLOT_B, deletedAt: 500000 } });
+      const r = M.loadState(JSON.stringify(m), { now: 600000, newId: () => 'new-slot' });
+      assert.ok(r.hadSave); assert.equal(r.state.current, 'new-slot'); assert.ok(!M.isRemoved(C(r.state)));
+      assert.deepEqual(M.liveChars(r.state).map(c => c.id), ['new-slot']);
+    }
+  });
+  test('merge tombstone: syncedPart carries the tombstone and removedAt; readers skip tombstones (liveChars)', () => {
+    const base = twoDevices(), a = M.removeChar(clone(base), SLOT_B, 200000);
+    assert.deepEqual(S(a).chars[SLOT_B], { deletedAt: 200000 });
+    assert.deepEqual(M.liveChars(a).map(c => c.id), [TEST_SLOT]);
+  });
   test('merge: inputs are not changed', () => {
     const a = clone(saves[0]), b = clone(saves[1]); M.merge(a, b); assert.deepEqual([a, b], [saves[0], saves[1]]);
   });

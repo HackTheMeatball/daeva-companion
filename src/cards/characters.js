@@ -8,14 +8,15 @@
    onAdd({ class, name }), Save name onRename(id, name), the confirmed Remove onRemove(id); the shell builds the new save
    with src/core/chars.js, stores it and reloads, so every card is drawn for the character from the start. The name and the label are shown here and kept in the save only: never in a
    key, a file name, a URL, a log or the page title (docs/ARCHITECTURE.md §1). */
-import { labelOf } from "../core/state.js";
+import { labelOf, liveChars } from "../core/state.js";
 import { NAME_MAX, cleanName } from "../core/chars.js";
 import { packClasses } from "../core/pack.js";
 
 const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
-/* the rows' order (display only, the save keeps its own): by name, case-insensitive, ties by slot id, unnamed last */
-const sortedChars = chars => Object.values(chars).sort((a, b) => {
+/* the rows' order (display only, the save keeps its own): by name, case-insensitive, ties by slot id, unnamed last; a
+   removed character's tombstone (0.6 P20) is no row */
+const sortedChars = state => liveChars(state).sort((a, b) => {
   const x = a.name || "", y = b.name || "";
   if (!x !== !y) return x ? -1 : 1;
   return x.localeCompare(y, undefined, { sensitivity: "base" }) || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
@@ -38,7 +39,7 @@ export function charactersCard({ onSwitch, onAdd, onRename, onRemove }) {
      in their spoken names; Remove is left out while there is one character (the last one is never removed). The row
      being renamed is the rename field instead. */
   const drawRows = state => {
-    const all = sortedChars(state.chars), many = all.length > 1;
+    const all = sortedChars(state), many = all.length > 1;
     $("charRows").innerHTML = all.map(c => {
       const cur = c.id === state.current, l = esc(labelOf(c)), id = esc(c.id);
       if (c.id === editing) return `<li class="chedit"><form class="chform" id="charRenForm"><div class="chfld"><label for="charRen">Rename <b>${l}</b></label><input type="text" id="charRen" autocomplete="off" spellcheck="false" value="${esc(c.name || "")}" aria-describedby="charRenHint"><span class="chhint" id="charRenHint">Leave empty to show no name. Up to ${NAME_MAX} characters.</span></div><div class="chbtns"><button type="button" id="charRenCancel">Cancel</button><button type="submit" class="primary" id="charRenSave">Save name</button></div></form></li>`;

@@ -332,9 +332,10 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     await p.click(`[data-remove="${C}"]`);
     await Promise.all([p.waitForEvent('load'), p.click('#charRemove')]); await p.waitForTimeout(400);
     await p.reload(); await p.waitForTimeout(400);
-    const want1 = JSON.parse(raw0); delete want1.chars[C];
-    const raw1 = await readRaw(p);
-    ok('remove a non-current character: its slot is gone, the rest of the save byte-identical, still current after a reload', raw1 === JSON.stringify(want1) && await p.evaluate(() => state.current) === B, raw1 && diffPaths(want1, JSON.parse(raw1)));
+    /* 0.6 P20: the slot keeps a tombstone { id, deletedAt } (the time of the click, ms) so merge() never brings it back */
+    const raw1 = await readRaw(p), tomb1 = raw1 && JSON.parse(raw1).chars[C];
+    const want1 = JSON.parse(raw0); want1.chars[C] = { id: C, deletedAt: tomb1 && tomb1.deletedAt };
+    ok('remove a non-current character: its slot is a dated tombstone, the rest of the save byte-identical, still current after a reload', raw1 === JSON.stringify(want1) && tomb1.deletedAt > 1.7e12 && await p.evaluate(() => state.current) === B, raw1 && diffPaths(want1, JSON.parse(raw1)));
     /* the current one: B goes, the first remaining slot (A) becomes current */
     await p.click('#charBtn');
     ok('remove: the list now shows Zed (current) and A (unnamed, last)', JSON.stringify((await rowsOf(p)).map(r => [r.lbl, r.cur])) === JSON.stringify([['Zed-assassin-lvl27', 'true'], ['assassin-lvl22', null]]));
@@ -342,9 +343,10 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     ok('remove the current character: the confirmation names it', await p.innerText('#charDlgHead') === 'Remove Zed-assassin-lvl27?');
     await Promise.all([p.waitForEvent('load'), p.click('#charRemove')]); await p.waitForTimeout(400);
     await p.reload(); await p.waitForTimeout(400);
-    const want2 = JSON.parse(raw1); delete want2.chars[B]; want2.current = TEST_SLOT;
-    const raw2 = await readRaw(p), shown = await p.evaluate(() => ({ cur: state.current, lv: char(state).level, q: document.getElementById('questIn').value, lbl: document.getElementById('charLbl').textContent }));
-    ok('remove the current character: its slot is gone, the first remaining is current, the rest byte-identical (after a reload)', raw2 === JSON.stringify(want2), raw2 && diffPaths(want2, JSON.parse(raw2)));
+    const raw2 = await readRaw(p), tomb2 = raw2 && JSON.parse(raw2).chars[B];
+    const want2 = JSON.parse(raw1); want2.chars[B] = { id: B, deletedAt: tomb2 && tomb2.deletedAt }; want2.current = TEST_SLOT;
+    const shown = await p.evaluate(() => ({ cur: state.current, lv: char(state).level, q: document.getElementById('questIn').value, lbl: document.getElementById('charLbl').textContent }));
+    ok('remove the current character: its slot is a dated tombstone, the first remaining is current, the rest byte-identical (after a reload)', raw2 === JSON.stringify(want2) && tomb2.deletedAt >= tomb1.deletedAt, raw2 && diffPaths(want2, JSON.parse(raw2)));
     ok('remove the current character: the page shows the remaining one (assassin-lvl22, Lv 22, its quest)', shown.cur === TEST_SLOT && shown.lv === 22 && shown.q === SAVED.quest && shown.lbl === 'assassin-lvl22', shown);
     await p.click('#charBtn');
     ok('remove: back to one character, no Remove offered', (await rowsOf(p)).length === 1 && !(await p.$('#charRows [data-remove]')));
