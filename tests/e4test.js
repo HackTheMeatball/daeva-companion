@@ -174,5 +174,24 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
     ok(`P10: Lv ${L} play steps: icon or initials, decorative`, r.length > 0 && r.filter(x => !/^Hold/.test(x.text)).every(x => x.icos > 0 && !x.bad), r);
   }
 
+  /* 0.6.1 F2 (#335): at 390x844 the Undo toast sits above the tab bar, the Build sheet leaves the bar tappable, a tab closes
+     the sheet and goes there, and the toast goes after its timeout; Undo works inside it. */
+  await p.setViewportSize({ width: 390, height: 844 });
+  await writeSave(p, { checks: {}, level: 20, mode: 'basic', open: {} }); await p.reload(); await p.waitForTimeout(400);
+  await p.evaluate(() => { window.__undone = 0; rewardToast('Turned in', () => { window.__undone++; }); });
+  await p.waitForTimeout(500);
+  r = await p.evaluate(() => { const t = document.getElementById('rwToast').getBoundingClientRect(), b = document.getElementById('tabBar').getBoundingClientRect(); return { toastBottom: Math.round(t.bottom), barTop: Math.round(b.top) }; });
+  ok('F2 390x844: the Undo toast does not overlap the tab bar', r.toastBottom <= r.barTop, r);
+  await p.click('#rwToast .tu'); await p.waitForTimeout(200);
+  ok('F2: Undo inside its window runs the undo', await p.evaluate(() => window.__undone === 1));
+  await p.evaluate(() => rewardToast('Turned in', () => {})); await p.waitForTimeout(6600);
+  ok('F2: the toast is gone after its timeout', await p.evaluate(() => { const t = document.getElementById('rwToast'); return getComputedStyle(t).opacity === '0' && !t.querySelector('.tu'); }));
+  await p.click('#tabBuild'); await p.waitForTimeout(500);
+  r = await p.evaluate(() => { const rt = document.querySelector('#tabBar [data-go="nowStar"]'), q = rt.getBoundingClientRect(), el = document.elementFromPoint(q.left + q.width / 2, q.top + q.height / 2); return { hit: el === rt, id: el && (el.id || el.className) }; });
+  ok('F2: with Build open, elementFromPoint at the Route tab is the tab', r.hit, r);
+  await p.click('#tabBar [data-go="nowStar"]'); await p.waitForTimeout(500);
+  r = await p.evaluate(() => ({ open: document.getElementById('statDrawer').classList.contains('open'), top: Math.round(document.getElementById('nowStar').getBoundingClientRect().top) }));
+  ok('F2: tapping Route with Build open closes the sheet and goes to Route', !r.open && r.top < 200, r);
+
   ok('no page errors', !errs.length, errs);
   console.log(`${n - fail} ok, ${fail} failed`); console.log(fail ? `E4 CHECKS FAILED (${fail})` : 'E4 CHECKS PASSED'); await b.close(); process.exit(fail ? 1 : 0); })();
