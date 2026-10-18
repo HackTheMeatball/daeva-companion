@@ -63,33 +63,65 @@ export default (test, M) => {
     assert.throws(() => M.renameChar(s, 'x', 'Zed'), /no such slot/);
     assert.equal(JSON.stringify(s), json0);
   });
-  test('chars remove: the slot goes, others untouched; current stays, or moves to the first remaining slot; frozen input', () => {
+  /* 0.6 P20: a removed slot keeps a tombstone { id, deletedAt } (ms) in place, so merge() doesn't bring it back */
+  test('chars remove: the slot becomes a dated tombstone, others untouched; current stays, or moves to the first remaining character; frozen input', () => {
     const s = three(), json0 = JSON.stringify(s);
-    const r1 = M.removeChar(s, 'c');
-    assert.deepEqual(Object.keys(r1.chars), ['a', 'b']); assert.equal(r1.current, 'b'); othersSame(s, r1, ['c']); viewSame(s, r1);
-    const r2 = M.removeChar(s, 'b');
-    assert.deepEqual(Object.keys(r2.chars), ['a', 'c']); assert.equal(r2.current, 'a'); othersSame(s, r2, ['b']);
+    const r1 = M.removeChar(s, 'c', 9000);
+    assert.deepEqual(Object.keys(r1.chars), ['a', 'b', 'c']); assert.deepEqual(r1.chars.c, { id: 'c', deletedAt: 9000 });
+    assert.equal(r1.current, 'b'); othersSame(s, r1, ['c']); viewSame(s, r1);
+    assert.deepEqual(M.liveChars(r1).map(c => c.id), ['a', 'b']); assert.ok(M.isRemoved(r1.chars.c) && !M.isRemoved(r1.chars.a));
+    const r2 = M.removeChar(s, 'b', 9000);
+    assert.deepEqual(r2.chars.b, { id: 'b', deletedAt: 9000 }); assert.equal(r2.current, 'a'); othersSame(s, r2, ['b']);
+    assert.equal(M.removeChar(M.removeChar(s, 'a', 9000), 'b', 9000).current, 'c', 'current skips a tombstone');
     assert.throws(() => M.removeChar(s, 'x'), /no such slot/);
     assert.equal(JSON.stringify(s), json0);
   });
-  test('chars remove: the last character is refused', () => {
+  test('chars remove: deletedAt is never older than the character\'s last change (a clock set back); no time = its last change', () => {
+    const s = three();
+    assert.equal(M.removeChar(s, 'b', 1000).chars.b.deletedAt, 5000, 'b\'s newest stamp is at 5 s');
+    assert.equal(M.removeChar(s, 'b').chars.b.deletedAt, 5000);
+    assert.equal(M.removeChar(s, 'c').chars.c.deletedAt, 0, 'no stamps, no time');
+    for (const bad of [NaN, -5, '9000', Infinity]) assert.equal(M.removeChar(s, 'c', bad).chars.c.deletedAt, 0, String(bad));
+  });
+  test('chars: a tombstone is no slot: switch, rename and remove refuse it; its id stays taken', () => {
+    const r = M.removeChar(three(), 'c', 9000);
+    assert.throws(() => M.switchChar(r, 'c'), /no such slot/);
+    assert.throws(() => M.renameChar(r, 'c', 'Zed'), /no such slot/);
+    assert.throws(() => M.removeChar(r, 'c'), /no such slot/);
+    assert.throws(() => M.addChar(r, { id: 'c' }), /taken/);
+  });
+  test('chars remove: the last character is refused (tombstones don\'t count)', () => {
     const s = deepFreeze(M.newSave({ id: 'only' }));
     assert.throws(() => M.removeChar(s, 'only'), /last character/);
-    const two = M.addChar(s, { id: 'two' }), one = M.removeChar(two, 'only');
-    assert.deepEqual(Object.keys(one.chars), ['two']); assert.equal(one.current, 'two');
+    const two = M.addChar(s, { id: 'two' }), one = M.removeChar(two, 'only', 5);
+    assert.deepEqual(Object.keys(one.chars), ['only', 'two']); assert.equal(one.current, 'two'); assert.deepEqual(M.liveChars(one).map(c => c.id), ['two']);
     assert.throws(() => M.removeChar(one, 'two'), /last character/);
   });
-  /* a finding for 0.6 (sync), pinned so a change shows: merge() keeps a slot on one side only, so a character removed here
-     comes back when another device's save (or an older export) still has it. P17 does not change merge(). */
-  test('chars remove + merge (today): a slot removed locally comes back from a save that still has it', () => {
-    const s = three(), r = M.removeChar(s, 'c'), m = M.merge(r, s);
-    assert.deepEqual(Object.keys(m.chars).sort(), ['a', 'b', 'c']); assert.equal(m.current, 'b');
+  /* the 0.5 P17 finding, fixed in 0.6 P20: a character removed here no longer comes back from a save that still has it */
+  test('chars remove + merge: a slot removed locally stays removed when merged with an older save that still has it (both orders)', () => {
+    const s = three(), r = M.removeChar(s, 'c', 9000);
+    for (const m of [M.merge(r, s), M.merge(s, r)]) {
+      assert.deepEqual(m.chars.c, { id: 'c', deletedAt: 9000 }); assert.deepEqual(M.liveChars(m).map(c => c.id).sort(), ['a', 'b']);
+    }
+    assert.equal(M.merge(r, s).current, 'b');
+    const gone = M.removeChar(s, 'b', 9000), m = M.merge(s, gone);
+    assert.equal(m.current, 'a', 'the local current, removed by the merge, moves to the first remaining character');
   });
-  test('chars: a save after add / rename / switch / remove still loads as a v5 save with the same characters', () => {
+  test('chars: a save after add / rename / switch / remove still loads as a v5 save with the same characters and tombstone', () => {
     let s = M.newSave({ id: 'a' });
-    s = M.addChar(s, { id: 'b', name: 'Zed' }); s = M.renameChar(s, 'a', 'Ann'); s = M.switchChar(s, 'a'); s = M.removeChar(s, 'b');
+    s = M.addChar(s, { id: 'b', name: 'Zed' }); s = M.renameChar(s, 'a', 'Ann'); s = M.switchChar(s, 'a'); s = M.removeChar(s, 'b', 77);
     const r = M.loadState(JSON.stringify(s));
-    assert.equal(r.hadSave, true); assert.deepEqual(r.state, s);
+    assert.equal(r.hadSave, true); assert.deepEqual(r.state, s); assert.deepEqual(r.state.chars.b, { id: 'b', deletedAt: 77 }, 'no defaults laid under a tombstone');
+  });
+  test('chars: a save whose current slot is a tombstone loads with the first remaining character; with none left, a new one is added', () => {
+    const s = M.removeChar(three(), 'c', 9000), bad = { ...s, current: 'c' };
+    const r = M.loadState(JSON.stringify(bad), { newId: () => 'n' });
+    assert.equal(r.hadSave, true); assert.equal(r.state.current, 'a'); assert.deepEqual(Object.keys(r.state.chars), ['a', 'b', 'c']);
+    const none = { ...bad, chars: { b: { id: 'b', deletedAt: 1 }, c: { id: 'c', deletedAt: 2 } } };
+    const r2 = M.loadState(JSON.stringify(none), { now: 5, newId: () => 'n' });
+    assert.equal(r2.hadSave, true); assert.equal(r2.state.current, 'n'); assert.deepEqual(r2.state.chars.n, M.newChar({ now: 5, id: 'n' }));
+    assert.deepEqual([r2.state.chars.b, r2.state.chars.c, r2.state.mode], [none.chars.b, none.chars.c, 'basic'], 'tombstones and view settings kept');
+    assert.equal(M.parseExport(JSON.stringify(bad)), null, 'an export always has a character current'); assert.ok(M.parseExport(JSON.stringify(s)));
   });
   /* the property test: ids from the page's newId (src/shell/ids.js), names from an alphabet without UUID characters
      (hex digits and "-") so a contained name can only mean the id was built from it */

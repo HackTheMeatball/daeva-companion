@@ -54,7 +54,7 @@ activePack().cards.forEach(registerCard);
    (P19; a removed current one hands over to the first remaining slot) stores the new save and reloads (useSave, below),
    so every card starts over with the current character */
 registerCard(charactersCard({ onSwitch: id => useSave(switchChar(state, id)), onAdd: ({ class: cls, name }) => useSave(newCharSave(cls, name)),
-  onRename: (id, name) => useSave(renameChar(state, id, name)), onRemove: id => useSave(removeChar(state, id)) }));
+  onRename: (id, name) => useSave(renameChar(state, id, name)), onRemove: id => useSave(removeChar(state, id, Date.now())) }));
 /* the pack's card in a section of Journey: registered after Journey, which declares the section */
 registerCard(aion2AscensionCard);
 /* what a card reads (P0 §4), built once per render() / update(); ev = the character's gates (memoised inside gatesPass) */

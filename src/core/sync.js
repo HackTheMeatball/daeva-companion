@@ -8,7 +8,7 @@
      mt.level and each of the pack's "register" fields: registers; mt.quest = [t, [quest, storyEnd]] (one register for both)
    null is a tombstone (the entry was removed). A stamp's time is when this device saw the value change; 0 = unknown
    (a fresh browser's defaults). A v5 save is born with mt (src/core/migrations.js) and every write stamps it. */
-import { char } from "./state.js";
+import { char, isRemoved } from "./state.js";
 import { activePack, perPack } from "./pack.js";
 
 /* Character fields with change times, by shape: the engine's and the pack's (charFields: "map" / "register"; its
@@ -110,29 +110,56 @@ function mtItemsOf(c) {
   return out;
 }
 
+/* The character's last change (seconds): its newest stamp's time; 0 = none dated. */
+export const lastChangeOf = c => { let t = 0; mtStampsOf(c && c.mt).forEach(([, [s]]) => { if (s > t) t = s; }); return t; };
+
 /* merge(local, remote): the local save with the remote one's progress folded in, per character slot (by slot id): a
    slot on one side only is kept (merged with itself: the same values, unstamped ones filled in at time 0, so merge()
    stays idempotent); a slot on both sides merges per item (mergeChar). v and savedAt: the larger.
-   current, the view settings, backup and unknown top-level fields stay the local save's: the synced part (syncedPart)
-   is commutative, associative and idempotent. Neither input is changed, and the result shares no objects with them. */
+   A removed character (0.6 P20, docs/design/sync.md §2 "Removed characters") is a tombstone { id, deletedAt } (ms): the
+   newest removal of the slot on either side (a tombstone, or a character's removedAt) cuts every item changed at or
+   before it (in seconds), so a copy from before the removal never brings it back. Items changed after the removal (an
+   edit on a device that hadn't seen it) survive: the character comes back with those, and keeps removedAt so a later
+   merge with an older copy cuts that copy too. A slot left with no item stays the tombstone. If no character is left
+   at all (each side removed the other's), the result has none: loadState() then adds a new one (src/core/state.js).
+   current, the view settings, backup and unknown top-level fields stay the local save's (current moves to the first
+   remaining character if the merge removed it): the synced part (syncedPart) is commutative, associative and
+   idempotent. Neither input is changed, and the result shares no objects with them. */
 const clone = x => JSON.parse(JSON.stringify(x));
 const charsOf = s => (s && s.chars && typeof s.chars === "object" ? s.chars : {});
+const num = x => typeof x === "number" && Number.isFinite(x) && x > 0 ? x : 0;
 export function merge(a, b) {
   const out = clone(a), ac = charsOf(a), bc = charsOf(b);
-  const num = x => typeof x === "number" && Number.isFinite(x) && x > 0 ? x : 0;
   ["v", "savedAt"].forEach(f => { const v = Math.max(num(a[f]), num(b[f])); if (v || f in a || f in b) out[f] = v; });
   out.chars = {};
-  [...new Set([...Object.keys(ac), ...Object.keys(bc)])].forEach(id => { out.chars[id] = mergeChar(ac[id] || bc[id], bc[id] || ac[id]); });
+  [...new Set([...Object.keys(ac), ...Object.keys(bc)])].forEach(id => {
+    const sides = [ac[id], bc[id]].filter(c => c && typeof c === "object"), copies = sides.filter(c => !isRemoved(c));
+    const cut = sides.some(c => isRemoved(c) || "removedAt" in c) ? Math.max(...sides.map(c => num(isRemoved(c) ? c.deletedAt : c.removedAt))) : null;
+    const co = copies.length ? mergeChar(copies[0], copies[1] || copies[0], cut) : null;
+    out.chars[id] = co || { id, deletedAt: cut };
+  });
+  if (!out.chars[out.current] || isRemoved(out.chars[out.current])) {
+    const first = Object.keys(out.chars).find(id => !isRemoved(out.chars[id])); if (first) out.current = first;
+  }
   return out;
 }
 /* Two copies of one character: per item, the later change wins (an un-tick dated after a tick survives). The identity
-   (id, pack, class, name, created) and the pack's "local" fields stay the local copy's. */
-function mergeChar(ca, cb) {
+   (id, pack, class, name, created) and the pack's "local" fields stay the local copy's. cut (ms, or null = none): the
+   slot's newest removal; items changed at or before it are left out, and the result is null if none is left. */
+function mergeChar(ca, cb, cut) {
   const co = clone(ca);
   const ia = mtItemsOf(ca), ib = mtItemsOf(cb), win = new Map(ia);
   ib.forEach((x, key) => { const y = win.get(key); if (!y || cmpItem(key, y[1], x[1]) < 0) win.set(key, x); });
-  /* rebuild every timed field from the winners; containers that either side had stay (possibly empty) */
-  const has = f => (ca[f] && typeof ca[f] === "object") || (cb[f] && typeof cb[f] === "object");
+  delete co.removedAt;
+  if (cut !== null) {
+    const s = mtSecOf(cut); win.forEach((x, key) => { if (x[1][0] <= s) win.delete(key); });
+    if (!win.size) return null;
+    co.removedAt = cut;
+  }
+  /* rebuild every timed field from the winners; containers that either side had stay (possibly empty). After a removal
+     (cut) only the winners make containers (and checks, the one every character has): an empty container of a copy from
+     before the removal says nothing, and keeping it would make the result depend on the order of merges. */
+  const has = f => cut !== null ? f === "checks" : (ca[f] && typeof ca[f] === "object") || (cb[f] && typeof cb[f] === "object");
   syncMaps().forEach(f => { if (has(f)) co[f] = {}; else delete co[f]; });
   ["qsteps", "qsub"].forEach(f => {
     if (!has(f)) { delete co[f]; return; }
@@ -148,8 +175,8 @@ function mergeChar(ca, cb) {
     mtSetIn(mt, p, s0);
     if (v === null) return;
     if (syncMaps().includes(f)) { co[f] = co[f] || {}; co[f][p[1]] = v; }
-    else if (f === "qsteps") { (co.qsteps[p[1]] = co.qsteps[p[1]] || []).push(+p[2]); }
-    else if (f === "qsub") { const q = co.qsub[p[1]] = co.qsub[p[1]] || {}; (q[p[2]] = q[p[2]] || []).push(+p[3]); }
+    else if (f === "qsteps") { co.qsteps = co.qsteps || {}; (co.qsteps[p[1]] = co.qsteps[p[1]] || []).push(+p[2]); }
+    else if (f === "qsub") { co.qsub = co.qsub || {}; const q = co.qsub[p[1]] = co.qsub[p[1]] || {}; (q[p[2]] = q[p[2]] || []).push(+p[3]); }
     else if (f === "quest") { co.quest = v[0]; if (v[1] != null) co.storyEnd = v[1]; }
     else co[f] = v;
   });
@@ -158,12 +185,13 @@ function mergeChar(ca, cb) {
   co.mt = mt;
   return co;
 }
-/* The part of a save that merge() syncs (for tests and, later, the sync layer): per slot, the character's progress and
-   mt; v and savedAt. */
+/* The part of a save that merge() syncs (for tests and, later, the sync layer): per slot, the character's progress, mt
+   and removedAt, or the tombstone; v and savedAt. */
 export function syncedPart(save) {
   const out = { chars: {} };
   Object.entries(charsOf(save)).forEach(([id, c]) => { const o = out.chars[id] = {};
-    [...syncMaps(), ...syncRegs(), "qsteps", "qsub", "quest", "storyEnd", "mt"].forEach(f => { if (c[f] !== undefined) o[f] = c[f]; }); });
+    if (isRemoved(c)) { o.deletedAt = c.deletedAt; return; }
+    [...syncMaps(), ...syncRegs(), "qsteps", "qsub", "quest", "storyEnd", "mt", "removedAt"].forEach(f => { if (c[f] !== undefined) o[f] = c[f]; }); });
   ["v", "savedAt"].forEach(f => { if (save[f] !== undefined) out[f] = save[f]; });
   return out;
 }
