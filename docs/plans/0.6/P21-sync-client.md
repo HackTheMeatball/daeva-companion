@@ -44,7 +44,7 @@ Ownership check: every acceptance line passes with these files.
 Lanes: none. Model: Opus (saves, `src/core`, > 300 lines). Stall limit: 120 min (L); commit and push after each part
 (scorecard K1).
 
-After: P20, owner-ok-sync-hosting. If the token isn't recorded by the time P5 merges, P21 moves to 0.7 with the server
+After: P2 (`scripts/build.mjs`), P20, owner-ok-sync-hosting. If the token isn't recorded by the time P5 merges, P21 moves to 0.7 with the server
 and 0.6 ships without it (ROADMAP 0.6).
 
 - [next] #? opus lanes:none
