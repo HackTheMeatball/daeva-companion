@@ -1,4 +1,6 @@
 name: Pipeline
+# Dispatched runs are named "Pipeline <step> #<pr>" so restart.yml can tell which PR and step a run was for.
+run-name: "${{ inputs.pr && format('Pipeline {0} #{1}', inputs.step, inputs.pr) || 'Pipeline' }}"
 
 # Owner request (2026-10-16, "smart mode"): move a claude/ PR to its next step the moment GitHub reports something,
 # instead of waiting for the scheduled check-in. Every step here is mechanical; planning, releases and the tracker stay
@@ -71,7 +73,7 @@ jobs:
             const none = (why) => { core.info(`no step: ${why}`); core.setOutput('step', 'none'); };
             // How a bot run works in this sandbox (health check, 2026-10-17 4:26 PM ET, #222): compound commands are denied,
             // and the GitHub token dies 1 h after the run starts (P6 #198: 62 min, last push 401, run 39059180307).
-            const TOOLS = 'Tools: one plain command per Bash call (no `&&`, `;`, pipes, heredocs, `python3 -`, or scripts in /tmp: they are denied); create and edit files with Edit and Write.';
+            const TOOLS = 'Tools: one plain command per Bash call (no `&&`, `;`, pipes, heredocs, `python3 -`, scripts in /tmp, or env-var prefixes like `X=1 node ...`: they are denied; pass flags instead); create and edit files with Edit and Write.';
             const CLOCK = 'Clock: the GitHub token expires 1 hour after this run starts. Push after every commit, so nothing is lost; aim to finish by minute 45. If a push fails with 401 or "Bad credentials", stop at once: the run is restarted with a fresh token and continues from the pushed branch.';
             // Lines of a CI run's job logs that match re (failed jobs only, or all). A blown budget ("took longer than", a
             // hang guard, a build size limit) is deterministic, not a flake: a blind re-run let P15 merge on a lucky second try and main CI went red on the

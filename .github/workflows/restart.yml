@@ -12,7 +12,9 @@ name: Restart
 # Only attempt 1 is re-run, so each run gets at most one automatic restart; a second death is left to the planner.
 # A run started with GITHUB_TOKEN sends no workflow_run event (Kickoff started by ci.yml, CI on main started by
 # auto-merge), so the schedule also looks every 15 min for an attempt-1 Kickoff or main CI run that ended badly in the
-# last 90 min. A main CI re-run that passes then starts Kickoff. It also brings main into claude/ PRs that conflict.
+# last 90 min. A main CI re-run that passes then starts Kickoff. It also brings main into claude/ PRs that conflict,
+# and starts the review of a claude/ PR whose head is green with no review yet (CI that kickoff dispatched with
+# GITHUB_TOKEN, e.g. on a PR kickoff opened itself, sends no workflow_run to pipeline.yml).
 
 on:
   workflow_run:
@@ -37,6 +39,7 @@ jobs:
       actions: write
       pull-requests: read
       issues: read
+      checks: read
     steps:
       - uses: actions/github-script@v7
         with:
@@ -74,8 +77,28 @@ jobs:
                 .filter((p) => !p.draft && /^claude\//.test(p.head.ref) && !p.labels.some((l) => ['hold', 'stuck'].includes(l.name)));
               for (const p of open) {
                 const pr = (await github.rest.pulls.get({ owner, repo, pull_number: p.number })).data;
-                if (pr.mergeable_state !== 'dirty') continue;
-                await github.rest.actions.createWorkflowDispatch({ owner, repo, workflow_id: 'pipeline.yml', ref: 'main', inputs: { pr: String(p.number), step: 'merge' } });
-                core.notice(`#${p.number} conflicts with main: started pipeline step=merge`);
+                if (pr.mergeable_state === 'dirty') {
+                  await github.rest.actions.createWorkflowDispatch({ owner, repo, workflow_id: 'pipeline.yml', ref: 'main', inputs: { pr: String(p.number), step: 'merge' } });
+                  core.notice(`#${p.number} conflicts with main: started pipeline step=merge`);
+                  continue;
+                }
+                // Green head, no review of it, and no Pipeline run going: the review event was lost (a GITHUB_TOKEN CI run).
+                const sha = pr.head.sha;
+                const ok = (await github.rest.checks.listForRef({ owner, repo, ref: sha, check_name: 'ci-ok' })).data.check_runs
+                  .some((c) => c.conclusion === 'success');
+                if (!ok) continue;
+                const reviewed = (await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: p.number, per_page: 100 }))
+                  .some((c) => c.user && c.user.login === 'claude[bot]' && (c.body || '').includes(`Review of ${sha.slice(0, 7)}`));
+                if (reviewed) continue;
+                // At most one such start per head: a review that died without its comment is left to the planner.
+                const headAt = Date.parse((await github.rest.repos.getCommit({ owner, repo, ref: sha })).data.commit.committer.date);
+                const tried = (await github.rest.actions.listWorkflowRuns({ owner, repo, workflow_id: 'pipeline.yml', event: 'workflow_dispatch', per_page: 50 })).data.workflow_runs
+                  .some((r) => r.display_title === `Pipeline review #${p.number}` && Date.parse(r.created_at) >= headAt);
+                if (tried) { core.info(`#${p.number}: a review of ${sha.slice(0, 7)} was already started and left no comment; left for the planner`); continue; }
+                const busy = (await github.rest.actions.listWorkflowRuns({ owner, repo, workflow_id: 'pipeline.yml', per_page: 20 })).data.workflow_runs
+                  .some((r) => ['queued', 'in_progress', 'waiting', 'pending'].includes(r.status));
+                if (busy) { core.info(`#${p.number}: green and unreviewed, but a Pipeline run is going; next sweep`); continue; }
+                await github.rest.actions.createWorkflowDispatch({ owner, repo, workflow_id: 'pipeline.yml', ref: 'main', inputs: { pr: String(p.number), step: 'review' } });
+                core.notice(`#${p.number}: head ${sha.slice(0, 7)} is green with no review: started pipeline step=review`);
               }
             }
