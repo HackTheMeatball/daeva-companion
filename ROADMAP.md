@@ -711,17 +711,17 @@ Path to 1.0 first:
    0.9 two). The limit is research: a bot build has no web, so every class needs a cloud research session first.
    Changed: 0.7's research sessions start at pass start (K10), not when the plan merges.
 2. **The artifact can't carry a third class** (971,146 / 1,030,000 B, 94%). Decided here (Claude remediated, reversible):
-   A1 makes the artifact carry a fixed build-time list, Assassin and Ranger as today, and new classes are site-only.
-   The artifact stays byte-identical for today's classes. A site-only class makes the two builds' pickers differ, which CLAUDE.md ("both builds visually identical") leaves to the owner, so G1 and C2 wait on owner input 2 (PR #340 review).
-3. **Sync has a client and a hosting decision but no server or UI.** Lane C: Y2 server (offline tests, no deploy),
-   S2 mockup, Y3 UI. The deploy needs the owner's Cloudflare token (owner input 4) and is a Build Pipeline task, not a
+   P1 makes the artifact carry a fixed build-time list, Assassin and Ranger as today, and new classes are site-only.
+   The artifact stays byte-identical for today's classes. A site-only class makes the two builds' pickers differ, which CLAUDE.md ("both builds visually identical") leaves to the owner, so P2 and P4 wait on owner input 2 (PR #340 review).
+3. **Sync has a client and a hosting decision but no server or UI.** Lane C: P5 server (offline tests, no deploy),
+   S2 mockup, P6 UI. The deploy needs the owner's Cloudflare token (owner input 4) and is a Build Pipeline task, not a
    bot item (no bot edits `.github/workflows/`).
 4. 1.0 and 1.1 are unchanged.
 
 Then 0.7:
 
 5. **The Gladiator's class data (0.6 P4) merged before 0.6 P3's guide split** and has had no guide research for a
-   P5-style pack. A small research session (`research-gladiator-guide`) checks it first; G1 re-checks P4's fields.
+   0.6 P5-style pack. A small research session (`research-gladiator-guide`) checks it first; 0.7 P2 re-checks 0.6 P4's fields.
 6. **The second class follows D8.** Who plays is unknown; data coverage then picks the Spiritmaster (Metabot Lv 45
    sample, 5 guides, 2 builds; Sorcerer, Cleric and Chanter show no sample; Templar 1 build; classes-and-gaps §2.2).
    Its research starts now and is redirected if the owner names another class (owner input 1).
@@ -736,25 +736,26 @@ Then 0.7:
 | same, gzip -9 | 182,302 B | 177,657 B | 200,000 B, blocking | **89%** |
 | `dist-artifact/index.html` | 863,343 B | 971,146 B | 1,030,000 B, blocking | **94%** |
 
-Per-class chunks keep each new class out of the site page; A1 keeps it out of the artifact. Y3 adds UI to the site
+Per-class chunks keep each new class out of the site page; P1 keeps it out of the artifact. P6 adds UI to the site
 page only (site-only code), so gzip is watched there.
 
 #### Items (step 3)
 
-Models follow #114's routing; stall limits as the 0.6 scorecard left them (S 44, S–M 20, M 80, M–L 80, L 120, M docs 41).
+Item keys are `P<n>` / `S<n>` so kickoff can read them (kickoff.yml matches `<minor> P\d+|S\d+`; first drafted as A1, G1, C1,
+C2, Y2, Y3). Models follow #114's routing; stall limits as the 0.6 scorecard left them (S 44, S–M 20, M 80, M–L 80, L 120, M docs 41).
 
 | Item | Problem → result | Size | Owns (files) | Model | Stall | Lanes |
 |---|---|---|---|---|---|---|
-| [A1](docs/plans/0.7/A1-artifact-class-list.md) | Artifact inlines every class → fixed build-time list, others site-only | M | `scripts/build.mjs`, `scripts/generated-data.mjs`, picker filter, ARCHITECTURE §4 | Opus | 80 | none |
+| [P1](docs/plans/0.7/P1-artifact-class-list.md) | Artifact inlines every class → fixed build-time list, others site-only | M | `scripts/build.mjs`, `scripts/generated-data.mjs`, picker filter, ARCHITECTURE §4 | Opus | 80 | none |
 | [S2](docs/plans/0.7/S2-sync-screen-mockup.md) | Sync UI not drawn → mockup of every client state | M (docs) | `docs/design/0.7-sync-mockup.md`, mockups | Sonnet | 41 | none |
-| [G1](docs/plans/0.7/G1-gladiator-guide.md) | Gladiator hidden, no advice → guide pack, golden, site picker | L | `data/packs/aion2/asmodian/gladiator/**`, gladiator class fixes, `pack.js`, golden | Opus | 120 | gen, golden |
-| [C1](docs/plans/0.7/C1-second-class-data.md) | No second class pack → class data from research, hidden | L | `data/packs/aion2/classes/<class>/**`, `sources.json` | Opus | 120 | gen |
-| [C2](docs/plans/0.7/C2-second-class-guide.md) | Second class has no advice → guide pack, golden, site picker | L | `data/packs/aion2/asmodian/<class>/**`, `pack.js`, golden | Opus | 120 | gen, golden |
-| [Y2](docs/plans/0.7/Y2-sync-server.md) | No sync server → Worker + R2 per sync.md §4, offline tests, no deploy | L | `server/sync/**`, server tests, sync.md §9, PRIVACY.md | Opus | 120 | none |
-| [Y3](docs/plans/0.7/Y3-sync-ui.md) | Client unused → S2's screens on the site only | M–L | sync card/section, `main.js` mount, sync texts, `tests/site.js` | Opus | 80 | main.js, a11y |
+| [P2](docs/plans/0.7/P2-gladiator-guide.md) | Gladiator hidden, no advice → guide pack, golden, site picker | L | `data/packs/aion2/asmodian/gladiator/**`, gladiator class fixes, `pack.js`, golden | Opus | 120 | gen, golden |
+| [P3](docs/plans/0.7/P3-second-class-data.md) | No second class pack → class data from research, hidden | L | `data/packs/aion2/classes/<class>/**`, `sources.json` | Opus | 120 | gen |
+| [P4](docs/plans/0.7/P4-second-class-guide.md) | Second class has no advice → guide pack, golden, site picker | L | `data/packs/aion2/asmodian/<class>/**`, `pack.js`, golden | Opus | 120 | gen, golden |
+| [P5](docs/plans/0.7/P5-sync-server.md) | No sync server → Worker + R2 per sync.md §4, offline tests, no deploy | L | `server/sync/**`, server tests, sync.md §9, PRIVACY.md | Opus | 120 | none |
+| [P6](docs/plans/0.7/P6-sync-ui.md) | Client unused → S2's screens on the site only | M–L | sync card/section, `main.js` mount, sync texts, `tests/site.js` | Opus | 80 | main.js, a11y |
 | [R](docs/plans/0.7/R-release-0.7.0.md) | Release 0.7.0 | S | `package.json`, `package-lock.json`, `CHANGELOG.md` | Sonnet | 44 | release, alone |
 
-Not a bot item: **sync deploy** (Build Pipeline, after owner input 4 and Y2): a deploy workflow with the owner's token.
+Not a bot item: **sync deploy** (Build Pipeline, after owner input 4 and P5): a deploy workflow with the owner's token.
 
 No-gos for the whole minor: no save break (sync has its own key); no AION 2 term in the engine; no game data without its
 source; no fetching in bot builds; no `.github/workflows/` edits by bots; artifact byte-identical for today's classes;
@@ -762,17 +763,17 @@ no new game art beyond the standing icon OK.
 
 #### Waves and lane map (step 4)
 
-At most five builds at a time. Serial lanes: **gen** G1 → C1 → C2 (the critical path); **golden** G1, C2 (and 0.6.1's
-F1, F5 when they run); **main.js** Y3 (and 0.6.1's F2, F4). Shared files outside lanes, by After: `pack.js` G1 → C2 (gen
-lane already orders them); build scripts A1 only. Critical path: A1 → G1 → C1 → C2 → R, gated by
-`research-gladiator-guide` (G1) and `research-spiritmaster` (C1).
+At most five builds at a time. Serial lanes: **gen** P2 → P3 → P4 (the critical path); **golden** P2, P4 (and 0.6.1's
+F1, F5 when they run); **main.js** P6 (and 0.6.1's F2, F4). Shared files outside lanes, by After: `pack.js` P2 → P4 (gen
+lane already orders them); build scripts P1 only. Critical path: P1 → P2 → P3 → P4 → R, gated by
+`research-gladiator-guide` (P2) and `research-spiritmaster` (P3).
 
 | Wave | Builds | After |
 |---|---|---|
-| 1 | A1 (none) ∥ S2 (none) ∥ Y2 (none) | Y2: `owner-ok-sync-rules` |
-| 2 | G1 (gen, golden) | A1 + `research-gladiator-guide` + `owner-ok-artifact-classes` |
-| 3 | C1 (gen) ∥ Y3 (main.js, a11y) | C1: `research-spiritmaster` · Y3: S2 + `owner-ok-S2` |
-| 4 | C2 (gen, golden) | C1, A1 + `owner-ok-artifact-classes` |
+| 1 | P1 (none) ∥ S2 (none) ∥ P5 (none) | P5: `owner-ok-sync-rules` |
+| 2 | P2 (gen, golden) | P1 + `research-gladiator-guide` + `owner-ok-artifact-classes` |
+| 3 | P3 (gen) ∥ P6 (main.js, a11y) | P3: `research-spiritmaster` · P6: S2 + `owner-ok-S2` |
+| 4 | P4 (gen, golden) | P3, P1 + `owner-ok-artifact-classes` |
 | 5 | R, alone | everything above, or moved to the next patch; `DATA OK 0.7.0` |
 
 Checked: no two items in one wave own the same file. Waves are the expected order, not gates. An item whose owner
@@ -783,22 +784,22 @@ input isn't in when its wave is due moves to the next patch at once (K10).
 Sent to Coordinator (Saul)'s daily list at pass start, 2026-10-18 7:35 AM ET (K10), typed in the Release planning
 (Walter) thread:
 
-1. **Second class** (token for C1: the class's research file; default Spiritmaster): "Yes: 0.7's second class is the
+1. **Second class** (token for P3: the class's research file; default Spiritmaster): "Yes: 0.7's second class is the
    Spiritmaster." or name the class someone will level to 45.
-2. **Artifact classes** (`owner-ok-artifact-classes`, blocks G1 and C2; A1 itself keeps today's list): "Yes: the claude.ai artifact carries Assassin and Ranger
+2. **Artifact classes** (`owner-ok-artifact-classes`, blocks P2 and P4; P1 itself keeps today's list): "Yes: the claude.ai artifact carries Assassin and Ranger
    only; new classes are site-only."
-3. **Sync rules** (`owner-ok-sync-rules`, blocks Y2; sync.md §6 S3, S5): 180-day retention; "Show sync code" on a
+3. **Sync rules** (`owner-ok-sync-rules`, blocks P5; sync.md §6 S3, S5): 180-day retention; "Show sync code" on a
    syncing device.
 4. **Sync deploy** (blocks the deploy only): a Cloudflare API token limited to Workers and R2, added as
    `CLOUDFLARE_API_TOKEN`; then CI may deploy to `sync.daevacompanion.com`.
-5. **S2 mockup** (`owner-ok-S2`, blocks Y3): asked when S2 merges.
+5. **S2 mockup** (`owner-ok-S2`, blocks P6): asked when S2 merges.
 6. **Proposed additions** (new features, so the owner's call; recommended: (a) only): (a) a class choice on the
    welcome card (#333 note 3); (b) a Ranger rotation section (#333 note 5, needs research); (c) story quests in
    Progress (#321 note 5); (d) a shorter phone header in Advanced mode (#321 note 10).
 
 Decisions this pass recorded (for the tracker):
 
-- **Claude remediated:** A1's build-time class list, today's two (audit 2; offering site-only classes is the owner's, input 2); second class defaults to the
+- **Claude remediated:** P1's build-time class list, today's two (audit 2; offering site-only classes is the owner's, input 2); second class defaults to the
   Spiritmaster by D8 (audit 6); sync deploy is a Build Pipeline task.
 
 #### Alongside (not #114 items)
