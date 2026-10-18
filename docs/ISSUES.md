@@ -97,12 +97,14 @@ on purpose: the guide shows nothing rather than an unverified value.
   | sk-ambush.png, sk-assault-stance.png, sk-defense-break.png, sk-exploit-weakness.png, sk-heart-gore.png | | |
   | sk-insignia-explosion.png, sk-quick-slice.png, sk-rear-smite.png, sk-savage-roar.png, sk-shadowstrike.png | | |
   | st-illusive-clone.png, st-savage-fang.png, st-swift-contract.png, st-triniels-dagger.png | | |
-- **Ranger skill and stigma icons: fetched, not yet in the app** (0.6 P5 shipped without them, #264; fetched
-  2026-10-18 7:17–7:21 AM ET for 0.6.1 F5, gate `research-ranger-icons`, docs/research/2026-10-ranger-icons.md). All 15
-  planned icons (11 skills, 4 stigmas) came from Metabot; none lacks an approved source. They are staged in
-  `data/packs/aion2/asmodian/ranger/icons/` (256 px WebP → 128 px PNG, like the Assassin's) because the build rejects an
-  unreferenced PNG in `src/assets/icons/`; F5 moves them there and wires them. Until then the Ranger guide shows the
-  initials square.
+- **Ranger skill and stigma icons: in the site, initials in the claude.ai artifact** (0.6 P5 shipped without them, #264;
+  fetched 2026-10-18 7:17–7:21 AM ET for 0.6.1 F5, gate `research-ranger-icons`, docs/research/2026-10-ranger-icons.md).
+  All 15 planned icons (11 skills, 4 stigmas: every Ranger skill and stigma the build plan shows) came from Metabot; none
+  lacks an approved source, so no Ranger placeholder is left for the owner. 0.6.1 F5 (#338) moved them to
+  `src/assets/icons/` (256 px WebP → 128 px PNG, like the Assassin's) and set each record's `icon` in
+  `data/packs/aion2/classes/ranger/{skills,stigmas}.json`. They have no `/_blob/` id yet (`null` in
+  `scripts/artifact-blobs.json`, DECISIONS D4): the artifact shows the initials square for them until someone uploads
+  the 15 files to the artifact and records the ids. Ranger skills outside the plan show no icon slot, so need none.
 
   | File | Name | Source page | File URL | Retrieved |
   |---|---|---|---|---|

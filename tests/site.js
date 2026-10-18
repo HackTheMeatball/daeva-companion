@@ -375,8 +375,13 @@ const checkReport = (label, m, want) => {
     ok('artifact build: no save-safety UI in the DOM with or without the downloads permission; the save still gains backup',
       !withDl.length && !noDl.length && st && st.backup && typeof st.backup.since === 'number' && st.backup.since > 0, { withDl, noDl, backup: st && st.backup });
     await ctx2.close();
+    /* SP_ICONS holds the loaded class only (0.6.1 F5: the Ranger's icons have no blob id either), so the expected
+       count is that class's skill records whose icon has none */
     const ini = await p.evaluate(() => Object.entries(SP_ICONS).filter(([, v]) => !v).map(([n]) => [n, /class="spmini ini"/.test(spMini(n))]));
-    ok('artifact build: a skill whose icon has no blob id gets the initials square, not a broken image', ini.length === noBlob.filter(n => n.startsWith('sk-')).length && ini.every(x => x[1]), ini);
+    const iniCls = (await p.evaluate(() => self.DAEVA_PACK)).split('/').pop();
+    const iniWant = JSON.parse(fs.readFileSync(path.join(CFG.ROOT, 'data', 'packs', 'aion2', 'classes', iniCls, 'skills.json'), 'utf8')).records
+      .filter(r => r.icon && blobs[r.icon.replace(/^assets\/icons\/|\.png$/g, '')] === null).map(r => r.key).sort();
+    ok('artifact build: a skill whose icon has no blob id gets the initials square, not a broken image', iniWant.length > 0 && JSON.stringify(ini.map(x => x[0]).sort()) === JSON.stringify(iniWant) && ini.every(x => x[1]), { cls: iniCls, ini, iniWant });
     await ctx.close();
   }
 

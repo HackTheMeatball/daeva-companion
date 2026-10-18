@@ -1,0 +1,8 @@
+[
+  { "case": "ranger-lv30-skills-stigmas-1500-skills", "kind": "before-after", "title": "Ranger skill icons",
+    "caption": "A Lv 30 Ranger's Skills card now shows each skill's game icon, like Snipe and Tempest Shot, instead of letter squares." },
+  { "case": "ranger-lv30-skills-stigmas-1500-stigmas", "kind": "before-after", "title": "Ranger stigma icons",
+    "caption": "The Stigmas card shows Vaizel's Authority with its game icon instead of the letters VA." },
+  { "case": "ranger-build-drawer-1500", "kind": "before-after", "title": "Ranger build drawer icons",
+    "caption": "The Build drawer's skill and stigma names for a Lv 30 Ranger carry the same icons." }
+]
