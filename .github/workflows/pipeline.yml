@@ -4,13 +4,14 @@ name: Pipeline
 # instead of waiting for the scheduled check-in. Every step here is mechanical; planning, releases and the tracker stay
 # with the scheduled CEO task (state issue "CEO pipeline state").
 #   - CI green on a PR's current head, and no review newer than the head  -> a review run (Opus since 2026-10-17; before that Sonnet, Opus for risky paths).
-#   - CI red on the head: first failure -> re-run the failed jobs once (no model); second failure -> a fix run.
+#   - CI red on the head: a blown time or size budget -> a fix run at once (PR #253); any other first failure -> re-run
+#     the failed jobs once (no model); second failure -> a fix run.
 #   - Latest claude[bot] review says VERDICT: CHANGES, or a Sonnet run said "Needs @claude (Opus)" -> a fix run.
 #   - Dispatched with step=merge (kickoff does this after a merge, for a PR that conflicts with main or shares a
 #     serial file with the merged diff) -> a run that merges main into the branch (merge commit), re-records golden only
 #     if the merge needs it, runs npm test and pushes. Opus when golden/mig1 or risky paths are involved. Not a fix round;
 #     at most one per PR per main commit.
-#   - At most 3 fix rounds per PR (Sonnet, Sonnet, Opus; Opus from round 1 for risky paths). Then the PR gets the label
+#   - At most 3 fix rounds per PR (Sonnet, Opus, Opus since the 0.6 kaizen review K7; Opus from round 1 for risky paths). Then the PR gets the label
 #     "stuck" and the pipeline leaves it to the CEO. A comment by the owner containing "pipeline:reset" restarts the count.
 # A review counts for a head only if it names that head's short SHA ("Review of <sha7>"); a date check alone let a
 # review of an older commit cover a newer one pushed later.
@@ -80,9 +81,11 @@ jobs:
               const jobs = await github.paginate(github.rest.actions.listJobsForWorkflowRun, { owner, repo, run_id: runId, per_page: 100 });
               const found = [];
               for (const j of jobs.filter((x) => !failedOnly || x.conclusion === 'failure')) {
-                const text = await github.rest.actions.downloadJobLogsForWorkflowRun({ owner, repo, job_id: j.id }).then((r) => String(r.data), () => '');
+                const text = await github.rest.actions.downloadJobLogsForWorkflowRun({ owner, repo, job_id: j.id })
+                  .then((r) => (typeof r.data === 'string' ? r.data : Buffer.from(r.data).toString('utf8')), (e) => { core.warning(`log of job ${j.id}: ${e.status || e.message}`); return ''; });
                 for (const l of text.split('\n')) if (re.test(l)) found.push(`${j.name}: ${l.replace(/^\S+Z /, '').trim().slice(0, 200)}`);
               }
+              core.info(`logLines(run ${runId}${failedOnly ? ', failed jobs' : ''}): ${jobs.length} jobs, ${found.length} matching lines`);
               return [...new Set(found)].slice(0, 8);
             };
             let prNum, want, reason = '', reviewBody = null, ciRun = null;
@@ -183,7 +186,7 @@ jobs:
                 'The last line is `VERDICT: APPROVE` or `VERDICT: CHANGES`. Write the word VERDICT only on that last line. Use CHANGES only for blocking problems; list nits and still APPROVE.',
                 warns.length ? `CI on this head printed a time-budget warning: ${warns.join(' / ')}. A suite this close to its hang guard fails on main next, so it is BLOCKING when this PR adds to that suite's work (it changes the suite or the code it runs) unless the PR raises that budget with a stated reason; ask for the suite to do less or be split. If the PR doesn't touch it, list it as a nit saying main needs that fix.` : '',
                 TOOLS,
-              ].join('\n'));
+              ].filter(Boolean).join('\n'));
             } else {
               let since = 0;
               // Only the owner can reset the count, and only this workflow's own markers count as rounds (public repo).
@@ -195,7 +198,8 @@ jobs:
                 await github.rest.issues.createComment({ owner, repo, issue_number: prNum, body: 'Pipeline: 3 fix rounds did not get this PR green and approved. Labelled `stuck` for the CEO check-in.' });
                 return none('fix rounds used up; labelled stuck');
               }
-              const opus = risky || round >= 3 || /Needs @claude \(Opus\)/.test(reason);
+              // Round 1 Sonnet, rounds 2-3 Opus (0.6 kaizen K7, #222: in 0.5 P7's two Sonnet rounds failed the same check).
+              const opus = risky || round >= 2 || /Needs @claude \(Opus\)/.test(reason);
               const model = opus ? 'claude-opus-5-5' : 'claude-sonnet-5-5';
               core.setOutput('note', `<!-- pipeline:fix round=${round} -->\nPipeline: fix round ${round} of 3 on ${sha.slice(0, 7)} (${opus ? 'Opus' : 'Sonnet'}). ${reason}`);
               core.setOutput('model', model);
@@ -216,6 +220,7 @@ jobs:
             core.setOutput('sha', sha);
 
   run:
+    name: run (${{ needs.decide.outputs.model }})
     needs: decide
     if: contains(fromJSON('["review","fix","merge"]'), needs.decide.outputs.step)
     runs-on: ubuntu-24.04

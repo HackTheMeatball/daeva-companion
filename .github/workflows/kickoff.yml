@@ -51,13 +51,16 @@ jobs:
           script: |
             const { owner, repo } = context.repo;
             const STATE = 114, MAX = 5; // 3 until 2026-10-17; raised to 5 on the owner's Max 20x plan (lanes still apply)
-            const LANES = ['golden', 'mig', 'main.js', 'gates', 'gen', 'app.css', 'ci', 'a11y', 'release'];
+            const LANES = ['golden', 'golden-nextup', 'golden-journey', 'golden-milestones', 'golden-regional', 'golden-route', 'mig', 'main.js', 'gates', 'gen', 'app.css', 'ci', 'a11y', 'release'];
             // Keep in step with lanes() in the refresh job below (same rules, two copies).
             const lanesOfFiles = (files) => {
               const out = new Set();
               for (const f of files) {
                 const n = f.filename, patch = f.patch || '';
-                if (/^tests\/golden\//.test(n)) out.add('golden');
+                // Snapshots live per card folder since 0.4 P4e, so each folder is its own lane; anything else under
+                // tests/golden (golden.js, states.js, _state/) is the whole golden lane (0.6 kaizen K9, #222).
+                const gf = n.match(/^tests\/golden\/snapshots\/([a-z][a-z0-9-]*)\//);
+                if (gf) out.add(`golden-${gf[1]}`); else if (/^tests\/golden\//.test(n)) out.add('golden');
                 if (/^tests\/e2-migtest/.test(n) || /mig1/.test(patch)) out.add('mig');
                 if (n === 'src/main.js') out.add('main.js');
                 if (/^data\//.test(n) && /"(requires|completesWith|is)"/.test(patch)) out.add('gates');
@@ -70,7 +73,9 @@ jobs:
               return out;
             };
             const lanesOfLine = (l) => { const m = l.match(/ lanes:([^\s]+)/); return new Set(m ? m[1].split(',').filter((x) => x && x !== 'none') : []); };
-            const overlap = (a, b) => [...a].some((x) => b.has(x));
+            // Lanes clash when equal, and the whole `golden` lane clashes with every per-folder `golden-<card>` lane.
+            const clash = (x, y) => x === y || (x === 'golden' && y.startsWith('golden-')) || (y === 'golden' && x.startsWith('golden-'));
+            const overlap = (a, b) => [...a].some((x) => [...b].some((y) => clash(x, y)));
             core.setOutput('items', '[]');
             const issue = (await github.rest.issues.get({ owner, repo, issue_number: STATE })).data;
             const body = issue.body || '';
@@ -207,7 +212,7 @@ jobs:
               const want = lanesOfLine(lines[i]);
               const unknown = [...want].filter((x) => !LANES.includes(x));
               if (unknown.length) core.warning(`#${m[1]}: unknown lanes ${unknown.join(', ')} (known: ${LANES.join(', ')})`);
-              if (overlap(want, busy)) { core.info(`#${m[1]} waits: shares ${[...want].filter((x) => busy.has(x)).join(', ')} with work in flight`); continue; }
+              if (overlap(want, busy)) { core.info(`#${m[1]} waits: shares ${[...want].filter((x) => overlap([x], busy)).join(', ')} with work in flight`); continue; }
               const n = Number(m[1]);
               const iss = (await github.rest.issues.get({ owner, repo, issue_number: n })).data;
               if (iss.state !== 'open' || iss.pull_request) { core.warning(`#${n} is not an open issue; skipped`); continue; }
@@ -357,7 +362,10 @@ jobs:
               const out = new Set();
               for (const f of files) {
                 const n = f.filename, patch = f.patch || '';
-                if (/^tests\/golden\//.test(n)) out.add('golden');
+                // Snapshots live per card folder since 0.4 P4e, so each folder is its own lane; anything else under
+                // tests/golden (golden.js, states.js, _state/) is the whole golden lane (0.6 kaizen K9, #222).
+                const gf = n.match(/^tests\/golden\/snapshots\/([a-z][a-z0-9-]*)\//);
+                if (gf) out.add(`golden-${gf[1]}`); else if (/^tests\/golden\//.test(n)) out.add('golden');
                 if (/^tests\/e2-migtest/.test(n) || /mig1/.test(patch)) out.add('mig');
                 if (n === 'src/main.js') out.add('main.js');
                 if (/^data\//.test(n) && /"(requires|completesWith|is)"/.test(patch)) out.add('gates');
@@ -378,11 +386,11 @@ jobs:
               let pr = (await github.rest.pulls.get({ owner, repo, pull_number: p0.number })).data;
               if (pr.mergeable === null) { await new Promise((r) => setTimeout(r, 15000)); pr = (await github.rest.pulls.get({ owner, repo, pull_number: p0.number })).data; }
               const mine = lanes(await github.paginate(github.rest.pulls.listFiles, { owner, repo, pull_number: pr.number, per_page: 100 }));
-              const shared = [...mine].filter((x) => done.has(x));
+              const shared = [...mine].filter((x) => [...done].some((y) => x === y || (x === 'golden' && y.startsWith('golden-')) || (y === 'golden' && x.startsWith('golden-'))));
               const conflict = pr.mergeable === false;
               if (!conflict && !shared.length) { core.info(`#${pr.number}: no conflict, no shared lane`); continue; }
               if (pr.mergeable === null) { core.warning(`#${pr.number}: mergeability unknown; left for the planner`); continue; }
-              if (!conflict && !shared.some((x) => x === 'golden' || x === 'mig')) {
+              if (!conflict && !shared.some((x) => x.startsWith('golden') || x === 'mig')) {
                 try {
                   await github.rest.pulls.updateBranch({ owner, repo, pull_number: pr.number, expected_head_sha: pr.head.sha });
                   // update-branch is asynchronous: wait (up to 2 min) until the merge commit is the head, so CI runs on it.
