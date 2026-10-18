@@ -216,7 +216,7 @@
         }
       ],
       "action": "keep",
-      "note": "Metabot's skill pages are game-database fields, which the data policy accepts on their own. The Ranger research session (2026-10-18) also found the same levels on mmo-codex.com (all three), daevaguides.com and aion2-guides.info (Burst Arrow, Deadshot); those sites may share upstream data (mmo-codex credits the game client via aion2.app), so they are not counted as independent. No owner screen yet: the owner's Lv 1 Ranger Skills window would settle it.",
+      "note": "Metabot's skill pages are game-database fields, which the data policy accepts on their own. The Ranger research (docs/research/2026-10-ranger-pack.md §6, #313) also found the same levels on mmo-codex.com (all three) and daevaguides.com (Burst Arrow, Deadshot); those sites may share upstream data (mmo-codex credits the game client via aion2.app), so their independence is inferred. aion2-guides.info compiles other creators' guides (#309) and is not a second source. No owner screen yet: the owner's Lv 1 Ranger Skills window would settle it.",
       "appliesTo": [
         "conf:learn-levels"
       ],
