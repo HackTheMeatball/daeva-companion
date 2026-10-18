@@ -228,8 +228,11 @@ p { margin: var(--space-2) 0 0; color: var(--muted); font-size: 13px; }
 .panel h2 { margin: 0 0 var(--space-8); font: 600 12px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
 .panel .choices { display: grid; gap: var(--space-8); margin-top: var(--space-12); }
 .ph .panel .btn { width: 100%; }
-.codebox { margin-top: var(--space-12); padding: var(--space-12); border: 1px solid var(--gold-55); border-radius: var(--radius-8); background: var(--panel-2); font: 600 15px/1.5 var(--mono); letter-spacing: .06em; color: var(--gold-light); word-break: break-all; }
+.codebox { margin-top: var(--space-12); padding: var(--space-12); border: 1px solid var(--gold-55); border-radius: var(--radius-8); background: var(--panel-2); font: 600 15px/1.5 var(--mono); letter-spacing: .06em; color: var(--gold-light); }
+.codebox .grp, .input.code .grp { white-space: nowrap; }
 .input { min-height: 44px; border: 1px solid var(--line); border-radius: var(--radius-8); background: var(--panel-2); padding: var(--space-10) var(--space-12); font: 500 14px var(--mono); color: var(--fg); display: flex; align-items: center; margin-top: var(--space-8); }
+.input.code { flex-wrap: wrap; }
+.ph .input { font-size: 16px; }
 .dk .input { min-height: 0; }
 .input.err { border-color: var(--accent); }
 .input .ph-t { color: var(--muted); }
