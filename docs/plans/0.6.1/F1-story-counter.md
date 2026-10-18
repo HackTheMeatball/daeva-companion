@@ -34,6 +34,6 @@ S.
 
 ## Lanes, model, order
 
-Lanes: golden. Model: Sonnet. Stall limit: 16 min (S).
+Lanes: golden. Model: Sonnet. Stall limit: 44 min (S).
 
 After: none.

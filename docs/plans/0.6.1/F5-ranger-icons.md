@@ -7,6 +7,10 @@ added from approved sources (Metabot first) without asking, each recorded in doc
 
 The Ranger's skills show letter placeholders ("S" for Snipe, "TS" for Tempest Shot) where the Assassin has real icons.
 
+Bot builds have no web, so a cloud research session (`research-ranger-icons`, started 2026-10-18) fetches the files
+and writes `docs/research/2026-10-ranger-icons.md` (each icon's page, file URL, date, and the missing ones). This item
+wires them in.
+
 ## Result
 
 Every Ranger skill and stigma icon that Metabot (or another approved source in docs/research/SOURCES.md) has is added the
@@ -35,6 +39,6 @@ The Ranger pack's icon folder and its icon map, `docs/ISSUES.md`, `data/DATA_SOU
 
 ## Lanes, model, order
 
-Lanes: gen, golden. Model: Sonnet. Stall limit: 24 min (M).
+Lanes: gen, golden. Model: Sonnet. Stall limit: 80 min (M).
 
-After: none.
+After: research-ranger-icons.
