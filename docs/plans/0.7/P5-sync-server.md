@@ -1,4 +1,4 @@
-# 0.7 Y2: Sync server (Cloudflare Worker + R2), tested offline
+# 0.7 P5: Sync server (Cloudflare Worker + R2), tested offline
 
 Planned in the 0.7 planning pass (Release Planner, 2026-10-18; ROADMAP "0.7"; Kaizen review docs/kaizen/0.6-scorecard.md). Lane C. Hosting decided (DECISIONS 2026-10-18 12:57 AM ET: "Sync hosting OK: Cloudflare Workers + R2, free tier,
 usage alert"). Read CLAUDE.md, docs/design/sync.md §4 (the contract), §6, §7 and §8, PRIVACY.md and
@@ -43,3 +43,5 @@ L.
 Lanes: none. Model: Opus. Stall limit: 120 min (L).
 
 After: owner-ok-sync-rules.
+
+- [next] #348 opus lanes:none
