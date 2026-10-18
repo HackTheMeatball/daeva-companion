@@ -3,7 +3,7 @@
 Daeva Companion: an unofficial AION 2 companion app. Today the leveling guide (Asmodian Assassin, Lv 1–45; 1.0 =
 all eight classes); 1.1 adds an end-game tracker (ROADMAP.md). Source in `src/` (page shell `index.html`, `styles/*.css`, ES modules
 `main.js` / `data/*.js` / `site.js`); `npm run build` (esbuild) inlines it into one HTML file for the site
-(daevacompanion.com) and one for the claude.ai artifact. `src/index.html` doesn't run on its own: build, then
+(daevacompanion.com); the claude.ai artifact is frozen and no longer built (owner, 2026-10-18; 0.7 P9 removes its build). `src/index.html` doesn't run on its own: build, then
 `npm run serve`. Read `docs/ARCHITECTURE.md` before touching state, keys, data or the build.
 
 ## Saved progress (pre-1.0: clean breaks allowed)
@@ -80,5 +80,5 @@ comes first) a change may break existing saves when that gives a better design. 
   exception (owner, 2026-10-17, DECISIONS `owner-ok-autolevel`): "Auto level-up OK: verified 100% EXP quests only,
   undoable". Ticking a story quest with `levelsUp: true` (sourced) raises the level by one; unticking or Undo lowers it.
 - The guide must be correct and complete to Lv 45 without the user having to report problems.
-- Basic mode = essentials only. Keep both builds visually identical; `dist-artifact` must stay a single file with
-  `/_blob/` icons and no service worker.
+- Basic mode = essentials only. The site is the only build (owner, 2026-10-18: "Freeze the claude.ai artifact: stop
+  building it; the site is the only build."); the published claude.ai artifact stays frozen with its "moved" notice (D4).
