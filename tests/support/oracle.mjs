@@ -29,7 +29,9 @@ const read = (root, f) => JSON.parse(readFileSync(join(root, 'data', f), 'utf8')
 
 export function loadOracle({ root, apply = new Set() }) {
   const recs = f => read(root, f).records;
-  const story = recs('packs/aion2/asmodian/story-quests.json'), steps = recs('packs/aion2/asmodian/assassin/guide/steps.json');
+  /* the guide steps: the shared Asmodian guide's and the Assassin's (0.6 P3), in id order as one file had them */
+  const story = recs('packs/aion2/asmodian/story-quests.json'), steps = [...recs('packs/aion2/asmodian/guide/steps.json'), ...recs('packs/aion2/asmodian/assassin/guide/steps.json')]
+    .sort((a, b) => (a.id < b.id ? -1 : 1));
   const rqs = recs('packs/aion2/asmodian/regional-quests.json'), sds = recs('packs/aion2/asmodian/sealed-dungeons.json');
   const shs = recs('packs/aion2/asmodian/strongholds.json'), unlocks = recs('packs/aion2/asmodian/unlocks.json');
   const ascs = recs('packs/aion2/asmodian/ascension-quests.json'), boards = recs('packs/aion2/boards.json');

@@ -159,6 +159,30 @@ export function checks(ctx, check) {
   /* shared steps carry no class content outside build tokens: no skill or stigma name of this class */
   const classWords = [...stigmas.map(s => s.name)];
   for (const s of steps) for (const w of classWords) check(`shared step ${s.id} names no stigma outside a build token`, !(s.text + (s.loc || '')).includes(w));
+  /* the shared guide (0.6 P3): a guide record (milestone, step, tip, claim, confidence line) from a pack that is neither a
+     guide nor a class pack (aion2/asmodian/guide) holds for every class. Outside [[…]] tokens no string of it names the
+     chain's class (any case: also the class's page URLs), a skill or stigma (name or id) or a board node (id or save key);
+     and it points at no record of a guide or class pack (milestone, claims, appliesTo, [[tip:…]] links, done atoms), so
+     another class's chain compiles it unchanged. A record that fails stays in the class's guide pack. */
+  { const kindOf = Object.fromEntries(ctx.packs.map(m => [m.id, m.kind])), isClass = x => ['guide', 'class'].includes(kindOf[x.pack]);
+    const GUIDE = ['milestones', 'steps', 'tips', 'claims', 'confidence'], shared = all.filter(x => GUIDE.includes(x.coll) && !isClass(x));
+    const classIds = new Set(all.filter(isClass).map(x => x.r.id)), classTips = new Set(all.filter(x => x.coll === 'tips' && isClass(x)).map(x => x.r.key));
+    const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), strs = v => typeof v === 'string' ? [v] : Array.isArray(v) ? v.flatMap(strs) : v && typeof v === 'object' ? Object.values(v).flatMap(strs) : [];
+    const words = [...skills, ...stigmas].map(s => ({ s, re: new RegExp('\\b' + esc(s.name) + '\\b') })), nodeRefs = Object.values(nodeById).flatMap(n => [n.id, n.key]);
+    const clsRe = ctx.cls ? new RegExp('\\b' + esc(ctx.cls.name) + '\\b', 'i') : null;
+    for (const { r, file } of shared) {
+      const hits = new Set();
+      for (const t of strs(r).map(s => s.replace(/\[\[[^\]]*\]\]/g, ''))) {
+        if (clsRe && clsRe.test(t)) hits.add(ctx.cls.name);
+        for (const { s, re } of words) { if (re.test(t)) hits.add(s.name); if (t.includes(s.id)) hits.add(s.id); }
+        for (const k of nodeRefs) if (t.includes(k)) hits.add(k);
+      }
+      check(`shared guide ${r.id} (${file}): names no class, skill, stigma or board node`, !hits.size, [...hits]);
+      const gates = [r.requires, ...(r.completesWith || []), ...(r.proposed ? [r.proposed.requires, ...(r.proposed.completesWith || [])] : [])].filter(g => g && typeof g === 'object');
+      const refs = [r.milestone, ...(r.claims || []), ...(r.appliesTo || []), ...gates.flatMap(atomsOf).map(a => a.done)].filter(x => x && classIds.has(x));
+      const tipRefs = strs(r).flatMap(t => [...t.matchAll(/\[\[tip:([a-z0-9-]+)/g)].map(m => m[1])).filter(k => classTips.has(k));
+      check(`shared guide ${r.id} (${file}): points at no guide or class record`, !refs.length && !tipRefs.length, [...refs, ...tipRefs.map(k => 'tip:' + k)]);
+    } }
   /* zone adjacency symmetric */
   for (const z of Object.values(zones)) for (const n of z.neighbours || []) check(`zone adjacency symmetric: ${z.id} - ${n.zone}`, (zones[n.zone] && (zones[n.zone].neighbours || []).some(x => x.zone === z.id)));
 
