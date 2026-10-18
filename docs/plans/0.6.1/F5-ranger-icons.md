@@ -39,6 +39,6 @@ The Ranger pack's icon folder and its icon map, `docs/ISSUES.md`, `data/DATA_SOU
 
 ## Lanes, model, order
 
-Lanes: gen, golden. Model: Sonnet. Stall limit: 80 min (M).
+Lanes: gen, golden. Model: Opus (golden snapshots are Opus-only, #114 routing). Stall limit: 80 min (M).
 
 After: research-ranger-icons.
