@@ -10,7 +10,7 @@ A claim that is not verified is tagged `[id · verdict]` (`owner source`: the ow
 Only facts were taken from these pages; the app reproduces no page text. Short quotations in the guides' `claims.json`
 stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Listing a site implies no endorsement.
 
-531 URLs · 418 in the Sources card · 113 cited only in the data files
+538 URLs · 419 in the Sources card · 119 cited only in the data files
 
 ## Metabot (335)
 
@@ -419,11 +419,14 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [AION2HUB: Asmodian 25–40](https://aion2hub.com/leveling/asmodian-levels-25-40) | Main story | packs/aion2/asmodian/story-quests.json: Voice of Rage; packs/aion2/asmodian/story-quests.json: Tangled Past; packs/aion2/asmodian/story-quests.json: The High Priest Slumbers; packs/aion2/asmodian/story-quests.json: Striving for Coexistence; packs/aion2/asmodian/story-quests.json: Preparations for Restoration; packs/aion2/asmodian/story-quests.json: A Collective Effort; packs/aion2/asmodian/story-quests.json: Land of Rifts; packs/aion2/asmodian/story-quests.json: Dying Light; packs/aion2/asmodian/story-quests.json: Contaminated Sacred Tree; packs/aion2/asmodian/story-quests.json: The Past Revealed; packs/aion2/asmodian/story-quests.json: Canyon's Secret; packs/aion2/asmodian/story-quests.json: Bitter Reality; packs/aion2/asmodian/story-quests.json: Eye of the Red Tower; packs/aion2/asmodian/story-quests.json: The Survivors; packs/aion2/asmodian/story-quests.json: Rescue Operation; packs/aion2/asmodian/story-quests.json: Last of the Destruction Archons; packs/aion2/asmodian/story-quests.json: A Daeva Dreaming Anew; packs/aion2/asmodian/story-quests.json: Last Refuge; packs/aion2/asmodian/story-quests.json: Scripture in the Ruins; packs/aion2/asmodian/story-quests.json: Blood Monument; packs/aion2/asmodian/story-quests.json: Impending Threat; packs/aion2/asmodian/story-quests.json: Visible Trap; packs/aion2/asmodian/story-quests.json: Destruction Archon Underground Fortress; packs/aion2/asmodian/story-quests.json: Enemy Territory; packs/aion2/asmodian/story-quests.json: Powder of Death; packs/aion2/asmodian/story-quests.json: Creion of Gribade; packs/aion2/asmodian/story-quests.json: Frozen Fafnite; packs/aion2/asmodian/story-quests.json: Inevitable Encounter; packs/aion2/asmodian/story-quests.json: Unveiling the Truth; packs/aion2/asmodian/story-quests.json: Lake of Confrontation; packs/aion2/asmodian/story-quests.json: An Ill Fate's Resolution; packs/aion2/asmodian/story-quests.json: Mirror of Greed; packs/aion2/asmodian/story-quests.json: Fafnite's Whereabouts; packs/aion2/asmodian/story-quests.json: Exiled Ritualist; packs/aion2/asmodian/story-quests.json: Healing Herbs; packs/aion2/asmodian/story-quests.json: Treatment; packs/aion2/asmodian/story-quests.json: Symbol of Liberation |
 | [AION2HUB: Elyos levels 10 25](https://aion2hub.com/leveling/elyos-levels-10-25) | Tips and rules | packs/aion2/asmodian/guide/claims.json: Sealed Dungeon first clear: 15,000 Kina, 1,250 Enhance Stones, 2 Daevanion Crystals, 2 Wisdom Stones, wing materials, statue scraps, title; one-time.; packs/aion2/asmodian/guide/claims.json: [C13 · disputed] Stronghold pays 2 Noble Belt Enhance Scrolls + 15,000 Kina (some a title); belt scrolls come from nowhere else. |
 
-## aion2turkiye (1)
+## aion2turkiye (4)
 
 | Page | Card group | Backs |
 |---|---|---|
-| [aion2turkiye: Assassin](https://aion2turkiye.com/en/class/assassin/) | Skills, boards and stigmas | packs/aion2/asmodian/assassin/guide/claims.json: Quick Slice specialty slot 2: "-1s Insignia Explosion cooldown on hit" (choice 4, unlocks at skill Lv 12).; packs/aion2/asmodian/assassin/builds.json: Guide build |
+| [aion2turkiye: Assassin](https://aion2turkiye.com/en/class/assassin/) | Skills, boards and stigmas | packs/aion2/asmodian/assassin/guide/claims.json: Quick Slice specialty slot 2: "-1s Insignia Explosion cooldown on hit" (choice 4, unlocks at skill Lv 12).; packs/aion2/classes/assassin/skills.json: Ambush; packs/aion2/classes/assassin/skills.json: Heart Gore; packs/aion2/classes/assassin/skills.json: Quick Slice; packs/aion2/classes/assassin/skills.json: Shadow Fall; packs/aion2/classes/assassin/skills.json: Storm Rampage; packs/aion2/asmodian/assassin/builds.json: Guide build |
+| [aion2turkiye: Gladiator](https://aion2turkiye.com/en/class/gladiator/) | — | packs/aion2/classes/gladiator/skills.json: Crushing Wave; packs/aion2/classes/gladiator/skills.json: Keen Strike; packs/aion2/classes/gladiator/skills.json: Mocking Blade; packs/aion2/classes/gladiator/skills.json: Overhead Slam; packs/aion2/classes/gladiator/skills.json: Sword Aura Rampage; packs/aion2/classes/gladiator/stigmas.json: Wave Armor |
+| [aion2turkiye: Ranger](https://aion2turkiye.com/en/class/ranger/) | — | packs/aion2/classes/ranger/skills.json: Arrow Scattershot; packs/aion2/classes/ranger/skills.json: Burst Arrow; packs/aion2/classes/ranger/skills.json: Drill Dart; packs/aion2/classes/ranger/skills.json: Snipe |
+| [aion2turkiye: Spiritmaster](https://aion2turkiye.com/en/class/spiritmaster/) | — | packs/aion2/classes/spiritmaster/skills.json: Cold Shock; packs/aion2/classes/spiritmaster/skills.json: Rapid Scattershot |
 
 ## allthings.how (82)
 
@@ -518,6 +521,15 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 |---|---|---|
 | [Corpus: Assassin pve build](https://corpus.gg/blog/aion-2/assassin-pve-build) | Skills, boards and stigmas | packs/aion2/asmodian/assassin/builds.json: Guide build |
 | [Corpus: Terms](https://corpus.gg/terms) | — | packs/aion2/sources.json: Corpus |
+
+## Daeva Guides (4)
+
+| Page | Card group | Backs |
+|---|---|---|
+| [Daeva Guides: Assassin](https://daevaguides.com/en/assassin/) | Skills, boards and stigmas | packs/aion2/classes/assassin/skills.json: Ambush; packs/aion2/classes/assassin/skills.json: Heart Gore; packs/aion2/classes/assassin/skills.json: Quick Slice; packs/aion2/classes/assassin/skills.json: Shadow Fall; packs/aion2/classes/assassin/skills.json: Storm Rampage |
+| [Daeva Guides: Elementalist](https://daevaguides.com/en/elementalist/) | — | packs/aion2/classes/spiritmaster/skills.json: Cold Shock; packs/aion2/classes/spiritmaster/skills.json: Rapid Scattershot |
+| [Daeva Guides: Gladiator](https://daevaguides.com/en/gladiator/) | — | packs/aion2/classes/gladiator/skills.json: Crushing Wave; packs/aion2/classes/gladiator/skills.json: Keen Strike; packs/aion2/classes/gladiator/skills.json: Mocking Blade; packs/aion2/classes/gladiator/skills.json: Overhead Slam; packs/aion2/classes/gladiator/skills.json: Sword Aura Rampage; packs/aion2/classes/gladiator/stigmas.json: Wave Armor |
+| [Daeva Guides: Ranger](https://daevaguides.com/en/ranger/) | — | packs/aion2/classes/ranger/skills.json: Arrow Scattershot; packs/aion2/classes/ranger/skills.json: Burst Arrow; packs/aion2/classes/ranger/skills.json: Drill Dart; packs/aion2/classes/ranger/skills.json: Snipe |
 
 ## ExitLag (1)
 

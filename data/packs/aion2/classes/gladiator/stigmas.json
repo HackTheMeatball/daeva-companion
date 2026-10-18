@@ -525,7 +525,7 @@
           "id": "spec:gladiator:wave-armor:1",
           "n": 1,
           "skillLv": 5,
-          "text": "Absorbs 200, 200% HP"
+          "text": "Absorbs 2% HP"
         },
         {
           "id": "spec:gladiator:wave-armor:2",
@@ -554,6 +554,22 @@
             "scheme": "metabot",
             "value": "0.0.4387.0"
           }
+        },
+        {
+          "url": "https://daevaguides.com/en/gladiator/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-18",
+          "note": "Class guide shows the specialty text for spec:gladiator:wave-armor:1 (Game Data Check, #358)"
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/gladiator/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-18",
+          "note": "Class guide shows the specialty text for spec:gladiator:wave-armor:1 (Game Data Check, #358)"
         }
       ],
       "verifiedAt": "2026-10-18",
@@ -563,6 +579,9 @@
       },
       "notes": [
         "maxLevel 25: Metabot only (this page and the class page's stigma header); owner check pending (owner-check-gladiator)."
+      ],
+      "conflicts": [
+        "spec:gladiator:wave-armor:1 text: Metabot's skill page prints \"Absorbs 200, 200% HP\" (an unfilled template; its number is the percent x 100). Game text \"Absorbs 2% HP\" per daevaguides and aion2turkiye (mmo-codex agrees) (2026-10-18, #358)."
       ]
     },
     {

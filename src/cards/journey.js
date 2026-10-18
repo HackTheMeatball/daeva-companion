@@ -209,7 +209,7 @@ function journeyMount() {
     /* Ticked: turn green, then fade and fold away (unless done ones are shown, or it was the last one). */
     const li = e.target.closest("li"), vis = objIdx(QUEST_STEPS[char(state).quest] || []), all = vis.length, cnt = vis.filter(x => cur.has(x)).length;
     if (e.target.checked && !state.qsShowDone && cnt < all) {
-      li.classList.add("on");
+      li.classList.add("on"); renderNow(); /* Next up's count moves now, not after the fade (#334) */
       setTimeout(() => li.classList.add("leaving"), 550);
       setTimeout(renderQuestSubs, 1150);
     } else renderQuestSubs();

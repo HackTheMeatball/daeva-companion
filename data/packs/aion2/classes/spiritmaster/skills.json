@@ -31,7 +31,7 @@
           "id": "spec:spiritmaster:cold-shock:2",
           "n": 2,
           "skillLv": 8,
-          "text": "Absorbs 100, 100% HP"
+          "text": "Absorbs 1% HP"
         },
         {
           "id": "spec:spiritmaster:cold-shock:3",
@@ -60,10 +60,29 @@
             "scheme": "metabot",
             "value": "0.0.4387.0"
           }
+        },
+        {
+          "url": "https://daevaguides.com/en/elementalist/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-18",
+          "note": "Class guide shows the specialty text for spec:spiritmaster:cold-shock:2 (Game Data Check, #358)"
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/spiritmaster/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-18",
+          "note": "Class guide shows the specialty text for spec:spiritmaster:cold-shock:2 (Game Data Check, #358)"
         }
       ],
       "verifiedAt": "2026-10-18",
-      "status": "verified"
+      "status": "verified",
+      "conflicts": [
+        "spec:spiritmaster:cold-shock:2 text: Metabot's skill page prints \"Absorbs 100, 100% HP\" (an unfilled template; its number is the percent x 100). Game text \"Absorbs 1% HP\" per daevaguides and aion2turkiye (2026-10-18, #358)."
+      ]
     },
     {
       "id": "skill:spiritmaster:combustion",
@@ -506,7 +525,7 @@
           "id": "spec:spiritmaster:rapid-scattershot:1",
           "n": 1,
           "skillLv": 8,
-          "text": "Absorbs 500, 500% HP"
+          "text": "Absorbs 5% HP"
         },
         {
           "id": "spec:spiritmaster:rapid-scattershot:2",
@@ -541,10 +560,29 @@
             "scheme": "metabot",
             "value": "0.0.4387.0"
           }
+        },
+        {
+          "url": "https://daevaguides.com/en/elementalist/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-18",
+          "note": "Class guide shows the specialty text for spec:spiritmaster:rapid-scattershot:1 (Game Data Check, #358)"
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/spiritmaster/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-18",
+          "note": "Class guide shows the specialty text for spec:spiritmaster:rapid-scattershot:1 (Game Data Check, #358)"
         }
       ],
       "verifiedAt": "2026-10-18",
-      "status": "verified"
+      "status": "verified",
+      "conflicts": [
+        "spec:spiritmaster:rapid-scattershot:1 text: Metabot's skill page prints \"Absorbs 500, 500% HP\" (an unfilled template; its number is the percent x 100). Game text \"Absorbs 5% HP\" per daevaguides and aion2turkiye (2026-10-18, #358)."
+      ]
     },
     {
       "id": "skill:spiritmaster:revitalization-contract",
