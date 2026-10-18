@@ -21,6 +21,8 @@ header.top .who { position: relative; min-width: 0; }
 .chbtn .chev::before { content: "▾"; }
 .who.open .chbtn { border-color: var(--accent); }
 .who.open .chbtn .chev::before { content: "▴"; }
+/* the claude.ai build's one line for a character of a class it doesn't carry (0.7 A1) */
+.chnote { margin: var(--space-4) 0 0; color: var(--muted); font-size: 12px; }
 @media (max-width: 600px) {
   .chbtn { display: flex; width: 100%; justify-content: space-between; }
 }

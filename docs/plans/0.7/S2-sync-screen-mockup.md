@@ -5,7 +5,7 @@ built), docs/design/0.6-onboarding-mockup.md (format) and ROADMAP "How an object
 
 ## Problem
 
-0.7 adds the sync UI (Y3), a visible change with several states, and the owner reviews visible work as drawings first.
+0.7 adds the sync UI (P6), a visible change with several states, and the owner reviews visible work as drawings first.
 
 ## Result
 

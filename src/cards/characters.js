@@ -10,8 +10,12 @@
    key, a file name, a URL, a log or the page title (docs/ARCHITECTURE.md §1). */
 import { labelOf, liveChars } from "../core/state.js";
 import { NAME_MAX, cleanName } from "../core/chars.js";
-import { packClasses } from "../core/pack.js";
+import { activePack, packClasses } from "../core/pack.js";
 
+/* the classes this page carries (0.7 A1): the claude.ai build's loader names them in self.DAEVA_CLASSES (scripts/build.mjs
+   ARTIFACT_CLASSES); the site sets none and carries every playable class */
+const carried = pack => !Array.isArray(self.DAEVA_CLASSES) || self.DAEVA_CLASSES.includes(pack);
+const offered = () => packClasses().filter(x => carried(x.pack));
 const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
 /* the rows' order (display only, the save keeps its own): by name, case-insensitive, ties by slot id, unnamed last; a
@@ -66,11 +70,11 @@ export function charactersCard({ onSwitch, onAdd, onRename, onRemove }) {
     const id = removing; removing = null; dlg.close();
     const b = rowBtn("data-remove", id); if (b) b.focus();
   };
-  /* the class picker: one radio per playable class, the first one picked */
+  /* the class picker: one radio per playable class this page carries, the first one picked */
   const drawPick = () => {
-    $("charPick").innerHTML = packClasses().map((x, i) => `<label class="chopt"><input type="radio" name="charClass" value="${esc(x.class)}"${i ? "" : " checked"}><span>${esc(x.name)}</span></label>`).join("");
+    $("charPick").innerHTML = offered().map((x, i) => `<label class="chopt"><input type="radio" name="charClass" value="${esc(x.class)}"${i ? "" : " checked"}><span>${esc(x.name)}</span></label>`).join("");
   };
-  const picked = () => { const r = form.querySelector('input[name="charClass"]:checked'); return r ? r.value : packClasses()[0].class; };
+  const picked = () => { const r = form.querySelector('input[name="charClass"]:checked'); return r ? r.value : offered()[0].class; };
   /* the label the new character will have (Lv 1, the name as it will be kept) */
   const preview = () => { $("charPrev").textContent = labelOf({ name: cleanName($("charName").value), class: picked(), level: 1 }); };
   const showForm = on => {
@@ -122,6 +126,14 @@ export function charactersCard({ onSwitch, onAdd, onRename, onRemove }) {
       /* (the path, not el.contains: a click on Rename or Cancel redraws the rows, so its target is no longer in the page) */
       document.addEventListener("click", e => { if (isOpen() && !e.composedPath().includes(el)) close(); });
       drawButton(ctx.state);
+      /* a character of a class this page doesn't carry (a save from the site, in the claude.ai build): the page shows the
+         default class's guide, and one line under the button says where the class is (the pack's text, from data/); a
+         switch reloads, so this is decided once */
+      const note = activePack().text.siteOnly;
+      if (note && !carried(ctx.state.chars[ctx.state.current].pack)) {
+        const p = document.createElement("p"); p.className = "chnote"; p.id = "charNote"; p.textContent = note;
+        btn.after(p);
+      }
     },
     update(ctx) {
       last = ctx; if (!el) return;

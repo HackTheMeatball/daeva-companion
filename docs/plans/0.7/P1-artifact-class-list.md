@@ -1,4 +1,4 @@
-# 0.7 A1: The claude.ai artifact carries a fixed class list, chosen at build time
+# 0.7 P1: The claude.ai artifact carries a fixed class list, chosen at build time
 
 Planned in the 0.7 planning pass (Release Planner, 2026-10-18; ROADMAP "0.7"; Kaizen review docs/kaizen/0.6-scorecard.md). Read CLAUDE.md ("Keep both builds visually identical; dist-artifact must stay a single file"),
 docs/ARCHITECTURE.md (build), `scripts/build.mjs` (`allClasses`, `siteClasses`), `scripts/generated-data.mjs`
@@ -7,7 +7,7 @@ docs/ARCHITECTURE.md (build), `scripts/build.mjs` (`allClasses`, `siteClasses`),
 ## Problem
 
 The site loads only the current class's chunk (0.6 P2), but the artifact can't fetch, so `allClasses()` inlines every
-playable class. With Assassin + Ranger it is at 971,146 / 1,030,000 B (94%, main `5f4755f`): adding the Gladiator (G1)
+playable class. With Assassin + Ranger it is at 971,146 / 1,030,000 B (94%, main `5f4755f`): adding the Gladiator (P2)
 would fail the blocking budget.
 
 ## Result

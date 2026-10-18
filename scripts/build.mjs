@@ -36,10 +36,12 @@
    Markers in src/index.html: a line "<!-- @web-only -->" opens a block, "<!-- @end-web-only -->" closes it.
    Placeholders anywhere in the page: __APP_VERSION__ becomes package.json's version, __APP_BUILD__ the build's name
    ("site" in dist/, "claude.ai" in dist-artifact/), so the version is never written by hand in the page.
-   Usage: node scripts/build.mjs */
+   Usage: node scripts/build.mjs [--artifact-classes <id,id…>] [--out <dir>]
+     --artifact-classes  the class packs dist-artifact inlines, in place of ARTIFACT_CLASSES (the build test, tests/site.js)
+     --out               write dist/ and dist-artifact/ below <dir> instead of the repo root (the build test) */
 import { createHash } from 'node:crypto';
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
-import { dirname, join, relative } from 'node:path';
+import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { gzipSync } from 'node:zlib';
 import { build, transform } from 'esbuild';
@@ -48,10 +50,12 @@ import { DEFAULT_PACK } from '../tools/gen/packs.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const P = (...p) => join(ROOT, ...p);
-const DIST = P('dist'), ART = P('dist-artifact');
 const OPEN = '<!-- @web-only -->', CLOSE = '<!-- @end-web-only -->';
 
 const die = msg => { console.error('build: ' + msg); process.exit(1); };
+const argOf = n => { const i = process.argv.indexOf('--' + n); return i < 0 ? null : process.argv[i + 1] || die(`--${n} needs a value`); };
+const OUT_DIR = argOf('out') ? resolve(ROOT, argOf('out')) : ROOT;
+const DIST = join(OUT_DIR, 'dist'), ART = join(OUT_DIR, 'dist-artifact');
 const walk = dir => readdirSync(dir).flatMap(n => { const f = join(dir, n); return statSync(f).isDirectory() ? walk(f) : [f]; });
 
 /* card markup (0.4 P4a, docs/design/0.4-engine-contract.md §4): a shell line "<!-- @card cards/X.html -->" is replaced by
@@ -83,10 +87,19 @@ pruneTables(unusedTables());
    pack) gets a chunk of its own tables (classChunk), and a small loader before the app script picks the current
    character's class from the stored save (its `pack`; the default pack when there is none or it isn't shipped) and sets
    self.DAEVA_PACK. The site loads that one chunk as its own file (packs/<id>.<hash>.js, precached; document.write keeps
-   it before the app script, which reads it at once); the claude.ai build can't fetch, so every chunk is inlined there. */
+   it before the app script, which reads it at once); the claude.ai build can't fetch, so the chunks of ARTIFACT_CLASSES are
+   inlined there (0.7 A1) and every other playable class is site-only. */
 splitClasses();
 const CLASS_PACKS = genAll().packs;
 if (!CLASS_PACKS.includes(DEFAULT_PACK)) die(`the default pack ${DEFAULT_PACK} is not a guide pack below data/packs`);
+/* the classes the claude.ai build carries (0.7 A1, docs/ARCHITECTURE.md §4): its byte budget decides, so a new class is
+   added here only when dist-artifact/index.html stays under it. Its loader sets self.DAEVA_CLASSES to this list: the
+   character picker offers only these, and a character of another class gets a note (src/cards/characters.js). The default
+   pack must be one of them (a save without a carried class falls back to it). */
+const ARTIFACT_CLASSES = argOf('artifact-classes') ? argOf('artifact-classes').split(',') : ['aion2/asmodian/assassin', 'aion2/asmodian/ranger'];
+for (const id of ARTIFACT_CLASSES) if (!CLASS_PACKS.includes(id)) die(`artifact class ${id} is not a guide pack below data/packs`);
+if (!ARTIFACT_CLASSES.includes(DEFAULT_PACK)) die(`the artifact classes must include the default pack ${DEFAULT_PACK}`);
+const ART_PACKS = CLASS_PACKS.filter(id => ARTIFACT_CLASSES.includes(id));
 const SAVE_KEY = (readFileSync(P('src/core/state.js'), 'utf8').match(/^export const KEY = "([\w-]+)";$/m) || [])[1] || die('src/core/state.js: no `export const KEY = "…";`');
 const minChunk = async id => (await transform(classChunk(id), { loader: 'js', minifyWhitespace: true, minifySyntax: true, minifyIdentifiers: false, charset: 'utf8', legalComments: 'inline' })
   .catch(x => die(`class chunk ${id}: ${x.message}`))).code;
@@ -95,9 +108,10 @@ for (const [id, js] of Object.entries(chunks)) if (/<\/script/i.test(js)) die(`c
 const chunkFile = id => `packs/${id.replace(/\//g, '-')}.${createHash('sha256').update(chunks[id]).digest('hex').slice(0, 8)}.js`;
 const pickClass = files => `(()=>{const F=${JSON.stringify(files)};let p;try{const s=JSON.parse(localStorage.getItem(${JSON.stringify(SAVE_KEY)}));p=s.chars[s.current].pack}catch(e){}` +
   `if(!F[p])p=${JSON.stringify(DEFAULT_PACK)};self.DAEVA_PACK=p;`;
-/* what goes before the app script: the site's loader, or (claude.ai, and the checks below) the loader and every chunk */
+/* what goes before the app script: the site's loader, or (claude.ai: ART_PACKS; the checks below: every class) the loader,
+   which names the inlined classes in self.DAEVA_CLASSES, and those chunks */
 const siteClasses = () => `<script>\n${pickClass(Object.fromEntries(CLASS_PACKS.map(id => [id, chunkFile(id)])))}document.write('<script src="'+F[p]+'"><\\/script>')})();\n</script>\n`;
-const allClasses = () => `<script>\n${pickClass(Object.fromEntries(CLASS_PACKS.map(id => [id, 1])))}})();\n</script>\n<script>\n${CLASS_PACKS.map(id => chunks[id]).join('')}</script>\n`;
+const allClasses = ids => `<script>\n${pickClass(Object.fromEntries(ids.map(id => [id, 1])))}self.DAEVA_CLASSES=Object.keys(F)})();\n</script>\n<script>\n${ids.map(id => chunks[id]).join('')}</script>\n`;
 /* the game pack the page loads (0.4 P8): src/main.js imports it as the module "pack", the pack's shell.js, so the shell
    names no game (docs/design/0.4-engine-contract.md §5); one game's code, always loaded; its class data comes per class
    (the chunks above) */
@@ -156,7 +170,7 @@ const readCss = (f, seen) => {
   return plainCss(f, readFileSync(P('src', f), 'utf8')).replace(IMPORT, (_, g) => { const css = readCss(join(dirname(f), g).split('\\').join('/'), seen); return css.endsWith('\n') ? css : css + '\n'; });
 };
 /* classes: the class loader (and chunks) placed before the app script, main.js */
-const inline = (html, classes = allClasses(), seen = new Set()) => html
+const inline = (html, classes = allClasses(CLASS_PACKS), seen = new Set()) => html
   .replace(STYLE_TAG, (_, f) => { const css = readCss(f, seen); if (/<\/style/i.test(css)) die(`src/${f} contains "</style"`); if (/^\s*@import\b/m.test(css)) die(`src/${f}: an @import the build can't inline (one per line: @import "X.css";)`); return `<style>\n${css}</style>\n`; })
   .replace(SCRIPT_TAG, (_, f) => (f === 'main.js' ? classes : '') + `<script>\n${bundle(f)}</script>\n`);
 if (!shell.includes('<script type="module" src="main.js"></script>\n')) die('src/index.html: no <script type="module" src="main.js"> (the class loader goes before it)');
@@ -258,7 +272,7 @@ if (!art.includes(FONTS_TAG)) die('src/index.html: the styles/fonts.css <link> i
    artifact: null in scripts/artifact-blobs.json. The artifact build drops it (its quoted path becomes ""), so the page
    shows the initials square there, as before the icon existed. Such an icon may only be referenced as a quoted string. */
 const NO_BLOB = /(["'])assets\/icons\/([\w-]+)\.png\1/g;
-art = tightHtml(stamp(inline(art).replace(NO_BLOB, (m, q, n) => blobs[n] === null ? q + q : m)
+art = tightHtml(stamp(inline(art, allClasses(ART_PACKS)).replace(NO_BLOB, (m, q, n) => blobs[n] === null ? q + q : m)
   .replace(ICON_RE, (_, n) => blobs[n] ? '/_blob/' + blobs[n] : die(`assets/icons/${n}.png has no blob id and is not a quoted string`)), 'claude.ai'));
 if (art.includes('@font-face')) die('dist-artifact/index.html still has an @font-face rule');
 for (const bad of ['__APP_VERSION__', '__APP_BUILD__', 'assets/icons/', 'assets/fonts/', 'fonts.googleapis', 'fonts.gstatic', 'serviceWorker', 'manifest.webmanifest', '<!doctype', '<head>', '<body>'])
@@ -301,6 +315,7 @@ console.log(`build ${BUILD} · v${VERSION}`);
 console.log(`  dist/index.html            ${kb(join(DIST, 'index.html'))} · ${walk(DIST).length} files · precache ${precache.length}`);
 for (const id of CLASS_PACKS) console.log(`  ${('dist/' + chunkFile(id)).padEnd(26)} ${kb(join(DIST, chunkFile(id)))} · class chunk of ${id} (${genAll().perClass.length} tables; ${genAll().shared.length} shared in index.html)`);
 console.log(`  dist-artifact/index.html   ${kb(join(ART, 'index.html'))} · ${[...used].filter(n => blobs[n]).length} icons as /_blob/<id>${[...used].some(n => blobs[n] === null) ? ` · ${[...used].filter(n => blobs[n] === null).length} without a blob id (initials there)` : ''} · ${fontsUsed.size} fonts inlined once each (${(fontInline / 1024).toFixed(1)} KB base64)`);
+console.log(`  dist-artifact classes      ${ART_PACKS.join(', ')}${CLASS_PACKS.length > ART_PACKS.length ? ` · site only: ${CLASS_PACKS.filter(id => !ART_PACKS.includes(id)).join(', ')}` : ''}`);
 
 /* page budgets (0.4 P7): about 1.3x the 0.3.0 numbers; a PR that raises one says why (docs/ARCHITECTURE.md §4). The element
    budget is checked by the `site` suite. The site page is dist/index.html plus its largest class chunk (0.6 P2): what a
