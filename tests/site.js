@@ -492,9 +492,12 @@ const checkReport = (label, m, want) => {
     await q.click('#dcsSw'); await clickText(q, T['on.have']);
     const typo = code3.slice(0, -1) + (code3.endsWith('0') ? '1' : '0');
     await q.fill('.sync-codein', typo); u = await ui(q);
-    const j1 = await q.evaluate(() => ({ dis: [...document.querySelectorAll('#dcsPanel button')].find(x => x.textContent === 'Join').disabled, fs: getComputedStyle(document.querySelector('.sync-codein')).fontSize, tag: document.querySelector('.sync-codein').tagName }));
+    const j1 = await q.evaluate(() => ({ dis: [...document.querySelectorAll('#dcsPanel button')].find(x => x.textContent === 'Join').disabled, fs: getComputedStyle(document.querySelector('.sync-codein')).fontSize, tag: document.querySelector('.sync-codein').tagName, sw: document.querySelector('.sync-codein').scrollWidth, cw: document.querySelector('.sync-codein').clientWidth, sh: document.querySelector('.sync-codein').scrollHeight, ch: document.querySelector('.sync-codein').clientHeight }));
     ok('sync j1: a typo is caught on the device: message, Join disabled, no request', u.panel.includes(T['join.typo']) && j1.dis && net.n === n0, { u, j1 });
-    ok('sync j1: the join field is one line (never breaks inside a group), 16 px on a phone', j1.tag === 'INPUT' && j1.fs === '16px', j1);
+    /* P7 (#379): was an INPUT that cut the code off at 390 px; now a 2-row TEXTAREA that wraps after hyphens, so the whole code is visible */
+    ok('sync j1: the join field shows the whole code at 390 px (wraps after hyphens, nothing cut off), 16 px on a phone', j1.tag === 'TEXTAREA' && j1.fs === '16px' && j1.sw <= j1.cw && j1.sh <= j1.ch, j1);
+    await q.fill('.sync-codein', typo.slice(0, 10) + '\n ' + typo.slice(10));
+    ok('sync j1: a pasted code with a newline or spaces is normalised', await q.evaluate(() => !/\s/.test(document.querySelector('.sync-codein').value)));
     const nope = M.newSyncCode(env); await q.fill('.sync-codein', nope); await clickText(q, T['join.button']); u = await until(q, x => x.panel.includes(T['join.notFound']));
     ok('sync j2: a code with no cloud copy: "No cloud copy for this code", nothing stored or created', u.panel.includes(T['join.notFound']) && !u.rec && host.objects.size === 1, u);
     await q.fill('.sync-codein', code3.toLowerCase()); await clickText(q, T['join.button']);

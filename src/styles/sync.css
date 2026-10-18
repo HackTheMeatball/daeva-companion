@@ -33,6 +33,7 @@ body.basic .sync-adv { display: none !important; }
 .sync-grp { white-space: nowrap; }
 .sync-field { display: block; margin-top: var(--space-14); font: 600 12px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 .sync-input { box-sizing: border-box; width: 100%; margin-top: var(--space-8); border: 1px solid var(--line); border-radius: var(--radius-8); background: var(--panel-2); padding: var(--space-10) var(--space-12); font: 500 14px var(--mono); color: var(--fg); }
+textarea.sync-input { display: block; resize: none; overflow: hidden; line-height: 1.4; word-break: normal; overflow-wrap: break-word; }
 .sync-input.err { border-color: var(--accent); }
 .sync-input::placeholder { color: var(--muted); }
 .sync-note { margin-top: var(--space-8); font-size: 13px; }
