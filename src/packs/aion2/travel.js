@@ -6,7 +6,7 @@
 
    Points are NODE_PLACE's { map, x, y, anchor, m }: anchor = the nearest Kibelisk's registry id, m = the source's metres
    to it. Story objectives have no points yet (design §3, S1), so an objective places the player only by its Kibelisk's
-   zone, and the story card's target is the current quest's turn-in. */
+   zone, and the story card's target is the current quest's turn-in once its other objectives are ticked. */
 import { KIBELISKS, NODE_PLACE, TRAVEL_RULES } from "./data/place.js";
 import { QUEST_LOC, QUEST_STEPS } from "./data/story.js";
 import { isAscensionKey } from "./requirements.js";
@@ -109,10 +109,15 @@ export function nudgeOf(c, { R = TRAVEL_RULES.bindRadius, nudge = TRAVEL_RULES.n
 }
 
 /* ---------- Teleport vs walk (design §8.3) ---------- */
-/* The story card's target: the current quest's turn-in while it isn't turned in, { zone (its Kibelisk's, else the
-   quest's), pt, to (the quest's node id: what "I'll walk" hides), npc (the turn-in's NPC or null) }, else null. */
+/* The story card's target (design §3): the next open objective's point, else the turn-in. Objectives have no points
+   yet, so the target is the current quest's turn-in once every objective but its "Turn in" step is ticked (hidden
+   talk-only ones too) and it isn't turned in: { zone (its Kibelisk's, else the quest's), pt, to (the quest's node id:
+   what "I'll walk" hides), npc (the turn-in's NPC or null) }; else null (an open objective: the target is unknown). */
+const TURN_IN_STEP = /^Turn in\b/i;
 export function storyTargetOf(c) {
   if (!c.quest || c.storyEnd === c.quest) return null;
+  const done = (c.qsteps || {})[c.quest] || [];
+  if ((QUEST_STEPS[c.quest] || []).some((t, i) => !TURN_IN_STEP.test(t) && !done.includes(i))) return null;
   const x = travelNode(c.quest), T = x && x.P && x.P.pts.turnin; if (!T) return null;
   return { zone: (KIBELISKS[T.anchor] || {}).zone || x.P.zone, pt: T, to: x.id, npc: (QUEST_LOC[c.quest] || {}).turnin || null };
 }

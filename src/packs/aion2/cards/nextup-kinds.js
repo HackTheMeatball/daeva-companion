@@ -20,6 +20,7 @@ import { char } from "../../../core/state.js";
 import { chainsOn, openOf } from "../../../core/requirements.js";
 import { MAP_ICO, rqTicked, snoozeToggle } from "../../../cards/milestones.js";
 import { capFirst, isBasic, renderNow } from "../../../cards/nextup.js";
+import { travelAdviceOn } from "../nextup.js";
 import { pageState as state, pageSave as save, pageUpdate as update, pageMainEl as mainEl, pageSMOOTH as SMOOTH, pageSD_RW as SD_RW, pageSH_REWARD as SH_REWARD, pageNO_AREA as NO_AREA, pageSpCostTxt as spCostTxt, pageRqReqOf as rqReqOf, pageSpecPickOf as specPickOf, pageMapFocus as mapFocus, pageAion2QuestMap as aion2QuestMap, pageGoAreas as goAreas, pageCubeClick as cubeClick, pageStTickClick as stTickClick, pageStUpClick as stUpClick, pageStLvClick as stLvClick, pageSpMini as spMini, pageStIco as stIco, pageDvShort as dvShort, pageQProg as qProg } from "../../../cards/page.js";
 
 /* "Not in game yet" in Next up (compact): eye with a slash. */
@@ -115,8 +116,9 @@ export const aion2NowRenderers = {
     if (b) return `<label class="ns-bind"><input type="checkbox" data-nsbind="${b.key}"><span>Bind <b>${b.name}</b> on the way<small>${b.m} m from ${b.npc || "the turn-in"}</small></span></label>`;
     if (!teleShown(a)) return "";
     return `<div class="ns-tele"><span>Teleport to <b>${t.name}</b> (1 scroll), then ${t.m} m</span><button type="button" class="ns-walk" data-nswalk="${t.to}" aria-label="I will walk to ${t.npc || "the turn-in"}">I'll walk</button></div>`; },
-  /* "Prefer running" (0.5 P16, S1 Q6'): the view setting preferRun, in the Advanced options row; no travel line while on */
-  "now.opts": () => `<label class="ns-pref"><input type="checkbox" data-nsprefer${state.preferRun === true ? " checked" : ""}><span>Prefer running</span></label>`,
+  /* "Prefer running" (0.5 P16, S1 Q6'): the view setting preferRun, in the Advanced options row; no travel line while
+     on. Hidden while travel advice is off (it would change nothing). */
+  "now.opts": () => !travelAdviceOn() ? "" : `<label class="ns-pref"><input type="checkbox" data-nsprefer${state.preferRun === true ? " checked" : ""}><span>Prefer running</span></label>`,
   "now.act": a => {
     if (a === "usecube") { char(state).stones = (char(state).stones || 0) + (char(state).pendSt || 0); char(state).dvTotal = (char(state).dvTotal || 0) + (char(state).pendCr || 0); char(state).pendSt = 0; char(state).pendCr = 0; save(); update(); return true; }
     if (a.startsWith("tick:")) { const k = a.slice(5); if (char(state).areaRun) delete char(state).areaRun[k];

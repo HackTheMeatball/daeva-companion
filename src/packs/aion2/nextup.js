@@ -207,12 +207,14 @@ export function aion2Meanwhile(state, ctx) {
    its Kibelisk. bind (bindNudge, design §8.2): the one-time "Bind X" row while the quest's turn-in is in the nudge band
    of a Kibelisk the save doesn't bind (nudgeOf: { kib, name, m, key, via }), else null. tele (travelAdvice, design
    §8.3): teleport to the turn-in's bound Kibelisk from where the player is (teleportOf: { kib, name, m, walk }, plus to
-   and npc of storyTargetOf), never with the view setting `preferRun` (top-level, per device, not synced; absent: off);
-   the card draws it in place of kib (Q11). */
+   and npc of storyTargetOf), never with the view setting `preferRun` (top-level, per device, not synced; absent: off)
+   and never on a level-gated card (its "Meanwhile" line sends you elsewhere, like kib); the card draws it in place of
+   kib (Q11). travelAdviceOn: the switch and what it needs (also hides "Prefer running" when off). */
+export const travelAdviceOn = () => ["bindDerived", "travelAdvice"].every(n => rankChangeOn(n, AION2_RANK_CHANGES)) && rankChangeOn("placeRank");
 export const aion2StoryFields = (state, { c, story: { gated }, open }) => {
   const sh = gated ? null : storyHereOf(state), on = n => rankChangeOn(n, AION2_RANK_CHANGES);
   const bind = on("bindDerived") && on("bindNudge") ? nudgeOf(c) : null;
-  const T = on("bindDerived") && on("travelAdvice") && rankChangeOn("placeRank") && state.preferRun !== true ? storyTargetOf(c) : null;
+  const T = !gated && travelAdviceOn() && state.preferRun !== true ? storyTargetOf(c) : null;
   const t = T && teleportOf(c, T, whereNow(c));
   return { kib: sh && !/\(Kibelisk:/.test(open || "") ? sh : null, bind, tele: t ? { ...t, to: T.to, npc: T.npc } : null };
 };

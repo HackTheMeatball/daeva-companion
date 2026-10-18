@@ -140,4 +140,19 @@ export default (test, M) => {
     assert.equal(M.teleportOf(c, target, { zone: target.zone, pt: other.pt }), null, 'another map, the same zone');
     assert.equal(M.teleportOf(c, target, { zone: null, pt: other.pt }), null, 'another map, no zone');
   });
+  /* design §3: the target is the next open objective's point, else the turn-in; objectives have no points yet, so with
+     any objective but the "Turn in" step open there is no target (review of 87fc961: Farewells 0/3 said "Teleport to
+     Fang Hideout" while its objectives are at Nornir Assembly) */
+  test('story target: the turn-in only once every objective but "Turn in" is ticked (talk-only ones too); none turned in', () => {
+    for (const q of ['Farewells', 'Imminent Threat']) {
+      const L = M.QUEST_STEPS[q], ti = L.findIndex(t => /^Turn in\b/.test(t)), rest = L.map((t, i) => i).filter(i => i !== ti);
+      assert.ok(ti >= 0, `${q} has a "Turn in" step`);
+      assert.equal(M.storyTargetOf(at(q)), null, `${q}: nothing ticked`);
+      assert.equal(M.storyTargetOf(at(q, { qsteps: { [q]: rest.slice(1) } })), null, `${q}: the first objective open`);
+      assert.equal(M.storyTargetOf(at(q, { qsteps: { [q]: rest.slice(0, -1) } })), null, `${q}: the last objective before "Turn in" open`);
+      const T = M.storyTargetOf(at(q, { qsteps: { [q]: rest } }));
+      assert.deepEqual(T && [T.pt, T.to], [NP[S[qi(q)][0]].pts.turnin, S[qi(q)][0]], `${q}: all but "Turn in" ticked → its turn-in`);
+      assert.equal(M.storyTargetOf(at(q, { storyEnd: q, qsteps: { [q]: rest } })), null, `${q}: turned in`);
+    }
+  });
 };
