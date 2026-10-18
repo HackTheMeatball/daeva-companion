@@ -12,7 +12,9 @@
         under src/packs/ (esbuild's import graph);
      6. per-class loading (0.6 P2): generateAll() compiles the two classes to two table sets and two chunks, the game's
         tables once; a page state (shared tables + the loader's chunk) for one class holds none of the other's records,
-        and the second class's chain passes steps 2-4 on its own engine.
+        and the second class's chain passes steps 2-4 on its own engine;
+     7. cards that open with the game (0.6 P16): a gated card's opensWith is a node of the graph, the card is locked
+        (cardLock: the unlock line) until that node opens, then open (AION 2: its owner-verified unlocks; fake: step f2:1).
    The AION 2 chain runs on M (tests/support/core-bundle.mjs, the bundle the core suite tests); the fake chain on a bundle
    of its own built here, so the two packs never share an engine instance. Node only: the fake game has no page build. */
 import { cpSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
@@ -132,6 +134,30 @@ export default (test, M) => {
     assert.deepEqual(M.activePack().data.graph, g.gateGraph, 'the pack the engine runs carries this build\'s GATE_GRAPH');
   });
   runChain(test, A, M);
+  /* cards that open with the game (0.6 P16): each gated card's opensWith is a node of the pack's graph, and on a fresh
+     character the card is locked or open as its owner-verified unlock says (unlocks.json) */
+  const lockOf = (E, c, id) => E.cardLock(E.activePack().cards.find(x => x.id === id), E.gatesOf(c));
+  const freshChar = E => { const { state } = E.loadState(null, { now: NOW_MS, newId: () => 'slot-1' }); E.migrate(state, false, () => {}, NOW_S); return E.char(state); };
+  test(`${A} 7: every card's opensWith names a node of the pack's gate graph`, () => {
+    const gated = M.activePack().cards.filter(x => x.opensWith);
+    assert.deepEqual(gated.map(x => [x.id, x.opensWith]), [['skills', 'unlock:skills-window'], ['daevanion', 'unlock:daevanion'], ['stigmas', 'unlock:stigma-slot-1']]);
+    for (const x of gated) assert.ok(M.activePack().data.graph.nodes[x.opensWith], `${x.id}: ${x.opensWith} is not in the graph`);
+  });
+  test(`${A} 7: Skills open at Lv 4, Daevanion after "Urgent Pursuit", Stigmas at Lv 22 (locked before, with the unlock line)`, () => {
+    const c = freshChar(M), quests = M.activePack().data.story.quests, up = quests.findIndex(q => q[1] === 'Urgent Pursuit');
+    assert.ok(up > 0, '"Urgent Pursuit" is in the story');
+    const states = () => ['skills', 'daevanion', 'stigmas'].map(id => { const l = lockOf(M, c, id); return l ? l.text : 'open'; });
+    assert.deepEqual(states(), ['Opens at Lv 4', 'Opens after "Urgent Pursuit"', 'Opens at Lv 22'], 'Lv 1');
+    assert.deepEqual([lockOf(M, c, 'skills').label, lockOf(M, c, 'skills').key, lockOf(M, c, 'stigmas').key], ['Skills, opens at Lv 4', 'K', null]);
+    c.level = 3; assert.equal(states()[0], 'Opens at Lv 4', 'Lv 3');
+    c.level = 4; assert.deepEqual(states(), ['open', 'Opens after "Urgent Pursuit"', 'Opens at Lv 22'], 'Lv 4');
+    c.level = 13; c.quest = quests[up][1];
+    assert.equal(states()[1], 'Opens after "Urgent Pursuit"', 'on "Urgent Pursuit", not turned in');
+    c.quest = quests[up + 1][1];
+    assert.deepEqual(states(), ['open', 'open', 'Opens at Lv 22'], 'after "Urgent Pursuit"');
+    c.level = 21; assert.equal(states()[2], 'Opens at Lv 22', 'Lv 21');
+    c.level = 22; assert.deepEqual(states(), ['open', 'open', 'open'], 'Lv 22');
+  });
 
   /* ---------- the fake game ---------- */
   const F = `conformance [${FAKE_PACK}]`;
@@ -166,6 +192,21 @@ export default (test, M) => {
     assert.ok(Object.values(c.mt.checks || {}).some(([t, v]) => t > 0 && v === true) && c.mt.quest[0] > 0, 'the save has dated ticks and a dated story position');
     assert.equal(E.whereNow(c), null);
     assert.deepEqual([{ order: 2 }, { order: 0 }, { order: 1 }].sort(E.byPlace(E.whereNow(c))).map(x => x.order), [0, 1, 2]);
+  });
+  test(`${F} 7: the pack's gated card registers, stays locked until its gate (step f2:1) opens, then opens`, () => {
+    const E = FAKE.E, R = E.cardRegistry(), spec = E.activePack().cards[0];
+    assert.equal(R.register(spec).opensWith, 'f2:1');
+    assert.ok(E.activePack().data.graph.nodes[spec.opensWith], 'f2:1 is in the graph');
+    const c = freshChar(E), quests = E.activePack().data.story.quests;
+    assert.deepEqual(lockOf(E, c, 'fakegame-bell'), { text: 'Opens after "Second Wind"', label: 'Bell tower, opens after "Second Wind"', key: 'B' }, 'Lv 1');
+    c.level = 2; c.quest = quests[1][1];
+    assert.equal(lockOf(E, c, 'fakegame-bell').text, 'Opens after "Second Wind"', 'on "Second Wind", not turned in');
+    c.quest = quests[2][1]; c.level = 1;
+    assert.equal(lockOf(E, c, 'fakegame-bell').text, 'Opens at Lv 2', '"Second Wind" turned in, Lv 1');
+    c.level = 2;
+    assert.equal(lockOf(E, c, 'fakegame-bell'), null, 'open');
+    assert.throws(() => E.cardRegistry().register({ ...spec, name: null }), /needs a root and a name/);
+    assert.throws(() => E.cardRegistry().register({ ...spec, opensWith: '' }), /opensWith is a node id or null/);
   });
   test(`${F} 5: the fake chain loads no module from src/packs/ (import graph)`, () => {
     const packs = FAKE.inputs.filter(p => p.startsWith('src/packs/') || p.startsWith('generated:'));

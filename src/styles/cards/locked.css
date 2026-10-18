@@ -1,0 +1,11 @@
+/* A card that opens with the game, still locked (0.6 P16; src/core/cards.js cardLock, the shell's placeLocks): in
+   Advanced at desktop width a faded shell stands in its place (docs/design/0.6-onboarding-mockup.md §1.2, owner-ok-S1
+   Q1), elsewhere the card is hidden. The shell is the card frame, dashed: the unlock line, the card's title, one grey
+   bar. No content, nothing to tab to. */
+/* a locked card and an unused shell leave the page (a card frame's display would otherwise beat the hidden attribute) */
+.card[hidden] { display: none; }
+.card.lockcard { border-style: dashed; }
+.lockcard .lockline { margin: 0; line-height: 24px; color: var(--gold-light); font: 500 12px/24px var(--mono); letter-spacing: .06em; }
+.lockcard .lockline .keychip { vertical-align: middle; color: var(--gold-light); border-color: var(--gold-55); }
+.lockcard h2 { margin: var(--space-8) 0 0; }
+.lockcard .lockbar { height: 10px; width: 80%; border-radius: var(--radius-bar); background: var(--line); margin-top: var(--space-10); }

@@ -6,9 +6,16 @@
    Order rule: mountAll and updateAll walk the slots in CARD_SLOTS order and the cards of a slot in ascending order; the
    cards of a section ("<cardId>.<section>") run right after their card. order decides the call order only, never the
    DOM position (the markup's place in src/index.html does). An unknown slot, a duplicate id, a duplicate order in a
-   slot or a section its card doesn't declare throws at registration. */
+   slot or a section its card doesn't declare throws at registration.
 
-export const CARD_SLOTS = ["rail", "top", "main", "foot", "drawer"];
+   Cards that open with the game (0.6 P16): a card may name opensWith, the id of a node in the pack's gate graph (an
+   unlock or a gate). Until that node is open the card is locked: the shell hides it, or shows a faded shell in its place
+   (docs/design/0.6-onboarding-mockup.md §1.2), with the card's name and an optional key from the spec. A card without
+   opensWith is always open. */
+
+import { blockerChain } from "./blockers.js";
+
+export const CARD_SLOTS =["rail", "top", "main", "foot", "drawer"];
 const cardFnOk = f => f === undefined || f === null || typeof f === "function";
 
 /* A registry of its own (the page uses the one below; the core suite makes fresh ones). */
@@ -20,19 +27,22 @@ export function cardRegistry() {
   const walk = slot => inSlot(slot).flatMap(s => [s, ...s.sections.flatMap(n => walk(s.id + "." + n))]);
   const callOrder = () => CARD_SLOTS.flatMap(walk);
   const register = spec => {
-    const { id, slot, order, root = null, sections = [], mount = null, update = null } = spec || {};
+    const { id, slot, order, root = null, sections = [], mount = null, update = null, opensWith = null, name = null, key = null } = spec || {};
     if (typeof id !== "string" || !id) throw new Error("registerCard: a card needs an id");
     if (specs.has(id)) throw new Error(`registerCard: "${id}" is registered twice`);
     if (!Number.isFinite(order)) throw new Error(`registerCard: "${id}" needs a numeric order`);
     if (!cardFnOk(mount) || !cardFnOk(update)) throw new Error(`registerCard: "${id}": mount and update are functions or null`);
     if (!Array.isArray(sections) || sections.some(n => typeof n !== "string" || !n)) throw new Error(`registerCard: "${id}": sections are names`);
+    if (opensWith !== null && (typeof opensWith !== "string" || !opensWith)) throw new Error(`registerCard: "${id}": opensWith is a node id or null`);
+    if (opensWith !== null && (typeof name !== "string" || !name || !root)) throw new Error(`registerCard: "${id}": a card with opensWith needs a root and a name`);
+    if (key !== null && (typeof key !== "string" || !key)) throw new Error(`registerCard: "${id}": key is a string or null`);
     if (!CARD_SLOTS.includes(slot)) {
       const [owner, section, ...rest] = String(slot).split(".");
       const host = specs.get(owner);
       if (rest.length || !section || !host || !host.sections.includes(section)) throw new Error(`registerCard: "${id}": unknown slot "${slot}"`);
     }
     if (inSlot(slot).some(s => s.order === order)) throw new Error(`registerCard: "${id}": order ${order} is taken in slot "${slot}"`);
-    const s = Object.freeze({ id, slot, order, root, sections: Object.freeze([...sections]), mount, update });
+    const s = Object.freeze({ id, slot, order, root, sections: Object.freeze([...sections]), mount, update, opensWith, name, key });
     specs.set(id, s);
     return s;
   };
@@ -53,6 +63,20 @@ export function cardRegistry() {
     /* one card's update, where its old call stood in the shell (while cards move, P4a–P4c) */
     updateCard(id, ctx) { const s = card(id); if (s.update) s.update(ctx); },
   };
+}
+
+/* A card's lock for this evaluation ev (Ev of src/core/evaluator.js): null when it is open (no opensWith, or its node
+   open), else { text, label, key }: text "Opens at Lv N" / "Opens after "X"" (the first blocker, as blockerChain follows
+   it), label the shell's accessible name ("<name>, opens at Lv N"), key the spec's. An id the graph doesn't hold counts as
+   open, so a typo shows the card instead of hiding it (the conformance suite checks every pack card's id resolves). */
+export function cardLock(spec, ev) {
+  if (!spec.opensWith) return null;
+  const r = ev.node(spec.opensWith);
+  if (!r || r.open) return null;
+  const x = blockerChain(r, ev), b = x && x.leaf;
+  const text = x && x.hop ? `Opens after "${x.hop.name}"` : b && b.kind === "level" ? `Opens at Lv ${b.need}`
+    : b && b.kind === "story" ? `Opens ${b.turnIn ? "after" : "on"} "${b.name}"` : "Opens later";
+  return { text, label: `${spec.name}, ${text[0].toLowerCase()}${text.slice(1)}`, key: spec.key };
 }
 
 const PAGE_CARDS = cardRegistry();

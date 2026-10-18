@@ -1,0 +1,10 @@
+[
+  { "case": "dl2-lv1-advanced-1500", "kind": "before-after", "title": "Locked cards on desktop",
+    "caption": "At Lv 1 in Advanced, Skills, Daevanion and Stigmas are faded shells that say when they open: Lv 4, after Urgent Pursuit, Lv 22." },
+  { "case": "dl1-lv1-basic-1500", "kind": "before-after", "title": "Locked cards hidden in Basic",
+    "caption": "At Lv 1 in Basic the three locked cards are left out, so Next up moves to the top." },
+  { "case": "l1-lv1-basic-390", "kind": "before-after", "title": "Locked cards hidden on phones",
+    "caption": "On a phone at Lv 1 the locked cards are left out too; nothing pushes the page down." },
+  { "case": "dk-lv4-advanced-1500", "kind": "before-after", "title": "Skills opens at Lv 4",
+    "caption": "At Lv 4 the Skills card fills in where its shell stood; Daevanion and Stigmas stay faded until they open." }
+]

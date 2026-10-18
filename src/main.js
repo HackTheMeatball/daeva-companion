@@ -16,7 +16,7 @@ import { CONF, SD_RW, SOURCES, SRC_SITE, STORY_END, ITEMS, E_ORDER, LEVEL_POINTS
   shardsFromLv, slotNames, specPickOf, stLvOfC, stigmaPlan, stigmaSlots, rqReqOf, ascensionOf, aion2AscensionCard,
   renderAscension } from "pack";
 import { activePack, usePack } from "./core/pack.js";
-import { mountAll, registerCard, registeredCards, updateCard } from "./core/cards.js";
+import { cardLock, mountAll, registerCard, registeredCards, updateCard } from "./core/cards.js";
 import { sourcesCards } from "./cards/sources.js";
 import { KEY, char, loadState, parseExport } from "./core/state.js";
 import { migrate } from "./core/migrations.js";
@@ -224,6 +224,7 @@ function updatePass() {
   fillStigmaText();
   syncQRun();
   updateCard("nextup", ctx);
+  placeLocks(ctx);
   /* each card is called where its old code stood, not with updateAll(ctx): the slot order (rail, top, main) would run the
      milestone filters after the Skills card redraws the board rows they hide, and Next up before the milestone text it
      reads (stepHTML). updateAll takes over when P5a–d make the cards independent of each other. */
@@ -232,6 +233,31 @@ function updatePass() {
   requestAnimationFrame(fitRail);
 }
 
+/* Cards that open with the game (0.6 P16, src/core/cards.js cardLock; owner-ok-S1 Q1): a locked card is hidden, and in
+   Advanced at desktop width a faded shell (made once, just before the card) stands in its place with the unlock line,
+   the card's name and its key. The shell is one block with the accessible name "<name>, opens at …" and nothing to tab
+   to; when the card opens it shows where the shell stood. The card itself still mounts and updates while hidden. */
+const lockShells = {};
+function placeLocks(ctx) {
+  const ev = ctx.ev, faded = !ctx.basic && !phoneQ.matches;
+  registeredCards().filter(x => x.opensWith && x.root).forEach(x => {
+    const el = document.getElementById(x.root); if (!el) return;
+    const lock = cardLock(x, ev);
+    el.hidden = !!lock;
+    let sh = lockShells[x.id];
+    if (lock && faded && !sh) {
+      sh = lockShells[x.id] = document.createElement("section");
+      sh.className = "card lockcard"; sh.id = x.root + "Lock"; sh.setAttribute("role", "group");
+      el.before(sh);
+    }
+    if (!sh) return;
+    sh.hidden = !(lock && faded);
+    if (!lock || !faded) return;
+    sh.setAttribute("aria-label", lock.label);
+    const key = lock.key ? `&nbsp;·&nbsp;<kbd class="keychip">${lock.key}</kbd>` : "";
+    sh.innerHTML = `<div aria-hidden="true"><p class="lockline">${lock.text}${key}</p><h2>${x.name}</h2><div class="lockbar"></div></div>`;
+  });
+}
 /* Fill the Skills card down to the height of its neighbours: drop Coming up rows that don't fit (min 3). */
 /* Elastic lists (Skills "Coming up", the board list) show at least 3 rows, then add rows while their card
    stays within the tallest card's natural height, so the row ends level without any card setting the height. */
@@ -287,7 +313,7 @@ function placeCards() {
   if (phoneLayout) tg.before(...phoneCards.map(x => x.el));
   else [...phoneCards].reverse().forEach(x => x.p.insertBefore(x.el, x.n));
 }
-if (phoneQ.addEventListener) phoneQ.addEventListener("change", () => { placeCards(); requestAnimationFrame(fitRail); });
+if (phoneQ.addEventListener) phoneQ.addEventListener("change", () => { placeCards(); gatesPass(() => placeLocks(cardCtx())); requestAnimationFrame(fitRail); });
 placeCards();
 window.addEventListener("resize", () => requestAnimationFrame(fitRail));
 document.getElementById("gates").addEventListener("toggle", () => requestAnimationFrame(fitRail), true);
