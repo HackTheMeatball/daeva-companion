@@ -1,0 +1,671 @@
+{
+  "$schema": "../../schema/stigmas.schema.json",
+  "schemaVersion": 2,
+  "collection": "stigmas",
+  "class": "gladiator",
+  "records": [
+    {
+      "id": "stigma:gladiator:armor-of-balance",
+      "key": "Armor of Balance",
+      "name": "Armor of Balance",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:gladiator:armor-of-balance:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+20% Ailment-type and Mental-type Resist"
+        },
+        {
+          "id": "spec:gladiator:armor-of-balance:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "x1.5 [Blood Absorption] effect for the duration"
+        },
+        {
+          "id": "spec:gladiator:armor-of-balance:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "x1.5 [Protection Armor] effect for the duration"
+        },
+        {
+          "id": "spec:gladiator:armor-of-balance:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+50% Impact-type Resist increase"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/armor-of-balance",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this page and the class page's stigma header); owner check pending (owner-check-gladiator)."
+      ]
+    },
+    {
+      "id": "stigma:gladiator:assault-strike",
+      "key": "Assault Strike",
+      "name": "Assault Strike",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:gladiator:assault-strike:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+20% Attack for 5s on hit"
+        },
+        {
+          "id": "spec:gladiator:assault-strike:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "500 MP damage on hit"
+        },
+        {
+          "id": "spec:gladiator:assault-strike:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+10m range"
+        },
+        {
+          "id": "spec:gladiator:assault-strike:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+20% Knockdown Chance"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/assault-strike",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this page and the class page's stigma header); owner check pending (owner-check-gladiator)."
+      ]
+    },
+    {
+      "id": "stigma:gladiator:blade-toss",
+      "key": "Blade Toss",
+      "name": "Blade Toss",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:gladiator:blade-toss:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+20% [Blade Toss] Incoming Heal reduction"
+        },
+        {
+          "id": "spec:gladiator:blade-toss:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "[Blade Toss] inflicts Slow for 5s"
+        },
+        {
+          "id": "spec:gladiator:blade-toss:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "[Blade Toss] breaks Protective Shields"
+        },
+        {
+          "id": "spec:gladiator:blade-toss:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "[Blade Dance] has 30% chance to inflict Knockdown for 3s"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/blade-toss",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this page and the class page's stigma header); owner check pending (owner-check-gladiator)."
+      ]
+    },
+    {
+      "id": "stigma:gladiator:focused-block",
+      "key": "Focused Block",
+      "name": "Focused Block",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:gladiator:focused-block:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+1 consecutive use"
+        },
+        {
+          "id": "spec:gladiator:focused-block:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "Changes to mobile skill"
+        },
+        {
+          "id": "spec:gladiator:focused-block:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+20% Move Speed for 3s on Parry"
+        },
+        {
+          "id": "spec:gladiator:focused-block:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "Restores 10% HP once on Parry"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/focused-block",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this page and the class page's stigma header); owner check pending (owner-check-gladiator)."
+      ]
+    },
+    {
+      "id": "stigma:gladiator:forced-restraint",
+      "key": "Forced Restraint",
+      "name": "Forced Restraint",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:gladiator:forced-restraint:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "50% chance to inflict Root for 5s"
+        },
+        {
+          "id": "spec:gladiator:forced-restraint:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "-1,000 Stamina"
+        },
+        {
+          "id": "spec:gladiator:forced-restraint:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+2s Seal duration"
+        },
+        {
+          "id": "spec:gladiator:forced-restraint:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+25% Seal chance"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/forced-restraint",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this page and the class page's stigma header); owner check pending (owner-check-gladiator)."
+      ]
+    },
+    {
+      "id": "stigma:gladiator:fracturing-rush",
+      "key": "Fracturing Rush",
+      "name": "Fracturing Rush",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:gladiator:fracturing-rush:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+2 max targets hit"
+        },
+        {
+          "id": "spec:gladiator:fracturing-rush:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "Adds [Destructive Rush] Chain Skill"
+        },
+        {
+          "id": "spec:gladiator:fracturing-rush:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+20% Root Chance"
+        },
+        {
+          "id": "spec:gladiator:fracturing-rush:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "50% chance to inflict Airborne for 3s"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/fracturing-rush",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this page and the class page's stigma header); owner check pending (owner-check-gladiator)."
+      ]
+    },
+    {
+      "id": "stigma:gladiator:lifestealing-blade",
+      "key": "Lifestealing Blade",
+      "name": "Lifestealing Blade",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:gladiator:lifestealing-blade:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "Up to +20% damage when more targets hit"
+        },
+        {
+          "id": "spec:gladiator:lifestealing-blade:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "Predation effect on party members for 20s"
+        },
+        {
+          "id": "spec:gladiator:lifestealing-blade:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "-30s cooldown"
+        },
+        {
+          "id": "spec:gladiator:lifestealing-blade:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+5% HP absorbed"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/lifestealing-blade",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this page and the class page's stigma header); owner check pending (owner-check-gladiator)."
+      ]
+    },
+    {
+      "id": "stigma:gladiator:lunge-stance",
+      "key": "Lunge Stance",
+      "name": "Lunge Stance",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:gladiator:lunge-stance:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+5% Double Chance for the duration"
+        },
+        {
+          "id": "spec:gladiator:lunge-stance:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "Increases Move Speed by 20% for the duration"
+        },
+        {
+          "id": "spec:gladiator:lunge-stance:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "x1.5 [Identify Weakness] effect for the duration"
+        },
+        {
+          "id": "spec:gladiator:lunge-stance:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "50% chance to reduce all skill cooldowns by 1s on Critical Hit for the duration"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/lunge-stance",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this page and the class page's stigma header); owner check pending (owner-check-gladiator)."
+      ]
+    },
+    {
+      "id": "stigma:gladiator:rage-burst",
+      "key": "Rage Burst",
+      "name": "Rage Burst",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:gladiator:rage-burst:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "-15s [Rage Burst] cooldown"
+        },
+        {
+          "id": "spec:gladiator:rage-burst:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+10% Attack reduction"
+        },
+        {
+          "id": "spec:gladiator:rage-burst:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "Critical Hit on hit"
+        },
+        {
+          "id": "spec:gladiator:rage-burst:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+10% PvE Damage Boost increase and +5% PvP Damage Boost increase"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/rage-burst",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this page and the class page's stigma header); owner check pending (owner-check-gladiator)."
+      ]
+    },
+    {
+      "id": "stigma:gladiator:tenaciousness",
+      "key": "Tenaciousness",
+      "name": "Tenaciousness",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:gladiator:tenaciousness:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+100% Incoming Heal"
+        },
+        {
+          "id": "spec:gladiator:tenaciousness:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "Restores 20% Max HP when the effect ends"
+        },
+        {
+          "id": "spec:gladiator:tenaciousness:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+20% Attack"
+        },
+        {
+          "id": "spec:gladiator:tenaciousness:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "Trigger [Tenaciousness] when afflicted with Impact-type status"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/tenaciousness",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this page and the class page's stigma header); owner check pending (owner-check-gladiator)."
+      ]
+    },
+    {
+      "id": "stigma:gladiator:wave-armor",
+      "key": "Wave Armor",
+      "name": "Wave Armor",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:gladiator:wave-armor:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "Absorbs 200, 200% HP"
+        },
+        {
+          "id": "spec:gladiator:wave-armor:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "x1.5 [Experienced Counterstrike] effect for the duration"
+        },
+        {
+          "id": "spec:gladiator:wave-armor:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "x1.5 [Murderous Burst] effect for the duration"
+        },
+        {
+          "id": "spec:gladiator:wave-armor:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "Reflects 10% of damage taken"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/wave-armor",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this page and the class page's stigma header); owner check pending (owner-check-gladiator)."
+      ]
+    },
+    {
+      "id": "stigma:gladiator:wrath-wave",
+      "key": "Wrath Wave",
+      "name": "Wrath Wave",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:gladiator:wrath-wave:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "Up to +20% damage when more targets hit"
+        },
+        {
+          "id": "spec:gladiator:wrath-wave:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "Reduces Attack by 20% for 5s"
+        },
+        {
+          "id": "spec:gladiator:wrath-wave:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "Deals damage 1 additional time"
+        },
+        {
+          "id": "spec:gladiator:wrath-wave:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+25% Knockdown Chance"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/wrath-wave",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this page and the class page's stigma header); owner check pending (owner-check-gladiator)."
+      ]
+    },
+    {
+      "id": "stigma:gladiator:zikels-blessing",
+      "key": "Zikel's Blessing",
+      "name": "Zikel's Blessing",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:gladiator:zikels-blessing:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+50% Stagger Gauge Damage"
+        },
+        {
+          "id": "spec:gladiator:zikels-blessing:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+10% PvE Damage Boost and +5% PvP Damage Boost"
+        },
+        {
+          "id": "spec:gladiator:zikels-blessing:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+50% Multi-Hit chance"
+        },
+        {
+          "id": "spec:gladiator:zikels-blessing:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+20% Status Effect Chance"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/zikels-blessing",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this page and the class page's stigma header); owner check pending (owner-check-gladiator)."
+      ]
+    }
+  ]
+}

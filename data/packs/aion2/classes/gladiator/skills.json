@@ -1,0 +1,1032 @@
+{
+  "$schema": "../../schema/skills.schema.json",
+  "schemaVersion": 2,
+  "collection": "skills",
+  "class": "gladiator",
+  "records": [
+    {
+      "id": "skill:gladiator:aerial-snare",
+      "key": "Aerial Snare",
+      "name": "Aerial Snare",
+      "type": "active",
+      "learnLv": 12,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:gladiator:aerial-snare:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Multi-Hit on hit"
+        },
+        {
+          "id": "spec:gladiator:aerial-snare:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+25% [Aerial Snare] Airborne Chance"
+        },
+        {
+          "id": "spec:gladiator:aerial-snare:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "+100% damage to targets with Incapacitated Immunity"
+        },
+        {
+          "id": "spec:gladiator:aerial-snare:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "Adds [Forced Fall] Chain Skill"
+        },
+        {
+          "id": "spec:gladiator:aerial-snare:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "-50% [Aerial Snare] cooldown"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/aerial-snare",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:gladiator:ankle-slice",
+      "key": "Ankle Slice",
+      "name": "Ankle Slice",
+      "type": "active",
+      "learnLv": 7,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:gladiator:ankle-slice:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "30% chance to inflict Knockdown for 3s on landing [Ankle Slice]"
+        },
+        {
+          "id": "spec:gladiator:ankle-slice:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Adds [Ankle Smash] Chain Skill"
+        },
+        {
+          "id": "spec:gladiator:ankle-slice:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "+16m [Ankle Slice] range"
+        },
+        {
+          "id": "spec:gladiator:ankle-slice:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "Ignores Block and Evasion and lands as Multi-Hit"
+        },
+        {
+          "id": "spec:gladiator:ankle-slice:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "25% chance to reset [Ankle Slice] cooldown on Block"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/ankle-slice",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:gladiator:attack-preparation",
+      "key": "Attack Preparation",
+      "name": "Attack Preparation",
+      "type": "passive",
+      "learnLv": 13,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/attack-preparation",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "notes": [
+        "Shared display name with an Assassin skill (the Metabot page's Class field reads Gladiator)."
+      ]
+    },
+    {
+      "id": "skill:gladiator:blood-absorption",
+      "key": "Blood Absorption",
+      "name": "Blood Absorption",
+      "type": "passive",
+      "learnLv": 9,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/blood-absorption",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:gladiator:crushing-wave",
+      "key": "Crushing Wave",
+      "name": "Crushing Wave",
+      "type": "active",
+      "learnLv": 8,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:gladiator:crushing-wave:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Absorbs 200, 200% HP"
+        },
+        {
+          "id": "spec:gladiator:crushing-wave:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Restores 50 MP on landing a Critical Hit"
+        },
+        {
+          "id": "spec:gladiator:crushing-wave:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Up to +20% damage when more targets hit"
+        },
+        {
+          "id": "spec:gladiator:crushing-wave:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "Resets cooldown on landing a Critical Hit"
+        },
+        {
+          "id": "spec:gladiator:crushing-wave:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "50% chance to pull"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/crushing-wave",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:gladiator:defiance",
+      "key": "Defiance",
+      "name": "Defiance",
+      "type": "active",
+      "learnLv": 16,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:gladiator:defiance:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Adds [Wrath Burst] Chain Skill"
+        },
+        {
+          "id": "spec:gladiator:defiance:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Restores 1,000 Stamina on using [Defiance]"
+        },
+        {
+          "id": "spec:gladiator:defiance:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Restores 20% HP on using [Defiance]"
+        },
+        {
+          "id": "spec:gladiator:defiance:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "+2s Tenacity duration"
+        },
+        {
+          "id": "spec:gladiator:defiance:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "+50% PvE Damage Tolerance and +25% PvP Damage Tolerance for Tenacity duration"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/defiance",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "notes": [
+        "Shared display name with an Assassin skill (the Metabot page's Class field reads Gladiator)."
+      ]
+    },
+    {
+      "id": "skill:gladiator:destructive-impulse",
+      "key": "Destructive Impulse",
+      "name": "Destructive Impulse",
+      "type": "passive",
+      "learnLv": 17,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:zikel": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/destructive-impulse",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:gladiator:experienced-counterstrike",
+      "key": "Experienced Counterstrike",
+      "name": "Experienced Counterstrike",
+      "type": "passive",
+      "learnLv": 21,
+      "levelGate": "flat",
+      "boardNodes": {
+        "perBoard": {
+          "board:zikel": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/experienced-counterstrike",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:gladiator:identify-weakness",
+      "key": "Identify Weakness",
+      "name": "Identify Weakness",
+      "type": "passive",
+      "learnLv": 11,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/identify-weakness",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:gladiator:impact-hit",
+      "key": "Impact Hit",
+      "name": "Impact Hit",
+      "type": "passive",
+      "learnLv": 15,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:zikel": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/impact-hit",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "notes": [
+        "Shared display name with an Assassin skill (the Metabot page's Class field reads Gladiator)."
+      ]
+    },
+    {
+      "id": "skill:gladiator:keen-strike",
+      "key": "Keen Strike",
+      "name": "Keen Strike",
+      "type": "active",
+      "learnLv": 1,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:gladiator:keen-strike:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "+20% MP restored"
+        },
+        {
+          "id": "spec:gladiator:keen-strike:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Absorbs 100, 100% HP"
+        },
+        {
+          "id": "spec:gladiator:keen-strike:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "+50% Multi-Hit on hit"
+        },
+        {
+          "id": "spec:gladiator:keen-strike:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "-1s [Ruinous Blow] cooldown on hit"
+        },
+        {
+          "id": "spec:gladiator:keen-strike:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "Adds [Reckless Strike] Chain Skill"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/keen-strike",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:gladiator:leaping-slam",
+      "key": "Leaping Slam",
+      "name": "Leaping Slam",
+      "type": "active",
+      "learnLv": 1,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:gladiator:leaping-slam:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Prepare for Battle effect on the caster for 3s"
+        },
+        {
+          "id": "spec:gladiator:leaping-slam:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "50% chance to trigger [Ankle Slice] on hit"
+        },
+        {
+          "id": "spec:gladiator:leaping-slam:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Resets cooldown on defeating an enemy"
+        },
+        {
+          "id": "spec:gladiator:leaping-slam:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "+20% PvE Damage Tolerance and +10 PvP Damage Tolerance for 3s"
+        },
+        {
+          "id": "spec:gladiator:leaping-slam:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "Changes to AoE skill and pulls in enemies"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/leaping-slam",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:gladiator:mocking-blade",
+      "key": "Mocking Blade",
+      "name": "Mocking Blade",
+      "type": "active",
+      "learnLv": 3,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:gladiator:mocking-blade:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Absorbs 400, 400% HP, absorbs 1500, 1500% HP of target with Incapacitated Immunity"
+        },
+        {
+          "id": "spec:gladiator:mocking-blade:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Changes to AoE damage on down strike"
+        },
+        {
+          "id": "spec:gladiator:mocking-blade:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Adds 2 additional strikes"
+        },
+        {
+          "id": "spec:gladiator:mocking-blade:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "+1s Knockdown duration"
+        },
+        {
+          "id": "spec:gladiator:mocking-blade:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "Ignores Block and Evasion and lands as Multi-Hit"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/mocking-blade",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:gladiator:murderous-burst",
+      "key": "Murderous Burst",
+      "name": "Murderous Burst",
+      "type": "passive",
+      "learnLv": 25,
+      "levelGate": "flat",
+      "boardNodes": {
+        "perBoard": {
+          "board:zikel": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/murderous-burst",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:gladiator:overhead-slam",
+      "key": "Overhead Slam",
+      "name": "Overhead Slam",
+      "type": "active",
+      "learnLv": 4,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:gladiator:overhead-slam:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Absorbs 70, 70% HP"
+        },
+        {
+          "id": "spec:gladiator:overhead-slam:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Changes to AoE Skill"
+        },
+        {
+          "id": "spec:gladiator:overhead-slam:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Adds [Upward Strike] Chain Skill"
+        },
+        {
+          "id": "spec:gladiator:overhead-slam:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "Critical Hit on hit"
+        },
+        {
+          "id": "spec:gladiator:overhead-slam:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "Remove cooldown"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/overhead-slam",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:gladiator:protection-armor",
+      "key": "Protection Armor",
+      "name": "Protection Armor",
+      "type": "passive",
+      "learnLv": 6,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/protection-armor",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:gladiator:rending-blow",
+      "key": "Rending Blow",
+      "name": "Rending Blow",
+      "type": "active",
+      "learnLv": 1,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:gladiator:rending-blow:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "-20% MP consumed"
+        },
+        {
+          "id": "spec:gladiator:rending-blow:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+200 Block while using skill"
+        },
+        {
+          "id": "spec:gladiator:rending-blow:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Changes to mobile skill"
+        },
+        {
+          "id": "spec:gladiator:rending-blow:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "Deals up to 12% more damage when less targets are hit"
+        },
+        {
+          "id": "spec:gladiator:rending-blow:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "Restores 50 MP on landing a Critical Hit"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/rending-blow",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:gladiator:ruinous-blow",
+      "key": "Ruinous Blow",
+      "name": "Ruinous Blow",
+      "type": "active",
+      "learnLv": 14,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:gladiator:ruinous-blow:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "+20% Skill Speed"
+        },
+        {
+          "id": "spec:gladiator:ruinous-blow:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+12.5m Range"
+        },
+        {
+          "id": "spec:gladiator:ruinous-blow:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "+30% Skill Critical Hit"
+        },
+        {
+          "id": "spec:gladiator:ruinous-blow:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "Extra damage on hit"
+        },
+        {
+          "id": "spec:gladiator:ruinous-blow:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "Ignores Block and Evasion and lands as Multi-Hit"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/ruinous-blow",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:gladiator:rush-strike",
+      "key": "Rush Strike",
+      "name": "Rush Strike",
+      "type": "active",
+      "learnLv": 10,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:gladiator:rush-strike:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Restores 300 Stamina on hit"
+        },
+        {
+          "id": "spec:gladiator:rush-strike:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+10m range"
+        },
+        {
+          "id": "spec:gladiator:rush-strike:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Changes to Charge Skill and deals AoE damage"
+        },
+        {
+          "id": "spec:gladiator:rush-strike:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "-10s cooldown"
+        },
+        {
+          "id": "spec:gladiator:rush-strike:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "+25% Knockdown Chance"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/rush-strike",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:gladiator:survival-stance",
+      "key": "Survival Stance",
+      "name": "Survival Stance",
+      "type": "passive",
+      "learnLv": 1,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/survival-stance",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:gladiator:survival-willpower",
+      "key": "Survival Willpower",
+      "name": "Survival Willpower",
+      "type": "passive",
+      "learnLv": 23,
+      "levelGate": "flat",
+      "boardNodes": {
+        "perBoard": {
+          "board:zikel": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/survival-willpower",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "notes": [
+        "Shared display name with an Assassin skill (the Metabot page's Class field reads Gladiator)."
+      ]
+    },
+    {
+      "id": "skill:gladiator:sword-aura-rampage",
+      "key": "Sword Aura Rampage",
+      "name": "Sword Aura Rampage",
+      "type": "active",
+      "learnLv": 5,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:gladiator:sword-aura-rampage:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Absorbs 500, 500% HP"
+        },
+        {
+          "id": "spec:gladiator:sword-aura-rampage:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Restores 120 MP"
+        },
+        {
+          "id": "spec:gladiator:sword-aura-rampage:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Changes to mobile skill"
+        },
+        {
+          "id": "spec:gladiator:sword-aura-rampage:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "Multi-Hit on hit"
+        },
+        {
+          "id": "spec:gladiator:sword-aura-rampage:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "-1s all skill cooldowns on hit"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/sword-aura-rampage",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    }
+  ]
+}

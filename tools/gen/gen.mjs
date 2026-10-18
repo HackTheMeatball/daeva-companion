@@ -550,6 +550,11 @@ export function generate(opts = {}) {
     cls, builds, build, milestones, steps, tips, unlocks, items, asc, all, packs: B.packs, RQ, STORY_END, SH_DATA, GATE_GRAPH, kibs, NODE_PLACE, KIBELISKS, atomsOf, byNum, refCheck };
   for (const p of B.packChecks) p.checks(ctx, check);
 
+  /* ---------------------------------------------------------------- class packs no guide uses yet (0.6 P4) */
+  /* A class pack is compiled only through a guide pack's chain; one that no guide uses yet (the Gladiator before P5) is
+     still validated and checked here, and its records' URLs go to DATA_SOURCES.md, but nothing of it reaches a module. */
+  const idle = idleClassPacks(opts.root || DEFAULT_ROOT).map(id => checkIdleClass({ root: opts.root || DEFAULT_ROOT, pack: id, check, known }));
+
   const failed = report.checks.filter(c => !c.pass);
   /* ---------------------------------------------------------------- the module */
   const C = { RQ, RQ_STATS, QUESTS_X, QUEST_STEPS_X, QUEST_LOC_X, STORY_END, SH_DATA, AREA_LOC, SD_RW, SP_EXTRA, DV_BOARDS, SOURCES, SRC_SITE, CONF,
@@ -574,7 +579,58 @@ export function generate(opts = {}) {
   report.stats = { checks: report.checks.length, failed: failed.length, rq: RQ_STATS, sources: Object.fromEntries(SOURCES.map(s => [s.id, s.links.length])), constants: Object.keys(C).length,
     gateNodes: Object.keys(GATE_GRAPH.nodes).length, places: Object.keys(NODE_PLACE).length, kibelisks: kibs.length };
   return { module, gateModule, proposedModule, placeModule, constants: C, gateGraph: GATE_GRAPH, gateProposed: GATE_PROPOSED, nodePlace: NODE_PLACE, kibelisks: KIBELISKS,
-    travelRules: TRAVEL_RULES, report, failed, sources: SOURCES, siteName, label, all, B };
+    travelRules: TRAVEL_RULES, report, failed, sources: SOURCES, siteName, label, all, idle, B };
+}
+
+/* the class packs below a packs root that no guide pack's chain reaches, by id */
+export const idleClassPacks = (root = DEFAULT_ROOT) => {
+  const used = new Set(guidePacks(root).flatMap(id => resolvePacks({ root, pack: id }).chain.map(m => m.id))), ids = [];
+  const walk = d => { for (const e of readdirSync(d, { withFileTypes: true })) if (e.isDirectory()) walk(join(d, e.name));
+    else if (e.name === 'pack.json') { const m = JSON.parse(readFileSync(join(d, e.name), 'utf8')); if (m.kind === 'class' && !used.has(m.id)) ids.push(m.id); } };
+  walk(root); return ids.sort();
+};
+/* One idle class pack: schema-validates its files (throws like loadBundle) and checks its records against the game pack's
+   boards: ids unique repo-wide (known: the bundle's ids), keys unique, class-scoped ids, every record cites a page, the
+   class is hidden, skill nodes resolve and match their skill's boardNodes, board totals (points, skill and stat nodes)
+   match boards.json, specialty ids and levels. Returns { pack, all: [{ r, file }] } for DATA_SOURCES.md. */
+function checkIdleClass({ root, pack, check, known }) {
+  const { files } = resolvePacks({ root, pack }), errs = [], docs = [];
+  for (const f of files) {
+    const d = JSON.parse(readFileSync(f.abs, 'utf8')), e = validateDoc(f.abs, d);
+    if (e.length) errs.push(`${f.rel}: ${e.slice(0, 5).join('; ')}`);
+    docs.push({ ...f, d });
+  }
+  if (errs.length) throw new Error('schema validation failed:\n  ' + errs.join('\n  '));
+  const own = docs.filter(x => x.pack === pack), recs = c => own.filter(x => x.d.collection === c).flatMap(x => x.d.records);
+  const boards = docs.filter(x => x.d.collection === 'boards').flatMap(x => x.d.records);
+  const all = own.filter(x => x.d.records).flatMap(x => x.d.records.map(r => ({ r, file: x.rel })));
+  const [cls] = recs('classes'), skills = recs('skills'), stigmas = recs('stigmas'), nodes = recs('boardNodes'), P = pack + ': ';
+  const skById = Object.fromEntries(skills.map(s => [s.id, s]));
+  check(P + 'one class record, hidden (no guide pack offers it)', recs('classes').length === 1 && cls.release === 'hidden', cls && cls.release);
+  { const ids = new Set(known), keys = new Set();
+    for (const { r, file } of all) { if (ids.has(r.id)) check(P + 'id unique repo-wide: ' + r.id, false, file); ids.add(r.id); }
+    for (const n of nodes) { if (keys.has(n.key)) check(P + 'save key unique: ' + n.key, false); keys.add(n.key); } }
+  for (const { r } of all) check(`${P}${r.id}: cites a page`, urlsIn(r.sources).length > 0);
+  for (const r of [...skills, ...stigmas, ...nodes]) check(`${P}${r.id}: id is class-scoped`, r.id.split(':')[1] === cls.class);
+  for (const n of nodes.filter(n => n.type === 'skill')) check(`${P}${n.id}: skill node names its skill (${n.skill} +${n.adds})`, !!skById[n.skill] && n.label === `${skById[n.skill].name} +${n.adds}`, n.label);
+  for (const s of skills) {
+    const mine = nodes.filter(n => n.skill === s.id), per = {};
+    for (const n of mine) per[n.board] = (per[n.board] || 0) + 1;
+    check(`${P}${s.id}: boardNodes match its skill nodes`, JSON.stringify(Object.entries(per).sort()) === JSON.stringify(Object.entries(s.boardNodes.perBoard).sort()) && mine.every(n => n.cost === s.boardNodes.cost), per);
+  }
+  for (const b of boards) {
+    const on = nodes.filter(n => n.board === b.id), sum = on.reduce((t, n) => t + n.cost, 0);
+    check(`${P}${b.id}: ${on.length} nodes, ${sum} points (${b.points}), ${on.filter(n => n.type === 'skill').length} skill nodes (${b.skillNodes}), one start`,
+      sum === b.points && on.filter(n => n.type === 'skill').length === b.skillNodes && on.filter(n => n.type === 'start').length === 1
+      && on.filter(n => n.type === 'stat' || n.type === 'unique').length === b.statNodes);
+  }
+  check(P + 'every node is on a known board', nodes.every(n => boards.some(b => b.id === n.board)));
+  for (const r of [...skills, ...stigmas]) {
+    const cs = r.specialtyChoices || [], want = r.availableLv ? '[5,10,15,20]' : r.type === 'active' ? '[8,8,8,12,16]' : '[]';
+    check(`${P}${r.id}: specialty levels ${want}, ids spec:${cls.class}:<slug>:<n>`, JSON.stringify(cs.map(c => c.skillLv)) === want
+      && cs.every((c, i) => c.n === i + 1 && c.id === `spec:${cls.class}:${r.id.split(':')[2]}:${c.n}`), cs.map(c => c.id));
+  }
+  return { pack, all };
 }
 
 /* ------------------------------------------------------------------ one table set per class (0.6 P2) */
@@ -617,7 +673,7 @@ export function dataSourcesMd(g) {
      part (its `section`), so a cited page isn't read as confirming the whole claim */
   const claimTag = r => r.claim && r.verdict && r.verdict !== 'verified' ? `[${r.id} · ${r.verdict.replace('-', ' ')}${(r.sources || []).some(s => s.owner) ? ', owner source' : ''}] ` : '';
   const partOf = (r, u) => { const s = r.claim && (r.sources || []).find(x => x.url === u && x.section); return s ? ` (this page: ${s.section})` : ''; };
-  for (const { r, file } of g.all) for (const u of urlsIn(r)) { const w = `${file.replace(/^data\//, '')}: ${claimTag(r)}${r.name || r.what || r.title || r.claim || r.label || r.id}${partOf(r, u)}`; if (!used.has(u)) used.set(u, []); if (!used.get(u).includes(w)) used.get(u).push(w); }
+  for (const { r, file } of [...g.all, ...(g.idle || []).flatMap(x => x.all)]) for (const u of urlsIn(r)) { const w = `${file.replace(/^data\//, '')}: ${claimTag(r)}${r.name || r.what || r.title || r.claim || r.label || r.id}${partOf(r, u)}`; if (!used.has(u)) used.set(u, []); if (!used.get(u).includes(w)) used.get(u).push(w); }
   for (const p of g.B.sources.pages || []) if (!used.has(p.url)) used.set(p.url, []);
   const groupOf = new Map(), labelOfU = new Map();
   for (const s of g.sources) for (const [u, l] of s.links) { groupOf.set(u, s.t); labelOfU.set(u, l); }
