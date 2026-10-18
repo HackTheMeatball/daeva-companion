@@ -134,6 +134,9 @@ export function stepsShownOf(graph, o) {
   autoBindsOf(graph, o).forEach(x => { if (x.only) only.add(QUEST_STEPS[x.quest][x.i]); else steps[x.quest][x.i] = steps[x.quest][x.i].replace(/\s*\(Kibelisk: [^)]+\)/, ""); });
   return { steps, only };
 }
+/* Is this source text (a QUEST_STEPS line) one whose "(Kibelisk: X)" the checklists drop? For the pack's hooks that get the
+   source text (the Journey card's sub-checklist place, journey-sections.js subPlace). */
+export const markerDropped = t => perPack("autoBindDropped", p => new Set(autoBindsOf(p.data.graph).filter(x => !x.only).map(x => QUEST_STEPS[x.quest][x.i]))).has(t);
 
 /* ---------- Teleport vs walk (design §8.3) ---------- */
 /* The story card's target (design §3): the next open objective's point, else the turn-in. Objectives have no points

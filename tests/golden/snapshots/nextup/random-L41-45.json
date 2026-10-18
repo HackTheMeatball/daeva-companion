@@ -72,7 +72,7 @@
     {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
     {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
     {"t":"Buy Assault Stance 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Story: Treatment","s":"0/2 objectives · then Symbol of Liberation","c":"primary \"Turned in\" story","o":["Treat the Fallen Daybreak Society Members administer herbal medicine to the first member administer herbal medicine to the second member Kibelisk: Amunta's Hideout","Turn in Amunta, Amunta's Hideout"]},
+    {"t":"Story: Treatment","s":"0/2 objectives · then Symbol of Liberation","c":"primary \"Turned in\" story","o":["Treat the Fallen Daybreak Society Members administer herbal medicine to the first member administer herbal medicine to the second member","Turn in Amunta, Amunta's Hideout"]},
     {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk: Impetusium Lower Path · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 10 open"},
     {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"Lv 45 milestone · 4 levels away · unlocks after \"Forgotten Commander\" · 12 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 45+"}
   ],
@@ -119,7 +119,7 @@
     {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
     {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
     {"t":"Buy Assault Stance 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Story: The Being Beneath the Lake","s":"0/4 objectives · then Spread Your Wings","c":"primary \"Turned in\" story","o":["Check the journal Elvida mentioned check the Timeworn Journal check the Worn Tome Kibelisk: Witch's Cabin","Go to the path beneath the lake enter Tunapre Lake Cave (Kibelisk: Witch's Cabin)","Learn to fly enter the Ascension Subspace","+1 more after these"]},
+    {"t":"Story: The Being Beneath the Lake","s":"0/4 objectives · then Spread Your Wings","c":"primary \"Turned in\" story","o":["Check the journal Elvida mentioned check the Timeworn Journal check the Worn Tome","Go to the path beneath the lake enter Tunapre Lake Cave (Kibelisk: Witch's Cabin)","Learn to fly enter the Ascension Subspace","+1 more after these"]},
     {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk: Impetusium Lower Path · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 10 open"},
     {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"Lv 45 milestone · 3 levels away · unlocks after \"Forgotten Commander\" · 81 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 45+"}
   ],

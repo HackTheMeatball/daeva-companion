@@ -1,0 +1,6 @@
+[
+  { "case": "1-lv5-being-beneath-the-lake", "kind": "before-after", "title": "No bind step at Witch's Cabin",
+    "caption": "At Lv 5 on The Being Beneath the Lake the \"Bind with the Witch's Cabin Kibelisk\" step is gone: the game binds it when you reach the journal." },
+  { "case": "2-lv12-veiled-truth", "kind": "before-after", "title": "No Kibelisk note where it binds itself",
+    "caption": "At Lv 12 on Veiled Truth the first step no longer says (Kibelisk: Quai Campsite): it is within 25 m, so the bind happens there." }
+]
