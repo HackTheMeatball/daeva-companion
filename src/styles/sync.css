@@ -1,0 +1,50 @@
+/* The sync line in the footer's save strip and its panel (0.7 P6, src/cards/sync.html; docs/design/0.7-sync-mockup.md):
+   a switch, a status dot and one gold code box, all from existing tokens; the panel is the .card shell. Site only. */
+.syncline { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-8) var(--space-12); width: 100%; }
+.sync-lbl { font: 600 12px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--fg); }
+.sync-sw { width: 40px; height: 22px; padding: 0; border-radius: var(--radius-pill); border: 1px solid var(--line); background: var(--panel-2); position: relative; flex: none; cursor: pointer; }
+.sync-sw::after { content: ""; position: absolute; top: var(--space-2); left: var(--space-2); width: 16px; height: 16px; border-radius: var(--radius-round); background: var(--muted); }
+.sync-sw[aria-checked="true"] { background: var(--accent-fill); border-color: var(--accent-fill); }
+.sync-sw[aria-checked="true"]::after { left: auto; right: var(--space-2); background: var(--on-fill); }
+.sync-sw:focus-visible, .sync-btn:focus-visible, .sync-input:focus-visible, .sync-panel:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.sync-st { display: inline-flex; align-items: center; gap: var(--space-8); font-size: 13px; color: var(--muted); }
+.sync-st:empty { display: none; }
+.sync-st::before { content: ""; width: 8px; height: 8px; border-radius: var(--radius-round); background: var(--muted); flex: none; }
+.sync-st.ok::before { background: var(--good); }
+.sync-st.warn { color: var(--warn); }
+.sync-st.warn::before { background: var(--warn); }
+.sync-st.bad { color: var(--accent-text); }
+.sync-st.bad::before { background: var(--accent-text); }
+.xfer .xfer-btn:disabled { opacity: .45; cursor: default; }
+body.basic .sync-adv { display: none !important; }
+.sync-panel, .sync-menu { flex: 1 1 100%; max-width: 560px; }
+.sync-panel h2 { margin: 0 0 var(--space-8); font: 600 12px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.sync-panel p { margin: var(--space-2) 0 0; color: var(--muted); font-size: 13px; }
+.sync-choices { display: grid; gap: var(--space-8); margin-top: var(--space-12); }
+.sync-row { display: flex; flex-wrap: wrap; gap: var(--space-8); margin-top: var(--space-12); }
+.sync-menu { display: grid; gap: var(--space-6); }
+.sync-btn { font: 600 12px var(--mono); padding: var(--space-5) var(--space-11); border-radius: var(--radius-8); border: 1px solid var(--line); background: var(--panel-2); color: var(--fg); cursor: pointer; text-align: center; }
+.sync-btn:hover { border-color: var(--accent); }
+.sync-btn.primary { background: var(--accent-fill); border-color: var(--accent-fill); color: var(--on-fill); }
+.sync-btn.quiet { background: none; color: var(--muted); }
+.sync-btn.danger { border-color: var(--accent); color: var(--accent-text); }
+.sync-btn:disabled { opacity: .45; cursor: default; }
+.sync-code { margin-top: var(--space-12); padding: var(--space-12); border: 1px solid var(--gold-55); border-radius: var(--radius-8); background: var(--panel-2); font: 600 15px/1.5 var(--mono); letter-spacing: .06em; color: var(--gold-light); }
+.sync-grp { white-space: nowrap; }
+.sync-field { display: block; margin-top: var(--space-14); font: 600 12px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.sync-input { box-sizing: border-box; width: 100%; margin-top: var(--space-8); border: 1px solid var(--line); border-radius: var(--radius-8); background: var(--panel-2); padding: var(--space-10) var(--space-12); font: 500 14px var(--mono); color: var(--fg); }
+.sync-input.err { border-color: var(--accent); }
+.sync-input::placeholder { color: var(--muted); }
+.sync-note { margin-top: var(--space-8); font-size: 13px; }
+.sync-note.err, .sync-panel p.sync-note { color: var(--accent-text); }
+.sync-note:empty, .sync-msg:empty { display: none; }
+.sync-msg { flex: 1 1 100%; margin: 0; font-size: 13px; color: var(--good); }
+/* phone: 44 px controls, 16 px text fields (iPhone Safari zooms into smaller ones; §4a 6), full-width panel buttons */
+@media (max-width: 600px) {
+  .syncline .xfer-btn, .sync-btn { min-height: 44px; }
+  .sync-sw { width: 52px; height: 28px; }
+  .sync-sw::after { width: 22px; height: 22px; }
+  .sync-input { font-size: 16px; min-height: 44px; }
+  .sync-panel, .sync-menu { max-width: none; }
+  .sync-row .sync-btn { flex: 1 1 100%; }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/ui-texts.schema.json",
+  "title": "Page texts of one part of the page (data/ui/<part>-texts.json)",
+  "description": "0.7 P6: the sync screens' sentences (docs/design/0.7-sync-mockup.md §4), keyed as there. Our own words, not game facts, so no source. {ago} and {n} are filled by the page. Site only: src/site.js imports the file, the claude.ai build has none of it.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "collection", "texts"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": 2 },
+    "collection": { "const": "uiTexts" },
+    "texts": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": { "pattern": "^[a-z]+(\\.[a-zA-Z]+)?$" },
+      "additionalProperties": { "type": "string", "minLength": 1, "maxLength": 400 }
+    }
+  }
+}
