@@ -147,7 +147,10 @@ jobs:
             };
             for (const x of items.filter((y) => y.open && !listed.has(y.n)).sort((a, b) => a.n - b.n)) {
               const ql = x.body.split('\n').find((l) => l.startsWith(`- [next] #${x.n} `));
-              const after = x.body.match(/\bAfter:\s*([^.(\n]*)/);
+              // Drop parenthesised notes before cutting at the first full stop: stopping at the first "(" lost every key
+              // after it (0.6 P21's owner-ok-sync-hosting, P14's P9), so P21 started unmet (2026-10-18, #222).
+              const am = x.body.match(/\bAfter:\s*([^\n]*)/);
+              const after = am && [am[0], am[1].replace(/\([^)]*\)/g, '').split('.')[0]];
               if (!ql || !after) continue;
               let deps;
               if (/everything|\ball\b/i.test(after[1])) deps = items.filter((y) => y.ver === x.ver && y.n !== x.n);
@@ -256,7 +259,7 @@ jobs:
       pull-requests: write
       issues: write
       id-token: write
-      actions: read
+      actions: write # dispatch ci.yml on a PR the check step opens (read was enough before)
     steps:
       # A Restart re-run, or a duplicate pick, must not rebuild finished work (2026-10-17: #202 was built twice).
       - name: Skip if the issue is closed or another build already opened its PR
@@ -301,7 +304,7 @@ jobs:
             Create a branch named claude/issue-${{ matrix.item.issue }}-${{ github.run_id }} from main (if origin already has that branch, an earlier attempt of this run died: check it out and continue from it), implement the issue, then `git fetch origin main` and `git merge origin/main` (a merge commit; resolve any conflict keeping both sides' intent; main moves while you build), and make sure `npm test` is green after that merge, before the last push. Never skip, disable or weaken a test or check.
             Commit with a clear message, `git push origin HEAD`, then write the PR body to a file (what changed and how it was tested, then a blank line, then a line that is exactly `Closes #${{ matrix.item.issue }}`) and open the PR: `gh pr create --base main --title "<short title>" --body-file <that file>`. CI and the review start on their own.
             Run commands in the foreground only. Push after every commit (a run that dies is restarted once and continues from the pushed branch).
-            Tools: one plain command per Bash call (no `&&`, `;`, pipes, heredocs, `python3 -`, or scripts in /tmp: they are denied); create and edit files with Edit and Write.
+            Tools: one plain command per Bash call (no `&&`, `;`, pipes, heredocs, `python3 -`, scripts in /tmp, or env-var prefixes like `X=1 node ...`: they are denied; pass flags instead); create and edit files with Edit and Write.
             Clock: the GitHub token expires 1 hour after this run starts (P6 #198 lost its last push at minute 62). Aim to open the PR by minute 45. If a push fails with 401 or "Bad credentials", stop at once: the run is restarted with a fresh token and continues from the pushed branch. While iterating use `node tests/run.mjs --only <suites>` after `npm run build` and batch slow golden or pixel runs; run the full `npm test` once at the end.
             ${{ contains(matrix.item.model, 'sonnet') && 'Sonnet limits (owner routing rule): if the work would touch src/core/, save/sync/migration/storage code, a gate''s requires/completesWith, golden snapshots, the mig1 pin, or more than about 300 lines, do not edit. Post one comment on the issue starting "Needs @claude (Opus):" with the reason, then stop.' || '' }}
             If the issue cannot be done safely (unverifiable game data, an owner decision), do not push. Post one comment on the issue starting "Blocked:" with the reason in one or two lines.
@@ -328,6 +331,24 @@ jobs:
           said=$(gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE/comments?since=$BUILD_START&per_page=100" \
             --jq '[.[] | select(.body | test("^(Blocked:|Needs @claude)"))] | length')
           echo "PRs for $BRANCH: $prs; Blocked/Needs comments since $BUILD_START: $said"
+          # Finished work pushed but no PR (0.6 P1, Kickoff 39091541671, 2026-10-17: a full Sonnet re-run just to open it,
+          # #221 11:23 PM ET, #222 11:25 PM ET): open the PR here and start its CI. A PR and a dispatch made with
+          # GITHUB_TOKEN wake no workflow, so CI is dispatched by hand and restart.yml's sweep starts the review.
+          ahead=0
+          if [ "$prs" = 0 ] && [ "$said" = 0 ]; then
+            ahead=$(gh api "repos/$GITHUB_REPOSITORY/compare/main...$BRANCH" --jq .ahead_by 2>/dev/null || echo 0)
+          fi
+          if [ "$prs" = 0 ] && [ "$said" = 0 ] && [ "$ahead" -gt 0 ]; then
+            title=$(gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE" --jq .title)
+            url=$(gh api "repos/$GITHUB_REPOSITORY/pulls" -f head="$BRANCH" -f base=main -f title="$title" \
+              -f body="Opened by kickoff: the build pushed $ahead commit(s) to \`$BRANCH\` but ended without a PR ($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID). The review checks the work against the issue as usual.
+
+          Closes #$ISSUE" --jq .html_url)
+            gh api "repos/$GITHUB_REPOSITORY/actions/workflows/ci.yml/dispatches" -f ref="$BRANCH" >/dev/null
+            gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE/comments" -f body="Kickoff: the build pushed its work but opened no PR, so kickoff opened it: $url (CI dispatched; the review starts when it is green)." >/dev/null
+            echo "::notice::Opened $url for #$ISSUE ($ahead commits ahead of main)"
+            exit 0
+          fi
           if [ "$prs" = 0 ] && [ "$said" = 0 ]; then
             if [ "$GITHUB_RUN_ATTEMPT" = 1 ]; then note="restart.yml re-runs it once"; else note="it already ran twice, so it is not restarted; the planner reads why"; fi
             gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE/comments" -f body="Kickoff: the build ended with no PR and no Blocked or Needs-Opus comment ($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID); $note." >/dev/null
