@@ -122,6 +122,7 @@ jobs:
             // table row naming `owner-ok-<x>` in its Topic cell (the keys the row clears; a "Not covered: ..." mention in the
             // Decision cell doesn't count) whose decision starts "Owner, typed" (Isaac's own words, recorded by a reviewed
             // PR; #114 "Owner tokens"). 2026-10-17: P2, P12, P14 and P15 sat unqueued after their OK was recorded (#221 x3).
+            // From 0.7 on the key is `owner-ok-<minor>-<slug>` (patch items `owner-ok-<x.y.z>-<slug>`; K12, afterBlocker below).
             const items = (await github.paginate(github.rest.issues.listForRepo, { owner, repo, state: 'all', per_page: 100 }))
               .filter((i) => !i.pull_request)
               .map((i) => ({ i, m: i.title.match(/^(\d+\.\d+) (P\d+[a-z]?|S\d+):/) || (i.title.match(/^Release (\d+\.\d+)\.0\b/) || []).concat('R').slice(0, 3) }))
@@ -243,7 +244,7 @@ jobs:
               if (iss.state !== 'open' || iss.pull_request) { core.warning(`#${n} is not an open issue; skipped`); continue; }
               const kx = items.find((y) => y.n === n) || { n, ver: null, rel: (iss.title.match(/^(?:Release )?(\d+\.\d+(?:\.\d+)?)\b/) || [])[1] || null, key: null, open: true, body: iss.body || '' };
               const wait = await afterBlocker(kx);
-              if (wait) { core.info(`#${n}: ${wait}; left in #114 for the planner`); continue; }
+              if (wait) { core.info(`#${n}: ${wait}; left in #114 for the planner`); if (alone) break; continue; } // an "alone" item keeps queue order
               const why = await alreadyBuilt(n);
               if (why) { core.warning(`#${n} not started again: ${why}`); lines[i] = `- [started ${stamp}] #${n} ${m[2]}${m[3]}`; pruned = true; continue; }
               picked.push({ issue: n, model: m[2] === 'opus' ? 'claude-opus-5-5' : 'claude-sonnet-5-5', title: iss.title });
