@@ -41,6 +41,6 @@ gen and says so).
 
 Lanes: golden, a11y. Model: Opus (data/schema, golden). Stall limit: 80 min (M).
 
-After: S1, owner-ok-S1, P15 (golden).
+After: S1, owner-ok-S1.
 
 - [next] #? opus lanes:golden,a11y
