@@ -2,7 +2,7 @@
    src/cards/nextup.js and src/cards/ahead.js). The engine's Next up card lays out every card (icon, title, subline, the
    act button, Basic / Advanced, the cap, the pop-out) and draws its own kinds (milestone steps, the story card, the
    milestone Later card); for a card whose kind is listed here it calls the pack's renderer, which returns the same view
-   object nowCard returns (ico, t, sub, btn, act, tag, bar, info, extra, later, done, queue; html in the strings).
+   object nowCard returns (ico, t, sub, btn, act, tag, bar, info, extra, later, done, queue, row; html in the strings).
 
    Keys with a dot are hooks of the engine cards, not card kinds:
    - story.meanwhile(m, ctx) → html: the story card's "Meanwhile" list (m = the pack's story.meanwhile object)
@@ -21,6 +21,7 @@ import { chainsOn, openOf } from "../../../core/requirements.js";
 import { MAP_ICO, rqTicked, snoozeToggle } from "../../../cards/milestones.js";
 import { capFirst, isBasic, renderNow } from "../../../cards/nextup.js";
 import { travelAdviceOn } from "../nextup.js";
+import { keyHint } from "../hotkeys.js";
 import { pageState as state, pageSave as save, pageUpdate as update, pageMainEl as mainEl, pageSMOOTH as SMOOTH, pageSD_RW as SD_RW, pageSH_REWARD as SH_REWARD, pageNO_AREA as NO_AREA, pageSpCostTxt as spCostTxt, pageRqReqOf as rqReqOf, pageSpecPickOf as specPickOf, pageMapFocus as mapFocus, pageAion2QuestMap as aion2QuestMap, pageGoAreas as goAreas, pageCubeClick as cubeClick, pageStTickClick as stTickClick, pageStUpClick as stUpClick, pageStLvClick as stLvClick, pageSpMini as spMini, pageStIco as stIco, pageDvShort as dvShort, pageQProg as qProg } from "../../../cards/page.js";
 
 /* "Not in game yet" in Next up (compact): eye with a slash. */
@@ -77,9 +78,10 @@ export const aion2NowRenderers = {
   cube: a => ({ ico: "🎒", t: `Use your Cube items: <b>${[a.st ? `${a.st} Wisdom Stone${a.st === 1 ? "" : "s"}` : "", a.cr ? `${a.cr} crystal${a.cr === 1 ? "" : "s"}` : ""].filter(Boolean).join(" + ")}</b>`, sub: "Open the Cube and use them, then confirm", btn: "Used", act: a.act, done: true }),
   /* skill buys queue: only the first one gets the button */
   skill: a => { const x = a.x, base = x.spec ? spSlotSub(x) : a.first ? `${spCostTxt(x)} · you have the points` : spCostTxt(x);
-    return a.first ? { ico: spMini(x.s.n) || "✦", t: spBuyT(x), sub: base + ssTag(x), btn: "Spent", act: a.act, done: true, queue: "skill" } : { ico: spMini(x.s.n) || "✦", t: spBuyT(x), sub: base + ssTag(x), act: a.act, done: true, queue: "skill" }; },
-  board: a => ({ ico: "◆", t: `Buy <b>${dvShort(a.dn.t)}</b> on ${a.dn.board}`, sub: a.dc === 0 ? "Already on your board: just mark it" : `${a.dc} of your ${a.dLeft} crystals`, btn: "Acquired", act: a.act, done: true }),
-  boardcost: a => ({ ico: "◆", t: `Check <b>${dvShort(a.dn.t)}</b>'s cost on ${a.dn.board}`, sub: `You have ${a.dLeft} crystals; type its cost to see if you can buy it`, btn: "Enter cost", act: a.act }),
+    return a.first ? { ico: spMini(x.s.n) || "✦", t: spBuyT(x), sub: base + ssTag(x), btn: "Spent", act: a.act, done: true, queue: "skill", row: keyHint("skills") } : { ico: spMini(x.s.n) || "✦", t: spBuyT(x), sub: base + ssTag(x), act: a.act, done: true, queue: "skill" }; },
+  /* the key hint line ("Open Daevanion: press U", 0.6 P14) on the rows you finish in that window */
+  board: a => ({ ico: "◆", t: `Buy <b>${dvShort(a.dn.t)}</b> on ${a.dn.board}`, sub: a.dc === 0 ? "Already on your board: just mark it" : `${a.dc} of your ${a.dLeft} crystals`, btn: "Acquired", act: a.act, done: true, row: keyHint("daevanion") }),
+  boardcost: a => ({ ico: "◆", t: `Check <b>${dvShort(a.dn.t)}</b>'s cost on ${a.dn.board}`, sub: `You have ${a.dLeft} crystals; type its cost to see if you can buy it`, btn: "Enter cost", act: a.act, row: keyHint("daevanion") }),
   stwait: a => ({ ico: stIco(a.nx.name, "st-img") || "✧", t: `Equip <b>${a.nx.name}</b>`, sub: `Stigma slot ${a.nx.n} is open · needs 1 shard${a.at ? ` (+1 at Lv ${a.at})` : ""}`, tag: "Needs 1 shard", act: a.act }),
   stequip: a => { const eTxt = a.r < 0 ? "" : ` · then put it on E, row ${a.r}${a.r === 0 ? " (fires first)" : ""}`;
     return { ico: stIco(a.nx.name, "st-img") || "✧", t: `Equip <b>${a.nx.name}</b>`, sub: `Stigma slot ${a.nx.n} is open${eTxt}`, btn: "Equipped", act: a.act, done: true }; },

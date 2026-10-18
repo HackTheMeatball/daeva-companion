@@ -252,6 +252,11 @@ export function generate(opts = {}) {
   const ITEMS = Object.fromEntries(items.map(i => [i.key, [i.label, i.metabotSlug, i.icon || '', i.gameName]]));
   const lvOf = c => (atomsOf(c).find(a => a.level !== undefined) || {}).level;
   const VERIFIED_UNLOCKS = unlocks.filter(u => u.credit && u.status === 'verified').sort(byNum('order')).map(u => [lvOf(u.at), u.what, u.detail || '', u.credit]);
+  /* default keys (0.6 P14): unlock id → key, only from the owner's screens: the hotkey's ref is one of the record's owner
+     sources and that source shows the key in brackets ("Skills (K): Reach Level 4") */
+  for (const u of unlocks.filter(u => u.hotkey)) { const s = (u.sources || []).find(s => s.owner && s.owner.ref === u.hotkey.ref);
+    check(`${u.id}: hotkey ${u.hotkey.key} is on its owner screen ${u.hotkey.ref}`, !!s && s.owner.what.includes(`(${u.hotkey.key})`), s ? s.owner.what : 'no such owner source'); }
+  const HOTKEYS = Object.fromEntries(unlocks.filter(u => u.hotkey).map(u => [u.id, u.hotkey.key]));
   /* The Ascension chapters in order, for the Journey card's Ascension bar (0.3 E8, design §11): id (its GATE_GRAPH node),
      name, chapter, recommended level, inCap (false: past Lv 45, never a bar segment), step = the guide step whose stored
      tick also completes it (guideStep; a step that names its Ascension quest must be that step). */
@@ -559,7 +564,7 @@ export function generate(opts = {}) {
   const failed = report.checks.filter(c => !c.pass);
   /* ---------------------------------------------------------------- the module */
   const C = { RQ, RQ_STATS, QUESTS_X, QUEST_STEPS_X, QUEST_LOC_X, STORY_END, SH_DATA, AREA_LOC, SD_RW, SP_EXTRA, DV_BOARDS, SOURCES, SRC_SITE, CONF,
-    QUESTS, QUEST_STEPS, QUEST_STEP_NOTES, QUEST_LOC, STORY_UNLOCKS, UNLOCK_GATE, VERIFIED_UNLOCKS, ASCENSION, GUIDE_GATES, GUIDE_STEPS, TIPS, ITEMS, HIDEOUT_AREA, ZONE_TRACES, SD_REWARD, SH_REWARD,
+    QUESTS, QUEST_STEPS, QUEST_STEP_NOTES, QUEST_LOC, STORY_UNLOCKS, UNLOCK_GATE, VERIFIED_UNLOCKS, HOTKEYS, ASCENSION, GUIDE_GATES, GUIDE_STEPS, TIPS, ITEMS, HIDEOUT_AREA, ZONE_TRACES, SD_REWARD, SH_REWARD,
     STAT_TIERS, STAT_SRC, STIGMA_PLAN, ST_TARGETS, SP_SKILLS_CORE, LEVEL_POINTS, RMB_ROWS, E_ORDER, SP_ICONS, STIGMA_ICON,
     RULE_SKILL_POINT_COST, RULE_SPEC_SLOTS, RULE_NODE_COSTS, RULE_SHARD_COST };
   const J = v => JSON.stringify(v);

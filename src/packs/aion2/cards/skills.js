@@ -7,6 +7,7 @@ import { LEVEL_POINTS, SP_ICONS, SP_SKILLS, SP_STEPS } from "../data/build.js";
 import { spCostTxt } from "../catalog.js";
 import { planReachOf, skillBonusOf, skillBuy, skillLvOf, skillOpen, skillPoints } from "../requirements.js";
 import { tipPop } from "./shared.js";
+import { keyChip } from "../hotkeys.js";
 import { renderCollection } from "./progress.js";
 import { renderRotation } from "./build.js";
 import { renderDaevanion } from "./daevanion.js";
@@ -81,7 +82,7 @@ function renderNext() {
   if (document.activeElement !== ptsIn) ptsIn.value = stones;
   document.getElementById("spLv").textContent = `${fromLevels} earned from levels`;
   document.getElementById("spLv").title = `${fromLevels + stones} earned = ${fromLevels} from levels + ${stones} from Wisdom Stones; ${spent} spent`;
-  document.getElementById("spBig").innerHTML = `<b>${pts}</b><span>pt${pts === 1 ? "" : "s"} to spend</span>`;
+  document.getElementById("spBig").innerHTML = `<b>${pts}</b><span>pt${pts === 1 ? "" : "s"} to spend</span>${keyChip("skills")}`;
   document.getElementById("spCard").classList.toggle("act", !!next && (next.spec || pts >= next.cost));
   requestAnimationFrame(fitSkills);
   renderDaevanion();
