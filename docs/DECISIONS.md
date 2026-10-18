@@ -7,6 +7,7 @@ owner; the CEO records them here and in the department charters they affect.
 
 | # | Topic | Decision |
 |---|---|---|
+| — | 0.6 second class: the Ranger, not the Gladiator (D8) | Owner, typed in the Gladiator research thread 2026-10-18 1:41 AM ET: "Oh my bad I didn’t realize I should have specified a class let’s do ranger/archer instead of gladiator". 0.6 lane B builds the Ranger (Metabot's archer class). The Gladiator class data already merged (P4, PR #300) stays on main, hidden, for a later class release. Replan: ROADMAP 0.6 "Replan", new item P22 (Ranger class data), P5 retargeted, owner input 5 becomes the Ranger spot check. |
 | — | Sync hosting and money (`owner-ok-sync-hosting` for 0.6 P21; docs/design/sync.md §6 S1 and S2) | Owner, typed in the pipeline thread 2026-10-18 12:57 AM ET: "Sync hosting OK: Cloudflare Workers + R2, free tier, usage alert". S1: option A, Cloudflare Workers + R2 in the existing Cloudflare account. S2: the owner pays, the service stays inside the free tier, and a usage alert is set, with the storage ceiling (sync.md §4) as the hard stop and no card-backed scaling beyond it. Not covered by this OK: the Durable Objects fallback (if R2's conditional write falls short, ask again), and S3–S5, which keep their recommended defaults until decided. |
 
 ## 2026-10-17

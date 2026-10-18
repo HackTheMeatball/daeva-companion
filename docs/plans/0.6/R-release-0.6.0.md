@@ -11,7 +11,7 @@ ROADMAP.
 ## Result
 
 `package.json` / `package-lock.json` at 0.6.0 and a `## 0.6.0 — <date>` CHANGELOG section in the fixed order, written
-from the merged items: the Gladiator (if P5 merged), onboarding (welcome, mid-level join, cards on unlock, key hints,
+from the merged items: the Ranger (if P5 merged), onboarding (welcome, mid-level join, cards on unlock, key hints,
 terms), the #254 fixes, sync groundwork. Saved progress: no reset expected (0.6 adds fields inside `companion-save-v5`
 only: tombstones, any S1-approved keys); if a merged item broke saves, the section says "Saves reset in this version".
 
