@@ -226,7 +226,7 @@ export default (test, M, X) => {
         const r = rank(s), st = r.find(a => a.kind === 'story') || {}, t = st.tele || null, here = P.whereNow(c);
         r.filter(a => a.kind !== 'story' && a.tele).forEach(a => bad.push(`${id}: a travel line on a ${a.kind} card`));
         /* a level-gated card has no line (its "Meanwhile" sends you elsewhere); the oracle doesn't model level gates */
-        const o = st.gated ? null : P.teleport(c, here, { preferRun: s.preferRun === true });
+        const o = st.gated ? null : P.teleport(c, here, { preferRun: s.preferRun === true, showTalk: !!s.showTalk });
         const a2 = t && { kib: t.kib, m: t.m, walk: t.walk };
         if (st.v === 'obj' && JSON.stringify(a2) !== JSON.stringify(o)) bad.push(`${id}: app ${JSON.stringify(a2)} / oracle ${JSON.stringify(o)}`);
         if (!t) continue;

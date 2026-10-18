@@ -110,14 +110,15 @@ export function nudgeOf(c, { R = TRAVEL_RULES.bindRadius, nudge = TRAVEL_RULES.n
 
 /* ---------- Teleport vs walk (design §8.3) ---------- */
 /* The story card's target (design §3): the next open objective's point, else the turn-in. Objectives have no points
-   yet, so the target is the current quest's turn-in once every objective but its "Turn in" step is ticked (hidden
-   talk-only ones too) and it isn't turned in: { zone (its Kibelisk's, else the quest's), pt, to (the quest's node id:
-   what "I'll walk" hides), npc (the turn-in's NPC or null) }; else null (an open objective: the target is unknown). */
+   yet, so the target is the current quest's turn-in once every objective the card shows (o.shown: their indices, the
+   card's objIdxOf; default all), other than its "Turn in" step, is ticked and it isn't turned in: { zone (its
+   Kibelisk's, else the quest's), pt, to (the quest's node id: what "I'll walk" hides), npc (the turn-in's NPC or null) };
+   else null (an open objective: the target is unknown). Hidden talk-only steps don't count: they can't be ticked. */
 const TURN_IN_STEP = /^Turn in\b/i;
-export function storyTargetOf(c) {
+export function storyTargetOf(c, { shown } = {}) {
   if (!c.quest || c.storyEnd === c.quest) return null;
-  const done = (c.qsteps || {})[c.quest] || [];
-  if ((QUEST_STEPS[c.quest] || []).some((t, i) => !TURN_IN_STEP.test(t) && !done.includes(i))) return null;
+  const L = QUEST_STEPS[c.quest] || [], done = (c.qsteps || {})[c.quest] || [];
+  if ((shown || L.map((t, i) => i)).some(i => !TURN_IN_STEP.test(L[i]) && !done.includes(i))) return null;
   const x = travelNode(c.quest), T = x && x.P && x.P.pts.turnin; if (!T) return null;
   return { zone: (KIBELISKS[T.anchor] || {}).zone || x.P.zone, pt: T, to: x.id, npc: (QUEST_LOC[c.quest] || {}).turnin || null };
 }

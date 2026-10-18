@@ -143,7 +143,14 @@ export default (test, M) => {
   /* design §3: the target is the next open objective's point, else the turn-in; objectives have no points yet, so with
      any objective but the "Turn in" step open there is no target (review of 87fc961: Farewells 0/3 said "Teleport to
      Fang Hideout" while its objectives are at Nornir Assembly) */
-  test('story target: the turn-in only once every objective but "Turn in" is ticked (talk-only ones too); none turned in', () => {
+  test('story target: the turn-in only once every shown objective but "Turn in" is ticked; hidden talk-only ones don\'t count; none turned in', () => {
+    /* Gathering Essentials: two talk-only steps, then "Turn in"; with talk-only hidden only the turn-in is shown */
+    const ge = 'Gathering Essentials', gL = M.QUEST_STEPS[ge], gT = NP[S[qi(ge)][0]].pts.turnin;
+    const shown = st => M.objIdxOf(st, gL);
+    assert.deepEqual(shown({}), [gL.length - 1], 'only "Turn in" shown');
+    assert.equal(M.storyTargetOf(at(ge)), null, 'all steps counted: the talk-only ones are open');
+    assert.deepEqual(M.storyTargetOf(at(ge), { shown: shown({}) }).pt, gT, 'talk-only hidden: the turn-in');
+    assert.equal(M.storyTargetOf(at(ge), { shown: shown({ showTalk: true }) }), null, 'talk-only shown and open');
     for (const q of ['Farewells', 'Imminent Threat']) {
       const L = M.QUEST_STEPS[q], ti = L.findIndex(t => /^Turn in\b/.test(t)), rest = L.map((t, i) => i).filter(i => i !== ti);
       assert.ok(ti >= 0, `${q} has a "Turn in" step`);

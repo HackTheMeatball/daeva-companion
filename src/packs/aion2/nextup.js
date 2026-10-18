@@ -8,7 +8,7 @@
    leveling path; Sealed Dungeons (one-time, fixed: 2 crystals + 2 Wisdom Stones + Enhance Stones + Kina, ~5 min) and
    Strongholds are for power, done on your route, or first when the story is level-gated above you (phase beforeStory).
    A crystal shortage alone doesn't move them above the story. */
-import { VERIFIED_UNLOCKS } from "./data/story.js";
+import { QUEST_STEPS, VERIFIED_UNLOCKS } from "./data/story.js";
 import { E_ORDER, LEVEL_POINTS, SP_STEPS } from "./data/build.js";
 import { GATES } from "./data/milestones.js";
 import { AREA_LOC } from "./data/generated.js";
@@ -21,7 +21,7 @@ import { blockerText } from "../../core/blockers.js";
 import { etaOf, rankChangeOn } from "../../core/nextup.js";
 import { perPack } from "../../core/pack.js";
 import { byPlace, whereNow } from "../../core/place.js";
-import { doneOf, gatesOf, openBut, openSteps, qProgOf } from "../../core/requirements.js";
+import { doneOf, gatesOf, objIdxOf, openBut, openSteps, qProgOf } from "../../core/requirements.js";
 
 /* The pack's ranking changes (docs/design/0.4-smart-next-up.md §12), switches like the engine's RANK_CHANGES
    (src/core/nextup.js: rankChangeOn(n, AION2_RANK_CHANGES), setRankChanges); each ships off until the step that builds
@@ -214,7 +214,7 @@ export const travelAdviceOn = () => ["bindDerived", "travelAdvice"].every(n => r
 export const aion2StoryFields = (state, { c, story: { gated }, open }) => {
   const sh = gated ? null : storyHereOf(state), on = n => rankChangeOn(n, AION2_RANK_CHANGES);
   const bind = on("bindDerived") && on("bindNudge") ? nudgeOf(c) : null;
-  const T = !gated && travelAdviceOn() && state.preferRun !== true ? storyTargetOf(c) : null;
+  const T = !gated && travelAdviceOn() && state.preferRun !== true ? storyTargetOf(c, { shown: objIdxOf(state, QUEST_STEPS[c.quest] || []) }) : null;
   const t = T && teleportOf(c, T, whereNow(c));
   return { kib: sh && !/\(Kibelisk:/.test(open || "") ? sh : null, bind, tele: t ? { ...t, to: T.to, npc: T.npc } : null };
 };

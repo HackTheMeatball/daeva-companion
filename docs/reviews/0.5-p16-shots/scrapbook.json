@@ -1,6 +1,6 @@
 [
   { "case": "1-d1500-basic", "kind": "before-after", "title": "Travel line on the story card",
-    "caption": "Basic, 1500 px: the turn-in's Kibelisk is bound and in another zone, so one line says to teleport there, with I'll walk. It replaces the Kibelisk hint." },
+    "caption": "Basic, 1500 px: only the turn-in is left, its Kibelisk is bound and in another zone, so one line says to teleport there, with I'll walk." },
   { "case": "2-d1500-advanced", "kind": "before-after", "title": "Travel line and Prefer running",
     "caption": "Advanced shows the same line, and a Prefer running box under the header; ticking it turns the travel line off on this device." },
   { "case": "3-m390-basic", "kind": "before-after", "title": "Travel line on a phone",
