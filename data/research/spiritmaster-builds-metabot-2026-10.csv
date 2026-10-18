@@ -1,0 +1,37 @@
+build,voice,kind,order,name,value,status,checkedAt,page_url,notes
+leveling-1-45,editorial,skill-target,1,Cold Shock,Lv 10,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,2,Combustion,Lv 10,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,3,Summon: Fire Spirit,Lv 10,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,4,Summon: Water Spirit,Lv 10,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,5,Jointstrike: Curse,Lv 10,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,6,Dimensional Control,Lv 10,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,7,Elemental Fusion,Lv 10,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,8,Spirit Strike,Lv 10,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,9,Corrode,Lv 10,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,10,Summon: Earth Spirit,Lv 7,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,11,Spirit's Descent,Lv 5,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,stigma-slot,1,Summon: Ancient Spirit,"slot 1 (Lv 22), stigma Lv 8",single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster/build,
+leveling-1-45,editorial,stigma-slot,2,Enhance: Spirit's Benediction,"slot 2 (Lv 27), stigma Lv 7",single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster/build,
+leveling-1-45,editorial,stigma-slot,3,Jointstrike: Corrode,"slot 3 (Lv 32), stigma Lv 5",single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster/build,
+leveling-1-45,editorial,stigma-slot,4,Flame Blessing,"slot 4 (Lv 37), stigma Lv 4",single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster/build,
+leveling-1-45,editorial,rotation,1,"Summon Fire then Water, curse the pack, Dimensional Control after each spirit attack, Combustion for the pack, Elemental Fusion when it lights up, Cold Shock as filler",,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster/build,paraphrased; P-item must write its own text
+endgame-pve-top-players,"aggregate (151 tracked Lv 45 players, updated ~2026-10-03)",stigma-slot,1,Summon: Ancient Spirit,"slot 1 (Lv 22), pick 96%",single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster/build,
+endgame-pve-top-players,"aggregate (151 tracked Lv 45 players, updated ~2026-10-03)",stigma-slot,2,Enhance: Spirit's Benediction,"slot 2 (Lv 27), pick 95%",single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster/build,
+endgame-pve-top-players,"aggregate (151 tracked Lv 45 players, updated ~2026-10-03)",stigma-slot,3,Jointstrike: Corrode,"slot 3 (Lv 32), pick 83%",single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster/build,
+endgame-pve-top-players,"aggregate (151 tracked Lv 45 players, updated ~2026-10-03)",stigma-slot,4,Flame Blessing,"slot 4 (Lv 37), pick 74%",single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster/build,
+endgame-pve-top-players,aggregate,core-skill,1,Cold Shock,99% pick,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster,
+endgame-pve-top-players,aggregate,core-skill,2,Elemental Fusion,99% pick,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster,
+endgame-pve-top-players,aggregate,core-skill,3,Summon: Fire Spirit,99% pick,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster,
+endgame-pve-top-players,aggregate,core-skill,4,Dimensional Control,99% pick,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster,
+endgame-pve-top-players,aggregate,core-skill,5,Jointstrike: Curse,99% pick,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster,
+class-builds-guide,editorial (as of 2026-10-06),stigma-slot,1,Summon: Ancient Spirit,slot 1 (Lv 22),single-source,2026-10-18,https://metabot.gg/en/aion-2/guides/class-builds-guide,same order as the leveling build and the top players
+class-builds-guide,editorial (as of 2026-10-06),stigma-slot,2,Enhance: Spirit's Benediction,slot 2 (Lv 27),single-source,2026-10-18,https://metabot.gg/en/aion-2/guides/class-builds-guide,same order as the leveling build and the top players
+class-builds-guide,editorial (as of 2026-10-06),stigma-slot,3,Jointstrike: Corrode,slot 3 (Lv 32),single-source,2026-10-18,https://metabot.gg/en/aion-2/guides/class-builds-guide,same order as the leveling build and the top players
+class-builds-guide,editorial (as of 2026-10-06),stigma-slot,4,Flame Blessing,slot 4 (Lv 37),single-source,2026-10-18,https://metabot.gg/en/aion-2/guides/class-builds-guide,same order as the leveling build and the top players
+class-page-stat-priority,editorial,stat-priority,1,Attack,,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster,class-builds guide gives the same five in the same order
+class-page-stat-priority,editorial,stat-priority,2,Critical Hit,,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster,class-builds guide gives the same five in the same order
+class-page-stat-priority,editorial,stat-priority,3,Accuracy Bonus,,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster,class-builds guide gives the same five in the same order
+class-page-stat-priority,editorial,stat-priority,4,HP,,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster,class-builds guide gives the same five in the same order
+class-page-stat-priority,editorial,stat-priority,5,MP,,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster,class-builds guide gives the same five in the same order
+class-page-daevanion-path,editorial,board-path,1,Nezekan: Spirit Strike node pair,,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster,
+class-page-daevanion-path,editorial,board-path,2,Zikel: Consecutive Countercurrent and Element Unification,,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/spiritmaster,Consecutive Countercurrent is learned at Lv 17 and Element Unification at Lv 25; Zikel opens at Lv 20

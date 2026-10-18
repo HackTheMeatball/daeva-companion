@@ -1,0 +1,113 @@
+id,skill,n,skillLv,text,build,checkedAt,status,page_url
+spec:spiritmaster:cold-shock:1,skill:spiritmaster:cold-shock,1,8,+20% MP restored,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/cold-shock
+spec:spiritmaster:cold-shock:2,skill:spiritmaster:cold-shock,2,8,"Absorbs 100, 100% HP",0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/cold-shock
+spec:spiritmaster:cold-shock:3,skill:spiritmaster:cold-shock,3,8,+50% Multi-Hit on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/cold-shock
+spec:spiritmaster:cold-shock:4,skill:spiritmaster:cold-shock,4,12,+2% Attack on landing [Earth Tremor] (Up to 5 stacks),0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/cold-shock
+spec:spiritmaster:cold-shock:5,skill:spiritmaster:cold-shock,5,16,10% chance to remove 1 buff on landing [Earth Tremor],0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/cold-shock
+spec:spiritmaster:elemental-fusion:1,skill:spiritmaster:elemental-fusion,1,8,Changes to AoE Skill,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/elemental-fusion
+spec:spiritmaster:elemental-fusion:2,skill:spiritmaster:elemental-fusion,2,8,Extra damage after 3s on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/elemental-fusion
+spec:spiritmaster:elemental-fusion:3,skill:spiritmaster:elemental-fusion,3,8,+10 all Element Boost on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/elemental-fusion
+spec:spiritmaster:elemental-fusion:4,skill:spiritmaster:elemental-fusion,4,12,"Changes to Charge Skill, dealing up to 200% more damage",0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/elemental-fusion
+spec:spiritmaster:elemental-fusion:5,skill:spiritmaster:elemental-fusion,5,16,25% chance to regain Four Elements,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/elemental-fusion
+spec:spiritmaster:summon-fire-spirit:1,skill:spiritmaster:summon-fire-spirit,1,8,-50% MP Cost,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/summon-fire-spirit
+spec:spiritmaster:summon-fire-spirit:2,skill:spiritmaster:summon-fire-spirit,2,8,+20% Fire Spirit Critical Hit damage,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/summon-fire-spirit
+spec:spiritmaster:summon-fire-spirit:3,skill:spiritmaster:summon-fire-spirit,3,8,10% chance to activate skill when Fire Spirit lands attack,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/summon-fire-spirit
+spec:spiritmaster:summon-fire-spirit:4,skill:spiritmaster:summon-fire-spirit,4,12,5% chance to inflict Knockdown for 3s on landing Fire Spirit attack,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/summon-fire-spirit
+spec:spiritmaster:summon-fire-spirit:5,skill:spiritmaster:summon-fire-spirit,5,16,+20% Fire Spirit Stats,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/summon-fire-spirit
+spec:spiritmaster:dimensional-control:1,skill:spiritmaster:dimensional-control,1,8,+20% Slow effect,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/dimensional-control
+spec:spiritmaster:dimensional-control:2,skill:spiritmaster:dimensional-control,2,8,Extra damage after 3s on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/dimensional-control
+spec:spiritmaster:dimensional-control:3,skill:spiritmaster:dimensional-control,3,8,+50% Multi-Hit chance on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/dimensional-control
+spec:spiritmaster:dimensional-control:4,skill:spiritmaster:dimensional-control,4,12,Pull in nearby targets,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/dimensional-control
+spec:spiritmaster:dimensional-control:5,skill:spiritmaster:dimensional-control,5,16,30% chance to inflict Root for 3s on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/dimensional-control
+spec:spiritmaster:jointstrike-curse:1,skill:spiritmaster:jointstrike-curse,1,8,+2s Curse duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/jointstrike-curse
+spec:spiritmaster:jointstrike-curse:2,skill:spiritmaster:jointstrike-curse,2,8,+50% Multi-Hit on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/jointstrike-curse
+spec:spiritmaster:jointstrike-curse:3,skill:spiritmaster:jointstrike-curse,3,8,Changes to mobile skill,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/jointstrike-curse
+spec:spiritmaster:jointstrike-curse:4,skill:spiritmaster:jointstrike-curse,4,12,-2s cooldown,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/jointstrike-curse
+spec:spiritmaster:jointstrike-curse:5,skill:spiritmaster:jointstrike-curse,5,16,[Jointstrike: Curse] ignores Block and Evasion and lands as a Critical Hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/jointstrike-curse
+spec:spiritmaster:summon-ancient-spirit:1,stigma:spiritmaster:summon-ancient-spirit,1,5,+10% Ancient Spirit Attack,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/summon-ancient-spirit
+spec:spiritmaster:summon-ancient-spirit:2,stigma:spiritmaster:summon-ancient-spirit,2,10,x1.5 [Spirit's Descent] activation chance and damage for 30s,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/summon-ancient-spirit
+spec:spiritmaster:summon-ancient-spirit:3,stigma:spiritmaster:summon-ancient-spirit,3,15,Ancient Spirit uses skill after 5 basic attacks,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/summon-ancient-spirit
+spec:spiritmaster:summon-ancient-spirit:4,stigma:spiritmaster:summon-ancient-spirit,4,20,+20% Ancient Spirit Stats,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/summon-ancient-spirit
+spec:spiritmaster:enhance-spirits-benediction:1,stigma:spiritmaster:enhance-spirits-benediction,1,5,Restores 10% of Max HP on cast,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/enhance-spirits-benediction
+spec:spiritmaster:enhance-spirits-benediction:2,stigma:spiritmaster:enhance-spirits-benediction,2,10,x1.5 [Spirit Strike] Damage Boost effect,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/enhance-spirits-benediction
+spec:spiritmaster:enhance-spirits-benediction:3,stigma:spiritmaster:enhance-spirits-benediction,3,15,x1.5 activation chance and amount healed from [Spirit Communion],0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/enhance-spirits-benediction
+spec:spiritmaster:enhance-spirits-benediction:4,stigma:spiritmaster:enhance-spirits-benediction,4,20,"+25% PvE Damage Boost and Damage Tolerance, +12.5% PvP Damage Boost and Damage Tolerance for caster and Spirit",0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/enhance-spirits-benediction
+spec:spiritmaster:jointstrike-corrode:1,stigma:spiritmaster:jointstrike-corrode,1,5,+15% extra damage taken from Spirit during Corrode,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/jointstrike-corrode
+spec:spiritmaster:jointstrike-corrode:2,stigma:spiritmaster:jointstrike-corrode,2,10,-20% Combat Speed on hit for 10s,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/jointstrike-corrode
+spec:spiritmaster:jointstrike-corrode:3,stigma:spiritmaster:jointstrike-corrode,3,15,-70% Incoming Heal during Corrode,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/jointstrike-corrode
+spec:spiritmaster:jointstrike-corrode:4,stigma:spiritmaster:jointstrike-corrode,4,20,+10s Corrode effect duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/jointstrike-corrode
+spec:spiritmaster:flame-blessing:1,stigma:spiritmaster:flame-blessing,1,5,+100 Accuracy,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/flame-blessing
+spec:spiritmaster:flame-blessing:2,stigma:spiritmaster:flame-blessing,2,10,+100 Critical Hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/flame-blessing
+spec:spiritmaster:flame-blessing:3,stigma:spiritmaster:flame-blessing,3,15,+10% Critical Damage Boost,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/flame-blessing
+spec:spiritmaster:flame-blessing:4,stigma:spiritmaster:flame-blessing,4,20,-50% extra damage cooldown,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/flame-blessing
+spec:spiritmaster:summon-water-spirit:1,skill:spiritmaster:summon-water-spirit,1,8,-50% MP Cost,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/summon-water-spirit
+spec:spiritmaster:summon-water-spirit:2,skill:spiritmaster:summon-water-spirit,2,8,+10% Water Spirit Attack,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/summon-water-spirit
+spec:spiritmaster:summon-water-spirit:3,skill:spiritmaster:summon-water-spirit,3,8,10% chance to activate skill when Water Spirit lands attack,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/summon-water-spirit
+spec:spiritmaster:summon-water-spirit:4,skill:spiritmaster:summon-water-spirit,4,12,5% chance to inflict Root for 2s on landing Water Spirit attack,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/summon-water-spirit
+spec:spiritmaster:summon-water-spirit:5,skill:spiritmaster:summon-water-spirit,5,16,+20% Water Spirit Stats,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/summon-water-spirit
+spec:spiritmaster:combustion:1,skill:spiritmaster:combustion,1,8,-20% MP consumed,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/combustion
+spec:spiritmaster:combustion:2,skill:spiritmaster:combustion,2,8,Deals up to 12% more damage when less targets are hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/combustion
+spec:spiritmaster:combustion:3,skill:spiritmaster:combustion,3,8,+100 Skill Accuracy,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/combustion
+spec:spiritmaster:combustion:4,skill:spiritmaster:combustion,4,12,+20% Skill Speed,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/combustion
+spec:spiritmaster:combustion:5,skill:spiritmaster:combustion,5,16,Adds [Ashy Call] Chain Skill,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/combustion
+spec:spiritmaster:cry-of-terror:1,stigma:spiritmaster:cry-of-terror,1,5,Root for 5s on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/cry-of-terror
+spec:spiritmaster:cry-of-terror:2,stigma:spiritmaster:cry-of-terror,2,10,Up to +20% damage when more targets hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/cry-of-terror
+spec:spiritmaster:cry-of-terror:3,stigma:spiritmaster:cry-of-terror,3,15,+2s Fear duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/cry-of-terror
+spec:spiritmaster:cry-of-terror:4,stigma:spiritmaster:cry-of-terror,4,20,+20% Fear Chance,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/cry-of-terror
+spec:spiritmaster:rapid-scattershot:1,skill:spiritmaster:rapid-scattershot,1,8,"Absorbs 500, 500% HP",0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/rapid-scattershot
+spec:spiritmaster:rapid-scattershot:2,skill:spiritmaster:rapid-scattershot,2,8,Restores 120 MP,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/rapid-scattershot
+spec:spiritmaster:rapid-scattershot:3,skill:spiritmaster:rapid-scattershot,3,8,Changes to mobile skill,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/rapid-scattershot
+spec:spiritmaster:rapid-scattershot:4,skill:spiritmaster:rapid-scattershot,4,12,Multi-Hit on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/rapid-scattershot
+spec:spiritmaster:rapid-scattershot:5,skill:spiritmaster:rapid-scattershot,5,16,-1s all skill cooldowns on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/rapid-scattershot
+spec:spiritmaster:summon-earth-spirit:1,skill:spiritmaster:summon-earth-spirit,1,8,-50% MP Cost,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/summon-earth-spirit
+spec:spiritmaster:summon-earth-spirit:2,skill:spiritmaster:summon-earth-spirit,2,8,+20% PvE Damage Tolerance and +10 PvP Damage Tolerance to Earth Spirit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/summon-earth-spirit
+spec:spiritmaster:summon-earth-spirit:3,skill:spiritmaster:summon-earth-spirit,3,8,10% chance to activate skill when Earth Spirit lands attack,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/summon-earth-spirit
+spec:spiritmaster:summon-earth-spirit:4,skill:spiritmaster:summon-earth-spirit,4,12,5% chance to restore 5% of Spirit HP when landing Earth Spirit attack,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/summon-earth-spirit
+spec:spiritmaster:summon-earth-spirit:5,skill:spiritmaster:summon-earth-spirit,5,16,+20% Earth Spirit Stats,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/summon-earth-spirit
+spec:spiritmaster:summon-wind-spirit:1,skill:spiritmaster:summon-wind-spirit,1,8,-50% MP Cost,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/summon-wind-spirit
+spec:spiritmaster:summon-wind-spirit:2,skill:spiritmaster:summon-wind-spirit,2,8,+20% Wind Spirit Critical Hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/summon-wind-spirit
+spec:spiritmaster:summon-wind-spirit:3,skill:spiritmaster:summon-wind-spirit,3,8,10% chance to activate skill when Wind Spirit lands attack,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/summon-wind-spirit
+spec:spiritmaster:summon-wind-spirit:4,skill:spiritmaster:summon-wind-spirit,4,12,5% chance to reduce enemy Attack Speed by 30% for 10s on landing Wind Spirit attack,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/summon-wind-spirit
+spec:spiritmaster:summon-wind-spirit:5,skill:spiritmaster:summon-wind-spirit,5,16,+20% Wind Spirit Stats,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/summon-wind-spirit
+spec:spiritmaster:souls-cry:1,skill:spiritmaster:souls-cry,1,8,+50% Multi-Hit on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/souls-cry
+spec:spiritmaster:souls-cry:2,skill:spiritmaster:souls-cry,2,8,Inflicts Root for 5s,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/souls-cry
+spec:spiritmaster:souls-cry:3,skill:spiritmaster:souls-cry,3,8,Changes to mobile skill,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/souls-cry
+spec:spiritmaster:souls-cry:4,skill:spiritmaster:souls-cry,4,12,-10s cooldown,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/souls-cry
+spec:spiritmaster:souls-cry:5,skill:spiritmaster:souls-cry,5,16,+2s Fear duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/souls-cry
+spec:spiritmaster:defiance:1,skill:spiritmaster:defiance,1,8,Adds [Curse of Despair] Chain Skill,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/defiance-spiritmaster
+spec:spiritmaster:defiance:2,skill:spiritmaster:defiance,2,8,"Restores 1,000 Stamina on using [Defiance]",0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/defiance-spiritmaster
+spec:spiritmaster:defiance:3,skill:spiritmaster:defiance,3,8,Restores 20% HP on using [Defiance],0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/defiance-spiritmaster
+spec:spiritmaster:defiance:4,skill:spiritmaster:defiance,4,12,+2s Tenacity duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/defiance-spiritmaster
+spec:spiritmaster:defiance:5,skill:spiritmaster:defiance,5,16,+50% PvE Damage Tolerance and +25% PvP Damage Tolerance for Tenacity duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/defiance-spiritmaster
+spec:spiritmaster:kaisinels-power:1,stigma:spiritmaster:kaisinels-power,1,5,+150 Block and Evasion,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/kaisinels-power
+spec:spiritmaster:kaisinels-power:2,stigma:spiritmaster:kaisinels-power,2,10,+15% Status Effect Resist,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/kaisinels-power
+spec:spiritmaster:kaisinels-power:3,stigma:spiritmaster:kaisinels-power,3,15,+150 Accuracy,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/kaisinels-power
+spec:spiritmaster:kaisinels-power:4,stigma:spiritmaster:kaisinels-power,4,20,+15% Status Effect Chance,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/kaisinels-power
+spec:spiritmaster:magic-block:1,stigma:spiritmaster:magic-block,1,5,50% chance to inflict Root for 5s on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/magic-block
+spec:spiritmaster:magic-block:2,stigma:spiritmaster:magic-block,2,10,"-1,000 enemy Max Stamina for 5s on hit",0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/magic-block
+spec:spiritmaster:magic-block:3,stigma:spiritmaster:magic-block,3,15,+2s Seal duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/magic-block
+spec:spiritmaster:magic-block:4,stigma:spiritmaster:magic-block,4,20,+25% Seal chance,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/magic-block
+spec:spiritmaster:jointstrike-destructive-attack:1,stigma:spiritmaster:jointstrike-destructive-attack,1,5,"Changes to Charge Skill, dealing up to 200% more [Jointstrike: Destructive Attack] damage",0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/jointstrike-destructive-attack
+spec:spiritmaster:jointstrike-destructive-attack:2,stigma:spiritmaster:jointstrike-destructive-attack,2,10,+30% Skill Speed,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/jointstrike-destructive-attack
+spec:spiritmaster:jointstrike-destructive-attack:3,stigma:spiritmaster:jointstrike-destructive-attack,3,15,Critical Hit on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/jointstrike-destructive-attack
+spec:spiritmaster:jointstrike-destructive-attack:4,stigma:spiritmaster:jointstrike-destructive-attack,4,20,Reset [Jointstrike: Curse] and [Jointstrike: Corrode] cooldown on landing [Jointstrike: Destructive Attack] first hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/jointstrike-destructive-attack
+spec:spiritmaster:assault-terror:1,stigma:spiritmaster:assault-terror,1,5,+20% caster's Attack for 5s,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/assault-terror
+spec:spiritmaster:assault-terror:2,stigma:spiritmaster:assault-terror,2,10,500 MP damage on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/assault-terror
+spec:spiritmaster:assault-terror:3,stigma:spiritmaster:assault-terror,3,15,+10m range,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/assault-terror
+spec:spiritmaster:assault-terror:4,stigma:spiritmaster:assault-terror,4,20,+20% Fear Chance,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/assault-terror
+spec:spiritmaster:siphon:1,stigma:spiritmaster:siphon,1,5,+20% Skill Speed,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/siphon
+spec:spiritmaster:siphon:2,stigma:spiritmaster:siphon,2,10,+5% HP absorbed,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/siphon
+spec:spiritmaster:siphon:3,stigma:spiritmaster:siphon,3,15,30% of Max HP as Protective Shield for 30s on use,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/siphon
+spec:spiritmaster:siphon:4,stigma:spiritmaster:siphon,4,20,Stun for 3s on hit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/siphon
+spec:spiritmaster:command-proxy:1,stigma:spiritmaster:command-proxy,1,5,+2s Command: Proxy duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/command-proxy
+spec:spiritmaster:command-proxy:2,stigma:spiritmaster:command-proxy,2,10,+10% PVP Damage Tolerance increase and +5% PvP Damage Tolerance increase to Spirit,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/command-proxy
+spec:spiritmaster:command-proxy:3,stigma:spiritmaster:command-proxy,3,15,x1.5 [Spirit Protection] effect during Command: Proxy,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/command-proxy
+spec:spiritmaster:command-proxy:4,stigma:spiritmaster:command-proxy,4,20,Restores 3% of Spirit's HP every 1s for Command: Proxy duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/command-proxy
+spec:spiritmaster:cursed-cloud:1,stigma:spiritmaster:cursed-cloud,1,5,"-1,000 enemy Max Stamina during Damage over Time",0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/cursed-cloud
+spec:spiritmaster:cursed-cloud:2,stigma:spiritmaster:cursed-cloud,2,10,-20% Max HP of PC targets during Damage over Time,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/cursed-cloud
+spec:spiritmaster:cursed-cloud:3,stigma:spiritmaster:cursed-cloud,3,15,+10s Damage over Time duration,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/cursed-cloud
+spec:spiritmaster:cursed-cloud:4,stigma:spiritmaster:cursed-cloud,4,20,-30% Status Effect Resist during Damage over Time,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/cursed-cloud
+spec:spiritmaster:seize-magic:1,stigma:spiritmaster:seize-magic,1,5,Removes up to 3 buffs,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/seize-magic
+spec:spiritmaster:seize-magic:2,stigma:spiritmaster:seize-magic,2,10,Inflicts Seal for 5s when removing 3 or more buffs,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/seize-magic
+spec:spiritmaster:seize-magic:3,stigma:spiritmaster:seize-magic,3,15,Removes up to 5 buffs,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/seize-magic
+spec:spiritmaster:seize-magic:4,stigma:spiritmaster:seize-magic,4,20,-30s cooldown,0.0.4387.0,2026-10-18,verified,https://metabot.gg/en/aion-2/skills/seize-magic
