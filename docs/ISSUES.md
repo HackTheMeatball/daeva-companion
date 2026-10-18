@@ -97,6 +97,29 @@ on purpose: the guide shows nothing rather than an unverified value.
   | sk-ambush.png, sk-assault-stance.png, sk-defense-break.png, sk-exploit-weakness.png, sk-heart-gore.png | | |
   | sk-insignia-explosion.png, sk-quick-slice.png, sk-rear-smite.png, sk-savage-roar.png, sk-shadowstrike.png | | |
   | st-illusive-clone.png, st-savage-fang.png, st-swift-contract.png, st-triniels-dagger.png | | |
+- **Story-quest icon: no approved source found yet** (0.6 gate `research-story-icon`, for P13; searched 2026-10-18
+  3:12–3:21 AM ET). The owner's OK for the game's yellow story-quest icon is #254 note 7. The plan's source is Metabot
+  first, else a file the owner supplies.
+
+  | File | Source page | File URL | Retrieved |
+  |---|---|---|---|
+  | (none yet) | not found on Metabot | none | n/a |
+
+  - **Checked (CONFIRMED, none of these has a quest-type icon):** a story quest page
+    (<https://metabot.gg/en/aion-2/quests/a-daeva-dreaming-anew>: only the NPC portrait, map tiles and site art), the
+    quest list (<https://metabot.gg/en/aion-2/quests>: item and currency icons only), the map
+    (<https://metabot.gg/en/aion-2/map>), a zone page (<https://metabot.gg/en/aion-2/zones/abandoned-campsite>), the
+    leveling guide (<https://metabot.gg/en/aion-2/guides/leveling-guide>: one banner image, not an icon), and the 31
+    script files those pages load. No file under `/web/aion2/` is named for a quest type or a map marker.
+  - **Not checked (GUESS):** the map draws its markers from code loaded later or from `/api/`, which robots.txt
+    disallows, so a marker icon may exist there; it was not looked for. aion2.gaming.tools is owner hand check only
+    (docs/research/2026-10-source-vetting.md §5), aion2.th.gl and Game8 are excluded.
+  - **Fetching:** robots.txt and the terms (effective 04/01/2026, unchanged) re-read first; own User-Agent, one request
+    at a time, at least 6 s apart, 39 requests, no 403 / 429 / challenge. Nothing was kept.
+  - **Next step (owner):** supply the icon file (for example a crop of the yellow story-quest mark from an in-game
+    screen, at least 64 px, transparent background if possible), then record it here as "owner-supplied" with the date.
+    P13 stays unqueued until a row above has a file; this entry alone does not clear the gate.
+
 - **Icons not in the claude.ai artifact yet.** The five skill icons above (added 2026-10-15 under the standing icon OK)
   have no `/_blob/` id: `scripts/artifact-blobs.json` lists them as `null`, so `dist-artifact` shows the initials square
   for those skills, as before. To add them there, upload each PNG to the artifact's asset store and put its id in
