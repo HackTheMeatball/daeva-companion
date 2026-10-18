@@ -55,6 +55,12 @@ From HANDOFF and the Sonnet guard in claude.yml:
   `package.json` + `CHANGELOG.md` (releases). Each has a lane name for the #114 queue (`lanes:` on a `- [next]` line,
   kickoff.yml): `main.js`, `golden`, `mig` (mig1 pin / `tests/e2-migtest.js`), `gates`, `gen`, `app.css`, `ci`, `a11y`,
   `release`; `lanes:none` for an item that touches none.
+- **Golden splits by snapshot folder** (0.6 kaizen review K9, #222): a build that only re-records one card's snapshots
+  takes `golden-<folder>` (`golden-nextup`, `golden-journey`, `golden-milestones`, `golden-regional`, `golden-route`),
+  so items on different cards run at the same time. `golden` (the whole lane) is still right for anything that edits
+  `tests/golden.js`, `tests/golden/*.js` (e.g. `probe.js`) or `tests/golden/snapshots/_state/`, and it clashes with
+  every `golden-<folder>`. Kickoff takes in-flight lanes from each open PR's files, so a PR that also edits `probe.js`
+  holds the whole lane while it is open.
 - Builder "O" = `@claude` (Opus), "S" = `@sonnet` (Sonnet). Reviewer "S" / "O" the same; "S+O" = both.
 
 ## Step table
