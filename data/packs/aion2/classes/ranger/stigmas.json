@@ -162,6 +162,7 @@
       "key": "Bow of Blessing",
       "name": "Bow of Blessing",
       "availableLv": 22,
+      "icon": "assets/icons/st-bow-of-blessing.png",
       "maxLevel": 40,
       "specialtyChoices": [
         {
@@ -315,6 +316,7 @@
       "key": "Griffon Arrow",
       "name": "Griffon Arrow",
       "availableLv": 22,
+      "icon": "assets/icons/st-griffon-arrow.png",
       "maxLevel": 40,
       "specialtyChoices": [
         {
@@ -570,6 +572,7 @@
       "key": "Supporting Fire",
       "name": "Supporting Fire",
       "availableLv": 22,
+      "icon": "assets/icons/st-supporting-fire.png",
       "maxLevel": 40,
       "specialtyChoices": [
         {
@@ -621,6 +624,7 @@
       "key": "Vaizel's Authority",
       "name": "Vaizel's Authority",
       "availableLv": 22,
+      "icon": "assets/icons/st-vaizels-authority.png",
       "maxLevel": 40,
       "specialtyChoices": [
         {

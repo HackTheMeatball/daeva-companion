@@ -91,6 +91,7 @@
       "type": "active",
       "learnLv": 10,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-burst-arrow.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -171,6 +172,7 @@
       "type": "passive",
       "learnLv": 6,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-concentrated-fire.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 2,
@@ -199,6 +201,7 @@
       "type": "active",
       "learnLv": 14,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-deadshot.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -324,6 +327,7 @@
       "type": "active",
       "learnLv": 4,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-drill-dart.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -465,6 +469,7 @@
       "type": "passive",
       "learnLv": 11,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-focused-eye.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 2,
@@ -493,6 +498,7 @@
       "type": "active",
       "learnLv": 7,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-gale-arrow.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -554,6 +560,7 @@
       "type": "passive",
       "learnLv": 13,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-hunters-resolve.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 2,
@@ -610,6 +617,7 @@
       "type": "active",
       "learnLv": 3,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-marking-shot.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -758,6 +766,7 @@
       "type": "active",
       "learnLv": 1,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-snare-shot.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -819,6 +828,7 @@
       "type": "active",
       "learnLv": 1,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-snipe.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -960,6 +970,7 @@
       "type": "active",
       "learnLv": 1,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-tempest-shot.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
