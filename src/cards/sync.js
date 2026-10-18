@@ -182,7 +182,7 @@ export function mountSync(o) {
   menu.addEventListener("keydown", e => { if (e.key === "Escape") { closeMenu(); opts.focus(); } });
   setInterval(() => { if (status === "synced") paint(); }, 60000);
 
-  $("syncLbl").textContent = T.label;
+  $("syncLbl").textContent = T.label; sw.setAttribute("aria-label", T.label);
   now.textContent = T.now; opts.textContent = T.options + " ▾"; reload.textContent = T["status.reload"];
   const note = o.note.get(SYNC_NOTE); if (note) { o.note.remove(SYNC_NOTE); say(T[note]); }
   paint();

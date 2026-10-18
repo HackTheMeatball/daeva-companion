@@ -385,6 +385,145 @@ const checkReport = (label, m, want) => {
     await ctx.close();
   }
 
+  /* 8. sync UI (0.7 P6, docs/design/0.7-sync-mockup.md): every S2 state against the fake host (tests/fixtures/fake-host.mjs)
+     behind the real base URL; the code never in an Export, the Report link or the save; none of it in the artifact */
+  {
+    const { pathToFileURL } = require('url');
+    const { fakeHost } = await import(pathToFileURL(path.join(CFG.ROOT, 'tests/fixtures/fake-host.mjs')).href);
+    const M = await (await import(pathToFileURL(path.join(CFG.ROOT, 'tests/support/core-bundle.mjs')).href)).coreBundle();
+    const T = JSON.parse(fs.readFileSync(path.join(CFG.ROOT, 'data/ui/sync-texts.json'), 'utf8')).texts;
+    const host = fakeHost(), net = { down: false, race: false, status: 0, hold: null, n: 0 };
+    const CORS = { 'access-control-allow-origin': '*', 'access-control-allow-headers': 'authorization, content-type, if-match, if-none-match', 'access-control-allow-methods': 'GET, PUT, DELETE', 'access-control-expose-headers': 'etag' };
+    const route = async r => {
+      const q = r.request(), m = /^https:\/\/sync\.daevacompanion\.com\/v1\/s\/([^/?#]+)$/.exec(q.url()), h = await q.allHeaders();
+      if (q.method() === 'OPTIONS') return r.fulfill({ status: 204, headers: CORS });
+      net.n++;
+      if (net.down || !m) return r.abort('internetdisconnected');
+      if (net.hold) await net.hold;
+      const token = String(h.authorization || '').replace(/^Bearer /, '');
+      let x = q.method() === 'GET' ? await host.get(m[1], token)
+        : q.method() === 'PUT' ? (net.race ? { status: 412 } : await host.put(m[1], token, new Uint8Array(q.postDataBuffer()), h['if-match'] ? { etag: h['if-match'] } : {}))
+        : await host.remove(m[1], token);
+      if (net.status) x = { status: net.status };
+      return r.fulfill({ status: x.status, headers: { ...CORS, ...(x.etag ? { etag: x.etag } : {}) }, body: x.body ? Buffer.from(x.body) : '' });
+    };
+    const device = async (w = 1500) => { const c = await b.newContext({ viewport: { width: w, height: 1000 }, acceptDownloads: true }); await c.route('https://sync.daevacompanion.com/**', route);
+      const pg = await c.newPage(), errs = []; pg.on('pageerror', e => errs.push(e.message)); await pg.goto(CFG.CUR); await pg.waitForTimeout(500); return { c, p: pg, errs }; };
+    const ui = pg => pg.evaluate(() => { const $ = id => document.getElementById(id), vis = e => !!e && !e.hidden && e.getClientRects().length > 0;
+      return { on: $('syncSw').getAttribute('aria-checked'), st: $('syncSt').textContent, tone: $('syncSt').className, strip: document.querySelector('#xfer .xfer-text > span').textContent,
+        now: vis($('syncNow')), opts: vis($('syncOpts')), reload: vis($('syncReload')), panel: vis($('syncPanel')) ? $('syncPanel').textContent : '', menu: vis($('syncMenu')) ? $('syncMenu').innerText : '',
+        msg: $('syncMsg').textContent, code: ($('syncPanel').querySelector('.sync-code') || {}).textContent || '', rec: localStorage.getItem('companion-sync-v1'), focus: document.activeElement && document.activeElement.id }; });
+    const until = async (pg, f, ms = 8000) => { const t = Date.now(); let u; while (Date.now() - t < ms) { u = await ui(pg); if (f(u)) return u; await pg.waitForTimeout(100); } return u; };
+    const clickText = (pg, text) => pg.locator('#syncPanel button:visible, #syncMenu button:visible').filter({ hasText: text }).first().click();
+    const syncedRe = new RegExp('^' + T['status.synced'].replace('{ago}', T['ago.now']) + '$');
+
+    const A = await device(), p = A.p;
+    let u = await ui(p);
+    ok('sync n1: off on load: switch off, no status, no Sync now / options, today\'s strip sentence, no request', u.on === 'false' && !u.st && !u.now && !u.opts && !u.panel && u.strip === 'Progress is saved in this browser only.' && net.n === 0, { u, n: net.n });
+    await p.click('#syncSw'); u = await ui(p);
+    ok('sync t1: the switch opens "Turn on sync" with its two choices and Cancel; panel focused; strip unchanged', u.on === 'true' && u.panel.includes(T['on.title']) && u.panel.includes(T['on.new']) && u.panel.includes(T['on.have']) && u.focus === 'syncPanel' && u.strip === 'Progress is saved in this browser only.', u);
+    await clickText(p, T.cancel); u = await ui(p);
+    ok('sync t1: Cancel closes the panel, switch back off, focus back on the switch', u.on === 'false' && !u.panel && u.focus === 'syncSw' && !u.rec, u);
+    await p.click('#syncSw'); await clickText(p, T['on.new']); u = await ui(p);
+    const code = u.code, last = code.split('-').pop();
+    const t2 = await p.evaluate(() => { const i = document.getElementById('syncConfirm'), s = [...document.querySelectorAll('#syncPanel button')].find(x => /saved/.test(x.textContent)); return { ph: i.placeholder, dis: s.disabled }; });
+    ok('sync t2: a new code (DC1 + 6 groups) shown once, Copy, confirm field with "Last group" (never the group), I\'ve saved it disabled, status "Not synced yet"',
+      /^DC1(-[0-9A-HJKMNP-TV-Z*~$=U]{1,5}){6}$/.test(code) && u.panel.includes(T['code.copy']) && t2.ph === T['code.confirmHint'] && t2.ph !== last && t2.dis && u.st === T['status.never'] && !u.rec && u.strip === 'Progress is saved in this browser only.', { u, t2 });
+    await p.fill('#syncConfirm', last.toLowerCase());
+    ok('sync t3: typing the last group enables I\'ve saved it', await p.evaluate(() => ![...document.querySelectorAll('#syncPanel button')].find(x => /saved/.test(x.textContent)).disabled));
+    await clickText(p, T['code.saved']);
+    u = await until(p, x => syncedRe.test(x.st));
+    ok('sync s2: stored, first round uploads; Advanced: status "Synced · just now", Sync now then Sync options; strip says synced', syncedRe.test(u.st) && /ok/.test(u.tone) && JSON.parse(u.rec).code === code && host.objects.size === 1 && u.now && u.opts && u.strip === T['strip.on'] && !u.panel, u);
+    ok('sync s2: Sync now comes before Sync options', await p.evaluate(() => !!(document.getElementById('syncNow').compareDocumentPosition(document.getElementById('syncOpts')) & Node.DOCUMENT_POSITION_FOLLOWING)));
+    /* the code never leaves the record: not in the save, an Export file or the Report link */
+    const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#expBtn')]);
+    const expText = fs.readFileSync(await dl.path(), 'utf8'), rep = await p.evaluate(() => { const r = document.getElementById('reportLink'); r.dispatchEvent(new Event('focus')); return r.href; });
+    const bare = code.replace(/-/g, '');
+    const leak = s => s.includes(code) || s.includes(bare);
+    ok('sync: Export and Report a problem never include the sync code (nor the save)', !leak(expText) && !leak(decodeURIComponent(rep)) && !leak(await p.evaluate(k => localStorage.getItem(k), KEY)) && !/companion-sync/.test(expText), { rep });
+    await p.click('.modeseg [data-mode=basic]'); u = await ui(p);
+    ok('sync s1: Basic shows label, switch and status only', syncedRe.test(u.st) && !u.now && !u.opts && u.on === 'true', u);
+    await p.click('.modeseg [data-mode=advanced]');
+    let release; net.hold = new Promise(r => { release = r; });
+    await p.click('#syncNow'); u = await until(p, x => x.st === T['status.syncing'], 3000);
+    ok('sync s3: a running round shows "Syncing…"', u.st === T['status.syncing'], u);
+    net.hold = null; release(); await until(p, x => syncedRe.test(x.st));
+    net.down = true; await p.click('#syncNow'); u = await until(p, x => x.st === T['status.offline']);
+    ok('sync s5: host unreachable: "Offline · will sync when you\'re back online"', u.st === T['status.offline'] && /warn/.test(u.tone), u);
+    net.down = false; await p.evaluate(() => dispatchEvent(new Event('online'))); u = await until(p, x => syncedRe.test(x.st));
+    ok('sync s5: the online event retries and syncs', syncedRe.test(u.st), u);
+    net.race = true; await p.click('#lvlUp'); await p.click('#syncNow'); u = await until(p, x => x.st === T['status.conflict'], 12000);
+    ok('sync s6: losing every retry to another device: "Another device is syncing · trying again soon"', u.st === T['status.conflict'], u);
+    net.race = false; net.status = 500; await p.click('#syncNow'); u = await until(p, x => x.st === T['status.error']);
+    ok('sync s9: another status (500): "Sync failed, will retry"', u.st === T['status.error'] && /bad/.test(u.tone), u);
+    net.status = 0; await p.click('#syncNow'); await until(p, x => syncedRe.test(x.st));
+    const id = [...host.objects.keys()][0], good = host.objects.get(id).body;
+    host.objects.get(id).body = new Uint8Array(good.length).fill(7); await p.click('#syncNow'); u = await until(p, x => x.st === T['status.unreadable']);
+    ok('sync s7: a cloud copy the code can\'t open: "This code doesn\'t open the cloud copy", nothing written', u.st === T['status.unreadable'] && host.objects.get(id).body[0] === 7, u);
+    const env = { crypto: globalThis.crypto, CompressionStream: globalThis.CompressionStream, DecompressionStream: globalThis.DecompressionStream };
+    const keysA = await M.syncKeys(env, M.parseSyncCode(code)), saveA = JSON.parse(await p.evaluate(k => localStorage.getItem(k), KEY));
+    host.objects.get(id).body = await M.sealSave(env, keysA, { ...saveA, v: M.SAVE_V + 1 }); await p.click('#syncNow'); u = await until(p, x => x.st === T['status.update']);
+    ok('sync s8: a copy from a newer version: "Update the app to sync" with Reload', u.st === T['status.update'] && u.reload, u);
+    host.objects.get(id).body = good; await p.click('#syncNow'); await until(p, x => syncedRe.test(x.st));
+    await p.click('#syncOpts'); u = await ui(p);
+    ok('sync m1: Sync options lists the four actions', [T['opt.show'], T['opt.new'], T['opt.delete'], T['opt.off']].every(t => u.menu.includes(t)) && u.menu.split('\n').filter(Boolean).length === 4, u.menu);
+    await clickText(p, T['opt.show']); u = await ui(p);
+    ok('sync m2: Show sync code shows the stored code with Copy and Hide', u.code === code && u.panel.includes(T['code.hide']), u);
+    await clickText(p, T['code.hide']); u = await ui(p);
+    ok('sync m2: Hide closes the panel, focus back on the switch', !u.panel && u.focus === 'syncSw', u);
+    await p.click('#syncOpts'); await clickText(p, T['opt.new']); u = await ui(p);
+    ok('sync m3: New sync code asks first', u.panel.includes(T['new.title']) && u.panel.includes(T['new.go']), u);
+    await clickText(p, T['new.go']); u = await ui(p);
+    const code2 = u.code; await p.fill('#syncConfirm', code2.split('-').pop()); await clickText(p, T['code.saved']);
+    u = await until(p, x => syncedRe.test(x.st) && JSON.parse(x.rec).code === code2);
+    ok('sync m3: the new code replaces the old: old cloud copy deleted, new one uploaded', code2 !== code && JSON.parse(u.rec).code === code2 && host.objects.size === 1 && !host.objects.has(id), { u, ids: [...host.objects.keys()] });
+    await p.click('#syncOpts'); await clickText(p, T['opt.delete']); u = await ui(p);
+    ok('sync d1: Delete cloud copy asks first', u.panel.includes(T['delete.title']), u);
+    await clickText(p, T['opt.delete']); u = await until(p, x => !x.rec);
+    ok('sync d2: deleted: host empty, code gone from the device, line back to off with one message', host.objects.size === 0 && !u.rec && u.on === 'false' && u.msg === T['delete.done'] && !u.st && u.strip === 'Progress is saved in this browser only.', u);
+    await p.click('#syncSw'); await clickText(p, T['on.new']); const code3 = (await ui(p)).code;
+    await p.fill('#syncConfirm', code3.split('-').pop()); await clickText(p, T['code.saved']); await until(p, x => syncedRe.test(x.st));
+    await p.click('#syncSw'); u = await ui(p);
+    ok('sync o1: the switch, when on, asks before turning off', u.panel.includes(T['off.title']) && u.panel.includes('180 days'), u);
+    await clickText(p, T['opt.off']); u = await ui(p);
+    ok('sync o1: turned off: the code leaves the device, the cloud copy stays', !u.rec && u.on === 'false' && host.objects.size === 1, u);
+    /* join from other devices, with A's copy (code3) on the host */
+    const B = await device(390), q = B.p, n0 = net.n;
+    await q.click('#syncSw'); await clickText(q, T['on.have']);
+    const typo = code3.slice(0, -1) + (code3.endsWith('0') ? '1' : '0');
+    await q.fill('.sync-codein', typo); u = await ui(q);
+    const j1 = await q.evaluate(() => ({ dis: [...document.querySelectorAll('#syncPanel button')].find(x => x.textContent === 'Join').disabled, fs: getComputedStyle(document.querySelector('.sync-codein')).fontSize, tag: document.querySelector('.sync-codein').tagName }));
+    ok('sync j1: a typo is caught on the device: message, Join disabled, no request', u.panel.includes(T['join.typo']) && j1.dis && net.n === n0, { u, j1 });
+    ok('sync j1: the join field is one line (never breaks inside a group), 16 px on a phone', j1.tag === 'INPUT' && j1.fs === '16px', j1);
+    const nope = M.newSyncCode(env); await q.fill('.sync-codein', nope); await clickText(q, T['join.button']); u = await until(q, x => x.panel.includes(T['join.notFound']));
+    ok('sync j2: a code with no cloud copy: "No cloud copy for this code", nothing stored or created', u.panel.includes(T['join.notFound']) && !u.rec && host.objects.size === 1, u);
+    await q.fill('.sync-codein', code3.toLowerCase()); await clickText(q, T['join.button']);
+    await q.waitForLoadState(); await q.waitForTimeout(800); u = await until(q, x => syncedRe.test(x.st));
+    ok('sync j4: a device without progress adopts the cloud copy: one confirmation line, synced', u.msg === T['join.adopted'] && JSON.parse(u.rec).code === code3 && syncedRe.test(u.st), u);
+    const lvA = await p.evaluate(() => String(char(state).level)), lvB = await q.evaluate(() => String(char(state).level));
+    ok('sync j4: the joined device shows the cloud copy\'s character', lvA === lvB, { lvA, lvB });
+    /* §4a: at 390 px the code box never breaks inside a group and no line starts with "-" */
+    await q.click('.modeseg [data-mode=advanced]'); await q.click('#syncOpts'); await clickText(q, T['opt.show']);
+    const wrap = await q.evaluate(() => { const box = document.querySelector('#syncPanel .sync-code'), grps = [...box.querySelectorAll('.sync-grp')];
+      const lines = new Set(grps.map(g => Math.round(g.getBoundingClientRect().top)));
+      const hy = [...box.childNodes].filter(nd => nd.nodeType === 3).map(nd => { const r = document.createRange(); r.selectNodeContents(nd); return Math.round(r.getBoundingClientRect().top); });
+      const prevTop = grps.slice(0, -1).map(g => Math.round(g.getBoundingClientRect().top));
+      return { whole: grps.every(g => g.getClientRects().length === 1), lines: lines.size, hyOk: hy.every((t, i) => t === prevTop[i]) && hy.length === grps.length - 1, w: box.clientWidth }; });
+    ok('sync 390 px: the code box wraps only after a hyphen (each group whole, no line starts with "-")', wrap.whole && wrap.hyOk && wrap.lines >= 1, wrap);
+    const C = await device(), c3 = C.p;
+    await writeSave(c3, { checks: { 'g22:0': true }, level: 27, open: {}, quest: 'Preparations for Restoration' }); await c3.reload(); await c3.waitForTimeout(500);
+    await c3.click('#syncSw'); await clickText(c3, T['on.have']); await c3.fill('.sync-codein', code3); await clickText(c3, T['join.button']);
+    u = await until(c3, x => x.panel.includes(T['join.askTitle']));
+    ok('sync j3: a device with progress is asked: Keep both / Use the cloud copy / Cancel', u.panel.includes(T['join.keepBoth']) && u.panel.includes(T['join.useCloud']) && u.panel.includes(T.cancel) && !u.rec, u);
+    await clickText(c3, T['join.keepBoth']); await c3.waitForTimeout(800); await c3.waitForLoadState(); u = await until(c3, x => syncedRe.test(x.st));
+    ok('sync j3: Keep both stores the code and merges into one cloud copy', JSON.parse(u.rec).code === code3 && syncedRe.test(u.st) && host.objects.size === 1, u);
+    ok('sync: no page errors on any device', !A.errs.length && !B.errs.length && !C.errs.length, [A.errs, B.errs, C.errs]);
+    for (const d of [A, B, C]) await d.c.close();
+    /* a1: the claude.ai build holds no sync line, panel or code */
+    const art = fs.readFileSync(path.join(CFG.ROOT, 'dist-artifact', 'index.html'), 'utf8');
+    ok('sync a1: the artifact has no sync markup, texts or client, and keeps today\'s strip sentence', !/id="sync(Line|Sw|St|Panel|Menu|Msg)"|sync-texts|uiTexts|mountSync|sync\.daevacompanion\.com|Turn on sync/.test(art) && art.includes('Progress is saved in this browser only.'));
+  }
+
   console.log(`${n - fail} ok, ${fail} failed`); console.log(fail ? `SITE CHECKS FAILED (${fail})` : 'SITE CHECKS PASSED');
   await b.close(); process.exit(fail ? 1 : 0);
 })();

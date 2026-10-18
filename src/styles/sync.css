@@ -22,7 +22,7 @@ body.basic .sync-adv { display: none !important; }
 .sync-panel p { margin: var(--space-2) 0 0; color: var(--muted); font-size: 13px; }
 .sync-choices { display: grid; gap: var(--space-8); margin-top: var(--space-12); }
 .sync-row { display: flex; flex-wrap: wrap; gap: var(--space-8); margin-top: var(--space-12); }
-.sync-menu { display: grid; gap: var(--space-6); }
+.sync-menu:not([hidden]) { display: grid; gap: var(--space-6); }
 .sync-btn { font: 600 12px var(--mono); padding: var(--space-5) var(--space-11); border-radius: var(--radius-8); border: 1px solid var(--line); background: var(--panel-2); color: var(--fg); cursor: pointer; text-align: center; }
 .sync-btn:hover { border-color: var(--accent); }
 .sync-btn.primary { background: var(--accent-fill); border-color: var(--accent-fill); color: var(--on-fill); }
