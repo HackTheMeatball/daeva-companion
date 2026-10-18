@@ -681,6 +681,14 @@ tomorrow after I wake up?" So 0.6.0 ships without the two owner-gated items and 
 - **P13** story-quest icon (#272), after `owner-ok-story-icon` (the owner's icon crop).
 - **P15** respec walk-through (#274), after `P14, owner-ok-keys` (the owner's in-game key screens).
 - **Game Data Check fixes** for #325 (thin-sourced "verified" fields), in small data PRs.
+- **Player Testing fixes** (#321, #333; Release Planner triage 2026-10-18 7:30 AM ET), no owner input needed:
+  [F1](docs/plans/0.6.1/F1-story-counter.md) story objective counter and Ahead order (golden) ·
+  [F2](docs/plans/0.6.1/F2-phone-overlays.md) phone toast and Build sheet over the tab bar (main.js) ·
+  [F3](docs/plans/0.6.1/F3-welcome-buttons.md) two "Start at Lv 1" buttons (a11y) ·
+  [F4](docs/plans/0.6.1/F4-a11y-layout-nits.md) headings, tap targets, board line (a11y) ·
+  [F5](docs/plans/0.6.1/F5-ranger-icons.md) Ranger icons under the standing icon OK (gen, golden).
+  Not patched (to the 0.7 planning pass as input): #321 notes 5, 6, 8, 10 and #333 notes 2, 3, 5 (judgement calls or
+  new features). #321 bug 4 (`assassin-lvl1` label) is the owner's 2026-10-16 label design, so it goes to the owner.
 
 No planning pass (patch): the Release Planner queues each item when its gate is met, sends Game Data Check
 `PRE-RELEASE CHECK 0.6.1` once they merge, and opens the release issue after `DATA OK`.
