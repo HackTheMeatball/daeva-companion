@@ -460,11 +460,195 @@ Not blockers (the recommendation applies unless the owner says otherwise):
 | B | Gladiator pack (D8 default; owner can change), from its research pack: data, guide build, icons, golden snapshot, in-game spot check. It follows the 0.4 P1 pack layout: class data in `data/packs/aion2/classes/gladiator/`, its Asmodian guide in `data/packs/aion2/asmodian/gladiator/`, each with a manifest. First step: per-pack loading (moved from 0.4 P7), so the page carries only the chosen class; then the guide text both classes share is split out of the Assassin pack | its two pack folders only, after the loading step |
 | C | Sync client on `merge()` (old 0.6 Y1), if the owner approved the sync design and hosting | sync module |
 
+Planning pass written 2026-10-18 (#257): release kaizen review in [docs/kaizen/0.5-scorecard.md](docs/kaizen/0.5-scorecard.md)
+(the first scorecard), one spec per item in [docs/plans/0.6/](docs/plans/0.6/) (the issue body the planner creates,
+verbatim), owner notes from #254 placed below. Item keys are `P<n>` / `S<n>` for kickoff's After-line queueing; tokens
+that aren't keys (`owner-*`, `research-*`) are listed under "Owner input" and "Alongside" with who clears them.
+
+**Process changes from the scorecard (in place before the first 0.6 item is queued):** K1 builds expected past 45
+min commit and push after each step (the 1 h token killed P6); K2 / K4 every research gate and owner question of the
+minor goes out the hour this plan merges; K5 / K6 per-item times and Waste lines are kept for the next scorecard; K7
+fix round 2 on Opus; K3 and K9 (Kickoff writes the build card; golden split by snapshot folder) need the pipeline
+thread. Re-derived #114 limits: M code 80 min, M–L 80 min, L 120 min, S 16, S–M 20, M docs 41; build cap 5; build
+routing unchanged. The rows are in the scorecard and in the PR of this pass for #222.
+
+#### Audit (step 2), against `main` at `aab1032` (0.5.0)
+
+Path to 1.0 first:
+
+1. **0.7–0.9 are blocked on research nobody started.** "Class research packs for all seven classes, two at a time"
+   (0.4 "Alongside") produced only the Gladiator groundwork ([docs/research/2026-10-next-class.md](docs/research/2026-10-next-class.md)).
+   Changed: the research packs for 0.7's two classes run alongside 0.6 (below), chosen by D8's rule once the owner says
+   who levels which class (owner input 5).
+2. **The artifact can't carry eight classes.** P2 (per-pack loading) leaves other classes out of the site page, but the
+   claude.ai artifact can't fetch, so it inlines every class: at 84% of its byte budget with one class, it fails
+   before the fourth. Added to 0.7: decide (in its planning pass, with the owner) between an artifact that carries one
+   class chosen at build time and a raised budget with a reason.
+3. **0.7 lane C (sync server and UI) waits on the same owner decision as 0.6 P21** (sync.md §6 S1 hosting, S2 money);
+   it is asked now (owner input 4), so 0.7 isn't held by it.
+4. **The two-classes-per-minor risk stands** (Plan, "Risk, called out"); D8 (which class first) is still "decided
+   later" in DECISIONS. Gladiator stays the default (next-class research §5); owner input 5 asks once.
+5. 1.0 and 1.1 are unchanged; 1.1's reset and boss research can still run any time.
+
+Then 0.6:
+
+6. **Lane A was vague** ("Lv 1–10 tuning" has no acceptance). It becomes the #254 notes plus the old 0.7 P1–P3:
+   tuning is what P6, P12, P14, P15 and P16 do for the first ten levels; no separate item.
+7. **Lane A's visible work needs one drawing first** (S1), and #254 note 1 needs an owner choice (hidden vs faded), so
+   S1 asks it with both drawn.
+8. **Lane B needs the web** (Gladiator data from Metabot) and a bot build has none: a cloud research session
+   (`research-gladiator`) writes the files P4 reads, started when this plan merges.
+9. **Lane C is conditional:** P20 (removed characters stay removed through `merge()`, the 0.5 P17 finding) needs no
+   host and runs now; P21 (client) waits for the hosting decision and moves to 0.7 if it isn't recorded by the time P5
+   merges.
+10. **#254 note 3 changes a CLAUDE.md rule**, so P19 is queued only on Isaac's typed OK.
+11. **The private screens (`daevacompanion-private`) couldn't be read from this run** (no credentials). The keys they
+    were mined for are in [docs/research/2026-10-owner-unlocks.md](docs/research/2026-10-owner-unlocks.md) (Journal J,
+    Stats P, Skills K, Daevanion U, Legion L, Shop H, …); owner input 3 asks only what that table doesn't show, and the
+    coordinator, who can read the private repo, answers from the screens first if they show it.
+
+**Budget trend** (`npm run build`; elements and `update()` not re-measured: no item in this pass changes the page):
+
+| | 0.2.6 / 0.3.0 | 0.4.0 | 0.5.0 | Limit | Use |
+|---|---|---|---|---|---|
+| `dist/index.html` | 669,290 B | 705,008 B | 741,479 B | 870,000 B, blocking | 85% |
+| same, gzip -9 | 153,871 B | 164,936 B | 182,302 B | 200,000 B, blocking | **91%** |
+| `dist-artifact/index.html` | 790,763 B | 826,481 B | 863,343 B | 1,030,000 B, blocking | **84%** |
+| Inlined fonts (artifact) | 126.2 KB | 126.2 KB | 126.2 KB | 150 KB, blocking | **84%** |
+
+All three byte budgets are within 20% of their limits, gzip at 91% (+10.5% in 0.5 even after 0.5 P20's minification).
+**P1 is a performance item** and goes first in lane B: lane A adds text and markup, and P4 / P5 add a second class.
+Fonts unchanged; no 0.6 item adds one.
+
+#### Items (step 3)
+
+Appetite counts hand-written changed lines (data records count; regenerated fixtures and snapshots don't). Models
+follow #114's routing as the scorecard left it; stall limits are the scorecard's re-derived ones.
+
+| Item | Problem → result | Size | Owns (files) | Model | Stall | Lanes |
+|---|---|---|---|---|---|---|
+| [S1](docs/plans/0.6/S1-onboarding-mockup.md) | Lane A not drawn → mockup: welcome, mid-level join, locked cards hidden vs faded, key hints, terms | M (docs) | `docs/design/0.6-onboarding-mockup.md`, mockups | Sonnet | 41 | none |
+| [P1](docs/plans/0.6/P1-page-size-headroom.md) | gzip at 91% → size table, largest share cut, ≤ 170,000 B | S–M | `scripts/build.mjs`, `scripts/generated-data.mjs`, ARCHITECTURE §4 | Sonnet | 20 | none |
+| [P2](docs/plans/0.6/P2-per-pack-loading.md) | Every class in every page → per-class chunks, site loads the current class | M–L | `tools/gen/`, build scripts, `src/packs/aion2/load.js`, `src/sw.js`, fake pack, conformance | Opus | 80 | gen |
+| [P3](docs/plans/0.6/P3-shared-guide-split.md) | Shared guide text inside the Assassin pack → shared Asmodian guide pack | M–L | `data/packs/aion2/asmodian/guide/**`, Assassin guide, `checks.mjs`, `tools/gen/` | Opus | 80 | gen |
+| [P4](docs/plans/0.6/P4-gladiator-class-data.md) | No Gladiator pack → class data from the research files, not offered yet | L | `data/packs/aion2/classes/gladiator/**`, `sources.json` | Opus | 120 | gen |
+| [P5](docs/plans/0.6/P5-gladiator-guide.md) | Gladiator has no advice → guide pack, icons, golden states, in the picker | L | `data/packs/aion2/asmodian/gladiator/**`, pack `classes`, icons, golden | Opus | 120 | gen, golden |
+| [P6](docs/plans/0.6/P6-step-text-pronouns.md) | "investigate it with Maard" (#254 n11) → 4 texts fixed, pronoun check | S | `story-quests.json` (4 texts), `checks.mjs`, golden | Opus | 16 | golden |
+| [P7](docs/plans/0.6/P7-character-sort.md) | Characters in save order (#254 n10) → sorted by name | S | `src/cards/characters.js`, `tests/save.js` | Sonnet | 16 | none |
+| [P8](docs/plans/0.6/P8-skills-respec.md) | No Respec on Skills (#254 n8) → button like Daevanion's | S | the pack's `skills.*` | Sonnet | 16 | none |
+| [P9](docs/plans/0.6/P9-daevanion-skill-bonus.md) | No node bonus shown (#254 n9) → green (+x) | M | the pack's `skills.*`, node-bonus helper | Opus | 80 | none |
+| [P10](docs/plans/0.6/P10-build-step-icons.md) | Play steps are names only (#254 n5) → icons | S | the pack's `build.*` | Sonnet | 16 | none |
+| [P11](docs/plans/0.6/P11-popout-rounded.md) | Square pop-out (#254 n4) → app styling inside; frame is the browser's | S | `src/cards/nextup.js` pop-out area | Sonnet | 16 | none |
+| [P12](docs/plans/0.6/P12-auto-bind-mentions.md) | Binds that happen at an objective still mentioned (#254 n6) → trimmed within 25 m | M | the pack's `travel.js`, `nextup.js`, `nextup-kinds.js`, golden | Opus | 80 | golden |
+| [P13](docs/plans/0.6/P13-story-quest-icon.md) | 📜 for story (#254 n7) → the game's yellow icon | S | `src/cards/nextup.js` icon map, icon file, `docs/ISSUES.md`, golden | Opus | 16 | golden |
+| [P14](docs/plans/0.6/P14-key-hints.md) | No "press K" (#254 n2) → `hotkey` on unlocks, hints | M | unlock schema and data, `nextup-kinds.js`, golden | Opus | 80 | golden |
+| [P15](docs/plans/0.6/P15-respec-walkthrough.md) | No refund / respec steps (#254 n2) → rows from the owner's answer | S–M | guide records, `unlocks.json`, golden | Opus | 20 | golden |
+| [P16](docs/plans/0.6/P16-cards-on-unlock.md) | Every card from Lv 1 (#254 n1) → cards open with their unlock | M–L | `src/core/cards.js`, `src/main.js`, pack card index, golden | Opus | 80 | main.js, golden |
+| [P17](docs/plans/0.6/P17-welcome-join-mid-level.md) | No welcome, no mid-level start → both, per S1 | M–L | `src/cards/welcome.*`, `src/main.js`, characters card | Opus | 80 | main.js |
+| [P18](docs/plans/0.6/P18-terms-explained.md) | Game words unexplained → `terms.json`, explanations on cards | M | `terms.json`, schema, `text.js`, golden, `tests/a11y.js` | Opus | 80 | golden, a11y |
+| [P19](docs/plans/0.6/P19-auto-level-up.md) | Tick + Level up for a full-level quest (#254 n3) → tick levels up (verified quests only) | S–M | quest schema, one record, `journey.js`, `state.js`, golden, CLAUDE.md line | Opus | 20 | golden |
+| [P20](docs/plans/0.6/P20-removed-characters-merge.md) | A removed character returns through `merge()` → tombstones | M | `src/core/sync.js`, `chars.js`, `state.js`, characters card | Opus | 80 | none |
+| [P21](docs/plans/0.6/P21-sync-client.md) | No sync client → encrypted push / pull / merge on a fake host | L | `src/core/sync-client.js`, host adapter, build exclusion, PRIVACY.md | Opus | 120 | none |
+| [R](docs/plans/0.6/R-release-0.6.0.md) | Release 0.6.0 | S | `package.json`, `package-lock.json`, `CHANGELOG.md` | Sonnet | 16 | release, alone |
+
+No-gos for the whole minor: no save break (0.6 adds fields inside `companion-save-v5` only); no AION 2 term in the
+engine, engine cards or shell (term scan); no game data without its source (P4, P5 from the research files; keys,
+refund and respec from the owner); no `.github/workflows/` edits; no change to the artifact rules; no new game art beyond
+the standing icon OK and the owner's OK for the story-quest icon (#254 note 7).
+
+#### Waves and lane map (step 4)
+
+At most five builds at a time (kickoff.yml). Serial lanes: **gen** P2 → P3 → P4 → P5 (lane B's critical path, gated by
+`research-gladiator` and `owner-check-gladiator`); **golden** P6 → P12 → P13 → P14 → P16 → P15 → P18 → P19 → P5 (lane
+A's critical path, gated by `owner-ok-S1`); **main.js** P16 → P17; **a11y** P18. Shared files outside the lanes are
+ordered by After lines: build scripts P1 → P2 → P21; the Skills card P8 → P9 → P14; `src/cards/nextup.js` P11 → P13;
+the characters card P7 → P20 and P7 → P17. Critical path: P1 → P2 → P3 → P4 → P5 → R, so P1 and the
+`research-gladiator` session start first.
+
+| Wave | Builds | After |
+|---|---|---|
+| 1 | S1 (none) ∥ P1 (none) ∥ P6 (golden) ∥ P7 (none) ∥ P8 (none) | — |
+| 2 | P2 (gen) ∥ P12 (golden) ∥ P10 (none) ∥ P11 (none) ∥ P20 (none) | P2: P1 · P12: P6 · P20: P7 |
+| 3 | P3 (gen) ∥ P13 (golden) ∥ P9 (none) ∥ P21 (none) | P3: P2 · P13: P11, P12 + `research-story-icon` · P9: P8 · P21: P2, P20 + `owner-ok-sync-hosting` |
+| 4 | P4 (gen) ∥ P14 (golden) | P4: P3 + `research-gladiator` · P14: S1, P9, P13 + `owner-ok-S1` |
+| 5 | P16 (main.js, golden) | P14 + `owner-ok-S1` |
+| 6 | P15 (golden) ∥ P17 (main.js) | P15: P14 + `owner-keys` (after P16 frees golden) · P17: P7, P16 |
+| 7 | P18 (golden, a11y) | P15 |
+| 8 | P19 (golden) | P18 + `owner-ok-autolevel` |
+| 9 | P5 (gen, golden) | P4 + `owner-check-gladiator` |
+| 10 | R, alone | everything above, or moved out here |
+
+Checked: no two items in one wave own the same file (P4 and P14 touch different schema files; P13 and P11 are in
+different waves). Waves are the expected order, not gates. An item whose owner token isn't recorded when its wave
+comes is skipped, not waited on; if it is still missing when everything else has merged, it moves to 0.7 in this file
+and R ships without it.
+
+#### Owner input (step 5)
+
+To-dos the hour this plan merges (scorecard K4), each with its recommendation and the exact words to type (`copy`):
+
+1. **S1 mockup** (`owner-ok-S1`, blocks P14, P16, P17, P18; red once S1 merges): approve the drawings and choose hidden
+   vs faded for locked cards (#254 note 1). Recommended: faded with "Opens at …" on desktop and hidden on phones, if
+   S1's drawing reads well; otherwise faded everywhere.
+2. **Auto level-up** (`owner-ok-autolevel`, blocks P19 only, not red): it changes CLAUDE.md's "Level changes only via
+   Level up / − / + / slider". Recommended: yes, for quests with a verified 100% EXP reward only (today one: A Village
+   in the Fog), undoable.
+3. **In-game keys and steps** (`owner-keys`, blocks P15 only, not red): the keys the owner-unlocks table doesn't show
+   (Stigmas, Dungeons, Strongholds), where the skill reset / refund button is and what the tutorial-skill refund looks
+   like, how to respec the Daevanion board and stigmas, where the auto-use slots are set. A screen of each is enough.
+4. **Sync hosting and money** (`owner-ok-sync-hosting`, docs/design/sync.md §6 S1 + S2; blocks P21 and 0.7's server,
+   not red): recommended Cloudflare Workers + R2 in the existing account, free tier with a usage alert.
+5. **Gladiator spot check** (`owner-check-gladiator`, blocks P5, not red until P4 merges): who will level which class
+   (D8), and on a Gladiator: the stigma max level (Metabot FAQ says 25, Assassin is 40) and three skill learn levels.
+
+Not blockers (the recommendation applies unless the owner says otherwise):
+
+- **#254 note 5:** P10 puts icons on the play steps; an explanation of auto-use waits for owner input 3's screen of the
+  auto-use slots.
+- **#254 note 11, full objective audit:** owner spot checks when convenient; P6's check catches the pronoun class.
+- **#254 note 4:** after P11 the owner checks the pop-out on his machine; the frame stays the browser's.
+
+Decisions this pass recorded (for the tracker, each as a done To-do with its remediation):
+
+- **User remediated:** bind radius stays 25 m (#254, 7:55 PM ET; note 6 means objective binds only); the story-quest
+  icon may be added (#254 note 7, still needs an approved source).
+- **Claude remediated:** Gladiator stays the 0.6 class (D8 default); lane C splits into P20 now and P21 on the hosting
+  OK; "Lv 1–10 tuning" folds into P6 / P12 / P14–P16; note 6 trimmed by derived distance, data text kept; note 5 read as
+  the play steps; note 4's frame moved out; P1 scheduled from the 91% budget.
+
+#### #254 notes placed
+
+| Note | Placed as |
+|---|---|
+| 1 Cards only when they unlock | P16, choice in S1 (owner input 1) |
+| 2 Keys, tutorial refund, respec walk-through | P14 (known keys), P15 (refund and respec, owner input 3) |
+| 3 Auto level-up on 100% EXP quests | P19, behind `owner-ok-autolevel` (owner input 2) |
+| 4 Rounded pop-out | P11 (inside); the window frame moved out: the browser draws it |
+| 5 Icons in the rotation setup | P10 (play steps); auto-use explanation waits on owner input 3 |
+| 6 Kibelisk binds that happen on their own | P12, R = 25 m kept |
+| 7 Yellow story-quest icon | P13, gated by `research-story-icon` |
+| 8 Respec on the Skills card | P8 |
+| 9 Green (+x) from Daevanion nodes | P9 |
+| 10 Character list by name | P7 |
+| 11 Wrong step subtext, objective audit | P6; the full audit moved out to owner spot checks |
+
+#### Alongside (not #114 items)
+
+- **Gladiator research** (gates P4; token `research-gladiator`): a cloud research session reads Metabot's Gladiator
+  class, skill, stigma and Daevanion pages under the fetching rules and writes
+  `docs/research/2026-10-gladiator-pack.md` plus CSVs under `data/research/`, each row with its page URL. The coordinator
+  starts it the day this plan merges.
+- **Story-quest icon source** (gates P13; token `research-story-icon`): the same kind of session looks for the game's
+  story-quest icon on Metabot and records page, file URL and date in docs/ISSUES.md; if none, the owner supplies the
+  file.
+- **Research packs for 0.7's two classes** (audit 1), after owner input 5 names them.
+
 ### 0.7, 0.8, 0.9 — two classes each
 
 Each minor: two class packs side by side (lanes A and B; order by the D8 rule: a class someone will level to 45, then
 data coverage, then overlap with Assassin), plus one other module in lane C: sync server and UI (old Y2, Y3) in 0.7, the
-1.0 audit's fixes in 0.8–0.9 as found.
+1.0 audit's fixes in 0.8–0.9 as found. 0.7's planning pass also settles how the artifact carries several classes (0.6
+audit 2) and takes P21 if 0.6 moved it out.
 
 ### 1.0
 
@@ -497,6 +681,10 @@ Kept as ideas; each comes back through a planning pass when its time comes.
   using NCSoft's game name and icons, Apple developer account (~$99 / year), Metabot's non-commercial condition if the
   app is ever paid.
 - **Lv 45 weekly/daily reset checklist**: folded into 1.1.
+- **Rounded pop-out window frame** (#254 note 4, 0.6 pass): the Document Picture-in-Picture frame is drawn by the
+  browser, so the page can't round it (inferred; P11 records the test). Back only if a browser API allows it.
+- **Full story-objective wording audit** (#254 note 11, 0.6 pass): only the owner's screens show the in-game text, so
+  it runs as owner spot checks reported as data issues; 0.6 P6 fixes the pronoun cases and adds the check.
 - **Item level as an input** (gates Krao Cave 200, Ascension Trial 1,000 / 1,500), **post-Altgard (Reshanta / Abyss)**,
   **Elyos** (a faction pack after 1.0).
 - **Preview deploys** with a move to Cloudflare Pages; **release tooling** (release-please / changesets) if other
