@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>0.6 S1 onboarding mockup (static; layout only, all game text is placeholder)</title>
+<link rel="stylesheet" href="0.6-onboarding.css">
+</head><body>
+<!-- Static mockup, not the product. Names, numbers and distances are placeholders, not game data. The only real facts are
+     the keys and unlock conditions from docs/research/2026-10-owner-unlocks.md: K Skills (Lv 4), U Daevanion ("Urgent
+     Pursuit"), Stigmas Lv 22 (no key shown), and the "not affiliated" line. -->
+
+<!-- ============ PHONES, 390 px ============ -->
+<div class="frames" id="phones">
+
+<div class="fr"><p class="cap">W1 · 390 · Basic · first-run welcome (P17): shown once, above Next up</p><div class="ph">
+<section class="card"><h1>Placeholder welcome title</h1>
+<p>Placeholder line: what this guide is, in one sentence.</p>
+<p>Placeholder line: tick a step when you finish it in game.</p>
+<p>Placeholder line: press Level up when you level up in game.</p>
+<div class="act wide"><span class="btn primary">Start at Lv 1</span></div>
+<div class="act wide"><span class="btn">I’m already Lv …</span></div>
+<p class="legal">Unofficial guide. Not affiliated with or endorsed by NCSoft.</p></section>
+<section class="card"><div class="first-card"><div class="row"><span class="num">1</span><div><h3>Placeholder first quest</h3><p>Placeholder chapter · step 1 of 5</p></div></div><div class="act"><span class="btn primary">Placeholder action</span></div></div></section>
+</div></div>
+
+<div class="fr"><p class="cap">W2 · 390 · Basic · “I’m already Lv N”: one number, one optional pick, a plain list of what happens</p><div class="ph">
+<section class="card"><h1>Your level</h1>
+<div class="field"><label>Level</label><div class="slider"><span class="track"><i></i></span><output>Lv 20</output></div></div>
+<div class="field"><label>Story quest you’re on</label><div class="select"><span>Placeholder story quest (Lv 20)</span><span aria-hidden="true">▾</span></div></div>
+<p>Pre-filled with the first story quest at that level; change it if you’re further along.</p>
+<ul class="ticked"><li>Level set to 20</li><li>Story quests before the one above marked done</li><li class="no">Regional quests, dungeons, skills, Daevanion and stigmas stay unticked; Next up lists what you may have missed</li></ul>
+<div class="act wide"><span class="btn primary">Start at Lv 20</span></div>
+<div class="act wide"><span class="btn quiet">Back</span></div></section>
+</div></div>
+
+<div class="fr"><p class="cap">W3 · 390 · Advanced · after joining at Lv 20: Next up opens on the catch-up list (0.5 P13 ranking)</p><div class="ph">
+<section class="card"><div class="hd"><h2>Next up</h2><span class="sp"></span><span class="pager"><span class="btn quiet" aria-label="Previous Next up card">‹</span>1 of 6<span class="btn quiet" aria-label="Next Next up card">›</span></span><span class="i" aria-label="Info">i</span></div>
+<div class="band first">Now</div><div class="first-card"><div class="row"><span class="num">1</span><div><h3>Spend skill points: placeholder skill</h3><p>3 points affordable</p></div></div><div class="hintline">Open Skills: press <span class="key">K</span></div><div class="act"><span class="btn primary">Placeholder action</span></div></div>
+<div class="band">Missed · Lv 15–19</div><div class="cmp nb"><span class="num sm">2</span><div><b>Placeholder missed step A</b><small>Placeholder milestone</small></div></div><div class="cmp"><span class="num sm">3</span><div><b>Placeholder missed step B</b><small>Placeholder milestone</small></div></div></section>
+</div></div>
+
+</div>
+
+<div class="frames" id="locked-phones">
+
+<div class="fr"><p class="cap">L1a · 390 · Basic · Lv 1 · HIDDEN: only what the game has opened</p><div class="ph">
+<section class="card"><div class="first-card"><div class="row"><span class="num">1</span><div><h3>Placeholder first quest</h3><p>Placeholder chapter · step 1 of 5</p></div></div><div class="act"><span class="btn primary">Placeholder action</span></div></div></section>
+</div></div>
+
+<div class="fr"><p class="cap">L1b · 390 · Basic · Lv 1 · FADED: a dashed shell, the unlock line on top, no content</p><div class="ph">
+<section class="card"><div class="first-card"><div class="row"><span class="num">1</span><div><h3>Placeholder first quest</h3><p>Placeholder chapter · step 1 of 5</p></div></div><div class="act"><span class="btn primary">Placeholder action</span></div></div></section>
+<section class="card fade" aria-label="Skills, opens at Lv 4"><div class="lockline">Opens at Lv 4 · <span class="key">K</span></div><div class="hd" style="margin-top:var(--space-8);margin-bottom:0"><h2>Skills</h2></div><div class="bar m"></div></section>
+<section class="card fade" aria-label="Daevanion, opens after Urgent Pursuit"><div class="lockline">Opens after “Urgent Pursuit” · <span class="key">U</span></div><div class="hd" style="margin-top:var(--space-8);margin-bottom:0"><h2>Daevanion</h2></div><div class="bar m"></div></section>
+</div></div>
+
+<div class="fr"><p class="cap">L2a · 390 · Advanced · Lv 1 · HIDDEN</p><div class="ph">
+<section class="card"><div class="hd"><h2>Next up</h2><span class="sp"></span><span class="pager"><span class="btn quiet" aria-label="Previous Next up card">‹</span>1 of 3<span class="btn quiet" aria-label="Next Next up card">›</span></span><span class="i" aria-label="Info">i</span></div><div class="first-card"><div class="row"><span class="num">1</span><div><h3>Placeholder first quest</h3><p>Placeholder chapter · step 1 of 5</p></div></div><div class="act"><span class="btn primary">Placeholder action</span></div></div><div class="cmp nb"><span class="num sm">2</span><div><b>Placeholder regional quest</b><small>Placeholder zone · 2 open</small></div></div></section>
+</div></div>
+
+<div class="fr"><p class="cap">L2b · 390 · Advanced · Lv 1 · FADED: three shells below Next up, each one line tall plus the unlock line</p><div class="ph">
+<section class="card"><div class="hd"><h2>Next up</h2><span class="sp"></span><span class="pager"><span class="btn quiet" aria-label="Previous Next up card">‹</span>1 of 3<span class="btn quiet" aria-label="Next Next up card">›</span></span><span class="i" aria-label="Info">i</span></div><div class="first-card"><div class="row"><span class="num">1</span><div><h3>Placeholder first quest</h3><p>Placeholder chapter · step 1 of 5</p></div></div><div class="act"><span class="btn primary">Placeholder action</span></div></div><div class="cmp nb"><span class="num sm">2</span><div><b>Placeholder regional quest</b><small>Placeholder zone · 2 open</small></div></div></section>
+<section class="card fade" aria-label="Skills, opens at Lv 4"><div class="lockline">Opens at Lv 4 · <span class="key">K</span></div><div class="hd" style="margin-top:var(--space-8);margin-bottom:0"><h2>Skills</h2></div><div class="bar m"></div></section>
+<section class="card fade" aria-label="Daevanion, opens after Urgent Pursuit"><div class="lockline">Opens after “Urgent Pursuit” · <span class="key">U</span></div><div class="hd" style="margin-top:var(--space-8);margin-bottom:0"><h2>Daevanion</h2></div><div class="bar m"></div></section>
+<section class="card fade" aria-label="Stigmas, opens at Lv 22"><div class="lockline">Opens at Lv 22</div><div class="hd" style="margin-top:var(--space-8);margin-bottom:0"><h2>Stigmas</h2></div><div class="bar m"></div></section>
+</div></div>
+
+</div>
+
+<div class="frames" id="hint-phones">
+
+<div class="fr"><p class="cap">K1 · 390 · Basic · Lv 4 reached: the key on the Next up row, and the card it opens</p><div class="ph">
+<section class="card"><div class="first-card"><div class="row"><span class="num">1</span><div><h3>Spend skill points: placeholder skill</h3><p>1 point affordable</p></div></div><div class="hintline">Open Skills: press <span class="key">K</span></div><div class="act"><span class="btn primary">Placeholder action</span></div></div><div class="cmp nb"><span class="num sm">2</span><div><b>Placeholder regional quest</b><small>Placeholder zone · 2 open</small></div></div></section>
+<section class="card opened"><div class="hd"><h2>Skills</h2><span class="new">New</span><span class="sp"></span><span class="key" aria-label="Key K">K</span></div><p>Placeholder skill rows go here, as today.</p><div class="bar m"></div><div class="bar s"></div></section>
+</div></div>
+
+<div class="fr"><p class="cap">T1 · 390 · Advanced · term explanation: first use on a card is marked, tap opens a note under the line</p><div class="ph">
+<section class="card opened"><div class="hd"><h2>Daevanion</h2><span class="new">New</span><span class="sp"></span><span class="key" aria-label="Key U">U</span></div>
+<p>Spend points on your <span class="term" tabindex="0" role="button" aria-expanded="true" aria-describedby="t1">placeholder term</span> to strengthen a skill.</p>
+<div class="pop" id="t1" role="note">Placeholder explanation, one sentence, in our own words, at most 140 characters.<small>Esc or tap again closes · one open at a time</small></div>
+<div class="bar m"></div><div class="bar s"></div></section>
+</div></div>
+
+</div>
+
+<!-- ============ DESKTOP, 1500 px ============ -->
+<div class="frames" id="desktop">
+
+<div class="fr dk-fr"><p class="cap">DL1a · 1500 · Basic · Lv 1 · HIDDEN (Basic keeps essentials only)</p><div class="dk"><div class="grid3">
+<section class="card"><div class="first-card"><div class="row"><span class="num">1</span><div><h3>Placeholder first quest</h3><p>Placeholder chapter · step 1 of 5</p></div></div><div class="act"><span class="btn primary">Placeholder action</span></div></div></section>
+<div class="ghost">Journey (placeholder tile)</div></div></div></div>
+
+<div class="fr dk-fr"><p class="cap">DL1b · 1500 · Basic · Lv 1 · FADED</p><div class="dk"><div class="grid3">
+<section class="card"><div class="first-card"><div class="row"><span class="num">1</span><div><h3>Placeholder first quest</h3><p>Placeholder chapter · step 1 of 5</p></div></div><div class="act"><span class="btn primary">Placeholder action</span></div></div></section>
+<div class="ghost">Journey (placeholder tile)</div>
+<section class="card fade" aria-label="Skills, opens at Lv 4"><div class="lockline">Opens at Lv 4 · <span class="key">K</span></div><div class="hd" style="margin-top:var(--space-8)"><h2>Skills</h2></div><div class="bar m"></div><div class="bar s"></div></section></div></div></div>
+
+<div class="fr dk-fr"><p class="cap">DL2a · 1500 · Advanced · Lv 1 · HIDDEN: the grid has only the opened tiles; a card appears when it opens</p><div class="dk"><div class="grid3">
+<section class="card"><div class="hd"><h2>Next up</h2><span class="sp"></span><span class="pager"><span class="btn quiet" aria-label="Previous Next up card">‹</span>1 of 3<span class="btn quiet" aria-label="Next Next up card">›</span></span><span class="i" aria-label="Info">i</span></div><div class="first-card"><div class="row"><span class="num">1</span><div><h3>Placeholder first quest</h3><p>Placeholder chapter · step 1 of 5</p></div></div><div class="act"><span class="btn primary">Placeholder action</span></div></div><div class="cmp nb"><span class="num sm">2</span><div><b>Placeholder regional quest</b><small>Placeholder zone · 2 open</small></div></div></section>
+<div class="ghost">Journey (placeholder tile)</div><div class="ghost">Regional quests (placeholder tile)</div></div></div></div>
+
+<div class="fr dk-fr"><p class="cap">DL2b · 1500 · Advanced · Lv 1 · FADED: the grid keeps its shape, nothing moves when a card opens</p><div class="dk"><div class="grid3">
+<section class="card"><div class="hd"><h2>Next up</h2><span class="sp"></span><span class="pager"><span class="btn quiet" aria-label="Previous Next up card">‹</span>1 of 3<span class="btn quiet" aria-label="Next Next up card">›</span></span><span class="i" aria-label="Info">i</span></div><div class="first-card"><div class="row"><span class="num">1</span><div><h3>Placeholder first quest</h3><p>Placeholder chapter · step 1 of 5</p></div></div><div class="act"><span class="btn primary">Placeholder action</span></div></div><div class="cmp nb"><span class="num sm">2</span><div><b>Placeholder regional quest</b><small>Placeholder zone · 2 open</small></div></div></section>
+<div class="ghost">Journey (placeholder tile)</div><div class="ghost">Regional quests (placeholder tile)</div>
+<section class="card fade" aria-label="Skills, opens at Lv 4"><div class="lockline">Opens at Lv 4 · <span class="key">K</span></div><div class="hd" style="margin-top:var(--space-8)"><h2>Skills</h2></div><div class="bar m"></div><div class="bar s"></div></section>
+<section class="card fade" aria-label="Daevanion, opens after Urgent Pursuit"><div class="lockline">Opens after “Urgent Pursuit” · <span class="key">U</span></div><div class="hd" style="margin-top:var(--space-8)"><h2>Daevanion</h2></div><div class="bar m"></div><div class="bar s"></div></section>
+<section class="card fade" aria-label="Stigmas, opens at Lv 22"><div class="lockline">Opens at Lv 22</div><div class="hd" style="margin-top:var(--space-8)"><h2>Stigmas</h2></div><div class="bar m"></div><div class="bar s"></div></section></div></div></div>
+
+<div class="fr dk-fr"><p class="cap">DK1 · 1500 · Advanced · Lv 4 reached: key hint on the Next up row and on the card it opens (faded card becomes live, “New” until first viewed)</p><div class="dk"><div class="grid3">
+<section class="card"><div class="hd"><h2>Next up</h2><span class="sp"></span><span class="pager"><span class="btn quiet" aria-label="Previous Next up card">‹</span>1 of 3<span class="btn quiet" aria-label="Next Next up card">›</span></span><span class="i" aria-label="Info">i</span></div><div class="first-card"><div class="row"><span class="num">1</span><div><h3>Spend skill points: placeholder skill</h3><p>1 point affordable</p></div></div><div class="hintline">Open Skills: press <span class="key">K</span></div><div class="act"><span class="btn primary">Placeholder action</span></div></div><div class="cmp nb"><span class="num sm">2</span><div><b>Placeholder regional quest</b><small>Placeholder zone · 2 open</small></div></div></section>
+<div class="ghost">Journey (placeholder tile)</div>
+<section class="card opened"><div class="hd"><h2>Skills</h2><span class="new">New</span><span class="sp"></span><span class="key" aria-label="Key K">K</span></div><p>Placeholder skill rows go here, as today.</p><div class="bar m"></div><div class="bar s"></div></section>
+<section class="card fade" aria-label="Daevanion, opens after Urgent Pursuit"><div class="lockline">Opens after “Urgent Pursuit” · <span class="key">U</span></div><div class="hd" style="margin-top:var(--space-8)"><h2>Daevanion</h2></div><div class="bar m"></div><div class="bar s"></div></section>
+<section class="card fade" aria-label="Stigmas, opens at Lv 22"><div class="lockline">Opens at Lv 22</div><div class="hd" style="margin-top:var(--space-8)"><h2>Stigmas</h2></div><div class="bar m"></div><div class="bar s"></div></section></div></div></div>
+
+<div class="fr dk-fr"><p class="cap">DT1 · 1500 · Basic · term explanation on hover or focus (and click); same markup as T1</p><div class="dk"><div class="grid3">
+<section class="card opened"><div class="hd"><h2>Daevanion</h2><span class="sp"></span><span class="key" aria-label="Key U">U</span></div>
+<p>Spend points on your <span class="term" tabindex="0" role="button" aria-expanded="true" aria-describedby="t2">placeholder term</span> to strengthen a skill.</p>
+<div class="pop" id="t2" role="note">Placeholder explanation, one sentence, in our own words, at most 140 characters.</div>
+<div class="bar m"></div><div class="bar s"></div></section>
+<div class="ghost">Journey (placeholder tile)</div><div class="ghost">Next up (placeholder tile)</div></div></div></div>
+
+</div>
+</body></html>
