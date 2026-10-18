@@ -254,7 +254,7 @@ function placeLocks(ctx) {
     sh.hidden = !(lock && faded);
     if (!lock || !faded) return;
     sh.setAttribute("aria-label", lock.label);
-    const key = lock.key ? ` · <kbd class="keychip">${lock.key}</kbd>` : "";
+    const key = lock.key ? `&nbsp;·&nbsp;<kbd class="keychip">${lock.key}</kbd>` : "";
     sh.innerHTML = `<div aria-hidden="true"><p class="lockline">${lock.text}${key}</p><h2>${x.name}</h2><div class="lockbar"></div></div>`;
   });
 }
