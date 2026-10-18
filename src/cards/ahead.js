@@ -19,7 +19,9 @@ function renderAhead() {
     const qi = questIdx(char(state));
     if (qi >= 0) { const ui = QUESTS.slice(qi + 1).findIndex(([, n]) => STORY_UNLOCKS[n]);
       if (ui >= 0) { const uq = QUESTS[qi + 1 + ui], gid = UNLOCK_GATE[uq[1]];
-        rows.push(`<a class="ah-row"${gid ? ` href="#${gid}" data-gogate="${gid}"` : ""}><span class="ah-lv unl">Lv ${uq[0]}</span><span class="ah-main"><b>🔓 ${STORY_UNLOCKS[uq[1]]}</b><small>${ui === 0 ? "your next quest" : pl(ui + 1, "story quest")} · "${uq[1]}"</small></span></a>`); } }
+        /* in level order with the unlock rows (#334): a Lv 2 story unlock goes above a Lv 3 one; ties keep it after them */
+        const at = lvls.filter(L => L <= uq[0]).length;
+        rows.splice(at, 0, `<a class="ah-row"${gid ? ` href="#${gid}" data-gogate="${gid}"` : ""}><span class="ah-lv unl">Lv ${uq[0]}</span><span class="ah-main"><b>🔓 ${STORY_UNLOCKS[uq[1]]}</b><small>${ui === 0 ? "your next quest" : pl(ui + 1, "story quest")} · "${uq[1]}"</small></span></a>`); } }
     /* At the cap there's nothing above you: the pack's row says so instead of an empty box (0.4 P5a, nowRenderers). */
     const capRow = activePack().nowRenderers["ahead.cap"], cap = capRow ? capRow(lv, { state, c: char(state), lv }) : "";
     if (cap) rows.push(cap);

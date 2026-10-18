@@ -68,7 +68,7 @@ function storyView(a) {
   const where = R["story.where"] ? R["story.where"](a, ctx) : "";
   /* a row of the pack's under the text, above the action (0.5 P15: the "Bind X" row) */
   const row = R["story.row"] ? R["story.row"](a, ctx) : "";
-  return { story: true, ico: "📜", t: `Story: <b>${a.quest}</b>`, sub: a.gated ? gatedSub : `${a.done}/${a.total} objectives${where ? ` · ${where}` : ""}${a.nq ? ` · then ${a.nq[1]}` : ""}`, btn: "Turned in", act, tag, quest: a.objectives, row };
+  return { story: true, ico: "📜", t: `Story: <b>${a.quest}</b>`, sub: a.gated ? gatedSub : `<span class="ns-objn">${a.done}/${a.total}</span> objectives${where ? ` · ${where}` : ""}${a.nq ? ` · then ${a.nq[1]}` : ""}`, btn: "Turned in", act, tag, quest: a.objectives, row };
 }
 /* Phones (<= 600 px, 0.5 P3; docs/design/phone-layout.md 3.4): no nested scroll stack. The featured card is full width
    with its action(s) under the text, the others are compact rows (tile, title, one line), and in Advanced a "1 of N"
@@ -160,6 +160,12 @@ function nsObjHTML() {
   /* First three open objectives; the rest wait their turn (all of them are in the Journey card). */
   const cap = pipWin ? 2 : 3, more = open.length - cap; /* the pop-out window is short */
   return open.length ? `<ul class="ns-obj">${open.slice(0, cap).map(([, i]) => { const [a, b] = objPartsOf(char(state).quest, i); const sl = subListHTML(i, "data-nssub"); return `<li class="${sl ? "has-sub" : ""}"><label><input type="checkbox" data-nsobj="${i}"><span><b>${a}</b>${b && !sl ? `<small>${b}</small>` : ""}</span></label>${sl}</li>`; }).join("")}${more > 0 ? `<li class="ns-obj-more">+${more} more after these</li>` : ""}</ul>` : "";
+}
+/* The story card's "done/total objectives" moves on the tick itself (#334): the card re-renders only after the ticked
+   row has faded out, so until then the count is set in place (counted as rankNext counts it, src/core/nextup.js). */
+function nsObjCount() {
+  const list = QUEST_STEPS[char(state).quest] || [], done = (char(state).qsteps || {})[char(state).quest] || [], vis = objIdx(list);
+  nowEl.querySelectorAll(".ns-objn").forEach(e => { e.textContent = `${vis.filter(i => done.includes(i)).length}/${vis.length}`; });
 }
 /* Pop out: Next up in an always-on-top mini window (Document Picture-in-Picture) to keep over the game. The live
    node moves there (its listeners go with it); a one-line placeholder stays in the page until it comes back. */
@@ -268,14 +274,14 @@ function nextUpMount(el) {
   });
   nowEl.addEventListener("change", e => {
     const sq = e.target.dataset && e.target.dataset.nssub, st = (f, t) => nsWin().setTimeout(f, t);
-    if (sq != null) { const [si, sj] = sq.split(":").map(Number); if (e.target.checked) completeBefore(si, nowEl, "data-nsobj"); const all = setSub(si, sj, e.target.checked); e.target.closest("li").classList.toggle("on", e.target.checked);
+    if (sq != null) { const [si, sj] = sq.split(":").map(Number); if (e.target.checked) completeBefore(si, nowEl, "data-nsobj"); const all = setSub(si, sj, e.target.checked); e.target.closest("li").classList.toggle("on", e.target.checked); nsObjCount();
       if (all) { const li = e.target.closest("li.has-sub"); li.classList.add("on"); st(() => li.classList.add("leaving"), 550); st(() => renderQuestSubs(), 1150); }
       else { const jl = document.querySelector(`#questSubs input[data-qsub="${sq}"]`); if (jl) jl.checked = e.target.checked; }
       return; }
     const i = e.target.dataset && e.target.dataset.nsobj; if (i == null) return;
     completeBefore(+i, nowEl, "data-nsobj");
     setObj(+i, true);
-    char(state).qsteps = char(state).qsteps || {}; const cur = new Set(char(state).qsteps[char(state).quest] || []); cur.add(+i); char(state).qsteps[char(state).quest] = [...cur]; save();
+    char(state).qsteps = char(state).qsteps || {}; const cur = new Set(char(state).qsteps[char(state).quest] || []); cur.add(+i); char(state).qsteps[char(state).quest] = [...cur]; save(); nsObjCount();
     const li = e.target.closest("li"); li.classList.add("on");
     st(() => li.classList.add("leaving"), 550);
     st(() => renderQuestSubs(), 1150);

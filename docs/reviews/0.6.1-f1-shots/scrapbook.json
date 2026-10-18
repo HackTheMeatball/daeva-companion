@@ -1,0 +1,6 @@
+[
+  { "case": "story-count", "kind": "before-after", "title": "Story objectives count on the tick",
+    "caption": "Ticking an objective in the Next up story card now moves its count (0/2 to 1/2) right away, not only after the row fades." },
+  { "case": "ahead", "kind": "before-after", "title": "Ahead in level order",
+    "caption": "At Lv 1 the Journey card's Ahead list reads Lv 2, Lv 2, Lv 3: the Shop and Closet unlock sits with the other Lv 2 row." }
+]
