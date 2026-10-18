@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/classes.schema.json",
+  "schemaVersion": 2,
+  "collection": "classes",
+  "class": "gladiator",
+  "records": [
+    {
+      "id": "class:gladiator",
+      "class": "gladiator",
+      "name": "Gladiator",
+      "release": "hidden",
+      "defaultBuild": "build:gladiator:guide",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/gladiator",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "notes": [
+        "Hidden until 0.6 P5 adds its guide pack (data/packs/aion2/asmodian/gladiator/, which defines build:gladiator:guide) and lists it in the class picker."
+      ]
+    }
+  ]
+}

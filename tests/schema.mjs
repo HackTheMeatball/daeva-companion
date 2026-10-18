@@ -182,10 +182,24 @@ if (g) {
   packFails('a listed file that does not exist', r => rmSync(join(r, 'aion2/items.json')), /pack aion2: listed file items\.json does not exist/);
   packFails('a JSON file in a pack folder that is not listed', r => writeFileSync(join(r, 'aion2/asmodian/extra.json'), '{}'), /pack aion2\/asmodian: .*not listed in pack\.json: extra\.json/);
   packFails('an unknown parent', r => editManifest(r, guide, m => { m.parent = 'aion2/elyos'; }), /aion2\/asmodian\/assassin parent: unknown pack "aion2\/elyos"/);
-  packFails('an unknown pack in uses', r => editManifest(r, guide, m => { m.uses = ['aion2/classes/gladiator']; }), /uses: unknown pack "aion2\/classes\/gladiator"/);
+  packFails('an unknown pack in uses', r => editManifest(r, guide, m => { m.uses = ['aion2/classes/templar']; }), /uses: unknown pack "aion2\/classes\/templar"/);
   packFails('a cycle (the class uses the guide that uses it)', r => editManifest(r, 'aion2/classes/assassin', m => { m.uses = [guide]; }), /pack cycle: /);
   let gc = null; try { gc = generate({ root: packsCopy('copy', () => {}), pack: guide }); } catch (e) { ok('generator runs on a copied packs root', false, e.message); }
   if (gc) ok('--root / --pack: an unchanged copy of data/packs, pack ' + guide + ', compiles the same modules', gc.module === g.module && gc.gateModule === g.gateModule && gc.proposedModule === g.proposedModule);
+  /* 0.6 P4: the Gladiator class pack, which no guide pack uses yet, is checked and cited but compiles into no module */
+  const gl = (g.idle || []).find(x => x.pack === 'aion2/classes/gladiator'), glColl = f => gl ? gl.all.filter(x => x.file.endsWith('/' + f)).length : 0;
+  ok('idle class pack aion2/classes/gladiator: 1 class, 22 skills, 13 stigmas, 537 board nodes, checked by the generator', !!gl && glColl('class.json') === 1 && glColl('skills.json') === 22
+    && glColl('stigmas.json') === 13 && glColl('board-nodes.json') === 537 && g.report.checks.some(x => x.check.startsWith('aion2/classes/gladiator: board:triniel: 117 nodes')), gl && [glColl('skills.json'), glColl('board-nodes.json')]);
+  const glWords = /gladiator|Keen Strike|Lunge Stance|Zikel's Blessing|110113/i, glIn = [g.module, g.gateModule, g.proposedModule, g.placeModule].filter(m => glWords.test(m)).map(m => m.match(glWords)[0]);
+  ok('the Assassin bundle carries no Gladiator record (generated, gate, proposed and place modules)', !glIn.length, glIn);
+  const GL = 'aion2/classes/gladiator', editJson = (root, f, fn) => { const p = join(root, GL, f), d = JSON.parse(readFileSync(p, 'utf8')); fn(d); writeFileSync(p, JSON.stringify(d)); };
+  const idleFails = (label, mutate, re) => { let g1 = null; try { g1 = generate({ root: packsCopy(label, mutate) }); } catch (e) { ok('generator runs: ' + label, false, e.message); return; }
+    ok('generator rejects: ' + label, g1.failed.some(x => re.test(x.check)), g1.failed.map(x => x.check).slice(0, 5)); };
+  idleFails('idle-node-cost', r => editJson(r, 'board-nodes.json', d => { d.records.find(n => n.board === 'board:zikel' && n.type === 'stat').cost += 1; }), /gladiator: board:zikel: .*points \(134\)/);
+  idleFails('idle-node-skill', r => editJson(r, 'board-nodes.json', d => { d.records.find(n => n.type === 'skill').skill = 'skill:gladiator:bogus'; }), /skill node names its skill/);
+  idleFails('idle-released', r => editJson(r, 'class.json', d => { d.records[0].release = 'released'; }), /gladiator: one class record, hidden/);
+  idleFails('idle-spec-level', r => editJson(r, 'stigmas.json', d => { d.records[0].specialtyChoices[0].skillLv = 4; }), /stigma:gladiator:.*specialty levels \[5,10,15,20\]/);
+  packFails('an idle class file that fails its schema', r => editJson(r, 'skills.json', d => { delete d.records[0].levelGate; }), /schema validation failed:\n  .*aion2\/classes\/gladiator\/skills\.json: .*levelGate/);
   const c = g.constants;
   ok('compiled: story turn-in zones: Aldelle Village where the turn-in is in the village, else Ishalgen', c.QUEST_LOC['A Village in the Fog'].turninZone === 'Aldelle Village'
     && c.QUEST_LOC['Brigade Prison Compound Infiltration Operation'].turninZone === 'Aldelle Village' && c.QUEST_LOC['Isolated Lake'].turninZone === 'Ishalgen',
