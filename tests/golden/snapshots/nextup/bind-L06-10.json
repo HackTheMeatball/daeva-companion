@@ -4,7 +4,7 @@
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Story: Spread Your Wings","s":"0/3 objectives · then Signs of a Crash Landing","c":"primary \"Turned in\" story","o":["Awaken your Daeva power in the dream complete 'The One Who Perceives'","Share the outcome go to the Witch's Cabin (Kibelisk: Witch's Cabin)","Turn in Elvida, Witch's Cabin"]},
+    {"t":"Story: Spread Your Wings","s":"0/3 objectives · then Signs of a Crash Landing","c":"primary \"Turned in\" story","o":["Awaken your Daeva power in the dream complete 'The One Who Perceives'","Share the outcome go to the Witch's Cabin","Turn in Elvida, Witch's Cabin"]},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 2 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
     {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
@@ -24,7 +24,7 @@
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Story: Signs of a Crash Landing","s":"0/5 objectives · then Prison Compound Infiltration Plan","c":"primary \"Turned in\" story","o":["Go to Anturn Cliff go to Milred (Kibelisk: Witch's Cabin)","Search the airship at the top of Anturn Cliff ride the Updraft to the top (Kibelisk: Witch's Cabin)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+2 more after these"]},
+    {"t":"Story: Signs of a Crash Landing","s":"0/5 objectives · then Prison Compound Infiltration Plan","c":"primary \"Turned in\" story","o":["Go to Anturn Cliff go to Milred (Kibelisk: Witch's Cabin)","Search the airship at the top of Anturn Cliff ride the Updraft to the top (Kibelisk: Witch's Cabin)","Return to Aldelle Village go to Aldelle Village","+2 more after these"]},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 2 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
     {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
@@ -44,7 +44,7 @@
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Story: Prison Compound Infiltration Plan","s":"0/5 objectives · then Brigade Prison Compound Infiltration Operation","c":"primary \"Turned in\" story","o":["Find information on the Azrakar Brigade Prison Compound defeat Azrakar Watcher investigate the Azrakar Brigade Command Kibelisk: Abandoned Barracks Site","Deliver the information to Anders talk to Anders (Kibelisk: Abandoned Barracks Site)","Obtain the key from Balaur collect the key (Kibelisk: Abandoned Barracks Site)","+2 more after these"]},
+    {"t":"Story: Prison Compound Infiltration Plan","s":"0/5 objectives · then Brigade Prison Compound Infiltration Operation","c":"primary \"Turned in\" story","o":["Find information on the Azrakar Brigade Prison Compound defeat Azrakar Watcher investigate the Azrakar Brigade Command Kibelisk: Abandoned Barracks Site","Deliver the information to Anders talk to Anders","Obtain the key from Balaur collect the key (Kibelisk: Abandoned Barracks Site)","+2 more after these"]},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
     {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 4 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
@@ -64,7 +64,7 @@
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside the prison compound (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+1 more after these"]},
+    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside the prison compound (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village","+1 more after these"]},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
     {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 4 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
