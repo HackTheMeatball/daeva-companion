@@ -43,6 +43,6 @@ Ownership check: every acceptance line passes with these files.
 
 Lanes: golden. Model: Opus (guide data, golden). Stall limit: 20 min (S–M).
 
-After: P14, owner-ok-keys (the owner's in-game key screens, recorded in DECISIONS). Re-spec 2026-10-18 (Release Planner): token renamed to the form kickoff reads. Moved to 0.7.
+After: P14, owner-ok-keys (the owner's in-game key screens, recorded in DECISIONS). Re-spec 2026-10-18 (Release Planner): token renamed to the form kickoff reads. Moved to the 0.6.1 patch (owner, 2026-10-18 6:05 AM ET; first planned for 0.7).
 
 - [next] #? opus lanes:golden
