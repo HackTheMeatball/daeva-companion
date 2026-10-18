@@ -2,7 +2,7 @@
    setup at your level, what's new on your keys. Drawn by the Skills card (renderNext calls renderRotation), so it
    registers with update: null; its mount places the drawer and wires its tab. */
 import { char } from "../../../core/state.js";
-import { E_ORDER, STAT_SRC, STAT_TIERS } from "../data/build.js";
+import { E_ORDER, HAS_KEYS, STAT_NOTE, STAT_SRC, STAT_TIERS } from "../data/build.js";
 import { rotKeys } from "../requirements.js";
 import { aion2State as state, aion2Save as save, aion2Update as update, aion2STIGMA_SLOTS as STIGMA_SLOTS, aion2StIco as stIco, aion2SpMini as spMini } from "./page.js";
 
@@ -39,6 +39,9 @@ function stLaterHTML() {
 const ico = (n, stig) => stig ? stIco(n, "st-mini") : spMini(n);
 const nameIco = (n, stig) => ico(n, stig) + n;
 function renderRotation() {
+  /* a build without a sourced key setup (0.6 P5, the Ranger): stat priority only, with the build's own footnote */
+  if (STAT_NOTE) document.getElementById("statNote").textContent = STAT_NOTE;
+  if (!HAS_KEYS) { document.querySelector("#statDrawer .sd-rot").hidden = true; document.getElementById("statSeq").innerHTML = statSeqHTML(); return; }
   const lv = char(state).level, { rmb, q, e } = rotKeys(char(state), lv);
   const before = e.filter(n => n === "Illusive Clone" || n === "Swift Contract"), after = e.filter(n => !before.includes(n));
   const steps = [];

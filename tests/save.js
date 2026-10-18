@@ -188,7 +188,8 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     const f = await p.evaluate(() => ({ focus: document.activeElement.id, label: document.querySelector('label[for="charName"]').textContent, legend: document.querySelector('#charForm legend').textContent,
       radios: [...document.querySelectorAll('#charPick input[type=radio]')].map(r => [r.value, r.checked, r.closest('label').innerText.trim()]), list: !document.getElementById('charList').hidden }));
     ok('switcher: New character opens the form with the focus in "Name (optional)"', f.focus === 'charName' && f.label === 'Name (optional)' && !f.list, f);
-    ok('switcher: the class picker offers the pack\'s one class, picked', f.legend === 'Class' && JSON.stringify(f.radios) === JSON.stringify([['assassin', true, 'Assassin']]), f.radios);
+    /* 0.6 P5: the Ranger joined the Assassin (the hidden Gladiator class pack has no guide, so it is not offered) */
+    ok('switcher: the class picker offers the Assassin (picked) and the Ranger, not the Gladiator', f.legend === 'Class' && JSON.stringify(f.radios) === JSON.stringify([['assassin', true, 'Assassin'], ['ranger', false, 'Ranger']]), f.radios);
     await p.keyboard.type('  Zed  '); await p.waitForTimeout(50);
     ok('switcher: the form previews the label Zed-assassin-lvl1 (name trimmed)', await p.innerText('#charPrev') === 'Zed-assassin-lvl1', await p.innerText('#charPrev'));
     await p.keyboard.press('Escape'); await p.waitForTimeout(100);
@@ -235,6 +236,30 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     const after = JSON.parse(await readRaw(p));
     ok('reload: Zed keeps the tick and Lv 2; the first character is still current and unchanged', after.chars[zed].checks[rk] === true && after.chars[zed].level === 2 && after.chars[zed].name === 'Zed' && after.current === TEST_SLOT && isDeepStrictEqual(after.chars[TEST_SLOT], first), after.chars[zed]);
     ok('two characters: no page errors', !errs.length, errs);
+    await ctx.close();
+  }
+  /* 10b. a Ranger (0.6 P5): picking the class makes a ranger character, and switching characters switches the guide (the
+     reload loads that class's tables: stigma plan, skills, board nodes); switching back shows the Assassin's again */
+  {
+    const { ctx, p, errs } = await page();
+    await writeSave(p, SAVED, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
+    const first = JSON.parse(await readRaw(p)).chars[TEST_SLOT];
+    const guide = () => p.evaluate(() => ({ pack: self.DAEVA_PACK, cls: char(state).class, plan: STIGMA_PLAN.slice(), sk: SP_SKILLS_CORE.map(x => x.n).slice(0, 2),
+      lbl: document.getElementById('charLbl').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, skills: document.getElementById('main').innerText.includes('Snipe') }));
+    const a = await guide();
+    ok('Assassin guide: its pack, plan and skills', a.pack === 'aion2/asmodian/assassin' && a.cls === 'assassin' && a.plan[0] === "Triniel's Dagger" && a.sk[0] === 'Heart Gore' && a.rot && !a.skills, a);
+    await p.click('#charBtn'); await p.click('#charNew'); await p.check('#charPick input[value="ranger"]'); await p.waitForTimeout(50);
+    ok('ranger: the form previews ranger-lvl1', await p.innerText('#charPrev') === 'ranger-lvl1', await p.innerText('#charPrev'));
+    await Promise.all([p.waitForEvent('load'), p.click('#charCreate')]); await p.waitForTimeout(400);
+    const r = await guide(), s = JSON.parse(await readRaw(p)), rid = s.current;
+    ok('ranger: a new current slot of class ranger, pack aion2/asmodian/ranger; the first character stored as it was', rid !== TEST_SLOT && s.chars[rid].class === 'ranger' && s.chars[rid].pack === 'aion2/asmodian/ranger' && isDeepStrictEqual(s.chars[TEST_SLOT], first), s.chars[rid]);
+    ok('ranger: the page runs the Ranger guide (its pack, stigma plan, skills shown; no Rotation section)', r.pack === 'aion2/asmodian/ranger' && r.cls === 'ranger' && JSON.stringify(r.plan) === JSON.stringify(["Vaizel's Authority", 'Bow of Blessing', 'Supporting Fire', 'Griffon Arrow'])
+      && r.sk[0] === 'Snipe' && r.skills && !r.rot && r.lbl === 'ranger-lvl1', r);
+    await p.click('#charBtn');
+    await Promise.all([p.waitForEvent('load'), p.click(`#charRows [data-char="${TEST_SLOT}"]`)]); await p.waitForTimeout(400);
+    const b = await guide();
+    ok('switch back: the Assassin guide again, its character unchanged', b.pack === 'aion2/asmodian/assassin' && b.plan[0] === "Triniel's Dagger" && b.lbl === 'assassin-lvl22' && isDeepStrictEqual(JSON.parse(await readRaw(p)).chars[TEST_SLOT], first), b);
+    ok('ranger: no page errors', !errs.length, errs);
     await ctx.close();
   }
   /* a stored save with more slots: copies of the test slot under other ids, with their own level, quest and name */

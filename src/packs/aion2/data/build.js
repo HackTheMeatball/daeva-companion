@@ -1,14 +1,16 @@
 /* Assassin build data: stat tiers, skill point plan and costs, Daevanion node types, stigma plan, key stacks, icons.
    Every export is still a page global (scripts/build.mjs). */
 import { E_ORDER, LEVEL_POINTS, RMB_ROWS, RULE_NODE_COSTS, RULE_SHARD_COST, RULE_SKILL_POINT_COST, RULE_SPEC_SLOTS, SP_EXTRA, SP_ICONS, SP_SKILLS_CORE,
-  STAT_SRC, STAT_TIERS, STIGMA_ICON, STIGMA_PLAN, ST_TARGETS } from "./generated.js";
+  STAT_NOTE, STAT_SRC, STAT_TIERS, STIGMA_ICON, STIGMA_PLAN, ST_TARGETS } from "./generated.js";
 /* Compiled from data/packs/aion2/classes/assassin/ and data/packs/aion2/asmodian/assassin/builds.json since 0.2 step 5b
    (tools/gen/gen.mjs): the guide build (builds.json: stat tiers,
    skill order and specialty picks, stigma plan and targets, key stacks), skills.json (learn levels, icons) and
    stigmas.json (icons), and rule:level-points. Re-exported here under their page names. Since 0.4 P2a the cost and slot
    tables below are built from the pack's rules (RULE_*: rule:skill-point-cost, rule:specialty-slots, rule:node-costs,
    rule:stigma-shard-cost), not written out here. */
-export { E_ORDER, LEVEL_POINTS, SP_ICONS, STAT_SRC, STAT_TIERS, STIGMA_ICON, STIGMA_PLAN, ST_TARGETS };
+export { E_ORDER, LEVEL_POINTS, SP_ICONS, STAT_NOTE, STAT_SRC, STAT_TIERS, STIGMA_ICON, STIGMA_PLAN, ST_TARGETS };
+/* the build has a key setup (right-click rows); without one (the Ranger, 0.6 P5) the Build drawer shows no Rotation */
+export const HAS_KEYS = RMB_ROWS.length > 0;
 /* Node colours match the game: blue = active skill (3), green = passive skill (2), orange = corner (4). Path stat nodes are grey (1). */
 export const DV_TYPE = { a: ["dv-a", "active skill"], p: ["dv-p", "passive skill"], c: ["dv-c", "corner"] };
 /* Skill point plan: the guide build's core skills in order ({n, learn, spec, passive}), then (E2) the skills after the
@@ -39,7 +41,8 @@ SP_STEPS.filter(x => x.slot === 1).forEach(x => [2, 3].forEach(n => SP_SLOTS.pus
 /* Key stacks for the hold-to-run setup (K grid): row 0 fires first. Right click = damage line, by character level (the guide
    build's keyStacks.rightClick: the first row whose minLv the level reaches). Q = Shadowstrike alone (positioning, so it
    never fires by accident); E = opener cooldowns as they unlock, E_ORDER. Row order is inferred. */
-export const RMB_STACK = lv => (RMB_ROWS.find(r => lv >= r.minLv) || RMB_ROWS[RMB_ROWS.length - 1]).skills.slice();
+/* a build with no key setup (the Ranger, 0.6 P5: RMB_ROWS empty) has an empty stack */
+export const RMB_STACK = lv => ((RMB_ROWS.find(r => lv >= r.minLv) || RMB_ROWS[RMB_ROWS.length - 1]) || { skills: [] }).skills.slice();
 /* Node icons by node type, cut from the player's screenshots: [not bought, bought]. Types without art yet use the crystal. */
 /* Node art cut from the player's screenshots: [not bought, bought] per node colour. */
 export const DV_TYPE_ICONS = {
