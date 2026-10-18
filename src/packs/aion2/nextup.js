@@ -211,10 +211,13 @@ export function aion2Meanwhile(state, ctx) {
    and never on a level-gated card (its "Meanwhile" line sends you elsewhere, like kib); the card draws it in place of
    kib (Q11). travelAdviceOn: the switch and what it needs (also hides "Prefer running" when off). */
 export const travelAdviceOn = () => ["bindDerived", "travelAdvice"].every(n => rankChangeOn(n, AION2_RANK_CHANGES)) && rankChangeOn("placeRank");
-export const aion2StoryFields = (state, { c, story: { gated }, open }) => {
+/* The open objective is tested in the source's text (QUEST_STEPS): one whose "(Kibelisk: X)" the checklist drops because
+   the bind happens there (0.6 P12, travel.js autoBindsOf) still doesn't get the Kibelisk line. */
+export const aion2StoryFields = (state, { c, story: { gated } }) => {
   const sh = gated ? null : storyHereOf(state), on = n => rankChangeOn(n, AION2_RANK_CHANGES);
+  const L = QUEST_STEPS[c.quest] || [], shown = objIdxOf(state, L), done = (c.qsteps || {})[c.quest] || [], open = L[shown.find(i => !done.includes(i))];
   const bind = on("bindDerived") && on("bindNudge") ? nudgeOf(c) : null;
-  const T = !gated && travelAdviceOn() && state.preferRun !== true ? storyTargetOf(c, { shown: objIdxOf(state, QUEST_STEPS[c.quest] || []) }) : null;
+  const T = !gated && travelAdviceOn() && state.preferRun !== true ? storyTargetOf(c, { shown }) : null;
   const t = T && teleportOf(c, T, whereNow(c));
   return { kib: sh && !/\(Kibelisk:/.test(open || "") ? sh : null, bind, tele: t ? { ...t, to: T.to, npc: T.npc } : null };
 };

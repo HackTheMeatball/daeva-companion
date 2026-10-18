@@ -88,6 +88,17 @@ export function checks(ctx, check) {
     }
     /* the travel rules (design §8): the bind radius lies inside the nudge radius */
     const rv = id => rules[id] ? rules[id].value : null;
+    /* binds that happen at an objective (0.6 P12; owner 2026-10-17, #254 note 6): the app drops a step's "(Kibelisk: X)"
+       when its point is within the bind radius of X, and hides a "Bind with the X Kibelisk" step when the next step's point
+       is (src/packs/aion2/travel.js autoBindsOf). The list for the owner, one check per trimmed step (gen-report.json):
+       quest, step, Kibelisk, metres; none over the radius */
+    { const R = rv('rule:kibelisk-bind-radius'), ONLY = /^Bind with the (.+) Kibelisk(?: \(Kibelisk: ([^)]+)\))?$/, MK = /\(Kibelisk: ([^)]+)\)/;
+      const trims = [];
+      for (const s of chain) s.steps.forEach((x, j) => { const b = x.text.match(ONLY), m = x.text.match(MK), p = x.at || (b ? (s.steps[j + 1] || {}).at : null);
+        if (b && (!b[2] || b[2] === b[1]) && p && p.kibelisk === b[1] && p.meters != null && p.meters <= R) trims.push({ s, x, kib: b[1], m: p.meters, what: 'bind-only step hidden' });
+        else if (!b && m && x.at && x.at.kibelisk === m[1] && x.at.meters != null && x.at.meters <= R) trims.push({ s, x, kib: m[1], m: x.at.meters, what: '"(Kibelisk: X)" dropped' }); });
+      for (const t of trims) check(`auto-bind (0.6 P12): ${t.s.id} #${t.x.i} ${t.s.name}: ${t.what}, ${t.kib} at ${t.m} m (≤ ${R} m)`, t.m <= R, t.m);
+      check(`auto-bind (0.6 P12): ${trims.length} steps trimmed, ${trims.filter(t => t.what !== '"(Kibelisk: X)" dropped').length} hidden; none over ${R} m`, R !== null && trims.every(t => t.m <= R), trims.length); }
     check('rule:kibelisk-bind-radius < rule:kibelisk-nudge-radius', rv('rule:kibelisk-bind-radius') !== null && rv('rule:kibelisk-nudge-radius') !== null
       && rv('rule:kibelisk-bind-radius') < rv('rule:kibelisk-nudge-radius'), [rv('rule:kibelisk-bind-radius'), rv('rule:kibelisk-nudge-radius')]);
     check('rule:teleport-gain is set', rv('rule:teleport-gain') !== null);
