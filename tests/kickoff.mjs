@@ -79,6 +79,8 @@ check((await afterBlocker(unkeyed('owner-ok-met.', '0.6.1'))) === '', '0.6.1 pat
 const loop = yml.slice(yml.indexOf('for (let i = 0; i < lines.length && inflight < MAX; i++)'));
 check(/const wait = await afterBlocker\(kx\);\s*\n\s*if \(wait\) \{.*continue; \}/.test(loop.slice(0, loop.indexOf('picked.push('))),
   'start loop: afterBlocker runs and skips before a [next] line is picked');
+check(/if \(wait\) \{[^\n]*if \(alone\) break; continue; \}/.test(loop.slice(0, loop.indexOf('picked.push('))),
+  'start loop: an "alone" line held by its After line stops the loop, so later lines keep queue order');
 
 console.log(`\n${n - fail}/${n} kickoff checks passed`);
 console.log(fail ? 'KICKOFF CHECKS FAILED' : 'KICKOFF CHECKS PASSED');
