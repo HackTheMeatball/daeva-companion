@@ -326,7 +326,7 @@
         },
         {
           "i": 2,
-          "text": "Search Munihelle Forest — investigate it with Maard (Kibelisk: Witch's Cabin)",
+          "text": "Search Munihelle Forest — investigate Munihelle Forest with Maard (Kibelisk: Witch's Cabin)",
           "at": {
             "map": "ishalgen",
             "x": 3486,
@@ -1173,7 +1173,7 @@
         },
         {
           "i": 7,
-          "text": "Gather supplies at Aldelle Village — take them from the Supply Chest (Kibelisk: Aldelle Village)",
+          "text": "Gather supplies at Aldelle Village — take the supplies from the Supply Chest (Kibelisk: Aldelle Village)",
           "at": {
             "map": "ishalgen",
             "x": 3435,
@@ -1546,7 +1546,7 @@
         },
         {
           "i": 1,
-          "text": "Escape from the prison compound — go outside it (Kibelisk: Aldelle Village)",
+          "text": "Escape from the prison compound — go outside the prison compound (Kibelisk: Aldelle Village)",
           "at": {
             "map": "ishalgen",
             "x": 3366,
@@ -5177,7 +5177,7 @@
         },
         {
           "i": 3,
-          "text": "Get the storage key — take it from the Balaur's belongings",
+          "text": "Get the storage key — take the storage key from the Balaur's belongings",
           "at": {
             "map": "altgard",
             "x": 2308,
