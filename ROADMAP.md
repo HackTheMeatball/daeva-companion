@@ -697,7 +697,7 @@ tomorrow after I wake up?" So 0.6.0 ships without the two owner-gated items and 
 No planning pass (patch): the Release Planner queues each item when its gate is met, sends Game Data Check
 `PRE-RELEASE CHECK 0.6.1` once they merge, and opens the release issue after `DATA OK`.
 
-Shipped as: F1 #366, F2, F3, F4 #362, F5 #370, data fixes #361, #363, #364 (#358); `DATA OK 0.6.1` 9:21 AM ET (main
+Contents: F1 #366, F2, F3, F4 #362, F5 #370, data fixes #361, #363, #364 (#358); `DATA OK 0.6.1` 9:21 AM ET (main
 `8ba3fab`); release item #371.
 
 ### 0.6.2 — the owner-gated 0.6 leftovers
