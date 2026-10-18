@@ -1,0 +1,10 @@
+[
+  { "case": "w1-fresh-basic-390", "kind": "before-after", "title": "Welcome on a phone",
+    "caption": "A fresh browser now opens with a welcome above Next up: what the guide is, tick and Level up, the unofficial line, and two buttons." },
+  { "case": "w1-fresh-1500", "kind": "before-after", "title": "Welcome on desktop",
+    "caption": "The same welcome on a wide screen, above both columns; either button makes it go for good on this browser." },
+  { "case": "w2-join-lv20-basic-390", "kind": "before-after", "title": "I'm already Lv 20",
+    "caption": "The second button swaps in a level slider and the story quest you're on, pre-filled for that level, with what the button will do." },
+  { "case": "w3-joined-lv20-advanced-390", "kind": "before-after", "title": "After joining at Lv 20",
+    "caption": "Lv 20 on the picked story quest; the earlier story counts as done and Next up starts from there, nothing else ticked." }
+]
