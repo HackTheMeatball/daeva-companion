@@ -6,9 +6,9 @@ Planned in the 0.6 planning pass (#257, ROADMAP "0.6", lane B); retargeted from 
 (`docs/research/2026-10-ranger-pack.md`) first, and the owner's Ranger spot check in docs/DECISIONS.md if he has
 sent one (optional since 2026-10-18 2:45 AM ET, see below). The hidden Gladiator class pack (P4) stays as it is.
 
-Learn levels Marking Shot 3, Burst Arrow 10 and Deadshot 14: Metabot plus mmo-codex.com (all three), daevaguides.com
-and aion2-guides.info (Burst Arrow, Deadshot), per the Ranger research session (2026-10-18). Those sites may share
-upstream data (mmo-codex credits the game client via aion2.app), so their independence is inferred: label the three
+Learn levels Marking Shot 3, Burst Arrow 10 and Deadshot 14: Metabot plus mmo-codex.com (all three) and
+daevaguides.com (Burst Arrow, Deadshot), per the Ranger research doc §6 (#313). aion2-guides.info compiles other
+creators' guides (#309), so it is not a second source. Those sites may share upstream data (mmo-codex credits the game client via aion2.app), so their independence is inferred: label the three
 per `claims.json` rules for sources that may share data, and cite the owner's screen instead if he sends one.
 
 ## Problem
