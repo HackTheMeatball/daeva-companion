@@ -1,0 +1,4 @@
+[
+  { "case": "list-390", "kind": "before-after", "title": "Characters listed by name",
+    "caption": "The character list is now alphabetical, ignoring capitals: Alpha, alpha, bravo, then the unnamed character. Before, it followed the order they were created in." }
+]

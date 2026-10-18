@@ -14,6 +14,13 @@ import { packClasses } from "../core/pack.js";
 
 const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
+/* the rows' order (display only, the save keeps its own): by name, case-insensitive, ties by slot id, unnamed last */
+const sortedChars = chars => Object.values(chars).sort((a, b) => {
+  const x = a.name || "", y = b.name || "";
+  if (!x !== !y) return x ? -1 : 1;
+  return x.localeCompare(y, undefined, { sensitivity: "base" }) || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
+});
+
 /* the card spec; the shell hands over what a pick does (onSwitch(id), onAdd({ class, name })) */
 export function charactersCard({ onSwitch, onAdd, onRename, onRemove }) {
   let el = null, btn = null, pop = null, list = null, form = null, dlg = null, last = null;
@@ -27,11 +34,11 @@ export function charactersCard({ onSwitch, onAdd, onRename, onRemove }) {
     $("charLbl").textContent = l;
     btn.setAttribute("aria-label", `Character: ${l}. Switch character`);
   };
-  /* one row per character, in save order; the current one is marked (✓, aria-current). Rename and Remove carry the label
+  /* one row per character, sorted by name; the current one is marked (✓, aria-current). Rename and Remove carry the label
      in their spoken names; Remove is left out while there is one character (the last one is never removed). The row
      being renamed is the rename field instead. */
   const drawRows = state => {
-    const all = Object.values(state.chars), many = all.length > 1;
+    const all = sortedChars(state.chars), many = all.length > 1;
     $("charRows").innerHTML = all.map(c => {
       const cur = c.id === state.current, l = esc(labelOf(c)), id = esc(c.id);
       if (c.id === editing) return `<li class="chedit"><form class="chform" id="charRenForm"><div class="chfld"><label for="charRen">Rename <b>${l}</b></label><input type="text" id="charRen" autocomplete="off" spellcheck="false" value="${esc(c.name || "")}" aria-describedby="charRenHint"><span class="chhint" id="charRenHint">Leave empty to show no name. Up to ${NAME_MAX} characters.</span></div><div class="chbtns"><button type="button" id="charRenCancel">Cancel</button><button type="submit" class="primary" id="charRenSave">Save name</button></div></form></li>`;
