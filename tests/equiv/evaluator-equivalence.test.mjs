@@ -86,7 +86,9 @@ export default (test, M) => {
   const C = new Function('QUESTS', 'QUEST_STEPS', 'GATES', 'STEPS', 'RQ', 'AREA_ITEMS', 'SP_STEPS', 'STIGMA_PLAN', 'STIGMA_SLOTS', 'DV_NODES', `return (${catalogInPage})();`)(
     M.QUESTS, M.QUEST_STEPS, M.GATES, M.STEPS, M.RQ, M.AREA_ITEMS, M.SP_STEPS, M.STIGMA_PLAN, () => M.stigmaSlots({}), M.DV_NODES);
   const fixtures = fixtureStates(); /* the flat fixtures (tests/fixtures/*.flat.json) under their old state ids */
-  const states = generate(C, { fixtures }).map(({ id, raw }) => { const { state, hadSave } = M.loadState(raw, { newId: () => 'fresh-slot' }); M.migrate(state, hadSave, () => {}, 0); return { id, s: state, c: M.char(state) }; });
+  /* the Assassin's states: the 0.2 oracle and this bundle's tables are the Assassin guide's, so the Ranger states (0.6 P5,
+     group ranger/) are left to the golden suite, which runs them on the page with the Ranger's tables */
+  const states = generate(C, { fixtures }).filter(({ id }) => !id.startsWith('ranger/')).map(({ id, raw }) => { const { state, hadSave } = M.loadState(raw, { newId: () => 'fresh-slot' }); M.migrate(state, hadSave, () => {}, 0); return { id, s: state, c: M.char(state) }; });
   const N = M.GATE_GRAPH.nodes;
   const diffs = new Map(), seen = { step: new Set(), rq: new Set(), plan: new Set(), skill: new Set() };
   const cmp = (kind, k, field, old, ev, id) => { if (old === ev) return; const d = `${kind} ${k} ${field}: 0.2 ${old} / evaluator ${ev}`;

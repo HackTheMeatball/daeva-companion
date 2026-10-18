@@ -24,7 +24,13 @@ const build = recs('builds').find(b => b.origin === 'guide'), skills = Object.fr
    on the card); the class becomes checked here when its release flips. */
 const hiddenDirs = DATA_FILES.filter((f, i) => docs[i].collection === 'classes' && docs[i].records.every(r => r.release === 'hidden')).map(f => path.dirname(f) + path.sep);
 const isHidden = f => hiddenDirs.some(d => f.startsWith(d));
+/* another released class (0.6 P5: the Ranger) ships its class and guide packs to its own characters' page only: the
+   Assassin page these suites open lists none of their own URLs (otherUrls; they are in DATA_SOURCES.md) */
+const otherClasses = DATA_FILES.filter((f, i) => docs[i].collection === 'classes' && docs[i].records.some(r => r.release !== 'hidden' && r.class !== 'assassin')).map(f => path.basename(path.dirname(f)));
+const otherDirs = otherClasses.flatMap(c => [`classes${path.sep}${c}${path.sep}`, `asmodian${path.sep}${c}${path.sep}`]);
+const isOther = f => otherDirs.some(d => f.includes(path.sep + 'packs' + path.sep + 'aion2' + path.sep + d));
 const urlsOf = keep => { const urls = new Set(); const w = v => { if (typeof v === 'string') (v.match(/https?:\/\/[^\s)\]'"]+/g) || []).forEach(u => urls.add(u.replace(/[.,;]+$/, ''))); else if (v && typeof v === 'object') Object.values(v).forEach(w); };
   docs.forEach((d, i) => { if (!keep(DATA_FILES[i])) return; if (d.collection !== 'sources') w(d.records); else w(d.pages || []); }); return urls; };
-const urls = urlsOf(f => !isHidden(f)), shownUrls = new Set(urls), hiddenUrls = new Set([...urlsOf(isHidden)].filter(u => !shownUrls.has(u)));
-module.exports = { rq, chains, story45, claims, build: { spOrderAfterCore: { order: build.skillOrder.filter(e => !e.core).map(e => skills[e.skill]) } }, dataUrls: urls, hiddenUrls, hiddenDirs };
+const urls = urlsOf(f => !isHidden(f) && !isOther(f)), shownUrls = new Set(urls), hiddenUrls = new Set([...urlsOf(isHidden)].filter(u => !shownUrls.has(u)));
+const otherUrls = new Set([...urlsOf(isOther)].filter(u => !shownUrls.has(u)));
+module.exports = { rq, chains, story45, claims, build: { spOrderAfterCore: { order: build.skillOrder.filter(e => !e.core).map(e => skills[e.skill]) } }, dataUrls: urls, hiddenUrls, hiddenDirs, otherUrls, otherClasses };

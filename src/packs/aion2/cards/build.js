@@ -2,6 +2,7 @@
    setup at your level, what's new on your keys. Drawn by the Skills card (renderNext calls renderRotation), so it
    registers with update: null; its mount places the drawer and wires its tab. */
 import { char } from "../../../core/state.js";
+import { activePack, packClasses } from "../../../core/pack.js";
 import { E_ORDER, HAS_KEYS, STAT_NOTE, STAT_SRC, STAT_TIERS } from "../data/build.js";
 import { rotKeys } from "../requirements.js";
 import { aion2State as state, aion2Save as save, aion2Update as update, aion2STIGMA_SLOTS as STIGMA_SLOTS, aion2StIco as stIco, aion2SpMini as spMini } from "./page.js";
@@ -62,6 +63,10 @@ function renderRotation() {
 }
 /* the drawer's place and its tab (from render(), once) */
 function aion2BuildMount() {
+  /* the page header names the current character's class (0.6 P5: a Ranger reads "Asmodian Ranger Route"); the default
+     class's header is left as the shell has it */
+  { const cur = packClasses().find(x => x.pack === char(state).pack);
+    if (cur && cur.class !== activePack().character.class) for (const el of document.querySelectorAll(".eyebrow > span:first-child, h1")) el.textContent = el.textContent.replace("Assassin", cur.name); }
   /* Stat priority drawer: a tab pinned to the right edge; open state remembered.
      It starts level with the top of the cards row and sticks 16px from the top once you scroll past it. */
   (() => {
