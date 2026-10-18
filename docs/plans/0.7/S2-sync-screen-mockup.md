@@ -26,7 +26,7 @@ M (docs).
 
 - [ ] Every client status in sync.md §8 has a drawn state (paste the list).
 - [ ] Desktop and phone drawings for each state (paste file list).
-- [ ] The doc ends with the owner question and the exact words to type (`owner-ok-S2`).
+- [ ] The doc ends with the owner question and the exact words to type (`owner-ok-0.7-S2`, Kaizen K12).
 
 ## Files (owns)
 

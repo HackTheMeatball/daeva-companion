@@ -682,8 +682,8 @@ Decisions this pass recorded (for the tracker, each as a done To-do with its rem
 Isaac, in the project chat: "Can we just push to the 6.0 release with what we have and anything outstanding we just patch
 tomorrow after I wake up?" So 0.6.0 ships without the two owner-gated items and 0.6.1 carries them, plus data fixes:
 
-- **P13** story-quest icon (#272), after `owner-ok-story-icon` (the owner's icon crop).
-- **P15** respec walk-through (#274), after `P14, owner-ok-keys` (the owner's in-game key screens).
+- ~~**P13** story-quest icon (#272)~~ and ~~**P15** respec walk-through (#274)~~: moved to 0.6.2 (below) on
+  2026-10-18 9:20 AM ET under K10, because their owner inputs weren't in when every other 0.6.1 item had merged.
 - **Game Data Check fixes** for #325 (thin-sourced "verified" fields), in small data PRs.
 - **Player Testing fixes** (#321, #333; issues #334–#338; Release Planner triage 2026-10-18 7:30 AM ET), no owner input needed:
   [F1](docs/plans/0.6.1/F1-story-counter.md) story objective counter and Ahead order (golden) ·
@@ -696,6 +696,18 @@ tomorrow after I wake up?" So 0.6.0 ships without the two owner-gated items and 
 
 No planning pass (patch): the Release Planner queues each item when its gate is met, sends Game Data Check
 `PRE-RELEASE CHECK 0.6.1` once they merge, and opens the release issue after `DATA OK`.
+
+Contents: F1 #366, F2, F3, F4 #362, F5 #370, data fixes #361, #363, #364 (#358); `DATA OK 0.6.1` 9:21 AM ET (main
+`8ba3fab`); release item #371.
+
+### 0.6.2 — the owner-gated 0.6 leftovers
+
+- **P13** story-quest icon (#272), after `owner-ok-story-icon` (the owner's icon crop).
+- **P15** respec walk-through (#274), after `P14, owner-ok-keys` (the owner's in-game key screens).
+
+Both auto-queue from their issue bodies when the owner's typed DECISIONS row lands (0.6 items, so the unversioned tokens
+still parse under K12). Same patch rules as 0.6.1: Game Data Check before the release item; the release issue opens
+after `DATA OK 0.6.2`. If 0.7.0 is due first, they move to 0.7.1.
 
 ### 0.7 — The Gladiator, a second class, and sync
 
