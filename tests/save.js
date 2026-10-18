@@ -480,11 +480,26 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
       await p.click('#charBtn'); await p.click('#charNew');
       await Promise.all([p.waitForEvent('load'), p.click('#charCreate')]); await p.waitForTimeout(400);
       ok('new character: the welcome opens on the join step', await shown(p) && !(await step(p)).intro && (await step(p)).form);
+      const labels = await p.evaluate(() => [...document.querySelectorAll('#welForm button')].filter(b => b.offsetParent).map(b => b.textContent.trim()));
+      ok('new character: no two buttons on the level step carry the same text', labels.length === 2 && new Set(labels).size === labels.length && labels.includes('Skip: start at Lv 1'), labels);
       await setJoinLv(p, 12); const q12 = await questAt(p, 12);
       await p.click('#welGo'); await p.waitForTimeout(400);
       const st = JSON.parse(await readRaw(p)), c = st.chars[st.current];
       ok('new character: joined at Lv 12 on the pre-filled quest; the first character unchanged', st.current !== TEST_SLOT && c.level === 12 && c.quest === q12 && st.welcomed === 1 && isDeepStrictEqual(st.chars[TEST_SLOT], first), { level: c.level, quest: c.quest, q12 });
       ok('new character: no page errors', !errs.length, errs);
+      await ctx.close();
+    }
+    /* the skip button of a new character saves what Start at Lv 1 saved: welcomed 1, the character as created */
+    {
+      const { ctx, p, errs } = await page();
+      await writeSave(p, { ...SAVED, welcomed: 1 }, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
+      await p.click('#charBtn'); await p.click('#charNew');
+      await Promise.all([p.waitForEvent('load'), p.click('#charCreate')]); await p.waitForTimeout(400);
+      const before = await progress(p);
+      await p.click('#welBack'); await p.waitForTimeout(300);
+      const st = JSON.parse(await readRaw(p)), c = st.chars[st.current];
+      ok('new character: Skip: start at Lv 1 hides the welcome, writes welcomed 1, leaves the Lv 1 character as created', !(await shown(p)) && st.welcomed === 1 && c.level === 1 && !Object.keys(c.checks).length && isDeepStrictEqual(await progress(p), before), { welcomed: st.welcomed, level: c.level });
+      ok('new character: skip path has no page errors', !errs.length, errs);
       await ctx.close();
     }
   }
