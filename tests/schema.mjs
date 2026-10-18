@@ -120,6 +120,15 @@ if (g) {
   genFailsIn('a step-text bind whose text does not say bind', SQ, d => { const x = stepWith(d, x => x.binds && x.binds.basis === 'step-text'); x.text = 'Remember Aldelle Village'; }, /a step-text bind says "bind"/);
   genFailsIn('binds on a regional quest objective', 'data/packs/aion2/asmodian/regional-quests.json', d => { d.records.find(r => (r.steps || []).length).steps[0].binds = { kibelisk: 'kib:safe-haven', basis: 'step-text' }; }, /binds only on story objectives/);
   genFailsIn('a bind radius not inside the nudge radius', 'data/packs/aion2/rules.json', d => { d.records.find(x => x.id === 'rule:kibelisk-bind-radius').value = 100; d.records.find(x => x.id === 'rule:kibelisk-nudge-radius').value = 100; }, /rule:kibelisk-bind-radius < rule:kibelisk-nudge-radius/);
+  /* 0.6 P3: the shared Asmodian guide names no class, skill, stigma or board node and points at no class guide record */
+  const SG = 'data/packs/aion2/asmodian/guide/', sgStep = (d, id) => d.records.find(r => r.id === id);
+  genFailsIn('a shared guide step naming a class skill', SG + 'steps.json', d => { sgStep(d, 'story:1').text += ' Then use Heart Gore.'; }, /^shared guide story:1 .*names no class, skill, stigma or board node$/);
+  genFailsIn('a shared guide step naming a stigma id', SG + 'steps.json', d => { sgStep(d, 'story:1').loc = 'stigma:assassin:savage-fang'; }, /^shared guide story:1 .*names no class, skill, stigma or board node$/);
+  genFailsIn('a shared guide step naming a board node key', SG + 'steps.json', d => { sgStep(d, 'story:1').text += ' (dv:azphel:r10c1)'; }, /^shared guide story:1 .*names no class, skill, stigma or board node$/);
+  genFailsIn('a shared guide tip naming the class', SG + 'tips.json', d => { d.records.find(r => r.id === 'tip:kibelisk').credit += ', an assassin guide'; }, /^shared guide tip:kibelisk .*names no class/);
+  genFailsIn('a shared guide confidence line naming a stigma', SG + 'confidence.json', d => { d.records[0].text += ' Savage Fang first.'; }, /^shared guide conf:abyss-points .*names no class/);
+  genFailsIn('a shared guide step linking a class guide tip', SG + 'steps.json', d => { sgStep(d, 'story:1').text += ' [[tip:wisdom|Skill Points]]'; }, /^shared guide story:1 .*points at no guide or class record$/);
+  genFailsIn('a shared guide step in a class guide milestone', SG + 'steps.json', d => { sgStep(d, 'story:1').milestone = 'g28'; }, /^shared guide story:1 .*points at no guide or class record$/);
   /* 0.5 P9: story objective points: the marker equals the point's Kibelisk, story objectives only, the Kibelisk's map */
   const sqStep = (d, id, i) => d.records.find(r => r.id === id).steps.find(x => x.i === i);
   genFailsIn('a (Kibelisk: X) marker that differs from at.kibelisk', SQ, d => { sqStep(d, 'sq:2102235', 1).at.kibelisk = 'Guide Rest Stop'; }, /sq:2102235 #1: \(Kibelisk: X\) marker = at\.kibelisk/);

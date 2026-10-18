@@ -26,7 +26,7 @@ const stripProposed = recs => { for (const r of recs) { delete r.proposed; for (
 const loadBundle = ({ dropProposed = false, mutate = null, root, pack } = {}) => {
   const { chain, files } = resolvePacks({ root, pack }), by = {}, schemaErrors = [];
   let retired = null, sources = null;
-  for (const { abs: f, rel } of files) {
+  for (const { abs: f, rel, pack: from } of files) {
     const doc = JSON.parse(readFileSync(f, 'utf8'));
     if (mutate) mutate(rel, doc);
     const errs = validateDoc(f, doc);
@@ -35,7 +35,7 @@ const loadBundle = ({ dropProposed = false, mutate = null, root, pack } = {}) =>
     if (basename(f) === 'retired.json') { retired = doc; continue; }
     if (dropProposed) stripProposed(doc.records);
     if (doc.collection === 'sources') sources = doc;
-    (by[doc.collection] = by[doc.collection] || []).push({ file: rel, doc });
+    (by[doc.collection] = by[doc.collection] || []).push({ file: rel, pack: from, doc });
   }
   if (schemaErrors.length) throw new Error('schema validation failed:\n  ' + schemaErrors.join('\n  '));
   const recs = c => (by[c] || []).flatMap(x => x.doc.records);
@@ -47,7 +47,7 @@ const loadBundle = ({ dropProposed = false, mutate = null, root, pack } = {}) =>
     if (typeof mod.checks !== 'function') throw new Error(`pack ${m.id}: ${m.checks} exports no checks(ctx, check)`);
     return { pack: m.id, checks: mod.checks };
   });
-  return { by, recs, retired, sources, packChecks };
+  return { by, recs, retired, sources, packChecks, packs: chain };
 };
 
 /* ------------------------------------------------------------------ helpers */
@@ -73,7 +73,10 @@ export function generate(opts = {}) {
   const nodes = R('boardNodes'), nodeById = Object.fromEntries(nodes.map(n => [n.id, n]));
   const boards = R('boards'), boardById = Object.fromEntries(boards.map(b => [b.id, b]));
   const sds = R('sealedDungeons'), shs = R('strongholds'), rules = Object.fromEntries(R('rules').map(r => [r.id, r]));
-  const claims = R('claims'), claimById = Object.fromEntries(claims.map(c => [c.id, c]));
+  /* guide collections come from more than one pack (0.6 P3: the shared Asmodian guide, then the class guide): read in id
+     order across the chain, which is each file's own order (records sorted by id), so a record's pack never moves it */
+  const RI = c => R(c).slice().sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
+  const claims = RI('claims'), claimById = Object.fromEntries(claims.map(c => [c.id, c]));
   /* at most one class per bundle; a pack with none (0.4 P6a, a pack that only checks the engine) compiles an empty build */
   const classes = R('classes'); if (classes.length > 1) throw new Error('one class per bundle in 0.2, got ' + classes.length);
   const cls = classes[0] || null, builds = R('builds');
@@ -81,7 +84,7 @@ export function generate(opts = {}) {
     statPriority: { tiers: [], from: null }, keyStacks: { rightClick: [], eOrder: [] }, texts: {}, boardPlan: [] };
   if (!build) throw new Error('default build missing: ' + cls.defaultBuild);
   const ruleValue = id => rules[id] ? rules[id].value : null;
-  const milestones = R('milestones'), steps = R('steps'), tips = R('tips'), unlocks = R('unlocks'), items = R('items'), asc = R('ascensionQuests');
+  const milestones = RI('milestones'), steps = RI('steps'), tips = RI('tips'), unlocks = R('unlocks'), items = R('items'), asc = R('ascensionQuests');
 
   /* ---------------------------------------------------------------- story chain (QUESTS) */
   const hasPrev = new Set(story.map(s => s.next).filter(Boolean));
@@ -255,7 +258,8 @@ export function generate(opts = {}) {
   const ASCENSION = asc.slice().sort(byNum('chapter')).map(a => ({ id: a.id, name: a.name, chapter: a.chapter, lv: a.lv, inCap: a.inCap !== false, ...(a.guideStep ? { step: a.guideStep } : {}) }));
 
   /* ---------------------------------------------------------------- confidence card */
-  const conf = (B.by.confidence || [])[0] ? B.by.confidence[0].doc : { groups: [], records: [] };
+  /* one card from every confidence file of the chain (0.6 P3): the group headings in chain order (each id once), the lines in id order */
+  const conf = { groups: (B.by.confidence || []).flatMap(x => x.doc.groups || []).filter((g, i, gs) => gs.findIndex(h => h.id === g.id) === i), records: RI('confidence') };
   const sp2 = SP_EXTRA.filter(x => !x.single).map(x => x.n), sp1 = SP_EXTRA.filter(x => x.single).map(x => x.n);
   const PH = { rqChained: RQ_STATS.chained, rqStoryGated: RQ_STATS.story, storyEndQuest: STORY_END.quest, storyEndLv: STORY_END.lv,
     boardList: boards.slice().sort(byNum('lv')).map(b => `${b.name} ${b.lv}`).join(', '), skillOrderTwoSource: sp2.join(', '), skillOrderSingle: sp1.join(', ') };
@@ -322,7 +326,7 @@ export function generate(opts = {}) {
   }
 
   /* ---------------------------------------------------------------- cross-record checks (DATA-FORMAT-V2 §15.2) */
-  const all = Object.values(B.by).flatMap(xs => xs.flatMap(x => x.doc.records.map(r => ({ r, file: x.file, coll: x.doc.collection }))));
+  const all = Object.values(B.by).flatMap(xs => xs.flatMap(x => x.doc.records.map(r => ({ r, file: x.file, pack: x.pack, coll: x.doc.collection }))));
   { const ids = {}; for (const { r, file } of all) { if (r.id in ids) check('id unique repo-wide: ' + r.id, false, [ids[r.id], file]); ids[r.id] = file; } check('ids unique repo-wide', true); }
   { const keys = {}; for (const { r, coll } of all) if (r.key !== undefined && !['items', 'tips', 'skills', 'stigmas'].includes(coll)) { if (r.key in keys) check('save key unique: ' + r.key, false, [keys[r.key], coll]); keys[r.key] = coll; }
     for (const e of build.boardPlan) if (e.key) { if (e.key in keys) check('save key unique: ' + e.key, false); keys[e.key] = 'boardPlan'; }
@@ -543,7 +547,7 @@ export function generate(opts = {}) {
      the module its manifest names in `checks` (pack.schema.json), called with the bundle and the compiled tables and the
      same check(name, ok, detail); they run after the engine's checks, in chain order. */
   const ctx = { B, R, zones, story, sqById, chain, rqs, rqById, skills, skById, stigmas, stById, nodes, nodeById, boards, boardById, sds, shs, rules, claims,
-    cls, builds, build, milestones, steps, tips, unlocks, items, asc, all, RQ, STORY_END, SH_DATA, GATE_GRAPH, kibs, NODE_PLACE, KIBELISKS, atomsOf, byNum, refCheck };
+    cls, builds, build, milestones, steps, tips, unlocks, items, asc, all, packs: B.packs, RQ, STORY_END, SH_DATA, GATE_GRAPH, kibs, NODE_PLACE, KIBELISKS, atomsOf, byNum, refCheck };
   for (const p of B.packChecks) p.checks(ctx, check);
 
   const failed = report.checks.filter(c => !c.pass);
@@ -624,7 +628,7 @@ export function dataSourcesMd(g) {
     'that cite the page (`file: record`); *Card group* is where the app lists it. Pages were checked in Oct 2026.',
     'A claim that is not verified is tagged `[id · verdict]` (`owner source`: the owner\'s own check is one of its sources), and',
     '"(this page: …)" says which part of a claim a page backs when it backs only part.', '',
-    'Only facts were taken from these pages; the app reproduces no page text. Short quotations in `data/packs/aion2/asmodian/assassin/guide/claims.json`',
+    'Only facts were taken from these pages; the app reproduces no page text. Short quotations in the guides\' `claims.json`',
     'stay their owners\'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Listing a site implies no endorsement.', '',
     `${all.length} URLs · ${groupOf.size} in the Sources card · ${all.filter(u => !groupOf.has(u)).length} cited only in the data files`, ''];
   const bySite = new Map();

@@ -1,0 +1,9 @@
+{
+  "$schema": "../../../../schema/pack.schema.json",
+  "schemaVersion": 2,
+  "id": "aion2/asmodian/guide",
+  "kind": "faction",
+  "name": "Asmodian guide text every class shares",
+  "parent": "aion2/asmodian",
+  "files": ["milestones.json", "steps.json", "tips.json", "claims.json", "confidence.json"]
+}

@@ -105,13 +105,16 @@ data/
         pack.json
         story-quests.json  regional-quests.json  sealed-dungeons.json  strongholds.json  zones.json
         unlocks.json  ascension-quests.json
-        assassin/                  guide pack: the Asmodian Assassin guide (rights reserved, LICENSE)
+        guide/                     shared guide (0.6 P3, kind faction): guide text every Asmodian class shares
+          pack.json
+          milestones.json  steps.json  tips.json  claims.json  confidence.json
+        assassin/                  guide pack: the Asmodian Assassin guide (rights reserved, LICENSE); extends guide/
           pack.json
           builds.json              the guide build + up to two credited alternatives
           retired.json             save keys never to be reused (§3)
           claims-notes.md          how the claim verdicts were reached
           guide/
-            milestones.json  steps.json  tips.json  claims.json  confidence.json
+            milestones.json  steps.json  tips.json  claims.json  confidence.json   (the class's own records)
   DATA_SOURCES.md, research/       generated listing; research notes (not loaded)
 ```
 
@@ -147,10 +150,21 @@ A pack is a folder below `data/packs/` with a `pack.json` (`data/schema/pack.sch
 
 `tools/gen/gen.mjs --pack <id> --root <dir>` (defaults `aion2/asmodian/assassin`, `data/packs`) resolves the chain from
 that pack: its parent, then each `uses`, then the pack itself, depth first, each pack once (today: `aion2`,
-`aion2/asmodian`, `aion2/classes/assassin`, `aion2/asmodian/assassin`). It loads exactly the listed files in that order
-and fails on a manifest that fails its schema or whose `id` is not its folder, an unknown `parent` / `uses`, a cycle,
-a listed file that is missing, and a JSON file in a pack folder that no manifest lists. The cross-record checks are
-the same as before packs.
+`aion2/asmodian`, `aion2/asmodian/guide`, `aion2/classes/assassin`, `aion2/asmodian/assassin`). It loads exactly the
+listed files in that order and fails on a manifest that fails its schema or whose `id` is not its folder, an unknown
+`parent` / `uses`, a cycle, a listed file that is missing, and a JSON file in a pack folder that no manifest lists. The
+cross-record checks are the same as before packs.
+
+**Shared guide (0.6 P3).** Guide records that hold for every Asmodian class (milestones, steps, tips, claims and
+confidence lines that name no class build content) live in `aion2/asmodian/guide`, kind `faction` (not `guide`: it is
+no playable class), parent `aion2/asmodian`; a class guide extends it (`parent: aion2/asmodian/guide`) and adds only
+its own records. The generator reads those five collections in id order across the chain (which is each file's own
+order, records sorted by id), so moving a record between the two packs never moves it in the compiled tables; the
+confidence card takes its group headings from every confidence file in chain order, each id once. The AION 2 pack
+checks (`checks.mjs`) hold a shared guide record to two rules: outside `[[…]]` tokens no string names the chain's
+class (any case, so a class page URL counts), a skill or stigma (name or id) or a board node (id or save key); and it
+points at no guide or class record (its milestone, claims, `appliesTo`, `[[tip:…]]` links, `done` atoms). A record
+that fails either stays in the class guide.
 
 **Per-class compile (0.6 P2).** Each guide pack is one playable class (the `pack` a character stores). `generateAll()`
 in `tools/gen/gen.mjs` finds every guide pack below the root and compiles each one's chain on its own (every check runs

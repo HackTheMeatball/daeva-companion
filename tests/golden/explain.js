@@ -23,7 +23,7 @@ const fs = require('fs'), path = require('path');
 /* the records each change touches, from the raw data (for the table; the app reads the compiled graph) */
 function recordsOf(root, meta) {
   const read = f => JSON.parse(fs.readFileSync(path.join(root, 'data', f), 'utf8')).records;
-  const steps = read('packs/aion2/asmodian/assassin/guide/steps.json'), rqs = read('packs/aion2/asmodian/regional-quests.json'), story = read('packs/aion2/asmodian/story-quests.json');
+  const steps = [...read('packs/aion2/asmodian/guide/steps.json'), ...read('packs/aion2/asmodian/assassin/guide/steps.json')].sort((a, b) => (a.id < b.id ? -1 : 1)), rqs = read('packs/aion2/asmodian/regional-quests.json'), story = read('packs/aion2/asmodian/story-quests.json');
   const shs = read('packs/aion2/asmodian/strongholds.json');
   const leaves = a => !a ? [] : a.all ? a.all.flatMap(leaves) : a.any ? a.any.flatMap(leaves) : [a];
   const byStep = r => (r.completesWith || []).some(e => e && e.storyStep);
