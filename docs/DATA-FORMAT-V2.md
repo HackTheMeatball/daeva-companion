@@ -74,8 +74,9 @@ collection, the text tokens, `any` without `not`, and the field mapping.
    it was checked on. The owner's screen outranks everything.
 5. **Every step says when it opens and when it is done** (`requires` / `completesWith`).
 6. **Every located record says where it is** (zone at minimum), so Next up can rank by where the player is (F15).
-7. **Saves never break.** Every save key that exists today stays valid and means the same thing. The save gains fields
-   only additively (5c).
+7. **Saves break only cleanly, and only before 1.0.** Within one save key every item key stays valid and means the same
+   thing, and the save gains fields only additively (5c). Before 1.0 a change may bump the key and reset saves (CLAUDE.md
+   "Saved progress"; 0.4.0 did); from 1.0 saves never break.
 8. **No visible change in 0.2.** 5b compiles v2 into the constants the app uses today; acceptance is "golden
    identical".
 9. **The generator compiles, it does not research.** Corrected values are stored in the data (the source's differing
