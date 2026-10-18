@@ -22,10 +22,11 @@ CLAUDE.md accepts as verified. GUESS means inferred and labelled for P4/P5.
   + 3 per skill level). All 22 are read from the skill pages, so P4 needs no "inferred" gate (CONFIRMED).
 - **Found an Assassin data bug on the way.** Assassin's Revitalization Contract is marked `stepped` (labelled
   inferred) in our data. Its Metabot page shows a **flat** gate at Lv 23 (CONFIRMED, one extra request). Stepped puts
-  skill Lv 9 and 10 at character Lv 44 and 47, so the guide gates them too late or never. This is outside P4's files;
-  §5 proposes a separate fix.
+  skill Lv 9 and 10 at character Lv 44 and 47. No guide file uses this skill today, so players see no change: it
+  is a data-correctness fix outside P4's files; §5 proposes it.
 - **Stigma max level 25 now shows on all 13 Gladiator stigma pages and in the class page's stigma header.** That is
-  still one source (Metabot), so `maxLevel` stays `single-source` until the owner's in-game check (§4).
+  still one source (Metabot), so `maxLevel` stays `single-source`. It does not matter for a leveling guide (§4.1), so
+  the owner check no longer asks for it (changed 18 Oct, 1:39 AM ET).
 - **The build advice has one voice.** Metabot's editorial "Leveling 1–45" build and its top-player pick rates disagree
   on stigma order (§3). Both are Metabot, so P5 has to label every advice field `single-source` unless the owner or a
   second source settles it.
@@ -138,11 +139,21 @@ it only narrows what the check needs to cover:
 
 1. **D8 answer.** If he names a class other than Gladiator, P4 and P5 for Gladiator stop and this pack waits for 0.7;
    a new research pack for that class is about 40 requests (this run's size).
-2. **Stigma max level** on any Gladiator stigma: 25 or 40? Decides `maxLevel` and whether the `single-source` label
-   comes off.
-3. **Three learn levels** in the Skills window, suggested: Mocking Blade 3, Rush Strike 10, Ruinous Blow 14.
-4. **One flat gate (optional, cheap):** at Lv 21 or higher, is Experienced Counterstrike's skill Lv 3 open? (Yes =
+2. **Three learn levels** in the Skills window, suggested: Mocking Blade 3, Rush Strike 10, Ruinous Blow 14.
+3. **One flat gate (optional, cheap):** at Lv 21 or higher, is Experienced Counterstrike's skill Lv 3 open? (Yes =
    flat, as Metabot says.) The same check on Assassin's Revitalization Contract at Lv 23 settles §5.
+
+### 4.1 Why the stigma max level was dropped from the check
+
+A character gets about **30 stigma points by Lv 45** from leveling: 29 from levels 23–45 plus 1 from the Ascension
+reward (`rule:stigma-points-per-level` in `data/packs/aion2/rules.json`; sources
+[Metabot stigma guide](https://metabot.gg/en/aion-2/guides/stigma-guide) and
+[allthings.how](https://allthings.how/?p=244997)). Taking one stigma from Lv 1 to Lv 20 costs **75 points**
+(5 × 1 + 5 × 2 + 5 × 4 + 5 × 8, `rule:stigma-shard-cost`, same two sources; the Gladiator stigma pages in
+`gladiator-stigmas-metabot-2026-10.csv` show the same bands). So no stigma reaches Lv 20 before Lv 45, and whether the
+cap is 25 or 40 changes nothing the guide shows (CONFIRMED arithmetic on 2-source rules). The Abyss and Nightmare shops
+that sell more shards open only at Lv 45 (rule note, PlayNews). The owner's Reddit screenshot (18 Oct) shows the same
+1 / 2 / 4 / 8 bands and the 75 total; Reddit is not an approved source, so it is corroboration only.
 
 ## 5. Proposed follow-up outside this pack
 
@@ -150,14 +161,15 @@ it only narrows what the check needs to cover:
 with `fieldStatus.levelGate: "inferred"`. [Metabot](https://metabot.gg/en/aion-2/skills/revitalization-contract) shows
 character Lv 23 for skill levels 2–10 (flat), the same pattern as Assassin's Defense Break (21) and Determination (25)
 and the Gladiator's three late passives. Every passive learned at Lv 21 or later is flat on both classes (CONFIRMED
-for the five pages read). Proposed fix: set it to `flat`, cite that page, drop the `inferred` label; this changes which
-steps the Assassin guide shows from Lv 23, so it needs golden updates and before / after shots. It is a separate item
+for the five pages read). Proposed fix: set it to `flat`, cite that page, drop the `inferred` label. No guide file references
+the skill (its `skills.json` note says it is not used by the guide build), so this is a data-correctness fix with no
+visible change; golden updates and shots are needed only if the follow-up finds an output that changes. It is a separate item
 for the pipeline, not part of P4 (P4 owns only Gladiator files).
 
 ## 6. Fetching record
 
 Policy followed (CLAUDE.md "Fetching"): robots.txt and the terms page first, User-Agent
-`DaevaCompanionResearch/0.1 (+https://daevacompanion.com)`, one request at a time, at least 6 s apart (under 12 per
+`DaevaCompanionResearch/0.1 (+https://daevacompanion.com)`, one request at a time, at least 5 s apart (under 12 per
 minute), stop on 403 / 429 / a challenge page. **42 requests, all to metabot.gg, all 200**, 11:13–11:19 PM ET on
 17 Oct. Pages cached in the session scratchpad only.
 
