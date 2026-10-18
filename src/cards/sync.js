@@ -25,8 +25,8 @@ export const syncLastGroup = code => code.split("-").pop();
 
 export function mountSync(o) {
   const T = o.T, $ = id => document.getElementById(id);
-  const sw = $("syncSw"), st = $("syncSt"), now = $("syncNow"), opts = $("syncOpts"), menu = $("syncMenu"), panel = $("syncPanel"),
-    msg = $("syncMsg"), reload = $("syncReload"), strip = document.querySelector("#xfer .xfer-text > span");
+  const sw = $("dcsSw"), st = $("dcsSt"), now = $("dcsNow"), opts = $("dcsOpts"), menu = $("dcsMenu"), panel = $("dcsPanel"),
+    msg = $("dcsMsg"), reload = $("dcsReload"), strip = document.querySelector("#xfer .xfer-text > span");
   if (!sw || !panel || !strip) return null;
   const stripOff = strip.textContent;
   const readRec = () => { try { const r = JSON.parse(o.store.get(SYNC_KEY)); return r && typeof r.code === "string" && parseSyncCode(r.code) ? r : null; } catch (e) { return null; } };
@@ -57,7 +57,7 @@ export function mountSync(o) {
   function open(title, parts) {
     closeMenu();
     panel.replaceChildren(el("h2", "", title), ...parts);
-    panel.querySelector("h2").id = "syncPanelH";
+    panel.querySelector("h2").id = "dcsPanelH";
     panel.hidden = false; panel.focus();
   }
   function close() { panel.hidden = true; panel.replaceChildren(); pending = false; if (!rec) status = null; paint(); sw.focus(); }
@@ -75,7 +75,7 @@ export function mountSync(o) {
   function stepNew(old) {
     const code = newSyncCode(o.env), last = syncLastGroup(code);
     pending = !old; if (!old) status = "never"; paint();
-    const id = "syncConfirm", lab = el("label", "sync-field", T["code.confirm"]), inp = el("input", "sync-input");
+    const id = "dcsConfirm", lab = el("label", "sync-field", T["code.confirm"]), inp = el("input", "sync-input");
     lab.htmlFor = id; inp.id = id; inp.placeholder = T["code.confirmHint"]; inp.autocomplete = "off"; inp.spellcheck = false; inp.setAttribute("autocapitalize", "characters");
     const ok = btn(T["code.saved"], "primary", async () => {
       if (old) await deleteCloudCopy({ host: o.host, keys: await syncKeys(o.env, parseSyncCode(old.code)) });
@@ -182,7 +182,7 @@ export function mountSync(o) {
   menu.addEventListener("keydown", e => { if (e.key === "Escape") { closeMenu(); opts.focus(); } });
   setInterval(() => { if (status === "synced") paint(); }, 60000);
 
-  $("syncLbl").textContent = T.label; sw.setAttribute("aria-label", T.label);
+  $("dcsLbl").textContent = T.label; sw.setAttribute("aria-label", T.label);
   now.textContent = T.now; opts.textContent = T.options + " ▾"; reload.textContent = T["status.reload"];
   const note = o.note.get(SYNC_NOTE); if (note) { o.note.remove(SYNC_NOTE); say(T[note]); }
   paint();
