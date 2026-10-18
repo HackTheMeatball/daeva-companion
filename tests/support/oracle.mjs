@@ -167,7 +167,9 @@ export function loadOracle({ root, apply = new Set() }) {
      P.boundSet(c, { R }) → Set of Kibelisk ids    §8.1: a visited point within R, a "bind:" tick, a visited `binds` objective
      P.nudge(c, { R }) → { kib, m } | null         §8.2: the current quest's turn-in at R < m ≤ nudge radius from its
                                                    Kibelisk, not bound, the first in-band point of that Kibelisk in story order
-     P.turnin(quest) → { anchor, m, map } | null   the quest's turn-in point (the nudge's target) */
+     P.turnin(quest) → { anchor, m, map } | null   the quest's turn-in point (the nudge's target)
+     P.teleport(c, here, { preferRun, showTalk }) → { kib, m, walk } | null   §8.3: the story card's travel line (0.5
+                                                   P16), only once every shown objective but "Turn in" is ticked */
 export function loadPlaceOracle({ root, O }) {
   const recs = f => read(root, f).records;
   const story = recs('packs/aion2/asmodian/story-quests.json'), rqs = recs('packs/aion2/asmodian/regional-quests.json');
@@ -264,5 +266,24 @@ export function loadPlaceOracle({ root, O }) {
     if (!first || first.i !== sIdx.get(c.quest) || first.w !== 'turnin' || boundSet(c, { R }).has(T.anchor)) return null;
     return { kib: T.anchor, m: T.m };
   }
-  return { R: R0, nudgeR, gain, kibs, whereNow, boundSet, nudge, turnin };
+  /* §8.3 on the story card: the target is the next open objective's point, else the turn-in (§3); objectives carry no
+     points the app uses yet, so: the current quest's turn-in (not turned in) once every shown step but a "Turn in" one
+     is ticked, else none. Shown: all with showTalk, else not the talk-only ones (the guide's objective grammar: the part
+     after " — " starts "talk to" / "talk via", the part before isn't Deliver / Find / Rendezvous / Go; never a Turn in).
+     Teleport iff not preferRun, its Kibelisk bound, and (both points on one map) straight-line walk − T.m ≥ gain, or
+     (else) here's zone known and not the target's (the Kibelisk's zone, else the quest's) */
+  const TURN_IN = /^Turn in\b/i;
+  const talkOnly = t => { const [a, b = ''] = t.split(' — '); return !TURN_IN.test(a) && /^talk (to|via)\b/i.test(b) && !/^(Deliver|Find|Rendezvous|Go)\b/i.test(a); };
+  function teleport(c, here, { preferRun = false, showTalk = false } = {}) {
+    if (preferRun || !here || !c.quest || c.storyEnd === c.quest || !sIdx.has(c.quest)) return null;
+    const s = chain[sIdx.get(c.quest)], ticked = (c.qsteps || {})[s.key] || [];
+    if (s.steps.some(x => !TURN_IN.test(x.text) && (showTalk || !talkOnly(x.text)) && !ticked.includes(x.i))) return null;
+    const T = pointOf(s.turnin);
+    if (!T || !T.anchor || T.m == null || !boundSet(c).has(T.anchor)) return null;
+    const a = here.pt, b = ptOf(T), walk = a && b && a.map === b.map ? Math.hypot(a.x - b.x, a.y - b.y) : null;
+    const zone = kibs.get(T.anchor).zone || storyZone(s);
+    const go = walk === null ? !!here.zone && here.zone !== zone : walk - T.m >= gain;
+    return go ? { kib: T.anchor, m: T.m, walk } : null;
+  }
+  return { R: R0, nudgeR, gain, kibs, whereNow, boundSet, nudge, turnin, teleport };
 }
