@@ -54,6 +54,7 @@
    last. The parts under an objective get 3 px padding (was 1) so their 24 px areas don't reach each other. */
 #nowStar .ns-obj label { position: relative; }
 #nowStar .ns-obj label::before { content: ""; position: absolute; inset: calc(-1 * var(--space-4)) 0; }
+#nowStar .ns-obj input { position: relative; z-index: 1; } /* the box itself stays on top of its label's area */
 #nowStar .ns-obj .qs-sub li { padding: var(--space-3) 0 !important; overflow: visible; }
 #nowStar .ns-obj .qs-sub label::before { inset: calc(-1 * var(--space-5)) 0; }
 .ns-obj small { display: block; color: var(--muted); font-size: 11.5px; }
