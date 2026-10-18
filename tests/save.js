@@ -275,17 +275,21 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     ok('rename: Cancel goes back to the row, nothing saved', !(await p.$('#charRen')) && await readRaw(p) === raw0);
     await p.click(`[data-rename="${B}"]`); await p.fill('#charRen', '  Nyx ');
     await Promise.all([p.waitForEvent('load'), p.keyboard.press('Enter')]); await p.waitForTimeout(400);
+    /* the rename's change time (mt.name = [t, name], 0.6 P21: merge() keeps the later rename) is the page's clock: taken
+       from the stored save after checking it is a dated stamp of the new name */
+    const nameStampOf = (raw, id) => { const s = raw && JSON.parse(raw).chars[id].mt.name; return Array.isArray(s) && s.length === 2 && Number.isInteger(s[0]) && s[0] > 1.7e9 ? s : null; };
     const want = JSON.parse(raw0); want.chars[B].name = 'Nyx';
     await p.reload(); await p.waitForTimeout(400);
-    const raw1 = await readRaw(p);
-    ok('rename: after a reload the stored save differs only in that slot\'s name (trimmed)', raw1 === JSON.stringify(want), raw1 && diffPaths(want, JSON.parse(raw1)));
+    const raw1 = await readRaw(p), st1 = nameStampOf(raw1, B); want.chars[B].mt.name = st1;
+    ok('rename: after a reload the stored save differs only in that slot\'s name (trimmed) and its stamp', st1 && st1[1] === 'Nyx' && raw1 === JSON.stringify(want), raw1 && diffPaths(want, JSON.parse(raw1)));
     await p.click('#charBtn');
     const rows1 = await rowsOf(p);
     ok('rename: the list shows Nyx-assassin-lvl40; the current character and the control are unchanged', rows1[0].lbl === 'Nyx-assassin-lvl40' && rows1[1].cur === 'true' && await p.evaluate(() => document.getElementById('charLbl').textContent) === 'assassin-lvl22', rows1);
     await p.click(`[data-rename="${TEST_SLOT}"]`); await p.fill('#charRen', 'Zed');
     await Promise.all([p.waitForEvent('load'), p.click('#charRenSave')]); await p.waitForTimeout(400);
-    const want2 = JSON.parse(raw1); want2.chars[TEST_SLOT].name = 'Zed';
-    ok('rename the current character: the control shows Zed-assassin-lvl22; only its name changed', await p.evaluate(() => document.getElementById('charLbl').textContent) === 'Zed-assassin-lvl22' && await readRaw(p) === JSON.stringify(want2));
+    const raw2 = await readRaw(p), st2 = nameStampOf(raw2, TEST_SLOT);
+    const want2 = JSON.parse(raw1); want2.chars[TEST_SLOT].name = 'Zed'; want2.chars[TEST_SLOT].mt.name = st2;
+    ok('rename the current character: the control shows Zed-assassin-lvl22; only its name (and its stamp) changed', await p.evaluate(() => document.getElementById('charLbl').textContent) === 'Zed-assassin-lvl22' && st2 && st2[1] === 'Zed' && raw2 === JSON.stringify(want2), raw2 && diffPaths(want2, JSON.parse(raw2)));
     ok('rename: "Nyx" and "Zed" in no storage key, URL or title', await p.evaluate(() => [...Object.keys(localStorage), location.href, document.title].every(x => !/Nyx|Zed/.test(x))));
     ok('rename: no page errors', !errs.length, errs);
     await ctx.close();
