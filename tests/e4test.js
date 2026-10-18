@@ -123,9 +123,12 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   r = await p.evaluate(() => ({ z: RQ_BY['Nine Wonders of Altgard: 2nd Leg'].zone, pu: RQ_BY['Pain Unending'].zone }));
   ok('#11 Nine Wonders 2nd Leg in Battlescar Mound (giver Tina at Battlescar Mound Cliff), as Pain Unending', r.z === 'Battlescar Mound' && r.pu === 'Battlescar Mound', r);
   /* the build makes the module src/packs/aion2/data/generated.js from data/** (tools/gen/gen.mjs) and esbuild reprints it into the
-     page, so: every constant the generator compiles has the same value in the page */
+     page, so: every constant the generator compiles has the same value in the page. 0.6 P1: except the tables no file
+     under src/ names, which the build leaves out of the page (scripts/generated-data.mjs unusedTables) */
   const gen = (await import(path.join(ROOT, 'tools', 'gen', 'gen.mjs'))).generate().constants;
-  const names = Object.keys(gen);
+  const unused = (await import(path.join(ROOT, 'scripts', 'generated-data.mjs'))).unusedTables();
+  const names = Object.keys(gen).filter(n => !unused.includes(n));
+  ok('#11 the tables left out of the page are the unused ones only (none the page code reads)', unused.length <= 6 && await p.evaluate(ns => ns.every(n => { try { eval(n); return false; } catch (e) { return e instanceof ReferenceError; } }), unused), unused);
   const genWant = JSON.stringify(Object.fromEntries(names.map(n => [n, gen[n]])));
   const have = await p.evaluate(ns => JSON.stringify(Object.fromEntries(ns.map(n => [n, eval(n)]))), names);
   ok('#11 page carries the current generated data (the page has its values)', names.length >= 14 && have === genWant, { names: names.length, same: have === genWant });
