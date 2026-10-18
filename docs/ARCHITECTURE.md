@@ -387,8 +387,17 @@ produced the v1 files (provenance; they no longer match `data/`). `tools/history
   no save or its pack isn't shipped) and sets `self.DAEVA_PACK`. Site: each chunk is `dist/packs/<id>.<hash>.js`
   (content hash, so a new `index.html` never meets a stale cached chunk), precached by the service worker, and the loader
   writes one `<script src>` for the chosen one with `document.write` (it must run before the app script, which reads the
-  tables at once). claude.ai: one file, no fetch, so every chunk is inlined after the loader (its own byte budget covers
-  that). The class is chosen once per page load; with one class shipped that is always right, and switching to a character of
+  tables at once). claude.ai: one file, no fetch, so the chunks of the classes in `ARTIFACT_CLASSES`
+  (`scripts/build.mjs`, 0.7 A1; today the Assassin and the Ranger) are inlined after the loader, which also sets
+  `self.DAEVA_CLASSES` to that list; every other playable class is site-only. There the character picker offers only the
+  listed classes (`src/cards/characters.js`), and a save whose current character has a site-only class loads on the
+  default class's tables with one line under the character button (the game pack's `siteOnlyNote` in
+  `data/packs/aion2/pack.json`, compiled to `SITE_ONLY_NOTE`); the save is left as it is. The site sets no list and
+  offers every class. **Adding a class to the artifact**: append its guide pack id to `ARTIFACT_CLASSES` and build; the
+  `dist-artifact/index.html` byte budget decides (the build fails over it, and the budget is not raised for a class: it
+  stays site-only instead). The default pack must be in the list. `node scripts/build.mjs --artifact-classes <id,…> --out
+  <dir>` builds with another list into another folder (the `site` and `save` suites use it to check a site-only class).
+  The class is chosen once per page load; with one class shipped that is always right, and switching to a character of
   another class will need a reload (not built yet: no second class ships).
   With the Assassin pack alone the page is the same (golden identical); the site's `index.html` plus its chunk is
   696,352 B against 695,380 B in one file before (+0.14%).

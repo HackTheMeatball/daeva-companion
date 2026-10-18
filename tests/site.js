@@ -1,6 +1,6 @@
 /* Standalone-site checks (the parts of the repo build that the single-file suites don't cover).
    node tests/site.js  (page at AION_BASE; see tests/config.js) */
-const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path'); const CFG = require('./config');
+const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path'); const { execFileSync } = require('child_process'); const CFG = require('./config');
 let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' : 'FAIL ') + name + (!c && d !== undefined ? '  · ' + JSON.stringify(d).slice(0, 600) : '')); if (!c) fail++; };
 /* fonts are self-hosted since 0.1.5; the suites block them (tests/support/block-web-fonts.cjs), so their requests fail */
 const FONT_LOCAL = /\/assets\/fonts\/[^/]+\.woff2$/;
@@ -331,6 +331,21 @@ const checkReport = (label, m, want) => {
     const noBlob = Object.keys(blobs).filter(n => blobs[n] === null), web = [path.join(CFG.ROOT, 'dist', 'index.html'), ...chunkFiles.map(f => path.join(CFG.ROOT, 'dist', 'packs', f))].map(f => fs.readFileSync(f, 'utf8')).join('\n');
     ok('artifact build: one file with every class chunk inlined (no script src, no fetch of dist/packs/)', chunkFiles.length > 0 && !/<script[^>]* src=|packs\/[\w.-]+\.js/.test(art)
       && chunkFiles.every(f => { const id = fs.readFileSync(path.join(CFG.ROOT, 'dist', 'packs', f), 'utf8').match(/^self\.DAEVA_PACK==="([\w/-]+)"/); return id && art.includes(`self.DAEVA_PACK==="${id[1]}"&&(self.DAEVA_CLASS=`); }), chunkFiles);
+    /* 0.7 A1: ARTIFACT_CLASSES decides which chunks the artifact inlines. Built with the Assassin alone (under tests/out/),
+       the Ranger stands for a third playable class: in the site's chunks, not in the artifact; the site build unchanged;
+       budgets green (the build exits 0 only then) */
+    {
+      const OUT = 'tests/out/a1-site', log = execFileSync(process.execPath, ['scripts/build.mjs', '--artifact-classes', 'aion2/asmodian/assassin', '--out', OUT], { cwd: CFG.ROOT, encoding: 'utf8' });
+      const rd2 = f => fs.readFileSync(path.join(CFG.ROOT, OUT, f), 'utf8'), small = rd2('dist-artifact/index.html'), smallChunks = fs.readdirSync(path.join(CFG.ROOT, OUT, 'dist', 'packs')).sort();
+      const has = (html, id) => html.includes(`self.DAEVA_PACK==="${id}"&&(self.DAEVA_CLASS=`);
+      ok('artifact classes: the default artifact inlines the Assassin and the Ranger and names them', has(art, 'aion2/asmodian/assassin') && has(art, 'aion2/asmodian/ranger') && art.includes('self.DAEVA_CLASSES=Object.keys(F)'));
+      ok('artifact classes: with the Assassin alone, the Ranger is a site chunk and not in the artifact', has(small, 'aion2/asmodian/assassin') && !has(small, 'aion2/asmodian/ranger') && small.includes('{const F={"aion2/asmodian/assassin":1};')
+        && JSON.stringify(smallChunks) === JSON.stringify(chunkFiles.slice().sort()) && smallChunks.some(f => f.startsWith('aion2-asmodian-ranger.')), smallChunks);
+      ok('artifact classes: the site build is the same whatever the artifact carries', rd2('dist/index.html') === fs.readFileSync(path.join(CFG.ROOT, 'dist', 'index.html'), 'utf8') && rd2('dist/sw.js') === fs.readFileSync(path.join(CFG.ROOT, 'dist', 'sw.js'), 'utf8'));
+      const budgets = log.split('\n').filter(l => /^\s+budget /.test(l));
+      console.log(budgets.map(l => '     ' + l.trim()).join('\n'));
+      ok('artifact classes: budgets green, the build lists the Ranger as site only', budgets.length === 3 && /site only: aion2\/asmodian\/ranger/.test(log), log);
+    }
     ok('artifact build: icons without a blob id are on the site build and in dist/assets/icons, absent from the artifact', noBlob.every(n => web.includes(`assets/icons/${n}.png`) && fs.existsSync(path.join(CFG.ROOT, 'dist', 'assets', 'icons', n + '.png')) && !art.includes(n + '.png')), noBlob);
     ok('artifact build: no service worker, manifest, canonical or document skeleton', !/serviceWorker|manifest\.webmanifest|rel="canonical"|<!doctype|<head>|<body>/i.test(art) && art.startsWith('<title>'));
     const ctx = await b.newContext({ viewport: { width: 1500, height: 1000 } });
