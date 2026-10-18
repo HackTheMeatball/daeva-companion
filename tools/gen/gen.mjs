@@ -260,6 +260,11 @@ export function generate(opts = {}) {
   for (const u of unlocks.filter(u => u.hotkey)) { const s = (u.sources || []).find(s => s.owner && s.owner.ref === u.hotkey.ref);
     check(`${u.id}: hotkey ${u.hotkey.key} is on its owner screen ${u.hotkey.ref}`, !!s && s.owner.what.includes(`(${u.hotkey.key})`), s ? s.owner.what : 'no such owner source'); }
   const HOTKEYS = Object.fromEntries(unlocks.filter(u => u.hotkey).map(u => [u.id, u.hotkey.key]));
+  /* game terms explained (0.6 P18): id → { t: the term, x: one sentence }; only verified records (two sources or the
+     owner's screens), at most 12 (the schema caps the file) */
+  const terms = R('terms');
+  for (const t of terms) check(`${t.id}: a term explanation is verified`, t.status === 'verified', t.status);
+  const TERMS = Object.fromEntries(terms.filter(t => t.status === 'verified').map(t => [t.id, { t: t.term, x: t.text }]));
   /* The Ascension chapters in order, for the Journey card's Ascension bar (0.3 E8, design §11): id (its GATE_GRAPH node),
      name, chapter, recommended level, inCap (false: past Lv 45, never a bar segment), step = the guide step whose stored
      tick also completes it (guideStep; a step that names its Ascension quest must be that step). */
@@ -322,7 +327,7 @@ export function generate(opts = {}) {
     ['story', 'Main story', [...story, ...asc]],
     ['areas', 'Strongholds and Sealed Dungeons', [...shs, ...sds, ...ruleRecs.filter(r => r.kind === 'firstClearReward')]],
     ['build', 'Skills, boards and stigmas', [...skills, ...stigmas, ...boards, ...nodes, ...builds, cls, ...ruleRecs.filter(r => r.kind !== 'firstClearReward'), ...unlocks, ...items]],
-    ['claims', 'Tips and rules', [...claims, ...Object.values(zones), ...R('kibelisks')]],
+    ['claims', 'Tips and rules', [...claims, ...Object.values(zones), ...R('kibelisks'), ...terms]],
     ['old', 'Leveling guides, build and tips', pages.map(p => p.url)],
   ];
   const SOURCES = [], seen = new Set();
@@ -567,7 +572,7 @@ export function generate(opts = {}) {
   const failed = report.checks.filter(c => !c.pass);
   /* ---------------------------------------------------------------- the module */
   const C = { RQ, RQ_STATS, QUESTS_X, QUEST_STEPS_X, QUEST_LOC_X, STORY_END, SH_DATA, AREA_LOC, SD_RW, SP_EXTRA, DV_BOARDS, SOURCES, SRC_SITE, CONF,
-    QUESTS, QUEST_STEPS, QUEST_STEP_NOTES, QUEST_LOC, STORY_UNLOCKS, UNLOCK_GATE, VERIFIED_UNLOCKS, HOTKEYS, ASCENSION, GUIDE_GATES, GUIDE_STEPS, TIPS, ITEMS, HIDEOUT_AREA, ZONE_TRACES, SD_REWARD, SH_REWARD,
+    QUESTS, QUEST_STEPS, QUEST_STEP_NOTES, QUEST_LOC, STORY_UNLOCKS, UNLOCK_GATE, VERIFIED_UNLOCKS, HOTKEYS, TERMS, ASCENSION, GUIDE_GATES, GUIDE_STEPS, TIPS, ITEMS, HIDEOUT_AREA, ZONE_TRACES, SD_REWARD, SH_REWARD,
     STAT_TIERS, STAT_SRC, STAT_NOTE, STIGMA_PLAN, ST_TARGETS, SP_SKILLS_CORE, LEVEL_POINTS, RMB_ROWS, E_ORDER, SP_ICONS, STIGMA_ICON,
     RULE_SKILL_POINT_COST, RULE_SPEC_SLOTS, RULE_NODE_COSTS, RULE_SHARD_COST };
   const J = v => JSON.stringify(v);

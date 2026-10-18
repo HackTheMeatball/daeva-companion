@@ -488,6 +488,40 @@ async function load(p, state, mode) {
     }
   }
 
+  /* ---------- 0.6 P18: a term's explanation is a disclosure (mockup §1.4): the mark is a button with aria-expanded that
+     names its note with aria-describedby; Enter / Space open and close it, Esc closes it and focus stays on the mark, one
+     is open at a time; on a phone focus alone doesn't open it, on desktop focus does. ---------- */
+  for (const [width, opts] of [[390, { isMobile: true, hasTouch: true }], [1500, {}]]) {
+    const id = `term ${width}px`, { ctx, p } = await page(width, opts);
+    await load(p, { level: 22, quest: 'Cemetery Cleanup', checks: {}, open: {} }, 'advanced');
+    await p.evaluate(() => { document.getElementById('syncBox').open = true; document.querySelectorAll('#spCard details.mini').forEach(d => { d.open = true; }); });
+    const st = sel => p.evaluate(s => { const b = document.querySelector(s), n = b && document.getElementById(b.getAttribute('aria-describedby'));
+      return { tag: b && b.tagName, type: b && b.type, name: b && b.textContent.trim(), exp: b && b.getAttribute('aria-expanded'), ctl: b && b.getAttribute('aria-controls'),
+        note: n ? n.textContent : null, shown: !!n && !n.hidden && n.offsetHeight > 0, inCard: !!n && !!n.closest('section.card'), focus: document.activeElement === b }; }, sel);
+    const DV = 'button.term[data-term="term:daevanion"]', SPEC = 'button.term[data-term="term:specialty"]';
+    await p.focus(DV);
+    const f = await st(DV);
+    ok(`${id}: the mark is a named button with aria-expanded, describedby its note (one sentence, at most 140 characters)`, f.tag === 'BUTTON' && f.type === 'button' && f.name === 'Daevanion'
+      && !!f.ctl && f.note && f.note.length <= 140 && /^[^.!?]+[.!?]$/.test(f.note) && f.inCard, f);
+    ok(`${id}: focus ${width > 860 ? 'opens' : "doesn't open"} it`, width > 860 ? f.exp === 'true' && f.shown : f.exp === 'false' && !f.shown, f);
+    if (width > 860) { await p.keyboard.press('Escape'); ok(`${id}: Esc closes it, focus stays on the mark`, await st(DV).then(x => x.exp === 'false' && !x.shown && x.focus)); }
+    await p.keyboard.press('Enter');
+    ok(`${id}: Enter opens it, in the card's flow`, await st(DV).then(x => x.exp === 'true' && x.shown && x.focus));
+    await p.addScriptTag({ content: AXE });
+    const ax = await p.evaluate(async () => (await axe.run('#spCard', { resultTypes: ['violations'] })).violations.map(v => ({ id: v.id, n: v.nodes.length })));
+    ok(`${id}: axe on the Skills card with a note open, no violations outside the allowlist`, !ax.filter(v => !ALLOW[v.id]).length, ax);
+    await p.keyboard.press('Enter');
+    ok(`${id}: Enter again closes it`, await st(DV).then(x => x.exp === 'false' && !x.shown));
+    await p.keyboard.press('Space');
+    ok(`${id}: Space opens it`, await st(DV).then(x => x.exp === 'true' && x.shown));
+    await p.focus(SPEC); await p.keyboard.press('Enter');
+    const [a, s] = [await st(DV), await st(SPEC)];
+    ok(`${id}: one open at a time`, a.exp === 'false' && !a.shown && s.exp === 'true' && s.shown, { a, s });
+    await p.keyboard.press('Escape');
+    ok(`${id}: Esc closes it`, await st(SPEC).then(x => x.exp === 'false' && !x.shown && x.focus));
+    await ctx.close();
+  }
+
   /* ---------- 0.5 P5: bottom tab bar and Build sheet at 390 px ---------- */
   {
     const { ctx, p } = await page(390, { isMobile: true, hasTouch: true });

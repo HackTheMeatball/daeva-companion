@@ -1,0 +1,8 @@
+/* Game terms explained (0.6 P18, src/packs/aion2/terms.js; mockup docs/design/0.6-onboarding-mockup.md §1.4, frames
+   T1 / DT1): the term's first use on a card, dotted underline and a small "?", a button in the sentence's own type; its
+   note right under the line, in the card's flow, in the popover look. */
+button.term { display: inline; margin: 0; padding: 0; border: 0; border-bottom: 1px dotted var(--accent-text); border-radius: 0; background: none; font: inherit; font-weight: 600; color: var(--fg); line-height: inherit; cursor: help; }
+button.term::after { content: "?"; margin-left: var(--space-4); font: 600 10px var(--mono); color: var(--accent-text); vertical-align: 2px; }
+button.term[aria-expanded="true"] { border-bottom-style: solid; }
+.term-note { margin: var(--space-8) 0; background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--radius-8); box-shadow: var(--shadow-popover); padding: var(--space-10) var(--space-12); font-size: 12.5px; line-height: 1.45; color: var(--fg); }
+.term-note[hidden] { display: none; }

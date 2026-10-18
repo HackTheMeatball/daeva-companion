@@ -1,0 +1,71 @@
+{
+  "$schema": "../schema/terms.schema.json",
+  "schemaVersion": 2,
+  "collection": "terms",
+  "records": [
+    {
+      "id": "term:daevanion",
+      "term": "Daevanion",
+      "text": "Your class's boards of nodes; each node costs 1 to 4 points and adds stats, a passive or levels to a skill.",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/guides/daevanion-guide"
+        },
+        {
+          "url": "https://skycoach.gg/blog/aion-2/articles/daevanion-board"
+        },
+        {
+          "url": "https://gamewith.ai/aion2/en/daevanion-planner/assassin",
+          "note": "1/2/3/4 by grade"
+        }
+      ],
+      "status": "verified",
+      "notes": [
+        "Facts from rule:node-costs (node costs 1-4 by type: stat, passive, active, corner; same three sources) and rule:specialty-slots (a skill's board nodes add to its level)."
+      ],
+      "verifiedAt": "2026-10-12"
+    },
+    {
+      "id": "term:specialty",
+      "term": "specialty",
+      "text": "An extra effect you pick for an active skill; its three slots open at skill level 8, 12 and 20.",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/heart-gore"
+        },
+        {
+          "url": "https://gameplay.tips/guides/aion-2-skills-guide-active-passive-and-stigma.html"
+        },
+        {
+          "inferred": "Owner-confirmed in game (docs/feedback/2026-10-14-owner.md F4): 3 slots per active skill at effective skill level 8 / 12 / 20 (rule:specialty-slots)."
+        }
+      ],
+      "status": "verified",
+      "notes": [
+        "Facts from rule:specialty-slots (slots at effective skill level 8 / 12 / 20, active skills only)."
+      ],
+      "verifiedAt": "2026-10-12"
+    },
+    {
+      "id": "term:stigma",
+      "term": "stigma",
+      "text": "An extra skill learned with Stigma Shards from Lv 22; you equip up to four, one slot each at Lv 22, 27, 32 and 37.",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/guides/stigma-guide"
+        },
+        {
+          "url": "https://allthings.how/?p=244997"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/content-unlocks"
+        }
+      ],
+      "status": "verified",
+      "notes": [
+        "Facts from rule:stigma-slots (4 slots on global at 22 / 27 / 32 / 37) and rule:stigma-shard-cost (learning one is its level 1, paid in shards); same sources."
+      ],
+      "verifiedAt": "2026-10-12"
+    }
+  ]
+}
