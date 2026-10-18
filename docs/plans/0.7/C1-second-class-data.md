@@ -34,4 +34,6 @@ L.
 
 Lanes: gen. Model: Opus. Stall limit: 120 min (L).
 
-After: research-spiritmaster (or the named class's research token).
+If the owner names another class, the Release Planner changes this token to that class's research file.
+
+After: research-spiritmaster
