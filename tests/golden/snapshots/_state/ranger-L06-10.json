@@ -1,0 +1,24 @@
+{
+  "ranger/L10-q12-none-A": {
+    "in": "87ba573c26b2",
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true]
+    },
+    "mode": "advanced"
+  },
+  "ranger/L10-q12-none-B": {
+    "in": "a0f377734c3c",
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true]
+    },
+    "mode": "basic"
+  }
+}

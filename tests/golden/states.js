@@ -247,6 +247,14 @@ function generate(C, { fixtures = [], all = false } = {}) {
   /* the smart Next up families (0.5 P11), after everything above */
   smartFamilies(C, G, (group, rest, flat) => { const i = group + '/' + rest; if (out.has(i)) throw new Error('states: duplicate state id ' + i);
     out.set(i, { id: i, tier: 'core', raw: storedText(flat) }); });
+  /* ranger (0.6 P5): a Ranger character (pack aion2/asmodian/ranger) at Lv 1 / 10 / 22 / 30 / 45, story on track, no
+     ticks (the tick rules read the Assassin's catalog), both modes; a group of its own, added last, so no Assassin state
+     moves or changes */
+  for (const lv of [1, 10, 22, 30, 45]) for (const mode of ['advanced', 'basic']) {
+    const r = { lv, qi: G.onTrack(lv), ticks: 'none', mode }, i = 'ranger/' + G.id(r), s = JSON.parse(storedText(G.state(r)));
+    for (const c of Object.values(s.chars)) Object.assign(c, { pack: 'aion2/asmodian/ranger', class: 'ranger' });
+    out.set(i, { id: i, tier: 'core', raw: JSON.stringify(s) });
+  }
 
   return [...out.values()].sort((a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
 }

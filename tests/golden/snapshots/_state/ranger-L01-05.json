@@ -1,0 +1,20 @@
+{
+  "ranger/L01-qxx-none-A": {
+    "in": "c52a230d0f7a",
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g6": ["(absent)",true]
+    },
+    "mode": "advanced"
+  },
+  "ranger/L01-qxx-none-B": {
+    "in": "603f1153c4b1",
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g6": ["(absent)",true]
+    },
+    "mode": "basic"
+  }
+}

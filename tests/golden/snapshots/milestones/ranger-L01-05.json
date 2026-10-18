@@ -1,0 +1,42 @@
+{
+  "ranger/L01-qxx-none-A": [
+    "g6 | 5 to go | 0/8 | upnext | open",
+    "g9 | Later | 0/6 | ",
+    "g10 | Later | 0/10 | ",
+    "g12 | Later | 0/11 | ",
+    "g15 | Later | 0/3 | ",
+    "g16 | Later | 0/15 | ",
+    "g19 | Later | 0/9 | ",
+    "g20 | Later | 0/3 | ",
+    "g22 | Later | 0/14 | ",
+    "g25 | Later | 0/9 | ",
+    "g27 | Later | 0/5 | ",
+    "g28 | Later | 0/4 | ",
+    "g30 | Later | 0/9 | ",
+    "g32 | Later | 0/12 | ",
+    "g35 | Later | 0/4 | ",
+    "g37 | Later | 0/5 | ",
+    "g40 | Later | 0/3 | ",
+    "g45 | Later | 0/32 | "
+  ],
+  "ranger/L01-qxx-none-B": [
+    "g6 | 5 to go | 0/8 | upnext | open",
+    "g9 | Later | 0/6 | ",
+    "g10 | Later | 0/10 | ",
+    "g12 | Later | 0/11 | ",
+    "g15 | Later | 0/3 | ",
+    "g16 | Later | 0/15 | ",
+    "g19 | Later | 0/9 | ",
+    "g20 | Later | 0/3 | ",
+    "g22 | Later | 0/14 | ",
+    "g25 | Later | 0/9 | ",
+    "g27 | Later | 0/5 | ",
+    "g28 | Later | 0/4 | ",
+    "g30 | Later | 0/9 | ",
+    "g32 | Later | 0/12 | ",
+    "g35 | Later | 0/4 | ",
+    "g37 | Later | 0/5 | ",
+    "g40 | Later | 0/3 | ",
+    "g45 | Later | 0/32 | "
+  ]
+}
