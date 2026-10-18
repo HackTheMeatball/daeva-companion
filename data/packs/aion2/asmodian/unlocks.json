@@ -106,6 +106,18 @@
       ],
       "sources": [
         {
+          "url": "https://metabot.gg/en/aion-2/content-unlocks",
+          "fields": [
+            "at"
+          ],
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot content unlocks, 'Unlocked by level' table read from the global client (Game Data Check, 2026-10-18)"
+        },
+        {
           "url": "https://metabot.gg/en/aion-2/content-unlocks"
         },
         {
@@ -132,7 +144,7 @@
           }
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-18",
       "status": "verified"
     },
     {
@@ -898,10 +910,22 @@
       "order": 40,
       "sources": [
         {
+          "url": "https://metabot.gg/en/aion-2/content-unlocks",
+          "fields": [
+            "at"
+          ],
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot content unlocks, 'Unlocked by level' table read from the global client (Game Data Check, 2026-10-18)"
+        },
+        {
           "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: Metabot, PlayNews, KeenGamer); the pages were not recorded. The 0.3 audit resolves each name to a page."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-18",
       "status": "verified",
       "notes": [
         "Owner recollection (not a screen), 2026-10-14: stigmas unlock at Lv 22, as Metabot says; aion2hub's Lv 23 is treated as wrong (DECISIONS 2026-10-14)."
@@ -917,10 +941,22 @@
       "order": 70,
       "sources": [
         {
+          "url": "https://metabot.gg/en/aion-2/content-unlocks",
+          "fields": [
+            "at"
+          ],
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot content unlocks, 'Unlocked by level' table read from the global client (Game Data Check, 2026-10-18)"
+        },
+        {
           "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: Metabot, PlayNews, KeenGamer); the pages were not recorded. The 0.3 audit resolves each name to a page."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-18",
       "status": "verified"
     },
     {
@@ -933,10 +969,22 @@
       "order": 120,
       "sources": [
         {
+          "url": "https://metabot.gg/en/aion-2/content-unlocks",
+          "fields": [
+            "at"
+          ],
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot content unlocks, 'Unlocked by level' table read from the global client (Game Data Check, 2026-10-18)"
+        },
+        {
           "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: Metabot, PlayNews, KeenGamer); the pages were not recorded. The 0.3 audit resolves each name to a page."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-18",
       "status": "verified"
     },
     {
@@ -949,10 +997,22 @@
       "order": 140,
       "sources": [
         {
+          "url": "https://metabot.gg/en/aion-2/content-unlocks",
+          "fields": [
+            "at"
+          ],
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot content unlocks, 'Unlocked by level' table read from the global client (Game Data Check, 2026-10-18)"
+        },
+        {
           "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: Metabot, PlayNews, KeenGamer); the pages were not recorded. The 0.3 audit resolves each name to a page."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-18",
       "status": "verified"
     },
     {
@@ -970,6 +1030,18 @@
       "order": 60,
       "sources": [
         {
+          "url": "https://metabot.gg/en/aion-2/content-unlocks",
+          "fields": [
+            "at"
+          ],
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot content unlocks, 'Unlocked by level' table read from the global client (Game Data Check, 2026-10-18)"
+        },
+        {
           "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: Metabot, allthings.how); the pages were not recorded. The 0.3 audit resolves each name to a page."
         },
         {
@@ -984,7 +1056,7 @@
           }
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-18",
       "status": "verified"
     },
     {
