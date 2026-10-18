@@ -101,7 +101,17 @@ export const planReachOf = x => { const N = activePack().data.graph.nodes, sid =
   if (!(sid in PLAN_REACH)) { const ns = Object.values(N);
     PLAN_REACH[sid] = Math.max(...ns.filter(n => n.kind === "skill" && n.skill === sid).map(n => n.L)) + ns.filter(n => n.kind === "plan" && n.skill === sid).reduce((t, n) => t + (n.adds ?? 1), 0); }
   return PLAN_REACH[sid]; };
-export const specPickOf = (c, x, ev = gatesOf(c)) => { const p = (x.s.specs || [])[x.slot - 1];
+/* The green "(+x)" beside a skill's level (0.6 P9; in game "Heart Gore Lv. 6 (+1)"): the sum of `adds` over the ticked plan
+   board nodes on skill `name` (the skill of its lines sp:<name>:<L>), 0 with none. A node without a numeric `adds` counts
+   nothing here (no default of 1, unlike the effective level): the card shows no bonus it has no data for. */
+const PLAN_BY_SKILL = new WeakMap();
+export const skillBonusOf = (c, name) => { const N = activePack().data.graph.nodes, line = N[`sp:${name}:2`];
+  if (!line || !line.skill) return 0;
+  if (!PLAN_BY_SKILL.has(N)) { const m = new Map();
+    for (const n of Object.values(N)) if (n.kind === "plan" && n.skill && typeof n.adds === "number" && n.key !== undefined) { if (!m.has(n.skill)) m.set(n.skill, []); m.get(n.skill).push(n); }
+    PLAN_BY_SKILL.set(N, m); }
+  return (PLAN_BY_SKILL.get(N).get(line.skill) || []).reduce((t, n) => t + (c.checks[n.key] ? n.adds : 0), 0); };
+export const specPickOf =(c, x, ev = gatesOf(c)) => { const p = (x.s.specs || [])[x.slot - 1];
   if (!gateChangeOn("specialtySlots")) return x.slot === 1 ? { t: x.s.spec, lv: x.slotLv } : null;
   return p && skillLvOf(c, x, ev) >= p.lv ? p : null; };
 /* The upgrade to buy now: the first open one, if you have the points (a specialty is free); else null. */
