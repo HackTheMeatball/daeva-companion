@@ -457,8 +457,15 @@ Not blockers (the recommendation applies unless the owner says otherwise):
 | Lane | What | Module |
 |---|---|---|
 | A | First-run welcome, Lv 1–10 tuning, terms explained, join mid-level (old 0.7 P1–P3) | onboarding module, guide text |
-| B | Gladiator pack (D8 default; owner can change), from its research pack: data, guide build, icons, golden snapshot, in-game spot check. It follows the 0.4 P1 pack layout: class data in `data/packs/aion2/classes/gladiator/`, its Asmodian guide in `data/packs/aion2/asmodian/gladiator/`, each with a manifest. First step: per-pack loading (moved from 0.4 P7), so the page carries only the chosen class; then the guide text both classes share is split out of the Assassin pack | its two pack folders only, after the loading step |
+| B | Ranger pack (the owner's choice, 2026-10-18; first planned as the Gladiator, see Replan below), from its research pack: data, guide build, icons, golden snapshot, in-game spot check. It follows the 0.4 P1 pack layout: class data in `data/packs/aion2/classes/ranger/`, its Asmodian guide in `data/packs/aion2/asmodian/ranger/`, each with a manifest. First step: per-pack loading (moved from 0.4 P7), so the page carries only the chosen class; then the guide text both classes share is split out of the Assassin pack | its two pack folders only, after the loading step |
 | C | Sync client on `merge()` (old 0.6 Y1), if the owner approved the sync design and hosting | sync module |
+
+**Replan (pipeline thread, 2026-10-18 1:50 AM ET): the Ranger replaces the Gladiator in lane B.** Isaac chose the Ranger
+(DECISIONS 2026-10-18, D8). P4 (Gladiator class data, PR #300) had already merged; that hidden pack stays on main,
+unchanged, for a later class release. New item P22 builds the Ranger class data from a `research-ranger` session (the
+same method as `research-gladiator`, PR #291); P5 becomes the Ranger guide and picker, after P22 and
+`owner-check-ranger`. Lane B's gen lane is now P2 → P3 → P4 (done) → P22 → P5. Audit text below that names the
+Gladiator describes the plan as first written; the item table, waves and owner input are updated.
 
 Planning pass written 2026-10-18 (#257): release kaizen review in [docs/kaizen/0.5-scorecard.md](docs/kaizen/0.5-scorecard.md)
 (the first scorecard), one spec per item in [docs/plans/0.6/](docs/plans/0.6/) (the issue body the planner creates,
@@ -531,8 +538,9 @@ follow #114's routing as the scorecard left it; stall limits are the scorecard's
 | [P1](docs/plans/0.6/P1-page-size-headroom.md) | gzip at 91% → size table, largest share cut, ≤ 170,000 B | S–M | `scripts/build.mjs`, `scripts/generated-data.mjs`, ARCHITECTURE §4 | Sonnet | 20 | none |
 | [P2](docs/plans/0.6/P2-per-pack-loading.md) | Every class in every page → per-class chunks, site loads the current class | M–L | `tools/gen/`, build scripts, `src/packs/aion2/load.js`, `src/sw.js`, fake pack, conformance | Opus | 80 | gen |
 | [P3](docs/plans/0.6/P3-shared-guide-split.md) | Shared guide text inside the Assassin pack → shared Asmodian guide pack | M–L | `data/packs/aion2/asmodian/guide/**`, Assassin guide, `checks.mjs`, `tools/gen/` | Opus | 80 | gen |
-| [P4](docs/plans/0.6/P4-gladiator-class-data.md) | No Gladiator pack → class data from the research files, not offered yet | L | `data/packs/aion2/classes/gladiator/**`, `sources.json` | Opus | 120 | gen |
-| [P5](docs/plans/0.6/P5-gladiator-guide.md) | Gladiator has no advice → guide pack, icons, golden states, in the picker | L | `data/packs/aion2/asmodian/gladiator/**`, pack `classes`, icons, golden | Opus | 120 | gen, golden |
+| [P4](docs/plans/0.6/P4-gladiator-class-data.md) | No Gladiator pack → class data from the research files, not offered yet (merged, PR #300; kept hidden after the Replan) | L | `data/packs/aion2/classes/gladiator/**`, `sources.json` | Opus | 120 | gen |
+| [P22](docs/plans/0.6/P22-ranger-class-data.md) | No Ranger pack → class data from the Ranger research files, not offered yet | L | `data/packs/aion2/classes/ranger/**`, `sources.json` | Opus | 120 | gen |
+| [P5](docs/plans/0.6/P5-ranger-guide.md) | Ranger has no advice → guide pack, icons, golden states, in the picker | L | `data/packs/aion2/asmodian/ranger/**`, pack `classes`, icons, golden | Opus | 120 | gen, golden |
 | [P6](docs/plans/0.6/P6-step-text-pronouns.md) | "investigate it with Maard" (#254 n11) → 4 texts fixed, pronoun check | S | `story-quests.json` (4 texts), `checks.mjs`, golden | Opus | 16 | golden |
 | [P7](docs/plans/0.6/P7-character-sort.md) | Characters in save order (#254 n10) → sorted by name | S | `src/cards/characters.js`, `tests/save.js` | Sonnet | 16 | none |
 | [P8](docs/plans/0.6/P8-skills-respec.md) | No Respec on Skills (#254 n8) → button like Daevanion's | S | the pack's `skills.*` | Sonnet | 16 | none |
@@ -552,33 +560,33 @@ follow #114's routing as the scorecard left it; stall limits are the scorecard's
 | [R](docs/plans/0.6/R-release-0.6.0.md) | Release 0.6.0 | S | `package.json`, `package-lock.json`, `CHANGELOG.md` | Sonnet | 16 | release, alone |
 
 No-gos for the whole minor: no save break (0.6 adds fields inside `companion-save-v5` only); no AION 2 term in the
-engine, engine cards or shell (term scan); no game data without its source (P4, P5 from the research files; keys,
+engine, engine cards or shell (term scan); no game data without its source (P4, P22, P5 from the research files; keys,
 refund and respec from the owner); no `.github/workflows/` edits; no change to the artifact rules; no new game art beyond
 the standing icon OK and the owner's OK for the story-quest icon (#254 note 7).
 
 #### Waves and lane map (step 4)
 
-At most five builds at a time (kickoff.yml). Serial lanes: **gen** P2 → P3 → P4 → P5 (lane B's critical path, gated by
-`research-gladiator` and `owner-check-gladiator`); **golden** P6 → P12 → P13 → P14 → P16 → P15 → P18 → P19 → P5 (lane
+At most five builds at a time (kickoff.yml). Serial lanes: **gen** P2 → P3 → P4 → P22 → P5 (lane B's critical path, gated
+by `research-ranger` and `owner-check-ranger`; P4 merged before the Replan); **golden** P6 → P12 → P13 → P14 → P16 → P15 → P18 → P19 → P5 (lane
 A's critical path, gated by `owner-ok-S1`); **main.js** P16 → P17; **a11y** P18. Shared files outside the lanes are
 ordered by After lines: build scripts P1 → P2 → P21; the Skills card P8 → P9 → P14; `src/cards/nextup.js` P11 → P13;
-the characters card P7 → P20 and P7 → P17. Critical path: P1 → P2 → P3 → P4 → P5 → R, so P1 and the
-`research-gladiator` session start first.
+the characters card P7 → P20 and P7 → P17. Critical path: P1 → P2 → P3 → P22 → P5 → R, so P1 and the
+research session start first (`research-ranger` since the Replan).
 
 | Wave | Builds | After |
 |---|---|---|
 | 1 | S1 (none) ∥ P1 (none) ∥ P6 (golden) ∥ P7 (none) ∥ P8 (none) | — |
 | 2 | P2 (gen) ∥ P12 (golden) ∥ P10 (none) ∥ P11 (none) ∥ P20 (none) | P2: P1 · P12: P6 · P20: P7 |
 | 3 | P3 (gen) ∥ P13 (golden) ∥ P9 (none) ∥ P21 (none) | P3: P2 · P13: P11, P12 + `research-story-icon` · P9: P8 · P21: P2, P20 + `owner-ok-sync-hosting` |
-| 4 | P4 (gen) ∥ P14 (golden) | P4: P3 + `research-gladiator` · P14: S1, P9, P13 + `owner-ok-S1` |
+| 4 | P4 (gen, merged) → P22 (gen) ∥ P14 (golden) | P4: P3 + `research-gladiator` · P22: P3 + `research-ranger` · P14: S1, P9, P13 + `owner-ok-S1` |
 | 5 | P16 (main.js, golden) | P14 + `owner-ok-S1` |
 | 6 | P15 (golden) ∥ P17 (main.js) | P15: P14 + `owner-keys` (after P16 frees golden) · P17: P7, P16 |
 | 7 | P18 (golden, a11y) | P15 |
 | 8 | P19 (golden) | P18 + `owner-ok-autolevel` |
-| 9 | P5 (gen, golden) | P4 + `owner-check-gladiator` |
+| 9 | P5 (gen, golden) | P22 + `owner-check-ranger` |
 | 10 | R, alone | everything above, or moved out here |
 
-Checked: no two items in one wave own the same file (P4 and P14 touch different schema files; P13 and P11 are in
+Checked: no two items in one wave own the same file (P4, P22 and P14 touch different schema files; P13 and P11 are in
 different waves). Waves are the expected order, not gates. An item whose owner token isn't recorded when its wave
 comes is skipped, not waited on; if it is still missing when everything else has merged, it moves to 0.7 in this file
 and R ships without it.
@@ -598,11 +606,12 @@ To-dos the hour this plan merges (scorecard K4), each with its recommendation an
    like, how to respec the Daevanion board and stigmas, where the auto-use slots are set. A screen of each is enough.
 4. **Sync hosting and money** (`owner-ok-sync-hosting`, docs/design/sync.md §6 S1 + S2; blocks P21 and 0.7's server,
    not red): recommended Cloudflare Workers + R2 in the existing account, free tier with a usage alert.
-5. **Gladiator spot check** (`owner-check-gladiator`, blocks P5, not red until P4 merges): who will level which class
-   (D8; default "Gladiator is fine"), and one Skills-window screen from a Lv 1 Gladiator to check three learn levels
-   (Mocking Blade Lv 3, Rush Strike Lv 10, Ruinous Blow Lv 14). Not asked: the stigma max level (Metabot 25, Assassin
-   40): the Gladiator research session (2026-10-18) counts about 30 stigma points by Lv 45 against 75 for stigma
-   Lv 20, so a leveling guide never reaches it (not re-checked here); `maxLevel` ships labelled single source.
+5. **Ranger spot check** (`owner-check-ranger`, blocks P5, not red until P22 merges; replaced the Gladiator spot check
+   at the Replan): who levels which class is answered (the Ranger, DECISIONS 2026-10-18). Left: one Skills-window
+   screen from a Lv 1 Ranger to check three skill learn levels the Ranger research names. Not asked: the stigma max
+   level. A leveling guide doesn't reach it (the Gladiator research session counted about 30 stigma points by Lv 45
+   against 75 for stigma Lv 20; not re-checked here), so `maxLevel` ships labelled single source unless the Ranger
+   research finds otherwise.
 
 Not blockers (the recommendation applies unless the owner says otherwise):
 
@@ -615,7 +624,7 @@ Decisions this pass recorded (for the tracker, each as a done To-do with its rem
 
 - **User remediated:** bind radius stays 25 m (#254, 7:55 PM ET; note 6 means objective binds only); the story-quest
   icon may be added (#254 note 7, still needs an approved source).
-- **Claude remediated:** Gladiator stays the 0.6 class (D8 default); lane C splits into P20 now and P21 on the hosting
+- **Claude remediated:** Gladiator stays the 0.6 class (D8 default; superseded 2026-10-18, the owner chose the Ranger); lane C splits into P20 now and P21 on the hosting
   OK; "Lv 1–10 tuning" folds into P6 / P12 / P14–P16; note 6 trimmed by derived distance, data text kept; note 5 read as
   the play steps; note 4's frame moved out; P1 scheduled from the 91% budget.
 
@@ -637,10 +646,13 @@ Decisions this pass recorded (for the tracker, each as a done To-do with its rem
 
 #### Alongside (not #114 items)
 
-- **Gladiator research** (gates P4; token `research-gladiator`): a cloud research session reads Metabot's Gladiator
-  class, skill, stigma and Daevanion pages under the fetching rules and writes
-  `docs/research/2026-10-gladiator-pack.md` plus CSVs under `data/research/`, each row with its page URL. The coordinator
-  starts it the day this plan merges.
+- **Gladiator research** (gated P4; token `research-gladiator`): done, PR #291
+  (`docs/research/2026-10-gladiator-pack.md` plus CSVs under `data/research/`).
+- **Ranger research** (gates P22; token `research-ranger`, added at the Replan): the same session type and method reads
+  Metabot's Ranger class, skill, stigma and Daevanion pages under the fetching rules and writes
+  `docs/research/2026-10-ranger-pack.md` plus CSVs under `data/research/` (file names with `ranger`), each row with its
+  page URL, and names three skill learn levels for owner input 5. Started 2026-10-18 by the pipeline thread through
+  the coordinator.
 - **Story-quest icon source** (gates P13; token `research-story-icon`): the same kind of session looks for the game's
   story-quest icon on Metabot and records page, file URL and date in docs/ISSUES.md; if none, the owner supplies the
   file.
