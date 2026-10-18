@@ -1,0 +1,4 @@
+[
+  { "case": "new-character-level-step-390", "kind": "before-after", "title": "New character: the two start buttons",
+    "caption": "The grey button on a new character's level step now reads \"Skip: start at Lv 1\", so it no longer looks like the green \"Start at Lv 1\"." }
+]
