@@ -57,7 +57,7 @@ Ascension openings, Zikel Defense Break node) and villages as their own zones if
 **Owner questions:** villages as zones of their own (recommend yes, from Metabot); alt check: does a new character reach
 Lv 2 before "Prepare to Escape"; go-ahead for E4–E8.
 
-**Owner tracker:** https://claude.ai/artifact/61L3ghB3E5rR7bfRzENJrC (Dashboard type; non-technical, mobile-first).
+**Owner tracker:** https://claude.ai/artifact/VPgJ3RtnVJZ4VQyL4SFAtb (moved 2026-10-16; the old 61L3… tracker is frozen) (Dashboard type; non-technical, mobile-first).
 Update datasets versions / today / snapshot / gallery: upload the JSON as an asset (Artifact publish `asset: true`), then
 ArtifactData `update` of the dataset `source` and `updated`; "today" items carry ISO `at` times.
 
