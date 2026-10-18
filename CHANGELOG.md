@@ -9,6 +9,61 @@ through 0.3.0 loads every earlier save. From 0.4.0 the key is `companion-save-v5
 rule in CLAUDE.md). Entries before 0.1.0 are the internal build numbers of the original single-file claude.ai
 artifact (`vNNN`) and are kept in their original form.
 
+## 0.5.0 — 2026-10-18
+
+Smart Next up, travel help, the phone layout and a character switcher.
+
+### Added
+
+- Next up puts a ready Ascension step first, and picks the nearest of equal choices (regional quests, Sealed Dungeons,
+  strongholds) from where your last ticks put you.
+- Next up catch-up: when you are ahead of your ticks (3 or more missed steps, or two kinds of points with something to
+  spend), every missed step shows, nearest first, and each card names the points it spends. Later cards are ordered
+  by when they open.
+- Next up tracks: Fastest (the default, and always in Basic) leaves out optional steps outside the story's level
+  gates; Completionist adds up to 3 more. The track toggle stays hidden until a step is optional.
+- Advanced: level band labels on the first Next up card of each band.
+- Story card: a one-time "Bind X" row when you are near an unbound Kibelisk. Ticking it records the bind.
+- Story card: a travel line, "Teleport to X (1 scroll), then N m", when teleporting saves distance, with an "I'll walk"
+  button that hides it for that quest. Advanced options: "Prefer running" turns the line off.
+- Phones (600 px and narrower): Next up is a full-width card with a "1 of N" pager (Advanced), compact rows for the
+  others, a bottom tab bar (Route, Gear, Build) and Build as a bottom sheet.
+- Phones (860 px and narrower): Next up, Journey and Progress come first, and Level up sits in a sticky bar under the
+  header showing your level.
+- Phones: Progress (Basic) and Dungeons & Strongholds are folded by default; the choice is remembered per card.
+- Characters: a header switcher to add a character (optional name, class picker with the Assassin), switch, rename and
+  remove with a confirmation. The save label becomes `<name>-<class>-lvl<level>`.
+
+### Changed
+
+- Card headers, the Dungeons & Strongholds card and Route steps fit at 195 px (200 % page zoom) without sideways scroll.
+- The page script is minified; the site and the claude.ai artifact are smaller.
+
+### Fixed
+
+- Basic rail and milestone list heights differed between page loads: milestone icons now have a fixed size and the rail
+  refits after web fonts and layout changes settle (#105).
+- The Dungeons & Strongholds header and region names no longer run past the card at 195 px width.
+
+### Data
+
+- Kibelisk registry: 73 Kibelisks with map and zone (Metabot Kibelisk listing and quest pages), the bind radius of
+  25 m recorded by the owner, and the teleport gain and nudge radius as owner working values.
+- Story objectives gain map points (300 objectives of 83 quests) from Metabot step markers on the story quest pages;
+  15 story Kibelisks without a point now have one.
+- Two bind facts: Survival Supplies #0 binds Safe Haven (owner), A Village in the Fog #1 binds Aldelle Village (step
+  text). Alert Observation Post is a new single-source Kibelisk.
+
+### Accessibility
+
+- The phone tab bar, Build sheet (Escape, scrim and handle close it; focus returns to the Build tab), "1 of N" pager
+  and the character dialogs have spoken names and keyboard control.
+
+### Saved progress
+
+- No reset. The key is still `companion-save-v5`. 0.5 adds only optional keys: `bind:<kib>` checks, the `track` and
+  `preferRun` view settings, `fold_<id>` fold choices and more character slots. Every 0.4.0 save loads unchanged.
+
 ## 0.4.0 — 2026-10-17
 
 Engine and packs: saved progress resets in this version.
