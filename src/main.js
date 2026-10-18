@@ -15,7 +15,7 @@ import { CONF, SD_RW, SOURCES, SRC_SITE, STORY_END, ITEMS, E_ORDER, LEVEL_POINTS
   AREA_ITEMS, CLEAR_REWARD, DV_NODES, RQ_BY, RQ_K, bandOf, eputK, spCostTxt, dvFromLv, dvGateOf, dvLeft, objSubs, rqStatus,
   shardsFromLv, slotNames, specPickOf, stLvOfC, stigmaPlan, stigmaSlots, rqReqOf, ascensionOf, aion2AscensionCard,
   renderAscension } from "pack";
-import { activePack, usePack } from "./core/pack.js";
+import { activePack, packClasses, usePack } from "./core/pack.js";
 import { cardLock, mountAll, registerCard, registeredCards, updateCard } from "./core/cards.js";
 import { sourcesCards } from "./cards/sources.js";
 import { KEY, char, loadState, parseExport } from "./core/state.js";
@@ -134,6 +134,11 @@ function useSave(next) {
 
 const mainEl = document.getElementById("main");
 const layoutEl = document.querySelector(".layout");
+/* the header names the current character's class (0.6 P5: a Ranger reads "Asmodian Ranger Route"); the default class's
+   page is left as the shell has it */
+{ const cur = packClasses().find(x => x.pack === char(state).pack);
+  if (cur && cur.class !== activePack().character.class)
+    for (const el of document.querySelectorAll(".eyebrow > span:first-child, h1")) el.textContent = el.textContent.replace("Assassin", cur.name); }
 
 function render() {
   renderMilestones();

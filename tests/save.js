@@ -245,7 +245,7 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     await writeSave(p, SAVED, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
     const first = JSON.parse(await readRaw(p)).chars[TEST_SLOT];
     const guide = () => p.evaluate(() => ({ pack: self.DAEVA_PACK, cls: char(state).class, plan: STIGMA_PLAN.slice(), sk: SP_SKILLS_CORE.map(x => x.n).slice(0, 2),
-      lbl: document.getElementById('charLbl').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, skills: document.getElementById('main').innerText.includes('Snipe') }));
+      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, skills: document.getElementById('main').innerText.includes('Snipe') }));
     const a = await guide();
     ok('Assassin guide: its pack, plan and skills', a.pack === 'aion2/asmodian/assassin' && a.cls === 'assassin' && a.plan[0] === "Triniel's Dagger" && a.sk[0] === 'Heart Gore' && a.rot && !a.skills, a);
     await p.click('#charBtn'); await p.click('#charNew'); await p.check('#charPick input[value="ranger"]'); await p.waitForTimeout(50);
@@ -254,11 +254,11 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     const r = await guide(), s = JSON.parse(await readRaw(p)), rid = s.current;
     ok('ranger: a new current slot of class ranger, pack aion2/asmodian/ranger; the first character stored as it was', rid !== TEST_SLOT && s.chars[rid].class === 'ranger' && s.chars[rid].pack === 'aion2/asmodian/ranger' && isDeepStrictEqual(s.chars[TEST_SLOT], first), s.chars[rid]);
     ok('ranger: the page runs the Ranger guide (its pack, stigma plan, skills shown; no Rotation section)', r.pack === 'aion2/asmodian/ranger' && r.cls === 'ranger' && JSON.stringify(r.plan) === JSON.stringify(["Vaizel's Authority", 'Bow of Blessing', 'Supporting Fire', 'Griffon Arrow'])
-      && r.sk[0] === 'Snipe' && r.skills && !r.rot && r.lbl === 'ranger-lvl1', r);
+      && r.sk[0] === 'Snipe' && r.skills && !r.rot && r.lbl === 'ranger-lvl1' && r.h1 === 'Asmodian Ranger Route', r);
     await p.click('#charBtn');
     await Promise.all([p.waitForEvent('load'), p.click(`#charRows [data-char="${TEST_SLOT}"]`)]); await p.waitForTimeout(400);
     const b = await guide();
-    ok('switch back: the Assassin guide again, its character unchanged', b.pack === 'aion2/asmodian/assassin' && b.plan[0] === "Triniel's Dagger" && b.lbl === 'assassin-lvl22' && isDeepStrictEqual(JSON.parse(await readRaw(p)).chars[TEST_SLOT], first), b);
+    ok('switch back: the Assassin guide again, its character unchanged', b.pack === 'aion2/asmodian/assassin' && b.plan[0] === "Triniel's Dagger" && b.lbl === 'assassin-lvl22' && b.h1 === 'Asmodian Assassin Route' && isDeepStrictEqual(JSON.parse(await readRaw(p)).chars[TEST_SLOT], first), b);
     ok('ranger: no page errors', !errs.length, errs);
     await ctx.close();
   }

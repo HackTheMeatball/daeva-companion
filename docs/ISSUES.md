@@ -97,6 +97,14 @@ on purpose: the guide shows nothing rather than an unverified value.
   | sk-ambush.png, sk-assault-stance.png, sk-defense-break.png, sk-exploit-weakness.png, sk-heart-gore.png | | |
   | sk-insignia-explosion.png, sk-quick-slice.png, sk-rear-smite.png, sk-savage-roar.png, sk-shadowstrike.png | | |
   | st-illusive-clone.png, st-savage-fang.png, st-swift-contract.png, st-triniels-dagger.png | | |
+- **Ranger skill and stigma icons: none added yet** (0.6 P5, #264, 2026-10-18). The Ranger guide ships without icons:
+  every Ranger skill and stigma shows the initials square on the site and in `dist-artifact` (no `/_blob/` id needed, no
+  icon path in the data). Metabot is the approved source under the standing icon OK, but this run fetched nothing (time
+  budget); the icons are listed here for a follow-up fetch (Metabot skill / stigma pages, robots.txt and terms first),
+  each then recorded in the table above with its page, file URL and date:
+  - skills (11 in the guide's plan): Snipe, Tempest Shot, Marking Shot, Drill Dart, Gale Arrow, Burst Arrow, Deadshot,
+    Focused Eye, Hunter's Resolve, Snare Shot, Concentrated Fire;
+  - stigmas (4 in the plan): Vaizel's Authority, Bow of Blessing, Supporting Fire, Griffon Arrow.
 - **Story-quest icon: no approved source found yet** (0.6 gate `research-story-icon`, for P13; searched 2026-10-18
   3:12–3:21 AM ET). The owner's OK for the game's yellow story-quest icon is #254 note 7. The plan's source is Metabot
   first, else a file the owner supplies.
