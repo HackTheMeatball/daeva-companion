@@ -81,6 +81,10 @@ major release (1.0, 2.0 …) Kaizen runs a larger pass over the data of all the 
    tracker To-do; everything else follows the recommendation. Every decision is recorded on the tracker as
    **user remediated** (the owner chose) or **Claude remediated** (the recommendation applied under a standing
    approval), so the owner can see which calls were whose.
+   **When (Kaizen K10, 2026-10-18; replaces K4's "the hour the plan merges"):** at pass start, before the plan
+   merges, every owner input the minor needs goes to Coordinator (Saul)'s daily list, each with its recommendation,
+   the exact words to type and the thread to type them in. An item whose owner input isn't in when its wave is due
+   moves to the next patch at once; it is never waited on. Research gates start the same hour.
 6. **Write and review.** The plan goes into this file and the #114 queue in one PR, written by one session and
    reviewed by a separate one that didn't write it. Then the planner queues the items, top of the lane map first.
 
@@ -693,12 +697,120 @@ tomorrow after I wake up?" So 0.6.0 ships without the two owner-gated items and 
 No planning pass (patch): the Release Planner queues each item when its gate is met, sends Game Data Check
 `PRE-RELEASE CHECK 0.6.1` once they merge, and opens the release issue after `DATA OK`.
 
-### 0.7, 0.8, 0.9 — two classes each
+### 0.7 — The Gladiator, a second class, and sync
 
-Each minor: two class packs side by side (lanes A and B; order by the D8 rule: a class someone will level to 45, then
-data coverage, then overlap with Assassin), plus one other module in lane C: sync server and UI (old Y2, Y3) in 0.7, the
-1.0 audit's fixes in 0.8–0.9 as found. 0.7's planning pass also settles how the artifact carries several classes (0.6
-audit 2; `dist-artifact` is at 94% of its budget with two classes on main `5f7b415`, so 0.7 can't add a third without it). 0.6's P13 and P15 go to the 0.6.1 patch, not here (owner, 2026-10-18 6:05 AM ET).
+Planning pass written 2026-10-18 (Release Planner, PLANNING PASS START 0.7 at 7:12 AM ET): release kaizen review in
+[docs/kaizen/0.6-scorecard.md](docs/kaizen/0.6-scorecard.md) (Kaizen, KAIZEN REVIEW DONE 0.7; changes K10, K11; S limit
+16 → 44 min), audit and plan below. Patches 0.6.1 run alongside (above); 0.7 depends on none of them.
+
+#### Audit (step 2), against `main` at `5f4755f` (0.6.0)
+
+Path to 1.0 first:
+
+1. **Two classes per minor is still the pace that reaches eight by 0.9** (Assassin, Ranger now; 0.7 two, 0.8 two,
+   0.9 two). The limit is research: a bot build has no web, so every class needs a cloud research session first.
+   Changed: 0.7's research sessions start at pass start (K10), not when the plan merges.
+2. **The artifact can't carry a third class** (971,146 / 1,030,000 B, 94%). Decided here (Claude remediated, reversible):
+   A1 makes the artifact carry a fixed build-time list, Assassin and Ranger as today, and new classes are site-only.
+   The artifact stays byte-identical for today's classes; the owner can change the list (owner input 2).
+3. **Sync has a client and a hosting decision but no server or UI.** Lane C: Y2 server (offline tests, no deploy),
+   S2 mockup, Y3 UI. The deploy needs the owner's Cloudflare token (owner input 4) and is a Build Pipeline task, not a
+   bot item (no bot edits `.github/workflows/`).
+4. 1.0 and 1.1 are unchanged.
+
+Then 0.7:
+
+5. **The Gladiator's class data (0.6 P4) merged before 0.6 P3's guide split** and has had no guide research for a
+   P5-style pack. A small research session (`research-gladiator-guide`) checks it first; G1 re-checks P4's fields.
+6. **The second class follows D8.** Who plays is unknown; data coverage then picks the Spiritmaster (Metabot Lv 45
+   sample, 5 guides, 2 builds; Sorcerer, Cleric and Chanter show no sample; Templar 1 build; classes-and-gaps §2.2).
+   Its research starts now and is redirected if the owner names another class (owner input 1).
+7. **Player Testing found new-feature asks** (#333 notes 2, 3, 5; #321 notes 5, 6, 8, 10). Adding features needs the
+   owner's OK, so they are owner input 6, not items.
+
+**Budget trend** (`npm run build`):
+
+| | 0.5.0 | 0.6.0 | Limit | Use |
+|---|---|---|---|---|
+| Site page (index + class chunk) | 741,479 B | 714,616 B | 870,000 B, blocking | 82% |
+| same, gzip -9 | 182,302 B | 177,657 B | 200,000 B, blocking | **89%** |
+| `dist-artifact/index.html` | 863,343 B | 971,146 B | 1,030,000 B, blocking | **94%** |
+
+Per-class chunks keep each new class out of the site page; A1 keeps it out of the artifact. Y3 adds UI to the site
+page only (site-only code), so gzip is watched there.
+
+#### Items (step 3)
+
+Models follow #114's routing; stall limits as the 0.6 scorecard left them (S 44, S–M 20, M 80, M–L 80, L 120, M docs 41).
+
+| Item | Problem → result | Size | Owns (files) | Model | Stall | Lanes |
+|---|---|---|---|---|---|---|
+| [A1](docs/plans/0.7/A1-artifact-class-list.md) | Artifact inlines every class → fixed build-time list, others site-only | M | `scripts/build.mjs`, `scripts/generated-data.mjs`, picker filter, ARCHITECTURE §4 | Opus | 80 | none |
+| [S2](docs/plans/0.7/S2-sync-screen-mockup.md) | Sync UI not drawn → mockup of every client state | M (docs) | `docs/design/0.7-sync-mockup.md`, mockups | Sonnet | 41 | none |
+| [G1](docs/plans/0.7/G1-gladiator-guide.md) | Gladiator hidden, no advice → guide pack, golden, site picker | L | `data/packs/aion2/asmodian/gladiator/**`, gladiator class fixes, `pack.js`, golden | Opus | 120 | gen, golden |
+| [C1](docs/plans/0.7/C1-second-class-data.md) | No second class pack → class data from research, hidden | L | `data/packs/aion2/classes/<class>/**`, `sources.json` | Opus | 120 | gen |
+| [C2](docs/plans/0.7/C2-second-class-guide.md) | Second class has no advice → guide pack, golden, site picker | L | `data/packs/aion2/asmodian/<class>/**`, `pack.js`, golden | Opus | 120 | gen, golden |
+| [Y2](docs/plans/0.7/Y2-sync-server.md) | No sync server → Worker + R2 per sync.md §4, offline tests, no deploy | L | `server/sync/**`, server tests, sync.md §9, PRIVACY.md | Opus | 120 | none |
+| [Y3](docs/plans/0.7/Y3-sync-ui.md) | Client unused → S2's screens on the site only | M–L | sync card/section, `main.js` mount, sync texts, `tests/site.js` | Opus | 80 | main.js, a11y |
+| [R](docs/plans/0.7/R-release-0.7.0.md) | Release 0.7.0 | S | `package.json`, `package-lock.json`, `CHANGELOG.md` | Sonnet | 44 | release, alone |
+
+Not a bot item: **sync deploy** (Build Pipeline, after owner input 4 and Y2): a deploy workflow with the owner's token.
+
+No-gos for the whole minor: no save break (sync has its own key); no AION 2 term in the engine; no game data without its
+source; no fetching in bot builds; no `.github/workflows/` edits by bots; artifact byte-identical for today's classes;
+no new game art beyond the standing icon OK.
+
+#### Waves and lane map (step 4)
+
+At most five builds at a time. Serial lanes: **gen** G1 → C1 → C2 (the critical path); **golden** G1, C2 (and 0.6.1's
+F1, F5 when they run); **main.js** Y3 (and 0.6.1's F2, F4). Shared files outside lanes, by After: `pack.js` G1 → C2 (gen
+lane already orders them); build scripts A1 only. Critical path: A1 → G1 → C1 → C2 → R, gated by
+`research-gladiator-guide` (G1) and `research-spiritmaster` (C1).
+
+| Wave | Builds | After |
+|---|---|---|
+| 1 | A1 (none) ∥ S2 (none) ∥ Y2 (none) | Y2: `owner-ok-sync-rules` |
+| 2 | G1 (gen, golden) | A1 + `research-gladiator-guide` |
+| 3 | C1 (gen) ∥ Y3 (main.js, a11y) | C1: `research-spiritmaster` · Y3: S2 + `owner-ok-S2` |
+| 4 | C2 (gen, golden) | C1, A1 |
+| 5 | R, alone | everything above, or moved to the next patch; `DATA OK 0.7.0` |
+
+Checked: no two items in one wave own the same file. Waves are the expected order, not gates. An item whose owner
+input isn't in when its wave is due moves to the next patch at once (K10).
+
+#### Owner input (step 5)
+
+Sent to Coordinator (Saul)'s daily list at pass start, 2026-10-18 7:35 AM ET (K10), typed in the Release planning
+(Walter) thread:
+
+1. **Second class** (token for C1: the class's research file; default Spiritmaster): "Yes: 0.7's second class is the
+   Spiritmaster." or name the class someone will level to 45.
+2. **Artifact classes** (not blocking; A1 keeps today's list): "Yes: the claude.ai artifact carries Assassin and Ranger
+   only; new classes are site-only."
+3. **Sync rules** (`owner-ok-sync-rules`, blocks Y2; sync.md §6 S3, S5): 180-day retention; "Show sync code" on a
+   syncing device.
+4. **Sync deploy** (blocks the deploy only): a Cloudflare API token limited to Workers and R2, added as
+   `CLOUDFLARE_API_TOKEN`; then CI may deploy to `sync.daevacompanion.com`.
+5. **S2 mockup** (`owner-ok-S2`, blocks Y3): asked when S2 merges.
+6. **Proposed additions** (new features, so the owner's call; recommended: (a) only): (a) a class choice on the
+   welcome card (#333 note 3); (b) a Ranger rotation section (#333 note 5, needs research); (c) story quests in
+   Progress (#321 note 5); (d) a shorter phone header in Advanced mode (#321 note 10).
+
+Decisions this pass recorded (for the tracker):
+
+- **Claude remediated:** artifact carries a fixed class list, today's two (audit 2); second class defaults to the
+  Spiritmaster by D8 (audit 6); sync deploy is a Build Pipeline task.
+
+#### Alongside (not #114 items)
+
+- **Research sessions** started 2026-10-18 at pass start: `research-spiritmaster`
+  (`docs/research/2026-10-spiritmaster-pack.md`), `research-gladiator-guide` (`docs/research/2026-10-gladiator-guide.md`),
+  and for 0.6.1 F5 `research-ranger-icons` (`docs/research/2026-10-ranger-icons.md`).
+
+### 0.8, 0.9 — two classes each
+
+Each minor: two class packs side by side (lanes A and B; order by the D8 rule), plus the 1.0 audit's fixes in lane C as
+found. Each starts its classes' research at its planning pass start (K10).
 
 ### 1.0
 
