@@ -232,6 +232,12 @@ const setState = async (p, args) => { await writeFixture(p, args); await p.reloa
       rec(c, 'pop-out: no horizontal scroll at 400 px', pr.sw <= pr.iw, pr);
       rec(c, 'pop-out: first card fits the 280 px window', pr.firstH && pr.firstH <= 280 - 40, pr.firstH, true);
       rec(c, 'pop-out: no "Pop out" button inside the pop-out', !pr.popBtn, pr, true);
+      /* 0.6 P11: inside the window the card looks like the app's card: its radius, padding, panel and border, on the app background. */
+      const sty = await pop.evaluate(() => { const g = (e, ks) => { const s = getComputedStyle(e); return ks.map(k => s[k]).join(' | '); }, k = ['backgroundColor', 'borderTopLeftRadius', 'paddingTop', 'paddingLeft', 'borderTopWidth'];
+        const probe = document.createElement('div'); probe.className = 'card'; document.body.appendChild(probe); const ref = g(probe, k); probe.remove();
+        return { card: g(document.getElementById('nowStar'), k), ref, root: getComputedStyle(document.documentElement).backgroundColor, body: getComputedStyle(document.body).backgroundColor }; });
+      rec(c, 'pop-out: Next up has the app card background, radius, padding and border', sty.card === sty.ref, sty);
+      rec(c, 'pop-out: document and body use the app background, no white edge', sty.root === sty.body && sty.body !== 'rgba(0, 0, 0, 0)' && sty.body !== 'rgb(255, 255, 255)', sty);
       if (!NOSHOTS) await pop.screenshot({ path: path.join(SHOTS, 'popout-27.png') });
       const q0 = await p.evaluate(() => JSON.stringify([char(state).pendSt, char(state).pendCr, Object.keys(char(state).checks).filter(k => char(state).checks[k]).length, char(state).quest]));
       await pop.keyboard.press('Space'); await p.waitForTimeout(800);
