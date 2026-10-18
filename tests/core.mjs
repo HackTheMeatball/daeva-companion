@@ -22,6 +22,7 @@ for (const f of readdirSync(join(ROOT, 'tests/core')).filter(f => f.endsWith('.t
   if (only && !f.includes(only)) continue;
   console.log(`-- ${f}`);
   (await import(pathToFileURL(join(ROOT, 'tests/core', f)).href)).default(test, M);
+  await R.settle();
 }
 const ms = performance.now() - t0;
 console.log(`\n${R.n - R.fail}/${R.n} core checks passed in ${(ms / 1000).toFixed(2)} s (bundle ${tBuild.toFixed(0)} ms)`);
