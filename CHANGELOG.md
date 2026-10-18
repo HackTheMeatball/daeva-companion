@@ -9,6 +9,52 @@ through 0.3.0 loads every earlier save. From 0.4.0 the key is `companion-save-v5
 rule in CLAUDE.md). Entries before 0.1.0 are the internal build numbers of the original single-file claude.ai
 artifact (`vNNN`) and are kept in their original form.
 
+## 0.6.0 — 2026-10-18
+
+New players and the first new class: the Ranger, a welcome, cards on unlock.
+
+### Added
+
+- The Ranger: a Lv 1–45 guide (build steps, stigma picks, skill and stigma icons) and a place in the class picker when
+  you add a character.
+- A one-time welcome for a Lv 1 character with nothing ticked, dismissed for good in that browser. "I'm already Lv N"
+  sets your level and your story quest and marks the earlier story quests done.
+- Cards appear as the game unlocks them. Until then a card is a faded "Opens at …" shell in Advanced on a desktop-width
+  page, and hidden in Basic and on phones.
+- Key hints on unlocks and on the cards they belong to, such as "Press K to open Skills (default key)".
+- Terms explained: Daevanion, specialty and stigma carry a dotted underline and a "?" that opens a one-sentence
+  explanation (tap, hover or keyboard).
+- Skills: a Respec button, like the one on Daevanion.
+- Skills: a green "(+x)" next to a skill level that ticked Daevanion nodes raise by x levels.
+- Build: skills and stigmas named in the play steps and in the "New: put X on …" note show their icon.
+- Level up on turning in "A Village in the Fog", the one story quest that gives a full level (verified 100% EXP).
+  Ticking it raises the level by one when you are one level below it; unticking it or Undo lowers it back.
+
+### Changed
+
+- The page carries only the chosen class, so the site loads less.
+- The page is 170,039 B gzip, down from 182,302 B in 0.5.0.
+- Characters in the switcher are sorted by name.
+- The Next up pop-out is a rounded card on the app background. The window frame is still drawn by the browser.
+- Next up no longer mentions a Kibelisk bind that happens by itself at the step's own objective.
+
+### Fixed
+
+- Story step texts that said "it" or "them" for a quest or step now name it.
+
+### Data
+
+- Metabot backs the name and level of 67 more story quests (Metabot quest pages).
+- The Ranger class data and guide come from Metabot's Ranger class, skill and stigma pages. The stigma maximum level
+  (40; Metabot's class page text says 25) is labelled single source, and so is the build-page claim in the Ranger
+  `claims.json`.
+
+### Saved progress
+
+- No reset. The key is still `companion-save-v5`. 0.6 adds optional fields only: a removed character leaves a tombstone
+  so another copy of the save can't bring it back, and a renamed character carries a name stamp for the same reason.
+  Every 0.5.0 save loads unchanged. The sync code that uses these fields has no screen yet.
+
 ## 0.5.0 — 2026-10-18
 
 Smart Next up, travel help, the phone layout and a character switcher.
