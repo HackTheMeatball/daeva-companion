@@ -407,7 +407,7 @@ const checkReport = (label, m, want) => {
       if (net.status) x = { status: net.status };
       return r.fulfill({ status: x.status, headers: { ...CORS, ...(x.etag ? { etag: x.etag } : {}) }, body: x.body ? Buffer.from(x.body) : '' });
     };
-    const device = async (w = 1500) => { const c = await b.newContext({ viewport: { width: w, height: 1000 }, acceptDownloads: true }); await c.route('https://sync.daevacompanion.com/**', route);
+    const device = async (w = 1500) => { const c = await b.newContext({ viewport: { width: w, height: 1000 }, acceptDownloads: true }); await c.route('https://sync.daevacompanion.com/**', route); await c.addInitScript(() => { window.__dcSyncTest = true; });
       const pg = await c.newPage(), errs = []; pg.on('pageerror', e => errs.push(e.message)); await pg.goto(CFG.CUR); await pg.waitForTimeout(500); return { c, p: pg, errs }; };
     const ui = pg => pg.evaluate(() => { const $ = id => document.getElementById(id), vis = e => !!e && !e.hidden && e.getClientRects().length > 0;
       return { on: $('dcsSw').getAttribute('aria-checked'), st: $('dcsSt').textContent, tone: $('dcsSt').className, strip: document.querySelector('#xfer .xfer-text > span').textContent,
@@ -522,6 +522,16 @@ const checkReport = (label, m, want) => {
     ok('sync j3: Keep both stores the code and merges into one cloud copy', JSON.parse(u.rec).code === code3 && syncedRe.test(u.st) && host.objects.size === 1, u);
     ok('sync: no page errors on any device', !A.errs.length && !B.errs.length && !C.errs.length, [A.errs, B.errs, C.errs]);
     for (const d of [A, B, C]) await d.c.close();
+    /* off: the production default (SYNC_LIVE false, no test flag) mounts no sync line and requests nothing from the sync origin */
+    {
+      const c = await b.newContext({ viewport: { width: 390, height: 900 } }), reqs = [];
+      c.on('request', q => { if (q.url().startsWith('https://sync.daevacompanion.com')) reqs.push(q.url()); });
+      await c.route('https://sync.daevacompanion.com/**', r => r.abort('internetdisconnected'));
+      const pg = await c.newPage(), errs = []; pg.on('pageerror', e => errs.push(e.message)); await pg.goto(CFG.CUR); await pg.waitForTimeout(1500);
+      const o = await pg.evaluate(() => ({ sw: !!document.getElementById('dcsSw'), any: document.querySelectorAll('[id^="dcs"], .syncline, .sync-panel').length, strip: document.querySelector('#xfer .xfer-text > span').textContent }));
+      ok('sync off: the production site (SYNC_LIVE false) has no #dcsSw or sync markup, makes no request to the sync origin, keeps the strip sentence', !o.sw && !o.any && o.strip === 'Progress is saved in this browser only.' && !reqs.length && !errs.length, { o, reqs, errs });
+      await c.close();
+    }
     /* a1: the claude.ai build holds no sync line, panel or code */
     const art = fs.readFileSync(path.join(CFG.ROOT, 'dist-artifact', 'index.html'), 'utf8');
     ok('sync a1: the artifact has no sync markup, texts or client, and keeps today\'s strip sentence', !/id="dcs[A-Z]|class="sync-(lbl|sw|st|panel|menu|msg)"|sync-texts|uiTexts|mountSync|sync\.daevacompanion\.com|Turn on sync/.test(art) && art.includes('Progress is saved in this browser only.'));

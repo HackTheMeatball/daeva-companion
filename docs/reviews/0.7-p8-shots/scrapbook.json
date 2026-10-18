@@ -1,0 +1,4 @@
+[
+  { "case": "f1-footer-390", "kind": "before-after", "title": "Save strip without the sync line",
+    "caption": "Until the sync server is live, the footer's save strip is back to the plain sentence, Export and Import, with no sync switch." }
+]
