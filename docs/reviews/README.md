@@ -5,6 +5,10 @@ here, and says in `scrapbook.json` which of them the owner should see. When the 
 those into the Scrapbook on the owner's tracker. Shots that stay only in this folder never reach the owner (found
 2026-10-17: 0.3 and 0.5 shots were committed here but the Scrapbook stopped at 16 Oct).
 
+A PR that commits a shots folder merges only after the Design Lead (Jane) checks its shots and comments a line
+starting `DESIGN OK` that names the PR's head short SHA (e.g. `DESIGN OK on abc1234`); `DESIGN CHANGES` sends it back.
+Auto-merge enforces this (owner, 2026-10-18).
+
 A PR whose change is meant to look exactly the same (a refactor with identical golden snapshots) needs neither; say
 "No visible change" in the PR body.
 
