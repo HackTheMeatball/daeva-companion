@@ -126,10 +126,11 @@ jobs:
               .filter((i) => !i.pull_request)
               .map((i) => ({ i, m: i.title.match(/^(\d+\.\d+) (P\d+[a-z]?|S\d+):/) || (i.title.match(/^Release (\d+\.\d+)\.0\b/) || []).concat('R').slice(0, 3) }))
               .filter((x) => x.m.length === 3)
-              .map(({ i, m }) => ({ n: i.number, ver: m[1], key: m[2], open: i.state === 'open', body: i.body || '' }));
+              .map(({ i, m }) => ({ n: i.number, ver: m[1], rel: m[1], key: m[2], open: i.state === 'open', body: i.body || '' }));
             const keyed = new Map(items.map((x) => [`${x.ver} ${x.key}`, x]));
             const listed = new Set(lines.flatMap((l) => { const q = l.match(/^- \[[^\]]+\] #(\d+)/); return q ? [Number(q[1])] : []; }));
             const queued = [];
+            // AFTER-CHECK START (tests/kickoff.mjs runs this block against fixtures)
             let researchFiles = null;
             const researchDone = async (slug) => {
               if (!researchFiles) researchFiles = (await github.rest.repos.getContent({ owner, repo, path: 'docs/research', ref: 'main' })
@@ -145,35 +146,56 @@ jobs:
                 (e) => { core.warning(`docs/DECISIONS.md could not be read (${e.message}); owner-ok keys stay unmet this run`); return []; }));
               return typedOks.some((topic) => topic.includes('`' + key + '`'));
             };
-            for (const x of items.filter((y) => y.open && !listed.has(y.n)).sort((a, b) => a.n - b.n)) {
-              const ql = x.body.split('\n').find((l) => l.startsWith(`- [next] #${x.n} `));
+            // Why an item's "After:" line holds it ('' = met, or no After line). Used by auto-queue and, since 2026-10-18, by
+            // every [next] line before it starts: a gated line put in #114 by hand used to start unmet (0.7 C1 and Y2 were
+            // queued with unmet After lines at 7:32 AM ET and pulled by hand; Kaizen (Gale), #222). An issue whose title
+            // names no minor (ver null, e.g. "0.6.1 F5: ...") can only use research- and owner-ok- keys.
+            // K12 (Kaizen (Gale), 2026-10-18, #222): from 0.7 on an owner-ok key carries the item's own minor, or its patch for
+            // a patch item (`owner-ok-0.7-sync`, `owner-ok-0.7.1-x`), and any other owner-ok key is not understood. 0.7 P6's
+            // `owner-ok-S2` read as met through the 0.5 S2 row. x.rel is the version the title starts with (none: the rule
+            // applies). Items before 0.7 keep their old tokens.
+            const before07 = (v) => { const [a, b] = v.split('.').map(Number); return a === 0 && b < 7; };
+            const afterBlocker = async (x) => {
               // Drop parenthesised notes before cutting at the first full stop: stopping at the first "(" lost every key
               // after it (0.6 P21's owner-ok-sync-hosting, P14's P9), so P21 started unmet (2026-10-18, #222).
               const am = x.body.match(/\bAfter:\s*([^\n]*)/);
-              const after = am && [am[0], am[1].replace(/\([^)]*\)/g, '').split('.')[0]];
-              if (!ql || !after) continue;
+              if (!am) return '';
+              // A full stop ends the line's keys only when a space or the end follows: `owner-ok-0.7-sync` keeps its dots.
+              const after = am[1].replace(/\([^)]*\)/g, '').split(/\.(?=\s|$)/)[0];
+              const unclear = `After line "${after.trim()}" not understood`;
               let deps;
-              if (/everything|\ball\b/i.test(after[1])) deps = items.filter((y) => y.ver === x.ver && y.n !== x.n);
-              else {
+              if (/everything|\ball\b/i.test(after)) {
+                if (!x.ver) return unclear;
+                deps = items.filter((y) => y.ver === x.ver && y.n !== x.n);
+              } else {
                 const keys = [], research = [], oks = [];
-                for (const t of after[1].split(/[,\s]+/).filter(Boolean)) {
+                for (const t of after.split(/[,\s]+/).filter(Boolean)) {
                   const rs = t.match(/^research-([a-z0-9-]+)$/);
                   if (rs) { research.push(rs[1]); continue; }
-                  if (/^owner-ok-[A-Za-z0-9-]+$/.test(t)) { oks.push(t); continue; }
+                  if (/^owner-ok-[A-Za-z0-9.-]+$/.test(t)) {
+                    const tv = (t.match(/^owner-ok-(\d+\.\d+(?:\.\d+)?)-[A-Za-z0-9-]+$/) || [])[1];
+                    if (!(x.rel && before07(x.rel)) && tv !== x.rel) return `${t} is not a ${x.rel || 'versioned'} owner-ok key (K12: from 0.7 on, owner-ok-${x.rel || '<version>'}-<slug>); not understood`;
+                    oks.push(t); continue;
+                  }
                   const r = t.match(/^(P\d+)([a-z])[–-](?:P\d+)?([a-z])$/); // P5a–d or P5a–P5d
                   if (r) for (let c = r[2].charCodeAt(0); c <= r[3].charCodeAt(0); c++) keys.push(r[1] + String.fromCharCode(c));
                   else if (/^(?:P\d+[a-z]?|S\d+)$/.test(t)) keys.push(t);
                   else if (!/^(?:and|none|nothing)$/i.test(t)) { keys.length = 0; keys.push('?' + t); break; }
                 }
-                deps = keys.map((k) => keyed.get(`${x.ver} ${k}`));
-                if (deps.some((d) => !d)) { core.info(`#${x.n}: After line "${after[1].trim()}" not understood; left for the planner`); continue; }
-                let missing = '';
-                for (const slug of research) if (!(await researchDone(slug))) { missing = slug; break; }
-                if (missing) { core.info(`#${x.n}: waits on research-${missing} (no docs/research file on main)`); continue; }
-                for (const k of oks) if (!(await ownerOk(k))) { missing = k; break; }
-                if (missing) { core.info(`#${x.n}: waits on ${missing} (no "Owner, typed" row in docs/DECISIONS.md)`); continue; }
+                deps = keys.map((k) => x.ver && keyed.get(`${x.ver} ${k}`));
+                if (deps.some((d) => !d)) return unclear;
+                for (const slug of research) if (!(await researchDone(slug))) return `waits on research-${slug} (no docs/research file on main)`;
+                for (const k of oks) if (!(await ownerOk(k))) return `waits on ${k} (no "Owner, typed" row in docs/DECISIONS.md)`;
               }
-              if (deps.some((d) => d.open)) continue;
+              const open = deps.filter((d) => d.open);
+              return open.length ? `waits on open ${open.map((d) => `${d.key} #${d.n}`).join(', ')}` : '';
+            };
+            // AFTER-CHECK END
+            for (const x of items.filter((y) => y.open && !listed.has(y.n)).sort((a, b) => a.n - b.n)) {
+              const ql = x.body.split('\n').find((l) => l.startsWith(`- [next] #${x.n} `));
+              if (!ql || !/\bAfter:/.test(x.body)) continue;
+              const why = await afterBlocker(x);
+              if (why) { if (!why.startsWith('waits on open')) core.info(`#${x.n}: ${why}; left for the planner`); continue; }
               queued.push(ql.trim());
             }
             if (queued.length) {
@@ -219,6 +241,9 @@ jobs:
               const n = Number(m[1]);
               const iss = (await github.rest.issues.get({ owner, repo, issue_number: n })).data;
               if (iss.state !== 'open' || iss.pull_request) { core.warning(`#${n} is not an open issue; skipped`); continue; }
+              const kx = items.find((y) => y.n === n) || { n, ver: null, rel: (iss.title.match(/^(?:Release )?(\d+\.\d+(?:\.\d+)?)\b/) || [])[1] || null, key: null, open: true, body: iss.body || '' };
+              const wait = await afterBlocker(kx);
+              if (wait) { core.info(`#${n}: ${wait}; left in #114 for the planner`); continue; }
               const why = await alreadyBuilt(n);
               if (why) { core.warning(`#${n} not started again: ${why}`); lines[i] = `- [started ${stamp}] #${n} ${m[2]}${m[3]}`; pruned = true; continue; }
               picked.push({ issue: n, model: m[2] === 'opus' ? 'claude-opus-5-5' : 'claude-sonnet-5-5', title: iss.title });
