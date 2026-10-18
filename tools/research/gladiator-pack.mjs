@@ -3,14 +3,16 @@
    computed: each record cites the Metabot page its CSV row was read from, with the row's build and checkedAt. Fields the
    research marks single source carry that label (fieldStatus). Run once: node tools/research/gladiator-pack.mjs, then npm run gen.
    0.6 P22 (#303): the same for the Ranger (data/research/ranger-*.csv, docs/research/2026-10-ranger-pack.md):
-   node tools/research/gladiator-pack.mjs ranger. */
+   node tools/research/gladiator-pack.mjs ranger.
+   0.7 P3 (#346): the Spiritmaster (data/research/spiritmaster-*.csv, docs/research/2026-10-spiritmaster-pack.md), hidden:
+   node tools/research/gladiator-pack.mjs spiritmaster. */
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(fileURLToPath(import.meta.url), '../../..');
 const CLS = process.argv[2] || 'gladiator', CHECKED = '2026-10-18';
-const NAME = { gladiator: 'Gladiator', ranger: 'Ranger' }[CLS];
+const NAME = { gladiator: 'Gladiator', ranger: 'Ranger', spiritmaster: 'Spiritmaster' }[CLS];
 if (!NAME) throw new Error('unknown class: ' + CLS);
 const OUT = join(ROOT, 'data/packs/aion2/classes', CLS);
 mkdirSync(OUT, { recursive: true });
@@ -72,7 +74,9 @@ const stigmas = csv(`${CLS}-stigmas-metabot-2026-10.csv`).map(r => {
     ...(Object.keys(fs).length ? { fieldStatus: fs } : {}),
     notes: [CLS === 'gladiator'
       ? `maxLevel ${r.maxLevel}: Metabot only (this page and the class page's stigma header); owner check pending (owner-check-gladiator).`
-      : `maxLevel ${r.maxLevel}: Metabot only (this skill page); Metabot's Ranger class page text says 25. A leveling guide does not reach it, so no owner check is asked (ranger research §4).`],
+      : CLS === 'ranger'
+        ? `maxLevel ${r.maxLevel}: Metabot only (this skill page); Metabot's Ranger class page text says 25. A leveling guide does not reach it, so no owner check is asked (ranger research §4).`
+        : `maxLevel ${r.maxLevel}: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (spiritmaster research §2.2, §4).`],
   };
 }).sort(byId);
 
@@ -89,7 +93,9 @@ const cls = {
   verifiedAt: CHECKED, status: 'verified',
   notes: [CLS === 'gladiator'
     ? 'Hidden until 0.6 P5 adds its guide pack (data/packs/aion2/asmodian/gladiator/, which defines build:gladiator:guide) and lists it in the class picker.'
-    : 'Hidden until 0.6 P5 adds its guide pack (data/packs/aion2/asmodian/ranger/, which defines build:ranger:guide) and lists it in the class picker.'],
+    : CLS === 'ranger'
+      ? 'Hidden until 0.6 P5 adds its guide pack (data/packs/aion2/asmodian/ranger/, which defines build:ranger:guide) and lists it in the class picker.'
+      : 'Hidden until a 0.7 guide item adds its guide pack (data/packs/aion2/asmodian/spiritmaster/, which defines build:spiritmaster:guide) and lists it in the class picker.'],
 };
 
 write('class.json', doc('classes', 'classes', [cls]));

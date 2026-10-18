@@ -1,0 +1,1026 @@
+{
+  "$schema": "../../schema/skills.schema.json",
+  "schemaVersion": 2,
+  "collection": "skills",
+  "class": "spiritmaster",
+  "records": [
+    {
+      "id": "skill:spiritmaster:cold-shock",
+      "key": "Cold Shock",
+      "name": "Cold Shock",
+      "type": "active",
+      "learnLv": 1,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:spiritmaster:cold-shock:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "+20% MP restored"
+        },
+        {
+          "id": "spec:spiritmaster:cold-shock:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Absorbs 100, 100% HP"
+        },
+        {
+          "id": "spec:spiritmaster:cold-shock:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "+50% Multi-Hit on hit"
+        },
+        {
+          "id": "spec:spiritmaster:cold-shock:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "+2% Attack on landing [Earth Tremor] (Up to 5 stacks)"
+        },
+        {
+          "id": "spec:spiritmaster:cold-shock:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "10% chance to remove 1 buff on landing [Earth Tremor]"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/cold-shock",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:spiritmaster:combustion",
+      "key": "Combustion",
+      "name": "Combustion",
+      "type": "active",
+      "learnLv": 1,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:spiritmaster:combustion:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "-20% MP consumed"
+        },
+        {
+          "id": "spec:spiritmaster:combustion:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Deals up to 12% more damage when less targets are hit"
+        },
+        {
+          "id": "spec:spiritmaster:combustion:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "+100 Skill Accuracy"
+        },
+        {
+          "id": "spec:spiritmaster:combustion:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "+20% Skill Speed"
+        },
+        {
+          "id": "spec:spiritmaster:combustion:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "Adds [Ashy Call] Chain Skill"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/combustion",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:spiritmaster:consecutive-countercurrent",
+      "key": "Consecutive Countercurrent",
+      "name": "Consecutive Countercurrent",
+      "type": "passive",
+      "learnLv": 17,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:zikel": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/consecutive-countercurrent",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:spiritmaster:corrode",
+      "key": "Corrode",
+      "name": "Corrode",
+      "type": "passive",
+      "learnLv": 11,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/corrode",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:spiritmaster:defiance",
+      "key": "Defiance",
+      "name": "Defiance",
+      "type": "active",
+      "learnLv": 16,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:spiritmaster:defiance:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Adds [Curse of Despair] Chain Skill"
+        },
+        {
+          "id": "spec:spiritmaster:defiance:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Restores 1,000 Stamina on using [Defiance]"
+        },
+        {
+          "id": "spec:spiritmaster:defiance:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Restores 20% HP on using [Defiance]"
+        },
+        {
+          "id": "spec:spiritmaster:defiance:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "+2s Tenacity duration"
+        },
+        {
+          "id": "spec:spiritmaster:defiance:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "+50% PvE Damage Tolerance and +25% PvP Damage Tolerance for Tenacity duration"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/defiance-spiritmaster",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "notes": [
+        "Shared display name with an Assassin skill (Metabot page slug defiance-spiritmaster)."
+      ]
+    },
+    {
+      "id": "skill:spiritmaster:dimensional-control",
+      "key": "Dimensional Control",
+      "name": "Dimensional Control",
+      "type": "active",
+      "learnLv": 8,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:spiritmaster:dimensional-control:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "+20% Slow effect"
+        },
+        {
+          "id": "spec:spiritmaster:dimensional-control:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Extra damage after 3s on hit"
+        },
+        {
+          "id": "spec:spiritmaster:dimensional-control:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "+50% Multi-Hit chance on hit"
+        },
+        {
+          "id": "spec:spiritmaster:dimensional-control:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "Pull in nearby targets"
+        },
+        {
+          "id": "spec:spiritmaster:dimensional-control:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "30% chance to inflict Root for 3s on hit"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/dimensional-control",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:spiritmaster:element-unification",
+      "key": "Element Unification",
+      "name": "Element Unification",
+      "type": "passive",
+      "learnLv": 25,
+      "levelGate": "flat",
+      "boardNodes": {
+        "perBoard": {
+          "board:zikel": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/element-unification",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:spiritmaster:elemental-fusion",
+      "key": "Elemental Fusion",
+      "name": "Elemental Fusion",
+      "type": "active",
+      "learnLv": 14,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:spiritmaster:elemental-fusion:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Changes to AoE Skill"
+        },
+        {
+          "id": "spec:spiritmaster:elemental-fusion:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Extra damage after 3s on hit"
+        },
+        {
+          "id": "spec:spiritmaster:elemental-fusion:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "+10 all Element Boost on hit"
+        },
+        {
+          "id": "spec:spiritmaster:elemental-fusion:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "Changes to Charge Skill, dealing up to 200% more damage"
+        },
+        {
+          "id": "spec:spiritmaster:elemental-fusion:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "25% chance to regain Four Elements"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/elemental-fusion",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:spiritmaster:jointstrike-curse",
+      "key": "Jointstrike: Curse",
+      "name": "Jointstrike: Curse",
+      "type": "active",
+      "learnLv": 4,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:spiritmaster:jointstrike-curse:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "+2s Curse duration"
+        },
+        {
+          "id": "spec:spiritmaster:jointstrike-curse:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+50% Multi-Hit on hit"
+        },
+        {
+          "id": "spec:spiritmaster:jointstrike-curse:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Changes to mobile skill"
+        },
+        {
+          "id": "spec:spiritmaster:jointstrike-curse:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "-2s cooldown"
+        },
+        {
+          "id": "spec:spiritmaster:jointstrike-curse:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "[Jointstrike: Curse] ignores Block and Evasion and lands as a Critical Hit"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/jointstrike-curse",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:spiritmaster:mental-focus",
+      "key": "Mental Focus",
+      "name": "Mental Focus",
+      "type": "passive",
+      "learnLv": 15,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:zikel": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/mental-focus",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:spiritmaster:rapid-scattershot",
+      "key": "Rapid Scattershot",
+      "name": "Rapid Scattershot",
+      "type": "active",
+      "learnLv": 5,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:spiritmaster:rapid-scattershot:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Absorbs 500, 500% HP"
+        },
+        {
+          "id": "spec:spiritmaster:rapid-scattershot:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Restores 120 MP"
+        },
+        {
+          "id": "spec:spiritmaster:rapid-scattershot:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Changes to mobile skill"
+        },
+        {
+          "id": "spec:spiritmaster:rapid-scattershot:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "Multi-Hit on hit"
+        },
+        {
+          "id": "spec:spiritmaster:rapid-scattershot:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "-1s all skill cooldowns on hit"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/rapid-scattershot",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:spiritmaster:revitalization-contract",
+      "key": "Revitalization Contract",
+      "name": "Revitalization Contract",
+      "type": "passive",
+      "learnLv": 23,
+      "levelGate": "flat",
+      "boardNodes": {
+        "perBoard": {
+          "board:zikel": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/revitalization-contract-spiritmaster",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified",
+      "notes": [
+        "Shared display name with an Assassin skill (Metabot page slug revitalization-contract-spiritmaster)."
+      ]
+    },
+    {
+      "id": "skill:spiritmaster:souls-cry",
+      "key": "Soul's Cry",
+      "name": "Soul's Cry",
+      "type": "active",
+      "learnLv": 12,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:spiritmaster:souls-cry:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "+50% Multi-Hit on hit"
+        },
+        {
+          "id": "spec:spiritmaster:souls-cry:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Inflicts Root for 5s"
+        },
+        {
+          "id": "spec:spiritmaster:souls-cry:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Changes to mobile skill"
+        },
+        {
+          "id": "spec:spiritmaster:souls-cry:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "-10s cooldown"
+        },
+        {
+          "id": "spec:spiritmaster:souls-cry:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "+2s Fear duration"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/souls-cry",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:spiritmaster:spirit-communion",
+      "key": "Spirit Communion",
+      "name": "Spirit Communion",
+      "type": "passive",
+      "learnLv": 21,
+      "levelGate": "flat",
+      "boardNodes": {
+        "perBoard": {
+          "board:zikel": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/spirit-communion",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:spiritmaster:spirit-protection",
+      "key": "Spirit Protection",
+      "name": "Spirit Protection",
+      "type": "passive",
+      "learnLv": 6,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/spirit-protection",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:spiritmaster:spirit-revitalization",
+      "key": "Spirit Revitalization",
+      "name": "Spirit Revitalization",
+      "type": "passive",
+      "learnLv": 13,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/spirit-revitalization",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:spiritmaster:spirit-strike",
+      "key": "Spirit Strike",
+      "name": "Spirit Strike",
+      "type": "passive",
+      "learnLv": 1,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/spirit-strike",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:spiritmaster:spirits-descent",
+      "key": "Spirit's Descent",
+      "name": "Spirit's Descent",
+      "type": "passive",
+      "learnLv": 9,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/spirits-descent",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:spiritmaster:summon-earth-spirit",
+      "key": "Summon: Earth Spirit",
+      "name": "Summon: Earth Spirit",
+      "type": "active",
+      "learnLv": 7,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:spiritmaster:summon-earth-spirit:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "-50% MP Cost"
+        },
+        {
+          "id": "spec:spiritmaster:summon-earth-spirit:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+20% PvE Damage Tolerance and +10 PvP Damage Tolerance to Earth Spirit"
+        },
+        {
+          "id": "spec:spiritmaster:summon-earth-spirit:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "10% chance to activate skill when Earth Spirit lands attack"
+        },
+        {
+          "id": "spec:spiritmaster:summon-earth-spirit:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "5% chance to restore 5% of Spirit HP when landing Earth Spirit attack"
+        },
+        {
+          "id": "spec:spiritmaster:summon-earth-spirit:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "+20% Earth Spirit Stats"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/summon-earth-spirit",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:spiritmaster:summon-fire-spirit",
+      "key": "Summon: Fire Spirit",
+      "name": "Summon: Fire Spirit",
+      "type": "active",
+      "learnLv": 1,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:spiritmaster:summon-fire-spirit:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "-50% MP Cost"
+        },
+        {
+          "id": "spec:spiritmaster:summon-fire-spirit:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+20% Fire Spirit Critical Hit damage"
+        },
+        {
+          "id": "spec:spiritmaster:summon-fire-spirit:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "10% chance to activate skill when Fire Spirit lands attack"
+        },
+        {
+          "id": "spec:spiritmaster:summon-fire-spirit:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "5% chance to inflict Knockdown for 3s on landing Fire Spirit attack"
+        },
+        {
+          "id": "spec:spiritmaster:summon-fire-spirit:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "+20% Fire Spirit Stats"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/summon-fire-spirit",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:spiritmaster:summon-water-spirit",
+      "key": "Summon: Water Spirit",
+      "name": "Summon: Water Spirit",
+      "type": "active",
+      "learnLv": 3,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:spiritmaster:summon-water-spirit:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "-50% MP Cost"
+        },
+        {
+          "id": "spec:spiritmaster:summon-water-spirit:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+10% Water Spirit Attack"
+        },
+        {
+          "id": "spec:spiritmaster:summon-water-spirit:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "10% chance to activate skill when Water Spirit lands attack"
+        },
+        {
+          "id": "spec:spiritmaster:summon-water-spirit:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "5% chance to inflict Root for 2s on landing Water Spirit attack"
+        },
+        {
+          "id": "spec:spiritmaster:summon-water-spirit:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "+20% Water Spirit Stats"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/summon-water-spirit",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    },
+    {
+      "id": "skill:spiritmaster:summon-wind-spirit",
+      "key": "Summon: Wind Spirit",
+      "name": "Summon: Wind Spirit",
+      "type": "active",
+      "learnLv": 10,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:spiritmaster:summon-wind-spirit:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "-50% MP Cost"
+        },
+        {
+          "id": "spec:spiritmaster:summon-wind-spirit:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+20% Wind Spirit Critical Hit"
+        },
+        {
+          "id": "spec:spiritmaster:summon-wind-spirit:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "10% chance to activate skill when Wind Spirit lands attack"
+        },
+        {
+          "id": "spec:spiritmaster:summon-wind-spirit:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "5% chance to reduce enemy Attack Speed by 30% for 10s on landing Wind Spirit attack"
+        },
+        {
+          "id": "spec:spiritmaster:summon-wind-spirit:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "+20% Wind Spirit Stats"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/summon-wind-spirit",
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "verified"
+    }
+  ]
+}
