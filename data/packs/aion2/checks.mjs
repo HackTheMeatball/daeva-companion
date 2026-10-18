@@ -10,6 +10,14 @@ export function checks(ctx, check) {
   for (const s of chain) if (s.steps.length) check('story steps end with a turn-in: ' + s.name, /^Turn in/.test(s.steps[s.steps.length - 1].text));
   /* 0.3 E10: the data ends at "Daeva Trapped in a Nightmare"; the game's next story quest unlocks past the Lv 45 cap */
   check('story end names the next story quest past the cap', !!STORY_END.next && STORY_END.nextLv > 45, [STORY_END.next, STORY_END.nextLv]);
+  /* 0.6 P6 (#265, owner note #254 11): a step text is the source's title + " — " + its objective line, and the objective
+     line must name its object, not point back at the title with a bare pronoun ("Search Munihelle Forest — investigate it
+     with Maard"; in game: "Investigate Munihelle Forest with Maard"). PRONOUN_OK lists real uses by "<record id> #<i>". */
+  { const PRONOUN = /\b(it|them|there)\b/i, PRONOUN_OK = new Set([]);
+    for (const r of [...chain, ...rqs, ...shs, ...asc]) for (const x of r.steps || []) {
+      const obj = x.text.includes(' — ') ? x.text.slice(x.text.indexOf(' — ') + 3).replace(/\s*\(Kibelisk: [^)]+\)/g, '') : '';
+      check(`${r.id} #${x.i}: objective line names its object, not "it" / "them" / "there"`, PRONOUN_OK.has(`${r.id} #${x.i}`) || !PRONOUN.test(obj), x.text);
+    } }
 
   /* ---------------------------------------------------------------- regional quests (in RQ order) */
   for (const q of rqs.slice().sort(byNum('order'))) {

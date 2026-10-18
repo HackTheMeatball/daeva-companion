@@ -222,7 +222,7 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     /* switch back by picking the first row */
     await p.click('#charBtn');
     const rows = await p.evaluate(() => [...document.querySelectorAll('#charRows [data-char]')].map(r => [r.dataset.char, r.querySelector('.lbl').textContent, r.getAttribute('aria-current')]));
-    ok('list: both characters by label in save order, Zed current', JSON.stringify(rows) === JSON.stringify([[TEST_SLOT, 'assassin-lvl22', null], [zed, 'Zed-assassin-lvl2', 'true']]), rows);
+    ok('list: both characters by label sorted by name (Zed before the unnamed one), Zed current', JSON.stringify(rows) === JSON.stringify([[zed, 'Zed-assassin-lvl2', 'true'], [TEST_SLOT, 'assassin-lvl22', null]]), rows);
     await Promise.all([p.waitForEvent('load'), p.click(`#charRows [data-char="${TEST_SLOT}"]`)]); await p.waitForTimeout(400);
     const back = JSON.parse(await readRaw(p)), shown = await p.evaluate(k => ({ cur: state.current, lv: char(state).level, q: document.getElementById("questIn").value, rk: document.querySelector(`#gates input[data-k="${k}"]`).checked }), rk);
     ok('switch back: the first character is current and shown (Lv 22, its quest, Zed\'s quest not ticked)', back.current === TEST_SLOT && shown.cur === TEST_SLOT && shown.lv === 22 && shown.q === SAVED.quest && !shown.rk, shown);
@@ -261,8 +261,8 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     await p.click('#charBtn');
     const rows = await rowsOf(p);
     ok('rename: each row has Rename and Remove, spoken with its label', JSON.stringify(rows) === JSON.stringify([
-      { id: TEST_SLOT, lbl: 'assassin-lvl22', cur: 'true', rename: 'Rename assassin-lvl22', remove: 'Remove assassin-lvl22' },
-      { id: B, lbl: 'Quin-assassin-lvl40', cur: null, rename: 'Rename Quin-assassin-lvl40', remove: 'Remove Quin-assassin-lvl40' }]), rows);
+      { id: B, lbl: 'Quin-assassin-lvl40', cur: null, rename: 'Rename Quin-assassin-lvl40', remove: 'Remove Quin-assassin-lvl40' },
+      { id: TEST_SLOT, lbl: 'assassin-lvl22', cur: 'true', rename: 'Rename assassin-lvl22', remove: 'Remove assassin-lvl22' }]), rows);
     await p.click(`[data-rename="${B}"]`); await p.waitForTimeout(100);
     const f = await p.evaluate(() => { const i = document.getElementById('charRen'); return { focus: document.activeElement === i, value: i.value,
       label: document.querySelector('label[for="charRen"]').textContent, hint: document.getElementById(i.getAttribute('aria-describedby')).textContent,
@@ -270,7 +270,7 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     ok('rename: the row becomes a field named "Rename Quin-assassin-lvl40", focused, holding the name', f.focus && f.value === 'Quin' && f.label === 'Rename Quin-assassin-lvl40' && /Leave empty to show no name/.test(f.hint) && f.save === 'Save name' && f.rows === 1, f);
     await p.keyboard.type('Nyx'); await p.keyboard.press('Escape'); await p.waitForTimeout(100);
     ok('rename: Escape cancels: the row is back, focus on its Rename, the list stays open, nothing saved',
-      !(await p.$('#charRen')) && await focusOf(p) === 'rename:' + B && !(await p.evaluate(() => document.getElementById('charPop').hidden)) && await readRaw(p) === raw0 && (await rowsOf(p))[1].lbl === 'Quin-assassin-lvl40', await focusOf(p));
+      !(await p.$('#charRen')) && await focusOf(p) === 'rename:' + B && !(await p.evaluate(() => document.getElementById('charPop').hidden)) && await readRaw(p) === raw0 && (await rowsOf(p))[0].lbl === 'Quin-assassin-lvl40', await focusOf(p));
     await p.click(`[data-rename="${B}"]`); await p.click('#charRenCancel'); await p.waitForTimeout(100);
     ok('rename: Cancel goes back to the row, nothing saved', !(await p.$('#charRen')) && await readRaw(p) === raw0);
     await p.click(`[data-rename="${B}"]`); await p.fill('#charRen', '  Nyx ');
@@ -281,13 +281,27 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     ok('rename: after a reload the stored save differs only in that slot\'s name (trimmed)', raw1 === JSON.stringify(want), raw1 && diffPaths(want, JSON.parse(raw1)));
     await p.click('#charBtn');
     const rows1 = await rowsOf(p);
-    ok('rename: the list shows Nyx-assassin-lvl40; the current character and the control are unchanged', rows1[1].lbl === 'Nyx-assassin-lvl40' && rows1[0].cur === 'true' && await p.evaluate(() => document.getElementById('charLbl').textContent) === 'assassin-lvl22', rows1);
+    ok('rename: the list shows Nyx-assassin-lvl40; the current character and the control are unchanged', rows1[0].lbl === 'Nyx-assassin-lvl40' && rows1[1].cur === 'true' && await p.evaluate(() => document.getElementById('charLbl').textContent) === 'assassin-lvl22', rows1);
     await p.click(`[data-rename="${TEST_SLOT}"]`); await p.fill('#charRen', 'Zed');
     await Promise.all([p.waitForEvent('load'), p.click('#charRenSave')]); await p.waitForTimeout(400);
     const want2 = JSON.parse(raw1); want2.chars[TEST_SLOT].name = 'Zed';
     ok('rename the current character: the control shows Zed-assassin-lvl22; only its name changed', await p.evaluate(() => document.getElementById('charLbl').textContent) === 'Zed-assassin-lvl22' && await readRaw(p) === JSON.stringify(want2));
     ok('rename: "Nyx" and "Zed" in no storage key, URL or title', await p.evaluate(() => [...Object.keys(localStorage), location.href, document.title].every(x => !/Nyx|Zed/.test(x))));
     ok('rename: no page errors', !errs.length, errs);
+    await ctx.close();
+  }
+  /* 11b. the list is sorted by name (case-insensitive, ties by slot id, unnamed last); the stored order is untouched */
+  {
+    const { ctx, p, errs } = await page();
+    const D = '00000000-0000-4000-8000-0000000000d4';
+    const s0 = multi([[B, { name: 'bravo' }], [C, { name: 'Alpha' }], [D, { name: 'alpha' }]]);
+    await writeRaw(p, JSON.stringify(s0), { fresh: true }); await p.reload(); await p.waitForTimeout(400);
+    const raw0 = await readRaw(p);
+    await p.click('#charBtn');
+    const ids = (await rowsOf(p)).map(r => r.id);
+    ok('sorted list: Alpha / alpha (by slot id) / bravo / the unnamed one', JSON.stringify(ids) === JSON.stringify([C, D, B, TEST_SLOT]), ids);
+    ok('sorted list: the stored chars order is byte-identical after opening the list', await readRaw(p) === raw0 && JSON.stringify(Object.keys(JSON.parse(await readRaw(p)).chars)) === JSON.stringify([TEST_SLOT, B, C, D]));
+    ok('sorted list: no page errors', !errs.length, errs);
     await ctx.close();
   }
   /* 12. remove */
@@ -323,7 +337,7 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     ok('remove a non-current character: its slot is gone, the rest of the save byte-identical, still current after a reload', raw1 === JSON.stringify(want1) && await p.evaluate(() => state.current) === B, raw1 && diffPaths(want1, JSON.parse(raw1)));
     /* the current one: B goes, the first remaining slot (A) becomes current */
     await p.click('#charBtn');
-    ok('remove: the list now shows A and Zed (current)', JSON.stringify((await rowsOf(p)).map(r => [r.lbl, r.cur])) === JSON.stringify([['assassin-lvl22', null], ['Zed-assassin-lvl27', 'true']]));
+    ok('remove: the list now shows Zed (current) and A (unnamed, last)', JSON.stringify((await rowsOf(p)).map(r => [r.lbl, r.cur])) === JSON.stringify([['Zed-assassin-lvl27', 'true'], ['assassin-lvl22', null]]));
     await p.click(`[data-remove="${B}"]`);
     ok('remove the current character: the confirmation names it', await p.innerText('#charDlgHead') === 'Remove Zed-assassin-lvl27?');
     await Promise.all([p.waitForEvent('load'), p.click('#charRemove')]); await p.waitForTimeout(400);
