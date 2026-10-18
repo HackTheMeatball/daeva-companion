@@ -3,8 +3,13 @@
 Planned in the 0.6 planning pass (#257, ROADMAP "0.6", lane B); retargeted from the Gladiator to the Ranger on
 2026-10-18 (owner's choice, DECISIONS 2026-10-18; ROADMAP 0.6 "Replan"). Read CLAUDE.md, the Assassin guide pack
 (`data/packs/aion2/asmodian/assassin/guide/`), P3's shared guide, P22's Ranger class data, the Ranger research file
-(`docs/research/2026-10-ranger-pack.md`) and the owner's Ranger spot-check record in docs/DECISIONS.md
-(`owner-check-ranger`) first. The hidden Gladiator class pack (P4) stays as it is.
+(`docs/research/2026-10-ranger-pack.md`) first, and the owner's Ranger spot check in docs/DECISIONS.md if he has
+sent one (optional since 2026-10-18 2:45 AM ET, see below). The hidden Gladiator class pack (P4) stays as it is.
+
+Learn levels Marking Shot 3, Burst Arrow 10 and Deadshot 14: Metabot plus mmo-codex.com (all three), daevaguides.com
+and aion2-guides.info (Burst Arrow, Deadshot), per the Ranger research session (2026-10-18). Those sites may share
+upstream data (mmo-codex credits the game client via aion2.app), so their independence is inferred: label the three
+per `claims.json` rules for sources that may share data, and cite the owner's screen instead if he sends one.
 
 ## Problem
 
@@ -49,6 +54,6 @@ Ownership check: every acceptance line passes with these files.
 
 Lanes: gen, golden. Model: Opus (golden, guide data). Stall limit: 120 min (L).
 
-After: P22, owner-check-ranger.
+After: P22.
 
 - [next] #264 opus lanes:gen,golden

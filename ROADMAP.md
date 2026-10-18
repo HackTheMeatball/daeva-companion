@@ -464,7 +464,7 @@ Not blockers (the recommendation applies unless the owner says otherwise):
 (DECISIONS 2026-10-18, D8). P4 (Gladiator class data, PR #300) had already merged; that hidden pack stays on main,
 unchanged, for a later class release. New item P22 builds the Ranger class data from a `research-ranger` session (the
 same method as `research-gladiator`, PR #291); P5 becomes the Ranger guide and picker, after P22 and
-`owner-check-ranger`. Lane B's gen lane is now P2 → P3 → P4 (done) → P22 → P5. Audit text below that names the
+`owner-check-ranger` (made optional the same night, owner input 5). Lane B's gen lane is now P2 → P3 → P4 (done) → P22 → P5. Audit text below that names the
 Gladiator describes the plan as first written; the item table, waves and owner input are updated.
 
 Planning pass written 2026-10-18 (#257): release kaizen review in [docs/kaizen/0.5-scorecard.md](docs/kaizen/0.5-scorecard.md)
@@ -567,7 +567,7 @@ the standing icon OK and the owner's OK for the story-quest icon (#254 note 7).
 #### Waves and lane map (step 4)
 
 At most five builds at a time (kickoff.yml). Serial lanes: **gen** P2 → P3 → P4 → P22 → P5 (lane B's critical path, gated
-by `research-ranger` and `owner-check-ranger`; P4 merged before the Replan); **golden** P6 → P12 → P13 → P14 → P16 → P15 → P18 → P19 → P5 (lane
+by `research-ranger`; P4 merged before the Replan); **golden** P6 → P12 → P13 → P14 → P16 → P15 → P18 → P19 → P5 (lane
 A's critical path, gated by `owner-ok-S1`); **main.js** P16 → P17; **a11y** P18. Shared files outside the lanes are
 ordered by After lines: build scripts P1 → P2 → P21; the Skills card P8 → P9 → P14; `src/cards/nextup.js` P11 → P13;
 the characters card P7 → P20 and P7 → P17. Critical path: P1 → P2 → P3 → P22 → P5 → R, so P1 and the
@@ -583,7 +583,7 @@ research session start first (`research-ranger` since the Replan).
 | 6 | P15 (golden) ∥ P17 (main.js) | P15: P14 + `owner-keys` (after P16 frees golden) · P17: P7, P16 |
 | 7 | P18 (golden, a11y) | P15 |
 | 8 | P19 (golden) | P18 + `owner-ok-autolevel` |
-| 9 | P5 (gen, golden) | P22 + `owner-check-ranger` |
+| 9 | P5 (gen, golden) | P22 |
 | 10 | R, alone | everything above, or moved out here |
 
 Checked: no two items in one wave own the same file (P4, P22 and P14 touch different schema files; P13 and P11 are in
@@ -606,9 +606,11 @@ To-dos the hour this plan merges (scorecard K4), each with its recommendation an
    like, how to respec the Daevanion board and stigmas, where the auto-use slots are set. A screen of each is enough.
 4. **Sync hosting and money** (`owner-ok-sync-hosting`, docs/design/sync.md §6 S1 + S2; blocks P21 and 0.7's server,
    not red): recommended Cloudflare Workers + R2 in the existing account, free tier with a usage alert.
-5. **Ranger spot check** (`owner-check-ranger`, blocks P5, not red until P22 merges; replaced the Gladiator spot check
-   at the Replan): who levels which class is answered (the Ranger, DECISIONS 2026-10-18). Left: one Skills-window
-   screen from a Lv 1 Ranger to check three skill learn levels the Ranger research names. Not asked: the stigma max
+5. **Ranger spot check** (`owner-check-ranger`, optional, blocks nothing since 2026-10-18 2:45 AM ET; replaced the
+   Gladiator spot check at the Replan): who levels which class is answered (the Ranger, DECISIONS 2026-10-18). Left,
+   nice to have: one Skills-window screen from a Lv 1 Ranger for Marking Shot 3, Burst Arrow 10 and Deadshot 14. At
+   Isaac's ask the research session found those on other allowed sites besides Metabot (P5 labels them, since the
+   sites may share data), so P5 waits only on P22. Not asked: the stigma max
    level. A leveling guide doesn't reach it (the Gladiator research session counted about 30 stigma points by Lv 45
    against 75 for stigma Lv 20; not re-checked here), so `maxLevel` ships labelled single source unless the Ranger
    research finds otherwise.
