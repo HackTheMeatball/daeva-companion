@@ -15,7 +15,7 @@ const walk = dir => readdirSync(dir).flatMap(n => { const f = join(dir, n); retu
 export const SCHEMA_OF = { sources: 'sources', gameBuilds: 'game-builds', storyQuests: 'story-quests', ascensionQuests: 'ascension-quests',
   regionalQuests: 'regional-quests', sealedDungeons: 'sealed-dungeons', strongholds: 'strongholds', zones: 'zones', unlocks: 'unlocks', items: 'items',
   rules: 'rules', boards: 'boards', milestones: 'milestones', steps: 'steps', tips: 'tips', claims: 'claims', confidence: 'confidence', classes: 'classes',
-  builds: 'builds', skills: 'skills', boardNodes: 'board-nodes', stigmas: 'stigmas', kibelisks: 'kibelisks', terms: 'terms' };
+  builds: 'builds', skills: 'skills', boardNodes: 'board-nodes', stigmas: 'stigmas', kibelisks: 'kibelisks', terms: 'terms', uiTexts: 'ui-texts' };
 
 let ajv;
 export const compiler = () => {
@@ -26,8 +26,8 @@ export const compiler = () => {
   return ajv;
 };
 
-/* every JSON file under data/packs/: the data files and the pack manifests (pack.json) */
-export const dataFiles = () => walk(join(ROOT, 'data/packs')).filter(f => f.endsWith('.json'));
+/* every JSON file under data/packs/ (the data files and the pack manifests, pack.json) and data/ui/ (page texts, 0.7 P6) */
+export const dataFiles = () => ['data/packs', 'data/ui'].flatMap(d => walk(join(ROOT, d))).filter(f => f.endsWith('.json'));
 
 /* returns [{file, errors}] for files that fail; doc is the parsed file */
 export const validateDoc = (file, doc) => {

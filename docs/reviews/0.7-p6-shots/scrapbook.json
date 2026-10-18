@@ -1,0 +1,12 @@
+[
+  { "case": "n1-off-390", "kind": "before-after", "title": "Sync line, off (phone)",
+    "caption": "The save strip gains one line: Sync and a switch, off. Nothing else on the page changes while it is off." },
+  { "case": "n1-off-advanced-1500", "kind": "before-after", "title": "Sync line, off (desktop)",
+    "caption": "The same line on a wide screen, under Export and Import." },
+  { "case": "t1-switch-on-390", "kind": "before-after", "title": "Turn on sync",
+    "caption": "Flipping the switch opens a panel below the strip: make a new sync code or use one you have, or cancel." },
+  { "case": "t2-new-code-390", "kind": "before-after", "title": "Your sync code",
+    "caption": "A new code, shown once, wrapping only between groups; you type its last group back before sync starts." },
+  { "case": "j1-typo-390", "kind": "before-after", "title": "Joining with a typo",
+    "caption": "A mistyped code is caught on the device before anything is sent; Join stays off." }
+]

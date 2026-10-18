@@ -5,6 +5,8 @@
    request goes to <base>/v1/s/<sync id> with no query string, sends only the allowlisted headers (Authorization,
    Content-Type, If-Match / If-None-Match), no cookies and no referrer, and reads back only the status, the ETag and the
    body. A request that can't reach the host rejects (the client reports "offline"). */
+/* the sync host's origin (0.7 P6; the one place it is written) */
+export const SYNC_BASE = "https://sync.daevacompanion.com";
 export function httpSyncHost(base, fetchFn) {
   const send = (method, id, token, headers = {}, body) => fetchFn(`${base}/v1/s/${id}`, {
     method, headers: { Authorization: `Bearer ${token}`, ...headers }, body,

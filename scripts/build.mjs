@@ -116,9 +116,24 @@ const allClasses = ids => `<script>\n${pickClass(Object.fromEntries(ids.map(id =
    names no game (docs/design/0.4-engine-contract.md §5); one game's code, always loaded; its class data comes per class
    (the chunks above) */
 const PAGE_PACK = 'aion2';
+/* site.js (0.7 P6, the sync UI) runs after main.js's bundle, as an IIFE so its names stay its own. A src/core/ module it
+   reaches (through the sync client) is not bundled a second time: it stands for main.js's copy, whose top-level names are
+   page globals, so both scripts share one engine (one active pack, one save). Only the sync client itself is bundled. */
+const pageCore = {
+  name: 'page-core',
+  setup(b) {
+    b.onResolve({ filter: /^\.\.?\// }, a => {
+      const f = relative(ROOT, join(a.resolveDir, a.path)).split('\\').join('/');
+      return /^src\/core\/[\w-]+\.js$/.test(f) && f !== 'src/core/sync-client.js' ? { path: f, namespace: 'page-core' } : undefined;
+    });
+    b.onLoad({ filter: /.*/, namespace: 'page-core' }, a => ({ loader: 'js', contents: [...readFileSync(P(a.path), 'utf8').matchAll(DECL)]
+      .filter(m => m[0].startsWith('export ')).map(m => m[1]).map(n => `const page$${n} = ${n};\nexport { page$${n} as ${n} };`).join('\n') }));
+  },
+};
 const bundleOne = async entry => {
-  const r = await build({ absWorkingDir: ROOT, entryPoints: ['src/' + entry], bundle: true, write: false, format: 'esm', platform: 'browser',
-    treeShaking: false, minify: false, charset: 'utf8', legalComments: 'inline', logLevel: 'silent', plugins: [generatedData],
+  const site = entry === 'site.js';
+  const r = await build({ absWorkingDir: ROOT, entryPoints: ['src/' + entry], bundle: true, write: false, format: site ? 'iife' : 'esm', platform: 'browser',
+    treeShaking: false, minify: false, charset: 'utf8', legalComments: 'inline', logLevel: 'silent', plugins: site ? [pageCore, generatedData] : [generatedData],
     alias: { pack: `./src/packs/${PAGE_PACK}/shell.js` } })
     .catch(e => die(`src/${entry}: ${e.errors ? e.errors.map(x => x.text + (x.location ? ` (${x.location.file}:${x.location.line})` : '')).join('; ') : e.message}`));
   for (const w of r.warnings) console.warn(`build: esbuild warning in src/${entry}: ${w.text}` + (w.location ? ` (${w.location.file}:${w.location.line})` : ''));
