@@ -371,8 +371,24 @@ produced the v1 files (provenance; they no longer match `data/`). `tools/history
   size minus the page with that table bundled as `null`), for every other part (script modules, stylesheets as shipped,
   card markup, fonts) its size gzipped alone, so those rows overlap and don't add up to the page. Measure with it
   before cutting; record row-encoding of the tables was tried and made the page larger (gzip already folds repeated keys).
-- **Page budgets** (0.4 P7, about 1.3x the 0.3.0 numbers; the build prints each with its limit and % used): `dist/index.html`
-  870,000 B (0.3.0: 669,290), its gzip -9 200,000 B (153,871) and `dist-artifact/index.html` 1,030,000 B (790,763) fail the
+- **Per-class chunks** (0.6 P2, DATA-FORMAT-V2 §2.1): the generator compiles every guide pack (one playable class) on
+  its own (`generateAll()`) and splits the tables into the shared ones (game and faction packs, once) and each class's
+  own. The page bundle keeps the shared tables; a per-class table is served as `export const X = DAEVA_CLASS.X;`
+  (`splitClasses()` in `scripts/generated-data.mjs`; the Node core tests don't split and see every value). Each class's
+  tables are one classic script (`classChunk()`) that sets the page global `DAEVA_CLASS` only when
+  `self.DAEVA_PACK` names its class. A small loader, placed by the build just before the app script, reads the stored
+  save's current character (`chars[current].pack` under the `KEY` of `src/core/state.js`; the default pack when there is
+  no save or its pack isn't shipped) and sets `self.DAEVA_PACK`. Site: each chunk is `dist/packs/<id>.<hash>.js`
+  (content hash, so a new `index.html` never meets a stale cached chunk), precached by the service worker, and the loader
+  writes one `<script src>` for the chosen one with `document.write` (it must run before the app script, which reads the
+  tables at once). claude.ai: one file, no fetch, so every chunk is inlined after the loader (its own byte budget covers
+  that). The class is chosen once per page load; with one class shipped that is always right, and switching to a character of
+  another class will need a reload (not built yet: no second class ships).
+  With the Assassin pack alone the page is the same (golden identical); the site's `index.html` plus its chunk is
+  696,352 B against 695,380 B in one file before (+0.14%).
+- **Page budgets** (0.4 P7, about 1.3x the 0.3.0 numbers; the build prints each with its limit and % used): the site page
+  (`dist/index.html` plus its largest class chunk, 0.6 P2) 870,000 B (0.3.0: 669,290), its gzip -9 (each file gzipped on
+  its own, summed) 200,000 B (153,871) and `dist-artifact/index.html` 1,030,000 B (790,763) fail the
   build (`BUDGETS` in `scripts/build.mjs`); 6,200 elements in a fresh browser at 390 px (4,741) fail the `site` suite
   (`ELEMENT_MAX` in `tests/site.js`). To raise one, change that constant in the PR and say in the PR why. Timing
   (`perf`) stays advisory.
@@ -386,7 +402,7 @@ produced the v1 files (provenance; they no longer match `data/`). `tools/history
 - Footer **Report a problem**: opens `.github/ISSUE_TEMPLATE/bug.yml` with its fields prefilled through the URL (field ids
   as query parameters): version, level, story quest, mode, build and user agent, and nothing else from the save. The
   `site` suite pins that list.
-- `src/sw.js`: precaches the shell, icons and fonts; network-first for the page, cache-first for the rest; other
+- `src/sw.js`: precaches the shell, icons, fonts and the class chunks (`packs/*.js`, 0.6 P2); network-first for the page, cache-first for the rest; other
   `aion2-route-*` caches (older builds, the pre-0.1.5 Google Fonts cache) are deleted on activate. Registered only on
   https or localhost, and only in `dist/`.
 - Export: `window.claude.use("downloads")` when present (claude.ai), else a Blob download.

@@ -150,7 +150,17 @@ that pack: its parent, then each `uses`, then the pack itself, depth first, each
 `aion2/asmodian`, `aion2/classes/assassin`, `aion2/asmodian/assassin`). It loads exactly the listed files in that order
 and fails on a manifest that fails its schema or whose `id` is not its folder, an unknown `parent` / `uses`, a cycle,
 a listed file that is missing, and a JSON file in a pack folder that no manifest lists. The cross-record checks are
-the same as before packs. The page still gets one compiled module (per-pack loading is 0.6).
+the same as before packs.
+
+**Per-class compile (0.6 P2).** Each guide pack is one playable class (the `pack` a character stores). `generateAll()`
+in `tools/gen/gen.mjs` finds every guide pack below the root and compiles each one's chain on its own (every check runs
+per chain), keyed by the guide pack's id. It splits the tables: `CLASS_TABLES` (the ones read from the guide and class
+packs: the build tables, `GUIDE_GATES` / `GUIDE_STEPS`, `TIPS`, `CONF`, `SOURCES`, `GATE_GRAPH`, `GATE_PROPOSED`) form each
+class's own set; every other table comes from the shared game and faction packs and is kept once, unless it differs
+between two classes, which moves it to the class sets as well. The build ships the shared tables in the page and each
+class set as a chunk of its own (`classChunk()`, ARCHITECTURE §4). A class folder dropped in early compiles to its own
+chunk and reaches no one else's page. The fake game (`tests/fixtures/packs/fakegame/`) has two guide packs on one game
+pack; `tests/core/conformance.test.mjs` step 6 proves they compile apart.
 
 ## 3. Ids and save keys
 
