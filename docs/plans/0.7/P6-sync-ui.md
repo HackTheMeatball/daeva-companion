@@ -1,6 +1,6 @@
 # 0.7 P6: Sync UI on the site
 
-Planned in the 0.7 planning pass (Release Planner, 2026-10-18; ROADMAP "0.7"; Kaizen review docs/kaizen/0.6-scorecard.md). Lane C. Read CLAUDE.md, the approved S2 mockup (`docs/design/0.7-sync-mockup.md`, `owner-ok-S2` in DECISIONS),
+Planned in the 0.7 planning pass (Release Planner, 2026-10-18; ROADMAP "0.7"; Kaizen review docs/kaizen/0.6-scorecard.md). Lane C. Read CLAUDE.md, the approved S2 mockup (`docs/design/0.7-sync-mockup.md`, `owner-ok-0.7-S2` in DECISIONS),
 docs/design/sync.md §1, §2, §6 S4 / S5, §8, and `src/core/sync-client.js` first.
 
 ## Problem
@@ -37,6 +37,6 @@ M–L.
 
 Lanes: main.js, a11y. Model: Opus. Stall limit: 80 min (M–L).
 
-After: S2, owner-ok-S2.
+After: S2, owner-ok-0.7-S2.
 
 - [next] #349 opus lanes:main.js,a11y

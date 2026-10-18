@@ -772,7 +772,7 @@ lane already orders them); build scripts P1 only. Critical path: P1 → P2 → P
 |---|---|---|
 | 1 | P1 (none) ∥ S2 (none) ∥ P5 (none) | P5: `owner-ok-sync-rules` |
 | 2 | P2 (gen, golden) | P1 + `research-gladiator-guide` + `owner-ok-artifact-classes` |
-| 3 | P3 (gen) ∥ P6 (main.js, a11y) | P3: `research-spiritmaster` · P6: S2 + `owner-ok-S2` |
+| 3 | P3 (gen) ∥ P6 (main.js, a11y) | P3: `research-spiritmaster` · P6: S2 + `owner-ok-0.7-S2` |
 | 4 | P4 (gen, golden) | P3, P1 + `owner-ok-artifact-classes` |
 | 5 | R, alone | everything above, or moved to the next patch; `DATA OK 0.7.0` |
 
@@ -792,7 +792,8 @@ Sent to Coordinator (Saul)'s daily list at pass start, 2026-10-18 7:35 AM ET (K1
    syncing device.
 4. **Sync deploy** (blocks the deploy only): a Cloudflare API token limited to Workers and R2, added as
    `CLOUDFLARE_API_TOKEN`; then CI may deploy to `sync.daevacompanion.com`.
-5. **S2 mockup** (`owner-ok-S2`, blocks P6): asked when S2 merges.
+5. **S2 mockup** (`owner-ok-0.7-S2`, blocks P6; the 0.5 `owner-ok-S2` row would otherwise match): asked when S2 merged
+   (#357, 7:52 AM ET), typed as "0.7 S2 OK: as recommended".
 6. **Proposed additions** (new features, so the owner's call; recommended: (a) only): (a) a class choice on the
    welcome card (#333 note 3); (b) a Ranger rotation section (#333 note 5, needs research); (c) story quests in
    Progress (#321 note 5); (d) a shorter phone header in Advanced mode (#321 note 10).
