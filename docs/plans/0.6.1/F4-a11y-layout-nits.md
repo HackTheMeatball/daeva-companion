@@ -36,6 +36,6 @@ The card HTML files with the headings, `src/styles/app.css` and card stylesheets
 
 ## Lanes, model, order
 
-Lanes: a11y. Model: Sonnet. Stall limit: 20 min (S–M).
+Lanes: a11y, main.js. Model: Sonnet. Stall limit: 20 min (S–M).
 
-After: none. (Shares the a11y lane with F3, so kickoff runs them one after the other.)
+After: none. (Shares the a11y lane with F3 and app.css with F2, so kickoff runs it after them.)

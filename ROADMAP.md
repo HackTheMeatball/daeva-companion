@@ -685,7 +685,7 @@ tomorrow after I wake up?" So 0.6.0 ships without the two owner-gated items and 
   [F1](docs/plans/0.6.1/F1-story-counter.md) story objective counter and Ahead order (golden) ·
   [F2](docs/plans/0.6.1/F2-phone-overlays.md) phone toast and Build sheet over the tab bar (main.js) ·
   [F3](docs/plans/0.6.1/F3-welcome-buttons.md) two "Start at Lv 1" buttons (a11y) ·
-  [F4](docs/plans/0.6.1/F4-a11y-layout-nits.md) headings, tap targets, board line (a11y) ·
+  [F4](docs/plans/0.6.1/F4-a11y-layout-nits.md) headings, tap targets, board line (a11y, main.js) ·
   [F5](docs/plans/0.6.1/F5-ranger-icons.md) Ranger icons under the standing icon OK (gen, golden).
   Not patched (to the 0.7 planning pass as input): #321 notes 5, 6, 8, 10 and #333 notes 2, 3, 5 (judgement calls or
   new features). #321 bug 4 (`assassin-lvl1` label) is the owner's 2026-10-16 label design, so it goes to the owner.
