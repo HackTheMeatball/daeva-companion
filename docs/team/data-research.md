@@ -4,7 +4,7 @@
 Confidence cards, and re-checks after game patches.
 
 **Source policy** (CLAUDE.md is authoritative): two independent sources, or game-database fields (Metabot quest/skill
-pages, aion2.gaming.tools read by the owner in a browser; Metabot and Wikily count as one; aion2.th.gl is never a
+pages, aion2.gaming.tools read by the owner in a browser; game-database fields from one upstream, such as the global client, count once; aion2.th.gl is never a
 source, see below), or the owner's in-game screens. Otherwise
 leave it out or label it *single source* / *inferred* / *disputed*. thegameswiki: facts only, never wording. No Game8.
 
