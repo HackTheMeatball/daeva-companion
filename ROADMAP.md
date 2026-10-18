@@ -481,7 +481,7 @@ fix round 2 on Opus; K3 and K9 (Kickoff writes the build card; golden split by s
 thread. Re-derived #114 limits: M code 80 min, M–L 80 min, L 120 min, S 16, S–M 20, M docs 41; build cap 5; build
 routing unchanged. The rows are in the scorecard and in the PR of this pass for #222.
 
-**Moved to 0.7 (Release Planner, 2026-10-18 5:35 AM ET), per the waves rule below:** every other 0.6 item had merged (P19, PR #320, 4:37 AM ET) and two owner inputs were still missing, so **P13** (story-quest icon, waits on the owner's icon crop; Metabot has none, PR #289) and **P15** (respec walk-through, waits on the owner's in-game key screens) move to 0.7, and R ships 0.6.0 without them. Their gates are renamed `owner-ok-story-icon` and `owner-ok-keys` (recorded as an "Owner, typed" DECISIONS row when the input arrives) so kickoff can read them. Their issues (#272, #274) stay open for 0.7.
+**Moved out of 0.6 (Release Planner, 2026-10-18 5:35 AM ET; now 0.6.1, see below), per the waves rule below:** every other 0.6 item had merged (P19, PR #320, 4:37 AM ET) and two owner inputs were still missing, so **P13** (story-quest icon, waits on the owner's icon crop; Metabot has none, PR #289) and **P15** (respec walk-through, waits on the owner's in-game key screens) move to 0.7, and R ships 0.6.0 without them. First planned for 0.7; Isaac moved them to a 0.6.1 patch at 6:05 AM ET ("anything outstanding we just patch tomorrow"). Their gates are renamed `owner-ok-story-icon` and `owner-ok-keys` (recorded as an "Owner, typed" DECISIONS row when the input arrives) so kickoff can read them. Their issues (#272, #274) stay open for 0.6.1.
 
 #### Audit (step 2), against `main` at `aab1032` (0.5.0)
 
@@ -664,12 +664,24 @@ Decisions this pass recorded (for the tracker, each as a done To-do with its rem
   file.
 - **Research packs for 0.7's two classes** (audit 1), after owner input 5 names them.
 
+### 0.6.1 — patch after 0.6.0 (owner, 2026-10-18 6:05 AM ET)
+
+Isaac, in the project chat: "Can we just push to the 6.0 release with what we have and anything outstanding we just patch
+tomorrow after I wake up?" So 0.6.0 ships without the two owner-gated items and 0.6.1 carries them, plus data fixes:
+
+- **P13** story-quest icon (#272), after `owner-ok-story-icon` (the owner's icon crop).
+- **P15** respec walk-through (#274), after `P14, owner-ok-keys` (the owner's in-game key screens).
+- **Game Data Check fixes** for #325 (thin-sourced "verified" fields), in small data PRs.
+
+The Release Planner queues each when its gate is met and opens the 0.6.1 release issue once they merge. No planning pass
+(patch, not a minor).
+
 ### 0.7, 0.8, 0.9 — two classes each
 
 Each minor: two class packs side by side (lanes A and B; order by the D8 rule: a class someone will level to 45, then
 data coverage, then overlap with Assassin), plus one other module in lane C: sync server and UI (old Y2, Y3) in 0.7, the
 1.0 audit's fixes in 0.8–0.9 as found. 0.7's planning pass also settles how the artifact carries several classes (0.6
-audit 2; `dist-artifact` is at 94% of its budget with two classes on main `5f7b415`, so 0.7 can't add a third without it), and takes 0.6's P13 and P15 (moved out 2026-10-18).
+audit 2; `dist-artifact` is at 94% of its budget with two classes on main `5f7b415`, so 0.7 can't add a third without it). 0.6's P13 and P15 go to the 0.6.1 patch, not here (owner, 2026-10-18 6:05 AM ET).
 
 ### 1.0
 

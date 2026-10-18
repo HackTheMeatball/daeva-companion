@@ -41,6 +41,6 @@ Ownership check: every acceptance line passes with these files.
 
 Lanes: golden. Model: Opus (golden). Stall limit: 16 min (S).
 
-After: owner-ok-story-icon (the owner's icon crop, recorded in DECISIONS and docs/ISSUES.md). Re-spec 2026-10-18 (Release Planner): P11 and P12 merged; `research-story-icon` ran (PR #289, no Metabot source). Moved to 0.7.
+After: owner-ok-story-icon (the owner's icon crop, recorded in DECISIONS and docs/ISSUES.md). Re-spec 2026-10-18 (Release Planner): P11 and P12 merged; `research-story-icon` ran (PR #289, no Metabot source). Moved to the 0.6.1 patch (owner, 2026-10-18 6:05 AM ET; first planned for 0.7).
 
 - [next] #? opus lanes:golden
