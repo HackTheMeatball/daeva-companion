@@ -8,13 +8,13 @@
      mt.level and each of the pack's "register" fields: registers; mt.quest = [t, [quest, storyEnd]] (one register for both)
    null is a tombstone (the entry was removed). A stamp's time is when this device saw the value change; 0 = unknown
    (a fresh browser's defaults). A v5 save is born with mt (src/core/migrations.js) and every write stamps it. */
-import { char, isRemoved } from "./state.js";
+import { char, isRemoved, mergeName } from "./state.js";
 import { activePack, perPack } from "./pack.js";
 
 /* Character fields with change times, by shape: the engine's and the pack's (charFields: "map" / "register"; its
    "local" fields are not timed: local state such as an undo, or retired fields). buildId / customBuild don't exist yet
-   (0.3, §8.4); they are timed once they do. The character's identity (id, pack, class, created) never changes; name gets
-   a stamp once 0.5 makes it editable. */
+   (0.3, §8.4); they are timed once they do. The character's identity (id, pack, class, created) never changes; name has
+   its own stamp (mt.name, src/core/state.js withName / mergeName). */
 const packFieldsOf = shape => p => Object.keys(p.charFields).filter(f => p.charFields[f] === shape);
 const syncMaps = () => perPack("syncMaps", p => ["checks", "started", ...packFieldsOf("map")(p)]);
 const syncRegs = () => perPack("syncRegs", p => ["level", ...packFieldsOf("register")(p), "buildId", "customBuild"]);
@@ -143,8 +143,8 @@ export function merge(a, b) {
   }
   return out;
 }
-/* Two copies of one character: per item, the later change wins (an un-tick dated after a tick survives). The identity
-   (id, pack, class, name, created) and the pack's "local" fields stay the local copy's. cut (ms, or null = none): the
+/* Two copies of one character: per item, the later change wins (an un-tick dated after a tick survives), and the later
+   rename (mt.name). The rest of the identity (id, pack, class, created) and the pack's "local" fields stay the local copy's. cut (ms, or null = none): the
    slot's newest removal; items changed at or before it are left out, and the result is null if none is left. */
 function mergeChar(ca, cb, cut) {
   const co = clone(ca);
@@ -183,6 +183,8 @@ function mergeChar(ca, cb, cut) {
   Object.values(co.qsteps || {}).forEach(a => a.sort((x, y) => x - y));
   Object.values(co.qsub || {}).forEach(o => Object.values(o).forEach(a => a.sort((x, y) => x - y)));
   co.mt = mt;
+  /* the later rename wins, so both devices end with the same name and the same payload */
+  mergeName(co, ca, cb, cmpStamp);
   return co;
 }
 /* The part of a save that merge() syncs (for tests and, later, the sync layer): per slot, the character's progress, mt

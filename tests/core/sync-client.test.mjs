@@ -29,6 +29,8 @@ const device = (M, save, keys, host, env = ENV) => {
   const d = { save, stores: 0 };
   d.round = async () => { const r = await M.syncOnce({ save: d.save, keys, host, env, store: m => { d.save = clone(m); d.stores++; } }); d.save = r.save; return r; };
   d.edit = (sec, fn) => { fn(M.char(d.save)); M.stampSave(d.save, sec * 1000); };
+  /* a rename as the page does it (renameChar with Date.now(), then the write's stampSave) */
+  d.rename = (sec, name) => { d.save = M.renameChar(d.save, d.save.current, name, sec * 1000); M.stampSave(d.save, sec * 1000); };
   return d;
 };
 
@@ -136,6 +138,25 @@ export default (test, M) => {
     assert.equal((await A.round()).status, 'synced'); assert.equal((await B.round()).status, 'synced');
     assert.equal(host.calls.filter(x => x.op === 'put').length, puts, 'no upload when nothing changed');
   });
+  test('round trip: a rename reaches the other device, the later of two renames wins, and then nothing is uploaded again', async () => {
+    const host = fakeHost(), k = await keysOf(CODE_BYTES);
+    const A = device(M, saveWith(M, { checks: { 'rq:1': true } }, 100), k, host); await A.round();
+    const B = device(M, clone(A.save), k, host); await B.round();
+    A.rename(200, 'Ann');
+    await A.round(); await B.round();
+    assert.deepEqual([M.char(A.save).name, M.char(B.save).name], ['Ann', 'Ann'], 'B takes A\'s rename');
+    let puts = host.calls.filter(x => x.op === 'put').length;
+    for (let i = 0; i < 3; i++) { assert.equal((await A.round()).status, 'synced'); assert.equal((await B.round()).status, 'synced'); }
+    assert.equal(host.calls.filter(x => x.op === 'put').length, puts, 'no upload when nothing changed (the name doesn\'t flip)');
+    A.rename(300, 'Early'); B.rename(310, 'Late');
+    await A.round(); await B.round(); await A.round();
+    assert.deepEqual([M.char(A.save).name, M.char(B.save).name], ['Late', 'Late'], 'the later rename');
+    assert.equal(canon(M.syncPayload(A.save)), canon(M.syncPayload(B.save)));
+    assert.equal(canon((await M.openSave(ENV, k, host.objects.get(k.id).body)).payload), canon(M.syncPayload(A.save)), 'the cloud copy too');
+    puts = host.calls.filter(x => x.op === 'put').length;
+    await A.round(); await B.round();
+    assert.equal(host.calls.filter(x => x.op === 'put').length, puts, 'converged');
+  });
   test('round trip: B\'s clock 1 h behind still wins with a newer edit (Lamport bump); view settings stay per device', async () => {
     const host = fakeHost(), k = await keysOf(CODE_BYTES);
     const A = device(M, saveWith(M, { checks: { 'rq:1': true }, mode: 'advanced' }, 5000), k, host);
@@ -192,12 +213,16 @@ export default (test, M) => {
       for (let step = 0; step < 8; step++) {
         const d = ds[Math.floor(r() * 3)];
         if (r() < 0.4) d.edit(20 + step, c => { c.checks['rq:' + Math.floor(r() * 4)] = r() < 0.6; });
+        if (r() < 0.3) d.rename(20 + step, ['Ann', 'Bo', 'Cy', ''][Math.floor(r() * 4)]);
         if (r() < 0.3) { const other = ds[Math.floor(r() * 3)]; host.beforePut = async () => { host.beforePut = null; await other.round(); }; }
         await d.round();
         host.beforePut = null;
       }
       for (const d of ds) await d.round();
       for (const d of ds) await d.round();
+      const puts = host.calls.filter(c => c.op === 'put').length;
+      for (const d of ds) assert.equal((await d.round()).status, 'synced');
+      assert.equal(host.calls.filter(c => c.op === 'put').length, puts, `seed ${seed}: no upload once converged`);
       const want = canon(M.syncPayload(ds[0].save));
       ds.forEach((d, i) => assert.equal(canon(M.syncPayload(d.save)), want, `seed ${seed} device ${i}`));
       assert.equal(canon((await M.openSave(ENV, k, host.objects.get(k.id).body)).payload), want, `seed ${seed} cloud copy`);

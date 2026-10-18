@@ -292,7 +292,11 @@ Per the plan, these go to the tracker as a To-do only when 0.6 lane C is next.
 - **`src/shell/sync-host-http.js`**: the fetch adapter, base URL given by the caller (0.7, the Worker's address). It
   also sets `cache: "no-store"` (a cached `GET` would replay a stale ETag); the browser may add its generic
   `Cache-Control` / `Pragma` for that, like `Origin`, which carry nothing about the player. The 0.7 server should send
-  `Cache-Control: no-store` too.
+  `Cache-Control: no-store` too, and list `ETag` in `Access-Control-Expose-Headers`: without it a cross-origin `get`
+  reads `etag: null`, the client then sends `If-None-Match: *`, gets 412 every time and ends in "conflict" (0.7 tests
+  this, or the adapter rejects a 200 without an ETag).
+- **Name:** a rename stamps `mt.name = [t, name]` (`renameChar`, `withName` in src/core/state.js); `merge()` keeps the
+  later rename (`mergeName`), so every device ends with the same name and the payload stops changing after a round.
 - **Site only (S4):** nothing the page bundles imports the client yet; `scripts/build.mjs` fails when the claude.ai file
   holds any of the client's marks (`companion-sync-v1`, `dc-sync`, `syncOnce`, `sealSave`, `joinSync`, `httpSyncHost`),
   and fails when a mark leaves the sources (so the check can't go stale).

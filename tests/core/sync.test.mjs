@@ -217,9 +217,21 @@ export default (test, M) => {
       assert.deepEqual(m.chars[SLOT_B], base.chars[SLOT_B]);
     }
   });
-  test('merge per slot: the identity (id, pack, class, name, created) stays the local copy\'s', () => {
+  test('merge per slot: the identity (id, pack, class, name, created) stays the local copy\'s when neither side renamed', () => {
     const A = load(M, { checks: {}, level: 20, quest: '' }, 0).state, B = clone(A); B.chars[TEST_SLOT].created = 5;
     const m = M.merge(A, B); for (const f of M.CHAR_META) assert.deepEqual(C(m)[f], C(A)[f], f);
+    assert.ok(!('name' in C(m).mt), 'no name stamp without a rename');
+  });
+  test('merge per slot: the later rename wins on both sides (mt.name), commutative and idempotent; unstamped names tie-break the same way', () => {
+    const base = load(M, { checks: {}, level: 20, quest: '' }, 0).state;
+    const A = M.renameChar(base, TEST_SLOT, 'Ann', 100000), B = M.renameChar(base, TEST_SLOT, 'Bo', 200000);
+    assert.deepEqual(C(A).mt.name, [100, 'Ann']); assert.ok(!('name' in (C(base).mt || {})), 'the input is not written');
+    for (const m of [M.merge(A, B), M.merge(B, A), M.merge(M.merge(A, B), B), M.merge(base, B)]) { assert.equal(C(m).name, 'Bo'); assert.deepEqual(C(m).mt.name, [200, 'Bo']); }
+    const again = M.renameChar(B, TEST_SLOT, 'Cy', 150000);
+    assert.deepEqual(C(again).mt.name, [201, 'Cy'], 'a rename on a clock behind still beats the name it replaces');
+    assert.equal(M.renameChar(B, TEST_SLOT, 'Bo', 900000).chars[TEST_SLOT].mt, C(B).mt, 'the same name: no new stamp');
+    const X = clone(base), Y = clone(base); C(X).name = 'Xa'; C(Y).name = 'Yb';
+    assert.equal(C(M.merge(X, Y)).name, C(M.merge(Y, X)).name, 'no stamps: one winner either way');
   });
   test('merge: a newer un-tick beats an older tick, a newer tick beats an older un-tick (either order)', () => {
     const A = load(M, { checks: {}, level: 20, quest: '' }, 0).state, B = clone(A);

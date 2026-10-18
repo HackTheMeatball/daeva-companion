@@ -30,6 +30,27 @@ export const liveChars = state => Object.values(state.chars).filter(c => !isRemo
    read, never stored, and never put in a storage key, a file name, a URL or a log (it may carry the player's name). */
 export const labelOf = c => [c.name, c.class, "lvl" + (+c.level || 1)].filter(Boolean).join("-");
 
+/* The name's change time (0.6 P21), so a rename reaches every device: mt.name = [t (s), name]. Identity, not progress:
+   no item of merge() (a removal doesn't cut it, stamp() and lastChangeOf skip it). The name is read here only (and in the
+   switcher card; tests/core/purity.test.mjs). */
+const isNameStamp = s => Array.isArray(s) && s.length === 2 && typeof s[0] === "number" && Number.isFinite(s[0]) && s[0] >= 0;
+/* c with name, stamped at t (s) strictly later than its last stamp (as merge's mtNext); no stamp without a time; c
+   itself when the name is the same */
+export function withName(c, name, t) {
+  if (name === c.name) return c;
+  const s = c.mt && c.mt.name, out = { ...c, name };
+  if (t > 0) out.mt = { ...c.mt, name: [isNameStamp(s) ? Math.max(t, s[0] + 1) : t, name] };
+  return out;
+}
+/* merge() of two copies' names into co: the later rename wins ([t, name]; no stamp = time 0, a stamp whose name differs
+   from the character's counts with the character's name), ties broken by cmp (merge's cmpStamp), so both orders agree */
+export function mergeName(co, ca, cb, cmp) {
+  const item = x => [isNameStamp(x.mt && x.mt.name) ? x.mt.name[0] : 0, typeof x.name === "string" ? x.name : ""];
+  const [t, name] = [item(ca), item(cb)].sort(cmp)[1];
+  if (typeof ca.name === "string" || typeof cb.name === "string") co.name = name;
+  if (t > 0) co.mt.name = [t, name];
+}
+
 /* Defaults laid under a stored save (a save is never re-defaulted beyond these) and a stored character. */
 export const DEFAULT = () => ({ hide: false, open: {} });
 export const CHAR_DEFAULT = () => ({ checks: {}, level: 5, quest: "" });

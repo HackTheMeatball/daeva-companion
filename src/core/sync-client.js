@@ -24,7 +24,8 @@ export const SYNC_KEY = "companion-sync-v1";
 export const SYNC_FORMAT = "dc-sync";
 /* the code: "DC1" (format 1, not secret), the 16 random bytes as 26 Crockford base32 symbols, one check symbol (mod 37) */
 const SC_SYMBOLS = "0123456789ABCDEFGHJKMNPQRSTVWXYZ", SC_CHECK = SC_SYMBOLS + "*~$=U", SC_PREFIX = "DC1";
-/* HKDF salt: the product name in lower case, hyphenated, then " sync v1" (sync.md §1) */
+/* HKDF salt (sync.md §1; tests/core/sync-client.test.mjs pins it): the product name in lower case, hyphenated, then
+   " sync v1". Spelled from the product name because src/core/ names no game term (the purity term scan). */
 const SC_SALT = "Daeva Companion".toLowerCase().replace(" ", "-") + " sync v1";
 const SC_PAD = 4096, SC_HEAD = 14, SC_TRIES = 4, SC_BACKOFF = [500, 1000, 2000];
 const scText = new TextEncoder(), scUtf8 = new TextDecoder("utf-8", { fatal: true });

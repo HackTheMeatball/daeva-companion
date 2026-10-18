@@ -87,7 +87,8 @@ never stored; a level-up changes the label, never the id.
 
 Characters are added, switched, renamed and removed by the pure functions of `src/core/chars.js` (0.5 P17; the header switcher, 0.5 P18, adds and switches through them):
 `addChar(state, { class, name, now, id })` (the new slot becomes current), `switchChar`, `renameChar` (`cleanName`:
-trimmed, white space folded, at most `NAME_MAX` code points) and `removeChar` (never the last slot; a removed current
+trimmed, white space folded, at most `NAME_MAX` code points; `now` stamps `mt.name = [t, name]` so `merge()` keeps
+the later rename) and `removeChar` (never the last slot; a removed current
 moves `current` to the first remaining slot). Each returns a new save and leaves every other slot the same object. The
 class a new character may have comes from the pack's `classes` (`packClasses`; a pack without it offers its
 `character`), so only a class with a guide pack can be picked. A removed character leaves a tombstone
