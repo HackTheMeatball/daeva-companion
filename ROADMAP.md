@@ -712,7 +712,7 @@ Path to 1.0 first:
    Changed: 0.7's research sessions start at pass start (K10), not when the plan merges.
 2. **The artifact can't carry a third class** (971,146 / 1,030,000 B, 94%). Decided here (Claude remediated, reversible):
    A1 makes the artifact carry a fixed build-time list, Assassin and Ranger as today, and new classes are site-only.
-   The artifact stays byte-identical for today's classes; the owner can change the list (owner input 2).
+   The artifact stays byte-identical for today's classes. A site-only class makes the two builds' pickers differ, which CLAUDE.md ("both builds visually identical") leaves to the owner, so G1 and C2 wait on owner input 2 (PR #340 review).
 3. **Sync has a client and a hosting decision but no server or UI.** Lane C: Y2 server (offline tests, no deploy),
    S2 mockup, Y3 UI. The deploy needs the owner's Cloudflare token (owner input 4) and is a Build Pipeline task, not a
    bot item (no bot edits `.github/workflows/`).
@@ -770,9 +770,9 @@ lane already orders them); build scripts A1 only. Critical path: A1 → G1 → C
 | Wave | Builds | After |
 |---|---|---|
 | 1 | A1 (none) ∥ S2 (none) ∥ Y2 (none) | Y2: `owner-ok-sync-rules` |
-| 2 | G1 (gen, golden) | A1 + `research-gladiator-guide` |
+| 2 | G1 (gen, golden) | A1 + `research-gladiator-guide` + `owner-ok-artifact-classes` |
 | 3 | C1 (gen) ∥ Y3 (main.js, a11y) | C1: `research-spiritmaster` · Y3: S2 + `owner-ok-S2` |
-| 4 | C2 (gen, golden) | C1, A1 |
+| 4 | C2 (gen, golden) | C1, A1 + `owner-ok-artifact-classes` |
 | 5 | R, alone | everything above, or moved to the next patch; `DATA OK 0.7.0` |
 
 Checked: no two items in one wave own the same file. Waves are the expected order, not gates. An item whose owner
@@ -785,7 +785,7 @@ Sent to Coordinator (Saul)'s daily list at pass start, 2026-10-18 7:35 AM ET (K1
 
 1. **Second class** (token for C1: the class's research file; default Spiritmaster): "Yes: 0.7's second class is the
    Spiritmaster." or name the class someone will level to 45.
-2. **Artifact classes** (not blocking; A1 keeps today's list): "Yes: the claude.ai artifact carries Assassin and Ranger
+2. **Artifact classes** (`owner-ok-artifact-classes`, blocks G1 and C2; A1 itself keeps today's list): "Yes: the claude.ai artifact carries Assassin and Ranger
    only; new classes are site-only."
 3. **Sync rules** (`owner-ok-sync-rules`, blocks Y2; sync.md §6 S3, S5): 180-day retention; "Show sync code" on a
    syncing device.
@@ -798,7 +798,7 @@ Sent to Coordinator (Saul)'s daily list at pass start, 2026-10-18 7:35 AM ET (K1
 
 Decisions this pass recorded (for the tracker):
 
-- **Claude remediated:** artifact carries a fixed class list, today's two (audit 2); second class defaults to the
+- **Claude remediated:** A1's build-time class list, today's two (audit 2; offering site-only classes is the owner's, input 2); second class defaults to the
   Spiritmaster by D8 (audit 6); sync deploy is a Build Pipeline task.
 
 #### Alongside (not #114 items)

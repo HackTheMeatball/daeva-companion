@@ -23,7 +23,7 @@ As G1.
 
 - [ ] Every guide claim has two sources or a label (paste).
 - [ ] Golden: new states recorded, every other class identical (paste).
-- [ ] Site picker offers the four classes, the artifact's two (paste).
+- [ ] The site picker offers every `classes` entry, the artifact's only `ARTIFACT_CLASSES` (paste).
 - [ ] Before / after shots and `scrapbook.json`; `npm test` green.
 
 ## Files (owns)
@@ -35,4 +35,4 @@ As G1.
 
 Lanes: gen, golden. Model: Opus. Stall limit: 120 min (L).
 
-After: C1, A1.
+After: C1, A1, owner-ok-artifact-classes.
