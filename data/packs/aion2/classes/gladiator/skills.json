@@ -206,7 +206,7 @@
           "id": "spec:gladiator:crushing-wave:1",
           "n": 1,
           "skillLv": 8,
-          "text": "Absorbs 200, 200% HP"
+          "text": "Absorbs 2% HP"
         },
         {
           "id": "spec:gladiator:crushing-wave:2",
@@ -241,10 +241,29 @@
             "scheme": "metabot",
             "value": "0.0.4387.0"
           }
+        },
+        {
+          "url": "https://daevaguides.com/en/gladiator/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-18",
+          "note": "Class guide shows the specialty text for spec:gladiator:crushing-wave:1 (Game Data Check, #358)"
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/gladiator/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-18",
+          "note": "Class guide shows the specialty text for spec:gladiator:crushing-wave:1 (Game Data Check, #358)"
         }
       ],
       "verifiedAt": "2026-10-18",
-      "status": "verified"
+      "status": "verified",
+      "conflicts": [
+        "spec:gladiator:crushing-wave:1 text: Metabot's skill page prints \"Absorbs 200, 200% HP\" (an unfilled template; its number is the percent x 100). Game text \"Absorbs 2% HP\" per daevaguides and aion2turkiye (mmo-codex agrees) (2026-10-18, #358)."
+      ]
     },
     {
       "id": "skill:gladiator:defiance",
@@ -452,7 +471,7 @@
           "id": "spec:gladiator:keen-strike:2",
           "n": 2,
           "skillLv": 8,
-          "text": "Absorbs 100, 100% HP"
+          "text": "Absorbs 1% HP"
         },
         {
           "id": "spec:gladiator:keen-strike:3",
@@ -481,10 +500,29 @@
             "scheme": "metabot",
             "value": "0.0.4387.0"
           }
+        },
+        {
+          "url": "https://daevaguides.com/en/gladiator/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-18",
+          "note": "Class guide shows the specialty text for spec:gladiator:keen-strike:2 (Game Data Check, #358)"
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/gladiator/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-18",
+          "note": "Class guide shows the specialty text for spec:gladiator:keen-strike:2 (Game Data Check, #358)"
         }
       ],
       "verifiedAt": "2026-10-18",
-      "status": "verified"
+      "status": "verified",
+      "conflicts": [
+        "spec:gladiator:keen-strike:2 text: Metabot's skill page prints \"Absorbs 100, 100% HP\" (an unfilled template; its number is the percent x 100). Game text \"Absorbs 1% HP\" per daevaguides and aion2turkiye (mmo-codex agrees) (2026-10-18, #358)."
+      ]
     },
     {
       "id": "skill:gladiator:leaping-slam",
@@ -568,7 +606,7 @@
           "id": "spec:gladiator:mocking-blade:1",
           "n": 1,
           "skillLv": 8,
-          "text": "Absorbs 400, 400% HP, absorbs 1500, 1500% HP of target with Incapacitated Immunity"
+          "text": "Absorbs 4% HP, absorbs 15% HP of target with Incapacitated Immunity"
         },
         {
           "id": "spec:gladiator:mocking-blade:2",
@@ -603,10 +641,29 @@
             "scheme": "metabot",
             "value": "0.0.4387.0"
           }
+        },
+        {
+          "url": "https://daevaguides.com/en/gladiator/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-18",
+          "note": "Class guide shows the specialty text for spec:gladiator:mocking-blade:1 (Game Data Check, #358)"
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/gladiator/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-18",
+          "note": "Class guide shows the specialty text for spec:gladiator:mocking-blade:1 (Game Data Check, #358)"
         }
       ],
       "verifiedAt": "2026-10-18",
-      "status": "verified"
+      "status": "verified",
+      "conflicts": [
+        "spec:gladiator:mocking-blade:1 text: Metabot's skill page prints \"Absorbs 400, 400% HP, absorbs 1500, 1500% HP of target with Incapacitated Immunity\" (an unfilled template; its number is the percent x 100). Game text \"Absorbs 4% HP, absorbs 15% HP of target with Incapacitated Immunity\" per daevaguides and aion2turkiye (mmo-codex agrees) (2026-10-18, #358)."
+      ]
     },
     {
       "id": "skill:gladiator:murderous-burst",
@@ -657,7 +714,7 @@
           "id": "spec:gladiator:overhead-slam:1",
           "n": 1,
           "skillLv": 8,
-          "text": "Absorbs 70, 70% HP"
+          "text": "Absorbs 0.7% HP"
         },
         {
           "id": "spec:gladiator:overhead-slam:2",
@@ -692,10 +749,29 @@
             "scheme": "metabot",
             "value": "0.0.4387.0"
           }
+        },
+        {
+          "url": "https://daevaguides.com/en/gladiator/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-18",
+          "note": "Class guide shows the specialty text for spec:gladiator:overhead-slam:1 (Game Data Check, #358)"
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/gladiator/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-18",
+          "note": "Class guide shows the specialty text for spec:gladiator:overhead-slam:1 (Game Data Check, #358)"
         }
       ],
       "verifiedAt": "2026-10-18",
-      "status": "verified"
+      "status": "verified",
+      "conflicts": [
+        "spec:gladiator:overhead-slam:1 text: Metabot's skill page prints \"Absorbs 70, 70% HP\" (an unfilled template; its number is the percent x 100). Game text \"Absorbs 0.7% HP\" per daevaguides and aion2turkiye (mmo-codex agrees) (2026-10-18, #358)."
+      ]
     },
     {
       "id": "skill:gladiator:protection-armor",
@@ -988,7 +1064,7 @@
           "id": "spec:gladiator:sword-aura-rampage:1",
           "n": 1,
           "skillLv": 8,
-          "text": "Absorbs 500, 500% HP"
+          "text": "Absorbs 5% HP"
         },
         {
           "id": "spec:gladiator:sword-aura-rampage:2",
@@ -1023,10 +1099,29 @@
             "scheme": "metabot",
             "value": "0.0.4387.0"
           }
+        },
+        {
+          "url": "https://daevaguides.com/en/gladiator/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-18",
+          "note": "Class guide shows the specialty text for spec:gladiator:sword-aura-rampage:1 (Game Data Check, #358)"
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/gladiator/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-18",
+          "note": "Class guide shows the specialty text for spec:gladiator:sword-aura-rampage:1 (Game Data Check, #358)"
         }
       ],
       "verifiedAt": "2026-10-18",
-      "status": "verified"
+      "status": "verified",
+      "conflicts": [
+        "spec:gladiator:sword-aura-rampage:1 text: Metabot's skill page prints \"Absorbs 500, 500% HP\" (an unfilled template; its number is the percent x 100). Game text \"Absorbs 5% HP\" per daevaguides and aion2turkiye (mmo-codex agrees) (2026-10-18, #358)."
+      ]
     }
   ]
 }

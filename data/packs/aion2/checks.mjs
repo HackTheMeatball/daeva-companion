@@ -156,6 +156,8 @@ export function checks(ctx, check) {
   /* ---------------------------------------------------------------- class content */
   /* choice n: dense from 1, never renumbered (positions are save indices) */
   for (const { r } of all) if (r.specialtyChoices) check(`${r.id}: choice n = position + 1`, r.specialtyChoices.every((c, i) => c.n === i + 1));
+  /* #358: Metabot prints some percents unfilled ("Absorbs 500, 500% HP" for the game's 5%); the game text goes in instead */
+  for (const { r } of all) for (const c of r.specialtyChoices || []) check(`${c.id}: no unfilled "N, N%" specialty text`, !/\d+, \d+%/.test(c.text), c.text);
   /* shared steps carry no class content outside build tokens: no skill or stigma name of this class */
   const classWords = [...stigmas.map(s => s.name)];
   for (const s of steps) for (const w of classWords) check(`shared step ${s.id} names no stigma outside a build token`, !(s.text + (s.loc || '')).includes(w));

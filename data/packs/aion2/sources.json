@@ -363,6 +363,34 @@
       ]
     },
     {
+      "id": "src:daevaguides",
+      "name": "Daeva Guides",
+      "hosts": [
+        "daevaguides.com"
+      ],
+      "kind": "guide",
+      "independenceGroup": "daevaguides",
+      "licence": {
+        "id": "unknown"
+      },
+      "access": {
+        "robots": "allows",
+        "terms": "allows",
+        "mode": "scripted",
+        "checkedAt": "2026-10-18"
+      },
+      "use": {
+        "facts": true,
+        "wording": false,
+        "quotes": "none",
+        "link": "dofollow"
+      },
+      "verifiedAt": "2026-10-18",
+      "notes": [
+        "Class build and macro guides. docs/research/SOURCES.md: Full use; never use its \"Check your character\" tool (terms). Vetted 2026-10-18 (2026-10-build-guide-sources.md §2)."
+      ]
+    },
+    {
       "id": "src:exitlag",
       "name": "ExitLag",
       "hosts": [
