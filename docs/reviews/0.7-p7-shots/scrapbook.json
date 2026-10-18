@@ -1,0 +1,8 @@
+[
+  { "case": "j1-typo-390", "kind": "before-after", "title": "Join field shows the whole code (phone)",
+    "caption": "The join field wraps after hyphens on two rows, so the last group the error points at is visible." },
+  { "case": "j1-typo-1500", "kind": "before-after", "title": "Join field (desktop)",
+    "caption": "On a wide screen the code still reads in full." },
+  { "case": "m1-options-advanced-390", "kind": "before-after", "title": "Sync options (Advanced, phone)",
+    "caption": "The options menu in Advanced mode: show code, new code, delete cloud copy, turn off." }
+]

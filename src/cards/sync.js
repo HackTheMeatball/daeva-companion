@@ -88,7 +88,7 @@ export function mountSync(o) {
   /* j1–j4: join with a code; a typo is caught here, before any request */
   function stepJoin() {
     pending = true; status = null; paint();
-    const inp = el("input", "sync-input sync-codein"), err = el("p", "sync-note err"), go = btn(T["join.button"], "primary", join);
+    const inp = el("textarea", "sync-input sync-codein"), err = el("p", "sync-note err"), go = btn(T["join.button"], "primary", join);
     inp.setAttribute("aria-label", T["join.field"]); inp.autocomplete = "off"; inp.spellcheck = false; inp.setAttribute("autocapitalize", "characters");
     go.disabled = true;
     const check = () => {
@@ -97,7 +97,9 @@ export function mountSync(o) {
       err.textContent = !bytes && typed >= 30 ? T["join.typo"] : "";
       inp.classList.toggle("err", !!err.textContent);
     };
-    inp.addEventListener("input", check);
+    inp.rows = 2;
+    inp.addEventListener("input", () => { const v = inp.value.replace(/\s+/g, ""); if (v !== inp.value) inp.value = v; check(); });
+    inp.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); if (!go.disabled) join(); } });
     async function join() {
       const bytes = parseSyncCode(inp.value); if (!bytes) return;
       const code = newCodeText(bytes, inp.value);
