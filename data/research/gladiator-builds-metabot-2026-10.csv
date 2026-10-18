@@ -1,0 +1,38 @@
+build,voice,kind,order,name,value,status,checkedAt,page_url,notes
+leveling-1-45,editorial,skill-target,1,Keen Strike,Lv 10,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,2,Rending Blow,Lv 10,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,3,Leaping Slam,Lv 10,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,4,Overhead Slam,Lv 10,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,5,Rush Strike,Lv 10,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,6,Ruinous Blow,Lv 10,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,7,Survival Stance,Lv 10,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,8,Identify Weakness,Lv 10,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,9,Attack Preparation,Lv 10,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,10,Crushing Wave,Lv 7,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,11,Mocking Blade,Lv 5,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,stigma-slot,1,Zikel's Blessing,"slot 1 (Lv 22), stigma Lv 8",single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator/build,
+leveling-1-45,editorial,stigma-slot,2,Lunge Stance,"slot 2 (Lv 27), stigma Lv 7",single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator/build,
+leveling-1-45,editorial,stigma-slot,3,Lifestealing Blade,"slot 3 (Lv 32), stigma Lv 5",single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator/build,
+leveling-1-45,editorial,stigma-slot,4,Rage Burst,"slot 4 (Lv 37), stigma Lv 4",single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator/build,
+endgame-pve-top-players,"aggregate (151 tracked Lv 45 players, updated ~2026-10-04)",stigma-slot,1,Lunge Stance,"slot 1 (Lv 22), pick 91%",single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator/build,same values on the class page
+endgame-pve-top-players,"aggregate (151 tracked Lv 45 players, updated ~2026-10-04)",stigma-slot,2,Zikel's Blessing,"slot 2 (Lv 27), pick 91%",single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator/build,same values on the class page
+endgame-pve-top-players,"aggregate (151 tracked Lv 45 players, updated ~2026-10-04)",stigma-slot,3,Rage Burst,"slot 3 (Lv 32), pick 73%",single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator/build,same values on the class page
+endgame-pve-top-players,"aggregate (151 tracked Lv 45 players, updated ~2026-10-04)",stigma-slot,4,Focused Block,"slot 4 (Lv 37), pick 62%",single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator/build,same values on the class page
+endgame-pve-top-players,aggregate,core-skill,1,Keen Strike,99% pick,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator,
+endgame-pve-top-players,aggregate,core-skill,2,Ruinous Blow,99% pick,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator,
+endgame-pve-top-players,aggregate,core-skill,3,Rending Blow,99% pick,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator,
+endgame-pve-top-players,aggregate,core-skill,4,Leaping Slam,99% pick,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator,
+endgame-pve-top-players,aggregate,core-skill,5,Rush Strike,99% pick,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator,
+class-builds-guide,editorial (as of 2026-10-06),stigma-slot,1,Zikel's Blessing,slot 1 (Lv 22),single-source,2026-10-18,https://metabot.gg/en/aion-2/guides/class-builds-guide,same order as the leveling build
+class-builds-guide,editorial (as of 2026-10-06),stigma-slot,2,Lunge Stance,slot 2 (Lv 27),single-source,2026-10-18,https://metabot.gg/en/aion-2/guides/class-builds-guide,same order as the leveling build
+class-builds-guide,editorial (as of 2026-10-06),stigma-slot,3,Lifestealing Blade,slot 3 (Lv 32),single-source,2026-10-18,https://metabot.gg/en/aion-2/guides/class-builds-guide,same order as the leveling build
+class-builds-guide,editorial (as of 2026-10-06),stigma-slot,4,Rage Burst,slot 4 (Lv 37),single-source,2026-10-18,https://metabot.gg/en/aion-2/guides/class-builds-guide,same order as the leveling build
+class-page-stat-priority,editorial,stat-priority,1,Attack,,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator,class-builds guide top 3 agrees: Attack > Critical Hit > Accuracy Bonus
+class-page-stat-priority,editorial,stat-priority,2,Critical Hit,,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator,class-builds guide top 3 agrees: Attack > Critical Hit > Accuracy Bonus
+class-page-stat-priority,editorial,stat-priority,3,Accuracy Bonus,,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator,class-builds guide top 3 agrees: Attack > Critical Hit > Accuracy Bonus
+class-page-stat-priority,editorial,stat-priority,4,HP,,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator,class-builds guide top 3 agrees: Attack > Critical Hit > Accuracy Bonus
+class-page-stat-priority,editorial,stat-priority,5,Block,,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator,class-builds guide top 3 agrees: Attack > Critical Hit > Accuracy Bonus
+class-page-daevanion-path,editorial,board-path,1,Nezekan: Attack Preparation and Survival Stance node pairs,,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator,
+class-page-daevanion-path,editorial,board-path,2,Zikel: Murderous Burst node pair,,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator,Murderous Burst is learned at Lv 25; Zikel opens at Lv 20
+class-page-daevanion-path,editorial,board-path,3,Route through Ruinous Blow and Rending Blow nodes on the way,,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator,
+leveling-1-45,editorial,rotation,1,"Leap in, knock down, slam the downed target, rush for the party damage buff, clean up with AoE and basic attacks",,single-source,2026-10-18,https://metabot.gg/en/aion-2/classes/gladiator/build,paraphrased; P5 must write its own text
