@@ -7,6 +7,10 @@
     {
       "id": "unlock:closet",
       "what": "Closet (Alt+O)",
+      "hotkey": {
+        "key": "Alt+O",
+        "ref": "owner:2026-10-14-unlocks-10"
+      },
       "at": {
         "story": "sq:2101020",
         "is": "turnedIn",
@@ -44,6 +48,10 @@
     {
       "id": "unlock:daevanion",
       "what": "Daevanion (U)",
+      "hotkey": {
+        "key": "U",
+        "ref": "owner:2026-10-14-unlocks-03"
+      },
       "at": {
         "story": "sq:2102065",
         "is": "turnedIn",
@@ -262,6 +270,10 @@
       "id": "unlock:journal-customization",
       "what": "Journal and Customization",
       "detail": "Journal (J)",
+      "hotkey": {
+        "key": "J",
+        "ref": "owner:2026-10-14-unlocks-05"
+      },
       "at": {
         "level": 2,
         "basis": "owner"
@@ -337,6 +349,10 @@
     {
       "id": "unlock:legion",
       "what": "Legion (L)",
+      "hotkey": {
+        "key": "L",
+        "ref": "owner:2026-10-14-unlocks-07"
+      },
       "at": {
         "story": "sq:2102100",
         "is": "turnedIn",
@@ -651,6 +667,10 @@
     {
       "id": "unlock:pets",
       "what": "Pets (Alt+X)",
+      "hotkey": {
+        "key": "Alt+X",
+        "ref": "owner:2026-10-14-unlocks-11"
+      },
       "at": {
         "story": "sq:2102020",
         "is": "turnedIn",
@@ -722,6 +742,10 @@
     {
       "id": "unlock:shop",
       "what": "Shop (H)",
+      "hotkey": {
+        "key": "H",
+        "ref": "owner:2026-10-14-unlocks-02"
+      },
       "at": {
         "story": "sq:2101020",
         "is": "turnedIn",
@@ -797,6 +821,10 @@
       "id": "unlock:skills-window",
       "what": "Skills window",
       "detail": "Skills (K)",
+      "hotkey": {
+        "key": "K",
+        "ref": "owner:2026-10-14-unlocks-04"
+      },
       "at": {
         "level": 4,
         "basis": "owner"
@@ -834,6 +862,10 @@
       "id": "unlock:stats-window",
       "what": "Stats window",
       "detail": "Stats (P)",
+      "hotkey": {
+        "key": "P",
+        "ref": "owner:2026-10-14-unlocks-06"
+      },
       "at": {
         "level": 3,
         "basis": "owner"
@@ -927,6 +959,10 @@
       "id": "unlock:supply-requests",
       "what": "Supply Requests",
       "detail": "Hand in items for Abyss Points",
+      "hotkey": {
+        "key": "Alt+J",
+        "ref": "owner:2026-10-14-unlocks-24"
+      },
       "at": {
         "level": 25
       },
@@ -954,6 +990,10 @@
     {
       "id": "unlock:title",
       "what": "Title (Alt+T)",
+      "hotkey": {
+        "key": "Alt+T",
+        "ref": "owner:2026-10-14-unlocks-08"
+      },
       "at": {
         "story": "sq:2101060",
         "is": "turnedIn",
@@ -1087,6 +1127,10 @@
     {
       "id": "unlock:wings",
       "what": "Wings (Alt+C)",
+      "hotkey": {
+        "key": "Alt+C",
+        "ref": "owner:2026-10-14-unlocks-12"
+      },
       "at": {
         "story": "sq:2101050",
         "is": "turnedIn",

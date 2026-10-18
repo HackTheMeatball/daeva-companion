@@ -9,6 +9,7 @@ import { GATES } from "../data/milestones.js";
 import { DV_NODES } from "../catalog.js";
 import { dvNeed, dvNext, dvSpent, dvWaitOf } from "../requirements.js";
 import { tipPop } from "./shared.js";
+import { keyChip } from "../hotkeys.js";
 import { aion2State as state, aion2Save as save, aion2Update as update, aion2Render as render, aion2RenderNow as renderNow, aion2RenderUndo as renderUndo, aion2FitSkills as fitSkills, aion2IsBasic as isBasic, aion2SpMini as spMini, aion2DvShort as dvShort, aion2LayoutEl as layoutEl, aion2DvGate as dvGate } from "./page.js";
 
 const dvName = it => `<span class="dvname ${DV_TYPE[it.ty][0]}">${it.t}</span>`;
@@ -35,7 +36,7 @@ function renderDaevanion() {
      `hidden`, so the old `box.hidden = !dvOpen(…)` was dead code; E6 removes it rather than hide the gate text.) */
   const total = char(state).dvTotal || 0, left = total - dvSpent(char(state));
   document.getElementById("dvRemain").innerHTML = dvSplitTxt(total);
-  document.getElementById("dvBig").innerHTML = `<b class="dvsync" title="Click to match the game's crystals left">${total ? left : "–"}</b><span>crystal${total && left === 1 ? "" : "s"} left</span>${char(state).dvAdj ? `<em class="dvadj" title="Correction so this matches the game">${char(state).dvAdj > 0 ? "−" : "+"}${Math.abs(char(state).dvAdj)} adj</em>` : ""}`;
+  document.getElementById("dvBig").innerHTML = `<b class="dvsync" title="Click to match the game's crystals left">${total ? left : "–"}</b><span>crystal${total && left === 1 ? "" : "s"} left</span>${char(state).dvAdj ? `<em class="dvadj" title="Correction so this matches the game">${char(state).dvAdj > 0 ? "−" : "+"}${Math.abs(char(state).dvAdj)} adj</em>` : ""}${keyChip("daevanion")}`;
   /* One node at a time: the next unbought node on an unlocked board, in the milestones' order. */
   const opts = [dvNext(char(state))].filter(Boolean), list = document.getElementById("dvNextList");
   list.innerHTML = opts.length
@@ -128,7 +129,7 @@ function dvNxUpdate() {
 function dvLive() {
   dvNxUpdate();
   const total = char(state).dvTotal || 0, left = total - dvSpent(char(state));
-  document.getElementById("dvBig").innerHTML = `<b class="dvsync" title="Click to match the game's crystals left">${total ? left : "–"}</b><span>crystal${total && left === 1 ? "" : "s"} left</span>${char(state).dvAdj ? `<em class="dvadj" title="Correction so this matches the game">${char(state).dvAdj > 0 ? "−" : "+"}${Math.abs(char(state).dvAdj)} adj</em>` : ""}`;
+  document.getElementById("dvBig").innerHTML = `<b class="dvsync" title="Click to match the game's crystals left">${total ? left : "–"}</b><span>crystal${total && left === 1 ? "" : "s"} left</span>${char(state).dvAdj ? `<em class="dvadj" title="Correction so this matches the game">${char(state).dvAdj > 0 ? "−" : "+"}${Math.abs(char(state).dvAdj)} adj</em>` : ""}${keyChip("daevanion")}`;
   document.getElementById("dvRemain").innerHTML = dvSplitTxt(total);
   document.querySelectorAll("#dvNextList .dvrow").forEach(r => {
     const k = r.querySelector("input[type=checkbox]").dataset.k, c = (char(state).dvCost || {})[k], st = r.querySelector(".dvst");

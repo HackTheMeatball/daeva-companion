@@ -50,6 +50,25 @@
           "description": "When it opens.",
           "$ref": "common.schema.json#/$defs/cond"
         },
+        "hotkey": {
+          "description": "The feature's default key, as the owner's unlock screen shows it (0.6 P14). ref names that screen; it must be one of the record's owner sources, and that source's `what` must show the key in brackets (tools/gen/gen.mjs checks both). Only a record for one feature with one key has it.",
+          "type": "object",
+          "required": [
+            "key",
+            "ref"
+          ],
+          "properties": {
+            "key": {
+              "type": "string",
+              "pattern": "^(Alt\\+)?[A-Z]$"
+            },
+            "ref": {
+              "type": "string",
+              "pattern": "^owner:[0-9]{4}-[0-9]{2}-[0-9]{2}-unlocks-[0-9]{2}$"
+            }
+          },
+          "additionalProperties": false
+        },
         "party": {
           "type": "string",
           "maxLength": 20

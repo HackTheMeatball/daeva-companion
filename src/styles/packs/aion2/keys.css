@@ -1,0 +1,10 @@
+/* Default keys (0.6 P14, src/packs/aion2/hotkeys.js; mockup docs/design/0.6-onboarding-mockup.md §1.3, frames K1 / DK1):
+   the key chip, right-aligned on a card's first line (points / crystals) while its window is open, and the muted hint
+   line on a Next up row, under its text and above its action. Compact phone rows don't show it (only the featured card
+   does). */
+.keychip { display: inline-grid; place-items: center; min-width: 22px; height: 22px; padding: 0 var(--space-6); border-radius: var(--radius-5); border: 1px solid var(--muted-66); font: 600 11px var(--mono); color: var(--fg); background: var(--panel-2); }
+.ptbig .keychip { margin-left: auto; align-self: flex-end; }
+/* a very narrow window (page zoom): the points line has no room left, the Next up hint still names the key */
+@media (max-width: 300px) { .ptbig .keychip { display: none; } }
+#nowStar .ns-key { display: flex; align-items: center; gap: var(--space-8); margin: var(--space-8) 0 0; font-size: 12.5px; color: var(--muted); }
+#nowStar .ns-stack.ns-phone .ns-card:not(.first) .ns-key { display: none; }

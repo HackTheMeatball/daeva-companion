@@ -1,0 +1,8 @@
+[
+  { "case": "k1-nextup-390", "kind": "before-after", "title": "Which key opens Skills",
+    "caption": "At Lv 4 the Next up card that spends skill points now says \"Open Skills: press K\", the game's default key." },
+  { "case": "k1-skills-390", "kind": "before-after", "title": "Key on the Skills card",
+    "caption": "Once Skills opens at Lv 4, the Skills card shows its K key on the points line." },
+  { "case": "dk1-1500", "kind": "before-after", "title": "Keys on desktop",
+    "caption": "At Lv 13, after Urgent Pursuit, the Skills card shows K and the Daevanion card U; Next up's skill card says which key to press." }
+]
