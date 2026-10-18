@@ -9,6 +9,7 @@
    A case: { name, save, before, after, act, afterOnly, width = 390, height = 844, mode = 'basic', shots }
      save          a flat test save (tests/support/save.js) for both builds; before / after override it per build;
                    with none, a fresh browser (mode then stays the app's default)
+     char          { pack, class } written into the save's character (a class other than the default, e.g. the Ranger)
      act           a function run in the page after load (opens a menu, types a name); same for both builds
      shots         [{ sel, suffix = '', text }]: element screenshots (first match, holding text if given);
                    omitted = the top of the viewport (width x height)
@@ -22,7 +23,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const require = createRequire(import.meta.url);
 const { chromium } = require('playwright');
-const { writeSave } = require('./save.js');
+const { SAVE_KEY, writeSave } = require('./save.js');
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const args = process.argv.slice(2), opt = n => { const i = args.indexOf('--' + n); return i >= 0 ? args[i + 1] : null; };
 const dirArg = args.find((a, i) => !a.startsWith('--') && args[i - 1] !== '--base');
@@ -55,6 +56,8 @@ for (const c of CASES) for (const when of (afterOnly || c.afterOnly) ? ['after']
   const save = c[when] || c.save;
   if (save) await writeSave(p, { open: {}, hideCards: false, mode: c.mode || 'basic', ...save }, { fresh: true });
   else await p.evaluate(() => localStorage.clear());
+  /* char: { pack, class } for the save's character (0.6 P5: a Ranger) */
+  if (save && c.char) await p.evaluate(([k, ch]) => { const s = JSON.parse(localStorage.getItem(k)); for (const x of Object.values(s.chars)) Object.assign(x, ch); localStorage.setItem(k, JSON.stringify(s)); }, [SAVE_KEY, c.char]);
   await p.reload(); await p.waitForTimeout(500);
   if (c.act) { await p.evaluate(c.act); await p.waitForTimeout(250); }
   for (const { sel, suffix = '', text } of c.shots || [{}]) {

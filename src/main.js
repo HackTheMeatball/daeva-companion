@@ -134,7 +134,6 @@ function useSave(next) {
 
 const mainEl = document.getElementById("main");
 const layoutEl = document.querySelector(".layout");
-
 function render() {
   renderMilestones();
   renderRoute();

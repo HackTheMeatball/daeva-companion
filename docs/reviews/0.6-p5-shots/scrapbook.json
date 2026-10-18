@@ -1,0 +1,8 @@
+[
+  { "case": "picker-new-character-390", "kind": "before-after", "title": "Pick a class: Ranger",
+    "caption": "New character now offers the Ranger next to the Assassin." },
+  { "case": "ranger-lv22-advanced-1500", "kind": "screenshot", "title": "A Ranger at level 22",
+    "caption": "A Ranger character gets its own guide: Ranger skills to buy, Vaizel's Authority for stigma slot 1, and the header names the Ranger." },
+  { "case": "ranger-build-drawer-1500", "kind": "screenshot", "title": "Ranger stat priority",
+    "caption": "The Build tab shows Attack, Critical Hit, Accuracy Bonus from Metabot. No rotation yet: no source gives a Ranger key setup." }
+]
