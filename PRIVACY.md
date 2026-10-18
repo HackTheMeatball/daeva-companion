@@ -33,6 +33,9 @@ Anthropic's privacy policy covers claude.ai itself.
 - **Fonts** are served from this site; no request goes to Google or any other font service.
 - **Hosting:** the site is served by GitHub Pages, which may log IP addresses for security and operations. See the
   [GitHub Privacy Statement](https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement).
+- **Sync:** no request goes to a sync service. Optional sync between your devices (off by default, end-to-end encrypted
+  with a code only your devices hold) is being built; this page describes what it sends and to whom before it can be
+  turned on. The claude.ai version will not have it.
 - **Links** in the guide (Metabot, maps, sources) are only requested when you click them.
 - **Report a problem** (footer) opens a new GitHub issue form with these fields filled in from the link: the app version,
   your level and current story quest in the guide, Basic/Advanced mode, which build you use (site or claude.ai) and your

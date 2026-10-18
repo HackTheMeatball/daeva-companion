@@ -1,6 +1,7 @@
 # Sync design (0.4 S0, old Y0)
 
-Status: **proposed**, waiting on the owner (§6). Docs only: no code, no account, no service contacted, no web fetch.
+Status: S1 and S2 **decided** (DECISIONS "Sync hosting and money", 2026-10-18: Cloudflare Workers + R2, free tier, usage
+alert); S3–S5 keep their recommended defaults until decided. The client is built (0.6 P21, §8); server and UI are 0.7.
 Inputs: docs/ARCHITECTURE.md §1 ("Change times and `merge()`"), docs/DATA-FORMAT-V2.md §13, PRIVACY.md, the v5 save
 plan `docs/plans/0.4/P3c-save-v5.md`, `src/core/sync.js` (at `706e8a8`), DECISIONS ("Accounts / sign-in": no accounts,
 an anonymous, end-to-end encrypted sync code), review note 5 on #134.
@@ -17,7 +18,8 @@ including the server and its operator.
 
 **The code.** 16 bytes from `crypto.getRandomValues` (128 bits), written in Crockford base32 (26 symbols, no `I L O U`,
 case-insensitive, `-` and spaces ignored on input) plus one Crockford check symbol (mod 37), shown in groups:
-`DC1-7M2QK-9XH4T-B0RZD-W8JNC-6PF3V-E` (`DC1` = code format 1, not secret). The check symbol catches a typo on the device,
+`DC1-7M2QK-9XH4T-B0RZD-W8JNC-6PF3V-E` (`DC1` = code format 1, not secret; as built, 128 bits take 26 symbols, so with the
+check symbol the code reads `DC1-XXXXX-XXXXX-XXXXX-XXXXX-XXXXX-XX`, §8). The check symbol catches a typo on the device,
 before any request. The code is random, never chosen by the player and never derived from the name, class, level or
 slot id, so a slow password hash buys nothing: 2^128 guesses are out of reach either way.
 
@@ -69,8 +71,9 @@ Sync then runs by itself: on load, 30 s after a progress save (debounced), on `v
 ## 2. Merge
 
 **What travels:** the whole v5 save's synced part, every slot. The plaintext is
-`{ "format": "dc-sync", "v": 5, "savedAt": …, "flags": {…}, "chars": { "<slot id>": { …character… } } }`. Every slot
-carries its `mt` change times and its `id`, `pack`, `class`, `name`, `created`.
+`{ "format": "dc-sync", "v": 5, "savedAt": …, "chars": { "<slot id>": { …character… } } }`. Every slot
+carries its `mt` change times and its `id`, `pack`, `class`, `name`, `created`. (`flags` was planned here; the v5 save
+has no save-level one-time flags, so the payload has none. One added later travels here and merges by OR.)
 
 **Stays on the device, never in the payload:** the view settings (`mode`, `open`, `hide`, `hideCards`, `hideOpt`,
 `areaLv`, …: owner decision Q2), `backup` (this browser's backup times, 0.2.5), `current` (which character this device
@@ -272,3 +275,28 @@ Per the plan, these go to the tracker as a To-do only when 0.6 lane C is next.
 - **Retention:** an object with last activity 181 days ago is removed by the scheduled job; 179 days is kept; a `GET`
   refreshes last-read at most once a day.
 - **CORS:** only the allowed origins get CORS headers; another origin's preflight fails.
+
+## 8. Client as built (0.6 P21, #280)
+
+- **`src/core/sync-client.js`** (pure: WebCrypto and the compression streams come in as `env`, the host as an adapter):
+  `newSyncCode` / `parseSyncCode` (§1 code), `syncKeys` (HKDF, §1 table), `syncPayload` (§2 "What travels"),
+  `sealSave` / `openSave` (§1 envelope; gzip only where `CompressionStream` exists, flag bit 0, so a browser without it
+  still syncs uncompressed), `syncOnce` (§2 "One round": statuses `synced`, `offline`, `unreadable`, `update`,
+  `conflict`, `error`; backoff 500 / 1000 / 2000 ms plus up to half again at random between 412 retries), `joinSync`
+  (§1 join: `not-found`, `adopt`, `ask`, never writes to the host), `adoptRemote`, `deleteCloudCopy`. The record key
+  `companion-sync-v1` is named there; 0.7 writes it with the UI.
+- **Host adapter interface** (the module's head comment): `get`, `put(…, cond)` (`{ etag }` = `If-Match`, `{}` =
+  `If-None-Match: *`), `remove`; each answers the §4 status and rejects only when the host can't be reached. It fits R2's
+  conditional `put` on the etag (S1); 0.7 confirms R2's behaviour in its emulator tests or asks again (Durable Objects
+  fallback, DECISIONS).
+- **`src/shell/sync-host-http.js`**: the fetch adapter, base URL given by the caller (0.7, the Worker's address). It
+  also sets `cache: "no-store"` (a cached `GET` would replay a stale ETag); the browser may add its generic
+  `Cache-Control` / `Pragma` for that, like `Origin`, which carry nothing about the player. The 0.7 server should send
+  `Cache-Control: no-store` too.
+- **Site only (S4):** nothing the page bundles imports the client yet; `scripts/build.mjs` fails when the claude.ai file
+  holds any of the client's marks (`companion-sync-v1`, `dc-sync`, `syncOnce`, `sealSave`, `joinSync`, `httpSyncHost`),
+  and fails when a mark leaves the sources (so the check can't go stale).
+- **Tests** (`core` suite, `tests/core/sync-client.test.mjs`, against `tests/fixtures/fake-host.mjs`; no real host): the
+  §7 client list, with the HKDF and AES-GCM results checked against `node:crypto` and the sync id pinned for a fixed
+  code. Not yet: the `online` event retry and "Not synced yet" status (0.7 UI), and the `site` checks on the Export file
+  and *Report a problem* link (no code to leak there until 0.7 stores one).

@@ -263,6 +263,16 @@ art = tightHtml(stamp(inline(art).replace(NO_BLOB, (m, q, n) => blobs[n] === nul
 if (art.includes('@font-face')) die('dist-artifact/index.html still has an @font-face rule');
 for (const bad of ['__APP_VERSION__', '__APP_BUILD__', 'assets/icons/', 'assets/fonts/', 'fonts.googleapis', 'fonts.gstatic', 'serviceWorker', 'manifest.webmanifest', '<!doctype', '<head>', '<body>'])
   if (art.includes(bad)) die(`dist-artifact/index.html still contains "${bad}"`);
+/* no sync code in the claude.ai build (0.6 P21, docs/design/sync.md S4 "site only"): the client (src/core/sync-client.js)
+   and its adapter (src/shell/sync-host-http.js) reach the page only through site-only code. Each mark must stand in
+   those sources (so the check can't go stale) and nowhere in the artifact. */
+{
+  const SYNC_SRC = ['src/core/sync-client.js', 'src/shell/sync-host-http.js'].map(f => readFileSync(P(f), 'utf8')).join('\n');
+  for (const m of ['companion-sync-v1', 'dc-sync', 'syncOnce', 'sealSave', 'joinSync', 'httpSyncHost']) {
+    if (!SYNC_SRC.includes(m)) die(`sync check: "${m}" is no longer in the sync client sources; update the marks in scripts/build.mjs`);
+    if (art.includes(m)) die(`dist-artifact/index.html contains sync code ("${m}"): the claude.ai build gets no sync (docs/design/sync.md S4)`);
+  }
+}
 
 /* output */
 for (const d of [DIST, ART]) { rmSync(d, { recursive: true, force: true }); mkdirSync(d, { recursive: true }); }
