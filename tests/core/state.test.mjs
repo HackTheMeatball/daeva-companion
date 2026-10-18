@@ -34,6 +34,18 @@ export default (test, M) => {
     const s = M.newSave({ id: 'slot-a' }), c = M.char(s), before = M.labelOf(c);
     c.level += 1; assert.notEqual(M.labelOf(c), before); assert.equal(c.id, 'slot-a'); assert.equal(s.current, 'slot-a');
   });
+  test('auto level-up (0.6 P19): a levelsUp quest [lv, name, true] at Lv lv − 1 → +1, at any other level no change; the untick at Lv lv → −1; no levelsUp, no change', () => {
+    const q = [2, 'A Village in the Fog', true], plain = [2, 'Plain'];
+    assert.equal(M.levelOnTurnIn(1, q), 2); assert.equal(M.levelOnUnturn(2, q), 1);
+    for (const lv of [2, 3, 45]) assert.equal(M.levelOnTurnIn(lv, q), lv);
+    for (const lv of [1, 3, 45]) assert.equal(M.levelOnUnturn(lv, q), lv);
+    for (const lv of [1, 2, 3]) { assert.equal(M.levelOnTurnIn(lv, plain), lv); assert.equal(M.levelOnUnturn(lv, plain), lv); }
+    assert.equal(M.levelOnTurnIn(1, undefined), 1);
+    /* the data: only quests whose record carries levelsUp, today "A Village in the Fog" (owner screens 2026-10-15) */
+    assert.deepEqual(M.QUESTS.filter(x => x.length > 2), [[2, 'A Village in the Fog', true]]);
+    const rec = json('data/packs/aion2/asmodian/story-quests.json').records.find(r => r.levelsUp);
+    assert.ok(rec.sources.some(s => s.owner && (s.fields || []).includes('levelsUp')), 'levelsUp has its owner source');
+  });
   test('load: no save → a new save from newId (called once), hadSave false', () => {
     const r = M.loadState(null, { now: 5, newId: ids() });
     assert.equal(r.hadSave, false); assert.deepEqual(r.state, M.newSave({ now: 5, id: 'slot-1' }));

@@ -51,6 +51,14 @@ export function mergeName(co, ca, cb, cmp) {
   if (t > 0) co.mt.name = [t, name];
 }
 
+/* A story quest that gives a full level (0.6 P19; owner, 2026-10-17, docs/DECISIONS.md owner-ok-autolevel): its QUESTS
+   entry [lv, name, true] (the record's levelsUp, verified 100% EXP) takes the character from Lv lv − 1 to Lv lv. Ticking
+   it (the story moves past it) at Lv lv − 1 gives the level after: one up; at any other level nothing changes. Unticking
+   it (the story steps back onto it) at Lv lv gives one down, so a tick and its untick cancel out. Every other level change
+   stays manual (Level up / − / + / slider). */
+export const levelOnTurnIn = (level, q) => q && q[2] === true && level === q[0] - 1 ? level + 1 : level;
+export const levelOnUnturn = (level, q) => q && q[2] === true && level === q[0] && level > 1 ? level - 1 : level;
+
 /* Defaults laid under a stored save (a save is never re-defaulted beyond these) and a stored character. */
 export const DEFAULT = () => ({ hide: false, open: {} });
 export const CHAR_DEFAULT = () => ({ checks: {}, level: 5, quest: "" });

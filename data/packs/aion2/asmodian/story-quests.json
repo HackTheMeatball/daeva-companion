@@ -12,6 +12,7 @@
       "gameId": "2101010",
       "lv": 2,
       "unlocksAt": 1,
+      "levelsUp": true,
       "next": "sq:2101020",
       "giver": {
         "npc": "Andre",
@@ -98,6 +99,21 @@
             },
             "what": "Journal after the tutorial: first quest \"[Lv. 2] A Village in the Fog\" (Meet the Village Chief, talk to Pelleir)"
           }
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-15-levelup-01",
+            "checkedAt": "2026-10-15",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Turn-in screens (DECISIONS 2026-10-15 \"New character level\"): basic rewards 100% EXP and 1.4K; turning it in takes a new character from Lv 1 to Lv 2"
+          },
+          "note": "Also the owner's in-game check typed 2026-10-17 (DECISIONS owner-ok-autolevel): every story quest to Lv 10 gives 100% EXP",
+          "fields": [
+            "levelsUp"
+          ]
         },
         {
           "url": "https://metabot.gg/en/aion-2/quests/a-village-in-the-fog",

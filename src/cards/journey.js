@@ -3,7 +3,7 @@
    story chips and "Reach …" lines. renderQuest is drawn by the Skills card (renderNext); the card's own update keeps the
    level control in step. 0.4 P5c: the game's own parts (what a level change does beside the level, the Level up gains,
    the objective's place, what a story line opens) come from the pack's sections of this card (useJourneyParts). */
-import { char } from "../core/state.js";
+import { char, levelOnTurnIn, levelOnUnturn } from "../core/state.js";
 import { activePack } from "../core/pack.js";
 import { chainsOn, gatesOf, objPartsOf, questIdx, stepChipOf, storyGate, storyLineOf, turnInNeedsLv } from "../core/requirements.js";
 import { END_NEXT, STORY_DONE, capFirst, renderNow } from "./nextup.js";
@@ -147,23 +147,32 @@ function renderQuestSubs(noNow) {
     list.map((t, i) => { if (!vis.includes(i)) return ""; const [a, b] = objPartsOf(char(state).quest, i); if (done.includes(i) && !showDone && n < N) return ""; const sl = subListHTML(i, "data-qsub"); return `<li class="${done.includes(i) ? "on" : ""}${sl ? " has-sub" : ""}"><label><input type="checkbox" data-qobj="${i}" ${done.includes(i) ? "checked" : ""}><span><b>${a}</b>${b && !sl ? `<small>${b}</small>` : ""}</span></label>${sl}</li>`; }).join("") + `</ol>` +
     nextBtn;
 }
-/* Click the previous or next quest to step the story; the three rows roll like a drum. Never touches your level:
-   a quest's level is only its recommended level, and your real level comes from the game (Level up / − + / slider). */
+/* Click the previous or next quest to step the story; the three rows roll like a drum. A quest's level is only its
+   recommended level, and your real level comes from the game (Level up / − + / slider). One exception (0.6 P19, owner
+   2026-10-17): a quest that gives a full level (levelOnTurnIn, src/core/state.js) raises it by one when the story moves
+   past it, with an Undo in the toast, and lowers it back when the story steps back onto it. */
 function stepQuest(d) {
   const i = questIdx(char(state)), j = i + d;
   if (i < 0 || j < 0 || j >= QUESTS.length) return;
+  const q = QUESTS[Math.min(i, j)], from = char(state).level, to = d > 0 ? levelOnTurnIn(from, q) : levelOnUnturn(from, q);
+  if (to !== from) applyLevel(to);
   char(state).quest = QUESTS[j][1]; delete char(state).storyEnd; save();
   update();
+  if (to > from) rewardToast(`Lv ${to}: "${q[1]}" turned in`, () => { if (char(state).quest === QUESTS[j][1]) stepQuest(-1); });
   const ul = document.querySelector("ul.story"); if (!ul) return;
   ul.classList.remove("roll-next", "roll-prev"); void ul.offsetWidth; ul.classList.add(d > 0 ? "roll-next" : "roll-prev");
   setTimeout(() => ul.classList.remove("roll-next", "roll-prev"), 450);
 }
 
-function setLevel(v) {
+/* the level and what follows it (the pack's onLevel, the milestones' folds), not saved or drawn yet */
+function applyLevel(v) {
   v = Math.max(1, Math.min(45, parseInt(v, 10) || 1));
   parts.onLevel(state, v);
   char(state).level = v;
   GATES.forEach(g => delete state.open[g.id]);
+}
+function setLevel(v) {
+  applyLevel(v);
   save(); update();
 }
 /* the level control follows the level */
