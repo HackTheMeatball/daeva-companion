@@ -1,4 +1,4 @@
-# 0.7 C1: Second 0.7 class data (Spiritmaster unless the owner names another), not offered yet
+# 0.7 P3: Second 0.7 class data (Spiritmaster unless the owner names another), not offered yet
 
 Planned in the 0.7 planning pass (Release Planner, 2026-10-18; ROADMAP "0.7"; Kaizen review docs/kaizen/0.6-scorecard.md). Lane A. The class follows ROADMAP 0.7 owner input 1 (D8 rule; default Spiritmaster). Read CLAUDE.md, 0.6 P22
 (docs/plans/0.6/P22-ranger-class-data.md, the model for this item), the class research file
@@ -37,3 +37,5 @@ Lanes: gen. Model: Opus. Stall limit: 120 min (L).
 If the owner names another class, the Release Planner changes this token to that class's research file.
 
 After: research-spiritmaster
+
+- [next] #346 opus lanes:gen
