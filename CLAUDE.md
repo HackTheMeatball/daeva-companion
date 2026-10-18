@@ -76,7 +76,9 @@ comes first) a change may break existing saves when that gives a better design. 
 - Technical, direct communication; call out assumptions; propose tests rather than guess.
 - Minimal visual distraction, no redundancy across cards, consistent alignment, uniform card layouts (Skills /
   Daevanion / Stigmas; Next up cards look like milestone cards).
-- Manual progress is intended: ticking quests, Level up. Level changes only via Level up / − / + / slider.
+- Manual progress is intended: ticking quests, Level up. Level changes only via Level up / − / + / slider, with one
+  exception (owner, 2026-10-17, DECISIONS `owner-ok-autolevel`): "Auto level-up OK: verified 100% EXP quests only,
+  undoable". Ticking a story quest with `levelsUp: true` (sourced) raises the level by one; unticking or Undo lowers it.
 - The guide must be correct and complete to Lv 45 without the user having to report problems.
 - Basic mode = essentials only. Keep both builds visually identical; `dist-artifact` must stay a single file with
   `/_blob/` icons and no service worker.

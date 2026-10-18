@@ -98,7 +98,13 @@ export function generate(opts = {}) {
   const last = chain[chain.length - 1];
   check('story: last quest has an end marker and no next', !!last.end && last.next === null);
   for (const s of story) check('story id is sq:<gameId>: ' + s.name, s.id === 'sq:' + s.gameId);
-  const QUESTS = chain.map(s => [s.lv, s.name]);
+  /* [lv, name], and a third entry true when turning it in gives a full level (levelsUp, 0.6 P19: src/core/state.js
+     levelOnTurnIn); levelsUp needs a source that names it, an owner screen or a page, never the guide's own reasoning */
+  const QUESTS = chain.map(s => s.levelsUp ? [s.lv, s.name, true] : [s.lv, s.name]);
+  for (const s of chain.filter(s => s.levelsUp)) {
+    check(`${s.id}: levelsUp has its source (owner screen or page, fields: levelsUp)`, (s.sources || []).some(r => (r.owner || r.url) && (r.fields || []).includes('levelsUp')));
+    check(`${s.id}: levelsUp needs a quest level above 1`, s.lv > 1, s.lv);
+  }
   const sqName = id => { if (!sqById[id]) throw new Error('unknown story quest ' + id); return sqById[id].name; };
   const QUEST_STEPS = Object.fromEntries(chain.filter(s => s.steps.length).map(s => [s.name, s.steps.map(x => x.text)]));
   /* a step's own note (our line about it, e.g. a first Expedition run), by quest name and objective i. Kept out of QUEST_STEPS:
