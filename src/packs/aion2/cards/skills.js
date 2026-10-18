@@ -113,6 +113,16 @@ function aion2SkillsMount() {
     save(); render(); update();
     document.getElementById("syncMsg").textContent = changed ? `Updated ${changed} line${changed === 1 ? "" : "s"}.` : "Already matched.";
   });
+  /* Respec: every plan skill back to level 1 (clear its sp:<name>:2..10 ticks); two clicks, like the Daevanion Respec.
+     Specialty picks and stones stay. Not undoable. */
+  const spRespec = document.getElementById("spRespec");
+  let spArmed = false;
+  spRespec.addEventListener("click", () => {
+    if (!spArmed) { spArmed = true; spRespec.textContent = "Click again to respec"; setTimeout(() => { spArmed = false; spRespec.textContent = "Respec"; }, 3000); return; }
+    spArmed = false; spRespec.textContent = "Respec";
+    SP_SKILLS.forEach(s => { for (let L = 2; L <= 10; L++) delete char(state).checks[`sp:${s.n}:${L}`]; });
+    save(); render(); update();
+  });
   document.getElementById("spPts").addEventListener("input", e => {
     const v = e.target.value.trim();
     char(state).stones = Math.max(0, parseInt(v, 10) || 0);

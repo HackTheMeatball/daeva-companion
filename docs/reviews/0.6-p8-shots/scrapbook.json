@@ -1,0 +1,4 @@
+[
+  { "case": "skills-footer", "kind": "before-after", "title": "Respec on the Skills card",
+    "caption": "The Skills card now has a Respec button next to Sync levels; two clicks set every skill back to level 1, as in the game." }
+]
