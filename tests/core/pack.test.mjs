@@ -60,8 +60,13 @@ export default (test, M) => {
     const p = M.aion2Pack;
     assert.equal(p.id, 'aion2');
     assert.equal(p.data.graph, M.GATE_GRAPH); assert.equal(p.data.proposed, M.GATE_PROPOSED);
-    assert.equal(p.data.story.quests, M.QUESTS); assert.equal(p.data.story.steps, M.QUEST_STEPS); assert.equal(p.data.story.notes, M.QUEST_STEP_NOTES);
-    assert.equal(p.catalog.milestones, M.GATES); assert.equal(p.catalog.routes, M.STEPS);
+    assert.equal(p.data.story.quests, M.QUESTS); assert.equal(p.data.story.notes, M.QUEST_STEP_NOTES);
+    /* the steps as shown (0.6 P12, travel.js stepsShownOf): QUEST_STEPS, same quests and indices, with only the
+       "(Kibelisk: X)" markers of binds that happen at the objective dropped */
+    assert.deepEqual(p.data.story.steps, M.stepsShownOf(M.GATE_GRAPH).steps);
+    assert.deepEqual(Object.keys(p.data.story.steps), Object.keys(M.QUEST_STEPS));
+    for (const [q, L] of Object.entries(M.QUEST_STEPS)) L.forEach((t, i) => { const s = p.data.story.steps[q][i];
+      assert.ok(s === t || t.replace(/\s*\(Kibelisk: [^)]+\)/, '') === s, `${q} #${i}: ${s}`); });    assert.equal(p.catalog.milestones, M.GATES); assert.equal(p.catalog.routes, M.STEPS);
     assert.equal(p.gateChanges, M.GATE_CHANGES); assert.equal(p.keptRules, M.KEPT_RULES);
     assert.deepEqual(p.character, { pack: M.PACK, class: M.CLASS });
     /* the transforms in P0's order: the three always-on ones, then one per switch they stand in for */

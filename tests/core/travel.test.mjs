@@ -20,6 +20,22 @@ export default (test, M) => {
     assert.deepEqual(TR, { bindRadius: 25, nudgeRadius: 150, teleportGain: 400 });
   });
 
+  /* ---------- binds that happen at an objective (0.6 P12) ---------- */
+  test('auto-bind: Witch\'s Cabin bind-only step hidden, markers within 25 m dropped, none over; Safe Haven\'s "Bind" row kept', () => {
+    const A = M.autoBindsOf(M.GATE_GRAPH), bbl = 'The Being Beneath the Lake', P = M.aion2Pack;
+    assert.ok(A.length > 0 && A.every(x => x.m <= TR.bindRadius), 'every trim within the bind radius');
+    assert.deepEqual(A.filter(x => x.only).map(x => [x.quest, x.i, x.kib, x.m]), [[bbl, 0, "Witch's Cabin", 13]]);
+    assert.equal(P.story.isTalkOnly(M.QUEST_STEPS[bbl][0]), true, 'the bind-only step is hidden (done on arrival)');
+    assert.equal(P.data.story.steps[bbl][0], M.QUEST_STEPS[bbl][0], 'its text kept, so isTalkOnly hides it on both lists');
+    assert.ok(/\(Kibelisk: Witch's Cabin\)$/.test(M.QUEST_STEPS[bbl][1]) && !/Kibelisk/.test(P.data.story.steps[bbl][1]), 'objective 1 (13 m): marker dropped');
+    /* every marker on a step whose point is over 25 m away stays */
+    for (const [id, n] of Object.entries(N)) for (const p of (NP[id] && NP[id].pts.steps) || []) if (n.kind === 'story' && p.m > TR.bindRadius)
+      assert.equal(P.data.story.steps[n.key][p.i], M.QUEST_STEPS[n.key][p.i], `${n.key} #${p.i} at ${p.m} m`);
+    /* a smaller radius trims less; R = 0 trims nothing */
+    assert.ok(M.autoBindsOf(M.GATE_GRAPH, { R: 12 }).length < A.length);
+    assert.deepEqual(M.autoBindsOf(M.GATE_GRAPH, { R: 0 }), []);
+  });
+
   /* ---------- §8.1 bound ---------- */
   test('bound: Safe Haven by its binds fact at R = 25 m (Survival Supplies objective 0), not by distance', () => {
     const ss = 'Survival Supplies', T = NP[S[qi(ss)][0]].pts.turnin;

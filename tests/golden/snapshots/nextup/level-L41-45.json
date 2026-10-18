@@ -4,7 +4,7 @@
     {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
     {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
     {"t":"Buy Assault Stance 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Story: Treatment","s":"0/2 objectives · then Symbol of Liberation","c":"primary \"Turned in\" story","o":["Treat the Fallen Daybreak Society Members administer herbal medicine to the first member administer herbal medicine to the second member Kibelisk: Amunta's Hideout","Turn in Amunta, Amunta's Hideout"]},
+    {"t":"Story: Treatment","s":"0/2 objectives · then Symbol of Liberation","c":"primary \"Turned in\" story","o":["Treat the Fallen Daybreak Society Members administer herbal medicine to the first member administer herbal medicine to the second member","Turn in Amunta, Amunta's Hideout"]},
     {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk: Impetusium Lower Path · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 10 open"},
     {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"Lv 45 milestone · 4 levels away · unlocks after \"Forgotten Commander\" · 12 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 45+"}
   ],
@@ -133,7 +133,7 @@
     {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
     {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
     {"t":"Buy Assault Stance 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Story: Daybreak Society","s":"0/3 objectives · then Daybreak Society Rescue Operation","c":"primary \"Turned in\" story","o":["Investigate the Black Claw Village records check Timeworn Journal check Stacked Documents Kibelisk: Secret Rendezvous Point","Go to the place Nemon mentioned go to the Secret Rendezvous Point (Kibelisk: Secret Rendezvous Point)","Turn in Nemon, Secret Rendezvous Point"]},
+    {"t":"Story: Daybreak Society","s":"0/3 objectives · then Daybreak Society Rescue Operation","c":"primary \"Turned in\" story","o":["Investigate the Black Claw Village records check Timeworn Journal check Stacked Documents Kibelisk: Secret Rendezvous Point","Go to the place Nemon mentioned go to the Secret Rendezvous Point","Turn in Nemon, Secret Rendezvous Point"]},
     {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village (near your story step) · Kibelisk: Impetusium Lower Path · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 10 open"},
     {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"Lv 45 milestone · 3 levels away · unlocks after \"Forgotten Commander\" · 10 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 45+"}
   ],
