@@ -13,7 +13,7 @@ on purpose: the guide shows nothing rather than an unverified value.
 - **Kibelisks missing**: 32 regional quest givers, Fafnite Storage Room (Metabot lists only the entrance zone, Sanctum
   Outpost), the Blood Barrier turn-in.
 - **Story gate semantics**: whether a story gate means "quest accepted" or "quest reached" was not re-checked against
-  aion2.gaming.tools (E4 #9). Example: Fight Poison with Poison at "Preparations for Restoration" (data says it needs
+  aion2.gaming.tools (polish pass E4 #9, not 0.3 E4). Example: Fight Poison with Poison at "Preparations for Restoration" (data says it needs
   "A Collective Effort"); the *In my game* pill is the one-click override.
   **Answered 2026-10-15 (owner, in game, #69): "turned in"** for regional quests (Shugo-of-All-Trades after Contaminated
   Area, Spooky Specters after Cemetery Cleanup). Every regional story gate now says `turnedIn`. Confirmed by the Lv 16
