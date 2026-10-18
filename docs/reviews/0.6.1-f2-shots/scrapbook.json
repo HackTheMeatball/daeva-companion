@@ -1,0 +1,6 @@
+[
+  { "case": "toast", "kind": "before-after", "title": "Undo toast above the tab bar",
+    "caption": "On a phone the Undo toast now sits above the bottom tab bar instead of covering the Gear tab." },
+  { "case": "build-sheet", "kind": "before-after", "title": "Build sheet keeps the tab bar",
+    "caption": "With the Build sheet open on a phone, the tab bar stays visible and tappable below it." }
+]

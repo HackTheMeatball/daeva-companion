@@ -227,7 +227,7 @@ const cards = p => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-
   await p.setViewportSize({ width: 390, height: 850 }); await p.reload(); await p.waitForTimeout(300);
   await p.click('#tabBuild'); await p.waitForTimeout(400);
   const sh = await p.evaluate(() => { const s = document.getElementById('sdPanel').getBoundingClientRect(); return { open: document.getElementById('statDrawer').classList.contains('open'), inSheet: document.getElementById('sdPanel').contains(document.activeElement), exp: document.getElementById('tabBuild').getAttribute('aria-expanded'), bottom: Math.round(s.bottom), ih: innerHeight, w: s.width, iw: innerWidth, act: document.activeElement.id }; });
-  ok('sheet: opens from the Build tab, focus in the sheet, bar tab expanded', sh.open && sh.inSheet && sh.exp === 'true' && sh.bottom === sh.ih && sh.w === sh.iw, sh);
+  ok('sheet: opens from the Build tab (its foot on the tab bar, #335), focus in the sheet, bar tab expanded', sh.open && sh.inSheet && sh.exp === 'true' && sh.bottom === sh.ih - 52 && sh.w === sh.iw, sh);
   await p.click('#sdScrim', { position: { x: 195, y: 10 }, force: true }); await p.waitForTimeout(400);
   ok('sheet: the scrim closes it, focus back on the Build tab', await p.evaluate(() => !document.getElementById('statDrawer').classList.contains('open') && document.activeElement.id === 'tabBuild'));
   await p.click('#tabBuild'); await p.waitForTimeout(400); await p.click('#sdGrab'); await p.waitForTimeout(400);
