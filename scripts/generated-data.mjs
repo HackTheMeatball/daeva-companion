@@ -6,7 +6,7 @@
    P2b): the pack object (src/packs/aion2/pack.js) hands GATE_GRAPH and GATE_PROPOSED to the engine, which never imports
    them. src/packs/aion2/data/place.js serves NODE_PLACE and KIBELISKS (0.5 P8, the place and Kibelisk tables)
    and TRAVEL_RULES (0.5 P10), for the pack's travel code (src/packs/aion2/travel.js). The modules are never stored: not in src/, not in tools/. A schema error or a failed data check stops the build. */
-import { existsSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { generate } from '../tools/gen/gen.mjs';
@@ -27,7 +27,24 @@ export const genModule = () => genResult().module;
 export const generatedNames = () => [...Object.keys(genResult().constants), 'GATE_GRAPH', 'GATE_PROPOSED'];
 /* where the modules resolve (the AION 2 pack's data folder), and file name -> module text */
 const DATA_DIR = 'src/packs/aion2/data';
-const MODULES = { 'generated.js': () => genResult().module, 'gate-graph.js': () => genResult().gateModule, 'gate-proposed.js': () => genResult().proposedModule, 'place.js': () => genResult().placeModule };
+/* `node scripts/build.mjs --sizes` measures what a table costs the page by bundling it as null (never for a real build) */
+let dropped = new Set(), pruned = new Set();
+export const dropTables = names => { dropped = new Set(names); };
+/* The page bundle leaves out a table no file under src/ names (0.6 P1): the build calls pruneTables(unusedTables()). The
+   Node core tests don't, so they still see every table. A name in a comment or a string counts as used (kept). */
+export const unusedTables = () => {
+  const text = srcFiles().map(f => readFileSync(f, 'utf8')).join('\n');
+  return [...Object.keys(genResult().constants)].filter(n => !new RegExp(`\\b${n}\\b`).test(text));
+};
+export const pruneTables = names => { pruned = new Set(names); };
+const srcFiles = () => { const walk = d => readdirSync(d, { withFileTypes: true }).flatMap(e => e.isDirectory() ? walk(join(d, e.name)) : /\.(js|html)$/.test(e.name) ? [join(d, e.name)] : []); return walk(P('src')); };
+const served = text => !dropped.size && !pruned.size ? text : text.replace(/^export const (\w+) = .*;\n?/gm, (line, n) => pruned.has(n) ? '' : dropped.has(n) ? `export const ${n} = null;\n` : line);
+/* The tables of generated.js are served in name order (0.6 P1). They are independent `export const` lines, so the order is
+   free; gzip only matches text within 32 KB, and of the orders tried (generator, name, size up, size down) this one came out
+   smallest. Re-check with `node scripts/build.mjs --sizes` if a data change moves the page gzip size by more than ~100 B. */
+const arrange = text => { const L = text.split('\n'), isTable = l => l.startsWith('export const ');
+  return [...L.filter(l => !isTable(l)), ...L.filter(isTable).sort((a, b) => a.localeCompare(b))].join('\n'); };
+const MODULES = { 'generated.js': () => served(arrange(genResult().module)), 'gate-graph.js': () => served(genResult().gateModule), 'gate-proposed.js': () => served(genResult().proposedModule), 'place.js': () => served(genResult().placeModule) };
 /* a stored copy of a generated module (in the pack's data folder, or the pre-0.4 src/data), else null */
 export const staleGenerated = () => [DATA_DIR, 'src/data'].flatMap(d => Object.keys(MODULES).map(f => d + '/' + f)).find(f => existsSync(P(f))) || null;
 export const generatedData = {

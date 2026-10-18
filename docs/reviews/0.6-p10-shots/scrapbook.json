@@ -1,0 +1,4 @@
+[
+  { "case": "play-lv22", "kind": "before-after", "title": "Icons in the Build play steps",
+    "caption": "At level 22 the Build panel's play steps now show each skill's icon before its name, like the Right click chain does." }
+]

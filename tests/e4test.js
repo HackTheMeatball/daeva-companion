@@ -123,9 +123,12 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   r = await p.evaluate(() => ({ z: RQ_BY['Nine Wonders of Altgard: 2nd Leg'].zone, pu: RQ_BY['Pain Unending'].zone }));
   ok('#11 Nine Wonders 2nd Leg in Battlescar Mound (giver Tina at Battlescar Mound Cliff), as Pain Unending', r.z === 'Battlescar Mound' && r.pu === 'Battlescar Mound', r);
   /* the build makes the module src/packs/aion2/data/generated.js from data/** (tools/gen/gen.mjs) and esbuild reprints it into the
-     page, so: every constant the generator compiles has the same value in the page */
+     page, so: every constant the generator compiles has the same value in the page. 0.6 P1: except the tables no file
+     under src/ names, which the build leaves out of the page (scripts/generated-data.mjs unusedTables) */
   const gen = (await import(path.join(ROOT, 'tools', 'gen', 'gen.mjs'))).generate().constants;
-  const names = Object.keys(gen);
+  const unused = (await import(path.join(ROOT, 'scripts', 'generated-data.mjs'))).unusedTables();
+  const names = Object.keys(gen).filter(n => !unused.includes(n));
+  ok('#11 the tables left out of the page are the unused ones only (none the page code reads)', unused.length <= 6 && await p.evaluate(ns => ns.every(n => { try { eval(n); return false; } catch (e) { return e instanceof ReferenceError; } }), unused), unused);
   const genWant = JSON.stringify(Object.fromEntries(names.map(n => [n, gen[n]])));
   const have = await p.evaluate(ns => JSON.stringify(Object.fromEntries(ns.map(n => [n, eval(n)]))), names);
   ok('#11 page carries the current generated data (the page has its values)', names.length >= 14 && have === genWant, { names: names.length, same: have === genWant });
@@ -162,6 +165,14 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   ok('#15 F7: Lv 13 without / Lv 14 with Insignia Explosion', !/Insignia Explosion/.test(at13.chain) && !at13.grid.includes('Insignia Explosion') && /Insignia Explosion/.test(at14.chain) && at14.grid.includes('Insignia Explosion'), [at13, at14]);
   r = await p.evaluate(() => { const st = SP_STEPS.find(x => x.s.n === 'Ambush' && x.L === 2), was = st.req; st.req = 15; renderRotation(); const out = document.getElementById('rotChain').innerText; st.req = was; renderRotation(); return out; });
   ok('#15 F7: the drawer follows the Skills card unlock level (Ambush moved to Lv 15 → gone at Lv 14)', !/Ambush/.test(r) && /Heart Gore/.test(r), r);
+
+  /* 0.6 P10: every skill named in a play step (and the New note) has an icon or initials before it; decorative, name read once */
+  for (const L of [10, 22, 45]) {
+    await writeSave(p, { checks: {}, level: L, mode: 'advanced', open: {} }); await p.reload(); await p.waitForTimeout(300);
+    r = await p.evaluate(() => [...document.querySelectorAll('#rotPlay li')].map(li => { const names = [...li.childNodes].filter(c => c.nodeType === 3).map(c => c.textContent), icos = li.querySelectorAll('img.spmini, img.st-mini, .spmini.ini, .st-mini.ini');
+      return { text: li.textContent, icos: icos.length, bad: [...icos].filter(i => i.tagName === 'IMG' ? i.getAttribute('alt') !== '' : i.getAttribute('aria-hidden') !== 'true').length, names }; }));
+    ok(`P10: Lv ${L} play steps: icon or initials, decorative`, r.length > 0 && r.filter(x => !/^Hold/.test(x.text)).every(x => x.icos > 0 && !x.bad), r);
+  }
 
   ok('no page errors', !errs.length, errs);
   console.log(`${n - fail} ok, ${fail} failed`); console.log(fail ? `E4 CHECKS FAILED (${fail})` : 'E4 CHECKS PASSED'); await b.close(); process.exit(fail ? 1 : 0); })();
