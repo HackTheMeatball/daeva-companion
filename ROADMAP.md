@@ -32,10 +32,10 @@ review, the "how"** (is the way we build optimal?), and steps 2–6 are the **pl
 order). The "how" goes first because its findings change the rules the plan is made under. The pass that redrew the plan
 after 0.3 is the model: it audited the whole path to 1.0 before planning the next minor
 ([audit and plan to 1.0](docs/audits/2026-10-16-audit-and-plan-to-1.0.md)). Nothing in the minor is queued in #114
-until the pass is written down and reviewed. Patches (0.X.Y) skip steps 2–6 but not step 1: **Kaizen's review is a hard
-gate for every release, patches included** (owner, 2026-10-18 6:57 AM ET: "it should be a hard gate for every release").
-A patch gets a lighter review (the items since the last release), and nothing in it is queued before Kaizen reports.
-Stall Watch (Mike) flags a review not in 60 min after `PLANNING PASS START`.
+until the pass is written down and reviewed. **Kaizen's review is a hard gate for every minor and major
+release** (owner, 2026-10-18 6:59 AM ET): nothing in it is planned or queued before Kaizen reports, and Stall Watch
+(Mike) flags a review not in 60 min after `PLANNING PASS START`. Patches (0.X.Y) skip the pass, Kaizen included. After a
+major release (1.0, 2.0 …) Kaizen runs a larger pass over the data of all the minors before it.
 
 1. **Release kaizen review: the "how" (owner, 2026-10-17).** Kaizen (Gale) runs it, over the whole minor just
    shipped, aimed at the workflow itself, not at the product. Kaizen runs at each planning pass start and after each
@@ -682,8 +682,8 @@ tomorrow after I wake up?" So 0.6.0 ships without the two owner-gated items and 
 - **P15** respec walk-through (#274), after `P14, owner-ok-keys` (the owner's in-game key screens).
 - **Game Data Check fixes** for #325 (thin-sourced "verified" fields), in small data PRs.
 
-Kaizen (Gale) reviews it first (lighter patch review, hard gate); then the Release Planner queues each item when its gate
-is met, sends Game Data Check `PRE-RELEASE CHECK 0.6.1` once they merge, and opens the release issue after `DATA OK`.
+No planning pass (patch): the Release Planner queues each item when its gate is met, sends Game Data Check
+`PRE-RELEASE CHECK 0.6.1` once they merge, and opens the release issue after `DATA OK`.
 
 ### 0.7, 0.8, 0.9 — two classes each
 
