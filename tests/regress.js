@@ -190,6 +190,31 @@ const setState = async (p, args) => { await writeFixture(p, args); await p.reloa
   await userRun('Preparations for Restoration', 'prep', true);
   await userRun('A Collective Effort', 'collective', true);
 
+  /* ---------- 0.6 P8: Respec on the Skills card (two clicks, disarms after 3 s, same button as the Daevanion one) ---------- */
+  {
+    const ctx = await b.newContext({ viewport: { width: 1500, height: 1000 } }), p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
+    await p.goto(CUR); await setState(p, { L: 30, mode: 'advanced', fx: 'clean' });
+    const c = { level: 30, mode: 'advanced', width: 1500, fixture: 'respec' };
+    const upTicks = () => p.evaluate(() => Object.keys(char(state).checks).filter(k => /^sp:.+:([2-9]|10)$/.test(k) && char(state).checks[k]).length);
+    const before = await upTicks();
+    rec(c, 'respec: fixture has skills at level 2 or higher', before > 0, before);
+    const btn = p.locator('#spRespec');
+    await btn.click(); rec(c, 'respec: first click arms ("Click again to respec")', (await btn.innerText()) === 'Click again to respec');
+    rec(c, 'respec: one click changes nothing', (await upTicks()) === before);
+    await p.waitForTimeout(3300);
+    rec(c, 'respec: disarms after 3 s, nothing changed', (await btn.innerText()) === 'Respec' && (await upTicks()) === before);
+    const keep = await p.evaluate(() => ({ stones: char(state).stones, dv: Object.keys(char(state).checks).filter(k => k.startsWith('dv:')).length }));
+    await btn.click(); await btn.click();
+    rec(c, 'respec: second click leaves no sp:*:L tick for L >= 2', (await upTicks()) === 0, await upTicks());
+    const after = await p.evaluate(() => ({ stones: char(state).stones, dv: Object.keys(char(state).checks).filter(k => k.startsWith('dv:')).length }));
+    rec(c, 'respec: stones and Daevanion ticks untouched', JSON.stringify(keep) === JSON.stringify(after), { keep, after });
+    await p.mouse.move(0, 0); await p.waitForTimeout(400);   /* off the button: its hover colour would differ from the idle Daevanion one */
+    const same = await p.evaluate(() => { const a = getComputedStyle(document.getElementById('spRespec')), d = getComputedStyle(document.getElementById('dvRespec')); return ['fontSize', 'fontWeight', 'fontFamily', 'borderRadius', 'borderTopWidth', 'color', 'paddingTop', 'paddingLeft'].filter(k => a[k] !== d[k]); });
+    rec(c, 'respec: button looks like the Daevanion Respec (computed style)', !same.length, same);
+    rec(c, 'respec: no page errors', !errs.length, errs);
+    await ctx.close();
+  }
+
   /* ---------- pop-out (Document PiP stubbed with window.open) ---------- */
   {
     const ctx = await b.newContext({ viewport: { width: 1500, height: 1000 } });
