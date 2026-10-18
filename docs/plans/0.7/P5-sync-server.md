@@ -42,6 +42,6 @@ L.
 
 Lanes: none. Model: Opus. Stall limit: 120 min (L).
 
-After: owner-ok-sync-rules.
+After: owner-ok-0.7-sync-rules.
 
 - [next] #348 opus lanes:none

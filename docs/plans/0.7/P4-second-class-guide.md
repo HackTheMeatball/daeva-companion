@@ -35,6 +35,6 @@ As P2.
 
 Lanes: gen, golden. Model: Opus. Stall limit: 120 min (L).
 
-After: P3, P1, owner-ok-artifact-classes.
+After: P3, P1, owner-ok-0.7-artifact-classes.
 
 - [next] #347 opus lanes:gen,golden

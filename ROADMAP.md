@@ -74,7 +74,7 @@ major release (1.0, 2.0 …) Kaizen runs a larger pass over the data of all the 
 4. **Waves and lanes for the whole minor.** Lay every item out in waves before anything is queued: items in the same
    module or serial file run one after another; items in different modules may run at the same time, at most five
    builds (the cap in kickoff.yml). Name the critical path, put the items that unblock the most first, and give each item an `After:` line so
-   kickoff can queue it the moment its dependencies merge. An After line lists only real dependencies (code, data, research or owner gates); lane order lives in the wave plan, never in After (Kaizen, 2026-10-18: lane-order keys idled P14 and P18). Owner gates use the `owner-ok-<slug>` form kickoff reads from DECISIONS. Check every wave for two items that touch the same file:
+   kickoff can queue it the moment its dependencies merge. An After line lists only real dependencies (code, data, research or owner gates); lane order lives in the wave plan, never in After (Kaizen, 2026-10-18: lane-order keys idled P14 and P18). Owner gates use the `owner-ok-<slug>` form kickoff reads from DECISIONS. From 0.7 on, the token carries its version, `owner-ok-<minor>-<slug>` (a patch item uses the patch version), and the copy box for the owner's typed OK names the same token. Kickoff treats an unversioned or wrong-version owner-ok key as not understood, so it fails closed (Kaizen K12, 2026-10-18: 0.7 P6 was queued on the 0.5 `owner-ok-S2` row). Check every wave for two items that touch the same file:
    that is where bots step on each other's toes, so split the file's owner or move one item. Shared files
    (`docs/team/DISPATCH.md` "Serial files") count as one module.
 5. **Owner input.** List what needs the owner (in-game checks, mockups, money, legal). Only a true blocker becomes a
@@ -770,10 +770,10 @@ lane already orders them); build scripts P1 only. Critical path: P1 → P2 → P
 
 | Wave | Builds | After |
 |---|---|---|
-| 1 | P1 (none) ∥ S2 (none) ∥ P5 (none) | P5: `owner-ok-sync-rules` |
-| 2 | P2 (gen, golden) | P1 + `research-gladiator-guide` + `owner-ok-artifact-classes` |
+| 1 | P1 (none) ∥ S2 (none) ∥ P5 (none) | P5: `owner-ok-0.7-sync-rules` |
+| 2 | P2 (gen, golden) | P1 + `research-gladiator-guide` + `owner-ok-0.7-artifact-classes` |
 | 3 | P3 (gen) ∥ P6 (main.js, a11y) | P3: `research-spiritmaster` · P6: S2 + `owner-ok-0.7-S2` |
-| 4 | P4 (gen, golden) | P3, P1 + `owner-ok-artifact-classes` |
+| 4 | P4 (gen, golden) | P3, P1 + `owner-ok-0.7-artifact-classes` |
 | 5 | R, alone | everything above, or moved to the next patch; `DATA OK 0.7.0` |
 
 Checked: no two items in one wave own the same file. Waves are the expected order, not gates. An item whose owner
@@ -786,10 +786,10 @@ Sent to Coordinator (Saul)'s daily list at pass start, 2026-10-18 7:35 AM ET (K1
 
 1. **Second class** (token for P3: the class's research file; default Spiritmaster): "Yes: 0.7's second class is the
    Spiritmaster." or name the class someone will level to 45.
-2. **Artifact classes** (`owner-ok-artifact-classes`, blocks P2 and P4; P1 itself keeps today's list): "Yes: the claude.ai artifact carries Assassin and Ranger
-   only; new classes are site-only."
-3. **Sync rules** (`owner-ok-sync-rules`, blocks P5; sync.md §6 S3, S5): 180-day retention; "Show sync code" on a
-   syncing device.
+2. **Artifact classes** (`owner-ok-0.7-artifact-classes`, blocks P2 and P4; P1 itself keeps today's list): "0.7 artifact classes OK:
+   the claude.ai artifact carries Assassin and Ranger only; new classes are site-only."
+3. **Sync rules** (`owner-ok-0.7-sync-rules`, blocks P5; sync.md §6 S3, S5): 180-day retention; "Show sync code" on a
+   syncing device. Typed as "0.7 sync rules OK: as recommended".
 4. **Sync deploy** (blocks the deploy only): a Cloudflare API token limited to Workers and R2, added as
    `CLOUDFLARE_API_TOKEN`; then CI may deploy to `sync.daevacompanion.com`.
 5. **S2 mockup** (`owner-ok-0.7-S2`, blocks P6; the 0.5 `owner-ok-S2` row would otherwise match): asked when S2 merged
