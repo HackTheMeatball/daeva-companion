@@ -17,7 +17,8 @@ leave it out or label it *single source* / *inferred* / *disputed*. thegameswiki
 ## Fetching policy (owner-approved 2026-10-14)
 - Before any content page: read the terms page and robots.txt. Then, within reason, do the minimum the site asks:
   1. **Opts out of AI / automated access entirely** (robots.txt blocks Claude-User or our own User-Agent, or terms ban all bots or
-     automated access): never fetched by a session. The owner checks it by hand when needed.
+     automated access): never fetched by a session. The owner checks it by hand when needed. Blocking only AI training
+     crawlers (ClaudeBot, GPTBot …) is not an opt-out (owner, 2026-10-18). Per-site verdicts: `docs/research/SOURCES.md`.
   2. **Bans scraping only** (bulk or systematic copying): small spot checks are fine to verify a fact we already have
      from another source: a few pages per task, at least 5 s apart, facts only, nothing stored beyond the session.
   3. **No restriction**: the limits below.

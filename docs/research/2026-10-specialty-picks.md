@@ -91,7 +91,7 @@ one vague sentence about favouring Multi-Hit on Heart Gore and Whirlwind Slice, 
 | games.gg (our existing source) | Guide page returned **403** on the first request; stopped, no retry. robots.txt itself allows AI input. Owner hand-check if wanted: https://games.gg/aion-2/guides/aion-2-assassin-build-guide/ |
 | thegameswiki.com | robots.txt returned **429** (Vercel Security Checkpoint); stopped, no second request. |
 | aion2maps.com | robots.txt disallows ClaudeBot and anthropic-ai (`Disallow: /`): opted out. |
-| GamerBlurb, expcarry.com | robots.txt names ClaudeBot (inside a shared group with `*`). CLAUDE.md says a site that names Claude is not fetched, so I did not read them; owner hand-check if wanted. |
+| GamerBlurb, expcarry.com | robots.txt names ClaudeBot (inside a shared group with `*`). CLAUDE.md says a site that names Claude is not fetched, so I did not read them; owner hand-check if wanted. *Superseded 2026-10-18: under the owner's robots rule both pass robots; see `docs/research/SOURCES.md`.* |
 | allthings.how, others from search (mmoexp, aoeah, keengamer) | Not needed once five guides had picks; not requested. |
 
 **Independence.** The five guides are different publishers. CP quotes two creators' videos; AM uses Korean top-player
