@@ -18,7 +18,10 @@
         removing a non-current and then the current character drops the right slot, leaves the rest byte-identical,
         and a reload shows the expected current
     13. phone folds (0.5 P6): opening a fold at 390 px adds only its fold_<id> to the save, a reload keeps it; at 1500 px
-        fold_* keys change nothing */
+        fold_* keys change nothing
+    14. first-run welcome (0.6 P17): a fresh browser shows it once (Start at Lv 1 writes welcomed: 1 only; a reload
+        keeps it gone); an older save with progress never shows it; joining at Lv 20 stores the level and the quest only,
+        and its character and Next up equal a played-through Lv 20 state's; a new character opens on the join step */
 const { chromium } = require('playwright'); const fs = require('fs'); const { isDeepStrictEqual } = require('util');
 const CFG = require('./config');
 const { SAVE_KEY, V4_KEY, BEFORE_IMPORT_KEY, TEST_SLOT, toStored, writeRaw, readRaw, writeSave, clearSave } = require('./support/save');
@@ -381,6 +384,82 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     ok('folds: at 1500 px a save with fold_* keys renders as one without (no fold, same markup)', withKeys === await p.evaluate(() => document.querySelector('.layout').innerHTML) && !withKeys.includes('areasFold') && !withKeys.includes('progFold'));
     ok('folds: no page errors', !errs.length, errs);
     await ctx.close();
+  }
+  /* 14. first-run welcome (0.6 P17, S1 §1.1): once per browser; joining at Lv N sets the level and the story quest only */
+  {
+    const shown = p => p.evaluate(() => { const el = document.getElementById('welcomeCard'); return !!el && !el.hidden && el.getBoundingClientRect().height > 0; });
+    const step = p => p.evaluate(() => ({ intro: !document.getElementById('welIntro').hidden, form: !document.getElementById('welForm').hidden }));
+    /* the first story quest at a level or above (the join step's pre-fill), from the page's story */
+    const questAt = (p, lv) => p.evaluate(lv => (QUESTS.find(([l]) => l >= lv) || QUESTS[QUESTS.length - 1])[1], lv);
+    const setJoinLv = (p, lv) => p.evaluate(lv => { const r = document.getElementById('welLv'); r.value = String(lv); r.dispatchEvent(new Event('input', { bubbles: true })); }, lv);
+    /* the character without what differs between two browsers (slot id, creation time, change times) */
+    const progress = p => p.evaluate(() => { const { id, created, mt, ...c } = char(state); return c; });
+    {
+      const { ctx, p, errs } = await page();
+      await clearSave(p); await p.reload(); await p.waitForTimeout(400);
+      const txt = await p.evaluate(() => document.getElementById('welcomeCard').textContent);
+      ok('welcome: a fresh browser shows it, on its first step', await shown(p) && (await step(p)).intro && !(await step(p)).form);
+      ok('welcome: says unofficial and "not affiliated with or endorsed by NCSoft"', /Unofficial/.test(txt) && /not affiliated with or endorsed by NCSoft/i.test(txt), txt);
+      const before = await progress(p);
+      await p.click('#welStart'); await p.waitForTimeout(200);
+      const st = JSON.parse(await readRaw(p));
+      ok('welcome: Start at Lv 1 hides it and writes welcomed: 1 (top-level)', !(await shown(p)) && st.welcomed === 1 && !('welcomed' in st.chars[st.current]), st.welcomed);
+      ok('welcome: Start at Lv 1 leaves the character as it was', isDeepStrictEqual(await progress(p), before), [before, await progress(p)]);
+      await p.reload(); await p.waitForTimeout(400);
+      ok('welcome: after a reload it stays gone (welcomed: 1 kept)', !(await shown(p)) && JSON.parse(await readRaw(p)).welcomed === 1);
+      ok('welcome: no page errors', !errs.length, errs);
+      await ctx.close();
+    }
+    {
+      const { ctx, p } = await page();
+      await writeSave(p, SAVED, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
+      const raw = await readRaw(p);
+      ok('welcome: a save from before it (Lv 22, ticks, no welcomed) never shows it, and nothing is written', !(await shown(p)) && await readRaw(p) === raw);
+      await writeSave(p, { level: 1, quest: await questAt(p, 1), checks: {}, open: {} }, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
+      ok('welcome: a save at Lv 1 with nothing ticked and no welcomed shows it', await shown(p));
+      await ctx.close();
+    }
+    /* joined at Lv 20 vs played through: Level up 19 times, the story quest set in Journey */
+    {
+      const a = await page(); await clearSave(a.p); await a.p.reload(); await a.p.waitForTimeout(400);
+      const q20 = await questAt(a.p, 20);
+      await a.p.click('#welJoin'); await a.p.waitForTimeout(100);
+      ok('join: the second step replaces the first, focus on the level', !(await step(a.p)).intro && (await step(a.p)).form && await a.p.evaluate(() => document.activeElement.id) === 'welLv');
+      await setJoinLv(a.p, 20);
+      const pre = await a.p.evaluate(() => ({ q: document.getElementById('welQuest').value, go: document.getElementById('welGo').textContent, out: document.getElementById('welLvOut').textContent }));
+      ok('join: Lv 20 pre-fills the first story quest at Lv 20 and the button says Start at Lv 20', pre.q === q20 && pre.go === 'Start at Lv 20' && pre.out === 'Lv 20', [pre, q20]);
+      await a.p.click('#welGo'); await a.p.waitForTimeout(400);
+      const st = JSON.parse(await readRaw(a.p)), c = st.chars[st.current];
+      ok('join: the save gets welcomed 1, level 20 and the quest; no ticks, no snoozes', st.welcomed === 1 && c.level === 20 && c.quest === q20 && !Object.keys(c.checks).length && !c.rqSnooze, { welcomed: st.welcomed, level: c.level, quest: c.quest, checks: c.checks });
+      ok('join: the welcome is gone', !(await shown(a.p)));
+      await a.p.reload(); await a.p.waitForTimeout(400);
+      ok('join: after a reload the welcome stays gone, Lv 20 kept', !(await shown(a.p)) && await a.p.evaluate(() => char(state).level) === 20);
+      const b2 = await page(); await clearSave(b2.p); await b2.p.reload(); await b2.p.waitForTimeout(400);
+      await b2.p.click('#welStart'); await b2.p.waitForTimeout(100);
+      for (let i = 0; i < 19; i++) await b2.p.click('#lvlUpBig');
+      await b2.p.fill('#questIn', q20); await b2.p.dispatchEvent('#questIn', 'change'); await b2.p.waitForTimeout(400);
+      const [pa, pb] = [await progress(a.p), await progress(b2.p)];
+      ok('join at Lv 20: the character equals a played-through Lv 20 one (Level up ×19, quest set)', pb.level === 20 && isDeepStrictEqual(pa, pb), [pa, pb]);
+      const [na, nb] = [await a.p.innerText('#nowStar'), await b2.p.innerText('#nowStar')];
+      ok('join at Lv 20: Next up equals the played-through Lv 20 state\'s', na.length > 0 && na === nb, [na.slice(0, 300), nb.slice(0, 300)]);
+      ok('join: no page errors', !a.errs.length && !b2.errs.length, [a.errs, b2.errs]);
+      await a.ctx.close(); await b2.ctx.close();
+    }
+    /* a new character opens the welcome on its join step (S1: the same screen serves New character) */
+    {
+      const { ctx, p, errs } = await page();
+      await writeSave(p, { ...SAVED, welcomed: 1 }, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
+      const first = JSON.parse(await readRaw(p)).chars[TEST_SLOT];
+      await p.click('#charBtn'); await p.click('#charNew');
+      await Promise.all([p.waitForEvent('load'), p.click('#charCreate')]); await p.waitForTimeout(400);
+      ok('new character: the welcome opens on the join step', await shown(p) && !(await step(p)).intro && (await step(p)).form);
+      await setJoinLv(p, 12); const q12 = await questAt(p, 12);
+      await p.click('#welGo'); await p.waitForTimeout(400);
+      const st = JSON.parse(await readRaw(p)), c = st.chars[st.current];
+      ok('new character: joined at Lv 12 on the pre-filled quest; the first character unchanged', st.current !== TEST_SLOT && c.level === 12 && c.quest === q12 && st.welcomed === 1 && isDeepStrictEqual(st.chars[TEST_SLOT], first), { level: c.level, quest: c.quest, q12 });
+      ok('new character: no page errors', !errs.length, errs);
+      await ctx.close();
+    }
   }
   await b.close();
   console.log(fail ? `SAVE CHECKS FAILED: ${fail}` : 'SAVE CHECKS PASSED');

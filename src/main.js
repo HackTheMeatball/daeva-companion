@@ -37,10 +37,11 @@ import { useCardPage } from "./cards/page.js";
 import { nextUpCard, renderNow, nowEl, pipWin, isBasic, specSub } from "./cards/nextup.js";
 import { milestonesCard, renderMilestones, derivedBox, fillStigmaText, milestoneFilters, syncExpand, syncQRun } from "./cards/milestones.js";
 import { renderRoute, routeRulesCard } from "./cards/route.js";
-import { journeyCard, renderQuest, renderStoryChips, renderStoryReqs } from "./cards/journey.js";
+import { journeyCard, renderQuest, renderStoryChips, renderStoryReqs, setLevel } from "./cards/journey.js";
 import { aheadCard } from "./cards/ahead.js";
 import { renderUndo, undoCard } from "./cards/undo.js";
 import { charactersCard } from "./cards/characters.js";
+import { welcomeCard } from "./cards/welcome.js";
 /* the engine reaches the game through this one pack object; set before anything asks the engine (the save is loaded below) */
 usePack(aion2Pack);
 /* Cards through the registry (src/core/cards.js, 0.4 P4a): render() draws the milestone and Route rules cards (on every
@@ -55,6 +56,19 @@ activePack().cards.forEach(registerCard);
    so every card starts over with the current character */
 registerCard(charactersCard({ onSwitch: id => useSave(switchChar(state, id)), onAdd: ({ class: cls, name }) => useSave(newCharSave(cls, name)),
   onRename: (id, name) => useSave(renameChar(state, id, name, Date.now())), onRemove: id => useSave(removeChar(state, id, Date.now())) }));
+/* the first-run welcome (0.6 P17, S1 §1.1): either button writes welcomed: 1 (this browser's, never synced). Joining
+   above Lv 1 sets the story quest (every earlier story quest counts as done, derived from the story order) and then the
+   level through Journey's level setter (the one-time setter owner-ok-S1 approved), which stores and redraws; nothing else
+   is ticked. */
+registerCard(welcomeCard({
+  onStart: () => { state.welcomed = 1; save(); },
+  onJoin: (lv, quest) => {
+    state.welcomed = 1;
+    const c = char(state);
+    if (quest) { c.quest = quest; delete c.storyEnd; }
+    setLevel(lv);
+  },
+}));
 /* the pack's card in a section of Journey: registered after Journey, which declares the section */
 registerCard(aion2AscensionCard);
 /* what a card reads (P0 §4), built once per render() / update(); ev = the character's gates (memoised inside gatesPass) */
@@ -101,11 +115,13 @@ function setSaveWarn(on) {
 }
 const save = () => { storeState(); };
 /* A save with a new character (src/core/chars.js addChar), current: it starts where a fresh browser does (Lv 1, on the
-   first story quest, its defaults stamped at time 0 so they never outrank another device's progress; migrate()). */
+   first story quest, its defaults stamped at time 0 so they never outrank another device's progress; migrate()), and
+   the welcome card opens on its "I'm already Lv N" step for it (welcomed 0, 0.6 P17). */
 function newCharSave(cls, name) {
   const next = addChar(state, { class: cls, name, now: Date.now(), id: newId() }), c = char(next), quests = activePack().data.story.quests;
   c.level = 1; if (quests.length) c.quest = quests[0][1];
   stamp(c, 0);
+  next.welcomed = 0;
   return next;
 }
 /* Another current character (0.5 P18): store the save and reload, so the load-time steps and every card run for that

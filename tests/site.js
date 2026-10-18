@@ -64,6 +64,10 @@ const checkReport = (label, m, want) => {
       const els = await p390.evaluate(() => document.querySelectorAll('*').length), ELEMENT_MAX = 6200;
       console.log(`  elements at 390 px, fresh: ${els} / ${ELEMENT_MAX} (${(100 * els / ELEMENT_MAX).toFixed(0)}%)`);
       ok(`budget: at most ${ELEMENT_MAX} elements after load at 390 px with no save`, els <= ELEMENT_MAX, els);
+      /* the first-run welcome (0.6 P17) calls the guide unofficial and keeps the NCSoft line; it sits above Next up */
+      const wel = await p390.evaluate(() => { const w = document.getElementById('welcomeCard'), n = document.getElementById('nowStar');
+        return { shown: !!w && !w.hidden, text: w ? w.innerText : '', above: !!w && !!n && w.getBoundingClientRect().bottom <= n.getBoundingClientRect().top }; });
+      ok('welcome: shown on a fresh browser above Next up, "Unofficial guide", not affiliated with or endorsed by NCSoft', wel.shown && wel.above && /Unofficial guide/.test(wel.text) && /not affiliated with or endorsed by NCSoft/i.test(wel.text), wel);
       await ctx390.close();
     }
     ok('brand: apple-touch-icon link, Daeva Companion lockup in the header', /icons\/apple-touch-icon\.png$/.test(head.touch) && head.brand, head);
