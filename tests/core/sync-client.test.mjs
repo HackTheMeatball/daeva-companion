@@ -95,7 +95,8 @@ export default (test, M) => {
   });
   test('envelope: a fresh IV on every upload (100 seals, no repeat); a copy moved to another id, a flipped byte or another version does not open', async () => {
     const k = await keysOf(CODE_BYTES), save = saveWith(M, { checks: { 'rq:1': true } }, 100), ivs = new Set();
-    for (let i = 0; i < 100; i++) ivs.add(latin1((await M.sealSave(ENV, k, save)).slice(2, 14)));
+    /* uncompressed (the IV doesn't depend on it; keeps the core suite inside its time limit) */
+    for (let i = 0; i < 100; i++) ivs.add(latin1((await M.sealSave(PLAIN_ENV, k, save)).slice(2, 14)));
     assert.equal(ivs.size, 100);
     const box = await M.sealSave(ENV, k, save);
     assert.deepEqual(await M.openSave(ENV, { ...k, id: (await keysOf(CODE_BYTES.map(b => b ^ 1))).id }, box), { ok: false, status: 'unreadable' });
@@ -180,9 +181,12 @@ export default (test, M) => {
     assert.equal(M.char(r.save).level, 30, 'the local edit is kept for the next trigger');
   });
   test('convergence: 3 devices, random edits and round orders (generated saves), all equal at the end', async () => {
-    for (let seed = 1; seed <= 12; seed++) {
+    /* 6 seeds: merge()'s algebra over many generated saves is sync.test.mjs's; this checks the rounds over the wire, and
+       the core suite has a 5 s limit */
+    for (let seed = 1; seed <= 6; seed++) {
       const host = fakeHost(), k = await keysOf(CODE_BYTES.map(b => b ^ seed));
-      const ds = [0, 1, 2].map(i => device(M, genSave(M, seed * 10 + i), k, host));
+      /* uncompressed: the merge logic is what varies here; the gzip path runs in the other round-trip tests */
+      const ds = [0, 1, 2].map(i => device(M, genSave(M, seed * 10 + i), k, host, PLAIN_ENV));
       let x = seed;
       const r = () => (x = (x * 1103515245 + 12345) % 2147483648) / 2147483648;
       for (let step = 0; step < 8; step++) {
