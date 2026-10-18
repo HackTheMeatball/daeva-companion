@@ -166,5 +166,13 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   r = await p.evaluate(() => { const st = SP_STEPS.find(x => x.s.n === 'Ambush' && x.L === 2), was = st.req; st.req = 15; renderRotation(); const out = document.getElementById('rotChain').innerText; st.req = was; renderRotation(); return out; });
   ok('#15 F7: the drawer follows the Skills card unlock level (Ambush moved to Lv 15 → gone at Lv 14)', !/Ambush/.test(r) && /Heart Gore/.test(r), r);
 
+  /* 0.6 P10: every skill named in a play step (and the New note) has an icon or initials before it; decorative, name read once */
+  for (const L of [10, 22, 45]) {
+    await writeSave(p, { checks: {}, level: L, mode: 'advanced', open: {} }); await p.reload(); await p.waitForTimeout(300);
+    r = await p.evaluate(() => [...document.querySelectorAll('#rotPlay li')].map(li => { const names = [...li.childNodes].filter(c => c.nodeType === 3).map(c => c.textContent), icos = li.querySelectorAll('img.spmini, img.st-mini, .spmini.ini, .st-mini.ini');
+      return { text: li.textContent, icos: icos.length, bad: [...icos].filter(i => i.tagName === 'IMG' ? i.getAttribute('alt') !== '' : i.getAttribute('aria-hidden') !== 'true').length, names }; }));
+    ok(`P10: Lv ${L} play steps: icon or initials, decorative`, r.length > 0 && r.filter(x => !/^Hold/.test(x.text)).every(x => x.icos > 0 && !x.bad), r);
+  }
+
   ok('no page errors', !errs.length, errs);
   console.log(`${n - fail} ok, ${fail} failed`); console.log(fail ? `E4 CHECKS FAILED (${fail})` : 'E4 CHECKS PASSED'); await b.close(); process.exit(fail ? 1 : 0); })();
