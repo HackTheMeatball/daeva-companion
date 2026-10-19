@@ -27,13 +27,24 @@
       "order": 45,
       "text": "<b>Three skills only fire on a condition.</b> Dimensional Control goes off on its own each time your spirit uses a skill, so keep a spirit summoned. Rapid Scattershot only hits a target in Stagger. Elemental Fusion needs four element stacks, built by your spirits' skills. Summoning a new spirit replaces the one already out.",
       "requires": {
-        "all": []
+        "level": 14,
+        "basis": "sourced",
+        "sources": [
+          {
+            "url": "https://metabot.gg/en/aion-2/skills/elemental-fusion",
+            "fields": [
+              "learnLv"
+            ]
+          }
+        ],
+        "note": "Elemental Fusion is learned at Lv 14 (Rapid Scattershot Lv 5, Dimensional Control Lv 8); the step shows from then on."
       },
       "completesWith": [
         "tick"
       ],
       "claims": [
-        "C74"
+        "C74",
+        "C75"
       ]
     },
     {

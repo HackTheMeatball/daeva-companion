@@ -244,6 +244,8 @@ export function generate(opts = {}) {
       else it.story = sqName(a.story);
     }
     if (s.storyQuest) check('byStory step requires its own quest: ' + s.id, it.story === sqName(s.storyQuest));
+    /* a Route rules step with a level atom shows from that level on (src/cards/route.js); other kinds of atom keep today's behaviour */
+    if (milestones.some(m => m.id === s.milestone && m.kind === 'routeRule')) { const lv = Math.max(0, ...atomsOf(s.requires).filter(a => typeof a.level === 'number').map(a => a.level)); if (lv) it.lv = lv; }
     if (s.optional) it.opt = true; if (s.advancedOnly) it.adv = true; if (s.mapSlug) it.map = s.mapSlug;
     if (s.stigmaSlot) it.stig = s.stigmaSlot; if (s.stigmaKeySlot) it.eput = s.stigmaKeySlot; if (s.opensBoard) it.bo = boardById[s.opensBoard].name;
     if (s.ascensionQuest) it.ascensionQuest = s.ascensionQuest;   /* no map location: the last-location helper skips it (src/core/sync.js) */
