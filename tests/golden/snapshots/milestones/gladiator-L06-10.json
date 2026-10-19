@@ -1,0 +1,42 @@
+{
+  "gladiator/L10-q12-none-A": [
+    "g6 | Missed | 1/6 | overdue | open",
+    "g9 | Missed | 0/4 | overdue | open",
+    "g10 | Now | 0/8 | current,upnext | open",
+    "g12 | Later | 0/7 | ",
+    "g15 | Later | 0/1 | ",
+    "g16 | Later | 0/13 | ",
+    "g19 | Later | 0/7 | ",
+    "g20 | Later | 0/2 | ",
+    "g22 | Later | 0/12 | ",
+    "g25 | Later | 0/5 | ",
+    "g27 | Later | 0/3 | ",
+    "g28 | Later | 0/2 | ",
+    "g30 | Later | 0/8 | ",
+    "g32 | Later | 0/10 | ",
+    "g35 | Later | 0/2 | ",
+    "g37 | Later | 0/5 | ",
+    "g40 | Later | 0/3 | ",
+    "g45 | Later | 0/32 | "
+  ],
+  "gladiator/L10-q12-none-B": [
+    "g6 | Missed | 1/6 | overdue | open",
+    "g9 | Missed | 0/4 | overdue | open",
+    "g10 | Now | 0/8 | current,upnext | open",
+    "g12 | Later | 0/7 | ",
+    "g15 | Later | 0/1 | ",
+    "g16 | Later | 0/13 | ",
+    "g19 | Later | 0/7 | ",
+    "g20 | Later | 0/2 | ",
+    "g22 | Later | 0/12 | ",
+    "g25 | Later | 0/5 | ",
+    "g27 | Later | 0/3 | ",
+    "g28 | Later | 0/2 | ",
+    "g30 | Later | 0/8 | ",
+    "g32 | Later | 0/10 | ",
+    "g35 | Later | 0/2 | ",
+    "g37 | Later | 0/5 | ",
+    "g40 | Later | 0/3 | ",
+    "g45 | Later | 0/32 | "
+  ]
+}

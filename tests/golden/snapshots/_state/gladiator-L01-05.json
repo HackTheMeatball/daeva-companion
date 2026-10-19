@@ -1,0 +1,20 @@
+{
+  "gladiator/L01-qxx-none-A": {
+    "in": "60b5a060b1b3",
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g6": ["(absent)",true]
+    },
+    "mode": "advanced"
+  },
+  "gladiator/L01-qxx-none-B": {
+    "in": "1c23986b255b",
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g6": ["(absent)",true]
+    },
+    "mode": "basic"
+  }
+}
