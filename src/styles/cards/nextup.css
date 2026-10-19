@@ -109,6 +109,8 @@ body.basic #nowStar.wide .nsq { padding: var(--space-7) var(--space-10); }
 /* a step card's how line (0.6.2 P17, docs/design/0.6.2-step-how-mockup.md §1): body text under the title, the meta line under it */
 #nowStar .ns-card .title p.ns-how { margin: var(--space-4) 0 0; font-size: 14px; line-height: 1.45; color: var(--fg); }
 #nowStar .ns-card .title h3:has(+ .ns-how) .nsinfo { display: inline-grid; margin-left: var(--space-6); vertical-align: middle; }
+/* a how line makes the card 3–5 lines tall: the tile stays beside the title, not mid-card (the full icon fit is 0.8 P22) */
+#nowStar .ns-card .ns-mhead:has(.ns-how) > .ns-num { align-self: start; }
 
 #nowStar .ns-card .meta .ns-btn { margin: 0; }
 #nowStar .ns-card .ns-go { font: 600 12px var(--mono); padding: var(--space-6) var(--space-12); border-radius: var(--radius-8); border: 1px solid var(--line); background: var(--panel-2); color: var(--fg); cursor: pointer; white-space: nowrap; }
