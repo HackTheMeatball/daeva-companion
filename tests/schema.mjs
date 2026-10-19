@@ -261,7 +261,8 @@ if (g) {
   fails('a status prefix in plain', csv.map((l, i) => i === com ? l.replace(',Any time given to Isaac is written in US Eastern time.,', ',Retired: times were in UTC.,') : l), /plain starts "Retired"/);
   fails('a decision not owned by Isaac', csv.map((l, i) => i === dec ? l.replace(/^([^,]*,decision,[^,]*,(?:"[^"]*"|[^,]*),(?:"[^"]*"|[^,]*),)Isaac,/, '$1Walter,') : l), /a decision's owner is Isaac/);
   const lmd = readFileSync(join(ROOT, 'docs/kaizen/LEDGER.md'), 'utf8');
-  { const p = checkLedger(ROOT, { ledgerMd: lmd.replace('| Gomez | Team Audit |', '| Badger | Team Audit |') }); ok('ledger check rejects: an Owners table that differs from OWNERS', p.some(x => /names "Badger"/.test(x)) && p.some(x => /missing "Gomez"/.test(x)), p.slice(0, 3)); } }
+  { const p = checkLedger(ROOT, { ledgerMd: lmd.replace('| Gomez | Team Audit |', '| Badger | Team Audit |') }); ok('ledger check rejects: an Owners table that differs from OWNERS', p.some(x => /names "Badger"/.test(x)) && p.some(x => /missing "Gomez"/.test(x)), p.slice(0, 3));
+  { const p = checkLedger(ROOT, { ledgerMd: lmd.replace('| Only Huell changes what the tracker shows', '| Only Huell writes TRK-01 data') }); ok('ledger check rejects: a rule id in Who does what Plain', p.some(x => /Plain has "TRK-01"/.test(x)), p.slice(0, 3)); } } }
 console.log(`${n - fail} ok, ${fail} failed (${Date.now() - t0} ms)`);
 console.log(fail ? `SCHEMA CHECKS FAILED (${fail})` : 'SCHEMA CHECKS PASSED');
 process.exit(fail ? 1 : 0);

@@ -54,37 +54,37 @@ drift from it. If a summary and its home disagree, the home wins and the summary
 
 One Accountable thread per kind of work (team audit 1.0, rec 3; DEC-20261019-team-audit-recs-3-and). Coordinator
 (Saul) routes work only from this table, never from memory. A thread that finds itself doing work this table gives to
-someone else stops and sends it there. "Source" is the ledger row or DECISIONS row that sets the owner; a
+someone else stops and sends it there. "Plain" says the same in everyday words for the Ledger page (no ids, issue numbers or code). "Source" is the ledger row or DECISIONS row that sets the owner; a
 change to an owner changes that row and this table in the same PR. Rules Steward (Francesca) keeps the table current.
 
-| Work | Owner | Not | Source |
-|---|---|---|---|
-| Routing work to a thread; what is waiting on Isaac; the morning debrief of every OK and question | Saul | Mike, Huell | COM-02, PLN-09, DEC-20261019-saul-owns-what-s-waiting |
-| Asking Isaac for a decision (opening its To-do) | The thread that needs it, through Huell | Saul, Walter | DEC-20261019-each-thread-opens-its |
-| Telling Huell an answer is recorded (OK RECORDED), so the To-do closes | Whoever recorded it | | DEC-03 |
-| Writing tracker data: cards, To-dos, versions, Scrapbook | Huell | everyone else | TRK-01 |
-| Tracker page code and design | Skyler, tab by tab, after Jane's DESIGN OK and Huell's data check | Huell | DEC-20261018-tracker-2-0-tab-by |
-| DECISIONS rows | Walter | everyone else (forward the OK verbatim) | DEC-01 |
-| ROADMAP, planning passes, item specs, the queue, #232 | Walter | Gus | PLN-01, Q-01, PLN-11 |
-| Design asks from Isaac | Walter and Jane together | | PLN-12 |
-| Mockups, look-and-feel, DESIGN OK on PRs with shots | Jane | | MRG-06, MRG-08 |
-| Cleaning up Isaac's screen crops | Jane | Gretchen | DEC-20261018-owner-crop-clean-up-is |
-| Icon and fact lookups on approved domains; icon provenance | Gretchen | Lydia | ROL-03, ROL-05 |
-| Fact checks, the two-source and labelling rules, DATA OK | Gretchen | | REPO-05, PLN-18 |
-| Vetting a site not yet in SOURCES.md; last-resort spot checks | Lydia | Gretchen | ROL-03, ROL-04 |
-| Research packs (data and icons for a class) | A research thread Walter starts; Gretchen checks icons | | Q-08, ROL-03 |
-| A data fix in `data/` | A queued item (Walter); Gretchen checks the fact | | Q-01, REPO-05 |
-| Workflows, kickoff, auto-merge, shipping a release | Gus | | PIP-03, MRG-01, PLN-19 |
-| The #114 body | Gus (owners edit only their own status line) | | Q-13 |
-| Health check: stalls, idle queue, red runs, tracker drift | Mike | | HC-01 |
-| The stall log #221: every row, its format and kinds, the per-release error report, KIND RECURRED | Mike | everyone else (report stalls to Mike) | DEC-20261019-incident-log-folds-into-stall, HC-02 |
-| A typed OK not applied within 60 min (a stall) | Mike | | DEC-20261019-saul-owns-what-s-waiting |
-| Playing the release candidate before the tag and the live site after; player findings issues | Jesse | | PLN-21, PLN-22, DEC-20261019-player-testing-plays-each-minor |
-| Kaizen review, #222, the scorecard, rule changes and grades | Gale | | KZ-01, PLN-04 |
-| Grading Gale's own rules and checking the scorecard compares like with like (from 0.9) | Francesca | Gale | DEC-20261019-from-0-9-rules-steward |
-| Grading Q-14 | Gale | Francesca | DEC-20261019-kaizen-grades-the-ledger-rule |
-| This ledger, this table, drift and roster sweeps | Francesca | | Q-14, ROL-07, DEC-20261019-rules-steward-francesca-joins-each |
-| Applying a fix to team memory | Gale (Francesca sends the fix; no other thread can read memory yet) | | Interim, until the 0.8 review assigns it |
+| Work | Plain | Owner | Not | Source |
+|---|---|---|---|---|
+| Routing work to a thread; what is waiting on Isaac; the morning debrief of every OK and question | Saul sends each piece of work to the right thread, keeps track of what is waiting on Isaac, and gives him one morning summary. | Saul | Mike, Huell | COM-02, PLN-09, DEC-20261019-saul-owns-what-s-waiting |
+| Asking Isaac for a decision (opening its To-do) | The thread that needs a decision asks Huell to put the question on Isaac's To-do list. | The thread that needs it, through Huell | Saul, Walter | DEC-20261019-each-thread-opens-its |
+| Telling Huell an answer is recorded (OK RECORDED), so the To-do closes | Whoever writes down Isaac's answer tells Huell, so the To-do can close. | Whoever recorded it | | DEC-03 |
+| Writing tracker data: cards, To-dos, versions, Scrapbook | Only Huell changes what the tracker shows: cards, To-dos, versions and the Scrapbook. | Huell | everyone else | TRK-01 |
+| Tracker page code and design | Skyler builds the tracker page one tab at a time, after Jane approves the look and Huell checks no data was lost. | Skyler, tab by tab, after Jane's DESIGN OK and Huell's data check | Huell | DEC-20261018-tracker-2-0-tab-by |
+| DECISIONS rows | Walter writes every decision into the decisions file; others pass him Isaac's exact words. | Walter | everyone else (forward the OK verbatim) | DEC-01 |
+| ROADMAP, planning passes, item specs, the queue, #232 | Walter keeps the roadmap, plans each release, writes the work items and orders the queue. | Walter | Gus | PLN-01, Q-01, PLN-11 |
+| Design asks from Isaac | Walter and Jane take Isaac's design requests together. | Walter and Jane together | | PLN-12 |
+| Mockups, look-and-feel, DESIGN OK on PRs with shots | Jane owns mockups and the look of the app, and approves changes that alter what players see. | Jane | | MRG-06, MRG-08 |
+| Cleaning up Isaac's screen crops | Jane cleans up Isaac's own screen crops when they have to be used. | Jane | Gretchen | DEC-20261018-owner-crop-clean-up-is |
+| Icon and fact lookups on approved domains; icon provenance | Gretchen looks up icons and facts on approved sites and records where each icon came from. | Gretchen | Lydia | ROL-03, ROL-05 |
+| Fact checks, the two-source and labelling rules, DATA OK | Gretchen checks game facts against two sources and approves the data before a release. | Gretchen | | REPO-05, PLN-18 |
+| Vetting a site not yet in SOURCES.md; last-resort spot checks | Lydia vets any new website before the team uses it, and does rare one-off checks. | Lydia | Gretchen | ROL-03, ROL-04 |
+| Research packs (data and icons for a class) | A research thread gathers the data and icons for a class; Gretchen checks the icons. | A research thread Walter starts; Gretchen checks icons | | Q-08, ROL-03 |
+| A data fix in `data/` | A fix to game data is a planned work item; Gretchen checks the fact. | A queued item (Walter); Gretchen checks the fact | | Q-01, REPO-05 |
+| Workflows, kickoff, auto-merge, shipping a release | Gus runs the automation: starting work, merging approved changes and shipping releases. | Gus | | PIP-03, MRG-01, PLN-19 |
+| The #114 body | Gus keeps the main pipeline status page; each thread only edits its own line there. | Gus (owners edit only their own status line) | | Q-13 |
+| Health check: stalls, idle queue, red runs, tracker drift | Mike watches for stuck work, an idle queue, failing builds and a tracker out of step. | Mike | | HC-01 |
+| The stall log #221: every row, its format and kinds, the per-release error report, KIND RECURRED | Mike alone writes the stall log, reports errors for each release, and tells Gale when a fixed problem returns. | Mike | everyone else (report stalls to Mike) | DEC-20261019-incident-log-folds-into-stall, HC-02 |
+| A typed OK not applied within 60 min (a stall) | Mike flags any approval from Isaac that hasn't been acted on within an hour. | Mike | | DEC-20261019-saul-owns-what-s-waiting |
+| Playing the release candidate before the tag and the live site after; player findings issues | Jesse plays each release before it ships and again once it is live, and files what he finds. | Jesse | | PLN-21, PLN-22, DEC-20261019-player-testing-plays-each-minor |
+| Kaizen review, #222, the scorecard, rule changes and grades | Gale reviews how the team works after each release and decides changes to the rules. | Gale | | KZ-01, PLN-04 |
+| Grading Gale's own rules and checking the scorecard compares like with like (from 0.9) | From 0.9, Francesca grades Gale's own rules and checks his scorecard is fair. | Francesca | Gale | DEC-20261019-from-0-9-rules-steward |
+| Grading Q-14 | Gale grades the rule that makes this ledger each rule's one home. | Gale | Francesca | DEC-20261019-kaizen-grades-the-ledger-rule |
+| This ledger, this table, drift and roster sweeps | Francesca keeps this ledger and this table current and checks them for drift. | Francesca | | Q-14, ROL-07, DEC-20261019-rules-steward-francesca-joins-each |
+| Applying a fix to team memory | Gale applies fixes to the team's shared memory; Francesca sends them to him. | Gale (Francesca sends the fix; no other thread can read memory yet) | | Interim, until the 0.8 review assigns it |
 
 ## Areas
 
