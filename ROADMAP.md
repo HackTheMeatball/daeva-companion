@@ -709,6 +709,13 @@ Both auto-queue from their issue bodies when the owner's typed DECISIONS row lan
 still parse under K12). Same patch rules as 0.6.1: Game Data Check before the release item; the release issue opens
 after `DATA OK 0.6.2`. If 0.7.0 is due first, they move to 0.7.1.
 
+Inputs in (Release Planner, 2026-10-18 8:00 PM ET): the owner sent the icon crops and skill screens at 7:55 PM ET
+(`docs/research/owner-screens-2026-10-18/`, DECISIONS `owner-ok-story-icon`, `owner-ok-keys`). P13 uses the active-quest
+crop and ships on the site only (artifact frozen). P15 covers skills only: the tutorial-skill refund and the reset-one /
+reset-all steps. Daevanion and stigma respec steps wait for his screens. Two design asks from the same message (skill icons in the
+Build pop-out's Key setup grid, and a placeholder before the Skills card unlocks) go to Design Lead first and are not queued
+until a DESIGN OK and the owner's OK.
+
 ### 0.7 — The Gladiator, a second class, and sync
 
 Planning pass written 2026-10-18 (Release Planner, PLANNING PASS START 0.7 at 7:12 AM ET): release kaizen review in
