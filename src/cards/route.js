@@ -1,12 +1,14 @@
 /* Route rules (0.4 P4c: moved verbatim from src/main.js; markup route.html): the STEPS cards, drawn with the milestone
    cards' cardHTML (rows of a kind the pack lists by its row renderers, 0.4 P5b), and their counts. */
 import { char } from "../core/state.js";
+import { gatesOf, levelMetOf } from "../core/requirements.js";
 import { cardHTML } from "./milestones.js";
 import { pageState as state, pageUpdate as update, pageSTEPS as STEPS, pageCounts as counts } from "./page.js";
 
-/* A step with a level (item.lv, from its requires.level) is left out until the character reaches it; the other kinds of
-   requires on these steps are not read here. */
-const shown = () => { const lv = char(state).level; return STEPS.map(s => ({ ...s, items: s.items.filter(it => !(it.lv > lv)) })); };
+/* A step whose gate has a level atom (its requires.level) is left out until the character reaches it, as the evaluator
+   decides (levelMetOf); the other kinds of requires on these steps are not read here. */
+const shown = () => { const c = char(state), ev = gatesOf(c);
+  return STEPS.map(s => ({ ...s, items: s.items.filter((it, j) => levelMetOf(c, it.k || s.id + ":" + j, ev)) })); };
 let drawn = "";
 const sig = list => list.map(s => s.items.length).join();
 
