@@ -1,7 +1,7 @@
 # Owner's in-game screens, 2026-10-18
 
 Isaac sent 16 screenshots in the project chat on 2026-10-18 at 7:55 PM ET from his Asmodian Assassin, Lv 3–4.
-The full set is archived in the private repo under `screenshots/` (prefix `2026-10-18-`). This public folder keeps only the three
+The full set is archived in the private repo under `screenshots/` (prefix `2026-10-18-`). This public folder keeps only the four
 quest-state icons, cropped by the owner, and a text record of the other screens. The owner's in-game screens are the
 source of truth (CLAUDE.md "Data and source policy"). His DECISIONS rows are `owner-ok-story-icon` and `owner-ok-keys`.
 
@@ -11,6 +11,7 @@ source of truth (CLAUDE.md "Data and source policy"). His DECISIONS rows are `ow
 |---|---|---|
 | `story-quest-available.png` | 43×48 | "the yellow diamond icon without the smaller diamond in it is what a story quest looks like before you pick it up" |
 | `story-quest-active.png` | 47×50 | "the one with the smaller diamond is what it looks like when the quest is active" |
+| `story-quest-ready-to-turn-in.png` | 55×68 | "This is the story quest icon when a quest is done and just needs to be turned in." (8:20 PM ET; for #391, needs the owner's OK before use) |
 | `quest-complete-check.png` | 58×55 | "the check mark is what the journal shows a completed quest as" |
 
 Each crop is a PNG with an opaque near-black background, not a transparent one.
