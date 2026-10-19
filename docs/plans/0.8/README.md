@@ -20,8 +20,11 @@ Rules for every item:
 
 - **Problem.** The Skills, Stigmas, Next up and Build panel show letter squares for the 14 Gladiator and 15 Spiritmaster
   skills and stigmas (#441-4; `docs/ISSUES.md`, sections "initials for now").
-- **Result.** Each record points at its Metabot icon. Game Data Check commits the files in `research-gl-sm-icons`, with
-  their provenance rows. The two ISSUES.md sections are closed.
+- **Result.** Each record points at its Metabot icon. Game Data Check saved all 29 files in `research-gl-sm-icons`
+  (PR #444): `docs/research/icons-2026-10-19/` as `sk-`/`st-<slug>.png`, 128 px, named like the Ranger's, with no
+  collisions. Their provenance rows are already in the ISSUES.md "initials for now" tables. P1 moves the 29 to
+  `src/assets/icons/`, sets each record's `icon`, and changes both ISSUES.md bullets from "initials for now" to "in
+  the site".
 - **No-gos.**
   - No fetching.
   - No icon without a provenance row.
@@ -30,8 +33,8 @@ Rules for every item:
   - [ ] No letter square in a Gladiator or Spiritmaster build at Lv 1, 30 and 45 (shots, both sizes).
   - [ ] Every new `src/assets/icons` file has an ISSUES.md row.
   - [ ] gen and golden are green, with the golden diff limited to icon references.
-- **Files.** The icon fields in `data/packs/aion2/classes/{gladiator,spiritmaster}/{skills,stigmas}.json`, and
-  `docs/ISSUES.md`.
+- **Files.** `src/assets/icons/` (the 29, moved), the icon fields in
+  `data/packs/aion2/classes/{gladiator,spiritmaster}/{skills,stigmas}.json`, and `docs/ISSUES.md`.
 - **Lanes:** gen, golden. **Model:** Sonnet, S (44 min).
 - **After:** `research-gl-sm-icons`.
 
@@ -47,7 +50,8 @@ Rules for every item:
     rows; P3 moves the ones the guide shows to `src/assets/icons/`).
   The class is not offered yet.
 - **Watch.** Metabot's page text prints some "Absorbs N% HP" specialties as "Absorbs 100, 100% HP" when the game says
-  1% (research §5). Write the game text.
+  1% (research §5). Write the game text. gen already fails on any "N, N%" specialty (`checks.mjs`, #358), and the
+  live Gladiator and Spiritmaster data carry the game text.
 - **Acceptance.**
   - [ ] gen is green, and record counts match the research CSVs.
   - [ ] Golden and equiv are unchanged. No visible change.
@@ -247,7 +251,10 @@ The same as P3, for the Cleric. It runs after P3 because both edit `pack.js`.
 - **Files.** `src/packs/aion2/cards/build.html`, `src/packs/aion2/requirements.js` (rotKeys), `src/packs/aion2/cards/rows.js`,
   the Assassin `builds.json` `keyStacks`, `claims.json`, and the a11y and golden tests.
 - **Lanes:** gen, golden, build-card, a11y. **Model:** Opus, M (80 min).
-- **After:** `research-387-macro`.
+- **After:** `research-387-macro`. Game Data Check found (c) and (d) need the owner's game (her #387 comment). Her one
+  new point on (d): the default K windows for the Ranger, Gladiator and Templar each put a stack on both Q and E, so the
+  owner's grid, with Shadowstrike alone on E, may be his own layout. P14 stays in 0.8 only if his two checks come in
+  before its wave; otherwise it moves to 0.8.x.
 
 ## P15: Auto level-up uses the level at turn-in (#401)
 

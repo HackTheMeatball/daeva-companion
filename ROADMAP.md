@@ -999,7 +999,9 @@ Not OKs, but only the owner can do them. None blocks a wave:
 
 - **Level notes for #401** (P15): your level before each story-quest turn-in from Lv 1 to 10. Without them, P15 moves
   to 0.8.x.
-- **#387, if Game Data Check can't settle it**: whether the right-click macro replaces "hold both clicks".
+- **Two in-game checks for #387** (P14; Game Data Check's #387 comment has the steps): whether the right-click macro
+  replaces "hold both clicks", and whether Shadowstrike alone on E is the game's default or your own layout. Without
+  them, P14 moves to 0.8.x.
 - **A usage reading at each release** (scorecard blind spot): the weekly % from Settings → Usage.
 
 **Player findings (K18), each with a decision:**
@@ -1032,7 +1034,11 @@ Decisions recorded on the tracker:
 
 - **Research started at pass start** (2026-10-19 ~6:35 AM ET):
   - `research-templar` (`docs/research/2026-10-templar-pack.md`) and `research-cleric` (`docs/research/2026-10-cleric-pack.md`), research sessions;
-  - `research-gl-sm-icons`, `research-387-macro` and #329, Game Data Check.
+  - Game Data Check (all in by 6:53 AM ET, PR #444):
+    - `research-gl-sm-icons` is in: 29 icons, provenance rows.
+    - `research-387-macro` needs the owner's game (owner input above).
+    - #329: the ◆ 5th specialization has no item or level in the client data, so it stays out of the guide
+      (`docs/research/2026-10-stigma-specialization-5.md`; that it can't be reached is inferred).
 - **Tracker work, outside the app versions** (owner, 2026-10-18 11:27 PM ET; no app version, no #114 line, no app release
   gate): **Tracker: Reports tab** now (Design Lead designs it, Tracker Design builds what she approves, the morning
   debrief reports land there), then **Tracker 2.0**, a redesign of every tab, as a side project.
