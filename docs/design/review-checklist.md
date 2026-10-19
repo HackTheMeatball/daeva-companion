@@ -35,7 +35,7 @@ written reason. The tracker and the Ledger use the same lines, except where a li
   (green = done, amber = needs you).
 - [ ] **No leaked markup or notes.** No backticks, raw ids, ALL-CAPS tokens or design notes in product text.
 - [ ] **No dead space.** An icon tile lines up with its title, and the lines under the title run the card's full width
-  (`design.md`, "No dead space around icons").
+  ([design.md](../team/design.md), "No dead space around icons").
 
 ## Does it look AI-made?
 A design fails here when it looks generated rather than made for this app. Each "yes" is a finding.
@@ -56,7 +56,9 @@ A design fails here when it looks generated rather than made for this app. Each 
   other app.
 
 ## Behaviour
-- [ ] **Manual progress.** Nothing ticks or levels up by itself. Level changes only through Level up, −, + or the slider.
+- [ ] **Manual progress.** Nothing ticks or levels up by itself. Level changes only through Level up, −, + or the slider,
+  plus the one owner-approved exception: ticking a sourced 100 % EXP story quest (`levelsUp: true`) raises the level by
+  one, and unticking or Undo lowers it (CLAUDE.md, DECISIONS `owner-ok-autolevel`).
 - [ ] **Basic mode = essentials only.** Anything not essential is hidden in Basic, and Basic still reads complete.
 - [ ] **Saved progress is safe.** Same storage key as today (`KEY` in `src/core/state.js`, see `docs/ARCHITECTURE.md`),
   unless the change is a planned pre-1.0 clean break per CLAUDE.md (new key, fresh start without errors, CHANGELOG says
