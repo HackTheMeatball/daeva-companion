@@ -5,7 +5,7 @@
    repo-file home exists and its #anchor text is in that file (case-insensitive, backticks and runs of whitespace
    ignored); a DECISIONS home `docs/DECISIONS.md#YYYY-MM-DD / <Topic>` names a real `## YYYY-MM-DD` heading with a row of
    that Topic under it; issue homes are `#<n>`; every replaced_by is an existing id; and there is one decision row per
-   DECISIONS table row, so a new decision without a ledger row fails CI. */
+   DECISIONS table row (matched by date and topic, both ways), so a new decision without a ledger row fails CI. */
 import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -46,10 +46,10 @@ export function decisionRows(md) {
   return byDate;
 }
 
-export function checkLedger(root = ROOT) {
+export function checkLedger(root = ROOT, { csvText } = {}) {
   const problems = [], file = join(root, 'docs/kaizen/ledger.csv');
-  if (!existsSync(file)) return ['docs/kaizen/ledger.csv is missing'];
-  const rows = parseCsv(readFileSync(file, 'utf8')).filter(r => r.some(c => c !== ''));
+  if (csvText == null && !existsSync(file)) return ['docs/kaizen/ledger.csv is missing'];
+  const rows = parseCsv(csvText ?? readFileSync(file, 'utf8')).filter(r => r.some(c => c !== ''));
   const head = rows.shift() || [];
   if (head.join(',') !== HEADER.join(',')) problems.push(`header is "${head.join(',')}", expected "${HEADER.join(',')}"`);
   const recs = rows.map((r, i) => ({ line: i + 2, n: r.length, ...Object.fromEntries(HEADER.map((k, j) => [k, r[j] ?? ''])) }));
@@ -80,8 +80,16 @@ export function checkLedger(root = ROOT) {
     } else if (!norm(text(path)).includes(norm(anchor))) problems.push(`${at}: anchor "${anchor}" not found in ${path}`);
   }
   for (const r of recs) if (r.replaced_by && !ids.has(r.replaced_by)) problems.push(`line ${r.line} (${r.id}): replaced_by "${r.replaced_by}" is not a ledger id`);
-  const want = [...decs.values()].reduce((a, t) => a + t.length, 0), have = recs.filter(r => r.kind === 'decision').length;
-  if (want !== have) problems.push(`${have} decision rows in the ledger, but docs/DECISIONS.md has ${want} decision table rows (each needs one ledger row)`);
+  /* one ledger row per DECISIONS row, both ways: (date, topic) pairs as multisets, not just a count */
+  const left = new Map(), key = (d, t) => d + ' / ' + norm(t);
+  for (const [d, ts] of decs) for (const t of ts) left.set(key(d, t), (left.get(key(d, t)) || 0) + 1);
+  for (const r of recs.filter(r => r.kind === 'decision')) {
+    const m = r.home.trim().match(/^docs\/DECISIONS\.md#(\d{4}-\d{2}-\d{2}) \/ (.+)$/);
+    if (!m) { problems.push(`line ${r.line} (${r.id}): a decision's home must be docs/DECISIONS.md#YYYY-MM-DD / <Topic>`); continue; }
+    const k = key(m[1], m[2]), c = left.get(k) || 0;
+    if (c) left.set(k, c - 1); else if (decs.has(m[1]) && decs.get(m[1]).some(t => norm(t) === norm(m[2]))) problems.push(`line ${r.line} (${r.id}): a second ledger row for DECISIONS "${m[1]} / ${m[2]}"`);
+  }
+  for (const [k, c] of left) if (c) problems.push(`DECISIONS row "${k}" has no ledger row` + (c > 1 ? ` (${c} missing)` : ''));
   return problems;
 }
 
