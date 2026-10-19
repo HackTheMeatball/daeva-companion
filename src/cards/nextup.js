@@ -78,24 +78,30 @@ function nowCard(a) {
 /* The end of the guide's story (0.3 E10): the last covered quest turned in; the game's next story quest unlocks past the cap. */
 /* set at mount: STORY_END is the pack's, handed over after this module is loaded */
 let STORY_DONE = "", END_NEXT = "";
-/* The game's active story-quest icon (0.6 P13, DECISIONS owner-ok-story-icon; source in docs/ISSUES.md) on a dark tile;
-   the 📜 emoji when it can't load (the tile then falls back to its usual look). */
-const STORY_ICO = `<img class="ns-sico" src="assets/icons/story-quest-active.png" alt="" onerror="this.replaceWith('📜')">`;
+/* The game's story-quest icon on a dark tile, following the quest's state (0.6 P13 active; 0.6.2 P20 ready to turn in and
+   story complete, DECISIONS owner-ok-0.6.2-story-icons; sources in docs/ISSUES.md); the tile is an image labelled with
+   the state (icoLabel). The 📜 emoji when it can't load (the tile then falls back to its usual look). */
+const STORY_ICOS = { active: ["assets/icons/story-quest-active.png", "Active quest"], ready: ["assets/icons/story-quest-ready.png", "Ready to turn in"], done: ["assets/icons/story-complete.png", "Story complete"] };
+const storyIco = st => ({ ico: `<img class="ns-sico ns-sico-${st}" src="${STORY_ICOS[st][0]}" alt="" onerror="this.replaceWith('📜')">`, icoLabel: STORY_ICOS[st][1] });
+const STORY_ICO = storyIco("active").ico;
 function storyView(a) {
   const { act } = a;
   if (a.v === "unset") return { story: true, ico: STORY_ICO, t: "Set your current main quest", sub: "In the Journey card; it places you on the story.", btn: "Show", act };
-  if (a.v === "end") return { story: true, ico: STORY_ICO, t: STORY_DONE, sub: `${capFirst(END_NEXT)} · the guide's story ends at "${a.quest}"`, act };
+  if (a.v === "end") return { story: true, ...storyIco("done"), t: STORY_DONE, sub: `${capFirst(END_NEXT)} · the guide's story ends at "${a.quest}"`, act };
   /* what else to do at your level, and where the objectives send you: in the pack's words */
   const R = nowR(), ctx = nowCtx();
   const xs = a.meanwhile && R["story.meanwhile"] ? R["story.meanwhile"](a.meanwhile, ctx) : "";
   const gatedSub = `Needs Lv ${a.gateLv}: you're ${a.lv}. Level up first.${xs ? `<span class="ns-mean">Meanwhile: ${xs}</span>` : ""}`;
   /* Below the quest's unlock level (turnInNeedsLv): no "Turned in", the tag says when (as the Journey card does). */
   const tag = a.turnInLv ? `Turn in at Lv ${a.turnInLv}` : undefined;
-  if (a.v === "nolist") return { story: true, ico: STORY_ICO, t: `Continue the story: <b>${a.quest}</b>`, sub: a.gated ? gatedSub : a.nq ? `Main story · then ${a.nq[1]}` : "Main story", btn: "Turned in", act, tag };
+  if (a.v === "nolist") return { story: true, ...storyIco("active"), t: `Continue the story: <b>${a.quest}</b>`, sub: a.gated ? gatedSub : a.nq ? `Main story · then ${a.nq[1]}` : "Main story", btn: "Turned in", act, tag };
   const where = R["story.where"] ? R["story.where"](a, ctx) : "";
   /* a row of the pack's under the text, above the action (0.5 P15: the "Bind X" row) */
   const row = R["story.row"] ? R["story.row"](a, ctx) : "";
-  return { story: true, ico: STORY_ICO, t: `Story: <b>${a.quest}</b>`, sub: a.gated ? gatedSub : `<span class="ns-objn">${a.done}/${a.total}</span> objectives${where ? ` · ${where}` : ""}${a.nq ? ` · then ${a.nq[1]}` : ""}`, btn: "Turned in", act, tag, quest: a.objectives, row };
+  /* ready to turn in (the pack says when): the words replace the count; the Turn in row stays listed */
+  const ready = !!(R["story.ready"] && R["story.ready"](a, ctx));
+  const count = ready ? `<b class="ns-ready">Ready to turn in</b>` : `<span class="ns-objn">${a.done}/${a.total}</span> objectives`;
+  return { story: true, ...storyIco(ready ? "ready" : "active"), t: `Story: <b>${a.quest}</b>`, sub: a.gated ? gatedSub : `${count}${where ? ` · ${where}` : ""}${a.nq ? ` · then ${a.nq[1]}` : ""}`, btn: "Turned in", act, tag, quest: a.objectives, row };
 }
 /* Phones (<= 600 px, 0.5 P3; docs/design/phone-layout.md 3.4): no nested scroll stack. The featured card is full width
    with its action(s) under the text, the others are compact rows (tile, title, one line), and in Advanced a "1 of N"
@@ -138,7 +144,7 @@ function renderNow() {
   /* a step card's how line sits under the title (0.6.2 P17), so its "i" follows the title on a phone too */
   const card = (a, i) => { const pb = splitBar(a), sub = [a.sub, pb.lbl ? `<span class="nw">${pb.lbl}</span>` : ""].filter(Boolean).join(" · "), inT = !phone || a.how, ti = inT ? info(a, i) : "", pi = inT ? "" : info(a, i);
     return `<article class="ns-card${i === nsCur ? " first ns-primary nsbox" : ""}${a.later ? " later" : ""}${pb.bar ? " has-bbar" : ""}${nsAnim ? " rise" : ""}">` +
-    bandAt(i) + `<div class="ns-mhead"><div class="num ns-num" aria-hidden="true">${a.ico}</div><div class="title"><h3>${itm(a.t)}${ti}</h3>${a.how ? `<p class="ns-how">${itm(a.how)}</p>` : ""}${sub || pi ? `<p>${pi}${sub}</p>` : ""}${a.row || ""}${a.info ? `<span class="ns-info" id="nsInfo${i}">${itm(a.info)}</span>` : ""}</div>` +
+    bandAt(i) + `<div class="ns-mhead"><div class="num ns-num"${a.icoLabel ? ` role="img" aria-label="${a.icoLabel}"` : ` aria-hidden="true"`}>${a.ico}</div><div class="title"><h3>${itm(a.t)}${ti}</h3>${a.how ? `<p class="ns-how">${itm(a.how)}</p>` : ""}${sub || pi ? `<p>${pi}${sub}</p>` : ""}${a.row || ""}${a.info ? `<span class="ns-info" id="nsInfo${i}">${itm(a.info)}</span>` : ""}</div>` +
     (a.extra ? `<div class="ns-extra">${a.extra}</div>` : "") + `<div class="meta">${control(a, i)}</div></div>${a.quest ? nsObjHTML() : ""}${pb.bar ? `<div class="ns-bbar">${pb.bar}</div>` : ""}</article>`; };
   const pg = pager ? `<div class="ns-pg" role="group" aria-label="Next up cards"><button type="button" class="ns-pgb" data-nspg="-1" aria-label="Previous card">‹</button><span class="ns-pgn" aria-live="polite">${nsCur + 1} of ${shown.length}</span><button type="button" class="ns-pgb" data-nspg="1" aria-label="Next card">›</button></div>` : "";
   el.innerHTML = `<div class="sec ns-sec"><h2 class="sec-h">Next up</h2>${pg}${window.documentPictureInPicture ? `<button type="button" class="ns-pop" data-nspop title="Keep Next up in a small window on top of the game">Pop out</button>` : ""}</div>` + trackHTML() + (top ? `<div class="ns-stack${phone ? " ns-phone" : ""}" id="nsqWrap">${shown.map(card).join("")}</div>`

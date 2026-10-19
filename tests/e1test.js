@@ -15,14 +15,22 @@ const cards = p => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-
   let st = await liveState(p);
   ok('fresh: seeds not applied (level, sp ticks, stigma, stones)', st.level === 1 && st.quest === 'A Village in the Fog' && !Object.keys(st.checks).some(k => k.startsWith('sp:')) && !st.stLv && !st.stones, { level: st.level, stLv: st.stLv, stones: st.stones });
   ok('fresh: cleared milestones folded, no one-time flags (save v5)', st.hideCards === true && !['seedLv12', 'stTriniel1', 'dvReset1', 'migV5', 'eputSync1', 'stampV1'].some(f => f in st));
-  /* 1b. The story card's objective count moves on the tick itself, not after the row fades (#334) */
-  const objN = () => p.evaluate(() => { const c = [...document.querySelectorAll('#nowStar .ns-card')].find(x => /Story:/.test(x.querySelector('h3').innerText)); return c ? (c.querySelector('.title > p').innerText.match(/\d+\/\d+ objectives/) || [''])[0] : 'no story card'; });
+  /* 1b. The story card's objective count moves on the tick itself, not after the row fades (#334). The first quest shows
+     one objective and its Turn in, so once the objective is ticked the re-rendered card says "Ready to turn in" in place
+     of the count (0.6.2 P20, #391) */
+  const objN = () => p.evaluate(() => { const c = [...document.querySelectorAll('#nowStar .ns-card')].find(x => /Story:/.test(x.querySelector('h3').innerText)); return c ? (c.querySelector('.title > p').innerText.match(/\d+\/\d+ objectives|Ready to turn in/) || [''])[0] : 'no story card'; });
   const n0 = await objN(); await p.click('#nowStar input[data-nsobj]'); await p.waitForTimeout(50); const n1 = await objN(); await p.waitForTimeout(1300); const n2 = await objN();
-  ok('fresh: ticking a story objective in Next up moves "0/2 objectives" to "1/2" at once and after the re-render', n0 === '0/2 objectives' && n1 === '1/2 objectives' && n2 === '1/2 objectives', { n0, n1, n2 });
+  ok('fresh: ticking a story objective in Next up moves "0/2 objectives" to "1/2" at once, then "Ready to turn in" after the re-render', n0 === '0/2 objectives' && n1 === '1/2 objectives' && n2 === 'Ready to turn in', { n0, n1, n2 });
   await p.evaluate(() => { state.showObj = true; state.qsShowDone = true; renderQuestSubs(); });
   await p.click('#questSubs input[data-qobj="1"]'); await p.waitForTimeout(50); const n3 = await objN();
   await p.evaluate(() => { state.qsShowDone = false; renderQuestSubs(); }); await p.click('#questSubs input[data-qobj="1"]'); await p.waitForTimeout(50); const n4 = await objN();
-  ok('fresh: unticking / ticking it in the Journey card moves the Next up count at once', n3 === '0/2 objectives' && n4 === '1/2 objectives', { n3, n4 });
+  ok('fresh: unticking / ticking it in the Journey card moves the Next up count at once (ticked: ready to turn in)', n3 === '0/2 objectives' && n4 === 'Ready to turn in', { n3, n4 });
+  /* the story icon is centred in its tile (#437 Design Lead: the image took its square ratio from the tile's width, so it
+     hung 4 px low and was clipped at the bottom); the ready marker is only scaled and moved sideways, so its vertical
+     centre is the tile's too */
+  const ico = await p.evaluate(() => { const c = [...document.querySelectorAll('#nowStar .ns-card')].find(x => /Story:/.test(x.querySelector('h3').innerText)), n = c && c.querySelector('.ns-num'), i = n && n.querySelector('.ns-sico');
+    if (!i) return { none: true }; const a = n.getBoundingClientRect(), b = i.getBoundingClientRect(); return { label: n.getAttribute('aria-label'), dy: +((b.top + b.bottom) / 2 - (a.top + a.bottom) / 2).toFixed(2), h: +i.offsetHeight.toFixed(1), inner: n.clientHeight }; });
+  ok('fresh: the ready story icon is labelled and centred in its tile (laid out at the tile\'s inner height, within 1 px)', ico.label === 'Ready to turn in' && Math.abs(ico.dy) <= 1 && ico.h === ico.inner, ico);
   /* 2. A saved state: loaded as it is (the pre-0.4 player seeds are gone with the clean break, 0.4 P3c) */
   await writeSave(p, { checks: {}, level: 9, open: {}, quest: '' }); await p.reload(); await p.waitForTimeout(300);
   st = await liveState(p);

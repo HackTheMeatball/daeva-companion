@@ -32,7 +32,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 6 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "loc/L24-q37-before-A-obj": [
-    {"t":"Story: Finding Stolen Relics","s":"1/2 objectives · Kibelisk: Minushan Site (34 m) · then Voice of Rage","c":"primary \"Turned in\" story","b":"Lv 22–24","o":["Turn in Gohok, Minushan Site"]},
+    {"t":"Story: Finding Stolen Relics","s":"Ready to turn in · Kibelisk: Minushan Site (34 m) · then Voice of Rage","c":"primary \"Turned in\" story","b":"Lv 22–24","o":["Turn in Gohok, Minushan Site"]},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"},
     {"t":"Buy Heart Gore 8 → 9","s":"Needs Lv 25 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 25–26"},
     {"t":"Buy Savage Roar 9 → 10","s":"Needs Lv 25 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -138,7 +138,7 @@
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"}
   ],
   "loc/L24-q37-before-B-obj": [
-    {"t":"Story: Finding Stolen Relics","s":"1/2 objectives · Kibelisk: Minushan Site (34 m) · then Voice of Rage","c":"primary \"Turned in\" story","o":["Turn in Gohok, Minushan Site"]},
+    {"t":"Story: Finding Stolen Relics","s":"Ready to turn in · Kibelisk: Minushan Site (34 m) · then Voice of Rage","c":"primary \"Turned in\" story","o":["Turn in Gohok, Minushan Site"]},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"}
   ],
   "loc/L24-q37-before-B-rq-calderon-canyon": [

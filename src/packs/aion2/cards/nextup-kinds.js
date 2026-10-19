@@ -7,6 +7,8 @@
    Keys with a dot are hooks of the engine cards, not card kinds:
    - story.meanwhile(m, ctx) → html: the story card's "Meanwhile" list (m = the pack's story.meanwhile object)
    - story.where(card, ctx) → html: where the story card's objectives send you, or ""
+   - story.ready(card, ctx) → true when the story card's quest is ready to turn in (0.6.2 P20): every objective it shows
+     but the quest's own "Turn in" step is ticked, and it isn't level-gated or waiting on its turn-in level
    - story.row(card, ctx) → html: a row inside the story card under its text, above its action (the "Bind X" row or the
      travel line), or ""
    - now.opts(ctx) → html: the pack's controls in the Advanced options row under the header ("Prefer running"), or ""
@@ -18,7 +20,8 @@
    - skill.slot(x) → html: a specialty slot's line (the shell hands src/cards/nextup.js's specSub to the Skills card)
    - ahead.cap(lv) → html: the Later list's last row at the level cap, or "" */
 import { char } from "../../../core/state.js";
-import { chainsOn, openOf } from "../../../core/requirements.js";
+import { chainsOn, objIdxOf, openOf } from "../../../core/requirements.js";
+import { QUEST_STEPS } from "../data/story.js";
 import { MAP_ICO, rqTicked, snoozeToggle } from "../../../cards/milestones.js";
 import { capFirst, isBasic, renderNow } from "../../../cards/nextup.js";
 import { travelAdviceOn } from "../nextup.js";
@@ -109,6 +112,13 @@ export const aion2NowRenderers = {
     if (m.ex) xs.push(`${m.ex.name} (Lv ${m.ex.lv}+${m.ex.il ? `, item level ${m.ex.il}` : ""})`);
     if (m.dd != null) xs.push(`daily dungeon (Lv ${m.dd}+)`);
     return xs.join(" / "); },
+  /* Ready to turn in (0.6.2 P20, docs/design/0.6.2-story-states-mockup.md §1): from the ticks only; the quest needs a
+     "Turn in" step among the shown ones (its last, in QUEST_STEPS), and that step itself may be ticked or not. A quest
+     that shows nothing but its turn-in (its other steps talk-only, hidden) stays active: nothing ticked says it's ready,
+     and the card after "Turned in" starts out active (mockup §1) */
+  "story.ready": a => { if (a.v !== "obj" || a.gated || a.turnInLv) return false;
+    const L = QUEST_STEPS[a.quest] || [], done = (char(state).qsteps || {})[a.quest] || [], vis = objIdxOf(state, L), ti = i => /^Turn in\b/i.test(L[i]);
+    return vis.some(ti) && vis.some(i => !ti(i)) && vis.every(i => ti(i) || done.includes(i)); },
   /* the Kibelisk hint; the travel line replaces it while shown (Q11) */
   "story.where": a => a.kib && !teleShown(a) ? `<span class="nw">Kibelisk: ${a.kib.kib}${a.kib.m ? ` (${a.kib.m} m)` : ""}</span>` : "",
   /* The one-time "Bind X" row (0.5 P15, S1 M2 / D1 / D3; design §8.2): the whole row is the tick box's label, so the box

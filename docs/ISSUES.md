@@ -197,6 +197,16 @@ on purpose: the guide shows nothing rather than an unverified value.
   |---|---|---|---|
   | story-quest-active.png | <https://metabot.gg/en/aion-2/map/altgard> (as Source Vetting reported) | <https://metabot.gg/web/aion2/mapicons/quest_hero.webp> | 2026-10-18 9:41 PM ET |
 
+  Since 0.6.2 P20 (#391; DECISIONS `owner-ok-0.6.2-story-icons`, owner OK typed 2026-10-18 10:04 PM ET) the icon follows
+  the quest's state (`docs/design/0.6.2-story-states-mockup.md`): active as above, **ready to turn in** once every
+  objective but the quest's "Turn in" step is ticked, and the journal check on the "story complete" card. Both new files
+  are committed copies of `docs/research/map-icons-2026-10-18/` (byte for byte; that folder's README has their rows):
+
+  | File | Source page | File URL | Retrieved |
+  |---|---|---|---|
+  | story-quest-ready.png (64×64, transparent; aion2quest `UT_Marker_Quest_Hero_Complete`, WebP → PNG, pixels unchanged) | <https://aion2quest.pro/en/map/altgard> (marker set; requested by name) | <https://aion2quest.pro/img/map/markers/UT_Marker_Quest_Hero_Complete.webp> | 2026-10-18 10:26 PM ET |
+  | story-complete.png (50×50, transparent; owner crop, no online copy on approved sites, Source Vetting 10:59 PM ET) | owner screen `docs/research/owner-screens-2026-10-18/quest-complete-check.png`, cleaned (border-median background removal, trimmed, centred with an 8% margin, not upscaled), Design Lead DESIGN OK 2026-10-18 11:09 PM ET, committed as `docs/research/map-icons-2026-10-18/journal-complete-check-owner-crop.png` | — | 2026-10-18 10:55 PM ET |
+
   The first search (gate `research-story-icon`, 2026-10-18 3:12–3:21 AM ET) found nothing; kept for the record:
 
   - **Checked (CONFIRMED, none of these has a quest-type icon):** a story quest page

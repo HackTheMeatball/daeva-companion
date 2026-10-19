@@ -29,7 +29,7 @@
   ],
   "random/L31-q09-lvonly-A-objs": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 30–31"},
-    {"t":"Story: The Longest Night","s":"1/2 objectives · then Finding Nemon","c":"primary \"Turned in\" story","o":["Turn in no NPC; escaping from Ishalgen completes the quest"]},
+    {"t":"Story: The Longest Night","s":"Ready to turn in · then Finding Nemon","c":"primary \"Turned in\" story","o":["Turn in no NPC; escaping from Ishalgen completes the quest"]},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
     {"t":"Buy Insignia Explosion 7 → 8","s":"Needs Lv 32 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 32–34"},
     {"t":"Buy Rear Smite 8 → 9","s":"Needs Lv 32 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -775,7 +775,7 @@
   ],
   "random/L35-q19-before-A-objs": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Story: Back on the Scent","s":"1/2 objectives · Kibelisk: Neglected Crematorium (11 m) · then Dead Men Tell No Tales","c":"primary \"Turned in\" story","o":["Turn in Kolina (Gravekeeper's Assistant), Neglected Crematorium"]},
+    {"t":"Story: Back on the Scent","s":"Ready to turn in · Kibelisk: Neglected Crematorium (11 m) · then Dead Men Tell No Tales","c":"primary \"Turned in\" story","o":["Turn in Kolina (Gravekeeper's Assistant), Neglected Crematorium"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202010","x":["+18 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk: Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk: Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
