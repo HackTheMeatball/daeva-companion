@@ -94,6 +94,19 @@ check(/const wait = await afterBlocker\(kx\);\s*\n\s*if \(wait\) \{[\s\S]*?conti
 check(/if \(wait\) \{[\s\S]*?if \(alone\) break; continue;/.test(loop.slice(0, loop.indexOf('picked.push('))),
   'start loop: an "alone" line held by its After line stops the loop, so later lines keep queue order');
 
+check(/not understood \(no 0\.6\.9 items found\)/.test(await afterBlocker(unkeyed('everything.', '0.6.9'))), 'patch release with no items of its version -> not understood, stays unstarted');
+
+// Auto-queue appends after the last queue line; a held note under a line is part of the queue (#392 review).
+const qe = yml.match(/\/\/ QUEUE-END START[^\n]*\n([\s\S]*?)\n\s*\/\/ QUEUE-END END/);
+check(!!qe, 'kickoff.yml has the QUEUE-END block');
+const queueEnd = new Function(qe[1] + '\nreturn queueEnd;')();
+const q114 = ['## Queue', '<!-- One line per item -->', '- [next] #371 opus alone', '  - held: After not understood (kickoff 2026-10-18T23:00Z)', '- [next] #383 opus lanes:build', '', 'Notes'];
+check(queueEnd(q114) === 4, 'auto-queue: new lines go after the last queue line, past a held note');
+check(queueEnd(q114.filter((l) => !l.includes('held'))) === 3, 'auto-queue: no held note -> after the last queue line');
+check(queueEnd(['no queue']) === -1, 'auto-queue: no queue comment line -> skipped');
+check(/\/\^\\s\+- held: \/\.test\(lines\[i\]\) && !\/\^- \\\[next\\\] \/\.test\(lines\[i - 1\]/.test(yml), 'a held note not under a [next] line is dropped');
+check(/left in #114 for the planner`\);\s*\n\s*if \(\/\^\\s\+- held: \/\.test\(lines\[i \+ 1\] \|\| ''\)\) \{ lines\.splice\(i \+ 1, 1\)/.test(yml), 'a held line whose After now reads (but waits) loses its note');
+
 console.log(`\n${n - fail}/${n} kickoff checks passed`);
 console.log(fail ? 'KICKOFF CHECKS FAILED' : 'KICKOFF CHECKS PASSED');
 process.exit(fail ? 1 : 0);

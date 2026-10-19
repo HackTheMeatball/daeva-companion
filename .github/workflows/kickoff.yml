@@ -172,8 +172,11 @@ jobs:
               if (/everything|\ball\b/i.test(after)) {
                 // A patch release ("Release 0.6.1 (patch)") waits for the issues titled with its patch version (0.6.1
                 // stalled the queue on 2026-10-18: "everything" was not understood there, and an alone line stops the loop).
-                if (!x.ver && x.rel && /^\d+\.\d+\.\d+$/.test(x.rel)) deps = patch.filter((y) => y.rel === x.rel && y.n !== x.n);
-                else if (!x.ver) return unclear;
+                // No patch items at all (none filed yet, or a typo in a title) is not understood, not "nothing to wait for".
+                if (!x.ver && x.rel && /^\d+\.\d+\.\d+$/.test(x.rel)) {
+                  deps = patch.filter((y) => y.rel === x.rel && y.n !== x.n);
+                  if (!deps.length) return `${unclear} (no ${x.rel} items found)`;
+                } else if (!x.ver) return unclear;
                 else deps = items.filter((y) => y.ver === x.ver && y.n !== x.n);
               } else {
                 const keys = [], research = [], oks = [];
@@ -207,8 +210,15 @@ jobs:
               queued.push(ql.trim());
             }
             if (queued.length) {
-              let at = lines.findIndex((l) => l.startsWith('<!-- One line per item'));
-              for (let k = at + 1; at >= 0 && k < lines.length && /^- \[/.test(lines[k]); k++) at = k;
+              // QUEUE-END START (tests/kickoff.mjs runs this block)
+              const queueEnd = (ls) => {
+                let at = ls.findIndex((l) => l.startsWith('<!-- One line per item'));
+                // A "held" note under a line belongs to it: the queue goes on past it (#392 review).
+                for (let k = at + 1; at >= 0 && k < ls.length && /^(- \[|\s+- held: )/.test(ls[k]); k++) at = k;
+                return at;
+              };
+              // QUEUE-END END
+              const at = queueEnd(lines);
               if (at < 0) core.warning('#114 has no queue comment line; auto-queue skipped');
               else { lines.splice(at + 1, 0, ...queued); pruned = true; core.notice(`queued: ${queued.join(' | ')}`); }
             }
@@ -236,6 +246,9 @@ jobs:
               const ended = cs.slice(start + 1).some((c) => /^(Blocked:|Needs @claude|Kickoff: the build ended with no PR)/.test(c.body || ''));
               return ended ? '' : 'a kickoff build started in the last 9 h and has not ended';
             };
+            // A held note whose line was removed, moved or started by hand is stale: drop it.
+            for (let i = lines.length - 1; i >= 0; i--)
+              if (/^\s+- held: /.test(lines[i]) && !/^- \[next\] /.test(lines[i - 1] || '')) { lines.splice(i, 1); pruned = true; }
             for (let i = 0; i < lines.length && inflight < MAX; i++) {
               const m = lines[i].match(/^- \[next\] #(\d+) (sonnet|opus)((?: lanes:[^\s]+| alone)*)\s*$/);
               if (!m) continue;
@@ -253,11 +266,14 @@ jobs:
               const wait = await afterBlocker(kx);
               if (wait) {
                 // An After line kickoff can't read is easy to miss (an alone one also holds every line below it): warn, and
-                // put a note under the line in #114 so the health check sees it (Kaizen (Gale), 2026-10-18).
+                // put a note under the line in #114, where the planner and anyone reading the queue see it (Kaizen (Gale), 2026-10-18).
                 if (/not understood/.test(wait)) {
                   core.warning(`#${n}: ${wait}; held${alone ? ', and as an alone line it holds the queue below it' : ''}`);
                   if (!/^\s+- held: /.test(lines[i + 1] || '')) { lines.splice(i + 1, 0, `  - held: After not understood (kickoff ${stamp})`); pruned = true; }
-                } else core.info(`#${n}: ${wait}; left in #114 for the planner`);
+                } else {
+                  core.info(`#${n}: ${wait}; left in #114 for the planner`);
+                  if (/^\s+- held: /.test(lines[i + 1] || '')) { lines.splice(i + 1, 1); pruned = true; } // it reads now, it just waits
+                }
                 if (alone) break; continue; // an "alone" item keeps queue order
               }
               const why = await alreadyBuilt(n);
