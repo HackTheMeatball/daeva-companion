@@ -1,0 +1,290 @@
+{
+  "$schema": "../../../schema/claims.schema.json",
+  "schemaVersion": 2,
+  "collection": "claims",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "C02",
+      "claim": "Each skill gains one level every 3 character levels after you learn it.",
+      "verdict": "wrong",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/heart-gore",
+          "note": "Skill pages list the character level each skill level needs (learn level + 3 per level) and the 1 / 2 / 4 point costs"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/rending-blow",
+          "note": "The Gladiator's skill pages show the same rule (docs/research/2026-10-gladiator-pack.md §2.1: skill Lv 10 at learn level + 24)"
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-15-alt-03",
+            "checkedAt": "2026-10-15",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Skill window at Lv 7: Savage Roar Lv 4 needs Lv 10 for Lv 5 and costs 2 points; Storm Rampage Lv 2 needs Lv 8 for Lv 3"
+          }
+        },
+        {
+          "url": "https://allthings.how/?p=215236",
+          "quote": "Skill points arrive automatically as your character levels"
+        },
+        {
+          "url": "https://thegameswiki.com/aion-2/wiki/skills-and-specialties",
+          "quote": "mastery skills are learned automatically when the character reaches the required level; levels beyond 10 come from items, Arcana and Daevanion boards"
+        }
+      ],
+      "action": "rewrite",
+      "newText": "<p>Skills don't level up by themselves: you spend points, and each skill level also needs a character level. Skill level L opens at the level you learned the skill + 3 × (L − 2). Rending Blow, learned at Lv 1, reaches skill level 5 at Lv 10. Each level costs 1 point (levels 2–4), 2 points (5–7) or 4 points (8–10).</p>",
+      "note": "The Assassin guide's claim C02, with the Gladiator's Rending Blow as the example (learned at Lv 1, Metabot). The rule is the game's (rule:skill-level-gate, rule:skill-point-cost); the owner's screens are from an Assassin. Three Gladiator passives (Experienced Counterstrike, Survival Willpower, Murderous Burst) have a flat gate instead: every level opens when the skill is learned.",
+      "verifiedAt": "2026-10-15",
+      "appliesTo": [
+        "tip:wisdom",
+        "rule:skill-level-gate",
+        "rule:skill-point-cost"
+      ]
+    },
+    {
+      "id": "C22",
+      "claim": "Board node costs: grey stat 1, green passive 2, blue active 3, orange corner 4 (+1.5%); Azphel paid with Azphel points from PvP shops.",
+      "verdict": "verified",
+      "sources": [
+        {
+          "url": "https://gamewith.ai/aion2/en/daevanion-planner/assassin",
+          "quote": "1 for common, 2 for rare, 3 for epic and 4 for unique nodes"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/guides/daevanion-guide",
+          "quote": "stat 1 (rare 2), active 3, passive 2, corner 4 (+1.5%); Azphel: Azphel currency, 0 skill nodes",
+          "note": "via R3 data/build.partial.notes.txt"
+        },
+        {
+          "url": "https://thegameswiki.com/aion-2/wiki/daeva-system-and-daevanion-board",
+          "quote": "Azphel crystal is made by Material Conversion from 10 Fragment: Azphel's Trace and 5 Odyle ... also sold in the Abyss shop for Abyss Points"
+        },
+        {
+          "url": "https://mein-mmo.de/en/aion-2-arkana-daevanion-pet-you-need-to-understand-and-master-these-3-systems,1589883/2/",
+          "quote": "Fragments are earned through victorious participation in the weekly battleground ... Some crystals can also be bought with Abyss Points"
+        }
+      ],
+      "action": "rewrite",
+      "newText": "<b>Azphel [[tip:daevanion|Daevanion board]] opens.</b> Stat nodes only, paid with Azphel crystals (from battleground fragments or Abyss Points), not Daevanion Crystals.",
+      "note": "The Assassin guide's claim C22, unchanged: the Gladiator's 537 board positions have the same type, grade and cost as the Assassin's (docs/research/2026-10-gladiator-pack.md §1, 0 differences by script).",
+      "appliesTo": [
+        "g45:2",
+        "tip:daevanion",
+        "conf:boards",
+        "board:nezekan",
+        "board:zikel",
+        "board:vaizel",
+        "board:triniel",
+        "board:azphel"
+      ],
+      "verifiedAt": "2026-10-12"
+    },
+    {
+      "id": "C28b",
+      "claim": "Stigma slots 22/27/32/37 (five sources); regional quest names and levels (allthings.how, Selphie1999).",
+      "verdict": "verified",
+      "sources": [],
+      "action": "keep",
+      "note": "The Assassin guide's claim C28b. The Gladiator's 13 stigma pages also learn at Lv 22 (Metabot, docs/research/2026-10-gladiator-pack.md §2.2); daevaguides confirms the slot levels (docs/research/2026-10-gladiator-guide.md §5.1).",
+      "appliesTo": [
+        "tip:stigma",
+        "conf:stigmas"
+      ],
+      "verifiedAt": "2026-10-12"
+    },
+    {
+      "id": "C39",
+      "claim": "\"The One Who Hears the Voice\" (Lv 22) is open by the time the story reaches \"Daeva in a Dream\".",
+      "verdict": "single-source",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/daeva-in-a-dream-asmodian",
+          "quote": "complete The One Who Hears the Voice",
+          "note": "The wrapper quest's objective (Metabot steps): the Ascension quest must be open by then, so the gate is never early (prereq-gates §5)."
+        }
+      ],
+      "action": "keep",
+      "note": "The Assassin guide's claim C39 (the story is the faction's, not the class's). Owner decision 2026-10-16: no separate in-game check; the gate stands on its source (prereq-gates §11 check 6).",
+      "appliesTo": [
+        "g22:0",
+        "asc:hears-the-voice"
+      ],
+      "verifiedAt": "2026-10-16"
+    },
+    {
+      "id": "C60",
+      "claim": "Gladiator stat priority: Attack, Critical Hit, Accuracy Bonus (then HP, Block).",
+      "verdict": "single-source",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/gladiator",
+          "note": "Class page (editorial): Attack, Critical Hit, Accuracy Bonus, HP, Block."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/guides/class-builds-guide",
+          "note": "Same site, so not a second source."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-gladiator-guide.md §6: daevaguides, mmo-codex and skycoach rank gear stats for after Lv 45, a different question, so neither a second source nor a conflict. The Build drawer shows the top three and says the ranking is Metabot's only.",
+      "appliesTo": [
+        "build:3",
+        "conf:stat-tiers"
+      ],
+      "verifiedAt": "2026-10-18"
+    },
+    {
+      "id": "C61",
+      "claim": "Gladiator stigmas by slot: Lunge Stance (22), Zikel's Blessing (27), Lifestealing Blade (32), Rage Burst (37); raised to 8 / 6 / 5 / 5.",
+      "verdict": "disputed",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/gladiator/build",
+          "note": "Leveling build: Zikel's Blessing, Lunge Stance, Lifestealing Blade, Rage Burst (8 / 7 / 5 / 4). Top players at 45: Lunge Stance, Zikel's Blessing, Rage Burst, Focused Block."
+        },
+        {
+          "url": "https://daevaguides.com/en/gladiator/",
+          "note": "Lunge Stance, Rage Burst, Zikel's Blessing, then Focused Block (group) or Lifestealing Blade (solo); Rage Burst 5 at 27 for its −15 s cooldown perk."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/gladiator/",
+          "note": "Leveling: Lifestealing Blade, Lunge Stance, Zikel's Blessing, Rage Burst (Lifestealing 10, the others 5). Dungeon: Lunge Stance, Zikel's Blessing, Rage Burst, Focused Block."
+        },
+        {
+          "url": "https://mmo-codex.com/articles/aion-2-gladiator-guide/",
+          "note": "Lunge Stance first."
+        },
+        {
+          "url": "https://skycoach.gg/blog/aion-2/articles/gladiator-guide",
+          "note": "Rage Burst 5 for its cooldown perk (endgame set not slot-ordered)."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-gladiator-guide.md §5. The four are two-source (Metabot leveling, aion2turkiye leveling, daevaguides' solo option) and Rage Burst 5 is two-source; the slot order is disputed (every source orders them differently), so the guide takes the research default: Lunge Stance first (four voices), Rage Burst last (both leveling builds). The targets 8 / 6 / 5 are the research default (28 shards, inside the ~29 from levels alone); groups swap Lifestealing Blade for Focused Block.",
+      "appliesTo": [
+        "build:gladiator:guide",
+        "conf:stigma-plan"
+      ],
+      "verifiedAt": "2026-10-18"
+    },
+    {
+      "id": "C62",
+      "claim": "Gladiator skill points: Rending Blow, Overhead Slam, Keen Strike, Ruinous Blow, Attack Preparation, Experienced Counterstrike and Murderous Burst to Lv 10; Crushing Wave, Rush Strike and Leaping Slam to 8.",
+      "verdict": "disputed",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/gladiator/build",
+          "note": "Leveling build targets: Keen Strike, Rending Blow, Leaping Slam, Overhead Slam, Rush Strike, Ruinous Blow, Survival Stance, Identify Weakness, Attack Preparation to 10; Crushing Wave 7, Mocking Blade 5. No training order."
+        },
+        {
+          "url": "https://daevaguides.com/en/gladiator/",
+          "note": "couga54's point-by-point plan: Rending Blow first, Ruinous Blow from 14, Experienced Counterstrike and Murderous Burst to 10 when learned; Leaping Slam, Rush Strike, Crushing Wave 8."
+        },
+        {
+          "url": "https://mmo-codex.com/articles/aion-2-gladiator-guide/",
+          "note": "Level blocks: Keen Strike and Rending Blow first, the two flat passives to 10 when learned; Keen Strike, Leaping Slam, Rush Strike, Crushing Wave 8."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/gladiator/",
+          "note": "Leveling targets: Rending Blow, Overhead Slam, Ruinous Blow, Attack Preparation, Leaping Slam, Crushing Wave 10; Keen Strike, Rush Strike 8."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-gladiator-guide.md §3. Two-source: Rending Blow, Overhead Slam, Ruinous Blow, Attack Preparation, Experienced Counterstrike and Murderous Burst to 10 (Metabot's build leaves the last two out), Crushing Wave and Rush Strike to 8. Disputed: Keen Strike 10 (Metabot and daevaguides, which lists Metabot as a source; two say 8) and Leaping Slam 8 vs 10 (the guide takes the lower). Mocking Blade, Identify Weakness, Survival Stance and the other passives are disputed and left to the spare points.",
+      "appliesTo": [
+        "build:gladiator:guide",
+        "conf:core-order",
+        "conf:skill-disputed"
+      ],
+      "verifiedAt": "2026-10-18"
+    },
+    {
+      "id": "C63",
+      "claim": "Gladiator first Daevanion nodes: Overhead Slam, Rending Blow and Ruinous Blow on Nezekan, then the same three on Zikel.",
+      "verdict": "disputed",
+      "sources": [
+        {
+          "url": "https://daevaguides.com/en/gladiator/",
+          "note": "Full Nezekan route, node by node (couga54, Sen, Grobs); traced on our node grid, it ends on the same three skill nodes (research §7)."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/gladiator/",
+          "note": "Rending Blow, Overhead Slam and Ruinous Blow +1 nodes first."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/gladiator",
+          "note": "The other path: Attack Preparation and Survival Stance pairs on Nezekan, then the Murderous Burst pair on Zikel."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-gladiator-guide.md §7: the research default (option A). Ruinous Blow is learned at Lv 14 (Metabot skill page), after Nezekan opens, so its Nezekan node waits for Lv 14. Whether a +1 node on a skill not yet learned does anything is not stated by any source.",
+      "appliesTo": [
+        "build:gladiator:guide",
+        "conf:first-nodes"
+      ],
+      "verifiedAt": "2026-10-18"
+    },
+    {
+      "id": "C64",
+      "claim": "Gladiator specialty picks: Rending Blow mobile (:3), Overhead Slam Upward Strike chain (:3), Keen Strike +20% MP (:1), Ruinous Blow +20% Skill Speed (:1) at skill Lv 8; Rending Blow (:4), Overhead Slam (:4) and Keen Strike (:4) at Lv 12.",
+      "verdict": "disputed",
+      "sources": [
+        {
+          "url": "https://daevaguides.com/en/gladiator/",
+          "note": "All seven; Ruinous Blow Skill Speed is its majority pick."
+        },
+        {
+          "url": "https://skycoach.gg/blog/aion-2/articles/gladiator-guide",
+          "note": "Rending Blow, Keen Strike, Overhead Slam Lv 8 and 12 picks except Keen Strike Lv 12 (Multi-Hit); Ruinous Blow Skill Speed."
+        },
+        {
+          "url": "https://mmo-codex.com/articles/aion-2-gladiator-guide/",
+          "note": "Keen Strike +20% MP; the three Lv 12 picks; Ruinous Blow +12.5 m (aLuckyRO)."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/gladiator/",
+          "note": "Rending Blow mobile, Keen Strike +20% MP; Ruinous Blow +30% Skill Critical Hit."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-gladiator-guide.md §4. Six of the seven are two-source (CONFIRMED there; Overhead Slam's Lv 8 pick has dissent from aion2turkiye's leveling panel and aLuckyRO). Ruinous Blow's Lv 8 pick is disputed: Skill Speed (daevaguides majority, skycoach), Skill Critical Hit (aion2turkiye, couga54, aLuckyRO) or range (aLuckyRO on mmo-codex); the guide takes Skill Speed. Several sites credit the same creators, so independence is inferred (research §9).",
+      "appliesTo": [
+        "build:gladiator:guide",
+        "conf:specialty-picks",
+        "conf:ruinous-pick"
+      ],
+      "verifiedAt": "2026-10-18"
+    },
+    {
+      "id": "C65",
+      "claim": "Learn levels: Mocking Blade 3, Rush Strike 10, Ruinous Blow 14.",
+      "verdict": "verified",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/mocking-blade",
+          "note": "Game-database field (learn level)."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/rush-strike",
+          "note": "Game-database field (learn level)."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/ruinous-blow",
+          "note": "Game-database field (learn level)."
+        }
+      ],
+      "action": "keep",
+      "note": "Metabot's skill pages are game-database fields, which the data policy accepts on their own. The Gladiator research (docs/research/2026-10-gladiator-guide.md §2) also found the same levels on mmo-codex.com (all three, and all 22 skills) and daevaguides.com (Rush Strike, Ruinous Blow); mmo-codex credits the game client data via aion2.app, so the two may share upstream data and their independence is inferred, as for the Ranger's C54. Mocking Blade 3 rests on Metabot plus mmo-codex only.",
+      "appliesTo": [
+        "conf:learn-levels"
+      ],
+      "verifiedAt": "2026-10-18"
+    }
+  ]
+}

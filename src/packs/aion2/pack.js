@@ -19,11 +19,14 @@ import { aion2Place, stepsShownOf } from "./travel.js";
 
 /* The default guide pack (data/packs/aion2/asmodian/assassin/pack.json) and its class (data/packs/aion2/classes/assassin):
    what a fresh save starts with; tests/core/state.test.mjs checks both against data/. Every class with a guide pack is
-   playable (`classes`): the Assassin and, since 0.6 P5, the Ranger (data/packs/aion2/asmodian/ranger). A character of
-   another class is shown after the reload a switch does (the page loads one class's tables, docs/ARCHITECTURE.md §4). */
+   playable (`classes`): the Assassin, since 0.6 P5 the Ranger (data/packs/aion2/asmodian/ranger) and since 0.7 P2 the
+   Gladiator (data/packs/aion2/asmodian/gladiator; site only: the claude.ai build carries scripts/build.mjs
+   ARTIFACT_CLASSES). A character of another class is shown after the reload a switch does (the page loads one class's
+   tables, docs/ARCHITECTURE.md §4). */
 export const PACK = "aion2/asmodian/assassin";
 export const CLASS = "assassin";
 const RANGER = { class: "ranger", pack: "aion2/asmodian/ranger", name: "Ranger" };
+const GLADIATOR = { class: "gladiator", pack: "aion2/asmodian/gladiator", name: "Gladiator" };
 
 /* the objectives as shown: no mention of a Kibelisk bind that happens at the objective (0.6 P12, travel.js stepsShownOf) */
 const SHOWN = stepsShownOf(GATE_GRAPH);
@@ -53,7 +56,7 @@ export const aion2Pack = definePack({
   },
   character: { pack: PACK, class: CLASS },
   /* the names are the class records' (data/packs/aion2/classes/<class>/class.json; tests/core/chars.test.mjs) */
-  classes: [{ class: CLASS, pack: PACK, name: "Assassin" }, RANGER],
+  classes: [{ class: CLASS, pack: PACK, name: "Assassin" }, RANGER, GLADIATOR],
   keptRules: KEPT_RULES,
   gateChanges: GATE_CHANGES,
   graphTransforms: aion2Transforms,

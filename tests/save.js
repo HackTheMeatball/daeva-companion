@@ -192,8 +192,9 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     const f = await p.evaluate(() => ({ focus: document.activeElement.id, label: document.querySelector('label[for="charName"]').textContent, legend: document.querySelector('#charForm legend').textContent,
       radios: [...document.querySelectorAll('#charPick input[type=radio]')].map(r => [r.value, r.checked, r.closest('label').innerText.trim()]), list: !document.getElementById('charList').hidden }));
     ok('switcher: New character opens the form with the focus in "Name (optional)"', f.focus === 'charName' && f.label === 'Name (optional)' && !f.list, f);
-    /* 0.6 P5: the Ranger joined the Assassin (the hidden Gladiator class pack has no guide, so it is not offered) */
-    ok('switcher: the class picker offers the Assassin (picked) and the Ranger, not the Gladiator', f.legend === 'Class' && JSON.stringify(f.radios) === JSON.stringify([['assassin', true, 'Assassin'], ['ranger', false, 'Ranger']]), f.radios);
+    /* 0.6 P5: the Ranger joined the Assassin; 0.7 P2: the Gladiator got its guide pack and joined them (the hidden
+       Spiritmaster class pack has no guide, so it is not offered) */
+    ok('switcher: the class picker offers the Assassin (picked), the Ranger and the Gladiator, not the Spiritmaster', f.legend === 'Class' && JSON.stringify(f.radios) === JSON.stringify([['assassin', true, 'Assassin'], ['ranger', false, 'Ranger'], ['gladiator', false, 'Gladiator']]), f.radios);
     await p.keyboard.type('  Zed  '); await p.waitForTimeout(50);
     ok('switcher: the form previews the label Zed-assassin-lvl1 (name trimmed)', await p.innerText('#charPrev') === 'Zed-assassin-lvl1', await p.innerText('#charPrev'));
     await p.keyboard.press('Escape'); await p.waitForTimeout(100);
@@ -266,6 +267,27 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     ok('ranger: no page errors', !errs.length, errs);
     await ctx.close();
   }
+  /* 10b'. a Gladiator (0.7 P2): the same for the third class; its build has no key setup yet, so no Rotation section */
+  {
+    const { ctx, p, errs } = await page();
+    await writeSave(p, SAVED, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
+    const first = JSON.parse(await readRaw(p)).chars[TEST_SLOT];
+    const guide = () => p.evaluate(() => ({ pack: self.DAEVA_PACK, cls: char(state).class, plan: STIGMA_PLAN.slice(), sk: SP_SKILLS_CORE.map(x => x.n).slice(0, 2),
+      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, skills: document.getElementById('main').innerText.includes('Rending Blow') }));
+    await p.click('#charBtn'); await p.click('#charNew'); await p.check('#charPick input[value="gladiator"]'); await p.waitForTimeout(50);
+    ok('gladiator: the form previews gladiator-lvl1', await p.innerText('#charPrev') === 'gladiator-lvl1', await p.innerText('#charPrev'));
+    await Promise.all([p.waitForEvent('load'), p.click('#charCreate')]); await p.waitForTimeout(400);
+    const g = await guide(), s = JSON.parse(await readRaw(p)), gid = s.current;
+    ok('gladiator: a new current slot of class gladiator, pack aion2/asmodian/gladiator; the first character stored as it was', gid !== TEST_SLOT && s.chars[gid].class === 'gladiator' && s.chars[gid].pack === 'aion2/asmodian/gladiator' && isDeepStrictEqual(s.chars[TEST_SLOT], first), s.chars[gid]);
+    ok('gladiator: the page runs the Gladiator guide (its pack, stigma plan, skills shown; no Rotation section)', g.pack === 'aion2/asmodian/gladiator' && g.cls === 'gladiator' && JSON.stringify(g.plan) === JSON.stringify(['Lunge Stance', "Zikel's Blessing", 'Lifestealing Blade', 'Rage Burst'])
+      && JSON.stringify(g.sk) === JSON.stringify(['Rending Blow', 'Overhead Slam']) && g.skills && !g.rot && g.lbl === 'gladiator-lvl1' && g.h1 === 'Asmodian Gladiator Route', g);
+    await p.click('#charBtn');
+    await Promise.all([p.waitForEvent('load'), p.click(`#charRows [data-char="${TEST_SLOT}"]`)]); await p.waitForTimeout(400);
+    const b = await guide();
+    ok('gladiator, switch back: the Assassin guide again, its character unchanged', b.pack === 'aion2/asmodian/assassin' && b.plan[0] === "Triniel's Dagger" && b.lbl === 'assassin-lvl22' && b.h1 === 'Asmodian Assassin Route' && isDeepStrictEqual(JSON.parse(await readRaw(p)).chars[TEST_SLOT], first), b);
+    ok('gladiator: no page errors', !errs.length, errs);
+    await ctx.close();
+  }
   /* 10c. the claude.ai build's classes (0.7 A1, scripts/build.mjs ARTIFACT_CLASSES): /artifact/ carries the Assassin and the
      Ranger and offers both; an artifact built with the Assassin alone (--artifact-classes, under tests/out/) offers only
      it, and a save whose current character is a Ranger loads there (the Assassin's tables, no page error) with the note
@@ -296,7 +318,7 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     ok('artifact classes: an Assassin save there shows no note', !(await p.$('#charNote')), null);
     await p.goto(CFG.CUR); await writeRaw(p, JSON.stringify(ranger), { fresh: true }); await p.reload(); await p.waitForTimeout(400);
     const site = await look();
-    ok('artifact classes: the site sets no class list, offers every playable class and shows no note', site.classes === null && JSON.stringify(site.radios) === JSON.stringify(['assassin', 'ranger']) && !site.note && site.pack === 'aion2/asmodian/ranger', site);
+    ok('artifact classes: the site sets no class list, offers every playable class (the Gladiator too, 0.7 P2) and shows no note', site.classes === null && JSON.stringify(site.radios) === JSON.stringify(['assassin', 'ranger', 'gladiator']) && !site.note && site.pack === 'aion2/asmodian/ranger', site);
     ok('artifact classes: no page errors', !errs.length, errs);
     await ctx.close();
   }

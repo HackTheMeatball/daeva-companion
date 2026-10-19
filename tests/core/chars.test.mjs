@@ -145,9 +145,11 @@ export default (test, M) => {
     assert.equal(n, 1000); assert.equal(Object.keys(s.chars).length, 1001);
   });
 
-  /* 0.6 P5: the Ranger got its guide pack, so it is listed after the Assassin (the Gladiator has none: not listed) */
+  /* 0.6 P5: the Ranger got its guide pack, so it is listed after the Assassin; 0.7 P2: the Gladiator after it (the
+     Spiritmaster has none: not listed) */
   test('classes: the AION 2 pack lists the classes with a guide pack; name, class and guide pack match data/', () => {
-    assert.deepEqual(M.packClasses(), [{ class: M.CLASS, pack: M.PACK, name: 'Assassin' }, { class: 'ranger', pack: 'aion2/asmodian/ranger', name: 'Ranger' }]);
+    assert.deepEqual(M.packClasses(), [{ class: M.CLASS, pack: M.PACK, name: 'Assassin' }, { class: 'ranger', pack: 'aion2/asmodian/ranger', name: 'Ranger' },
+      { class: 'gladiator', pack: 'aion2/asmodian/gladiator', name: 'Gladiator' }]);
     assert.ok(Object.isFrozen(M.aion2Pack.classes) && M.aion2Pack.classes.every(Object.isFrozen));
     for (const e of M.packClasses()) {
       const cls = json(`data/packs/aion2/classes/${e.class}/class.json`), guide = json(`data/packs/${e.pack}/pack.json`);

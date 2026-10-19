@@ -255,6 +255,13 @@ function generate(C, { fixtures = [], all = false } = {}) {
     for (const c of Object.values(s.chars)) Object.assign(c, { pack: 'aion2/asmodian/ranger', class: 'ranger' });
     out.set(i, { id: i, tier: 'core', raw: JSON.stringify(s) });
   }
+  /* gladiator (0.7 P2): the same five levels and two modes for a Gladiator character (pack aion2/asmodian/gladiator); a
+     group of its own, added after the Ranger's, so no Assassin or Ranger state moves or changes */
+  for (const lv of [1, 10, 22, 30, 45]) for (const mode of ['advanced', 'basic']) {
+    const r = { lv, qi: G.onTrack(lv), ticks: 'none', mode }, i = 'gladiator/' + G.id(r), s = JSON.parse(storedText(G.state(r)));
+    for (const c of Object.values(s.chars)) Object.assign(c, { pack: 'aion2/asmodian/gladiator', class: 'gladiator' });
+    out.set(i, { id: i, tier: 'core', raw: JSON.stringify(s) });
+  }
 
   return [...out.values()].sort((a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
 }

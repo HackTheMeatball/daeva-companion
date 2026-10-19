@@ -788,6 +788,35 @@
       "verifiedAt": "2026-10-14"
     },
     {
+      "id": "src:mmo-codex",
+      "name": "MMO Codex",
+      "hosts": [
+        "mmo-codex.com"
+      ],
+      "kind": "guide",
+      "independenceGroup": "mmo-codex",
+      "licence": {
+        "id": "unknown"
+      },
+      "access": {
+        "robots": "allows",
+        "terms": "bans-automation",
+        "termsUrl": "https://mmo-codex.com/terms/",
+        "mode": "human-only",
+        "checkedAt": "2026-10-18"
+      },
+      "use": {
+        "facts": true,
+        "wording": false,
+        "quotes": "none",
+        "link": "dofollow"
+      },
+      "verifiedAt": "2026-10-18",
+      "notes": [
+        "Class guides compiling named creators (aLuckyRO, Storyteller, Inven); client numbers credited to aion2.app. docs/research/SOURCES.md: Spot (terms ban automated republication and scraped copies, so only a few pages per task, facts only, no copies kept). Read 2026-10-18 for the Gladiator guide (docs/research/2026-10-gladiator-guide.md §10)."
+      ]
+    },
+    {
       "id": "src:neonsect",
       "name": "neonsect",
       "hosts": [

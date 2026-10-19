@@ -8,7 +8,7 @@
       "id": "class:gladiator",
       "class": "gladiator",
       "name": "Gladiator",
-      "release": "hidden",
+      "release": "released",
       "defaultBuild": "build:gladiator:guide",
       "sources": [
         {
@@ -23,7 +23,7 @@
       "verifiedAt": "2026-10-18",
       "status": "verified",
       "notes": [
-        "Hidden until 0.6 P5 adds its guide pack (data/packs/aion2/asmodian/gladiator/, which defines build:gladiator:guide) and lists it in the class picker."
+        "Released in 0.7 P2 (#345): its guide pack (data/packs/aion2/asmodian/gladiator/) defines build:gladiator:guide and the site's class picker lists it (the claude.ai build does not carry it)."
       ]
     }
   ]
