@@ -249,7 +249,8 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     await writeSave(p, SAVED, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
     const first = JSON.parse(await readRaw(p)).chars[TEST_SLOT];
     const guide = () => p.evaluate(() => ({ pack: self.DAEVA_PACK, cls: char(state).class, plan: STIGMA_PLAN.slice(), sk: SP_SKILLS_CORE.map(x => x.n).slice(0, 2),
-      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, skills: document.getElementById('main').innerText.includes('Snipe') }));
+      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, skills: document.getElementById('main').innerText.includes('Snipe'),
+      keys: document.getElementById('stackViz').textContent }));
     const a = await guide();
     ok('Assassin guide: its pack, plan and skills', a.pack === 'aion2/asmodian/assassin' && a.cls === 'assassin' && a.plan[0] === "Triniel's Dagger" && a.sk[0] === 'Heart Gore' && a.rot && !a.skills, a);
     await p.click('#charBtn'); await p.click('#charNew'); await p.check('#charPick input[value="ranger"]'); await p.waitForTimeout(50);
@@ -257,8 +258,10 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     await Promise.all([p.waitForEvent('load'), p.click('#charCreate')]); await p.waitForTimeout(400);
     const r = await guide(), s = JSON.parse(await readRaw(p)), rid = s.current;
     ok('ranger: a new current slot of class ranger, pack aion2/asmodian/ranger; the first character stored as it was', rid !== TEST_SLOT && s.chars[rid].class === 'ranger' && s.chars[rid].pack === 'aion2/asmodian/ranger' && isDeepStrictEqual(s.chars[TEST_SLOT], first), s.chars[rid]);
-    ok('ranger: the page runs the Ranger guide (its pack, stigma plan, skills shown; no Rotation section)', r.pack === 'aion2/asmodian/ranger' && r.cls === 'ranger' && JSON.stringify(r.plan) === JSON.stringify(["Vaizel's Authority", 'Bow of Blessing', 'Supporting Fire', 'Griffon Arrow'])
-      && r.sk[0] === 'Snipe' && r.skills && !r.rot && r.lbl === 'ranger-lvl1' && r.h1 === 'Asmodian Ranger Route', r);
+    /* 0.7 P11 (#418): the Ranger now has the game's default keys, so the Rotation section shows them (Lv 1: the mouse and 1) */
+    ok('ranger: the page runs the Ranger guide (its pack, stigma plan, skills shown; Rotation from its default keys)', r.pack === 'aion2/asmodian/ranger' && r.cls === 'ranger' && JSON.stringify(r.plan) === JSON.stringify(["Vaizel's Authority", 'Bow of Blessing', 'Supporting Fire', 'Griffon Arrow'])
+      && r.sk[0] === 'Snipe' && r.skills && r.rot && ['Left click: Snipe', 'Right click: Tempest Shot', '1: Snare Shot'].every(x => r.keys.includes(x)) && !/Quick Slice|Marking Shot|Drill Dart/.test(r.keys)
+      && r.lbl === 'ranger-lvl1' && r.h1 === 'Asmodian Ranger Route', r);
     await p.click('#charBtn');
     await Promise.all([p.waitForEvent('load'), p.click(`#charRows [data-char="${TEST_SLOT}"]`)]); await p.waitForTimeout(400);
     const b = await guide();
@@ -266,20 +269,23 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     ok('ranger: no page errors', !errs.length, errs);
     await ctx.close();
   }
-  /* 10b'. a Gladiator (0.7 P2): the same for the third class; its build has no key setup yet, so no Rotation section */
+  /* 10b'. a Gladiator (0.7 P2): the same for the third class; its Rotation section shows the game's default keys (0.7 P11) */
   {
     const { ctx, p, errs } = await page();
     await writeSave(p, SAVED, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
     const first = JSON.parse(await readRaw(p)).chars[TEST_SLOT];
     const guide = () => p.evaluate(() => ({ pack: self.DAEVA_PACK, cls: char(state).class, plan: STIGMA_PLAN.slice(), sk: SP_SKILLS_CORE.map(x => x.n).slice(0, 2),
-      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, skills: document.getElementById('main').innerText.includes('Rending Blow') }));
+      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, skills: document.getElementById('main').innerText.includes('Rending Blow'),
+      keys: document.getElementById('stackViz').textContent }));
     await p.click('#charBtn'); await p.click('#charNew'); await p.check('#charPick input[value="gladiator"]'); await p.waitForTimeout(50);
     ok('gladiator: the form previews gladiator-lvl1', await p.innerText('#charPrev') === 'gladiator-lvl1', await p.innerText('#charPrev'));
     await Promise.all([p.waitForEvent('load'), p.click('#charCreate')]); await p.waitForTimeout(400);
     const g = await guide(), s = JSON.parse(await readRaw(p)), gid = s.current;
     ok('gladiator: a new current slot of class gladiator, pack aion2/asmodian/gladiator; the first character stored as it was', gid !== TEST_SLOT && s.chars[gid].class === 'gladiator' && s.chars[gid].pack === 'aion2/asmodian/gladiator' && isDeepStrictEqual(s.chars[TEST_SLOT], first), s.chars[gid]);
-    ok('gladiator: the page runs the Gladiator guide (its pack, stigma plan, skills shown; no Rotation section)', g.pack === 'aion2/asmodian/gladiator' && g.cls === 'gladiator' && JSON.stringify(g.plan) === JSON.stringify(['Lunge Stance', "Zikel's Blessing", 'Lifestealing Blade', 'Rage Burst'])
-      && JSON.stringify(g.sk) === JSON.stringify(['Rending Blow', 'Overhead Slam']) && g.skills && !g.rot && g.lbl === 'gladiator-lvl1' && g.h1 === 'Asmodian Gladiator Route', g);
+    /* 0.7 P11 (#418): the game's default keys, so a Rotation section (Lv 1: the mouse and 1) */
+    ok('gladiator: the page runs the Gladiator guide (its pack, stigma plan, skills shown; Rotation from its default keys)', g.pack === 'aion2/asmodian/gladiator' && g.cls === 'gladiator' && JSON.stringify(g.plan) === JSON.stringify(['Lunge Stance', "Zikel's Blessing", 'Lifestealing Blade', 'Rage Burst'])
+      && JSON.stringify(g.sk) === JSON.stringify(['Rending Blow', 'Overhead Slam']) && g.skills && g.rot
+      && ['Left click: Keen Strike', 'Right click: Rending Blow', '1: Leaping Slam'].every(x => g.keys.includes(x)) && !/Quick Slice|Overhead Slam/.test(g.keys) && g.lbl === 'gladiator-lvl1' && g.h1 === 'Asmodian Gladiator Route', g);
     await p.click('#charBtn');
     await Promise.all([p.waitForEvent('load'), p.click(`#charRows [data-char="${TEST_SLOT}"]`)]); await p.waitForTimeout(400);
     const b = await guide();
