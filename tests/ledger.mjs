@@ -60,7 +60,8 @@ export function checkLedger(root = ROOT, { csvText, ledgerMd } = {}) {
   const named = sec.split('\n').filter(l => /^\|/.test(l) && !/^\|[\s|:-]*$/.test(l)).map(l => l.split('|')[1].trim()).filter(n => n !== 'Name');
   for (const n of named) if (!OWNERS.has(n)) problems.push(`LEDGER.md Owners table names "${n}", not in OWNERS`);
   for (const n of OWNERS) if (!named.includes(n)) problems.push(`LEDGER.md Owners table is missing "${n}"`);
-  /* "Who does what": five columns, and Plain is everyday words (no backticks, issue numbers, ids or ALL-CAPS tokens) */
+  /* "Who does what": five columns, and Plain is everyday words (no backticks, issue numbers, ids or ALL-CAPS tokens;
+     that rejects "OK" too, on purpose: Plain says "approves") */
   const who = (md.split(/^## Who does what\s*$/m)[1] || '').split(/^## /m)[0].split('\n').filter(l => /^\|/.test(l) && !/^\|[\s|:-]*$/.test(l)).slice(1);
   for (const l of who) { const c = l.replace(/^\||\|$/g, '').split('|').map(x => x.trim()), bad = (c[1] || '').match(/`|#\d+|\b[A-Z]{2,}(?:-\d+)?\b/);
     if (c.length !== 5 || !c[1]) problems.push(`LEDGER.md Who does what "${c[0]}": needs Work | Plain | Owner | Not | Source`);
