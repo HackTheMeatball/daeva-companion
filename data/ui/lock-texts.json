@@ -1,0 +1,9 @@
+{
+  "$schema": "../schema/ui-texts.schema.json",
+  "schemaVersion": 2,
+  "collection": "uiTexts",
+  "texts": {
+    "count.one": "1 level to go",
+    "count.many": "{n} levels to go"
+  }
+}

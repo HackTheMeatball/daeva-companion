@@ -17,6 +17,7 @@ import { CONF, SD_RW, SOURCES, SRC_SITE, STORY_END, ITEMS, E_ORDER, LEVEL_POINTS
   renderAscension } from "pack";
 import { activePack, usePack } from "./core/pack.js";
 import { cardLock, mountAll, registerCard, registeredCards, updateCard } from "./core/cards.js";
+import LOCK_TEXTS from "../data/ui/lock-texts.json";
 import { sourcesCards } from "./cards/sources.js";
 import { KEY, char, loadState, parseExport } from "./core/state.js";
 import { migrate } from "./core/migrations.js";
@@ -248,13 +249,16 @@ function updatePass() {
   requestAnimationFrame(fitRail);
 }
 
-/* Cards that open with the game (0.6 P16, src/core/cards.js cardLock; owner-ok-S1 Q1): a locked card is hidden, and in
-   Advanced at desktop width a faded shell (made once, just before the card) stands in its place with the unlock line,
-   the card's name and its key. The shell is one block with the accessible name "<name>, opens at …" and nothing to tab
-   to; when the card opens it shows where the shell stood. The card itself still mounts and updates while hidden. */
+/* Cards that open with the game (0.6 P16, src/core/cards.js cardLock; owner-ok-S1 Q1, owner-ok-0.6.2-icons-locks Q1/Q2): a
+   locked card is hidden, and at desktop width (Basic and Advanced) a faded shell (made once, just before the card) stands
+   in its place with the unlock line, for a level unlock the levels to go ("18 levels to go", data/ui/lock-texts.json),
+   the card's name and its key. On phones there is no shell. The shell is one block with the accessible name "<name>,
+   opens at …" and nothing to tab to; when the card opens it shows where the shell stood. The card itself still mounts and
+   updates while hidden. */
 const lockShells = {};
+const lockCount = n => n === 1 ? LOCK_TEXTS.texts["count.one"] : LOCK_TEXTS.texts["count.many"].replace("{n}", n);
 function placeLocks(ctx) {
-  const ev = ctx.ev, faded = !ctx.basic && !phoneQ.matches;
+  const ev = ctx.ev, faded = !phoneQ.matches;
   registeredCards().filter(x => x.opensWith && x.root).forEach(x => {
     const el = document.getElementById(x.root); if (!el) return;
     const lock = cardLock(x, ev);
@@ -268,9 +272,11 @@ function placeLocks(ctx) {
     if (!sh) return;
     sh.hidden = !(lock && faded);
     if (!lock || !faded) return;
-    sh.setAttribute("aria-label", lock.label);
+    const count = lock.levels ? lockCount(lock.levels) : "";
+    sh.setAttribute("aria-label", count ? `${lock.label}, ${count}` : lock.label);
     const key = lock.key ? `&nbsp;·&nbsp;<kbd class="keychip">${lock.key}</kbd>` : "";
-    sh.innerHTML = `<div aria-hidden="true"><p class="lockline">${lock.text}${key}</p><p class="lockname">${x.name}</p><div class="lockbar"></div></div>`;
+    const left = count ? `<p class="lockleft">${count}</p>` : "";
+    sh.innerHTML = `<div aria-hidden="true"><p class="lockline">${lock.text}${key}</p>${left}<p class="lockname">${x.name}</p><div class="lockbar"></div></div>`;
   });
 }
 /* Fill the Skills card down to the height of its neighbours: drop Coming up rows that don't fit (min 3). */
