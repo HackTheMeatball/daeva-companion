@@ -8,7 +8,7 @@
       "id": "class:spiritmaster",
       "class": "spiritmaster",
       "name": "Spiritmaster",
-      "release": "hidden",
+      "release": "released",
       "defaultBuild": "build:spiritmaster:guide",
       "sources": [
         {
@@ -23,7 +23,7 @@
       "verifiedAt": "2026-10-18",
       "status": "verified",
       "notes": [
-        "Hidden until a 0.7 guide item adds its guide pack (data/packs/aion2/asmodian/spiritmaster/, which defines build:spiritmaster:guide) and lists it in the class picker."
+        "Released in 0.7 P4 (#347): its guide pack (data/packs/aion2/asmodian/spiritmaster/) defines build:spiritmaster:guide and the class picker lists it."
       ]
     }
   ]

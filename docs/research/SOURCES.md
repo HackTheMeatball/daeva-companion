@@ -1,8 +1,10 @@
 # Source access register (which site may be used for what)
 
 **Source of truth for research sessions** on whether and how a site may be read. Read it before fetching any site. A
-site that isn't listed here is unvetted: check its robots.txt and terms first (fetching policy in `CLAUDE.md` and
-`docs/team/data-research.md`), then add a row. Evidence and quoted clauses are in the linked research notes, mostly
+site that isn't listed here is unvetted: read its terms first, then its robots.txt (terms are the harder gate:
+robots.txt may allow what the terms forbid; owner, 2026-10-19), then add a row. Fetching policy: `CLAUDE.md` and
+`docs/team/data-research.md`. Lookups on listed sites: Game Data Check; vetting and last-resort spot checks on
+unlisted sites (each find flagged as such): Source Vetting (owner, 2026-10-19). Evidence and quoted clauses are in the linked research notes, mostly
 `2026-10-build-guide-sources.md` (BGS). Last full pass: 2026-10-18.
 
 **Use levels**
@@ -37,7 +39,7 @@ from 2026-10-14 and are older than this register; where they differ, this regist
 | aionbuilds.com | Full | Class guides, tier list, player-shared builds | — | 2026-10-18 | BGS §3a |
 | aion2maps.com | Full, reuse unknown | Per-class build and macro guides | robots blocks AI training crawlers only | 2026-10-18 | BGS §3a |
 | aion2.app | **Spot**: never the only source (owner, 2026-10-18, `docs/DECISIONS.md`; amends Q3) | Item and skill database | Terms: "personal, non-commercial… not to: Scrape, copy, or redistribute". Not `/api/`, `/admin`, `/account`, `/login`. Non-commercial terms: review before monetising | terms read for `2026-10-data-sources.md` §10 (2026-10), robots 2026-10-18 | BGS §1; `2026-10-data-sources.md` §10 |
-| aion2t.com | **Spot**: never the only source (same owner decision as aion2.app) | News and guides (aion2.app's sister site) | Same terms as aion2.app. Guides are collected: credit the original author | 2026-10-18 | BGS §1 |
+| aion2t.com | **Spot**: never the only source (same owner decision as aion2.app) | News and guides (aion2.app's sister site) | Same terms as aion2.app (non-commercial: review before monetising). Guides are collected: credit the original author | 2026-10-18 | BGS §1 |
 | daevacompanion.com, *.daevacompanion.com | Own app | The live site | — | — | `docs/DEPLOY.md` |
 | daevapath.com, *.daevapath.com | Own app | Forwards (301) to daevacompanion.com | — | — | `docs/DECISIONS.md` D1c |
 

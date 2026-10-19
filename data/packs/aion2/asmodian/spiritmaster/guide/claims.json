@@ -1,0 +1,281 @@
+{
+  "$schema": "../../../schema/claims.schema.json",
+  "schemaVersion": 2,
+  "collection": "claims",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "C02",
+      "claim": "Each skill gains one level every 3 character levels after you learn it.",
+      "verdict": "wrong",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/heart-gore",
+          "note": "Skill pages list the character level each skill level needs (learn level + 3 per level) and the 1 / 2 / 4 point costs"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/cold-shock",
+          "note": "The Spiritmaster's skill pages show the same rule (docs/research/2026-10-spiritmaster-pack.md §2.1: skill Lv 10 at learn level + 24)"
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-15-alt-03",
+            "checkedAt": "2026-10-15",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Skill window at Lv 7: Savage Roar Lv 4 needs Lv 10 for Lv 5 and costs 2 points; Storm Rampage Lv 2 needs Lv 8 for Lv 3"
+          }
+        },
+        {
+          "url": "https://allthings.how/?p=215236",
+          "quote": "Skill points arrive automatically as your character levels"
+        },
+        {
+          "url": "https://thegameswiki.com/aion-2/wiki/skills-and-specialties",
+          "quote": "mastery skills are learned automatically when the character reaches the required level; levels beyond 10 come from items, Arcana and Daevanion boards"
+        }
+      ],
+      "action": "rewrite",
+      "newText": "<p>Skills don't level up by themselves: you spend points, and each skill level also needs a character level. Skill level L opens at the level you learned the skill + 3 × (L − 2). Cold Shock, learned at Lv 1, reaches skill level 5 at Lv 10. Each level costs 1 point (levels 2–4), 2 points (5–7) or 4 points (8–10).</p>",
+      "note": "The Assassin guide's claim C02, with the Spiritmaster's Cold Shock as the example (learned at Lv 1, Metabot). The rule is the game's (rule:skill-level-gate, rule:skill-point-cost); the owner's screens are from an Assassin. Three Spiritmaster passives (Spirit Communion, Revitalization Contract, Element Unification) have a flat gate instead: every level opens when the skill is learned.",
+      "verifiedAt": "2026-10-15",
+      "appliesTo": [
+        "tip:wisdom",
+        "rule:skill-level-gate",
+        "rule:skill-point-cost"
+      ]
+    },
+    {
+      "id": "C22",
+      "claim": "Board node costs: grey stat 1, green passive 2, blue active 3, orange corner 4 (+1.5%); Azphel paid with Azphel points from PvP shops.",
+      "verdict": "verified",
+      "sources": [
+        {
+          "url": "https://gamewith.ai/aion2/en/daevanion-planner/assassin",
+          "quote": "1 for common, 2 for rare, 3 for epic and 4 for unique nodes"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/guides/daevanion-guide",
+          "quote": "stat 1 (rare 2), active 3, passive 2, corner 4 (+1.5%); Azphel: Azphel currency, 0 skill nodes",
+          "note": "via R3 data/build.partial.notes.txt"
+        },
+        {
+          "url": "https://thegameswiki.com/aion-2/wiki/daeva-system-and-daevanion-board",
+          "quote": "Azphel crystal is made by Material Conversion from 10 Fragment: Azphel's Trace and 5 Odyle ... also sold in the Abyss shop for Abyss Points"
+        },
+        {
+          "url": "https://mein-mmo.de/en/aion-2-arkana-daevanion-pet-you-need-to-understand-and-master-these-3-systems,1589883/2/",
+          "quote": "Fragments are earned through victorious participation in the weekly battleground ... Some crystals can also be bought with Abyss Points"
+        }
+      ],
+      "action": "rewrite",
+      "newText": "<b>Azphel [[tip:daevanion|Daevanion board]] opens.</b> Stat nodes only, paid with Azphel crystals (from battleground fragments or Abyss Points), not Daevanion Crystals.",
+      "note": "The Assassin guide's claim C22, unchanged: the Spiritmaster's 537 board positions have the same type, grade and cost as the Assassin's (docs/research/2026-10-spiritmaster-pack.md §1, 0 differences by script).",
+      "appliesTo": [
+        "g45:2",
+        "tip:daevanion",
+        "conf:boards",
+        "board:nezekan",
+        "board:zikel",
+        "board:vaizel",
+        "board:triniel",
+        "board:azphel"
+      ],
+      "verifiedAt": "2026-10-12"
+    },
+    {
+      "id": "C28b",
+      "claim": "Stigma slots 22/27/32/37 (five sources); regional quest names and levels (allthings.how, Selphie1999).",
+      "verdict": "verified",
+      "sources": [],
+      "action": "keep",
+      "note": "The Assassin guide's claim C28b. The Spiritmaster's 13 stigma pages also learn at Lv 22 (Metabot, docs/research/2026-10-spiritmaster-pack.md §2.2); Metabot's content-unlocks page gives the same slot levels (research §6).",
+      "appliesTo": [
+        "tip:stigma",
+        "conf:stigmas"
+      ],
+      "verifiedAt": "2026-10-12"
+    },
+    {
+      "id": "C39",
+      "claim": "\"The One Who Hears the Voice\" (Lv 22) is open by the time the story reaches \"Daeva in a Dream\".",
+      "verdict": "single-source",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/daeva-in-a-dream-asmodian",
+          "quote": "complete The One Who Hears the Voice",
+          "note": "The wrapper quest's objective (Metabot steps): the Ascension quest must be open by then, so the gate is never early (prereq-gates §5)."
+        }
+      ],
+      "action": "keep",
+      "note": "The Assassin guide's claim C39 (the story is the faction's, not the class's). Owner decision 2026-10-16: no separate in-game check; the gate stands on its source (prereq-gates §11 check 6).",
+      "appliesTo": [
+        "g22:0",
+        "asc:hears-the-voice"
+      ],
+      "verifiedAt": "2026-10-16"
+    },
+    {
+      "id": "C70",
+      "claim": "Spiritmaster stat priority: Attack, Critical Hit, Accuracy Bonus (then HP, MP).",
+      "verdict": "single-source",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/spiritmaster",
+          "note": "Class page (editorial): Attack, Critical Hit, Accuracy Bonus, HP, MP."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/guides/class-builds-guide",
+          "note": "The same five in the same order; same site, so not a second source."
+        }
+      ],
+      "action": "keep",
+      "note": "Editorial text on one site (docs/research/2026-10-spiritmaster-pack.md §3). The Build drawer shows the top three and says the ranking is Metabot's only.",
+      "appliesTo": [
+        "build:3",
+        "conf:stat-tiers"
+      ],
+      "verifiedAt": "2026-10-18"
+    },
+    {
+      "id": "C71",
+      "claim": "Spiritmaster stigmas by slot: Summon: Ancient Spirit (22), Enhance: Spirit's Benediction (27), Jointstrike: Corrode (32), Flame Blessing (37); raised to 8 / 7 / 5 / 4.",
+      "verdict": "single-source",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/spiritmaster/build",
+          "note": "Leveling build (editorial) and its top-player panel (151 Lv 45 players: 96% / 95% / 83% / 74% per slot) agree."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/guides/class-builds-guide",
+          "note": "Same four in the same order; same site."
+        }
+      ],
+      "action": "keep",
+      "note": "Three Metabot views agree, with no conflict, but they are one site: single source (editorial build pages are one source, as for the Ranger's C51).",
+      "appliesTo": [
+        "build:spiritmaster:guide",
+        "conf:stigma-plan"
+      ],
+      "verifiedAt": "2026-10-18"
+    },
+    {
+      "id": "C72",
+      "claim": "Spiritmaster skill points: Cold Shock, Combustion, Summon: Fire Spirit, Summon: Water Spirit, Jointstrike: Curse, Dimensional Control, Elemental Fusion, Spirit Strike and Corrode to Lv 10; Summon: Earth Spirit to 7, Spirit's Descent to 5.",
+      "verdict": "single-source",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/spiritmaster/build",
+          "note": "Skill targets in listed order; the page states no training order."
+        }
+      ],
+      "action": "keep",
+      "note": "The order between them is the page's list order, an inference (skillOrderNotes.interleave).",
+      "appliesTo": [
+        "build:spiritmaster:guide",
+        "conf:core-order"
+      ],
+      "verifiedAt": "2026-10-18"
+    },
+    {
+      "id": "C73",
+      "claim": "Spiritmaster first Daevanion nodes: Nezekan's two Spirit Strike nodes, then Zikel's Consecutive Countercurrent and Element Unification pairs.",
+      "verdict": "single-source",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/spiritmaster",
+          "note": "Class page board path (editorial); the class-builds guide gives the same path (same site). Node positions from the Spiritmaster board data (aion2/classes/spiritmaster, Metabot Daevanion page)."
+        }
+      ],
+      "action": "keep",
+      "note": "Element Unification is learned at Lv 25 (Metabot skill page), after Zikel opens at Lv 20, so its two nodes wait for Lv 25.",
+      "appliesTo": [
+        "build:spiritmaster:guide",
+        "conf:first-nodes"
+      ],
+      "verifiedAt": "2026-10-18"
+    },
+    {
+      "id": "C74",
+      "claim": "Three Spiritmaster skills fire only on a condition: Dimensional Control triggers each time a spirit uses its skill, Rapid Scattershot hits only a target in Stagger, Elemental Fusion needs four element stacks from spirit skills; a new summon replaces the spirit on the field.",
+      "verdict": "verified",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/dimensional-control",
+          "note": "Skill text (game-database field)."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/rapid-scattershot",
+          "note": "Skill text (game-database field)."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/elemental-fusion",
+          "note": "Skill text (game-database field)."
+        },
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/spiritmaster/",
+          "note": "Describes the same conditions (Spot use, one page)."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-spiritmaster-pack.md §1 (CONFIRMED from the skill text; Metabot's class page and mmo-codex describe the same). The guide's own wording, not the pages'.",
+      "appliesTo": [
+        "build:triggers",
+        "conf:triggers"
+      ],
+      "verifiedAt": "2026-10-18"
+    },
+    {
+      "id": "C75",
+      "claim": "Spiritmaster learn levels: actives 1, 1, 1, 3, 4, 5, 7, 8, 10, 12, 14, 16; passives 1, 6, 9, 11, 13, 15, 17, 21, 23, 25 (Summon: Water Spirit 3, Summon: Wind Spirit 10, Elemental Fusion 14).",
+      "verdict": "verified",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/summon-water-spirit",
+          "note": "Game-database field (learn level)."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/summon-wind-spirit",
+          "note": "Game-database field (learn level)."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/elemental-fusion",
+          "note": "Game-database field (learn level)."
+        },
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/spiritmaster/",
+          "note": "Its level-by-level unlock table gives the same 22 values."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-spiritmaster-pack.md §6: all 22 learn levels and the stepped / flat gates are two-source (Metabot and mmo-codex, which credits the game client via aion2.app; independence inferred). daevaguides is consistent but compiles other guides, so it is not counted. No owner screen needed.",
+      "appliesTo": [
+        "conf:learn-levels"
+      ],
+      "verifiedAt": "2026-10-18"
+    },
+    {
+      "id": "C76",
+      "claim": "Spiritmaster stigmas reach level 25 at most.",
+      "verdict": "single-source",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/summon-ancient-spirit",
+          "note": "All 13 stigma pages give max level 25."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/spiritmaster",
+          "note": "The class page agrees; same site."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-spiritmaster-pack.md §2.2: one site, so single source (the stigma records' maxLevel is labelled the same). The leveling targets (8 / 7 / 5 / 4) stay far below it.",
+      "appliesTo": [
+        "conf:stigma-max"
+      ],
+      "verifiedAt": "2026-10-18"
+    }
+  ]
+}

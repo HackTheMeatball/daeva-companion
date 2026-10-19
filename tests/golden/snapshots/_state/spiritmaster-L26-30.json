@@ -1,0 +1,44 @@
+{
+  "spiritmaster/L30-q48-none-A": {
+    "in": "3d92adb165f8",
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g22": ["(absent)",true],
+      "open.g25": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "open.g28": ["(absent)",true],
+      "open.g30": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true]
+    },
+    "mode": "advanced"
+  },
+  "spiritmaster/L30-q48-none-B": {
+    "in": "d2528b289d30",
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g22": ["(absent)",true],
+      "open.g25": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "open.g28": ["(absent)",true],
+      "open.g30": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true]
+    },
+    "mode": "basic"
+  }
+}

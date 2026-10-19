@@ -1,0 +1,59 @@
+{
+  "$schema": "../../../schema/confidence.schema.json",
+  "schemaVersion": 2,
+  "collection": "confidence",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "conf:core-order",
+      "group": "single-source",
+      "order": 180,
+      "text": "Spiritmaster skill points (Cold Shock, Combustion, Summon: Fire Spirit, Summon: Water Spirit, Jointstrike: Curse, Dimensional Control, Elemental Fusion, Spirit Strike, Corrode to 10; {skillOrderSingle} after them): Metabot's leveling build. The order between them is its list order.",
+      "placeholders": [
+        "skillOrderSingle"
+      ]
+    },
+    {
+      "id": "conf:first-nodes",
+      "group": "single-source",
+      "order": 185,
+      "text": "First Daevanion nodes (Nezekan's Spirit Strike pair, then Zikel's Consecutive Countercurrent and Element Unification): Metabot's Spiritmaster page."
+    },
+    {
+      "id": "conf:learn-levels",
+      "group": "verified",
+      "order": 45,
+      "text": "Spiritmaster learn levels (Summon: Water Spirit 3, Summon: Wind Spirit 10, Elemental Fusion 14 and the rest): Metabot's skill pages (game data) and mmo-codex's unlock table."
+    },
+    {
+      "id": "conf:stat-tiers",
+      "group": "single-source",
+      "order": 186,
+      "text": "Stat priority (Attack, Critical Hit, Accuracy Bonus): Metabot's Spiritmaster page and class-builds guide (one site)."
+    },
+    {
+      "id": "conf:stigma-max",
+      "group": "single-source",
+      "order": 188,
+      "text": "Stigma max level 25: Metabot's stigma pages and class page (one site). The guide's targets stay far below it."
+    },
+    {
+      "id": "conf:stigma-plan",
+      "group": "single-source",
+      "order": 187,
+      "text": "Stigmas Summon: Ancient Spirit, Enhance: Spirit's Benediction, Jointstrike: Corrode, Flame Blessing, raised to 8 / 7 / 5 / 4: Metabot's leveling build, its top players and its class-builds guide agree (one site)."
+    },
+    {
+      "id": "conf:stigmas",
+      "group": "verified",
+      "order": 40,
+      "text": "Stigma slots 22 / 27 / 32 / 37; every stigma learnable at 22; shard cost per level (Metabot, allthings.how)."
+    },
+    {
+      "id": "conf:triggers",
+      "group": "verified",
+      "order": 46,
+      "text": "Dimensional Control, Rapid Scattershot and Elemental Fusion fire only on their conditions (Metabot's skill pages, game data; mmo-codex)."
+    }
+  ]
+}
