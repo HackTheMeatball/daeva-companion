@@ -80,6 +80,9 @@ if (g) {
   /* 0.6 P5: it lists every guide pack's pages (the Ranger's too) */
   const otherIds = guidePacks().filter(id => id !== 'aion2/asmodian/assassin'), others = otherIds.map(id => generate({ pack: id }));
   ok('data/DATA_SOURCES.md is current (npm run gen)', readFileSync(join(ROOT, 'data/DATA_SOURCES.md'), 'utf8') === dataSourcesMd(g, others));
+  /* #476: zone and Sealed Dungeon refs take their record's name as label, not the URL slug ("Calderon canyon") */
+  const dsMd = dataSourcesMd(g, others);
+  ok('Sources labels zone and dungeon pages by record name', ['[Metabot: Calderon Canyon]', "[Metabot: High Priest's Ruins]"].every(s => dsMd.includes(s)));
   others.forEach((o, i) => ok(`guide pack ${otherIds[i]}: ${o.report.checks.length} cross-record checks pass`, !o.failed.length, o.failed.slice(0, 10)));
   /* proposals never reach the page's data module: it is byte-identical without them (0.2 behaviour unchanged) */
   let g0 = null; try { g0 = generate({ dropProposed: true }); } catch (e) { ok('generator runs without proposals', false, e.message); }
