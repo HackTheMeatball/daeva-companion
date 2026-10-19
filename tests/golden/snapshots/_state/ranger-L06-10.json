@@ -3,10 +3,12 @@
     "in": "87ba573c26b2",
     "store": {
       "areaLv": ["(absent)","10"],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/ranger","class":"ranger","name":"","created":0,"checks":{},"level":10,"quest":"Gathering Essentials","mt":{"level":[0,10],"quest":[0,["Gathering Essentials",null]]}},{"checks":{},"level":10,"quest":"Gathering Essentials","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/ranger","class":"ranger","name":"","created":0,"mt":{"level":[0,10],"quest":[0,["Gathering Essentials",null]],"rotSeen":[1790856000,["Left click:Snipe:0","Right click:Tempest Shot:0","Q:Burst Arrow:0","Q:Drill Dart:1","E:Arrow Scattershot:0","E:Marking Shot:2","1:Snare Shot:0","2:Gale Arrow:0","3:Explosion Trap:0"]]},"rotSeen":["Left click:Snipe:0","Right click:Tempest Shot:0","Q:Burst Arrow:0","Q:Drill Dart:1","E:Arrow Scattershot:0","E:Marking Shot:2","1:Snare Shot:0","2:Gale Arrow:0","3:Explosion Trap:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g6": ["(absent)",true],
-      "open.g9": ["(absent)",true]
+      "open.g9": ["(absent)",true],
+      "savedAt": ["(absent)",1790856000000]
     },
     "mode": "advanced"
   },
@@ -14,10 +16,12 @@
     "in": "a0f377734c3c",
     "store": {
       "areaLv": ["(absent)","10"],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/ranger","class":"ranger","name":"","created":0,"checks":{},"level":10,"quest":"Gathering Essentials","mt":{"level":[0,10],"quest":[0,["Gathering Essentials",null]]}},{"checks":{},"level":10,"quest":"Gathering Essentials","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/ranger","class":"ranger","name":"","created":0,"mt":{"level":[0,10],"quest":[0,["Gathering Essentials",null]],"rotSeen":[1790856000,["Left click:Snipe:0","Right click:Tempest Shot:0","Q:Burst Arrow:0","Q:Drill Dart:1","E:Arrow Scattershot:0","E:Marking Shot:2","1:Snare Shot:0","2:Gale Arrow:0","3:Explosion Trap:0"]]},"rotSeen":["Left click:Snipe:0","Right click:Tempest Shot:0","Q:Burst Arrow:0","Q:Drill Dart:1","E:Arrow Scattershot:0","E:Marking Shot:2","1:Snare Shot:0","2:Gale Arrow:0","3:Explosion Trap:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g6": ["(absent)",true],
-      "open.g9": ["(absent)",true]
+      "open.g9": ["(absent)",true],
+      "savedAt": ["(absent)",1790856000000]
     },
     "mode": "basic"
   }
