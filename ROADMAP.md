@@ -143,7 +143,8 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
 
 **Release gate (owner, 2026-10-18 6:24 AM ET), for every release, patches included.** When every item of a release has
 merged, the Release Planner writes the release's CHANGELOG section into the release issue (Kaizen K17, 2026-10-19:
-the release build copies it verbatim, and Gretchen's check reads that text against ISSUES.md and the live build), then
+the release build copies it verbatim, and Gretchen's check reads that text against ISSUES.md and the live build, and
+checks that every promise in it exists in the build: Kaizen, 2026-10-19 6:11 PM ET, team-audit rec 6), then
 sends Game Data Check (Gretchen) `PRE-RELEASE CHECK <version>` and tells Build Pipeline (Gus)
 `DATA OK <version>` only after she answers `DATA OK`; Gus queues and ships the release item only then. A `DATA HOLD`
 means the named data is fixed first. Stall Watch (Mike) flags a check unanswered after 60 min. If data lands on main
