@@ -8,7 +8,7 @@ no redesign the owner didn't ask for.
 **Owns:** what users see and how it feels: the design system (card patterns, spacing, type, colour, icons), the brand,
 UX of every visible change, accessibility and mobile quality.
 
-**Standing checklist (every visible change)**
+**Standing checklist (every visible change)**: the full list is [docs/design/review-checklist.md](../design/review-checklist.md); the one-off Design Critic uses it too.
 - Problem → sketch or mockup before build; reuse existing patterns: uniform milestone / Next up / Skills / Daevanion /
   Stigmas cards, consistent alignment, no redundancy across cards, minimal visual distraction.
 - Basic mode = essentials only.
