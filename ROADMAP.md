@@ -30,29 +30,30 @@ no running out before 1.0: 1.0 ships when its scope is done.
 Every minor opens with a planning and audit pass, and it is most of the work: like painting, about 90% prep and 10%
 execution (owner, 2026-10-17). It runs on Opus and has two halves that work as a team: step 1 is the **release kaizen
 review, the "how"** (is the way we build optimal?), and steps 2–6 are the **plan, the "what"** (which items, in what
-order). The "how" goes first because its findings change the rules the plan is made under. The pass that redrew the plan
-after 0.3 is the model: it audited the whole path to 1.0 before planning the next minor
-([audit and plan to 1.0](docs/audits/2026-10-16-audit-and-plan-to-1.0.md)). Nothing in the minor is queued in #114
-until the pass is written down and reviewed. **Kaizen's review is a hard gate for every minor and major
-release** (owner, 2026-10-18 6:59 AM ET): nothing in it is planned or queued before Kaizen reports, and Stall Watch
-(Mike) flags a review not in 60 min after `PLANNING PASS START`. Patches (0.X.Y) skip the pass, Kaizen included. After a
-major release (1.0, 2.0 …) Kaizen runs a larger pass over the data of all the minors before it.
+order). The "how" goes first because its findings change the rules the plan is made under. The pass that redrew the
+plan after 0.3 is the model: it audited the whole path to 1.0 before planning the next minor ([audit and plan to
+1.0](docs/audits/2026-10-16-audit-and-plan-to-1.0.md)). Nothing in the minor is queued in #114 until the pass is
+written down and reviewed. **Kaizen's review is a hard gate for every minor and major release** (owner, 2026-10-18
+6:59 AM ET): nothing in it is planned or queued before Kaizen reports, and Stall Watch (Mike) flags a `PLAY DONE` with
+no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen included. After a major release (1.0, 2.0
+…) Kaizen runs a larger pass over the data of all the minors before it.
 
 1. **Release kaizen review: the "how" (owner, 2026-10-17).** Kaizen (Gale) runs it, over the whole minor just
-   shipped, aimed at the workflow itself, not at the product. Kaizen runs at each planning pass start and after each
-   release, with a weekly fallback (owner, 2026-10-18). The Release Planner opens the pass by sending Kaizen
-   `PLANNING PASS START <minor> <ET time>` and writes steps 2–6 only after that review is in. Raised usage caps don't
-   change the goal: the least waste per item shipped (owner, 2026-10-17 3:00 PM ET).
-   **Order after a minor ships (owner, 2026-10-18 11:21 PM ET; wording approved 2026-10-19 12:51 PM ET; this is its one
-   statement):** Player Testing (Jesse)
-   plays it and sends `PLAY DONE`, then Kaizen (Gale) sends `KAIZEN REVIEW DONE`, then the Release Planner writes the
-   planning pass; each sends Coordinator (Saul) and Tracker sync (Huell) a report, and Saul folds them into one
-   morning debrief. Nothing of the next minor builds before the owner's typed go.
-   - **Data.** Combine the **stall log (#221)**: stalls and idle minutes by Kind, and the Kinds that came back after a
-     fix; the **planner log (#232)**: what each planner run queued and whether it worked out, plus the usage
-     checkpoints (bot runs by model and outcome against the owner's weekly usage %); the **kaizen log (#222)**: which
-     changes helped, which didn't (revert them), which are still `trial` or `needs Isaac`; the `Waste:` lines in #114;
-     and the Actions runs (build minutes, kickoff start to PR open, PR open to merge, per item).
+   shipped, aimed at the workflow itself, not at the product. Kaizen runs after each release (the review that opens
+   the next pass), with a weekly fallback (owner, 2026-10-18). Until 0.8 the Release Planner opened the pass by
+   sending Kaizen `PLANNING PASS START <minor> <ET time>`; from 0.9 the pass starts only on `KAIZEN REVIEW DONE`
+   (below). Raised usage caps don't change the goal: the least waste per item shipped (owner, 2026-10-17 3:00 PM ET).
+   **Order after a minor ships (owner, 2026-10-18 11:21 PM ET; wording approved 2026-10-19 12:51 PM ET; this is its
+   one statement):** Player Testing (Jesse) plays it and sends `PLAY DONE`, then Kaizen (Gale) sends
+   `KAIZEN REVIEW DONE`, then the Release Planner writes the planning pass; each sends Coordinator (Saul) and Tracker
+   sync (Huell) a report, and Saul folds them into one morning debrief. Nothing of the next minor builds before the
+   owner's typed go.
+   - **Data.** Combine the **stall log (#221)**: stalls and idle minutes by Kind, and the Kinds that came back
+     after a fix; the **planner log (#232)**: one row per planning pass and per release (what was queued and
+     whether it worked out), plus the usage checkpoints (bot runs by model and outcome against the owner's weekly
+     usage %); the **kaizen log (#222)**: which changes helped, which didn't (revert them), which are still
+     `trial` or `needs Isaac`; the `Waste:` lines in #114; and the Actions runs (build minutes, kickoff start to
+     PR open, PR open to merge, per item).
    - **Audit the workflow.** Lanes (did two builds collide, or did a lane hold work that could have run?); model
      routing (Opus runs that Sonnet would have done, Sonnet runs that handed up or were redone); redone runs and their
      causes (review CHANGES, fix rounds, merge runs, restarts, Blocked); idle time on the critical path; handoffs
@@ -63,10 +64,18 @@ major release (1.0, 2.0 …) Kaizen runs a larger pass over the data of all the 
      usage % per item shipped. Each row is set beside the previous minor's scorecard with the change marked better or
      worse. The first scorecard (0.5) takes 0.4's numbers from #221 and the `Waste:` lines where they exist and marks
      the rest "no baseline".
+   - **Rules audit, and when the review is done (owner, 2026-10-19 10:17 AM and 1:49 PM ET, Kaizen thread).** The
+     review grades every active rule and decision against the minor's data (keep / tighten / loosen / merge /
+     retire, each with evidence) and reports the rule count and any conflicts. From 0.9 the release kaizen review
+     is complete only when that graded audit is written and reviewed, and its rule and ledger changes are merged
+     or handed to their owners. Kaizen (Gale) then sends `KAIZEN REVIEW DONE <minor>` naming the audit file. The
+     Release Planner starts no planning pass, writes no plan and queues nothing for the minor before that message.
+     0.8 is not redone.
    - **Changes.** Each cause that repeated, and each metric that got worse, becomes one concrete process change: a
-     #222 row, put in place before the minor's first item is queued (a #114 rule, a planner-instruction change, or a
-     workflow PR). The stall limits, build cap and model routing in #114 are re-derived from this minor's build times
-     and usage. The plan in steps 2–6 is made under these changes and cites the scorecard where it relies on it.
+     #222 row, put in place before the minor's first item is queued (a #114 rule, a planner-instruction change, or
+     a workflow PR). Stall limits that a build actually hit, the build cap and model routing in #114 are
+     re-derived from this minor's build times and usage; stall limits no build hit carry over (rules audit
+     PIP-10). The plan in steps 2–6 is made under these changes and cites the scorecard where it relies on it.
 2. **Audit the whole path to 1.0, then this minor.** First re-read the plan from this minor to 1.0 against the code
    and what the look-back found: is any later minor stale, in the wrong order, too big, or blocked on something
    nobody has started (research, owner input, hosting)? Change the later minors here, in this pass, before planning
@@ -93,15 +102,17 @@ major release (1.0, 2.0 …) Kaizen runs a larger pass over the data of all the 
    tracker To-do; everything else follows the recommendation. Every decision is recorded on the tracker as
    **user remediated** (the owner chose) or **Claude remediated** (the recommendation applied under a standing
    approval), so the owner can see which calls were whose.
-   **When (Kaizen K15, 2026-10-19; replaces K10):** the planning pass lists every OK the minor needs, its standing
-   ship OK included (one per minor, covering the .0 and every patch; owner, 2026-10-19 12:50 PM ET) (and, per release, one line asking the owner's weekly usage %, which the Release Planner records in
-   that release's #232 row; owner, 2026-10-19 12:51 PM ET), each with its recommendation, the exact words to type and the thread to type them in (the thread
-   whose session records it). Coordinator (Saul) asks them as one batch in the next morning debrief (owner OK 2026-10-19 12:51 PM ET), grouped by
-   thread; the target is ≤ 3 threads (a ship OK is typed in Build Pipeline (Gus)'s thread, a tracker OK in Tracker
-   sync (Huell)'s or Skyler's). Ungated items are queued first, and a gated item without its typed OK goes to the end
-   of the queue; it never holds a lane or the critical path. One exception: a question that first comes up mid-minor
-   and gates an item already queued or building goes out at once as a HARD BLOCKER. Research gates start at pass start
-   (kept from K10).
+   **When (Kaizen K15, 2026-10-19; replaces K10):** the planning pass lists every OK the minor needs, each with its
+   recommendation, the exact words to type and the thread to type them in (the thread whose session records it). That
+   includes the minor's standing ship OK, one per minor covering the .0 and every patch (rules audit COM-03; owner,
+   2026-10-19 12:50 PM ET). Each release's OK list also carries one line asking the owner's weekly usage %, and the
+   Release Planner records the number in that release's #232 row (owner, 2026-10-19 12:51 PM ET). Coordinator (Saul)
+   asks them as one batch in the next morning debrief, grouped by thread (owner OK 2026-10-19 12:51 PM ET); the
+   target is ≤ 3 threads (a ship OK is typed in Build Pipeline (Gus)'s thread, a tracker OK in Tracker sync (Huell)'s
+   or Skyler's). Ungated items are queued first, and a gated item without its typed OK goes to the end of the queue;
+   it never holds a lane or the critical path. One exception: a question that first comes up mid-minor and gates an
+   item already queued or building goes out at once as a HARD BLOCKER. Research gates start at pass start (kept from
+   K10).
 6. **Write and review.** The plan goes into this file and the #114 queue in one PR, written by one session and
    reviewed by a separate one that didn't write it. Then the planner queues the items, top of the lane map first.
 

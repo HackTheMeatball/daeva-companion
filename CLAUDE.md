@@ -34,8 +34,9 @@ comes first) a change may break existing saves when that gives a better design. 
 - Releases: version bump + CHANGELOG section in one commit; CI tags and publishes (docs/DEPLOY.md, ROADMAP.md).
 - Every minor (0.X.0) opens with a planning and audit pass (ROADMAP "How a minor is planned"), starting with the release
   kaizen review of how we work (stall log #221, planner log #232, kaizen log #222, a waste and usage scorecard against
-  the previous minor in `docs/kaizen/`); no item of that minor is queued before the
-  pass is written and reviewed. Parallel work only along module boundaries.
+  the previous minor in `docs/kaizen/`) and the graded audit of every active rule and decision. From 0.9 the planning
+  pass starts only after Kaizen's `KAIZEN REVIEW DONE <minor>`, audit included (owner, 2026-10-19); no item of that
+  minor is queued before the pass is written and reviewed. Parallel work only along module boundaries.
 - Locally Chromium is preinstalled (`PLAYWRIGHT_BROWSERS_PATH`); never run `playwright install` locally.
 
 ## Data and source policy
