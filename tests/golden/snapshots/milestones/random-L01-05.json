@@ -1,6 +1,7 @@
 {
   "random/L01-q06-rnd121p80-A-stfull": [
-    "g6 | 5 to go | 4/11 | upnext | open",
+    "g4 | 3 to go | 3/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -20,7 +21,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L01-q08-lvonly-B-stready": [
-    "g6 | 5 to go | 1/11 | upnext | open",
+    "g4 | 3 to go | 0/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -40,7 +42,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L01-q09-rnd100p50-A-objs": [
-    "g6 | 5 to go | 3/11 | upnext | open",
+    "g4 | 3 to go | 2/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -60,7 +63,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L01-q10-rnd100p80-A": [
-    "g6 | 5 to go | 4/11 | upnext | open",
+    "g4 | 3 to go | 3/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -80,7 +84,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L01-q18-all-B-filters": [
-    "g6 | Cleared | 11/11 | done | hidden",
+    "g4 | Cleared | 9/9 | done | hidden",
+    "g6 | Cleared | 3/3 | done | hidden",
     "g9 | Cleared | 7/7 | done | hidden",
     "g10 | Cleared | 9/9 | done | hidden",
     "g12 | Cleared | 10/10 | done | hidden",
@@ -100,7 +105,8 @@
     "g45 | Cleared | 32/32 | done | hidden"
   ],
   "random/L01-q26-all-B-dv": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -120,7 +126,8 @@
     "g45 | Cleared | 36/36 | done"
   ],
   "random/L01-q33-before-A-sppts": [
-    "g6 | 5 to go | 1/11 | upnext | open",
+    "g4 | 3 to go | 0/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -140,7 +147,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L01-q40-lvonly-A-rqmix": [
-    "g6 | 5 to go | 1/11 | upnext | open",
+    "g4 | 3 to go | 0/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -160,7 +168,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L01-q46-lvonly-A-objs": [
-    "g6 | 5 to go | 1/11 | upnext | open",
+    "g4 | 3 to go | 0/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -180,7 +189,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L01-q51-before-B-sppts": [
-    "g6 | 5 to go | 1/11 | upnext | open",
+    "g4 | 3 to go | 0/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -200,7 +210,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L01-q55-lvonly-A": [
-    "g6 | 5 to go | 1/11 | upnext | open",
+    "g4 | 3 to go | 0/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -220,7 +231,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L01-q56-before-A-stwait": [
-    "g6 | 5 to go | 1/11 | upnext | open",
+    "g4 | 3 to go | 0/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -240,7 +252,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L01-q67-all-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -260,7 +273,8 @@
     "g45 | Cleared | 36/36 | done"
   ],
   "random/L01-q81-all-B-stready": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -280,7 +294,8 @@
     "g45 | Cleared | 36/36 | done"
   ],
   "random/L01-qxx-rnd112p50-B-objs": [
-    "g6 | 5 to go | 2/11 | upnext | open",
+    "g4 | 3 to go | 2/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -300,7 +315,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L01-qxx-rnd137p80-A-objs": [
-    "g6 | 5 to go | 3/11 | upnext | open",
+    "g4 | 3 to go | 3/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -320,7 +336,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L02-q02-all-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -340,7 +357,8 @@
     "g45 | Cleared | 36/36 | done"
   ],
   "random/L02-q06-none-B": [
-    "g6 | 4 to go | 1/11 | upnext | open",
+    "g4 | 2 to go | 0/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -360,7 +378,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L02-q09-before-B-filters": [
-    "g6 | 4 to go | 1/11 | upnext | open",
+    "g4 | 2 to go | 0/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -380,7 +399,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L02-q14-before-A-objs": [
-    "g6 | 4 to go | 1/11 | upnext | open",
+    "g4 | 2 to go | 0/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 0/10 | ",
@@ -400,7 +420,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L02-q15-lvonly-B-rqmix": [
-    "g6 | 4 to go | 1/11 | upnext | open",
+    "g4 | 2 to go | 0/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 0/10 | ",
@@ -420,7 +441,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L02-q24-all-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -440,7 +462,8 @@
     "g45 | Cleared | 36/36 | done"
   ],
   "random/L02-q26-none-B-stwait": [
-    "g6 | 4 to go | 1/11 | upnext | open",
+    "g4 | 2 to go | 0/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -460,7 +483,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L02-q32-all-B-stfull": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -480,7 +504,8 @@
     "g45 | Cleared | 36/36 | done"
   ],
   "random/L02-q32-rnd112p95-B-stfull": [
-    "g6 | 4 to go | 4/11 | upnext | open",
+    "g4 | 2 to go | 3/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -500,7 +525,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L02-q39-all-B-stready": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -520,7 +546,8 @@
     "g45 | Cleared | 36/36 | done"
   ],
   "random/L02-q51-lvonly-A-stwait": [
-    "g6 | 4 to go | 1/11 | upnext | open",
+    "g4 | 2 to go | 0/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -540,7 +567,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L02-q55-rnd141p80-A-sppts": [
-    "g6 | 4 to go | 1/11 | upnext | open",
+    "g4 | 2 to go | 0/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -560,7 +588,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L02-q57-rnd122p20-A": [
-    "g6 | 4 to go | 1/11 | upnext | open",
+    "g4 | 2 to go | 0/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -580,7 +609,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L02-q58-lvonly-A": [
-    "g6 | 4 to go | 1/11 | upnext | open",
+    "g4 | 2 to go | 0/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -600,7 +630,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L02-q67-rnd101p20-A-sppts": [
-    "g6 | 4 to go | 1/11 | upnext | open",
+    "g4 | 2 to go | 0/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -620,7 +651,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L02-q83-lvonly-A-objs": [
-    "g6 | 4 to go | 1/11 | upnext | open",
+    "g4 | 2 to go | 0/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -640,7 +672,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L02-qxx-before-B-stwait": [
-    "g6 | 4 to go | 0/11 | upnext | open",
+    "g4 | 2 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -660,7 +693,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L02-qxx-lvonly-A-cube": [
-    "g6 | 4 to go | 0/11 | upnext | open",
+    "g4 | 2 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -680,7 +714,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L03-q02-rnd118p20-A-rqmix": [
-    "g6 | 3 to go | 1/11 | upnext | open",
+    "g4 | 1 to go | 1/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -700,7 +735,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L03-q05-lvonly-B-stwait": [
-    "g6 | 3 to go | 4/11 | upnext | open",
+    "g4 | 1 to go | 3/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -720,7 +756,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L03-q18-all-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -740,7 +777,8 @@
     "g45 | Cleared | 36/36 | done"
   ],
   "random/L03-q20-before-A": [
-    "g6 | 3 to go | 4/11 | upnext | open",
+    "g4 | 1 to go | 3/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -760,7 +798,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L03-q26-lvonly-A-dv": [
-    "g6 | 3 to go | 4/11 | upnext | open",
+    "g4 | 1 to go | 3/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -780,7 +819,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L03-q27-lvonly-A-stready": [
-    "g6 | 3 to go | 4/11 | upnext | open",
+    "g4 | 1 to go | 3/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -800,7 +840,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L03-q57-lvonly-A-rqmix": [
-    "g6 | 3 to go | 4/11 | upnext | open",
+    "g4 | 1 to go | 3/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -820,7 +861,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L03-q59-none-A-dv": [
-    "g6 | 3 to go | 1/11 | upnext | open",
+    "g4 | 1 to go | 0/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -840,7 +882,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L03-q61-none-B-rqmix": [
-    "g6 | 3 to go | 1/11 | upnext | open",
+    "g4 | 1 to go | 0/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -860,7 +903,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L03-q70-lvonly-A-filters": [
-    "g6 | 3 to go | 4/11 | upnext | open",
+    "g4 | 1 to go | 3/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -880,7 +924,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L03-q77-before-B-sppts": [
-    "g6 | 3 to go | 1/11 | upnext | open",
+    "g4 | 1 to go | 0/9 | upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -900,7 +945,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L04-q01-lvonly-A-cube": [
-    "g6 | 2 to go | 3/11 | upnext | open",
+    "g4 | Now | 3/9 | current,upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -920,7 +966,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L04-q03-rnd141p95-A-stfull": [
-    "g6 | 2 to go | 7/11 | upnext | open",
+    "g4 | Now | 8/9 | current,upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -940,7 +987,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L04-q08-all-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -960,7 +1008,8 @@
     "g45 | Cleared | 36/36 | done"
   ],
   "random/L04-q45-rnd122p20-B-cube": [
-    "g6 | 2 to go | 1/11 | upnext | open",
+    "g4 | Now | 0/9 | current,upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -980,7 +1029,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L04-q53-rnd130p50-A-filters": [
-    "g6 | 2 to go | 3/11 | upnext | open",
+    "g4 | Now | 3/9 | current,upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -1000,7 +1050,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L04-q56-all-B-cube": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -1020,7 +1071,8 @@
     "g45 | Cleared | 36/36 | done"
   ],
   "random/L04-q57-rnd141p80-B-stready": [
-    "g6 | 2 to go | 8/11 | upnext | open",
+    "g4 | Now | 8/9 | current,upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -1040,7 +1092,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L04-q59-lvonly-A-sppts": [
-    "g6 | 2 to go | 1/11 | upnext | open",
+    "g4 | Now | 0/9 | current,upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -1060,7 +1113,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L04-q62-lvonly-B-objs": [
-    "g6 | 2 to go | 4/11 | upnext | open",
+    "g4 | Now | 3/9 | current,upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -1080,7 +1134,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L04-q63-lvonly-B": [
-    "g6 | 2 to go | 4/11 | upnext | open",
+    "g4 | Now | 3/9 | current,upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -1100,7 +1155,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L04-q73-lvonly-A-filters": [
-    "g6 | 2 to go | 4/11 | upnext | open",
+    "g4 | Now | 3/9 | current,upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -1120,7 +1176,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L04-q76-rnd128p50-B-sppts": [
-    "g6 | 2 to go | 1/11 | upnext | open",
+    "g4 | Now | 0/9 | current,upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -1140,7 +1197,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L04-q80-lvonly-B-filters": [
-    "g6 | 2 to go | 4/11 | upnext | open",
+    "g4 | Now | 3/9 | current,upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -1160,7 +1218,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L04-q81-none-B-stfull": [
-    "g6 | 2 to go | 1/11 | upnext | open",
+    "g4 | Now | 0/9 | current,upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -1180,7 +1239,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L04-q82-lvonly-B-stready": [
-    "g6 | 2 to go | 4/11 | upnext | open",
+    "g4 | Now | 3/9 | current,upnext | open",
+    "g6 | Later | 1/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -1200,7 +1260,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L04-qxx-before-A": [
-    "g6 | 2 to go | 3/11 | upnext | open",
+    "g4 | Now | 3/9 | current,upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -1220,7 +1281,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L05-q01-lvonly-A-stready": [
-    "g6 | 1 to go | 4/11 | upnext | open",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | 1 to go | 0/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -1240,7 +1302,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L05-q07-all-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -1260,7 +1323,8 @@
     "g45 | Cleared | 36/36 | done"
   ],
   "random/L05-q07-lvonly-A-rqmix": [
-    "g6 | 1 to go | 5/11 | upnext | open",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | 1 to go | 1/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -1280,7 +1344,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L05-q07-rnd140p20-A": [
-    "g6 | 1 to go | 3/11 | upnext | open",
+    "g4 | Missed | 2/9 | overdue | open",
+    "g6 | 1 to go | 1/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -1300,7 +1365,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L05-q08-lvonly-B-dv": [
-    "g6 | 1 to go | 5/11 | upnext | open",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | 1 to go | 1/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -1320,7 +1386,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L05-q15-all-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -1340,7 +1407,8 @@
     "g45 | Cleared | 36/36 | done"
   ],
   "random/L05-q19-all-B-dv": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -1360,7 +1428,8 @@
     "g45 | Cleared | 36/36 | done"
   ],
   "random/L05-q36-rnd134p95-B": [
-    "g6 | 1 to go | 9/11 | upnext | open",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | 1 to go | 1/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -1380,7 +1449,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L05-q49-lvonly-A-filters": [
-    "g6 | 1 to go | 5/11 | upnext | open",
+    "g4 | Cleared | 9/9 | done | hidden",
+    "g6 | 1 to go | 1/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -1400,7 +1470,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L05-q54-before-B": [
-    "g6 | 1 to go | 5/11 | upnext | open",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | 1 to go | 1/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -1420,7 +1491,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L05-q60-rnd139p20-A-objs": [
-    "g6 | 1 to go | 2/11 | upnext | open",
+    "g4 | Missed | 1/9 | overdue | open",
+    "g6 | 1 to go | 1/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -1440,7 +1512,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L05-q66-lvonly-B": [
-    "g6 | 1 to go | 5/11 | upnext | open",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | 1 to go | 1/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",
@@ -1460,7 +1533,8 @@
     "g45 | Later | 0/32 | "
   ],
   "random/L05-q70-all-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -1480,7 +1554,8 @@
     "g45 | Cleared | 36/36 | done"
   ],
   "random/L05-q73-all-B-cube": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -1500,7 +1575,8 @@
     "g45 | Cleared | 36/36 | done"
   ],
   "random/L05-q79-lvonly-B": [
-    "g6 | 1 to go | 5/11 | upnext | open",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | 1 to go | 1/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 1/9 | ",
     "g12 | Later | 1/10 | ",

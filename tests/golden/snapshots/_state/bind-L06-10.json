@@ -5,6 +5,7 @@
       "areaLv": ["(absent)","10"],
       "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":6,"quest":"Spread Your Wings","mt":{"level":[0,6],"quest":[500,["Spread Your Wings",null]]}},{"checks":{},"level":6,"quest":"Spread Your Wings","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,6],"quest":[500,["Spread Your Wings",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
+      "open.g4": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
     },
@@ -16,6 +17,7 @@
       "areaLv": ["(absent)","10"],
       "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":6,"quest":"Spread Your Wings","qsteps":{"Spread Your Wings":[0,1,2]},"mt":{"qsteps":{"Spread Your Wings":{"0":[1000,true],"1":[1001,true],"2":[1002,true]}},"level":[0,6],"quest":[500,["Spread Your Wings",null]]}},{"checks":{},"level":6,"quest":"Spread Your Wings","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Spread Your Wings":[0,1,2]},"mt":{"qsteps":{"Spread Your Wings":{"0":[1000,true],"1":[1001,true],"2":[1002,true]}},"level":[0,6],"quest":[500,["Spread Your Wings",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
+      "open.g4": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
     },
@@ -27,6 +29,7 @@
       "areaLv": ["(absent)","10"],
       "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":6,"quest":"Signs of a Crash Landing","mt":{"level":[0,6],"quest":[500,["Signs of a Crash Landing",null]]}},{"checks":{},"level":6,"quest":"Signs of a Crash Landing","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,6],"quest":[500,["Signs of a Crash Landing",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
+      "open.g4": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
     },
@@ -38,6 +41,7 @@
       "areaLv": ["(absent)","10"],
       "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":6,"quest":"Signs of a Crash Landing","qsteps":{"Signs of a Crash Landing":[0,1,2,3,4,5,6,7,8,9]},"mt":{"qsteps":{"Signs of a Crash Landing":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true],"6":[1006,true],"7":[1007,true],"8":[1008,true],"9":[1009,true]}},"level":[0,6],"quest":[500,["Signs of a Crash Landing",null]]}},{"checks":{},"level":6,"quest":"Signs of a Crash Landing","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Signs of a Crash Landing":[0,1,2,3,4,5,6,7,8,9]},"mt":{"qsteps":{"Signs of a Crash Landing":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true],"6":[1006,true],"7":[1007,true],"8":[1008,true],"9":[1009,true]}},"level":[0,6],"quest":[500,["Signs of a Crash Landing",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
+      "open.g4": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
     },
@@ -49,6 +53,7 @@
       "areaLv": ["(absent)","10"],
       "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":7,"quest":"Prison Compound Infiltration Plan","mt":{"level":[0,7],"quest":[500,["Prison Compound Infiltration Plan",null]]}},{"checks":{},"level":7,"quest":"Prison Compound Infiltration Plan","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,7],"quest":[500,["Prison Compound Infiltration Plan",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
+      "open.g4": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
@@ -61,6 +66,7 @@
       "areaLv": ["(absent)","10"],
       "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":7,"quest":"Prison Compound Infiltration Plan","qsteps":{"Prison Compound Infiltration Plan":[0,1,2,3,4,5,6]},"mt":{"qsteps":{"Prison Compound Infiltration Plan":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true],"6":[1006,true]}},"level":[0,7],"quest":[500,["Prison Compound Infiltration Plan",null]]}},{"checks":{},"level":7,"quest":"Prison Compound Infiltration Plan","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Prison Compound Infiltration Plan":[0,1,2,3,4,5,6]},"mt":{"qsteps":{"Prison Compound Infiltration Plan":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true],"6":[1006,true]}},"level":[0,7],"quest":[500,["Prison Compound Infiltration Plan",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
+      "open.g4": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
@@ -73,6 +79,7 @@
       "areaLv": ["(absent)","10"],
       "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":7,"quest":"Brigade Prison Compound Infiltration Operation","mt":{"level":[0,7],"quest":[500,["Brigade Prison Compound Infiltration Operation",null]]}},{"checks":{},"level":7,"quest":"Brigade Prison Compound Infiltration Operation","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,7],"quest":[500,["Brigade Prison Compound Infiltration Operation",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
+      "open.g4": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
@@ -85,6 +92,7 @@
       "areaLv": ["(absent)","10"],
       "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":7,"quest":"Brigade Prison Compound Infiltration Operation","qsteps":{"Brigade Prison Compound Infiltration Operation":[0,1,2,3,4]},"mt":{"qsteps":{"Brigade Prison Compound Infiltration Operation":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,7],"quest":[500,["Brigade Prison Compound Infiltration Operation",null]]}},{"checks":{},"level":7,"quest":"Brigade Prison Compound Infiltration Operation","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Brigade Prison Compound Infiltration Operation":[0,1,2,3,4]},"mt":{"qsteps":{"Brigade Prison Compound Infiltration Operation":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,7],"quest":[500,["Brigade Prison Compound Infiltration Operation",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
+      "open.g4": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
@@ -97,6 +105,7 @@
       "areaLv": ["(absent)","10"],
       "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":9,"quest":"The Longest Night","mt":{"level":[0,9],"quest":[500,["The Longest Night",null]]}},{"checks":{},"level":9,"quest":"The Longest Night","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,9],"quest":[500,["The Longest Night",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
+      "open.g4": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
@@ -109,6 +118,7 @@
       "areaLv": ["(absent)","10"],
       "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":9,"quest":"The Longest Night","qsteps":{"The Longest Night":[0,1]},"mt":{"qsteps":{"The Longest Night":{"0":[1000,true],"1":[1001,true]}},"level":[0,9],"quest":[500,["The Longest Night",null]]}},{"checks":{},"level":9,"quest":"The Longest Night","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"The Longest Night":[0,1]},"mt":{"qsteps":{"The Longest Night":{"0":[1000,true],"1":[1001,true]}},"level":[0,9],"quest":[500,["The Longest Night",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
+      "open.g4": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
@@ -122,6 +132,7 @@
       "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":10,"quest":"Finding Nemon","mt":{"level":[0,10],"quest":[500,["Finding Nemon",null]]}},{"checks":{},"level":10,"quest":"Finding Nemon","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,10],"quest":[500,["Finding Nemon",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
+      "open.g4": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
@@ -135,6 +146,7 @@
       "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":10,"quest":"Survival Supplies","mt":{"level":[0,10],"quest":[500,["Survival Supplies",null]]}},{"checks":{},"level":10,"quest":"Survival Supplies","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,10],"quest":[500,["Survival Supplies",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
+      "open.g4": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
@@ -148,6 +160,7 @@
       "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":10,"quest":"Survival Supplies","qsteps":{"Survival Supplies":[0,1]},"mt":{"qsteps":{"Survival Supplies":{"0":[1000,true],"1":[1001,true]}},"level":[0,10],"quest":[500,["Survival Supplies",null]]}},{"checks":{},"level":10,"quest":"Survival Supplies","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Survival Supplies":[0,1]},"mt":{"qsteps":{"Survival Supplies":{"0":[1000,true],"1":[1001,true]}},"level":[0,10],"quest":[500,["Survival Supplies",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
+      "open.g4": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
@@ -161,6 +174,7 @@
       "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":10,"quest":"Gathering Essentials","mt":{"level":[0,10],"quest":[500,["Gathering Essentials",null]]}},{"checks":{},"level":10,"quest":"Gathering Essentials","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,10],"quest":[500,["Gathering Essentials",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
+      "open.g4": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
@@ -174,6 +188,7 @@
       "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":10,"quest":"Gathering Essentials","qsteps":{"Gathering Essentials":[0,1,2]},"mt":{"qsteps":{"Gathering Essentials":{"0":[1000,true],"1":[1001,true],"2":[1002,true]}},"level":[0,10],"quest":[500,["Gathering Essentials",null]]}},{"checks":{},"level":10,"quest":"Gathering Essentials","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Gathering Essentials":[0,1,2]},"mt":{"qsteps":{"Gathering Essentials":{"0":[1000,true],"1":[1001,true],"2":[1002,true]}},"level":[0,10],"quest":[500,["Gathering Essentials",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
+      "open.g4": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]

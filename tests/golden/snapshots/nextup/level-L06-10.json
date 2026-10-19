@@ -31,13 +31,14 @@
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Story: Signs of a Crash Landing","s":"0/5 objectives · then Prison Compound Infiltration Plan","c":"primary \"Turned in\" story","o":["Go to Anturn Cliff go to Milred (Kibelisk: Witch's Cabin)","Search the airship at the top of Anturn Cliff ride the Updraft to the top (Kibelisk: Witch's Cabin)","Return to Aldelle Village go to Aldelle Village","+2 more after these"]},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5"},
+    {"t":"Story: Signs of a Crash Landing","s":"0/5 objectives · then Prison Compound Infiltration Plan","c":"primary \"Turned in\" story","b":"Lv 6–8","o":["Go to Anturn Cliff go to Milred (Kibelisk: Witch's Cabin)","Search the airship at the top of Anturn Cliff ride the Updraft to the top (Kibelisk: Witch's Cabin)","Return to Aldelle Village go to Aldelle Village","+2 more after these"]},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
-    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
+    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"}
   ],
   "level/L06-q06-none-B": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund"},
     {"t":"Story: Signs of a Crash Landing","s":"0/5 objectives · then Prison Compound Infiltration Plan","c":"primary \"Turned in\" story","o":["Go to Anturn Cliff go to Milred (Kibelisk: Witch's Cabin)","Search the airship at the top of Anturn Cliff ride the Updraft to the top (Kibelisk: Witch's Cabin)","Return to Aldelle Village go to Aldelle Village","+2 more after these"]}
   ],
   "level/L06-q06-rnd1p50-A": [
@@ -106,13 +107,14 @@
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside the prison compound (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village","+1 more after these"]},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5"},
+    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","b":"Lv 6–8","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside the prison compound (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village","+1 more after these"]},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
-    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 4 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
+    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"}
   ],
   "level/L07-q08-none-B": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund"},
     {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside the prison compound (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village","+1 more after these"]}
   ],
   "level/L07-q08-rnd1p50-A": [
@@ -181,13 +183,14 @@
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside the prison compound (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village","+1 more after these"]},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5"},
+    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","b":"Lv 6–8","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside the prison compound (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village","+1 more after these"]},
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
-    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"},
-    {"t":"Buy Assault Stance 1 → 2","s":"Needs Lv 13 · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 13–14"}
+    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "level/L08-q08-none-B": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund"},
     {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"0/4 objectives · then The Longest Night","c":"primary \"Turned in\" story","o":["Infiltrate the prison compound enter the compound (Kibelisk: Aldelle Village)","Escape from the prison compound go outside the prison compound (Kibelisk: Aldelle Village)","Return to Aldelle Village go to Aldelle Village","+1 more after these"]}
   ],
   "level/L08-q08-rnd1p50-A": [
@@ -262,13 +265,14 @@
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
-    {"t":"Story: The Longest Night","s":"0/2 objectives · then Finding Nemon","c":"primary \"Turned in\" story","o":["Sleep at the village cabin go to the village cabin (Kibelisk: Aldelle Village)","Turn in no NPC; escaping from Ishalgen completes the quest"]},
-    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"},
-    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5"},
+    {"t":"Story: The Longest Night","s":"0/2 objectives · then Finding Nemon","c":"primary \"Turned in\" story","b":"Lv 9","o":["Sleep at the village cabin go to the village cabin (Kibelisk: Aldelle Village)","Turn in no NPC; escaping from Ishalgen completes the quest"]},
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "level/L09-q09-none-B": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund"},
     {"t":"Story: The Longest Night","s":"0/2 objectives · then Finding Nemon","c":"primary \"Turned in\" story","o":["Sleep at the village cabin go to the village cabin (Kibelisk: Aldelle Village)","Turn in no NPC; escaping from Ishalgen completes the quest"]}
   ],
   "level/L09-q09-rnd1p50-A": [
@@ -365,7 +369,7 @@
     {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
     {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
-    {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0","b":"Missed · Lv 9"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5"},
     {"t":"Story: Gathering Essentials","s":"0/1 objectives · Kibelisk: Safe Haven (89 m) · then Crash Site Rendezvous","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Turn in Dinoh, Safe Haven"]},
     {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 13 open at your level"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"}
@@ -375,6 +379,7 @@
     {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
     {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund"},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Story: Gathering Essentials","s":"0/1 objectives · Kibelisk: Safe Haven (89 m) · then Crash Site Rendezvous","c":"primary \"Turned in\" story","o":["Turn in Dinoh, Safe Haven"]},
     {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 13 open at your level"},

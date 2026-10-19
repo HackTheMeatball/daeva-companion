@@ -1,6 +1,7 @@
 {
   "story/L01-q00-before-A": [
-    "g6 | 5 to go | 0/11 | upnext | open",
+    "g4 | 3 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -20,7 +21,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L01-q01-before-A": [
-    "g6 | 5 to go | 0/11 | upnext | open",
+    "g4 | 3 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -40,7 +42,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L02-q00-before-A": [
-    "g6 | 4 to go | 0/11 | upnext | open",
+    "g4 | 2 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -60,7 +63,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L02-q00-before-B": [
-    "g6 | 4 to go | 0/11 | upnext | open",
+    "g4 | 2 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -80,7 +84,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L02-q00-none-A": [
-    "g6 | 4 to go | 0/11 | upnext | open",
+    "g4 | 2 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -100,7 +105,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L02-q01-before-A": [
-    "g6 | 4 to go | 0/11 | upnext | open",
+    "g4 | 2 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -120,7 +126,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L02-q01-before-B": [
-    "g6 | 4 to go | 0/11 | upnext | open",
+    "g4 | 2 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -140,7 +147,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L02-q01-none-A": [
-    "g6 | 4 to go | 0/11 | upnext | open",
+    "g4 | 2 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -160,7 +168,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L02-q02-before-A": [
-    "g6 | 4 to go | 0/11 | upnext | open",
+    "g4 | 2 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -180,7 +189,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L03-q02-before-A": [
-    "g6 | 3 to go | 3/11 | upnext | open",
+    "g4 | 1 to go | 3/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -200,7 +210,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L03-q02-before-B": [
-    "g6 | 3 to go | 3/11 | upnext | open",
+    "g4 | 1 to go | 3/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -220,7 +231,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L03-q02-none-A": [
-    "g6 | 3 to go | 0/11 | upnext | open",
+    "g4 | 1 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -240,7 +252,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L03-q03-before-A": [
-    "g6 | 3 to go | 3/11 | upnext | open",
+    "g4 | 1 to go | 3/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -260,7 +273,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L04-q03-before-A": [
-    "g6 | 2 to go | 3/11 | upnext | open",
+    "g4 | Now | 3/9 | current,upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -280,7 +294,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L04-q03-before-B": [
-    "g6 | 2 to go | 3/11 | upnext | open",
+    "g4 | Now | 3/9 | current,upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -300,7 +315,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L04-q03-none-A": [
-    "g6 | 2 to go | 0/11 | upnext | open",
+    "g4 | Now | 0/9 | current,upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -320,7 +336,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L04-q04-before-A": [
-    "g6 | 2 to go | 3/11 | upnext | open",
+    "g4 | Now | 3/9 | current,upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -340,7 +357,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L05-q04-before-A": [
-    "g6 | 1 to go | 4/11 | upnext | open",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | 1 to go | 0/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -360,7 +378,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L05-q04-before-B": [
-    "g6 | 1 to go | 4/11 | upnext | open",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | 1 to go | 0/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -380,7 +399,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L05-q04-none-A": [
-    "g6 | 1 to go | 0/11 | upnext | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | 1 to go | 0/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -400,7 +420,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L05-q05-before-A": [
-    "g6 | 1 to go | 5/11 | upnext | open",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | 1 to go | 1/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -420,7 +441,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L05-q06-before-A": [
-    "g6 | 1 to go | 5/11 | upnext | open",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | 1 to go | 1/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",

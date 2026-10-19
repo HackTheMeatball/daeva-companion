@@ -8,6 +8,7 @@
   ],
   "random/L06-q37-none-B-stfull": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund"},
     {"t":"Story: Finding Stolen Relics","s":"Needs Lv 24: you're 6. Level up first.","c":""}
   ],
   "random/L06-q38-all-B-dv": [
@@ -37,10 +38,10 @@
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Story: Chief of the Black Claw","s":"Needs Lv 42: you're 6. Level up first.","c":""},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5"},
+    {"t":"Story: Chief of the Black Claw","s":"Needs Lv 42: you're 6. Level up first.","c":"","b":"Lv 6–8"},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
-    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
+    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"}
   ],
   "random/L06-q83-all-B-sppts": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
@@ -51,10 +52,10 @@
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Story: The Longest Night","s":"Needs Lv 9: you're 7. Level up first.","c":""},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5"},
+    {"t":"Story: The Longest Night","s":"Needs Lv 9: you're 7. Level up first.","c":"","b":"Lv 6–8"},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
-    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 4 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
+    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"}
   ],
   "random/L07-q20-rnd130p50-B-stready": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
@@ -98,6 +99,7 @@
   ],
   "random/L07-q67-none-B-stready": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund"},
     {"t":"Story: Lake of Confrontation","s":"Needs Lv 37: you're 7. Level up first.","c":""}
   ],
   "random/L07-q73-none-A": [
@@ -105,10 +107,10 @@
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Story: Treatment","s":"Needs Lv 40: you're 7. Level up first.","c":""},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5"},
+    {"t":"Story: Treatment","s":"Needs Lv 40: you're 7. Level up first.","c":"","b":"Lv 6–8"},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
-    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 4 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
+    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"}
   ],
   "random/L07-q79-rnd130p80-A-sppts": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 6–8"},
@@ -125,16 +127,17 @@
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Ambush 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5"},
+    {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest","b":"Lv 6–8"},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
-    {"t":"Buy Savage Roar 4 → 5","s":"Needs Lv 10 · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
+    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"}
   ],
   "random/L08-q02-all-B-stwait": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
     {"t":"Story: Shadow Forest","s":"0/3 objectives · then Isolated Lake","c":"primary \"Turned in\" story","o":["Search Munihelle Forest investigate Munihelle Forest with Maard (Kibelisk: Witch's Cabin)","Find Maard near the village talk to Maard (Kibelisk: Aldelle Village)","Turn in Pelleir (Village Chief), Aldelle Village"]}
   ],
   "random/L08-q09-rnd111p80-A": [
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5"},
     {"t":"Story: The Longest Night","s":"Needs Lv 9: you're 8. Level up first.","c":"","b":"Lv 6–8"},
     {"t":"Buy Ambush 3 → 4","s":"Needs Lv 9 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
     {"t":"Buy Exploit Weakness 2 → 3","s":"Needs Lv 9 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -170,6 +173,7 @@
   ],
   "random/L08-q58-rnd102p20-B-objs": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund"},
     {"t":"Story: Impending Threat","s":"Needs Lv 34: you're 8. Level up first.","c":""}
   ],
   "random/L08-q61-rnd132p50-B-sppts": [
@@ -188,20 +192,20 @@
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5"},
+    {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest","b":"Lv 6–8"},
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
-    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"},
-    {"t":"Buy Assault Stance 1 → 2","s":"Needs Lv 13 · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 13–14"}
+    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "random/L08-qxx-none-A-stfull": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 6–8"},
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5"},
+    {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest","b":"Lv 6–8"},
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
-    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"},
-    {"t":"Buy Assault Stance 1 → 2","s":"Needs Lv 13 · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 13–14"}
+    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "random/L09-q01-all-A-dv": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
@@ -233,6 +237,7 @@
   "random/L09-q21-rnd117p20-B": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund"},
     {"t":"Story: Buried Atrocities","s":"Needs Lv 16: you're 9. Level up first.","c":""}
   ],
   "random/L09-q27-lvonly-A-stready": [
@@ -261,9 +266,9 @@
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
-    {"t":"Story: Disturbed Balance","s":"Needs Lv 22: you're 9. Level up first.","c":""},
-    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"},
-    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5"},
+    {"t":"Story: Disturbed Balance","s":"Needs Lv 22: you're 9. Level up first.","c":"","b":"Lv 9"},
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "random/L09-q46-all-A-sppts": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 9"},
@@ -289,6 +294,7 @@
   "random/L09-q57-none-B-rqmix": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund"},
     {"t":"Story: Blood Monument","s":"Needs Lv 33: you're 9. Level up first.","c":""}
   ],
   "random/L09-q59-none-A-dv": [
@@ -297,9 +303,9 @@
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
-    {"t":"Story: Visible Trap","s":"Needs Lv 34: you're 9. Level up first.","c":"","bd":"Bind Shulak Street Stall on the way 35 m from Nemon bind:kib:shulak-street-stall"},
-    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"},
-    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5"},
+    {"t":"Story: Visible Trap","s":"Needs Lv 34: you're 9. Level up first.","c":"","b":"Lv 9","bd":"Bind Shulak Street Stall on the way 35 m from Nemon bind:kib:shulak-street-stall"},
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "random/L09-q62-before-A": [
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0","b":"Lv 9"},
@@ -315,23 +321,26 @@
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
-    {"t":"Story: Creion of Gribade","s":"Needs Lv 36: you're 9. Level up first.","c":""},
-    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"},
-    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5"},
+    {"t":"Story: Creion of Gribade","s":"Needs Lv 36: you're 9. Level up first.","c":"","b":"Lv 9"},
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "random/L09-q67-rnd113p20-B": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund"},
     {"t":"Story: Lake of Confrontation","s":"Needs Lv 37: you're 9. Level up first.","c":""}
   ],
   "random/L09-q76-none-B": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund"},
     {"t":"Story: Daybreak Society Rescue Operation","s":"Needs Lv 41: you're 9. Level up first.","c":""}
   ],
   "random/L09-q80-none-B": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund"},
     {"t":"Story: The High Priest Awakens","s":"Needs Lv 44: you're 9. Level up first.","c":""}
   ],
   "random/L09-q83-before-A-filters": [

@@ -1,6 +1,7 @@
 {
   "level/L01-q00-before-A": [
-    "g6 | 5 to go | 0/11 | upnext | open",
+    "g4 | 3 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -20,7 +21,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L01-qxx-before-A": [
-    "g6 | 5 to go | 0/11 | upnext | open",
+    "g4 | 3 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -40,7 +42,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L01-qxx-before-B": [
-    "g6 | 5 to go | 0/11 | upnext | open",
+    "g4 | 3 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -60,7 +63,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L01-qxx-lvonly-A": [
-    "g6 | 5 to go | 0/11 | upnext | open",
+    "g4 | 3 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -80,7 +84,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L01-qxx-lvonly-B": [
-    "g6 | 5 to go | 0/11 | upnext | open",
+    "g4 | 3 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -100,7 +105,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L01-qxx-none-A": [
-    "g6 | 5 to go | 0/11 | upnext | open",
+    "g4 | 3 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -120,7 +126,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L01-qxx-none-B": [
-    "g6 | 5 to go | 0/11 | upnext | open",
+    "g4 | 3 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -140,7 +147,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L01-qxx-rnd1p50-A": [
-    "g6 | 5 to go | 2/11 | upnext | open",
+    "g4 | 3 to go | 2/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -160,7 +168,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L01-qxx-rnd1p50-B": [
-    "g6 | 5 to go | 2/11 | upnext | open",
+    "g4 | 3 to go | 2/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -180,7 +189,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L01-qxx-rnd2p85-A": [
-    "g6 | 5 to go | 2/11 | upnext | open",
+    "g4 | 3 to go | 2/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -200,7 +210,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L01-qxx-rnd2p85-B": [
-    "g6 | 5 to go | 2/11 | upnext | open",
+    "g4 | 3 to go | 2/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -220,7 +231,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L02-q01-before-A": [
-    "g6 | 4 to go | 0/11 | upnext | open",
+    "g4 | 2 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -240,7 +252,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L02-q01-before-B": [
-    "g6 | 4 to go | 0/11 | upnext | open",
+    "g4 | 2 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -260,7 +273,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L02-q01-lvonly-A": [
-    "g6 | 4 to go | 0/11 | upnext | open",
+    "g4 | 2 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -280,7 +294,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L02-q01-lvonly-B": [
-    "g6 | 4 to go | 0/11 | upnext | open",
+    "g4 | 2 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -300,7 +315,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L02-q01-none-A": [
-    "g6 | 4 to go | 0/11 | upnext | open",
+    "g4 | 2 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -320,7 +336,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L02-q01-none-B": [
-    "g6 | 4 to go | 0/11 | upnext | open",
+    "g4 | 2 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -340,7 +357,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L02-q01-rnd1p50-A": [
-    "g6 | 4 to go | 2/11 | upnext | open",
+    "g4 | 2 to go | 2/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -360,7 +378,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L02-q01-rnd1p50-B": [
-    "g6 | 4 to go | 2/11 | upnext | open",
+    "g4 | 2 to go | 2/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -380,7 +399,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L02-q01-rnd2p85-A": [
-    "g6 | 4 to go | 2/11 | upnext | open",
+    "g4 | 2 to go | 2/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -400,7 +420,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L02-q01-rnd2p85-B": [
-    "g6 | 4 to go | 2/11 | upnext | open",
+    "g4 | 2 to go | 2/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -420,7 +441,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L02-q02-before-A": [
-    "g6 | 4 to go | 0/11 | upnext | open",
+    "g4 | 2 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -440,7 +462,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L02-qxx-before-A": [
-    "g6 | 4 to go | 0/11 | upnext | open",
+    "g4 | 2 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -460,7 +483,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L03-q02-before-A": [
-    "g6 | 3 to go | 3/11 | upnext | open",
+    "g4 | 1 to go | 3/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -480,7 +504,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L03-q02-before-B": [
-    "g6 | 3 to go | 3/11 | upnext | open",
+    "g4 | 1 to go | 3/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -500,7 +525,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L03-q02-lvonly-A": [
-    "g6 | 3 to go | 3/11 | upnext | open",
+    "g4 | 1 to go | 3/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -520,7 +546,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L03-q02-lvonly-B": [
-    "g6 | 3 to go | 3/11 | upnext | open",
+    "g4 | 1 to go | 3/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -540,7 +567,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L03-q02-none-A": [
-    "g6 | 3 to go | 0/11 | upnext | open",
+    "g4 | 1 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -560,7 +588,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L03-q02-none-B": [
-    "g6 | 3 to go | 0/11 | upnext | open",
+    "g4 | 1 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -580,7 +609,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L03-q02-rnd1p50-A": [
-    "g6 | 3 to go | 3/11 | upnext | open",
+    "g4 | 1 to go | 3/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -600,7 +630,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L03-q02-rnd1p50-B": [
-    "g6 | 3 to go | 3/11 | upnext | open",
+    "g4 | 1 to go | 3/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -620,7 +651,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L03-q02-rnd2p85-A": [
-    "g6 | 3 to go | 2/11 | upnext | open",
+    "g4 | 1 to go | 2/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -640,7 +672,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L03-q02-rnd2p85-B": [
-    "g6 | 3 to go | 2/11 | upnext | open",
+    "g4 | 1 to go | 2/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -660,7 +693,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L03-q03-before-A": [
-    "g6 | 3 to go | 3/11 | upnext | open",
+    "g4 | 1 to go | 3/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -680,7 +714,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L03-qxx-before-A": [
-    "g6 | 3 to go | 3/11 | upnext | open",
+    "g4 | 1 to go | 3/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -700,7 +735,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L04-q03-before-A": [
-    "g6 | 2 to go | 3/11 | upnext | open",
+    "g4 | Now | 3/9 | current,upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -720,7 +756,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L04-q03-before-B": [
-    "g6 | 2 to go | 3/11 | upnext | open",
+    "g4 | Now | 3/9 | current,upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -740,7 +777,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L04-q03-lvonly-A": [
-    "g6 | 2 to go | 3/11 | upnext | open",
+    "g4 | Now | 3/9 | current,upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -760,7 +798,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L04-q03-lvonly-B": [
-    "g6 | 2 to go | 3/11 | upnext | open",
+    "g4 | Now | 3/9 | current,upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -780,7 +819,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L04-q03-none-A": [
-    "g6 | 2 to go | 0/11 | upnext | open",
+    "g4 | Now | 0/9 | current,upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -800,7 +840,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L04-q03-none-B": [
-    "g6 | 2 to go | 0/11 | upnext | open",
+    "g4 | Now | 0/9 | current,upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -820,7 +861,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L04-q03-rnd1p50-A": [
-    "g6 | 2 to go | 6/11 | upnext | open",
+    "g4 | Now | 7/9 | current,upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -840,7 +882,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L04-q03-rnd1p50-B": [
-    "g6 | 2 to go | 6/11 | upnext | open",
+    "g4 | Now | 7/9 | current,upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -860,7 +903,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L04-q03-rnd2p85-A": [
-    "g6 | 2 to go | 5/11 | upnext | open",
+    "g4 | Now | 6/9 | current,upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -880,7 +924,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L04-q03-rnd2p85-B": [
-    "g6 | 2 to go | 5/11 | upnext | open",
+    "g4 | Now | 6/9 | current,upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -900,7 +945,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L04-q04-before-A": [
-    "g6 | 2 to go | 3/11 | upnext | open",
+    "g4 | Now | 3/9 | current,upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -920,7 +966,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L04-qxx-before-A": [
-    "g6 | 2 to go | 3/11 | upnext | open",
+    "g4 | Now | 3/9 | current,upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -940,7 +987,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L05-q01-lvonly-A": [
-    "g6 | 1 to go | 4/11 | upnext | open",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | 1 to go | 0/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -960,7 +1008,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L05-q04-before-A": [
-    "g6 | 1 to go | 4/11 | upnext | open",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | 1 to go | 0/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -980,7 +1029,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L05-q04-before-B": [
-    "g6 | 1 to go | 4/11 | upnext | open",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | 1 to go | 0/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -1000,7 +1050,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L05-q04-lvonly-A": [
-    "g6 | 1 to go | 4/11 | upnext | open",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | 1 to go | 0/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -1020,7 +1071,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L05-q04-lvonly-B": [
-    "g6 | 1 to go | 4/11 | upnext | open",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | 1 to go | 0/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -1040,7 +1092,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L05-q04-none-A": [
-    "g6 | 1 to go | 0/11 | upnext | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | 1 to go | 0/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -1060,7 +1113,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L05-q04-none-B": [
-    "g6 | 1 to go | 0/11 | upnext | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | 1 to go | 0/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -1080,7 +1134,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L05-q04-rnd1p50-A": [
-    "g6 | 1 to go | 6/11 | upnext | open",
+    "g4 | Missed | 7/9 | overdue | open",
+    "g6 | 1 to go | 0/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -1100,7 +1155,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L05-q04-rnd1p50-B": [
-    "g6 | 1 to go | 6/11 | upnext | open",
+    "g4 | Missed | 7/9 | overdue | open",
+    "g6 | 1 to go | 0/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -1120,7 +1176,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L05-q04-rnd2p85-A": [
-    "g6 | 1 to go | 5/11 | upnext | open",
+    "g4 | Missed | 6/9 | overdue | open",
+    "g6 | 1 to go | 0/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -1140,7 +1197,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L05-q04-rnd2p85-B": [
-    "g6 | 1 to go | 5/11 | upnext | open",
+    "g4 | Missed | 6/9 | overdue | open",
+    "g6 | 1 to go | 0/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -1160,7 +1218,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L05-q05-before-A": [
-    "g6 | 1 to go | 5/11 | upnext | open",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | 1 to go | 1/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -1180,7 +1239,8 @@
     "g45 | Later | 0/32 | "
   ],
   "level/L05-qxx-before-A": [
-    "g6 | 1 to go | 4/11 | upnext | open",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | 1 to go | 0/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",

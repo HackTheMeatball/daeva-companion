@@ -1,6 +1,7 @@
 {
   "story/L41-q75-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -20,7 +21,8 @@
     "g45 | 4 to go | 0/32 | upnext | open"
   ],
   "story/L41-q75-before-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -40,7 +42,8 @@
     "g45 | 4 to go | 0/32 | upnext | open"
   ],
   "story/L41-q75-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -60,7 +63,8 @@
     "g45 | 4 to go | 0/32 | upnext | open"
   ],
   "story/L41-q76-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -80,7 +84,8 @@
     "g45 | 4 to go | 0/32 | upnext | open"
   ],
   "story/L41-q76-before-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -100,7 +105,8 @@
     "g45 | 4 to go | 0/32 | upnext | open"
   ],
   "story/L41-q76-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -120,7 +126,8 @@
     "g45 | 4 to go | 0/32 | upnext | open"
   ],
   "story/L41-q77-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -140,7 +147,8 @@
     "g45 | 4 to go | 0/32 | upnext | open"
   ],
   "story/L41-q78-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -160,7 +168,8 @@
     "g45 | 4 to go | 0/32 | upnext | open"
   ],
   "story/L42-q77-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -180,7 +189,8 @@
     "g45 | 3 to go | 0/32 | upnext | open"
   ],
   "story/L42-q77-before-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -200,7 +210,8 @@
     "g45 | 3 to go | 0/32 | upnext | open"
   ],
   "story/L42-q77-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -220,7 +231,8 @@
     "g45 | 3 to go | 0/32 | upnext | open"
   ],
   "story/L42-q78-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -240,7 +252,8 @@
     "g45 | 3 to go | 0/32 | upnext | open"
   ],
   "story/L42-q78-before-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -260,7 +273,8 @@
     "g45 | 3 to go | 0/32 | upnext | open"
   ],
   "story/L42-q78-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -280,7 +294,8 @@
     "g45 | 3 to go | 0/32 | upnext | open"
   ],
   "story/L42-q79-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -300,7 +315,8 @@
     "g45 | 3 to go | 0/32 | upnext | open"
   ],
   "story/L43-q79-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -320,7 +336,8 @@
     "g45 | 2 to go | 0/32 | upnext | open"
   ],
   "story/L43-q79-before-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -340,7 +357,8 @@
     "g45 | 2 to go | 0/32 | upnext | open"
   ],
   "story/L43-q79-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -360,7 +378,8 @@
     "g45 | 2 to go | 0/32 | upnext | open"
   ],
   "story/L43-q80-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -380,7 +399,8 @@
     "g45 | 2 to go | 0/32 | upnext | open"
   ],
   "story/L43-q81-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -400,7 +420,8 @@
     "g45 | 2 to go | 0/32 | upnext | open"
   ],
   "story/L43-q82-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -420,7 +441,8 @@
     "g45 | 2 to go | 0/32 | upnext | open"
   ],
   "story/L44-q80-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -440,7 +462,8 @@
     "g45 | 1 to go | 0/32 | upnext | open"
   ],
   "story/L44-q80-before-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -460,7 +483,8 @@
     "g45 | 1 to go | 0/32 | upnext | open"
   ],
   "story/L44-q80-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -480,7 +504,8 @@
     "g45 | 1 to go | 0/32 | upnext | open"
   ],
   "story/L44-q81-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -500,7 +525,8 @@
     "g45 | 1 to go | 0/32 | upnext | open"
   ],
   "story/L44-q81-before-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -520,7 +546,8 @@
     "g45 | 1 to go | 0/32 | upnext | open"
   ],
   "story/L44-q81-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -540,7 +567,8 @@
     "g45 | 1 to go | 0/32 | upnext | open"
   ],
   "story/L44-q82-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -560,7 +588,8 @@
     "g45 | 1 to go | 0/32 | upnext | open"
   ],
   "story/L44-q82-before-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -580,7 +609,8 @@
     "g45 | 1 to go | 0/32 | upnext | open"
   ],
   "story/L44-q82-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -600,7 +630,8 @@
     "g45 | 1 to go | 0/32 | upnext | open"
   ],
   "story/L44-q83-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -620,7 +651,8 @@
     "g45 | 1 to go | 0/32 | upnext | open"
   ],
   "story/L44-q84-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -640,7 +672,8 @@
     "g45 | 1 to go | 0/32 | upnext | open"
   ],
   "story/L44-q85-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -660,7 +693,8 @@
     "g45 | 1 to go | 0/32 | upnext | open"
   ],
   "story/L44-q86-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -680,7 +714,8 @@
     "g45 | 1 to go | 0/32 | upnext | open"
   ],
   "story/L45-q00-before-A": [
-    "g6 | Missed | 10/11 | overdue | open",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Missed | 2/3 | overdue | open",
     "g9 | Cleared | 7/7 | done",
     "g10 | Missed | 8/9 | overdue | open",
     "g12 | Missed | 9/10 | overdue | open",
@@ -700,7 +735,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q00-none-A": [
-    "g6 | Missed | 0/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 0/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 0/9 | overdue | open",
     "g12 | Missed | 0/10 | overdue | open",
@@ -720,7 +756,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q01-before-A": [
-    "g6 | Missed | 10/11 | overdue | open",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Missed | 2/3 | overdue | open",
     "g9 | Cleared | 7/7 | done",
     "g10 | Missed | 8/9 | overdue | open",
     "g12 | Missed | 9/10 | overdue | open",
@@ -740,7 +777,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q01-none-A": [
-    "g6 | Missed | 0/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 0/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 0/9 | overdue | open",
     "g12 | Missed | 0/10 | overdue | open",
@@ -760,7 +798,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q02-before-A": [
-    "g6 | Missed | 10/11 | overdue | open",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Missed | 2/3 | overdue | open",
     "g9 | Cleared | 7/7 | done",
     "g10 | Missed | 8/9 | overdue | open",
     "g12 | Missed | 9/10 | overdue | open",
@@ -780,7 +819,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q02-none-A": [
-    "g6 | Missed | 0/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 0/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 0/9 | overdue | open",
     "g12 | Missed | 0/10 | overdue | open",
@@ -800,7 +840,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q03-before-A": [
-    "g6 | Missed | 10/11 | overdue | open",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Missed | 2/3 | overdue | open",
     "g9 | Cleared | 7/7 | done",
     "g10 | Missed | 8/9 | overdue | open",
     "g12 | Missed | 9/10 | overdue | open",
@@ -820,7 +861,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q03-none-A": [
-    "g6 | Missed | 0/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 0/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 0/9 | overdue | open",
     "g12 | Missed | 0/10 | overdue | open",
@@ -840,7 +882,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q04-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Missed | 8/9 | overdue | open",
     "g12 | Missed | 9/10 | overdue | open",
@@ -860,7 +903,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q04-none-A": [
-    "g6 | Missed | 0/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 0/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 0/9 | overdue | open",
     "g12 | Missed | 0/10 | overdue | open",
@@ -880,7 +924,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q05-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Missed | 8/9 | overdue | open",
     "g12 | Missed | 9/10 | overdue | open",
@@ -900,7 +945,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q05-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 0/9 | overdue | open",
     "g12 | Missed | 0/10 | overdue | open",
@@ -920,7 +966,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q06-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Missed | 8/9 | overdue | open",
     "g12 | Missed | 9/10 | overdue | open",
@@ -940,7 +987,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q06-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 0/9 | overdue | open",
     "g12 | Missed | 0/10 | overdue | open",
@@ -960,7 +1008,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q07-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Missed | 8/9 | overdue | open",
     "g12 | Missed | 9/10 | overdue | open",
@@ -980,7 +1029,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q07-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 0/9 | overdue | open",
     "g12 | Missed | 0/10 | overdue | open",
@@ -1000,7 +1050,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q08-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Missed | 8/9 | overdue | open",
     "g12 | Missed | 9/10 | overdue | open",
@@ -1020,7 +1071,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q08-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 0/9 | overdue | open",
     "g12 | Missed | 0/10 | overdue | open",
@@ -1040,7 +1092,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q09-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Missed | 8/9 | overdue | open",
     "g12 | Missed | 9/10 | overdue | open",
@@ -1060,7 +1113,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q09-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 0/9 | overdue | open",
     "g12 | Missed | 0/10 | overdue | open",
@@ -1080,7 +1134,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q10-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Missed | 8/9 | overdue | open",
     "g12 | Missed | 9/10 | overdue | open",
@@ -1100,7 +1155,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q10-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 0/9 | overdue | open",
     "g12 | Missed | 0/10 | overdue | open",
@@ -1120,7 +1176,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q11-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Missed | 8/9 | overdue | open",
     "g12 | Missed | 9/10 | overdue | open",
@@ -1140,7 +1197,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q11-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 0/9 | overdue | open",
     "g12 | Missed | 0/10 | overdue | open",
@@ -1160,7 +1218,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q12-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Missed | 9/10 | overdue | open",
@@ -1180,7 +1239,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q12-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 0/9 | overdue | open",
     "g12 | Missed | 0/10 | overdue | open",
@@ -1200,7 +1260,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q13-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Missed | 9/10 | overdue | open",
@@ -1220,7 +1281,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q13-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 0/10 | overdue | open",
@@ -1240,7 +1302,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q14-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Missed | 9/10 | overdue | open",
@@ -1260,7 +1323,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q14-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 0/10 | overdue | open",
@@ -1280,7 +1344,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q15-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Missed | 9/10 | overdue | open",
@@ -1300,7 +1365,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q15-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 0/10 | overdue | open",
@@ -1320,7 +1386,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q16-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Missed | 9/10 | overdue | open",
@@ -1340,7 +1407,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q16-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 0/10 | overdue | open",
@@ -1360,7 +1428,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q17-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -1380,7 +1449,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q17-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 0/10 | overdue | open",
@@ -1400,7 +1470,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q18-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -1420,7 +1491,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q18-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -1440,7 +1512,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q19-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -1460,7 +1533,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q19-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -1480,7 +1554,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q20-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -1500,7 +1575,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q20-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -1520,7 +1596,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q21-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -1540,7 +1617,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q21-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -1560,7 +1638,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q22-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -1580,7 +1659,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q22-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -1600,7 +1680,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q23-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -1620,7 +1701,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q23-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -1640,7 +1722,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q24-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -1660,7 +1743,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q24-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -1680,7 +1764,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q25-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -1700,7 +1785,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q25-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -1720,7 +1806,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q26-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -1740,7 +1827,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q26-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -1760,7 +1848,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q27-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -1780,7 +1869,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q27-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -1800,7 +1890,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q28-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -1820,7 +1911,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q28-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -1840,7 +1932,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q29-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -1860,7 +1953,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q29-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -1880,7 +1974,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q30-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -1900,7 +1995,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q30-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -1920,7 +2016,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q31-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -1940,7 +2037,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q31-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -1960,7 +2058,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q32-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -1980,7 +2079,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q32-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -2000,7 +2100,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q33-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -2020,7 +2121,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q33-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -2040,7 +2142,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q34-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -2060,7 +2163,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q34-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -2080,7 +2184,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q35-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -2100,7 +2205,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q35-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -2120,7 +2226,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q36-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -2140,7 +2247,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q36-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -2160,7 +2268,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q37-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -2180,7 +2289,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q37-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -2200,7 +2310,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q38-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -2220,7 +2331,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q38-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -2240,7 +2352,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q39-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -2260,7 +2373,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q39-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -2280,7 +2394,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q40-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -2300,7 +2415,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q40-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -2320,7 +2436,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q41-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -2340,7 +2457,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q41-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -2360,7 +2478,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q42-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -2380,7 +2499,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q42-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -2400,7 +2520,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q43-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -2420,7 +2541,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q43-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -2440,7 +2562,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q44-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -2460,7 +2583,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q44-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -2480,7 +2604,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q45-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -2500,7 +2625,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q45-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -2520,7 +2646,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q46-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -2540,7 +2667,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q46-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -2560,7 +2688,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q47-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -2580,7 +2709,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q47-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -2600,7 +2730,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q48-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -2620,7 +2751,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q48-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -2640,7 +2772,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q49-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -2660,7 +2793,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q49-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -2680,7 +2814,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q50-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -2700,7 +2835,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q50-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -2720,7 +2856,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q51-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -2740,7 +2877,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q51-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -2760,7 +2898,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q52-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -2780,7 +2919,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q52-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -2800,7 +2940,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q53-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -2820,7 +2961,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q53-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -2840,7 +2982,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q54-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -2860,7 +3003,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q54-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -2880,7 +3024,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q55-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -2900,7 +3045,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q55-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -2920,7 +3066,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q56-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -2940,7 +3087,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q56-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -2960,7 +3108,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q57-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -2980,7 +3129,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q57-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -3000,7 +3150,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q58-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -3020,7 +3171,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q58-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -3040,7 +3192,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q59-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -3060,7 +3213,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q59-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -3080,7 +3234,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q60-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -3100,7 +3255,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q60-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -3120,7 +3276,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q61-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -3140,7 +3297,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q61-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -3160,7 +3318,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q62-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -3180,7 +3339,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q62-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -3200,7 +3360,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q63-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -3220,7 +3381,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q63-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -3240,7 +3402,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q64-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -3260,7 +3423,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q64-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -3280,7 +3444,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q65-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -3300,7 +3465,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q65-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -3320,7 +3486,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q66-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -3340,7 +3507,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q66-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -3360,7 +3528,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q67-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -3380,7 +3549,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q67-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -3400,7 +3570,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q68-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -3420,7 +3591,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q68-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -3440,7 +3612,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q69-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -3460,7 +3633,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q69-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -3480,7 +3654,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q70-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -3500,7 +3675,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q70-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -3520,7 +3696,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q71-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -3540,7 +3717,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q71-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -3560,7 +3738,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q72-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -3580,7 +3759,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q72-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -3600,7 +3780,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q73-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -3620,7 +3801,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q73-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -3640,7 +3822,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q74-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -3660,7 +3843,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q74-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -3680,7 +3864,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q75-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -3700,7 +3885,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q75-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -3720,7 +3906,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q76-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -3740,7 +3927,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q76-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -3760,7 +3948,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q77-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -3780,7 +3969,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q77-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -3800,7 +3990,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q78-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -3820,7 +4011,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q78-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -3840,7 +4032,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q79-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -3860,7 +4053,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q79-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -3880,7 +4074,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q80-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -3900,7 +4095,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q80-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -3920,7 +4116,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q81-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -3940,7 +4137,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q81-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -3960,7 +4158,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q82-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -3980,7 +4179,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q82-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -4000,7 +4200,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q83-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -4020,7 +4221,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q83-before-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -4040,7 +4242,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q83-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -4060,7 +4263,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q84-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -4080,7 +4284,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q84-before-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -4100,7 +4305,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q84-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -4120,7 +4326,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q85-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -4140,7 +4347,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q85-before-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -4160,7 +4368,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q85-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -4180,7 +4389,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q86-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -4200,7 +4410,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q86-before-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -4220,7 +4431,8 @@
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q86-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",

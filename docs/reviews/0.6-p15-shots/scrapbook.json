@@ -1,0 +1,6 @@
+[
+  { "case": "nextup-lv4-390", "kind": "before-after", "title": "Refund the tutorial's skill point",
+    "caption": "At Lv 4, Next up now asks you once to refund the Quick Slice point the Skills tutorial spent." },
+  { "case": "milestone-lv4-1280", "kind": "screenshot", "title": "New Lv 4 Skills window milestone",
+    "caption": "A Lv 4 milestone with the refund steps (K, the circular-arrow button, Reset) and the skill upgrades that open by Lv 4." }
+]

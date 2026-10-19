@@ -111,11 +111,35 @@
       "id": "tip:respec",
       "key": "respec",
       "title": "Free respec",
-      "body": "<p>The reset button beside your skill point counter refunds every Skill Point you've spent (Daevanion, Arcana and gear levels aren't refunded) and turns off your specialty effects, so re-pick those after a reset.</p>\n    <p>It's free at least until level 31. MeinMMO says it costs Kina after that; allthings.how says it's free and unlimited. Check the button's cost when you reach 31.</p>",
-      "credit": "MeinMMO, allthings.how",
-      "verifiedAt": "2026-10-12",
+      "body": "<p><b>One skill:</b> press <b>K</b>, select the skill, then click the circular-arrow button to the left of <b>Level Up</b> and confirm \"Would you like to reset the skill?\" with <b>Reset</b>. <b>All skills:</b> the small round icon to the right of the skill-point bar's (i) button resets all skills to 1; confirm \"Would you like to reset all skills?\" with <b>Reset</b>.</p>\n    <p>Both dialogs say all Skill Specialty effects are deactivated on reset, so re-pick those after a reset. Spent Skill Points come back (Daevanion, Arcana and gear levels aren't refunded).</p>\n    <p>It's free at least until level 31. Cost after 31: disputed. MeinMMO says it costs Kina; allthings.how says it's free and unlimited. Check the button's cost when you reach 31.</p>",
+      "credit": "your game, MeinMMO, allthings.how",
+      "verifiedAt": "2026-10-18",
       "claims": [
         "C01"
+      ],
+      "sources": [
+        {
+          "owner": {
+            "ref": "owner:2026-10-18-skill-reset-01",
+            "checkedAt": "2026-10-18",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Reset one skill (DECISIONS owner-ok-keys, 2026-10-18): circular arrow left of Level Up; \"Would you like to reset the skill?\" [Cancel] [Reset]"
+          }
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-18-skill-reset-02",
+            "checkedAt": "2026-10-18",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Reset all skills (DECISIONS owner-ok-keys, 2026-10-18): round icon right of the (i) button; \"Would you like to reset all skills?\" [Cancel] [Reset]"
+          }
+        }
       ]
     },
     {
