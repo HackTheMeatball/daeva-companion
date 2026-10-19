@@ -1,0 +1,37 @@
+build,voice,kind,order,name,value,status,checkedAt,page_url,notes
+leveling-1-45,editorial,skill-target,1,Vicious Strike,Lv 10,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,2,Pummel,Lv 10,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,3,Poach,Lv 10,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,4,Shield Smite,Lv 10,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,5,Judgment,Lv 10,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,6,Warding Strike,Lv 10,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,7,Punishment,Lv 10,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,8,Enhance Health,Lv 10,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,9,Punishing Benediction,Lv 10,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,10,Annihilate,Lv 7,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,11,Ironclad Defense,Lv 5,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,stigma-slot,1,Taunt,"slot 1 (Lv 22), stigma Lv 8",single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar/build,
+leveling-1-45,editorial,stigma-slot,2,Empyrean Lord's Punishment,"slot 2 (Lv 27), stigma Lv 7",single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar/build,
+leveling-1-45,editorial,stigma-slot,3,Battlefield Banner,"slot 3 (Lv 32), stigma Lv 5",single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar/build,
+leveling-1-45,editorial,stigma-slot,4,Doom Shield,"slot 4 (Lv 37), stigma Lv 4",single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar/build,
+leveling-1-45,editorial,rotation,1,"Pull with Poach, stun with Shield Smite, Judgment in the window, Annihilate on the stunned target, Punishment, Warding Strike to heal, Vicious Strike as filler",,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar/build,"our summary of the page text, not its wording"
+endgame-pve-top-players,"aggregate (153 tracked Lv 45 players, updated ~2026-10-03)",stigma-slot,1,Taunt,"slot 1 (Lv 22), pick 76%",single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar/build,
+endgame-pve-top-players,"aggregate (153 tracked Lv 45 players, updated ~2026-10-03)",stigma-slot,2,Empyrean Lord's Punishment,"slot 2 (Lv 27), pick 67%",single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar/build,
+endgame-pve-top-players,"aggregate (153 tracked Lv 45 players, updated ~2026-10-03)",stigma-slot,3,Battlefield Banner,"slot 3 (Lv 32), pick 65%",single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar/build,
+endgame-pve-top-players,"aggregate (153 tracked Lv 45 players, updated ~2026-10-03)",stigma-slot,4,Doom Shield,"slot 4 (Lv 37), pick 61%",single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar/build,
+endgame-pve-top-players,aggregate,core-skill,1,Vicious Strike,98% pick,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar,
+endgame-pve-top-players,aggregate,core-skill,2,Punishment,98% pick,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar,
+endgame-pve-top-players,aggregate,core-skill,3,Poach,98% pick,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar,
+endgame-pve-top-players,aggregate,core-skill,4,Warding Strike,98% pick,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar,
+endgame-pve-top-players,aggregate,core-skill,5,Shield Rush,98% pick,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar,
+class-builds-guide,editorial,stigma-slot,1,Taunt,slot 1 (Lv 22),single-source,2026-10-19,https://metabot.gg/en/aion-2/guides/class-builds-guide,same order as the leveling build and the top players
+class-builds-guide,editorial,stigma-slot,2,Empyrean Lord's Punishment,slot 2 (Lv 27),single-source,2026-10-19,https://metabot.gg/en/aion-2/guides/class-builds-guide,same order as the leveling build and the top players
+class-builds-guide,editorial,stigma-slot,3,Battlefield Banner,slot 3 (Lv 32),single-source,2026-10-19,https://metabot.gg/en/aion-2/guides/class-builds-guide,same order as the leveling build and the top players
+class-builds-guide,editorial,stigma-slot,4,Doom Shield,slot 4 (Lv 37),single-source,2026-10-19,https://metabot.gg/en/aion-2/guides/class-builds-guide,same order as the leveling build and the top players
+class-page-stat-priority,editorial,stat-priority,1,Block,,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar,class-builds guide gives the same five in the same order
+class-page-stat-priority,editorial,stat-priority,2,Defense,,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar,class-builds guide gives the same five in the same order
+class-page-stat-priority,editorial,stat-priority,3,HP,,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar,class-builds guide gives the same five in the same order
+class-page-stat-priority,editorial,stat-priority,4,Critical Hit Resist,,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar,class-builds guide gives the same five in the same order
+class-page-stat-priority,editorial,stat-priority,5,Attack,,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar,class-builds guide gives the same five in the same order
+class-page-daevanion-path,editorial,board-path,1,"Nezekan: Enhance Health, Ironclad Defense and Guarding Seal node pairs",,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar,class-builds guide says the same
+class-page-daevanion-path,editorial,board-path,2,"Zikel: Fury, then Insulting Roar",,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/templar,"Zikel opens at Lv 20; Fury is learned at Lv 21, Insulting Roar at Lv 17"
