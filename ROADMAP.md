@@ -971,8 +971,8 @@ build times that would change them. Each item's problem, result, no-gos, accepta
 | P10 | Icons sit loose in Next up cards (#421) → on phones the icon box sits beside the title, lines run full width under it, and Show moves into the title row so the card is about 30 % shorter (owner A, 2:39 PM ET; Design Lead round 2, `tracker/mockups/0.8-owner-ok-v2/` §1 and `1c-icon-balance.png`); desktop unchanged | S | Sonnet | nextup.css | `owner-ok-0.8-icon-fit` (met, 2026-10-19 1:36 AM ET), `owner-ok-0.8-icon-box` |
 | P11 | Map markers on Next up tiles read small → sized by the visible emblem (Design Lead mockup, DESIGN OK 4:47 AM ET) | S | Sonnet | nextup.css | `owner-ok-0.8-marker-size` |
 | P12 | First-time players don't see the class choice (#333-3) → a class picker for all 8 classes on the welcome card: 8 badges (`radiogroup`), Metabot class emblems, "Soon" and not pickable for classes with no guide (owner A, 2:35 PM ET; Design Lead round 2, §3) | M | Sonnet | welcome, a11y | `owner-ok-0.8-welcome-class` |
-| P13 | Regional quests and the extract tip lack the game's icons, and the click-twice box hides its second state → the state icon (#409: the owner's star crop, Metabot's `quest_district`, ✓) replaces the box, marked by one "Picked up" / "Turned in" / Undo button, in milestone rows and the Next up card, where every quest row also shows its map pin left of the button and long names are cut with "…"; the ✓ is a centred SVG (owner A, 2:36–2:40 PM ET; `2b-check-fix.png`, `2c-map-pin.png`), same `started`/`checks` data, no save change; extract flask unchanged (Design Lead round 2, §2 and §4) | L | Sonnet | gen, golden, nextup.css, milestones | `owner-ok-0.8-crop-icons` |
-| P14 | Key setup and macro steps don't match the game (#387) → the game's grid, the macro on right click, Shadowstrike on E | M | Opus | gen, golden, build-card, a11y | `research-387-macro` |
+| P13 | Regional quests and the extract tip lack the game's icons, and the click-twice box hides its second state → the state icon (#409: the owner's star crop, Metabot's `quest_district`, ✓) replaces the box, marked by one "Picked up" / "Turned in" / Undo button, in milestone rows and the Next up card, where every quest row also shows its map pin left of the button and long names are cut with "…"; the ✓ is a centred SVG (owner A, 2:36–2:40 PM ET; `2b-check-fix.png`, `2c-map-pin.png`), same `started`/`checks` data, no save change; extract flask unchanged (Design Lead round 2, §2 and §4) | L | Opus | gen, golden, nextup.css, rows | `owner-ok-0.8-crop-icons` |
+| P14 | Key setup and macro steps don't match the game (#387) → the game's grid, the macro on right click, Shadowstrike on E | M | Opus | gen, golden, build-card, a11y, rows | `research-387-macro` |
 | P15 | Auto level-up fires at the wrong level (#401) → it uses the level the quest is turned in at | M | Opus | gen, golden | `research-401-levels` |
 | R | Release 0.8.0 | S | Sonnet | release, alone | everything above, or moved to 0.8.x; `DATA OK 0.8.0` |
 
@@ -991,6 +991,7 @@ places), a 0.9 candidate.
 
 At most five builds at a time. Serial lanes: **gen** P1 → P2 → P3 → P4 → P5 → P13 → P14 → P15 (every item that
 touches `data/`); **golden** the same items; **a11y** P7 → P9 → P8 → P12 → P14; **nextup.css** P10 → P11 → P13;
+**rows** (`rows.js`) P13 → P14;
 **welcome** P8 → P12; **build-card** P9 → P14; **site** P6 alone. Critical path: `research-templar` (in, #447) → P2 →
 P3 → P4 → P5 → R. The gen/golden lane is the bottleneck: the non-class items on it (P13, P14, P15) run after the class
 packs, since those are the minor's point.
@@ -1002,8 +1003,8 @@ packs, since those are the minor's point.
 | 3 | P8 (a11y, welcome) ∥ P3 (gen, golden) |
 | 4 | P12 (a11y, welcome; gated) ∥ P4 (gen) |
 | 5 | P5 (gen, golden) |
-| 6 | P13 (gen, golden, nextup.css; gated) |
-| 7 | P14 (gen, golden, build-card, a11y) |
+| 6 | P13 (gen, golden, nextup.css, rows; gated) |
+| 7 | P14 (gen, golden, build-card, a11y, rows) |
 | 8 | P15 (gen, golden), when its level notes are in |
 | 9 | R, alone, after the CHANGELOG draft (K17) and `DATA OK 0.8.0` |
 
@@ -1020,20 +1021,16 @@ Release Planner's (T-50, build only), typed in the Release planning (Walter) thr
 0.8 OK: build as planned
 ```
 
-That records `owner-ok-0.8-go` (the planner queues 0.8 in #114). The looks are Design Lead's To-do (round 2, after the
-owner's T-50 notes of 2:13 PM ET; boards and spec in `/mnt/project-files/tracker/mockups/0.8-owner-ok-v2/`; Design Lead
-recommends A on all three, and any letter can be swapped to B), typed in the Design Lead (Jane) thread; the Release
-Planner reads the message there and records it:
-
-```
-0.8 looks: icon A, quest A, class A
-```
-
-"icon" records `owner-ok-0.8-marker-size` (P11, the size he kept) and `owner-ok-0.8-icon-box` (P10, box position);
-"quest" records `owner-ok-0.8-crop-icons` (P13: the owner's regional star crop, Metabot's `quest_district` map marker,
-which the 0.6.2 map-icons OK didn't cover, the marking control, and the unchanged extract flask); "class" records
-`owner-ok-0.8-welcome-class` (P12, including the Metabot class emblems, new game art outside the standing icon OK).
-The owner answered all three on the boards, 2:35–2:40 PM ET, each A (DECISIONS rows), with his own tweaks that Design Lead drew: P10 also balances the phone card (Show in the title row, `1c-icon-balance.png`); P13 builds the centred SVG check (`2b-check-fix.png`) and a map pin on every Next up quest row, left of the button, long names cut with "…" (`2c-map-pin.png`). The looks line is no longer needed. The go and the looks are independent: ungated items build on the go alone. Optional, only to change a default: name a
+That records `owner-ok-0.8-go` (the planner queues 0.8 in #114). The looks were Design Lead's To-do (T-51, round 2
+after the owner's T-50 notes of 2:13 PM ET; boards and spec in `/mnt/project-files/tracker/mockups/0.8-owner-ok-v2/`),
+answered on the boards, so no looks line is needed: "icon" recorded `owner-ok-0.8-marker-size` (P11) and
+`owner-ok-0.8-icon-box` (P10), "quest" `owner-ok-0.8-crop-icons` (P13, with Metabot's `quest_district` map marker,
+which the 0.6.2 map-icons OK didn't cover), "class" `owner-ok-0.8-welcome-class` (P12, with the Metabot class emblems).
+The owner answered all three on the boards, 2:35–2:40 PM ET, each A (DECISIONS rows), with his own tweaks that Design
+Lead drew: P10 also balances the phone card (Show in the title row, `1c-icon-balance.png`); P13 builds the centred SVG
+check (`2b-check-fix.png`) and a map pin on every Next up quest row, left of the button, long names cut with "…"
+(`2c-map-pin.png`). The go and the looks are independent: ungated items build on the go alone. Optional, only to
+change a default: name a
 different class for 0.8 (default Templar and Cleric).
 
 Not OKs, but only the owner can do them. None blocks a wave:
