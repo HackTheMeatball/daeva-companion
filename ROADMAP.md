@@ -122,6 +122,11 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
    thread the decision affects when it opens and when it is answered (owner, 2026-10-19 2:20 PM ET; trial through
    0.8). Every decision is recorded on the tracker as **user remediated** (the owner chose) or **Claude
    remediated** (the recommendation applied under a standing approval), so the owner can see which calls were whose.
+   **Design Critic (owner, 2026-10-19 6:02 PM ET):** for every minor with visible changes, and for Design Lead's 1.0
+   design review, Coordinator (Saul) starts a one-off Design Critic thread that took no part in the design. Before the
+   owner sees Design Lead (Jane)'s mockups, it reviews them against `docs/team/ux-review-checklist.md` and a "looks
+   AI-made" checklist and sends its findings to Jane and to the morning debrief. Jane answers each finding in writing;
+   the final look OK stays the owner's.
    **When (Kaizen K15, 2026-10-19; replaces K10):** the planning pass lists every OK the minor needs, each with its
    recommendation, the exact words to type and the thread to type them in (the thread whose session records it). That
    includes the minor's standing ship OK, one per minor covering the .0 and every patch (rules audit COM-03; owner,
