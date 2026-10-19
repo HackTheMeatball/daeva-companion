@@ -1,0 +1,65 @@
+{
+  "$schema": "../../../schema/confidence.schema.json",
+  "schemaVersion": 2,
+  "collection": "confidence",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "conf:core-order",
+      "group": "verified",
+      "order": 46,
+      "text": "Gladiator skill points: Rending Blow, Overhead Slam, Ruinous Blow and Attack Preparation to 10, then {skillOrderTwoSource} (the two flat passives to 10, the others to 8) (Metabot, daevaguides, mmo-codex, aion2turkiye). Rending Blow first, Ruinous Blow from Lv 14 and the two flat passives the level they are learned are two-source; the order between those rules is inferred.",
+      "placeholders": [
+        "skillOrderTwoSource"
+      ]
+    },
+    {
+      "id": "conf:first-nodes",
+      "group": "disputed",
+      "order": 233,
+      "text": "First Daevanion nodes: Overhead Slam, Rending Blow and Ruinous Blow on Nezekan and Zikel (daevaguides, aion2turkiye); Metabot starts on the Attack Preparation and Survival Stance pairs instead."
+    },
+    {
+      "id": "conf:learn-levels",
+      "group": "verified",
+      "order": 45,
+      "text": "Gladiator learn levels (Mocking Blade 3, Rush Strike 10, Ruinous Blow 14 and the rest): Metabot's skill pages (game data)."
+    },
+    {
+      "id": "conf:ruinous-pick",
+      "group": "disputed",
+      "order": 232,
+      "text": "Ruinous Blow's Lv 8 pick: +20% Skill Speed (daevaguides, skycoach) over +30% Skill Critical Hit (aion2turkiye and two creators) or +12.5 m range; the guide takes Skill Speed."
+    },
+    {
+      "id": "conf:skill-disputed",
+      "group": "disputed",
+      "order": 231,
+      "text": "Keen Strike to 10 (Metabot and daevaguides; mmo-codex and aion2turkiye say 8) and Leaping Slam to 8 (daevaguides, mmo-codex; Metabot and aion2turkiye say 10): the guide takes 10 and 8."
+    },
+    {
+      "id": "conf:specialty-picks",
+      "group": "verified",
+      "order": 71,
+      "text": "Specialty picks: Rending Blow mobile, Overhead Slam Upward Strike chain, Keen Strike +20% MP at skill Lv 8; Rending Blow, Overhead Slam and Keen Strike's Lv 12 picks (daevaguides, mmo-codex, aion2turkiye, skycoach)."
+    },
+    {
+      "id": "conf:stat-tiers",
+      "group": "single-source",
+      "order": 186,
+      "text": "Stat priority (Attack, Critical Hit, Accuracy Bonus): Metabot's Gladiator page and class-builds guide (one site)."
+    },
+    {
+      "id": "conf:stigma-plan",
+      "group": "disputed",
+      "order": 234,
+      "text": "Stigmas Lunge Stance, Zikel's Blessing, Lifestealing Blade, Rage Burst (Metabot, aion2turkiye and daevaguides take these four); every source orders them differently, so the slot order is the guide's pick (Lunge Stance first has four sources). Raised to 8 / 6 / 5 / 5; Rage Burst 5 for its cooldown perk is two-source."
+    },
+    {
+      "id": "conf:stigmas",
+      "group": "verified",
+      "order": 40,
+      "text": "Stigma slots 22 / 27 / 32 / 37; every stigma learnable at 22; shard cost per level (Metabot, allthings.how)."
+    }
+  ]
+}

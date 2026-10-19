@@ -124,6 +124,37 @@ on purpose: the guide shows nothing rather than an unverified value.
   | st-supporting-fire.png | Supporting Fire | <https://metabot.gg/en/aion-2/skills/supporting-fire> | <https://metabot.gg/web/aion2/skills/14380000.webp> | 2026-10-18 |
   | st-griffon-arrow.png | Griffon Arrow | <https://metabot.gg/en/aion-2/skills/griffon-arrow> | <https://metabot.gg/web/aion2/skills/14060000.webp> | 2026-10-18 |
 
+- **Gladiator skill and stigma icons: initials for now** (0.7 P2 shipped without them, #345). The Gladiator research
+  (docs/research/2026-10-gladiator-pack.md, docs/research/2026-10-gladiator-guide.md) saved no icon files, and bot
+  builds have no web, so the Gladiator's build plan shows the initials square for each skill and stigma. Metabot is the
+  approved source for all of them (standing icon OK, owner 2026-10-14), so none needs the owner: a research or fetch
+  session takes the 14 files from each record's Metabot page, as 0.6.1 F5 did for the Ranger, and records source page,
+  file URL and date here. The 14 the plan shows:
+
+  | Kind | Name | Source page |
+  |---|---|---|
+  | skill | Rending Blow | <https://metabot.gg/en/aion-2/skills/rending-blow> |
+  | skill | Overhead Slam | <https://metabot.gg/en/aion-2/skills/overhead-slam> |
+  | skill | Keen Strike | <https://metabot.gg/en/aion-2/skills/keen-strike> |
+  | skill | Ruinous Blow | <https://metabot.gg/en/aion-2/skills/ruinous-blow> |
+  | skill | Attack Preparation | <https://metabot.gg/en/aion-2/skills/attack-preparation> |
+  | skill | Experienced Counterstrike | <https://metabot.gg/en/aion-2/skills/experienced-counterstrike> |
+  | skill | Murderous Burst | <https://metabot.gg/en/aion-2/skills/murderous-burst> |
+  | skill | Crushing Wave | <https://metabot.gg/en/aion-2/skills/crushing-wave> |
+  | skill | Rush Strike | <https://metabot.gg/en/aion-2/skills/rush-strike> |
+  | skill | Leaping Slam | <https://metabot.gg/en/aion-2/skills/leaping-slam> |
+  | stigma | Lunge Stance | <https://metabot.gg/en/aion-2/skills/lunge-stance> |
+  | stigma | Zikel's Blessing | <https://metabot.gg/en/aion-2/skills/zikels-blessing> |
+  | stigma | Lifestealing Blade | <https://metabot.gg/en/aion-2/skills/lifestealing-blade> |
+  | stigma | Rage Burst | <https://metabot.gg/en/aion-2/skills/rage-burst> |
+
+- **Gladiator rotation: two sources, no screen for it yet** (0.7 P2, #345). docs/research/2026-10-gladiator-guide.md §8
+  has a two-source right-click line (Rending Blow from Lv 1, Sword Aura Rampage above it from 5), but the Build
+  drawer's Rotation section is written for the Assassin's keys (left click Quick Slice, Q Shadowstrike, the Assassin's
+  buff names in `src/packs/aion2/cards/build.js`, `requirements.js` rotKeys). So the Gladiator's build carries no
+  `keyStacks.rightClick` and the drawer shows stat priority only, as for the Ranger. A follow-up makes those keys come
+  from the build, then adds the Gladiator's rows.
+
 - **Story-quest icon: no approved source found yet** (0.6 gate `research-story-icon`, for P13; searched 2026-10-18
   3:12–3:21 AM ET). The owner's OK for the game's yellow story-quest icon is #254 note 7. The plan's source is Metabot
   first, else a file the owner supplies.

@@ -1,0 +1,505 @@
+{
+  "$schema": "../../schema/builds.schema.json",
+  "schemaVersion": 2,
+  "collection": "builds",
+  "class": "gladiator",
+  "records": [
+    {
+      "id": "build:gladiator:guide",
+      "class": "gladiator",
+      "name": "Guide build",
+      "origin": "guide",
+      "statPriority": {
+        "tiers": [
+          [
+            "Attack"
+          ],
+          [
+            "Critical Hit"
+          ],
+          [
+            "Accuracy Bonus"
+          ]
+        ],
+        "from": {
+          "Attack": "BG",
+          "Critical Hit": "BG",
+          "Accuracy Bonus": "G"
+        },
+        "status": "single-source",
+        "sources": [
+          {
+            "url": "https://metabot.gg/en/aion-2/classes/gladiator",
+            "checkedAt": "2026-10-18"
+          },
+          {
+            "url": "https://metabot.gg/en/aion-2/guides/class-builds-guide",
+            "checkedAt": "2026-10-18"
+          }
+        ],
+        "note": "Metabot's class page (Attack, Critical Hit, Accuracy Bonus, HP, Block) and its class-builds guide are one site: single source (claim C60). The other sources rank gear stats for after Lv 45, a different question (docs/research/2026-10-gladiator-guide.md §6). Only the top three are shown. from: B = board stat nodes / corners, G = gear (the Gladiator boards carry the Assassin's stat labels)."
+      },
+      "skillOrder": [
+        {
+          "skill": "skill:gladiator:rending-blow",
+          "core": true,
+          "status": "verified",
+          "basis": "To Lv 10, the first point sink: Metabot leveling, daevaguides, mmo-codex, aion2turkiye",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/gladiator/build",
+              "checkedAt": "2026-10-18"
+            },
+            {
+              "url": "https://daevaguides.com/en/gladiator/",
+              "checkedAt": "2026-10-18"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/gladiator/",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:gladiator:overhead-slam",
+          "core": true,
+          "status": "verified",
+          "basis": "To Lv 10: Metabot leveling, daevaguides, aion2turkiye (mmo-codex 8)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/gladiator/build",
+              "checkedAt": "2026-10-18"
+            },
+            {
+              "url": "https://daevaguides.com/en/gladiator/",
+              "checkedAt": "2026-10-18"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/gladiator/",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:gladiator:keen-strike",
+          "core": true,
+          "status": "disputed",
+          "basis": "To Lv 10: Metabot leveling and daevaguides (which lists Metabot as a source); mmo-codex and aion2turkiye say 8",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/gladiator/build",
+              "checkedAt": "2026-10-18"
+            },
+            {
+              "url": "https://daevaguides.com/en/gladiator/",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:gladiator:ruinous-blow",
+          "core": true,
+          "status": "verified",
+          "basis": "To Lv 10, raised as fast as its gate allows from Lv 14: Metabot leveling, daevaguides, mmo-codex, aion2turkiye",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/gladiator/build",
+              "checkedAt": "2026-10-18"
+            },
+            {
+              "url": "https://daevaguides.com/en/gladiator/",
+              "checkedAt": "2026-10-18"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/gladiator/",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:gladiator:attack-preparation",
+          "core": true,
+          "status": "verified",
+          "basis": "To Lv 10: Metabot leveling, daevaguides, mmo-codex, aion2turkiye",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/gladiator/build",
+              "checkedAt": "2026-10-18"
+            },
+            {
+              "url": "https://daevaguides.com/en/gladiator/",
+              "checkedAt": "2026-10-18"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/gladiator/",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:gladiator:experienced-counterstrike",
+          "core": false,
+          "status": "verified",
+          "basis": "Straight to Lv 10 when learned at 21 (flat gate): daevaguides and mmo-codex; Metabot's build leaves it out",
+          "sources": [
+            {
+              "url": "https://daevaguides.com/en/gladiator/",
+              "checkedAt": "2026-10-18"
+            },
+            {
+              "url": "https://mmo-codex.com/articles/aion-2-gladiator-guide/",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:gladiator:murderous-burst",
+          "core": false,
+          "status": "verified",
+          "basis": "Straight to Lv 10 when learned at 25 (flat gate): daevaguides and mmo-codex; Metabot's build leaves it out",
+          "sources": [
+            {
+              "url": "https://daevaguides.com/en/gladiator/",
+              "checkedAt": "2026-10-18"
+            },
+            {
+              "url": "https://mmo-codex.com/articles/aion-2-gladiator-guide/",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:gladiator:crushing-wave",
+          "core": false,
+          "status": "verified",
+          "basis": "Crushing Wave to 8: daevaguides, mmo-codex (Metabot 7, aion2turkiye 10)",
+          "sources": [
+            {
+              "url": "https://daevaguides.com/en/gladiator/",
+              "checkedAt": "2026-10-18"
+            },
+            {
+              "url": "https://mmo-codex.com/articles/aion-2-gladiator-guide/",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:gladiator:rush-strike",
+          "core": false,
+          "status": "verified",
+          "basis": "Rush Strike to 8: daevaguides, mmo-codex, aion2turkiye (Metabot 10)",
+          "sources": [
+            {
+              "url": "https://daevaguides.com/en/gladiator/",
+              "checkedAt": "2026-10-18"
+            },
+            {
+              "url": "https://mmo-codex.com/articles/aion-2-gladiator-guide/",
+              "checkedAt": "2026-10-18"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/gladiator/",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:gladiator:leaping-slam",
+          "core": false,
+          "status": "disputed",
+          "basis": "Leaping Slam to 8 or 10 (disputed): daevaguides and mmo-codex 8, Metabot and aion2turkiye 10",
+          "sources": [
+            {
+              "url": "https://daevaguides.com/en/gladiator/",
+              "checkedAt": "2026-10-18"
+            },
+            {
+              "url": "https://mmo-codex.com/articles/aion-2-gladiator-guide/",
+              "checkedAt": "2026-10-18"
+            },
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/gladiator/build",
+              "checkedAt": "2026-10-18"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/gladiator/",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        }
+      ],
+      "skillOrderNotes": {
+        "interleave": "Two-source rules (docs/research/2026-10-gladiator-guide.md §3.2: daevaguides, mmo-codex): Rending Blow is the first point sink; Overhead Slam and Keen Strike follow as each allows; Ruinous Blow is raised as fast as its gate allows from Lv 14; Experienced Counterstrike (21) and Murderous Burst (25) go to 10 the level they are learned (flat gate, so they are listed after the core five, where the flat gate applies). The order between those rules is inferred.",
+        "budget": "Core five to Lv 10 = 5 × 21 = 105 points; Experienced Counterstrike and Murderous Burst to 10 = 42 (147); Crushing Wave, Rush Strike and Leaping Slam to 8 = 13 each (186). LEVEL_POINTS[45] = 203 (Metabot; aion2turkiye agrees) plus Wisdom Stones."
+      },
+      "specialtyPicks": {
+        "skill:gladiator:rending-blow": [
+          "spec:gladiator:rending-blow:3",
+          "spec:gladiator:rending-blow:4"
+        ],
+        "skill:gladiator:overhead-slam": [
+          "spec:gladiator:overhead-slam:3",
+          "spec:gladiator:overhead-slam:4"
+        ],
+        "skill:gladiator:keen-strike": [
+          "spec:gladiator:keen-strike:1",
+          "spec:gladiator:keen-strike:4"
+        ],
+        "skill:gladiator:ruinous-blow": [
+          "spec:gladiator:ruinous-blow:1"
+        ]
+      },
+      "specialtyEvidence": {
+        "spec:gladiator:rending-blow:4": {
+          "slot": 2,
+          "label": "2+ sources",
+          "sources": [
+            "https://daevaguides.com/en/gladiator/",
+            "https://skycoach.gg/blog/aion-2/articles/gladiator-guide",
+            "https://mmo-codex.com/articles/aion-2-gladiator-guide/"
+          ]
+        },
+        "spec:gladiator:overhead-slam:4": {
+          "slot": 2,
+          "label": "2+ sources",
+          "sources": [
+            "https://daevaguides.com/en/gladiator/",
+            "https://skycoach.gg/blog/aion-2/articles/gladiator-guide",
+            "https://mmo-codex.com/articles/aion-2-gladiator-guide/"
+          ]
+        },
+        "spec:gladiator:keen-strike:4": {
+          "slot": 2,
+          "label": "2+ sources",
+          "sources": [
+            "https://daevaguides.com/en/gladiator/",
+            "https://mmo-codex.com/articles/aion-2-gladiator-guide/"
+          ]
+        }
+      },
+      "stigmaSlots": [
+        "stigma:gladiator:lunge-stance",
+        "stigma:gladiator:zikels-blessing",
+        "stigma:gladiator:lifestealing-blade",
+        "stigma:gladiator:rage-burst"
+      ],
+      "stigmaTargets": [
+        {
+          "stigma": "stigma:gladiator:lunge-stance",
+          "level": 8
+        },
+        {
+          "stigma": "stigma:gladiator:zikels-blessing",
+          "level": 6
+        },
+        {
+          "stigma": "stigma:gladiator:lifestealing-blade",
+          "level": 5
+        },
+        {
+          "stigma": "stigma:gladiator:rage-burst",
+          "level": 5
+        }
+      ],
+      "boardPlan": [
+        {
+          "node": "node:gladiator:nezekan:r4c5",
+          "label": "Overhead Slam",
+          "milestone": "g12",
+          "order": 20,
+          "requires": {
+            "level": 12,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "disputed"
+        },
+        {
+          "node": "node:gladiator:nezekan:r7c5",
+          "label": "Rending Blow",
+          "milestone": "g12",
+          "order": 30,
+          "requires": {
+            "level": 12,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "disputed"
+        },
+        {
+          "node": "node:gladiator:nezekan:r13c7",
+          "label": "Ruinous Blow",
+          "via": "Ruinous Blow is learned at Lv 14",
+          "milestone": "g12",
+          "order": 40,
+          "requires": {
+            "level": 14,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/skills/ruinous-blow",
+                "fields": [
+                  "learnLv"
+                ],
+                "checkedAt": "2026-10-18"
+              }
+            ],
+            "note": "the skill's learn level (the board opens at 12)"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "disputed"
+        },
+        {
+          "node": "node:gladiator:zikel:r13c5",
+          "label": "Overhead Slam",
+          "milestone": "g20",
+          "order": 30,
+          "requires": {
+            "level": 20,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "disputed"
+        },
+        {
+          "node": "node:gladiator:zikel:r7c13",
+          "label": "Rending Blow",
+          "milestone": "g20",
+          "order": 40,
+          "requires": {
+            "level": 20,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "disputed"
+        },
+        {
+          "node": "node:gladiator:zikel:r3c11",
+          "label": "Ruinous Blow",
+          "milestone": "g20",
+          "order": 50,
+          "requires": {
+            "level": 20,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "disputed"
+        }
+      ],
+      "keyStacks": {
+        "eOrder": [
+          "stigma:gladiator:lunge-stance",
+          "stigma:gladiator:zikels-blessing",
+          "stigma:gladiator:lifestealing-blade",
+          "stigma:gladiator:rage-burst"
+        ],
+        "status": "inferred",
+        "sources": [
+          {
+            "inferred": "Two sources give the Gladiator a right-click line (docs/research/2026-10-gladiator-guide.md §8), but the Build drawer's Rotation section is still written for the Assassin's keys, so the guide shows none yet (no right-click stack, no Rotation section). eOrder puts the buffs Lunge Stance and Zikel's Blessing first (daevaguides' buff line), then the slot order; only for the Next up stigma card."
+          }
+        ]
+      },
+      "texts": {
+        "nezekan-plan": "From daevaguides and aion2turkiye: the Overhead Slam, Rending Blow and Ruinous Blow nodes first (Metabot starts on the Attack Preparation and Survival Stance pairs instead).",
+        "stat-note": "B board · G gear. Metabot's Gladiator ranking only (one site); later stats: HP, Block."
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/gladiator/build",
+          "checkedAt": "2026-10-18",
+          "fields": [
+            "skillOrder",
+            "stigmaSlots",
+            "stigmaTargets"
+          ],
+          "note": "Leveling build (editorial): skill targets, stigmas Zikel's Blessing, Lunge Stance, Lifestealing Blade, Rage Burst at 8 / 7 / 5 / 4. Its top-player panel puts Lunge Stance first."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/gladiator",
+          "checkedAt": "2026-10-18",
+          "fields": [
+            "boardPlan",
+            "statPriority"
+          ],
+          "note": "Class page: stat order, and a board path that starts on the Attack Preparation and Survival Stance pairs (the alternative the guide does not take)."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/guides/class-builds-guide",
+          "checkedAt": "2026-10-18",
+          "fields": [
+            "statPriority"
+          ],
+          "note": "Class-builds guide (same site)."
+        },
+        {
+          "url": "https://daevaguides.com/en/gladiator/",
+          "checkedAt": "2026-10-18",
+          "fields": [
+            "skillOrder",
+            "specialtyPicks",
+            "stigmaSlots",
+            "stigmaTargets",
+            "boardPlan"
+          ],
+          "note": "Compiles couga54, Grobs and other creators: training steps per level, Lv 8 and 12 picks, stigmas (Lunge Stance first; Lifestealing Blade in its solo option), Rage Burst 5, the Nezekan route node by node."
+        },
+        {
+          "url": "https://mmo-codex.com/articles/aion-2-gladiator-guide/",
+          "checkedAt": "2026-10-18",
+          "fields": [
+            "skillOrder",
+            "specialtyPicks",
+            "stigmaSlots"
+          ],
+          "note": "Compiles aLuckyRO, Storyteller and others: level blocks, picks, Lunge Stance first."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/gladiator/",
+          "checkedAt": "2026-10-18",
+          "fields": [
+            "skillOrder",
+            "specialtyPicks",
+            "stigmaSlots",
+            "stigmaTargets",
+            "boardPlan"
+          ],
+          "note": "Leveling and dungeon panels: targets, picks, the same leveling four stigmas, Rage Burst 5, skill nodes first."
+        },
+        {
+          "url": "https://skycoach.gg/blog/aion-2/articles/gladiator-guide",
+          "checkedAt": "2026-10-18",
+          "fields": [
+            "specialtyPicks"
+          ],
+          "note": "One author's guide: Lv 8 and 12 picks, Rage Burst 5."
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "disputed",
+      "notes": [
+        "0.7 P2 (#345), from docs/research/2026-10-gladiator-guide.md §2–§7: skill targets and Lv 8 / 12 picks are two-source where marked; the stigma slot order, the first Daevanion nodes, Ruinous Blow's Lv 8 pick, Keen Strike 10 and Leaping Slam 8 vs 10 are disputed and take the research file's defaults (claims C61–C64); stat priority is single-source (C60).",
+        "Learn levels of Mocking Blade (3), Rush Strike (10) and Ruinous Blow (14): Metabot's skill pages (game data), plus mmo-codex.com (all three) and daevaguides.com (Rush Strike, Ruinous Blow), which may share upstream data (claim C65)."
+      ],
+      "claims": [
+        "C61",
+        "C62",
+        "C63",
+        "C64"
+      ]
+    }
+  ]
+}
