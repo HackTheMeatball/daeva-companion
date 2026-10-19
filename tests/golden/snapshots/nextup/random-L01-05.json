@@ -284,7 +284,7 @@
     {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 1 → 2","s":"Needs Lv 6 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 6–8"},
     {"t":"Buy Quick Slice 3 → 4","s":"Needs Lv 7 · 3 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"}
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 6 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "random/L04-q56-all-B-cube": [
     {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
@@ -318,7 +318,7 @@
     {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 1 → 2","s":"Needs Lv 6 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 6–8"},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 4 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"}
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 6 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "random/L04-q76-rnd128p50-B-sppts": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
@@ -362,7 +362,7 @@
     {"t":"Buy Ambush 2 → 3","s":"Needs Lv 6 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 6–8"},
     {"t":"Buy Exploit Weakness 1 → 2","s":"Needs Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Heart Gore 2 → 3","s":"Needs Lv 7 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 4 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"}
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "random/L05-q07-rnd140p20-A": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 4–5"},
@@ -371,7 +371,7 @@
     {"t":"Buy Exploit Weakness 1 → 2","s":"Needs Lv 6 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 6–8"},
     {"t":"Buy Shadowstrike 3 → 4","s":"Needs Lv 7 · 2 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 3 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 4 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"}
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "random/L05-q08-lvonly-B-dv": [
     {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"Needs Lv 7: you're 5. Level up first.","c":""}
@@ -392,7 +392,7 @@
     {"t":"Buy Ambush 2 → 3","s":"Needs Lv 6 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 6–8"},
     {"t":"Buy Exploit Weakness 1 → 2","s":"Needs Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Heart Gore 2 → 3","s":"Needs Lv 7 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 4 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"}
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "random/L05-q54-before-B": [
     {"t":"Story: A Daeva Dreaming Anew","s":"Needs Lv 32: you're 5. Level up first.","c":""}
@@ -403,7 +403,7 @@
     {"t":"Buy Exploit Weakness 1 → 2","s":"Needs Lv 6 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 6–8"},
     {"t":"Buy Heart Gore 2 → 3","s":"Needs Lv 7 · 2 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Heightened Sixth Sense 3 → 4","s":"Needs Lv 7 · 2 levels away · single source","c":"tag \"Later\"","f":"later"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 4 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"}
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "random/L05-q66-lvonly-B": [
     {"t":"Story: Unveiling the Truth","s":"Needs Lv 37: you're 5. Level up first.","c":""}

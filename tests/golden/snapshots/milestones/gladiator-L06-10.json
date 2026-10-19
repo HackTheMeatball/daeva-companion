@@ -1,8 +1,8 @@
 {
   "gladiator/L10-q12-none-A": [
     "g6 | Missed | 1/6 | overdue | open",
-    "g9 | Missed | 0/4 | overdue | open",
-    "g10 | Now | 0/8 | current,upnext | open",
+    "g9 | Missed | 0/3 | overdue | open",
+    "g10 | Now | 0/6 | current,upnext | open",
     "g12 | Later | 0/7 | ",
     "g15 | Later | 0/1 | ",
     "g16 | Later | 0/13 | ",
@@ -21,8 +21,8 @@
   ],
   "gladiator/L10-q12-none-B": [
     "g6 | Missed | 1/6 | overdue | open",
-    "g9 | Missed | 0/4 | overdue | open",
-    "g10 | Now | 0/8 | current,upnext | open",
+    "g9 | Missed | 0/3 | overdue | open",
+    "g10 | Now | 0/6 | current,upnext | open",
     "g12 | Later | 0/7 | ",
     "g15 | Later | 0/1 | ",
     "g16 | Later | 0/13 | ",

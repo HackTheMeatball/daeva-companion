@@ -1,8 +1,8 @@
 {
   "ranger/L30-q48-none-A": [
     "g6 | Missed | 1/8 | overdue | open",
-    "g9 | Missed | 0/6 | overdue | open",
-    "g10 | Missed | 1/10 | overdue | open",
+    "g9 | Missed | 0/5 | overdue | open",
+    "g10 | Missed | 1/8 | overdue | open",
     "g12 | Missed | 1/11 | overdue | open",
     "g15 | Missed | 0/3 | overdue | open",
     "g16 | Missed | 2/15 | overdue | open",
@@ -21,8 +21,8 @@
   ],
   "ranger/L30-q48-none-B": [
     "g6 | Missed | 1/8 | overdue | open",
-    "g9 | Missed | 0/6 | overdue | open",
-    "g10 | Missed | 1/10 | overdue | open",
+    "g9 | Missed | 0/5 | overdue | open",
+    "g10 | Missed | 1/8 | overdue | open",
     "g12 | Missed | 1/11 | overdue | open",
     "g15 | Missed | 0/3 | overdue | open",
     "g16 | Missed | 2/15 | overdue | open",
