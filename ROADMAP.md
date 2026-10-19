@@ -780,8 +780,8 @@ C2, Y2, Y3). Models follow #114's routing; stall limits as the 0.6 scorecard lef
 | [P6](docs/plans/0.7/P6-sync-ui.md) | Client unused → S2's screens on the site only | M–L | sync card/section, `main.js` mount, sync texts, `tests/site.js` | Opus | 80 | main.js, a11y |
 | [P7](https://github.com/HackTheMeatball/daeva-companion/issues/379) | Join field cuts off the code on phones → whole code shown (Design Lead fix on P6 #378, added 2026-10-18 2:35 PM ET) | S | `src/cards/sync.*`, `tests/site.js` | Sonnet | 44 | a11y |
 | [P8](https://github.com/HackTheMeatball/daeva-companion/issues/382) | Sync line shown to every visitor before the server exists → hidden behind `SYNC_LIVE` (false) until the server deploy turns it on (added 2026-10-18 7:20 PM ET; must merge before 0.6.1) | S | `src/site.js`, `src/shell/sync-host-http.js`, `tests/site.js` | Sonnet | 44 | a11y |
-| [P9](https://github.com/HackTheMeatball/daeva-companion/issues/383) | Two builds, one shipped → the site is the only build; the claude.ai artifact build is removed (owner freeze, 2026-10-18 7:12 PM ET) | M | `scripts/build.mjs`, `scripts/serve.mjs`, tests, `docs/ARCHITECTURE.md`, `docs/DEPLOY.md` | Opus | 80 | build, a11y |
-| [P10](https://github.com/HackTheMeatball/daeva-companion/issues/399) | P9 left inert artifact-class code → removed (`ARTIFACT_CLASSES`, `siteOnlyNote`, `DAEVA_CLASSES`, schema field; #396 review, added 2026-10-18 8:50 PM ET) | S | `src/cards/characters.js`, `data/schema/pack.schema.json`, `scripts/build.mjs` filter path, `tests/save.js` header | Sonnet | 16 | build |
+| [P9](https://github.com/HackTheMeatball/daeva-companion/issues/383) | Two builds, one shipped → the site is the only build; the claude.ai artifact build is removed (owner freeze, 2026-10-18 7:12 PM ET) | M | `scripts/build.mjs`, `scripts/serve.mjs`, tests, `docs/ARCHITECTURE.md`, `docs/DEPLOY.md` | Opus | 80 | gen, a11y |
+| [P10](https://github.com/HackTheMeatball/daeva-companion/issues/399) | P9 left inert artifact-class code → removed (`ARTIFACT_CLASSES`, `siteOnlyNote`, `DAEVA_CLASSES`, schema field; #396 review, added 2026-10-18 8:50 PM ET) | S | `src/cards/characters.js`, `data/schema/pack.schema.json`, `scripts/build.mjs` filter path, `tests/save.js` header | Sonnet | 44 | gen |
 | [R](docs/plans/0.7/R-release-0.7.0.md) | Release 0.7.0 | S | `package.json`, `package-lock.json`, `CHANGELOG.md` | Sonnet | 44 | release, alone |
 
 Not a bot item: **sync deploy** (Build Pipeline, after owner input 4 and P5): a deploy workflow with the owner's token.
@@ -805,7 +805,7 @@ lane already orders them); build scripts P1 only. Critical path: P1 → P2 → P
 | 3b | P7 (a11y) | P6 (merged #378) |
 | 3c | P8 (a11y) | P7 (merged #380); 0.6.1 waits for it |
 | 3d | P9 (build, a11y) | P8 |
-| 3e | P10 (build) | P9 (merged #396) |
+| 3e | P10 (gen) | P9 (merged #396) |
 | 4 | P4 (gen, golden) | P3, P1 + `owner-ok-0.7-artifact-classes` |
 | 5 | R, alone | everything above, or moved to the next patch; `DATA OK 0.7.0` |
 
