@@ -29,7 +29,8 @@ const draw = (tile) => `const s = document.createElement('style'); s.textContent
   /* inline: "Kibelisk" mentions and "N traces" counts, wherever the page writes them */
   const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT), hits = []; let t;
   while ((t = w.nextNode())) if (/Kibelisk|\\d+ traces?/.test(t.textContent) && !t.parentElement.closest('script, style, #gates')) hits.push(t);
-  const marked = new Set(); /* one Kibelisk crest per card: its first mention */
+  const marked = new Set(); /* one Kibelisk crest per card: its first mention. Outside a Next up card the scope is the text
+     node's own parent (one crest per element), which only matters on the Dungeons card's rows. */
   for (const n of hits) { const box = n.parentElement.closest('.ns-card') || n.parentElement; const parts = n.textContent.split(/(Kibelisk|\\d+ traces?)/), f = document.createDocumentFragment();
     parts.forEach((p, i) => { if (!(i % 2)) { f.append(p); return; } const sp = document.createElement('span'); sp.style.whiteSpace = 'nowrap';
       if (p === 'Kibelisk') { if (marked.has(box)) sp.append(p); else { marked.add(box); sp.append(img('kisk'), p); } } else { /* tight region rows: the icon stands in for the word, which stays as its label */ const m = /^(\\d+) (.*)$/.exec(p), i = img('trace'); i.alt = 'Empyrean Traces'; i.title = 'Empyrean Traces'; sp.append(m[1], ' ', i); } f.append(sp); });

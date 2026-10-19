@@ -95,7 +95,8 @@ on purpose: the guide shows nothing rather than an unverified value.
   | blue-off.png, blue-on.png, green-off2.png, green-on2.png, orange-off.png, orange-on.png | | |
   | daevanion-crystal.png, enhance-stone.png, wisdom-stone.png | | |
   | sk-ambush.png, sk-assault-stance.png, sk-defense-break.png, sk-exploit-weakness.png, sk-heart-gore.png | | |
-  | sk-insignia-explosion.png, sk-quick-slice.png, sk-rear-smite.png, sk-savage-roar.png, sk-shadowstrike.png | | |
+  | sk-insignia-explosion.png, sk-quick-slice.png, sk-rear-smite.png, sk-savage-roar.png | | |
+  | sk-shadowstrike.png | <https://metabot.gg/en/aion-2/skills/shadowstrike> · file <https://metabot.gg/web/aion2/skills/13070000.webp> (256 px WebP → 128 px PNG; matches the 256 px copy in docs/research/map-icons-2026-10-18/ scaled down, mean pixel difference under 3 of 255) | 2026-10-18 (match checked) |
   | st-illusive-clone.png, st-savage-fang.png, st-swift-contract.png, st-triniels-dagger.png | | |
 - **Ranger skill and stigma icons: in the site, initials in the claude.ai artifact** (0.6 P5 shipped without them, #264;
   fetched 2026-10-18 7:17–7:21 AM ET for 0.6.1 F5, gate `research-ranger-icons`, docs/research/2026-10-ranger-icons.md).
