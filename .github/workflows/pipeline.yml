@@ -116,12 +116,15 @@ jobs:
             } else if (ev === 'issue_comment') {
               const body = p.comment.body || '';
               prNum = p.issue.number;
+              const designAsk = `The Design Lead asked for changes: ${p.comment.html_url}. Fix every finding in it and re-take the after shots.`;
               // The Design Lead may post from the owner's account (auto-merge.yml accepts both); from it only DESIGN CHANGES counts.
-              if (p.comment.user.login !== 'claude[bot]' && !/^DESIGN CHANGES\b/m.test(body)) return none('owner comment needs no step');
-              if (/VERDICT:\s*CHANGES/.test(body)) { want = 'fix'; reviewBody = body; reason = `The latest review asked for changes: ${p.comment.html_url}. Fix every blocking finding in it.`; }
+              if (p.comment.user.login !== 'claude[bot]') {
+                if (!/^DESIGN CHANGES\b/m.test(body)) return none('owner comment needs no step');
+                want = 'fix'; reviewBody = body; reason = designAsk;
+              } else if (/VERDICT:\s*CHANGES/.test(body)) { want = 'fix'; reviewBody = body; reason = `The latest review asked for changes: ${p.comment.html_url}. Fix every blocking finding in it.`; }
               else if (/^\s*Needs @claude \(Opus\):/m.test(body)) { want = 'fix'; reason = `A Sonnet run handed this to Opus: ${p.comment.html_url}.`; }
               // Design Lead's line-start DESIGN CHANGES (the gate auto-merge.yml reads) gets a fix run too (#424 had to be dispatched by hand).
-              else if (/^DESIGN CHANGES\b/m.test(body)) { want = 'fix'; reviewBody = body; reason = `The Design Lead asked for changes: ${p.comment.html_url}. Fix every finding in it and re-take the after shots.`; }
+              else if (/^DESIGN CHANGES\b/m.test(body)) { want = 'fix'; reviewBody = body; reason = designAsk; }
               else if (/^\s*Pipeline stuck:/m.test(body)) {
                 await github.rest.issues.addLabels({ owner, repo, issue_number: prNum, labels: ['stuck'] });
                 return none('a run reported it is stuck; labelled');
