@@ -345,10 +345,39 @@
           "stigma:ranger:supporting-fire",
           "stigma:ranger:griffon-arrow"
         ],
+        "defaultKeys": {
+          "keys": [
+            { "key": "Left click", "rows": [{ "skill": "skill:ranger:snipe" }] },
+            { "key": "Right click", "rows": [{ "skill": "skill:ranger:tempest-shot" }] },
+            { "key": "Q", "rows": [{ "skill": "skill:ranger:burst-arrow" }, { "skill": "skill:ranger:drill-dart" }] },
+            { "key": "E", "rows": [{ "skill": "skill:ranger:arrow-scattershot" }, { "skill": "skill:ranger:suppressing-arrow" }, { "skill": "skill:ranger:marking-shot" }] },
+            { "key": "1", "rows": [{ "skill": "skill:ranger:snare-shot" }] },
+            { "key": "2", "rows": [{ "skill": "skill:ranger:gale-arrow" }] },
+            { "key": "3", "rows": [{ "skill": "skill:ranger:explosion-trap" }] },
+            { "key": "4", "rows": [{ "skill": "skill:ranger:deadshot" }] }
+          ],
+          "status": "verified",
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-18-ranger-keys-01",
+                "checkedAt": "2026-10-18",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Ranger skill window (quickslot grid, game default keys) and 16 skill tooltips"
+              },
+              "fields": [
+                "keys"
+              ]
+            }
+          ]
+        },
         "status": "inferred",
         "sources": [
           {
-            "inferred": "No source gives the Ranger a key setup; the guide shows none (no right-click stack, so the Build drawer has no Rotation section). eOrder is the slot order, only for the Next up stigma card."
+            "inferred": "eOrder is the slot order, only for the Next up stigma card; the keys (defaultKeys) are the game's defaults from the owner's screens (claim C55)."
           }
         ]
       },
@@ -394,7 +423,8 @@
       "claims": [
         "C51",
         "C52",
-        "C53"
+        "C53",
+        "C55"
       ]
     }
   ]

@@ -3,6 +3,7 @@
     "in": "82a8c00e3d03",
     "store": {
       "areaLv": ["(absent)","30"],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/ranger","class":"ranger","name":"","created":0,"checks":{},"level":30,"quest":"Canyon's Secret","mt":{"level":[0,30],"quest":[0,["Canyon's Secret",null]]}},{"checks":{},"level":30,"quest":"Canyon's Secret","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/ranger","class":"ranger","name":"","created":0,"mt":{"level":[0,30],"quest":[0,["Canyon's Secret",null]],"rotSeen":[1790856000,["Left click:Snipe:0","Right click:Tempest Shot:0","Q:Burst Arrow:0","Q:Drill Dart:1","E:Arrow Scattershot:0","E:Suppressing Arrow:1","E:Marking Shot:2","1:Snare Shot:0","2:Gale Arrow:0","3:Explosion Trap:0","4:Deadshot:0"]]},"rotSeen":["Left click:Snipe:0","Right click:Tempest Shot:0","Q:Burst Arrow:0","Q:Drill Dart:1","E:Arrow Scattershot:0","E:Suppressing Arrow:1","E:Marking Shot:2","1:Snare Shot:0","2:Gale Arrow:0","3:Explosion Trap:0","4:Deadshot:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -16,7 +17,8 @@
       "open.g28": ["(absent)",true],
       "open.g30": ["(absent)",true],
       "open.g6": ["(absent)",true],
-      "open.g9": ["(absent)",true]
+      "open.g9": ["(absent)",true],
+      "savedAt": ["(absent)",1790856000000]
     },
     "mode": "advanced"
   },
@@ -24,6 +26,7 @@
     "in": "90153de2e8af",
     "store": {
       "areaLv": ["(absent)","30"],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/ranger","class":"ranger","name":"","created":0,"checks":{},"level":30,"quest":"Canyon's Secret","mt":{"level":[0,30],"quest":[0,["Canyon's Secret",null]]}},{"checks":{},"level":30,"quest":"Canyon's Secret","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/ranger","class":"ranger","name":"","created":0,"mt":{"level":[0,30],"quest":[0,["Canyon's Secret",null]],"rotSeen":[1790856000,["Left click:Snipe:0","Right click:Tempest Shot:0","Q:Burst Arrow:0","Q:Drill Dart:1","E:Arrow Scattershot:0","E:Suppressing Arrow:1","E:Marking Shot:2","1:Snare Shot:0","2:Gale Arrow:0","3:Explosion Trap:0","4:Deadshot:0"]]},"rotSeen":["Left click:Snipe:0","Right click:Tempest Shot:0","Q:Burst Arrow:0","Q:Drill Dart:1","E:Arrow Scattershot:0","E:Suppressing Arrow:1","E:Marking Shot:2","1:Snare Shot:0","2:Gale Arrow:0","3:Explosion Trap:0","4:Deadshot:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -37,7 +40,8 @@
       "open.g28": ["(absent)",true],
       "open.g30": ["(absent)",true],
       "open.g6": ["(absent)",true],
-      "open.g9": ["(absent)",true]
+      "open.g9": ["(absent)",true],
+      "savedAt": ["(absent)",1790856000000]
     },
     "mode": "basic"
   }

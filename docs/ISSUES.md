@@ -182,8 +182,8 @@ on purpose: the guide shows nothing rather than an unverified value.
   has a two-source right-click line (Rending Blow from Lv 1, Sword Aura Rampage above it from 5), but the Build
   drawer's Rotation section is written for the Assassin's keys (left click Quick Slice, Q Shadowstrike, the Assassin's
   buff names in `src/packs/aion2/cards/build.js`, `requirements.js` rotKeys). So the Gladiator's build carries no
-  `keyStacks.rightClick` and the drawer shows stat priority only, as for the Ranger. A follow-up makes those keys come
-  from the build, then adds the Gladiator's rows.
+  `keyStacks.rightClick`. Since 0.7 P11 (#418) the drawer shows the game's default keys instead (`keyStacks.defaultKeys`,
+  owner screens, claim C66; the Ranger's too, C55); the guide's own right-click line is still not shown.
 
 - **Story-quest icon: in the site** (0.6 P13, #272; owner OK: #254 note 7 and DECISIONS `owner-ok-story-icon`). The Next
   up story card shows the game's **active** story-quest icon on a dark tile; the 📜 emoji is the fallback when it can't

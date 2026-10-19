@@ -1,0 +1,10 @@
+[
+  { "case": "ranger-lv14-1500", "kind": "before-after", "title": "Ranger keys in the Build panel",
+    "caption": "A Ranger at Lv 14 now sees the game's default keys: the Q and E stacks, the mouse and keys 1 to 4. Before, the panel showed stat priority only." },
+  { "case": "gladiator-lv12-1500", "kind": "before-after", "title": "Gladiator keys in the Build panel",
+    "caption": "A Gladiator at Lv 12 sees its Q and E stacks and single keys; Ruinous Blow joins key 4 at Lv 14, when it is learned." },
+  { "case": "ranger-lv4-1500", "kind": "before-after", "title": "Keys follow your level",
+    "caption": "At Lv 4 a Ranger sees only skills learned by then: Marking Shot on E, Drill Dart on Q, Snipe, Tempest Shot and Snare Shot." },
+  { "case": "assassin-lv22-1500", "kind": "before-after", "title": "Assassin panel unchanged",
+    "caption": "The Assassin's rotation and key setup at Lv 22 look exactly as before." }
+]

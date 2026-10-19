@@ -290,6 +290,30 @@
         "conf:learn-levels"
       ],
       "verifiedAt": "2026-10-18"
+    },
+    {
+      "id": "C66",
+      "claim": "Gladiator default keys: left click Keen Strike, right click Rending Blow; Q Rush Strike (row 0), Aerial Snare (1); E Sword Aura Rampage (0), Ankle Slice (1), Overhead Slam (2); 1 Leaping Slam, 2 Mocking Blade, 3 Crushing Wave, 4 Ruinous Blow; Defiance no key.",
+      "verdict": "verified",
+      "sources": [
+        {
+          "owner": {
+            "ref": "owner:2026-10-18-gladiator-keys-01",
+            "checkedAt": "2026-10-18",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Gladiator skill window (quickslot grid, game default keys), two screens"
+          }
+        }
+      ],
+      "action": "keep",
+      "note": "The owner's in-game screens (the source of truth). The keys are the game's defaults, not a guide's advice; the guide's own right-click line (docs/research/2026-10-gladiator-guide.md §8) is separate and not shown. The learn levels on the screens match skills.json for all 22 skills.",
+      "appliesTo": [
+        "build:gladiator:guide"
+      ],
+      "verifiedAt": "2026-10-18"
     }
   ]
 }

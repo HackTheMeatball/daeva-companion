@@ -406,10 +406,39 @@
           "stigma:gladiator:lifestealing-blade",
           "stigma:gladiator:rage-burst"
         ],
+        "defaultKeys": {
+          "keys": [
+            { "key": "Left click", "rows": [{ "skill": "skill:gladiator:keen-strike" }] },
+            { "key": "Right click", "rows": [{ "skill": "skill:gladiator:rending-blow" }] },
+            { "key": "Q", "rows": [{ "skill": "skill:gladiator:rush-strike" }, { "skill": "skill:gladiator:aerial-snare" }] },
+            { "key": "E", "rows": [{ "skill": "skill:gladiator:sword-aura-rampage" }, { "skill": "skill:gladiator:ankle-slice" }, { "skill": "skill:gladiator:overhead-slam" }] },
+            { "key": "1", "rows": [{ "skill": "skill:gladiator:leaping-slam" }] },
+            { "key": "2", "rows": [{ "skill": "skill:gladiator:mocking-blade" }] },
+            { "key": "3", "rows": [{ "skill": "skill:gladiator:crushing-wave" }] },
+            { "key": "4", "rows": [{ "skill": "skill:gladiator:ruinous-blow" }] }
+          ],
+          "status": "verified",
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-18-gladiator-keys-01",
+                "checkedAt": "2026-10-18",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Gladiator skill window (quickslot grid, game default keys), two screens"
+              },
+              "fields": [
+                "keys"
+              ]
+            }
+          ]
+        },
         "status": "inferred",
         "sources": [
           {
-            "inferred": "Two sources give the Gladiator a right-click line (docs/research/2026-10-gladiator-guide.md §8), but the Build drawer's Rotation section is still written for the Assassin's keys, so the guide shows none yet (no right-click stack, no Rotation section). eOrder puts the buffs Lunge Stance and Zikel's Blessing first (daevaguides' buff line), then the slot order; only for the Next up stigma card."
+            "inferred": "Two sources give the Gladiator a right-click line (docs/research/2026-10-gladiator-guide.md §8); the guide does not show it (no right-click stack). The keys (defaultKeys) are the game's defaults from the owner's screens (claim C66). eOrder puts the buffs Lunge Stance and Zikel's Blessing first (daevaguides' buff line), then the slot order; only for the Next up stigma card."
           }
         ]
       },
@@ -498,7 +527,8 @@
         "C61",
         "C62",
         "C63",
-        "C64"
+        "C64",
+        "C66"
       ]
     }
   ]
