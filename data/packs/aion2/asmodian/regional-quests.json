@@ -187,14 +187,29 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/hugo-mercenaries-past-and-present",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Derk · Safe Haven\". Safe Haven is listed under Dredgion Crash Site in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "conflicts": [
         "Metabot shows no Kibelisk for giver; place 'Safe Haven' from allthings.how 244374 and finish text",
         "zone: allthings.how files it under \"Safe Haven\"; the giver's camp / place puts it in Dredgion Crash Site (E3 CAMP_ZONE / E4 giver-zone rule)."
-      ]
+      ],
+      "fieldStatus": {
+        "zone": "inferred"
+      }
     },
     {
       "id": "rq:2202011",
@@ -389,9 +404,21 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/hugo-mercenaries-deep-shadow",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Hadala · Nornir Assembly\"."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "conflicts": [
         "Giver place inferred from nearest Kibelisk (Nornir Assembly 154 m); Metabot location field just says Altgard. Step 2 sends you to Safe Haven."
@@ -563,12 +590,25 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/missing-mount",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Hadala · Safe Haven\". Safe Haven is listed under Dredgion Crash Site in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
-        "turnin.zone": "inferred"
+        "turnin.zone": "inferred",
+        "zone": "inferred"
       },
       "conflicts": [
         "Metabot shows no giver/turn-in; giver Hadala and turn-in Tomgus from allthings.how 244374 and aion2.gaming.tools 2202012",
@@ -747,12 +787,25 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/creion-research-assistant",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Benekt · Creion Campsite\". Creion Campsite is listed under Dredgion Crash Site in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
-        "turnin.zone": "inferred"
+        "turnin.zone": "inferred",
+        "zone": "inferred"
       },
       "conflicts": [
         "Metabot shows no giver/turn-in; Benekt at Creion Campsite from allthings.how 244384 and gaming.tools"
@@ -941,12 +994,25 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/odyle-jelly-misappropriation-investigation",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start VeKauf · Safe Haven\". Safe Haven is listed under Dredgion Crash Site in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
-        "turnin.zone": "inferred"
+        "turnin.zone": "inferred",
+        "zone": "inferred"
       },
       "conflicts": [
         "Zone: allthings.how lists under Dredgion Crash Site but giver place is Safe Haven (P0-4). Metabot shows no giver Kibelisk."
@@ -1140,12 +1206,25 @@
           "fields": [
             "requires"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/the-great-curse-breaking-caper",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Tagar · Gravekeeper Camp\". Gravekeeper Camp is listed under Nameless Cemetery in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-15",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
-        "turnin.zone": "inferred"
+        "turnin.zone": "inferred",
+        "zone": "inferred"
       },
       "conflicts": [
         "Metabot shows no Kibelisk; giver place Gravekeeper Camp from allthings.how 244384"
@@ -1293,12 +1372,25 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/blade-of-vengeance",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Nemon · Forest Hideout\". Forest Hideout is listed under Moslan Forest in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
-        "turnin.zone": "inferred"
+        "turnin.zone": "inferred",
+        "zone": "inferred"
       },
       "notes": [
         "allthings.how: next quest 'picks up straight after' this one; the two Menrik quests 'tell one story'"
@@ -1516,12 +1608,25 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/in-the-fang-legions-name",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Gamilla · Watcher's Tent\". Watcher's Tent is listed under Calderon Canyon in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
-        "turnin.zone": "inferred"
+        "turnin.zone": "inferred",
+        "zone": "inferred"
       },
       "notes": [
         "allthings.how: picks up straight after Blade of Vengeance"
@@ -1653,12 +1758,25 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/her-last-favor",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Reden · Healing Spring\". Healing Spring is listed under Purifying Forest in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
-        "turnin.zone": "inferred"
+        "turnin.zone": "inferred",
+        "zone": "inferred"
       },
       "notes": [
         "allthings.how: With the Poison Blood now cleared from the tree's roots, Reden fears the barrier protecting the children has weakened."
@@ -1869,12 +1987,25 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/young-elims-story",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Lulu · Elim's Rest\". Elim's Rest is listed under Moslan Forest in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
-        "turnin.zone": "inferred"
+        "turnin.zone": "inferred",
+        "zone": "inferred"
       },
       "conflicts": [
         "Metabot shows no giver/turn-in/Kibelisk; app giver 'Lulu · Elim's Rest' comes from allthings.how (locations.json place_src); Lulu is named in step text",
@@ -2098,12 +2229,25 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/hugo-mercenaries-an-old-promise",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Hadala · Briskwind Shelter\". Briskwind Shelter is listed under Dranactus in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
-        "turnin.zone": "inferred"
+        "turnin.zone": "inferred",
+        "zone": "inferred"
       },
       "notes": [
         "allthings.how: Hadala reluctantly passes along another letter from Derk"
@@ -2275,9 +2419,21 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/an-invitation-to-the-past-part-1",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Hallina · Nornir Assembly\"."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "notes": [
         "Dialogue: 'Please participate in the second act if you'd like.'",
@@ -2443,9 +2599,21 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/an-invitation-to-the-past-part-2",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Hallina · Nornir Assembly\"."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "notes": [
         "allthings.how: second act of Part 1; 'Enter the second stage to play through the final act.'"
@@ -2610,12 +2778,25 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/practice-makes-perfect-nyerk",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Baba · Quai Campsite\". Quai Campsite is listed under Calderon Canyon in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
-        "turnin.zone": "inferred"
+        "turnin.zone": "inferred",
+        "zone": "inferred"
       },
       "conflicts": [
         "Metabot shows no giver field (Baba named in story); Baba from allthings.how and gaming.tools. Zone 'Quai Campsite' is a camp, Altgard sub-region is Calderon Canyon per app area (P0-4).",
@@ -2756,9 +2937,21 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-asmodian",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Uru · Collapsed Chasm\". Collapsed Chasm is listed under Moslan Forest in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "notes": [
         "allthings.how: Uru sends you through instead across three quests, each given and turned in at the Collapsed Chasm",
@@ -2768,7 +2961,10 @@
         "Metabot page name is 'Spacetime Rift' (slug spacetime-rift-asmodian); app calls it 'Spacetime Rift: Asmodian'",
         "Unlocks at 45 (not 10) — the only regional quests with unlocksAt 45 are the Spacetime Rift series",
         "Fetch summary attributed Ecco/Odar dialogue to this page — looks like a scrape artefact (that is A Guardian's Sacrifice content); ignored"
-      ]
+      ],
+      "fieldStatus": {
+        "zone": "inferred"
+      }
     },
     {
       "id": "rq:2202027",
@@ -2926,9 +3122,21 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/immortal-isles-distinct-ecology",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Nivena · Sanctum Outpost\"."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
@@ -3074,14 +3282,29 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/reality-bites",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Bekrin · Briskwind Shelter\". Briskwind Shelter is listed under Dranactus in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "conflicts": [
         "Giver place is Briskwind Shelter (Metabot); app QUEST_AREA 'Battlescar Mound' contradicts (P0-4). Dialogue mentions Battlescar Mound as where Togs are.",
         "zone: allthings.how files it under \"Battlescar Mound\"; the giver's camp / place puts it in Dranactus (E3 CAMP_ZONE / E4 giver-zone rule)."
-      ]
+      ],
+      "fieldStatus": {
+        "zone": "inferred"
+      }
     },
     {
       "id": "rq:2202029",
@@ -3221,12 +3444,25 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/traveling-merchants-conundrum",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Shirakiki · Graverobber Campsite\". Graverobber Campsite is listed under Basfelt Ruins in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
-        "turnin.zone": "inferred"
+        "turnin.zone": "inferred",
+        "zone": "inferred"
       },
       "conflicts": [
         "Metabot shows no giver/turn-in/Kibelisk; giver name from step text only. Graverobber Campsite is mentioned in step text (Basfelt Ruins).",
@@ -3347,9 +3583,21 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-unknown-species",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Uru · Collapsed Chasm\". Collapsed Chasm is listed under Moslan Forest in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "notes": [
         "allthings.how: After Uru discovers beings in Altgard unlike any he has seen",
@@ -3376,6 +3624,9 @@
         "check": 8,
         "basis": "prereq-gates §6 (Spacetime Rift)",
         "change": "None on screen (opens at Lv 45 either way); the record moves from \"no prerequisite data\" to \"checked: none\"."
+      },
+      "fieldStatus": {
+        "zone": "inferred"
       }
     },
     {
@@ -3515,12 +3766,25 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-unfamiliar-material-asmodian",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Uru · Collapsed Chasm\". Collapsed Chasm is listed under Moslan Forest in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
-        "turnin.zone": "inferred"
+        "turnin.zone": "inferred",
+        "zone": "inferred"
       },
       "conflicts": [
         "Slug is spacetime-rift-unfamiliar-material-asmodian (metaSlug() would give spacetime-rift-unfamiliar-material)",
@@ -3669,12 +3933,25 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-difference-between-here-and-there",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Uru · Guide Rest Stop\". Guide Rest Stop is listed under Purifying Forest in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
-        "turnin.zone": "inferred"
+        "turnin.zone": "inferred",
+        "zone": "inferred"
       },
       "notes": [
         "allthings.how: rift opens at random spots at set times",
@@ -3823,12 +4100,25 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-developing-travel-goods",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Uru · Guide Rest Stop\". Guide Rest Stop is listed under Purifying Forest in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
-        "turnin.zone": "inferred"
+        "turnin.zone": "inferred",
+        "zone": "inferred"
       },
       "conflicts": [
         "Metabot shows no giver field; Uru named in story text only. App place 'Guide Rest Stop' not on Metabot",
@@ -3966,14 +4256,29 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-an-honest-shugo",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Uru · Graverobber Campsite\". Graverobber Campsite is listed under Basfelt Ruins in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "notes": [
         "Dialogue: Uru says a new rift appeared nearby; 'head west' (Shirakiki waits for the items) — no quest named",
         "Spacetime Rift series: No Required Quests on 5 of 7 gaming.tools pages (Unknown Species 2202030 and Proof 2202035 not reachable). Not a chain. Gate: level 45 (Metabot 'Unlocks at 45' on all 7; allthings 244366 'Level 45') plus a rift that 'opens at random spots at set times' (allthings 244371)."
-      ]
+      ],
+      "fieldStatus": {
+        "zone": "inferred"
+      }
     },
     {
       "id": "rq:2202035",
@@ -4089,9 +4394,21 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-proof",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Uru · Graverobber Campsite\". Graverobber Campsite is listed under Basfelt Ruins in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "conflicts": [
         "Metabot location field just 'Altgard'; place taken from nearest Kibelisk (Graverobber Campsite 32 m, same as An Honest Shugo)",
@@ -4118,6 +4435,9 @@
         "check": 8,
         "basis": "prereq-gates §6 (Spacetime Rift)",
         "change": "None on screen (opens at Lv 45 either way); the record moves from \"no prerequisite data\" to \"checked: none\"."
+      },
+      "fieldStatus": {
+        "zone": "inferred"
       }
     },
     {
@@ -4285,12 +4605,25 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/a-guardians-sacrifice",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Ecco · Collapsed Chasm\". Collapsed Chasm is listed under Moslan Forest in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
-        "turnin.zone": "inferred"
+        "turnin.zone": "inferred",
+        "zone": "inferred"
       }
     },
     {
@@ -4495,9 +4828,21 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/the-future-within-the-past",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Harald · Abandoned Site\". Abandoned Site is listed under Uruthumheim in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "notes": [
         "allthings.how: After reassembling the last piece of Minusha's Heart"
@@ -4505,7 +4850,10 @@
       "conflicts": [
         "Metabot gives no Kibelisk for giver or steps; giver place taken from turn-in text 'Talk to Harald at the Abandoned Site'",
         "Giver place 'Abandoned Site' from allthings.how (not on Metabot)"
-      ]
+      ],
+      "fieldStatus": {
+        "zone": "inferred"
+      }
     },
     {
       "id": "rq:2202038",
@@ -4651,10 +4999,25 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/bloodstained-rose",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Pordhet · Abandoned Campsite\". Abandoned Campsite is listed under Western Gribade Highland in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
-      "status": "verified"
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
     },
     {
       "id": "rq:2202039",
@@ -4841,12 +5204,25 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/a-friends-legacy",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Sculkhi · Mahindel Cliff\". Mahindel Cliff is listed under Mahindel River in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
-        "turnin.zone": "inferred"
+        "turnin.zone": "inferred",
+        "zone": "inferred"
       },
       "notes": [
         "allthings.how: Though the dust crisis has been resolved, Nemon still mourns Ulgorn."
@@ -5028,9 +5404,21 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/pain-unending",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Bekrin · Battlescar Mound\"."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
@@ -5260,12 +5648,25 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/a-perfect-wedding",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Romi · Steel Hammer Temporary Trading Post\". Steel Hammer Temporary Trading Post is listed under Southern Gribade Highland in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
-        "turnin.zone": "inferred"
+        "turnin.zone": "inferred",
+        "zone": "inferred"
       },
       "conflicts": [
         "Metabot shows no giver place/Kibelisk; app place 'Steel Hammer Temporary Trading Post' not on Metabot",
@@ -5420,9 +5821,21 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/fallout",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Karumba · Zemurru's Tomb\". Zemurru's Tomb is listed under Western Gribade Highland in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "notes": [
         "Karumba closing line: 'I have a bad feeling we'll need your help again soon enough.' (no quest named)",
@@ -5430,7 +5843,10 @@
       ],
       "conflicts": [
         "zone: allthings.how files it under \"Southern Gribade Highland\"; the giver's camp / place puts it in Western Gribade Highland (E3 CAMP_ZONE / E4 giver-zone rule)."
-      ]
+      ],
+      "fieldStatus": {
+        "zone": "inferred"
+      }
     },
     {
       "id": "rq:2202043",
@@ -5626,9 +6042,21 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/fallout-calmed",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Lakiba · Eastern Gribade Highland\"."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
@@ -5796,12 +6224,25 @@
           "fields": [
             "requires"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/shugo-of-all-trades-asmodian",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Dari · Temporary Investigation Base\". Temporary Investigation Base is listed under Dredgion Crash Site in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-15",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
-        "turnin.zone": "inferred"
+        "turnin.zone": "inferred",
+        "zone": "inferred"
       },
       "conflicts": [
         "Metabot NPC table lists turn-in location 'Calderon Canyon'; steps/dialogue say Quai Campsite"
@@ -5951,9 +6392,21 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/farewell-my-instructor",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Baba · Nornir Assembly\"."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
@@ -6115,9 +6568,21 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/lest-we-forget",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Nemon · Impetusium Square\"."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "conflicts": [
         "Metabot page not reachable; data from shugo.gg 2202046 + allthings.how Impetusium page. No Kibelisk.",
@@ -6309,13 +6774,28 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/another-crisis",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Snotra · Steel Hammer Merchants HQ\". Steel Hammer Merchants HQ is listed under Fafnite Deposit in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "notes": [
         "allthings.how: Tefra is now Snotra's assistant."
-      ]
+      ],
+      "fieldStatus": {
+        "zone": "inferred"
+      }
     },
     {
       "id": "rq:2202050",
@@ -6463,12 +6943,25 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/im-a-believer",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Kanes · Temporary Investigation Base\". Temporary Investigation Base is listed under Dredgion Crash Site in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
-        "turnin.zone": "inferred"
+        "turnin.zone": "inferred",
+        "zone": "inferred"
       },
       "conflicts": [
         "Rec 45 but objective mobs are Lv 12 (Congealed Drana) and turn-in at Creion Campsite (Dredgion Crash Site) — low-level zone quest; Kanes is 'Safe Haven Militia'. App zone 'Dredgion Crash Site' vs QUEST_AREA 'Safe Haven' (P0-4); Metabot gives no giver place.",
@@ -6624,10 +7117,25 @@
           "fields": [
             "requires"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/spooky-specters",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Rizel · Gravekeeper Camp\". Gravekeeper Camp is listed under Nameless Cemetery in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-15",
-      "status": "verified"
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
     },
     {
       "id": "rq:2202052",
@@ -6809,12 +7317,25 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/a-traitor-within",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Baba · Quai Campsite\". Quai Campsite is listed under Calderon Canyon in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
-        "turnin.zone": "inferred"
+        "turnin.zone": "inferred",
+        "zone": "inferred"
       },
       "conflicts": [
         "Metabot shows no giver/turn-in; app's 'Baba · Quai Campsite' — Baba appears only as delivery target in step 2. No giver on Metabot can indicate an auto-start / follow-up quest (cf. Blade of Vengeance) — possibly follows Practice Makes Perfect, Nyerk! (also Baba), unverified",
@@ -6973,19 +7494,33 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/nine-wonders-of-altgard-1st-leg",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Tina · Calderon Canyon\". Metabot puts the giver in Calderon Canyon; the data (allthings.how) has Tranein Highland."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
-        "turnin.zone": "inferred"
+        "turnin.zone": "inferred",
+        "zone": "disputed"
       },
       "notes": [
         "allthings.how: Surprised by your speed, she points you to Battlescar Mound Cliff for the next wonder."
       ],
       "conflicts": [
         "Metabot gives no giver place/Kibelisk; app place 'under the Tranein Highland bridge' is from another source (not on Metabot). Turn-in text: 'Talk to Tina at Safe Haven'",
-        "Giver place 'under the Tranein Highland bridge' from allthings.how (not on Metabot)"
+        "Giver place 'under the Tranein Highland bridge' from allthings.how (not on Metabot)",
+        "zone: Metabot's quest page starts it in \"Calderon Canyon\" (2026-10-19, build 0.0.4387.0); allthings.how and the data have Tranein Highland. Kept Tranein Highland until the owner checks in game (#325)."
       ]
     },
     {
@@ -7122,15 +7657,30 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/one-last-thing",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Avent · Watcher's Tent\". Watcher's Tent is listed under Calderon Canyon in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "conflicts": [
         "Data from aion2.gaming.tools 2202054 and allthings.how 244384 (an aion2.th.gl page used before is withdrawn and no longer cited). Kibelisk from Metabot's quest page (One Last Thing, 2026-10-14).",
         "App reward 'Ariel crystal' not supported: sources give Odyle x5",
         "zone: allthings.how files it under \"Tranein Highland\"; the giver's camp / place puts it in Calderon Canyon (E3 CAMP_ZONE / E4 giver-zone rule)."
-      ]
+      ],
+      "fieldStatus": {
+        "zone": "inferred"
+      }
     },
     {
       "id": "rq:2202055",
@@ -7268,10 +7818,25 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/mind-your-own-business",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Gamilla · Temporary Retreat\". Temporary Retreat is listed under Sanctum Outpost in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
-      "status": "verified"
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
     },
     {
       "id": "rq:2202056",
@@ -7455,12 +8020,25 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/lost-memories",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Oliver · Odar's Shade\". Odar's Shade is listed under Moslan Forest in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
-        "turnin.zone": "inferred"
+        "turnin.zone": "inferred",
+        "zone": "inferred"
       },
       "conflicts": [
         "Metabot URL refused (provenance); data from wikily.gg. Giver place 'Odar's Shade' per wikily vs app 'Elim's Rest'. Turn-in NPC Tao (wikily) differs from giver; not explained."
@@ -7676,12 +8254,25 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/sapling-hide-and-seek",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Nana · Odar's Shade\". Odar's Shade is listed under Moslan Forest in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
-        "turnin.zone": "inferred"
+        "turnin.zone": "inferred",
+        "zone": "inferred"
       },
       "conflicts": [
         "Metabot page not reachable (provenance refusal; not surfaced by search). Data from aion2.gaming.tools 2202057 + allthings.how 244366; no Kibelisk available.",
@@ -7815,13 +8406,28 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/restoration-materials",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Keronis · Victorious Daeva's Statue\". Victorious Daeva's Statue is listed under Uruthumheim in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "conflicts": [
         "Rec 45 but objective mobs Lv 24"
-      ]
+      ],
+      "fieldStatus": {
+        "zone": "inferred"
+      }
     },
     {
       "id": "rq:2202059",
@@ -7975,13 +8581,28 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/restless-spirits",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Cortis · Healing Spring\". Healing Spring is listed under Purifying Forest in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "conflicts": [
         "Metabot page not reachable; data from aion2.gaming.tools 2202059 + allthings.how 244371. No Kibelisk."
-      ]
+      ],
+      "fieldStatus": {
+        "zone": "inferred"
+      }
     },
     {
       "id": "rq:2202060",
@@ -8182,9 +8803,21 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/another-survivor",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Hallina · Nornir Assembly\"."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
@@ -8393,12 +9026,25 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/regular-altar-maintenance",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Ivan · Faded Stump\". Faded Stump is listed under Purifying Forest in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
-        "turnin.zone": "inferred"
+        "turnin.zone": "inferred",
+        "zone": "inferred"
       },
       "notes": [
         "allthings.how: Finish the route at the Wind Altar after checking all four."
@@ -8539,13 +9185,28 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/fight-poison-with-poison",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Viron · Guide Rest Stop\". Guide Rest Stop is listed under Purifying Forest in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "notes": [
         "Required first: A Collective Effort"
-      ]
+      ],
+      "fieldStatus": {
+        "zone": "inferred"
+      }
     },
     {
       "id": "rq:2202063",
@@ -8679,13 +9340,28 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/finders-keepers",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Hevid · Graverobber Campsite\". Graverobber Campsite is listed under Basfelt Ruins in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "notes": [
         "Required first: Scripture in the Ruins"
-      ]
+      ],
+      "fieldStatus": {
+        "zone": "inferred"
+      }
     },
     {
       "id": "rq:2202064",
@@ -8859,16 +9535,31 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/workplace-misunderstanding",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Merikiki · Steel Hammer Merchants HQ\". Steel Hammer Merchants HQ is listed under Fafnite Deposit in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "notes": [
         "aion2.gaming.tools 'Required Quests': Forgotten Commander (quest 2102800)"
       ],
       "conflicts": [
         "Metabot shows no 'Required first'; aion2.gaming.tools lists required quest Forgotten Commander (2102800, not a regional quest — likely Altgard story/episode). Unlock is therefore story-gated, not just Lv 10."
-      ]
+      ],
+      "fieldStatus": {
+        "zone": "inferred"
+      }
     },
     {
       "id": "rq:2202065",
@@ -9034,15 +9725,29 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/ravenous-recluse",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Fiona · Fafnite Deposit\". Metabot puts the giver in Fafnite Deposit; the data (allthings.how) has Western Gribade Highland."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
-        "turnin.zone": "inferred"
+        "turnin.zone": "inferred",
+        "zone": "disputed"
       },
       "conflicts": [
-        "Metabot page not reachable; data from aion2.gaming.tools 2202065 + allthings.how 244384. No Kibelisk. Zone Western Gribade Highland per allthings 244384 (missing from allthings list page)."
+        "Metabot page not reachable; data from aion2.gaming.tools 2202065 + allthings.how 244384. No Kibelisk. Zone Western Gribade Highland per allthings 244384 (missing from allthings list page).",
+        "zone: Metabot's quest page starts it in \"Fafnite Deposit\" (2026-10-19, build 0.0.4387.0); allthings.how and the data have Western Gribade Highland. Kept Western Gribade Highland until the owner checks in game (#325)."
       ]
     },
     {
@@ -9159,9 +9864,21 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/herb-pouch-heist",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Kunpata · Kumrica's Cellar\". Kumrica's Cellar is listed under Black Claw Village in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "conflicts": [
         "Giver Kunpata is Daybreak Society; prerequisites not checked (no gaming.tools/th.gl page reachable; shugo.gg and gamers4.life show none but they do not show prerequisites for quests that do have them, e.g. The Future Within the Past). Not in Forgotten Commander's dependent list.",
@@ -9194,6 +9911,9 @@
         "check": 7,
         "basis": "prereq-gates §6 (noPre candidate)",
         "change": "If confirmed: opens once \"Daybreak Society Rescue Operation\" is turned in (Lv 41) instead of at its recommended Lv 44."
+      },
+      "fieldStatus": {
+        "zone": "inferred"
       }
     },
     {
@@ -9332,10 +10052,25 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/a-comrades-fate",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Haz's Apparition · Collapsed Hall Of Fame\". Collapsed Hall Of Fame is listed under Impetusium Square in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
-      "status": "verified"
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
     },
     {
       "id": "rq:2202068",
@@ -9491,14 +10226,29 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/putting-a-friend-to-rest",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Lucian · Collapsed Hall Of Fame\". Collapsed Hall Of Fame is listed under Impetusium Square in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "conflicts": [
         "allthings.how gives pickup 'Outskirts Stall' (turn-in Collapsed Hall of Fame); Metabot giver location Collapsed Hall of Fame 59 m",
         "App reward 'Ariel crystal' not supported: Metabot/allthings give Odyle x5"
-      ]
+      ],
+      "fieldStatus": {
+        "zone": "inferred"
+      }
     },
     {
       "id": "rq:2202069",
@@ -9652,16 +10402,30 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/spirit-isle-where-time-has-stopped",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Milo · Basfelt Waterfall\". Metabot puts the giver in Basfelt Waterfall; the data (allthings.how) has Basfelt Ruins."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
-        "turnin.zone": "inferred"
+        "turnin.zone": "inferred",
+        "zone": "disputed"
       },
       "conflicts": [
         "Metabot page not reachable; data from wikily.gg (Metabot dataset family) + aion2.gaming.tools 2202069. No Kibelisk.",
-        "Turn-in place inferred from gaming.tools step 1 (talk to Milo on the Spirit Isle) — not stated as turn-in place"
+        "Turn-in place inferred from gaming.tools step 1 (talk to Milo on the Spirit Isle) — not stated as turn-in place",
+        "zone: Metabot's quest page starts it in \"Basfelt Waterfall\" (2026-10-19, build 0.0.4387.0); allthings.how and the data have Basfelt Ruins. Kept Basfelt Ruins until the owner checks in game (#325)."
       ]
     },
     {
@@ -9831,9 +10595,21 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/nine-wonders-of-altgard-2nd-leg",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Tina · Battlescar Mound\"."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
@@ -10013,9 +10789,21 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/nine-wonders-of-altgard-final-stretch",
+          "fields": [
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Quest page: \"Start Tina · Basfelt Ruins\"."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
