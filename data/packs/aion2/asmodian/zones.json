@@ -85,19 +85,27 @@
           ]
         },
         {
-          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
-          "fields": [
-            "name"
-          ]
-        },
-        {
           "inferred": "Kibelisks: the kibelisks.json records filed in this zone (0.5 P8); the build checks that the two agree.",
           "fields": [
             "kibelisks"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/zones/basfelt-ruins",
+          "label": "Basfelt Ruins",
+          "fields": [
+            "name",
+            "region"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Zone page: \"Basfelt Ruins sits in Altgard and is a Field zone for level 33–48\"."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "kibelisks": "inferred"
@@ -123,19 +131,27 @@
           ]
         },
         {
-          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
-          "fields": [
-            "name"
-          ]
-        },
-        {
           "inferred": "Kibelisks: the kibelisks.json records filed in this zone (0.5 P8); the build checks that the two agree.",
           "fields": [
             "kibelisks"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/zones/battlescar-mound",
+          "label": "Battlescar Mound",
+          "fields": [
+            "name",
+            "region"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Zone page: \"Battlescar Mound sits in Altgard and is a Field zone for level 1–33\"."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "kibelisks": "inferred"
@@ -163,19 +179,27 @@
           ]
         },
         {
-          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
-          "fields": [
-            "name"
-          ]
-        },
-        {
           "inferred": "Kibelisks: the kibelisks.json records filed in this zone (0.5 P8); the build checks that the two agree.",
           "fields": [
             "kibelisks"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/zones/black-claw-village",
+          "label": "Black Claw Village",
+          "fields": [
+            "name",
+            "region"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Zone page: \"Black Claw Village sits in Altgard and is a Field zone for level 41–45\"."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "kibelisks": "inferred"
@@ -204,7 +228,6 @@
         {
           "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
           "fields": [
-            "name",
             "camps"
           ]
         },
@@ -213,9 +236,23 @@
           "fields": [
             "kibelisks"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/zones/calderon-canyon",
+          "label": "Calderon Canyon",
+          "fields": [
+            "name",
+            "region"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Zone page: \"Calderon Canyon sits in Altgard and is a Field zone for level 1–13\"."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "camps": "inferred",
@@ -240,19 +277,27 @@
       ],
       "sources": [
         {
-          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
-          "fields": [
-            "name"
-          ]
-        },
-        {
           "inferred": "Kibelisks: the kibelisks.json records filed in this zone (0.5 P8); the build checks that the two agree.",
           "fields": [
             "kibelisks"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/zones/crypt",
+          "label": "Crypt",
+          "fields": [
+            "name",
+            "region"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Zone page: \"Crypt sits in Altgard and is a Field zone for level 1–13\"."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "kibelisks": "inferred"
@@ -282,7 +327,6 @@
         {
           "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
           "fields": [
-            "name",
             "camps"
           ]
         },
@@ -291,9 +335,23 @@
           "fields": [
             "kibelisks"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/zones/dranactus",
+          "label": "Dranactus",
+          "fields": [
+            "name",
+            "region"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Zone page: \"Dranactus sits in Altgard and is a Field zone for level 1–45\"."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "camps": "inferred",
@@ -328,7 +386,6 @@
         {
           "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
           "fields": [
-            "name",
             "camps"
           ]
         },
@@ -337,9 +394,23 @@
           "fields": [
             "kibelisks"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/zones/dredgion-crash-site",
+          "label": "Dredgion Crash Site",
+          "fields": [
+            "name",
+            "region"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Zone page: \"Dredgion Crash Site sits in Altgard and is a Field zone for level 1–45\"."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "camps": "inferred",
@@ -367,19 +438,27 @@
           ]
         },
         {
-          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
-          "fields": [
-            "name"
-          ]
-        },
-        {
           "inferred": "Kibelisks: the kibelisks.json records filed in this zone (0.5 P8); the build checks that the two agree.",
           "fields": [
             "kibelisks"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/zones/eastern-gribade-highland",
+          "label": "Eastern Gribade Highland",
+          "fields": [
+            "name",
+            "region"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Zone page: \"Eastern Gribade Highland sits in Altgard and is a Field zone for level 1–45\"."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "kibelisks": "inferred"
@@ -406,19 +485,27 @@
           ]
         },
         {
-          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
-          "fields": [
-            "name"
-          ]
-        },
-        {
           "inferred": "Kibelisks: the kibelisks.json records filed in this zone (0.5 P8); the build checks that the two agree.",
           "fields": [
             "kibelisks"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/zones/fafnite-deposit",
+          "label": "Fafnite Deposit",
+          "fields": [
+            "name",
+            "region"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Zone page: \"Fafnite Deposit sits in Altgard and is a Field zone for level 35–48\"."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "kibelisks": "inferred"
@@ -441,13 +528,21 @@
           ]
         },
         {
-          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "url": "https://metabot.gg/en/aion-2/zones/iduns-lake",
+          "label": "Idun's Lake",
           "fields": [
-            "name"
-          ]
+            "name",
+            "region"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Zone page: \"Idun's Lake sits in Altgard and is a Field zone for level 40\"."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "claims": [
         "C26"
@@ -467,13 +562,21 @@
           ]
         },
         {
-          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "url": "https://metabot.gg/en/aion-2/zones/immortal-isle",
+          "label": "Immortal Isle",
           "fields": [
-            "name"
-          ]
+            "name",
+            "region"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Zone page: \"Immortal Isle sits in Altgard and is a Field zone for level 49–51\"."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "claims": [
         "C26"
@@ -497,19 +600,27 @@
           ]
         },
         {
-          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
-          "fields": [
-            "name"
-          ]
-        },
-        {
           "inferred": "Kibelisks: the kibelisks.json records filed in this zone (0.5 P8); the build checks that the two agree.",
           "fields": [
             "kibelisks"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/zones/impetusium-square",
+          "label": "Impetusium Square",
+          "fields": [
+            "name",
+            "region"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Zone page: \"Impetusium Square sits in Altgard and is a Field zone for level 44–45\"."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "kibelisks": "inferred"
@@ -581,13 +692,21 @@
           ]
         },
         {
-          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "url": "https://metabot.gg/en/aion-2/zones/lagta-fortress",
+          "label": "Lagta Fortress",
           "fields": [
-            "name"
-          ]
+            "name",
+            "region"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Zone page: \"Lagta Fortress sits in Altgard and is a Field zone for level 43–48\"."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "claims": [
         "C26"
@@ -605,19 +724,27 @@
       ],
       "sources": [
         {
-          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
-          "fields": [
-            "name"
-          ]
-        },
-        {
           "inferred": "Kibelisks: the kibelisks.json records filed in this zone (0.5 P8); the build checks that the two agree.",
           "fields": [
             "kibelisks"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/zones/mahindel-river",
+          "label": "Mahindel River",
+          "fields": [
+            "name",
+            "region"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Zone page: \"Mahindel River sits in Altgard and is a Field zone for level 1–40\"."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "kibelisks": "inferred"
@@ -651,7 +778,6 @@
         {
           "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
           "fields": [
-            "name",
             "camps"
           ]
         },
@@ -660,9 +786,23 @@
           "fields": [
             "kibelisks"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/zones/moslan-forest",
+          "label": "Moslan Forest",
+          "fields": [
+            "name",
+            "region"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Zone page: \"Moslan Forest sits in Altgard and is a Field zone for level 1–45\"."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "camps": "inferred",
@@ -690,19 +830,27 @@
           ]
         },
         {
-          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
-          "fields": [
-            "name"
-          ]
-        },
-        {
           "inferred": "Kibelisks: the kibelisks.json records filed in this zone (0.5 P8); the build checks that the two agree.",
           "fields": [
             "kibelisks"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/zones/nameless-cemetery",
+          "label": "Nameless Cemetery",
+          "fields": [
+            "name",
+            "region"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Zone page: \"Nameless Cemetery sits in Altgard and is a Field zone for level 1–45\"."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "kibelisks": "inferred"
@@ -719,19 +867,27 @@
       "traces": null,
       "sources": [
         {
-          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
-          "fields": [
-            "name"
-          ]
-        },
-        {
           "inferred": "Kibelisks: the kibelisks.json records filed in this zone (0.5 P8); the build checks that the two agree.",
           "fields": [
             "kibelisks"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/zones/nornir-assembly",
+          "label": "Nornir Assembly",
+          "fields": [
+            "name",
+            "region"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Zone page: \"Nornir Assembly sits in Altgard and is a Village zone for level 1–26\"."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "notes": [
         "A camp the v1 data already treats as a zone (gen.py exception for regional quest zones)."
@@ -763,19 +919,27 @@
           ]
         },
         {
-          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
-          "fields": [
-            "name"
-          ]
-        },
-        {
           "inferred": "Kibelisks: the kibelisks.json records filed in this zone (0.5 P8); the build checks that the two agree.",
           "fields": [
             "kibelisks"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/zones/purifying-forest",
+          "label": "Purifying Forest",
+          "fields": [
+            "name",
+            "region"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Zone page: \"Purifying Forest sits in Altgard and is a Field zone for level 1–45\"."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "kibelisks": "inferred"
@@ -802,19 +966,27 @@
           ]
         },
         {
-          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
-          "fields": [
-            "name"
-          ]
-        },
-        {
           "inferred": "Kibelisks: the kibelisks.json records filed in this zone (0.5 P8); the build checks that the two agree.",
           "fields": [
             "kibelisks"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/zones/sanctum-outpost",
+          "label": "Sanctum Outpost",
+          "fields": [
+            "name",
+            "region"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Zone page: \"Sanctum Outpost sits in Altgard and is a Field zone for level 1–45\"."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "kibelisks": "inferred"
@@ -841,19 +1013,27 @@
           ]
         },
         {
-          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
-          "fields": [
-            "name"
-          ]
-        },
-        {
           "inferred": "Kibelisks: the kibelisks.json records filed in this zone (0.5 P8); the build checks that the two agree.",
           "fields": [
             "kibelisks"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/zones/silent-hill",
+          "label": "Silent Hill",
+          "fields": [
+            "name",
+            "region"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Zone page: \"Silent Hill sits in Altgard and is a Field zone for level 1–18\"."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "kibelisks": "inferred"
@@ -870,19 +1050,27 @@
       "traces": null,
       "sources": [
         {
-          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
-          "fields": [
-            "name"
-          ]
-        },
-        {
           "inferred": "Kibelisks: the kibelisks.json records filed in this zone (0.5 P8); the build checks that the two agree.",
           "fields": [
             "kibelisks"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/zones/southern-gribade-highland",
+          "label": "Southern Gribade Highland",
+          "fields": [
+            "name",
+            "region"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Zone page: \"Southern Gribade Highland sits in Altgard and is a Field zone for level 1–40\"."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "kibelisks": [
         "Steel Hammer Temporary Trading Post"
@@ -905,13 +1093,21 @@
           ]
         },
         {
-          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "url": "https://metabot.gg/en/aion-2/zones/spirit-isle",
+          "label": "Spirit Isle",
           "fields": [
-            "name"
-          ]
+            "name",
+            "region"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Zone page: \"Spirit Isle sits in Altgard and is a Field zone for level 1–48\"."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "claims": [
         "C26"
@@ -931,19 +1127,27 @@
           ]
         },
         {
-          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
-          "fields": [
-            "name"
-          ]
-        },
-        {
           "inferred": "Kibelisks: the kibelisks.json records filed in this zone (0.5 P8); the build checks that the two agree.",
           "fields": [
             "kibelisks"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/zones/tranein-highland",
+          "label": "Tranein Highland",
+          "fields": [
+            "name",
+            "region"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Zone page: \"Tranein Highland sits in Altgard and is a Field zone for level 1–20\"."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "claims": [
         "C26"
@@ -974,19 +1178,27 @@
           ]
         },
         {
-          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
-          "fields": [
-            "name"
-          ]
-        },
-        {
           "inferred": "Kibelisks: the kibelisks.json records filed in this zone (0.5 P8); the build checks that the two agree.",
           "fields": [
             "kibelisks"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/zones/uruthumheim",
+          "label": "Uruthumheim",
+          "fields": [
+            "name",
+            "region"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Zone page: \"Uruthumheim sits in Altgard and is a Field zone for level 1–45\"."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "kibelisks": "inferred"
@@ -1018,7 +1230,6 @@
         {
           "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
           "fields": [
-            "name",
             "camps"
           ]
         },
@@ -1027,9 +1238,23 @@
           "fields": [
             "kibelisks"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/zones/western-gribade-highland",
+          "label": "Western Gribade Highland",
+          "fields": [
+            "name",
+            "region"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Zone page: \"Western Gribade Highland sits in Altgard and is a Field zone for level 37–45\"."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "camps": "inferred",

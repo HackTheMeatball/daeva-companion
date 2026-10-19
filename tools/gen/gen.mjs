@@ -325,7 +325,7 @@ export function generate(opts = {}) {
   for (const d of sds) { const p = pageOf(d, ['entrance.kibelisk']); if (p) setdef(p.url, d.name + (/metabot\.gg\/en\/aion-2\/quests\//.test(p.url) ? ' (exploration quest)' : '')); }
   for (const p of pages) setdef(p.url, p.label);
   const refLabels = v => { if (Array.isArray(v)) v.forEach(refLabels); else if (v && typeof v === 'object') { if (v.url && v.label) setdef(v.url, v.label); Object.values(v).forEach(refLabels); } };
-  refLabels(claims); refLabels([...items, ...skills, ...stigmas, ...unlocks, ...sds]);
+  refLabels(claims); refLabels([...items, ...skills, ...stigmas, ...unlocks, ...sds, ...Object.values(zones)]);
   /* a skill's own Metabot page is labelled with the skill's name (not the URL slug: "Shadow Fall", not "Shadow fall") */
   for (const r of [...skills, ...stigmas]) for (const s of r.sources || []) if (s.url && /metabot\.gg\/en\/aion-2\/skills\//.test(s.url) && s.url.replace(/\/+$/, '').split('/').pop().startsWith(r.id.split(':').pop())) setdef(s.url, r.name);
   const label = u => {
