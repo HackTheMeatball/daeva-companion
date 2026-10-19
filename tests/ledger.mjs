@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 /* Rules and decisions ledger checks (docs/kaizen/LEDGER.md), Node only, no browser, no build. checkLedger() returns a
    list of problems; tests/schema.mjs runs it (so the CI data job fails on any), and `node tests/ledger.mjs` runs it alone.
-   Checks: the exact header; unique ids; non-empty summary, plain (≤ 200 chars), owner and home; owner is one known name and
-   enforced_by is empty or ;-separated known names, all or harness; kind and status from their fixed sets; every
+   Checks: the exact header; unique ids; non-empty summary, plain (≤ 200 chars, no issue numbers or rule ids), owner and
+   home; owner is one known name (Isaac for a decision) and enforced_by is empty or ;-separated known names, all or
+   harness, never repeating the owner; kind and status from their fixed sets; every
    repo-file home exists and its #anchor text is in that file (case-insensitive, backticks and runs of whitespace
    ignored); a DECISIONS home `docs/DECISIONS.md#YYYY-MM-DD / <Topic>` names a real `## YYYY-MM-DD` heading with a row of
    that Topic under it; issue homes are `#<n>`; every replaced_by is an existing id; and there is one decision row per
@@ -68,9 +69,13 @@ export function checkLedger(root = ROOT, { csvText } = {}) {
     ids.add(r.id);
     for (const k of ['summary', 'plain', 'owner', 'home']) if (!r[k].trim()) problems.push(`${at}: empty ${k}`);
     if (r.plain.length > 200) problems.push(`${at}: plain is ${r.plain.length} chars (max 200)`);
+    const ref = r.plain.match(/#\d+|\b[A-Z]{2,4}-\d+\b/);
+    if (ref) problems.push(`${at}: plain names "${ref[0]}"; say what it means instead of an issue number or rule id`);
+    if (r.kind === 'decision' && r.owner && r.owner !== 'Isaac') problems.push(`${at}: a decision's owner is Isaac, not "${r.owner}"`);
     if (r.owner && !OWNERS.has(r.owner)) problems.push(`${at}: owner "${r.owner}" is not one of ${[...OWNERS].join('/')}`);
     if (r.enforced_by) for (const e of r.enforced_by.split(';').map(x => x.trim()))
       if (!OWNERS.has(e) && e !== 'all' && e !== 'harness') problems.push(`${at}: enforced_by "${e}" is not a known name, all or harness`);
+      else if (e === r.owner) problems.push(`${at}: enforced_by repeats the owner "${e}"`);
     if (!KINDS.has(r.kind)) problems.push(`${at}: kind "${r.kind}" not in ${[...KINDS].join('/')}`);
     if (!STATUSES.has(r.status)) problems.push(`${at}: status "${r.status}" not in ${[...STATUSES].join('/')}`);
     if (r.since && !/^\d{4}-\d{2}-\d{2}$/.test(r.since)) problems.push(`${at}: since "${r.since}" is not YYYY-MM-DD`);

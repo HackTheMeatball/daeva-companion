@@ -64,6 +64,7 @@ ledger's upkeep), Gomez (Team Audit). `enforced_by` uses the same names.
 - `tests/ledger.mjs` (run by `tests/schema.mjs`, so CI's data job runs it) checks the header, unique ids, the fixed
   kind and status values, that every home exists and its anchor text is in that file, and that there is one decision
   row per DECISIONS table row. A new decision without a ledger row fails CI. It also checks that `plain` is filled in
-  and that `owner` and `enforced_by` use the names above.
+  and names no issue number or rule id (`#114`, `PLN-12`), that `owner` and `enforced_by` use the names above, that
+  `enforced_by` doesn't repeat the owner, and that every decision's owner is Isaac.
 - Only `kind=decision` rows are matched one for one against DECISIONS rows. A rule of another kind may also have its
   home in DECISIONS (e.g. COM-02, KZ-01); that row doesn't count as the decision's ledger row.
