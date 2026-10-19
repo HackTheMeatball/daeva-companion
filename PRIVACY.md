@@ -35,7 +35,8 @@ Anthropic's privacy policy covers claude.ai itself.
   [GitHub Privacy Statement](https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement).
 - **Sync:** no request goes to a sync service. Optional sync between your devices (off by default, end-to-end encrypted
   with a code only your devices hold) is being built; this page describes what it sends and to whom before it can be
-  turned on. The claude.ai version will not have it.
+  turned on. The claude.ai version will not have it. Once it runs, a cloud copy that is neither read nor written for
+  180 days is deleted from the sync server; nobody, including us, can find or open it before then without your code.
 - **Links** in the guide (Metabot, maps, sources) are only requested when you click them.
 - **Report a problem** (footer) opens a new GitHub issue form with these fields filled in from the link: the app version,
   your level and current story quest in the guide, Basic/Advanced mode, which build you use (site or claude.ai) and your
