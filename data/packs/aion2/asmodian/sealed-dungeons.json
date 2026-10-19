@@ -31,11 +31,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/abandoned-archon-jail",
+          "label": "Abandoned Archon Jail",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 15+\", \"Entrance Moslan Forest, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/abandoned-archon-jail/",
@@ -47,7 +54,7 @@
           "note": "allthings.how lv15 Moslan Forest; metabot page has no kib/xp; xp from known value"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source",
@@ -80,11 +87,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/abandoned-memorial-room",
+          "label": "Abandoned Memorial Room",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 20+\", \"Entrance Uruthumheim, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/abandoned-memorial-room/",
@@ -94,7 +108,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -218,11 +232,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/all-curing-cave",
+          "label": "All-Curing Cave",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 30+\", \"Entrance Battlescar Mound, Altgard\"."
         },
         {
           "url": "https://allthings.how/?p=247635",
@@ -238,7 +259,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source",
@@ -314,9 +335,23 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/dungeons/ascetics-cave",
+          "label": "Ascetic's Cave",
+          "fields": [
+            "band",
+            "zone"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 40+\", \"Entrance Impetusium Square, Altgard\"."
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {},
       "notes": [
@@ -352,11 +387,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/bloodsoaked-confessional",
+          "label": "Bloodsoaked Confessional",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 15+\", \"Entrance Moslan Forest, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/bloodsoaked-confessional/",
@@ -366,7 +408,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -398,11 +440,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/blue-dragons-trap",
+          "label": "Blue Dragon's Trap",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 15+\", \"Entrance Sanctum Outpost, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/blue-dragon-s-trap/",
@@ -412,7 +461,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -530,11 +579,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/dark-root-cave",
+          "label": "Dark Root Cave",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 25+\", \"Entrance Dranactus, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/dark-root-cave/",
@@ -544,7 +600,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -662,11 +718,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/destroyed-scriptorium",
+          "label": "Destroyed Scriptorium",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 20+\", \"Entrance Purifying Forest, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/destroyed-scriptorium/",
@@ -676,7 +739,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -708,11 +771,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/destruction-archons-armory",
+          "label": "Destruction Archons Armory",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 35+\", \"Entrance Eastern Gribade Highland, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/destruction-archons-armory/",
@@ -722,7 +792,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -754,11 +824,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/drana-depository",
+          "label": "Drana Depository",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 25+\", \"Entrance Dranactus, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/drana-depository/",
@@ -768,7 +845,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -884,11 +961,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/dratona-cave",
+          "label": "Dratona Cave",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 10+\", \"Entrance Dredgion Crash Site, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/dratona-cave/",
@@ -898,7 +982,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -930,11 +1014,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/dusk-pit",
+          "label": "Dusk Pit",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 10+\", \"Entrance Calderon Canyon, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/dusk-pit/",
@@ -944,7 +1035,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -976,11 +1067,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/empty-cave",
+          "label": "Empty Cave",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 35+\", \"Entrance Western Gribade Highland, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/empty-cave/",
@@ -990,7 +1088,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -1100,11 +1198,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/fanatics-den",
+          "label": "Fanatics' Den",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 15+\", \"Entrance Sanctum Outpost, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/fanatics-den/",
@@ -1114,7 +1219,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -1146,11 +1251,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/final-haven",
+          "label": "Final Haven",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 30+\", \"Entrance Battlescar Mound, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/final-haven/",
@@ -1160,7 +1272,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -1192,11 +1304,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/fortunetellers-grave",
+          "label": "Fortuneteller's Grave",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 15+\", \"Entrance Moslan Forest, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/fortuneteller-s-grave/",
@@ -1206,7 +1325,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -1238,11 +1357,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/fungie-habitat",
+          "label": "Fungie Habitat",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 35+\", \"Entrance Eastern Gribade Highland, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/fungie-habitat/",
@@ -1252,7 +1378,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -1284,11 +1410,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/hidden-vein-cave",
+          "label": "Hidden Vein Cave",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 10+\", \"Entrance Nameless Cemetery, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/hidden-vein-cave/",
@@ -1298,7 +1431,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -1331,11 +1464,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/high-priests-ruins",
+          "label": "High Priest's Ruins",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 25+\", \"Entrance Dranactus, Altgard\"."
         },
         {
           "url": "https://allthings.how/?p=247464",
@@ -1351,7 +1491,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source",
@@ -1384,11 +1524,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/homishs-prison-compound",
+          "label": "Homish's Prison Compound",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 15+\", \"Entrance Sanctum Outpost, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/homish-s-prison-compound/",
@@ -1398,7 +1545,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -1430,11 +1577,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/howling-den",
+          "label": "Howling Den",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 15+\", \"Entrance Moslan Forest, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/howling-den/",
@@ -1444,7 +1598,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -1477,11 +1631,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/insectoid-tunnel",
+          "label": "Insectoid Tunnel",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 30+\", \"Entrance Basfelt Ruins, Altgard\"."
         },
         {
           "url": "https://allthings.how/?p=247532",
@@ -1497,7 +1658,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source",
@@ -1530,11 +1691,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/kumbahums-cave",
+          "label": "Kumbahum's Cave",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 40+\", \"Entrance Black Claw Village, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/kumbahum-s-cave/",
@@ -1544,7 +1712,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -1576,11 +1744,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/lagta-fafnite-storage",
+          "label": "Lagta Fafnite Storage",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 40+\", \"Entrance Lagta Fortress, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/lagta-fafnite-storage/",
@@ -1590,7 +1765,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -1622,11 +1797,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/lamnah-base",
+          "label": "Lamnah Base",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 20+\", \"Entrance Purifying Forest, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/lamnah-base/",
@@ -1636,7 +1818,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -1668,11 +1850,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/library-of-foresight",
+          "label": "Library of Foresight",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 15+\", \"Entrance Moslan Forest, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/library-of-foresight/",
@@ -1682,7 +1871,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -1715,11 +1904,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/library-of-patience",
+          "label": "Library of Patience",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 30+\", \"Entrance Basfelt Ruins, Altgard\"."
         },
         {
           "url": "https://allthings.how/?p=247532",
@@ -1735,7 +1931,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source",
@@ -1863,11 +2059,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/lonely-rock-chasm",
+          "label": "Lonely Rock Chasm",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 35+\", \"Entrance Western Gribade Highland, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/lonely-rock-chasm/",
@@ -1877,7 +2080,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -2083,11 +2286,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/old-graveyard",
+          "label": "Old Graveyard",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 10+\", \"Entrance Nameless Cemetery, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/old-graveyard/",
@@ -2097,7 +2307,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -2129,11 +2339,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/ossuary-of-the-noble",
+          "label": "Ossuary of the Noble",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 10+\", \"Entrance Nameless Cemetery, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/ossuary-of-the-noble/",
@@ -2143,7 +2360,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -2175,11 +2392,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/pirates-treasure-storage",
+          "label": "Pirate's Treasure Storage",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 35+\", \"Entrance Idun's Lake, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/pirate-s-treasure-storage/",
@@ -2189,7 +2413,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -2307,11 +2531,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/poisonous-plant-habitat",
+          "label": "Poisonous Plant Habitat",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 10+\", \"Entrance Nameless Cemetery, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/poisonous-plant-habitat/",
@@ -2321,7 +2552,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -2353,11 +2584,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/predators-lair",
+          "label": "Predator's Lair",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 20+\", \"Entrance Purifying Forest, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/predator-s-lair/",
@@ -2367,7 +2605,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -2399,11 +2637,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/prison-of-oblivion",
+          "label": "Prison of Oblivion",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 15+\", \"Entrance Moslan Forest, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/prison-of-oblivion/",
@@ -2413,7 +2658,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -2445,11 +2690,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/rift-fissure",
+          "label": "Rift Fissure",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 30+\", \"Entrance Battlescar Mound, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/rift-fissure/",
@@ -2459,7 +2711,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -2491,11 +2743,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/rock-cave",
+          "label": "Rock Cave",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 35+\", \"Entrance Eastern Gribade Highland, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/rock-cave/",
@@ -2505,7 +2764,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -2537,11 +2796,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/scale-altar",
+          "label": "Scale Altar",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 35+\", \"Entrance Western Gribade Highland, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/scale-altar/",
@@ -2551,7 +2817,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -2583,11 +2849,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/shulak-cave",
+          "label": "Shulak Cave",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 35+\", \"Entrance Western Gribade Highland, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/shulak-cave/",
@@ -2597,7 +2870,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -2629,11 +2902,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/skurv-laborer-den",
+          "label": "Skurv Laborer Den",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 25+\", \"Entrance Dranactus, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/skurv-laborer-den/",
@@ -2643,7 +2923,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -2675,11 +2955,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/smugglers-cave",
+          "label": "Smuggler's Cave",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 10+\", \"Entrance Calderon Canyon, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/smuggler-s-cave/",
@@ -2689,7 +2976,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -2721,11 +3008,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/spider-cave",
+          "label": "Spider Cave",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 40+\", \"Entrance Fafnite Deposit, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/spider-cave/",
@@ -2735,7 +3029,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -2767,11 +3061,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/tayga-breeding-ground",
+          "label": "Tayga Breeding Ground",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 40+\", \"Entrance Black Claw Village, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/tayga-breeding-ground/",
@@ -2781,7 +3082,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -2813,11 +3114,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/treasure-hunters-residence",
+          "label": "Treasure Hunter's Residence",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 10+\", \"Entrance Dredgion Crash Site, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/treasure-hunter-s-residence/",
@@ -2827,7 +3135,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -2859,11 +3167,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/tricksters-den",
+          "label": "Trickster's Den",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 10+\", \"Entrance Dredgion Crash Site, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/trickster-s-den/",
@@ -2873,7 +3188,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -2991,11 +3306,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/unstable-cave",
+          "label": "Unstable Cave",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 20+\", \"Entrance Purifying Forest, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/unstable-cave/",
@@ -3006,7 +3328,7 @@
           "note": "page says Purifying Forest; Briskwind Shelter is elsewhere listed in Dranactus - verify"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -3038,11 +3360,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/valkas-nest",
+          "label": "Valka's Nest",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 10+\", \"Entrance Dredgion Crash Site, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/valka-s-nest/",
@@ -3052,7 +3381,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -3084,11 +3413,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/victims-cave",
+          "label": "Victims' Cave",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 15+\", \"Entrance Moslan Forest, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/victims-cave/",
@@ -3098,7 +3434,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -3130,11 +3466,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/warriors-rest",
+          "label": "Warriors' Rest",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 40+\", \"Entrance Impetusium Square, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/warriors-rest/",
@@ -3144,7 +3487,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -3176,11 +3519,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/watchers-temporary-outpost",
+          "label": "Watcher's Temporary Outpost",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 10+\", \"Entrance Calderon Canyon, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/watcher-s-temporary-outpost/",
@@ -3190,7 +3540,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
@@ -3222,11 +3572,18 @@
       ],
       "sources": [
         {
-          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "url": "https://metabot.gg/en/aion-2/dungeons/worshipers-underground-cave",
+          "label": "Worshiper's Underground Cave",
           "fields": [
             "band",
             "zone"
-          ]
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 20+\", \"Entrance Uruthumheim, Altgard\"."
         },
         {
           "url": "https://allthings.how/aion-2/map/worshiper-s-underground-cave/",
@@ -3236,7 +3593,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified",
       "fieldStatus": {
         "entrance": "single-source"
