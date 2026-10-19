@@ -1,0 +1,5 @@
+[
+  { "case": "m1-sealed-card-390", "kind": "before-after", "title": "Sealed Dungeon card icon (mockup)", "caption": "The pickaxe becomes the game's Sealed Dungeon map marker on a dark tile, and each Kibelisk mention gets the Kibelisk marker." },
+  { "case": "m2-stronghold-card-390", "kind": "before-after", "title": "Stronghold card icon (mockup)", "caption": "The castle becomes the game's Stronghold campfire marker, on the same dark tile as the story and dungeon cards." },
+  { "case": "m3-dungeons-card-1500", "kind": "before-after", "title": "Dungeons card markers (mockup)", "caption": "The Strongholds and Sealed Dungeons headings carry their map marker, and each region's trace count shows the feather in place of the word." }
+]
