@@ -389,6 +389,16 @@
           "text": "Turn in — Pelleir (Village Chief), Aldelle Village"
         }
       ],
+      "rewards": {
+        "xp": 2589,
+        "kina": 1500,
+        "wisdom": null,
+        "crystal": null,
+        "items": [
+          "Strange Karma Boots x1",
+          "Strange Karma Gloves x1"
+        ]
+      },
       "requires": {
         "story": "sq:2101020",
         "is": "turnedIn",
@@ -456,6 +466,33 @@
             "value": "0.0.4387.0"
           },
           "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/shadow-forest",
+          "fields": [
+            "rewards"
+          ],
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page Rewards table: 2,589 EXP, Kina (Bound) 1,500, Strange Karma Boots x1, Strange Karma Gloves x1 (Game Data Check, 2026-10-18)"
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-18-shadow-forest-01",
+            "checkedAt": "2026-10-18",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Turn-in screen, Asmodian Assassin: Basic Rewards 100% EXP and 1.5K Kinah; Additional Rewards Strange Karma Boots and Strange Karma Gloves"
+          },
+          "fields": [
+            "rewards"
+          ],
+          "note": "Matches the Metabot rewards; the screen shows Kinah rounded (1.5K) and EXP as a percent of the level"
         }
       ],
       "verifiedAt": "2026-10-18",
