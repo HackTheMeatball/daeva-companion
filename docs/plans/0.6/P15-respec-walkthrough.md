@@ -1,5 +1,7 @@
 # 0.6 P15: Respec walk-through and the tutorial-skill refund (#254 note 2)
 
+> **Superseded by issue #274** (re-spec 2026-10-18 8:00 PM ET): skills only (tutorial refund, reset one / reset all), from `docs/research/owner-screens-2026-10-18/README.md`. Build from the issue body, not this file.
+
 Planned in the 0.6 planning pass (#257, ROADMAP "0.6", lane A). Read CLAUDE.md, #254 note 2, the owner's answer to
 ROADMAP 0.6 owner input 3 (`owner-keys` in DECISIONS: stigma key, skill reset / refund button, tutorial-skill refund,
 Daevanion and stigma respec steps), P14 and docs/ISSUES.md:49 (respec cost after Lv 31, disputed) first.

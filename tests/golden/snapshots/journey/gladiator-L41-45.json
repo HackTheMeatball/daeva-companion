@@ -1,0 +1,26 @@
+{
+  "gladiator/L45-q86-none-A": {
+    "prev": "Forgotten Commander Lv 45",
+    "quest": "Daeva Trapped in a Nightmare",
+    "lv": "Lv 45",
+    "next": "Last story quest in the guide · turns in to Nemon at Outskirts Stall",
+    "hint": "milestone now: Lv 45",
+    "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
+    "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
+    "track": ["Level cap now Lv 45"],
+    "ring": "1%",
+    "prog": ["Quests 44 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+  },
+  "gladiator/L45-q86-none-B": {
+    "prev": "Forgotten Commander Lv 45",
+    "quest": "Daeva Trapped in a Nightmare",
+    "lv": "Lv 45",
+    "next": "Last story quest in the guide · turns in to Nemon at Outskirts Stall",
+    "hint": "milestone now: Lv 45",
+    "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
+    "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
+    "track": ["Level cap now Lv 45"],
+    "ring": "1%",
+    "prog": ["Quests 44 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+  }
+}

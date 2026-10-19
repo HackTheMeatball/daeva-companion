@@ -189,10 +189,18 @@ if (g) {
   packFails('a cycle (the class uses the guide that uses it)', r => editManifest(r, 'aion2/classes/assassin', m => { m.uses = [guide]; }), /pack cycle: /);
   let gc = null; try { gc = generate({ root: packsCopy('copy', () => {}), pack: guide }); } catch (e) { ok('generator runs on a copied packs root', false, e.message); }
   if (gc) ok('--root / --pack: an unchanged copy of data/packs, pack ' + guide + ', compiles the same modules', gc.module === g.module && gc.gateModule === g.gateModule && gc.proposedModule === g.proposedModule);
-  /* 0.6 P4: the Gladiator class pack, which no guide pack uses yet, is checked and cited but compiles into no module */
-  const gl = (g.idle || []).find(x => x.pack === 'aion2/classes/gladiator'), glColl = f => gl ? gl.all.filter(x => x.file.endsWith('/' + f)).length : 0;
-  ok('idle class pack aion2/classes/gladiator: 1 class, 22 skills, 13 stigmas, 537 board nodes, checked by the generator', !!gl && glColl('class.json') === 1 && glColl('skills.json') === 22
-    && glColl('stigmas.json') === 13 && glColl('board-nodes.json') === 537 && g.report.checks.some(x => x.check.startsWith('aion2/classes/gladiator: board:triniel: 117 nodes')), gl && [glColl('skills.json'), glColl('board-nodes.json')]);
+  /* 0.7 P3 (#346): the Spiritmaster class pack, which no guide pack uses yet, is checked and cited but compiles into no
+     module (0.6 P4's Gladiator was the idle pack here until 0.7 P2 gave it its guide pack) */
+  const sm = (g.idle || []).find(x => x.pack === 'aion2/classes/spiritmaster'), smColl = f => sm ? sm.all.filter(x => x.file.endsWith('/' + f)).length : 0;
+  ok('idle class pack aion2/classes/spiritmaster: 1 class, 22 skills, 13 stigmas, 537 board nodes, checked by the generator', !!sm && smColl('class.json') === 1 && smColl('skills.json') === 22
+    && smColl('stigmas.json') === 13 && smColl('board-nodes.json') === 537 && g.report.checks.some(x => x.check.startsWith('aion2/classes/spiritmaster: board:triniel: 117 nodes')), sm && [smColl('skills.json'), smColl('board-nodes.json')]);
+  const smWords = /spiritmaster|Spirit Communion|Kaisinel's Power|Cursed Cloud|560136/i, smIn = [g.module, g.gateModule, g.proposedModule, g.placeModule].filter(m => smWords.test(m)).map(m => m.match(smWords)[0]);
+  ok('the Assassin bundle carries no Spiritmaster record (generated, gate, proposed and place modules)', !smIn.length, smIn);
+  /* 0.7 P2: the Gladiator class pack is no longer idle; it compiles through its guide pack (aion2/asmodian/gladiator), and
+     the Assassin bundle still carries none of it */
+  const glG = others[otherIds.indexOf('aion2/asmodian/gladiator')], glColl = f => glG ? glG.all.filter(x => x.file.startsWith('data/packs/aion2/classes/gladiator/') && x.file.endsWith('/' + f)).length : 0;
+  ok('the Gladiator class pack is no longer idle; its guide pack compiles 1 class, 22 skills, 13 stigmas, 537 board nodes', !(g.idle || []).some(x => x.pack === 'aion2/classes/gladiator') && !!glG
+    && glColl('class.json') === 1 && glColl('skills.json') === 22 && glColl('stigmas.json') === 13 && glColl('board-nodes.json') === 537, [glColl('skills.json'), glColl('board-nodes.json')]);
   const glWords = /gladiator|Keen Strike|Lunge Stance|Zikel's Blessing|110113/i, glIn = [g.module, g.gateModule, g.proposedModule, g.placeModule].filter(m => glWords.test(m)).map(m => m.match(glWords)[0]);
   ok('the Assassin bundle carries no Gladiator record (generated, gate, proposed and place modules)', !glIn.length, glIn);
   /* 0.6 P22 added the Ranger class pack idle; 0.6 P5 gave it its guide pack (aion2/asmodian/ranger), so it is no longer idle
@@ -203,14 +211,14 @@ if (g) {
     && rgColl('class.json') === 1 && rgColl('skills.json') === 22 && rgColl('stigmas.json') === 13 && rgColl('board-nodes.json') === 537, [rgColl('skills.json'), rgColl('board-nodes.json')]);
   const rgWords = /(class|skill|stigma|spec|node|build):ranger\b|Tempest Shot|Hunter's Soul|Vaizel's Authority|Bow of Blessing/i, rgIn = [g.module, g.gateModule, g.proposedModule, g.placeModule].filter(m => rgWords.test(m)).map(m => m.match(rgWords)[0]);
   ok('the Assassin bundle carries no Ranger record (generated, gate, proposed and place modules)', !rgIn.length, rgIn);
-  const GL = 'aion2/classes/gladiator', editJson = (root, f, fn) => { const p = join(root, GL, f), d = JSON.parse(readFileSync(p, 'utf8')); fn(d); writeFileSync(p, JSON.stringify(d)); };
+  const SM = 'aion2/classes/spiritmaster', editJson = (root, f, fn) => { const p = join(root, SM, f), d = JSON.parse(readFileSync(p, 'utf8')); fn(d); writeFileSync(p, JSON.stringify(d)); };
   const idleFails = (label, mutate, re) => { let g1 = null; try { g1 = generate({ root: packsCopy(label, mutate) }); } catch (e) { ok('generator runs: ' + label, false, e.message); return; }
     ok('generator rejects: ' + label, g1.failed.some(x => re.test(x.check)), g1.failed.map(x => x.check).slice(0, 5)); };
-  idleFails('idle-node-cost', r => editJson(r, 'board-nodes.json', d => { d.records.find(n => n.board === 'board:zikel' && n.type === 'stat').cost += 1; }), /gladiator: board:zikel: .*points \(134\)/);
-  idleFails('idle-node-skill', r => editJson(r, 'board-nodes.json', d => { d.records.find(n => n.type === 'skill').skill = 'skill:gladiator:bogus'; }), /skill node names its skill/);
-  idleFails('idle-released', r => editJson(r, 'class.json', d => { d.records[0].release = 'released'; }), /gladiator: one class record, hidden/);
-  idleFails('idle-spec-level', r => editJson(r, 'stigmas.json', d => { d.records[0].specialtyChoices[0].skillLv = 4; }), /stigma:gladiator:.*specialty levels \[5,10,15,20\]/);
-  packFails('an idle class file that fails its schema', r => editJson(r, 'skills.json', d => { delete d.records[0].levelGate; }), /schema validation failed:\n  .*aion2\/classes\/gladiator\/skills\.json: .*levelGate/);
+  idleFails('idle-node-cost', r => editJson(r, 'board-nodes.json', d => { d.records.find(n => n.board === 'board:zikel' && n.type === 'stat').cost += 1; }), /spiritmaster: board:zikel: .*points \(134\)/);
+  idleFails('idle-node-skill', r => editJson(r, 'board-nodes.json', d => { d.records.find(n => n.type === 'skill').skill = 'skill:spiritmaster:bogus'; }), /skill node names its skill/);
+  idleFails('idle-released', r => editJson(r, 'class.json', d => { d.records[0].release = 'released'; }), /spiritmaster: one class record, hidden/);
+  idleFails('idle-spec-level', r => editJson(r, 'stigmas.json', d => { d.records[0].specialtyChoices[0].skillLv = 4; }), /stigma:spiritmaster:.*specialty levels \[5,10,15,20\]/);
+  packFails('an idle class file that fails its schema', r => editJson(r, 'skills.json', d => { delete d.records[0].levelGate; }), /schema validation failed:\n  .*aion2\/classes\/spiritmaster\/skills\.json: .*levelGate/);
   const c = g.constants;
   ok('compiled: story turn-in zones: Aldelle Village where the turn-in is in the village, else Ishalgen', c.QUEST_LOC['A Village in the Fog'].turninZone === 'Aldelle Village'
     && c.QUEST_LOC['Brigade Prison Compound Infiltration Operation'].turninZone === 'Aldelle Village' && c.QUEST_LOC['Isolated Lake'].turninZone === 'Ishalgen',

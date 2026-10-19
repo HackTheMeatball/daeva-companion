@@ -1,0 +1,24 @@
+{
+  "gladiator/L10-q12-none-A": {
+    "in": "347768a3be00",
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true]
+    },
+    "mode": "advanced"
+  },
+  "gladiator/L10-q12-none-B": {
+    "in": "ef9cbc3b4828",
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true]
+    },
+    "mode": "basic"
+  }
+}

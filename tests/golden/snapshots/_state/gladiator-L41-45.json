@@ -1,0 +1,54 @@
+{
+  "gladiator/L45-q86-none-A": {
+    "in": "160c4510015d",
+    "store": {
+      "areaLv": ["(absent)","40"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g22": ["(absent)",true],
+      "open.g25": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "open.g28": ["(absent)",true],
+      "open.g30": ["(absent)",true],
+      "open.g32": ["(absent)",true],
+      "open.g35": ["(absent)",true],
+      "open.g37": ["(absent)",true],
+      "open.g40": ["(absent)",true],
+      "open.g45": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true]
+    },
+    "mode": "advanced"
+  },
+  "gladiator/L45-q86-none-B": {
+    "in": "dae99aae2678",
+    "store": {
+      "areaLv": ["(absent)","40"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g22": ["(absent)",true],
+      "open.g25": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "open.g28": ["(absent)",true],
+      "open.g30": ["(absent)",true],
+      "open.g32": ["(absent)",true],
+      "open.g35": ["(absent)",true],
+      "open.g37": ["(absent)",true],
+      "open.g40": ["(absent)",true],
+      "open.g45": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true]
+    },
+    "mode": "basic"
+  }
+}
