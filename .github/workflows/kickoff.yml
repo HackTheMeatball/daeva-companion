@@ -123,12 +123,16 @@ jobs:
             // Decision cell doesn't count) whose decision starts "Owner, typed" (Isaac's own words, recorded by a reviewed
             // PR; #114 "Owner tokens"). 2026-10-17: P2, P12, P14 and P15 sat unqueued after their OK was recorded (#221 x3).
             // From 0.7 on the key is `owner-ok-<minor>-<slug>` (patch items `owner-ok-<x.y.z>-<slug>`; K12, afterBlocker below).
-            const items = (await github.paginate(github.rest.issues.listForRepo, { owner, repo, state: 'all', per_page: 100 }))
-              .filter((i) => !i.pull_request)
+            const allIssues = (await github.paginate(github.rest.issues.listForRepo, { owner, repo, state: 'all', per_page: 100 }))
+              .filter((i) => !i.pull_request);
+            const items = allIssues
               .map((i) => ({ i, m: i.title.match(/^(\d+\.\d+) (P\d+[a-z]?|S\d+):/) || (i.title.match(/^Release (\d+\.\d+)\.0\b/) || []).concat('R').slice(0, 3) }))
               .filter((x) => x.m.length === 3)
               .map(({ i, m }) => ({ n: i.number, ver: m[1], rel: m[1], key: m[2], open: i.state === 'open', body: i.body || '' }));
             const keyed = new Map(items.map((x) => [`${x.ver} ${x.key}`, x]));
+            // Patch items ("0.6.1 F5: ...") have no minor key; a patch release's "After: everything" means all of them.
+            const patch = allIssues.map((i) => ({ i, m: i.title.match(/^(\d+\.\d+\.\d+) ([A-Za-z]+\d+[a-z]?):/) }))
+              .filter((x) => x.m).map(({ i, m }) => ({ n: i.number, rel: m[1], key: `${m[1]} ${m[2]}`, open: i.state === 'open' }));
             const listed = new Set(lines.flatMap((l) => { const q = l.match(/^- \[[^\]]+\] #(\d+)/); return q ? [Number(q[1])] : []; }));
             const queued = [];
             // AFTER-CHECK START (tests/kickoff.mjs runs this block against fixtures)
@@ -166,8 +170,14 @@ jobs:
               const unclear = `After line "${after.trim()}" not understood`;
               let deps;
               if (/everything|\ball\b/i.test(after)) {
-                if (!x.ver) return unclear;
-                deps = items.filter((y) => y.ver === x.ver && y.n !== x.n);
+                // A patch release ("Release 0.6.1 (patch)") waits for the issues titled with its patch version (0.6.1
+                // stalled the queue on 2026-10-18: "everything" was not understood there, and an alone line stops the loop).
+                // No patch items at all (none filed yet, or a typo in a title) is not understood, not "nothing to wait for".
+                if (!x.ver && x.rel && /^\d+\.\d+\.\d+$/.test(x.rel)) {
+                  deps = patch.filter((y) => y.rel === x.rel && y.n !== x.n);
+                  if (!deps.length) return `${unclear} (no ${x.rel} items found)`;
+                } else if (!x.ver) return unclear;
+                else deps = items.filter((y) => y.ver === x.ver && y.n !== x.n);
               } else {
                 const keys = [], research = [], oks = [];
                 for (const t of after.split(/[,\s]+/).filter(Boolean)) {
@@ -200,8 +210,15 @@ jobs:
               queued.push(ql.trim());
             }
             if (queued.length) {
-              let at = lines.findIndex((l) => l.startsWith('<!-- One line per item'));
-              for (let k = at + 1; at >= 0 && k < lines.length && /^- \[/.test(lines[k]); k++) at = k;
+              // QUEUE-END START (tests/kickoff.mjs runs this block)
+              const queueEnd = (ls) => {
+                let at = ls.findIndex((l) => l.startsWith('<!-- One line per item'));
+                // A "held" note under a line belongs to it: the queue goes on past it (#392 review).
+                for (let k = at + 1; at >= 0 && k < ls.length && /^(- \[|\s+- held: )/.test(ls[k]); k++) at = k;
+                return at;
+              };
+              // QUEUE-END END
+              const at = queueEnd(lines);
               if (at < 0) core.warning('#114 has no queue comment line; auto-queue skipped');
               else { lines.splice(at + 1, 0, ...queued); pruned = true; core.notice(`queued: ${queued.join(' | ')}`); }
             }
@@ -229,6 +246,9 @@ jobs:
               const ended = cs.slice(start + 1).some((c) => /^(Blocked:|Needs @claude|Kickoff: the build ended with no PR)/.test(c.body || ''));
               return ended ? '' : 'a kickoff build started in the last 9 h and has not ended';
             };
+            // A held note whose line was removed, moved or started by hand is stale: drop it.
+            for (let i = lines.length - 1; i >= 0; i--)
+              if (/^\s+- held: /.test(lines[i]) && !/^- \[next\] /.test(lines[i - 1] || '')) { lines.splice(i, 1); pruned = true; }
             for (let i = 0; i < lines.length && inflight < MAX; i++) {
               const m = lines[i].match(/^- \[next\] #(\d+) (sonnet|opus)((?: lanes:[^\s]+| alone)*)\s*$/);
               if (!m) continue;
@@ -244,11 +264,23 @@ jobs:
               if (iss.state !== 'open' || iss.pull_request) { core.warning(`#${n} is not an open issue; skipped`); continue; }
               const kx = items.find((y) => y.n === n) || { n, ver: null, rel: (iss.title.match(/^(?:Release )?(\d+\.\d+(?:\.\d+)?)\b/) || [])[1] || null, key: null, open: true, body: iss.body || '' };
               const wait = await afterBlocker(kx);
-              if (wait) { core.info(`#${n}: ${wait}; left in #114 for the planner`); if (alone) break; continue; } // an "alone" item keeps queue order
+              if (wait) {
+                // An After line kickoff can't read is easy to miss (an alone one also holds every line below it): warn, and
+                // put a note under the line in #114, where the planner and anyone reading the queue see it (Kaizen (Gale), 2026-10-18).
+                if (/not understood/.test(wait)) {
+                  core.warning(`#${n}: ${wait}; held${alone ? ', and as an alone line it holds the queue below it' : ''}`);
+                  if (!/^\s+- held: /.test(lines[i + 1] || '')) { lines.splice(i + 1, 0, `  - held: After not understood (kickoff ${stamp})`); pruned = true; }
+                } else {
+                  core.info(`#${n}: ${wait}; left in #114 for the planner`);
+                  if (/^\s+- held: /.test(lines[i + 1] || '')) { lines.splice(i + 1, 1); pruned = true; } // it reads now, it just waits
+                }
+                if (alone) break; continue; // an "alone" item keeps queue order
+              }
               const why = await alreadyBuilt(n);
               if (why) { core.warning(`#${n} not started again: ${why}`); lines[i] = `- [started ${stamp}] #${n} ${m[2]}${m[3]}`; pruned = true; continue; }
               picked.push({ issue: n, model: m[2] === 'opus' ? 'claude-opus-5-5' : 'claude-sonnet-5-5', title: iss.title });
               lines[i] = `- [started ${stamp}] #${n} ${m[2]}${m[3]}`;
+              if (/^\s+- held: /.test(lines[i + 1] || '')) lines.splice(i + 1, 1); // its After line reads now: drop the note
               for (const x of want) busy.add(x);
               inflight++;
               if (alone) break;

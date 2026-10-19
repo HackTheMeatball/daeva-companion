@@ -311,3 +311,42 @@ The site mounts the sync line only when `SYNC_LIVE` (`src/shell/sync-host-http.j
 players see no switch, no panel and make no request to `SYNC_BASE` until the server exists. Tests turn it on with an
 injected `window.__dcSyncTest = true` (`tests/site.js`), never a URL parameter. The item that deploys the server (0.7 P5,
 #348) turns sync on with one change: `SYNC_LIVE = true`.
+
+## 10. Server as built (0.7 P5, #348)
+
+The issue calls this "§9"; §9 was taken by 0.7 P8 first, so the server note is §10. P5 builds and tests the server
+offline only: **no deploy**, so `SYNC_LIVE` stays `false`; the deploy step (owner-run, with the account id and bucket
+filled into `server/sync/wrangler.toml` outside the repo) flips it.
+
+- **`server/sync/src/worker.js`**: a module Worker (`fetch`, `scheduled`) over one R2 binding `SYNC`; `makeWorker(opts)`
+  takes the clock, the log sink and the limits for tests. §4 as written: `GET` / `PUT` / `DELETE /v1/s/{id}`, 400 on a
+  malformed id or token before any store access, 401 on a wrong token (SHA-256 of the token in base64url, compared
+  without an early exit), 428 without `If-Match` or `If-None-Match: *`, 412 on a stale etag or an existing id, 413 above
+  256 KiB (by `Content-Length`, then by the bytes), 400 on a body that isn't 14 + k × 4096 + 16 bytes, anything else 404
+  with a fixed body. Every response has `Cache-Control: no-store`; `https://daevacompanion.com` (only) gets
+  `Access-Control-Allow-Origin`, `Access-Control-Expose-Headers: ETag` and a preflight (204, `GET, PUT, DELETE`,
+  `Authorization, Content-Type, If-Match, If-None-Match`); any other origin's preflight is 403 without CORS headers.
+- **R2 keys** (the sync id is the only name): `s/<id>` the body as sent, with `customMetadata` `th` (token hash), `c`
+  (created), `d` / `n` (UTC day and count of writes); `r/<id>` an empty read marker whose `uploaded` time is the last
+  read, rewritten at most once a day (rewriting `s/<id>` would change the ETag every device holds); `m/total` the stored
+  total the last scheduled run counted.
+- **Conditional writes**: create is `put(…, { onlyIf: Headers{ If-None-Match: * } })`, update `onlyIf: Headers{ If-Match }`
+  after a `head` (token, etag and rate checks); a `null` from `put` is 412. **To confirm at deploy** against the real
+  binding (`wrangler dev` / Miniflare, not run here: no account, no network): that R2's `put` honours `If-None-Match: *`
+  in `onlyIf`. If it doesn't, the DECISIONS fallback (one Durable Object per id) applies; the tests describe the contract
+  either way.
+- **Limits** (`LIMITS`): per IP 60 requests / 10 min and 5 new ids / UTC day, counted in the isolate's memory only (so
+  per edge isolate, a soft limit; Cloudflare's rate-limiting binding can replace it at deploy); per id 1 `PUT` / 10 s (from
+  the copy's `uploaded`) and 500 / UTC day (from `d` / `n`), so those hold across isolates. 429 carries `Retry-After`.
+  The storage ceiling (1 GiB) reads `m/total`: new ids get 507 once the last count plus the body passes it; updates go
+  on. The count is as fresh as the daily cron, so the ceiling can be overshot by one day's new ids (≤ 5 per IP).
+- **Retention**: the cron (`17 3 * * *`) deletes every `s/<id>` whose later of last write and last read is more than
+  180 days ago (owner input S3), its read marker, and markers without a copy; then rewrites `m/total`.
+- **Logs**: one line per request, `<method> <route template> <status> <size bucket>` (`/v1/s/:id` or `other`; buckets
+  `0`, `<=8K`, `<=32K`, `<=128K`, `<=256K`, `>256K`), and one `CRON retention kept N removed M` per run; never the id,
+  token, body or IP. Errors answer 500 `server error` and log only the line. Workers observability is off in the config.
+- **Tests** (`core` suite, `tests/core/sync-server.test.mjs`, over `server/sync/test/memory-r2.mjs`): every §4 row and
+  the §7 server list (ciphertext only with a source check for parsing, log lines, API, limits, retention, CORS), then
+  the client's `syncOnce` / `joinSync` / `deleteCloudCopy` through `httpSyncHost` and a fetch that applies the browser's
+  CORS response filter: create, update, a lost race (412) and its retry, conflict, join, delete, and the case without
+  `Access-Control-Expose-Headers` (every update ends in "conflict", so the ETag check is not vacuous).

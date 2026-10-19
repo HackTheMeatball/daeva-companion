@@ -19,8 +19,8 @@ All five: Metabot, 256 px WebP converted to 128 px PNG, retrieved 2026-10-15.
 | sk-determination.png | <https://metabot.gg/en/aion-2/skills/determination> | <https://metabot.gg/web/aion2/skills/13800000.webp> |
 | sk-heightened-sixth-sense.png | <https://metabot.gg/en/aion-2/skills/heightened-sixth-sense> | <https://metabot.gg/web/aion2/skills/13710000.webp> |
 
-These five have no `/_blob/` id in `scripts/artifact-blobs.json` (`null`), so the artifact build shows initials for them
-(ISSUES.md; the artifact is frozen, DECISIONS D4).
+These five never reached the frozen claude.ai artifact, which shows initials for them (ISSUES.md; DECISIONS D4); it is
+no longer built since 0.7 P9.
 
 ## No recorded source (23 of 28): for the owner
 
