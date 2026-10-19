@@ -184,39 +184,42 @@ The same as P3, for the Cleric. It runs after P3 because both edit `pack.js`.
 
 - **Problem.** A first-time player lands on the Assassin route. The other classes are only under the character name,
   then New character (#333-3, still open in #441).
-- **Result.** Design Lead's mockup (path added to the issue when she gives DESIGN OK): the first-visit welcome offers the
-  class. An Assassin player takes no extra step.
+- **Result.** Design Lead's mockup, `/mnt/project-files/tracker/mockups/0.8-welcome-class-and-crop-icons/README.md` §1 (DESIGN OK 2026-10-19 6:23 AM ET):
+  - a "Your class" chip row on the welcome's first step, above the buttons, with Assassin pre-selected;
+  - the pick carries into Start and into the join form, with no extra screen;
+  - on desktop, one row of chips; on phone, a 2-column grid of 44 px buttons;
+  - a muted hint points to the name button for more characters.
+  An Assassin player still makes one tap.
 - **No-gos.**
   - No save shape change: the class is already a character field.
   - No new step for the Assassin default.
 - **Acceptance.**
   - [ ] A first visit can start as each offered class (site test).
   - [ ] Assassin start clicks are unchanged.
-  - [ ] Shots at both sizes, in Basic.
+  - [ ] Shots at both sizes, in Basic, matching the mockup.
 - **Files.** `src/cards/welcome.html`, `src/cards/welcome.js`, `src/styles` welcome rules, `tests/site.js`, and
   `tests/a11y.js`.
 - **Lanes:** welcome, a11y. **Model:** Sonnet, M (80 min).
 - **After:** `owner-ok-0.8-welcome-class`.
 
-## P13: Owner-crop icons, new uses
+## P13: Regional quest state tiles and the extract flask
 
-- **Problem.** The owner's cleaned crops (T-47, Design Lead approved) have no approved-source copy and no place in the app
-  yet.
-- **Result.** Design Lead's mockup (path in the issue):
-  - regional quest state icons on the Next up "Regional quests" card (#409): available until picked up, active after, as
-    the story card does;
-  - campsite and point-of-interest map markers;
-  - the extract action icon on the extract tip.
-  Each file gets an ISSUES.md provenance row naming the owner screen.
+- **Problem.** The Next up "Regional quests" card and the extract tip don't show the game's icons.
+- **Result.** Design Lead's mockup, `/mnt/project-files/tracker/mockups/0.8-welcome-class-and-crop-icons/README.md` §2a and §2c (DESIGN OK 2026-10-19 6:23 AM ET):
+  - The regional tile turns dark like the place tiles. "To pick up" shows the owner's teal star crop, and "In progress"
+    shows Metabot's `quest_district`. It reuses the story card's state logic (#409).
+  - The extract flask sits inline at 1.25 em before "beaker icon" in step 3 of the extract tip.
+  Each file gets an ISSUES.md provenance row: the owner screen for the crop, the source page and file URL for
+  `quest_district`.
 - **No-gos.**
-  - No crop that isn't Design Lead approved.
+  - No campsite or point-of-interest markers. They are held (§2b) until places carry a kind.
   - No other new art.
 - **Acceptance.**
-  - [ ] Shots per use at both sizes.
+  - [ ] Shots of both tile states and the tip at both sizes.
   - [ ] Golden diff limited to the icon references.
   - [ ] Every file has a provenance row.
-- **Files.** `src/assets/icons/*` (the crops), `src/packs/aion2/cards/nextup-kinds.js`, `src/styles/cards/nextup.css`,
-  the extract tip data, and `docs/ISSUES.md`.
+- **Files.** `src/assets/icons/*` (the crops and `quest_district`), `src/packs/aion2/cards/nextup-kinds.js`,
+  `src/styles/cards/nextup.css`, the extract tip data, and `docs/ISSUES.md`.
 - **Lanes:** golden, nextup.css. **Model:** Sonnet, M (80 min).
 - **After:** `owner-ok-0.8-crop-icons`.
 

@@ -939,8 +939,8 @@ build times that would change them. Each item's problem, result, no-gos, accepta
 | P9 | Key setup follow-ups from the #424 review: fit test at 390 px only, chips read after all 12 cells, long names → 1500 px test, a label per column, names wrap | S | Sonnet | build-card, a11y | none |
 | P10 | Icons sit loose in Next up cards (#421) → the tile lines up with the title only, lines run full width | S | Sonnet | nextup.css | `owner-ok-0.8-icon-fit` (met, 2026-10-19 1:36 AM ET) |
 | P11 | Map markers on Next up tiles read small → sized by the visible emblem (Design Lead mockup, DESIGN OK 4:47 AM ET) | S | Sonnet | nextup.css | `owner-ok-0.8-marker-size` |
-| P12 | First-time players don't see the class choice (#333-3) → a class choice on the welcome card | M | Sonnet | welcome, a11y | `owner-ok-0.8-welcome-class` |
-| P13 | Owner-crop icons for new uses → regional quest states (#409), campsite and point-of-interest markers, extract action icon | M | Sonnet | golden, nextup.css | `owner-ok-0.8-crop-icons` |
+| P12 | First-time players don't see the class choice (#333-3) → a "Your class" chip row on the welcome card (Design Lead mockup, DESIGN OK 6:23 AM ET) | M | Sonnet | welcome, a11y | `owner-ok-0.8-welcome-class` |
+| P13 | Regional quests and the extract tip lack the game's icons → regional quest state tiles (#409: the owner's star crop, Metabot's `quest_district`) and the extract flask (Design Lead mockup, DESIGN OK 6:23 AM ET) | M | Sonnet | golden, nextup.css | `owner-ok-0.8-crop-icons` |
 | P14 | Key setup and macro steps don't match the game (#387) → the game's grid, the macro on right click, Shadowstrike on E | M | Opus | build-card, a11y | `research-387-macro` |
 | P15 | Auto level-up fires at the wrong level (#401) → it uses the level the quest is turned in at | M | Opus | golden | `research-401-levels` |
 | R | Release 0.8.0 | S | Sonnet | release, alone | everything above, or moved to 0.8.x; `DATA OK 0.8.0` |
@@ -952,7 +952,9 @@ Tracker 2.0) has no app version.
 
 No-gos for the whole minor: no save break (`companion-save-v5` stays); no AION 2 term in the engine; no game data without
 its source; no fetching in bot builds; no `.github/workflows/` edits by bots; no new game art beyond the standing icon OK
-and the owner's crop OK (P13).
+and the owner's crop and marker OK (P13). Campsite and point-of-interest markers are held: the crops are the game's zone
+labels, and no place record has a kind yet (Design Lead, 6:23 AM ET; 0.6.2 Q5). They need a data item first (`kind` on
+places), a 0.9 candidate.
 
 #### Waves and lane map (step 4)
 
@@ -985,7 +987,8 @@ the go for 0.8 builds and the three looks Design Lead approves:
 ```
 
 That records `owner-ok-0.8-go` (the planner queues 0.8 in #114), `owner-ok-0.8-marker-size` (P11),
-`owner-ok-0.8-welcome-class` (P12) and `owner-ok-0.8-crop-icons` (P13). A look still waiting on Design Lead's DESIGN OK
+`owner-ok-0.8-welcome-class` (P12) and `owner-ok-0.8-crop-icons` (P13: the owner's regional star crop and extract flask, plus Metabot's `quest_district`
+map marker, which the 0.6.2 map-icons OK didn't cover). All three looks have Design Lead's DESIGN OK. A look still waiting on Design Lead's DESIGN OK
 when the debrief goes out is left off the line and asked for later. Optional, only to change a default: name a
 different class for 0.8 (default Templar and Cleric).
 
