@@ -82,7 +82,7 @@ let STORY_DONE = "", END_NEXT = "";
    story complete, DECISIONS owner-ok-0.6.2-story-icons; sources in docs/ISSUES.md); the tile is an image labelled with
    the state (icoLabel). The 📜 emoji when it can't load (the tile then falls back to its usual look). */
 const STORY_ICOS = { active: ["assets/icons/story-quest-active.png", "Active quest"], ready: ["assets/icons/story-quest-ready.png", "Ready to turn in"], done: ["assets/icons/story-complete.png", "Story complete"] };
-const storyIco = st => ({ ico: `<img class="ns-sico" src="${STORY_ICOS[st][0]}" alt="" onerror="this.replaceWith('📜')">`, icoLabel: STORY_ICOS[st][1] });
+const storyIco = st => ({ ico: `<img class="ns-sico ns-sico-${st}" src="${STORY_ICOS[st][0]}" alt="" onerror="this.replaceWith('📜')">`, icoLabel: STORY_ICOS[st][1] });
 const STORY_ICO = storyIco("active").ico;
 function storyView(a) {
   const { act } = a;

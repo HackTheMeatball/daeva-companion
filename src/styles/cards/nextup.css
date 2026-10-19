@@ -170,6 +170,9 @@ body.basic #nowStar .ns-card.first { animation: nsPulse 2.2s ease-in-out infinit
 /* the story card's game icon (0.6 P13): a dark tile on every card, the icon filling it (Design Lead, #391 mockup) */
 #nowStar .ns-card .ns-num:has(> .ns-sico) { background: var(--panel-2); border-color: var(--line); }
 #nowStar .ns-card .ns-num .ns-sico { width: 100%; height: 100%; object-fit: contain; }
+/* the ready-to-turn-in marker (0.6.2 P20): its glow fills the file, the emblem only ~53% of it (the others ~81%), and sits
+   2 px left of centre at 64 px; scaled and moved so all three emblems sit at one size, centred (the glow is clipped) */
+#nowStar .ns-card .ns-num .ns-sico.ns-sico-ready { transform: scale(1.5) translate(3%, 1%); }
 
 /* Next up: bar along the bottom edge, full width, 3px, like milestone cards */
 #nowStar .ns-card .ns-bbar .nsq-bar { display: flex; max-width: none; width: 100%; height: 3px; margin: 0; border-radius: 0; background: var(--line); }
