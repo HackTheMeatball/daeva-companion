@@ -983,11 +983,11 @@ whose research isn't in by the time the rest has merged moves to 0.8.x.
 the go for 0.8 builds and the three looks Design Lead approves:
 
 ```
-0.8 OK: build as planned; looks OK: marker size, welcome class choice, crop icons
+0.8 OK: build as planned; looks OK: marker size, welcome class choice, regional quest and extract icons
 ```
 
 That records `owner-ok-0.8-go` (the planner queues 0.8 in #114), `owner-ok-0.8-marker-size` (P11),
-`owner-ok-0.8-welcome-class` (P12) and `owner-ok-0.8-crop-icons` (P13: the owner's regional star crop and extract flask, plus Metabot's `quest_district`
+`owner-ok-0.8-welcome-class` (P12) and `owner-ok-0.8-crop-icons` (P13: "regional quest and extract icons", the owner's regional star crop and extract flask plus Metabot's `quest_district`
 map marker, which the 0.6.2 map-icons OK didn't cover). All three looks have Design Lead's DESIGN OK. A look still waiting on Design Lead's DESIGN OK
 when the debrief goes out is left off the line and asked for later. Optional, only to change a default: name a
 different class for 0.8 (default Templar and Cleric).
