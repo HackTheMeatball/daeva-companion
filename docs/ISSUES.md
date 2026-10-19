@@ -178,7 +178,7 @@ on purpose: the guide shows nothing rather than an unverified value.
   Assassin's keys, so the guide shows none. The three skills that fire only on a condition are a Build plan step instead
   (claim C74).
 
-- **Gladiator rotation: two sources, no screen for it yet** (0.7 P2, #345). docs/research/2026-10-gladiator-guide.md §8
+- **Gladiator rotation: the Build panel's Rotation section shows the game's default keys, not the guide's line** (0.7 P2, #345; heading reworded 2026-10-19 after #441-5). docs/research/2026-10-gladiator-guide.md §8
   has a two-source right-click line (Rending Blow from Lv 1, Sword Aura Rampage above it from 5), but the Build
   drawer's Rotation section is written for the Assassin's keys (left click Quick Slice, Q Shadowstrike, the Assassin's
   buff names in `src/packs/aion2/cards/build.js`, `requirements.js` rotKeys). So the Gladiator's build carries no

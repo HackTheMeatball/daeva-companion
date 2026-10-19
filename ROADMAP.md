@@ -130,6 +130,11 @@ after her check, she re-runs it before the tag.
   chains, the story's last quest (Lv 45).
 - **0.4.0** — Engine and packs: the engine holds no AION 2 term, AION 2 is a game pack, save v5 shaped for several
   characters (saves reset once), blocking page budgets.
+- **0.5.0** — Smart Next up, travel help, the phone layout and a character switcher.
+- **0.6.0** — New players and the first new class: the Ranger, a welcome, cards on unlock.
+- **0.6.1** — fixes from 0.6.0 testing: objective count, phone toast, headings, Ranger icons; sync line hidden.
+- **0.7.0** — the Gladiator and the Spiritmaster, clearer Next up cards, map markers, sync server and screens (not
+  switched on); 0.6.2's items folded in.
 
 ## Plan (redrawn 2026-10-16)
 
@@ -867,25 +872,170 @@ Decisions this pass recorded (for the tracker):
   (`docs/research/2026-10-spiritmaster-pack.md`), `research-gladiator-guide` (`docs/research/2026-10-gladiator-guide.md`),
   and for 0.6.1 F5 `research-ranger-icons` (`docs/research/2026-10-ranger-icons.md`).
 
-### 0.8, 0.9 — two classes each
+### 0.8 — The Templar and the Cleric, icons for every class
 
-Each minor: two class packs side by side (lanes A and B; order by the D8 rule), plus the 1.0 audit's fixes in lane C as
-found. Each starts its classes' research at its planning pass start (K10).
+Planning pass written 2026-10-19 (Release Planner). It came after Player Testing's full play of 0.7.0 (#441) and Kaizen's
+release review ([docs/kaizen/0.7-scorecard.md](docs/kaizen/0.7-scorecard.md), PR #443; KAIZEN REVIEW DONE 0.7.0, 6:16 AM ET;
+changes K15–K18), in the order the owner set on 2026-10-18 at 11:21 PM ET. Item specs:
+[docs/plans/0.8/README.md](docs/plans/0.8/README.md). **Nothing is queued until the owner's morning OK** (owner,
+2026-10-18 11:15 PM ET; DECISIONS "Overnight: everything up to 0.8 builds").
 
-Carried in (Release Planner, 2026-10-18 10:55 PM ET, under the owner's "new looks ship in the next minor" rule and K13):
-owner icon crops with no approved-source copy (`/mnt/project-files/icons-hq/unmatched-icons-2026-10-18.png`), cleaned up
-(background removed, transparent, centred; owner, 10:22 PM and 10:51 PM ET) after Design Lead's review, for new uses:
-regional quest state icons (#409), campsite and point-of-interest map markers (held by the map-icons OK, Q5), and the
-extract action icon. The journal-check crop P20 (#391) already uses under its OK is cleaned up inside P20, in 0.7.0.
-Also carried in: icons sit tight (Design Lead mockup #421, `docs/design/0.6.2-icon-fit-mockup.md`, the owner's
-10:22 PM ET ask): the tile lines up with the title only and the lines under it run the card's full width, one CSS change
-in `nextup.css` (`.ns-mhead`). Owner OK typed 2026-10-19 1:36 AM ET (DECISIONS `owner-ok-0.8-icon-fit`).
+#### Audit (step 2), against `main` at `v0.7.0`
 
-Tracker work, outside the app versions (owner, 2026-10-18 11:27 PM ET; no app version, no #114 line, no app release
-gate): **Tracker: Reports tab** now (Design Lead designs it with placeholder data, distinct phone and desktop layouts;
-Tracker Design builds what she approves; the morning debrief reports land there), then **Tracker 2.0**, a redesign of
-every tab as a side project when it collides with nothing (tab by tab after Design Lead's OK; Tracker Sync checks no
-data is lost).
+Path to 1.0 first:
+
+1. **Two classes per minor still reaches eight at 0.9.** Done: Assassin, Ranger (0.6), Gladiator and Spiritmaster (0.7).
+   0.8 takes two of Templar, Sorcerer, Cleric and Chanter, and 0.9 takes the other two. Per D8, the class the owner plays
+   comes first. His Templar key screens are in (`/mnt/project-files/owner-screens/2026-10-18/templar/`), so the
+   **Templar** is first. Data coverage then picks the **Cleric**: 7 candidate guides and 3 Metabot builds, against the
+   Sorcerer's 6 and 3 and the Chanter's 7 and 0 (classes-and-gaps §2.2). This is Claude remediated and reversible: the
+   owner can swap either class in the morning batch. Both research sessions started at pass start (K10/K15).
+2. **A class must ship with its icons.** Gladiator and Spiritmaster went live with letter squares, and the 0.7.0 CHANGELOG
+   said they had icons (#441-4). Two causes: the research packs saved no icon files, and nobody checked the CHANGELOG
+   against `docs/ISSUES.md`. Changed here: every class research brief now saves the class's skill and stigma icons from
+   Metabot under the standing icon OK. P1 adds the 29 that are missing. K17 checks the CHANGELOG. The 0.7.0 section is
+   corrected in this PR.
+3. **Sync is built but switched off.** The deploy still waits on the owner's Cloudflare token (0.7 owner input 4). That
+   is not a 0.8 item; it stays on the owner's list for whenever he wants sync on.
+4. 1.0 and 1.1 are unchanged.
+
+Then 0.8:
+
+5. **The site page's gzip budget is at 95%** (below), past the step-2 line of 20% from the limit, so 0.8 carries a
+   performance item (P6). Sync's UI code ships to every visitor, yet stays hidden until the server is switched on
+   (`SYNC_LIVE` false). Loading it on demand takes its weight out of the first page.
+6. **Owner OKs set 0.7's pace** (540 idle minutes, scorecard §1). Under K15, every OK 0.8 needs is in step 5 below as one
+   batch, with one copy box, in one thread. Items that need no OK run first. A gated item whose OK isn't typed by the
+   time its lane is free goes to the end of the queue.
+7. **Player findings get a decision each** (K18), in the table under step 5.
+
+**Budget trend** (`npm run build`):
+
+| | 0.6.0 | 0.7.0 | Limit | Use |
+|---|---|---|---|---|
+| Site page (index + largest class chunk) | 714,616 B | 752,614 B | 870,000 B, blocking | 87% |
+| same, gzip -9 | 177,657 B | 189,634 B | 200,000 B, blocking | **95%** |
+
+Class chunks are 132–148 KB each and stay out of `index.html`, so the two new classes don't add to the page. Icons are
+files, not inline.
+
+#### Items (step 3)
+
+Keys are `0.8 P<n>` (kickoff). Models follow #114's routing: Opus for L items, for anything under `src/core/**` and for
+the build script; Sonnet otherwise. Stall limits are 0.7's (S 44, M 80, L 120 min); the scorecard has no newer
+build times that would change them. Each item's problem, result, no-gos, acceptance and files are in
+[docs/plans/0.8/README.md](docs/plans/0.8/README.md).
+
+| Item | Problem → result | Size | Model | Lanes | After (real dependencies only) |
+|---|---|---|---|---|---|
+| P1 | Gladiator and Spiritmaster show letter squares (#441-4) → their 29 Metabot icons | S | Sonnet | gen, golden | `research-gl-sm-icons` |
+| P2 | No Templar pack → class data from research, hidden | L | Opus | gen | `research-templar` |
+| P3 | Templar has no advice → guide pack, golden, site picker | L | Opus | gen, golden | P2 |
+| P4 | No Cleric pack → class data from research, hidden | L | Opus | gen | `research-cleric` |
+| P5 | Cleric has no advice → guide pack, golden, site picker | L | Opus | gen, golden | P4, P3 (`pack.js`) |
+| P6 | gzip budget at 95% → sync UI loads on demand, page under 90% | M | Opus | site | none |
+| P7 | Phone: Undo toast 6 px over the tab bar (#321-2), level-up chip over the name box (#441-7) → neither overlaps | S | Sonnet | app.css, a11y | none |
+| P8 | New character's "Your level" shows two "Start at Lv 1" buttons (#333-1) → the two read differently | S | Sonnet | welcome, a11y | none |
+| P9 | Key setup follow-ups from the #424 review: fit test at 390 px only, chips read after all 12 cells, long names → 1500 px test, a label per column, names wrap | S | Sonnet | build-card, a11y | none |
+| P10 | Icons sit loose in Next up cards (#421) → the tile lines up with the title only, lines run full width | S | Sonnet | nextup.css | `owner-ok-0.8-icon-fit` (met, 2026-10-19 1:36 AM ET) |
+| P11 | Map markers on Next up tiles read small → sized by the visible emblem (Design Lead mockup, DESIGN OK 4:47 AM ET) | S | Sonnet | nextup.css | `owner-ok-0.8-marker-size` |
+| P12 | First-time players don't see the class choice (#333-3) → a class choice on the welcome card | M | Sonnet | welcome, a11y | `owner-ok-0.8-welcome-class` |
+| P13 | Owner-crop icons for new uses → regional quest states (#409), campsite and point-of-interest markers, extract action icon | M | Sonnet | golden, nextup.css | `owner-ok-0.8-crop-icons` |
+| P14 | Key setup and macro steps don't match the game (#387) → the game's grid, the macro on right click, Shadowstrike on E | M | Opus | build-card, a11y | `research-387-macro` |
+| P15 | Auto level-up fires at the wrong level (#401) → it uses the level the quest is turned in at | M | Opus | golden | `research-401-levels` |
+| R | Release 0.8.0 | S | Sonnet | release, alone | everything above, or moved to 0.8.x; `DATA OK 0.8.0` |
+
+Not bot items (they run alongside): Game Data Check does the research gates `research-gl-sm-icons`, `research-387-macro`
+and `research-401-levels`, plus #329 (the ◆ 5th stigma specialization), her tip:extract data nits and the #325 data audit
+PRs. Research sessions do `research-templar` and `research-cleric`. Source Vetting does #317. Tracker work (Reports tab,
+Tracker 2.0) has no app version.
+
+No-gos for the whole minor: no save break (`companion-save-v5` stays); no AION 2 term in the engine; no game data without
+its source; no fetching in bot builds; no `.github/workflows/` edits by bots; no new game art beyond the standing icon OK
+and the owner's crop OK (P13).
+
+#### Waves and lane map (step 4)
+
+At most five builds at a time. Serial lanes: **gen** P1 → P2 → P3 → P4 → P5 (the critical path, gated by the two
+research sessions); **golden** P1, P3, P5, P13, P15; **a11y** P7 → P9 → P8 → P12 → P14; **nextup.css** P10 → P11 → P13;
+**welcome** P8 → P12; **build-card** P9 → P14; **site** P6 alone. Critical path: `research-templar` → P2 → P3 →
+P5 → R.
+
+| Wave | Builds (no owner OK needed first, K15) |
+|---|---|
+| 1 | P6 (site) ∥ P7 (app.css, a11y) ∥ P10 (nextup.css) ∥ P1 (gen, golden; once its research is in) |
+| 2 | P9 (a11y) ∥ P2 (gen) ∥ P11 (nextup.css; gated) |
+| 3 | P8 (a11y) ∥ P3 (gen, golden) ∥ P13 (golden, nextup.css; gated) |
+| 4 | P12 (a11y; gated) ∥ P4 (gen) |
+| 5 | P14 (a11y, build-card) ∥ P5 (gen, golden) |
+| 6 | P15 (golden), when its level notes are in |
+| 7 | R, alone, after the CHANGELOG draft (K17) and `DATA OK 0.8.0` |
+
+Checked: no two items in one wave own the same file. Waves are the expected order, not gates. Under K15, a gated item
+(P11, P12, P13) whose OK isn't typed by the time its lane is free moves to the end of the queue, not waited on. An item
+whose research isn't in by the time the rest has merged moves to 0.8.x.
+
+#### Owner input (step 5)
+
+**One batch (K15), for the morning debrief, typed in the Release planning (Walter) thread.** It is one line. It covers
+the go for 0.8 builds and the three looks Design Lead approves:
+
+```
+0.8 OK: build as planned; looks OK: marker size, welcome class choice, crop icons
+```
+
+That records `owner-ok-0.8-go` (the planner queues 0.8 in #114), `owner-ok-0.8-marker-size` (P11),
+`owner-ok-0.8-welcome-class` (P12) and `owner-ok-0.8-crop-icons` (P13). A look still waiting on Design Lead's DESIGN OK
+when the debrief goes out is left off the line and asked for later. Optional, only to change a default: name a
+different class for 0.8 (default Templar and Cleric).
+
+Not OKs, but only the owner can do them. None blocks a wave:
+
+- **Level notes for #401** (P15): your level before each story-quest turn-in from Lv 1 to 10. Without them, P15 moves
+  to 0.8.x.
+- **#387, if Game Data Check can't settle it**: whether the right-click macro replaces "hold both clicks".
+- **A usage reading at each release** (scorecard blind spot): the weekly % from Settings → Usage.
+
+**Player findings (K18), each with a decision:**
+
+| Finding | Decision |
+|---|---|
+| #321-2 Undo toast still 6 px over the phone tab bar | 0.8 P7 |
+| #321-4 default name `<class>-lvl<N>` | Won't fix: the owner's label design (2026-10-16), kept on purpose. The owner can override it in the debrief. |
+| #333-1 two "Start at Lv 1" buttons | 0.8 P8 |
+| #333-2 a new character skips the welcome | Won't fix: intended; whoever adds a second character already knows the app |
+| #333-3 class choice hard to find | 0.8 P12 (owner OK in the batch) |
+| #441-4 letter-square icons; CHANGELOG claimed icons | 0.8 P1; the 0.7.0 CHANGELOG line is corrected in this PR |
+| #441-5 Gladiator "Rotation" vs `docs/ISSUES.md` | Doc wording fixed in this PR: since 0.7 P11 the section shows the game's default keys, by design |
+| #441-6 tutorial-skill refund step only for the Assassin | Won't fix in 0.8: no source for the other classes' tutorial skill. Game Data Check looks for one on Metabot; if she verifies it, it becomes a 0.8.x data item. |
+| #441-7 level-up chip over the name box on phone | 0.8 P7 |
+
+**Targets for 0.8** (scorecard §2): ≤ 30 min per item PR from plan merge to release merge; ≤ 1.08 build attempts per
+item; first-pass success ≥ 85%; ≤ 60 min idle on owner OKs; ≤ 4 hand interventions; ≤ 12 typed owner OKs in ≤ 2
+threads (this plan asks for one line).
+
+Decisions recorded on the tracker:
+
+- **Claude remediated:**
+  - 0.8 classes default to Templar and Cleric (D8, audit 1);
+  - the performance item P6 (audit 5);
+  - the won't-fix decisions above;
+  - class research now saves icons (audit 2).
+
+#### Alongside (not #114 items)
+
+- **Research started at pass start** (2026-10-19 ~6:35 AM ET):
+  - `research-templar` (`docs/research/2026-10-templar-pack.md`) and `research-cleric` (`docs/research/2026-10-cleric-pack.md`), research sessions;
+  - `research-gl-sm-icons`, `research-387-macro` and #329, Game Data Check.
+- **Tracker work, outside the app versions** (owner, 2026-10-18 11:27 PM ET; no app version, no #114 line, no app release
+  gate): **Tracker: Reports tab** now (Design Lead designs it, Tracker Design builds what she approves, the morning
+  debrief reports land there), then **Tracker 2.0**, a redesign of every tab, as a side project.
+
+### 0.9 — the last two classes
+
+The Sorcerer and the Chanter (or whichever two 0.8 didn't take), lanes A and B, plus the 1.0 audit's fixes in lane C as
+found. Research starts at its planning pass start. Player-chosen keys (#388) is a 0.9 candidate; it waits on 0.8 P14,
+so the default keys are right first.
 
 ### 1.0
 
