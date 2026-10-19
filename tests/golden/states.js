@@ -262,6 +262,13 @@ function generate(C, { fixtures = [], all = false } = {}) {
     for (const c of Object.values(s.chars)) Object.assign(c, { pack: 'aion2/asmodian/gladiator', class: 'gladiator' });
     out.set(i, { id: i, tier: 'core', raw: JSON.stringify(s) });
   }
+  /* spiritmaster (0.7 P4): the same five levels and two modes for a Spiritmaster character (pack
+     aion2/asmodian/spiritmaster); a group of its own, added after the Gladiator's, so no other state moves or changes */
+  for (const lv of [1, 10, 22, 30, 45]) for (const mode of ['advanced', 'basic']) {
+    const r = { lv, qi: G.onTrack(lv), ticks: 'none', mode }, i = 'spiritmaster/' + G.id(r), s = JSON.parse(storedText(G.state(r)));
+    for (const c of Object.values(s.chars)) Object.assign(c, { pack: 'aion2/asmodian/spiritmaster', class: 'spiritmaster' });
+    out.set(i, { id: i, tier: 'core', raw: JSON.stringify(s) });
+  }
 
   return [...out.values()].sort((a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
 }

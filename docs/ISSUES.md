@@ -148,6 +148,35 @@ on purpose: the guide shows nothing rather than an unverified value.
   | stigma | Lifestealing Blade | <https://metabot.gg/en/aion-2/skills/lifestealing-blade> |
   | stigma | Rage Burst | <https://metabot.gg/en/aion-2/skills/rage-burst> |
 
+- **Spiritmaster skill and stigma icons: initials for now** (0.7 P4 shipped without them, #347). The Spiritmaster
+  research (docs/research/2026-10-spiritmaster-pack.md) saved no icon files, and bot builds have no web, so the
+  Spiritmaster's build plan shows the initials square for each skill and stigma. Metabot is the approved source for all
+  of them (standing icon OK, owner 2026-10-14), so none needs the owner: a research or fetch session takes the 15 files
+  from each record's Metabot page and records source page, file URL and date here. The 15 the plan shows:
+
+  | Kind | Name | Source page |
+  |---|---|---|
+  | skill | Cold Shock | <https://metabot.gg/en/aion-2/skills/cold-shock> |
+  | skill | Combustion | <https://metabot.gg/en/aion-2/skills/combustion> |
+  | skill | Summon: Fire Spirit | <https://metabot.gg/en/aion-2/skills/summon-fire-spirit> |
+  | skill | Summon: Water Spirit | <https://metabot.gg/en/aion-2/skills/summon-water-spirit> |
+  | skill | Jointstrike: Curse | <https://metabot.gg/en/aion-2/skills/jointstrike-curse> |
+  | skill | Dimensional Control | <https://metabot.gg/en/aion-2/skills/dimensional-control> |
+  | skill | Elemental Fusion | <https://metabot.gg/en/aion-2/skills/elemental-fusion> |
+  | skill | Spirit Strike | <https://metabot.gg/en/aion-2/skills/spirit-strike> |
+  | skill | Corrode | <https://metabot.gg/en/aion-2/skills/corrode> |
+  | skill | Summon: Earth Spirit | <https://metabot.gg/en/aion-2/skills/summon-earth-spirit> |
+  | skill | Spirit's Descent | <https://metabot.gg/en/aion-2/skills/spirits-descent> |
+  | stigma | Summon: Ancient Spirit | <https://metabot.gg/en/aion-2/skills/summon-ancient-spirit> |
+  | stigma | Enhance: Spirit's Benediction | <https://metabot.gg/en/aion-2/skills/enhance-spirits-benediction> |
+  | stigma | Jointstrike: Corrode | <https://metabot.gg/en/aion-2/skills/jointstrike-corrode> |
+  | stigma | Flame Blessing | <https://metabot.gg/en/aion-2/skills/flame-blessing> |
+
+- **Spiritmaster rotation: one source, not shown** (0.7 P4, #347). Metabot's leveling build gives a rotation (one site,
+  `data/research/spiritmaster-builds-metabot-2026-10.csv`), but the Build drawer's Rotation section is written for the
+  Assassin's keys, so the guide shows none. The three skills that fire only on a condition are a Build plan step instead
+  (claim C74).
+
 - **Gladiator rotation: two sources, no screen for it yet** (0.7 P2, #345). docs/research/2026-10-gladiator-guide.md §8
   has a two-source right-click line (Rending Blow from Lv 1, Sword Aura Rampage above it from 5), but the Build
   drawer's Rotation section is written for the Assassin's keys (left click Quick Slice, Q Shadowstrike, the Assassin's

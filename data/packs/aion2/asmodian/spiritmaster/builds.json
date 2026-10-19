@@ -1,0 +1,374 @@
+{
+  "$schema": "../../schema/builds.schema.json",
+  "schemaVersion": 2,
+  "collection": "builds",
+  "class": "spiritmaster",
+  "records": [
+    {
+      "id": "build:spiritmaster:guide",
+      "class": "spiritmaster",
+      "name": "Guide build",
+      "origin": "guide",
+      "statPriority": {
+        "tiers": [
+          [
+            "Attack"
+          ],
+          [
+            "Critical Hit"
+          ],
+          [
+            "Accuracy Bonus"
+          ]
+        ],
+        "from": {
+          "Attack": "BG",
+          "Critical Hit": "BG",
+          "Accuracy Bonus": "G"
+        },
+        "status": "single-source",
+        "sources": [
+          {
+            "url": "https://metabot.gg/en/aion-2/classes/spiritmaster",
+            "checkedAt": "2026-10-18"
+          },
+          {
+            "url": "https://metabot.gg/en/aion-2/guides/class-builds-guide",
+            "checkedAt": "2026-10-18"
+          }
+        ],
+        "note": "Metabot's class page (Attack, Critical Hit, Accuracy Bonus, HP, MP) and its class-builds guide (the same five) are one site: single source (claim C70). Only the top three are shown. from: B = board stat nodes / corners, G = gear (the Spiritmaster boards carry the Assassin's stat labels)."
+      },
+      "skillOrder": [
+        {
+          "skill": "skill:spiritmaster:cold-shock",
+          "core": true,
+          "status": "single-source",
+          "basis": "Metabot leveling build (to Lv 10)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/spiritmaster/build",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:spiritmaster:combustion",
+          "core": true,
+          "status": "single-source",
+          "basis": "Metabot leveling build (to Lv 10)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/spiritmaster/build",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:spiritmaster:summon-fire-spirit",
+          "core": true,
+          "status": "single-source",
+          "basis": "Metabot leveling build (to Lv 10)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/spiritmaster/build",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:spiritmaster:summon-water-spirit",
+          "core": true,
+          "status": "single-source",
+          "basis": "Metabot leveling build (to Lv 10)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/spiritmaster/build",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:spiritmaster:jointstrike-curse",
+          "core": true,
+          "status": "single-source",
+          "basis": "Metabot leveling build (to Lv 10)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/spiritmaster/build",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:spiritmaster:dimensional-control",
+          "core": true,
+          "status": "single-source",
+          "basis": "Metabot leveling build (to Lv 10)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/spiritmaster/build",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:spiritmaster:elemental-fusion",
+          "core": true,
+          "status": "single-source",
+          "basis": "Metabot leveling build (to Lv 10)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/spiritmaster/build",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:spiritmaster:spirit-strike",
+          "core": true,
+          "status": "single-source",
+          "basis": "Metabot leveling build (to Lv 10)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/spiritmaster/build",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:spiritmaster:corrode",
+          "core": true,
+          "status": "single-source",
+          "basis": "Metabot leveling build (to Lv 10)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/spiritmaster/build",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:spiritmaster:summon-earth-spirit",
+          "core": false,
+          "status": "single-source",
+          "basis": "Metabot leveling build (Summon: Earth Spirit to Lv 7)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/spiritmaster/build",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        },
+        {
+          "skill": "skill:spiritmaster:spirits-descent",
+          "core": false,
+          "status": "single-source",
+          "basis": "Metabot leveling build (Spirit's Descent to Lv 5)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/spiritmaster/build",
+              "checkedAt": "2026-10-18"
+            }
+          ]
+        }
+      ],
+      "skillOrderNotes": {
+        "interleave": "Metabot lists skill targets, not a training order (docs/research/2026-10-spiritmaster-pack.md §3): the list order is kept as the guide's order, an inference.",
+        "budget": "Core nine to Lv 10 = 9 × 21 = 189 points; Summon: Earth Spirit to 7 = 9, Spirit's Descent to 5 = 5. LEVEL_POINTS[45] = 203 plus Wisdom Stones."
+      },
+      "specialtyPicks": {},
+      "stigmaSlots": [
+        "stigma:spiritmaster:summon-ancient-spirit",
+        "stigma:spiritmaster:enhance-spirits-benediction",
+        "stigma:spiritmaster:jointstrike-corrode",
+        "stigma:spiritmaster:flame-blessing"
+      ],
+      "stigmaTargets": [
+        {
+          "stigma": "stigma:spiritmaster:summon-ancient-spirit",
+          "level": 8
+        },
+        {
+          "stigma": "stigma:spiritmaster:enhance-spirits-benediction",
+          "level": 7
+        },
+        {
+          "stigma": "stigma:spiritmaster:jointstrike-corrode",
+          "level": 5
+        },
+        {
+          "stigma": "stigma:spiritmaster:flame-blessing",
+          "level": 4
+        }
+      ],
+      "boardPlan": [
+        {
+          "node": "node:spiritmaster:nezekan:r5c3",
+          "label": "Spirit Strike · 1 of 2",
+          "milestone": "g12",
+          "order": 20,
+          "requires": {
+            "level": 12,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "single-source"
+        },
+        {
+          "node": "node:spiritmaster:nezekan:r13c9",
+          "label": "Spirit Strike · 2 of 2",
+          "milestone": "g12",
+          "order": 30,
+          "requires": {
+            "level": 12,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "single-source"
+        },
+        {
+          "node": "node:spiritmaster:zikel:r7c10",
+          "label": "Consecutive Countercurrent · 1 of 2",
+          "milestone": "g20",
+          "order": 30,
+          "requires": {
+            "level": 20,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "single-source"
+        },
+        {
+          "node": "node:spiritmaster:zikel:r11c4",
+          "label": "Consecutive Countercurrent · 2 of 2",
+          "milestone": "g20",
+          "order": 40,
+          "requires": {
+            "level": 20,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "single-source"
+        },
+        {
+          "node": "node:spiritmaster:zikel:r4c5",
+          "label": "Element Unification · 1 of 2",
+          "via": "Element Unification is learned at Lv 25",
+          "milestone": "g20",
+          "order": 50,
+          "requires": {
+            "level": 25,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/skills/element-unification",
+                "fields": [
+                  "learnLv"
+                ],
+                "checkedAt": "2026-10-18"
+              }
+            ],
+            "note": "the skill's learn level (the board opens at 20)"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "single-source"
+        },
+        {
+          "node": "node:spiritmaster:zikel:r10c9",
+          "label": "Element Unification · 2 of 2",
+          "via": "Element Unification is learned at Lv 25",
+          "milestone": "g20",
+          "order": 60,
+          "requires": {
+            "level": 25,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/skills/element-unification",
+                "fields": [
+                  "learnLv"
+                ],
+                "checkedAt": "2026-10-18"
+              }
+            ],
+            "note": "the skill's learn level (the board opens at 20)"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "single-source"
+        }
+      ],
+      "keyStacks": {
+        "eOrder": [
+          "stigma:spiritmaster:summon-ancient-spirit",
+          "stigma:spiritmaster:enhance-spirits-benediction",
+          "stigma:spiritmaster:jointstrike-corrode",
+          "stigma:spiritmaster:flame-blessing"
+        ],
+        "status": "inferred",
+        "sources": [
+          {
+            "inferred": "Metabot's leveling build gives a Spiritmaster rotation (one site), but the Build drawer's Rotation section is still written for the Assassin's keys, so the guide shows none (no right-click stack, no Rotation section); the three skills that fire only on a condition are a build step instead (claim C74). eOrder is the slot order, only for the Next up stigma card."
+          }
+        ]
+      },
+      "texts": {
+        "nezekan-plan": "From Metabot's Spiritmaster page: the two Spirit Strike nodes first.",
+        "stat-note": "B board · G gear. Metabot's Spiritmaster ranking only (one site); later stats: HP, MP."
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/spiritmaster/build",
+          "checkedAt": "2026-10-18",
+          "fields": [
+            "skillOrder",
+            "stigmaSlots",
+            "stigmaTargets"
+          ],
+          "note": "Leveling build (editorial): skill targets, stigmas Summon: Ancient Spirit, Enhance: Spirit's Benediction, Jointstrike: Corrode, Flame Blessing at 8 / 7 / 5 / 4; its top-player panel (151 Lv 45 players) picks the same four in the same order."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/spiritmaster",
+          "checkedAt": "2026-10-18",
+          "fields": [
+            "boardPlan",
+            "statPriority"
+          ],
+          "note": "Class page: stat order and the board path (Nezekan's Spirit Strike pair, then Zikel's Consecutive Countercurrent and Element Unification)."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/guides/class-builds-guide",
+          "checkedAt": "2026-10-18",
+          "fields": [
+            "stigmaSlots",
+            "statPriority"
+          ],
+          "note": "Class-builds guide: the same four stigmas in the same order and the same stat order (same site)."
+        }
+      ],
+      "verifiedAt": "2026-10-18",
+      "status": "single-source",
+      "notes": [
+        "0.7 P4 (#347), from docs/research/2026-10-spiritmaster-pack.md §3: every advice field rests on Metabot alone (three pages, one site), so it is single-source (claims C70–C73). No specialty picks: no source names any.",
+        "Learn levels of all 22 skills: Metabot's skill pages plus mmo-codex.com's unlock table (claim C75). The stigma max level 25 is single source (Metabot; the class page agrees), and a leveling guide does not reach it."
+      ],
+      "claims": [
+        "C71",
+        "C72",
+        "C73"
+      ]
+    }
+  ]
+}
