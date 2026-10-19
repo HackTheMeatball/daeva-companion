@@ -29,10 +29,26 @@ drift from it. If a summary and its home disagree, the home wins and the summary
 
 ## Owners
 
-`owner` is exactly one of: Isaac (the owner), Saul (Coordinator), Walter (Release Planner), Gus (Build Pipeline), Jane
-(Design Lead), Hank (Incident Log), Mike (Stall Watch), Skyler (Tracker Design), Huell (Tracker Sync), Gretchen (Game
-Data Check), Lydia (Source Vetting), Jesse (Player Testing), Gale (Kaizen), Francesca (Rules Steward, who owns the
-ledger's upkeep), Gomez (Team Audit). `enforced_by` uses the same names.
+`owner` is exactly one name from this table; `enforced_by` uses the same names (or `all` / `harness`).
+`tests/ledger.mjs` checks that this table and its list of names match.
+
+| Name | Role | Status |
+|---|---|---|
+| Isaac | Owner | the owner; every decision is his |
+| Saul | Coordinator | live |
+| Walter | Release Planner | live |
+| Gus | Build Pipeline | live |
+| Jane | Design Lead | live |
+| Hank | Incident Log | handed over to Mike 2026-10-19; kept for retired rows |
+| Mike | Stall Watch | live |
+| Skyler | Tracker Design | live |
+| Huell | Tracker Sync | live |
+| Gretchen | Game Data Check | live |
+| Lydia | Source Vetting | live |
+| Jesse | Player Testing | live |
+| Gale | Kaizen | live |
+| Francesca | Rules Steward (owns the ledger's upkeep) | live |
+| Gomez | Team Audit | live |
 
 ## Who does what
 

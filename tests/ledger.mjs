@@ -7,7 +7,8 @@
    repo-file home exists and its #anchor text is in that file (case-insensitive, backticks and runs of whitespace
    ignored); a DECISIONS home `docs/DECISIONS.md#YYYY-MM-DD / <Topic>` names a real `## YYYY-MM-DD` heading with a row of
    that Topic under it; issue homes are `#<n>`; every replaced_by is an existing id; and there is one decision row per
-   DECISIONS table row (matched by date and topic, both ways), so a new decision without a ledger row fails CI. */
+   DECISIONS table row (matched by date and topic, both ways), so a new decision without a ledger row fails CI; and
+   LEDGER.md's Owners table names exactly OWNERS. */
 import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -50,8 +51,14 @@ export function decisionRows(md) {
   return byDate;
 }
 
-export function checkLedger(root = ROOT, { csvText } = {}) {
+export function checkLedger(root = ROOT, { csvText, ledgerMd } = {}) {
   const problems = [], file = join(root, 'docs/kaizen/ledger.csv');
+  /* LEDGER.md's Owners table names exactly OWNERS */
+  const md = ledgerMd ?? (existsSync(join(root, 'docs/kaizen/LEDGER.md')) ? readFileSync(join(root, 'docs/kaizen/LEDGER.md'), 'utf8') : '');
+  const sec = (md.split(/^## Owners\s*$/m)[1] || '').split(/^## /m)[0];
+  const named = sec.split('\n').filter(l => /^\|/.test(l) && !/^\|[\s|:-]*$/.test(l)).map(l => l.split('|')[1].trim()).filter(n => n !== 'Name');
+  for (const n of named) if (!OWNERS.has(n)) problems.push(`LEDGER.md Owners table names "${n}", not in OWNERS`);
+  for (const n of OWNERS) if (!named.includes(n)) problems.push(`LEDGER.md Owners table is missing "${n}"`);
   if (csvText == null && !existsSync(file)) return ['docs/kaizen/ledger.csv is missing'];
   const rows = parseCsv(csvText ?? readFileSync(file, 'utf8')).filter(r => r.some(c => c !== ''));
   const head = rows.shift() || [];

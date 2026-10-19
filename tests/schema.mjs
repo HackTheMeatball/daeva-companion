@@ -241,7 +241,8 @@ if (g) {
 /* rules and decisions ledger: header, ids, homes and one row per DECISIONS row (docs/kaizen/LEDGER.md) */
 { const problems = checkLedger(); ok(`rules and decisions ledger checks (${problems.length} problems)`, !problems.length, problems);
   /* ...and it rejects broken copies: a dropped decision row, a doubled one, a bad status, a dead anchor, an empty plain,
-     an owner outside the list, an unknown enforced_by or one repeating the owner, an id in plain, a decision not Isaac's */
+     an owner outside the list, an unknown enforced_by or one repeating the owner, an id in plain, a decision not Isaac's,
+     an Owners table in LEDGER.md that differs from OWNERS */
   const csv = readFileSync(join(ROOT, 'docs/kaizen/ledger.csv'), 'utf8').split('\n'), dec = csv.findIndex(l => l.includes(',decision,'));
   const rule = csv.findIndex((l, i) => i > 0 && l.includes(',CLAUDE.md#'));
   const fails = (label, lines, re) => { const p = checkLedger(ROOT, { csvText: lines.join('\n') }); ok('ledger check rejects: ' + label, p.some(x => re.test(x)), p.slice(0, 3)); };
@@ -257,7 +258,9 @@ if (g) {
   fails('enforced_by repeating the owner', csv.map((l, i) => i === com ? l.replace(',Saul,all,', ',Saul,Saul,') : l), /enforced_by repeats the owner/);
   fails('an issue number in plain', csv.map((l, i) => i === com ? l.replace(',Any time given to Isaac is written in US Eastern time.,', ',Any time given to Isaac is in ET (#114).,') : l), /plain names "#114"/);
   fails('a rule id in plain', csv.map((l, i) => i === com ? l.replace(',Any time given to Isaac is written in US Eastern time.,', ',Same as COM-02.,') : l), /plain names "COM-02"/);
-  fails('a decision not owned by Isaac', csv.map((l, i) => i === dec ? l.replace(/^([^,]*,decision,[^,]*,(?:"[^"]*"|[^,]*),(?:"[^"]*"|[^,]*),)Isaac,/, '$1Walter,') : l), /a decision's owner is Isaac/); }
+  fails('a decision not owned by Isaac', csv.map((l, i) => i === dec ? l.replace(/^([^,]*,decision,[^,]*,(?:"[^"]*"|[^,]*),(?:"[^"]*"|[^,]*),)Isaac,/, '$1Walter,') : l), /a decision's owner is Isaac/);
+  const lmd = readFileSync(join(ROOT, 'docs/kaizen/LEDGER.md'), 'utf8');
+  { const p = checkLedger(ROOT, { ledgerMd: lmd.replace('| Gomez | Team Audit |', '| Badger | Team Audit |') }); ok('ledger check rejects: an Owners table that differs from OWNERS', p.some(x => /names "Badger"/.test(x)) && p.some(x => /missing "Gomez"/.test(x)), p.slice(0, 3)); } }
 console.log(`${n - fail} ok, ${fail} failed (${Date.now() - t0} ms)`);
 console.log(fail ? `SCHEMA CHECKS FAILED (${fail})` : 'SCHEMA CHECKS PASSED');
 process.exit(fail ? 1 : 0);
