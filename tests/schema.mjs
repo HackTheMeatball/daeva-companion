@@ -2,11 +2,13 @@
 /* Data format v2 checks in Node, no browser, no build (0.2 step 5b): every data file and every schema example against
    data/schema/ with ajv 8 Ajv2020 { strict: true, allErrors: true }; broken copies of real records must be rejected
    (so a relaxed schema can't pass silently); then the generator's cross-record checks, and data/DATA_SOURCES.md must be
-   what the generator writes. node tests/schema.mjs  (also in `npm test` and the fast CI job) */
+   what the generator writes; last, the rules and decisions ledger (tests/ledger.mjs, docs/kaizen/LEDGER.md).
+   node tests/schema.mjs  (also in `npm test` and the fast CI job) */
 import { cpSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { ROOT, validateAll, validateDoc } from '../tools/gen/validate.mjs';
 import { dataSourcesMd, generate, guidePacks } from '../tools/gen/gen.mjs';
+import { checkLedger } from './ledger.mjs';
 
 let n = 0, fail = 0;
 const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' : 'FAIL ') + name + (!c && d !== undefined ? '  · ' + JSON.stringify(d).slice(0, 900) : '')); if (!c) fail++; };
@@ -236,6 +238,8 @@ if (g) {
   ok('compiled: 87 story quests (Ishalgen is the starting map, not a quest; E10 added Daeva Trapped in a Nightmare), 58 regional quests, 15 strongholds, 60 Sealed Dungeons', c.QUESTS.length === 87 && c.RQ.length === 58 && c.SH_DATA.length === 15 && Object.keys(c.HIDEOUT_AREA).length === 60,
     [c.QUESTS.length, c.RQ.length, c.SH_DATA.length, Object.keys(c.HIDEOUT_AREA).length]);
 }
+/* rules and decisions ledger: header, ids, homes and one row per DECISIONS row (docs/kaizen/LEDGER.md) */
+{ const problems = checkLedger(); ok(`rules and decisions ledger checks (${problems.length} problems)`, !problems.length, problems); }
 console.log(`${n - fail} ok, ${fail} failed (${Date.now() - t0} ms)`);
 console.log(fail ? `SCHEMA CHECKS FAILED (${fail})` : 'SCHEMA CHECKS PASSED');
 process.exit(fail ? 1 : 0);
