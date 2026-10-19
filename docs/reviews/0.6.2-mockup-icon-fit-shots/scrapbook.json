@@ -1,0 +1,6 @@
+[
+  { "case": "f1-sealed-card-390", "kind": "before-after", "title": "Icon lines up with the title (mockup)", "caption": "The Sealed Dungeon tile sits next to the title only, and the lines under it use the card's full width instead of leaving empty space around the icon. Phone." },
+  { "case": "f2-stronghold-card-390", "kind": "before-after", "title": "Stronghold card, tight icon (mockup)", "caption": "The same fit on the Stronghold card: no empty column beside the text." },
+  { "case": "f3-story-card-390", "kind": "before-after", "title": "Story card, tight icon (mockup)", "caption": "The story card's tile lines up with the quest name, and its objective count runs full width." },
+  { "case": "f4-sealed-card-1500", "kind": "before-after", "title": "Tight icon on desktop (mockup)", "caption": "On a wide screen the tile lines up with the title, the button stays on the right, and the details run full width underneath." }
+]
