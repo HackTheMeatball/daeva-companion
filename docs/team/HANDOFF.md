@@ -88,7 +88,7 @@ Wave 2 (each starts when what it names has merged):
 - Schema review (Data & Research + a fresh, context-free session), then owner ← 5a and the gate list.
 - 5b data build ∥ 5c schemaVersion + `merge()` ← step 4 and the approved schema. **0.2.0** when both merge.
 - Docs-only, any time: colour-sprint checklist + decision sheet; UX review checklist; support triage + weekly status
-  templates; patch-watch routine; icon provenance table.
+  templates; icon provenance table. (Patch-watch routine: done 2026-10-19, `docs/kaizen/patch-watch.md`.)
 
 Then: 0.3 requirement engine (sole owner of `src/main.js` while it runs) → blocker-chain UI + Ascension bar (mockup) →
 0.3.0 → 0.4 smart Next up → 0.5 characters → phone layout (mockup; on the tokens) → 0.6 sync (renumbered 2026-10-15,

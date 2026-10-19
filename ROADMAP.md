@@ -1124,8 +1124,9 @@ time before. From 1.0 saves are strict, so its saved data is additive.
 
 ### Any time (patches)
 
-- Game patch watch: weekly after Global maintenance (Korean patch notes as early warning), report only; a PR only
-  when a claim is affected. Re-verification driven by `verifiedAt`.
+- Game patch watch: a weekly scheduled check of Metabot's client build (Thursday, the day after Global maintenance);
+  a row in `docs/kaizen/patch-watch.md` and a re-check only when the build changes. Patch notes (KR or Global) are on
+  aion2.plaync.com, which is never fetched; the owner reads them by hand. Re-verification driven by `verifiedAt`.
 - Data corrections from issues.
 
 ## Moved out of the path to 1.0
