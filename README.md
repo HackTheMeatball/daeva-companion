@@ -45,8 +45,8 @@ single-file page), ajv (validates the data against `data/schema/`) and Playwrigh
 ```sh
 npm ci                                   # once
 npx playwright install --with-deps chromium   # once, if you don't have Playwright's Chromium yet
-npm run build                            # dist/ (site) + dist-artifact/index.html (claude.ai single file)
-npm run serve                            # http://localhost:8080/  (claude.ai build at /artifact/)
+npm run build                            # dist/ (the site; the claude.ai artifact is frozen and not built)
+npm run serve                            # http://localhost:8080/
 npm test                                 # build, then every suite against dist/ except perf (≈10–15 min)
 npm run test:quick                       # build, then the suites with a smaller regression matrix and no screenshots
 node tests/run.mjs --only e1,save        # selected suites (after a build); --shard journey: one CI shard
@@ -65,7 +65,7 @@ src/assets/             icons and self-hosted fonts
 brand/                  the brand's source SVGs (icon, maskable icon, favicon, wordmark); tools/brand/ draws them
 src/sw.js               service worker template (offline cache), filled in by the build
 public/                 copied to the site root: CNAME, robots.txt, sitemap.xml, 404.html, favicon, manifest + icons
-scripts/build.mjs       builds dist/ and dist-artifact/;  scripts/serve.mjs  local static server
+scripts/build.mjs       builds dist/;  scripts/serve.mjs  local static server
 data/                   the game data and guide text in format v2 (docs/DATA-FORMAT-V2.md; schemas in data/schema/) + DATA_SOURCES.md
 tools/gen/              data generator (gen.mjs: validates data/ and compiles the module src/data/generated.js at build time)
 tools/research/         the scripts that built the v1 data files (provenance)

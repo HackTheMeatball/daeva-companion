@@ -1,6 +1,5 @@
 node_modules/
 dist/
-dist-artifact/
 tests/out/
 __pycache__/
 *.pyc

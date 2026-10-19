@@ -753,9 +753,9 @@ Then 0.7:
 |---|---|---|---|---|
 | Site page (index + class chunk) | 741,479 B | 714,616 B | 870,000 B, blocking | 82% |
 | same, gzip -9 | 182,302 B | 177,657 B | 200,000 B, blocking | **89%** |
-| `dist-artifact/index.html` | 863,343 B | 971,146 B | 1,030,000 B, blocking | **94%** |
+| claude.ai artifact | 863,343 B | 971,146 B | none: build and budget removed by P9 (frozen 2026-10-18) | — |
 
-Per-class chunks keep each new class out of the site page; P1 keeps it out of the artifact. P6 adds UI to the site
+Per-class chunks keep each new class out of the site page. P6 adds UI to the site
 page only (site-only code), so gzip is watched there.
 
 #### Items (step 3)
