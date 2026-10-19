@@ -1,8 +1,8 @@
 {
   "name": "aion2-companion",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "private": true,
-  "description": "Daeva Companion: unofficial companion for AION 2, currently the Asmodian Assassin leveling guide (single-page web app). Live at https://daevacompanion.com/",
+  "description": "Daeva Companion: unofficial companion for AION 2, currently the Asmodian Assassin and Ranger leveling guides (single-page web app). Live at https://daevacompanion.com/",
   "license": "SEE LICENSE IN LICENSE",
   "repository": {
     "type": "git",
