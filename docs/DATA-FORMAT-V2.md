@@ -388,7 +388,16 @@ Anything else, an unknown token or an unknown `build:` kind fails validation.
 - Choices, all as record ids (the build checks each resolves): `statPriority {tiers, from}`, `skillOrder[]` (a skill
   is "in the plan", today's `tracked`, iff it appears here), `specialtyPicks {skill: [choice ids for slots 1..3]}`,
   `stigmaSlots[]`, `stigmaTargets[]`, `stigmaSpecialtyPicks`, `boardPlan[]` (which nodes to buy, placed in milestones
-  like today's `dv` items, each a step with `requires`/`completesWith`), `keyStacks {rightClick, eOrder}`, `texts{}`.
+  like today's `dv` items, each a step with `requires`/`completesWith`), `keyStacks {rightClick, eOrder, defaultKeys}`,
+  `texts{}`.
+- `keyStacks.defaultKeys` (0.7 P11): the game's default keys, with their own `status` and `sources` (owner screens).
+  `keys[]` in display order, each `{ key, rows[] }`: `key` is the game's name (`Q`, `E`, `1`, `Left click`, `Right
+  click`), `rows[]` the stack, row 0 first (the row the game tries first), each `{ skill, minLv? }` (shown from `minLv`,
+  else the skill's learn level). A key with one row is a single key. The generator checks every skill is one of the
+  class's active skills, each key and each skill appears once, and `minLv` is not below the learn level; it compiles
+  the table `KEYS` (`[{ key, rows: [{ n, lv }] }]`, per class). A build with `KEYS` takes every key of the Build drawer
+  from it (`rotKeys`); without it (the Assassin) the drawer keeps the guide's `rightClick` rows, Q Shadowstrike and the
+  stigmas on E in `eOrder`. A guide's own recommended setup stays in `rightClick`, never in `defaultKeys`.
 - Each source's own order (today `stigmaRules.equipOrder`) moves to a claim that backs the disputed choice.
 - 5b compiles the guide build into today's `SP_SKILLS`, `SP_EXTRA`, `STIGMA_PLAN`, `ST_TARGETS`, `STAT_TIERS`,
   `STAT_SRC`, `RMB_STACK`, `E_ORDER` and the `dv` plan items, so the golden tests stay identical.

@@ -3,7 +3,7 @@
    registers with update: null; its mount places the drawer and wires its tab. */
 import { char } from "../../../core/state.js";
 import { activePack, packClasses } from "../../../core/pack.js";
-import { E_ORDER, HAS_KEYS, SP_ICONS, STAT_NOTE, STAT_SRC, STAT_TIERS, STIGMA_ICON } from "../data/build.js";
+import { E_ORDER, HAS_KEYS, KEYS, SP_ICONS, STAT_NOTE, STAT_SRC, STAT_TIERS, STIGMA_ICON } from "../data/build.js";
 import { rotKeys } from "../requirements.js";
 import { aion2State as state, aion2Save as save, aion2Update as update, aion2STIGMA_SLOTS as STIGMA_SLOTS, aion2StIco as stIco, aion2SpMini as spMini, aion2Ini as ini } from "./page.js";
 
@@ -11,8 +11,11 @@ const statSeqHTML = () => STAT_TIERS.map((t, i) => `<div class="tier"><span clas
 /* The keys at lv hold only what the guide says you have there (rotKeys, src/core/requirements.js: the Skills card's
    unlock rule for skills, the slot levels for stigmas). E_STACK marks stigmas with "*". */
 const E_STACK = lv => rotKeys(char(state), lv).e.map(n => n + "*");
-/* What's on your keys now, and what's been added since you last looked at the key setup (char(state).rotSeen). */
-const rotNow = lv => { const out = [], k = rotKeys(char(state), lv); k.rmb.forEach((n, r) => out.push({ n, key: "Right click", r })); k.q.forEach(n => out.push({ n, key: "Q", r: 0 }));
+/* What's on your keys now, and what's been added since you last looked at the key setup (char(state).rotSeen). single: a
+   key without rows (the Assassin's Q; a default key with one row). */
+const rotNow = lv => { const out = [], k = rotKeys(char(state), lv);
+  if (k.keys) { k.keys.forEach(x => x.rows.forEach((n, r) => { if (n) out.push({ n, key: x.key, r, single: x.single }); })); return out; }
+  k.rmb.forEach((n, r) => out.push({ n, key: "Right click", r })); k.q.forEach(n => out.push({ n, key: "Q", r: 0, single: true }));
   k.e.forEach((n, r) => out.push({ n, key: "E", r, stig: true })); return out; };
 const rotNew = lv => { const seen = char(state).rotSeen; if (!seen) return []; return rotNow(lv).filter(x => !seen.includes(x.key + ":" + x.n + ":" + x.r)); }; /* moved rows count too */
 const rotMarkSeen = () => { char(state).rotSeen = rotNow(char(state).level).map(x => x.key + ":" + x.n + ":" + x.r); save(); };
@@ -20,12 +23,13 @@ const rotMarkSeen = () => { char(state).rotSeen = rotNow(char(state).level).map(
    attribute so the cell's text stays the name. */
 const gridIco = (n, stig) => { const src = (stig ? STIGMA_ICON : SP_ICONS)[n];
   return src ? `<img class="kv-ico" src="${src}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">` : `<span class="kv-ico ini" aria-hidden="true" data-ini="${ini(n)}"></span>`; };
-const rotWhere = x => `${x.key}${x.key === "Q" ? "" : `, row ${x.r}${x.r === 0 ? " (fires first)" : ""}`}`;
+const rotWhere = x => `${x.key}${x.single ? "" : `, row ${x.r}${x.r === 0 ? " (fires first)" : ""}`}`;
 function renderStacks(lv) {
   if (!char(state).rotSeen || !char(state).rotSeen.every(k => k.split(":").length === 3)) rotMarkSeen(); /* first run: nothing counts as new */
   const fresh = new Set(rotNew(lv).map(x => x.n));
   const cell = n => { if (!n) return `<span class="sk empty"></span>`; const nm = n.replace(/\*/g, ""), stig = n.includes("*");
     return `<span class="sk${stig ? " stig" : ""}${fresh.has(nm) ? " new" : ""}">${gridIco(nm, stig)}<span class="nm">${nm}</span></span>`; };
+  if (KEYS.length) return renderDefaultKeys(lv, fresh, cell);
   /* One grid (0.6.2 P18, like the game's K window): shared row numbers on the left, one column per key, each cell the
      skill's icon with its name under it, and the key chips under their columns (row 0 at the bottom, as in the game's bar). */
   const k = rotKeys(char(state), lv), keys = [k.rmb, k.q, E_STACK(lv)];
@@ -33,6 +37,18 @@ function renderStacks(lv) {
     [3, 2, 1, 0].map(r => `<i class="rn">${r}</i>` + keys.map(k => cell(k[r]).replace('class="sk', `class="sk${r === 0 ? " r0" : ""}`)).join("")).join("") +
     `<span></span><span class="kv-key mouse">Right click</span><span class="kv-key">Q</span><span class="kv-key">E</span>` +
     `<p class="lmb">Left click: <span class="sk">${gridIco("Quick Slice")}<span class="nm">Quick Slice</span></span></p>` + stLaterHTML();
+}
+/* The game's default keys (0.7 P11, KEYS: the Ranger, the Gladiator), drawn like the Assassin's grid: one column per key
+   with rows, as deep as the deepest key's data, row 0 at the bottom; a key with one row (the mouse, 1–4) gets a line under
+   the grid, as the Assassin's left click does. Only skills learned by lv show. */
+function renderDefaultKeys(lv, fresh, cell) {
+  const k = rotKeys(char(state), lv), cols = k.keys.filter(x => !x.single), singles = k.keys.filter(x => x.single && x.rows[0]);
+  const depth = Math.max(0, ...cols.map(x => x.rows.length)), el = document.getElementById("stackViz");
+  el.style.gridTemplateColumns = `12px repeat(${cols.length}, minmax(0, 1fr))`;
+  el.innerHTML = [...Array(depth).keys()].reverse().map(r => `<i class="rn">${r}</i>` + cols.map(x => cell(x.rows[r]).replace('class="sk', `class="sk${r === 0 ? " r0" : ""}`)).join("")).join("") +
+    `<span></span>` + cols.map(x => `<span class="kv-key${/ click$/.test(x.key) ? " mouse" : ""}">${x.key}</span>`).join("") +
+    singles.map(x => `<p class="lmb">${x.key}: <span class="sk${fresh.has(x.rows[0]) ? " new" : ""}">${gridIco(x.rows[0])}<span class="nm">${x.rows[0]}</span></span></p>`).join("") +
+    `<p class="fine tline kv-note">The game's default keys. Row 0 is tried first; a skill on cooldown or not ready is skipped. A skill shows here from the level you learn it.</p>`;
 }
 /* Stigmas still to come: where each will go on E when you add it (in the order the slots open). */
 function stLaterHTML() {
@@ -49,7 +65,8 @@ function renderRotation() {
   /* a build without a sourced key setup (0.6 P5, the Ranger): stat priority only, with the build's own footnote */
   if (STAT_NOTE) document.getElementById("statNote").textContent = STAT_NOTE;
   if (!HAS_KEYS) { document.querySelector("#statDrawer .sd-rot").hidden = true; document.getElementById("statSeq").innerHTML = statSeqHTML(); return; }
-  const lv = char(state).level, { rmb, q, e } = rotKeys(char(state), lv);
+  const lv = char(state).level, { rmb, q, e, keys } = rotKeys(char(state), lv);
+  if (keys) { renderDefaultRotation(lv, keys); return; }
   const before = e.filter(n => n === "Illusive Clone" || n === "Swift Contract"), after = e.filter(n => !before.includes(n));
   const steps = [];
   if (before.length) steps.push(`<b>E</b> ${before.map(n => nameIco(n, true)).join(" + ")}`);
@@ -59,6 +76,10 @@ function renderRotation() {
   document.getElementById("rotLv").textContent = `at Lv ${lv}`;
   document.getElementById("rotPlay").innerHTML = steps.map(x => `<li>${x}</li>`).join("");
   document.getElementById("rotChain").innerHTML = rmb.map((n, i) => `<li><span class="dot"></span><span>${spMini(n)}${n}</span></li>`).join("");
+  rotNewNote(lv);
+}
+/* The new-placement note, the tab badges and the stacks (both kinds of build) */
+function rotNewNote(lv) {
   const nw = rotNew(lv);
   document.getElementById("rotNote").innerHTML = nw.length ? `<b class="rot-new">New</b> ${nw.map(x => `put ${ico(x.n, x.stig)}<b>${x.n}</b> on ${rotWhere(x)}`).join("; ")}. The key grid below shows the full setup; closing this panel clears this note.` : "";
   const tb = document.getElementById("sdNew"); if (tb) tb.hidden = !nw.length;
@@ -66,6 +87,17 @@ function renderRotation() {
   if (nw.length) { const ks = document.querySelector("#statDrawer details.mini"); if (ks) ks.open = true; }
   document.getElementById("statSeq").innerHTML = statSeqHTML();
   renderStacks(lv);
+}
+/* The Rotation section for the game's default keys (0.7 P11): what each key with rows fires, row 0 first, as the Assassin's
+   "Right click fires" line. The Assassin's play steps, its left click and its macro text (build.html) are not this build's. */
+function renderDefaultRotation(lv, keys) {
+  const rot = document.querySelector("#statDrawer .sd-rot");
+  for (const el of rot.querySelectorAll(":scope > .playsteps, :scope > .rmbline, .macro-steps, details > .tline")) el.style.display = "none";
+  let box = rot.querySelector(":scope > .rot-keys");
+  if (!box) { box = document.createElement("div"); box.className = "rot-keys"; rot.querySelector(":scope > .ns-head").after(box); }
+  box.innerHTML = keys.filter(x => !x.single && x.rows.some(Boolean)).map(x => `<div class="rmbline"><span class="khead">${x.key} fires</span><ol class="chain">${x.rows.filter(Boolean).map(n => `<li><span class="dot"></span><span>${spMini(n)}${n}</span></li>`).join("")}</ol></div>`).join("");
+  document.getElementById("rotLv").textContent = `at Lv ${lv}`;
+  rotNewNote(lv);
 }
 /* the drawer's place and its tab (from render(), once) */
 function aion2BuildMount() {

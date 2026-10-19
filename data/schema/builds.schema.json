@@ -393,6 +393,69 @@
                 "pattern": "^stigma:[a-z]+:[a-z0-9-]+$"
               }
             },
+            "defaultKeys": {
+              "description": "The game's default keys for the class (0.7 P11): one entry per key in the order the Key setup shows them, each a stack of skills, row 0 first (the row the game tries first). A key with one row is a single key. A row shows from its minLv, else from its skill's learn level. A guide's own recommended setup (rightClick) stays separate.",
+              "type": "object",
+              "required": [
+                "keys",
+                "status",
+                "sources"
+              ],
+              "properties": {
+                "keys": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "key",
+                      "rows"
+                    ],
+                    "properties": {
+                      "key": {
+                        "description": "The key as the game names it: a letter or digit (Q, E, 1), or a mouse button (Left click, Right click).",
+                        "type": "string",
+                        "pattern": "^([A-Z0-9]|F[0-9]{1,2}|Left click|Right click|Middle click)$"
+                      },
+                      "rows": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "skill"
+                          ],
+                          "properties": {
+                            "skill": {
+                              "type": "string",
+                              "pattern": "^skill:[a-z]+:[a-z0-9-]+$"
+                            },
+                            "minLv": {
+                              "description": "Character level the row shows from, when it is not the skill's learn level.",
+                              "type": "integer",
+                              "minimum": 1
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "status": {
+                  "$ref": "common.schema.json#/$defs/status"
+                },
+                "sources": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "common.schema.json#/$defs/sourceRef"
+                  },
+                  "minItems": 1
+                }
+              },
+              "additionalProperties": false
+            },
             "status": {
               "$ref": "common.schema.json#/$defs/status"
             },

@@ -221,6 +221,30 @@
         "conf:learn-levels"
       ],
       "verifiedAt": "2026-10-18"
+    },
+    {
+      "id": "C55",
+      "claim": "Ranger default keys: left click Snipe, right click Tempest Shot; Q Burst Arrow (row 0), Drill Dart (1); E Arrow Scattershot (0), Suppressing Arrow (1), Marking Shot (2); 1 Snare Shot, 2 Gale Arrow, 3 Explosion Trap, 4 Deadshot; Defiance no key.",
+      "verdict": "verified",
+      "sources": [
+        {
+          "owner": {
+            "ref": "owner:2026-10-18-ranger-keys-01",
+            "checkedAt": "2026-10-18",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Ranger skill window (quickslot grid, game default keys) and 16 skill tooltips"
+          }
+        }
+      ],
+      "action": "keep",
+      "note": "The owner's in-game screens (the source of truth). The keys are the game's defaults, not a guide's advice; the learn levels on the screens match skills.json for all 22 skills.",
+      "appliesTo": [
+        "build:ranger:guide"
+      ],
+      "verifiedAt": "2026-10-18"
     }
   ]
 }
