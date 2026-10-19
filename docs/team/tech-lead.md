@@ -18,7 +18,7 @@ through esbuild; the output is not minified.
 ## Standing notes
 - Saves are tied to the exact web address; any address change needs export/import (or a bridge). Plan accordingly.
 - **0.2 P1 toolchain (esbuild 0.28.2, pinned exactly).** Acceptance used for P1 and reusable for P2+: golden identical
-  without re-recording; markup and CSS of `dist/` and `dist-artifact/` byte-identical to the previous build; scripts
+  without re-recording; markup and CSS of `dist/` (and, until 0.7 P9, the claude.ai build) byte-identical to the previous build; scripts
   equal as token streams to the old script passed through the same esbuild settings (compare with
   `esbuild --minify-whitespace` on both sides); `update()` measured paired (both builds open side by side, alternating
   blocks of calls) because single-run medians on the 2-core agent machine vary ±0.3 ms.

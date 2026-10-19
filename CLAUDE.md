@@ -3,7 +3,7 @@
 Daeva Companion: an unofficial AION 2 companion app. Today the leveling guide (Asmodian Assassin, Lv 1–45; 1.0 =
 all eight classes); 1.1 adds an end-game tracker (ROADMAP.md). Source in `src/` (page shell `index.html`, `styles/*.css`, ES modules
 `main.js` / `data/*.js` / `site.js`); `npm run build` (esbuild) inlines it into one HTML file for the site
-(daevacompanion.com); the claude.ai artifact is frozen and no longer built (owner, 2026-10-18; 0.7 P9 removes its build). `src/index.html` doesn't run on its own: build, then
+(daevacompanion.com); the claude.ai artifact is frozen and no longer built (owner, 2026-10-18). `src/index.html` doesn't run on its own: build, then
 `npm run serve`. Read `docs/ARCHITECTURE.md` before touching state, keys, data or the build.
 
 ## Saved progress (pre-1.0: clean breaks allowed)

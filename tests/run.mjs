@@ -12,7 +12,7 @@
    failures, so it stays visible. (The update() < 15 ms timing checks that used to need this live in `perf` now.)
 
    Suites (each is a standalone Playwright script; output in tests/out/<name>.out):
-     site     standalone site + claude.ai build: head, footer, export, service worker/offline, manifest, 404, artifact build
+     site     standalone site: head, footer, export, service worker/offline, manifest, 404, fonts, build checks
      e1       E1 functional checks (keys, Next up, stigma pick, snooze, story end, export/import, layout, drawer)
      e2       E2 data checks (regional availability, story 41-45, strongholds, dungeons, build, claims, Sources)
      e3       E3 checks          e4   E4 checks (QA3 findings)
@@ -76,7 +76,7 @@ if (flag('check-shards')) {
   process.exit(bad.length ? 1 : 0);
 }
 
-if (!existsSync(join(ROOT, 'dist', 'index.html')) || !existsSync(join(ROOT, 'dist-artifact', 'index.html'))) {
+if (!existsSync(join(ROOT, 'dist', 'index.html'))) {
   console.error('dist/ is missing: run `npm run build` (or `npm test`, which builds first)'); process.exit(1);
 }
 
