@@ -102,9 +102,9 @@ on purpose: the guide shows nothing rather than an unverified value.
   All 15 planned icons (11 skills, 4 stigmas: every Ranger skill and stigma the build plan shows) came from Metabot; none
   lacks an approved source, so no Ranger placeholder is left for the owner. 0.6.1 F5 (#338) moved them to
   `src/assets/icons/` (256 px WebP → 128 px PNG, like the Assassin's) and set each record's `icon` in
-  `data/packs/aion2/classes/ranger/{skills,stigmas}.json`. They have no `/_blob/` id yet (`null` in
-  `scripts/artifact-blobs.json`, DECISIONS D4): the artifact shows the initials square for them until someone uploads
-  the 15 files to the artifact and records the ids. Ranger skills outside the plan show no icon slot, so need none.
+  `data/packs/aion2/classes/ranger/{skills,stigmas}.json`. The frozen claude.ai artifact never got them (it shows the
+  initials square); since 0.7 P9 it is not built, so no `/_blob/` id is needed. Ranger skills outside the plan show no
+  icon slot, so need none.
 
   | File | Name | Source page | File URL | Retrieved |
   |---|---|---|---|---|
@@ -178,10 +178,9 @@ on purpose: the guide shows nothing rather than an unverified value.
     screen, at least 64 px, transparent background if possible), then record it here as "owner-supplied" with the date.
     P13 stays unqueued until a row above has a file; this entry alone does not clear the gate.
 
-- **Icons not in the claude.ai artifact yet.** The five skill icons above (added 2026-10-15 under the standing icon OK)
-  have no `/_blob/` id: `scripts/artifact-blobs.json` lists them as `null`, so `dist-artifact` shows the initials square
-  for those skills, as before. To add them there, upload each PNG to the artifact's asset store and put its id in
-  `scripts/artifact-blobs.json` (docs/DEPLOY.md). The artifact is frozen (DECISIONS D4), so this may never be needed.
+- **Icons not in the claude.ai artifact** (closed by 0.7 P9). The five skill icons above (added 2026-10-15) never got a
+  `/_blob/` id, so the frozen artifact shows the initials square for them. The artifact is no longer built and its blob
+  list (`scripts/artifact-blobs.json`) is gone, so nothing is left to do.
 - **Board-cost input can be replaced while typing** (likely, not confirmed; found 2026-10-15 by a real-time
   `journey` run, which crashed at Lv 40 with `fill: Element is not attached`). A milestone tick re-renders the page
   with a deferred `update()` 1150 ms later (1650 ms when its card leaves; `src/main.js`, tick handler), which rebuilds

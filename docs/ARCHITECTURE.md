@@ -20,16 +20,16 @@ Daeva Companion (unofficial AION 2 companion; today the Asmodian Assassin leveli
 | `src/packs/aion2/data/gate-proposed.js` | not a file either: `GATE_PROPOSED`, every record's `proposed` gate compiled the same way (0.3 E4); only the pack object imports it (`data.proposed`); the evaluator reads it only for the ids in its `opts.apply` |
 | `src/site.js` | the standalone site's own script (storage persistence, service worker registration); `@web-only` |
 
-`src/index.html` is not runnable by itself: `npm run build && npm run serve`. The two deliverables must behave the same:
+`src/index.html` is not runnable by itself: `npm run build && npm run serve`. The site is the only build:
 
-| Build | Where | Differences |
+| Build | Where | What |
 |---|---|---|
 | `dist/` | GitHub Pages, <https://daevacompanion.com/> | full `<head>`, icons at `assets/icons/*.png`, manifest, service worker |
-| `dist-artifact/index.html` | claude.ai artifact (single file) | no document skeleton (claude.ai adds one), icons at `/_blob/<id>`, no SW / manifest |
 
-Branding (Daeva Companion) lives in the shared shell (title, header lockup as inline SVG, footer), so the frozen claude.ai
-build (DECISIONS D4) carries the new name too; it needs no new blob. Favicon, manifest and app icons are web-only
-(`public/`), drawn by `tools/brand/build.py` from `brand/`.
+The claude.ai artifact is frozen and no longer built (owner, 2026-10-18, DECISIONS `owner-ok-0.7-artifact-freeze`; 0.7 P9
+removed its build, its `/_blob/` icon ids and its byte budget). The published artifact keeps its "moved" notice (D4).
+Branding (Daeva Companion) lives in the shell (title, header lockup as inline SVG, footer). Favicon, manifest and app
+icons are in `public/`, drawn by `tools/brand/build.py` from `brand/`.
 
 ## 1. Saved progress (must not break from 1.0; see the pre-1.0 exception below)
 
@@ -336,7 +336,7 @@ produced the v1 files (provenance; they no longer match `data/`). `tools/history
 ## 4. Build and site
 
 - `scripts/build.mjs` assembles the page: first each `<!-- @card cards/X.html -->` line of the shell becomes the file
-  `src/cards/X.html` as it is (0.4 P4a; both builds; a missing file, an `@card` line inside a card file or a leftover
+  `src/cards/X.html` as it is (0.4 P4a; a missing file, an `@card` line inside a card file or a leftover
   `@card` line stops the build), then each `<link rel="stylesheet" href="styles/X.css">` line of the shell becomes a
   `<style>` with the file as it is; each `<script type="module" src="X.js"></script>` line becomes one classic `<script>`
   holding esbuild's bundle of that entry (format `esm` with no imports or exports left, so no wrapper; minified for whitespace and syntax only (0.5 P20: `minifyWhitespace` + `minifySyntax`, never
@@ -351,20 +351,17 @@ produced the v1 files (provenance; they no longer match `data/`). `tools/history
   name declared in two page modules (every `.js` under `src/` but `site.js` / `sw.js`) or in a module and the generated
   data (esbuild would rename one of them), and so does a name that comes out of a bundle renamed (`X` → `X2`: a module
   used `X` without importing it). CSS is not passed through esbuild: its printer rewrites values (unquoted `url()`, one
-  `unicode-range` entry per line) that the claude.ai font conversion and the test font blocker read. The build only
+  `unicode-range` entry per line) that the test font blocker reads. The build only
   strips comments and the white space around `{ } ; , >`, after `:` and before `!important`, and the last `;` of a rule
   (`plainCss`, 0.6 P1; quoted strings are skipped; `fonts.css` is left as written). A line
   `@import "X.css";` in an inlined stylesheet is replaced by that file as it is (0.4 P4d; path relative to the importing
   file, recursively): `src/styles/index.css` lists `app.css` and the card stylesheets that way. A missing file, a file
   imported twice, an `@import` in another form, or a `.css` file under `src/styles/` that nothing links or imports stops
   the build.
-- It then checks the `<!-- @web-only -->` markers (in the shell), that every referenced icon exists and has a blob id
-  (`scripts/artifact-blobs.json`; `null` = not uploaded to the artifact yet: the artifact build drops that icon's quoted path,
-  so the page shows the initials square there), and that the fonts are all shipped and referenced with their OFL texts and nothing
-  requests Google Fonts; then writes `dist/` (markers stripped; `public/`, icons and fonts copied; `sw.js` with the
-  build id = hash of all cached files) and `dist-artifact/index.html` (web-only blocks removed before inlining, so
-  `site.js` is never in it; icons → `/_blob/<id>`; the `styles/fonts.css` link replaced by a script that holds each
-  font file once in base64 and registers the same faces with the FontFace API; capped at 150 KB).
+- It then checks the `<!-- @web-only -->` markers (in the shell; inert since 0.7 P9: the site keeps what they wrap and
+  only the marker lines are dropped), that every referenced icon exists and every shipped icon is referenced, and that
+  the fonts are all shipped and referenced with their OFL texts and nothing requests Google Fonts; then writes `dist/`
+  (markers stripped; `public/`, icons and fonts copied; `sw.js` with the build id = hash of all cached files).
 - **Page size** (0.6 P1: gzip -9 of `dist/index.html` 182,302 B → 169,956 B, 85% of the budget, no visible change, no change
   to `data/**`). Three build-only cuts: the stylesheets lose comments and layout white space (above; about 10 KB gzip,
   the largest share); the markup outside `<style>` and `<script>` loses indentation and blank lines (`tightHtml`; the
@@ -387,24 +384,17 @@ produced the v1 files (provenance; they no longer match `data/`). `tools/history
   no save or its pack isn't shipped) and sets `self.DAEVA_PACK`. Site: each chunk is `dist/packs/<id>.<hash>.js`
   (content hash, so a new `index.html` never meets a stale cached chunk), precached by the service worker, and the loader
   writes one `<script src>` for the chosen one with `document.write` (it must run before the app script, which reads the
-  tables at once). claude.ai: one file, no fetch, so the chunks of the classes in `ARTIFACT_CLASSES`
-  (`scripts/build.mjs`, 0.7 A1; today the Assassin and the Ranger) are inlined after the loader, which also sets
-  `self.DAEVA_CLASSES` to that list; every other playable class is site-only. There the character picker offers only the
-  listed classes (`src/cards/characters.js`), and a save whose current character has a site-only class loads on the
-  default class's tables with one line under the character button (the game pack's `siteOnlyNote` in
-  `data/packs/aion2/pack.json`, compiled to `SITE_ONLY_NOTE`); the save is left as it is. The site sets no list and
-  offers every class. **Adding a class to the artifact**: append its guide pack id to `ARTIFACT_CLASSES` and build; the
-  `dist-artifact/index.html` byte budget decides (the build fails over it, and the budget is not raised for a class: it
-  stays site-only instead). The default pack must be in the list. `node scripts/build.mjs --artifact-classes <id,…> --out
-  <dir>` builds with another list into another folder (the `site` and `save` suites use it to check a site-only class).
+  tables at once). The site offers every playable class. (`self.DAEVA_CLASSES`, the character picker's class filter in
+  `src/cards/characters.js` and the pack's `siteOnlyNote` / `SITE_ONLY_NOTE` were for the claude.ai build's class list,
+  0.7 A1; nothing sets the list since 0.7 P9, so that code is inert and left for a later clean-up.)
   The class is chosen once per page load; with one class shipped that is always right, and switching to a character of
   another class will need a reload (not built yet: no second class ships).
   With the Assassin pack alone the page is the same (golden identical); the site's `index.html` plus its chunk is
   696,352 B against 695,380 B in one file before (+0.14%).
 - **Page budgets** (0.4 P7, about 1.3x the 0.3.0 numbers; the build prints each with its limit and % used): the site page
   (`dist/index.html` plus its largest class chunk, 0.6 P2) 870,000 B (0.3.0: 669,290), its gzip -9 (each file gzipped on
-  its own, summed) 200,000 B (153,871) and `dist-artifact/index.html` 1,030,000 B (790,763) fail the
-  build (`BUDGETS` in `scripts/build.mjs`); 6,200 elements in a fresh browser at 390 px (4,741) fail the `site` suite
+  its own, summed) 200,000 B (153,871) fail the build (the claude.ai build's 1,030,000 B budget went with that build in
+  0.7 P9) (`BUDGETS` in `scripts/build.mjs`); 6,200 elements in a fresh browser at 390 px (4,741) fail the `site` suite
   (`ELEMENT_MAX` in `tests/site.js`). To raise one, change that constant in the PR and say in the PR why. Timing
   (`perf`) stays advisory.
 - Fonts (since 0.1.5): `src/assets/fonts/` holds the latin and latin-ext WOFF2 files Google Fonts serves for Marcellus SC,
@@ -412,7 +402,7 @@ produced the v1 files (provenance; they no longer match `data/`). `tools/history
   weight and subset, same unicode ranges; Figtree and JetBrains Mono are variable files shared by their weights), so
   text renders exactly as before; a weight range per file would render weight 500 mono text differently. The page
   makes no third-party request.
-  It also fills the placeholders `__APP_VERSION__` (from `package.json`) and `__APP_BUILD__` (`site` / `claude.ai`):
+  It also fills the placeholders `__APP_VERSION__` (from `package.json`) and `__APP_BUILD__` (`site`):
   the footer's version link and the "Report a problem" link use them, so the version is never typed into the page.
 - Footer **Report a problem**: opens `.github/ISSUE_TEMPLATE/bug.yml` with its fields prefilled through the URL (field ids
   as query parameters): version, level, story quest, mode, build and user agent, and nothing else from the save. The
@@ -421,7 +411,7 @@ produced the v1 files (provenance; they no longer match `data/`). `tools/history
   `aion2-route-*` caches (older builds, the pre-0.1.5 Google Fonts cache) are deleted on activate. Registered only on
   https or localhost, and only in `dist/`.
 - Export: `window.claude.use("downloads")` when present (claude.ai), else a Blob download.
-- `scripts/serve.mjs`: static server for `dist/` (+ `/artifact/`, `/_blob/<id>`, and `/__baselines/` when started with `baselines`; no suite uses it since 0.4 P3c).
+- `scripts/serve.mjs`: static server for `dist/` (+ `/__baselines/` when started with `baselines`; no suite uses it since 0.4 P3c).
 
 **Pure core rules** (0.2 P3; engine and pack since 0.4 P2b, `docs/design/0.4-engine-contract.md` §1–§2): `src/core/`
 has no DOM, storage, timer or other browser access and imports only other core modules: never a pack, `src/cards/`,
@@ -450,7 +440,7 @@ docs/DEPLOY.md, "CI jobs").
 
 | Suite | What |
 |---|---|
-| `site` | element budget at 390 px (§4), head, footer (version, Report a problem), export (Blob and claude.ai paths), service worker + offline, manifest, 404, artifact build, self-hosted fonts, persistent storage, save-failure banner |
+| `site` | element budget at 390 px (§4), head, footer (version, Report a problem), export (Blob download), service worker + offline, manifest, 404, the site's icons, self-hosted fonts, persistent storage, save-failure banner |
 | `e1`…`e4` | functional checks from each polish pass |
 | `save` | save v5 (0.4 P3c) in the browser: fresh start, a v4 save present (never read: `getItem` spied, its entry byte-identical), round trip, import (v5 only; a v4 export refused), Level up (label vs slot id), the name and label in no key / link / file name, two slots |
 | `regress` | Lv 25–45 × Basic/Advanced × 1500/1100/390 px × clean/messy saves, the user's save, pop-out |

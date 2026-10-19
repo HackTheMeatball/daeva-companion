@@ -1,6 +1,6 @@
 [
   { "case": "picker-new-character-390", "kind": "before-after", "title": "Pick a class: Gladiator",
-    "caption": "New character now offers the Gladiator after the Assassin and the Ranger (on the site; the claude.ai build still offers two)." },
+    "caption": "New character now offers the Gladiator after the Assassin and the Ranger." },
   { "case": "gladiator-lv22-advanced-1500", "kind": "screenshot", "title": "A Gladiator at level 22",
     "caption": "A Gladiator character gets its own guide: Rending Blow and Overhead Slam first, Lunge Stance for stigma slot 1, and the header names the Gladiator." },
   { "case": "gladiator-build-drawer-1500", "kind": "screenshot", "title": "Gladiator stat priority",

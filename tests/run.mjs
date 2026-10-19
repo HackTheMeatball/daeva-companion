@@ -12,7 +12,7 @@
    failures, so it stays visible. (The update() < 15 ms timing checks that used to need this live in `perf` now.)
 
    Suites (each is a standalone Playwright script; output in tests/out/<name>.out):
-     site     standalone site + claude.ai build: head, footer, export, service worker/offline, manifest, 404, artifact build
+     site     standalone site: head, footer, export, service worker/offline, manifest, 404, fonts, build checks
      e1       E1 functional checks (keys, Next up, stigma pick, snooze, story end, export/import, layout, drawer)
      e2       E2 data checks (regional availability, story 41-45, strongholds, dungeons, build, claims, Sources)
      e3       E3 checks          e4   E4 checks (QA3 findings)
@@ -34,6 +34,8 @@
               has one (tests/scrapbook.mjs, docs/reviews/README.md; < 1 s). In the `checks` shard like tokens
      kickoff  Node, no browser: kickoff.yml's After check on fixtures; an unmet or unknown After key never starts a [next] line
               (tests/kickoff.mjs; < 1 s). In the `checks` shard like tokens
+     automerge  Node, no browser: auto-merge.yml's design check on fixtures; a PR with review shots never merges without
+              the Design Lead's DESIGN OK on its head (tests/automerge.mjs; < 1 s). In the `checks` shard
      schema   every v2 data file and schema example against data/schema/ (ajv Ajv2020, strict), then the generator's data checks
      a11y     axe-core at 390 / 1500 px (fresh / Lv 27 / Lv 45 x Basic / Advanced; fails on rules outside its allowlist),
               spoken names, reduced motion after Level up, Escape on "i" popovers, hit areas vs neighbours
@@ -51,7 +53,7 @@ const OUT = join(ROOT, 'tests', 'out'), FIX = join(ROOT, 'tests', 'fixtures');
 const args = process.argv.slice(2), flag = n => args.includes('--' + n), opt = n => { const i = args.indexOf('--' + n); return i >= 0 ? args[i + 1] : null; };
 
 /* Every suite and how it is selected. NONBLOCKING suites never run by default and are in no shard. */
-const ALL = ['site', 'core', 'schema', 'equiv', 'invariant', 'tokens', 'scrapbook', 'kickoff', 'e1', 'e2', 'e3', 'e4', 'gates', 'save', 'regress', 'golden', 'a11y', 'journey', 'perf'];
+const ALL = ['site', 'core', 'schema', 'equiv', 'invariant', 'tokens', 'scrapbook', 'kickoff', 'automerge', 'e1', 'e2', 'e3', 'e4', 'gates', 'save', 'regress', 'golden', 'a11y', 'journey', 'perf'];
 const NONBLOCKING = ['perf'];
 /* CI shards for the browser suites, balanced by CI time (a 4-vCPU runner runs 2 suites at a time). core and schema have no
    browser: the CI data job runs them (tests/core.mjs, tests/schema.mjs) before any shard finishes. */
@@ -59,7 +61,7 @@ const SHARDS = {
   journey: ['journey'],
   regress: ['regress'],
   golden: ['golden', 'a11y', 'save', 'site'],
-  checks: ['e1', 'e2', 'gates', 'e4', 'e3', 'equiv', 'invariant', 'tokens', 'scrapbook', 'kickoff'],
+  checks: ['e1', 'e2', 'gates', 'e4', 'e3', 'equiv', 'invariant', 'tokens', 'scrapbook', 'kickoff', 'automerge'],
 };
 /* ...and the CI data job must really run them (checked below against ci.yml's text). */
 const SHARD_FREE = { core: /npm run test:core|node tests\/core\.mjs/, schema: /npm run test:data|node tests\/schema\.mjs/ };
@@ -76,7 +78,7 @@ if (flag('check-shards')) {
   process.exit(bad.length ? 1 : 0);
 }
 
-if (!existsSync(join(ROOT, 'dist', 'index.html')) || !existsSync(join(ROOT, 'dist-artifact', 'index.html'))) {
+if (!existsSync(join(ROOT, 'dist', 'index.html'))) {
   console.error('dist/ is missing: run `npm run build` (or `npm test`, which builds first)'); process.exit(1);
 }
 
@@ -104,6 +106,7 @@ const SUITES = {
   tokens: { args: ['tests/tokens.mjs'], pass: /TOKENS CHECKS PASSED/ },
   scrapbook: { args: ['tests/scrapbook.mjs'], pass: /SCRAPBOOK CHECKS PASSED/ },
   kickoff: { args: ['tests/kickoff.mjs'], pass: /KICKOFF CHECKS PASSED/ },
+  automerge: { args: ['tests/automerge.mjs'], pass: /AUTOMERGE CHECKS PASSED/ },
   e1: { args: ['tests/e1test.js', CUR, FLAT285], pass: /E1 CHECKS PASSED/ },
   e2: { args: ['tests/e2test.js', CUR], pass: /E2 CHECKS PASSED/ },
   e3: { args: ['tests/e3test.js'], pass: /E3 CHECKS PASSED/ },
@@ -125,7 +128,7 @@ if (opt('shard') && opt('only')) { console.error('use --only or --shard, not bot
 const only = opt('shard') ? SHARDS[opt('shard')] : opt('only') ? opt('only').split(',') : ALL.filter(n => !NONBLOCKING.includes(n));
 for (const n of only) if (!SUITES[n]) { console.error('unknown suite: ' + n); process.exit(2); }
 /* longest first, so the slow ones start right away */
-const ORDER = ['regress', 'journey', 'golden', 'e1', 'e2', 'gates', 'a11y', 'perf', 'invariant', 'equiv', 'save', 'e4', 'e3', 'site', 'tokens', 'scrapbook', 'kickoff', 'core', 'schema'];
+const ORDER = ['regress', 'journey', 'golden', 'e1', 'e2', 'gates', 'a11y', 'perf', 'invariant', 'equiv', 'save', 'e4', 'e3', 'site', 'tokens', 'scrapbook', 'kickoff', 'automerge', 'core', 'schema'];
 if (Object.keys(SUITES).sort().join() !== ALL.slice().sort().join() || ORDER.slice().sort().join() !== ALL.slice().sort().join()) { console.error('tests/run.mjs: SUITES, ALL and ORDER must list the same suites'); process.exit(2); }
 const order = ORDER.filter(n => only.includes(n));
 const jobs = Math.max(1, +(opt('jobs') || process.env.TEST_JOBS || Math.min(4, Math.max(1, Math.floor(cpus().length / 2)))));

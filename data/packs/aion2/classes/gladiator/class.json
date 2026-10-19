@@ -23,7 +23,7 @@
       "verifiedAt": "2026-10-18",
       "status": "verified",
       "notes": [
-        "Released in 0.7 P2 (#345): its guide pack (data/packs/aion2/asmodian/gladiator/) defines build:gladiator:guide and the site's class picker lists it (the claude.ai build does not carry it)."
+        "Released in 0.7 P2 (#345): its guide pack (data/packs/aion2/asmodian/gladiator/) defines build:gladiator:guide and the class picker lists it."
       ]
     }
   ]

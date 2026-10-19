@@ -1,6 +1,6 @@
 /* Standalone-site checks (the parts of the repo build that the single-file suites don't cover).
    node tests/site.js  (page at AION_BASE; see tests/config.js) */
-const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path'); const { execFileSync } = require('child_process'); const CFG = require('./config');
+const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path'); const CFG = require('./config');
 let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' : 'FAIL ') + name + (!c && d !== undefined ? '  · ' + JSON.stringify(d).slice(0, 600) : '')); if (!c) fail++; };
 /* fonts are self-hosted since 0.1.5; the suites block them (tests/support/block-web-fonts.cjs), so their requests fail */
 const FONT_LOCAL = /\/assets\/fonts\/[^/]+\.woff2$/;
@@ -10,7 +10,6 @@ const FONT_FILES = ['figtree-latin', 'figtree-latin-ext', 'jetbrains-mono-latin'
 const loadedFamilies = p => p.evaluate(async () => { await document.fonts.ready; await new Promise(r => setTimeout(r, 300)); await document.fonts.ready;
   return [...new Set([...document.fonts].filter(f => f.status === 'loaded').map(f => f.family.replace(/"/g, '')))].sort(); });
 const { SAVE_KEY: KEY, TEST_SLOT, writeSave, readSave, readRaw, toStored, fromStored } = require('./support/save');
-const blobs = JSON.parse(fs.readFileSync(path.join(CFG.ROOT, 'scripts', 'artifact-blobs.json'), 'utf8'));
 const VERSION = JSON.parse(fs.readFileSync(path.join(CFG.ROOT, 'package.json'), 'utf8')).version;
 const REPO = 'https://github.com/hackthemeatball/daeva-companion';
 /* footer version link + "Report a problem" link: the version comes from package.json; the report URL carries exactly these
@@ -136,29 +135,25 @@ const checkReport = (label, m, want) => {
   }
 
   /* 2b. self-hosted fonts: no Google Fonts anywhere in the built files; files + OFL texts shipped, served and precached;
-     with the blocker lifted, all three families load in the site, the claude.ai build (inlined) and the 404 page */
+     with the blocker lifted, all three families load in the site and the 404 page */
   {
     const D = path.join(CFG.ROOT, 'dist'), rd = f => fs.readFileSync(path.join(CFG.ROOT, f), 'utf8');
-    const built = { 'dist/index.html': rd('dist/index.html'), 'dist/404.html': rd('dist/404.html'), 'dist/sw.js': rd('dist/sw.js'), 'dist-artifact/index.html': rd('dist-artifact/index.html') };
+    const built = { 'dist/index.html': rd('dist/index.html'), 'dist/404.html': rd('dist/404.html'), 'dist/sw.js': rd('dist/sw.js') };
     const google = Object.keys(built).filter(f => /fonts\.(googleapis|gstatic)\.com/.test(built[f]));
     ok('fonts: no fonts.googleapis.com / fonts.gstatic.com in the built HTML or service worker', !google.length, google);
     const shipped = fs.readdirSync(path.join(D, 'assets', 'fonts')).sort();
     ok('fonts: six WOFF2 files and three OFL license texts shipped in dist/assets/fonts', JSON.stringify(shipped) === JSON.stringify([...['OFL-Figtree.txt', 'OFL-JetBrainsMono.txt', 'OFL-MarcellusSC.txt'], ...FONT_FILES].sort()), shipped);
     ok('fonts: every font file is in the service worker precache', FONT_FILES.every(f => built['dist/sw.js'].includes(`"assets/fonts/${f}"`)));
-    const artFiles = [...built['dist-artifact/index.html'].matchAll(/"([\w-]+\.woff2)":"[A-Za-z0-9+/=]{1000,}"/g)].map(x => x[1]).sort();
-    ok('fonts: the claude.ai build inlines each font file once (no font URL, no @font-face)', !/assets\/fonts\/|@font-face/.test(built['dist-artifact/index.html']) && JSON.stringify(artFiles) === JSON.stringify([...FONT_FILES].sort()), artFiles);
     const ctx = await b.newContext({ viewport: { width: 1500, height: 1000 } }); await ctx.unrouteAll(); const p = await ctx.newPage();
     const served = await Promise.all(FONT_FILES.map(async f => { const r = await p.request.get(CFG.BASE + '/assets/fonts/' + f); return [f, r.status(), r.headers()['content-type']]; }));
     ok('fonts: served as font/woff2', served.every(([, s, t]) => s === 200 && t === 'font/woff2'), served);
     await p.goto(CFG.CUR); const site = await loadedFamilies(p);
-    await p.goto(CFG.BASE + '/artifact/'); const art = await loadedFamilies(p);
     await p.goto(CFG.BASE + '/no-such-page'); const nf = await loadedFamilies(p);
-    ok('fonts: Marcellus SC, Figtree and JetBrains Mono load in the site, the claude.ai build and the 404 page', [site, art, nf].every(x => JSON.stringify(x) === JSON.stringify([...FONT_FAMILIES].sort())), { site, art, nf });
+    ok('fonts: Marcellus SC, Figtree and JetBrains Mono load in the site and the 404 page', [site, nf].every(x => JSON.stringify(x) === JSON.stringify([...FONT_FAMILIES].sort())), { site, nf });
     await ctx.close();
   }
 
-  /* 2c. persistent storage: asked on the standalone site only, only with saved progress, once per browser session, never in
-     claude.ai; nothing is added to localStorage */
+  /* 2c. persistent storage: asked only with saved progress, once per browser session; nothing is added to localStorage */
   {
     const ctx = await b.newContext({ viewport: { width: 1500, height: 1000 } });
     await ctx.addInitScript(() => { if (!navigator.storage) return;
@@ -173,9 +168,8 @@ const checkReport = (label, m, want) => {
     const lsKeys = await p.evaluate(() => Object.keys(localStorage).sort());
     await p.evaluate(k => sessionStorage.removeItem(k + ':persist-asked'), KEY);
     await p.reload(); await p.waitForTimeout(400); const session = await calls();
-    await p.goto(CFG.BASE + '/artifact/'); await p.waitForTimeout(400); const art = await calls();
-    ok('persistent storage: not asked without saved progress; asked once with it; not again in the same session; again in a new session; never in the claude.ai build',
-      fresh === 0 && first === 1 && again === 1 && session === 2 && art === 2, { fresh, first, again, session, art });
+    ok('persistent storage: not asked without saved progress; asked once with it; not again in the same session; again in a new session',
+      fresh === 0 && first === 1 && again === 1 && session === 2, { fresh, first, again, session });
     ok('persistent storage: nothing added to localStorage', JSON.stringify(lsKeys) === JSON.stringify([KEY]), lsKeys);
     await ctx.close();
   }
@@ -320,77 +314,17 @@ const checkReport = (label, m, want) => {
     }
   }
 
-  /* 3. claude.ai build: single file, icons as /_blob/<id>, no service worker / manifest; export through window.claude when present */
+  /* 3. the site's icons (the claude.ai build and its /_blob/ checks went in 0.7 P9): every icon dist/index.html and its class
+     chunks name (0.6 P2: the class tables, skill icons among them, ship in dist/packs/) is in dist/assets/icons */
   {
-    const art = fs.readFileSync(path.join(CFG.ROOT, 'dist-artifact', 'index.html'), 'utf8');
-    const ids = [...art.matchAll(/\/_blob\/([0-9a-f]{32})/g)].map(x => x[1]), known = new Set(Object.values(blobs).filter(Boolean));
-    ok('artifact build: every icon is a known /_blob/ id, no relative icon paths', ids.length >= known.size && ids.every(i => known.has(i)) && [...known].every(i => ids.includes(i)) && !/assets\/icons\//.test(art), ids.length);
-    /* Icons with no blob id yet (null: added after the artifact was frozen) ship on the site only; the artifact shows initials. */
-    /* the site build: dist/index.html and its class chunks (0.6 P2: the class tables, skill icons among them, ship in dist/packs/) */
     const chunkFiles = fs.readdirSync(path.join(CFG.ROOT, 'dist', 'packs')).filter(f => f.endsWith('.js'));
-    const noBlob = Object.keys(blobs).filter(n => blobs[n] === null), web = [path.join(CFG.ROOT, 'dist', 'index.html'), ...chunkFiles.map(f => path.join(CFG.ROOT, 'dist', 'packs', f))].map(f => fs.readFileSync(f, 'utf8')).join('\n');
-    /* 0.7 P2: the Gladiator is a site-only class (scripts/build.mjs ARTIFACT_CLASSES), so its chunk is the one not inlined */
-    const chunkPack = f => (fs.readFileSync(path.join(CFG.ROOT, 'dist', 'packs', f), 'utf8').match(/^self\.DAEVA_PACK==="([\w/-]+)"/) || [])[1];
-    const inArt = id => art.includes(`self.DAEVA_PACK==="${id}"&&(self.DAEVA_CLASS=`);
-    ok('artifact build: one file with every carried class chunk inlined (no script src, no fetch of dist/packs/); the site-only Gladiator chunk left out', chunkFiles.length > 0 && !/<script[^>]* src=|packs\/[\w.-]+\.js/.test(art)
-      && chunkFiles.every(f => { const id = chunkPack(f); return id && inArt(id) === (id !== 'aion2/asmodian/gladiator'); }), chunkFiles.map(f => [f, inArt(chunkPack(f))]));
-    /* 0.7 A1: ARTIFACT_CLASSES decides which chunks the artifact inlines. Built with the Assassin alone (under tests/out/),
-       the Ranger stands for a third playable class: in the site's chunks, not in the artifact; the site build unchanged;
-       budgets green (the build exits 0 only then) */
-    {
-      const OUT = 'tests/out/a1-site', log = execFileSync(process.execPath, ['scripts/build.mjs', '--artifact-classes', 'aion2/asmodian/assassin', '--out', OUT], { cwd: CFG.ROOT, encoding: 'utf8' });
-      const rd2 = f => fs.readFileSync(path.join(CFG.ROOT, OUT, f), 'utf8'), small = rd2('dist-artifact/index.html'), smallChunks = fs.readdirSync(path.join(CFG.ROOT, OUT, 'dist', 'packs')).sort();
-      const has = (html, id) => html.includes(`self.DAEVA_PACK==="${id}"&&(self.DAEVA_CLASS=`);
-      ok('artifact classes: the default artifact inlines the Assassin and the Ranger and names them', has(art, 'aion2/asmodian/assassin') && has(art, 'aion2/asmodian/ranger') && art.includes('self.DAEVA_CLASSES=Object.keys(F)'));
-      ok('artifact classes: with the Assassin alone, the Ranger is a site chunk and not in the artifact', has(small, 'aion2/asmodian/assassin') && !has(small, 'aion2/asmodian/ranger') && small.includes('{const F={"aion2/asmodian/assassin":1};')
-        && JSON.stringify(smallChunks) === JSON.stringify(chunkFiles.slice().sort()) && smallChunks.some(f => f.startsWith('aion2-asmodian-ranger.')), smallChunks);
-      ok('artifact classes: the site build is the same whatever the artifact carries', rd2('dist/index.html') === fs.readFileSync(path.join(CFG.ROOT, 'dist', 'index.html'), 'utf8') && rd2('dist/sw.js') === fs.readFileSync(path.join(CFG.ROOT, 'dist', 'sw.js'), 'utf8'));
-      const budgets = log.split('\n').filter(l => /^\s+budget /.test(l));
-      console.log(budgets.map(l => '     ' + l.trim()).join('\n'));
-      const siteOnly = ((log.match(/site only: ([^\n]+)/) || [])[1] || '').split(', ').sort();
-      ok('artifact classes: budgets green, the build lists the Gladiator and the Ranger as site only', budgets.length === 3 && JSON.stringify(siteOnly) === '["aion2/asmodian/gladiator","aion2/asmodian/ranger"]', log);
-    }
-    ok('artifact build: icons without a blob id are on the site build and in dist/assets/icons, absent from the artifact', noBlob.every(n => web.includes(`assets/icons/${n}.png`) && fs.existsSync(path.join(CFG.ROOT, 'dist', 'assets', 'icons', n + '.png')) && !art.includes(n + '.png')), noBlob);
-    ok('artifact build: no service worker, manifest, canonical or document skeleton', !/serviceWorker|manifest\.webmanifest|rel="canonical"|<!doctype|<head>|<body>/i.test(art) && art.startsWith('<title>'));
-    const ctx = await b.newContext({ viewport: { width: 1500, height: 1000 } });
-    await ctx.addInitScript(() => { window.__saved = []; window.claude = { use: async name => name === 'downloads' ? { save: async o => { window.__saved.push(o); } } : null }; });
-    const p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
-    await p.goto(CFG.BASE + '/artifact/'); await p.waitForTimeout(600);
-    await p.click('#expBtn'); await p.waitForTimeout(200);
-    const r = await p.evaluate(() => ({ saved: window.__saved.map(o => [o.filename, JSON.parse(o.data).v === 5]), sw: !!navigator.serviceWorker.controller, broken: [...document.images].filter(i => i.complete && i.naturalWidth === 0 && i.getAttribute('src')).length }));
-    ok('artifact build: Export goes through window.claude.use("downloads")', r.saved.length === 1 && /^companion-save-\d{4}-\d\d-\d\d\.json$/.test(r.saved[0][0]) && r.saved[0][1], r);
-    if (process.env.AION_FONTS_BLOCKED) ok('artifact build: inlined fonts are blocked in the suites too', !(await loadedFamilies(p)).length);
-    const am = await footerMeta(p);
-    ok('artifact build: footer version equals package.json', am.vText === 'v' + VERSION && am.vHref === REPO + '/blob/main/CHANGELOG.md', am);
-    checkReport('artifact build', am, { template: 'bug.yml', version: VERSION, level: '1', quest: 'A Village in the Fog', mode: 'Advanced', build: 'claude.ai' });   /* 0.2.1: fresh browser = Lv 1, first quest */
-    ok('artifact build: icons load, no service worker, no page errors', !r.broken && !r.sw && !errs.length, { r, errs });
-    /* 0.2.5 save safety: none of its UI in the claude.ai build (with or without downloads), while the shared storage side
-       still gives the save its backup baseline */
-    const SAFETY_UI = ['bkNote', 'nudge', 'a2hs', 'backupLine', 'nudgeTxt', 'nudgeExp', 'nudgeNo', 'a2hsExp', 'a2hsOk'];
-    /* (the line's wording is in the shared core module, src/core/backup.js, which nothing calls in this build) */
-    ok('artifact build: no save-safety markup in the file', SAFETY_UI.every(id => !art.includes(`id="${id}"`)) && !/class="(card nudge|backup-line)"|Add to Home Screen|Not now|Got it/.test(art));
-    const noUI = pg => pg.evaluate(ids => ids.filter(id => document.getElementById(id)).concat([...document.querySelectorAll('.nudge, .backup-line')].map(e => e.className)), SAFETY_UI);
-    const withDl = await noUI(p);
-    const ctx2 = await b.newContext({ viewport: { width: 1500, height: 1000 } });
-    await ctx2.addInitScript(() => { window.claude = { use: async () => null }; });
-    const p2 = await ctx2.newPage(); await p2.goto(CFG.BASE + '/artifact/'); await p2.waitForTimeout(500);
-    const noDl = await noUI(p2); await p2.click('#lvlUp'); await p2.waitForTimeout(100);
-    const st = await readSave(p2);
-    ok('artifact build: no save-safety UI in the DOM with or without the downloads permission; the save still gains backup',
-      !withDl.length && !noDl.length && st && st.backup && typeof st.backup.since === 'number' && st.backup.since > 0, { withDl, noDl, backup: st && st.backup });
-    await ctx2.close();
-    /* SP_ICONS holds the loaded class only (0.6.1 F5: the Ranger's icons have no blob id either), so the expected
-       count is that class's skill records whose icon has none */
-    const ini = await p.evaluate(() => Object.entries(SP_ICONS).filter(([, v]) => !v).map(([n]) => [n, /class="spmini ini"/.test(spMini(n))]));
-    const iniCls = (await p.evaluate(() => self.DAEVA_PACK)).split('/').pop();
-    const iniWant = JSON.parse(fs.readFileSync(path.join(CFG.ROOT, 'data', 'packs', 'aion2', 'classes', iniCls, 'skills.json'), 'utf8')).records
-      .filter(r => r.icon && blobs[r.icon.replace(/^assets\/icons\/|\.png$/g, '')] === null).map(r => r.key).sort();
-    ok('artifact build: a skill whose icon has no blob id gets the initials square, not a broken image', iniWant.length > 0 && JSON.stringify(ini.map(x => x[0]).sort()) === JSON.stringify(iniWant) && ini.every(x => x[1]), { cls: iniCls, ini, iniWant });
-    await ctx.close();
+    const web = [path.join(CFG.ROOT, 'dist', 'index.html'), ...chunkFiles.map(f => path.join(CFG.ROOT, 'dist', 'packs', f))].map(f => fs.readFileSync(f, 'utf8')).join('\n');
+    const icons = [...new Set([...web.matchAll(/assets\/icons\/([\w-]+)\.png/g)].map(x => x[1]))];
+    ok('site build: every icon the page and its class chunks name is in dist/assets/icons', chunkFiles.length > 0 && icons.length > 0 && icons.every(n => fs.existsSync(path.join(CFG.ROOT, 'dist', 'assets', 'icons', n + '.png'))), icons.filter(n => !fs.existsSync(path.join(CFG.ROOT, 'dist', 'assets', 'icons', n + '.png'))));
   }
 
   /* 8. sync UI (0.7 P6, docs/design/0.7-sync-mockup.md): every S2 state against the fake host (tests/fixtures/fake-host.mjs)
-     behind the real base URL; the code never in an Export, the Report link or the save; none of it in the artifact */
+     behind the real base URL; the code never in an Export, the Report link or the save */
   {
     const { pathToFileURL } = require('url');
     const { fakeHost } = await import(pathToFileURL(path.join(CFG.ROOT, 'tests/fixtures/fake-host.mjs')).href);
@@ -536,9 +470,6 @@ const checkReport = (label, m, want) => {
       ok('sync off: the production site (SYNC_LIVE false) has no #dcsSw or sync markup, makes no request to the sync origin, keeps the strip sentence', !o.sw && !o.any && o.strip === 'Progress is saved in this browser only.' && !reqs.length && !errs.length, { o, reqs, errs });
       await c.close();
     }
-    /* a1: the claude.ai build holds no sync line, panel or code */
-    const art = fs.readFileSync(path.join(CFG.ROOT, 'dist-artifact', 'index.html'), 'utf8');
-    ok('sync a1: the artifact has no sync markup, texts or client, and keeps today\'s strip sentence', !/id="dcs[A-Z]|class="sync-(lbl|sw|st|panel|menu|msg)"|sync-texts|uiTexts|mountSync|sync\.daevacompanion\.com|Turn on sync/.test(art) && art.includes('Progress is saved in this browser only.'));
   }
 
   console.log(`${n - fail} ok, ${fail} failed`); console.log(fail ? `SITE CHECKS FAILED (${fail})` : 'SITE CHECKS PASSED');

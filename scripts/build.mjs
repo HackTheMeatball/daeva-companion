@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-/* Build both deliverables from src/ (dev dependency: esbuild; Node 22).
+/* Build the site from src/ (dev dependency: esbuild; Node 22). The claude.ai artifact is frozen and no longer built
+   (owner, 2026-10-18, DECISIONS `owner-ok-0.7-artifact-freeze`; 0.7 P9 removed its build).
 
    Source layout (0.2 P1–P3):
      src/index.html            the page shell: head, markup, and tags naming the files the build inlines
@@ -27,18 +28,14 @@
      assets/fonts/*            the self-hosted fonts (WOFF2) and their OFL license texts (src/assets/fonts)
      public/*                  CNAME, robots.txt, sitemap.xml, 404.html, favicon.svg, manifest, manifest icons
      sw.js                     src/sw.js with the build id and precache list filled in
-   dist-artifact/index.html    single file for publishing to claude.ai: the <!-- @web-only --> blocks removed
-                               (document skeleton, SEO/PWA head, site.js), icon paths rewritten to the
-                               artifact's /_blob/<id> URLs (scripts/artifact-blobs.json), styles/fonts.css
-                               replaced by a script that registers each font file once (FontFace API).
 
    Card markup: a line "<!-- @card cards/X.html -->" in src/index.html is replaced by src/cards/X.html (0.4 P4a).
-   Markers in src/index.html: a line "<!-- @web-only -->" opens a block, "<!-- @end-web-only -->" closes it.
+   Markers in src/index.html: a line "<!-- @web-only -->" opens a block, "<!-- @end-web-only -->" closes it. They are
+   inert since the claude.ai build went (0.7 P9): the site keeps what they wrap and drops the marker lines.
    Placeholders anywhere in the page: __APP_VERSION__ becomes package.json's version, __APP_BUILD__ the build's name
-   ("site" in dist/, "claude.ai" in dist-artifact/), so the version is never written by hand in the page.
-   Usage: node scripts/build.mjs [--artifact-classes <id,id…>] [--out <dir>]
-     --artifact-classes  the class packs dist-artifact inlines, in place of ARTIFACT_CLASSES (the build test, tests/site.js)
-     --out               write dist/ and dist-artifact/ below <dir> instead of the repo root (the build test) */
+   ("site"), so the version is never written by hand in the page.
+   Usage: node scripts/build.mjs [--out <dir>] [--sizes]
+     --out               write dist/ below <dir> instead of the repo root */
 import { createHash } from 'node:crypto';
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative, resolve } from 'node:path';
@@ -55,11 +52,11 @@ const OPEN = '<!-- @web-only -->', CLOSE = '<!-- @end-web-only -->';
 const die = msg => { console.error('build: ' + msg); process.exit(1); };
 const argOf = n => { const i = process.argv.indexOf('--' + n); return i < 0 ? null : process.argv[i + 1] || die(`--${n} needs a value`); };
 const OUT_DIR = argOf('out') ? resolve(ROOT, argOf('out')) : ROOT;
-const DIST = join(OUT_DIR, 'dist'), ART = join(OUT_DIR, 'dist-artifact');
+const DIST = join(OUT_DIR, 'dist');
 const walk = dir => readdirSync(dir).flatMap(n => { const f = join(dir, n); return statSync(f).isDirectory() ? walk(f) : [f]; });
 
 /* card markup (0.4 P4a, docs/design/0.4-engine-contract.md §4): a shell line "<!-- @card cards/X.html -->" is replaced by
-   that file under src/ as it is, before anything else reads the shell (both builds), so the page is byte-identical to the
+   that file under src/ as it is, before anything else reads the shell, so the page is byte-identical to the
    markup standing in the shell. A missing file, a card file that holds an @card line, or a leftover @card line fails. */
 const CARD_TAG = /^[ \t]*<!-- @card ((?:cards|packs\/[\w-]+\/cards)\/[\w-]+\.html) -->\n/gm;
 const withCards = html => html.replace(CARD_TAG, (_, f) => {
@@ -72,7 +69,7 @@ const shell = withCards(readFileSync(P('src/index.html'), 'utf8'));
 if (shell.includes('@card')) die('src/index.html: an @card line the build can\'t include (one per line: <!-- @card cards/<id>.html -->)');
 
 /* inlining: styles verbatim, scripts as esbuild bundles. esbuild's CSS printer rewrites values (unquoted url(), one
-   unicode-range per line), which the claude.ai font conversion and the test font blocker read, so CSS is not passed
+   unicode-range per line), which the test font blocker reads, so CSS is not passed
    through it; it can be once the styles are split into @import partials. */
 const STYLE_TAG = /^<link rel="stylesheet" href="(styles\/[\w.-]+\.css)">\n/gm;
 const SCRIPT_TAG = /^<script type="module" src="([\w.-]+\.js)"><\/script>\n/gm;
@@ -87,19 +84,10 @@ pruneTables(unusedTables());
    pack) gets a chunk of its own tables (classChunk), and a small loader before the app script picks the current
    character's class from the stored save (its `pack`; the default pack when there is none or it isn't shipped) and sets
    self.DAEVA_PACK. The site loads that one chunk as its own file (packs/<id>.<hash>.js, precached; document.write keeps
-   it before the app script, which reads it at once); the claude.ai build can't fetch, so the chunks of ARTIFACT_CLASSES are
-   inlined there (0.7 A1) and every other playable class is site-only. */
+   it before the app script, which reads it at once). */
 splitClasses();
 const CLASS_PACKS = genAll().packs;
 if (!CLASS_PACKS.includes(DEFAULT_PACK)) die(`the default pack ${DEFAULT_PACK} is not a guide pack below data/packs`);
-/* the classes the claude.ai build carries (0.7 A1, docs/ARCHITECTURE.md §4): its byte budget decides, so a new class is
-   added here only when dist-artifact/index.html stays under it. Its loader sets self.DAEVA_CLASSES to this list: the
-   character picker offers only these, and a character of another class gets a note (src/cards/characters.js). The default
-   pack must be one of them (a save without a carried class falls back to it). */
-const ARTIFACT_CLASSES = argOf('artifact-classes') ? argOf('artifact-classes').split(',') : ['aion2/asmodian/assassin', 'aion2/asmodian/ranger'];
-for (const id of ARTIFACT_CLASSES) if (!CLASS_PACKS.includes(id)) die(`artifact class ${id} is not a guide pack below data/packs`);
-if (!ARTIFACT_CLASSES.includes(DEFAULT_PACK)) die(`the artifact classes must include the default pack ${DEFAULT_PACK}`);
-const ART_PACKS = CLASS_PACKS.filter(id => ARTIFACT_CLASSES.includes(id));
 const SAVE_KEY = (readFileSync(P('src/core/state.js'), 'utf8').match(/^export const KEY = "([\w-]+)";$/m) || [])[1] || die('src/core/state.js: no `export const KEY = "…";`');
 const minChunk = async id => (await transform(classChunk(id), { loader: 'js', minifyWhitespace: true, minifySyntax: true, minifyIdentifiers: false, charset: 'utf8', legalComments: 'inline' })
   .catch(x => die(`class chunk ${id}: ${x.message}`))).code;
@@ -108,10 +96,9 @@ for (const [id, js] of Object.entries(chunks)) if (/<\/script/i.test(js)) die(`c
 const chunkFile = id => `packs/${id.replace(/\//g, '-')}.${createHash('sha256').update(chunks[id]).digest('hex').slice(0, 8)}.js`;
 const pickClass = files => `(()=>{const F=${JSON.stringify(files)};let p;try{const s=JSON.parse(localStorage.getItem(${JSON.stringify(SAVE_KEY)}));p=s.chars[s.current].pack}catch(e){}` +
   `if(!F[p])p=${JSON.stringify(DEFAULT_PACK)};self.DAEVA_PACK=p;`;
-/* what goes before the app script: the site's loader, or (claude.ai: ART_PACKS; the checks below: every class) the loader,
-   which names the inlined classes in self.DAEVA_CLASSES, and those chunks */
+/* what goes before the app script: the site's loader, or (the checks below and --sizes) a loader with every chunk inlined */
 const siteClasses = () => `<script>\n${pickClass(Object.fromEntries(CLASS_PACKS.map(id => [id, chunkFile(id)])))}document.write('<script src="'+F[p]+'"><\\/script>')})();\n</script>\n`;
-const allClasses = ids => `<script>\n${pickClass(Object.fromEntries(ids.map(id => [id, 1])))}self.DAEVA_CLASSES=Object.keys(F)})();\n</script>\n<script>\n${ids.map(id => chunks[id]).join('')}</script>\n`;
+const allClasses = ids => `<script>\n${pickClass(Object.fromEntries(ids.map(id => [id, 1])))}})();\n</script>\n<script>\n${ids.map(id => chunks[id]).join('')}</script>\n`;
 /* the game pack the page loads (0.4 P8): src/main.js imports it as the module "pack", the pack's shell.js, so the shell
    names no game (docs/design/0.4-engine-contract.md §5); one game's code, always loaded; its class data comes per class
    (the chunks above) */
@@ -175,7 +162,7 @@ const bundle = entry => minified[entry];
 const IMPORT = /^@import "([\w./-]+\.css)";\n/gm, cssUsed = new Set();
 /* comments, the last ; of a rule and the white space around { } ; , > and after : in a stylesheet are not shipped (0.6 P1; no value, selector or
    string is rewritten; quoted strings are skipped; @import lines keep their own line). styles/fonts.css stays as
-   written: the claude.ai font conversion and the test font blocker read its lines. */
+   written: the test font blocker reads its lines. */
 const plainCss = (f, css) => f === 'styles/fonts.css' ? css : css.replace(/\/\*[\s\S]*?\*\//g, '')
   .replace(/("(?:[^"\\\n]|\\.)*"|'(?:[^'\\\n]|\\.)*')|^@import [^\n]*\n|\s*;\s*\}\s*|\s*([{};,>~])\s*|\s+!important|:\s+/gm, (m, str, p) => str ? str : m.startsWith('@import') ? m : p ? p : m.includes('}') ? '}' : m.includes('!') ? '!important' : ':').trim() + '\n';
 const readCss = (f, seen) => {
@@ -200,7 +187,6 @@ const tightHtml = html => html.split(/(<(style|script)\b[\s\S]*?<\/\2>)/).filter
 if (/<(pre|textarea)\b/i.test(src)) die('src/ has a <pre> or <textarea>: tightHtml would change its text');
 for (const f of walk(P('src/styles')).map(f => relative(P('src'), f).split('\\').join('/')).filter(f => f.endsWith('.css')))
   if (!cssUsed.has(f)) die(`src/${f} is not linked from src/index.html or imported by a stylesheet (src/styles/index.css lists the card styles)`);
-const blobs = JSON.parse(readFileSync(P('scripts/artifact-blobs.json'), 'utf8'));
 const VERSION = JSON.parse(readFileSync(P('package.json'), 'utf8')).version;
 if (!/^\d+\.\d+\.\d+$/.test(VERSION || '')) die(`package.json version "${VERSION}" is not X.Y.Z`);
 if (!src.includes('__APP_VERSION__') || !src.includes('__APP_BUILD__')) die('src/ lacks the __APP_VERSION__ / __APP_BUILD__ placeholders');
@@ -220,21 +206,16 @@ const stamp = (html, build) => html.replaceAll('__APP_VERSION__', VERSION).repla
   if (depth) die('unclosed @web-only block');
 }
 
-/* icons: every referenced icon exists and has an artifact blob id; every shipped icon is referenced */
+/* icons: every referenced icon exists; every shipped icon is referenced */
 const ICON_RE = /assets\/icons\/([\w-]+)\.png/g;
 const used = new Set([...src.matchAll(ICON_RE)].map(m => m[1]));
 const shipped = readdirSync(P('src/assets/icons')).filter(f => f.endsWith('.png')).map(f => f.slice(0, -4));
-for (const n of used) {
-  if (!shipped.includes(n)) die(`src/ references assets/icons/${n}.png, which is missing`);
-  if (!(n in blobs)) die(`no artifact blob id for ${n} in scripts/artifact-blobs.json (null = not uploaded yet)`);
-}
+for (const n of used) if (!shipped.includes(n)) die(`src/ references assets/icons/${n}.png, which is missing`);
 for (const n of shipped) if (!used.has(n)) die(`src/assets/icons/${n}.png is not referenced by src/`);
 
 /* fonts (self-hosted since 0.1.5): every referenced file exists, every shipped file is referenced, each family ships its
-   OFL text; no request may go to a font service. The claude.ai build must stay one file, so its @font-face block becomes
-   a small script holding each file once (base64) and registering the same faces through the FontFace API (as data:
-   URLs in CSS, the files shared by several weights would be repeated); they are kept under FONT_INLINE_MAX. */
-const FONT_RE = /assets\/fonts\/([\w-]+\.woff2)/g, FONT_INLINE_MAX = 150 * 1024;
+   OFL text; no request may go to a font service. */
+const FONT_RE = /assets\/fonts\/([\w-]+\.woff2)/g;
 const fontsUsed = new Set([...src.matchAll(FONT_RE)].map(m => m[1]));
 const fontsShipped = readdirSync(P('src/assets/fonts')).filter(f => f.endsWith('.woff2'));
 for (const f of fontsUsed) if (!fontsShipped.includes(f)) die(`src/ references assets/fonts/${f}, which is missing`);
@@ -242,73 +223,17 @@ for (const f of fontsShipped) if (!fontsUsed.has(f)) die(`src/assets/fonts/${f} 
 if (readdirSync(P('src/assets/fonts')).filter(f => /^OFL-.+\.txt$/.test(f)).length < 3) die('src/assets/fonts: an OFL license text is missing');
 for (const [f, html] of [['src/', src], ['public/404.html', readFileSync(P('public/404.html'), 'utf8')]])
   if (/fonts\.(googleapis|gstatic)\.com/.test(html)) die(`${f} still requests Google Fonts`);
-const fontB64 = Object.fromEntries([...fontsUsed].map(f => [f, readFileSync(P('src/assets/fonts', f)).toString('base64')]));
-const fontInline = Object.values(fontB64).reduce((n, b) => n + b.length, 0);
-if (fontInline > FONT_INLINE_MAX) die(`inlined fonts are ${(fontInline / 1024).toFixed(0)} KB, over ${FONT_INLINE_MAX / 1024} KB`);
 
 /* web page */
 const web = tightHtml(stamp(inline(shell, siteClasses()).replace(/^[ \t]*<!-- @(end-)?web-only -->\n/gm, ''), 'site'));
 if (/__APP_(VERSION|BUILD)__/.test(web)) die('dist/index.html still contains a placeholder');
 if (!web.startsWith('<!doctype html>')) die('dist/index.html must start with <!doctype html>');
 
-/* artifact page: the web-only blocks go before inlining (site.js is never bundled into it), styles/fonts.css becomes the
-   FontFace script */
-const FONTS_TAG = '<link rel="stylesheet" href="styles/fonts.css">\n';
-let art = shell.replace(/^[ \t]*<!-- @web-only -->\n[\s\S]*?^[ \t]*<!-- @end-web-only -->\n/gm, '');
-if (!art.includes(FONTS_TAG)) die('src/index.html: the styles/fonts.css <link> is missing (or web-only)');
-{
-  const FACE = /^@font-face \{ font-family: "([^"]+)"; font-style: normal; font-weight: (\d+); font-display: swap; src: url\("assets\/fonts\/([\w-]+\.woff2)"\) format\("woff2"\); unicode-range: ([^;]+); \}$/;
-  const css = readFileSync(P('src/styles/fonts.css'), 'utf8').replace(/^\/\*[\s\S]*?\*\/\n/, '');
-  const lines = css.trimEnd().split('\n');
-  if (!lines.length || !lines.every(l => FACE.test(l))) die('src/styles/fonts.css: after its leading comment, every line must be an @font-face rule in the expected one-line form');
-  const faces = lines.map(l => l.match(FACE).slice(1)), ranges = [...new Set(faces.map(f => f[3]))];
-  const js = `<script>
-/* claude.ai build (scripts/build.mjs): the self-hosted fonts, each file once, registered with the same family, weight and
-   unicode-range as the site's CSS font faces. A face that can't be decoded is skipped (fallback fonts). */
-(() => {
-  if (!window.FontFace || !document.fonts) return;
-  const FILES = ${JSON.stringify(fontB64)};
-  const RANGES = ${JSON.stringify(ranges)};
-  const FACES = ${JSON.stringify(faces.map(([fam, w, f, r]) => [fam, w, f, ranges.indexOf(r)]))};
-  const bytes = {};
-  for (const [family, weight, file, r] of FACES) {
-    try {
-      const b = bytes[file] || (bytes[file] = Uint8Array.from(atob(FILES[file]), c => c.charCodeAt(0)));
-      const face = new FontFace(family, b, { style: "normal", weight, unicodeRange: RANGES[r], display: "swap" });
-      document.fonts.add(face); face.loaded.catch(() => {});
-    } catch (e) { /* skipped */ }
-  }
-})();
-</script>
-`;
-  art = art.replace(FONTS_TAG, () => js);
-}
-/* An icon added after the claude.ai artifact was frozen (DECISIONS D4) has no blob id until someone uploads it to the
-   artifact: null in scripts/artifact-blobs.json. The artifact build drops it (its quoted path becomes ""), so the page
-   shows the initials square there, as before the icon existed. Such an icon may only be referenced as a quoted string. */
-const NO_BLOB = /(["'])assets\/icons\/([\w-]+)\.png\1/g;
-art = tightHtml(stamp(inline(art, allClasses(ART_PACKS)).replace(NO_BLOB, (m, q, n) => blobs[n] === null ? q + q : m)
-  .replace(ICON_RE, (_, n) => blobs[n] ? '/_blob/' + blobs[n] : die(`assets/icons/${n}.png has no blob id and is not a quoted string`)), 'claude.ai'));
-if (art.includes('@font-face')) die('dist-artifact/index.html still has an @font-face rule');
-for (const bad of ['__APP_VERSION__', '__APP_BUILD__', 'assets/icons/', 'assets/fonts/', 'fonts.googleapis', 'fonts.gstatic', 'serviceWorker', 'manifest.webmanifest', '<!doctype', '<head>', '<body>'])
-  if (art.includes(bad)) die(`dist-artifact/index.html still contains "${bad}"`);
-/* no sync code in the claude.ai build (0.6 P21, docs/design/sync.md S4 "site only"): the client (src/core/sync-client.js)
-   and its adapter (src/shell/sync-host-http.js) reach the page only through site-only code. Each mark must stand in
-   those sources (so the check can't go stale) and nowhere in the artifact. */
-{
-  const SYNC_SRC = ['src/core/sync-client.js', 'src/shell/sync-host-http.js'].map(f => readFileSync(P(f), 'utf8')).join('\n');
-  for (const m of ['companion-sync-v1', 'dc-sync', 'syncOnce', 'sealSave', 'joinSync', 'httpSyncHost']) {
-    if (!SYNC_SRC.includes(m)) die(`sync check: "${m}" is no longer in the sync client sources; update the marks in scripts/build.mjs`);
-    if (art.includes(m)) die(`dist-artifact/index.html contains sync code ("${m}"): the claude.ai build gets no sync (docs/design/sync.md S4)`);
-  }
-}
-
 /* output */
-for (const d of [DIST, ART]) { rmSync(d, { recursive: true, force: true }); mkdirSync(d, { recursive: true }); }
+rmSync(DIST, { recursive: true, force: true }); mkdirSync(DIST, { recursive: true });
 cpSync(P('public'), DIST, { recursive: true });
 cpSync(P('src/assets'), join(DIST, 'assets'), { recursive: true });
 writeFileSync(join(DIST, 'index.html'), web);
-writeFileSync(join(ART, 'index.html'), art);
 mkdirSync(join(DIST, 'packs'));
 for (const id of CLASS_PACKS) writeFileSync(join(DIST, chunkFile(id)), chunks[id]);
 
@@ -329,8 +254,6 @@ const kb = f => (statSync(f).size / 1024).toFixed(1) + ' KB';
 console.log(`build ${BUILD} · v${VERSION}`);
 console.log(`  dist/index.html            ${kb(join(DIST, 'index.html'))} · ${walk(DIST).length} files · precache ${precache.length}`);
 for (const id of CLASS_PACKS) console.log(`  ${('dist/' + chunkFile(id)).padEnd(26)} ${kb(join(DIST, chunkFile(id)))} · class chunk of ${id} (${genAll().perClass.length} tables; ${genAll().shared.length} shared in index.html)`);
-console.log(`  dist-artifact/index.html   ${kb(join(ART, 'index.html'))} · ${[...used].filter(n => blobs[n]).length} icons as /_blob/<id>${[...used].some(n => blobs[n] === null) ? ` · ${[...used].filter(n => blobs[n] === null).length} without a blob id (initials there)` : ''} · ${fontsUsed.size} fonts inlined once each (${(fontInline / 1024).toFixed(1)} KB base64)`);
-console.log(`  dist-artifact classes      ${ART_PACKS.join(', ')}${CLASS_PACKS.length > ART_PACKS.length ? ` · site only: ${CLASS_PACKS.filter(id => !ART_PACKS.includes(id)).join(', ')}` : ''}`);
 
 /* page budgets (0.4 P7): about 1.3x the 0.3.0 numbers; a PR that raises one says why (docs/ARCHITECTURE.md §4). The element
    budget is checked by the `site` suite. The site page is dist/index.html plus its largest class chunk (0.6 P2): what a
@@ -339,7 +262,6 @@ const bigChunk = CLASS_PACKS.map(id => chunks[id]).sort((a, b) => Buffer.byteLen
 const BUDGETS = [
   ['site page bytes (index + chunk)', Buffer.byteLength(web) + Buffer.byteLength(bigChunk), 870000],
   ['site page gzip -9 bytes', gzipSync(web, { level: 9 }).length + gzipSync(bigChunk, { level: 9 }).length, 200000],
-  ['dist-artifact/index.html bytes', Buffer.byteLength(art), 1030000],
 ];
 /* node scripts/build.mjs --sizes (0.6 P1): where the page's gzip bytes go. A generated data table's row is its marginal cost:
    the page's gzip -9 size minus the size with that table bundled as null. Every other row is the part gzipped on its own,
@@ -364,7 +286,6 @@ if (process.argv.includes('--sizes')) {
     else if (f.endsWith('.js') && !/^(site|sw)\.js$/.test(f) && !f.startsWith('assets/')) add('script module', f, readFileSync(P('src', f), 'utf8'));
     else if (f.startsWith('cards/') || /^packs\/[\w-]+\/cards\//.test(f)) add('card markup', f, readFileSync(P('src', f), 'utf8'));
   }
-  add('asset', 'fonts (base64, artifact only)', JSON.stringify(fontB64));
   add('page', 'src/index.html shell', shell);
   add('page', 'dist/index.html (whole)', web);
   console.log('\n  gzip -9 bytes per part of the page (data tables: marginal cost; other rows: alone, so they overlap)\n');

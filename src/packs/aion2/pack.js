@@ -20,9 +20,8 @@ import { aion2Place, stepsShownOf } from "./travel.js";
 /* The default guide pack (data/packs/aion2/asmodian/assassin/pack.json) and its class (data/packs/aion2/classes/assassin):
    what a fresh save starts with; tests/core/state.test.mjs checks both against data/. Every class with a guide pack is
    playable (`classes`): the Assassin, since 0.6 P5 the Ranger (data/packs/aion2/asmodian/ranger) and since 0.7 P2 the
-   Gladiator (data/packs/aion2/asmodian/gladiator; site only: the claude.ai build carries scripts/build.mjs
-   ARTIFACT_CLASSES). A character of another class is shown after the reload a switch does (the page loads one class's
-   tables, docs/ARCHITECTURE.md §4). */
+   Gladiator (data/packs/aion2/asmodian/gladiator). A character of another class is shown after the reload a switch does
+   (the page loads one class's tables, docs/ARCHITECTURE.md §4). */
 export const PACK = "aion2/asmodian/assassin";
 export const CLASS = "assassin";
 const RANGER = { class: "ranger", pack: "aion2/asmodian/ranger", name: "Ranger" };

@@ -1,0 +1,21 @@
+# The sync server's Worker (0.7 P5, #348; docs/design/sync.md §10). Placeholders only: no account id, no secret, no
+# token lives in this repo. Deploying is a separate, owner-run step (not CI); fill in the account and the bucket there.
+name = "daeva-companion-sync"
+main = "src/worker.js"
+compatibility_date = "2026-10-01"
+# account_id = "<owner's Cloudflare account id, set at deploy time, never committed>"
+workers_dev = false
+routes = [{ pattern = "sync.daevacompanion.com", custom_domain = true }]
+
+# The handler logs one allowlisted line per request (method, route template, status, size bucket; sync.md §3). Workers
+# Logs / Logpush stay off: the platform keeps no request log beyond the host's own minimum.
+[observability]
+enabled = false
+
+[[r2_buckets]]
+binding = "SYNC"
+bucket_name = "<sync bucket name, created by the owner>"
+
+# Retention (180 days unused) and the storage total for the ceiling: the scheduled handler, once a day.
+[triggers]
+crons = ["17 3 * * *"]

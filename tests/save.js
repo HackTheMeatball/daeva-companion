@@ -26,7 +26,7 @@
         class loads with the note
     15. auto level-up (0.6 P19): "Turned in" on a levelsUp quest at the level below its own → one level up, Undo and
         stepping back → down again; at a higher level or on another quest → no change */
-const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path'); const { execFileSync } = require('child_process'); const { isDeepStrictEqual } = require('util');
+const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path'); const { isDeepStrictEqual } = require('util');
 const CFG = require('./config');
 const { SAVE_KEY, V4_KEY, BEFORE_IMPORT_KEY, TEST_SLOT, toStored, writeRaw, readRaw, writeSave, clearSave } = require('./support/save');
 let fail = 0; const ok = (name, cond, detail) => { console.log((cond ? 'ok   ' : 'FAIL ') + name + (!cond && detail !== undefined ? '  · ' + JSON.stringify(detail).slice(0, 700) : '')); if (!cond) fail++; };
@@ -288,38 +288,19 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     ok('gladiator: no page errors', !errs.length, errs);
     await ctx.close();
   }
-  /* 10c. the claude.ai build's classes (0.7 A1, scripts/build.mjs ARTIFACT_CLASSES): /artifact/ carries the Assassin and the
-     Ranger and offers both; an artifact built with the Assassin alone (--artifact-classes, under tests/out/) offers only
-     it, and a save whose current character is a Ranger loads there (the Assassin's tables, no page error) with the note
-     under the button, the save's character left a Ranger */
+  /* 10c. the site's classes (0.7 A1; the claude.ai build's class list went with that build in 0.7 P9): the site sets no class
+     list, offers every playable class, and a Ranger save loads its own guide with no note */
   {
-    const OUT = 'tests/out/a1-save';
-    execFileSync(process.execPath, ['scripts/build.mjs', '--artifact-classes', 'aion2/asmodian/assassin', '--out', OUT], { cwd: CFG.ROOT, stdio: 'pipe' });
-    const small = fs.readFileSync(path.join(CFG.ROOT, OUT, 'dist-artifact', 'index.html'), 'utf8');
     const { ctx, p, errs } = await page();
-    await ctx.route(CFG.BASE + '/a1-artifact/', r => r.fulfill({ status: 200, contentType: 'text/html; charset=utf-8', body: small }));
     const ranger = toStored(SAVED); Object.assign(ranger.chars[TEST_SLOT], { pack: 'aion2/asmodian/ranger', class: 'ranger' });
     const look = async () => { await p.click('#charBtn'); await p.click('#charNew'); await p.waitForTimeout(50);
       const r = await p.evaluate(() => ({ classes: self.DAEVA_CLASSES || null, pack: self.DAEVA_PACK, radios: [...document.querySelectorAll('#charPick input[type=radio]')].map(x => x.value),
         note: (n => n && { text: n.textContent, shown: !!n.offsetParent, after: n.previousElementSibling && n.previousElementSibling.id })(document.getElementById('charNote')), lbl: document.getElementById('charLbl').textContent }));
       await p.click('#charCancel'); await p.keyboard.press('Escape'); return r; };
-    await p.goto(CFG.BASE + '/artifact/'); await writeRaw(p, JSON.stringify(ranger), { fresh: true }); await p.reload(); await p.waitForTimeout(400);
-    const full = await look();
-    ok('artifact classes: /artifact/ carries and offers the Assassin and the Ranger; a Ranger loads its own guide, no note', JSON.stringify(full.classes) === JSON.stringify(['aion2/asmodian/assassin', 'aion2/asmodian/ranger'])
-      && JSON.stringify(full.radios) === JSON.stringify(['assassin', 'ranger']) && full.pack === 'aion2/asmodian/ranger' && !full.note, full);
-    await p.goto(CFG.BASE + '/a1-artifact/'); await p.waitForTimeout(400);
-    const one = await look();
-    ok('artifact classes: an artifact carrying the Assassin alone offers only it', JSON.stringify(one.classes) === JSON.stringify(['aion2/asmodian/assassin']) && JSON.stringify(one.radios) === JSON.stringify(['assassin']), one);
-    ok('artifact classes: a save with a site-only class (Ranger) loads with the note under the button, on the default class\'s tables', one.pack === 'aion2/asmodian/assassin' && one.lbl === 'ranger-lvl22'
-      && one.note && one.note.text === 'This class is on daevacompanion.com' && one.note.shown && one.note.after === 'charBtn', one);
-    const kept = JSON.parse(await readRaw(p)).chars[TEST_SLOT];
-    ok('artifact classes: the save\'s character stays a Ranger', kept.pack === 'aion2/asmodian/ranger' && kept.class === 'ranger', { pack: kept.pack, class: kept.class });
-    await writeSave(p, SAVED, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
-    ok('artifact classes: an Assassin save there shows no note', !(await p.$('#charNote')), null);
     await p.goto(CFG.CUR); await writeRaw(p, JSON.stringify(ranger), { fresh: true }); await p.reload(); await p.waitForTimeout(400);
     const site = await look();
-    ok('artifact classes: the site sets no class list, offers every playable class (the Gladiator too, 0.7 P2) and shows no note', site.classes === null && JSON.stringify(site.radios) === JSON.stringify(['assassin', 'ranger', 'gladiator']) && !site.note && site.pack === 'aion2/asmodian/ranger', site);
-    ok('artifact classes: no page errors', !errs.length, errs);
+    ok('site classes: the site sets no class list, offers every playable class (the Gladiator too, 0.7 P2) and shows no note', site.classes === null && JSON.stringify(site.radios) === JSON.stringify(['assassin', 'ranger', 'gladiator']) && !site.note && site.pack === 'aion2/asmodian/ranger', site);
+    ok('site classes: no page errors', !errs.length, errs);
     await ctx.close();
   }
   /* a stored save with more slots: copies of the test slot under other ids, with their own level, quest and name */

@@ -1,0 +1,8 @@
+{
+  "name": "daeva-companion-sync",
+  "private": true,
+  "type": "module",
+  "description": "Daeva Companion sync server (Cloudflare Worker + R2, docs/design/sync.md §4 and §10). Not deployed by this repo's CI.",
+  "license": "SEE LICENSE IN ../../LICENSE",
+  "main": "src/worker.js"
+}
