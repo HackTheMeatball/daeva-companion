@@ -44,15 +44,15 @@ change to an owner changes that row and this table in the same PR. Rules Steward
 | Work | Owner | Not | Source |
 |---|---|---|---|
 | Routing work to a thread; what is waiting on Isaac; the morning debrief of every OK and question | Saul | Mike, Huell | COM-02, PLN-09, DEC-20261019-saul-owns-what-s-waiting |
-| Asking Isaac for a decision (opening its To-do) | The thread that needs it, through Huell | Saul, Walter | DECISIONS 2026-10-19 / Each thread opens its own To-dos |
+| Asking Isaac for a decision (opening its To-do) | The thread that needs it, through Huell | Saul, Walter | DEC-20261019-each-thread-opens-its |
 | Telling Huell an answer is recorded (OK RECORDED), so the To-do closes | Whoever recorded it | | DEC-03 |
 | Writing tracker data: cards, To-dos, versions, Scrapbook | Huell | everyone else | TRK-01 |
-| Tracker page code and design | Skyler, after Jane's DESIGN OK | Huell | DECISIONS 2026-10-18 / Tracker 2.0 |
+| Tracker page code and design | Skyler, tab by tab, after Jane's DESIGN OK and Huell's data check | Huell | DEC-20261018-tracker-2-0-tab-by |
 | DECISIONS rows | Walter | everyone else (forward the OK verbatim) | DEC-01 |
 | ROADMAP, planning passes, item specs, the queue, #232 | Walter | Gus | PLN-01, Q-01, PLN-11 |
 | Design asks from Isaac | Walter and Jane together | | PLN-12 |
 | Mockups, look-and-feel, DESIGN OK on PRs with shots | Jane | | MRG-06, MRG-08 |
-| Cleaning up Isaac's screen crops | Jane | Gretchen | DECISIONS 2026-10-18 / Owner crop clean-up is Design Lead's |
+| Cleaning up Isaac's screen crops | Jane | Gretchen | DEC-20261018-owner-crop-clean-up-is |
 | Icon and fact lookups on approved domains; icon provenance | Gretchen | Lydia | ROL-03, ROL-05 |
 | Fact checks, the two-source and labelling rules, DATA OK | Gretchen | | REPO-05, PLN-18 |
 | Vetting a site not yet in SOURCES.md; last-resort spot checks | Lydia | Gretchen | ROL-03, ROL-04 |
@@ -67,7 +67,7 @@ change to an owner changes that row and this table in the same PR. Rules Steward
 | Kaizen review, #222, the scorecard, rule changes and grades | Gale | | KZ-01, PLN-04 |
 | Grading Gale's own rules and checking the scorecard compares like with like (from 0.9) | Francesca | Gale | DEC-20261019-from-0-9-rules-steward |
 | Grading Q-14 | Gale | Francesca | DEC-20261019-kaizen-grades-the-ledger-rule |
-| This ledger, this table, drift and roster sweeps | Francesca | | Q-14, KZ-11, DEC-20261019-rules-steward-francesca-joins-each |
+| This ledger, this table, drift and roster sweeps | Francesca | | Q-14, ROL-07, DEC-20261019-rules-steward-francesca-joins-each |
 | Applying a fix to team memory | Gale (Francesca sends the fix; no other thread can read memory yet) | | Interim, until the 0.8 review assigns it |
 
 ## Areas
