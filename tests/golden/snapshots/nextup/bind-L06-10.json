@@ -15,7 +15,7 @@
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
-    {"t":"Story: Spread Your Wings","s":"3/3 objectives · Kibelisk: Witch's Cabin (14 m) · then Signs of a Crash Landing","c":"primary \"Turned in\" story","b":"Lv 6–8"},
+    {"t":"Story: Spread Your Wings","s":"Ready to turn in · Kibelisk: Witch's Cabin (14 m) · then Signs of a Crash Landing","c":"primary \"Turned in\" story","b":"Lv 6–8"},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 2 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 4 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
@@ -35,7 +35,7 @@
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
-    {"t":"Story: Signs of a Crash Landing","s":"5/5 objectives · Kibelisk: Abandoned Barracks Site (9 m) · then Prison Compound Infiltration Plan","c":"primary \"Turned in\" story","b":"Lv 6–8"},
+    {"t":"Story: Signs of a Crash Landing","s":"Ready to turn in · Kibelisk: Abandoned Barracks Site (9 m) · then Prison Compound Infiltration Plan","c":"primary \"Turned in\" story","b":"Lv 6–8"},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 2 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 4 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
@@ -55,7 +55,7 @@
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
-    {"t":"Story: Prison Compound Infiltration Plan","s":"5/5 objectives · Kibelisk: Abandoned Barracks Site (185 m) · then Brigade Prison Compound Infiltration Operation","c":"primary \"Turned in\" story","b":"Lv 6–8"},
+    {"t":"Story: Prison Compound Infiltration Plan","s":"Ready to turn in · Kibelisk: Abandoned Barracks Site (185 m) · then Brigade Prison Compound Infiltration Operation","c":"primary \"Turned in\" story","b":"Lv 6–8"},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
@@ -75,7 +75,7 @@
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
-    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"4/4 objectives · Kibelisk: Aldelle Village (57 m) · then The Longest Night","c":"primary \"Turned in\" story","b":"Lv 6–8"},
+    {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"Ready to turn in · Kibelisk: Aldelle Village (57 m) · then The Longest Night","c":"primary \"Turned in\" story","b":"Lv 6–8"},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
@@ -95,7 +95,7 @@
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
-    {"t":"Story: The Longest Night","s":"2/2 objectives · then Finding Nemon","c":"primary \"Turned in\" story","b":"Lv 9"},
+    {"t":"Story: The Longest Night","s":"Ready to turn in · then Finding Nemon","c":"primary \"Turned in\" story","b":"Lv 9"},
     {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"},
     {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 2 levels away","c":"tag \"Later\"","f":"later"}
   ],
@@ -128,7 +128,7 @@
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
-    {"t":"Story: Survival Supplies","s":"2/2 objectives · Kibelisk: Safe Haven (32 m) · then Gathering Essentials","c":"primary \"Turned in\" story","b":"Lv 10–12"},
+    {"t":"Story: Survival Supplies","s":"Ready to turn in · Kibelisk: Safe Haven (32 m) · then Gathering Essentials","c":"primary \"Turned in\" story","b":"Lv 10–12"},
     {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 13 open at your level"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"}
   ],
