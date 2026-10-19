@@ -29,7 +29,8 @@ comes first) a change may break existing saves when that gives a better design. 
 - A PR that changes what a player sees commits before / after shots and a `scrapbook.json` (`docs/reviews/README.md`,
   `tests/support/shots.mjs`); one meant to look the same says "No visible change" in its body. The owner sees them in the
   tracker's Scrapbook. Reviewers: a visible change without them is `VERDICT: CHANGES`.
-- Small commits with clear messages. Don't push unless asked.
+- Small commits with clear messages. Push only to your own claude/ branch when your task or the pipeline asks; never
+  push to main (owner, 2026-10-19).
 - Releases: version bump + CHANGELOG section in one commit; CI tags and publishes (docs/DEPLOY.md, ROADMAP.md).
 - Every minor (0.X.0) opens with a planning and audit pass (ROADMAP "How a minor is planned"), starting with the release
   kaizen review of how we work (stall log #221, planner log #232, kaizen log #222, a waste and usage scorecard against
