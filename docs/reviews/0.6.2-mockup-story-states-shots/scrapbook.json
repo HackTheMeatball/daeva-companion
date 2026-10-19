@@ -1,0 +1,6 @@
+[
+  { "case": "s-active-390", "kind": "before-after", "title": "Story card: active quest (mockup)", "caption": "The scroll becomes the game's active story-quest icon on a dark tile while objectives are open." },
+  { "case": "s-ready-390", "kind": "before-after", "title": "Story card: ready to turn in (mockup)", "caption": "Once only the Turn in step is left, the icon becomes the game's ready-to-turn-in one and the count reads Ready to turn in." },
+  { "case": "s-ready-1500", "kind": "before-after", "title": "Ready to turn in, desktop (mockup)", "caption": "The same state at desktop width: one line, with the Turn in step still listed under it." },
+  { "case": "s-done-390", "kind": "before-after", "title": "Story complete (mockup)", "caption": "At the end of the guide's story the card shows the game's journal check instead of the scroll." }
+]
