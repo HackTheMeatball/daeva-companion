@@ -150,7 +150,7 @@ From HANDOFF and the Sonnet guard in claude.yml:
 
 | Step | Touches | Builder | Reviewer | Notes |
 |---|---|---|---|---|
-| Game patch watch (weekly, after Global maintenance) | report in `docs/research/` | S in a cloud session (web) | none unless a PR follows | a PR only when a claim is affected; that PR is routed by its own row type |
+| Game patch watch (weekly scheduled build check, after Global maintenance) | a row in `docs/kaizen/patch-watch.md` when the build changes | S in a cloud session (web) | none unless a PR follows | a PR only when a claim is affected; that PR is routed by its own row type |
 | Data corrections from issues | `data/` | S; O if it touches a gate field or golden | S / S+O | the Sonnet guard catches gate fields |
 | Colour sprint | — | not dispatched | — | not before 0.5 is solid; starts with the CEO and the owner going through the research |
 

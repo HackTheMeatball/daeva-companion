@@ -9,7 +9,11 @@ last release, or that the scheduled task ran.
 - Only build changes get a row here. On a new build, the guide's sourced records are re-checked against Metabot, and
   the row lists the records checked, any value diffs, and the issues or data-fix PRs for values that moved. Weeks with
   the same build add no row; the scheduled task's run history shows those runs.
+- Schedule: Thursdays 12:47 PM ET, the day after the usual Global maintenance (Wednesday from 06:30 UTC, about
+  3.5–4 h; single source: mein-mmo.de quoting NC's Steam and Discord posts, seen Oct 7 and Oct 14, 2026; NC hasn't
+  announced a fixed slot, and extra windows happen). Game Data Check sends Kaizen `REPORT READY <minor>` with the
+  runs since the last release after each release ships.
 
-| Date (ET) | Build | Records checked | Diffs | Issues / PRs |
+| Date (ET) | Build | Records checked (count + list or query) | Diffs | Issues / PRs |
 |---|---|---|---|---|
 | 2026-10-19 | 0.0.4387.0 | baseline; every `build` field in `data/**` already reads 0.0.4387.0 | none | none |
