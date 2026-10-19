@@ -1,0 +1,8 @@
+[
+  { "case": "keys-lv30-1500", "kind": "before-after", "title": "Key setup shows skill icons",
+    "caption": "At level 30 the Key setup grid in the Build panel shows each skill's icon with its name under it, and the keys sit under their columns like the game's bar." },
+  { "case": "keys-lv30-390", "kind": "before-after", "title": "Key setup on a phone",
+    "caption": "On a phone at level 30 every cell is the same height and names like Insignia Explosion wrap between words, never mid-word." },
+  { "case": "keys-lv4-1500", "kind": "before-after", "title": "Shadowstrike gets its icon",
+    "caption": "At level 4 Shadowstrike on Q shows its icon and no longer splits as Shadowstr / ike; Quick Slice shows its icon on the Left click line." }
+]
