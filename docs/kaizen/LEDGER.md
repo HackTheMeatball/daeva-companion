@@ -64,7 +64,7 @@ change to an owner changes that row and this table in the same PR. Rules Steward
 | Telling Huell an answer is recorded (OK RECORDED), so the To-do closes | Whoever writes down Isaac's answer tells Huell, so the To-do can close. | Whoever recorded it | | DEC-03 |
 | Writing tracker data: cards, To-dos, versions, Scrapbook | Only Huell changes what the tracker shows: cards, To-dos, versions and the Scrapbook. | Huell | everyone else | TRK-01 |
 | Tracker page code and design | Skyler builds the tracker page one tab at a time, after Jane approves the look and Huell checks no data was lost. | Skyler, tab by tab, after Jane's DESIGN OK and Huell's data check | Huell | DEC-20261018-tracker-2-0-tab-by |
-| DECISIONS rows | Walter writes every decision into the decisions file; others pass him Isaac's exact words. | Walter | everyone else (forward the OK verbatim) | DEC-01 |
+| DECISIONS rows | Walter writes every decision into the decisions file; others pass Walter Isaac's exact words. | Walter | everyone else (forward the OK verbatim) | DEC-01 |
 | ROADMAP, planning passes, item specs, the queue, #232 | Walter keeps the roadmap, plans each release, writes the work items and orders the queue. | Walter | Gus | PLN-01, Q-01, PLN-11 |
 | Design asks from Isaac | Walter and Jane take Isaac's design requests together. | Walter and Jane together | | PLN-12 |
 | Mockups, look-and-feel, DESIGN OK on PRs with shots | Jane owns mockups and the look of the app, and approves changes that alter what players see. | Jane | | MRG-06, MRG-08 |
@@ -79,12 +79,12 @@ change to an owner changes that row and this table in the same PR. Rules Steward
 | Health check: stalls, idle queue, red runs, tracker drift | Mike watches for stuck work, an idle queue, failing builds and a tracker out of step. | Mike | | HC-01 |
 | The stall log #221: every row, its format and kinds, the per-release error report, KIND RECURRED | Mike alone writes the stall log, reports errors for each release, and tells Gale when a fixed problem returns. | Mike | everyone else (report stalls to Mike) | DEC-20261019-incident-log-folds-into-stall, HC-02 |
 | A typed OK not applied within 60 min (a stall) | Mike flags any approval from Isaac that hasn't been acted on within an hour. | Mike | | DEC-20261019-saul-owns-what-s-waiting |
-| Playing the release candidate before the tag and the live site after; player findings issues | Jesse plays each release before it ships and again once it is live, and files what he finds. | Jesse | | PLN-21, PLN-22, DEC-20261019-player-testing-plays-each-minor |
+| Playing the release candidate before the tag and the live site after; player findings issues | Jesse plays each release before it ships and again once it is live, and files any findings. | Jesse | | PLN-21, PLN-22, DEC-20261019-player-testing-plays-each-minor |
 | Kaizen review, #222, the scorecard, rule changes and grades | Gale reviews how the team works after each release and decides changes to the rules. | Gale | | KZ-01, PLN-04 |
-| Grading Gale's own rules and checking the scorecard compares like with like (from 0.9) | From 0.9, Francesca grades Gale's own rules and checks his scorecard is fair. | Francesca | Gale | DEC-20261019-from-0-9-rules-steward |
+| Grading Gale's own rules and checking the scorecard compares like with like (from 0.9) | From 0.9, Francesca grades Gale's own rules and checks the scorecard is fair. | Francesca | Gale | DEC-20261019-from-0-9-rules-steward |
 | Grading Q-14 | Gale grades the rule that makes this ledger each rule's one home. | Gale | Francesca | DEC-20261019-kaizen-grades-the-ledger-rule |
 | This ledger, this table, drift and roster sweeps | Francesca keeps this ledger and this table current and checks them for drift. | Francesca | | Q-14, ROL-07, DEC-20261019-rules-steward-francesca-joins-each |
-| Applying a fix to team memory | Gale applies fixes to the team's shared memory; Francesca sends them to him. | Gale (Francesca sends the fix; no other thread can read memory yet) | | Interim, until the 0.8 review assigns it |
+| Applying a fix to team memory | Gale applies fixes to the team's shared memory; Francesca sends them to Gale. | Gale (Francesca sends the fix; no other thread can read memory yet) | | Interim, until the 0.8 review assigns it |
 
 ## Areas
 
@@ -110,7 +110,7 @@ change to an owner changes that row and this table in the same PR. Rules Steward
 - Any PR that adds, changes or retires a rule, or adds or changes a DECISIONS row, updates its ledger row in the same
   PR. Git history is the change log.
 - Rules Steward (Francesca) owns the ledger's upkeep and the "Who does what" table. CI already fails a DECISIONS row
-  with no ledger row, so on each rule or DECISIONS merge she checks for drift instead: copies of the rule elsewhere,
+  with no ledger row, so on each rule or DECISIONS merge Francesca checks for drift instead: copies of the rule elsewhere,
   a row whose wording, owner or home no longer matches, and owners that aren't live threads.
 - Kaizen (Gale) re-grades every row at each release kaizen review and sets `grade` and `last_change`.
 - Tracker Sync (Huell) mirrors the ledger into the tracker once a Ledger view exists.
