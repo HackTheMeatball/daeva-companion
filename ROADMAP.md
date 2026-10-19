@@ -109,8 +109,8 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
    tracker To-do; everything else follows the recommendation. The thread that needs the decision opens its own
    To-do through Tracker sync (Huell): one owner and one owner's OK per card, listing what waits on it; it tells every
    thread the decision affects when it opens and when it is answered (owner, 2026-10-19 2:20 PM ET; trial through
-   0.8). Every decision is recorded on the tracker as **user remediated** (the owner chose) or **Claude remediated** (the recommendation applied under a standing
-   approval), so the owner can see which calls were whose.
+   0.8). Every decision is recorded on the tracker as **user remediated** (the owner chose) or **Claude
+   remediated** (the recommendation applied under a standing approval), so the owner can see which calls were whose.
    **When (Kaizen K15, 2026-10-19; replaces K10):** the planning pass lists every OK the minor needs, each with its
    recommendation, the exact words to type and the thread to type them in (the thread whose session records it). That
    includes the minor's standing ship OK, one per minor covering the .0 and every patch (rules audit COM-03; owner,
@@ -1029,10 +1029,11 @@ Release Planner's (T-50, build only), typed in the Release planning (Walter) thr
 ```
 
 That records `owner-ok-0.8-go` (the planner queues 0.8 in #114). The looks were Design Lead's To-do (T-51, round 2
-after the owner's T-50 notes of 2:13 PM ET; boards and spec in `/mnt/project-files/tracker/mockups/0.8-owner-ok-v2/`),
-answered on the boards, so no looks line is needed: "icon" recorded `owner-ok-0.8-marker-size` (P11) and
-`owner-ok-0.8-icon-box` (P10), "quest" `owner-ok-0.8-crop-icons` (P13, with Metabot's `quest_district` map marker,
-which the 0.6.2 map-icons OK didn't cover), "class" `owner-ok-0.8-welcome-class` (P12, with the Metabot class emblems).
+after the owner's 2:13 PM ET notes on the first-round looks, which T-50 carried until it was re-cut; boards and spec
+in `/mnt/project-files/tracker/mockups/0.8-owner-ok-v2/`), answered on the boards, so no looks line is needed: "icon"
+recorded `owner-ok-0.8-marker-size` (P11) and `owner-ok-0.8-icon-box` (P10), "quest" `owner-ok-0.8-crop-icons` (P13,
+with Metabot's `quest_district` map marker, which the 0.6.2 map-icons OK didn't cover), "class"
+`owner-ok-0.8-welcome-class` (P12, with the Metabot class emblems).
 The owner answered all three on the boards, 2:35–2:40 PM ET, each A (DECISIONS rows), with his own tweaks that Design
 Lead drew: P10 also balances the phone card (Show in the title row, `1c-icon-balance.png`); P13 builds the centred SVG
 check (`2b-check-fix.png`) and a map pin on every Next up quest row, left of the button, long names cut with "…"
