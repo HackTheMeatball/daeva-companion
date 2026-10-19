@@ -1033,7 +1033,7 @@ Planner reads the message there and records it:
 "quest" records `owner-ok-0.8-crop-icons` (P13: the owner's regional star crop, Metabot's `quest_district` map marker,
 which the 0.6.2 map-icons OK didn't cover, the marking control, and the unchanged extract flask); "class" records
 `owner-ok-0.8-welcome-class` (P12, including the Metabot class emblems, new game art outside the standing icon OK).
-The go and the looks are independent: ungated items build on the go alone. Optional, only to change a default: name a
+The owner answered class A at 2:35 PM ET (DECISIONS row), so the line now only needs icon and quest. The go and the looks are independent: ungated items build on the go alone. Optional, only to change a default: name a
 different class for 0.8 (default Templar and Cleric).
 
 Not OKs, but only the owner can do them. None blocks a wave:
