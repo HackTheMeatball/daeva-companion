@@ -238,6 +238,12 @@ on purpose: the guide shows nothing rather than an unverified value.
 
   Held back (Q5): campsite, updraft, point of interest, field boss and undiscovered wait until the data has a place type.
 
+- **Six UI icons with no approved source: owner crops are the fallback** (T-47; owner icon rule, DECISIONS 2026-10-18
+  8:57 PM ET). The Field zone label (crossed swords), the Village zone label (tent), the Journal completed-quest check,
+  the regional and story "available" stars and the item tooltip's Extract flask are on neither Metabot nor aion2quest.pro,
+  and the last-resort check on unlisted sites found none (docs/research/2026-10-t47-icon-check.md, 2026-10-19). Any of
+  them used in the app comes from the owner's crop, with its row recorded here like `story-complete.png` above.
+
 - **Icons not in the claude.ai artifact** (closed by 0.7 P9). The five skill icons above (added 2026-10-15) never got a
   `/_blob/` id, so the frozen artifact shows the initials square for them. The artifact is no longer built and its blob
   list (`scripts/artifact-blobs.json`) is gone, so nothing is left to do.

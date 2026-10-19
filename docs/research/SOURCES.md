@@ -31,7 +31,7 @@ from 2026-10-14 and are older than this register; where they differ, this regist
 | aion2-meta.com | Full, reuse unknown | Per-class skills, stigmas, Daevanion, specialties | Korean top-player data: a preview, never proof of a global fact | 2026-10-18 | BGS §2 |
 | aion2turkiye.com | Full, reuse unknown | Leveling / dungeon / PvP build panels | — | 2026-10-18 | BGS §2 |
 | gamesfuze.com | Full, reuse unknown | Class builds | Picks are not slot-ordered (never a slot witness) | 2026-10-18 | BGS §2 |
-| aion2quest.pro | Full | Daevanion planner, titles database | Not `/api/` or `/sim/`. Its desktop app reads game traffic: check each field's origin before use | 2026-10-18 | BGS §2 |
+| aion2quest.pro | Full | Daevanion planner, titles database, map-marker icons (`UT_Marker_*`) where Metabot has none, and its purple Kibelisk crest (owner, 2026-10-18, DECISIONS `owner-ok-0.6.2-map-icons`) | Not `/api/` or `/sim/`. Its desktop app reads game traffic: check each field's origin before use | 2026-10-18 | BGS §2 |
 | daevaguides.com | Full | Class build and macro guides | Never use the "Check your character" tool (terms) | 2026-10-18 | BGS §2 |
 | aion2-guides.info | Full, reuse unknown | Class guides collected from creators | Secondary: credit the creator it links, not an independent source | 2026-10-18 | BGS §2 |
 | mmo-codex.com | **Spot** | Class guides (skill order by level, stigmas) | Terms: "Automated republication and scraped copies are not permitted" | 2026-10-18 | BGS §2 |
@@ -65,7 +65,7 @@ load"; its map markers aren't game art, inferred) checked 2026-10-19, `2026-10-t
 | aion2.gaming.tools, games.gg, mobalytics.gg, eloboost24.eu, icy-veins.com, keengamer.com | 403 challenge to our requests (access, not a ban). Owner browser only | 2026-10-18 |
 | thegameswiki.com | 429 security checkpoint. Its content is CC BY-NC-SA: facts only, never wording | 2026-10-18 |
 | timesaver.gg | Connection reset, not reached | 2026-10-18 |
-| namu.wiki | Cloudflare challenge (403) to our requests on the terms page. Owner browser only | 2026-10-19 |
+| namu.wiki | Cloudflare challenge (403) on our first request, the terms page (`/w/나무위키:이용약관`). Owner browser only | 2026-10-19 |
 | Allakhazam / ZAM (\*.allakhazam.com, Fanbyte terms) | Terms ban "spiders, robots, crawlers, data mining tools" | 2026-10-19 |
 
 ## Keeping this current

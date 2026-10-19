@@ -48,13 +48,13 @@ comes first) a change may break existing saves when that gives a better design. 
   re-exports and finishes compiled tables; game facts and guide text go in `data/`, never in `main.js`. Every new URL
   must end up in the Sources card (the generator does this) and `data/DATA_SOURCES.md`.
 - Fetching (owner, 2026-10-14): `docs/research/SOURCES.md` says which site may be used for what; check it first, and add
-  a row for any site you vet. Read the terms page first, then robots.txt, before any content page (terms are the
-  harder gate). A site that opts out of AI or automated access entirely (robots.txt blocks Claude-User or our User-Agent, or the terms ban all automated access)
-  is never fetched; the owner checks it by hand. Blocking only AI training crawlers (ClaudeBot, GPTBot …) is not an
-  opt-out (owner, 2026-10-18). A site that only bans scraping (bulk copying) may get small spot checks to verify a fact: a few
-  pages per task, at least 5 s apart, facts only, no copies kept. Always identify honestly (our User-Agent, never a
-  fake browser) and never bypass a challenge or limit. Otherwise at most 12 requests/min per host, one at a time,
-  cache 24 h, stop on 403 / 429 / a challenge page. **No automated reading of
+  a row for any site you vet. Read the terms page first, then robots.txt, before any content page (terms are the harder
+  gate). A site that opts out of AI or automated access entirely (robots.txt blocks Claude-User or our User-Agent, or
+  the terms ban all automated access) is never fetched; the owner checks it by hand. Blocking only AI training crawlers
+  (ClaudeBot, GPTBot …) is not an opt-out (owner, 2026-10-18). A site that only bans scraping (bulk copying) may get
+  small spot checks to verify a fact: a few pages per task, at least 5 s apart, facts only, no copies kept. Always
+  identify honestly (our User-Agent, never a fake browser) and never bypass a challenge or limit. Otherwise at most 12
+  requests/min per host, one at a time, cache 24 h, stop on 403 / 429 / a challenge page. **No automated reading of
   aion2.th.gl** (its robots.txt excludes AI agents). Facts sourced from th.gl are re-verified against a permitted source
   (Metabot first) and attributed to it; a fact no permitted source confirms is labelled for an owner in-game check.
 - Metabot is the main source: credit with plain dofollow links to the page the data came from. thegameswiki is
