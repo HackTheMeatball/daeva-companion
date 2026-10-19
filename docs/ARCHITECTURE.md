@@ -384,9 +384,7 @@ produced the v1 files (provenance; they no longer match `data/`). `tools/history
   no save or its pack isn't shipped) and sets `self.DAEVA_PACK`. Site: each chunk is `dist/packs/<id>.<hash>.js`
   (content hash, so a new `index.html` never meets a stale cached chunk), precached by the service worker, and the loader
   writes one `<script src>` for the chosen one with `document.write` (it must run before the app script, which reads the
-  tables at once). The site offers every playable class. (`self.DAEVA_CLASSES`, the character picker's class filter in
-  `src/cards/characters.js` and the pack's `siteOnlyNote` / `SITE_ONLY_NOTE` were for the claude.ai build's class list,
-  0.7 A1; nothing sets the list since 0.7 P9, so that code is inert and left for a later clean-up.)
+  tables at once). The site offers every playable class.
   The class is chosen once per page load; with one class shipped that is always right, and switching to a character of
   another class will need a reload (not built yet: no second class ships).
   With the Assassin pack alone the page is the same (golden identical); the site's `index.html` plus its chunk is
