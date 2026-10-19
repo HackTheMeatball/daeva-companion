@@ -239,7 +239,15 @@ if (g) {
     [c.QUESTS.length, c.RQ.length, c.SH_DATA.length, Object.keys(c.HIDEOUT_AREA).length]);
 }
 /* rules and decisions ledger: header, ids, homes and one row per DECISIONS row (docs/kaizen/LEDGER.md) */
-{ const problems = checkLedger(); ok(`rules and decisions ledger checks (${problems.length} problems)`, !problems.length, problems); }
+{ const problems = checkLedger(); ok(`rules and decisions ledger checks (${problems.length} problems)`, !problems.length, problems);
+  /* ...and it rejects broken copies: a dropped decision row, a doubled one, a bad status, a dead anchor */
+  const csv = readFileSync(join(ROOT, 'docs/kaizen/ledger.csv'), 'utf8').split('\n'), dec = csv.findIndex(l => l.includes(',decision,'));
+  const rule = csv.findIndex((l, i) => i > 0 && l.includes(',CLAUDE.md#'));
+  const fails = (label, lines, re) => { const p = checkLedger(ROOT, { csvText: lines.join('\n') }); ok('ledger check rejects: ' + label, p.some(x => re.test(x)), p.slice(0, 3)); };
+  fails('a DECISIONS row with no ledger row', csv.filter((_, i) => i !== dec), /has no ledger row/);
+  fails('two ledger rows for one DECISIONS row', [...csv, csv[dec].replace(/^DEC-[^,]+/, 'DEC-dup')], /a second ledger row/);
+  fails('an unknown status', csv.map((l, i) => i === dec ? l.replace(',active,', ',live,') : l), /status "live"/);
+  fails('a dead anchor', csv.map((l, i) => i === rule ? l.replace(/CLAUDE\.md#[^,"]+/, 'CLAUDE.md#no such phrase anywhere') : l), /anchor "no such phrase anywhere" not found/); }
 console.log(`${n - fail} ok, ${fail} failed (${Date.now() - t0} ms)`);
 console.log(fail ? `SCHEMA CHECKS FAILED (${fail})` : 'SCHEMA CHECKS PASSED');
 process.exit(fail ? 1 : 0);
