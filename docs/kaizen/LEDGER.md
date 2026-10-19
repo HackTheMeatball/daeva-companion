@@ -36,14 +36,14 @@ ledger's upkeep), Gomez (Team Audit). `enforced_by` uses the same names.
 
 ## Who does what
 
-One Accountable thread per kind of work (team audit 1.0, rec 3; Isaac's OK in the Kaizen thread, 2026-10-19 4:57 PM
-ET). Coordinator (Saul) routes work only from this table, never from memory. A thread that finds itself doing work this
-table gives to someone else stops and sends it there. "Source" is the ledger row or DECISIONS row that sets the owner; a
+One Accountable thread per kind of work (team audit 1.0, rec 3; DEC-20261019-team-audit-recs-3-and). Coordinator
+(Saul) routes work only from this table, never from memory. A thread that finds itself doing work this table gives to
+someone else stops and sends it there. "Source" is the ledger row or DECISIONS row that sets the owner; a
 change to an owner changes that row and this table in the same PR. Rules Steward (Francesca) keeps the table current.
 
 | Work | Owner | Not | Source |
 |---|---|---|---|
-| Routing work to a thread; the morning debrief of every OK and question for Isaac | Saul | Mike, Huell | COM-02, PLN-09 |
+| Routing work to a thread; what is waiting on Isaac; the morning debrief of every OK and question | Saul | Mike, Huell | COM-02, PLN-09, DEC-20261019-saul-owns-what-s-waiting |
 | Asking Isaac for a decision (opening its To-do) | The thread that needs it, through Huell | Saul, Walter | DECISIONS 2026-10-19 / Each thread opens its own To-dos |
 | Telling Huell an answer is recorded (OK RECORDED), so the To-do closes | Whoever recorded it | | DEC-03 |
 | Writing tracker data: cards, To-dos, versions, Scrapbook | Huell | everyone else | TRK-01 |
@@ -61,13 +61,13 @@ change to an owner changes that row and this table in the same PR. Rules Steward
 | Workflows, kickoff, auto-merge, shipping a release | Gus | | PIP-03, MRG-01, PLN-19 |
 | The #114 body | Gus (owners edit only their own status line) | | Q-13 |
 | Health check: stalls, idle queue, red runs, tracker drift | Mike | | HC-01 |
-| A #221 row for an anomaly the health check finds | Mike | | HC-02 |
-| #221 format and kinds, the per-release error report, KIND RECURRED | Hank | | LOG-01, LOG-03, HC-09 |
-| Playing the site; player findings issues | Jesse | | PLN-21, PLN-22 |
+| The stall log #221: every row, its format and kinds, the per-release error report, KIND RECURRED | Mike (Hank until he hands over) | everyone else (report stalls to Mike) | DEC-20261019-incident-log-folds-into-stall, HC-02 |
+| A typed OK not applied within 60 min (a stall) | Mike | | DEC-20261019-saul-owns-what-s-waiting |
+| Playing the release candidate before the tag and the live site after; player findings issues | Jesse | | PLN-21, PLN-22, DEC-20261019-player-testing-plays-each-minor |
 | Kaizen review, #222, the scorecard, rule changes and grades | Gale | | KZ-01, PLN-04 |
-| Grading Gale's own rules and checking the scorecard compares like with like (from 0.9) | Francesca | Gale | Isaac, Kaizen thread 2026-10-19 4:56 PM ET (DECISIONS row pending) |
-| Grading Q-14 | Gale | Francesca | Isaac, Rules Steward thread 2026-10-19 4:57 PM ET (DECISIONS row pending) |
-| This ledger, this table, drift and roster sweeps | Francesca | | Q-14, KZ-11 |
+| Grading Gale's own rules and checking the scorecard compares like with like (from 0.9) | Francesca | Gale | DEC-20261019-from-0-9-rules-steward |
+| Grading Q-14 | Gale | Francesca | DEC-20261019-kaizen-grades-the-ledger-rule |
+| This ledger, this table, drift and roster sweeps | Francesca | | Q-14, KZ-11, DEC-20261019-rules-steward-francesca-joins-each |
 | Applying a fix to team memory | Gale (Francesca sends the fix; no other thread can read memory yet) | | Interim, until the 0.8 review assigns it |
 
 ## Areas
