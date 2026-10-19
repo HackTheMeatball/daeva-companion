@@ -10,9 +10,9 @@ A claim that is not verified is tagged `[id · verdict]` (`owner source`: the ow
 Only facts were taken from these pages; the app reproduces no page text. Short quotations in the guides' `claims.json`
 stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Listing a site implies no endorsement.
 
-595 URLs · 469 in the Sources card · 126 cited only in the data files
+620 URLs · 494 in the Sources card · 126 cited only in the data files
 
-## Metabot (387)
+## Metabot (412)
 
 | Page | Card group | Backs |
 |---|---|---|
@@ -402,6 +402,31 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Wrath wave](https://metabot.gg/en/aion-2/skills/wrath-wave) | — | packs/aion2/classes/gladiator/stigmas.json: Wrath Wave |
 | [Metabot: Zikels blessing](https://metabot.gg/en/aion-2/skills/zikels-blessing) | — | packs/aion2/classes/gladiator/stigmas.json: Zikel's Blessing |
 | [Metabot: Stats](https://metabot.gg/en/aion-2/stats) | Tips and rules | packs/aion2/asmodian/assassin/guide/claims.json: [C20 · disputed] Stat tiers: [Attack, Critical Hit, Back Attack Damage Boost] > [Accuracy, Critical Damage Boost] > [Double Chance, Combat Speed]; B/G letters. |
+| [Metabot: Basfelt Ruins](https://metabot.gg/en/aion-2/zones/basfelt-ruins) | Tips and rules | packs/aion2/asmodian/zones.json: Basfelt Ruins |
+| [Metabot: Battlescar Mound](https://metabot.gg/en/aion-2/zones/battlescar-mound) | Tips and rules | packs/aion2/asmodian/zones.json: Battlescar Mound |
+| [Metabot: Black Claw Village](https://metabot.gg/en/aion-2/zones/black-claw-village) | Tips and rules | packs/aion2/asmodian/zones.json: Black Claw Village |
+| [Metabot: Calderon Canyon](https://metabot.gg/en/aion-2/zones/calderon-canyon) | Tips and rules | packs/aion2/asmodian/zones.json: Calderon Canyon |
+| [Metabot: Crypt](https://metabot.gg/en/aion-2/zones/crypt) | Tips and rules | packs/aion2/asmodian/zones.json: Crypt |
+| [Metabot: Dranactus](https://metabot.gg/en/aion-2/zones/dranactus) | Tips and rules | packs/aion2/asmodian/zones.json: Dranactus |
+| [Metabot: Dredgion Crash Site](https://metabot.gg/en/aion-2/zones/dredgion-crash-site) | Tips and rules | packs/aion2/asmodian/zones.json: Dredgion Crash Site |
+| [Metabot: Eastern Gribade Highland](https://metabot.gg/en/aion-2/zones/eastern-gribade-highland) | Tips and rules | packs/aion2/asmodian/zones.json: Eastern Gribade Highland |
+| [Metabot: Fafnite Deposit](https://metabot.gg/en/aion-2/zones/fafnite-deposit) | Tips and rules | packs/aion2/asmodian/zones.json: Fafnite Deposit |
+| [Metabot: Idun's Lake](https://metabot.gg/en/aion-2/zones/iduns-lake) | Tips and rules | packs/aion2/asmodian/zones.json: Idun's Lake |
+| [Metabot: Immortal Isle](https://metabot.gg/en/aion-2/zones/immortal-isle) | Tips and rules | packs/aion2/asmodian/zones.json: Immortal Isle |
+| [Metabot: Impetusium Square](https://metabot.gg/en/aion-2/zones/impetusium-square) | Tips and rules | packs/aion2/asmodian/zones.json: Impetusium Square |
+| [Metabot: Lagta Fortress](https://metabot.gg/en/aion-2/zones/lagta-fortress) | Tips and rules | packs/aion2/asmodian/zones.json: Lagta Fortress |
+| [Metabot: Mahindel River](https://metabot.gg/en/aion-2/zones/mahindel-river) | Tips and rules | packs/aion2/asmodian/zones.json: Mahindel River |
+| [Metabot: Moslan Forest](https://metabot.gg/en/aion-2/zones/moslan-forest) | Tips and rules | packs/aion2/asmodian/zones.json: Moslan Forest |
+| [Metabot: Nameless Cemetery](https://metabot.gg/en/aion-2/zones/nameless-cemetery) | Tips and rules | packs/aion2/asmodian/zones.json: Nameless Cemetery |
+| [Metabot: Nornir Assembly](https://metabot.gg/en/aion-2/zones/nornir-assembly) | Tips and rules | packs/aion2/asmodian/zones.json: Nornir Assembly |
+| [Metabot: Purifying Forest](https://metabot.gg/en/aion-2/zones/purifying-forest) | Tips and rules | packs/aion2/asmodian/zones.json: Purifying Forest |
+| [Metabot: Sanctum Outpost](https://metabot.gg/en/aion-2/zones/sanctum-outpost) | Tips and rules | packs/aion2/asmodian/zones.json: Sanctum Outpost |
+| [Metabot: Silent Hill](https://metabot.gg/en/aion-2/zones/silent-hill) | Tips and rules | packs/aion2/asmodian/zones.json: Silent Hill |
+| [Metabot: Southern Gribade Highland](https://metabot.gg/en/aion-2/zones/southern-gribade-highland) | Tips and rules | packs/aion2/asmodian/zones.json: Southern Gribade Highland |
+| [Metabot: Spirit Isle](https://metabot.gg/en/aion-2/zones/spirit-isle) | Tips and rules | packs/aion2/asmodian/zones.json: Spirit Isle |
+| [Metabot: Tranein Highland](https://metabot.gg/en/aion-2/zones/tranein-highland) | Tips and rules | packs/aion2/asmodian/zones.json: Tranein Highland |
+| [Metabot: Uruthumheim](https://metabot.gg/en/aion-2/zones/uruthumheim) | Tips and rules | packs/aion2/asmodian/zones.json: Uruthumheim |
+| [Metabot: Western Gribade Highland](https://metabot.gg/en/aion-2/zones/western-gribade-highland) | Tips and rules | packs/aion2/asmodian/zones.json: Western Gribade Highland |
 | [Metabot: Terms of service](https://metabot.gg/en/legal/terms-of-service) | — | packs/aion2/sources.json: Metabot |
 
 ## aion2-meta (1)

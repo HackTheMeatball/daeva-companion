@@ -204,7 +204,7 @@
       "verifiedAt": "2026-10-19",
       "status": "verified",
       "conflicts": [
-        "Metabot shows no Kibelisk for giver; place 'Safe Haven' from allthings.how 244374 and finish text",
+        "Metabot shows no Kibelisk for giver; place 'Safe Haven' from allthings.how 244374 and finish text [2026-10-19: Metabot's quest page names the start as \"Derk · Safe Haven\" (build 0.0.4387.0).]",
         "zone: allthings.how files it under \"Safe Haven\"; the giver's camp / place puts it in Dredgion Crash Site (E3 CAMP_ZONE / E4 giver-zone rule)."
       ],
       "fieldStatus": {
@@ -1227,7 +1227,7 @@
         "zone": "inferred"
       },
       "conflicts": [
-        "Metabot shows no Kibelisk; giver place Gravekeeper Camp from allthings.how 244384"
+        "Metabot shows no Kibelisk; giver place Gravekeeper Camp from allthings.how 244384 [2026-10-19: Metabot's quest page names the start as \"Tagar · Gravekeeper Camp\" (build 0.0.4387.0).]"
       ]
     },
     {
@@ -1399,7 +1399,7 @@
         "Metabot shows no quest giver and no turn-in; single step 'Meet Menrik ... near the Fang Hideout' — consistent with an auto-granted follow-up of In the Fang Legion's Name (which ends talking to Menrik at Fang Hideout). App's giver 'Nemon · Forest Hideout' is not supported by Metabot.",
         "Giver NPC from aion2.gaming.tools (Nemon); Metabot shows none",
         "Turn-in NPC from aion2.gaming.tools (Gamilla)",
-        "Giver place 'Forest Hideout' from allthings.how (not on Metabot)",
+        "Giver place 'Forest Hideout' from allthings.how (not on Metabot) [2026-10-19: Metabot's quest page names the start as \"Nemon · Forest Hideout\" (build 0.0.4387.0).]",
         "zone: allthings.how files it under \"Sanctum Outpost\"; the giver's camp / place puts it in Moslan Forest (E3 CAMP_ZONE / E4 giver-zone rule)."
       ]
     },
@@ -1783,7 +1783,7 @@
       ],
       "conflicts": [
         "Metabot shows no giver place/Kibelisk; app place 'Healing Spring' (Purifying Forest) is not on Metabot. Turn-in text says 'Talk to Reden at Odar's Shade' (Moslan Forest). Story references the Young Elim — possible thematic link to Young Elim's Story, not stated.",
-        "Giver place 'Healing Spring' from allthings.how (not on Metabot)",
+        "Giver place 'Healing Spring' from allthings.how (not on Metabot) [2026-10-19: Metabot's quest page names the start as \"Reden · Healing Spring\" (build 0.0.4387.0).]",
         "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
       ],
       "proposed": {
@@ -2011,7 +2011,7 @@
         "Metabot shows no giver/turn-in/Kibelisk; app giver 'Lulu · Elim's Rest' comes from allthings.how (locations.json place_src); Lulu is named in step text",
         "Giver NPC from aion2.gaming.tools (Lulu); Metabot shows none",
         "Turn-in NPC from aion2.gaming.tools (Ecco)",
-        "Giver place 'Elim's Rest' from allthings.how (not on Metabot)"
+        "Giver place 'Elim's Rest' from allthings.how (not on Metabot) [2026-10-19: Metabot's quest page names the start as \"Lulu · Elim's Rest\" (build 0.0.4387.0).]"
       ]
     },
     {
@@ -3788,9 +3788,9 @@
       },
       "conflicts": [
         "Slug is spacetime-rift-unfamiliar-material-asmodian (metaSlug() would give spacetime-rift-unfamiliar-material)",
-        "Metabot gives no giver place/Kibelisk; app has Collapsed Chasm (same as other Uru 213k-XP rifts) — not stated",
+        "Metabot gives no giver place/Kibelisk; app has Collapsed Chasm (same as other Uru 213k-XP rifts) — not stated [2026-10-19: Metabot's quest page names the start as \"Uru · Collapsed Chasm\" (build 0.0.4387.0).]",
         "Turn-in NPC from aion2.gaming.tools (Uru)",
-        "Giver place 'Collapsed Chasm' from allthings.how (not on Metabot)"
+        "Giver place 'Collapsed Chasm' from allthings.how (not on Metabot) [2026-10-19: Metabot's quest page names the start as \"Uru · Collapsed Chasm\" (build 0.0.4387.0).]"
       ],
       "notes": [
         "Spacetime Rift series: No Required Quests on 5 of 7 gaming.tools pages (Unknown Species 2202030 and Proof 2202035 not reachable). Not a chain. Gate: level 45 (Metabot 'Unlocks at 45' on all 7; allthings 244366 'Level 45') plus a rift that 'opens at random spots at set times' (allthings 244371)."
@@ -3958,8 +3958,8 @@
         "Spacetime Rift series: No Required Quests on 5 of 7 gaming.tools pages (Unknown Species 2202030 and Proof 2202035 not reachable). Not a chain. Gate: level 45 (Metabot 'Unlocks at 45' on all 7; allthings 244366 'Level 45') plus a rift that 'opens at random spots at set times' (allthings 244371)."
       ],
       "conflicts": [
-        "Metabot gives no giver place; app 'Guide Rest Stop' (Purifying Forest) not on Metabot",
-        "Giver place 'Guide Rest Stop' from allthings.how (not on Metabot)"
+        "Metabot gives no giver place; app 'Guide Rest Stop' (Purifying Forest) not on Metabot [2026-10-19: Metabot's quest page names the start as \"Uru · Guide Rest Stop\" (build 0.0.4387.0).]",
+        "Giver place 'Guide Rest Stop' from allthings.how (not on Metabot) [2026-10-19: Metabot's quest page names the start as \"Uru · Guide Rest Stop\" (build 0.0.4387.0).]"
       ]
     },
     {
@@ -4123,7 +4123,7 @@
       "conflicts": [
         "Metabot shows no giver field; Uru named in story text only. App place 'Guide Rest Stop' not on Metabot",
         "Turn-in NPC from aion2.gaming.tools (Uru)",
-        "Giver place 'Guide Rest Stop' from allthings.how (not on Metabot)"
+        "Giver place 'Guide Rest Stop' from allthings.how (not on Metabot) [2026-10-19: Metabot's quest page names the start as \"Uru · Guide Rest Stop\" (build 0.0.4387.0).]"
       ],
       "notes": [
         "Spacetime Rift series: No Required Quests on 5 of 7 gaming.tools pages (Unknown Species 2202030 and Proof 2202035 not reachable). Not a chain. Gate: level 45 (Metabot 'Unlocks at 45' on all 7; allthings 244366 'Level 45') plus a rift that 'opens at random spots at set times' (allthings 244371)."
@@ -4849,7 +4849,7 @@
       ],
       "conflicts": [
         "Metabot gives no Kibelisk for giver or steps; giver place taken from turn-in text 'Talk to Harald at the Abandoned Site'",
-        "Giver place 'Abandoned Site' from allthings.how (not on Metabot)"
+        "Giver place 'Abandoned Site' from allthings.how (not on Metabot) [2026-10-19: Metabot's quest page names the start as \"Harald · Abandoned Site\" (build 0.0.4387.0).]"
       ],
       "fieldStatus": {
         "zone": "inferred"
@@ -5427,8 +5427,8 @@
         "Intro: 'Talk to Menrik at the temporary clinic.'"
       ],
       "conflicts": [
-        "Metabot gives no giver place/Kibelisk for Bekrin; app has 'Battlescar Mound'. Turn-in at Briskwind Shelter (Elena).",
-        "Giver place 'Battlescar Mound' from allthings.how (not on Metabot)",
+        "Metabot gives no giver place/Kibelisk for Bekrin; app has 'Battlescar Mound'. Turn-in at Briskwind Shelter (Elena). [2026-10-19: Metabot's quest page names the start as \"Bekrin · Battlescar Mound\" (build 0.0.4387.0).]",
+        "Giver place 'Battlescar Mound' from allthings.how (not on Metabot) [2026-10-19: Metabot's quest page names the start as \"Bekrin · Battlescar Mound\" (build 0.0.4387.0).]",
         "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
       ],
       "proposed": {
@@ -5670,7 +5670,7 @@
       },
       "conflicts": [
         "Metabot shows no giver place/Kibelisk; app place 'Steel Hammer Temporary Trading Post' not on Metabot",
-        "Giver place 'Steel Hammer Temporary Trading Post' from allthings.how (not on Metabot)"
+        "Giver place 'Steel Hammer Temporary Trading Post' from allthings.how (not on Metabot) [2026-10-19: Metabot's quest page names the start as \"Romi · Steel Hammer Temporary Trading Post\" (build 0.0.4387.0).]"
       ]
     },
     {
@@ -6412,7 +6412,7 @@
         "turnin.zone": "inferred"
       },
       "conflicts": [
-        "Metabot page not reachable; data from aion2.gaming.tools 2202045 + allthings.how 244363 (Baba 'at the Assembly'). No Kibelisk, no step list."
+        "Metabot page not reachable; data from aion2.gaming.tools 2202045 + allthings.how 244363 (Baba 'at the Assembly'). No Kibelisk, no step list. [2026-10-19: Metabot's quest page names the start as \"Baba · Nornir Assembly\" (build 0.0.4387.0).]"
       ]
     },
     {
@@ -6585,7 +6585,7 @@
       "verifiedAt": "2026-10-19",
       "status": "verified",
       "conflicts": [
-        "Metabot page not reachable; data from shugo.gg 2202046 + allthings.how Impetusium page. No Kibelisk.",
+        "Metabot page not reachable; data from shugo.gg 2202046 + allthings.how Impetusium page. No Kibelisk. [2026-10-19: Metabot's quest page names the start as \"Nemon · Impetusium Square\" (build 0.0.4387.0).]",
         "shugo.gg shows 'Level 45' without separating unlock level; allthings says unlocks at 10. Not in Forgotten Commander's dependent list (unlike the other Impetusium Lv 45 quests); prerequisites not checked (gaming.tools page not reachable).",
         "shugo.gg turn-in header says Nemon but step 4 says Reuben's Apparition",
         "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
@@ -6964,8 +6964,8 @@
         "zone": "inferred"
       },
       "conflicts": [
-        "Rec 45 but objective mobs are Lv 12 (Congealed Drana) and turn-in at Creion Campsite (Dredgion Crash Site) — low-level zone quest; Kanes is 'Safe Haven Militia'. App zone 'Dredgion Crash Site' vs QUEST_AREA 'Safe Haven' (P0-4); Metabot gives no giver place.",
-        "Giver place 'Temporary Investigation Base' from allthings.how (not on Metabot)",
+        "Rec 45 but objective mobs are Lv 12 (Congealed Drana) and turn-in at Creion Campsite (Dredgion Crash Site) — low-level zone quest; Kanes is 'Safe Haven Militia'. App zone 'Dredgion Crash Site' vs QUEST_AREA 'Safe Haven' (P0-4); Metabot gives no giver place. [2026-10-19: Metabot's quest page names the start as \"Kanes · Temporary Investigation Base\" (build 0.0.4387.0).]",
+        "Giver place 'Temporary Investigation Base' from allthings.how (not on Metabot) [2026-10-19: Metabot's quest page names the start as \"Kanes · Temporary Investigation Base\" (build 0.0.4387.0).]",
         "zone: allthings.how files it under \"Safe Haven\"; the giver's camp / place puts it in Dredgion Crash Site (E3 CAMP_ZONE / E4 giver-zone rule)."
       ]
     },
@@ -7342,7 +7342,7 @@
         "Zone: allthings.how says 'Quai Campsite', app QUEST_AREA/area says 'Calderon Canyon' (app where='Quai Campsite · Baba')",
         "Giver NPC from aion2.gaming.tools (Baba); Metabot shows none",
         "Turn-in NPC from aion2.gaming.tools (Baba)",
-        "Giver place 'Quai Campsite' from allthings.how (not on Metabot)",
+        "Giver place 'Quai Campsite' from allthings.how (not on Metabot) [2026-10-19: Metabot's quest page names the start as \"Baba · Quai Campsite\" (build 0.0.4387.0).]",
         "zone: allthings.how files it under \"Quai Campsite\"; the giver's camp / place puts it in Calderon Canyon (E3 CAMP_ZONE / E4 giver-zone rule)."
       ]
     },
@@ -7518,8 +7518,8 @@
         "allthings.how: Surprised by your speed, she points you to Battlescar Mound Cliff for the next wonder."
       ],
       "conflicts": [
-        "Metabot gives no giver place/Kibelisk; app place 'under the Tranein Highland bridge' is from another source (not on Metabot). Turn-in text: 'Talk to Tina at Safe Haven'",
-        "Giver place 'under the Tranein Highland bridge' from allthings.how (not on Metabot)",
+        "Metabot gives no giver place/Kibelisk; app place 'under the Tranein Highland bridge' is from another source (not on Metabot). Turn-in text: 'Talk to Tina at Safe Haven' [2026-10-19: Metabot's quest page names the start as \"Tina · Calderon Canyon\" (build 0.0.4387.0).]",
+        "Giver place 'under the Tranein Highland bridge' from allthings.how (not on Metabot) [2026-10-19: Metabot's quest page names the start as \"Tina · Calderon Canyon\" (build 0.0.4387.0).]",
         "zone: Metabot's quest page starts it in \"Calderon Canyon\" (2026-10-19, build 0.0.4387.0); allthings.how and the data have Tranein Highland. Kept Tranein Highland until the owner checks in game (#325)."
       ]
     },
@@ -8275,7 +8275,7 @@
         "zone": "inferred"
       },
       "conflicts": [
-        "Metabot page not reachable (provenance refusal; not surfaced by search). Data from aion2.gaming.tools 2202057 + allthings.how 244366; no Kibelisk available.",
+        "Metabot page not reachable (provenance refusal; not surfaced by search). Data from aion2.gaming.tools 2202057 + allthings.how 244366; no Kibelisk available. [2026-10-19: Metabot's quest page names the start as \"Nana · Odar's Shade\" (build 0.0.4387.0).]",
         "App reward 'Ariel crystal' not supported: sources give Odyle x5 + Wisdom Stone + Daevanion Crystal"
       ]
     },
@@ -8598,7 +8598,7 @@
       "verifiedAt": "2026-10-19",
       "status": "verified",
       "conflicts": [
-        "Metabot page not reachable; data from aion2.gaming.tools 2202059 + allthings.how 244371. No Kibelisk."
+        "Metabot page not reachable; data from aion2.gaming.tools 2202059 + allthings.how 244371. No Kibelisk. [2026-10-19: Metabot's quest page names the start as \"Cortis · Healing Spring\" (build 0.0.4387.0).]"
       ],
       "fieldStatus": {
         "zone": "inferred"
@@ -9050,7 +9050,7 @@
         "allthings.how: Finish the route at the Wind Altar after checking all four."
       ],
       "conflicts": [
-        "Metabot page not reachable; data from aion2.gaming.tools 2202061 + allthings.how 244371 ('Finish the route at the Wind Altar after checking all four'). No Kibelisk."
+        "Metabot page not reachable; data from aion2.gaming.tools 2202061 + allthings.how 244371 ('Finish the route at the Wind Altar after checking all four'). No Kibelisk. [2026-10-19: Metabot's quest page names the start as \"Ivan · Faded Stump\" (build 0.0.4387.0).]"
       ]
     },
     {
@@ -9746,7 +9746,7 @@
         "zone": "disputed"
       },
       "conflicts": [
-        "Metabot page not reachable; data from aion2.gaming.tools 2202065 + allthings.how 244384. No Kibelisk. Zone Western Gribade Highland per allthings 244384 (missing from allthings list page).",
+        "Metabot page not reachable; data from aion2.gaming.tools 2202065 + allthings.how 244384. No Kibelisk. Zone Western Gribade Highland per allthings 244384 (missing from allthings list page). [2026-10-19: Metabot's quest page names the start as \"Fiona · Fafnite Deposit\" (build 0.0.4387.0).]",
         "zone: Metabot's quest page starts it in \"Fafnite Deposit\" (2026-10-19, build 0.0.4387.0); allthings.how and the data have Western Gribade Highland. Kept Western Gribade Highland until the owner checks in game (#325)."
       ]
     },
@@ -10423,7 +10423,7 @@
         "zone": "disputed"
       },
       "conflicts": [
-        "Metabot page not reachable; data from wikily.gg (Metabot dataset family) + aion2.gaming.tools 2202069. No Kibelisk.",
+        "Metabot page not reachable; data from wikily.gg (Metabot dataset family) + aion2.gaming.tools 2202069. No Kibelisk. [2026-10-19: Metabot's quest page names the start as \"Milo · Basfelt Waterfall\" (build 0.0.4387.0).]",
         "Turn-in place inferred from gaming.tools step 1 (talk to Milo on the Spirit Isle) — not stated as turn-in place",
         "zone: Metabot's quest page starts it in \"Basfelt Waterfall\" (2026-10-19, build 0.0.4387.0); allthings.how and the data have Basfelt Ruins. Kept Basfelt Ruins until the owner checks in game (#325)."
       ]
@@ -10619,8 +10619,8 @@
         "allthings.how: 'continues Tina's tour of Altgard's landmarks'; Tina points you toward 'the next leg' at the end of the Basfelt Ruins cliff"
       ],
       "conflicts": [
-        "Metabot gives no giver place/Kibelisk; app place 'Impetusium Square' not on Metabot. 1st Leg ends 'Talk to Tina at Safe Haven'; 2nd Leg ends at Nornir Assembly.",
-        "Giver place 'Battlescar Mound Cliff' from allthings.how (not on Metabot)",
+        "Metabot gives no giver place/Kibelisk; app place 'Impetusium Square' not on Metabot. 1st Leg ends 'Talk to Tina at Safe Haven'; 2nd Leg ends at Nornir Assembly. [2026-10-19: Metabot's quest page names the start as \"Tina · Battlescar Mound\" (build 0.0.4387.0).]",
+        "Giver place 'Battlescar Mound Cliff' from allthings.how (not on Metabot) [2026-10-19: Metabot's quest page names the start as \"Tina · Battlescar Mound\" (build 0.0.4387.0).]",
         "zone: allthings.how files it under \"Impetusium Square\"; the giver's camp / place puts it in Battlescar Mound (E3 CAMP_ZONE / E4 giver-zone rule)."
       ]
     },
@@ -10809,7 +10809,7 @@
         "turnin.zone": "inferred"
       },
       "conflicts": [
-        "Metabot page not reachable; data from aion2.gaming.tools 2202071. Giver place unknown: app 'Basfelt Ruins Cliff' is consistent with allthings 2nd-Leg text ('the next leg' at the end of the Basfelt Ruins cliff) but not stated as the pickup. Zone Basfelt Ruins per allthings list page.",
+        "Metabot page not reachable; data from aion2.gaming.tools 2202071. Giver place unknown: app 'Basfelt Ruins Cliff' is consistent with allthings 2nd-Leg text ('the next leg' at the end of the Basfelt Ruins cliff) but not stated as the pickup. Zone Basfelt Ruins per allthings list page. [2026-10-19: Metabot's quest page names the start as \"Tina · Basfelt Ruins\" (build 0.0.4387.0).]",
         "Unlock level: allthings states 'unlocks at level 10' only for the Verteron (Elyos) Final Stretch; recorded 10 from gaming.tools header 'Level 10'"
       ]
     }
