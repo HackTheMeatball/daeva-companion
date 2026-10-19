@@ -72,12 +72,21 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
      Release Planner starts no planning pass, writes no plan and queues nothing for the minor before that message.
      0.8 is not redone.
    - **Inputs are logged live; Kaizen aggregates (owner, 2026-10-19 2:57 PM ET, Kaizen thread).** Each review input is
-     logged as it happens by its owner: stalls, incidents and owner waits by Stall Watch (Mike) and Incident Log
-     (Hank) in #221; plan, execution and usage by the Release Planner in #232; waste, CI health and each build's
-     model and outcome by Build Pipeline (Gus) in #114's Waste section; player findings by Jesse; game data by Game
-     Data Check (Gretchen); rules, decisions, drift and roster by Kaizen (Gale) until a Rules Steward is approved.
-     After `RELEASE SHIPPED` each owner sends Kaizen `REPORT READY <minor>`, and the review starts when the last
-     one arrives. Anything Kaizen has to look up after the fact is a gap, assigned to an owner at that review.
+     logged as it happens by its owner: stalls, incidents, owner waits and the per-release error report by Stall Watch
+     (Mike), the only writer of #221 since Incident Log (Hank) folded into it (owner, 2026-10-19 4:56 PM ET); plan,
+     execution and usage by the Release Planner in #232; waste, CI health and each build's model and outcome by
+     Build Pipeline (Gus) in #114's Waste section; player findings by Jesse; game data by Game Data Check
+     (Gretchen); rules, decisions, drift and roster by Rules Steward (Francesca). After `RELEASE SHIPPED` each owner sends
+     Kaizen `REPORT READY <minor>`, and the review starts when the last one arrives. Anything Kaizen has to look up
+     after the fact is a gap, assigned to an owner at that review.
+   - **Kaizen's own rules are graded by someone else (owner, 2026-10-19 4:56 PM ET, Kaizen thread).** From 0.9, at
+     each minor review, Rules Steward (Francesca) grades Kaizen's own rules (KZ-*, PLN-02/03/04, CLK-04), checks
+     that the scorecard compares like with like, and reports to Coordinator (Saul)'s debrief, not to Kaizen; Kaizen
+     grades Q-14 (the ledger as each rule's one home), which Rules Steward owns (owner, 4:57 PM ET), so no one
+     grades their own rule.
+     Kaizen's reading, which the Release Planner applies: the review is complete, and `KAIZEN REVIEW DONE` can be
+     sent, only once that grading is in the debrief. A full team audit runs only at a major release or when two or
+     more standing threads are added or removed.
    - **Changes.** Each cause that repeated, and each metric that got worse, becomes one concrete process change: a
      #222 row, put in place before the minor's first item is queued (a #114 rule, a planner-instruction change, or
      a workflow PR). Stall limits that a build actually hit, the build cap and model routing in #114 are
@@ -131,7 +140,11 @@ the release build copies it verbatim, and Gretchen's check reads that text again
 sends Game Data Check (Gretchen) `PRE-RELEASE CHECK <version>` and tells Build Pipeline (Gus)
 `DATA OK <version>` only after she answers `DATA OK`; Gus queues and ships the release item only then. A `DATA HOLD`
 means the named data is fixed first. Stall Watch (Mike) flags a check unanswered after 60 min. If data lands on main
-after her check, she re-runs it before the tag.
+after her check, she re-runs it before the tag. **Release-candidate play (owner, 2026-10-19 4:56 PM ET), for every
+minor from 0.8.0:** with `PRE-RELEASE CHECK` the Release Planner sends Player Testing (Jesse) `RC READY <minor> <sha>`
+(main's head once every item has merged); Jesse plays main built locally at that commit and answers
+`RC PLAY DONE <minor>` with an issue link. The Release Planner reads that report before telling Gus `DATA OK`. The
+live play after release and the per-patch delta check stay.
 
 ## How an objective is worked
 
@@ -981,7 +994,7 @@ build times that would change them. Each item's problem, result, no-gos, accepta
 | P13 | Regional quests and the extract tip lack the game's icons, and the click-twice box hides its second state → the state icon (#409: the owner's star crop, Metabot's `quest_district`, ✓) replaces the box, marked by one "Picked up" / "Turned in" / Undo button, in milestone rows and the Next up card, where every quest row also shows its map pin left of the button and long names are cut with "…"; the ✓ is a centred SVG (owner A, 2:36–2:40 PM ET; `2b-check-fix.png`, `2c-map-pin.png`), same `started`/`checks` data, no save change; extract flask unchanged (Design Lead round 2, §2 and §4) | L | Opus | gen, golden, nextup.css, rows | `owner-ok-0.8-crop-icons` |
 | P14 | Key setup and macro steps don't match the game (#387) → the game's grid, the macro on right click, Shadowstrike on E | M | Opus | gen, golden, build-card, a11y, rows | `research-387-macro` |
 | P15 | Auto level-up fires at the wrong level (#401) → it uses the level the quest is turned in at | M | Opus | gen, golden | `research-401-levels` |
-| R | Release 0.8.0 | S | Sonnet | release, alone | everything above, or moved to 0.8.x; `DATA OK 0.8.0` |
+| R | Release 0.8.0 | S | Sonnet | release, alone | everything above, or moved to 0.8.x; `RC PLAY DONE 0.8` read; `DATA OK 0.8.0` |
 
 Not bot items (they run alongside): Game Data Check does the research gates `research-gl-sm-icons`, `research-387-macro`
 and `research-401-levels`, plus #329 (the ◆ 5th stigma specialization), her tip:extract data nits and the #325 data audit
@@ -1018,6 +1031,9 @@ packs, since those are the minor's point.
 Checked: no two items in one wave own the same file. Waves are the expected order, not gates. Under K15, a gated item
 (P10, P11, P12, P13) whose OK isn't typed by the time its lane is free moves to the end of the queue, not waited on. An item
 whose research isn't in by the time the rest has merged moves to 0.8.x.
+
+**After 0.8.0 ships (not a bot item):** team-audit rec 4, moving rules out of #114 to their owners' homes, put in
+place by Kaizen (Gale) through each rule's owner (owner, 2026-10-19 4:57 PM ET; `/mnt/project-files/audit-1.0/team-audit-1.0.md`).
 
 #### Owner input (step 5)
 
