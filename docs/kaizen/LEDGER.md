@@ -15,7 +15,7 @@ drift from it. If a summary and its home disagree, the home wins and the summary
 | `kind` | `safety`, `owner-rule` (one of Isaac's own rules), `process`, or `decision` (a DECISIONS row) |
 | `area` | The part of the work it governs, from the id prefix (table below) |
 | `summary` | One short line (≤ 140 characters) saying what the rule is now, in the team's terms |
-| `plain` | One plain-English sentence (≤ 160 characters, the test allows 200) that Isaac, or anyone reading the tracker, understands without context. For a decision it says what was decided, not the topic name. Never a copy of the full text |
+| `plain` | One plain-English sentence (≤ 160 characters, the test allows 200) that Isaac, or anyone reading the tracker, understands without context. For a decision it says what was decided, not the topic name. A retired or superseded row states the old rule in its own words, with no "Retired:" prefix (`status` marks it). Never a copy of the full text |
 | `owner` | The one person accountable for the rule (list below). Every decision's owner is Isaac |
 | `enforced_by` | The others who carry it out or check it: names separated by `;`, or `all` (every thread), or `harness` (the platform's safety check enforces it). Empty when the owner does it alone. For a decision, the thread that carries it out, when that is clear |
 | `home` | Where the full text lives: `path/in/repo.md#<heading or phrase in that file>`, `docs/DECISIONS.md#YYYY-MM-DD / <Topic>` for a DECISIONS row, or a GitHub issue (`#114`, `#221`, `#222`, `#232`). Never a team-memory file |

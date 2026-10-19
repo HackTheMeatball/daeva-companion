@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /* Rules and decisions ledger checks (docs/kaizen/LEDGER.md), Node only, no browser, no build. checkLedger() returns a
    list of problems; tests/schema.mjs runs it (so the CI data job fails on any), and `node tests/ledger.mjs` runs it alone.
-   Checks: the exact header; unique ids; non-empty summary, plain (≤ 200 chars, no issue numbers or rule ids), owner and
+   Checks: the exact header; unique ids; non-empty summary, plain (≤ 200 chars, no issue numbers or rule ids, no
+   "Retired:"/"Superseded:" prefix), owner and
    home; owner is one known name (Isaac for a decision) and enforced_by is empty or ;-separated known names, all or
    harness, never repeating the owner; kind and status from their fixed sets; every
    repo-file home exists and its #anchor text is in that file (case-insensitive, backticks and runs of whitespace
@@ -78,6 +79,7 @@ export function checkLedger(root = ROOT, { csvText, ledgerMd } = {}) {
     if (r.plain.length > 200) problems.push(`${at}: plain is ${r.plain.length} chars (max 200)`);
     const ref = r.plain.match(/#\d+|\b[A-Z]{2,4}-\d+\b/);
     if (ref) problems.push(`${at}: plain names "${ref[0]}"; say what it means instead of an issue number or rule id`);
+    if (/^(retired|superseded)\b/i.test(r.plain)) problems.push(`${at}: plain starts "${r.plain.split(/[:\s]/)[0]}"; state the rule itself, status already marks it`);
     if (r.kind === 'decision' && r.owner && r.owner !== 'Isaac') problems.push(`${at}: a decision's owner is Isaac, not "${r.owner}"`);
     if (r.owner && !OWNERS.has(r.owner)) problems.push(`${at}: owner "${r.owner}" is not one of ${[...OWNERS].join('/')}`);
     if (r.enforced_by) for (const e of r.enforced_by.split(';').map(x => x.trim()))
