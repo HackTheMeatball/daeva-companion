@@ -47,7 +47,9 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
    one statement):** Player Testing (Jesse) plays it and sends `PLAY DONE`, then Kaizen (Gale) sends
    `KAIZEN REVIEW DONE`, then the Release Planner writes the planning pass; each sends Coordinator (Saul) and Tracker
    sync (Huell) a report, and Saul folds them into one morning debrief. Nothing of the next minor builds before the
-   owner's typed go.
+   owner's typed go. **Tinkering stop (owner, 2026-10-19 5:47 PM ET):** between the draft plan and the go, the owner
+   looks the plan over. If nothing needs changing he just types the go. Scope ideas are folded into the plan; rule and
+   team ideas queue for Kaizen's next review, unless a scope change needs one now.
    - **Data.** Combine the **stall log (#221)**: stalls and idle minutes by Kind, and the Kinds that came back
      after a fix; the **planner log (#232)**: one row per planning pass and per release (what was queued and
      whether it worked out), plus the usage checkpoints (bot runs by model and outcome against the owner's weekly
