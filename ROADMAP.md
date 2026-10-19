@@ -43,7 +43,8 @@ major release (1.0, 2.0 …) Kaizen runs a larger pass over the data of all the 
    release, with a weekly fallback (owner, 2026-10-18). The Release Planner opens the pass by sending Kaizen
    `PLANNING PASS START <minor> <ET time>` and writes steps 2–6 only after that review is in. Raised usage caps don't
    change the goal: the least waste per item shipped (owner, 2026-10-17 3:00 PM ET).
-   **Order after a minor ships (owner, 2026-10-18 11:21 PM ET; this is its one statement):** Player Testing (Jesse)
+   **Order after a minor ships (owner, 2026-10-18 11:21 PM ET; wording approved 2026-10-19 12:51 PM ET; this is its one
+   statement):** Player Testing (Jesse)
    plays it and sends `PLAY DONE`, then Kaizen (Gale) sends `KAIZEN REVIEW DONE`, then the Release Planner writes the
    planning pass; each sends Coordinator (Saul) and Tracker sync (Huell) a report, and Saul folds them into one
    morning debrief. Nothing of the next minor builds before the owner's typed go.
@@ -92,14 +93,15 @@ major release (1.0, 2.0 …) Kaizen runs a larger pass over the data of all the 
    tracker To-do; everything else follows the recommendation. Every decision is recorded on the tracker as
    **user remediated** (the owner chose) or **Claude remediated** (the recommendation applied under a standing
    approval), so the owner can see which calls were whose.
-   **When (Kaizen K15, 2026-10-19; replaces K10):** the planning pass lists every OK the minor needs, each release's
-   ship OK included, each with its recommendation, the exact words to type and the thread to type them in (the thread
-   whose session records it). Coordinator (Saul) asks them as one batch in the next morning debrief, grouped by
+   **When (Kaizen K15, 2026-10-19; replaces K10):** the planning pass lists every OK the minor needs, its standing
+   ship OK included (one per minor, covering the .0 and every patch; owner, 2026-10-19 12:50 PM ET) (and, per release, one line asking the owner's weekly usage %, which the Release Planner records in
+   that release's #232 row; owner, 2026-10-19 12:51 PM ET), each with its recommendation, the exact words to type and the thread to type them in (the thread
+   whose session records it). Coordinator (Saul) asks them as one batch in the next morning debrief (owner OK 2026-10-19 12:51 PM ET), grouped by
    thread; the target is ≤ 3 threads (a ship OK is typed in Build Pipeline (Gus)'s thread, a tracker OK in Tracker
    sync (Huell)'s or Skyler's). Ungated items are queued first, and a gated item without its typed OK goes to the end
    of the queue; it never holds a lane or the critical path. One exception: a question that first comes up mid-minor
    and gates an item already queued or building goes out at once as a HARD BLOCKER. Research gates start at pass start
-   (K10).
+   (kept from K10).
 6. **Write and review.** The plan goes into this file and the #114 queue in one PR, written by one session and
    reviewed by a separate one that didn't write it. Then the planner queues the items, top of the lane map first.
 
