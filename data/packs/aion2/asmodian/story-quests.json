@@ -659,6 +659,15 @@
           "text": "Turn in — Elvida, Witch's Cabin"
         }
       ],
+      "rewards": {
+        "xp": 3915,
+        "kina": 1600,
+        "wisdom": null,
+        "crystal": null,
+        "items": [
+          "Courage Scroll (Bound) x20"
+        ]
+      },
       "requires": {
         "story": "sq:2101030",
         "is": "turnedIn",
@@ -731,6 +740,33 @@
             "value": "0.0.4387.0"
           },
           "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/isolated-lake",
+          "fields": [
+            "rewards"
+          ],
+          "checkedAt": "2026-10-18",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page Rewards table: 3,915 EXP, Kina (Bound) 1,600, Courage Scroll (Bound) x20 (Game Data Check, 2026-10-18)"
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-18-isolated-lake-01",
+            "checkedAt": "2026-10-18",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Turn-in screen, Asmodian Assassin: Basic Rewards 100% EXP and 1.6K Kinah; Additional Rewards Courage Scroll (Bound) x20"
+          },
+          "fields": [
+            "rewards"
+          ],
+          "note": "Matches the Metabot rewards; the screen shows Kinah rounded (1.6K) and EXP as a percent of the level"
         }
       ],
       "verifiedAt": "2026-10-18",
