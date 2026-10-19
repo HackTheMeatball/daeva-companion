@@ -29,6 +29,12 @@ favicon, icons, manifest theme colour); the app keeps its plum palette until the
 - **Icon source order** (Isaac, 2026-10-18 8:57 and 10:22 PM ET): every game icon is looked up first by Game Data Check
   (Gretchen) on approved sources (Metabot first). Isaac's own crops are used only when that check finds no better copy.
   A crop that is used gets its background removed (transparent PNG) and is centred in its icon box, like any other icon.
+- **Crop clean-up is Design Lead's job** (Isaac, 2026-10-18 11:11 PM ET): when Game Data Check's search finds nothing,
+  it hands the raw crop to Design Lead (Jane), who cleans it and approves it in one step. Method (first used on T-47):
+  background = median of the border pixels; alpha ramps with colour distance from it, colour un-mixed from it; trim to
+  the glyph, centre on a square canvas with an 8 % margin; never upscale. Name `<thing>-owner-crop.png`, record the
+  source screen. Check it on the real tile and pixel-zoomed on a checkerboard; a crop under the tile size is drawn no
+  larger than its source. Cleaned crops live in /mnt/project-files/icons-hq/owner-crops/.
 - **No dead space around icons** (Isaac, 2026-10-18 10:22 PM ET): an icon tile lines up with the title it belongs to,
   and every line under the title runs the card's full width; the tile never sits vertically centred beside a tall text
   block. Mockup: `docs/design/0.6.2-icon-fit-mockup.md`. Applies to every card we build (app and tracker).
