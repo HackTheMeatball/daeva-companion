@@ -43,8 +43,11 @@ Rules for every item:
 - **Result.**
   - `data/packs/aion2/classes/templar/**`, each field with its source;
   - `sources.json` updated;
-  - icons as research saved them.
+  - icons as research saved them (`data/packs/aion2/asmodian/templar/icons/`, named `sk-templar-*`, with ISSUES.md
+    rows; P3 moves the ones the guide shows to `src/assets/icons/`).
   The class is not offered yet.
+- **Watch.** Metabot's page text prints some "Absorbs N% HP" specialties as "Absorbs 100, 100% HP" when the game says
+  1% (research §5). Write the game text.
 - **Acceptance.**
   - [ ] gen is green, and record counts match the research CSVs.
   - [ ] Golden and equiv are unchanged. No visible change.
@@ -220,7 +223,7 @@ The same as P3, for the Cleric. It runs after P3 because both edit `pack.js`.
   - [ ] Every file has a provenance row.
 - **Files.** `src/assets/icons/*` (the crops and `quest_district`), `src/packs/aion2/cards/nextup-kinds.js`,
   `src/styles/cards/nextup.css`, the extract tip data, and `docs/ISSUES.md`.
-- **Lanes:** golden, nextup.css. **Model:** Sonnet, M (80 min).
+- **Lanes:** gen, golden, nextup.css (the extract tip data and a new source URL regenerate `DATA_SOURCES.md`). **Model:** Sonnet, M (80 min).
 - **After:** `owner-ok-0.8-crop-icons`.
 
 ## P14: Key setup and macro steps match the game (#387)
@@ -243,7 +246,7 @@ The same as P3, for the Cleric. It runs after P3 because both edit `pack.js`.
   - [ ] gen and golden are green.
 - **Files.** `src/packs/aion2/cards/build.html`, `src/packs/aion2/requirements.js` (rotKeys), `src/packs/aion2/cards/rows.js`,
   the Assassin `builds.json` `keyStacks`, `claims.json`, and the a11y and golden tests.
-- **Lanes:** build-card, a11y. **Model:** Opus, M (80 min).
+- **Lanes:** gen, golden, build-card, a11y. **Model:** Opus, M (80 min).
 - **After:** `research-387-macro`.
 
 ## P15: Auto level-up uses the level at turn-in (#401)
@@ -257,7 +260,7 @@ The same as P3, for the Cleric. It runs after P3 because both edit `pack.js`.
   - [ ] Schema and gen are green.
 - **Files.** `data/schema/quests` (levelsUp), the story quest records, the auto-level rule in `src/core/**`,
   `tests/core`.
-- **Lanes:** golden. **Model:** Opus, M (80 min).
+- **Lanes:** gen, golden. **Model:** Opus, M (80 min).
 - **After:** `research-401-levels` (Game Data Check records the owner's level notes).
 
 ## R: Release 0.8.0

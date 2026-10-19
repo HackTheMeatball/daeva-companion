@@ -940,9 +940,9 @@ build times that would change them. Each item's problem, result, no-gos, accepta
 | P10 | Icons sit loose in Next up cards (#421) → the tile lines up with the title only, lines run full width | S | Sonnet | nextup.css | `owner-ok-0.8-icon-fit` (met, 2026-10-19 1:36 AM ET) |
 | P11 | Map markers on Next up tiles read small → sized by the visible emblem (Design Lead mockup, DESIGN OK 4:47 AM ET) | S | Sonnet | nextup.css | `owner-ok-0.8-marker-size` |
 | P12 | First-time players don't see the class choice (#333-3) → a "Your class" chip row on the welcome card (Design Lead mockup, DESIGN OK 6:23 AM ET) | M | Sonnet | welcome, a11y | `owner-ok-0.8-welcome-class` |
-| P13 | Regional quests and the extract tip lack the game's icons → regional quest state tiles (#409: the owner's star crop, Metabot's `quest_district`) and the extract flask (Design Lead mockup, DESIGN OK 6:23 AM ET) | M | Sonnet | golden, nextup.css | `owner-ok-0.8-crop-icons` |
-| P14 | Key setup and macro steps don't match the game (#387) → the game's grid, the macro on right click, Shadowstrike on E | M | Opus | build-card, a11y | `research-387-macro` |
-| P15 | Auto level-up fires at the wrong level (#401) → it uses the level the quest is turned in at | M | Opus | golden | `research-401-levels` |
+| P13 | Regional quests and the extract tip lack the game's icons → regional quest state tiles (#409: the owner's star crop, Metabot's `quest_district`) and the extract flask (Design Lead mockup, DESIGN OK 6:23 AM ET) | M | Sonnet | gen, golden, nextup.css | `owner-ok-0.8-crop-icons` |
+| P14 | Key setup and macro steps don't match the game (#387) → the game's grid, the macro on right click, Shadowstrike on E | M | Opus | gen, golden, build-card, a11y | `research-387-macro` |
+| P15 | Auto level-up fires at the wrong level (#401) → it uses the level the quest is turned in at | M | Opus | gen, golden | `research-401-levels` |
 | R | Release 0.8.0 | S | Sonnet | release, alone | everything above, or moved to 0.8.x; `DATA OK 0.8.0` |
 
 Not bot items (they run alongside): Game Data Check does the research gates `research-gl-sm-icons`, `research-387-macro`
@@ -958,20 +958,23 @@ places), a 0.9 candidate.
 
 #### Waves and lane map (step 4)
 
-At most five builds at a time. Serial lanes: **gen** P1 → P2 → P3 → P4 → P5 (the critical path, gated by the two
-research sessions); **golden** P1, P3, P5, P13, P15; **a11y** P7 → P9 → P8 → P12 → P14; **nextup.css** P10 → P11 → P13;
-**welcome** P8 → P12; **build-card** P9 → P14; **site** P6 alone. Critical path: `research-templar` → P2 → P3 →
-P5 → R.
+At most five builds at a time. Serial lanes: **gen** P1 → P2 → P3 → P4 → P5 → P13 → P14 → P15 (every item that
+touches `data/`); **golden** the same items; **a11y** P7 → P9 → P8 → P12 → P14; **nextup.css** P10 → P11 → P13;
+**welcome** P8 → P12; **build-card** P9 → P14; **site** P6 alone. Critical path: `research-templar` (in, #447) → P2 →
+P3 → P4 → P5 → R. The gen/golden lane is the bottleneck: the non-class items on it (P13, P14, P15) run after the class
+packs, since those are the minor's point.
 
 | Wave | Builds (no owner OK needed first, K15) |
 |---|---|
-| 1 | P6 (site) ∥ P7 (app.css, a11y) ∥ P10 (nextup.css) ∥ P1 (gen, golden; once its research is in) |
-| 2 | P9 (a11y) ∥ P2 (gen) ∥ P11 (nextup.css; gated) |
-| 3 | P8 (a11y) ∥ P3 (gen, golden) ∥ P13 (golden, nextup.css; gated) |
-| 4 | P12 (a11y; gated) ∥ P4 (gen) |
-| 5 | P14 (a11y, build-card) ∥ P5 (gen, golden) |
-| 6 | P15 (golden), when its level notes are in |
-| 7 | R, alone, after the CHANGELOG draft (K17) and `DATA OK 0.8.0` |
+| 1 | P6 (site) ∥ P7 (app.css, a11y) ∥ P10 (nextup.css) ∥ P1 (gen, golden) |
+| 2 | P9 (a11y, build-card) ∥ P2 (gen) ∥ P11 (nextup.css; gated) |
+| 3 | P8 (a11y, welcome) ∥ P3 (gen, golden) |
+| 4 | P12 (a11y, welcome; gated) ∥ P4 (gen) |
+| 5 | P5 (gen, golden) |
+| 6 | P13 (gen, golden, nextup.css; gated) |
+| 7 | P14 (gen, golden, build-card, a11y) |
+| 8 | P15 (gen, golden), when its level notes are in |
+| 9 | R, alone, after the CHANGELOG draft (K17) and `DATA OK 0.8.0` |
 
 Checked: no two items in one wave own the same file. Waves are the expected order, not gates. Under K15, a gated item
 (P11, P12, P13) whose OK isn't typed by the time its lane is free moves to the end of the queue, not waited on. An item
