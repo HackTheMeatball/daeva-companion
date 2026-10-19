@@ -10,7 +10,7 @@ sites: Metabot's whole `mapicons` set and zone pages, and aion2quest.pro's `UT_M
 | Site | Terms (read first) | robots.txt | Content |
 |---|---|---|---|
 | www.aion2kina.com | Pass: <https://www.aion2kina.com/en/terms/> (updated 2026-10-17) bans only "unreasonable automated load"; "AION2 names, marks, and official media belong to NC Corporation" | Pass: `Allow: /`, disallows `/admin/`, `/api/admin/`, `/api/journey-events/` | Map marker categories are Collectables, Gathering, Pet, Location only; icons are a generic web icon set (inferred; the marker bundle was not opened). No quest or zone-type icons |
-| namu.wiki | Not read: 403 Cloudflare challenge on the first request, stopped | Not read | — |
+| namu.wiki | Not read: 403 Cloudflare challenge on our first request, the terms page (`/w/나무위키:이용약관`), stopped | Not read | — |
 | Allakhazam / ZAM | Fail: <https://corp.fanbyte.com/legal/terms> bans access "using any engine, software, tool, agent, device or mechanism (including spiders, robots, crawlers, data mining tools or the like)" other than browsers | Not read (terms fail) | — |
 
 Searched, not vetted: no AION 2 Fandom, wiki.gg or Fextralife wiki exists; wiki search results were wikily.gg and
