@@ -19,7 +19,8 @@ no running out before 1.0: 1.0 ships when its scope is done.
 
 - **Minor (0.X.0)**: a theme, i.e. one or more related objectives. New ideas join a theme that fits before they start a
   new one.
-- **Patch (0.X.Y)**: fixes, data corrections, small polish and upkeep. No new features.
+- **Patch (0.X.Y)**: fixes, data corrections, small polish and upkeep. No new features. New looks (what a player
+  sees changes) go in the next minor unless the owner says "now" for that item (owner, 2026-10-18 10:40 PM ET, DECISIONS).
 - **Releasing**: bump `version` in `package.json` and add a `## X.Y.Z` section to CHANGELOG.md in the same commit. After
   tests and the deploy pass on `main`, CI tags `vX.Y.Z` and publishes the GitHub Release with that section as its notes.
   CI fails early if the version has no CHANGELOG section.
@@ -461,7 +462,7 @@ Not blockers (the recommendation applies unless the owner says otherwise):
 
 - **Story step-points research** (gates P9; token `research-step-points`): a cloud research session (it needs the web)
   reads the Metabot quest pages of the 51 story quests with step markers (about 185 points) under the fetching rules
-  (terms and robots.txt first, ≤ 12 requests / min, one at a time, our User-Agent, 24 h cache, facts only), and writes
+  (terms first, then robots.txt, ≤ 12 requests / min, one at a time, our User-Agent, 24 h cache, facts only), and writes
   `docs/research/2026-10-story-step-points.md` plus a CSV under `data/research/`, each point with its page URL. The
   coordinator starts it; no aion2.th.gl.
 - **Route label proposals** for P14's toggle (Data & Research, docs only).
@@ -702,6 +703,12 @@ Contents: F1 #366, F2, F3, F4 #362, F5 #370, data fixes #361, #363, #364 (#358);
 
 ### 0.6.2 — the owner-gated 0.6 leftovers
 
+**Folded into 0.7.0 (owner rule, 2026-10-18 10:40 PM ET: "New looks ship in the next minor by default; a patch only
+when I say now").** There is no 0.6.2 release: the items below keep their issue titles (so their owner-ok tokens still
+parse) and are listed in the 0.7.0 CHANGELOG. Main already carries merged 0.7 work, so a 0.6.2 cut from main would have
+shipped it too. The Release Planner sends `PRE-RELEASE CHECK 0.7.0` only after these have merged as well, which holds
+Release 0.7.0 (#350) for them. The text below is kept as the record of how they were planned.
+
 - **P13** story-quest icon (#272), after `owner-ok-story-icon` (the owner's icon crop).
 - **P15** respec walk-through (#274), after `P14, owner-ok-keys` (the owner's in-game key screens).
 
@@ -718,9 +725,23 @@ until a DESIGN OK and the owner's OK.
 
 More owner input the same evening (8:01–8:46 PM ET): **P16** (#398) drops the Daeva Pass and Save-stones Next up
 steps, folds the stone advice and his extraction screens into the extract tip, and finds why the Wisdom Stones card
-showed early (queued after P15). **P17** (#397): Next up step cards say how and item names show their icon, after
-`owner-ok-0.6.2-step-how` and `owner-ok-0.6.2-item-icons` (owner typed both 9:38 PM ET; Design Lead mockup #403, #406). Planned, not queued: the Key setup / macro fix (#387, waits on Game Data Check), story
-card state icons (#391, Design Lead mockup #394, waits on the owner's OK), the icons-and-locks mockup (#389, waits on the owner's OK), map icons (#404, Design Lead mockup #408), regional quest state icons (#409, Design Lead). Player-chosen keys (#388) is a 0.8 candidate.
+showed early (queued after P15).
+
+Owner OKs typed 2026-10-18 9:38–10:04 PM ET turned the evening's mockups into builds (DECISIONS rows of that time):
+
+| Item | What | Mockup | Lanes |
+|---|---|---|---|
+| P17 (#397) | Next up step cards say how; item names show their icon | #403, #406 | golden, app.css, a11y |
+| P18 (#414) | Key setup shows skill icons, key chips under each column | #389 §1, §1a | a11y |
+| P19 (#415) | Locked-card shells in Basic on desktop, "N levels to go" | #389 §2 | main.js, app.css, a11y |
+| P20 (#391) | Story card icon follows the quest state | #394 | golden, app.css |
+| P21 (#404) | Map markers: Sealed Dungeon, Stronghold, Kibelisk, Empyrean Trace | #408 | golden, app.css |
+
+Golden runs P13 → P15 → P16 → P17 → P20 → P21 by queue order (P20 needs P13's icon, P21 the dark tile).
+P21 also waits on `research-map-icons` (Game Data Check commits the files; bot builds have no web). Patch items
+don't auto-queue from their bodies (kickoff keys only minor titles): Build Pipeline adds their #114 lines.
+Planned, not queued: the Key setup / macro fix (#387, waits on the owner's in-game checks; the macro walk-through of
+#389 §1b ships with it), regional quest state icons (#409, Design Lead). Player-chosen keys (#388) is a 0.8 candidate.
 
 ### 0.7 — The Gladiator, a second class, and sync
 
@@ -782,6 +803,8 @@ C2, Y2, Y3). Models follow #114's routing; stall limits as the 0.6 scorecard lef
 | [P8](https://github.com/HackTheMeatball/daeva-companion/issues/382) | Sync line shown to every visitor before the server exists → hidden behind `SYNC_LIVE` (false) until the server deploy turns it on (added 2026-10-18 7:20 PM ET; must merge before 0.6.1) | S | `src/site.js`, `src/shell/sync-host-http.js`, `tests/site.js` | Sonnet | 44 | a11y |
 | [P9](https://github.com/HackTheMeatball/daeva-companion/issues/383) | Two builds, one shipped → the site is the only build; the claude.ai artifact build is removed (owner freeze, 2026-10-18 7:12 PM ET) | M | `scripts/build.mjs`, `scripts/serve.mjs`, tests, `docs/ARCHITECTURE.md`, `docs/DEPLOY.md` | Opus | 80 | gen, a11y |
 | [P10](https://github.com/HackTheMeatball/daeva-companion/issues/399) | P9 left inert artifact-class code → removed (`ARTIFACT_CLASSES`, `siteOnlyNote`, `DAEVA_CLASSES`, schema field; #396 review, added 2026-10-18 8:50 PM ET) | S | `src/cards/characters.js`, `data/schema/pack.schema.json`, `scripts/build.mjs` filter path, `tests/save.js` header | Sonnet | 44 | gen |
+| [P11](https://github.com/HackTheMeatball/daeva-companion/issues/418) | Ranger and Gladiator Key setup say "no source" / show only the guide's line, though the owner's screens show the game's default keys → per-key skill stacks in data, Q/E no longer hard-coded (added 2026-10-18 10:20 PM ET) | M | `data/schema/builds.schema.json`, `src/packs/aion2/requirements.js`, `src/packs/aion2/data/build.js`, Ranger and Gladiator `builds.json` | Opus | 80 | gen, a11y |
+| [P12](https://github.com/HackTheMeatball/daeva-companion/issues/422) | Spiritmaster Route rules talk about Elemental Fusion from Lv 1 (#410 review) → Route rules hide a step until its `requires.level`; triggers step gated at Lv 14 (added 2026-10-18 10:40 PM ET) | S | `src/cards/route.js`, Spiritmaster `steps.json` | Sonnet | 44 | golden-route |
 | [R](docs/plans/0.7/R-release-0.7.0.md) | Release 0.7.0 | S | `package.json`, `package-lock.json`, `CHANGELOG.md` | Sonnet | 44 | release, alone |
 
 Not a bot item: **sync deploy** (Build Pipeline, after owner input 4 and P5): a deploy workflow with the owner's token.
@@ -848,6 +871,15 @@ Decisions this pass recorded (for the tracker):
 
 Each minor: two class packs side by side (lanes A and B; order by the D8 rule), plus the 1.0 audit's fixes in lane C as
 found. Each starts its classes' research at its planning pass start (K10).
+
+Carried in (Release Planner, 2026-10-18 10:55 PM ET, under the owner's "new looks ship in the next minor" rule and K13):
+owner icon crops with no approved-source copy (`/mnt/project-files/icons-hq/unmatched-icons-2026-10-18.png`), cleaned up
+(background removed, transparent, centred; owner, 10:22 PM and 10:51 PM ET) after Design Lead's review, for new uses:
+regional quest state icons (#409), campsite and point-of-interest map markers (held by the map-icons OK, Q5), and the
+extract action icon. The journal-check crop P20 (#391) already uses under its OK is cleaned up inside P20, in 0.7.0.
+Also carried in: icons sit tight (Design Lead mockup #421, `docs/design/0.6.2-icon-fit-mockup.md`, the owner's
+10:22 PM ET ask): the tile lines up with the title only and the lines under it run the card's full width, one CSS change
+in `nextup.css` (`.ns-mhead`). Needs the owner's typed `0.8 icon fit OK` before the 0.8 pass queues it.
 
 ### 1.0
 

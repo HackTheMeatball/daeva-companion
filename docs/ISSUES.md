@@ -95,7 +95,8 @@ on purpose: the guide shows nothing rather than an unverified value.
   | blue-off.png, blue-on.png, green-off2.png, green-on2.png, orange-off.png, orange-on.png | | |
   | daevanion-crystal.png, enhance-stone.png, wisdom-stone.png | | |
   | sk-ambush.png, sk-assault-stance.png, sk-defense-break.png, sk-exploit-weakness.png, sk-heart-gore.png | | |
-  | sk-insignia-explosion.png, sk-quick-slice.png, sk-rear-smite.png, sk-savage-roar.png, sk-shadowstrike.png | | |
+  | sk-insignia-explosion.png, sk-quick-slice.png, sk-rear-smite.png, sk-savage-roar.png | | |
+  | sk-shadowstrike.png | <https://metabot.gg/en/aion-2/skills/shadowstrike> · file <https://metabot.gg/web/aion2/skills/13070000.webp> (256 px WebP → 128 px PNG; matches the 256 px copy in docs/research/map-icons-2026-10-18/ scaled down, mean pixel difference under 3 of 255) | 2026-10-18 (match checked) |
   | st-illusive-clone.png, st-savage-fang.png, st-swift-contract.png, st-triniels-dagger.png | | |
 - **Ranger skill and stigma icons: in the site, initials in the claude.ai artifact** (0.6 P5 shipped without them, #264;
   fetched 2026-10-18 7:17–7:21 AM ET for 0.6.1 F5, gate `research-ranger-icons`, docs/research/2026-10-ranger-icons.md).
@@ -184,13 +185,19 @@ on purpose: the guide shows nothing rather than an unverified value.
   `keyStacks.rightClick` and the drawer shows stat priority only, as for the Ranger. A follow-up makes those keys come
   from the build, then adds the Gladiator's rows.
 
-- **Story-quest icon: no approved source found yet** (0.6 gate `research-story-icon`, for P13; searched 2026-10-18
-  3:12–3:21 AM ET). The owner's OK for the game's yellow story-quest icon is #254 note 7. The plan's source is Metabot
-  first, else a file the owner supplies.
+- **Story-quest icon: in the site** (0.6 P13, #272; owner OK: #254 note 7 and DECISIONS `owner-ok-story-icon`). The Next
+  up story card shows the game's **active** story-quest icon on a dark tile; the 📜 emoji is the fallback when it can't
+  load. Per the owner's icon source rule (DECISIONS, 2026-10-18 8:57 PM ET: a better online copy first, his crop as the
+  fallback), it is Metabot's copy, found by Source Vetting after the first search below and committed as
+  `docs/research/icons-2026-10-18/story-quest-active-metabot.png` (52×52, transparent; WebP → PNG, pixels unchanged).
+  It matches the owner's crop `docs/research/owner-screens-2026-10-18/story-quest-active.png` (owner's crop, 2026-10-18),
+  which stays the fallback source and is not shipped. Site only: the claude.ai artifact is frozen, so no `/_blob/` id.
 
   | File | Source page | File URL | Retrieved |
   |---|---|---|---|
-  | (none yet) | not found on Metabot | none | n/a |
+  | story-quest-active.png | <https://metabot.gg/en/aion-2/map/altgard> (as Source Vetting reported) | <https://metabot.gg/web/aion2/mapicons/quest_hero.webp> | 2026-10-18 9:41 PM ET |
+
+  The first search (gate `research-story-icon`, 2026-10-18 3:12–3:21 AM ET) found nothing; kept for the record:
 
   - **Checked (CONFIRMED, none of these has a quest-type icon):** a story quest page
     (<https://metabot.gg/en/aion-2/quests/a-daeva-dreaming-anew>: only the NPC portrait, map tiles and site art), the
@@ -203,9 +210,7 @@ on purpose: the guide shows nothing rather than an unverified value.
     (docs/research/2026-10-source-vetting.md §5), aion2.th.gl and Game8 are excluded.
   - **Fetching:** robots.txt and the terms (effective 04/01/2026, unchanged) re-read first; own User-Agent, one request
     at a time, at least 6 s apart, 39 requests, no 403 / 429 / challenge. Nothing was kept.
-  - **Next step (owner):** supply the icon file (for example a crop of the yellow story-quest mark from an in-game
-    screen, at least 64 px, transparent background if possible), then record it here as "owner-supplied" with the date.
-    P13 stays unqueued until a row above has a file; this entry alone does not clear the gate.
+  - **Not checked then:** the map's marker files (`/web/aion2/mapicons/`), where Source Vetting later found the icon.
 
 - **Icons not in the claude.ai artifact** (closed by 0.7 P9). The five skill icons above (added 2026-10-15) never got a
   `/_blob/` id, so the frozen artifact shows the initials square for them. The artifact is no longer built and its blob

@@ -25,7 +25,7 @@ Use only sources in `data/packs/aion2/sources.json` (`records[]`). Read the reco
 This table is not exhaustive; the record in `data/packs/aion2/sources.json` decides. Any site that opts out of AI agents or all automated access is never fetched. Never read: **aion2.th.gl** (robots.txt excludes AI agents; `withdrawn`) and **Game8** (`banned`). Facts that came from
 th.gl are re-verified against a permitted source and attributed to it.
 
-Fetch rules: read terms and robots.txt before any content page. Our own honest User-Agent. At most 12 requests a minute
+Fetch rules: read the terms first, then robots.txt, before any content page. Our own honest User-Agent. At most 12 requests a minute
 per host, one at a time, 24 h cache. Stop at the first 403, 429 or challenge page and tell the owner; never work around
 one. A site that only bans scraping gets a few spot checks, 5 s apart, facts only.
 
