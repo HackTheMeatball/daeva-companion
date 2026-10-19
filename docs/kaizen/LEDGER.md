@@ -61,7 +61,7 @@ change to an owner changes that row and this table in the same PR. Rules Steward
 | Workflows, kickoff, auto-merge, shipping a release | Gus | | PIP-03, MRG-01, PLN-19 |
 | The #114 body | Gus (owners edit only their own status line) | | Q-13 |
 | Health check: stalls, idle queue, red runs, tracker drift | Mike | | HC-01 |
-| The stall log #221: every row, its format and kinds, the per-release error report, KIND RECURRED | Mike (Hank until he hands over) | everyone else (report stalls to Mike) | DEC-20261019-incident-log-folds-into-stall, HC-02 |
+| The stall log #221: every row, its format and kinds, the per-release error report, KIND RECURRED | Mike | everyone else (report stalls to Mike) | DEC-20261019-incident-log-folds-into-stall, HC-02 |
 | A typed OK not applied within 60 min (a stall) | Mike | | DEC-20261019-saul-owns-what-s-waiting |
 | Playing the release candidate before the tag and the live site after; player findings issues | Jesse | | PLN-21, PLN-22, DEC-20261019-player-testing-plays-each-minor |
 | Kaizen review, #222, the scorecard, rule changes and grades | Gale | | KZ-01, PLN-04 |
