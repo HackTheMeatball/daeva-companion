@@ -30,7 +30,12 @@
   11. Ascension bar (0.3 E8, same saves as 10): shown in Basic and Advanced, a progressbar named "Ascension" with its value
       (aria-valuenow / max / valuetext), the same label in both modes, axe-clean.
   15. Headings and the board line (0.6.1 F4): no empty heading, no two h2 with the same name (locked-card shells
-      included); the Daevanion board line inside its card at desktop widths in the shipped fonts. */
+      included); the Daevanion board line inside its card at desktop widths in the shipped fonts.
+  16. Step how and item icons (0.6.2 P17, #397; 390 / 1500 px × Basic / Advanced): the Lv 10 Extract card is title, how
+      line, meta line, the rest behind its "i" (no tip popover inside); Later rows have no how and no "i"; a step with
+      nothing after its bold phrase has only its title. Item icons: "Soul Crystal" / "Life Crystal" get none (the one
+      matcher, itemKeyOf / itemLine), milestone rows get none, and at 195 / 390 / 1500 px no number + icon + word unit
+      wraps apart. */
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path'); const CFG = require('./config');
 const { writeSave, clearSave, flatFixture } = require('./support/save');
 const AXE = fs.readFileSync(require.resolve('axe-core/axe.min.js'), 'utf8');
@@ -622,6 +627,64 @@ async function load(p, state, mode) {
     await p.keyboard.press('Escape'); await p.waitForTimeout(400);
     ok('Build sheet 390px: Escape closes it and focus returns to the Build tab', await p.evaluate(() => !document.getElementById('statDrawer').classList.contains('open') && document.activeElement.id === 'tabBuild'));
     await ctx.close();
+  }
+
+  /* ---------- 0.6.2 P17 (#397): a step card's how line (mockup §1-§2) and inline item icons (§4) ---------- */
+  {
+    /* every step below the level ticked, as the mockup's frames (the Lv 10 Extract card) */
+    /* (only: tick the level's own steps too, all but that one, so it is the step Next up shows) */
+    const upTo = async (p, L, only) => p.evaluate(([L, only]) => ({ level: L, quest: QUESTS.find(([l]) => l >= L)[1], open: {},
+      checks: Object.fromEntries(GATES.filter(g => g.lv < L || (only && g.lv === L)).flatMap(g => g.items.filter(it => it.k && it.k !== only)).map(it => [it.k, true])) }), [L, only]);
+    const card = (p, re) => p.evaluate(re => { /* the title without its "i" button */
+      const h3Of = c => { const h = c.querySelector('h3').cloneNode(true); h.querySelectorAll('button').forEach(b => b.remove()); return h.textContent.trim(); };
+      const c = [...document.querySelectorAll('#nowStar .ns-card')].find(x => new RegExp(re).test(h3Of(x)));
+      if (!c) return null; const t = c.querySelector('.title'), kids = [...t.children].map(e => e.tagName + (e.className ? '.' + e.className.split(' ')[0] : ''));
+      return { h3: h3Of(c), how: (t.querySelector('p.ns-how') || {}).textContent || '', i: !!c.querySelector('h3 .nsinfo'), info: (c.querySelector('.ns-info') || {}).textContent || '', kids, tip: !!c.querySelector('.ns-how .tip, .ns-info .tip') }; }, re);
+    for (const [width, mode] of [[390, 'basic'], [390, 'advanced'], [1500, 'basic'], [1500, 'advanced']]) {
+      const id = `step how ${mode} ${width}px`, { ctx, p } = await page(width);
+      await load(p, null, mode); await load(p, await upTo(p, 10), mode);
+      const x = await card(p, '^Extract gear');
+      ok(`${id}: the Extract card is title + how line + meta line, the rest behind its "i"`, x && x.h3 === "Extract gear you've replaced" && x.how === 'Open the Cube, click the old piece, choose Extract and confirm.'
+        && x.i && /^Only gear in your Cube can be extracted/.test(x.info) && x.kids.join() === 'H3,P.ns-how,P,SPAN.ns-info' && !x.tip, x);
+      /* the how line is built from the step's text, not the card title (its short `ns` title has no how) */
+      ok(`${id}: the how line is not the title`, x && !x.how.includes(x.h3), x);
+      /* later rows stay title-only */
+      const later = await p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-card.later')].map(c => ({ t: c.querySelector('h3').textContent, how: !!c.querySelector('.ns-how'), i: !!c.querySelector('.nsinfo') })));
+      ok(`${id}: Later rows have no how line and no "i" (${later.length})`, later.every(c => !c.how && !c.i), later);
+      await ctx.close();
+    }
+    {
+      /* a step with nothing after its bold phrase looks as before: no how line, no "i" (Assassin Lv 37 "Put … on E, then run the full rotation …") */
+      const { ctx, p } = await page(1500);
+      await load(p, null, 'advanced'); await load(p, await upTo(p, 37, 'g37:1'), 'advanced');
+      /* its card view, as src/cards/nextup.js builds it for a step card (stepView: a page global, like every top-level name) */
+      const x = await p.evaluate(() => { const g = GATES.find(g => g.items.some(it => it.k === 'g37:1')), it = g.items.find(it => it.k === 'g37:1');
+        const v = stepView(g, { k: it.k, it }, {}); return { t: v.t, keys: Object.keys(v).sort().join() }; });
+      ok('step how: a step with no text after its bold phrase gets no how line and no "i" (its view is only the title, as before)', /full rotation/.test(x.t) && x.keys === 't', x);
+      await ctx.close();
+    }
+    /* item icons: the one matcher, milestone rows, the number + icon + word unit at 195 / 390 px */
+    for (const width of [195, 390, 1500]) {
+      const id = `item icons ${width}px`, { ctx, p } = await page(width);
+      await load(p, null, 'advanced'); await load(p, { ...await upTo(p, 20), pendSt: 3, pendCr: 2 }, 'advanced');
+      if (width === 1500) {
+        const m = await p.evaluate(() => { const n = s => (itemLine(s).match(/<img class="itm-ico"/g) || []).length;
+          return { soul: n('Soul Crystal'), souls: n('+1 Soul Crystals'), life: n('Life Crystal'), lifes: n('2 Life Crystals'), azphel: n('Azphel crystals'),
+            reward: n('2 Crystals · 2 Wisdom Stones'), dc: n('Daevanion Crystals'), enh: n('Enhance Stones') + n('3 Enhancement Stones'), keys: ['Soul Crystal', 'Life Crystal', 'Wisdom Stones', 'Daevanion Crystal', 'crystals', 'Enhancement Stone'].map(itemKeyOf) }; });
+        ok(`${id}: "Soul Crystal" / "Life Crystal" (and other named crystals) get no icon; the three items do`, m.soul + m.souls + m.life + m.lifes + m.azphel === 0 && m.reward === 2 && m.dc === 1 && m.enh === 2
+          && m.keys.join() === ',,wisdom,crystal,crystal,enhance', m);
+      }
+      const d = await p.evaluate(() => { const vis = e => { const r = e.getBoundingClientRect(); return r.width > 0 && r.height > 0; };
+        const units = [...document.querySelectorAll('.itq, a.itm:has(> .itm-ico)')].filter(vis);
+        return { gates: document.querySelectorAll('#gates .itm-ico').length, rows: document.querySelectorAll('#gates li.item .itm-ico').length,
+          now: document.querySelectorAll('#nowStar .itm-ico').length, cube: !!document.querySelector('#nowStar .ns-card .itq .itm-ico'),
+          note: document.querySelectorAll('#areaList .sh-note .itm-ico').length, units: units.length,
+          split: units.filter(e => { const rs = [...e.getClientRects()].filter(r => r.width > 0); return rs.length !== 1; }).map(e => e.textContent) }; });
+      ok(`${id}: no inline item icon in milestone rows (their tile shows it)`, d.gates === 0 && d.rows === 0, d);
+      ok(`${id}: icons on the Next up cards (Cube counts, item links) and the Dungeons reward line`, d.now >= 2 && d.cube && d.note === 2, d);
+      ok(`${id}: number, icon and word never wrap apart (${d.units} units)`, d.units >= 3 && !d.split.length, d);
+      await ctx.close();
+    }
   }
 
   ok('no page errors', !errs.length, errs);

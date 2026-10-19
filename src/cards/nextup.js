@@ -32,7 +32,7 @@ function stepHTML(g, x) {
   const b = cl.querySelector("b"); return (b ? b.innerHTML : cl.innerHTML).replace(/[\s:.]+$/, "");
 }
 /* A step card's how (0.6.2 P17, docs/design/0.6.2-step-how-mockup.md §1, §3): built from the step's text in its milestone
-   row, never from the card title. how = the step's own `how` (data) or the first sentence after its bold phrase; info =
+   row, never from the card title. how = the first sentence after its bold phrase (no step needed a data override); info =
    the rest of the text and the step's note (behind the card's "i"). Tips read as plain words, no popover in a card.
    Nothing after the bold phrase: no how, no info, the card as before. */
 const sentEnd = h => { let tag = false; for (let i = 0; i < h.length; i++) { const ch = h[i];
@@ -49,7 +49,7 @@ function stepHow(g, x) {
   const rest = cl.innerHTML.trim(), lead = /^[\s:;,.–—-]*/.exec(rest)[0], body = rest.slice(lead.length).trim(), cut = sentEnd(body);
   /* a new sentence (after "Title:" or "Title.") starts with a capital; a continuation ("… to unlock pets") reads on */
   const newSent = /[:.]/.test(lead) || /[:.]\s*$/.test(b.textContent);
-  const how = (x.it && x.it.how) || (newSent ? capHTML(body.slice(0, cut)) : body.slice(0, cut)).trim();
+  const how = (newSent ? capHTML(body.slice(0, cut)) : body.slice(0, cut)).trim();
   const more = [body.slice(cut).trim(), note ? note.innerHTML : ""].filter(Boolean).join(" ");
   return how ? { how, info: more } : {};
 }
