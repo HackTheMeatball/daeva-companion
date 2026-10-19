@@ -1,0 +1,10 @@
+[
+  { "case": "k3-keys-lv30-390", "kind": "before-after", "title": "Key setup with skill icons (mockup)",
+    "caption": "Each key grid cell shows the skill's icon with its name under it, so it matches the game's skill window. Level 30, phone." },
+  { "case": "k5-keys-walk-lv4-390", "kind": "before-after", "title": "Macro set-up walk-through (mockup)",
+    "caption": "Keys move under their columns like the game's bar, and the macro set-up becomes numbered steps. Level 4." },
+  { "case": "l1-basic-lv4-1500", "kind": "before-after", "title": "Locked cards fill the gap (mockup)",
+    "caption": "In Basic on a wide screen, Daevanion and Stigmas show as dashed placeholders next to Skills, with the levels left. Level 4." },
+  { "case": "l2-basic-lv2-1500", "kind": "before-after", "title": "Placeholders before level 4 (mockup)",
+    "caption": "At level 2 in Basic, all three locked cards show when they open, with Skills 2 levels to go." }
+]
