@@ -107,6 +107,21 @@ check(queueEnd(['no queue']) === -1, 'auto-queue: no queue comment line -> skipp
 check(/\/\^\\s\+- held: \/\.test\(lines\[i\]\) && !\/\^- \\\[next\\\] \/\.test\(lines\[i - 1\]/.test(yml), 'a held note not under a [next] line is dropped');
 check(/left in #114 for the planner`\);\s*\n\s*if \(\/\^\\s\+- held: \/\.test\(lines\[i \+ 1\] \|\| ''\)\) \{ lines\.splice\(i \+ 1, 1\)/.test(yml), 'a held line whose After now reads (but waits) loses its note');
 
+// PIP-06: a sonnet line whose issue's Files section names an Opus path starts on Opus (Kaizen (Gale), 2026-10-19).
+const of = yml.match(/\/\/ OPUS-FILES START[^\n]*\n([\s\S]*?)\n\s*\/\/ OPUS-FILES END/);
+check(!!of, 'kickoff.yml has the OPUS-FILES block');
+const opusPath = new Function(of[1] + '\nreturn opusPath;')();
+const spec = (files, after = '## Lanes, model, order\n\nsonnet') => `## Problem\n\nTouches src/core/ in prose only.\n\n## Files (owns)\n\n${files}\n\n${after}\n`;
+check(opusPath(spec('`src/core/state.js`, `docs/ISSUES.md`')) === 'src/core/', 'Files names src/core/ -> Opus');
+check(opusPath(spec('`tests/golden/snapshots/**`')) === 'tests/golden', 'Files names golden snapshots -> Opus');
+check(opusPath(spec('`data/packs/x/guide/steps.json` (no gate `requires`)')) === 'requires', 'Files mentions a gate requires -> Opus');
+check(opusPath(spec('`.github/workflows/ci.yml`')) === '.github/', 'Files names a workflow -> Opus');
+check(opusPath(spec('`src/packs/aion2/cards/nextup-kinds.js`, `src/styles/app.css`')) === null, 'Files with no Opus path -> stays Sonnet');
+check(opusPath(spec('`docs/ISSUES.md`')) === null, 'src/core/ named only outside the Files section -> stays Sonnet');
+check(opusPath(spec('`src/core/x.js`', '')) === 'src/core/', 'Files as the last section still read');
+check(opusPath('No files section; src/core/ in prose.') === null, 'no Files section -> stays Sonnet');
+check(/const hit = m\[2\] !== 'opus' && opusPath\(iss\.body\);[\s\S]{0,300}model: m\[2\] === 'opus' \|\| hit \? 'claude-opus-5-5'/.test(yml), 'start loop: an Opus-path hit starts the build on Opus');
+
 console.log(`\n${n - fail}/${n} kickoff checks passed`);
 console.log(fail ? 'KICKOFF CHECKS FAILED' : 'KICKOFF CHECKS PASSED');
 process.exit(fail ? 1 : 0);

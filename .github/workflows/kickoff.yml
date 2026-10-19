@@ -52,6 +52,16 @@ jobs:
             const { owner, repo } = context.repo;
             const STATE = 114, MAX = 5; // 3 until 2026-10-17; raised to 5 on the owner's Max 20x plan (lanes still apply)
             const LANES = ['golden', 'golden-nextup', 'golden-journey', 'golden-milestones', 'golden-regional', 'golden-route', 'mig', 'main.js', 'gates', 'gen', 'app.css', 'ci', 'a11y', 'release'];
+            // OPUS-FILES START (tests/kickoff.mjs runs this block)
+            // PIP-06 (Kaizen (Gale), 0.7 rules audit, 2026-10-19): a Sonnet build whose issue's "## Files" section names an
+            // Opus path (#114 Effort: src/core, saves/storage/migrations, gates, golden/mig1, tools/gen, data/schema,
+            // workflows) stopped with "Needs @claude (Opus)" and was built again. Such an item starts on Opus instead.
+            const OPUS_PATH = /src\/core\/|tools\/gen\/|data\/schema\/|tests\/golden|e2-migtest|\bmig1\b|\.github\/|\bmigrat\w*|\blocalStorage\b|\brequires\b|\bcompletesWith\b/;
+            const opusPath = (body) => {
+              const files = ((body || '').match(/^## Files[^\n]*\n([\s\S]*?)(?=^## |(?![\s\S]))/m) || [])[1] || '';
+              return (files.match(OPUS_PATH) || [])[0] || null;
+            };
+            // OPUS-FILES END
             // Keep in step with lanes() in the refresh job below (same rules, two copies).
             const lanesOfFiles = (files) => {
               const out = new Set();
@@ -278,7 +288,9 @@ jobs:
               }
               const why = await alreadyBuilt(n);
               if (why) { core.warning(`#${n} not started again: ${why}`); lines[i] = `- [started ${stamp}] #${n} ${m[2]}${m[3]}`; pruned = true; continue; }
-              picked.push({ issue: n, model: m[2] === 'opus' ? 'claude-opus-5-5' : 'claude-sonnet-5-5', title: iss.title });
+              const hit = m[2] !== 'opus' && opusPath(iss.body);
+              if (hit) core.notice(`#${n}: queued sonnet, but its Files list names ${hit} (an Opus path, #114 Effort); started on Opus (PIP-06)`);
+              picked.push({ issue: n, model: m[2] === 'opus' || hit ? 'claude-opus-5-5' : 'claude-sonnet-5-5', title: iss.title });
               lines[i] = `- [started ${stamp}] #${n} ${m[2]}${m[3]}`;
               if (/^\s+- held: /.test(lines[i + 1] || '')) lines.splice(i + 1, 1); // its After line reads now: drop the note
               for (const x of want) busy.add(x);
