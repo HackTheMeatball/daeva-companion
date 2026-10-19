@@ -1,0 +1,10 @@
+[
+  { "case": "picker-new-character-390", "kind": "before-after", "title": "Pick a class: Spiritmaster",
+    "caption": "New character now offers the Spiritmaster after the Assassin, the Ranger and the Gladiator." },
+  { "case": "spiritmaster-lv22-advanced-1500", "kind": "screenshot", "title": "A Spiritmaster at level 22",
+    "caption": "A Spiritmaster character gets its own guide: Cold Shock and Combustion first, Summon: Ancient Spirit for stigma slot 1, and the header names the Spiritmaster." },
+  { "case": "spiritmaster-build-plan-1500", "kind": "screenshot", "title": "Skills that fire on a condition",
+    "caption": "The Build plan gets one Spiritmaster line: Dimensional Control, Rapid Scattershot and Elemental Fusion only fire on their conditions." },
+  { "case": "spiritmaster-build-drawer-1500", "kind": "screenshot", "title": "Spiritmaster stat priority",
+    "caption": "The Build tab shows Attack, Critical Hit, Accuracy Bonus from Metabot. No rotation yet: the key setup screen is still written for the Assassin." }
+]

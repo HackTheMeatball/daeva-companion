@@ -1,0 +1,36 @@
+{
+  "spiritmaster/L22-q34-none-A": {
+    "in": "07416278be74",
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g22": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true]
+    },
+    "mode": "advanced"
+  },
+  "spiritmaster/L22-q34-none-B": {
+    "in": "05e686881f46",
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g22": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true]
+    },
+    "mode": "basic"
+  }
+}
