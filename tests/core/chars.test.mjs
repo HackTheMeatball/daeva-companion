@@ -160,7 +160,9 @@ export default (test, M) => {
   });
   test('classes: newChar takes the class and guide pack from the chosen entry; an unlisted class throws', () => {
     assert.deepEqual(M.newChar({ id: 'x', class: M.CLASS, now: 7 }), { id: 'x', pack: M.PACK, class: M.CLASS, name: '', created: 7, checks: {}, level: 5, quest: '' });
-    for (const c of ['gladiator', '', 'Assassin', null]) assert.throws(() => M.newChar({ id: 'x', class: c }), /playable class/, String(c));
+    /* the Spiritmaster has no guide pack (the Gladiator stood here until 0.7 P2 made it playable) */
+    assert.deepEqual([M.newChar({ id: 'x', class: 'gladiator' }).pack, M.newChar({ id: 'x', class: 'gladiator' }).class], ['aion2/asmodian/gladiator', 'gladiator']);
+    for (const c of ['spiritmaster', '', 'Assassin', null]) assert.throws(() => M.newChar({ id: 'x', class: c }), /playable class/, String(c));
     const p = M.definePack({ ...tiny(), character: { pack: 'tiny/b', class: 'b' }, classes: [{ class: 'a', pack: 'tiny/a', name: 'A' }, { class: 'b', pack: 'tiny/b', name: 'B' }] });
     withPack(M, p, () => {
       assert.deepEqual([M.newChar({ id: 'x', class: 'a' }).pack, M.newChar({ id: 'x', class: 'a' }).class], ['tiny/a', 'a']);

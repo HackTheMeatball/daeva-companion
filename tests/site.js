@@ -329,8 +329,11 @@ const checkReport = (label, m, want) => {
     /* the site build: dist/index.html and its class chunks (0.6 P2: the class tables, skill icons among them, ship in dist/packs/) */
     const chunkFiles = fs.readdirSync(path.join(CFG.ROOT, 'dist', 'packs')).filter(f => f.endsWith('.js'));
     const noBlob = Object.keys(blobs).filter(n => blobs[n] === null), web = [path.join(CFG.ROOT, 'dist', 'index.html'), ...chunkFiles.map(f => path.join(CFG.ROOT, 'dist', 'packs', f))].map(f => fs.readFileSync(f, 'utf8')).join('\n');
-    ok('artifact build: one file with every class chunk inlined (no script src, no fetch of dist/packs/)', chunkFiles.length > 0 && !/<script[^>]* src=|packs\/[\w.-]+\.js/.test(art)
-      && chunkFiles.every(f => { const id = fs.readFileSync(path.join(CFG.ROOT, 'dist', 'packs', f), 'utf8').match(/^self\.DAEVA_PACK==="([\w/-]+)"/); return id && art.includes(`self.DAEVA_PACK==="${id[1]}"&&(self.DAEVA_CLASS=`); }), chunkFiles);
+    /* 0.7 P2: the Gladiator is a site-only class (scripts/build.mjs ARTIFACT_CLASSES), so its chunk is the one not inlined */
+    const chunkPack = f => (fs.readFileSync(path.join(CFG.ROOT, 'dist', 'packs', f), 'utf8').match(/^self\.DAEVA_PACK==="([\w/-]+)"/) || [])[1];
+    const inArt = id => art.includes(`self.DAEVA_PACK==="${id}"&&(self.DAEVA_CLASS=`);
+    ok('artifact build: one file with every carried class chunk inlined (no script src, no fetch of dist/packs/); the site-only Gladiator chunk left out', chunkFiles.length > 0 && !/<script[^>]* src=|packs\/[\w.-]+\.js/.test(art)
+      && chunkFiles.every(f => { const id = chunkPack(f); return id && inArt(id) === (id !== 'aion2/asmodian/gladiator'); }), chunkFiles.map(f => [f, inArt(chunkPack(f))]));
     /* 0.7 A1: ARTIFACT_CLASSES decides which chunks the artifact inlines. Built with the Assassin alone (under tests/out/),
        the Ranger stands for a third playable class: in the site's chunks, not in the artifact; the site build unchanged;
        budgets green (the build exits 0 only then) */
@@ -344,7 +347,8 @@ const checkReport = (label, m, want) => {
       ok('artifact classes: the site build is the same whatever the artifact carries', rd2('dist/index.html') === fs.readFileSync(path.join(CFG.ROOT, 'dist', 'index.html'), 'utf8') && rd2('dist/sw.js') === fs.readFileSync(path.join(CFG.ROOT, 'dist', 'sw.js'), 'utf8'));
       const budgets = log.split('\n').filter(l => /^\s+budget /.test(l));
       console.log(budgets.map(l => '     ' + l.trim()).join('\n'));
-      ok('artifact classes: budgets green, the build lists the Ranger as site only', budgets.length === 3 && /site only: aion2\/asmodian\/ranger/.test(log), log);
+      const siteOnly = ((log.match(/site only: ([^\n]+)/) || [])[1] || '').split(', ').sort();
+      ok('artifact classes: budgets green, the build lists the Gladiator and the Ranger as site only', budgets.length === 3 && JSON.stringify(siteOnly) === '["aion2/asmodian/gladiator","aion2/asmodian/ranger"]', log);
     }
     ok('artifact build: icons without a blob id are on the site build and in dist/assets/icons, absent from the artifact', noBlob.every(n => web.includes(`assets/icons/${n}.png`) && fs.existsSync(path.join(CFG.ROOT, 'dist', 'assets', 'icons', n + '.png')) && !art.includes(n + '.png')), noBlob);
     ok('artifact build: no service worker, manifest, canonical or document skeleton', !/serviceWorker|manifest\.webmanifest|rel="canonical"|<!doctype|<head>|<body>/i.test(art) && art.startsWith('<title>'));
