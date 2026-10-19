@@ -9,7 +9,7 @@
    ignored); a DECISIONS home `docs/DECISIONS.md#YYYY-MM-DD / <Topic>` names a real `## YYYY-MM-DD` heading with a row of
    that Topic under it; issue homes are `#<n>`; every replaced_by is an existing id; and there is one decision row per
    DECISIONS table row (matched by date and topic, both ways), so a new decision without a ledger row fails CI; and
-   LEDGER.md's Owners table names exactly OWNERS. */
+   LEDGER.md's Owners table names exactly OWNERS, and its "Who does what" Plain column is everyday words. */
 import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -60,6 +60,11 @@ export function checkLedger(root = ROOT, { csvText, ledgerMd } = {}) {
   const named = sec.split('\n').filter(l => /^\|/.test(l) && !/^\|[\s|:-]*$/.test(l)).map(l => l.split('|')[1].trim()).filter(n => n !== 'Name');
   for (const n of named) if (!OWNERS.has(n)) problems.push(`LEDGER.md Owners table names "${n}", not in OWNERS`);
   for (const n of OWNERS) if (!named.includes(n)) problems.push(`LEDGER.md Owners table is missing "${n}"`);
+  /* "Who does what": five columns, and Plain is everyday words (no backticks, issue numbers, ids or ALL-CAPS tokens) */
+  const who = (md.split(/^## Who does what\s*$/m)[1] || '').split(/^## /m)[0].split('\n').filter(l => /^\|/.test(l) && !/^\|[\s|:-]*$/.test(l)).slice(1);
+  for (const l of who) { const c = l.replace(/^\||\|$/g, '').split('|').map(x => x.trim()), bad = (c[1] || '').match(/`|#\d+|\b[A-Z]{2,}(?:-\d+)?\b/);
+    if (c.length !== 5 || !c[1]) problems.push(`LEDGER.md Who does what "${c[0]}": needs Work | Plain | Owner | Not | Source`);
+    else if (bad) problems.push(`LEDGER.md Who does what "${c[0]}": Plain has "${bad[0]}"; use everyday words`); }
   if (csvText == null && !existsSync(file)) return ['docs/kaizen/ledger.csv is missing'];
   const rows = parseCsv(csvText ?? readFileSync(file, 'utf8')).filter(r => r.some(c => c !== ''));
   const head = rows.shift() || [];
