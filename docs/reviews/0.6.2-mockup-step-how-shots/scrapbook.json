@@ -1,0 +1,5 @@
+[
+  { "case": "h1-basic-390", "kind": "before-after", "title": "Step cards say how (mockup)", "caption": "Under the step's name, one line says how to do it: open the Cube, click the old piece, choose Extract and confirm." },
+  { "case": "h2-basic-1500", "kind": "before-after", "title": "Step cards say how, desktop (mockup)", "caption": "The same card on a wide screen: the how line fits on one row, above the milestone link." },
+  { "case": "h3-info-open-390", "kind": "before-after", "title": "The rest behind the i (mockup)", "caption": "The step's other notes sit behind the card's i button, as on the dungeon cards; tap it to read them." }
+]
