@@ -43,6 +43,10 @@ major release (1.0, 2.0 …) Kaizen runs a larger pass over the data of all the 
    release, with a weekly fallback (owner, 2026-10-18). The Release Planner opens the pass by sending Kaizen
    `PLANNING PASS START <minor> <ET time>` and writes steps 2–6 only after that review is in. Raised usage caps don't
    change the goal: the least waste per item shipped (owner, 2026-10-17 3:00 PM ET).
+   **Order after a minor ships (owner, 2026-10-18 11:21 PM ET; this is its one statement):** Player Testing (Jesse)
+   plays it and sends `PLAY DONE`, then Kaizen (Gale) sends `KAIZEN REVIEW DONE`, then the Release Planner writes the
+   planning pass; each sends Coordinator (Saul) and Tracker sync (Huell) a report, and Saul folds them into one
+   morning debrief. Nothing of the next minor builds before the owner's typed go.
    - **Data.** Combine the **stall log (#221)**: stalls and idle minutes by Kind, and the Kinds that came back after a
      fix; the **planner log (#232)**: what each planner run queued and whether it worked out, plus the usage
      checkpoints (bot runs by model and outcome against the owner's weekly usage %); the **kaizen log (#222)**: which
@@ -71,26 +75,38 @@ major release (1.0, 2.0 …) Kaizen runs a larger pass over the data of all the 
 3. **Shape each item:** problem; appetite (S < 100 changed lines, M 100–300, L 300–1,000; bigger = split it); no-gos
    (what it will not do); the module(s) and files it owns (every acceptance line needs an owning file); the test that
    proves it done; builder model (routing rule in #114, as step 1 left it); its stall limit from step 1's build times. An item with an
-   unknown is a research item first, not a build.
+   unknown is a research item first, not a build. **Live dependencies** (Kaizen, 2026-10-19): anything the item needs
+   that isn't on the live site yet (a server, a feature of another item). Such an item ships hidden behind a flag until
+   the dependency is live, and the reviewer checks the flag (0.7's sync line showed for ~5 h with no server).
 4. **Waves and lanes for the whole minor.** Lay every item out in waves before anything is queued: items in the same
    module or serial file run one after another; items in different modules may run at the same time, at most five
    builds (the cap in kickoff.yml). Name the critical path, put the items that unblock the most first, and give each item an `After:` line so
-   kickoff can queue it the moment its dependencies merge. An After line lists only real dependencies (code, data, research or owner gates); lane order lives in the wave plan, never in After (Kaizen, 2026-10-18: lane-order keys idled P14 and P18). Owner gates use the `owner-ok-<slug>` form kickoff reads from DECISIONS. From 0.7 on, the token carries its version, `owner-ok-<minor>-<slug>` (a patch item uses the patch version), and the copy box for the owner's typed OK names the same token. Kickoff treats an unversioned or wrong-version owner-ok key as not understood, so it fails closed (Kaizen K12, 2026-10-18: 0.7 P6 was queued on the 0.5 `owner-ok-S2` row). Check every wave for two items that touch the same file:
+   kickoff can queue it the moment its dependencies merge. An item whose owner OK isn't typed when the plan merges is off
+   the critical path: route the path through ungated items and put gated ones last (Kaizen, 2026-10-19; 0.7's path
+   ran through P2, which waited 747 min for its OK). An After line lists only real dependencies (code, data, research or owner gates); lane order lives in the wave plan, never in After (Kaizen, 2026-10-18: lane-order keys idled P14 and P18). Owner gates use the `owner-ok-<slug>` form kickoff reads from DECISIONS. From 0.7 on, the token carries its version, `owner-ok-<minor>-<slug>` (a patch item uses the patch version), and the copy box for the owner's typed OK names the same token. Kickoff treats an unversioned or wrong-version owner-ok key as not understood, so it fails closed (Kaizen K12, 2026-10-18: 0.7 P6 was queued on the 0.5 `owner-ok-S2` row). Check every wave for two items that touch the same file:
    that is where bots step on each other's toes, so split the file's owner or move one item. Shared files
-   (`docs/team/DISPATCH.md` "Serial files") count as one module.
+   (`docs/team/DISPATCH.md` "Serial files") count as one module. Item keys (`<minor> P<n>` / `S<n>`), After tokens
+   and lanes follow kickoff's grammar (`tests/kickoff.mjs` fixtures); the plan reviewer checks every one before
+   approving (Kaizen, 2026-10-19).
 5. **Owner input.** List what needs the owner (in-game checks, mockups, money, legal). Only a true blocker becomes a
    tracker To-do; everything else follows the recommendation. Every decision is recorded on the tracker as
    **user remediated** (the owner chose) or **Claude remediated** (the recommendation applied under a standing
    approval), so the owner can see which calls were whose.
-   **When (Kaizen K10, 2026-10-18; replaces K4's "the hour the plan merges"):** at pass start, before the plan
-   merges, every owner input the minor needs goes to Coordinator (Saul)'s daily list, each with its recommendation,
-   the exact words to type and the thread to type them in. An item whose owner input isn't in when its wave is due
-   moves to the next patch at once; it is never waited on. Research gates start the same hour.
+   **When (Kaizen K15, 2026-10-19; replaces K10):** the planning pass lists every OK the minor needs, each release's
+   ship OK included, each with its recommendation, the exact words to type and the thread to type them in (the thread
+   whose session records it). Coordinator (Saul) asks them as one batch in the next morning debrief, grouped by
+   thread; the target is ≤ 3 threads (a ship OK is typed in Build Pipeline (Gus)'s thread, a tracker OK in Tracker
+   sync (Huell)'s or Skyler's). Ungated items are queued first, and a gated item without its typed OK goes to the end
+   of the queue; it never holds a lane or the critical path. One exception: a question that first comes up mid-minor
+   and gates an item already queued or building goes out at once as a HARD BLOCKER. Research gates start the hour the
+   plan merges.
 6. **Write and review.** The plan goes into this file and the #114 queue in one PR, written by one session and
    reviewed by a separate one that didn't write it. Then the planner queues the items, top of the lane map first.
 
 **Release gate (owner, 2026-10-18 6:24 AM ET), for every release, patches included.** When every item of a release has
-merged, the Release Planner sends Game Data Check (Gretchen) `PRE-RELEASE CHECK <version>` and tells Build Pipeline (Gus)
+merged, the Release Planner writes the release's CHANGELOG section into the release issue (Kaizen K17, 2026-10-19:
+the release build copies it verbatim, and Gretchen's check reads that text against ISSUES.md and the live build), then
+sends Game Data Check (Gretchen) `PRE-RELEASE CHECK <version>` and tells Build Pipeline (Gus)
 `DATA OK <version>` only after she answers `DATA OK`; Gus queues and ships the release item only then. A `DATA HOLD`
 means the named data is fixed first. Stall Watch (Mike) flags a check unanswered after 60 min. If data lands on main
 after her check, she re-runs it before the tag.
