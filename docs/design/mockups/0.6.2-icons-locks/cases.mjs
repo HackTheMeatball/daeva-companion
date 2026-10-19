@@ -28,7 +28,7 @@ const css = `
 .mw .path i { color: var(--muted); font-style: normal; }
 .mw .see { color: var(--muted); font-size: 12px; }
 .mw .see q { color: var(--fg); }
-.mw .macro { display: flex; gap: var(--space-8); align-items: center; }
+.mw .macro { display: flex; flex-wrap: wrap; gap: var(--space-8); align-items: center; }
 .mw .macro span { display: flex; align-items: center; gap: var(--space-4); font: 500 12px var(--mono); padding: var(--space-2) var(--space-6); border: 1px solid var(--line); border-radius: var(--radius-6); }
 .mw .macro img { width: 20px; height: 20px; border-radius: var(--radius-4); }
 `;
@@ -62,7 +62,6 @@ const keysWalk = new Function(`(${keys.toString()})(); (${(() => {
   const row = document.createElement('div'); row.className = 'kv-keys';
   row.innerHTML = '<span></span><span class="kv-key mouse">Right click</span><span class="kv-key">Q</span><span class="kv-key">E</span>';
   v.insertBefore(row, lmb);
-  const ch = document.createElement('button'); ch.type = 'button'; ch.className = 'kv-change'; ch.textContent = 'Change keys'; v.before(ch);
   const src = n => [...document.querySelectorAll('#statDrawer img')].find(i => i.closest('li, .sk')?.textContent.includes(n))?.getAttribute('src') || '';
   const ol = document.querySelector('#statDrawer .macro-steps');
   ol.outerHTML = `<p class="mw-h">Right-click macro · one-time setup</p><ol class="mw">
@@ -70,7 +69,7 @@ const keysWalk = new Function(`(${keys.toString()})(); (${(() => {
     <li><span class="path"><b>Macro</b><i>→</i>press <kbd>Right click</kbd><i>→</i><b>Confirm</b></span><span class="see">You'll see <q>Already in use for [Skill Quickslot: Quick Use 2]</q>. That's expected; confirm.</span></li>
     <li><span class="path"><kbd>Esc</kbd><i>→</i><kbd>K</kbd><i>→</i><b>Macro</b> <i>(above Active)</i></span><span class="see">The first time it's empty: <q>No macros available.</q></span></li>
     <li><span class="path">Click <b>Quick Slice</b><i>→</i>set it to <b>Quickslot 2</b></span><span class="see">Quickslot 2 is the one right click now uses.</span></li>
-    <li><span class="path"><b>Add Macro</b><i>→</i>pick the skills in order</span><span class="macro"><span><img src="${src('Heart Gore')}" alt="">1 Heart Gore</span><span><img src="${src('Quick Slice')}" alt="">2 Quick Slice</span></span></li>
+    <li><span class="path"><b>Add Macro</b><i>→</i>add the right-click stack in order</span><span class="macro"><span><img src="${src('Heart Gore')}" alt="">1 Heart Gore</span><span><img src="${src('Ambush')}" alt="">2 Ambush</span><span><img src="${src('Savage Roar')}" alt="">3 Savage Roar</span></span></li>
     <li><span class="path">Hold <kbd>Right click</kbd> + <kbd>Left click</kbd> in a fight</span><span class="see">Right click alone drains MP; left click keeps it full.</span></li>
   </ol>`;
 }).toString()})();`);
