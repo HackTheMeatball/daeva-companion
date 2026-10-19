@@ -11,6 +11,7 @@
      but the quest's own "Turn in" step is ticked, and it isn't level-gated or waiting on its turn-in level
    - story.row(card, ctx) → html: a row inside the story card under its text, above its action (the "Bind X" row or the
      travel line), or ""
+   - now.card(html) → html: a whole Next up card's markup, last (0.6.2 P21: the Kibelisk crest on its first mention)
    - now.opts(ctx) → html: the pack's controls in the Advanced options row under the header ("Prefer running"), or ""
    - now.items(html) → html: a card's text with the pack's inline item icons on its item links (title, how, info)
    - now.act(act, ctx) → true when handled: a data-now action (called before the engine's; false = the engine goes on)
@@ -26,6 +27,7 @@ import { MAP_ICO, rqTicked, snoozeToggle } from "../../../cards/milestones.js";
 import { capFirst, isBasic, renderNow } from "../../../cards/nextup.js";
 import { travelAdviceOn } from "../nextup.js";
 import { keyHint } from "../hotkeys.js";
+import { kibMark } from "./shared.js";
 import { itemLinkIcos, itemQty } from "../data/markup.js";
 import { pageState as state, pageSave as save, pageUpdate as update, pageMainEl as mainEl, pageSMOOTH as SMOOTH, pageSD_RW as SD_RW, pageSH_REWARD as SH_REWARD, pageNO_AREA as NO_AREA, pageSpCostTxt as spCostTxt, pageRqReqOf as rqReqOf, pageSpecPickOf as specPickOf, pageMapFocus as mapFocus, pageAion2QuestMap as aion2QuestMap, pageGoAreas as goAreas, pageCubeClick as cubeClick, pageStTickClick as stTickClick, pageStUpClick as stUpClick, pageStLvClick as stLvClick, pageSpMini as spMini, pageStIco as stIco, pageDvShort as dvShort, pageQProg as qProg } from "../../../cards/page.js";
 
@@ -43,6 +45,10 @@ const spBuyT = x => `Buy <b>${x.s.n} ${x.spec ? "specialty" + (x.slot > 1 ? " sl
 const spSlotSub = x => { const p = specPickOf(char(state), x); if (p) return `Pick: ${p.t}`;
   const q = (x.s.specs || [])[x.slot - 1], open = openOf(char(state), x.k);
   return `${open ? `Slot ${x.slot} open: pick` : "Pick"} a specialty${q ? ` · guide pick (${q.t}) at skill Lv ${q.lv}` : ""}`; };
+/* A Sealed Dungeon / Stronghold card's tile: the game's map marker on the dark tile (0.6.2 P21), labelled with the place
+   type; the old emoji when the file can't load */
+const SD_TILE = { ico: `<img class="mk-tile" src="assets/icons/map-sealed.png" alt="" onerror="this.replaceWith('⛏')">`, icoLabel: "Sealed Dungeon" };
+const SH_TILE = { ico: `<img class="mk-tile" src="assets/icons/map-stronghold.png" alt="" onerror="this.replaceWith('🏰')">`, icoLabel: "Stronghold" };
 const nsBar = (d, n, lbl) => `<span class="nsq-bar"><span style="width:${d / n * 100}%"></span></span><span class="nsq-barl">${lbl}</span>`;
 /* Zone (and whether it's where the story sends you) · nearest Kibelisk. */
 /* "I'll walk" (0.5 P16, design §8.3, Q4): the targets (story quest node ids) the player chose to walk to, this session only */
@@ -79,7 +85,7 @@ function rqExtraHTML(a) {
 
 export const aion2NowRenderers = {
   run: a => { const sh = a.x.it.kind === "stronghold";
-    return { ico: sh ? "🏰" : "⛏", t: `Finish <b>${a.x.it.name}</b>`, sub: `In progress · ${sh ? "Stronghold" : "Sealed Dungeon"}`, btn: "Cleared", act: a.act }; },
+    return { ...(sh ? SH_TILE : SD_TILE), t: `Finish <b>${a.x.it.name}</b>`, sub: `In progress · ${sh ? "Stronghold" : "Sealed Dungeon"}`, btn: "Cleared", act: a.act }; },
   cube: a => ({ ico: "🎒", t: `Use your Cube items: <b>${[a.st ? itemQty(a.st, `Wisdom Stone${a.st === 1 ? "" : "s"}`) : "", a.cr ? itemQty(a.cr, `crystal${a.cr === 1 ? "" : "s"}`) : ""].filter(Boolean).join(" + ")}</b>`, sub: "Open the Cube and use them, then confirm", btn: "Used", act: a.act, done: true }),
   /* skill buys queue: only the first one gets the button */
   skill: a => { const x = a.x, base = x.spec ? spSlotSub(x) : a.first ? `${spCostTxt(x)} · you have the points` : spCostTxt(x);
@@ -92,11 +98,11 @@ export const aion2NowRenderers = {
     return { ico: stIco(a.nx.name, "st-img") || "✧", t: `Equip <b>${a.nx.name}</b>`, sub: `Stigma slot ${a.nx.n} is open${eTxt}`, btn: "Equipped", act: a.act, done: true }; },
   stup: a => ({ ico: stIco(a.up.x.name, "st-img") || "✧", t: `Upgrade <b>${a.up.x.name} ${a.up.L - 1} → ${a.up.L}</b>`, sub: `${a.up.cost} of your ${a.shards} shards`, btn: "Upgraded", act: a.act, done: true }),
   sd: a => { const p = a.pick, L = a.loc, pin = `<b>${p.it.name}</b>${pinLink(mapFocus(p.it))}`;
-    return { bar: a.band.n ? nsBar(a.band.d, a.band.n, `Lv ${a.band.bd}–${a.band.bd + 4} · ${a.band.d}/${a.band.n}`) : "", ico: "⛏",
+    return { bar: a.band.n ? nsBar(a.band.d, a.band.n, `Lv ${a.band.bd}–${a.band.bd + 4} · ${a.band.d}/${a.band.n}`) : "", ...SD_TILE,
       t: a.gated ? `Clear ${pin} <span class="ns-then">and others until Lv ${a.gateLv}</span>` : `Clear ${pin}`, sub: nsWhere(p.area, L.kib, a.hereArea),
       info: [`${itemQty(`+${SD_RW.cr}`, "crystals")}, ${itemQty(`+${SD_RW.st}`, "Wisdom Stones")} each · ~5 min`, L.kib && L.m ? `Kibelisk ${L.kib} is ${L.m} m away` : "", `${a.open} open at your level`].filter(Boolean).join(" · "), btn: "Show", act: a.act }; },
   sh: a => { const p = a.pick;
-    return { bar: nsBar(a.done, a.total, `${a.done}/${a.total} strongholds`), ico: "🏰", t: `Run <b>${p.it.name}</b>${pinLink(mapFocus(p.it))}`, sub: nsWhere(p.area, p.it.kib, a.hereArea),
+    return { bar: nsBar(a.done, a.total, `${a.done}/${a.total} strongholds`), ...SH_TILE, t: `Run <b>${p.it.name}</b>${pinLink(mapFocus(p.it))}`, sub: nsWhere(p.area, p.it.kib, a.hereArea),
       info: [`${SH_REWARD} each`, p.it.kib && p.it.m ? `Kibelisk ${p.it.kib} is ${p.it.m} m away` : "", `${a.open} open`].filter(Boolean).join(" · "), btn: "Show", act: a.act }; },
   rq: a => ({ ico: "❖", t: `<b>Regional quests</b>`,
     sub: [a.fresh ? `${a.fresh} to pick up` : "", a.run ? `${a.run} in progress` : "", a.lock ? `${a.lock} follow-up${a.lock === 1 ? "" : "s"}` : "", a.snz.length ? `${a.snz.length} not in game yet` : "",
@@ -134,6 +140,8 @@ export const aion2NowRenderers = {
      on. Hidden while travel advice is off (it would change nothing). */
   /* item links on a Next up card get the item's inline icon (0.6.2 P17, i3; milestone rows keep only their tile) */
   "now.items": html => itemLinkIcos(html),
+  /* the Kibelisk crest before the card's first "Kibelisk" (0.6.2 P21; its "i" note included, milestone rows never) */
+  "now.card": html => kibMark(html),
   "now.opts": () => !travelAdviceOn() ? "" : `<label class="ns-pref"><input type="checkbox" data-nsprefer${state.preferRun === true ? " checked" : ""}><span>Prefer running</span></label>`,
   "now.act": a => {
     if (a === "usecube") { char(state).stones = (char(state).stones || 0) + (char(state).pendSt || 0); char(state).dvTotal = (char(state).dvTotal || 0) + (char(state).pendCr || 0); char(state).pendSt = 0; char(state).pendCr = 0; save(); update(); return true; }

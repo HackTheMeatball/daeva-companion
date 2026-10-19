@@ -222,6 +222,22 @@ on purpose: the guide shows nothing rather than an unverified value.
     at a time, at least 6 s apart, 39 requests, no 403 / 429 / challenge. Nothing was kept.
   - **Not checked then:** the map's marker files (`/web/aion2/mapicons/`), where Source Vetting later found the icon.
 
+- **Game map markers: in the site** (0.6.2 P21, #404; DECISIONS `owner-ok-0.6.2-map-icons`, owner OK typed 2026-10-18
+  10:04 PM ET, Q1–Q5 as recommended; `docs/design/0.6.2-map-icons-mockup.md`). Sealed Dungeon and Stronghold Next up tiles
+  (dark tile, ⛏ / 🏰 the fallback) and the Dungeons card's two headings; the Kibelisk crest before a Next up card's first
+  "Kibelisk"; the Empyrean Trace feather on region rows ("29 [feather]") and the legend line. Map markers are not covered
+  by the standing icon OK; the owner's OK above covers these four. Each is a byte-for-byte copy of
+  `docs/research/map-icons-2026-10-18/` (WebP → PNG, pixels unchanged; that folder's README has their rows):
+
+  | File | Source page | File URL | Retrieved |
+  |---|---|---|---|
+  | map-sealed.png (52×52, transparent; Metabot `sealed`, from `sealed.png`) | <https://metabot.gg/en/aion-2/map/altgard> (as Source Vetting reported) | <https://metabot.gg/web/aion2/mapicons/sealed.webp> | 2026-10-18 10:14 PM ET |
+  | map-stronghold.png (52×52, transparent; Metabot `garrison`, from `garrison.png`) | <https://metabot.gg/en/aion-2/map/altgard> (as Source Vetting reported) | <https://metabot.gg/web/aion2/mapicons/garrison.webp> | 2026-10-18 10:14 PM ET |
+  | map-trace.png (52×52, transparent; Metabot `trace`, from `trace.png`) | <https://metabot.gg/en/aion-2/map/altgard> (as Source Vetting reported) | <https://metabot.gg/web/aion2/mapicons/trace.webp> | 2026-10-18 10:14 PM ET |
+  | map-kibelisk.png (64×64, transparent; aion2quest `UT_Marker_TeleportArtifact_Dark_Engraved`, the purple crest, Q3; from `kibelisk-purple.png`) | <https://aion2quest.pro/en/map/altgard> (as Source Vetting reported) | <https://aion2quest.pro/img/map/markers/UT_Marker_TeleportArtifact_Dark_Engraved.webp> | 2026-10-18 10:15 PM ET |
+
+  Held back (Q5): campsite, updraft, point of interest, field boss and undiscovered wait until the data has a place type.
+
 - **Icons not in the claude.ai artifact** (closed by 0.7 P9). The five skill icons above (added 2026-10-15) never got a
   `/_blob/` id, so the frozen artifact shows the initials square for them. The artifact is no longer built and its blob
   list (`scripts/artifact-blobs.json`) is gone, so nothing is left to do.

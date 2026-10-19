@@ -16,6 +16,15 @@ const dvShort = t => t.replace("Cooldown Reduction or Combat Speed corner", "1 c
 const ini = n => n.split(/\s+/).filter(w => /^[A-Z]/.test(w)).map(w => w[0]).join("").slice(0, 2) || n.slice(0, 2);
 const spMini = n => SP_ICONS[n] ? `<img class="spmini" src="${SP_ICONS[n]}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">` : `<span class="spmini ini" aria-hidden="true">${ini(n)}</span>`;
 const stIco = (name, cls) => STIGMA_ICON[name] ? `<img class="${cls}" src="${STIGMA_ICON[name]}" alt="">` : cls === "st-mini" ? `<span class="st-mini ini" aria-hidden="true">${ini(name)}</span>` : "";
+/* The game's map markers (0.6.2 P21, DECISIONS owner-ok-0.6.2-map-icons, docs/design/0.6.2-map-icons-mockup.md; sources in
+   docs/ISSUES.md): shown where the page names that kind of place, never on rows already in a list of it. cls "mk-map" =
+   inline (1.25 em before the word), "mk-map hd" = a heading's 18 px marker, "mk-tile" = a Next up tile's icon. A label
+   (alt) doubles as the tooltip. A file that can't load leaves its label as text, or nothing. */
+const MAP_MK = { sealed: "assets/icons/map-sealed.png", stronghold: "assets/icons/map-stronghold.png", kibelisk: "assets/icons/map-kibelisk.png", trace: "assets/icons/map-trace.png" };
+const mapMk = (k, cls = "mk-map", label = "") => `<img class="${cls}" src="${MAP_MK[k]}" alt="${label}"${label ? ` title="${label}"` : ""} onerror="this.replaceWith('${label}')">`;
+/* The first "Kibelisk" in a card's html (text only, never inside a tag) gets its crest, kept on one line with the word. */
+const kibMark = html => { let hit = false;
+  return html.split(/(<[^>]*>)/).map((p, i) => i % 2 || hit ? p : p.replace(/\bKibelisk\b/, m => { hit = true; return `<span class="mk-nw">${mapMk("kibelisk")}${m}</span>`; })).join(""); };
 
 let tipSeq = 0; /* ids for the "i" popovers (aria-controls) */
 /* the next popover id number (the shell's milestone tips) */
@@ -35,4 +44,4 @@ function tipPop(kind) {
 /* Grey "i" with a popover, same as the Skills/Daevanion "need more" tips. */
 const stTip = () => `<span class="tipwrap"><button type="button" class="tipbtn" aria-label="Stigma shard costs" aria-expanded="false" aria-controls="tipPop${++tipSeq}">i</button><span class="tippop" id="tipPop${tipSeq}" role="tooltip"><b>Shards per level</b>1–5: 1 each · 6–10: 2 · 11–15: 4 · 16–20: 8 (75 to reach 20). Learning a stigma is its level 1. Bonuses at 5, 10, 15, 20.<br><br><b>More shards</b>1 per character level from 23 to 39 (2 from 40), plus achievements and shops.<br><br><b>Plan</b>Triniel's Dagger to 10, then Illusive Clone toward 20.<span class="tipopen">Costs from Metabot and allthings.how; not yet checked in game.</span></span></span>`;
 
-export { aion2TipId, tipPop, stTip, dvShort, ini, spMini, stIco };
+export { aion2TipId, tipPop, stTip, dvShort, ini, spMini, stIco, mapMk, kibMark };
