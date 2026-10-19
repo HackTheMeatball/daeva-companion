@@ -462,7 +462,7 @@ Not blockers (the recommendation applies unless the owner says otherwise):
 
 - **Story step-points research** (gates P9; token `research-step-points`): a cloud research session (it needs the web)
   reads the Metabot quest pages of the 51 story quests with step markers (about 185 points) under the fetching rules
-  (terms and robots.txt first, ≤ 12 requests / min, one at a time, our User-Agent, 24 h cache, facts only), and writes
+  (terms first, then robots.txt, ≤ 12 requests / min, one at a time, our User-Agent, 24 h cache, facts only), and writes
   `docs/research/2026-10-story-step-points.md` plus a CSV under `data/research/`, each point with its page URL. The
   coordinator starts it; no aion2.th.gl.
 - **Route label proposals** for P14's toggle (Data & Research, docs only).

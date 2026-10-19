@@ -4,8 +4,8 @@
 site that isn't listed here is unvetted: read its terms first, then its robots.txt (terms are the harder gate:
 robots.txt may allow what the terms forbid; owner, 2026-10-19), then add a row. Fetching policy: `CLAUDE.md` and
 `docs/team/data-research.md`. Lookups on listed sites: Game Data Check; vetting and last-resort spot checks on
-unlisted sites (each find flagged as such): Source Vetting (owner, 2026-10-19). Evidence and quoted clauses are in the linked research notes, mostly
-`2026-10-build-guide-sources.md` (BGS). Last full pass: 2026-10-18.
+unlisted sites (each find flagged as such): Source Vetting (owner, 2026-10-19). Evidence and quoted clauses are in
+the linked research notes, mostly `2026-10-build-guide-sources.md` (BGS). Last full pass: 2026-10-18.
 
 **Use levels**
 
@@ -47,7 +47,8 @@ from 2026-10-14 and are older than this register; where they differ, this regist
 
 gameplay.tips, pixelnitro.com, mein-mmo.de, gamerblurb.com (non-commercial terms), aion2tierlist.com (tier lists only),
 and the gold/boosting shops aoeah.com, mmoexp.com, expcarry.com, oslink.io, u4n.com (**Spot**: its terms ban scraping).
-All checked 2026-10-18, BGS §2 / §3a.
+All checked 2026-10-18, BGS §2 / §3a. aion2kina.com (fan toolkit and map; terms ban only "unreasonable automated
+load"; its map markers aren't game art, inferred) checked 2026-10-19, `2026-10-t47-icon-check.md`.
 
 ## Fail (never read by a session)
 
@@ -64,6 +65,8 @@ All checked 2026-10-18, BGS §2 / §3a.
 | aion2.gaming.tools, games.gg, mobalytics.gg, eloboost24.eu, icy-veins.com, keengamer.com | 403 challenge to our requests (access, not a ban). Owner browser only | 2026-10-18 |
 | thegameswiki.com | 429 security checkpoint. Its content is CC BY-NC-SA: facts only, never wording | 2026-10-18 |
 | timesaver.gg | Connection reset, not reached | 2026-10-18 |
+| namu.wiki | Cloudflare challenge (403) to our requests on the terms page. Owner browser only | 2026-10-19 |
+| Allakhazam / ZAM (\*.allakhazam.com, Fanbyte terms) | Terms ban "spiders, robots, crawlers, data mining tools" | 2026-10-19 |
 
 ## Keeping this current
 
