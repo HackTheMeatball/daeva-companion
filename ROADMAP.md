@@ -718,9 +718,9 @@ until a DESIGN OK and the owner's OK.
 
 More owner input the same evening (8:01–8:46 PM ET): **P16** (#398) drops the Daeva Pass and Save-stones Next up
 steps, folds the stone advice and his extraction screens into the extract tip, and finds why the Wisdom Stones card
-showed early (queued after P15). Planned, not queued: the Key setup / macro fix (#387, waits on Game Data Check), story
-card state icons (#391, Design Lead mockup #394, waits on the owner's OK), Next up step cards say how (#397, Design
-Lead), the icons-and-locks mockup (#389, waits on the owner's OK). Player-chosen keys (#388) is a 0.8 candidate.
+showed early (queued after P15). **P17** (#397): Next up step cards say how and item names show their icon, after
+`owner-ok-0.6.2-step-how` and `owner-ok-0.6.2-item-icons` (owner typed both 9:38 PM ET; Design Lead mockup #403, #406). Planned, not queued: the Key setup / macro fix (#387, waits on Game Data Check), story
+card state icons (#391, Design Lead mockup #394, waits on the owner's OK), the icons-and-locks mockup (#389, waits on the owner's OK), map icons (#404, Design Lead mockup #408), regional quest state icons (#409, Design Lead). Player-chosen keys (#388) is a 0.8 candidate.
 
 ### 0.7 — The Gladiator, a second class, and sync
 
@@ -792,7 +792,7 @@ no new game art beyond the standing icon OK.
 
 #### Waves and lane map (step 4)
 
-At most five builds at a time. Serial lanes: **gen** P2 → P3 → P4 (the critical path); **golden** P2, P4 (and 0.6.1's
+At most five builds at a time. Serial lanes: **gen** P2 → P3 → P4 (the critical path), plus P9 (merged #396) → P10; **golden** P2, P4 (and 0.6.1's
 F1, F5 when they run); **main.js** P6 (and 0.6.1's F2, F4). Shared files outside lanes, by After: `pack.js` P2 → P4 (gen
 lane already orders them); build scripts P1 only. Critical path: P1 → P2 → P3 → P4 → R, gated by
 `research-gladiator-guide` (P2) and `research-spiritmaster` (P3).
@@ -804,7 +804,7 @@ lane already orders them); build scripts P1 only. Critical path: P1 → P2 → P
 | 3 | P3 (gen) ∥ P6 (main.js, a11y) | P3: `research-spiritmaster` · P6: S2 + `owner-ok-0.7-S2` |
 | 3b | P7 (a11y) | P6 (merged #378) |
 | 3c | P8 (a11y) | P7 (merged #380); 0.6.1 waits for it |
-| 3d | P9 (build, a11y) | P8 |
+| 3d | P9 (gen, a11y) | P8 |
 | 3e | P10 (gen) | P9 (merged #396) |
 | 4 | P4 (gen, golden) | P3, P1 + `owner-ok-0.7-artifact-classes` |
 | 5 | R, alone | everything above, or moved to the next patch; `DATA OK 0.7.0` |
