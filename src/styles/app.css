@@ -252,6 +252,11 @@ details.step.done .num { background: var(--good-soft); border-color: var(--good)
 .item .note { display: block; margin-top: var(--space-4); font-size: 12.5px; color: var(--warn); }
 .itm { color: inherit; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; white-space: nowrap; }
 .itm svg { margin-left: var(--space-3); vertical-align: -1px; color: var(--accent-text); }
+/* Inline item icons (0.6.2 P17; markup.js itemIco): before the item word on Next up cards and reward / count lines, never
+   apart from it ("3 [icon] Wisdom Stones" is one unit); a flex line (#areaList .sh-note) keeps the reward text one run. */
+.itm-ico { width: 1.15em; height: 1.15em; vertical-align: -0.22em; margin-right: 0.2em; border-radius: 3px; object-fit: contain; }
+.itq { white-space: nowrap; }
+.sh-note > .itl { display: inline; color: inherit; font-weight: inherit; }
 .item.has-ico label { grid-template-columns: 22px minmax(0,1fr) auto; }
 .item.has-ico .icos { grid-column: 3; grid-row: 1; }
 .icos { display: flex; gap: var(--space-8); align-items: center; }

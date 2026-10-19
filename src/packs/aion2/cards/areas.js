@@ -3,7 +3,7 @@
 import { char } from "../../../core/state.js";
 import { derivedOf, doneOf, gatesOf } from "../../../core/requirements.js";
 import { NO_AREA, SD_REWARD, SH_REWARD, ZONE_TRACES } from "../data/areas.js";
-import { T } from "../data/markup.js";
+import { T, itemLine } from "../data/markup.js";
 import { AREA_BANDS, AREA_ITEMS, bandOf } from "../catalog.js";
 import { areaLater, areaOpen } from "../requirements.js";
 import { mapFocus } from "./maps.js";
@@ -90,7 +90,7 @@ function renderAreas() {
   }
   document.getElementById("areaList").innerHTML =
     sec("sh", "Strongholds", "stronghold", SH_REWARD + " each", shs, false) +
-    sec("sd" + (shs.length ? " split" : ""), "Sealed Dungeons", "hideout", SD_REWARD + " each", sds, true);
+    sec("sd" + (shs.length ? " split" : ""), "Sealed Dungeons", "hideout", `<span class="itl">${itemLine(SD_REWARD)} each</span>`, sds, true);
   document.querySelectorAll("#areaList li.running input[data-k]").forEach(i => { i.indeterminate = true; });
   derive();
 }

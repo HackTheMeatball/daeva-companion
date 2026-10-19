@@ -106,6 +106,9 @@ body.basic #nowStar.wide .nsq { padding: var(--space-7) var(--space-10); }
 #nowStar .ns-card .title h3 { margin: 0; font-size: 17px; font-weight: 700; }
 #nowStar .ns-card .title p { margin: var(--space-2) 0 0; color: var(--muted); font-size: 13.5px; }
 #nowStar .ns-card .title p a { color: inherit; }
+/* a step card's how line (0.6.2 P17, docs/design/0.6.2-step-how-mockup.md §1): body text under the title, the meta line under it */
+#nowStar .ns-card .title p.ns-how { margin: var(--space-4) 0 0; font-size: 14px; line-height: 1.45; color: var(--fg); }
+#nowStar .ns-card .title h3:has(+ .ns-how) .nsinfo { display: inline-grid; margin-left: var(--space-6); vertical-align: middle; }
 
 #nowStar .ns-card .meta .ns-btn { margin: 0; }
 #nowStar .ns-card .ns-go { font: 600 12px var(--mono); padding: var(--space-6) var(--space-12); border-radius: var(--radius-8); border: 1px solid var(--line); background: var(--panel-2); color: var(--fg); cursor: pointer; white-space: nowrap; }
@@ -263,7 +266,7 @@ html.pip .pip-hint { flex: none; padding-top: var(--space-6); font: 500 10px var
 #nowStar .ns-stack.ns-phone .ns-card:not(.first) .ns-num img { width: 24px; height: 24px; }
 #nowStar .ns-stack.ns-phone .ns-card:not(.first) .title h3 { font-size: 14.5px; }
 #nowStar .ns-stack.ns-phone .ns-card:not(.first) .title p { font-size: 12.5px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; line-clamp: 1; overflow: hidden; }
-#nowStar .ns-stack.ns-phone .ns-card:not(.first) :is(.meta, .ns-extra, .ns-info, .nsinfo, .ns-obj, .ns-bbar) { display: none; }
+#nowStar .ns-stack.ns-phone .ns-card:not(.first) :is(.meta, .ns-extra, .ns-info, .nsinfo, .ns-how, .ns-obj, .ns-bbar) { display: none; }
 /* the pager: ‹ 1 of N › in the header, before Pop out */
 #nowStar .ns-pg { display: flex; align-items: center; gap: var(--space-4); margin-left: auto; }
 #nowStar .ns-pg + .ns-pop { margin-left: var(--space-8); }
