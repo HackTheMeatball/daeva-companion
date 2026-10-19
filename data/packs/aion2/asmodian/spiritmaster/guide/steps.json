@@ -37,23 +37,6 @@
       ]
     },
     {
-      "id": "g10:wisdom",
-      "key": "g10:wisdom",
-      "milestone": "g10",
-      "order": 30,
-      "route": "core",
-      "short": "Use your [[item:wisdom]]",
-      "text": "<b>Use the [[item:wisdom]] from Sealed Dungeons and quests.</b> Each becomes 1 [[tip:wisdom|Skill Point]] only when you use it from your Cube.",
-      "requires": {
-        "level": 10,
-        "basis": "rule",
-        "note": "milestone level"
-      },
-      "completesWith": [
-        "tick"
-      ]
-    },
-    {
       "id": "g12:0",
       "key": "g12:0",
       "milestone": "g12",

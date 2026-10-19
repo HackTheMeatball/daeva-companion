@@ -318,7 +318,6 @@
       "newText": "That pays 2 Noble Belt Enhance Scrolls and 15,000 Kina (some add a title). Strongholds are the main source of belt scrolls, and the belt is permanent, so clear every one.",
       "note": "Rewards verified (3 sources). 'Nowhere else': AION2HUB and PlayNews say only Strongholds; allthings.how reports extras from green quests and '?' markers. Replace the two sentences starting 'That pays'.",
       "appliesTo": [
-        "g9:0",
         "tip:stronghold",
         "rule:sh-first-clear-asmodian"
       ],
@@ -505,6 +504,7 @@
       "note": "Belt costs verified (2 sources). No source gives the amulet's cost, so 'each' is dropped. '+0 reset' is allthings.how only; 'Lv 45 Kina sink' is inference. Both dropped.",
       "appliesTo": [
         "g16:amulet",
+        "tip:extract",
         "conf:belt-cost"
       ],
       "verifiedAt": "2026-10-12"

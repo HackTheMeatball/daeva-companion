@@ -221,24 +221,6 @@
       ]
     },
     {
-      "id": "g10:5",
-      "key": "g10:5",
-      "milestone": "g10",
-      "order": 40,
-      "route": "core",
-      "short": "Claim Daeva Pass free-track rewards",
-      "text": "<b>Claim Daeva Pass free-track rewards</b> as you earn them.",
-      "upsell": "Premium track costs Quna (real money). Skip it.",
-      "requires": {
-        "level": 10,
-        "basis": "rule",
-        "note": "milestone level"
-      },
-      "completesWith": [
-        "tick"
-      ]
-    },
-    {
       "id": "g12:belt",
       "key": "g12:belt",
       "milestone": "g12",
@@ -794,27 +776,6 @@
           "story": "sq:2101050",
           "is": "turnedIn"
         }
-      ]
-    },
-    {
-      "id": "g9:0",
-      "key": "g9:0",
-      "milestone": "g9",
-      "order": 10,
-      "route": "core",
-      "short": "Save your [[item:enhance]]",
-      "text": "<b>Save your [[item:enhance]]</b> in the Cube. [[tip:enhance|Enhance]] the belt and Revelation amulet once you have them; other gear only if a boss or Sealed Dungeon actually stops you, weapon first. The first real supply is the Lv 10 Sealed Dungeons (1,250 each). Strongholds are the main source of belt enhance scrolls (2 each); both are in Dungeons & Strongholds.",
-      "note": "The 5 stones from the Lv 7 quest were likely spent in Pelleir's tutorial, usually on your starting weapon (look for a +1). Extract that weapon once it's replaced to get them back.",
-      "requires": {
-        "level": 9,
-        "basis": "rule",
-        "note": "milestone level"
-      },
-      "completesWith": [
-        "tick"
-      ],
-      "claims": [
-        "C13"
       ]
     },
     {

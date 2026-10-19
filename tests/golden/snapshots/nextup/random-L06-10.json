@@ -4,7 +4,7 @@
     {"t":"Buy Heart Gore 2 → 3","s":"Needs Lv 7 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Savage Roar 3 → 4","s":"Needs Lv 7 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 3 → 4","s":"Needs Lv 7 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"}
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 4 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "random/L06-q37-none-B-stfull": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
@@ -31,7 +31,7 @@
     {"t":"Buy Heart Gore 2 → 3","s":"Needs Lv 7 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Savage Roar 3 → 4","s":"Needs Lv 7 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 3 → 4","s":"Needs Lv 7 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"}
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 4 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "random/L06-q78-none-A-stfull": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 6–8"},
@@ -41,7 +41,7 @@
     {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5"},
     {"t":"Story: Chief of the Black Claw","s":"Needs Lv 42: you're 6. Level up first.","c":"","b":"Lv 6–8"},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"}
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 4 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "random/L06-q83-all-B-sppts": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
@@ -55,7 +55,7 @@
     {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5"},
     {"t":"Story: The Longest Night","s":"Needs Lv 9: you're 7. Level up first.","c":"","b":"Lv 6–8"},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"}
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "random/L07-q20-rnd130p50-B-stready": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
@@ -66,7 +66,7 @@
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Storm Rampage 2 → 3","s":"Needs Lv 8 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Ambush 3 → 4","s":"Needs Lv 9 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "random/L07-q35-all-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
@@ -84,14 +84,14 @@
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Storm Rampage 2 → 3","s":"Needs Lv 8 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Ambush 3 → 4","s":"Needs Lv 9 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "random/L07-q59-lvonly-A-objs": [
     {"t":"Story: Visible Trap","s":"Needs Lv 34: you're 7. Level up first.","c":"","b":"Lv 6–8","bd":"Bind Shulak Street Stall on the way 35 m from Nemon bind:kib:shulak-street-stall"},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Ambush 3 → 4","s":"Needs Lv 9 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
     {"t":"Buy Exploit Weakness 2 → 3","s":"Needs Lv 9 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "random/L07-q62-all-B-dv": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
@@ -110,7 +110,7 @@
     {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5"},
     {"t":"Story: Treatment","s":"Needs Lv 40: you're 7. Level up first.","c":"","b":"Lv 6–8"},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"}
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "random/L07-q79-rnd130p80-A-sppts": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 6–8"},
@@ -119,8 +119,8 @@
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Story: High Priest's Fafnite","s":"Needs Lv 43: you're 7. Level up first.","c":""},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
-    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 4 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"},
+    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 4 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L07-qxx-rnd108p20-A-rqmix": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 6–8"},
@@ -130,7 +130,7 @@
     {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5"},
     {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest","b":"Lv 6–8"},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"}
+    {"t":"Buy Savage Roar 4 → 5","s":"Needs Lv 10 · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "random/L08-q02-all-B-stwait": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
@@ -141,8 +141,8 @@
     {"t":"Story: The Longest Night","s":"Needs Lv 9: you're 8. Level up first.","c":"","b":"Lv 6–8"},
     {"t":"Buy Ambush 3 → 4","s":"Needs Lv 9 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
     {"t":"Buy Exploit Weakness 2 → 3","s":"Needs Lv 9 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Heart Gore 3 → 4","s":"Needs Lv 10 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
+    {"t":"Buy Heart Gore 3 → 4","s":"Needs Lv 10 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"},
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L08-q18-lvonly-B": [
     {"t":"Story: Cemetery Cleanup","s":"Needs Lv 13: you're 8. Level up first.","c":""}
@@ -151,8 +151,8 @@
     {"t":"Story: Empyrean Monolith","s":"Needs Lv 16: you're 8. Level up first.","c":"","b":"Lv 6–8"},
     {"t":"Buy Ambush 3 → 4","s":"Needs Lv 9 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
     {"t":"Buy Exploit Weakness 2 → 3","s":"Needs Lv 9 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Heart Gore 3 → 4","s":"Needs Lv 10 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
+    {"t":"Buy Heart Gore 3 → 4","s":"Needs Lv 10 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"},
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L08-q29-all-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
@@ -184,8 +184,8 @@
     {"t":"Story: Farewells","s":"Needs Lv 45: you're 8. Level up first.","c":"","b":"Lv 6–8"},
     {"t":"Buy Ambush 3 → 4","s":"Needs Lv 9 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
     {"t":"Buy Exploit Weakness 2 → 3","s":"Needs Lv 9 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"},
+    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 3 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L08-qxx-none-A-filters": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 6–8"},
@@ -194,8 +194,8 @@
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5"},
     {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest","b":"Lv 6–8"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
-    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"},
+    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 3 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L08-qxx-none-A-stfull": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 6–8"},
@@ -204,15 +204,14 @@
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5"},
     {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest","b":"Lv 6–8"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 9"},
-    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"},
+    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 3 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L09-q01-all-A-dv": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
     {"t":"Story: Prepare to Escape","s":"0/2 objectives · then Shadow Forest","c":"primary \"Turned in\" story","o":["Find gear in the Supply Chest check the Supply Chest (Kibelisk: Aldelle Village)","Turn in Stellan (Villager), Aldelle Village"]}
   ],
   "random/L09-q03-before-B-objs": [
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Story: Isolated Lake","s":"0/4 objectives · then The Being Beneath the Lake","c":"primary \"Turned in\" story","o":["Remove the hazards at the lake defeat the beasts at the lake (Kibelisk: Witch's Cabin)","Check the Veil Jewel at Tunapre Lake check the Veil Jewel (Kibelisk: Witch's Cabin)","Go to Elvida's residence","+1 more after these"]}
   ],
   "random/L09-q07-rnd124p95-A": [
@@ -223,12 +222,10 @@
     {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L09-q09-lvonly-B-dv": [
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Story: The Longest Night","s":"0/2 objectives · then Finding Nemon","c":"primary \"Turned in\" story","o":["Sleep at the village cabin go to the village cabin (Kibelisk: Aldelle Village)","Turn in no NPC; escaping from Ishalgen completes the quest"]}
   ],
   "random/L09-q13-lvonly-A-stfull": [
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0","b":"Lv 9"},
-    {"t":"Story: Crash Site Rendezvous","s":"Needs Lv 11: you're 9. Level up first.","c":"","bd":"Bind Galorik's Inspection Area on the way 49 m from Ulgorn bind:kib:galoriks-inspection-area"},
+    {"t":"Story: Crash Site Rendezvous","s":"Needs Lv 11: you're 9. Level up first.","c":"","b":"Lv 9","bd":"Bind Galorik's Inspection Area on the way 49 m from Ulgorn bind:kib:galoriks-inspection-area"},
     {"t":"Buy Heart Gore 3 → 4","s":"Needs Lv 10 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"},
     {"t":"Buy Savage Roar 4 → 5","s":"Needs Lv 10 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 4 → 5","s":"Needs Lv 10 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -236,25 +233,21 @@
   ],
   "random/L09-q21-rnd117p20-B": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund"},
     {"t":"Story: Buried Atrocities","s":"Needs Lv 16: you're 9. Level up first.","c":""}
   ],
   "random/L09-q27-lvonly-A-stready": [
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0","b":"Lv 9"},
-    {"t":"Story: Imminent Threat","s":"Needs Lv 20: you're 9. Level up first.","c":""},
+    {"t":"Story: Imminent Threat","s":"Needs Lv 20: you're 9. Level up first.","c":"","b":"Lv 9"},
     {"t":"Buy Heart Gore 3 → 4","s":"Needs Lv 10 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"},
     {"t":"Buy Savage Roar 4 → 5","s":"Needs Lv 10 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 4 → 5","s":"Needs Lv 10 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L09-q28-before-B": [
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Story: Crossroad","s":"Needs Lv 20: you're 9. Level up first.","c":""}
   ],
   "random/L09-q30-lvonly-A-objs": [
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0","b":"Lv 9"},
-    {"t":"Story: Children of the Elim","s":"Needs Lv 21: you're 9. Level up first.","c":""},
+    {"t":"Story: Children of the Elim","s":"Needs Lv 21: you're 9. Level up first.","c":"","b":"Lv 9"},
     {"t":"Buy Heart Gore 3 → 4","s":"Needs Lv 10 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"},
     {"t":"Buy Savage Roar 4 → 5","s":"Needs Lv 10 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 4 → 5","s":"Needs Lv 10 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -265,10 +258,10 @@
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5"},
     {"t":"Story: Disturbed Balance","s":"Needs Lv 22: you're 9. Level up first.","c":"","b":"Lv 9"},
-    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"},
+    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 2 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L09-q46-all-A-sppts": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 9"},
@@ -284,8 +277,7 @@
     {"t":"Story: Contaminated Sacred Tree","s":"Needs Lv 30: you're 9. Level up first.","c":""}
   ],
   "random/L09-q56-before-A": [
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0","b":"Lv 9"},
-    {"t":"Story: Scripture in the Ruins","s":"Needs Lv 33: you're 9. Level up first.","c":""},
+    {"t":"Story: Scripture in the Ruins","s":"Needs Lv 33: you're 9. Level up first.","c":"","b":"Lv 9"},
     {"t":"Buy Heart Gore 3 → 4","s":"Needs Lv 10 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"},
     {"t":"Buy Savage Roar 4 → 5","s":"Needs Lv 10 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 4 → 5","s":"Needs Lv 10 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -293,7 +285,6 @@
   ],
   "random/L09-q57-none-B-rqmix": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund"},
     {"t":"Story: Blood Monument","s":"Needs Lv 33: you're 9. Level up first.","c":""}
   ],
@@ -302,14 +293,13 @@
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5"},
     {"t":"Story: Visible Trap","s":"Needs Lv 34: you're 9. Level up first.","c":"","b":"Lv 9","bd":"Bind Shulak Street Stall on the way 35 m from Nemon bind:kib:shulak-street-stall"},
-    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"},
+    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 2 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L09-q62-before-A": [
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0","b":"Lv 9"},
-    {"t":"Story: Powder of Death","s":"Needs Lv 35: you're 9. Level up first.","c":""},
+    {"t":"Story: Powder of Death","s":"Needs Lv 35: you're 9. Level up first.","c":"","b":"Lv 9"},
     {"t":"Buy Heart Gore 3 → 4","s":"Needs Lv 10 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"},
     {"t":"Buy Savage Roar 4 → 5","s":"Needs Lv 10 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 4 → 5","s":"Needs Lv 10 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -320,32 +310,28 @@
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5"},
     {"t":"Story: Creion of Gribade","s":"Needs Lv 36: you're 9. Level up first.","c":"","b":"Lv 9"},
-    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"},
+    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 2 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L09-q67-rnd113p20-B": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund"},
     {"t":"Story: Lake of Confrontation","s":"Needs Lv 37: you're 9. Level up first.","c":""}
   ],
   "random/L09-q76-none-B": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund"},
     {"t":"Story: Daybreak Society Rescue Operation","s":"Needs Lv 41: you're 9. Level up first.","c":""}
   ],
   "random/L09-q80-none-B": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund"},
     {"t":"Story: The High Priest Awakens","s":"Needs Lv 44: you're 9. Level up first.","c":""}
   ],
   "random/L09-q83-before-A-filters": [
-    {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0","b":"Lv 9"},
-    {"t":"Story: Zikel's Core","s":"Needs Lv 45: you're 9. Level up first.","c":"","bd":"Bind Outskirts Stall on the way 93 m from Nemon bind:kib:outskirts-stall"},
+    {"t":"Story: Zikel's Core","s":"Needs Lv 45: you're 9. Level up first.","c":"","b":"Lv 9","bd":"Bind Outskirts Stall on the way 93 m from Nemon bind:kib:outskirts-stall"},
     {"t":"Buy Heart Gore 3 → 4","s":"Needs Lv 10 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"},
     {"t":"Buy Savage Roar 4 → 5","s":"Needs Lv 10 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 4 → 5","s":"Needs Lv 10 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -361,8 +347,6 @@
   ],
   "random/L10-q06-lvonly-B-stwait": [
     {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
-    {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
-    {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Story: Signs of a Crash Landing","s":"0/5 objectives · then Prison Compound Infiltration Plan","c":"primary \"Turned in\" story","o":["Go to Anturn Cliff go to Milred (Kibelisk: Witch's Cabin)","Search the airship at the top of Anturn Cliff ride the Updraft to the top (Kibelisk: Witch's Cabin)","Return to Aldelle Village go to Aldelle Village","+2 more after these"]},
     {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
     {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"}
@@ -388,12 +372,11 @@
     {"t":"Finish Abandoned One's Grave","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:g10h:abandoned-one-s-grave"},
     {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
     {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
-    {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
-    {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Regional quests","s":"14 to pick up · 4 follow-ups · 0/18 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian [Lv 12]","new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","+12 more"]},
     {"t":"Clear Abandoned One's Grave and others until Lv 32","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
     {"t":"Story: Bitter Reality","s":"Needs Lv 32: you're 10. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":"","bd":"Bind Briskwind Shelter on the way 63 m from Menrik bind:kib:briskwind-shelter"},
-    {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk: Safe Haven Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 1 open"}
+    {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk: Safe Haven Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 1 open"},
+    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 1 level away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L10-q51-all-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
@@ -401,8 +384,6 @@
   ],
   "random/L10-q53-lvonly-B-rqmix": [
     {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
-    {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
-    {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Regional quests","s":"14 to pick up · 4 follow-ups · 0/18 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian [Lv 12]","new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","+12 more"]},
     {"t":"Clear Abandoned One's Grave and others until Lv 32","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
     {"t":"Story: Last of the Destruction Archons","s":"Needs Lv 32: you're 10. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
@@ -410,20 +391,18 @@
   ],
   "random/L10-q66-lvonly-A-objs": [
     {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
-    {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
-    {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Regional quests","s":"16 to pick up · 5 follow-ups · 0/22 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian [Lv 12]","new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","+15 more"]},
     {"t":"Clear Abandoned One's Grave and others until Lv 37","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
     {"t":"Story: Unveiling the Truth","s":"Needs Lv 37: you're 10. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk: Safe Haven Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 1 open"},
-    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 1 level away","c":"tag \"Later\"","f":"later"}
+    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Ambush 4 → 5","s":"Needs Lv 12 · 2 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Exploit Weakness 3 → 4","s":"Needs Lv 12 · 2 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L10-q82-lvonly-B-cube": [
     {"t":"Finish Abandoned One's Grave","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:g10h:abandoned-one-s-grave"},
     {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
     {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
-    {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
-    {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Regional quests","s":"17 to pick up · 6 follow-ups · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian [Lv 12]","new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16] | -> lock(disabled) A Friend's Legacy [Lv 37]","+17 more"]},
     {"t":"Clear Abandoned One's Grave and others until Lv 44","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
     {"t":"Story: Blood Barrier","s":"Needs Lv 44: you're 10. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
@@ -431,18 +410,16 @@
   ],
   "random/L10-q85-lvonly-A-stwait": [
     {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
-    {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
-    {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Regional quests","s":"18 to pick up · 6 follow-ups · 0/25 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian [Lv 12]","new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16] | -> lock(disabled) A Friend's Legacy [Lv 37]","+18 more"]},
     {"t":"Clear Abandoned One's Grave and others until Lv 45","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
     {"t":"Story: Forgotten Commander","s":"Needs Lv 45: you're 10. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":"tag \"Turn in at Lv 45\"","bd":"Bind Latesran Eastern Root on the way 49 m from Koro bind:kib:latesran-eastern-root"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk: Safe Haven Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 1 open"},
-    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 1 level away","c":"tag \"Later\"","f":"later"}
+    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Ambush 4 → 5","s":"Needs Lv 12 · 2 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Exploit Weakness 3 → 4","s":"Needs Lv 12 · 2 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L10-qxx-before-B-stfull": [
     {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
-    {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
-    {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"},
     {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
     {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"}
