@@ -170,7 +170,7 @@ jobs:
                 `You update pull request #${prNum} in ${owner}/${repo}, branch ${pr.head.ref} (checked out), head commit ${sha}, with the current main (${main}).`,
                 'Read CLAUDE.md first. Run `git fetch origin main` and `git merge origin/main` (a merge commit; never rebase, amend or force-push). Resolve conflicts keeping the intent of both sides.',
                 'Re-record golden snapshots only if the golden suite fails because of the merge itself, and say in the commit which snapshots changed and why. Never skip, disable or weaken a test or check.',
-                'Run commands in the foreground. Run `npm test` once at the end and make sure it is green, then `git push origin HEAD:' + pr.head.ref + '`. Do not write the word VERDICT in any comment.',
+                'Run commands in the foreground. Run `npm test` once at the end and make sure it is green, then `git push origin HEAD:' + pr.head.ref + '`. Do not write the word VERDICT in any comment, and start no line with DESIGN OK or DESIGN CHANGES.',
                 'If the conflict needs a design or owner decision, do not push. Post one comment that starts with "Pipeline stuck:" and gives the reason in one or two lines.',
                 TOOLS, CLOCK,
               ].join('\n'));
@@ -190,7 +190,7 @@ jobs:
                 `Read CLAUDE.md, then \`gh pr view ${prNum}\` and \`gh pr diff ${prNum}\`; open files in the checkout for context.`,
                 'Check: correctness; the CLAUDE.md rules (verified data only with labels, the save rule, no weakened tests or checks, data in data/ not main.js, Sources card, licensing and "unofficial" text, both builds identical); missing tests for new behaviour.',
                 `Then post exactly one comment with \`gh pr comment ${prNum} --body-file <file>\`: first line "Review of ${sha.slice(0, 7)}", then at most 12 short lines of findings, blocking ones first and marked BLOCKING.`,
-                'The last line is `VERDICT: APPROVE` or `VERDICT: CHANGES`. Write the word VERDICT only on that last line. Use CHANGES only for blocking problems; list nits and still APPROVE.',
+                'The last line is `VERDICT: APPROVE` or `VERDICT: CHANGES`. Write the word VERDICT only on that last line, not even when quoting or describing another review (auto-merge ignores an APPROVE whose text also says VERDICT: CHANGES). Use CHANGES only for blocking problems; list nits and still APPROVE.',
                 warns.length ? `CI on this head printed a time-budget warning: ${warns.join(' / ')}. A suite this close to its hang guard fails on main next, so it is BLOCKING when this PR adds to that suite's work (it changes the suite or the code it runs) unless the PR raises that budget with a stated reason; ask for the suite to do less or be split. If the PR doesn't touch it, list it as a nit saying main needs that fix.` : '',
                 TOOLS,
               ].filter(Boolean).join('\n'));
@@ -216,7 +216,7 @@ jobs:
                 'Read CLAUDE.md first and follow it. Find the root cause and fix it on this branch. Never skip, disable or weaken a test or check to get green; if an expectation must change on purpose, say why in the commit.',
                 opus ? '' : 'Sonnet limits (owner routing rule): if the fix would touch src/core/, save/sync/migration/storage code, a gate\'s requires/completesWith, golden snapshots, the mig1 pin, or more than about 300 lines, do not edit. Post one comment starting "Needs @claude (Opus):" with the reason, then stop.',
                 'Run commands in the foreground only (a background command can end the run early). Commit and push after each finished step. While iterating use `node tests/run.mjs --only <suites>` after `npm run build`, batch slow golden or pixel runs, and run the full `npm test` once at the end: it must be green before the last push.',
-                `Commit with a clear message and push: \`git push origin HEAD:${pr.head.ref}\`. Then post one short comment with \`gh pr comment ${prNum}\` saying what you changed. Do not write the word VERDICT in it.`,
+                `Commit with a clear message and push: \`git push origin HEAD:${pr.head.ref}\`. Then post one short comment with \`gh pr comment ${prNum}\` saying what you changed. Do not write the word VERDICT in it, and start no line with DESIGN OK or DESIGN CHANGES (auto-merge reads those as design marks).`,
                 'If it cannot be fixed safely (unverifiable game data, an owner decision, an outside failure), do not push. Post one comment that starts with "Pipeline stuck:" and gives the reason in one or two lines.',
                 TOOLS, CLOCK,
               ].filter(Boolean).join('\n'));
