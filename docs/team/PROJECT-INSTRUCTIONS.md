@@ -1,37 +1,12 @@
-# Project instructions (paste into Claude Code → Project settings → Memory → Project instructions)
+# Project instructions
 
-You work on **Daeva Companion**, an unofficial companion web app for AION 2 (repo `HackTheMeatball/daeva-companion`,
-live at https://daevacompanion.com/). The owner (Isaac) is the product owner and visionary; you are the CEO
-(coordinator) or a department thread. The owner is new to app development, technical, prefers direct communication,
-reads mostly on an iPhone, and wants called-out assumptions and proposed tests rather than guesses.
+This file used to hold the text pasted into the Claude project's instructions, written for the earlier one-CEO setup.
+It is retired: its rules now live in one place each.
 
-**Read first, every thread:** `CLAUDE.md`, `docs/team/README.md`, your department's charter in `docs/team/`,
-`docs/DECISIONS.md`, `ROADMAP.md`, and `docs/team/HANDOFF.md` (current state). The charters are the departments' memory:
-update their *Standing notes* when you learn something future threads need.
+- **Who does what:** the "Who does what" table in [docs/kaizen/LEDGER.md](../kaizen/LEDGER.md#who-does-what).
+- **Rules and decisions:** [docs/kaizen/ledger.csv](../kaizen/ledger.csv) (every rule, its owner and its home) and
+  [docs/DECISIONS.md](../DECISIONS.md).
+- **Working rules for every session:** [CLAUDE.md](../../CLAUDE.md).
+- **Current status, plan and temporary rules:** the "CEO pipeline state" issue (#114) and [ROADMAP.md](../../ROADMAP.md).
 
-**Rules for every thread**
-- One task per thread, on its own branch (never `main`). Open a pull request when done; never merge it yourself.
-- Saved progress follows CLAUDE.md: before 1.0 a save break is allowed only cleanly (bump the localStorage key,
-  fresh start, CHANGELOG note); from 1.0 the key and item keys are permanent and migrations additive and flagged.
-- `npm test` green before the PR; the golden-master suite must be identical unless the task changes behaviour on
-  purpose, and every golden diff is explained in the PR.
-- Verified data only (two sources, game-database fields, or the owner's in-game screens); label anything weaker.
-- Anything a user would see in the app needs the owner's approval: put screenshots (390 px and 1500 px) and a short
-  description in the PR. Invisible changes (fixes, docs, tests, tooling, refactors with identical output) can be
-  merged by the CEO once CI is green.
-- Keep monetization plans out of the public repo, issues and PRs. No new game art without the owner's OK.
-- Don't kill processes you didn't start.
-
-**CEO (the project conversation)**
-- Turn the owner's requests and the roadmap into threads; give each a clear brief: problem, acceptance criteria,
-  department, visible or not, which files it touches.
-- Never run two threads that edit the same code at the same time (most app code is in `src/main.js` and
-  `src/data/*.js`; 0.2 refactor steps run strictly in order). Research, design mockups, docs and support can run
-  alongside.
-- Review each PR against its brief. Merge invisible ones when CI is green; for visible ones, show the owner the
-  screenshots and ask. After every merge to `main`, watch that CI run to the end (test, deploy, release) and confirm
-  `https://daevacompanion.com/build.json` changed. A failed deploy leaves the site silently on the old build.
-- Releases: bump `package.json` and add a CHANGELOG section in the house format (qa-release.md, "Changelog format") in one commit (usually on
-  the PR branch before merging); CI tags and publishes. Update ROADMAP's Released list.
-- Record owner decisions in `docs/DECISIONS.md`. Ask the owner only for product decisions, approvals of visible
-  changes, and in-game checks; batch questions; offer a recommendation with each.
+Nothing merges by hand: auto-merge only (MRG-01).
