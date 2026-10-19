@@ -135,9 +135,22 @@ jobs:
             }
 
             const pr = (await github.rest.pulls.get({ owner, repo, pull_number: prNum })).data;
-            const labels = pr.labels.map((l) => l.name);
+            let labels = pr.labels.map((l) => l.name);
             if (pr.state !== 'open' || pr.draft) return none('PR not open or draft');
             if (!pr.head.repo || pr.head.repo.full_name !== `${owner}/${repo}` || !/^claude\//.test(pr.head.ref)) return none('not a claude/ branch in this repo');
+            // MRG-09 (Kaizen (Gale), 0.7 rules audit, 2026-10-19): a push made after `stuck` was added answers it (a session's
+            // fix, or a merge of main), so CI on that head takes the label off and the PR moves on; #365 sat 56 min with its
+            // findings fixed. `hold` is a person's stop and stays. A head that needs another fix round gets `stuck` back.
+            if (ev === 'workflow_run' && labels.includes('stuck') && !labels.includes('hold')) {
+              const events = await github.paginate(github.rest.issues.listEvents, { owner, repo, issue_number: prNum, per_page: 100 });
+              const stuckAt = events.filter((e) => e.event === 'labeled' && e.label && e.label.name === 'stuck').map((e) => Date.parse(e.created_at)).pop();
+              const pushedAt = Date.parse((await github.rest.repos.getCommit({ owner, repo, ref: pr.head.sha })).data.commit.committer.date);
+              if (stuckAt && pushedAt > stuckAt) {
+                await github.rest.issues.removeLabel({ owner, repo, issue_number: prNum, name: 'stuck' });
+                core.notice(`#${prNum}: head ${pr.head.sha.slice(0, 7)} was pushed after the stuck label; label removed (MRG-09)`);
+                labels = labels.filter((l) => l !== 'stuck');
+              }
+            }
             if (labels.includes('hold') || labels.includes('stuck')) return none('labelled hold/stuck');
             if (ev === 'workflow_run' && pr.head.sha !== p.workflow_run.head_sha) return none('CI run is for an older head');
 
