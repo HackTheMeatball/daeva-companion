@@ -7,7 +7,8 @@
 .item.rdone input:checked { background: var(--good); border-color: var(--good); }
 .item.rdone input:checked ~ .txt { color: var(--good); text-decoration: none; }
 .sh-note { list-style: none; font-size: 12px; color: var(--muted); display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-8); align-items: center; margin: 0 0 var(--space-4); }
-.sh-note > span:first-child { color: var(--fg); font-weight: 600; display: inline-flex; align-items: center; gap: var(--space-4); }
+/* Not the .itl reward run (Sealed Dungeons): that is the muted secondary line, not a bright label. */
+.sh-note > span:first-child:not(.itl) { color: var(--fg); font-weight: 600; display: inline-flex; align-items: center; gap: var(--space-4); }
 .sh-note + .item.arow { margin-top: var(--space-4); }
 .asec { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: var(--space-8); margin: var(--space-2) 0 var(--space-2); }
 .asec-t { font: 600 10.5px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--fg); display: inline-flex; align-items: center; gap: var(--space-6); }

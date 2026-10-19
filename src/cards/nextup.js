@@ -23,13 +23,37 @@ const nowCtx = () => ({ state, c: char(state), lv: char(state).level, basic: isB
    is rankNext (src/core/nextup.js); nowCard turns one of its cards into the view object renderNow lays out. */
 /* A milestone step's card title: the item's short ns title; else its first bold phrase in the milestone row (without
    trailing ":" or "."), as the row shows it. */
+const stepTxt = (g, x) => { const card = document.getElementById(g.id), li = card && [...card.querySelectorAll(":scope > ul.items > li.item")].find(l => { const cb = l.querySelector("input[data-k]"); return cb && cb.dataset.k === x.k; });
+  return li && li.querySelector(".txt"); };
 function stepHTML(g, x) {
   if (x.it && x.it.ns) return x.it.ns;
-  const card = document.getElementById(g.id), li = card && [...card.querySelectorAll(":scope > ul.items > li.item")].find(l => { const cb = l.querySelector("input[data-k]"); return cb && cb.dataset.k === x.k; });
-  const t = li && li.querySelector(".txt"); if (!t) return "";
+  const t = stepTxt(g, x); if (!t) return "";
   const cl = t.cloneNode(true); cl.querySelectorAll(".tip, .loc, .schip, .upsell, .req, .cost, button, small").forEach(e => e.remove());
   const b = cl.querySelector("b"); return (b ? b.innerHTML : cl.innerHTML).replace(/[\s:.]+$/, "");
 }
+/* A step card's how (0.6.2 P17, docs/design/0.6.2-step-how-mockup.md §1, §3): built from the step's text in its milestone
+   row, never from the card title. how = the first sentence after its bold phrase (no step needed a data override); info =
+   the rest of the text and the step's note (behind the card's "i"). Tips read as plain words, no popover in a card.
+   Nothing after the bold phrase: no how, no info, the card as before. */
+const sentEnd = h => { let tag = false; for (let i = 0; i < h.length; i++) { const ch = h[i];
+  if (ch === "<") tag = true; else if (ch === ">") tag = false;
+  else if (!tag && /[.!?]/.test(ch)) { let j = i + 1; while (h.startsWith("</", j)) j = h.indexOf(">", j) + 1; if (j >= h.length || /\s/.test(h[j])) return j; } } return h.length; };
+const capHTML = h => h.replace(/^((?:<[^>]*>)*)([a-z])/, (m, tags, c) => tags + c.toUpperCase());
+function stepHow(g, x) {
+  const t = stepTxt(g, x); if (!t) return {};
+  const cl = t.cloneNode(true); cl.querySelectorAll(".tip, .loc, .schip, .opt-tag, .upsell, .req, .cost, .erow, .rotseq, button, small").forEach(e => e.remove());
+  const note = cl.querySelector(".note"); if (note) note.remove();
+  cl.querySelectorAll(".term").forEach(e => e.replaceWith(...e.childNodes));
+  const b = cl.querySelector(":scope > b"); if (!b) return {};
+  while (b.previousSibling) b.previousSibling.remove(); b.remove();
+  const rest = cl.innerHTML.trim(), lead = /^[\s:;,.–—-]*/.exec(rest)[0], body = rest.slice(lead.length).trim(), cut = sentEnd(body);
+  /* a new sentence (after "Title:" or "Title.") starts with a capital; a continuation ("… to unlock pets") reads on */
+  const newSent = /[:.]/.test(lead) || /[:.]\s*$/.test(b.textContent);
+  const how = (newSent ? capHTML(body.slice(0, cut)) : body.slice(0, cut)).trim();
+  const more = [body.slice(cut).trim(), note ? note.innerHTML : ""].filter(Boolean).join(" ");
+  return how ? { how, info: more } : {};
+}
+const stepView = (g, x, v) => ({ ...v, t: stepHTML(g, x), ...stepHow(g, x) });
 /* Kept here for the shell, which hands it to the pack's Skills card: the pack's slot line. */
 const specSub = x => nowR()["skill.slot"](x);
 const nsGate = g => `<a href="#${g.id}" data-now="gate:${g.id}">${g.title}</a>`;
@@ -39,9 +63,9 @@ const isBasic = () => document.body.classList.contains("basic");
 function nowCard(a) {
   const { act } = a, lv = char(state).level, away = L => `${L - lv} level${L - lv === 1 ? "" : "s"} away`;
   switch (a.kind) {
-    case "step": return { ico: "⚑", t: stepHTML(a.g, a.x), sub: `Lv ${a.g.lv} milestone · ${nsGate(a.g)}`, btn: "Done", act };
-    case "missed": return { ico: "↺", t: stepHTML(a.g, a.x), sub: `Missed · Lv ${a.g.lv} ${nsGate(a.g)}`, btn: "Done", act };
-    case "adv": return { adv: true, ico: "⚑", t: stepHTML(a.g, a.x), sub: `Optional · Lv ${a.g.lv} milestone · ${nsGate(a.g)}`, btn: "Done", act };
+    case "step": return stepView(a.g, a.x, { ico: "⚑", sub: `Lv ${a.g.lv} milestone · ${nsGate(a.g)}`, btn: "Done", act });
+    case "missed": return stepView(a.g, a.x, { ico: "↺", sub: `Missed · Lv ${a.g.lv} ${nsGate(a.g)}`, btn: "Done", act });
+    case "adv": return stepView(a.g, a.x, { adv: true, ico: "⚑", sub: `Optional · Lv ${a.g.lv} milestone · ${nsGate(a.g)}`, btn: "Done", act });
     case "story": return storyView(a);
     /* E6: what opens it, in the words every card uses (src/core/blockers.js) */
     case "laterStep": return { ico: "⚑", t: a.x ? stepHTML(a.g, a.x) : `<b>${a.g.title}</b>`, sub: `Lv ${a.g.lv} milestone · ${away(a.g.lv)}${chainsOn() && a.why ? ` · ${a.why}` : ""}`, act, later: true };
@@ -109,9 +133,12 @@ function renderNow() {
   /* Progress bars run along the card's bottom edge (like the milestone cards); their label joins the subline. */
   const splitBar = a => { if (!a.bar) return { bar: "", lbl: "" }; const m = a.bar.match(/<span class="nsq-barl">([\s\S]*?)<\/span>/); return { bar: a.bar.replace(/<span class="nsq-barl">[\s\S]*?<\/span>/, ""), lbl: m ? m[1] : "" }; };
   /* on a phone the "i" opens the subline instead of following the title (at the end of either it wrapped onto a line of its own) */
-  const card = (a, i) => { const pb = splitBar(a), sub = [a.sub, pb.lbl ? `<span class="nw">${pb.lbl}</span>` : ""].filter(Boolean).join(" · "), ti = phone ? "" : info(a, i), pi = phone ? info(a, i) : "";
+  /* the pack's inline item icons on the card's item links (now.items) */
+  const itm = nowR()["now.items"] || (s => s);
+  /* a step card's how line sits under the title (0.6.2 P17), so its "i" follows the title on a phone too */
+  const card = (a, i) => { const pb = splitBar(a), sub = [a.sub, pb.lbl ? `<span class="nw">${pb.lbl}</span>` : ""].filter(Boolean).join(" · "), inT = !phone || a.how, ti = inT ? info(a, i) : "", pi = inT ? "" : info(a, i);
     return `<article class="ns-card${i === nsCur ? " first ns-primary nsbox" : ""}${a.later ? " later" : ""}${pb.bar ? " has-bbar" : ""}${nsAnim ? " rise" : ""}">` +
-    bandAt(i) + `<div class="ns-mhead"><div class="num ns-num" aria-hidden="true">${a.ico}</div><div class="title"><h3>${a.t}${ti}</h3>${sub || pi ? `<p>${pi}${sub}</p>` : ""}${a.row || ""}${a.info ? `<span class="ns-info" id="nsInfo${i}">${a.info}</span>` : ""}</div>` +
+    bandAt(i) + `<div class="ns-mhead"><div class="num ns-num" aria-hidden="true">${a.ico}</div><div class="title"><h3>${itm(a.t)}${ti}</h3>${a.how ? `<p class="ns-how">${itm(a.how)}</p>` : ""}${sub || pi ? `<p>${pi}${sub}</p>` : ""}${a.row || ""}${a.info ? `<span class="ns-info" id="nsInfo${i}">${itm(a.info)}</span>` : ""}</div>` +
     (a.extra ? `<div class="ns-extra">${a.extra}</div>` : "") + `<div class="meta">${control(a, i)}</div></div>${a.quest ? nsObjHTML() : ""}${pb.bar ? `<div class="ns-bbar">${pb.bar}</div>` : ""}</article>`; };
   const pg = pager ? `<div class="ns-pg" role="group" aria-label="Next up cards"><button type="button" class="ns-pgb" data-nspg="-1" aria-label="Previous card">‹</button><span class="ns-pgn" aria-live="polite">${nsCur + 1} of ${shown.length}</span><button type="button" class="ns-pgb" data-nspg="1" aria-label="Next card">›</button></div>` : "";
   el.innerHTML = `<div class="sec ns-sec"><h2 class="sec-h">Next up</h2>${pg}${window.documentPictureInPicture ? `<button type="button" class="ns-pop" data-nspop title="Keep Next up in a small window on top of the game">Pop out</button>` : ""}</div>` + trackHTML() + (top ? `<div class="ns-stack${phone ? " ns-phone" : ""}" id="nsqWrap">${shown.map(card).join("")}</div>`

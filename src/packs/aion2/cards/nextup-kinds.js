@@ -10,6 +10,7 @@
    - story.row(card, ctx) → html: a row inside the story card under its text, above its action (the "Bind X" row or the
      travel line), or ""
    - now.opts(ctx) → html: the pack's controls in the Advanced options row under the header ("Prefer running"), or ""
+   - now.items(html) → html: a card's text with the pack's inline item icons on its item links (title, how, info)
    - now.act(act, ctx) → true when handled: a data-now action (called before the engine's; false = the engine goes on)
    - now.click(e, ctx) → true when handled: a click on the pack's own controls inside Next up (the regional quests list)
    - now.toggle(e): a toggle event inside Next up (the "+N waiting on the story" fold)
@@ -22,6 +23,7 @@ import { MAP_ICO, rqTicked, snoozeToggle } from "../../../cards/milestones.js";
 import { capFirst, isBasic, renderNow } from "../../../cards/nextup.js";
 import { travelAdviceOn } from "../nextup.js";
 import { keyHint } from "../hotkeys.js";
+import { itemLinkIcos, itemQty } from "../data/markup.js";
 import { pageState as state, pageSave as save, pageUpdate as update, pageMainEl as mainEl, pageSMOOTH as SMOOTH, pageSD_RW as SD_RW, pageSH_REWARD as SH_REWARD, pageNO_AREA as NO_AREA, pageSpCostTxt as spCostTxt, pageRqReqOf as rqReqOf, pageSpecPickOf as specPickOf, pageMapFocus as mapFocus, pageAion2QuestMap as aion2QuestMap, pageGoAreas as goAreas, pageCubeClick as cubeClick, pageStTickClick as stTickClick, pageStUpClick as stUpClick, pageStLvClick as stLvClick, pageSpMini as spMini, pageStIco as stIco, pageDvShort as dvShort, pageQProg as qProg } from "../../../cards/page.js";
 
 /* "Not in game yet" in Next up (compact): eye with a slash. */
@@ -75,7 +77,7 @@ function rqExtraHTML(a) {
 export const aion2NowRenderers = {
   run: a => { const sh = a.x.it.kind === "stronghold";
     return { ico: sh ? "🏰" : "⛏", t: `Finish <b>${a.x.it.name}</b>`, sub: `In progress · ${sh ? "Stronghold" : "Sealed Dungeon"}`, btn: "Cleared", act: a.act }; },
-  cube: a => ({ ico: "🎒", t: `Use your Cube items: <b>${[a.st ? `${a.st} Wisdom Stone${a.st === 1 ? "" : "s"}` : "", a.cr ? `${a.cr} crystal${a.cr === 1 ? "" : "s"}` : ""].filter(Boolean).join(" + ")}</b>`, sub: "Open the Cube and use them, then confirm", btn: "Used", act: a.act, done: true }),
+  cube: a => ({ ico: "🎒", t: `Use your Cube items: <b>${[a.st ? itemQty(a.st, `Wisdom Stone${a.st === 1 ? "" : "s"}`) : "", a.cr ? itemQty(a.cr, `crystal${a.cr === 1 ? "" : "s"}`) : ""].filter(Boolean).join(" + ")}</b>`, sub: "Open the Cube and use them, then confirm", btn: "Used", act: a.act, done: true }),
   /* skill buys queue: only the first one gets the button */
   skill: a => { const x = a.x, base = x.spec ? spSlotSub(x) : a.first ? `${spCostTxt(x)} · you have the points` : spCostTxt(x);
     return a.first ? { ico: spMini(x.s.n) || "✦", t: spBuyT(x), sub: base + ssTag(x), btn: "Spent", act: a.act, done: true, queue: "skill", row: keyHint("skills") } : { ico: spMini(x.s.n) || "✦", t: spBuyT(x), sub: base + ssTag(x), act: a.act, done: true, queue: "skill" }; },
@@ -89,7 +91,7 @@ export const aion2NowRenderers = {
   sd: a => { const p = a.pick, L = a.loc, pin = `<b>${p.it.name}</b>${pinLink(mapFocus(p.it))}`;
     return { bar: a.band.n ? nsBar(a.band.d, a.band.n, `Lv ${a.band.bd}–${a.band.bd + 4} · ${a.band.d}/${a.band.n}`) : "", ico: "⛏",
       t: a.gated ? `Clear ${pin} <span class="ns-then">and others until Lv ${a.gateLv}</span>` : `Clear ${pin}`, sub: nsWhere(p.area, L.kib, a.hereArea),
-      info: [`+${SD_RW.cr} crystals, +${SD_RW.st} Wisdom Stones each · ~5 min`, L.kib && L.m ? `Kibelisk ${L.kib} is ${L.m} m away` : "", `${a.open} open at your level`].filter(Boolean).join(" · "), btn: "Show", act: a.act }; },
+      info: [`${itemQty(`+${SD_RW.cr}`, "crystals")}, ${itemQty(`+${SD_RW.st}`, "Wisdom Stones")} each · ~5 min`, L.kib && L.m ? `Kibelisk ${L.kib} is ${L.m} m away` : "", `${a.open} open at your level`].filter(Boolean).join(" · "), btn: "Show", act: a.act }; },
   sh: a => { const p = a.pick;
     return { bar: nsBar(a.done, a.total, `${a.done}/${a.total} strongholds`), ico: "🏰", t: `Run <b>${p.it.name}</b>${pinLink(mapFocus(p.it))}`, sub: nsWhere(p.area, p.it.kib, a.hereArea),
       info: [`${SH_REWARD} each`, p.it.kib && p.it.m ? `Kibelisk ${p.it.kib} is ${p.it.m} m away` : "", `${a.open} open`].filter(Boolean).join(" · "), btn: "Show", act: a.act }; },
@@ -120,6 +122,8 @@ export const aion2NowRenderers = {
     return `<div class="ns-tele"><span>Teleport to <b>${t.name}</b> (1 scroll), then ${t.m} m</span><button type="button" class="ns-walk" data-nswalk="${t.to}" aria-label="I will walk to ${t.npc || "the turn-in"}">I'll walk</button></div>`; },
   /* "Prefer running" (0.5 P16, S1 Q6'): the view setting preferRun, in the Advanced options row; no travel line while
      on. Hidden while travel advice is off (it would change nothing). */
+  /* item links on a Next up card get the item's inline icon (0.6.2 P17, i3; milestone rows keep only their tile) */
+  "now.items": html => itemLinkIcos(html),
   "now.opts": () => !travelAdviceOn() ? "" : `<label class="ns-pref"><input type="checkbox" data-nsprefer${state.preferRun === true ? " checked" : ""}><span>Prefer running</span></label>`,
   "now.act": a => {
     if (a === "usecube") { char(state).stones = (char(state).stones || 0) + (char(state).pendSt || 0); char(state).dvTotal = (char(state).dvTotal || 0) + (char(state).pendCr || 0); char(state).pendSt = 0; char(state).pendCr = 0; save(); update(); return true; }

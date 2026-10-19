@@ -9,6 +9,21 @@ export const I = (key, label) => {
   const [name, slug] = ITEMS[key];
   return `<a class="itm" data-ico="${key}" href="https://metabot.gg/en/aion-2/items/${slug}" target="_blank" rel="noopener" title="Open in the item database">${label || name}${EYE}</a>`;
 };
+/* Inline item icons (0.6.2 P17, DECISIONS owner-ok-0.6.2-item-icons): Wisdom Stones, Daevanion Crystals and Enhance
+   Stones show their icon (the item's own file in assets/icons) where a Next up card or a reward / count line names them;
+   never in milestone rows (their tile shows it) and never on free text. itemKeyOf is the one matcher for the three item
+   words: one spelling rule ("Enhance" or "Enhancement" Stone), a bare "crystal" is a Daevanion Crystal (the Cube and
+   Sealed Dungeon lines), and a crystal with another name before it ("Soul Crystal", "Life Crystal") is not. */
+const ITEM_WORDS = [["wisdom", /^Wisdom Stones?$/], ["crystal", /^(Daevanion )?Crystals?$|^crystals?$/], ["enhance", /^Enhance(ment)? Stones?$/]];
+export const itemKeyOf = w => (ITEM_WORDS.find(([k, re]) => re.test(w) && ITEMS[k] && ITEMS[k][2]) || [])[0];
+export const itemIco = k => `<img class="itm-ico" src="${ITEMS[k][2]}" alt="" loading="lazy" onerror="this.remove()">`;
+/* "3 Wisdom Stones": number, icon and word on one line (a word the matcher doesn't know stays plain) */
+export const itemQty = (n, w) => { const k = itemKeyOf(w); return k ? `<span class="itq">${n} ${itemIco(k)}${w}</span>` : `${n} ${w}`; };
+/* a reward line the code writes from the data ("2 Crystals · 2 Wisdom Stones"): each named item, with its number */
+export const itemLine = s => s.replace(/(?:(\+?\d[\d,]*) )?(Daevanion Crystals?|(?<![A-Za-z] )[Cc]rystals?|Wisdom Stones?|Enhance(?:ment)? Stones?)(?![A-Za-z])/g,
+  (m, n, w) => { const k = itemKeyOf(w); return !k ? m : n ? itemQty(n, w) : `<span class="itq">${itemIco(k)}${w}</span>`; });
+/* item links (I() below) on a Next up card: the icon before the text, inside the link; the external-link mark stays */
+export const itemLinkIcos = html => html.replace(/(<a class="itm" data-ico="(\w+)"[^>]*>)(?!<img)/g, (m, open, k) => itemKeyOf(ITEMS[k] ? ITEMS[k][0] : "") === k ? open + itemIco(k) : m);
 /* "i" button after a term. `name` is the button's spoken name when the term has no visible label (a section title next to it). */
 export const T = (label, key, name) => `<span class="term">${label}<button type="button" class="tip" data-tip="${key}" aria-expanded="false" aria-label="${name || `What is ${label.replace(/<[^>]+>/g, "")}?`}">i</button></span>`;
 /* Placeholders in milestone text, filled by fillStigmaText() on every update. */

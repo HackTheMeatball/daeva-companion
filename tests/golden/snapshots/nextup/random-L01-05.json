@@ -256,7 +256,7 @@
   ],
   "random/L04-q01-lvonly-A-cube": [
     {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube","b":"Lv 4–5"},
-    {"t":"Refund the tutorial's Quick Slice point","s":"Lv 4 milestone · Skills window","c":"primary \"Done\" tick:g4:refund"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: Prepare to Escape","s":"0/2 objectives · then Shadow Forest","c":"primary \"Turned in\" story","o":["Find gear in the Supply Chest check the Supply Chest (Kibelisk: Aldelle Village)","Turn in Stellan (Villager), Aldelle Village"]},
     {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 1 → 2","s":"Needs Lv 6 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 6–8"},
@@ -276,7 +276,7 @@
   ],
   "random/L04-q45-rnd122p20-B-cube": [
     {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
-    {"t":"Refund the tutorial's Quick Slice point","s":"Lv 4 milestone · Skills window","c":"primary \"Done\" tick:g4:refund"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: Dying Light","s":"Needs Lv 30: you're 4. Level up first.","c":""}
   ],
   "random/L04-q53-rnd130p50-A-filters": [
@@ -299,21 +299,21 @@
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Refund the tutorial's Quick Slice point","s":"Lv 4 milestone · Skills window","c":"primary \"Done\" tick:g4:refund"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: Visible Trap","s":"Needs Lv 34: you're 4. Level up first.","c":"","bd":"Bind Shulak Street Stall on the way 35 m from Nemon bind:kib:shulak-street-stall"},
     {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 1 → 2","s":"Needs Lv 6 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 6–8"}
   ],
   "random/L04-q62-lvonly-B-objs": [
-    {"t":"Refund the tutorial's Quick Slice point","s":"Lv 4 milestone · Skills window","c":"primary \"Done\" tick:g4:refund"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: Powder of Death","s":"Needs Lv 35: you're 4. Level up first.","c":""}
   ],
   "random/L04-q63-lvonly-B": [
-    {"t":"Refund the tutorial's Quick Slice point","s":"Lv 4 milestone · Skills window","c":"primary \"Done\" tick:g4:refund"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: Creion of Gribade","s":"Needs Lv 36: you're 4. Level up first.","c":""}
   ],
   "random/L04-q73-lvonly-A-filters": [
-    {"t":"Refund the tutorial's Quick Slice point","s":"Lv 4 milestone · Skills window","c":"primary \"Done\" tick:g4:refund","b":"Lv 4–5"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: Treatment","s":"Needs Lv 40: you're 4. Level up first.","c":""},
     {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 1 → 2","s":"Needs Lv 6 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 6–8"},
@@ -322,24 +322,24 @@
   ],
   "random/L04-q76-rnd128p50-B-sppts": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-    {"t":"Refund the tutorial's Quick Slice point","s":"Lv 4 milestone · Skills window","c":"primary \"Done\" tick:g4:refund"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: Daybreak Society Rescue Operation","s":"Needs Lv 41: you're 4. Level up first.","c":""}
   ],
   "random/L04-q80-lvonly-B-filters": [
-    {"t":"Refund the tutorial's Quick Slice point","s":"Lv 4 milestone · Skills window","c":"primary \"Done\" tick:g4:refund"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: The High Priest Awakens","s":"Needs Lv 44: you're 4. Level up first.","c":""}
   ],
   "random/L04-q81-none-B-stfull": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-    {"t":"Refund the tutorial's Quick Slice point","s":"Lv 4 milestone · Skills window","c":"primary \"Done\" tick:g4:refund"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: Lingering Apparitions","s":"Needs Lv 44: you're 4. Level up first.","c":"","bd":"Bind Collapsed Hall of Fame on the way 32 m from Nemon bind:kib:collapsed-hall-of-fame"}
   ],
   "random/L04-q82-lvonly-B-stready": [
-    {"t":"Refund the tutorial's Quick Slice point","s":"Lv 4 milestone · Skills window","c":"primary \"Done\" tick:g4:refund"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: Blood Barrier","s":"Needs Lv 44: you're 4. Level up first.","c":""}
   ],
   "random/L04-qxx-before-A": [
-    {"t":"Refund the tutorial's Quick Slice point","s":"Lv 4 milestone · Skills window","c":"primary \"Done\" tick:g4:refund","b":"Lv 4–5"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"},
     {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 1 → 2","s":"Needs Lv 6 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 6–8"},
@@ -366,7 +366,7 @@
   ],
   "random/L05-q07-rnd140p20-A": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 4–5"},
-    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: Prison Compound Infiltration Plan","s":"Needs Lv 7: you're 5. Level up first.","c":"","b":"Lv 4–5"},
     {"t":"Buy Exploit Weakness 1 → 2","s":"Needs Lv 6 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 6–8"},
     {"t":"Buy Shadowstrike 3 → 4","s":"Needs Lv 7 · 2 levels away","c":"tag \"Later\"","f":"later"},
@@ -398,7 +398,7 @@
     {"t":"Story: A Daeva Dreaming Anew","s":"Needs Lv 32: you're 5. Level up first.","c":""}
   ],
   "random/L05-q60-rnd139p20-A-objs": [
-    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: Destruction Archon Underground Fortress","s":"Needs Lv 34: you're 5. Level up first.","c":"","b":"Lv 4–5"},
     {"t":"Buy Exploit Weakness 1 → 2","s":"Needs Lv 6 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 6–8"},
     {"t":"Buy Heart Gore 2 → 3","s":"Needs Lv 7 · 2 levels away","c":"tag \"Later\"","f":"later"},

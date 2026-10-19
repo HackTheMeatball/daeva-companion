@@ -27,7 +27,7 @@
       "order": 10,
       "route": "core",
       "short": "Complete \"Urgent Pursuit\"",
-      "text": "<b>Complete \"Urgent Pursuit\"</b> to unlock the [[tip:daevanion|Daevanion board]]. Use every [[item:crystal]] from the Cube. Nodes are in the Daevanion board card at the top. [[build:text:nezekan-plan]]",
+      "text": "<b>Complete \"Urgent Pursuit\"</b> to unlock the [[tip:daevanion|Daevanion board]]. Use all your [[item:crystal]] from the Cube. Nodes are in the Daevanion board card at the top. [[build:text:nezekan-plan]]",
       "loc": "Story quest after \"Veiled Truth\" · Quai Campsite · [[mapq:2102065|Ulgorn]]",
       "note": "Same quest unlocks the Shugo Festival.",
       "storyQuest": "sq:2102065",
@@ -61,7 +61,7 @@
       "order": 10,
       "route": "core",
       "short": "Zikel board opens",
-      "text": "<b>Zikel [[tip:daevanion|Daevanion board]] opens.</b> Use every [[item:crystal]] in your Cube, then buy its nodes from the Daevanion board card at the top.",
+      "text": "<b>Zikel [[tip:daevanion|Daevanion board]] opens.</b> Use all your [[item:crystal]] in your Cube, then buy its nodes from the Daevanion board card at the top.",
       "opensBoard": "board:zikel",
       "requires": {
         "level": 20,
@@ -228,7 +228,7 @@
       "order": 10,
       "route": "core",
       "short": "Vaizel board opens",
-      "text": "<b>Vaizel [[tip:daevanion|Daevanion board]] opens.</b> Use every [[item:crystal]] in your Cube, then buy its nodes from the Daevanion board card at the top.",
+      "text": "<b>Vaizel [[tip:daevanion|Daevanion board]] opens.</b> Use all your [[item:crystal]] in your Cube, then buy its nodes from the Daevanion board card at the top.",
       "opensBoard": "board:vaizel",
       "requires": {
         "level": 30,
@@ -320,7 +320,7 @@
       "order": 10,
       "route": "core",
       "short": "Triniel board opens",
-      "text": "<b>Triniel [[tip:daevanion|Daevanion board]] opens.</b> Use every [[item:crystal]] in your Cube, then buy its nodes from the Daevanion board card at the top.",
+      "text": "<b>Triniel [[tip:daevanion|Daevanion board]] opens.</b> Use all your [[item:crystal]] in your Cube, then buy its nodes from the Daevanion board card at the top.",
       "opensBoard": "board:triniel",
       "requires": {
         "level": 40,

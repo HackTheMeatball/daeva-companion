@@ -167,7 +167,7 @@ const cards = p => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-
       const btns = [...f.querySelectorAll('.meta button, .meta a')].filter(x => x.offsetParent).map(x => ({ h: Math.round(r(x).height), w: Math.round(r(x).width) }));
       const h3 = f.querySelector('h3'), ib = f.querySelector('.nsinfo');
       return { n: cs.length, cur: cs.indexOf(f), firsts: w.querySelectorAll('.ns-card.first').length, phone: w.classList.contains('ns-phone'), pg: (document.querySelector('#nowStar .ns-pgn') || {}).textContent || null,
-        inner: Math.round(fr.width - 2 * pad - 2), btns, iInTitle: document.querySelectorAll('#nowStar h3 .nsinfo').length, iLine: ib && ib.offsetParent ? { iTop: Math.round(r(ib).top), h3Bottom: Math.round(r(h3).bottom) } : null,
+        inner: Math.round(fr.width - 2 * pad - 2), btns, iInTitle: document.querySelectorAll('#nowStar h3:not(:has(+ .ns-how)) .nsinfo').length, /* a step card's "i" follows its title above the how line (0.6.2 P17 mockup h1 / h3) */ iLine: ib && ib.offsetParent && !h3.matches(':has(+ .ns-how)') ? { iTop: Math.round(r(ib).top), h3Bottom: Math.round(r(h3).bottom) } : null,
         nested: w.scrollHeight > w.clientHeight + 1 || getComputedStyle(w).overflowY !== 'visible', compactActs: cs.filter(c => c !== f).some(c => [...c.querySelectorAll('.meta button, .ns-extra button')].some(x => x.offsetParent)),
         sw: document.documentElement.scrollWidth, iw: innerWidth }; });
     await load('advanced');
