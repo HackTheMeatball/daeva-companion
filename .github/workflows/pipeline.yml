@@ -8,7 +8,7 @@ run-name: "${{ inputs.pr && format('Pipeline {0} #{1}', inputs.step, inputs.pr) 
 #   - CI green on a PR's current head, and no review newer than the head  -> a review run (Opus since 2026-10-17; before that Sonnet, Opus for risky paths).
 #   - CI red on the head: a blown time or size budget -> a fix run at once (PR #253); any other first failure -> re-run
 #     the failed jobs once (no model); second failure -> a fix run.
-#   - Latest claude[bot] review says VERDICT: CHANGES, or a Sonnet run said "Needs @claude (Opus)" -> a fix run.
+#   - Latest claude[bot] review says VERDICT: CHANGES, a line-start DESIGN CHANGES, or a Sonnet run said "Needs @claude (Opus)" -> a fix run.
 #   - Dispatched with step=merge (kickoff does this after a merge, for a PR that conflicts with main or shares a
 #     serial file with the merged diff) -> a run that merges main into the branch (merge commit), re-records golden only
 #     if the merge needs it, runs npm test and pushes. Opus when golden/mig1 or risky paths are involved. Not a fix round;
@@ -117,6 +117,8 @@ jobs:
               prNum = p.issue.number;
               if (/VERDICT:\s*CHANGES/.test(body)) { want = 'fix'; reviewBody = body; reason = `The latest review asked for changes: ${p.comment.html_url}. Fix every blocking finding in it.`; }
               else if (/^\s*Needs @claude \(Opus\):/m.test(body)) { want = 'fix'; reason = `A Sonnet run handed this to Opus: ${p.comment.html_url}.`; }
+              // Design Lead's line-start DESIGN CHANGES (the gate auto-merge.yml reads) gets a fix run too (#424 had to be dispatched by hand).
+              else if (/^DESIGN CHANGES\b/m.test(body)) { want = 'fix'; reviewBody = body; reason = `The Design Lead asked for changes: ${p.comment.html_url}. Fix every finding in it and re-take the after shots.`; }
               else if (/^\s*Pipeline stuck:/m.test(body)) {
                 await github.rest.issues.addLabels({ owner, repo, issue_number: prNum, labels: ['stuck'] });
                 return none('a run reported it is stuck; labelled');
