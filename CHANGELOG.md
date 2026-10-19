@@ -9,6 +9,41 @@ through 0.3.0 loads every earlier save. From 0.4.0 the key is `companion-save-v5
 rule in CLAUDE.md). Entries before 0.1.0 are the internal build numbers of the original single-file claude.ai
 artifact (`vNNN`) and are kept in their original form.
 
+## 0.6.1 — 2026-10-18
+
+Fixes from 0.6.0 testing: objective count, phone toast, headings, Ranger icons.
+
+### Changed
+
+- The Ranger's skills and stigmas in the build plan show their icons instead of letter placeholders.
+- The Basic / Advanced toggle, objective checkboxes and "N traces" buttons have a hit area of at least 24×24 px; the
+  cards look the same.
+
+### Fixed
+
+- The story card's "done/total objectives" count now moves when an objective is ticked or unticked.
+- The Journey card's Ahead list is in level order (it listed Lv 2, Lv 3, then another Lv 2 entry at Lv 1).
+- Phones: the Undo toast sits above the bottom tab bar instead of covering it.
+- Phones: with the Build sheet open, the tab bar stays tappable, and a tap closes the sheet and goes to that tab.
+- A new character's level step no longer shows two buttons labelled "Start at Lv 1"; the grey one reads
+  "Skip: start at Lv 1".
+- An empty heading and the duplicated Skills, Daevanion and Stigmas headings on desktop are gone.
+- The Daevanion card's board line ("Nezekan board · 0 of 10 acquired") stays inside the card.
+
+### Data
+
+- Metabot's content unlocks page (global client, read 2026-10-18) backs the stigma slot levels (Lv 22 / 27 / 32 / 37),
+  Supply Requests (Lv 25) and the Daily Dungeon (Lv 30). No values change; the pre-launch "about Lv 36" figure for the
+  last slot is superseded.
+- 15 Assassin, Ranger and Gladiator specialty choices that read like "Absorbs 500, 500% HP" now carry the game's text
+  (such as "Absorbs 5% HP"), from daevaguides and aion2turkiye class pages (checked 2026-10-18). Metabot's own pages
+  print the unfilled form. None of the 15 is a build pick.
+- The Ranger skill and stigma icons come from Metabot's Ranger skill and stigma pages.
+
+### Saved progress
+
+- Unaffected. No reset; the key is still `companion-save-v5`.
+
 ## 0.6.0 — 2026-10-18
 
 New players and the first new class: the Ranger, a welcome, cards on unlock.
@@ -53,7 +88,9 @@ New players and the first new class: the Ranger, a welcome, cards on unlock.
 
 - No reset. The key is still `companion-save-v5`. 0.6 adds optional fields only: a removed character leaves a tombstone
   so another copy of the save can't bring it back, and a renamed character carries a name stamp for the same reason.
-  Every 0.5.0 save loads unchanged. The sync code that uses these fields has no screen yet.
+  Every 0.5.0 save loads unchanged. The sync code that uses these fields has no screen yet. A new optional top-level
+  `welcomed` field (1 once the welcome is dismissed, 0 for a character just added) records the welcome per browser;
+  it is never synced.
 
 ## 0.5.0 — 2026-10-18
 
