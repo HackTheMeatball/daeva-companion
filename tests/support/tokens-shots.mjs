@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /* Pixel identity check for CSS-only changes (design tokens, issue #96; not a suite). "Before" is a build of main in a
    worktree (`git worktree add --detach tests/out/main-wt main`, then `node scripts/build.mjs` inside it: node_modules
-   resolves from the repo root above it); "after" is this branch's dist/ and dist-artifact/. Full-page screenshots of the
-   site and the claude.ai build: Basic and Advanced x 390 / 1100 px x light / dark colour scheme x saves at Lv 12, 27, 45
-   and a fresh save, plus the Build drawer open and every <details> open at Lv 27 (96 cases). Any differing pixel fails
+   resolves from the repo root above it); "after" is this branch's dist/. Full-page screenshots of the site (the claude.ai
+   build is no longer made, 0.7 P9): Basic and Advanced x 390 / 1100 px x light / dark colour scheme x saves at Lv 12, 27, 45
+   and a fresh save, plus the Build drawer open and every <details> open at Lv 27 (48 cases). Any differing pixel fails
    (a mismatch is re-shot first, see RETRIES). Writes tests/out/tokens-shots/<case>-<before|after>.png (and -diff.png).
    Usage: npm run build && node tests/support/tokens-shots.mjs [regex,regex,...  (only the cases whose name matches)] */
 import { createServer } from 'node:http';
@@ -15,7 +15,7 @@ import { chromium } from 'playwright';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..'), OUT = join(ROOT, 'tests/out/tokens-shots');
 const WT = join(ROOT, 'tests/out/main-wt');
-const DIRS = { before: { site: join(WT, 'dist'), artifact: join(WT, 'dist-artifact') }, after: { site: join(ROOT, 'dist'), artifact: join(ROOT, 'dist-artifact') } };
+const DIRS = { before: { site: join(WT, 'dist') }, after: { site: join(ROOT, 'dist') } };
 for (const w of Object.values(DIRS)) for (const d of Object.values(w)) if (!existsSync(join(d, 'index.html'))) { console.error('missing build: ' + d); process.exit(2); }
 const { writeFixture } = createRequire(import.meta.url)('./regress-fixture.js');
 const { writeSave } = createRequire(import.meta.url)('./save.js');
@@ -30,7 +30,7 @@ const b = await chromium.launch({ args: ['--disable-gpu', '--force-color-profile
   '--disable-threaded-animation', '--disable-threaded-scrolling', '--disable-checker-imaging', '--disable-image-animation-resync', '--disable-new-content-rendering-timeout', '--disable-lcd-text'] });
 
 const CASES = [];
-for (const build of ['site', 'artifact']) for (const width of [390, 1100]) for (const scheme of ['light', 'dark']) for (const mode of ['basic', 'advanced']) {
+for (const build of ['site']) for (const width of [390, 1100]) for (const scheme of ['light', 'dark']) for (const mode of ['basic', 'advanced']) {
   for (const L of [12, 27, 45]) CASES.push({ build, width, scheme, mode, L });
   CASES.push({ build, width, scheme, mode, L: 0 });
   CASES.push({ build, width, scheme, mode, L: 27, extra: 'drawer' });
@@ -82,8 +82,8 @@ const pixelDiff = (a, z) => diffPage.evaluate(async ([a, z]) => {
   return { n, size: `${A.w}x${A.h}`, box: `${x0},${y0}-${x1},${y1}`, diff: url.split(',')[1] };
 }, [a.toString('base64'), z.toString('base64')]);
 
-/* A mismatch is re-shot (both sides) up to RETRIES times: page loads are not perfectly repeatable (the artifact's /_blob/
-   icons 404 off claude.ai and its layout settles at varying moments), so two loads of the same build can differ. A real
+/* A mismatch is re-shot (both sides) up to RETRIES times: page loads are not perfectly repeatable (layout
+   settles at varying moments), so two loads of the same build can differ. A real
    CSS difference differs on every attempt; a case passes only on an exact before/after pair. */
 const RETRIES = 3;
 let same = 0, retried = 0; const bad = [];
