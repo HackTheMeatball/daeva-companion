@@ -1,0 +1,10 @@
+[
+  { "case": "t2-390", "kind": "mockup", "title": "Sync: your new sync code",
+    "caption": "Turning sync on shows your code once; you type its last group back to confirm you saved it. Phone." },
+  { "case": "j3-390", "kind": "mockup", "title": "Sync: joining from a second device",
+    "caption": "If this device already has progress, you choose: keep both, or use the cloud copy (the current save is backed up first)." },
+  { "case": "s2-390", "kind": "mockup", "title": "Sync: the status line",
+    "caption": "Once on, one line in the footer says when it last synced. Advanced adds Sync now and Sync options." },
+  { "case": "m1-390", "kind": "mockup", "title": "Sync: options (Advanced)",
+    "caption": "Show sync code, new sync code, delete cloud copy and turn off sync, each asking before anything is lost." }
+]
