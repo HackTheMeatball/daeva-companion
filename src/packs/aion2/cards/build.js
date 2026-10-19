@@ -3,9 +3,9 @@
    registers with update: null; its mount places the drawer and wires its tab. */
 import { char } from "../../../core/state.js";
 import { activePack, packClasses } from "../../../core/pack.js";
-import { E_ORDER, HAS_KEYS, STAT_NOTE, STAT_SRC, STAT_TIERS } from "../data/build.js";
+import { E_ORDER, HAS_KEYS, SP_ICONS, STAT_NOTE, STAT_SRC, STAT_TIERS, STIGMA_ICON } from "../data/build.js";
 import { rotKeys } from "../requirements.js";
-import { aion2State as state, aion2Save as save, aion2Update as update, aion2STIGMA_SLOTS as STIGMA_SLOTS, aion2StIco as stIco, aion2SpMini as spMini } from "./page.js";
+import { aion2State as state, aion2Save as save, aion2Update as update, aion2STIGMA_SLOTS as STIGMA_SLOTS, aion2StIco as stIco, aion2SpMini as spMini, aion2Ini as ini } from "./page.js";
 
 const statSeqHTML = () => STAT_TIERS.map((t, i) => `<div class="tier"><span class="tier-n">Tier ${i + 1}</span><div class="seq">${t.map(x => `<span>${x}<em class="src">${STAT_SRC[x] || ""}</em></span>`).join("")}</div></div>`).join("");
 /* The keys at lv hold only what the guide says you have there (rotKeys, src/core/requirements.js: the Skills card's
@@ -16,17 +16,23 @@ const rotNow = lv => { const out = [], k = rotKeys(char(state), lv); k.rmb.forEa
   k.e.forEach((n, r) => out.push({ n, key: "E", r, stig: true })); return out; };
 const rotNew = lv => { const seen = char(state).rotSeen; if (!seen) return []; return rotNow(lv).filter(x => !seen.includes(x.key + ":" + x.n + ":" + x.r)); }; /* moved rows count too */
 const rotMarkSeen = () => { char(state).rotSeen = rotNow(char(state).level).map(x => x.key + ":" + x.n + ":" + x.r); save(); };
+/* A Key setup cell's icon: the skill's (or stigma's) art, else the initials square. Decorative; the initials sit in an
+   attribute so the cell's text stays the name. */
+const gridIco = (n, stig) => { const src = (stig ? STIGMA_ICON : SP_ICONS)[n];
+  return src ? `<img class="kv-ico" src="${src}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">` : `<span class="kv-ico ini" aria-hidden="true" data-ini="${ini(n)}"></span>`; };
 const rotWhere = x => `${x.key}${x.key === "Q" ? "" : `, row ${x.r}${x.r === 0 ? " (fires first)" : ""}`}`;
 function renderStacks(lv) {
   if (!char(state).rotSeen || !char(state).rotSeen.every(k => k.split(":").length === 3)) rotMarkSeen(); /* first run: nothing counts as new */
   const fresh = new Set(rotNew(lv).map(x => x.n));
-  const cell = n => n ? `<span class="sk${n.includes("*") ? " stig" : ""}${fresh.has(n.replace(/\*/g, "")) ? " new" : ""}">${n.replace(/\*/g, "")}</span>` : `<span class="sk empty"></span>`;
-  /* One grid: shared row numbers on the left, one column per key. */
+  const cell = n => { if (!n) return `<span class="sk empty"></span>`; const nm = n.replace(/\*/g, ""), stig = n.includes("*");
+    return `<span class="sk${stig ? " stig" : ""}${fresh.has(nm) ? " new" : ""}">${gridIco(nm, stig)}<span class="nm">${nm}</span></span>`; };
+  /* One grid (0.6.2 P18, like the game's K window): shared row numbers on the left, one column per key, each cell the
+     skill's icon with its name under it, and the key chips under their columns (row 0 at the bottom, as in the game's bar). */
   const k = rotKeys(char(state), lv), keys = [k.rmb, k.q, E_STACK(lv)];
   document.getElementById("stackViz").innerHTML =
-    `<span></span><span class="khead">Right click</span><span class="khead">Q</span><span class="khead">E</span>` +
     [3, 2, 1, 0].map(r => `<i class="rn">${r}</i>` + keys.map(k => cell(k[r]).replace('class="sk', `class="sk${r === 0 ? " r0" : ""}`)).join("")).join("") +
-    `<p class="lmb">Left click: <span class="sk">Quick Slice</span></p>` + stLaterHTML();
+    `<span></span><span class="kv-key mouse">Right click</span><span class="kv-key">Q</span><span class="kv-key">E</span>` +
+    `<p class="lmb">Left click: <span class="sk">${gridIco("Quick Slice")}<span class="nm">Quick Slice</span></span></p>` + stLaterHTML();
 }
 /* Stigmas still to come: where each will go on E when you add it (in the order the slots open). */
 function stLaterHTML() {

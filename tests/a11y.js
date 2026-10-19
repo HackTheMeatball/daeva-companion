@@ -292,6 +292,28 @@ async function load(p, state, mode) {
     ok(`touch ${id}: mode switch and number steppers at least 44 px (phone patch A)`, !r.tgt.length, r.tgt);
     ok(`touch ${id}: no text under 11 px (mono) / 12 px`, !r.small.length, r.small);
     if (sn === 'fresh') ok(`story ${id}: no connector above the first story row`, r.line === 'none', r.line);
+    /* 0.6.2 P18 (#414): Key setup cells all 72 px (empty ones too), names never break mid-word, every filled cell has an
+       icon (Shadowstrike too), key chips on one line under the columns, Left click its own line under the grid */
+    const kv = await p.evaluate(() => {
+      const v = document.getElementById('stackViz'); if (!v) return null;
+      const cells = [...v.querySelectorAll(':scope > .sk')], hs = [...new Set(cells.map(c => Math.round(c.getBoundingClientRect().height)))];
+      const split = [];
+      for (const n of v.querySelectorAll('.sk .nm')) { const t = n.firstChild; let i = 0;
+        for (const w of t.textContent.split(' ')) { const r = document.createRange(); r.setStart(t, i); r.setEnd(t, i + w.length); i += w.length + 1;
+          if (new Set([...r.getClientRects()].map(b => Math.round(b.top))).size > 1) split.push(w); } }
+      const noIco = cells.filter(c => !c.classList.contains('empty') && !c.querySelector('img.kv-ico')).map(c => c.textContent);
+      const keys = [...v.querySelectorAll(':scope > .kv-key')], row0 = cells.slice(-3), lmb = v.querySelector('.lmb');
+      const keyBad = keys.map((k, i) => { const b = k.getBoundingClientRect(), c = row0[i].getBoundingClientRect();
+        return b.height > 30 || b.top < c.bottom || b.left < c.left - 1 || b.right > c.right + 1 ? k.textContent : null; }).filter(Boolean);
+      return { n: cells.length, hs, split, noIco, keys: keys.map(k => k.textContent), keyBad, lmbBelow: !!lmb && lmb.getBoundingClientRect().top >= keys[0].getBoundingClientRect().bottom };
+    });
+    if (kv && kv.n) {
+      ok(`keys ${id}: all 12 Key setup cells are 72 px tall`, kv.n === 12 && kv.hs.length === 1 && kv.hs[0] === 72, kv);
+      ok(`keys ${id}: no skill name breaks mid-word`, !kv.split.length, kv.split);
+      ok(`keys ${id}: every filled cell shows its icon`, !kv.noIco.length, kv.noIco);
+      ok(`keys ${id}: key chips Right click / Q / E on one line under their columns, Left click under them`,
+        kv.keys.join('|') === 'Right click|Q|E' && !kv.keyBad.length && kv.lmbBelow, kv);
+    }
     await ctx.close();
   }
 
