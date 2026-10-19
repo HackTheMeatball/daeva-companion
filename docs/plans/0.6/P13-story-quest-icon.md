@@ -1,5 +1,7 @@
 # 0.6 P13: The game's yellow story-quest icon instead of 📜 (#254 note 7)
 
+> **Superseded by issue #272** (re-spec 2026-10-18 8:00 PM ET and its build notes): the owner's active-quest crop, site only (artifact frozen), on a dark tile. Build from the issue body, not this file.
+
 Planned in the 0.6 planning pass (#257, ROADMAP "0.6", lane A). Read CLAUDE.md ("No new game art"), #254 note 7 (the
 owner's OK for this one icon), docs/team/icon-provenance.md, docs/ISSUES.md (icon records) and `src/cards/nextup.js`
 lines 59–71 first.
