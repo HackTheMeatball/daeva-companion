@@ -13,6 +13,7 @@ written reason. The tracker and the Ledger use the same lines, except where a li
 - [ ] **Every state.** Empty, one item, many items, long names, and each status the data can take.
 - [ ] **Options and a pick.** When there is a real choice, two options side by side, with one recommended and why.
 - [ ] **The cost is written down.** What it adds in height, taps or build work, and what it replaces.
+- [ ] **360 px too.** When a row gains a column or a button moves beside a title, the states include 360 px.
 
 ## Setup
 - [ ] Build first: `npm run build`, then `npm run serve`. The source page does not run on its own.
@@ -26,8 +27,15 @@ written reason. The tracker and the Ledger use the same lines, except where a li
 - [ ] **Uniform card layouts.** Skills, Daevanion and Stigmas cards share one layout. Next up cards look like milestone cards.
 - [ ] **Existing patterns reused.** Spacing, type, tokens and components come from `app.css`; no one-off styles.
 - [ ] **Text.** Plain, short sentences. Calls the guide "unofficial". No hint of endorsement by NC or a source site.
+- [ ] **Order and counts match the words.** A list labelled "newest first" is, and a count in a heading, summary
+  line and nav agrees with the rows.
+- [ ] **One icon, one meaning.** A glyph or status colour means the same thing everywhere on the page, and a card's
+  identity icon isn't one of its state icons.
+- [ ] **Buttons name an action.** A button reads as something to do, not a state, and doesn't wear a status colour
+  (green = done, amber = needs you).
+- [ ] **No leaked markup or notes.** No backticks, raw ids, ALL-CAPS tokens or design notes in product text.
 - [ ] **No dead space.** An icon tile lines up with its title, and the lines under the title run the card's full width
-  (`design.md`, "No dead space around icons").
+  ([design.md](../team/design.md), "No dead space around icons").
 
 ## Does it look AI-made?
 A design fails here when it looks generated rather than made for this app. Each "yes" is a finding.
@@ -48,7 +56,9 @@ A design fails here when it looks generated rather than made for this app. Each 
   other app.
 
 ## Behaviour
-- [ ] **Manual progress.** Nothing ticks or levels up by itself. Level changes only through Level up, −, + or the slider.
+- [ ] **Manual progress.** Nothing ticks or levels up by itself. Level changes only through Level up, −, + or the slider,
+  plus the one owner-approved exception: ticking a sourced 100 % EXP story quest (`levelsUp: true`) raises the level by
+  one, and unticking or Undo lowers it (CLAUDE.md, DECISIONS `owner-ok-autolevel`).
 - [ ] **Basic mode = essentials only.** Anything not essential is hidden in Basic, and Basic still reads complete.
 - [ ] **Saved progress is safe.** Same storage key as today (`KEY` in `src/core/state.js`, see `docs/ARCHITECTURE.md`),
   unless the change is a planned pre-1.0 clean break per CLAUDE.md (new key, fresh start without errors, CHANGELOG says
@@ -71,7 +81,8 @@ A design fails here when it looks generated rather than made for this app. Each 
 - [ ] Text fields are 16 px or larger (iPhone Safari zooms below that). No text under 11 px (mono) or 12 px (body).
 - [ ] Nothing is covered by the Build tab or the drawer.
 - [ ] Nothing depends on hover. Hover-only hints also show on touch.
-- [ ] Readable without zooming; long names wrap instead of cutting off.
+- [ ] Readable without zooming; long names wrap instead of cutting off, unless the owner asked for truncation; then
+  the full name stays reachable (`title` and the control's accessible name).
 
 ## Before it ships
 - [ ] `npm test` is green; no check was weakened to pass.
