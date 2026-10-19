@@ -1,5 +1,38 @@
 [
-  { "case": "h1-basic-390", "kind": "before-after", "title": "Step cards say how (mockup)", "caption": "Under the step's name, one line says how to do it: open the Cube, click the old piece, choose Extract and confirm." },
-  { "case": "h2-basic-1500", "kind": "before-after", "title": "Step cards say how, desktop (mockup)", "caption": "The same card on a wide screen: the how line fits on one row, above the milestone link." },
-  { "case": "h3-info-open-390", "kind": "before-after", "title": "The rest behind the i (mockup)", "caption": "The step's other notes sit behind the card's i button, as on the dungeon cards; tap it to read them." }
+  {
+    "case": "h1-basic-390",
+    "kind": "before-after",
+    "title": "Step cards say how (mockup)",
+    "caption": "Under the step's name, one line says how to do it: open the Cube, click the old piece, choose Extract and confirm."
+  },
+  {
+    "case": "h2-basic-1500",
+    "kind": "before-after",
+    "title": "Step cards say how, desktop (mockup)",
+    "caption": "The same card on a wide screen: the how line fits on one row, above the milestone link."
+  },
+  {
+    "case": "h3-info-open-390",
+    "kind": "before-after",
+    "title": "The rest behind the i (mockup)",
+    "caption": "The step's other notes sit behind the card's i button, as on the dungeon cards; tap it to read them."
+  },
+  {
+    "case": "i1-cube-390",
+    "kind": "before-after",
+    "title": "Item icons on the Cube card (mockup)",
+    "caption": "Wisdom Stones and crystals show their item icon next to the count, kept on one line with it."
+  },
+  {
+    "case": "i2-dungeon-390",
+    "kind": "before-after",
+    "title": "Item icons in dungeon rewards (mockup)",
+    "caption": "A Sealed Dungeon card's reward line shows the crystal and Wisdom Stone icons by each amount."
+  },
+  {
+    "case": "i3-step-card-390",
+    "kind": "before-after",
+    "title": "Item icons on step cards (mockup)",
+    "caption": "A step card that names an item, like Enhance Stones, shows its icon in the title."
+  }
 ]
