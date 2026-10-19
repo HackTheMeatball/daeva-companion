@@ -718,9 +718,23 @@ until a DESIGN OK and the owner's OK.
 
 More owner input the same evening (8:01–8:46 PM ET): **P16** (#398) drops the Daeva Pass and Save-stones Next up
 steps, folds the stone advice and his extraction screens into the extract tip, and finds why the Wisdom Stones card
-showed early (queued after P15). **P17** (#397): Next up step cards say how and item names show their icon, after
-`owner-ok-0.6.2-step-how` and `owner-ok-0.6.2-item-icons` (owner typed both 9:38 PM ET; Design Lead mockup #403, #406). Planned, not queued: the Key setup / macro fix (#387, waits on Game Data Check), story
-card state icons (#391, Design Lead mockup #394, waits on the owner's OK), the icons-and-locks mockup (#389, waits on the owner's OK), map icons (#404, Design Lead mockup #408), regional quest state icons (#409, Design Lead). Player-chosen keys (#388) is a 0.8 candidate.
+showed early (queued after P15).
+
+Owner OKs typed 2026-10-18 9:38–10:04 PM ET turned the evening's mockups into builds (DECISIONS rows of that time):
+
+| Item | What | Mockup | Lanes |
+|---|---|---|---|
+| P17 (#397) | Next up step cards say how; item names show their icon | #403, #406 | golden, app.css, a11y |
+| P18 (#414) | Key setup shows skill icons, key chips under each column | #389 §1, §1a | a11y |
+| P19 (#415) | Locked-card shells in Basic on desktop, "N levels to go" | #389 §2 | main.js, app.css, a11y |
+| P20 (#391) | Story card icon follows the quest state | #394 | golden, app.css |
+| P21 (#404) | Map markers: Sealed Dungeon, Stronghold, Kibelisk, Empyrean Trace | #408 | golden, app.css |
+
+Golden runs P13 → P15 → P16 → P17 → P20 → P21 by queue order (P20 needs P13's icon, P21 the dark tile).
+P21 also waits on `research-map-icons` (Game Data Check commits the files; bot builds have no web). Patch items
+don't auto-queue from their bodies (kickoff keys only minor titles): Build Pipeline adds their #114 lines.
+Planned, not queued: the Key setup / macro fix (#387, waits on the owner's in-game checks; the macro walk-through of
+#389 §1b ships with it), regional quest state icons (#409, Design Lead). Player-chosen keys (#388) is a 0.8 candidate.
 
 ### 0.7 — The Gladiator, a second class, and sync
 
@@ -782,6 +796,7 @@ C2, Y2, Y3). Models follow #114's routing; stall limits as the 0.6 scorecard lef
 | [P8](https://github.com/HackTheMeatball/daeva-companion/issues/382) | Sync line shown to every visitor before the server exists → hidden behind `SYNC_LIVE` (false) until the server deploy turns it on (added 2026-10-18 7:20 PM ET; must merge before 0.6.1) | S | `src/site.js`, `src/shell/sync-host-http.js`, `tests/site.js` | Sonnet | 44 | a11y |
 | [P9](https://github.com/HackTheMeatball/daeva-companion/issues/383) | Two builds, one shipped → the site is the only build; the claude.ai artifact build is removed (owner freeze, 2026-10-18 7:12 PM ET) | M | `scripts/build.mjs`, `scripts/serve.mjs`, tests, `docs/ARCHITECTURE.md`, `docs/DEPLOY.md` | Opus | 80 | gen, a11y |
 | [P10](https://github.com/HackTheMeatball/daeva-companion/issues/399) | P9 left inert artifact-class code → removed (`ARTIFACT_CLASSES`, `siteOnlyNote`, `DAEVA_CLASSES`, schema field; #396 review, added 2026-10-18 8:50 PM ET) | S | `src/cards/characters.js`, `data/schema/pack.schema.json`, `scripts/build.mjs` filter path, `tests/save.js` header | Sonnet | 44 | gen |
+| [P11](https://github.com/HackTheMeatball/daeva-companion/issues/418) | Ranger Key setup says "no source" though the owner's screens show the game's default keys → per-key skill stacks in data, Q/E no longer hard-coded (added 2026-10-18 10:20 PM ET) | M | `data/schema/builds.schema.json`, `src/packs/aion2/requirements.js`, `src/packs/aion2/data/build.js`, Ranger `builds.json` | Opus | 80 | gen, a11y |
 | [R](docs/plans/0.7/R-release-0.7.0.md) | Release 0.7.0 | S | `package.json`, `package-lock.json`, `CHANGELOG.md` | Sonnet | 44 | release, alone |
 
 Not a bot item: **sync deploy** (Build Pipeline, after owner input 4 and P5): a deploy workflow with the owner's token.
