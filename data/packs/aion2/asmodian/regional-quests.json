@@ -3790,7 +3790,7 @@
         "Slug is spacetime-rift-unfamiliar-material-asmodian (metaSlug() would give spacetime-rift-unfamiliar-material)",
         "Metabot gives no giver place/Kibelisk; app has Collapsed Chasm (same as other Uru 213k-XP rifts) — not stated [2026-10-19: Metabot's quest page names the start as \"Uru · Collapsed Chasm\" (build 0.0.4387.0).]",
         "Turn-in NPC from aion2.gaming.tools (Uru)",
-        "Giver place 'Collapsed Chasm' from allthings.how (not on Metabot) [2026-10-19: Metabot's quest page names the start as \"Uru · Collapsed Chasm\" (build 0.0.4387.0).]"
+        "Giver place 'Collapsed Chasm' from allthings.how (not on Metabot)"
       ],
       "notes": [
         "Spacetime Rift series: No Required Quests on 5 of 7 gaming.tools pages (Unknown Species 2202030 and Proof 2202035 not reachable). Not a chain. Gate: level 45 (Metabot 'Unlocks at 45' on all 7; allthings 244366 'Level 45') plus a rift that 'opens at random spots at set times' (allthings 244371)."
@@ -3959,7 +3959,7 @@
       ],
       "conflicts": [
         "Metabot gives no giver place; app 'Guide Rest Stop' (Purifying Forest) not on Metabot [2026-10-19: Metabot's quest page names the start as \"Uru · Guide Rest Stop\" (build 0.0.4387.0).]",
-        "Giver place 'Guide Rest Stop' from allthings.how (not on Metabot) [2026-10-19: Metabot's quest page names the start as \"Uru · Guide Rest Stop\" (build 0.0.4387.0).]"
+        "Giver place 'Guide Rest Stop' from allthings.how (not on Metabot)"
       ]
     },
     {
@@ -5428,7 +5428,7 @@
       ],
       "conflicts": [
         "Metabot gives no giver place/Kibelisk for Bekrin; app has 'Battlescar Mound'. Turn-in at Briskwind Shelter (Elena). [2026-10-19: Metabot's quest page names the start as \"Bekrin · Battlescar Mound\" (build 0.0.4387.0).]",
-        "Giver place 'Battlescar Mound' from allthings.how (not on Metabot) [2026-10-19: Metabot's quest page names the start as \"Bekrin · Battlescar Mound\" (build 0.0.4387.0).]",
+        "Giver place 'Battlescar Mound' from allthings.how (not on Metabot)",
         "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
       ],
       "proposed": {
@@ -6965,7 +6965,7 @@
       },
       "conflicts": [
         "Rec 45 but objective mobs are Lv 12 (Congealed Drana) and turn-in at Creion Campsite (Dredgion Crash Site) — low-level zone quest; Kanes is 'Safe Haven Militia'. App zone 'Dredgion Crash Site' vs QUEST_AREA 'Safe Haven' (P0-4); Metabot gives no giver place. [2026-10-19: Metabot's quest page names the start as \"Kanes · Temporary Investigation Base\" (build 0.0.4387.0).]",
-        "Giver place 'Temporary Investigation Base' from allthings.how (not on Metabot) [2026-10-19: Metabot's quest page names the start as \"Kanes · Temporary Investigation Base\" (build 0.0.4387.0).]",
+        "Giver place 'Temporary Investigation Base' from allthings.how (not on Metabot)",
         "zone: allthings.how files it under \"Safe Haven\"; the giver's camp / place puts it in Dredgion Crash Site (E3 CAMP_ZONE / E4 giver-zone rule)."
       ]
     },
@@ -7519,7 +7519,7 @@
       ],
       "conflicts": [
         "Metabot gives no giver place/Kibelisk; app place 'under the Tranein Highland bridge' is from another source (not on Metabot). Turn-in text: 'Talk to Tina at Safe Haven' [2026-10-19: Metabot's quest page names the start as \"Tina · Calderon Canyon\" (build 0.0.4387.0).]",
-        "Giver place 'under the Tranein Highland bridge' from allthings.how (not on Metabot) [2026-10-19: Metabot's quest page names the start as \"Tina · Calderon Canyon\" (build 0.0.4387.0).]",
+        "Giver place 'under the Tranein Highland bridge' from allthings.how (not on Metabot)",
         "zone: Metabot's quest page starts it in \"Calderon Canyon\" (2026-10-19, build 0.0.4387.0); allthings.how and the data have Tranein Highland. Kept Tranein Highland until the owner checks in game (#325)."
       ]
     },
@@ -10620,7 +10620,7 @@
       ],
       "conflicts": [
         "Metabot gives no giver place/Kibelisk; app place 'Impetusium Square' not on Metabot. 1st Leg ends 'Talk to Tina at Safe Haven'; 2nd Leg ends at Nornir Assembly. [2026-10-19: Metabot's quest page names the start as \"Tina · Battlescar Mound\" (build 0.0.4387.0).]",
-        "Giver place 'Battlescar Mound Cliff' from allthings.how (not on Metabot) [2026-10-19: Metabot's quest page names the start as \"Tina · Battlescar Mound\" (build 0.0.4387.0).]",
+        "Giver place 'Battlescar Mound Cliff' from allthings.how (not on Metabot)",
         "zone: allthings.how files it under \"Impetusium Square\"; the giver's camp / place puts it in Battlescar Mound (E3 CAMP_ZONE / E4 giver-zone rule)."
       ]
     },

@@ -226,7 +226,7 @@
           ]
         },
         {
-          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "inferred": "Camps from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build); the zone name itself is backed by its Metabot zone page.",
           "fields": [
             "camps"
           ]
@@ -325,7 +325,7 @@
           ]
         },
         {
-          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "inferred": "Camps from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build); the zone name itself is backed by its Metabot zone page.",
           "fields": [
             "camps"
           ]
@@ -384,7 +384,7 @@
           ]
         },
         {
-          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "inferred": "Camps from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build); the zone name itself is backed by its Metabot zone page.",
           "fields": [
             "camps"
           ]
@@ -776,7 +776,7 @@
           ]
         },
         {
-          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "inferred": "Camps from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build); the zone name itself is backed by its Metabot zone page.",
           "fields": [
             "camps"
           ]
@@ -1228,7 +1228,7 @@
           ]
         },
         {
-          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "inferred": "Camps from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build); the zone name itself is backed by its Metabot zone page.",
           "fields": [
             "camps"
           ]

@@ -724,14 +724,76 @@
       "at": {
         "level": 25
       },
-      "credit": "allthings.how, aion2hub",
+      "credit": "Metabot, allthings.how, aion2hub",
       "order": 50,
       "sources": [
         {
-          "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: allthings.how, aion2hub); the pages were not recorded. The 0.3 audit resolves each name to a page."
+          "url": "https://metabot.gg/en/aion-2/dungeons/dark-root-cave",
+          "label": "Dark Root Cave",
+          "fields": [
+            "at"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 25+\"; none of the 60 Sealed Dungeons opens between the previous band and 25."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/dungeons/drana-depository",
+          "label": "Drana Depository",
+          "fields": [
+            "at"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 25+\"; none of the 60 Sealed Dungeons opens between the previous band and 25."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/dungeons/high-priests-ruins",
+          "label": "High Priest's Ruins",
+          "fields": [
+            "at"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 25+\"; none of the 60 Sealed Dungeons opens between the previous band and 25."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/dungeons/skurv-laborer-den",
+          "label": "Skurv Laborer Den",
+          "fields": [
+            "at"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 25+\"; none of the 60 Sealed Dungeons opens between the previous band and 25."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/dungeons/twisted-pit",
+          "label": "Twisted Pit",
+          "fields": [
+            "at"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 25+\"; none of the 60 Sealed Dungeons opens between the previous band and 25."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified"
     },
     {
@@ -741,15 +803,103 @@
       "at": {
         "level": 30
       },
-      "credit": "allthings.how",
+      "credit": "Metabot, allthings.how",
       "order": 110,
       "sources": [
         {
-          "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: allthings.how); the pages were not recorded. The 0.3 audit resolves each name to a page."
+          "url": "https://metabot.gg/en/aion-2/dungeons/all-curing-cave",
+          "label": "All-Curing Cave",
+          "fields": [
+            "at"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 30+\"; none of the 60 Sealed Dungeons opens between the previous band and 30."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/dungeons/dratona-assembly-area",
+          "label": "Dratona Assembly Area",
+          "fields": [
+            "at"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 30+\"; none of the 60 Sealed Dungeons opens between the previous band and 30."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/dungeons/final-haven",
+          "label": "Final Haven",
+          "fields": [
+            "at"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 30+\"; none of the 60 Sealed Dungeons opens between the previous band and 30."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/dungeons/insectoid-tunnel",
+          "label": "Insectoid Tunnel",
+          "fields": [
+            "at"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 30+\"; none of the 60 Sealed Dungeons opens between the previous band and 30."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/dungeons/library-of-patience",
+          "label": "Library of Patience",
+          "fields": [
+            "at"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 30+\"; none of the 60 Sealed Dungeons opens between the previous band and 30."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/dungeons/library-of-wisdom",
+          "label": "Library of Wisdom",
+          "fields": [
+            "at"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 30+\"; none of the 60 Sealed Dungeons opens between the previous band and 30."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/dungeons/rift-fissure",
+          "label": "Rift Fissure",
+          "fields": [
+            "at"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Dungeon page: \"Level 30+\"; none of the 60 Sealed Dungeons opens between the previous band and 30."
         }
       ],
-      "verifiedAt": "2026-10-12",
-      "status": "single-source"
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
     },
     {
       "id": "unlock:shop",
@@ -1122,10 +1272,19 @@
       "order": 150,
       "sources": [
         {
-          "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: thegameswiki, Metabot); the pages were not recorded. The 0.3 audit resolves each name to a page."
+          "url": "https://metabot.gg/en/aion-2/daevanion/assassin",
+          "fields": [
+            "at"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Daevanion planner: \"Triniel board Opens at level 40\" (Assassin planner)."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified"
     },
     {
@@ -1190,10 +1349,19 @@
       "order": 90,
       "sources": [
         {
-          "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: thegameswiki, Metabot); the pages were not recorded. The 0.3 audit resolves each name to a page."
+          "url": "https://metabot.gg/en/aion-2/daevanion/assassin",
+          "fields": [
+            "at"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Daevanion planner: \"Vaizel board Opens at level 30\" (Assassin planner)."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified"
     },
     {
@@ -1259,10 +1427,19 @@
       "order": 20,
       "sources": [
         {
-          "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: thegameswiki, Metabot); the pages were not recorded. The 0.3 audit resolves each name to a page."
+          "url": "https://metabot.gg/en/aion-2/daevanion/assassin",
+          "fields": [
+            "at"
+          ],
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Daevanion planner: \"Zikel board Opens at level 20\" (Assassin planner)."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-19",
       "status": "verified"
     }
   ]
