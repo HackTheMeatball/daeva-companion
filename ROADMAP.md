@@ -72,12 +72,19 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
      Release Planner starts no planning pass, writes no plan and queues nothing for the minor before that message.
      0.8 is not redone.
    - **Inputs are logged live; Kaizen aggregates (owner, 2026-10-19 2:57 PM ET, Kaizen thread).** Each review input is
-     logged as it happens by its owner: stalls, incidents and owner waits by Stall Watch (Mike) and Incident Log
-     (Hank) in #221; plan, execution and usage by the Release Planner in #232; waste, CI health and each build's
-     model and outcome by Build Pipeline (Gus) in #114's Waste section; player findings by Jesse; game data by Game
-     Data Check (Gretchen); rules, decisions, drift and roster by Kaizen (Gale) until a Rules Steward is approved.
-     After `RELEASE SHIPPED` each owner sends Kaizen `REPORT READY <minor>`, and the review starts when the last
-     one arrives. Anything Kaizen has to look up after the fact is a gap, assigned to an owner at that review.
+     logged as it happens by its owner: stalls, incidents, owner waits and the per-release error report by Stall Watch
+     (Mike), the only writer of #221 since Incident Log (Hank) folded into it (owner, 2026-10-19 4:56 PM ET); plan,
+     execution and usage by the Release Planner in #232; waste, CI health and each build's model and outcome by
+     Build Pipeline (Gus) in #114's Waste section; player findings by Jesse; game data by Game Data Check
+     (Gretchen); rules, decisions, drift and roster by Kaizen (Gale). After `RELEASE SHIPPED` each owner sends
+     Kaizen `REPORT READY <minor>`, and the review starts when the last one arrives. Anything Kaizen has to look up
+     after the fact is a gap, assigned to an owner at that review.
+   - **Kaizen's own rules are graded by someone else (owner, 2026-10-19 4:56 PM ET, Kaizen thread).** From 0.9, at
+     each minor review, Rules Steward (Francesca) grades Kaizen's own rules (KZ-*, PLN-02/03/04, CLK-04, Q-14),
+     checks that the scorecard compares like with like, and reports to Coordinator (Saul)'s debrief, not to Kaizen.
+     Kaizen's reading, which the Release Planner applies: the review is complete, and `KAIZEN REVIEW DONE` can be
+     sent, only once that grading is in the debrief. A full team audit runs only at a major release or when two or
+     more standing threads are added or removed.
    - **Changes.** Each cause that repeated, and each metric that got worse, becomes one concrete process change: a
      #222 row, put in place before the minor's first item is queued (a #114 rule, a planner-instruction change, or
      a workflow PR). Stall limits that a build actually hit, the build cap and model routing in #114 are
