@@ -1,0 +1,6 @@
+[
+  { "case": "story-card-1280", "kind": "before-after", "title": "The game's story-quest icon",
+    "caption": "The Next up story card now shows the game's yellow active story-quest diamond on a dark tile instead of a scroll emoji." },
+  { "case": "story-quest-lv13-390", "kind": "before-after", "title": "Story icon in the Next up list",
+    "caption": "On a phone at Lv 13, the Cemetery Cleanup story row in Next up shows the same yellow diamond." }
+]
