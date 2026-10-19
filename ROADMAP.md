@@ -98,8 +98,8 @@ major release (1.0, 2.0 …) Kaizen runs a larger pass over the data of all the 
    thread; the target is ≤ 3 threads (a ship OK is typed in Build Pipeline (Gus)'s thread, a tracker OK in Tracker
    sync (Huell)'s or Skyler's). Ungated items are queued first, and a gated item without its typed OK goes to the end
    of the queue; it never holds a lane or the critical path. One exception: a question that first comes up mid-minor
-   and gates an item already queued or building goes out at once as a HARD BLOCKER. Research gates start the hour the
-   plan merges.
+   and gates an item already queued or building goes out at once as a HARD BLOCKER. Research gates start at pass start
+   (K10).
 6. **Write and review.** The plan goes into this file and the #114 queue in one PR, written by one session and
    reviewed by a separate one that didn't write it. Then the planner queues the items, top of the lane map first.
 
