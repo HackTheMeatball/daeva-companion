@@ -132,22 +132,26 @@ on purpose: the guide shows nothing rather than an unverified value.
   session takes the 14 files from each record's Metabot page, as 0.6.1 F5 did for the Ranger, and records source page,
   file URL and date here. The 14 the plan shows:
 
-  | Kind | Name | Source page |
-  |---|---|---|
-  | skill | Rending Blow | <https://metabot.gg/en/aion-2/skills/rending-blow> |
-  | skill | Overhead Slam | <https://metabot.gg/en/aion-2/skills/overhead-slam> |
-  | skill | Keen Strike | <https://metabot.gg/en/aion-2/skills/keen-strike> |
-  | skill | Ruinous Blow | <https://metabot.gg/en/aion-2/skills/ruinous-blow> |
-  | skill | Attack Preparation | <https://metabot.gg/en/aion-2/skills/attack-preparation> |
-  | skill | Experienced Counterstrike | <https://metabot.gg/en/aion-2/skills/experienced-counterstrike> |
-  | skill | Murderous Burst | <https://metabot.gg/en/aion-2/skills/murderous-burst> |
-  | skill | Crushing Wave | <https://metabot.gg/en/aion-2/skills/crushing-wave> |
-  | skill | Rush Strike | <https://metabot.gg/en/aion-2/skills/rush-strike> |
-  | skill | Leaping Slam | <https://metabot.gg/en/aion-2/skills/leaping-slam> |
-  | stigma | Lunge Stance | <https://metabot.gg/en/aion-2/skills/lunge-stance> |
-  | stigma | Zikel's Blessing | <https://metabot.gg/en/aion-2/skills/zikels-blessing> |
-  | stigma | Lifestealing Blade | <https://metabot.gg/en/aion-2/skills/lifestealing-blade> |
-  | stigma | Rage Burst | <https://metabot.gg/en/aion-2/skills/rage-burst> |
+  **Files fetched 2026-10-19** (gate `research-gl-sm-icons`, 0.8): all 14 found on Metabot, none needs the owner. Staged in
+  `docs/research/icons-2026-10-19/` (128 px RGB PNG from Metabot's 256 px WebP, Lanczos, like the Ranger's), not wired
+  yet: 0.8 P1 moves them to `src/assets/icons/` and sets each record's `icon`. That folder's README has the method.
+
+  | File | Kind | Name | Source page | File URL | Retrieved |
+  |---|---|---|---|---|---|
+  | sk-rending-blow.png | skill | Rending Blow | <https://metabot.gg/en/aion-2/skills/rending-blow> | <https://metabot.gg/web/aion2/skills/11010000.webp> | 2026-10-19 6:20 AM ET |
+  | sk-overhead-slam.png | skill | Overhead Slam | <https://metabot.gg/en/aion-2/skills/overhead-slam> | <https://metabot.gg/web/aion2/skills/11170000.webp> | 2026-10-19 6:20 AM ET |
+  | sk-keen-strike.png | skill | Keen Strike | <https://metabot.gg/en/aion-2/skills/keen-strike> | <https://metabot.gg/web/aion2/skills/11020000.webp> | 2026-10-19 6:21 AM ET |
+  | sk-ruinous-blow.png | skill | Ruinous Blow | <https://metabot.gg/en/aion-2/skills/ruinous-blow> | <https://metabot.gg/web/aion2/skills/11100000.webp> | 2026-10-19 6:21 AM ET |
+  | sk-attack-preparation.png | skill | Attack Preparation | <https://metabot.gg/en/aion-2/skills/attack-preparation> | <https://metabot.gg/web/aion2/skills/11750000.webp> | 2026-10-19 6:21 AM ET |
+  | sk-experienced-counterstrike.png | skill | Experienced Counterstrike | <https://metabot.gg/en/aion-2/skills/experienced-counterstrike> | <https://metabot.gg/web/aion2/skills/11780000.webp> | 2026-10-19 6:21 AM ET |
+  | sk-murderous-burst.png | skill | Murderous Burst | <https://metabot.gg/en/aion-2/skills/murderous-burst> | <https://metabot.gg/web/aion2/skills/11800000.webp> | 2026-10-19 6:21 AM ET |
+  | sk-crushing-wave.png | skill | Crushing Wave | <https://metabot.gg/en/aion-2/skills/crushing-wave> | <https://metabot.gg/web/aion2/skills/11050000.webp> | 2026-10-19 6:22 AM ET |
+  | sk-rush-strike.png | skill | Rush Strike | <https://metabot.gg/en/aion-2/skills/rush-strike> | <https://metabot.gg/web/aion2/skills/11360000.webp> | 2026-10-19 6:22 AM ET |
+  | sk-leaping-slam.png | skill | Leaping Slam | <https://metabot.gg/en/aion-2/skills/leaping-slam> | <https://metabot.gg/web/aion2/skills/11190000.webp> | 2026-10-19 6:22 AM ET |
+  | st-lunge-stance.png | stigma | Lunge Stance | <https://metabot.gg/en/aion-2/skills/lunge-stance> | <https://metabot.gg/web/aion2/skills/11400000.webp> | 2026-10-19 6:22 AM ET |
+  | st-zikels-blessing.png | stigma | Zikel's Blessing | <https://metabot.gg/en/aion-2/skills/zikels-blessing> | <https://metabot.gg/web/aion2/skills/11250000.webp> | 2026-10-19 6:22 AM ET |
+  | st-lifestealing-blade.png | stigma | Lifestealing Blade | <https://metabot.gg/en/aion-2/skills/lifestealing-blade> | <https://metabot.gg/web/aion2/skills/11340000.webp> | 2026-10-19 6:23 AM ET |
+  | st-rage-burst.png | stigma | Rage Burst | <https://metabot.gg/en/aion-2/skills/rage-burst> | <https://metabot.gg/web/aion2/skills/11390000.webp> | 2026-10-19 6:23 AM ET |
 
 - **Spiritmaster skill and stigma icons: initials for now** (0.7 P4 shipped without them, #347). The Spiritmaster
   research (docs/research/2026-10-spiritmaster-pack.md) saved no icon files, and bot builds have no web, so the
@@ -155,23 +159,75 @@ on purpose: the guide shows nothing rather than an unverified value.
   of them (standing icon OK, owner 2026-10-14), so none needs the owner: a research or fetch session takes the 15 files
   from each record's Metabot page and records source page, file URL and date here. The 15 the plan shows:
 
-  | Kind | Name | Source page |
-  |---|---|---|
-  | skill | Cold Shock | <https://metabot.gg/en/aion-2/skills/cold-shock> |
-  | skill | Combustion | <https://metabot.gg/en/aion-2/skills/combustion> |
-  | skill | Summon: Fire Spirit | <https://metabot.gg/en/aion-2/skills/summon-fire-spirit> |
-  | skill | Summon: Water Spirit | <https://metabot.gg/en/aion-2/skills/summon-water-spirit> |
-  | skill | Jointstrike: Curse | <https://metabot.gg/en/aion-2/skills/jointstrike-curse> |
-  | skill | Dimensional Control | <https://metabot.gg/en/aion-2/skills/dimensional-control> |
-  | skill | Elemental Fusion | <https://metabot.gg/en/aion-2/skills/elemental-fusion> |
-  | skill | Spirit Strike | <https://metabot.gg/en/aion-2/skills/spirit-strike> |
-  | skill | Corrode | <https://metabot.gg/en/aion-2/skills/corrode> |
-  | skill | Summon: Earth Spirit | <https://metabot.gg/en/aion-2/skills/summon-earth-spirit> |
-  | skill | Spirit's Descent | <https://metabot.gg/en/aion-2/skills/spirits-descent> |
-  | stigma | Summon: Ancient Spirit | <https://metabot.gg/en/aion-2/skills/summon-ancient-spirit> |
-  | stigma | Enhance: Spirit's Benediction | <https://metabot.gg/en/aion-2/skills/enhance-spirits-benediction> |
-  | stigma | Jointstrike: Corrode | <https://metabot.gg/en/aion-2/skills/jointstrike-corrode> |
-  | stigma | Flame Blessing | <https://metabot.gg/en/aion-2/skills/flame-blessing> |
+  **Files fetched 2026-10-19** (gate `research-gl-sm-icons`, 0.8): all 15 found on Metabot, none needs the owner. Staged in
+  `docs/research/icons-2026-10-19/` (128 px RGB PNG from Metabot's 256 px WebP, Lanczos, like the Ranger's), not wired
+  yet: 0.8 P1 moves them to `src/assets/icons/` and sets each record's `icon`. That folder's README has the method.
+
+  | File | Kind | Name | Source page | File URL | Retrieved |
+  |---|---|---|---|---|---|
+  | sk-cold-shock.png | skill | Cold Shock | <https://metabot.gg/en/aion-2/skills/cold-shock> | <https://metabot.gg/web/aion2/skills/16010000.webp> | 2026-10-19 6:23 AM ET |
+  | sk-combustion.png | skill | Combustion | <https://metabot.gg/en/aion-2/skills/combustion> | <https://metabot.gg/web/aion2/skills/16040000.webp> | 2026-10-19 6:23 AM ET |
+  | sk-summon-fire-spirit.png | skill | Summon: Fire Spirit | <https://metabot.gg/en/aion-2/skills/summon-fire-spirit> | <https://metabot.gg/web/aion2/skills/16100000.webp> | 2026-10-19 6:23 AM ET |
+  | sk-summon-water-spirit.png | skill | Summon: Water Spirit | <https://metabot.gg/en/aion-2/skills/summon-water-spirit> | <https://metabot.gg/web/aion2/skills/16110000.webp> | 2026-10-19 6:24 AM ET |
+  | sk-jointstrike-curse.png | skill | Jointstrike: Curse | <https://metabot.gg/en/aion-2/skills/jointstrike-curse> | <https://metabot.gg/web/aion2/skills/16140000.webp> | 2026-10-19 6:24 AM ET |
+  | sk-dimensional-control.png | skill | Dimensional Control | <https://metabot.gg/en/aion-2/skills/dimensional-control> | <https://metabot.gg/web/aion2/skills/16330000.webp> | 2026-10-19 6:24 AM ET |
+  | sk-elemental-fusion.png | skill | Elemental Fusion | <https://metabot.gg/en/aion-2/skills/elemental-fusion> | <https://metabot.gg/web/aion2/skills/16300000.webp> | 2026-10-19 6:24 AM ET |
+  | sk-spirit-strike.png | skill | Spirit Strike | <https://metabot.gg/en/aion-2/skills/spirit-strike> | <https://metabot.gg/web/aion2/skills/16710000.webp> | 2026-10-19 6:24 AM ET |
+  | sk-corrode.png | skill | Corrode | <https://metabot.gg/en/aion-2/skills/corrode> | <https://metabot.gg/web/aion2/skills/16740000.webp> | 2026-10-19 6:25 AM ET |
+  | sk-summon-earth-spirit.png | skill | Summon: Earth Spirit | <https://metabot.gg/en/aion-2/skills/summon-earth-spirit> | <https://metabot.gg/web/aion2/skills/16130000.webp> | 2026-10-19 6:25 AM ET |
+  | sk-spirits-descent.png | skill | Spirit's Descent | <https://metabot.gg/en/aion-2/skills/spirits-descent> | <https://metabot.gg/web/aion2/skills/16730000.webp> | 2026-10-19 6:25 AM ET |
+  | st-summon-ancient-spirit.png | stigma | Summon: Ancient Spirit | <https://metabot.gg/en/aion-2/skills/summon-ancient-spirit> | <https://metabot.gg/web/aion2/skills/16250000.webp> | 2026-10-19 6:25 AM ET |
+  | st-enhance-spirits-benediction.png | stigma | Enhance: Spirit's Benediction | <https://metabot.gg/en/aion-2/skills/enhance-spirits-benediction> | <https://metabot.gg/web/aion2/skills/16190000.webp> | 2026-10-19 6:26 AM ET |
+  | st-jointstrike-corrode.png | stigma | Jointstrike: Corrode | <https://metabot.gg/en/aion-2/skills/jointstrike-corrode> | <https://metabot.gg/web/aion2/skills/16150000.webp> | 2026-10-19 6:26 AM ET |
+  | st-flame-blessing.png | stigma | Flame Blessing | <https://metabot.gg/en/aion-2/skills/flame-blessing> | <https://metabot.gg/web/aion2/skills/16370000.webp> | 2026-10-19 6:26 AM ET |
+
+- **Templar skill and stigma icons: saved before the guide item** (0.8 research, gate `research-templar`,
+  docs/research/2026-10-templar-pack.md §7; lesson from #441 item 4, where the Gladiator and Spiritmaster shipped with
+  initials squares because no research session saved their icons). All 35 (22 skills, 13 stigmas: every icon a Templar
+  build plan or key grid could show, since the guide's picks are not settled yet) came from Metabot under the standing
+  icon OK (owner, 2026-10-14) on 2026-10-19, 6:26–6:30 AM ET; none lacks an approved source, so nothing goes to the owner.
+  Staged in `data/packs/aion2/asmodian/templar/icons/` (256 px WebP → 128 px RGB PNG, Lanczos, like the Assassin's and
+  Ranger's), not wired into the app. Names carry the class (`sk-templar-<slug>.png`) because `sk-impact-hit.png`
+  (Assassin) already exists and Defiance, Survival Willpower and Armor of Balance are shared names too. The guide item
+  moves the ones it shows to `src/assets/icons/` (the build rejects unreferenced PNGs there) and sets each record's `icon`.
+
+  | File | Name | Source page | File URL | Retrieved |
+  |---|---|---|---|---|
+  | sk-templar-annihilate.png | Annihilate | <https://metabot.gg/en/aion-2/skills/annihilate> | <https://metabot.gg/web/aion2/skills/12300000.webp> | 2026-10-19 |
+  | sk-templar-block-pain.png | Block Pain | <https://metabot.gg/en/aion-2/skills/block-pain> | <https://metabot.gg/web/aion2/skills/12800000.webp> | 2026-10-19 |
+  | sk-templar-debilitating-smash.png | Debilitating Smash | <https://metabot.gg/en/aion-2/skills/debilitating-smash> | <https://metabot.gg/web/aion2/skills/12270000.webp> | 2026-10-19 |
+  | sk-templar-defiance.png | Defiance | <https://metabot.gg/en/aion-2/skills/defiance-templar> | <https://metabot.gg/web/aion2/skills/12260000.webp> | 2026-10-19 |
+  | sk-templar-enhance-health.png | Enhance Health | <https://metabot.gg/en/aion-2/skills/enhance-health> | <https://metabot.gg/web/aion2/skills/12710000.webp> | 2026-10-19 |
+  | sk-templar-flash-rampage.png | Flash Rampage | <https://metabot.gg/en/aion-2/skills/flash-rampage> | <https://metabot.gg/web/aion2/skills/12340000.webp> | 2026-10-19 |
+  | sk-templar-fury.png | Fury | <https://metabot.gg/en/aion-2/skills/fury> | <https://metabot.gg/web/aion2/skills/12780000.webp> | 2026-10-19 |
+  | sk-templar-guarding-seal.png | Guarding Seal | <https://metabot.gg/en/aion-2/skills/guarding-seal> | <https://metabot.gg/web/aion2/skills/12750000.webp> | 2026-10-19 |
+  | sk-templar-impact-hit.png | Impact Hit | <https://metabot.gg/en/aion-2/skills/impact-hit-templar> | <https://metabot.gg/web/aion2/skills/12760000.webp> | 2026-10-19 |
+  | sk-templar-insulting-roar.png | Insulting Roar | <https://metabot.gg/en/aion-2/skills/insulting-roar> | <https://metabot.gg/web/aion2/skills/12770000.webp> | 2026-10-19 |
+  | sk-templar-ironclad-defense.png | Ironclad Defense | <https://metabot.gg/en/aion-2/skills/ironclad-defense> | <https://metabot.gg/web/aion2/skills/12740000.webp> | 2026-10-19 |
+  | sk-templar-judgment.png | Judgment | <https://metabot.gg/en/aion-2/skills/judgment> | <https://metabot.gg/web/aion2/skills/12240000.webp> | 2026-10-19 |
+  | sk-templar-poach.png | Poach | <https://metabot.gg/en/aion-2/skills/poach> | <https://metabot.gg/web/aion2/skills/12130000.webp> | 2026-10-19 |
+  | sk-templar-pummel.png | Pummel | <https://metabot.gg/en/aion-2/skills/pummel> | <https://metabot.gg/web/aion2/skills/12040000.webp> | 2026-10-19 |
+  | sk-templar-punishing-benediction.png | Punishing Benediction | <https://metabot.gg/en/aion-2/skills/punishing-benediction> | <https://metabot.gg/web/aion2/skills/12730000.webp> | 2026-10-19 |
+  | sk-templar-punishment.png | Punishment | <https://metabot.gg/en/aion-2/skills/punishment> | <https://metabot.gg/web/aion2/skills/12090000.webp> | 2026-10-19 |
+  | sk-templar-shield-rush.png | Shield Rush | <https://metabot.gg/en/aion-2/skills/shield-rush> | <https://metabot.gg/web/aion2/skills/12430000.webp> | 2026-10-19 |
+  | sk-templar-shield-smite.png | Shield Smite | <https://metabot.gg/en/aion-2/skills/shield-smite> | <https://metabot.gg/web/aion2/skills/12100000.webp> | 2026-10-19 |
+  | sk-templar-survival-willpower.png | Survival Willpower | <https://metabot.gg/en/aion-2/skills/survival-willpower-templar> | <https://metabot.gg/web/aion2/skills/12790000.webp> | 2026-10-19 |
+  | sk-templar-vicious-strike.png | Vicious Strike | <https://metabot.gg/en/aion-2/skills/vicious-strike> | <https://metabot.gg/web/aion2/skills/12010000.webp> | 2026-10-19 |
+  | sk-templar-warding-shield.png | Warding Shield | <https://metabot.gg/en/aion-2/skills/warding-shield> | <https://metabot.gg/web/aion2/skills/12720000.webp> | 2026-10-19 |
+  | sk-templar-warding-strike.png | Warding Strike | <https://metabot.gg/en/aion-2/skills/warding-strike> | <https://metabot.gg/web/aion2/skills/12350000.webp> | 2026-10-19 |
+  | st-templar-armor-of-balance.png | Armor of Balance | <https://metabot.gg/en/aion-2/skills/armor-of-balance-templar> | <https://metabot.gg/web/aion2/skills/12200000.webp> | 2026-10-19 |
+  | st-templar-assault-fury.png | Assault Fury | <https://metabot.gg/en/aion-2/skills/assault-fury> | <https://metabot.gg/web/aion2/skills/12700000.webp> | 2026-10-19 |
+  | st-templar-battlefield-banner.png | Battlefield Banner | <https://metabot.gg/en/aion-2/skills/battlefield-banner> | <https://metabot.gg/web/aion2/skills/12450000.webp> | 2026-10-19 |
+  | st-templar-comrade-in-arms.png | Comrade in Arms | <https://metabot.gg/en/aion-2/skills/comrade-in-arms> | <https://metabot.gg/web/aion2/skills/12250000.webp> | 2026-10-19 |
+  | st-templar-doom-shield.png | Doom Shield | <https://metabot.gg/en/aion-2/skills/doom-shield> | <https://metabot.gg/web/aion2/skills/12070000.webp> | 2026-10-19 |
+  | st-templar-empyrean-lords-punishment.png | Empyrean Lord's Punishment | <https://metabot.gg/en/aion-2/skills/empyrean-lords-punishment> | <https://metabot.gg/web/aion2/skills/12310000.webp> | 2026-10-19 |
+  | st-templar-executing-blade.png | Executing Blade | <https://metabot.gg/en/aion-2/skills/executing-blade> | <https://metabot.gg/web/aion2/skills/12410000.webp> | 2026-10-19 |
+  | st-templar-grapple.png | Grapple | <https://metabot.gg/en/aion-2/skills/grapple> | <https://metabot.gg/web/aion2/skills/12220000.webp> | 2026-10-19 |
+  | st-templar-nezekans-shield.png | Nezekan's Shield | <https://metabot.gg/en/aion-2/skills/nezekans-shield> | <https://metabot.gg/web/aion2/skills/12320000.webp> | 2026-10-19 |
+  | st-templar-noble-armor.png | Noble Armor | <https://metabot.gg/en/aion-2/skills/noble-armor> | <https://metabot.gg/web/aion2/skills/12230000.webp> | 2026-10-19 |
+  | st-templar-second-skin.png | Second Skin | <https://metabot.gg/en/aion-2/skills/second-skin> | <https://metabot.gg/web/aion2/skills/12190000.webp> | 2026-10-19 |
+  | st-templar-shield-of-protection.png | Shield of Protection | <https://metabot.gg/en/aion-2/skills/shield-of-protection> | <https://metabot.gg/web/aion2/skills/12110000.webp> | 2026-10-19 |
+  | st-templar-taunt.png | Taunt | <https://metabot.gg/en/aion-2/skills/taunt> | <https://metabot.gg/web/aion2/skills/12120000.webp> | 2026-10-19 |
 
 - **Cleric skill and stigma icons: fetched before the class ships** (0.8 class research, 2026-10-19 6:31–6:35 AM ET,
   docs/research/2026-10-cleric-pack.md §7; issue #441 item 4: the Gladiator and Spiritmaster shipped letter squares
@@ -224,7 +280,8 @@ on purpose: the guide shows nothing rather than an unverified value.
   Assassin's keys, so the guide shows none. The three skills that fire only on a condition are a Build plan step instead
   (claim C74).
 
-- **Gladiator rotation: two sources, no screen for it yet** (0.7 P2, #345). docs/research/2026-10-gladiator-guide.md §8
+- **Gladiator rotation: the Build panel's Rotation section shows the game's default keys, not the guide's line**
+  (0.7 P2, #345; heading reworded 2026-10-19 after #441-5). docs/research/2026-10-gladiator-guide.md §8
   has a two-source right-click line (Rending Blow from Lv 1, Sword Aura Rampage above it from 5), but the Build
   drawer's Rotation section is written for the Assassin's keys (left click Quick Slice, Q Shadowstrike, the Assassin's
   buff names in `src/packs/aion2/cards/build.js`, `requirements.js` rotKeys). So the Gladiator's build carries no

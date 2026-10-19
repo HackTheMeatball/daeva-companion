@@ -382,10 +382,27 @@ jobs:
           BRANCH: claude/issue-${{ matrix.item.issue }}-${{ github.run_id }}
         run: |
           out="$RUNNER_TEMP/claude-execution-output.json"
+          diag=""
           if [ -f "$out" ]; then
-            jq -r '[.[] | select(.type == "result")] | last | "turns=\(.num_turns) denials=\(.permission_denials_count)",
-              ((.permission_denials // [])[] | "denied: \(.tool_name) \(.tool_input | tostring | .[0:200])")' "$out" || true
+            diag=$(jq -r '([.[] | select(.type == "result")] | last) as $r
+              | "turns=\($r.num_turns) denials=\($r.permission_denials_count) end=\($r.subtype)",
+                (($r.permission_denials // [])[] | "denied: \(.tool_name) \(.tool_input | tostring | .[0:200])"),
+                ([.[] | select(.type == "user") | .message.content[]? | select(.type? == "tool_result" and .is_error == true)
+                  | .content | if type == "array" then map(.text? // "") | join(" ") else tostring end | .[0:300]] | .[-3:][] | "tool error: \(.)"),
+                ([.[] | select(.type == "assistant") | .message.content[]? | select(.type? == "text") | .text] | last // "" | "last text: \(.[0:400])")' \
+              "$out" 2>/dev/null || true)
+            echo "$diag"
           fi
+          # K16 (Kaizen (Gale), 0.7 review, 2026-10-19): 7 of 28 0.7 builds pushed but opened no PR and P20's first build
+          # failed with no reason, all unlogged, and job logs return 403 to the sessions that read them. A build that
+          # opens no PR leaves its reason as a run annotation (readable through the check-runs API; secrets are masked
+          # there, unlike in an artifact of this public repo) and one Waste line on #114.
+          waste() {
+            [ -n "$diag" ] || diag="no execution output"
+            body=$(printf '%s' "$diag" | head -c 1500 | sed 's/%/%25/g' | sed ':a;N;$!ba;s/\n/%0A/g' | tr -d '\r')
+            echo "::warning title=Build of #$ISSUE opened no PR::$body"
+            gh api "repos/$GITHUB_REPOSITORY/issues/114/comments" -f body="Waste: 1 build of #$ISSUE $1 ($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID, attempt $GITHUB_RUN_ATTEMPT). Cause: the run's \"Build of #$ISSUE opened no PR\" annotation (turns, denials, tool errors, last text). (K16)" >/dev/null || true
+          }
           prs=$(gh api "repos/$GITHUB_REPOSITORY/pulls?state=all&head=$GITHUB_REPOSITORY_OWNER:$BRANCH" --jq length)
           said=$(gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE/comments?since=$BUILD_START&per_page=100" \
             --jq '[.[] | select(.body | test("^(Blocked:|Needs @claude)"))] | length')
@@ -408,11 +425,13 @@ jobs:
             grep -q "Closes #$ISSUE" tests/out/pr-body.md || printf '\nCloses #%s\n' "$ISSUE" >> tests/out/pr-body.md
             echo "open=true" >> "$GITHUB_OUTPUT"
             echo "::notice::#$ISSUE: $ahead commits pushed but no PR; opening it as the Claude app"
+            waste "pushed its work but opened no PR; kickoff's fallback opens it"
             exit 0
           fi
           if [ "$prs" = 0 ] && [ "$said" = 0 ]; then
             if [ "$GITHUB_RUN_ATTEMPT" = 1 ]; then note="restart.yml re-runs it once"; else note="it already ran twice, so it is not restarted; the planner reads why"; fi
             gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE/comments" -f body="Kickoff: the build ended with no PR and no Blocked or Needs-Opus comment ($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID); $note." >/dev/null
+            waste "ended with no PR and no Blocked or Needs-Opus comment; $note"
             echo "::error::Build of #$ISSUE ended with no PR and no reason"
             exit 1
           fi

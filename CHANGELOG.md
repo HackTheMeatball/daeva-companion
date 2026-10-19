@@ -15,8 +15,9 @@ Gladiator and Spiritmaster guides, clearer Next up cards, map markers.
 
 ### Added
 
-- The Gladiator and the Spiritmaster: Lv 1–45 guides (build steps, stigma picks, icons) and a place in the class picker
-  when you add a character.
+- The Gladiator and the Spiritmaster: Lv 1–45 guides (build steps, stigma picks) and a place in the class picker
+  when you add a character. Their skill and stigma icons show as initials for now (corrected 2026-10-19; this line
+  said "icons" at release, #441).
 - Next up step cards show a one-line "how" under the title, with the step's other notes behind the card's `i` button
   (also in Basic).
 - Wisdom Stones, Daevanion Crystals and Enhance Stones show their icon on Next up cards and reward lines.
