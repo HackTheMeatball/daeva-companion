@@ -1,0 +1,12 @@
+{
+  "spiritmaster/L01-qxx-none-A": [
+    {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"},
+    {"t":"Buy Summon: Water Spirit 1 → 2","s":"Needs Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Jointstrike: Curse 1 → 2","s":"Needs Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Complete \"The Being Beneath the Lake\"","s":"Lv 6 milestone · 5 levels away · opens on \"The Being Beneath the Lake\" · set your quest","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Summon: Earth Spirit 1 → 2","s":"Needs Lv 7 · 6 levels away · single source","c":"tag \"Later\"","f":"later"}
+  ],
+  "spiritmaster/L01-qxx-none-B": [
+    {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"}
+  ]
+}
