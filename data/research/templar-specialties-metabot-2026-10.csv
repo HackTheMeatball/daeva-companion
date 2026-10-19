@@ -1,0 +1,113 @@
+id,skill,n,skillLv,text,build,checkedAt,status,page_url
+spec:templar:annihilate:1,skill:templar:annihilate,1,8,+50% Multi-Hit on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/annihilate
+spec:templar:annihilate:2,skill:templar:annihilate,2,8,+20% Knockdown Chance,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/annihilate
+spec:templar:annihilate:3,skill:templar:annihilate,3,8,+100% damage to targets with Incapacitated Immunity,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/annihilate
+spec:templar:annihilate:4,skill:templar:annihilate,4,12,-10s cooldown,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/annihilate
+spec:templar:annihilate:5,skill:templar:annihilate,5,16,Changes to AoE Skill,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/annihilate
+spec:templar:armor-of-balance:1,stigma:templar:armor-of-balance,1,5,"+20% Ailment-type, Mental-type Resist for the duration",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/armor-of-balance-templar
+spec:templar:armor-of-balance:2,stigma:templar:armor-of-balance,2,10,+20% Move Speed for the duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/armor-of-balance-templar
+spec:templar:armor-of-balance:3,stigma:templar:armor-of-balance,3,15,x1.5 [Warding Shield] effect for the duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/armor-of-balance-templar
+spec:templar:armor-of-balance:4,stigma:templar:armor-of-balance,4,20,+50% Impact-type Resist increase,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/armor-of-balance-templar
+spec:templar:assault-fury:1,stigma:templar:assault-fury,1,5,+20% Attack for 5s on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/assault-fury
+spec:templar:assault-fury:2,stigma:templar:assault-fury,2,10,500 MP damage on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/assault-fury
+spec:templar:assault-fury:3,stigma:templar:assault-fury,3,15,+10m range,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/assault-fury
+spec:templar:assault-fury:4,stigma:templar:assault-fury,4,20,+20% Stun Chance,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/assault-fury
+spec:templar:battlefield-banner:1,stigma:templar:battlefield-banner,1,5,+10% Multi-Hit Chance for duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/battlefield-banner
+spec:templar:battlefield-banner:2,stigma:templar:battlefield-banner,2,10,+10% Weapon Damage Boost for duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/battlefield-banner
+spec:templar:battlefield-banner:3,stigma:templar:battlefield-banner,3,15,+20% Attack increase proportional to Defense,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/battlefield-banner
+spec:templar:battlefield-banner:4,stigma:templar:battlefield-banner,4,20,-30s cooldown,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/battlefield-banner
+spec:templar:comrade-in-arms:1,stigma:templar:comrade-in-arms,1,5,Restores 25% of Max HP once if hit during Comrade in Arms while HP is 25% or less,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/comrade-in-arms
+spec:templar:comrade-in-arms:2,stigma:templar:comrade-in-arms,2,10,x1.5 [Guarding Seal] Protective Shield effect for the duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/comrade-in-arms
+spec:templar:comrade-in-arms:3,stigma:templar:comrade-in-arms,3,15,x1.5 [Block Pain] effect for the duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/comrade-in-arms
+spec:templar:comrade-in-arms:4,stigma:templar:comrade-in-arms,4,20,Restores 50% of caster's Max HP when the effect ends,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/comrade-in-arms
+spec:templar:debilitating-smash:1,skill:templar:debilitating-smash,1,8,30% chance to inflict Stun for 3s,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/debilitating-smash
+spec:templar:debilitating-smash:2,skill:templar:debilitating-smash,2,8,+3s Debilitate duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/debilitating-smash
+spec:templar:debilitating-smash:3,skill:templar:debilitating-smash,3,8,-60% Incoming Heal during Debilitate,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/debilitating-smash
+spec:templar:debilitating-smash:4,skill:templar:debilitating-smash,4,12,Ignores Block and Evasion and lands as Multi-Hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/debilitating-smash
+spec:templar:debilitating-smash:5,skill:templar:debilitating-smash,5,16,25% chance to reset cooldown on Block,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/debilitating-smash
+spec:templar:defiance:1,skill:templar:defiance,1,8,Adds [Capture] Chain Skill,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/defiance-templar
+spec:templar:defiance:2,skill:templar:defiance,2,8,"Restores 1,000 Stamina on using [Defiance]",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/defiance-templar
+spec:templar:defiance:3,skill:templar:defiance,3,8,Restores 20% HP on using [Defiance],0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/defiance-templar
+spec:templar:defiance:4,skill:templar:defiance,4,12,+2s Tenacity duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/defiance-templar
+spec:templar:defiance:5,skill:templar:defiance,5,16,+50% PvE Damage Tolerance and +25% PvP Damage Tolerance for Tenacity duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/defiance-templar
+spec:templar:doom-shield:1,stigma:templar:doom-shield,1,5,Resets [Annihilate] cooldown on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/doom-shield
+spec:templar:doom-shield:2,stigma:templar:doom-shield,2,10,+200 Block for 5s on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/doom-shield
+spec:templar:doom-shield:3,stigma:templar:doom-shield,3,15,Resets cooldown on defeating an enemy,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/doom-shield
+spec:templar:doom-shield:4,stigma:templar:doom-shield,4,20,+25% Knockdown Chance,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/doom-shield
+spec:templar:empyrean-lords-punishment:1,stigma:templar:empyrean-lords-punishment,1,5,Up to +20% damage when less targets hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/empyrean-lords-punishment
+spec:templar:empyrean-lords-punishment:2,stigma:templar:empyrean-lords-punishment,2,10,+50 Stagger Gauge Damage,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/empyrean-lords-punishment
+spec:templar:empyrean-lords-punishment:3,stigma:templar:empyrean-lords-punishment,3,15,+10% PvE Damage Boost and +5% PvP Damage Boost for 10s on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/empyrean-lords-punishment
+spec:templar:empyrean-lords-punishment:4,stigma:templar:empyrean-lords-punishment,4,20,+25% Stun Chance,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/empyrean-lords-punishment
+spec:templar:executing-blade:1,stigma:templar:executing-blade,1,5,-15s cooldown,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/executing-blade
+spec:templar:executing-blade:2,stigma:templar:executing-blade,2,10,Inflict Exposed for 5s on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/executing-blade
+spec:templar:executing-blade:3,stigma:templar:executing-blade,3,15,Critical Hit on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/executing-blade
+spec:templar:executing-blade:4,stigma:templar:executing-blade,4,20,+30% damage on attacking a target inflicted with Impact-type status,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/executing-blade
+spec:templar:flash-rampage:1,skill:templar:flash-rampage,1,8,"Absorbs 500, 500% HP",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/flash-rampage
+spec:templar:flash-rampage:2,skill:templar:flash-rampage,2,8,Restores 120 MP on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/flash-rampage
+spec:templar:flash-rampage:3,skill:templar:flash-rampage,3,8,Changes to mobile skill,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/flash-rampage
+spec:templar:flash-rampage:4,skill:templar:flash-rampage,4,12,Multi-Hit on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/flash-rampage
+spec:templar:flash-rampage:5,skill:templar:flash-rampage,5,16,-1s to all skill cooldowns on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/flash-rampage
+spec:templar:grapple:1,stigma:templar:grapple,1,5,50% chance to inflict Stun for 3s on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/grapple
+spec:templar:grapple:2,stigma:templar:grapple,2,10,20% of Max HP as Protective Shield for 10s on use,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/grapple
+spec:templar:grapple:3,stigma:templar:grapple,3,15,-30s cooldown,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/grapple
+spec:templar:grapple:4,stigma:templar:grapple,4,20,Up to +20% PvE Damage Tolerance and +10% PvP Damage Tolerance when more targets hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/grapple
+spec:templar:judgment:1,skill:templar:judgment,1,8,"Absorbs 100, 100% HP",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/judgment
+spec:templar:judgment:2,skill:templar:judgment,2,8,Deals extra damage on attacking a target afflicted with Impact-type status,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/judgment
+spec:templar:judgment:3,skill:templar:judgment,3,8,Extra damage on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/judgment
+spec:templar:judgment:4,skill:templar:judgment,4,12,Critical Hit on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/judgment
+spec:templar:judgment:5,skill:templar:judgment,5,16,Remove cooldown,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/judgment
+spec:templar:nezekans-shield:1,stigma:templar:nezekans-shield,1,5,+20% all Element Tolerance for Protective Shield duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/nezekans-shield
+spec:templar:nezekans-shield:2,stigma:templar:nezekans-shield,2,10,+2s Protective Shield duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/nezekans-shield
+spec:templar:nezekans-shield:3,stigma:templar:nezekans-shield,3,15,+20% PvE Damage Tolerance and +10% PvP Damage Tolerance for Protective Shield duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/nezekans-shield
+spec:templar:nezekans-shield:4,stigma:templar:nezekans-shield,4,20,Restores 20% of Max HP when Protective Shield is removed,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/nezekans-shield
+spec:templar:noble-armor:1,stigma:templar:noble-armor,1,5,+5% Defense for the duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/noble-armor
+spec:templar:noble-armor:2,stigma:templar:noble-armor,2,10,x1.5 [Insulting Roar] effect for the duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/noble-armor
+spec:templar:noble-armor:3,stigma:templar:noble-armor,3,15,x1.5 [Fury] effect for the duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/noble-armor
+spec:templar:noble-armor:4,stigma:templar:noble-armor,4,20,+10% Incoming Heal for the duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/noble-armor
+spec:templar:poach:1,skill:templar:poach,1,8,Moves to the target if target has Incapacitated Immunity,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/poach
+spec:templar:poach:2,skill:templar:poach,2,8,-20% Status Effect Resist for 5s on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/poach
+spec:templar:poach:3,skill:templar:poach,3,8,Resets cooldown on defeating an enemy,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/poach
+spec:templar:poach:4,skill:templar:poach,4,12,10% Max HP Protective Shield,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/poach
+spec:templar:poach:5,skill:templar:poach,5,16,50% chance to Stun for 3s,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/poach
+spec:templar:pummel:1,skill:templar:pummel,1,8,-20% MP consumed,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/pummel
+spec:templar:pummel:2,skill:templar:pummel,2,8,"[Punishing Strike] absorbs 300, 300% HP",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/pummel
+spec:templar:pummel:3,skill:templar:pummel,3,8,Deals up to 12% more damage when less targets are hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/pummel
+spec:templar:pummel:4,skill:templar:pummel,4,12,-1s [Punishment] cooldown on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/pummel
+spec:templar:pummel:5,skill:templar:pummel,5,16,[Punishing Strike] grants extra damage on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/pummel
+spec:templar:punishment:1,skill:templar:punishment,1,8,"Absorbs 1000, 1000% HP",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/punishment
+spec:templar:punishment:2,skill:templar:punishment,2,8,Inflicts Damage over Time to target on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/punishment
+spec:templar:punishment:3,skill:templar:punishment,3,8,+30% Skill Speed,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/punishment
+spec:templar:punishment:4,skill:templar:punishment,4,12,Changes to mobile skill,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/punishment
+spec:templar:punishment:5,skill:templar:punishment,5,16,Ignores Block and Evasion and lands as a Critical Hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/punishment
+spec:templar:second-skin:1,stigma:templar:second-skin,1,5,+10% all Element Tolerance for the duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/second-skin
+spec:templar:second-skin:2,stigma:templar:second-skin,2,10,+20% Block for the duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/second-skin
+spec:templar:second-skin:3,stigma:templar:second-skin,3,15,x1.5 [Ironclad Defense] effect for the duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/second-skin
+spec:templar:second-skin:4,stigma:templar:second-skin,4,20,+20% PvE Damage Tolerance increase and +10% PvP Damage Tolerance increase,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/second-skin
+spec:templar:shield-of-protection:1,stigma:templar:shield-of-protection,1,5,+1 consecutive use,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/shield-of-protection
+spec:templar:shield-of-protection:2,stigma:templar:shield-of-protection,2,10,Changes to mobile skill,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/shield-of-protection
+spec:templar:shield-of-protection:3,stigma:templar:shield-of-protection,3,15,+20% Move Speed for 3s on Block,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/shield-of-protection
+spec:templar:shield-of-protection:4,stigma:templar:shield-of-protection,4,20,Restores 10% HP once on Block,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/shield-of-protection
+spec:templar:shield-rush:1,skill:templar:shield-rush,1,8,Restores 300 Stamina on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/shield-rush
+spec:templar:shield-rush:2,skill:templar:shield-rush,2,8,+10m range,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/shield-rush
+spec:templar:shield-rush:3,skill:templar:shield-rush,3,8,Changes to Charge Skill and deals AoE damage,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/shield-rush
+spec:templar:shield-rush:4,skill:templar:shield-rush,4,12,-10s cooldown,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/shield-rush
+spec:templar:shield-rush:5,skill:templar:shield-rush,5,16,+25% Stun Chance,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/shield-rush
+spec:templar:shield-smite:1,skill:templar:shield-smite,1,8,+1s Stun duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/shield-smite
+spec:templar:shield-smite:2,skill:templar:shield-smite,2,8,Removes MP Cost and restores 200 MP on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/shield-smite
+spec:templar:shield-smite:3,skill:templar:shield-smite,3,8,50% chance to trigger [Debilitating Smash] on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/shield-smite
+spec:templar:shield-smite:4,skill:templar:shield-smite,4,12,-2s cooldown,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/shield-smite
+spec:templar:shield-smite:5,skill:templar:shield-smite,5,16,AoE Stun,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/shield-smite
+spec:templar:taunt:1,stigma:templar:taunt,1,5,Adds 10% PvE Damage Tolerance reduction and 5% PvP Damage Tolerance reduction effect to Shrink,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/taunt
+spec:templar:taunt:2,stigma:templar:taunt,2,10,+10% Shrink Attack reduction,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/taunt
+spec:templar:taunt:3,stigma:templar:taunt,3,15,-5s cooldown,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/taunt
+spec:templar:taunt:4,stigma:templar:taunt,4,20,"+2s Taunt duration, +5s Shrink duration",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/taunt
+spec:templar:vicious-strike:1,skill:templar:vicious-strike,1,8,+20% MP restored,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/vicious-strike
+spec:templar:vicious-strike:2,skill:templar:vicious-strike,2,8,"Absorbs 100, 100% HP",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/vicious-strike
+spec:templar:vicious-strike:3,skill:templar:vicious-strike,3,8,+50% Multi-Hit on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/vicious-strike
+spec:templar:vicious-strike:4,skill:templar:vicious-strike,4,12,-2s [Warding Strike] cooldown on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/vicious-strike
+spec:templar:vicious-strike:5,skill:templar:vicious-strike,5,16,Adds [Threatening Blow] Chain Skill,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/vicious-strike
+spec:templar:warding-strike:1,skill:templar:warding-strike,1,8,-5s cooldown,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/warding-strike
+spec:templar:warding-strike:2,skill:templar:warding-strike,2,8,+100 Block during Warding,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/warding-strike
+spec:templar:warding-strike:3,skill:templar:warding-strike,3,8,Heal over Time during Warding,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/warding-strike
+spec:templar:warding-strike:4,skill:templar:warding-strike,4,12,Adds PvE Damage Tolerance and PvP Damage Tolerance increase effect when more targets hit to Warding,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/warding-strike
+spec:templar:warding-strike:5,skill:templar:warding-strike,5,16,+10% PvE Damage Tolerance and +5% PvP Damage Tolerance to party members on skill use,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/warding-strike
