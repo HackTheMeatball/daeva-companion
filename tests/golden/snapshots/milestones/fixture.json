@@ -1,6 +1,7 @@
 {
   "fixture/fixture-user-v285": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Missed | 8/9 | overdue | open",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Missed | 9/10 | overdue | open",
@@ -20,7 +21,8 @@
     "g45 | Later | 0/32 | "
   ],
   "fixture/fixture-v285": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Missed | 8/9 | overdue | open",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Missed | 9/10 | overdue | open",

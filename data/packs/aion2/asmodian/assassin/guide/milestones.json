@@ -31,6 +31,14 @@
           "mapSlug": "urugugu-canyon"
         }
       ]
+    },
+    {
+      "id": "g4",
+      "kind": "milestone",
+      "order": 5,
+      "lv": 4,
+      "title": "Skills window",
+      "blurb": "Skills (K) opens; take back the tutorial's skill point."
     }
   ]
 }

@@ -1,6 +1,7 @@
 {
   "story/L11-q13-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Side quests | 8/8 · 1 side | sideonly",
     "g12 | 2 to go | 0/10 | upnext | open",
@@ -20,7 +21,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L11-q13-before-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Side quests | 8/8 · 1 side | sideonly",
     "g12 | 2 to go | 0/10 | upnext | open",
@@ -40,7 +42,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L11-q13-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | 2 to go | 0/10 | upnext | open",
@@ -60,7 +63,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L11-q14-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Side quests | 8/8 · 1 side | sideonly",
     "g12 | 2 to go | 0/10 | upnext | open",
@@ -80,7 +84,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L11-q14-before-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Side quests | 8/8 · 1 side | sideonly",
     "g12 | 2 to go | 0/10 | upnext | open",
@@ -100,7 +105,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L11-q14-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | 2 to go | 0/10 | upnext | open",
@@ -120,7 +126,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L11-q15-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Side quests | 8/8 · 1 side | sideonly",
     "g12 | 2 to go | 0/10 | upnext | open",
@@ -140,7 +147,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L11-q16-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Side quests | 8/8 · 1 side | sideonly",
     "g12 | 2 to go | 0/10 | upnext | open",
@@ -160,7 +168,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L12-q15-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Side quests | 8/8 · 1 side | sideonly",
     "g12 | 1 to go | 0/10 | upnext | open",
@@ -180,7 +189,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L12-q15-before-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Side quests | 8/8 · 1 side | sideonly",
     "g12 | 1 to go | 0/10 | upnext | open",
@@ -200,7 +210,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L12-q15-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | 1 to go | 0/10 | upnext | open",
@@ -220,7 +231,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L12-q16-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Side quests | 8/8 · 1 side | sideonly",
     "g12 | 1 to go | 0/10 | upnext | open",
@@ -240,7 +252,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L12-q16-before-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Side quests | 8/8 · 1 side | sideonly",
     "g12 | 1 to go | 0/10 | upnext | open",
@@ -260,7 +273,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L12-q16-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | 1 to go | 0/10 | upnext | open",
@@ -280,7 +294,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L12-q17-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Side quests | 8/8 · 1 side | sideonly",
     "g12 | 1 to go | 0/10 | upnext | open",
@@ -300,7 +315,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L12-q18-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Side quests | 8/8 · 1 side | sideonly",
     "g12 | 1 to go | 1/10 | upnext | open",
@@ -320,7 +336,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L13-q17-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Now | 1/10 | current,upnext | open",
@@ -340,7 +357,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L13-q17-before-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Now | 1/10 | current,upnext | open",
@@ -360,7 +378,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L13-q17-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Now | 0/10 | current,upnext | open",
@@ -380,7 +399,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L13-q18-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Now | 2/10 | current,upnext | open",
@@ -400,7 +420,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L13-q18-before-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Now | 2/10 | current,upnext | open",
@@ -420,7 +441,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L13-q18-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Now | 1/10 | current,upnext | open",
@@ -440,7 +462,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L13-q19-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Now | 2/10 | current,upnext | open",
@@ -460,7 +483,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L14-q19-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Side quests | 9/9 · 1 side | sideonly",
@@ -480,7 +504,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L14-q19-before-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Side quests | 9/9 · 1 side | sideonly",
@@ -500,7 +525,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L14-q19-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -520,7 +546,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L14-q20-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Side quests | 9/9 · 1 side | sideonly",
@@ -540,7 +567,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L15-q20-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -560,7 +588,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L15-q20-before-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -580,7 +609,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L15-q20-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -600,7 +630,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L15-q21-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -620,7 +651,8 @@
     "g45 | Later | 0/32 | "
   ],
   "story/L15-q22-before-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",

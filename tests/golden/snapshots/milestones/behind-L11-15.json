@@ -1,6 +1,7 @@
 {
   "behind/L15-q12-from10-lag-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Missed | 0/9 | overdue | open",
     "g12 | Missed | 0/10 | overdue | open",
@@ -20,7 +21,8 @@
     "g45 | Later | 0/32 | "
   ],
   "behind/L15-q12-from10-lag-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Missed | 0/9 | overdue | open",
     "g12 | Missed | 0/10 | overdue | open",
@@ -40,7 +42,8 @@
     "g45 | Later | 0/32 | "
   ],
   "behind/L15-q20-from10-lagq-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -60,7 +63,8 @@
     "g45 | Later | 0/32 | "
   ],
   "behind/L15-q20-from10-lagq-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Missed | 1/9 | overdue | open",
     "g12 | Missed | 1/10 | overdue | open",
@@ -80,7 +84,8 @@
     "g45 | Later | 0/32 | "
   ],
   "behind/L15-q20-from10-miss2-s0-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Missed | 9/10 | overdue | open",
@@ -100,7 +105,8 @@
     "g45 | Later | 0/32 | "
   ],
   "behind/L15-q20-from10-miss2-s0-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Missed | 9/10 | overdue | open",
@@ -120,7 +126,8 @@
     "g45 | Later | 0/32 | "
   ],
   "behind/L15-q20-from10-miss2-s1-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Missed | 9/10 | overdue | open",
@@ -140,7 +147,8 @@
     "g45 | Later | 0/32 | "
   ],
   "behind/L15-q20-from10-miss2-s1-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Missed | 9/10 | overdue | open",
@@ -160,7 +168,8 @@
     "g45 | Later | 0/32 | "
   ],
   "behind/L15-q20-from10-miss2-s2-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Missed | 9/10 | overdue | open",
@@ -180,7 +189,8 @@
     "g45 | Later | 0/32 | "
   ],
   "behind/L15-q20-from10-miss2-s2-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Missed | 9/10 | overdue | open",
@@ -200,7 +210,8 @@
     "g45 | Later | 0/32 | "
   ],
   "behind/L15-q20-from10-miss3-s0-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Missed | 8/10 | overdue | open",
@@ -220,7 +231,8 @@
     "g45 | Later | 0/32 | "
   ],
   "behind/L15-q20-from10-miss3-s0-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Missed | 8/10 | overdue | open",
@@ -240,7 +252,8 @@
     "g45 | Later | 0/32 | "
   ],
   "behind/L15-q20-from10-miss3-s1-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Missed | 8/10 | overdue | open",
@@ -260,7 +273,8 @@
     "g45 | Later | 0/32 | "
   ],
   "behind/L15-q20-from10-miss3-s1-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Missed | 8/10 | overdue | open",
@@ -280,7 +294,8 @@
     "g45 | Later | 0/32 | "
   ],
   "behind/L15-q20-from10-miss3-s2-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Missed | 8/10 | overdue | open",
@@ -300,7 +315,8 @@
     "g45 | Later | 0/32 | "
   ],
   "behind/L15-q20-from10-miss3-s2-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Missed | 8/10 | overdue | open",
@@ -320,7 +336,8 @@
     "g45 | Later | 0/32 | "
   ],
   "behind/L15-q20-from10-miss4-s0-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Missed | 7/10 | overdue | open",
@@ -340,7 +357,8 @@
     "g45 | Later | 0/32 | "
   ],
   "behind/L15-q20-from10-miss4-s0-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Missed | 7/10 | overdue | open",
@@ -360,7 +378,8 @@
     "g45 | Later | 0/32 | "
   ],
   "behind/L15-q20-from10-miss4-s1-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Missed | 7/10 | overdue | open",
@@ -380,7 +399,8 @@
     "g45 | Later | 0/32 | "
   ],
   "behind/L15-q20-from10-miss4-s1-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Missed | 7/10 | overdue | open",
@@ -400,7 +420,8 @@
     "g45 | Later | 0/32 | "
   ],
   "behind/L15-q20-from10-miss4-s2-A": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Missed | 7/10 | overdue | open",
@@ -420,7 +441,8 @@
     "g45 | Later | 0/32 | "
   ],
   "behind/L15-q20-from10-miss4-s2-B": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Missed | 7/10 | overdue | open",

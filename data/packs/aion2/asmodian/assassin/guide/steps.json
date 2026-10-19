@@ -432,6 +432,48 @@
       "claims": [
         "C22"
       ]
+    },
+    {
+      "id": "g4:refund",
+      "key": "g4:refund",
+      "milestone": "g4",
+      "order": 10,
+      "route": "core",
+      "short": "Refund the tutorial's Quick Slice point",
+      "text": "<b>Refund the tutorial's Quick Slice point.</b> Press <b>K</b>, select Quick Slice, then click the circular-arrow button to the left of <b>Level Up</b>. Confirm \"Would you like to reset the skill?\" with <b>Reset</b>.",
+      "note": "The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades.",
+      "requires": {
+        "level": 4,
+        "basis": "rule",
+        "note": "milestone level"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "owner": {
+            "ref": "owner:2026-10-18-skill-tutorial-01",
+            "checkedAt": "2026-10-18",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Skill window tutorial (DECISIONS owner-ok-keys, 2026-10-18): \"Click to select skills to level up\" on Quick Slice, then \"[F] Level Up\""
+          }
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-18-skill-reset-01",
+            "checkedAt": "2026-10-18",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Reset one skill (DECISIONS owner-ok-keys, 2026-10-18): circular arrow left of Level Up; \"Would you like to reset the skill?\" [Cancel] [Reset]"
+          }
+        }
+      ]
     }
   ]
 }

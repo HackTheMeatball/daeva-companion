@@ -1,6 +1,7 @@
 {
   "special/empty-object": [
-    "g6 | 1 to go | 0/11 | upnext | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | 1 to go | 0/3 | upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -20,7 +21,8 @@
     "g45 | Later | 0/32 | "
   ],
   "special/fresh-no-save": [
-    "g6 | 5 to go | 0/11 | upnext | open",
+    "g4 | 3 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -40,7 +42,8 @@
     "g45 | Later | 0/32 | "
   ],
   "special/not-v5-empty-object": [
-    "g6 | 5 to go | 0/11 | upnext | open",
+    "g4 | 3 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -60,7 +63,8 @@
     "g45 | Later | 0/32 | "
   ],
   "special/not-v5-flat-L30": [
-    "g6 | 5 to go | 0/11 | upnext | open",
+    "g4 | 3 to go | 0/9 | upnext | open",
+    "g6 | Later | 0/3 | ",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -80,7 +84,8 @@
     "g45 | Later | 0/32 | "
   ],
   "special/story-end-turned-in": [
-    "g6 | Cleared | 11/11 | done",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Cleared | 3/3 | done",
     "g9 | Cleared | 7/7 | done",
     "g10 | Cleared | 9/9 | done",
     "g12 | Cleared | 10/10 | done",
@@ -100,7 +105,8 @@
     "g45 | Side quests | 1/1 · 31 side | sideonly"
   ],
   "special/unknown-quest-name": [
-    "g6 | Missed | 10/11 | overdue | open",
+    "g4 | Cleared | 9/9 | done",
+    "g6 | Missed | 2/3 | overdue | open",
     "g9 | Cleared | 7/7 | done",
     "g10 | Missed | 8/9 | overdue | open",
     "g12 | Missed | 9/10 | overdue | open",

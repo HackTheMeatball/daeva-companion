@@ -1,6 +1,7 @@
 {
   "bind/L06-q05-none-A": [
-    "g6 | Now | 1/11 | current,upnext | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Now | 1/3 | current,upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -20,7 +21,8 @@
     "g45 | Later | 0/32 | "
   ],
   "bind/L06-q05-objs-A": [
-    "g6 | Now | 1/11 | current,upnext | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Now | 1/3 | current,upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -40,7 +42,8 @@
     "g45 | Later | 0/32 | "
   ],
   "bind/L06-q06-none-A": [
-    "g6 | Now | 1/11 | current,upnext | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Now | 1/3 | current,upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -60,7 +63,8 @@
     "g45 | Later | 0/32 | "
   ],
   "bind/L06-q06-objs-A": [
-    "g6 | Now | 1/11 | current,upnext | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Now | 1/3 | current,upnext | open",
     "g9 | Later | 0/7 | ",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -80,7 +84,8 @@
     "g45 | Later | 0/32 | "
   ],
   "bind/L07-q07-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | 2 to go | 0/7 | upnext | open",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -100,7 +105,8 @@
     "g45 | Later | 0/32 | "
   ],
   "bind/L07-q07-objs-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | 2 to go | 0/7 | upnext | open",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -120,7 +126,8 @@
     "g45 | Later | 0/32 | "
   ],
   "bind/L07-q08-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | 2 to go | 0/7 | upnext | open",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -140,7 +147,8 @@
     "g45 | Later | 0/32 | "
   ],
   "bind/L07-q08-objs-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | 2 to go | 0/7 | upnext | open",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -160,7 +168,8 @@
     "g45 | Later | 0/32 | "
   ],
   "bind/L09-q09-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Now | 0/7 | current,upnext | open",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -180,7 +189,8 @@
     "g45 | Later | 0/32 | "
   ],
   "bind/L09-q09-objs-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Now | 0/7 | current,upnext | open",
     "g10 | Later | 0/9 | ",
     "g12 | Later | 0/10 | ",
@@ -200,7 +210,8 @@
     "g45 | Later | 0/32 | "
   ],
   "bind/L10-q10-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Now | 0/9 | current,upnext | open",
     "g12 | Later | 0/10 | ",
@@ -220,7 +231,8 @@
     "g45 | Later | 0/32 | "
   ],
   "bind/L10-q11-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Now | 0/9 | current,upnext | open",
     "g12 | Later | 0/10 | ",
@@ -240,7 +252,8 @@
     "g45 | Later | 0/32 | "
   ],
   "bind/L10-q11-objs-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Now | 0/9 | current,upnext | open",
     "g12 | Later | 0/10 | ",
@@ -260,7 +273,8 @@
     "g45 | Later | 0/32 | "
   ],
   "bind/L10-q12-none-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Now | 0/9 | current,upnext | open",
     "g12 | Later | 0/10 | ",
@@ -280,7 +294,8 @@
     "g45 | Later | 0/32 | "
   ],
   "bind/L10-q12-objs-A": [
-    "g6 | Missed | 1/11 | overdue | open",
+    "g4 | Missed | 0/9 | overdue | open",
+    "g6 | Missed | 1/3 | overdue | open",
     "g9 | Missed | 0/7 | overdue | open",
     "g10 | Now | 0/9 | current,upnext | open",
     "g12 | Later | 0/10 | ",

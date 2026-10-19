@@ -1,34 +1,34 @@
 {
   "special/empty-object": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 6–8"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 4–5"},
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"},
-    {"t":"Buy Exploit Weakness 1 → 2","s":"Needs Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Refund the tutorial's Quick Slice point","s":"Missed · Lv 4 Skills window","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5"},
+    {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest","b":"Lv 4–5"},
+    {"t":"Buy Exploit Weakness 1 → 2","s":"Needs Lv 6 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 6–8"},
     {"t":"Complete \"The Being Beneath the Lake\"","s":"Lv 6 milestone · 1 level away · opens on \"The Being Beneath the Lake\" · set your quest","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 3 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 6 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
+    {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 3 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "special/fresh-no-save": [
     {"t":"Story: A Village in the Fog","s":"0/2 objectives · then Prepare to Escape","c":"primary \"Turned in\" story","o":["Remember Aldelle Village bind with the Kibelisk","Turn in Ellin (Villager), Aldelle Village"]},
     {"t":"Buy Ambush 1 → 2","s":"Needs Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Heart Gore 1 → 2","s":"Needs Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 4 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Complete \"The Being Beneath the Lake\"","s":"Lv 6 milestone · 5 levels away · opens on \"The Being Beneath the Lake\" · 4 quests ahead","c":"tag \"Later\"","f":"later"}
+    {"t":"Refund the tutorial's Quick Slice point","s":"Lv 4 milestone · 3 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 4 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "special/not-v5-empty-object": [
     {"t":"Story: A Village in the Fog","s":"0/2 objectives · then Prepare to Escape","c":"primary \"Turned in\" story","o":["Remember Aldelle Village bind with the Kibelisk","Turn in Ellin (Villager), Aldelle Village"]},
     {"t":"Buy Ambush 1 → 2","s":"Needs Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Heart Gore 1 → 2","s":"Needs Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 4 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Complete \"The Being Beneath the Lake\"","s":"Lv 6 milestone · 5 levels away · opens on \"The Being Beneath the Lake\" · 4 quests ahead","c":"tag \"Later\"","f":"later"}
+    {"t":"Refund the tutorial's Quick Slice point","s":"Lv 4 milestone · 3 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 4 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "special/not-v5-flat-L30": [
     {"t":"Story: A Village in the Fog","s":"0/2 objectives · then Prepare to Escape","c":"primary \"Turned in\" story","o":["Remember Aldelle Village bind with the Kibelisk","Turn in Ellin (Villager), Aldelle Village"]},
     {"t":"Buy Ambush 1 → 2","s":"Needs Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Heart Gore 1 → 2","s":"Needs Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 4 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Complete \"The Being Beneath the Lake\"","s":"Lv 6 milestone · 5 levels away · opens on \"The Being Beneath the Lake\" · 4 quests ahead","c":"tag \"Later\"","f":"later"}
+    {"t":"Refund the tutorial's Quick Slice point","s":"Lv 4 milestone · 3 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 4 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "special/story-end-turned-in": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
