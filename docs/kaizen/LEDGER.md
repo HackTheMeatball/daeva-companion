@@ -15,7 +15,7 @@ drift from it. If a summary and its home disagree, the home wins and the summary
 | `kind` | `safety`, `owner-rule` (one of Isaac's own rules), `process`, or `decision` (a DECISIONS row) |
 | `area` | The part of the work it governs, from the id prefix (table below) |
 | `summary` | One short line (≤ 140 characters) saying what the rule is now, in the team's terms |
-| `plain` | One plain-English sentence (≤ 160 characters, the test allows 200) that Isaac, or anyone reading the tracker, understands without context. For a decision it says what was decided, not the topic name. Never a copy of the full text |
+| `plain` | One plain-English sentence (≤ 160 characters, the test allows 200) that Isaac, or anyone reading the tracker, understands without context. For a decision it says what was decided, not the topic name. A retired or superseded row states the old rule in its own words, with no "Retired:" prefix (`status` marks it). Never a copy of the full text |
 | `owner` | The one person accountable for the rule (list below). Every decision's owner is Isaac |
 | `enforced_by` | The others who carry it out or check it: names separated by `;`, or `all` (every thread), or `harness` (the platform's safety check enforces it). Empty when the owner does it alone. For a decision, the thread that carries it out, when that is clear |
 | `home` | Where the full text lives: `path/in/repo.md#<heading or phrase in that file>`, `docs/DECISIONS.md#YYYY-MM-DD / <Topic>` for a DECISIONS row, or a GitHub issue (`#114`, `#221`, `#222`, `#232`). Never a team-memory file |
@@ -29,10 +29,26 @@ drift from it. If a summary and its home disagree, the home wins and the summary
 
 ## Owners
 
-`owner` is exactly one of: Isaac (the owner), Saul (Coordinator), Walter (Release Planner), Gus (Build Pipeline), Jane
-(Design Lead), Hank (Incident Log), Mike (Stall Watch), Skyler (Tracker Design), Huell (Tracker Sync), Gretchen (Game
-Data Check), Lydia (Source Vetting), Jesse (Player Testing), Gale (Kaizen), Francesca (Rules Steward, who owns the
-ledger's upkeep), Gomez (Team Audit). `enforced_by` uses the same names.
+`owner` is exactly one name from this table; `enforced_by` uses the same names (or `all` / `harness`).
+`tests/ledger.mjs` checks that this table and its list of names match.
+
+| Name | Role | Status |
+|---|---|---|
+| Isaac | Owner | the owner; every decision is his |
+| Saul | Coordinator | live |
+| Walter | Release Planner | live |
+| Gus | Build Pipeline | live |
+| Jane | Design Lead | live |
+| Hank | Incident Log | handed over to Mike 2026-10-19; kept for retired rows |
+| Mike | Stall Watch | live |
+| Skyler | Tracker Design | live |
+| Huell | Tracker Sync | live |
+| Gretchen | Game Data Check | live |
+| Lydia | Source Vetting | live |
+| Jesse | Player Testing | live |
+| Gale | Kaizen | live |
+| Francesca | Rules Steward (owns the ledger's upkeep) | live |
+| Gomez | Team Audit | live |
 
 ## Who does what
 
@@ -44,15 +60,15 @@ change to an owner changes that row and this table in the same PR. Rules Steward
 | Work | Owner | Not | Source |
 |---|---|---|---|
 | Routing work to a thread; what is waiting on Isaac; the morning debrief of every OK and question | Saul | Mike, Huell | COM-02, PLN-09, DEC-20261019-saul-owns-what-s-waiting |
-| Asking Isaac for a decision (opening its To-do) | The thread that needs it, through Huell | Saul, Walter | DECISIONS 2026-10-19 / Each thread opens its own To-dos |
+| Asking Isaac for a decision (opening its To-do) | The thread that needs it, through Huell | Saul, Walter | DEC-20261019-each-thread-opens-its |
 | Telling Huell an answer is recorded (OK RECORDED), so the To-do closes | Whoever recorded it | | DEC-03 |
 | Writing tracker data: cards, To-dos, versions, Scrapbook | Huell | everyone else | TRK-01 |
-| Tracker page code and design | Skyler, after Jane's DESIGN OK | Huell | DECISIONS 2026-10-18 / Tracker 2.0 |
+| Tracker page code and design | Skyler, tab by tab, after Jane's DESIGN OK and Huell's data check | Huell | DEC-20261018-tracker-2-0-tab-by |
 | DECISIONS rows | Walter | everyone else (forward the OK verbatim) | DEC-01 |
 | ROADMAP, planning passes, item specs, the queue, #232 | Walter | Gus | PLN-01, Q-01, PLN-11 |
 | Design asks from Isaac | Walter and Jane together | | PLN-12 |
 | Mockups, look-and-feel, DESIGN OK on PRs with shots | Jane | | MRG-06, MRG-08 |
-| Cleaning up Isaac's screen crops | Jane | Gretchen | DECISIONS 2026-10-18 / Owner crop clean-up is Design Lead's |
+| Cleaning up Isaac's screen crops | Jane | Gretchen | DEC-20261018-owner-crop-clean-up-is |
 | Icon and fact lookups on approved domains; icon provenance | Gretchen | Lydia | ROL-03, ROL-05 |
 | Fact checks, the two-source and labelling rules, DATA OK | Gretchen | | REPO-05, PLN-18 |
 | Vetting a site not yet in SOURCES.md; last-resort spot checks | Lydia | Gretchen | ROL-03, ROL-04 |
@@ -67,7 +83,7 @@ change to an owner changes that row and this table in the same PR. Rules Steward
 | Kaizen review, #222, the scorecard, rule changes and grades | Gale | | KZ-01, PLN-04 |
 | Grading Gale's own rules and checking the scorecard compares like with like (from 0.9) | Francesca | Gale | DEC-20261019-from-0-9-rules-steward |
 | Grading Q-14 | Gale | Francesca | DEC-20261019-kaizen-grades-the-ledger-rule |
-| This ledger, this table, drift and roster sweeps | Francesca | | Q-14, KZ-11, DEC-20261019-rules-steward-francesca-joins-each |
+| This ledger, this table, drift and roster sweeps | Francesca | | Q-14, ROL-07, DEC-20261019-rules-steward-francesca-joins-each |
 | Applying a fix to team memory | Gale (Francesca sends the fix; no other thread can read memory yet) | | Interim, until the 0.8 review assigns it |
 
 ## Areas
