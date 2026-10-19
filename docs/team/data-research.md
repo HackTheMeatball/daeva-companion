@@ -4,9 +4,8 @@
 Confidence cards, and re-checks after game patches.
 
 **Source policy** (CLAUDE.md is authoritative): two independent sources, or game-database fields (Metabot quest/skill
-pages, aion2.gaming.tools read by the owner in a browser; game-database fields from one upstream, such as the global client, count once; aion2.th.gl is never a
-source, see below), or the owner's in-game screens. Otherwise
-leave it out or label it *single source* / *inferred* / *disputed*. thegameswiki: facts only, never wording. No Game8.
+pages, aion2.gaming.tools read by the owner in a browser; game-database fields from one upstream, such as the global
+client, count once; aion2.th.gl is never a source, see below), or the owner's in-game screens. Otherwise leave it out or label it *single source* / *inferred* / *disputed*. thegameswiki: facts only, never wording. No Game8.
 
 **Standing checklist**
 - Every claim: source URLs per field, confidence, date checked. New URLs go through `npm run gen`.
@@ -16,7 +15,8 @@ leave it out or label it *single source* / *inferred* / *disputed*. thegameswiki
 - Per class (0.8+, renumbered 2026-10-15): research plan, data, claims, and a list of items the owner or a tester must confirm in game.
 
 ## Fetching policy (owner-approved 2026-10-14)
-- Before any content page: read the terms page and robots.txt. Then, within reason, do the minimum the site asks:
+- Before any content page: read the terms page first, then robots.txt (terms are the harder gate: robots.txt may allow
+  what the terms forbid; owner, 2026-10-19). Then, within reason, do the minimum the site asks:
   1. **Opts out of AI / automated access entirely** (robots.txt blocks Claude-User or our own User-Agent, or terms ban all bots or
      automated access): never fetched by a session. The owner checks it by hand when needed. Blocking only AI training
      crawlers (ClaudeBot, GPTBot …) is not an opt-out (owner, 2026-10-18). Per-site verdicts: `docs/research/SOURCES.md`.
