@@ -1,0 +1,10 @@
+[
+  { "case": "l1-lv4-basic-1500", "kind": "before-after", "title": "Locked cards fill the row in Basic",
+    "caption": "At Lv 4 in Basic on desktop, Daevanion and Stigmas show as faded shells beside Skills; Stigmas says 18 levels to go." },
+  { "case": "l2-lv21-basic-1500", "kind": "before-after", "title": "One level to go",
+    "caption": "At Lv 21 the Stigmas shell counts down to 1 level to go before it opens at Lv 22." },
+  { "case": "lv4-advanced-1500", "kind": "before-after", "title": "The count in Advanced too",
+    "caption": "Advanced keeps its shells and gains the same count under the unlock line; Daevanion opens after a quest, so it has none." },
+  { "case": "lv4-basic-390", "kind": "before-after", "title": "Phones stay as they were",
+    "caption": "On a phone at Lv 4 the locked cards are still left out, so nothing pushes the page down." }
+]
