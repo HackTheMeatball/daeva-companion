@@ -162,6 +162,9 @@ body.basic #nowStar .ns-card.first { animation: nsPulse 2.2s ease-in-out infinit
 #nowStar .ns-card button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 @media (max-width: 520px) { #nowStar .ns-qgrid .ql { white-space: normal; } #nowStar .ns-qgrid li.qg { flex-wrap: wrap; } #nowStar .ns-card .meta { justify-content: flex-end !important; } }
 #nowStar .ns-num .st-img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-9); }
+/* the story card's game icon (0.6 P13): a dark tile on every card, the icon filling it (Design Lead, #391 mockup) */
+#nowStar .ns-card .ns-num:has(> .ns-sico) { background: var(--panel-2); border-color: var(--line); }
+#nowStar .ns-card .ns-num .ns-sico { width: 100%; height: 100%; object-fit: contain; }
 
 /* Next up: bar along the bottom edge, full width, 3px, like milestone cards */
 #nowStar .ns-card .ns-bbar .nsq-bar { display: flex; max-width: none; width: 100%; height: 3px; margin: 0; border-radius: 0; background: var(--line); }

@@ -54,21 +54,24 @@ function nowCard(a) {
 /* The end of the guide's story (0.3 E10): the last covered quest turned in; the game's next story quest unlocks past the cap. */
 /* set at mount: STORY_END is the pack's, handed over after this module is loaded */
 let STORY_DONE = "", END_NEXT = "";
+/* The game's active story-quest icon (0.6 P13, DECISIONS owner-ok-story-icon; source in docs/ISSUES.md) on a dark tile;
+   the 📜 emoji when it can't load (the tile then falls back to its usual look). */
+const STORY_ICO = `<img class="ns-sico" src="assets/icons/story-quest-active.png" alt="" onerror="this.replaceWith('📜')">`;
 function storyView(a) {
   const { act } = a;
-  if (a.v === "unset") return { story: true, ico: "📜", t: "Set your current main quest", sub: "In the Journey card; it places you on the story.", btn: "Show", act };
-  if (a.v === "end") return { story: true, ico: "📜", t: STORY_DONE, sub: `${capFirst(END_NEXT)} · the guide's story ends at "${a.quest}"`, act };
+  if (a.v === "unset") return { story: true, ico: STORY_ICO, t: "Set your current main quest", sub: "In the Journey card; it places you on the story.", btn: "Show", act };
+  if (a.v === "end") return { story: true, ico: STORY_ICO, t: STORY_DONE, sub: `${capFirst(END_NEXT)} · the guide's story ends at "${a.quest}"`, act };
   /* what else to do at your level, and where the objectives send you: in the pack's words */
   const R = nowR(), ctx = nowCtx();
   const xs = a.meanwhile && R["story.meanwhile"] ? R["story.meanwhile"](a.meanwhile, ctx) : "";
   const gatedSub = `Needs Lv ${a.gateLv}: you're ${a.lv}. Level up first.${xs ? `<span class="ns-mean">Meanwhile: ${xs}</span>` : ""}`;
   /* Below the quest's unlock level (turnInNeedsLv): no "Turned in", the tag says when (as the Journey card does). */
   const tag = a.turnInLv ? `Turn in at Lv ${a.turnInLv}` : undefined;
-  if (a.v === "nolist") return { story: true, ico: "📜", t: `Continue the story: <b>${a.quest}</b>`, sub: a.gated ? gatedSub : a.nq ? `Main story · then ${a.nq[1]}` : "Main story", btn: "Turned in", act, tag };
+  if (a.v === "nolist") return { story: true, ico: STORY_ICO, t: `Continue the story: <b>${a.quest}</b>`, sub: a.gated ? gatedSub : a.nq ? `Main story · then ${a.nq[1]}` : "Main story", btn: "Turned in", act, tag };
   const where = R["story.where"] ? R["story.where"](a, ctx) : "";
   /* a row of the pack's under the text, above the action (0.5 P15: the "Bind X" row) */
   const row = R["story.row"] ? R["story.row"](a, ctx) : "";
-  return { story: true, ico: "📜", t: `Story: <b>${a.quest}</b>`, sub: a.gated ? gatedSub : `<span class="ns-objn">${a.done}/${a.total}</span> objectives${where ? ` · ${where}` : ""}${a.nq ? ` · then ${a.nq[1]}` : ""}`, btn: "Turned in", act, tag, quest: a.objectives, row };
+  return { story: true, ico: STORY_ICO, t: `Story: <b>${a.quest}</b>`, sub: a.gated ? gatedSub : `<span class="ns-objn">${a.done}/${a.total}</span> objectives${where ? ` · ${where}` : ""}${a.nq ? ` · then ${a.nq[1]}` : ""}`, btn: "Turned in", act, tag, quest: a.objectives, row };
 }
 /* Phones (<= 600 px, 0.5 P3; docs/design/phone-layout.md 3.4): no nested scroll stack. The featured card is full width
    with its action(s) under the text, the others are compact rows (tile, title, one line), and in Advanced a "1 of N"
