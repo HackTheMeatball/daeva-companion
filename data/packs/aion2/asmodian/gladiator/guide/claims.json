@@ -257,7 +257,8 @@
       "appliesTo": [
         "build:gladiator:guide",
         "conf:specialty-picks",
-        "conf:ruinous-pick"
+        "conf:ruinous-pick",
+        "conf:overhead-pick"
       ],
       "verifiedAt": "2026-10-18"
     },

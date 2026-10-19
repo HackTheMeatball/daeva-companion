@@ -26,6 +26,12 @@
       "text": "Gladiator learn levels (Mocking Blade 3, Rush Strike 10, Ruinous Blow 14 and the rest): Metabot's skill pages (game data)."
     },
     {
+      "id": "conf:overhead-pick",
+      "group": "disputed",
+      "order": 235,
+      "text": "Overhead Slam's Lv 8 pick: Upward Strike chain (daevaguides, skycoach) against aion2turkiye's leveling panel and aLuckyRO; the guide takes Upward Strike chain."
+    },
+    {
       "id": "conf:ruinous-pick",
       "group": "disputed",
       "order": 232,
@@ -41,7 +47,7 @@
       "id": "conf:specialty-picks",
       "group": "verified",
       "order": 71,
-      "text": "Specialty picks: Rending Blow mobile, Overhead Slam Upward Strike chain, Keen Strike +20% MP at skill Lv 8; Rending Blow, Overhead Slam and Keen Strike's Lv 12 picks (daevaguides, mmo-codex, aion2turkiye, skycoach)."
+      "text": "Specialty picks: Rending Blow mobile, Keen Strike +20% MP at skill Lv 8; Rending Blow, Overhead Slam and Keen Strike's Lv 12 picks (daevaguides, mmo-codex, aion2turkiye, skycoach)."
     },
     {
       "id": "conf:stat-tiers",
