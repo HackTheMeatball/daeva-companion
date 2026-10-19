@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /* Rules and decisions ledger checks (docs/kaizen/LEDGER.md), Node only, no browser, no build. checkLedger() returns a
    list of problems; tests/schema.mjs runs it (so the CI data job fails on any), and `node tests/ledger.mjs` runs it alone.
-   Checks: the exact header; unique ids; non-empty summary, owner and home; kind and status from their fixed sets; every
+   Checks: the exact header; unique ids; non-empty summary, plain (≤ 200 chars), owner and home; owner is one known name and
+   enforced_by is empty or ;-separated known names, all or harness; kind and status from their fixed sets; every
    repo-file home exists and its #anchor text is in that file (case-insensitive, backticks and runs of whitespace
    ignored); a DECISIONS home `docs/DECISIONS.md#YYYY-MM-DD / <Topic>` names a real `## YYYY-MM-DD` heading with a row of
    that Topic under it; issue homes are `#<n>`; every replaced_by is an existing id; and there is one decision row per
@@ -11,7 +12,9 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-export const HEADER = ['id', 'kind', 'area', 'summary', 'owner', 'home', 'status', 'since', 'ok_by', 'last_change', 'grade', 'replaced_by'];
+export const HEADER = ['id', 'kind', 'area', 'summary', 'plain', 'owner', 'enforced_by', 'home', 'status', 'since', 'ok_by', 'last_change', 'grade', 'replaced_by', 'note'];
+/* one accountable owner per row; enforced_by lists the others (or all / harness) */
+export const OWNERS = new Set(['Isaac', 'Saul', 'Walter', 'Gus', 'Jane', 'Hank', 'Mike', 'Skyler', 'Huell', 'Gretchen', 'Lydia', 'Jesse', 'Gale', 'Francesca', 'Gomez']);
 const KINDS = new Set(['safety', 'owner-rule', 'process', 'decision']);
 const STATUSES = new Set(['active', 'retired', 'trial', 'pending', 'superseded']);
 
@@ -63,7 +66,11 @@ export function checkLedger(root = ROOT, { csvText } = {}) {
     if (!r.id) problems.push(`${at}: empty id`);
     else if (ids.has(r.id)) problems.push(`${at}: duplicate id`);
     ids.add(r.id);
-    for (const k of ['summary', 'owner', 'home']) if (!r[k].trim()) problems.push(`${at}: empty ${k}`);
+    for (const k of ['summary', 'plain', 'owner', 'home']) if (!r[k].trim()) problems.push(`${at}: empty ${k}`);
+    if (r.plain.length > 200) problems.push(`${at}: plain is ${r.plain.length} chars (max 200)`);
+    if (r.owner && !OWNERS.has(r.owner)) problems.push(`${at}: owner "${r.owner}" is not one of ${[...OWNERS].join('/')}`);
+    if (r.enforced_by) for (const e of r.enforced_by.split(';').map(x => x.trim()))
+      if (!OWNERS.has(e) && e !== 'all' && e !== 'harness') problems.push(`${at}: enforced_by "${e}" is not a known name, all or harness`);
     if (!KINDS.has(r.kind)) problems.push(`${at}: kind "${r.kind}" not in ${[...KINDS].join('/')}`);
     if (!STATUSES.has(r.status)) problems.push(`${at}: status "${r.status}" not in ${[...STATUSES].join('/')}`);
     if (r.since && !/^\d{4}-\d{2}-\d{2}$/.test(r.since)) problems.push(`${at}: since "${r.since}" is not YYYY-MM-DD`);
