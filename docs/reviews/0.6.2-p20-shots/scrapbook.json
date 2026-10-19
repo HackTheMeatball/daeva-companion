@@ -1,6 +1,6 @@
 [
   { "case": "story-ready-1500", "kind": "before-after", "title": "Ready to turn in",
-    "caption": "With every objective but the Turn in step ticked, the story card shows the game's ready-to-turn-in marker and says \"Ready to turn in\" instead of the count; the Turn in row stays listed." },
+    "caption": "All objectives but Turn in ticked: the story card shows the game's ready marker and \"Ready to turn in\" instead of the count." },
   { "case": "story-done-1500", "kind": "before-after", "title": "Story complete",
     "caption": "Once the guide's last story quest is turned in, the card shows the journal's completed-quest check." },
   { "case": "story-active-390", "kind": "before-after", "title": "Active quest (no change)",
