@@ -245,15 +245,19 @@
         },
         {
           "url": "https://mmo-codex.com/articles/aion-2-gladiator-guide/",
-          "note": "Keen Strike +20% MP; the three Lv 12 picks; Ruinous Blow +12.5 m (aLuckyRO)."
+          "note": "Keen Strike +20% MP; the three Lv 12 picks; Ruinous Blow +12.5 m and Overhead Slam HP absorb (:1) (aLuckyRO)."
+        },
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/gladiator/",
+          "note": "Class page (its own editorial): Overhead Slam Upward Strike chain (:3)."
         },
         {
           "url": "https://aion2turkiye.com/en/class/gladiator/",
-          "note": "Rending Blow mobile, Keen Strike +20% MP; Ruinous Blow +30% Skill Critical Hit."
+          "note": "Rending Blow mobile, Keen Strike +20% MP; Ruinous Blow +30% Skill Critical Hit; leveling panel: Overhead Slam AoE (:2)."
         }
       ],
       "action": "keep",
-      "note": "docs/research/2026-10-gladiator-guide.md §4. Six of the seven are two-source (CONFIRMED there; Overhead Slam's Lv 8 pick has dissent from aion2turkiye's leveling panel and aLuckyRO, so the Confidence card shows it as disputed: conf:overhead-pick, the only pick here with a dissenting publisher rather than a lone creator). Ruinous Blow's Lv 8 pick is disputed: Skill Speed (daevaguides majority, skycoach), Skill Critical Hit (aion2turkiye, couga54, aLuckyRO) or range (aLuckyRO on mmo-codex); the guide takes Skill Speed. Several sites credit the same creators, so independence is inferred (research §9).",
+      "note": "docs/research/2026-10-gladiator-guide.md §4. Six of the seven are two-source (CONFIRMED there; Overhead Slam's Lv 8 pick has dissent from aion2turkiye's leveling panel and aLuckyRO, so the Confidence card shows it as disputed: conf:overhead-pick). Ruinous Blow's Lv 8 pick is disputed: Skill Speed (daevaguides majority, skycoach), Skill Critical Hit (aion2turkiye, couga54, aLuckyRO) or range (aLuckyRO on mmo-codex); the guide takes Skill Speed. Several sites credit the same creators, so independence is inferred (research §9).",
       "appliesTo": [
         "build:gladiator:guide",
         "conf:specialty-picks",

@@ -10,7 +10,7 @@ A claim that is not verified is tagged `[id · verdict]` (`owner source`: the ow
 Only facts were taken from these pages; the app reproduces no page text. Short quotations in the guides' `claims.json`
 stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Listing a site implies no endorsement.
 
-542 URLs · 419 in the Sources card · 123 cited only in the data files
+543 URLs · 419 in the Sources card · 124 cited only in the data files
 
 ## Metabot (336)
 
@@ -623,11 +623,12 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 |---|---|---|
 | [Metaroad: Assassin Daevanion boards](https://metaroad.gg/aion2/database/daevanion/assassin) | Leveling guides, build and tips | Sources card (earlier research snapshot) |
 
-## MMO Codex (2)
+## MMO Codex (3)
 
 | Page | Card group | Backs |
 |---|---|---|
 | [MMO Codex: Gladiator guide](https://mmo-codex.com/articles/aion-2-gladiator-guide/) | — | packs/aion2/asmodian/gladiator/guide/claims.json: [C61 · disputed] Gladiator stigmas by slot: Lunge Stance (22), Zikel's Blessing (27), Lifestealing Blade (32), Rage Burst (37); raised to 8 / 6 / 5 / 5.; packs/aion2/asmodian/gladiator/guide/claims.json: [C62 · disputed] Gladiator skill points: Rending Blow, Overhead Slam, Keen Strike, Ruinous Blow, Attack Preparation, Experienced Counterstrike and Murderous Burst to Lv 10; Crushing Wave, Rush Strike and Leaping Slam to 8.; packs/aion2/asmodian/gladiator/guide/claims.json: [C64 · disputed] Gladiator specialty picks: Rending Blow mobile (:3), Overhead Slam Upward Strike chain (:3), Keen Strike +20% MP (:1), Ruinous Blow +20% Skill Speed (:1) at skill Lv 8; Rending Blow (:4), Overhead Slam (:4) and Keen Strike (:4) at Lv 12.; packs/aion2/asmodian/gladiator/builds.json: Guide build |
+| [MMO Codex: Gladiator](https://mmo-codex.com/games/aion-2/classes/gladiator/) | — | packs/aion2/asmodian/gladiator/guide/claims.json: [C64 · disputed] Gladiator specialty picks: Rending Blow mobile (:3), Overhead Slam Upward Strike chain (:3), Keen Strike +20% MP (:1), Ruinous Blow +20% Skill Speed (:1) at skill Lv 8; Rending Blow (:4), Overhead Slam (:4) and Keen Strike (:4) at Lv 12. |
 | [MMO Codex: Terms](https://mmo-codex.com/terms/) | — | packs/aion2/sources.json: MMO Codex |
 
 ## neonsect (1)
