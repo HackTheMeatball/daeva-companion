@@ -9,6 +9,55 @@ through 0.3.0 loads every earlier save. From 0.4.0 the key is `companion-save-v5
 rule in CLAUDE.md). Entries before 0.1.0 are the internal build numbers of the original single-file claude.ai
 artifact (`vNNN`) and are kept in their original form.
 
+## 0.7.0 — 2026-10-19
+
+Gladiator and Spiritmaster guides, clearer Next up cards, map markers.
+
+### Added
+
+- The Gladiator and the Spiritmaster: Lv 1–45 guides (build steps, stigma picks, icons) and a place in the class picker
+  when you add a character.
+- Next up step cards show a one-line "how" under the title, with the step's other notes behind the card's `i` button
+  (also in Basic).
+- Wisdom Stones, Daevanion Crystals and Enhance Stones show their icon on Next up cards and reward lines.
+- Key setup shows each skill's icon with its name under it, and key labels as key chips under each column.
+- The Next up story card's icon follows the quest's state: active, ready to turn in ("Ready to turn in" replaces the
+  objective count) and story complete. The story-quest icon is the game's.
+- A one-time Next up walk-through after the Skills unlock: refund the tutorial skill, and how to reset one skill or all
+  skills, from the owner's in-game screens. Daevanion and stigma respec steps are not included yet.
+- Game map markers: Sealed Dungeon and Stronghold cards show the game's sealed and garrison markers, Kibelisk cards the
+  Kibelisk crest, and region rows read "N [feather]" for Empyrean Traces, with a legend line under the Sealed Dungeons
+  reward.
+- Sync: the server (`server/sync`, a Worker with R2 storage; not deployed) and the screens to turn sync on, join with a
+  code, show the code and delete the cloud copy. The sync line stays hidden until the server is switched on.
+
+### Changed
+
+- Locked cards show as faded "Opens at …" shells in Basic too, on desktop; phones still hide them. Level unlocks add
+  "N levels to go".
+- The claude.ai artifact is no longer built; the site is the only build. The published artifact stays frozen with its
+  "moved" notice.
+- Next up no longer shows the Daeva Pass and Save-stones steps; the stone advice and the owner's extraction screens are
+  folded into the extract tip, and the Wisdom Stones card no longer shows early.
+- Ranger and Gladiator Key setup shows the game's default keys for each skill, not only the guide's line.
+- The sync join field shows the whole code on phones.
+
+### Fixed
+
+- The Spiritmaster's Route rules no longer talk about Elemental Fusion from Lv 1; a step stays hidden until its level
+  and the triggers step opens at Lv 14.
+
+### Data
+
+- Gladiator and Spiritmaster class data and guide text, from the research files in `docs/research/`.
+- Key setup data per skill for the Ranger and Gladiator, from the owner's in-game screens.
+- Map marker, story-state and item icons from Metabot (aion2quest for the Kibelisk crest) and the owner's crops, with
+  their sources recorded in `docs/ISSUES.md`.
+
+### Saved progress
+
+- Unaffected. No reset; the key is still `companion-save-v5`. Sync keeps its own key, `companion-sync-v1`.
+
 ## 0.6.1 — 2026-10-18
 
 Fixes from 0.6.0 testing: objective count, phone toast, headings, Ranger icons.
