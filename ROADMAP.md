@@ -71,6 +71,13 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
      or handed to their owners. Kaizen (Gale) then sends `KAIZEN REVIEW DONE <minor>` naming the audit file. The
      Release Planner starts no planning pass, writes no plan and queues nothing for the minor before that message.
      0.8 is not redone.
+   - **Inputs are logged live; Kaizen aggregates (owner, 2026-10-19 2:57 PM ET, Kaizen thread).** Each review input is
+     logged as it happens by its owner: stalls, incidents and owner waits by Stall Watch (Mike) and Incident Log
+     (Hank) in #221; plan, execution and usage by the Release Planner in #232; waste, CI health and each build's
+     model and outcome by Build Pipeline (Gus) in #114's Waste section; player findings by Jesse; game data by Game
+     Data Check (Gretchen); rules, decisions, drift and roster by Kaizen (Gale) until a Rules Steward is approved.
+     After `RELEASE SHIPPED` each owner sends Kaizen `REPORT READY <minor>`, and the review starts when the last
+     one arrives. Anything Kaizen has to look up after the fact is a gap, assigned to an owner at that review.
    - **Changes.** Each cause that repeated, and each metric that got worse, becomes one concrete process change: a
      #222 row, put in place before the minor's first item is queued (a #114 rule, a planner-instruction change, or
      a workflow PR). Stall limits that a build actually hit, the build cap and model routing in #114 are
@@ -99,9 +106,11 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
    and lanes follow kickoff's grammar (`tests/kickoff.mjs` fixtures); the plan reviewer checks every one before
    approving (Kaizen, 2026-10-19).
 5. **Owner input.** List what needs the owner (in-game checks, mockups, money, legal). Only a true blocker becomes a
-   tracker To-do; everything else follows the recommendation. Every decision is recorded on the tracker as
-   **user remediated** (the owner chose) or **Claude remediated** (the recommendation applied under a standing
-   approval), so the owner can see which calls were whose.
+   tracker To-do; everything else follows the recommendation. The thread that needs the decision opens its own
+   To-do through Tracker sync (Huell): one owner and one owner's OK per card, listing what waits on it; it tells every
+   thread the decision affects when it opens and when it is answered (owner, 2026-10-19 2:20 PM ET; trial through
+   0.8). Every decision is recorded on the tracker as **user remediated** (the owner chose) or **Claude
+   remediated** (the recommendation applied under a standing approval), so the owner can see which calls were whose.
    **When (Kaizen K15, 2026-10-19; replaces K10):** the planning pass lists every OK the minor needs, each with its
    recommendation, the exact words to type and the thread to type them in (the thread whose session records it). That
    includes the minor's standing ship OK, one per minor covering the .0 and every patch (rules audit COM-03; owner,
@@ -966,11 +975,11 @@ build times that would change them. Each item's problem, result, no-gos, accepta
 | P7 | Phone: Undo toast 6 px over the tab bar (#321-2), level-up chip over the name box (#441-7) → neither overlaps | S | Sonnet | app.css, a11y | none |
 | P8 | New character's "Your level" shows two "Start at Lv 1" buttons (#333-1) → the two read differently | S | Sonnet | welcome, a11y | none |
 | P9 | Key setup follow-ups from the #424 review: fit test at 390 px only, chips read after all 12 cells, long names → 1500 px test, a label per column, names wrap | S | Sonnet | build-card, a11y | none |
-| P10 | Icons sit loose in Next up cards (#421) → the tile lines up with the title only, lines run full width | S | Sonnet | nextup.css | `owner-ok-0.8-icon-fit` (met, 2026-10-19 1:36 AM ET) |
+| P10 | Icons sit loose in Next up cards (#421) → on phones the icon box sits beside the title, lines run full width under it, and Show moves into the title row so the card is about 30 % shorter (owner A, 2:39 PM ET; Design Lead round 2, `tracker/mockups/0.8-owner-ok-v2/` §1 and `1c-icon-balance.png`); desktop unchanged | S | Sonnet | nextup.css | `owner-ok-0.8-icon-fit` (met, 2026-10-19 1:36 AM ET), `owner-ok-0.8-icon-box` |
 | P11 | Map markers on Next up tiles read small → sized by the visible emblem (Design Lead mockup, DESIGN OK 4:47 AM ET) | S | Sonnet | nextup.css | `owner-ok-0.8-marker-size` |
-| P12 | First-time players don't see the class choice (#333-3) → a "Your class" chip row on the welcome card (Design Lead mockup, DESIGN OK 6:23 AM ET) | M | Sonnet | welcome, a11y | `owner-ok-0.8-welcome-class` |
-| P13 | Regional quests and the extract tip lack the game's icons → regional quest state tiles (#409: the owner's star crop, Metabot's `quest_district`) and the extract flask (Design Lead mockup, DESIGN OK 6:23 AM ET) | M | Sonnet | gen, golden, nextup.css | `owner-ok-0.8-crop-icons` |
-| P14 | Key setup and macro steps don't match the game (#387) → the game's grid, the macro on right click, Shadowstrike on E | M | Opus | gen, golden, build-card, a11y | `research-387-macro` |
+| P12 | First-time players don't see the class choice (#333-3) → a class picker for all 8 classes on the welcome card: 8 badges (`radiogroup`), Metabot class emblems, "Soon" and not pickable for classes with no guide (owner A, 2:35 PM ET; Design Lead round 2, §3) | M | Sonnet | welcome, a11y | `owner-ok-0.8-welcome-class` |
+| P13 | Regional quests and the extract tip lack the game's icons, and the click-twice box hides its second state → the state icon (#409: the owner's star crop, Metabot's `quest_district`, ✓) replaces the box, marked by one "Picked up" / "Turned in" / Undo button, in milestone rows and the Next up card, where every quest row also shows its map pin left of the button and long names are cut with "…"; the ✓ is a centred SVG (owner A, 2:36–2:40 PM ET; `2b-check-fix.png`, `2c-map-pin.png`), same `started`/`checks` data, no save change; extract flask unchanged (Design Lead round 2, §2 and §4) | L | Opus | gen, golden, nextup.css, rows | `owner-ok-0.8-crop-icons` |
+| P14 | Key setup and macro steps don't match the game (#387) → the game's grid, the macro on right click, Shadowstrike on E | M | Opus | gen, golden, build-card, a11y, rows | `research-387-macro` |
 | P15 | Auto level-up fires at the wrong level (#401) → it uses the level the quest is turned in at | M | Opus | gen, golden | `research-401-levels` |
 | R | Release 0.8.0 | S | Sonnet | release, alone | everything above, or moved to 0.8.x; `DATA OK 0.8.0` |
 
@@ -981,47 +990,55 @@ Tracker 2.0) has no app version.
 
 No-gos for the whole minor: no save break (`companion-save-v5` stays); no AION 2 term in the engine; no game data without
 its source; no fetching in bot builds; no `.github/workflows/` edits by bots; no new game art beyond the standing icon OK
-and the owner's crop and marker OK (P13). Campsite and point-of-interest markers are held: the crops are the game's zone
-labels, and no place record has a kind yet (Design Lead, 6:23 AM ET; 0.6.2 Q5). They need a data item first (`kind` on
+and the owner's crop and marker OK (P13) and the class emblems his class answer approves (P12). Campsite and
+point-of-interest markers are held: the crops are the game's zone labels, and no place record has a kind yet (Design Lead, 6:23 AM ET; 0.6.2 Q5). They need a data item first (`kind` on
 places), a 0.9 candidate.
 
 #### Waves and lane map (step 4)
 
 At most five builds at a time. Serial lanes: **gen** P1 → P2 → P3 → P4 → P5 → P13 → P14 → P15 (every item that
 touches `data/`); **golden** the same items; **a11y** P7 → P9 → P8 → P12 → P14; **nextup.css** P10 → P11 → P13;
+**rows** (`rows.js`) P13 → P14;
 **welcome** P8 → P12; **build-card** P9 → P14; **site** P6 alone. Critical path: `research-templar` (in, #447) → P2 →
 P3 → P4 → P5 → R. The gen/golden lane is the bottleneck: the non-class items on it (P13, P14, P15) run after the class
 packs, since those are the minor's point.
 
 | Wave | Builds (no owner OK needed first, K15) |
 |---|---|
-| 1 | P6 (site) ∥ P7 (app.css, a11y) ∥ P10 (nextup.css) ∥ P1 (gen, golden) |
-| 2 | P9 (a11y, build-card) ∥ P2 (gen) ∥ P11 (nextup.css; gated) |
+| 1 | P6 (site) ∥ P7 (app.css, a11y) ∥ P1 (gen, golden) |
+| 2 | P9 (a11y, build-card) ∥ P2 (gen) ∥ P10 → P11 (nextup.css; gated) |
 | 3 | P8 (a11y, welcome) ∥ P3 (gen, golden) |
 | 4 | P12 (a11y, welcome; gated) ∥ P4 (gen) |
 | 5 | P5 (gen, golden) |
-| 6 | P13 (gen, golden, nextup.css; gated) |
-| 7 | P14 (gen, golden, build-card, a11y) |
+| 6 | P13 (gen, golden, nextup.css, rows; gated) |
+| 7 | P14 (gen, golden, build-card, a11y, rows) |
 | 8 | P15 (gen, golden), when its level notes are in |
 | 9 | R, alone, after the CHANGELOG draft (K17) and `DATA OK 0.8.0` |
 
 Checked: no two items in one wave own the same file. Waves are the expected order, not gates. Under K15, a gated item
-(P11, P12, P13) whose OK isn't typed by the time its lane is free moves to the end of the queue, not waited on. An item
+(P10, P11, P12, P13) whose OK isn't typed by the time its lane is free moves to the end of the queue, not waited on. An item
 whose research isn't in by the time the rest has merged moves to 0.8.x.
 
 #### Owner input (step 5)
 
-**One batch (K15), for the morning debrief, typed in the Release planning (Walter) thread.** It is one line. It covers
-the go for 0.8 builds and the three looks Design Lead approves:
+**Two To-dos (K15; one owner per card, owner 2026-10-19 2:20 PM ET), for the morning debrief.** The go is the
+Release Planner's (T-50, build only), typed in the Release planning (Walter) thread:
 
 ```
-0.8 OK: build as planned; looks OK: marker size, welcome class choice, regional quest and extract icons
+0.8 OK: build as planned
 ```
 
-That records `owner-ok-0.8-go` (the planner queues 0.8 in #114), `owner-ok-0.8-marker-size` (P11),
-`owner-ok-0.8-welcome-class` (P12) and `owner-ok-0.8-crop-icons` (P13: "regional quest and extract icons", the owner's regional star crop and extract flask plus Metabot's `quest_district`
-map marker, which the 0.6.2 map-icons OK didn't cover). All three looks have Design Lead's DESIGN OK. A look still waiting on Design Lead's DESIGN OK
-when the debrief goes out is left off the line and asked for later. Optional, only to change a default: name a
+That records `owner-ok-0.8-go` (the planner queues 0.8 in #114). The looks were Design Lead's To-do (T-51, round 2
+after the owner's 2:13 PM ET notes on the first-round looks, which T-50 carried until it was re-cut; boards and spec
+in `/mnt/project-files/tracker/mockups/0.8-owner-ok-v2/`), answered on the boards, so no looks line is needed: "icon"
+recorded `owner-ok-0.8-marker-size` (P11) and `owner-ok-0.8-icon-box` (P10), "quest" `owner-ok-0.8-crop-icons` (P13,
+with Metabot's `quest_district` map marker, which the 0.6.2 map-icons OK didn't cover), "class"
+`owner-ok-0.8-welcome-class` (P12, with the Metabot class emblems).
+The owner answered all three on the boards, 2:35–2:40 PM ET, each A (DECISIONS rows), with his own tweaks that Design
+Lead drew: P10 also balances the phone card (Show in the title row, `1c-icon-balance.png`); P13 builds the centred SVG
+check (`2b-check-fix.png`) and a map pin on every Next up quest row, left of the button, long names cut with "…"
+(`2c-map-pin.png`). The go and the looks are independent: ungated items build on the go alone. Optional, only to
+change a default: name a
 different class for 0.8 (default Templar and Cleric).
 
 Not OKs, but only the owner can do them. None blocks a wave:

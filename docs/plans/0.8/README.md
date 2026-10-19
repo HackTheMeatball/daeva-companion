@@ -166,14 +166,25 @@ The same as P3, for the Cleric. It runs after P3 because both edit `pack.js`.
 
 ## P10: Icons sit tight in Next up cards
 
-- **Spec.** `docs/design/0.6.2-icon-fit-mockup.md` (#421): one CSS change in `nextup.css` (`.ns-mhead`). The tile lines up
-  with the title only, and the lines under it run the card's full width.
+- **Problem.** On phones the place icon floats mid-card with empty space above and below it (#421), and the owner asked
+  to balance the card and cut the empty space (2026-10-19 2:39 PM ET).
+- **Result.** Design Lead's round 2, `/mnt/project-files/tracker/mockups/0.8-owner-ok-v2/README.md` §1 option A and its "Owner answers" (`1c-icon-balance.png`), owner A
+  2026-10-19 2:39 PM ET:
+  - on phones (≤ 520 px) the 44 px icon box sits beside the title in the title row (`.ns-mhead`
+    `grid-template-columns: 44px 1fr`; the README has the CSS sketch);
+  - the location and progress lines run the card's full width under it;
+  - Show moves into the title row, so the card is about 30 % shorter (the board's measurements);
+  - desktop is unchanged (the card is already one line).
+- **No-gos.** No change to the icon size (P11 owns it), the card's content or its order on desktop.
 - **Acceptance.**
-  - [ ] The shots match the mockup at both sizes.
+  - [ ] Shots of the Stronghold and Sealed Dungeon cards at 390 px match `1c-icon-balance.png`; the 1500 px shots are
+        unchanged.
+  - [ ] Show stays a 44 px target and keeps its accessible name (a11y suite).
   - [ ] Golden is unchanged.
-- **Files.** `src/styles/cards/nextup.css`.
+- **Files.** `src/styles/cards/nextup.css`, and the Next up card markup only if Show can't move with CSS alone
+  (`src/packs/aion2/cards/nextup-kinds.js`).
 - **Lanes:** nextup.css. **Model:** Sonnet, S (44 min).
-- **After:** `owner-ok-0.8-icon-fit` (met, DECISIONS 2026-10-19).
+- **After:** `owner-ok-0.8-icon-fit` (met), `owner-ok-0.8-icon-box`.
 
 ## P11: Map markers sized by their emblem
 
@@ -191,43 +202,68 @@ The same as P3, for the Cleric. It runs after P3 because both edit `pack.js`.
 
 - **Problem.** A first-time player lands on the Assassin route. The other classes are only under the character name,
   then New character (#333-3, still open in #441).
-- **Result.** Design Lead's mockup, `/mnt/project-files/tracker/mockups/0.8-welcome-class-and-crop-icons/README.md` §1 (DESIGN OK 2026-10-19 6:23 AM ET):
-  - a "Your class" chip row on the welcome's first step, above the buttons, with Assassin pre-selected;
+- **Result.** Design Lead's round 2, `/mnt/project-files/tracker/mockups/0.8-owner-ok-v2/README.md` §3 option A, owner A 2026-10-19 2:35 PM ET:
+  - "Your class" on the welcome's first step, above the buttons: 8 badges, each the class emblem plus its name,
+    4 × 2 on phones and one row of 8 on desktop, a `radiogroup`, Assassin pre-selected;
+  - classes with no guide yet show "Soon" and can't be picked (in 0.8: Sorcerer and Chanter; the list comes from the
+    packs, not hard-coded);
   - the pick carries into Start and into the join form, with no extra screen;
-  - on desktop, one row of chips; on phone, a 2-column grid of 44 px buttons;
-  - a muted hint points to the name button for more characters.
+  - the muted hint points to the name button for more characters.
   An Assassin player still makes one tap.
+- **Art.** The 8 Metabot class emblems, `https://metabot.gg/web/aion2/classes/<class>.webp`, listed on
+  https://metabot.gg/en/aion-2/classes; the owner's class answer is their OK (DECISIONS 2026-10-19). Fetched at plan
+  time by Design Lead; the build commits them as files and adds one `docs/ISSUES.md` row each (source page, file URL,
+  date). A bot build doesn't fetch: if the files aren't in the repo or the project files, it stops and asks.
 - **No-gos.**
   - No save shape change: the class is already a character field.
   - No new step for the Assassin default.
+  - No other new art.
 - **Acceptance.**
-  - [ ] A first visit can start as each offered class (site test).
+  - [ ] A first visit can start as each class that has a guide; a "Soon" class can't be picked (site test).
   - [ ] Assassin start clicks are unchanged.
-  - [ ] Shots at both sizes, in Basic, matching the mockup.
-- **Files.** `src/cards/welcome.html`, `src/cards/welcome.js`, `src/styles` welcome rules, `tests/site.js`, and
-  `tests/a11y.js`.
+  - [ ] Arrow keys move through the radiogroup and skip "Soon" classes (a11y suite).
+  - [ ] Shots at both sizes, in Basic, matching `3-class-picker.png` option A.
+  - [ ] Every emblem file has a provenance row.
+- **Files.** `src/cards/welcome.html`, `src/cards/welcome.js`, `src/styles` welcome rules, `src/assets/icons/*` (the
+  emblems), `docs/ISSUES.md`, `tests/site.js`, and `tests/a11y.js`.
 - **Lanes:** welcome, a11y. **Model:** Sonnet, M (80 min).
 - **After:** `owner-ok-0.8-welcome-class`.
 
-## P13: Regional quest state tiles and the extract flask
+## P13: Regional quest state icons, marking button and the extract flask
 
-- **Problem.** The Next up "Regional quests" card and the extract tip don't show the game's icons.
-- **Result.** Design Lead's mockup, `/mnt/project-files/tracker/mockups/0.8-welcome-class-and-crop-icons/README.md` §2a and §2c (DESIGN OK 2026-10-19 6:23 AM ET):
-  - The regional tile turns dark like the place tiles. "To pick up" shows the owner's teal star crop, and "In progress"
-    shows Metabot's `quest_district`. It reuses the story card's state logic (#409).
-  - The extract flask sits inline at 1.25 em before "beaker icon" in step 3 of the extract tip.
-  Each file gets an ISSUES.md provenance row: the owner screen for the crop, the source page and file URL for
+- **Problem.** The Next up "Regional quests" card and the extract tip don't show the game's icons. A regional quest is
+  marked by clicking its checkbox twice: the first click shows a "−" box (the mixed checkbox state) and nothing says a
+  second click exists.
+- **Result.** Design Lead's round 2, `/mnt/project-files/tracker/mockups/0.8-owner-ok-v2/README.md` §2 option A and
+  §4, with its "Owner answers" (`2b-check-fix.png`, `2c-map-pin.png`), owner A 2026-10-19 2:36–2:40 PM ET:
+  - the state icon replaces the regional quest checkbox, in milestone rows and in the Next up card: the owner's teal
+    star crop for to pick up, Metabot's `quest_district` for in progress, and a green check for turned in, drawn as a 22 px
+    circle with a centred SVG check (never a ✓ text glyph);
+  - one button says the next step: "Picked up", then "Turned in" (green), then a small "Undo";
+  - a one-line legend under "Regional quests" teaches the three icons (15 px check);
+  - in the Next up card every quest row also shows its map pin left of the button, and a long name is cut with "…";
+  - "Not in game yet" / "In my game" stay as they are;
+  - the extract flask sits inline at 1.25 em before "beaker icon" in step 3 of the extract tip (first round, unchanged).
+  Each art file gets an ISSUES.md provenance row: the owner screen for the crop, the source page and file URL for
   `quest_district`.
 - **No-gos.**
-  - No campsite or point-of-interest markers. They are held (§2b) until places carry a kind.
+  - No save change: the same `started` / `checks` data drives it (`aion2QuestSync` in `rows.js`).
+  - Dungeon rows keep their own control: they share the click-twice comment in `rows.js`, not this change.
+  - No campsite or point-of-interest markers. They are held until places carry a kind.
   - No other new art.
 - **Acceptance.**
-  - [ ] Shots of both tile states and the tip at both sizes.
+  - [ ] Each state is reachable from each state's button and Undo returns to the previous one; saves are byte-identical
+        to the checkbox flow for the same steps (save or e2 suite).
+  - [ ] The button's accessible name says the next step; the icons have text alternatives (a11y suite).
+  - [ ] Shots of all three states in a milestone row and in the Next up card, and the tip, at 1500 and 390 px, matching
+        the boards; a long name is cut with "…" at 390 px.
   - [ ] Golden diff limited to the icon references.
   - [ ] Every file has a provenance row.
-- **Files.** `src/assets/icons/*` (the crops and `quest_district`), `src/packs/aion2/cards/nextup-kinds.js`,
-  `src/styles/cards/nextup.css`, the extract tip data, and `docs/ISSUES.md`.
-- **Lanes:** gen, golden, nextup.css (the extract tip data and a new source URL regenerate `DATA_SOURCES.md`). **Model:** Sonnet, M (80 min).
+- **Files.** `src/assets/icons/*` (the crop and `quest_district`), `src/packs/aion2/cards/rows.js`,
+  `src/packs/aion2/cards/areas.js`, `src/styles/packs/aion2/areas.css`, `src/packs/aion2/cards/nextup-kinds.js`,
+  `src/styles/cards/nextup.css`, the extract tip data, `docs/ISSUES.md`, and the tests that click the regional checkbox.
+- **Lanes:** gen, golden, nextup.css, rows (the extract tip data and a new source URL regenerate `DATA_SOURCES.md`).
+  **Model:** Opus, L (120 min): #114 routes L items to Opus.
 - **After:** `owner-ok-0.8-crop-icons`.
 
 ## P14: Key setup and macro steps match the game (#387)
@@ -250,7 +286,7 @@ The same as P3, for the Cleric. It runs after P3 because both edit `pack.js`.
   - [ ] gen and golden are green.
 - **Files.** `src/packs/aion2/cards/build.html`, `src/packs/aion2/requirements.js` (rotKeys), `src/packs/aion2/cards/rows.js`,
   the Assassin `builds.json` `keyStacks`, `claims.json`, and the a11y and golden tests.
-- **Lanes:** gen, golden, build-card, a11y. **Model:** Opus, M (80 min).
+- **Lanes:** gen, golden, build-card, a11y, rows (after P13). **Model:** Opus, M (80 min).
 - **After:** `research-387-macro`. Game Data Check found (c) and (d) need the owner's game (her #387 comment). Her one
   new point on (d): the default K windows for the Ranger, Gladiator and Templar each put a stack on both Q and E, so the
   owner's grid, with Shadowstrike alone on E, may be his own layout. P14 stays in 0.8 only if his two checks come in
