@@ -149,13 +149,18 @@ export default (test, M) => {
     const states = () => ['skills', 'daevanion', 'stigmas'].map(id => { const l = lockOf(M, c, id); return l ? l.text : 'open'; });
     assert.deepEqual(states(), ['Opens at Lv 4', 'Opens after "Urgent Pursuit"', 'Opens at Lv 22'], 'Lv 1');
     assert.deepEqual([lockOf(M, c, 'skills').label, lockOf(M, c, 'skills').key, lockOf(M, c, 'stigmas').key], ['Skills, opens at Lv 4', 'K', null]);
+    /* 0.6.2 P19: levels to go for a level unlock, none for a quest unlock */
+    const left = () => ['skills', 'daevanion', 'stigmas'].map(id => { const l = lockOf(M, c, id); return l ? l.levels : 'open'; });
+    assert.deepEqual(left(), [3, null, 21], 'levels to go at Lv 1');
     c.level = 3; assert.equal(states()[0], 'Opens at Lv 4', 'Lv 3');
     c.level = 4; assert.deepEqual(states(), ['open', 'Opens after "Urgent Pursuit"', 'Opens at Lv 22'], 'Lv 4');
+    assert.deepEqual(left(), ['open', null, 18], 'levels to go at Lv 4');
     c.level = 13; c.quest = quests[up][1];
     assert.equal(states()[1], 'Opens after "Urgent Pursuit"', 'on "Urgent Pursuit", not turned in');
     c.quest = quests[up + 1][1];
     assert.deepEqual(states(), ['open', 'open', 'Opens at Lv 22'], 'after "Urgent Pursuit"');
     c.level = 21; assert.equal(states()[2], 'Opens at Lv 22', 'Lv 21');
+    assert.equal(left()[2], 1, 'levels to go at Lv 21');
     c.level = 22; assert.deepEqual(states(), ['open', 'open', 'open'], 'Lv 22');
   });
 
@@ -198,11 +203,12 @@ export default (test, M) => {
     assert.equal(R.register(spec).opensWith, 'f2:1');
     assert.ok(E.activePack().data.graph.nodes[spec.opensWith], 'f2:1 is in the graph');
     const c = freshChar(E), quests = E.activePack().data.story.quests;
-    assert.deepEqual(lockOf(E, c, 'fakegame-bell'), { text: 'Opens after "Second Wind"', label: 'Bell tower, opens after "Second Wind"', key: 'B' }, 'Lv 1');
+    assert.deepEqual(lockOf(E, c, 'fakegame-bell'), { text: 'Opens after "Second Wind"', label: 'Bell tower, opens after "Second Wind"', key: 'B', levels: null }, 'Lv 1');
     c.level = 2; c.quest = quests[1][1];
     assert.equal(lockOf(E, c, 'fakegame-bell').text, 'Opens after "Second Wind"', 'on "Second Wind", not turned in');
     c.quest = quests[2][1]; c.level = 1;
     assert.equal(lockOf(E, c, 'fakegame-bell').text, 'Opens at Lv 2', '"Second Wind" turned in, Lv 1');
+    assert.equal(lockOf(E, c, 'fakegame-bell').levels, 1, '"Second Wind" turned in, Lv 1: 1 level to go');
     c.level = 2;
     assert.equal(lockOf(E, c, 'fakegame-bell'), null, 'open');
     assert.throws(() => E.cardRegistry().register({ ...spec, name: null }), /needs a root and a name/);

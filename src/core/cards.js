@@ -66,17 +66,20 @@ export function cardRegistry() {
 }
 
 /* A card's lock for this evaluation ev (Ev of src/core/evaluator.js): null when it is open (no opensWith, or its node
-   open), else { text, label, key }: text "Opens at Lv N" / "Opens after "X"" (the first blocker, as blockerChain follows
-   it), label the shell's accessible name ("<name>, opens at Lv N"), key the spec's. An id the graph doesn't hold counts as
-   open, so a typo shows the card instead of hiding it (the conformance suite checks every pack card's id resolves). */
+   open), else { text, label, key, levels }: text "Opens at Lv N" / "Opens after "X"" (the first blocker, as blockerChain
+   follows it), label the shell's accessible name ("<name>, opens at Lv N"), key the spec's, levels the levels still to go
+   when the line is a level unlock (0.6.2 P19; the shell words it from data/ui/lock-texts.json), else null. An id the
+   graph doesn't hold counts as open, so a typo shows the card instead of hiding it (the conformance suite checks every
+   pack card's id resolves). */
 export function cardLock(spec, ev) {
   if (!spec.opensWith) return null;
   const r = ev.node(spec.opensWith);
   if (!r || r.open) return null;
-  const x = blockerChain(r, ev), b = x && x.leaf;
-  const text = x && x.hop ? `Opens after "${x.hop.name}"` : b && b.kind === "level" ? `Opens at Lv ${b.need}`
+  const x = blockerChain(r, ev), b = x && x.leaf, atLv = !(x && x.hop) && b && b.kind === "level";
+  const text = x && x.hop ? `Opens after "${x.hop.name}"` : atLv ? `Opens at Lv ${b.need}`
     : b && b.kind === "story" ? `Opens ${b.turnIn ? "after" : "on"} "${b.name}"` : "Opens later";
-  return { text, label: `${spec.name}, ${text[0].toLowerCase()}${text.slice(1)}`, key: spec.key };
+  const levels = atLv && Number.isFinite(b.have) && b.need > b.have ? b.need - b.have : null;
+  return { text, label: `${spec.name}, ${text[0].toLowerCase()}${text.slice(1)}`, key: spec.key, levels };
 }
 
 const PAGE_CARDS = cardRegistry();

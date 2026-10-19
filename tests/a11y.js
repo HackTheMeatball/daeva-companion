@@ -533,34 +533,42 @@ async function load(p, state, mode) {
     }
   }
 
-  /* ---------- 0.6 P16: cards open as the game unlocks them (owner-ok-S1 Q1: faded in Advanced at desktop width,
-     hidden in Basic and on phones). Skills open at Lv 4, Daevanion after "Urgent Pursuit" ("Cemetery Cleanup" is the
-     quest after it), Stigmas at Lv 22. A locked card is out of the page and the tab order; a faded shell is one named
-     block with nothing focusable. ---------- */
+  /* ---------- 0.6 P16: cards open as the game unlocks them (owner-ok-0.6.2-icons-locks Q1, replacing owner-ok-S1 Q1's
+     "Advanced only": faded at desktop width in Basic and Advanced, hidden on phones in both). Skills open at Lv 4,
+     Daevanion after "Urgent Pursuit" ("Cemetery Cleanup" is the quest after it), Stigmas at Lv 22. A locked card is out of
+     the page and the tab order; a faded shell is one named block with nothing focusable. 0.6.2 P19 (Q2): a level unlock's
+     shell counts down ("18 levels to go" at Lv 4, "1 level to go" at Lv 21), a quest unlock's has no count. ---------- */
   {
     const CARDS = { spCard: 'Skills', dvBox: 'Daevanion', stCard: 'Stigmas' };
     const STAGES = [
-      { id: 'Lv 1', save: { level: 1, checks: {}, open: {} }, open: [] },
-      { id: 'Lv 4', save: { level: 4, checks: {}, open: {} }, open: ['spCard'] },
-      { id: 'after "Urgent Pursuit"', save: { level: 13, quest: 'Cemetery Cleanup', checks: {}, open: {} }, open: ['spCard', 'dvBox'] },
-      { id: 'Lv 22', save: { level: 22, quest: 'Cemetery Cleanup', checks: {}, open: {} }, open: ['spCard', 'dvBox', 'stCard'] },
+      { id: 'Lv 1', save: { level: 1, checks: {}, open: {} }, open: [], left: { spCard: '3 levels to go', dvBox: '', stCard: '21 levels to go' } },
+      { id: 'Lv 4', save: { level: 4, checks: {}, open: {} }, open: ['spCard'], left: { dvBox: '', stCard: '18 levels to go' } },
+      { id: 'after "Urgent Pursuit"', save: { level: 13, quest: 'Cemetery Cleanup', checks: {}, open: {} }, open: ['spCard', 'dvBox'], left: { stCard: '9 levels to go' } },
+      { id: 'Lv 21', save: { level: 21, quest: 'Cemetery Cleanup', checks: {}, open: {} }, open: ['spCard', 'dvBox'], left: { stCard: '1 level to go' } },
+      { id: 'Lv 22', save: { level: 22, quest: 'Cemetery Cleanup', checks: {}, open: {} }, open: ['spCard', 'dvBox', 'stCard'], left: {} },
     ];
-    for (const [width, mode] of [[1500, 'advanced'], [1500, 'basic'], [390, 'advanced']]) for (const st of STAGES) {
-      const faded = width > 860 && mode === 'advanced', id = `locked cards ${st.id} ${mode} ${width}px`;
+    for (const [width, mode] of [[1500, 'advanced'], [1500, 'basic'], [390, 'advanced'], [390, 'basic']]) for (const st of STAGES) {
+      const faded = width > 860, id = `locked cards ${st.id} ${mode} ${width}px`;
       const { ctx, p } = await page(width);
       await load(p, st.save, mode);
       const r = await p.evaluate(ids => ids.map(root => { const el = document.getElementById(root), sh = document.getElementById(root + 'Lock');
         const focusIn = x => !!x && [...x.querySelectorAll('a[href], button, input, select, textarea, summary, [tabindex]')].some(f => f.tabIndex >= 0 && f.offsetParent !== null);
         return { root, shown: el.offsetParent !== null, shell: !!sh && sh.offsetParent !== null, label: sh && sh.getAttribute('aria-label'), role: sh && sh.getAttribute('role'),
-          focus: !el.offsetParent && focusIn(el), shellFocus: focusIn(sh), line: sh ? sh.querySelector('.lockline').textContent : '' }; }), Object.keys(CARDS));
+          focus: !el.offsetParent && focusIn(el), shellFocus: focusIn(sh), line: sh ? sh.querySelector('.lockline').textContent : '',
+          left: sh && sh.querySelector('.lockleft') ? sh.querySelector('.lockleft').textContent : '' }; }), Object.keys(CARDS));
       for (const x of r) {
         const open = st.open.includes(x.root), name = CARDS[x.root];
         if (open) ok(`${id}: ${name} shown, no shell`, x.shown && !x.shell, x);
-        else if (faded) ok(`${id}: ${name} locked: card hidden, faded shell "${x.label}" (role group) with nothing to tab to`,
-          !x.shown && x.shell && x.role === 'group' && x.label.startsWith(name + ', opens ') && /^Opens /.test(x.line) && !x.shellFocus, x);
+        else if (faded) {
+          ok(`${id}: ${name} locked: card hidden, faded shell "${x.label}" (role group) with nothing to tab to`,
+            !x.shown && x.shell && x.role === 'group' && x.label.startsWith(name + ', opens ') && /^Opens /.test(x.line) && !x.shellFocus, x);
+          const want = st.left[x.root];
+          ok(`${id}: ${name} shell count ${want ? `"${want}" (also in its name)` : 'none (quest unlock)'}`,
+            x.left === want && (want ? x.label.endsWith(', ' + want) : !/to go/.test(x.label)), x);
+        }
         else ok(`${id}: ${name} locked: hidden, no shell, nothing of it in the tab order`, !x.shown && !x.shell && !x.focus, x);
       }
-      if (faded && st.id === 'Lv 1') {
+      if (faded && (st.id === 'Lv 1' || st.id === 'Lv 4')) {
         await p.addScriptTag({ content: AXE });
         const ax = await p.evaluate(async () => (await axe.run('.top-grid', { resultTypes: ['violations'] })).violations.map(v => ({ id: v.id, n: v.nodes.length })));
         ok(`${id}: axe on the faded shells, no violations outside the allowlist`, !ax.filter(v => !ALLOW[v.id]).length, ax);
