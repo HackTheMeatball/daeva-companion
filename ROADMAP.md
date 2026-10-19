@@ -879,7 +879,13 @@ regional quest state icons (#409), campsite and point-of-interest map markers (h
 extract action icon. The journal-check crop P20 (#391) already uses under its OK is cleaned up inside P20, in 0.7.0.
 Also carried in: icons sit tight (Design Lead mockup #421, `docs/design/0.6.2-icon-fit-mockup.md`, the owner's
 10:22 PM ET ask): the tile lines up with the title only and the lines under it run the card's full width, one CSS change
-in `nextup.css` (`.ns-mhead`). Needs the owner's typed `0.8 icon fit OK` before the 0.8 pass queues it.
+in `nextup.css` (`.ns-mhead`). Owner OK typed 2026-10-19 1:36 AM ET (DECISIONS `owner-ok-0.8-icon-fit`).
+
+Tracker work, outside the app versions (owner, 2026-10-18 11:27 PM ET; no app version, no #114 line, no app release
+gate): **Tracker: Reports tab** now (Design Lead designs it with placeholder data, distinct phone and desktop layouts;
+Tracker Design builds what she approves; the morning debrief reports land there), then **Tracker 2.0**, a redesign of
+every tab as a side project when it collides with nothing (tab by tab after Design Lead's OK; Tracker Sync checks no
+data is lost).
 
 ### 1.0
 
