@@ -8,7 +8,7 @@ run-name: "${{ inputs.pr && format('Pipeline {0} #{1}', inputs.step, inputs.pr) 
 #   - CI green on a PR's current head, and no review newer than the head  -> a review run (Opus since 2026-10-17; before that Sonnet, Opus for risky paths).
 #   - CI red on the head: a blown time or size budget -> a fix run at once (PR #253); any other first failure -> re-run
 #     the failed jobs once (no model); second failure -> a fix run.
-#   - Latest claude[bot] review says VERDICT: CHANGES, a line-start DESIGN CHANGES, or a Sonnet run said "Needs @claude (Opus)" -> a fix run.
+#   - Latest claude[bot] review says VERDICT: CHANGES, a line-start DESIGN CHANGES (claude[bot] or owner account), or a Sonnet run said "Needs @claude (Opus)" -> a fix run.
 #   - Dispatched with step=merge (kickoff does this after a merge, for a PR that conflicts with main or shares a
 #     serial file with the merged diff) -> a run that merges main into the branch (merge commit), re-records golden only
 #     if the merge needs it, runs npm test and pushes. Opus when golden/mig1 or risky paths are involved. Not a fix round;
@@ -48,7 +48,8 @@ jobs:
     if: |
       github.event_name == 'workflow_dispatch' ||
       (github.event_name == 'workflow_run' && startsWith(github.event.workflow_run.head_branch, 'claude/')) ||
-      (github.event_name == 'issue_comment' && github.event.issue.pull_request && github.event.comment.user.login == 'claude[bot]')
+      (github.event_name == 'issue_comment' && github.event.issue.pull_request && (github.event.comment.user.login == 'claude[bot]' ||
+        (github.event.comment.user.login == github.repository_owner && contains(github.event.comment.body, 'DESIGN CHANGES'))))
     permissions:
       contents: read
       pull-requests: write
@@ -115,6 +116,8 @@ jobs:
             } else if (ev === 'issue_comment') {
               const body = p.comment.body || '';
               prNum = p.issue.number;
+              // The Design Lead may post from the owner's account (auto-merge.yml accepts both); from it only DESIGN CHANGES counts.
+              if (p.comment.user.login !== 'claude[bot]' && !/^DESIGN CHANGES\b/m.test(body)) return none('owner comment needs no step');
               if (/VERDICT:\s*CHANGES/.test(body)) { want = 'fix'; reviewBody = body; reason = `The latest review asked for changes: ${p.comment.html_url}. Fix every blocking finding in it.`; }
               else if (/^\s*Needs @claude \(Opus\):/m.test(body)) { want = 'fix'; reason = `A Sonnet run handed this to Opus: ${p.comment.html_url}.`; }
               // Design Lead's line-start DESIGN CHANGES (the gate auto-merge.yml reads) gets a fix run too (#424 had to be dispatched by hand).
