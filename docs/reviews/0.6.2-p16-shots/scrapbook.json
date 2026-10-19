@@ -1,8 +1,8 @@
 [
   { "case": "milestone-lv10", "kind": "before-after", "title": "Altgard opens: two steps gone",
-    "caption": "At level 10 the guide no longer asks you to use Wisdom Stones you don't have yet, or to claim Daeva Pass rewards. The Cube card appears once a stone source is ticked." },
+    "caption": "At level 10 the guide no longer asks you to use Wisdom Stones you don't have yet, or to claim Daeva Pass rewards." },
   { "case": "milestone-lv9", "kind": "before-after", "title": "No more Save your Enhance Stones step",
     "caption": "At level 9 the Enhancement unlocks milestone drops the Save your Enhance Stones step; that advice now lives in the Extraction tip." },
-  { "case": "tip-extract", "kind": "before-after", "title": "Extraction tip follows the game's screens",
+  { "case": "tip-extract", "kind": "before-after", "title": "Extraction tip matches the game",
     "caption": "The Extraction tip now matches the game's Item Extraction window and says to save Enhance Stones for the belt and the Revelation amulet while leveling." }
 ]
