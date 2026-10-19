@@ -173,6 +173,52 @@ on purpose: the guide shows nothing rather than an unverified value.
   | stigma | Jointstrike: Corrode | <https://metabot.gg/en/aion-2/skills/jointstrike-corrode> |
   | stigma | Flame Blessing | <https://metabot.gg/en/aion-2/skills/flame-blessing> |
 
+- **Cleric skill and stigma icons: fetched before the class ships** (0.8 class research, 2026-10-19 6:31–6:35 AM ET,
+  docs/research/2026-10-cleric-pack.md §7; issue #441 item 4: the Gladiator and Spiritmaster shipped letter squares
+  because their research saved no icon files). All 35 Cleric icons (22 skills, 13 stigmas) came from Metabot under the
+  standing icon OK; none lacks an approved source. They are staged in `docs/research/icons-2026-10-19-cleric/` (256 px
+  WebP → 128 px RGB PNG, Lanczos, like the Assassin's and Ranger's), not wired into the app: the class item moves the
+  ones its plan shows to `src/assets/icons/` (the build fails on an unreferenced PNG there) and sets each record's
+  `icon`. All 35 are kept so any build plan the guide picks has its files.
+
+  | File | Name | Source page | File URL | Retrieved |
+  |---|---|---|---|---|
+  | sk-bolt.png | Bolt | <https://metabot.gg/en/aion-2/skills/bolt> | <https://metabot.gg/web/aion2/skills/17060000.webp> | 2026-10-19 |
+  | sk-chain-of-torment.png | Chain of Torment | <https://metabot.gg/en/aion-2/skills/chain-of-torment> | <https://metabot.gg/web/aion2/skills/17070000.webp> | 2026-10-19 |
+  | sk-condemnation.png | Condemnation | <https://metabot.gg/en/aion-2/skills/condemnation> | <https://metabot.gg/web/aion2/skills/17350000.webp> | 2026-10-19 |
+  | sk-debilitating-mark.png | Debilitating Mark | <https://metabot.gg/en/aion-2/skills/debilitating-mark> | <https://metabot.gg/web/aion2/skills/17080000.webp> | 2026-10-19 |
+  | sk-defiance.png | Defiance | <https://metabot.gg/en/aion-2/skills/defiance-cleric> | <https://metabot.gg/web/aion2/skills/17240000.webp> | 2026-10-19 |
+  | sk-divine-aura.png | Divine Aura | <https://metabot.gg/en/aion-2/skills/divine-aura> | <https://metabot.gg/web/aion2/skills/17150000.webp> | 2026-10-19 |
+  | sk-earths-grace.png | Earth's Grace | <https://metabot.gg/en/aion-2/skills/earths-grace> | <https://metabot.gg/web/aion2/skills/17780000.webp> | 2026-10-19 |
+  | sk-earths-retribution.png | Earth's Retribution | <https://metabot.gg/en/aion-2/skills/earths-retribution> | <https://metabot.gg/web/aion2/skills/17010000.webp> | 2026-10-19 |
+  | sk-empyrean-lords-grace.png | Empyrean Lord's Grace | <https://metabot.gg/en/aion-2/skills/empyrean-lords-grace> | <https://metabot.gg/web/aion2/skills/17730000.webp> | 2026-10-19 |
+  | sk-empyrean-lords-benediction.png | Empyrean Lords' Benediction | <https://metabot.gg/en/aion-2/skills/empyrean-lords-benediction> | <https://metabot.gg/web/aion2/skills/17720000.webp> | 2026-10-19 |
+  | sk-heal-block.png | Heal Block | <https://metabot.gg/en/aion-2/skills/heal-block> | <https://metabot.gg/web/aion2/skills/17760000.webp> | 2026-10-19 |
+  | sk-healing-enhancement.png | Healing Enhancement | <https://metabot.gg/en/aion-2/skills/healing-enhancement> | <https://metabot.gg/web/aion2/skills/17740000.webp> | 2026-10-19 |
+  | sk-healing-light.png | Healing Light | <https://metabot.gg/en/aion-2/skills/healing-light> | <https://metabot.gg/web/aion2/skills/17100000.webp> | 2026-10-19 |
+  | sk-immortal-veil.png | Immortal Veil | <https://metabot.gg/en/aion-2/skills/immortal-veil> | <https://metabot.gg/web/aion2/skills/17750000.webp> | 2026-10-19 |
+  | sk-judgment-thunder.png | Judgment Thunder | <https://metabot.gg/en/aion-2/skills/judgment-thunder> | <https://metabot.gg/web/aion2/skills/17040000.webp> | 2026-10-19 |
+  | sk-light-of-regeneration.png | Light of Regeneration | <https://metabot.gg/en/aion-2/skills/light-of-regeneration> | <https://metabot.gg/web/aion2/skills/17090000.webp> | 2026-10-19 |
+  | sk-lightning-strike-scattershot.png | Lightning Strike Scattershot | <https://metabot.gg/en/aion-2/skills/lightning-strike-scattershot> | <https://metabot.gg/web/aion2/skills/17370000.webp> | 2026-10-19 |
+  | sk-prayer-of-concentration.png | Prayer of Concentration | <https://metabot.gg/en/aion-2/skills/prayer-of-concentration> | <https://metabot.gg/web/aion2/skills/17770000.webp> | 2026-10-19 |
+  | sk-radiant-benediction.png | Radiant Benediction | <https://metabot.gg/en/aion-2/skills/radiant-benediction> | <https://metabot.gg/web/aion2/skills/17800000.webp> | 2026-10-19 |
+  | sk-radiant-recovery.png | Radiant Recovery | <https://metabot.gg/en/aion-2/skills/radiant-recovery> | <https://metabot.gg/web/aion2/skills/17120000.webp> | 2026-10-19 |
+  | sk-survival-willpower.png | Survival Willpower | <https://metabot.gg/en/aion-2/skills/survival-willpower-cleric> | <https://metabot.gg/web/aion2/skills/17790000.webp> | 2026-10-19 |
+  | sk-warm-benediction.png | Warm Benediction | <https://metabot.gg/en/aion-2/skills/warm-benediction> | <https://metabot.gg/web/aion2/skills/17710000.webp> | 2026-10-19 |
+  | st-absolution.png | Absolution | <https://metabot.gg/en/aion-2/skills/absolution> | <https://metabot.gg/web/aion2/skills/17290000.webp> | 2026-10-19 |
+  | st-assault-mark.png | Assault Mark | <https://metabot.gg/en/aion-2/skills/assault-mark> | <https://metabot.gg/web/aion2/skills/17700000.webp> | 2026-10-19 |
+  | st-benevolence.png | Benevolence | <https://metabot.gg/en/aion-2/skills/benevolence> | <https://metabot.gg/web/aion2/skills/17160000.webp> | 2026-10-19 |
+  | st-earth-punishment.png | Earth Punishment | <https://metabot.gg/en/aion-2/skills/earth-punishment> | <https://metabot.gg/web/aion2/skills/17400000.webp> | 2026-10-19 |
+  | st-light-of-protection.png | Light of Protection | <https://metabot.gg/en/aion-2/skills/light-of-protection> | <https://metabot.gg/web/aion2/skills/17410000.webp> | 2026-10-19 |
+  | st-noble-aura.png | Noble Aura | <https://metabot.gg/en/aion-2/skills/noble-aura> | <https://metabot.gg/web/aion2/skills/17440000.webp> | 2026-10-19 |
+  | st-power-burst.png | Power Burst | <https://metabot.gg/en/aion-2/skills/power-burst> | <https://metabot.gg/web/aion2/skills/17280000.webp> | 2026-10-19 |
+  | st-prayer-of-amplification.png | Prayer of Amplification | <https://metabot.gg/en/aion-2/skills/prayer-of-amplification> | <https://metabot.gg/web/aion2/skills/17430000.webp> | 2026-10-19 |
+  | st-root.png | Root | <https://metabot.gg/en/aion-2/skills/root> | <https://metabot.gg/web/aion2/skills/17190000.webp> | 2026-10-19 |
+  | st-salvation.png | Salvation | <https://metabot.gg/en/aion-2/skills/salvation> | <https://metabot.gg/web/aion2/skills/17270000.webp> | 2026-10-19 |
+  | st-summon-resurrection.png | Summon Resurrection | <https://metabot.gg/en/aion-2/skills/summon-resurrection> | <https://metabot.gg/web/aion2/skills/17390000.webp> | 2026-10-19 |
+  | st-voice-of-doom.png | Voice of Doom | <https://metabot.gg/en/aion-2/skills/voice-of-doom> | <https://metabot.gg/web/aion2/skills/17300000.webp> | 2026-10-19 |
+  | st-yustiels-power.png | Yustiel's Power | <https://metabot.gg/en/aion-2/skills/yustiels-power> | <https://metabot.gg/web/aion2/skills/17420000.webp> | 2026-10-19 |
+
 - **Spiritmaster rotation: one source, not shown** (0.7 P4, #347). Metabot's leveling build gives a rotation (one site,
   `data/research/spiritmaster-builds-metabot-2026-10.csv`), but the Build drawer's Rotation section is written for the
   Assassin's keys, so the guide shows none. The three skills that fire only on a condition are a Build plan step instead

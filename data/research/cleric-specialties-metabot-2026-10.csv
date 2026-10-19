@@ -1,0 +1,113 @@
+id,skill,n,skillLv,text,build,checkedAt,status,page_url
+spec:cleric:absolution:1,stigma:cleric:absolution,1,5,-30s cooldown,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/absolution
+spec:cleric:absolution:2,stigma:cleric:absolution,2,10,Removes all debuffs,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/absolution
+spec:cleric:absolution:3,stigma:cleric:absolution,3,15,+5% HP restored,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/absolution
+spec:cleric:absolution:4,stigma:cleric:absolution,4,20,Restores 1.5% HP every 2s for 10s,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/absolution
+spec:cleric:assault-mark:1,stigma:cleric:assault-mark,1,5,+20% Attack for 5s on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/assault-mark
+spec:cleric:assault-mark:2,stigma:cleric:assault-mark,2,10,500 MP damage on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/assault-mark
+spec:cleric:assault-mark:3,stigma:cleric:assault-mark,3,15,+10m range,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/assault-mark
+spec:cleric:assault-mark:4,stigma:cleric:assault-mark,4,20,+20% Root Chance,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/assault-mark
+spec:cleric:benevolence:1,stigma:cleric:benevolence,1,5,+10s duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/benevolence
+spec:cleric:benevolence:2,stigma:cleric:benevolence,2,10,Restores 200 Stamina every 5s for the duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/benevolence
+spec:cleric:benevolence:3,stigma:cleric:benevolence,3,15,Restores 2% HP every 5s for the duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/benevolence
+spec:cleric:benevolence:4,stigma:cleric:benevolence,4,20,Cleansing effect every 5s for the duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/benevolence
+spec:cleric:bolt:1,skill:cleric:bolt,1,8,30% chance to inflict Stun for 3s when fully charged,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/bolt
+spec:cleric:bolt:2,skill:cleric:bolt,2,8,+300 Skill Accuracy,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/bolt
+spec:cleric:bolt:3,skill:cleric:bolt,3,8,+30% Skill Speed,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/bolt
+spec:cleric:bolt:4,skill:cleric:bolt,4,12,Up to +20% damage when less targets hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/bolt
+spec:cleric:bolt:5,skill:cleric:bolt,5,16,Critical Hit on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/bolt
+spec:cleric:chain-of-torment:1,skill:cleric:chain-of-torment,1,8,Slows target for 5s,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/chain-of-torment
+spec:cleric:chain-of-torment:2,skill:cleric:chain-of-torment,2,8,+3s Damage over Time,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/chain-of-torment
+spec:cleric:chain-of-torment:3,skill:cleric:chain-of-torment,3,8,Has a 20% chance to inflict Knockdown on the target for 3s,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/chain-of-torment
+spec:cleric:chain-of-torment:4,skill:cleric:chain-of-torment,4,12,+10% PvE Damage Tolerance reduction and +5% PvP Damage Tolerance reduction,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/chain-of-torment
+spec:cleric:chain-of-torment:5,skill:cleric:chain-of-torment,5,16,Ignores Block and Evasion and reduces Damage over Time interval by 50%,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/chain-of-torment
+spec:cleric:condemnation:1,skill:cleric:condemnation,1,8,Restores 100 MP on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/condemnation
+spec:cleric:condemnation:2,skill:cleric:condemnation,2,8,Up to +12% damage when less targets hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/condemnation
+spec:cleric:condemnation:3,skill:cleric:condemnation,3,8,20% chance to inflict Root for 3s,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/condemnation
+spec:cleric:condemnation:4,skill:cleric:condemnation,4,12,Resets cooldown on landing a Critical Hit with [Condemnation],0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/condemnation
+spec:cleric:condemnation:5,skill:cleric:condemnation,5,16,Multi-Hit on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/condemnation
+spec:cleric:debilitating-mark:1,skill:cleric:debilitating-mark,1,8,Removes MP Consumed and restores 150 MP,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/debilitating-mark
+spec:cleric:debilitating-mark:2,skill:cleric:debilitating-mark,2,8,-15% target Defense for duration of Damage over Time,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/debilitating-mark
+spec:cleric:debilitating-mark:3,skill:cleric:debilitating-mark,3,8,Has a 20% chance to inflict Stun on the target for 3s,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/debilitating-mark
+spec:cleric:debilitating-mark:4,skill:cleric:debilitating-mark,4,12,+10% PvE Damage Boost reduction and +5% PvP Damage Boost reduction,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/debilitating-mark
+spec:cleric:debilitating-mark:5,skill:cleric:debilitating-mark,5,16,Ignores Block and Evasion and reduces Damage over Time interval by 50%,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/debilitating-mark
+spec:cleric:defiance:1,skill:cleric:defiance,1,8,Adds [Blessing of Regeneration] Chain Skill,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/defiance-cleric
+spec:cleric:defiance:2,skill:cleric:defiance,2,8,"Restores 1,000 Stamina on using [Defiance]",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/defiance-cleric
+spec:cleric:defiance:3,skill:cleric:defiance,3,8,Restores 10% HP on using [Defiance],0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/defiance-cleric
+spec:cleric:defiance:4,skill:cleric:defiance,4,12,+2s Tenacity duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/defiance-cleric
+spec:cleric:defiance:5,skill:cleric:defiance,5,16,+50% PvE Damage Tolerance and +25% PvP Damage Tolerance for Tenacity duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/defiance-cleric
+spec:cleric:divine-aura:1,skill:cleric:divine-aura,1,8,-40% Move Speed for 3s to up to 4 enemies within 4m of the Aura,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/divine-aura
+spec:cleric:divine-aura:2,skill:cleric:divine-aura,2,8,Changes to AoE Skill,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/divine-aura
+spec:cleric:divine-aura:3,skill:cleric:divine-aura,3,8,+50% [Divine Aura] attacking speed,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/divine-aura
+spec:cleric:divine-aura:4,skill:cleric:divine-aura,4,12,+3s [Divine Aura] duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/divine-aura
+spec:cleric:divine-aura:5,skill:cleric:divine-aura,5,16,-10s cooldown,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/divine-aura
+spec:cleric:earth-punishment:1,stigma:cleric:earth-punishment,1,5,[Condemnation] lands as a Critical Hit on targets afflicted with [Earth Punishment],0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/earth-punishment
+spec:cleric:earth-punishment:2,stigma:cleric:earth-punishment,2,10,+10% Double Chance to caster and +5% to party members from [Earth's Blessing],0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/earth-punishment
+spec:cleric:earth-punishment:3,stigma:cleric:earth-punishment,3,15,+10% Attack and Defense to caster and +5% to party members from [Earth's Blessing],0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/earth-punishment
+spec:cleric:earth-punishment:4,stigma:cleric:earth-punishment,4,20,+10s [Earth Punishment] and [Earth's Blessing] duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/earth-punishment
+spec:cleric:earths-retribution:1,skill:cleric:earths-retribution,1,8,+20% MP restored,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/earths-retribution
+spec:cleric:earths-retribution:2,skill:cleric:earths-retribution,2,8,+20% [Discharge] Chain Skill trigger chance,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/earths-retribution
+spec:cleric:earths-retribution:3,skill:cleric:earths-retribution,3,8,+50% Multi-Hit on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/earths-retribution
+spec:cleric:earths-retribution:4,skill:cleric:earths-retribution,4,12,-7s [Bolt] cooldown on landing [Discharge],0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/earths-retribution
+spec:cleric:earths-retribution:5,skill:cleric:earths-retribution,5,16,Ignores Block and Evasion,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/earths-retribution
+spec:cleric:healing-light:1,skill:cleric:healing-light,1,8,+2 consecutive uses,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/healing-light
+spec:cleric:healing-light:2,skill:cleric:healing-light,2,8,+20% amount healed when HP is 50% or less,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/healing-light
+spec:cleric:healing-light:3,skill:cleric:healing-light,3,8,50% chance to remove 1 debuff,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/healing-light
+spec:cleric:healing-light:4,skill:cleric:healing-light,4,12,+2% HP restored,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/healing-light
+spec:cleric:healing-light:5,skill:cleric:healing-light,5,16,-2s cooldown,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/healing-light
+spec:cleric:judgment-thunder:1,skill:cleric:judgment-thunder,1,8,-20% MP consumed,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/judgment-thunder
+spec:cleric:judgment-thunder:2,skill:cleric:judgment-thunder,2,8,Deals up to 12% more damage when less targets are hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/judgment-thunder
+spec:cleric:judgment-thunder:3,skill:cleric:judgment-thunder,3,8,-10% enemy Combat Speed for 5s on landing [Divine Punishment],0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/judgment-thunder
+spec:cleric:judgment-thunder:4,skill:cleric:judgment-thunder,4,12,10% chance to inflict Root for 2s on landing [Divine Punishment],0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/judgment-thunder
+spec:cleric:judgment-thunder:5,skill:cleric:judgment-thunder,5,16,Activates [Divine Punishment] 1 extra time,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/judgment-thunder
+spec:cleric:light-of-protection:1,stigma:cleric:light-of-protection,1,5,+10% Incoming Heal,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/light-of-protection
+spec:cleric:light-of-protection:2,stigma:cleric:light-of-protection,2,10,+100 Accuracy,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/light-of-protection
+spec:cleric:light-of-protection:3,stigma:cleric:light-of-protection,3,15,+10% Max HP,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/light-of-protection
+spec:cleric:light-of-protection:4,stigma:cleric:light-of-protection,4,20,+10% Perfect Chance,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/light-of-protection
+spec:cleric:light-of-regeneration:1,skill:cleric:light-of-regeneration,1,8,+5% Defense while healing,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/light-of-regeneration
+spec:cleric:light-of-regeneration:2,skill:cleric:light-of-regeneration,2,8,+20% amount healed when HP is 50% or less,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/light-of-regeneration
+spec:cleric:light-of-regeneration:3,skill:cleric:light-of-regeneration,3,8,+5% Incoming Heal during healing,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/light-of-regeneration
+spec:cleric:light-of-regeneration:4,skill:cleric:light-of-regeneration,4,12,+5% Move Speed during healing,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/light-of-regeneration
+spec:cleric:light-of-regeneration:5,skill:cleric:light-of-regeneration,5,16,+5% PvE Damage Tolerance and +2.5% PvP Damage Tolerance during healing,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/light-of-regeneration
+spec:cleric:lightning-strike-scattershot:1,skill:cleric:lightning-strike-scattershot,1,8,"Absorbs 500, 500% HP",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/lightning-strike-scattershot
+spec:cleric:lightning-strike-scattershot:2,skill:cleric:lightning-strike-scattershot,2,8,Restores 120 MP,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/lightning-strike-scattershot
+spec:cleric:lightning-strike-scattershot:3,skill:cleric:lightning-strike-scattershot,3,8,Changes to mobile skill,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/lightning-strike-scattershot
+spec:cleric:lightning-strike-scattershot:4,skill:cleric:lightning-strike-scattershot,4,12,Multi-Hit on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/lightning-strike-scattershot
+spec:cleric:lightning-strike-scattershot:5,skill:cleric:lightning-strike-scattershot,5,16,-1s all skill cooldowns on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/lightning-strike-scattershot
+spec:cleric:noble-aura:1,stigma:cleric:noble-aura,1,5,+200 Aura Critical Hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/noble-aura
+spec:cleric:noble-aura:2,stigma:cleric:noble-aura,2,10,+20 damage to targets afflicted with Debilitating Mark,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/noble-aura
+spec:cleric:noble-aura:3,stigma:cleric:noble-aura,3,15,+30% damage to targets with Incapacitated Immunity,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/noble-aura
+spec:cleric:noble-aura:4,stigma:cleric:noble-aura,4,20,-1s Aura attack cooldown,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/noble-aura
+spec:cleric:power-burst:1,stigma:cleric:power-burst,1,5,+20% Skill Speed,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/power-burst
+spec:cleric:power-burst:2,stigma:cleric:power-burst,2,10,Critical Hit on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/power-burst
+spec:cleric:power-burst:3,stigma:cleric:power-burst,3,15,75% chance to inflict Knock Back,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/power-burst
+spec:cleric:power-burst:4,stigma:cleric:power-burst,4,20,75% chance to inflict Stun for 3s,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/power-burst
+spec:cleric:prayer-of-amplification:1,stigma:cleric:prayer-of-amplification,1,5,+20% PvE Damage Boost and +10% PvP Damage Boost,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/prayer-of-amplification
+spec:cleric:prayer-of-amplification:2,stigma:cleric:prayer-of-amplification,2,10,x1.5 [Empyrean Lord's Grace] effect for the duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/prayer-of-amplification
+spec:cleric:prayer-of-amplification:3,stigma:cleric:prayer-of-amplification,3,15,x1.5 [Earth's Grace] effect for the duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/prayer-of-amplification
+spec:cleric:prayer-of-amplification:4,stigma:cleric:prayer-of-amplification,4,20,+15% additional Attack,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/prayer-of-amplification
+spec:cleric:radiant-recovery:1,skill:cleric:radiant-recovery,1,8,Removes up to 2 debuffs,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/radiant-recovery
+spec:cleric:radiant-recovery:2,skill:cleric:radiant-recovery,2,8,+1 consecutive use,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/radiant-recovery
+spec:cleric:radiant-recovery:3,skill:cleric:radiant-recovery,3,8,-3s cooldown,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/radiant-recovery
+spec:cleric:radiant-recovery:4,skill:cleric:radiant-recovery,4,12,+10% Incoming Heal for 10s,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/radiant-recovery
+spec:cleric:radiant-recovery:5,skill:cleric:radiant-recovery,5,16,+5% HP restored,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/radiant-recovery
+spec:cleric:root:1,stigma:cleric:root,1,5,Changes to mobile skill,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/root
+spec:cleric:root:2,stigma:cleric:root,2,10,+2s Root duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/root
+spec:cleric:root:3,stigma:cleric:root,3,15,+25% Root chance,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/root
+spec:cleric:root:4,stigma:cleric:root,4,20,x2 Damage over Time on Root targets,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/root
+spec:cleric:salvation:1,stigma:cleric:salvation,1,5,+100% Incoming Heal,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/salvation
+spec:cleric:salvation:2,stigma:cleric:salvation,2,10,Restores 20% of Max HP at the end of [Salvation],0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/salvation
+spec:cleric:salvation:3,stigma:cleric:salvation,3,15,Grants base effect of [Salvation] to the party member with the lowest HP,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/salvation
+spec:cleric:salvation:4,stigma:cleric:salvation,4,20,Triggers [Salvation] when afflicted with Impact-type status,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/salvation
+spec:cleric:summon-resurrection:1,stigma:cleric:summon-resurrection,1,5,-1s casting time,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/summon-resurrection
+spec:cleric:summon-resurrection:2,stigma:cleric:summon-resurrection,2,10,Invincible for 3s after resurrection,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/summon-resurrection
+spec:cleric:summon-resurrection:3,stigma:cleric:summon-resurrection,3,15,Restores 20% of Max HP,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/summon-resurrection
+spec:cleric:summon-resurrection:4,stigma:cleric:summon-resurrection,4,20,Invincible for 5s after resurrection,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/summon-resurrection
+spec:cleric:voice-of-doom:1,stigma:cleric:voice-of-doom,1,5,Up to +20% damage when more targets hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/voice-of-doom
+spec:cleric:voice-of-doom:2,stigma:cleric:voice-of-doom,2,10,Removes Protective Shields on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/voice-of-doom
+spec:cleric:voice-of-doom:3,stigma:cleric:voice-of-doom,3,15,-200 Critical Hit Resist for duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/voice-of-doom
+spec:cleric:voice-of-doom:4,stigma:cleric:voice-of-doom,4,20,-50% Damage over Time intervals,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/voice-of-doom
+spec:cleric:yustiels-power:1,stigma:cleric:yustiels-power,1,5,10% Max HP Protective Shield,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/yustiels-power
+spec:cleric:yustiels-power:2,stigma:cleric:yustiels-power,2,10,"+100 Block, Evasion",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/yustiels-power
+spec:cleric:yustiels-power:3,stigma:cleric:yustiels-power,3,15,+20% Status Effect Resist,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/yustiels-power
+spec:cleric:yustiels-power:4,stigma:cleric:yustiels-power,4,20,+10% PvE Damage Tolerance increase and +5% PvP Damage Tolerance increase,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/yustiels-power
