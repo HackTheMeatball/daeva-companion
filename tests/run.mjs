@@ -37,6 +37,7 @@
      automerge  Node, no browser: auto-merge.yml's design check on fixtures; a PR with review shots never merges without
               the Design Lead's DESIGN OK on its head (tests/automerge.mjs; < 1 s). In the `checks` shard
      schema   every v2 data file and schema example against data/schema/ (ajv Ajv2020, strict), then the generator's data checks
+              and the rules and decisions ledger (tests/ledger.mjs)
      a11y     axe-core at 390 / 1500 px (fresh / Lv 27 / Lv 45 x Basic / Advanced; fails on rules outside its allowlist),
               spoken names, reduced motion after Level up, Escape on "i" popovers, hit areas vs neighbours
      perf     update() median < 15 ms at e1's and regress's states (non-blocking: not in the default run or ci-ok) */
