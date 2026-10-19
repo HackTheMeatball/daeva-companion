@@ -26,3 +26,9 @@ favicon, icons, manifest theme colour); the app keeps its plum palette until the
 
 ## Standing notes
 - The owner reads on a phone (iOS) a lot; check mobile first.
+- **Icon source order** (Isaac, 2026-10-18 8:57 and 10:22 PM ET): every game icon is looked up first by Game Data Check
+  (Gretchen) on approved sources (Metabot first). Isaac's own crops are used only when that check finds no better copy.
+  A crop that is used gets its background removed (transparent PNG) and is centred in its icon box, like any other icon.
+- **No dead space around icons** (Isaac, 2026-10-18 10:22 PM ET): an icon tile lines up with the title it belongs to,
+  and every line under the title runs the card's full width; the tile never sits vertically centred beside a tall text
+  block. Mockup: `docs/design/0.6.2-icon-fit-mockup.md`. Applies to every card we build (app and tracker).
