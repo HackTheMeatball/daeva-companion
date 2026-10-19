@@ -1,0 +1,8 @@
+[
+  { "case": "sealed-card-390", "kind": "before-after", "title": "Sealed Dungeon card: the game's marker",
+    "caption": "At Lv 12 the Sealed Dungeon card shows the game's map marker on a dark tile, and the purple Kibelisk crest before the nearest Kibelisk." },
+  { "case": "stronghold-card-1500", "kind": "before-after", "title": "Stronghold card: the game's marker",
+    "caption": "The Stronghold card now shows the game's campfire marker on a dark tile instead of a castle on red." },
+  { "case": "dungeons-card-1500", "kind": "before-after", "title": "Dungeons card markers and feathers",
+    "caption": "Both headings carry their map marker, and each region shows its Empyrean Trace count with a feather, so long region names stay on one line." }
+]

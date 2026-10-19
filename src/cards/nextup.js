@@ -141,8 +141,11 @@ function renderNow() {
   /* on a phone the "i" opens the subline instead of following the title (at the end of either it wrapped onto a line of its own) */
   /* the pack's inline item icons on the card's item links (now.items) */
   const itm = nowR()["now.items"] || (s => s);
+  /* the pack's last pass over a whole card's markup (now.card, 0.6.2 P21: the pack's inline place markers) */
+  const cardPass = nowR()["now.card"] || (s => s);
   /* a step card's how line sits under the title (0.6.2 P17), so its "i" follows the title on a phone too */
-  const card = (a, i) => { const pb = splitBar(a), sub = [a.sub, pb.lbl ? `<span class="nw">${pb.lbl}</span>` : ""].filter(Boolean).join(" · "), inT = !phone || a.how, ti = inT ? info(a, i) : "", pi = inT ? "" : info(a, i);
+  const card = (a, i) => cardPass(cardHTML(a, i));
+  const cardHTML = (a, i) => { const pb = splitBar(a), sub = [a.sub, pb.lbl ? `<span class="nw">${pb.lbl}</span>` : ""].filter(Boolean).join(" · "), inT = !phone || a.how, ti = inT ? info(a, i) : "", pi = inT ? "" : info(a, i);
     return `<article class="ns-card${i === nsCur ? " first ns-primary nsbox" : ""}${a.later ? " later" : ""}${pb.bar ? " has-bbar" : ""}${nsAnim ? " rise" : ""}">` +
     bandAt(i) + `<div class="ns-mhead"><div class="num ns-num"${a.icoLabel ? ` role="img" aria-label="${a.icoLabel}"` : ` aria-hidden="true"`}>${a.ico}</div><div class="title"><h3>${itm(a.t)}${ti}</h3>${a.how ? `<p class="ns-how">${itm(a.how)}</p>` : ""}${sub || pi ? `<p>${pi}${sub}</p>` : ""}${a.row || ""}${a.info ? `<span class="ns-info" id="nsInfo${i}">${itm(a.info)}</span>` : ""}</div>` +
     (a.extra ? `<div class="ns-extra">${a.extra}</div>` : "") + `<div class="meta">${control(a, i)}</div></div>${a.quest ? nsObjHTML() : ""}${pb.bar ? `<div class="ns-bbar">${pb.bar}</div>` : ""}</article>`; };

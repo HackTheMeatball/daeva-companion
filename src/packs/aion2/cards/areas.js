@@ -7,6 +7,7 @@ import { T, itemLine } from "../data/markup.js";
 import { AREA_BANDS, AREA_ITEMS, bandOf } from "../catalog.js";
 import { areaLater, areaOpen } from "../requirements.js";
 import { mapFocus } from "./maps.js";
+import { mapMk } from "./shared.js";
 import { aion2State as state, aion2Save as save, aion2Update as update, aion2SMOOTH as SMOOTH, aion2DerivedBox as derivedBox } from "./page.js";
 
 let areaSel = null; /* the band dropdown (#areaSel), looked up at mount */
@@ -16,6 +17,8 @@ let areaSel = null; /* the band dropdown (#areaSel), looked up at mount */
 function defaultBand() {
   return String(AREA_BANDS.filter(b => b <= char(state).level).pop() || AREA_BANDS[0]);
 }
+/* a section heading's map marker, 18 px before its label (0.6.2 P21); the rows under it carry none */
+const hdMk = title => ({ "Sealed Dungeons": mapMk("sealed", "mk-map hd"), Strongholds: mapMk("stronghold", "mk-map hd") })[title] || "";
 const SH_LV = it => it.lo === 1 && it.hi === 45 ? "any level" : it.lo === it.hi ? `Lv ${it.lo}` : `Lv ${it.lo}–${it.hi}`;
 /* One entry point for every "show in Areas" link on the page: open the card, pick the band, scroll to it. */
 function goAreas(band) {
@@ -69,19 +72,22 @@ function renderAreas() {
   const zoneHead = (z, g, open) => {
     const gd = g.filter(x => ad(x)).length, tr = ZONE_TRACES[z], rk = state.areaLv + "|" + z;
     return `<li class="zone-h${gd === g.length ? " done" : ""}"><button type="button" class="zone-btn" data-zone="${rk}" aria-expanded="${open}"><span class="zchev" aria-hidden="true">${open ? "▾" : "▸"}</span>${z}</button>` +
-      `${tr ? `<a class="ztr" href="https://metabot.gg/en/aion-2/map/altgard/empyrean-traces" target="_blank" rel="noopener" title="${tr} Empyrean Traces (feathers) in this zone: grab them while you're here">${tr} traces</a>` : ""}<span class="zn">${gd === g.length ? "✓ " : ""}${gd}/${g.length}</span></li>`;
+      /* the count and the feather marker (0.6.2 P21): the icon stands in for the word, kept as its label and tooltip */
+      `${tr ? `<a class="ztr" href="https://metabot.gg/en/aion-2/map/altgard/empyrean-traces" target="_blank" rel="noopener" title="${tr} Empyrean Traces (feathers) in this zone: grab them while you're here">${tr} ${mapMk("trace", "mk-map", "Empyrean Traces")}</a>` : ""}<span class="zn">${gd === g.length ? "✓ " : ""}${gd}/${g.length}</span></li>`;
   };
-  const sec = (cls, title, tip, note, list, grouped) => {
+  /* the feather's label once for touch screens (no hover), under the reward line, while a region shows a trace count */
+  const legend = `<li class="sh-note mk-legend">${mapMk("trace")}Empyrean Traces in each region</li>`;
+  const sec = (cls, title, tip, note, list, grouped, traces) => {
     if (!list.length) return "";
     const d = list.filter(x => ad(x)).length;
     const body = grouped ? [...new Set(list.map(x => x.area))].map(z => { const g = list.filter(x => x.area === z), open = zoneOpen(z, g); return g.some(vis) ? zoneHead(z, g, open) + (open ? g.map(row).join("") : "") : ""; }).join("") : list.map(row).join("");
-    return `<li class="asec ${cls}"><span class="asec-t">${title} ${T("", tip, `What are ${title}?`)}</span><span class="asec-n${d === list.length ? " done" : ""}">${d}/${list.length}</span></li><li class="sh-note">${note}</li>` +
+    return `<li class="asec ${cls}"><span class="asec-t">${hdMk(title)}${title} ${T("", tip, `What are ${title}?`)}</span><span class="asec-n${d === list.length ? " done" : ""}">${d}/${list.length}</span></li><li class="sh-note">${note}</li>${traces ? legend : ""}` +
       (body || `<li class="sh-note ok">All cleared${doneOn ? "" : " (hidden)"}.</li>`);
   };
   if (allSh) {
     const bands = [...new Set(shs.map(bandOf))];
     document.getElementById("areaList").innerHTML =
-      `<li class="asec sh"><span class="asec-t">Strongholds ${T("", "stronghold", "What are Strongholds?")}</span><span class="asec-n${shs.every(x => ad(x)) ? " done" : ""}">${shs.filter(x => ad(x)).length}/${shs.length}</span></li><li class="sh-note">${SH_REWARD} each</li>` +
+      `<li class="asec sh"><span class="asec-t">${hdMk("Strongholds")}Strongholds ${T("", "stronghold", "What are Strongholds?")}</span><span class="asec-n${shs.every(x => ad(x)) ? " done" : ""}">${shs.filter(x => ad(x)).length}/${shs.length}</span></li><li class="sh-note">${SH_REWARD} each</li>` +
       bands.map(bd => { const g = shs.filter(x => bandOf(x) === bd), d = g.filter(x => ad(x)).length;
         if (!g.some(vis)) return "";
         return `<li class="shband${d === g.length ? " done" : ""}"><span>Lv ${bd}${bd > lv ? " (later)" : ""}</span><span>${d}/${g.length}</span></li>` + g.map(row).join(""); }).join("");
@@ -90,7 +96,7 @@ function renderAreas() {
   }
   document.getElementById("areaList").innerHTML =
     sec("sh", "Strongholds", "stronghold", SH_REWARD + " each", shs, false) +
-    sec("sd" + (shs.length ? " split" : ""), "Sealed Dungeons", "hideout", `<span class="itl">${itemLine(SD_REWARD)} each</span>`, sds, true);
+    sec("sd" + (shs.length ? " split" : ""), "Sealed Dungeons", "hideout", `<span class="itl">${itemLine(SD_REWARD)} each</span>`, sds, true, sds.some(x => ZONE_TRACES[x.area]));
   document.querySelectorAll("#areaList li.running input[data-k]").forEach(i => { i.indeterminate = true; });
   derive();
 }
