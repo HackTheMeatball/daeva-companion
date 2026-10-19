@@ -19,7 +19,8 @@ no running out before 1.0: 1.0 ships when its scope is done.
 
 - **Minor (0.X.0)**: a theme, i.e. one or more related objectives. New ideas join a theme that fits before they start a
   new one.
-- **Patch (0.X.Y)**: fixes, data corrections, small polish and upkeep. No new features.
+- **Patch (0.X.Y)**: fixes, data corrections, small polish and upkeep. No new features. New looks (what a player
+  sees changes) go in the next minor unless the owner says "now" for that item (owner, 2026-10-18 10:40 PM ET, DECISIONS).
 - **Releasing**: bump `version` in `package.json` and add a `## X.Y.Z` section to CHANGELOG.md in the same commit. After
   tests and the deploy pass on `main`, CI tags `vX.Y.Z` and publishes the GitHub Release with that section as its notes.
   CI fails early if the version has no CHANGELOG section.
@@ -702,6 +703,12 @@ Contents: F1 #366, F2, F3, F4 #362, F5 #370, data fixes #361, #363, #364 (#358);
 
 ### 0.6.2 — the owner-gated 0.6 leftovers
 
+**Folded into 0.7.0 (owner rule, 2026-10-18 10:40 PM ET: "New looks ship in the next minor by default; a patch only
+when I say now").** There is no 0.6.2 release: the items below keep their issue titles (so their owner-ok tokens still
+parse) and are listed in the 0.7.0 CHANGELOG. Main already carries merged 0.7 work, so a 0.6.2 cut from main would have
+shipped it too. The Release Planner sends `PRE-RELEASE CHECK 0.7.0` only after these have merged as well, which holds
+Release 0.7.0 (#350) for them. The text below is kept as the record of how they were planned.
+
 - **P13** story-quest icon (#272), after `owner-ok-story-icon` (the owner's icon crop).
 - **P15** respec walk-through (#274), after `P14, owner-ok-keys` (the owner's in-game key screens).
 
@@ -864,6 +871,15 @@ Decisions this pass recorded (for the tracker):
 
 Each minor: two class packs side by side (lanes A and B; order by the D8 rule), plus the 1.0 audit's fixes in lane C as
 found. Each starts its classes' research at its planning pass start (K10).
+
+Carried in (Release Planner, 2026-10-18 10:55 PM ET, under the owner's "new looks ship in the next minor" rule and K13):
+owner icon crops with no approved-source copy (`/mnt/project-files/icons-hq/unmatched-icons-2026-10-18.png`), cleaned up
+(background removed, transparent, centred; owner, 10:22 PM and 10:51 PM ET) after Design Lead's review, for new uses:
+regional quest state icons (#409), campsite and point-of-interest map markers (held by the map-icons OK, Q5), and the
+extract action icon. The journal-check crop P20 (#391) already uses under its OK is cleaned up inside P20, in 0.7.0.
+Also carried in: icons sit tight (Design Lead mockup #421, `docs/design/0.6.2-icon-fit-mockup.md`, the owner's
+10:22 PM ET ask): the tile lines up with the title only and the lines under it run the card's full width, one CSS change
+in `nextup.css` (`.ns-mhead`). Needs the owner's typed `0.8 icon fit OK` before the 0.8 pass queues it.
 
 ### 1.0
 
