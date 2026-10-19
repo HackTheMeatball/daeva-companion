@@ -69,6 +69,9 @@ export const derivedOf = (c, k, ev = gatesOf(c)) => { const r = ev.byKey(k); ret
 /* A node's gate holds apart from its atoms of these kinds ("level", "story", "done"): e.g. a milestone step without its
    milestone's own level, which the callers already pick milestones by. */
 export const openBut = (r, ...kinds) => r.open || r.blockers.every(b => kinds.includes(b.kind));
+/* Level reached: no level atom of the gate of the item with save key k blocks it (other kinds of blocker aside); a key
+   with no gate node has none. */
+export const levelMetOf = (c, k, ev = gatesOf(c)) => { const r = ev.byKey(k); return !r || !r.blockers.some(b => b.kind === "level"); };
 /* Open now: the item with save key k. */
 export const openOf = (c, k, lv) => gatesOf(c, lv).byKey(k).open;
 

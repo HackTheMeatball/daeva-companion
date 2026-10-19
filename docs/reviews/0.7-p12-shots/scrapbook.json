@@ -1,0 +1,6 @@
+[
+  { "case": "spiritmaster-l5-build-1100", "kind": "before-after", "title": "Spiritmaster build rules at Lv 5",
+    "caption": "A Lv 5 Spiritmaster no longer reads about Elemental Fusion in Route rules; the trigger step is left out until Lv 14, when the skill is learned." },
+  { "case": "spiritmaster-l14-build-1100", "kind": "before-after", "title": "The step appears at Lv 14",
+    "caption": "At Lv 14, when Elemental Fusion is learned, the step about skills that fire on a condition shows in the Build rules, exactly as before." }
+]

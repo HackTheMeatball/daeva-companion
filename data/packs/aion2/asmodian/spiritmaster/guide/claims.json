@@ -252,7 +252,8 @@
       "action": "keep",
       "note": "docs/research/2026-10-spiritmaster-pack.md §6: all 22 learn levels and the stepped / flat gates are two-source (Metabot and mmo-codex, which credits the game client via aion2.app; independence inferred). daevaguides is consistent but compiles other guides, so it is not counted. No owner screen needed.",
       "appliesTo": [
-        "conf:learn-levels"
+        "conf:learn-levels",
+        "build:triggers"
       ],
       "verifiedAt": "2026-10-18"
     },
