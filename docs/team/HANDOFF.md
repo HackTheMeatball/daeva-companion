@@ -1,5 +1,8 @@
 # Handoff — state as of 2026-10-15
 
+> **Historical (one-CEO setup).** Not current: who does what is in docs/kaizen/LEDGER.md ("Who does what"), status is in
+> #114 and ROADMAP.md, and merging is auto-merge only (MRG-01). Kept for the record.
+
 Everything the CEO session knows that isn't already in DECISIONS, ROADMAP, the charters or CHANGELOG. Update this file
 when the state changes; keep it short.
 

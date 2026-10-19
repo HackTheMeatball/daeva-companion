@@ -34,6 +34,42 @@ drift from it. If a summary and its home disagree, the home wins and the summary
 Data Check), Lydia (Source Vetting), Jesse (Player Testing), Gale (Kaizen), Francesca (Rules Steward, who owns the
 ledger's upkeep), Gomez (Team Audit). `enforced_by` uses the same names.
 
+## Who does what
+
+One Accountable thread per kind of work (team audit 1.0, rec 3; DEC-20261019-team-audit-recs-3-and). Coordinator
+(Saul) routes work only from this table, never from memory. A thread that finds itself doing work this table gives to
+someone else stops and sends it there. "Source" is the ledger row or DECISIONS row that sets the owner; a
+change to an owner changes that row and this table in the same PR. Rules Steward (Francesca) keeps the table current.
+
+| Work | Owner | Not | Source |
+|---|---|---|---|
+| Routing work to a thread; what is waiting on Isaac; the morning debrief of every OK and question | Saul | Mike, Huell | COM-02, PLN-09, DEC-20261019-saul-owns-what-s-waiting |
+| Asking Isaac for a decision (opening its To-do) | The thread that needs it, through Huell | Saul, Walter | DECISIONS 2026-10-19 / Each thread opens its own To-dos |
+| Telling Huell an answer is recorded (OK RECORDED), so the To-do closes | Whoever recorded it | | DEC-03 |
+| Writing tracker data: cards, To-dos, versions, Scrapbook | Huell | everyone else | TRK-01 |
+| Tracker page code and design | Skyler, after Jane's DESIGN OK | Huell | DECISIONS 2026-10-18 / Tracker 2.0 |
+| DECISIONS rows | Walter | everyone else (forward the OK verbatim) | DEC-01 |
+| ROADMAP, planning passes, item specs, the queue, #232 | Walter | Gus | PLN-01, Q-01, PLN-11 |
+| Design asks from Isaac | Walter and Jane together | | PLN-12 |
+| Mockups, look-and-feel, DESIGN OK on PRs with shots | Jane | | MRG-06, MRG-08 |
+| Cleaning up Isaac's screen crops | Jane | Gretchen | DECISIONS 2026-10-18 / Owner crop clean-up is Design Lead's |
+| Icon and fact lookups on approved domains; icon provenance | Gretchen | Lydia | ROL-03, ROL-05 |
+| Fact checks, the two-source and labelling rules, DATA OK | Gretchen | | REPO-05, PLN-18 |
+| Vetting a site not yet in SOURCES.md; last-resort spot checks | Lydia | Gretchen | ROL-03, ROL-04 |
+| Research packs (data and icons for a class) | A research thread Walter starts; Gretchen checks icons | | Q-08, ROL-03 |
+| A data fix in `data/` | A queued item (Walter); Gretchen checks the fact | | Q-01, REPO-05 |
+| Workflows, kickoff, auto-merge, shipping a release | Gus | | PIP-03, MRG-01, PLN-19 |
+| The #114 body | Gus (owners edit only their own status line) | | Q-13 |
+| Health check: stalls, idle queue, red runs, tracker drift | Mike | | HC-01 |
+| The stall log #221: every row, its format and kinds, the per-release error report, KIND RECURRED | Mike (Hank until he hands over) | everyone else (report stalls to Mike) | DEC-20261019-incident-log-folds-into-stall, HC-02 |
+| A typed OK not applied within 60 min (a stall) | Mike | | DEC-20261019-saul-owns-what-s-waiting |
+| Playing the release candidate before the tag and the live site after; player findings issues | Jesse | | PLN-21, PLN-22, DEC-20261019-player-testing-plays-each-minor |
+| Kaizen review, #222, the scorecard, rule changes and grades | Gale | | KZ-01, PLN-04 |
+| Grading Gale's own rules and checking the scorecard compares like with like (from 0.9) | Francesca | Gale | DEC-20261019-from-0-9-rules-steward |
+| Grading Q-14 | Gale | Francesca | DEC-20261019-kaizen-grades-the-ledger-rule |
+| This ledger, this table, drift and roster sweeps | Francesca | | Q-14, KZ-11, DEC-20261019-rules-steward-francesca-joins-each |
+| Applying a fix to team memory | Gale (Francesca sends the fix; no other thread can read memory yet) | | Interim, until the 0.8 review assigns it |
+
 ## Areas
 
 | Prefix | Area |
@@ -57,8 +93,9 @@ ledger's upkeep), Gomez (Team Audit). `enforced_by` uses the same names.
 
 - Any PR that adds, changes or retires a rule, or adds or changes a DECISIONS row, updates its ledger row in the same
   PR. Git history is the change log.
-- Rules Steward (Francesca) owns the ledger's upkeep: she checks that each rule or DECISIONS change brings its row
-  up to date.
+- Rules Steward (Francesca) owns the ledger's upkeep and the "Who does what" table. CI already fails a DECISIONS row
+  with no ledger row, so on each rule or DECISIONS merge she checks for drift instead: copies of the rule elsewhere,
+  a row whose wording, owner or home no longer matches, and owners that aren't live threads.
 - Kaizen (Gale) re-grades every row at each release kaizen review and sets `grade` and `last_change`.
 - Tracker Sync (Huell) mirrors the ledger into the tracker once a Ledger view exists.
 - `tests/ledger.mjs` (run by `tests/schema.mjs`, so CI's data job runs it) checks the header, unique ids, the fixed
