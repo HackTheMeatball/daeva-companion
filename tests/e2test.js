@@ -173,12 +173,13 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
      pack, so one hidden pack was left; 0.7 P3 (#346) adds the Spiritmaster, hidden, so two; 0.7 P2 (#345) releases the
      Gladiator with its guide pack, so one again; 0.7 P4 (#347) releases the Spiritmaster, so none is left (the idle
      pack checks run on a copy in tests/schema.mjs). The other classes' own URLs are checked the same way below (their
-     pages list them, this Assassin page doesn't). 0.8 P16 (#505) adds the Sorcerer, hidden; the other 0.8 class-data
-     items (Templar, Cleric, Chanter) land beside it, so the check names the classes that may be hidden, not a count */
+     pages list them, this Assassin page doesn't). 0.8 P16 (#505) adds the Sorcerer and 0.8 P4 (#493) the Cleric, both
+     hidden; the other 0.8 class-data items (Templar, Chanter) land beside them, so the check names the classes that may
+     be hidden, not a count */
   { const ds = require('fs').readFileSync(require('path').join(__dirname, '..', 'data', 'DATA_SOURCES.md'), 'utf8'), hid = [...V1.hiddenUrls], oth = [...V1.otherUrls];
     const hidCls = V1.hiddenDirs.map(d => (d.match(/classes[\\/]([a-z]+)[\\/]$/) || [])[1]);
-    ok(`hidden class packs (${hidCls.join(', ')}): the Sorcerer and only 0.8 classes; their ${hid.length} URLs are in DATA_SOURCES.md and none is on the Sources card`,
-      hidCls.includes('sorcerer') && hidCls.every(c => ['cleric', 'templar', 'chanter', 'sorcerer'].includes(c)) && hid.length > 0 && hid.every(u => ds.includes('](' + u + ')') && !hrefs.has(norm(u))),
+    ok(`hidden class packs (${hidCls.join(', ')}): the Sorcerer, the Cleric and only 0.8 classes; their ${hid.length} URLs are in DATA_SOURCES.md and none is on the Sources card`,
+      hidCls.includes('sorcerer') && hidCls.includes('cleric') && hidCls.every(c => ['cleric', 'templar', 'chanter', 'sorcerer'].includes(c)) && hid.length > 0 && hid.every(u => ds.includes('](' + u + ')') && !hrefs.has(norm(u))),
       { dirs: V1.hiddenDirs, bad: hid.filter(u => !ds.includes('](' + u + ')') || hrefs.has(norm(u))) });
     ok(`other released classes (${V1.otherClasses.join(', ')}): their ${oth.length} own URLs are in DATA_SOURCES.md and none is on the Assassin's Sources card`,
       JSON.stringify(V1.otherClasses.slice().sort()) === '["gladiator","ranger","spiritmaster"]' && oth.length > 0 && oth.every(u => ds.includes('](' + u + ')') && !hrefs.has(norm(u))), oth.filter(u => !ds.includes('](' + u + ')') || hrefs.has(norm(u)))); }

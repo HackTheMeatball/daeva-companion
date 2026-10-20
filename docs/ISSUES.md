@@ -323,6 +323,18 @@ on purpose: the guide shows nothing rather than an unverified value.
   | st-voice-of-doom.png | Voice of Doom | <https://metabot.gg/en/aion-2/skills/voice-of-doom> | <https://metabot.gg/web/aion2/skills/17300000.webp> | 2026-10-19 |
   | st-yustiels-power.png | Yustiel's Power | <https://metabot.gg/en/aion-2/skills/yustiels-power> | <https://metabot.gg/web/aion2/skills/17420000.webp> | 2026-10-19 |
 
+  **Passive icons vs the owner's Lv 4 Cleric screen** (Game Data Check, 2026-10-20, comment on #493; owner-screens
+  2026-10-19 `cleric/skills-lv4-locked.png`; locked cells have no tooltip, so each cell is tied to a passive by unlock
+  level only). Verified, the cell shows the same art: Warm Benediction (Lv 1), Empyrean Lords' Benediction (6), Empyrean
+  Lord's Grace (9), Earth's Grace (21). **Owner-check, no icon:** Healing Enhancement (11: teal arcs around a flare, no
+  staged file matches), Immortal Veil (13: a figure under a green dome, no file matches), Heal Block (15: shows the
+  `sk-immortal-veil.png` art), Prayer of Concentration (17: shows `sk-heal-block.png`), Survival Willpower (23: plate
+  armour, hands on the helmet, the Templar Lv 23 art; no file matches), Radiant Benediction (25: shows
+  `sk-prayer-of-concentration.png`). Either the files are mislabelled (as in the Chanter pack) or Metabot puts these
+  passives at the wrong levels, so the class data (0.8 P4, #493) marks both `learnLv` and `icon` `owner-check` on these
+  six, and no file moves to another level until a tooltip names it. **Owner:** hover the locked Cleric passives at
+  Lv 11, 13, 15, 17, 23 and 25 and screenshot each name.
+
 - **Sorcerer skill and stigma icons: saved before the guide item** (0.8 class research, docs/research/2026-10-sorcerer-pack.md
   §7; lesson from #441 item 4). All 35 (22 skills, 13 stigmas) came from Metabot under the standing icon OK (owner,
   2026-10-14) on 2026-10-19, 8:41–8:45 PM ET (00:41–00:45 UTC on 10-20 in the request log);
