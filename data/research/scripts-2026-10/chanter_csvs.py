@@ -6,6 +6,9 @@ A={(r['board'],r['row'],r['col']):r for r in json.load(open(sys.argv[3]))['recor
 ndiff=[]
 MB='https://metabot.gg/en/aion-2/'
 BUILD='0.0.4387.0'; D='2026-10-19'
+# Metabot template text (#358 pattern) and the game text, pack §5; rows with a game_text are `disputed`
+GAME_TEXT={'spec:chanter:onslaught:2':'Absorbs 0.7% HP','spec:chanter:dark-crush:1':'Absorbs 0.7% HP','spec:chanter:gust-rampage:1':'Absorbs 5% HP',
+  'spec:chanter:recuperation:2':'Removes up to 2 debuffs','spec:chanter:healing-touch:3':'Removes 5 debuff(s)'}
 def slug(n): return re.sub(r'-+','-',re.sub(r'[^a-z0-9]+','-',n.lower().replace("'",""))).strip('-')
 # board nodes
 rows=[]; per=defaultdict(list)
@@ -35,7 +38,8 @@ for r in sk:
     r['slug']=r['slug'].removesuffix('-chanter')
     if slug(r['name'])!=r['slug']: problems.append((r['name'],'slug',r['slug']))
     for s in r['specs']:
-        sprows.append(dict(id=f'spec:chanter:{r["slug"]}:{s["n"]}',skill=f'{"stigma" if t=="stigma" else "skill"}:chanter:{r["slug"]}',n=s['n'],skillLv=s['skillLv'],text=s['text'],build=r['build'],checkedAt=D,status='verified',page_url=url))
+        sid=f'spec:chanter:{r["slug"]}:{s["n"]}'; gt=GAME_TEXT.get(sid,'')
+        sprows.append(dict(id=sid,skill=f'{"stigma" if t=="stigma" else "skill"}:chanter:{r["slug"]}',n=s['n'],skillLv=s['skillLv'],text=s['text'],game_text=gt,build=r['build'],checkedAt=D,status='disputed' if gt else 'verified',page_url=url))
     if t=='stigma':
         costs=[lv[L][1] for L in range(1,26)]
         exp=['1 ★']*5+['2 ★']*5+['4 ★']*5+['8 ★']*5+['—']*5

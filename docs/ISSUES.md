@@ -230,7 +230,7 @@ on purpose: the guide shows nothing rather than an unverified value.
   | st-templar-taunt.png | Taunt | <https://metabot.gg/en/aion-2/skills/taunt> | <https://metabot.gg/web/aion2/skills/12120000.webp> | 2026-10-19 |
 
 - **Chanter skill and stigma icons: saved before the guide item, three missing** (0.8 class research, 2026-10-19
-  8:42–8:43 PM ET, docs/research/2026-10-chanter-pack.md §7). 32 of 35 (19 skills, 13 stigmas) came from Metabot under
+  8:39–8:43 PM ET, docs/research/2026-10-chanter-pack.md §7). 32 of 35 (19 skills, 13 stigmas) came from Metabot under
   the standing icon OK (owner, 2026-10-14). Staged in `data/packs/aion2/asmodian/chanter/icons/` (256 px WebP → 128 px
   RGB PNG, Lanczos), not wired into the app; names carry the class (`sk-chanter-<slug>.png`) because Impact Hit,
   Defiance and Survival Willpower are shared names. **Matched to the owner's Lv 4 screen, not only to Metabot's pages**

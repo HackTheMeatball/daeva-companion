@@ -208,7 +208,7 @@ most in every source (daevaguides and mmo-codex: to 20 after 45). The rest singl
 | Spinning Strike | −5 s cooldown (`:1`) | aion2turkiye, daevaguides, mmo-codex | – | CONFIRMED |
 | Recuperation | +1 consecutive use, HoT stacks ×2 (`:1`) | aion2turkiye, daevaguides, mmo-codex | – | CONFIRMED |
 | Tremor Crush | +10 m range (`:2`) | aion2turkiye, mmo-codex, daevaguides [couga54] | – | CONFIRMED |
-| Impactful Crush | Changes to mobile skill (`:3`) | aion2turkiye, mmo-codex, daevaguides [couga54] | mmo-codex: `:1` (AoE stun) for small packs while levelling | CONFIRMED |
+| Impactful Crush | Changes to mobile skill (`:3`) | aion2turkiye, mmo-codex (its Lv 8 pick), daevaguides [couga54] | – (mmo-codex adds `:1`, AoE stun, as an option for small packs) | CONFIRMED (three sources) |
 | Onslaught | +20% MP restored (`:1`) | daevaguides [aLuckyRO: "don't trade mana for damage"], mmo-codex | aion2turkiye leveling `:2` (Absorbs 0.7% HP) | two-source |
 | Incandescent Blow | −20% MP consumed (`:1`) | daevaguides [aLuckyRO], mmo-codex | aion2turkiye leveling `:3` | two-source |
 | Heat Wave Blow | Up to +20% damage on more targets (`:3`) | aion2turkiye, mmo-codex | – | two-source |
@@ -231,7 +231,7 @@ come only after 45.
   Dark Crush and Onslaught nodes on Nezekan; daevaguides puts those active nodes first (Dark Crush → Onslaught →
   Spinning Strike → Incandescent Blow). The passive pairs first is two-source; the exact node order is disputed.
 
-### 4.6 Rotation (two-source)
+### 4.6 Rotation (four sources)
 
 Metabot, mmo-codex, daevaguides and aion2turkiye give the same leveling loop in different words: dash in with Rushing
 Smash, Impactful Crush (100% stun on NPCs) to open the Dark Crush window, Dark Crush inside it, Heat Wave Blow for the
@@ -248,14 +248,14 @@ guide item's call; the data supports it.
 | Id | Metabot page | Game text | Game-text sources |
 |---|---|---|---|
 | `spec:chanter:onslaught:2` | Absorbs 70, 70% HP | Absorbs 0.7% HP | owner's screen (2026-10-19), mmo-codex, daevaguides, aion2turkiye |
-| `spec:chanter:dark-crush:1` | Absorbs 70, 70% HP | Absorbs 0.7% HP | mmo-codex, daevaguides, aion2turkiye |
-| `spec:chanter:gust-rampage:1` | Absorbs 500, 500% HP | Absorbs 5% HP | mmo-codex, daevaguides, aion2turkiye |
+| `spec:chanter:dark-crush:1` | Absorbs 70, 70% HP | Absorbs 0.7% HP | two-source (guides): mmo-codex, daevaguides, aion2turkiye; not on the owner's screen |
+| `spec:chanter:gust-rampage:1` | Absorbs 500, 500% HP | Absorbs 5% HP | two-source (guides): mmo-codex, daevaguides, aion2turkiye; not on the owner's screen |
 | `spec:chanter:recuperation:2` | Removes up to 2, 2 debuffs | Removes up to 2 debuffs | daevaguides, aion2turkiye |
 | `spec:chanter:healing-touch:3` (stigma) | Removes 5, 5 debuff(s) | Removes 5 debuff(s) | daevaguides, aion2turkiye |
 | Recuperation, base text | … removes 1, 1 debuff(s) … | … removes 1 debuff(s) … | daevaguides, aion2turkiye |
 | Blessing of Life, base text | … Heal Boost by 15,300% of Attack | **unknown** | none: see below |
 
-The CSVs keep Metabot's text as read; the class-data item writes the game text. The owner's screen also confirms the
+The specialties CSV keeps Metabot's text as read in `text`, puts the game text in `game_text` and marks those five rows `disputed`; the class-data item writes `game_text`. Only Onslaught's row is game-confirmed (the owner's screen); mmo-codex reads its data through aion2.app, so the guides' agreement is partly shared upstream (§9). The owner's screen also confirms the
 other four Onslaught texts word for word (+20% MP restored, +50% Multi-Hit on hit, −1s [Spinning Strike] cooldown on
 hit, Adds [Storm Chain] Chain Skill).
 
@@ -338,20 +338,23 @@ stigma check (Gladiator pack §4.1).
 
 Policy: `CLAUDE.md` and `docs/research/SOURCES.md` (every host used is listed there; no new site, so SOURCES.md is
 unchanged), under ROL-03 as amended 2026-10-19 (research threads fetch inside their pack; Game Data Check verifies).
-User-Agent `DaevaCompanionResearch/0.1 (+https://daevacompanion.com)`, one request at a time per host, at least 6 s
-between request starts, cache 24 h, stop on 403 / 429 / a challenge. No page copy or WebP is committed; only the CSVs
+User-Agent `DaevaCompanionResearch/0.1 (+https://daevacompanion.com)` (set in the fetch script; the logs don't record
+it), one request at a time per host, cache 24 h, stop on 403 / 429 / a challenge. The script waits 6 s after the
+previous request's start before sending, but the logs record finish times, so they show gaps as short as 2 s where a
+slow response finished late; what they do show is at most 11 metabot.gg requests in any 60 s, one at a time. No page copy or WebP is committed; only the CSVs
 and the converted PNGs.
 
-- **metabot.gg (Full):** robots.txt re-read first (8:33 PM ET; disallows only `/api/`, `/private/` and profile paths,
+- **metabot.gg (Full):** robots.txt re-read, then the terms, both before any content page (CLAUDE.md asks for terms
+  first; noted for next time) (8:33 PM ET; disallows only `/api/`, `/private/` and profile paths,
   nothing blocks Claude-User or our UA); terms of service re-read (effective 04/01/2026, unchanged: "personal,
   non-commercial use", attribution with a dofollow link to the page the data came from). 76 requests in all (41 pages:
   robots, terms, class page, 35 skill pages, boards, build page, class-builds guide; 35 icon files), 8:33–8:43 PM ET,
   at most 11 in any 60 s by the log's times. The last request, the unlinked Survival Willpower file `18790000.webp`, returned 403 with an
   S3 `AccessDenied` body (a missing object, inferred, not a challenge); I stopped there as the policy says, and it was
-  the last planned request anyway.
+  the last planned request anyway. That URL was guessed from the id pattern, not linked by any page; next time, stick to linked asset URLs.
 - **Second sources, 8:35–8:36 PM ET:** robots.txt re-read on mmo-codex (blocks only `/api/`), daevaguides (allows
   Claude-User explicitly), aion2turkiye (allows all), skycoach and gamesfuze (block only search, account and tracking
-  paths). mmo-codex is **Spot** (its terms ban "automated republication and scraped copies"; re-read, unchanged), so one
+  paths). mmo-codex is **Spot** (its terms ban "automated republication and scraped copies"; re-read after its robots.txt but before the content page, unchanged), so one
   content page. One page each on daevaguides and aion2turkiye. skycoach's `chanter-guide` URL (the pattern of its
   Templar and Cleric guides) returned 404; I did not guess further URLs, and gamesfuze has no Chanter guide page that a
   search shows. Facts only, no wording kept.
