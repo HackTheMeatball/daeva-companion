@@ -1,0 +1,86 @@
+{
+  "$schema": "../../../schema/confidence.schema.json",
+  "schemaVersion": 2,
+  "collection": "confidence",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "conf:core-order",
+      "group": "verified",
+      "order": 46,
+      "text": "Sorcerer skill points: Flame Arrow, Ice Chain and Firestorm first, then Blaze, Bittercold Wind, Hellfire, Winter's Shackles and Robe of Flame, all to 10 (Metabot, daevaguides, aion2turkiye, mmo-codex; Ice Chain, Winter's Shackles and Robe of Flame: Metabot and daevaguides). Flame Arrow, Ice Chain and Firestorm as the first points and Hellfire from when it is learned are two-source; the order between those rules is inferred."
+    },
+    {
+      "id": "conf:fire-mark",
+      "group": "inferred",
+      "order": 226,
+      "text": "Fire Mark on every Fire hit: Korea's 16 Sep patch, likely in your client (Metabot's skill text, mmo-codex, daevaguides); not checked in game."
+    },
+    {
+      "id": "conf:fire-mark-target",
+      "group": "single-source",
+      "order": 187,
+      "text": "Fire Mark to 10: Metabot's leveling build (aion2turkiye stops at 5)."
+    },
+    {
+      "id": "conf:first-nodes",
+      "group": "disputed",
+      "order": 233,
+      "text": "First Daevanion nodes (Nezekan's Fire Mark and Robe of Earth pairs, then Zikel's Grace of Enhancement pair): Metabot's Sorcerer page; daevaguides and aion2turkiye take Nezekan's Combat Speed, Cooldown Reduction and Hellfire, Firestorm and Bittercold Wind nodes first."
+    },
+    {
+      "id": "conf:learn-levels",
+      "group": "verified",
+      "order": 45,
+      "text": "Sorcerer learn levels (Bittercold Wind 3, Blaze 4, Flame Scattershot 5, Frost Burst 10, Hellfire 14 and the rest): your Sorcerer skill window, Metabot's skill pages (game data) and mmo-codex's unlock table."
+    },
+    {
+      "id": "conf:pick-dissent",
+      "group": "disputed",
+      "order": 235,
+      "text": "Blaze's Lv 8 pick HP absorb (aion2turkiye, daevaguides solo; mmo-codex takes Delayed Damage) and Bittercold Wind's pull (aion2turkiye, daevaguides, mmo-codex's levelling text; its point list takes +1 s)."
+    },
+    {
+      "id": "conf:rotation",
+      "group": "verified",
+      "order": 48,
+      "text": "The leveling loop and holding Hellfire to charge it (Metabot's leveling build, mmo-codex, daevaguides; the charge levels are Hellfire's skill text)."
+    },
+    {
+      "id": "conf:skill-disputed",
+      "group": "disputed",
+      "order": 231,
+      "text": "Wish of Concentration to 7 (Metabot; aion2turkiye and daevaguides take it to 10) and Frost to 5 (Metabot; aion2turkiye spends nothing on it): the guide takes 7 and 5 with the last spare points. Spare points from quests and Sealed Dungeons go to Wish of Concentration first."
+    },
+    {
+      "id": "conf:specialty-picks",
+      "group": "verified",
+      "order": 71,
+      "text": "Specialty picks at skill Lv 8: Flame Arrow +20% MP restored, Firestorm −50% MP Cost, Hellfire +30% Skill Speed, Winter's Shackles damage boost (mmo-codex, aion2turkiye, daevaguides)."
+    },
+    {
+      "id": "conf:stat-tiers",
+      "group": "single-source",
+      "order": 186,
+      "text": "Stat priority (Attack, Critical Hit, MP): Metabot's Sorcerer page and class-builds guide (one site)."
+    },
+    {
+      "id": "conf:stigma-plan",
+      "group": "disputed",
+      "order": 234,
+      "text": "Stigmas Element Enhancement, Delayed Explosion, Fire Wall, Cold Storm (Metabot, mmo-codex). Element Enhancement first is in every source; daevaguides (solo) and aion2turkiye take Steel Barrier instead of Delayed Explosion and put Fire Wall in slot 2, so the fourth stigma and the slot order are Metabot's. Raised to 8 / 7 / 5 / 4: Metabot's."
+    },
+    {
+      "id": "conf:stigmas",
+      "group": "verified",
+      "order": 40,
+      "text": "Stigma slots 22 / 27 / 32 / 37; every stigma learnable at 22; shard cost per level (Metabot, allthings.how)."
+    },
+    {
+      "id": "conf:triggers",
+      "group": "verified",
+      "order": 47,
+      "text": "Blaze, Flame Scattershot and Frost Burst fire only on their conditions (Metabot's skill pages, game data; mmo-codex, daevaguides)."
+    }
+  ]
+}

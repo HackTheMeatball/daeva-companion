@@ -9,6 +9,7 @@
       "key": "Arctic Armor",
       "name": "Arctic Armor",
       "availableLv": 22,
+      "icon": "assets/icons/st-sorcerer-arctic-armor.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -60,6 +61,7 @@
       "key": "Assault Bombardment",
       "name": "Assault Bombardment",
       "availableLv": 22,
+      "icon": "assets/icons/st-sorcerer-assault-bombardment.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -111,6 +113,7 @@
       "key": "Cold Storm",
       "name": "Cold Storm",
       "availableLv": 22,
+      "icon": "assets/icons/st-sorcerer-cold-storm.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -162,6 +165,7 @@
       "key": "Curse: Tree",
       "name": "Curse: Tree",
       "availableLv": 22,
+      "icon": "assets/icons/st-sorcerer-curse-tree.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -213,6 +217,7 @@
       "key": "Delayed Explosion",
       "name": "Delayed Explosion",
       "availableLv": 22,
+      "icon": "assets/icons/st-sorcerer-delayed-explosion.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -264,6 +269,7 @@
       "key": "Divine Burst",
       "name": "Divine Burst",
       "availableLv": 22,
+      "icon": "assets/icons/st-sorcerer-divine-burst.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -334,6 +340,7 @@
       "key": "Element Enhancement",
       "name": "Element Enhancement",
       "availableLv": 22,
+      "icon": "assets/icons/st-sorcerer-element-enhancement.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -385,6 +392,7 @@
       "key": "Fire Wall",
       "name": "Fire Wall",
       "availableLv": 22,
+      "icon": "assets/icons/st-sorcerer-fire-wall.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -436,6 +444,7 @@
       "key": "Glacial Smite",
       "name": "Glacial Smite",
       "availableLv": 22,
+      "icon": "assets/icons/st-sorcerer-glacial-smite.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -487,6 +496,7 @@
       "key": "Hibernation",
       "name": "Hibernation",
       "availableLv": 22,
+      "icon": "assets/icons/st-sorcerer-hibernation.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -538,6 +548,7 @@
       "key": "Lumiel's Space",
       "name": "Lumiel's Space",
       "availableLv": 22,
+      "icon": "assets/icons/st-sorcerer-lumiels-space.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -589,6 +600,7 @@
       "key": "Soul Freeze",
       "name": "Soul Freeze",
       "availableLv": 22,
+      "icon": "assets/icons/st-sorcerer-soul-freeze.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -640,6 +652,7 @@
       "key": "Steel Barrier",
       "name": "Steel Barrier",
       "availableLv": 22,
+      "icon": "assets/icons/st-sorcerer-steel-barrier.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {

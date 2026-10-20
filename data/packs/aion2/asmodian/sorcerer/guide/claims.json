@@ -1,0 +1,406 @@
+{
+  "$schema": "../../../schema/claims.schema.json",
+  "schemaVersion": 2,
+  "collection": "claims",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "C02",
+      "claim": "Each skill gains one level every 3 character levels after you learn it.",
+      "verdict": "wrong",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/heart-gore",
+          "note": "Skill pages list the character level each skill level needs (learn level + 3 per level) and the 1 / 2 / 4 point costs"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/flame-arrow",
+          "note": "The Sorcerer's skill pages show the same rule (docs/research/2026-10-sorcerer-pack.md §2.1: skill Lv 10 at learn level + 24)"
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-15-alt-03",
+            "checkedAt": "2026-10-15",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Skill window at Lv 7: Savage Roar Lv 4 needs Lv 10 for Lv 5 and costs 2 points; Storm Rampage Lv 2 needs Lv 8 for Lv 3"
+          }
+        },
+        {
+          "url": "https://allthings.how/?p=215236",
+          "quote": "Skill points arrive automatically as your character levels"
+        },
+        {
+          "url": "https://thegameswiki.com/aion-2/wiki/skills-and-specialties",
+          "quote": "mastery skills are learned automatically when the character reaches the required level; levels beyond 10 come from items, Arcana and Daevanion boards"
+        }
+      ],
+      "action": "rewrite",
+      "newText": "<p>Skills don't level up by themselves: you spend points, and each skill level also needs a character level. Skill level L opens at the level you learned the skill + 3 × (L − 2). Flame Arrow, learned at Lv 1, reaches skill level 5 at Lv 10. Each level costs 1 point (levels 2–4), 2 points (5–7) or 4 points (8–10).</p>",
+      "note": "The Assassin guide's claim C02, with the Sorcerer's Flame Arrow as the example (learned at Lv 1, Metabot and the owner's Sorcerer skill window). The rule is the game's (rule:skill-level-gate, rule:skill-point-cost); the owner's level-gate screens are from an Assassin. Three Sorcerer passives (Grace of Enhancement, Revitalization Contract, Vitality Evaporation) have a flat gate instead: every level opens when the skill is learned.",
+      "verifiedAt": "2026-10-15",
+      "appliesTo": [
+        "tip:wisdom",
+        "rule:skill-level-gate",
+        "rule:skill-point-cost"
+      ]
+    },
+    {
+      "id": "C22",
+      "claim": "Board node costs: grey stat 1, green passive 2, blue active 3, orange corner 4 (+1.5%); Azphel paid with Azphel points from PvP shops.",
+      "verdict": "verified",
+      "sources": [
+        {
+          "url": "https://gamewith.ai/aion2/en/daevanion-planner/assassin",
+          "quote": "1 for common, 2 for rare, 3 for epic and 4 for unique nodes"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/guides/daevanion-guide",
+          "quote": "stat 1 (rare 2), active 3, passive 2, corner 4 (+1.5%); Azphel: Azphel currency, 0 skill nodes",
+          "note": "via R3 data/build.partial.notes.txt"
+        },
+        {
+          "url": "https://thegameswiki.com/aion-2/wiki/daeva-system-and-daevanion-board",
+          "quote": "Azphel crystal is made by Material Conversion from 10 Fragment: Azphel's Trace and 5 Odyle ... also sold in the Abyss shop for Abyss Points"
+        },
+        {
+          "url": "https://mein-mmo.de/en/aion-2-arkana-daevanion-pet-you-need-to-understand-and-master-these-3-systems,1589883/2/",
+          "quote": "Fragments are earned through victorious participation in the weekly battleground ... Some crystals can also be bought with Abyss Points"
+        }
+      ],
+      "action": "rewrite",
+      "newText": "<b>Azphel [[tip:daevanion|Daevanion board]] opens.</b> Stat nodes only, paid with Azphel crystals (from battleground fragments or Abyss Points), not Daevanion Crystals.",
+      "note": "The Assassin guide's claim C22, unchanged: the Sorcerer's 537 board positions have the same type, grade and cost as the Assassin's (docs/research/2026-10-sorcerer-pack.md §1, 0 differences by script).",
+      "appliesTo": [
+        "g45:2",
+        "tip:daevanion",
+        "conf:boards",
+        "board:nezekan",
+        "board:zikel",
+        "board:vaizel",
+        "board:triniel",
+        "board:azphel"
+      ],
+      "verifiedAt": "2026-10-12"
+    },
+    {
+      "id": "C28b",
+      "claim": "Stigma slots 22/27/32/37 (five sources); regional quest names and levels (allthings.how, Selphie1999).",
+      "verdict": "verified",
+      "sources": [],
+      "action": "keep",
+      "note": "The Assassin guide's claim C28b. The Sorcerer's 13 stigma pages also learn at Lv 22 (Metabot, docs/research/2026-10-sorcerer-pack.md §2.2); Metabot's build page and daevaguides give the same slot levels.",
+      "appliesTo": [
+        "tip:stigma",
+        "conf:stigmas"
+      ],
+      "verifiedAt": "2026-10-12"
+    },
+    {
+      "id": "C39",
+      "claim": "\"The One Who Hears the Voice\" (Lv 22) is open by the time the story reaches \"Daeva in a Dream\".",
+      "verdict": "single-source",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/daeva-in-a-dream-asmodian",
+          "quote": "complete The One Who Hears the Voice",
+          "note": "The wrapper quest's objective (Metabot steps): the Ascension quest must be open by then, so the gate is never early (prereq-gates §5)."
+        }
+      ],
+      "action": "keep",
+      "note": "The Assassin guide's claim C39 (the story is the faction's, not the class's). Owner decision 2026-10-16: no separate in-game check; the gate stands on its source (prereq-gates §11 check 6).",
+      "appliesTo": [
+        "g22:0",
+        "asc:hears-the-voice"
+      ],
+      "verifiedAt": "2026-10-16"
+    },
+    {
+      "id": "C42",
+      "claim": "Sorcerer stat priority: Attack, Critical Hit, MP (then Accuracy Bonus, HP).",
+      "verdict": "single-source",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/sorcerer",
+          "note": "Class page (editorial): Attack > Critical Hit > MP > Accuracy Bonus > HP; MP because Robe of Earth's Critical Hit needs 50% MP and Grace of Enhancement's PvE bonus 25%."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/guides/class-builds-guide",
+          "note": "Same site, so not a second source."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-sorcerer-pack.md §4.5: daevaguides says the same about mana without a full order. The Build drawer shows the top three and says the ranking is Metabot's only.",
+      "appliesTo": [
+        "build:3",
+        "conf:stat-tiers"
+      ],
+      "verifiedAt": "2026-10-19"
+    },
+    {
+      "id": "C43",
+      "claim": "Sorcerer stigmas by slot: Element Enhancement (22), Delayed Explosion (27), Fire Wall (32), Cold Storm (37); raised to 8 / 7 / 5 / 4.",
+      "verdict": "disputed",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/sorcerer/build",
+          "note": "Leveling build: Element Enhancement, Delayed Explosion, Fire Wall, Cold Storm at 8 / 7 / 5 / 4; its top players (150) pick the same four most often in that order."
+        },
+        {
+          "url": "https://daevaguides.com/en/sorcerer/",
+          "note": "Solo / leveling: Element Enhancement, Fire Wall, Cold Storm, Steel Barrier (groups: Delayed Explosion); Element Enhancement raised first."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/sorcerer/",
+          "note": "Leveling: Element Enhancement (10), Fire Wall, Steel Barrier, Cold Storm."
+        },
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/sorcerer/",
+          "note": "Leveling: Element Enhancement, Delayed Explosion, Fire Wall, Cold Storm, no slot order."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-sorcerer-pack.md §4.3. Element Enhancement in slot 1 and raised first is in every source; Fire Wall and Cold Storm are in every set. The fourth is Delayed Explosion (Metabot, mmo-codex, daevaguides for groups) or Steel Barrier (daevaguides solo, aion2turkiye), and the order of slots 2–4 differs (Metabot puts Delayed Explosion at 27, the two other ordered sources Fire Wall): both disputed, so the guide takes Metabot's set and order, the research default. The levels 8 / 7 / 5 / 4 are Metabot's (29 shards by Lv 45).",
+      "appliesTo": [
+        "build:sorcerer:guide",
+        "conf:stigma-plan"
+      ],
+      "verifiedAt": "2026-10-19"
+    },
+    {
+      "id": "C44",
+      "claim": "Sorcerer skill points: Flame Arrow, Ice Chain, Firestorm, Blaze, Bittercold Wind, Hellfire, Winter's Shackles, Robe of Flame and Fire Mark to Lv 10; then Wish of Concentration to 7 and Frost to 5.",
+      "verdict": "disputed",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/sorcerer/build",
+          "note": "Leveling build targets: the nine skills to 10, Wish of Concentration 7, Frost 5 (203 points). No training order."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/sorcerer/",
+          "note": "Leveling targets: Flame Arrow, Firestorm, Blaze, Bittercold Wind, Hellfire, Wish of Concentration 10; Winter's Shackles 8; Robe of Flame, Fire Mark 5; Ice Chain 3; Frost 0."
+        },
+        {
+          "url": "https://daevaguides.com/en/sorcerer/",
+          "note": "couga54's plan: Flame Arrow, Ice Chain, Firestorm to 10 by about 25, Blaze and Bittercold Wind by 28, Hellfire 8 at 32 and 10 at 38, Wish 10 at 36; Robe of Flame the first passive, passives to 10."
+        },
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/sorcerer/",
+          "note": "Levelling [berdugz]: Flame Arrow, Ice Chain, Firestorm, Bittercold Wind and Blaze to 8 first; Hellfire and Wish as they arrive; passives Absorb Essence, then Robe of Flame."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-sorcerer-pack.md §4.1–4.2. Every source: Flame Arrow, Firestorm, Blaze, Bittercold Wind and Hellfire to 10. Two-source: Ice Chain, Winter's Shackles and Robe of Flame to 10 (Metabot, daevaguides). Single source: Fire Mark to 10 (Metabot; daevaguides only by its general 'passives to 10' line; aion2turkiye 5). Disputed, Metabot's values with the last 14 points: Wish of Concentration 7 (aion2turkiye and daevaguides take it to 10; the first place for spare points) and Frost 5. Flame Arrow, Ice Chain and Firestorm first, Blaze and Bittercold Wind next, Hellfire from when it is learned are two-source (daevaguides, mmo-codex); the first passive is not agreed (Absorb Essence or Robe of Flame), and the order between those rules is inferred.",
+      "appliesTo": [
+        "build:sorcerer:guide",
+        "conf:core-order",
+        "conf:skill-disputed"
+      ],
+      "verifiedAt": "2026-10-19"
+    },
+    {
+      "id": "C45",
+      "claim": "Sorcerer first Daevanion nodes: Nezekan's Fire Mark and Robe of Earth pairs, then Zikel's Grace of Enhancement pair.",
+      "verdict": "disputed",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/sorcerer",
+          "note": "Class page board path (editorial): Zikel's Grace of Enhancement pair first, then Nezekan's Fire Mark and Robe of Earth pairs; the class-builds guide gives the same path (same site). Node positions from the Sorcerer board data (aion2/classes/sorcerer, Metabot Daevanion page)."
+        },
+        {
+          "url": "https://daevaguides.com/en/sorcerer/",
+          "note": "Nezekan first: Combat Speed and Cooldown Reduction, then the Hellfire, Firestorm and Bittercold Wind nodes."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/sorcerer/",
+          "note": "Nezekan first, the same order as daevaguides."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-sorcerer-pack.md §4.5: the board path is disputed. Nezekan opens at 12 and Zikel at 20, so a leveling player meets Nezekan's pairs first either way; the guide takes Metabot's nodes in the order the boards open. Grace of Enhancement is learned at Lv 21 (Metabot), so its nodes wait for it.",
+      "appliesTo": [
+        "build:sorcerer:guide",
+        "conf:first-nodes"
+      ],
+      "verifiedAt": "2026-10-19"
+    },
+    {
+      "id": "C46",
+      "claim": "Sorcerer learn levels: actives 1, 1, 1, 3, 4, 5, 7, 8, 10, 12, 14, 16; passives 1, 6, 9, 11, 13, 15, 17, 21, 23, 25 (Bittercold Wind 3, Blaze 4, Flame Scattershot 5, Frost Burst 10, Hellfire 14).",
+      "verdict": "verified",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/hellfire",
+          "note": "Game-database field (learn level); every Sorcerer skill page gives its own."
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-19-sorcerer-keys-01",
+            "checkedAt": "2026-10-19",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Sorcerer skill window at Lv 4: five actives and one passive unlocked, every locked skill shows its level"
+          }
+        },
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/sorcerer/",
+          "note": "Its level-by-level unlock table gives the same 22 values."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-sorcerer-pack.md §3 and docs/plans/0.8/inputs/owner-keys/sorcerer.md: all 22 learn levels have three sources, the owner's screen the source of truth. mmo-codex credits the game client via aion2.app, so it and Metabot may share upstream data (inferred); the owner's screen does not.",
+      "appliesTo": [
+        "conf:learn-levels",
+        "build:triggers"
+      ],
+      "verifiedAt": "2026-10-19"
+    },
+    {
+      "id": "C47",
+      "claim": "Sorcerer specialty picks at skill Lv 8: Flame Arrow +20% MP restored (:1), Firestorm −50% MP Cost (:1), Hellfire +30% Skill Speed (:1), Winter's Shackles damage boost (:3), Blaze HP absorb (:1), Bittercold Wind pull (:3).",
+      "verdict": "disputed",
+      "sources": [
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/sorcerer/",
+          "note": "Lv 8 picks: Flame Arrow :1, Firestorm :1 [berdugz], Hellfire :1, Winter's Shackles :3, Wish of Concentration :2; Blaze :3 [berdugz]; its levelling text pulls with Bittercold Wind :3, its point list takes :1."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/sorcerer/",
+          "note": "Leveling panel: Flame Arrow :1, Firestorm :1, Hellfire :1, Winter's Shackles :3, Wish of Concentration :2, Blaze :1, Bittercold Wind :3."
+        },
+        {
+          "url": "https://daevaguides.com/en/sorcerer/",
+          "note": "Flame Arrow :1, Firestorm :1 [couga54], Hellfire :1 (\"everyone takes it\"), Winter's Shackles :3, Wish of Concentration :2; Blaze :1 solo [aLuckyRO] (:3 in groups); Bittercold Wind :3 \"good for leveling\" [couga54]."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-sorcerer-pack.md §4.4. Flame Arrow, Firestorm, Hellfire and Winter's Shackles are CONFIRMED there (three sources each). Blaze's HP absorb (aion2turkiye, daevaguides solo) and Bittercold Wind's pull (aion2turkiye, daevaguides, mmo-codex's levelling text) are two-source with dissent (Delayed Damage; +1 s), so the Confidence card shows them as disputed (conf:pick-dissent). Wish of Concentration's agreed +10% Attack (:2) needs skill Lv 8, which the plan's Lv 7 does not reach, so the guide shows no Wish pick. Ice Chain and Frost picks are single-source and left out; Lv 12 and 16 picks need skill levels past 10 that points alone don't reach before Lv 45.",
+      "appliesTo": [
+        "build:sorcerer:guide",
+        "conf:specialty-picks",
+        "conf:pick-dissent"
+      ],
+      "verifiedAt": "2026-10-19"
+    },
+    {
+      "id": "C48",
+      "claim": "Three Sorcerer skills fire only on a condition: Blaze on a target under Fire Mark, Flame Scattershot on a Staggered one, Frost Burst on a Frosted one.",
+      "verdict": "verified",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/blaze",
+          "note": "Skill text (game-database field)."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/flame-scattershot",
+          "note": "Skill text (game-database field)."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/frost-burst",
+          "note": "Skill text (game-database field)."
+        },
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/sorcerer/",
+          "note": "Describes the same conditions (Spot use, one page)."
+        },
+        {
+          "url": "https://daevaguides.com/en/sorcerer/",
+          "note": "Describes the same conditions."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-sorcerer-pack.md §1 (CONFIRMED from the skill text plus two guides); the owner's screen notes the same conditions on the E and Q keys (docs/plans/0.8/inputs/owner-keys/sorcerer.md). Frost freezes NPCs 100% (skill text; research §4.6). The guide's own wording, not the pages'.",
+      "appliesTo": [
+        "build:triggers",
+        "conf:triggers"
+      ],
+      "verifiedAt": "2026-10-19"
+    },
+    {
+      "id": "C49",
+      "claim": "Sorcerer default keys: left click Flame Arrow, right click Ice Chain; 1 Firestorm, 2 Bittercold Wind, 3 Winter's Shackles, 4 Hellfire; E Flame Scattershot (row 0), Blaze (1), Wish of Concentration (2); Q Frost Burst (0), Frost (1); Defiance no key.",
+      "verdict": "verified",
+      "sources": [
+        {
+          "owner": {
+            "ref": "owner:2026-10-19-sorcerer-keys-01",
+            "checkedAt": "2026-10-19",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Sorcerer skill window (quickslot grid, game default keys, both mouse badges), Lv 4"
+          }
+        }
+      ],
+      "action": "keep",
+      "note": "The owner's in-game screen (the source of truth), read by Game Data Check (docs/plans/0.8/inputs/owner-keys/sorcerer.md); both mouse buttons are read from the badge halves on the screen, and Blaze at row 1 under Flame Scattershot from the screen only. The keys are the game's defaults, not a guide's advice; the layouts daevaguides and mmo-codex recommend (research §4.6) disagree and are not shown. daevaguides says the game keeps Defiance on Space; no owner screen shows it, so the Key setup leaves Defiance out.",
+      "appliesTo": [
+        "build:sorcerer:guide",
+        "build:hellfire"
+      ],
+      "verifiedAt": "2026-10-19"
+    },
+    {
+      "id": "C89",
+      "claim": "Every Fire hit puts Fire Mark on the target (Korea's 16 Sep Sorcerer patch), so Blaze can follow any Fire attack.",
+      "verdict": "inferred",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/fire-mark",
+          "note": "Skill text (game-database field, client build 0.0.4387.0): Fire Mark is inflicted for 5 s on landing a Fire attack, with no chance; the 20% chance is on the marked target's extra damage."
+        },
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/sorcerer/",
+          "note": "Its client data is pre-patch (a 20% chance to apply the mark); it says the 16 Sep patch made every Fire hit mark."
+        },
+        {
+          "url": "https://daevaguides.com/en/sorcerer/",
+          "note": "Says the same about the patch."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-sorcerer-pack.md §1: inferred. The global client likely has the patch: Flame Arrow's Lv 12 specialty reads the patched text on Metabot and on the owner's Lv 4 screen (2026-10-19). The mechanic itself rests on Metabot's text alone and was not checked in game, so the step says only that Fire attacks put the mark on, not that every one does.",
+      "appliesTo": [
+        "build:triggers",
+        "conf:fire-mark"
+      ],
+      "verifiedAt": "2026-10-19"
+    },
+    {
+      "id": "C98",
+      "claim": "Sorcerer leveling loop: Bittercold Wind roots the pack, Firestorm and Blaze on the marked target, Flame Arrow as the MP filler; Ice Chain and Winter's Shackles slow a pack; from Lv 14 a fully charged Hellfire (held, not fired by a macro) while the pack is rooted.",
+      "verdict": "verified",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/sorcerer/build",
+          "note": "Leveling build's rotation: buff, slow the pack with Ice Chain and Winter's Shackles, charged Hellfire, Firestorm, Blaze on the Fire Mark target, Bittercold Wind, Flame Arrow as filler."
+        },
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/sorcerer/",
+          "note": "Levelling 1–30 tab: the same loop; a macro fires Hellfire at charge 1 only."
+        },
+        {
+          "url": "https://daevaguides.com/en/sorcerer/",
+          "note": "The same loop; Hellfire must be held to charge, a macro fires it at charge 1 [berdugz, EUTOPIA]."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/hellfire",
+          "note": "Skill text (game-database field): a charged skill, up to 3 charge levels; full charge is three times charge 1. Bittercold Wind roots NPCs 100% (its skill page)."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-sorcerer-pack.md §4.6: two-source through Metabot (Metabot's leveling build, mmo-codex, daevaguides give the same loop in different words). The charge rule is the skill text; 'hold, don't macro' has two guides. The guide's own wording, not the pages'. Hellfire's key (4) is the owner's default (C49).",
+      "appliesTo": [
+        "build:rotation",
+        "build:hellfire",
+        "conf:rotation"
+      ],
+      "verifiedAt": "2026-10-19"
+    }
+  ]
+}

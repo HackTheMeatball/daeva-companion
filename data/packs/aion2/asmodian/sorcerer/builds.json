@@ -1,0 +1,557 @@
+{
+  "$schema": "../../schema/builds.schema.json",
+  "schemaVersion": 2,
+  "collection": "builds",
+  "class": "sorcerer",
+  "records": [
+    {
+      "id": "build:sorcerer:guide",
+      "class": "sorcerer",
+      "name": "Guide build",
+      "origin": "guide",
+      "statPriority": {
+        "tiers": [
+          [
+            "Attack"
+          ],
+          [
+            "Critical Hit"
+          ],
+          [
+            "MP"
+          ]
+        ],
+        "from": {
+          "Attack": "BG",
+          "Critical Hit": "BG",
+          "MP": "BG"
+        },
+        "status": "single-source",
+        "sources": [
+          {
+            "url": "https://metabot.gg/en/aion-2/classes/sorcerer",
+            "checkedAt": "2026-10-19"
+          },
+          {
+            "url": "https://metabot.gg/en/aion-2/guides/class-builds-guide",
+            "checkedAt": "2026-10-19"
+          }
+        ],
+        "note": "Metabot's class page and its class-builds guide (Attack, Critical Hit, MP, Accuracy Bonus, HP) are one site: single source (claim C42). MP because Robe of Earth's Critical Hit needs 50% MP and Grace of Enhancement's PvE bonus 25%; daevaguides says the same about mana without a full order (docs/research/2026-10-sorcerer-pack.md §4.5). Only the top three are shown. from: B = board stat nodes / corners, G = gear (the Sorcerer boards carry Attack Bonus, Critical Hit and MP nodes: classes/sorcerer/board-nodes.json)."
+      },
+      "skillOrder": [
+        {
+          "skill": "skill:sorcerer:flame-arrow",
+          "core": true,
+          "status": "verified",
+          "basis": "To Lv 10, among the first points: Metabot leveling, aion2turkiye, daevaguides, mmo-codex (first to 8)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/sorcerer/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/sorcerer/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/sorcerer/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://mmo-codex.com/games/aion-2/classes/sorcerer/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:sorcerer:ice-chain",
+          "core": true,
+          "status": "verified",
+          "basis": "To Lv 10, among the first points: Metabot leveling, daevaguides (mmo-codex: first to 8; aion2turkiye 3)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/sorcerer/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/sorcerer/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://mmo-codex.com/games/aion-2/classes/sorcerer/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:sorcerer:firestorm",
+          "core": true,
+          "status": "verified",
+          "basis": "To Lv 10, among the first points: Metabot leveling, aion2turkiye, daevaguides, mmo-codex (first to 8)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/sorcerer/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/sorcerer/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/sorcerer/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://mmo-codex.com/games/aion-2/classes/sorcerer/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:sorcerer:blaze",
+          "core": true,
+          "status": "verified",
+          "basis": "To Lv 10, next after the first three: Metabot leveling, aion2turkiye, daevaguides, mmo-codex (first to 8)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/sorcerer/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/sorcerer/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/sorcerer/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://mmo-codex.com/games/aion-2/classes/sorcerer/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:sorcerer:bittercold-wind",
+          "core": true,
+          "status": "verified",
+          "basis": "To Lv 10, next after the first three: Metabot leveling, aion2turkiye, daevaguides, mmo-codex (first to 8)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/sorcerer/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/sorcerer/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/sorcerer/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://mmo-codex.com/games/aion-2/classes/sorcerer/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:sorcerer:hellfire",
+          "core": true,
+          "status": "verified",
+          "basis": "To Lv 10, from when it is learned at 14: Metabot leveling, aion2turkiye, daevaguides, mmo-codex",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/sorcerer/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/sorcerer/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/sorcerer/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://mmo-codex.com/games/aion-2/classes/sorcerer/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:sorcerer:winters-shackles",
+          "core": true,
+          "status": "verified",
+          "basis": "To Lv 10: Metabot leveling, daevaguides (8 at about 26, then 10); aion2turkiye 8",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/sorcerer/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/sorcerer/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:sorcerer:robe-of-flame",
+          "core": true,
+          "status": "verified",
+          "basis": "To Lv 10: Metabot leveling, daevaguides (its first passive); aion2turkiye 5",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/sorcerer/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/sorcerer/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:sorcerer:fire-mark",
+          "core": true,
+          "status": "single-source",
+          "basis": "Fire Mark to 10 (single source): Metabot leveling; daevaguides only by its general 'passives to 10' line, aion2turkiye 5",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/sorcerer/build",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:sorcerer:wish-of-concentration",
+          "core": false,
+          "status": "disputed",
+          "basis": "Wish of Concentration to 7 (disputed): Metabot leveling 7; aion2turkiye and daevaguides 10",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/sorcerer/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/sorcerer/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/sorcerer/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:sorcerer:frost",
+          "core": false,
+          "status": "disputed",
+          "basis": "Frost to 5 (disputed): Metabot leveling 5; aion2turkiye 0, daevaguides 8 only if short on mana",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/sorcerer/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/sorcerer/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/sorcerer/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        }
+      ],
+      "skillOrderNotes": {
+        "interleave": "Two-source rules (docs/research/2026-10-sorcerer-pack.md §4.2: mmo-codex [berdugz], daevaguides [couga54]): Flame Arrow, Ice Chain and Firestorm are the first point sinks, Blaze and Bittercold Wind next, Hellfire from when it is learned at 14. The first passive is not agreed (Absorb Essence for berdugz, Robe of Flame for couga54); the guide takes Metabot's targets, which leave Absorb Essence out. The order between those rules is inferred.",
+        "budget": "Core nine to Lv 10 = 9 × 21 = 189 points; Wish of Concentration to 7 = 9 (198), Frost to 5 = 5 (203). LEVEL_POINTS[45] = 203 (Metabot; aion2turkiye agrees) plus Wisdom Stones. Wish of Concentration to 10 (aion2turkiye, daevaguides) is the first place for points from quests and Sealed Dungeons (claim C44)."
+      },
+      "specialtyPicks": {
+        "skill:sorcerer:flame-arrow": [
+          "spec:sorcerer:flame-arrow:1"
+        ],
+        "skill:sorcerer:firestorm": [
+          "spec:sorcerer:firestorm:1"
+        ],
+        "skill:sorcerer:blaze": [
+          "spec:sorcerer:blaze:1"
+        ],
+        "skill:sorcerer:bittercold-wind": [
+          "spec:sorcerer:bittercold-wind:3"
+        ],
+        "skill:sorcerer:hellfire": [
+          "spec:sorcerer:hellfire:1"
+        ],
+        "skill:sorcerer:winters-shackles": [
+          "spec:sorcerer:winters-shackles:3"
+        ]
+      },
+      "stigmaSlots": [
+        "stigma:sorcerer:element-enhancement",
+        "stigma:sorcerer:delayed-explosion",
+        "stigma:sorcerer:fire-wall",
+        "stigma:sorcerer:cold-storm"
+      ],
+      "stigmaTargets": [
+        {
+          "stigma": "stigma:sorcerer:element-enhancement",
+          "level": 8
+        },
+        {
+          "stigma": "stigma:sorcerer:delayed-explosion",
+          "level": 7
+        },
+        {
+          "stigma": "stigma:sorcerer:fire-wall",
+          "level": 5
+        },
+        {
+          "stigma": "stigma:sorcerer:cold-storm",
+          "level": 4
+        }
+      ],
+      "boardPlan": [
+        {
+          "node": "node:sorcerer:nezekan:r5c3",
+          "label": "Fire Mark · 1 of 2",
+          "milestone": "g12",
+          "order": 20,
+          "requires": {
+            "level": 12,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "disputed"
+        },
+        {
+          "node": "node:sorcerer:nezekan:r13c9",
+          "label": "Fire Mark · 2 of 2",
+          "milestone": "g12",
+          "order": 30,
+          "requires": {
+            "level": 12,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "disputed"
+        },
+        {
+          "node": "node:sorcerer:nezekan:r3c7",
+          "label": "Robe of Earth · 1 of 2",
+          "milestone": "g12",
+          "order": 40,
+          "requires": {
+            "level": 12,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "disputed"
+        },
+        {
+          "node": "node:sorcerer:nezekan:r11c13",
+          "label": "Robe of Earth · 2 of 2",
+          "milestone": "g12",
+          "order": 50,
+          "requires": {
+            "level": 12,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "disputed"
+        },
+        {
+          "node": "node:sorcerer:zikel:r6c7",
+          "label": "Grace of Enhancement · 1 of 2",
+          "via": "Grace of Enhancement is learned at Lv 21",
+          "milestone": "g20",
+          "order": 30,
+          "requires": {
+            "level": 21,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/skills/grace-of-enhancement",
+                "fields": [
+                  "learnLv"
+                ],
+                "checkedAt": "2026-10-19"
+              }
+            ],
+            "note": "the skill's learn level (the board opens at 20)"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "disputed"
+        },
+        {
+          "node": "node:sorcerer:zikel:r12c11",
+          "label": "Grace of Enhancement · 2 of 2",
+          "via": "Grace of Enhancement is learned at Lv 21",
+          "milestone": "g20",
+          "order": 40,
+          "requires": {
+            "level": 21,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/skills/grace-of-enhancement",
+                "fields": [
+                  "learnLv"
+                ],
+                "checkedAt": "2026-10-19"
+              }
+            ],
+            "note": "the skill's learn level (the board opens at 20)"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "disputed"
+        }
+      ],
+      "keyStacks": {
+        "eOrder": [
+          "stigma:sorcerer:element-enhancement",
+          "stigma:sorcerer:delayed-explosion",
+          "stigma:sorcerer:fire-wall",
+          "stigma:sorcerer:cold-storm"
+        ],
+        "defaultKeys": {
+          "keys": [
+            { "key": "Left click", "rows": [{ "skill": "skill:sorcerer:flame-arrow" }] },
+            { "key": "Right click", "rows": [{ "skill": "skill:sorcerer:ice-chain" }] },
+            { "key": "Q", "rows": [{ "skill": "skill:sorcerer:frost-burst" }, { "skill": "skill:sorcerer:frost" }] },
+            { "key": "E", "rows": [{ "skill": "skill:sorcerer:flame-scattershot" }, { "skill": "skill:sorcerer:blaze" }, { "skill": "skill:sorcerer:wish-of-concentration" }] },
+            { "key": "1", "rows": [{ "skill": "skill:sorcerer:firestorm" }] },
+            { "key": "2", "rows": [{ "skill": "skill:sorcerer:bittercold-wind" }] },
+            { "key": "3", "rows": [{ "skill": "skill:sorcerer:winters-shackles" }] },
+            { "key": "4", "rows": [{ "skill": "skill:sorcerer:hellfire" }] }
+          ],
+          "status": "verified",
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-19-sorcerer-keys-01",
+                "checkedAt": "2026-10-19",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Sorcerer skill window (quickslot grid, game default keys, both mouse badges), Lv 4"
+              },
+              "fields": [
+                "keys"
+              ]
+            }
+          ]
+        },
+        "status": "verified",
+        "sources": [
+          {
+            "owner": {
+              "ref": "owner:2026-10-19-sorcerer-keys-01",
+              "checkedAt": "2026-10-19",
+              "build": {
+                "scheme": "client",
+                "value": "unrecorded"
+              },
+              "what": "Sorcerer skill window (quickslot grid, game default keys, both mouse badges), Lv 4"
+            },
+            "note": "The keys (defaultKeys) are the game's defaults from the owner's screen (claim C49). The layouts daevaguides and mmo-codex recommend disagree (research §4.6) and are advice, not the default, so the guide shows no right-click stack. eOrder is the slot order, only for the Next up stigma card."
+          }
+        ]
+      },
+      "texts": {
+        "nezekan-plan": "From Metabot's Sorcerer page: the Fire Mark and Robe of Earth node pairs first (daevaguides and aion2turkiye start on Combat Speed, Cooldown Reduction and the Hellfire node instead).",
+        "stat-note": "B board · G gear. Metabot's Sorcerer ranking only (one site); later stats: Accuracy Bonus, HP."
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/sorcerer/build",
+          "checkedAt": "2026-10-19",
+          "fields": [
+            "skillOrder",
+            "stigmaSlots",
+            "stigmaTargets"
+          ],
+          "note": "Leveling build (editorial): nine skills to 10, Wish of Concentration 7, Frost 5 (203 points); stigmas Element Enhancement, Delayed Explosion, Fire Wall, Cold Storm at 8 / 7 / 5 / 4; the leveling rotation. No training order."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/sorcerer",
+          "checkedAt": "2026-10-19",
+          "fields": [
+            "boardPlan",
+            "statPriority"
+          ],
+          "note": "Class page: stat order (Attack, Critical Hit, MP, Accuracy Bonus, HP) and the board path (Zikel's Grace of Enhancement pair, Nezekan's Fire Mark and Robe of Earth pairs)."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/guides/class-builds-guide",
+          "checkedAt": "2026-10-19",
+          "fields": [
+            "stigmaSlots",
+            "statPriority"
+          ],
+          "note": "Class-builds guide (same site): the same stat order and stigma set."
+        },
+        {
+          "url": "https://daevaguides.com/en/sorcerer/",
+          "checkedAt": "2026-10-19",
+          "fields": [
+            "skillOrder",
+            "specialtyPicks",
+            "stigmaSlots",
+            "boardPlan"
+          ],
+          "note": "Compiles couga54, berdugz, aLuckyRO, EUTOPIA and others: Flame Arrow, Ice Chain and Firestorm first, Blaze and Bittercold Wind next, Hellfire and Wish from 12–14, Robe of Flame the first passive; Lv 8 picks; Element Enhancement first; hold Hellfire to charge it."
+        },
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/sorcerer/",
+          "checkedAt": "2026-10-19",
+          "fields": [
+            "skillOrder",
+            "specialtyPicks",
+            "stigmaSlots"
+          ],
+          "note": "Levelling [berdugz]: Flame Arrow, Ice Chain, Firestorm, Bittercold Wind and Blaze to 8 first, Hellfire and Wish as they arrive; Lv 8 picks; Element Enhancement, Delayed Explosion, Fire Wall, Cold Storm."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/sorcerer/",
+          "checkedAt": "2026-10-19",
+          "fields": [
+            "skillOrder",
+            "specialtyPicks",
+            "stigmaSlots",
+            "boardPlan"
+          ],
+          "note": "Leveling panel (its 25 most developed players): targets, Lv 8 picks, stigmas Element Enhancement, Fire Wall, Steel Barrier, Cold Storm; Nezekan first."
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "disputed",
+      "notes": [
+        "0.8 P17 (#506), from docs/research/2026-10-sorcerer-pack.md §4: Metabot's leveling build (203 points). Skill targets and Lv 8 picks are two-source where marked; Wish of Concentration 7, Frost 5, the stigma fourth and slot order and the first Daevanion nodes are disputed and take the research file's defaults (claims C43, C44, C45, C47); Fire Mark to 10 and the stat priority are single-source (C42, C44).",
+        "Learn levels of all 22 skills: Metabot's skill pages, the owner's Sorcerer skill window (2026-10-19) and mmo-codex.com's unlock table (claim C46)."
+      ],
+      "claims": [
+        "C43",
+        "C44",
+        "C45",
+        "C47",
+        "C49"
+      ]
+    }
+  ]
+}
