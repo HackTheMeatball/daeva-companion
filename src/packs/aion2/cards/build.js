@@ -41,19 +41,20 @@ function renderStacks(lv) {
   const k = rotKeys(char(state), lv), lmb = (KEYS.find(x => x.key === "Left click") || { rows: [] }).rows.filter(r => lv >= r.lv).map(r => r.n);
   const cols = [["Q", k.q], ["E", E_STACK(lv)], ["T", k.rmb]];
   document.getElementById("stackViz").innerHTML =
-    `<p class="fine muted kv-sugg">Suggested keys: Q, E and T. Move the skills there yourself; the game's defaults are listed below.</p>` +
+    `<p class="fine muted kv-sugg">Suggested keys: Q, E and T (T holds the stack the right-click macro fires). Move the skills there yourself.</p>` +
     [3, 2, 1, 0].map(r => `<i class="rn">${r}</i>` + cols.map(([key, rows]) => cell(rows[r], key, r).replace('class="sk', `class="sk${r === 0 ? " r0" : ""}`)).join("")).join("") +
     `<span></span>` + cols.map(([key]) => `<span class="kv-key">${key}</span>`).join("") +
     lmb.map(n => `<p class="lmb">Left click: <span class="sk">${gridIco(n)}<span class="nm">${n}</span></span></p>`).join("") + defaultKeysNote(lv) + stLaterHTML();
 }
-/* Under the guide's grid: the macro's T stack, the game's default keys of the skills learned by lv (KEYS), and the
-   macro's place. That the macro moves the default right-click skill (Savage Roar) off right click is inferred (C21a). */
+/* Under the guide's grid: the game's default keys of the skills learned by lv (KEYS), one line per key with the grid's
+   key chip (Design Lead on #565: a list, not a paragraph), then the macro's place. That the macro moves the default
+   right-click skill (Savage Roar) off right click is inferred (C21a). */
 function defaultKeysNote(lv) {
   const on = KEYS.map(x => ({ key: x.key, n: x.rows.filter(r => lv >= r.lv).map(r => r.n) })).filter(x => x.n.length);
   const rc = on.find(x => x.key === "Right click");
-  return `<p class="fine tline kv-note">T holds the stack the macro on right click fires.` +
-    (on.length ? ` The game's default keys: ${on.map(x => `${x.key} ${x.n.join(", ")}`).join(" · ")}.` : "") +
-    (rc ? ` The macro takes right click from ${rc.n.join(", ")} (inferred).` : "") + `</p>`;
+  return `<div class="kv-note kv-defs">` +
+    (on.length ? `<span class="khead">Game default keys</span><ul>${on.map(x => `<li><span class="kv-key${/ click$/.test(x.key) ? " mouse" : ""}">${x.key}</span> ${x.n.join(", ")}</li>`).join("")}</ul>` : "") +
+    (rc ? `<p class="fine">The macro takes right click from ${rc.n.join(", ")} (inferred).</p>` : "") + `</div>`;
 }
 /* The game's default keys (0.7 P11, KEYS: the Ranger, the Gladiator), drawn like the Assassin's grid: one column per key
    with rows, as deep as the deepest key's data, row 0 at the bottom; a key with one row (the mouse, 1–4) gets a line under

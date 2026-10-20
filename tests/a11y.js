@@ -354,7 +354,11 @@ async function load(p, state, mode) {
       marked: keys.filter(k => /†/.test(k.textContent + getComputedStyle(k, '::after').content)).map(k => k.textContent),
       head: (h => !!h && h === v.firstElementChild && h.getBoundingClientRect().bottom <= cells[0].getBoundingClientRect().top + 0.5 ? h.textContent : '')(v.querySelector(':scope > .kv-sugg')),
       lmbBelow: !!lmb && lmb.getBoundingClientRect().top >= keys[0].getBoundingClientRect().bottom,
-      noteBelow: !!note && !!lmb && note.getBoundingClientRect().top >= lmb.getBoundingClientRect().bottom, note: note ? note.textContent : '' };
+      noteBelow: !!note && !!lmb && note.getBoundingClientRect().top >= lmb.getBoundingClientRect().bottom,
+      defs: (lis => ({ head: (note && note.querySelector(':scope > .khead') || {}).textContent || '',
+        rows: lis.map(li => (li.querySelector('.kv-key') || {}).textContent + '|' + [...li.childNodes].filter(n => n.nodeType === 3).map(n => n.textContent).join('').trim()),
+        chipFirst: !!lis.length && lis.every(li => { const c = li.firstElementChild; return !!c && c === li.firstChild && c.classList.contains('kv-key') && c.getBoundingClientRect().height <= 24; }),
+        last: (note && note.lastElementChild || {}).textContent || '' }))(note ? [...note.querySelectorAll('li')] : []) };
   };
   const keyGridChecks = (kv, id) => {
     if (!kv || !kv.n) return;
@@ -370,8 +374,12 @@ async function load(p, state, mode) {
     ok(`keys ${id}: key chips Q / E / T on one line under their columns, Left click under them, the defaults note under that`,
       kv.keys.join('|') === 'Q|E|T' && !kv.keyBad.length && kv.lmbBelow && kv.noteBelow, kv);
     ok(`keys ${id}: one line above the grid says Q, E and T are suggested keys; the chips carry no mark`,
-      /^Suggested keys: Q, E and T\. .*the game's defaults are listed below\.$/.test(kv.head) && !kv.marked.length, { head: kv.head, marked: kv.marked });
-    ok(`keys ${id}: the note names Shadowstrike's default key 1 and the macro's T stack`, / 1 Shadowstrike/.test(kv.note) && /T holds the stack the macro on right click fires/.test(kv.note), kv.note);
+      /^Suggested keys: Q, E and T \(T holds the stack the right-click macro fires\)\. Move the skills there yourself\.$/.test(kv.head) && !kv.marked.length, { head: kv.head, marked: kv.marked });
+    /* Design Lead on #565 (2026-10-20): the defaults are a list under a "Game default keys" eyebrow, one key chip per
+       line, then the macro's place, still labelled (inferred) */
+    ok(`keys ${id}: the defaults list puts key 1 on Shadowstrike, one chip per line, and ends with the inferred macro line`,
+      kv.defs.head === 'Game default keys' && kv.defs.rows.includes('1|Shadowstrike') && kv.defs.chipFirst
+      && /^The macro takes right click from Savage Roar \(inferred\)\.$/.test(kv.defs.last), kv.defs);
   };
   for (const sn of ['lv27', 'lv45']) {
     const { ctx, p } = await page(1500);

@@ -1,6 +1,6 @@
 [
   { "case": "keys-lv30-1500", "kind": "before-after", "title": "Key setup: suggested keys and defaults",
-    "caption": "At level 30 the Key setup grid shows the guide's suggested keys Q, E and T, and a note under it lists the game's default keys." },
+    "caption": "At level 30 the Key setup grid shows the guide's suggested keys Q, E and T, and a short list under it gives the game's default keys, one key per line." },
   { "case": "keys-lv10-390", "kind": "before-after", "title": "Key setup on a phone",
     "caption": "At level 10 on a phone: Shadowstrike on Q, the right-click stack on T, and the game's defaults (1 Shadowstrike) listed below." }
 ]
