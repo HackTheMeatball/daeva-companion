@@ -1284,7 +1284,7 @@ workflows).
 | P18 | Rotation lists order, not play (note 15) → "how it plays" text per class | M | Opus | gen, golden, build-card | `research-rotation-play` |
 | P19 FR | Lv 39 join: 70–77 skill clicks in unlock order (note 10) → one row and one tap per skill | L | Opus | skills-card, nextup-card, app.css, golden, golden-nextup | P15 (input: `docs/design/0.9-loadout-mockup.md`) |
 | P20 FR | Daevanion ~22 ticks, no per-board or Stigma respec (note 9) → board rows, respec per board and all, Stigma respec | M | Opus | app.css, golden, daevanion-card | P16, `research-respec` (input: `docs/design/0.9-loadout-mockup.md`) |
-| P21 | Basic hides catch-up tools; Lv 4–16 chores lead Next up → kept, folded | M | Opus | nextup-card, app.css, golden-nextup | none (input: `docs/design/0.9-loadout-mockup.md`) |
+| P21 | Two views (Basic / Advanced) to maintain; Basic hides catch-up tools; Lv 4–16 chores lead Next up → one view, folds, chores folded | L | Opus | main.js, nextup-card, page-card, daevanion-card, app.css, golden, golden-nextup | none (input: `docs/design/0.9-one-view.md`, `docs/design/0.9-loadout-mockup.md`) |
 | P22 FR | Key setup inline with small icons, keys fixed (notes 11, 12, #388) → a sheet, icons fill each box, players rebind keys | L | Opus | build-card, app.css, a11y, golden, mig, save | `research-bindable-keys` (input: `docs/design/0.9-loadout-mockup.md`) |
 | P23 | Sources lists weigh 9.6 K gzip and 1,088 elements while closed → load on open | M | Opus | site, page-card, e2 | `research-sources-credit` |
 | S1 FR | Golden shares a shard → its own shard | S | Gus | ci | P6 |
@@ -1313,13 +1313,13 @@ At most five builds at a time. Ungated items queue first; gated ones go last and
 - **Wave 1 (at the go):** P1, P2, P3, P4, P5, P6, P7, P8 and S2, S3. Queue order P1 → P2 → P3 → P7 → P8 → P4 → P5 → P6, so
   the first five are lane-disjoint (P1 gen; P2 waits for P1 on gen and golden; P3, P7 and P8 start at once). Serial
   lanes: **gen** P1 → P2 → P6 → P10 → P11 → P13 → P15 → P16 → P17 → P18; **golden** P1 → P2 → P11 → P12 → P13 → the
-  research items → P19 → P20 → P22; **skills-card** P1 → P8 → P5 → P15 → P19; **nextup-card** P1 → P2 → P7 → P5 → P13 → P15 →
-  P19 → P21; **page-card** P4 → P5 → P23; **mig** P2 → P9 → P22; **schema** P3 → P6 → P10; **app.css** P8 → P19 → P20 → P21 →
-  P22; **build-card** P1 → P5 → P13 → P18 → P22; **daevanion-card** P5 → P16 → P20; **ci** (Gus) S2 → S3 → S1 → S4. Shared test and doc files: **save** (`tests/save.js`) P9 → P11 → P22; **e2** (`tests/e2test.js`) P3 → P23;
+  research items → P19 → P20 → P21 → P22; **skills-card** P1 → P8 → P5 → P15 → P19; **nextup-card** P1 → P2 → P7 → P5 → P13 → P15 →
+  P19 → P21; **page-card** P4 → P5 → P21 → P23; **mig** P2 → P9 → P22; **schema** P3 → P6 → P10; **app.css** P8 → P19 → P20 → P21 →
+  P22; **build-card** P1 → P5 → P13 → P18 → P22; **daevanion-card** P5 → P16 → P20 → P21; **main.js** P4 → P9 → P21; **ci** (Gus) S2 → S3 → S1 → S4. Shared test and doc files: **save** (`tests/save.js`) P9 → P11 → P22; **e2** (`tests/e2test.js`) P3 → P23;
   **run-mjs** (`tests/run.mjs`) P6 → P14 → S1; **architecture** (`docs/ARCHITECTURE.md`) P5 → P9 → P14 (plan review, #609).
 - **Wave 2 (after P2):** P9, P10, P11, P13; then P12 (after P11 and P6) and P14 (after P9 and P10).
 - **Wave 3 (as research lands):** P15, P16, P17, P18, in the order their files land.
-- **Wave 4 (as mocks and OKs land):** P19, P20, P21 on the catch-up mock; P22 on the keys mock; P23 on the sources-credit verdict; S4 once #609 merges.
+- **Wave 4 (as mocks and OKs land):** P19, P20 on the catch-up mock; P21 on the one-view hide list and the mock; P22 on the keys mock; P23 on the sources-credit verdict; S4 once #609 merges.
 - **Critical path:** P2 → P11 → P12 → R (L + M + L, about 5.5 h of build at the stall limits, plus review). It runs
   through no owner gate and no research. A gated item whose OK isn't typed by the time the rest is done moves to 0.10
   rather than holding the release.

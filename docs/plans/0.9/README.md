@@ -434,21 +434,43 @@ Rules for every item:
 - **Lanes:** app.css, golden, daevanion-card. **Model:** Opus, M (90 min).
 - **After:** P16, research-respec.
 
-## P21: Basic keeps the late-start tools; early chores fold away
+## P21: One view: the essentials by default, the rest in folds; early chores fold away
 
-- **Problem.** Basic hides Sync levels, both Respecs, Daevanion "All nodes", crystals left and Stigma slots: the tools a
-  late starter needs (UX finding 4; owner note 7 fixed the Respec buttons in 0.8.1). A Lv 39 join's Next up leads with
-  Lv 4–16 "Missed" chores (UX finding 8).
-- **Result.** As Design Lead's approved mock shows: Basic keeps the catch-up tools; for a joined save, "Missed" chores more
-  than 10 levels old fold into one row ("12 early steps you probably did · Review") with one undoable "All done".
-- **Inputs.** `docs/design/0.9-loadout-mockup.md` and `docs/design/mockups/0.9-loadout/` (Design Lead's mocks, #610; merged with Design Lead's look OK after the fresh review; owner 2026-10-20 5:21 and 5:24 PM ET). Kickoff holds the item until they are on main.
-- **Files.** `src/packs/aion2/nextup.js`, `src/packs/aion2/cards/nextup-kinds.js`, `src/styles/app.css`, the tests.
-- **No-gos.** Basic stays essentials only: nothing else moves into it. If Design Lead merges Basic and Advanced into one view (owner's
-  question, 2026-10-20 5:45 PM ET), this item follows that call instead.
+- **Problem.** Basic and Advanced are two views to maintain: about 20 `body.basic` CSS rules and 22 mode branches
+  (`main.js`, `nextup.js`, `page.js`, `nextup-kinds.js`, `daevanion.js`, `milestones.js`), and Basic gaps keep turning
+  up as bugs (no Respec in Basic, owner note 7; the rail race, #105; the locked shells). Basic also hides the late
+  starter's tools (UX finding 4), and a Lv 39 join's Next up leads with Lv 4–16 "Missed" chores (UX finding 8). The owner
+  asked whether two views need to exist (2026-10-20 5:45 PM ET); DECISIONS "One view" (team, after the outside critic).
+- **Result.** As Design Lead's hide list and mock show: no mode switch. Each card shows its headline step and main button;
+  what only Advanced showed is a fold, closed by default, that remembers being opened. For a joined save, "Missed" chores
+  more than 10 levels old fold into one row ("12 early steps you probably did · Review") with one undoable "All done".
+  The critic's conditions, each a stated line in the PR body:
+  1. Next up shows one list, as the hide list names it (Basic's filtered list leads; adv and later cards move to the
+     line the hide list gives them). `rankNext`'s `basic` option and the forced Fastest track go.
+  2. The default flips for saves that open in Advanced today (`src/main.js` reads no `mode` as Advanced): the PR names
+     each thing those players stop seeing first.
+  3. The Fastest / Completionist toggle ends as the hide list says (kept as a "Main path only" control with its
+     drawbacks text, or removed with that text moved), never silently.
+  4. Every rule that names Basic is rewritten in the same PR from the owner's 5:45 PM words: CLAUDE.md "Basic mode =
+     essentials only", the review checklist's Basic and Advanced line, and the DECISIONS rows the "One view" row lists
+     (the Release Planner writes the DECISIONS text; the build proposes it in the PR body).
+  Also: the save's `mode` field stops being read and leaves the bug-report payload (no key bump, pre-1.0 rule); the rail
+  keeps one behaviour on purpose (Basic's rail styles in `app.css` are layout, not hiding).
+- **Inputs.** `docs/design/0.9-one-view.md` (Design Lead's hide list: every element Basic hides today marked default
+  open, fold or drop, with the drops named), `docs/design/0.9-loadout-mockup.md` and `docs/design/mockups/0.9-loadout/`
+  (Design Lead's mocks with the look OK; owner 2026-10-20 5:21 and 5:24 PM ET). Kickoff holds the item until they are on
+  main.
+- **Files.** `src/main.js`, `src/core/nextup.js`, `src/cards/nextup.js`, `src/packs/aion2/nextup.js`,
+  `src/packs/aion2/cards/{nextup-kinds,daevanion,milestones,page}.js`, `src/styles/app.css`, `src/styles/sync.css`,
+  `CLAUDE.md` (the Basic line only), `docs/reviews/README.md` (the checklist line), the tests.
+- **No-gos.** Nothing the hide list marks "drop" goes without its line in the PR body. No save key change. No new motion.
 - **Acceptance.**
-  - [ ] Browser test: "All done" ticks the folded chores and Undo reverses it.
-  - [ ] Shots of Basic at 390 px.
-- **Lanes:** nextup-card, app.css, golden-nextup. **Model:** Opus, M (90 min). Opus because golden-nextup starts on Opus.
+  - [ ] A test fails if any `body.basic` rule or `basic` / `mode` branch is left in `src/`.
+  - [ ] A test: a save with `mode: 'advanced'` and one with no `mode` open the same page.
+  - [ ] Browser test: "All done" ticks the folded chores and Undo reverses it; a fold opened stays open after reload.
+  - [ ] Before / after shots at 1500 and 390 px of a fresh Lv 1, a Lv 39 join and a Lv 39 Advanced save, `scrapbook.json`.
+- **Lanes:** main.js, nextup-card, page-card, daevanion-card, app.css, golden, golden-nextup. **Model:** Opus, L (120 min).
+  Steps (K1): the hide-list test, then the folds card by card, then Next up's one list, then the rule rewrites.
 - **After:** none.
 
 ## P22: Key setup as a sheet: icons fill each box, and players choose their keys
