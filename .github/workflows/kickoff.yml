@@ -57,6 +57,8 @@ jobs:
             // What Sonnet may not change: one list for this routing and every Sonnet prompt (Kaizen (Gale), 2026-10-20).
             const ROUTE = JSON.parse(Buffer.from((await github.rest.repos.getContent({ owner, repo, path: '.github/routing/opus-paths.json', ref: 'main' })).data.content, 'base64').toString('utf8'));
             core.setOutput('touches', ROUTE.sonnetMayNotTouch);
+            // Words that mean a spec changes what gen compiles, so it needs the gen lane (Kaizen (Gale), 2026-10-20).
+            const GEN = JSON.parse(Buffer.from((await github.rest.repos.getContent({ owner, repo, path: '.github/routing/gen-lane.json', ref: 'main' })).data.content, 'base64').toString('utf8'));
             const LANES = ['golden', 'golden-nextup', 'golden-journey', 'golden-milestones', 'golden-regional', 'golden-route', 'mig', 'main.js', 'gates', 'gen', 'app.css', 'ci', 'a11y', 'release'];
             // OPUS-FILES START (tests/kickoff.mjs runs this block)
             // PIP-06 (Kaizen (Gale), 0.7 rules audit, 2026-10-19): a Sonnet build whose issue's "## Files" section names an
@@ -104,6 +106,14 @@ jobs:
                 mnt: [...new Set([...(scan.match(/\/mnt\/[^\s`'")\]]+/g) || []).map((x) => x.replace(/[.,;:]+$/, '')), ...outside.filter((x) => !x.startsWith('/mnt/'))])],
                 repo: [...new Set(named.filter((x) => !/^[~/]/.test(x)))],
               };
+            };
+            // Kaizen (Gale), 2026-10-20 (spec-incomplete-files three times today: #501, #504, and #503, whose PR #565 touched
+            // tools/gen on lanes build-card,a11y,rows): a spec whose Result names data/, or that adds a pack field or moves game
+            // facts into data/, changes what gen compiles, so its Lanes must include gen. The words are in .github/routing/gen-lane.json (GEN).
+            const genLaneMiss = (lanes, body) => {
+              if ([...lanes].includes('gen')) return null;
+              const hit = GEN.keywords.find((k) => new RegExp(k.re, 'im').test(k.in.map((f) => specField(body, f)).join('\n')));
+              return hit ? hit.says : null;
             };
             // The part of a path before its first glob segment, so `src/assets/icons/*` is looked up as src/assets/icons.
             const lookupPath = (p) => { const segs = p.split('/'), k = segs.findIndex((x) => /[*?{[]/.test(x)); return (k < 0 ? segs : segs.slice(0, k)).filter(Boolean).join('/'); };
@@ -366,6 +376,17 @@ jobs:
                   if (fresh.length) await github.rest.issues.createComment({ owner, repo, issue_number: n,
                     body: fresh.map((x) => `spec: input not in repo: ${x}`).join('\n') + '\n\nKickoff holds this item until every input the spec names is a repo path on main (builds can\'t read /mnt/). Release Planner: move the file into the repo or fix the path; the queue line stays.' });
                 }
+                if (alone) break; continue;
+              }
+              const genMiss = genLaneMiss(want, iss.body);
+              if (genMiss) {
+                core.warning(`#${n}: spec: gen lane missing (${genMiss}); held`);
+                const note = `  - held: spec: gen lane missing (kickoff ${stamp})`;
+                if (!/^\s+- held: /.test(lines[i + 1] || '')) { lines.splice(i + 1, 0, note); pruned = true; }
+                else if (!/held: spec: gen lane missing/.test(lines[i + 1])) { lines[i + 1] = note; pruned = true; }
+                const said = (await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: n, per_page: 100 })).map((c) => c.body || '');
+                if (!said.some((b) => b.includes('spec: gen lane missing'))) await github.rest.issues.createComment({ owner, repo, issue_number: n,
+                  body: `spec: gen lane missing: ${genMiss}\n\nKickoff holds this item until its queue line's lanes include gen (a data/ change compiles through tools/gen; .github/routing/gen-lane.json). Release Planner: add gen to the lanes in #114 and the spec, or reword the spec if it doesn't touch gen; the queue line stays.` });
                 if (alone) break; continue;
               }
               const why = await alreadyBuilt(n);
