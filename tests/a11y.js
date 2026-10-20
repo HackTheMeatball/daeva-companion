@@ -351,7 +351,8 @@ async function load(p, state, mode) {
       &&nm0.getBoundingClientRect().bottom <= c0.getBoundingClientRect().bottom && c0.getBoundingClientRect().height === hs[0] && !overWide().length;
     nm0.textContent = was;
     return { n: cells.length, hs, split, over, noIco, unnamed, longFit, keys: keys.map(k => k.textContent), keyBad,
-      sugg: keys.filter(k => k.classList.contains('sugg') && getComputedStyle(k, '::after').content.includes('†')).map(k => k.textContent),
+      marked: keys.filter(k => /†/.test(k.textContent + getComputedStyle(k, '::after').content)).map(k => k.textContent),
+      head: (h => !!h && h === v.firstElementChild && h.getBoundingClientRect().bottom <= cells[0].getBoundingClientRect().top + 0.5 ? h.textContent : '')(v.querySelector(':scope > .kv-sugg')),
       lmbBelow: !!lmb && lmb.getBoundingClientRect().top >= keys[0].getBoundingClientRect().bottom,
       noteBelow: !!note && !!lmb && note.getBoundingClientRect().top >= lmb.getBoundingClientRect().bottom, note: note ? note.textContent : '' };
   };
@@ -364,10 +365,12 @@ async function load(p, state, mode) {
     ok(`keys ${id}: every filled cell shows its icon`, !kv.noIco.length, kv.noIco);
     ok(`keys ${id}: every filled cell's accessible name carries its key and row`, !kv.unnamed.length, kv.unnamed);
     /* 0.8 P14 (#503): the game's columns (research-387-macro): Q, E and T (the macro's stack), all three the guide's
-       suggested binding (†); left click (the game's default) its own line under them, then the game's default keys */
+       suggested binding, said once in a line heading the grid (Design Lead on #565: no † per chip); left click (the
+       game's default) its own line under them, then the game's default keys */
     ok(`keys ${id}: key chips Q / E / T on one line under their columns, Left click under them, the defaults note under that`,
       kv.keys.join('|') === 'Q|E|T' && !kv.keyBad.length && kv.lmbBelow && kv.noteBelow, kv);
-    ok(`keys ${id}: Q, E and T are marked † (the guide's suggested binding)`, kv.sugg.join('|') === 'Q|E|T', kv.sugg);
+    ok(`keys ${id}: one line above the grid says Q, E and T are suggested keys; the chips carry no mark`,
+      /^Suggested keys: Q, E and T\. .*the game's defaults are listed below\.$/.test(kv.head) && !kv.marked.length, { head: kv.head, marked: kv.marked });
     ok(`keys ${id}: the note names Shadowstrike's default key 1 and the macro's T stack`, / 1 Shadowstrike/.test(kv.note) && /T holds the stack the macro on right click fires/.test(kv.note), kv.note);
   };
   for (const sn of ['lv27', 'lv45']) {

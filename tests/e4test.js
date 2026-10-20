@@ -163,6 +163,11 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   ok('#15 F7: Lv 2: Ambush (learned at 3) is not in the rotation or the key grid', !/Ambush/.test(at2.chain + at2.play) && !at2.grid.includes('Ambush') && /Savage Roar/.test(at2.chain), at2);
   ok('#15 F7: Lv 3: Ambush is in the right-click chain and the key grid', /Ambush/.test(at3.chain) && at3.grid.includes('Ambush'), at3);
   ok('#15 F7: Lv 13 without / Lv 14 with Insignia Explosion', !/Insignia Explosion/.test(at13.chain) && !at13.grid.includes('Insignia Explosion') && /Insignia Explosion/.test(at14.chain) && at14.grid.includes('Insignia Explosion'), [at13, at14]);
+  /* 0.8 P14 (#503, #565): the guide's rotation line names Q as the guide's key with the game's default (C21a); the play
+     steps stay plain (the Key setup grid's heading line says once that Q and E are suggested keys) */
+  r = await p.evaluate(() => ({ seq: [...document.querySelectorAll('.rotseq')].map(x => x.textContent), play: document.getElementById('rotPlay').textContent }));
+  ok('P14: the rotation line says "Q: Shadowstrike (the guide\'s key; the game\'s default is 1)"', r.seq.length > 0 && r.seq.every(x => x.includes("Q: Shadowstrike (the guide's key; the game's default is 1)")), r.seq);
+  ok('P14: the play steps carry no † and no "game default"', /Q\s*Shadowstrike/.test(r.play) && !/†|game default/.test(r.play), r.play);
   r = await p.evaluate(() => { const st = SP_STEPS.find(x => x.s.n === 'Ambush' && x.L === 2), was = st.req; st.req = 15; renderRotation(); const out = document.getElementById('rotChain').innerText; st.req = was; renderRotation(); return out; });
   ok('#15 F7: the drawer follows the Skills card unlock level (Ambush moved to Lv 15 → gone at Lv 14)', !/Ambush/.test(r) && /Heart Gore/.test(r), r);
 
