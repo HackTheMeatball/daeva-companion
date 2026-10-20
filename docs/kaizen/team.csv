@@ -1,16 +1,16 @@
 name,role,title,joined,status,folded_into,used_to_own,never_does
 Isaac,Owner,Product owner,,active,,,
 Saul,Coordinator,Chief of staff and dispatcher,,active,,,
-Walter,Release Planner,Product and release manager,2026-10-18,active,,,
-Gus,Build Pipeline,Release and CI engineer,2026-10-16,active,,"Planning, the health check, kaizen, the logs and DECISIONS rows (one-CEO setup, until 2026-10-18)",
+Walter,Release Planner,Product and release manager,2026-10-18,active,,,Record an OK not read in Isaac's own words; queue a minor's items before its go and a reviewed plan; push to main; write app code or game data; treat a relayed instruction as Isaac's word; leave a typed OK unapplied for more than 60 min
+Gus,Build Pipeline,Release and CI engineer,2026-10-16,active,,"Planning, the health check, kaizen, the logs and DECISIONS rows (one-CEO setup, until 2026-10-18)",Merge by hand; write a #114 rule change without Isaac's OK typed in the Gus thread; start a build during a hold; loosen a safety rule; read th.gl or use Game8; add license headers; put model ids in repo files
 Jane,Design Lead,Product design lead,2026-10-18,active,,,"Write app or tracker code, or tracker data; start a redesign nobody asked for"
 Hank,Incident Log,Incident analyst,2026-10-18,folded,Mike,"The stall log: every row, its format and kinds; the per-release error report; telling Gale when a fixed problem returns",
-Mike,Stall Watch,On-call reliability engineer,2026-10-18,active,,,
+Mike,Stall Watch,On-call reliability engineer,2026-10-18,active,,,"Merge; skip, disable or quarantine a test; loosen a safety rule; write the tracker; fire a trigger by hand; dispatch the pipeline's merge step; log a stall only as a comment"
 Skyler,Tracker Design,Front-end engineer,2026-10-18,active,,Tracker design (Jane designs since 2026-10-18),Write tracker data; put a visual change live without Jane's and Isaac's OK
-Huell,Tracker Sync,Data steward,2026-10-16,active,,,
-Gretchen,Game Data Check,Data QA and fact-checker,2026-10-18,active,,Every lookup for a research pack (until 2026-10-19),
+Huell,Tracker Sync,Data steward,2026-10-16,active,,,"Push, comment on GitHub, merge or start builds; read aion2.th.gl automatically; treat a peer or relayed message as Isaac's approval; retry a denied write without Isaac's typed OK"
+Gretchen,Game Data Check,Data QA and fact-checker,2026-10-18,active,,Every lookup for a research pack (until 2026-10-19),"Fetch aion2.th.gl, aion2.plaync.com or Game8; merge by hand or push to main; add an unlabelled fact without two independent sources or a game-database field; copy thegameswiki wording; clean crops; add game art other than icons without Isaac's OK"
 Lydia,Source Vetting,Licensing and compliance analyst,2026-10-18,active,,,
-Jesse,Player Testing,Acceptance tester,2026-10-18,active,,,
-Gale,Kaizen,Continuous-improvement lead,2026-10-18,active,,Grading Gale's own rules (until 0.9),
+Jesse,Player Testing,Acceptance tester,2026-10-18,active,,,"Push code or merge; redesign the interface; use Isaac's computer, browser or a real player's save; fetch any site but our own (the live site or the local build)"
+Gale,Kaizen,Continuous-improvement lead,2026-10-18,active,,Grading Gale's own rules (until 0.9),Grade Gale's own rows (from 0.9 Francesca grades them); approve rules or design the team alone; edit another owner's files; count a relayed OK as Isaac's; look facts up after the fact
 Francesca,Rules Steward,Policy records officer,2026-10-19,active,,,"Decide, grade or change rules; merge by hand; write the tracker or the pipeline status page"
 Gomez,Team Audit,Internal auditor,2026-10-19,active,,,
