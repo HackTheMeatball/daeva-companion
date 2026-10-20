@@ -54,7 +54,11 @@ expcarry.com, oslink.io, u4n.com (**Spot**: its terms ban scraping). All checked
 aion2kina.com (fan toolkit and map; terms ban only "unreasonable automated load"; its map markers aren't game art,
 inferred) checked 2026-10-19, `2026-10-t47-icon-check.md`. Steam Index API (public-api.steamidx.com: AION 2's Steam
 build ID changes with timestamps; owner-created key and the owner's network-list OK needed first; its site pages ask
-not to be scraped, so never those) checked 2026-10-20, `2026-10-steam-and-news-vetting.md`.
+not to be scraped, so never those; its API terms require a "Data from Steam Index" link, plus a Sources card entry,
+wherever the app shows its data) checked 2026-10-20, `2026-10-steam-and-news-vetting.md`. daevacompass.com (fan
+database, news, guides; terms ban only disruption, bypassing protections and abusive automated requests; robots allows
+all but `/api/` and account pages; its terms say game images belong to NCSOFT, so an icon from it needs the owner's
+OK) checked 2026-10-20, `2026-10-icon-sites-vetting.md`.
 
 ## Fail (never read by a session)
 
@@ -73,8 +77,10 @@ not to be scraped, so never those) checked 2026-10-20, `2026-10-steam-and-news-v
 | timesaver.gg | Connection reset, not reached | 2026-10-18 |
 | namu.wiki | Cloudflare challenge (403) on our first request, the terms page (`/w/나무위키:이용약관`). Owner browser only | 2026-10-19 |
 | Allakhazam / ZAM (\*.allakhazam.com, Fanbyte terms) | Terms ban "spiders, robots, crawlers, data mining tools" | 2026-10-19 |
-| Steam Web API (api.steampowered.com) | robots.txt `Disallow: /` for all agents (its API terms allow keyed use, but robots wins for us) | 2026-10-19 |
+| Steam Web API (api.steampowered.com) | Terms: Pass (keyed use). robots.txt `Disallow: /` for all agents, and robots wins for us | 2026-10-19 |
 | steamdb.info | Its FAQ (its terms): "We also do not allow scraping/crawling on SteamDB". Owner browser only | 2026-10-20 |
+| questlog.gg | Cloudflare challenge (403) on our first request, the terms page (`/terms`). Owner browser only | 2026-10-20 |
+| 6sword.com | robots.txt `User-Agent: *` / `Disallow: /`; terms (제7조) ban automated collection and scraping without written consent | 2026-10-20 |
 
 ## Keeping this current
 

@@ -1,0 +1,26 @@
+# Icon sites vetting (questlog.gg, 6sword.com, daevacompass.com), 2026-10-20
+
+Owner's ask (Game Data Check thread, 2026-10-20 12:02 PM ET): could any of these sites supply the Chanter
+"Recuperation" skill icon (Lv 8 active; in game, an open hand under light)? Game8 was not checked (CLAUDE.md: never
+Game8). Source Vetting. Terms read first, then robots.txt; our User-Agent, one request at a time, at least 5 s apart;
+nothing kept beyond what is listed here.
+
+| Site | Terms (read first) | robots.txt | Verdict |
+|---|---|---|---|
+| questlog.gg | `/terms` answered with a Cloudflare "Just a moment..." challenge (403). Stopped there | Not read | Fail; owner browser only |
+| 6sword.com | <https://6sword.com/terms> (in force 2026-04-13), 제7조 1-나: no automated collection or scraping of the service without 6Sword's prior written consent. Footer: no unauthorised copying; game data and image copyright belongs to NCSOFT | `User-Agent: *` / `Disallow: /` (only Googlebot, Daum, DuckDuckBot and a calendar importer allowed) | Fail |
+| daevacompass.com | <https://daevacompass.com/terms> (French, updated 2026-08-23), "Utilisation acceptable": no disrupting the service, bypassing its protections or abusive automated requests. "Propriété intellectuelle": its own content and interface are protected; AION names, images and game elements belong to NCSOFT | `User-Agent: *`, `Allow: /`; disallows `/api/`, `/admin`, `/design-system`, `/login`, `/settings`, `/setup`, `/continue` | Pass (Full, reuse unknown). Not on the network allowlist |
+
+## The Recuperation icon (off-domain spot check)
+
+- daevacompass.com: <https://daevacompass.com/en/db/abilities/18120000> (record ID 18120000, Recuperation) shows
+  <https://daevacompass.com/images/skills/icon_ch_skill_013.webp>, 72×72, sha256 `0467a008…afb86`: an open hand
+  under a green light beam, which matches the owner's description.
+- Metabot's file for the same ID, <https://metabot.gg/web/aion2/skills/18120000.webp> (256×256), shows a green
+  four-point star, not the hand. Metabot is not a match for this skill.
+- Copies for review: `/mnt/project-files/icons-hq/dc_icon_ch_skill_013_recuperation.webp` and
+  `mb_18120000_recuperation.webp`. daevacompass isn't an approved source, so the standing icon OK doesn't cover it:
+  using it in the app needs the owner's OK.
+
+Requests: daevacompass.com 6 (terms, robots.txt, sitemap, the Chanter class page, the ability page, the icon);
+6sword.com 2 (terms, robots.txt); questlog.gg 1; metabot.gg 2 (skill page, icon).
