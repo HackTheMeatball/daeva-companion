@@ -49,7 +49,7 @@ function installProbe([KEY, EARLY]) {
       const tele = c.querySelector('.ns-tele'); if (tele) { const wb = tele.querySelector('[data-nswalk]'); r.tl = `${T(tele.querySelector('span'))} ${wb ? wb.dataset.nswalk : ''}`.trim(); }
       const ex = c.querySelector('.ns-extra');
       if (ex) r.x = $$('li.qg', ex).map(li => li.classList.contains('rq-aux') || li.classList.contains('more') ? T(li)
-        : $$('.ql', li).map(q => { const cb = q.querySelector('.q-cb'), nm = q.querySelector('a, span[title]');
+        : $$('.ql', li).map(q => { const cb = q.querySelector('.q-act'), nm = q.querySelector('a, span[title]');
           return `${q.classList.contains('fu') ? '-> ' : ''}${cls(q, ['new', 'run', 'lock'])}${cb && cb.disabled ? '(disabled)' : ''} ${T(nm)}${q.querySelector('.q-rec') ? ' [' + T(q.querySelector('.q-rec')) + ']' : ''}${q.classList.contains('near') ? ' (near)' : ''}`; }).join(' | '));
       const obj = c.querySelector('.ns-obj'); if (obj) r.o = $$(':scope > li', obj).map(T);
       return r;

@@ -612,6 +612,17 @@ on purpose: the guide shows nothing rather than an unverified value.
   and the last-resort check on unlisted sites found none (docs/research/2026-10-t47-icon-check.md, 2026-10-19). Any of
   them used in the app comes from the owner's crop, with its row recorded here like `story-complete.png` above.
 
+- **Regional quest state icons and the Extract flask: in the site** (0.8 P13, #502; DECISIONS `owner-ok-0.8-crop-icons`,
+  owner A 2026-10-19 2:36 PM ET, `docs/plans/0.8/inputs/design-v2/README.md` §2 / §4). The state icon in place of a
+  regional quest's box (milestone rows, Next up and the legend) and the flask in the extract tip. Each is a byte-for-byte
+  copy of the file named in the last column (the turned-in check is SVG, not art):
+
+  | File | Source | File URL | Retrieved | Copied from |
+  |---|---|---|---|---|
+  | rq-available.png (33 px, transparent; regional quest available, the teal star; "to pick up") | owner screen 2026-10-18 `regional-quest-available.png` (private archive; owner crop, T-47) | — (owner crop) | 2026-10-18 10:55 PM ET (cleaned) | `docs/research/owner-crops-2026-10-18/regional-available-owner-crop.png` |
+  | quest-district.png (52×52, transparent; Metabot `quest_district`, WebP → PNG, pixels unchanged; "in progress") | <https://metabot.gg/en/aion-2/map/altgard> | <https://metabot.gg/web/aion2/mapicons/quest_district.webp> | 2026-10-20 1:20 PM ET | `docs/research/map-icons-2026-10-20/quest-district.png` |
+  | extract-flask.png (35 px, transparent; the item tooltip's Extract action) | owner screen 2026-10-18, item tooltip (private archive; owner crop, T-47) | — (owner crop) | 2026-10-18 10:55 PM ET (cleaned) | `docs/research/owner-crops-2026-10-18/extract-flask-owner-crop.png` |
+
 - **Icons not in the claude.ai artifact** (closed by 0.7 P9). The five skill icons above (added 2026-10-15) never got a
   `/_blob/` id, so the frozen artifact shows the initials square for them. The artifact is no longer built and its blob
   list (`scripts/artifact-blobs.json`) is gone, so nothing is left to do.

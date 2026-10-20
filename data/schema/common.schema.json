@@ -869,14 +869,14 @@
       }
     },
     "richText": {
-      "description": "Explainer bodies (tips): inline text plus <p>, <p class=\"muted\">, <ol>, <ul>, <li>.",
+      "description": "Explainer bodies (tips): inline text plus <p>, <p class=\"muted\">, <ol>, <ul>, <li>, and an inline game icon <img class=\"tip-ico\" src=\"assets/icons/<file>.png\" alt=\"\"> (0.8 P13: the extract flask; the text beside it names it).",
       "type": "string",
       "minLength": 1,
       "maxLength": 6000,
       "not": {
         "anyOf": [
           {
-            "pattern": "<(?!/?(b|i|p|ol|ul|li)>|br ?/?>|p class=\"muted\">)",
+            "pattern": "<(?!/?(b|i|p|ol|ul|li)>|br ?/?>|p class=\"muted\">|img class=\"tip-ico\" src=\"assets/icons/[a-z0-9-]+\\.png\" alt=\"\">)",
             "type": "string"
           },
           {

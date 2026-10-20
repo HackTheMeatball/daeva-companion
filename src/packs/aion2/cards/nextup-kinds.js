@@ -27,7 +27,7 @@ import { MAP_ICO, rqTicked, snoozeToggle } from "../../../cards/milestones.js";
 import { capFirst, isBasic, renderNow } from "../../../cards/nextup.js";
 import { travelAdviceOn } from "../nextup.js";
 import { keyHint } from "../hotkeys.js";
-import { kibMark } from "./shared.js";
+import { kibMark, rqStIco } from "./shared.js";
 import { itemLinkIcos, itemQty, stNote, stTag } from "../data/markup.js";
 import { pageState as state, pageSave as save, pageUpdate as update, pageMainEl as mainEl, pageSMOOTH as SMOOTH, pageSD_RW as SD_RW, pageSH_REWARD as SH_REWARD, pageNO_AREA as NO_AREA, pageSpCostTxt as spCostTxt, pageRqReqOf as rqReqOf, pageSpecPickOf as specPickOf, pageMapFocus as mapFocus, pageAion2QuestMap as aion2QuestMap, pageGoAreas as goAreas, pageCubeClick as cubeClick, pageStTickClick as stTickClick, pageStUpClick as stUpClick, pageStLvClick as stLvClick, pageSpMini as spMini, pageStIco as stIco, pageDvShort as dvShort, pageQProg as qProg } from "../../../cards/page.js";
 
@@ -64,15 +64,20 @@ function rqExtraHTML(a) {
   const roots = a.open.filter(x => !x.lock); /* milestone order, so rows don't jump when you tick one */
   const preTxt = x => x.pre.join(" and ") + (x.pre.length > 1 ? " are" : " is");
   const line = (x, fu) => { const n = x.it.name, q = x.it.q, id = q.id, st = (x.run ? "In progress" : x.lock ? `Unlocks when ${preTxt(x)} turned in` : "Not picked up") + (q.zone ? ` · ${q.zone}${stNote(q.zoneSt)}` : "") + (q.kib ? ` · Kibelisk: ${q.kib}${q.m ? ` (${q.m} m)` : ""}` : "") + (q.xp ? ` · ${fmtXP(q.xp)} XP` : "");
-    const label = id && !x.lock ? `<a href="${aion2QuestMap(id)}" target="_blank" rel="noopener" title="${n} · ${st} · Lv ${q.rec} · show on the map">${n}</a>` : `<span title="${n} · ${st} · Lv ${q.rec}">${n}</span>`;
+    /* 0.8 P13 (design-v2 §2 A, v4): state icon · name (cut with "…", the full name in its title) · map pin · one button
+       that says the next step, in fixed columns so the left edges line up */
+    const label = `<span class="q-n" title="${n} · ${st} · Lv ${q.rec}">${n}</span>`;
     /* Recommended level above yours: a small level tag, so a hard quest doesn't look like the obvious next pick. */
     const hi = q.rec > lv && !x.run ? `<span class="q-rec" title="Recommended level ${q.rec}">Lv ${q.rec}</span>` : "";
-    /* Box: click once = picked up (in progress), again = turned in. Same two clicks as the milestone rows. */
-    const box = `<button type="button" class="q-cb" data-rqk="${x.k}"${x.lock ? " disabled" : ""} aria-pressed="${x.run ? "mixed" : "false"}" aria-label="${n}: ${x.lock ? "locked" : x.run ? "in progress, mark turned in" : "not picked up, mark picked up"}" title="${x.lock ? `Unlocks when ${preTxt(x)} turned in` : x.run ? "In progress · click when turned in" : "Click when you pick it up"}"></button>`;
+    /* Pick up = picked up (in progress), Turn in = turned in: the milestone rows' two steps. */
+    const verb = x.run ? "Turn in" : "Pick up";
+    const btn = `<button type="button" class="q-act${x.run ? " go" : ""}" data-rqk="${x.k}"${x.lock ? " disabled" : ""} aria-label="${verb}: ${n}${x.lock ? " (locked)" : ""}" title="${x.lock ? `Unlocks when ${preTxt(x)} turned in` : x.run ? "In progress · press when you turn it in" : "Press when you pick it up"}">${verb}</button>`;
     const near = hereArea && q.zone === hereArea && !x.lock;
+    /* the map pin: muted, or the accent when the quest is near your story step (was the inline .q-near pin) */
+    const pin = id && !x.lock ? `<a class="q-pin${near ? " near" : ""}" href="${aion2QuestMap(id)}" target="_blank" rel="noopener" title="${near ? `Near your story step (${hereArea})${stNote(q.zoneSt)} · show` : "Show"} on the map" aria-label="${n} on the map${near ? ", near your story step" : ""}">${MAP_ICO}</a>` : `<span class="q-pin"></span>`;
     const zz = !x.run && !x.lock ? `<button type="button" class="q-snz ico" data-snz="${x.k}" title="Not in game yet: hide it until your next Level up" aria-label="${n}: not in game yet">${EYE_OFF}</button>` : "";
-    /* A follow-up keeps its arrow with it when the row wraps. */
-    return `<span class="ql ${x.run ? "run" : x.lock ? "lock" : "new"}${fu ? " fu" : ""}${near ? " near" : ""}">${fu ? `<span class="q-ar" aria-hidden="true">→</span>` : ""}${box}${label}${hi}${near ? `<span class="q-near" title="Near your story step (${hereArea})${stNote(q.zoneSt)}">${MAP_ICO}</span>` : ""}${zz}</span>`; };
+    /* A follow-up keeps its arrow with its name. */
+    return `<span class="ql ${x.run ? "run" : x.lock ? "lock" : "new"}${fu ? " fu" : ""}${near ? " near" : ""}">${rqStIco(x.run ? "run" : "new", "rq-st", x.lock ? "Locked" : undefined)}<span class="q-nm">${fu ? `<span class="q-ar" aria-hidden="true">→</span>` : ""}${label}${hi}${zz}</span>${pin}${btn}</span>`; };
   let budget = 6, more = 0;
   const groups = roots.map(r => { const kids = a.open.filter(y => y.lock && y.parent === r.it.name), need = 1 + kids.length;
     if (need > budget) { more += need; return ""; } budget -= need;
@@ -105,7 +110,8 @@ export const aion2NowRenderers = {
   sh: a => { const p = a.pick;
     return { bar: nsBar(a.done, a.total, `${a.done}/${a.total} strongholds`), ...SH_TILE, t: `Run <b>${p.it.name}</b>${pinLink(mapFocus(p.it))}`, sub: nsWhere(p.area, p.it.kib, a.hereArea),
       info: [`${SH_REWARD} each`, p.it.kib && p.it.m ? `Kibelisk ${p.it.kib} is ${p.it.m} m away` : "", `${a.open} open`].filter(Boolean).join(" · "), btn: "Show", act: a.act }; },
-  rq: a => ({ ico: "❖", t: `<b>Regional quests</b>`,
+  /* the tile: today's ❖ glyph, white on the regional teal (0.8 P13, owner option A, T-58; a glyph, not game art) */
+  rq: a => ({ ico: `<span class="rq-tile">❖</span>`, t: `<b>Regional quests</b>`,
     sub: [a.fresh ? `${a.fresh} to pick up` : "", a.run ? `${a.run} in progress` : "", a.lock ? `${a.lock} follow-up${a.lock === 1 ? "" : "s"}` : "", a.snz.length ? `${a.snz.length} not in game yet` : "",
       a.near ? `<span class="nw">${a.near} near your story step</span>` : ""].filter(Boolean).join(" · ") || "None to pick up now",
     bar: a.scope ? `<span class="nsq-bar rq"><span class="d" style="width:${a.done / a.scope * 100}%"></span><span class="r" style="width:${a.run / a.scope * 100}%"></span></span><span class="nsq-barl">${a.done}/${a.scope} turned in</span>` : "",
