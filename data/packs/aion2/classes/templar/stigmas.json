@@ -1,0 +1,672 @@
+{
+  "$schema": "../../schema/stigmas.schema.json",
+  "schemaVersion": 2,
+  "collection": "stigmas",
+  "class": "templar",
+  "records": [
+    {
+      "id": "stigma:templar:armor-of-balance",
+      "key": "Armor of Balance",
+      "name": "Armor of Balance",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:templar:armor-of-balance:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+20% Ailment-type, Mental-type Resist for the duration"
+        },
+        {
+          "id": "spec:templar:armor-of-balance:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+20% Move Speed for the duration"
+        },
+        {
+          "id": "spec:templar:armor-of-balance:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "x1.5 [Warding Shield] effect for the duration"
+        },
+        {
+          "id": "spec:templar:armor-of-balance:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+50% Impact-type Resist increase"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/armor-of-balance-templar",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (templar research §2.2).",
+        "Shared display name with another class (Metabot slug ends -templar) (Metabot page slug armor-of-balance-templar)."
+      ]
+    },
+    {
+      "id": "stigma:templar:assault-fury",
+      "key": "Assault Fury",
+      "name": "Assault Fury",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:templar:assault-fury:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+20% Attack for 5s on hit"
+        },
+        {
+          "id": "spec:templar:assault-fury:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "500 MP damage on hit"
+        },
+        {
+          "id": "spec:templar:assault-fury:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+10m range"
+        },
+        {
+          "id": "spec:templar:assault-fury:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+20% Stun Chance"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/assault-fury",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (templar research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:templar:battlefield-banner",
+      "key": "Battlefield Banner",
+      "name": "Battlefield Banner",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:templar:battlefield-banner:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+10% Multi-Hit Chance for duration"
+        },
+        {
+          "id": "spec:templar:battlefield-banner:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+10% Weapon Damage Boost for duration"
+        },
+        {
+          "id": "spec:templar:battlefield-banner:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+20% Attack increase proportional to Defense"
+        },
+        {
+          "id": "spec:templar:battlefield-banner:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "-30s cooldown"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/battlefield-banner",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (templar research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:templar:comrade-in-arms",
+      "key": "Comrade in Arms",
+      "name": "Comrade in Arms",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:templar:comrade-in-arms:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "Restores 25% of Max HP once if hit during Comrade in Arms while HP is 25% or less"
+        },
+        {
+          "id": "spec:templar:comrade-in-arms:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "x1.5 [Guarding Seal] Protective Shield effect for the duration"
+        },
+        {
+          "id": "spec:templar:comrade-in-arms:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "x1.5 [Block Pain] effect for the duration"
+        },
+        {
+          "id": "spec:templar:comrade-in-arms:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "Restores 50% of caster's Max HP when the effect ends"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/comrade-in-arms",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (templar research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:templar:doom-shield",
+      "key": "Doom Shield",
+      "name": "Doom Shield",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:templar:doom-shield:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "Resets [Annihilate] cooldown on hit"
+        },
+        {
+          "id": "spec:templar:doom-shield:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+200 Block for 5s on hit"
+        },
+        {
+          "id": "spec:templar:doom-shield:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "Resets cooldown on defeating an enemy"
+        },
+        {
+          "id": "spec:templar:doom-shield:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+25% Knockdown Chance"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/doom-shield",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (templar research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:templar:empyrean-lords-punishment",
+      "key": "Empyrean Lord's Punishment",
+      "name": "Empyrean Lord's Punishment",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:templar:empyrean-lords-punishment:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "Up to +20% damage when less targets hit"
+        },
+        {
+          "id": "spec:templar:empyrean-lords-punishment:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+50 Stagger Gauge Damage"
+        },
+        {
+          "id": "spec:templar:empyrean-lords-punishment:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+10% PvE Damage Boost and +5% PvP Damage Boost for 10s on hit"
+        },
+        {
+          "id": "spec:templar:empyrean-lords-punishment:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+25% Stun Chance"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/empyrean-lords-punishment",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (templar research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:templar:executing-blade",
+      "key": "Executing Blade",
+      "name": "Executing Blade",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:templar:executing-blade:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "-15s cooldown"
+        },
+        {
+          "id": "spec:templar:executing-blade:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "Inflict Exposed for 5s on hit"
+        },
+        {
+          "id": "spec:templar:executing-blade:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "Critical Hit on hit"
+        },
+        {
+          "id": "spec:templar:executing-blade:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+30% damage on attacking a target inflicted with Impact-type status"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/executing-blade",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (templar research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:templar:grapple",
+      "key": "Grapple",
+      "name": "Grapple",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:templar:grapple:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "50% chance to inflict Stun for 3s on hit"
+        },
+        {
+          "id": "spec:templar:grapple:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "20% of Max HP as Protective Shield for 10s on use"
+        },
+        {
+          "id": "spec:templar:grapple:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "-30s cooldown"
+        },
+        {
+          "id": "spec:templar:grapple:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "Up to +20% PvE Damage Tolerance and +10% PvP Damage Tolerance when more targets hit"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/grapple",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (templar research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:templar:nezekans-shield",
+      "key": "Nezekan's Shield",
+      "name": "Nezekan's Shield",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:templar:nezekans-shield:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+20% all Element Tolerance for Protective Shield duration"
+        },
+        {
+          "id": "spec:templar:nezekans-shield:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+2s Protective Shield duration"
+        },
+        {
+          "id": "spec:templar:nezekans-shield:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+20% PvE Damage Tolerance and +10% PvP Damage Tolerance for Protective Shield duration"
+        },
+        {
+          "id": "spec:templar:nezekans-shield:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "Restores 20% of Max HP when Protective Shield is removed"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/nezekans-shield",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (templar research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:templar:noble-armor",
+      "key": "Noble Armor",
+      "name": "Noble Armor",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:templar:noble-armor:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+5% Defense for the duration"
+        },
+        {
+          "id": "spec:templar:noble-armor:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "x1.5 [Insulting Roar] effect for the duration"
+        },
+        {
+          "id": "spec:templar:noble-armor:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "x1.5 [Fury] effect for the duration"
+        },
+        {
+          "id": "spec:templar:noble-armor:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+10% Incoming Heal for the duration"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/noble-armor",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (templar research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:templar:second-skin",
+      "key": "Second Skin",
+      "name": "Second Skin",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:templar:second-skin:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+10% all Element Tolerance for the duration"
+        },
+        {
+          "id": "spec:templar:second-skin:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+20% Block for the duration"
+        },
+        {
+          "id": "spec:templar:second-skin:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "x1.5 [Ironclad Defense] effect for the duration"
+        },
+        {
+          "id": "spec:templar:second-skin:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+20% PvE Damage Tolerance increase and +10% PvP Damage Tolerance increase"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/second-skin",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (templar research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:templar:shield-of-protection",
+      "key": "Shield of Protection",
+      "name": "Shield of Protection",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:templar:shield-of-protection:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+1 consecutive use"
+        },
+        {
+          "id": "spec:templar:shield-of-protection:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "Changes to mobile skill"
+        },
+        {
+          "id": "spec:templar:shield-of-protection:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+20% Move Speed for 3s on Block"
+        },
+        {
+          "id": "spec:templar:shield-of-protection:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "Restores 10% HP once on Block"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/shield-of-protection",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (templar research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:templar:taunt",
+      "key": "Taunt",
+      "name": "Taunt",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:templar:taunt:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "Adds 10% PvE Damage Tolerance reduction and 5% PvP Damage Tolerance reduction effect to Shrink"
+        },
+        {
+          "id": "spec:templar:taunt:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+10% Shrink Attack reduction"
+        },
+        {
+          "id": "spec:templar:taunt:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "-5s cooldown"
+        },
+        {
+          "id": "spec:templar:taunt:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+2s Taunt duration, +5s Shrink duration"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/taunt",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (templar research §2.2)."
+      ]
+    }
+  ]
+}

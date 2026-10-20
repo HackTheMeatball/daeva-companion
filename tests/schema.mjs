@@ -190,7 +190,7 @@ if (g) {
   packFails('a listed file that does not exist', r => rmSync(join(r, 'aion2/items.json')), /pack aion2: listed file items\.json does not exist/);
   packFails('a JSON file in a pack folder that is not listed', r => writeFileSync(join(r, 'aion2/asmodian/extra.json'), '{}'), /pack aion2\/asmodian: .*not listed in pack\.json: extra\.json/);
   packFails('an unknown parent', r => editManifest(r, guide, m => { m.parent = 'aion2/elyos'; }), /aion2\/asmodian\/assassin parent: unknown pack "aion2\/elyos"/);
-  packFails('an unknown pack in uses', r => editManifest(r, guide, m => { m.uses = ['aion2/classes/templar']; }), /uses: unknown pack "aion2\/classes\/templar"/);
+  packFails('an unknown pack in uses', r => editManifest(r, guide, m => { m.uses = ['aion2/classes/no-such-class']; }), /uses: unknown pack "aion2\/classes\/no-such-class"/);
   packFails('a cycle (the class uses the guide that uses it)', r => editManifest(r, 'aion2/classes/assassin', m => { m.uses = [guide]; }), /pack cycle: /);
   let gc = null; try { gc = generate({ root: packsCopy('copy', () => {}), pack: guide }); } catch (e) { ok('generator runs on a copied packs root', false, e.message); }
   if (gc) ok('--root / --pack: an unchanged copy of data/packs, pack ' + guide + ', compiles the same modules', gc.module === g.module && gc.gateModule === g.gateModule && gc.proposedModule === g.proposedModule);
@@ -199,17 +199,20 @@ if (g) {
      The idle checks run on a copy where the Spiritmaster is idle again: its guide pack removed, its class hidden. */
   const SM = 'aion2/classes/spiritmaster', editJson = (root, f, fn) => { const p = join(root, SM, f), d = JSON.parse(readFileSync(p, 'utf8')); fn(d); writeFileSync(p, JSON.stringify(d)); };
   const makeIdle = r => { rmSync(join(r, 'aion2/asmodian/spiritmaster'), { recursive: true, force: true }); editJson(r, 'class.json', d => { d.records[0].release = 'hidden'; }); };
-  /* 0.8 P16 (#505) adds the Sorcerer, 0.8 P4 (#493) the Cleric and P18 (#507) the Chanter as idle packs again (their
-     guide items come later); the other 0.8 class-data item (Templar) may land beside them, so the check names the
-     classes that may be idle, not a count */
+  /* 0.8 P16 (#505) adds the Sorcerer, 0.8 P4 (#493) the Cleric, P18 (#507) the Chanter and 0.8 P2 (#491) the Templar
+     as idle packs again (their guide items come later), so the check names the classes that may be idle, not a count */
   const idle = (g.idle || []).map(x => x.pack), so = (g.idle || []).find(x => x.pack === 'aion2/classes/sorcerer'), soColl = f => so ? so.all.filter(x => x.file.endsWith('/' + f)).length : 0;
   const cl = (g.idle || []).find(x => x.pack === 'aion2/classes/cleric'), clColl = f => cl ? cl.all.filter(x => x.file.endsWith('/' + f)).length : 0;
   const ch = (g.idle || []).find(x => x.pack === 'aion2/classes/chanter'), chColl = f => ch ? ch.all.filter(x => x.file.endsWith('/' + f)).length : 0;
-  ok('data/packs: the idle class packs are 0.8 class data only (Sorcerer since 0.8 P16, Cleric since 0.8 P4, Chanter since 0.8 P18)', idle.includes('aion2/classes/sorcerer') && idle.includes('aion2/classes/cleric') && idle.includes('aion2/classes/chanter')
+  ok('data/packs: the idle class packs are 0.8 class data only (Sorcerer since 0.8 P16, Cleric since 0.8 P4, Chanter since 0.8 P18, Templar since 0.8 P2)', idle.includes('aion2/classes/sorcerer') && idle.includes('aion2/classes/cleric') && idle.includes('aion2/classes/chanter')
+    && idle.includes('aion2/classes/templar')
     && idle.every(p => ['cleric', 'templar', 'chanter', 'sorcerer'].map(c => 'aion2/classes/' + c).includes(p)), idle);
   ok('idle class pack aion2/classes/sorcerer: 1 class, 22 skills, 13 stigmas, 537 board nodes (the research CSVs\' counts), checked by the generator', !!so && soColl('class.json') === 1
     && soColl('skills.json') === 22 && soColl('stigmas.json') === 13 && soColl('board-nodes.json') === 537 && g.report.checks.some(x => x.check.startsWith('aion2/classes/sorcerer: board:triniel: 117 nodes')),
     so && [soColl('skills.json'), soColl('stigmas.json'), soColl('board-nodes.json')]);
+  const tp = (g.idle || []).find(x => x.pack === 'aion2/classes/templar'), tpColl = f => tp ? tp.all.filter(x => x.file.endsWith('/' + f)).length : 0;
+  ok('idle class pack aion2/classes/templar (0.8 P2, hidden, no guide pack yet): 1 class, 22 skills, 13 stigmas, 537 board nodes', !!tp
+    && tpColl('class.json') === 1 && tpColl('skills.json') === 22 && tpColl('stigmas.json') === 13 && tpColl('board-nodes.json') === 537, tp && [tpColl('skills.json'), tpColl('stigmas.json'), tpColl('board-nodes.json')]);
   ok('idle class pack aion2/classes/chanter: 1 class, 22 skills, 13 stigmas, 537 board nodes (the research CSVs\' counts), checked by the generator', !!ch && chColl('class.json') === 1
     && chColl('skills.json') === 22 && chColl('stigmas.json') === 13 && chColl('board-nodes.json') === 537 && g.report.checks.some(x => x.check.startsWith('aion2/classes/chanter: board:triniel: 117 nodes')),
     ch && [chColl('skills.json'), chColl('stigmas.json'), chColl('board-nodes.json')]);
