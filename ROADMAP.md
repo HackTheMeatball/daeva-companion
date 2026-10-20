@@ -148,8 +148,8 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
    is in (rules audit COM-03, K19). Each release's OK list also carries one line asking the owner's weekly usage %, and
    the Release Planner records the number in that release's #232 row (owner, 2026-10-19 12:51 PM ET). **Process asks
    (rule, team and permission changes), from any thread and at any time in the minor, wait for the next kaizen review**:
-   Kaizen (Gale) batches them, and Coordinator (Saul) sends the owner one copy box to type in the Release planning
-   (Walter) thread. The Release Planner then writes the DECISIONS row and every ledger row and home the box names in one
+   Kaizen (Gale) batches them, and after each kaizen review the Release Planner posts them to the owner as one copy box
+   in the Release planning (Walter) thread. The Release Planner then writes the DECISIONS row and every ledger row and home the box names in one
    PR, with each rule's owner as a reviewer. Product calls and HARD BLOCKERs still go when needed: a question that first
    comes up mid-minor and gates an item already queued or building goes out at once as a HARD BLOCKER. Ungated items are queued first,
    and a gated item without its typed OK goes to the end of the queue; it never holds a lane or the critical path.
