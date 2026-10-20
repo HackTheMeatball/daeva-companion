@@ -401,7 +401,7 @@ Rules for every item:
   threshold), the Skills card and Next up show one row per build skill, "Heart Gore → Lv 10 · specialty: <name>", in
   the build's priority order, with one "Done" per skill that ticks its lines up to the target (one tap per skill,
   undoable); "Missed" skill lines in milestones fold behind it.
-- **Inputs.** `docs/design/0.9-loadout-mockup.md` and `docs/design/mockups/0.9-loadout/` (Design Lead's mocks, #610; merged with Design Lead's look OK after the fresh review; owner 2026-10-20 5:21 and 5:24 PM ET). Kickoff holds the item until they are on main.
+- **Inputs.** `docs/design/0.9-catchup/` (Design Lead's mocks, #619 and #656; merged with Design Lead's look OK after the fresh review; owner 2026-10-20 5:21 and 5:24 PM ET). Kickoff holds the item until they are on main.
 - **Files.** `src/packs/aion2/cards/skills.js`, `src/packs/aion2/cards/skills.html`, `src/packs/aion2/nextup.js`,
   `src/packs/aion2/cards/nextup-kinds.js`, `src/packs/aion2/requirements.js`, `src/core/nextup.js`,
   `src/packs/aion2/cards/journey-sections.js`, `src/styles/app.css`, the tests.
@@ -422,7 +422,7 @@ Rules for every item:
 - **Result.** As Design Lead's approved mock shows: one row per open board ("Nezekan · 10 guide nodes", "Have them",
   "Respec this board") plus "Respec all"; the Stigmas card lists its slots like Skills' and Daevanion's "Coming up", with
   a Respec in its foot.
-- **Inputs.** `docs/design/0.9-loadout-mockup.md` and `docs/design/mockups/0.9-loadout/` (Design Lead's mocks, #610; merged with Design Lead's look OK after the fresh review; owner 2026-10-20 5:21 and 5:24 PM ET). Kickoff holds the item until they are on main.
+- **Inputs.** `docs/design/0.9-catchup/` (Design Lead's mocks, #619 and #656; merged with Design Lead's look OK after the fresh review; owner 2026-10-20 5:21 and 5:24 PM ET). Kickoff holds the item until they are on main.
 - **Files.** `src/packs/aion2/cards/daevanion.js`, `src/packs/aion2/cards/daevanion.html`,
   `src/packs/aion2/cards/stigmas.js`, `src/packs/aion2/cards/stigmas.html`, `src/styles/app.css`, the tests.
 - **No-gos.** No save key change. Respec costs and whether a Stigma reset refunds or unequips only from sourced data
@@ -460,7 +460,7 @@ Rules for every item:
   being read and leaves the bug-report payload (no key bump, pre-1.0 rule); the rail
   keeps one behaviour on purpose (Basic's rail styles in `app.css` are layout, not hiding).
 - **Inputs.** `docs/design/0.9-one-view.md` (Design Lead's hide list: every element Basic hides today marked default
-  open, fold or drop, with the drops named), `docs/design/0.9-loadout-mockup.md` and `docs/design/mockups/0.9-loadout/`
+  open, fold or drop, with the drops named), `docs/design/0.9-catchup/`
   (Design Lead's mocks with the look OK; owner 2026-10-20 5:21 and 5:24 PM ET). Kickoff holds the item until they are on
   main.
 - **Files.** `src/main.js`, `src/core/nextup.js`, `src/cards/nextup.js`, `src/packs/aion2/nextup.js`,
@@ -487,7 +487,7 @@ Rules for every item:
 - **Result.** As Design Lead's approved mock shows: key setup is a bottom sheet; icons fill each box with a tap or
   focus tooltip; each key chip can be tapped to rebind; one `keys` save field with the class default when empty (no key
   bump); every class in the same layout.
-- **Inputs.** `docs/design/0.9-loadout-mockup.md` and `docs/design/mockups/0.9-loadout/` (Design Lead's mocks, #610; merged with Design Lead's look
+- **Inputs.** `docs/design/0.9-keys/` (Design Lead's mocks, #619 and #656; merged with Design Lead's look
   OK after the fresh review; owner 2026-10-20 5:21 and 5:24 PM ET). Kickoff holds the item until they are on main.
 - **Files.** `src/packs/aion2/cards/build.js`, `src/packs/aion2/cards/build.html`, `src/core/state.js` (`keys`
   default), `src/core/merge.js`, `src/styles/app.css`, `tests/a11y.js`, `tests/save.js`, the tests.

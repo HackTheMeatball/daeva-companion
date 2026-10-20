@@ -110,12 +110,17 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   ok('#9 "In my game" = picked up: moves into the quest rows; fold stays open', r.st === 1 && r.row && !r.still && (r.open || true), r);
 
   /* #10 single-source skill buys tagged in Next up; Skills card tooltip names the source */
-  const tagRows = () => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-card')].filter(c => /^Buy /.test(c.querySelector('h3').innerText)).map(c => { const nm = c.querySelector('h3 b').innerText.replace(/ \d+ → \d+$| specialty$/, ''); const s = SP_STEPS.find(x => x.s.n === nm); return { nm, single: !!(s && s.s.single), tag: !!c.querySelector('.ss-tag') }; }));
+  /* tag: the "single source" tag; label: a specialty pick's own label (0.8.1 F2: disputed / contested / inferred), a different tag */
+  const tagRows = () => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-card')].filter(c => /^Buy /.test(c.querySelector('h3').innerText)).map(c => { const nm = c.querySelector('h3 b').innerText.replace(/ \d+ → \d+$| specialty$/, ''); const s = SP_STEPS.find(x => x.s.n === nm), tags = [...c.querySelectorAll('.ss-tag')].map(t => t.textContent.trim());
+    return { nm, single: !!(s && s.s.single), tag: tags.includes('single source'), label: tags.filter(t => t !== 'single source') }; }));
   await set(41, `s.stones = 300;`); const r0 = await tagRows();
   ok('#10 two-source skill cards carry no tag', r0.length && r0.every(x => !x.single && !x.tag), r0);
+  ok('#10 specialty slot 2 cards: Ambush and Insignia Explosion carry their "disputed" label, Heart Gore and Quick Slice (2+ sources) none',
+    ['Ambush', 'Insignia Explosion'].every(n => r0.some(x => x.nm === `${n} specialty slot 2` && x.label.join() === 'disputed'))
+    && r0.filter(x => /^(Heart Gore|Quick Slice) specialty slot 2$/.test(x.nm)).every(x => !x.label.length) && r0.every(x => !/specialty/.test(x.nm) ? !x.label.length : true), r0);
   /* everything but the single-source skills bought, specialty slots 2 / 3 too (0.3 E7), so the single-source lines are the rows left */
   await set(41, `SP_STEPS.forEach(x => { s.checks[x.k] = !x.s.single; }); SP_SLOTS.forEach(x => { s.checks[x.k] = true; }); s.stones = 300;`);
-  r = await p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-card')].filter(c => /^Buy /.test(c.querySelector('h3').innerText)).map(c => { const nm = c.querySelector('h3 b').innerText.replace(/ \d+ → \d+$| specialty$/, ''); const s = SP_STEPS.find(x => x.s.n === nm); return { nm, single: !!(s && s.s.single), tag: !!c.querySelector('.ss-tag') }; }));
+  r = await tagRows();
   ok('#10 Next up skill cards: "single source" tag exactly on single-source skills', r.some(x => x.single) && r.every(x => x.single === x.tag), r);
   r = await p.evaluate(() => [...document.querySelectorAll('#spSoon > li')].map(li => [li.innerText.replace(/\s+/g, ' '), li.title]).filter(([t]) => /Heightened Sixth Sense|Determination/.test(t)));
   ok('#10 Skills card tooltip says single source', r.length && r.every(([, t]) => /single source/.test(t)), r);

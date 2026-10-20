@@ -264,6 +264,35 @@
         "build:assassin:guide"
       ],
       "verifiedAt": "2026-10-16"
+    },
+    {
+      "id": "C40a",
+      "claim": "Specialty slot 2 picks without two slot witnesses: Insignia Explosion 3 (Keeps 2 Insignia stacks; its slot 3 becomes 5), Savage Roar 4 (-1s Shadowstrike cooldown on hit), Ambush 2 (Absorb), Shadowstrike 1 (+1s Stun duration).",
+      "verdict": "disputed",
+      "sources": [
+        {
+          "url": "https://skycoach.gg/blog/aion-2/articles/assassin-guide",
+          "note": "Insignia Explosion 3 second, 5 third; Savage Roar opens with 1."
+        },
+        {
+          "url": "https://corpus.gg/blog/aion-2/assassin-pve-build",
+          "note": "Insignia Explosion 3 second before skill 16 (Grobs); Savage Roar opens with 1."
+        },
+        {
+          "url": "https://aion2-meta.com/guides/assassin/",
+          "note": "PvE column: Insignia Explosion 5 second; Ambush 4 second; Shadowstrike second pick PvP only."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/assassin/",
+          "note": "Leveling / Dungeon panels: Insignia Explosion 3 second, 5 third; Savage Roar 4 second; Ambush 2 second; Shadowstrike second pick PvP only."
+        }
+      ],
+      "action": "keep",
+      "note": "Owner note 5 (2026-10-20): every slot 2 needs a recommendation. Each pick ships with its own label in specialtyEvidence (Insignia Explosion and Ambush disputed, Savage Roar contested, Shadowstrike inferred), shown on the specialty row with the alternative in its tooltip. Research: docs/research/2026-10-specialty-slot2.md.",
+      "appliesTo": [
+        "build:assassin:guide"
+      ],
+      "verifiedAt": "2026-10-20"
     }
   ]
 }

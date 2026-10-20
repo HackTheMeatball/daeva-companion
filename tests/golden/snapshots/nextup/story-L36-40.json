@@ -246,8 +246,8 @@
   "story/L39-q70-before-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 37–39"},
     {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
-    {"t":"Buy Ambush specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
-    {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
+    {"t":"Buy Ambush specialty slot 2","s":"Pick: Absorbs 3% HP disputed","c":"tag \"After the one above\""},
+    {"t":"Buy Insignia Explosion specialty slot 2","s":"Pick: Keeps 2 Insignia stacks after Insignia Explosion disputed","c":"tag \"After the one above\""},
     {"t":"Story: Fafnite's Whereabouts","s":"Needs Lv 40: you're 39. Level up first. Meanwhile: Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""},
     {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk : Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 9 open"},
     {"t":"Triniel board opens","s":"Lv 40 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 40–44"}
@@ -255,8 +255,8 @@
   "story/L39-q71-before-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 37–39"},
     {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
-    {"t":"Buy Ambush specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
-    {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
+    {"t":"Buy Ambush specialty slot 2","s":"Pick: Absorbs 3% HP disputed","c":"tag \"After the one above\""},
+    {"t":"Buy Insignia Explosion specialty slot 2","s":"Pick: Keeps 2 Insignia stacks after Insignia Explosion disputed","c":"tag \"After the one above\""},
     {"t":"Story: Exiled Ritualist","s":"Needs Lv 40: you're 39. Level up first. Meanwhile: Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""},
     {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk : Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 9 open"},
     {"t":"Triniel board opens","s":"Lv 40 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 40–44"}
@@ -264,8 +264,8 @@
   "story/L39-q72-before-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 37–39"},
     {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
-    {"t":"Buy Ambush specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
-    {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
+    {"t":"Buy Ambush specialty slot 2","s":"Pick: Absorbs 3% HP disputed","c":"tag \"After the one above\""},
+    {"t":"Buy Insignia Explosion specialty slot 2","s":"Pick: Keeps 2 Insignia stacks after Insignia Explosion disputed","c":"tag \"After the one above\""},
     {"t":"Story: Healing Herbs","s":"Needs Lv 40: you're 39. Level up first. Meanwhile: Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""},
     {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk : Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 9 open"},
     {"t":"Triniel board opens","s":"Lv 40 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 40–44"}
@@ -273,8 +273,8 @@
   "story/L39-q73-before-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 37–39"},
     {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
-    {"t":"Buy Ambush specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
-    {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
+    {"t":"Buy Ambush specialty slot 2","s":"Pick: Absorbs 3% HP disputed","c":"tag \"After the one above\""},
+    {"t":"Buy Insignia Explosion specialty slot 2","s":"Pick: Keeps 2 Insignia stacks after Insignia Explosion disputed","c":"tag \"After the one above\""},
     {"t":"Story: Treatment","s":"Needs Lv 40: you're 39. Level up first. Meanwhile: Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""},
     {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk : Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 9 open"},
     {"t":"Triniel board opens","s":"Lv 40 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 40–44"}
@@ -282,8 +282,8 @@
   "story/L39-q74-before-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 37–39"},
     {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
-    {"t":"Buy Ambush specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
-    {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
+    {"t":"Buy Ambush specialty slot 2","s":"Pick: Absorbs 3% HP disputed","c":"tag \"After the one above\""},
+    {"t":"Buy Insignia Explosion specialty slot 2","s":"Pick: Keeps 2 Insignia stacks after Insignia Explosion disputed","c":"tag \"After the one above\""},
     {"t":"Story: Symbol of Liberation","s":"Needs Lv 40: you're 39. Level up first. Meanwhile: Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":"","bd":"Bind Zemurru's Tomb on the way 27 m from Amunta bind:kib:zemurrus-tomb"},
     {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland (near your story step) · Kibelisk : Eastern Gribade Highland Tail Island · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 230 m away · 9 open"},
     {"t":"Triniel board opens","s":"Lv 40 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 40–44"}
@@ -291,8 +291,8 @@
   "story/L40-q70-before-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
     {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
-    {"t":"Buy Ambush specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
-    {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
+    {"t":"Buy Ambush specialty slot 2","s":"Pick: Absorbs 3% HP disputed","c":"tag \"After the one above\""},
+    {"t":"Buy Insignia Explosion specialty slot 2","s":"Pick: Keeps 2 Insignia stacks after Insignia Explosion disputed","c":"tag \"After the one above\""},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: Fafnite's Whereabouts","s":"0/6 objectives · then Exiled Ritualist","c":"primary \"Turned in\" story","o":["Investigate Amunta's Hideout enter Amunta's Hideout ( Kibelisk : Amunta's Hideout)","Find the escaped Daybreak Society search the Damaged Wagon Wheel (Kibelisk: Amunta's Hideout)","Follow the tracks of Daybreak Society who fled search the Blood-Stained Rock (Kibelisk: Amunta's Hideout)","+3 more after these"]},
     {"t":"Clear Spider Cave","s":"Fafnite Deposit (near your story step) · Kibelisk : Amunta's Hideout · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Amunta's Hideout is 230 m away · 7 open at your level"},
@@ -323,8 +323,8 @@
   "story/L40-q71-before-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
     {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
-    {"t":"Buy Ambush specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
-    {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
+    {"t":"Buy Ambush specialty slot 2","s":"Pick: Absorbs 3% HP disputed","c":"tag \"After the one above\""},
+    {"t":"Buy Insignia Explosion specialty slot 2","s":"Pick: Keeps 2 Insignia stacks after Insignia Explosion disputed","c":"tag \"After the one above\""},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: Exiled Ritualist","s":"0/3 objectives · then Healing Herbs","c":"primary \"Turned in\" story","o":["Prepare to rescue Amunta in advance defeat Black Claw Guard Troopers Searcher defeat Black Claw Guard Troopers Sentry remove Black Claw Guard Troopers Totem Kibelisk : Amunta's Hideout","Rescue Amunta from the Prisoners Grotto enter the Prisoners Grotto (Kibelisk: Eastern Gribade Highland Cliff)","Turn in Amunta, Amunta's Hideout"]},
     {"t":"Clear Spider Cave","s":"Fafnite Deposit (near your story step) · Kibelisk : Amunta's Hideout · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Amunta's Hideout is 230 m away · 7 open at your level"},
@@ -355,8 +355,8 @@
   "story/L40-q72-before-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
     {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
-    {"t":"Buy Ambush specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
-    {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
+    {"t":"Buy Ambush specialty slot 2","s":"Pick: Absorbs 3% HP disputed","c":"tag \"After the one above\""},
+    {"t":"Buy Insignia Explosion specialty slot 2","s":"Pick: Keeps 2 Insignia stacks after Insignia Explosion disputed","c":"tag \"After the one above\""},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: Healing Herbs","s":"0/2 objectives · then Treatment","c":"primary \"Turned in\" story","o":["Collect herbs for treatment collect herbs from the supplies defeat Drakan Patrol Scout defeat Drakan Patrol Supporter Kibelisk : Amunta's Hideout","Turn in Lakiba, Amunta's Hideout"]},
     {"t":"Clear Spider Cave","s":"Fafnite Deposit (near your story step) · Kibelisk : Amunta's Hideout · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Amunta's Hideout is 230 m away · 7 open at your level"},
@@ -387,8 +387,8 @@
   "story/L40-q73-before-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
     {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
-    {"t":"Buy Ambush specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
-    {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
+    {"t":"Buy Ambush specialty slot 2","s":"Pick: Absorbs 3% HP disputed","c":"tag \"After the one above\""},
+    {"t":"Buy Insignia Explosion specialty slot 2","s":"Pick: Keeps 2 Insignia stacks after Insignia Explosion disputed","c":"tag \"After the one above\""},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: Treatment","s":"0/2 objectives · then Symbol of Liberation","c":"primary \"Turned in\" story","o":["Treat the Fallen Daybreak Society Members administer herbal medicine to the first member administer herbal medicine to the second member","Turn in Amunta, Amunta's Hideout"]},
     {"t":"Clear Spider Cave","s":"Fafnite Deposit (near your story step) · Kibelisk : Amunta's Hideout · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Amunta's Hideout is 230 m away · 7 open at your level"},
@@ -419,8 +419,8 @@
   "story/L40-q74-before-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
     {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
-    {"t":"Buy Ambush specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
-    {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
+    {"t":"Buy Ambush specialty slot 2","s":"Pick: Absorbs 3% HP disputed","c":"tag \"After the one above\""},
+    {"t":"Buy Insignia Explosion specialty slot 2","s":"Pick: Keeps 2 Insignia stacks after Insignia Explosion disputed","c":"tag \"After the one above\""},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","bd":"Bind Zemurru's Tomb on the way 27 m from Amunta bind:kib:zemurrus-tomb","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk : Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
     {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk : Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 7 open at your level"},
@@ -451,8 +451,8 @@
   "story/L40-q75-before-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
     {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
-    {"t":"Buy Ambush specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
-    {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
+    {"t":"Buy Ambush specialty slot 2","s":"Pick: Absorbs 3% HP disputed","c":"tag \"After the one above\""},
+    {"t":"Buy Insignia Explosion specialty slot 2","s":"Pick: Keeps 2 Insignia stacks after Insignia Explosion disputed","c":"tag \"After the one above\""},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Clear Den of Exiles and others until Lv 41","s":"Black Claw Village (near your story step) · Kibelisk : Collapsed Hall of Fame · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Collapsed Hall of Fame is 215 m away · 7 open at your level"},
     {"t":"Story: Daybreak Society","s":"Needs Lv 41: you're 40. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""},
@@ -461,8 +461,8 @@
   "story/L40-q76-before-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
     {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
-    {"t":"Buy Ambush specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
-    {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
+    {"t":"Buy Ambush specialty slot 2","s":"Pick: Absorbs 3% HP disputed","c":"tag \"After the one above\""},
+    {"t":"Buy Insignia Explosion specialty slot 2","s":"Pick: Keeps 2 Insignia stacks after Insignia Explosion disputed","c":"tag \"After the one above\""},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Clear Den of Exiles and others until Lv 41","s":"Black Claw Village (near your story step) · Kibelisk : Collapsed Hall of Fame · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Collapsed Hall of Fame is 215 m away · 7 open at your level"},
     {"t":"Story: Daybreak Society Rescue Operation","s":"Needs Lv 41: you're 40. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""},

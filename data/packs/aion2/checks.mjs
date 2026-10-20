@@ -118,12 +118,16 @@ export function checks(ctx, check) {
   check('specialty picks: at most 3 slots', Object.values(build.specialtyPicks).every(p => p.length <= spSlots.slots.length));
   /* one choice never fills two slots */
   for (const [sid, picks] of Object.entries(build.specialtyPicks)) check(`specialty picks of ${sid} are distinct`, new Set(picks).size === picks.length, picks);
-  /* a pick beyond slot 1 needs a '2+ sources' entry in specialtyEvidence for that slot, witnessed by two or more publishers
-     (hosts) that the build cites for specialtyPicks (owner on #75; research #77 at 8dd047d); no stale entries */
+  /* a pick beyond slot 1 needs an entry in specialtyEvidence for that slot, its sources cited by the build for specialtyPicks:
+     '2+ sources' witnessed by two or more publishers (hosts) (owner on #75; research #77 at 8dd047d), or a labelled pick
+     (disputed / contested / inferred) with a note naming the alternative (0.8.1 F2, owner note 5: every slot 2 gets a
+     pick, research 2026-10-specialty-slot2.md); no stale entries */
   const spEv = build.specialtyEvidence || {}, spSrc = new Set((build.sources || []).filter(r => r.url && (r.fields || []).includes('specialtyPicks')).map(r => r.url));
+  const SP_LABELS = ['disputed', 'contested', 'inferred'];
   for (const [sid, picks] of Object.entries(build.specialtyPicks)) picks.forEach((p, i) => { if (!i) return; const ev = spEv[p];
-    check(`specialty pick ${p} (slot ${i + 1}) has 2+ source evidence`, ev && ev.slot === i + 1 && ev.label === '2+ sources' && ev.sources.every(u => spSrc.has(u))
-      && new Set(ev.sources.map(u => new URL(u).hostname.replace(/^www\./, ''))).size >= 2, ev || 'no specialtyEvidence entry'); });
+    check(`specialty pick ${p} (slot ${i + 1}) has 2+ source evidence or a labelled reason`, ev && ev.slot === i + 1 && ev.sources.length > 0 && ev.sources.every(u => spSrc.has(u))
+      && (ev.label === '2+ sources' ? new Set(ev.sources.map(u => new URL(u).hostname.replace(/^www\./, ''))).size >= 2 : SP_LABELS.includes(ev.label) && !!ev.note),
+      ev || 'no specialtyEvidence entry'); });
   for (const p of Object.keys(spEv)) check(`specialtyEvidence ${p} backs a pick in its slot`, Object.values(build.specialtyPicks).some(ps => ps[spEv[p].slot - 1] === p));
   /* game rules the build tables use (0.4 P2a): cost bands [{ from, to, cost }] run without a gap over the levels they
      price; node costs by node type are numbers */

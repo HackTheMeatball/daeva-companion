@@ -41,10 +41,14 @@ const away = L => { const lv = char(state).level; return `${L - lv} level${L - l
 const ssTag = x => x.s.single ? ` · <span class="ss-tag" title="Single source (${x.s.single})">single source</span>` : "";
 const spBuyT = x => `Buy <b>${x.s.n} ${x.spec ? "specialty" + (x.slot > 1 ? " slot " + x.slot : "") : (x.L - 1) + " → " + x.L}</b>`;
 /* A specialty slot's line (0.3 E7, design §9; Q6): the build's pick once its choice is open at the skill's effective level;
-   a pick that needs a higher skill level says when; no pick: "pick a specialty". */
-const spSlotSub = x => { const p = specPickOf(char(state), x); if (p) return `Pick: ${p.t}`;
+   a pick that needs a higher skill level says when ("Guide pick: X at skill Lv N"); no pick: "pick a specialty". A labelled
+   pick (0.8.1 F2: disputed / contested / inferred) carries its label as a small tag, as 0.8 P20 labels values; the tooltip
+   names the alternative. */
+const spPickTag = p => p.st ? ` <span class="ss-tag" title="${p.why.replace(/"/g, "&quot;")}">${p.st}</span>` : "";
+const spSlotSub = x => { const p = specPickOf(char(state), x); if (p) return `Pick: ${p.t}${spPickTag(p)}`;
   const q = (x.s.specs || [])[x.slot - 1], open = openOf(char(state), x.k);
-  return `${open ? `Slot ${x.slot} open: pick` : "Pick"} a specialty${q ? ` · guide pick (${q.t}) at skill Lv ${q.lv}` : ""}`; };
+  if (q) return `${open ? `Slot ${x.slot} open · ` : ""}Guide pick: ${q.t}${spPickTag(q)} at skill Lv ${q.lv}`;
+  return `${open ? `Slot ${x.slot} open: pick` : "Pick"} a specialty`; };
 /* A Sealed Dungeon / Stronghold card's tile: the game's map marker on the dark tile (0.6.2 P21), labelled with the place
    type; the old emoji when the file can't load */
 const SD_TILE = { ico: `<img class="mk-tile" src="assets/icons/map-sealed.png" alt="" onerror="this.replaceWith('⛏')">`, icoLabel: "Sealed Dungeon" };
