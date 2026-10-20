@@ -349,7 +349,8 @@ The same as P3, for the Sorcerer. It runs after P5 because both edit `pack.js`.
 The default build is Metabot's leveling build (203 points). Labels from the pack and its review (#487): Wish of
 Concentration's target (7 vs 10) and the stigma slot order and fourth stigma (Delayed Explosion vs Steel Barrier) are
 "disputed"; the 16 Sep Fire Mark change stays "inferred"; Fire Mark's Lv 10 target is "single source"; the §4.6
-rotation is two-source through Metabot. Hellfire's key step says to hold the key to charge.
+rotation is two-source through Metabot. Hellfire's key step says to hold the key to charge (pack §4.6; a macro fires it at
+charge 1).
 
 - **Lanes:** gen, golden. **Model:** Opus, L (120 min).
 - **After:** P16, P5.
@@ -397,7 +398,7 @@ The same as P3, for the Chanter. Metabot has no Chanter build sample, so advice 
   `src/styles/packs/aion2/skills.css`, the tests. `ss-tag` lives in `nextup.css` today; P20 moves it to a style the rows
   and the Skills card share.
 - **Lanes:** gen, golden, nextup.css, rows. **Model:** Sonnet, S (44 min).
-- **After:** none (it follows P19 on the serial gen lane).
+- **After:** P19 (gen lane order).
 
 ## R: Release 0.8.0
 
