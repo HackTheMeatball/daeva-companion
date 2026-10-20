@@ -219,6 +219,46 @@ also needs a per-pick label, add **67** unlabelled picks: 35 specialty slot 1 pi
 filled from the existing research verdicts (class pack docs §4, `2026-10-specialty-picks.md` §1) without new fetching.
 Skill order and keys already have record-level labels.
 
+## Ranger and Spiritmaster slot 1 picks (spot check, 2026-10-20)
+
+Fills the gap in §1 for the gate. Read 2026-10-20 with our User-Agent, 10 s apart: daevaguides `/en/ranger/` and
+`/en/elementalist/`, aion2turkiye `/en/class/ranger/` and `/en/class/spiritmaster/` (both Full in SOURCES.md). mmo-codex
+`/classes/ranger/` returned 404, so I stopped there (Spot site). Facts only. daevaguides gives a pick per option with the
+creators it credits; its own level plan is the pick when it names one. The aion2turkiye picks are its leveling build.
+Only slot 1 is counted, because §1 shows slot 2 is out of reach for both classes.
+
+**Ranger**
+
+| Skill | aion2turkiye | daevaguides | Label |
+|---|---|---|---|
+| Snipe | `:1` +20% MP restored | `:1` (Lv 19 plan) | 2+ sources |
+| Tempest Shot | `:1` −20% MP consumed | `:1` (Lv 19 plan) | 2+ sources |
+| Drill Dart | `:1` Absorbs 3% HP | `:1` (from Lv 22); switches to `:3` at 45 | 2+ sources |
+| Burst Arrow | `:1` Absorbs 10% HP | `:1` (from Lv 28); switches to `:3` at 45 | 2+ sources |
+| Marking Shot | `:3` +5s duration | `:3` credited to LordRobson; no plan line | 2+ sources (one is a credited pick) |
+| Gale Arrow | `:1` +5s duration | plan `:3` mobile (couga54, Moxsy, FRESHY); `:1` credited to five others | disputed |
+| Deadshot | `:1` Removes MP consumed | `:2` +30% Skill Speed (plan) | disputed |
+
+**Spiritmaster**
+
+| Skill | aion2turkiye | daevaguides | Label |
+|---|---|---|---|
+| Cold Shock | `:1` +20% MP restored | `:1` (Lv 19 plan); later `:3` once mana holds | 2+ sources |
+| Combustion | `:1` −20% MP consumed | `:1` (Lv 19 plan); later `:2` | 2+ sources |
+| Elemental Fusion | `:1` Changes to AoE (switch to `:2` for bosses) | `:1` "for mob packs while leveling" (couga54) | 2+ sources |
+| Jointstrike: Curse | `:1` +2s Curse duration | `:1` credited to couga54, aLuckyRO; `:2` credited to Tsuruf, Hemi, Antochi | 2+ sources, contested |
+| Summon: Fire Spirit | `:3` 10% chance to activate skill | `:3` credited to Tsuruf, OneTimeACraft; couga54 keeps it at 1 while leveling | 2+ sources (one is a credited pick) |
+| Summon: Water Spirit | `:2` +10% Attack (dungeon build only) | `:3` (Lv 19 plan); `:2` credited to couga54, OneTimeACraft | disputed |
+| Dimensional Control | `:2` Extra damage after 3s | no slot 1 pick (it credits only the Lv 12 / 16 options) | single source |
+
+Result: all 14 skills now have a pick with a label: 10 are 2+ sources, 3 are disputed and 1 is single source. Each
+label follows the `claims.json` rule. daevaguides is an aggregator, and its credited creators (couga54 and others) are
+not independent of aion2-guides.info, so aion2-guides.info would not count as a third source. No owner check is needed for the 2+ source rows; for the disputed rows the guide shows both options.
+
+The other P15 parts: effective level = points + the plan's board nodes (`planReachOf`, Method above). Slot 3 is never
+reached inside Lv 45. Slot 2 has no pick in 3 places: Assassin Insignia Explosion (disputed 3 vs 5, §1), Cleric Divine
+Aura and Gladiator Ruinous Blow. The last two still need a sourced pick, and the 0.9 item can fetch them.
+
 ## Data issues found (for the 0.9 queue, not fixed here)
 
 1. Gladiator Ruinous Blow ships slot 1 pick `:1` with no label; `2026-10-gladiator-guide.md` §4 calls it **disputed**
@@ -226,4 +266,4 @@ Skill order and keys already have record-level labels.
 2. Gladiator Crushing Wave `:1`, Rush Strike `:2`, Leaping Slam `:3`: CONFIRMED in research §4, not in `specialtyPicks`.
 3. Chanter Impactful Crush `:3`, Tremor Crush `:2`: in the data, never shown (`SP_EXTRA` carries no `spec`).
 4. Cleric Divine Aura and Gladiator Ruinous Blow reach slot 2 with no pick (missed by the K25 audit).
-5. Ranger and Spiritmaster: 0 sources for any specialty pick; a spot-check of the 2026-10-18 pages is the fix.
+5. Ranger and Spiritmaster: no specialty picks in the data; sourced picks for 14 skills are in the section above.
