@@ -16,11 +16,13 @@ nothing kept beyond what is listed here.
 
 - daevacompass.com: <https://daevacompass.com/en/db/abilities/18120000> (record ID 18120000, Recuperation) shows
   <https://daevacompass.com/images/skills/icon_ch_skill_013.webp>, 72×72: an open hand under a green
-  light beam, which matches the owner's description. The kept copy (WebP, 72×72) hashes to sha256
-  `babb0e1085b8fd4239f93ba6da25edecc62bd320fa177ee7792cb0dd2d6bcfa1` (re-hashed by Game Data Check, 2026-10-20). An
-  earlier note gave `0467a008…afb86`; it doesn't match the kept copy, so either the copy was re-encoded or that hash
-  came from another file, and it can't be re-checked (daevacompass.com isn't on the allowlist). Treat the hash above
-  as the kept copy's, not as proof of the original server response.
+  light beam, which matches the owner's description. The server's response was 1,370 bytes, sha256
+  `0467a008e8d9444662f1ec93fb3261022eb1d996f498252bd99dcd15294afb86` (hashed in this session's scratch copy).
+  The shared folder re-encodes WebP files after they are written. A byte-exact copy hashed `0467a008…` and was
+  later re-hashed as `babb0e10…` and `0544cf5a…` (7,138 bytes). Each re-encoding stays pixel-identical (maximum
+  pixel difference 0 against the original), so compare pixels, not hashes, for files in `/mnt/project-files`. The
+  original bytes are kept as base64 text, which the folder leaves alone, in
+  `/mnt/project-files/icons-hq/dc_icon_ch_skill_013_recuperation.webp.b64` (`base64 -d` gives back `0467a008…`).
 - Metabot's file for the same ID, <https://metabot.gg/web/aion2/skills/18120000.webp> (256×256), shows a green
   four-point star, not the hand. Metabot is not a match for this skill.
 - Copies for review: `/mnt/project-files/icons-hq/dc_icon_ch_skill_013_recuperation.webp` and
