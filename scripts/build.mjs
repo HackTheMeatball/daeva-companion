@@ -19,7 +19,7 @@
    The shell's <link rel="stylesheet" href="styles/X.css"> lines become <style> elements holding the file as it is (its
    '@import "Y.css";' lines replaced by those files), and
    its <script type="module" src="X.js"></script> lines become one classic <script> each holding the esbuild bundle of
-   that entry (whitespace and syntax minified, no renaming, no tree shaking, so every top-level name stays a page global, as before modules).
+   that entry (whitespace and syntax minified, local names shortened, top-level names never renamed, no tree shaking, so every top-level name stays a page global, as before modules).
    src/index.html is not runnable on its own: build, then `npm run serve`.
 
    dist/                       GitHub Pages site
@@ -169,10 +169,11 @@ const checkRenames = (e, js) => {
     die(`src/${e}: esbuild renamed "${base}" (${PAGE_NAMES.get(base)}) to "${n}": a module uses "${base}" without importing it`); }
 };
 for (const [e, js] of Object.entries(bundles)) checkRenames(e, js);
-/* whitespace and syntax minification of each checked bundle (0.5 P20), identifiers untouched: a separate transform, since
-   minifySyntax inside the bundling step renames top-level names (update → update3) */
+/* whitespace and syntax minification of each checked bundle (0.5 P20): a separate transform, since minifySyntax inside
+   the bundling step renames top-level names (update → update3). Local names are shortened (0.8.1 F6): a transform
+   without a format never renames a top-level name (each stays a page global) nor a free reference to one. */
 const minifyAll = bs => Promise.all(Object.entries(bs).map(async ([e, js]) =>
-  [e, (await transform(js, { loader: 'js', minifyWhitespace: true, minifySyntax: true, minifyIdentifiers: false, charset: 'utf8', legalComments: 'inline' }).catch(x => die(`src/${e}: minify: ${x.message}`))).code])).then(Object.fromEntries);
+  [e, (await transform(js, { loader: 'js', minifyWhitespace: true, minifySyntax: true, minifyIdentifiers: true, charset: 'utf8', legalComments: 'inline' }).catch(x => die(`src/${e}: minify: ${x.message}`))).code])).then(Object.fromEntries);
 let minified = await minifyAll(bundles);
 const bundle = entry => minified[entry];
 /* @import lines (0.4 P4d): a line '@import "X.css";' in a stylesheet is replaced by that file (path relative to the importing
@@ -180,9 +181,9 @@ const bundle = entry => minified[entry];
    missing file or one imported twice stops the build; so does a .css file under src/styles/ that nothing links or imports. */
 const IMPORT = /^@import "([\w./-]+\.css)";\n/gm, cssUsed = new Set();
 /* comments, the last ; of a rule and the white space around { } ; , > and after : in a stylesheet are not shipped (0.6 P1; no value, selector or
-   string is rewritten; quoted strings are skipped; @import lines keep their own line). styles/fonts.css stays as
-   written: the test font blocker reads its lines. */
-const plainCss = (f, css) => f === 'styles/fonts.css' ? css : css.replace(/\/\*[\s\S]*?\*\//g, '')
+   string is rewritten; quoted strings are skipped; @import lines keep their own line). styles/fonts.css only loses its
+   comments (0.8.1 F6): the test font blocker reads its lines. */
+const plainCss = (f, css) => f === 'styles/fonts.css' ? css.replace(/\/\*[\s\S]*?\*\/\n?/g, '') : css.replace(/\/\*[\s\S]*?\*\//g, '')
   .replace(/("(?:[^"\\\n]|\\.)*"|'(?:[^'\\\n]|\\.)*')|^@import [^\n]*\n|\s*;\s*\}\s*|\s*([{};,>~])\s*|\s+!important|:\s+/gm, (m, str, p) => str ? str : m.startsWith('@import') ? m : p ? p : m.includes('}') ? '}' : m.includes('!') ? '!important' : ':').trim() + '\n';
 const readCss = (f, seen) => {
   if (!existsSync(P('src', f))) die(`src/${f} is missing (an @import or <link> names it)`);
@@ -203,6 +204,48 @@ const src = inline(shell); /* the whole page, markers kept: what the checks belo
    single space as a line break plus indent (the page has no <pre> or <textarea>; the build checks) */
 const tightHtml = html => html.split(/(<(style|script)\b[\s\S]*?<\/\2>)/).filter((_, i) => i % 3 !== 2)
   .map((part, i) => i % 2 ? part : part.replace(/^[ \t]+|[ \t]+$/gm, '').replace(/\n{2,}/g, '\n')).join('');
+/* SVG path data in the markup (0.8.1 F6): a path whose numbers all have at most one decimal (the header wordmark,
+   tools/brand/build.py) ships as relative commands with repeated command letters left out, so the glyphs that repeat
+   compress. The numbers are counted in exact tenths and decoding what ships must give back every point of the source,
+   or the build stops: the shape is the same point for point. A path with an arc, more decimals or anything else is left
+   as written. */
+const PATH_ARGS = { M: 2, L: 2, H: 1, V: 1, C: 6, S: 4, Q: 4, T: 2, Z: 0 };
+const pathPoints = d => {
+  if (!/^[MLHVCSQTZmlhvcsqtz\d\s.,-]*$/.test(d)) return null;
+  const t = d.match(/[A-Za-z]|-?(?:\d+\.?\d*|\.\d+)/g) || [], out = [];
+  let i = 0, x = 0, y = 0, sx = 0, sy = 0, c = null;
+  while (i < t.length) {
+    if (/[A-Za-z]/.test(t[i])) c = t[i++]; else if (!c || c === 'Z' || c === 'z') return null; else if (c === 'M') c = 'L'; else if (c === 'm') c = 'l';
+    const C = c.toUpperCase(), n = PATH_ARGS[C], r = c !== C, raw = t.slice(i, i + n), a = raw.map(v => Math.round(Number(v) * 10));
+    i += n;
+    if (raw.length < n || raw.some((v, k) => /[A-Za-z]/.test(v) || Math.abs(a[k] - Number(v) * 10) > 1e-6)) return null;
+    let p;
+    if (C === 'Z') { p = []; x = sx; y = sy; }
+    else if (C === 'H') { p = [a[0] + (r ? x : 0)]; x = p[0]; }
+    else if (C === 'V') { p = [a[0] + (r ? y : 0)]; y = p[0]; }
+    else { p = a.map((v, k) => v + (r ? (k % 2 ? y : x) : 0)); x = p[n - 2]; y = p[n - 1]; if (C === 'M') { sx = x; sy = y; } }
+    out.push([C, ...p]);
+  }
+  return out;
+};
+const tenths = v => (v < 0 ? '-' : '') + (Math.abs(v) % 10 ? (Math.abs(v) / 10).toFixed(1) : String(Math.abs(v) / 10)).replace(/^0\./, '.');
+const relPath = pts => {
+  let x = 0, y = 0, sx = 0, sy = 0, prev = null, s = '';
+  for (const [C, ...p] of pts) {
+    const c = C.toLowerCase(), o = C === 'Z' ? [] : C === 'H' ? [p[0] - x] : C === 'V' ? [p[0] - y] : p.map((v, k) => v - (k % 2 ? y : x)), nums = o.map(tenths);
+    if (C === 'Z') { x = sx; y = sy; } else if (C === 'H') x = p[0]; else if (C === 'V') y = p[0]; else { x = p[p.length - 2]; y = p[p.length - 1]; if (C === 'M') { sx = x; sy = y; } }
+    s += (c === prev && c !== 'm' && c !== 'z' ? (nums[0].startsWith('-') ? '' : ' ') : c) + nums.map((v, k) => (k && !v.startsWith('-') ? ' ' : '') + v).join('');
+    prev = c;
+  }
+  return s;
+};
+const tightPaths = html => html.split(/(<(style|script)\b[\s\S]*?<\/\2>)/).filter((_, i) => i % 3 !== 2)
+  .map((part, i) => i % 2 ? part : part.replace(/(<path\b[^>]*? d=")([^"]*)"/g, (m, pre, d) => {
+    const pts = pathPoints(d), rel = pts && relPath(pts);
+    if (!rel || rel.length >= d.length) return m;
+    if (JSON.stringify(pathPoints(rel)) !== JSON.stringify(pts)) die(`svg path "${d.slice(0, 40)}…": its relative form decodes to other points`);
+    return pre + rel + '"';
+  })).join('');
 if (/<(pre|textarea)\b/i.test(src)) die('src/ has a <pre> or <textarea>: tightHtml would change its text');
 /* the sync chunk (see syncText): bundled and checked like the page's scripts, then named by its hash in site.js */
 if (!bundles['site.js'] || !bundles['site.js'].includes('__SYNC_CHUNK__')) die('src/site.js: no __SYNC_CHUNK__ (the sync chunk\'s file name goes there)');
@@ -253,7 +296,7 @@ for (const [f, html] of [['src/', src], ['public/404.html', readFileSync(P('publ
   if (/fonts\.(googleapis|gstatic)\.com/.test(html)) die(`${f} still requests Google Fonts`);
 
 /* web page */
-const web = tightHtml(stamp(inline(shell, siteClasses()).replace(/^[ \t]*<!-- @(end-)?web-only -->\n/gm, ''), 'site'));
+const web = tightPaths(tightHtml(stamp(inline(shell, siteClasses()).replace(/^[ \t]*<!-- @(end-)?web-only -->\n/gm, ''), 'site')));
 if (/__APP_(VERSION|BUILD)__|__SYNC_CHUNK__/.test(web)) die('dist/index.html still contains a placeholder');
 if (!web.includes(SYNC_FILE)) die(`dist/index.html does not name the sync chunk ${SYNC_FILE}`);
 if (!web.startsWith('<!doctype html>')) die('dist/index.html must start with <!doctype html>');
