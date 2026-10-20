@@ -40,6 +40,7 @@ from 2026-10-14 and are older than this register; where they differ, this regist
 | aion2.inven.co.kr | Full, facts only | Korean class boards and guides | Korean data: a preview only. Inven terms: no copying of its own posts without consent | 2026-10-18 | BGS §2 |
 | aionbuilds.com | Full | Class guides, tier list, player-shared builds | — | 2026-10-18 | BGS §3a |
 | aion2maps.com | Full, reuse unknown | Per-class build and macro guides | robots blocks AI training crawlers only | 2026-10-18 | BGS §3a |
+| daevacompass.com | Full | Ability database (`/en/db/abilities/<game id>`, e.g. 18120000 = Recuperation) and its skill icons (`/images/skills/icon_*.webp`, 72 px); news, guides | Not `/api/`, `/admin`, `/login`, `/settings`, `/setup`, `/continue`, `/design-system`. Terms ban only disruption, bypassing protections and abusive automated requests. Approved icon source (owner, 2026-10-20 12:46 PM ET): its skill icons ship under the standing icon OK, each recorded in `docs/ISSUES.md` and checked against the owner's screen, since an ID-to-icon mapping can be wrong (Metabot 18120000). Added to the network list by the owner, 2026-10-20 12:27 PM ET | 2026-10-20 | `2026-10-icon-sites-vetting.md` |
 | aion2.app | **Spot**: never the only source (owner, 2026-10-18, `docs/DECISIONS.md`; amends Q3) | Item and skill database | Terms: "personal, non-commercial… not to: Scrape, copy, or redistribute". Not `/api/`, `/admin`, `/account`, `/login`. Non-commercial terms: review before monetising | terms read for `2026-10-data-sources.md` §10 (2026-10), robots 2026-10-18 | BGS §1; `2026-10-data-sources.md` §10 |
 | aion2t.com | **Spot**: never the only source (same owner decision as aion2.app) | News and guides (aion2.app's sister site) | Same terms as aion2.app (non-commercial: review before monetising). Guides are collected: credit the original author | 2026-10-18 | BGS §1 |
 | daevacompanion.com, *.daevacompanion.com | Own app | The live site | — | — | `docs/DEPLOY.md` |
@@ -55,10 +56,7 @@ aion2kina.com (fan toolkit and map; terms ban only "unreasonable automated load"
 inferred) checked 2026-10-19, `2026-10-t47-icon-check.md`. Steam Index API (public-api.steamidx.com: AION 2's Steam
 build ID changes with timestamps; owner-created key and the owner's network-list OK needed first; its site pages ask
 not to be scraped, so never those; its API terms require a "Data from Steam Index" link, plus a Sources card entry,
-wherever the app shows its data) checked 2026-10-20, `2026-10-steam-and-news-vetting.md`. daevacompass.com (fan
-database, news, guides; terms ban only disruption, bypassing protections and abusive automated requests; robots allows
-all but `/api/` and account pages; its terms say game images belong to NCSOFT, so an icon from it needs the owner's
-OK) checked 2026-10-20, `2026-10-icon-sites-vetting.md`.
+wherever the app shows its data) checked 2026-10-20, `2026-10-steam-and-news-vetting.md`.
 
 ## Fail (never read by a session)
 
@@ -70,7 +68,7 @@ OK) checked 2026-10-20, `2026-10-icon-sites-vetting.md`.
 | maxroll.gg, sportskeeda.com | robots.txt blocks Claude-User (`Disallow: /`) | 2026-10-18 |
 | metaroad.gg | Terms: "automated means (bots, scrapers)… without permission". Written permission could open it | 2026-10-18 |
 | bluestacks.com, invenglobal.com | Terms ban crawling / any "robot, spider or other automatic device" | 2026-10-18 |
-| dbaion2.ru / .online, gamers4.life (+ interactivemap.app), wikily.gg | Terms ban bots or automated collection (gamers4.life `/terms` re-read 2026-10-20, unchanged) | 2026-10-14 to 2026-10-20 |
+| dbaion2.ru / .online, gamers4.life (+ interactivemap.app), wikily.gg | Terms ban bots or automated collection (gamers4.life `/terms` re-read at the owner's request 2026-10-20, unchanged) | 2026-10-14 to 2026-10-20 |
 | aion2.online | No data of its own: its database links all go to gamers4.life | 2026-10-18 |
 | aion2.gaming.tools, games.gg, mobalytics.gg, eloboost24.eu, icy-veins.com, keengamer.com | 403 challenge to our requests (access, not a ban). Owner browser only | 2026-10-18 |
 | thegameswiki.com | 429 security checkpoint. Its content is CC BY-NC-SA: facts only, never wording | 2026-10-18 |
