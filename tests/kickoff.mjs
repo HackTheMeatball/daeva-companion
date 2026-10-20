@@ -86,6 +86,15 @@ check(/not understood/.test(await afterBlocker(unkeyed('owner-ok-0.7-sync.', '0.
 check(/not understood/.test(await afterBlocker(unkeyed('owner-ok-met.', null))), 'K12: unversioned issue with an owner-ok key stays unstarted (fails closed)');
 check((await afterBlocker(unkeyed('owner-ok-met.', '0.6.1'))) === '', '0.6.1 patch item keeps its old token -> starts');
 
+// The build cap: 8 until 06:40 UTC Oct 20 (owner, 2026-10-19), then 5 again with no further change.
+const capm = yml.match(/MAX = (Date\.now\(\) < Date\.parse\('[^']+'\) \? \d+ : \d+);/);
+check(!!capm, 'kickoff: MAX is a dated cap');
+if (capm) {
+  const capAt = (iso) => new Function('Date', `return ${capm[1]};`)({ now: () => Date.parse(iso), parse: Date.parse });
+  check(capAt('2026-10-20T06:39:00Z') === 8, 'cap is 8 before 06:40 UTC Oct 20');
+  check(capAt('2026-10-20T06:40:00Z') === 5, 'cap is back to 5 at 06:40 UTC Oct 20');
+}
+
 // The start loop runs the check on every [next] line before it starts one.
 const notes = yml.slice(yml.indexOf('const wait = await afterBlocker(kx);'), yml.indexOf('picked.push('));
 check(/not understood[\s\S]*core\.warning[\s\S]*lines\.splice\(i \+ 1, 0, `  - held: After not understood/.test(notes),

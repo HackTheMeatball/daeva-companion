@@ -50,7 +50,9 @@ jobs:
         with:
           script: |
             const { owner, repo } = context.repo;
-            const STATE = 114, MAX = 5; // 3 until 2026-10-17; raised to 5 on the owner's Max 20x plan (lanes still apply)
+            // 3 until 2026-10-17; 5 on the owner's Max 20x plan (lanes still apply). 8 for the 0.8 overnight run only, back to
+            // 5 at 06:40 UTC Oct 20 with no further change (owner, 2026-10-19 10:05 PM ET).
+            const STATE = 114, MAX = Date.now() < Date.parse('2026-10-20T06:40:00Z') ? 8 : 5;
             const LANES = ['golden', 'golden-nextup', 'golden-journey', 'golden-milestones', 'golden-regional', 'golden-route', 'mig', 'main.js', 'gates', 'gen', 'app.css', 'ci', 'a11y', 'release'];
             // OPUS-FILES START (tests/kickoff.mjs runs this block)
             // PIP-06 (Kaizen (Gale), 0.7 rules audit, 2026-10-19): a Sonnet build whose issue's "## Files" section names an
