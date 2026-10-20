@@ -20,9 +20,33 @@
   font: 15px var(--body); padding: 0 var(--space-10); }
 .welfld select:focus { border-color: var(--accent); }
 .welhint { color: var(--muted); font-size: 12px; }
+/* Your class (0.8 P12): the class badges, one row of 8 on desktop, 4 × 2 on phones; the pick is its highlight only (no
+   check mark). A "Soon" badge dims its emblem, never its text ("Soon" stays 12 px; it and the name 4.5:1 or more). */
+.wellbl { font: 600 13px var(--body); color: var(--fg); }
+.welclasses { display: grid; grid-template-columns: repeat(8, minmax(0, 72px)); gap: var(--space-6); align-items: stretch; }
+.welclass { display: grid; justify-items: center; align-content: start; gap: var(--space-3); min-height: 64px; padding: var(--space-6) var(--space-2); border-radius: var(--radius-8);
+  border: 1px solid var(--line); background: var(--panel-2); color: var(--fg); font: 500 12px/1.2 var(--body); cursor: pointer; }
+.welclass img { width: 28px; height: 28px; }
+.welclass span { max-width: 100%; white-space: nowrap; }
+.welclass[aria-checked="true"] { background: var(--accent-soft); border-color: var(--accent); }
+.welclass.welsoon { background: transparent; color: var(--muted); cursor: default; }
+.welclass.welsoon:hover { border-color: var(--line); }
+.welclass.welsoon img { opacity: .35; }
+.welclass small { font-size: 12px; line-height: 1; }
 .welwill { margin: 0; padding-left: var(--space-18); display: grid; gap: var(--space-4); font-size: 13px; }
 .welwill li.no { color: var(--muted); }
 @media (max-width: 600px) {
   .welbtns { flex-direction: column; }
   .welbtns button { width: 100%; }
+  /* 4 × 2: the longest name (Spiritmaster) fits its badge at 360 px */
+  .welclasses { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-4); }
+  .welclass { padding: var(--space-6) 0; }
+  .welclass span { letter-spacing: -.02em; }
+}
+/* a 360 px phone: the welcome card gives up half its side padding (16 → 8 px) so the names keep the 12 px floor; the
+   text, badges and buttons keep one left edge */
+@media (max-width: 380px) {
+  .welcome { padding-inline: var(--space-8); }
+  .welclasses { gap: var(--space-3); }
+  .welclass span { font-weight: 400; letter-spacing: -.05em; }
 }

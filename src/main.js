@@ -22,7 +22,7 @@ import { sourcesCards } from "./cards/sources.js";
 import { KEY, char, loadState, parseExport } from "./core/state.js";
 import { migrate } from "./core/migrations.js";
 import { stamp, stampSave } from "./core/sync.js";
-import { addChar, removeChar, renameChar, switchChar } from "./core/chars.js";
+import { addChar, removeChar, renameChar, startAs, switchChar } from "./core/chars.js";
 /* the save is read and written only through this storage (interface: src/core/storage.js) */
 import { webStorage as saveStore } from "./shell/storage-web.js";
 import { newId } from "./shell/ids.js";
@@ -38,7 +38,7 @@ import { useCardPage } from "./cards/page.js";
 import { nextUpCard, renderNow, nowEl, pipWin, isBasic, specSub } from "./cards/nextup.js";
 import { milestonesCard, renderMilestones, derivedBox, fillStigmaText, milestoneFilters, syncExpand, syncQRun } from "./cards/milestones.js";
 import { renderRoute, routeRulesCard } from "./cards/route.js";
-import { journeyCard, renderQuest, renderStoryChips, renderStoryReqs, setLevel } from "./cards/journey.js";
+import { journeyCard, renderQuest, renderStoryChips, renderStoryReqs, applyLevel, setLevel } from "./cards/journey.js";
 import { aheadCard } from "./cards/ahead.js";
 import { renderUndo, undoCard } from "./cards/undo.js";
 import { charactersCard } from "./cards/characters.js";
@@ -60,14 +60,21 @@ registerCard(charactersCard({ onSwitch: id => useSave(switchChar(state, id)), on
 /* the first-run welcome (0.6 P17, S1 §1.1): either button writes welcomed: 1 (this browser's, never synced). Joining
    above Lv 1 sets the story quest (every earlier story quest counts as done, derived from the story order) and then the
    level through Journey's level setter (the one-time setter owner-ok-S1 approved), which stores and redraws; nothing else
-   is ticked. */
+   is ticked. The class picked on the card (0.8 P12) is the character's: another class than the untouched start's
+   replaces it (startAsSave), and the save is stored and the page reloaded (useSave) for that class's tables. */
 registerCard(welcomeCard({
-  onStart: () => { state.welcomed = 1; save(); },
-  onJoin: (lv, quest) => {
+  onStart: cls => {
+    const next = startAsSave(cls);
+    if (next) { next.welcomed = 1; useSave(next); return; }
+    state.welcomed = 1; save();
+  },
+  onJoin: (lv, quest, cls) => {
+    const next = startAsSave(cls);
+    if (next) Object.assign(state, next);
     state.welcomed = 1;
     const c = char(state);
     if (quest) { c.quest = quest; delete c.storyEnd; }
-    setLevel(lv);
+    if (next) { applyLevel(lv); useSave(state); } else setLevel(lv);
   },
 }));
 /* the pack's card in a section of Journey: registered after Journey, which declares the section */
@@ -123,6 +130,17 @@ function newCharSave(cls, name) {
   c.level = 1; if (quests.length) c.quest = quests[0][1];
   stamp(c, 0);
   next.welcomed = 0;
+  return next;
+}
+/* The save after the welcome card's class pick (0.8 P12, src/core/chars.js startAs): an untouched start of another class
+   becomes one character of class cls, at Lv 1 on the first story quest like a new one; null when nothing changes (the
+   same class, or a save with progress). */
+function startAsSave(cls) {
+  const next = startAs(state, { class: cls, now: Date.now(), id: newId() });
+  if (next === state) return null;
+  const c = char(next), quests = activePack().data.story.quests;
+  c.level = 1; if (quests.length) c.quest = quests[0][1];
+  stamp(c, 0);
   return next;
 }
 /* Another current character (0.5 P18): store the save and reload, so the load-time steps and every card run for that

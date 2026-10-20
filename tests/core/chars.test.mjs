@@ -2,6 +2,7 @@
    classes (definePack `classes`, packClasses) and newChar's class input. Every call leaves the input unwritten (deep-frozen
    saves) and every other slot byte-identical (same object, same JSON). */
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { existsSync, readFileSync } from 'node:fs';
 const json = p => JSON.parse(readFileSync(new URL('../../' + p, import.meta.url), 'utf8'));
 /* the page's slot ids (src/shell/ids.js), loaded as an ES module (the package has no "type") */
@@ -176,6 +177,50 @@ export default (test, M) => {
       const s = M.addChar(M.newSave({ id: 's1' }), { id: 's2', class: 'a' });
       assert.equal(M.char(s).pack, 'tiny/a');
     });
+  });
+  /* 0.8 P12 (#501): the welcome's class pick */
+  const fresh = () => { const s = M.newSave({ now: 1, id: 'a' }); s.chars.a.level = 1; return deepFreeze(s); };
+  test('startAs: an untouched start of another class becomes one character of it (tombstone for the old slot); frozen input', () => {
+    const s = fresh(), json0 = JSON.stringify(s);
+    const r = M.startAs(s, { class: 'ranger', now: 9000, id: 'n' });
+    assert.equal(r.current, 'n'); assert.deepEqual(M.liveChars(r).map(c => [c.id, c.class, c.pack]), [['n', 'ranger', 'aion2/asmodian/ranger']]);
+    assert.ok(M.isRemoved(r.chars.a), 'the Assassin slot is a tombstone, not a character'); assert.equal(r.chars.a.deletedAt, 9000);
+    viewSame(s, r); assert.equal(JSON.stringify(s), json0);
+    for (const c of M.packClasses().map(e => e.class).filter(c => c !== M.CLASS)) assert.deepEqual(M.liveChars(M.startAs(s, { class: c, id: 'n' })).map(x => x.class), [c], c);
+  });
+  test('startAs: the same class, no class, or a save with progress (level, ticks, a second character) is returned as it is', () => {
+    const s = fresh();
+    assert.equal(M.startAs(s, { class: M.CLASS, id: 'n' }), s);
+    assert.equal(M.startAs(s, { id: 'n' }), s);
+    const with_ = patch => deepFreeze({ ...s, chars: { a: { ...s.chars.a, ...patch } } });
+    for (const p of [{ level: 12 }, { level: 2 }, { checks: { 'g6:0': true } }]) { const t = with_(p); assert.equal(M.startAs(t, { class: 'ranger', id: 'n' }), t, JSON.stringify(p)); }
+    const t3 = three(); assert.equal(M.startAs(t3, { class: 'ranger', id: 'n' }), t3, 'a browser with characters keeps them');
+    assert.ok(M.untouchedStart(s) && !M.untouchedStart(t3));
+    assert.throws(() => M.startAs(s, { class: 'chanter', id: 'n' }), /playable class/, 'a class with no guide pack is never started');
+  });
+  test('classChoices: every class of the game in the pack\'s order, a guide pack for the playable ones, null ("Soon") for the rest', () => {
+    const game = json('data/packs/aion2/pack.json').classes, ch = M.classChoices();
+    assert.deepEqual(ch.map(e => e.class), game);
+    assert.deepEqual(game.slice().sort(), ['assassin', 'chanter', 'cleric', 'gladiator', 'ranger', 'sorcerer', 'spiritmaster', 'templar']);
+    for (const e of ch) {
+      const p = M.packClasses().find(x => x.class === e.class);
+      assert.equal(e.pack, p ? p.pack : null, e.class);
+      assert.equal(e.name, json(`data/packs/aion2/classes/${e.class}/class.json`).records[0].name, e.class);
+      assert.equal(e.icon, `assets/icons/class-${e.class}.webp`, e.class);
+    }
+    assert.ok(Object.isFrozen(M.aion2Pack.gameClasses) && M.aion2Pack.gameClasses.every(Object.isFrozen));
+    /* a pack without gameClasses offers its playable classes; a playable class missing from gameClasses throws */
+    assert.deepEqual(M.classChoices(M.definePack(tiny())), [{ class: '', name: '', pack: 'tiny', icon: null }]);
+    assert.throws(() => M.definePack({ ...tiny(), classes: [{ class: 'a', pack: 'tiny/a', name: 'A' }], gameClasses: [{ class: 'b', name: 'B' }] }), /not one of "gameClasses"/);
+  });
+  test('class emblems: one per class of the game, the exact bytes of docs/plans/0.8/inputs/emblems (sha256 in its SOURCES.md), a docs/ISSUES.md row each', () => {
+    const src = readFileSync(new URL('../../docs/plans/0.8/inputs/emblems/SOURCES.md', import.meta.url), 'utf8');
+    const issues = readFileSync(new URL('../../docs/ISSUES.md', import.meta.url), 'utf8');
+    for (const c of json('data/packs/aion2/pack.json').classes) {
+      const bytes = readFileSync(new URL(`../../src/assets/icons/class-${c}.webp`, import.meta.url)), sha = createHash('sha256').update(bytes).digest('hex');
+      assert.ok(new RegExp(`^\\| ${c}\\.webp \\| https://metabot\\.gg/web/aion2/classes/${c}\\.webp \\| ${sha} \\|$`, 'm').test(src), `${c}: sha256 ${sha} is SOURCES.md's`);
+      assert.ok(issues.includes(`| class-${c}.webp | <https://metabot.gg/en/aion-2/classes> | <https://metabot.gg/web/aion2/classes/${c}.webp> |`), `${c}: docs/ISSUES.md row`);
+    }
   });
   test('classes: a pack without `classes` (the fake game\'s shape) falls back to its character', () => {
     const p = M.definePack(tiny());

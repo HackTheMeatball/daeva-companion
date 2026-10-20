@@ -256,6 +256,33 @@ async function load(p, state, mode) {
     await ctx.close();
   }
 
+  /* ---------- 0.8 P12 (#501): the welcome's class radiogroup by keyboard. One tab stop (the picked badge); arrow keys move
+     the pick through the classes with a guide, wrapping, and skip the "Soon" ones (aria-disabled, never focused) ---------- */
+  for (const width of [390, 1500]) {
+    const { ctx, p } = await page(width);
+    await p.goto(CFG.CUR); await p.waitForTimeout(400);
+    const st = () => p.evaluate(() => { const a = document.activeElement;
+      return { focus: a && a.classList.contains('welclass') ? a.dataset.class : null, picked: [...document.querySelectorAll('.welclass[aria-checked="true"]')].map(x => x.dataset.class).join(),
+        stops: [...document.querySelectorAll('.welclass')].filter(x => x.tabIndex === 0).map(x => x.dataset.class).join(),
+        order: [...document.querySelectorAll('.welclass:not([aria-disabled="true"])')].map(x => x.dataset.class),
+        soon: [...document.querySelectorAll('.welclass[aria-disabled="true"]')].map(x => x.dataset.class) }; });
+    const s0 = await st();
+    ok(`welcome class ${width}px: one tab stop, the picked Assassin`, s0.stops === 'assassin' && s0.picked === 'assassin', s0);
+    await p.focus('.welclass[data-class="assassin"]');
+    const seenR = [];
+    for (let i = 0; i < s0.order.length; i++) { await p.keyboard.press('ArrowRight'); seenR.push((await st()).focus); }
+    const wantR = s0.order.map((_, i) => s0.order[(s0.order.indexOf('assassin') + i + 1) % s0.order.length]);
+    const s1 = await st();
+    ok(`welcome class ${width}px: ArrowRight walks every class with a guide, wrapping, never a "Soon" one; focus and pick move together`,
+      JSON.stringify(seenR) === JSON.stringify(wantR) && !seenR.some(c => s0.soon.includes(c)) && s1.picked === s1.focus && s1.stops === s1.focus, { seenR, wantR, s0, s1 });
+    await p.keyboard.press('ArrowLeft'); const s2 = await st();
+    await p.keyboard.press('End'); const s3 = await st();
+    await p.keyboard.press('Home'); const s4 = await st();
+    ok(`welcome class ${width}px: ArrowLeft back one, End / Home to the last / first class with a guide`,
+      s2.focus === s0.order[(s0.order.indexOf(s1.focus) - 1 + s0.order.length) % s0.order.length] && s3.focus === s0.order[s0.order.length - 1] && s4.focus === s0.order[0] && s4.picked === s0.order[0], { s2, s3, s4 });
+    await ctx.close();
+  }
+
   /* ---------- 4. "i" popovers and Escape ---------- */
   {
     const { ctx, p } = await page(1500);
