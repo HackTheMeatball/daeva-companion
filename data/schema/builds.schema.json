@@ -274,7 +274,7 @@
           }
         },
         "specialtyEvidence": {
-          "description": "Allow-list for specialty picks beyond slot 1 (0.3 E7): per choice id, the slot it fills, its evidence label and the slot witnesses (build source URLs). The generator rejects a slot 2 / 3 pick without a '2+ sources' entry here.",
+          "description": "Allow-list for specialty picks beyond slot 1 (0.3 E7): per choice id, the slot it fills, its evidence label and the slot witnesses (build source URLs). The generator rejects a slot 2 / 3 pick without an entry here: '2+ sources' (two or more publishers) or a labelled pick (disputed / contested / inferred, with a note; 0.8.1 F2).",
           "type": "object",
           "propertyNames": {
             "pattern": "^spec:[a-z]+:[a-z0-9-]+:[1-9]$",
@@ -294,9 +294,18 @@
                 "maximum": 3
               },
               "label": {
+                "description": "'2+ sources': two or more publishers place the pick in this slot. disputed / contested / inferred (0.8.1 F2, owner note 5: every slot 2 gets a pick): a labelled pick, shown with its label; it needs a 'note' naming the alternative.",
                 "enum": [
-                  "2+ sources"
+                  "2+ sources",
+                  "disputed",
+                  "contested",
+                  "inferred"
                 ]
+              },
+              "note": {
+                "description": "A labelled pick's reason and the alternative it was weighed against (the specialty row's tooltip).",
+                "type": "string",
+                "minLength": 1
               },
               "sources": {
                 "type": "array",

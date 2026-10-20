@@ -136,6 +136,70 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
    disagreement between reviewers goes to the owner in the morning debrief. Watchdog (Mike) flags a merged tagged item
    with no fresh-review note (`review-skipped`). Once per minor a no-history thread re-checks 10 data fields Game Data
    Check fixed or passed.
+
+   **Review level (owner, 2026-10-20 6:45 PM ET; defaults from Org Design's trigger list; approved by Fresh governance
+   review, 2026-10-20 7:02 PM ET):** every review is triaged `standing`, `blind` or `external`. The defaults list below sets each item's
+   level, and that call isn't left to anyone's judgement. Anyone may raise a level. Only the coordinator may lower
+   triggers 1, 3 and 4 below their default, logged in the PR with a reason and counted at each kaizen review. Triggers 2,
+   5, 4b and 6 are never lowered. Trigger 2 is the roster, where the coordinator is the decider. Trigger 5 is the conflict
+   check, and the coordinator picks the reviewer. Triggers 4b and 6 are K24, so lowering them narrows an owner decision,
+   and that goes to Isaac.
+
+   | # | Default trigger | Level |
+   |---|---|---|
+   | 1 | A change to a rule, a process, a review criterion or a gate: pipeline.yml review steps, verdict parsing, merge and kickoff gates, model routing, the review criteria and the fresh-review briefs, and this rule itself | external |
+   | 2 | A hire, merge, retire or re-scope of a standing role. Org Design brings the evidence, the coordinator decides, and the reviewer checks both the need and the charter | external |
+   | 3 | Privacy, legal or ToS text | external |
+   | 4 | Removing or hiding anything Isaac sees in the app or the tracker | blind |
+   | 4b | An owner-facing new look, layout or colour meaning, or a change to an owner-approved look (K24's tag, Isaac 4:39 PM ET) | blind |
+   | 5 | A review where the usual reviewer helped draft, propose or brief the work, commented on it, or owns the rules the work changes | blind (external if 1–3 also match) |
+   | 6 | Save or storage key changes, and every release PR (K24, unchanged) | blind |
+   | – | Anything else | standing |
+
+   - **Reviewers:**
+     - *External* is an outside reviewer with no history on the change: Team Audit, or a consultant whenever Team Audit
+       drafted it, commented on it or is its subject.
+     - *Blind* is a no-history reviewer working from the fixed brief, without the author's reasoning.
+     - *Standing* for code is the pipeline's per-PR review (MRG-04, criteria owned by Code Review), plus Code Review by
+       hand only on tagged or requested PRs. For design, standing is Design Review.
+   - **Conflicts come from the record, not self-declaration:** before picking the reviewer, the coordinator checks git
+     authorship, Ledger co-authors, comments and past reviews (trigger 5).
+   - **Set at plan time and checked by path:**
+     - From 0.10 each spec carries the bullet `- **Review:** standing | blind | external — <trigger # or reason>.` next
+       to Lanes. Walter sets it at plan time. Kickoff ignores it, and the `fresh-review` label is derived from it. 0.9's
+       existing fresh-review labels count as blind, so no issue is rewritten.
+     - An unplanned PR is triaged by the same list when it opens.
+     - Triggers 1 and 6 are also detected from changed paths: Build Pipeline keeps `review-triggers.json`, Code Review
+       owns its trigger-1 and trigger-6 entries, and kickoff's drift comment (K20) flags a PR whose paths need a higher
+       level than its `review:` line. This also catches scope growth.
+   - **Marker and hold:**
+     - Blind and external items open with `hold`.
+     - The review note's first line is `FRESH REVIEW #<n> <sha7>`, as in the merged brief template (#603); this is what
+       Watchdog's `review-skipped` check reads.
+     - A separate last line, `FRESH REVIEW OK <sha7>`, on the head SHA clears hold. The line never contains a CHANGES word.
+     - Only Build Pipeline's automation removes `hold`. Until that ships, the Release Planner does. The post-#615
+       convention of the reviewer removing it ends.
+     - Watchdog flags a held PR 60 min after its review started with no marker, and logs any merge that matched a trigger
+       without one.
+   - **Fast path and batching:**
+     - Incident fast path: the coordinator declares and logs the incident, the change is adopted at once, and it is
+       reviewed the same day (docs/DECISIONS.md 2026-10-20, "Process changes are decided by the team after an outside
+       review", step 6).
+     - Trigger-1 changes are reviewed in a batch at each kaizen review, except recurrences and incidents (the 5:30 PM ET
+       procedure's step 3), so external reviews stay inside the usage budget.
+   - **Who adopts:** the reviewer gives the verdict, and the change's owner decides whether to adopt it (the coordinator
+     for roster changes).
+   - **Known limit, not a control:** every comment posts under one account, so a marker's author rests on trust and is
+     visible in the thread.
+   - **Graded at each kaizen review:**
+     - merges that matched a trigger without a marker (target 0);
+     - lowerings below default, with their reasons;
+     - findings and runs per level, as cost per major finding;
+     - external runs from trigger 1 against the majors they found;
+     - triggers that fired too often or never;
+     - whether blind runs on new looks (4b) found majors that standing review missed. If two minors find none, propose
+       narrowing 4b to Isaac, since K24 is his decision.
+
 4. **Waves and lanes for the whole minor.** Lay every item out in waves before anything is queued: items in the same
    module or serial file run one after another; items in different modules may run at the same time, at most three
    builds (the cap in kickoff.yml; 3 under the owner's usage budget since 2026-10-20, five before). Name the critical path, put the items that unblock the most first, and give each item an `After:` line so
@@ -1312,11 +1376,11 @@ At most five builds at a time. Ungated items queue first; gated ones go last and
 
 - **Wave 1 (at the go):** P1, P2, P3, P4, P5, P6, P7, P8 and S2, S3. Queue order P1 → P2 → P3 → P7 → P8 → P4 → P5 → P6, so the
   queue runs top-down: P1 and P3 start at once; P2, P7 and P8 wait for P1 on nextup-card (P8 also on skills-card and
-  build-card), and kickoff serialises them from their queue-line lanes. Serial
-  lanes: **gen** P1 → P2 → P6 → P10 → P11 → P13 → P15 → P16 → P17 → P18; **golden** P1 → P2 → P11 → P12 → P13 → the
+  build-card), and kickoff serialises them from their queue-line lanes.
+  Serial lanes: **gen** P1 → P2 → P6 → P10 → P11 → P13 → P15 → P16 → P17 → P18; **golden** P1 → P2 → P11 → P12 → P13 → the
   research items → P19 → P20 → P21 → P22; **skills-card** P1 → P8 → P5 → P15 → P19; **nextup-card** P1 → P2 → P7 → P8 → P5 → P13 → P15 →
   P19 → P21; **page-card** P4 → P5 → P21 → P23; **mig** P2 → P9 → P22; **schema** P3 → P6 → P10; **app.css** P8 → P19 → P20 → P21 →
-  P22; **build-card** P1 → P8 → P5 → P13 → P18 → P22; **daevanion-card** P1 → P5 → P16 → P20 → P21; **a11y** P8 → P22; **site** P5 → P23; **main.js** P4 → P9 → P21; **ci** (Gus) S2 → S3 → S1 → S4. Shared test and doc files: **save** (`tests/save.js`) P9 → P11 → P22; **e2** (`tests/e2test.js`) P3 → P23;
+  P22; **build-card** P1 → P8 → P5 → P13 → P18 → P22; **daevanion-card** P1 → P5 → P16 → P20 → P21; **a11y** P8 → P22; **site** P5 → P23; **golden-nextup** P7 → P8 → P19 → P21; **journey-card** P2 → P7; **main.js** P4 → P9 → P21; **ci** (Gus) S2 → S3 → S1 → S4. Shared test and doc files: **save** (`tests/save.js`) P9 → P11 → P22; **e2** (`tests/e2test.js`) P3 → P23;
   **run-mjs** (`tests/run.mjs`) P6 → P14 → S1; **architecture** (`docs/ARCHITECTURE.md`) P5 → P9 → P14 (plan review, #609).
 - **Wave 2 (after P2):** P9, P10, P11, P13; then P12 (after P11 and P6) and P14 (after P9 and P10).
 - **Wave 3 (as research lands):** P15, P16, P17, P18, in the order their files land.
@@ -1357,13 +1421,19 @@ resets) into the path to 1.0. Built on the engine as a module with no page-scrip
 pre-1.0 breaks are still allowed. Research starts during 0.9: Source Vetting (Lydia) vets the owner's reference
 (Kanon's Aion 2 Bible, PDF in the project's shared folder, `research/endgame/`) and other sources, and Game Data Check
 (Gretchen) verifies the resets, the daily and weekly content and the gear-score paths (two sources or labelled, as
-everywhere). Items are shaped in 0.10's own pass once that research is in. Acceptance bar: the Vision (top of this file), so for a
+everywhere). **World boss timers (owner, 2026-10-20 7:02 and 7:03 PM ET; DECISIONS "1.0 includes timers for the world bosses that
+matter"):** for the world bosses that matter, picked by Game Data Check (Gretchen) from the owner's reference (Kanon's
+Aion 2 Bible) and research, with Source Vetting (Lydia) doing every fetch outside the approved list. The spawn rules
+(fixed times or random windows, server and time zone) must be sourced like any game fact; if they can't be, the
+fallback is a manual "killed at" timer per boss, reported back before it is specced. Design Lead owns the look.
+Items are shaped in 0.10's own pass once that research is in. Acceptance bar: the Vision (top of this file), so for a
 Lv 45 character Next up always shows the best thing to do next.
 
 **On the way and "Main path only" (Design Lead's calls after review, 2026-10-20 10:15 PM ET; the owner's 5:45 PM ask):**
 Next up's headline stays one step, and an "On the way" line lists optional things nearby: same zone, open at your level,
 sorted by distance where both ends have Metabot coordinates (every regional quest and stronghold, 72 of 87 story
-quests). The line names up to 3 kinds with counts and opens to the full list; a Skip is keyed by record id and undoable;
+quests; counted on main `d64296a` by the outside design critic, `design-review/critic-product-calls-2026-10-20.md`
+finding 7, project files). The line names up to 3 kinds with counts and opens to the full list; a Skip is keyed by record id and undoable;
 "Do it" ticks nothing, it only makes the item the headline. Journey and Areas stay inventory. One guide, no modes: the
 Fastest / Completionist track toggle (0.5) is a named removal, replaced by one "Main path only" setting that carries the
 track's drawbacks text while on. The adv and later cards that one view (0.9 P21) moves out of the headline land here.
@@ -1377,7 +1447,7 @@ mapping approved 2026-10-13, values in `docs/research/colors-2026-10/`, never bu
 little different. Designed inside the 1.0 visual language by Design Lead, reviewed by Design Review and an outside
 critic, built as a bot item. The Elyos layer is mocked but has no players until Elyos packs exist. Cards stop
 reading each other's DOM (architecture audit C3), which makes "add a feature" cheaper. The same step shown in three places
-(UX audit finding 12) is settled here. **Design questions the owner handed to Design Lead (2026-10-20 5:45 PM ET; decided under outside
+(UX audit finding 12) is settled here. **Design questions the owner handed to Design Lead (2026-10-20 5:45 PM ET; answered below, after outside
 review):** Next up also shows what else is nearby on the way, so completionists are served; one guide with ways to skip
 what a player doesn't want, or separate fastest and completionist modes; whether Basic and Advanced merge into one better
 view, so there aren't two views to maintain; and the new-user and new-character experience, including a premium opening
@@ -1402,7 +1472,7 @@ than a minor's work, it splits in two.
 ### 1.0
 
 Full architecture, performance and UX audit (the planning pass in its full form), docs pass, all eight classes on the
-engine, Asmodian, Lv 1–45, and the endgame guide past Lv 45 (0.10). One save fixture per class is frozen (`tests/fixtures/saves-1.0/`) and every later build must
+engine, Asmodian, Lv 1–45, the endgame guide past Lv 45 (0.10), and timers for the world bosses that matter (0.10; owner, 2026-10-20 7:02 PM ET). 1.0 does not ship without the timers. One save fixture per class is frozen (`tests/fixtures/saves-1.0/`) and every later build must
 load them. A reasoned budget raise if 0.9 to 0.11 land above 95%. The strict save rule returns (CLAUDE.md). The
 owner tests the candidate and gives go or no-go; a no-go makes it the next minor (Versioning).
 
@@ -1411,7 +1481,7 @@ owner tests the candidate and gives go or no-go; a no-go makes it the next minor
 The Elyos faction pack comes after 1.0 (Release Planner and coordinator, 2026-10-20, answering the owner's 5:40 PM ET
 question): it roughly doubles the data to verify, and 1.0 already gained the endgame guide. The faction accent colours
 (0.11) are designed for both factions, so Elyos needs no new look. The old 1.1 end-game tracker moved into 0.10. World
-boss timers join 0.10 only if their schedules are verified in time; otherwise they come here.
+boss timers moved into 0.10 as 1.0 scope (owner, 7:02 PM ET).
 
 ### Any time (patches)
 

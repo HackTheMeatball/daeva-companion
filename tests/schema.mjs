@@ -95,7 +95,9 @@ if (g) {
   /* 0.3 E7 guard: a specialty pick beyond slot 1 needs a 2+ source slot witness in specialtyEvidence (owner on #75) */
   const genFails = (label, mutate, re) => { let g1 = null; try { g1 = generate({ mutate: (rel, d) => rel === 'data/packs/aion2/asmodian/assassin/builds.json' && mutate(d.records[0]) }); } catch (e) { ok('generator runs: ' + label, false, e.message); return; }
     ok('generator rejects: ' + label, g1.failed.some(x => re.test(x.check)), g1.failed.map(x => x.check)); };
-  genFails('slot 2 pick without evidence (Savage Roar 4, contested)', r => { r.specialtyPicks['skill:assassin:savage-roar'].push('spec:assassin:savage-roar:4'); }, /savage-roar:4 \(slot 2\) has 2\+ source/);
+  /* 0.8.1 F2 made Savage Roar 4 a labelled slot 2 pick (contested): the guard now uses a pick no entry backs, Storm Rampage 4 */
+  genFails('slot 2 pick without evidence (Storm Rampage 4)', r => { r.specialtyPicks['skill:assassin:storm-rampage'] = [...(r.specialtyPicks['skill:assassin:storm-rampage'] || ['spec:assassin:storm-rampage:1']), 'spec:assassin:storm-rampage:4'].slice(-2); }, /storm-rampage:4 \(slot 2\) has 2\+ source/);
+  genFails('labelled slot 2 pick without a note naming the alternative (Savage Roar 4, contested)', r => { delete r.specialtyEvidence['spec:assassin:savage-roar:4'].note; }, /savage-roar:4 \(slot 2\) has 2\+ source/);
   genFails('slot witness not cited for specialtyPicks (GamesFuze)', r => { r.specialtyEvidence['spec:assassin:quick-slice:4'].sources[0] = 'https://gamesfuze.com/guides/aion-2-assassin-build-best-skills-stigmas-and-rotation/'; }, /quick-slice:4 \(slot 2\) has 2\+ source/);
   genFails('evidence from one publisher only', r => { r.specialtyEvidence['spec:assassin:heart-gore:5'].sources = ['https://skycoach.gg/blog/aion-2/articles/assassin-guide', 'https://skycoach.gg/blog/aion-2/articles/assassin-guide']; }, /heart-gore:5 \(slot 3\) has 2\+ source/);
   genFails('evidence for the wrong slot', r => { r.specialtyEvidence['spec:assassin:heart-gore:5'].slot = 2; }, /heart-gore:5 \(slot 3\) has 2\+ source/);

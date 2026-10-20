@@ -1,0 +1,8 @@
+[
+  {"case": "insignia-explosion-slot2-1500", "kind": "before-after", "title": "Insignia Explosion slot 2 has a pick", "caption": "Skills card, plan bought: \"pick a specialty\" becomes \"Keeps 2 Insignia stacks\", tagged disputed (tooltip: -3s cooldown is the alternative)."},
+  {"case": "insignia-explosion-slot2-1500-nextup", "kind": "before-after", "title": "Next up: Insignia Explosion slot 2", "caption": "The same pick and its disputed tag on Next up's skill card."},
+  {"case": "insignia-explosion-slot2-390-nextup", "kind": "before-after", "title": "Phone: Insignia Explosion slot 2", "caption": "The pick and tag at 390 px."},
+  {"case": "ambush-slot2-1500", "kind": "before-after", "title": "Ambush slot 2 has a pick", "caption": "Skills card: \"pick a specialty\" becomes \"Absorbs 3% HP\", tagged disputed (tooltip: the Whirlwind Slice trigger is the alternative)."},
+  {"case": "ambush-slot2-1500-nextup", "kind": "before-after", "title": "Next up: Ambush slot 2", "caption": "The same pick and its disputed tag on Next up's skill card."},
+  {"case": "savage-roar-shadowstrike-slot2-1500", "kind": "before-after", "title": "Savage Roar and Shadowstrike slot 2", "caption": "Same look: the plan stops below skill Lv 12, so their pick (contested / inferred) is in the row's tooltip, which a shot can't show."}
+]

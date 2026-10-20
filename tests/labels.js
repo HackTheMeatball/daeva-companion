@@ -70,6 +70,25 @@ const want = (r, f) => TAG[statusOf(r, f)] || null;
   const badSk = sk.filter(r => { const nm = Object.keys(learnOf).find(k => r.n.startsWith(k)), w = nm && TAG[learnOf[nm]]; return w ? !(r.tags.length === 1 && r.tags[0] === w) : r.tags.length !== 0; });
   ok(`Skills card: the ${sk.length} Coming up rows carry a learn level tag exactly when theirs is unverified`, sk.length > 0 && !badSk.length, badSk.slice(0, 5));
 
+  /* specialty slot 2 (0.8.1 F2, owner note 5): every core skill's row names the guide's pick, never "pick a specialty", with
+     nothing bought and with every line and plan node bought; a labelled pick (specialtyEvidence) shows its label as a tag
+     whose tooltip names the alternative, a 2+ sources pick none */
+  const asnBuild = recs('aion2/asmodian/assassin/builds.json').find(r => r.id === 'build:assassin:guide'), ev = asnBuild.specialtyEvidence, picks = asnBuild.specialtyPicks;
+  const slot2Of = () => SP_SLOTS.filter(x => x.slot === 2 && !x.s.extra).map(x => { const box = document.createElement('div'); box.innerHTML = spSlotSub(x);
+    return { n: x.s.n, text: box.textContent, tags: [...box.querySelectorAll('.ss-tag')].map(t => [t.textContent, t.title]) }; });
+  const sp0 = await p.evaluate(slot2Of);
+  const st2 = await p.evaluate(buildFixture, { L: 45, mode: 'advanced', fx: 'clean' });
+  const all = await p.evaluate(() => [...SP_STEPS, ...DV_NODES()].map(x => x.k)); for (const k of all) st2.checks[k] = true;
+  await writeSave(p, st2); await p.reload(); await p.waitForTimeout(400);
+  const sp1 = await p.evaluate(slot2Of);
+  const lbl = Object.fromEntries(Object.values(picks).filter(ps => ps[1]).map(ps => [ps[1], ev[ps[1]].label]));
+  ok('specialty slot 2: the data labels four picks disputed / contested / inferred', JSON.stringify(Object.values(lbl).filter(l => l !== '2+ sources').sort()) === '["contested","disputed","disputed","inferred"]', lbl);
+  const badSp = [...sp0, ...sp1].filter(r => /pick a specialty/i.test(r.text) || !/^(Slot 2 open · )?(Pick|Guide pick): /.test(r.text));
+  ok(`Skills / Next up: no core slot 2 row of ${sp0.length} reads "pick a specialty", nothing or everything bought`, sp0.length >= 6 && !badSp.length, badSp.slice(0, 5));
+  const nLab = Object.values(lbl).filter(l => l !== '2+ sources').length;
+  const badTag = sp1.filter(r => { const t = r.tags; return !(t.length === 0 || (t.length === 1 && ['disputed', 'contested', 'inferred'].includes(t[0][0]) && t[0][1].length > 20)); });
+  ok(`specialty slot 2: ${nLab} labelled picks each show their label with the alternative in the tooltip`, sp1.filter(r => r.tags.length === 1).length === nLab && !badTag.length, sp1);
+
   /* the tag's text is at least 12 px wherever it shows (Design Critic checklist) */
   const sizes = await p.evaluate(() => [...document.querySelectorAll('.ss-tag')].map(t => parseFloat(getComputedStyle(t).fontSize)));
   ok('every shown tag is at least 12 px', sizes.length > 0 && sizes.every(s => s >= 12), sizes.filter(s => s < 12).slice(0, 5));
