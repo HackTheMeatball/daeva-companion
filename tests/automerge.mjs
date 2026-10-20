@@ -54,10 +54,10 @@ const ghMock = { rest: { repos: { compareCommitsWithBasehead: async ({ basehead 
   return { data: COMPARE[basehead] };
 } } } };
 const dataBlocker = new Function('owner', 'repo', 'core', 'github', d[1] + '\nreturn dataBlocker;')('HackTheMeatball', 'daeva-companion', { info: () => {} }, ghMock);
-const RPR = { head: { ref: 'claude/research-chanter-nrffuq' }, title: 'research: Chanter pack' };
-const TPR = { head: { ref: 'claude/project-thread-w57upj' }, title: 'Research: Cleric pack for 0.8' };
-const BPR = { head: { ref: 'claude/issue-491-1' }, title: '0.8 P2: Templar class data' };
-const GPR = { head: { ref: 'claude/game-data-check-q6vdab' }, title: 'data: Metabot backs 5 unlock levels' };
+const RPR = { base: { ref: 'main' }, head: { ref: 'claude/research-chanter-nrffuq' }, title: 'research: Chanter pack' };
+const TPR = { base: { ref: 'main' }, head: { ref: 'claude/project-thread-w57upj' }, title: 'Research: Cleric pack for 0.8' };
+const BPR = { base: { ref: 'main' }, head: { ref: 'claude/issue-491-1' }, title: '0.8 P2: Templar class data' };
+const GPR = { base: { ref: 'main' }, head: { ref: 'claude/game-data-check-q6vdab' }, title: 'data: Metabot backs 5 unlock levels' };
 const CODE = ['src/main.js', 'tests/site.js'];
 const PACK = ['data/packs/aion2/elyos/templar/class.json', 'src/main.js'];
 const V = (body, min = 9) => c('HackTheMeatball', body, min);
@@ -82,18 +82,24 @@ check(/waits on Game Data Check/.test(await dataBlocker(RPR, PACK, [c('someone-e
 check(/says CHANGES/.test(await dataBlocker(RPR, PACK, [V('**Game Data Check (ROL-03) on abc1234: VERIFIED.**', 6), V('**Game Data Check (ROL-03) on abc1234: CHANGES.**', 8)], SHA, HEAD)), 'later CHANGES wins');
 check(await dataBlocker(RPR, PACK, [V('**Game Data Check (ROL-03) on abc1234: CHANGES.**', 6), V('**Game Data Check (ROL-03) on abc1234: VERIFIED.**', 8)], SHA, HEAD) === '', 'later VERIFIED after CHANGES -> merges');
 // Carry: VERIFIED on an earlier head holds across later merges of main that leave the PR's data files alone (Walter).
-const MERGE = { parents: [{}, {}] }, PLAIN = { parents: [{}] };
+// A real main merge also lists main's squash commits (one parent, already on main); only the PR's own commits must be merges.
+const MERGE = { sha: 'm1', parents: [{}, {}] }, PLAIN = { sha: 'p1', parents: [{}] }, SQUASH = { sha: 's1', parents: [{}] };
 const OLD = '1111111';
-COMPARE[`${OLD}...${SHA}`] = { status: 'ahead', commits: [MERGE], files: [{ filename: 'data/packs/aion2/asmodian/sorcerer/class.json' }, { filename: 'src/main.js' }] };
-COMPARE[`2222222...${SHA}`] = { status: 'ahead', commits: [MERGE], files: [{ filename: 'data/packs/aion2/elyos/templar/class.json' }] };
-COMPARE[`3333333...${SHA}`] = { status: 'ahead', commits: [PLAIN, MERGE], files: [{ filename: 'src/main.js' }] };
+COMPARE[`main...${SHA}`] = { status: 'diverged', commits: [{ sha: 'b0' }, PLAIN, MERGE] };
+COMPARE[`${OLD}...${SHA}`] = { status: 'ahead', commits: [SQUASH, MERGE], files: [{ filename: 'data/packs/aion2/asmodian/sorcerer/class.json' }, { filename: 'src/main.js' }] };
+COMPARE[`2222222...${SHA}`] = { status: 'ahead', commits: [SQUASH, MERGE], files: [{ filename: 'data/packs/aion2/elyos/templar/class.json' }] };
+COMPARE[`3333333...${SHA}`] = { status: 'ahead', commits: [SQUASH, PLAIN, MERGE], files: [{ filename: 'src/main.js' }] };
 COMPARE[`4444444...${SHA}`] = { status: 'diverged', commits: [MERGE], files: [] };
+COMPARE[`6666666...${SHA}`] = { status: 'ahead', commits: [SQUASH], files: [{ filename: 'src/main.js' }] };
 const VER = (on) => V(`**Game Data Check (ROL-03) on ${on}: VERIFIED.**`, -3);
-check((await dataBlocker(BPR, PACK, [REVIEW, VER(OLD)], SHA, HEAD)) === '', 'VERIFIED on an earlier head, only a main merge since (other class files) -> carries, merges');
+check((await dataBlocker(BPR, PACK, [REVIEW, VER(OLD)], SHA, HEAD)) === '', 'VERIFIED on an earlier head, a main merge since (with main\'s squash commit; other class files) -> carries, merges');
 check(/does not cover the head/.test(await dataBlocker(BPR, PACK, [REVIEW, VER('2222222')], SHA, HEAD)), 'a merge since changed this PR\'s own data file -> waits');
 check(/does not cover the head/.test(await dataBlocker(BPR, PACK, [REVIEW, VER('3333333')], SHA, HEAD)), 'a plain commit since the verified head -> waits');
 check(/does not cover the head/.test(await dataBlocker(BPR, PACK, [REVIEW, VER('4444444')], SHA, HEAD)), 'verified sha not an ancestor of the head -> waits');
 check(/does not cover the head/.test(await dataBlocker(BPR, PACK, [REVIEW, VER('5555555')], SHA, HEAD)), 'compare fails -> waits');
+check(/does not cover the head/.test(await dataBlocker(BPR, PACK, [REVIEW, VER('6666666')], SHA, HEAD)), 'only base commits since, none of the PR\'s own -> waits');
+const NOBASE = { ...BPR, base: { ref: 'gone' } };
+check(/does not cover the head/.test(await dataBlocker(NOBASE, PACK, [REVIEW, VER(OLD)], SHA, HEAD)), 'base compare fails -> waits');
 check(/const data = await dataBlocker\(pr, touched, comments, sha, headAt\);\s*\n\s*if \(data\) \{.*continue; \}/.test(loop), 'merge loop: dataBlocker runs and skips before a PR is merged');
 
 // pipeline.yml starts a fix round from Game Data Check's CHANGES (#518 got none from it, 2026-10-19).

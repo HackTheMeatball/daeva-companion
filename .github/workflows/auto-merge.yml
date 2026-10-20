@@ -78,14 +78,20 @@ jobs:
             const NEEDSDATA = (pr, files) => !/^claude\/game-data-check-/.test(pr.head.ref)
               && (/^claude\/research-/.test(pr.head.ref) || /^research\b/i.test(pr.title || '') || files.some(DATAFILE));
             const VERDICT = /^\**Game Data Check \(ROL-03\) on ([0-9a-f]{7,40}): (VERIFIED|CHANGES|HOLD)\b/m;
-            // A VERIFIED on an earlier head still holds when every commit after it is a merge (main brought in) and none of
-            // them changed this PR's own data files: each main merge into a class PR used to void her check and ask for a
-            // fresh one (Release Planner (Walter), 2026-10-19). Any doubt (a plain commit, a big compare, an API error) waits.
-            const carried = async (on, sha, files) => {
+            // A VERIFIED on an earlier head still holds when every commit of the PR's own after it (not on the base branch) is a
+            // merge (main brought in) and nothing since changed this PR's own data files: each main merge into a class PR used to
+            // void her check and ask for a fresh one (Release Planner (Walter), 2026-10-19). The squashed main commits a merge
+            // brings in have one parent, so only commits missing from the base count. Any doubt (a plain commit of the PR's, a
+            // big compare, an API error) waits.
+            const carried = async (on, sha, files, base) => {
               try {
                 const cmp = (await github.rest.repos.compareCommitsWithBasehead({ owner, repo, basehead: `${on}...${sha}` })).data;
                 if (cmp.status !== 'ahead' || !cmp.commits.length || cmp.commits.length >= 250 || (cmp.files || []).length >= 300) return false;
-                if (!cmp.commits.every((k) => k.parents.length === 2)) return false;
+                const off = (await github.rest.repos.compareCommitsWithBasehead({ owner, repo, basehead: `${base}...${sha}` })).data;
+                if (!off.commits.length || off.commits.length >= 250) return false;
+                const mine = new Set(off.commits.map((k) => k.sha));
+                const own = cmp.commits.filter((k) => mine.has(k.sha));
+                if (!own.length || !own.every((k) => k.parents.length === 2)) return false;
                 const changed = new Set((cmp.files || []).flatMap((f) => [f.filename, f.previous_filename].filter(Boolean)));
                 return !files.filter(DATAFILE).some((f) => changed.has(f));
               } catch (e) { return false; }
@@ -99,7 +105,8 @@ jobs:
               const [, on, verdict] = last.body.match(VERDICT);
               if (verdict !== 'VERIFIED') return `Game Data Check says ${verdict} (ROL-03)`;
               if (sha.startsWith(on) && Date.parse(last.updated_at) >= headAt) return '';
-              if (!sha.startsWith(on) && await carried(on, sha, files)) {
+              // no updated_at check on a carry: compare status 'ahead' means `on` is an ancestor, so the verdict came after it
+              if (!sha.startsWith(on) && await carried(on, sha, files, pr.base.ref)) {
                 core.info(`#${pr.number}: VERIFIED on ${on} carries to ${sha.slice(0, 7)} (only merges since, none changed its data files)`);
                 return '';
               }
