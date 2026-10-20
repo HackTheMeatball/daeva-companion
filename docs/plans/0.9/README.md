@@ -436,6 +436,8 @@ Rules for every item:
 
 ## P21: One view: the essentials by default, the rest in folds; early chores fold away
 
+**Fresh review** (save field no longer read, bug-report payload, owner-approved looks rewritten; Code Review the code half, Design Review the design half).
+
 - **Problem.** Basic and Advanced are two views to maintain: about 20 `body.basic` CSS rules and 22 mode branches
   (`main.js`, `nextup.js`, `page.js`, `nextup-kinds.js`, `daevanion.js`, `milestones.js`), and Basic gaps keep turning
   up as bugs (no Respec in Basic, owner note 7; the rail race, #105; the locked shells). Basic also hides the late
