@@ -43,8 +43,10 @@
   .welclass { padding: var(--space-6) 0; }
   .welclass span { letter-spacing: -.02em; }
 }
-/* a 360 px phone: the badges take most of the card's side padding, so the names keep the 12 px floor */
+/* a 360 px phone: the welcome card gives up 12 px of its side padding so the names keep the 12 px floor; the text,
+   badges and buttons keep one left edge */
 @media (max-width: 380px) {
-  .welclasses { margin-inline: calc(-1 * var(--space-12)); gap: var(--space-3); }
+  .welcome { padding-inline: calc(var(--space-16) - var(--space-12)); }
+  .welclasses { gap: var(--space-3); }
   .welclass span { font-weight: 400; letter-spacing: -.04em; }
 }
