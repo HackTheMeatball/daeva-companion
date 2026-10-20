@@ -264,8 +264,6 @@ details.step.done .num { background: var(--good-soft); border-color: var(--good)
 .mk-nw { white-space: nowrap; }
 .ztr .mk-map { margin: 0; }
 .sh-note.mk-legend .mk-map { margin: 0; }
-#nowStar .ns-card .num.ns-num:has(> .mk-tile) { background: var(--panel-2); border-color: var(--line); grid-template: minmax(0, 1fr) / minmax(0, 1fr); place-items: center; }
-#nowStar .ns-card .ns-num img.mk-tile { width: 70%; height: 70%; min-width: 0; min-height: 0; object-fit: contain; }
 .sh-note > .itl { display: inline; }
 .item.has-ico label { grid-template-columns: 22px minmax(0,1fr) auto; }
 .item.has-ico .icos { grid-column: 3; grid-row: 1; }
