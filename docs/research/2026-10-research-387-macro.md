@@ -10,7 +10,7 @@ and the two written guides already cited in #387. No new site was read for this 
 | a | Can a macro step fire a stack bound to the macro's own key? | Yes: the macro on right click fires the Quick Use 2 stack | Owner, project chat 2026-10-18 8:12 PM ET ("hold right click and all the skills in my quickslot 2 … fire automatically"). That the stack's T label is the same Quick Use 2 slot is inferred (#387 comment, 2026-10-18 8:59 PM ET) |
 | b | Does a macro step naming a stacked skill fire the whole stack, lowest ready row first? | Yes | Owner (as above) and C21; macro list order runs from step 1 (aion2turkiye) |
 | c | Does the one-key macro replace "hold both clicks"? | **No.** Holding right click alone runs out of MP; holding both clicks prevents it | Owner, Game Data Check thread 2026-10-20 8:36 AM ET: "Right click alone will eventually run out of MP—holding both prevents that." Agrees with daevaguides and aion2turkiye (hold both) |
-| d | Is E the default slot for Shadowstrike? | **No, E is the owner's own choice.** The game default is not known yet | Owner, same message: "Yes I moved it manually to E." He will send a defaults screenshot later |
+| d | Is E the default slot for Shadowstrike? | **No, E is the owner's own choice.** The game default is not known yet | Owner, same message: "Yes I moved it manually to E." The owner will send a defaults screenshot later |
 | – | Default Macro key | None | daevaguides (#387 comment, 2026-10-18) |
 
 ## What this means for P14
