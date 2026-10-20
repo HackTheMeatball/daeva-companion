@@ -84,29 +84,51 @@ const fixConflicts = choices => choices.filter(c => GAME_TEXT[c.id]).map(c => {
   return `${c.id} text: Metabot's skill page prints "${g.metabot}" (an unfilled template; its number is the percent x 100). Game text "${g.text}" per ${g.by.join(' and ')}${g.owner ? ', and the owner\'s Templar skill window (2026-10-18)' : ''} (templar research §5).`;
 });
 
+/* Specialty texts the sources dispute (templar research §5): the record keeps Metabot's text, labelled disputed per choice
+   (fieldStatus specialtyChoices.<array index>.text), with the other sources' text in conflicts. */
+const DISPUTED = CLS !== 'templar' ? {} : {
+  'spec:templar:pummel:4': { metabot: '-1s [Punishment] cooldown on hit', other: '…on landing [Punishing Strike]', by: ['mmo-codex', 'daevaguides'] },
+  'spec:templar:pummel:5': { metabot: '[Punishing Strike] grants extra damage on hit', other: 'Activates [Punishing Strike] 1 extra time', by: ['mmo-codex', 'daevaguides'],
+    why: '; mmo-codex says Korea changed this specialty on 16 Sep, so one side may be newer (inferred)' },
+};
+const disputed = new Set();
+const disputedStatus = choices => Object.fromEntries(choices.map((c, i) => [c, i]).filter(([c]) => DISPUTED[c.id]).map(([c, i]) => {
+  if (c.text !== DISPUTED[c.id].metabot) throw new Error(`${c.id}: CSV text ${c.text} is not the disputed Metabot text ${DISPUTED[c.id].metabot}`);
+  disputed.add(c.id);
+  return [`specialtyChoices.${i}.text`, 'disputed'];
+}));
+const disputedConflicts = choices => choices.filter(c => DISPUTED[c.id]).map(c => {
+  const d = DISPUTED[c.id];
+  return `${c.id} text (disputed): Metabot's skill page prints "${d.metabot}"; ${d.by.join(' and ')} give "${d.other}"${d.why || ''}. Needs skill Lv ${c.skillLv}, past a leveling guide; the owner can read it on any Templar's skill window (templar research §5).`;
+});
+
 /* boardNodes "Nezekan 2 Vaizel 1 Triniel 1" -> { board:nezekan: 2, … } */
 const perBoard = s => Object.fromEntries([...s.matchAll(/([A-Z][a-z]+) (\d+)/g)].map(m => ['board:' + m[1].toLowerCase(), int(m[2])]));
 
 /* Templar passive icons (0.8 P2): Metabot's passive files don't match the owner's screens for some passives. Impact Hit's
-   art on the owner's screen is the Assassin's 13760000, already shipped; Enhance Health was unlocked on the owner's Lv 4
-   screen and matched by eye (templar research §3). The others wait on the owner (ISSUES.md, "Templar passive icons"). */
-const ICON = CLS !== 'templar' ? {} : { 'skill:templar:impact-hit': 'assets/icons/sk-impact-hit.png' };
-const ICON_SEEN = CLS !== 'templar' ? [] : ['skill:templar:enhance-health', 'skill:templar:impact-hit'];
+   art on the owner's screen is the Assassin's 13760000, already shipped. Game Data Check matched eight Metabot files
+   against the owner's screen (PR #518): those name their staged sk-templar-<slug>.png, which P3 moves into src/assets/icons
+   with the guide pack. Survival Willpower matches no file and waits on the owner (ISSUES.md, "Templar passive icons"). */
+const ICON = CLS !== 'templar' ? {} : {
+  'skill:templar:impact-hit': 'assets/icons/sk-impact-hit.png',
+  ...Object.fromEntries(['enhance-health', 'warding-shield', 'punishing-benediction', 'ironclad-defense', 'guarding-seal', 'insulting-roar', 'fury', 'block-pain']
+    .map(s => ['skill:templar:' + s, `assets/icons/sk-templar-${s}.png`])),
+};
 const iconFields = r => {
   if (CLS !== 'templar' || r.type !== 'passive') return {};
-  if (ICON[r.id]) return { icon: ICON[r.id] };
-  return ICON_SEEN.includes(r.id) ? {} : { fieldStatus: { icon: 'owner-check' } };
+  return ICON[r.id] ? { icon: ICON[r.id] } : { fieldStatus: { icon: 'owner-check' } };
 };
 
 const skills = csv(`${CLS}-skills-metabot-2026-10.csv`).map(r => {
-  const choices = choicesOf(r.id, r.page_url).map(gameText), conflicts = fixConflicts(choices);
+  const choices = choicesOf(r.id, r.page_url).map(gameText), conflicts = [...fixConflicts(choices), ...disputedConflicts(choices)];
+  const fieldStatus = { ...iconFields(r).fieldStatus, ...disputedStatus(choices) };
   return {
     id: r.id, key: r.key, name: r.name, type: r.type, learnLv: int(r.learnLv), levelGate: r.levelGate,
     ...(iconFields(r).icon ? { icon: iconFields(r).icon } : {}),
     boardNodes: { perBoard: perBoard(r.boardNodes), cost: int(r.boardNodeCost) },
     ...(choices.length ? { specialtyChoices: choices } : {}),
     sources: [src(r), ...fixSources(choices)], verifiedAt: r.checkedAt, status: 'verified',
-    ...(iconFields(r).fieldStatus ? { fieldStatus: iconFields(r).fieldStatus } : {}),
+    ...(Object.keys(fieldStatus).length ? { fieldStatus } : {}),
     ...(conflicts.length ? { conflicts } : {}),
     ...(r.notes ? { notes: [r.notes + skillNote(r)] } : {}),
   };
@@ -148,6 +170,7 @@ const cls = {
         : 'Hidden until a 0.7 guide item adds its guide pack (data/packs/aion2/asmodian/spiritmaster/, which defines build:spiritmaster:guide) and lists it in the class picker.'],
 };
 for (const id of Object.keys(GAME_TEXT)) if (!fixed.has(id)) throw new Error('game-text fix not applied: ' + id);
+for (const id of Object.keys(DISPUTED)) if (!disputed.has(id)) throw new Error('disputed label not applied: ' + id);
 
 write('class.json', doc('classes', 'classes', [cls]));
 write('skills.json', doc('skills', 'skills', skills));
