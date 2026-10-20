@@ -30,7 +30,7 @@ from 2026-10-14 and are older than this register; where they differ, this regist
 | aion2hub.com | Full, reuse unknown | Weak corroboration: story-quest order and levels, Sealed Dungeon bands, Global vs KR labels | Not `/api/`. Pre-launch snapshot (2026-09-19); never for prerequisites, unlock levels, specialties, locations | 2026-10-14 | `2026-10-source-vetting.md` §3.2 |
 | skycoach.gg | Full | Class build guides (skill order, specialties) | `Crawl-delay: 1`. Boosting shop: guides are editorial | 2026-10-18 | BGS §2 |
 | corpus.gg | Full | Class build guides, from named creators | Not `/data/` (terms: "don't access data outside the published pages") | 2026-10-18 | BGS §2 |
-| aion2-meta.com | Full, reuse unknown | Per-class skills, stigmas, Daevanion, specialties | Korean top-player data: a preview, never proof of a global fact | 2026-10-18 | BGS §2 |
+| aion2-meta.com | Full, reuse unknown | Per-class skills, stigmas, Daevanion, specialties; skill icons (`/icons/<class>-<slug>.webp`, 64 px) where Metabot has none, each matched to an owner screen (Game Data Check, 2026-10-20) | Korean top-player data: a preview, never proof of a global fact | 2026-10-18 | BGS §2 |
 | aion2turkiye.com | Full, reuse unknown | Leveling / dungeon / PvP build panels | — | 2026-10-18 | BGS §2 |
 | gamesfuze.com | Full, reuse unknown | Class builds | Picks are not slot-ordered (never a slot witness) | 2026-10-18 | BGS §2 |
 | aion2quest.pro | Full | Daevanion planner, titles database, map-marker icons (`UT_Marker_*`) where Metabot has none, and its purple Kibelisk crest (owner, 2026-10-18, DECISIONS `owner-ok-0.6.2-map-icons`) | Not `/api/` or `/sim/`. Its desktop app reads game traffic: check each field's origin before use | 2026-10-18 | BGS §2 |

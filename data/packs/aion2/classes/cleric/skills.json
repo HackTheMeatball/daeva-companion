@@ -535,6 +535,7 @@
       "type": "passive",
       "learnLv": 15,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-cleric-heal-block.png",
       "boardNodes": {
         "perBoard": {
           "board:zikel": 2,
@@ -551,16 +552,27 @@
             "scheme": "metabot",
             "value": "0.0.4387.0"
           }
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-20-cleric-passives-03",
+            "checkedAt": "2026-10-20",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Skill window, hovering the locked Lv 15 passive cell: the tooltip names Heal Block"
+          },
+          "fields": [
+            "learnLv",
+            "icon"
+          ]
         }
       ],
-      "verifiedAt": "2026-10-19",
+      "verifiedAt": "2026-10-20",
       "status": "verified",
-      "fieldStatus": {
-        "learnLv": "owner-check",
-        "icon": "owner-check"
-      },
       "notes": [
-        "learnLv 15 and icon: owner-check. The owner's Lv 4 Cleric screen (2026-10-19) shows the art of the file staged as Immortal Veil in the locked Lv 15 passive cell, so either the staged Metabot icon is mislabelled or Metabot puts this passive at the wrong level (Game Data Check, #493). No icon until the owner's tooltip screenshot names the cell (docs/ISSUES.md)."
+        "learnLv and icon: the owner's tooltip on the Lv 15 cell (2026-10-20) names this passive. icon from Metabot's Immortal Veil page file 17750000, which is this skill's art; it matches the cell art on the owner's Lv 4 screen (Game Data Check, docs/ISSUES.md)."
       ]
     },
     {
@@ -570,6 +582,7 @@
       "type": "passive",
       "learnLv": 11,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-cleric-healing-enhancement.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 2,
@@ -586,16 +599,27 @@
             "scheme": "metabot",
             "value": "0.0.4387.0"
           }
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-20-cleric-passives-01",
+            "checkedAt": "2026-10-20",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Skill window, hovering the locked Lv 11 passive cell: the tooltip names Healing Enhancement"
+          },
+          "fields": [
+            "learnLv",
+            "icon"
+          ]
         }
       ],
-      "verifiedAt": "2026-10-19",
+      "verifiedAt": "2026-10-20",
       "status": "verified",
-      "fieldStatus": {
-        "learnLv": "owner-check",
-        "icon": "owner-check"
-      },
       "notes": [
-        "learnLv 11 and icon: owner-check. The owner's Lv 4 Cleric screen (2026-10-19) shows teal arcs around a flare; no staged file matches in the locked Lv 11 passive cell, so either the staged Metabot icon is mislabelled or Metabot puts this passive at the wrong level (Game Data Check, #493). No icon until the owner's tooltip screenshot names the cell (docs/ISSUES.md)."
+        "learnLv and icon: the owner's tooltip on the Lv 11 cell (2026-10-20) names this passive. icon from aion2-meta.com (its Cleric guide page; Metabot's file 17740000 shows other art); it matches the cell art on the owner's Lv 4 screen (Game Data Check, docs/ISSUES.md)."
       ]
     },
     {
@@ -667,6 +691,7 @@
       "type": "passive",
       "learnLv": 13,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-cleric-immortal-veil.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 2,
@@ -683,16 +708,27 @@
             "scheme": "metabot",
             "value": "0.0.4387.0"
           }
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-20-cleric-passives-02",
+            "checkedAt": "2026-10-20",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Skill window, hovering the locked Lv 13 passive cell: the tooltip names Immortal Veil"
+          },
+          "fields": [
+            "learnLv",
+            "icon"
+          ]
         }
       ],
-      "verifiedAt": "2026-10-19",
+      "verifiedAt": "2026-10-20",
       "status": "verified",
-      "fieldStatus": {
-        "learnLv": "owner-check",
-        "icon": "owner-check"
-      },
       "notes": [
-        "learnLv 13 and icon: owner-check. The owner's Lv 4 Cleric screen (2026-10-19) shows a figure under a green dome; no staged file matches in the locked Lv 13 passive cell, so either the staged Metabot icon is mislabelled or Metabot puts this passive at the wrong level (Game Data Check, #493). No icon until the owner's tooltip screenshot names the cell (docs/ISSUES.md)."
+        "learnLv and icon: the owner's tooltip on the Lv 13 cell (2026-10-20) names this passive. icon from aion2-meta.com (its Cleric guide page; Metabot's page file 17750000 is Heal Block's art); it matches the cell art on the owner's Lv 4 screen (Game Data Check, docs/ISSUES.md)."
       ]
     },
     {
@@ -907,6 +943,7 @@
       "type": "passive",
       "learnLv": 17,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-cleric-prayer-of-concentration.png",
       "boardNodes": {
         "perBoard": {
           "board:zikel": 2,
@@ -923,16 +960,27 @@
             "scheme": "metabot",
             "value": "0.0.4387.0"
           }
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-20-cleric-passives-04",
+            "checkedAt": "2026-10-20",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Skill window, hovering the locked Lv 17 passive cell: the tooltip names Prayer of Concentration"
+          },
+          "fields": [
+            "learnLv",
+            "icon"
+          ]
         }
       ],
-      "verifiedAt": "2026-10-19",
+      "verifiedAt": "2026-10-20",
       "status": "verified",
-      "fieldStatus": {
-        "learnLv": "owner-check",
-        "icon": "owner-check"
-      },
       "notes": [
-        "learnLv 17 and icon: owner-check. The owner's Lv 4 Cleric screen (2026-10-19) shows the art of the file staged as Heal Block in the locked Lv 17 passive cell, so either the staged Metabot icon is mislabelled or Metabot puts this passive at the wrong level (Game Data Check, #493). No icon until the owner's tooltip screenshot names the cell (docs/ISSUES.md)."
+        "learnLv and icon: the owner's tooltip on the Lv 17 cell (2026-10-20) names this passive. icon from Metabot's Heal Block page file 17760000, which is this skill's art; it matches the cell art on the owner's Lv 4 screen (Game Data Check, docs/ISSUES.md)."
       ]
     },
     {
@@ -942,6 +990,7 @@
       "type": "passive",
       "learnLv": 25,
       "levelGate": "flat",
+      "icon": "assets/icons/sk-cleric-radiant-benediction.png",
       "boardNodes": {
         "perBoard": {
           "board:zikel": 2,
@@ -958,16 +1007,27 @@
             "scheme": "metabot",
             "value": "0.0.4387.0"
           }
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-20-cleric-passives-06",
+            "checkedAt": "2026-10-20",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Skill window, hovering the locked Lv 25 passive cell: the tooltip names Radiant Benediction"
+          },
+          "fields": [
+            "learnLv",
+            "icon"
+          ]
         }
       ],
-      "verifiedAt": "2026-10-19",
+      "verifiedAt": "2026-10-20",
       "status": "verified",
-      "fieldStatus": {
-        "learnLv": "owner-check",
-        "icon": "owner-check"
-      },
       "notes": [
-        "learnLv 25 and icon: owner-check. The owner's Lv 4 Cleric screen (2026-10-19) shows the art of the file staged as Prayer of Concentration in the locked Lv 25 passive cell, so either the staged Metabot icon is mislabelled or Metabot puts this passive at the wrong level (Game Data Check, #493). No icon until the owner's tooltip screenshot names the cell (docs/ISSUES.md)."
+        "learnLv and icon: the owner's tooltip on the Lv 25 cell (2026-10-20) names this passive. icon from Metabot's Prayer of Concentration page file 17770000, which is this skill's art; it matches the cell art on the owner's Lv 4 screen (Game Data Check, docs/ISSUES.md)."
       ]
     },
     {
@@ -1039,6 +1099,7 @@
       "type": "passive",
       "learnLv": 23,
       "levelGate": "flat",
+      "icon": "assets/icons/sk-cleric-survival-willpower.png",
       "boardNodes": {
         "perBoard": {
           "board:zikel": 2,
@@ -1055,17 +1116,28 @@
             "scheme": "metabot",
             "value": "0.0.4387.0"
           }
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-20-cleric-passives-05",
+            "checkedAt": "2026-10-20",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Skill window, hovering the locked Lv 23 passive cell: the tooltip names Survival Willpower"
+          },
+          "fields": [
+            "learnLv",
+            "icon"
+          ]
         }
       ],
-      "verifiedAt": "2026-10-19",
+      "verifiedAt": "2026-10-20",
       "status": "verified",
-      "fieldStatus": {
-        "learnLv": "owner-check",
-        "icon": "owner-check"
-      },
       "notes": [
         "Shared display name with a Gladiator skill (Metabot page slug survival-willpower-cleric).",
-        "learnLv 23 and icon: owner-check. The owner's Lv 4 Cleric screen (2026-10-19) shows plate armour, hands on the helmet (the Templar Lv 23 art); no staged file matches in the locked Lv 23 passive cell, so either the staged Metabot icon is mislabelled or Metabot puts this passive at the wrong level (Game Data Check, #493). No icon until the owner's tooltip screenshot names the cell (docs/ISSUES.md)."
+        "learnLv and icon: the owner's tooltip on the Lv 23 cell (2026-10-20) names this passive. icon from aion2-meta.com (its Cleric guide page; the same art as the Templar and Chanter Lv 23 passive); it matches the cell art on the owner's Lv 4 screen (Game Data Check, docs/ISSUES.md)."
       ]
     },
     {
