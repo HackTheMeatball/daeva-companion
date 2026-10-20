@@ -51,7 +51,7 @@ Rules for every item:
         its tag (row or list heading), and no verified value does, for all eight classes.
   - [ ] Shots of a labelled stigma plan, board plan and specialty pick at 1500 and 390 px, Basic and Advanced.
   - [ ] Golden diff limited to the tags.
-- **Lanes:** gen, golden, rows, skills-card, build-card. **Model:** Opus, M (90 min).
+- **Lanes:** gen, golden, rows, skills-card, build-card, nextup-card. **Model:** Opus, M (90 min).
 - **After:** none.
 
 ## P2: Save v6, the last clean break: stable keys for story, objectives, skills and stigmas
@@ -150,7 +150,7 @@ Rules for every item:
   - [ ] A blocking count check: a second `update()` with no state change makes at most N real writes.
   - [ ] `npm run test:perf` run alone three times: median down at least 25% against a same-day baseline (pasted).
   - [ ] Golden and regress pinned diffs unchanged.
-- **Lanes:** site, skills-card, nextup-card, page-card, architecture. **Model:** Opus, M (90 min).
+- **Lanes:** site, skills-card, nextup-card, page-card, architecture, build-card, daevanion-card. **Model:** Opus, M (90 min).
 - **After:** none.
 
 ## P6: Faster test suites
@@ -358,7 +358,7 @@ Rules for every item:
         an earlier path buys the node (Ranger Focused Eye, Templar Guarding Seal); reorder or move them so the plan is
         affordable in order.
   - [ ] Shots of one non-Assassin board.
-- **Lanes:** gen, golden. **Model:** Opus, M (90 min).
+- **Lanes:** gen, golden, daevanion-card. **Model:** Opus, M (90 min).
 - **After:** research-node-paths.
 
 ## P17: The Assassin's E stigma stack
@@ -430,7 +430,7 @@ Rules for every item:
   - [ ] Browser test: "Have them" ticks one board's guide nodes, "Respec this board" clears only that board, Undo
         reverses both; Stigmas Respec clears the slots.
   - [ ] Shots at 1500 and 390 px against the mock.
-- **Lanes:** app.css, golden. **Model:** Opus, M (90 min).
+- **Lanes:** app.css, golden, daevanion-card. **Model:** Opus, M (90 min).
 - **After:** P16, research-respec.
 
 ## P21: Basic keeps the late-start tools; early chores fold away
@@ -471,7 +471,7 @@ Rules for every item:
   - [ ] a11y: each key box has an accessible name; the tooltip opens on focus; rebinding works by keyboard.
   - [ ] Core: a save without `keys` loads with the default; `merge()` keeps the newer `keys`.
   - [ ] Shots at 1500 and 390 px against the mock.
-- **Lanes:** build-card, app.css, a11y, golden, mig. **Model:** Opus, L (120 min).
+- **Lanes:** build-card, app.css, a11y, golden, mig, save. **Model:** Opus, L (120 min).
 - **After:** research-bindable-keys.
 
 ## P23: The Sources lists load when the card opens
@@ -497,7 +497,7 @@ Rules for every item:
 
 - **S1: Split the golden shard.** Golden alone; a11y, save and site in their own shard. Files `tests/run.mjs`,
   `.github/workflows/ci.yml`. Done when `--check-shards` passes and CI wall time per PR drops (Actions timing). After
-  P6.
+  P6 and P14 (both edit `tests/run.mjs`; plan review, #609).
 - **S2: A scripted check of the live site after every deploy, and on a timer.** The journey path (start, tick a quest,
   level up, reload, progress kept) runs against daevacompanion.com after smoke and every 6 h. It needs no player data,
   so the privacy rule holds (team audit §8b). Done when a broken deploy fails it (a planted break on a test URL) and a

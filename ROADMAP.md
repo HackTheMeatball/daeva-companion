@@ -1236,7 +1236,7 @@ Then 0.9:
 7. **Budgets.** gzip and elements are both at 89%, within 20% of their limits, so 0.9 carries a performance item (P5).
    The performance audit projects 0.9's new UI at +9 to +18 K gzip (94–98%) and says 1.0 very likely crosses without
    action. No build-only trims are left. P5 corrects the measuring tool and cuts repeated writes. P23 moves the Sources
-   lists into a chunk that loads when the card opens, gated on the owner because it changes how the credit links load.
+   lists into a chunk that loads when the card opens, gated on the process-change procedure (outside review), not the owner, because it changes how the credit links load.
    No budget raise in 0.9; a reasoned raise is the 1.0 fallback.
 8. **The owner's Lv 39 notes** (2026-10-20 12:18 PM ET): notes 1–8 went to 0.8.1. Notes 9–12 are design items (P19–P22,
    on Design Lead's mocks and the owner's look OK). Notes 13–15 are Game Data Check research, then data (P17, P16, P18).
@@ -1264,11 +1264,11 @@ workflows).
 
 | Item | Problem → result | Size | Model | Lanes | After (real dependencies only) |
 |---|---|---|---|---|---|
-| P1 | 230 visible values the data marks unverified show with no label (#607) → every one carries "check in game" / "inferred" | M | Opus | gen, golden, rows, skills-card, build-card | none (input: #607's audit file) |
+| P1 | 230 visible values the data marks unverified show with no label (#607) → every one carries "check in game" / "inferred" | M | Opus | gen, golden, rows, skills-card, build-card, nextup-card | none (input: #607's audit file) |
 | P2 FR | Save keys come from names and positions → stable ids, `companion-save-v6`, the last clean break | L | Opus | gen, golden, mig, nextup-card, journey-card | none |
 | P3 | Each class release edits test lists by hand (K22) → tests read classes from the data | M | Sonnet | schema, e2 | none |
 | P4 | 33 unused names, the deleted artifact's export branch, a narrow term scan → removed, scan widened | S | Opus | main.js, page-card | none |
-| P5 | `--sizes` overstates tables 8x, `update()` repeats identical writes → measured right, writes skipped | M | Opus | site, skills-card, nextup-card, page-card, architecture | none |
+| P5 | `--sizes` overstates tables 8x, `update()` repeats identical writes → measured right, writes skipped | M | Opus | site, skills-card, nextup-card, page-card, architecture, build-card, daevanion-card | none |
 | P6 FR | Data suite 12.7 s, invariant 89 s, ledger inside schema → faster, ledger its own suite | M | Opus | gen, schema, run-mjs | none |
 | P7 | Slider to Lv 39 leaves story at Lv 2 and boards locked → Journey asks for the story quest | M | Opus | journey-card, nextup-card, golden-journey, golden-nextup | none |
 | P8 | Point counts disagree, a doubled accessible name, Spent green vs pink, key hint cut at 390, E grid shows unequipped stigmas → fixed | S | Opus | app.css, a11y, skills-card, build-card, nextup-card, golden-nextup | none |
@@ -1279,13 +1279,13 @@ workflows).
 | P13 | Game facts in code (key order, unlock text, `altgard`) → in data | M | Opus | gen, golden, build-card, nextup-card | P2 |
 | P14 | ARCHITECTURE drifted → matches a fresh run, describes the 1.0 save contract | S | Sonnet | architecture, run-mjs | P9, P10 |
 | P15 | Choice points with no pick (Ranger and Spiritmaster specialties, slots 2–3, effective level) → gen check (K25) and sourced picks | M | Opus | gen, golden, skills-card, nextup-card | `research-choice-points` |
-| P16 | Board paths and costs checked for the Assassin only (note 14) → every class | M | Opus | gen, golden | `research-node-paths` |
+| P16 | Board paths and costs checked for the Assassin only (note 14) → every class | M | Opus | gen, golden, daevanion-card | `research-node-paths` |
 | P17 | Assassin E stigma stack on one key? (note 13) → research answer applied | S | Opus | gen, golden | `research-e-stigma-stack` |
 | P18 | Rotation lists order, not play (note 15) → "how it plays" text per class | M | Opus | gen, golden, build-card | `research-rotation-play` |
 | P19 FR | Lv 39 join: 70–77 skill clicks in unlock order (note 10) → one row and one tap per skill | L | Opus | skills-card, nextup-card, app.css, golden, golden-nextup | P15 (input: `docs/design/0.9-loadout-mockup.md`) |
-| P20 FR | Daevanion ~22 ticks, no per-board or Stigma respec (note 9) → board rows, respec per board and all, Stigma respec | M | Opus | app.css, golden | P16, `research-respec` (input: `docs/design/0.9-loadout-mockup.md`) |
+| P20 FR | Daevanion ~22 ticks, no per-board or Stigma respec (note 9) → board rows, respec per board and all, Stigma respec | M | Opus | app.css, golden, daevanion-card | P16, `research-respec` (input: `docs/design/0.9-loadout-mockup.md`) |
 | P21 | Basic hides catch-up tools; Lv 4–16 chores lead Next up → kept, folded | M | Opus | nextup-card, app.css, golden-nextup | none (input: `docs/design/0.9-loadout-mockup.md`) |
-| P22 FR | Key setup inline with small icons, keys fixed (notes 11, 12, #388) → a sheet, icons fill each box, players rebind keys | L | Opus | build-card, app.css, a11y, golden, mig | `research-bindable-keys` (input: `docs/design/0.9-loadout-mockup.md`) |
+| P22 FR | Key setup inline with small icons, keys fixed (notes 11, 12, #388) → a sheet, icons fill each box, players rebind keys | L | Opus | build-card, app.css, a11y, golden, mig, save | `research-bindable-keys` (input: `docs/design/0.9-loadout-mockup.md`) |
 | P23 | Sources lists weigh 9.6 K gzip and 1,088 elements while closed → load on open | M | Opus | site, page-card, e2 | `research-sources-credit` |
 | S1 FR | Golden shares a shard → its own shard | S | Gus | ci | P6 |
 | S2 FR | Nothing checks the live app works → scripted journey after each deploy and every 6 h | S | Gus | ci | none |
@@ -1313,10 +1313,10 @@ At most five builds at a time. Ungated items queue first; gated ones go last and
 - **Wave 1 (at the go):** P1, P2, P3, P4, P5, P6, P7, P8 and S2, S3. Queue order P1 → P2 → P3 → P7 → P8 → P4 → P5 → P6, so
   the first five are lane-disjoint (P1 gen; P2 waits for P1 on gen and golden; P3, P7 and P8 start at once). Serial
   lanes: **gen** P1 → P2 → P6 → P10 → P11 → P13 → P15 → P16 → P17 → P18; **golden** P1 → P2 → P11 → P12 → P13 → the
-  research items → P19 → P20 → P22; **skills-card** P1 → P8 → P5 → P15 → P19; **nextup-card** P2 → P7 → P5 → P13 → P15 →
-  P19 → P21; **page-card** P4 → P5 → P23; **mig** P2 → P9; **schema** P3 → P6 → P10; **app.css** P8 → P19 → P20 → P21 →
-  P22; **build-card** P1 → P13 → P18 → P22; **ci** (Gus) S2 → S3 → S1 → S4. Shared test and doc files: **save** (`tests/save.js`) P9 → P11; **e2** (`tests/e2test.js`) P3 → P23;
-  **run-mjs** (`tests/run.mjs`) P6 → P14; **architecture** (`docs/ARCHITECTURE.md`) P5 → P9 → P14 (plan review, #609).
+  research items → P19 → P20 → P22; **skills-card** P1 → P8 → P5 → P15 → P19; **nextup-card** P1 → P2 → P7 → P5 → P13 → P15 →
+  P19 → P21; **page-card** P4 → P5 → P23; **mig** P2 → P9 → P22; **schema** P3 → P6 → P10; **app.css** P8 → P19 → P20 → P21 →
+  P22; **build-card** P1 → P5 → P13 → P18 → P22; **daevanion-card** P5 → P16 → P20; **ci** (Gus) S2 → S3 → S1 → S4. Shared test and doc files: **save** (`tests/save.js`) P9 → P11 → P22; **e2** (`tests/e2test.js`) P3 → P23;
+  **run-mjs** (`tests/run.mjs`) P6 → P14 → S1; **architecture** (`docs/ARCHITECTURE.md`) P5 → P9 → P14 (plan review, #609).
 - **Wave 2 (after P2):** P9, P10, P11, P13; then P12 (after P11 and P6) and P14 (after P9 and P10).
 - **Wave 3 (as research lands):** P15, P16, P17, P18, in the order their files land.
 - **Wave 4 (as mocks and OKs land):** P19, P20, P21 on the catch-up mock; P22 on the keys mock; P23 on the sources-credit verdict; S4 once #609 merges.
