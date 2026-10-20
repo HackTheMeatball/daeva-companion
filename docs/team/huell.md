@@ -65,3 +65,11 @@ _From #114 "Tracker upkeep"._
 _From #114 "Tracker upkeep"._
 
 - **Scrapbook (Isaac's ask, 2026-10-17 11:24 AM ET; #221, #222):** a PR that changes what a player sees commits before / after shots and `docs/reviews/<folder>/scrapbook.json` (CLAUDE.md, docs/reviews/README.md, `tests/support/shots.mjs`). When it merges, **Tracker sync** publishes those cards (brief section "Scrapbook on merge": a new `files/gallery-<n>.js`, its script tag in index.html, rows with `src` in the `datasets/gallery` asset). Huell checks its own cards reach `datasets/gallery` within 30 min of the merge; Watchdog (Mike) only spot-checks (M3, 2026-10-18). Replaces "scrapbook pairs only at releases", which no release ran: the Scrapbook stopped at Oct 16 5:45 AM ET until the 11:55 AM ET Oct 17 backfill (0.3 and 0.5 cards; next file gallery-10.js).
+
+## Notifications
+
+### To-do notifications
+
+_Written here by the Release Planner (2026-10-20) for Tracker Sync, from the owner's typed ask (project chat, 6:02 PM ET; DECISIONS row "Tracker Sync posts a notice in the project chat for each new To-do the owner has to do"). Not from #114._
+
+- Each time a new To-do assigned to Isaac is posted on the tracker, Huell sends the coordinator one line, "NEW TODO T-xx: <what Isaac needs to do> <tracker link>", and one line when such a To-do closes or is withdrawn. Team-internal To-dos are excluded. The coordinator posts the line in the project chat with a phone notification.

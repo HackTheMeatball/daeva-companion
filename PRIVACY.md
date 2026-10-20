@@ -1,6 +1,6 @@
 # Privacy
 
-This covers Daeva Companion, the unofficial AION 2 companion at daevacompanion.com (and its earlier claude.ai version).
+This covers Daeva Companion, the unofficial AION 2 companion at daevacompanion.com.
 
 **Short version:** no accounts, no analytics, no tracking, no cookies. Your progress stays in your browser.
 
@@ -25,9 +25,6 @@ This covers Daeva Companion, the unofficial AION 2 companion at daevacompanion.c
 
 Clearing this site's data in your browser deletes your progress — export a backup first.
 
-**claude.ai version:** the artifact build keeps the same progress data in that artifact's own browser storage on claude.ai;
-Anthropic's privacy policy covers claude.ai itself.
-
 ## Requests to other sites
 
 - **Fonts** are served from this site; no request goes to Google or any other font service.
@@ -35,13 +32,33 @@ Anthropic's privacy policy covers claude.ai itself.
   [GitHub Privacy Statement](https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement).
 - **Sync:** no request goes to a sync service. Optional sync between your devices (off by default, end-to-end encrypted
   with a code only your devices hold) is being built; this page describes what it sends and to whom before it can be
-  turned on. The claude.ai version will not have it. Once it runs, a cloud copy that is neither read nor written for
+  turned on. Once it runs, a cloud copy that is neither read nor written for
   180 days is deleted from the sync server; nobody, including us, can find or open it before then without your code.
 - **Links** in the guide (Metabot, maps, sources) are only requested when you click them.
 - **Report a problem** (footer) opens a new GitHub issue form with these fields filled in from the link: the app version,
-  your level and current story quest in the guide, Basic/Advanced mode, which build you use (site or claude.ai) and your
+  your level and current story quest in the guide, Basic/Advanced mode, the build and your
   browser's user agent. Nothing else from your progress is included, and nothing is sent until you submit the issue on
   GitHub, where you can edit or delete any of it first. Issues are public.
+
+## Beta testers
+
+This applies only if you've agreed to test the app before release and send us feedback outside GitHub, for example by
+messaging the owner. Nothing here changes anything for anyone else.
+
+- **What we keep:** a tester number (T1, T2 …), how to reach you (the handle or address you messaged from), the text
+  of your report and any screenshots you send. Other players' names and chat are cropped or blurred out of
+  screenshots before they're kept. Screenshots are only looked at to understand your report; nothing reads game data
+  out of them.
+- **Where:** in a private repository that only the owner and the project's tools can open. It's never published.
+  When a report leads to a public issue, the issue names you only by your tester number and leaves out your handle.
+- **How long:** your report text and screenshots are deleted 30 days after your report is closed (fixed, declined or
+  a duplicate), or when the beta ends, whichever comes first. An anonymous one-line summary (tester number, date,
+  type, outcome) is kept.
+- **Deleting it sooner:** send a message the same way you sent your feedback, asking for your beta data to be deleted,
+  and everything we hold for you except that anonymous summary is deleted. You don't need to give a reason.
+
+Reports you file yourself through *Report a problem* are public GitHub issues and follow GitHub's rules, not this
+section.
 
 ## Changes
 
