@@ -31,8 +31,8 @@ Nahma / Executor schedule. One community source says Kaira's start hour is dispu
 reportedly use every 4 h, which doesn't apply to Global.
 
 ## Inferred / community only: kill-timer field bosses (Verteron, Altgard and others)
-Not in Metabot's timed list. Community trackers (aion2timers.com, aion2rifttimer.com, aion2vault.com, aion2data.com,
-aion2atlas.app, all **unvetted**) say these respawn a fixed interval **after the kill**, with cycles of
+Not in Metabot's timed list. Community trackers (aion2rifttimer.com, aion2vault.com, aion2data.com, aion2atlas.app;
+unvetted at first, now vetted in the 23:20Z update below) say these respawn a fixed interval **after the kill**, with cycles of
 1/2/3/4/6/8/12/24 h (e.g. Melted Danar 1 h, Silent Dartan 6 h, High Commander Lagta 12 h). Counts disagree (48 vs 49).
 There is no fixed clock, so a timer needs the player to enter the kill time (or uses the in-game Field Boss list's own
 countdown). Single source / inferred until vetted and checked in game.
@@ -47,10 +47,13 @@ countdown). Single source / inferred until vetted and checked in game.
 
 ## Update 23:20Z: seven tracker sites vetted, Gretchen's four questions
 Vetting (terms first, then robots.txt; our UA, ≥ 5 s apart):
-- aion2atlas.app: Full (terms: "do not copy whole pages or scrape the site at high volume"; quoting short parts with a link is fine; robots allows ClaudeBot).
+- aion2atlas.app: Full (terms: "do not copy whole pages or scrape the site at high volume"; quoting short parts with a link is fine; robots.txt's `*` group allows all agents, so Claude-User and our UA are allowed; it also allows ClaudeBot by name).
 - aion2vault.com: Full, facts only (terms: personal, non-commercial; no republishing without attribution and a link). Its boss table cites AllThingsHow, so it is not independent of it.
 - aion2data.com: Full, reuse unknown (no terms page; robots explicitly allows Claude-User).
-- allthings.how, aion2rifttimer.com, aion2rift.com: Full, reuse unknown (no terms page at the usual paths; robots `*` allow).
+- allthings.how: **Spot**. Its terms are at `/terms-and-conditions/` (found by web search after review): material "may not be copied,
+  modified, reproduced, downloaded or distributed … without the express prior written permission". There's no ban on reading.
+  Facts only, a few pages per task, no copies kept.
+- aion2rifttimer.com, aion2rift.com: Full, reuse unknown (no terms page at the usual paths; robots `*` allow).
 - criticalhits.com.br: Full, reuse unknown (no terms page found; robots doesn't block us). Not read.
 
 1. **Middle Reshanta Lv 80 bosses on Global: DISPUTED, leaning KR/TW only.** aion2atlas ("KR/TW only so far") and aion2rift (region tags tw/kr only) say KR/TW. aion2vault says "provisional". aion2rifttimer marks them "confirmed", but its citations (Shugo.GG, Questlog) may be KR. Metabot's client tables list them, but a client table can carry rows for content that isn't live (inferred). Recommendation: leave them out of 1.0, or show them labelled "disputed".

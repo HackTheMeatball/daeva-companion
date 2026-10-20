@@ -62,8 +62,9 @@ not to be scraped, so never those; its API terms require a "Data from Steam Inde
 wherever the app shows its data) checked 2026-10-20, `2026-10-steam-and-news-vetting.md`.
 World-boss trackers, checked 2026-10-20 (`2026-10-world-boss-sources.md`): aion2atlas.app (**Full**; terms: no
 high-volume scraping or whole-page copies, short quotes with a link are fine), aion2vault.com (**Full, facts only**;
-terms: personal, non-commercial, no republishing without attribution; its boss table cites allthings.how, so it isn't
-independent of it), and aion2data.com (robots.txt explicitly allows Claude-User), allthings.how, aion2rifttimer.com,
+terms: personal, non-commercial, so review before monetising; no republishing without attribution; its boss table cites allthings.how, so it isn't
+independent of it), allthings.how (**Spot**: `/terms-and-conditions/`, found by web search, bans copying,
+reproducing or downloading its material without written permission but not reading it), and aion2data.com (robots.txt explicitly allows Claude-User), aion2rifttimer.com,
 aion2rift.com and criticalhits.com.br (**Full, reuse unknown**: no terms page at the usual paths). Community trackers:
 never the only source for a schedule.
 
