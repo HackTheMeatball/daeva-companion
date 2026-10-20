@@ -47,12 +47,14 @@ from 2026-10-14 and are older than this register; where they differ, this regist
 
 ## Passed but not on the allowed list (low value; add only if a task needs one)
 
-gameplay.tips, pixelnitro.com, mein-mmo.de, gamerblurb.com (non-commercial terms), aion2tierlist.com (tier lists only),
-and the gold/boosting shops aoeah.com, mmoexp.com, expcarry.com, oslink.io, u4n.com (**Spot**: its terms ban scraping).
-All checked 2026-10-18, BGS §2 / §3a. aion2kina.com (fan toolkit and map; terms ban only "unreasonable automated
-load"; its map markers aren't game art, inferred) checked 2026-10-19, `2026-10-t47-icon-check.md`. mein-mmo.de re-checked
-2026-10-19 (terms of April 2025 have no automation ban; robots.txt allows all): weekly maintenance schedule only,
-single source, never game data; cited by `docs/kaizen/patch-watch.md`.
+gameplay.tips, pixelnitro.com, mein-mmo.de (re-checked 2026-10-19: weekly maintenance schedule only, single source,
+never game data; cited by `docs/kaizen/patch-watch.md`; `2026-10-steam-and-news-vetting.md`), gamerblurb.com
+(non-commercial terms), aion2tierlist.com (tier lists only), and the gold/boosting shops aoeah.com, mmoexp.com,
+expcarry.com, oslink.io, u4n.com (**Spot**: its terms ban scraping). All checked 2026-10-18, BGS §2 / §3a.
+aion2kina.com (fan toolkit and map; terms ban only "unreasonable automated load"; its map markers aren't game art,
+inferred) checked 2026-10-19, `2026-10-t47-icon-check.md`. Steam Index API (public-api.steamidx.com: AION 2's Steam
+build ID changes with timestamps; owner-created key and the owner's network-list OK needed first; its site pages ask
+not to be scraped, so never those) checked 2026-10-20, `2026-10-steam-and-news-vetting.md`.
 
 ## Fail (never read by a session)
 
@@ -72,6 +74,7 @@ single source, never game data; cited by `docs/kaizen/patch-watch.md`.
 | namu.wiki | Cloudflare challenge (403) on our first request, the terms page (`/w/나무위키:이용약관`). Owner browser only | 2026-10-19 |
 | Allakhazam / ZAM (\*.allakhazam.com, Fanbyte terms) | Terms ban "spiders, robots, crawlers, data mining tools" | 2026-10-19 |
 | Steam Web API (api.steampowered.com) | robots.txt `Disallow: /` for all agents (its API terms allow keyed use, but robots wins for us) | 2026-10-19 |
+| steamdb.info | Its FAQ (its terms): "We also do not allow scraping/crawling on SteamDB". Owner browser only | 2026-10-20 |
 
 ## Keeping this current
 
