@@ -14,7 +14,14 @@ Each rule below is copied word for word from issue #114 (its body as of Oct 20, 
 
 _From #114 "Kaizen (owner, 2026-10-17 5:59 AM ET)"._
 
-- **Limits:** never loosen a safety rule (never merge, verified data only, contact through Saul's morning debrief with a HARD BLOCKER only for what can't wait, no th.gl / Game8, no owner computer, tests before commits) to gain speed.
+- **Limits:** never loosen a safety rule (never merge, verified data only, contact through Saul's morning debrief with a HARD BLOCKER only for what can't wait, no th.gl / Game8, Isaac's device only if he agrees it genuinely helps, tests before commits) to gain speed.
+- **Device clause amended** (owner, typed in the Kaizen (Gale) thread 2026-10-20 12:38 PM ET; ledger row `DEC-20261020-ask-before-owner-device`): was "no owner computer".
+
+### CLK-04
+
+_From #114 "Kaizen (owner, 2026-10-17 5:59 AM ET)", the "Who" bullet, and the "Scheduled tasks" line._
+
+- **Weekly fallback:** a kaizen review also runs every Tuesday at 4:03 AM ET (trigger trig_01BhE33jAevxTzMQGbJSnWck, which wakes the Kaizen (Gale) thread), on top of the reviews at each planning pass, after each release and on a recurring Kind. No daily review (owner, 2026-10-18 5:27 AM ET).
 
 ### KZ-04
 
