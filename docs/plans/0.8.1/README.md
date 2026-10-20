@@ -2,8 +2,8 @@
 
 Release Planner, 2026-10-20, after 0.8.0 shipped (3:46 PM ET). A patch: no planning pass (ROADMAP "How a minor is
 planned"). The owner's rule of 2026-10-18 10:40 PM ET applies: new looks ship in the next minor unless the owner says
-"now". Every item here fixes data or a bug the owner or Player Testing hit; F7 and F8 wait on the owner's answer
-(below). Inputs: the owner's Lv 39 notes (project chat 2026-10-20 12:18 PM ET; triage in the planner log), Player
+"now". Every item here fixes data or a bug the owner or Player Testing hit; F7 and F8 are new looks the owner said
+"now" to (2026-10-20 4:28 PM ET). Inputs: the owner's Lv 39 notes (project chat 2026-10-20 12:18 PM ET; triage in the planner log), Player
 Testing's RC report #586, and Game Data Check's three research files merged in #570 and #584.
 
 Outside the queue: #585 (simpler link preview, the owner's ask) reopens after the v0.8.0 tag and merges as is.
@@ -14,17 +14,17 @@ Outside the queue: #585 (simpler link preview, the owner's ask) reopens after th
 |---|---|---|---|---|---|
 | F1 | Assassin Daevanion costs pre-fill, corner picks, on-path rows (notes 1–4) | M | Opus | gen, golden | none |
 | F2 | A labelled specialty pick in every guide skill's slot 2 (note 5) | M | Opus | gen, golden | none |
-| F3 | Specialty rows placed by effective skill level (note 6) | M | Opus | golden, nextup | F1 |
-| F4 | RC play fixes: page title on class pick, tooltip typo, one legend per card (#586 2–4) | S | Sonnet | a11y | none |
+| F3 | Specialty rows placed by effective skill level (note 6) | M | Opus | golden, golden-nextup | F1 |
+| F4 | RC play fixes: page title on class pick, tooltip typo, one legend per card (#586 2–4) | S | Opus | a11y, golden | none |
 | F5 | Gladiator and Ranger rotation icons (#586 1) | S | Opus | gen | research-rotation-icons |
-| F6 | Size trim: page gzip under 90% of its budget, no visible change | M | Opus | build | none |
-| F7 | Respec buttons in Basic (note 7) | S | Sonnet | a11y | owner-ok-0.8.1-respec-basic |
-| F8 | Recommended specialty in Next up's skill steps and after a respec (note 8) | S | Opus | golden, nextup | owner-ok-0.8.1-specialty-nextup |
+| F6 | Size trim: page gzip under 90% of its budget, no visible change | M | Opus | none | none |
+| F7 | Respec buttons in Basic (note 7) | S | Opus | app.css, golden | owner OK 2026-10-20 |
+| F8 | Recommended specialty in Next up's skill steps and after a respec (note 8) | S | Opus | golden, golden-nextup | owner OK 2026-10-20; below F3 |
 
 F1 and F2 both edit `builds.json` and run gen: kickoff keeps them apart on the gen lane, F1 first. F3 needs F1's
-on-path rows. F5 waits on Game Data Check committing the icon files (bot builds have no web). F7 and F8 are planned
-only: if the owner says "now" (decision card, Release planning thread, 2026-10-20), they queue on that DECISIONS row;
-otherwise they move to the 0.9 design pass with notes 9–12.
+on-path rows. F5 waits on Game Data Check committing the icon files (bot builds have no web). The owner said "now" to F7
+and F8 (decision card, Release planning thread, 2026-10-20 4:28 PM ET). Notes 9–12 go to the 0.9 design pass. F3 and
+F8 are ordered by the queue: a patch item's After line can't name another item.
 
 ## F1: Assassin Daevanion costs, corners and on-path rows
 
@@ -138,17 +138,70 @@ otherwise they move to the 0.9 design pass with notes 9–12.
 - **Lanes:** build. **Model:** Opus, M (90 min).
 - **After:** none.
 
-## F7, F8: owner-gated
+## F7: Respec buttons in Basic
 
-- **F7** Respec buttons in Basic mode (note 7): Basic shows the Skills and Daevanion respec buttons Advanced has.
-  After: `owner-ok-0.8.1-respec-basic`.
-- **F8** The recommended specialty shows in Next up's skill-level steps and again after a respec (note 8). After:
-  `owner-ok-0.8.1-specialty-nextup`.
+The owner said "now" on 2026-10-20 at 4:28 PM ET (DECISIONS row "0.8.1 ships notes 7 and 8 now").
 
-Specs are written in full only if the owner says "now".
+- **Problem.** Basic mode hides the whole footer of the Skills and Daevanion cards, so the Respec buttons are hidden
+  too (owner note 7: "basic mode does not show respect buttons").
+- **Result.**
+  - Basic shows the Skills Respec (`#spRespec`) and Daevanion Respec (`#dvRespec`) buttons, in the same place and with
+    the same two-click arming as Advanced.
+  - Everything else in those footers stays hidden in Basic.
+- **Files.** `src/styles/app.css` (the `body.basic` rules), `src/packs/aion2/cards/skills.html`,
+  `src/packs/aion2/cards/daevanion.html`, the tests, golden.
+- **No-gos.** These need a design and wait for the 0.9 pass:
+  - a Stigma respec button;
+  - per-board Daevanion respec next to the respec-all button (also note 7).
+  - No change to what Respec does.
+- **Acceptance.**
+  - [ ] A test in Basic finds both buttons visible and checks that a two-click Respec works there.
+  - [ ] The rest of each footer stays hidden in Basic.
+  - [ ] Before / after shots of both cards in Basic at 1500 and 390 px, plus `scrapbook.json`.
+- **Lanes:** app.css, golden. **Model:** Opus, S (44 min). The plan said Sonnet; it is Opus because the Basic golden
+  snapshots change.
+- **After:** none. The owner's OK is recorded. Kickoff reads only "Owner, typed" rows, and this OK was a card tap, so it
+  carries no owner-ok key.
+
+## F8: The recommended specialty in Next up, also after a respec
+
+The owner said "now" on 2026-10-20 at 4:28 PM ET (same DECISIONS row).
+
+- **Problem.** Next up's skill-level steps don't name the recommended specialty. After a Skills Respec, those steps
+  come back without it (owner note 8). The picks themselves aren't reset: Respec keeps specialty picks.
+- **Result.**
+  - A Next up skill-level step that reaches a specialty slot's level names the recommended pick for that slot, with
+    its label if it has one (F2).
+  - After a Skills Respec, the steps that level the skill back up name the pick again. If the player already picked
+    it, the step marks it as kept, so it isn't shown as something to do.
+- **Files.** `src/packs/aion2/cards/nextup-kinds.js`, `src/packs/aion2/requirements.js`,
+  `src/packs/aion2/cards/skills.js`, the tests, golden.
+- **No-gos.**
+  - No save change: Respec still keeps specialty picks and stones.
+  - No new card kind.
+- **Acceptance.**
+  - [ ] A test checks that a skill-level step reaching slot 1 and slot 2 names the pick.
+  - [ ] A test checks that after a Respec the re-level step names it again, marked as kept.
+  - [ ] The golden diff is explained.
+  - [ ] Before / after shots of Next up before and after a Respec, plus `scrapbook.json`.
+- **Lanes:** golden, golden-nextup. **Model:** Opus, S (44 min).
+- **After:** none, for the same reason as F7. F8 edits the files F2 and F3 edit, so its queue line goes below F3's and
+  shares their lanes.
 
 ## Release
 
-`0.8.1 R` once F1–F6 (and F7, F8 if approved) have merged or moved: CHANGELOG section in the release issue (K17),
-`PRE-RELEASE CHECK 0.8.1` to Game Data Check; a patch has no RC play or freeze (DECISIONS 2026-10-20). The Release
-Planner releases it by hand after `DATA OK 0.8.1`.
+`0.8.1 R` once F1–F8 have merged or moved: CHANGELOG section in the release issue (K17),
+`PRE-RELEASE CHECK 0.8.1` to Game Data Check; a patch has no RC play or freeze (DECISIONS 2026-10-20). After `DATA OK
+0.8.1` the Release Planner posts `GO 0.8.1`, and Build Pipeline starts the release item on it (K19).
+
+**Fresh review (K24).** F7 and F8 were planned before K24, so they carry no `fresh-review` tag; Design Review (Holly)
+reviews their shots against the checklist as standing reviewer. The 0.8.1 release PR is tagged `fresh-review` for Code
+Review (Howard). Tagging items at plan time starts with the 0.9 plan.
+
+**Backup data check before DATA OK.** Six Game Data Check PRs merged since #520 without a backup
+ROL-03 verdict first: #553, #556, #562, #570, #584 and #598. Only #553 has one so far (VERIFIED, after its merge).
+0.8.1 ships all six, so `DATA OK 0.8.1` waits until a thread other than Game Data Check posts VERIFIED on the other
+five. Source Vetting (Lydia) runs this check, and in the same pass draws K24's 10-field sample from #570 (3 turnedIn
+gates, 3 reached gates, 4 icon matches), re-checked against Metabot; she has no history on #570. This gate was added by the
+Release Planner on 2026-10-20, on Kaizen's recommendation (Mike's scan); it is a graded tighten under ROL-03 and
+touches no owner rule.

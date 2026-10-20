@@ -119,4 +119,4 @@ workflow run's deploy job.) Saved progress is unaffected either way.
 
 ## claude.ai artifact
 
-Frozen 2026-10-18 (owner, DECISIONS `owner-ok-0.7-artifact-freeze`), not built: `dist-artifact/` is gone since 0.7 P9 and the published artifact is never republished.
+Deleted (owner, 2026-10-20). It was frozen on 2026-10-18 (DECISIONS `owner-ok-0.7-artifact-freeze`) and `dist-artifact/` has been gone since 0.7 P9; there is nothing to publish.
