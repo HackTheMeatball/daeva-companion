@@ -3,9 +3,11 @@
 **Source of truth for research sessions** on whether and how a site may be read. Read it before fetching any site. A
 site that isn't listed here is unvetted: read its terms first, then its robots.txt (terms are the harder gate:
 robots.txt may allow what the terms forbid; owner, 2026-10-19), then add a row. Fetching policy: `CLAUDE.md` and
-`docs/team/data-research.md`. Lookups on listed sites: Game Data Check; vetting and last-resort spot checks on
-unlisted sites (each find flagged as such): Source Vetting (owner, 2026-10-19). Evidence and quoted clauses are in
-the linked research notes, mostly `2026-10-build-guide-sources.md` (BGS). Last full pass: 2026-10-18.
+`docs/team/data-research.md`. Lookups on listed sites: Game Data Check, and research threads inside their own pack,
+which Game Data Check verifies before merge (ROL-03, `docs/DECISIONS.md`, owner 2026-10-19 5:20 PM ET); vetting and
+last-resort spot checks on unlisted sites (each find flagged as such): Source Vetting (owner, 2026-10-19). Evidence
+and quoted clauses are in the linked research notes, mostly `2026-10-build-guide-sources.md` (BGS). Last full pass:
+2026-10-18.
 
 **Use levels**
 
@@ -48,7 +50,9 @@ from 2026-10-14 and are older than this register; where they differ, this regist
 gameplay.tips, pixelnitro.com, mein-mmo.de, gamerblurb.com (non-commercial terms), aion2tierlist.com (tier lists only),
 and the gold/boosting shops aoeah.com, mmoexp.com, expcarry.com, oslink.io, u4n.com (**Spot**: its terms ban scraping).
 All checked 2026-10-18, BGS §2 / §3a. aion2kina.com (fan toolkit and map; terms ban only "unreasonable automated
-load"; its map markers aren't game art, inferred) checked 2026-10-19, `2026-10-t47-icon-check.md`.
+load"; its map markers aren't game art, inferred) checked 2026-10-19, `2026-10-t47-icon-check.md`. mein-mmo.de re-checked
+2026-10-19 (terms of April 2025 have no automation ban; robots.txt allows all): weekly maintenance schedule only,
+single source, never game data; cited by `docs/kaizen/patch-watch.md`.
 
 ## Fail (never read by a session)
 
@@ -67,6 +71,7 @@ load"; its map markers aren't game art, inferred) checked 2026-10-19, `2026-10-t
 | timesaver.gg | Connection reset, not reached | 2026-10-18 |
 | namu.wiki | Cloudflare challenge (403) on our first request, the terms page (`/w/나무위키:이용약관`). Owner browser only | 2026-10-19 |
 | Allakhazam / ZAM (\*.allakhazam.com, Fanbyte terms) | Terms ban "spiders, robots, crawlers, data mining tools" | 2026-10-19 |
+| Steam Web API (api.steampowered.com) | robots.txt `Disallow: /` for all agents (its API terms allow keyed use, but robots wins for us) | 2026-10-19 |
 
 ## Keeping this current
 
