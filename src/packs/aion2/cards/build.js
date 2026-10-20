@@ -3,7 +3,7 @@
    registers with update: null; its mount places the drawer and wires its tab. */
 import { char } from "../../../core/state.js";
 import { activePack, packClasses } from "../../../core/pack.js";
-import { E_ORDER, HAS_KEYS, KEYS, SP_ICONS, STAT_NOTE, STAT_SRC, STAT_TIERS, STIGMA_ICON } from "../data/build.js";
+import { E_ORDER, GUIDE_KEYS, HAS_KEYS, KEYS, SP_ICONS, STAT_NOTE, STAT_SRC, STAT_TIERS, STIGMA_ICON } from "../data/build.js";
 import { rotKeys } from "../requirements.js";
 import { aion2State as state, aion2Save as save, aion2Update as update, aion2STIGMA_SLOTS as STIGMA_SLOTS, aion2StIco as stIco, aion2SpMini as spMini, aion2Ini as ini } from "./page.js";
 
@@ -15,7 +15,7 @@ const E_STACK = lv => rotKeys(char(state), lv).e.map(n => n + "*");
    key without rows (the Assassin's Q; a default key with one row). */
 const rotNow = lv => { const out = [], k = rotKeys(char(state), lv);
   if (k.keys) { k.keys.forEach(x => x.rows.forEach((n, r) => { if (n) out.push({ n, key: x.key, r, single: x.single }); })); return out; }
-  k.rmb.forEach((n, r) => out.push({ n, key: "Right click", r })); k.q.forEach(n => out.push({ n, key: "Q", r: 0, single: true }));
+  k.rmb.forEach((n, r) => out.push({ n, key: "Right click", at: "T", r })); /* seen as "Right click" (saves' rotSeen), shown on T */ k.q.forEach(n => out.push({ n, key: "Q", r: 0, single: true }));
   k.e.forEach((n, r) => out.push({ n, key: "E", r, stig: true })); return out; };
 const rotNew = lv => { const seen = char(state).rotSeen; if (!seen) return []; return rotNow(lv).filter(x => !seen.includes(x.key + ":" + x.n + ":" + x.r)); }; /* moved rows count too */
 const rotMarkSeen = () => { char(state).rotSeen = rotNow(char(state).level).map(x => x.key + ":" + x.n + ":" + x.r); save(); };
@@ -23,7 +23,7 @@ const rotMarkSeen = () => { char(state).rotSeen = rotNow(char(state).level).map(
    attribute so the cell's text stays the name. */
 const gridIco = (n, stig) => { const src = (stig ? STIGMA_ICON : SP_ICONS)[n];
   return src ? `<img class="kv-ico" src="${src}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">` : `<span class="kv-ico ini" aria-hidden="true" data-ini="${ini(n)}"></span>`; };
-const rotWhere = x => `${x.key}${x.single ? "" : `, row ${x.r}${x.r === 0 ? " (fires first)" : ""}`}`;
+const rotWhere = x => `${x.at || x.key}${x.single ? "" : `, row ${x.r}${x.r === 0 ? " (fires first)" : ""}`}`;
 function renderStacks(lv) {
   if (!char(state).rotSeen || !char(state).rotSeen.every(k => k.split(":").length === 3)) rotMarkSeen(); /* first run: nothing counts as new */
   const fresh = new Set(rotNew(lv).map(x => x.n));
@@ -31,14 +31,30 @@ function renderStacks(lv) {
      after the last cell to learn which column a skill is in. */
   const cell = (n, key, r) => { if (!n) return `<span class="sk empty"></span>`; const nm = n.replace(/\*/g, ""), stig = n.includes("*");
     return `<span class="sk${stig ? " stig" : ""}${fresh.has(nm) ? " new" : ""}" role="group" aria-label="${nm}, ${key}${r === 0 ? ", row 0 (fires first)" : ", row " + r}">${gridIco(nm, stig)}<span class="nm">${nm}</span></span>`; };
-  if (KEYS.length) return renderDefaultKeys(lv, fresh, cell);
+  if (KEYS.length && !GUIDE_KEYS) return renderDefaultKeys(lv, fresh, cell);
   /* One grid (0.6.2 P18, like the game's K window): shared row numbers on the left, one column per key, each cell the
-     skill's icon with its name under it, and the key chips under their columns (row 0 at the bottom, as in the game's bar). */
-  const k = rotKeys(char(state), lv), keys = [k.rmb, k.q, E_STACK(lv)];
+     skill's icon with its name under it, and the key chips under their columns (row 0 at the bottom, as in the game's bar).
+     The columns follow the game's (0.8 P14, research-387-macro): Q, E and T, the stack the macro on right click fires; the
+     mouse slot (left click) is the line under them, as its one row. Q, E and T hold the guide's suggested binding, said
+     once in a muted line heading the grid (Design Lead on #565: one note, no mark per chip); left click is the game's
+     default. The game's defaults for the skills learned by lv are listed under the grid. */
+  const k = rotKeys(char(state), lv), lmb = (KEYS.find(x => x.key === "Left click") || { rows: [] }).rows.filter(r => lv >= r.lv).map(r => r.n);
+  const cols = [["Q", k.q], ["E", E_STACK(lv)], ["T", k.rmb]];
   document.getElementById("stackViz").innerHTML =
-    [3, 2, 1, 0].map(r => `<i class="rn">${r}</i>` + keys.map((k, i) => cell(k[r], ["Right click", "Q", "E"][i], r).replace('class="sk', `class="sk${r === 0 ? " r0" : ""}`)).join("")).join("") +
-    `<span></span><span class="kv-key mouse">Right click</span><span class="kv-key">Q</span><span class="kv-key">E</span>` +
-    `<p class="lmb">Left click: <span class="sk">${gridIco("Quick Slice")}<span class="nm">Quick Slice</span></span></p>` + stLaterHTML();
+    `<p class="fine muted kv-sugg">Suggested keys: Q, E and T (T holds the stack the right-click macro fires). Move the skills there yourself.</p>` +
+    [3, 2, 1, 0].map(r => `<i class="rn">${r}</i>` + cols.map(([key, rows]) => cell(rows[r], key, r).replace('class="sk', `class="sk${r === 0 ? " r0" : ""}`)).join("")).join("") +
+    `<span></span>` + cols.map(([key]) => `<span class="kv-key">${key}</span>`).join("") +
+    lmb.map(n => `<p class="lmb">Left click: <span class="sk">${gridIco(n)}<span class="nm">${n}</span></span></p>`).join("") + defaultKeysNote(lv) + stLaterHTML();
+}
+/* Under the guide's grid: the game's default keys of the skills learned by lv (KEYS), one line per key with the grid's
+   key chip (Design Lead on #565: a list, not a paragraph), then the macro's place. That the macro moves the default
+   right-click skill (Savage Roar) off right click is inferred (C21a). */
+function defaultKeysNote(lv) {
+  const on = KEYS.map(x => ({ key: x.key, n: x.rows.filter(r => lv >= r.lv).map(r => r.n) })).filter(x => x.n.length);
+  const rc = on.find(x => x.key === "Right click");
+  return `<div class="kv-note kv-defs">` +
+    (on.length ? `<span class="khead">Game default keys</span><ul>${on.map(x => `<li><span class="kv-key${/ click$/.test(x.key) ? " mouse" : ""}">${x.key}</span> ${x.n.join(", ")}</li>`).join("")}</ul>` : "") +
+    (rc ? `<p class="fine">The macro takes right click from ${rc.n.join(", ")} (inferred).</p>` : "") + `</div>`;
 }
 /* The game's default keys (0.7 P11, KEYS: the Ranger, the Gladiator), drawn like the Assassin's grid: one column per key
    with rows, as deep as the deepest key's data, row 0 at the bottom; a key with one row (the mouse, 1–4) gets a line under
@@ -71,6 +87,7 @@ function renderRotation() {
   if (keys) { renderDefaultRotation(lv, keys); return; }
   const before = e.filter(n => n === "Illusive Clone" || n === "Swift Contract"), after = e.filter(n => !before.includes(n));
   const steps = [];
+  /* Q and E are the guide's suggested binding, not the game's defaults: the Key setup grid's heading line says so once */
   if (before.length) steps.push(`<b>E</b> ${before.map(n => nameIco(n, true)).join(" + ")}`);
   if (q.length) steps.push(`<b>Q</b> ${nameIco(q[0])} to get behind the target`);
   if (after.length) steps.push(`<b>E</b> ${after.map(n => nameIco(n, true)).join(", then ")}`);

@@ -809,16 +809,45 @@
           "stigma:assassin:triniels-dagger",
           "stigma:assassin:savage-fang"
         ],
+        "defaultKeys": {
+          "keys": [
+            { "key": "Left click", "rows": [{ "skill": "skill:assassin:quick-slice" }] },
+            { "key": "Right click", "rows": [{ "skill": "skill:assassin:savage-roar" }] },
+            { "key": "Q", "rows": [{ "skill": "skill:assassin:infiltrate" }, { "skill": "skill:assassin:shadow-fall" }] },
+            { "key": "E", "rows": [{ "skill": "skill:assassin:storm-rampage" }, { "skill": "skill:assassin:whirlwind-slice" }, { "skill": "skill:assassin:heart-gore" }] },
+            { "key": "1", "rows": [{ "skill": "skill:assassin:shadowstrike" }] },
+            { "key": "2", "rows": [{ "skill": "skill:assassin:ambush" }] },
+            { "key": "3", "rows": [{ "skill": "skill:assassin:flash-slice" }] },
+            { "key": "4", "rows": [{ "skill": "skill:assassin:insignia-explosion" }] }
+          ],
+          "status": "verified",
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-20-assassin-keys-01",
+                "checkedAt": "2026-10-20",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Assassin skill window at Lv 4 (locked skills and default skill rows), docs/research/2026-10-research-387-macro.md"
+              },
+              "fields": [
+                "keys"
+              ]
+            }
+          ]
+        },
         "status": "inferred",
         "sources": [
           {
-            "inferred": "Row order and the E stack (buffs first, then damage) are the guide's reasoning; no source gives an order. Insignia Explosion sits above the builders because it scales with Insignia stacks (Metabot)."
+            "inferred": "rightClick and eOrder are the guide's suggested binding (the stack on T via the macro, Shadowstrike on Q, the stigmas on E), not the game's defaults (defaultKeys, C21a). Row order and the E stack (buffs first, then damage) are the guide's reasoning; no source gives an order. Insignia Explosion sits above the builders because it scales with Insignia stacks (Metabot)."
           }
         ]
       },
       "texts": {
         "nezekan-plan": "Two clusters, from your board: above the centre, Heart Gore with Exploit Weakness 1 branching off its path (11 for both); below the centre, Ambush (7) and Quick Slice (6) share their first two nodes (11 for both), and Exploit Weakness 2 sits 5 past Quick Slice. All five come to 27. Where a node has two routes, take the one with Critical Hit and Attack over HP and Critical Hit resist.",
-        "opener": "Q (Shadowstrike)"
+        "opener": "Q (Shadowstrike, on the guide's key setup; the game's default key is 1)"
       },
       "sources": [
         {
@@ -876,6 +905,7 @@
         "Quick Slice slot 2 (spec:assassin:quick-slice:4, C40): the owner's tooltip (owner:2026-10-16-quickslice-01) shows the choice in game, unlocking at skill Lv 12. It witnesses the choice, not the slot order."
       ],
       "claims": [
+        "C21a",
         "C40"
       ]
     }
