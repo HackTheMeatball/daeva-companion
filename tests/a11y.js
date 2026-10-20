@@ -324,8 +324,8 @@ async function load(p, state, mode) {
   }
 
   /* Key setup grid probe (0.6.2 P18 #414; 0.8 P9 #498): run at 390 and 1500 px. Cells all 76 px (empty ones too), names
-     never break mid-word, every filled cell has an icon, key chips on one line under the columns, Left click its own
-     line under the grid, each filled cell's accessible name carries its key, and a long name wraps inside its cell. */
+     never break mid-word, every filled cell has an icon, key chips on one line under the columns, the defaults note under
+     the grid (0.8 P14), each filled cell's accessible name carries its key, and a long name wraps inside its cell. */
   const keyGridProbe = () => {
     const v = document.getElementById('stackViz'); if (!v) return null;
     const cells = [...v.querySelectorAll(':scope > .sk')], hs = [...new Set(cells.map(c => Math.round(c.getBoundingClientRect().height)))];
@@ -337,10 +337,10 @@ async function load(p, state, mode) {
       return n.scrollWidth > c.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight) + 0.5; }).map(n => n.textContent);
     const over = overWide();
     const noIco = cells.filter(c => !c.classList.contains('empty') && !c.querySelector('img.kv-ico')).map(c => c.textContent);
-    const keys = [...v.querySelectorAll(':scope > .kv-key')], row0 = cells.slice(-3), lmb = v.querySelector('.lmb');
+    const keys = [...v.querySelectorAll(':scope > .kv-key')], row0 = cells.slice(-keys.length), note = v.querySelector('.kv-note'), lmb = v.querySelector('.lmb');
     const keyBad = keys.map((k, i) => { const b = k.getBoundingClientRect(), c = row0[i].getBoundingClientRect();
       return b.height > 30 || b.top < c.bottom || b.left < c.left - 1 || b.right > c.right + 1 ? k.textContent : null; }).filter(Boolean);
-    const named = cells.filter(c => !c.classList.contains('empty')), cols = ['Right click', 'Q', 'E'];
+    const named = cells.filter(c => !c.classList.contains('empty')), cols = ['Q', 'E', 'T'];
     const unnamed = named.filter(c => { const g = c.getAttribute('aria-label') || '', nm = c.querySelector('.nm').textContent;
       return c.getAttribute('role') !== 'group' || !g.startsWith(nm + ', ') || !cols.some(k => g.includes(', ' + k + ',')); }).map(c => c.textContent);
     /* a long name in a middle cell: two lines at most, inside the cell */
@@ -350,7 +350,15 @@ async function load(p, state, mode) {
         return new Set(rs.map(b => Math.round(b.top))).size <= 2 && rs.every(b => b.bottom <= nb.bottom + 1); })()
       &&nm0.getBoundingClientRect().bottom <= c0.getBoundingClientRect().bottom && c0.getBoundingClientRect().height === hs[0] && !overWide().length;
     nm0.textContent = was;
-    return { n: cells.length, hs, split, over, noIco, unnamed, longFit, keys: keys.map(k => k.textContent), keyBad, lmbBelow: !!lmb && lmb.getBoundingClientRect().top >= keys[0].getBoundingClientRect().bottom };
+    return { n: cells.length, hs, split, over, noIco, unnamed, longFit, keys: keys.map(k => k.textContent), keyBad,
+      marked: keys.filter(k => /†/.test(k.textContent + getComputedStyle(k, '::after').content)).map(k => k.textContent),
+      head: (h => !!h && h === v.firstElementChild && h.getBoundingClientRect().bottom <= cells[0].getBoundingClientRect().top + 0.5 ? h.textContent : '')(v.querySelector(':scope > .kv-sugg')),
+      lmbBelow: !!lmb && lmb.getBoundingClientRect().top >= keys[0].getBoundingClientRect().bottom,
+      noteBelow: !!note && !!lmb && note.getBoundingClientRect().top >= lmb.getBoundingClientRect().bottom,
+      defs: (lis => ({ head: (note && note.querySelector(':scope > .khead') || {}).textContent || '',
+        rows: lis.map(li => (li.querySelector('.kv-key') || {}).textContent + '|' + [...li.childNodes].filter(n => n.nodeType === 3).map(n => n.textContent).join('').trim()),
+        chipFirst: !!lis.length && lis.every(li => { const c = li.firstElementChild; return !!c && c === li.firstChild && c.classList.contains('kv-key') && c.getBoundingClientRect().height <= 24; }),
+        last: (note && note.lastElementChild || {}).textContent || '' }))(note ? [...note.querySelectorAll('li')] : []) };
   };
   const keyGridChecks = (kv, id) => {
     if (!kv || !kv.n) return;
@@ -360,8 +368,18 @@ async function load(p, state, mode) {
     ok(`keys ${id}: a long skill name wraps to two lines inside its cell`, kv.longFit, kv);
     ok(`keys ${id}: every filled cell shows its icon`, !kv.noIco.length, kv.noIco);
     ok(`keys ${id}: every filled cell's accessible name carries its key and row`, !kv.unnamed.length, kv.unnamed);
-    ok(`keys ${id}: key chips Right click / Q / E on one line under their columns, Left click under them`,
-      kv.keys.join('|') === 'Right click|Q|E' && !kv.keyBad.length && kv.lmbBelow, kv);
+    /* 0.8 P14 (#503): the game's columns (research-387-macro): Q, E and T (the macro's stack), all three the guide's
+       suggested binding, said once in a line heading the grid (Design Lead on #565: no † per chip); left click (the
+       game's default) its own line under them, then the game's default keys */
+    ok(`keys ${id}: key chips Q / E / T on one line under their columns, Left click under them, the defaults note under that`,
+      kv.keys.join('|') === 'Q|E|T' && !kv.keyBad.length && kv.lmbBelow && kv.noteBelow, kv);
+    ok(`keys ${id}: one line above the grid says Q, E and T are suggested keys; the chips carry no mark`,
+      /^Suggested keys: Q, E and T \(T holds the stack the right-click macro fires\)\. Move the skills there yourself\.$/.test(kv.head) && !kv.marked.length, { head: kv.head, marked: kv.marked });
+    /* Design Lead on #565 (2026-10-20): the defaults are a list under a "Game default keys" eyebrow, one key chip per
+       line, then the macro's place, still labelled (inferred) */
+    ok(`keys ${id}: the defaults list puts key 1 on Shadowstrike, one chip per line, and ends with the inferred macro line`,
+      kv.defs.head === 'Game default keys' && kv.defs.rows.includes('1|Shadowstrike') && kv.defs.chipFirst
+      && /^The macro takes right click from Savage Roar \(inferred\)\.$/.test(kv.defs.last), kv.defs);
   };
   for (const sn of ['lv27', 'lv45']) {
     const { ctx, p } = await page(1500);

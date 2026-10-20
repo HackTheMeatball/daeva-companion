@@ -193,7 +193,8 @@ export function generate(opts = {}) {
   const RMB_ROWS = (build.keyStacks.rightClick || []).map(r => ({ minLv: r.minLv, skills: r.skills.map(id => sk(id).name) })).sort((a, b) => b.minLv - a.minLv);
   const E_ORDER = build.keyStacks.eOrder.map(id => stg(id).name);
   /* the game's default keys (0.7 P11, keyStacks.defaultKeys): [{ key, rows: [{ n, lv }] }], row 0 first, lv the row's minLv
-     else its skill's learn level; [] when the build has none (the Assassin: its keys are the guide's, RMB_ROWS and E_ORDER) */
+     else its skill's learn level; [] when the build has none. The Assassin has both (0.8 P14): its grid is the guide's
+     suggested binding (RMB_ROWS, E_ORDER) and KEYS, the game's defaults, are listed beside it */
   const DK = (build.keyStacks.defaultKeys || { keys: [] }).keys, dkSeen = new Set();
   for (const k of DK) {
     check(`${build.id}: default key named once: ${k.key}`, DK.filter(x => x.key === k.key).length === 1);

@@ -14,7 +14,7 @@ import { chainsOn, qProgOf } from "../../../core/requirements.js";
 import { capFirst } from "../../../cards/nextup.js";
 import { MAP_ICO } from "../../../cards/milestones.js";
 import { GATES } from "../data/milestones.js";
-import { E_ORDER } from "../data/build.js";
+import { E_ORDER, defaultKeyOf } from "../data/build.js";
 import { seq } from "../data/markup.js";
 import { CLEAR_REWARD, RQ_K, eputK } from "../catalog.js";
 import { rqReqOf, slotNames } from "../requirements.js";
@@ -88,7 +88,7 @@ function aion2RowText() {
   mainEl.querySelectorAll(".stn[data-slot]").forEach(x => { x.textContent = names[x.dataset.slot - 1]; });
   mainEl.querySelectorAll(".erow[data-slot]").forEach(x => { const { r, below } = eRowOf(+x.dataset.slot); x.textContent = r < 0 ? "" : `, row ${r}${below.length ? ` (${below.join(", ")} move${below.length === 1 ? "s" : ""} down one)` : ""}`; });
   const e = E_ORDER.filter(x => names.includes(x)), pre = e.filter(n => n === "Illusive Clone" || n === "Swift Contract"), post = e.filter(n => !pre.includes(n));
-  mainEl.querySelectorAll(".rotseq").forEach(x => { x.innerHTML = seq([pre.length ? "E: " + pre.join(" + ") : "", "Q: Shadowstrike", post.length ? "E: " + post.join(", ") : "", "Hold both mouse buttons"].filter(Boolean)); });
+  mainEl.querySelectorAll(".rotseq").forEach(x => { x.innerHTML = seq([pre.length ? "E: " + pre.join(" + ") : "", "Q: Shadowstrike (the guide's key" + (defaultKeyOf("Shadowstrike") ? `; the game's default is ${defaultKeyOf("Shadowstrike")})` : ")"), post.length ? "E: " + post.join(", ") : "", "Hold both mouse buttons"].filter(Boolean)); });
 }
 
 export const aion2RowRenderers = {

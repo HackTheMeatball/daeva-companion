@@ -784,6 +784,7 @@
       "type": "active",
       "learnLv": 8,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-chanter-recuperation.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -853,14 +854,11 @@
       ],
       "verifiedAt": "2026-10-19",
       "status": "verified",
-      "fieldStatus": {
-        "icon": "owner-check"
-      },
       "conflicts": [
         "spec:chanter:recuperation:2 text: Metabot's skill page prints \"Removes up to 2, 2 debuffs\" (an unfilled template that doubles the number). Game text \"Removes up to 2 debuffs\" per daevaguides, aion2turkiye (chanter research §5)."
       ],
       "notes": [
-        "icon: owner-check. The owner's Lv 4 Chanter screen (2026-10-19) shows one open hand with light in the Lv 8 cell; no Metabot file has it (its page's file 18120000 matches no cell) (chanter research §7). No icon until the owner's tooltip screenshot names the art (docs/ISSUES.md)."
+        "icon from daevacompass.com (its Recuperation ability page, record 18120000; 72 px, upscaled to 128), approved icon source (owner, 2026-10-20); it matches one open hand with light in the Lv 8 cell on the owner's Chanter Skill window screen. Metabot's file for 18120000 is other art (Game Data Check, 2026-10-20, docs/ISSUES.md)."
       ]
     },
     {

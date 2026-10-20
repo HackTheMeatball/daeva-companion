@@ -63,12 +63,17 @@ on purpose: the guide shows nothing rather than an unverified value.
 - C27 (optional board re-check prompt at Lv 20/30/40) not added; the board card already flags a total below the
   level formula.
 
-- **Passive icons with no approved source: for the owner** (Game Data Check, 2026-10-20). Nine passives have no
+- **Passive icons with no approved source: for the owner** (Game Data Check, 2026-10-20). Eight passives have no
   approved file that matches the game and stay `icon: owner-check`: Cleric Healing Enhancement, Immortal Veil, Survival
-  Willpower; Templar Survival Willpower; Chanter Blessing of Life, Attack Preparation, Impact Hit, Survival Willpower,
-  Recuperation. aion2-meta.com has 64 px files (`/icons/<class>-<slug>.webp`) for the first eight, but SOURCES.md lists
-  it as "Full, reuse unknown" (facts and a link only), so they are not used without an owner decision (as
-  `owner-ok-0.6.2-map-icons` did for aion2quest.pro). Owner: OK aion2-meta for these icons, or leave them owner-check.
+  Willpower; Templar Survival Willpower; Chanter Blessing of Life, Attack Preparation, Impact Hit, Survival Willpower.
+  aion2-meta.com has 64 px files (`/icons/<class>-<slug>.webp`) for all eight, but SOURCES.md lists it as "Full, reuse
+  unknown" (facts and a link only), so they are not used without an owner decision (as `owner-ok-0.6.2-map-icons` did
+  for aion2quest.pro). Owner: OK aion2-meta for these icons, or leave them owner-check. Chanter Recuperation's icon
+  comes from daevacompass.com, approved as an icon source by the owner (2026-10-20):
+
+  | File | Name | Source page | File URL | Retrieved |
+  |---|---|---|---|---|
+  | sk-chanter-recuperation.png | Recuperation | <https://daevacompass.com/en/db/abilities/18120000> | <https://daevacompass.com/images/skills/icon_ch_skill_013.webp> (72 px, sha256 `0467a008…afb86`; daevacompass approved as an icon source by the owner, 2026-10-20) | 2026-10-20 |
 
   The three Cleric files relabelled from Metabot keep their rows in the Cleric table below (source page = the page the
   file came from): `sk-cleric-heal-block.png` ← sk-immortal-veil.png, `sk-cleric-prayer-of-concentration.png` ←
@@ -324,7 +329,9 @@ on purpose: the guide shows nothing rather than an unverified value.
   | st-chanter-sprint-mantra.png | Sprint Mantra | <https://metabot.gg/en/aion-2/skills/sprint-mantra> | <https://metabot.gg/web/aion2/skills/18160000.webp> | 2026-10-19 | Metabot page only (stigmas not on the owner screen) |
   | st-chanter-undefeated-mantra.png | Undefeated Mantra | <https://metabot.gg/en/aion-2/skills/undefeated-mantra> | <https://metabot.gg/web/aion2/skills/18190000.webp> | 2026-10-19 | Metabot page only (stigmas not on the owner screen) |
 
-- **Chanter passive icons: five for the owner** (0.8 P18, #507). The class data
+- **Chanter passive icons: four for the owner** (0.8 P18, #507; on 2026-10-20 Recuperation got its icon from
+  daevacompass.com, see "Passive icons with no approved source" above; Metabot's and aion2-meta's Recuperation files are
+  a green star, not the game's open hand). The class data
   (`data/packs/aion2/classes/chanter/skills.json`, written by `tools/research/chanter-pack.mjs`) follows the owner's Lv 4
   screen (chanter research §7), not Metabot's file names. Since 0.8 P19 (#508) every other record sets `icon`. Earth's Promise, Wind's Promise and Protection Circle carry a note naming the
   other page's file the screen shows. The five below carry `fieldStatus` `icon: owner-check`; P19 must not wire an icon

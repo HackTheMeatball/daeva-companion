@@ -1,0 +1,9 @@
+{
+  "about": "Words in a spec that mean its build changes what tools/gen compiles, so its Lanes must include gen. Kickoff holds an item whose spec has one of these without a gen lane and comments \"spec: gen lane missing\" on its issue for the Release Planner. Each keyword is a regex (case-insensitive), the spec fields it is looked for in, and what the comment says. Release Planner (Walter) extends this list. Added by Kaizen (Gale), 2026-10-20, after spec-incomplete-files three times in one day: #501, #504, and #503, whose PR #565 touched tools/gen.",
+  "keywords": [
+    { "re": "(^|[\\s`(\"'])data\\/", "in": ["Result"], "says": "its Result names data/" },
+    { "re": "(^|[\\s`(\"'])data\\/schema\\/", "in": ["Files"], "says": "its Files names data/schema/" },
+    { "re": "\\bnew (pack |data |guide )?fields?\\b", "in": ["Result", "Files"], "says": "it adds a new pack field" },
+    { "re": "\\b(game )?facts?\\b[^.\\n]{0,60}\\b(to|into) `?data\\/", "in": ["Result", "Files"], "says": "it moves game facts into data/" }
+  ]
+}
