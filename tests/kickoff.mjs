@@ -230,6 +230,14 @@ check(opusPath(bullet('`src/assets/icons/*.webp`, `docs/ISSUES.md`')) === null, 
 check(opusPath(bullet('`tools/gen/gen.mjs`, `data/packs/aion2/cards/rows.json`')) === 'tools/gen/', "#509's Files list -> Opus");
 check(opusPath(bullet('`src/cards/welcome.html`, `src/cards/welcome.js`, `src/styles` welcome rules, `src/assets/icons/*` (the emblems), `docs/ISSUES.md`, `tests/site.js`, and `tests/a11y.js`')) === null, "#501's Files list (as written) stays Sonnet: routing can't see paths a spec leaves out");
 
+// A build's end marker is read twice: by the slot check in JS and by the shell jq test that frees a run. They stay out of
+// tools/verdicts.cjs (jq can't require it), so pin them to the same markers here (Kaizen (Gale), 2026-10-20, #561).
+const jsEnd = [...yml.matchAll(/\/\^\((Blocked:\|Needs @claude)\)\//g)].map((x) => x[1]);
+const jqEnd = [...yml.matchAll(/test\("\^\(([^)]*)\)"\)/g)].map((x) => x[1]);
+check(jsEnd.length >= 1 && jqEnd.length >= 1 && [...jsEnd, ...jqEnd].every((a) => a === 'Blocked:|Needs @claude'), "kickoff's JS and jq build-end markers name the same lines (Blocked:, Needs @claude)");
+const ended = yml.match(/const ended = [^\n]*\/\^\(([^)]*)\)\//);
+check(!!ended && ended[1].startsWith('Blocked:|Needs @claude|'), 'the stalled-build check reads the same markers plus its own');
+
 console.log(`\n${n - fail}/${n} kickoff checks passed`);
 console.log(fail ? 'KICKOFF CHECKS FAILED' : 'KICKOFF CHECKS PASSED');
 process.exit(fail ? 1 : 0);
