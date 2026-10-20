@@ -435,7 +435,8 @@ Rules for every item:
   than 10 levels old fold into one row ("12 early steps you probably did · Review") with one undoable "All done".
 - **Inputs.** `docs/design/0.9-loadout-mockup.md` and `docs/design/mockups/0.9-loadout/` (Design Lead's mocks, #610; merged with Design Lead's look OK after the fresh review; owner 2026-10-20 5:21 and 5:24 PM ET). Kickoff holds the item until they are on main.
 - **Files.** `src/packs/aion2/nextup.js`, `src/packs/aion2/cards/nextup-kinds.js`, `src/styles/app.css`, the tests.
-- **No-gos.** Basic stays essentials only: nothing else moves into it.
+- **No-gos.** Basic stays essentials only: nothing else moves into it. If Design Lead merges Basic and Advanced into one view (owner's
+  question, 2026-10-20 5:45 PM ET), this item follows that call instead.
 - **Acceptance.**
   - [ ] Browser test: "All done" ticks the folded chores and Undo reverses it.
   - [ ] Shots of Basic at 390 px.

@@ -1367,7 +1367,12 @@ mapping approved 2026-10-13, values in `docs/research/colors-2026-10/`, never bu
 little different. Designed inside the 1.0 visual language by Design Lead, reviewed by Design Review and an outside
 critic, built as a bot item. The Elyos layer is mocked but has no players until Elyos packs exist. Cards stop
 reading each other's DOM (architecture audit C3), which makes "add a feature" cheaper. The same step shown in three places
-(UX audit finding 12) is settled here. **Microscope pass (owner, 2026-10-20 5:24 PM ET):** before the 1.0 candidate, every
+(UX audit finding 12) is settled here. **Design questions the owner handed to Design Lead (2026-10-20 5:45 PM ET; decided under outside
+review):** Next up also shows what else is nearby on the way, so completionists are served; one guide with ways to skip
+what a player doesn't want, or separate fastest and completionist modes; whether Basic and Advanced merge into one better
+view, so there aren't two views to maintain; and the new-user and new-character experience, including a premium opening
+animation (the compass quill spinning). A Basic and Advanced merge would change 0.9 P21, which already waits on Design
+Lead's mock. **Microscope pass (owner, 2026-10-20 5:24 PM ET):** before the 1.0 candidate, every
 card, feature, element, section and function is reviewed against its purpose and the Vision (top of this file): Design Review (Holly) for looks, Code Review
 (Howard) for code, Game Data Check (Gretchen) for data, Team Audit (Gomez) or an outside reviewer for the whole; each
 finding is fixed or recorded as a decision before the candidate is cut. The ledger (Rules Steward, Francesca) and the
