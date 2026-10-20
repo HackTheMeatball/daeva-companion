@@ -23,7 +23,7 @@
         ],
         "from": {
           "Block": "G",
-          "Defense": "G",
+          "Defense": "BG",
           "HP": "BG"
         },
         "status": "single-source",
@@ -37,7 +37,7 @@
             "checkedAt": "2026-10-19"
           }
         ],
-        "note": "Metabot's class page and its class-builds guide (Block, Defense, HP, Critical Hit Resist, Attack) are one site: single source (claim C80). The other sources rank post-45 gear or endgame passives, a different question (docs/research/2026-10-templar-pack.md §4.5). Only the top three are shown. from: B = board stat nodes / corners, G = gear (the Templar boards carry the Assassin's stat labels: HP nodes, no Block or Defense nodes)."
+        "note": "Metabot's class page and its class-builds guide (Block, Defense, HP, Critical Hit Resist, Attack) are one site: single source (claim C80). The other sources rank post-45 gear or endgame passives, a different question (docs/research/2026-10-templar-pack.md §4.5). Only the top three are shown. from: B = board stat nodes / corners, G = gear (the Templar boards carry HP and Defense Bonus nodes, no Block nodes: classes/templar/board-nodes.json)."
       },
       "skillOrder": [
         {
@@ -517,8 +517,11 @@
             { "key": "3", "rows": [{ "skill": "skill:templar:warding-strike" }] },
             { "key": "4", "rows": [{ "skill": "skill:templar:punishment" }] }
           ],
-          "status": "verified",
+          "status": "inferred",
           "sources": [
+            {
+              "inferred": "Q, E and 1–4 are the game's defaults from the owner's screen (claim C87); the screen does not show the mouse buttons, so Vicious Strike on left click and Pummel on right click is inferred from the badge order on other classes' screens (claim C88)."
+            },
             {
               "owner": {
                 "ref": "owner:2026-10-18-templar-keys-01",

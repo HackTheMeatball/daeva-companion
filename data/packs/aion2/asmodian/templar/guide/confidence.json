@@ -8,7 +8,7 @@
       "id": "conf:core-order",
       "group": "verified",
       "order": 46,
-      "text": "Templar skill points: Judgment, Vicious Strike, Pummel, Shield Smite, Warding Strike, Punishment and Punishing Benediction to 10, then {skillOrderTwoSource} (Fury to 10, Ironclad Defense to 5) (Metabot, aion2turkiye, daevaguides, mmo-codex). Judgment first, Vicious Strike early, Punishment later and Fury the level it is learned are two-source; the order between those rules is inferred.",
+      "text": "Templar skill points: Judgment, Vicious Strike, Pummel, Shield Smite, Warding Strike, Punishment and Punishing Benediction to 10, then {skillOrderTwoSource} (Fury to 10, Ironclad Defense to 5) (Metabot, aion2turkiye, daevaguides, mmo-codex; Metabot's build leaves Fury out). Judgment first, Vicious Strike early, Punishment later and Fury the level it is learned are two-source; the order between those rules is inferred.",
       "placeholders": [
         "skillOrderTwoSource"
       ]
@@ -27,8 +27,8 @@
     },
     {
       "id": "conf:mouse-keys",
-      "group": "disputed",
-      "order": 236,
+      "group": "inferred",
+      "order": 225,
       "text": "Default mouse keys: Vicious Strike on left click and Pummel on right click is inferred from the badge order on other classes' screens; the other default keys are from your game."
     },
     {
@@ -59,7 +59,7 @@
       "id": "conf:stigma-plan",
       "group": "disputed",
       "order": 234,
-      "text": "Stigmas Taunt, Empyrean Lord's Punishment, Battlefield Banner, Doom Shield (Metabot, mmo-codex; daevaguides and aion2turkiye share three and swap one for Noble Armor or Executing Blade); every source orders them differently, so the slot order is Metabot's. Raised to 8 / 7 / 5 / 4: Metabot's only."
+      "text": "Stigmas Taunt, Empyrean Lord's Punishment, Battlefield Banner, Doom Shield (Metabot, mmo-codex; aion2turkiye shares three and swaps one for Noble Armor or Executing Blade; daevaguides adds Taunt for dungeons and names Executing Blade (solo) and Noble Armor as alternatives); every source orders them differently, so the slot order is Metabot's. Raised to 8 / 7 / 5 / 4: Metabot's only."
     },
     {
       "id": "conf:stigmas",
