@@ -1,0 +1,690 @@
+{
+  "$schema": "../../schema/stigmas.schema.json",
+  "schemaVersion": 2,
+  "collection": "stigmas",
+  "class": "sorcerer",
+  "records": [
+    {
+      "id": "stigma:sorcerer:arctic-armor",
+      "key": "Arctic Armor",
+      "name": "Arctic Armor",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:sorcerer:arctic-armor:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+20% Impact-type Resist"
+        },
+        {
+          "id": "spec:sorcerer:arctic-armor:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "x1.5 [Absorb Essence] effect"
+        },
+        {
+          "id": "spec:sorcerer:arctic-armor:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "x1.5 [Robe of Cold] effect"
+        },
+        {
+          "id": "spec:sorcerer:arctic-armor:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+20% PvE Damage Tolerance increase and +10% PvP Damage Tolerance increase"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/arctic-armor",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page); mmo-codex says the fifth specialty at 25 is not in the client data, daevaguides that the global cap is 20 for now. A leveling guide does not reach it, so no owner check is asked (sorcerer research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:sorcerer:assault-bombardment",
+      "key": "Assault Bombardment",
+      "name": "Assault Bombardment",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:sorcerer:assault-bombardment:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+20% Attack for 5s on hit"
+        },
+        {
+          "id": "spec:sorcerer:assault-bombardment:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "500 MP damage on hit"
+        },
+        {
+          "id": "spec:sorcerer:assault-bombardment:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+10m range"
+        },
+        {
+          "id": "spec:sorcerer:assault-bombardment:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+20% Frost Chance"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/assault-bombardment",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page); mmo-codex says the fifth specialty at 25 is not in the client data, daevaguides that the global cap is 20 for now. A leveling guide does not reach it, so no owner check is asked (sorcerer research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:sorcerer:cold-storm",
+      "key": "Cold Storm",
+      "name": "Cold Storm",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:sorcerer:cold-storm:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "Enhanced Frostbite - Grants extra damage when landing an attack"
+        },
+        {
+          "id": "spec:sorcerer:cold-storm:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "30% chance to inflict Root for 2s"
+        },
+        {
+          "id": "spec:sorcerer:cold-storm:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+3s [Cold Storm] summoning duration"
+        },
+        {
+          "id": "spec:sorcerer:cold-storm:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+10s Frostbite duration"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/cold-storm",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page); mmo-codex says the fifth specialty at 25 is not in the client data, daevaguides that the global cap is 20 for now. A leveling guide does not reach it, so no owner check is asked (sorcerer research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:sorcerer:curse-tree",
+      "key": "Curse: Tree",
+      "name": "Curse: Tree",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:sorcerer:curse-tree:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "Increases number of hits required to remove Polymorph"
+        },
+        {
+          "id": "spec:sorcerer:curse-tree:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "-200 Block, Evasion for 10s when Polymorph ends"
+        },
+        {
+          "id": "spec:sorcerer:curse-tree:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "-20% Impact-type Resist for 10s when Polymorph ends"
+        },
+        {
+          "id": "spec:sorcerer:curse-tree:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "Inflicts debuff even if Polymorph is removed through attacks"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/curse-tree",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page); mmo-codex says the fifth specialty at 25 is not in the client data, daevaguides that the global cap is 20 for now. A leveling guide does not reach it, so no owner check is asked (sorcerer research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:sorcerer:delayed-explosion",
+      "key": "Delayed Explosion",
+      "name": "Delayed Explosion",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:sorcerer:delayed-explosion:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "Restores 200 MP"
+        },
+        {
+          "id": "spec:sorcerer:delayed-explosion:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "-10s [Delayed Explosion] cooldown"
+        },
+        {
+          "id": "spec:sorcerer:delayed-explosion:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "Changes to AoE Skill"
+        },
+        {
+          "id": "spec:sorcerer:delayed-explosion:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+10% additional Damage Taken"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/delayed-explosion",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page); mmo-codex says the fifth specialty at 25 is not in the client data, daevaguides that the global cap is 20 for now. A leveling guide does not reach it, so no owner check is asked (sorcerer research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:sorcerer:divine-burst",
+      "key": "Divine Burst",
+      "name": "Divine Burst",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:sorcerer:divine-burst:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+20% Skill Speed"
+        },
+        {
+          "id": "spec:sorcerer:divine-burst:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "Absorbs 10% HP"
+        },
+        {
+          "id": "spec:sorcerer:divine-burst:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "75% chance to inflict Knock Back"
+        },
+        {
+          "id": "spec:sorcerer:divine-burst:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "Inflict Stun for 3s after Knock Back"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/divine-burst",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        },
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/sorcerer/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-19",
+          "note": "Class guide shows the specialty text for spec:sorcerer:divine-burst:2 (sorcerer research §5)"
+        },
+        {
+          "url": "https://daevaguides.com/en/sorcerer/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-19",
+          "note": "Class guide shows the specialty text for spec:sorcerer:divine-burst:2 (sorcerer research §5)"
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "conflicts": [
+        "spec:sorcerer:divine-burst:2 text: Metabot's skill page prints \"Absorbs 1000, 1000% HP\" (an unfilled template; its number is the percent x 100). Game text \"Absorbs 10% HP\" per mmo-codex, daevaguides (sorcerer research §5)."
+      ],
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page); mmo-codex says the fifth specialty at 25 is not in the client data, daevaguides that the global cap is 20 for now. A leveling guide does not reach it, so no owner check is asked (sorcerer research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:sorcerer:element-enhancement",
+      "key": "Element Enhancement",
+      "name": "Element Enhancement",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:sorcerer:element-enhancement:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+200 Accuracy"
+        },
+        {
+          "id": "spec:sorcerer:element-enhancement:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "x1.5 [Robe of Flame] effect"
+        },
+        {
+          "id": "spec:sorcerer:element-enhancement:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "x1.5 [Grace of Enhancement] effect"
+        },
+        {
+          "id": "spec:sorcerer:element-enhancement:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+10% additional Fire and Water Attack"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/element-enhancement",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page); mmo-codex says the fifth specialty at 25 is not in the client data, daevaguides that the global cap is 20 for now. A leveling guide does not reach it, so no owner check is asked (sorcerer research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:sorcerer:fire-wall",
+      "key": "Fire Wall",
+      "name": "Fire Wall",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:sorcerer:fire-wall:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "Enhanced Embers - Grants extra damage when landing an attack"
+        },
+        {
+          "id": "spec:sorcerer:fire-wall:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+2m wall width"
+        },
+        {
+          "id": "spec:sorcerer:fire-wall:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+2s [Fire Wall] summoning duration"
+        },
+        {
+          "id": "spec:sorcerer:fire-wall:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+10s Embers duration"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/fire-wall",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page); mmo-codex says the fifth specialty at 25 is not in the client data, daevaguides that the global cap is 20 for now. A leveling guide does not reach it, so no owner check is asked (sorcerer research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:sorcerer:glacial-smite",
+      "key": "Glacial Smite",
+      "name": "Glacial Smite",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:sorcerer:glacial-smite:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "Up to +20% damage when more targets hit"
+        },
+        {
+          "id": "spec:sorcerer:glacial-smite:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "-30s cooldown"
+        },
+        {
+          "id": "spec:sorcerer:glacial-smite:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "50% chance to inflict Frost for 3s"
+        },
+        {
+          "id": "spec:sorcerer:glacial-smite:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "Ignores Block and Evasion and lands as Multi-Hit"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/glacial-smite",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page); mmo-codex says the fifth specialty at 25 is not in the client data, daevaguides that the global cap is 20 for now. A leveling guide does not reach it, so no owner check is asked (sorcerer research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:sorcerer:hibernation",
+      "key": "Hibernation",
+      "name": "Hibernation",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:sorcerer:hibernation:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+100% Incoming Heal"
+        },
+        {
+          "id": "spec:sorcerer:hibernation:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "Restores 5% Max HP every 1s for the duration"
+        },
+        {
+          "id": "spec:sorcerer:hibernation:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+2s duration"
+        },
+        {
+          "id": "spec:sorcerer:hibernation:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "Triggers when afflicted with Impact-type status"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/hibernation",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page); mmo-codex says the fifth specialty at 25 is not in the client data, daevaguides that the global cap is 20 for now. A leveling guide does not reach it, so no owner check is asked (sorcerer research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:sorcerer:lumiels-space",
+      "key": "Lumiel's Space",
+      "name": "Lumiel's Space",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:sorcerer:lumiels-space:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "Up to +20% damage when more targets hit"
+        },
+        {
+          "id": "spec:sorcerer:lumiels-space:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "Adds [The Depths] Chain Skill"
+        },
+        {
+          "id": "spec:sorcerer:lumiels-space:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+1s [The Depths] Knockdown duration"
+        },
+        {
+          "id": "spec:sorcerer:lumiels-space:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "-30s [Lumiel's Space] cooldown"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/lumiels-space",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page); mmo-codex says the fifth specialty at 25 is not in the client data, daevaguides that the global cap is 20 for now. A leveling guide does not reach it, so no owner check is asked (sorcerer research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:sorcerer:soul-freeze",
+      "key": "Soul Freeze",
+      "name": "Soul Freeze",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:sorcerer:soul-freeze:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "50% chance to inflict Root for 5s"
+        },
+        {
+          "id": "spec:sorcerer:soul-freeze:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "-1,000 Stamina"
+        },
+        {
+          "id": "spec:sorcerer:soul-freeze:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+2s Seal duration"
+        },
+        {
+          "id": "spec:sorcerer:soul-freeze:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+25% Seal chance"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/soul-freeze",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page); mmo-codex says the fifth specialty at 25 is not in the client data, daevaguides that the global cap is 20 for now. A leveling guide does not reach it, so no owner check is asked (sorcerer research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:sorcerer:steel-barrier",
+      "key": "Steel Barrier",
+      "name": "Steel Barrier",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:sorcerer:steel-barrier:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+10% Move Speed"
+        },
+        {
+          "id": "spec:sorcerer:steel-barrier:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "HP Regen at fixed intervals"
+        },
+        {
+          "id": "spec:sorcerer:steel-barrier:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+10% PvE Damage Tolerance increase and +5% PvP Damage Tolerance increase"
+        },
+        {
+          "id": "spec:sorcerer:steel-barrier:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "-15s cooldown"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/steel-barrier",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page); mmo-codex says the fifth specialty at 25 is not in the client data, daevaguides that the global cap is 20 for now. A leveling guide does not reach it, so no owner check is asked (sorcerer research §2.2)."
+      ]
+    }
+  ]
+}

@@ -72,7 +72,9 @@ jobs:
             // Gretchen's own PRs (claude/game-data-check-*) are hers to verify, so they don't wait on themselves.
             // Known limit: every session posts as the owner's account, so this checks the verdict's text, not who wrote it.
             // It guards against an accidental merge, not a forged verdict; no session but Game Data Check posts that line.
-            const DATAFILE = (f) => (/^data\//.test(f) && !/^data\/schema\//.test(f)) || /^docs\/research\//.test(f) || /(^|\/)icons\//.test(f);
+            // public/icons/ is our own PWA icon set, not game art.
+            const DATAFILE = (f) => (/^data\//.test(f) && !/^data\/schema\//.test(f)) || /^docs\/research\//.test(f)
+              || (/(^|\/)icons\//.test(f) && !/^public\/icons\//.test(f));
             const NEEDSDATA = (pr, files) => !/^claude\/game-data-check-/.test(pr.head.ref)
               && (/^claude\/research-/.test(pr.head.ref) || /^research\b/i.test(pr.title || '') || files.some(DATAFILE));
             const VERDICT = /^\**Game Data Check \(ROL-03\) on ([0-9a-f]{7,40}): (VERIFIED|CHANGES|HOLD)\b/m;
@@ -103,10 +105,13 @@ jobs:
               if (!last || !/VERDICT:\s*APPROVE/.test(last.body) || /VERDICT:\s*CHANGES/.test(last.body)) { core.info(`#${pr.number}: no approving review`); continue; }
               if (Date.parse(last.updated_at) < headAt) { core.info(`#${pr.number}: approval older than the head commit`); continue; }
               if (!last.body.includes(sha.slice(0, 7))) { core.info(`#${pr.number}: approval does not name the head ${sha.slice(0, 7)}`); continue; }
-              const files = (await github.paginate(github.rest.pulls.listFiles, { owner, repo, pull_number: pr.number, per_page: 100 })).map((f) => f.filename);
+              const listed = await github.paginate(github.rest.pulls.listFiles, { owner, repo, pull_number: pr.number, per_page: 100 });
+              const files = listed.map((f) => f.filename);
+              // A rename out of data/ only shows its old path in previous_filename; the data check reads both.
+              const touched = listed.flatMap((f) => [f.filename, f.previous_filename].filter(Boolean));
               const design = designBlocker(files, comments, sha, headAt);
               if (design) { core.info(`#${pr.number}: ${design}`); continue; }
-              const data = dataBlocker(pr, files, comments, sha, headAt);
+              const data = dataBlocker(pr, touched, comments, sha, headAt);
               if (data) { core.info(`#${pr.number}: ${data}`); continue; }
               try {
                 await github.rest.pulls.merge({ owner, repo, pull_number: pr.number, sha, merge_method: 'squash' });
