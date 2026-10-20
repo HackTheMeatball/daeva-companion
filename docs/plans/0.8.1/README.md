@@ -193,3 +193,10 @@ The owner said "now" on 2026-10-20 at 4:28 PM ET (same DECISIONS row).
 `0.8.1 R` once F1–F8 have merged or moved: CHANGELOG section in the release issue (K17),
 `PRE-RELEASE CHECK 0.8.1` to Game Data Check; a patch has no RC play or freeze (DECISIONS 2026-10-20). The Release
 Planner releases it by hand after `DATA OK 0.8.1`.
+
+**Backup data check before DATA OK.** Six Game Data Check PRs merged since #520 without a backup
+ROL-03 verdict first: #553, #556, #562, #570, #584 and #598. Only #553 has one so far (VERIFIED, after its merge).
+0.8.1 ships all six, so `DATA OK 0.8.1` waits until a thread other than Game Data Check posts VERIFIED on the other
+five. Source Vetting (Lydia) runs this check, and it is also K24's first fresh sample. This gate was added by the
+Release Planner on 2026-10-20, on Kaizen's recommendation (Mike's scan); it is a graded tighten under ROL-03 and
+touches no owner rule.
