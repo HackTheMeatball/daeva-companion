@@ -170,7 +170,7 @@ jobs:
               const g = comments.filter((c) => c.user && (c.user.login === 'claude[bot]' || c.user.login === owner)
                 && /^\**Game Data Check \(ROL-03\) on [0-9a-f]{7,40}: (VERIFIED|CHANGES|HOLD)\b/m.test(c.body || '')).pop();
               if (g && DATACHANGES.test(g.body) && g.body.includes(sha.slice(0, 7)))
-                reason = `Game Data Check asked for changes on this head: ${g.html_url}. Fix every blocking item in it; never add game data no approved source backs.`;
+                reason = `Game Data Check asked for changes on this head: ${g.html_url}. Fix every blocking item in it; never add game data no approved source backs. Also fix what the latest review and CI run on the head report.`;
             }
             const changed = files.reduce((n, f) => n + f.additions + f.deletions, 0);
             const riskyPath = /^(src\/core\/|tools\/gen\/|data\/schema\/|tests\/golden|tests\/e2-migtest|\.github\/)/;
@@ -315,6 +315,9 @@ jobs:
         uses: anthropics/claude-code-action@v1
         env:
           CLAUDE_BRANCH: ${{ needs.decide.outputs.branch }}
+          # `npm test` takes about 10 min, over Bash's default 2-min limit (kickoff.yml has the story).
+          BASH_DEFAULT_TIMEOUT_MS: '1800000'
+          BASH_MAX_TIMEOUT_MS: '1800000'
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           prompt: ${{ needs.decide.outputs.prompt }}
