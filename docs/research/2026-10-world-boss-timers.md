@@ -5,19 +5,22 @@ Metabot `/en/aion-2/events` and `/en/aion-2/bosses` (Full; it reads the Global c
 `/tools/world-bosses` (Full, reuse unknown; robots.txt allows all; "datamined from the Global client", Launch Scale Test
 client of 2026-09-19). Lydia's note `/mnt/project-files/research/endgame/world-boss-timers.md` reads the same Metabot
 pages and agrees. Lydia vetted seven tracker sites at 23:20Z (her note's update section): aion2atlas.app, aion2vault.com,
-aion2data.com, allthings.how, aion2rifttimer.com, aion2rift.com and criticalhits.com.br, all Full (most reuse unknown).
-aion2vault cites allthings.how, so it is not an independent source. Facts only.
+aion2data.com, allthings.how, aion2rifttimer.com, aion2rift.com and criticalhits.com.br. Her note is outside the repo,
+so the terms and robots.txt results were re-read for this PR and are now rows in `SOURCES.md` (all Full, most reuse
+unknown; allthings.how's terms link returns 404, so it is facts and a link only). aion2vault cites allthings.how, so it
+is not an independent source. aion2hub is a weak voice for the schedules: its `SOURCES.md` row covers weak
+corroboration on a pre-launch (2026-09-19) snapshot, now widened to boss schedules. Facts only.
 
 **Kanon's Bible has nothing on world bosses.** Its "boss" mentions are combat stats (Boss Attack, crit resistances), so
 it gives no leads here (checked, 2343 lines of text).
 
 ## 1. Clock
 
-All times below are **server time, UTC+9**, shared by every Global region (NA, EU, LatAm, Asia). Sources: Metabot,
-aion2hub and allthings.how, all "community-confirmed, not official". **Disputed:** aion2atlas says the Reshanta times
-follow each region's own clock (CET for EU, Eastern for NA East, Pacific for NA West). Every countdown depends on which
-is right, so it is owner check 1. Until it is answered, the computed Reshanta timers carry "check in game". The time
-zone is a single data field, so it doesn't block the spec. It matches the daily reset at 16:00 server = 07:00 UTC
+**Disputed: which clock the times use.** Metabot, aion2hub and allthings.how ("community-confirmed, not official") say
+all times below are **server time, UTC+9**, shared by every Global region (NA, EU, LatAm, Asia). aion2atlas says the
+Reshanta times follow each region's own clock (CET for EU, Eastern for NA East, Pacific for NA West). Every countdown
+depends on which is right, so it is owner check 1. Until it is answered, the computed Reshanta timers carry "check in
+game". The time zone is a single data field, so the dispute doesn't block the spec or the build, only that label. It matches the daily reset at 16:00 server = 07:00 UTC
 (`2026-10-endgame-facts.md`). UTC+9 has no daylight saving, so store server time and convert at render time.
 Korea and Taiwan are separate services on their own schedules (KR/TW: Watcher Kaira every 4 h, Executors Wed and Sat
 22:30), which don't apply.
