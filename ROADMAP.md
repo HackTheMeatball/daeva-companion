@@ -136,6 +136,70 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
    disagreement between reviewers goes to the owner in the morning debrief. Watchdog (Mike) flags a merged tagged item
    with no fresh-review note (`review-skipped`). Once per minor a no-history thread re-checks 10 data fields Game Data
    Check fixed or passed.
+
+   **Review level (owner, 2026-10-20 6:45 PM ET; defaults from Org Design's trigger list; approved by Fresh governance
+   review, 2026-10-20 7:02 PM ET):** every review is triaged `standing`, `blind` or `external`. The defaults list below sets each item's
+   level, and that call isn't left to anyone's judgement. Anyone may raise a level. Only the coordinator may lower
+   triggers 1, 3 and 4 below their default, logged in the PR with a reason and counted at each kaizen review. Triggers 2,
+   5, 4b and 6 are never lowered. Trigger 2 is the roster, where the coordinator is the decider. Trigger 5 is the conflict
+   check, and the coordinator picks the reviewer. Triggers 4b and 6 are K24, so lowering them narrows an owner decision,
+   and that goes to Isaac.
+
+   | # | Default trigger | Level |
+   |---|---|---|
+   | 1 | A change to a rule, a process, a review criterion or a gate: pipeline.yml review steps, verdict parsing, merge and kickoff gates, model routing, the review criteria and the fresh-review briefs, and this rule itself | external |
+   | 2 | A hire, merge, retire or re-scope of a standing role. Org Design brings the evidence, the coordinator decides, and the reviewer checks both the need and the charter | external |
+   | 3 | Privacy, legal or ToS text | external |
+   | 4 | Removing or hiding anything Isaac sees in the app or the tracker | blind |
+   | 4b | An owner-facing new look, layout or colour meaning, or a change to an owner-approved look (K24's tag, Isaac 4:39 PM ET) | blind |
+   | 5 | A review where the usual reviewer helped draft, propose or brief the work, commented on it, or owns the rules the work changes | blind (external if 1–3 also match) |
+   | 6 | Save or storage key changes, and every release PR (K24, unchanged) | blind |
+   | – | Anything else | standing |
+
+   - **Reviewers:**
+     - *External* is an outside reviewer with no history on the change: Team Audit, or a consultant whenever Team Audit
+       drafted it, commented on it or is its subject.
+     - *Blind* is a no-history reviewer working from the fixed brief, without the author's reasoning.
+     - *Standing* for code is the pipeline's per-PR review (MRG-04, criteria owned by Code Review), plus Code Review by
+       hand only on tagged or requested PRs. For design, standing is Design Review.
+   - **Conflicts come from the record, not self-declaration:** before picking the reviewer, the coordinator checks git
+     authorship, Ledger co-authors, comments and past reviews (trigger 5).
+   - **Set at plan time and checked by path:**
+     - From 0.10 each spec carries the bullet `- **Review:** standing | blind | external — <trigger # or reason>.` next
+       to Lanes. Walter sets it at plan time. Kickoff ignores it, and the `fresh-review` label is derived from it. 0.9's
+       existing fresh-review labels count as blind, so no issue is rewritten.
+     - An unplanned PR is triaged by the same list when it opens.
+     - Triggers 1 and 6 are also detected from changed paths: Build Pipeline keeps `review-triggers.json`, Code Review
+       owns its trigger-1 and trigger-6 entries, and kickoff's drift comment (K20) flags a PR whose paths need a higher
+       level than its `review:` line. This also catches scope growth.
+   - **Marker and hold:**
+     - Blind and external items open with `hold`.
+     - The review note's first line is `FRESH REVIEW #<n> <sha7>`, as in the merged brief template (#603); this is what
+       Watchdog's `review-skipped` check reads.
+     - A separate last line, `FRESH REVIEW OK <sha7>`, on the head SHA clears hold. The line never contains a CHANGES word.
+     - Only Build Pipeline's automation removes `hold`. Until that ships, the Release Planner does. The post-#615
+       convention of the reviewer removing it ends.
+     - Watchdog flags a held PR 60 min after its review started with no marker, and logs any merge that matched a trigger
+       without one.
+   - **Fast path and batching:**
+     - Incident fast path: the coordinator declares and logs the incident, the change is adopted at once, and it is
+       reviewed the same day (docs/DECISIONS.md 2026-10-20, "Process changes are decided by the team after an outside
+       review", step 6).
+     - Trigger-1 changes are reviewed in a batch at each kaizen review, except recurrences and incidents (the 5:30 PM ET
+       procedure's step 3), so external reviews stay inside the usage budget.
+   - **Who adopts:** the reviewer gives the verdict, and the change's owner decides whether to adopt it (the coordinator
+     for roster changes).
+   - **Known limit, not a control:** every comment posts under one account, so a marker's author rests on trust and is
+     visible in the thread.
+   - **Graded at each kaizen review:**
+     - merges that matched a trigger without a marker (target 0);
+     - lowerings below default, with their reasons;
+     - findings and runs per level, as cost per major finding;
+     - external runs from trigger 1 against the majors they found;
+     - triggers that fired too often or never;
+     - whether blind runs on new looks (4b) found majors that standing review missed. If two minors find none, propose
+       narrowing 4b to Isaac, since K24 is his decision.
+
 4. **Waves and lanes for the whole minor.** Lay every item out in waves before anything is queued: items in the same
    module or serial file run one after another; items in different modules may run at the same time, at most three
    builds (the cap in kickoff.yml; 3 under the owner's usage budget since 2026-10-20, five before). Name the critical path, put the items that unblock the most first, and give each item an `After:` line so
