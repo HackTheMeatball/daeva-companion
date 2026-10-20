@@ -187,9 +187,11 @@ on purpose: the guide shows nothing rather than an unverified value.
   build plan or key grid could show, since the guide's picks are not settled yet) came from Metabot under the standing
   icon OK (owner, 2026-10-14) on 2026-10-19, 6:26–6:30 AM ET; none lacks an approved source, so nothing goes to the owner.
   Staged in `data/packs/aion2/asmodian/templar/icons/` (256 px WebP → 128 px RGB PNG, Lanczos, like the Assassin's and
-  Ranger's), not wired into the app. Names carry the class (`sk-templar-<slug>.png`) because `sk-impact-hit.png`
-  (Assassin) already exists and Defiance, Survival Willpower and Armor of Balance are shared names too. The guide item
-  moves the ones it shows to `src/assets/icons/` (the build rejects unreferenced PNGs there) and sets each record's `icon`.
+  Ranger's). Names carry the class (`sk-templar-<slug>.png`) because `sk-impact-hit.png`
+  (Assassin) already exists and Defiance, Survival Willpower and Armor of Balance are shared names too. **In the site
+  since 0.8 P3 (#492):** 33 files moved to `src/assets/icons/` (12 actives, 13 stigmas, the eight matching passives)
+  and each record names its icon. Two stay staged and unused: `sk-templar-impact-hit.png` (the game shows the
+  Assassin's shipped art) and `sk-templar-survival-willpower.png` (matches no owner screen; see below).
 
   | File | Name | Source page | File URL | Retrieved |
   |---|---|---|---|---|
@@ -236,7 +238,8 @@ on purpose: the guide shows nothing rather than an unverified value.
   `data/packs/aion2/classes/templar/skills.json` name the icon; the staged `sk-templar-*` files move into
   `src/assets/icons/` with P3's guide pack (the build rejects an icon `src/` does not reference). Survival Willpower
   matches no file: it keeps `fieldStatus` `icon: owner-check` and gets no icon until the owner's tooltip screenshot
-  names the art.
+  names the art. (0.8 P3 moved the eight "staged" files below into the site; Survival Willpower is the one passive that
+  shows a letter square, from Lv 23.)
 
   | Passive | Learn Lv | Icon | Why |
   |---|---|---|---|
@@ -250,6 +253,18 @@ on purpose: the guide shows nothing rather than an unverified value.
   | Fury | 21 | `sk-templar-fury.png` (staged; P3 moves it) | matches the owner's screen (Game Data Check, PR #518) |
   | Survival Willpower | 23 | none: owner-check | matches no Metabot file (Game Data Check, PR #518) |
   | Block Pain | 25 | `sk-templar-block-pain.png` (staged; P3 moves it) | matches the owner's screen (Game Data Check, PR #518) |
+
+- **Templar guide: still missing** (0.8 P3, #492; the guide is playable to Lv 45 without these):
+  - **Survival Willpower icon** (Lv 23 passive): owner-check, no icon yet (above). Owner: a tooltip screenshot.
+  - **Which mouse button holds which skill** (claim C88, inferred): the owner's screen shows Vicious Strike and Pummel
+    on the two mouse badges; the guide assumes left = Vicious Strike from the Ranger and Gladiator screens. Owner: one
+    look at the default Templar quickslots.
+  - **Defiance's default key**: daevaguides says Space; no owner screen shows it, so the Key setup leaves it out.
+  - **Disputed advice, labelled in the Confidence card**: the stigma slot order (C81, Metabot's order taken), Annihilate
+    7 / Enhance Health 8 / Poach 5 (C82), Punishment's Lv 8 pick (C86), the stigma levels 8 / 7 / 5 / 4 (Metabot only).
+    Single source: stat priority (C80) and the first Daevanion nodes (C83).
+  - **Pummel's Lv 12 / 16 specialty texts** stay disputed in the class data (research §5); a leveling guide never
+    reaches them.
 
 - **Chanter skill and stigma icons: saved before the guide item, three missing** (0.8 class research, 2026-10-19
   8:39–8:43 PM ET, docs/research/2026-10-chanter-pack.md §7). 32 of 35 (19 skills, 13 stigmas) came from Metabot under
