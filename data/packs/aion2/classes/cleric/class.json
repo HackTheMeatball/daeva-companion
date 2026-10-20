@@ -8,7 +8,7 @@
       "id": "class:cleric",
       "class": "cleric",
       "name": "Cleric",
-      "release": "hidden",
+      "release": "released",
       "defaultBuild": "build:cleric:guide",
       "sources": [
         {
@@ -23,7 +23,7 @@
       "verifiedAt": "2026-10-19",
       "status": "verified",
       "notes": [
-        "Hidden until a 0.8 guide item adds its guide pack (data/packs/aion2/asmodian/cleric/, which defines build:cleric:guide) and lists it in the class picker."
+        "Released in 0.8 P5 (#494): its guide pack (data/packs/aion2/asmodian/cleric/) defines build:cleric:guide and the class picker lists it."
       ]
     }
   ]

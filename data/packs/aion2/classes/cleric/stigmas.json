@@ -9,6 +9,7 @@
       "key": "Absolution",
       "name": "Absolution",
       "availableLv": 22,
+      "icon": "assets/icons/st-cleric-absolution.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -60,6 +61,7 @@
       "key": "Assault Mark",
       "name": "Assault Mark",
       "availableLv": 22,
+      "icon": "assets/icons/st-cleric-assault-mark.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -111,6 +113,7 @@
       "key": "Benevolence",
       "name": "Benevolence",
       "availableLv": 22,
+      "icon": "assets/icons/st-cleric-benevolence.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -162,6 +165,7 @@
       "key": "Earth Punishment",
       "name": "Earth Punishment",
       "availableLv": 22,
+      "icon": "assets/icons/st-cleric-earth-punishment.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -213,6 +217,7 @@
       "key": "Light of Protection",
       "name": "Light of Protection",
       "availableLv": 22,
+      "icon": "assets/icons/st-cleric-light-of-protection.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -264,6 +269,7 @@
       "key": "Noble Aura",
       "name": "Noble Aura",
       "availableLv": 22,
+      "icon": "assets/icons/st-cleric-noble-aura.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -315,6 +321,7 @@
       "key": "Power Burst",
       "name": "Power Burst",
       "availableLv": 22,
+      "icon": "assets/icons/st-cleric-power-burst.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -366,6 +373,7 @@
       "key": "Prayer of Amplification",
       "name": "Prayer of Amplification",
       "availableLv": 22,
+      "icon": "assets/icons/st-cleric-prayer-of-amplification.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -417,6 +425,7 @@
       "key": "Root",
       "name": "Root",
       "availableLv": 22,
+      "icon": "assets/icons/st-cleric-root.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -468,6 +477,7 @@
       "key": "Salvation",
       "name": "Salvation",
       "availableLv": 22,
+      "icon": "assets/icons/st-cleric-salvation.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -519,6 +529,7 @@
       "key": "Summon Resurrection",
       "name": "Summon Resurrection",
       "availableLv": 22,
+      "icon": "assets/icons/st-cleric-summon-resurrection.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -570,6 +581,7 @@
       "key": "Voice of Doom",
       "name": "Voice of Doom",
       "availableLv": 22,
+      "icon": "assets/icons/st-cleric-voice-of-doom.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -621,6 +633,7 @@
       "key": "Yustiel's Power",
       "name": "Yustiel's Power",
       "availableLv": 22,
+      "icon": "assets/icons/st-cleric-yustiels-power.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {

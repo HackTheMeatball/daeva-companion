@@ -1,0 +1,26 @@
+{
+  "cleric/L22-q34-none-A": {
+    "prev": "Daeva in a Dream Lv 22",
+    "quest": "Disturbed Balance",
+    "lv": "Lv 22",
+    "next": "Searching for Survivors Lv 24",
+    "hint": "milestone now: Lv 22",
+    "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 3 levels to go","Lv 27 Stigma slot 2 5 levels to go"],
+    "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
+    "track": ["Stigma slot 1 now Lv 22"],
+    "ring": "1%",
+    "prog": ["Quests 10 0/58","Dungeons 31 0/60","Strongholds 6 1/15"]
+  },
+  "cleric/L22-q34-none-B": {
+    "prev": "Daeva in a Dream Lv 22",
+    "quest": "Disturbed Balance",
+    "lv": "Lv 22",
+    "next": "Searching for Survivors Lv 24",
+    "hint": "milestone now: Lv 22",
+    "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 3 levels to go","Lv 27 Stigma slot 2 5 levels to go"],
+    "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
+    "track": ["Stigma slot 1 now Lv 22"],
+    "ring": "1%",
+    "prog": ["Quests 10 0/58","Dungeons 31 0/60","Strongholds 6 1/15"]
+  }
+}

@@ -171,10 +171,11 @@ export function generate(opts = {}) {
   const choice = id => { for (const s of skills) for (const c of s.specialtyChoices || []) if (c.id === id) return c; throw new Error('unknown specialty choice ' + id); };
   const sk = id => { if (!skById[id]) throw new Error('unknown skill ' + id); return skById[id]; };
   const stg = id => { if (!stById[id]) throw new Error('unknown stigma ' + id); return stById[id]; };
-  /* spec: the slot 1 pick's text; specs (0.3 E7): the pick per slot in order, { t: text, lv: the choice's skill level } */
+  /* spec: the slot 1 pick's text; specs (0.3 E7): the pick per slot in order, { t: text, lv: the choice's skill level };
+     flat: a flat-gated core skill (the Cleric's Earth's Grace, #543) has every level open at its learn level, as in GATE_GRAPH */
   const SP_SKILLS_CORE = build.skillOrder.filter(e => e.core).map(e => { const s = sk(e.skill), picks = build.specialtyPicks[e.skill] || [], pick = picks[0];
     return { n: s.name, learn: s.learnLv, ...(pick ? { spec: choice(pick).label || choice(pick).text, specs: picks.map(p => ({ t: choice(p).label || choice(p).text, lv: choice(p).skillLv })) } : {}),
-      ...(s.type === 'passive' ? { passive: true } : {}) }; });
+      ...(s.type === 'passive' ? { passive: true } : {}), ...(s.levelGate === 'flat' ? { flat: true } : {}) }; });
   const SP_EXTRA = build.skillOrder.filter(e => !e.core).map(e => { const s = sk(e.skill);
     return { n: s.name, learn: s.learnLv, ...(s.type === 'passive' ? { passive: true } : {}), ...(s.levelGate === 'flat' ? { flat: true } : {}), ...(e.status !== 'verified' ? { single: e.basis.split(' (')[0] } : {}) }; });
   const STIGMA_PLAN = build.stigmaSlots.map(id => stg(id).name);

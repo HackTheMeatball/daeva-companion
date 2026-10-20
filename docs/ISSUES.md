@@ -388,6 +388,27 @@ on purpose: the guide shows nothing rather than an unverified value.
   six, and no file moves to another level until a tooltip names it. **Owner:** hover the locked Cleric passives at
   Lv 11, 13, 15, 17, 23 and 25 and screenshot each name.
 
+  **In the site since 0.8 P5 (#494):** 29 files moved from the staging folder to `src/assets/icons/` and were renamed
+  with the class (`sk-cleric-<slug>.png`, `st-cleric-<slug>.png`; Defiance and Survival Willpower are shared names): all
+  12 actives, all 13 stigmas and the four verified passives above. The table's source pages and file URLs still apply.
+  The six owner-check passives stay staged with no `icon`, so they show a letter square in the skill lists.
+
+- **Cleric guide: still missing** (0.8 P5, #494; the guide is playable to Lv 45 without these):
+  - **Six passive names and levels** (Lv 11, 13, 15, 17, 23, 25): owner-check, no icon (above). The guide plans none of
+    them; the Daevanion plan leaves out Zikel's Radiant Benediction node for that reason.
+  - **The right-click stack** two guides build (Divine Aura, Condemnation, Chain of Torment, Earth Punishment from 22;
+    research §9) is not shown: its row order is disputed (daevaguides vs mmo-codex) and it is a player macro, not the
+    game's default. The Rotation section shows the owner's default keys only (claim C97).
+  - **Disputed advice, labelled in the Confidence card**: the stigma fourth and slot order (C91, Prayer of
+    Amplification and Earth Punishment first taken), Debilitating Mark 7 / Radiant Recovery 5 (C92), the stat priority
+    (C90: Attack and Critical Hit while leveling, against Metabot's healer order), the first Daevanion nodes past
+    Nezekan's Condemnation (C93). Earth's Retribution and Judgment Thunder have no Lv 8 pick (sources split 2 against 2).
+  - **Bolt** is not in the plan (Metabot's build leaves it out; two sources raise it to 10 with quest and dungeon
+    points).
+  - **Condemnation's Lv 12 cooldown reset** (`spec:cleric:condemnation:4`, every source) is the second Condemnation
+    pick: skill Lv 10 from points plus the Nezekan and Zikel Condemnation nodes the plan buys reach effective Lv 12
+    (Game Data Check on #543). Other Lv 12 and 16 picks need levels the plan doesn't reach by 45.
+
 - **Sorcerer skill and stigma icons: saved before the guide item** (0.8 class research, docs/research/2026-10-sorcerer-pack.md
   §7; lesson from #441 item 4). All 35 (22 skills, 13 stigmas) came from Metabot under the standing icon OK (owner,
   2026-10-14) on 2026-10-19, 8:41–8:45 PM ET (00:41–00:45 UTC on 10-20 in the request log);
