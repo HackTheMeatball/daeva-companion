@@ -50,9 +50,9 @@ jobs:
         with:
           script: |
             const { owner, repo } = context.repo;
-            // 3 until 2026-10-17; 5 on the owner's Max 20x plan (lanes still apply). 8 for the 0.8 overnight run only, back to
-            // 5 at 06:40 UTC Oct 20 with no further change (owner, 2026-10-19 10:05 PM ET).
-            const STATE = 114, MAX = Date.now() < Date.parse('2026-10-20T06:40:00Z') ? 8 : 5;
+            // 3 until 2026-10-17; 5 on the owner's Max 20x plan (lanes still apply). The 0.8 overnight run's 8 ended at
+            // 06:40 UTC Oct 20 (owner, 2026-10-19 10:05 PM ET).
+            const STATE = 114, MAX = 5;
             const LANES = ['golden', 'golden-nextup', 'golden-journey', 'golden-milestones', 'golden-regional', 'golden-route', 'mig', 'main.js', 'gates', 'gen', 'app.css', 'ci', 'a11y', 'release'];
             // OPUS-FILES START (tests/kickoff.mjs runs this block)
             // PIP-06 (Kaizen (Gale), 0.7 rules audit, 2026-10-19): a Sonnet build whose issue's "## Files" section names an
@@ -83,12 +83,15 @@ jobs:
             // "Inputs: a, b" line in "## Lanes, model, order" (Release Planner (Walter)); "Inputs: none" names none.
             const inputPaths = (body) => {
               const b = body || '';
-              const text = [specField(b, 'Inputs?'), ...[...b.matchAll(/^Inputs?:[ \t]*([^\n]*)$/gm)].map((m) => m[1])].join('\n');
-              const ticked = [...text.matchAll(/`([^`\s]+)`/g)].map((m) => m[1]);
-              const named = (ticked.length ? ticked : text.split(/[,\s]+/)).map((x) => x.replace(/[.;]+$/, '')).filter((x) => x.includes('/'));
+              const ticks = (t) => [...t.matchAll(/`([^`\s]+)`/g)].map((m) => m[1]);
+              // The bullet is prose, so only its backticked paths count; a bare "Inputs: a, b" line may list them plain.
+              const lineTokens = [...b.matchAll(/^Inputs?:[ \t]*([^\n]*)$/gm)].flatMap((m) => (ticks(m[1]).length ? ticks(m[1]) : m[1].split(/[,\s]+/)));
+              const named = [...ticks(specField(b, 'Inputs?')), ...lineTokens].map((x) => x.replace(/[.;]+$/, '')).filter((x) => x.includes('/'));
               const outside = named.filter((x) => /^[~/]/.test(x));
+              // A No-gos bullet may name /mnt/ to forbid it ("never read /mnt/…"); that is not an input.
+              const nogo = specField(b, 'No-gos'), scan = nogo ? b.replace(nogo, '') : b;
               return {
-                mnt: [...new Set([...(b.match(/\/mnt\/[^\s`'")\]]+/g) || []), ...outside.filter((x) => !x.startsWith('/mnt/'))])],
+                mnt: [...new Set([...(scan.match(/\/mnt\/[^\s`'")\]]+/g) || []).map((x) => x.replace(/[.,;:]+$/, '')), ...outside.filter((x) => !x.startsWith('/mnt/'))])],
                 repo: [...new Set(named.filter((x) => !/^[~/]/.test(x)))],
               };
             };
@@ -296,6 +299,7 @@ jobs:
             // A held note whose line was removed, moved or started by hand is stale: drop it.
             for (let i = lines.length - 1; i >= 0; i--)
               if (/^\s+- held: /.test(lines[i]) && !/^- \[next\] /.test(lines[i - 1] || '')) { lines.splice(i, 1); pruned = true; }
+            const kxOf = (n, iss) => items.find((y) => y.n === n) || { n, ver: null, rel: (iss.title.match(/^(?:Release )?(\d+\.\d+(?:\.\d+)?)\b/) || [])[1] || null, key: null, open: true, body: iss.body || '' };
             for (let i = 0; i < lines.length && inflight < MAX; i++) {
               const m = lines[i].match(/^- \[next\] #(\d+) (sonnet|opus)((?: lanes:[^\s]+| alone)*)\s*$/);
               if (!m) continue;
@@ -305,11 +309,20 @@ jobs:
               const want = lanesOfLine(lines[i]);
               const unknown = [...want].filter((x) => !LANES.includes(x));
               if (unknown.length) core.warning(`#${m[1]}: unknown lanes ${unknown.join(', ')} (known: ${LANES.join(', ')})`);
-              if (overlap(want, busy)) { core.info(`#${m[1]} waits: shares ${[...want].filter((x) => overlap([x], busy)).join(', ')} with work in flight`); continue; }
+              if (overlap(want, busy)) {
+                core.info(`#${m[1]} waits: shares ${[...want].filter((x) => overlap([x], busy)).join(', ')} with work in flight`);
+                // A lane-blocked line is never read below, so #503's "After not understood" note outlived its fixed After
+                // line (Release Planner (Walter), 2026-10-20). Re-read its After line and drop the note once it reads.
+                if (/^\s+- held: After not understood/.test(lines[i + 1] || '')) {
+                  const iss = (await github.rest.issues.get({ owner, repo, issue_number: Number(m[1]) })).data;
+                  if (!/not understood/.test(await afterBlocker(kxOf(Number(m[1]), iss)))) { lines.splice(i + 1, 1); pruned = true; }
+                }
+                continue;
+              }
               const n = Number(m[1]);
               const iss = (await github.rest.issues.get({ owner, repo, issue_number: n })).data;
               if (iss.state !== 'open' || iss.pull_request) { core.warning(`#${n} is not an open issue; skipped`); continue; }
-              const kx = items.find((y) => y.n === n) || { n, ver: null, rel: (iss.title.match(/^(?:Release )?(\d+\.\d+(?:\.\d+)?)\b/) || [])[1] || null, key: null, open: true, body: iss.body || '' };
+              const kx = kxOf(n, iss);
               const wait = await afterBlocker(kx);
               if (wait) {
                 // An After line kickoff can't read is easy to miss (an alone one also holds every line below it): warn, and
@@ -317,6 +330,7 @@ jobs:
                 if (/not understood/.test(wait)) {
                   core.warning(`#${n}: ${wait}; held${alone ? ', and as an alone line it holds the queue below it' : ''}`);
                   if (!/^\s+- held: /.test(lines[i + 1] || '')) { lines.splice(i + 1, 0, `  - held: After not understood (kickoff ${stamp})`); pruned = true; }
+                  else if (!/held: After not understood/.test(lines[i + 1])) { lines[i + 1] = `  - held: After not understood (kickoff ${stamp})`; pruned = true; }
                 } else {
                   core.info(`#${n}: ${wait}; left in #114 for the planner`);
                   if (/^\s+- held: /.test(lines[i + 1] || '')) { lines.splice(i + 1, 1); pruned = true; } // it reads now, it just waits
@@ -334,7 +348,9 @@ jobs:
               if (missing.length || lookupFailed) {
                 if (missing.length) {
                   core.warning(`#${n}: spec input not in repo: ${missing.join(', ')}; held`);
-                  if (!/^\s+- held: /.test(lines[i + 1] || '')) { lines.splice(i + 1, 0, `  - held: input not in repo (kickoff ${stamp})`); pruned = true; }
+                  const note = `  - held: input not in repo (kickoff ${stamp})`;
+                  if (!/^\s+- held: /.test(lines[i + 1] || '')) { lines.splice(i + 1, 0, note); pruned = true; }
+                  else if (!/held: input not in repo/.test(lines[i + 1])) { lines[i + 1] = note; pruned = true; } // an older note's reason no longer holds
                   const said = (await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: n, per_page: 100 })).map((c) => c.body || '');
                   const fresh = missing.filter((x) => !said.some((b) => b.includes(`spec: input not in repo: ${x}`)));
                   if (fresh.length) await github.rest.issues.createComment({ owner, repo, issue_number: n,

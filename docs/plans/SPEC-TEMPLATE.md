@@ -20,9 +20,10 @@ format only here, together with the parser and its test.
   `- [next] #<n> <opus|sonnet> lanes:<lane>[,<lane>…]`, `lanes:none`, or no lanes at all; `alone` is a separate word
   (`lanes:release alone`, or `- [next] #<n> opus alone`), never part of the lane list.
 - The **Inputs** bullet lists, in backticks, the repo paths the build reads (crops, boards, research files), or says
-  `none`; an `Inputs: <path>, <path>` line in `## Lanes, model, order` is read the same way. Kickoff looks each one up on
+  `none`; only its backticked paths count. An `Inputs: <path>, <path>` line in `## Lanes, model, order` may list them
+  plain. Kickoff looks each one up on
   main (a directory or glob by its directory) and holds the item, with a `spec: input not in repo: <path>` comment, when
-  one is missing or lies outside the repo (`~/…`, `/…`). A `/mnt/` path anywhere in the spec holds it the same way:
+  one is missing or lies outside the repo (`~/…`, `/…`). A `/mnt/` path anywhere in the spec but its No-gos holds it the same way:
   builds can't read the project's shared folder (Kaizen, 2026-10-20; #502 sat 67 min).
 - An item on the `gen` or a `golden` lane, or whose spec runs `npm run gen` or re-records golden, starts on Opus
   whatever its queue line says, and so does one whose **Files** line names an Opus path (#114 Effort; Kaizen,
