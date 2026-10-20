@@ -5,14 +5,17 @@
    0.6 P22 (#303): the same for the Ranger (data/research/ranger-*.csv, docs/research/2026-10-ranger-pack.md):
    node tools/research/gladiator-pack.mjs ranger.
    0.7 P3 (#346): the Spiritmaster (data/research/spiritmaster-*.csv, docs/research/2026-10-spiritmaster-pack.md), hidden:
-   node tools/research/gladiator-pack.mjs spiritmaster. */
+   node tools/research/gladiator-pack.mjs spiritmaster.
+   0.8 P4 (#493): the Cleric (data/research/cleric-*.csv, docs/research/2026-10-cleric-pack.md), hidden:
+   node tools/research/gladiator-pack.mjs cleric. Research §10's text fix replaces Metabot's misprint; the six passives
+   whose screen cells don't match their staged icons (Game Data Check, #493) get learnLv and icon owner-check. */
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(fileURLToPath(import.meta.url), '../../..');
-const CLS = process.argv[2] || 'gladiator', CHECKED = '2026-10-18';
-const NAME = { gladiator: 'Gladiator', ranger: 'Ranger', spiritmaster: 'Spiritmaster' }[CLS];
+const CLS = process.argv[2] || 'gladiator', CHECKED = CLS === 'cleric' ? '2026-10-19' : '2026-10-18';
+const NAME = { gladiator: 'Gladiator', ranger: 'Ranger', spiritmaster: 'Spiritmaster', cleric: 'Cleric' }[CLS];
 if (!NAME) throw new Error('unknown class: ' + CLS);
 const OUT = join(ROOT, 'data/packs/aion2/classes', CLS);
 mkdirSync(OUT, { recursive: true });
@@ -54,16 +57,52 @@ const choicesOf = (id, url) => (specs[id] || []).sort((a, b) => a.n - b.n).map(c
 /* boardNodes "Nezekan 2 Vaizel 1 Triniel 1" -> { board:nezekan: 2, … } */
 const perBoard = s => Object.fromEntries([...s.matchAll(/([A-Z][a-z]+) (\d+)/g)].map(m => ['board:' + m[1].toLowerCase(), int(m[2])]));
 
+/* research text fixes (#358 pattern): Metabot prints the percent x 100 into an unfilled template; the game text goes in,
+   and the pages that print it become the record's refs (fetched per data/research/cleric-second-sources-2026-10.requests.log;
+   build unknown, so left out, DATA-FORMAT §5.2) */
+const TEXT_FIX = {
+  cleric: {
+    'spec:cleric:lightning-strike-scattershot:1': ['Absorbs 500, 500% HP', 'Absorbs 5% HP', 'aion2turkiye and daevaguides (cleric research §10)',
+      ['https://daevaguides.com/en/cleric/', 'https://aion2turkiye.com/en/class/cleric/']],
+  },
+}[CLS] || {};
+/* Game Data Check (#493, 2026-10-20): the owner's Lv 4 Cleric screen shows other art in these passives' cells than their
+   staged Metabot files, so the files may be mislabelled or the CSV may put passives at the wrong levels */
+const OWNER_CHECK = {
+  cleric: {
+    'skill:cleric:healing-enhancement': 'teal arcs around a flare; no staged file matches',
+    'skill:cleric:immortal-veil': 'a figure under a green dome; no staged file matches',
+    'skill:cleric:heal-block': 'the art of the file staged as Immortal Veil',
+    'skill:cleric:prayer-of-concentration': 'the art of the file staged as Heal Block',
+    'skill:cleric:survival-willpower': 'plate armour, hands on the helmet (the Templar Lv 23 art); no staged file matches',
+    'skill:cleric:radiant-benediction': 'the art of the file staged as Prayer of Concentration',
+  },
+}[CLS] || {};
 const skills = csv(`${CLS}-skills-metabot-2026-10.csv`).map(r => {
-  const choices = choicesOf(r.id, r.page_url);
+  const conflicts = [], fixRefs = [];
+  const choices = choicesOf(r.id, r.page_url).map(c => {
+    const fix = TEXT_FIX[c.id];
+    if (!fix) return c;
+    if (c.text !== fix[0]) throw new Error(`${c.id}: expected Metabot text ${fix[0]}, read ${c.text}`);
+    conflicts.push(`${c.id} text: Metabot's skill page prints "${fix[0]}" (an unfilled template; its number is the percent x 100). Game text "${fix[1]}" per ${fix[2]} (${CHECKED}, #493).`);
+    for (const url of fix[3]) fixRefs.push({ url, fields: ['specialtyChoices'], checkedAt: CHECKED, note: `Class guide shows the specialty text for ${c.id} (Game Data Check, #493)` });
+    return { ...c, text: fix[1] };
+  });
+  const screen = OWNER_CHECK[r.id];
   return {
     id: r.id, key: r.key, name: r.name, type: r.type, learnLv: int(r.learnLv), levelGate: r.levelGate,
     boardNodes: { perBoard: perBoard(r.boardNodes), cost: int(r.boardNodeCost) },
     ...(choices.length ? { specialtyChoices: choices } : {}),
-    sources: [src(r)], verifiedAt: r.checkedAt, status: 'verified',
-    ...(r.notes ? { notes: [r.notes + skillNote(r)] } : {}),
+    sources: [src(r), ...fixRefs], verifiedAt: r.checkedAt, status: 'verified',
+    ...(screen ? { fieldStatus: { learnLv: 'owner-check', icon: 'owner-check' } } : {}),
+    ...(r.notes || screen ? { notes: [
+      ...(r.notes ? [r.notes + skillNote(r)] : []),
+      ...(screen ? [`learnLv ${r.learnLv} and icon: owner-check. The owner's Lv 4 Cleric screen (2026-10-19) shows ${screen} in the locked Lv ${r.learnLv} passive cell, so either the staged Metabot icon is mislabelled or Metabot puts this passive at the wrong level (Game Data Check, #493). No icon until the owner's tooltip screenshot names the cell (docs/ISSUES.md).`] : []),
+    ] } : {}),
+    ...(conflicts.length ? { conflicts } : {}),
   };
 }).sort(byId);
+for (const id of [...Object.keys(TEXT_FIX), ...Object.keys(OWNER_CHECK)]) if (!skills.some(s => s.id === id || (s.specialtyChoices || []).some(c => c.id === id))) throw new Error('no record ' + id);
 
 const stigmas = csv(`${CLS}-stigmas-metabot-2026-10.csv`).map(r => {
   const fs = Object.fromEntries(r.fieldStatus.split(';').filter(Boolean).map(x => x.split(':').map(y => y.trim())));
@@ -76,7 +115,7 @@ const stigmas = csv(`${CLS}-stigmas-metabot-2026-10.csv`).map(r => {
       ? `maxLevel ${r.maxLevel}: Metabot only (this page and the class page's stigma header); owner check pending (owner-check-gladiator).`
       : CLS === 'ranger'
         ? `maxLevel ${r.maxLevel}: Metabot only (this skill page); Metabot's Ranger class page text says 25. A leveling guide does not reach it, so no owner check is asked (ranger research §4).`
-        : `maxLevel ${r.maxLevel}: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (spiritmaster research §2.2, §4).`],
+        : `maxLevel ${r.maxLevel}: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (${CLS} research §2.2${CLS === 'spiritmaster' ? ', §4' : ''}).`],
   };
 }).sort(byId);
 
@@ -95,7 +134,9 @@ const cls = {
     ? 'Hidden until 0.6 P5 adds its guide pack (data/packs/aion2/asmodian/gladiator/, which defines build:gladiator:guide) and lists it in the class picker.'
     : CLS === 'ranger'
       ? 'Hidden until 0.6 P5 adds its guide pack (data/packs/aion2/asmodian/ranger/, which defines build:ranger:guide) and lists it in the class picker.'
-      : 'Hidden until a 0.7 guide item adds its guide pack (data/packs/aion2/asmodian/spiritmaster/, which defines build:spiritmaster:guide) and lists it in the class picker.'],
+      : CLS === 'spiritmaster'
+        ? 'Hidden until a 0.7 guide item adds its guide pack (data/packs/aion2/asmodian/spiritmaster/, which defines build:spiritmaster:guide) and lists it in the class picker.'
+        : `Hidden until a 0.8 guide item adds its guide pack (data/packs/aion2/asmodian/${CLS}/, which defines build:${CLS}:guide) and lists it in the class picker.`],
 };
 
 write('class.json', doc('classes', 'classes', [cls]));

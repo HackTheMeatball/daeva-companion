@@ -15,7 +15,7 @@
    The host only ever sees the sync id, the write token and ciphertext: the name, the label, slot ids, class and every
    JSON key stay inside the encrypted payload (sync.md §3; the canary test in tests/core/sync-client.test.mjs). This module
    never logs. */
-import { merge, syncedPart } from "./sync.js";
+import { merge, syncedPart } from "./merge.js";
 import { CHAR_META, SAVE_V, isRemoved } from "./state.js";
 import { hasProgress } from "./backup.js";
 

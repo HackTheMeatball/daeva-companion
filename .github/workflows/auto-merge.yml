@@ -8,9 +8,10 @@ name: Auto-merge
 #     short SHA (e.g. "Review of abc1234"), so a review of an older commit can't cover a newer one pushed later.
 #   - a PR that commits review shots (docs/reviews/<minor>-<item>-shots/) also has the Design Lead's "DESIGN OK" on its
 #     head (owner, typed 2026-10-18 7:13 PM ET in the Build Pipeline thread; "DESIGN-CHECK" block below).
-#   - a research PR (branch claude/research-*, or a title starting "research") also has Game Data Check's
-#     "Game Data Check (ROL-03) on <sha>: VERIFIED" on its head: ROL-03 (owner, typed 2026-10-19 5:20 PM ET) says Gretchen
-#     verifies research packs before merge; the Chanter pack #486 merged on the bot review alone ("DATA-CHECK" block below).
+#   - a PR that touches game data (data/** outside data/schema/, docs/research/**, any icons/ dir) or is a research PR
+#     (branch claude/research-*, title starting "research") also has Game Data Check's "Game Data Check (ROL-03) on <sha>:
+#     VERIFIED" on its head: ROL-03 (owner, typed 2026-10-19 5:20 PM ET) says Gretchen verifies before merge; the Chanter
+#     pack #486 merged on the bot review alone. Scope: Kaizen (Gale), 2026-10-19 9:35 PM ET ("DATA-CHECK" block below).
 # It squash-merges pinned to that head commit, then starts CI on main so deploy, smoke and release run
 # (a merge made by this workflow does not fire the normal push trigger).
 # Pause it for one PR: add the label "hold". Stop it: Actions tab -> Auto-merge -> "..." -> Disable workflow.
@@ -65,19 +66,26 @@ jobs:
             };
             // DESIGN-CHECK END
             // DATA-CHECK START (tests/automerge.mjs runs this block)
-            // A research PR waits for Game Data Check's verdict on its head: a line starting (bold allowed) "Game Data Check
-            // (ROL-03) on <short SHA>: VERIFIED" from claude[bot] or the repo owner, newer than the head commit. The latest
-            // VERIFIED / CHANGES verdict decides; a struck-out verdict ("~~...") doesn't count. '' = no wait.
-            const RESEARCH = (pr) => /^claude\/research-/.test(pr.head.ref) || /^research\b/i.test(pr.title || '');
-            const VERDICT = /^\**Game Data Check \(ROL-03\) on ([0-9a-f]{7,40}): (VERIFIED|CHANGES)\b/m;
-            const dataBlocker = (pr, comments, sha, headAt) => {
-              if (!RESEARCH(pr)) return '';
+            // A data or research PR waits for Game Data Check's verdict on its head: a line starting (bold allowed) "Game Data
+            // Check (ROL-03) on <short SHA>: VERIFIED" from claude[bot] or the repo owner, newer than the head commit. The
+            // latest VERIFIED / CHANGES / HOLD verdict decides; a struck-out verdict ("~~...") doesn't count. '' = no wait.
+            // Gretchen's own PRs (claude/game-data-check-*) are hers to verify, so they don't wait on themselves.
+            // Known limit: every session posts as the owner's account, so this checks the verdict's text, not who wrote it.
+            // It guards against an accidental merge, not a forged verdict; no session but Game Data Check posts that line.
+            // public/icons/ is our own PWA icon set, not game art.
+            const DATAFILE = (f) => (/^data\//.test(f) && !/^data\/schema\//.test(f)) || /^docs\/research\//.test(f)
+              || (/(^|\/)icons\//.test(f) && !/^public\/icons\//.test(f));
+            const NEEDSDATA = (pr, files) => !/^claude\/game-data-check-/.test(pr.head.ref)
+              && (/^claude\/research-/.test(pr.head.ref) || /^research\b/i.test(pr.title || '') || files.some(DATAFILE));
+            const VERDICT = /^\**Game Data Check \(ROL-03\) on ([0-9a-f]{7,40}): (VERIFIED|CHANGES|HOLD)\b/m;
+            const dataBlocker = (pr, files, comments, sha, headAt) => {
+              if (!NEEDSDATA(pr, files)) return '';
               const marks = comments.filter((c) => c.user && (c.user.login === 'claude[bot]' || c.user.login.toLowerCase() === owner.toLowerCase())
                 && VERDICT.test(c.body || '')).sort((a, b) => Date.parse(a.updated_at) - Date.parse(b.updated_at));
               const last = marks[marks.length - 1];
-              if (!last) return 'research PR waits on Game Data Check (ROL-03)';
+              if (!last) return 'waits on Game Data Check (ROL-03)';
               const [, on, verdict] = last.body.match(VERDICT);
-              if (verdict === 'CHANGES') return 'Game Data Check asked for changes (ROL-03)';
+              if (verdict !== 'VERIFIED') return `Game Data Check says ${verdict} (ROL-03)`;
               if (Date.parse(last.updated_at) < headAt || !sha.startsWith(on)) return `Game Data Check's VERIFIED does not cover the head ${sha.slice(0, 7)}`;
               return '';
             };
@@ -97,10 +105,13 @@ jobs:
               if (!last || !/VERDICT:\s*APPROVE/.test(last.body) || /VERDICT:\s*CHANGES/.test(last.body)) { core.info(`#${pr.number}: no approving review`); continue; }
               if (Date.parse(last.updated_at) < headAt) { core.info(`#${pr.number}: approval older than the head commit`); continue; }
               if (!last.body.includes(sha.slice(0, 7))) { core.info(`#${pr.number}: approval does not name the head ${sha.slice(0, 7)}`); continue; }
-              const files = (await github.paginate(github.rest.pulls.listFiles, { owner, repo, pull_number: pr.number, per_page: 100 })).map((f) => f.filename);
+              const listed = await github.paginate(github.rest.pulls.listFiles, { owner, repo, pull_number: pr.number, per_page: 100 });
+              const files = listed.map((f) => f.filename);
+              // A rename out of data/ only shows its old path in previous_filename; the data check reads both.
+              const touched = listed.flatMap((f) => [f.filename, f.previous_filename].filter(Boolean));
               const design = designBlocker(files, comments, sha, headAt);
               if (design) { core.info(`#${pr.number}: ${design}`); continue; }
-              const data = dataBlocker(pr, comments, sha, headAt);
+              const data = dataBlocker(pr, touched, comments, sha, headAt);
               if (data) { core.info(`#${pr.number}: ${data}`); continue; }
               try {
                 await github.rest.pulls.merge({ owner, repo, pull_number: pr.number, sha, merge_method: 'squash' });

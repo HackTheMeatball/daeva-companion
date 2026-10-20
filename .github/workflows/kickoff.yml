@@ -50,7 +50,9 @@ jobs:
         with:
           script: |
             const { owner, repo } = context.repo;
-            const STATE = 114, MAX = 5; // 3 until 2026-10-17; raised to 5 on the owner's Max 20x plan (lanes still apply)
+            // 3 until 2026-10-17; 5 on the owner's Max 20x plan (lanes still apply). 8 for the 0.8 overnight run only, back to
+            // 5 at 06:40 UTC Oct 20 with no further change (owner, 2026-10-19 10:05 PM ET).
+            const STATE = 114, MAX = Date.now() < Date.parse('2026-10-20T06:40:00Z') ? 8 : 5;
             const LANES = ['golden', 'golden-nextup', 'golden-journey', 'golden-milestones', 'golden-regional', 'golden-route', 'mig', 'main.js', 'gates', 'gen', 'app.css', 'ci', 'a11y', 'release'];
             // OPUS-FILES START (tests/kickoff.mjs runs this block)
             // PIP-06 (Kaizen (Gale), 0.7 rules audit, 2026-10-19): a Sonnet build whose issue's "## Files" section names an
@@ -123,7 +125,8 @@ jobs:
             }
             lines = kept;
             // Auto-queue (2026-10-17: after P3c merged nothing was queued until the hourly planner ran, so 0.4 sat idle).
-            // An open item issue titled "<minor> <key>: ..." (e.g. "0.4 P2b: ...", or "Release 0.4.0 ..." as key R) whose body holds its own queue line
+            // An open item issue titled "<minor> <key>: ..." (e.g. "0.4 P2b: ...", or "Release 0.4.0 ..." / "0.8 R: ..." as key R;
+            // "0.8 R: Release 0.8.0" was unkeyed, so its "After: everything" could never be met, #517 review 2026-10-19) whose body holds its own queue line
             // ("- [next] #N ...") is queued here once every key on its "After:" line names a closed item of the same
             // minor. "After: everything" waits for all other items of the minor. A `research-<slug>` key is met once a file
             // whose name contains <slug> is in docs/research/ on main (2026-10-17: P9 sat idle 47 min after its research
@@ -136,7 +139,7 @@ jobs:
             const allIssues = (await github.paginate(github.rest.issues.listForRepo, { owner, repo, state: 'all', per_page: 100 }))
               .filter((i) => !i.pull_request);
             const items = allIssues
-              .map((i) => ({ i, m: i.title.match(/^(\d+\.\d+) (P\d+[a-z]?|S\d+):/) || (i.title.match(/^Release (\d+\.\d+)\.0\b/) || []).concat('R').slice(0, 3) }))
+              .map((i) => ({ i, m: i.title.match(/^(\d+\.\d+) (P\d+[a-z]?|S\d+|R):/) || (i.title.match(/^Release (\d+\.\d+)\.0\b/) || []).concat('R').slice(0, 3) }))
               .filter((x) => x.m.length === 3)
               .map(({ i, m }) => ({ n: i.number, ver: m[1], rel: m[1], key: m[2], open: i.state === 'open', body: i.body || '' }));
             const keyed = new Map(items.map((x) => [`${x.ver} ${x.key}`, x]));
@@ -181,7 +184,8 @@ jobs:
               const after = am[1].replace(/[*`]/g, '').replace(/\([^)]*\)/g, '').split(/\.(?=\s|$)/)[0];
               const unclear = `After line "${after.trim()}" not understood`;
               let deps;
-              if (/everything|\ball\b/i.test(after)) {
+              // Whole words only: a slug like research-all-icons or owner-ok-0.8-all-classes is a key, not "everything".
+              if (after.split(/[,\s]+/).some((t) => /^(?:everything|all)$/i.test(t))) {
                 // A patch release ("Release 0.6.1 (patch)") waits for the issues titled with its patch version (0.6.1
                 // stalled the queue on 2026-10-18: "everything" was not understood there, and an alone line stops the loop).
                 // No patch items at all (none filed yet, or a typo in a title) is not understood, not "nothing to wait for".
@@ -365,6 +369,11 @@ jobs:
         run: echo "BUILD_START=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_ENV"
       - uses: anthropics/claude-code-action@v1
         if: steps.gate.outputs.skip != 'true'
+        # `npm test` takes about 10 min, over Bash's default 2-min limit, so builds ran it in the background and the run
+        # ended with it unfinished: #491, #496, #505 and #507 opened no PR, #518 said "npm test: TESTRESULT" (2026-10-19).
+        env:
+          BASH_DEFAULT_TIMEOUT_MS: '1800000'
+          BASH_MAX_TIMEOUT_MS: '1800000'
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           # A merge's CI on main is dispatched by auto-merge (github-actions), not a person.
@@ -374,8 +383,8 @@ jobs:
           prompt: |
             You build issue #${{ matrix.item.issue }} in ${{ github.repository }}. Read CLAUDE.md first and follow it, then `gh issue view ${{ matrix.item.issue }} --comments` for the spec.
             Create a branch named claude/issue-${{ matrix.item.issue }}-${{ github.run_id }} from main (if origin already has that branch, an earlier attempt of this run died: check it out and continue from it), implement the issue, then `git fetch origin main` and `git merge origin/main` (a merge commit; resolve any conflict keeping both sides' intent; main moves while you build), and make sure `npm test` is green after that merge, before the last push. Never skip, disable or weaken a test or check.
-            Commit with a clear message, `git push origin HEAD`, then write the PR body to `tests/out/pr-body.md` (never under `.git/`: writes there are denied; what changed and how it was tested, then a blank line, then a line that is exactly `Closes #${{ matrix.item.issue }}`) and open the PR: `gh pr create --base main --title "<short title>" --body-file tests/out/pr-body.md`. CI and the review start on their own.
-            Run commands in the foreground only. Push after every commit (a run that dies is restarted once and continues from the pushed branch).
+            Commit with a clear message, `git push origin HEAD`, then write the PR body to `tests/out/pr-body.md` (never under `.git/`: writes there are denied; what changed and how it was tested, quoting the summary line your last `npm test` printed, never a placeholder: #518 opened with "npm test: TESTRESULT" and red CI; then a blank line, then a line that is exactly `Closes #${{ matrix.item.issue }}`) and open the PR: `gh pr create --base main --title "<short title>" --body-file tests/out/pr-body.md`. CI and the review start on their own.
+            Run commands in the foreground only, `npm test` included (Bash allows 30 minutes here): a background command is lost when your turn ends, so the run ends with nothing opened. Push after every commit (a run that dies is restarted once and continues from the pushed branch).
             Tools: one plain command per Bash call (no `&&`, `;`, pipes, heredocs, `python3 -`, scripts in /tmp, or env-var prefixes like `X=1 node ...`: they are denied; pass flags instead); create and edit files with Edit and Write.
             Clock: the GitHub token expires 1 hour after this run starts (P6 #198 lost its last push at minute 62). Aim to open the PR by minute 45. If a push fails with 401 or "Bad credentials", stop at once: the run is restarted with a fresh token and continues from the pushed branch. While iterating use `node tests/run.mjs --only <suites>` after `npm run build` and batch slow golden or pixel runs; run the full `npm test` once at the end.
             ${{ contains(matrix.item.model, 'sonnet') && 'Sonnet limits (owner routing rule): if the work would touch src/core/, save/sync/migration/storage code, a gate''s requires/completesWith, golden snapshots, the mig1 pin, or more than about 300 lines, do not edit. Post one comment on the issue starting "Needs @claude (Opus):" with the reason, then stop.' || '' }}
@@ -437,6 +446,12 @@ jobs:
                 "$ahead" "$BRANCH" "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" "$ISSUE" > tests/out/pr-body.md
             fi
             grep -q "Closes #$ISSUE" tests/out/pr-body.md || printf '\nCloses #%s\n' "$ISSUE" >> tests/out/pr-body.md
+            # A body the build wrote ahead with a placeholder for its test result (#518: "npm test: TESTRESULT", CI red)
+            # must not claim a result: say the run ended first and CI decides (Kaizen (Gale), #222 Oct 19 11:04 PM).
+            if grep -q 'TESTRESULT' tests/out/pr-body.md; then
+              sed -i 's/TESTRESULT/not finished by the build (the run ended first; CI on this PR is the result)/g' tests/out/pr-body.md
+              echo "::warning title=Build of #$ISSUE left a test-result placeholder::the PR body said TESTRESULT; replaced with 'not finished by the build'"
+            fi
             echo "open=true" >> "$GITHUB_OUTPUT"
             echo "::notice::#$ISSUE: $ahead commits pushed but no PR; opening it as the Claude app"
             waste "pushed its work but opened no PR; kickoff's fallback opens it"
