@@ -1,0 +1,569 @@
+{
+  "$schema": "../../schema/builds.schema.json",
+  "schemaVersion": 2,
+  "collection": "builds",
+  "class": "cleric",
+  "records": [
+    {
+      "id": "build:cleric:guide",
+      "class": "cleric",
+      "name": "Guide build",
+      "origin": "guide",
+      "statPriority": {
+        "tiers": [
+          [
+            "Attack",
+            "Critical Hit"
+          ]
+        ],
+        "from": {
+          "Attack": "BG",
+          "Critical Hit": "BG"
+        },
+        "status": "disputed",
+        "sources": [
+          {
+            "url": "https://metabot.gg/en/aion-2/classes/cleric/build",
+            "checkedAt": "2026-10-19"
+          },
+          {
+            "url": "https://aion2turkiye.com/en/class/cleric/",
+            "checkedAt": "2026-10-19"
+          },
+          {
+            "url": "https://skycoach.gg/blog/aion-2/articles/cleric-guide",
+            "checkedAt": "2026-10-19"
+          }
+        ],
+        "note": "While leveling, Metabot's own leveling build (crit passives over heal boost), aion2turkiye (Attack and Crit nodes over HP) and skycoach (Critical Hit, Attack) build damage; Metabot's class page and class-builds guide rank HP > Defense > MP for a party healer (claim C90; docs/research/2026-10-cleric-pack.md §6.2). No source orders Attack against Critical Hit, so they share one tier. from: B = board stat nodes / corners, G = gear."
+      },
+      "skillOrder": [
+        {
+          "skill": "skill:cleric:earths-retribution",
+          "core": true,
+          "status": "verified",
+          "basis": "To Lv 10, the first points with Judgment Thunder: Metabot leveling, daevaguides, aion2turkiye, mmo-codex",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/cleric/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/cleric/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://mmo-codex.com/games/aion-2/classes/cleric/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/cleric/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:cleric:judgment-thunder",
+          "core": true,
+          "status": "verified",
+          "basis": "To Lv 10: Metabot leveling, daevaguides, aion2turkiye",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/cleric/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/cleric/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/cleric/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:cleric:chain-of-torment",
+          "core": true,
+          "status": "verified",
+          "basis": "To Lv 10, raised as fast as its gate allows: Metabot leveling, daevaguides, aion2turkiye, mmo-codex",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/cleric/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/cleric/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://mmo-codex.com/games/aion-2/classes/cleric/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/cleric/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:cleric:condemnation",
+          "core": true,
+          "status": "verified",
+          "basis": "To Lv 10, raised as fast as its gate allows: Metabot leveling, daevaguides, aion2turkiye, mmo-codex",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/cleric/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/cleric/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://mmo-codex.com/games/aion-2/classes/cleric/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/cleric/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:cleric:divine-aura",
+          "core": true,
+          "status": "verified",
+          "basis": "To Lv 10, after the attacks: Metabot leveling, daevaguides, aion2turkiye, mmo-codex",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/cleric/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/cleric/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://mmo-codex.com/games/aion-2/classes/cleric/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/cleric/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:cleric:healing-light",
+          "core": true,
+          "status": "verified",
+          "basis": "To Lv 10, after the attacks: Metabot leveling, daevaguides, aion2turkiye, mmo-codex",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/cleric/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/cleric/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://mmo-codex.com/games/aion-2/classes/cleric/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/cleric/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:cleric:empyrean-lords-grace",
+          "core": true,
+          "status": "verified",
+          "basis": "To Lv 10: Metabot leveling, daevaguides, aion2turkiye (mmo-codex: the second passive)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/cleric/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/cleric/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/cleric/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:cleric:light-of-regeneration",
+          "core": true,
+          "status": "verified",
+          "basis": "To Lv 10: Metabot leveling and aion2turkiye (daevaguides 8)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/cleric/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/cleric/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:cleric:earths-grace",
+          "core": false,
+          "status": "verified",
+          "basis": "Straight to Lv 10 when learned at 21 (flat gate): Metabot leveling, daevaguides, aion2turkiye; mmo-codex ranks it the first passive",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/cleric/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/cleric/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/cleric/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:cleric:debilitating-mark",
+          "core": false,
+          "status": "disputed",
+          "basis": "Debilitating Mark to 7 (disputed): Metabot leveling 7, daevaguides 8, aion2turkiye 10",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/cleric/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/cleric/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/cleric/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:cleric:radiant-recovery",
+          "core": false,
+          "status": "disputed",
+          "basis": "Radiant Recovery to 5 (disputed): Metabot leveling 5, daevaguides 8, aion2turkiye 10",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/cleric/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/cleric/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/cleric/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        }
+      ],
+      "skillOrderNotes": {
+        "interleave": "Two-source rules (docs/research/2026-10-cleric-pack.md §3.2: daevaguides, mmo-codex, skycoach, Metabot's leveling notes): attack skills before heals while leveling; Chain of Torment and Condemnation are raised as fast as their gates allow; Earth's Grace (21) goes to 10 the level it is learned (flat gate, so it is listed after the core eight, where the flat gate applies). Whether Earth's Retribution and Judgment Thunder (daevaguides) or Condemnation's pair (mmo-codex) take the first points is not agreed; before Lv 8 Condemnation doesn't exist, so the two orders only differ from Lv 8 to about 19, and the order between those rules is inferred.",
+        "budget": "Core eight to Lv 10 = 8 × 21 = 168 points; Earth's Grace to 10 = 21 (189); Debilitating Mark to 7 = 9 (198), Radiant Recovery to 5 = 5 (203). LEVEL_POINTS[45] = 203 (Metabot; aion2turkiye agrees) plus Wisdom Stones. Bolt to 10 by 38 (daevaguides, aion2turkiye) needs quest and Sealed Dungeon points on top (claim C92)."
+      },
+      "specialtyPicks": {
+        "skill:cleric:chain-of-torment": [
+          "spec:cleric:chain-of-torment:2"
+        ],
+        "skill:cleric:condemnation": [
+          "spec:cleric:condemnation:2"
+        ],
+        "skill:cleric:divine-aura": [
+          "spec:cleric:divine-aura:2"
+        ],
+        "skill:cleric:healing-light": [
+          "spec:cleric:healing-light:1"
+        ],
+        "skill:cleric:light-of-regeneration": [
+          "spec:cleric:light-of-regeneration:2"
+        ]
+      },
+      "stigmaSlots": [
+        "stigma:cleric:earth-punishment",
+        "stigma:cleric:light-of-protection",
+        "stigma:cleric:noble-aura",
+        "stigma:cleric:prayer-of-amplification"
+      ],
+      "stigmaTargets": [
+        {
+          "stigma": "stigma:cleric:earth-punishment",
+          "level": 9
+        },
+        {
+          "stigma": "stigma:cleric:light-of-protection",
+          "level": 5
+        },
+        {
+          "stigma": "stigma:cleric:noble-aura",
+          "level": 5
+        },
+        {
+          "stigma": "stigma:cleric:prayer-of-amplification",
+          "level": 5
+        }
+      ],
+      "boardPlan": [
+        {
+          "node": "node:cleric:nezekan:r5c11",
+          "label": "Condemnation",
+          "milestone": "g12",
+          "order": 20,
+          "requires": {
+            "level": 12,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "verified"
+        },
+        {
+          "node": "node:cleric:nezekan:r4c5",
+          "label": "Chain of Torment",
+          "milestone": "g12",
+          "order": 30,
+          "requires": {
+            "level": 12,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "disputed"
+        },
+        {
+          "node": "node:cleric:nezekan:r11c8",
+          "label": "Divine Aura",
+          "milestone": "g12",
+          "order": 40,
+          "requires": {
+            "level": 12,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "disputed"
+        },
+        {
+          "node": "node:cleric:nezekan:r12c11",
+          "label": "Light of Regeneration",
+          "milestone": "g12",
+          "order": 50,
+          "requires": {
+            "level": 12,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "disputed"
+        },
+        {
+          "node": "node:cleric:zikel:r9c3",
+          "label": "Condemnation",
+          "milestone": "g20",
+          "order": 20,
+          "requires": {
+            "level": 20,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "disputed"
+        },
+        {
+          "node": "node:cleric:zikel:r7c5",
+          "label": "Divine Aura",
+          "milestone": "g20",
+          "order": 30,
+          "requires": {
+            "level": 20,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "disputed"
+        },
+        {
+          "node": "node:cleric:zikel:r6c7",
+          "label": "Earth's Grace",
+          "via": "Earth's Grace is learned at Lv 21",
+          "milestone": "g20",
+          "order": 40,
+          "requires": {
+            "level": 21,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/skills/earths-grace",
+                "fields": [
+                  "learnLv"
+                ],
+                "checkedAt": "2026-10-19"
+              }
+            ],
+            "note": "the skill's learn level (the board opens at 20)"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "disputed"
+        }
+      ],
+      "keyStacks": {
+        "eOrder": [
+          "stigma:cleric:earth-punishment",
+          "stigma:cleric:light-of-protection",
+          "stigma:cleric:noble-aura",
+          "stigma:cleric:prayer-of-amplification"
+        ],
+        "defaultKeys": {
+          "keys": [
+            { "key": "Left click", "rows": [{ "skill": "skill:cleric:earths-retribution" }] },
+            { "key": "Right click", "rows": [{ "skill": "skill:cleric:judgment-thunder" }] },
+            { "key": "Q", "rows": [{ "skill": "skill:cleric:light-of-regeneration" }, { "skill": "skill:cleric:healing-light" }] },
+            { "key": "E", "rows": [{ "skill": "skill:cleric:lightning-strike-scattershot" }, { "skill": "skill:cleric:condemnation" }, { "skill": "skill:cleric:chain-of-torment" }] },
+            { "key": "1", "rows": [{ "skill": "skill:cleric:debilitating-mark" }] },
+            { "key": "2", "rows": [{ "skill": "skill:cleric:divine-aura" }] },
+            { "key": "3", "rows": [{ "skill": "skill:cleric:radiant-recovery" }] },
+            { "key": "4", "rows": [{ "skill": "skill:cleric:bolt" }] }
+          ],
+          "status": "verified",
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-19-cleric-keys-01",
+                "checkedAt": "2026-10-19",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Cleric skill window (quickslot grid, game default keys, both mouse badges), Lv 4"
+              },
+              "fields": [
+                "keys"
+              ]
+            }
+          ]
+        },
+        "status": "verified",
+        "sources": [
+          {
+            "owner": {
+              "ref": "owner:2026-10-19-cleric-keys-01",
+              "checkedAt": "2026-10-19",
+              "build": {
+                "scheme": "client",
+                "value": "unrecorded"
+              },
+              "what": "Cleric skill window (quickslot grid, game default keys, both mouse badges), Lv 4"
+            },
+            "note": "The keys (defaultKeys) are the game's defaults from the owner's screen (claim C97). The right-click stack two guides build (Divine Aura, Condemnation, Chain of Torment; research §9) is advice, not the default, and its row order is disputed, so the guide shows no right-click stack. eOrder is the slot order, only for the Next up stigma card."
+          }
+        ]
+      },
+      "texts": {
+        "nezekan-plan": "From daevaguides and aion2turkiye: the Condemnation node first, then Chain of Torment, Divine Aura and Light of Regeneration (Metabot starts on the Healing Enhancement and Warm Benediction pairs instead).",
+        "stat-note": "B board · G gear. While leveling, the sources build damage; Metabot ranks HP, Defense and MP first for a party healer."
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/cleric/build",
+          "checkedAt": "2026-10-19",
+          "fields": [
+            "skillOrder",
+            "stigmaSlots",
+            "stigmaTargets",
+            "statPriority"
+          ],
+          "note": "Leveling build (editorial): nine skills to 10, Debilitating Mark 7, Radiant Recovery 5 (203 points); stigmas Light of Protection, Noble Aura, Earth Punishment, Summon Resurrection at 8 / 7 / 5 / 4; crit passives over heal boost while leveling. No training order."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/cleric",
+          "checkedAt": "2026-10-19",
+          "fields": [
+            "boardPlan",
+            "statPriority"
+          ],
+          "note": "Class page: the healer stat order (HP, Defense, MP, Critical Hit Resist, Attack) and the Healing Enhancement / Warm Benediction board path."
+        },
+        {
+          "url": "https://daevaguides.com/en/cleric/",
+          "checkedAt": "2026-10-19",
+          "fields": [
+            "skillOrder",
+            "specialtyPicks",
+            "stigmaSlots",
+            "boardPlan"
+          ],
+          "note": "couga54's 1–45 plan and other creators: Earth's Retribution and Judgment Thunder first, Chain of Torment and Condemnation as fast as allowed, Earth's Grace to 10 at 21, attacks before heals; Lv 8 picks; Earth Punishment first; the node route from the centre."
+        },
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/cleric/",
+          "checkedAt": "2026-10-19",
+          "fields": [
+            "skillOrder",
+            "specialtyPicks",
+            "stigmaSlots"
+          ],
+          "note": "Levelling: Condemnation, Chain of Torment, Earth's Retribution to 8 then 10, then Bolt, Divine Aura and the heals; Lv 8 picks; Earth Punishment and Light of Protection first at 22, then Prayer of Amplification and Noble Aura."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/cleric/",
+          "checkedAt": "2026-10-19",
+          "fields": [
+            "skillOrder",
+            "specialtyPicks",
+            "stigmaSlots",
+            "statPriority",
+            "boardPlan"
+          ],
+          "note": "Leveling build: targets, Lv 8 picks, stigmas Earth Punishment, Light of Protection, Noble Aura, Prayer of Amplification; Attack and Crit nodes over HP; Condemnation node first."
+        },
+        {
+          "url": "https://skycoach.gg/blog/aion-2/articles/cleric-guide",
+          "checkedAt": "2026-10-19",
+          "fields": [
+            "specialtyPicks",
+            "statPriority"
+          ],
+          "note": "One author's guide: damage skills while leveling, Lv 8 picks, gear stats."
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "disputed",
+      "notes": [
+        "0.8 P5 (#494), from docs/research/2026-10-cleric-pack.md: skill targets and Lv 8 picks are two-source where marked; the stigma fourth and slot order, Debilitating Mark 7, Radiant Recovery 5, the stat priority and the first Daevanion nodes other than Nezekan's Condemnation are disputed and take the research file's defaults (claims C90, C91, C92, C93, C95).",
+        "Learn levels of all 22 skills: Metabot's skill pages and mmo-codex.com's unlock table; the owner's Cleric skill window (2026-10-19) agrees for the actives (claim C94). Six passives stay learnLv owner-check in the class data; none of them is in this plan."
+      ],
+      "claims": [
+        "C91",
+        "C92",
+        "C93",
+        "C95",
+        "C97"
+      ]
+    }
+  ]
+}

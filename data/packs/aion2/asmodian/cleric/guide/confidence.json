@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../schema/confidence.schema.json",
+  "schemaVersion": 2,
+  "collection": "confidence",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "conf:core-order",
+      "group": "verified",
+      "order": 46,
+      "text": "Cleric skill points: Earth's Retribution, Judgment Thunder, Chain of Torment, Condemnation, Divine Aura, Healing Light, Empyrean Lord's Grace and Light of Regeneration to 10, then {skillOrderTwoSource} (Earth's Grace to 10) (Metabot, daevaguides, aion2turkiye, mmo-codex). Attacks before heals, Chain of Torment and Condemnation as fast as allowed and Earth's Grace the level it is learned are two-source; the order between those rules is inferred.",
+      "placeholders": [
+        "skillOrderTwoSource"
+      ]
+    },
+    {
+      "id": "conf:first-nodes",
+      "group": "disputed",
+      "order": 233,
+      "text": "First Daevanion nodes: Nezekan's Condemnation (daevaguides, aion2turkiye) and daevaguides' skill nodes after it; Metabot's Cleric page starts on the Healing Enhancement and Warm Benediction pairs instead."
+    },
+    {
+      "id": "conf:learn-levels",
+      "group": "verified",
+      "order": 45,
+      "text": "Cleric learn levels (Divine Aura 3, Chain of Torment 4, Condemnation 8, Bolt 14 and the other actives): your Cleric skill window, Metabot's skill pages (game data) and mmo-codex's unlock table."
+    },
+    {
+      "id": "conf:passive-levels",
+      "group": "owner",
+      "order": 10,
+      "text": "Cleric passives at Lv 11, 13, 15, 17, 23 and 25: your skill window shows other art in those cells than Metabot's files, so their names and levels wait for a tooltip screenshot. The guide plans none of them."
+    },
+    {
+      "id": "conf:skill-disputed",
+      "group": "disputed",
+      "order": 231,
+      "text": "Debilitating Mark to 7 and Radiant Recovery to 5 (Metabot; daevaguides 8, aion2turkiye 10): the guide takes 7 and 5 with the last spare points. Bolt to 10 by 38 (daevaguides, aion2turkiye) needs points from quests and Sealed Dungeons on top."
+    },
+    {
+      "id": "conf:specialty-picks",
+      "group": "verified",
+      "order": 71,
+      "text": "Specialty picks at skill Lv 8: Chain of Torment longer damage over time, Condemnation more damage on fewer targets, Divine Aura AoE, Healing Light +2 uses, Light of Regeneration stronger heal at low HP (mmo-codex, aion2turkiye, daevaguides, skycoach). Earth's Retribution and Judgment Thunder: the sources split, so no pick."
+    },
+    {
+      "id": "conf:stat-tiers",
+      "group": "disputed",
+      "order": 236,
+      "text": "Stat priority while leveling (Attack, Critical Hit): Metabot's leveling build, aion2turkiye, skycoach; Metabot's Cleric page ranks HP, Defense and MP first for a party healer."
+    },
+    {
+      "id": "conf:stigma-plan",
+      "group": "disputed",
+      "order": 234,
+      "text": "Stigmas Earth Punishment, Light of Protection, Noble Aura, Prayer of Amplification (daevaguides, mmo-codex, aion2turkiye; Metabot takes Summon Resurrection for the fourth and puts Earth Punishment third). Earth Punishment to 5 at 22 is two-source; the levels 9 / 5 / 5 / 5 are the guide's split of the 29 shards."
+    },
+    {
+      "id": "conf:stigmas",
+      "group": "verified",
+      "order": 40,
+      "text": "Stigma slots 22 / 27 / 32 / 37; every stigma learnable at 22; shard cost per level (Metabot, allthings.how)."
+    },
+    {
+      "id": "conf:triggers",
+      "group": "verified",
+      "order": 47,
+      "text": "Condemnation and Lightning Strike Scattershot fire only on their conditions (Metabot's skill pages, game data; mmo-codex, daevaguides)."
+    }
+  ]
+}

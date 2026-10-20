@@ -88,8 +88,8 @@ export default (test, M) => {
   const fixtures = fixtureStates(); /* the flat fixtures (tests/fixtures/*.flat.json) under their old state ids */
   /* the Assassin's states: the 0.2 oracle and this bundle's tables are the Assassin guide's, so the Ranger states (0.6 P5,
      group ranger/), the Gladiator states (0.7 P2, group gladiator/), the Spiritmaster states (0.7 P4, group
-     spiritmaster/) and the Templar states (0.8 P3, group templar/) are left to the golden suite, which runs them on the page with their class's tables */
-  const states = generate(C, { fixtures }).filter(({ id }) => !/^(ranger|gladiator|spiritmaster|templar)\//.test(id)).map(({ id, raw }) => { const { state, hadSave } = M.loadState(raw, { newId: () => 'fresh-slot' }); M.migrate(state, hadSave, () => {}, 0); return { id, s: state, c: M.char(state) }; });
+     spiritmaster/), the Templar states (0.8 P3, group templar/) and the Cleric states (0.8 P5, group cleric/) are left to the golden suite, which runs them on the page with their class's tables */
+  const states = generate(C, { fixtures }).filter(({ id }) => !/^(ranger|gladiator|spiritmaster|templar|cleric)\//.test(id)).map(({ id, raw }) => { const { state, hadSave } = M.loadState(raw, { newId: () => 'fresh-slot' }); M.migrate(state, hadSave, () => {}, 0); return { id, s: state, c: M.char(state) }; });
   const N = M.GATE_GRAPH.nodes;
   const diffs = new Map(), seen = { step: new Set(), rq: new Set(), plan: new Set(), skill: new Set() };
   const cmp = (kind, k, field, old, ev, id) => { if (old === ev) return; const d = `${kind} ${k} ${field}: 0.2 ${old} / evaluator ${ev}`;

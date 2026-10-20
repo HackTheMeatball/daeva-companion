@@ -1,0 +1,32 @@
+{
+  "cleric/L45-q86-none-A": [
+    {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"(recommended Lv 45) from Asahr.","c":"primary \"Done\" tick:g45:witness","b":"Lv 45+","i":"The next one, \"The One Who Swears the Oath\", is recommended Lv 49, past this guide, so expect it to need gear."},
+    {"t":"Buy Earth's Retribution 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Buy Earth's Retribution 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+    {"t":"Buy Judgment Thunder 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+    {"t":"Buy Judgment Thunder 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+    {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
+    {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
+    {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
+    {"t":"Story: Daeva Trapped in a Nightmare","s":"0/2 objectives","c":"primary \"Turned in\" story","b":"Lv 45+","o":["Ascend to the next dimension of power as a Daeva complete The One Who Witnesses the Nightmare","Turn in Nemon, Outskirts Stall"]},
+    {"t":"Regional quests","s":"44 to pick up · 11 follow-ups · 0/58 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow | -> lock(disabled) A Traitor Within","new Odyle Jelly Misappropriation Investigation","+49 more"]},
+    {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk : Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 60 open at your level"},
+    {"t":"Equip Earth Punishment","s":"Stigma slot 1 is open · needs 1 shard","c":"tag \"Needs 1 shard\""},
+    {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk : Steel Hammer Temporary Trading Post · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 14 open"}
+  ],
+  "cleric/L45-q86-none-B": [
+    {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"(recommended Lv 45) from Asahr.","c":"primary \"Done\" tick:g45:witness","i":"The next one, \"The One Who Swears the Oath\", is recommended Lv 49, past this guide, so expect it to need gear."},
+    {"t":"Buy Earth's Retribution 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
+    {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
+    {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
+    {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0"},
+    {"t":"Vaizel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g30:0"},
+    {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1"},
+    {"t":"Story: Daeva Trapped in a Nightmare","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Witnesses the Nightmare","Turn in Nemon, Outskirts Stall"]},
+    {"t":"Regional quests","s":"44 to pick up · 11 follow-ups · 0/58 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow | -> lock(disabled) A Traitor Within","new Odyle Jelly Misappropriation Investigation","+49 more"]},
+    {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk : Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 60 open at your level"},
+    {"t":"Equip Earth Punishment","s":"Stigma slot 1 is open · needs 1 shard","c":"tag \"Needs 1 shard\""},
+    {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk : Steel Hammer Temporary Trading Post · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 14 open"}
+  ]
+}

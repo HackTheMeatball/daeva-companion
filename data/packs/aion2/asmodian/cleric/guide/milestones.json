@@ -1,0 +1,36 @@
+{
+  "$schema": "../../../schema/milestones.schema.json",
+  "schemaVersion": 2,
+  "collection": "milestones",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "g19",
+      "kind": "milestone",
+      "order": 65,
+      "lv": 19,
+      "title": "Skill tier: level 8",
+      "blurb": "Earth's Retribution and Judgment Thunder reach skill level 8."
+    },
+    {
+      "id": "g28",
+      "kind": "milestone",
+      "order": 105,
+      "lv": 28,
+      "title": "Chain of Torment 10 and Urugugu Canyon",
+      "blurb": "Chain of Torment reaches its point cap; a party Expedition opens.",
+      "items": [
+        {
+          "key": "g28:exp",
+          "order": 10,
+          "gateNode": false,
+          "short": "Urugugu Canyon Expedition opens",
+          "text": "<b>Urugugu Canyon [[tip:expedition|Expedition]] (Exploration) opens</b>: needs a party of 2–5 and item level 300.",
+          "loc": "The story quest \"Canyon's Secret\" (Lv 30) sends you in.",
+          "optional": true,
+          "mapSlug": "urugugu-canyon"
+        }
+      ]
+    }
+  ]
+}

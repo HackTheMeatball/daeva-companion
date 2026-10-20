@@ -10,7 +10,8 @@
    node tools/research/gladiator-pack.mjs templar. Its five "Absorbs N, N% HP" specialties get the game text (GAME_TEXT).
    0.8 P4 (#493): the Cleric (data/research/cleric-*.csv, docs/research/2026-10-cleric-pack.md), hidden:
    node tools/research/gladiator-pack.mjs cleric. Research §10's text fix replaces Metabot's misprint; the six passives
-   whose screen cells don't match their staged icons (Game Data Check, #493) get learnLv and icon owner-check. */
+   whose screen cells don't match their staged icons (Game Data Check, #493) get learnLv and icon owner-check.
+   0.8 P5 (#494): the Cleric is released with its guide pack, and its records name their icons (clericIcon). */
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -117,7 +118,17 @@ const ICON = CLS !== 'templar' ? {} : {
   ...Object.fromEntries(['enhance-health', 'warding-shield', 'punishing-benediction', 'ironclad-defense', 'guarding-seal', 'insulting-roar', 'fury', 'block-pain']
     .map(s => ['skill:templar:' + s, `assets/icons/sk-templar-${s}.png`])),
 };
+/* Cleric icons (0.8 P5, #494): the guide pack ships every active and stigma file (research §7, Metabot pages) and the four
+   passives whose files match the owner's Lv 4 screen (Warm Benediction, Empyrean Lords' Benediction, Empyrean Lord's
+   Grace, Earth's Grace; Game Data Check, #493); the other six passives stay owner-check (OWNER_CHECK below). Files are
+   named sk-cleric-<slug>.png / st-cleric-<slug>.png, as the Templar's, because Defiance and Survival Willpower are shared names. */
+const CLERIC_PASSIVE_ICONS = new Set(['warm-benediction', 'empyrean-lords-benediction', 'empyrean-lords-grace', 'earths-grace']);
+const clericIcon = (r, kind) => {
+  const slug = r.id.split(':')[2];
+  return kind === 'st' || r.type === 'active' || CLERIC_PASSIVE_ICONS.has(slug) ? `assets/icons/${kind}-cleric-${slug}.png` : null;
+};
 const iconFields = r => {
+  if (CLS === 'cleric') return clericIcon(r, 'sk') ? { icon: clericIcon(r, 'sk') } : {};
   if (CLS !== 'templar' || r.type !== 'passive') return {};
   return ICON[r.id] ? { icon: ICON[r.id] } : { fieldStatus: { icon: 'owner-check' } };
 };
@@ -179,7 +190,7 @@ for (const id of [...Object.keys(TEXT_FIX), ...Object.keys(OWNER_CHECK)]) if (!s
 const stigmas = csv(`${CLS}-stigmas-metabot-2026-10.csv`).map(r => {
   const fs = Object.fromEntries(r.fieldStatus.split(';').filter(Boolean).map(x => x.split(':').map(y => y.trim())));
   return {
-    id: r.id, key: r.key, name: r.name, availableLv: int(r.availableLv), maxLevel: int(r.maxLevel),
+    id: r.id, key: r.key, name: r.name, availableLv: int(r.availableLv), ...(CLS === 'cleric' ? { icon: clericIcon(r, 'st') } : {}), maxLevel: int(r.maxLevel),
     specialtyChoices: choicesOf(r.id, r.page_url),
     sources: [src(r)], verifiedAt: r.checkedAt, status: 'verified',
     ...(Object.keys(fs).length ? { fieldStatus: fs } : {}),
@@ -200,7 +211,7 @@ const nodes = csv(`${CLS}-board-nodes-metabot-2026-10.csv`).map(r => ({
 })).sort(byId);
 
 const cls = {
-  id: `class:${CLS}`, class: CLS, name: NAME, release: 'hidden', defaultBuild: `build:${CLS}:guide`,
+  id: `class:${CLS}`, class: CLS, name: NAME, release: CLS === 'cleric' ? 'released' : 'hidden', defaultBuild: `build:${CLS}:guide`,
   sources: [{ url: `https://metabot.gg/en/aion-2/classes/${CLS}`, checkedAt: CHECKED, build: { scheme: 'metabot', value: '0.0.4387.0' } }],
   verifiedAt: CHECKED, status: 'verified',
   notes: [CLS === 'gladiator'
@@ -211,7 +222,9 @@ const cls = {
         ? 'Hidden until a 0.7 guide item adds its guide pack (data/packs/aion2/asmodian/spiritmaster/, which defines build:spiritmaster:guide) and lists it in the class picker.'
         : CLS === 'templar'
           ? 'Hidden until 0.8 P3 adds its guide pack (data/packs/aion2/asmodian/templar/, which defines build:templar:guide) and lists it in the class picker.'
-          : `Hidden until a 0.8 guide item adds its guide pack (data/packs/aion2/asmodian/${CLS}/, which defines build:${CLS}:guide) and lists it in the class picker.`],
+          : CLS === 'cleric'
+            ? 'Released in 0.8 P5 (#494): its guide pack (data/packs/aion2/asmodian/cleric/) defines build:cleric:guide and the class picker lists it.'
+            : `Hidden until a 0.8 guide item adds its guide pack (data/packs/aion2/asmodian/${CLS}/, which defines build:${CLS}:guide) and lists it in the class picker.`],
 };
 for (const id of Object.keys(GAME_TEXT)) if (!fixed.has(id)) throw new Error('game-text fix not applied: ' + id);
 for (const id of Object.keys(DISPUTED)) if (!disputed.has(id)) throw new Error('disputed label not applied: ' + id);

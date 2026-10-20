@@ -1,0 +1,355 @@
+{
+  "$schema": "../../../schema/claims.schema.json",
+  "schemaVersion": 2,
+  "collection": "claims",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "C02",
+      "claim": "Each skill gains one level every 3 character levels after you learn it.",
+      "verdict": "wrong",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/heart-gore",
+          "note": "Skill pages list the character level each skill level needs (learn level + 3 per level) and the 1 / 2 / 4 point costs"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/earths-retribution",
+          "note": "The Cleric's skill pages show the same rule (docs/research/2026-10-cleric-pack.md §2.1: skill Lv 10 at learn level + 24)"
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-15-alt-03",
+            "checkedAt": "2026-10-15",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Skill window at Lv 7: Savage Roar Lv 4 needs Lv 10 for Lv 5 and costs 2 points; Storm Rampage Lv 2 needs Lv 8 for Lv 3"
+          }
+        },
+        {
+          "url": "https://allthings.how/?p=215236",
+          "quote": "Skill points arrive automatically as your character levels"
+        },
+        {
+          "url": "https://thegameswiki.com/aion-2/wiki/skills-and-specialties",
+          "quote": "mastery skills are learned automatically when the character reaches the required level; levels beyond 10 come from items, Arcana and Daevanion boards"
+        }
+      ],
+      "action": "rewrite",
+      "newText": "<p>Skills don't level up by themselves: you spend points, and each skill level also needs a character level. Skill level L opens at the level you learned the skill + 3 × (L − 2). Earth's Retribution, learned at Lv 1, reaches skill level 5 at Lv 10. Each level costs 1 point (levels 2–4), 2 points (5–7) or 4 points (8–10).</p>",
+      "note": "The Assassin guide's claim C02, with the Cleric's Earth's Retribution as the example (learned at Lv 1, Metabot and the owner's Cleric skill window). The rule is the game's (rule:skill-level-gate, rule:skill-point-cost); the owner's level-gate screens are from an Assassin. Three Cleric passives (Earth's Grace, Survival Willpower, Radiant Benediction) have a flat gate instead: every level opens when the skill is learned.",
+      "verifiedAt": "2026-10-15",
+      "appliesTo": [
+        "tip:wisdom",
+        "rule:skill-level-gate",
+        "rule:skill-point-cost"
+      ]
+    },
+    {
+      "id": "C22",
+      "claim": "Board node costs: grey stat 1, green passive 2, blue active 3, orange corner 4 (+1.5%); Azphel paid with Azphel points from PvP shops.",
+      "verdict": "verified",
+      "sources": [
+        {
+          "url": "https://gamewith.ai/aion2/en/daevanion-planner/assassin",
+          "quote": "1 for common, 2 for rare, 3 for epic and 4 for unique nodes"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/guides/daevanion-guide",
+          "quote": "stat 1 (rare 2), active 3, passive 2, corner 4 (+1.5%); Azphel: Azphel currency, 0 skill nodes",
+          "note": "via R3 data/build.partial.notes.txt"
+        },
+        {
+          "url": "https://thegameswiki.com/aion-2/wiki/daeva-system-and-daevanion-board",
+          "quote": "Azphel crystal is made by Material Conversion from 10 Fragment: Azphel's Trace and 5 Odyle ... also sold in the Abyss shop for Abyss Points"
+        },
+        {
+          "url": "https://mein-mmo.de/en/aion-2-arkana-daevanion-pet-you-need-to-understand-and-master-these-3-systems,1589883/2/",
+          "quote": "Fragments are earned through victorious participation in the weekly battleground ... Some crystals can also be bought with Abyss Points"
+        }
+      ],
+      "action": "rewrite",
+      "newText": "<b>Azphel [[tip:daevanion|Daevanion board]] opens.</b> Stat nodes only, paid with Azphel crystals (from battleground fragments or Abyss Points), not Daevanion Crystals.",
+      "note": "The Assassin guide's claim C22, unchanged: the Cleric's 537 board positions have the same type, grade and cost as the Assassin's (docs/research/2026-10-cleric-pack.md §1, 0 differences by script).",
+      "appliesTo": [
+        "g45:2",
+        "tip:daevanion",
+        "conf:boards",
+        "board:nezekan",
+        "board:zikel",
+        "board:vaizel",
+        "board:triniel",
+        "board:azphel"
+      ],
+      "verifiedAt": "2026-10-12"
+    },
+    {
+      "id": "C28b",
+      "claim": "Stigma slots 22/27/32/37 (five sources); regional quest names and levels (allthings.how, Selphie1999).",
+      "verdict": "verified",
+      "sources": [],
+      "action": "keep",
+      "note": "The Assassin guide's claim C28b. The Cleric's 13 stigma pages also learn at Lv 22 (Metabot, docs/research/2026-10-cleric-pack.md §2.2); Metabot's build page and daevaguides give the same slot levels.",
+      "appliesTo": [
+        "tip:stigma",
+        "conf:stigmas"
+      ],
+      "verifiedAt": "2026-10-12"
+    },
+    {
+      "id": "C39",
+      "claim": "\"The One Who Hears the Voice\" (Lv 22) is open by the time the story reaches \"Daeva in a Dream\".",
+      "verdict": "single-source",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/daeva-in-a-dream-asmodian",
+          "quote": "complete The One Who Hears the Voice",
+          "note": "The wrapper quest's objective (Metabot steps): the Ascension quest must be open by then, so the gate is never early (prereq-gates §5)."
+        }
+      ],
+      "action": "keep",
+      "note": "The Assassin guide's claim C39 (the story is the faction's, not the class's). Owner decision 2026-10-16: no separate in-game check; the gate stands on its source (prereq-gates §11 check 6).",
+      "appliesTo": [
+        "g22:0",
+        "asc:hears-the-voice"
+      ],
+      "verifiedAt": "2026-10-16"
+    },
+    {
+      "id": "C90",
+      "claim": "Cleric stat priority while leveling: Attack and Critical Hit (Metabot's party-healer order is HP, Defense, MP).",
+      "verdict": "disputed",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/cleric",
+          "note": "Class page (editorial), for a party healer: HP, Defense, MP, Critical Hit Resist, Attack; the class-builds guide gives the same (same site)."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/cleric/build",
+          "note": "Its own leveling build: crit and crit-damage passives over heal boost, because while leveling you kill more than you heal."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/cleric/",
+          "note": "Leveling: Attack and Crit nodes over HP."
+        },
+        {
+          "url": "https://skycoach.gg/blog/aion-2/articles/cleric-guide",
+          "note": "Gear stats: Accuracy, Critical Hit, Attack, Damage Boost, Combat Speed."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-cleric-pack.md §6.2: the leveling sources contradict Metabot's healer order, so the guide shows the damage stats as disputed and names the healer order in the Build drawer's note. No source orders Attack against Critical Hit, so they share a tier.",
+      "appliesTo": [
+        "build:3",
+        "conf:stat-tiers"
+      ],
+      "verifiedAt": "2026-10-19"
+    },
+    {
+      "id": "C91",
+      "claim": "Cleric stigmas by slot: Earth Punishment (22), Light of Protection (27), Noble Aura (32), Prayer of Amplification (37); raised to 9 / 5 / 5 / 5.",
+      "verdict": "disputed",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/cleric/build",
+          "note": "Leveling build: Light of Protection, Noble Aura, Earth Punishment, Summon Resurrection at 8 / 7 / 5 / 4; its top players (151) pick the same four most often."
+        },
+        {
+          "url": "https://daevaguides.com/en/cleric/",
+          "note": "couga54's plan: Earth Punishment (Lv 5 at 22), Noble Aura, Prayer of Amplification, Light of Protection; Summon Resurrection as a 1-point swap-in."
+        },
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/cleric/",
+          "note": "From 22: Earth Punishment and Light of Protection first, then Prayer of Amplification and Noble Aura."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/cleric/",
+          "note": "Leveling: Earth Punishment, Light of Protection, Noble Aura, Prayer of Amplification (10 / 5 / 5 / 10), not slot-ordered."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-cleric-pack.md §5. Earth Punishment, Light of Protection and Noble Aura are in every leveling set; the fourth is Prayer of Amplification (daevaguides, mmo-codex, aion2turkiye, skycoach) or Summon Resurrection (Metabot; it takes a slot in dungeons). Earth Punishment first has four voices (its Lv 5 effect makes Condemnation always crit); Metabot puts it third, so the slot order is disputed. Earth Punishment 5 at 22 is two-source; the levels 9 / 5 / 5 / 5 are the research default (28 of the 29 shards by Lv 45).",
+      "appliesTo": [
+        "build:cleric:guide",
+        "conf:stigma-plan"
+      ],
+      "verifiedAt": "2026-10-19"
+    },
+    {
+      "id": "C92",
+      "claim": "Cleric skill points: Earth's Retribution, Judgment Thunder, Chain of Torment, Condemnation, Divine Aura, Healing Light, Empyrean Lord's Grace, Light of Regeneration and Earth's Grace to Lv 10; then Debilitating Mark to 7 and Radiant Recovery to 5.",
+      "verdict": "disputed",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/cleric/build",
+          "note": "Leveling build targets: the nine skills to 10, Debilitating Mark 7, Radiant Recovery 5 (203 points). Leaves Bolt out. No training order."
+        },
+        {
+          "url": "https://daevaguides.com/en/cleric/",
+          "note": "couga54's plan: Earth's Retribution and Judgment Thunder first, Earth's Grace 10 at 21, Chain of Torment 10 at 28, Condemnation 10 at 32, Bolt 10 at 38, heals 10 at 32–38; Light of Regeneration, Debilitating Mark, Radiant Recovery 8."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/cleric/",
+          "note": "Leveling targets (321 points, with quest and dungeon points): the nine to 10, Bolt and Debilitating Mark and Radiant Recovery 10."
+        },
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/cleric/",
+          "note": "Levelling: Condemnation, Chain of Torment, Earth's Retribution to 8 then 10; then Bolt, Divine Aura and the heals; Earth's Grace the first passive."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-cleric-pack.md §3. Two-source or better: the nine skills to 10 (Light of Regeneration: Metabot and aion2turkiye, daevaguides 8). Disputed, Metabot's values with the last 14 points: Debilitating Mark 7, Radiant Recovery 5. Bolt to 10 by 38 is two-source (daevaguides, aion2turkiye) but needs quest and Sealed Dungeon points beyond the 203 from levels. Attacks before heals and Chain of Torment and Condemnation as fast as allowed are two-source; the order between those rules is inferred.",
+      "appliesTo": [
+        "build:cleric:guide",
+        "conf:core-order",
+        "conf:skill-disputed"
+      ],
+      "verifiedAt": "2026-10-19"
+    },
+    {
+      "id": "C93",
+      "claim": "Cleric first Daevanion nodes: Nezekan's Condemnation, Chain of Torment, Divine Aura and Light of Regeneration; Zikel's Condemnation, Divine Aura and Earth's Grace.",
+      "verdict": "disputed",
+      "sources": [
+        {
+          "url": "https://daevaguides.com/en/cleric/",
+          "note": "couga54's route node by node: Condemnation, Divine Aura, Light of Regeneration, Chain of Torment and Bolt on Nezekan; Earth's Grace, Divine Aura and Condemnation on Zikel."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/cleric/",
+          "note": "Leveling: Combat Speed corners, then Condemnation, Judgment Thunder and Light of Regeneration on Nezekan."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/cleric",
+          "note": "Class page path: the Healing Enhancement and Warm Benediction pairs first; its top players most often take the Light of Regeneration, Condemnation and Judgment Thunder nodes."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-cleric-pack.md §6.3. The Nezekan Condemnation node is two-source (daevaguides, aion2turkiye, with Metabot's top players). The rest follows daevaguides' skill nodes (option A); Metabot's passive pairs are the other path. Earth's Grace is learned at Lv 21 (Metabot), so its node waits for it. Radiant Benediction's node is left out: its learn level is owner-check in the class data.",
+      "appliesTo": [
+        "build:cleric:guide",
+        "conf:first-nodes"
+      ],
+      "verifiedAt": "2026-10-19"
+    },
+    {
+      "id": "C94",
+      "claim": "Cleric learn levels: actives 1, 1, 1, 3, 4, 5, 7, 8, 10, 12, 14, 16 (Divine Aura 3, Chain of Torment 4, Lightning Strike Scattershot 5, Condemnation 8, Bolt 14).",
+      "verdict": "verified",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/condemnation",
+          "note": "Game-database field (learn level); every Cleric skill page gives its own."
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-19-cleric-keys-01",
+            "checkedAt": "2026-10-19",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Cleric skill window at Lv 4: five skills unlocked, every locked active shows its level"
+          }
+        },
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/cleric/",
+          "note": "Its level-by-level unlock table gives the same 22 values."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-cleric-pack.md §6.1 and docs/plans/0.8/inputs/owner-keys/cleric.md: the active learn levels match the owner's screen. mmo-codex credits the game client via aion2.app, so it and Metabot may share upstream data (inferred); the owner's screen does not. Six passive learn levels are owner-check in the class data (their screen cells show other art); the guide plans none of them.",
+      "appliesTo": [
+        "conf:learn-levels",
+        "build:triggers"
+      ],
+      "verifiedAt": "2026-10-19"
+    },
+    {
+      "id": "C95",
+      "claim": "Cleric specialty picks at skill Lv 8: Chain of Torment +3 s Damage over Time (:2), Condemnation up to +12% vs fewer targets (:2), Divine Aura AoE (:2), Healing Light +2 consecutive uses (:1), Light of Regeneration +20% healed at 50% HP or less (:2).",
+      "verdict": "verified",
+      "sources": [
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/cleric/",
+          "note": "Lv 8 picks: Chain of Torment :2, Condemnation :2, Healing Light :1, Light of Regeneration :2."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/cleric/",
+          "note": "Leveling build: Chain of Torment :2, Divine Aura :2, Healing Light :1, Light of Regeneration :2 (Condemnation :1 here; :2 in its dungeon build)."
+        },
+        {
+          "url": "https://daevaguides.com/en/cleric/",
+          "note": "Chain of Torment :2, Healing Light :1 (every source agrees), Divine Aura :2 for leveling [aLuckyRO], Light of Regeneration :2 (most creators; couga54 :1)."
+        },
+        {
+          "url": "https://skycoach.gg/blog/aion-2/articles/cleric-guide",
+          "note": "Chain of Torment :2, Condemnation :2, Healing Light :1."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-cleric-pack.md §4. Each pick has two or more sources; Condemnation and Light of Regeneration are the majority with one dissent each. Earth's Retribution and Judgment Thunder are split two against two, so the guide picks neither. Lv 12 and 16 picks (Condemnation's cooldown reset among them) need skill levels past 10, which points alone don't reach before Lv 45, so the guide leaves them out, as the Ranger's does.",
+      "appliesTo": [
+        "build:cleric:guide",
+        "conf:specialty-picks"
+      ],
+      "verifiedAt": "2026-10-19"
+    },
+    {
+      "id": "C96",
+      "claim": "Two Cleric skills fire only on a condition: Condemnation hits only a target under Chain of Torment; Lightning Strike Scattershot only a Staggered one.",
+      "verdict": "verified",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/condemnation",
+          "note": "Skill text (game-database field)."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/lightning-strike-scattershot",
+          "note": "Skill text (game-database field)."
+        },
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/cleric/",
+          "note": "Describes the same conditions (Spot use, one page)."
+        },
+        {
+          "url": "https://daevaguides.com/en/cleric/",
+          "note": "Describes the same conditions."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-cleric-pack.md §9 (CONFIRMED from the skill text plus two guides); the owner's screen notes the same two conditions on the E key (docs/plans/0.8/inputs/owner-keys/cleric.md). The guide's own wording, not the pages'.",
+      "appliesTo": [
+        "build:triggers",
+        "conf:triggers"
+      ],
+      "verifiedAt": "2026-10-19"
+    },
+    {
+      "id": "C97",
+      "claim": "Cleric default keys: left click Earth's Retribution, right click Judgment Thunder; 1 Debilitating Mark, 2 Divine Aura, 3 Radiant Recovery, 4 Bolt; E Lightning Strike Scattershot (row 0), Condemnation (1), Chain of Torment (2); Q Light of Regeneration (0), Healing Light (1); Defiance no key.",
+      "verdict": "verified",
+      "sources": [
+        {
+          "owner": {
+            "ref": "owner:2026-10-19-cleric-keys-01",
+            "checkedAt": "2026-10-19",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Cleric skill window (quickslot grid, game default keys, both mouse badges), Lv 4"
+          }
+        }
+      ],
+      "action": "keep",
+      "note": "The owner's in-game screen (the source of truth), read by Game Data Check (docs/plans/0.8/inputs/owner-keys/cleric.md); both mouse buttons are read from the badge halves on the screen. The keys are the game's defaults, not a guide's advice; the right-click stack two guides build (research §9) is a player macro and is not shown.",
+      "appliesTo": [
+        "build:cleric:guide"
+      ],
+      "verifiedAt": "2026-10-19"
+    }
+  ]
+}
