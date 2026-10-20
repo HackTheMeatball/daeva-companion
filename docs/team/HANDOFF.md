@@ -42,7 +42,8 @@ waiting. The 0.3.0 release, money/accounts/legal and new art still wait for the 
 `src/core/`, saves/sync/migrations, a gate's `requires`/`completesWith`, golden re-records or the mig1 pin, or a change
 over about 300 lines. `@sonnet` only for reviews, docs, research and small data fixes. Before posting a trigger, the CEO
 checks the issue against this list. The Sonnet job's prompt refuses such work and replies "Needs @claude (Opus)"
-(`.github/workflows/claude.yml`). When in doubt, use Opus.
+(`.github/workflows/claude.yml`). When in doubt, use Opus. The list itself lives in `.github/routing/opus-paths.json`:
+kickoff's routing and every Sonnet prompt read it (Kaizen, 2026-10-20).
 
 **How work runs:** `@claude` (Opus) or `@sonnet` in an issue/PR comment starts a Claude Code run on GitHub
 (`.github/workflows/claude.yml`, owner-only). Reviews: ask for "VERDICT: APPROVE / REQUEST CHANGES", tell it not to run
