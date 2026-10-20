@@ -284,9 +284,11 @@ jobs:
       actions: write
     steps:
       # A queued run may be stale by the time it starts: skip it if the head moved (or, for a review, one now exists).
-      # Only the shared verdict parser, from main, for the recheck; the branch checkout below replaces it.
+      # Only the shared verdict parser, from main, for the recheck. It goes in its own folder (removed after the recheck):
+      # checked out at the root, its sparse setting survived the branch checkout below, which then held only this file.
       - uses: actions/checkout@v7
         with:
+          path: .verdicts
           sparse-checkout: tools/verdicts.cjs
           sparse-checkout-cone-mode: false
           persist-credentials: false
@@ -301,7 +303,7 @@ jobs:
         with:
           script: |
             const { owner, repo } = context.repo;
-            const V = require(`${process.env.GITHUB_WORKSPACE}/tools/verdicts.cjs`);
+            const V = require(`${process.env.GITHUB_WORKSPACE}/.verdicts/tools/verdicts.cjs`);
             const pr = (await github.rest.pulls.get({ owner, repo, pull_number: Number(process.env.PR) })).data;
             let go = pr.state === 'open' && pr.head.sha === process.env.SHA;
             if (go && process.env.STEP === 'review') {
@@ -315,6 +317,7 @@ jobs:
             // The fix-round (or merge) marker is written only once the run is known to go ahead, so a stale queued run uses no round.
             // A Restart re-run (attempt 2) of the same run reuses the marker it already posted, so no extra round.
             if (go && process.env.STEP !== 'review' && Number(process.env.ATTEMPT) === 1) await github.rest.issues.createComment({ owner, repo, issue_number: pr.number, body: process.env.NOTE });
+      - run: rm -rf .verdicts
       - if: steps.recheck.outputs.go == 'true'
         uses: actions/checkout@v7
         with:
