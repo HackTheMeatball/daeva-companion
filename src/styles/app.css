@@ -585,7 +585,7 @@ details.step.done .bar span, .dvbh.full .dvbh-bar span { background: var(--good)
 #spAfter #spSoon, #dvBox #dvBoard + #dvThen .soonlist { margin-top: var(--space-8); }
 #rwToast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 20px); padding: var(--space-9) var(--space-14); border-radius: var(--radius-10); background: var(--panel); border: 1px solid var(--line); box-shadow: var(--shadow-toast); color: var(--fg); font: 600 13px var(--body); opacity: 0; pointer-events: none; z-index: 80; }
 #rwToast.show { animation: rwToast 2.6s ease forwards; }
-@keyframes rwToast { 0% { opacity: 0; transform: translate(-50%, 20px); } 10%, 80% { opacity: 1; transform: translate(-50%, 0); } 100% { opacity: 0; transform: translate(-50%, 0); } }
+@keyframes rwToast { 0% { opacity: 0; transform: translate(-50%, var(--toast-rise, 20px)); } 10%, 80% { opacity: 1; transform: translate(-50%, 0); } 100% { opacity: 0; transform: translate(-50%, 0); } }
 /* Sub-steps under multi-part objectives */
 .qs-sub { list-style: none; margin: var(--space-4) 0 var(--space-2) var(--space-25); padding: 0; display: grid; gap: var(--space-2); }
 .qs-sub li { padding: var(--space-1) 0 !important; max-height: none !important; }
@@ -699,7 +699,7 @@ body.basic aside.rail { align-content: start; }
 /* Toast with an Undo button. */
 #rwToast.has-undo { pointer-events: auto; display: flex; align-items: center; gap: var(--space-10); }
 #rwToast.has-undo.show { animation-duration: 6s; }
-@media (max-width: 600px) { #rwToast { bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom) + var(--space-12)); } }
+@media (max-width: 600px) { #rwToast { --toast-rise: 0px; bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom) + var(--space-12)); } }
 #rwToast .tu { font: 600 12px var(--mono); padding: var(--space-2) var(--space-9); border-radius: var(--radius-6); border: 1px solid var(--line); background: var(--panel-2); color: var(--accent-text); cursor: pointer; }
 /* Export / import progress (footer). */
 .xfer { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-8) var(--space-14); font-size: 13px; color: var(--muted); padding: 0 var(--space-4); }

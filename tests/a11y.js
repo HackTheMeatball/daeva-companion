@@ -223,6 +223,39 @@ async function load(p, state, mode) {
     await ctx.close();
   }
 
+  /* ---------- 3b. phone overlaps (0.8 P7, #496; 390 x 844): the Undo toast stays fully above the tab bar at every frame, and the
+     level-up chip never covers the character-name box or another control while it floats ---------- */
+  for (const sn of ['lv5', 'lv27']) {
+    const { ctx, p } = await page(390, { isMobile: true, hasTouch: true, reducedMotion: 'no-preference' });
+    await p.setViewportSize({ width: 390, height: 844 });
+    await load(p, sn === 'lv27' ? { ...USER } : null, 'advanced');
+    if (sn === 'lv5') for (let i = 0; i < 4; i++) await p.click('#lvlUp');
+    const r = await p.evaluate(() => new Promise(res => {
+      const box = e => { const b = e.getBoundingClientRect(); return { l: b.left, t: b.top, r: b.right, b: b.bottom }; };
+      const hit = (a, b) => a.l < b.r - 0.5 && a.r > b.l + 0.5 && a.t < b.b - 0.5 && a.b > b.t + 0.5;
+      const out = { frames: 0, toastFrames: 0, chipFrames: 0, toastOver: 0, chipOver: [], chipOut: 0 };
+      rewardToast('Lv 2: "Test quest" turned in', () => {});
+      document.getElementById('lvlUpBig').click();
+      const t0 = performance.now();
+      const tick = () => {
+        const bar = box(document.getElementById('tabBar')), t = document.getElementById('rwToast'), c = document.querySelector('.lvl-float');
+        out.frames++;
+        if (t && t.classList.contains('show')) { out.toastFrames++; if (box(t).b > bar.t + 0.5) out.toastOver = Math.max(out.toastOver, Math.round(box(t).b - bar.t)); }
+        if (c) {
+          out.chipFrames++; const cb = box(c);
+          if (cb.l < -0.5 || cb.r > innerWidth + 0.5) out.chipOut++;
+          for (const e of document.querySelectorAll('#charCard, #tabBar, #rwToast, #lvlUpBig, #lvlNum, #lvlUp, #lvlDown, #lvlRange, button, input, select, a[href], summary')) { if (e.classList.contains('lvl-float') || e.offsetParent === null && e.id !== 'tabBar') continue; const b = box(e); if (b.r > b.l && b.b > b.t && hit(cb, b)) out.chipOver.push(e.id || e.className || e.tagName); }
+        }
+        if (performance.now() - t0 < 2200) requestAnimationFrame(tick); else res(out);
+      };
+      requestAnimationFrame(tick);
+    }));
+    r.chipOver = [...new Set(r.chipOver)];
+    ok(`phone 390px ${sn}: the Undo toast sits fully above the tab bar in every frame`, r.toastFrames > 10 && r.toastOver === 0, r);
+    ok(`phone 390px ${sn}: the level-up chip is measured during its transition, stays on screen and overlaps no control`, r.chipFrames > 10 && r.chipOut === 0 && r.chipOver.length === 0, r);
+    await ctx.close();
+  }
+
   /* ---------- 4. "i" popovers and Escape ---------- */
   {
     const { ctx, p } = await page(1500);

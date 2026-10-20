@@ -1,0 +1,3 @@
+[
+  {"case": "phone-undo-toast", "kind": "before-after", "title": "Undo toast clears the tab bar", "caption": "On a phone the Undo toast now only fades in, so it never slides over the tab bar; the level-up chip stays in the level bar."}
+]
