@@ -1055,8 +1055,9 @@ packs, since those are the minor's point.
 
 Checked: no two items in one wave own the same file. Waves are the expected order, not gates. Under K15, a gated item
 (P10, P11, P12, P13) whose OK isn't typed by the time its lane is free moves to the end of the queue, not waited on. An item
-whose research isn't in by the time the rest has merged moves to 0.8.x. If `research-sorcerer` or `research-chanter` is late,
-P20, P13, P14 and P15 run first on the gen lane and the late class follows them.
+whose research isn't in by the time the rest has merged moves to 0.8.x. Both research packs are in (Chanter #486, Sorcerer
+#487). If the Sorcerer or Chanter isn't verified when the rest of 0.8 is ready, 0.8.0 ships with the classes that are and the
+rest follows in a 0.8.x patch (owner, 2026-10-19 9:14 PM ET; DECISIONS).
 
 **After 0.8.0 ships (not a bot item):** team-audit rec 4, moving rules out of #114 to their owners' homes, put in
 place by Kaizen (Gale) through each rule's owner (owner, 2026-10-19 4:57 PM ET; `/mnt/project-files/audit-1.0/team-audit-1.0.md`).
