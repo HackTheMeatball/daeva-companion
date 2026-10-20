@@ -60,6 +60,10 @@
 .lvl-float { position: fixed; transform: translate(-50%, -100%); pointer-events: none; z-index: 100; white-space: nowrap; font: 600 12px var(--body); color: var(--good); background: var(--panel); border: 1px solid var(--go-glow-66); border-radius: var(--radius-pill); padding: var(--space-4) var(--space-10); box-shadow: var(--shadow-float); animation: lvlfloat 1.6s ease-out forwards; }
 .lvl-float b { color: var(--fg); margin-right: var(--space-4); }
 @keyframes lvlfloat { 0% { opacity: 0; transform: translate(-50%, -80%); } 15% { opacity: 1; transform: translate(-50%, -100%); } 75% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%, -190%); } }
+/* Phones (0.8 P7, #496): the Level up button sits in the sticky level bar, so the chip stays in that row, right-aligned
+   against the button and wrapping, and only fades (journey.js sets right / top and the class) */
+.lvl-float.in-bar { left: auto; max-width: none; border-radius: var(--radius-12); box-sizing: border-box; white-space: normal; text-align: center; font-size: 11px; line-height: 1.25; transform: translateY(-50%); animation-name: lvlfloatbar; }
+@keyframes lvlfloatbar { 0% { opacity: 0; } 15%, 75% { opacity: 1; } 100% { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .lvl-spark, .lvl-float { display: none; } }
 .where-head { flex-wrap: wrap; }
 /* Story drum: click previous/next to step; rows roll up (next) or down (previous). */

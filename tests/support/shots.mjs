@@ -6,7 +6,8 @@
    -after.png, or <case><suffix>.png for a case with `afterOnly` (a screen that didn't exist before) or with --after-only.
    "After" is this branch's dist/. "Before" is <ref> (default origin/main) built in a worktree at tests/out/shots-base
    (made, or moved to <ref>, on each run; its build resolves node_modules from the repo root above it).
-   A case: { name, save, before, after, act, afterOnly, width = 390, height = 844, mode = 'basic', shots }
+   A case: { name, save, before, after, act, afterOnly, motion, width = 390, height = 844, mode = 'basic', shots }
+     motion        true = animations allowed (default: reduced motion); the shot is taken 250 ms after `act`
      save          a flat test save (tests/support/save.js) for both builds; before / after override it per build;
                    with none, a fresh browser (mode then stays the app's default)
      char          { pack, class } written into the save's character (a class other than the default, e.g. the Ranger)
@@ -50,7 +51,7 @@ const b = await chromium.launch();
 let bad = 0;
 for (const c of CASES) for (const when of (afterOnly || c.afterOnly) ? ['after'] : ['before', 'after']) {
   const w = c.width || 390, h = c.height || 844, tag = (afterOnly || c.afterOnly) ? '' : '-' + when;
-  const ctx = await b.newContext({ viewport: { width: w, height: h }, deviceScaleFactor: 2, serviceWorkers: 'block', reducedMotion: 'reduce' });
+  const ctx = await b.newContext({ viewport: { width: w, height: h }, deviceScaleFactor: 2, serviceWorkers: 'block', reducedMotion: c.motion ? 'no-preference' : 'reduce' });
   const p = await ctx.newPage(), errs = []; p.on('pageerror', e => errs.push(e.message));
   await p.goto(servers[when].url + '/'); await p.waitForTimeout(300);
   const save = c[when] || c.save;

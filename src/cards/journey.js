@@ -262,6 +262,10 @@ function journeyMount() {
     f.innerHTML = `<b>Lv ${to}</b>${parts.levelGains(from, to)}`;
     f.style.left = cx + "px"; f.style.top = r.top - 6 + "px";
     document.body.appendChild(f); setTimeout(() => f.remove(), 1700);
+    /* on a phone the button sits in the sticky level bar: the chip stays in that row, between the Lv label and the button */
+    const bar = btn.closest(".lvlbar");
+    if (bar) { const br = bar.getBoundingClientRect(), lv = bar.querySelector(".lvlbar-lv").getBoundingClientRect(), gap = 8;
+      f.classList.add("in-bar"); f.style.top = br.top + br.height / 2 + "px"; f.style.right = innerWidth - (r.left - gap) + "px"; f.style.left = "auto"; f.style.maxWidth = r.left - gap * 2 - lv.right + "px"; }
     /* Under reduced motion the floating label is hidden (CSS): the gains go in the toast instead. */
     if (RMQ.matches) rewardToast(f.textContent);
   });
