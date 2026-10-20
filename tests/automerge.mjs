@@ -60,6 +60,9 @@ check(dataBlocker(BPR, ['data/schema/quest.schema.json'], [REVIEW], SHA, HEAD) =
 check(/waits on Game Data Check/.test(dataBlocker(BPR, PACK, [REVIEW], SHA, HEAD)), 'build PR touching data/packs, no verdict -> waits');
 check(/waits on Game Data Check/.test(dataBlocker(BPR, ['docs/research/templar.md'], [REVIEW], SHA, HEAD)), 'docs/research file -> waits');
 check(/waits on Game Data Check/.test(dataBlocker(BPR, ['src/assets/icons/skills/x.webp'], [REVIEW], SHA, HEAD)), 'an icons/ file -> waits');
+check(dataBlocker(BPR, ['public/icons/icon-192.png', 'public/manifest.webmanifest'], [REVIEW], SHA, HEAD) === '', 'our own PWA icons under public/icons/ -> no wait');
+check(/waits on Game Data Check/.test(dataBlocker(BPR, ['public/game/icons/x.webp'], [REVIEW], SHA, HEAD)), 'an icons/ dir elsewhere under public/ -> waits');
+check(/f\.previous_filename/.test(yml) && /dataBlocker\(pr, touched,/.test(yml), 'a rename out of data/ is checked by its old path too');
 check(/waits on Game Data Check/.test(dataBlocker(RPR, CODE, [REVIEW], SHA, HEAD)), 'research branch, no verdict -> waits (the #486 case)');
 check(/waits on Game Data Check/.test(dataBlocker(TPR, CODE, [REVIEW], SHA, HEAD)), 'title "Research: ..." on a thread branch, no verdict -> waits');
 check(dataBlocker(GPR, PACK, [REVIEW], SHA, HEAD) === '', "Game Data Check's own data PR -> no wait on itself");
@@ -72,7 +75,18 @@ check(/waits on Game Data Check/.test(dataBlocker(RPR, PACK, [V('~~**Game Data C
 check(/waits on Game Data Check/.test(dataBlocker(RPR, PACK, [c('someone-else', '**Game Data Check (ROL-03) on abc1234: VERIFIED.**', 9)], SHA, HEAD)), 'verdict from another account -> ignored, waits');
 check(/says CHANGES/.test(dataBlocker(RPR, PACK, [V('**Game Data Check (ROL-03) on abc1234: VERIFIED.**', 6), V('**Game Data Check (ROL-03) on abc1234: CHANGES.**', 8)], SHA, HEAD)), 'later CHANGES wins');
 check(dataBlocker(RPR, PACK, [V('**Game Data Check (ROL-03) on abc1234: CHANGES.**', 6), V('**Game Data Check (ROL-03) on abc1234: VERIFIED.**', 8)], SHA, HEAD) === '', 'later VERIFIED after CHANGES -> merges');
-check(/const data = dataBlocker\(pr, files, comments, sha, headAt\);\s*\n\s*if \(data\) \{.*continue; \}/.test(loop), 'merge loop: dataBlocker runs and skips before a PR is merged');
+check(/const data = dataBlocker\(pr, touched, comments, sha, headAt\);\s*\n\s*if \(data\) \{.*continue; \}/.test(loop), 'merge loop: dataBlocker runs and skips before a PR is merged');
+
+// pipeline.yml starts a fix round from Game Data Check's CHANGES (#518 got none from it, 2026-10-19).
+const pipe = readFileSync(join(ROOT, '.github', 'workflows', 'pipeline.yml'), 'utf8');
+const dc = pipe.match(/const DATACHANGES = (\/.+\/m);/);
+check(!!dc, 'pipeline.yml has the DATACHANGES pattern');
+const DATACHANGES = dc ? new Function(`return ${dc[1]};`)() : /$^/;
+check(DATACHANGES.test('**Game Data Check (ROL-03) on 19a3ced: CHANGES.** Three blocking items.'), 'pipeline: her CHANGES line -> fix round');
+check(!DATACHANGES.test('**Game Data Check (ROL-03) on 19a3ced: VERIFIED.**'), 'pipeline: VERIFIED -> no fix round');
+check(!DATACHANGES.test('~~**Game Data Check (ROL-03) on 19a3ced: CHANGES.**~~ [Edit: withdrawn]'), 'pipeline: struck CHANGES -> no fix round');
+check(/contains\(github\.event\.comment\.body, 'Game Data Check \(ROL-03\)'\)/.test(pipe), 'pipeline: an owner-account Game Data Check comment reaches the decide job');
+check(/if \(DATACHANGES\.test\(body\)\) \{ want = 'fix'; reviewBody = body; reason = dataAsk; \}/.test(pipe), 'pipeline: owner-account CHANGES gets a fix run naming the head');
 
 console.log(`\n${n - fail}/${n} auto-merge checks passed`);
 console.log(fail ? 'AUTOMERGE CHECKS FAILED' : 'AUTOMERGE CHECKS PASSED');

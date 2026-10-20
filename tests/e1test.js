@@ -180,14 +180,14 @@ const cards = p => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-
         sw: document.documentElement.scrollWidth, iw: innerWidth }; });
     await load('advanced');
     let m = await look();
-    ok('phone Advanced Lv 27: featured card first, its actions >= 44 px tall and as wide as the card', m.phone && m.cur === 0 && m.btns.length > 0 && m.btns.every(x => x.h >= 44 && x.w >= m.inner - 1), m);
+    ok('phone Advanced Lv 27: featured card first, its actions >= 44 px tall and wide (Show sits in the title row, 0.8 P10)', m.phone && m.cur === 0 && m.btns.length > 0 && m.btns.every(x => x.h >= 44 && x.w >= 44), m);
     ok('phone Advanced Lv 27: no "i" after a title, no nested scroll, no actions on compact cards, no sideways scroll', !m.iInTitle && !m.nested && !m.compactActs && m.sw <= m.iw, m);
     ok(`phone Advanced Lv 27: pager says "1 of ${m.n}"`, m.n > 1 && m.pg === `1 of ${m.n}`, m.pg);
     const names = await pp.evaluate(() => ({ group: document.querySelector('#nowStar .ns-pg').getAttribute('aria-label'), b: [...document.querySelectorAll('#nowStar [data-nspg]')].map(x => x.getAttribute('aria-label')), live: document.querySelector('#nowStar .ns-pgn').getAttribute('aria-live') }));
     ok('phone pager: spoken names (group, Previous card, Next card), the count is announced', names.group === 'Next up cards' && names.b.join() === 'Previous card,Next card' && names.live === 'polite', names);
     const seen = [], bad = [];
     for (let i = 0; i < m.n; i++) { const x = await look(); seen.push(x.cur);
-      if (x.pg !== `${i + 1} of ${m.n}` || x.firsts !== 1 || x.iInTitle || (x.iLine && x.iLine.iTop < x.iLine.h3Bottom) || !x.btns.every(y => y.h >= 44 && y.w >= x.inner - 1)) bad.push({ i, ...x });
+      if (x.pg !== `${i + 1} of ${m.n}` || x.firsts !== 1 || x.iInTitle || (x.iLine && x.iLine.iTop < x.iLine.h3Bottom) || !x.btns.every(y => y.h >= 44 && y.w >= 44)) bad.push({ i, ...x });
       await pp.click('#nowStar [data-nspg="1"]'); await pp.waitForTimeout(80); }
     m = await look();
     ok('phone pager: "Next card" reaches every card in order, then wraps to the first', seen.join() === [...Array(m.n).keys()].join() && m.cur === 0 && !bad.length, { seen, bad: bad.slice(0, 3) });
@@ -205,7 +205,7 @@ const cards = p => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-
     ok('phone: the featured card\'s action completes it', await pp.evaluate(() => JSON.stringify(char(state).checks)) !== st0);
     await load('basic');
     m = await look();
-    ok('phone Basic Lv 27: no pager, the first card featured with full-width 44 px actions, no nested scroll', m.phone && m.pg === null && m.cur === 0 && m.btns.length > 0 && m.btns.every(x => x.h >= 44 && x.w >= m.inner - 1) && !m.nested, m);
+    ok('phone Basic Lv 27: no pager, the first card featured with 44 px actions, no nested scroll', m.phone && m.pg === null && m.cur === 0 && m.btns.length > 0 && m.btns.every(x => x.h >= 44 && x.w >= 44) && !m.nested, m);
     await pp.setViewportSize({ width: 601, height: 844 }); await pp.waitForTimeout(300);
     ok('601 px: the desktop stack (no pager, no phone layout)', await pp.evaluate(() => !document.querySelector('#nowStar .ns-pg, #nowStar .ns-phone') && !!document.querySelector('#nowStar h3 .nsinfo, #nowStar .ns-stack')));
     await pctx.close();

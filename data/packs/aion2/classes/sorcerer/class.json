@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/classes.schema.json",
+  "schemaVersion": 2,
+  "collection": "classes",
+  "class": "sorcerer",
+  "records": [
+    {
+      "id": "class:sorcerer",
+      "class": "sorcerer",
+      "name": "Sorcerer",
+      "release": "hidden",
+      "defaultBuild": "build:sorcerer:guide",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/sorcerer",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "notes": [
+        "Hidden until 0.8 P17 adds its guide pack (data/packs/aion2/asmodian/sorcerer/, which defines build:sorcerer:guide) and lists it in the class picker."
+      ]
+    }
+  ]
+}
