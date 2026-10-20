@@ -273,4 +273,4 @@ function journeyMount() {
 
 /* the Later list (src/cards/ahead.js) is a section of this card; after-timeline: a pack's section under the story timeline */
 const journeyCard = { id: "journey", slot: "rail", order: 200, root: null, sections: ["ahead", "after-timeline"], mount: journeyMount, update: () => syncLevel() };
-export { useJourneyParts, renderQuest, renderQuestSubs, renderStoryChips, renderStoryReqs, setLevel, setObj, setSub, completeBefore, subListHTML, stepQuest, journeyCard };
+export { useJourneyParts, renderQuest, renderQuestSubs, renderStoryChips, renderStoryReqs, applyLevel, setLevel, setObj, setSub, completeBefore, subListHTML, stepQuest, journeyCard };

@@ -6,6 +6,7 @@ import { definePack } from "../../core/pack.js";
 import { GATE_GRAPH } from "./data/gate-graph.js";
 import { GATE_PROPOSED } from "./data/gate-proposed.js";
 import { QUESTS, QUEST_STEP_NOTES } from "./data/story.js";
+import { GAME_CLASSES } from "./data/classes.js";
 import { GATES, STEPS } from "./data/milestones.js";
 import { GATE_CHANGES, KEPT_RULES, aion2Transforms } from "./rules.js";
 import { hopName, isAscensionKey, objLow, objSubs, storyHereOf, storyRecGate, zoneOfKey } from "./requirements.js";
@@ -60,6 +61,8 @@ export const aion2Pack = definePack({
   character: { pack: PACK, class: CLASS },
   /* the names are the class records' (data/packs/aion2/classes/<class>/class.json; tests/core/chars.test.mjs) */
   classes: [{ class: CLASS, pack: PACK, name: "Assassin" }, RANGER, GLADIATOR, SPIRITMASTER, TEMPLAR],
+  /* every class of the game, guide or not (0.8 P12: the welcome card's class picker shows the others as "Soon") */
+  gameClasses: GAME_CLASSES,
   keptRules: KEPT_RULES,
   gateChanges: GATE_CHANGES,
   graphTransforms: aion2Transforms,

@@ -24,6 +24,21 @@ export function addChar(state, { class: cls, name, now = 0, id } = {}) {
   return { ...state, current: id, chars: { ...state.chars, [id]: c } };
 }
 
+/* An untouched start (0.8 P12): the save's only character, at Lv 1, unnamed, with nothing ticked (what a fresh browser
+   starts with). */
+export const untouchedStart = state => {
+  const live = Object.keys(state.chars).filter(k => !isRemoved(state.chars[k])), c = state.chars[state.current];
+  return live.length === 1 && live[0] === state.current && (+c.level || 1) === 1 && !c.name && !Object.values(c.checks || {}).some(Boolean);
+};
+
+/* Start as class cls (0.8 P12, the welcome card's class pick): an untouched start of another class is replaced by a new
+   character of cls in slot id (addChar), and the old slot is removed (removeChar: its tombstone keeps it from coming back
+   through sync), so the save holds one character, of cls. A save with progress, or one already of cls, is returned as it is. */
+export function startAs(state, { class: cls, now = 0, id } = {}) {
+  if (cls === undefined || state.chars[state.current].class === cls || !untouchedStart(state)) return state;
+  return removeChar(addChar(state, { class: cls, now, id }), state.current, now);
+}
+
 /* Make slot id the current character. */
 export function switchChar(state, id) {
   slotOf(state, id);

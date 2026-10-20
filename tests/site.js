@@ -69,6 +69,59 @@ const checkReport = (label, m, want) => {
       ok('welcome: shown on a fresh browser above Next up, "Unofficial guide", not affiliated with or endorsed by NCSoft', wel.shown && wel.above && /Unofficial guide/.test(wel.text) && /not affiliated with or endorsed by NCSoft/i.test(wel.text), wel);
       await ctx390.close();
     }
+    /* Your class on the welcome (0.8 P12, #501): every class of the game from the pack, a class with a guide pickable, the
+       rest "Soon"; a pick other than the Assassin carries into Start and the join form, leaving one character of it */
+    {
+      const ctxC = await b.newContext({ viewport: { width: 360, height: 800 } }), pc = await ctxC.newPage();
+      const perrs = []; pc.on('pageerror', e => perrs.push(e.message));
+      await pc.goto(CFG.CUR); await pc.waitForTimeout(500);
+      const cl = await pc.evaluate(() => {
+        const g = document.getElementById('welClasses'), bs = [...g.querySelectorAll('.welclass')];
+        /* the colour behind an element: its own, else its nearest ancestor's that isn't transparent */
+        const bgOf = e => { for (; e; e = e.parentElement) { const c = getComputedStyle(e).backgroundColor; if (!/rgba\(.*, 0\)$|transparent/.test(c)) return c; } return 'rgb(0, 0, 0)'; };
+        const lum = c => { const [r, gg, bb] = c.match(/[\d.]+/g).slice(0, 3).map(v => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }); return 0.2126 * r + 0.7152 * gg + 0.0722 * bb; };
+        const ratio = (a, b2) => { const [x, y] = [lum(a), lum(b2)].sort((p, q) => q - p); return (x + 0.05) / (y + 0.05); };
+        const soon = bs.filter(x => x.classList.contains('welsoon')).map(x => { const s = x.querySelector('small'), cs = getComputedStyle(s);
+          return { cls: x.dataset.class, text: s.textContent, px: parseFloat(cs.fontSize), ratio: ratio(cs.color, bgOf(x)), nameRatio: ratio(getComputedStyle(x.querySelector('span')).color, bgOf(x)) }; });
+        const sm = bs.find(x => x.dataset.class === 'spiritmaster'), smName = sm && sm.querySelector('span');
+        const rows = new Set(bs.map(x => Math.round(x.getBoundingClientRect().top))).size;
+        return { role: g.getAttribute('role'), label: (document.getElementById(g.getAttribute('aria-labelledby')) || {}).textContent, n: bs.length,
+          classes: bs.map(x => x.dataset.class), checked: bs.filter(x => x.getAttribute('aria-checked') === 'true').map(x => x.dataset.class), soon, rows,
+          smFits: !!smName && smName.scrollWidth <= smName.clientWidth + 0.5 && smName.getBoundingClientRect().right <= sm.getBoundingClientRect().right && sm.scrollWidth <= sm.clientWidth,
+          noTick: !/✓|✔/.test(g.textContent), emblems: bs.every(x => { const i = x.querySelector('img'); return i && i.complete && i.naturalWidth > 0 && /\.webp$/.test(i.getAttribute('src')); }),
+          playable: packClasses().map(e => e.class), packs: Object.fromEntries(packClasses().map(e => [e.class, e.pack])), game: (activePack().gameClasses || []).map(e => e.class) };
+      });
+      ok('welcome class: a radiogroup "Your class" of every class of the game (the pack\'s list), emblem and name each, Assassin picked, no check mark',
+        cl.role === 'radiogroup' && cl.label === 'Your class' && cl.n === 8 && JSON.stringify(cl.classes) === JSON.stringify(cl.game) && JSON.stringify(cl.checked) === '["assassin"]' && cl.noTick && cl.emblems, cl);
+      ok('welcome class: exactly the classes without a guide pack say "Soon"', JSON.stringify(cl.soon.map(s => s.cls)) === JSON.stringify(cl.game.filter(c => !cl.playable.includes(c))) && cl.soon.every(s => s.text === 'Soon'), cl.soon);
+      ok('welcome class: "Soon" text is at least 12 px and 4.5:1 against its badge (name too)', cl.soon.every(s => s.px >= 12 && s.ratio >= 4.5 && s.nameRatio >= 4.5), cl.soon);
+      ok('welcome class: 4 × 2 at 360 px, "Spiritmaster" fits its badge', cl.rows === 2 && cl.smFits, cl);
+      /* a "Soon" badge can't be picked */
+      const soonCls = cl.soon.length ? cl.soon[0].cls : null;
+      /* force: Playwright won't click an aria-disabled element, which is the point here */
+      if (soonCls) await pc.click(`.welclass[data-class="${soonCls}"]`, { force: true });
+      ok('welcome class: clicking a "Soon" class picks nothing', await pc.evaluate(() => [...document.querySelectorAll('.welclass[aria-checked="true"]')].map(x => x.dataset.class).join()) === 'assassin');
+      /* each class with a guide: a fresh browser starts as it, one character of that class (no leftover Assassin slot) */
+      const live = () => pc.evaluate(k => Object.values(JSON.parse(localStorage.getItem(k)).chars).filter(c => !c.deletedAt).map(c => c.class), KEY).catch(e => String(e));
+      for (const c of cl.playable) {
+        await pc.evaluate(() => localStorage.clear()); await pc.goto(CFG.CUR); await pc.waitForTimeout(400);
+        await pc.click(`.welclass[data-class="${c}"]`);
+        await Promise.all([c === 'assassin' ? Promise.resolve() : pc.waitForEvent('load'), pc.click('#welStart')]); await pc.waitForTimeout(400);
+        const got = await pc.evaluate(() => ({ chars: Object.values(state.chars).filter(x => !x.deletedAt).map(x => x.class), cls: char(state).class, pack: self.DAEVA_PACK, welcome: !document.getElementById('welcomeCard').hidden }));
+        ok(`welcome class: Start as ${c} leaves one character, a ${c} on its own guide, welcome gone`, JSON.stringify(got.chars) === JSON.stringify([c]) && got.cls === c && got.pack === cl.packs[c] && !got.welcome
+          && JSON.stringify(await live()) === JSON.stringify([c]), got);
+      }
+      /* the pick carries into the join form */
+      await pc.evaluate(() => localStorage.clear()); await pc.goto(CFG.CUR); await pc.waitForTimeout(400);
+      const joinCls = cl.playable.find(c => c !== 'assassin');
+      await pc.click(`.welclass[data-class="${joinCls}"]`); await pc.click('#welJoin');
+      await pc.evaluate(() => { const r = document.getElementById('welLv'); r.value = '12'; r.dispatchEvent(new Event('input')); });
+      await Promise.all([pc.waitForEvent('load'), pc.click('#welGo')]); await pc.waitForTimeout(400);
+      const joined = await pc.evaluate(() => ({ chars: Object.values(state.chars).filter(x => !x.deletedAt).map(x => x.class), lv: char(state).level, quest: char(state).quest, welcomed: state.welcomed }));
+      ok(`welcome class: the pick carries into the join form (${joinCls} at Lv 12, its story quest, welcomed)`, JSON.stringify(joined.chars) === JSON.stringify([joinCls]) && joined.lv === 12 && !!joined.quest && joined.welcomed === 1, joined);
+      ok('welcome class: no page errors', !perrs.length, perrs);
+      await ctxC.close();
+    }
     ok('brand: apple-touch-icon link, Daeva Companion lockup in the header', /icons\/apple-touch-icon\.png$/.test(head.touch) && head.brand, head);
     const foot = await p.evaluate(() => { const f = document.querySelector('.fanline'), links = f ? [...f.querySelectorAll('a')] : [];
       return { text: f ? f.innerText : '', links: links.map(a => [a.textContent, a.getAttribute('href'), a.getAttribute('rel')]) }; });

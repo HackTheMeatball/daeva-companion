@@ -232,12 +232,14 @@ const stamp = (html, build) => html.replaceAll('__APP_VERSION__', VERSION).repla
   if (depth) die('unclosed @web-only block');
 }
 
-/* icons: every referenced icon exists; every shipped icon is referenced */
-const ICON_RE = /assets\/icons\/([\w-]+)\.png/g;
+/* icons: every referenced icon exists; every shipped icon is referenced. PNG, and WebP (0.8 P12: the class emblems, kept
+   as the bytes Metabot served) */
+const ICON_RE = /assets\/icons\/([\w-]+\.(?:png|webp))/g;
 const used = new Set([...src.matchAll(ICON_RE)].map(m => m[1]));
-const shipped = readdirSync(P('src/assets/icons')).filter(f => f.endsWith('.png')).map(f => f.slice(0, -4));
-for (const n of used) if (!shipped.includes(n)) die(`src/ references assets/icons/${n}.png, which is missing`);
-for (const n of shipped) if (!used.has(n)) die(`src/assets/icons/${n}.png is not referenced by src/`);
+const shipped = readdirSync(P('src/assets/icons')).filter(f => /\.(png|webp)$/.test(f));
+for (const n of used) if (!shipped.includes(n)) die(`src/ references assets/icons/${n}, which is missing`);
+for (const n of shipped) if (!used.has(n)) die(`src/assets/icons/${n} is not referenced by src/`);
+for (const n of readdirSync(P('src/assets/icons'))) if (!/\.(png|webp)$/.test(n)) die(`src/assets/icons/${n}: an icon is .png or .webp`);
 
 /* fonts (self-hosted since 0.1.5): every referenced file exists, every shipped file is referenced, each family ships its
    OFL text; no request may go to a font service. */
@@ -268,7 +270,7 @@ writeFileSync(join(DIST, SYNC_FILE), syncJs);
 /* service worker: build id = hash of everything it caches; the class chunks and the sync chunk are precached (offline after
    the first visit) */
 const files = walk(DIST).map(f => relative(DIST, f).split('\\').join('/')).sort();
-const precache = ['./', ...files.filter(f => f === 'index.html' || f === 'manifest.webmanifest' || f === 'favicon.svg' || /^(assets\/icons|icons)\/.+\.png$/.test(f) || /^assets\/fonts\/.+\.woff2$/.test(f) || /^packs\/[\w.-]+\.js$/.test(f) || f === SYNC_FILE)];
+const precache = ['./', ...files.filter(f => f === 'index.html' || f === 'manifest.webmanifest' || f === 'favicon.svg' || /^(assets\/icons|icons)\/.+\.png$/.test(f) || /^assets\/icons\/.+\.webp$/.test(f) || /^assets\/fonts\/.+\.woff2$/.test(f) || /^packs\/[\w.-]+\.js$/.test(f) || f === SYNC_FILE)];
 for (const id of CLASS_PACKS) if (!precache.includes(chunkFile(id))) die(`class chunk ${chunkFile(id)} is not precached`);
 if (!precache.includes(SYNC_FILE)) die(`sync chunk ${SYNC_FILE} is not precached`);
 const h = createHash('sha256');
