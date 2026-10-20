@@ -1,6 +1,11 @@
 # Roadmap
 
-**1.0.0 = all eight classes, Asmodian only, Lv 1–45.** Every class meets the bar the Assassin guide sets today:
+**Vision (owner, 2026-10-20 5:42 PM ET):** "the ultimate end goal is just open the app, follow the next up and it's always
+the best thing you could be doing for your character. always. from 1-45 and beyond. This is Daeva Companion. be
+inspired." Every item is judged against it, and it is the acceptance bar for the endgame guide (0.10) and the
+microscope pass (0.11).
+
+**1.0.0 = all eight classes, Asmodian only, Lv 1–45, and the endgame guide past Lv 45.** Every class meets the bar the Assassin guide sets today:
 verified data only (see CLAUDE.md), Next up always correct, saved progress never broken. Elyos is after 1.0.
 
 **How we work by 1.0 (owner, 2026-10-20 2:43 PM ET):** the owner can just say "add x feature" and the workflow is tuned
@@ -1350,7 +1355,8 @@ resets) into the path to 1.0. Built on the engine as a module with no page-scrip
 pre-1.0 breaks are still allowed. Research starts during 0.9: Source Vetting (Lydia) vets the owner's reference
 (Kanon's Aion 2 Bible, PDF in the project's shared folder, `research/endgame/`) and other sources, and Game Data Check
 (Gretchen) verifies the resets, the daily and weekly content and the gear-score paths (two sources or labelled, as
-everywhere). Items are shaped in 0.10's own pass once that research is in.
+everywhere). Items are shaped in 0.10's own pass once that research is in. Acceptance bar: the Vision (top of this file), so for a
+Lv 45 character Next up always shows the best thing to do next.
 
 ### 0.11 — The 1.0 look and the microscope pass (estimate)
 
@@ -1362,7 +1368,7 @@ little different. Designed inside the 1.0 visual language by Design Lead, review
 critic, built as a bot item. The Elyos layer is mocked but has no players until Elyos packs exist. Cards stop
 reading each other's DOM (architecture audit C3), which makes "add a feature" cheaper. The same step shown in three places
 (UX audit finding 12) is settled here. **Microscope pass (owner, 2026-10-20 5:24 PM ET):** before the 1.0 candidate, every
-card, feature, element, section and function is reviewed against its purpose: Design Review (Holly) for looks, Code Review
+card, feature, element, section and function is reviewed against its purpose and the Vision (top of this file): Design Review (Holly) for looks, Code Review
 (Howard) for code, Game Data Check (Gretchen) for data, Team Audit (Gomez) or an outside reviewer for the whole; each
 finding is fixed or recorded as a decision before the candidate is cut. The ledger (Rules Steward, Francesca) and the
 tracker (Tracker Design, Skyler; Tracker Sync, Huell) get the same review, every row, tab, card and definition, and stay
