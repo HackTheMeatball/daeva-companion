@@ -1,0 +1,39 @@
+# Item spec template
+
+The Release Planner writes every item spec in `docs/plans/<minor>/README.md` (and each `<minor> P<n>` issue) from this
+file. `tests/kickoff.mjs` parses the example below with the same code kickoff uses, so a format change here that kickoff
+can't read fails its own PR (Kaizen, 2026-10-19: the After parser broke twice on spec-format changes). Change the spec
+format only here, together with the parser and its test.
+
+## Rules kickoff depends on
+
+- The issue title is `<minor> P<n>: <short title>` (a patch item `<x.y.z> F<n>: …`, the release `<minor> R: Release …`).
+- The **first** `After:` in the issue body is the one kickoff reads. It holds bare keys separated by commas:
+  - `P<n>` (another item of the same minor), `research-<slug>` (met once a docs/research file named with `<slug>` is
+    on main), `owner-ok-<minor>-<slug>` (met once a DECISIONS topic carries it in backticks on an "Owner, typed" row);
+  - `everything` (every other item of the minor), or `none`.
+  - Markdown marks and `(…)` notes are stripped; text after the first `. ` is ignored. Anything else is "not
+    understood" and holds the item, which is how the release item is held on purpose until the Release Planner
+    releases it.
+- The queue line is the issue's last line: `- [next] #<n> <opus|sonnet> lanes:<lane>[,<lane>…]`, or `lanes:none`;
+  `alone` is a separate word (`lanes:release alone`), never part of the lane list.
+- Lanes are the serial files of docs/team/DISPATCH.md. Names outside kickoff's known list only warn, and kickoff still
+  keeps same-named lanes apart.
+
+## Example
+
+```markdown
+## P2: Templar class data (hidden)
+
+- **Problem.** One or two sentences: what is wrong or missing, with its source (issue, review, owner message).
+- **Result.** What exists when it is done, file by file.
+- **No-gos.** What it must not change.
+- **Acceptance.**
+  - [ ] One checkable line each, with the evidence the PR pastes.
+- **Files.** The files it owns.
+- **Lanes:** gen. **Model:** Opus, L (120 min).
+- **After:** P1, research-templar, owner-ok-0.8-icon-box.
+```
+
+The issue body is `# <title>`, a one-line "Planned in …" note (pass, plan file, owner go), the spec above verbatim,
+`## Lanes, model, order` (lanes, model, stall limit, gate), and the queue line last.
