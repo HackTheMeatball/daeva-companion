@@ -7,7 +7,8 @@
 .item.rdone input:checked { background: var(--good); border-color: var(--good); }
 .item.rdone input:checked ~ .txt { color: var(--good); text-decoration: none; }
 .sh-note { list-style: none; font-size: 12px; color: var(--muted); display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-8); align-items: center; margin: 0 0 var(--space-4); }
-/* Not the .itl reward run (Sealed Dungeons): that is the muted secondary line, not a bright label. */
+/* Not the .itl reward run (Sealed Dungeons; Strongholds with its "· levels inferred"): that is the muted secondary
+   line, not a bright label. */
 .sh-note > span:first-child:not(.itl) { color: var(--fg); font-weight: 600; display: inline-flex; align-items: center; gap: var(--space-4); }
 .sh-note + .item.arow { margin-top: var(--space-4); }
 .asec { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: var(--space-8); margin: var(--space-2) 0 var(--space-2); }
@@ -61,6 +62,8 @@
 .area-list .item.arow.fading { opacity: 0; max-height: 0; padding-top: 0; padding-bottom: 0; border-top-color: transparent; }
 .areas-head h2 { margin: 0; white-space: nowrap; letter-spacing: .07em; }
 #areasBody { margin-top: var(--space-12); }
+/* the Strongholds note's shared label ("levels inferred") wraps as one piece, never between the word and its tag */
+#areaList .sh-note .nw { white-space: nowrap; }
 /* In-progress dungeon / stronghold */
 #areaList li.running { background: color-mix(in srgb, var(--gold) 8%, transparent); border-radius: var(--radius-8); }
 #areaList li.running input { border-color: var(--gold); }

@@ -57,7 +57,7 @@ function renderAreas() {
   /* a stronghold's level range carries its label (0.8 P20): when every listed range shares one, the header says it once
      ("levels inferred") and a row tags only its own, differing label; each row's tooltip still names its label */
   const shSt = shs.length && shs.every(x => x.it.lvSt === shs[0].it.lvSt) ? shs[0].it.lvSt || "" : "";
-  const shNote = `${SH_REWARD} each${stTag(shSt) ? ` · levels${stTag(shSt)}` : ""}`;
+  const shNote = `<span class="itl">${SH_REWARD} each${stTag(shSt) ? ` <span class="nw">· levels${stTag(shSt)}</span>` : ""}</span>`;
   const row = x => {
     if (!vis(x)) return "";
     const it = x.it, done = !!ad(x), sh = it.kind === "stronghold", run = !done && !!(char(state).areaRun || {})[x.k];

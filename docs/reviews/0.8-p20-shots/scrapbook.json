@@ -1,5 +1,6 @@
 [
   {"case": "milestone-row-1500", "kind": "before-after", "title": "Unsure quest zones say so", "caption": "At Lv 22, Nine Wonders of Altgard: 1st Leg now reads \"Tranein Highland check in game\": sources disagree on its zone."},
   {"case": "milestone-row-390", "kind": "before-after", "title": "The same label on a phone", "caption": "On a phone the \"check in game\" tag follows the zone the same way."},
-  {"case": "strongholds-1500", "kind": "before-after", "title": "Stronghold levels marked inferred", "caption": "No source states a stronghold's level range, so each one in Dungeons & Strongholds now carries a small \"inferred\" tag."}
+  {"case": "strongholds-1500", "kind": "before-after", "title": "Stronghold levels marked inferred", "caption": "No source states a stronghold's level range, and every one is inferred, so the Strongholds note says it once: \"2 Noble Belt Enhance Scrolls each · levels inferred\". A row would carry its own tag only if its label differed."},
+  {"case": "strongholds-390", "kind": "before-after", "title": "The same note on a phone", "caption": "On a phone the label stays in the note, so no row grows a line."}
 ]
