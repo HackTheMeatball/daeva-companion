@@ -80,6 +80,7 @@
       "type": "passive",
       "learnLv": 6,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-chanter-crossguard.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 2,
@@ -108,6 +109,7 @@
       "type": "active",
       "learnLv": 4,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-chanter-dark-crush.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -196,6 +198,7 @@
       "type": "active",
       "learnLv": 16,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-chanter-defiance.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -260,6 +263,7 @@
       "type": "passive",
       "learnLv": 21,
       "levelGate": "flat",
+      "icon": "assets/icons/sk-chanter-earths-promise.png",
       "boardNodes": {
         "perBoard": {
           "board:zikel": 2,
@@ -291,6 +295,7 @@
       "type": "active",
       "learnLv": 5,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-chanter-gust-rampage.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -379,6 +384,7 @@
       "type": "active",
       "learnLv": 7,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-chanter-heat-wave-blow.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -475,6 +481,7 @@
       "type": "active",
       "learnLv": 3,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-chanter-impactful-crush.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -536,6 +543,7 @@
       "type": "active",
       "learnLv": 1,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-chanter-incandescent-blow.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -597,6 +605,7 @@
       "type": "passive",
       "learnLv": 11,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-chanter-inspiring-spell.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 2,
@@ -625,6 +634,7 @@
       "type": "active",
       "learnLv": 1,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-chanter-onslaught.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -713,6 +723,7 @@
       "type": "passive",
       "learnLv": 9,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-chanter-protection-circle.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 2,
@@ -744,6 +755,7 @@
       "type": "passive",
       "learnLv": 17,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-chanter-raging-spell.png",
       "boardNodes": {
         "perBoard": {
           "board:zikel": 2,
@@ -858,6 +870,7 @@
       "type": "active",
       "learnLv": 1,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-chanter-rushing-smash.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -919,6 +932,7 @@
       "type": "active",
       "learnLv": 14,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-chanter-spinning-strike.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -1015,6 +1029,7 @@
       "type": "active",
       "learnLv": 10,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-chanter-tremor-crush.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -1076,6 +1091,7 @@
       "type": "active",
       "learnLv": 12,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-chanter-wave-blow.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -1140,6 +1156,7 @@
       "type": "passive",
       "learnLv": 25,
       "levelGate": "flat",
+      "icon": "assets/icons/sk-chanter-winds-promise.png",
       "boardNodes": {
         "perBoard": {
           "board:zikel": 2,

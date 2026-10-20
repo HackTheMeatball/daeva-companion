@@ -1,0 +1,48 @@
+{
+  "chanter/L30-q48-none-A": {
+    "in": "7ad8d1ae6906",
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/chanter","class":"chanter","name":"","created":0,"checks":{},"level":30,"quest":"Canyon's Secret","mt":{"level":[0,30],"quest":[0,["Canyon's Secret",null]]}},{"checks":{},"level":30,"quest":"Canyon's Secret","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/chanter","class":"chanter","name":"","created":0,"mt":{"level":[0,30],"quest":[0,["Canyon's Secret",null]],"rotSeen":[1790856000,["Left click:Onslaught:0","Right click:Incandescent Blow:0","Q:Tremor Crush:0","Q:Wave Blow:1","E:Gust Rampage:0","E:Heat Wave Blow:1","E:Dark Crush:2","1:Rushing Smash:0","2:Impactful Crush:0","3:Recuperation:0","4:Spinning Strike:0"]]},"rotSeen":["Left click:Onslaught:0","Right click:Incandescent Blow:0","Q:Tremor Crush:0","Q:Wave Blow:1","E:Gust Rampage:0","E:Heat Wave Blow:1","E:Dark Crush:2","1:Rushing Smash:0","2:Impactful Crush:0","3:Recuperation:0","4:Spinning Strike:0"]}],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g22": ["(absent)",true],
+      "open.g25": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "open.g28": ["(absent)",true],
+      "open.g30": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "savedAt": ["(absent)",1790856000000]
+    },
+    "mode": "advanced"
+  },
+  "chanter/L30-q48-none-B": {
+    "in": "b948205e197c",
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/chanter","class":"chanter","name":"","created":0,"checks":{},"level":30,"quest":"Canyon's Secret","mt":{"level":[0,30],"quest":[0,["Canyon's Secret",null]]}},{"checks":{},"level":30,"quest":"Canyon's Secret","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/chanter","class":"chanter","name":"","created":0,"mt":{"level":[0,30],"quest":[0,["Canyon's Secret",null]],"rotSeen":[1790856000,["Left click:Onslaught:0","Right click:Incandescent Blow:0","Q:Tremor Crush:0","Q:Wave Blow:1","E:Gust Rampage:0","E:Heat Wave Blow:1","E:Dark Crush:2","1:Rushing Smash:0","2:Impactful Crush:0","3:Recuperation:0","4:Spinning Strike:0"]]},"rotSeen":["Left click:Onslaught:0","Right click:Incandescent Blow:0","Q:Tremor Crush:0","Q:Wave Blow:1","E:Gust Rampage:0","E:Heat Wave Blow:1","E:Dark Crush:2","1:Rushing Smash:0","2:Impactful Crush:0","3:Recuperation:0","4:Spinning Strike:0"]}],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g22": ["(absent)",true],
+      "open.g25": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "open.g28": ["(absent)",true],
+      "open.g30": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "savedAt": ["(absent)",1790856000000]
+    },
+    "mode": "basic"
+  }
+}

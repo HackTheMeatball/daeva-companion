@@ -1,0 +1,26 @@
+{
+  "chanter/L30-q48-none-A": {
+    "prev": "The Past Revealed Lv 30",
+    "quest": "Canyon's Secret",
+    "lv": "Lv 30",
+    "next": "Bitter Reality Lv 32",
+    "hint": "milestone now: Lv 30",
+    "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+    "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
+    "track": ["Daily dungeon and Vaizel board now Lv 30"],
+    "ring": "1%",
+    "prog": ["Quests 13 0/58","Dungeons 43 0/60","Strongholds 7 1/15"]
+  },
+  "chanter/L30-q48-none-B": {
+    "prev": "The Past Revealed Lv 30",
+    "quest": "Canyon's Secret",
+    "lv": "Lv 30",
+    "next": "Bitter Reality Lv 32",
+    "hint": "milestone now: Lv 30",
+    "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+    "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
+    "track": ["Daily dungeon and Vaizel board now Lv 30"],
+    "ring": "1%",
+    "prog": ["Quests 13 0/58","Dungeons 43 0/60","Strongholds 7 1/15"]
+  }
+}

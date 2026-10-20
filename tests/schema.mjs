@@ -202,11 +202,10 @@ if (g) {
   /* 0.8 P16 (#505) adds the Sorcerer, 0.8 P4 (#493) the Cleric and P18 (#507) the Chanter as idle packs again (their
      guide items come later), so the check names the classes that may be idle, not a count; 0.8 P2 (#491) added the
      Templar idle and 0.8 P3 (#492) gave it its guide pack, so it is no longer among them; 0.8 P5 (#494) did the same for
-     the Cleric, and 0.8 P17 (#506) for the Sorcerer */
+     the Cleric, 0.8 P17 (#506) for the Sorcerer and 0.8 P19 (#508) for the Chanter, the last idle one: data/packs has
+     none left, so the idle checks run on the Spiritmaster copy below */
   const idle = (g.idle || []).map(x => x.pack);
-  const ch = (g.idle || []).find(x => x.pack === 'aion2/classes/chanter'), chColl = f => ch ? ch.all.filter(x => x.file.endsWith('/' + f)).length : 0;
-  ok('data/packs: the idle class packs are 0.8 class data only (Chanter since 0.8 P18)', idle.includes('aion2/classes/chanter')
-    && idle.every(p => ['chanter'].map(c => 'aion2/classes/' + c).includes(p)), idle);
+  ok('data/packs: no idle class pack is left (the Chanter, idle since 0.8 P18, got its guide pack in 0.8 P19)', !idle.length, idle);
   /* 0.8 P12 (#501): every bundle carries GAME_CLASSES, the game's class list ({ class, name } per class, for the welcome's
      class picker), so the class words below are read in the module without that one line; the line itself holds
      exactly the class ids and names of data/packs/aion2/pack.json `classes` and the class records, nothing else */
@@ -223,9 +222,6 @@ if (g) {
     && tpColl('class.json') === 1 && tpColl('skills.json') === 22 && tpColl('stigmas.json') === 13 && tpColl('board-nodes.json') === 537, [tpColl('skills.json'), tpColl('stigmas.json'), tpColl('board-nodes.json')]);
   const tpWords = /templar|Vicious Strike|Shield Smite|Doom Shield/i, tpIn = [recordsOnly(g.module), g.gateModule, g.proposedModule, g.placeModule].filter(m => tpWords.test(m)).map(m => m.match(tpWords)[0]);
   ok('the Assassin bundle carries no Templar record (generated, gate, proposed and place modules)', !tpIn.length, tpIn);
-  ok('idle class pack aion2/classes/chanter: 1 class, 22 skills, 13 stigmas, 537 board nodes (the research CSVs\' counts), checked by the generator', !!ch && chColl('class.json') === 1
-    && chColl('skills.json') === 22 && chColl('stigmas.json') === 13 && chColl('board-nodes.json') === 537 && g.report.checks.some(x => x.check.startsWith('aion2/classes/chanter: board:triniel: 117 nodes')),
-    ch && [chColl('skills.json'), chColl('stigmas.json'), chColl('board-nodes.json')]);
   /* 0.8 P5: the Cleric class pack compiles through its guide pack (aion2/asmodian/cleric), and the Assassin bundle
      carries none of it (it was an idle pack, checked by the generator, since 0.8 P4) */
   const clG = others[otherIds.indexOf('aion2/asmodian/cleric')], clColl = f => clG ? clG.all.filter(x => x.file.startsWith('data/packs/aion2/classes/cleric/') && x.file.endsWith('/' + f)).length : 0;
@@ -240,6 +236,13 @@ if (g) {
     && soColl('class.json') === 1 && soColl('skills.json') === 22 && soColl('stigmas.json') === 13 && soColl('board-nodes.json') === 537, [soColl('skills.json'), soColl('stigmas.json'), soColl('board-nodes.json')]);
   const soWords = /sorcerer|Flame Arrow|Bittercold Wind|Element Enhancement/i, soIn = [recordsOnly(g.module), g.gateModule, g.proposedModule, g.placeModule].filter(m => soWords.test(m)).map(m => m.match(soWords)[0]);
   ok('the Assassin bundle carries no Sorcerer record (generated, gate, proposed and place modules)', !soIn.length, soIn);
+  /* 0.8 P19: the Chanter class pack compiles through its guide pack (aion2/asmodian/chanter), and the Assassin bundle
+     carries none of it (it was an idle pack, checked by the generator, since 0.8 P18) */
+  const chG = others[otherIds.indexOf('aion2/asmodian/chanter')], chColl = f => chG ? chG.all.filter(x => x.file.startsWith('data/packs/aion2/classes/chanter/') && x.file.endsWith('/' + f)).length : 0;
+  ok('the Chanter class pack is no longer idle (0.8 P19); its guide pack compiles 1 class, 22 skills, 13 stigmas, 537 board nodes', !idle.includes('aion2/classes/chanter') && !!chG
+    && chColl('class.json') === 1 && chColl('skills.json') === 22 && chColl('stigmas.json') === 13 && chColl('board-nodes.json') === 537, [chColl('skills.json'), chColl('stigmas.json'), chColl('board-nodes.json')]);
+  const chWords = /chanter|Onslaught|Incandescent Blow|Undefeated Mantra/i, chIn = [recordsOnly(g.module), g.gateModule, g.proposedModule, g.placeModule].filter(m => chWords.test(m)).map(m => m.match(chWords)[0]);
+  ok('the Assassin bundle carries no Chanter record (generated, gate, proposed and place modules)', !chIn.length, chIn);
   let gi = null; try { gi = generate({ root: packsCopy('idle', makeIdle) }); } catch (e) { ok('generator runs on a copy with an idle Spiritmaster', false, e.message); }
   const sm = gi && (gi.idle || []).find(x => x.pack === SM), smColl = f => sm ? sm.all.filter(x => x.file.endsWith('/' + f)).length : 0;
   ok('idle class pack aion2/classes/spiritmaster (copy): 1 class, 22 skills, 13 stigmas, 537 board nodes, checked by the generator, modules unchanged', !!sm && smColl('class.json') === 1 && smColl('skills.json') === 22

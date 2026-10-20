@@ -1,0 +1,42 @@
+{
+  "chanter/L30-q48-none-A": [
+    "g6 | Missed | 1/8 | overdue | open",
+    "g9 | Missed | 0/5 | overdue | open",
+    "g10 | Missed | 1/7 | overdue | open",
+    "g12 | Missed | 1/9 | overdue | open",
+    "g15 | Missed | 0/2 | overdue | open",
+    "g16 | Missed | 2/14 | overdue | open",
+    "g19 | Missed | 0/10 | overdue | open",
+    "g20 | Missed | 0/3 | overdue | open",
+    "g22 | Missed | 2/14 | overdue | open",
+    "g25 | Missed | 0/16 | overdue | open",
+    "g27 | Missed | 0/5 | overdue | open",
+    "g28 | Missed | 0/2 | overdue | open",
+    "g30 | Now | 0/9 | current,upnext | open",
+    "g32 | Later | 0/11 | ",
+    "g35 | Later | 0/2 | ",
+    "g37 | Later | 0/5 | ",
+    "g40 | Later | 0/3 | ",
+    "g45 | Later | 0/32 | "
+  ],
+  "chanter/L30-q48-none-B": [
+    "g6 | Missed | 1/8 | overdue | open",
+    "g9 | Missed | 0/5 | overdue | open",
+    "g10 | Missed | 1/7 | overdue | open",
+    "g12 | Missed | 1/9 | overdue | open",
+    "g15 | Missed | 0/2 | overdue | open",
+    "g16 | Missed | 2/14 | overdue | open",
+    "g19 | Missed | 0/10 | overdue | open",
+    "g20 | Missed | 0/3 | overdue | open",
+    "g22 | Missed | 2/14 | overdue | open",
+    "g25 | Missed | 0/16 | overdue | open",
+    "g27 | Missed | 0/5 | overdue | open",
+    "g28 | Missed | 0/2 | overdue | open",
+    "g30 | Now | 0/9 | current,upnext | open",
+    "g32 | Later | 0/11 | ",
+    "g35 | Later | 0/2 | ",
+    "g37 | Later | 0/5 | ",
+    "g40 | Later | 0/3 | ",
+    "g45 | Later | 0/32 | "
+  ]
+}
