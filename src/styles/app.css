@@ -24,6 +24,8 @@
   /* states */
   --good: #5fbf8a;
   --good-soft: #5fbf8a22;
+  --on-good: #0d1a12;      /* dark text and the check on --good (0.8 P13: Turn in, the turned-in check) */
+  --rq-teal: #3ba281;      /* the Regional quests tile in Next up (0.8 P13, owner option A) */
   --warn: #e2a64a;
   --warn-ink: #1a1206;     /* text on a --warn fill */
   --prog: color-mix(in srgb, var(--fg) 45%, var(--line));  /* progress bars: neutral, --good when complete */
@@ -697,14 +699,14 @@ body.basic aside.rail { align-content: start; }
 .rq-st > * { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
 .rq-st.new > img { width: 22px; height: 22px; }
 .rq-st.run > img { width: 26px; height: 26px; }
-.rq-st.ok > .rq-ok { display: block; width: 22px; height: 22px; border-radius: var(--radius-round); background: var(--good); }
+.rq-st.ok > .rq-ok { display: block; width: 22px; height: 22px; border-radius: var(--radius-round); background: var(--good); color: var(--on-good); }
 .rq-ok > svg { display: block; width: 100%; height: 100%; }
 .rq-st.lg { display: inline-block; width: 17px; height: 17px; vertical-align: -3px; }
 .rq-st.lg.new > img, .rq-st.lg.ok > .rq-ok { width: 15px; height: 15px; }
 .rq-st.lg.run > img { width: 17px; height: 17px; }
 .q-act { flex: none; box-sizing: border-box; width: 84px; padding: var(--space-6) 0; border: 1px solid var(--line); border-radius: var(--radius-8); background: var(--panel-2); color: var(--fg); font: 600 13px/18px var(--body); text-align: center; cursor: pointer; }
 .q-act:hover:not(:disabled) { border-color: var(--muted); }
-.q-act.go { background: var(--good); border-color: var(--good); color: #0d1a12; }
+.q-act.go { background: var(--good); border-color: var(--good); color: var(--on-good); }
 .q-act:disabled { opacity: .45; cursor: default; }
 .q-act:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 /* a game icon inline in a tip's text (the extract flask, 0.8 P13) */

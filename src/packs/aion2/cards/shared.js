@@ -30,7 +30,7 @@ const kibMark = html => { let hit = false;
    metrics shift with the font) = turned in. st: "new" | "run" | "done"; cls "rq-st" = a row's 22 px icon, "rq-st lg" =
    the legend's 15 px one. The label is the icon's text alternative. */
 const RQ_ST = { new: ["assets/icons/rq-available.png", "To pick up"], run: ["assets/icons/quest-district.png", "In progress"], done: ["", "Turned in"] };
-const RQ_CHECK = `<svg viewBox="0 0 22 22" aria-hidden="true"><path d="M6.4 11.4l3 3 6.2-6.6" fill="none" stroke="#0d1a12" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const RQ_CHECK = `<svg viewBox="0 0 22 22" aria-hidden="true"><path d="M6.4 11.4l3 3 6.2-6.6" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 const rqStIco = (st, cls = "rq-st", label = RQ_ST[st][1]) => { const a = label ? `role="img" aria-label="${label}"` : `aria-hidden="true"`;
   return st === "done" ? `<span class="${cls} ok" ${a}><span class="rq-ok">${RQ_CHECK}</span></span>` : `<span class="${cls} ${st}" ${a}><img src="${RQ_ST[st][0]}" alt=""></span>`; };
 /* The legend under a "Regional quests" heading: the three icons in their order. */

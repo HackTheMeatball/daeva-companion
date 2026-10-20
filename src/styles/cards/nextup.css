@@ -314,7 +314,7 @@ html.pip .pip-hint { flex: none; padding-top: var(--space-6); font: 500 10px var
 /* Regional quests in Next up (0.8 P13, design-v2 §2 A and the owner's map pin answer; v4 buttons): every quest is one
    row of fixed columns, state icon · name (cut with "…", the full name in its title) · map pin (32 px, 36 px on phones) ·
    the button, so the left edges line up. The tile: the ❖ glyph in white on the regional teal, no dark panel (option A). */
-#nowStar .ns-card .num.ns-num:has(> .rq-tile) { background: #3ba281; border-color: #3ba281; color: #fff; }
+#nowStar .ns-card .num.ns-num:has(> .rq-tile) { background: var(--rq-teal); border-color: var(--rq-teal); color: var(--on-fill); }
 #nowStar .ns-qgrid li.qg:not(.rq-aux):not(.more) { display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; gap: var(--space-3); }
 #nowStar .ns-qgrid .ql { display: grid; grid-template-columns: 28px minmax(0, 1fr) 32px max-content; align-items: center; gap: var(--space-8); white-space: nowrap; overflow: visible; }
 #nowStar .ns-qgrid .q-nm { min-width: 0; display: flex; align-items: center; gap: var(--space-6); }
