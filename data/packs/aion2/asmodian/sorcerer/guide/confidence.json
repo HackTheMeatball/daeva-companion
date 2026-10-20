@@ -8,7 +8,7 @@
       "id": "conf:core-order",
       "group": "verified",
       "order": 46,
-      "text": "Sorcerer skill points: Flame Arrow, Ice Chain and Firestorm first, then Blaze, Bittercold Wind, Hellfire, Winter's Shackles and Robe of Flame, all to 10 (Metabot, daevaguides, aion2turkiye, mmo-codex; Ice Chain, Winter's Shackles and Robe of Flame: Metabot and daevaguides). Flame Arrow, Ice Chain and Firestorm as the first points and Hellfire from when it is learned are two-source; the order between those rules is inferred."
+      "text": "Sorcerer skill points: Flame Arrow, Ice Chain and Firestorm first, then Blaze, Bittercold Wind, Hellfire, Winter's Shackles and Robe of Flame, all to 10 (Metabot, daevaguides, aion2turkiye; mmo-codex takes the first five to 8; Ice Chain, Winter's Shackles and Robe of Flame: Metabot and daevaguides). Flame Arrow, Ice Chain and Firestorm as the first points and Hellfire from when it is learned are two-source; the order between those rules is inferred."
     },
     {
       "id": "conf:fire-mark",
@@ -26,7 +26,7 @@
       "id": "conf:first-nodes",
       "group": "disputed",
       "order": 233,
-      "text": "First Daevanion nodes (Nezekan's Fire Mark and Robe of Earth pairs, then Zikel's Grace of Enhancement pair): Metabot's Sorcerer page; daevaguides and aion2turkiye take Nezekan's Combat Speed, Cooldown Reduction and Hellfire, Firestorm and Bittercold Wind nodes first."
+      "text": "First Daevanion nodes (Nezekan's Fire Mark and Robe of Earth pairs, then Zikel's Grace of Enhancement pair): Metabot's Nezekan nodes from its Sorcerer page, ordered by when the boards open; daevaguides and aion2turkiye take Nezekan's Combat Speed, Cooldown Reduction and Hellfire, Firestorm and Bittercold Wind nodes first."
     },
     {
       "id": "conf:learn-levels",

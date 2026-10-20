@@ -288,7 +288,7 @@
     },
     {
       "id": "C48",
-      "claim": "Three Sorcerer skills fire only on a condition: Blaze on a target under Fire Mark, Flame Scattershot on a Staggered one, Frost Burst on a Frosted one.",
+      "claim": "Three Sorcerer skills fire only on a condition: Blaze on a target under Fire Mark, Flame Scattershot on a Staggered one, Frost Burst on a target under Frost.",
       "verdict": "verified",
       "sources": [
         {
@@ -394,7 +394,7 @@
         }
       ],
       "action": "keep",
-      "note": "docs/research/2026-10-sorcerer-pack.md §4.6: two-source through Metabot (Metabot's leveling build, mmo-codex, daevaguides give the same loop in different words). The charge rule is the skill text; 'hold, don't macro' has two guides. The guide's own wording, not the pages'. Hellfire's key (4) is the owner's default (C49).",
+      "note": "docs/research/2026-10-sorcerer-pack.md §4.6: three sources (Metabot's leveling build, mmo-codex, daevaguides give the same loop in different words). The charge rule is the skill text; 'hold, don't macro' has two guides. The guide's own wording, not the pages'. Hellfire's key (4) is the owner's default (C49).",
       "appliesTo": [
         "build:rotation",
         "build:hellfire",

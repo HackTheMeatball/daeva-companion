@@ -214,7 +214,7 @@
         },
         {
           "skill": "skill:sorcerer:fire-mark",
-          "core": true,
+          "core": false,
           "status": "single-source",
           "basis": "Fire Mark to 10 (single source): Metabot leveling; daevaguides only by its general 'passives to 10' line, aion2turkiye 5",
           "sources": [
@@ -267,7 +267,7 @@
       ],
       "skillOrderNotes": {
         "interleave": "Two-source rules (docs/research/2026-10-sorcerer-pack.md §4.2: mmo-codex [berdugz], daevaguides [couga54]): Flame Arrow, Ice Chain and Firestorm are the first point sinks, Blaze and Bittercold Wind next, Hellfire from when it is learned at 14. The first passive is not agreed (Absorb Essence for berdugz, Robe of Flame for couga54); the guide takes Metabot's targets, which leave Absorb Essence out. The order between those rules is inferred.",
-        "budget": "Core nine to Lv 10 = 9 × 21 = 189 points; Wish of Concentration to 7 = 9 (198), Frost to 5 = 5 (203). LEVEL_POINTS[45] = 203 (Metabot; aion2turkiye agrees) plus Wisdom Stones. Wish of Concentration to 10 (aion2turkiye, daevaguides) is the first place for points from quests and Sealed Dungeons (claim C44)."
+        "budget": "Eight core skills, then Fire Mark (core: false, single source, so after every core skill), to Lv 10 = 9 × 21 = 189 points; Wish of Concentration to 7 = 9 (198), Frost to 5 = 5 (203). LEVEL_POINTS[45] = 203 (Metabot; aion2turkiye agrees) plus Wisdom Stones. Wish of Concentration to 10 (aion2turkiye, daevaguides) is the first place for points from quests and Sealed Dungeons (claim C44)."
       },
       "specialtyPicks": {
         "skill:sorcerer:flame-arrow": [
@@ -474,7 +474,7 @@
         ]
       },
       "texts": {
-        "nezekan-plan": "From Metabot's Sorcerer page: the Fire Mark and Robe of Earth node pairs first (daevaguides and aion2turkiye start on Combat Speed, Cooldown Reduction and the Hellfire node instead).",
+        "nezekan-plan": "Metabot's Nezekan nodes from its Sorcerer page: the Fire Mark and Robe of Earth node pairs first (daevaguides and aion2turkiye start on Combat Speed, Cooldown Reduction and the Hellfire node instead).",
         "stat-note": "B board · G gear. Metabot's Sorcerer ranking only (one site); later stats: Accuracy Bonus, HP."
       },
       "sources": [

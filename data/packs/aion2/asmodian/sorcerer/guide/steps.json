@@ -78,7 +78,7 @@
       "key": "build:triggers",
       "milestone": "build",
       "order": 45,
-      "text": "<b>Three skills only fire on a condition.</b> Blaze hits only a target under Fire Mark, which your Fire attacks put on it. Flame Scattershot (from Lv 5) hits only a staggered target, Frost Burst (from Lv 10) only a frozen one: Frost (from Lv 7) freezes it.",
+      "text": "<b>Three skills only fire on a condition.</b> Blaze hits only a target under Fire Mark, which your Fire attacks put on it. Flame Scattershot (from Lv 5) hits only a staggered target, Frost Burst (from Lv 10) only a target under Frost, which Frost (from Lv 7) puts on it.",
       "requires": {
         "level": 4,
         "basis": "sourced",
