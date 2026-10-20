@@ -274,7 +274,7 @@
       },
       "texts": {
         "nezekan-plan": "Two clusters, from your board: above the centre, Heart Gore with Exploit Weakness 1 branching off its path (11 for both); below the centre, Ambush (7) and Quick Slice (6) share their first two nodes (11 for both), and Exploit Weakness 2 sits 5 past Quick Slice. All five come to 27. Where a node has two routes, take the one with Critical Hit and Attack over HP and Critical Hit resist.",
-        "opener": "Q (Shadowstrike)"
+        "opener": "Q (Shadowstrike, on the guide's key setup; the game's default key is 1)"
       },
       "sources": [
         {

@@ -91,11 +91,35 @@
       ],
       "action": "rewrite",
       "newText": "<li><b>Make the macro:</b> K → Macro (top right) → Add Macro. Step 1 = Quick Use 2 (the right-click stack). If ready skills get skipped, add a short delay.</li>",
-      "note": "Key path, Add Macro, bottom-first priority (the grid draws row 0 at the bottom), no-cooldown blocking and holding both buttons all have 2 sources. Only the '10 ms' / '30-50 ms' delay values have no source; the rewrite drops them. 'Quick Use 2' is not in either source; keep it only if it came from his game. Row order and E order are already labelled as inference; keep.",
+      "note": "Key path, Add Macro, bottom-first priority (the grid draws row 0 at the bottom), no-cooldown blocking and holding both buttons all have 2 sources. Only the '10 ms' / '30-50 ms' delay values have no source; the rewrite drops them. 'Quick Use 2' is not in either source; keep it only if it came from his game. Row order and E order are already labelled as inference; keep. 0.8 P14 (#503, docs/research/2026-10-research-387-macro.md): 'Quick Use 2' is the owner's \"quickslot 2\" (his game, #387); that it shows on T once the macro takes right click is inferred. The Macro tab is empty the first time and the Macro key has no default, so the steps start at Add Macro. Hold both stays: the owner's test (2026-10-20) says right click alone runs out of MP.",
       "appliesTo": [
         "page:rotation"
       ],
       "verifiedAt": "2026-10-12"
+    },
+    {
+      "id": "C21a",
+      "claim": "Assassin default keys (Lv 4): left click Quick Slice, right click Savage Roar; 1 Shadowstrike, 2 Ambush, 3 Flash Slice, 4 Insignia Explosion; E Heart Gore (row 0), Storm Rampage (1), Whirlwind Slice (2); Q Infiltrate (0), Shadow Fall (1); Defiance no key.",
+      "verdict": "verified",
+      "sources": [
+        {
+          "owner": {
+            "ref": "owner:2026-10-20-assassin-keys-01",
+            "checkedAt": "2026-10-20",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Assassin skill window at Lv 4 (locked skills and default skill rows), docs/research/2026-10-research-387-macro.md"
+          }
+        }
+      ],
+      "action": "keep",
+      "note": "The owner's in-game screen (the source of truth). The keys are the game's defaults; the guide's own binding (keyStacks rightClick and eOrder: the stack on T via the macro, Shadowstrike on Q, the stigmas on E) is its suggestion and is labelled so. That the macro on right click displaces Savage Roar from its default slot is inferred (Game Data Check). The learn levels on the screen match skills.json.",
+      "appliesTo": [
+        "build:assassin:guide"
+      ],
+      "verifiedAt": "2026-10-20"
     },
     {
       "id": "C22",
