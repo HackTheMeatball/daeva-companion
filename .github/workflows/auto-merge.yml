@@ -15,6 +15,8 @@ name: Auto-merge
 # Every verdict line above is read by tools/verdicts.cjs, the parser pipeline.yml shares (bold or plain, `code`, "> " quotes).
 # It squash-merges pinned to that head commit, then starts CI on main so deploy, smoke and release run
 # (a merge made by this workflow does not fire the normal push trigger).
+#   - while #114 has a "FREEZE: RC <sha> release #<n>" line, only docs/ROADMAP/issue-template PRs, the release PR and
+#     rc-blocker PRs merge (owner OK 2026-10-20 1:35 PM ET; "FREEZE-CHECK" block below).
 # Pause it for one PR: add the label "hold". Stop it: Actions tab -> Auto-merge -> "..." -> Disable workflow.
 
 on:
@@ -130,6 +132,25 @@ jobs:
               return `Game Data Check's VERIFIED does not cover the head ${sha.slice(0, 7)}`;
             };
             // DATA-CHECK END
+            // FREEZE-CHECK START (tests/automerge.mjs runs this block)
+            // Release freeze (owner OK 2026-10-20 1:35 PM ET, DECISIONS via #574): from Release Planner (Walter)'s RC READY until
+            // CI's tag, only docs/**, ROADMAP.md and .github/ISSUE_TEMPLATE/** may merge, plus the release PR (its kickoff branch
+            // claude/issue-<release issue>-*) and a PR labelled rc-blocker (a blocker fix RC PLAY DONE or DATA HOLD names). The
+            // freeze is a line in #114, which Build Pipeline (Gus) writes on RC READY and removes at the tag:
+            //   FREEZE: RC <sha> release #<n>
+            const FREEZE = /^FREEZE: RC ([0-9a-f]{7,40}) release #(\d+)\b/m;
+            const FREEZE_OK = (f) => /^docs\//.test(f) || f === 'ROADMAP.md' || /^\.github\/ISSUE_TEMPLATE\//.test(f);
+            const freezeBlocker = (freeze, pr, files) => {
+              if (!freeze) return '';
+              const [, rc, rel] = freeze;
+              if (new RegExp(`^claude/issue-${rel}-`).test(pr.head.ref)) return '';
+              if (pr.labels.some((l) => l.name === 'rc-blocker')) return '';
+              const out = files.filter((f) => !FREEZE_OK(f));
+              return out.length ? `release freeze (RC ${rc.slice(0, 7)}, #114): changes ${out.slice(0, 3).join(', ')}${out.length > 3 ? ' …' : ''}` : '';
+            };
+            // FREEZE-CHECK END
+            const freeze = ((await github.rest.issues.get({ owner, repo, issue_number: 114 })).data.body || '').match(FREEZE);
+            if (freeze) core.notice(`Release freeze on (RC ${freeze[1].slice(0, 7)}, release #${freeze[2]})`);
             let merged = 0;
             const failed = [];
             for (const pr of prs) {
@@ -153,6 +174,8 @@ jobs:
               if (design) { core.info(`#${pr.number}: ${design}`); continue; }
               const data = await dataBlocker(pr, touched, comments, sha, headAt);
               if (data) { core.info(`#${pr.number}: ${data}`); continue; }
+              const frozen = freezeBlocker(freeze, pr, touched);
+              if (frozen) { core.info(`#${pr.number}: ${frozen}`); continue; }
               try {
                 await github.rest.pulls.merge({ owner, repo, pull_number: pr.number, sha, merge_method: 'squash' });
                 core.notice(`Merged #${pr.number}`); merged++;
