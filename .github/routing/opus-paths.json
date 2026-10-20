@@ -1,0 +1,13 @@
+{
+  "about": "What Sonnet may not change. Kickoff starts an item on Opus when its Files list names one of these paths (or has no readable Files list), and every Sonnet prompt (claude.yml, kickoff.yml, pipeline.yml) stops on sonnetMayNotTouch. One list, so the two can't drift (Kaizen (Gale), 2026-10-20, after #501 and #509). tests/kickoff.mjs checks that every path's says text is in sonnetMayNotTouch.",
+  "paths": [
+    { "re": "src\\/core\\/", "says": "src/core/" },
+    { "re": "\\bmigrat\\w*|\\blocalStorage\\b|e2-migtest", "says": "save, sync, migration or storage code" },
+    { "re": "\\brequires\\b|\\bcompletesWith\\b", "says": "requires or completesWith" },
+    { "re": "tests\\/golden|\\bmig1\\b", "says": "golden snapshots (--record) or the mig1 pin" },
+    { "re": "tools\\/gen\\/|data\\/schema\\/", "says": "tools/gen/ or data/schema/" },
+    { "re": "\\.github\\/", "says": "workflows under .github/" },
+    { "re": "\\bscripts\\/", "says": "build and serve tooling under scripts/" }
+  ],
+  "sonnetMayNotTouch": "src/core/; save, sync, migration or storage code (save paths in src/main.js, localStorage keys, tests/e2-migtest); a gate's requires or completesWith under data/; golden snapshots (--record) or the mig1 pin; tools/gen/ or data/schema/; workflows under .github/; build and serve tooling under scripts/ (listed 2026-10-20: #501's Sonnet run stopped there on its own judgment); or more than about 300 changed lines"
+}

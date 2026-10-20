@@ -118,7 +118,9 @@ check(/left in #114 for the planner`\);\s*\n\s*if \(\/\^\\s\+- held: \/\.test\(l
 // PIP-06: a sonnet line whose issue's Files section names an Opus path starts on Opus (Kaizen (Gale), 2026-10-19).
 const of = yml.match(/\/\/ OPUS-FILES START[^\n]*\n([\s\S]*?)\n\s*\/\/ OPUS-FILES END/);
 check(!!of, 'kickoff.yml has the OPUS-FILES block');
-const opusPath = new Function(of[1] + '\nreturn opusPath;')();
+// The Opus paths come from the one shared list (Kaizen (Gale), 2026-10-20); the block reads it as ROUTE.
+const ROUTE = JSON.parse(readFileSync(join(ROOT, '.github', 'routing', 'opus-paths.json'), 'utf8'));
+const opusPath = new Function('ROUTE', of[1] + '\nreturn opusPath;')(ROUTE);
 const spec = (files, after = '## Lanes, model, order\n\nsonnet') => `## Problem\n\nTouches src/core/ in prose only.\n\n## Files (owns)\n\n${files}\n\n${after}\n`;
 check(opusPath(spec('`src/core/state.js`, `docs/ISSUES.md`')) === 'src/core/', 'Files names src/core/ -> Opus');
 check(opusPath(spec('`tests/golden/snapshots/**`')) === 'tests/golden', 'Files names golden snapshots -> Opus');
@@ -127,9 +129,11 @@ check(opusPath(spec('`.github/workflows/ci.yml`')) === '.github/', 'Files names 
 check(opusPath(spec('`src/packs/aion2/cards/nextup-kinds.js`, `src/styles/app.css`')) === null, 'Files with no Opus path -> stays Sonnet');
 check(opusPath(spec('`docs/ISSUES.md`')) === null, 'src/core/ named only outside the Files section -> stays Sonnet');
 check(opusPath(spec('`src/core/x.js`', '')) === 'src/core/', 'Files as the last section still read');
-check(opusPath('No files section; src/core/ in prose.') === null, 'no Files section -> stays Sonnet');
+// Intended change (Kaizen (Gale), 2026-10-20): no readable Files list now starts on Opus; it used to stay Sonnet.
+check(opusPath('No files section; src/core/ in prose.') === 'no readable Files list', 'no Files section -> Opus (nobody checked its paths)');
+check(opusPath(spec('the welcome card and its tests')) === 'no readable Files list', 'a Files section with no path in it -> Opus');
 // Template-format specs write "- **Files.**" as a bullet; PIP-06 only read "## Files", so #509 (tools/gen/gen.mjs) started on Sonnet.
-const fx = new Function(of[1] + '\nreturn { specField, opusWork, inputPaths, lookupPath };')();
+const fx = new Function('ROUTE', of[1] + '\nreturn { specField, opusWork, inputPaths, lookupPath };')(ROUTE);
 const bullet = (files, extra = '') => `# 0.8 P20: x\n\n- **Problem.** Touches src/core/ in prose only.\n- **Files.** ${files}\n  more files on a wrapped line.\n- **Lanes:** nextup.css. **Model:** Sonnet.\n${extra}- **After:** none.\n\n## Lanes, model, order\n`;
 check(opusPath(bullet('`tools/gen/gen.mjs`, `src/packs/aion2/cards/rows.js`')) === 'tools/gen/', 'Files as a template bullet names tools/gen -> Opus (#509)');
 check(opusPath(bullet('`src/styles/cards/nextup.css`')) === null, 'Files bullet with no Opus path -> stays Sonnet (src/core/ only in Problem)');
@@ -210,6 +214,21 @@ check(keyOf('Release 0.8.1 (patch)') === null, 'a patch release title has no min
 check(/quoting the summary line your last `npm test` printed, never a placeholder/.test(yml), 'builder prompt: the PR body quotes the real npm test line');
 check(/grep -q 'TESTRESULT' tests\/out\/pr-body\.md; then\s*\n\s*sed -i 's\/TESTRESULT\/not finished by the build/.test(yml), 'fallback PR: a TESTRESULT placeholder in the body is replaced, never shipped as a result');
 check(/BASH_MAX_TIMEOUT_MS: '1800000'/.test(yml) && /`npm test` included \(Bash allows 30 minutes here\)/.test(yml), 'builds run npm test in the foreground with a 30-min Bash limit (4 of 5 0.8 builds opened no PR)');
+
+// One list for routing and the Sonnet prompts (Kaizen (Gale), 2026-10-20, after #501 and #509).
+check(ROUTE.paths.every((x) => ROUTE.sonnetMayNotTouch.includes(x.says)), 'opus-paths.json: every path\'s text is in the Sonnet stop list');
+check(!/["]/.test(ROUTE.sonnetMayNotTouch), 'opus-paths.json: the stop list has no double quote (it is inlined in claude.yml\'s quoted prompt)');
+const wf = (f) => readFileSync(join(ROOT, '.github', 'workflows', f), 'utf8');
+check(/needs\.pick\.outputs\.touches/.test(yml) && /core\.setOutput\('touches', ROUTE\.sonnetMayNotTouch\)/.test(yml), 'kickoff: the build prompt\'s Sonnet limits come from the shared list');
+check(/\$\{ROUTE\.sonnetMayNotTouch\}/.test(wf('pipeline.yml')) && /new RegExp\(ROUTE\.paths/.test(wf('pipeline.yml')), 'pipeline: fix-round Sonnet limits and risky paths come from the shared list');
+check(/steps\.route\.outputs\.touches/.test(wf('claude.yml')) && /jq -r \.sonnetMayNotTouch \.github\/routing\/opus-paths\.json/.test(wf('claude.yml')), 'claude.yml: the @sonnet guard reads the shared list');
+check(!['claude.yml', 'kickoff.yml', 'pipeline.yml'].some((f) => /save\/sync\/migration\/storage code|the requires or completesWith fields of anything under data/.test(wf(f))), 'no workflow keeps its own copy of the Sonnet stop list');
+check(opusPath(bullet('`scripts/build.mjs`, `scripts/serve.mjs`')) === 'scripts/', 'Files naming build tooling under scripts/ -> Opus');
+check(opusPath(bullet('`src/assets/icons/*.webp`, `docs/ISSUES.md`')) === null, 'asset files alone stay Sonnet (Gale: the risk was the build change)');
+// #509's spec named tools/gen/gen.mjs: caught since #535. #501's named only welcome files, tests and icons, so no path rule
+// catches it: it needed src/core and scripts/ changes its spec never listed (a Files-completeness miss, sent to the planner).
+check(opusPath(bullet('`tools/gen/gen.mjs`, `data/packs/aion2/cards/rows.json`')) === 'tools/gen/', "#509's Files list -> Opus");
+check(opusPath(bullet('`src/cards/welcome.html`, `src/cards/welcome.js`, `src/styles` welcome rules, `src/assets/icons/*` (the emblems), `docs/ISSUES.md`, `tests/site.js`, and `tests/a11y.js`')) === null, "#501's Files list (as written) stays Sonnet: routing can't see paths a spec leaves out");
 
 console.log(`\n${n - fail}/${n} kickoff checks passed`);
 console.log(fail ? 'KICKOFF CHECKS FAILED' : 'KICKOFF CHECKS PASSED');
