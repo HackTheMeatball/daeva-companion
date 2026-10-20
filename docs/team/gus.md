@@ -28,6 +28,12 @@ _From #114 "Merge rule (AUTO since 2026-10-16 10:32Z, #115)"._
 
 - Every review request must ask for first line `Review of <head sha7>` and last line `VERDICT: APPROVE` or `VERDICT: CHANGES`.
 
+### MRG-04
+
+_From the ledger summary (no #114 text held it; written here 2026-10-20 at the Rules Steward's ask)._
+
+- A separate reviewer that didn't write the work reviews every PR, on Opus: the pipeline's review run, never the build session itself. Code Review (Howard) sets what the review checks; Gus sets when it runs and the model (2026-10-20 split).
+
 ### MRG-10
 
 _From #114 "Merge rule (AUTO since 2026-10-16 10:32Z, #115)"._
@@ -72,7 +78,13 @@ _From #114 "Smart mode (owner, 2026-10-16 18:22 ET; replaces low power mode)", t
 
 _From #114 "Smart mode (owner, 2026-10-16 18:22 ET; replaces low power mode)"._
 
-- **Parallel:** up to 5 builds in flight when independent (no shared serial files, docs/team/DISPATCH.md); 3 until 2026-10-17 11:43 AM ET, raised on Isaac's Max 20x plan (PR #233). Raise further one step at a time, only with a usage checkpoint in #232 behind it. Releases run alone, after every item of the version is merged.
+- **Parallel:** up to 3 builds in flight when independent (no shared serial files, docs/team/DISPATCH.md). Usage budget (owner, 2026-10-20 5:17 PM ET; readings once per minor, 5:20 PM ET): 3 is a fixed cap until the next minor's usage reading; a reading over the line drops it to 1 and the owner is told what paused (Kaizen (Gale) and Gus, 2026-10-20). Was 5 from 2026-10-17 11:43 AM ET (Isaac's Max 20x plan, PR #233). Raise one step at a time, only with a usage reading behind it. Releases run alone, after every item of the version is merged.
+
+### PIP-15
+
+_From #114 "Smart mode (owner, 2026-10-16 18:22 ET; replaces low power mode)", the "Plan to avoid failed or redone runs" bullet (moved 2026-10-20 at the Rules Steward's ask)._
+
+- **One waste record (PIP-15, which merged PIP-13/14; Isaac, typed in the Gus thread 2026-10-19 4:56 PM ET):** the #114 Waste comments, one per failed or redone run with its link and cause, plus Build Pipeline (Gus)'s live `CI:` and `BUILD:` lines; Watchdog (Mike) totals them per release. Status notes no longer carry a `Waste:` count. A cause seen twice goes to Kaizen (Gale) as KIND RECURRED.
 
 ## Queue
 
