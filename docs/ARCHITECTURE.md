@@ -450,6 +450,7 @@ docs/DEPLOY.md, "CI jobs").
 |---|---|
 | `site` | element budget at 390 px (§4), head, footer (version, Report a problem), export (Blob download), service worker + offline, manifest, 404, the site's icons, self-hosted fonts, persistent storage, save-failure banner |
 | `e1`…`e4` | functional checks from each polish pass |
+| `labels` | 0.8 P20: unverified values carry their label. Reads every `fieldStatus` / `status` from `data/packs/**` and checks the fields players see (a regional quest's zone in its milestone row and Next up's tooltip, a stronghold's level range, a Sealed Dungeon's entrance, a plan skill's learn level in every guide pack and the Skills card): "check in game" for disputed / owner-check, "inferred" for inferred, no tag on a verified value; every tag ≥ 12 px |
 | `save` | save v5 (0.4 P3c) in the browser: fresh start, a v4 save present (never read: `getItem` spied, its entry byte-identical), round trip, import (v5 only; a v4 export refused), Level up (label vs slot id), the name and label in no key / link / file name, two slots |
 | `regress` | Lv 25–45 × Basic/Advanced × 1500/1100/390 px × clean/messy saves, the user's save, pop-out |
 | `journey` | the user's save from Lv 27 to 45 by clicking through Next up (page timers on Playwright's fake clock; `JOURNEY_REALTIME=1` for real pauses) |

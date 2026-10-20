@@ -8,7 +8,7 @@
    Keys never depend on where an item ends up (docs/ARCHITECTURE.md §1). */
 import { AREA_LOC, RQ, SD_RW, SH_DATA } from "./data/generated.js";
 import { SP_SLOTS, SP_STEPS } from "./data/build.js";
-import { T, mapQ, mapSlug, sub } from "./data/markup.js";
+import { T, mapQ, mapSlug, stTag, sub } from "./data/markup.js";
 import { GATES } from "./data/milestones.js";
 import { HIDEOUT_AREA, NO_AREA } from "./data/areas.js";
 import { itemByK } from "../../core/catalog.js";
@@ -32,7 +32,7 @@ export const KIB_AREA = (() => { const votes = {}, add = (k, a) => { if (!k || !
   /* Majority zone per Kibelisk (one source put Briskwind Shelter in Purifying Forest; four say Dranactus). */
   const m = {}; Object.entries(votes).forEach(([k, v]) => { m[k] = Object.entries(v).sort((a, b) => b[1] - a[1])[0][0]; }); return m; })();
 /* Strongholds: all 15 in Altgard (SH_DATA): zone, the level range Metabot's map lists (1–45 = open at any level), nearest Kibelisk. */
-SH_DATA.forEach(s => AREA_ITEMS.push({ it: { kind: "stronghold", name: s.name, lo: s.lo, hi: s.hi, kib: s.kib, m: s.m }, g: null, k: "sh:" + mapSlug(s.name), lv: null, area: s.zone }));
+SH_DATA.forEach(s => AREA_ITEMS.push({ it: { kind: "stronghold", name: s.name, lo: s.lo, hi: s.hi, kib: s.kib, m: s.m, ...(s.lvSt ? { lvSt: s.lvSt } : {}) }, g: null, k: "sh:" + mapSlug(s.name), lv: null, area: s.zone }));
 /* Level bands: Sealed Dungeons sit at their recommended level. Strongholds have only a level range, so each is filed
    under a band: the band of its zone's Sealed Dungeons, raised to its minimum level; zones with no dungeon data use the
    last band below its level cap. (Inferred placement.) */
@@ -51,8 +51,8 @@ const spLabel = x => x.spec ? `<b>${x.s.n}: pick specialty</b>` : `<b>${x.s.n} $
 export const spCostTxt = x => x.spec ? "free" : x.cost + " pt" + (x.cost > 1 ? "s" : "");
 
 
-/* Zone · spot · quest giver (linked to the quest on Metabot's Altgard map). */
-const qMap = q => [q.zone, q.place && q.place !== q.zone ? q.place : "", q.id ? mapQ(q.id, q.npc || "map") : (q.npc || "map")].filter(Boolean).join(" · ");
+/* Zone (with its label when not verified) · spot · quest giver (linked to the quest on Metabot's Altgard map). */
+const qMap = q => [q.zone && q.zone + stTag(q.zoneSt), q.place && q.place !== q.zone ? q.place : "", q.id ? mapQ(q.id, q.npc || "map") : (q.npc || "map")].filter(Boolean).join(" · ");
 /* What opens a regional quest, in the row's second line: unlock level (if above 10), the story quest, earlier regional quests. */
 /* inGroup: the group heading already says it (story quest or unlock level), so the row doesn't repeat it. */
 const rqReqTxt = (q, inGroup) => { const xs = [q.unlocksAt > 10 && !inGroup ? `at Lv ${q.unlocksAt}` : "", q.story && !inGroup ? (q.turnedIn ? `once <em>${q.story}</em> is turned in` : `once the story reaches <em>${q.story}</em>`) : "",

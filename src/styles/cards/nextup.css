@@ -194,7 +194,6 @@ body.basic #nowStar .ns-card.first { animation: nsPulse 2.2s ease-in-out infinit
 #nowStar .q-cb:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 /* E4: Next up extras */
 #nowStar .ns-mean { display: block; margin-top: var(--space-2); color: var(--muted); }
-#nowStar .ss-tag { font: 600 10.5px var(--mono); color: var(--muted); white-space: nowrap; }
 #nowStar .ns-qgrid li.rq-aux { color: var(--muted); font-size: 12px; align-items: center; }
 #nowStar .ns-qgrid li.rq-aux .q-inl { margin: 0; padding: 0 var(--space-7); line-height: 16px; font-size: 10px; }
 #nowStar .rq-wait { min-width: 0; }

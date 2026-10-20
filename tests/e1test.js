@@ -105,7 +105,7 @@ const cards = p => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-
   await setState(p, clean(32, 'Bitter Reality', 'advanced'));
   ok('Dungeons & Strongholds defaults to the band with your level', /^Lv 30–34/.test(await p.evaluate(() => areaSel.selectedOptions[0].textContent)), await p.evaluate(() => areaSel.selectedOptions[0].textContent));
   /* 10. Zones match between milestone rows and Next up / RQ table */
-  const zm = await p.evaluate(() => GATES.flatMap(g => g.items.filter(it => it.kind === 'quest').map(it => { const li = document.querySelector(`#gates input[data-k="${it.k}"]`).closest('li'); const z = li.querySelector('.loc').textContent.split(' · ')[0]; return [it.name, z, it.q.zone]; })).filter(([, a, b]) => a !== b));
+  const zm = await p.evaluate(() => GATES.flatMap(g => g.items.filter(it => it.kind === 'quest').map(it => { const li = document.querySelector(`#gates input[data-k="${it.k}"]`).closest('li'); const loc = li.querySelector('.loc').cloneNode(true); loc.querySelectorAll('.ss-tag').forEach(t => t.remove()); const z = loc.textContent.split(' · ')[0].trim(); return [it.name, z, it.q.zone]; })).filter(([, a, b]) => a !== b));
   ok('every regional quest row shows its RQ zone', !zm.length, zm);
   /* 11. Export / import */
   await setState(p, clean(33, 'Last Refuge', 'advanced', { stShards: 9, rqSnooze: {} }));

@@ -31,6 +31,12 @@ export const stn = n => `<span class="stn" data-slot="${n}">${STIGMA_PLAN[n - 1]
 export const eRow = n => `<span class="erow" data-slot="${n}"></span>`;
 export const DAEVA = `<b>Use your ${I("crystal")}</b> from the Cube, then spend the crystals on the current board's Heart Gore and Ambush nodes, then a corner.`;
 export const sub = (label, note) => ({ sub: label, subNote: note });
+/* An unverified value's label (0.8 P20): the generator carries a field's status when it isn't verified; disputed and
+   owner-check read "check in game", inferred "inferred". Single source keeps its own tags (the skill rows'), so none here.
+   stTag: the small tag after the value; stNote: the same words for a tooltip ("" when the value is verified). */
+const ST_WORDS = { disputed: ["check in game", "Sources disagree on this: check it in game"], "owner-check": ["check in game", "Not confirmed yet: check it in game"], inferred: ["inferred", "Inferred from nearby data, not stated by a source"] };
+export const stTag = st => ST_WORDS[st] ? ` <span class="ss-tag" title="${ST_WORDS[st][1]}">${ST_WORDS[st][0]}</span>` : "";
+export const stNote = st => ST_WORDS[st] ? ` (${ST_WORDS[st][0]})` : "";
 /* Vaizel / Triniel plan nodes (DV_BOARDS, data/build.json); keys dv:v:* / dv:t:*. */
 export const dvNodes = b => DV_BOARDS[b].nodes.map(n => ({ k: n.k, dv: true, board: b, blv: DV_BOARDS[b].lv, ty: n.ty, t: n.t, ...(n.via ? { via: n.via } : {}) }));
 export const metaSlug = n => n.toLowerCase().replace(/['’]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
