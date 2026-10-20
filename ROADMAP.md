@@ -931,13 +931,15 @@ Decisions this pass recorded (for the tracker):
   (`docs/research/2026-10-spiritmaster-pack.md`), `research-gladiator-guide` (`docs/research/2026-10-gladiator-guide.md`),
   and for 0.6.1 F5 `research-ranger-icons` (`docs/research/2026-10-ranger-icons.md`).
 
-### 0.8 — The Templar and the Cleric, icons for every class
+### 0.8 — The last four classes, icons for every class
 
 Planning pass written 2026-10-19 (Release Planner). It came after Player Testing's full play of 0.7.0 (#441) and Kaizen's
 release review ([docs/kaizen/0.7-scorecard.md](docs/kaizen/0.7-scorecard.md), PR #443; KAIZEN REVIEW DONE 0.7.0, 6:16 AM ET;
 changes K15–K18), in the order the owner set on 2026-10-18 at 11:21 PM ET. Item specs:
 [docs/plans/0.8/README.md](docs/plans/0.8/README.md). **Nothing is queued until the owner's morning OK** (owner,
-2026-10-18 11:15 PM ET; DECISIONS "Overnight: everything up to 0.8 builds").
+2026-10-18 11:15 PM ET; DECISIONS "Overnight: everything up to 0.8 builds"). **Redrawn 2026-10-19 8:30 PM ET** at the owner's
+tinkering stop: he chose all four remaining classes for 0.8 (DECISIONS "0.8 takes all four remaining classes"), so the
+Sorcerer and the Chanter join as P16–P19, and the label item P20 joins from Game Data Check's #472 review.
 
 #### Audit (step 2), against `main` at `v0.7.0`
 
@@ -947,8 +949,13 @@ Path to 1.0 first:
    0.8 takes two of Templar, Sorcerer, Cleric and Chanter, and 0.9 takes the other two. Per D8, the class the owner plays
    comes first. His Templar key screens are in (`/mnt/project-files/owner-screens/2026-10-18/templar/`), so the
    **Templar** is first. Data coverage then picks the **Cleric**: 7 candidate guides and 3 Metabot builds, against the
-   Sorcerer's 6 and 3 and the Chanter's 7 and 0 (classes-and-gaps §2.2). This is Claude remediated and reversible: the
-   owner can swap either class in the morning batch. Both research sessions started at pass start (K10/K15).
+   Sorcerer's 6 and 3 and the Chanter's 7 and 0 (classes-and-gaps §2.2). Both research sessions started at pass start
+   (K10/K15). **Redrawn:** the owner chose all four (2026-10-19 8:30 PM ET). His Lv 4 skill screens, checked by Game Data
+   Check, already give the Sorcerer and Chanter unlock levels, icon ids and default keys
+   (`/mnt/project-files/owner-screens/2026-10-19/`); `research-sorcerer` and `research-chanter` add the rest (stigmas,
+   specializations, boards, passives, two-source advice, icon files). Templar research took about 35 min and Cleric's
+   about 1 h 40 min. The Chanter has no Metabot build sample, so its advice is thinner and labelled. All eight classes
+   then ship in 0.8, and 0.9 no longer adds classes.
 2. **A class must ship with its icons.** Gladiator and Spiritmaster went live with letter squares, and the 0.7.0 CHANGELOG
    said they had icons (#441-4). Two causes: the research packs saved no icon files, and nobody checked the CHANGELOG
    against `docs/ISSUES.md`. Changed here: every class research brief now saves the class's skill and stigma icons from
@@ -1002,6 +1009,11 @@ build times that would change them. Each item's problem, result, no-gos, accepta
 | P13 | Regional quests and the extract tip lack the game's icons, and the click-twice box hides its second state → the state icon (#409: the owner's star crop, Metabot's `quest_district`, ✓) replaces the box, marked by one "Picked up" / "Turned in" / Undo button, in milestone rows and the Next up card, where every quest row also shows its map pin left of the button and long names are cut with "…"; the ✓ is a centred SVG (owner A, 2:36–2:40 PM ET; `2b-check-fix.png`, `2c-map-pin.png`), same `started`/`checks` data, no save change; extract flask unchanged (Design Lead round 2, §2 and §4) | L | Opus | gen, golden, nextup.css, rows | `owner-ok-0.8-crop-icons` |
 | P14 | Key setup and macro steps don't match the game (#387) → the game's grid, the macro on right click, Shadowstrike on E | M | Opus | gen, golden, build-card, a11y, rows | `research-387-macro` |
 | P15 | Auto level-up fires at the wrong level (#401) → it uses the level the quest is turned in at | M | Opus | gen, golden | `research-401-levels` |
+| P16 | No Sorcerer pack → class data from research, hidden | L | Opus | gen | `research-sorcerer` |
+| P17 | Sorcerer has no advice → guide pack, golden, site picker | L | Opus | gen, golden | P16, P5 (`pack.js`) |
+| P18 | No Chanter pack → class data from research, hidden | L | Opus | gen | `research-chanter` |
+| P19 | Chanter has no advice → guide pack, golden, site picker | L | Opus | gen, golden | P18, P17 (`pack.js`) |
+| P20 | Unverified values show with no label (the compiler drops `fieldStatus`; #472 review) → rendered disputed and owner-check fields say "check in game", inferred ones "inferred" | S | Sonnet | gen, golden, nextup.css, rows | none |
 | R | Release 0.8.0 | S | Sonnet | release, alone | everything above, or moved to 0.8.x; `RC PLAY DONE 0.8` read; `DATA OK 0.8.0` |
 
 Not bot items (they run alongside): Game Data Check does the research gates `research-gl-sm-icons`, `research-387-macro`
@@ -1017,11 +1029,12 @@ places), a 0.9 candidate.
 
 #### Waves and lane map (step 4)
 
-At most five builds at a time. Serial lanes: **gen** P1 → P2 → P3 → P4 → P5 → P13 → P14 → P15 (every item that
-touches `data/`); **golden** the same items; **a11y** P7 → P9 → P8 → P12 → P14; **nextup.css** P10 → P11 → P13;
-**rows** (`rows.js`) P13 → P14;
+At most five builds at a time. Serial lanes: **gen** P1 → P2 → P3 → P4 → P5 → P16 → P17 → P18 → P19 → P20 → P13 → P14 → P15 (every
+item that touches `data/`); **golden** the same items; **a11y** P7 → P9 → P8 → P12 → P14; **nextup.css** P10 → P11 → P13;
+**rows** (`rows.js`) P20 → P13 → P14; **nextup.css** also takes P20 before P13;
 **welcome** P8 → P12; **build-card** P9 → P14; **site** P6 alone. Critical path: `research-templar` (in, #447) → P2 →
-P3 → P4 → P5 → R. The gen/golden lane is the bottleneck: the non-class items on it (P13, P14, P15) run after the class
+P3 → P4 → P5 → P16 → P17 → P18 → P19 → R (the last two packs wait on `research-sorcerer` and `research-chanter`, started
+2026-10-19 8:35 PM ET). The gen/golden lane is the bottleneck: the non-class items on it (P13, P14, P15) run after the class
 packs, since those are the minor's point.
 
 | Wave | Builds (no owner OK needed first, K15) |
@@ -1031,28 +1044,28 @@ packs, since those are the minor's point.
 | 3 | P8 (a11y, welcome) ∥ P3 (gen, golden) |
 | 4 | P12 (a11y, welcome; gated) ∥ P4 (gen) |
 | 5 | P5 (gen, golden) |
-| 6 | P13 (gen, golden, nextup.css, rows; gated) |
-| 7 | P14 (gen, golden, build-card, a11y, rows) |
-| 8 | P15 (gen, golden), when its level notes are in |
-| 9 | R, alone, after the CHANGELOG draft (K17) and `DATA OK 0.8.0` |
+| 6 | P16 (gen), then P17 (gen, golden) |
+| 7 | P18 (gen), then P19 (gen, golden) |
+| 8 | P20 (gen, golden, nextup.css, rows) |
+| 9 | P13 (gen, golden, nextup.css, rows; gated) |
+| 10 | P14 (gen, golden, build-card, a11y, rows) |
+| 11 | P15 (gen, golden), when its level notes are in |
+| 12 | R, alone, after the CHANGELOG draft (K17), `RC PLAY DONE 0.8` and `DATA OK 0.8.0` |
 
 Checked: no two items in one wave own the same file. Waves are the expected order, not gates. Under K15, a gated item
 (P10, P11, P12, P13) whose OK isn't typed by the time its lane is free moves to the end of the queue, not waited on. An item
-whose research isn't in by the time the rest has merged moves to 0.8.x.
+whose research isn't in by the time the rest has merged moves to 0.8.x. If `research-sorcerer` or `research-chanter` is late,
+P20, P13, P14 and P15 run first on the gen lane and the late class follows them.
 
 **After 0.8.0 ships (not a bot item):** team-audit rec 4, moving rules out of #114 to their owners' homes, put in
 place by Kaizen (Gale) through each rule's owner (owner, 2026-10-19 4:57 PM ET; `/mnt/project-files/audit-1.0/team-audit-1.0.md`).
 
 #### Owner input (step 5)
 
-**Two To-dos (K15; one owner per card, owner 2026-10-19 2:20 PM ET), for the morning debrief.** The go is the
-Release Planner's (T-50, build only), typed in the Release planning (Walter) thread:
-
-```
-0.8 OK: build as planned
-```
-
-That records `owner-ok-0.8-go` (the planner queues 0.8 in #114). The looks were Design Lead's To-do (T-51, round 2
+**The go is given.** The owner typed it in the project chat on 2026-10-19 at 8:55 PM ET, for this four-class plan:
+"go ahead an launch to 0.8 when walt is done planning / adding the new classes to the plan". It records
+`owner-ok-0.8-go` (T-50, build only), effective when this redraw merges; the planner then queues 0.8 in #114. The
+earlier line "0.8 OK: build as planned" no longer applies. The looks were Design Lead's To-do (T-51, round 2
 after the owner's 2:13 PM ET notes on the first-round looks, which T-50 carried until it was re-cut; boards and spec
 in `/mnt/project-files/tracker/mockups/0.8-owner-ok-v2/`), answered on the boards, so no looks line is needed: "icon"
 recorded `owner-ok-0.8-marker-size` (P11) and `owner-ok-0.8-icon-box` (P10), "quest" `owner-ok-0.8-crop-icons` (P13,
@@ -1061,9 +1074,11 @@ with Metabot's `quest_district` map marker, which the 0.6.2 map-icons OK didn't 
 The owner answered all three on the boards, 2:35–2:40 PM ET, each A (DECISIONS rows), with his own tweaks that Design
 Lead drew: P10 also balances the phone card (Show in the title row, `1c-icon-balance.png`); P13 builds the centred SVG
 check (`2b-check-fix.png`) and a map pin on every Next up quest row, left of the button, long names cut with "…"
-(`2c-map-pin.png`). The go and the looks are independent: ungated items build on the go alone. Optional, only to
-change a default: name a
-different class for 0.8 (default Templar and Cleric).
+(`2c-map-pin.png`). The Design Critic then reviewed the looks, and the owner answered T-58 on the v4 boards, 8:25–8:44 PM ET
+(`/mnt/project-files/tracker/mockups/0.8-owner-ok-v4/`; DECISIONS "0.8 look changes after the Design Critic"): verb
+buttons "Pick up" / "Turn in" (green) with Undo in a fixed action column, the Regional quests tile shows today's ❖ in white on green, the state icons share
+one centre line, and the selected class is marked by highlight only. The go and the looks are independent: ungated
+items build on the go alone.
 
 Not OKs, but only the owner can do them. None blocks a wave:
 
@@ -1095,7 +1110,8 @@ threads (this plan asks for one line).
 Decisions recorded on the tracker:
 
 - **Claude remediated:**
-  - 0.8 classes default to Templar and Cleric (D8, audit 1);
+  - ~~0.8 classes default to Templar and Cleric (D8, audit 1)~~ replaced: the owner chose all four (user remediated);
+  - the label item P20 (CLAUDE.md data policy, #472 review);
   - the performance item P6 (audit 5);
   - the won't-fix decisions above;
   - class research now saves icons (audit 2).
@@ -1113,11 +1129,11 @@ Decisions recorded on the tracker:
   gate): **Tracker: Reports tab** now (Design Lead designs it, Tracker Design builds what she approves, the morning
   debrief reports land there), then **Tracker 2.0**, a redesign of every tab, as a side project.
 
-### 0.9 — the last two classes
+### 0.9 — the 1.0 audit's fixes
 
-The Sorcerer and the Chanter (or whichever two 0.8 didn't take), lanes A and B, plus the 1.0 audit's fixes in lane C as
-found. Research starts at its planning pass start. Player-chosen keys (#388) is a 0.9 candidate; it waits on 0.8 P14,
-so the default keys are right first.
+The classes moved into 0.8 (owner, 2026-10-19 8:30 PM ET). 0.9 carries the 1.0 audit's fixes as found, plus any class
+that slipped to 0.8.x and still needs work. Player-chosen keys (#388) is a 0.9 candidate; it waits on 0.8 P14, so the
+default keys are right first.
 
 ### 1.0
 

@@ -1,11 +1,12 @@
 # 0.8 item specs
 
-Planned in the 0.8 planning pass. Release Planner wrote it on 2026-10-19. The plan, waves and owner input are in
+Planned in the 0.8 planning pass. Release Planner wrote it on 2026-10-19, and redrew it at 8:30 PM ET when the owner
+chose all four remaining classes (P16–P19) and the label item P20 joined. The plan, waves and owner input are in
 ROADMAP "0.8"; the Kaizen review it follows is docs/kaizen/0.7-scorecard.md.
 
 Each item below becomes an issue titled `0.8 P<n>: …`, carrying this spec and its `After:` line. The planner adds the
-issue's `- [next]` line and its #114 line only after the owner's morning OK (`owner-ok-0.8-go`). Until then, nothing here
-is queued.
+issue's `- [next]` line and its #114 line only after the owner's go (`owner-ok-0.8-go`: given 2026-10-19 8:55 PM ET, effective when this plan merges). Until
+then, nothing here is queued.
 
 Every builder reads CLAUDE.md and docs/ARCHITECTURE.md first.
 
@@ -179,6 +180,8 @@ The same as P3, for the Cleric. It runs after P3 because both edit `pack.js`.
 - **Acceptance.**
   - [ ] Shots of the Stronghold and Sealed Dungeon cards at 390 px match `1c-icon-balance.png`; the 1500 px shots are
         unchanged.
+  - [ ] Before and after shots at 360 and 390 px, in Basic and Advanced, with the card's third detail line ("+2 crystals
+        … · ~5 min · … m away"); the "about 30 % shorter" figure re-measured from them (Design Critic 11, Design Lead).
   - [ ] Show stays a 44 px target and keeps its accessible name (a11y suite).
   - [ ] Golden is unchanged.
 - **Files.** `src/styles/cards/nextup.css`, and the Next up card markup only if Show can't move with CSS alone
@@ -205,8 +208,10 @@ The same as P3, for the Cleric. It runs after P3 because both edit `pack.js`.
 - **Result.** Design Lead's round 2, `/mnt/project-files/tracker/mockups/0.8-owner-ok-v2/README.md` §3 option A, owner A 2026-10-19 2:35 PM ET:
   - "Your class" on the welcome's first step, above the buttons: 8 badges, each the class emblem plus its name,
     4 × 2 on phones and one row of 8 on desktop, a `radiogroup`, Assassin pre-selected;
-  - classes with no guide yet show "Soon" and can't be picked (in 0.8: Sorcerer and Chanter; the list comes from the
-    packs, not hard-coded);
+  - classes with no guide yet show "Soon" and can't be picked (the list comes from the packs, not hard-coded; with all
+    four classes in 0.8, "Soon" shows only for a class whose guide hasn't merged yet when P12 builds or that moved to
+    0.8.x);
+  - the selected class is marked by its highlight only, no check mark (owner, 2026-10-19 8:28 PM ET, T-58);
   - the pick carries into Start and into the join form, with no extra screen;
   - the muted hint points to the name button for more characters.
   An Assassin player still makes one tap.
@@ -222,7 +227,9 @@ The same as P3, for the Cleric. It runs after P3 because both edit `pack.js`.
   - [ ] A first visit can start as each class that has a guide; a "Soon" class can't be picked (site test).
   - [ ] Assassin start clicks are unchanged.
   - [ ] Arrow keys move through the radiogroup and skip "Soon" classes (a11y suite).
-  - [ ] Shots at both sizes, in Basic, matching `3-class-picker.png` option A.
+  - [ ] Shots at both sizes, in Basic, matching `3-class-picker.png` option A, plus 360 px: 4 × 2 badges with
+        "Spiritmaster" fitting its badge, not cut off.
+  - [ ] "Soon" text is at least 12 px and 4.5:1 against the badge (Design Critic 4).
   - [ ] Every emblem file has a provenance row.
 - **Files.** `src/cards/welcome.html`, `src/cards/welcome.js`, `src/styles` welcome rules, `src/assets/icons/*` (the
   emblems), `docs/ISSUES.md`, `tests/site.js`, and `tests/a11y.js`.
@@ -239,7 +246,13 @@ The same as P3, for the Cleric. It runs after P3 because both edit `pack.js`.
   - the state icon replaces the regional quest checkbox, in milestone rows and in the Next up card: the owner's teal
     star crop for to pick up, Metabot's `quest_district` for in progress, and a green check for turned in, drawn as a 22 px
     circle with a centred SVG check (never a ✓ text glyph);
-  - one button says the next step: "Picked up", then "Turned in" (green), then a small "Undo";
+  - one button says the next step as a verb: "Pick up" (neutral outline), then "Turn in" (filled green, the old
+    `.go` style), then "Undo" (a neutral button); all three the same width in a fixed action column (owner,
+    2026-10-19 8:25 PM ET, T-58; `/mnt/project-files/tracker/mockups/0.8-owner-ok-v4/`, which supersedes v2 for these
+    buttons);
+  - the Regional quests tile in Next up shows today's ❖ glyph in white on a #3ba281 tile with a border of the same
+    colour and no dark panel (owner, 8:44 PM ET, option A, T-58; frames `nu-390-quad.png`, `nu-360-quad.png` and
+    `2-card-tile-board-v4.png` in the v4 folder); the ❖ stays a glyph, not new game art;
   - a one-line legend under "Regional quests" teaches the three icons (15 px check);
   - in the Next up card every quest row also shows its map pin left of the button, and a long name is cut with "…";
   - "Not in game yet" / "In my game" stay as they are;
@@ -257,6 +270,12 @@ The same as P3, for the Cleric. It runs after P3 because both edit `pack.js`.
   - [ ] The button's accessible name says the next step; the icons have text alternatives (a11y suite).
   - [ ] Shots of all three states in a milestone row and in the Next up card, and the tip, at 1500 and 390 px, matching
         the boards; a long name is cut with "…" at 390 px.
+  - [ ] The check, the in-progress diamond and the to-pick-up star share one centre line in the list (owner, 8:25 PM
+        ET; they were up to 7 px off in the v2 mock).
+  - [ ] A fixed button column and a fixed pin column (32 px desktop, 36 px phone), so left edges line up; a cut name
+        keeps the full name in `title` and in the accessible name (Design Critic 3, Design Lead).
+  - [ ] The in-progress marker reads at 1× on a phone; if its body doesn't, it sits on a 1 px `--c-line` disc
+        (Design Critic 8). 360 px shots added (Design Critic 6).
   - [ ] Golden diff limited to the icon references.
   - [ ] Every file has a provenance row.
 - **Files.** `src/assets/icons/*` (the crop and `quest_district`), `src/packs/aion2/cards/rows.js`,
@@ -306,10 +325,67 @@ The same as P3, for the Cleric. It runs after P3 because both edit `pack.js`.
 - **Lanes:** gen, golden. **Model:** Opus, M (80 min).
 - **After:** `research-401-levels` (Game Data Check records the owner's level notes).
 
+## P16: Sorcerer class data (hidden)
+
+The same as P2, for the Sorcerer. It reads `docs/research/2026-10-sorcerer-pack.md` and the owner's checked Sorcerer
+screen (`/mnt/project-files/owner-screens/2026-10-19/sorcerer/NOTES.md`: unlock levels, icon ids, default keys).
+
+- **Lanes:** gen. **Model:** Opus, L (120 min).
+- **After:** `research-sorcerer`.
+
+## P17: Sorcerer guide pack and picker
+
+The same as P3, for the Sorcerer. It runs after P5 because both edit `pack.js`.
+
+- **Lanes:** gen, golden. **Model:** Opus, L (120 min).
+- **After:** P16, P5.
+
+## P18: Chanter class data (hidden)
+
+The same as P2, for the Chanter. It reads `docs/research/2026-10-chanter-pack.md` and
+`/mnt/project-files/owner-screens/2026-10-19/chanter/NOTES.md`. Wave Blow sits in Q row 1 although it is conditional
+(needs Stun), unlike every other class; keep the screen's order and label it as the notes say.
+
+- **Lanes:** gen. **Model:** Opus, L (120 min).
+- **After:** `research-chanter`.
+
+## P19: Chanter guide pack and picker
+
+The same as P3, for the Chanter. Metabot has no Chanter build sample, so advice with one source is labelled as
+`claims.json` decides, never presented as verified.
+
+- **Lanes:** gen, golden. **Model:** Opus, L (120 min).
+- **After:** P18, P17.
+
+## P20: Unverified values carry their label
+
+- **Problem.** The compiler (`tools/gen/gen.mjs`) drops each record's `fieldStatus`, so a disputed, owner-check or
+  inferred value shows in the app with no label. CLAUDE.md requires unverified data to be left out or labelled (Game
+  Data Check, #472 review; 3 regional quest zones are disputed today).
+- **Result.**
+  - gen carries `fieldStatus` (and record-level status) for the fields players see: quest `zone`, `giver.zone` and
+    `turnin.zone`; Sealed Dungeon `entrance` and `xp`; stronghold `levelRange`;
+  - where such a field renders (milestone rows, Next up), a small tag follows it in the existing `ss-tag` style:
+    "check in game" for disputed and owner-check, "inferred" for inferred; single source keeps its current tag;
+  - the tag's text is at least 12 px (Design Critic checklist), which also lifts the existing `ss-tag`.
+- **Input.** Game Data Check's list, `/mnt/project-files/game-data-check/labelled-fields-2026-10-19.md` (448 rows,
+  most never render).
+- **No-gos.** Guide-text claims are out of scope (already tagged from `claims.json`). No pinned counts: #325 batches keep
+  changing them. No new art.
+- **Acceptance.**
+  - [ ] A test reads the labels from the data and checks each rendered disputed / owner-check / inferred field shows its
+        tag, and no verified field does.
+  - [ ] Shots of a disputed regional quest zone in a milestone row and in Next up, at 1500 and 390 px.
+  - [ ] Golden diff limited to the tags.
+- **Files.** `tools/gen/gen.mjs`, `src/packs/aion2/cards/rows.js`, `src/packs/aion2/cards/nextup-kinds.js`,
+  `src/styles/cards/nextup.css`, `src/styles/packs/aion2/areas.css`, the tests.
+- **Lanes:** gen, golden, nextup.css, rows. **Model:** Sonnet, S (44 min).
+- **After:** none.
+
 ## R: Release 0.8.0
 
 - **What it does.** Version bump and the CHANGELOG section, as `docs/plans/0.7/R-release-0.7.0.md` did.
 - **K17.** The CHANGELOG draft is up before `PRE-RELEASE CHECK 0.8.0`. Game Data Check reads it against `docs/ISSUES.md`
   and the live build.
 - **Lanes:** release, alone. **Model:** Sonnet, S (44 min).
-- **After:** every item above, or moved to 0.8.x; `DATA OK 0.8.0`.
+- **After:** every item above, or moved to 0.8.x; `RC PLAY DONE 0.8` read; `DATA OK 0.8.0`.
