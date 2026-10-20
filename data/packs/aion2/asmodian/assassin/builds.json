@@ -243,10 +243,13 @@
           "spec:assassin:heart-gore:5"
         ],
         "skill:assassin:insignia-explosion": [
-          "spec:assassin:insignia-explosion:2"
+          "spec:assassin:insignia-explosion:2",
+          "spec:assassin:insignia-explosion:3",
+          "spec:assassin:insignia-explosion:5"
         ],
         "skill:assassin:savage-roar": [
-          "spec:assassin:savage-roar:2"
+          "spec:assassin:savage-roar:2",
+          "spec:assassin:savage-roar:4"
         ],
         "skill:assassin:quick-slice": [
           "spec:assassin:quick-slice:3",
@@ -254,10 +257,12 @@
           "spec:assassin:quick-slice:5"
         ],
         "skill:assassin:ambush": [
-          "spec:assassin:ambush:1"
+          "spec:assassin:ambush:1",
+          "spec:assassin:ambush:2"
         ],
         "skill:assassin:shadowstrike": [
-          "spec:assassin:shadowstrike:2"
+          "spec:assassin:shadowstrike:2",
+          "spec:assassin:shadowstrike:1"
         ]
       },
       "specialtyEvidence": {
@@ -301,6 +306,53 @@
         "spec:assassin:quick-slice:5": {
           "slot": 3,
           "label": "2+ sources",
+          "sources": [
+            "https://aion2-meta.com/guides/assassin/",
+            "https://aion2turkiye.com/en/class/assassin/"
+          ]
+        },
+        "spec:assassin:insignia-explosion:3": {
+          "slot": 2,
+          "label": "disputed",
+          "note": "Skycoach, aion2turkiye (Leveling) and Corpus (Grobs, before skill 16) put this second; aion2-meta (PvE) puts -3s cooldown (5) second, which needs skill 16.",
+          "sources": [
+            "https://skycoach.gg/blog/aion-2/articles/assassin-guide",
+            "https://aion2turkiye.com/en/class/assassin/",
+            "https://corpus.gg/blog/aion-2/assassin-pve-build",
+            "https://aion2-meta.com/guides/assassin/"
+          ]
+        },
+        "spec:assassin:insignia-explosion:5": {
+          "slot": 3,
+          "label": "2+ sources",
+          "sources": [
+            "https://skycoach.gg/blog/aion-2/articles/assassin-guide",
+            "https://aion2turkiye.com/en/class/assassin/"
+          ]
+        },
+        "spec:assassin:savage-roar:4": {
+          "slot": 2,
+          "label": "contested",
+          "note": "aion2turkiye (Leveling, Dungeon) puts this second after Skill Speed, as the guide does; Skycoach and Corpus open with -20% MP consumed (1) and take Skill Speed second.",
+          "sources": [
+            "https://aion2turkiye.com/en/class/assassin/",
+            "https://skycoach.gg/blog/aion-2/articles/assassin-guide",
+            "https://corpus.gg/blog/aion-2/assassin-pve-build"
+          ]
+        },
+        "spec:assassin:ambush:2": {
+          "slot": 2,
+          "label": "disputed",
+          "note": "aion2turkiye (Leveling, Dungeon) puts Absorb second; aion2-meta (PvE) puts the 50% Whirlwind Slice trigger (4) second, a skill the guide doesn't level.",
+          "sources": [
+            "https://aion2turkiye.com/en/class/assassin/",
+            "https://aion2-meta.com/guides/assassin/"
+          ]
+        },
+        "spec:assassin:shadowstrike:1": {
+          "slot": 2,
+          "label": "inferred",
+          "note": "No PvE source names a second pick (aion2-meta and aion2turkiye name Seal (3) or Root (4) for PvP only); a longer stun on a sure hit is the guide's reasoning.",
           "sources": [
             "https://aion2-meta.com/guides/assassin/",
             "https://aion2turkiye.com/en/class/assassin/"
@@ -1329,12 +1381,14 @@
         "Upgrade priority (v1): Triniel's Dagger to 10 and Illusive Clone to 20 (GamesFuze + Skycoach, 2-source). App plan 'all to 5, then slot 1 to 10/15' is Metabot general advice (single).",
         "v1 board notes: Metaroad board page refused (provenance) and GameWith grid is unlabelled; Metabot gives no node coordinates. Path costs unknown; keep 'about 3–5 with its path' only as labelled inference or drop.",
         "Corner totals by board (Metabot full-board totals): Nezekan: Combat Speed +3%, Cooldown Reduction +3%; Zikel: Damage Boost +3%, Damage Tolerance +3%; Vaizel: Critical Damage Boost +3%, Critical Damage Tolerance +3%; Triniel: Multi-hit Chance +4.5%, Multi-hit Resist +4.5% (https://metabot.gg/en/aion-2/daevanion/assassin (full-board totals; the % stats are the corner stats by the +1.5%/corner rule))",
-        "specialtyPicks (0.3 E7, docs/research/2026-10-specialty-picks.md, merged as #77 at 8dd047d): position = slot (1, 2, 3). Slots 2 and 3 carry only picks the research labels 2+ sources for that slot (Heart Gore 4 / 5, Quick Slice 4 / 5), each listed in specialtyEvidence with its slot witnesses (the generator checks this). Insignia Explosion slot 2 (5 against 3, disputed), Savage Roar slot 2 (4, contested) and the other contested, disputed, single-source and gap slots are left out (\"pick a specialty\", design Q6). GamesFuze is not slot-ordered, so it is no slot witness. Metabot lists the choices but no picks.",
-        "Quick Slice slot 2 (spec:assassin:quick-slice:4, C40): the owner's tooltip (owner:2026-10-16-quickslice-01) shows the choice in game, unlocking at skill Lv 12. It witnesses the choice, not the slot order."
+        "specialtyPicks (0.3 E7, docs/research/2026-10-specialty-picks.md, merged as #77 at 8dd047d): position = slot (1, 2, 3). Slots 2 and 3 carry only picks the research labels 2+ sources for that slot (Heart Gore 4 / 5, Quick Slice 4 / 5), each listed in specialtyEvidence with its slot witnesses (the generator checks this). The other contested, disputed, single-source and gap slots were left out (\"pick a specialty\", design Q6) until 0.8.1 F2 (below). GamesFuze is not slot-ordered, so it is no slot witness. Metabot lists the choices but no picks.",
+        "Quick Slice slot 2 (spec:assassin:quick-slice:4, C40): the owner's tooltip (owner:2026-10-16-quickslice-01) shows the choice in game, unlocking at skill Lv 12. It witnesses the choice, not the slot order.",
+        "Every core skill's slot 2 has a pick (0.8.1 F2, owner note 5, C40a, docs/research/2026-10-specialty-slot2.md): Insignia Explosion 3 (disputed; its slot 3 is 5, SC and TR-L), Savage Roar 4 (contested), Ambush 2 (disputed), Shadowstrike 1 (inferred). A labelled pick's specialtyEvidence carries its label and a note naming the alternative; the app shows both. Slot 3 stays unoffered inside Lv 45 (design Q5)."
       ],
       "claims": [
         "C21a",
-        "C40"
+        "C40",
+        "C40a"
       ]
     }
   ]
