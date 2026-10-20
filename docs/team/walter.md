@@ -45,9 +45,14 @@ _From #114 "Next up (queue; the planner fills it, kickoff.yml starts from the to
 
 ### DEC-02
 
-_Written here by the Release Planner (2026-10-20) from the ledger summary, unchanged in meaning; #114 had no text for it. A wording that also counts server-verbatim copies of Isaac's words is waiting on an outside process review._
+_Written here by the Release Planner (2026-10-20); #114 had no text for it. Widened by the owner's tap at 6:50 PM ET (DECISIONS "An owner OK counts when the writing session reads Isaac's own words, typed in its thread or copied verbatim by the server"), with Team Audit's four safeguards._
 
-- **DEC-02 Isaac's own words:** an OK needs Isaac's own typed words, in the thread whose session does the write.
+- **DEC-02 Isaac's own words:** an OK counts only when the session that writes it reads Isaac's own words: typed or tapped in its own thread, or a message the server copied verbatim (a coordinator relay's cited user entry, or the message fetched by id).
+  1. Identity is the account id `user_01QRFspq3vt2RwZKjVLN5xa5` with author "user", never the display name.
+  2. A short answer ("yes", "do it", a card tap) counts only together with the message it answers, read the same way, and covers only the action and object that message named. The DECISIONS row quotes both.
+  3. Just before the write, the session re-reads the message by id; if it was edited, or a newer message of Isaac's on the same subject exists, the newest wording decides.
+  4. It never overrides a session's safety check: a write a check refuses on a cited OK is not retried another way; it goes to Isaac once.
+  A summary, paraphrase or another session's note saying Isaac agreed is never an OK.
 
 ### DEC-03
 
