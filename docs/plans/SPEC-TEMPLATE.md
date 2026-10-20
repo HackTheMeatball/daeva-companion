@@ -19,6 +19,14 @@ format only here, together with the parser and its test.
 - The queue line is the issue's last line, copied into the state issue (#114) to queue it:
   `- [next] #<n> <opus|sonnet> lanes:<lane>[,<lane>…]`, `lanes:none`, or no lanes at all; `alone` is a separate word
   (`lanes:release alone`, or `- [next] #<n> opus alone`), never part of the lane list.
+- The **Inputs** bullet lists, in backticks, the repo paths the build reads (crops, boards, research files), or says
+  `none`; an `Inputs: <path>, <path>` line in `## Lanes, model, order` is read the same way. Kickoff looks each one up on
+  main (a directory or glob by its directory) and holds the item, with a `spec: input not in repo: <path>` comment, when
+  one is missing or lies outside the repo (`~/…`, `/…`). A `/mnt/` path anywhere in the spec holds it the same way:
+  builds can't read the project's shared folder (Kaizen, 2026-10-20; #502 sat 67 min).
+- An item on the `gen` or a `golden` lane, or whose spec runs `npm run gen` or re-records golden, starts on Opus
+  whatever its queue line says, and so does one whose **Files** line names an Opus path (#114 Effort; Kaizen,
+  2026-10-20: #509 was routed to Sonnet and stopped).
 - Lanes are the serial files of docs/team/DISPATCH.md. Names outside kickoff's known list only warn, and kickoff still
   keeps same-named lanes apart.
 
@@ -29,10 +37,11 @@ format only here, together with the parser and its test.
 
 - **Problem.** One or two sentences: what is wrong or missing, with its source (issue, review, owner message).
 - **Result.** What exists when it is done, file by file.
+- **Inputs.** `docs/research/2026-10-templar-pack.md`, `data/research/templar-skills-metabot-2026-10.csv`.
+- **Files.** `data/packs/aion2/classes/templar/*`, `tools/research/gladiator-pack.mjs`, the tests.
 - **No-gos.** What it must not change.
 - **Acceptance.**
   - [ ] One checkable line each, with the evidence the PR pastes.
-- **Files.** The files it owns.
 - **Lanes:** gen. **Model:** Opus, L (120 min).
 - **After:** P1, research-templar, owner-ok-0.8-icon-box.
 ```

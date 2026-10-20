@@ -2,7 +2,7 @@
 /* Kickoff's After check (.github/workflows/kickoff.yml, the block between "AFTER-CHECK START" and "AFTER-CHECK END") run in
    Node against fixtures, no network: an item with an unmet owner-ok key, an unknown key or an open dependency must stay
    unstarted; a met one must start (2026-10-18: explicit [next] lines skipped the check, Kaizen (Gale), #222). < 1 s. */
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -134,7 +134,30 @@ check(opusPath(spec('`src/packs/aion2/cards/nextup-kinds.js`, `src/styles/app.cs
 check(opusPath(spec('`docs/ISSUES.md`')) === null, 'src/core/ named only outside the Files section -> stays Sonnet');
 check(opusPath(spec('`src/core/x.js`', '')) === 'src/core/', 'Files as the last section still read');
 check(opusPath('No files section; src/core/ in prose.') === null, 'no Files section -> stays Sonnet');
-check(/const hit = m\[2\] !== 'opus' && opusPath\(iss\.body\);[\s\S]{0,300}model: m\[2\] === 'opus' \|\| hit \? 'claude-opus-5-5'/.test(yml), 'start loop: an Opus-path hit starts the build on Opus');
+// Template-format specs write "- **Files.**" as a bullet; PIP-06 only read "## Files", so #509 (tools/gen/gen.mjs) started on Sonnet.
+const fx = new Function(of[1] + '\nreturn { specField, opusWork, inputPaths, lookupPath };')();
+const bullet = (files, extra = '') => `# 0.8 P20: x\n\n- **Problem.** Touches src/core/ in prose only.\n- **Files.** ${files}\n  more files on a wrapped line.\n- **Lanes:** nextup.css. **Model:** Sonnet.\n${extra}- **After:** none.\n\n## Lanes, model, order\n`;
+check(opusPath(bullet('`tools/gen/gen.mjs`, `src/packs/aion2/cards/rows.js`')) === 'tools/gen/', 'Files as a template bullet names tools/gen -> Opus (#509)');
+check(opusPath(bullet('`src/styles/cards/nextup.css`')) === null, 'Files bullet with no Opus path -> stays Sonnet (src/core/ only in Problem)');
+check(/wrapped line/.test(fx.specField(bullet('`a/b.js`'), 'Files')) && !/Lanes/.test(fx.specField(bullet('`a/b.js`'), 'Files')), 'a bullet field runs to the next bullet, wrapped lines included');
+// Kaizen (Gale), 2026-10-20: gen or golden work starts on Opus whatever its tier.
+check(fx.opusWork(new Set(['gen', 'nextup.css']), '') === 'lane gen', 'gen lane -> Opus');
+check(fx.opusWork(new Set(['golden-nextup']), '') === 'lane golden-nextup', 'a golden card lane -> Opus');
+check(fx.opusWork(new Set(['nextup.css']), 'Then run `npm run gen` and commit.') === 'npm run gen', 'spec runs npm run gen -> Opus');
+check(!!fx.opusWork(new Set(['rows']), '- [ ] Re-record golden for the rows card.'), 'spec re-records golden -> Opus');
+check(fx.opusWork(new Set(['nextup.css', 'a11y']), 'Golden diff stays empty.') === null, 'no gen or golden work -> stays Sonnet');
+check(/opusWork\(want, iss\.body\)/.test(yml) && /started on Opus \(Kaizen, 2026-10-20\)/.test(yml), 'pick loop routes gen/golden work to Opus');
+// Kaizen (Gale), 2026-10-20: inputs must be repo paths on main (#502 named /mnt/project-files files builds can't read).
+const mntSpec = bullet('`src/x.js`', '- **Inputs.** `docs/plans/0.8/inputs/a.png`, `src/assets/icons/*`.\n- **Result.** Per /mnt/project-files/tracker/mockups/v2/README.md and `/mnt/project-files/x.png`.\n');
+const ip = fx.inputPaths(mntSpec);
+check(ip.mnt.length === 2 && ip.mnt.includes('/mnt/project-files/tracker/mockups/v2/README.md') && ip.mnt.includes('/mnt/project-files/x.png'), 'a /mnt/ path anywhere in the spec is caught (prose and backticks)');
+check(ip.repo.join() === 'docs/plans/0.8/inputs/a.png,src/assets/icons/*', 'the Inputs line\'s repo paths are looked up; Files paths (new files) are not');
+check(fx.inputPaths(bullet('`src/x.js`', '- **Input.** The labels in `data/packs/**` themselves.\n')).repo.join() === 'data/packs/**', 'singular "Input." line read too (#509)');
+check(fx.lookupPath('src/assets/icons/*') === 'src/assets/icons' && fx.lookupPath('data/packs/**') === 'data/packs' && fx.lookupPath('docs/a.md') === 'docs/a.md', 'a glob is looked up by its directory');
+check(fx.inputPaths(bullet('`src/x.js`')).mnt.length === 0 && fx.inputPaths(bullet('`src/x.js`')).repo.length === 0, 'no Inputs line and no /mnt/ -> nothing to check');
+check(/missing\.length \|\| lookupFailed/.test(yml) && /spec: input not in repo: \$\{x\}/.test(yml) && /held: input not in repo/.test(yml), 'pick loop holds an item with a missing input and tells the planner once on the issue');
+check(yml.indexOf('const ins = inputPaths(iss.body)') > yml.indexOf('const wait = await afterBlocker(kx)') && yml.indexOf('const ins = inputPaths(iss.body)') < yml.indexOf('const why = await alreadyBuilt(n)'), 'the input check runs after the After check and before a build starts');
+check(/const fileHit = m\[2\] !== 'opus' && opusPath\(iss\.body\), workHit = m\[2\] !== 'opus' && !fileHit && opusWork\(want, iss\.body\);\s*\n\s*const hit = fileHit \|\| workHit;[\s\S]{0,500}model: m\[2\] === 'opus' \|\| hit \? 'claude-opus-5-5'/.test(yml), 'start loop: an Opus-path or gen/golden hit starts the build on Opus');
 
 // The spec template's Example (docs/plans/SPEC-TEMPLATE.md) is the format kickoff parses: run its After line as written,
 // then the other forms specs use (Kaizen (Gale), after #517). A line it can't read says so without markdown marks.
@@ -144,6 +167,24 @@ check(!!ex && /\*\*After:\*\*/.test(ex[1]), 'SPEC-TEMPLATE.md has an Example blo
 const exItem = (body) => ({ n: 32, ver: '0.8', rel: '0.8', key: 'P2', open: true, body });
 const exAfter = (line) => exItem(ex ? ex[1].replace(/^- \*\*After:\*\*.*$/m, `- **After:** ${line}`) : '');
 check((await afterBlocker(exItem(ex ? ex[1] : ''))) === '', 'template Example as written (P1, research-templar, owner-ok-0.8-icon-box) -> starts when all are met');
+check(fx.inputPaths(ex ? ex[1] : '').repo.length === 2 && !fx.inputPaths(ex ? ex[1] : '').mnt.length, 'template Example: its Inputs line gives two repo paths to look up, no /mnt/');
+// Every field kickoff reads, run through the template's Example (Kaizen (Gale), 2026-10-20: After, then Files, then Inputs
+// drifted from the parser). Lanes and model: the queue line built from the Example's Lanes/Model bullet must be one kickoff starts.
+const exs = ex ? ex[1] : '';
+check(/data\/packs\/aion2\/classes\/templar/.test(fx.specField(exs, 'Files')) && opusPath(exs) === null, 'template Example: its Files bullet is read (paths seen, none an Opus path)');
+const exLanes = ((exs.match(/\*\*Lanes:\*\*\s*([^*\n]*?)\.?\s*\*\*Model/) || [])[1] || '').split(/,\s*/).filter(Boolean);
+const exModel = ((exs.match(/\*\*Model:\*\*\s*(Opus|Sonnet)\b/) || [])[1] || '').toLowerCase();
+const exLine = `- [next] #12 ${exModel} lanes:${exLanes.join(',')}`;
+const QLINE = new RegExp(yml.match(/const m = lines\[i\]\.match\(\/(\^- \\\[next\\\][^\n]*?\$)\/\);/)[1]);
+const lof = new Function(yml.match(/(const lanesOfLine = [^\n]*)/)[1] + '\nreturn lanesOfLine;')();
+check(exLanes.length > 0 && !!exModel && QLINE.test(exLine) && [...lof(exLine)].join() === exLanes.join(), `template Example: its Lanes and Model make a queue line kickoff reads (${exLine})`);
+check(fx.opusWork(lof(exLine), exs) === 'lane gen', 'template Example (Lanes: gen) -> Opus');
+// The Release Planner's form: an "Inputs:" line in "## Lanes, model, order".
+const lmo = (line) => `- **Problem.** x\n\n## Lanes, model, order\n\nLanes: gen. Model: Opus.\n${line}\n`;
+check(fx.inputPaths(lmo('Inputs: docs/plans/0.8/inputs/design-v4/, data/research/x.csv')).repo.join() === 'docs/plans/0.8/inputs/design-v4/,data/research/x.csv', '"Inputs: a, b" line read, a directory path kept');
+check(fx.inputPaths(lmo('Inputs: none')).repo.length === 0 && fx.inputPaths(lmo('Inputs: none')).mnt.length === 0, '"Inputs: none" names nothing');
+check(fx.inputPaths(lmo('Inputs: ~/Desktop/crop.png, docs/a.md')).mnt.join() === '~/Desktop/crop.png' && fx.inputPaths(lmo('Inputs: ~/Desktop/crop.png, docs/a.md')).repo.join() === 'docs/a.md', 'an input outside the repo (~/) holds the item like /mnt/');
+check(existsSync(join(ROOT, ...'docs/research/2026-10-templar-pack.md'.split('/'))), 'template Example: its Inputs paths exist on this branch (keep the example honest)');
 check((await afterBlocker(exAfter('none.'))) === '', 'template form, After: none -> starts');
 check((await afterBlocker(exAfter('P1.'))) === '', 'template form, one key -> starts');
 check((await afterBlocker(exAfter('`P1`, `research-templar`, `owner-ok-0.8-icon-box`.'))) === '', 'template form, backticked keys -> starts');

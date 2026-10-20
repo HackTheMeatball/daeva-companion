@@ -59,10 +59,41 @@ jobs:
             // Opus path (#114 Effort: src/core, saves/storage/migrations, gates, golden/mig1, tools/gen, data/schema,
             // workflows) stopped with "Needs @claude (Opus)" and was built again. Such an item starts on Opus instead.
             const OPUS_PATH = /src\/core\/|tools\/gen\/|data\/schema\/|tests\/golden|e2-migtest|\bmig1\b|\.github\/|\bmigrat\w*|\blocalStorage\b|\brequires\b|\bcompletesWith\b/;
-            const opusPath = (body) => {
-              const files = ((body || '').match(/^## Files[^\n]*\n([\s\S]*?)(?=^## |(?![\s\S]))/m) || [])[1] || '';
-              return (files.match(OPUS_PATH) || [])[0] || null;
+            // A spec names its parts as "## Files" headings (before 0.8) or as "- **Files.**" bullets (docs/plans/SPEC-TEMPLATE.md).
+            // PIP-06 read only the heading, so #509's bullet naming tools/gen/gen.mjs started on Sonnet (#221, 2026-10-20 1:24 AM ET).
+            const specField = (body, name) => {
+              const b = body || '';
+              const h = b.match(new RegExp(`^## ${name}\\b[^\\n]*\\n([\\s\\S]*?)(?=^## |(?![\\s\\S]))`, 'm'));
+              if (h) return h[1];
+              const f = b.match(new RegExp(`^- \\*\\*${name}[.:]?\\*\\*[.:]?([\\s\\S]*?)(?=^- \\*\\*|^## |(?![\\s\\S]))`, 'm'));
+              return f ? f[1] : '';
             };
+            const opusPath = (body) => (specField(body, 'Files').match(OPUS_PATH) || [])[0] || null;
+            // Kaizen (Gale), 2026-10-20 (#221 1:24 AM ET: #509 needed a gen run and a golden re-record and was routed to Sonnet,
+            // whose limits stopped it): work on the gen or a golden lane, or a spec that runs `npm run gen` or re-records
+            // golden, starts on Opus whatever its tier.
+            const opusWork = (lanes, body) => {
+              const l = [...lanes].find((x) => x === 'gen' || /^golden(-|$)/.test(x));
+              if (l) return `lane ${l}`;
+              return ((body || '').match(/npm run gen\b|re-?record\w*[^.\n]{0,20}\bgolden|\bgolden[^.\n]{0,20}re-?record\w*/i) || [])[0] || null;
+            };
+            // Kaizen (Gale), 2026-10-20 (#221 1:22 AM ET: #502 named inputs only in /mnt/project-files, which builds can't read,
+            // and sat 67 min): a /mnt/ path anywhere in the spec, an input outside the repo (`~/…`, `/…`), or an input path main
+            // doesn't have keeps the item queued but not started. Inputs come from the spec's "- **Inputs.**" bullet or an
+            // "Inputs: a, b" line in "## Lanes, model, order" (Release Planner (Walter)); "Inputs: none" names none.
+            const inputPaths = (body) => {
+              const b = body || '';
+              const text = [specField(b, 'Inputs?'), ...[...b.matchAll(/^Inputs?:[ \t]*([^\n]*)$/gm)].map((m) => m[1])].join('\n');
+              const ticked = [...text.matchAll(/`([^`\s]+)`/g)].map((m) => m[1]);
+              const named = (ticked.length ? ticked : text.split(/[,\s]+/)).map((x) => x.replace(/[.;]+$/, '')).filter((x) => x.includes('/'));
+              const outside = named.filter((x) => /^[~/]/.test(x));
+              return {
+                mnt: [...new Set([...(b.match(/\/mnt\/[^\s`'")\]]+/g) || []), ...outside.filter((x) => !x.startsWith('/mnt/'))])],
+                repo: [...new Set(named.filter((x) => !/^[~/]/.test(x)))],
+              };
+            };
+            // The part of a path before its first glob segment, so `src/assets/icons/*` is looked up as src/assets/icons.
+            const lookupPath = (p) => { const segs = p.split('/'), k = segs.findIndex((x) => /[*?{[]/.test(x)); return (k < 0 ? segs : segs.slice(0, k)).filter(Boolean).join('/'); };
             // OPUS-FILES END
             // Keep in step with lanes() in the refresh job below (same rules, two copies).
             const lanesOfFiles = (files) => {
@@ -292,10 +323,31 @@ jobs:
                 }
                 if (alone) break; continue; // an "alone" item keeps queue order
               }
+              const ins = inputPaths(iss.body), missing = [...ins.mnt];
+              let lookupFailed = false;
+              for (const pth of ins.repo) {
+                const at = lookupPath(pth);
+                if (!at) continue;
+                try { await github.rest.repos.getContent({ owner, repo, path: at, ref: 'main' }); }
+                catch (e) { if (e.status === 404) missing.push(pth); else { lookupFailed = true; core.warning(`#${n}: could not look up input ${pth} (${e.status || e.message}); held this run`); } }
+              }
+              if (missing.length || lookupFailed) {
+                if (missing.length) {
+                  core.warning(`#${n}: spec input not in repo: ${missing.join(', ')}; held`);
+                  if (!/^\s+- held: /.test(lines[i + 1] || '')) { lines.splice(i + 1, 0, `  - held: input not in repo (kickoff ${stamp})`); pruned = true; }
+                  const said = (await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: n, per_page: 100 })).map((c) => c.body || '');
+                  const fresh = missing.filter((x) => !said.some((b) => b.includes(`spec: input not in repo: ${x}`)));
+                  if (fresh.length) await github.rest.issues.createComment({ owner, repo, issue_number: n,
+                    body: fresh.map((x) => `spec: input not in repo: ${x}`).join('\n') + '\n\nKickoff holds this item until every input the spec names is a repo path on main (builds can\'t read /mnt/). Release Planner: move the file into the repo or fix the path; the queue line stays.' });
+                }
+                if (alone) break; continue;
+              }
               const why = await alreadyBuilt(n);
               if (why) { core.warning(`#${n} not started again: ${why}`); lines[i] = `- [started ${stamp}] #${n} ${m[2]}${m[3]}`; pruned = true; continue; }
-              const hit = m[2] !== 'opus' && opusPath(iss.body);
-              if (hit) core.notice(`#${n}: queued sonnet, but its Files list names ${hit} (an Opus path, #114 Effort); started on Opus (PIP-06)`);
+              const fileHit = m[2] !== 'opus' && opusPath(iss.body), workHit = m[2] !== 'opus' && !fileHit && opusWork(want, iss.body);
+              const hit = fileHit || workHit;
+              if (fileHit) core.notice(`#${n}: queued sonnet, but its Files list names ${fileHit} (an Opus path, #114 Effort); started on Opus (PIP-06)`);
+              if (workHit) core.notice(`#${n}: queued sonnet, but it runs gen or re-records golden (${workHit}); started on Opus (Kaizen, 2026-10-20)`);
               picked.push({ issue: n, model: m[2] === 'opus' || hit ? 'claude-opus-5-5' : 'claude-sonnet-5-5', title: iss.title });
               lines[i] = `- [started ${stamp}] #${n} ${m[2]}${m[3]}`;
               if (/^\s+- held: /.test(lines[i + 1] || '')) lines.splice(i + 1, 1); // its After line reads now: drop the note
