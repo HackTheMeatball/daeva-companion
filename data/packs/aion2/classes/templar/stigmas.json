@@ -9,6 +9,7 @@
       "key": "Armor of Balance",
       "name": "Armor of Balance",
       "availableLv": 22,
+      "icon": "assets/icons/st-templar-armor-of-balance.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -61,6 +62,7 @@
       "key": "Assault Fury",
       "name": "Assault Fury",
       "availableLv": 22,
+      "icon": "assets/icons/st-templar-assault-fury.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -112,6 +114,7 @@
       "key": "Battlefield Banner",
       "name": "Battlefield Banner",
       "availableLv": 22,
+      "icon": "assets/icons/st-templar-battlefield-banner.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -163,6 +166,7 @@
       "key": "Comrade in Arms",
       "name": "Comrade in Arms",
       "availableLv": 22,
+      "icon": "assets/icons/st-templar-comrade-in-arms.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -214,6 +218,7 @@
       "key": "Doom Shield",
       "name": "Doom Shield",
       "availableLv": 22,
+      "icon": "assets/icons/st-templar-doom-shield.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -265,6 +270,7 @@
       "key": "Empyrean Lord's Punishment",
       "name": "Empyrean Lord's Punishment",
       "availableLv": 22,
+      "icon": "assets/icons/st-templar-empyrean-lords-punishment.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -316,6 +322,7 @@
       "key": "Executing Blade",
       "name": "Executing Blade",
       "availableLv": 22,
+      "icon": "assets/icons/st-templar-executing-blade.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -367,6 +374,7 @@
       "key": "Grapple",
       "name": "Grapple",
       "availableLv": 22,
+      "icon": "assets/icons/st-templar-grapple.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -418,6 +426,7 @@
       "key": "Nezekan's Shield",
       "name": "Nezekan's Shield",
       "availableLv": 22,
+      "icon": "assets/icons/st-templar-nezekans-shield.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -469,6 +478,7 @@
       "key": "Noble Armor",
       "name": "Noble Armor",
       "availableLv": 22,
+      "icon": "assets/icons/st-templar-noble-armor.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -520,6 +530,7 @@
       "key": "Second Skin",
       "name": "Second Skin",
       "availableLv": 22,
+      "icon": "assets/icons/st-templar-second-skin.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -571,6 +582,7 @@
       "key": "Shield of Protection",
       "name": "Shield of Protection",
       "availableLv": 22,
+      "icon": "assets/icons/st-templar-shield-of-protection.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -622,6 +634,7 @@
       "key": "Taunt",
       "name": "Taunt",
       "availableLv": 22,
+      "icon": "assets/icons/st-templar-taunt.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
