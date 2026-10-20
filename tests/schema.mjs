@@ -234,7 +234,7 @@ if (g) {
   const clG = others[otherIds.indexOf('aion2/asmodian/cleric')], clColl = f => clG ? clG.all.filter(x => x.file.startsWith('data/packs/aion2/classes/cleric/') && x.file.endsWith('/' + f)).length : 0;
   ok('the Cleric class pack is no longer idle (0.8 P5); its guide pack compiles 1 class, 22 skills, 13 stigmas, 537 board nodes', !idle.includes('aion2/classes/cleric') && !!clG
     && clColl('class.json') === 1 && clColl('skills.json') === 22 && clColl('stigmas.json') === 13 && clColl('board-nodes.json') === 537, [clColl('skills.json'), clColl('stigmas.json'), clColl('board-nodes.json')]);
-  const clWords = /cleric|Earth's Retribution|Chain of Torment|Earth Punishment/i, clIn = [g.module, g.gateModule, g.proposedModule, g.placeModule].filter(m => clWords.test(m)).map(m => m.match(clWords)[0]);
+  const clWords = /cleric|Earth's Retribution|Chain of Torment|Earth Punishment/i, clIn = [recordsOnly(g.module), g.gateModule, g.proposedModule, g.placeModule].filter(m => clWords.test(m)).map(m => m.match(clWords)[0]);
   ok('the Assassin bundle carries no Cleric record (generated, gate, proposed and place modules)', !clIn.length, clIn);
   let gi = null; try { gi = generate({ root: packsCopy('idle', makeIdle) }); } catch (e) { ok('generator runs on a copy with an idle Spiritmaster', false, e.message); }
   const sm = gi && (gi.idle || []).find(x => x.pack === SM), smColl = f => sm ? sm.all.filter(x => x.file.endsWith('/' + f)).length : 0;
