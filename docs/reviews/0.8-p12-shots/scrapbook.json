@@ -1,0 +1,8 @@
+[
+  { "case": "class-fresh-basic-390", "kind": "before-after", "title": "Pick your class on the welcome card",
+    "caption": "A first visit now shows all eight classes, Assassin picked. Classes without a guide yet say Soon and can't be picked." },
+  { "case": "class-fresh-basic-1500", "kind": "before-after", "title": "Class badges on desktop",
+    "caption": "On a wide screen the eight class badges sit in one row above Start at Lv 1." },
+  { "case": "class-templar-picked-basic-390", "kind": "before-after", "title": "Starting as another class",
+    "caption": "Picking Templar moves the highlight; Start at Lv 1 then opens the Templar guide with one Templar character." }
+]
