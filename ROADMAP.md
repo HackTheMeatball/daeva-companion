@@ -1271,10 +1271,10 @@ workflows).
 | P16 | Board paths and costs checked for the Assassin only (note 14) → every class | M | Opus | gen, golden | `research-node-paths` |
 | P17 | Assassin E stigma stack on one key? (note 13) → research answer applied | S | Opus | gen, golden | `research-e-stack` |
 | P18 | Rotation lists order, not play (note 15) → "how it plays" text per class | M | Opus | gen, golden, build-card | `research-rotation-play` |
-| P19 FR | Lv 39 join: 70–77 skill clicks in unlock order (note 10) → one row and one tap per skill | L | Opus | skills-card, nextup-card, app.css, golden, golden-nextup | `owner-ok-0.9-catchup-look`, P15 |
-| P20 FR | Daevanion ~22 ticks, no per-board or Stigma respec (note 9) → board rows, respec per board and all, Stigma respec | M | Opus | app.css, golden | `owner-ok-0.9-catchup-look`, P16 |
-| P21 | Basic hides catch-up tools; Lv 4–16 chores lead Next up → kept, folded | M | Sonnet | nextup-card, app.css, golden-nextup | `owner-ok-0.9-catchup-look` |
-| P22 FR | Key setup inline with small icons (notes 11, 12) → a sheet, icons fill each box | M | Opus | build-card, app.css, a11y, golden | `owner-ok-0.9-keys-look` |
+| P19 FR | Lv 39 join: 70–77 skill clicks in unlock order (note 10) → one row and one tap per skill | L | Opus | skills-card, nextup-card, app.css, golden, golden-nextup | P15 (input: `docs/design/0.9-catchup/`) |
+| P20 FR | Daevanion ~22 ticks, no per-board or Stigma respec (note 9) → board rows, respec per board and all, Stigma respec | M | Opus | app.css, golden | P16 (input: `docs/design/0.9-catchup/`) |
+| P21 | Basic hides catch-up tools; Lv 4–16 chores lead Next up → kept, folded | M | Sonnet | nextup-card, app.css, golden-nextup | none (input: `docs/design/0.9-catchup/`) |
+| P22 FR | Key setup inline with small icons (notes 11, 12) → a sheet, icons fill each box | M | Opus | build-card, app.css, a11y, golden | none (input: `docs/design/0.9-keys/`) |
 | P23 | Sources lists weigh 9.6 K gzip and 1,088 elements while closed → load on open | M | Opus | site, page-card | `owner-ok-0.9-sources-on-open` |
 | S1 FR | Golden shares a shard → its own shard | S | Gus | ci | P6 |
 | S2 FR | Nothing checks the live app works → scripted journey after each deploy and every 6 h | S | Gus | ci | none |
@@ -1307,7 +1307,7 @@ At most five builds at a time. Ungated items queue first; gated ones go last and
   P22; **build-card** P1 → P13 → P18 → P22; **ci** (Gus) S2 → S3 → S1 → S4.
 - **Wave 2 (after P2):** P9, P10, P11, P13; then P12 (after P11 and P6) and P14 (after P9 and P10).
 - **Wave 3 (as research lands):** P15, P16, P17, P18, in the order their files land.
-- **Wave 4 (as owner OKs land):** P19, P20, P21 on the catch-up look; P22 on the keys look; P23 and S4 on their OKs.
+- **Wave 4 (as mocks and OKs land):** P19, P20, P21 on the catch-up mock; P22 on the keys mock; P23 on the next kaizen box; S4 once #609 merges.
 - **Critical path:** P2 → P11 → P12 → R (L + M + L, about 5.5 h of build at the stall limits, plus review). It runs
   through no owner gate and no research. A gated item whose OK isn't typed by the time the rest is done moves to 0.10
   rather than holding the release.
@@ -1326,9 +1326,9 @@ Under the standing OK until 1.0 most of 0.9 needs nothing from the owner. What i
    when the card opens, one plain link per source site kept in the page), so it is a rule change and goes in the next
    kaizen review's box (K23) as `owner-ok-0.9-sources-on-open`. Until then P23 waits at the end of the queue; if the
    answer is no, a reasoned budget raise at 1.0 is the fallback.
-3. **Catch-up and key setup looks** (gate P19–P21 and P22): `owner-ok-0.9-catchup-look` and `owner-ok-0.9-keys-look`,
-   after Design Lead's mocks and the Design Critic's read. Whether the owner still approves looks under the standing OK is
-   asked once, on a card in the Release planning (Walter) thread.
+3. **Catch-up and key setup looks: Design Lead approves** (owner's card answer, 2026-10-20 5:21 PM ET). P19–P21 build
+   from `docs/design/0.9-catchup/` and P22 from `docs/design/0.9-keys/` once Design Lead commits each mock with the look
+   OK, after the Design Critic's read. The owner sees them in the Scrapbook and in the 1.0 test.
 4. **Outside audit trial** (owner To-do: only the owner can do it): create the "Daeva audit" project with 7 days of Debug
    access.
 5. **In-game check:** Vaizel Assault Stance, 4 or 5 nodes (Game Data Check's thread).

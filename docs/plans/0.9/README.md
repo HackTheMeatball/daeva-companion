@@ -387,11 +387,11 @@ Rules for every item:
 
 - **Problem.** A player who joins at Lv 39 is walked through skill levels in unlock order: 70–77 "Mark spent" clicks,
   with no per-skill target (UX audit finding 1; owner note 10: "level this skill from 1-x, pick x,y,z specialty").
-- **Result.** As the owner-approved mock shows: for a joined save (or when skill lines behind the level exceed a
+- **Result.** As Design Lead's approved mock shows: for a joined save (or when skill lines behind the level exceed a
   threshold), the Skills card and Next up show one row per build skill, "Heart Gore → Lv 10 · specialty: <name>", in
   the build's priority order, with one "Done" per skill that ticks its lines up to the target (one tap per skill,
   undoable); "Missed" skill lines in milestones fold behind it.
-- **Inputs.** Design Lead's mock, committed under `docs/design/` with the owner's look OK.
+- **Inputs.** `docs/design/0.9-catchup/` (Design Lead's mock, committed with Design Lead's look OK after the Design Critic's read; owner card 2026-10-20 5:21 PM ET). Kickoff holds the item until it is on main.
 - **Files.** `src/packs/aion2/cards/skills.js`, `src/packs/aion2/cards/skills.html`, `src/packs/aion2/nextup.js`,
   `src/packs/aion2/cards/nextup-kinds.js`, `src/packs/aion2/requirements.js`, `src/core/nextup.js`,
   `src/packs/aion2/cards/journey-sections.js`, `src/styles/app.css`, the tests.
@@ -400,7 +400,7 @@ Rules for every item:
   - [ ] Browser test: a Lv 39 join reaches every skill's target in one tap per skill; Undo reverses a tap.
   - [ ] Shots at 1500 and 390 px, Basic and Advanced, against the mock.
 - **Lanes:** skills-card, nextup-card, app.css, golden, golden-nextup. **Model:** Opus, L (120 min).
-- **After:** owner-ok-0.9-catchup-look, P15.
+- **After:** P15.
 
 ## P20: Catch-up for Daevanion and Stigmas, with respec per board and for Stigmas
 
@@ -409,10 +409,10 @@ Rules for every item:
 - **Problem.** At Lv 39 Daevanion opens on the first Nezekan node with blank totals and takes about 22 ticks; there is no
   per-board catch-up or respec (UX finding 6; owner note 9). The Stigmas card has no Respec and about 190 px of empty
   space, with its four planned stigmas hidden in the collapsed "Slots" (UX finding 7; owner note 9).
-- **Result.** As the owner-approved mock shows: one row per open board ("Nezekan · 10 guide nodes", "Have them",
+- **Result.** As Design Lead's approved mock shows: one row per open board ("Nezekan · 10 guide nodes", "Have them",
   "Respec this board") plus "Respec all"; the Stigmas card lists its slots like Skills' and Daevanion's "Coming up", with
   a Respec in its foot.
-- **Inputs.** Design Lead's mock, committed under `docs/design/` with the owner's look OK.
+- **Inputs.** `docs/design/0.9-catchup/` (Design Lead's mock, committed with Design Lead's look OK after the Design Critic's read; owner card 2026-10-20 5:21 PM ET). Kickoff holds the item until it is on main.
 - **Files.** `src/packs/aion2/cards/daevanion.js`, `src/packs/aion2/cards/daevanion.html`,
   `src/packs/aion2/cards/stigmas.js`, `src/packs/aion2/cards/stigmas.html`, `src/styles/app.css`, the tests.
 - **No-gos.** No save key change. Respec costs only from sourced data.
@@ -421,23 +421,23 @@ Rules for every item:
         reverses both; Stigmas Respec clears the slots.
   - [ ] Shots at 1500 and 390 px against the mock.
 - **Lanes:** app.css, golden. **Model:** Opus, M (90 min).
-- **After:** owner-ok-0.9-catchup-look, P16.
+- **After:** P16.
 
 ## P21: Basic keeps the late-start tools; early chores fold away
 
 - **Problem.** Basic hides Sync levels, both Respecs, Daevanion "All nodes", crystals left and Stigma slots: the tools a
   late starter needs (UX finding 4; owner note 7 fixed the Respec buttons in 0.8.1). A Lv 39 join's Next up leads with
   Lv 4–16 "Missed" chores (UX finding 8).
-- **Result.** As the owner-approved mock shows: Basic keeps the catch-up tools; for a joined save, "Missed" chores more
+- **Result.** As Design Lead's approved mock shows: Basic keeps the catch-up tools; for a joined save, "Missed" chores more
   than 10 levels old fold into one row ("12 early steps you probably did · Review") with one undoable "All done".
-- **Inputs.** Design Lead's mock, committed under `docs/design/` with the owner's look OK.
+- **Inputs.** `docs/design/0.9-catchup/` (Design Lead's mock, committed with Design Lead's look OK after the Design Critic's read; owner card 2026-10-20 5:21 PM ET). Kickoff holds the item until it is on main.
 - **Files.** `src/packs/aion2/nextup.js`, `src/packs/aion2/cards/nextup-kinds.js`, `src/styles/app.css`, the tests.
 - **No-gos.** Basic stays essentials only: nothing else moves into it.
 - **Acceptance.**
   - [ ] Browser test: "All done" ticks the folded chores and Undo reverses it.
   - [ ] Shots of Basic at 390 px.
 - **Lanes:** nextup-card, app.css, golden-nextup. **Model:** Sonnet, M (90 min).
-- **After:** owner-ok-0.9-catchup-look.
+- **After:** none.
 
 ## P22: Key setup as a sheet, with icons that fill each box
 
@@ -446,8 +446,8 @@ Rules for every item:
 - **Problem.** The owner asked for key setup to rise from the bottom of the screen on desktop (note 11), and for the
   icons to fill each key box with the name in a tooltip, since the rotation already names them (note 12). The Gladiator's
   and Ranger's key setups are bare next to the Assassin's (UX finding 11).
-- **Result.** As the owner-approved mock shows, for desktop and phone; every class's key setup in the same layout.
-- **Inputs.** Design Lead's mock, committed under `docs/design/` with the owner's look OK.
+- **Result.** As Design Lead's approved mock shows, for desktop and phone; every class's key setup in the same layout.
+- **Inputs.** `docs/design/0.9-keys/` (Design Lead's mock, committed with Design Lead's look OK after the Design Critic's read; owner card 2026-10-20 5:21 PM ET). Kickoff holds the item until it is on main.
 - **Files.** `src/packs/aion2/cards/build.js`, `src/packs/aion2/cards/build.html`, `src/styles/app.css`, `tests/a11y.js`,
   the tests.
 - **No-gos.** Player-chosen keys (#388) are 0.10. Names stay reachable by keyboard and screen reader.
@@ -455,7 +455,7 @@ Rules for every item:
   - [ ] a11y: each key box has an accessible name; the tooltip opens on focus.
   - [ ] Shots at 1500 and 390 px against the mock.
 - **Lanes:** build-card, app.css, a11y, golden. **Model:** Opus, M (90 min).
-- **After:** owner-ok-0.9-keys-look.
+- **After:** none.
 
 ## P23: The Sources lists load when the card opens
 
