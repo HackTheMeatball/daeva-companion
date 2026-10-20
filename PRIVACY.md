@@ -49,11 +49,16 @@ messaging the owner. Nothing here changes anything for anyone else.
   of your report and any screenshots you send. Other players' names and chat are cropped or blurred out of
   screenshots before they're kept. Screenshots are only looked at to understand your report; nothing reads game data
   out of them.
-- **Where:** in a private repository that only the owner and the project's tools can open. It's never published.
+- **Who reads it:** the owner, and the AI assistants that run this project (Claude, made by Anthropic), which read,
+  sort and file the reports. Anthropic's [privacy policy](https://www.anthropic.com/legal/privacy) covers how it
+  handles that data.
+- **Where:** in a private repository that only the owner and those assistants can open. It's never published.
   When a report leads to a public issue, the issue names you only by your tester number and leaves out your handle.
 - **How long:** your report text and screenshots are deleted 30 days after your report is closed (fixed, declined or
-  a duplicate), or when the beta ends, whichever comes first. An anonymous one-line summary (tester number, date,
-  type, outcome) is kept.
+  a duplicate), or when the beta ends, whichever comes first. Your contact handle and the link between it and your
+  tester number are kept while you're testing, so we can tell you what happened to later reports, and are deleted
+  when the beta ends or when you ask; after that your tester number can't be linked to you. An anonymous one-line
+  summary (tester number, date, type, outcome) is kept.
 - **Deleting it sooner:** send a message the same way you sent your feedback, asking for your beta data to be deleted,
   and everything we hold for you except that anonymous summary is deleted. You don't need to give a reason.
 
