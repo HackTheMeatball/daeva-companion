@@ -1,6 +1,4 @@
-import { mountSync } from "./cards/sync.js";
-import { SYNC_BASE, SYNC_LIVE, httpSyncHost, webSyncEnv } from "./shell/sync-host-http.js";
-import SYNC_TEXTS from "../data/ui/sync-texts.json";
+import { SYNC_LIVE } from "./shell/sync-live.js";
 /* Ask the browser to keep this site's storage, so the progress in localStorage isn't evicted (Safari / iOS can clear it
    after 7 days without a visit). Standalone site only. Chrome, Edge and Safari decide without asking; Firefox may show a
    prompt (it remembers Allow / Don't allow), so this runs only when the page loaded saved progress (not on a first
@@ -46,26 +44,10 @@ import SYNC_TEXTS from "../data/ui/sync-texts.json";
   hint.hidden = which !== "hint";
   refresh();
 })();
-/* Sync (0.7 P6, docs/design/0.7-sync-mockup.md): the line in the save strip (src/cards/sync.js) over the HTTP host, with
-   the texts from data/ui/sync-texts.json. A progress save (webStorage.set of the save's key, from main.js's storeState)
-   schedules a round 30 s later; the card's own writes of a merged save don't. */
-if (!SYNC_LIVE && window.__dcSyncTest !== true) {
-  /* the server isn't live (SYNC_LIVE): drop the line's markup so the strip reads as before P6 */
-  for (const id of ["dcsLine", "dcsMenu", "dcsPanel", "dcsMsg"]) { const e = document.getElementById(id); if (e) e.remove(); }
-} else {
-  const host = httpSyncHost(SYNC_BASE, (url, init) => fetch(url, init));
-  const pageSet = webStorage.set;
-  let own = false;
-  const ui = mountSync({
-    T: SYNC_TEXTS.texts, host, env: webSyncEnv(), store: webStorage, saveKey: KEY,
-    save: () => state,
-    write: s => { own = true; try { return pageSet.call(webStorage, KEY, JSON.stringify(s)); } finally { own = false; } },
-    reload: () => location.reload(),
-    note: { get: k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} }, remove: k => { try { sessionStorage.removeItem(k); } catch (e) {} } },
-    now: () => Date.now(), wait: ms => new Promise(r => setTimeout(r, ms)),
-  });
-  if (ui) webStorage.set = (k, text) => { const r = pageSet.call(webStorage, k, text); if (k === KEY && !own) ui.later(); return r; };
-}
+/* Sync (0.7 P6, docs/design/0.7-sync-mockup.md): the line in the save strip lives in its own chunk (0.8 P6, src/sync-ui.js;
+   the build names the file in __SYNC_CHUNK__), loaded only when sync is shown: SYNC_LIVE (the server is live) or the
+   tests' flag. document.write (the page is still parsing) runs it right after this script, as the class loader does. */
+if (SYNC_LIVE || window.__dcSyncTest === true) document.write('<script src="__SYNC_CHUNK__"><\/script>');
 /* Offline support (standalone site only; never in the claude.ai build). Secure contexts only: https or localhost. */
 if ("serviceWorker" in navigator && (location.protocol === "https:" || /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname))) {
   addEventListener("load", () => { navigator.serviceWorker.register("sw.js").catch(() => {}); });

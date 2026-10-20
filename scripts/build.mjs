@@ -103,24 +103,42 @@ const allClasses = ids => `<script>\n${pickClass(Object.fromEntries(ids.map(id =
    names no game (docs/design/0.4-engine-contract.md §5); one game's code, always loaded; its class data comes per class
    (the chunks above) */
 const PAGE_PACK = 'aion2';
-/* site.js (0.7 P6, the sync UI) runs after main.js's bundle, as an IIFE so its names stay its own. A src/core/ module it
-   reaches (through the sync client) is not bundled a second time: it stands for main.js's copy, whose top-level names are
-   page globals, so both scripts share one engine (one active pack, one save). Only the sync client itself is bundled. */
+/* site.js and the sync chunk (src/sync-ui.js, 0.8 P6) run after main.js's bundle, as IIFEs so their names stay their own.
+   A src/core/ module they reach (through the sync client) is not bundled a second time: it stands for main.js's copy,
+   whose top-level names are page globals, so all scripts share one engine (one active pack, one save). Only the core
+   modules main.js doesn't import, the sync client and merge(), are bundled (into the sync chunk). */
+const CHUNK_CORE = new Set(['src/core/sync-client.js', 'src/core/merge.js']);
 const pageCore = {
   name: 'page-core',
   setup(b) {
     b.onResolve({ filter: /^\.\.?\// }, a => {
       const f = relative(ROOT, join(a.resolveDir, a.path)).split('\\').join('/');
-      return /^src\/core\/[\w-]+\.js$/.test(f) && f !== 'src/core/sync-client.js' ? { path: f, namespace: 'page-core' } : undefined;
+      return /^src\/core\/[\w-]+\.js$/.test(f) && !CHUNK_CORE.has(f) ? { path: f, namespace: 'page-core' } : undefined;
     });
     b.onLoad({ filter: /.*/, namespace: 'page-core' }, a => ({ loader: 'js', contents: [...readFileSync(P(a.path), 'utf8').matchAll(DECL)]
       .filter(m => m[0].startsWith('export ')).map(m => m[1]).map(n => `const page$${n} = ${n};\nexport { page$${n} as ${n} };`).join('\n') }));
   },
 };
+/* the sync chunk (0.8 P6, docs/ARCHITECTURE.md §4): src/sync-ui.js, bundled like site.js (an IIFE over main.js's core) into
+   a file of its own, sync.<hash>.js (precached), which site.js loads only when sync is shown, so the page doesn't carry the
+   sync line's code, texts, styles or markup. Its stylesheet (styles/X.css, shipped as plainCss writes it) and markup
+   (cards/X.html, as tightHtml writes it) come in as strings. */
+const SYNC_ENTRY = 'sync-ui.js';
+const syncText = {
+  name: 'sync-text',
+  setup(b) {
+    b.onLoad({ filter: /[\\/]src[\\/]styles[\\/][\w-]+\.css$/ }, a => ({ loader: 'text', contents: readCss(relative(P('src'), a.path).split('\\').join('/'), new Set()) }));
+    b.onLoad({ filter: /[\\/]src[\\/]cards[\\/][\w-]+\.html$/ }, a => {
+      const html = readFileSync(a.path, 'utf8');
+      if (/<(pre|textarea)\b/i.test(html)) die(`${relative(ROOT, a.path)} has a <pre> or <textarea>: tightHtml would change its text`);
+      return { loader: 'text', contents: tightHtml(html).trim() };
+    });
+  },
+};
 const bundleOne = async entry => {
-  const site = entry === 'site.js';
+  const site = entry === 'site.js' || entry === SYNC_ENTRY;
   const r = await build({ absWorkingDir: ROOT, entryPoints: ['src/' + entry], bundle: true, write: false, format: site ? 'iife' : 'esm', platform: 'browser',
-    treeShaking: false, minify: false, charset: 'utf8', legalComments: 'inline', logLevel: 'silent', plugins: site ? [pageCore, generatedData] : [generatedData],
+    treeShaking: false, minify: false, charset: 'utf8', legalComments: 'inline', logLevel: 'silent', plugins: entry === SYNC_ENTRY ? [pageCore, generatedData, syncText] : site ? [pageCore, generatedData] : [generatedData],
     alias: { pack: `./src/packs/${PAGE_PACK}/shell.js` } })
     .catch(e => die(`src/${entry}: ${e.errors ? e.errors.map(x => x.text + (x.location ? ` (${x.location.file}:${x.location.line})` : '')).join('; ') : e.message}`));
   for (const w of r.warnings) console.warn(`build: esbuild warning in src/${entry}: ${w.text}` + (w.location ? ` (${w.location.file}:${w.location.line})` : ''));
@@ -137,7 +155,7 @@ const bundleOne = async entry => {
    bundling catches that: no declared name may come out of a bundle as name2, name3, … */
 const DECL = /^(?:export )?(?:const|let|var|function\*?|async function|class) +([\w$]+)/gm, PAGE_NAMES = new Map(generatedNames().map(n => [n, 'the generated data module']));
 {
-  const NOT_PAGE = new Set(['src/site.js', 'src/sw.js']);
+  const NOT_PAGE = new Set(['src/site.js', 'src/sw.js', 'src/' + SYNC_ENTRY]);
   for (const f of walk(P('src')).map(f => relative(ROOT, f).split('\\').join('/')).filter(f => f.endsWith('.js') && !NOT_PAGE.has(f) && !f.startsWith('src/assets/')).sort())
     for (const m of readFileSync(P(f), 'utf8').matchAll(DECL)) {
       if (PAGE_NAMES.has(m[1]) && PAGE_NAMES.get(m[1]) !== f) die(`top-level name "${m[1]}" is declared in both ${PAGE_NAMES.get(m[1])} and ${f} (the bundle would rename one)`);
@@ -145,11 +163,12 @@ const DECL = /^(?:export )?(?:const|let|var|function\*?|async function|class) +(
     }
 }
 const bundles = Object.fromEntries(await Promise.all([...new Set([...shell.matchAll(SCRIPT_TAG)].map(m => m[1]))].map(async e => [e, await bundleOne(e)])));
-for (const [e, js] of Object.entries(bundles)) {
+const checkRenames = (e, js) => {
   const out = new Set([...js.matchAll(DECL)].map(m => m[1]));
   for (const n of out) { const base = n.replace(/\d+$/, ''); if (base !== n && !out.has(base) && PAGE_NAMES.has(base) && !PAGE_NAMES.has(n))
     die(`src/${e}: esbuild renamed "${base}" (${PAGE_NAMES.get(base)}) to "${n}": a module uses "${base}" without importing it`); }
-}
+};
+for (const [e, js] of Object.entries(bundles)) checkRenames(e, js);
 /* whitespace and syntax minification of each checked bundle (0.5 P20), identifiers untouched: a separate transform, since
    minifySyntax inside the bundling step renames top-level names (update → update3) */
 const minifyAll = bs => Promise.all(Object.entries(bs).map(async ([e, js]) =>
@@ -185,8 +204,15 @@ const src = inline(shell); /* the whole page, markers kept: what the checks belo
 const tightHtml = html => html.split(/(<(style|script)\b[\s\S]*?<\/\2>)/).filter((_, i) => i % 3 !== 2)
   .map((part, i) => i % 2 ? part : part.replace(/^[ \t]+|[ \t]+$/gm, '').replace(/\n{2,}/g, '\n')).join('');
 if (/<(pre|textarea)\b/i.test(src)) die('src/ has a <pre> or <textarea>: tightHtml would change its text');
+/* the sync chunk (see syncText): bundled and checked like the page's scripts, then named by its hash in site.js */
+if (!bundles['site.js'] || !bundles['site.js'].includes('__SYNC_CHUNK__')) die('src/site.js: no __SYNC_CHUNK__ (the sync chunk\'s file name goes there)');
+const syncRaw = await bundleOne(SYNC_ENTRY);
+checkRenames(SYNC_ENTRY, syncRaw);
+const syncJs = (await minifyAll({ [SYNC_ENTRY]: syncRaw }))[SYNC_ENTRY];
+const SYNC_FILE = `sync.${createHash('sha256').update(syncJs).digest('hex').slice(0, 8)}.js`;
+minified['site.js'] = minified['site.js'].replace('__SYNC_CHUNK__', SYNC_FILE);
 for (const f of walk(P('src/styles')).map(f => relative(P('src'), f).split('\\').join('/')).filter(f => f.endsWith('.css')))
-  if (!cssUsed.has(f)) die(`src/${f} is not linked from src/index.html or imported by a stylesheet (src/styles/index.css lists the card styles)`);
+  if (!cssUsed.has(f)) die(`src/${f} is not linked from src/index.html, imported by a stylesheet (src/styles/index.css lists the card styles) or imported by src/${SYNC_ENTRY}`);
 const VERSION = JSON.parse(readFileSync(P('package.json'), 'utf8')).version;
 if (!/^\d+\.\d+\.\d+$/.test(VERSION || '')) die(`package.json version "${VERSION}" is not X.Y.Z`);
 if (!src.includes('__APP_VERSION__') || !src.includes('__APP_BUILD__')) die('src/ lacks the __APP_VERSION__ / __APP_BUILD__ placeholders');
@@ -226,7 +252,8 @@ for (const [f, html] of [['src/', src], ['public/404.html', readFileSync(P('publ
 
 /* web page */
 const web = tightHtml(stamp(inline(shell, siteClasses()).replace(/^[ \t]*<!-- @(end-)?web-only -->\n/gm, ''), 'site'));
-if (/__APP_(VERSION|BUILD)__/.test(web)) die('dist/index.html still contains a placeholder');
+if (/__APP_(VERSION|BUILD)__|__SYNC_CHUNK__/.test(web)) die('dist/index.html still contains a placeholder');
+if (!web.includes(SYNC_FILE)) die(`dist/index.html does not name the sync chunk ${SYNC_FILE}`);
 if (!web.startsWith('<!doctype html>')) die('dist/index.html must start with <!doctype html>');
 
 /* output */
@@ -236,11 +263,14 @@ cpSync(P('src/assets'), join(DIST, 'assets'), { recursive: true });
 writeFileSync(join(DIST, 'index.html'), web);
 mkdirSync(join(DIST, 'packs'));
 for (const id of CLASS_PACKS) writeFileSync(join(DIST, chunkFile(id)), chunks[id]);
+writeFileSync(join(DIST, SYNC_FILE), syncJs);
 
-/* service worker: build id = hash of everything it caches; the class chunks are precached (offline after the first visit) */
+/* service worker: build id = hash of everything it caches; the class chunks and the sync chunk are precached (offline after
+   the first visit) */
 const files = walk(DIST).map(f => relative(DIST, f).split('\\').join('/')).sort();
-const precache = ['./', ...files.filter(f => f === 'index.html' || f === 'manifest.webmanifest' || f === 'favicon.svg' || /^(assets\/icons|icons)\/.+\.png$/.test(f) || /^assets\/fonts\/.+\.woff2$/.test(f) || /^packs\/[\w.-]+\.js$/.test(f))];
+const precache = ['./', ...files.filter(f => f === 'index.html' || f === 'manifest.webmanifest' || f === 'favicon.svg' || /^(assets\/icons|icons)\/.+\.png$/.test(f) || /^assets\/fonts\/.+\.woff2$/.test(f) || /^packs\/[\w.-]+\.js$/.test(f) || f === SYNC_FILE)];
 for (const id of CLASS_PACKS) if (!precache.includes(chunkFile(id))) die(`class chunk ${chunkFile(id)} is not precached`);
+if (!precache.includes(SYNC_FILE)) die(`sync chunk ${SYNC_FILE} is not precached`);
 const h = createHash('sha256');
 for (const f of files) h.update(f + '\0').update(readFileSync(join(DIST, f)));
 h.update(readFileSync(P('src/sw.js')));
@@ -254,6 +284,7 @@ const kb = f => (statSync(f).size / 1024).toFixed(1) + ' KB';
 console.log(`build ${BUILD} · v${VERSION}`);
 console.log(`  dist/index.html            ${kb(join(DIST, 'index.html'))} · ${walk(DIST).length} files · precache ${precache.length}`);
 for (const id of CLASS_PACKS) console.log(`  ${('dist/' + chunkFile(id)).padEnd(26)} ${kb(join(DIST, chunkFile(id)))} · class chunk of ${id} (${genAll().perClass.length} tables; ${genAll().shared.length} shared in index.html)`);
+console.log(`  ${('dist/' + SYNC_FILE).padEnd(26)} ${kb(join(DIST, SYNC_FILE))} · sync chunk (src/${SYNC_ENTRY}; loaded only when sync is shown, not in the page budget)`);
 
 /* page budgets (0.4 P7): about 1.3x the 0.3.0 numbers; a PR that raises one says why (docs/ARCHITECTURE.md §4). The element
    budget is checked by the `site` suite. The site page is dist/index.html plus its largest class chunk (0.6 P2): what a

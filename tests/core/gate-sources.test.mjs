@@ -26,9 +26,9 @@ const cmpRe = field => new RegExp(String.raw`${field}\s*(\|\|\s*0\)\s*)?[<>]|(?<
 const PATTERNS = {
   /* QUESTS, or the pack's story chain as the engine reads it (activePack().data.story.quests, 0.4 P2b) */
   'story position lookup (QUESTS.findIndex)': { re: /\b(?:QUESTS|quests)\.findIndex\(/g,
-    allow: { 'src/core/requirements.js': 1, 'src/cards/journey.js': 1, 'src/core/migrations.js': 1, 'src/core/sync.js': 1 },
+    allow: { 'src/core/requirements.js': 1, 'src/cards/journey.js': 1, 'src/core/migrations.js': 1, 'src/core/merge.js': 1 },
     why: 'storyIdx (the position, for display); the Journey card\'s findQuest (the quest search box matches typed text); migrations.js moves ' +
-      'a turned-in last quest on to the next one (a save step, untouched by E2); sync.js ranks two story positions when merging saves' },
+      'a turned-in last quest on to the next one (a save step, untouched by E2); merge.js (from sync.js, 0.8 P6) ranks two story positions when merging saves' },
   'story gate by a quest name in code (storyIdx("…"))': { re: /storyIdx\(\s*["'`]/g, allow: {} },
   'plan node / board level compared (.blv)': { re: cmpRe(String.raw`\.blv`), allow: {} },
   'skill line level compared (.req)': { re: cmpRe(String.raw`\.req`), allow: { 'src/packs/aion2/catalog.js': 2 },
