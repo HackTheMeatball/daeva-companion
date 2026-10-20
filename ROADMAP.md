@@ -1421,7 +1421,12 @@ resets) into the path to 1.0. Built on the engine as a module with no page-scrip
 pre-1.0 breaks are still allowed. Research starts during 0.9: Source Vetting (Lydia) vets the owner's reference
 (Kanon's Aion 2 Bible, PDF in the project's shared folder, `research/endgame/`) and other sources, and Game Data Check
 (Gretchen) verifies the resets, the daily and weekly content and the gear-score paths (two sources or labelled, as
-everywhere). Items are shaped in 0.10's own pass once that research is in. Acceptance bar: the Vision (top of this file), so for a
+everywhere). **World boss timers (owner, 2026-10-20 7:02 and 7:03 PM ET; DECISIONS "1.0 includes timers for the world bosses that
+matter"):** for the world bosses that matter, picked by Game Data Check (Gretchen) from the owner's reference (Kanon's
+Aion 2 Bible) and research, with Source Vetting (Lydia) doing every fetch outside the approved list. The spawn rules
+(fixed times or random windows, server and time zone) must be sourced like any game fact; if they can't be, the
+fallback is a manual "killed at" timer per boss, reported back before it is specced. Design Lead owns the look.
+Items are shaped in 0.10's own pass once that research is in. Acceptance bar: the Vision (top of this file), so for a
 Lv 45 character Next up always shows the best thing to do next.
 
 **On the way and "Main path only" (Design Lead's calls after review, 2026-10-20 10:15 PM ET; the owner's 5:45 PM ask):**
@@ -1467,7 +1472,7 @@ than a minor's work, it splits in two.
 ### 1.0
 
 Full architecture, performance and UX audit (the planning pass in its full form), docs pass, all eight classes on the
-engine, Asmodian, Lv 1–45, and the endgame guide past Lv 45 (0.10). One save fixture per class is frozen (`tests/fixtures/saves-1.0/`) and every later build must
+engine, Asmodian, Lv 1–45, the endgame guide past Lv 45 (0.10), and timers for the world bosses that matter (0.10; owner, 2026-10-20 7:02 PM ET). 1.0 does not ship without the timers. One save fixture per class is frozen (`tests/fixtures/saves-1.0/`) and every later build must
 load them. A reasoned budget raise if 0.9 to 0.11 land above 95%. The strict save rule returns (CLAUDE.md). The
 owner tests the candidate and gives go or no-go; a no-go makes it the next minor (Versioning).
 
@@ -1476,7 +1481,7 @@ owner tests the candidate and gives go or no-go; a no-go makes it the next minor
 The Elyos faction pack comes after 1.0 (Release Planner and coordinator, 2026-10-20, answering the owner's 5:40 PM ET
 question): it roughly doubles the data to verify, and 1.0 already gained the endgame guide. The faction accent colours
 (0.11) are designed for both factions, so Elyos needs no new look. The old 1.1 end-game tracker moved into 0.10. World
-boss timers join 0.10 only if their schedules are verified in time; otherwise they come here.
+boss timers moved into 0.10 as 1.0 scope (owner, 7:02 PM ET).
 
 ### Any time (patches)
 
