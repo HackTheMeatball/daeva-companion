@@ -8,7 +8,8 @@ run-name: "${{ inputs.pr && format('Pipeline {0} #{1}', inputs.step, inputs.pr) 
 #   - CI green on a PR's current head, and no review newer than the head  -> a review run (Opus since 2026-10-17; before that Sonnet, Opus for risky paths).
 #   - CI red on the head: a blown time or size budget -> a fix run at once (PR #253); any other first failure -> re-run
 #     the failed jobs once (no model); second failure -> a fix run.
-#   - Latest claude[bot] review says VERDICT: CHANGES, a line-start DESIGN CHANGES (claude[bot] or owner account), or a Sonnet run said "Needs @claude (Opus)" -> a fix run.
+#   - Latest claude[bot] review says VERDICT: CHANGES, a line-start DESIGN CHANGES, bold or plain (claude[bot] or owner account), or a Sonnet run said "Needs @claude (Opus)" -> a fix run.
+#     Every verdict and mark line is read by tools/verdicts.cjs, the parser auto-merge.yml shares.
 #   - Dispatched with step=merge (kickoff does this after a merge, for a PR that conflicts with main or shares a
 #     serial file with the merged diff) -> a run that merges main into the branch (merge commit), re-records golden only
 #     if the merge needs it, runs npm test and pushes. Opus when golden/mig1 or risky paths are involved. Not a fix round;
@@ -66,11 +67,18 @@ jobs:
       prompt: ${{ steps.d.outputs.prompt }}
       note: ${{ steps.d.outputs.note }}
     steps:
+      # Only the shared verdict parser, from main (never a PR's copy).
+      - uses: actions/checkout@v7
+        with:
+          sparse-checkout: tools/verdicts.cjs
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
       - id: d
         uses: actions/github-script@v7
         with:
           script: |
             const { owner, repo } = context.repo;
+            const V = require(`${process.env.GITHUB_WORKSPACE}/tools/verdicts.cjs`);
             const ev = context.eventName, p = context.payload;
             const none = (why) => { core.info(`no step: ${why}`); core.setOutput('step', 'none'); };
             // How a bot run works in this sandbox (health check, 2026-10-17 4:26 PM ET, #222): compound commands are denied,
@@ -93,10 +101,10 @@ jobs:
               return [...new Set(found)].slice(0, 8);
             };
             let prNum, want, reason = '', reviewBody = null, ciRun = null;
-            // Game Data Check's verdict line (auto-merge.yml DATA-CHECK reads the same line); a struck "~~" line doesn't match.
-            const DATACHANGES = /^\**Game Data Check \(ROL-03\) on [0-9a-f]{7,40}: CHANGES\b/m;
-            // The Design Lead's mark, bold allowed (#554's "**DESIGN CHANGES on 8993578**" got no fix round, 2026-10-20).
-            const DESIGNCHANGES = /^\**DESIGN CHANGES\b/m;
+            // Game Data Check's CHANGES line (auto-merge.yml DATA-CHECK reads the same line); a struck "~~" line doesn't count.
+            const DATACHANGES = (body) => V.data(body).some((v) => v.verdict === 'CHANGES');
+            // The Design Lead's mark, bold or plain (#554's "**DESIGN CHANGES on 8993578**" got no fix round, 2026-10-20).
+            const DESIGNCHANGES = (body) => V.design(body) === 'CHANGES';
             if (ev === 'workflow_run') {
               const wr = p.workflow_run;
               prNum = wr.pull_requests && wr.pull_requests[0] && wr.pull_requests[0].number;
@@ -126,15 +134,15 @@ jobs:
               // The Design Lead and Game Data Check may post from the owner's account (auto-merge.yml accepts both); from it only
               // DESIGN CHANGES and Game Data Check's CHANGES count (#518 got no fix round from her CHANGES, 2026-10-19 10:17 PM ET).
               if (p.comment.user.login !== 'claude[bot]') {
-                if (DATACHANGES.test(body)) { want = 'fix'; reviewBody = body; reason = dataAsk; }
-                else if (!DESIGNCHANGES.test(body)) return none('owner comment needs no step');
+                if (DATACHANGES(body)) { want = 'fix'; reviewBody = body; reason = dataAsk; }
+                else if (!DESIGNCHANGES(body)) return none('owner comment needs no step');
                 else { want = 'fix'; reviewBody = body; reason = designAsk; }
-              } else if (DATACHANGES.test(body)) { want = 'fix'; reviewBody = body; reason = dataAsk; }
-              else if (/VERDICT:\s*CHANGES/.test(body)) { want = 'fix'; reviewBody = body; reason = `The latest review asked for changes: ${p.comment.html_url}. Fix every blocking finding in it.`; }
-              else if (/^\s*Needs @claude \(Opus\):/m.test(body)) { want = 'fix'; reason = `A Sonnet run handed this to Opus: ${p.comment.html_url}.`; }
-              // Design Lead's line-start DESIGN CHANGES (the gate auto-merge.yml reads) gets a fix run too (#424 had to be dispatched by hand).
-              else if (DESIGNCHANGES.test(body)) { want = 'fix'; reviewBody = body; reason = designAsk; }
-              else if (/^\s*Pipeline stuck:/m.test(body)) {
+              } else if (DATACHANGES(body)) { want = 'fix'; reviewBody = body; reason = dataAsk; }
+              else if (V.review(body) === 'CHANGES') { want = 'fix'; reviewBody = body; reason = `The latest review asked for changes: ${p.comment.html_url}. Fix every blocking finding in it.`; }
+              else if (V.needsOpus(body)) { want = 'fix'; reason = `A Sonnet run handed this to Opus: ${p.comment.html_url}.`; }
+              // Design Lead's line-start DESIGN CHANGES, bold or plain (the gate auto-merge.yml reads) gets a fix run too (#424 had to be dispatched by hand).
+              else if (DESIGNCHANGES(body)) { want = 'fix'; reviewBody = body; reason = designAsk; }
+              else if (V.stuck(body)) {
                 await github.rest.issues.addLabels({ owner, repo, issue_number: prNum, labels: ['stuck'] });
                 return none('a run reported it is stuck; labelled');
               } else return none('comment needs no step');
@@ -170,8 +178,8 @@ jobs:
             const files = await github.paginate(github.rest.pulls.listFiles, { owner, repo, pull_number: prNum, per_page: 100 });
             if (ev === 'workflow_dispatch' && want === 'fix') {
               const g = comments.filter((c) => c.user && (c.user.login === 'claude[bot]' || c.user.login === owner)
-                && /^\**Game Data Check \(ROL-03\) on [0-9a-f]{7,40}: (VERIFIED|CHANGES|HOLD)\b/m.test(c.body || '')).pop();
-              if (g && DATACHANGES.test(g.body) && g.body.includes(sha.slice(0, 7)))
+                && V.data(c.body).length).pop();
+              if (g && DATACHANGES(g.body) && g.body.includes(sha.slice(0, 7)))
                 reason = `Game Data Check asked for changes on this head: ${g.html_url}. Fix every blocking item in it; never add game data no approved source backs. Also fix what the latest review and CI run on the head report.`;
             }
             const changed = files.reduce((n, f) => n + f.additions + f.deletions, 0);
@@ -203,7 +211,7 @@ jobs:
                 `You update pull request #${prNum} in ${owner}/${repo}, branch ${pr.head.ref} (checked out), head commit ${sha}, with the current main (${main}).`,
                 'Read CLAUDE.md first. Run `git fetch origin main` and `git merge origin/main` (a merge commit; never rebase, amend or force-push). Resolve conflicts keeping the intent of both sides.',
                 'Re-record golden snapshots only if the golden suite fails because of the merge itself, and say in the commit which snapshots changed and why. Never skip, disable or weaken a test or check.',
-                'Run commands in the foreground. Run `npm test` once at the end and make sure it is green, then `git push origin HEAD:' + pr.head.ref + '`. Do not write the word VERDICT in any comment, and start no line with DESIGN OK or DESIGN CHANGES.',
+                'Run commands in the foreground. Run `npm test` once at the end and make sure it is green, then `git push origin HEAD:' + pr.head.ref + '`. Do not write the word VERDICT in any comment, and start no line with DESIGN OK or DESIGN CHANGES, bold or plain.',
                 'If the conflict needs a design or owner decision, do not push. Post one comment that starts with "Pipeline stuck:" and gives the reason in one or two lines.',
                 TOOLS, CLOCK,
               ].join('\n'));
@@ -211,7 +219,7 @@ jobs:
               const ok = (await github.rest.checks.listForRef({ owner, repo, ref: sha, check_name: 'ci-ok' })).data.check_runs
                 .some((r) => r.status === 'completed' && r.conclusion === 'success');
               if (!ok) return none('ci-ok not green on the head');
-              const verdicts = comments.filter((c) => c.user && c.user.login === 'claude[bot]' && /VERDICT:\s*(APPROVE|CHANGES)/.test(c.body || ''));
+              const verdicts = comments.filter((c) => c.user && c.user.login === 'claude[bot]' && V.review(c.body));
               if (verdicts.some((c) => Date.parse(c.updated_at) >= headAt && (c.body || '').includes(sha.slice(0, 7)))) return none('a review of this head exists');
               // Reviews run on Opus since 2026-10-17 (owner's Max 20x plan); before that only risky PRs did.
               const model = 'claude-opus-5-5';
@@ -249,7 +257,7 @@ jobs:
                 'Read CLAUDE.md first and follow it. Find the root cause and fix it on this branch. Never skip, disable or weaken a test or check to get green; if an expectation must change on purpose, say why in the commit.',
                 opus ? '' : `Sonnet limits (owner routing rule, list in .github/routing/opus-paths.json): if the fix would touch ${ROUTE.sonnetMayNotTouch}, do not edit. Post one comment starting "Needs @claude (Opus):" with the reason, then stop.`,
                 'Run commands in the foreground only (a background command can end the run early). Commit and push after each finished step. While iterating use `node tests/run.mjs --only <suites>` after `npm run build`, batch slow golden or pixel runs, and run the full `npm test` once at the end: it must be green before the last push.',
-                `Commit with a clear message and push: \`git push origin HEAD:${pr.head.ref}\`. Then post one short comment with \`gh pr comment ${prNum}\` saying what you changed. Do not write the word VERDICT in it, and start no line with DESIGN OK or DESIGN CHANGES (auto-merge reads those as design marks).`,
+                `Commit with a clear message and push: \`git push origin HEAD:${pr.head.ref}\`. Then post one short comment with \`gh pr comment ${prNum}\` saying what you changed. Do not write the word VERDICT in it, and start no line with DESIGN OK or DESIGN CHANGES, bold or plain (auto-merge reads those as design marks).`,
                 'If it cannot be fixed safely (unverifiable game data, an owner decision, an outside failure), do not push. Post one comment that starts with "Pipeline stuck:" and gives the reason in one or two lines.',
                 TOOLS, CLOCK,
               ].filter(Boolean).join('\n'));
@@ -276,6 +284,12 @@ jobs:
       actions: write
     steps:
       # A queued run may be stale by the time it starts: skip it if the head moved (or, for a review, one now exists).
+      # Only the shared verdict parser, from main, for the recheck; the branch checkout below replaces it.
+      - uses: actions/checkout@v7
+        with:
+          sparse-checkout: tools/verdicts.cjs
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
       - id: recheck
         uses: actions/github-script@v7
         env:
@@ -287,12 +301,13 @@ jobs:
         with:
           script: |
             const { owner, repo } = context.repo;
+            const V = require(`${process.env.GITHUB_WORKSPACE}/tools/verdicts.cjs`);
             const pr = (await github.rest.pulls.get({ owner, repo, pull_number: Number(process.env.PR) })).data;
             let go = pr.state === 'open' && pr.head.sha === process.env.SHA;
             if (go && process.env.STEP === 'review') {
               const headAt = Date.parse((await github.rest.repos.getCommit({ owner, repo, ref: pr.head.sha })).data.commit.committer.date);
               const comments = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: pr.number, per_page: 100 });
-              go = !comments.some((c) => c.user && c.user.login === 'claude[bot]' && /VERDICT:/.test(c.body || '')
+              go = !comments.some((c) => c.user && c.user.login === 'claude[bot]' && V.review(c.body)
                 && Date.parse(c.updated_at) >= headAt && (c.body || '').includes(pr.head.sha.slice(0, 7)));
             }
             core.info(go ? 'still current' : 'stale, skipping');

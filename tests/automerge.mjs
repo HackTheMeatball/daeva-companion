@@ -1,13 +1,16 @@
 #!/usr/bin/env node
 /* Auto-merge's design check (.github/workflows/auto-merge.yml, the block between "DESIGN-CHECK START" and "DESIGN-CHECK END")
    run in Node against fixtures, no network: a PR that commits review shots must wait for the Design Lead's DESIGN OK on its
-   head (owner, typed 2026-10-18 7:13 PM ET; 0.7 P6 #378 merged before its shots were checked). < 1 s. */
-import { readFileSync } from 'node:fs';
+   head (owner, typed 2026-10-18 7:13 PM ET; 0.7 P6 #378 merged before its shots were checked). Also the shared verdict
+   parser tools/verdicts.cjs that every gate reads verdict lines with, and that no workflow keeps its own copy. < 1 s. */
+import { readFileSync, readdirSync } from 'node:fs';
+import { createRequire } from 'node:module';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const yml = readFileSync(join(ROOT, '.github', 'workflows', 'auto-merge.yml'), 'utf8');
+const V = createRequire(import.meta.url)(join(ROOT, 'tools', 'verdicts.cjs'));
 let n = 0, fail = 0;
 const check = (ok, what) => { n++; if (!ok) fail++; console.log(`${ok ? 'ok  ' : 'FAIL'} ${what}`); };
 
@@ -15,7 +18,7 @@ const m = yml.match(/\/\/ DESIGN-CHECK START[^\n]*\n([\s\S]*?)\n\s*\/\/ DESIGN-C
 check(!!m, 'auto-merge.yml has the DESIGN-CHECK block');
 if (!m) { console.log('AUTOMERGE CHECKS FAILED'); process.exit(1); }
 const logs = [];
-const designBlocker = new Function('owner', 'core', m[1] + '\nreturn designBlocker;')('HackTheMeatball', { info: (s) => logs.push(s) });
+const designBlocker = new Function('owner', 'core', 'V', m[1] + '\nreturn designBlocker;')('HackTheMeatball', { info: (s) => logs.push(s) }, V);
 
 const SHA = 'abc1234def5678';
 const HEAD = Date.parse('2026-10-18T20:00:00Z');
@@ -56,14 +59,14 @@ const ghMock = { rest: { repos: { compareCommitsWithBasehead: async ({ basehead 
   return { data: COMPARE[basehead] };
 } } } };
 const dataLogs = [];
-const dataBlocker = new Function('owner', 'repo', 'core', 'github', d[1] + '\nreturn dataBlocker;')('HackTheMeatball', 'daeva-companion', { info: (s) => dataLogs.push(s) }, ghMock);
+const dataBlocker = new Function('owner', 'repo', 'core', 'github', 'V', d[1] + '\nreturn dataBlocker;')('HackTheMeatball', 'daeva-companion', { info: (s) => dataLogs.push(s) }, ghMock, V);
 const RPR = { base: { ref: 'main' }, head: { ref: 'claude/research-chanter-nrffuq' }, title: 'research: Chanter pack' };
 const TPR = { base: { ref: 'main' }, head: { ref: 'claude/project-thread-w57upj' }, title: 'Research: Cleric pack for 0.8' };
 const BPR = { base: { ref: 'main' }, head: { ref: 'claude/issue-491-1' }, title: '0.8 P2: Templar class data' };
 const GPR = { base: { ref: 'main' }, head: { ref: 'claude/game-data-check-q6vdab' }, title: 'data: Metabot backs 5 unlock levels' };
 const CODE = ['src/main.js', 'tests/site.js'];
 const PACK = ['data/packs/aion2/elyos/templar/class.json', 'src/main.js'];
-const V = (body, min = 9) => c('HackTheMeatball', body, min);
+const GD = (body, min = 9) => c('HackTheMeatball', body, min);
 check(await dataBlocker(BPR, CODE, [REVIEW], SHA, HEAD) === '', 'code-only build PR -> no wait');
 check(await dataBlocker(BPR, ['data/schema/quest.schema.json'], [REVIEW], SHA, HEAD) === '', 'data/schema only -> no wait');
 check(/waits on Game Data Check/.test(await dataBlocker(BPR, PACK, [REVIEW], SHA, HEAD)), 'build PR touching data/packs, no verdict -> waits');
@@ -75,15 +78,15 @@ check(/f\.previous_filename/.test(yml) && /dataBlocker\(pr, touched,/.test(yml),
 check(/waits on Game Data Check/.test(await dataBlocker(RPR, CODE, [REVIEW], SHA, HEAD)), 'research branch, no verdict -> waits (the #486 case)');
 check(/waits on Game Data Check/.test(await dataBlocker(TPR, CODE, [REVIEW], SHA, HEAD)), 'title "Research: ..." on a thread branch, no verdict -> waits');
 check(await dataBlocker(GPR, PACK, [REVIEW], SHA, HEAD) === '', "Game Data Check's own data PR -> no wait on itself");
-check(await dataBlocker(RPR, PACK, [REVIEW, V('**Game Data Check (ROL-03) on abc1234: VERIFIED.** All fixed.')], SHA, HEAD) === '', 'VERIFIED on the head after the APPROVE -> merges');
-check(/says CHANGES/.test(await dataBlocker(RPR, PACK, [REVIEW, V('**Game Data Check (ROL-03) on abc1234: CHANGES.**', 3)], SHA, HEAD)), 'CHANGES on the head, APPROVE after it -> waits');
-check(/says HOLD/.test(await dataBlocker(RPR, PACK, [V('**Game Data Check (ROL-03) on abc1234: HOLD.**')], SHA, HEAD)), 'HOLD on the head -> waits');
-check(/does not cover the head/.test(await dataBlocker(RPR, PACK, [V('**Game Data Check (ROL-03) on 9999999: VERIFIED.**')], SHA, HEAD)), 'VERIFIED on a stale head -> waits');
-check(/does not cover the head/.test(await dataBlocker(RPR, PACK, [V('**Game Data Check (ROL-03) on abc1234: VERIFIED.**', -3)], SHA, HEAD)), 'VERIFIED older than the head commit -> waits');
-check(/waits on Game Data Check/.test(await dataBlocker(RPR, PACK, [V('~~**Game Data Check (ROL-03) on abc1234: VERIFIED.**~~ [Edit: merged early]')], SHA, HEAD)), 'struck-out VERIFIED -> ignored, waits');
+check(await dataBlocker(RPR, PACK, [REVIEW, GD('**Game Data Check (ROL-03) on abc1234: VERIFIED.** All fixed.')], SHA, HEAD) === '', 'VERIFIED on the head after the APPROVE -> merges');
+check(/says CHANGES/.test(await dataBlocker(RPR, PACK, [REVIEW, GD('**Game Data Check (ROL-03) on abc1234: CHANGES.**', 3)], SHA, HEAD)), 'CHANGES on the head, APPROVE after it -> waits');
+check(/says HOLD/.test(await dataBlocker(RPR, PACK, [GD('**Game Data Check (ROL-03) on abc1234: HOLD.**')], SHA, HEAD)), 'HOLD on the head -> waits');
+check(/does not cover the head/.test(await dataBlocker(RPR, PACK, [GD('**Game Data Check (ROL-03) on 9999999: VERIFIED.**')], SHA, HEAD)), 'VERIFIED on a stale head -> waits');
+check(/does not cover the head/.test(await dataBlocker(RPR, PACK, [GD('**Game Data Check (ROL-03) on abc1234: VERIFIED.**', -3)], SHA, HEAD)), 'VERIFIED older than the head commit -> waits');
+check(/waits on Game Data Check/.test(await dataBlocker(RPR, PACK, [GD('~~**Game Data Check (ROL-03) on abc1234: VERIFIED.**~~ [Edit: merged early]')], SHA, HEAD)), 'struck-out VERIFIED -> ignored, waits');
 check(/waits on Game Data Check/.test(await dataBlocker(RPR, PACK, [c('someone-else', '**Game Data Check (ROL-03) on abc1234: VERIFIED.**', 9)], SHA, HEAD)), 'verdict from another account -> ignored, waits');
-check(/says CHANGES/.test(await dataBlocker(RPR, PACK, [V('**Game Data Check (ROL-03) on abc1234: VERIFIED.**', 6), V('**Game Data Check (ROL-03) on abc1234: CHANGES.**', 8)], SHA, HEAD)), 'later CHANGES wins');
-check(await dataBlocker(RPR, PACK, [V('**Game Data Check (ROL-03) on abc1234: CHANGES.**', 6), V('**Game Data Check (ROL-03) on abc1234: VERIFIED.**', 8)], SHA, HEAD) === '', 'later VERIFIED after CHANGES -> merges');
+check(/says CHANGES/.test(await dataBlocker(RPR, PACK, [GD('**Game Data Check (ROL-03) on abc1234: VERIFIED.**', 6), GD('**Game Data Check (ROL-03) on abc1234: CHANGES.**', 8)], SHA, HEAD)), 'later CHANGES wins');
+check(await dataBlocker(RPR, PACK, [GD('**Game Data Check (ROL-03) on abc1234: CHANGES.**', 6), GD('**Game Data Check (ROL-03) on abc1234: VERIFIED.**', 8)], SHA, HEAD) === '', 'later VERIFIED after CHANGES -> merges');
 // Carry: VERIFIED on an earlier head holds across later merges of main that leave the PR's data files alone (Walter).
 // A real main merge also lists main's squash commits (one parent, already on main); only the PR's own commits must be merges.
 const MERGE = { sha: 'm1', parents: [{}, {}] }, PLAIN = { sha: 'p1', parents: [{}] }, SQUASH = { sha: 's1', parents: [{}] };
@@ -94,7 +97,7 @@ COMPARE[`2222222...${SHA}`] = { status: 'ahead', commits: [SQUASH, MERGE], files
 COMPARE[`3333333...${SHA}`] = { status: 'ahead', commits: [SQUASH, PLAIN, MERGE], files: [{ filename: 'src/main.js' }] };
 COMPARE[`4444444...${SHA}`] = { status: 'diverged', commits: [MERGE], files: [] };
 COMPARE[`6666666...${SHA}`] = { status: 'ahead', commits: [SQUASH], files: [{ filename: 'src/main.js' }] };
-const VER = (on) => V(`**Game Data Check (ROL-03) on ${on}: VERIFIED.**`, -3);
+const VER = (on) => GD(`**Game Data Check (ROL-03) on ${on}: VERIFIED.**`, -3);
 check((await dataBlocker(BPR, PACK, [REVIEW, VER(OLD)], SHA, HEAD)) === '', 'VERIFIED on an earlier head, a main merge since (with main\'s squash commit; other class files) -> carries, merges');
 check(/does not cover the head/.test(await dataBlocker(BPR, PACK, [REVIEW, VER('2222222')], SHA, HEAD)), 'a merge since changed this PR\'s own data file -> waits');
 check(/does not cover the head/.test(await dataBlocker(BPR, PACK, [REVIEW, VER('3333333')], SHA, HEAD)), 'a plain commit since the verified head -> waits');
@@ -114,7 +117,7 @@ dataLogs.length = 0;
 check((await dataBlocker(BPR, PACK, [REVIEW, VER(OLD)], SHA, HEAD)) === '' && dataLogs.some((l) => /carries/.test(l) && !/left out/.test(l)), 'carry with no skipped file changed -> log names none');
 check(/does not cover the head/.test(await dataBlocker(BPR, DSPR, [REVIEW, VER('8888888')], SHA, HEAD)), 'DATA_SOURCES.md and another data file changed -> waits');
 check(/does not cover the head/.test(await dataBlocker(BPR, DSPR, [REVIEW, VER('9999990')], SHA, HEAD)), 'only DATA_SOURCES.md changed, but by a plain commit -> waits');
-check(/does not cover the head/.test(await dataBlocker(BPR, ['data/DATA_SOURCES.md'], [REVIEW, V('**Game Data Check (ROL-03) on 9999999: VERIFIED.**')], SHA, HEAD)), 'skip list does not touch the no-carry path: a stale VERIFIED with no compare -> waits');
+check(/does not cover the head/.test(await dataBlocker(BPR, ['data/DATA_SOURCES.md'], [REVIEW, GD('**Game Data Check (ROL-03) on 9999999: VERIFIED.**')], SHA, HEAD)), 'skip list does not touch the no-carry path: a stale VERIFIED with no compare -> waits');
 check(/waits on Game Data Check/.test(await dataBlocker(BPR, ['data/DATA_SOURCES.md'], [REVIEW], SHA, HEAD)), 'DATA_SOURCES.md alone still needs a verdict');
 const NOBASE = { ...BPR, base: { ref: 'gone' } };
 check(/does not cover the head/.test(await dataBlocker(NOBASE, PACK, [REVIEW, VER(OLD)], SHA, HEAD)), 'base compare fails -> waits');
@@ -122,24 +125,77 @@ check(/const data = await dataBlocker\(pr, touched, comments, sha, headAt\);\s*\
 
 // pipeline.yml starts a fix round from Game Data Check's CHANGES (#518 got none from it, 2026-10-19).
 const pipe = readFileSync(join(ROOT, '.github', 'workflows', 'pipeline.yml'), 'utf8');
-const dc = pipe.match(/const DATACHANGES = (\/.+\/m);/);
-check(!!dc, 'pipeline.yml has the DATACHANGES pattern');
-const DATACHANGES = dc ? new Function(`return ${dc[1]};`)() : /$^/;
-check(DATACHANGES.test('**Game Data Check (ROL-03) on 19a3ced: CHANGES.** Three blocking items.'), 'pipeline: her CHANGES line -> fix round');
-check(!DATACHANGES.test('**Game Data Check (ROL-03) on 19a3ced: VERIFIED.**'), 'pipeline: VERIFIED -> no fix round');
-check(!DATACHANGES.test('~~**Game Data Check (ROL-03) on 19a3ced: CHANGES.**~~ [Edit: withdrawn]'), 'pipeline: struck CHANGES -> no fix round');
+// pipeline.yml's DATACHANGES / DESIGNCHANGES read the shared parser (bold since #554).
+check(/const DATACHANGES = \(body\) => V\.data\(body\)\.some\(\(v\) => v\.verdict === 'CHANGES'\);/.test(pipe), 'pipeline.yml: DATACHANGES is any CHANGES line of V.data');
+check(/const DESIGNCHANGES = \(body\) => V\.design\(body\) === 'CHANGES';/.test(pipe), 'pipeline.yml: DESIGNCHANGES is V.design');
+const DATACHANGES = (body) => V.data(body).some((v) => v.verdict === 'CHANGES');
+const DESIGNCHANGES = (body) => V.design(body) === 'CHANGES';
+check(DATACHANGES('**Game Data Check (ROL-03) on 19a3ced: CHANGES.** Three blocking items.'), 'pipeline: her CHANGES line -> fix round');
+check(!DATACHANGES('**Game Data Check (ROL-03) on 19a3ced: VERIFIED.**'), 'pipeline: VERIFIED -> no fix round');
+check(!DATACHANGES('~~**Game Data Check (ROL-03) on 19a3ced: CHANGES.**~~ [Edit: withdrawn]'), 'pipeline: struck CHANGES -> no fix round');
 check(/contains\(github\.event\.comment\.body, 'Game Data Check \(ROL-03\)'\)/.test(pipe), 'pipeline: an owner-account Game Data Check comment reaches the decide job');
-check(/if \(DATACHANGES\.test\(body\)\) \{ want = 'fix'; reviewBody = body; reason = dataAsk; \}/.test(pipe), 'pipeline: owner-account CHANGES gets a fix run naming the head');
-const dz = pipe.match(/const DESIGNCHANGES = (\/.+\/m);/);
-check(!!dz, 'pipeline.yml has the DESIGNCHANGES pattern');
-const DESIGNCHANGES = dz ? new Function(`return ${dz[1]};`)() : /$^/;
-check(DESIGNCHANGES.test('DESIGN CHANGES on 8993578: the strongholds shot is clipped.'), 'pipeline: plain DESIGN CHANGES -> fix round');
-check(DESIGNCHANGES.test('**DESIGN CHANGES on 8993578** (Jane, design lead)'), 'pipeline: bold DESIGN CHANGES -> fix round (#554)');
-check(!DESIGNCHANGES.test('**DESIGN OK on 8993578**'), 'pipeline: DESIGN OK -> no fix round');
-check(!DESIGNCHANGES.test('Fixed what the DESIGN CHANGES asked.'), 'pipeline: DESIGN CHANGES not at a line start -> no fix round');
+check(/if \(DATACHANGES\(body\)\) \{ want = 'fix'; reviewBody = body; reason = dataAsk; \}/.test(pipe), 'pipeline: owner-account CHANGES gets a fix run naming the head');
+check(DESIGNCHANGES('DESIGN CHANGES on 8993578: the strongholds shot is clipped.'), 'pipeline: plain DESIGN CHANGES -> fix round');
+check(DESIGNCHANGES('**DESIGN CHANGES on 8993578** (Jane, design lead)'), 'pipeline: bold DESIGN CHANGES -> fix round (#554)');
+check(!DESIGNCHANGES('**DESIGN OK on 8993578**'), 'pipeline: DESIGN OK -> no fix round');
+check(!DESIGNCHANGES('Fixed what the DESIGN CHANGES asked.'), 'pipeline: DESIGN CHANGES not at a line start -> no fix round');
 check((pipe.match(/else \{ want = 'fix'; reviewBody = body; reason = designAsk; \}/g) || []).length === 1
-  && /if \(!DESIGNCHANGES\.test\(body\)\) return none/.test(pipe)
-  && /else if \(DESIGNCHANGES\.test\(body\)\) \{ want = 'fix'; reviewBody = body; reason = designAsk; \}/.test(pipe), 'pipeline: owner-account and claude[bot] DESIGN CHANGES both use DESIGNCHANGES');
+  && /if \(!DESIGNCHANGES\(body\)\) return none/.test(pipe)
+  && /else if \(DESIGNCHANGES\(body\)\) \{ want = 'fix'; reviewBody = body; reason = designAsk; \}/.test(pipe), 'pipeline: owner-account and claude[bot] DESIGN CHANGES both use DESIGNCHANGES');
+check(/else if \(V\.review\(body\) === 'CHANGES'\)/.test(pipe) && /else if \(V\.needsOpus\(body\)\)/.test(pipe) && /else if \(V\.stuck\(body\)\)/.test(pipe), 'pipeline: review CHANGES, Needs @claude (Opus) and Pipeline stuck read the shared parser');
+check((pipe.match(/start no line with DESIGN OK or DESIGN CHANGES, bold or plain/g) || []).length === 2, 'pipeline: merge and fix prompts say "bold or plain" for the design marks');
+
+// The shared parser (tools/verdicts.cjs): every form a reviewer writes counts; mid-line and struck text never do.
+// Kaizen (Gale), 2026-10-20: the 4th parser/writer format miss in a day (the last #559, bold DESIGN OK unseen).
+const forms = (line) => ({ plain: line, bold: `**${line}**`, code: `\`${line}\``, quoted: `> ${line}`, italic: `_${line}_`,
+  'bold in a quote': `> **${line}**`, 'after a first line': `Review notes\n${line}` });
+const never = (line) => ({ 'mid-line': `As said before, ${line}`, struck: `~~${line}~~`, 'struck bold': `~~**${line}**~~ [Edit: withdrawn]`,
+  'bold struck': `**~~${line}~~**`, 'quoted struck': `> ~~${line}~~` });
+const each = (line, ok, what) => {
+  for (const [k, b] of Object.entries(forms(line))) check(ok(b), `verdicts: ${what}, ${k} -> counts`);
+  for (const [k, b] of Object.entries(never(line))) check(!ok(b), `verdicts: ${what}, ${k} -> ignored`);
+};
+each('DESIGN OK on abc1234', (b) => V.design(b) === 'OK', 'DESIGN OK');
+each('DESIGN CHANGES on abc1234: clipped at 390.', (b) => V.design(b) === 'CHANGES', 'DESIGN CHANGES');
+check(V.design('DESIGN OKAY abc1234') === null && V.design('design ok abc1234') === null, 'verdicts: DESIGN OKAY / lower case -> no mark');
+check(V.design('DESIGN OK abc1234\nDESIGN CHANGES abc1234') === 'CHANGES', 'verdicts: a comment with both marks reads as CHANGES');
+for (const w of ['VERIFIED', 'CHANGES', 'HOLD']) {
+  each(`Game Data Check (ROL-03) on abc1234: ${w}.`, (b) => { const v = V.data(b); return v.length === 1 && v[0].verdict === w && v[0].sha === 'abc1234'; }, `Game Data Check ${w} (sha captured)`);
+}
+check(V.data('**Game Data Check (ROL-03) on `0123456789abcdef0123456789abcdef01234567`: VERIFIED**')[0]?.sha === '0123456789abcdef0123456789abcdef01234567', 'verdicts: Game Data Check, a full 40-char sha in backticks is captured');
+check(!V.data('Game Data Check (ROL-03) on abc12: VERIFIED').length && !V.data('Game Data Check (ROL-03) on abc1234: VERIFIEDX').length, 'verdicts: Game Data Check, short sha or a longer word -> no verdict');
+check(JSON.stringify(V.data('Game Data Check (ROL-03) on 1111111: CHANGES\nGame Data Check (ROL-03) on 2222222: VERIFIED').map((v) => v.verdict)) === '["CHANGES","VERIFIED"]', 'verdicts: Game Data Check, every verdict line in order');
+// The review verdict counts anywhere in the comment (its rule before the parser too), so mid-line counts; struck text doesn't.
+for (const w of ['APPROVE', 'CHANGES']) {
+  const line = `VERDICT: ${w}`;
+  for (const [k, b] of Object.entries({ ...forms(line), 'mid-line': `Final word, ${line}`, 'bold word': `VERDICT: **${w}**` })) check(V.review(b) === w, `verdicts: ${line}, ${k} -> counts`);
+  for (const [k, b] of Object.entries(never(line))) if (k !== 'mid-line') check(V.review(b) === null, `verdicts: ${line}, ${k} -> ignored`);
+}
+check(V.review('Review of abc1234\nVERDICT: APPROVE\n(earlier: VERDICT: CHANGES)') === 'CHANGES', 'verdicts: an APPROVE that also says VERDICT: CHANGES reads as CHANGES');
+check(V.review('Review of abc1234\n~~VERDICT: CHANGES~~\nVERDICT: APPROVE') === 'APPROVE', 'verdicts: a struck CHANGES left above an APPROVE reads as APPROVE');
+check(V.review('Do not write the word VERDICT in it.') === null, 'verdicts: the word VERDICT alone -> no verdict');
+each('Needs @claude (Opus): touches src/core/.', (b) => V.needsOpus(b), 'Needs @claude (Opus)');
+each('Pipeline stuck: the conflict needs an owner decision.', (b) => V.stuck(b), 'Pipeline stuck');
+check(!V.needsOpus('Needs @claude (Sonnet): x') && !V.stuck('Pipeline: fix round 1 of 3'), 'verdicts: other markers -> no match');
+check(V.design('~~DESIGN OK abc1234\nstill struck~~ DESIGN CHANGES') === null && V.design('~~old\n\nDESIGN OK abc1234') === 'OK', 'verdicts: a strike wraps lines but not a blank line');
+check(V.design(null) === null && !V.data(undefined).length && V.review('') === null, 'verdicts: an empty body has no verdict');
+
+// No workflow keeps its own verdict regex: each reads tools/verdicts.cjs from a sparse checkout (model: the opus-paths guard
+// in tests/kickoff.mjs).
+const WF = join(ROOT, '.github', 'workflows');
+const wfs = readdirSync(WF).filter((f) => /\.ya?ml$/.test(f)).map((f) => [f, readFileSync(join(WF, f), 'utf8')]);
+const OWN = ['DESIGN (OK', 'DESIGN CHANGES\\b', ': (VERIFIED', ': CHANGES\\b', 'VERDICT:\\s*', 'VERDICT:/', 'Game Data Check \\(ROL-03\\) on [', 'Needs @claude \\(Opus\\):/', 'Pipeline stuck:/'];
+const own = wfs.flatMap(([f, t]) => OWN.filter((x) => t.includes(x)).map((x) => `${f}: ${x}`));
+check(!own.length, `no workflow keeps its own verdict regex${own.length ? ` (${own.join(', ')})` : ''}`);
+const users = wfs.filter(([, t]) => t.includes('tools/verdicts.cjs`)'));
+check(users.map(([f]) => f).sort().join() === 'auto-merge.yml,pipeline.yml', `auto-merge.yml and pipeline.yml require the parser (${users.map(([f]) => f).join(', ')})`);
+for (const [f, t] of users) {
+  const steps = t.split(/\n(?=\s+- (?:id|uses|name|if|run):)/);
+  const bad = steps.map((st, i) => [st, i]).filter(([st]) => st.includes('require(`${process.env.GITHUB_WORKSPACE}/tools/verdicts.cjs`)'))
+    .filter(([, i]) => !steps.slice(0, i).some((p) => /uses: actions\/checkout@/.test(p) && /sparse-checkout: tools\/verdicts\.cjs/.test(p)
+      && /sparse-checkout-cone-mode: false/.test(p) && !/\bref:/.test(p)));
+  check(!bad.length && steps.some((st) => st.includes('tools/verdicts.cjs`)')), `${f}: every step requiring the parser follows a sparse checkout of it from the default branch`);
+}
 
 console.log(`\n${n - fail}/${n} auto-merge checks passed`);
 console.log(fail ? 'AUTOMERGE CHECKS FAILED' : 'AUTOMERGE CHECKS PASSED');

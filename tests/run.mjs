@@ -35,7 +35,8 @@
      kickoff  Node, no browser: kickoff.yml's After check on fixtures; an unmet or unknown After key never starts a [next] line
               (tests/kickoff.mjs; < 1 s). In the `checks` shard like tokens
      automerge  Node, no browser: auto-merge.yml's design and data checks on fixtures; a PR with review shots never merges
-              without the Design Lead's DESIGN OK on its head, a research PR never without Game Data Check's VERIFIED
+              without the Design Lead's DESIGN OK on its head, a research PR never without Game Data Check's VERIFIED;
+              the shared verdict parser tools/verdicts.cjs, and no workflow keeping its own verdict regex
               (tests/automerge.mjs; < 1 s). In the `checks` shard
      schema   every v2 data file and schema example against data/schema/ (ajv Ajv2020, strict), then the generator's data checks
               and the rules and decisions ledger (tests/ledger.mjs)
