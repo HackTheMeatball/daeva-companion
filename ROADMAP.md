@@ -1206,11 +1206,12 @@ this plan is reviewed and merged.
 
 Path to 1.0 first:
 
-1. **Two more minors, then 1.0 (estimate).** All eight classes shipped in 0.8. What 1.0 still needs splits in two:
-   foundations that must land before saves turn strict (0.9), and the 1.0 look (0.10). The owner's design review for 1.0
-   (2026-10-19 1:57 PM ET: the app mustn't "look like AI made it"; a beginner must understand it) is "likely most of a
-   minor" in Design Lead's notes, so it gets 0.10 to itself, with its blind check run during 0.9. If that check finds more
-   than a minor's work, it becomes 0.10 and 0.11.
+1. **Three more minors, then 1.0 (estimate).** All eight classes shipped in 0.8. What 1.0 still needs: foundations
+   that must land before saves turn strict (0.9); the endgame guide past Lv 45, which the owner made a 1.0 requirement
+   at 5:40 PM ET (0.10, research starting now); and the 1.0 look with the microscope pass over everything (0.11). The
+   owner's design review for 1.0 (2026-10-19 1:57 PM ET: the app mustn't "look like AI made it"; a beginner must
+   understand it) is "likely most of a minor" in Design Lead's notes, with its blind check run during 0.9. If that
+   check or the endgame research finds more than a minor's work, the count grows by one.
 2. **Saves turn strict at 1.0, and save keys still come from names and positions** (architecture audit F1: gen.mjs:108,
    gen.mjs:438, journey.js:106,113, gen.mjs:183). A typo fix in a quest name moves a player's ticks. 0.9 makes the last
    clean break (P2) and adds the load safety net and a key ledger (P9, P10). The frozen per-class save fixtures are
@@ -1222,7 +1223,7 @@ Path to 1.0 first:
 5. **A real company's release safety net** (team audit §8, owner 2026-10-20 3:06 PM ET: "run the way a real company
    would"): staging before 1.0 (owner tap 4:33 PM ET; S4, needing the owner's answers below), a scripted live-site check
    (S2), a CI path for the sync server (S3), a rollback drill on staging, an incident runbook and an owner-settings
-   checklist. A closed beta with real players (§8e) is the owner's call for 0.10.
+   checklist. A closed beta with real players (§8e) is the owner's call for 0.11.
 6. 1.1 is unchanged.
 
 Then 0.9:
@@ -1238,7 +1239,7 @@ Then 0.9:
 9. **UX audit findings** (Lv 39 late start, all classes): the slider path locks the board cards (P7), Ranger and
    Spiritmaster show no specialty step (P15), small text and colour fixes (P8), Basic hides the catch-up tools and early
    chores crowd Next up (P21). Finding 10 (letter-square icons) is fixed by 0.8.1 F5. Finding 12 (the same step in three
-   places) is a design question for the 1.0 look (0.10).
+   places) is a design question for the 1.0 look (0.11).
 
 **Budget trend** (`npm run build`; elements from `tests/site.js`; `update()` from `tests/perf.js`, one noisy local run):
 
@@ -1291,7 +1292,7 @@ Not bot items (they run alongside): Game Data Check does the four research gates
 (`choice-points`, `node-paths`, `e-stack`, `rotation-play`, and Design Lead's data asks `respec` and `bindable-keys`) so kickoff finds it, plus the owner's Vaizel Assault Stance
 (4 or 5) re-check. Design Lead mocks the catch-up flow (notes 9, 10 and UX findings 4, 6–8) and the key setup sheet
 (notes 11, 12), tagged for fresh review; a Design Critic briefed by Design Review reads them before the owner does. Design
-Lead and Source Vetting run the 1.0 look's blind check (3–5 people, a non-gamer among them) for 0.10. Watchdog and Build
+Lead and Source Vetting run the 1.0 look's blind check (3–5 people, a non-gamer among them) for 0.11. Watchdog and Build
 Pipeline write the incident runbook; Build Pipeline the owner-settings checklist and, once S4 is live, the rollback
 drill. Tracker Sync and Tracker Design move the tracker to one GitHub poll every 20 min (0.8 scorecard: tracker threads
 used 28% of project tokens). The outside "Daeva audit" trial is an owner To-do (below).
@@ -1334,13 +1335,24 @@ Under the standing OK until 1.0 most of 0.9 needs nothing from the owner. What i
 3. **Catch-up and key setup looks: Design Lead approves** (owner's card answer, 2026-10-20 5:21 PM ET; every look from
    5:24 PM ET). P19–P22 build from Design Lead's mocks (#610, `docs/design/0.9-loadout-mockup.md`) once they merge with the
    look OK after the fresh review. Design Lead made notes 11, 12 and player-chosen keys (#388) one design, so #388 moves
-   from 0.10 into P22.
+   from the 1.0 look into P22.
 4. **Outside audit trial** (owner To-do: only the owner can do it): create the "Daeva audit" project with 7 days of Debug
    access.
 5. **In-game check:** Vaizel Assault Stance, 4 or 5 nodes (Game Data Check's thread).
 6. **Weekly usage** at the 0.9.0 release (Settings → Usage; "Usage budget" in "How a minor is planned"), logged in #232.
 
-### 0.10 — The 1.0 look (estimate)
+### 0.10 — The endgame guide past Lv 45 (estimate)
+
+**1.0 must ship it (owner, 2026-10-20 5:40 PM ET; DECISIONS "1.0 ships an endgame guide past the level cap; Elyos comes after 1.0 as a minor"):** a
+"Next up" for max-level play, so a Lv 45 player completes daily and weekly objectives efficiently and is shown the next
+most efficient step to raise gear score. It pulls the old 1.1 end-game tracker (daily and weekly checklists with their
+resets) into the path to 1.0. Built on the engine as a module with no page-script edits; its saved data is new, and
+pre-1.0 breaks are still allowed. Research starts during 0.9: Source Vetting (Lydia) vets the owner's reference
+(Kanon's Aion 2 Bible, PDF in the project's shared folder, `research/endgame/`) and other sources, and Game Data Check
+(Gretchen) verifies the resets, the daily and weekly content and the gear-score paths (two sources or labelled, as
+everywhere). Items are shaped in 0.10's own pass once that research is in.
+
+### 0.11 — The 1.0 look and the microscope pass (estimate)
 
 Design Lead's app design review for 1.0 (owner, 2026-10-19 1:57 PM ET): the blind check run in 0.9, a visual language
 mocked and approved by Design Lead after a fresh or outside review (owner, 2026-10-20 5:24 PM ET), then built card by card. **Faction and class accent colours** (owner, 2026-10-20 5:32 and 5:35 PM ET; DECISIONS "Faction and class accent
@@ -1356,21 +1368,23 @@ finding is fixed or recorded as a decision before the candidate is cut. The ledg
 tracker (Tracker Design, Skyler; Tracker Sync, Huell) get the same review, every row, tab, card and definition, and stay
 current (owner, 2026-10-20 5:26 PM ET). The bar: an outside auditor can look at any aspect of the project and grade it
 A+, so every role, rule, process and record is clearly defined and findable. The 0.9 outside audit trial tests against
-that bar. A closed beta with a few real players is the owner's call (team audit §8e). Planned in its own pass after
-0.9 ships; if the blind check finds more than a minor's work, it splits into 0.10 and 0.11.
+that bar. A closed beta with a few real players is the owner's call (team audit §8e). It comes after the endgame guide so
+the new look and the microscope pass cover the endgame cards too. Planned in its own pass; if the blind check finds more
+than a minor's work, it splits in two.
 
 ### 1.0
 
 Full architecture, performance and UX audit (the planning pass in its full form), docs pass, all eight classes on the
-engine, Asmodian, Lv 1–45. One save fixture per class is frozen (`tests/fixtures/saves-1.0/`) and every later build must
-load them. A reasoned budget raise if 0.9 and 0.10 land above 95%. The strict save rule returns (CLAUDE.md). The
+engine, Asmodian, Lv 1–45, and the endgame guide past Lv 45 (0.10). One save fixture per class is frozen (`tests/fixtures/saves-1.0/`) and every later build must
+load them. A reasoned budget raise if 0.9 to 0.11 land above 95%. The strict save rule returns (CLAUDE.md). The
 owner tests the candidate and gives go or no-go; a no-go makes it the next minor (Versioning).
 
-### 1.1 — End-game tracker (owner, 2026-10-16)
+### 1.1 — Elyos (estimate)
 
-A new module for max-level play: daily and weekly checklists with their resets, world boss timers. Built on the engine
-with no page-script edits. Scope, reset times and boss schedules need verified data first; that research can run any
-time before. From 1.0 saves are strict, so its saved data is additive.
+The Elyos faction pack comes after 1.0 (Release Planner and coordinator, 2026-10-20, answering the owner's 5:40 PM ET
+question): it roughly doubles the data to verify, and 1.0 already gained the endgame guide. The faction accent colours
+(0.11) are designed for both factions, so Elyos needs no new look. The old 1.1 end-game tracker moved into 0.10. World
+boss timers join 0.10 only if their schedules are verified in time; otherwise they come here.
 
 ### Any time (patches)
 
