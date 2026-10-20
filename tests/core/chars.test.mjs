@@ -146,10 +146,11 @@ export default (test, M) => {
   });
 
   /* 0.6 P5: the Ranger got its guide pack, so it is listed after the Assassin; 0.7 P2: the Gladiator after it; 0.7 P4:
-     the Spiritmaster last (a class with no pack, e.g. the Templar, is not listed) */
+     the Spiritmaster; 0.8 P3: the Templar last (a class with no guide pack, e.g. the Cleric, is not listed) */
   test('classes: the AION 2 pack lists the classes with a guide pack; name, class and guide pack match data/', () => {
     assert.deepEqual(M.packClasses(), [{ class: M.CLASS, pack: M.PACK, name: 'Assassin' }, { class: 'ranger', pack: 'aion2/asmodian/ranger', name: 'Ranger' },
-      { class: 'gladiator', pack: 'aion2/asmodian/gladiator', name: 'Gladiator' }, { class: 'spiritmaster', pack: 'aion2/asmodian/spiritmaster', name: 'Spiritmaster' }]);
+      { class: 'gladiator', pack: 'aion2/asmodian/gladiator', name: 'Gladiator' }, { class: 'spiritmaster', pack: 'aion2/asmodian/spiritmaster', name: 'Spiritmaster' },
+      { class: 'templar', pack: 'aion2/asmodian/templar', name: 'Templar' }]);
     assert.ok(Object.isFrozen(M.aion2Pack.classes) && M.aion2Pack.classes.every(Object.isFrozen));
     for (const e of M.packClasses()) {
       const cls = json(`data/packs/aion2/classes/${e.class}/class.json`), guide = json(`data/packs/${e.pack}/pack.json`);
@@ -160,10 +161,12 @@ export default (test, M) => {
   });
   test('classes: newChar takes the class and guide pack from the chosen entry; an unlisted class throws', () => {
     assert.deepEqual(M.newChar({ id: 'x', class: M.CLASS, now: 7 }), { id: 'x', pack: M.PACK, class: M.CLASS, name: '', created: 7, checks: {}, level: 5, quest: '' });
-    /* the Templar has no class or guide pack (the Gladiator, then the Spiritmaster stood here until 0.7 P2 / P4 made them playable) */
+    /* the Cleric has class data but no guide pack (the Gladiator, the Spiritmaster, then the Templar stood here until
+       0.7 P2 / P4 and 0.8 P3 made them playable) */
     assert.deepEqual([M.newChar({ id: 'x', class: 'gladiator' }).pack, M.newChar({ id: 'x', class: 'gladiator' }).class], ['aion2/asmodian/gladiator', 'gladiator']);
     assert.deepEqual([M.newChar({ id: 'x', class: 'spiritmaster' }).pack, M.newChar({ id: 'x', class: 'spiritmaster' }).class], ['aion2/asmodian/spiritmaster', 'spiritmaster']);
-    for (const c of ['templar', '', 'Assassin', null]) assert.throws(() => M.newChar({ id: 'x', class: c }), /playable class/, String(c));
+    assert.deepEqual([M.newChar({ id: 'x', class: 'templar' }).pack, M.newChar({ id: 'x', class: 'templar' }).class], ['aion2/asmodian/templar', 'templar']);
+    for (const c of ['cleric', '', 'Assassin', null]) assert.throws(() => M.newChar({ id: 'x', class: c }), /playable class/, String(c));
     const p = M.definePack({ ...tiny(), character: { pack: 'tiny/b', class: 'b' }, classes: [{ class: 'a', pack: 'tiny/a', name: 'A' }, { class: 'b', pack: 'tiny/b', name: 'B' }] });
     withPack(M, p, () => {
       assert.deepEqual([M.newChar({ id: 'x', class: 'a' }).pack, M.newChar({ id: 'x', class: 'a' }).class], ['tiny/a', 'a']);

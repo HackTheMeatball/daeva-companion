@@ -1,0 +1,365 @@
+{
+  "$schema": "../../../schema/claims.schema.json",
+  "schemaVersion": 2,
+  "collection": "claims",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "C02",
+      "claim": "Each skill gains one level every 3 character levels after you learn it.",
+      "verdict": "wrong",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/heart-gore",
+          "note": "Skill pages list the character level each skill level needs (learn level + 3 per level) and the 1 / 2 / 4 point costs"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/vicious-strike",
+          "note": "The Templar's skill pages show the same rule (docs/research/2026-10-templar-pack.md §2.1: skill Lv 10 at learn level + 24)"
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-15-alt-03",
+            "checkedAt": "2026-10-15",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Skill window at Lv 7: Savage Roar Lv 4 needs Lv 10 for Lv 5 and costs 2 points; Storm Rampage Lv 2 needs Lv 8 for Lv 3"
+          }
+        },
+        {
+          "url": "https://allthings.how/?p=215236",
+          "quote": "Skill points arrive automatically as your character levels"
+        },
+        {
+          "url": "https://thegameswiki.com/aion-2/wiki/skills-and-specialties",
+          "quote": "mastery skills are learned automatically when the character reaches the required level; levels beyond 10 come from items, Arcana and Daevanion boards"
+        }
+      ],
+      "action": "rewrite",
+      "newText": "<p>Skills don't level up by themselves: you spend points, and each skill level also needs a character level. Skill level L opens at the level you learned the skill + 3 × (L − 2). Vicious Strike, learned at Lv 1, reaches skill level 5 at Lv 10. Each level costs 1 point (levels 2–4), 2 points (5–7) or 4 points (8–10).</p>",
+      "note": "The Assassin guide's claim C02, with the Templar's Vicious Strike as the example (learned at Lv 1, Metabot and the owner's Templar skill window). The rule is the game's (rule:skill-level-gate, rule:skill-point-cost); the owner's level-gate screens are from an Assassin. Three Templar passives (Fury, Survival Willpower, Block Pain) have a flat gate instead: every level opens when the skill is learned.",
+      "verifiedAt": "2026-10-15",
+      "appliesTo": [
+        "tip:wisdom",
+        "rule:skill-level-gate",
+        "rule:skill-point-cost"
+      ]
+    },
+    {
+      "id": "C22",
+      "claim": "Board node costs: grey stat 1, green passive 2, blue active 3, orange corner 4 (+1.5%); Azphel paid with Azphel points from PvP shops.",
+      "verdict": "verified",
+      "sources": [
+        {
+          "url": "https://gamewith.ai/aion2/en/daevanion-planner/assassin",
+          "quote": "1 for common, 2 for rare, 3 for epic and 4 for unique nodes"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/guides/daevanion-guide",
+          "quote": "stat 1 (rare 2), active 3, passive 2, corner 4 (+1.5%); Azphel: Azphel currency, 0 skill nodes",
+          "note": "via R3 data/build.partial.notes.txt"
+        },
+        {
+          "url": "https://thegameswiki.com/aion-2/wiki/daeva-system-and-daevanion-board",
+          "quote": "Azphel crystal is made by Material Conversion from 10 Fragment: Azphel's Trace and 5 Odyle ... also sold in the Abyss shop for Abyss Points"
+        },
+        {
+          "url": "https://mein-mmo.de/en/aion-2-arkana-daevanion-pet-you-need-to-understand-and-master-these-3-systems,1589883/2/",
+          "quote": "Fragments are earned through victorious participation in the weekly battleground ... Some crystals can also be bought with Abyss Points"
+        }
+      ],
+      "action": "rewrite",
+      "newText": "<b>Azphel [[tip:daevanion|Daevanion board]] opens.</b> Stat nodes only, paid with Azphel crystals (from battleground fragments or Abyss Points), not Daevanion Crystals.",
+      "note": "The Assassin guide's claim C22, unchanged: the Templar's 537 board positions have the same type, grade and cost as the Assassin's (docs/research/2026-10-templar-pack.md §1, 0 differences by script).",
+      "appliesTo": [
+        "g45:2",
+        "tip:daevanion",
+        "conf:boards",
+        "board:nezekan",
+        "board:zikel",
+        "board:vaizel",
+        "board:triniel",
+        "board:azphel"
+      ],
+      "verifiedAt": "2026-10-12"
+    },
+    {
+      "id": "C28b",
+      "claim": "Stigma slots 22/27/32/37 (five sources); regional quest names and levels (allthings.how, Selphie1999).",
+      "verdict": "verified",
+      "sources": [],
+      "action": "keep",
+      "note": "The Assassin guide's claim C28b. The Templar's 13 stigma pages also learn at Lv 22 (Metabot, docs/research/2026-10-templar-pack.md §2.2); Metabot's build page and daevaguides give the same slot levels.",
+      "appliesTo": [
+        "tip:stigma",
+        "conf:stigmas"
+      ],
+      "verifiedAt": "2026-10-12"
+    },
+    {
+      "id": "C39",
+      "claim": "\"The One Who Hears the Voice\" (Lv 22) is open by the time the story reaches \"Daeva in a Dream\".",
+      "verdict": "single-source",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/daeva-in-a-dream-asmodian",
+          "quote": "complete The One Who Hears the Voice",
+          "note": "The wrapper quest's objective (Metabot steps): the Ascension quest must be open by then, so the gate is never early (prereq-gates §5)."
+        }
+      ],
+      "action": "keep",
+      "note": "The Assassin guide's claim C39 (the story is the faction's, not the class's). Owner decision 2026-10-16: no separate in-game check; the gate stands on its source (prereq-gates §11 check 6).",
+      "appliesTo": [
+        "g22:0",
+        "asc:hears-the-voice"
+      ],
+      "verifiedAt": "2026-10-16"
+    },
+    {
+      "id": "C80",
+      "claim": "Templar stat priority: Block, Defense, HP (then Critical Hit Resist, Attack).",
+      "verdict": "single-source",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/templar",
+          "note": "Class page (editorial): Block, Defense, HP, Critical Hit Resist, Attack."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/guides/class-builds-guide",
+          "note": "Same site, so not a second source."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-templar-pack.md §4.5: mmo-codex and the others rank post-45 gear or endgame passives, a different question, so neither a second source nor a conflict. The Build drawer shows the top three and says the ranking is Metabot's only.",
+      "appliesTo": [
+        "build:3",
+        "conf:stat-tiers"
+      ],
+      "verifiedAt": "2026-10-19"
+    },
+    {
+      "id": "C81",
+      "claim": "Templar stigmas by slot: Taunt (22), Empyrean Lord's Punishment (27), Battlefield Banner (32), Doom Shield (37); raised to 8 / 7 / 5 / 4.",
+      "verdict": "disputed",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/templar/build",
+          "note": "Leveling build: Taunt, Empyrean Lord's Punishment, Battlefield Banner, Doom Shield at 8 / 7 / 5 / 4; its top players (153) pick the same four most often. It calls Taunt the dungeon pick."
+        },
+        {
+          "url": "https://daevaguides.com/en/templar/",
+          "note": "Doom Shield, Battlefield Banner, Taunt for dungeons (solo: Executing Blade), then Empyrean Lord's Punishment or Noble Armor."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/templar/",
+          "note": "Leveling: Battlefield Banner, Doom Shield, Empyrean Lord's Punishment, Noble Armor (Banner 10, the rest 5)."
+        },
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/templar/",
+          "note": "Taunt, Empyrean Lord's Punishment, Battlefield Banner and Doom Shield on its leveling keys, no slot order."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-templar-pack.md §4.3. Battlefield Banner, Doom Shield and Empyrean Lord's Punishment are in every set; Taunt as the fourth is two-source (Metabot, mmo-codex; daevaguides for dungeons) over Noble Armor (aion2turkiye, daevaguides' alternative). The slot order is disputed (no two sources give the same one), so the guide takes Metabot's set and order, the research default. The levels 8 / 7 / 5 / 4 are Metabot's only (aion2turkiye: Banner 10, the rest 5).",
+      "appliesTo": [
+        "build:templar:guide",
+        "conf:stigma-plan"
+      ],
+      "verifiedAt": "2026-10-19"
+    },
+    {
+      "id": "C82",
+      "claim": "Templar skill points: Judgment, Vicious Strike, Pummel, Shield Smite, Warding Strike, Punishment, Punishing Benediction and Fury to Lv 10; Ironclad Defense to 5; then Annihilate to 7, Enhance Health to 8 and Poach to 5.",
+      "verdict": "disputed",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/templar/build",
+          "note": "Leveling build targets: Judgment, Vicious Strike, Pummel, Punishment, Punishing Benediction, Shield Smite, Warding Strike, Enhance Health, Poach to 10; Annihilate 7; Ironclad Defense 5 (203 points). Leaves Fury out. No training order."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/templar/",
+          "note": "Leveling targets: Judgment, Vicious Strike, Pummel, Punishment, Punishing Benediction, Fury 10; Shield Smite, Warding Strike, Enhance Health 8; Ironclad Defense, Poach, Insulting Roar, Defiance 5."
+        },
+        {
+          "url": "https://daevaguides.com/en/templar/",
+          "note": "Judgment, Pummel and Vicious Strike first (10 by Lv 25), Punishment 8 at 32 and 10 at 38, Fury 10 at 21 (couga54)."
+        },
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/templar/",
+          "note": "Leveling scenario: Judgment, Vicious Strike, Shield Smite, Warding Strike each to 8 then 10; then Punishment and Annihilate; Fury the first passive."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-templar-pack.md §4.1–4.2. Two-source: Judgment, Vicious Strike, Pummel, Punishment and Punishing Benediction to 10; Shield Smite and Warding Strike to 10 (Metabot, mmo-codex; aion2turkiye 8); Fury to 10 (aion2turkiye, daevaguides; Metabot's build leaves it out); Ironclad Defense to 5 (Metabot, aion2turkiye). Disputed, the research default with the remaining 30 points: Annihilate 7 (Metabot), Enhance Health 8 and Poach 5 (the lower of two values). Judgment first, Vicious Strike early and Punishment later are two-source; the order between those rules is inferred.",
+      "appliesTo": [
+        "build:templar:guide",
+        "conf:core-order",
+        "conf:skill-disputed"
+      ],
+      "verifiedAt": "2026-10-19"
+    },
+    {
+      "id": "C83",
+      "claim": "Templar first Daevanion nodes: Nezekan's Enhance Health, Ironclad Defense and Guarding Seal pairs, then Zikel's Fury and Insulting Roar pairs.",
+      "verdict": "single-source",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/templar",
+          "note": "Class page board path (editorial); the class-builds guide gives the same path (same site). Node positions from the Templar board data (aion2/classes/templar, Metabot Daevanion page)."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-templar-pack.md §4.5. Guarding Seal is learned at Lv 13 and Fury at Lv 21 (Metabot skill pages), so their nodes wait for those levels.",
+      "appliesTo": [
+        "build:templar:guide",
+        "conf:first-nodes"
+      ],
+      "verifiedAt": "2026-10-19"
+    },
+    {
+      "id": "C84",
+      "claim": "Five Templar skills fire only on a condition: Judgment in the 2 s window Shield Smite, Warding Strike or Shield Rush opens; Annihilate on a stunned or knocked-down target; Flash Rampage on a staggered one; Debilitating Smash after a Block; Shield Rush after a Dodge or in flight.",
+      "verdict": "verified",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/shield-smite",
+          "note": "Skill text (game-database field): triggers Judgment for 2 s; 100% stun on NPCs. Warding Strike and Shield Rush carry the same Judgment line."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/annihilate",
+          "note": "Skill text (game-database field)."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/flash-rampage",
+          "note": "Skill text (game-database field)."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/debilitating-smash",
+          "note": "Skill text (game-database field)."
+        },
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/templar/",
+          "note": "Describes the same conditions (Spot use, one page)."
+        },
+        {
+          "url": "https://daevaguides.com/en/templar/",
+          "note": "Describes the same conditions."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-templar-pack.md §1 and §4.6 (CONFIRMED from the skill text plus two guides). The guide's own wording, not the pages'.",
+      "appliesTo": [
+        "build:triggers",
+        "conf:triggers"
+      ],
+      "verifiedAt": "2026-10-19"
+    },
+    {
+      "id": "C85",
+      "claim": "Templar learn levels: actives 1, 1, 1, 3, 4, 5, 7, 8, 10, 12, 14, 16; passives 1, 6, 9, 11, 13, 15, 17, 21, 23, 25 (Shield Smite 3, Judgment 4, Shield Rush 10, Annihilate 12).",
+      "verdict": "verified",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/judgment",
+          "note": "Game-database field (learn level); every Templar skill page gives its own."
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-18-templar-keys-01",
+            "checkedAt": "2026-10-18",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Templar skill window at Lv 4: six skills unlocked, every locked skill shows its level"
+          }
+        },
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/templar/",
+          "note": "Its level-by-level unlock table gives the same 22 values."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-templar-pack.md §3: all 22 learn levels have three sources, the owner's screen the source of truth. mmo-codex credits the game client via aion2.app, so it and Metabot may share upstream data (inferred); the owner's screen does not.",
+      "appliesTo": [
+        "conf:learn-levels",
+        "build:triggers"
+      ],
+      "verifiedAt": "2026-10-18"
+    },
+    {
+      "id": "C86",
+      "claim": "Templar specialty picks at skill Lv 8: Judgment extra damage (:3), Vicious Strike +20% MP restored (:1), Pummel −20% MP consumed (:1), Shield Smite no MP cost and 200 MP restored (:2), Warding Strike −5 s cooldown (:1), Punishment HP absorb (:1).",
+      "verdict": "disputed",
+      "sources": [
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/templar/",
+          "note": "Lv 8 picks: Vicious Strike :1, Pummel :1, Judgment :3, Shield Smite :2 (\"your main source of mana\"), Warding Strike :1; Punishment :3 (+30% Skill Speed)."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/templar/",
+          "note": "Leveling panel: Vicious Strike :1, Pummel :1, Judgment :3, Shield Smite :2, Warding Strike :1, Punishment :1."
+        },
+        {
+          "url": "https://daevaguides.com/en/templar/",
+          "note": "Vicious Strike :1 (Templar runs short of mana while leveling), Pummel :1 (couga54; SolAshur :3 for bosses), Shield Smite :2, Punishment :1 at the start (trueeevil)."
+        },
+        {
+          "url": "https://skycoach.gg/blog/aion-2/articles/templar-guide",
+          "note": "Shield Smite :2."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-templar-pack.md §4.4. Five picks are CONFIRMED there (two or more sources, no dissent for leveling); Punishment's HP absorb is two-source (aion2turkiye, daevaguides) with mmo-codex taking Skill Speed instead, so the Confidence card shows it as disputed (conf:punishment-pick). Lv 12 and 16 picks need skill levels past 10, which points alone don't reach before Lv 45, so the guide leaves them out, as the Ranger's does.",
+      "appliesTo": [
+        "build:templar:guide",
+        "conf:specialty-picks",
+        "conf:punishment-pick"
+      ],
+      "verifiedAt": "2026-10-19"
+    },
+    {
+      "id": "C87",
+      "claim": "Templar default keys: mouse buttons Vicious Strike and Pummel; Q Shield Rush (row 0), Annihilate (1); E Flash Rampage (0), Debilitating Smash (1), Judgment (2); 1 Poach, 2 Shield Smite, 3 Warding Strike, 4 Punishment; Defiance no key.",
+      "verdict": "verified",
+      "sources": [
+        {
+          "owner": {
+            "ref": "owner:2026-10-18-templar-keys-01",
+            "checkedAt": "2026-10-18",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Templar skill window (quickslot grid, game default keys), Lv 4"
+          }
+        }
+      ],
+      "action": "keep",
+      "note": "The owner's in-game screen (the source of truth), read by Game Data Check (docs/research/2026-10-templar-pack.md §6). The keys are the game's defaults, not a guide's advice. Which mouse button holds which skill is claim C88.",
+      "appliesTo": [
+        "build:templar:guide"
+      ],
+      "verifiedAt": "2026-10-18"
+    },
+    {
+      "id": "C88",
+      "claim": "Templar default mouse keys: left click Vicious Strike, right click Pummel.",
+      "verdict": "inferred",
+      "sources": [
+        {
+          "inferred": "The owner's screen shows both skills on the two mouse badges; the left-then-right badge order was checked on the Ranger and Gladiator screens (docs/research/2026-10-templar-pack.md §6)."
+        }
+      ],
+      "action": "keep",
+      "note": "Listed for an owner check in docs/ISSUES.md (Templar guide: still missing). daevaguides says the game keeps Defiance on Space; no owner screen shows it, so the Key setup leaves Defiance out.",
+      "appliesTo": [
+        "build:templar:guide",
+        "conf:mouse-keys"
+      ],
+      "verifiedAt": "2026-10-20"
+    }
+  ]
+}

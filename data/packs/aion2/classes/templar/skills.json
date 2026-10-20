@@ -11,6 +11,7 @@
       "type": "active",
       "learnLv": 12,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-templar-annihilate.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -101,6 +102,7 @@
       "type": "active",
       "learnLv": 7,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-templar-debilitating-smash.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -162,6 +164,7 @@
       "type": "active",
       "learnLv": 16,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-templar-defiance.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -255,6 +258,7 @@
       "type": "active",
       "learnLv": 5,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-templar-flash-rampage.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -483,6 +487,7 @@
       "type": "active",
       "learnLv": 4,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-templar-judgment.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -563,6 +568,7 @@
       "type": "active",
       "learnLv": 1,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-templar-poach.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -624,6 +630,7 @@
       "type": "active",
       "learnLv": 1,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-templar-pummel.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -739,6 +746,7 @@
       "type": "active",
       "learnLv": 14,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-templar-punishment.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -827,6 +835,7 @@
       "type": "active",
       "learnLv": 10,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-templar-shield-rush.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -888,6 +897,7 @@
       "type": "active",
       "learnLv": 3,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-templar-shield-smite.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -983,6 +993,7 @@
       "type": "active",
       "learnLv": 1,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-templar-vicious-strike.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -1092,6 +1103,7 @@
       "type": "active",
       "learnLv": 8,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-templar-warding-strike.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,

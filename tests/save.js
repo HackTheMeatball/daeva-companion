@@ -192,8 +192,8 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
       radios: [...document.querySelectorAll('#charPick input[type=radio]')].map(r => [r.value, r.checked, r.closest('label').innerText.trim()]), list: !document.getElementById('charList').hidden }));
     ok('switcher: New character opens the form with the focus in "Name (optional)"', f.focus === 'charName' && f.label === 'Name (optional)' && !f.list, f);
     /* 0.6 P5: the Ranger joined the Assassin; 0.7 P2: the Gladiator got its guide pack and joined them; 0.7 P4: the
-       Spiritmaster after them */
-    ok('switcher: the class picker offers the Assassin (picked), the Ranger, the Gladiator and the Spiritmaster', f.legend === 'Class' && JSON.stringify(f.radios) === JSON.stringify([['assassin', true, 'Assassin'], ['ranger', false, 'Ranger'], ['gladiator', false, 'Gladiator'], ['spiritmaster', false, 'Spiritmaster']]), f.radios);
+       Spiritmaster after them; 0.8 P3: the Templar last */
+    ok('switcher: the class picker offers the Assassin (picked), the Ranger, the Gladiator, the Spiritmaster and the Templar', f.legend === 'Class' && JSON.stringify(f.radios) === JSON.stringify([['assassin', true, 'Assassin'], ['ranger', false, 'Ranger'], ['gladiator', false, 'Gladiator'], ['spiritmaster', false, 'Spiritmaster'], ['templar', false, 'Templar']]), f.radios);
     await p.keyboard.type('  Zed  '); await p.waitForTimeout(50);
     ok('switcher: the form previews the label Zed-assassin-lvl1 (name trimmed)', await p.innerText('#charPrev') === 'Zed-assassin-lvl1', await p.innerText('#charPrev'));
     await p.keyboard.press('Escape'); await p.waitForTimeout(100);
@@ -317,6 +317,32 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     ok('spiritmaster: no page errors', !errs.length, errs);
     await ctx.close();
   }
+  /* 10b'''. a Templar (0.8 P3): the same for the fifth class; its Rotation section shows the game's default keys (the
+     owner's Templar screen) and the Build plan card states the five skills that fire only on a condition */
+  {
+    const { ctx, p, errs } = await page();
+    await writeSave(p, SAVED, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
+    const first = JSON.parse(await readRaw(p)).chars[TEST_SLOT];
+    const guide = () => p.evaluate(() => ({ pack: self.DAEVA_PACK, cls: char(state).class, plan: STIGMA_PLAN.slice(), sk: SP_SKILLS_CORE.map(x => x.n).slice(0, 2),
+      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, skills: document.getElementById('main').innerText.includes('Vicious Strike'),
+      keys: document.getElementById('stackViz').textContent,
+      triggers: STEPS.some(g => g.items.some(i => i.k === 'build:triggers' && i.t.includes('Five skills only fire on a condition'))) }));
+    await p.click('#charBtn'); await p.click('#charNew'); await p.check('#charPick input[value="templar"]'); await p.waitForTimeout(50);
+    ok('templar: the form previews templar-lvl1', await p.innerText('#charPrev') === 'templar-lvl1', await p.innerText('#charPrev'));
+    await Promise.all([p.waitForEvent('load'), p.click('#charCreate')]); await p.waitForTimeout(400);
+    const t = await guide(), s = JSON.parse(await readRaw(p)), tid = s.current;
+    ok('templar: a new current slot of class templar, pack aion2/asmodian/templar; the first character stored as it was', tid !== TEST_SLOT && s.chars[tid].class === 'templar' && s.chars[tid].pack === 'aion2/asmodian/templar' && isDeepStrictEqual(s.chars[TEST_SLOT], first), s.chars[tid]);
+    ok('templar: the page runs the Templar guide (its pack, stigma plan, skills shown, the conditions step; Rotation from its default keys)', t.pack === 'aion2/asmodian/templar' && t.cls === 'templar'
+      && JSON.stringify(t.plan) === JSON.stringify(['Taunt', "Empyrean Lord's Punishment", 'Battlefield Banner', 'Doom Shield'])
+      && JSON.stringify(t.sk) === JSON.stringify(['Judgment', 'Vicious Strike']) && t.skills && t.triggers && t.rot
+      && ['Left click: Vicious Strike', 'Right click: Pummel', '1: Poach'].every(x => t.keys.includes(x)) && !/Quick Slice|Judgment|Rending Blow/.test(t.keys) && t.lbl === 'templar-lvl1' && t.h1 === 'Asmodian Templar Route', t);
+    await p.click('#charBtn');
+    await Promise.all([p.waitForEvent('load'), p.click(`#charRows [data-char="${TEST_SLOT}"]`)]); await p.waitForTimeout(400);
+    const b = await guide();
+    ok('templar, switch back: the Assassin guide again (no conditions step), its character unchanged', b.pack === 'aion2/asmodian/assassin' && b.plan[0] === "Triniel's Dagger" && !b.triggers && b.lbl === 'assassin-lvl22' && b.h1 === 'Asmodian Assassin Route' && isDeepStrictEqual(JSON.parse(await readRaw(p)).chars[TEST_SLOT], first), b);
+    ok('templar: no page errors', !errs.length, errs);
+    await ctx.close();
+  }
   /* 10c. the site's classes (0.7 A1; the claude.ai build's class list went with that build in 0.7 P9): the site sets no class
      list, offers every playable class, and a Ranger save loads its own guide with no note */
   {
@@ -328,7 +354,7 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
       await p.click('#charCancel'); await p.keyboard.press('Escape'); return r; };
     await p.goto(CFG.CUR); await writeRaw(p, JSON.stringify(ranger), { fresh: true }); await p.reload(); await p.waitForTimeout(400);
     const site = await look();
-    ok('site classes: the picker offers every playable class (the Gladiator too, 0.7 P2; the Spiritmaster, 0.7 P4) and shows no note',JSON.stringify(site.radios) === JSON.stringify(['assassin', 'ranger', 'gladiator', 'spiritmaster']) && !site.note && site.pack === 'aion2/asmodian/ranger', site);
+    ok('site classes: the picker offers every playable class (the Gladiator too, 0.7 P2; the Spiritmaster, 0.7 P4; the Templar, 0.8 P3) and shows no note',JSON.stringify(site.radios) === JSON.stringify(['assassin', 'ranger', 'gladiator', 'spiritmaster', 'templar']) && !site.note && site.pack === 'aion2/asmodian/ranger', site);
     ok('site classes: no page errors', !errs.length, errs);
     await ctx.close();
   }

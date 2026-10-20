@@ -1,0 +1,77 @@
+{
+  "$schema": "../../../schema/confidence.schema.json",
+  "schemaVersion": 2,
+  "collection": "confidence",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "conf:core-order",
+      "group": "verified",
+      "order": 46,
+      "text": "Templar skill points: Judgment, Vicious Strike, Pummel, Shield Smite, Warding Strike, Punishment and Punishing Benediction to 10, then {skillOrderTwoSource} (Fury to 10, Ironclad Defense to 5) (Metabot, aion2turkiye, daevaguides, mmo-codex; Metabot's build leaves Fury out). Judgment first, Vicious Strike early, Punishment later and Fury the level it is learned are two-source; the order between those rules is inferred.",
+      "placeholders": [
+        "skillOrderTwoSource"
+      ]
+    },
+    {
+      "id": "conf:first-nodes",
+      "group": "single-source",
+      "order": 185,
+      "text": "First Daevanion nodes (Nezekan's Enhance Health, Ironclad Defense and Guarding Seal pairs, then Zikel's Fury and Insulting Roar pairs): Metabot's Templar page."
+    },
+    {
+      "id": "conf:learn-levels",
+      "group": "verified",
+      "order": 45,
+      "text": "Templar learn levels (Shield Smite 3, Judgment 4, Shield Rush 10, Annihilate 12 and the rest): your Templar skill window, Metabot's skill pages (game data) and mmo-codex's unlock table."
+    },
+    {
+      "id": "conf:mouse-keys",
+      "group": "inferred",
+      "order": 225,
+      "text": "Default mouse keys: Vicious Strike on left click and Pummel on right click is inferred from the badge order on other classes' screens; the other default keys are from your game."
+    },
+    {
+      "id": "conf:punishment-pick",
+      "group": "disputed",
+      "order": 235,
+      "text": "Punishment's Lv 8 pick: HP absorb (aion2turkiye, daevaguides) over +30% Skill Speed (mmo-codex); the guide takes HP absorb."
+    },
+    {
+      "id": "conf:skill-disputed",
+      "group": "disputed",
+      "order": 231,
+      "text": "Annihilate to 7 (Metabot; aion2turkiye leaves it out), Enhance Health to 8 and Poach to 5 (aion2turkiye; Metabot says 10): the guide takes 7, 8 and 5 with the last spare points."
+    },
+    {
+      "id": "conf:specialty-picks",
+      "group": "verified",
+      "order": 71,
+      "text": "Specialty picks at skill Lv 8: Judgment extra damage, Vicious Strike +20% MP restored, Pummel −20% MP consumed, Shield Smite MP restore, Warding Strike −5 s cooldown (mmo-codex, aion2turkiye, daevaguides, skycoach)."
+    },
+    {
+      "id": "conf:stat-tiers",
+      "group": "single-source",
+      "order": 186,
+      "text": "Stat priority (Block, Defense, HP): Metabot's Templar page and class-builds guide (one site)."
+    },
+    {
+      "id": "conf:stigma-plan",
+      "group": "disputed",
+      "order": 234,
+      "text": "Stigmas Taunt, Empyrean Lord's Punishment, Battlefield Banner, Doom Shield (Metabot, mmo-codex; aion2turkiye shares three and swaps one for Noble Armor or Executing Blade; daevaguides adds Taunt for dungeons and names Executing Blade (solo) and Noble Armor as alternatives); every source orders them differently, so the slot order is Metabot's. Raised to 8 / 7 / 5 / 4: Metabot's only."
+    },
+    {
+      "id": "conf:stigmas",
+      "group": "verified",
+      "order": 40,
+      "text": "Stigma slots 22 / 27 / 32 / 37; every stigma learnable at 22; shard cost per level (Metabot, allthings.how)."
+    },
+    {
+      "id": "conf:triggers",
+      "group": "verified",
+      "order": 47,
+      "text": "Judgment, Annihilate, Flash Rampage, Debilitating Smash and Shield Rush fire only on their conditions (Metabot's skill pages, game data; mmo-codex, daevaguides)."
+    }
+  ]
+}

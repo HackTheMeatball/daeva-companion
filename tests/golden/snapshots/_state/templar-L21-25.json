@@ -1,0 +1,40 @@
+{
+  "templar/L22-q34-none-A": {
+    "in": "1d86d91b5313",
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/templar","class":"templar","name":"","created":0,"checks":{},"level":22,"quest":"Disturbed Balance","mt":{"level":[0,22],"quest":[0,["Disturbed Balance",null]]}},{"checks":{},"level":22,"quest":"Disturbed Balance","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/templar","class":"templar","name":"","created":0,"mt":{"level":[0,22],"quest":[0,["Disturbed Balance",null]],"rotSeen":[1790856000,["Left click:Vicious Strike:0","Right click:Pummel:0","Q:Shield Rush:0","Q:Annihilate:1","E:Flash Rampage:0","E:Debilitating Smash:1","E:Judgment:2","1:Poach:0","2:Shield Smite:0","3:Warding Strike:0","4:Punishment:0"]]},"rotSeen":["Left click:Vicious Strike:0","Right click:Pummel:0","Q:Shield Rush:0","Q:Annihilate:1","E:Flash Rampage:0","E:Debilitating Smash:1","E:Judgment:2","1:Poach:0","2:Shield Smite:0","3:Warding Strike:0","4:Punishment:0"]}],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g22": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "savedAt": ["(absent)",1790856000000]
+    },
+    "mode": "advanced"
+  },
+  "templar/L22-q34-none-B": {
+    "in": "77f8d8f79386",
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/templar","class":"templar","name":"","created":0,"checks":{},"level":22,"quest":"Disturbed Balance","mt":{"level":[0,22],"quest":[0,["Disturbed Balance",null]]}},{"checks":{},"level":22,"quest":"Disturbed Balance","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/templar","class":"templar","name":"","created":0,"mt":{"level":[0,22],"quest":[0,["Disturbed Balance",null]],"rotSeen":[1790856000,["Left click:Vicious Strike:0","Right click:Pummel:0","Q:Shield Rush:0","Q:Annihilate:1","E:Flash Rampage:0","E:Debilitating Smash:1","E:Judgment:2","1:Poach:0","2:Shield Smite:0","3:Warding Strike:0","4:Punishment:0"]]},"rotSeen":["Left click:Vicious Strike:0","Right click:Pummel:0","Q:Shield Rush:0","Q:Annihilate:1","E:Flash Rampage:0","E:Debilitating Smash:1","E:Judgment:2","1:Poach:0","2:Shield Smite:0","3:Warding Strike:0","4:Punishment:0"]}],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g22": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "savedAt": ["(absent)",1790856000000]
+    },
+    "mode": "basic"
+  }
+}

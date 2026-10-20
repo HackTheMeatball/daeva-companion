@@ -8,7 +8,7 @@
       "id": "class:templar",
       "class": "templar",
       "name": "Templar",
-      "release": "hidden",
+      "release": "released",
       "defaultBuild": "build:templar:guide",
       "sources": [
         {
@@ -23,7 +23,7 @@
       "verifiedAt": "2026-10-19",
       "status": "verified",
       "notes": [
-        "Hidden until 0.8 P3 adds its guide pack (data/packs/aion2/asmodian/templar/, which defines build:templar:guide) and lists it in the class picker."
+        "Released in 0.8 P3 (#492): its guide pack (data/packs/aion2/asmodian/templar/) defines build:templar:guide and the class picker lists it."
       ]
     }
   ]

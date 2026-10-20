@@ -1,0 +1,10 @@
+[
+  { "case": "picker-new-character-390", "kind": "before-after", "title": "Pick a class: Templar",
+    "caption": "New character now offers the Templar after the Assassin, the Ranger, the Gladiator and the Spiritmaster." },
+  { "case": "templar-lv22-advanced-1500", "kind": "screenshot", "title": "A Templar at level 22",
+    "caption": "A Templar character gets its own guide: Judgment first, Taunt for stigma slot 1, each with its game icon." },
+  { "case": "templar-build-plan-1500", "kind": "screenshot", "title": "Skills that fire on a condition",
+    "caption": "The Build plan says which five Templar skills fire only on a condition, such as Judgment right after a shield skill." },
+  { "case": "templar-build-drawer-1500", "kind": "screenshot", "title": "Templar stats and keys",
+    "caption": "The Build tab shows Block, Defense and HP from Metabot, plus the game's default Q and E keys from your Templar screen." }
+]

@@ -1,0 +1,28 @@
+{
+  "templar/L10-q12-none-A": {
+    "in": "7e9b3427212f",
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/templar","class":"templar","name":"","created":0,"checks":{},"level":10,"quest":"Gathering Essentials","mt":{"level":[0,10],"quest":[0,["Gathering Essentials",null]]}},{"checks":{},"level":10,"quest":"Gathering Essentials","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/templar","class":"templar","name":"","created":0,"mt":{"level":[0,10],"quest":[0,["Gathering Essentials",null]],"rotSeen":[1790856000,["Left click:Vicious Strike:0","Right click:Pummel:0","Q:Shield Rush:0","E:Flash Rampage:0","E:Debilitating Smash:1","E:Judgment:2","1:Poach:0","2:Shield Smite:0","3:Warding Strike:0"]]},"rotSeen":["Left click:Vicious Strike:0","Right click:Pummel:0","Q:Shield Rush:0","E:Flash Rampage:0","E:Debilitating Smash:1","E:Judgment:2","1:Poach:0","2:Shield Smite:0","3:Warding Strike:0"]}],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "savedAt": ["(absent)",1790856000000]
+    },
+    "mode": "advanced"
+  },
+  "templar/L10-q12-none-B": {
+    "in": "c723655f9c6c",
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/templar","class":"templar","name":"","created":0,"checks":{},"level":10,"quest":"Gathering Essentials","mt":{"level":[0,10],"quest":[0,["Gathering Essentials",null]]}},{"checks":{},"level":10,"quest":"Gathering Essentials","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/templar","class":"templar","name":"","created":0,"mt":{"level":[0,10],"quest":[0,["Gathering Essentials",null]],"rotSeen":[1790856000,["Left click:Vicious Strike:0","Right click:Pummel:0","Q:Shield Rush:0","E:Flash Rampage:0","E:Debilitating Smash:1","E:Judgment:2","1:Poach:0","2:Shield Smite:0","3:Warding Strike:0"]]},"rotSeen":["Left click:Vicious Strike:0","Right click:Pummel:0","Q:Shield Rush:0","E:Flash Rampage:0","E:Debilitating Smash:1","E:Judgment:2","1:Poach:0","2:Shield Smite:0","3:Warding Strike:0"]}],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "savedAt": ["(absent)",1790856000000]
+    },
+    "mode": "basic"
+  }
+}
