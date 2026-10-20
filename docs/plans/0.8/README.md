@@ -338,6 +338,7 @@ The same as P3, for the Cleric. It runs after P3 because both edit `pack.js`.
 
 The same as P2, for the Sorcerer. It reads `docs/research/2026-10-sorcerer-pack.md` and the owner's checked Sorcerer
 screen (`/mnt/project-files/owner-screens/2026-10-19/sorcerer/NOTES.md`: unlock levels, icon ids, default keys).
+Write the game text for the five "Absorbs" specialty rows, not the CSV's Metabot text (pack §5; #487 review).
 
 - **Lanes:** gen. **Model:** Opus, L (120 min).
 - **After:** `research-sorcerer`.
@@ -345,6 +346,10 @@ screen (`/mnt/project-files/owner-screens/2026-10-19/sorcerer/NOTES.md`: unlock 
 ## P17: Sorcerer guide pack and picker
 
 The same as P3, for the Sorcerer. It runs after P5 because both edit `pack.js`.
+The default build is Metabot's leveling build (203 points). Labels from the pack and its review (#487): Wish of
+Concentration's target (7 vs 10) and the stigma slot order and fourth stigma (Delayed Explosion vs Steel Barrier) are
+"disputed"; the 16 Sep Fire Mark change stays "inferred"; Fire Mark's Lv 10 target is "single source"; the §4.6
+rotation is two-source through Metabot. Hellfire's key step says to hold the key to charge.
 
 - **Lanes:** gen, golden. **Model:** Opus, L (120 min).
 - **After:** P16, P5.
@@ -388,9 +393,11 @@ The same as P3, for the Chanter. Metabot has no Chanter build sample, so advice 
   - [ ] Shots of a disputed regional quest zone in a milestone row and in Next up, at 1500 and 390 px.
   - [ ] Golden diff limited to the tags.
 - **Files.** `tools/gen/gen.mjs`, `src/packs/aion2/cards/rows.js`, `src/packs/aion2/cards/nextup-kinds.js`,
-  `src/styles/cards/nextup.css`, `src/styles/packs/aion2/areas.css`, the tests.
+  `src/packs/aion2/cards/skills.js`, `src/styles/cards/nextup.css`, `src/styles/packs/aion2/areas.css`,
+  `src/styles/packs/aion2/skills.css`, the tests. `ss-tag` lives in `nextup.css` today; P20 moves it to a style the rows
+  and the Skills card share.
 - **Lanes:** gen, golden, nextup.css, rows. **Model:** Sonnet, S (44 min).
-- **After:** none.
+- **After:** none (it follows P19 on the serial gen lane).
 
 ## R: Release 0.8.0
 
