@@ -43,6 +43,12 @@ _From #114 "Next up (queue; the planner fills it, kickoff.yml starts from the to
 
 ## Decisions
 
+### DEC-02
+
+_Written here by the Release Planner (2026-10-20), from the ledger summary, adjusted for how owner messages reach threads since the owner stepped away (2026-10-20 5:24–5:28 PM ET). #114 had no text for it._
+
+- **DEC-02 Isaac's own words:** an OK counts only when the session that writes it reads Isaac's own typed words: in its own thread, or as a message the server copied verbatim with Isaac as the author (a coordinator relay's `<cited author="user">` entry, or the message fetched by id). A summary, paraphrase or another session's note saying Isaac agreed is never an OK. The DECISIONS row quotes the words and gives the time and where Isaac typed them.
+
 ### DEC-03
 
 _From #114 "Team-wide rules (homed here from team memory; rules audit, Isaac, typed in the Gus thread 2026-10-19 4:56 PM ET)"._
