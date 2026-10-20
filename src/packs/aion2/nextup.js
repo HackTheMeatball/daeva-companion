@@ -15,7 +15,7 @@ import { AREA_LOC } from "./data/generated.js";
 import { KIBELISKS, NODE_PLACE } from "./data/place.js";
 import { nudgeOf, storyTargetOf, teleportOf } from "./travel.js";
 import { AREA_ITEMS, KIB_AREA, bandOf } from "./catalog.js";
-import { areaOpen, dvNeed, dvNext, dvSpent, isAscensionKey, rqStatus, rqWaitsOnStory, shardsFromLv, skillBuy, skillOpen, stigmaEquipOpen, stigmaPlan, stigmaSlots,
+import { areaOpen, dvCostOf, dvNeed, dvNext, dvSpent, isAscensionKey, rqStatus, rqWaitsOnStory, shardsFromLv, skillBuy, skillOpen, stigmaEquipOpen, stigmaPlan, stigmaSlots,
   storyAreaOf, storyHereOf } from "./requirements.js";
 import { blockerText } from "../../core/blockers.js";
 import { etaOf, rankChangeOn } from "../../core/nextup.js";
@@ -93,7 +93,7 @@ function spend(state, { c, lv, ev }) {
       const cost = x.spec ? 0 : x.cost; if (cost > left) return true; left -= cost;
       out.push({ phase: "spend", queue: "skill", ...(out.length >= 4 ? { more: true } : {}), card: { kind: "skill", x, act: "skill" } });
       return false; }); }
-  const dn = dvNext(c, lv), dLeft = (c.dvTotal || 0) - dvSpent(c), dc = dn && (c.dvCost || {})[dn.k];
+  const dn = dvNext(c, lv), dLeft = (c.dvTotal || 0) - dvSpent(c), dc = dn && dvCostOf(c, dn);
   /* "<Board> board opens" (a milestone step) still open: that card comes first, the board's buy card after it (one, not both). */
   const boOpen = dn && GATES.some(g => g.lv <= lv && g.items.some(it => it.bo === dn.board && !c.checks[it.k]));
   if (boOpen) { /* the milestone card covers it */ }

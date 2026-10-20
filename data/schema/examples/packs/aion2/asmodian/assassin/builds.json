@@ -175,14 +175,13 @@
         },
         {
           "anyNode": [
-            "node:assassin:nezekan:r3c3",
-            "node:assassin:nezekan:r3c13",
-            "node:assassin:nezekan:r13c3",
-            "node:assassin:nezekan:r13c13"
+            "node:assassin:nezekan:r13c13",
+            "node:assassin:nezekan:r3c3"
           ],
           "key": "dv:corner",
-          "label": "Cooldown Reduction or Combat Speed corner",
-          "via": "corner node costs 4 (worked out from your board)",
+          "label": "Combat Speed corner",
+          "via": "Combat Speed first (2+ guides): every hit comes faster; the Cooldown Reduction corners come later",
+          "cost": 5,
           "milestone": "g12",
           "order": 90,
           "requires": {
@@ -200,7 +199,21 @@
                 "scheme": "metabot",
                 "value": "0.0.4387.0"
               },
-              "note": "the four Unique corners of Nezekan"
+              "note": "the two Combat Speed corners of Nezekan"
+            },
+            {
+              "owner": {
+                "ref": "owner:2026-10-20-board-costs-01",
+                "checkedAt": "2026-10-20",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Nezekan board at Lv 39: points per plan node in the guide's order, path included"
+              },
+              "fields": [
+                "cost"
+              ]
             }
           ]
         },
