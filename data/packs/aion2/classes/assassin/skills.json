@@ -53,9 +53,10 @@
         {
           "url": "https://metabot.gg/en/aion-2/skills/ambush",
           "fields": [
+            "learnLv",
             "specialtyChoices"
           ],
-          "checkedAt": "2026-10-14",
+          "checkedAt": "2026-10-20",
           "build": {
             "scheme": "metabot",
             "value": "0.0.4387.0"
@@ -78,7 +79,7 @@
           "note": "Class guide shows the specialty text for spec:assassin:ambush:2 (Game Data Check, #358)"
         }
       ],
-      "verifiedAt": "2026-10-18",
+      "verifiedAt": "2026-10-20",
       "status": "verified",
       "fieldStatus": {
         "levelGate": "inferred"
@@ -119,9 +120,20 @@
       "sources": [
         {
           "url": "https://metabot.gg/en/aion-2/classes/assassin"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/apply-poison",
+          "fields": [
+            "learnLv"
+          ],
+          "checkedAt": "2026-10-20",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-20",
       "status": "verified",
       "fieldStatus": {
         "levelGate": "inferred"
@@ -194,18 +206,20 @@
           "url": "https://metabot.gg/en/aion-2/classes/assassin"
         },
         {
-          "url": "https://metabot.gg/en/aion-2/skills/defiance",
+          "url": "https://metabot.gg/en/aion-2/skills/defiance-assassin",
           "fields": [
+            "learnLv",
             "specialtyChoices"
           ],
-          "checkedAt": "2026-10-14",
+          "checkedAt": "2026-10-20",
           "build": {
             "scheme": "metabot",
             "value": "0.0.4387.0"
-          }
+          },
+          "note": "Assassin page; until 2026-10-20 this cited /skills/defiance, the Gladiator's Defiance, whose specialty 1 differs (Game Data Check, K25)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-20",
       "status": "verified",
       "fieldStatus": {
         "levelGate": "inferred"
@@ -218,7 +232,7 @@
           "id": "spec:assassin:defiance:1",
           "n": 1,
           "skillLv": 8,
-          "text": "Adds [Wrath Burst] Chain Skill"
+          "text": "Adds [Storm Slice] Chain Skill"
         },
         {
           "id": "spec:assassin:defiance:2",
@@ -283,9 +297,20 @@
       "sources": [
         {
           "url": "https://metabot.gg/en/aion-2/classes/assassin"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/exploit-weakness",
+          "fields": [
+            "learnLv"
+          ],
+          "checkedAt": "2026-10-20",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-20",
       "status": "verified",
       "fieldStatus": {
         "levelGate": "inferred"
@@ -470,16 +495,17 @@
         {
           "url": "https://metabot.gg/en/aion-2/skills/infiltrate",
           "fields": [
+            "learnLv",
             "specialtyChoices"
           ],
-          "checkedAt": "2026-10-14",
+          "checkedAt": "2026-10-20",
           "build": {
             "scheme": "metabot",
             "value": "0.0.4387.0"
           }
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-20",
       "status": "verified",
       "fieldStatus": {
         "levelGate": "inferred"
@@ -665,9 +691,20 @@
       "sources": [
         {
           "url": "https://metabot.gg/en/aion-2/classes/assassin"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/rear-smite",
+          "fields": [
+            "learnLv"
+          ],
+          "checkedAt": "2026-10-20",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-20",
       "status": "verified",
       "fieldStatus": {
         "levelGate": "inferred"
@@ -688,9 +725,20 @@
       "sources": [
         {
           "url": "https://metabot.gg/en/aion-2/classes/assassin"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/revitalization-contract",
+          "fields": [
+            "learnLv"
+          ],
+          "checkedAt": "2026-10-20",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-20",
       "status": "verified",
       "fieldStatus": {
         "levelGate": "inferred"
@@ -747,16 +795,17 @@
         {
           "url": "https://metabot.gg/en/aion-2/skills/savage-roar",
           "fields": [
+            "learnLv",
             "specialtyChoices"
           ],
-          "checkedAt": "2026-10-14",
+          "checkedAt": "2026-10-20",
           "build": {
             "scheme": "metabot",
             "value": "0.0.4387.0"
           }
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-20",
       "status": "verified",
       "fieldStatus": {
         "levelGate": "inferred"
@@ -781,9 +830,10 @@
         {
           "url": "https://metabot.gg/en/aion-2/skills/shadow-fall",
           "fields": [
+            "learnLv",
             "specialtyChoices"
           ],
-          "checkedAt": "2026-10-14",
+          "checkedAt": "2026-10-20",
           "build": {
             "scheme": "metabot",
             "value": "0.0.4387.0"
@@ -806,7 +856,7 @@
           "note": "Class guide shows the specialty text for spec:assassin:shadow-fall:1 (Game Data Check, #358)"
         }
       ],
-      "verifiedAt": "2026-10-18",
+      "verifiedAt": "2026-10-20",
       "status": "verified",
       "fieldStatus": {
         "levelGate": "inferred"
@@ -899,16 +949,17 @@
         {
           "url": "https://metabot.gg/en/aion-2/skills/shadowstrike",
           "fields": [
+            "learnLv",
             "specialtyChoices"
           ],
-          "checkedAt": "2026-10-14",
+          "checkedAt": "2026-10-20",
           "build": {
             "scheme": "metabot",
             "value": "0.0.4387.0"
           }
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-20",
       "status": "verified",
       "fieldStatus": {
         "levelGate": "inferred"
@@ -1001,16 +1052,17 @@
         {
           "url": "https://metabot.gg/en/aion-2/skills/whirlwind-slice",
           "fields": [
+            "learnLv",
             "specialtyChoices"
           ],
-          "checkedAt": "2026-10-14",
+          "checkedAt": "2026-10-20",
           "build": {
             "scheme": "metabot",
             "value": "0.0.4387.0"
           }
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-20",
       "status": "verified",
       "fieldStatus": {
         "levelGate": "inferred"

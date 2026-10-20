@@ -268,9 +268,11 @@
           "url": "https://metabot.gg/en/aion-2/quests/prepare-to-escape",
           "fields": [
             "gameId",
-            "next"
+            "next",
+            "lv"
           ],
-          "note": "game id and chain order: docs/research/2026-10-prereq-gates.md §4"
+          "note": "game id and chain order: docs/research/2026-10-prereq-gates.md §4",
+          "checkedAt": "2026-10-20"
         },
         {
           "url": "https://aion2hub.com/leveling/asmodian-levels-1-10",
@@ -963,9 +965,11 @@
           "url": "https://metabot.gg/en/aion-2/quests/the-being-beneath-the-lake",
           "fields": [
             "gameId",
-            "next"
+            "next",
+            "lv"
           ],
-          "note": "game id and chain order: docs/research/2026-10-prereq-gates.md §4"
+          "note": "game id and chain order: docs/research/2026-10-prereq-gates.md §4",
+          "checkedAt": "2026-10-20"
         },
         {
           "url": "https://aion2hub.com/leveling/asmodian-levels-1-10",
@@ -1025,7 +1029,7 @@
           ]
         }
       ],
-      "verifiedAt": "2026-10-15",
+      "verifiedAt": "2026-10-20",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
@@ -1110,9 +1114,11 @@
           "url": "https://metabot.gg/en/aion-2/quests/spread-your-wings",
           "fields": [
             "gameId",
-            "next"
+            "next",
+            "lv"
           ],
-          "note": "game id and chain order: docs/research/2026-10-prereq-gates.md §4"
+          "note": "game id and chain order: docs/research/2026-10-prereq-gates.md §4",
+          "checkedAt": "2026-10-20"
         },
         {
           "url": "https://aion2hub.com/leveling/asmodian-levels-1-10",
@@ -1156,7 +1162,7 @@
           "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
-      "verifiedAt": "2026-10-15",
+      "verifiedAt": "2026-10-20",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
