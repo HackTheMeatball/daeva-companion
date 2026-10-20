@@ -5,6 +5,12 @@ owner; since 2026-10-18 11:12 AM ET Release Planner (Walter) is the only writer 
 send an OK the owner typed to Walter, verbatim with its time and thread. Department charters a decision affects are updated by
 each charter's owner thread.
 
+## 2026-10-20
+
+| # | Topic | Decision |
+|---|---|---|
+| — | The data gate's VERIFIED carry may skip `data/DATA_SOURCES.md` | Owner, typed in the Build Pipeline (Gus) thread 2026-10-20 5:50 AM ET (Release Planner read the message itself): "OK: Gus may leave data/DATA_SOURCES.md out of the VERIFIED carry check". Refines ROL-03's auto-merge gate: since #531 a Game Data Check `VERIFIED` carries across merge-only commits that don't touch the PR's own commits or data files; now a change to `data/DATA_SOURCES.md` alone (the file `npm run gen` rewrites, which `tests/schema.mjs` and CI's gen check already hold to the data) doesn't void it. Game Data Check's two conditions stay: every other data, research and icon file is unchanged since the verified head, and the merge log names `DATA_SOURCES.md` when it was skipped. A regular (non-merge) commit still needs a new check. Built in PR #546. Checked against CLAUDE.md (verified data only; the data itself is still checked) and ROADMAP: no conflict. |
+
 ## 2026-10-19
 
 | # | Topic | Decision |
