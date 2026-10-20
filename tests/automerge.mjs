@@ -43,6 +43,25 @@ check(/wait on DESIGN OK/.test(designBlocker(SHOTS, [c('claude[bot]', 'Looks fin
 const loop = yml.slice(yml.indexOf('for (const pr of prs)'), yml.indexOf('github.rest.pulls.merge('));
 check(/const design = designBlocker\(files, comments, sha, headAt\);\s*\n\s*if \(design\) \{.*continue; \}/.test(loop), 'merge loop: designBlocker runs and skips before a PR is merged');
 
+// Data check (ROL-03): a research PR waits for Game Data Check's VERIFIED on its head (Chanter pack #486 merged without it).
+const d = yml.match(/\/\/ DATA-CHECK START[^\n]*\n([\s\S]*?)\n\s*\/\/ DATA-CHECK END/);
+check(!!d, 'auto-merge.yml has the DATA-CHECK block');
+const dataBlocker = new Function('owner', 'core', d[1] + '\nreturn dataBlocker;')('HackTheMeatball', { info: () => {} });
+const RPR = { head: { ref: 'claude/research-chanter-nrffuq' }, title: 'research: Chanter pack' };
+const TPR = { head: { ref: 'claude/project-thread-w57upj' }, title: 'Research: Cleric pack for 0.8' };
+const OPR = { head: { ref: 'claude/issue-495-1' }, title: '0.8 P1: site speed' };
+check(dataBlocker(OPR, [REVIEW], SHA, HEAD) === '', 'not a research PR -> no wait');
+check(/waits on Game Data Check/.test(dataBlocker(RPR, [REVIEW], SHA, HEAD)), 'research branch, no verdict -> waits (the #486 case)');
+check(/waits on Game Data Check/.test(dataBlocker(TPR, [REVIEW], SHA, HEAD)), 'title "Research: ..." on a thread branch, no verdict -> waits');
+check(dataBlocker(RPR, [c('HackTheMeatball', '**Game Data Check (ROL-03) on abc1234: VERIFIED.** All fixed.', 9)], SHA, HEAD) === '', 'bold VERIFIED naming the head -> merges');
+check(/asked for changes/.test(dataBlocker(RPR, [c('HackTheMeatball', '**Game Data Check (ROL-03) on abc1234: CHANGES, one blocking item.**', 9)], SHA, HEAD)), 'CHANGES on the head -> waits');
+check(/does not cover the head/.test(dataBlocker(RPR, [c('HackTheMeatball', '**Game Data Check (ROL-03) on 9999999: VERIFIED.**', 9)], SHA, HEAD)), 'VERIFIED naming another commit -> waits');
+check(/does not cover the head/.test(dataBlocker(RPR, [c('HackTheMeatball', 'Game Data Check (ROL-03) on abc1234: VERIFIED.', -3)], SHA, HEAD)), 'VERIFIED older than the head commit -> waits');
+check(/waits on Game Data Check/.test(dataBlocker(RPR, [c('HackTheMeatball', '~~**Game Data Check (ROL-03) on abc1234: VERIFIED.**~~ [Edit: merged early]', 9)], SHA, HEAD)), 'struck-out VERIFIED -> ignored, waits');
+check(/waits on Game Data Check/.test(dataBlocker(RPR, [c('someone-else', 'Game Data Check (ROL-03) on abc1234: VERIFIED.', 9)], SHA, HEAD)), 'verdict from another account -> ignored, waits');
+check(/asked for changes/.test(dataBlocker(RPR, [c('HackTheMeatball', 'Game Data Check (ROL-03) on abc1234: VERIFIED.', 6), c('HackTheMeatball', 'Game Data Check (ROL-03) on abc1234: CHANGES.', 8)], SHA, HEAD)), 'later CHANGES wins');
+check(/const data = dataBlocker\(pr, comments, sha, headAt\);\s*\n\s*if \(data\) \{.*continue; \}/.test(loop), 'merge loop: dataBlocker runs and skips before a PR is merged');
+
 console.log(`\n${n - fail}/${n} auto-merge checks passed`);
 console.log(fail ? 'AUTOMERGE CHECKS FAILED' : 'AUTOMERGE CHECKS PASSED');
 process.exit(fail ? 1 : 0);
