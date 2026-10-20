@@ -43,6 +43,8 @@ on purpose: the guide shows nothing rather than an unverified value.
   | `owner:2026-10-16-quickslice-01` | Quick Slice tooltip (screenshot, 03:05 ET), Lv 7 (+1), slot 1 open, two slots locked: +20% MP restored; Absorbs 0.7% HP; +50% Multi-Hit on hit; Lv 12: −1s [Insignia Explosion] cooldown on hit; Lv 16: "Ignores Block and Evasion and lands a…" (cut off, not completed) | `specialtyEvidence` `spec:assassin:quick-slice:4`, claim C40 |
   | `owner:2026-10-16-daeva-trapped-01` | Owner's own lookup (03:14 ET, #108; th.gl checked by hand, not cited): Daeva Trapped in a Nightmare is given by Koro at the Abyss Base; objectives: complete The One Who Witnesses the Nightmare, then talk to Nemon at the Outskirts Stall; previous Forgotten Commander, next Waiting for the Next Journey (story 89/89) | `sq:2102810` giver (single source), claim C41 |
   | `owner:2026-10-16-zikel-01` | Zikel board is 11×11; its two Defense Break +1 nodes are at row 10 column 9 and row 4 column 5 (1-based), i.e. `r12c11` and `r6c7` in Metabot's 15×15 frame | `dv:z:db`, `dv:z:db2` |
+- **Owner ref of 2026-10-20**: `owner:2026-10-20-shugo-01`, quest journal screenshot: the in-game title is
+  "Shugo-of-All-Trades" (Lv. 12), not Metabot's page name "Shugo-of-All-Trades: Asmodian". Cited in `rq:2202044` (`name`, `rec`).
 - **Unverified, left out**: Kibelisk and Command mission unlock levels.
 - **Dungeon XP**: removed from the UI; known for only a few dungeons.
 - **Inferred (labelled in the app)**: core skill-point order, right-click row order and E stack, Vaizel / Triniel

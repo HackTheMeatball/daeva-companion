@@ -6041,7 +6041,7 @@
     {
       "id": "rq:2202044",
       "key": "rq:2202044",
-      "name": "Shugo-of-All-Trades: Asmodian",
+      "name": "Shugo-of-All-Trades",
       "faction": "asmodian",
       "gameId": "2202044",
       "metabotSlug": "shugo-of-all-trades-asmodian",
@@ -6194,6 +6194,21 @@
           ]
         },
         {
+          "owner": {
+            "ref": "owner:2026-10-20-shugo-01",
+            "checkedAt": "2026-10-20",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Quest journal (screenshot): title \"Shugo-of-All-Trades\", Lv. 12; no \": Asmodian\" suffix (that is Metabot's page name)"
+          },
+          "fields": [
+            "name",
+            "rec"
+          ]
+        },
+        {
           "url": "https://metabot.gg/en/aion-2/quests/shugo-of-all-trades-asmodian",
           "fields": [
             "zone"
@@ -6206,7 +6221,7 @@
           "note": "Quest page: \"Start Dari · Temporary Investigation Base\". Temporary Investigation Base is listed under Dredgion Crash Site in zones.json (camps / Kibelisks, inferred), so the zone is derived."
         }
       ],
-      "verifiedAt": "2026-10-19",
+      "verifiedAt": "2026-10-20",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred",

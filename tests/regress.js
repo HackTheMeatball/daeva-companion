@@ -146,6 +146,9 @@ const setState = async (p, args) => { await writeFixture(p, args); await p.reloa
      (fixture-v285.via-v285.flat.json; both made by the 0.4 P3a fixture script, frozen since P3c) */
   {
     const A = J('tests/fixtures/fixture-v285.v285-metrics.json');
+    /* quests renamed since v285 (the key stays; only the shown name changed), so A is read under today's name */
+    const RENAMED = { 'Shugo-of-All-Trades: Asmodian': 'Shugo-of-All-Trades' }; /* owner:2026-10-20-shugo-01, in-game title */
+    for (const [was, now] of Object.entries(RENAMED)) if (was in A.quests) { A.quests[now] = A.quests[was]; delete A.quests[was]; }
     const ctx = await b.newContext(), p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
     await p.goto(CUR); await writeSave(p, flatFixture('fixture-v285.via-v285.flat.json')); await p.reload(); await p.waitForTimeout(500);
     const B = await p.evaluate(migMetrics);
