@@ -12,7 +12,9 @@
       "gameId": "2101010",
       "lv": 2,
       "unlocksAt": 1,
-      "levelsUp": true,
+      "levelsUp": {
+        "from": 1
+      },
       "next": "sq:2101020",
       "giver": {
         "npc": "Andre",
@@ -77,6 +79,18 @@
         {
           "url": "https://metabot.gg/en/aion-2/quests/a-village-in-the-fog",
           "fields": [
+            "levelsUp"
+          ],
+          "checkedAt": "2026-10-20",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "EXP reward 1,133 = the EXP to finish Lv 1 (Metabot leveling table): a full level when turned in at Lv 1; docs/research/2026-10-research-401-levels.md"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/a-village-in-the-fog",
+          "fields": [
             "gameId",
             "next"
           ],
@@ -138,7 +152,7 @@
           "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
-      "verifiedAt": "2026-10-15",
+      "verifiedAt": "2026-10-20",
       "status": "verified",
       "notes": [
         "First story quest after the tutorial (owner screen owner:2026-10-14-unlocks-21). Ishalgen, listed before it in v1, is the starting map, not a quest (owner:2026-10-14-unlocks-22)."
@@ -152,6 +166,9 @@
       "gameId": "2101020",
       "lv": 2,
       "unlocksAt": 1,
+      "levelsUp": {
+        "from": 2
+      },
       "next": "sq:2101030",
       "giver": {
         "npc": "Ellin",
@@ -238,6 +255,18 @@
         {
           "url": "https://metabot.gg/en/aion-2/quests/prepare-to-escape",
           "fields": [
+            "levelsUp"
+          ],
+          "checkedAt": "2026-10-20",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "EXP reward 1,712 = the EXP to finish Lv 2 (Metabot leveling table), owner reward screen 100%: a full level when turned in at Lv 2; docs/research/2026-10-research-401-levels.md"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/prepare-to-escape",
+          "fields": [
             "gameId",
             "next"
           ],
@@ -284,7 +313,7 @@
           "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
-      "verifiedAt": "2026-10-15",
+      "verifiedAt": "2026-10-20",
       "status": "verified",
       "unlocks": {
         "text": "Shop and Closet"
@@ -298,6 +327,9 @@
       "gameId": "2101030",
       "lv": 3,
       "unlocksAt": 1,
+      "levelsUp": {
+        "from": 3
+      },
       "next": "sq:2101040",
       "giver": {
         "npc": "Stellan",
@@ -420,6 +452,18 @@
         {
           "url": "https://metabot.gg/en/aion-2/quests/shadow-forest",
           "fields": [
+            "levelsUp"
+          ],
+          "checkedAt": "2026-10-20",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "EXP reward 2,589 = the EXP to finish Lv 3 (Metabot leveling table), owner reward screen 100% and his Lv 3 → 4 screen (2026-10-18): a full level when turned in at Lv 3; docs/research/2026-10-research-401-levels.md"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/shadow-forest",
+          "fields": [
             "gameId",
             "next"
           ],
@@ -495,7 +539,7 @@
           "note": "Matches the Metabot rewards; the screen shows Kinah rounded (1.5K) and EXP as a percent of the level"
         }
       ],
-      "verifiedAt": "2026-10-18",
+      "verifiedAt": "2026-10-20",
       "status": "verified"
     },
     {
@@ -506,6 +550,9 @@
       "gameId": "2101040",
       "lv": 4,
       "unlocksAt": 1,
+      "levelsUp": {
+        "from": 4
+      },
       "next": "sq:2101050",
       "giver": {
         "npc": "Pelleir",
@@ -689,6 +736,18 @@
         {
           "url": "https://metabot.gg/en/aion-2/quests/isolated-lake",
           "fields": [
+            "levelsUp"
+          ],
+          "checkedAt": "2026-10-20",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "EXP reward 3,915 = the EXP to finish Lv 4 (Metabot leveling table), owner reward screen 100%: a full level when turned in at Lv 4; docs/research/2026-10-research-401-levels.md"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/isolated-lake",
+          "fields": [
             "gameId",
             "next"
           ],
@@ -769,7 +828,7 @@
           "note": "Matches the Metabot rewards; the screen shows Kinah rounded (1.6K) and EXP as a percent of the level"
         }
       ],
-      "verifiedAt": "2026-10-18",
+      "verifiedAt": "2026-10-20",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "owner-check"
@@ -1116,6 +1175,9 @@
       "gameId": "2101070",
       "lv": 6,
       "unlocksAt": 1,
+      "levelsUp": {
+        "from": 6
+      },
       "next": "sq:2101080",
       "giver": {
         "npc": "Argit",
@@ -1356,6 +1418,18 @@
         {
           "url": "https://metabot.gg/en/aion-2/quests/signs-of-a-crash-landing",
           "fields": [
+            "levelsUp"
+          ],
+          "checkedAt": "2026-10-20",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "EXP reward 8,950 = the EXP to finish Lv 6 (Metabot leveling table), owner reward screen 100%: a full level when turned in at Lv 6; docs/research/2026-10-research-401-levels.md"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/signs-of-a-crash-landing",
+          "fields": [
             "gameId",
             "next"
           ],
@@ -1409,7 +1483,7 @@
           "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
-      "verifiedAt": "2026-10-18",
+      "verifiedAt": "2026-10-20",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "owner-check"
@@ -1423,6 +1497,9 @@
       "gameId": "2101080",
       "lv": 7,
       "unlocksAt": 1,
+      "levelsUp": {
+        "from": 7
+      },
       "next": "sq:2101090",
       "giver": {
         "npc": "Garlond",
@@ -1579,6 +1656,18 @@
         {
           "url": "https://metabot.gg/en/aion-2/quests/prison-compound-infiltration-plan",
           "fields": [
+            "levelsUp"
+          ],
+          "checkedAt": "2026-10-20",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "EXP reward 13,532 = the EXP to finish Lv 7 (Metabot leveling table), owner reward screen 100%: a full level when turned in at Lv 7; docs/research/2026-10-research-401-levels.md"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/prison-compound-infiltration-plan",
+          "fields": [
             "gameId",
             "next"
           ],
@@ -1632,7 +1721,7 @@
           "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
-      "verifiedAt": "2026-10-18",
+      "verifiedAt": "2026-10-20",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
@@ -1647,6 +1736,9 @@
       "gameId": "2101090",
       "lv": 7,
       "unlocksAt": 1,
+      "levelsUp": {
+        "from": 8
+      },
       "next": "sq:2101100",
       "giver": {
         "npc": "Anders",
@@ -1777,6 +1869,18 @@
         {
           "url": "https://metabot.gg/en/aion-2/quests/brigade-prison-compound-infiltration-operation",
           "fields": [
+            "levelsUp"
+          ],
+          "checkedAt": "2026-10-20",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "EXP reward 20,461 = the EXP to finish Lv 8 (Metabot leveling table), owner reward screen 100%: a full level when turned in at Lv 8 (not its rec. Lv 7); docs/research/2026-10-research-401-levels.md"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/brigade-prison-compound-infiltration-operation",
+          "fields": [
             "gameId",
             "next"
           ],
@@ -1830,7 +1934,7 @@
           "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
-      "verifiedAt": "2026-10-18",
+      "verifiedAt": "2026-10-20",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check"
@@ -1844,6 +1948,9 @@
       "gameId": "2101100",
       "lv": 9,
       "unlocksAt": 1,
+      "levelsUp": {
+        "from": 9
+      },
       "next": "sq:2102010",
       "giver": {
         "npc": "Pelleir",
@@ -1908,6 +2015,18 @@
         {
           "url": "https://metabot.gg/en/aion-2/quests/the-longest-night",
           "fields": [
+            "levelsUp"
+          ],
+          "checkedAt": "2026-10-20",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "EXP reward 30,937 = the EXP to finish Lv 9 (Metabot leveling table), and the owner (2026-10-20): \"when you finish the longest night you're level 10\": a full level when turned in at Lv 9; docs/research/2026-10-research-401-levels.md"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/the-longest-night",
+          "fields": [
             "gameId",
             "next"
           ],
@@ -1957,7 +2076,7 @@
           "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
-      "verifiedAt": "2026-10-18",
+      "verifiedAt": "2026-10-20",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "owner-check"

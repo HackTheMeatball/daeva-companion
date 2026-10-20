@@ -80,7 +80,7 @@ comes first) a change may break existing saves when that gives a better design. 
   Daevanion / Stigmas; Next up cards look like milestone cards).
 - Manual progress is intended: ticking quests, Level up. Level changes only via Level up / − / + / slider, with one
   exception (owner, 2026-10-17, DECISIONS `owner-ok-autolevel`): "Auto level-up OK: verified 100% EXP quests only,
-  undoable". Ticking a story quest with `levelsUp: true` (sourced) raises the level by one; unticking or Undo lowers it.
+  undoable". Ticking a story quest with `levelsUp: { from }` (sourced) at Lv from raises the level by one; unticking or Undo lowers it.
 - The guide must be correct and complete to Lv 45 without the user having to report problems.
 - Basic mode = essentials only. The site is the only build (owner, 2026-10-18: "Freeze the claude.ai artifact: stop
   building it; the site is the only build."); the published claude.ai artifact stays frozen with its "moved" notice (D4).
