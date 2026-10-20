@@ -44,6 +44,7 @@ jobs:
       pull-requests: read
     outputs:
       items: ${{ steps.p.outputs.items }}
+      touches: ${{ steps.p.outputs.touches }}
     steps:
       - id: p
         uses: actions/github-script@v7
@@ -53,12 +54,16 @@ jobs:
             // 3 until 2026-10-17; 5 on the owner's Max 20x plan (lanes still apply). The 0.8 overnight run's 8 ended at
             // 06:40 UTC Oct 20 (owner, 2026-10-19 10:05 PM ET).
             const STATE = 114, MAX = 5;
+            // What Sonnet may not change: one list for this routing and every Sonnet prompt (Kaizen (Gale), 2026-10-20).
+            const ROUTE = JSON.parse(Buffer.from((await github.rest.repos.getContent({ owner, repo, path: '.github/routing/opus-paths.json', ref: 'main' })).data.content, 'base64').toString('utf8'));
+            core.setOutput('touches', ROUTE.sonnetMayNotTouch);
             const LANES = ['golden', 'golden-nextup', 'golden-journey', 'golden-milestones', 'golden-regional', 'golden-route', 'mig', 'main.js', 'gates', 'gen', 'app.css', 'ci', 'a11y', 'release'];
             // OPUS-FILES START (tests/kickoff.mjs runs this block)
             // PIP-06 (Kaizen (Gale), 0.7 rules audit, 2026-10-19): a Sonnet build whose issue's "## Files" section names an
             // Opus path (#114 Effort: src/core, saves/storage/migrations, gates, golden/mig1, tools/gen, data/schema,
             // workflows) stopped with "Needs @claude (Opus)" and was built again. Such an item starts on Opus instead.
-            const OPUS_PATH = /src\/core\/|tools\/gen\/|data\/schema\/|tests\/golden|e2-migtest|\bmig1\b|\.github\/|\bmigrat\w*|\blocalStorage\b|\brequires\b|\bcompletesWith\b/;
+            // The paths come from .github/routing/opus-paths.json (ROUTE), the list the Sonnet prompts stop on.
+            const OPUS_PATH = new RegExp(ROUTE.paths.map((p) => p.re).join('|'));
             // A spec names its parts as "## Files" headings (before 0.8) or as "- **Files.**" bullets (docs/plans/SPEC-TEMPLATE.md).
             // PIP-06 read only the heading, so #509's bullet naming tools/gen/gen.mjs started on Sonnet (#221, 2026-10-20 1:24 AM ET).
             const specField = (body, name) => {
@@ -68,7 +73,12 @@ jobs:
               const f = b.match(new RegExp(`^- \\*\\*${name}[.:]?\\*\\*[.:]?([\\s\\S]*?)(?=^- \\*\\*|^## |(?![\\s\\S]))`, 'm'));
               return f ? f[1] : '';
             };
-            const opusPath = (body) => (specField(body, 'Files').match(OPUS_PATH) || [])[0] || null;
+            // No readable Files list means nobody checked the paths, so it starts on Opus too (Kaizen (Gale), 2026-10-20).
+            const opusPath = (body) => {
+              const files = specField(body, 'Files');
+              if (!/[\w-]\/|\w\.\w/.test(files)) return 'no readable Files list';
+              return (files.match(OPUS_PATH) || [])[0] || null;
+            };
             // Kaizen (Gale), 2026-10-20 (#221 1:24 AM ET: #509 needed a gen run and a golden re-record and was routed to Sonnet,
             // whose limits stopped it): work on the gen or a golden lane, or a spec that runs `npm run gen` or re-records
             // golden, starts on Opus whatever its tier.
@@ -362,7 +372,7 @@ jobs:
               if (why) { core.warning(`#${n} not started again: ${why}`); lines[i] = `- [started ${stamp}] #${n} ${m[2]}${m[3]}`; pruned = true; continue; }
               const fileHit = m[2] !== 'opus' && opusPath(iss.body), workHit = m[2] !== 'opus' && !fileHit && opusWork(want, iss.body);
               const hit = fileHit || workHit;
-              if (fileHit) core.notice(`#${n}: queued sonnet, but its Files list names ${fileHit} (an Opus path, #114 Effort); started on Opus (PIP-06)`);
+              if (fileHit) core.notice(`#${n}: queued sonnet, but ${/^no /.test(fileHit) ? 'it has no readable Files list' : `its Files list names ${fileHit} (an Opus path, .github/routing/opus-paths.json)`}; started on Opus (PIP-06)`);
               if (workHit) core.notice(`#${n}: queued sonnet, but it runs gen or re-records golden (${workHit}); started on Opus (Kaizen, 2026-10-20)`);
               picked.push({ issue: n, model: m[2] === 'opus' || hit ? 'claude-opus-5-5' : 'claude-sonnet-5-5', title: iss.title });
               lines[i] = `- [started ${stamp}] #${n} ${m[2]}${m[3]}`;
@@ -455,7 +465,7 @@ jobs:
             Run commands in the foreground only, `npm test` included (Bash allows 30 minutes here): a background command is lost when your turn ends, so the run ends with nothing opened. Push after every commit (a run that dies is restarted once and continues from the pushed branch).
             Tools: one plain command per Bash call (no `&&`, `;`, pipes, heredocs, `python3 -`, scripts in /tmp, or env-var prefixes like `X=1 node ...`: they are denied; pass flags instead); create and edit files with Edit and Write.
             Clock: the GitHub token expires 1 hour after this run starts (P6 #198 lost its last push at minute 62). Aim to open the PR by minute 45. If a push fails with 401 or "Bad credentials", stop at once: the run is restarted with a fresh token and continues from the pushed branch. While iterating use `node tests/run.mjs --only <suites>` after `npm run build` and batch slow golden or pixel runs; run the full `npm test` once at the end.
-            ${{ contains(matrix.item.model, 'sonnet') && 'Sonnet limits (owner routing rule): if the work would touch src/core/, save/sync/migration/storage code, a gate''s requires/completesWith, golden snapshots, the mig1 pin, or more than about 300 lines, do not edit. Post one comment on the issue starting "Needs @claude (Opus):" with the reason, then stop.' || '' }}
+            ${{ contains(matrix.item.model, 'sonnet') && format('Sonnet limits (owner routing rule, list in .github/routing/opus-paths.json): if the work would touch {0}, do not edit. Post one comment on the issue starting "Needs @claude (Opus):" with the reason, then stop.', needs.pick.outputs.touches) || '' }}
             If the issue cannot be done safely (unverifiable game data, an owner decision), do not push. Post one comment on the issue starting "Blocked:" with the reason in one or two lines.
           claude_args: |
             --model ${{ matrix.item.model }}

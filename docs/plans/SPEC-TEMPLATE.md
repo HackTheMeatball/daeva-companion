@@ -26,8 +26,10 @@ format only here, together with the parser and its test.
   one is missing or lies outside the repo (`~/…`, `/…`). A `/mnt/` path anywhere in the spec but its No-gos holds it the same way:
   builds can't read the project's shared folder (Kaizen, 2026-10-20; #502 sat 67 min).
 - An item on the `gen` or a `golden` lane, or whose spec runs `npm run gen` or re-records golden, starts on Opus
-  whatever its queue line says, and so does one whose **Files** line names an Opus path (#114 Effort; Kaizen,
-  2026-10-20: #509 was routed to Sonnet and stopped).
+  whatever its queue line says, and so does one whose **Files** line names an Opus path (`.github/routing/opus-paths.json`;
+  Kaizen, 2026-10-20: #509 was routed to Sonnet and stopped) or names no path at all. Files must list every file the
+  Result needs, core, save, pack and build files included: routing only sees what is listed (#501 stopped on src/core
+  and scripts/ files its spec left out).
 - Lanes are the serial files of docs/team/DISPATCH.md. Names outside kickoff's known list only warn, and kickoff still
   keeps same-named lanes apart.
 
