@@ -1,0 +1,24 @@
+{
+  "chanter/L01-qxx-none-A": {
+    "in": "44f74071d033",
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/chanter","class":"chanter","name":"","created":0,"checks":{},"level":1,"quest":"","mt":{"level":[0,1],"quest":[0,["",null]]}},{"checks":{},"level":1,"quest":"","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/chanter","class":"chanter","name":"","created":0,"mt":{"level":[0,1],"quest":[0,["",null]],"rotSeen":[1790856000,["Left click:Onslaught:0","Right click:Incandescent Blow:0","1:Rushing Smash:0"]]},"rotSeen":["Left click:Onslaught:0","Right click:Incandescent Blow:0","1:Rushing Smash:0"]}],
+      "hide": ["(absent)",false],
+      "open.g6": ["(absent)",true],
+      "savedAt": ["(absent)",1790856000000]
+    },
+    "mode": "advanced"
+  },
+  "chanter/L01-qxx-none-B": {
+    "in": "b32e8f8bb0d9",
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/chanter","class":"chanter","name":"","created":0,"checks":{},"level":1,"quest":"","mt":{"level":[0,1],"quest":[0,["",null]]}},{"checks":{},"level":1,"quest":"","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/chanter","class":"chanter","name":"","created":0,"mt":{"level":[0,1],"quest":[0,["",null]],"rotSeen":[1790856000,["Left click:Onslaught:0","Right click:Incandescent Blow:0","1:Rushing Smash:0"]]},"rotSeen":["Left click:Onslaught:0","Right click:Incandescent Blow:0","1:Rushing Smash:0"]}],
+      "hide": ["(absent)",false],
+      "open.g6": ["(absent)",true],
+      "savedAt": ["(absent)",1790856000000]
+    },
+    "mode": "basic"
+  }
+}

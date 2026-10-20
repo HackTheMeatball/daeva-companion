@@ -1,0 +1,74 @@
+{
+  "$schema": "../../../schema/confidence.schema.json",
+  "schemaVersion": 2,
+  "collection": "confidence",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "conf:core-order",
+      "group": "verified",
+      "order": 46,
+      "text": "Chanter skill points: Dark Crush first from Lv 4 and Onslaught early, then Spinning Strike, Recuperation, Incandescent Blow, Rushing Smash and Attack Preparation, all to 10 (Metabot, aion2turkiye, daevaguides; mmo-codex takes the first four to 8, then 10). Wind's Promise to 10 the day it is learned at 25 is two-source (aion2turkiye, daevaguides); Metabot's build leaves it out. Dark Crush first and Onslaught early are in all three ordering sources; the order after them is inferred."
+    },
+    {
+      "id": "conf:first-nodes",
+      "group": "disputed",
+      "order": 233,
+      "text": "First Daevanion nodes (Nezekan's Protection Circle and Attack Preparation pairs, then Zikel's Earth's Promise pair): Metabot's Chanter page and aion2turkiye, ordered by when the skills are learned; daevaguides takes the Dark Crush, Onslaught, Spinning Strike and Incandescent Blow nodes first."
+    },
+    {
+      "id": "conf:learn-levels",
+      "group": "verified",
+      "order": 45,
+      "text": "Chanter learn levels (Impactful Crush 3, Dark Crush 4, Gust Rampage 5, Recuperation 8, Tremor Crush 10, Wave Blow 12, Spinning Strike 14 and the rest): your Chanter skill window, Metabot's skill pages (game data) and mmo-codex's unlock table."
+    },
+    {
+      "id": "conf:pick-dissent",
+      "group": "disputed",
+      "order": 235,
+      "text": "Onslaught +20% MP restored and Incandescent Blow −20% MP consumed (daevaguides, mmo-codex; aion2turkiye takes other picks), and Rushing Smash's 50% Heat Wave Blow trigger (aion2turkiye, mmo-codex for farming; daevaguides says never take its other damage pick, mmo-codex takes that one for bosses)."
+    },
+    {
+      "id": "conf:rotation",
+      "group": "verified",
+      "order": 48,
+      "text": "The leveling loop: Impactful Crush or Spinning Strike opens Dark Crush for 2 s (Metabot's leveling build, mmo-codex, daevaguides, aion2turkiye; the window is the skills' text)."
+    },
+    {
+      "id": "conf:skill-disputed",
+      "group": "disputed",
+      "order": 231,
+      "text": "Impactful Crush to 8 (Metabot 10), Tremor Crush to 8 (aion2turkiye, daevaguides; Metabot 7) and Blessing of Life to 6 (Metabot 10): the guide takes the lower values with the last 35 points, which leaves room for Wind's Promise. Metabot's Inspiring Spell 5 is left out."
+    },
+    {
+      "id": "conf:specialty-picks",
+      "group": "verified",
+      "order": 71,
+      "text": "Specialty picks at skill Lv 8: Dark Crush Critical Hit on hit, Spinning Strike −5 s cooldown, Recuperation +1 consecutive use, Tremor Crush +10 m range, Impactful Crush as a mobile skill (mmo-codex, aion2turkiye, daevaguides)."
+    },
+    {
+      "id": "conf:stat-tiers",
+      "group": "single-source",
+      "order": 186,
+      "text": "Stat priority (HP, Attack, Defense): Metabot's Chanter page and class-builds guide (one site)."
+    },
+    {
+      "id": "conf:stigma-plan",
+      "group": "disputed",
+      "order": 234,
+      "text": "Stigmas Undefeated Mantra, Sprint Mantra, Power of the Storm, Marchutan's Wrath: the four are in every source and Undefeated Mantra first is confirmed. Slots 2–4 are Metabot's and aion2turkiye's order; daevaguides and mmo-codex put Power of the Storm second. Raised to 8 / 7 / 5 / 4: Metabot's."
+    },
+    {
+      "id": "conf:stigmas",
+      "group": "verified",
+      "order": 40,
+      "text": "Stigma slots 22 / 27 / 32 / 37; every stigma learnable at 22; shard cost per level (Metabot, allthings.how)."
+    },
+    {
+      "id": "conf:triggers",
+      "group": "verified",
+      "order": 47,
+      "text": "Dark Crush, Gust Rampage, Tremor Crush and Wave Blow fire only on their conditions (Metabot's skill pages, game data; mmo-codex, daevaguides)."
+    }
+  ]
+}

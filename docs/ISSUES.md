@@ -273,8 +273,10 @@ on purpose: the guide shows nothing rather than an unverified value.
   file URL. **For the owner (no approved source):** Blessing of Life (game: green light with gold ornaments), Recuperation
   (game: one open hand with light) and Survival Willpower (Metabot has none; `18790000.webp` returns 403). Not staged:
   Metabot's Recuperation file 18120000 and Protection Circle file 18730000, which match no cell on the screen.
-  Attack Preparation and Impact Hit are unconfirmed until a Lv 25+ screen shows the passives in colour. The guide item
-  moves the ones it shows to `src/assets/icons/` and sets each record's `icon`.
+  Attack Preparation and Impact Hit are unconfirmed until a Lv 25+ screen shows the passives in colour. **In the site
+  since 0.8 P19 (#508):** the 30 files the screen confirms (or, for stigmas, Metabot's page alone) moved to
+  `src/assets/icons/` and their records name them; `sk-chanter-attack-preparation.png` and `sk-chanter-impact-hit.png`
+  stay staged and unwired until the owner check below.
 
   | File | Name | Source page | File URL | Retrieved | Matched by |
   |---|---|---|---|---|---|
@@ -313,8 +315,7 @@ on purpose: the guide shows nothing rather than an unverified value.
 
 - **Chanter passive icons: five for the owner** (0.8 P18, #507). The class data
   (`data/packs/aion2/classes/chanter/skills.json`, written by `tools/research/chanter-pack.mjs`) follows the owner's Lv 4
-  screen (chanter research §7), not Metabot's file names. No record sets `icon` yet (the staged files are not in
-  `src/assets/icons/`; P19 moves them). Earth's Promise, Wind's Promise and Protection Circle carry a note naming the
+  screen (chanter research §7), not Metabot's file names. Since 0.8 P19 (#508) every other record sets `icon`. Earth's Promise, Wind's Promise and Protection Circle carry a note naming the
   other page's file the screen shows. The five below carry `fieldStatus` `icon: owner-check`; P19 must not wire an icon
   for them until the owner's tooltip screenshot names the art. **Owner:** at Chanter Lv 25+, one screenshot of the passive
   grid in full colour settles all four passives; Recuperation's art is on its key 3 / Lv 8 cell.
@@ -473,6 +474,20 @@ on purpose: the guide shows nothing rather than an unverified value.
     Ice Chain's and Frost's picks are single-source and left out.
   - **Recommended key layouts** (daevaguides, mmo-codex) disagree and are not shown; the Rotation section shows the
     owner's default keys only (C49). Defiance has no default key on the owner's screen.
+
+- **Chanter guide: still missing** (0.8 P19, #508; the guide is playable to Lv 45 without these):
+  - **Letter squares on the Skills card for Recuperation (an active) and Attack Preparation (a passive)**: both are in
+    the plan to Lv 10 and both are owner-check icons above (no approved file shows the game's art). Recuperation is the
+    one active without an icon in any class pack so far; P19's acceptance allows a letter square only for an owner-check
+    passive, so this needs the owner's crop or tooltip screenshot (key 3, Lv 8 cell). Blessing of Life (planned to 6)
+    shows a letter square too.
+  - **Disputed advice, labelled in the Confidence card**: Impactful Crush 8 and Blessing of Life 6 against Metabot's 10,
+    Tremor Crush 8 against 7 (C31), stigma slots 2–4 (C30), the first Daevanion nodes (C32), Onslaught's, Incandescent
+    Blow's and Rushing Smash's Lv 8 picks (C34). Wind's Promise to 10 is two-source with Metabot silent (C31); the stat
+    priority is single-source (C29). Metabot publishes no community Chanter build.
+  - **Wave Blow's Q row** (row 1, under Tremor Crush) is read from locked cells by unlock level (inferred); the Key setup
+    keeps the screen's order (C67). Defiance has no default key on the owner's screen.
+  - **Recommended key layouts** (Dark Crush on the right mouse button: daevaguides, mmo-codex) are advice, not shown.
 
 - **Spiritmaster rotation: one source, not shown** (0.7 P4, #347). Metabot's leveling build gives a rotation (one site,
   `data/research/spiritmaster-builds-metabot-2026-10.csv`), but the Build drawer's Rotation section is written for the

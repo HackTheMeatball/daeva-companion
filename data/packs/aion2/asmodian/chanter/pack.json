@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../../schema/pack.schema.json",
+  "schemaVersion": 2,
+  "id": "aion2/asmodian/chanter",
+  "kind": "guide",
+  "name": "Asmodian Chanter leveling guide",
+  "parent": "aion2/asmodian/guide",
+  "uses": ["aion2/classes/chanter"],
+  "files": ["builds.json", "retired.json", "guide/milestones.json", "guide/steps.json", "guide/tips.json", "guide/claims.json", "guide/confidence.json"]
+}

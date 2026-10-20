@@ -8,7 +8,7 @@
       "id": "class:chanter",
       "class": "chanter",
       "name": "Chanter",
-      "release": "hidden",
+      "release": "released",
       "defaultBuild": "build:chanter:guide",
       "sources": [
         {
@@ -23,7 +23,7 @@
       "verifiedAt": "2026-10-19",
       "status": "verified",
       "notes": [
-        "Hidden until 0.8 P19 adds its guide pack (data/packs/aion2/asmodian/chanter/, which defines build:chanter:guide) and lists it in the class picker."
+        "Released in 0.8 P19 (#508): its guide pack (data/packs/aion2/asmodian/chanter/) defines build:chanter:guide and the class picker lists it."
       ]
     }
   ]

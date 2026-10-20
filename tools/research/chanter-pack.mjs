@@ -3,7 +3,8 @@
    gladiator-pack.mjs (its own file because the Templar, Cleric and Sorcerer items edit that one in parallel). Values are
    copied, never computed: each record cites the Metabot page its CSV row was read from, with the row's build and checkedAt.
    The specialties CSV's game_text column (research §5) replaces Metabot's misprinted text; passive icons follow the owner's
-   Lv 4 screen (research §7), not Metabot's file names. Run once: node tools/research/chanter-pack.mjs, then npm run gen. */
+   Lv 4 screen (research §7), not Metabot's file names. Run once: node tools/research/chanter-pack.mjs, then npm run gen.
+   0.8 P19 (#508): the class is released with its guide pack, and every record with an approved icon names it. */
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -77,11 +78,14 @@ const fixConflicts = id => (specs[id] || []).filter(c => c.gameText).map(c => {
 /* boardNodes "Nezekan 2 Vaizel 1 Triniel 1" -> { board:nezekan: 2, … } */
 const perBoard = s => Object.fromEntries([...s.matchAll(/([A-Z][a-z]+) (\d+)/g)].map(m => ['board:' + m[1].toLowerCase(), int(m[2])]));
 
-/* Icons vs the owner's Lv 4 Chanter screen (research §7; owner-screens/2026-10-19/chanter/skills-lv4-locked.png). No
-   record gets an `icon` path here: the staged files are not in src/assets/icons/ (the guide item, 0.8 P19, moves them).
-   OWNER_CHECK: no approved file shows the screen's art, or the match is unconfirmed; no icon until the owner's tooltip
-   screenshot names it (docs/ISSUES.md, "Chanter passive icons"). SWAPPED: the screen shows another Metabot page's file,
-   staged under this skill's name. */
+/* Icons vs the owner's Lv 4 Chanter screen (research §7; owner-screens/2026-10-19/chanter/skills-lv4-locked.png). 0.8 P19
+   (#508) moved the 30 staged files the screen confirms (or, for stigmas, Metabot's page alone) into src/assets/icons/
+   (sk-chanter-<slug>.png, st-chanter-<slug>.png: Impact Hit, Defiance and Survival Willpower are shared names) and every
+   record except the OWNER_CHECK ones names its file. OWNER_CHECK: no approved file shows the screen's art, or the match is
+   unconfirmed; no icon until the owner's tooltip screenshot names it (docs/ISSUES.md, "Chanter passive icons"); the two
+   unconfirmed files stay staged in data/packs/aion2/asmodian/chanter/icons/. SWAPPED: the screen shows another Metabot
+   page's file, staged under this skill's name. */
+const icon = (r, kind) => `assets/icons/${kind}-chanter-${r.id.split(':')[2]}.png`;
 const OWNER_CHECK = {
   'skill:chanter:blessing-of-life': 'green light with gold ornaments in the unlocked Lv 1 cell; no Metabot file has it (its page\'s file 18710000 is the game\'s Protection Circle art)',
   'skill:chanter:recuperation': 'one open hand with light in the Lv 8 cell; no Metabot file has it (its page\'s file 18120000 matches no cell)',
@@ -108,7 +112,7 @@ const skills = csv(`${CLS}-skills-metabot-2026-10.csv`).map(r => {
     ...(KEY_NOTE[r.id] ? [KEY_NOTE[r.id]] : []),
   ];
   return {
-    id: r.id, key: r.key, name: r.name, type: r.type, learnLv: int(r.learnLv), levelGate: r.levelGate,
+    id: r.id, key: r.key, name: r.name, type: r.type, learnLv: int(r.learnLv), levelGate: r.levelGate, ...(screen ? {} : { icon: icon(r, 'sk') }),
     boardNodes: { perBoard: perBoard(r.boardNodes), cost: int(r.boardNodeCost) },
     ...(choices.length ? { specialtyChoices: choices } : {}),
     sources: [src(r), ...fixSources(r.id)], verifiedAt: r.checkedAt, status: 'verified',
@@ -123,7 +127,7 @@ const stigmas = csv(`${CLS}-stigmas-metabot-2026-10.csv`).map(r => {
   const fs = Object.fromEntries(r.fieldStatus.split(';').filter(Boolean).map(x => x.split(':').map(y => y.trim())));
   const choices = choicesOf(r.id, r.page_url), conflicts = fixConflicts(r.id);
   return {
-    id: r.id, key: r.key, name: r.name, availableLv: int(r.availableLv), maxLevel: int(r.maxLevel),
+    id: r.id, key: r.key, name: r.name, availableLv: int(r.availableLv), icon: icon(r, 'st'), maxLevel: int(r.maxLevel),
     specialtyChoices: choices,
     sources: [src(r), ...fixSources(r.id)], verifiedAt: r.checkedAt, status: 'verified',
     ...(Object.keys(fs).length ? { fieldStatus: fs } : {}),
@@ -141,10 +145,10 @@ const nodes = csv(`${CLS}-board-nodes-metabot-2026-10.csv`).map(r => ({
 })).sort(byId);
 
 const cls = {
-  id: `class:${CLS}`, class: CLS, name: NAME, release: 'hidden', defaultBuild: `build:${CLS}:guide`,
+  id: `class:${CLS}`, class: CLS, name: NAME, release: 'released', defaultBuild: `build:${CLS}:guide`,
   sources: [{ url: `https://metabot.gg/en/aion-2/classes/${CLS}`, checkedAt: CHECKED, build: { scheme: 'metabot', value: '0.0.4387.0' } }],
   verifiedAt: CHECKED, status: 'verified',
-  notes: ['Hidden until 0.8 P19 adds its guide pack (data/packs/aion2/asmodian/chanter/, which defines build:chanter:guide) and lists it in the class picker.'],
+  notes: ['Released in 0.8 P19 (#508): its guide pack (data/packs/aion2/asmodian/chanter/) defines build:chanter:guide and the class picker lists it.'],
 };
 
 write('class.json', doc('classes', 'classes', [cls]));

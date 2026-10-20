@@ -1,0 +1,593 @@
+{
+  "$schema": "../../schema/builds.schema.json",
+  "schemaVersion": 2,
+  "collection": "builds",
+  "class": "chanter",
+  "records": [
+    {
+      "id": "build:chanter:guide",
+      "class": "chanter",
+      "name": "Guide build",
+      "origin": "guide",
+      "statPriority": {
+        "tiers": [
+          [
+            "HP"
+          ],
+          [
+            "Attack"
+          ],
+          [
+            "Defense"
+          ]
+        ],
+        "from": {
+          "HP": "BG",
+          "Attack": "BG",
+          "Defense": "BG"
+        },
+        "status": "single-source",
+        "sources": [
+          {
+            "url": "https://metabot.gg/en/aion-2/classes/chanter",
+            "checkedAt": "2026-10-19"
+          },
+          {
+            "url": "https://metabot.gg/en/aion-2/guides/class-builds-guide",
+            "checkedAt": "2026-10-19"
+          }
+        ],
+        "note": "Metabot's class page and its class-builds guide (HP, Attack, Defense, Critical Hit, Accuracy Bonus) are one site: single source (claim C29). None of the second sources ranks stats for leveling (docs/research/2026-10-chanter-pack.md §4.5). Only the top three are shown. from: B = board stat nodes / corners, G = gear (the Chanter boards carry HP, Attack Bonus and Defense Bonus nodes: classes/chanter/board-nodes.json)."
+      },
+      "skillOrder": [
+        {
+          "skill": "skill:chanter:dark-crush",
+          "core": true,
+          "status": "verified",
+          "basis": "To Lv 10, the top point sink from when it is learned at 4: Metabot leveling, aion2turkiye, daevaguides, mmo-codex (first, to 8 then 10)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/chanter/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/chanter/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/chanter/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://mmo-codex.com/games/aion-2/classes/chanter/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:chanter:onslaught",
+          "core": true,
+          "status": "verified",
+          "basis": "To Lv 10, raised early: Metabot leveling, aion2turkiye, daevaguides (\"as early as possible\"), mmo-codex (second, to 8 then 10)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/chanter/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/chanter/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/chanter/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://mmo-codex.com/games/aion-2/classes/chanter/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:chanter:spinning-strike",
+          "core": true,
+          "status": "verified",
+          "basis": "To Lv 10, from when it is learned at 14: Metabot leveling, aion2turkiye, daevaguides, mmo-codex (third, to 8 then 10)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/chanter/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/chanter/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/chanter/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://mmo-codex.com/games/aion-2/classes/chanter/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:chanter:recuperation",
+          "core": true,
+          "status": "verified",
+          "basis": "To Lv 10, from when it is learned at 8: Metabot leveling, aion2turkiye, daevaguides, mmo-codex (fourth, to 8 then 10)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/chanter/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/chanter/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/chanter/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://mmo-codex.com/games/aion-2/classes/chanter/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:chanter:incandescent-blow",
+          "core": true,
+          "status": "verified",
+          "basis": "To Lv 10: Metabot leveling, aion2turkiye, daevaguides (with Onslaught among the first points)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/chanter/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/chanter/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/chanter/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:chanter:rushing-smash",
+          "core": true,
+          "status": "verified",
+          "basis": "To Lv 10: Metabot leveling, aion2turkiye, daevaguides (from Lv 8)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/chanter/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/chanter/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/chanter/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:chanter:attack-preparation",
+          "core": true,
+          "status": "verified",
+          "basis": "To Lv 10, from when it is learned at 13: Metabot leveling, aion2turkiye, daevaguides (\"first place\" among the passives)",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/chanter/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/chanter/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/chanter/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:chanter:winds-promise",
+          "core": true,
+          "status": "verified",
+          "basis": "Straight to Lv 10 when it is learned at 25 (flat gate): aion2turkiye, daevaguides [couga54]; Metabot's leveling build leaves it out",
+          "sources": [
+            {
+              "url": "https://aion2turkiye.com/en/class/chanter/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/chanter/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:chanter:impactful-crush",
+          "core": false,
+          "status": "disputed",
+          "basis": "Impactful Crush to 8 (disputed): aion2turkiye 8, daevaguides 8–12; Metabot leveling 10. It opens the Dark Crush window at any level",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/chanter/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/chanter/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/chanter/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:chanter:tremor-crush",
+          "core": false,
+          "status": "disputed",
+          "basis": "Tremor Crush to 8 (disputed): aion2turkiye 8, daevaguides 8–12; Metabot leveling 7",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/chanter/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/chanter/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/chanter/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
+          "skill": "skill:chanter:blessing-of-life",
+          "core": false,
+          "status": "disputed",
+          "basis": "Blessing of Life to 6 (disputed): aion2turkiye 6; Metabot leveling 10; daevaguides only with spare points",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/chanter/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/chanter/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/chanter/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        }
+      ],
+      "skillOrderNotes": {
+        "interleave": "Agreed by all three ordering sources (docs/research/2026-10-chanter-pack.md §4.2: mmo-codex, daevaguides [couga54, aLuckyRO], aion2turkiye): Dark Crush is the top point sink from Lv 4 and Onslaught is raised early. mmo-codex then takes Spinning Strike and Recuperation; daevaguides and aion2turkiye take Incandescent Blow next, so the place of Incandescent Blow against Recuperation is not agreed. The guide follows mmo-codex's four, then the other three CONFIRMED skills; Wind's Promise goes to 10 the day it is learned (daevaguides). The order between those rules is inferred.",
+        "budget": "Eight core skills to Lv 10 = 8 × 21 = 168 points (Wind's Promise, two-source, among them); then Impactful Crush to 8 = 13 (181), Tremor Crush to 8 = 13 (194), Blessing of Life to 6 = 7 (201), 2 spare. LEVEL_POINTS[45] = 203 (Metabot; aion2turkiye agrees) plus Wisdom Stones. Metabot's own build spends the last 35 differently (Impactful Crush and Blessing of Life 10, Tremor Crush 7, Inspiring Spell 5, no Wind's Promise; claim C31)."
+      },
+      "specialtyPicks": {
+        "skill:chanter:dark-crush": [
+          "spec:chanter:dark-crush:3"
+        ],
+        "skill:chanter:spinning-strike": [
+          "spec:chanter:spinning-strike:1"
+        ],
+        "skill:chanter:recuperation": [
+          "spec:chanter:recuperation:1"
+        ],
+        "skill:chanter:tremor-crush": [
+          "spec:chanter:tremor-crush:2"
+        ],
+        "skill:chanter:impactful-crush": [
+          "spec:chanter:impactful-crush:3"
+        ],
+        "skill:chanter:onslaught": [
+          "spec:chanter:onslaught:1"
+        ],
+        "skill:chanter:incandescent-blow": [
+          "spec:chanter:incandescent-blow:1"
+        ],
+        "skill:chanter:rushing-smash": [
+          "spec:chanter:rushing-smash:3"
+        ]
+      },
+      "stigmaSlots": [
+        "stigma:chanter:undefeated-mantra",
+        "stigma:chanter:sprint-mantra",
+        "stigma:chanter:power-of-the-storm",
+        "stigma:chanter:marchutans-wrath"
+      ],
+      "stigmaTargets": [
+        {
+          "stigma": "stigma:chanter:undefeated-mantra",
+          "level": 8
+        },
+        {
+          "stigma": "stigma:chanter:sprint-mantra",
+          "level": 7
+        },
+        {
+          "stigma": "stigma:chanter:power-of-the-storm",
+          "level": 5
+        },
+        {
+          "stigma": "stigma:chanter:marchutans-wrath",
+          "level": 4
+        }
+      ],
+      "boardPlan": [
+        {
+          "node": "node:chanter:nezekan:r3c11",
+          "label": "Protection Circle · 1 of 2",
+          "milestone": "g12",
+          "order": 20,
+          "requires": {
+            "level": 12,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "disputed"
+        },
+        {
+          "node": "node:chanter:nezekan:r13c5",
+          "label": "Protection Circle · 2 of 2",
+          "milestone": "g12",
+          "order": 30,
+          "requires": {
+            "level": 12,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "disputed"
+        },
+        {
+          "node": "node:chanter:nezekan:r7c10",
+          "label": "Attack Preparation · 1 of 2",
+          "via": "Attack Preparation is learned at Lv 13",
+          "milestone": "g12",
+          "order": 40,
+          "requires": {
+            "level": 13,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/skills/attack-preparation-chanter",
+                "fields": [
+                  "learnLv"
+                ],
+                "checkedAt": "2026-10-19"
+              }
+            ],
+            "note": "the skill's learn level"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "disputed"
+        },
+        {
+          "node": "node:chanter:nezekan:r11c3",
+          "label": "Attack Preparation · 2 of 2",
+          "via": "Attack Preparation is learned at Lv 13",
+          "milestone": "g12",
+          "order": 50,
+          "requires": {
+            "level": 13,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/skills/attack-preparation-chanter",
+                "fields": [
+                  "learnLv"
+                ],
+                "checkedAt": "2026-10-19"
+              }
+            ],
+            "note": "the skill's learn level"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "disputed"
+        },
+        {
+          "node": "node:chanter:zikel:r6c7",
+          "label": "Earth's Promise · 1 of 2",
+          "via": "Earth's Promise is learned at Lv 21",
+          "milestone": "g20",
+          "order": 30,
+          "requires": {
+            "level": 21,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/skills/earths-promise",
+                "fields": [
+                  "learnLv"
+                ],
+                "checkedAt": "2026-10-19"
+              }
+            ],
+            "note": "the skill's learn level (the board opens at 20)"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "disputed"
+        },
+        {
+          "node": "node:chanter:zikel:r12c11",
+          "label": "Earth's Promise · 2 of 2",
+          "via": "Earth's Promise is learned at Lv 21",
+          "milestone": "g20",
+          "order": 40,
+          "requires": {
+            "level": 21,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/skills/earths-promise",
+                "fields": [
+                  "learnLv"
+                ],
+                "checkedAt": "2026-10-19"
+              }
+            ],
+            "note": "the skill's learn level (the board opens at 20)"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "disputed"
+        }
+      ],
+      "keyStacks": {
+        "eOrder": [
+          "stigma:chanter:undefeated-mantra",
+          "stigma:chanter:sprint-mantra",
+          "stigma:chanter:power-of-the-storm",
+          "stigma:chanter:marchutans-wrath"
+        ],
+        "defaultKeys": {
+          "keys": [
+            { "key": "Left click", "rows": [{ "skill": "skill:chanter:onslaught" }] },
+            { "key": "Right click", "rows": [{ "skill": "skill:chanter:incandescent-blow" }] },
+            { "key": "Q", "rows": [{ "skill": "skill:chanter:tremor-crush" }, { "skill": "skill:chanter:wave-blow" }] },
+            { "key": "E", "rows": [{ "skill": "skill:chanter:gust-rampage" }, { "skill": "skill:chanter:heat-wave-blow" }, { "skill": "skill:chanter:dark-crush" }] },
+            { "key": "1", "rows": [{ "skill": "skill:chanter:rushing-smash" }] },
+            { "key": "2", "rows": [{ "skill": "skill:chanter:impactful-crush" }] },
+            { "key": "3", "rows": [{ "skill": "skill:chanter:recuperation" }] },
+            { "key": "4", "rows": [{ "skill": "skill:chanter:spinning-strike" }] }
+          ],
+          "status": "verified",
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-19-chanter-keys-01",
+                "checkedAt": "2026-10-19",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Chanter skill window (quickslot grid, game default keys, both mouse badges), Lv 4"
+              },
+              "fields": [
+                "keys"
+              ]
+            }
+          ]
+        },
+        "status": "verified",
+        "sources": [
+          {
+            "owner": {
+              "ref": "owner:2026-10-19-chanter-keys-01",
+              "checkedAt": "2026-10-19",
+              "build": {
+                "scheme": "client",
+                "value": "unrecorded"
+              },
+              "what": "Chanter skill window (quickslot grid, game default keys, both mouse badges), Lv 4"
+            },
+            "note": "The keys (defaultKeys) are the game's defaults from the owner's screen (claim C67). daevaguides and mmo-codex recommend moving Dark Crush to the right mouse button and Impactful Crush to E (research §6); that is advice, not the default, so the guide shows no right-click stack. eOrder is the slot order, only for the Next up stigma card."
+          }
+        ]
+      },
+      "texts": {
+        "nezekan-plan": "Metabot's Nezekan nodes from its Chanter page: the Protection Circle and Attack Preparation node pairs first (aion2turkiye agrees; daevaguides starts on the Dark Crush and Onslaught nodes instead).",
+        "stat-note": "B board · G gear. Metabot's Chanter ranking only (one site); later stats: Critical Hit, Accuracy Bonus."
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/chanter/build",
+          "checkedAt": "2026-10-19",
+          "fields": [
+            "skillOrder",
+            "stigmaSlots",
+            "stigmaTargets"
+          ],
+          "note": "Leveling build (editorial): nine skills to 10, Tremor Crush 7, Inspiring Spell 5 (203 points); stigmas Undefeated Mantra, Sprint Mantra, Power of the Storm, Marchutan's Wrath at 8 / 7 / 5 / 4; the leveling rotation. No training order. Its community-builds list for the Chanter is empty."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/chanter",
+          "checkedAt": "2026-10-19",
+          "fields": [
+            "boardPlan",
+            "statPriority"
+          ],
+          "note": "Class page: stat order (HP, Attack, Defense, Critical Hit, Accuracy Bonus) and the board path (Nezekan's Attack Preparation and Protection Circle pairs, then Zikel's Earth's Promise pair)."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/guides/class-builds-guide",
+          "checkedAt": "2026-10-19",
+          "fields": [
+            "stigmaSlots",
+            "statPriority"
+          ],
+          "note": "Class-builds guide (same site): the same stat order and stigma set."
+        },
+        {
+          "url": "https://daevaguides.com/en/chanter/",
+          "checkedAt": "2026-10-19",
+          "fields": [
+            "skillOrder",
+            "specialtyPicks",
+            "stigmaSlots",
+            "boardPlan"
+          ],
+          "note": "Compiles couga54, aLuckyRO, notXeon and others: Onslaught and Incandescent Blow first, Dark Crush from Lv 4, Rushing Smash and Recuperation from 8, Attack Preparation from 13, Spinning Strike from 14, Wind's Promise to 10 at 25; Lv 8 picks; Undefeated Mantra first; the active nodes first."
+        },
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/chanter/",
+          "checkedAt": "2026-10-19",
+          "fields": [
+            "skillOrder",
+            "specialtyPicks",
+            "stigmaSlots"
+          ],
+          "note": "Levelling: Dark Crush, Onslaught, Spinning Strike, Recuperation, each to 8 then 10; Lv 8 picks; stigmas raised Undefeated Mantra, Power of the Storm, Sprint Mantra, Marchutan's Wrath."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/chanter/",
+          "checkedAt": "2026-10-19",
+          "fields": [
+            "skillOrder",
+            "specialtyPicks",
+            "stigmaSlots",
+            "boardPlan"
+          ],
+          "note": "Leveling panel (its 25 most developed players): targets, Lv 8 picks, stigmas Undefeated Mantra, Sprint Mantra, Power of the Storm, Marchutan's Wrath; Nezekan's passive pairs first."
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "disputed",
+      "notes": [
+        "0.8 P19 (#508), from docs/research/2026-10-chanter-pack.md §4: seven skills to 10 in every source, Wind's Promise to 10 (two-source, Metabot silent), then the research file's defaults for the last 35 points (Impactful Crush 8, Tremor Crush 8, Blessing of Life 6, all disputed). Metabot publishes no community Chanter build, so its leveling build and top-player picks are one site: what rests on them alone is single-source. The stigma slot order 2–4 and the first Daevanion nodes are disputed and take Metabot's order (claims C30, C31, C32, C34); the stat priority is single-source (C29).",
+        "Learn levels of all 22 skills: Metabot's skill pages, the owner's Chanter skill window (2026-10-19) and mmo-codex.com's unlock table (claim C33)."
+      ],
+      "claims": [
+        "C30",
+        "C31",
+        "C32",
+        "C34",
+        "C67"
+      ]
+    }
+  ]
+}
