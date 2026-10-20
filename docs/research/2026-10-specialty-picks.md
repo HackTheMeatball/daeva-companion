@@ -330,7 +330,7 @@ Choices (from `data/classes/assassin/skills.json`):
 
 | n | Skill Lv | Effect |
 |---|---|---|
-| 1 | 8 | Adds [Wrath Burst] Chain Skill |
+| 1 | 8 | Adds [Wrath Burst] Chain Skill (wrong: the Gladiator's page; Assassin is "Adds [Storm Slice] Chain Skill", `2026-10-k25-rc-path-audit.md`) |
 | 2 | 8 | Restores 1,000 Stamina on using [Defiance] |
 | 3 | 8 | Restores 20% HP on using [Defiance] |
 | 4 | 12 | +2s Tenacity duration |

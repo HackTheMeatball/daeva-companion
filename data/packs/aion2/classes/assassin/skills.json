@@ -85,7 +85,7 @@
         "levelGate": "inferred"
       },
       "notes": [
-        "levelGate: no gate in the v1 data (skill page not fetched); \"stepped\" assumed, not used by the guide build."
+        "levelGate: no gate in the v1 data (skill page read 2026-10-20 for learnLv only, levelGate not checked); \"stepped\" assumed, not used by the guide build."
       ],
       "conflicts": [
         "spec:assassin:ambush:2 text: Metabot's skill page prints \"Absorbs 300, 300% HP\" (an unfilled template; its number is the percent x 100). Game text \"Absorbs 3% HP\" per daevaguides and aion2turkiye (mmo-codex agrees) (2026-10-18, #358)."
@@ -139,7 +139,7 @@
         "levelGate": "inferred"
       },
       "notes": [
-        "levelGate: no gate in the v1 data (skill page not fetched); \"stepped\" assumed, not used by the guide build."
+        "levelGate: no gate in the v1 data (skill page read 2026-10-20 for learnLv only, levelGate not checked); \"stepped\" assumed, not used by the guide build."
       ]
     },
     {
@@ -225,7 +225,7 @@
         "levelGate": "inferred"
       },
       "notes": [
-        "levelGate: no gate in the v1 data (skill page not fetched); \"stepped\" assumed, not used by the guide build."
+        "levelGate: no gate in the v1 data (skill page read 2026-10-20 for learnLv only, levelGate not checked); \"stepped\" assumed, not used by the guide build."
       ],
       "specialtyChoices": [
         {
@@ -316,7 +316,7 @@
         "levelGate": "inferred"
       },
       "notes": [
-        "levelGate: no gate in the v1 data (skill page not fetched); \"stepped\" assumed, not used by the guide build."
+        "levelGate: no gate in the v1 data (skill page read 2026-10-20 for learnLv only, levelGate not checked); \"stepped\" assumed, not used by the guide build."
       ]
     },
     {
@@ -511,7 +511,7 @@
         "levelGate": "inferred"
       },
       "notes": [
-        "levelGate: no gate in the v1 data (skill page not fetched); \"stepped\" assumed, not used by the guide build."
+        "levelGate: no gate in the v1 data (skill page read 2026-10-20 for learnLv only, levelGate not checked); \"stepped\" assumed, not used by the guide build."
       ],
       "specialtyChoices": [
         {
@@ -710,7 +710,7 @@
         "levelGate": "inferred"
       },
       "notes": [
-        "levelGate: no gate in the v1 data (skill page not fetched); \"stepped\" assumed, not used by the guide build."
+        "levelGate: no gate in the v1 data (skill page read 2026-10-20 for learnLv only, levelGate not checked); \"stepped\" assumed, not used by the guide build."
       ]
     },
     {
@@ -744,7 +744,7 @@
         "levelGate": "inferred"
       },
       "notes": [
-        "levelGate: no gate in the v1 data (skill page not fetched); \"stepped\" assumed, not used by the guide build."
+        "levelGate: no gate in the v1 data (skill page read 2026-10-20 for learnLv only, levelGate not checked); \"stepped\" assumed, not used by the guide build."
       ]
     },
     {
@@ -811,7 +811,7 @@
         "levelGate": "inferred"
       },
       "notes": [
-        "levelGate: no gate in the v1 data (skill page not fetched); \"stepped\" assumed, not used by the guide build."
+        "levelGate: no gate in the v1 data (skill page read 2026-10-20 for learnLv only, levelGate not checked); \"stepped\" assumed, not used by the guide build."
       ]
     },
     {
@@ -862,7 +862,7 @@
         "levelGate": "inferred"
       },
       "notes": [
-        "levelGate: no gate in the v1 data (skill page not fetched); \"stepped\" assumed, not used by the guide build."
+        "levelGate: no gate in the v1 data (skill page read 2026-10-20 for learnLv only, levelGate not checked); \"stepped\" assumed, not used by the guide build."
       ],
       "specialtyChoices": [
         {
@@ -965,7 +965,7 @@
         "levelGate": "inferred"
       },
       "notes": [
-        "levelGate: no gate in the v1 data (skill page not fetched); \"stepped\" assumed, not used by the guide build."
+        "levelGate: no gate in the v1 data (skill page read 2026-10-20 for learnLv only, levelGate not checked); \"stepped\" assumed, not used by the guide build."
       ]
     },
     {
@@ -1068,7 +1068,7 @@
         "levelGate": "inferred"
       },
       "notes": [
-        "levelGate: no gate in the v1 data (skill page not fetched); \"stepped\" assumed, not used by the guide build."
+        "levelGate: no gate in the v1 data (skill page read 2026-10-20 for learnLv only, levelGate not checked); \"stepped\" assumed, not used by the guide build."
       ],
       "specialtyChoices": [
         {
