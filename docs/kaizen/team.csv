@@ -1,0 +1,16 @@
+name,role,title,joined,status,folded_into,used_to_own,never_does
+Isaac,Owner,Product owner,,active,,,
+Saul,Coordinator,Chief of staff and dispatcher,,active,,,
+Walter,Release Planner,Product and release manager,2026-10-18,active,,,
+Gus,Build Pipeline,Release and CI engineer,2026-10-16,active,,"Planning, the health check, kaizen, the logs and DECISIONS rows (one-CEO setup, until 2026-10-18)",
+Jane,Design Lead,Product design lead,2026-10-18,active,,,"Write app or tracker code, or tracker data; start a redesign nobody asked for"
+Hank,Incident Log,Incident analyst,2026-10-18,folded,Mike,"The stall log: every row, its format and kinds; the per-release error report; telling Gale when a fixed problem returns",
+Mike,Stall Watch,On-call reliability engineer,2026-10-18,active,,,
+Skyler,Tracker Design,Front-end engineer,2026-10-18,active,,Tracker design (Jane designs since 2026-10-18),Write tracker data; put a visual change live without Jane's and Isaac's OK
+Huell,Tracker Sync,Data steward,2026-10-16,active,,,
+Gretchen,Game Data Check,Data QA and fact-checker,2026-10-18,active,,Every lookup for a research pack (until 2026-10-19),
+Lydia,Source Vetting,Licensing and compliance analyst,2026-10-18,active,,,
+Jesse,Player Testing,Acceptance tester,2026-10-18,active,,,
+Gale,Kaizen,Continuous-improvement lead,2026-10-18,active,,Grading Gale's own rules (until 0.9),
+Francesca,Rules Steward,Policy records officer,2026-10-19,active,,,"Decide, grade or change rules; merge by hand; write the tracker or the pipeline status page"
+Gomez,Team Audit,Internal auditor,2026-10-19,active,,,

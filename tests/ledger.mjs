@@ -9,7 +9,8 @@
    ignored); a DECISIONS home `docs/DECISIONS.md#YYYY-MM-DD / <Topic>` names a real `## YYYY-MM-DD` heading with a row of
    that Topic under it; issue homes are `#<n>`; every replaced_by is an existing id; and there is one decision row per
    DECISIONS table row (matched by date and topic, both ways), so a new decision without a ledger row fails CI; and
-   LEDGER.md's Owners table names exactly OWNERS, and its "Who does what" Plain column is everyday words. */
+   LEDGER.md's "Who does what" Plain column is everyday words; team.csv names exactly OWNERS (a folded thread names
+   the active one it folded into); team-changes.csv and audits.csv have their headers, fixed values and real ledger ids. */
 import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -52,14 +53,46 @@ export function decisionRows(md) {
   return byDate;
 }
 
-export function checkLedger(root = ROOT, { csvText, ledgerMd } = {}) {
+export function checkLedger(root = ROOT, { csvText, ledgerMd, teamCsv, changesCsv, auditsCsv } = {}) {
   const problems = [], file = join(root, 'docs/kaizen/ledger.csv');
-  /* LEDGER.md's Owners table names exactly OWNERS */
   const md = ledgerMd ?? (existsSync(join(root, 'docs/kaizen/LEDGER.md')) ? readFileSync(join(root, 'docs/kaizen/LEDGER.md'), 'utf8') : '');
-  const sec = (md.split(/^## Owners\s*$/m)[1] || '').split(/^## /m)[0];
-  const named = sec.split('\n').filter(l => /^\|/.test(l) && !/^\|[\s|:-]*$/.test(l)).map(l => l.split('|')[1].trim()).filter(n => n !== 'Name');
-  for (const n of named) if (!OWNERS.has(n)) problems.push(`LEDGER.md Owners table names "${n}", not in OWNERS`);
-  for (const n of OWNERS) if (!named.includes(n)) problems.push(`LEDGER.md Owners table is missing "${n}"`);
+  /* team.csv, team-changes.csv, audits.csv: exact headers, as records keyed by column */
+  const side = (name, text, header) => {
+    const f = join(root, 'docs/kaizen', name);
+    if (text == null && !existsSync(f)) { problems.push(`docs/kaizen/${name} is missing`); return []; }
+    const rs = parseCsv(text ?? readFileSync(f, 'utf8')).filter(r => r.some(c => c !== '')), h = rs.shift() || [];
+    if (h.join(',') !== header.join(',')) problems.push(`${name}: header is "${h.join(',')}", expected "${header.join(',')}"`);
+    return rs.map((r, i) => ({ at: `${name} line ${i + 2}`, n: r.length, ...Object.fromEntries(header.map((k, j) => [k, r[j] ?? ''])) }));
+  };
+  const team = side('team.csv', teamCsv, ['name', 'role', 'title', 'joined', 'status', 'folded_into', 'used_to_own', 'never_does']);
+  const changes = side('team-changes.csv', changesCsv, ['date', 'time', 'change', 'was', 'now', 'source']);
+  const audits = side('audits.csv', auditsCsv, ['audit', 'rec', 'text', 'decides', 'status', 'decision', 'note']);
+  /* team.csv names exactly OWNERS; a folded thread names the active thread it folded into */
+  const names = team.map(t => t.name), byName = new Map(team.map(t => [t.name, t]));
+  for (const t of team) {
+    if (t.n !== 8) problems.push(`${t.at} (${t.name}): ${t.n} fields, expected 8`);
+    if (!OWNERS.has(t.name)) problems.push(`${t.at}: team.csv names "${t.name}", not in OWNERS`);
+    if (names.indexOf(t.name) !== names.lastIndexOf(t.name)) problems.push(`${t.at}: "${t.name}" is listed twice`);
+    if (!t.role || !t.title) problems.push(`${t.at} (${t.name}): empty role or title`);
+    if (t.joined && !/^\d{4}-\d{2}-\d{2}$/.test(t.joined)) problems.push(`${t.at} (${t.name}): joined "${t.joined}" is not YYYY-MM-DD`);
+    if (!['active', 'folded', 'closed'].includes(t.status)) problems.push(`${t.at} (${t.name}): status "${t.status}" not in active/folded/closed`);
+    if ((t.status === 'folded') !== !!t.folded_into) problems.push(`${t.at} (${t.name}): folded_into is set exactly when status is folded`);
+    else if (t.folded_into && byName.get(t.folded_into)?.status !== 'active') problems.push(`${t.at} (${t.name}): folded_into "${t.folded_into}" is not an active thread`);
+  }
+  for (const n of OWNERS) if (!names.includes(n)) problems.push(`team.csv is missing "${n}"`);
+  for (const c of changes) {
+    if (c.n !== 6) problems.push(`${c.at}: ${c.n} fields, expected 6`);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(c.date)) problems.push(`${c.at}: date "${c.date}" is not YYYY-MM-DD`);
+    if (c.time && !/^\d{1,2}:\d{2} (AM|PM)$/.test(c.time)) problems.push(`${c.at}: time "${c.time}" is not like 4:56 PM`);
+    if (!c.change) problems.push(`${c.at}: empty change`);
+  }
+  const recs0 = audits.map(a => a.audit + ' ' + a.rec);
+  for (const a of audits) {
+    if (a.n !== 7) problems.push(`${a.at}: ${a.n} fields, expected 7`);
+    if (!a.audit || !a.rec || !a.text) problems.push(`${a.at}: empty audit, rec or text`);
+    if (recs0.indexOf(a.audit + ' ' + a.rec) !== recs0.lastIndexOf(a.audit + ' ' + a.rec)) problems.push(`${a.at}: ${a.audit} rec ${a.rec} is listed twice`);
+    if (!['done', 'partial', 'scheduled', 'waiting', 'open'].includes(a.status)) problems.push(`${a.at}: status "${a.status}" not in done/partial/scheduled/waiting/open`);
+  }
   /* "Who does what": five columns, and Plain is everyday words (no backticks, issue numbers, ids or ALL-CAPS tokens;
      that rejects "OK" too, on purpose: Plain says "approves") */
   const who = (md.split(/^## Who does what\s*$/m)[1] || '').split(/^## /m)[0].split('\n').filter(l => /^\|/.test(l) && !/^\|[\s|:-]*$/.test(l)).slice(1);
@@ -106,6 +139,8 @@ export function checkLedger(root = ROOT, { csvText, ledgerMd } = {}) {
       else if (!decs.get(dm[1]).some(t => norm(t) === norm(dm[2]))) problems.push(`${at}: no DECISIONS row "${dm[2]}" under ## ${dm[1]}`);
     } else if (!norm(text(path)).includes(norm(anchor))) problems.push(`${at}: anchor "${anchor}" not found in ${path}`);
   }
+  for (const c of changes) if (c.source && !ids.has(c.source)) problems.push(`${c.at}: source "${c.source}" is not a ledger id`);
+  for (const a of audits) if (a.decision && !ids.has(a.decision)) problems.push(`${a.at}: decision "${a.decision}" is not a ledger id`);
   for (const r of recs) if (r.replaced_by && !ids.has(r.replaced_by)) problems.push(`line ${r.line} (${r.id}): replaced_by "${r.replaced_by}" is not a ledger id`);
   /* one ledger row per DECISIONS row, both ways: (date, topic) pairs as multisets, not just a count */
   const left = new Map(), key = (d, t) => d + ' / ' + norm(t);

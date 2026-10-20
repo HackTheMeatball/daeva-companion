@@ -29,26 +29,18 @@ drift from it. If a summary and its home disagree, the home wins and the summary
 
 ## Owners
 
-`owner` is exactly one name from this table; `enforced_by` uses the same names (or `all` / `harness`).
-`tests/ledger.mjs` checks that this table and its list of names match.
+`owner` is exactly one `name` from [`team.csv`](team.csv); `enforced_by` uses the same names (or `all` / `harness`).
 
-| Name | Role | Status |
+## Team, team changes and audits
+
+The roster and its history live next to the ledger, and the Daeva Ledger page reads them. Rules Steward (Francesca)
+keeps all three current; `tests/ledger.mjs` checks them.
+
+| File | One row per | Columns |
 |---|---|---|
-| Isaac | Owner | the owner; every decision is his |
-| Saul | Coordinator | live |
-| Walter | Release Planner | live |
-| Gus | Build Pipeline | live |
-| Jane | Design Lead | live |
-| Hank | Incident Log | handed over to Mike 2026-10-19; kept for retired rows |
-| Mike | Stall Watch | live |
-| Skyler | Tracker Design | live |
-| Huell | Tracker Sync | live |
-| Gretchen | Game Data Check | live |
-| Lydia | Source Vetting | live |
-| Jesse | Player Testing | live |
-| Gale | Kaizen | live |
-| Francesca | Rules Steward (owns the ledger's upkeep) | live |
-| Gomez | Team Audit | live |
+| `team.csv` | standing thread, current or folded (short-lived threads aren't listed) | `name`, `role` (thread name), `title` (real-world equivalent), `joined` (date the thread started, ET; empty for Isaac and Saul, there from the start), `status` (`active`, `folded`, `closed`), `folded_into` (a `name`, only when folded), `used_to_own` (work that moved away, with when), `never_does` (the thread's own lines; empty until it writes them) |
+| `team-changes.csv` | change to who does what: a thread joining, folding, or work moving | `date`, `time` (ET), `change` (plain words), `was`, `now`, `source` (the decision's ledger id; empty only when no decision exists, e.g. a thread Saul started) |
+| `audits.csv` | audit recommendation | `audit`, `rec`, `text`, `decides`, `status` (`done`, `partial`, `scheduled`, `waiting`, `open`), `decision` (ledger id, if one), `note` |
 
 ## Who does what
 
@@ -83,7 +75,7 @@ change to an owner changes that row and this table in the same PR. Rules Steward
 | Kaizen review, #222, the scorecard, rule changes and grades | Gale reviews how the team works after each release and decides changes to the rules. | Gale | | KZ-01, PLN-04 |
 | Grading Gale's own rules and checking the scorecard compares like with like (from 0.9) | From 0.9, Francesca grades Gale's own rules and checks the scorecard is fair. | Francesca | Gale | DEC-20261019-from-0-9-rules-steward |
 | Grading Q-14 | Gale grades the rule that makes this ledger each rule's one home. | Gale | Francesca | DEC-20261019-kaizen-grades-the-ledger-rule |
-| This ledger, this table, drift and roster sweeps | Francesca keeps this ledger and this table current and checks them for drift. | Francesca | | Q-14, ROL-07, DEC-20261019-rules-steward-francesca-joins-each |
+| This ledger, this table, team.csv, team-changes.csv, audits.csv, drift and roster sweeps | Francesca keeps this ledger, this table, the team list, its change history and the audit list current, and checks them for drift. | Francesca | | Q-14, ROL-07, DEC-20261019-rules-steward-francesca-joins-each |
 | Applying a fix to team memory | Gale applies fixes to the team's shared memory; Francesca sends them to Gale. | Gale (Francesca sends the fix; no other thread can read memory yet) | | Interim, until the 0.8 review assigns it |
 
 ## Areas
