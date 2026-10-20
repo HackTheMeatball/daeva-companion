@@ -53,8 +53,15 @@ Rules for every item:
 - **Watch.** Metabot's page text prints some "Absorbs N% HP" specialties as "Absorbs 100, 100% HP" when the game says
   1% (research §5). Write the game text. gen already fails on any "N, N%" specialty (`checks.mjs`, #358), and the
   live Gladiator and Spiritmaster data carry the game text.
+- **Passive icons and levels.** Metabot's passive icon files don't match the owner's screens for some passives (Game
+  Data Check compared them, `/mnt/project-files/game-data-check/passive-icons-templar-cleric-2026-10-20.md`). Use that
+  file, not Metabot's file names: a passive whose art matches the screen gets that art (Templar Lv 15 Impact Hit is the
+  Assassin's `13760000`, already shipped); a passive with no matching file gets no icon, an ISSUES.md row for the owner,
+  and `fieldStatus` "owner-check" on its icon until the owner's tooltip screenshots name it. P4, P16 and P18 do the same
+  for their class (Badger found the same mix-up on five Chanter passives).
 - **Acceptance.**
   - [ ] gen is green, and record counts match the research CSVs.
+  - [ ] Every passive icon matches the owner-screen comparison, or is listed in ISSUES.md as owner-check.
   - [ ] Golden and equiv are unchanged. No visible change.
 - **Lanes:** gen. **Model:** Opus, L (120 min).
 - **After:** `research-templar`.
@@ -69,14 +76,16 @@ Rules for every item:
   - its skill and stigma icons shown.
 - **Acceptance.**
   - [ ] The Templar route runs from Lv 1 to 45 with no other class's skills in it (golden).
-  - [ ] No letter square appears (shots).
+  - [ ] No letter square appears (shots), except for a passive ISSUES.md lists as owner-check.
   - [ ] ISSUES.md lists what is still missing.
 - **Lanes:** gen, golden. **Model:** Opus, L (120 min).
 - **After:** P2.
 
 ## P4: Cleric class data (hidden)
 
-The same as P2, for the Cleric. It reads `docs/research/2026-10-cleric-pack.md`.
+The same as P2, for the Cleric. It reads `docs/research/2026-10-cleric-pack.md`. Six Cleric passives (Lv 11, 13, 15,
+17, 23, 25) don't match the screens, which may mean the CSV maps passives to the wrong levels, so their learn levels
+also get `fieldStatus` "owner-check" until the owner's tooltip screenshots settle it (Game Data Check, 2026-10-20).
 
 - **Lanes:** gen. **Model:** Opus, L (120 min).
 - **After:** `research-cleric`.
@@ -364,7 +373,8 @@ The same as P3, for the Chanter. Metabot has no Chanter build sample, so advice 
   Data Check, #472 review; 3 regional quest zones are disputed today).
 - **Result.**
   - gen carries `fieldStatus` (and record-level status) for the fields players see: quest `zone`, `giver.zone` and
-    `turnin.zone`; Sealed Dungeon `entrance` and `xp`; stronghold `levelRange`;
+    `turnin.zone`; Sealed Dungeon `entrance` and `xp`; stronghold `levelRange`; a skill's learn level in the
+    Skills card (P4 marks six Cleric passives owner-check);
   - where such a field renders (milestone rows, Next up), a small tag follows it in the existing `ss-tag` style:
     "check in game" for disputed and owner-check, "inferred" for inferred; single source keeps its current tag;
   - the tag's text is at least 12 px (Design Critic checklist), which also lifts the existing `ss-tag`.
