@@ -40,8 +40,8 @@ Creator names in brackets are the ones a compiler site credits.
 - **Metabot prints five "Absorbs N% HP" specialties wrong** (the #358 pattern): "Absorbs 100, 100% HP" where the game
   says "Absorbs 1% HP", and the same for 3, 5, 7 and 10% (§5). Each has the owner's screen or two guides for the game
   text.
-- **All 35 icons are saved** with provenance rows in `docs/ISSUES.md` (§7). The 12 active icon ids match the ones Game
-  Data Check read.
+- **All 35 icons are saved** with provenance rows in `docs/ISSUES.md` (§7). All 22 skill icons match the owner's screen,
+  locked cells included.
 
 ## 2. Files
 
@@ -281,9 +281,12 @@ build plan's, because the picks are not settled (§4) and the key grid shows act
 - **Match:** each skill page links exactly one file under `/web/aion2/skills/` (5 references, all the same id) and its
   `<title>` names the skill ("<Name> – Sorcerer Skill | AION 2 | MetaBot.GG"), so the page-to-file match is read, not
   guessed. The 12 active ids are the ones Game Data Check listed on 2026-10-19. A contact sheet of all 35 was checked by
-  eye: each file is distinct (no two hashes equal) and none is a placeholder. Frost and Frost Burst look alike (the same
-  ice figure; Frost's icon adds a slash), which is the game's art, not a mix-up: they are different file ids on their own
-  pages.
+  eye: each file is distinct (no two hashes equal) and none is a placeholder. **All 22 skill icons match the owner's
+  screen, locked cells included:** the greyed locked cells were brightened and compared one by one with the file for
+  the skill learned at that level (the Chanter pack, #486, found Metabot files that match only the unlocked cells, so
+  this check covers the locked ones too). Frost and Frost Burst look alike (the same ice figure; Frost Burst's icon adds
+  a slash), and the screen shows the same pair at Lv 7 and Lv 10. The 13 stigma icons can't be checked this way (the
+  screen shows no stigmas at Lv 4); they rest on the page-to-file match alone.
 - **Uncertainty:** the file ids are what Metabot served on 2026-10-19. If Metabot reissues an icon the file URL may stop
   resolving; the page URL is the stable credit.
 
