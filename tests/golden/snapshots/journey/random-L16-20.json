@@ -118,7 +118,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Legions now Lv 16"],
     "ring": "20%",
-    "prog": ["Quests 14 2/58","Dungeons 24/60","Strongholds 5 1/15"],
+    "prog": ["Quests 16 2/58","Dungeons 24/60","Strongholds 5 1/15"],
     "subs": {"head":"Objectives 1/3","items":2,"on":0,"end":""}
   },
   "random/L16-q61-rnd132p20-A-stwait": {
@@ -131,7 +131,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Legions now Lv 16"],
     "ring": "7%",
-    "prog": ["Quests 16 0/58","Dungeons 19 5/60","Strongholds 4 4/15"]
+    "prog": ["Quests 18 0/58","Dungeons 19 5/60","Strongholds 4 4/15"]
   },
   "random/L16-q70-before-B": {
     "prev": "Mirror of Greed Lv 37",
@@ -143,7 +143,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Legions now Lv 16"],
     "ring": "20%",
-    "prog": ["Quests 15 2/58","Dungeons 24/60","Strongholds 5 1/15"]
+    "prog": ["Quests 17 2/58","Dungeons 24/60","Strongholds 5 1/15"]
   },
   "random/L17-q19-all-A-stready": {
     "prev": "Cemetery Cleanup Lv 13",
@@ -275,7 +275,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Skills window missed · 2 open Lv 4","Enhancement unlocks missed · 1 open Lv 9","Altgard opens missed · 1 open Lv 10","Daevanion board missed · 1 open Lv 13","Legions missed · 1 open Lv 16","Skill tier: level 8 next · 2 to go Lv 19","Zikel board Lv 20","Stigma slot 1 Lv 22","Supply Requests Lv 25","Stigma slot 2 Lv 27","Heart Gore 10 and Urugugu Canyon Lv 28","Daily dungeon and Vaizel board Lv 30","Stigma slot 3 Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
     "ring": "35%",
-    "prog": ["Quests 9 8/58","Dungeons 1 23/60","Strongholds ✓ 15/15"]
+    "prog": ["Quests 11 8/58","Dungeons 1 23/60","Strongholds ✓ 15/15"]
   },
   "random/L17-q66-all-B-stfull": {
     "prev": "Inevitable Encounter Lv 37",
@@ -299,7 +299,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Skill tier: level 8 next · 2 to go Lv 19"],
     "ring": "32%",
-    "prog": ["Quests 9 8/58","Dungeons 3 21/60","Strongholds 13/15"]
+    "prog": ["Quests 11 8/58","Dungeons 3 21/60","Strongholds 13/15"]
   },
   "random/L17-q78-rnd128p95-A-stfull": {
     "prev": "The Breaking of the Day Lv 42",
@@ -311,7 +311,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Skill tier: level 8 next · 2 to go Lv 19"],
     "ring": "34%",
-    "prog": ["Quests 13 6/58","Dungeons 24/60","Strongholds ✓ 15/15"]
+    "prog": ["Quests 16 6/58","Dungeons 24/60","Strongholds ✓ 15/15"]
   },
   "random/L17-q79-lvonly-A": {
     "prev": "Chief of the Black Claw Lv 42",
@@ -323,7 +323,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Skill tier: level 8 next · 2 to go Lv 19"],
     "ring": "25%",
-    "prog": ["Quests 11 8/58","Dungeons 24/60","Strongholds 5 1/15"]
+    "prog": ["Quests 14 8/58","Dungeons 24/60","Strongholds 5 1/15"]
   },
   "random/L17-q81-lvonly-A-filters": {
     "prev": "The High Priest Awakens Lv 44",
@@ -335,7 +335,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Skill tier: level 8 next · 2 to go Lv 19","Zikel board Lv 20","Stigma slot 1 Lv 22","Supply Requests Lv 25","Stigma slot 2 Lv 27","Heart Gore 10 and Urugugu Canyon Lv 28","Daily dungeon and Vaizel board Lv 30","Stigma slot 3 Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
     "ring": "25%",
-    "prog": ["Quests 11 8/58","Dungeons 24/60","Strongholds 5 1/15"]
+    "prog": ["Quests 14 8/58","Dungeons 24/60","Strongholds 5 1/15"]
   },
   "random/L17-q86-before-B": {
     "prev": "Forgotten Commander Lv 45",
@@ -347,7 +347,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Skill tier: level 8 next · 2 to go Lv 19"],
     "ring": "25%",
-    "prog": ["Quests 31 8/58","Dungeons 24/60","Strongholds 5 1/15"]
+    "prog": ["Quests 34 8/58","Dungeons 24/60","Strongholds 5 1/15"]
   },
   "random/L17-qxx-all-B-stfull": {
     "prev": "",
@@ -468,7 +468,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Skill tier: level 8 next · 1 to go Lv 19"],
     "ring": "26%",
-    "prog": ["Quests 14 3/58","Dungeons 4 20/60","Strongholds 2 11/15"]
+    "prog": ["Quests 16 3/58","Dungeons 4 20/60","Strongholds 2 11/15"]
   },
   "random/L18-q71-rnd114p95-A-objs": {
     "prev": "Fafnite's Whereabouts Lv 40",
@@ -480,7 +480,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Skill tier: level 8 next · 1 to go Lv 19"],
     "ring": "34%",
-    "prog": ["Quests 12 7/58","Dungeons 1 23/60","Strongholds ✓ 15/15"],
+    "prog": ["Quests 14 7/58","Dungeons 1 23/60","Strongholds ✓ 15/15"],
     "subs": {"head":"Objectives 1/3","items":2,"on":0,"end":""}
   },
   "random/L18-q74-none-A-dv": {
@@ -493,7 +493,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Skill tier: level 8 next · 1 to go Lv 19"],
     "ring": "1%",
-    "prog": ["Quests 17 0/58","Dungeons 24 0/60","Strongholds 5 1/15"]
+    "prog": ["Quests 19 0/58","Dungeons 24 0/60","Strongholds 5 1/15"]
   },
   "random/L18-q76-lvonly-A-objs": {
     "prev": "Daybreak Society Lv 41",
@@ -505,7 +505,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Skill tier: level 8 next · 1 to go Lv 19"],
     "ring": "25%",
-    "prog": ["Quests 11 8/58","Dungeons 24/60","Strongholds 5 1/15"],
+    "prog": ["Quests 13 8/58","Dungeons 24/60","Strongholds 5 1/15"],
     "subs": {"head":"Objectives 1/3","items":2,"on":0,"end":""}
   },
   "random/L18-q79-rnd131p95-A-cube": {
@@ -518,7 +518,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Skill tier: level 8 next · 1 to go Lv 19"],
     "ring": "35%",
-    "prog": ["Quests 11 8/58","Dungeons 1 23/60","Strongholds ✓ 15/15"]
+    "prog": ["Quests 14 8/58","Dungeons 1 23/60","Strongholds ✓ 15/15"]
   },
   "random/L18-qxx-lvonly-A": {
     "prev": "",
@@ -650,7 +650,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Skill tier: level 8 now Lv 19"],
     "ring": "26%",
-    "prog": ["Quests 7 8/58","Dungeons 24/60","Strongholds 4 2/15"]
+    "prog": ["Quests 8 8/58","Dungeons 24/60","Strongholds 4 2/15"]
   },
   "random/L19-q52-rnd141p80-B-dv": {
     "prev": "The Survivors Lv 32",
@@ -662,7 +662,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Skill tier: level 8 now Lv 19"],
     "ring": "29%",
-    "prog": ["Quests 7 8/58","Dungeons 2 22/60","Strongholds 2 9/15"]
+    "prog": ["Quests 8 8/58","Dungeons 2 22/60","Strongholds 2 9/15"]
   },
   "random/L19-q55-rnd140p20-A-sppts": {
     "prev": "A Daeva Dreaming Anew Lv 32",
@@ -674,7 +674,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Skill tier: level 8 now Lv 19"],
     "ring": "8%",
-    "prog": ["Quests 14 0/58","Dungeons 18 6/60","Strongholds 3 5/15"]
+    "prog": ["Quests 16 0/58","Dungeons 18 6/60","Strongholds 3 5/15"]
   },
   "random/L19-q60-before-B-stwait": {
     "prev": "Visible Trap Lv 34",
@@ -686,7 +686,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Skill tier: level 8 now Lv 19"],
     "ring": "26%",
-    "prog": ["Quests 9 8/58","Dungeons 24/60","Strongholds 4 2/15"]
+    "prog": ["Quests 11 8/58","Dungeons 24/60","Strongholds 4 2/15"]
   },
   "random/L19-q61-lvonly-A-dv": {
     "prev": "Destruction Archon Underground Fortress Lv 34",
@@ -698,7 +698,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Skill tier: level 8 now Lv 19"],
     "ring": "26%",
-    "prog": ["Quests 9 8/58","Dungeons 24/60","Strongholds 4 2/15"]
+    "prog": ["Quests 11 8/58","Dungeons 24/60","Strongholds 4 2/15"]
   },
   "random/L19-q61-none-B-stwait": {
     "prev": "Destruction Archon Underground Fortress Lv 34",
@@ -710,7 +710,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Skill tier: level 8 now Lv 19"],
     "ring": "1%",
-    "prog": ["Quests 16 0/58","Dungeons 24 0/60","Strongholds 5 1/15"]
+    "prog": ["Quests 18 0/58","Dungeons 24 0/60","Strongholds 5 1/15"]
   },
   "random/L19-q65-all-A-rqmix": {
     "prev": "Frozen Fafnite Lv 36",
@@ -734,7 +734,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Skills window missed · 9 open Lv 4","Wings and Ascension missed · 2 open Lv 6","Enhancement unlocks missed · 6 open Lv 9","Altgard opens missed · 5 open Lv 10","Daevanion board missed · 8 open Lv 13","Ring quest and skills missed · 4 open Lv 15","Legions missed · 5 open Lv 16","Skill tier: level 8 now Lv 19","Zikel board Lv 20","Stigma slot 1 Lv 22","Supply Requests Lv 25","Stigma slot 2 Lv 27","Heart Gore 10 and Urugugu Canyon Lv 28","Daily dungeon and Vaizel board Lv 30","Stigma slot 3 Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 17 0/58","Dungeons 24 0/60","Strongholds 5 1/15"]
+    "prog": ["Quests 19 0/58","Dungeons 24 0/60","Strongholds 5 1/15"]
   },
   "random/L19-qxx-all-A-dv": {
     "prev": "",
@@ -842,7 +842,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Zikel board now Lv 20"],
     "ring": "13%",
-    "prog": ["Quests 12 3/58","Dungeons 23 8/60","Strongholds 4 6/15"]
+    "prog": ["Quests 13 3/58","Dungeons 23 8/60","Strongholds 4 6/15"]
   },
   "random/L20-q53-rnd141p20-A-stwait": {
     "prev": "Rescue Operation Lv 32",
@@ -854,7 +854,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Zikel board now Lv 20"],
     "ring": "5%",
-    "prog": ["Quests 14 0/58","Dungeons 26 5/60","Strongholds 6 2/15"]
+    "prog": ["Quests 15 0/58","Dungeons 26 5/60","Strongholds 6 2/15"]
   },
   "random/L20-q56-rnd102p20-B-filters": {
     "prev": "Last Refuge Lv 33",
@@ -866,7 +866,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Skills window missed · 5 open Lv 4","Wings and Ascension missed · 1 open Lv 6","Enhancement unlocks missed · 3 open Lv 9","Altgard opens missed · 3 open Lv 10","Daevanion board missed · 6 open Lv 13","Ring quest and skills missed · 4 open Lv 15","Legions missed · 3 open Lv 16","Skill tier: level 8 missed · 9 open Lv 19","Zikel board now Lv 20","Stigma slot 1 Lv 22","Supply Requests Lv 25","Stigma slot 2 Lv 27","Heart Gore 10 and Urugugu Canyon Lv 28","Daily dungeon and Vaizel board Lv 30","Stigma slot 3 Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
     "ring": "5%",
-    "prog": ["Quests 13 1/58","Dungeons 27 4/60","Strongholds 5 2/15"]
+    "prog": ["Quests 15 1/58","Dungeons 27 4/60","Strongholds 5 2/15"]
   },
   "random/L20-q60-lvonly-A-objs": {
     "prev": "Visible Trap Lv 34",
@@ -878,7 +878,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Zikel board now Lv 20"],
     "ring": "26%",
-    "prog": ["Quests 9 8/58","Dungeons 7 24/60","Strongholds 5 2/15"],
+    "prog": ["Quests 11 8/58","Dungeons 7 24/60","Strongholds 5 2/15"],
     "subs": {"head":"Objectives 1/3","items":2,"on":0,"end":""}
   },
   "random/L20-q66-before-A-dv": {
@@ -891,7 +891,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Zikel board now Lv 20"],
     "ring": "26%",
-    "prog": ["Quests 9 8/58","Dungeons 7 24/60","Strongholds 5 2/15"]
+    "prog": ["Quests 11 8/58","Dungeons 7 24/60","Strongholds 5 2/15"]
   },
   "random/L20-q67-rnd139p80-A-dv": {
     "prev": "Unveiling the Truth Lv 37",
@@ -903,7 +903,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Zikel board now Lv 20"],
     "ring": "30%",
-    "prog": ["Quests 12 5/58","Dungeons 8 23/60","Strongholds 1 12/15"]
+    "prog": ["Quests 14 5/58","Dungeons 8 23/60","Strongholds 1 12/15"]
   },
   "random/L20-q77-rnd113p50-A": {
     "prev": "Daybreak Society Rescue Operation Lv 41",
@@ -915,7 +915,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Zikel board now Lv 20"],
     "ring": "24%",
-    "prog": ["Quests 12 7/58","Dungeons 14 17/60","Strongholds 2 8/15"]
+    "prog": ["Quests 15 7/58","Dungeons 14 17/60","Strongholds 2 8/15"]
   },
   "random/L20-q81-lvonly-B": {
     "prev": "The High Priest Awakens Lv 44",
@@ -927,7 +927,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Zikel board now Lv 20"],
     "ring": "26%",
-    "prog": ["Quests 11 8/58","Dungeons 7 24/60","Strongholds 5 2/15"]
+    "prog": ["Quests 14 8/58","Dungeons 7 24/60","Strongholds 5 2/15"]
   },
   "random/L20-q82-all-B-sppts": {
     "prev": "Lingering Apparitions Lv 44",
@@ -951,6 +951,6 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Stigma slot 1 next · 2 to go Lv 22"],
     "ring": "35%",
-    "prog": ["Quests 13 6/58","Dungeons 5 26/60","Strongholds 14/15"]
+    "prog": ["Quests 16 6/58","Dungeons 5 26/60","Strongholds 14/15"]
   }
 }

@@ -76,7 +76,7 @@ export default (test, M) => {
   });
   test('regional quests open when the story quest is turned in (switch regionalTurnedIn); Shugo-of-All-Trades and Spooky Specters gained that gate', () => {
     const rq = n => M.RQ.find(q => q.name === n), st = (n, quest, level = 45) => M.rqStatus(M.char(S({ quest, level })), rq(n)).open;
-    const f = rq('Fight Poison with Poison');
+    const f = rq('Bloodstained Rose');   /* Fight Poison with Poison until 2026-10-20; its gate is "reached" since the owner page checks */
     assert.equal(f.turnedIn, true);
     assert.equal(st(f.name, f.story), false, 'on the story quest: not yet');
     assert.equal(st(f.name, at(f.story, 1)), true, 'turned in');
@@ -94,10 +94,11 @@ export default (test, M) => {
     const rq = n => M.RQ.find(q => q.name === n), st = (n, quest, level = 45) => M.rqStatus(M.char(S({ quest, level })), rq(n)).open;
     for (const [n, gate, sw] of [["Traveling Merchant's Conundrum", 'Blood Monument', 'merchantGate'], ['Lest We Forget', "Zikel's Core", 'lestWeForgetGate']]) {
       const q = rq(n);
-      assert.equal(q.story, gate); assert.equal(q.turnedIn, true); assert.ok(!q.noPre, n + ': prerequisite data now');
-      assert.equal(st(n, gate), false, n + ': not while ' + gate + ' is current');
-      assert.equal(st(n, at(gate, 1)), true, n + ': once ' + gate + ' is turned in');
-      withChanges(ALL.filter(x => x !== sw), () => { assert.equal(st(n, gate), true, n + ': switch off, open from its recommended level');
+      /* "reached" since the owner page checks (2026-10-20): both open at a step of their story quest ("Step completed" on aion2.gaming.tools) */
+      assert.equal(q.story, gate); assert.ok(!q.turnedIn, n + ': reached, not turned in'); assert.ok(!q.noPre, n + ': prerequisite data now');
+      assert.equal(st(n, at(gate, -1)), false, n + ': not before ' + gate + ' is current');
+      assert.equal(st(n, gate), true, n + ': once the story reaches ' + gate);
+      withChanges(ALL.filter(x => x !== sw), () => { assert.equal(st(n, at(gate, -1)), true, n + ': switch off, open from its recommended level');
         assert.equal(st(n, at(gate, 1), q.rec - 1), false, n + ': switch off, not below its recommended level'); });
     }
     const open = (k, quest, level) => M.openOf(M.char(S({ quest, level })), k);

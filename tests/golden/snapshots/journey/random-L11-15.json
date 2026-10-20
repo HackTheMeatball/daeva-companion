@@ -119,7 +119,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Daevanion board next · 2 to go Lv 13"],
     "ring": "11%",
-    "prog": ["Quests 11 0/58","Dungeons 13/60","Strongholds 1 1/15"]
+    "prog": ["Quests 12 0/58","Dungeons 13/60","Strongholds 1 1/15"]
   },
   "random/L11-q44-before-B-cube": {
     "prev": "A Collective Effort Lv 27",
@@ -155,7 +155,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Daevanion board next · 2 to go Lv 13"],
     "ring": "11%",
-    "prog": ["Quests 16 0/58","Dungeons 13/60","Strongholds 1 1/15"]
+    "prog": ["Quests 18 0/58","Dungeons 13/60","Strongholds 1 1/15"]
   },
   "random/L11-q69-lvonly-A-sppts": {
     "prev": "An Ill Fate's Resolution Lv 37",
@@ -167,7 +167,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Daevanion board next · 2 to go Lv 13"],
     "ring": "11%",
-    "prog": ["Quests 16 0/58","Dungeons 13/60","Strongholds 1 1/15"]
+    "prog": ["Quests 18 0/58","Dungeons 13/60","Strongholds 1 1/15"]
   },
   "random/L11-q76-rnd132p50-B": {
     "prev": "Daybreak Society Lv 41",
@@ -179,7 +179,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Daevanion board next · 2 to go Lv 13"],
     "ring": "11%",
-    "prog": ["Quests 17 0/58","Dungeons 6 7/60","Strongholds 1 8/15"]
+    "prog": ["Quests 19 0/58","Dungeons 6 7/60","Strongholds 1 8/15"]
   },
   "random/L11-q77-before-B": {
     "prev": "Daybreak Society Rescue Operation Lv 41",
@@ -191,7 +191,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Daevanion board next · 2 to go Lv 13"],
     "ring": "11%",
-    "prog": ["Quests 17 0/58","Dungeons 13/60","Strongholds 1 1/15"]
+    "prog": ["Quests 20 0/58","Dungeons 13/60","Strongholds 1 1/15"]
   },
   "random/L11-q85-lvonly-B": {
     "prev": "Farewells Lv 45",
@@ -203,7 +203,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Daevanion board next · 2 to go Lv 13"],
     "ring": "11%",
-    "prog": ["Quests 18 0/58","Dungeons 13/60","Strongholds 1 1/15"]
+    "prog": ["Quests 21 0/58","Dungeons 13/60","Strongholds 1 1/15"]
   },
   "random/L11-qxx-lvonly-B-stwait": {
     "prev": "",
@@ -311,7 +311,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Daevanion board next · 1 to go Lv 13"],
     "ring": "11%",
-    "prog": ["Quests 14 0/58","Dungeons 13/60","Strongholds 1 1/15"]
+    "prog": ["Quests 15 0/58","Dungeons 13/60","Strongholds 1 1/15"]
   },
   "random/L12-q56-all-B-dv": {
     "prev": "Last Refuge Lv 33",
@@ -335,7 +335,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Altgard opens cleared · 1 side quest Lv 10","Daevanion board next · 1 to go Lv 13","Ring quest and skills Lv 15","Legions Lv 16","Skill tier: level 8 Lv 19","Zikel board Lv 20","Stigma slot 1 Lv 22","Supply Requests Lv 25","Stigma slot 2 Lv 27","Heart Gore 10 and Urugugu Canyon Lv 28","Daily dungeon and Vaizel board Lv 30","Stigma slot 3 Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
     "ring": "11%",
-    "prog": ["Quests 17 0/58","Dungeons 13/60","Strongholds 1 1/15"]
+    "prog": ["Quests 19 0/58","Dungeons 13/60","Strongholds 1 1/15"]
   },
   "random/L12-q78-lvonly-A": {
     "prev": "The Breaking of the Day Lv 42",
@@ -347,7 +347,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Daevanion board next · 1 to go Lv 13"],
     "ring": "11%",
-    "prog": ["Quests 17 0/58","Dungeons 13/60","Strongholds 1 1/15"]
+    "prog": ["Quests 20 0/58","Dungeons 13/60","Strongholds 1 1/15"]
   },
   "random/L12-q80-all-B-filters": {
     "prev": "High Priest's Fafnite Lv 43",
@@ -431,7 +431,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Daevanion board now Lv 13"],
     "ring": "11%",
-    "prog": ["Quests 13 1/58","Dungeons 13/60","Strongholds 1 1/15"]
+    "prog": ["Quests 15 1/58","Dungeons 13/60","Strongholds 1 1/15"]
   },
   "random/L13-q59-all-A-cube": {
     "prev": "Impending Threat Lv 34",
@@ -455,7 +455,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Daevanion board now Lv 13"],
     "ring": "11%",
-    "prog": ["Quests 15 1/58","Dungeons 13/60","Strongholds 1 1/15"]
+    "prog": ["Quests 17 1/58","Dungeons 13/60","Strongholds 1 1/15"]
   },
   "random/L13-q85-lvonly-A": {
     "prev": "Farewells Lv 45",
@@ -467,7 +467,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Daevanion board now Lv 13"],
     "ring": "11%",
-    "prog": ["Quests 17 1/58","Dungeons 13/60","Strongholds 1 1/15"]
+    "prog": ["Quests 20 1/58","Dungeons 13/60","Strongholds 1 1/15"]
   },
   "random/L13-qxx-all-B-cube": {
     "prev": "",
@@ -625,7 +625,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Ring quest and skills next · 1 to go Lv 15"],
     "ring": "1%",
-    "prog": ["Quests 15 0/58","Dungeons 13 0/60","Strongholds 1 1/15"]
+    "prog": ["Quests 18 0/58","Dungeons 13 0/60","Strongholds 1 1/15"]
   },
   "random/L14-q65-lvonly-B": {
     "prev": "Frozen Fafnite Lv 36",
@@ -637,7 +637,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Ring quest and skills next · 1 to go Lv 15"],
     "ring": "11%",
-    "prog": ["Quests 15 1/58","Dungeons 13/60","Strongholds 1 1/15"]
+    "prog": ["Quests 17 1/58","Dungeons 13/60","Strongholds 1 1/15"]
   },
   "random/L14-q70-rnd106p95-A-stfull": {
     "prev": "Mirror of Greed Lv 37",
@@ -649,7 +649,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Ring quest and skills next · 1 to go Lv 15"],
     "ring": "22%",
-    "prog": ["Quests 15 2/58","Dungeons 13/60","Strongholds 14/15"]
+    "prog": ["Quests 17 2/58","Dungeons 13/60","Strongholds 14/15"]
   },
   "random/L14-q74-none-A": {
     "prev": "Treatment Lv 40",
@@ -661,7 +661,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Ring quest and skills next · 1 to go Lv 15"],
     "ring": "1%",
-    "prog": ["Quests 17 0/58","Dungeons 13 0/60","Strongholds 1 1/15"]
+    "prog": ["Quests 19 0/58","Dungeons 13 0/60","Strongholds 1 1/15"]
   },
   "random/L14-q81-all-B-stfull": {
     "prev": "The High Priest Awakens Lv 44",
@@ -685,7 +685,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Ring quest and skills next · 1 to go Lv 15"],
     "ring": "1%",
-    "prog": ["Quests 34 0/58","Dungeons 13 0/60","Strongholds 1 1/15"]
+    "prog": ["Quests 37 0/58","Dungeons 13 0/60","Strongholds 1 1/15"]
   },
   "random/L15-q01-all-A": {
     "prev": "A Village in the Fog Lv 2",
@@ -853,7 +853,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Ring quest and skills now Lv 15"],
     "ring": "12%",
-    "prog": ["Quests 13 1/58","Dungeons 18 6/60","Strongholds 1 9/15"]
+    "prog": ["Quests 14 1/58","Dungeons 18 6/60","Strongholds 1 9/15"]
   },
   "random/L15-q53-all-B-stwait": {
     "prev": "Rescue Operation Lv 32",
@@ -901,7 +901,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Ring quest and skills now Lv 15"],
     "ring": "8%",
-    "prog": ["Quests 34 0/58","Dungeons 18 6/60","Strongholds 4 5/15"]
+    "prog": ["Quests 37 0/58","Dungeons 18 6/60","Strongholds 4 5/15"]
   },
   "random/L15-qxx-before-A": {
     "prev": "",

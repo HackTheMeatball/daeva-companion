@@ -93,7 +93,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Stigma slot 2 next · 1 to go Lv 27"],
     "ring": "39%",
-    "prog": ["Quests 13/58","Dungeons 36/60","Strongholds 5 3/15"]
+    "prog": ["Quests 1 13/58","Dungeons 36/60","Strongholds 5 3/15"]
   },
   "story/L27-q42-before-A": {
     "prev": "Striving for Coexistence Lv 26",
@@ -141,7 +141,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Stigma slot 2 now Lv 27"],
     "ring": "39%",
-    "prog": ["Quests 13/58","Dungeons 36/60","Strongholds 5 3/15"]
+    "prog": ["Quests 1 13/58","Dungeons 36/60","Strongholds 5 3/15"]
   },
   "story/L27-q43-before-B": {
     "prev": "Preparations for Restoration Lv 27",
@@ -153,7 +153,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Stigma slot 2 now Lv 27"],
     "ring": "39%",
-    "prog": ["Quests 13/58","Dungeons 36/60","Strongholds 5 3/15"]
+    "prog": ["Quests 1 13/58","Dungeons 36/60","Strongholds 5 3/15"]
   },
   "story/L27-q43-none-A": {
     "prev": "Preparations for Restoration Lv 27",
@@ -165,7 +165,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Stigma slot 2 now Lv 27"],
     "ring": "1%",
-    "prog": ["Quests 11 0/58","Dungeons 36 0/60","Strongholds 7 1/15"]
+    "prog": ["Quests 12 0/58","Dungeons 36 0/60","Strongholds 7 1/15"]
   },
   "story/L28-q44-before-A": {
     "prev": "A Collective Effort Lv 27",
@@ -273,7 +273,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Daily dungeon and Vaizel board now Lv 30"],
     "ring": "40%",
-    "prog": ["Quests 1 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    "prog": ["Quests 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
   },
   "story/L30-q45-before-B": {
     "prev": "Land of Rifts Lv 29",
@@ -285,7 +285,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Daily dungeon and Vaizel board now Lv 30"],
     "ring": "40%",
-    "prog": ["Quests 1 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    "prog": ["Quests 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
   },
   "story/L30-q45-none-A": {
     "prev": "Land of Rifts Lv 29",
@@ -297,7 +297,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Daily dungeon and Vaizel board now Lv 30"],
     "ring": "1%",
-    "prog": ["Quests 13 0/58","Dungeons 43 0/60","Strongholds 7 1/15"]
+    "prog": ["Quests 12 0/58","Dungeons 43 0/60","Strongholds 7 1/15"]
   },
   "story/L30-q46-before-A": {
     "prev": "Dying Light Lv 30",
@@ -309,7 +309,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Daily dungeon and Vaizel board now Lv 30"],
     "ring": "40%",
-    "prog": ["Quests 1 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    "prog": ["Quests 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
   },
   "story/L30-q46-before-B": {
     "prev": "Dying Light Lv 30",
@@ -321,7 +321,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Daily dungeon and Vaizel board now Lv 30"],
     "ring": "40%",
-    "prog": ["Quests 1 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    "prog": ["Quests 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
   },
   "story/L30-q46-none-A": {
     "prev": "Dying Light Lv 30",
@@ -333,7 +333,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Daily dungeon and Vaizel board now Lv 30"],
     "ring": "1%",
-    "prog": ["Quests 13 0/58","Dungeons 43 0/60","Strongholds 7 1/15"]
+    "prog": ["Quests 12 0/58","Dungeons 43 0/60","Strongholds 7 1/15"]
   },
   "story/L30-q47-before-A": {
     "prev": "Contaminated Sacred Tree Lv 30",
@@ -345,7 +345,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Daily dungeon and Vaizel board now Lv 30"],
     "ring": "40%",
-    "prog": ["Quests 1 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    "prog": ["Quests 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
   },
   "story/L30-q47-before-B": {
     "prev": "Contaminated Sacred Tree Lv 30",
@@ -357,7 +357,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Daily dungeon and Vaizel board now Lv 30"],
     "ring": "40%",
-    "prog": ["Quests 1 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    "prog": ["Quests 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
   },
   "story/L30-q47-none-A": {
     "prev": "Contaminated Sacred Tree Lv 30",
@@ -369,7 +369,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Daily dungeon and Vaizel board now Lv 30"],
     "ring": "1%",
-    "prog": ["Quests 13 0/58","Dungeons 43 0/60","Strongholds 7 1/15"]
+    "prog": ["Quests 12 0/58","Dungeons 43 0/60","Strongholds 7 1/15"]
   },
   "story/L30-q48-before-A": {
     "prev": "The Past Revealed Lv 30",
@@ -381,7 +381,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Daily dungeon and Vaizel board now Lv 30"],
     "ring": "40%",
-    "prog": ["Quests 1 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    "prog": ["Quests 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
   },
   "story/L30-q48-before-B": {
     "prev": "The Past Revealed Lv 30",
@@ -393,7 +393,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Daily dungeon and Vaizel board now Lv 30"],
     "ring": "40%",
-    "prog": ["Quests 1 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    "prog": ["Quests 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
   },
   "story/L30-q48-none-A": {
     "prev": "The Past Revealed Lv 30",
@@ -405,6 +405,6 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Daily dungeon and Vaizel board now Lv 30"],
     "ring": "1%",
-    "prog": ["Quests 13 0/58","Dungeons 43 0/60","Strongholds 7 1/15"]
+    "prog": ["Quests 12 0/58","Dungeons 43 0/60","Strongholds 7 1/15"]
   }
 }

@@ -74,8 +74,12 @@ export default (test, M) => {
 
   test('regional row, Later cards, Daevanion: the same words; nothing once open', () => {
     const q = M.RQ.find(x => x.name === "Traveling Merchant's Conundrum");
-    assert.equal(M.rqReqOf(C({ quest: at('Blood Monument', -3), level: 33 }), 'rq:' + q.id), 'unlocks after "Blood Monument" · 3 quests ahead');
-    assert.equal(M.rqReqOf(C({ quest: at('Blood Monument', 1), level: 33 }), 'rq:' + q.id), '');
+    /* its gate is "reached" since the owner page checks (2026-10-20: Blood Monument Step 2 on aion2.gaming.tools), so "opens on" */
+    assert.equal(M.rqReqOf(C({ quest: at('Blood Monument', -3), level: 33 }), 'rq:' + q.id), 'opens on "Blood Monument" · 3 quests ahead');
+    assert.equal(M.rqReqOf(C({ quest: 'Blood Monument', level: 33 }), 'rq:' + q.id), '');
+    const r = M.RQ.find(x => x.name === 'Bloodstained Rose');
+    assert.equal(M.rqReqOf(C({ quest: at(r.story, -3), level: 37 }), 'rq:' + r.id), `unlocks after "${r.story}" · 3 quests ahead`);
+    assert.equal(M.rqReqOf(C({ quest: at(r.story, 1), level: 37 }), 'rq:' + r.id), '');
     const lv4 = { quest: M.QUESTS.find(x => x[0] >= 4)[1], level: 4 }, later = M.rankNext(S(lv4)).filter(a => a.kind === 'laterSkill');
     assert.ok(later.length, 'a Later skill card at Lv 4');
     for (const a of later) assert.equal(a.why, `needs Lv ${a.x.req}`);
