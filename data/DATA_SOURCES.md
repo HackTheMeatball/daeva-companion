@@ -10,9 +10,9 @@ A claim that is not verified is tagged `[id · verdict]` (`owner source`: the ow
 Only facts were taken from these pages; the app reproduces no page text. Short quotations in the guides' `claims.json`
 stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Listing a site implies no endorsement.
 
-793 URLs · 501 in the Sources card · 292 cited only in the data files
+798 URLs · 505 in the Sources card · 293 cited only in the data files
 
-## Metabot (564)
+## Metabot (569)
 
 | Page | Card group | Backs |
 |---|---|---|
@@ -298,6 +298,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Ambush Stance](https://metabot.gg/en/aion-2/skills/ambush-stance) | Skills, boards and stigmas | packs/aion2/classes/assassin/skills.json: Ambush Stance |
 | [Metabot: Ankle slice](https://metabot.gg/en/aion-2/skills/ankle-slice) | — | packs/aion2/classes/gladiator/skills.json: Ankle Slice |
 | [Metabot: Annihilate](https://metabot.gg/en/aion-2/skills/annihilate) | — | packs/aion2/asmodian/templar/guide/claims.json: Five Templar skills fire only on a condition: Judgment in the 2 s window Shield Smite, Warding Strike or Shield Rush opens; Annihilate on a stunned or knocked-down target; Flash Rampage on a staggered one; Debilitating Smash after a Block; Shield Rush after a Dodge or in flight.; packs/aion2/classes/templar/skills.json: Annihilate |
+| [Metabot: Apply Poison](https://metabot.gg/en/aion-2/skills/apply-poison) | Skills, boards and stigmas | packs/aion2/classes/assassin/skills.json: Apply Poison |
 | [Metabot: Arctic armor](https://metabot.gg/en/aion-2/skills/arctic-armor) | — | packs/aion2/classes/sorcerer/stigmas.json: Arctic Armor |
 | [Metabot: Armor of balance](https://metabot.gg/en/aion-2/skills/armor-of-balance) | — | packs/aion2/classes/gladiator/stigmas.json: Armor of Balance |
 | [Metabot: Armor of balance templar](https://metabot.gg/en/aion-2/skills/armor-of-balance-templar) | — | packs/aion2/classes/templar/stigmas.json: Armor of Balance |
@@ -346,7 +347,8 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Debilitating mark](https://metabot.gg/en/aion-2/skills/debilitating-mark) | — | packs/aion2/classes/cleric/skills.json: Debilitating Mark |
 | [Metabot: Debilitating smash](https://metabot.gg/en/aion-2/skills/debilitating-smash) | — | packs/aion2/asmodian/templar/guide/claims.json: Five Templar skills fire only on a condition: Judgment in the 2 s window Shield Smite, Warding Strike or Shield Rush opens; Annihilate on a stunned or knocked-down target; Flash Rampage on a staggered one; Debilitating Smash after a Block; Shield Rush after a Dodge or in flight.; packs/aion2/classes/templar/skills.json: Debilitating Smash |
 | [Metabot: Defense Break](https://metabot.gg/en/aion-2/skills/defense-break) | Skills, boards and stigmas | packs/aion2/classes/assassin/skills.json: Defense Break |
-| [Metabot: Defiance](https://metabot.gg/en/aion-2/skills/defiance) | Skills, boards and stigmas | packs/aion2/classes/assassin/skills.json: Defiance; packs/aion2/classes/gladiator/skills.json: Defiance |
+| [Metabot: Defiance](https://metabot.gg/en/aion-2/skills/defiance) | — | packs/aion2/classes/gladiator/skills.json: Defiance |
+| [Metabot: Defiance](https://metabot.gg/en/aion-2/skills/defiance-assassin) | Skills, boards and stigmas | packs/aion2/classes/assassin/skills.json: Defiance |
 | [Metabot: Defiance chanter](https://metabot.gg/en/aion-2/skills/defiance-chanter) | — | packs/aion2/classes/chanter/skills.json: Defiance |
 | [Metabot: Defiance cleric](https://metabot.gg/en/aion-2/skills/defiance-cleric) | — | packs/aion2/classes/cleric/skills.json: Defiance |
 | [Metabot: Defiance ranger](https://metabot.gg/en/aion-2/skills/defiance-ranger) | — | packs/aion2/classes/ranger/skills.json: Defiance |
@@ -377,6 +379,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Ensnaring trap](https://metabot.gg/en/aion-2/skills/ensnaring-trap) | — | packs/aion2/classes/ranger/stigmas.json: Ensnaring Trap |
 | [Metabot: Executing blade](https://metabot.gg/en/aion-2/skills/executing-blade) | — | packs/aion2/classes/templar/stigmas.json: Executing Blade |
 | [Metabot: Experienced counterstrike](https://metabot.gg/en/aion-2/skills/experienced-counterstrike) | — | packs/aion2/classes/gladiator/skills.json: Experienced Counterstrike |
+| [Metabot: Exploit Weakness](https://metabot.gg/en/aion-2/skills/exploit-weakness) | Skills, boards and stigmas | packs/aion2/classes/assassin/skills.json: Exploit Weakness |
 | [Metabot: Explosion trap](https://metabot.gg/en/aion-2/skills/explosion-trap) | — | packs/aion2/classes/ranger/skills.json: Explosion Trap |
 | [Metabot: Explosive arrow](https://metabot.gg/en/aion-2/skills/explosive-arrow) | — | packs/aion2/classes/ranger/stigmas.json: Explosive Arrow |
 | [Metabot: Fire mark](https://metabot.gg/en/aion-2/skills/fire-mark) | — | packs/aion2/asmodian/sorcerer/guide/claims.json: [C89 · inferred] Every Fire hit puts Fire Mark on the target (Korea's 16 Sep Sorcerer patch), so Blaze can follow any Fire attack.; packs/aion2/classes/sorcerer/skills.json: Fire Mark |
@@ -477,8 +480,10 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Rage burst](https://metabot.gg/en/aion-2/skills/rage-burst) | — | packs/aion2/classes/gladiator/stigmas.json: Rage Burst |
 | [Metabot: Raging spell](https://metabot.gg/en/aion-2/skills/raging-spell) | — | packs/aion2/classes/chanter/skills.json: Raging Spell |
 | [Metabot: Rapid scattershot](https://metabot.gg/en/aion-2/skills/rapid-scattershot) | — | packs/aion2/asmodian/spiritmaster/guide/claims.json: Three Spiritmaster skills fire only on a condition: Dimensional Control triggers each time a spirit uses its skill, Rapid Scattershot hits only a target in Stagger, Elemental Fusion needs four element stacks from spirit skills; a new summon replaces the spirit on the field.; packs/aion2/classes/spiritmaster/skills.json: Rapid Scattershot |
+| [Metabot: Rear Smite](https://metabot.gg/en/aion-2/skills/rear-smite) | Skills, boards and stigmas | packs/aion2/classes/assassin/skills.json: Rear Smite |
 | [Metabot: Recuperation](https://metabot.gg/en/aion-2/skills/recuperation) | — | packs/aion2/classes/chanter/skills.json: Recuperation |
 | [Metabot: Rending blow](https://metabot.gg/en/aion-2/skills/rending-blow) | — | packs/aion2/asmodian/gladiator/guide/claims.json: [C02 · wrong, owner source] Each skill gains one level every 3 character levels after you learn it.; packs/aion2/classes/gladiator/skills.json: Rending Blow |
+| [Metabot: Revitalization Contract](https://metabot.gg/en/aion-2/skills/revitalization-contract) | Skills, boards and stigmas | packs/aion2/classes/assassin/skills.json: Revitalization Contract |
 | [Metabot: Revitalization contract ranger](https://metabot.gg/en/aion-2/skills/revitalization-contract-ranger) | — | packs/aion2/classes/ranger/skills.json: Revitalization Contract |
 | [Metabot: Revitalization contract sorcerer](https://metabot.gg/en/aion-2/skills/revitalization-contract-sorcerer) | — | packs/aion2/classes/sorcerer/skills.json: Revitalization Contract |
 | [Metabot: Revitalization contract spiritmaster](https://metabot.gg/en/aion-2/skills/revitalization-contract-spiritmaster) | — | packs/aion2/classes/spiritmaster/skills.json: Revitalization Contract |
