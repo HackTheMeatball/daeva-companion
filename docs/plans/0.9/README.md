@@ -519,6 +519,32 @@ Rules for every item:
 - **Lanes:** site, page-card, e2. **Model:** Opus, M (90 min).
 - **After:** research-sources-credit.
 
+## P24: Terms of Use, and robots.txt blocks AI training crawlers
+
+- **Problem.** The site has no Terms of Use, and `public/robots.txt` allows every crawler, AI training crawlers included,
+  while LICENSE reserves the guide text, data selection, name and art. Source Vetting drafted both (coordinator routing,
+  2026-10-20). Published terms are legal text in the owner's name, so the final text is the owner's
+  (`owner-ok-0.9-terms`).
+- **Result.**
+  - `TERMS.md` at the repo root: the owner-approved text from `docs/legal/TERMS.md`, verbatim, with its date.
+  - The footer links "Terms" next to "Privacy", in the same form (a GitHub link, new tab).
+  - `public/robots.txt`: the training crawlers in `docs/legal/robots-policy.md` get `Disallow: /`; `*` stays allowed
+    (search engines and user-triggered assistants); the AI search crawlers as the owner chose; the sitemap line stays;
+    the comment points at the Terms' GitHub URL (the site serves no `/TERMS.md`).
+  - CHANGELOG notes the new Terms.
+- **Inputs.** `docs/legal/TERMS.md`, `docs/legal/robots-policy.md` (land with the owner-ok row; kickoff holds the item
+  until they are on main).
+- **Files.** `TERMS.md`, `src/index.html` (the footer line only), `public/robots.txt`, `tests/site.js`, `CHANGELOG.md`.
+- **No-gos.** No wording change to the approved text. The footer keeps "unofficial" and "not affiliated with or endorsed
+  by NCSoft". Search engines stay allowed.
+- **Acceptance.**
+  - [ ] `tests/site`: robots.txt blocks `GPTBot` and `ClaudeBot` with `Disallow: /`, keeps `User-agent: *` / `Allow: /` and
+        the sitemap line; the footer has a Terms link to `TERMS.md`; `TERMS.md` matches `docs/legal/TERMS.md`.
+  - [ ] Before / after shots of the footer at 1500 and 390 px, `scrapbook.json`; Design Lead's DESIGN OK.
+- **Review:** blind (owner-held legal text; Code Review the code).
+- **Lanes:** site, page-card. **Model:** Sonnet, S (45 min).
+- **After:** P23, owner-ok-0.9-terms. If the owner's OK isn't in by 0.9's release gate, P24 moves to 0.10.
+
 ## S1–S4: pipeline items (Build Pipeline builds them; no queue line)
 
 - **S1: Split the golden shard.** Golden alone; a11y, save and site in their own shard. Files `tests/run.mjs`,
