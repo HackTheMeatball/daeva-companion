@@ -153,6 +153,11 @@ minor from 0.8.0:** with `PRE-RELEASE CHECK` the Release Planner sends Player Te
 (main's head once every item has merged); Jesse plays main built locally at that commit and answers
 `RC PLAY DONE <minor>` with an issue link. The Release Planner reads that report before telling Gus `DATA OK`. The
 live play after release and the per-patch delta check stay.
+**Release manager and merge freeze (owner, 2026-10-20 1:35 PM ET), from 0.8.0:** the Release Planner owns the release
+from `RC READY` until the live site shows the new version, and checks that every step finishes. From `RC READY` until
+CI's tag, Gus merges nothing that changes the build (only `docs/**`, `ROADMAP.md` and `.github/ISSUE_TEMPLATE/**`, plus
+the release PR). A blocker fix named by `RC PLAY DONE` or `DATA HOLD` may merge, and then the release candidate restarts
+at the new head (DECISIONS 2026-10-20).
 
 ## How an objective is worked
 
