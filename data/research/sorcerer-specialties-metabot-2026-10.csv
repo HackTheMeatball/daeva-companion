@@ -1,0 +1,113 @@
+id,skill,n,skillLv,text,build,checkedAt,status,page_url
+spec:sorcerer:arctic-armor:1,stigma:sorcerer:arctic-armor,1,5,+20% Impact-type Resist,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/arctic-armor
+spec:sorcerer:arctic-armor:2,stigma:sorcerer:arctic-armor,2,10,x1.5 [Absorb Essence] effect,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/arctic-armor
+spec:sorcerer:arctic-armor:3,stigma:sorcerer:arctic-armor,3,15,x1.5 [Robe of Cold] effect,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/arctic-armor
+spec:sorcerer:arctic-armor:4,stigma:sorcerer:arctic-armor,4,20,+20% PvE Damage Tolerance increase and +10% PvP Damage Tolerance increase,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/arctic-armor
+spec:sorcerer:assault-bombardment:1,stigma:sorcerer:assault-bombardment,1,5,+20% Attack for 5s on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/assault-bombardment
+spec:sorcerer:assault-bombardment:2,stigma:sorcerer:assault-bombardment,2,10,500 MP damage on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/assault-bombardment
+spec:sorcerer:assault-bombardment:3,stigma:sorcerer:assault-bombardment,3,15,+10m range,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/assault-bombardment
+spec:sorcerer:assault-bombardment:4,stigma:sorcerer:assault-bombardment,4,20,+20% Frost Chance,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/assault-bombardment
+spec:sorcerer:bittercold-wind:1,skill:sorcerer:bittercold-wind,1,8,+1s [Bittercold Wind] summon duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/bittercold-wind
+spec:sorcerer:bittercold-wind:2,skill:sorcerer:bittercold-wind,2,8,Changes to mobile skill,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/bittercold-wind
+spec:sorcerer:bittercold-wind:3,skill:sorcerer:bittercold-wind,3,8,Pull effect,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/bittercold-wind
+spec:sorcerer:bittercold-wind:4,skill:sorcerer:bittercold-wind,4,12,Ignores Block and Evasion and lands as a Critical Hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/bittercold-wind
+spec:sorcerer:bittercold-wind:5,skill:sorcerer:bittercold-wind,5,16,-1s [Frost] cooldown on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/bittercold-wind
+spec:sorcerer:blaze:1,skill:sorcerer:blaze,1,8,"Absorbs 300, 300% HP",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/blaze
+spec:sorcerer:blaze:2,skill:sorcerer:blaze,2,8,+50% MP restored,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/blaze
+spec:sorcerer:blaze:3,skill:sorcerer:blaze,3,8,Delayed Damage after 3s,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/blaze
+spec:sorcerer:blaze:4,skill:sorcerer:blaze,4,12,Multi-Hit on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/blaze
+spec:sorcerer:blaze:5,skill:sorcerer:blaze,5,16,-3s [Wish of Concentration] cooldown on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/blaze
+spec:sorcerer:cold-storm:1,stigma:sorcerer:cold-storm,1,5,Enhanced Frostbite - Grants extra damage when landing an attack,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/cold-storm
+spec:sorcerer:cold-storm:2,stigma:sorcerer:cold-storm,2,10,30% chance to inflict Root for 2s,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/cold-storm
+spec:sorcerer:cold-storm:3,stigma:sorcerer:cold-storm,3,15,+3s [Cold Storm] summoning duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/cold-storm
+spec:sorcerer:cold-storm:4,stigma:sorcerer:cold-storm,4,20,+10s Frostbite duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/cold-storm
+spec:sorcerer:curse-tree:1,stigma:sorcerer:curse-tree,1,5,Increases number of hits required to remove Polymorph,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/curse-tree
+spec:sorcerer:curse-tree:2,stigma:sorcerer:curse-tree,2,10,"-200 Block, Evasion for 10s when Polymorph ends",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/curse-tree
+spec:sorcerer:curse-tree:3,stigma:sorcerer:curse-tree,3,15,-20% Impact-type Resist for 10s when Polymorph ends,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/curse-tree
+spec:sorcerer:curse-tree:4,stigma:sorcerer:curse-tree,4,20,Inflicts debuff even if Polymorph is removed through attacks,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/curse-tree
+spec:sorcerer:defiance:1,skill:sorcerer:defiance,1,8,Adds [Curse: Old Tree] Chain Skill,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/defiance-sorcerer
+spec:sorcerer:defiance:2,skill:sorcerer:defiance,2,8,"Restores 1,000 Stamina on using [Defiance]",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/defiance-sorcerer
+spec:sorcerer:defiance:3,skill:sorcerer:defiance,3,8,Restores 20% HP on using [Defiance],0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/defiance-sorcerer
+spec:sorcerer:defiance:4,skill:sorcerer:defiance,4,12,+2s Tenacity duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/defiance-sorcerer
+spec:sorcerer:defiance:5,skill:sorcerer:defiance,5,16,+50% PvE Damage Tolerance and +25% PvP Damage Tolerance for Tenacity duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/defiance-sorcerer
+spec:sorcerer:delayed-explosion:1,stigma:sorcerer:delayed-explosion,1,5,Restores 200 MP,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/delayed-explosion
+spec:sorcerer:delayed-explosion:2,stigma:sorcerer:delayed-explosion,2,10,-10s [Delayed Explosion] cooldown,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/delayed-explosion
+spec:sorcerer:delayed-explosion:3,stigma:sorcerer:delayed-explosion,3,15,Changes to AoE Skill,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/delayed-explosion
+spec:sorcerer:delayed-explosion:4,stigma:sorcerer:delayed-explosion,4,20,+10% additional Damage Taken,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/delayed-explosion
+spec:sorcerer:divine-burst:1,stigma:sorcerer:divine-burst,1,5,+20% Skill Speed,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/divine-burst
+spec:sorcerer:divine-burst:2,stigma:sorcerer:divine-burst,2,10,"Absorbs 1000, 1000% HP",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/divine-burst
+spec:sorcerer:divine-burst:3,stigma:sorcerer:divine-burst,3,15,75% chance to inflict Knock Back,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/divine-burst
+spec:sorcerer:divine-burst:4,stigma:sorcerer:divine-burst,4,20,Inflict Stun for 3s after Knock Back,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/divine-burst
+spec:sorcerer:element-enhancement:1,stigma:sorcerer:element-enhancement,1,5,+200 Accuracy,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/element-enhancement
+spec:sorcerer:element-enhancement:2,stigma:sorcerer:element-enhancement,2,10,x1.5 [Robe of Flame] effect,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/element-enhancement
+spec:sorcerer:element-enhancement:3,stigma:sorcerer:element-enhancement,3,15,x1.5 [Grace of Enhancement] effect,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/element-enhancement
+spec:sorcerer:element-enhancement:4,stigma:sorcerer:element-enhancement,4,20,+10% additional Fire and Water Attack,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/element-enhancement
+spec:sorcerer:fire-wall:1,stigma:sorcerer:fire-wall,1,5,Enhanced Embers - Grants extra damage when landing an attack,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/fire-wall
+spec:sorcerer:fire-wall:2,stigma:sorcerer:fire-wall,2,10,+2m wall width,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/fire-wall
+spec:sorcerer:fire-wall:3,stigma:sorcerer:fire-wall,3,15,+2s [Fire Wall] summoning duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/fire-wall
+spec:sorcerer:fire-wall:4,stigma:sorcerer:fire-wall,4,20,+10s Embers duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/fire-wall
+spec:sorcerer:firestorm:1,skill:sorcerer:firestorm,1,8,-50% MP Cost,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/firestorm
+spec:sorcerer:firestorm:2,skill:sorcerer:firestorm,2,8,+20% Skill Speed,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/firestorm
+spec:sorcerer:firestorm:3,skill:sorcerer:firestorm,3,8,-60% Incoming Heal for 5s on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/firestorm
+spec:sorcerer:firestorm:4,skill:sorcerer:firestorm,4,12,-2s [Hellfire] cooldown per fireball,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/firestorm
+spec:sorcerer:firestorm:5,skill:sorcerer:firestorm,5,16,"+15% damage per fireball, up to +75%",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/firestorm
+spec:sorcerer:flame-arrow:1,skill:sorcerer:flame-arrow,1,8,+20% MP restored,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/flame-arrow
+spec:sorcerer:flame-arrow:2,skill:sorcerer:flame-arrow,2,8,"Absorbs 100, 100% HP",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/flame-arrow
+spec:sorcerer:flame-arrow:3,skill:sorcerer:flame-arrow,3,8,+50% Multi-Hit on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/flame-arrow
+spec:sorcerer:flame-arrow:4,skill:sorcerer:flame-arrow,4,12,+5% Fire Damage Boost for 10s on activating [Pyroclasm],0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/flame-arrow
+spec:sorcerer:flame-arrow:5,skill:sorcerer:flame-arrow,5,16,Reset [Blaze] cooldown on landing [Pyroclasm],0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/flame-arrow
+spec:sorcerer:flame-scattershot:1,skill:sorcerer:flame-scattershot,1,8,"Absorbs 500, 500% HP",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/flame-scattershot
+spec:sorcerer:flame-scattershot:2,skill:sorcerer:flame-scattershot,2,8,Restores 120 MP,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/flame-scattershot
+spec:sorcerer:flame-scattershot:3,skill:sorcerer:flame-scattershot,3,8,Changes to mobile skill,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/flame-scattershot
+spec:sorcerer:flame-scattershot:4,skill:sorcerer:flame-scattershot,4,12,Multi-Hit on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/flame-scattershot
+spec:sorcerer:flame-scattershot:5,skill:sorcerer:flame-scattershot,5,16,-1s all skill cooldowns on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/flame-scattershot
+spec:sorcerer:frost:1,skill:sorcerer:frost,1,8,Restores 200 MP,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/frost
+spec:sorcerer:frost:2,skill:sorcerer:frost,2,8,-5s cooldown,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/frost
+spec:sorcerer:frost:3,skill:sorcerer:frost,3,8,Reset [Frost Burst] cooldown on landing Frost,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/frost
+spec:sorcerer:frost:4,skill:sorcerer:frost,4,12,+25% PC target Frost Chance,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/frost
+spec:sorcerer:frost:5,skill:sorcerer:frost,5,16,+1s Frost duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/frost
+spec:sorcerer:frost-burst:1,skill:sorcerer:frost-burst,1,8,"Absorbs 700, 700% HP",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/frost-burst
+spec:sorcerer:frost-burst:2,skill:sorcerer:frost-burst,2,8,Changes to mobile skill,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/frost-burst
+spec:sorcerer:frost-burst:3,skill:sorcerer:frost-burst,3,8,75% chance to Knock Back 2m,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/frost-burst
+spec:sorcerer:frost-burst:4,skill:sorcerer:frost-burst,4,12,Ignores Block and Evasion and lands as a Critical Hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/frost-burst
+spec:sorcerer:frost-burst:5,skill:sorcerer:frost-burst,5,16,50% chance to reset cooldown,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/frost-burst
+spec:sorcerer:glacial-smite:1,stigma:sorcerer:glacial-smite,1,5,Up to +20% damage when more targets hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/glacial-smite
+spec:sorcerer:glacial-smite:2,stigma:sorcerer:glacial-smite,2,10,-30s cooldown,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/glacial-smite
+spec:sorcerer:glacial-smite:3,stigma:sorcerer:glacial-smite,3,15,50% chance to inflict Frost for 3s,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/glacial-smite
+spec:sorcerer:glacial-smite:4,stigma:sorcerer:glacial-smite,4,20,Ignores Block and Evasion and lands as Multi-Hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/glacial-smite
+spec:sorcerer:hellfire:1,skill:sorcerer:hellfire,1,8,+30% Skill Speed,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/hellfire
+spec:sorcerer:hellfire:2,skill:sorcerer:hellfire,2,8,Fire Damage over Time for 10s on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/hellfire
+spec:sorcerer:hellfire:3,skill:sorcerer:hellfire,3,8,Changes to mobile skill,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/hellfire
+spec:sorcerer:hellfire:4,skill:sorcerer:hellfire,4,12,Ignores Block and Evasion and lands as Multi-Hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/hellfire
+spec:sorcerer:hellfire:5,skill:sorcerer:hellfire,5,16,-15s cooldown,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/hellfire
+spec:sorcerer:hibernation:1,stigma:sorcerer:hibernation,1,5,+100% Incoming Heal,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/hibernation
+spec:sorcerer:hibernation:2,stigma:sorcerer:hibernation,2,10,Restores 5% Max HP every 1s for the duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/hibernation
+spec:sorcerer:hibernation:3,stigma:sorcerer:hibernation,3,15,+2s duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/hibernation
+spec:sorcerer:hibernation:4,stigma:sorcerer:hibernation,4,20,Triggers when afflicted with Impact-type status,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/hibernation
+spec:sorcerer:ice-chain:1,skill:sorcerer:ice-chain,1,8,-20% MP Cost,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/ice-chain
+spec:sorcerer:ice-chain:2,skill:sorcerer:ice-chain,2,8,+20% Skill Speed,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/ice-chain
+spec:sorcerer:ice-chain:3,skill:sorcerer:ice-chain,3,8,Deals up to 12% more damage when less targets are hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/ice-chain
+spec:sorcerer:ice-chain:4,skill:sorcerer:ice-chain,4,12,-1s [Winter's Shackles] cooldown on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/ice-chain
+spec:sorcerer:ice-chain:5,skill:sorcerer:ice-chain,5,16,5% chance to inflict Frost for 2s on landing [Cold Wave],0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/ice-chain
+spec:sorcerer:lumiels-space:1,stigma:sorcerer:lumiels-space,1,5,Up to +20% damage when more targets hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/lumiels-space
+spec:sorcerer:lumiels-space:2,stigma:sorcerer:lumiels-space,2,10,Adds [The Depths] Chain Skill,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/lumiels-space
+spec:sorcerer:lumiels-space:3,stigma:sorcerer:lumiels-space,3,15,+1s [The Depths] Knockdown duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/lumiels-space
+spec:sorcerer:lumiels-space:4,stigma:sorcerer:lumiels-space,4,20,-30s [Lumiel's Space] cooldown,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/lumiels-space
+spec:sorcerer:soul-freeze:1,stigma:sorcerer:soul-freeze,1,5,50% chance to inflict Root for 5s,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/soul-freeze
+spec:sorcerer:soul-freeze:2,stigma:sorcerer:soul-freeze,2,10,"-1,000 Stamina",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/soul-freeze
+spec:sorcerer:soul-freeze:3,stigma:sorcerer:soul-freeze,3,15,+2s Seal duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/soul-freeze
+spec:sorcerer:soul-freeze:4,stigma:sorcerer:soul-freeze,4,20,+25% Seal chance,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/soul-freeze
+spec:sorcerer:steel-barrier:1,stigma:sorcerer:steel-barrier,1,5,+10% Move Speed,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/steel-barrier
+spec:sorcerer:steel-barrier:2,stigma:sorcerer:steel-barrier,2,10,HP Regen at fixed intervals,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/steel-barrier
+spec:sorcerer:steel-barrier:3,stigma:sorcerer:steel-barrier,3,15,+10% PvE Damage Tolerance increase and +5% PvP Damage Tolerance increase,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/steel-barrier
+spec:sorcerer:steel-barrier:4,stigma:sorcerer:steel-barrier,4,20,-15s cooldown,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/steel-barrier
+spec:sorcerer:winters-shackles:1,skill:sorcerer:winters-shackles,1,8,Changes to mobile skill,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/winters-shackles
+spec:sorcerer:winters-shackles:2,skill:sorcerer:winters-shackles,2,8,30% chance to inflict Frost for 3s on landing [Winter's Shackles],0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/winters-shackles
+spec:sorcerer:winters-shackles:3,skill:sorcerer:winters-shackles,3,8,+20% PvE Damage Boost and +10% PvP Damage Boost for 5s on landing [Winter's Shackles],0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/winters-shackles
+spec:sorcerer:winters-shackles:4,skill:sorcerer:winters-shackles,4,12,Adds [Winter's Illusion] Chain Skill,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/winters-shackles
+spec:sorcerer:winters-shackles:5,skill:sorcerer:winters-shackles,5,16,-15s [Winter's Shackles] cooldown,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/winters-shackles
+spec:sorcerer:wish-of-concentration:1,skill:sorcerer:wish-of-concentration,1,8,Reduces MP Cost by 10%,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/wish-of-concentration
+spec:sorcerer:wish-of-concentration:2,skill:sorcerer:wish-of-concentration,2,8,+10% additional Attack,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/wish-of-concentration
+spec:sorcerer:wish-of-concentration:3,skill:sorcerer:wish-of-concentration,3,8,+500 Max MP,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/wish-of-concentration
+spec:sorcerer:wish-of-concentration:4,skill:sorcerer:wish-of-concentration,4,12,+10% Combat Speed,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/wish-of-concentration
+spec:sorcerer:wish-of-concentration:5,skill:sorcerer:wish-of-concentration,5,16,-10s all skill cooldowns,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/wish-of-concentration

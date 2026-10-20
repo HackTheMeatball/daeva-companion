@@ -323,6 +323,53 @@ on purpose: the guide shows nothing rather than an unverified value.
   | st-voice-of-doom.png | Voice of Doom | <https://metabot.gg/en/aion-2/skills/voice-of-doom> | <https://metabot.gg/web/aion2/skills/17300000.webp> | 2026-10-19 |
   | st-yustiels-power.png | Yustiel's Power | <https://metabot.gg/en/aion-2/skills/yustiels-power> | <https://metabot.gg/web/aion2/skills/17420000.webp> | 2026-10-19 |
 
+- **Sorcerer skill and stigma icons: saved before the guide item** (0.8 class research, docs/research/2026-10-sorcerer-pack.md
+  §7; lesson from #441 item 4). All 35 (22 skills, 13 stigmas) came from Metabot under the standing icon OK (owner,
+  2026-10-14) on 2026-10-19, 8:41–8:45 PM ET (00:41–00:45 UTC on 10-20 in the request log);
+  none lacks an approved source, so nothing goes to the owner. Staged in `data/packs/aion2/asmodian/sorcerer/icons/`
+  (256 px WebP → 128 px RGB PNG, Lanczos, like the other classes), not wired into the app. Names carry the class
+  (`sk-sorcerer-<slug>.png`) because Defiance and Revitalization Contract are names other classes use too. The 12 active
+  icon ids match the ones Game Data Check read on 2026-10-19 (owner-screens/2026-10-19/sorcerer/NOTES.md). The guide item
+  moves the ones it shows to `src/assets/icons/` (the build rejects unreferenced PNGs there) and sets each record's `icon`.
+
+  | File | Name | Source page | File URL | Retrieved |
+  |---|---|---|---|---|
+  | sk-sorcerer-absorb-essence.png | Absorb Essence | <https://metabot.gg/en/aion-2/skills/absorb-essence> | <https://metabot.gg/web/aion2/skills/15760000.webp> | 2026-10-19 |
+  | sk-sorcerer-bittercold-wind.png | Bittercold Wind | <https://metabot.gg/en/aion-2/skills/bittercold-wind> | <https://metabot.gg/web/aion2/skills/15280000.webp> | 2026-10-19 |
+  | sk-sorcerer-blaze.png | Blaze | <https://metabot.gg/en/aion-2/skills/blaze> | <https://metabot.gg/web/aion2/skills/15050000.webp> | 2026-10-19 |
+  | sk-sorcerer-cold-snap.png | Cold Snap | <https://metabot.gg/en/aion-2/skills/cold-snap> | <https://metabot.gg/web/aion2/skills/15730000.webp> | 2026-10-19 |
+  | sk-sorcerer-defiance.png | Defiance | <https://metabot.gg/en/aion-2/skills/defiance-sorcerer> | <https://metabot.gg/web/aion2/skills/15240000.webp> | 2026-10-19 |
+  | sk-sorcerer-fire-mark.png | Fire Mark | <https://metabot.gg/en/aion-2/skills/fire-mark> | <https://metabot.gg/web/aion2/skills/15710000.webp> | 2026-10-19 |
+  | sk-sorcerer-firestorm.png | Firestorm | <https://metabot.gg/en/aion-2/skills/firestorm> | <https://metabot.gg/web/aion2/skills/15040000.webp> | 2026-10-19 |
+  | sk-sorcerer-flame-arrow.png | Flame Arrow | <https://metabot.gg/en/aion-2/skills/flame-arrow> | <https://metabot.gg/web/aion2/skills/15210000.webp> | 2026-10-19 |
+  | sk-sorcerer-flame-scattershot.png | Flame Scattershot | <https://metabot.gg/en/aion-2/skills/flame-scattershot> | <https://metabot.gg/web/aion2/skills/15010000.webp> | 2026-10-19 |
+  | sk-sorcerer-frost-burst.png | Frost Burst | <https://metabot.gg/en/aion-2/skills/frost-burst> | <https://metabot.gg/web/aion2/skills/15220000.webp> | 2026-10-19 |
+  | sk-sorcerer-frost.png | Frost | <https://metabot.gg/en/aion-2/skills/frost> | <https://metabot.gg/web/aion2/skills/15150000.webp> | 2026-10-19 |
+  | sk-sorcerer-grace-of-enhancement.png | Grace of Enhancement | <https://metabot.gg/en/aion-2/skills/grace-of-enhancement> | <https://metabot.gg/web/aion2/skills/15780000.webp> | 2026-10-19 |
+  | sk-sorcerer-grace-of-resistance.png | Grace of Resistance | <https://metabot.gg/en/aion-2/skills/grace-of-resistance> | <https://metabot.gg/web/aion2/skills/15770000.webp> | 2026-10-19 |
+  | sk-sorcerer-hellfire.png | Hellfire | <https://metabot.gg/en/aion-2/skills/hellfire> | <https://metabot.gg/web/aion2/skills/15060000.webp> | 2026-10-19 |
+  | sk-sorcerer-ice-chain.png | Ice Chain | <https://metabot.gg/en/aion-2/skills/ice-chain> | <https://metabot.gg/web/aion2/skills/15090000.webp> | 2026-10-19 |
+  | sk-sorcerer-revitalization-contract.png | Revitalization Contract | <https://metabot.gg/en/aion-2/skills/revitalization-contract-sorcerer> | <https://metabot.gg/web/aion2/skills/15790000.webp> | 2026-10-19 |
+  | sk-sorcerer-robe-of-cold.png | Robe of Cold | <https://metabot.gg/en/aion-2/skills/robe-of-cold> | <https://metabot.gg/web/aion2/skills/15750000.webp> | 2026-10-19 |
+  | sk-sorcerer-robe-of-earth.png | Robe of Earth | <https://metabot.gg/en/aion-2/skills/robe-of-earth> | <https://metabot.gg/web/aion2/skills/15720000.webp> | 2026-10-19 |
+  | sk-sorcerer-robe-of-flame.png | Robe of Flame | <https://metabot.gg/en/aion-2/skills/robe-of-flame> | <https://metabot.gg/web/aion2/skills/15740000.webp> | 2026-10-19 |
+  | sk-sorcerer-vitality-evaporation.png | Vitality Evaporation | <https://metabot.gg/en/aion-2/skills/vitality-evaporation> | <https://metabot.gg/web/aion2/skills/15800000.webp> | 2026-10-19 |
+  | sk-sorcerer-winters-shackles.png | Winter's Shackles | <https://metabot.gg/en/aion-2/skills/winters-shackles> | <https://metabot.gg/web/aion2/skills/15110000.webp> | 2026-10-19 |
+  | sk-sorcerer-wish-of-concentration.png | Wish of Concentration | <https://metabot.gg/en/aion-2/skills/wish-of-concentration> | <https://metabot.gg/web/aion2/skills/15310000.webp> | 2026-10-19 |
+  | st-sorcerer-arctic-armor.png | Arctic Armor | <https://metabot.gg/en/aion-2/skills/arctic-armor> | <https://metabot.gg/web/aion2/skills/15230000.webp> | 2026-10-19 |
+  | st-sorcerer-assault-bombardment.png | Assault Bombardment | <https://metabot.gg/en/aion-2/skills/assault-bombardment> | <https://metabot.gg/web/aion2/skills/15700000.webp> | 2026-10-19 |
+  | st-sorcerer-cold-storm.png | Cold Storm | <https://metabot.gg/en/aion-2/skills/cold-storm> | <https://metabot.gg/web/aion2/skills/15200000.webp> | 2026-10-19 |
+  | st-sorcerer-curse-tree.png | Curse: Tree | <https://metabot.gg/en/aion-2/skills/curse-tree> | <https://metabot.gg/web/aion2/skills/15140000.webp> | 2026-10-19 |
+  | st-sorcerer-delayed-explosion.png | Delayed Explosion | <https://metabot.gg/en/aion-2/skills/delayed-explosion> | <https://metabot.gg/web/aion2/skills/15320000.webp> | 2026-10-19 |
+  | st-sorcerer-divine-burst.png | Divine Burst | <https://metabot.gg/en/aion-2/skills/divine-burst> | <https://metabot.gg/web/aion2/skills/15360000.webp> | 2026-10-19 |
+  | st-sorcerer-element-enhancement.png | Element Enhancement | <https://metabot.gg/en/aion-2/skills/element-enhancement> | <https://metabot.gg/web/aion2/skills/15400000.webp> | 2026-10-19 |
+  | st-sorcerer-fire-wall.png | Fire Wall | <https://metabot.gg/en/aion-2/skills/fire-wall> | <https://metabot.gg/web/aion2/skills/15390000.webp> | 2026-10-19 |
+  | st-sorcerer-glacial-smite.png | Glacial Smite | <https://metabot.gg/en/aion-2/skills/glacial-smite> | <https://metabot.gg/web/aion2/skills/15120000.webp> | 2026-10-19 |
+  | st-sorcerer-hibernation.png | Hibernation | <https://metabot.gg/en/aion-2/skills/hibernation> | <https://metabot.gg/web/aion2/skills/15410000.webp> | 2026-10-19 |
+  | st-sorcerer-lumiels-space.png | Lumiel's Space | <https://metabot.gg/en/aion-2/skills/lumiels-space> | <https://metabot.gg/web/aion2/skills/15300000.webp> | 2026-10-19 |
+  | st-sorcerer-soul-freeze.png | Soul Freeze | <https://metabot.gg/en/aion-2/skills/soul-freeze> | <https://metabot.gg/web/aion2/skills/15130000.webp> | 2026-10-19 |
+  | st-sorcerer-steel-barrier.png | Steel Barrier | <https://metabot.gg/en/aion-2/skills/steel-barrier> | <https://metabot.gg/web/aion2/skills/15160000.webp> | 2026-10-19 |
+
 - **Spiritmaster rotation: one source, not shown** (0.7 P4, #347). Metabot's leveling build gives a rotation (one site,
   `data/research/spiritmaster-builds-metabot-2026-10.csv`), but the Build drawer's Rotation section is written for the
   Assassin's keys, so the guide shows none. The three skills that fire only on a condition are a Build plan step instead

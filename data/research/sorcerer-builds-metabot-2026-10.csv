@@ -1,0 +1,42 @@
+build,voice,kind,order,name,value,status,checkedAt,page_url,notes
+leveling-1-45,editorial,skill-target,1,Flame Arrow,Lv 10,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,2,Ice Chain,Lv 10,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,3,Firestorm,Lv 10,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,4,Bittercold Wind,Lv 10,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,5,Blaze,Lv 10,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,6,Winter's Shackles,Lv 10,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,7,Hellfire,Lv 10,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,8,Fire Mark,Lv 10,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,9,Robe of Flame,Lv 10,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,10,Wish of Concentration,Lv 7,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,11,Frost,Lv 5,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,stigma-slot,1,Element Enhancement,"slot 1 (Lv 22), stigma Lv 8",single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer/build,
+leveling-1-45,editorial,stigma-slot,2,Delayed Explosion,"slot 2 (Lv 27), stigma Lv 7",single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer/build,
+leveling-1-45,editorial,stigma-slot,3,Fire Wall,"slot 3 (Lv 32), stigma Lv 5",single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer/build,
+leveling-1-45,editorial,stigma-slot,4,Cold Storm,"slot 4 (Lv 37), stigma Lv 4",single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer/build,
+leveling-1-45,editorial,rotation,1,"Buff up, slow the pack with Ice Chain, Winter's Shackles, charged Hellfire, Firestorm, Blaze on the Fire Mark target, Bittercold Wind, Flame Arrow as filler",,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer/build,"our summary of the page text, not its wording"
+endgame-pve-top-players,"aggregate (150 tracked Lv 45 players, updated ~2026-10-02)",stigma-slot,1,Element Enhancement,"slot 1 (Lv 22), stigma Lv 8, pick 93%",single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer/build,
+endgame-pve-top-players,"aggregate (150 tracked Lv 45 players, updated ~2026-10-02)",stigma-slot,2,Delayed Explosion,"slot 2 (Lv 27), stigma Lv 6, pick 83%",single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer/build,
+endgame-pve-top-players,"aggregate (150 tracked Lv 45 players, updated ~2026-10-02)",stigma-slot,3,Fire Wall,"slot 3 (Lv 32), stigma Lv 6, pick 76%",single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer/build,
+endgame-pve-top-players,"aggregate (150 tracked Lv 45 players, updated ~2026-10-02)",stigma-slot,4,Cold Storm,"slot 4 (Lv 37), stigma Lv 4, pick 43%",single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer/build,
+endgame-pve-top-players,aggregate,core-skill,1,Hellfire,100% pick,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer,
+endgame-pve-top-players,aggregate,core-skill,2,Flame Arrow,100% pick,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer,
+endgame-pve-top-players,aggregate,core-skill,3,Firestorm,100% pick,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer,
+endgame-pve-top-players,aggregate,core-skill,4,Bittercold Wind,100% pick,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer,
+endgame-pve-top-players,aggregate,core-skill,5,Blaze,100% pick,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer,
+class-builds-guide,editorial,core-skill,1,Hellfire,,single-source,2026-10-19,https://metabot.gg/en/aion-2/guides/class-builds-guide,
+class-builds-guide,editorial,core-skill,2,Firestorm,,single-source,2026-10-19,https://metabot.gg/en/aion-2/guides/class-builds-guide,
+class-builds-guide,editorial,core-skill,3,Blaze,,single-source,2026-10-19,https://metabot.gg/en/aion-2/guides/class-builds-guide,
+class-builds-guide,editorial,core-skill,4,Ice Chain,,single-source,2026-10-19,https://metabot.gg/en/aion-2/guides/class-builds-guide,
+class-builds-guide,editorial,core-skill,5,Bittercold Wind,,single-source,2026-10-19,https://metabot.gg/en/aion-2/guides/class-builds-guide,
+class-builds-guide,editorial,stigma-slot,1,Element Enhancement,slot 1 (Lv 22),single-source,2026-10-19,https://metabot.gg/en/aion-2/guides/class-builds-guide,
+class-builds-guide,editorial,stigma-slot,2,Delayed Explosion,slot 2 (Lv 27),single-source,2026-10-19,https://metabot.gg/en/aion-2/guides/class-builds-guide,
+class-builds-guide,editorial,stigma-slot,3,Fire Wall,slot 3 (Lv 32),single-source,2026-10-19,https://metabot.gg/en/aion-2/guides/class-builds-guide,
+class-builds-guide,editorial,stigma-slot,4,Cold Storm,slot 4 (Lv 37),single-source,2026-10-19,https://metabot.gg/en/aion-2/guides/class-builds-guide,
+class-page-stat-priority,editorial,stat-priority,1,Attack,,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer,the class-builds guide gives the same order
+class-page-stat-priority,editorial,stat-priority,2,Critical Hit,,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer,
+class-page-stat-priority,editorial,stat-priority,3,MP,,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer,
+class-page-stat-priority,editorial,stat-priority,4,Accuracy Bonus,,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer,
+class-page-stat-priority,editorial,stat-priority,5,HP,,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer,
+class-page-daevanion-path,editorial,board-path,1,Zikel: Grace of Enhancement node pair,,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer,Zikel opens at Lv 20; Grace of Enhancement is learned at Lv 21. Same text on the class-builds guide
+class-page-daevanion-path,editorial,board-path,2,Nezekan: Fire Mark and Robe of Earth node pairs,,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/sorcerer,"Nezekan opens at Lv 12, before Zikel"
