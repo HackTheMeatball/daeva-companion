@@ -25,10 +25,12 @@ no running out before 1.0: 1.0 ships when its scope is done.
 every minor and patch without a separate owner go, each release on the Release Planner's GO. When the team judges a
 release ready for 1.0, the owner tests that candidate personally (on staging once it exists) and types go or no-go. A
 no-go relabels it as the next minor (for example 0.11) and another cycle runs. Still brought to the owner: product calls
-the team can't settle, hard blockers, what only the owner's hands can do, and one process box per kaizen review (K23).
+the team can't settle after an outside review, hard blockers, and what only the owner's hands can do.
 **The owner steps away (2026-10-20 5:24 PM ET):** the coordinator runs the project day to day; looks are Design Lead's after
 a fresh or outside review; the owner is asked about direction only when the team is genuinely unsure and only after an
-outside reviewer has looked, naming who reviewed it and what they said. The K23 box carries only what stays unsure.
+outside reviewer has looked, naming who reviewed it and what they said. Company structure, workflow and process are the
+team's too (5:25 PM ET): "it all needs to be just as good or better than a real dev company. and you make that happen
+completely on your own."
 
 - **Minor (0.X.0)**: a theme, i.e. one or more related objectives. New ideas join a theme that fits before they start a
   new one.
@@ -149,17 +151,17 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
    design review, Coordinator (Saul) starts a one-off Design Critic thread that took no part in the design. Before the
    owner sees Design Lead (Jane)'s mockups, it reviews them against `docs/design/review-checklist.md` (its "looks
    AI-made" section included), briefed by Design Review (Holly) from the fixed template, and sends its findings to Jane and to the morning debrief. Jane answers each finding in writing;
-   the final look OK stays the owner's.
+   the final look OK is Design Lead's after that review (owner, 2026-10-20 5:24 PM ET).
    **Owner asks (Kaizen K23, owner 2026-10-20 4:39 PM ET; replaces K15's morning batch, which replaced K10):** the
    planning pass lists every product OK the minor needs, each with its recommendation, the exact words to type and the
    thread to type them in, and asks them together with the build go and the draft plan. That includes the minor's
    standing ship OK, one per minor covering the .0 and every patch, which covers a release once the Release Planner's GO
    is in (rules audit COM-03, K19). Each release's OK list also carries one line asking the owner's weekly usage %, and
    the Release Planner records the number in that release's #232 row (owner, 2026-10-19 12:51 PM ET). **Process asks
-   (rule, team and permission changes), from any thread and at any time in the minor, wait for the next kaizen review**:
-   Kaizen (Gale) batches them, and after each kaizen review the Release Planner posts them to the owner as one copy box
-   in the Release planning (Walter) thread. The Release Planner then writes the DECISIONS row and every ledger row and home the box names in one
-   PR, with each rule's owner as a reviewer. Product calls and HARD BLOCKERs still go when needed: a question that first
+   (rule, team and permission changes) no longer go to the owner (owner, 2026-10-20 5:24 and 5:25 PM ET; retires K23's
+   box):** the team decides them after an outside review, Kaizen (Gale) drafts the procedure, and the Release Planner
+   writes the DECISIONS row and every ledger row and home a decision names in one PR, with each rule's owner as a
+   reviewer. The owner is asked only when the team stays genuinely unsure after that review. Product calls and HARD BLOCKERs still go when needed: a question that first
    comes up mid-minor and gates an item already queued or building goes out at once as a HARD BLOCKER. Ungated items are queued first,
    and a gated item without its typed OK goes to the end of the queue; it never holds a lane or the critical path.
    Research gates start at pass start (kept from K10).
