@@ -1,0 +1,8 @@
+[
+  {"case": "insignia-explosion-slot2-1500", "kind": "before-after", "title": "Insignia Explosion slot 2 names its pick", "caption": "Skills card, Lv 45 with the plan bought: \"pick a specialty\" becomes \"Keeps 2 Insignia stacks\", tagged disputed (the tooltip names -3s cooldown as the alternative)."},
+  {"case": "insignia-explosion-slot2-1500-nextup", "kind": "before-after", "title": "Next up: Insignia Explosion slot 2", "caption": "The same pick and its disputed tag on Next up's skill card."},
+  {"case": "insignia-explosion-slot2-390-nextup", "kind": "before-after", "title": "Next up on a phone: Insignia Explosion slot 2", "caption": "The pick and tag at 390 px."},
+  {"case": "ambush-slot2-1500", "kind": "before-after", "title": "Ambush slot 2 names its pick", "caption": "Skills card: \"pick a specialty\" becomes \"Absorbs 3% HP\", tagged disputed (the tooltip names the Whirlwind Slice trigger as the alternative)."},
+  {"case": "ambush-slot2-1500-nextup", "kind": "before-after", "title": "Next up: Ambush slot 2", "caption": "The same pick and its disputed tag on Next up's skill card."},
+  {"case": "savage-roar-shadowstrike-slot2-1500", "kind": "before-after", "title": "Savage Roar and Shadowstrike slot 2", "caption": "These rows look the same: the plan stops below skill Lv 12, so their pick (contested / inferred) is in the row's tooltip, which a screenshot can't show."}
+]
