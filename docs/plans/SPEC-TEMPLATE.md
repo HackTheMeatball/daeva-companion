@@ -1,22 +1,24 @@
 # Item spec template
 
 The Release Planner writes every item spec in `docs/plans/<minor>/README.md` (and each `<minor> P<n>` issue) from this
-file. `tests/kickoff.mjs` parses the example below with the same code kickoff uses, so a format change here that kickoff
-can't read fails its own PR (Kaizen, 2026-10-19: the After parser broke twice on spec-format changes). Change the spec
+file. A `tests/kickoff.mjs` check will parse the example below with the same code kickoff uses (pending, Gus), so a
+format change here that kickoff can't read fails its own PR (Kaizen, 2026-10-19: the After parser broke twice on spec-format changes). Change the spec
 format only here, together with the parser and its test.
 
 ## Rules kickoff depends on
 
-- The issue title is `<minor> P<n>: <short title>` (a patch item `<x.y.z> F<n>: …`, the release `<minor> R: Release …`).
+- The issue title is `<minor> P<n>: <short title>` (a patch item `<x.y.z> F<n>: …`, the release `Release <minor>.0 (<short title>)`,
+  which kickoff keys as `R`; a `<minor> R: …` title is not keyed and its `After: everything` never clears).
 - The **first** `After:` in the issue body is the one kickoff reads. It holds bare keys separated by commas:
   - `P<n>` (another item of the same minor), `research-<slug>` (met once a docs/research file named with `<slug>` is
     on main), `owner-ok-<minor>-<slug>` (met once a DECISIONS topic carries it in backticks on an "Owner, typed" row);
-  - `everything` (every other item of the minor), or `none`.
+  - `everything` or `all` (every other item of the minor), or `none` (`and` and `nothing` are skipped like `none`).
   - Markdown marks and `(…)` notes are stripped; text after the first `. ` is ignored. Anything else is "not
     understood" and holds the item, which is how the release item is held on purpose until the Release Planner
     releases it.
-- The queue line is the issue's last line: `- [next] #<n> <opus|sonnet> lanes:<lane>[,<lane>…]`, or `lanes:none`;
-  `alone` is a separate word (`lanes:release alone`), never part of the lane list.
+- The queue line is the issue's last line, copied into the state issue (#114) to queue it:
+  `- [next] #<n> <opus|sonnet> lanes:<lane>[,<lane>…]`, `lanes:none`, or no lanes at all; `alone` is a separate word
+  (`lanes:release alone`, or `- [next] #<n> opus alone`), never part of the lane list.
 - Lanes are the serial files of docs/team/DISPATCH.md. Names outside kickoff's known list only warn, and kickoff still
   keeps same-named lanes apart.
 
