@@ -95,9 +95,10 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
      more standing threads are added or removed.
    - **Changes.** Each cause that repeated, and each metric that got worse, becomes one concrete process change: a
      #222 row, put in place before the minor's first item is queued (a #114 rule, a planner-instruction change, or
-     a workflow PR). Stall limits that a build actually hit, the build cap and model routing in #114 are
-     re-derived from this minor's build times and usage; stall limits no build hit carry over (rules audit
-     PIP-10). The plan in steps 2–6 is made under these changes and cites the scorecard where it relies on it.
+     a workflow PR). Stall limits, the build cap and model routing in #114 are only
+     re-derived from this minor's build times and usage where a build hit a limit (a stall limit, the cap, or a
+     model routing stop); everything else carries over unchanged (rules audit PIP-10, loosened in the 0.8 kaizen
+     review). The plan in steps 2–6 is made under these changes and cites the scorecard where it relies on it.
 2. **Audit the whole path to 1.0, then this minor.** First re-read the plan from this minor to 1.0 against the code
    and what the look-back found: is any later minor stale, in the wrong order, too big, or blocked on something
    nobody has started (research, owner input, hosting)? Change the later minors here, in this pass, before planning
