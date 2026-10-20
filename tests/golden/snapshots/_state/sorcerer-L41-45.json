@@ -1,0 +1,58 @@
+{
+  "sorcerer/L45-q86-none-A": {
+    "in": "81d3282c5fde",
+    "store": {
+      "areaLv": ["(absent)","40"],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/sorcerer","class":"sorcerer","name":"","created":0,"checks":{},"level":45,"quest":"Daeva Trapped in a Nightmare","mt":{"level":[0,45],"quest":[0,["Daeva Trapped in a Nightmare",null]]}},{"checks":{},"level":45,"quest":"Daeva Trapped in a Nightmare","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/sorcerer","class":"sorcerer","name":"","created":0,"mt":{"level":[0,45],"quest":[0,["Daeva Trapped in a Nightmare",null]],"rotSeen":[1790856000,["Left click:Flame Arrow:0","Right click:Ice Chain:0","Q:Frost Burst:0","Q:Frost:1","E:Flame Scattershot:0","E:Blaze:1","E:Wish of Concentration:2","1:Firestorm:0","2:Bittercold Wind:0","3:Winter's Shackles:0","4:Hellfire:0"]]},"rotSeen":["Left click:Flame Arrow:0","Right click:Ice Chain:0","Q:Frost Burst:0","Q:Frost:1","E:Flame Scattershot:0","E:Blaze:1","E:Wish of Concentration:2","1:Firestorm:0","2:Bittercold Wind:0","3:Winter's Shackles:0","4:Hellfire:0"]}],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g22": ["(absent)",true],
+      "open.g25": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "open.g28": ["(absent)",true],
+      "open.g30": ["(absent)",true],
+      "open.g32": ["(absent)",true],
+      "open.g35": ["(absent)",true],
+      "open.g37": ["(absent)",true],
+      "open.g40": ["(absent)",true],
+      "open.g45": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "savedAt": ["(absent)",1790856000000]
+    },
+    "mode": "advanced"
+  },
+  "sorcerer/L45-q86-none-B": {
+    "in": "1b891ae023f7",
+    "store": {
+      "areaLv": ["(absent)","40"],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/sorcerer","class":"sorcerer","name":"","created":0,"checks":{},"level":45,"quest":"Daeva Trapped in a Nightmare","mt":{"level":[0,45],"quest":[0,["Daeva Trapped in a Nightmare",null]]}},{"checks":{},"level":45,"quest":"Daeva Trapped in a Nightmare","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/sorcerer","class":"sorcerer","name":"","created":0,"mt":{"level":[0,45],"quest":[0,["Daeva Trapped in a Nightmare",null]],"rotSeen":[1790856000,["Left click:Flame Arrow:0","Right click:Ice Chain:0","Q:Frost Burst:0","Q:Frost:1","E:Flame Scattershot:0","E:Blaze:1","E:Wish of Concentration:2","1:Firestorm:0","2:Bittercold Wind:0","3:Winter's Shackles:0","4:Hellfire:0"]]},"rotSeen":["Left click:Flame Arrow:0","Right click:Ice Chain:0","Q:Frost Burst:0","Q:Frost:1","E:Flame Scattershot:0","E:Blaze:1","E:Wish of Concentration:2","1:Firestorm:0","2:Bittercold Wind:0","3:Winter's Shackles:0","4:Hellfire:0"]}],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g22": ["(absent)",true],
+      "open.g25": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "open.g28": ["(absent)",true],
+      "open.g30": ["(absent)",true],
+      "open.g32": ["(absent)",true],
+      "open.g35": ["(absent)",true],
+      "open.g37": ["(absent)",true],
+      "open.g40": ["(absent)",true],
+      "open.g45": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "savedAt": ["(absent)",1790856000000]
+    },
+    "mode": "basic"
+  }
+}
