@@ -95,9 +95,10 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
      more standing threads are added or removed.
    - **Changes.** Each cause that repeated, and each metric that got worse, becomes one concrete process change: a
      #222 row, put in place before the minor's first item is queued (a #114 rule, a planner-instruction change, or
-     a workflow PR). Stall limits that a build actually hit, the build cap and model routing in #114 are
-     re-derived from this minor's build times and usage; stall limits no build hit carry over (rules audit
-     PIP-10). The plan in steps 2–6 is made under these changes and cites the scorecard where it relies on it.
+     a workflow PR). Stall limits, the build cap and model routing in #114 are only
+     re-derived from this minor's build times and usage where a build hit a limit (a stall limit, the cap, or a
+     model routing stop); everything else carries over unchanged (rules audit PIP-10, loosened in the 0.8 kaizen
+     review). The plan in steps 2–6 is made under these changes and cites the scorecard where it relies on it.
 2. **Audit the whole path to 1.0, then this minor.** First re-read the plan from this minor to 1.0 against the code
    and what the look-back found: is any later minor stale, in the wrong order, too big, or blocked on something
    nobody has started (research, owner input, hosting)? Change the later minors here, in this pass, before planning
@@ -110,6 +111,15 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
    unknown is a research item first, not a build. **Live dependencies** (Kaizen, 2026-10-19): anything the item needs
    that isn't on the live site yet (a server, a feature of another item). Such an item ships hidden behind a flag until
    the dependency is live, and the reviewer checks the flag (0.7's sync line showed for ~5 h with no server).
+   **Fresh review (owner, 2026-10-20 4:39 PM ET; Kaizen K24):** the planner tags an item `fresh-review` when it is a new
+   look, layout or colour meaning, a change to an owner-approved look, a pipeline, merge-gate or workflow change, a save
+   or storage key change, or a release PR, plus one full design pass per minor (the Design Critic run in step 5, briefed by
+   Design Review). The standing Design Review and Code Review
+   threads may add a tag, never remove one, and brief a reviewer with no history on the work from a fixed template (the
+   checklist, the work and its acceptance line, and its baseline once K26 is in; nothing from the author); findings go to the work's owner, and a
+   disagreement between reviewers goes to the owner in the morning debrief. Watchdog (Mike) flags a merged tagged item
+   with no fresh-review note (`review-skipped`). Once per minor a no-history thread re-checks 10 data fields Game Data
+   Check fixed or passed.
 4. **Waves and lanes for the whole minor.** Lay every item out in waves before anything is queued: items in the same
    module or serial file run one after another; items in different modules may run at the same time, at most five
    builds (the cap in kickoff.yml). Name the critical path, put the items that unblock the most first, and give each item an `After:` line so
@@ -128,20 +138,22 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
    remediated** (the recommendation applied under a standing approval), so the owner can see which calls were whose.
    **Design Critic (owner, 2026-10-19 6:02 PM ET):** for every minor with visible changes, and for Design Lead's 1.0
    design review, Coordinator (Saul) starts a one-off Design Critic thread that took no part in the design. Before the
-   owner sees Design Lead (Jane)'s mockups, it reviews them against `docs/team/ux-review-checklist.md` and a "looks
-   AI-made" checklist and sends its findings to Jane and to the morning debrief. Jane answers each finding in writing;
+   owner sees Design Lead (Jane)'s mockups, it reviews them against `docs/design/review-checklist.md` (its "looks
+   AI-made" section included), briefed by Design Review (Holly) from the fixed template, and sends its findings to Jane and to the morning debrief. Jane answers each finding in writing;
    the final look OK stays the owner's.
-   **When (Kaizen K15, 2026-10-19; replaces K10):** the planning pass lists every OK the minor needs, each with its
-   recommendation, the exact words to type and the thread to type them in (the thread whose session records it). That
-   includes the minor's standing ship OK, one per minor covering the .0 and every patch (rules audit COM-03; owner,
-   2026-10-19 12:50 PM ET). Each release's OK list also carries one line asking the owner's weekly usage %, and the
-   Release Planner records the number in that release's #232 row (owner, 2026-10-19 12:51 PM ET). Coordinator (Saul)
-   asks them as one batch in the next morning debrief, grouped by thread (owner OK 2026-10-19 12:51 PM ET); the
-   target is ≤ 3 threads (a ship OK is typed in Build Pipeline (Gus)'s thread, a tracker OK in Tracker sync (Huell)'s
-   or Skyler's). Ungated items are queued first, and a gated item without its typed OK goes to the end of the queue;
-   it never holds a lane or the critical path. One exception: a question that first comes up mid-minor and gates an
-   item already queued or building goes out at once as a HARD BLOCKER. Research gates start at pass start (kept from
-   K10).
+   **Owner asks (Kaizen K23, owner 2026-10-20 4:39 PM ET; replaces K15's morning batch, which replaced K10):** the
+   planning pass lists every product OK the minor needs, each with its recommendation, the exact words to type and the
+   thread to type them in, and asks them together with the build go and the draft plan. That includes the minor's
+   standing ship OK, one per minor covering the .0 and every patch, which covers a release once the Release Planner's GO
+   is in (rules audit COM-03, K19). Each release's OK list also carries one line asking the owner's weekly usage %, and
+   the Release Planner records the number in that release's #232 row (owner, 2026-10-19 12:51 PM ET). **Process asks
+   (rule, team and permission changes), from any thread and at any time in the minor, wait for the next kaizen review**:
+   Kaizen (Gale) batches them, and after each kaizen review the Release Planner posts them to the owner as one copy box
+   in the Release planning (Walter) thread. The Release Planner then writes the DECISIONS row and every ledger row and home the box names in one
+   PR, with each rule's owner as a reviewer. Product calls and HARD BLOCKERs still go when needed: a question that first
+   comes up mid-minor and gates an item already queued or building goes out at once as a HARD BLOCKER. Ungated items are queued first,
+   and a gated item without its typed OK goes to the end of the queue; it never holds a lane or the critical path.
+   Research gates start at pass start (kept from K10).
 6. **Write and review.** The plan goes into this file and the #114 queue in one PR, written by one session and
    reviewed by a separate one that didn't write it. Then the planner queues the items, top of the lane map first.
 
@@ -155,12 +167,16 @@ means the named data is fixed first. Watchdog (Mike) flags a check unanswered af
 after her check, she re-runs it before the tag. **Release-candidate play (owner, 2026-10-19 4:56 PM ET), for every
 minor from 0.8.0:** with `PRE-RELEASE CHECK` the Release Planner sends Player Testing (Jesse) `RC READY <minor> <sha>`
 (main's head once every item has merged); Jesse plays main built locally at that commit and answers
-`RC PLAY DONE <minor>` with an issue link. The Release Planner reads that report before telling Gus `DATA OK`. The
+`RC PLAY DONE <minor>` with an issue link. The Release Planner reads that report before telling Gus `DATA OK`. **The
+release starts on one GO (owner, 2026-10-20 4:39 PM ET; Kaizen K19):** the Release Planner posts `GO <version>` only after
+`DATA OK` and `RC PLAY DONE` name the same build (build.json; a patch has no RC play, so after `DATA OK`), and Gus starts the
+release item on GO and nothing else; the owner's standing ship OK covers a release once GO is in. The
 live play after release and the per-patch delta check stay.
 **Release manager and merge freeze (owner, 2026-10-20 1:35 PM ET), from 0.8.0:** the Release Planner owns every release
 from `RC READY` (a patch: from `PRE-RELEASE CHECK`) until the live site shows the new version, and checks that every step
 finishes. For a minor, from `RC READY` until CI's tag, Gus merges only PRs whose files are all `docs/**`, `ROADMAP.md` or
-`.github/ISSUE_TEMPLATE/**`, plus the release PR. A blocker fix named by `RC PLAY DONE` or `DATA HOLD` may merge, and then
+`.github/ISSUE_TEMPLATE/**`, plus the release PR, and none at all until the release candidate's deploy and smoke check
+have finished (K19). A blocker fix named by `RC PLAY DONE` or `DATA HOLD` may merge, and then
 the release candidate restarts at the new head (DECISIONS 2026-10-20).
 
 ## How an objective is worked
@@ -1148,14 +1164,14 @@ Game Data Check's research (#570, #584). Specs: [docs/plans/0.8.1/README.md](doc
 
 - **F1** Assassin Daevanion: cost boxes pre-filled from the owner's boards, Combat Speed corner, on-path rows (gen, golden).
 - **F2** A labelled specialty pick in every guide skill's slot 2 (gen, golden).
-- **F3** Specialty rows placed by effective skill level (golden, nextup; after F1).
-- **F4** RC play fixes: page title on class pick, a tooltip typo, one legend per card (a11y).
+- **F3** Specialty rows placed by effective skill level (golden, golden-nextup; after F1).
+- **F4** RC play fixes: page title on class pick, a tooltip typo, one legend per card (a11y, golden).
 - **F5** Gladiator and Ranger rotation icons (gen; after Game Data Check commits the files).
 - **F6** Size trim: page gzip under 90% of its budget, no visible change.
-- **F7, F8** Respec buttons in Basic; recommended specialty in Next up: new looks, so 0.9 unless the owner says "now"
-  (owner rule 2026-10-18 10:40 PM ET; decision card in the Release planning thread).
+- **F7** Respec buttons in Basic (app.css, golden). **F8** Recommended specialty in Next up, also after a respec (golden,
+  golden-nextup; after F3). Both are new looks; the owner said "now" on 2026-10-20 at 4:28 PM ET (DECISIONS).
 
-Also: #585 (simpler link preview) merges after the v0.8.0 tag. Release: `PRE-RELEASE CHECK 0.8.1`, then the release
+Also: #585 (simpler link preview) merged after the v0.8.0 tag. Release: `PRE-RELEASE CHECK 0.8.1`, then the release
 item after `DATA OK 0.8.1`; no RC play or freeze for a patch. Owner notes 9–16 go to the 0.9 pass (triage in #232).
 
 ### 0.9 — the 1.0 audit's fixes
