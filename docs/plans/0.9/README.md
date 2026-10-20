@@ -353,10 +353,11 @@ Rules for every item:
   - [ ] Each class's board totals match the research file (a test reads the totals from the data and checks them
         against the per-node costs).
   - [ ] No plan asks for more points than the player has: at each row's level, the cumulative cost is at most the
-        level points plus the crystals the data says are earned by then (a test checks every class). The research found
-        the Assassin plan at 184 points by its Lv 40 row against about 165 available, and two rows that cost 0 because
-        an earlier path buys the node (Ranger Focused Eye, Templar Guarding Seal); reorder or move them so the plan is
-        affordable in order.
+        level points plus the crystals the data says are earned by then (a test checks every class). Game Data Check's
+        corrected count (#614, 3d48d2f): 106, 181, 262 and 314 points at Lv 20, 30, 40 and 45 for a player who does the
+        regional quests and Sealed Dungeons, so the Assassin's 184 by Lv 40 fits; for a player who skips that side
+        content, row order decides what they can afford, so the cheapest high-value rows come first. Two rows cost 0
+        because an earlier path buys the node (Ranger Focused Eye, Templar Guarding Seal); move them earlier.
   - [ ] Shots of one non-Assassin board.
 - **Lanes:** gen, golden, daevanion-card. **Model:** Opus, M (90 min).
 - **After:** research-node-paths.
