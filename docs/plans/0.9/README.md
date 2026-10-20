@@ -465,13 +465,16 @@ Rules for every item:
   the card's first open; the page keeps the count line and, if the owner chooses it, one plain link per source site.
 - **Files.** `scripts/build.mjs`, `scripts/generated-data.mjs`, `src/cards/sources.js`, `src/sw.js`, `tests/site.js`,
   `tests/regress.js`, `tests/e2test.js`.
+- **Gate.** Source Vetting (Lydia) and an outside reviewer check that per-page credit links rendered on open still meet
+  CLAUDE.md's "plain dofollow links" credit and Metabot's terms; their verdict is a `docs/research/` file named with
+  `sources-credit` (owner, 2026-10-20 5:24 PM ET: the team decides after an outside review).
 - **No-gos.** Every URL still reaches the Sources card and `data/DATA_SOURCES.md`.
 - **Acceptance.**
   - [ ] Budget lines show gzip about 169 K and elements about 4.4 K (pasted).
   - [ ] An offline reload opens Sources from the cache (new `site` check).
   - [ ] Every URL check passes after the card is opened. No visible change in before / after shots.
 - **Lanes:** site, page-card. **Model:** Opus, M (90 min).
-- **After:** owner-ok-0.9-sources-on-open.
+- **After:** research-sources-credit.
 
 ## S1–S4: pipeline items (Build Pipeline builds them; no queue line)
 

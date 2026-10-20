@@ -26,6 +26,9 @@ every minor and patch without a separate owner go, each release on the Release P
 release ready for 1.0, the owner tests that candidate personally (on staging once it exists) and types go or no-go. A
 no-go relabels it as the next minor (for example 0.11) and another cycle runs. Still brought to the owner: product calls
 the team can't settle, hard blockers, what only the owner's hands can do, and one process box per kaizen review (K23).
+**The owner steps away (2026-10-20 5:24 PM ET):** the coordinator runs the project day to day; looks are Design Lead's after
+a fresh or outside review; the owner is asked about direction only when the team is genuinely unsure and only after an
+outside reviewer has looked, naming who reviewed it and what they said. The K23 box carries only what stays unsure.
 
 - **Minor (0.X.0)**: a theme, i.e. one or more related objectives. New ideas join a theme that fits before they start a
   new one.
@@ -1275,7 +1278,7 @@ workflows).
 | P20 FR | Daevanion ~22 ticks, no per-board or Stigma respec (note 9) → board rows, respec per board and all, Stigma respec | M | Opus | app.css, golden | P16 (input: `docs/design/0.9-catchup/`) |
 | P21 | Basic hides catch-up tools; Lv 4–16 chores lead Next up → kept, folded | M | Sonnet | nextup-card, app.css, golden-nextup | none (input: `docs/design/0.9-catchup/`) |
 | P22 FR | Key setup inline with small icons (notes 11, 12) → a sheet, icons fill each box | M | Opus | build-card, app.css, a11y, golden | none (input: `docs/design/0.9-keys/`) |
-| P23 | Sources lists weigh 9.6 K gzip and 1,088 elements while closed → load on open | M | Opus | site, page-card | `owner-ok-0.9-sources-on-open` |
+| P23 | Sources lists weigh 9.6 K gzip and 1,088 elements while closed → load on open | M | Opus | site, page-card | `research-sources-credit` |
 | S1 FR | Golden shares a shard → its own shard | S | Gus | ci | P6 |
 | S2 FR | Nothing checks the live app works → scripted journey after each deploy and every 6 h | S | Gus | ci | none |
 | S3 FR | Sync server deployed by hand → CI tests and dry run, deploy on the owner's token | M | Gus | ci | none |
@@ -1307,7 +1310,7 @@ At most five builds at a time. Ungated items queue first; gated ones go last and
   P22; **build-card** P1 → P13 → P18 → P22; **ci** (Gus) S2 → S3 → S1 → S4.
 - **Wave 2 (after P2):** P9, P10, P11, P13; then P12 (after P11 and P6) and P14 (after P9 and P10).
 - **Wave 3 (as research lands):** P15, P16, P17, P18, in the order their files land.
-- **Wave 4 (as mocks and OKs land):** P19, P20, P21 on the catch-up mock; P22 on the keys mock; P23 on the next kaizen box; S4 once #609 merges.
+- **Wave 4 (as mocks and OKs land):** P19, P20, P21 on the catch-up mock; P22 on the keys mock; P23 on the sources-credit verdict; S4 once #609 merges.
 - **Critical path:** P2 → P11 → P12 → R (L + M + L, about 5.5 h of build at the stall limits, plus review). It runs
   through no owner gate and no research. A gated item whose OK isn't typed by the time the rest is done moves to 0.10
   rather than holding the release.
@@ -1322,10 +1325,10 @@ Under the standing OK until 1.0 most of 0.9 needs nothing from the owner. What i
 1. **Build go and staging: given.** The standing OK is `owner-ok-0.9-go` and covers staging on Build Pipeline's option B
    (`owner-ok-0.9-staging`: `/staging/` on the same site, hidden with `noindex` and a banner, no per-PR previews, $0 and
    no owner setup). The owner tests the 1.0 candidate there.
-2. **Sources load when the card opens** (gates P23). It changes how the CLAUDE.md credit links load (per-page links only
-   when the card opens, one plain link per source site kept in the page), so it is a rule change and goes in the next
-   kaizen review's box (K23) as `owner-ok-0.9-sources-on-open`. Until then P23 waits at the end of the queue; if the
-   answer is no, a reasoned budget raise at 1.0 is the fallback.
+2. **Sources load when the card opens** (gates P23): no longer the owner's (5:24 PM ET). Source Vetting and an outside
+   reviewer check that per-page credit links rendered on open still meet CLAUDE.md's credit rule and Metabot's terms, and
+   write the verdict as a `docs/research/` file named with `sources-credit`. If they say no, a reasoned budget raise at
+   1.0 is the fallback.
 3. **Catch-up and key setup looks: Design Lead approves** (owner's card answer, 2026-10-20 5:21 PM ET). P19–P21 build
    from `docs/design/0.9-catchup/` and P22 from `docs/design/0.9-keys/` once Design Lead commits each mock with the look
    OK, after the Design Critic's read. The owner sees them in the Scrapbook and in the 1.0 test.
@@ -1337,9 +1340,12 @@ Under the standing OK until 1.0 most of 0.9 needs nothing from the owner. What i
 ### 0.10 — The 1.0 look (estimate)
 
 Design Lead's app design review for 1.0 (owner, 2026-10-19 1:57 PM ET): the blind check run in 0.9, a visual language
-mocked and approved by the owner, then built card by card. Player-chosen keys (#388) on top of 0.9 P22. Cards stop
+mocked and approved by Design Lead after a fresh or outside review (owner, 2026-10-20 5:24 PM ET), then built card by card. Player-chosen keys (#388) on top of 0.9 P22. Cards stop
 reading each other's DOM (architecture audit C3), which makes "add a feature" cheaper. The same step shown in three places
-(UX audit finding 12) is settled here. A closed beta with a few real players is the owner's call (team audit §8e). Planned in its own pass after
+(UX audit finding 12) is settled here. **Microscope pass (owner, 2026-10-20 5:24 PM ET):** before the 1.0 candidate, every
+card, feature, element, section and function is reviewed against its purpose: Design Review (Holly) for looks, Code Review
+(Howard) for code, Game Data Check (Gretchen) for data, Team Audit (Gomez) or an outside reviewer for the whole; each
+finding is fixed or recorded as a decision before the candidate is cut. A closed beta with a few real players is the owner's call (team audit §8e). Planned in its own pass after
 0.9 ships; if the blind check finds more than a minor's work, it splits into 0.10 and 0.11.
 
 ### 1.0
