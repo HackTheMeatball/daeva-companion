@@ -299,6 +299,22 @@ on purpose: the guide shows nothing rather than an unverified value.
   | st-chanter-sprint-mantra.png | Sprint Mantra | <https://metabot.gg/en/aion-2/skills/sprint-mantra> | <https://metabot.gg/web/aion2/skills/18160000.webp> | 2026-10-19 | Metabot page only (stigmas not on the owner screen) |
   | st-chanter-undefeated-mantra.png | Undefeated Mantra | <https://metabot.gg/en/aion-2/skills/undefeated-mantra> | <https://metabot.gg/web/aion2/skills/18190000.webp> | 2026-10-19 | Metabot page only (stigmas not on the owner screen) |
 
+- **Chanter passive icons: five for the owner** (0.8 P18, #507). The class data
+  (`data/packs/aion2/classes/chanter/skills.json`, written by `tools/research/chanter-pack.mjs`) follows the owner's Lv 4
+  screen (chanter research §7), not Metabot's file names. No record sets `icon` yet (the staged files are not in
+  `src/assets/icons/`; P19 moves them). Earth's Promise, Wind's Promise and Protection Circle carry a note naming the
+  other page's file the screen shows. The five below carry `fieldStatus` `icon: owner-check`; P19 must not wire an icon
+  for them until the owner's tooltip screenshot names the art. **Owner:** at Chanter Lv 25+, one screenshot of the passive
+  grid in full colour settles all four passives; Recuperation's art is on its key 3 / Lv 8 cell.
+
+  | Skill | Learn Lv | Why |
+  |---|---|---|
+  | Blessing of Life (passive) | 1 | screen: green light with gold ornaments; no Metabot file has it (its page's 18710000 is the Protection Circle art) |
+  | Recuperation (active) | 8 | screen: one open hand with light; no Metabot file has it (its page's 18120000 matches no cell) |
+  | Attack Preparation (passive) | 13 | same shape as 18750000, but red and purple where the file is blue: unconfirmed |
+  | Impact Hit (passive) | 15 | same shape as 18760000, but red and purple: unconfirmed; may be the Assassin's shipped `13760000` (`sk-impact-hit.png`, purple, same shape), as on the Templar (inferred) |
+  | Survival Willpower (passive) | 23 | screen: an armoured figure, hands to the head; Metabot has no icon (18790000 returns 403) |
+
 - **Cleric skill and stigma icons: fetched before the class ships** (0.8 class research, 2026-10-19 6:31–6:35 AM ET,
   docs/research/2026-10-cleric-pack.md §7; issue #441 item 4: the Gladiator and Spiritmaster shipped letter squares
   because their research saved no icon files). All 35 Cleric icons (22 skills, 13 stigmas) came from Metabot under the
