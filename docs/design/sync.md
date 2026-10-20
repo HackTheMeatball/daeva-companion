@@ -307,7 +307,7 @@ Per the plan, these go to the tracker as a To-do only when 0.6 lane C is next.
 
 ## 9. Going live (0.7 P8, #382)
 
-The site mounts the sync line only when `SYNC_LIVE` (`src/shell/sync-host-http.js`) is true; it ships **false**, so
+The site mounts the sync line only when `SYNC_LIVE` (`src/shell/sync-live.js` since 0.8 P6, which also keeps the sync chunk from loading) is true; it ships **false**, so
 players see no switch, no panel and make no request to `SYNC_BASE` until the server exists. Tests turn it on with an
 injected `window.__dcSyncTest = true` (`tests/site.js`), never a URL parameter. The item that deploys the server (0.7 P5,
 #348) turns sync on with one change: `SYNC_LIVE = true`.
