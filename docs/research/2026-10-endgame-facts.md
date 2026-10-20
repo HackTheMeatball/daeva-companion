@@ -24,7 +24,7 @@ The app should store the reset as 07:00 UTC and convert it to local time, never 
 |---|---|---|---|
 | Duty Missions | 5 a day, counted per server | Metabot; daevaguides | 2+ sources |
 | Nightmare attempts | +2 a day, bank up to 14 | Metabot; daevaguides (+2, banks to a cap) | 2+ sources |
-| Odyle Energy | +15 every 3 h (120 a day), cap 560 (840 with membership: daevaguides' page title) | Metabot; daevaguides | 2+ sources for the refill and the 560 cap |
+| Odyle Energy | +15 every 3 h (120 a day), cap 560 (daevaguides' page title also names an 840 cap; what raises it was not read) | Metabot; daevaguides | 2+ sources for the refill and the 560 cap |
 | Ascension Trial | 3 entries a week per character | Metabot; daevaguides; aion2maps | 2+ sources |
 | Sanctuary raids | 4 attempts a week per raid; final-boss kills: Abyssal Forge (Ludra) 1, Corroded Decontamination Facility 2, Chalice of Muspel 2 | Metabot | single source (client table) |
 | Subjugation | 3 tickets a week | Metabot | single source |
