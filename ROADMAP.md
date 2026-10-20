@@ -945,8 +945,8 @@ Sorcerer and the Chanter join as P16–P19, and the label item P20 joins from Ga
 
 Path to 1.0 first:
 
-1. **Two classes per minor still reaches eight at 0.9.** Done: Assassin, Ranger (0.6), Gladiator and Spiritmaster (0.7).
-   0.8 takes two of Templar, Sorcerer, Cleric and Chanter, and 0.9 takes the other two. Per D8, the class the owner plays
+1. **All four remaining classes in 0.8 (redrawn; first planned as two per minor).** Done: Assassin, Ranger (0.6),
+   Gladiator and Spiritmaster (0.7). As first planned, 0.8 took two of Templar, Sorcerer, Cleric and Chanter, and 0.9 takes the other two. Per D8, the class the owner plays
    comes first. His Templar key screens are in (`/mnt/project-files/owner-screens/2026-10-18/templar/`), so the
    **Templar** is first. Data coverage then picks the **Cleric**: 7 candidate guides and 3 Metabot builds, against the
    Sorcerer's 6 and 3 and the Chanter's 7 and 0 (classes-and-gaps §2.2). Both research sessions started at pass start
@@ -1030,11 +1030,12 @@ places), a 0.9 candidate.
 #### Waves and lane map (step 4)
 
 At most five builds at a time. Serial lanes: **gen** P1 → P2 → P3 → P4 → P5 → P16 → P17 → P18 → P19 → P20 → P13 → P14 → P15 (every
-item that touches `data/`); **golden** the same items; **a11y** P7 → P9 → P8 → P12 → P14; **nextup.css** P10 → P11 → P13;
-**rows** (`rows.js`) P20 → P13 → P14; **nextup.css** also takes P20 before P13;
+item that touches `data/`); **golden** the same items; **a11y** P7 → P9 → P8 → P12 → P14; **nextup.css** P10 → P11 → P20 → P13;
+**rows** (`rows.js`) P20 → P13 → P14;
 **welcome** P8 → P12; **build-card** P9 → P14; **site** P6 alone. Critical path: `research-templar` (in, #447) → P2 →
-P3 → P4 → P5 → P16 → P17 → P18 → P19 → R (the last two packs wait on `research-sorcerer` and `research-chanter`, started
-2026-10-19 8:35 PM ET). The gen/golden lane is the bottleneck: the non-class items on it (P13, P14, P15) run after the class
+P3 → P4 → P5 → P16 → P17 → P18 → P19 → P20 → P13 → P14 → P15 → R, i.e. the whole gen lane (the last two packs wait on
+`research-sorcerer` and `research-chanter`, started 2026-10-19 8:35 PM ET). P20 also edits
+`src/styles/packs/aion2/areas.css`, which no lane owns; no other 0.8 item touches it. The gen/golden lane is the bottleneck: the non-class items on it (P13, P14, P15) run after the class
 packs, since those are the minor's point.
 
 | Wave | Builds (no owner OK needed first, K15) |
