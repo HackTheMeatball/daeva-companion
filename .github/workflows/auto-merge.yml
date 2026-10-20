@@ -74,7 +74,7 @@ jobs:
             // It guards against an accidental merge, not a forged verdict; no session but Game Data Check posts that line.
             // public/icons/ is our own PWA icon set, not game art.
             const DATAFILE = (f) => (/^data\//.test(f) && !/^data\/schema\//.test(f)) || /^docs\/research\//.test(f)
-              || (/(^|\/)icons\//.test(f) && !/^public\//.test(f));
+              || (/(^|\/)icons\//.test(f) && !/^public\/icons\//.test(f));
             const NEEDSDATA = (pr, files) => !/^claude\/game-data-check-/.test(pr.head.ref)
               && (/^claude\/research-/.test(pr.head.ref) || /^research\b/i.test(pr.title || '') || files.some(DATAFILE));
             const VERDICT = /^\**Game Data Check \(ROL-03\) on ([0-9a-f]{7,40}): (VERIFIED|CHANGES|HOLD)\b/m;
