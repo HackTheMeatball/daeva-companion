@@ -56,8 +56,17 @@ Each key chip under a column is a button with a small caret.
 **Cost:** one save field (`keys`: column → key, defaulting to the suggestion). Adding a field with a default needs no key
 bump before 1.0.
 
-**Data question:** D3. Which keys can AION 2 bind a skill stack to? Until that's sourced, the picker lists Q, E, R, T, F,
-1–4, Z, X and C, and the build should list only the keys in the build data.
+**Data (Game Data Check, `docs/research/2026-10-bindable-keys.md`, #614):** D3 answered, and it changes the picker.
+- A key binds a skill slot, not a skill. Each slot holds up to 4 skills (rows 0–3). Defaults: slots 1–2 on left and right
+  click (or R and T), 3–6 on 1–4, 7–8 on Q and E, and the stigma slots 9–12 on 5–8. The macro has no key by default.
+- Any keyboard key or mouse button can be bound. Mouse buttons don't work for skills or the macro in AION 1 control mode.
+- So on desktop "press a key" stays as drawn. On a phone the picker lists 1–8, Q, E, R, T, the mouse buttons and
+  "Other key…" (type it). Picking a mouse button adds "Needs AION 2 control mode".
+- Not promised until the owner checks it in game: Ctrl + mouse, the mouse wheel, and a second key per slot.
+
+**New question, for Game Data Check (D4):** Metabot says a stigma works only while it's in a stigma slot (9–12, keys 5–8).
+If so, the guide's E column, which stacks the stigmas on E with the openers, can't be bound as drawn, and the stigmas
+need their own column. This is a guide data question that comes before the Key setup build (and before F1).
 
 ## 12. Icons fill the key boxes
 

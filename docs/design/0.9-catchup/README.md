@@ -1,7 +1,7 @@
 # 0.9: respec on every card, catch-up for late starts
 
-Isaac's Lv 39 play-test notes, 2026-10-20 (`release/owner-notes-2026-10-20-lv39.txt`, triage notes 9 and 10; UX audit
-`plan-0.9/audit-ux.md` items 1 and 3–8). He tested a fresh Lv 39 Assassin. Key setup (notes 11, 12 and #388) is in
+Isaac's Lv 39 play-test notes, 2026-10-20 (project files, `release/owner-notes-2026-10-20-lv39.txt`; triage notes 9 and 10; UX audit
+`plan-0.9/audit-ux.md` items 1 and 3–8). Isaac tested a fresh Lv 39 Assassin. Key setup (notes 11, 12 and #388) is in
 `docs/design/0.9-keys/`. Design Lead (Jane) mockups: docs and screenshots only. Every frame is today's build with the mockup
 injected, so the page, data and icons are real.
 
@@ -15,7 +15,7 @@ injected, so the page, data and icons are real.
 
 | Note | What | Pick | Size |
 |---|---|---|---|
-| 9 | Respec on Stigmas; Daevanion respec per board and all | A: Respec in every card's foot, a board menu on Daevanion, Undo on all three | M |
+| 9 | Respec on Stigmas; Daevanion respec per board and all | A: Respec in every card's foot, a board menu on Daevanion, "Click again" kept plus Undo on all three | M |
 | 10 | Catch-up for late starts, per skill | Today's Skills card, with each skill's whole jump as one step; one Next up card per skill | M |
 
 ## 9. Respec on every card
@@ -29,10 +29,12 @@ out ("none yet"), and a board that isn't open isn't listed. With nothing ticked 
 to respec yet" (`09-dv-none-*`).
 - All three cards keep one foot row: the folds on the left, Respec at the right end. "How points work" and "How shards work"
   become a round "i" button with that name, so the row fits at 1500, where each card is 228 px wide inside.
-- Every respec happens at once and shows a toast with Undo, on all three cards: "Nezekan reset · 10 nodes back · Undo"
+- Every respec keeps today's second click ("Click again to respec", 3 s), and then shows a toast with Undo, on all three
+  cards: "Nezekan reset · 10 nodes back · Undo"
   (`09-dv-undo-*`), "Stigmas reset · 18 shards back · Undo" (`09-st-undo-*`), "Skills reset · 164 pts back · Undo"
-  (`09-sp-undo-*`). That replaces "Click again to respec" and matches the owner's "undoable" rule for anything that
-  changes progress.
+  (`09-sp-undo-*`). Undo matches the owner's "undoable" rule for anything that changes progress. The second click stays
+  because Undo lives only while the toast is up (about 5 s, one shared slot, not saved), and a Daevanion respec also
+  clears the node costs you typed from the game (outside tie-break review, below).
 
 **Option B** (`09-dv-perboard-*`): a Respec chip on each board's line in All nodes, with "Respec all boards" in the foot.
 Not picked: the per-board control is hidden until you open All nodes, the longest list in the app, and it adds a second
@@ -47,11 +49,14 @@ It stands only if Basic stays; see "Depends on" below.
 **Cost:** no new height; the menu is a popover with the light `--shadow-float`. Build work is one shared foot control and
 the Undo toast, which exists for rewards (`rewardToast`). No new save field.
 
-**Data questions (Game Data Check):**
-- D1. Does the game's stigma reset refund every shard, and does it unequip? If it unequips, the toast says so and the slots
-  tick off too.
-- D2. Does the game have a per-board Daevanion reset, and what does it cost? If only an all-boards reset exists, Option A
-  still fixes the app's record, and each row's tooltip says "in the app".
+**Data (Game Data Check, `docs/research/2026-10-respec.md`, #614):**
+- D1. A stigma reset refunds the shards (Metabot) and costs Kinah, and the Global price is unknown. No source says that
+  unequipping resets levels (inferred: it doesn't). So the Stigmas Respec tooltip says "Costs Kinah in game; check the
+  price there", and the slots stay ticked.
+- D2. In game, Daevanion nodes come off one at a time, each for its point, for Kinah. No source names a per-board or
+  whole-board reset. The menu still fits, because it fixes the app's record, and each row's tooltip says "In the app.
+  In game, remove the nodes one by one." The owner checks three screens (both prices, and whether the board has a
+  reset-all).
 
 ## 10. Catch-up for late starts
 
@@ -62,7 +67,8 @@ one-level steps.
 **Numbers are measured.** I bought every open upgrade in today's build for fresh saves at Lv 27, 39 and 45. At Lv 39 the
 guide's own spend ends with 7 skills at 10 and Insignia Explosion at 9, with 1 point left. Insignia Explosion falls short
 because it is learned later, and the build buys by unlock level, so its lines come last. Specialty picks are from
-`builds.json`.
+`builds.json`; the Ambush pick is "contested" (`docs/research/2026-10-specialty-picks.md`), so its row keeps that
+label when built.
 
 **When it shows:** when your points cover upgrades on 3 or more skills at once: a late start, the state after a Skills
 respec, or a long break. Otherwise today's one-step hero stays.
@@ -83,7 +89,8 @@ whole jump instead of one level.
   `10-skills-ranger-*`, where specialties have no sourced pick yet ("Specialty slot 1 opens · no sourced pick yet").
 
 **Daevanion** (`10-boards-*`): one row per open board, with its plan nodes and crystals ("Nezekan board · 10 nodes · 52
-crystals · Have them"). Triniel is listed, greyed: "Opens at Lv 40". **Stigmas** (`10-stigmas-*`): the four slots in the
+crystals · Have them"). Triniel is listed, greyed: "Opens at Lv 40". The crystal counts come from #602. Isaac's Zikel
+screen reads "Total: 42" against 47 here, so that one is with Game Data Check before the build. **Stigmas** (`10-stigmas-*`): the four slots in the
 same row pattern, with "Have it" and their plan levels. Each button's name says which row it marks ("Have them: Zikel
 board").
 
@@ -119,8 +126,9 @@ take the skill to 12 adds "· slot 2: …" to its line.
 |---|---|
 | Skills hero, its ACTIVE chip, "priority #1", "Mark spent", "+N more your points cover", Coming up and "N of 141 spent" in catch-up (Holly 2, 3; critic 2) | Brought back: catch-up now uses today's hero |
 | Next up's level band in catch-up (critic 3) | Brought back |
+| Daevanion's and Stigmas' heroes (next node, next stigma level) while their catch-up is open (Holly re-review) | Brought back after the catch-up: once the last "Have them" / "Have it" is marked, each card returns to today's hero, as Skills does (`10-skills-done-*`). During the catch-up the list is the card's next step. These two catch-up looks and the folded chores are new since the critic's pass, so they get one fresh look (K24) before the build |
 | "How points work" / "How shards work" labels | Kept, as the name and tooltip of the "i" button |
-| The two-step "Click again to respec" (critic 7) | Replaced by Undo on all three cards. This is the one disputed removal, and it goes to the outside re-review. If the reviewer doesn't agree, the second click comes back alongside Undo. |
+| The two-step "Click again to respec" (critic 7) | Brought back, with Undo added. A fresh outside reviewer said bring back: the Undo toast lasts about 5 s, isn't saved, and sits a card away from the button on a phone, while a Daevanion respec also clears typed node costs. Undo alone would do only if it were kept in the save until the next change. |
 
 ## Review answers
 
@@ -148,7 +156,7 @@ take the skill to 12 adds "· slot 2: …" to its line.
 | 1 | Fixed: Basic keeps each foot with Respec (`09-sp-respec-basic-390`, `09-dv-menu-basic-390`, `09-st-respec-basic-390`) |
 | 2 | Fixed: see "Removed against today" |
 | 3 | Fixed: the band stays |
-| 7 | Fixed so the three respec the same way (Undo); disputed removal, see the table |
+| 7 | Fixed: the three respec the same way, the second click plus Undo (tie-break, see the table) |
 | 11 | Fixed: no dead space |
 | 12 | Fixed: one row |
 | 13 | Fixed: the frame hides rows past two per board and boards past three, as meant; the board name keeps a min width so it doesn't break per word |

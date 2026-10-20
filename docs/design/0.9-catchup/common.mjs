@@ -46,7 +46,6 @@ li.sub-h { display: flex; align-items: center; }
 .mk-cu li.done .t, .mk-cu li.done .s { color: var(--muted); }
 .mk-cu li.done .t { text-decoration: line-through; text-decoration-color: var(--muted-strike); }
 .mk-cu li .ok { color: var(--good); font: 600 14px var(--body); padding-right: var(--space-10); }
-.mk-cu li.cur { }
 .mk-cu-foot { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-10); font-size: 12px; color: var(--muted); padding-top: var(--space-8); border-top: 1px solid var(--line); }
 .mk-cu-foot button, .sphint .mk-allsp { font: 600 11px var(--mono); background: transparent; border: 0; padding: var(--space-4) 0; min-height: 24px; color: var(--muted); text-decoration: underline dotted; cursor: pointer; }
 /* note 11 + #388: Key setup sheet */
