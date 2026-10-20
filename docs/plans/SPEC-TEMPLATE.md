@@ -1,14 +1,14 @@
 # Item spec template
 
 The Release Planner writes every item spec in `docs/plans/<minor>/README.md` (and each `<minor> P<n>` issue) from this
-file. A `tests/kickoff.mjs` check will parse the example below with the same code kickoff uses (pending, Gus), so a
+file. A `tests/kickoff.mjs` check parses the example below with the same code kickoff uses, so a
 format change here that kickoff can't read fails its own PR (Kaizen, 2026-10-19: the After parser broke twice on spec-format changes). Change the spec
 format only here, together with the parser and its test.
 
 ## Rules kickoff depends on
 
 - The issue title is `<minor> P<n>: <short title>` (a patch item `<x.y.z> F<n>: …`, the release `Release <minor>.0 (<short title>)`,
-  which kickoff keys as `R`; a `<minor> R: …` title is not keyed and its `After: everything` never clears).
+  which kickoff keys as `R`; use this form. `<minor> R: …` is also keyed `R` since #530).
 - The **first** `After:` in the issue body is the one kickoff reads. It holds bare keys separated by commas:
   - `P<n>` (another item of the same minor), `research-<slug>` (met once a docs/research file named with `<slug>` is
     on main), `owner-ok-<minor>-<slug>` (met once a DECISIONS topic carries it in backticks on an "Owner, typed" row);

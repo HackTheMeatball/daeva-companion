@@ -78,7 +78,25 @@ jobs:
             const NEEDSDATA = (pr, files) => !/^claude\/game-data-check-/.test(pr.head.ref)
               && (/^claude\/research-/.test(pr.head.ref) || /^research\b/i.test(pr.title || '') || files.some(DATAFILE));
             const VERDICT = /^\**Game Data Check \(ROL-03\) on ([0-9a-f]{7,40}): (VERIFIED|CHANGES|HOLD)\b/m;
-            const dataBlocker = (pr, files, comments, sha, headAt) => {
+            // A VERIFIED on an earlier head still holds when every commit of the PR's own after it (not on the base branch) is a
+            // merge (main brought in) and nothing since changed this PR's own data files: each main merge into a class PR used to
+            // void her check and ask for a fresh one (Release Planner (Walter), 2026-10-19). The squashed main commits a merge
+            // brings in have one parent, so only commits missing from the base count. Any doubt (a plain commit of the PR's, a
+            // big compare, an API error) waits.
+            const carried = async (on, sha, files, base) => {
+              try {
+                const cmp = (await github.rest.repos.compareCommitsWithBasehead({ owner, repo, basehead: `${on}...${sha}` })).data;
+                if (cmp.status !== 'ahead' || !cmp.commits.length || cmp.commits.length >= 250 || (cmp.files || []).length >= 300) return false;
+                const off = (await github.rest.repos.compareCommitsWithBasehead({ owner, repo, basehead: `${base}...${sha}` })).data;
+                if (!off.commits.length || off.commits.length >= 250) return false;
+                const mine = new Set(off.commits.map((k) => k.sha));
+                const own = cmp.commits.filter((k) => mine.has(k.sha));
+                if (!own.length || !own.every((k) => k.parents.length === 2)) return false;
+                const changed = new Set((cmp.files || []).flatMap((f) => [f.filename, f.previous_filename].filter(Boolean)));
+                return !files.filter(DATAFILE).some((f) => changed.has(f));
+              } catch (e) { return false; }
+            };
+            const dataBlocker = async (pr, files, comments, sha, headAt) => {
               if (!NEEDSDATA(pr, files)) return '';
               const marks = comments.filter((c) => c.user && (c.user.login === 'claude[bot]' || c.user.login.toLowerCase() === owner.toLowerCase())
                 && VERDICT.test(c.body || '')).sort((a, b) => Date.parse(a.updated_at) - Date.parse(b.updated_at));
@@ -86,8 +104,13 @@ jobs:
               if (!last) return 'waits on Game Data Check (ROL-03)';
               const [, on, verdict] = last.body.match(VERDICT);
               if (verdict !== 'VERIFIED') return `Game Data Check says ${verdict} (ROL-03)`;
-              if (Date.parse(last.updated_at) < headAt || !sha.startsWith(on)) return `Game Data Check's VERIFIED does not cover the head ${sha.slice(0, 7)}`;
-              return '';
+              if (sha.startsWith(on) && Date.parse(last.updated_at) >= headAt) return '';
+              // no updated_at check on a carry: compare status 'ahead' means `on` is an ancestor, so the verdict came after it
+              if (!sha.startsWith(on) && await carried(on, sha, files, pr.base.ref)) {
+                core.info(`#${pr.number}: VERIFIED on ${on} carries to ${sha.slice(0, 7)} (only merges since, none changed its data files)`);
+                return '';
+              }
+              return `Game Data Check's VERIFIED does not cover the head ${sha.slice(0, 7)}`;
             };
             // DATA-CHECK END
             let merged = 0;
@@ -111,7 +134,7 @@ jobs:
               const touched = listed.flatMap((f) => [f.filename, f.previous_filename].filter(Boolean));
               const design = designBlocker(files, comments, sha, headAt);
               if (design) { core.info(`#${pr.number}: ${design}`); continue; }
-              const data = dataBlocker(pr, touched, comments, sha, headAt);
+              const data = await dataBlocker(pr, touched, comments, sha, headAt);
               if (data) { core.info(`#${pr.number}: ${data}`); continue; }
               try {
                 await github.rest.pulls.merge({ owner, repo, pull_number: pr.number, sha, merge_method: 'squash' });
