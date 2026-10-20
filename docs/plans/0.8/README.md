@@ -43,7 +43,7 @@ Rules for every item:
 
 - **Model.** Follow 0.7 P3 (docs/plans/0.7/P3-second-class-data.md), the same shape for the Templar.
 - **Input.** Read `docs/research/2026-10-templar-pack.md` and the owner's Templar key screens
-  (`/mnt/project-files/owner-screens/2026-10-18/templar/NOTES.md`).
+  (`docs/plans/0.8/inputs/owner-keys/templar.md`).
 - **Result.**
   - `data/packs/aion2/classes/templar/**`, each field with its source;
   - `sources.json` updated;
@@ -54,7 +54,7 @@ Rules for every item:
   1% (research §5). Write the game text. gen already fails on any "N, N%" specialty (`checks.mjs`, #358), and the
   live Gladiator and Spiritmaster data carry the game text.
 - **Passive icons and levels.** Metabot's passive icon files don't match the owner's screens for some passives (Game
-  Data Check compared them, `/mnt/project-files/game-data-check/passive-icons-templar-cleric-2026-10-20.md`). Use that
+  Data Check compared them, `docs/plans/0.8/inputs/passive-icons-templar-cleric-2026-10-20.md`). Use that
   file, not Metabot's file names: a passive whose art matches the screen gets that art (Templar Lv 15 Impact Hit is the
   Assassin's `13760000`, already shipped); a passive with no matching file gets no icon, an ISSUES.md row for the owner,
   and `fieldStatus` "owner-check" on its icon until the owner's tooltip screenshots name it. P4, P16 and P18 do the same
@@ -69,6 +69,9 @@ Rules for every item:
 ## P3: Templar guide pack and picker
 
 - **Model.** Follow 0.7 P4 (docs/plans/0.7/P4-second-class-guide.md).
+- **Input.** The owner's key screen for the class, `docs/plans/0.8/inputs/owner-keys/<class>.md` (P5, P17 and P19 use
+  theirs), and the passive-icon comparison in `docs/plans/0.8/inputs/`. Builds can't read the shared folder: every input
+  is in the repo (`docs/plans/0.8/inputs/README.md`).
 - **Result.**
   - `data/packs/aion2/asmodian/templar/**`: build steps, stigma picks and key setup from the owner's screens;
   - a golden master;
@@ -178,7 +181,7 @@ The same as P3, for the Cleric. It runs after P3 because both edit `pack.js`.
 
 - **Problem.** On phones the place icon floats mid-card with empty space above and below it (#421), and the owner asked
   to balance the card and cut the empty space (2026-10-19 2:39 PM ET).
-- **Result.** Design Lead's round 2, `/mnt/project-files/tracker/mockups/0.8-owner-ok-v2/README.md` §1 option A and its "Owner answers" (`1c-icon-balance.png`), owner A
+- **Result.** Design Lead's round 2, `docs/plans/0.8/inputs/design-v2/README.md` §1 option A and its "Owner answers" (`1c-icon-balance.png`), owner A
   2026-10-19 2:39 PM ET:
   - on phones (≤ 520 px) the 44 px icon box sits beside the title in the title row (`.ns-mhead`
     `grid-template-columns: 44px 1fr`; the README has the CSS sketch);
@@ -214,7 +217,7 @@ The same as P3, for the Cleric. It runs after P3 because both edit `pack.js`.
 
 - **Problem.** A first-time player lands on the Assassin route. The other classes are only under the character name,
   then New character (#333-3, still open in #441).
-- **Result.** Design Lead's round 2, `/mnt/project-files/tracker/mockups/0.8-owner-ok-v2/README.md` §3 option A, owner A 2026-10-19 2:35 PM ET:
+- **Result.** Design Lead's round 2, `docs/plans/0.8/inputs/design-v2/README.md` §3 option A, owner A 2026-10-19 2:35 PM ET:
   - "Your class" on the welcome's first step, above the buttons: 8 badges, each the class emblem plus its name,
     4 × 2 on phones and one row of 8 on desktop, a `radiogroup`, Assassin pre-selected;
   - classes with no guide yet show "Soon" and can't be picked (the list comes from the packs, not hard-coded; with all
@@ -227,7 +230,8 @@ The same as P3, for the Cleric. It runs after P3 because both edit `pack.js`.
 - **Art.** The 8 Metabot class emblems, `https://metabot.gg/web/aion2/classes/<class>.webp`, listed on
   https://metabot.gg/en/aion-2/classes; the owner's class answer is their OK (DECISIONS 2026-10-19). Fetched at plan
   time by Design Lead; the build commits them as files and adds one `docs/ISSUES.md` row each (source page, file URL,
-  date). A bot build doesn't fetch: if the files aren't in the repo or the project files, it stops and asks.
+  date). A bot build doesn't fetch and can't read the shared folder: the emblems go in `docs/plans/0.8/inputs/emblems/`
+  first, and if they aren't there the build stops and asks.
 - **No-gos.**
   - No save shape change: the class is already a character field.
   - No new step for the Assassin default.
@@ -250,14 +254,14 @@ The same as P3, for the Cleric. It runs after P3 because both edit `pack.js`.
 - **Problem.** The Next up "Regional quests" card and the extract tip don't show the game's icons. A regional quest is
   marked by clicking its checkbox twice: the first click shows a "−" box (the mixed checkbox state) and nothing says a
   second click exists.
-- **Result.** Design Lead's round 2, `/mnt/project-files/tracker/mockups/0.8-owner-ok-v2/README.md` §2 option A and
+- **Result.** Design Lead's round 2, `docs/plans/0.8/inputs/design-v2/README.md` §2 option A and
   §4, with its "Owner answers" (`2b-check-fix.png`, `2c-map-pin.png`), owner A 2026-10-19 2:36–2:40 PM ET:
   - the state icon replaces the regional quest checkbox, in milestone rows and in the Next up card: the owner's teal
-    star crop for to pick up, Metabot's `quest_district` for in progress, and a green check for turned in, drawn as a 22 px
+    star crop (`docs/research/owner-crops-2026-10-18/regional-available-owner-crop.png`) for to pick up, Metabot's `quest_district` for in progress, and a green check for turned in, drawn as a 22 px
     circle with a centred SVG check (never a ✓ text glyph);
   - one button says the next step as a verb: "Pick up" (neutral outline), then "Turn in" (filled green, the old
     `.go` style), then "Undo" (a neutral button); all three the same width in a fixed action column (owner,
-    2026-10-19 8:25 PM ET, T-58; `/mnt/project-files/tracker/mockups/0.8-owner-ok-v4/`, which supersedes v2 for these
+    2026-10-19 8:25 PM ET, T-58; `docs/plans/0.8/inputs/design-v4/`, which supersedes v2 for these
     buttons);
   - the Regional quests tile in Next up shows today's ❖ glyph in white on a #3ba281 tile with a border of the same
     colour and no dark panel (owner, 8:44 PM ET, option A, T-58; frames `nu-390-quad.png`, `nu-360-quad.png` and
@@ -265,7 +269,8 @@ The same as P3, for the Cleric. It runs after P3 because both edit `pack.js`.
   - a one-line legend under "Regional quests" teaches the three icons (15 px check);
   - in the Next up card every quest row also shows its map pin left of the button, and a long name is cut with "…";
   - "Not in game yet" / "In my game" stay as they are;
-  - the extract flask sits inline at 1.25 em before "beaker icon" in step 3 of the extract tip (first round, unchanged).
+  - the extract flask (`docs/research/owner-crops-2026-10-18/extract-flask-owner-crop.png`; placement in
+    `docs/plans/0.8/inputs/design-extract/4-extract-icon.png`) sits inline at 1.25 em before "beaker icon" in step 3 of the extract tip (first round, unchanged).
   Each art file gets an ISSUES.md provenance row: the owner screen for the crop, the source page and file URL for
   `quest_district`.
 - **No-gos.**
@@ -337,7 +342,7 @@ The same as P3, for the Cleric. It runs after P3 because both edit `pack.js`.
 ## P16: Sorcerer class data (hidden)
 
 The same as P2, for the Sorcerer. It reads `docs/research/2026-10-sorcerer-pack.md` and the owner's checked Sorcerer
-screen (`/mnt/project-files/owner-screens/2026-10-19/sorcerer/NOTES.md`: unlock levels, icon ids, default keys).
+screen (`docs/plans/0.8/inputs/owner-keys/sorcerer.md`: unlock levels, icon ids, default keys).
 Write the game text for the five "Absorbs" specialty rows, not the CSV's Metabot text (pack §5; #487 review).
 
 - **Lanes:** gen. **Model:** Opus, L (120 min).
@@ -358,7 +363,7 @@ charge 1).
 ## P18: Chanter class data (hidden)
 
 The same as P2, for the Chanter. It reads `docs/research/2026-10-chanter-pack.md` and
-`/mnt/project-files/owner-screens/2026-10-19/chanter/NOTES.md`. Wave Blow sits in Q row 1 although it is conditional
+`docs/plans/0.8/inputs/owner-keys/chanter.md`. Wave Blow sits in Q row 1 although it is conditional
 (needs Stun), unlike every other class; keep the screen's order and label it as the notes say.
 
 - **Lanes:** gen. **Model:** Opus, L (120 min).
@@ -384,8 +389,8 @@ The same as P3, for the Chanter. Metabot has no Chanter build sample, so advice 
   - where such a field renders (milestone rows, Next up), a small tag follows it in the existing `ss-tag` style:
     "check in game" for disputed and owner-check, "inferred" for inferred; single source keeps its current tag;
   - the tag's text is at least 12 px (Design Critic checklist), which also lifts the existing `ss-tag`.
-- **Input.** Game Data Check's list, `/mnt/project-files/game-data-check/labelled-fields-2026-10-19.md` (448 rows,
-  most never render).
+- **Input.** The labels in `data/packs/**` themselves (every record `fieldStatus` and record `status`); Game Data Check's
+  2026-10-19 count was 448, most never render.
 - **No-gos.** Guide-text claims are out of scope (already tagged from `claims.json`). No pinned counts: #325 batches keep
   changing them. No new art.
 - **Acceptance.**
@@ -397,7 +402,8 @@ The same as P3, for the Chanter. Metabot has no Chanter build sample, so advice 
   `src/packs/aion2/cards/skills.js`, `src/styles/cards/nextup.css`, `src/styles/packs/aion2/areas.css`,
   `src/styles/packs/aion2/skills.css`, the tests. `ss-tag` lives in `nextup.css` today; P20 moves it to a style the rows
   and the Skills card share.
-- **Lanes:** gen, golden, nextup.css, rows. **Model:** Sonnet, S (44 min).
+- **Lanes:** gen, golden, nextup.css, rows. **Model:** Opus, S (44 min). Opus because it edits `tools/gen` and
+  re-records golden (routing rule; the Sonnet start stopped with "Needs @claude (Opus)" on 2026-10-20).
 - **After:** P19 (gen lane order).
 
 ## R: Release 0.8.0
