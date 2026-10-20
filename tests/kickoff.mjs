@@ -154,7 +154,7 @@ check(/not understood/.test(unread) && !/[*`]/.test(unread), `template form, unr
 // "everything" / "all" match whole words only (Walter, #517 review): a slug holding "all" is a key.
 check(/waits on research-all-icons/.test(await afterBlocker(exAfter('P1, research-all-icons.'))), 'research-all-icons is a research key, not "everything"');
 check(/waits on owner-ok-0.8-all-classes/.test(await afterBlocker(exAfter('owner-ok-0.8-all-classes.'))), 'owner-ok-0.8-all-classes is an owner-ok key, not "everything"');
-check(/waits on open|^$/.test(await afterBlocker({ ...exItem(''), body: 'After: all other items.\n' })), '"After: all other items" still means everything');
+check((await afterBlocker({ ...exItem(''), body: 'After: all other items.\n' })) === '', '"After: all other items" still means everything (0.8 P1 is closed)');
 // Release titles get key R, in both forms (0.8's "0.8 R: Release 0.8.0" was unkeyed; #517 review).
 const tm = yml.match(/m: (i\.title\.match\([\s\S]+?\.slice\(0, 3\)) \}/);
 check(!!tm, 'kickoff.yml keys item titles in one expression');

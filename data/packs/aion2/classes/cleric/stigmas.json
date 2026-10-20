@@ -1,0 +1,671 @@
+{
+  "$schema": "../../schema/stigmas.schema.json",
+  "schemaVersion": 2,
+  "collection": "stigmas",
+  "class": "cleric",
+  "records": [
+    {
+      "id": "stigma:cleric:absolution",
+      "key": "Absolution",
+      "name": "Absolution",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:cleric:absolution:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "-30s cooldown"
+        },
+        {
+          "id": "spec:cleric:absolution:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "Removes all debuffs"
+        },
+        {
+          "id": "spec:cleric:absolution:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+5% HP restored"
+        },
+        {
+          "id": "spec:cleric:absolution:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "Restores 1.5% HP every 2s for 10s"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/absolution",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (cleric research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:cleric:assault-mark",
+      "key": "Assault Mark",
+      "name": "Assault Mark",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:cleric:assault-mark:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+20% Attack for 5s on hit"
+        },
+        {
+          "id": "spec:cleric:assault-mark:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "500 MP damage on hit"
+        },
+        {
+          "id": "spec:cleric:assault-mark:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+10m range"
+        },
+        {
+          "id": "spec:cleric:assault-mark:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+20% Root Chance"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/assault-mark",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (cleric research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:cleric:benevolence",
+      "key": "Benevolence",
+      "name": "Benevolence",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:cleric:benevolence:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+10s duration"
+        },
+        {
+          "id": "spec:cleric:benevolence:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "Restores 200 Stamina every 5s for the duration"
+        },
+        {
+          "id": "spec:cleric:benevolence:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "Restores 2% HP every 5s for the duration"
+        },
+        {
+          "id": "spec:cleric:benevolence:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "Cleansing effect every 5s for the duration"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/benevolence",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (cleric research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:cleric:earth-punishment",
+      "key": "Earth Punishment",
+      "name": "Earth Punishment",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:cleric:earth-punishment:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "[Condemnation] lands as a Critical Hit on targets afflicted with [Earth Punishment]"
+        },
+        {
+          "id": "spec:cleric:earth-punishment:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+10% Double Chance to caster and +5% to party members from [Earth's Blessing]"
+        },
+        {
+          "id": "spec:cleric:earth-punishment:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+10% Attack and Defense to caster and +5% to party members from [Earth's Blessing]"
+        },
+        {
+          "id": "spec:cleric:earth-punishment:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+10s [Earth Punishment] and [Earth's Blessing] duration"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/earth-punishment",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (cleric research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:cleric:light-of-protection",
+      "key": "Light of Protection",
+      "name": "Light of Protection",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:cleric:light-of-protection:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+10% Incoming Heal"
+        },
+        {
+          "id": "spec:cleric:light-of-protection:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+100 Accuracy"
+        },
+        {
+          "id": "spec:cleric:light-of-protection:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+10% Max HP"
+        },
+        {
+          "id": "spec:cleric:light-of-protection:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+10% Perfect Chance"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/light-of-protection",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (cleric research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:cleric:noble-aura",
+      "key": "Noble Aura",
+      "name": "Noble Aura",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:cleric:noble-aura:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+200 Aura Critical Hit"
+        },
+        {
+          "id": "spec:cleric:noble-aura:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+20 damage to targets afflicted with Debilitating Mark"
+        },
+        {
+          "id": "spec:cleric:noble-aura:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+30% damage to targets with Incapacitated Immunity"
+        },
+        {
+          "id": "spec:cleric:noble-aura:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "-1s Aura attack cooldown"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/noble-aura",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (cleric research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:cleric:power-burst",
+      "key": "Power Burst",
+      "name": "Power Burst",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:cleric:power-burst:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+20% Skill Speed"
+        },
+        {
+          "id": "spec:cleric:power-burst:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "Critical Hit on hit"
+        },
+        {
+          "id": "spec:cleric:power-burst:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "75% chance to inflict Knock Back"
+        },
+        {
+          "id": "spec:cleric:power-burst:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "75% chance to inflict Stun for 3s"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/power-burst",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (cleric research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:cleric:prayer-of-amplification",
+      "key": "Prayer of Amplification",
+      "name": "Prayer of Amplification",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:cleric:prayer-of-amplification:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+20% PvE Damage Boost and +10% PvP Damage Boost"
+        },
+        {
+          "id": "spec:cleric:prayer-of-amplification:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "x1.5 [Empyrean Lord's Grace] effect for the duration"
+        },
+        {
+          "id": "spec:cleric:prayer-of-amplification:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "x1.5 [Earth's Grace] effect for the duration"
+        },
+        {
+          "id": "spec:cleric:prayer-of-amplification:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+15% additional Attack"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/prayer-of-amplification",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (cleric research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:cleric:root",
+      "key": "Root",
+      "name": "Root",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:cleric:root:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "Changes to mobile skill"
+        },
+        {
+          "id": "spec:cleric:root:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+2s Root duration"
+        },
+        {
+          "id": "spec:cleric:root:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+25% Root chance"
+        },
+        {
+          "id": "spec:cleric:root:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "x2 Damage over Time on Root targets"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/root",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (cleric research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:cleric:salvation",
+      "key": "Salvation",
+      "name": "Salvation",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:cleric:salvation:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+100% Incoming Heal"
+        },
+        {
+          "id": "spec:cleric:salvation:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "Restores 20% of Max HP at the end of [Salvation]"
+        },
+        {
+          "id": "spec:cleric:salvation:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "Grants base effect of [Salvation] to the party member with the lowest HP"
+        },
+        {
+          "id": "spec:cleric:salvation:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "Triggers [Salvation] when afflicted with Impact-type status"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/salvation",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (cleric research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:cleric:summon-resurrection",
+      "key": "Summon Resurrection",
+      "name": "Summon Resurrection",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:cleric:summon-resurrection:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "-1s casting time"
+        },
+        {
+          "id": "spec:cleric:summon-resurrection:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "Invincible for 3s after resurrection"
+        },
+        {
+          "id": "spec:cleric:summon-resurrection:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "Restores 20% of Max HP"
+        },
+        {
+          "id": "spec:cleric:summon-resurrection:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "Invincible for 5s after resurrection"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/summon-resurrection",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (cleric research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:cleric:voice-of-doom",
+      "key": "Voice of Doom",
+      "name": "Voice of Doom",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:cleric:voice-of-doom:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "Up to +20% damage when more targets hit"
+        },
+        {
+          "id": "spec:cleric:voice-of-doom:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "Removes Protective Shields on hit"
+        },
+        {
+          "id": "spec:cleric:voice-of-doom:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "-200 Critical Hit Resist for duration"
+        },
+        {
+          "id": "spec:cleric:voice-of-doom:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "-50% Damage over Time intervals"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/voice-of-doom",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (cleric research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:cleric:yustiels-power",
+      "key": "Yustiel's Power",
+      "name": "Yustiel's Power",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:cleric:yustiels-power:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "10% Max HP Protective Shield"
+        },
+        {
+          "id": "spec:cleric:yustiels-power:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+100 Block, Evasion"
+        },
+        {
+          "id": "spec:cleric:yustiels-power:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+20% Status Effect Resist"
+        },
+        {
+          "id": "spec:cleric:yustiels-power:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+10% PvE Damage Tolerance increase and +5% PvP Damage Tolerance increase"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/yustiels-power",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (cleric research §2.2)."
+      ]
+    }
+  ]
+}

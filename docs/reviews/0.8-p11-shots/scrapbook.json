@@ -1,0 +1,6 @@
+[
+  { "case": "sealed-390", "kind": "before-after", "title": "Sealed Dungeon marker, larger",
+    "caption": "The Sealed Dungeon emblem on the Clear Dratona Cave card now fills its tile instead of 70% of it, so it is easier to read." },
+  { "case": "stronghold-390", "kind": "before-after", "title": "Stronghold marker, larger",
+    "caption": "The Stronghold emblem fills its tile on the Next up card, the same size as the story card's ready ring." }
+]
