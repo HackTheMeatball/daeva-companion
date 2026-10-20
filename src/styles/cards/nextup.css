@@ -305,6 +305,12 @@ html.pip .pip-hint { flex: none; padding-top: var(--space-6); font: 500 10px var
   #nowStar .ns-stack.ns-phone .ns-card.first .meta { grid-column: 3; grid-row: 1; align-self: center; }
   #nowStar .ns-stack.ns-phone .ns-card.first .meta :is(.ns-btn, .ns-go) { width: auto; }
 }
+/* page zoom to ~200 % (a 195 px viewport): no room for Show beside the title, so it goes back under the text */
+@media (max-width: 300px) {
+  #nowStar .ns-stack.ns-phone .ns-card.first .ns-mhead, #nowStar .ns-stack.ns-phone .ns-card.first .ns-mhead:has(.ns-extra) { grid-template-columns: 44px minmax(0, 1fr); }
+  #nowStar .ns-stack.ns-phone .ns-card.first .meta { grid-column: 1 / -1; grid-row: auto; }
+  #nowStar .ns-stack.ns-phone .ns-card.first .meta :is(.ns-btn, .ns-go) { width: 100%; white-space: normal; }
+}
 @media (pointer: coarse) {
   #nowStar .ns-stack.ns-phone .ns-card .meta :is(.ns-btn, .ns-go) { min-height: 44px; }
   #nowStar .ns-pgb { width: 44px; height: 44px; }
