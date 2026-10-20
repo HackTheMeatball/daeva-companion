@@ -32,7 +32,7 @@ _From #114 "Merge rule (AUTO since 2026-10-16 10:32Z, #115)"._
 
 _From the ledger summary (no #114 text held it; written here 2026-10-20 at the Rules Steward's ask)._
 
-- A separate reviewer that didn't write the work reviews every PR, on Opus: the pipeline's review run, never the build session itself. Code Review (Howard) sets what the review checks; Gus sets when it runs and the model (2026-10-20 split).
+- A separate reviewer that didn't write the work reviews every PR, on Opus: the pipeline's review run, never the build session itself. Code Review (Howard) sets what the review checks and what counts as BLOCKING; Gus sets when it runs, the model, and the verdict format and parser (2026-10-20 split). A criteria edit that drops or narrows a check is a loosening and needs Isaac's typed OK.
 
 ### MRG-10
 
