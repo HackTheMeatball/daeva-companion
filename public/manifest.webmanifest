@@ -1,7 +1,7 @@
 {
   "name": "Daeva Companion · unofficial AION 2 companion",
   "short_name": "Daeva",
-  "description": "Unofficial AION 2 companion: Lv 1 to 45 leveling guides and builds for all eight Asmodian classes, with progress saved for each character. Fan-made, not affiliated with or endorsed by NCSoft.",
+  "description": "An unofficial, fan-made companion app for AION 2. Not affiliated with or endorsed by NCSoft.",
   "id": "/",
   "start_url": "./",
   "scope": "./",

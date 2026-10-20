@@ -2,7 +2,7 @@
   "name": "aion2-companion",
   "version": "0.8.0",
   "private": true,
-  "description": "Daeva Companion: unofficial companion for AION 2, Lv 1 to 45 leveling guides for all eight Asmodian classes (single-page web app). Live at https://daevacompanion.com/",
+  "description": "Daeva Companion: an unofficial companion app for AION 2 (single-page web app). Live at https://daevacompanion.com/",
   "license": "SEE LICENSE IN LICENSE",
   "repository": {
     "type": "git",
