@@ -84,7 +84,7 @@
         },
         {
           "skill": "skill:cleric:earths-grace",
-          "core": false,
+          "core": true,
           "status": "verified",
           "basis": "Straight to Lv 10 when learned at 21 (flat gate): daevaguides; Metabot leveling and aion2turkiye raise it to 10, mmo-codex ranks it the first passive. Its Lv 21 gate keeps points off it before 21, so ranking it here only moves the 21 points at 21",
           "sources": [
@@ -276,8 +276,8 @@
         }
       ],
       "skillOrderNotes": {
-        "interleave": "Two-source rules (docs/research/2026-10-cleric-pack.md §3.2: daevaguides, mmo-codex, skycoach, Metabot's leveling notes): attack skills before heals while leveling; Chain of Torment and Condemnation are raised as fast as their gates allow; Earth's Grace (21) goes to 10 the level it is learned (flat gate: all 21 points fit at 21, so it is listed right after Judgment Thunder; the gate keeps points off it before 21). Whether Earth's Retribution and Judgment Thunder (daevaguides) or Condemnation's pair (mmo-codex) take the first points is not agreed; before Lv 8 Condemnation doesn't exist, so the two orders only differ from Lv 8 to about 19, and the order between those rules is inferred.",
-        "budget": "Core eight to Lv 10 = 8 × 21 = 168 points; Earth's Grace to 10 = 21 (189); Debilitating Mark to 7 = 9 (198), Radiant Recovery to 5 = 5 (203). LEVEL_POINTS[45] = 203 (Metabot; aion2turkiye agrees) plus Wisdom Stones. Bolt to 10 by 38 (daevaguides, aion2turkiye) needs quest and Sealed Dungeon points on top (claim C92)."
+        "interleave": "Two-source rules (docs/research/2026-10-cleric-pack.md §3.2: daevaguides, mmo-codex, skycoach, Metabot's leveling notes): attack skills before heals while leveling; Chain of Torment and Condemnation are raised as fast as their gates allow; Earth's Grace (21) goes to 10 the level it is learned (flat gate: all 21 points fit at 21, so it is a core skill listed right after Judgment Thunder; the gate keeps points off it before 21). Whether Earth's Retribution and Judgment Thunder (daevaguides) or Condemnation's pair (mmo-codex) take the first points is not agreed; before Lv 8 Condemnation doesn't exist, so the two orders only differ from Lv 8 to about 19, and the order between those rules is inferred.",
+        "budget": "Core nine (the eight plus Earth's Grace) to Lv 10 = 9 × 21 = 189 points; Debilitating Mark to 7 = 9 (198), Radiant Recovery to 5 = 5 (203). LEVEL_POINTS[45] = 203 (Metabot; aion2turkiye agrees) plus Wisdom Stones. Bolt to 10 by 38 (daevaguides, aion2turkiye) needs quest and Sealed Dungeon points on top (claim C92)."
       },
       "specialtyPicks": {
         "skill:cleric:chain-of-torment": [

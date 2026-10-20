@@ -8,10 +8,7 @@
       "id": "conf:core-order",
       "group": "verified",
       "order": 46,
-      "text": "Cleric skill points: Earth's Retribution and Judgment Thunder first, {skillOrderTwoSource} straight to 10 when learned at 21 (flat gate), then Chain of Torment, Condemnation, Divine Aura, Healing Light, Empyrean Lord's Grace and Light of Regeneration, all to 10 (Metabot, daevaguides, aion2turkiye, mostly mmo-codex; Light of Regeneration: Metabot and aion2turkiye). Attacks before heals, Chain of Torment and Condemnation as fast as allowed and Earth's Grace the level it is learned are two-source; the order between those rules is inferred.",
-      "placeholders": [
-        "skillOrderTwoSource"
-      ]
+      "text": "Cleric skill points: Earth's Retribution and Judgment Thunder first, Earth's Grace straight to 10 when learned at 21 (flat gate), then Chain of Torment, Condemnation, Divine Aura, Healing Light, Empyrean Lord's Grace and Light of Regeneration, all to 10 (Metabot, daevaguides, aion2turkiye, mostly mmo-codex; Light of Regeneration: Metabot and aion2turkiye). Attacks before heals, Chain of Torment and Condemnation as fast as allowed and Earth's Grace the level it is learned are two-source; the order between those rules is inferred."
     },
     {
       "id": "conf:first-nodes",
