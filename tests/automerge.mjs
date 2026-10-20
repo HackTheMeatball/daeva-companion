@@ -191,10 +191,20 @@ const users = wfs.filter(([, t]) => t.includes('tools/verdicts.cjs`)'));
 check(users.map(([f]) => f).sort().join() === 'auto-merge.yml,pipeline.yml', `auto-merge.yml and pipeline.yml require the parser (${users.map(([f]) => f).join(', ')})`);
 for (const [f, t] of users) {
   const steps = t.split(/\n(?=\s+- (?:id|uses|name|if|run):)/);
-  const bad = steps.map((st, i) => [st, i]).filter(([st]) => st.includes('require(`${process.env.GITHUB_WORKSPACE}/tools/verdicts.cjs`)'))
-    .filter(([, i]) => !steps.slice(0, i).some((p) => /uses: actions\/checkout@/.test(p) && /sparse-checkout: tools\/verdicts\.cjs/.test(p)
-      && /sparse-checkout-cone-mode: false/.test(p) && !/\bref:/.test(p)));
+  // A require of `${GITHUB_WORKSPACE}/<dir>tools/verdicts.cjs` needs an earlier sparse checkout of it from the default branch at <dir>.
+  const bad = steps.map((st, i) => [st, i, (st.match(/require\(`\$\{process\.env\.GITHUB_WORKSPACE\}\/((?:[\w.-]+\/)?)tools\/verdicts\.cjs`\)/) || [])[1]])
+    .filter(([, , dir]) => dir !== undefined)
+    .filter(([, i, dir]) => !steps.slice(0, i).some((p) => /uses: actions\/checkout@/.test(p) && /sparse-checkout: tools\/verdicts\.cjs/.test(p)
+      && /sparse-checkout-cone-mode: false/.test(p) && !/\bref:/.test(p) && (p.match(/\bpath: (\S+)/) || [, ''])[1].replace(/\/?$/, dir ? '/' : '') === dir));
   check(!bad.length && steps.some((st) => st.includes('tools/verdicts.cjs`)')), `${f}: every step requiring the parser follows a sparse checkout of it from the default branch`);
+  // A sparse checkout at the workspace root keeps its sparse setting through a later full checkout there, which then holds only
+  // the parser (pipeline run job, Oct 20: setup-node found no package-lock.json and two fix rounds of #565 failed).
+  const later = t.split(/\n(?=  [\w-]+:\n)/).flatMap((job) => {
+    const js = job.split(/\n(?=\s+- (?:id|uses|name|if|run):)/);
+    const root = js.findIndex((st) => /sparse-checkout: tools\/verdicts\.cjs/.test(st) && !/\bpath:/.test(st));
+    return root < 0 ? [] : js.slice(root + 1).filter((st) => /uses: actions\/checkout@/.test(st) && !/sparse-checkout:/.test(st) && !/\bpath:/.test(st));
+  });
+  check(!later.length, `${f}: no full checkout follows a root sparse checkout of the parser`);
 }
 
 console.log(`\n${n - fail}/${n} auto-merge checks passed`);
