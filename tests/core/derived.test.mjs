@@ -81,7 +81,7 @@ export default (test, M) => {
     assert.equal(st(f.name, f.story), false, 'on the story quest: not yet');
     assert.equal(st(f.name, at(f.story, 1)), true, 'turned in');
     withChanges(['derived'], () => { assert.equal(st(f.name, f.story), true, '0.2: reached is enough'); });
-    for (const [n, gate] of [['Shugo-of-All-Trades: Asmodian', 'Contaminated Area'], ['Spooky Specters', 'Cemetery Cleanup']]) {
+    for (const [n, gate] of [['Shugo-of-All-Trades', 'Contaminated Area'], ['Spooky Specters', 'Cemetery Cleanup']]) {
       assert.equal(rq(n).story, gate);
       assert.equal(st(n, gate), false, n + ': not offered while ' + gate + ' is current');
       assert.equal(st(n, at(gate, 1)), true, n + ': appears once ' + gate + ' is turned in');
