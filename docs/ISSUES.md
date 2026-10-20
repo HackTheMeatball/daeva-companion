@@ -507,6 +507,23 @@ on purpose: the guide shows nothing rather than an unverified value.
 
   Held back (Q5): campsite, updraft, point of interest, field boss and undiscovered wait until the data has a place type.
 
+- **Class emblems: in the site** (0.8 P12, #501; owner OK: option A, 2026-10-19 2:35 PM ET, DECISIONS 2026-10-19 and
+  `docs/plans/0.8/inputs/design-v2/README.md` §3). The welcome card's "Your class" badges. Class emblems are not covered
+  by the standing icon OK; the owner's class answer is. Fetched by Design Lead on 2026-10-19 18:15–18:16 UTC; each file is
+  a byte-for-byte copy of `docs/plans/0.8/inputs/emblems/<class>.webp` (256 px WebP, not converted; sha256 in that
+  folder's `SOURCES.md`, checked by tests/core/chars.test.mjs):
+
+  | File | Source page | File URL | Retrieved |
+  |---|---|---|---|
+  | class-gladiator.webp | <https://metabot.gg/en/aion-2/classes> | <https://metabot.gg/web/aion2/classes/gladiator.webp> | 2026-10-19 |
+  | class-templar.webp | <https://metabot.gg/en/aion-2/classes> | <https://metabot.gg/web/aion2/classes/templar.webp> | 2026-10-19 |
+  | class-assassin.webp | <https://metabot.gg/en/aion-2/classes> | <https://metabot.gg/web/aion2/classes/assassin.webp> | 2026-10-19 |
+  | class-ranger.webp | <https://metabot.gg/en/aion-2/classes> | <https://metabot.gg/web/aion2/classes/ranger.webp> | 2026-10-19 |
+  | class-sorcerer.webp | <https://metabot.gg/en/aion-2/classes> | <https://metabot.gg/web/aion2/classes/sorcerer.webp> | 2026-10-19 |
+  | class-spiritmaster.webp | <https://metabot.gg/en/aion-2/classes> | <https://metabot.gg/web/aion2/classes/spiritmaster.webp> | 2026-10-19 |
+  | class-cleric.webp | <https://metabot.gg/en/aion-2/classes> | <https://metabot.gg/web/aion2/classes/cleric.webp> | 2026-10-19 |
+  | class-chanter.webp | <https://metabot.gg/en/aion-2/classes> | <https://metabot.gg/web/aion2/classes/chanter.webp> | 2026-10-19 |
+
 - **Six UI icons with no approved source: owner crops are the fallback** (T-47; owner icon rule, DECISIONS 2026-10-18
   8:57 PM ET). The Field zone label (crossed swords), the Village zone label (tent), the Journal completed-quest check,
   the regional and story "available" stars and the item tooltip's Extract flask are on neither Metabot nor aion2quest.pro,

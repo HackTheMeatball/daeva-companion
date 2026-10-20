@@ -11,20 +11,18 @@
    shell), its Back being "Skip, start fresh" (never the same label as the green Start at Lv N).
 
    Your class (0.8 P12, design-v2 §3 option A, owner A 2026-10-19): on the first step, a radiogroup of the game's classes
-   (classChoices, from the pack), each its Metabot emblem and name, the current character's class picked. A class with no
-   guide yet says "Soon" and can't be picked; arrow keys skip it. The pick goes to onStart(cls) and onJoin(level, quest, cls). */
+   (classChoices, from the pack), each its emblem (the pack's icon) and name, the current character's class picked. A class
+   with no guide yet says "Soon" and can't be picked; arrow keys skip it. The pick goes to onStart(cls) and
+   onJoin(level, quest, cls). */
 import { char } from "../core/state.js";
 import { classChoices } from "../core/pack.js";
 import { pageQUESTS as QUESTS } from "./page.js";
 
 const welEsc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-/* the class emblems (Metabot, docs/ISSUES.md); a class without one shows its name alone */
-const CLASS_EMBLEM = { gladiator: "assets/icons/class-gladiator.webp", templar: "assets/icons/class-templar.webp", assassin: "assets/icons/class-assassin.webp",
-  ranger: "assets/icons/class-ranger.webp", sorcerer: "assets/icons/class-sorcerer.webp", spiritmaster: "assets/icons/class-spiritmaster.webp",
-  cleric: "assets/icons/class-cleric.webp", chanter: "assets/icons/class-chanter.webp" };
-/* one badge: a radio (roving tabindex: only the picked one is a tab stop), or a "Soon" one that can't be picked */
+/* one badge: a radio (roving tabindex: only the picked one is a tab stop), or a "Soon" one that can't be picked; a class
+   without an icon shows its name alone */
 const classBadge = (e, on) => {
-  const img = CLASS_EMBLEM[e.class] ? `<img src="${CLASS_EMBLEM[e.class]}" alt="" width="32" height="32">` : "";
+  const img = e.icon ? `<img src="${welEsc(e.icon)}" alt="" width="32" height="32">` : "";
   return e.pack
     ? `<button type="button" class="welclass" role="radio" data-class="${welEsc(e.class)}" aria-checked="${on}" tabindex="${on ? 0 : -1}">${img}<span>${welEsc(e.name)}</span></button>`
     : `<button type="button" class="welclass welsoon" role="radio" data-class="${welEsc(e.class)}" aria-checked="false" aria-disabled="true" tabindex="-1">${img}<span>${welEsc(e.name)}</span><small>Soon</small></button>`;

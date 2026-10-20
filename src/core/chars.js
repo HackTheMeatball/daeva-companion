@@ -24,11 +24,11 @@ export function addChar(state, { class: cls, name, now = 0, id } = {}) {
   return { ...state, current: id, chars: { ...state.chars, [id]: c } };
 }
 
-/* An untouched start (0.8 P12): the save's only character, at Lv 1, unnamed, with nothing ticked (what a fresh browser
-   starts with). */
+/* An untouched start (0.8 P12): the save's only character, at Lv 1 with nothing ticked (what a fresh browser starts with;
+   the welcome card's own test, src/cards/welcome.js showWelcome, for a save of one character). */
 export const untouchedStart = state => {
   const live = Object.keys(state.chars).filter(k => !isRemoved(state.chars[k])), c = state.chars[state.current];
-  return live.length === 1 && live[0] === state.current && (+c.level || 1) === 1 && !c.name && !Object.values(c.checks || {}).some(Boolean);
+  return live.length === 1 && live[0] === state.current && (+c.level || 1) === 1 && !Object.values(c.checks || {}).some(Boolean);
 };
 
 /* Start as class cls (0.8 P12, the welcome card's class pick): an untouched start of another class is replaced by a new

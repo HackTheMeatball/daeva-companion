@@ -210,12 +210,21 @@ if (g) {
   ok('idle class pack aion2/classes/sorcerer: 1 class, 22 skills, 13 stigmas, 537 board nodes (the research CSVs\' counts), checked by the generator', !!so && soColl('class.json') === 1
     && soColl('skills.json') === 22 && soColl('stigmas.json') === 13 && soColl('board-nodes.json') === 537 && g.report.checks.some(x => x.check.startsWith('aion2/classes/sorcerer: board:triniel: 117 nodes')),
     so && [soColl('skills.json'), soColl('stigmas.json'), soColl('board-nodes.json')]);
+  /* 0.8 P12 (#501): every bundle carries GAME_CLASSES, the game's class list ({ class, name } per class, for the welcome's
+     class picker), so the class words below are read in the module without that one line; the line itself holds
+     exactly the class ids and names of data/packs/aion2/pack.json `classes` and the class records, nothing else */
+  const GC_LINE = /^export const GAME_CLASSES = (.*);$/m, recordsOnly = m => m.replace(GC_LINE, '');
+  {
+    const gc = JSON.parse((g.module.match(GC_LINE) || [])[1] || 'null'), ids = JSON.parse(readFileSync(join(ROOT, 'data/packs/aion2/pack.json'), 'utf8')).classes;
+    ok('GAME_CLASSES: the game\'s classes in pack.json order, each { class, name } from its class record, nothing else', Array.isArray(gc) && JSON.stringify(gc.map(e => e.class)) === JSON.stringify(ids)
+      && gc.every(e => JSON.stringify(Object.keys(e)) === '["class","name"]' && JSON.parse(readFileSync(join(ROOT, `data/packs/aion2/classes/${e.class}/class.json`), 'utf8')).records[0].name === e.name), gc);
+  }
   /* 0.8 P3: the Templar class pack compiles through its guide pack (aion2/asmodian/templar), and the Assassin bundle
      carries none of it */
   const tpG = others[otherIds.indexOf('aion2/asmodian/templar')], tpColl = f => tpG ? tpG.all.filter(x => x.file.startsWith('data/packs/aion2/classes/templar/') && x.file.endsWith('/' + f)).length : 0;
   ok('the Templar class pack is no longer idle (0.8 P3); its guide pack compiles 1 class, 22 skills, 13 stigmas, 537 board nodes', !idle.includes('aion2/classes/templar') && !!tpG
     && tpColl('class.json') === 1 && tpColl('skills.json') === 22 && tpColl('stigmas.json') === 13 && tpColl('board-nodes.json') === 537, [tpColl('skills.json'), tpColl('stigmas.json'), tpColl('board-nodes.json')]);
-  const tpWords = /templar|Vicious Strike|Shield Smite|Doom Shield/i, tpIn = [g.module, g.gateModule, g.proposedModule, g.placeModule].filter(m => tpWords.test(m)).map(m => m.match(tpWords)[0]);
+  const tpWords = /templar|Vicious Strike|Shield Smite|Doom Shield/i, tpIn = [recordsOnly(g.module), g.gateModule, g.proposedModule, g.placeModule].filter(m => tpWords.test(m)).map(m => m.match(tpWords)[0]);
   ok('the Assassin bundle carries no Templar record (generated, gate, proposed and place modules)', !tpIn.length, tpIn);
   ok('idle class pack aion2/classes/chanter: 1 class, 22 skills, 13 stigmas, 537 board nodes (the research CSVs\' counts), checked by the generator', !!ch && chColl('class.json') === 1
     && chColl('skills.json') === 22 && chColl('stigmas.json') === 13 && chColl('board-nodes.json') === 537 && g.report.checks.some(x => x.check.startsWith('aion2/classes/chanter: board:triniel: 117 nodes')),
@@ -233,14 +242,14 @@ if (g) {
   const smG = others[otherIds.indexOf('aion2/asmodian/spiritmaster')], smGColl = f => smG ? smG.all.filter(x => x.file.startsWith('data/packs/aion2/classes/spiritmaster/') && x.file.endsWith('/' + f)).length : 0;
   ok('the Spiritmaster class pack is no longer idle; its guide pack compiles 1 class, 22 skills, 13 stigmas, 537 board nodes', !(g.idle || []).some(x => x.pack === SM) && !!smG
     && smGColl('class.json') === 1 && smGColl('skills.json') === 22 && smGColl('stigmas.json') === 13 && smGColl('board-nodes.json') === 537, [smGColl('skills.json'), smGColl('board-nodes.json')]);
-  const smWords = /spiritmaster|Spirit Communion|Kaisinel's Power|Cursed Cloud|560136/i, smIn = [g.module, g.gateModule, g.proposedModule, g.placeModule].filter(m => smWords.test(m)).map(m => m.match(smWords)[0]);
+  const smWords = /spiritmaster|Spirit Communion|Kaisinel's Power|Cursed Cloud|560136/i, smIn = [recordsOnly(g.module), g.gateModule, g.proposedModule, g.placeModule].filter(m => smWords.test(m)).map(m => m.match(smWords)[0]);
   ok('the Assassin bundle carries no Spiritmaster record (generated, gate, proposed and place modules)', !smIn.length, smIn);
   /* 0.7 P2: the Gladiator class pack is no longer idle; it compiles through its guide pack (aion2/asmodian/gladiator), and
      the Assassin bundle still carries none of it */
   const glG = others[otherIds.indexOf('aion2/asmodian/gladiator')], glColl = f => glG ? glG.all.filter(x => x.file.startsWith('data/packs/aion2/classes/gladiator/') && x.file.endsWith('/' + f)).length : 0;
   ok('the Gladiator class pack is no longer idle; its guide pack compiles 1 class, 22 skills, 13 stigmas, 537 board nodes', !(g.idle || []).some(x => x.pack === 'aion2/classes/gladiator') && !!glG
     && glColl('class.json') === 1 && glColl('skills.json') === 22 && glColl('stigmas.json') === 13 && glColl('board-nodes.json') === 537, [glColl('skills.json'), glColl('board-nodes.json')]);
-  const glWords = /gladiator|Keen Strike|Lunge Stance|Zikel's Blessing|110113/i, glIn = [g.module, g.gateModule, g.proposedModule, g.placeModule].filter(m => glWords.test(m)).map(m => m.match(glWords)[0]);
+  const glWords = /gladiator|Keen Strike|Lunge Stance|Zikel's Blessing|110113/i, glIn = [recordsOnly(g.module), g.gateModule, g.proposedModule, g.placeModule].filter(m => glWords.test(m)).map(m => m.match(glWords)[0]);
   ok('the Assassin bundle carries no Gladiator record (generated, gate, proposed and place modules)', !glIn.length, glIn);
   /* 0.6 P22 added the Ranger class pack idle; 0.6 P5 gave it its guide pack (aion2/asmodian/ranger), so it is no longer idle
      and compiles through that guide's own chain. The leak check below still holds: the Assassin bundle carries none of it

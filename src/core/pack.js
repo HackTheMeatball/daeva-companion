@@ -23,9 +23,9 @@ const PACK_KEYS = {
      one entry per class, only classes with a guide pack. A pack without it offers its `character` alone (packClasses) */
   classes: [x => pkArr(x) && x.length > 0 && x.every(e => pkObj(e) && pkStr(e.class) && pkStr(e.pack) && pkStr(e.name))
     && new Set(x.map(e => e.class)).size === x.length],
-  /* every class of the game, guide or not (0.8 P12): [{ class, name }] in the game's order, for the welcome card's class
-     picker (classChoices); none = the playable classes alone */
-  gameClasses: [x => pkArr(x) && x.length > 0 && x.every(e => pkObj(e) && pkStr(e.class) && pkStr(e.name))
+  /* every class of the game, guide or not (0.8 P12): [{ class, name, icon?: its emblem's path }] in the game's order, for
+     the welcome card's class picker (classChoices); none = the playable classes alone */
+  gameClasses: [x => pkArr(x) && x.length > 0 && x.every(e => pkObj(e) && pkStr(e.class) && pkStr(e.name) && (e.icon === undefined || pkStr(e.icon)))
     && new Set(x.map(e => e.class)).size === x.length],
   keptRules: [pkObj, () => ({})],
   gateChanges: [x => pkObj(x) && Object.values(x).every(pkObj), () => ({})],
@@ -81,18 +81,20 @@ export function definePack(spec) {
   if (p.gameClasses) {
     const missing = packClasses(p).find(e => !p.gameClasses.some(g => g.class === e.class));
     if (missing) throw new Error(`definePack: playable class "${missing.class}" is not one of "gameClasses"`);
-    p.gameClasses = Object.freeze(p.gameClasses.map(e => Object.freeze({ class: e.class, name: e.name })));
+    p.gameClasses = Object.freeze(p.gameClasses.map(e => Object.freeze({ class: e.class, name: e.name, ...(e.icon ? { icon: e.icon } : {}) })));
   }
   return Object.freeze(p);
 }
 
 /* The classes a new character may pick: the pack's `classes`, or else its `character` alone (named by its class id). */
 export const packClasses = (p = activePack()) => p.classes || [{ class: p.character.class, pack: p.character.pack, name: p.character.class }];
-/* Every class of the game for a class picker (0.8 P12): [{ class, name, pack }] in the game's order, pack = its guide pack,
-   or null for a class with no guide yet ("Soon", not pickable). Without `gameClasses`, the playable classes. */
+/* Every class of the game for a class picker (0.8 P12): [{ class, name, pack, icon }] in the game's order, pack = its guide
+   pack, or null for a class with no guide yet ("Soon", not pickable); icon = its emblem's path or null. Without
+   `gameClasses`, the playable classes. */
 export const classChoices = (p = activePack()) => {
   const playable = packClasses(p);
-  return (p.gameClasses || playable).map(g => { const e = playable.find(x => x.class === g.class); return { class: g.class, name: e ? e.name : g.name, pack: e ? e.pack : null }; });
+  return (p.gameClasses || playable).map(g => { const e = playable.find(x => x.class === g.class);
+    return { class: g.class, name: e ? e.name : g.name, pack: e ? e.pack : null, icon: g.icon || null }; });
 };
 
 let ACTIVE_PACK = null;
