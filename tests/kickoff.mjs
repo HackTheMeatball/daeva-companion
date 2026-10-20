@@ -66,6 +66,9 @@ check(/waits on open P2 #2/.test(await afterBlocker(byN(6))), 'open dependency, 
 check(/waits on open/.test(await afterBlocker(byN(7))), 'release "After: everything" with open items -> stays unstarted');
 check((await afterBlocker(unkeyed(null))) === '', 'no After line (e.g. a data-fix issue) -> starts');
 check((await afterBlocker(unkeyed('none.'))) === '', 'unkeyed issue, After: none -> starts');
+check((await afterBlocker({ ...unkeyed(null, '0.7'), body: '- **After:** none.\n' })) === '', 'bold "- **After:** none." (0.8 spec style) -> starts');
+check((await afterBlocker({ ...unkeyed(null, '0.7'), body: '- **After:** `owner-ok-0.7-sync`.\n' })) === '', 'bold After with a backticked typed owner-ok key -> starts');
+check(/waits on owner-ok-0.7-unmet/.test(await afterBlocker({ ...unkeyed(null, '0.7'), body: '- **After:** `owner-ok-0.7-unmet`.\n' })), 'bold After with a backticked unmet key -> stays unstarted');
 check((await afterBlocker(unkeyed('research-ranger-icons.'))) === '', 'unkeyed issue (0.6.1 F5), research file on main -> starts');
 check(/waits on research-gladiator/.test(await afterBlocker(unkeyed('research-gladiator-guide.'))), 'unkeyed issue, research missing -> stays unstarted');
 check(/not understood/.test(await afterBlocker(unkeyed('F1.'))), 'unkeyed issue naming an item key -> not understood, stays unstarted');
