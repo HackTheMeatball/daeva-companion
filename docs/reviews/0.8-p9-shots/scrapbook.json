@@ -1,0 +1,4 @@
+[
+  { "case": "keys-1500-long-name", "kind": "before-after", "title": "Key setup fits on wide screens",
+    "caption": "At level 45 on a wide screen the Right click chip and long skill names now stay inside their columns; a long name wraps to two lines." }
+]
