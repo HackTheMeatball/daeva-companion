@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-/* Build the site from src/ (dev dependency: esbuild; Node 22). The claude.ai artifact is frozen and no longer built
-   (owner, 2026-10-18, DECISIONS `owner-ok-0.7-artifact-freeze`; 0.7 P9 removed its build).
+/* Build the site from src/ (dev dependency: esbuild; Node 22). The claude.ai artifact was frozen
+   (owner, 2026-10-18, DECISIONS `owner-ok-0.7-artifact-freeze`; 0.7 P9 removed its build) and is deleted (owner, 2026-10-20).
 
    Source layout (0.2 P1–P3):
      src/index.html            the page shell: head, markup, and tags naming the files the build inlines

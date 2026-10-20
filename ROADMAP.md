@@ -116,7 +116,7 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
    or storage key change, or a release PR, plus one full design pass per minor (the Design Critic run in step 5, briefed by
    Design Review). The standing Design Review and Code Review
    threads may add a tag, never remove one, and brief a reviewer with no history on the work from a fixed template (the
-   checklist, the work and its acceptance line, nothing from the author); findings go to the work's owner, and a
+   checklist, the work and its acceptance line, and its baseline once K26 is in; nothing from the author); findings go to the work's owner, and a
    disagreement between reviewers goes to the owner in the morning debrief. Watchdog (Mike) flags a merged tagged item
    with no fresh-review note (`review-skipped`). Once per minor a no-history thread re-checks 10 data fields Game Data
    Check fixed or passed.
@@ -138,8 +138,8 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
    remediated** (the recommendation applied under a standing approval), so the owner can see which calls were whose.
    **Design Critic (owner, 2026-10-19 6:02 PM ET):** for every minor with visible changes, and for Design Lead's 1.0
    design review, Coordinator (Saul) starts a one-off Design Critic thread that took no part in the design. Before the
-   owner sees Design Lead (Jane)'s mockups, it reviews them against `docs/team/ux-review-checklist.md` and a "looks
-   AI-made" checklist and sends its findings to Jane and to the morning debrief. Jane answers each finding in writing;
+   owner sees Design Lead (Jane)'s mockups, it reviews them against `docs/design/review-checklist.md` (its "looks
+   AI-made" section included), briefed by Design Review (Holly) from the fixed template, and sends its findings to Jane and to the morning debrief. Jane answers each finding in writing;
    the final look OK stays the owner's.
    **Owner asks (Kaizen K23, owner 2026-10-20 4:39 PM ET; replaces K15's morning batch, which replaced K10):** the
    planning pass lists every product OK the minor needs, each with its recommendation, the exact words to type and the

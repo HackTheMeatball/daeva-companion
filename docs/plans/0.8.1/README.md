@@ -191,12 +191,17 @@ The owner said "now" on 2026-10-20 at 4:28 PM ET (same DECISIONS row).
 ## Release
 
 `0.8.1 R` once F1–F8 have merged or moved: CHANGELOG section in the release issue (K17),
-`PRE-RELEASE CHECK 0.8.1` to Game Data Check; a patch has no RC play or freeze (DECISIONS 2026-10-20). The Release
-Planner releases it by hand after `DATA OK 0.8.1`.
+`PRE-RELEASE CHECK 0.8.1` to Game Data Check; a patch has no RC play or freeze (DECISIONS 2026-10-20). After `DATA OK
+0.8.1` the Release Planner posts `GO 0.8.1`, and Build Pipeline starts the release item on it (K19).
+
+**Fresh review (K24).** F7 and F8 were planned before K24, so they carry no `fresh-review` tag; Design Review (Holly)
+reviews their shots against the checklist as standing reviewer. The 0.8.1 release PR is tagged `fresh-review` for Code
+Review (Howard). Tagging items at plan time starts with the 0.9 plan.
 
 **Backup data check before DATA OK.** Six Game Data Check PRs merged since #520 without a backup
 ROL-03 verdict first: #553, #556, #562, #570, #584 and #598. Only #553 has one so far (VERIFIED, after its merge).
 0.8.1 ships all six, so `DATA OK 0.8.1` waits until a thread other than Game Data Check posts VERIFIED on the other
-five. Source Vetting (Lydia) runs this check, and it is also K24's first fresh sample. This gate was added by the
+five. Source Vetting (Lydia) runs this check, and in the same pass draws K24's 10-field sample from #570 (3 turnedIn
+gates, 3 reached gates, 4 icon matches), re-checked against Metabot; she has no history on #570. This gate was added by the
 Release Planner on 2026-10-20, on Kaizen's recommendation (Mike's scan); it is a graded tighten under ROL-03 and
 touches no owner rule.

@@ -26,8 +26,8 @@ Daeva Companion (unofficial AION 2 companion; today the Asmodian Assassin leveli
 |---|---|---|
 | `dist/` | GitHub Pages, <https://daevacompanion.com/> | full `<head>`, icons at `assets/icons/*.png`, manifest, service worker |
 
-The claude.ai artifact is frozen and no longer built (owner, 2026-10-18, DECISIONS `owner-ok-0.7-artifact-freeze`; 0.7 P9
-removed its build, its `/_blob/` icon ids and its byte budget). The published artifact keeps its "moved" notice (D4).
+The claude.ai artifact was frozen (owner, 2026-10-18, DECISIONS `owner-ok-0.7-artifact-freeze`; 0.7 P9 removed its build,
+its `/_blob/` icon ids and its byte budget) and has since been deleted (owner, 2026-10-20). The site is the only app.
 Branding (Daeva Companion) lives in the shell (title, header lockup as inline SVG, footer). Favicon, manifest and app
 icons are in `public/`, drawn by `tools/brand/build.py` from `brand/`.
 
