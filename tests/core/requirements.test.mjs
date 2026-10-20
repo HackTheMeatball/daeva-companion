@@ -83,12 +83,19 @@ export default (test, M) => {
     assert.deepEqual([11, 12, 45].map(M.dvFromLv), [0, 4, 136]);
   });
   test('board: a node ticks only with its cost logged and the points for it', () => {
-    const n = M.DV_NODES()[0];
-    assert.deepEqual(M.dvGateOf(S({ dvTotal: 10 }), n.k), { off: true, warn: '' });
+    const n = M.DV_NODES()[0], bare = M.DV_NODES().find(x => x.cost === undefined);
+    assert.deepEqual(M.dvGateOf(S({ dvTotal: 10 }), bare.k), { off: true, warn: '' }, 'no cost logged, none in the plan');
     assert.deepEqual(M.dvGateOf(S({ dvTotal: 2, dvCost: { [n.k]: 3 } }), n.k), { off: true, warn: 'needs 3, 2 left' });
     assert.deepEqual(M.dvGateOf(S({ dvTotal: 5, dvCost: { [n.k]: 3 } }), n.k), { off: false, warn: '' });
     assert.equal(M.dvSpent(S({ dvAdj: 2, dvCost: { [n.k]: 3 }, checks: { [n.k]: true } })), 5);
-    assert.equal(M.dvNeed(S(), n), { p: 2, a: 3, c: 4 }[n.ty]);
+    assert.equal(M.dvNeed(S(), bare), { p: 2, a: 3, c: 4 }[bare.ty]);
+    /* 0.8.1 F1: the plan's cost (the owner's board, Heart Gore on Nezekan 9) stands in for an unlogged one; a logged one wins */
+    assert.equal(n.cost, 9);
+    assert.equal(M.dvNeed(S(), n), 9);
+    assert.deepEqual(M.dvGateOf(S({ dvTotal: 10 }), n.k), { off: false, warn: '' });
+    assert.deepEqual(M.dvGateOf(S({ dvTotal: 5 }), n.k), { off: true, warn: 'needs 9, 5 left' });
+    assert.equal(M.dvSpent(S({ checks: { [n.k]: true } })), 9);
+    assert.equal(M.dvSpent(S({ dvCost: { [n.k]: 0 }, checks: { [n.k]: true } })), 0, 'a logged 0 wins over the plan');
     /* E5: the Daevanion gate, "Urgent Pursuit" turned in (unlock:daevanion), on top of the board level */
     const past = M.QUESTS[M.QUESTS.findIndex(([, q]) => q === 'Urgent Pursuit') + 1][1];
     assert.equal(M.dvNext(S({ quest: past }), 11), undefined); assert.equal(M.dvNext(S({ quest: past }), 12), n);
