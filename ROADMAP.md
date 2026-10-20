@@ -3,6 +3,10 @@
 **1.0.0 = all eight classes, Asmodian only, Lv 1–45.** Every class meets the bar the Assassin guide sets today:
 verified data only (see CLAUDE.md), Next up always correct, saved progress never broken. Elyos is after 1.0.
 
+**How we work by 1.0 (owner, 2026-10-20 2:43 PM ET):** the owner can just say "add x feature" and the workflow is tuned
+well enough that they don't have to tinker: it operates like a real development company. Each release kaizen review
+measures against this (DECISIONS 2026-10-20).
+
 Classes (per [Metabot](https://metabot.gg/en/aion-2/classes)): Gladiator, Templar, Assassin, Ranger, Sorcerer,
 Spiritmaster, Cleric, Chanter.
 
