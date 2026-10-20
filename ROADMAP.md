@@ -1312,11 +1312,11 @@ At most five builds at a time. Ungated items queue first; gated ones go last and
 
 - **Wave 1 (at the go):** P1, P2, P3, P4, P5, P6, P7, P8 and S2, S3. Queue order P1 → P2 → P3 → P7 → P8 → P4 → P5 → P6, so the
   queue runs top-down: P1 and P3 start at once; P2, P7 and P8 wait for P1 on nextup-card (P8 also on skills-card and
-  build-card), and kickoff serialises them from their queue-line lanes. Serial
-  lanes: **gen** P1 → P2 → P6 → P10 → P11 → P13 → P15 → P16 → P17 → P18; **golden** P1 → P2 → P11 → P12 → P13 → the
+  build-card), and kickoff serialises them from their queue-line lanes.
+  Serial lanes: **gen** P1 → P2 → P6 → P10 → P11 → P13 → P15 → P16 → P17 → P18; **golden** P1 → P2 → P11 → P12 → P13 → the
   research items → P19 → P20 → P21 → P22; **skills-card** P1 → P8 → P5 → P15 → P19; **nextup-card** P1 → P2 → P7 → P8 → P5 → P13 → P15 →
   P19 → P21; **page-card** P4 → P5 → P21 → P23; **mig** P2 → P9 → P22; **schema** P3 → P6 → P10; **app.css** P8 → P19 → P20 → P21 →
-  P22; **build-card** P1 → P8 → P5 → P13 → P18 → P22; **daevanion-card** P1 → P5 → P16 → P20 → P21; **a11y** P8 → P22; **site** P5 → P23; **main.js** P4 → P9 → P21; **ci** (Gus) S2 → S3 → S1 → S4. Shared test and doc files: **save** (`tests/save.js`) P9 → P11 → P22; **e2** (`tests/e2test.js`) P3 → P23;
+  P22; **build-card** P1 → P8 → P5 → P13 → P18 → P22; **daevanion-card** P1 → P5 → P16 → P20 → P21; **a11y** P8 → P22; **site** P5 → P23; **golden-nextup** P7 → P8 → P19 → P21; **journey-card** P2 → P7; **main.js** P4 → P9 → P21; **ci** (Gus) S2 → S3 → S1 → S4. Shared test and doc files: **save** (`tests/save.js`) P9 → P11 → P22; **e2** (`tests/e2test.js`) P3 → P23;
   **run-mjs** (`tests/run.mjs`) P6 → P14 → S1; **architecture** (`docs/ARCHITECTURE.md`) P5 → P9 → P14 (plan review, #609).
 - **Wave 2 (after P2):** P9, P10, P11, P13; then P12 (after P11 and P6) and P14 (after P9 and P10).
 - **Wave 3 (as research lands):** P15, P16, P17, P18, in the order their files land.
@@ -1363,7 +1363,8 @@ Lv 45 character Next up always shows the best thing to do next.
 **On the way and "Main path only" (Design Lead's calls after review, 2026-10-20 10:15 PM ET; the owner's 5:45 PM ask):**
 Next up's headline stays one step, and an "On the way" line lists optional things nearby: same zone, open at your level,
 sorted by distance where both ends have Metabot coordinates (every regional quest and stronghold, 72 of 87 story
-quests). The line names up to 3 kinds with counts and opens to the full list; a Skip is keyed by record id and undoable;
+quests; counted on main `d64296a` by the outside design critic, `design-review/critic-product-calls-2026-10-20.md`
+finding 7, project files). The line names up to 3 kinds with counts and opens to the full list; a Skip is keyed by record id and undoable;
 "Do it" ticks nothing, it only makes the item the headline. Journey and Areas stay inventory. One guide, no modes: the
 Fastest / Completionist track toggle (0.5) is a named removal, replaced by one "Main path only" setting that carries the
 track's drawbacks text while on. The adv and later cards that one view (0.9 P21) moves out of the headline land here.
@@ -1377,7 +1378,7 @@ mapping approved 2026-10-13, values in `docs/research/colors-2026-10/`, never bu
 little different. Designed inside the 1.0 visual language by Design Lead, reviewed by Design Review and an outside
 critic, built as a bot item. The Elyos layer is mocked but has no players until Elyos packs exist. Cards stop
 reading each other's DOM (architecture audit C3), which makes "add a feature" cheaper. The same step shown in three places
-(UX audit finding 12) is settled here. **Design questions the owner handed to Design Lead (2026-10-20 5:45 PM ET; decided under outside
+(UX audit finding 12) is settled here. **Design questions the owner handed to Design Lead (2026-10-20 5:45 PM ET; answered below, after outside
 review):** Next up also shows what else is nearby on the way, so completionists are served; one guide with ways to skip
 what a player doesn't want, or separate fastest and completionist modes; whether Basic and Advanced merge into one better
 view, so there aren't two views to maintain; and the new-user and new-character experience, including a premium opening
