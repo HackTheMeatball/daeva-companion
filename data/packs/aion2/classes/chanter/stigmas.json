@@ -1,0 +1,690 @@
+{
+  "$schema": "../../schema/stigmas.schema.json",
+  "schemaVersion": 2,
+  "collection": "stigmas",
+  "class": "chanter",
+  "records": [
+    {
+      "id": "stigma:chanter:assault-shock",
+      "key": "Assault Shock",
+      "name": "Assault Shock",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:chanter:assault-shock:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+20% Attack for 5s on hit"
+        },
+        {
+          "id": "spec:chanter:assault-shock:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "500 MP damage on hit"
+        },
+        {
+          "id": "spec:chanter:assault-shock:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+10m range"
+        },
+        {
+          "id": "spec:chanter:assault-shock:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+20% Stun Chance"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/assault-shock",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (chanter research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:chanter:barrier-spell",
+      "key": "Barrier Spell",
+      "name": "Barrier Spell",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:chanter:barrier-spell:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "Restores 10% HP when effect expires naturally"
+        },
+        {
+          "id": "spec:chanter:barrier-spell:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+10% PvE Damage Tolerance and +5% PvP Damage Tolerance for 10s when effect expires naturally"
+        },
+        {
+          "id": "spec:chanter:barrier-spell:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+10% HP limit"
+        },
+        {
+          "id": "spec:chanter:barrier-spell:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+1s effect duration"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/barrier-spell",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (chanter research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:chanter:ensnaring-mark",
+      "key": "Ensnaring Mark",
+      "name": "Ensnaring Mark",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:chanter:ensnaring-mark:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "50% chance to inflict Root"
+        },
+        {
+          "id": "spec:chanter:ensnaring-mark:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "50% chance to inflict -1,000 enemy Max Stamina"
+        },
+        {
+          "id": "spec:chanter:ensnaring-mark:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+3s Seal, Root, Max Stamina reduction effect"
+        },
+        {
+          "id": "spec:chanter:ensnaring-mark:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+25% Seal, Root, Max Stamina reduction chance"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/ensnaring-mark",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (chanter research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:chanter:focused-defense",
+      "key": "Focused Defense",
+      "name": "Focused Defense",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:chanter:focused-defense:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+1 consecutive use"
+        },
+        {
+          "id": "spec:chanter:focused-defense:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "Changes to mobile skill"
+        },
+        {
+          "id": "spec:chanter:focused-defense:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+20% Move Speed for 3s on Block"
+        },
+        {
+          "id": "spec:chanter:focused-defense:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "Restores 5% HP once on Parry"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/focused-defense",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (chanter research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:chanter:fracturing-blow",
+      "key": "Fracturing Blow",
+      "name": "Fracturing Blow",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:chanter:fracturing-blow:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "-15s cooldown"
+        },
+        {
+          "id": "spec:chanter:fracturing-blow:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "Inflict Exposed for 5s on hit"
+        },
+        {
+          "id": "spec:chanter:fracturing-blow:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "Critical Hit on hit"
+        },
+        {
+          "id": "spec:chanter:fracturing-blow:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+30% additional Impact-type Status target damage"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/fracturing-blow",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (chanter research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:chanter:guardian-blessing",
+      "key": "Guardian Blessing",
+      "name": "Guardian Blessing",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:chanter:guardian-blessing:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+10% Status Effect Resist"
+        },
+        {
+          "id": "spec:chanter:guardian-blessing:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "x1.5 [Crossguard] effect for the duration"
+        },
+        {
+          "id": "spec:chanter:guardian-blessing:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "x1.5 [Wind's Promise] effect for the duration"
+        },
+        {
+          "id": "spec:chanter:guardian-blessing:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+10% Incoming Heal"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/guardian-blessing",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (chanter research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:chanter:healing-touch",
+      "key": "Healing Touch",
+      "name": "Healing Touch",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:chanter:healing-touch:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+20% amount healed when HP is 50% or less"
+        },
+        {
+          "id": "spec:chanter:healing-touch:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "Restores 1,000 Stamina"
+        },
+        {
+          "id": "spec:chanter:healing-touch:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "Removes 5 debuff(s)"
+        },
+        {
+          "id": "spec:chanter:healing-touch:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+5% HP restored"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/healing-touch",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        },
+        {
+          "url": "https://daevaguides.com/en/chanter/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-19",
+          "note": "Class guide shows the specialty text for spec:chanter:healing-touch:3 (chanter research §5)"
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/chanter/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-19",
+          "note": "Class guide shows the specialty text for spec:chanter:healing-touch:3 (chanter research §5)"
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "conflicts": [
+        "spec:chanter:healing-touch:3 text: Metabot's skill page prints \"Removes 5, 5 debuff(s)\" (an unfilled template that doubles the number). Game text \"Removes 5 debuff(s)\" per daevaguides, aion2turkiye (chanter research §5)."
+      ],
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (chanter research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:chanter:impeding-authority",
+      "key": "Impeding Authority",
+      "name": "Impeding Authority",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:chanter:impeding-authority:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+15% Defense"
+        },
+        {
+          "id": "spec:chanter:impeding-authority:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+10% Incoming Heal"
+        },
+        {
+          "id": "spec:chanter:impeding-authority:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+10% PvE Damage Tolerance, +5% PvP Damage Tolerance"
+        },
+        {
+          "id": "spec:chanter:impeding-authority:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "Restores 7% of Max HP when Protective Shield ends or is broken"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/impeding-authority",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (chanter research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:chanter:marchutans-wrath",
+      "key": "Marchutan's Wrath",
+      "name": "Marchutan's Wrath",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:chanter:marchutans-wrath:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "Up to +20% damage when less targets hit"
+        },
+        {
+          "id": "spec:chanter:marchutans-wrath:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "50% chance to inflict Stun for 3s"
+        },
+        {
+          "id": "spec:chanter:marchutans-wrath:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "-70% Incoming Heal and Potion Recovery"
+        },
+        {
+          "id": "spec:chanter:marchutans-wrath:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+25% additional Stun Chance"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/marchutans-wrath",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (chanter research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:chanter:obliterate",
+      "key": "Obliterate",
+      "name": "Obliterate",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:chanter:obliterate:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "Up to +20% damage when more targets hit"
+        },
+        {
+          "id": "spec:chanter:obliterate:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+20% Skill Speed"
+        },
+        {
+          "id": "spec:chanter:obliterate:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "Critical Hit on hit"
+        },
+        {
+          "id": "spec:chanter:obliterate:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+25% Knockdown Chance"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/obliterate",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (chanter research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:chanter:power-of-the-storm",
+      "key": "Power of the Storm",
+      "name": "Power of the Storm",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:chanter:power-of-the-storm:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "-30s cooldown"
+        },
+        {
+          "id": "spec:chanter:power-of-the-storm:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+200 Accuracy"
+        },
+        {
+          "id": "spec:chanter:power-of-the-storm:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+200 Critical Hit"
+        },
+        {
+          "id": "spec:chanter:power-of-the-storm:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+20% Caster Attack and +10% party member Attack"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/power-of-the-storm",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (chanter research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:chanter:sprint-mantra",
+      "key": "Sprint Mantra",
+      "name": "Sprint Mantra",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:chanter:sprint-mantra:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+10% Incoming Heal"
+        },
+        {
+          "id": "spec:chanter:sprint-mantra:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+30% Natural Stamina Regen"
+        },
+        {
+          "id": "spec:chanter:sprint-mantra:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+50% amount restored when HP is 50% or less"
+        },
+        {
+          "id": "spec:chanter:sprint-mantra:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+10% Restoration"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/sprint-mantra",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (chanter research §2.2)."
+      ]
+    },
+    {
+      "id": "stigma:chanter:undefeated-mantra",
+      "key": "Undefeated Mantra",
+      "name": "Undefeated Mantra",
+      "availableLv": 22,
+      "maxLevel": 25,
+      "specialtyChoices": [
+        {
+          "id": "spec:chanter:undefeated-mantra:1",
+          "n": 1,
+          "skillLv": 5,
+          "text": "+100 Critical Hit"
+        },
+        {
+          "id": "spec:chanter:undefeated-mantra:2",
+          "n": 2,
+          "skillLv": 10,
+          "text": "+100 Accuracy"
+        },
+        {
+          "id": "spec:chanter:undefeated-mantra:3",
+          "n": 3,
+          "skillLv": 15,
+          "text": "+5% Critical Damage Boost"
+        },
+        {
+          "id": "spec:chanter:undefeated-mantra:4",
+          "n": 4,
+          "skillLv": 20,
+          "text": "+5% Double Chance"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/undefeated-mantra",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 25: Metabot only (this skill page and the class page agree). A leveling guide does not reach it, so no owner check is asked (chanter research §2.2)."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1168 @@
+{
+  "$schema": "../../schema/skills.schema.json",
+  "schemaVersion": 2,
+  "collection": "skills",
+  "class": "chanter",
+  "records": [
+    {
+      "id": "skill:chanter:attack-preparation",
+      "key": "Attack Preparation",
+      "name": "Attack Preparation",
+      "type": "passive",
+      "learnLv": 13,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/attack-preparation-chanter",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "icon": "owner-check"
+      },
+      "notes": [
+        "Shared display name with another class (Metabot slug ends -chanter) (Metabot page slug attack-preparation-chanter).",
+        "icon: owner-check. The owner's Lv 4 Chanter screen (2026-10-19) shows the shape of its page's file 18750000 in the Lv 13 cell, but red and purple where the file is blue (unconfirmed) (chanter research §7). No icon until the owner's tooltip screenshot names the art (docs/ISSUES.md)."
+      ]
+    },
+    {
+      "id": "skill:chanter:blessing-of-life",
+      "key": "Blessing of Life",
+      "name": "Blessing of Life",
+      "type": "passive",
+      "learnLv": 1,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/blessing-of-life",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "icon": "owner-check"
+      },
+      "notes": [
+        "icon: owner-check. The owner's Lv 4 Chanter screen (2026-10-19) shows green light with gold ornaments in the unlocked Lv 1 cell; no Metabot file has it (its page's file 18710000 is the game's Protection Circle art) (chanter research §7). No icon until the owner's tooltip screenshot names the art (docs/ISSUES.md)."
+      ]
+    },
+    {
+      "id": "skill:chanter:crossguard",
+      "key": "Crossguard",
+      "name": "Crossguard",
+      "type": "passive",
+      "learnLv": 6,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/crossguard",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:chanter:dark-crush",
+      "key": "Dark Crush",
+      "name": "Dark Crush",
+      "type": "active",
+      "learnLv": 4,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:chanter:dark-crush:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Absorbs 0.7% HP"
+        },
+        {
+          "id": "spec:chanter:dark-crush:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Deals extra damage on attacking a target afflicted with Impact-type status"
+        },
+        {
+          "id": "spec:chanter:dark-crush:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Critical Hit on hit"
+        },
+        {
+          "id": "spec:chanter:dark-crush:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "Adds [Piercing Strike] Chain Skill"
+        },
+        {
+          "id": "spec:chanter:dark-crush:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "Removes [Dark Crush] cooldown"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/dark-crush",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        },
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/chanter/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-19",
+          "note": "Class guide shows the specialty text for spec:chanter:dark-crush:1 (chanter research §5)"
+        },
+        {
+          "url": "https://daevaguides.com/en/chanter/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-19",
+          "note": "Class guide shows the specialty text for spec:chanter:dark-crush:1 (chanter research §5)"
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/chanter/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-19",
+          "note": "Class guide shows the specialty text for spec:chanter:dark-crush:1 (chanter research §5)"
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "conflicts": [
+        "spec:chanter:dark-crush:1 text: Metabot's skill page prints \"Absorbs 70, 70% HP\" (an unfilled template that doubles the number). Game text \"Absorbs 0.7% HP\" per mmo-codex, daevaguides, aion2turkiye (chanter research §5)."
+      ]
+    },
+    {
+      "id": "skill:chanter:defiance",
+      "key": "Defiance",
+      "name": "Defiance",
+      "type": "active",
+      "learnLv": 16,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:chanter:defiance:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Adds [Crushing Strike] Chain Skill"
+        },
+        {
+          "id": "spec:chanter:defiance:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Restores 1,000 Stamina on using [Defiance]"
+        },
+        {
+          "id": "spec:chanter:defiance:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Restores 10% HP on using [Defiance]"
+        },
+        {
+          "id": "spec:chanter:defiance:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "+2s Tenacity duration"
+        },
+        {
+          "id": "spec:chanter:defiance:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "+50% PvE Damage Tolerance and +25% PvP Damage Tolerance for Tenacity duration"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/defiance-chanter",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "notes": [
+        "Shared display name with another class (Metabot slug ends -chanter) (Metabot page slug defiance-chanter)."
+      ]
+    },
+    {
+      "id": "skill:chanter:earths-promise",
+      "key": "Earth's Promise",
+      "name": "Earth's Promise",
+      "type": "passive",
+      "learnLv": 21,
+      "levelGate": "flat",
+      "boardNodes": {
+        "perBoard": {
+          "board:zikel": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/earths-promise",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "notes": [
+        "icon: the owner's Lv 4 Chanter screen (2026-10-19) shows Metabot's Wind's Promise file 18800000 in this skill's Lv 21 cell, staged as sk-chanter-earths-promise.png (chanter research §7)."
+      ]
+    },
+    {
+      "id": "skill:chanter:gust-rampage",
+      "key": "Gust Rampage",
+      "name": "Gust Rampage",
+      "type": "active",
+      "learnLv": 5,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:chanter:gust-rampage:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Absorbs 5% HP"
+        },
+        {
+          "id": "spec:chanter:gust-rampage:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Restores 120 MP"
+        },
+        {
+          "id": "spec:chanter:gust-rampage:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Changes to mobile skill"
+        },
+        {
+          "id": "spec:chanter:gust-rampage:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "Multi-Hit on hit"
+        },
+        {
+          "id": "spec:chanter:gust-rampage:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "-1s all skill cooldowns on hit"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/gust-rampage",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        },
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/chanter/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-19",
+          "note": "Class guide shows the specialty text for spec:chanter:gust-rampage:1 (chanter research §5)"
+        },
+        {
+          "url": "https://daevaguides.com/en/chanter/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-19",
+          "note": "Class guide shows the specialty text for spec:chanter:gust-rampage:1 (chanter research §5)"
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/chanter/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-19",
+          "note": "Class guide shows the specialty text for spec:chanter:gust-rampage:1 (chanter research §5)"
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "conflicts": [
+        "spec:chanter:gust-rampage:1 text: Metabot's skill page prints \"Absorbs 500, 500% HP\" (an unfilled template that doubles the number). Game text \"Absorbs 5% HP\" per mmo-codex, daevaguides, aion2turkiye (chanter research §5)."
+      ]
+    },
+    {
+      "id": "skill:chanter:heat-wave-blow",
+      "key": "Heat Wave Blow",
+      "name": "Heat Wave Blow",
+      "type": "active",
+      "learnLv": 7,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:chanter:heat-wave-blow:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "40% chance to inflict Stun for 3s"
+        },
+        {
+          "id": "spec:chanter:heat-wave-blow:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+20% Seal Chance"
+        },
+        {
+          "id": "spec:chanter:heat-wave-blow:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Up to +20% damage when more targets hit"
+        },
+        {
+          "id": "spec:chanter:heat-wave-blow:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "Ignores Block and Evasion and lands as Multi-Hit"
+        },
+        {
+          "id": "spec:chanter:heat-wave-blow:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "25% chance to reset [Heat Wave Blow] cooldown on Block"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/heat-wave-blow",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:chanter:impact-hit",
+      "key": "Impact Hit",
+      "name": "Impact Hit",
+      "type": "passive",
+      "learnLv": 15,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:zikel": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/impact-hit-chanter",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "icon": "owner-check"
+      },
+      "notes": [
+        "Shared display name with another class (Metabot slug ends -chanter) (Metabot page slug impact-hit-chanter).",
+        "icon: owner-check. The owner's Lv 4 Chanter screen (2026-10-19) shows the shape of its page's file 18760000 in the Lv 15 cell, but red and purple where the file is blue (unconfirmed; may be the Assassin's 13760000, as on the Templar) (chanter research §7). No icon until the owner's tooltip screenshot names the art (docs/ISSUES.md)."
+      ]
+    },
+    {
+      "id": "skill:chanter:impactful-crush",
+      "key": "Impactful Crush",
+      "name": "Impactful Crush",
+      "type": "active",
+      "learnLv": 3,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:chanter:impactful-crush:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Changes to AoE damage"
+        },
+        {
+          "id": "spec:chanter:impactful-crush:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+1s [Impactful Crush] Stun duration"
+        },
+        {
+          "id": "spec:chanter:impactful-crush:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Changes to mobile skill"
+        },
+        {
+          "id": "spec:chanter:impactful-crush:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "+30% Skill Speed"
+        },
+        {
+          "id": "spec:chanter:impactful-crush:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "+20% [Impactful Crush] Stun Chance"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/impactful-crush",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:chanter:incandescent-blow",
+      "key": "Incandescent Blow",
+      "name": "Incandescent Blow",
+      "type": "active",
+      "learnLv": 1,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:chanter:incandescent-blow:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "-20% MP consumed"
+        },
+        {
+          "id": "spec:chanter:incandescent-blow:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+200 Block while using skill"
+        },
+        {
+          "id": "spec:chanter:incandescent-blow:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Deals up to 12% more damage when less targets are hit"
+        },
+        {
+          "id": "spec:chanter:incandescent-blow:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "-200 enemy Accuracy for 3s on landing Bursting Blow"
+        },
+        {
+          "id": "spec:chanter:incandescent-blow:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "Ignores Block and Evasion and lands as Multi-Hit"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/incandescent-blow",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:chanter:inspiring-spell",
+      "key": "Inspiring Spell",
+      "name": "Inspiring Spell",
+      "type": "passive",
+      "learnLv": 11,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/inspiring-spell",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:chanter:onslaught",
+      "key": "Onslaught",
+      "name": "Onslaught",
+      "type": "active",
+      "learnLv": 1,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:chanter:onslaught:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "+20% MP restored"
+        },
+        {
+          "id": "spec:chanter:onslaught:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Absorbs 0.7% HP"
+        },
+        {
+          "id": "spec:chanter:onslaught:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "+50% Multi-Hit on hit"
+        },
+        {
+          "id": "spec:chanter:onslaught:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "-1s [Spinning Strike] cooldown on hit"
+        },
+        {
+          "id": "spec:chanter:onslaught:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "Adds [Storm Chain] Chain Skill"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/onslaught",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        },
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/chanter/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-19",
+          "note": "Class guide shows the specialty text for spec:chanter:onslaught:2 (chanter research §5)"
+        },
+        {
+          "url": "https://daevaguides.com/en/chanter/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-19",
+          "note": "Class guide shows the specialty text for spec:chanter:onslaught:2 (chanter research §5)"
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/chanter/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-19",
+          "note": "Class guide shows the specialty text for spec:chanter:onslaught:2 (chanter research §5)"
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "conflicts": [
+        "spec:chanter:onslaught:2 text: Metabot's skill page prints \"Absorbs 70, 70% HP\" (an unfilled template that doubles the number). Game text \"Absorbs 0.7% HP\" per mmo-codex, daevaguides, aion2turkiye, and the owner's Chanter skill window (2026-10-19) (chanter research §5)."
+      ]
+    },
+    {
+      "id": "skill:chanter:protection-circle",
+      "key": "Protection Circle",
+      "name": "Protection Circle",
+      "type": "passive",
+      "learnLv": 9,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/protection-circle",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "notes": [
+        "icon: the owner's Lv 4 Chanter screen (2026-10-19) shows Metabot's Blessing of Life file 18710000 in this skill's Lv 9 cell, staged as sk-chanter-protection-circle.png (chanter research §7)."
+      ]
+    },
+    {
+      "id": "skill:chanter:raging-spell",
+      "key": "Raging Spell",
+      "name": "Raging Spell",
+      "type": "passive",
+      "learnLv": 17,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:zikel": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/raging-spell",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:chanter:recuperation",
+      "key": "Recuperation",
+      "name": "Recuperation",
+      "type": "active",
+      "learnLv": 8,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:chanter:recuperation:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "+1 consecutive use and Heal over Time can stack up to 2 times"
+        },
+        {
+          "id": "spec:chanter:recuperation:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Removes up to 2 debuffs"
+        },
+        {
+          "id": "spec:chanter:recuperation:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "+4s healing duration"
+        },
+        {
+          "id": "spec:chanter:recuperation:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "+5% HP restored"
+        },
+        {
+          "id": "spec:chanter:recuperation:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "-3s cooldown"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/recuperation",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        },
+        {
+          "url": "https://daevaguides.com/en/chanter/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-19",
+          "note": "Class guide shows the specialty text for spec:chanter:recuperation:2 (chanter research §5)"
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/chanter/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-19",
+          "note": "Class guide shows the specialty text for spec:chanter:recuperation:2 (chanter research §5)"
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "icon": "owner-check"
+      },
+      "conflicts": [
+        "spec:chanter:recuperation:2 text: Metabot's skill page prints \"Removes up to 2, 2 debuffs\" (an unfilled template that doubles the number). Game text \"Removes up to 2 debuffs\" per daevaguides, aion2turkiye (chanter research §5)."
+      ],
+      "notes": [
+        "icon: owner-check. The owner's Lv 4 Chanter screen (2026-10-19) shows one open hand with light in the Lv 8 cell; no Metabot file has it (its page's file 18120000 matches no cell) (chanter research §7). No icon until the owner's tooltip screenshot names the art (docs/ISSUES.md)."
+      ]
+    },
+    {
+      "id": "skill:chanter:rushing-smash",
+      "key": "Rushing Smash",
+      "name": "Rushing Smash",
+      "type": "active",
+      "learnLv": 1,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:chanter:rushing-smash:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "-20% target's Impact-type Resist for 5s"
+        },
+        {
+          "id": "spec:chanter:rushing-smash:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Changes to Charge Skill, dealing up to 200% more damage"
+        },
+        {
+          "id": "spec:chanter:rushing-smash:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "50% chance to trigger [Heat Wave Blow] on hit"
+        },
+        {
+          "id": "spec:chanter:rushing-smash:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "Resets cooldown on defeating an enemy"
+        },
+        {
+          "id": "spec:chanter:rushing-smash:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "Ignores Block and Evasion and lands as Multi-Hit"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/rushing-smash",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:chanter:spinning-strike",
+      "key": "Spinning Strike",
+      "name": "Spinning Strike",
+      "type": "active",
+      "learnLv": 14,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:chanter:spinning-strike:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "-5s cooldown"
+        },
+        {
+          "id": "spec:chanter:spinning-strike:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+10% Heal Boost (up to 20%)"
+        },
+        {
+          "id": "spec:chanter:spinning-strike:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Up to +20% damage when less targets hit"
+        },
+        {
+          "id": "spec:chanter:spinning-strike:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "40% chance to inflict Seal for 3s"
+        },
+        {
+          "id": "spec:chanter:spinning-strike:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "Ignores Block and Evasion and lands as a Critical Hit"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/spinning-strike",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:chanter:survival-willpower",
+      "key": "Survival Willpower",
+      "name": "Survival Willpower",
+      "type": "passive",
+      "learnLv": 23,
+      "levelGate": "flat",
+      "boardNodes": {
+        "perBoard": {
+          "board:zikel": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/survival-willpower-chanter",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "icon": "owner-check"
+      },
+      "notes": [
+        "Shared display name with another class (Metabot slug ends -chanter) (Metabot page slug survival-willpower-chanter).",
+        "icon: owner-check. The owner's Lv 4 Chanter screen (2026-10-19) shows an armoured figure, hands to the head, in the Lv 23 cell; Metabot has no icon (18790000 returns 403) (chanter research §7). No icon until the owner's tooltip screenshot names the art (docs/ISSUES.md)."
+      ]
+    },
+    {
+      "id": "skill:chanter:tremor-crush",
+      "key": "Tremor Crush",
+      "name": "Tremor Crush",
+      "type": "active",
+      "learnLv": 10,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:chanter:tremor-crush:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Restores 300 Stamina on hit"
+        },
+        {
+          "id": "spec:chanter:tremor-crush:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+10m [Tremor Crush] range"
+        },
+        {
+          "id": "spec:chanter:tremor-crush:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "+50% Multi-Hit on hit"
+        },
+        {
+          "id": "spec:chanter:tremor-crush:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "Adds [Surging Strike] Chain Skill"
+        },
+        {
+          "id": "spec:chanter:tremor-crush:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "+25% [Tremor Crush] Stun Chance"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/tremor-crush",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:chanter:wave-blow",
+      "key": "Wave Blow",
+      "name": "Wave Blow",
+      "type": "active",
+      "learnLv": 12,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:chanter:wave-blow:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Multi-Hit on hit"
+        },
+        {
+          "id": "spec:chanter:wave-blow:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+6m Range"
+        },
+        {
+          "id": "spec:chanter:wave-blow:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "+1s Knockdown duration"
+        },
+        {
+          "id": "spec:chanter:wave-blow:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "-15% target's PvE Damage Boost and -7.5% PvP Damage Boost for 10s"
+        },
+        {
+          "id": "spec:chanter:wave-blow:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "-5s cooldown"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/wave-blow",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "notes": [
+        "Default key (owner's Chanter screen, 2026-10-19, chanter research §6): Q row 1, under Tremor Crush in row 0. Unlike every other class, the conditional skill (Wave Blow only fires on a stunned target) is not in row 0; keep the screen's order and label it conditional."
+      ]
+    },
+    {
+      "id": "skill:chanter:winds-promise",
+      "key": "Wind's Promise",
+      "name": "Wind's Promise",
+      "type": "passive",
+      "learnLv": 25,
+      "levelGate": "flat",
+      "boardNodes": {
+        "perBoard": {
+          "board:zikel": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/winds-promise",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "notes": [
+        "icon: the owner's Lv 4 Chanter screen (2026-10-19) shows Metabot's Earth's Promise file 18780000 in this skill's Lv 25 cell, staged as sk-chanter-winds-promise.png (chanter research §7)."
+      ]
+    }
+  ]
+}
