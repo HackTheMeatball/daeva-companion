@@ -9,6 +9,59 @@ through 0.3.0 loads every earlier save. From 0.4.0 the key is `companion-save-v5
 rule in CLAUDE.md). Entries before 0.1.0 are the internal build numbers of the original single-file claude.ai
 artifact (`vNNN`) and are kept in their original form.
 
+## 0.8.0 — 2026-10-20
+
+All eight classes, class choice when you start, regional quest buttons.
+
+### Added
+
+- The Templar, the Cleric, the Sorcerer and the Chanter: Lv 1–45 guides and a place in the class picker. All eight
+  classes can now be picked.
+- The welcome card asks which class you play, and the new character starts as that class.
+- Unverified values carry their label wherever they show (P20).
+- Regional quest rows show a state icon in place of the checkbox (to pick up, in progress, turned in) with a legend,
+  and one button names the next step: "Pick up", then "Turn in", then "Undo"; Next up rows add a map pin, and the
+  extract tip shows the flask (P13).
+
+### Changed
+
+- Link previews and the installed app's description now name all eight Asmodian classes.
+- Auto level-up uses the level a quest is turned in at. Turning in each of the eight 100% EXP Ishalgen story quests at
+  its turn-in level raises you one level, with an Undo; The Being Beneath the Lake and Spread Your Wings (50% each)
+  leave the level alone. Before, only A Village in the Fog levelled you up.
+- A new character's level step labels its skip button "Skip, start fresh" (P8).
+- Key setup fits at 1500 px, each cell names its key, and long skill names wrap (P9).
+- Assassin Key setup marks its Q, E and T columns as the guide's suggested binding (†) and lists the game's default keys
+  under it (Shadowstrike on 1, Heart Gore / Storm Rampage / Whirlwind Slice on E, Infiltrate / Shadow Fall on Q); the
+  macro steps say the Macro key has no default, and "hold both clicks" stays the instruction (P14).
+- Phone Next up cards put the icon and Show in the title row (P10); map markers fill their Next up tile (P11).
+- The sync screens load on demand, so the first page load is smaller (P6).
+
+### Fixed
+
+- Overlaps on phones (P7).
+- Three regional quests that open partway through a story quest (Traveling Merchant's Conundrum, Lest We
+  Forget, Fight Poison with Poison) now open once that story quest is current, not after it is turned in.
+
+### Data
+
+- Templar, Cleric, Sorcerer and Chanter class data and guide text, from the research files in `docs/research/`.
+- Gladiator and Spiritmaster skill and stigma icons from Metabot, replacing the initials (P1), sources in `docs/ISSUES.md`.
+- Regional quest prerequisites follow the owner's 2026-10-20 page checks: Her Last Favor, Pain Unending and Herb Pouch
+  Heist now need their prerequisite quest, and the two Spacetime Rift quests have none. Twelve Chanter, Cleric and
+  Templar passives show the game's icon (three Cleric passives had another skill's art), from Metabot and
+  daevacompass.com, provenance in `docs/ISSUES.md`.
+- Story quests store the level they are turned in at (`levelsUp: { from }`), from Metabot's EXP rewards and leveling
+  table and the owner's reward screens (`docs/research/2026-10-research-401-levels.md`).
+
+### Known issues
+
+- Five Gladiator and Ranger rotation icons still show initials (found in the release-candidate play, #586).
+
+### Saved progress
+
+- Unaffected. No reset; the key is still `companion-save-v5`.
+
 ## 0.7.0 — 2026-10-19
 
 Gladiator and Spiritmaster guides, clearer Next up cards, map markers.
