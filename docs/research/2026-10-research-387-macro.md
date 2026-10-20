@@ -21,7 +21,7 @@ and the two written guides already cited in #387. No new site was read for this 
   "Shadowstrike on E" (docs/plans/0.8/README.md §P14) came from the owner's own layout and should not ship as a default.
 - Still sourced and unchanged: the game's grid columns are Q, E, the Quick Use 2 (mouse) slot and T. Binding the macro to
   right click takes right click from Quick Use 2, whose stack then shows on T. Macro steps start at Add Macro, because
-  the Macro tab is empty the first time (owner's Lv 4 screens, 2026-10-18 8:01–8:11 PM ET, private repo).
+  the Macro tab is empty the first time (owner's Lv 4 screens, 2026-10-18 8:01–8:11 PM ET; not archived, text record in `docs/design/0.6.2-icons-locks-mockup.md` §1a–1b and `docs/research/owner-screens-2026-10-18/README.md`).
 
 ## Still open (not blocking P14)
 
