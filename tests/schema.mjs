@@ -37,6 +37,10 @@ broken('stigma without maxLevel', 'packs/aion2/classes/assassin/stigmas.json', r
 broken('skill node without its skill', 'packs/aion2/classes/assassin/board-nodes.json', (r, d) => { const x = d.records.find(y => y.type === 'skill'); delete x.skill; });
 broken('specialty pick that is not a choice id', 'packs/aion2/asmodian/assassin/builds.json', r => { r.specialtyPicks['skill:assassin:heart-gore'] = ['Up to +20% Critical Hit']; });
 /* a milestone's own items never get a gate node (0.4 P2a; openSteps relies on it) */
+/* world bosses (1.0): a respawn boss can't carry a schedule, a schedule boss needs one, times are HH:MM */
+broken('respawn boss with a schedule', 'packs/aion2/world-bosses.json', (r, d) => { d.records.find(x => x.kind === 'respawn').schedule = [{ everyHours: 3, from: '01:00' }]; });
+broken('schedule boss without a schedule', 'packs/aion2/world-bosses.json', (r, d) => { delete d.records.find(x => x.kind === 'schedule').schedule; });
+broken('world boss time that is not HH:MM', 'packs/aion2/world-bosses.json', (r, d) => { d.records.find(x => x.kind === 'schedule' && x.schedule[0].at).schedule[0].at = '9:30pm'; });
 broken('milestone item with a gate node', 'packs/aion2/asmodian/assassin/guide/milestones.json', (r, d) => { d.records.find(x => x.items).items[0].gateNode = true; });
 broken('milestone item with requires', 'packs/aion2/asmodian/assassin/guide/milestones.json', (r, d) => { d.records.find(x => x.items).items[0].requires = { level: 28 }; });
 broken('Ascension quest with a giver', 'packs/aion2/asmodian/ascension-quests.json', r => { r.giver = { zone: 'zone:moslan-forest' }; });

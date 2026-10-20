@@ -931,7 +931,8 @@
             "boardNodes",
             "stigmas",
             "kibelisks",
-            "terms"
+            "terms",
+            "worldBosses"
           ]
         },
         "faction": {

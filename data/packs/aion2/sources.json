@@ -251,6 +251,35 @@
       "verifiedAt": "2026-10-14"
     },
     {
+      "id": "src:aion2atlas",
+      "name": "aion2atlas",
+      "hosts": [
+        "aion2atlas.app"
+      ],
+      "kind": "community",
+      "independenceGroup": "aion2atlas",
+      "licence": {
+        "id": "unknown",
+        "note": "Terms: don't copy whole pages or scrape at high volume; short quotes with a link are fine (Lydia, 2026-10-20). Facts only."
+      },
+      "access": {
+        "robots": "allows",
+        "terms": "allows",
+        "mode": "scripted",
+        "checkedAt": "2026-10-20"
+      },
+      "use": {
+        "facts": true,
+        "wording": false,
+        "quotes": "none",
+        "link": "dofollow"
+      },
+      "notes": [
+        "Boss timers (Global and KR columns). Vetted by Source Vetting 2026-10-20 (/mnt/project-files/research/endgame/world-boss-timers.md)."
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
       "id": "src:aion2hub",
       "name": "AION2HUB",
       "hosts": [
@@ -322,10 +351,10 @@
         "id": "unknown"
       },
       "access": {
-        "robots": "unchecked",
+        "robots": "allows",
         "terms": "unread",
-        "mode": "human-only",
-        "checkedAt": "2026-10-14"
+        "mode": "scripted",
+        "checkedAt": "2026-10-20"
       },
       "use": {
         "facts": true,
@@ -333,7 +362,10 @@
         "quotes": "short-credited",
         "link": "dofollow"
       },
-      "verifiedAt": "2026-10-14"
+      "verifiedAt": "2026-10-20",
+      "notes": [
+        "Re-vetted 2026-10-20 (Source Vetting): no terms page at the usual paths, robots.txt allows all; world boss timers."
+      ]
     },
     {
       "id": "src:corpus",

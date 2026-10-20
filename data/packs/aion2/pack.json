@@ -5,6 +5,6 @@
   "kind": "game",
   "name": "AION 2",
   "classes": ["gladiator", "templar", "assassin", "ranger", "sorcerer", "spiritmaster", "cleric", "chanter"],
-  "files": ["sources.json", "game-builds.json", "rules.json", "boards.json", "items.json", "terms.json"],
+  "files": ["sources.json", "game-builds.json", "rules.json", "boards.json", "items.json", "terms.json", "world-bosses.json"],
   "checks": "checks.mjs"
 }

@@ -197,4 +197,21 @@ export function checks(ctx, check) {
     const lv = atomsOf(q.requires).filter(a => a.level !== undefined).map(a => a.level);
     check('GATE_GRAPH: regional level atom = unlocksAt: ' + q.id, lv.length === 1 && lv[0] === q.unlocksAt, lv);
   }
+
+  /* ---------------------------------------------------------------- world bosses (1.0, docs/research/2026-10-world-boss-timers.md) */
+  { const wb = ctx.R('worldBosses'), clocks = wb.filter(r => r.kind === 'clock'), bosses = wb.filter(r => r.kind !== 'clock');
+    check('world bosses: exactly one server clock record', clocks.length === 1, clocks.map(r => r.id));
+    /* the timing field is what a countdown rests on: a source must name it, and a verified one needs two publishers or a
+       game database (sources.json independenceGroup / kind) */
+    const site = u => ctx.B.sources.records.find(s => s.hosts.some(h => { const x = u.replace(/^https:\/\/(www\.)?/, '').split('/')[0]; return x === h || x.endsWith('.' + h); }));
+    for (const r of [...clocks, ...bosses]) {
+      const f = r.kind === 'clock' ? 'serverTz' : r.kind === 'schedule' ? 'schedule' : 'cooldownHours', st = (r.fieldStatus || {})[f] ?? r.status;
+      const by = r.sources.filter(s => s.url && (!s.fields || s.fields.includes(f))).map(s => site(s.url)).filter(Boolean);
+      check(`world boss ${r.id}: a source backs ${f}`, by.length > 0);
+      if (st === 'verified') check(`world boss ${r.id}: verified ${f} has two publishers or a game database`, new Set(by.map(s => s.independenceGroup)).size >= 2 || by.some(s => s.kind === 'game-database'), by.map(s => s.id));
+    }
+    /* an interval spawn repeats the same times every day */
+    for (const r of bosses) for (const x of r.schedule || []) if (x.everyHours) check(`world boss ${r.id}: every ${x.everyHours} h divides the day`, 24 % x.everyHours === 0);
+    /* a boss lists each map and area once */
+    for (const r of bosses) check(`world boss ${r.id}: places are distinct`, new Set(r.places.map(p => p.map + '|' + (p.area || ''))).size === r.places.length); }
 }

@@ -1,0 +1,508 @@
+{
+  "$schema": "../../schema/world-bosses.schema.json",
+  "schemaVersion": 2,
+  "collection": "worldBosses",
+  "records": [
+    {
+      "id": "clock:server",
+      "kind": "clock",
+      "serverTz": "+09:00",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/events",
+          "fields": [
+            "serverTz"
+          ],
+          "checkedAt": "2026-10-20",
+          "section": "Every global region runs on the same UTC+9 server clock"
+        },
+        {
+          "url": "https://aion2hub.com/tools/world-bosses",
+          "fields": [
+            "serverTz"
+          ],
+          "checkedAt": "2026-10-20"
+        },
+        {
+          "url": "https://allthings.how/aion-2-world-boss-timers-every-field-and-abyss-boss-spawn-schedule/",
+          "fields": [
+            "serverTz"
+          ],
+          "checkedAt": "2026-10-20"
+        },
+        {
+          "url": "https://aion2atlas.app/boss-timer/",
+          "fields": [
+            "serverTz"
+          ],
+          "checkedAt": "2026-10-20"
+        }
+      ],
+      "status": "disputed",
+      "conflicts": [
+        "Metabot, aion2hub and allthings.how: one UTC+9 clock for every Global region (all three call it community-confirmed, not official). aion2atlas: each region's own clock (CET for EU, Eastern for NA East, Pacific for NA West). UTC+9 is kept; the owner check (To-do T-61 item 7) decides."
+      ],
+      "notes": [
+        "UTC+9 matches the daily reset at 16:00 server time = 07:00 UTC (docs/research/2026-10-endgame-facts.md)."
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
+      "id": "wb:executor-argo",
+      "name": "Executor Argo",
+      "kind": "schedule",
+      "level": 65,
+      "places": [
+        {
+          "map": "Chaotic Lower Reshanta",
+          "area": "Archipelago of Siel's Wings - Siel's Heart"
+        }
+      ],
+      "schedule": [
+        {
+          "days": [
+            "mon",
+            "thu",
+            "sat"
+          ],
+          "at": "21:30"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/events",
+          "fields": [
+            "name",
+            "level",
+            "schedule"
+          ],
+          "checkedAt": "2026-10-20"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/bosses",
+          "fields": [
+            "places"
+          ],
+          "checkedAt": "2026-10-20"
+        },
+        {
+          "url": "https://aion2hub.com/tools/world-bosses",
+          "fields": [
+            "name",
+            "schedule"
+          ],
+          "checkedAt": "2026-10-20"
+        }
+      ],
+      "status": "verified",
+      "notes": [
+        "Half an hour after the Artifact Siege (Mon, Thu, Sat 21:00)."
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
+      "id": "wb:executor-kaira",
+      "name": "Executor Kaira",
+      "kind": "schedule",
+      "level": 65,
+      "places": [
+        {
+          "map": "Chaotic Lower Reshanta",
+          "area": "Sulfur Tree Island - Branding Island"
+        }
+      ],
+      "schedule": [
+        {
+          "days": [
+            "mon",
+            "thu",
+            "sat"
+          ],
+          "at": "21:30"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/events",
+          "fields": [
+            "name",
+            "level",
+            "schedule"
+          ],
+          "checkedAt": "2026-10-20"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/bosses",
+          "fields": [
+            "places"
+          ],
+          "checkedAt": "2026-10-20"
+        },
+        {
+          "url": "https://aion2hub.com/tools/world-bosses",
+          "fields": [
+            "name",
+            "schedule"
+          ],
+          "checkedAt": "2026-10-20"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-20"
+    },
+    {
+      "id": "wb:executor-tamasa",
+      "name": "Executor Tamasa",
+      "kind": "schedule",
+      "level": 65,
+      "places": [
+        {
+          "map": "Chaotic Lower Reshanta",
+          "area": "Reshanta's Root"
+        }
+      ],
+      "schedule": [
+        {
+          "days": [
+            "mon",
+            "thu",
+            "sat"
+          ],
+          "at": "21:30"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/events",
+          "fields": [
+            "name",
+            "level",
+            "schedule"
+          ],
+          "checkedAt": "2026-10-20"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/bosses",
+          "fields": [
+            "places"
+          ],
+          "checkedAt": "2026-10-20"
+        },
+        {
+          "url": "https://aion2hub.com/tools/world-bosses",
+          "fields": [
+            "name",
+            "schedule"
+          ],
+          "checkedAt": "2026-10-20"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-20"
+    },
+    {
+      "id": "wb:guardian-lord-nahma",
+      "name": "Guardian Lord Nahma",
+      "kind": "schedule",
+      "level": 65,
+      "places": [
+        {
+          "map": "Chaotic Lower Reshanta",
+          "area": "Reshanta's Root"
+        }
+      ],
+      "schedule": [
+        {
+          "days": [
+            "fri",
+            "sun"
+          ],
+          "at": "21:00"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/events",
+          "fields": [
+            "name",
+            "level",
+            "schedule"
+          ],
+          "checkedAt": "2026-10-20"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/bosses",
+          "fields": [
+            "places"
+          ],
+          "checkedAt": "2026-10-20"
+        },
+        {
+          "url": "https://aion2hub.com/tools/world-bosses",
+          "fields": [
+            "schedule"
+          ],
+          "checkedAt": "2026-10-20",
+          "section": "Abyss Siege Boss"
+        },
+        {
+          "url": "https://allthings.how/aion-2-world-boss-timers-every-field-and-abyss-boss-spawn-schedule/",
+          "fields": [
+            "schedule"
+          ],
+          "checkedAt": "2026-10-20"
+        }
+      ],
+      "status": "verified",
+      "fieldStatus": {
+        "name": "inferred"
+      },
+      "notes": [
+        "Metabot's client table names the Fri/Sun 21:00 boss Guardian Lord Nahma. aion2hub and allthings.how list an unnamed \"Abyss Siege Boss\" in the same slot and map; that it is the same boss is inferred (no source names another Fri/Sun boss)."
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
+      "id": "wb:high-commander-lagta",
+      "name": "High Commander Lagta",
+      "kind": "respawn",
+      "level": 45,
+      "places": [
+        {
+          "map": "Altgard",
+          "faction": "asmodian"
+        },
+        {
+          "map": "Verteron",
+          "faction": "elyos"
+        }
+      ],
+      "cooldownHours": 12,
+      "sources": [
+        {
+          "url": "https://aion2hub.com/tools/world-bosses",
+          "fields": [
+            "name",
+            "level",
+            "places"
+          ],
+          "checkedAt": "2026-10-20",
+          "section": "Zone Field Bosses"
+        },
+        {
+          "url": "https://aion2atlas.app/boss-timer/",
+          "fields": [
+            "cooldownHours",
+            "level",
+            "places"
+          ],
+          "checkedAt": "2026-10-20",
+          "section": "Global column"
+        },
+        {
+          "url": "https://allthings.how/aion-2-world-boss-timers-every-field-and-abyss-boss-spawn-schedule/",
+          "fields": [
+            "cooldownHours"
+          ],
+          "checkedAt": "2026-10-20"
+        }
+      ],
+      "status": "verified",
+      "fieldStatus": {
+        "cooldownHours": "inferred",
+        "level": "disputed"
+      },
+      "notes": [
+        "Two sources for the cooldown; that they are independent is inferred (neither cites the other). Korea doubles it."
+      ],
+      "conflicts": [
+        "Level: aion2hub's Global client read says 45; aion2atlas says 48. 45 is kept."
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
+      "id": "wb:silent-dartan",
+      "name": "Silent Dartan",
+      "kind": "respawn",
+      "level": 45,
+      "places": [
+        {
+          "map": "Altgard",
+          "faction": "asmodian"
+        },
+        {
+          "map": "Verteron",
+          "faction": "elyos"
+        }
+      ],
+      "cooldownHours": 6,
+      "sources": [
+        {
+          "url": "https://aion2hub.com/tools/world-bosses",
+          "fields": [
+            "name",
+            "level",
+            "places"
+          ],
+          "checkedAt": "2026-10-20",
+          "section": "Zone Field Bosses"
+        },
+        {
+          "url": "https://aion2atlas.app/boss-timer/",
+          "fields": [
+            "cooldownHours",
+            "level",
+            "places"
+          ],
+          "checkedAt": "2026-10-20",
+          "section": "Global column"
+        },
+        {
+          "url": "https://allthings.how/aion-2-world-boss-timers-every-field-and-abyss-boss-spawn-schedule/",
+          "fields": [
+            "cooldownHours"
+          ],
+          "checkedAt": "2026-10-20"
+        }
+      ],
+      "status": "verified",
+      "fieldStatus": {
+        "cooldownHours": "inferred",
+        "level": "disputed"
+      },
+      "notes": [
+        "Two sources for the cooldown; that they are independent is inferred (neither cites the other; aion2vault, which repeats allthings.how, is not counted). Korea doubles it."
+      ],
+      "conflicts": [
+        "Level: aion2hub's Global client read says 45; aion2atlas says 48. 45 is kept."
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
+      "id": "wb:soul-ruler-kashapa",
+      "name": "Soul Ruler Kashapa",
+      "kind": "respawn",
+      "level": 45,
+      "places": [
+        {
+          "map": "Altgard",
+          "faction": "asmodian"
+        },
+        {
+          "map": "Verteron",
+          "faction": "elyos"
+        }
+      ],
+      "cooldownHours": 6,
+      "sources": [
+        {
+          "url": "https://aion2hub.com/tools/world-bosses",
+          "fields": [
+            "name",
+            "level",
+            "places"
+          ],
+          "checkedAt": "2026-10-20",
+          "section": "Zone Field Bosses"
+        },
+        {
+          "url": "https://aion2atlas.app/boss-timer/",
+          "fields": [
+            "cooldownHours",
+            "level",
+            "places"
+          ],
+          "checkedAt": "2026-10-20",
+          "section": "Global column"
+        },
+        {
+          "url": "https://allthings.how/aion-2-world-boss-timers-every-field-and-abyss-boss-spawn-schedule/",
+          "fields": [
+            "cooldownHours"
+          ],
+          "checkedAt": "2026-10-20"
+        }
+      ],
+      "status": "verified",
+      "fieldStatus": {
+        "cooldownHours": "inferred",
+        "level": "disputed"
+      },
+      "notes": [
+        "Two sources for the cooldown; that they are independent is inferred (neither cites the other). Korea doubles it."
+      ],
+      "conflicts": [
+        "Level: aion2hub's Global client read says 45; aion2atlas says 48. 45 is kept."
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
+      "id": "wb:watcher-kaira",
+      "name": "Watcher Kaira",
+      "kind": "schedule",
+      "level": 65,
+      "places": [
+        {
+          "map": "Chaotic Lower Reshanta",
+          "area": "Black Fragments Area - Abandoned Island",
+          "spot": "random"
+        }
+      ],
+      "schedule": [
+        {
+          "everyHours": 3,
+          "from": "01:00"
+        }
+      ],
+      "upMinutes": 30,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/events",
+          "fields": [
+            "name",
+            "level",
+            "places",
+            "schedule"
+          ],
+          "checkedAt": "2026-10-20"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/bosses",
+          "fields": [
+            "level",
+            "places"
+          ],
+          "checkedAt": "2026-10-20"
+        },
+        {
+          "url": "https://aion2hub.com/tools/world-bosses",
+          "fields": [
+            "name",
+            "schedule"
+          ],
+          "checkedAt": "2026-10-20"
+        },
+        {
+          "url": "https://aion2atlas.app/boss-timer/",
+          "fields": [
+            "upMinutes",
+            "places"
+          ],
+          "checkedAt": "2026-10-20"
+        },
+        {
+          "url": "https://allthings.how/aion-2-world-boss-timers-every-field-and-abyss-boss-spawn-schedule/",
+          "fields": [
+            "upMinutes"
+          ],
+          "checkedAt": "2026-10-20"
+        }
+      ],
+      "status": "verified",
+      "notes": [
+        "Korea and Taiwan spawn it every 4 h; that doesn't apply to Global."
+      ],
+      "verifiedAt": "2026-10-20"
+    }
+  ]
+}
