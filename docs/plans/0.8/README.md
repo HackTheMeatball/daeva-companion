@@ -304,7 +304,7 @@ The same as P3, for the Cleric. It runs after P3 because both edit `pack.js`.
 - **Spec.** The issue #387 body and its comments, plus Game Data Check's `research-387-macro` answers. Default keys follow
   the game:
   - the stack on T;
-  - Shadowstrike on Q (re-spec 2026-10-20: the owner moved it to E by hand; `docs/research/2026-10-research-387-macro.md` wins);
+  - Shadowstrike on 1 (re-spec 2026-10-20 from the owner's Lv 4 key window; `docs/research/2026-10-research-387-macro.md` wins; built in #565);
   - the macro on right click, with the steps starting at Add Macro.
   The Rotation and the macro stay separate.
 - **Result.**

@@ -34,7 +34,7 @@ order). The "how" goes first because its findings change the rules the plan is m
 plan after 0.3 is the model: it audited the whole path to 1.0 before planning the next minor ([audit and plan to
 1.0](docs/audits/2026-10-16-audit-and-plan-to-1.0.md)). Nothing in the minor is queued in #114 until the pass is
 written down and reviewed. **Kaizen's review is a hard gate for every minor and major release** (owner, 2026-10-18
-6:59 AM ET): nothing in it is planned or queued before Kaizen reports, and Stall Watch (Mike) flags a `PLAY DONE` with
+6:59 AM ET): nothing in it is planned or queued before Kaizen reports, and Watchdog (Mike) flags a `PLAY DONE` with
 no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen included. After a major release (1.0, 2.0
 …) Kaizen runs a larger pass over the data of all the minors before it.
 
@@ -74,7 +74,7 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
      Release Planner starts no planning pass, writes no plan and queues nothing for the minor before that message.
      0.8 is not redone.
    - **Inputs are logged live; Kaizen aggregates (owner, 2026-10-19 2:57 PM ET, Kaizen thread).** Each review input is
-     logged as it happens by its owner: stalls, incidents, owner waits and the per-release error report by Stall Watch
+     logged as it happens by its owner: stalls, incidents, owner waits and the per-release error report by Watchdog
      (Mike), the only writer of #221 since Incident Log (Hank) folded into it (owner, 2026-10-19 4:56 PM ET); plan,
      execution and usage by the Release Planner in #232; waste, CI health and each build's model and outcome by
      Build Pipeline (Gus) in #114's Waste section; player findings by Jesse; game data by Game Data Check
@@ -147,7 +147,7 @@ the release build copies it verbatim, and Gretchen's check reads that text again
 checks that every promise in it exists in the build: Kaizen, 2026-10-19 6:11 PM ET, team-audit rec 6), then
 sends Game Data Check (Gretchen) `PRE-RELEASE CHECK <version>` and tells Build Pipeline (Gus)
 `DATA OK <version>` only after she answers `DATA OK`; Gus queues and ships the release item only then. A `DATA HOLD`
-means the named data is fixed first. Stall Watch (Mike) flags a check unanswered after 60 min. If data lands on main
+means the named data is fixed first. Watchdog (Mike) flags a check unanswered after 60 min. If data lands on main
 after her check, she re-runs it before the tag. **Release-candidate play (owner, 2026-10-19 4:56 PM ET), for every
 minor from 0.8.0:** with `PRE-RELEASE CHECK` the Release Planner sends Player Testing (Jesse) `RC READY <minor> <sha>`
 (main's head once every item has merged); Jesse plays main built locally at that commit and answers
