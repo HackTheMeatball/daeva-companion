@@ -10,7 +10,7 @@ const RQ = V1.rq, CH = V1.chains, S45 = V1.story45, CLAIMS = V1.claims, BUILD = 
 const PAGE = require('./config').PAGE, PACKS = path.join(path.dirname(PAGE), 'packs');
 const SRC = [PAGE, ...fs.readdirSync(PACKS).map(f => path.join(PACKS, f))].map(f => fs.readFileSync(f, 'utf8')).join('\n');
 let fail = 0; const ok = (name, cond, detail) => { console.log((cond ? 'ok   ' : 'FAIL ') + name + (detail !== undefined && !cond ? '  · ' + JSON.stringify(detail).slice(0, 700) : '')); if (!cond) fail++; };
-const PRE = {}, STORY = {}; CH.forEach(e => { if (e.kind === 'regional') (PRE[e.quest] = PRE[e.quest] || []).push(e.after); if (e.kind === 'story') STORY[e.quest] = e.after; });
+const PRE = {}, STORY = {}, REACHED = {}; CH.forEach(e => { if (e.kind === 'regional') (PRE[e.quest] = PRE[e.quest] || []).push(e.after); if (e.kind === 'story') { STORY[e.quest] = e.after; if (e.is === 'reached') REACHED[e.quest] = true; } });
 const BATCH = Object.keys(STORY).filter(q => STORY[q] === 'Forgotten Commander');
 
 async function setState(p, { L, q, mode = 'advanced', extra = {}, ticks = {} }) {
@@ -28,7 +28,7 @@ async function setState(p, { L, q, mode = 'advanced', extra = {}, ticks = {} }) 
 const expect = (QUESTS, st) => { const idx = n => QUESTS.findIndex(x => x[1] === n), cur = st.quest ? idx(st.quest) : -1, done = n => !!st.checks['rq:' + RQ.find(r => r.name === n).id];
   /* E3 (P0-1): a quest with no prerequisite data at all opens at its recommended level. */
   const noPre = r => r.requiresStory == null && r.requiresRegional == null && !STORY[r.name] && !(PRE[r.name] || []).length;
-  const out = {}; RQ.forEach(r => { const lvOk = st.level >= (noPre(r) ? Math.max(r.unlocksAt, r.rec) : r.unlocksAt), s = STORY[r.name], sOk = !s || (cur >= 0 && (cur > idx(s) || (cur === idx(s) && st.storyEnd === s))),   /* E9 (owner check 1, 2026-10-15): the story quest is turned in */ pre = (PRE[r.name] || []).filter(n => !done(n));
+  const out = {}; RQ.forEach(r => { const lvOk = st.level >= (noPre(r) ? Math.max(r.unlocksAt, r.rec) : r.unlocksAt), s = STORY[r.name], sOk = !s || (cur >= 0 && (REACHED[r.name] ? cur >= idx(s) : cur > idx(s) || (cur === idx(s) && st.storyEnd === s))),   /* E9 (owner check 1, 2026-10-15): the story quest is turned in; a "Step completed" gate (owner page checks, 2026-10-20) opens once it is reached */ pre = (PRE[r.name] || []).filter(n => !done(n));
     out[r.name] = { open: lvOk && sOk, ok: lvOk && sOk && !pre.length, pre }; }); return out; };
 const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAll('#nowStar .ns-card')].find(c => /Regional quests/.test((c.querySelector('h3') || {}).innerText || ''));
   if (!card) return { card: false, rows: [], sub: '' };

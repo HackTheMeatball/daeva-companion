@@ -214,7 +214,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Stigma slot 1 now Lv 22"],
     "ring": "32%",
-    "prog": ["Quests 7 8/58","Dungeons 31/60","Strongholds 4 3/15"]
+    "prog": ["Quests 8 8/58","Dungeons 31/60","Strongholds 4 3/15"]
   },
   "random/L22-q60-rnd141p95-A-rqmix": {
     "prev": "Visible Trap Lv 34",
@@ -226,7 +226,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Supply Requests next · 3 to go Lv 25"],
     "ring": "40%",
-    "prog": ["Quests 7 13/58","Dungeons 31/60","Strongholds 2 9/15"]
+    "prog": ["Quests 9 13/58","Dungeons 31/60","Strongholds 2 9/15"]
   },
   "random/L22-q75-rnd113p50-B-stwait": {
     "prev": "Symbol of Liberation Lv 40",
@@ -238,7 +238,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Stigma slot 1 now Lv 22"],
     "ring": "28%",
-    "prog": ["Quests 10 12/58","Dungeons 14 17/60","Strongholds 2 8/15"]
+    "prog": ["Quests 12 12/58","Dungeons 14 17/60","Strongholds 2 8/15"]
   },
   "random/L22-q76-all-B": {
     "prev": "Daybreak Society Lv 41",
@@ -262,7 +262,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Supply Requests next · 3 to go Lv 25"],
     "ring": "32%",
-    "prog": ["Quests 14 6/58","Dungeons 5 26/60","Strongholds 1 11/15"],
+    "prog": ["Quests 17 6/58","Dungeons 5 26/60","Strongholds 1 11/15"],
     "subs": {"head":"Objectives 2/3","items":1,"on":0,"end":""}
   },
   "random/L23-q06-none-B-stready": {
@@ -359,7 +359,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Supply Requests next · 2 to go Lv 25"],
     "ring": "35%",
-    "prog": ["Quests 4 13/58","Dungeons 31/60","Strongholds 4 3/15"]
+    "prog": ["Quests 5 13/58","Dungeons 31/60","Strongholds 4 3/15"]
   },
   "random/L23-q55-lvonly-B-cube": {
     "prev": "A Daeva Dreaming Anew Lv 32",
@@ -371,7 +371,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Supply Requests next · 2 to go Lv 25"],
     "ring": "35%",
-    "prog": ["Quests 5 13/58","Dungeons 31/60","Strongholds 4 3/15"]
+    "prog": ["Quests 7 13/58","Dungeons 31/60","Strongholds 4 3/15"]
   },
   "random/L23-q64-rnd137p95-B-stready": {
     "prev": "Creion of Gribade Lv 36",
@@ -383,7 +383,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Supply Requests next · 2 to go Lv 25"],
     "ring": "44%",
-    "prog": ["Quests 7 13/58","Dungeons 1 30/60","Strongholds ✓ 15/15"]
+    "prog": ["Quests 9 13/58","Dungeons 1 30/60","Strongholds ✓ 15/15"]
   },
   "random/L23-q82-before-A-stwait": {
     "prev": "Lingering Apparitions Lv 44",
@@ -395,7 +395,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Supply Requests next · 2 to go Lv 25"],
     "ring": "35%",
-    "prog": ["Quests 9 13/58","Dungeons 31/60","Strongholds 4 3/15"]
+    "prog": ["Quests 12 13/58","Dungeons 31/60","Strongholds 4 3/15"]
   },
   "random/L24-q01-lvonly-B": {
     "prev": "A Village in the Fog Lv 2",
@@ -527,7 +527,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Supply Requests next · 1 to go Lv 25"],
     "ring": "35%",
-    "prog": ["Quests 7 13/58","Dungeons 31/60","Strongholds 4 3/15"]
+    "prog": ["Quests 9 13/58","Dungeons 31/60","Strongholds 4 3/15"]
   },
   "random/L24-q81-rnd114p95-A": {
     "prev": "The High Priest Awakens Lv 44",
@@ -539,7 +539,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Supply Requests next · 1 to go Lv 25"],
     "ring": "42%",
-    "prog": ["Quests 11 11/58","Dungeons 1 30/60","Strongholds ✓ 15/15"]
+    "prog": ["Quests 14 11/58","Dungeons 1 30/60","Strongholds ✓ 15/15"]
   },
   "random/L24-q85-rnd107p80-B-stready": {
     "prev": "Farewells Lv 45",
@@ -551,7 +551,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Supply Requests next · 1 to go Lv 25"],
     "ring": "35%",
-    "prog": ["Quests 11 11/58","Dungeons 7 24/60","Strongholds 1 12/15"]
+    "prog": ["Quests 14 11/58","Dungeons 7 24/60","Strongholds 1 12/15"]
   },
   "random/L24-q86-all-B": {
     "prev": "Forgotten Commander Lv 45",
@@ -671,7 +671,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Supply Requests now Lv 25"],
     "ring": "11%",
-    "prog": ["Quests 6 6/58","Dungeons 31 5/60","Strongholds 5 4/15"]
+    "prog": ["Quests 7 6/58","Dungeons 31 5/60","Strongholds 5 4/15"]
   },
   "random/L25-q46-lvonly-A-dv": {
     "prev": "Dying Light Lv 30",
@@ -695,7 +695,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Supply Requests now Lv 25"],
     "ring": "36%",
-    "prog": ["Quests 10 6/58","Dungeons 6 30/60","Strongholds 12/15"]
+    "prog": ["Quests 12 6/58","Dungeons 6 30/60","Strongholds 12/15"]
   },
   "random/L25-q59-rnd104p20-B-stfull": {
     "prev": "Impending Threat Lv 34",
@@ -707,7 +707,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Supply Requests now Lv 25"],
     "ring": "6%",
-    "prog": ["Quests 15 1/58","Dungeons 34 2/60","Strongholds 5 5/15"]
+    "prog": ["Quests 17 1/58","Dungeons 34 2/60","Strongholds 5 5/15"]
   },
   "random/L25-q62-all-A-filters": {
     "prev": "Enemy Territory Lv 35",
@@ -731,7 +731,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Supply Requests now Lv 25"],
     "ring": "35%",
-    "prog": ["Quests 7 13/58","Dungeons 5 31/60","Strongholds 5 3/15"]
+    "prog": ["Quests 9 13/58","Dungeons 5 31/60","Strongholds 5 3/15"]
   },
   "random/L25-q75-none-B-sppts": {
     "prev": "Symbol of Liberation Lv 40",
@@ -743,7 +743,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Supply Requests now Lv 25"],
     "ring": "1%",
-    "prog": ["Quests 17 0/58","Dungeons 36 0/60","Strongholds 7 1/15"]
+    "prog": ["Quests 19 0/58","Dungeons 36 0/60","Strongholds 7 1/15"]
   },
   "random/L25-q78-all-A-stfull": {
     "prev": "The Breaking of the Day Lv 42",

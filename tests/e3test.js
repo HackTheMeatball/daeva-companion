@@ -6,16 +6,21 @@ let fail = 0; const ok = (n, c, d) => { console.log((c ? 'ok   ' : 'FAIL ') + n 
   await p.goto(CFG.CUR);
   const set = async (L, extra = {}, fx = 'clean', mode = 'advanced') => { await writeSave(p, Object.assign(await p.evaluate(buildFixture, { L, mode, fx }), extra)); await p.reload(); await p.waitForTimeout(350); };
   const cards = () => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-card')].map(c => c.querySelector('h3').innerText.replace(/\s+/g, ' ') + ' | ' + ((c.querySelector('.title > p') || {}).innerText || '') + ' | ' + ((c.querySelector('.meta') || {}).innerText || '')));
-  /* P0-1: no-prereq quests open at rec; snooze kept until rec */
+  /* P0-1: no-prereq quests opened at rec, their snooze kept until rec. Since the owner page checks (2026-10-20) no regional quest is
+     left without prerequisite data (requiresBasis "unresearched"): Herb Pouch Heist and Her Last Favor wait for their story quest
+     ("Required Quests" on aion2.gaming.tools), so the "kept until rec" branch has no record and their snoozes clear like any other. */
   await set(27);
   let r = await p.evaluate(() => ({ herb: rqAvail(RQ_BY['Herb Pouch Heist']).open, favor: rqAvail(RQ_BY['Her Last Favor']).open, favor30: rqAvail(RQ_BY['Her Last Favor'], 30).open, rows: [...document.querySelectorAll('#nowStar .ql a, #nowStar .ql span[title]')].map(x => x.innerText) }));
-  ok('P0-1 Herb Pouch Heist / Her Last Favor closed at 27, Her Last Favor open at 30', !r.herb && !r.favor && r.favor30 && !r.rows.includes('Herb Pouch Heist'), r);
+  ok('P0-1 Herb Pouch Heist / Her Last Favor closed at 27, Her Last Favor still closed at 30 before "Canyon\'s Secret" is turned in', !r.herb && !r.favor && !r.favor30 && !r.rows.includes('Herb Pouch Heist'), r);
+  await set(30, { quest: 'Bitter Reality' });
+  r = await p.evaluate(() => rqAvail(RQ_BY['Her Last Favor']).open);
+  ok('P0-1 Her Last Favor open at 30 once "Canyon\'s Secret" is turned in', r, r);
   await set(29, { rqSnooze: { 'rq:2202018': 29, 'rq:2202062': 29 } });
   await p.click('#lvlUpBig'); await p.waitForTimeout(400);
   r = await p.evaluate(() => char(state).rqSnooze || {}); ok('P0-1 Level up 29→30 keeps nothing for quests whose rec is reached, clears others', !r['rq:2202062'] && !r['rq:2202018'], r);
   await set(27, { rqSnooze: { 'rq:2202066': 27, 'rq:2202062': 27 } });
   await p.click('#lvlUpBig'); await p.waitForTimeout(400);
-  r = await p.evaluate(() => char(state).rqSnooze || {}); ok('P0-1 Level up 27→28 keeps Herb Pouch Heist snooze (rec 44), clears Fight Poison', !!r['rq:2202066'] && !r['rq:2202062'], r);
+  r = await p.evaluate(() => char(state).rqSnooze || {}); ok('P0-1 Level up 27→28 clears both snoozes (Herb Pouch Heist has its story gate now, no "kept until rec")', !r['rq:2202066'] && !r['rq:2202062'], r);
   /* P0-2: locked row: In my game, req line hidden once picked up */
   await set(27, { quest: 'Preparations for Restoration' });
   r = await p.evaluate(() => { const i = document.querySelector('#gates input[data-k="rq:2202062"]'), li = i.closest('li'); return { locked: li.classList.contains('locked'), ig: !li.querySelector('.q-inl').hidden, req: !li.querySelector('.rq-req').hidden }; });

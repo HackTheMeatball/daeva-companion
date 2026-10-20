@@ -81,7 +81,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 4 to go Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
+    "prog": ["Quests 1 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
   },
   "story/L41-q78-before-A": {
     "prev": "The Breaking of the Day Lv 42",
@@ -93,7 +93,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 4 to go Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
+    "prog": ["Quests 1 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
   },
   "story/L42-q77-before-A": {
     "prev": "Daybreak Society Rescue Operation Lv 41",
@@ -105,7 +105,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 3 to go Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
+    "prog": ["Quests 1 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
   },
   "story/L42-q77-before-B": {
     "prev": "Daybreak Society Rescue Operation Lv 41",
@@ -117,7 +117,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 3 to go Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
+    "prog": ["Quests 1 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
   },
   "story/L42-q77-none-A": {
     "prev": "Daybreak Society Rescue Operation Lv 41",
@@ -129,7 +129,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 3 to go Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 19 0/58","Dungeons 60 0/60","Strongholds 13 1/15"]
+    "prog": ["Quests 20 0/58","Dungeons 60 0/60","Strongholds 13 1/15"]
   },
   "story/L42-q78-before-A": {
     "prev": "The Breaking of the Day Lv 42",
@@ -141,7 +141,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 3 to go Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
+    "prog": ["Quests 1 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
   },
   "story/L42-q78-before-B": {
     "prev": "The Breaking of the Day Lv 42",
@@ -153,7 +153,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 3 to go Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
+    "prog": ["Quests 1 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
   },
   "story/L42-q78-none-A": {
     "prev": "The Breaking of the Day Lv 42",
@@ -165,7 +165,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 3 to go Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 19 0/58","Dungeons 60 0/60","Strongholds 13 1/15"]
+    "prog": ["Quests 20 0/58","Dungeons 60 0/60","Strongholds 13 1/15"]
   },
   "story/L42-q79-before-A": {
     "prev": "Chief of the Black Claw Lv 42",
@@ -177,7 +177,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 3 to go Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
+    "prog": ["Quests 1 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
   },
   "story/L43-q79-before-A": {
     "prev": "Chief of the Black Claw Lv 42",
@@ -189,7 +189,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 2 to go Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
+    "prog": ["Quests 1 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
   },
   "story/L43-q79-before-B": {
     "prev": "Chief of the Black Claw Lv 42",
@@ -201,7 +201,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 2 to go Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
+    "prog": ["Quests 1 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
   },
   "story/L43-q79-none-A": {
     "prev": "Chief of the Black Claw Lv 42",
@@ -213,7 +213,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 2 to go Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 19 0/58","Dungeons 60 0/60","Strongholds 13 1/15"]
+    "prog": ["Quests 20 0/58","Dungeons 60 0/60","Strongholds 13 1/15"]
   },
   "story/L43-q80-before-A": {
     "prev": "High Priest's Fafnite Lv 43",
@@ -225,7 +225,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 2 to go Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
+    "prog": ["Quests 1 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
   },
   "story/L43-q81-before-A": {
     "prev": "The High Priest Awakens Lv 44",
@@ -237,7 +237,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 2 to go Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
+    "prog": ["Quests 1 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
   },
   "story/L43-q82-before-A": {
     "prev": "Lingering Apparitions Lv 44",
@@ -249,7 +249,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 2 to go Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
+    "prog": ["Quests 1 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
   },
   "story/L44-q80-before-A": {
     "prev": "High Priest's Fafnite Lv 43",
@@ -369,7 +369,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 1 to go Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 1 26/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "prog": ["Quests 2 26/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L44-q84-before-A": {
     "prev": "Zikel's Core Lv 45",
@@ -416,8 +416,8 @@
     "ahead": ["Ahead verified","Lv 2 🔓 Shop and Closet your next quest · \"Prepare to Escape\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Level cap now Lv 45"],
-    "ring": "53%",
-    "prog": ["Quests 7 7/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "51%",
+    "prog": ["Quests 7 4/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q00-none-A": {
     "prev": "",
@@ -429,7 +429,7 @@
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Level cap now Lv 45"],
     "ring": "0%",
-    "prog": ["Quests 10 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
+    "prog": ["Quests 7 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
   },
   "story/L45-q01-before-A": {
     "prev": "A Village in the Fog Lv 2",
@@ -440,8 +440,8 @@
     "ahead": ["Ahead verified","Lv 5 🔓 Wings 3 story quests · \"The Being Beneath the Lake\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Level cap now Lv 45"],
-    "ring": "53%",
-    "prog": ["Quests 7 7/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "51%",
+    "prog": ["Quests 7 4/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q01-none-A": {
     "prev": "A Village in the Fog Lv 2",
@@ -453,7 +453,7 @@
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Level cap now Lv 45"],
     "ring": "0%",
-    "prog": ["Quests 10 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
+    "prog": ["Quests 7 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
   },
   "story/L45-q02-before-A": {
     "prev": "Prepare to Escape Lv 2",
@@ -464,8 +464,8 @@
     "ahead": ["Ahead verified","Lv 5 🔓 Wings 2 story quests · \"The Being Beneath the Lake\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Level cap now Lv 45"],
-    "ring": "53%",
-    "prog": ["Quests 7 7/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "51%",
+    "prog": ["Quests 7 4/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q02-none-A": {
     "prev": "Prepare to Escape Lv 2",
@@ -477,7 +477,7 @@
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Level cap now Lv 45"],
     "ring": "0%",
-    "prog": ["Quests 10 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
+    "prog": ["Quests 7 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
   },
   "story/L45-q03-before-A": {
     "prev": "Shadow Forest Lv 3",
@@ -488,8 +488,8 @@
     "ahead": ["Ahead verified","Lv 5 🔓 Wings your next quest · \"The Being Beneath the Lake\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Level cap now Lv 45"],
-    "ring": "53%",
-    "prog": ["Quests 7 7/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "51%",
+    "prog": ["Quests 7 4/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q03-none-A": {
     "prev": "Shadow Forest Lv 3",
@@ -501,7 +501,7 @@
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Level cap now Lv 45"],
     "ring": "0%",
-    "prog": ["Quests 10 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
+    "prog": ["Quests 7 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
   },
   "story/L45-q04-before-A": {
     "prev": "Isolated Lake Lv 4",
@@ -512,8 +512,8 @@
     "ahead": ["Ahead verified","Lv 6 🔓 Titles your next quest · \"Spread Your Wings\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "53%",
-    "prog": ["Quests 7 7/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "51%",
+    "prog": ["Quests 7 4/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q04-none-A": {
     "prev": "Isolated Lake Lv 4",
@@ -525,7 +525,7 @@
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Level cap now Lv 45"],
     "ring": "0%",
-    "prog": ["Quests 10 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
+    "prog": ["Quests 7 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
   },
   "story/L45-q05-before-A": {
     "prev": "The Being Beneath the Lake Lv 5",
@@ -536,8 +536,8 @@
     "ahead": ["Ahead verified","Lv 10 🔓 Pets 7 story quests · \"Gathering Essentials\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "53%",
-    "prog": ["Quests 7 7/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "51%",
+    "prog": ["Quests 7 4/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q05-none-A": {
     "prev": "The Being Beneath the Lake Lv 5",
@@ -549,7 +549,7 @@
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Level cap now Lv 45"],
     "ring": "0%",
-    "prog": ["Quests 10 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
+    "prog": ["Quests 7 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
   },
   "story/L45-q06-before-A": {
     "prev": "Spread Your Wings Lv 6",
@@ -560,8 +560,8 @@
     "ahead": ["Ahead verified","Lv 10 🔓 Pets 6 story quests · \"Gathering Essentials\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "53%",
-    "prog": ["Quests 7 7/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "51%",
+    "prog": ["Quests 7 4/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q06-none-A": {
     "prev": "Spread Your Wings Lv 6",
@@ -573,7 +573,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "0%",
-    "prog": ["Quests 10 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
+    "prog": ["Quests 7 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
   },
   "story/L45-q07-before-A": {
     "prev": "Signs of a Crash Landing Lv 6",
@@ -584,8 +584,8 @@
     "ahead": ["Ahead verified","Lv 10 🔓 Pets 5 story quests · \"Gathering Essentials\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "53%",
-    "prog": ["Quests 7 7/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "51%",
+    "prog": ["Quests 7 4/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q07-none-A": {
     "prev": "Signs of a Crash Landing Lv 6",
@@ -597,7 +597,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "0%",
-    "prog": ["Quests 10 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
+    "prog": ["Quests 7 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
   },
   "story/L45-q08-before-A": {
     "prev": "Prison Compound Infiltration Plan Lv 7",
@@ -608,8 +608,8 @@
     "ahead": ["Ahead verified","Lv 10 🔓 Pets 4 story quests · \"Gathering Essentials\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "53%",
-    "prog": ["Quests 7 7/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "51%",
+    "prog": ["Quests 7 4/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q08-none-A": {
     "prev": "Prison Compound Infiltration Plan Lv 7",
@@ -621,7 +621,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "0%",
-    "prog": ["Quests 10 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
+    "prog": ["Quests 7 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
   },
   "story/L45-q09-before-A": {
     "prev": "Brigade Prison Compound Infiltration Operation Lv 7",
@@ -632,8 +632,8 @@
     "ahead": ["Ahead verified","Lv 10 🔓 Pets 3 story quests · \"Gathering Essentials\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "53%",
-    "prog": ["Quests 7 7/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "51%",
+    "prog": ["Quests 7 4/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q09-none-A": {
     "prev": "Brigade Prison Compound Infiltration Operation Lv 7",
@@ -645,7 +645,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "0%",
-    "prog": ["Quests 10 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
+    "prog": ["Quests 7 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
   },
   "story/L45-q10-before-A": {
     "prev": "The Longest Night Lv 9",
@@ -656,8 +656,8 @@
     "ahead": ["Ahead verified","Lv 10 🔓 Pets 2 story quests · \"Gathering Essentials\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "53%",
-    "prog": ["Quests 7 7/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "51%",
+    "prog": ["Quests 7 4/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q10-none-A": {
     "prev": "The Longest Night Lv 9",
@@ -669,7 +669,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "0%",
-    "prog": ["Quests 10 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
+    "prog": ["Quests 7 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
   },
   "story/L45-q11-before-A": {
     "prev": "Finding Nemon Lv 10",
@@ -680,8 +680,8 @@
     "ahead": ["Ahead verified","Lv 10 🔓 Pets your next quest · \"Gathering Essentials\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "53%",
-    "prog": ["Quests 7 7/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "51%",
+    "prog": ["Quests 7 4/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q11-none-A": {
     "prev": "Finding Nemon Lv 10",
@@ -693,7 +693,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "0%",
-    "prog": ["Quests 10 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
+    "prog": ["Quests 7 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
   },
   "story/L45-q12-before-A": {
     "prev": "Survival Supplies Lv 10",
@@ -704,8 +704,8 @@
     "ahead": ["Ahead verified","Lv 13 🔓 Daevanion boards and the Shugo Festival 5 story quests · \"Urgent Pursuit\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "53%",
-    "prog": ["Quests 7 7/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "51%",
+    "prog": ["Quests 7 4/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q12-none-A": {
     "prev": "Survival Supplies Lv 10",
@@ -717,7 +717,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "0%",
-    "prog": ["Quests 10 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
+    "prog": ["Quests 7 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
   },
   "story/L45-q13-before-A": {
     "prev": "Gathering Essentials Lv 10",
@@ -728,8 +728,8 @@
     "ahead": ["Ahead verified","Lv 13 🔓 Daevanion boards and the Shugo Festival 4 story quests · \"Urgent Pursuit\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "53%",
-    "prog": ["Quests 7 7/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "51%",
+    "prog": ["Quests 7 4/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q13-none-A": {
     "prev": "Gathering Essentials Lv 10",
@@ -741,7 +741,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "0%",
-    "prog": ["Quests 10 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
+    "prog": ["Quests 7 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
   },
   "story/L45-q14-before-A": {
     "prev": "Crash Site Rendezvous Lv 11",
@@ -752,8 +752,8 @@
     "ahead": ["Ahead verified","Lv 13 🔓 Daevanion boards and the Shugo Festival 3 story quests · \"Urgent Pursuit\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "53%",
-    "prog": ["Quests 7 7/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "51%",
+    "prog": ["Quests 7 4/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q14-none-A": {
     "prev": "Crash Site Rendezvous Lv 11",
@@ -765,7 +765,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "0%",
-    "prog": ["Quests 10 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
+    "prog": ["Quests 7 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
   },
   "story/L45-q15-before-A": {
     "prev": "Contaminated Area Lv 11",
@@ -776,8 +776,8 @@
     "ahead": ["Ahead verified","Lv 13 🔓 Daevanion boards and the Shugo Festival 2 story quests · \"Urgent Pursuit\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "53%",
-    "prog": ["Quests 7 7/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "51%",
+    "prog": ["Quests 7 4/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q15-none-A": {
     "prev": "Contaminated Area Lv 11",
@@ -789,7 +789,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "0%",
-    "prog": ["Quests 11 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
+    "prog": ["Quests 8 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
   },
   "story/L45-q16-before-A": {
     "prev": "Express Daeva Delivery Lv 12",
@@ -800,8 +800,8 @@
     "ahead": ["Ahead verified","Lv 13 🔓 Daevanion boards and the Shugo Festival your next quest · \"Urgent Pursuit\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "53%",
-    "prog": ["Quests 7 7/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "51%",
+    "prog": ["Quests 7 4/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q16-none-A": {
     "prev": "Express Daeva Delivery Lv 12",
@@ -813,7 +813,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "0%",
-    "prog": ["Quests 11 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
+    "prog": ["Quests 8 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
   },
   "story/L45-q17-before-A": {
     "prev": "Veiled Truth Lv 12",
@@ -824,8 +824,8 @@
     "ahead": ["Ahead verified","Lv 16 🔓 Legions 4 story quests · \"Buried Atrocities\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "53%",
-    "prog": ["Quests 7 7/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "51%",
+    "prog": ["Quests 7 4/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q17-none-A": {
     "prev": "Veiled Truth Lv 12",
@@ -837,7 +837,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "0%",
-    "prog": ["Quests 11 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
+    "prog": ["Quests 8 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
   },
   "story/L45-q18-before-A": {
     "prev": "Urgent Pursuit Lv 13",
@@ -848,8 +848,8 @@
     "ahead": ["Ahead verified","Lv 16 🔓 Legions 3 story quests · \"Buried Atrocities\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "53%",
-    "prog": ["Quests 7 7/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "51%",
+    "prog": ["Quests 7 4/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q18-none-A": {
     "prev": "Urgent Pursuit Lv 13",
@@ -861,7 +861,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "0%",
-    "prog": ["Quests 11 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
+    "prog": ["Quests 8 0/58","Dungeons 60 0/60","Strongholds 15 0/15"]
   },
   "story/L45-q19-before-A": {
     "prev": "Cemetery Cleanup Lv 13",
@@ -872,8 +872,8 @@
     "ahead": ["Ahead verified","Lv 16 🔓 Legions 2 story quests · \"Buried Atrocities\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "53%",
-    "prog": ["Quests 7 7/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "51%",
+    "prog": ["Quests 7 4/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q19-none-A": {
     "prev": "Cemetery Cleanup Lv 13",
@@ -885,7 +885,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 12 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 9 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q20-before-A": {
     "prev": "Back on the Scent Lv 14",
@@ -896,8 +896,8 @@
     "ahead": ["Ahead verified","Lv 16 🔓 Legions your next quest · \"Buried Atrocities\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "53%",
-    "prog": ["Quests 7 7/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "51%",
+    "prog": ["Quests 7 4/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q20-none-A": {
     "prev": "Back on the Scent Lv 14",
@@ -909,7 +909,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 12 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 9 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q21-before-A": {
     "prev": "Dead Men Tell No Tales Lv 15",
@@ -920,8 +920,8 @@
     "ahead": ["Ahead verified","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 12 story quests · \"Daeva in a Dream\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "53%",
-    "prog": ["Quests 7 7/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "51%",
+    "prog": ["Quests 7 4/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q21-none-A": {
     "prev": "Dead Men Tell No Tales Lv 15",
@@ -933,7 +933,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 12 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 9 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q22-before-A": {
     "prev": "Buried Atrocities Lv 16",
@@ -944,8 +944,8 @@
     "ahead": ["Ahead verified","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 11 story quests · \"Daeva in a Dream\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "57%",
-    "prog": ["Quests 7 12/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "55%",
+    "prog": ["Quests 7 9/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q22-none-A": {
     "prev": "Buried Atrocities Lv 16",
@@ -957,7 +957,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 12 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 9 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q23-before-A": {
     "prev": "Empyrean Monolith Lv 16",
@@ -968,8 +968,8 @@
     "ahead": ["Ahead verified","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 10 story quests · \"Daeva in a Dream\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "57%",
-    "prog": ["Quests 7 12/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "55%",
+    "prog": ["Quests 7 9/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q23-none-A": {
     "prev": "Empyrean Monolith Lv 16",
@@ -981,7 +981,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 18 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 15 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q24-before-A": {
     "prev": "A New Lead Lv 18",
@@ -992,8 +992,8 @@
     "ahead": ["Ahead verified","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 9 story quests · \"Daeva in a Dream\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "57%",
-    "prog": ["Quests 7 12/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "55%",
+    "prog": ["Quests 7 9/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q24-none-A": {
     "prev": "A New Lead Lv 18",
@@ -1005,7 +1005,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 18 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 15 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q25-before-A": {
     "prev": "Malice Laid Bare Lv 18",
@@ -1016,8 +1016,8 @@
     "ahead": ["Ahead verified","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 8 story quests · \"Daeva in a Dream\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "57%",
-    "prog": ["Quests 7 12/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "55%",
+    "prog": ["Quests 7 9/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q25-none-A": {
     "prev": "Malice Laid Bare Lv 18",
@@ -1029,7 +1029,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 18 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 15 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q26-before-A": {
     "prev": "Broken Fang Lv 19",
@@ -1040,8 +1040,8 @@
     "ahead": ["Ahead verified","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 7 story quests · \"Daeva in a Dream\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "57%",
-    "prog": ["Quests 7 12/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "55%",
+    "prog": ["Quests 7 9/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q26-none-A": {
     "prev": "Broken Fang Lv 19",
@@ -1053,7 +1053,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 18 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 15 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q27-before-A": {
     "prev": "Watchful Eyes Lv 19",
@@ -1064,8 +1064,8 @@
     "ahead": ["Ahead verified","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 6 story quests · \"Daeva in a Dream\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "57%",
-    "prog": ["Quests 7 12/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "55%",
+    "prog": ["Quests 7 9/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q27-none-A": {
     "prev": "Watchful Eyes Lv 19",
@@ -1077,7 +1077,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 18 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 15 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q28-before-A": {
     "prev": "Imminent Threat Lv 20",
@@ -1088,8 +1088,8 @@
     "ahead": ["Ahead verified","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 5 story quests · \"Daeva in a Dream\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "57%",
-    "prog": ["Quests 7 12/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "55%",
+    "prog": ["Quests 7 9/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q28-none-A": {
     "prev": "Imminent Threat Lv 20",
@@ -1101,7 +1101,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 18 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 15 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q29-before-A": {
     "prev": "Crossroad Lv 20",
@@ -1112,8 +1112,8 @@
     "ahead": ["Ahead verified","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 4 story quests · \"Daeva in a Dream\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "57%",
-    "prog": ["Quests 7 12/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "55%",
+    "prog": ["Quests 7 9/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q29-none-A": {
     "prev": "Crossroad Lv 20",
@@ -1125,7 +1125,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 18 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 15 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q30-before-A": {
     "prev": "Creeping Shadow Lv 21",
@@ -1136,8 +1136,8 @@
     "ahead": ["Ahead verified","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 3 story quests · \"Daeva in a Dream\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "57%",
-    "prog": ["Quests 7 12/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "55%",
+    "prog": ["Quests 7 9/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q30-none-A": {
     "prev": "Creeping Shadow Lv 21",
@@ -1149,7 +1149,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 18 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 15 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q31-before-A": {
     "prev": "Children of the Elim Lv 21",
@@ -1160,8 +1160,8 @@
     "ahead": ["Ahead verified","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 2 story quests · \"Daeva in a Dream\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "57%",
-    "prog": ["Quests 7 12/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "55%",
+    "prog": ["Quests 7 9/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q31-none-A": {
     "prev": "Children of the Elim Lv 21",
@@ -1173,7 +1173,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 18 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 15 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q32-before-A": {
     "prev": "In the Elims' Name Lv 21",
@@ -1184,8 +1184,8 @@
     "ahead": ["Ahead verified","Lv 22 🔓 Stigmas (via Asahr) and Expeditions your next quest · \"Daeva in a Dream\"","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "59%",
-    "prog": ["Quests 7 15/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "57%",
+    "prog": ["Quests 7 12/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q32-none-A": {
     "prev": "In the Elims' Name Lv 21",
@@ -1197,7 +1197,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 18 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 15 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q33-before-A": {
     "prev": "Verdant Melody Lv 22",
@@ -1208,8 +1208,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "59%",
-    "prog": ["Quests 7 15/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "57%",
+    "prog": ["Quests 7 12/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q33-none-A": {
     "prev": "Verdant Melody Lv 22",
@@ -1221,7 +1221,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 20 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 17 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q34-before-A": {
     "prev": "Daeva in a Dream Lv 22",
@@ -1232,8 +1232,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "61%",
-    "prog": ["Quests 7 17/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "59%",
+    "prog": ["Quests 7 14/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q34-none-A": {
     "prev": "Daeva in a Dream Lv 22",
@@ -1245,7 +1245,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 20 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 17 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q35-before-A": {
     "prev": "Disturbed Balance Lv 22",
@@ -1256,8 +1256,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "61%",
-    "prog": ["Quests 7 17/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "59%",
+    "prog": ["Quests 7 14/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q35-none-A": {
     "prev": "Disturbed Balance Lv 22",
@@ -1269,7 +1269,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 21 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 18 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q36-before-A": {
     "prev": "Searching for Survivors Lv 24",
@@ -1280,8 +1280,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "61%",
-    "prog": ["Quests 7 17/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "59%",
+    "prog": ["Quests 7 14/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q36-none-A": {
     "prev": "Searching for Survivors Lv 24",
@@ -1293,7 +1293,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 21 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 18 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q37-before-A": {
     "prev": "Prison Break Lv 24",
@@ -1304,8 +1304,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "61%",
-    "prog": ["Quests 7 17/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "59%",
+    "prog": ["Quests 7 14/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q37-none-A": {
     "prev": "Prison Break Lv 24",
@@ -1317,7 +1317,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 21 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 18 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q38-before-A": {
     "prev": "Finding Stolen Relics Lv 24",
@@ -1328,8 +1328,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "61%",
-    "prog": ["Quests 7 17/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "59%",
+    "prog": ["Quests 7 14/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q38-none-A": {
     "prev": "Finding Stolen Relics Lv 24",
@@ -1341,7 +1341,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 21 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 18 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q39-before-A": {
     "prev": "Voice of Rage Lv 25",
@@ -1352,8 +1352,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "61%",
-    "prog": ["Quests 7 17/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "59%",
+    "prog": ["Quests 7 14/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q39-none-A": {
     "prev": "Voice of Rage Lv 25",
@@ -1365,7 +1365,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 21 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 18 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q40-before-A": {
     "prev": "Tangled Past Lv 25",
@@ -1376,8 +1376,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "61%",
-    "prog": ["Quests 7 17/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "59%",
+    "prog": ["Quests 7 14/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q40-none-A": {
     "prev": "Tangled Past Lv 25",
@@ -1389,7 +1389,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 21 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 18 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q41-before-A": {
     "prev": "The High Priest Slumbers Lv 26",
@@ -1400,8 +1400,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "61%",
-    "prog": ["Quests 7 17/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "59%",
+    "prog": ["Quests 7 14/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q41-none-A": {
     "prev": "The High Priest Slumbers Lv 26",
@@ -1413,7 +1413,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 21 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 18 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q42-before-A": {
     "prev": "Striving for Coexistence Lv 26",
@@ -1424,8 +1424,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "61%",
-    "prog": ["Quests 7 17/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "59%",
+    "prog": ["Quests 7 14/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q42-none-A": {
     "prev": "Striving for Coexistence Lv 26",
@@ -1437,7 +1437,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 21 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 18 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q43-before-A": {
     "prev": "Preparations for Restoration Lv 27",
@@ -1448,8 +1448,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "62%",
-    "prog": ["Quests 7 18/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "59%",
+    "prog": ["Quests 7 15/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q43-none-A": {
     "prev": "Preparations for Restoration Lv 27",
@@ -1461,7 +1461,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 21 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 19 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q44-before-A": {
     "prev": "A Collective Effort Lv 27",
@@ -1472,8 +1472,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "62%",
-    "prog": ["Quests 7 18/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "59%",
+    "prog": ["Quests 7 15/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q44-none-A": {
     "prev": "A Collective Effort Lv 27",
@@ -1485,7 +1485,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 22 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 19 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q45-before-A": {
     "prev": "Land of Rifts Lv 29",
@@ -1496,8 +1496,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "62%",
-    "prog": ["Quests 7 18/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "59%",
+    "prog": ["Quests 7 15/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q45-none-A": {
     "prev": "Land of Rifts Lv 29",
@@ -1509,7 +1509,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 22 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 19 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q46-before-A": {
     "prev": "Dying Light Lv 30",
@@ -1520,8 +1520,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "62%",
-    "prog": ["Quests 7 18/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "59%",
+    "prog": ["Quests 7 15/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q46-none-A": {
     "prev": "Dying Light Lv 30",
@@ -1533,7 +1533,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 22 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 19 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q47-before-A": {
     "prev": "Contaminated Sacred Tree Lv 30",
@@ -1544,8 +1544,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "62%",
-    "prog": ["Quests 7 18/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "59%",
+    "prog": ["Quests 7 15/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q47-none-A": {
     "prev": "Contaminated Sacred Tree Lv 30",
@@ -1557,7 +1557,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 22 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 19 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q48-before-A": {
     "prev": "The Past Revealed Lv 30",
@@ -1568,8 +1568,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "65%",
-    "prog": ["Quests 7 22/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "63%",
+    "prog": ["Quests 7 20/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q48-none-A": {
     "prev": "The Past Revealed Lv 30",
@@ -1581,7 +1581,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 22 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 19 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q49-before-A": {
     "prev": "Canyon's Secret Lv 30",
@@ -1592,8 +1592,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "65%",
-    "prog": ["Quests 7 22/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "63%",
+    "prog": ["Quests 7 20/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q49-none-A": {
     "prev": "Canyon's Secret Lv 30",
@@ -1605,7 +1605,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 24 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 22 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q50-before-A": {
     "prev": "Bitter Reality Lv 32",
@@ -1616,8 +1616,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "65%",
-    "prog": ["Quests 7 22/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "63%",
+    "prog": ["Quests 7 20/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q50-none-A": {
     "prev": "Bitter Reality Lv 32",
@@ -1629,7 +1629,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 24 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 22 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q51-before-A": {
     "prev": "Eye of the Red Tower Lv 32",
@@ -1640,8 +1640,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "65%",
-    "prog": ["Quests 7 22/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "63%",
+    "prog": ["Quests 7 20/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q51-none-A": {
     "prev": "Eye of the Red Tower Lv 32",
@@ -1653,7 +1653,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 24 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 22 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q52-before-A": {
     "prev": "The Survivors Lv 32",
@@ -1664,8 +1664,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "65%",
-    "prog": ["Quests 7 22/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "63%",
+    "prog": ["Quests 7 20/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q52-none-A": {
     "prev": "The Survivors Lv 32",
@@ -1677,7 +1677,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 24 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 22 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q53-before-A": {
     "prev": "Rescue Operation Lv 32",
@@ -1688,8 +1688,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
-    "ring": "66%",
-    "prog": ["Quests 7 24/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "65%",
+    "prog": ["Quests 7 23/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q53-none-A": {
     "prev": "Rescue Operation Lv 32",
@@ -1701,7 +1701,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 24 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 22 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q54-before-A": {
     "prev": "Last of the Destruction Archons Lv 32",
@@ -1712,8 +1712,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
-    "ring": "66%",
-    "prog": ["Quests 7 24/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "65%",
+    "prog": ["Quests 7 23/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q54-none-A": {
     "prev": "Last of the Destruction Archons Lv 32",
@@ -1725,7 +1725,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 24 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 23 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q55-before-A": {
     "prev": "A Daeva Dreaming Anew Lv 32",
@@ -1736,8 +1736,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
-    "ring": "66%",
-    "prog": ["Quests 7 24/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "65%",
+    "prog": ["Quests 7 23/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q55-none-A": {
     "prev": "A Daeva Dreaming Anew Lv 32",
@@ -1749,7 +1749,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 24 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 23 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q56-before-A": {
     "prev": "Last Refuge Lv 33",
@@ -1760,8 +1760,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
-    "ring": "67%",
-    "prog": ["Quests 7 25/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "66%",
+    "prog": ["Quests 7 24/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q56-none-A": {
     "prev": "Last Refuge Lv 33",
@@ -1773,7 +1773,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 24 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 23 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q57-before-A": {
     "prev": "Scripture in the Ruins Lv 33",
@@ -1784,8 +1784,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
-    "ring": "67%",
-    "prog": ["Quests 7 25/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "66%",
+    "prog": ["Quests 7 24/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q57-none-A": {
     "prev": "Scripture in the Ruins Lv 33",
@@ -1808,8 +1808,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
-    "ring": "67%",
-    "prog": ["Quests 7 25/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "66%",
+    "prog": ["Quests 7 24/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q58-none-A": {
     "prev": "Blood Monument Lv 33",
@@ -1821,7 +1821,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 26 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 25 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q59-before-A": {
     "prev": "Impending Threat Lv 34",
@@ -1832,8 +1832,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
-    "ring": "67%",
-    "prog": ["Quests 7 25/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "66%",
+    "prog": ["Quests 7 24/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q59-none-A": {
     "prev": "Impending Threat Lv 34",
@@ -1845,7 +1845,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 26 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 25 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q60-before-A": {
     "prev": "Visible Trap Lv 34",
@@ -1856,8 +1856,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
-    "ring": "67%",
-    "prog": ["Quests 7 25/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "66%",
+    "prog": ["Quests 7 24/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q60-none-A": {
     "prev": "Visible Trap Lv 34",
@@ -1869,7 +1869,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 26 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 25 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q61-before-A": {
     "prev": "Destruction Archon Underground Fortress Lv 34",
@@ -1880,8 +1880,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
-    "ring": "67%",
-    "prog": ["Quests 7 25/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "66%",
+    "prog": ["Quests 7 24/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q61-none-A": {
     "prev": "Destruction Archon Underground Fortress Lv 34",
@@ -1893,7 +1893,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 26 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 25 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q62-before-A": {
     "prev": "Enemy Territory Lv 35",
@@ -1904,8 +1904,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
-    "ring": "67%",
-    "prog": ["Quests 7 25/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "66%",
+    "prog": ["Quests 7 24/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q62-none-A": {
     "prev": "Enemy Territory Lv 35",
@@ -1917,7 +1917,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 26 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 25 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q63-before-A": {
     "prev": "Powder of Death Lv 35",
@@ -1928,8 +1928,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
-    "ring": "67%",
-    "prog": ["Quests 7 25/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "66%",
+    "prog": ["Quests 7 24/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q63-none-A": {
     "prev": "Powder of Death Lv 35",
@@ -1941,7 +1941,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 26 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 25 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q64-before-A": {
     "prev": "Creion of Gribade Lv 36",
@@ -1952,8 +1952,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
-    "ring": "67%",
-    "prog": ["Quests 7 25/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "66%",
+    "prog": ["Quests 7 24/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q64-none-A": {
     "prev": "Creion of Gribade Lv 36",
@@ -1965,7 +1965,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 26 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 25 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q65-before-A": {
     "prev": "Frozen Fafnite Lv 36",
@@ -1976,8 +1976,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
-    "ring": "67%",
-    "prog": ["Quests 7 25/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "66%",
+    "prog": ["Quests 7 24/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q65-none-A": {
     "prev": "Frozen Fafnite Lv 36",
@@ -1989,7 +1989,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 26 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 25 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q66-before-A": {
     "prev": "Inevitable Encounter Lv 37",
@@ -2000,8 +2000,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
-    "ring": "67%",
-    "prog": ["Quests 7 25/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "66%",
+    "prog": ["Quests 7 24/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q66-none-A": {
     "prev": "Inevitable Encounter Lv 37",
@@ -2013,7 +2013,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 26 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 25 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q67-before-A": {
     "prev": "Unveiling the Truth Lv 37",
@@ -2024,8 +2024,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
-    "ring": "67%",
-    "prog": ["Quests 7 25/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "66%",
+    "prog": ["Quests 7 24/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q67-none-A": {
     "prev": "Unveiling the Truth Lv 37",
@@ -2037,7 +2037,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 26 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 25 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q68-before-A": {
     "prev": "Lake of Confrontation Lv 37",
@@ -2048,8 +2048,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
-    "ring": "67%",
-    "prog": ["Quests 7 25/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "66%",
+    "prog": ["Quests 7 24/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q68-none-A": {
     "prev": "Lake of Confrontation Lv 37",
@@ -2061,7 +2061,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 26 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 25 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q69-before-A": {
     "prev": "An Ill Fate's Resolution Lv 37",
@@ -2073,7 +2073,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 7 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "prog": ["Quests 7 26/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q69-none-A": {
     "prev": "An Ill Fate's Resolution Lv 37",
@@ -2085,7 +2085,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 26 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 25 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q70-before-A": {
     "prev": "Mirror of Greed Lv 37",
@@ -2097,7 +2097,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 7 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "prog": ["Quests 7 26/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q70-none-A": {
     "prev": "Mirror of Greed Lv 37",
@@ -2109,7 +2109,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 27 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 26 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q71-before-A": {
     "prev": "Fafnite's Whereabouts Lv 40",
@@ -2121,7 +2121,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 7 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "prog": ["Quests 7 26/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q71-none-A": {
     "prev": "Fafnite's Whereabouts Lv 40",
@@ -2133,7 +2133,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 27 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 26 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q72-before-A": {
     "prev": "Exiled Ritualist Lv 40",
@@ -2145,7 +2145,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 7 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "prog": ["Quests 7 26/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q72-none-A": {
     "prev": "Exiled Ritualist Lv 40",
@@ -2157,7 +2157,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 27 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 26 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q73-before-A": {
     "prev": "Healing Herbs Lv 40",
@@ -2169,7 +2169,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 7 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "prog": ["Quests 7 26/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q73-none-A": {
     "prev": "Healing Herbs Lv 40",
@@ -2181,7 +2181,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 27 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 26 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q74-before-A": {
     "prev": "Treatment Lv 40",
@@ -2193,7 +2193,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 7 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "prog": ["Quests 7 26/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q74-none-A": {
     "prev": "Treatment Lv 40",
@@ -2205,7 +2205,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 27 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 26 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q75-before-A": {
     "prev": "Symbol of Liberation Lv 40",
@@ -2217,7 +2217,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 7 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "prog": ["Quests 7 26/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q75-none-A": {
     "prev": "Symbol of Liberation Lv 40",
@@ -2229,7 +2229,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 27 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 26 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q76-before-A": {
     "prev": "Daybreak Society Lv 41",
@@ -2253,7 +2253,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 27 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 26 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q77-before-A": {
     "prev": "Daybreak Society Rescue Operation Lv 41",
@@ -2409,7 +2409,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 7 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "prog": ["Quests 8 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q83-before-B": {
     "prev": "Blood Barrier Lv 44",
@@ -2421,7 +2421,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 7 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "prog": ["Quests 8 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "story/L45-q83-none-A": {
     "prev": "Blood Barrier Lv 44",
@@ -2433,7 +2433,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 27 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
+    "prog": ["Quests 28 0/58","Dungeons 60 0/60","Strongholds 14 1/15"]
   },
   "story/L45-q84-before-A": {
     "prev": "Zikel's Core Lv 45",

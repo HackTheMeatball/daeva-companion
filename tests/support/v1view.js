@@ -14,7 +14,7 @@ const rqs = recs('regionalQuests').slice().sort((a, b) => a.order - b.order), rq
 const rq = rqs.map(q => { const none = q.requiresBasis === 'unresearched';
   return { name: q.name, id: q.gameId, rec: q.rec, unlocksAt: q.unlocksAt, zone: zones[q.zone], requiresStory: none ? null : [], requiresRegional: none ? null : [] }; });
 const chains = rqs.flatMap(q => atoms(q.requires).flatMap(a => a.done ? [{ quest: q.name, after: rqById[a.done].name, kind: 'regional' }]
-  : a.story ? [{ quest: q.name, after: sq[a.story].name, kind: 'story', storyId: sq[a.story].gameId }] : []));
+  : a.story ? [{ quest: q.name, after: sq[a.story].name, kind: 'story', storyId: sq[a.story].gameId, is: a.is }] : []));
 const story45 = Object.fromEntries(story.filter(s => s.lv > 40).map(s => [s.name, { lv: s.lv, next: s.next && sq[s.next] && sq[s.next].lv > 40 ? sq[s.next].name : null }]));
 const edits = JSON.parse(fs.readFileSync(path.join(ROOT, 'tests', 'fixtures', 'claims-v1-edits.json'), 'utf8')).claims;
 const claims = recs('claims').map(c => ({ ...c, edits: (edits.find(e => e.id === c.id) || {}).edits || [] }));

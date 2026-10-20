@@ -9,7 +9,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Fire Temple now Lv 35"],
     "ring": "26%",
-    "prog": ["Quests 2 8/58","Dungeons 29 24/60","Strongholds 9 2/15"]
+    "prog": ["Quests 8/58","Dungeons 29 24/60","Strongholds 9 2/15"]
   },
   "behind/L35-q28-from20-lag-B": {
     "prev": "Imminent Threat Lv 20",
@@ -21,7 +21,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Fire Temple now Lv 35"],
     "ring": "26%",
-    "prog": ["Quests 2 8/58","Dungeons 29 24/60","Strongholds 9 2/15"]
+    "prog": ["Quests 8/58","Dungeons 29 24/60","Strongholds 9 2/15"]
   },
   "behind/L35-q48-from30-lag-A": {
     "prev": "The Past Revealed Lv 30",
@@ -33,7 +33,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Fire Temple now Lv 35"],
     "ring": "40%",
-    "prog": ["Quests 2 14/58","Dungeons 17 36/60","Strongholds 8 3/15"]
+    "prog": ["Quests 14/58","Dungeons 17 36/60","Strongholds 8 3/15"]
   },
   "behind/L35-q48-from30-lag-B": {
     "prev": "The Past Revealed Lv 30",
@@ -45,7 +45,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Fire Temple now Lv 35"],
     "ring": "40%",
-    "prog": ["Quests 2 14/58","Dungeons 17 36/60","Strongholds 8 3/15"]
+    "prog": ["Quests 14/58","Dungeons 17 36/60","Strongholds 8 3/15"]
   },
   "behind/L35-q62-from20-lagq-A": {
     "prev": "Enemy Territory Lv 35",

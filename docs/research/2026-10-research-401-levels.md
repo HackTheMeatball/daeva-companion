@@ -17,7 +17,7 @@ Pages read (quest EXP rewards): <https://metabot.gg/en/aion-2/quests/a-village-i
 <https://metabot.gg/en/aion-2/quests/spread-your-wings>, <https://metabot.gg/en/aion-2/quests/signs-of-a-crash-landing>,
 <https://metabot.gg/en/aion-2/quests/prison-compound-infiltration-plan>,
 <https://metabot.gg/en/aion-2/quests/brigade-prison-compound-infiltration-operation>,
-<https://metabot.gg/en/aion-2/quests/the-longest-night>. P15 cites these in `data/` so they reach the Sources card.
+<https://metabot.gg/en/aion-2/quests/the-longest-night>. All 10 are already in `data/` and the Sources card; P15 cites them on its new EXP fields.
 
 ## Result
 

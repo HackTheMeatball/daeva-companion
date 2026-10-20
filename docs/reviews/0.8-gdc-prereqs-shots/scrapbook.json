@@ -1,0 +1,6 @@
+[
+  { "case": "lv30-canyons-secret-advanced-1500", "kind": "before-after", "title": "Her Last Favor waits for its story",
+    "caption": "At Lv 30 on Canyon's Secret, Her Last Favor is no longer offered early: it opens once Canyon's Secret is turned in, as in game." },
+  { "case": "lv27-collective-effort-advanced-1500", "kind": "before-after", "title": "Fight Poison with Poison opens sooner",
+    "caption": "At Lv 27, Fight Poison with Poison is offered while A Collective Effort is your quest, since the game opens it at that quest's fourth step." }
+]

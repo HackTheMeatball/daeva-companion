@@ -36,8 +36,10 @@ export default (test, M) => {
     assert.deepEqual(M.rqStatus(S({ level: 45, quest, checks }), q), { open: true, ok: true, pre: [] });
   });
   test('no prerequisite data (noPre): open from the recommended level', () => {
+    /* since the owner page checks (2026-10-20) every regional quest has prerequisite data, so no record is noPre; the "from its
+       recommended level" rule stays covered with the E5 switches off (derived.test.mjs, "E5 gates") */
     const end = M.QUESTS[M.QUESTS.length - 1][1], qs = M.RQ.filter(q => q.noPre);
-    assert.ok(qs.length > 0);
+    assert.equal(qs.length, 0, qs.map(q => q.name).join(', '));
     for (const q of qs) {
       const s = lv => S({ level: lv, quest: end, storyEnd: end, checks: Object.fromEntries(q.after.map(n => ['rq:' + M.RQ_BY[n].id, true])) });
       assert.equal(M.rqStatus(s(openLv(q) - 1), q).open, false, `${q.name} below Lv ${openLv(q)}`);

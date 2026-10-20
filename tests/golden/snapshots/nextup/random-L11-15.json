@@ -67,7 +67,7 @@
     {"t":"Story: Tangled Past","s":"Needs Lv 25: you're 11. Level up first.","c":""}
   ],
   "random/L11-q43-lvonly-B": [
-    {"t":"Regional quests","s":"11 to pick up · 2 follow-ups · 0/13 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian [Lv 12]","new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","new Odyle Jelly Misappropriation Investigation [Lv 16]","+7 more"]},
+    {"t":"Regional quests","s":"12 to pick up · 2 follow-ups · 0/14 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian [Lv 12]","new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","new Odyle Jelly Misappropriation Investigation [Lv 16]","+8 more"]},
     {"t":"Story: A Collective Effort","s":"Needs Lv 27: you're 11. Level up first. Meanwhile: Strongholds","c":"","bd":"Bind Faded Stump on the way 29 m from Darmand bind:kib:faded-stump"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk : Safe Haven Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 1 open"}
   ],
@@ -82,7 +82,7 @@
     {"t":"Story: Bitter Reality","s":"Needs Lv 32: you're 11. Level up first.","c":""}
   ],
   "random/L11-q61-lvonly-B": [
-    {"t":"Regional quests","s":"16 to pick up · 5 follow-ups · 0/22 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian [Lv 12]","new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","+15 more"]},
+    {"t":"Regional quests","s":"18 to pick up · 5 follow-ups · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian [Lv 12]","new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","+17 more"]},
     {"t":"Story: Enemy Territory","s":"Needs Lv 35: you're 11. Level up first. Meanwhile: Strongholds","c":"","bd":"Bind Steel Hammer Workcamp on the way 53 m from Mannikiki bind:kib:steel-hammer-workcamp"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk : Safe Haven Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 1 open"}
   ],
@@ -91,24 +91,24 @@
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Regional quests","s":"16 to pick up · 5 follow-ups · 0/22 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian [Lv 12]","new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","+15 more"]},
+    {"t":"Regional quests","s":"18 to pick up · 5 follow-ups · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian [Lv 12]","new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","+17 more"]},
     {"t":"Story: Mirror of Greed","s":"Needs Lv 37: you're 11. Level up first. Meanwhile: Strongholds","c":"","bd":"Bind Steel Hammer Merchants HQ on the way 86 m from Crobakhi bind:kib:steel-hammer-merchants-hq"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk : Safe Haven Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 1 open"},
     {"t":"Buy Assault Stance 1 → 2","s":"Needs Lv 13 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 13–14"}
   ],
   "random/L11-q76-rnd132p50-B": [
-    {"t":"Regional quests","s":"17 to pick up · 6 follow-ups · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian [Lv 12]","new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16] | -> lock(disabled) A Friend's Legacy [Lv 37]","+17 more"]},
+    {"t":"Regional quests","s":"19 to pick up · 6 follow-ups · 0/26 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian [Lv 12]","new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16] | -> lock(disabled) A Friend's Legacy [Lv 37]","+19 more"]},
     {"t":"Clear Abandoned One's Grave and others until Lv 41","s":"Nameless Cemetery · Kibelisk : Neglected Crematorium · Lv 10–14 · 7/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 6 open at your level"},
     {"t":"Story: Daybreak Society Rescue Operation","s":"Needs Lv 41: you're 11. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk : Safe Haven Cliff · 8/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 1 open"}
   ],
   "random/L11-q77-before-B": [
-    {"t":"Regional quests","s":"17 to pick up · 6 follow-ups · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian [Lv 12]","new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16] | -> lock(disabled) A Friend's Legacy [Lv 37]","+17 more"]},
+    {"t":"Regional quests","s":"20 to pick up · 6 follow-ups · 1 near your story step · 0/27 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian [Lv 12]","new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16] | -> lock(disabled) A Friend's Legacy [Lv 37]","+20 more"]},
     {"t":"Story: The Breaking of the Day","s":"Needs Lv 42: you're 11. Level up first. Meanwhile: Strongholds","c":""},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk : Safe Haven Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 1 open"}
   ],
   "random/L11-q85-lvonly-B": [
-    {"t":"Regional quests","s":"18 to pick up · 6 follow-ups · 0/25 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian [Lv 12]","new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16] | -> lock(disabled) A Friend's Legacy [Lv 37]","+18 more"]},
+    {"t":"Regional quests","s":"21 to pick up · 6 follow-ups · 0/28 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian [Lv 12]","new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16] | -> lock(disabled) A Friend's Legacy [Lv 37]","+21 more"]},
     {"t":"Story: Forgotten Commander","s":"Needs Lv 45: you're 11. Level up first. Meanwhile: Strongholds","c":"tag \"Turn in at Lv 45\"","bd":"Bind Latesran Eastern Root on the way 49 m from Koro bind:kib:latesran-eastern-root"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk : Safe Haven Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 1 open"}
   ],
@@ -177,7 +177,7 @@
   ],
   "random/L12-q49-lvonly-A-dv": [
     {"t":"Buy Heart Gore on Nezekan","s":"3 of your 9 crystals","c":"primary \"Acquired\" board","b":"Lv 10–12"},
-    {"t":"Regional quests","s":"14 to pick up · 4 follow-ups · 0/18 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","+12 more"]},
+    {"t":"Regional quests","s":"15 to pick up · 4 follow-ups · 0/19 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","+13 more"]},
     {"t":"Story: Bitter Reality","s":"Needs Lv 32: you're 12. Level up first. Meanwhile: Strongholds","c":"","bd":"Bind Briskwind Shelter on the way 63 m from Menrik bind:kib:briskwind-shelter"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk : Safe Haven Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 1 open"},
     {"t":"Buy Heart Gore 4 → 5","s":"Needs Lv 13 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 13–14"},
@@ -190,7 +190,7 @@
     {"t":"Story: Scripture in the Ruins","s":"Needs Lv 33: you're 12. Level up first.","c":""}
   ],
   "random/L12-q75-before-A-filters": [
-    {"t":"Regional quests","s":"17 to pick up · 6 follow-ups · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202044","b":"Lv 10–12","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16] | -> lock(disabled) A Friend's Legacy [Lv 37]","+17 more"]},
+    {"t":"Regional quests","s":"19 to pick up · 6 follow-ups · 0/26 turned in","c":"go \"Show\" rqgo:rq:2202044","b":"Lv 10–12","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16] | -> lock(disabled) A Friend's Legacy [Lv 37]","+19 more"]},
     {"t":"Story: Daybreak Society","s":"Needs Lv 41: you're 12. Level up first. Meanwhile: Strongholds","c":""},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk : Safe Haven Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 1 open"},
     {"t":"Buy Heart Gore 4 → 5","s":"Needs Lv 13 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 13–14"},
@@ -199,7 +199,7 @@
     {"t":"Enhance the Noble Belt","s":"Lv 13 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L12-q78-lvonly-A": [
-    {"t":"Regional quests","s":"17 to pick up · 6 follow-ups · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202044","b":"Lv 10–12","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16] | -> lock(disabled) A Friend's Legacy [Lv 37]","+17 more"]},
+    {"t":"Regional quests","s":"20 to pick up · 6 follow-ups · 1 near your story step · 0/27 turned in","c":"go \"Show\" rqgo:rq:2202044","b":"Lv 10–12","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16] | -> lock(disabled) A Friend's Legacy [Lv 37]","+20 more"]},
     {"t":"Story: Chief of the Black Claw","s":"Needs Lv 42: you're 12. Level up first. Meanwhile: Strongholds","c":""},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk : Safe Haven Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 1 open"},
     {"t":"Buy Heart Gore 4 → 5","s":"Needs Lv 13 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 13–14"},
@@ -259,7 +259,7 @@
     {"t":"Buy Heart Gore 4 → 5","s":"2 pts · you have the points","c":"primary \"Spent\" skill"},
     {"t":"Buy Savage Roar 5 → 6","s":"2 pts","c":"tag \"After the one above\""},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
-    {"t":"Regional quests","s":"13 to pick up · 5 follow-ups · 0/19 turned in","c":"go \"Show\" rqgo:rq:2202051","x":["new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","new Odyle Jelly Misappropriation Investigation [Lv 16]","+12 more"]},
+    {"t":"Regional quests","s":"15 to pick up · 5 follow-ups · 1 near your story step · 0/21 turned in","c":"go \"Show\" rqgo:rq:2202051","x":["new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","new Odyle Jelly Misappropriation Investigation [Lv 16]","+14 more"]},
     {"t":"Story: Last Refuge","s":"Needs Lv 33: you're 13. Level up first. Meanwhile: Strongholds","c":"","bd":"Bind Graverobber Campsite on the way 128 m from Nemon bind:kib:graverobber-campsite"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk : Safe Haven Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 1 open"},
     {"t":"Buy Insignia Explosion 1 → 2","s":"Needs Lv 14 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -275,7 +275,7 @@
     {"t":"Buy Heart Gore 4 → 5","s":"2 pts · you have the points","c":"primary \"Spent\" skill"},
     {"t":"Buy Savage Roar 5 → 6","s":"2 pts","c":"tag \"After the one above\""},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
-    {"t":"Regional quests","s":"15 to pick up · 5 follow-ups · 2 near your story step · 0/21 turned in","c":"go \"Show\" rqgo:rq:2202051","x":["new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","new Odyle Jelly Misappropriation Investigation [Lv 16]","+14 more"]},
+    {"t":"Regional quests","s":"17 to pick up · 5 follow-ups · 2 near your story step · 0/23 turned in","c":"go \"Show\" rqgo:rq:2202051","x":["new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","new Odyle Jelly Misappropriation Investigation [Lv 16]","+16 more"]},
     {"t":"Story: Visible Trap","s":"Needs Lv 34: you're 13. Level up first. Meanwhile: Strongholds","c":"","bd":"Bind Shulak Street Stall on the way 35 m from Nemon bind:kib:shulak-street-stall"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk : Safe Haven Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 1 open"},
     {"t":"Buy Insignia Explosion 1 → 2","s":"Needs Lv 14 · 1 level away","c":"tag \"Later\"","f":"later"}
@@ -284,7 +284,7 @@
     {"t":"Buy Heart Gore 4 → 5","s":"2 pts · you have the points","c":"primary \"Spent\" skill"},
     {"t":"Buy Savage Roar 5 → 6","s":"2 pts","c":"tag \"After the one above\""},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
-    {"t":"Regional quests","s":"17 to pick up · 6 follow-ups · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202051","x":["new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16] | -> lock(disabled) A Friend's Legacy [Lv 37]","new Creion Research Assistant [Lv 16]","+17 more"]},
+    {"t":"Regional quests","s":"20 to pick up · 6 follow-ups · 0/27 turned in","c":"go \"Show\" rqgo:rq:2202051","x":["new Spooky Specters [Lv 14]","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16] | -> lock(disabled) A Friend's Legacy [Lv 37]","new Creion Research Assistant [Lv 16]","+20 more"]},
     {"t":"Story: Forgotten Commander","s":"Needs Lv 45: you're 13. Level up first. Meanwhile: Strongholds","c":"tag \"Turn in at Lv 45\"","bd":"Bind Latesran Eastern Root on the way 49 m from Koro bind:kib:latesran-eastern-root"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk : Safe Haven Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 1 open"},
     {"t":"Buy Insignia Explosion 1 → 2","s":"Needs Lv 14 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -379,7 +379,7 @@
   ],
   "random/L14-q57-none-B": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-    {"t":"Regional quests","s":"15 to pick up · 5 follow-ups · 0/21 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","+14 more"]},
+    {"t":"Regional quests","s":"18 to pick up · 5 follow-ups · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","+17 more"]},
     {"t":"Clear Abandoned One's Grave and others until Lv 33","s":"Nameless Cemetery · Kibelisk : Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
@@ -388,12 +388,12 @@
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk : Safe Haven Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 1 open"}
   ],
   "random/L14-q65-lvonly-B": [
-    {"t":"Regional quests","s":"15 to pick up · 5 follow-ups · 0/21 turned in","c":"go \"Show\" rqgo:rq:2202051","x":["new Spooky Specters","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","new Odyle Jelly Misappropriation Investigation [Lv 16]","+14 more"]},
+    {"t":"Regional quests","s":"17 to pick up · 5 follow-ups · 0/23 turned in","c":"go \"Show\" rqgo:rq:2202051","x":["new Spooky Specters","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","new Odyle Jelly Misappropriation Investigation [Lv 16]","+16 more"]},
     {"t":"Story: Inevitable Encounter","s":"Needs Lv 37: you're 14. Level up first. Meanwhile: Strongholds","c":""},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk : Safe Haven Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 1 open"}
   ],
   "random/L14-q70-rnd106p95-A-stfull": [
-    {"t":"Regional quests","s":"15 to pick up · 6 follow-ups · 0/22 turned in","c":"go \"Show\" rqgo:rq:2202010","b":"Lv 13–14","x":["new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16] | -> lock(disabled) A Friend's Legacy [Lv 37]","new Creion Research Assistant [Lv 16]","new Odyle Jelly Misappropriation Investigation [Lv 16]","+15 more"]},
+    {"t":"Regional quests","s":"17 to pick up · 6 follow-ups · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202010","b":"Lv 13–14","x":["new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16] | -> lock(disabled) A Friend's Legacy [Lv 37]","new Creion Research Assistant [Lv 16]","new Odyle Jelly Misappropriation Investigation [Lv 16]","+17 more"]},
     {"t":"Story: Fafnite's Whereabouts","s":"Needs Lv 40: you're 14. Level up first.","c":""},
     {"t":"Buy Ambush 5 → 6","s":"Needs Lv 15 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 15"},
     {"t":"Buy Exploit Weakness 4 → 5","s":"Needs Lv 15 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -405,7 +405,7 @@
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Regional quests","s":"17 to pick up · 6 follow-ups · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16] | -> lock(disabled) A Friend's Legacy [Lv 37]","+17 more"]},
+    {"t":"Regional quests","s":"19 to pick up · 6 follow-ups · 0/26 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16] | -> lock(disabled) A Friend's Legacy [Lv 37]","+19 more"]},
     {"t":"Clear Abandoned One's Grave and others until Lv 40","s":"Nameless Cemetery · Kibelisk : Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
@@ -423,7 +423,7 @@
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Heart Gore on Nezekan","s":"3 of your 9 crystals","c":"primary \"Acquired\" board"},
-    {"t":"Regional quests","s":"34 to pick up · 11 follow-ups · 0/48 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30] | -> lock(disabled) A Traitor Within [Lv 45]","new Odyle Jelly Misappropriation Investigation [Lv 16]","+39 more"]},
+    {"t":"Regional quests","s":"37 to pick up · 11 follow-ups · 0/51 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30] | -> lock(disabled) A Traitor Within [Lv 45]","new Odyle Jelly Misappropriation Investigation [Lv 16]","+42 more"]},
     {"t":"Clear Abandoned One's Grave and others until Lv 45","s":"Nameless Cemetery · Kibelisk : Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: Daeva Trapped in a Nightmare","s":"Needs Lv 45: you're 14. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":"tag \"Turn in at Lv 45\"","b":"Lv 13–14"},
@@ -527,7 +527,7 @@
   ],
   "random/L15-q50-rnd143p50-B": [
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-    {"t":"Regional quests","s":"13 to pick up · 4 follow-ups · 0/17 turned in","c":"go \"Show\" rqgo:rq:2202051","x":["new Spooky Specters","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","new Odyle Jelly Misappropriation Investigation [Lv 16]","+11 more"]},
+    {"t":"Regional quests","s":"14 to pick up · 4 follow-ups · 0/18 turned in","c":"go \"Show\" rqgo:rq:2202051","x":["new Spooky Specters","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","new Odyle Jelly Misappropriation Investigation [Lv 16]","+12 more"]},
     {"t":"Clear Abandoned Archon Jail and others until Lv 32","s":"Moslan Forest · Kibelisk : Moslan Forest Cliff · Lv 15–19 · 1/11","c":"go \"Show\" areas:15","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 18 open at your level"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -552,7 +552,7 @@
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Regional quests","s":"34 to pick up · 11 follow-ups · 0/48 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30] | -> lock(disabled) A Traitor Within [Lv 45]","new Odyle Jelly Misappropriation Investigation [Lv 16]","+39 more"]},
+    {"t":"Regional quests","s":"37 to pick up · 11 follow-ups · 0/51 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30] | -> lock(disabled) A Traitor Within [Lv 45]","new Odyle Jelly Misappropriation Investigation [Lv 16]","+42 more"]},
     {"t":"Clear Abandoned Archon Jail and others until Lv 45","s":"Moslan Forest · Kibelisk : Moslan Forest Cliff · Lv 15–19 · 3/11","c":"go \"Show\" areas:15","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 18 open at your level"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},

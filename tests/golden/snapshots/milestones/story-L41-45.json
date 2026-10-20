@@ -727,11 +727,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q00-none-A": [
@@ -769,11 +769,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q01-none-A": [
@@ -811,11 +811,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q02-none-A": [
@@ -853,11 +853,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q03-none-A": [
@@ -895,11 +895,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q04-none-A": [
@@ -937,11 +937,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q05-none-A": [
@@ -979,11 +979,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q06-none-A": [
@@ -1021,11 +1021,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q07-none-A": [
@@ -1063,11 +1063,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q08-none-A": [
@@ -1105,11 +1105,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q09-none-A": [
@@ -1147,11 +1147,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q10-none-A": [
@@ -1189,11 +1189,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q11-none-A": [
@@ -1231,11 +1231,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q12-none-A": [
@@ -1273,11 +1273,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q13-none-A": [
@@ -1315,11 +1315,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q14-none-A": [
@@ -1357,11 +1357,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q15-none-A": [
@@ -1399,11 +1399,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q16-none-A": [
@@ -1441,11 +1441,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q17-none-A": [
@@ -1483,11 +1483,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q18-none-A": [
@@ -1525,11 +1525,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q19-none-A": [
@@ -1567,11 +1567,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q20-none-A": [
@@ -1609,11 +1609,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q21-none-A": [
@@ -1651,11 +1651,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q22-none-A": [
@@ -1693,11 +1693,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q23-none-A": [
@@ -1735,11 +1735,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q24-none-A": [
@@ -1777,11 +1777,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q25-none-A": [
@@ -1819,11 +1819,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q26-none-A": [
@@ -1861,11 +1861,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q27-none-A": [
@@ -1903,11 +1903,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q28-none-A": [
@@ -1945,11 +1945,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q29-none-A": [
@@ -1987,11 +1987,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q30-none-A": [
@@ -2029,11 +2029,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q31-none-A": [
@@ -2071,11 +2071,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q32-none-A": [
@@ -2113,11 +2113,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q33-none-A": [
@@ -2155,11 +2155,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q34-none-A": [
@@ -2197,11 +2197,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q35-none-A": [
@@ -2239,11 +2239,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q36-none-A": [
@@ -2281,11 +2281,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q37-none-A": [
@@ -2323,11 +2323,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q38-none-A": [
@@ -2365,11 +2365,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q39-none-A": [
@@ -2407,11 +2407,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q40-none-A": [
@@ -2449,11 +2449,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q41-none-A": [
@@ -2491,11 +2491,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Side quests | 6/6 · 1 side | sideonly",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q42-none-A": [
@@ -2533,11 +2533,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Cleared | 7/7 | done",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q43-none-A": [
@@ -2575,11 +2575,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Cleared | 7/7 | done",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q44-none-A": [
@@ -2617,11 +2617,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Cleared | 7/7 | done",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q45-none-A": [
@@ -2659,11 +2659,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Cleared | 7/7 | done",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q46-none-A": [
@@ -2701,11 +2701,11 @@
     "g25 | Cleared | 9/9 | done",
     "g27 | Cleared | 7/7 | done",
     "g28 | Cleared | 2/2 | done",
-    "g30 | Side quests | 5/5 · 4 side | sideonly",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g30 | Side quests | 5/5 · 5 side | sideonly",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q47-none-A": [
@@ -2744,10 +2744,10 @@
     "g27 | Cleared | 7/7 | done",
     "g28 | Cleared | 2/2 | done",
     "g30 | Cleared | 10/10 | done",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q48-none-A": [
@@ -2786,10 +2786,10 @@
     "g27 | Cleared | 7/7 | done",
     "g28 | Cleared | 2/2 | done",
     "g30 | Cleared | 10/10 | done",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q49-none-A": [
@@ -2828,10 +2828,10 @@
     "g27 | Cleared | 7/7 | done",
     "g28 | Cleared | 2/2 | done",
     "g30 | Cleared | 10/10 | done",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q50-none-A": [
@@ -2870,10 +2870,10 @@
     "g27 | Cleared | 7/7 | done",
     "g28 | Cleared | 2/2 | done",
     "g30 | Cleared | 10/10 | done",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q51-none-A": [
@@ -2912,10 +2912,10 @@
     "g27 | Cleared | 7/7 | done",
     "g28 | Cleared | 2/2 | done",
     "g30 | Cleared | 10/10 | done",
-    "g32 | Missed | 7/11 | overdue | open",
+    "g32 | Missed | 6/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q52-none-A": [
@@ -2957,7 +2957,7 @@
     "g32 | Missed | 9/11 | overdue | open",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q53-none-A": [
@@ -2999,7 +2999,7 @@
     "g32 | Side quests | 6/6 · 1 side | sideonly",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q54-none-A": [
@@ -3041,7 +3041,7 @@
     "g32 | Side quests | 6/6 · 1 side | sideonly",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q55-none-A": [
@@ -3083,7 +3083,7 @@
     "g32 | Cleared | 11/11 | done",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q56-none-A": [
@@ -3125,7 +3125,7 @@
     "g32 | Cleared | 11/11 | done",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q57-none-A": [
@@ -3167,7 +3167,7 @@
     "g32 | Cleared | 11/11 | done",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q58-none-A": [
@@ -3209,7 +3209,7 @@
     "g32 | Cleared | 11/11 | done",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q59-none-A": [
@@ -3251,7 +3251,7 @@
     "g32 | Cleared | 11/11 | done",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q60-none-A": [
@@ -3293,7 +3293,7 @@
     "g32 | Cleared | 11/11 | done",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q61-none-A": [
@@ -3335,7 +3335,7 @@
     "g32 | Cleared | 11/11 | done",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q62-none-A": [
@@ -3377,7 +3377,7 @@
     "g32 | Cleared | 11/11 | done",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q63-none-A": [
@@ -3419,7 +3419,7 @@
     "g32 | Cleared | 11/11 | done",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q64-none-A": [
@@ -3461,7 +3461,7 @@
     "g32 | Cleared | 11/11 | done",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q65-none-A": [
@@ -3503,7 +3503,7 @@
     "g32 | Cleared | 11/11 | done",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q66-none-A": [
@@ -3545,7 +3545,7 @@
     "g32 | Cleared | 11/11 | done",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q67-none-A": [
@@ -3587,7 +3587,7 @@
     "g32 | Cleared | 11/11 | done",
     "g35 | Cleared | 3/3 | done",
     "g37 | Missed | 2/5 | overdue | open",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q68-none-A": [
@@ -3629,7 +3629,7 @@
     "g32 | Cleared | 11/11 | done",
     "g35 | Cleared | 3/3 | done",
     "g37 | Cleared | 5/5 | done",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q69-none-A": [
@@ -3671,7 +3671,7 @@
     "g32 | Cleared | 11/11 | done",
     "g35 | Cleared | 3/3 | done",
     "g37 | Cleared | 5/5 | done",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q70-none-A": [
@@ -3713,7 +3713,7 @@
     "g32 | Cleared | 11/11 | done",
     "g35 | Cleared | 3/3 | done",
     "g37 | Cleared | 5/5 | done",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q71-none-A": [
@@ -3755,7 +3755,7 @@
     "g32 | Cleared | 11/11 | done",
     "g35 | Cleared | 3/3 | done",
     "g37 | Cleared | 5/5 | done",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q72-none-A": [
@@ -3797,7 +3797,7 @@
     "g32 | Cleared | 11/11 | done",
     "g35 | Cleared | 3/3 | done",
     "g37 | Cleared | 5/5 | done",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q73-none-A": [
@@ -3839,7 +3839,7 @@
     "g32 | Cleared | 11/11 | done",
     "g35 | Cleared | 3/3 | done",
     "g37 | Cleared | 5/5 | done",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q74-none-A": [
@@ -3881,7 +3881,7 @@
     "g32 | Cleared | 11/11 | done",
     "g35 | Cleared | 3/3 | done",
     "g37 | Cleared | 5/5 | done",
-    "g40 | Cleared | 3/3 | done",
+    "g40 | Side quests | 2/2 · 1 side | sideonly",
     "g45 | Now | 0/32 | current,upnext | open"
   ],
   "story/L45-q75-none-A": [

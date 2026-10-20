@@ -93,7 +93,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Stigma slot 2 next · 1 to go Lv 27"],
     "ring": "39%",
-    "prog": ["Quests 4 13/58","Dungeons 36/60","Strongholds 5 3/15"]
+    "prog": ["Quests 5 13/58","Dungeons 36/60","Strongholds 5 3/15"]
   },
   "random/L26-q64-none-B-stwait": {
     "prev": "Creion of Gribade Lv 36",
@@ -105,7 +105,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Stigma slot 2 next · 1 to go Lv 27"],
     "ring": "1%",
-    "prog": ["Quests 16 0/58","Dungeons 36 0/60","Strongholds 7 1/15"]
+    "prog": ["Quests 18 0/58","Dungeons 36 0/60","Strongholds 7 1/15"]
   },
   "random/L26-q68-before-B": {
     "prev": "Lake of Confrontation Lv 37",
@@ -117,7 +117,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Stigma slot 2 next · 1 to go Lv 27"],
     "ring": "39%",
-    "prog": ["Quests 7 13/58","Dungeons 36/60","Strongholds 5 3/15"]
+    "prog": ["Quests 9 13/58","Dungeons 36/60","Strongholds 5 3/15"]
   },
   "random/L26-q74-before-B-stwait": {
     "prev": "Treatment Lv 40",
@@ -129,7 +129,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Stigma slot 2 next · 1 to go Lv 27"],
     "ring": "39%",
-    "prog": ["Quests 9 13/58","Dungeons 36/60","Strongholds 5 3/15"]
+    "prog": ["Quests 11 13/58","Dungeons 36/60","Strongholds 5 3/15"]
   },
   "random/L26-q82-none-B-objs": {
     "prev": "Lingering Apparitions Lv 44",
@@ -141,7 +141,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Stigma slot 2 next · 1 to go Lv 27"],
     "ring": "1%",
-    "prog": ["Quests 17 0/58","Dungeons 36 0/60","Strongholds 7 1/15"],
+    "prog": ["Quests 20 0/58","Dungeons 36 0/60","Strongholds 7 1/15"],
     "subs": {"head":"Objectives 0/2","items":2,"on":0,"end":""}
   },
   "random/L27-q15-rnd127p95-A": {
@@ -310,7 +310,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Stigma slot 2 now Lv 27"],
     "ring": "1%",
-    "prog": ["Quests 16 0/58","Dungeons 36 0/60","Strongholds 7 1/15"]
+    "prog": ["Quests 18 0/58","Dungeons 36 0/60","Strongholds 7 1/15"]
   },
   "random/L27-q69-before-A-dv": {
     "prev": "An Ill Fate's Resolution Lv 37",
@@ -322,7 +322,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Stigma slot 2 now Lv 27"],
     "ring": "39%",
-    "prog": ["Quests 7 13/58","Dungeons 36/60","Strongholds 5 3/15"]
+    "prog": ["Quests 9 13/58","Dungeons 36/60","Strongholds 5 3/15"]
   },
   "random/L27-qxx-before-A-stwait": {
     "prev": "",
@@ -430,7 +430,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Heart Gore 10 and Urugugu Canyon now Lv 28"],
     "ring": "40%",
-    "prog": ["Quests 3 14/58","Dungeons 36/60","Strongholds 5 3/15"]
+    "prog": ["Quests 4 14/58","Dungeons 36/60","Strongholds 5 3/15"]
   },
   "random/L28-q57-all-B-objs": {
     "prev": "Scripture in the Ruins Lv 33",
@@ -455,7 +455,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Skills window missed · 9 open Lv 4","Wings and Ascension missed · 2 open Lv 6","Enhancement unlocks missed · 6 open Lv 9","Altgard opens missed · 5 open Lv 10","Daevanion board missed · 8 open Lv 13","Ring quest and skills missed · 4 open Lv 15","Legions missed · 5 open Lv 16","Skill tier: level 8 missed · 11 open Lv 19","Zikel board missed · 3 open Lv 20","Stigma slot 1 missed · 9 open Lv 22","Supply Requests missed · 8 open Lv 25","Stigma slot 2 missed · 6 open Lv 27","Heart Gore 10 and Urugugu Canyon now Lv 28","Daily dungeon and Vaizel board Lv 30","Stigma slot 3 Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 15 0/58","Dungeons 36 0/60","Strongholds 7 1/15"]
+    "prog": ["Quests 18 0/58","Dungeons 36 0/60","Strongholds 7 1/15"]
   },
   "random/L28-q63-none-A-stfull": {
     "prev": "Powder of Death Lv 35",
@@ -467,7 +467,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Heart Gore 10 and Urugugu Canyon now Lv 28"],
     "ring": "1%",
-    "prog": ["Quests 16 0/58","Dungeons 36 0/60","Strongholds 7 1/15"]
+    "prog": ["Quests 18 0/58","Dungeons 36 0/60","Strongholds 7 1/15"]
   },
   "random/L28-q69-all-B-stready": {
     "prev": "An Ill Fate's Resolution Lv 37",
@@ -515,7 +515,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Heart Gore 10 and Urugugu Canyon now Lv 28"],
     "ring": "40%",
-    "prog": ["Quests 8 14/58","Dungeons 36/60","Strongholds 5 3/15"]
+    "prog": ["Quests 11 14/58","Dungeons 36/60","Strongholds 5 3/15"]
   },
   "random/L29-q02-rnd143p80-A": {
     "prev": "Prepare to Escape Lv 2",
@@ -695,7 +695,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Skills window missed · 5 open Lv 4","Enhancement unlocks missed · 2 open Lv 9","Altgard opens missed · 2 open Lv 10","Daevanion board missed · 4 open Lv 13","Ring quest and skills missed · 1 open Lv 15","Legions missed · 2 open Lv 16","Skill tier: level 8 missed · 5 open Lv 19","Zikel board missed · 1 open Lv 20","Stigma slot 1 missed · 4 open Lv 22","Supply Requests missed · 2 open Lv 25","Stigma slot 2 missed · 4 open Lv 27","Daily dungeon and Vaizel board next · 1 to go Lv 30","Stigma slot 3 Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
     "ring": "19%",
-    "prog": ["Quests 15 3/58","Dungeons 20 16/60","Strongholds 5 6/15"]
+    "prog": ["Quests 17 3/58","Dungeons 20 16/60","Strongholds 5 6/15"]
   },
   "random/L29-q86-all-A": {
     "prev": "Forgotten Commander Lv 45",
@@ -719,7 +719,7 @@
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Daily dungeon and Vaizel board now Lv 30"],
     "ring": "0%",
-    "prog": ["Quests 1 0/58","Dungeons 43 0/60","Strongholds 8 0/15"],
+    "prog": ["Quests 0/58","Dungeons 43 0/60","Strongholds 8 0/15"],
     "subs": {"head":"Objectives 0/2","items":2,"on":0,"end":""}
   },
   "random/L30-q26-all-B-stfull": {
@@ -744,7 +744,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Daily dungeon and Vaizel board now Lv 30"],
     "ring": "40%",
-    "prog": ["Quests 1 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    "prog": ["Quests 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
   },
   "random/L30-q26-none-B-stfull": {
     "prev": "Broken Fang Lv 19",
@@ -756,7 +756,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Daily dungeon and Vaizel board now Lv 30"],
     "ring": "1%",
-    "prog": ["Quests 9 0/58","Dungeons 43 0/60","Strongholds 7 1/15"]
+    "prog": ["Quests 8 0/58","Dungeons 43 0/60","Strongholds 7 1/15"]
   },
   "random/L30-q26-rnd120p20-A-dv": {
     "prev": "Broken Fang Lv 19",
@@ -768,7 +768,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Daily dungeon and Vaizel board now Lv 30"],
     "ring": "15%",
-    "prog": ["Quests 8 4/58","Dungeons 33 10/60","Strongholds 5 6/15"]
+    "prog": ["Quests 7 4/58","Dungeons 33 10/60","Strongholds 5 6/15"]
   },
   "random/L30-q28-before-A-rqmix": {
     "prev": "Imminent Threat Lv 20",
@@ -780,7 +780,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Daily dungeon and Vaizel board now Lv 30"],
     "ring": "36%",
-    "prog": ["Quests 1 9/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    "prog": ["Quests 9/58","Dungeons 7 36/60","Strongholds 5 3/15"]
   },
   "random/L30-q49-lvonly-B": {
     "prev": "Canyon's Secret Lv 30",
@@ -828,7 +828,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Daily dungeon and Vaizel board now Lv 30","Stigma slot 3 Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
     "ring": "40%",
-    "prog": ["Quests 9 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    "prog": ["Quests 10 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
   },
   "random/L30-q79-before-A-dv": {
     "prev": "Chief of the Black Claw Lv 42",
@@ -840,7 +840,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Daily dungeon and Vaizel board now Lv 30"],
     "ring": "40%",
-    "prog": ["Quests 9 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    "prog": ["Quests 11 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
   },
   "random/L30-q83-before-A": {
     "prev": "Blood Barrier Lv 44",
@@ -852,7 +852,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Daily dungeon and Vaizel board now Lv 30"],
     "ring": "40%",
-    "prog": ["Quests 9 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    "prog": ["Quests 12 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
   },
   "random/L30-q84-lvonly-A-sppts": {
     "prev": "Zikel's Core Lv 45",
@@ -864,7 +864,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Daily dungeon and Vaizel board now Lv 30"],
     "ring": "40%",
-    "prog": ["Quests 10 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    "prog": ["Quests 12 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
   },
   "random/L30-q84-none-A-rqmix": {
     "prev": "Zikel's Core Lv 45",
@@ -876,7 +876,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Daily dungeon and Vaizel board now Lv 30"],
     "ring": "1%",
-    "prog": ["Quests 19 0/58","Dungeons 43 0/60","Strongholds 7 1/15"]
+    "prog": ["Quests 21 0/58","Dungeons 43 0/60","Strongholds 7 1/15"]
   },
   "random/L30-qxx-all-B-rqmix": {
     "prev": "",
@@ -900,6 +900,6 @@
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Daily dungeon and Vaizel board now Lv 30"],
     "ring": "32%",
-    "prog": ["Quests 1 3/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    "prog": ["Quests 3/58","Dungeons 7 36/60","Strongholds 5 3/15"]
   }
 }
