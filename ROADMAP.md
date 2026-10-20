@@ -140,8 +140,8 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
    **Review level (owner, 2026-10-20 6:45 PM ET; defaults from Org Design's trigger list; approved by Fresh governance
    review, 2026-10-20 7:02 PM ET):** every review is triaged `standing`, `blind` or `external`. The defaults list below sets each item's
    level, and that call isn't left to anyone's judgement. Anyone may raise a level. Only the coordinator may lower
-   triggers 1, 3 and 4 below their default, logged in the PR with a reason and counted at each kaizen review. Triggers 2,
-   5, 4b and 6 are never lowered. Trigger 2 is the roster, where the coordinator is the decider. Trigger 5 is the conflict
+   triggers 1, 3 and 4 below their default, logged in the PR with a reason and counted at each kaizen review. The team
+   never lowers triggers 2, 5, 4b or 6, and only Isaac can narrow 4b and 6. Trigger 2 is the roster, where the coordinator is the decider. Trigger 5 is the conflict
    check, and the coordinator picks the reviewer. Triggers 4b and 6 are K24, so lowering them narrows an owner decision,
    and that goes to Isaac.
 
