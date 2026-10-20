@@ -213,6 +213,7 @@
       "key": "Enhance: Spirit's Benediction",
       "name": "Enhance: Spirit's Benediction",
       "availableLv": 22,
+      "icon": "assets/icons/st-enhance-spirits-benediction.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -264,6 +265,7 @@
       "key": "Flame Blessing",
       "name": "Flame Blessing",
       "availableLv": 22,
+      "icon": "assets/icons/st-flame-blessing.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -315,6 +317,7 @@
       "key": "Jointstrike: Corrode",
       "name": "Jointstrike: Corrode",
       "availableLv": 22,
+      "icon": "assets/icons/st-jointstrike-corrode.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -621,6 +624,7 @@
       "key": "Summon: Ancient Spirit",
       "name": "Summon: Ancient Spirit",
       "availableLv": 22,
+      "icon": "assets/icons/st-summon-ancient-spirit.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {

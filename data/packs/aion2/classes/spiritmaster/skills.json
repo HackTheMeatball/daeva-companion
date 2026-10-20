@@ -11,6 +11,7 @@
       "type": "active",
       "learnLv": 1,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-cold-shock.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -91,6 +92,7 @@
       "type": "active",
       "learnLv": 1,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-combustion.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -180,6 +182,7 @@
       "type": "passive",
       "learnLv": 11,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-corrode.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 2,
@@ -272,6 +275,7 @@
       "type": "active",
       "learnLv": 8,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-dimensional-control.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -361,6 +365,7 @@
       "type": "active",
       "learnLv": 14,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-elemental-fusion.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -422,6 +427,7 @@
       "type": "active",
       "learnLv": 4,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-jointstrike-curse.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -767,6 +773,7 @@
       "type": "passive",
       "learnLv": 1,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-spirit-strike.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 2,
@@ -795,6 +802,7 @@
       "type": "passive",
       "learnLv": 9,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-spirits-descent.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 2,
@@ -823,6 +831,7 @@
       "type": "active",
       "learnLv": 7,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-summon-earth-spirit.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -884,6 +893,7 @@
       "type": "active",
       "learnLv": 1,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-summon-fire-spirit.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -945,6 +955,7 @@
       "type": "active",
       "learnLv": 3,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-summon-water-spirit.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,

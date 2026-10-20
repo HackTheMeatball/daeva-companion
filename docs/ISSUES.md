@@ -125,16 +125,14 @@ on purpose: the guide shows nothing rather than an unverified value.
   | st-supporting-fire.png | Supporting Fire | <https://metabot.gg/en/aion-2/skills/supporting-fire> | <https://metabot.gg/web/aion2/skills/14380000.webp> | 2026-10-18 |
   | st-griffon-arrow.png | Griffon Arrow | <https://metabot.gg/en/aion-2/skills/griffon-arrow> | <https://metabot.gg/web/aion2/skills/14060000.webp> | 2026-10-18 |
 
-- **Gladiator skill and stigma icons: initials for now** (0.7 P2 shipped without them, #345). The Gladiator research
-  (docs/research/2026-10-gladiator-pack.md, docs/research/2026-10-gladiator-guide.md) saved no icon files, and bot
-  builds have no web, so the Gladiator's build plan shows the initials square for each skill and stigma. Metabot is the
-  approved source for all of them (standing icon OK, owner 2026-10-14), so none needs the owner: a research or fetch
-  session takes the 14 files from each record's Metabot page, as 0.6.1 F5 did for the Ranger, and records source page,
-  file URL and date here. The 14 the plan shows:
+- **Gladiator skill and stigma icons: in the site** (0.7 P2 shipped without them, #345; wired in 0.8 P1, #490). The
+  Gladiator research (docs/research/2026-10-gladiator-pack.md, docs/research/2026-10-gladiator-guide.md) saved no icon
+  files, so 0.7 showed the initials square for each skill and stigma. Metabot is the approved source for all of them
+  (standing icon OK, owner 2026-10-14), so none needed the owner. The 14 the plan shows:
 
-  **Files fetched 2026-10-19** (gate `research-gl-sm-icons`, 0.8): all 14 found on Metabot, none needs the owner. Staged in
-  `docs/research/icons-2026-10-19/` (128 px RGB PNG from Metabot's 256 px WebP, Lanczos, like the Ranger's), not wired
-  yet: 0.8 P1 moves them to `src/assets/icons/` and sets each record's `icon`. That folder's README has the method.
+  **Files fetched 2026-10-19** (gate `research-gl-sm-icons`, 0.8): all 14 found on Metabot (128 px RGB PNG from Metabot's
+  256 px WebP, Lanczos, like the Ranger's; method in `docs/research/icons-2026-10-19/README.md`). **In the site since 0.8
+  P1 (#490):** moved to `src/assets/icons/` and each record's `icon` names its file.
 
   | File | Kind | Name | Source page | File URL | Retrieved |
   |---|---|---|---|---|---|
@@ -153,15 +151,14 @@ on purpose: the guide shows nothing rather than an unverified value.
   | st-lifestealing-blade.png | stigma | Lifestealing Blade | <https://metabot.gg/en/aion-2/skills/lifestealing-blade> | <https://metabot.gg/web/aion2/skills/11340000.webp> | 2026-10-19 6:23 AM ET |
   | st-rage-burst.png | stigma | Rage Burst | <https://metabot.gg/en/aion-2/skills/rage-burst> | <https://metabot.gg/web/aion2/skills/11390000.webp> | 2026-10-19 6:23 AM ET |
 
-- **Spiritmaster skill and stigma icons: initials for now** (0.7 P4 shipped without them, #347). The Spiritmaster
-  research (docs/research/2026-10-spiritmaster-pack.md) saved no icon files, and bot builds have no web, so the
-  Spiritmaster's build plan shows the initials square for each skill and stigma. Metabot is the approved source for all
-  of them (standing icon OK, owner 2026-10-14), so none needs the owner: a research or fetch session takes the 15 files
-  from each record's Metabot page and records source page, file URL and date here. The 15 the plan shows:
+- **Spiritmaster skill and stigma icons: in the site** (0.7 P4 shipped without them, #347; wired in 0.8 P1, #490). The
+  Spiritmaster research (docs/research/2026-10-spiritmaster-pack.md) saved no icon files, so 0.7 showed the initials
+  square for each skill and stigma. Metabot is the approved source for all of them (standing icon OK, owner 2026-10-14),
+  so none needed the owner. The 15 the plan shows:
 
-  **Files fetched 2026-10-19** (gate `research-gl-sm-icons`, 0.8): all 15 found on Metabot, none needs the owner. Staged in
-  `docs/research/icons-2026-10-19/` (128 px RGB PNG from Metabot's 256 px WebP, Lanczos, like the Ranger's), not wired
-  yet: 0.8 P1 moves them to `src/assets/icons/` and sets each record's `icon`. That folder's README has the method.
+  **Files fetched 2026-10-19** (gate `research-gl-sm-icons`, 0.8): all 15 found on Metabot (128 px RGB PNG from Metabot's
+  256 px WebP, Lanczos, like the Ranger's; method in `docs/research/icons-2026-10-19/README.md`). **In the site since 0.8
+  P1 (#490):** moved to `src/assets/icons/` and each record's `icon` names its file.
 
   | File | Kind | Name | Source page | File URL | Retrieved |
   |---|---|---|---|---|---|

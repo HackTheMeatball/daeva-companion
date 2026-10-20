@@ -5,9 +5,9 @@ the "initials for now" lists in docs/ISSUES.md) were found on Metabot on 2026-10
 is missing an approved source.** This fixes the 0.7.0 gap Player Testing logged (#441 finding 4) once 0.8 P1 wires them.
 
 Files here are named like the shipped icons (`sk-<slug>.png`, `st-<slug>.png`; slugs are the record ids'), 128 x 128 RGB
-PNG resized from Metabot's 256 px WebP with Lanczos, as the Ranger's were (docs/research/2026-10-ranger-icons.md). They
-are **not wired into the app**: `scripts/build.mjs` fails on a PNG in `src/assets/icons/` that `src/` doesn't reference, so
-P1 moves them there in the change that sets each record's `icon`. No file name collides with an icon already shipped.
+PNG resized from Metabot's 256 px WebP with Lanczos, as the Ranger's were (docs/research/2026-10-ranger-icons.md). No file
+name collides with an icon already shipped. **Wired in 0.8 P1 (#490):** the 29 files moved to `src/assets/icons/` and each
+record's `icon` names its file; this folder keeps the provenance.
 
 ## Provenance
 

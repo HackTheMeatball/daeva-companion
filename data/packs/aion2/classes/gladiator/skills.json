@@ -133,6 +133,7 @@
       "type": "passive",
       "learnLv": 13,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-attack-preparation.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 2,
@@ -192,6 +193,7 @@
       "type": "active",
       "learnLv": 8,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-crushing-wave.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -364,6 +366,7 @@
       "type": "passive",
       "learnLv": 21,
       "levelGate": "flat",
+      "icon": "assets/icons/sk-experienced-counterstrike.png",
       "boardNodes": {
         "perBoard": {
           "board:zikel": 2,
@@ -451,6 +454,7 @@
       "type": "active",
       "learnLv": 1,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-keen-strike.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -531,6 +535,7 @@
       "type": "active",
       "learnLv": 1,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-leaping-slam.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -672,6 +677,7 @@
       "type": "passive",
       "learnLv": 25,
       "levelGate": "flat",
+      "icon": "assets/icons/sk-murderous-burst.png",
       "boardNodes": {
         "perBoard": {
           "board:zikel": 2,
@@ -700,6 +706,7 @@
       "type": "active",
       "learnLv": 4,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-overhead-slam.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -808,6 +815,7 @@
       "type": "active",
       "learnLv": 1,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-rending-blow.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -869,6 +877,7 @@
       "type": "active",
       "learnLv": 14,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-ruinous-blow.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -930,6 +939,7 @@
       "type": "active",
       "learnLv": 10,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-rush-strike.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,

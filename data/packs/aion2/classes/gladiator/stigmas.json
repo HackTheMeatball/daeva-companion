@@ -315,6 +315,7 @@
       "key": "Lifestealing Blade",
       "name": "Lifestealing Blade",
       "availableLv": 22,
+      "icon": "assets/icons/st-lifestealing-blade.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -366,6 +367,7 @@
       "key": "Lunge Stance",
       "name": "Lunge Stance",
       "availableLv": 22,
+      "icon": "assets/icons/st-lunge-stance.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -417,6 +419,7 @@
       "key": "Rage Burst",
       "name": "Rage Burst",
       "availableLv": 22,
+      "icon": "assets/icons/st-rage-burst.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -640,6 +643,7 @@
       "key": "Zikel's Blessing",
       "name": "Zikel's Blessing",
       "availableLv": 22,
+      "icon": "assets/icons/st-zikels-blessing.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
