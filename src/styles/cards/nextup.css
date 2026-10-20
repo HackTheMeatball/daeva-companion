@@ -320,7 +320,7 @@ html.pip .pip-hint { flex: none; padding-top: var(--space-6); font: 500 10px var
 #nowStar .ns-qgrid .q-nm { min-width: 0; display: flex; align-items: center; gap: var(--space-6); }
 #nowStar .ns-qgrid .q-nm > .q-n { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; border-bottom: 1px dotted currentColor; }
 #nowStar .ns-qgrid .q-nm > :not(.q-n) { flex: none; }
-#nowStar .q-pin { display: grid; place-items: center; align-self: stretch; min-height: 24px; color: var(--muted); }
+#nowStar .q-pin { display: grid; place-items: center; align-self: stretch; min-height: 24px; color: var(--muted); border: 0; }
 #nowStar .q-pin.near { color: var(--accent-text); }
 #nowStar .q-pin:hover { color: var(--accent-text); }
 #nowStar .q-pin svg { width: 16px; height: 16px; }

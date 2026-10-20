@@ -1,0 +1,10 @@
+[
+  { "case": "nextup-390", "kind": "before-after", "title": "Regional quests in Next up",
+    "caption": "At Lv 16 each quest shows its game icon, a map pin and one button that says what to do next: Pick up, then Turn in." },
+  { "case": "milestone-390", "kind": "before-after", "title": "Regional quests in the milestone list",
+    "caption": "The checkbox is now the quest's icon (star, in-progress marker, green check) with a Pick up / Turn in / Undo button and a legend." },
+  { "case": "nextup-1500", "kind": "before-after", "title": "Regional quests on desktop",
+    "caption": "Hugo Mercenaries turned in, Missing Mount in progress: the icons and buttons line up in fixed columns." },
+  { "case": "tip-extract-1500", "kind": "before-after", "title": "The extract tip shows the flask",
+    "caption": "Step 3 of the Extraction tip now shows the game's flask icon right before \"beaker icon\"." }
+]
