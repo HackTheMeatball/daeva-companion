@@ -53,7 +53,8 @@ const ghMock = { rest: { repos: { compareCommitsWithBasehead: async ({ basehead 
   if (!COMPARE[basehead]) throw new Error('404 ' + basehead);
   return { data: COMPARE[basehead] };
 } } } };
-const dataBlocker = new Function('owner', 'repo', 'core', 'github', d[1] + '\nreturn dataBlocker;')('HackTheMeatball', 'daeva-companion', { info: () => {} }, ghMock);
+const dataLogs = [];
+const dataBlocker = new Function('owner', 'repo', 'core', 'github', d[1] + '\nreturn dataBlocker;')('HackTheMeatball', 'daeva-companion', { info: (s) => dataLogs.push(s) }, ghMock);
 const RPR = { base: { ref: 'main' }, head: { ref: 'claude/research-chanter-nrffuq' }, title: 'research: Chanter pack' };
 const TPR = { base: { ref: 'main' }, head: { ref: 'claude/project-thread-w57upj' }, title: 'Research: Cleric pack for 0.8' };
 const BPR = { base: { ref: 'main' }, head: { ref: 'claude/issue-491-1' }, title: '0.8 P2: Templar class data' };
@@ -98,6 +99,21 @@ check(/does not cover the head/.test(await dataBlocker(BPR, PACK, [REVIEW, VER('
 check(/does not cover the head/.test(await dataBlocker(BPR, PACK, [REVIEW, VER('4444444')], SHA, HEAD)), 'verified sha not an ancestor of the head -> waits');
 check(/does not cover the head/.test(await dataBlocker(BPR, PACK, [REVIEW, VER('5555555')], SHA, HEAD)), 'compare fails -> waits');
 check(/does not cover the head/.test(await dataBlocker(BPR, PACK, [REVIEW, VER('6666666')], SHA, HEAD)), 'only base commits since, none of the PR\'s own -> waits');
+// data/DATA_SOURCES.md is left out of the carry (Isaac, typed in the Gus thread 2026-10-20 5:50 AM ET), on Game Data
+// Check's conditions: every other data file stays as verified, and the log names the skipped file.
+const DSPR = [...PACK, 'data/DATA_SOURCES.md'];
+COMPARE[`7777777...${SHA}`] = { status: 'ahead', commits: [SQUASH, MERGE], files: [{ filename: 'data/DATA_SOURCES.md' }, { filename: 'src/main.js' }] };
+COMPARE[`8888888...${SHA}`] = { status: 'ahead', commits: [SQUASH, MERGE], files: [{ filename: 'data/DATA_SOURCES.md' }, { filename: 'data/packs/aion2/elyos/templar/class.json' }] };
+COMPARE[`9999990...${SHA}`] = { status: 'ahead', commits: [SQUASH, PLAIN, MERGE], files: [{ filename: 'data/DATA_SOURCES.md' }] };
+dataLogs.length = 0;
+check((await dataBlocker(BPR, DSPR, [REVIEW, VER('7777777')], SHA, HEAD)) === '', 'a main merge changed only DATA_SOURCES.md of the PR\'s data files -> carries, merges');
+check(dataLogs.some((l) => /carries/.test(l) && /left out of the check: data\/DATA_SOURCES\.md/.test(l)), 'the carry log names DATA_SOURCES.md when it changed');
+dataLogs.length = 0;
+check((await dataBlocker(BPR, PACK, [REVIEW, VER(OLD)], SHA, HEAD)) === '' && dataLogs.some((l) => /carries/.test(l) && !/left out/.test(l)), 'carry with no skipped file changed -> log names none');
+check(/does not cover the head/.test(await dataBlocker(BPR, DSPR, [REVIEW, VER('8888888')], SHA, HEAD)), 'DATA_SOURCES.md and another data file changed -> waits');
+check(/does not cover the head/.test(await dataBlocker(BPR, DSPR, [REVIEW, VER('9999990')], SHA, HEAD)), 'only DATA_SOURCES.md changed, but by a plain commit -> waits');
+check(/does not cover the head/.test(await dataBlocker(BPR, ['data/DATA_SOURCES.md'], [REVIEW, V('**Game Data Check (ROL-03) on 9999999: VERIFIED.**')], SHA, HEAD)), 'skip list does not touch the no-carry path: a stale VERIFIED with no compare -> waits');
+check(/waits on Game Data Check/.test(await dataBlocker(BPR, ['data/DATA_SOURCES.md'], [REVIEW], SHA, HEAD)), 'DATA_SOURCES.md alone still needs a verdict');
 const NOBASE = { ...BPR, base: { ref: 'gone' } };
 check(/does not cover the head/.test(await dataBlocker(NOBASE, PACK, [REVIEW, VER(OLD)], SHA, HEAD)), 'base compare fails -> waits');
 check(/const data = await dataBlocker\(pr, touched, comments, sha, headAt\);\s*\n\s*if \(data\) \{.*continue; \}/.test(loop), 'merge loop: dataBlocker runs and skips before a PR is merged');
