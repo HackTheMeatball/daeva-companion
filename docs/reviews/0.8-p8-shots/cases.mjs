@@ -1,5 +1,5 @@
 /* 0.8 P8: the level step of a new character (welcomed 0). Before: the grey button reads "Skip: start at Lv 1" next to the
-   green "Start at Lv 1"; after it reads "Skip, start at Lv 1". Phone and desktop. Format: tests/support/shots.mjs. */
+   green "Start at Lv 1"; after it reads "Skip, start fresh". Phone and desktop. Format: tests/support/shots.mjs. */
 export default [
   { name: 'new-character-level-step-390', save: { level: 1, checks: {}, welcomed: 0 }, height: 900,
     shots: [{ sel: '#welcomeCard' }] },
