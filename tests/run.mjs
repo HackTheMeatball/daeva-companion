@@ -55,7 +55,7 @@ const OUT = join(ROOT, 'tests', 'out'), FIX = join(ROOT, 'tests', 'fixtures');
 const args = process.argv.slice(2), flag = n => args.includes('--' + n), opt = n => { const i = args.indexOf('--' + n); return i >= 0 ? args[i + 1] : null; };
 
 /* Every suite and how it is selected. NONBLOCKING suites never run by default and are in no shard. */
-const ALL = ['site', 'core', 'schema', 'equiv', 'invariant', 'tokens', 'scrapbook', 'kickoff', 'automerge', 'e1', 'e2', 'e3', 'e4', 'gates', 'save', 'regress', 'golden', 'a11y', 'journey', 'perf'];
+const ALL = ['site', 'core', 'schema', 'equiv', 'invariant', 'tokens', 'scrapbook', 'kickoff', 'automerge', 'e1', 'e2', 'e3', 'e4', 'labels', 'gates', 'save', 'regress', 'golden', 'a11y', 'journey', 'perf'];
 const NONBLOCKING = ['perf'];
 /* CI shards for the browser suites, balanced by CI time (a 4-vCPU runner runs 2 suites at a time). core and schema have no
    browser: the CI data job runs them (tests/core.mjs, tests/schema.mjs) before any shard finishes. */
@@ -63,7 +63,7 @@ const SHARDS = {
   journey: ['journey'],
   regress: ['regress'],
   golden: ['golden', 'a11y', 'save', 'site'],
-  checks: ['e1', 'e2', 'gates', 'e4', 'e3', 'equiv', 'invariant', 'tokens', 'scrapbook', 'kickoff', 'automerge'],
+  checks: ['e1', 'e2', 'gates', 'e4', 'e3', 'labels', 'equiv', 'invariant', 'tokens', 'scrapbook', 'kickoff', 'automerge'],
 };
 /* ...and the CI data job must really run them (checked below against ci.yml's text). */
 const SHARD_FREE = { core: /npm run test:core|node tests\/core\.mjs/, schema: /npm run test:data|node tests\/schema\.mjs/ };
@@ -113,6 +113,7 @@ const SUITES = {
   e2: { args: ['tests/e2test.js', CUR], pass: /E2 CHECKS PASSED/ },
   e3: { args: ['tests/e3test.js'], pass: /E3 CHECKS PASSED/ },
   e4: { args: ['tests/e4test.js'], pass: /E4 CHECKS PASSED/ },
+  labels: { args: ['tests/labels.js'], pass: /LABELS CHECKS PASSED/ },
   gates: { args: ['tests/gates.js'], pass: /GATES CHECKS PASSED/ },
   save: { args: ['tests/save.js'], pass: /SAVE CHECKS PASSED/ },
   regress: { args: ['tests/regress.js', ...(flag('quick') ? ['--quick'] : []), ...(flag('noshots') ? ['--noshots'] : [])], pass: /hard fail 0\b/ },
@@ -130,7 +131,7 @@ if (opt('shard') && opt('only')) { console.error('use --only or --shard, not bot
 const only = opt('shard') ? SHARDS[opt('shard')] : opt('only') ? opt('only').split(',') : ALL.filter(n => !NONBLOCKING.includes(n));
 for (const n of only) if (!SUITES[n]) { console.error('unknown suite: ' + n); process.exit(2); }
 /* longest first, so the slow ones start right away */
-const ORDER = ['regress', 'journey', 'golden', 'e1', 'e2', 'gates', 'a11y', 'perf', 'invariant', 'equiv', 'save', 'e4', 'e3', 'site', 'tokens', 'scrapbook', 'kickoff', 'automerge', 'core', 'schema'];
+const ORDER = ['regress', 'journey', 'golden', 'e1', 'e2', 'gates', 'a11y', 'perf', 'invariant', 'equiv', 'save', 'e4', 'e3', 'labels', 'site', 'tokens', 'scrapbook', 'kickoff', 'automerge', 'core', 'schema'];
 if (Object.keys(SUITES).sort().join() !== ALL.slice().sort().join() || ORDER.slice().sort().join() !== ALL.slice().sort().join()) { console.error('tests/run.mjs: SUITES, ALL and ORDER must list the same suites'); process.exit(2); }
 const order = ORDER.filter(n => only.includes(n));
 const jobs = Math.max(1, +(opt('jobs') || process.env.TEST_JOBS || Math.min(4, Math.max(1, Math.floor(cpus().length / 2)))));

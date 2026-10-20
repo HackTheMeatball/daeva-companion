@@ -5,6 +5,7 @@ import { char } from "../../../core/state.js";
 import { ITEMS } from "../data/items.js";
 import { LEVEL_POINTS, SP_ICONS, SP_SKILLS, SP_STEPS } from "../data/build.js";
 import { spCostTxt } from "../catalog.js";
+import { stNote, stTag } from "../data/markup.js";
 import { planReachOf, skillBonusOf, skillBuy, skillLvOf, skillOpen, skillPoints } from "../requirements.js";
 import { tipPop } from "./shared.js";
 import { keyChip } from "../hotkeys.js";
@@ -41,7 +42,7 @@ function renderNext() {
     const ok = !locked && (hero.spec || pts >= cost);
     const state_ = hero.spec ? (locked ? "lock" : "ok") : locked ? (have >= cost ? "lock" : "short") : ok ? "ok" : "short";
     const sub = hero.spec ? specSub(hero) :
-      `${locked ? `Lv ${hero.req}` : "Available now"} · <span class="nw">priority #${hero.rank + 1}</span>${hero.s.single ? ` · single source (${hero.s.single})` : ""}`;
+      `${locked ? `Lv ${hero.req}${stTag(hero.s.learnSt)}` : "Available now"} · <span class="nw">priority #${hero.rank + 1}</span>${hero.s.single ? ` · single source (${hero.s.single})` : ""}`;
     const btn = hero.spec ? (locked ? `Opens at skill Lv ${hero.slotLv} · yours: ${skillLvOf(char(state), hero)}` : "Mark specialty picked") :
       ok ? `Mark spent · ${spCostTxt(hero)}` : locked ? (have >= cost ? `All Lv ${lv} spent · next at Lv ${hero.req}` : `Lv ${hero.req} · need ${cost - have} more pts`) : `Need ${cost - pts} more pts`;
     const pct = hero.spec ? (locked ? 0 : 100) : Math.min(100, Math.max(0, pts / cost * 100));
@@ -74,7 +75,8 @@ function renderNext() {
        status like the Stigmas card's slot row, not the green "points covered" ✓); slot 3 is past what points and plan nodes reach (Q5) */
     if (x.spec) return `<li class="isspec" title="Specialty slot ${x.slot}: ${specSub(x).replace(/<[^>]+>/g, "")} · ${avail ? "available now" : `at skill Lv ${x.slotLv} (yours: ${skillLvOf(char(state), x)})`}${planReachOf(x) < x.slotLv ? ` · the plan's skill points and board nodes reach skill Lv ${planReachOf(x)}` : ""}">` +
       `<span class="sname">${spMini(x.s.n)}${x.s.n} ${spType(x.s)} <span class="spectag">${x.slot > 1 ? "slot " + x.slot : "spec"}</span></span><span class="slv${avail ? " now" : ""}">${avail ? "now" : "skill " + x.slotLv}</span><span class="sst"></span></li>`;
-    return `<li title="${spCostTxt(x)} · ${avail ? "available now" : "Lv " + x.req} · ${short > 0 ? `${short} short by then` : "points covered"}${x.s.single ? ` · single source (${x.s.single})` : ""}"><span class="sname">${spMini(x.s.n)}${x.s.n} ${spType(x.s)} <span class="lvarr">${x.L - 1} → ${x.L}${spBonus(x.s.n)}</span></span><span class="slv${avail ? " now" : ""}">${avail ? "now" : "Lv " + x.req}</span><span class="sst ${short > 0 ? "short" : "ok"}">${short > 0 ? `−${short}` : "✓"}</span></li>`;
+    /* a learn level not verified (0.8 P20: six Cleric passives are owner-check) carries its label */
+    return `<li title="${spCostTxt(x)} · ${avail ? "available now" : "Lv " + x.req + stNote(x.s.learnSt)} · ${short > 0 ? `${short} short by then` : "points covered"}${x.s.single ? ` · single source (${x.s.single})` : ""}"><span class="sname">${spMini(x.s.n)}${x.s.n} ${spType(x.s)} <span class="lvarr">${x.L - 1} → ${x.L}${spBonus(x.s.n)}</span></span><span class="slv${avail ? " now" : ""}">${avail ? "now" : "Lv " + x.req + stTag(x.s.learnSt)}</span><span class="sst ${short > 0 ? "short" : "ok"}">${short > 0 ? `−${short}` : "✓"}</span></li>`;
   }).join("") + `</ul>` : "";
   /* Sync levels: the box is the base level; the green bonus beside it, as in the game's tooltip title */
   SP_SKILLS.forEach((s, i) => { const b = document.getElementById("syncB" + i), x = skillBonusOf(char(state), s.n);

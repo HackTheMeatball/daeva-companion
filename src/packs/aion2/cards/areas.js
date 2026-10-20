@@ -3,7 +3,7 @@
 import { char } from "../../../core/state.js";
 import { derivedOf, doneOf, gatesOf } from "../../../core/requirements.js";
 import { NO_AREA, SD_REWARD, SH_REWARD, ZONE_TRACES } from "../data/areas.js";
-import { T, itemLine } from "../data/markup.js";
+import { T, itemLine, stNote, stTag } from "../data/markup.js";
 import { AREA_BANDS, AREA_ITEMS, bandOf } from "../catalog.js";
 import { areaLater, areaOpen } from "../requirements.js";
 import { mapFocus } from "./maps.js";
@@ -58,10 +58,11 @@ function renderAreas() {
     if (!vis(x)) return "";
     const it = x.it, done = !!ad(x), sh = it.kind === "stronghold", run = !done && !!(char(state).areaRun || {})[x.k];
     const later = areaLater(char(state), x);
-    const sub = sh ? `${x.area} · ${SH_LV(it)}` : "";
+    /* a stronghold's level range carries its label (0.8 P20: every range is inferred today) */
+    const sub = sh ? `${x.area} · ${SH_LV(it)}` : "", subTag = sh ? stTag(it.lvSt) : "";
     const href = mapFocus(it);
     /* Name is plain text (ticks on click); the pin on the right opens its map page. */
-    return `<li class="item arow${done ? " rdone" : ""}${run ? " running" : ""}${later ? " locked" : ""}${sh ? "" : " grouped"}" data-showall="1"><label><input type="checkbox" data-k="${x.k}" ${done ? "checked" : ""} title="${done ? "Cleared · click to undo" : run ? "In progress · click when cleared" : "Click when you go in; click again when cleared"}"><span class="txt"><b>${it.name}</b>${run ? `<span class="run-tag">In progress</span>` : ""}${sub ? `<small title="${sub}">${sub}</small>` : ""}</span></label><a class="amap" href="${href}" target="_blank" rel="noopener" title="Show on the Altgard interactive map (Metabot)">${mapIco}</a></li>`;
+    return `<li class="item arow${done ? " rdone" : ""}${run ? " running" : ""}${later ? " locked" : ""}${sh ? "" : " grouped"}" data-showall="1"><label><input type="checkbox" data-k="${x.k}" ${done ? "checked" : ""} title="${done ? "Cleared · click to undo" : run ? "In progress · click when cleared" : "Click when you go in; click again when cleared"}"><span class="txt"><b>${it.name}</b>${run ? `<span class="run-tag">In progress</span>` : ""}${sub ? `<small title="${sub}${stNote(it.lvSt)}">${sub}${subTag}</small>` : ""}</span></label><a class="amap" href="${href}" target="_blank" rel="noopener" title="Show on the Altgard interactive map (Metabot)">${mapIco}</a></li>`;
   };
   /* Region header: bigger than the rows; a finished region folds shut (after a short beat, so the row you just
      ticked doesn't vanish under the cursor). Click the header to open or close any region. */

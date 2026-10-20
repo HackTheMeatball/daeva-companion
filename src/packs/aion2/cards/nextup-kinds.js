@@ -28,7 +28,7 @@ import { capFirst, isBasic, renderNow } from "../../../cards/nextup.js";
 import { travelAdviceOn } from "../nextup.js";
 import { keyHint } from "../hotkeys.js";
 import { kibMark } from "./shared.js";
-import { itemLinkIcos, itemQty } from "../data/markup.js";
+import { itemLinkIcos, itemQty, stNote, stTag } from "../data/markup.js";
 import { pageState as state, pageSave as save, pageUpdate as update, pageMainEl as mainEl, pageSMOOTH as SMOOTH, pageSD_RW as SD_RW, pageSH_REWARD as SH_REWARD, pageNO_AREA as NO_AREA, pageSpCostTxt as spCostTxt, pageRqReqOf as rqReqOf, pageSpecPickOf as specPickOf, pageMapFocus as mapFocus, pageAion2QuestMap as aion2QuestMap, pageGoAreas as goAreas, pageCubeClick as cubeClick, pageStTickClick as stTickClick, pageStUpClick as stUpClick, pageStLvClick as stLvClick, pageSpMini as spMini, pageStIco as stIco, pageDvShort as dvShort, pageQProg as qProg } from "../../../cards/page.js";
 
 /* "Not in game yet" in Next up (compact): eye with a slash. */
@@ -54,7 +54,8 @@ const nsBar = (d, n, lbl) => `<span class="nsq-bar"><span style="width:${d / n *
 /* "I'll walk" (0.5 P16, design §8.3, Q4): the targets (story quest node ids) the player chose to walk to, this session only */
 const teleWalked = new Set();
 const teleShown = a => !!a.tele && !teleWalked.has(a.tele.to);
-const nsWhere = (area, kib, hereArea) => [area !== NO_AREA ? area + (area === hereArea ? " (near your story step)" : "") : "", kib ? `<span class="nw">Kibelisk: ${kib}</span>` : ""].filter(Boolean).join(" · ");
+/* kibSt: the entrance's label when not verified (0.8 P20; single source, the dungeons' today, shows none) */
+const nsWhere = (area, kib, hereArea, kibSt) => [area !== NO_AREA ? area + (area === hereArea ? " (near your story step)" : "") : "", kib ? `<span class="nw">Kibelisk: ${kib}</span>${stTag(kibSt)}` : ""].filter(Boolean).join(" · ");
 
 /* The regional quests card's list. Chains: a follow-up sits under the quest that unlocks it (→), so it's clear what to finish first. */
 let rqWaitOpen = false; /* "+N waiting on the story" fold, kept across Next up re-renders */
@@ -62,7 +63,7 @@ function rqExtraHTML(a) {
   const lv = char(state).level, hereArea = a.hereArea;
   const roots = a.open.filter(x => !x.lock); /* milestone order, so rows don't jump when you tick one */
   const preTxt = x => x.pre.join(" and ") + (x.pre.length > 1 ? " are" : " is");
-  const line = (x, fu) => { const n = x.it.name, q = x.it.q, id = q.id, st = (x.run ? "In progress" : x.lock ? `Unlocks when ${preTxt(x)} turned in` : "Not picked up") + (q.zone ? ` · ${q.zone}` : "") + (q.kib ? ` · Kibelisk: ${q.kib}${q.m ? ` (${q.m} m)` : ""}` : "") + (q.xp ? ` · ${fmtXP(q.xp)} XP` : "");
+  const line = (x, fu) => { const n = x.it.name, q = x.it.q, id = q.id, st = (x.run ? "In progress" : x.lock ? `Unlocks when ${preTxt(x)} turned in` : "Not picked up") + (q.zone ? ` · ${q.zone}${stNote(q.zoneSt)}` : "") + (q.kib ? ` · Kibelisk: ${q.kib}${q.m ? ` (${q.m} m)` : ""}` : "") + (q.xp ? ` · ${fmtXP(q.xp)} XP` : "");
     const label = id && !x.lock ? `<a href="${aion2QuestMap(id)}" target="_blank" rel="noopener" title="${n} · ${st} · Lv ${q.rec} · show on the map">${n}</a>` : `<span title="${n} · ${st} · Lv ${q.rec}">${n}</span>`;
     /* Recommended level above yours: a small level tag, so a hard quest doesn't look like the obvious next pick. */
     const hi = q.rec > lv && !x.run ? `<span class="q-rec" title="Recommended level ${q.rec}">Lv ${q.rec}</span>` : "";
@@ -71,7 +72,7 @@ function rqExtraHTML(a) {
     const near = hereArea && q.zone === hereArea && !x.lock;
     const zz = !x.run && !x.lock ? `<button type="button" class="q-snz ico" data-snz="${x.k}" title="Not in game yet: hide it until your next Level up" aria-label="${n}: not in game yet">${EYE_OFF}</button>` : "";
     /* A follow-up keeps its arrow with it when the row wraps. */
-    return `<span class="ql ${x.run ? "run" : x.lock ? "lock" : "new"}${fu ? " fu" : ""}${near ? " near" : ""}">${fu ? `<span class="q-ar" aria-hidden="true">→</span>` : ""}${box}${label}${hi}${near ? `<span class="q-near" title="Near your story step (${hereArea})">${MAP_ICO}</span>` : ""}${zz}</span>`; };
+    return `<span class="ql ${x.run ? "run" : x.lock ? "lock" : "new"}${fu ? " fu" : ""}${near ? " near" : ""}">${fu ? `<span class="q-ar" aria-hidden="true">→</span>` : ""}${box}${label}${hi}${near ? `<span class="q-near" title="Near your story step (${hereArea})${stNote(q.zoneSt)}">${MAP_ICO}</span>` : ""}${zz}</span>`; };
   let budget = 6, more = 0;
   const groups = roots.map(r => { const kids = a.open.filter(y => y.lock && y.parent === r.it.name), need = 1 + kids.length;
     if (need > budget) { more += need; return ""; } budget -= need;
@@ -99,7 +100,7 @@ export const aion2NowRenderers = {
   stup: a => ({ ico: stIco(a.up.x.name, "st-img") || "✧", t: `Upgrade <b>${a.up.x.name} ${a.up.L - 1} → ${a.up.L}</b>`, sub: `${a.up.cost} of your ${a.shards} shards`, btn: "Upgraded", act: a.act, done: true }),
   sd: a => { const p = a.pick, L = a.loc, pin = `<b>${p.it.name}</b>${pinLink(mapFocus(p.it))}`;
     return { bar: a.band.n ? nsBar(a.band.d, a.band.n, `Lv ${a.band.bd}–${a.band.bd + 4} · ${a.band.d}/${a.band.n}`) : "", ...SD_TILE,
-      t: a.gated ? `Clear ${pin} <span class="ns-then">and others until Lv ${a.gateLv}</span>` : `Clear ${pin}`, sub: nsWhere(p.area, L.kib, a.hereArea),
+      t: a.gated ? `Clear ${pin} <span class="ns-then">and others until Lv ${a.gateLv}</span>` : `Clear ${pin}`, sub: nsWhere(p.area, L.kib, a.hereArea, L.st),
       info: [`${itemQty(`+${SD_RW.cr}`, "crystals")}, ${itemQty(`+${SD_RW.st}`, "Wisdom Stones")} each · ~5 min`, L.kib && L.m ? `Kibelisk ${L.kib} is ${L.m} m away` : "", `${a.open} open at your level`].filter(Boolean).join(" · "), btn: "Show", act: a.act }; },
   sh: a => { const p = a.pick;
     return { bar: nsBar(a.done, a.total, `${a.done}/${a.total} strongholds`), ...SH_TILE, t: `Run <b>${p.it.name}</b>${pinLink(mapFocus(p.it))}`, sub: nsWhere(p.area, p.it.kib, a.hereArea),
@@ -110,7 +111,7 @@ export const aion2NowRenderers = {
     bar: a.scope ? `<span class="nsq-bar rq"><span class="d" style="width:${a.done / a.scope * 100}%"></span><span class="r" style="width:${a.run / a.scope * 100}%"></span></span><span class="nsq-barl">${a.done}/${a.scope} turned in</span>` : "",
     btn: "Show", act: a.act, extra: rqExtraHTML(a) }),
   /* E6: what opens it, in the words every card uses (src/core/blockers.js) */
-  laterSkill: a => ({ ico: spMini(a.x.s.n) || "✦", t: spBuyT(a.x), sub: `${chainsOn() && a.why ? capFirst(a.why) : `Opens at Lv ${a.x.req}`} · ${away(a.x.req)}${ssTag(a.x)}`, act: a.act, later: true }),
+  laterSkill: a => ({ ico: spMini(a.x.s.n) || "✦", t: spBuyT(a.x), sub: `${chainsOn() && a.why ? capFirst(a.why) : `Opens at Lv ${a.x.req}${stTag(a.x.s.learnSt)}`} · ${away(a.x.req)}${ssTag(a.x)}`, act: a.act, later: true }),
 
   /* level-gated story card: what else gives XP at your level */
   "story.meanwhile": m => { const xs = [];

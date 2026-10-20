@@ -605,6 +605,9 @@ details.step.done .bar span, .dvbh.full .dvbh-bar span { background: var(--good)
 #spCard .sphero .buyrow, #dvNextList .buyrow { margin-top: var(--space-10); }
 .buystat.ask { color: var(--gold); }
 #main .top-grid .tmain .ptbig { height: 30px; }
+/* A value's source label ("single source", "check in game", "inferred"; 0.8 P20): shared by Next up, the milestone rows,
+   Dungeons & Strongholds and the Skills card, its text at least 12 px (moved from nextup.css, was 10.5 px) */
+.ss-tag { font: 600 12px var(--mono); color: var(--muted); white-space: nowrap; }
 .run-tag { display: inline-block; margin-left: var(--space-8); padding: 0 var(--space-6); border-radius: var(--radius-4); font: 600 9.5px/16px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--gold); border: 1px solid color-mix(in srgb, var(--gold) 50%, transparent); vertical-align: 1px; }
 /* No bar on this row (specialty, or waiting on a level): the info line gets two lines instead */
 #spCard .sphero .dvtext:has(.dvbar-ph) { justify-content: flex-start; gap: var(--space-2); }

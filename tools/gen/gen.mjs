@@ -57,6 +57,10 @@ const urlsIn = v => typeof v === 'string' ? (v.match(URL_RE) || []).map(u => u.r
 const hostOf = u => u.replace(/^https?:\/\/(www\.)?/, '').split('/')[0];
 const byNum = k => (a, b) => a[k] - b[k];
 const atomsOf = c => !c ? [] : c.all ? c.all.flatMap(atomsOf) : c.any ? c.any.flatMap(atomsOf) : [c];
+/* a field's label (0.8 P20): its fieldStatus, else the record's status; null when verified. The page tags the fields players
+   see (src/packs/aion2/data/markup.js stTag): "check in game" for disputed and owner-check, "inferred" for inferred */
+const unverified = (r, f) => { const s = (r.fieldStatus || {})[f] ?? r.status; return s && s !== 'verified' ? s : null; };
+const withSt = (k, s) => s ? { [k]: s } : {};
 
 export function generate(opts = {}) {
   const B = loadBundle(opts), R = B.recs;
@@ -149,7 +153,7 @@ export function generate(opts = {}) {
     if (q.rewards.ap) its.unshift(`${Math.floor(q.rewards.ap / 1000)}k Abyss Points`);
     let place = q.giver.place || ''; if (place === zone) place = '';
     const row = { name: q.name, id: q.gameId, rec: q.rec, unlocksAt: q.unlocksAt, zone, place, npc: q.giver.npc || '', kib: q.giver.kibelisk, m: q.giver.meters,
-      after, story: st.length ? sqName(st[0].story) : null, ...(st.length && st[0].is === 'turnedIn' ? { turnedIn: true } : {}), reward: its.join(' · '), xp: q.rewards.xp ?? null, rw: { st: q.rewards.wisdom || 0, cr: q.rewards.crystal || 0 } };
+      after, story: st.length ? sqName(st[0].story) : null, ...(st.length && st[0].is === 'turnedIn' ? { turnedIn: true } : {}), reward: its.join(' · '), xp: q.rewards.xp ?? null, rw: { st: q.rewards.wisdom || 0, cr: q.rewards.crystal || 0 }, ...withSt('zoneSt', unverified(q, 'zone')) };
     if (q.requiresBasis === 'unresearched') row.noPre = 1;
     return row;
   });
@@ -157,8 +161,9 @@ export function generate(opts = {}) {
 
   /* ---------------------------------------------------------------- strongholds, Sealed Dungeons, zones */
   const SH_DATA = shs.slice().sort((a, b) => a.levelRange.lo - b.levelRange.lo || (a.name < b.name ? -1 : 1)).map(s => ({ name: s.name, qid: +s.gameId, zone: zname(s.zone),
-    lo: s.levelRange.lo, hi: s.levelRange.hi, kib: s.location.kibelisk, m: s.location.meters }));
-  const AREA_LOC = Object.fromEntries(sds.filter(d => d.entrance.kibelisk).map(d => [d.name, { kib: d.entrance.kibelisk, m: d.entrance.meters }]));
+    lo: s.levelRange.lo, hi: s.levelRange.hi, kib: s.location.kibelisk, m: s.location.meters, ...withSt('lvSt', unverified(s, 'levelRange')) }));
+  /* st: the entrance's label (single source on most today: no tag); a dungeon's xp shows nowhere (few pages state it), so it isn't carried */
+  const AREA_LOC = Object.fromEntries(sds.filter(d => d.entrance.kibelisk).map(d => [d.name, { kib: d.entrance.kibelisk, m: d.entrance.meters, ...withSt('st', unverified(d, 'entrance')) }]));
   const HIDEOUT_AREA = Object.fromEntries(sds.map(d => [d.name, zname(d.zone)]));
   const ZONE_TRACES = Object.fromEntries(Object.values(zones).filter(z => z.traces != null).sort((a, b) => b.traces - a.traces).map(z => [z.name, z.traces]));
   const sdRule = ruleValue('rule:sd-first-clear-asmodian'), shRule = ruleValue('rule:sh-first-clear-asmodian');
@@ -174,10 +179,10 @@ export function generate(opts = {}) {
   /* spec: the slot 1 pick's text; specs (0.3 E7): the pick per slot in order, { t: text, lv: the choice's skill level };
      flat: a flat-gated core skill (the Cleric's Earth's Grace, #543) has every level open at its learn level, as in GATE_GRAPH */
   const SP_SKILLS_CORE = build.skillOrder.filter(e => e.core).map(e => { const s = sk(e.skill), picks = build.specialtyPicks[e.skill] || [], pick = picks[0];
-    return { n: s.name, learn: s.learnLv, ...(pick ? { spec: choice(pick).label || choice(pick).text, specs: picks.map(p => ({ t: choice(p).label || choice(p).text, lv: choice(p).skillLv })) } : {}),
+    return { n: s.name, learn: s.learnLv, ...withSt('learnSt', unverified(s, 'learnLv')), ...(pick ? { spec: choice(pick).label || choice(pick).text, specs: picks.map(p => ({ t: choice(p).label || choice(p).text, lv: choice(p).skillLv })) } : {}),
       ...(s.type === 'passive' ? { passive: true } : {}), ...(s.levelGate === 'flat' ? { flat: true } : {}) }; });
   const SP_EXTRA = build.skillOrder.filter(e => !e.core).map(e => { const s = sk(e.skill);
-    return { n: s.name, learn: s.learnLv, ...(s.type === 'passive' ? { passive: true } : {}), ...(s.levelGate === 'flat' ? { flat: true } : {}), ...(e.status !== 'verified' ? { single: e.basis.split(' (')[0] } : {}) }; });
+    return { n: s.name, learn: s.learnLv, ...withSt('learnSt', unverified(s, 'learnLv')), ...(s.type === 'passive' ? { passive: true } : {}), ...(s.levelGate === 'flat' ? { flat: true } : {}), ...(e.status !== 'verified' ? { single: e.basis.split(' (')[0] } : {}) }; });
   const STIGMA_PLAN = build.stigmaSlots.map(id => stg(id).name);
   const ST_TARGETS = build.stigmaTargets.map(t => [stg(t.stigma).name, t.level]);
   const STAT_TIERS = build.statPriority.tiers, STAT_SRC = build.statPriority.from;
