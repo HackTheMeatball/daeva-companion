@@ -90,6 +90,7 @@ check((await afterBlocker(unkeyed('owner-ok-met.', '0.6.1'))) === '', '0.6.1 pat
 
 // The build cap is 3 under the owner's usage budget (2026-10-20); it was 5 (Max 20x plan) and 8 for the 0.8 overnight run.
 check(/const STATE = 114, MAX = 3;/.test(yml), 'kickoff: the build cap is a plain 3');
+check(/const openPrs = refs\.filter\(\(r\) => r\.startsWith\('claude\/issue-'\)\)\.length;/.test(yml) && /let inflight = openPrs \+ started;/.test(yml), 'kickoff: only build PRs (claude/issue-*) and started lines count against MAX; other claude/ PRs only hold lanes');
 
 // The start loop runs the check on every [next] line before it starts one.
 const notes = yml.slice(yml.indexOf('const wait = await afterBlocker(kx);'), yml.indexOf('picked.push('));

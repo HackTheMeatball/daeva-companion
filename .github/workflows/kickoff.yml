@@ -306,14 +306,17 @@ jobs:
               if (at < 0) core.warning('#114 has no queue comment line; auto-queue skipped');
               else { lines.splice(at + 1, 0, ...queued); pruned = true; core.notice(`queued: ${queued.join(' | ')}`); }
             }
-            const openPrs = refs.length;
+            // Only builds count against MAX (PIP-07 "builds in flight"): a thread's own docs PR is not a build. Every open
+            // claude/ PR still marks its lanes busy above. Before 2026-10-20 all claude/ PRs counted, and with MAX 3 five
+            // thread PRs held every build (Watchdog, #221 7:33 PM ET).
+            const openPrs = refs.filter((r) => r.startsWith('claude/issue-')).length;
             // A started item that already has its PR open is counted once, through the PR.
             const started = lines.filter((l) => { const s = l.match(/^- \[started [^\]]*\] #(\d+)/);
               return s && !refs.some((r) => r.startsWith(`claude/issue-${s[1]}-`)); }).length;
             for (const l of lines) if (/^- \[started /.test(l)) for (const x of lanesOfLine(l)) busy.add(x);
             let inflight = openPrs + started;
             core.info(`busy lanes: ${[...busy].join(', ') || 'none'}`);
-            core.info(`in flight: ${openPrs} open claude/ PRs + ${started} started lines`);
+            core.info(`in flight: ${openPrs} open build PRs (claude/issue-*) + ${started} started lines; ${refs.length - openPrs} other claude/ PRs only hold lanes`);
             const picked = [];
             const stamp = new Date().toISOString().slice(0, 16) + 'Z';
             // A [next] line can be an item that is already built or building: on 2026-10-17 the planner's rewrite of #114
