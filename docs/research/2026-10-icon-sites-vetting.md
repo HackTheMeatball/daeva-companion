@@ -15,8 +15,12 @@ nothing kept beyond what is listed here.
 ## The Recuperation icon (off-domain spot check)
 
 - daevacompass.com: <https://daevacompass.com/en/db/abilities/18120000> (record ID 18120000, Recuperation) shows
-  <https://daevacompass.com/images/skills/icon_ch_skill_013.webp>, 72×72, sha256 `0467a008…afb86`: an open hand
-  under a green light beam, which matches the owner's description.
+  <https://daevacompass.com/images/skills/icon_ch_skill_013.webp>, 72×72: an open hand under a green
+  light beam, which matches the owner's description. The kept copy (WebP, 72×72) hashes to sha256
+  `babb0e1085b8fd4239f93ba6da25edecc62bd320fa177ee7792cb0dd2d6bcfa1` (re-hashed by Game Data Check, 2026-10-20). An
+  earlier note gave `0467a008…afb86`; it doesn't match the kept copy, so either the copy was re-encoded or that hash
+  came from another file, and it can't be re-checked (daevacompass.com isn't on the allowlist). Treat the hash above
+  as the kept copy's, not as proof of the original server response.
 - Metabot's file for the same ID, <https://metabot.gg/web/aion2/skills/18120000.webp> (256×256), shows a green
   four-point star, not the hand. Metabot is not a match for this skill.
 - Copies for review: `/mnt/project-files/icons-hq/dc_icon_ch_skill_013_recuperation.webp` and
