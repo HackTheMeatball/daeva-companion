@@ -202,16 +202,18 @@ Rules for every item:
 
 - **Problem.** UX audit finding 13 (verified): Skills says "1 PT TO SPEND" and two lines lower "0 pts left"; an info
   button's accessible name reads "What is Respec is free?"; Next up's hero "Spent" button is green at 1500 px and pink
-  at 390 px in the same state; at 390 px Next up cuts the key hint before its row placement.
+  at 390 px in the same state; at 390 px Next up cuts the key hint before its row placement. Design Lead found (#610, F1)
+  that the E grid shows stigmas not yet equipped while "Coming to E" lists them too.
 - **Result.** The point counts agree; the info button has its own name; one colour for the "Spent" state at both
-  widths; the key hint keeps its row placement at 390 px (the start of the line is shortened instead).
+  widths; the key hint keeps its row placement at 390 px (the start of the line is shortened instead); the E grid shows
+  only equipped stigmas.
 - **Files.** `src/packs/aion2/cards/skills.js`, `src/data/markup.js`, `src/styles/app.css`,
-  `src/packs/aion2/cards/nextup-kinds.js`, the tests.
+  `src/packs/aion2/cards/nextup-kinds.js`, `src/packs/aion2/cards/build.js`, the tests.
 - **No-gos.** No new colour or token.
 - **Acceptance.**
   - [ ] a11y test: no accessible name contains "is … is".
   - [ ] Shots of each fix at 1500 and 390 px.
-- **Lanes:** app.css, a11y, skills-card. **Model:** Sonnet, S (44 min).
+- **Lanes:** app.css, a11y, skills-card, build-card. **Model:** Sonnet, S (44 min).
 - **After:** none.
 
 ## P9: Saves can't be lost from 1.0 on
@@ -391,7 +393,7 @@ Rules for every item:
   threshold), the Skills card and Next up show one row per build skill, "Heart Gore → Lv 10 · specialty: <name>", in
   the build's priority order, with one "Done" per skill that ticks its lines up to the target (one tap per skill,
   undoable); "Missed" skill lines in milestones fold behind it.
-- **Inputs.** `docs/design/0.9-catchup/` (Design Lead's mock, committed with Design Lead's look OK after the Design Critic's read; owner card 2026-10-20 5:21 PM ET). Kickoff holds the item until it is on main.
+- **Inputs.** `docs/design/0.9-loadout-mockup.md` and `docs/design/mockups/0.9-loadout/` (Design Lead's mocks, #610; merged with Design Lead's look OK after the fresh review; owner 2026-10-20 5:21 and 5:24 PM ET). Kickoff holds the item until they are on main.
 - **Files.** `src/packs/aion2/cards/skills.js`, `src/packs/aion2/cards/skills.html`, `src/packs/aion2/nextup.js`,
   `src/packs/aion2/cards/nextup-kinds.js`, `src/packs/aion2/requirements.js`, `src/core/nextup.js`,
   `src/packs/aion2/cards/journey-sections.js`, `src/styles/app.css`, the tests.
@@ -412,16 +414,17 @@ Rules for every item:
 - **Result.** As Design Lead's approved mock shows: one row per open board ("Nezekan · 10 guide nodes", "Have them",
   "Respec this board") plus "Respec all"; the Stigmas card lists its slots like Skills' and Daevanion's "Coming up", with
   a Respec in its foot.
-- **Inputs.** `docs/design/0.9-catchup/` (Design Lead's mock, committed with Design Lead's look OK after the Design Critic's read; owner card 2026-10-20 5:21 PM ET). Kickoff holds the item until it is on main.
+- **Inputs.** `docs/design/0.9-loadout-mockup.md` and `docs/design/mockups/0.9-loadout/` (Design Lead's mocks, #610; merged with Design Lead's look OK after the fresh review; owner 2026-10-20 5:21 and 5:24 PM ET). Kickoff holds the item until they are on main.
 - **Files.** `src/packs/aion2/cards/daevanion.js`, `src/packs/aion2/cards/daevanion.html`,
   `src/packs/aion2/cards/stigmas.js`, `src/packs/aion2/cards/stigmas.html`, `src/styles/app.css`, the tests.
-- **No-gos.** No save key change. Respec costs only from sourced data.
+- **No-gos.** No save key change. Respec costs and whether a Stigma reset refunds or unequips only from sourced data
+  (Game Data Check's `respec` research file: Design Lead's asks D1 and D2).
 - **Acceptance.**
   - [ ] Browser test: "Have them" ticks one board's guide nodes, "Respec this board" clears only that board, Undo
         reverses both; Stigmas Respec clears the slots.
   - [ ] Shots at 1500 and 390 px against the mock.
 - **Lanes:** app.css, golden. **Model:** Opus, M (90 min).
-- **After:** P16.
+- **After:** P16, research-respec.
 
 ## P21: Basic keeps the late-start tools; early chores fold away
 
@@ -430,7 +433,7 @@ Rules for every item:
   Lv 4–16 "Missed" chores (UX finding 8).
 - **Result.** As Design Lead's approved mock shows: Basic keeps the catch-up tools; for a joined save, "Missed" chores more
   than 10 levels old fold into one row ("12 early steps you probably did · Review") with one undoable "All done".
-- **Inputs.** `docs/design/0.9-catchup/` (Design Lead's mock, committed with Design Lead's look OK after the Design Critic's read; owner card 2026-10-20 5:21 PM ET). Kickoff holds the item until it is on main.
+- **Inputs.** `docs/design/0.9-loadout-mockup.md` and `docs/design/mockups/0.9-loadout/` (Design Lead's mocks, #610; merged with Design Lead's look OK after the fresh review; owner 2026-10-20 5:21 and 5:24 PM ET). Kickoff holds the item until they are on main.
 - **Files.** `src/packs/aion2/nextup.js`, `src/packs/aion2/cards/nextup-kinds.js`, `src/styles/app.css`, the tests.
 - **No-gos.** Basic stays essentials only: nothing else moves into it.
 - **Acceptance.**
@@ -439,23 +442,29 @@ Rules for every item:
 - **Lanes:** nextup-card, app.css, golden-nextup. **Model:** Sonnet, M (90 min).
 - **After:** none.
 
-## P22: Key setup as a sheet, with icons that fill each box
+## P22: Key setup as a sheet: icons fill each box, and players choose their keys
 
-**Fresh review** (new look).
+**Fresh review** (new look; a new save field).
 
 - **Problem.** The owner asked for key setup to rise from the bottom of the screen on desktop (note 11), and for the
-  icons to fill each key box with the name in a tooltip, since the rotation already names them (note 12). The Gladiator's
-  and Ranger's key setups are bare next to the Assassin's (UX finding 11).
-- **Result.** As Design Lead's approved mock shows, for desktop and phone; every class's key setup in the same layout.
-- **Inputs.** `docs/design/0.9-keys/` (Design Lead's mock, committed with Design Lead's look OK after the Design Critic's read; owner card 2026-10-20 5:21 PM ET). Kickoff holds the item until it is on main.
-- **Files.** `src/packs/aion2/cards/build.js`, `src/packs/aion2/cards/build.html`, `src/styles/app.css`, `tests/a11y.js`,
-  the tests.
-- **No-gos.** Player-chosen keys (#388) are 0.10. Names stay reachable by keyboard and screen reader.
+  icons to fill each key box with the name in a tooltip, since the rotation already names them (note 12). Players can't
+  set their own keys (#388). The Gladiator's and Ranger's key setups are bare next to the Assassin's (UX finding 11).
+  Design Lead made 11, 12 and #388 one design (#610).
+- **Result.** As Design Lead's approved mock shows: key setup is a bottom sheet; icons fill each box with a tap or
+  focus tooltip; each key chip can be tapped to rebind; one `keys` save field with the class default when empty (no key
+  bump); every class in the same layout.
+- **Inputs.** `docs/design/0.9-loadout-mockup.md` and `docs/design/mockups/0.9-loadout/` (Design Lead's mocks, #610; merged with Design Lead's look
+  OK after the fresh review; owner 2026-10-20 5:21 and 5:24 PM ET). Kickoff holds the item until they are on main.
+- **Files.** `src/packs/aion2/cards/build.js`, `src/packs/aion2/cards/build.html`, `src/core/state.js` (`keys`
+  default), `src/core/merge.js`, `src/styles/app.css`, `tests/a11y.js`, `tests/save.js`, the tests.
+- **No-gos.** Only keys AION 2 can bind (Game Data Check's `bindable-keys` file: Design Lead's ask D3). No save key bump;
+  an empty or unknown `keys` value falls back to the default. Names stay reachable by keyboard and screen reader.
 - **Acceptance.**
-  - [ ] a11y: each key box has an accessible name; the tooltip opens on focus.
+  - [ ] a11y: each key box has an accessible name; the tooltip opens on focus; rebinding works by keyboard.
+  - [ ] Core: a save without `keys` loads with the default; `merge()` keeps the newer `keys`.
   - [ ] Shots at 1500 and 390 px against the mock.
-- **Lanes:** build-card, app.css, a11y, golden. **Model:** Opus, M (90 min).
-- **After:** none.
+- **Lanes:** build-card, app.css, a11y, golden, mig. **Model:** Opus, L (120 min).
+- **After:** research-bindable-keys.
 
 ## P23: The Sources lists load when the card opens
 

@@ -1265,7 +1265,7 @@ workflows).
 | P5 | `--sizes` overstates tables 8x, `update()` repeats identical writes → measured right, writes skipped | M | Opus | site, skills-card, nextup-card, page-card | none |
 | P6 FR | Data suite 12.7 s, invariant 89 s, ledger inside schema → faster, ledger its own suite | M | Opus | gen, schema | none |
 | P7 | Slider to Lv 39 leaves story at Lv 2 and boards locked → Journey asks for the story quest | M | Opus | journey-card, nextup-card, golden-journey, golden-nextup | none |
-| P8 | Point counts disagree, a doubled accessible name, Spent green vs pink, key hint cut at 390 → fixed | S | Sonnet | app.css, a11y, skills-card | none |
+| P8 | Point counts disagree, a doubled accessible name, Spent green vs pink, key hint cut at 390, E grid shows unequipped stigmas → fixed | S | Sonnet | app.css, a11y, skills-card, build-card | none |
 | P9 FR | A newer or unreadable save can be overwritten → read-only banner, copy kept, migration flags | M | Opus | mig, main.js | P2 |
 | P10 FR | A removed save key fails nothing → committed key ledger, `gen:check` fails without `retired` | M | Opus | gen, schema | P2 |
 | P11 | Class roster and golden groups written by hand → generated | M | Opus | gen, golden | P2, P3 |
@@ -1276,10 +1276,10 @@ workflows).
 | P16 | Board paths and costs checked for the Assassin only (note 14) → every class | M | Opus | gen, golden | `research-node-paths` |
 | P17 | Assassin E stigma stack on one key? (note 13) → research answer applied | S | Opus | gen, golden | `research-e-stack` |
 | P18 | Rotation lists order, not play (note 15) → "how it plays" text per class | M | Opus | gen, golden, build-card | `research-rotation-play` |
-| P19 FR | Lv 39 join: 70–77 skill clicks in unlock order (note 10) → one row and one tap per skill | L | Opus | skills-card, nextup-card, app.css, golden, golden-nextup | P15 (input: `docs/design/0.9-catchup/`) |
-| P20 FR | Daevanion ~22 ticks, no per-board or Stigma respec (note 9) → board rows, respec per board and all, Stigma respec | M | Opus | app.css, golden | P16 (input: `docs/design/0.9-catchup/`) |
-| P21 | Basic hides catch-up tools; Lv 4–16 chores lead Next up → kept, folded | M | Sonnet | nextup-card, app.css, golden-nextup | none (input: `docs/design/0.9-catchup/`) |
-| P22 FR | Key setup inline with small icons (notes 11, 12) → a sheet, icons fill each box | M | Opus | build-card, app.css, a11y, golden | none (input: `docs/design/0.9-keys/`) |
+| P19 FR | Lv 39 join: 70–77 skill clicks in unlock order (note 10) → one row and one tap per skill | L | Opus | skills-card, nextup-card, app.css, golden, golden-nextup | P15 (input: `docs/design/0.9-loadout-mockup.md`) |
+| P20 FR | Daevanion ~22 ticks, no per-board or Stigma respec (note 9) → board rows, respec per board and all, Stigma respec | M | Opus | app.css, golden | P16, `research-respec` (input: `docs/design/0.9-loadout-mockup.md`) |
+| P21 | Basic hides catch-up tools; Lv 4–16 chores lead Next up → kept, folded | M | Sonnet | nextup-card, app.css, golden-nextup | none (input: `docs/design/0.9-loadout-mockup.md`) |
+| P22 FR | Key setup inline with small icons, keys fixed (notes 11, 12, #388) → a sheet, icons fill each box, players rebind keys | L | Opus | build-card, app.css, a11y, golden, mig | `research-bindable-keys` (input: `docs/design/0.9-loadout-mockup.md`) |
 | P23 | Sources lists weigh 9.6 K gzip and 1,088 elements while closed → load on open | M | Opus | site, page-card | `research-sources-credit` |
 | S1 FR | Golden shares a shard → its own shard | S | Gus | ci | P6 |
 | S2 FR | Nothing checks the live app works → scripted journey after each deploy and every 6 h | S | Gus | ci | none |
@@ -1288,7 +1288,7 @@ workflows).
 | R FR | Release 0.9.0 | S | Sonnet | release, alone | everything above, or moved; GO 0.9.0 |
 
 Not bot items (they run alongside): Game Data Check does the four research gates, naming each file with its slug
-(`choice-points`, `node-paths`, `e-stack`, `rotation-play`) so kickoff finds it, plus the owner's Vaizel Assault Stance
+(`choice-points`, `node-paths`, `e-stack`, `rotation-play`, and Design Lead's data asks `respec` and `bindable-keys`) so kickoff finds it, plus the owner's Vaizel Assault Stance
 (4 or 5) re-check. Design Lead mocks the catch-up flow (notes 9, 10 and UX findings 4, 6–8) and the key setup sheet
 (notes 11, 12), tagged for fresh review; a Design Critic briefed by Design Review reads them before the owner does. Design
 Lead and Source Vetting run the 1.0 look's blind check (3–5 people, a non-gamer among them) for 0.10. Watchdog and Build
@@ -1331,9 +1331,10 @@ Under the standing OK until 1.0 most of 0.9 needs nothing from the owner. What i
    reviewer check that per-page credit links rendered on open still meet CLAUDE.md's credit rule and Metabot's terms, and
    write the verdict as a `docs/research/` file named with `sources-credit`. If they say no, a reasoned budget raise at
    1.0 is the fallback.
-3. **Catch-up and key setup looks: Design Lead approves** (owner's card answer, 2026-10-20 5:21 PM ET). P19–P21 build
-   from `docs/design/0.9-catchup/` and P22 from `docs/design/0.9-keys/` once Design Lead commits each mock with the look
-   OK, after the Design Critic's read. The owner sees them in the Scrapbook and in the 1.0 test.
+3. **Catch-up and key setup looks: Design Lead approves** (owner's card answer, 2026-10-20 5:21 PM ET; every look from
+   5:24 PM ET). P19–P22 build from Design Lead's mocks (#610, `docs/design/0.9-loadout-mockup.md`) once they merge with the
+   look OK after the fresh review. Design Lead made notes 11, 12 and player-chosen keys (#388) one design, so #388 moves
+   from 0.10 into P22.
 4. **Outside audit trial** (owner To-do: only the owner can do it): create the "Daeva audit" project with 7 days of Debug
    access.
 5. **In-game check:** Vaizel Assault Stance, 4 or 5 nodes (Game Data Check's thread).
@@ -1342,12 +1343,16 @@ Under the standing OK until 1.0 most of 0.9 needs nothing from the owner. What i
 ### 0.10 — The 1.0 look (estimate)
 
 Design Lead's app design review for 1.0 (owner, 2026-10-19 1:57 PM ET): the blind check run in 0.9, a visual language
-mocked and approved by Design Lead after a fresh or outside review (owner, 2026-10-20 5:24 PM ET), then built card by card. Player-chosen keys (#388) on top of 0.9 P22. Cards stop
+mocked and approved by Design Lead after a fresh or outside review (owner, 2026-10-20 5:24 PM ET), then built card by card. Cards stop
 reading each other's DOM (architecture audit C3), which makes "add a feature" cheaper. The same step shown in three places
 (UX audit finding 12) is settled here. **Microscope pass (owner, 2026-10-20 5:24 PM ET):** before the 1.0 candidate, every
 card, feature, element, section and function is reviewed against its purpose: Design Review (Holly) for looks, Code Review
 (Howard) for code, Game Data Check (Gretchen) for data, Team Audit (Gomez) or an outside reviewer for the whole; each
-finding is fixed or recorded as a decision before the candidate is cut. A closed beta with a few real players is the owner's call (team audit §8e). Planned in its own pass after
+finding is fixed or recorded as a decision before the candidate is cut. The ledger (Rules Steward, Francesca) and the
+tracker (Tracker Design, Skyler; Tracker Sync, Huell) get the same review, every row, tab, card and definition, and stay
+current (owner, 2026-10-20 5:26 PM ET). The bar: an outside auditor can look at any aspect of the project and grade it
+A+, so every role, rule, process and record is clearly defined and findable. The 0.9 outside audit trial tests against
+that bar. A closed beta with a few real players is the owner's call (team audit §8e). Planned in its own pass after
 0.9 ships; if the blind check finds more than a minor's work, it splits into 0.10 and 0.11.
 
 ### 1.0
