@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../../schema/pack.schema.json",
+  "schemaVersion": 2,
+  "id": "aion2/asmodian/sorcerer",
+  "kind": "guide",
+  "name": "Asmodian Sorcerer leveling guide",
+  "parent": "aion2/asmodian/guide",
+  "uses": ["aion2/classes/sorcerer"],
+  "files": ["builds.json", "retired.json", "guide/milestones.json", "guide/steps.json", "guide/tips.json", "guide/claims.json", "guide/confidence.json"]
+}

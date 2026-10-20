@@ -23,8 +23,8 @@
         keeps it gone); an older save with progress never shows it; joining at Lv 20 stores the level and the quest only,
         and its character and Next up equal a played-through Lv 20 state's; a new character opens on the join step
     10c. the site's classes (0.7 A1): the picker offers every playable class; a Ranger save loads its own guide, no note
-    15. auto level-up (0.6 P19): "Turned in" on a levelsUp quest at the level below its own → one level up, Undo and
-        stepping back → down again; at a higher level or on another quest → no change */
+    15. auto level-up (0.6 P19, 0.8 P15): "Turned in" on a levelsUp quest at its from-level (Shadow Forest at Lv 3) → one
+        level up, Undo and stepping back → down again; at a higher level or on a 50% EXP quest → no change */
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path'); const { isDeepStrictEqual } = require('util');
 const CFG = require('./config');
 const { SAVE_KEY, V4_KEY, BEFORE_IMPORT_KEY, TEST_SLOT, toStored, writeRaw, readRaw, writeSave, clearSave } = require('./support/save');
@@ -192,8 +192,8 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
       radios: [...document.querySelectorAll('#charPick input[type=radio]')].map(r => [r.value, r.checked, r.closest('label').innerText.trim()]), list: !document.getElementById('charList').hidden }));
     ok('switcher: New character opens the form with the focus in "Name (optional)"', f.focus === 'charName' && f.label === 'Name (optional)' && !f.list, f);
     /* 0.6 P5: the Ranger joined the Assassin; 0.7 P2: the Gladiator got its guide pack and joined them; 0.7 P4: the
-       Spiritmaster after them; 0.8 P3: the Templar; 0.8 P5: the Cleric last */
-    ok('switcher: the class picker offers the Assassin (picked), the Ranger, the Gladiator, the Spiritmaster, the Templar and the Cleric', f.legend === 'Class' && JSON.stringify(f.radios) === JSON.stringify([['assassin', true, 'Assassin'], ['ranger', false, 'Ranger'], ['gladiator', false, 'Gladiator'], ['spiritmaster', false, 'Spiritmaster'], ['templar', false, 'Templar'], ['cleric', false, 'Cleric']]), f.radios);
+       Spiritmaster after them; 0.8 P3: the Templar; 0.8 P5: the Cleric; 0.8 P17: the Sorcerer last */
+    ok('switcher: the class picker offers the Assassin (picked), the Ranger, the Gladiator, the Spiritmaster, the Templar, the Cleric and the Sorcerer', f.legend === 'Class' && JSON.stringify(f.radios) === JSON.stringify([['assassin', true, 'Assassin'], ['ranger', false, 'Ranger'], ['gladiator', false, 'Gladiator'], ['spiritmaster', false, 'Spiritmaster'], ['templar', false, 'Templar'], ['cleric', false, 'Cleric'], ['sorcerer', false, 'Sorcerer']]), f.radios);
     await p.keyboard.type('  Zed  '); await p.waitForTimeout(50);
     ok('switcher: the form previews the label Zed-assassin-lvl1 (name trimmed)', await p.innerText('#charPrev') === 'Zed-assassin-lvl1', await p.innerText('#charPrev'));
     await p.keyboard.press('Escape'); await p.waitForTimeout(100);
@@ -370,6 +370,34 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     ok('cleric: no page errors', !errs.length, errs);
     await ctx.close();
   }
+  /* 10b'''''. a Sorcerer (0.8 P17): the same for the seventh class; its Rotation section shows the game's default keys (the
+     owner's Sorcerer screen, both mouse buttons read from it), the Build plan card states the three skills that fire only
+     on a condition, and Hellfire's step says to hold its key to charge it */
+  {
+    const { ctx, p, errs } = await page();
+    await writeSave(p, SAVED, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
+    const first = JSON.parse(await readRaw(p)).chars[TEST_SLOT];
+    const guide = () => p.evaluate(() => ({ pack: self.DAEVA_PACK, cls: char(state).class, plan: STIGMA_PLAN.slice(), sk: SP_SKILLS_CORE.map(x => x.n).slice(0, 3),
+      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, skills: document.getElementById('main').innerText.includes('Flame Arrow'),
+      keys: document.getElementById('stackViz').textContent,
+      triggers: STEPS.some(g => g.items.some(i => i.k === 'build:triggers' && i.t.includes('Three skills only fire on a condition'))),
+      hold: STEPS.some(g => g.items.some(i => i.k === 'build:hellfire' && i.t.includes('Hold 4 to charge Hellfire'))) }));
+    await p.click('#charBtn'); await p.click('#charNew'); await p.check('#charPick input[value="sorcerer"]'); await p.waitForTimeout(50);
+    ok('sorcerer: the form previews sorcerer-lvl1', await p.innerText('#charPrev') === 'sorcerer-lvl1', await p.innerText('#charPrev'));
+    await Promise.all([p.waitForEvent('load'), p.click('#charCreate')]); await p.waitForTimeout(400);
+    const c = await guide(), s = JSON.parse(await readRaw(p)), cid = s.current;
+    ok('sorcerer: a new current slot of class sorcerer, pack aion2/asmodian/sorcerer; the first character stored as it was', cid !== TEST_SLOT && s.chars[cid].class === 'sorcerer' && s.chars[cid].pack === 'aion2/asmodian/sorcerer' && isDeepStrictEqual(s.chars[TEST_SLOT], first), s.chars[cid]);
+    ok('sorcerer: the page runs the Sorcerer guide (its pack, stigma plan, skills shown, the conditions and Hellfire steps; Rotation from its default keys)', c.pack === 'aion2/asmodian/sorcerer' && c.cls === 'sorcerer'
+      && JSON.stringify(c.plan) === JSON.stringify(['Element Enhancement', 'Delayed Explosion', 'Fire Wall', 'Cold Storm'])
+      && JSON.stringify(c.sk) === JSON.stringify(['Flame Arrow', 'Ice Chain', 'Firestorm']) && c.skills && c.triggers && c.hold && c.rot
+      && ['Left click: Flame Arrow', 'Right click: Ice Chain', '1: Firestorm'].every(x => c.keys.includes(x)) && !/Quick Slice|Earth's Retribution|Hellfire/.test(c.keys) && c.lbl === 'sorcerer-lvl1' && c.h1 === 'Asmodian Sorcerer Route', c);
+    await p.click('#charBtn');
+    await Promise.all([p.waitForEvent('load'), p.click(`#charRows [data-char="${TEST_SLOT}"]`)]); await p.waitForTimeout(400);
+    const b = await guide();
+    ok('sorcerer, switch back: the Assassin guide again (no conditions or Hellfire step), its character unchanged', b.pack === 'aion2/asmodian/assassin' && b.plan[0] === "Triniel's Dagger" && !b.triggers && !b.hold && b.lbl === 'assassin-lvl22' && b.h1 === 'Asmodian Assassin Route' && isDeepStrictEqual(JSON.parse(await readRaw(p)).chars[TEST_SLOT], first), b);
+    ok('sorcerer: no page errors', !errs.length, errs);
+    await ctx.close();
+  }
   /* 10c. the site's classes (0.7 A1; the claude.ai build's class list went with that build in 0.7 P9): the site sets no class
      list, offers every playable class, and a Ranger save loads its own guide with no note */
   {
@@ -381,7 +409,7 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
       await p.click('#charCancel'); await p.keyboard.press('Escape'); return r; };
     await p.goto(CFG.CUR); await writeRaw(p, JSON.stringify(ranger), { fresh: true }); await p.reload(); await p.waitForTimeout(400);
     const site = await look();
-    ok('site classes: the picker offers every playable class (the Gladiator too, 0.7 P2; the Spiritmaster, 0.7 P4; the Templar, 0.8 P3; the Cleric, 0.8 P5) and shows no note',JSON.stringify(site.radios) === JSON.stringify(['assassin', 'ranger', 'gladiator', 'spiritmaster', 'templar', 'cleric']) && !site.note && site.pack === 'aion2/asmodian/ranger', site);
+    ok('site classes: the picker offers every playable class (the Gladiator too, 0.7 P2; the Spiritmaster, 0.7 P4; the Templar, 0.8 P3; the Cleric, 0.8 P5; the Sorcerer, 0.8 P17) and shows no note',JSON.stringify(site.radios) === JSON.stringify(['assassin', 'ranger', 'gladiator', 'spiritmaster', 'templar', 'cleric', 'sorcerer']) && !site.note && site.pack === 'aion2/asmodian/ranger', site);
     ok('site classes: no page errors', !errs.length, errs);
     await ctx.close();
   }
@@ -624,14 +652,16 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
       await ctx.close();
     }
   }
-  /* 15. auto level-up (0.6 P19, owner-ok-autolevel 2026-10-17): turning in a story quest with levelsUp (QUESTS [lv, name,
-     true]) at Lv lv − 1 raises the level by one, with an Undo in the toast; stepping back onto it lowers it again; at a
-     higher level, or on a quest without levelsUp, the level stays */
+  /* 15. auto level-up (0.6 P19, 0.8 P15, owner-ok-autolevel 2026-10-17): turning in a story quest with levelsUp (QUESTS
+     [lv, name, from]) at Lv from raises the level by one, with an Undo in the toast; stepping back onto it lowers it
+     again; at another level, or on a quest without levelsUp (the two 50% EXP quests), the level stays */
   {
     const { ctx, p, errs } = await page();
-    const lu = await p.evaluate(() => QUESTS.filter(q => q[2] === true).map(q => [q[0], q[1], QUESTS.findIndex(x => x[1] === q[1])]));
-    ok('levelsUp: today one quest, "A Village in the Fog" (Lv 2), the first story quest', JSON.stringify(lu) === JSON.stringify([[2, 'A Village in the Fog', 0]]), lu);
-    const [lv, q0] = lu[0] || [2, ''], q1 = await p.evaluate(() => QUESTS[1][1]);
+    const lu = await p.evaluate(() => QUESTS.filter(q => q.length > 2).map(q => [q[1], q[2]]));
+    ok('levelsUp: the eight 100% EXP Ishalgen quests with their turn-in levels (research-401-levels)', JSON.stringify(lu) === JSON.stringify([['A Village in the Fog', 1], ['Prepare to Escape', 2], ['Shadow Forest', 3], ['Isolated Lake', 4],
+      ['Signs of a Crash Landing', 6], ['Prison Compound Infiltration Plan', 7], ['Brigade Prison Compound Infiltration Operation', 8], ['The Longest Night', 9]]), lu);
+    /* Shadow Forest: turned in at Lv 3 → Lv 4 (the owner's Lv 3 → 4 screen) */
+    const lv = 4, q0 = 'Shadow Forest', q1 = await p.evaluate(n => QUESTS[QUESTS.findIndex(x => x[1] === n) + 1][1], q0);
     const at = async (level, quest) => { await writeSave(p, { level, quest, checks: {}, open: {}, welcomed: 1 }, { fresh: true }); await p.reload(); await p.waitForTimeout(400); };
     const turnIn = async () => { const btn = p.locator('#nowStar [data-now="story"]').first(); if (!(await btn.count())) return false; await btn.click(); await p.waitForTimeout(800); return true; };
     const cur = () => p.evaluate(k => ({ level: char(state).level, quest: char(state).quest, stored: (s => s.chars[s.current].level)(JSON.parse(localStorage.getItem(k))), toast: (document.querySelector('#rwToast.has-undo') || {}).textContent || '' }), SAVE_KEY);
@@ -647,8 +677,11 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     ok(`levelsUp: turned in at a higher level (Lv ${lv}) → no change, no Undo toast`, s.level === lv && s.stored === lv && s.quest === q1 && !s.toast, s);
     await p.click('#questPrev .st-name'); await p.waitForTimeout(400); s = await cur();
     ok(`levelsUp: stepping back onto it at Lv ${lv} lowers it (the untick of the level it gives)`, s.level === lv - 1 && s.quest === q0, s);
-    await at(lv, q1); await turnIn(); s = await cur();
-    ok('levelsUp: a quest without levelsUp → the level stays', s.level === lv && s.stored === lv && !s.toast, s);
+    /* at its own recommended level, so Next up offers "Turned in" (storyRecGate) */
+    for (const [half, at5] of [['The Being Beneath the Lake', 5], ['Spread Your Wings', 6]]) {
+      await at(at5, half); const done = await turnIn(); s = await cur();
+      ok(`levelsUp: "${half}" (50% EXP, no levelsUp) turned in at Lv ${at5} → the level stays, no Undo toast`, done && s.level === at5 && s.stored === at5 && s.quest !== half && !s.toast, s);
+    }
     await at(lv - 1, q0); await p.click('#lvlUpBig'); await p.waitForTimeout(200); await p.click('#lvlDown'); await p.waitForTimeout(200); s = await cur();
     ok('levelsUp: Level up and − unchanged (one each way, the story stays)', s.level === lv - 1 && s.quest === q0, s);
     ok('levelsUp: no page errors', !errs.length, errs);

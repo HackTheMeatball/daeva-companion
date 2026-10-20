@@ -57,8 +57,8 @@ A design fails here when it looks generated rather than made for this app. Each 
 
 ## Behaviour
 - [ ] **Manual progress.** Nothing ticks or levels up by itself. Level changes only through Level up, −, + or the slider,
-  plus the one owner-approved exception: ticking a sourced 100 % EXP story quest (`levelsUp: true`) raises the level by
-  one, and unticking or Undo lowers it (CLAUDE.md, DECISIONS `owner-ok-autolevel`).
+  plus the one owner-approved exception: ticking a sourced 100 % EXP story quest (`levelsUp: { from }`) at its from-level
+  raises the level by one, and unticking or Undo lowers it (CLAUDE.md, DECISIONS `owner-ok-autolevel`).
 - [ ] **Basic mode = essentials only.** Anything not essential is hidden in Basic, and Basic still reads complete.
 - [ ] **Saved progress is safe.** Same storage key as today (`KEY` in `src/core/state.js`, see `docs/ARCHITECTURE.md`),
   unless the change is a planned pre-1.0 clean break per CLAUDE.md (new key, fresh start without errors, CHANGELOG says

@@ -22,7 +22,8 @@ import { aion2Place, stepsShownOf } from "./travel.js";
    what a fresh save starts with; tests/core/state.test.mjs checks both against data/. Every class with a guide pack is
    playable (`classes`): the Assassin, since 0.6 P5 the Ranger (data/packs/aion2/asmodian/ranger), since 0.7 P2 the
    Gladiator (data/packs/aion2/asmodian/gladiator), since 0.7 P4 the Spiritmaster (data/packs/aion2/asmodian/spiritmaster) and
-   since 0.8 P3 the Templar (data/packs/aion2/asmodian/templar) and since 0.8 P5 the Cleric (data/packs/aion2/asmodian/cleric).
+   since 0.8 P3 the Templar (data/packs/aion2/asmodian/templar), since 0.8 P5 the Cleric (data/packs/aion2/asmodian/cleric)
+   and since 0.8 P17 the Sorcerer (data/packs/aion2/asmodian/sorcerer).
    A character of another class is shown after the reload a switch does (the page loads one class's tables,
    docs/ARCHITECTURE.md §4). */
 export const PACK = "aion2/asmodian/assassin";
@@ -32,6 +33,7 @@ const GLADIATOR = { class: "gladiator", pack: "aion2/asmodian/gladiator", name: 
 const SPIRITMASTER = { class: "spiritmaster", pack: "aion2/asmodian/spiritmaster", name: "Spiritmaster" };
 const TEMPLAR = { class: "templar", pack: "aion2/asmodian/templar", name: "Templar" };
 const CLERIC = { class: "cleric", pack: "aion2/asmodian/cleric", name: "Cleric" };
+const SORCERER = { class: "sorcerer", pack: "aion2/asmodian/sorcerer", name: "Sorcerer" };
 
 /* the class emblems (0.8 P12: Metabot's, the exact fetched bytes; docs/ISSUES.md "Class emblems") */
 const CLASS_EMBLEM = { gladiator: "assets/icons/class-gladiator.webp", templar: "assets/icons/class-templar.webp", assassin: "assets/icons/class-assassin.webp",
@@ -66,7 +68,7 @@ export const aion2Pack = definePack({
   },
   character: { pack: PACK, class: CLASS },
   /* the names are the class records' (data/packs/aion2/classes/<class>/class.json; tests/core/chars.test.mjs) */
-  classes: [{ class: CLASS, pack: PACK, name: "Assassin" }, RANGER, GLADIATOR, SPIRITMASTER, TEMPLAR, CLERIC],
+  classes: [{ class: CLASS, pack: PACK, name: "Assassin" }, RANGER, GLADIATOR, SPIRITMASTER, TEMPLAR, CLERIC, SORCERER],
   /* every class of the game, guide or not (0.8 P12: the welcome card's class picker shows the others as "Soon") */
   gameClasses: GAME_CLASSES.map(e => ({ ...e, icon: CLASS_EMBLEM[e.class] })),
   keptRules: KEPT_RULES,

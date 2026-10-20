@@ -163,8 +163,19 @@
           "pattern": "^asc:[a-z0-9-]+$"
         },
         "levelsUp": {
-          "description": "0.6 P19 (owner, 2026-10-17, owner-ok-autolevel): turning it in gives a full level (100% EXP), from Lv lv − 1 to Lv lv. Ticking it in the app at Lv lv − 1 raises the level by one; unticking or Undo lowers it back. Only with a source whose fields name levelsUp (owner screen or a game-database field; the build checks it).",
-          "const": true
+          "description": "0.6 P19, 0.8 P15 (owner, 2026-10-17, owner-ok-autolevel; #401): turning it in at Lv from gives exactly a full level (100% EXP), Lv from → from + 1. from is the level it is turned in at (sourced, not the recommended lv: docs/research/2026-10-research-401-levels.md). Ticking it in the app at Lv from raises the level by one; unticking or Undo at Lv from + 1 lowers it back; at any other level nothing changes. A quest that gives less than a full level (e.g. 50%) has no levelsUp. Only with a source whose fields name levelsUp (owner screen or a game-database field; the build checks it).",
+          "type": "object",
+          "properties": {
+            "from": {
+              "description": "The level the quest is turned in at.",
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "from"
+          ],
+          "additionalProperties": false
         },
         "inCap": {
           "description": "false for records past the Lv 45 scope (Waiting for the Next Journey): they keep the chain complete but never reach Next up.",

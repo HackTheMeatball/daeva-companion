@@ -1,0 +1,10 @@
+[
+  { "case": "picker-new-character-390", "kind": "before-after", "title": "Pick a class: Sorcerer",
+    "caption": "New character now offers the Sorcerer after the Assassin, the Ranger, the Gladiator, the Spiritmaster, the Templar and the Cleric." },
+  { "case": "sorcerer-lv22-advanced-1500", "kind": "screenshot", "title": "A Sorcerer at level 22",
+    "caption": "A Sorcerer character gets its own guide: Flame Arrow first, Element Enhancement for stigma slot 1, each with its game icon." },
+  { "case": "sorcerer-build-plan-1500", "kind": "screenshot", "title": "Conditions, loop and Hellfire",
+    "caption": "The Build plan says which three Sorcerer skills fire only on a condition, gives the leveling loop and says to hold 4 to charge Hellfire." },
+  { "case": "sorcerer-build-drawer-1500", "kind": "screenshot", "title": "Sorcerer stats and keys",
+    "caption": "The Build tab shows Attack, Critical Hit and MP first, plus the game's default keys from your Sorcerer screen." }
+]

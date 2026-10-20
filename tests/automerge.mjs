@@ -38,6 +38,8 @@ check(/asked for changes/.test(designBlocker(SHOTS, [c('claude[bot]', 'DESIGN OK
 check(designBlocker(SHOTS, [c('claude[bot]', 'DESIGN CHANGES abc1234', 6), c('claude[bot]', 'DESIGN OK abc1234', 8)], SHA, HEAD) === '', 'later DESIGN OK wins');
 check(/wait on DESIGN OK/.test(designBlocker(SHOTS, [c('someone-else', 'DESIGN OK abc1234', 9)], SHA, HEAD)), 'DESIGN OK from another account -> ignored, waits');
 check(/wait on DESIGN OK/.test(designBlocker(SHOTS, [c('claude[bot]', 'Looks fine. A DESIGN OK will follow for abc1234.', 9)], SHA, HEAD)), '"DESIGN OK" not at a line start -> ignored, waits');
+check(designBlocker(SHOTS, [c('HackTheMeatball', '**DESIGN OK on abc1234** (Jane, design lead)', 9)], SHA, HEAD) === '', 'bold DESIGN OK naming the head -> merges (#551)');
+check(/asked for changes/.test(designBlocker(SHOTS, [c('claude[bot]', 'DESIGN OK abc1234', 6), c('HackTheMeatball', '**DESIGN CHANGES on abc1234** (Jane, design lead)', 8)], SHA, HEAD)), 'later bold DESIGN CHANGES wins (#554)');
 
 // The merge loop runs the check after the review checks and before it merges.
 const loop = yml.slice(yml.indexOf('for (const pr of prs)'), yml.indexOf('github.rest.pulls.merge('));
@@ -128,6 +130,16 @@ check(!DATACHANGES.test('**Game Data Check (ROL-03) on 19a3ced: VERIFIED.**'), '
 check(!DATACHANGES.test('~~**Game Data Check (ROL-03) on 19a3ced: CHANGES.**~~ [Edit: withdrawn]'), 'pipeline: struck CHANGES -> no fix round');
 check(/contains\(github\.event\.comment\.body, 'Game Data Check \(ROL-03\)'\)/.test(pipe), 'pipeline: an owner-account Game Data Check comment reaches the decide job');
 check(/if \(DATACHANGES\.test\(body\)\) \{ want = 'fix'; reviewBody = body; reason = dataAsk; \}/.test(pipe), 'pipeline: owner-account CHANGES gets a fix run naming the head');
+const dz = pipe.match(/const DESIGNCHANGES = (\/.+\/m);/);
+check(!!dz, 'pipeline.yml has the DESIGNCHANGES pattern');
+const DESIGNCHANGES = dz ? new Function(`return ${dz[1]};`)() : /$^/;
+check(DESIGNCHANGES.test('DESIGN CHANGES on 8993578: the strongholds shot is clipped.'), 'pipeline: plain DESIGN CHANGES -> fix round');
+check(DESIGNCHANGES.test('**DESIGN CHANGES on 8993578** (Jane, design lead)'), 'pipeline: bold DESIGN CHANGES -> fix round (#554)');
+check(!DESIGNCHANGES.test('**DESIGN OK on 8993578**'), 'pipeline: DESIGN OK -> no fix round');
+check(!DESIGNCHANGES.test('Fixed what the DESIGN CHANGES asked.'), 'pipeline: DESIGN CHANGES not at a line start -> no fix round');
+check((pipe.match(/else \{ want = 'fix'; reviewBody = body; reason = designAsk; \}/g) || []).length === 1
+  && /if \(!DESIGNCHANGES\.test\(body\)\) return none/.test(pipe)
+  && /else if \(DESIGNCHANGES\.test\(body\)\) \{ want = 'fix'; reviewBody = body; reason = designAsk; \}/.test(pipe), 'pipeline: owner-account and claude[bot] DESIGN CHANGES both use DESIGNCHANGES');
 
 console.log(`\n${n - fail}/${n} auto-merge checks passed`);
 console.log(fail ? 'AUTOMERGE CHECKS FAILED' : 'AUTOMERGE CHECKS PASSED');
