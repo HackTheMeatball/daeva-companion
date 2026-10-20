@@ -582,6 +582,7 @@
       "type": "passive",
       "learnLv": 11,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-cleric-healing-enhancement.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 2,
@@ -610,17 +611,15 @@
             "what": "Skill window, hovering the locked Lv 11 passive cell: the tooltip names Healing Enhancement"
           },
           "fields": [
-            "learnLv"
+            "learnLv",
+            "icon"
           ]
         }
       ],
       "verifiedAt": "2026-10-20",
       "status": "verified",
-      "fieldStatus": {
-        "icon": "owner-check"
-      },
       "notes": [
-        "learnLv: the owner's tooltip on the Lv 11 cell (2026-10-20) names this passive. icon: owner-check. Metabot's file 17740000 shows other art, and no approved source has the cell's teal arcs around a flare (Game Data Check, docs/ISSUES.md)."
+        "learnLv and icon: the owner's tooltip on the Lv 11 cell (2026-10-20) names this passive. icon from daevacompass.com (its ability page, 72 px, approved icon source, owner 2026-10-20; Metabot's file 17740000 shows other art); it matches the cell art on the owner's Lv 4 screen (Game Data Check, docs/ISSUES.md)."
       ]
     },
     {
@@ -692,6 +691,7 @@
       "type": "passive",
       "learnLv": 13,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-cleric-immortal-veil.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 2,
@@ -720,17 +720,15 @@
             "what": "Skill window, hovering the locked Lv 13 passive cell: the tooltip names Immortal Veil"
           },
           "fields": [
-            "learnLv"
+            "learnLv",
+            "icon"
           ]
         }
       ],
       "verifiedAt": "2026-10-20",
       "status": "verified",
-      "fieldStatus": {
-        "icon": "owner-check"
-      },
       "notes": [
-        "learnLv: the owner's tooltip on the Lv 13 cell (2026-10-20) names this passive. icon: owner-check. Metabot's page file 17750000 is Heal Block's art, and no approved source has the cell's figure under a green dome (Game Data Check, docs/ISSUES.md)."
+        "learnLv and icon: the owner's tooltip on the Lv 13 cell (2026-10-20) names this passive. icon from daevacompass.com (its ability page, 72 px, approved icon source, owner 2026-10-20; Metabot's page file 17750000 is Heal Block's art); it matches the cell art on the owner's Lv 4 screen (Game Data Check, docs/ISSUES.md)."
       ]
     },
     {
@@ -1101,6 +1099,7 @@
       "type": "passive",
       "learnLv": 23,
       "levelGate": "flat",
+      "icon": "assets/icons/sk-cleric-survival-willpower.png",
       "boardNodes": {
         "perBoard": {
           "board:zikel": 2,
@@ -1129,18 +1128,16 @@
             "what": "Skill window, hovering the locked Lv 23 passive cell: the tooltip names Survival Willpower"
           },
           "fields": [
-            "learnLv"
+            "learnLv",
+            "icon"
           ]
         }
       ],
       "verifiedAt": "2026-10-20",
       "status": "verified",
-      "fieldStatus": {
-        "icon": "owner-check"
-      },
       "notes": [
         "Shared display name with a Gladiator skill (Metabot page slug survival-willpower-cleric).",
-        "learnLv: the owner's tooltip on the Lv 23 cell (2026-10-20) names this passive. icon: owner-check. The cell shows plate armour, hands on the helmet (the Templar Lv 23 art); Metabot has no matching file and no other approved source has one (Game Data Check, docs/ISSUES.md)."
+        "learnLv and icon: the owner's tooltip on the Lv 23 cell (2026-10-20) names this passive. icon from daevacompass.com (its ability page, 72 px, approved icon source, owner 2026-10-20; the same art as the Templar and Chanter Lv 23 passive); it matches the cell art on the owner's Lv 4 screen (Game Data Check, docs/ISSUES.md)."
       ]
     },
     {
