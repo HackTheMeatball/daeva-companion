@@ -814,7 +814,7 @@
             { "key": "Left click", "rows": [{ "skill": "skill:assassin:quick-slice" }] },
             { "key": "Right click", "rows": [{ "skill": "skill:assassin:savage-roar" }] },
             { "key": "Q", "rows": [{ "skill": "skill:assassin:infiltrate" }, { "skill": "skill:assassin:shadow-fall" }] },
-            { "key": "E", "rows": [{ "skill": "skill:assassin:heart-gore" }, { "skill": "skill:assassin:storm-rampage" }, { "skill": "skill:assassin:whirlwind-slice" }] },
+            { "key": "E", "rows": [{ "skill": "skill:assassin:storm-rampage" }, { "skill": "skill:assassin:whirlwind-slice" }, { "skill": "skill:assassin:heart-gore" }] },
             { "key": "1", "rows": [{ "skill": "skill:assassin:shadowstrike" }] },
             { "key": "2", "rows": [{ "skill": "skill:assassin:ambush" }] },
             { "key": "3", "rows": [{ "skill": "skill:assassin:flash-slice" }] },
