@@ -230,7 +230,7 @@ if (g) {
   const dataFiles = d => readdirSync(d, { withFileTypes: true }).flatMap(e => e.isDirectory() ? dataFiles(join(d, e.name)) : e.name.endsWith('.json') ? [join(d, e.name)] : []);
   const corpus = dataFiles(join(ROOT, 'data/packs')).map(f => ({ f: f.split('\\').join('/'), t: readFileSync(f, 'utf8') }));
   const leakWords = c => { const rest = corpus.filter(x => !x.f.includes(`/aion2/classes/${c}/`) && !x.f.includes(`/aion2/asmodian/${c}/`)).map(x => x.t).join('\n').toLowerCase();
-    return [`(class|skill|stigma|spec|node|build):${esc(c)}\\b`, ...classNames(c).filter(x => !rest.includes(x.toLowerCase())).map(esc), ...classGameIds(c).filter(x => !new RegExp(`(?<!\\d)${esc(x)}(?!\\d)`).test(rest)).map(x => `(?<!\\d)${esc(x)}(?!\\d)`)]; };
+    return [`(class|skill|stigma|spec|node|build):${esc(c)}\\b`, ...(c === 'ranger' ? [] : [`\\b${esc(c)}\\b`]),...classNames(c).filter(x => !rest.includes(x.toLowerCase())).map(esc), ...classGameIds(c).filter(x => !new RegExp(`(?<!\\d)${esc(x)}(?!\\d)`).test(rest)).map(x => `(?<!\\d)${esc(x)}(?!\\d)`)]; };
   const guideClasses = otherIds.map(id => ({ id, cls: id.split('/').pop(), pack: others[otherIds.indexOf(id)] }));
   ok(`every guide pack other than the Assassin's is a class of pack.json (${guideClasses.map(x => x.cls).join(', ')})`, guideClasses.every(x => allClasses.includes(x.cls)), guideClasses.map(x => x.cls));
   for (const { cls, pack } of guideClasses) {
