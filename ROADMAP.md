@@ -946,7 +946,7 @@ Sorcerer and the Chanter join as P16–P19, and the label item P20 joins from Ga
 Path to 1.0 first:
 
 1. **All four remaining classes in 0.8 (redrawn; first planned as two per minor).** Done: Assassin, Ranger (0.6),
-   Gladiator and Spiritmaster (0.7). As first planned, 0.8 took two of Templar, Sorcerer, Cleric and Chanter, and 0.9 takes the other two. Per D8, the class the owner plays
+   Gladiator and Spiritmaster (0.7). As first planned, 0.8 would take two of Templar, Sorcerer, Cleric and Chanter, and 0.9 the other two. Per D8, the class the owner plays
    comes first. His Templar key screens are in (`/mnt/project-files/owner-screens/2026-10-18/templar/`), so the
    **Templar** is first. Data coverage then picks the **Cleric**: 7 candidate guides and 3 Metabot builds, against the
    Sorcerer's 6 and 3 and the Chanter's 7 and 0 (classes-and-gaps §2.2). Both research sessions started at pass start
@@ -1035,7 +1035,7 @@ item that touches `data/`); **golden** the same items; **a11y** P7 → P9 → P8
 **welcome** P8 → P12; **build-card** P9 → P14; **site** P6 alone. Critical path: `research-templar` (in, #447) → P2 →
 P3 → P4 → P5 → P16 → P17 → P18 → P19 → P20 → P13 → P14 → P15 → R, i.e. the whole gen lane (the last two packs wait on
 `research-sorcerer` and `research-chanter`, started 2026-10-19 8:35 PM ET). P20 also edits
-`src/styles/packs/aion2/areas.css`, which no lane owns; no other 0.8 item touches it. The gen/golden lane is the bottleneck: the non-class items on it (P13, P14, P15) run after the class
+`src/styles/packs/aion2/areas.css`, `skills.js` and `skills.css`, which no lane owns; P13 also edits `areas.css`, after P20 on the same serial lanes. The gen/golden lane is the bottleneck: the non-class items on it (P13, P14, P15) run after the class
 packs, since those are the minor's point.
 
 | Wave | Builds (no owner OK needed first, K15) |
@@ -1053,7 +1053,8 @@ packs, since those are the minor's point.
 | 11 | P15 (gen, golden), when its level notes are in |
 | 12 | R, alone, after the CHANGELOG draft (K17), `RC PLAY DONE 0.8` and `DATA OK 0.8.0` |
 
-Checked: no two items in one wave own the same file. Waves are the expected order, not gates. Under K15, a gated item
+Checked: items in one wave that own the same file run serially within the wave (waves 6 and 7: P16 then P17, P18 then
+P19, on gen). Waves are the expected order, not gates. Under K15, a gated item
 (P10, P11, P12, P13) whose OK isn't typed by the time its lane is free moves to the end of the queue, not waited on. An item
 whose research isn't in by the time the rest has merged moves to 0.8.x. Both research packs are in (Chanter #486, Sorcerer
 #487). If the Sorcerer or Chanter isn't verified when the rest of 0.8 is ready, 0.8.0 ships with the classes that are and the
@@ -1065,7 +1066,7 @@ place by Kaizen (Gale) through each rule's owner (owner, 2026-10-19 4:57 PM ET; 
 #### Owner input (step 5)
 
 **The go is given.** The owner typed it in the project chat on 2026-10-19 at 8:55 PM ET, for this four-class plan:
-"go ahead an launch to 0.8 when walt is done planning / adding the new classes to the plan". It records
+"i guess go ahead an launch to 0.8 when walt is done planning / adding the new classes to the plan". It records
 `owner-ok-0.8-go` (T-50, build only), effective when this redraw merges; the planner then queues 0.8 in #114. The
 earlier line "0.8 OK: build as planned" no longer applies. The looks were Design Lead's To-do (T-51, round 2
 after the owner's 2:13 PM ET notes on the first-round looks, which T-50 carried until it was re-cut; boards and spec

@@ -393,9 +393,11 @@ The same as P3, for the Chanter. Metabot has no Chanter build sample, so advice 
   - [ ] Shots of a disputed regional quest zone in a milestone row and in Next up, at 1500 and 390 px.
   - [ ] Golden diff limited to the tags.
 - **Files.** `tools/gen/gen.mjs`, `src/packs/aion2/cards/rows.js`, `src/packs/aion2/cards/nextup-kinds.js`,
-  `src/styles/cards/nextup.css`, `src/styles/packs/aion2/areas.css`, the tests.
+  `src/packs/aion2/cards/skills.js`, `src/styles/cards/nextup.css`, `src/styles/packs/aion2/areas.css`,
+  `src/styles/packs/aion2/skills.css`, the tests. `ss-tag` lives in `nextup.css` today; P20 moves it to a style the rows
+  and the Skills card share.
 - **Lanes:** gen, golden, nextup.css, rows. **Model:** Sonnet, S (44 min).
-- **After:** none.
+- **After:** none (it follows P19 on the serial gen lane).
 
 ## R: Release 0.8.0
 
