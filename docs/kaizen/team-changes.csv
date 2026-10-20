@@ -1,0 +1,13 @@
+date,time,change,was,now,source
+2026-10-18,5:13 AM,"The one-CEO setup split into owner threads, each with its own standing OK.",One CEO session ran most process work,11 owner threads,DEC-20261018-build-pipeline-standing-ok
+2026-10-18,11:12 AM,Walter became the only writer of the decisions file.,Gus,Walter,DEC-20261018-release-planner-is-the-only
+2026-10-18,12:02 PM,Design Lead (Jane) joined; Tracker Design (Skyler) now builds what Jane designs.,Skyler designed and built,"Jane designs, Skyler builds",DEC-20261018-design-lead-standing-ok
+2026-10-18,9:45 PM,"Source lookups split: Gretchen on approved sites, Lydia vets new sites and does last-resort checks.",,Gretchen and Lydia,DEC-20261018-who-looks-up-sources-game
+2026-10-18,11:11 PM,Cleaning up Isaac's screen crops moved to the Design Lead.,Gretchen,Jane,DEC-20261018-owner-crop-clean-up-is
+2026-10-19,1:58 PM,Team Audit (Gomez) started for the 1.0 team audit.,,Gomez,
+2026-10-19,3:04 PM,Rules Steward (Francesca) joined to keep the ledger and catch rule drift.,,Francesca,DEC-20261019-rules-steward-francesca-joins-each
+2026-10-19,4:56 PM,Incident Log (Hank) folded into Stall Watch (Mike); Mike alone writes the stall log.,Hank,Mike,DEC-20261019-incident-log-folds-into-stall
+2026-10-19,4:56 PM,Saul alone owns what is waiting on Isaac; flagging stale To-dos moved from Mike to Saul.,Mike,Saul,DEC-20261019-saul-owns-what-s-waiting
+2026-10-19,4:56 PM,"From 0.9, grading Gale's own rules moves to Francesca.",Gale,Francesca,DEC-20261019-from-0-9-rules-steward
+2026-10-19,4:57 PM,Gale grades the ledger rule that Francesca owns.,,Gale,DEC-20261019-kaizen-grades-the-ledger-rule
+2026-10-19,5:20 PM,Research threads fetch icons and facts for their own pack; Gretchen checks them.,Gretchen did every lookup,"Research threads, checked by Gretchen",DEC-20261019-research-threads-may-fetch-from

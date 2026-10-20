@@ -1,0 +1,15 @@
+audit,rec,text,decides,status,decision,note
+team-1.0,1,Someone other than Gale grades Gale's own rules each minor; full team audits only at majors,Isaac,scheduled,DEC-20261019-from-0-9-rules-steward,From 0.9: Francesca grades; Gale still grades the ledger rule
+team-1.0,2,Saul alone tracks what is waiting on Isaac; an OK not applied within an hour is logged as a stall,Isaac,done,DEC-20261019-saul-owns-what-s-waiting,
+team-1.0,3,"One ""who does what"" table that Saul routes from; each thread says what it does not own; stale team docs retired",Gale,partial,DEC-20261019-team-audit-recs-3-and,"Table and doc clean-up merged (#464); threads' ""don't own"" lines not all written yet"
+team-1.0,4,Move rules out of the pipeline status page into their owners' files,Gale,waiting,DEC-20261019-team-audit-recs-3-and,Waits until 0.8.0 ships
+team-1.0,5,Fold Incident Log (Hank) into Stall Watch (Mike),Isaac,done,DEC-20261019-incident-log-folds-into-stall,
+team-1.0,6,Check completeness before a release: Jesse plays the release candidate; Gretchen checks every release-note promise is in the build,Isaac; Gale for Gretchen's check,done,DEC-20261019-player-testing-plays-each-minor,"Gretchen's check widened PLN-18 (#474, ROADMAP #475); first used at 0.8.0"
+team-1.0,7a,"Francesca drops her per-merge ""row exists"" check, which CI already does",Gale,done,DEC-20261019-team-audit-recs-3-and,#464
+team-1.0,7b,Gale samples Walter's checks of new decisions instead of re-checking them all,Gale,done,DEC-20261019-team-audit-recs-3-and,KZ-03
+team-1.0,7c,Design asks go to Jane first,Gale,open,,No ledger change yet
+team-1.0,7d,Research packs may fetch their own icons; Gretchen verifies,Gale,done,DEC-20261019-research-threads-may-fetch-from,ROL-03
+team-1.0,7e,Mike flags approved work nobody has started within one health check,Gale,open,,No ledger row yet
+team-1.0,7f,A new standing thread needs Isaac's one-line OK,Isaac,open,,Changes the roster rule; goes to Isaac's debrief
+team-1.0,7g,A copy box goes to Isaac only after its owner has checked it covers everything,Gale,open,,No ledger row yet
+team-1.0,7h,"The health line records every run, even a clear one",Gale,open,,Audit asked Mike to confirm
