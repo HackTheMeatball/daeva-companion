@@ -39,15 +39,15 @@ Row costs for the 7 classes, in plan order (a/b means two cheapest paths give di
 2. **Two rows cost 0** (Ranger Focused Eye 1 of 2, Templar Guarding Seal 1 of 2). The node lies on an earlier row's
    path, so buying that row already buys it. Taking it as its own row *before* that row gives the same points in a
    better order. Proposal: move each one ahead of the row whose path buys it.
-3. **Points versus plan, Assassin.** Points by level: 4 per level past 11 (`rule:crystals-per-level`, single source,
-   inferred), so 116 at Lv 40 and 136 at Lv 45, plus Daevanion Crystals from rewards. The data has 80 crystals in
-   regional quest and Sealed Dungeon rewards, at most about 49 of them before Lv 45 by recommended level. That a crystal
-   is worth one point is **inferred**. The Assassin plan costs 184 by its last row (Triniel at Lv 40), against at most
-   about 165 at Lv 40. The plan finishes around Lv 45 at the earliest, and its rows wait on points, not on the level.
-   Next up already gates a tick on points left (`dvGateOf`). For the "best thing to do" bar, row order is the
-   recommendation that matters when points run short. Owner check: the board's points total at Lv 40 and at Lv 45 on
-   the Assassin, which settles both the per-level rule and the crystal value.
-4. **The 7 other classes spend 39–60 of about 136–216 points.** Vaizel and Triniel have no plan rows
+3. **Points versus plan: the plan is affordable.** Points come from levels: 4 per level past 11, 136 by Lv 45
+   (`rule:crystals-per-level`). daevaguides gives the same 136, crediting Metabot, so this is now 2 sources. A crystal is
+   1 point. Crystals also come from regional quests (1 each, 58 per faction) and Sealed Dungeons (2 each); daevaguides
+   and our data agree on both. By recommended level / band in our data, the total is 106 by Lv 20, 181 by Lv 30, 262 by
+   Lv 40 and 314 by Lv 45. The Assassin plan costs 184 by its last row (Triniel, Lv 40), so a player who does the side
+   content can afford every row when it opens. Row order matters only for a player who skips it. Next up already gates
+   each tick on the points left (`dvGateOf`). (An earlier draft summed the crystals wrongly, found only 49, and said the
+   plan outran the points. That was a counting error in the script, not the data.)
+4. **The 7 other classes spend 39–60 of up to ~314 points by Lv 45.** Vaizel and Triniel have no plan rows
    (`2026-10-choice-points.md` §3), so 76+ points go unrecommended. That is a no-pick choice (`noPick: no-source`) until
    a source gives those boards' paths. No source in the data gives one for these classes.
 5. **Path nodes are not plan rows.** A row's cheapest path buys other nodes on the way (for example, the Assassin's direct
