@@ -367,13 +367,13 @@ Rules for every item:
   on one key (note 13).
 - **Result.** Game Data Check's answer is applied to the Assassin's `keyStacks` and default keys; if the stack is
   right, the research file says so and this item closes with no change.
-- **Inputs.** `docs/research/` file named with `e-stigma-stack` (Game Data Check).
+- **Inputs.** `docs/research/` file named with `e-stack` (Game Data Check).
 - **Files.** `data/packs/aion2/asmodian/assassin/builds.json`, `data/packs/aion2/asmodian/assassin/guide/*.json`.
 - **No-gos.** Other classes are not changed here.
 - **Acceptance.**
   - [ ] Shot of the Assassin's key setup before and after (or the research line that closes it).
 - **Lanes:** gen, golden. **Model:** Opus, S (44 min).
-- **After:** research-e-stigma-stack.
+- **After:** research-e-stack.
 
 ## P18: How the rotation plays out
 

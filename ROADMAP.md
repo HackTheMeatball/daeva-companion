@@ -1280,7 +1280,7 @@ workflows).
 | P14 | ARCHITECTURE drifted → matches a fresh run, describes the 1.0 save contract | S | Sonnet | architecture, run-mjs | P9, P10 |
 | P15 | Choice points with no pick (Ranger and Spiritmaster specialties, slots 2–3, effective level) → gen check (K25) and sourced picks | M | Opus | gen, golden, skills-card, nextup-card | `research-choice-points` |
 | P16 | Board paths and costs checked for the Assassin only (note 14) → every class | M | Opus | gen, golden, daevanion-card | `research-node-paths` |
-| P17 | Assassin E stigma stack on one key? (note 13) → research answer applied | S | Opus | gen, golden | `research-e-stigma-stack` |
+| P17 | Assassin E stigma stack on one key? (note 13) → research answer applied | S | Opus | gen, golden | `research-e-stack` |
 | P18 | Rotation lists order, not play (note 15) → "how it plays" text per class | M | Opus | gen, golden, build-card | `research-rotation-play` |
 | P19 FR | Lv 39 join: 70–77 skill clicks in unlock order (note 10) → one row and one tap per skill | L | Opus | skills-card, nextup-card, app.css, golden, golden-nextup | P15 (input: `docs/design/0.9-loadout-mockup.md`) |
 | P20 FR | Daevanion ~22 ticks, no per-board or Stigma respec (note 9) → board rows, respec per board and all, Stigma respec | M | Opus | app.css, golden, daevanion-card | P16, `research-respec` (input: `docs/design/0.9-loadout-mockup.md`) |
@@ -1294,7 +1294,7 @@ workflows).
 | R FR | Release 0.9.0 | S | Sonnet | release, alone | everything above, or moved; GO 0.9.0 |
 
 Not bot items (they run alongside): Game Data Check does the four research gates, naming each file with its slug
-(`choice-points`, `node-paths`, `e-stigma-stack`, `rotation-play`, and Design Lead's data asks `respec` and `bindable-keys`) so kickoff finds it, plus the owner's Vaizel Assault Stance
+(`choice-points`, `node-paths`, `e-stack`, `rotation-play`, and Design Lead's data asks `respec` and `bindable-keys`) so kickoff finds it, plus the owner's Vaizel Assault Stance
 (4 or 5) re-check. Design Lead mocks the catch-up flow (notes 9, 10 and UX findings 4, 6–8) and the key setup sheet
 (notes 11, 12), tagged for fresh review; a Design Critic briefed by Design Review reads them before the owner does. Design
 Lead and Source Vetting run the 1.0 look's blind check (3–5 people, a non-gamer among them) for 0.11. Watchdog and Build
