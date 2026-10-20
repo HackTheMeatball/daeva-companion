@@ -190,7 +190,7 @@ if (g) {
   packFails('a listed file that does not exist', r => rmSync(join(r, 'aion2/items.json')), /pack aion2: listed file items\.json does not exist/);
   packFails('a JSON file in a pack folder that is not listed', r => writeFileSync(join(r, 'aion2/asmodian/extra.json'), '{}'), /pack aion2\/asmodian: .*not listed in pack\.json: extra\.json/);
   packFails('an unknown parent', r => editManifest(r, guide, m => { m.parent = 'aion2/elyos'; }), /aion2\/asmodian\/assassin parent: unknown pack "aion2\/elyos"/);
-  packFails('an unknown pack in uses', r => editManifest(r, guide, m => { m.uses = ['aion2/classes/templar']; }), /uses: unknown pack "aion2\/classes\/templar"/);
+  packFails('an unknown pack in uses', r => editManifest(r, guide, m => { m.uses = ['aion2/classes/no-such-class']; }), /uses: unknown pack "aion2\/classes\/no-such-class"/);
   packFails('a cycle (the class uses the guide that uses it)', r => editManifest(r, 'aion2/classes/assassin', m => { m.uses = [guide]; }), /pack cycle: /);
   let gc = null; try { gc = generate({ root: packsCopy('copy', () => {}), pack: guide }); } catch (e) { ok('generator runs on a copied packs root', false, e.message); }
   if (gc) ok('--root / --pack: an unchanged copy of data/packs, pack ' + guide + ', compiles the same modules', gc.module === g.module && gc.gateModule === g.gateModule && gc.proposedModule === g.proposedModule);
@@ -199,7 +199,10 @@ if (g) {
      The idle checks run on a copy where the Spiritmaster is idle again: its guide pack removed, its class hidden. */
   const SM = 'aion2/classes/spiritmaster', editJson = (root, f, fn) => { const p = join(root, SM, f), d = JSON.parse(readFileSync(p, 'utf8')); fn(d); writeFileSync(p, JSON.stringify(d)); };
   const makeIdle = r => { rmSync(join(r, 'aion2/asmodian/spiritmaster'), { recursive: true, force: true }); editJson(r, 'class.json', d => { d.records[0].release = 'hidden'; }); };
-  ok('data/packs has no idle class pack (every class pack has its guide pack since 0.7 P4)', !(g.idle || []).length, (g.idle || []).map(x => x.pack));
+  /* 0.8 P2: the Templar class pack ships hidden with no guide pack yet, so it is the one idle pack in data/packs */
+  const tp = (g.idle || []).find(x => x.pack === 'aion2/classes/templar'), tpColl = f => tp ? tp.all.filter(x => x.file.endsWith('/' + f)).length : 0;
+  ok('data/packs has one idle class pack, aion2/classes/templar (0.8 P2, hidden, no guide pack yet): 1 class, 22 skills, 13 stigmas, 537 board nodes', (g.idle || []).length === 1 && !!tp
+    && tpColl('class.json') === 1 && tpColl('skills.json') === 22 && tpColl('stigmas.json') === 13 && tpColl('board-nodes.json') === 537, [(g.idle || []).map(x => x.pack), tpColl('skills.json'), tpColl('board-nodes.json')]);
   let gi = null; try { gi = generate({ root: packsCopy('idle', makeIdle) }); } catch (e) { ok('generator runs on a copy with an idle Spiritmaster', false, e.message); }
   const sm = gi && (gi.idle || []).find(x => x.pack === SM), smColl = f => sm ? sm.all.filter(x => x.file.endsWith('/' + f)).length : 0;
   ok('idle class pack aion2/classes/spiritmaster (copy): 1 class, 22 skills, 13 stigmas, 537 board nodes, checked by the generator, modules unchanged', !!sm && smColl('class.json') === 1 && smColl('skills.json') === 22
