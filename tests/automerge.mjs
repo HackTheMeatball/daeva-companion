@@ -43,6 +43,37 @@ check(/wait on DESIGN OK/.test(designBlocker(SHOTS, [c('claude[bot]', 'Looks fin
 const loop = yml.slice(yml.indexOf('for (const pr of prs)'), yml.indexOf('github.rest.pulls.merge('));
 check(/const design = designBlocker\(files, comments, sha, headAt\);\s*\n\s*if \(design\) \{.*continue; \}/.test(loop), 'merge loop: designBlocker runs and skips before a PR is merged');
 
+// Data check (ROL-03): a data or research PR waits for Game Data Check's VERIFIED on its head (Chanter pack #486 merged without it).
+const d = yml.match(/\/\/ DATA-CHECK START[^\n]*\n([\s\S]*?)\n\s*\/\/ DATA-CHECK END/);
+check(!!d, 'auto-merge.yml has the DATA-CHECK block');
+if (!d) { console.log('AUTOMERGE CHECKS FAILED'); process.exit(1); }
+const dataBlocker = new Function('owner', 'core', d[1] + '\nreturn dataBlocker;')('HackTheMeatball', { info: () => {} });
+const RPR = { head: { ref: 'claude/research-chanter-nrffuq' }, title: 'research: Chanter pack' };
+const TPR = { head: { ref: 'claude/project-thread-w57upj' }, title: 'Research: Cleric pack for 0.8' };
+const BPR = { head: { ref: 'claude/issue-491-1' }, title: '0.8 P2: Templar class data' };
+const GPR = { head: { ref: 'claude/game-data-check-q6vdab' }, title: 'data: Metabot backs 5 unlock levels' };
+const CODE = ['src/main.js', 'tests/site.js'];
+const PACK = ['data/packs/aion2/elyos/templar/class.json', 'src/main.js'];
+const V = (body, min = 9) => c('HackTheMeatball', body, min);
+check(dataBlocker(BPR, CODE, [REVIEW], SHA, HEAD) === '', 'code-only build PR -> no wait');
+check(dataBlocker(BPR, ['data/schema/quest.schema.json'], [REVIEW], SHA, HEAD) === '', 'data/schema only -> no wait');
+check(/waits on Game Data Check/.test(dataBlocker(BPR, PACK, [REVIEW], SHA, HEAD)), 'build PR touching data/packs, no verdict -> waits');
+check(/waits on Game Data Check/.test(dataBlocker(BPR, ['docs/research/templar.md'], [REVIEW], SHA, HEAD)), 'docs/research file -> waits');
+check(/waits on Game Data Check/.test(dataBlocker(BPR, ['src/assets/icons/skills/x.webp'], [REVIEW], SHA, HEAD)), 'an icons/ file -> waits');
+check(/waits on Game Data Check/.test(dataBlocker(RPR, CODE, [REVIEW], SHA, HEAD)), 'research branch, no verdict -> waits (the #486 case)');
+check(/waits on Game Data Check/.test(dataBlocker(TPR, CODE, [REVIEW], SHA, HEAD)), 'title "Research: ..." on a thread branch, no verdict -> waits');
+check(dataBlocker(GPR, PACK, [REVIEW], SHA, HEAD) === '', "Game Data Check's own data PR -> no wait on itself");
+check(dataBlocker(RPR, PACK, [REVIEW, V('**Game Data Check (ROL-03) on abc1234: VERIFIED.** All fixed.')], SHA, HEAD) === '', 'VERIFIED on the head after the APPROVE -> merges');
+check(/says CHANGES/.test(dataBlocker(RPR, PACK, [REVIEW, V('**Game Data Check (ROL-03) on abc1234: CHANGES.**', 3)], SHA, HEAD)), 'CHANGES on the head, APPROVE after it -> waits');
+check(/says HOLD/.test(dataBlocker(RPR, PACK, [V('**Game Data Check (ROL-03) on abc1234: HOLD.**')], SHA, HEAD)), 'HOLD on the head -> waits');
+check(/does not cover the head/.test(dataBlocker(RPR, PACK, [V('**Game Data Check (ROL-03) on 9999999: VERIFIED.**')], SHA, HEAD)), 'VERIFIED on a stale head -> waits');
+check(/does not cover the head/.test(dataBlocker(RPR, PACK, [V('**Game Data Check (ROL-03) on abc1234: VERIFIED.**', -3)], SHA, HEAD)), 'VERIFIED older than the head commit -> waits');
+check(/waits on Game Data Check/.test(dataBlocker(RPR, PACK, [V('~~**Game Data Check (ROL-03) on abc1234: VERIFIED.**~~ [Edit: merged early]')], SHA, HEAD)), 'struck-out VERIFIED -> ignored, waits');
+check(/waits on Game Data Check/.test(dataBlocker(RPR, PACK, [c('someone-else', '**Game Data Check (ROL-03) on abc1234: VERIFIED.**', 9)], SHA, HEAD)), 'verdict from another account -> ignored, waits');
+check(/says CHANGES/.test(dataBlocker(RPR, PACK, [V('**Game Data Check (ROL-03) on abc1234: VERIFIED.**', 6), V('**Game Data Check (ROL-03) on abc1234: CHANGES.**', 8)], SHA, HEAD)), 'later CHANGES wins');
+check(dataBlocker(RPR, PACK, [V('**Game Data Check (ROL-03) on abc1234: CHANGES.**', 6), V('**Game Data Check (ROL-03) on abc1234: VERIFIED.**', 8)], SHA, HEAD) === '', 'later VERIFIED after CHANGES -> merges');
+check(/const data = dataBlocker\(pr, files, comments, sha, headAt\);\s*\n\s*if \(data\) \{.*continue; \}/.test(loop), 'merge loop: dataBlocker runs and skips before a PR is merged');
+
 console.log(`\n${n - fail}/${n} auto-merge checks passed`);
 console.log(fail ? 'AUTOMERGE CHECKS FAILED' : 'AUTOMERGE CHECKS PASSED');
 process.exit(fail ? 1 : 0);
