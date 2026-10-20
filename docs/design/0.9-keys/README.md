@@ -64,9 +64,11 @@ bump before 1.0.
   "Other key…" (type it). Picking a mouse button adds "Needs AION 2 control mode".
 - Not promised until the owner checks it in game: Ctrl + mouse, the mouse wheel, and a second key per slot.
 
-**New question, for Game Data Check (D4):** Metabot says a stigma works only while it's in a stigma slot (9–12, keys 5–8).
-If so, the guide's E column, which stacks the stigmas on E with the openers, can't be bound as drawn, and the stigmas
-need their own column. This is a guide data question that comes before the Key setup build (and before F1).
+**D4, stigma slots** (Game Data Check, `docs/research/2026-10-stigma-slots.md`): not settled. Metabot says a stigma
+works only while it's registered to a stigma slot (9–12, keys 5–8). Two other guides stack stigmas with regular skills,
+but neither says on which slot. So the build shows the safe reading: **each stigma on its own key, 5–8 (the game's
+default)**, and the guide's E stack labelled "check in game", until the owner tries it (to-do T-61). The frames here draw the
+E stack; that's what changes if the check fails. "Coming to E" becomes "Stigma keys 5–8".
 
 ## 12. Icons fill the key boxes
 
