@@ -88,14 +88,8 @@ check(/not understood/.test(await afterBlocker(unkeyed('owner-ok-0.7-sync.', '0.
 check(/not understood/.test(await afterBlocker(unkeyed('owner-ok-met.', null))), 'K12: unversioned issue with an owner-ok key stays unstarted (fails closed)');
 check((await afterBlocker(unkeyed('owner-ok-met.', '0.6.1'))) === '', '0.6.1 patch item keeps its old token -> starts');
 
-// The build cap: 8 until 06:40 UTC Oct 20 (owner, 2026-10-19), then 5 again with no further change.
-const capm = yml.match(/MAX = (Date\.now\(\) < Date\.parse\('[^']+'\) \? \d+ : \d+);/);
-check(!!capm, 'kickoff: MAX is a dated cap');
-if (capm) {
-  const capAt = (iso) => new Function('Date', `return ${capm[1]};`)({ now: () => Date.parse(iso), parse: Date.parse });
-  check(capAt('2026-10-20T06:39:00Z') === 8, 'cap is 8 before 06:40 UTC Oct 20');
-  check(capAt('2026-10-20T06:40:00Z') === 5, 'cap is back to 5 at 06:40 UTC Oct 20');
-}
+// The build cap is 5 (owner's Max 20x plan); the 0.8 overnight 8 ended at 06:40 UTC Oct 20 (owner, 2026-10-19).
+check(/const STATE = 114, MAX = 5;/.test(yml), 'kickoff: the build cap is a plain 5');
 
 // The start loop runs the check on every [next] line before it starts one.
 const notes = yml.slice(yml.indexOf('const wait = await afterBlocker(kx);'), yml.indexOf('picked.push('));
@@ -184,7 +178,16 @@ const lmo = (line) => `- **Problem.** x\n\n## Lanes, model, order\n\nLanes: gen.
 check(fx.inputPaths(lmo('Inputs: docs/plans/0.8/inputs/design-v4/, data/research/x.csv')).repo.join() === 'docs/plans/0.8/inputs/design-v4/,data/research/x.csv', '"Inputs: a, b" line read, a directory path kept');
 check(fx.inputPaths(lmo('Inputs: none')).repo.length === 0 && fx.inputPaths(lmo('Inputs: none')).mnt.length === 0, '"Inputs: none" names nothing');
 check(fx.inputPaths(lmo('Inputs: ~/Desktop/crop.png, docs/a.md')).mnt.join() === '~/Desktop/crop.png' && fx.inputPaths(lmo('Inputs: ~/Desktop/crop.png, docs/a.md')).repo.join() === 'docs/a.md', 'an input outside the repo (~/) holds the item like /mnt/');
-check(existsSync(join(ROOT, ...'docs/research/2026-10-templar-pack.md'.split('/'))), 'template Example: its Inputs paths exist on this branch (keep the example honest)');
+const exIns = fx.inputPaths(exs).repo;
+check(exIns.length === 2 && exIns.every((x) => existsSync(join(ROOT, ...x.split('/')))), 'template Example: both its Inputs paths exist on this branch (keep the example honest)');
+// #535 review nits: the bullet's prose isn't split into paths, a plain "Inputs:" line is; a No-gos bullet naming /mnt/ is no input.
+check(fx.inputPaths(bullet('`src/x.js`', '- **Inputs.** The notes in data/research/x.csv, see `docs/a.md`.\n')).repo.join() === 'docs/a.md', 'Inputs bullet: only backticked paths count, not bare words in its prose');
+check(fx.inputPaths(lmo('Inputs: data/research/x.csv docs/a.md')).repo.join() === 'data/research/x.csv,docs/a.md', '"Inputs:" line: plain paths split on spaces too');
+check(fx.inputPaths(bullet('`src/x.js`', '- **No-gos.** Never read /mnt/project-files/ from a build.\n')).mnt.length === 0, 'a No-gos bullet naming /mnt/ does not hold the item');
+check(fx.inputPaths(bullet('`src/x.js`', '- **No-gos.** Nothing else.\n- **Result.** Per /mnt/project-files/x.png.\n')).mnt.join() === '/mnt/project-files/x.png', 'a /mnt/ path outside No-gos still holds the item');
+// A held note under a lane-blocked line is re-read (#503 kept a stale "not understood" note), and a note whose reason changed is replaced.
+check(/if \(overlap\(want, busy\)\) \{[\s\S]{0,600}held: After not understood\/\.test\(lines\[i \+ 1\][\s\S]{0,300}afterBlocker\(kxOf\([\s\S]{0,120}lines\.splice\(i \+ 1, 1\)[\s\S]{0,80}continue;/.test(yml), 'start loop: a lane-blocked line re-reads its After line and drops a stale not-understood note');
+check(/else if \(!\/held: input not in repo\/\.test\(lines\[i \+ 1\]\)\) \{ lines\[i \+ 1\] = note;/.test(yml) && /else if \(!\/held: After not understood\/\.test\(lines\[i \+ 1\]\)\) \{ lines\[i \+ 1\] = `  - held: After not understood/.test(yml), 'start loop: a held note with an outdated reason is replaced, not kept');
 check((await afterBlocker(exAfter('none.'))) === '', 'template form, After: none -> starts');
 check((await afterBlocker(exAfter('P1.'))) === '', 'template form, one key -> starts');
 check((await afterBlocker(exAfter('`P1`, `research-templar`, `owner-ok-0.8-icon-box`.'))) === '', 'template form, backticked keys -> starts');
