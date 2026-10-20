@@ -229,6 +229,26 @@ on purpose: the guide shows nothing rather than an unverified value.
   | st-templar-shield-of-protection.png | Shield of Protection | <https://metabot.gg/en/aion-2/skills/shield-of-protection> | <https://metabot.gg/web/aion2/skills/12110000.webp> | 2026-10-19 |
   | st-templar-taunt.png | Taunt | <https://metabot.gg/en/aion-2/skills/taunt> | <https://metabot.gg/web/aion2/skills/12120000.webp> | 2026-10-19 |
 
+- **Templar passive icons: eight for the owner** (0.8 P2, #491). Metabot's passive icon files don't match the owner's
+  screens for some passives (Game Data Check, `passive-icons-templar-cleric-2026-10-20.md`), so the class data does not
+  take Metabot's file names on trust. That comparison file was not readable in the P2 build, so only the two passives
+  with a match on record are settled; the eight others carry `fieldStatus` `icon: owner-check` in
+  `data/packs/aion2/classes/templar/skills.json` and get no icon until the owner's tooltip screenshots (or the Game Data
+  Check file, if it shows a match) name the art. P3 must not wire their staged `sk-templar-*` files before then.
+
+  | Passive | Learn Lv | Icon | Why |
+  |---|---|---|---|
+  | Enhance Health | 1 | `sk-templar-enhance-health.png` (staged; P3 moves it) | unlocked on the owner's Lv 4 screen, matched by eye (templar research §3) |
+  | Impact Hit | 15 | `assets/icons/sk-impact-hit.png` (the Assassin's `13760000`, shipped) | owner-screen art is the Assassin's file (0.8 plan P2); Metabot's Templar file `12760000` (`sk-templar-impact-hit.png`) is not it |
+  | Warding Shield | 6 | none: owner-check | no match on record |
+  | Punishing Benediction | 9 | none: owner-check | no match on record |
+  | Ironclad Defense | 11 | none: owner-check | no match on record |
+  | Guarding Seal | 13 | none: owner-check | no match on record |
+  | Insulting Roar | 17 | none: owner-check | no match on record |
+  | Fury | 21 | none: owner-check | no match on record |
+  | Survival Willpower | 23 | none: owner-check | no match on record |
+  | Block Pain | 25 | none: owner-check | no match on record |
+
 - **Chanter skill and stigma icons: saved before the guide item, three missing** (0.8 class research, 2026-10-19
   8:39–8:43 PM ET, docs/research/2026-10-chanter-pack.md §7). 32 of 35 (19 skills, 13 stigmas) came from Metabot under
   the standing icon OK (owner, 2026-10-14). Staged in `data/packs/aion2/asmodian/chanter/icons/` (256 px WebP → 128 px

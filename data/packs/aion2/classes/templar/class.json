@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/classes.schema.json",
+  "schemaVersion": 2,
+  "collection": "classes",
+  "class": "templar",
+  "records": [
+    {
+      "id": "class:templar",
+      "class": "templar",
+      "name": "Templar",
+      "release": "hidden",
+      "defaultBuild": "build:templar:guide",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/templar",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "notes": [
+        "Hidden until 0.8 P3 adds its guide pack (data/packs/aion2/asmodian/templar/, which defines build:templar:guide) and lists it in the class picker."
+      ]
+    }
+  ]
+}
