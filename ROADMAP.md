@@ -1141,6 +1141,23 @@ Decisions recorded on the tracker:
   gate): **Tracker: Reports tab** now (Design Lead designs it, Tracker Design builds what she approves, the morning
   debrief reports land there), then **Tracker 2.0**, a redesign of every tab, as a side project.
 
+### 0.8.1 — data and bug fixes after 0.8.0 (Release Planner, 2026-10-20)
+
+A patch, no planning pass. From the owner's Lv 39 notes (2026-10-20 12:18 PM ET), Player Testing's RC report #586 and
+Game Data Check's research (#570, #584). Specs: [docs/plans/0.8.1/README.md](docs/plans/0.8.1/README.md).
+
+- **F1** Assassin Daevanion: cost boxes pre-filled from the owner's boards, Combat Speed corner, on-path rows (gen, golden).
+- **F2** A labelled specialty pick in every guide skill's slot 2 (gen, golden).
+- **F3** Specialty rows placed by effective skill level (golden, nextup; after F1).
+- **F4** RC play fixes: page title on class pick, a tooltip typo, one legend per card (a11y).
+- **F5** Gladiator and Ranger rotation icons (gen; after Game Data Check commits the files).
+- **F6** Size trim: page gzip under 90% of its budget, no visible change.
+- **F7, F8** Respec buttons in Basic; recommended specialty in Next up: new looks, so 0.9 unless the owner says "now"
+  (owner rule 2026-10-18 10:40 PM ET; decision card in the Release planning thread).
+
+Also: #585 (simpler link preview) merges after the v0.8.0 tag. Release: `PRE-RELEASE CHECK 0.8.1`, then the release
+item after `DATA OK 0.8.1`; no RC play or freeze for a patch. Owner notes 9–16 go to the 0.9 pass (triage in #232).
+
 ### 0.9 — the 1.0 audit's fixes
 
 The classes moved into 0.8 (owner, 2026-10-19 8:30 PM ET). 0.9 carries the 1.0 audit's fixes as found, plus any class
