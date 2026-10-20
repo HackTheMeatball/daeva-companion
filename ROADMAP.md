@@ -1343,7 +1343,10 @@ Under the standing OK until 1.0 most of 0.9 needs nothing from the owner. What i
 ### 0.10 — The 1.0 look (estimate)
 
 Design Lead's app design review for 1.0 (owner, 2026-10-19 1:57 PM ET): the blind check run in 0.9, a visual language
-mocked and approved by Design Lead after a fresh or outside review (owner, 2026-10-20 5:24 PM ET), then built card by card. Cards stop
+mocked and approved by Design Lead after a fresh or outside review (owner, 2026-10-20 5:24 PM ET), then built card by card. **Class colour themes** (owner, 2026-10-20 5:32 PM ET: "i did want custom color themes for
+each class"; DECISIONS "Class colours", 2026-10-13, approved the mapping, values in `docs/research/colors-2026-10/`, never
+built): per-class accent tokens for the class chip and switcher and the active class's accents, designed inside the 1.0
+visual language by Design Lead, reviewed by Design Review and an outside critic, built as a bot item. Cards stop
 reading each other's DOM (architecture audit C3), which makes "add a feature" cheaper. The same step shown in three places
 (UX audit finding 12) is settled here. **Microscope pass (owner, 2026-10-20 5:24 PM ET):** before the 1.0 candidate, every
 card, feature, element, section and function is reviewed against its purpose: Design Review (Holly) for looks, Code Review
