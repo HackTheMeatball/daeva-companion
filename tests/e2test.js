@@ -176,7 +176,9 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
   ok('stigma plan TD / IC / Swift Contract / Savage Fang', bd.plan.join('|') === "Triniel's Dagger|Illusive Clone|Swift Contract|Savage Fang", bd.plan);
   ok('skills after the core eight in build.json order', bd.extra.join('|') === BUILD.spOrderAfterCore.order.join('|'), bd.extra);
   ok('Defense Break uses its flat Lv 21 gate; extra skills stay out of milestones', bd.flat.every(x => x === 21) && !bd.msExtra, bd);
-  ok('Vaizel / Triniel nodes from build.json (keys dv:v:* / dv:t:*, corners named)', bd.vz.includes('dv:v:db=Defense Break') && bd.vz.includes('dv:v:corner=Critical Damage Boost corner') && bd.tr.includes('dv:t:corner=Multi-Hit Chance corner') && bd.vz.length === 6 && bd.tr.length === 6, bd);
+  ok('Vaizel / Triniel nodes from build.json (keys dv:v:* / dv:t:*, corners named)', bd.vz.includes('dv:v:db=Defense Break') && bd.vz.includes('dv:v:corner=Critical Damage Boost corner') && bd.tr.includes('dv:t:corner=Multi-Hit Chance corner') && bd.vz.length === 8 && bd.tr.length === 6, bd);
+  /* 0.8.1 F1: the corner's path buys Ambush and Exploit Weakness, plan rows of their own just before it (owner's board) */
+  ok('Vaizel: Ambush and Exploit Weakness just before the corner', bd.vz.slice(-3).join('|') === 'dv:vaizel:r11c9=Ambush|dv:vaizel:r13c11=Exploit Weakness|dv:v:corner=Critical Damage Boost corner', bd.vz);
   await setState(p, { L: 27, q: 'Preparations for Restoration', extra: { stLv: { "Triniel's Dagger": 9 }, stShards: 50 }, ticks: { 'g27:0': true } });
   const sp = await p.evaluate(() => stPlan().map(s => s.x.name + ' ' + s.L));
   ok('stigma upgrades: Triniel\'s Dagger to 10, then Illusive Clone toward 20', sp[0] === "Triniel's Dagger 10" && sp[1] === 'Illusive Clone 2' && sp[sp.length - 1] === 'Illusive Clone 20' && sp.length === 20, sp);

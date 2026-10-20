@@ -15,6 +15,7 @@ import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
 import { ROOT, validateDoc } from './validate.mjs';
 import { DEFAULT_PACK, DEFAULT_ROOT, resolvePacks } from './packs.mjs';
+import { checkPlanCosts } from './board-path.mjs';
 const require = createRequire(import.meta.url);
 
 /* ------------------------------------------------------------------ load */
@@ -229,9 +230,29 @@ export function generate(opts = {}) {
     const board = e.node ? boardById[nodeById[e.node].board] : boardById[nodeById[e.anyNode[0]].board];
     const ty = e.anyNode ? 'c' : sk(nodeById[e.node].skill).type === 'passive' ? 'p' : 'a';
     const k = e.node ? nodeById[e.node].key : e.key;
-    return { k, dv: true, board: board.name, blv: e.requires.level, ty, t: e.label, ...(e.via ? { via: e.via } : {}) };
+    return { k, dv: true, board: board.name, blv: e.requires.level, ty, t: e.label, ...(e.via ? { via: e.via } : {}), ...(e.cost !== undefined ? { cost: e.cost } : {}) };
   };
   for (const e of build.boardPlan) for (const n of e.node ? [e.node] : e.anyNode) if (!nodeById[n]) throw new Error('board plan: unknown node ' + n);
+  /* plan costs (0.8.1 F1): a row's `cost` (what the cost box pre-fills) is the owner's board number, cited with fields
+     ["cost"]; on every board with costs, the cheapest path in plan order (board-path.mjs; an anyNode row costs its first
+     node, the guide's pick) must give each row's cost. A listed exception stays the owner's number and is reported for an
+     owner re-check; an exception that no longer differs is stale. */
+  const PATH_COST_EXCEPTIONS = {
+    'node:assassin:vaizel:r5c13': "Vaizel Assault Stance: the cheapest path (via r6c12, r5c12) gives 4, the owner's board says 5; the owner's 5 stands until an owner re-check (Release Planner, 2026-10-20)",
+  };
+  report.pathCost = [];
+  for (const e of build.boardPlan.filter(e => e.cost !== undefined))
+    check(`${build.id} boardPlan ${e.node || e.key}: cost has its source (owner screen or page, fields: cost)`, (e.sources || []).some(r => (r.owner || r.url) && (r.fields || []).includes('cost')));
+  for (const b of boards) {
+    const es = build.boardPlan.filter(e => nodeById[e.node || e.anyNode[0]].board === b.id).sort(byNum('order'));
+    if (!es.some(e => e.cost !== undefined)) continue;
+    const got = checkPlanCosts(nodes.filter(n => n.board === b.id), es.map(e => ({ node: e.node || e.anyNode[0], cost: e.cost })));
+    es.forEach((e, i) => { if (e.cost === undefined) return;
+      const id = e.node || e.anyNode[0], ok = got[i].includes(e.cost), ex = PATH_COST_EXCEPTIONS[id];
+      if (ex) { check(`board path: exception ${id} still differs`, !ok, got[i]); report.pathCost.push({ row: `${b.name} ${e.label}`, cost: e.cost, path: got[i], exception: ex }); warn('board path: ' + ex); }
+      else check(`board path: ${b.name} ${e.label} costs ${e.cost} on its cheapest path`, ok, got[i]); });
+  }
+  for (const id of Object.keys(PATH_COST_EXCEPTIONS)) if (nodeById[id] && build.boardPlan.some(e => e.node === id)) check(`board path: exception ${id} has a cost`, build.boardPlan.some(e => e.node === id && e.cost !== undefined));
   /* DV_BOARDS (v1 constant, kept as a page global): the boards whose plan nodes all open with the board, Vaizel and Triniel */
   const DV_BOARDS = {};
   for (const b of boards.slice().sort(byNum('lv'))) {
