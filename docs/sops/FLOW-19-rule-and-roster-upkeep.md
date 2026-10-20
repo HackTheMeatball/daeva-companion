@@ -41,7 +41,7 @@ A merge that changes a rule or decision, a thread joining, folding or ending, or
 ## Failure and escalation
 
 - A rule found with two homes: point one at the other (Q-14).
-- Francesca never decides, grades or changes a rule; she sends it to its owner or [FLOW-15](FLOW-15-process-change.md).
+- Francesca never decides, grades or changes a rule; such a finding goes to the rule's owner or [FLOW-15](FLOW-15-process-change.md).
 
 ## Rules it runs on
 

@@ -5,7 +5,7 @@ here. Where this page and a rule's home differ, the home wins and this page is f
 
 ## Purpose
 
-Add a skill, stigma, item or map icon only from an approved source, with its provenance recorded, and fall back to a cleaned owner crop only when no source has it.
+Add a skill, stigma or item icon only from an approved source, with its provenance recorded, and fall back to a cleaned owner crop only when no source has it.
 
 ## Trigger
 
@@ -41,7 +41,7 @@ An item spec or research pack needs an icon that is not in `src/assets/icons/`.
 ## Failure and escalation
 
 - No approved source and no crop: an item on Isaac's list, not a guessed icon.
-- Any other new game art (screens, maps, logos) needs Isaac's OK (REPO-08).
+- Any other new game art, map icons included, needs Isaac's OK (REPO-08); the map icons in use came from DEC-20261018-map-icons.
 
 ## Rules it runs on
 
@@ -50,6 +50,7 @@ An item spec or research pack needs an icon that is not in `src/assets/icons/`.
 - [DEC-20261020-daevacompass-icon-source](../DECISIONS.md): daevacompass.com approved
 - [DEC-20261018-owner-crop-clean-up-is](../DECISIONS.md): crop clean-up
 - [ROL-03](../DECISIONS.md): Gretchen verifies
+- [DEC-20261018-map-icons](../DECISIONS.md): map icons were an owner OK
 
 ## Last confirmed by owner
 

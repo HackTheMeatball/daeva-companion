@@ -11,9 +11,11 @@ one-off Process Mapper for Rules Steward (Francesca), who keeps it current.
   SOP and a rule's home differ, the home wins and the SOP is fixed.
 - **Status:** `draft` until the flow's owner confirms the SOP matches what they actually do; then `confirmed`, with the
   date in its "Last confirmed by owner" section.
-- **Checked by CI:** `tests/ledger.mjs` (`checkSops`) fails when an index row has no file or a file has no row; an owner
-  is not an active team member owning a Who does what row; a step's doer is unknown; a cited rule id is missing, retired
-  or superseded; a rule link points away from its ledger home; or any relative link is dead.
+- **Checked by CI:** `tests/ledger.mjs` (`checkSops`) fails when a file in this folder isn't named `FLOW-NN-<slug>.md`;
+  an index row has no file or a file has no row; an owner isn't an active team member leading a Who does what Owner
+  cell; a section is missing or empty; a step's doer is unknown; a cited rule id is missing or not active or trial; a
+  "Rules it runs on" line isn't a link to that rule's ledger home, or the index's "Runs on" names a rule the SOP doesn't
+  list; or a relative link or #anchor is dead.
 
 ## Flows
 
@@ -63,8 +65,8 @@ Policies are indexed here, not rewritten. Each keeps its own home and owner.
 - A change to a rule, an owner or a thread updates every SOP it touches in the same PR ([FLOW-19](FLOW-19-rule-and-roster-upkeep.md)). The ledger test
   catches a stale owner or rule id; it can't catch a step that no longer happens, so each owner re-confirms their SOP at
   the kaizen review after it changes.
-- A new flow gets the next FLOW number, a row here and a file in the same shape (the sections `checkSops` lists).
-  Numbers are never reused.
+- A new flow gets the next FLOW number (two digits, so up to FLOW-99), a row here and a file in the same shape (the
+  sections `checkSops` lists). Numbers are never reused.
 - Step doers are team names or one of the per-run actors in `SOP_ACTORS` (`tests/ledger.mjs`): Kickoff, Pipeline,
   Auto-merge, CI, Builder, Reviewer, Fresh reviewer, Research thread, Design Critic, Requesting thread, Recorder,
   Proposer, Outside reviewer, Rule owner, Every report owner, New thread.

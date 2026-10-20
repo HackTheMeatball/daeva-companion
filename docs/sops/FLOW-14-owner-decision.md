@@ -5,7 +5,7 @@ here. Where this page and a rule's home differ, the home wins and this page is f
 
 ## Purpose
 
-Ask Isaac only for what he alone can decide or do, in one clear To-do, and make sure his typed answer is recorded and applied within the hour.
+Ask Isaac only for what only Isaac can decide or do, in one clear To-do, and make sure the typed answer is recorded and applied within the hour.
 
 ## Trigger
 
@@ -26,7 +26,7 @@ A thread needs a product call, an in-game check, an external setup or a setting 
 2. **Huell**: Writes the To-do and sends the coordinator one `NEW TODO` line for the project chat (DEC-20261020-todo-notifications).
 3. **Saul**: Puts a not-blocking ask in the one morning debrief (COM-02). A hard blocker goes out at once as a red To-do and a `HARD BLOCKER:` post (COM-05). A judgment To-do stays not red until its output is on main (COM-08).
 4. **Isaac**: Types the answer in the named thread.
-5. **Recorder**: The thread where Isaac typed it reads his own words (DEC-02) and forwards them verbatim to Walter.
+5. **Recorder**: The thread where Isaac typed it reads Isaac's own words (DEC-02) and forwards them verbatim to Walter.
 6. **Walter**: Writes the DECISIONS row and its ledger row (DEC-01), with times in ET (COM-01).
 7. **Recorder**: Sends Huell `OK RECORDED` once the PR has merged (DEC-03, COM-13).
 8. **Huell**: Closes the To-do (DEC-20261019-tracker-sync-closes-a), marks it user or Claude remediated (PLN-10), and posts the close line.
