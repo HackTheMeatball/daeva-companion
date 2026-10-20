@@ -13,6 +13,11 @@ Builds run in CI and can't read the project's shared folder, so every file a 0.8
 | `design-v2/README.md` and its frames | Design Lead's round 2 (§2 regional quest state, §3 class choice) with the owner's answers | Design Lead | P12, P13 |
 | `design-v4/` | Verb buttons and the Regional quests tile, owner T-58 (2026-10-19 8:25 and 8:44 PM ET); supersedes v2 for the buttons | Design Lead | P13 |
 | `design-extract/4-extract-icon.png` | The extract-tip flask placement (first round, unchanged in v2 §4) | Design Lead | P13 |
+| `emblems/` and `SOURCES.md` | The 8 Metabot class emblems, exact fetched bytes with sha256 and pixel hashes | Design Lead | P12 |
 
 The owner crops P13 needs (teal star, extract flask) are in `docs/research/owner-crops-2026-10-18/` with their record.
 Frames are docs, not app art: nothing here ships to the site.
+
+The shared folder re-encodes image files after they sync (pixels kept, bytes changed; Design Lead's test, 2026-10-20).
+So a byte hash taken on a shared-folder copy won't match the original. The emblems came from a tar for that reason.
+The PNG frames and crops here are copies from the shared folder and only claim matching pixels.
