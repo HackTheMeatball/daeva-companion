@@ -1149,14 +1149,14 @@ Game Data Check's research (#570, #584). Specs: [docs/plans/0.8.1/README.md](doc
 
 - **F1** Assassin Daevanion: cost boxes pre-filled from the owner's boards, Combat Speed corner, on-path rows (gen, golden).
 - **F2** A labelled specialty pick in every guide skill's slot 2 (gen, golden).
-- **F3** Specialty rows placed by effective skill level (golden, nextup; after F1).
-- **F4** RC play fixes: page title on class pick, a tooltip typo, one legend per card (a11y).
+- **F3** Specialty rows placed by effective skill level (golden, golden-nextup; after F1).
+- **F4** RC play fixes: page title on class pick, a tooltip typo, one legend per card (a11y, golden).
 - **F5** Gladiator and Ranger rotation icons (gen; after Game Data Check commits the files).
 - **F6** Size trim: page gzip under 90% of its budget, no visible change.
-- **F7, F8** Respec buttons in Basic; recommended specialty in Next up: new looks, so 0.9 unless the owner says "now"
-  (owner rule 2026-10-18 10:40 PM ET; decision card in the Release planning thread).
+- **F7** Respec buttons in Basic (app.css, golden). **F8** Recommended specialty in Next up, also after a respec (golden,
+  golden-nextup; after F3). Both are new looks; the owner said "now" on 2026-10-20 at 4:28 PM ET (DECISIONS).
 
-Also: #585 (simpler link preview) merges after the v0.8.0 tag. Release: `PRE-RELEASE CHECK 0.8.1`, then the release
+Also: #585 (simpler link preview) merged after the v0.8.0 tag. Release: `PRE-RELEASE CHECK 0.8.1`, then the release
 item after `DATA OK 0.8.1`; no RC play or freeze for a patch. Owner notes 9–16 go to the 0.9 pass (triage in #232).
 
 ### 0.9 — the 1.0 audit's fixes
