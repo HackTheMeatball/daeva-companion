@@ -176,7 +176,9 @@ jobs:
               const am = x.body.match(/\bAfter:\s*([^\n]*)/);
               if (!am) return '';
               // A full stop ends the line's keys only when a space or the end follows: `owner-ok-0.7-sync` keeps its dots.
-              const after = am[1].replace(/\([^)]*\)/g, '').split(/\.(?=\s|$)/)[0];
+              // Markdown marks go first: 0.8 specs write "- **After:** `owner-ok-0.8-icon-fit`", which read as "**" and a
+              // backticked key and held all 21 items at queue time (2026-10-19 9:28 PM ET).
+              const after = am[1].replace(/[*`]/g, '').replace(/\([^)]*\)/g, '').split(/\.(?=\s|$)/)[0];
               const unclear = `After line "${after.trim()}" not understood`;
               let deps;
               if (/everything|\ball\b/i.test(after)) {
