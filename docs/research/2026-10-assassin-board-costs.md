@@ -89,7 +89,20 @@ Combat Speed corners, `node:assassin:nezekan:r13c13` and `…:r3c3`, checked in
   - daevaguides, 2+ sources: "Critical Damage Boost +1.5% → → from node 33 (Exploit Weakness)".
   - aion2maps, 2+ sources: makes Exploit Weakness its own target between the two Critical Damage Boost corners.
 - **Ambush on the way:** the owner's board shows an Ambush node on the way. No guide routes Ambush that way (gap in the guides; the owner's screen is the source). daevaguides takes Ambush Stance, but on the way to the Critical Damage Tolerance corner instead.
-- **For the build item:** add both as plan rows with `via: "on the way to the Critical Damage Boost corner"` and cost 0 after the corner (or split the 15). Then the skill nodes count toward effective skill level (`2026-10-effective-skill-level.md`, gap 2). Which split the owner's 15 hides needs one owner number. **Question for the owner:** of the 15, how much is the corner itself after the Ambush and Exploit Weakness nodes?
+- **The split of the 15 (owner, 2026-10-20 1:40 PM ET: "green nodes are 2, blue are 3 and orange are 4").** Node costs go
+  by colour, and `board-nodes.json` already carries them as `cost`: common 1, rare (green) 2, legend (blue) 3, unique
+  (orange) 4. The cheapest 4-neighbour path from Start, taken in the owner's order, gives these costs:
+
+  | Row (in order) | Cost | Nodes bought |
+  |---|---|---|
+  | Ambush (`r11c9`) | 5 | MP +50 (1), Critical Hit Resist +5 (1), Ambush (3) |
+  | Exploit Weakness (`r13c11`) | 5 | HP +100 (1), Critical Hit Resist +5 (1), Defense +30 (1), Exploit Weakness (2) |
+  | Critical Damage Boost corner (`r13c13`) | 5 | Critical Hit +5 (1), the corner (4) |
+
+  The three rows add up to the owner's 15.
+- **The detour is deliberate.** The direct path to the corner costs 12 and passes Infiltrate, which isn't a guide skill. The owner's route pays 3 more to buy two guide skills.
+- **For the build item:** add Ambush and Exploit Weakness as plan rows before the corner, each costing 5 and with `via: "on the way to the Critical Damage Boost corner"`. Then the skill nodes count toward effective skill level (`2026-10-effective-skill-level.md`, gap 2). Since cost follows colour, the generator can compute each row's default cost from the grid and check it against the owner's numbers.
+- **Check of the model:** the same calculation matches the owner's other Vaizel rows (Heart Gore 6, Insignia Explosion 6, Quick Slice 5, Defense Break 2) except Assault Stance. There it gives 4, through the two stat nodes `r6c12` and `r5c12` above Quick Slice; the owner wrote 5. The owner's 5 stands, and is listed for an owner re-check (Release Planner, 2026-10-20).
 
 ## 5. Toward the per-class node audit (note 14, 0.9)
 
