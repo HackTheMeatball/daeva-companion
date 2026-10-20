@@ -175,7 +175,7 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
 
 **Usage budget (owner, 2026-10-20 5:17 and 5:20 PM ET; DECISIONS "Usage budget"):** the owner's weekly usage limit must
 last to each Tuesday 3 AM reset. 22% at 5:17 PM ET on 2026-10-20 is the baseline, and the line is the week's budget
-spread evenly to the reset (about 12% a day). Readings come once per minor release (the release's owner list asks for
+spread evenly to the reset, recomputed at each reading (about 12% a day for the week from 22%; about 14% a day for a full week from a fresh reset). Readings come once per minor release (the release's owner list asks for
 Settings → Usage, and the Release Planner logs it in #232), so pace is kept by design: Kaizen (Gale) and Build Pipeline
 (Gus) set builds in flight, polling and health-check intervals and the throttle order. A reading over the line throttles
 work first, and the owner is told what was paused.
@@ -1264,7 +1264,7 @@ workflows).
 
 | Item | Problem → result | Size | Model | Lanes | After (real dependencies only) |
 |---|---|---|---|---|---|
-| P1 | 230 visible values the data marks unverified show with no label (#607) → every one carries "check in game" / "inferred" | M | Opus | gen, golden, rows, skills-card, build-card, nextup-card | none (input: #607's audit file) |
+| P1 | 230 visible values the data marks unverified show with no label (#607) → every one carries "check in game" / "inferred" | M | Opus | gen, golden, rows, skills-card, build-card, nextup-card, daevanion-card | none (input: #607's audit file) |
 | P2 FR | Save keys come from names and positions → stable ids, `companion-save-v6`, the last clean break | L | Opus | gen, golden, mig, nextup-card, journey-card | none |
 | P3 | Each class release edits test lists by hand (K22) → tests read classes from the data | M | Sonnet | schema, e2 | none |
 | P4 | 33 unused names, the deleted artifact's export branch, a narrow term scan → removed, scan widened | S | Opus | main.js, page-card | none |
@@ -1310,12 +1310,13 @@ bots; no new game art beyond the standing icon OK; no budget raise.
 
 At most five builds at a time. Ungated items queue first; gated ones go last and never hold a lane.
 
-- **Wave 1 (at the go):** P1, P2, P3, P4, P5, P6, P7, P8 and S2, S3. Queue order P1 → P2 → P3 → P7 → P8 → P4 → P5 → P6, so
-  the first five are lane-disjoint (P1 gen; P2 waits for P1 on gen and golden; P3, P7 and P8 start at once). Serial
+- **Wave 1 (at the go):** P1, P2, P3, P4, P5, P6, P7, P8 and S2, S3. Queue order P1 → P2 → P3 → P7 → P8 → P4 → P5 → P6, so the
+  queue runs top-down: P1 and P3 start at once; P2, P7 and P8 wait for P1 on nextup-card (P8 also on skills-card and
+  build-card), and kickoff serialises them from their queue-line lanes. Serial
   lanes: **gen** P1 → P2 → P6 → P10 → P11 → P13 → P15 → P16 → P17 → P18; **golden** P1 → P2 → P11 → P12 → P13 → the
-  research items → P19 → P20 → P21 → P22; **skills-card** P1 → P8 → P5 → P15 → P19; **nextup-card** P1 → P2 → P7 → P5 → P13 → P15 →
+  research items → P19 → P20 → P21 → P22; **skills-card** P1 → P8 → P5 → P15 → P19; **nextup-card** P1 → P2 → P7 → P8 → P5 → P13 → P15 →
   P19 → P21; **page-card** P4 → P5 → P21 → P23; **mig** P2 → P9 → P22; **schema** P3 → P6 → P10; **app.css** P8 → P19 → P20 → P21 →
-  P22; **build-card** P1 → P5 → P13 → P18 → P22; **daevanion-card** P5 → P16 → P20 → P21; **main.js** P4 → P9 → P21; **ci** (Gus) S2 → S3 → S1 → S4. Shared test and doc files: **save** (`tests/save.js`) P9 → P11 → P22; **e2** (`tests/e2test.js`) P3 → P23;
+  P22; **build-card** P1 → P8 → P5 → P13 → P18 → P22; **daevanion-card** P1 → P5 → P16 → P20 → P21; **a11y** P8 → P22; **site** P5 → P23; **main.js** P4 → P9 → P21; **ci** (Gus) S2 → S3 → S1 → S4. Shared test and doc files: **save** (`tests/save.js`) P9 → P11 → P22; **e2** (`tests/e2test.js`) P3 → P23;
   **run-mjs** (`tests/run.mjs`) P6 → P14 → S1; **architecture** (`docs/ARCHITECTURE.md`) P5 → P9 → P14 (plan review, #609).
 - **Wave 2 (after P2):** P9, P10, P11, P13; then P12 (after P11 and P6) and P14 (after P9 and P10).
 - **Wave 3 (as research lands):** P15, P16, P17, P18, in the order their files land.
@@ -1359,6 +1360,14 @@ pre-1.0 breaks are still allowed. Research starts during 0.9: Source Vetting (Ly
 everywhere). Items are shaped in 0.10's own pass once that research is in. Acceptance bar: the Vision (top of this file), so for a
 Lv 45 character Next up always shows the best thing to do next.
 
+**On the way and "Main path only" (Design Lead's calls after review, 2026-10-20 10:15 PM ET; the owner's 5:45 PM ask):**
+Next up's headline stays one step, and an "On the way" line lists optional things nearby: same zone, open at your level,
+sorted by distance where both ends have Metabot coordinates (every regional quest and stronghold, 72 of 87 story
+quests). The line names up to 3 kinds with counts and opens to the full list; a Skip is keyed by record id and undoable;
+"Do it" ticks nothing, it only makes the item the headline. Journey and Areas stay inventory. One guide, no modes: the
+Fastest / Completionist track toggle (0.5) is a named removal, replaced by one "Main path only" setting that carries the
+track's drawbacks text while on. The adv and later cards that one view (0.9 P21) moves out of the headline land here.
+
 ### 0.11 — The 1.0 look and the microscope pass (estimate)
 
 Design Lead's app design review for 1.0 (owner, 2026-10-19 1:57 PM ET): the blind check run in 0.9, a visual language
@@ -1372,8 +1381,14 @@ reading each other's DOM (architecture audit C3), which makes "add a feature" ch
 review):** Next up also shows what else is nearby on the way, so completionists are served; one guide with ways to skip
 what a player doesn't want, or separate fastest and completionist modes; whether Basic and Advanced merge into one better
 view, so there aren't two views to maintain; and the new-user and new-character experience, including a premium opening
-animation (the compass quill spinning). A Basic and Advanced merge would change 0.9 P21, which already waits on Design
-Lead's mock. **Microscope pass (owner, 2026-10-20 5:24 PM ET):** before the 1.0 candidate, every
+animation (the compass quill spinning). Decided after review (Design Lead, 2026-10-20 10:15 PM ET; outside critic and Design Review): one view
+in 0.9 (P21), On the way and "Main path only" in 0.10, and the first run here. **First run and new character:** a short
+opening (the Compass Quill draws in, its needle swings north, about 1.2 s) played over the rendered page, never gating
+first paint or input, once per new character (not on a device sync), skippable, a still frame with reduced motion, no
+fade on repeat loads; then faction, class and "Where are you?" (level or current story quest). It replaces the 0.6 S1
+welcome: Q2 and Q6 carry into the flow, Q8 stays (once per new character), Q9 becomes "every step can be skipped".
+Factions and classes without a complete guide show "coming" and can't be picked (Elyos today). Before the build, two
+baselines are measured: time to interactive at 390 px throttled, and time to first action for a fresh Lv 1 and Lv 39. **Microscope pass (owner, 2026-10-20 5:24 PM ET):** before the 1.0 candidate, every
 card, feature, element, section and function is reviewed against its purpose and the Vision (top of this file): Design Review (Holly) for looks, Code Review
 (Howard) for code, Game Data Check (Gretchen) for data, Team Audit (Gomez) or an outside reviewer for the whole; each
 finding is fixed or recorded as a decision before the candidate is cut. The ledger (Rules Steward, Francesca) and the

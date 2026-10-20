@@ -51,7 +51,7 @@ Rules for every item:
         its tag (row or list heading), and no verified value does, for all eight classes.
   - [ ] Shots of a labelled stigma plan, board plan and specialty pick at 1500 and 390 px, Basic and Advanced.
   - [ ] Golden diff limited to the tags.
-- **Lanes:** gen, golden, rows, skills-card, build-card, nextup-card. **Model:** Opus, M (90 min).
+- **Lanes:** gen, golden, rows, skills-card, build-card, nextup-card, daevanion-card. **Model:** Opus, M (90 min).
 - **After:** none.
 
 ## P2: Save v6, the last clean break: stable keys for story, objectives, skills and stigmas
@@ -456,7 +456,8 @@ Rules for every item:
   4. Every rule that names Basic is rewritten in the same PR from the owner's 5:45 PM words: CLAUDE.md "Basic mode =
      essentials only", the review checklist's Basic and Advanced line, and the DECISIONS rows the "One view" row lists
      (the Release Planner writes the DECISIONS text; the build proposes it in the PR body).
-  Also: the save's `mode` field stops being read and leaves the bug-report payload (no key bump, pre-1.0 rule); the rail
+  Also: fold state lives in the save's existing `open` map (per fold id; no new field); the save's `mode` field stops
+  being read and leaves the bug-report payload (no key bump, pre-1.0 rule); the rail
   keeps one behaviour on purpose (Basic's rail styles in `app.css` are layout, not hiding).
 - **Inputs.** `docs/design/0.9-one-view.md` (Design Lead's hide list: every element Basic hides today marked default
   open, fold or drop, with the drops named), `docs/design/0.9-loadout-mockup.md` and `docs/design/mockups/0.9-loadout/`
