@@ -51,13 +51,16 @@ export function mergeName(co, ca, cb, cmp) {
   if (t > 0) co.mt.name = [t, name];
 }
 
-/* A story quest that gives a full level (0.6 P19; owner, 2026-10-17, docs/DECISIONS.md owner-ok-autolevel): its QUESTS
-   entry [lv, name, true] (the record's levelsUp, verified 100% EXP) takes the character from Lv lv − 1 to Lv lv. Ticking
-   it (the story moves past it) at Lv lv − 1 gives the level after: one up; at any other level nothing changes. Unticking
-   it (the story steps back onto it) at Lv lv gives one down, so a tick and its untick cancel out. Every other level change
-   stays manual (Level up / − / + / slider). */
-export const levelOnTurnIn = (level, q) => q && q[2] === true && level === q[0] - 1 ? level + 1 : level;
-export const levelOnUnturn = (level, q) => q && q[2] === true && level === q[0] && level > 1 ? level - 1 : level;
+/* A story quest that gives a full level (0.6 P19, 0.8 P15; owner, 2026-10-17, docs/DECISIONS.md owner-ok-autolevel):
+   its QUESTS entry [lv, name, from] (the record's levelsUp.from, verified 100% EXP: the level it is turned in at, not its
+   recommended lv, #401) takes the character from Lv from to Lv from + 1. Ticking it (the story moves past it) at Lv from
+   gives one up; at any other level nothing changes (a fixed EXP reward is a full level only there). Unticking it (the
+   story steps back onto it) at Lv from + 1 gives one down, so a tick and its untick cancel out. An entry without a from
+   (no levelsUp, e.g. a 50% EXP quest) never changes the level. Every other level change stays manual (Level up / − / +
+   / slider). */
+const fromOf = q => q && Number.isInteger(q[2]) && q[2] >= 1 ? q[2] : null;
+export const levelOnTurnIn = (level, q) => fromOf(q) !== null && level === fromOf(q) ? level + 1 : level;
+export const levelOnUnturn = (level, q) => fromOf(q) !== null && level === fromOf(q) + 1 ? level - 1 : level;
 
 /* Defaults laid under a stored save (a save is never re-defaulted beyond these) and a stored character. */
 export const DEFAULT = () => ({ hide: false, open: {} });

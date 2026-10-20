@@ -23,8 +23,8 @@
         keeps it gone); an older save with progress never shows it; joining at Lv 20 stores the level and the quest only,
         and its character and Next up equal a played-through Lv 20 state's; a new character opens on the join step
     10c. the site's classes (0.7 A1): the picker offers every playable class; a Ranger save loads its own guide, no note
-    15. auto level-up (0.6 P19): "Turned in" on a levelsUp quest at the level below its own → one level up, Undo and
-        stepping back → down again; at a higher level or on another quest → no change */
+    15. auto level-up (0.6 P19, 0.8 P15): "Turned in" on a levelsUp quest at its from-level (Shadow Forest at Lv 3) → one
+        level up, Undo and stepping back → down again; at a higher level or on a 50% EXP quest → no change */
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path'); const { isDeepStrictEqual } = require('util');
 const CFG = require('./config');
 const { SAVE_KEY, V4_KEY, BEFORE_IMPORT_KEY, TEST_SLOT, toStored, writeRaw, readRaw, writeSave, clearSave } = require('./support/save');
@@ -624,14 +624,16 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
       await ctx.close();
     }
   }
-  /* 15. auto level-up (0.6 P19, owner-ok-autolevel 2026-10-17): turning in a story quest with levelsUp (QUESTS [lv, name,
-     true]) at Lv lv − 1 raises the level by one, with an Undo in the toast; stepping back onto it lowers it again; at a
-     higher level, or on a quest without levelsUp, the level stays */
+  /* 15. auto level-up (0.6 P19, 0.8 P15, owner-ok-autolevel 2026-10-17): turning in a story quest with levelsUp (QUESTS
+     [lv, name, from]) at Lv from raises the level by one, with an Undo in the toast; stepping back onto it lowers it
+     again; at another level, or on a quest without levelsUp (the two 50% EXP quests), the level stays */
   {
     const { ctx, p, errs } = await page();
-    const lu = await p.evaluate(() => QUESTS.filter(q => q[2] === true).map(q => [q[0], q[1], QUESTS.findIndex(x => x[1] === q[1])]));
-    ok('levelsUp: today one quest, "A Village in the Fog" (Lv 2), the first story quest', JSON.stringify(lu) === JSON.stringify([[2, 'A Village in the Fog', 0]]), lu);
-    const [lv, q0] = lu[0] || [2, ''], q1 = await p.evaluate(() => QUESTS[1][1]);
+    const lu = await p.evaluate(() => QUESTS.filter(q => q.length > 2).map(q => [q[1], q[2]]));
+    ok('levelsUp: the eight 100% EXP Ishalgen quests with their turn-in levels (research-401-levels)', JSON.stringify(lu) === JSON.stringify([['A Village in the Fog', 1], ['Prepare to Escape', 2], ['Shadow Forest', 3], ['Isolated Lake', 4],
+      ['Signs of a Crash Landing', 6], ['Prison Compound Infiltration Plan', 7], ['Brigade Prison Compound Infiltration Operation', 8], ['The Longest Night', 9]]), lu);
+    /* Shadow Forest: turned in at Lv 3 → Lv 4 (the owner's Lv 3 → 4 screen) */
+    const lv = 4, q0 = 'Shadow Forest', q1 = await p.evaluate(n => QUESTS[QUESTS.findIndex(x => x[1] === n) + 1][1], q0);
     const at = async (level, quest) => { await writeSave(p, { level, quest, checks: {}, open: {}, welcomed: 1 }, { fresh: true }); await p.reload(); await p.waitForTimeout(400); };
     const turnIn = async () => { const btn = p.locator('#nowStar [data-now="story"]').first(); if (!(await btn.count())) return false; await btn.click(); await p.waitForTimeout(800); return true; };
     const cur = () => p.evaluate(k => ({ level: char(state).level, quest: char(state).quest, stored: (s => s.chars[s.current].level)(JSON.parse(localStorage.getItem(k))), toast: (document.querySelector('#rwToast.has-undo') || {}).textContent || '' }), SAVE_KEY);
@@ -647,8 +649,11 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     ok(`levelsUp: turned in at a higher level (Lv ${lv}) → no change, no Undo toast`, s.level === lv && s.stored === lv && s.quest === q1 && !s.toast, s);
     await p.click('#questPrev .st-name'); await p.waitForTimeout(400); s = await cur();
     ok(`levelsUp: stepping back onto it at Lv ${lv} lowers it (the untick of the level it gives)`, s.level === lv - 1 && s.quest === q0, s);
-    await at(lv, q1); await turnIn(); s = await cur();
-    ok('levelsUp: a quest without levelsUp → the level stays', s.level === lv && s.stored === lv && !s.toast, s);
+    /* at its own recommended level, so Next up offers "Turned in" (storyRecGate) */
+    for (const [half, at5] of [['The Being Beneath the Lake', 5], ['Spread Your Wings', 6]]) {
+      await at(at5, half); const done = await turnIn(); s = await cur();
+      ok(`levelsUp: "${half}" (50% EXP, no levelsUp) turned in at Lv ${at5} → the level stays, no Undo toast`, done && s.level === at5 && s.stored === at5 && s.quest !== half && !s.toast, s);
+    }
     await at(lv - 1, q0); await p.click('#lvlUpBig'); await p.waitForTimeout(200); await p.click('#lvlDown'); await p.waitForTimeout(200); s = await cur();
     ok('levelsUp: Level up and − unchanged (one each way, the story stays)', s.level === lv - 1 && s.quest === q0, s);
     ok('levelsUp: no page errors', !errs.length, errs);

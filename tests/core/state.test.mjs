@@ -34,17 +34,30 @@ export default (test, M) => {
     const s = M.newSave({ id: 'slot-a' }), c = M.char(s), before = M.labelOf(c);
     c.level += 1; assert.notEqual(M.labelOf(c), before); assert.equal(c.id, 'slot-a'); assert.equal(s.current, 'slot-a');
   });
-  test('auto level-up (0.6 P19): a levelsUp quest [lv, name, true] at Lv lv − 1 → +1, at any other level no change; the untick at Lv lv → −1; no levelsUp, no change', () => {
-    const q = [2, 'A Village in the Fog', true], plain = [2, 'Plain'];
-    assert.equal(M.levelOnTurnIn(1, q), 2); assert.equal(M.levelOnUnturn(2, q), 1);
-    for (const lv of [2, 3, 45]) assert.equal(M.levelOnTurnIn(lv, q), lv);
-    for (const lv of [1, 3, 45]) assert.equal(M.levelOnUnturn(lv, q), lv);
-    for (const lv of [1, 2, 3]) { assert.equal(M.levelOnTurnIn(lv, plain), lv); assert.equal(M.levelOnUnturn(lv, plain), lv); }
-    assert.equal(M.levelOnTurnIn(1, undefined), 1);
-    /* the data: only quests whose record carries levelsUp, today "A Village in the Fog" (owner screens 2026-10-15) */
-    assert.deepEqual(M.QUESTS.filter(x => x.length > 2), [[2, 'A Village in the Fog', true]]);
-    const rec = json('data/packs/aion2/asmodian/story-quests.json').records.find(r => r.levelsUp);
-    assert.ok(rec.sources.some(s => s.owner && (s.fields || []).includes('levelsUp')), 'levelsUp has its owner source');
+  test('auto level-up (0.6 P19, 0.8 P15): a levelsUp quest [lv, name, from] at Lv from → +1, at any other level no change; the untick at Lv from + 1 → −1; no from, no change', () => {
+    const q = [3, 'Shadow Forest', 3], plain = [5, 'Plain'];
+    assert.equal(M.levelOnTurnIn(3, q), 4); assert.equal(M.levelOnUnturn(4, q), 3);
+    for (const lv of [1, 2, 4, 45]) assert.equal(M.levelOnTurnIn(lv, q), lv);
+    for (const lv of [1, 3, 5, 45]) assert.equal(M.levelOnUnturn(lv, q), lv);
+    /* the from-level, not the recommended lv: Brigade operation (rec. Lv 7) is turned in at Lv 8 */
+    const brig = [7, 'Brigade Prison Compound Infiltration Operation', 8];
+    assert.equal(M.levelOnTurnIn(8, brig), 9); assert.equal(M.levelOnTurnIn(6, brig), 6); assert.equal(M.levelOnUnturn(7, brig), 7); assert.equal(M.levelOnUnturn(9, brig), 8);
+    /* a quest with no from-level never changes the level (also the 0.6 shape's bare true, and anything not a level) */
+    for (const x of [plain, [5, 'Old', true], [5, 'Zero', 0], [5, 'Str', '4'], [5, 'Frac', 4.5], undefined])
+      for (const lv of [1, 4, 5, 6, 45]) { assert.equal(M.levelOnTurnIn(lv, x), lv); assert.equal(M.levelOnUnturn(lv, x), lv); }
+    /* the data (docs/research/2026-10-research-401-levels.md): the eight 100% EXP Ishalgen quests, each with the level
+       it is turned in at and a source naming levelsUp */
+    assert.deepEqual(M.QUESTS.filter(x => x.length > 2).map(x => [x[1], x[2]]), [['A Village in the Fog', 1], ['Prepare to Escape', 2],
+      ['Shadow Forest', 3], ['Isolated Lake', 4], ['Signs of a Crash Landing', 6], ['Prison Compound Infiltration Plan', 7],
+      ['Brigade Prison Compound Infiltration Operation', 8], ['The Longest Night', 9]]);
+    const recs = json('data/packs/aion2/asmodian/story-quests.json').records;
+    for (const r of recs.filter(r => r.levelsUp)) assert.ok(r.sources.some(s => (s.owner || s.url) && (s.fields || []).includes('levelsUp')), r.name + ': levelsUp has its source');
+    /* The Being Beneath the Lake and Spread Your Wings give 50% each: no levelsUp, so ticking them never changes the level */
+    for (const n of ['The Being Beneath the Lake', 'Spread Your Wings']) {
+      assert.ok(!recs.find(r => r.name === n).levelsUp, n);
+      const e = M.QUESTS.find(x => x[1] === n);
+      for (const lv of [1, 4, 5, 6, 7, 45]) { assert.equal(M.levelOnTurnIn(lv, e), lv, n); assert.equal(M.levelOnUnturn(lv, e), lv, n); }
+    }
   });
   test('load: no save → a new save from newId (called once), hadSave false', () => {
     const r = M.loadState(null, { now: 5, newId: ids() });

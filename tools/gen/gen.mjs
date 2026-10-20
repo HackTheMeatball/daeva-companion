@@ -98,12 +98,13 @@ export function generate(opts = {}) {
   const last = chain[chain.length - 1];
   check('story: last quest has an end marker and no next', !!last.end && last.next === null);
   for (const s of story) check('story id is sq:<gameId>: ' + s.name, s.id === 'sq:' + s.gameId);
-  /* [lv, name], and a third entry true when turning it in gives a full level (levelsUp, 0.6 P19: src/core/state.js
-     levelOnTurnIn); levelsUp needs a source that names it, an owner screen or a page, never the guide's own reasoning */
-  const QUESTS = chain.map(s => s.levelsUp ? [s.lv, s.name, true] : [s.lv, s.name]);
+  /* [lv, name], and a third entry, the level it is turned in at, when turning it in there gives a full level (levelsUp
+     { from }, 0.6 P19 / 0.8 P15: src/core/state.js levelOnTurnIn); levelsUp needs a source that names it, an owner screen
+     or a page, never the guide's own reasoning */
+  const QUESTS = chain.map(s => s.levelsUp ? [s.lv, s.name, s.levelsUp.from] : [s.lv, s.name]);
   for (const s of chain.filter(s => s.levelsUp)) {
     check(`${s.id}: levelsUp has its source (owner screen or page, fields: levelsUp)`, (s.sources || []).some(r => (r.owner || r.url) && (r.fields || []).includes('levelsUp')));
-    check(`${s.id}: levelsUp needs a quest level above 1`, s.lv > 1, s.lv);
+    check(`${s.id}: levelsUp.from is a level from 1 to 44`, Number.isInteger(s.levelsUp.from) && s.levelsUp.from >= 1 && s.levelsUp.from < 45, s.levelsUp.from);
   }
   const sqName = id => { if (!sqById[id]) throw new Error('unknown story quest ' + id); return sqById[id].name; };
   const QUEST_STEPS = Object.fromEntries(chain.filter(s => s.steps.length).map(s => [s.name, s.steps.map(x => x.text)]));
