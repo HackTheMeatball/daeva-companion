@@ -80,6 +80,7 @@ on purpose: the guide shows nothing rather than an unverified value.
   | sk-chanter-attack-preparation.png | Attack Preparation | <https://aion2-meta.com/guides/chanter/> | <https://aion2-meta.com/icons/chanter-attack-preparation.webp> | 2026-10-20 |
   | sk-chanter-impact-hit.png | Impact Hit | <https://aion2-meta.com/guides/chanter/> | <https://aion2-meta.com/icons/chanter-impact-hit.webp> | 2026-10-20 |
   | sk-chanter-survival-willpower.png | Survival Willpower | <https://aion2-meta.com/guides/chanter/> | <https://aion2-meta.com/icons/chanter-survival-willpower.webp> | 2026-10-20 |
+  | sk-chanter-recuperation.png | Recuperation | <https://daevacompass.com/en/db/abilities/18120000> | <https://daevacompass.com/images/skills/icon_ch_skill_013.webp> (72 px, sha256 `0467a008…afb86`; daevacompass approved as an icon source by the owner, 2026-10-20) | 2026-10-20 |
 
   The three Cleric files relabelled from Metabot keep their rows in the Cleric table above (source page = the page the
   file came from): `sk-cleric-heal-block.png` ← sk-immortal-veil.png, `sk-cleric-prayer-of-concentration.png` ←
@@ -336,9 +337,9 @@ on purpose: the guide shows nothing rather than an unverified value.
   | st-chanter-sprint-mantra.png | Sprint Mantra | <https://metabot.gg/en/aion-2/skills/sprint-mantra> | <https://metabot.gg/web/aion2/skills/18160000.webp> | 2026-10-19 | Metabot page only (stigmas not on the owner screen) |
   | st-chanter-undefeated-mantra.png | Undefeated Mantra | <https://metabot.gg/en/aion-2/skills/undefeated-mantra> | <https://metabot.gg/web/aion2/skills/18190000.webp> | 2026-10-19 | Metabot page only (stigmas not on the owner screen) |
 
-- **Chanter passive icons: one left for the owner (Recuperation)** (0.8 P18, #507; on 2026-10-20 Blessing of Life,
-  Attack Preparation, Impact Hit and Survival Willpower got icons from aion2-meta.com, see "Passive icons from
-  aion2-meta.com" below; aion2-meta's Recuperation file is a green star, not the game's open hand, so it stays owner-check). The class data
+- **Chanter passive icons: closed 2026-10-20** (0.8 P18, #507; Blessing of Life, Attack Preparation, Impact Hit and
+  Survival Willpower got icons from aion2-meta.com and Recuperation from daevacompass.com, see "Passive icons from
+  aion2-meta.com" below; Metabot's and aion2-meta's Recuperation files are a green star, not the game's open hand). The class data
   (`data/packs/aion2/classes/chanter/skills.json`, written by `tools/research/chanter-pack.mjs`) follows the owner's Lv 4
   screen (chanter research §7), not Metabot's file names. Since 0.8 P19 (#508) every other record sets `icon`. Earth's Promise, Wind's Promise and Protection Circle carry a note naming the
   other page's file the screen shows. The five below carry `fieldStatus` `icon: owner-check`; P19 must not wire an icon
