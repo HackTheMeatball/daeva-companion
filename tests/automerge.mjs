@@ -30,6 +30,10 @@ const REVIEW = c('claude[bot]', 'Review of abc1234\nNothing blocking.\nVERDICT: 
 check(designBlocker(['src/main.js', 'docs/reviews/README.md'], [REVIEW], SHA, HEAD) === '', 'no review shots or design files -> no wait');
 check(/wait on DESIGN OK/.test(designBlocker(['src/main.js', 'docs/design/mockups/0.7-sync/a1-390.png'], [REVIEW], SHA, HEAD)), 'mockups, no DESIGN OK -> waits (#619)');
 check(/wait on DESIGN OK/.test(designBlocker(['docs/design/0.9-one-view.md'], [REVIEW], SHA, HEAD)), 'a design doc, no DESIGN OK -> waits (#619)');
+check(designBlocker(['docs/design/review-checklist.md'], [REVIEW], SHA, HEAD) === '', "Design Review's checklist -> no wait (K24, #655)");
+check(designBlocker(['docs/design/sync.md', 'docs/design/0.4-engine-contract.md'], [REVIEW], SHA, HEAD) === '', 'engineering design docs -> no wait (#655)');
+check(/wait on DESIGN OK/.test(designBlocker(['docs/design/review-checklist.md', 'docs/design/0.9-one-view.md'], [REVIEW], SHA, HEAD)), 'checklist plus a design doc -> waits');
+check(/wait on DESIGN OK/.test(designBlocker(['docs/design/0.5-nextup-mockup.md'], [REVIEW], SHA, HEAD)), 'a mockup doc -> waits');
 check(designBlocker(['docs/design/0.9-keys/k1-390.png'], [c('HackTheMeatball', '**DESIGN OK on abc1234** (Jane, design lead)', 9)], SHA, HEAD) === '', 'mockups with DESIGN OK naming the head -> merges');
 check(/wait on DESIGN OK/.test(designBlocker(SHOTS, [REVIEW], SHA, HEAD)), 'shots, no DESIGN OK -> waits');
 check(designBlocker(SHOTS, [REVIEW, c('claude[bot]', 'DESIGN OK on abc1234: shots match the mockup.', 9)], SHA, HEAD) === '', 'DESIGN OK from claude[bot] naming the head -> merges');
