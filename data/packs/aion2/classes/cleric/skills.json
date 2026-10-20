@@ -1,0 +1,1069 @@
+{
+  "$schema": "../../schema/skills.schema.json",
+  "schemaVersion": 2,
+  "collection": "skills",
+  "class": "cleric",
+  "records": [
+    {
+      "id": "skill:cleric:bolt",
+      "key": "Bolt",
+      "name": "Bolt",
+      "type": "active",
+      "learnLv": 14,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:cleric:bolt:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "30% chance to inflict Stun for 3s when fully charged"
+        },
+        {
+          "id": "spec:cleric:bolt:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+300 Skill Accuracy"
+        },
+        {
+          "id": "spec:cleric:bolt:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "+30% Skill Speed"
+        },
+        {
+          "id": "spec:cleric:bolt:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "Up to +20% damage when less targets hit"
+        },
+        {
+          "id": "spec:cleric:bolt:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "Critical Hit on hit"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/bolt",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:cleric:chain-of-torment",
+      "key": "Chain of Torment",
+      "name": "Chain of Torment",
+      "type": "active",
+      "learnLv": 4,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:cleric:chain-of-torment:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Slows target for 5s"
+        },
+        {
+          "id": "spec:cleric:chain-of-torment:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+3s Damage over Time"
+        },
+        {
+          "id": "spec:cleric:chain-of-torment:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Has a 20% chance to inflict Knockdown on the target for 3s"
+        },
+        {
+          "id": "spec:cleric:chain-of-torment:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "+10% PvE Damage Tolerance reduction and +5% PvP Damage Tolerance reduction"
+        },
+        {
+          "id": "spec:cleric:chain-of-torment:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "Ignores Block and Evasion and reduces Damage over Time interval by 50%"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/chain-of-torment",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:cleric:condemnation",
+      "key": "Condemnation",
+      "name": "Condemnation",
+      "type": "active",
+      "learnLv": 8,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:cleric:condemnation:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Restores 100 MP on hit"
+        },
+        {
+          "id": "spec:cleric:condemnation:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Up to +12% damage when less targets hit"
+        },
+        {
+          "id": "spec:cleric:condemnation:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "20% chance to inflict Root for 3s"
+        },
+        {
+          "id": "spec:cleric:condemnation:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "Resets cooldown on landing a Critical Hit with [Condemnation]"
+        },
+        {
+          "id": "spec:cleric:condemnation:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "Multi-Hit on hit"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/condemnation",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:cleric:debilitating-mark",
+      "key": "Debilitating Mark",
+      "name": "Debilitating Mark",
+      "type": "active",
+      "learnLv": 1,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:cleric:debilitating-mark:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Removes MP Consumed and restores 150 MP"
+        },
+        {
+          "id": "spec:cleric:debilitating-mark:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "-15% target Defense for duration of Damage over Time"
+        },
+        {
+          "id": "spec:cleric:debilitating-mark:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Has a 20% chance to inflict Stun on the target for 3s"
+        },
+        {
+          "id": "spec:cleric:debilitating-mark:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "+10% PvE Damage Boost reduction and +5% PvP Damage Boost reduction"
+        },
+        {
+          "id": "spec:cleric:debilitating-mark:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "Ignores Block and Evasion and reduces Damage over Time interval by 50%"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/debilitating-mark",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:cleric:defiance",
+      "key": "Defiance",
+      "name": "Defiance",
+      "type": "active",
+      "learnLv": 16,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:cleric:defiance:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Adds [Blessing of Regeneration] Chain Skill"
+        },
+        {
+          "id": "spec:cleric:defiance:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Restores 1,000 Stamina on using [Defiance]"
+        },
+        {
+          "id": "spec:cleric:defiance:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Restores 10% HP on using [Defiance]"
+        },
+        {
+          "id": "spec:cleric:defiance:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "+2s Tenacity duration"
+        },
+        {
+          "id": "spec:cleric:defiance:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "+50% PvE Damage Tolerance and +25% PvP Damage Tolerance for Tenacity duration"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/defiance-cleric",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "notes": [
+        "Shared display name with an Assassin, Ranger, Gladiator and Spiritmaster skill (Metabot page slug defiance-cleric)."
+      ]
+    },
+    {
+      "id": "skill:cleric:divine-aura",
+      "key": "Divine Aura",
+      "name": "Divine Aura",
+      "type": "active",
+      "learnLv": 3,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:cleric:divine-aura:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "-40% Move Speed for 3s to up to 4 enemies within 4m of the Aura"
+        },
+        {
+          "id": "spec:cleric:divine-aura:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Changes to AoE Skill"
+        },
+        {
+          "id": "spec:cleric:divine-aura:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "+50% [Divine Aura] attacking speed"
+        },
+        {
+          "id": "spec:cleric:divine-aura:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "+3s [Divine Aura] duration"
+        },
+        {
+          "id": "spec:cleric:divine-aura:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "-10s cooldown"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/divine-aura",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:cleric:earths-grace",
+      "key": "Earth's Grace",
+      "name": "Earth's Grace",
+      "type": "passive",
+      "learnLv": 21,
+      "levelGate": "flat",
+      "boardNodes": {
+        "perBoard": {
+          "board:zikel": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/earths-grace",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:cleric:earths-retribution",
+      "key": "Earth's Retribution",
+      "name": "Earth's Retribution",
+      "type": "active",
+      "learnLv": 1,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:cleric:earths-retribution:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "+20% MP restored"
+        },
+        {
+          "id": "spec:cleric:earths-retribution:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+20% [Discharge] Chain Skill trigger chance"
+        },
+        {
+          "id": "spec:cleric:earths-retribution:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "+50% Multi-Hit on hit"
+        },
+        {
+          "id": "spec:cleric:earths-retribution:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "-7s [Bolt] cooldown on landing [Discharge]"
+        },
+        {
+          "id": "spec:cleric:earths-retribution:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "Ignores Block and Evasion"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/earths-retribution",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:cleric:empyrean-lords-benediction",
+      "key": "Empyrean Lords' Benediction",
+      "name": "Empyrean Lords' Benediction",
+      "type": "passive",
+      "learnLv": 6,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/empyrean-lords-benediction",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:cleric:empyrean-lords-grace",
+      "key": "Empyrean Lord's Grace",
+      "name": "Empyrean Lord's Grace",
+      "type": "passive",
+      "learnLv": 9,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/empyrean-lords-grace",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:cleric:heal-block",
+      "key": "Heal Block",
+      "name": "Heal Block",
+      "type": "passive",
+      "learnLv": 15,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:zikel": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/heal-block",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "learnLv": "owner-check",
+        "icon": "owner-check"
+      },
+      "notes": [
+        "learnLv 15 and icon: owner-check. The owner's Lv 4 Cleric screen (2026-10-19) shows the art of the file staged as Immortal Veil in the locked Lv 15 passive cell, so either the staged Metabot icon is mislabelled or Metabot puts this passive at the wrong level (Game Data Check, #493). No icon until the owner's tooltip screenshot names the cell (docs/ISSUES.md)."
+      ]
+    },
+    {
+      "id": "skill:cleric:healing-enhancement",
+      "key": "Healing Enhancement",
+      "name": "Healing Enhancement",
+      "type": "passive",
+      "learnLv": 11,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/healing-enhancement",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "learnLv": "owner-check",
+        "icon": "owner-check"
+      },
+      "notes": [
+        "learnLv 11 and icon: owner-check. The owner's Lv 4 Cleric screen (2026-10-19) shows teal arcs around a flare; no staged file matches in the locked Lv 11 passive cell, so either the staged Metabot icon is mislabelled or Metabot puts this passive at the wrong level (Game Data Check, #493). No icon until the owner's tooltip screenshot names the cell (docs/ISSUES.md)."
+      ]
+    },
+    {
+      "id": "skill:cleric:healing-light",
+      "key": "Healing Light",
+      "name": "Healing Light",
+      "type": "active",
+      "learnLv": 10,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:cleric:healing-light:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "+2 consecutive uses"
+        },
+        {
+          "id": "spec:cleric:healing-light:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+20% amount healed when HP is 50% or less"
+        },
+        {
+          "id": "spec:cleric:healing-light:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "50% chance to remove 1 debuff"
+        },
+        {
+          "id": "spec:cleric:healing-light:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "+2% HP restored"
+        },
+        {
+          "id": "spec:cleric:healing-light:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "-2s cooldown"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/healing-light",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:cleric:immortal-veil",
+      "key": "Immortal Veil",
+      "name": "Immortal Veil",
+      "type": "passive",
+      "learnLv": 13,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/immortal-veil",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "learnLv": "owner-check",
+        "icon": "owner-check"
+      },
+      "notes": [
+        "learnLv 13 and icon: owner-check. The owner's Lv 4 Cleric screen (2026-10-19) shows a figure under a green dome; no staged file matches in the locked Lv 13 passive cell, so either the staged Metabot icon is mislabelled or Metabot puts this passive at the wrong level (Game Data Check, #493). No icon until the owner's tooltip screenshot names the cell (docs/ISSUES.md)."
+      ]
+    },
+    {
+      "id": "skill:cleric:judgment-thunder",
+      "key": "Judgment Thunder",
+      "name": "Judgment Thunder",
+      "type": "active",
+      "learnLv": 1,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:cleric:judgment-thunder:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "-20% MP consumed"
+        },
+        {
+          "id": "spec:cleric:judgment-thunder:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Deals up to 12% more damage when less targets are hit"
+        },
+        {
+          "id": "spec:cleric:judgment-thunder:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "-10% enemy Combat Speed for 5s on landing [Divine Punishment]"
+        },
+        {
+          "id": "spec:cleric:judgment-thunder:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "10% chance to inflict Root for 2s on landing [Divine Punishment]"
+        },
+        {
+          "id": "spec:cleric:judgment-thunder:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "Activates [Divine Punishment] 1 extra time"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/judgment-thunder",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:cleric:light-of-regeneration",
+      "key": "Light of Regeneration",
+      "name": "Light of Regeneration",
+      "type": "active",
+      "learnLv": 7,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:cleric:light-of-regeneration:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "+5% Defense while healing"
+        },
+        {
+          "id": "spec:cleric:light-of-regeneration:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+20% amount healed when HP is 50% or less"
+        },
+        {
+          "id": "spec:cleric:light-of-regeneration:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "+5% Incoming Heal during healing"
+        },
+        {
+          "id": "spec:cleric:light-of-regeneration:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "+5% Move Speed during healing"
+        },
+        {
+          "id": "spec:cleric:light-of-regeneration:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "+5% PvE Damage Tolerance and +2.5% PvP Damage Tolerance during healing"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/light-of-regeneration",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:cleric:lightning-strike-scattershot",
+      "key": "Lightning Strike Scattershot",
+      "name": "Lightning Strike Scattershot",
+      "type": "active",
+      "learnLv": 5,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:cleric:lightning-strike-scattershot:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Absorbs 5% HP"
+        },
+        {
+          "id": "spec:cleric:lightning-strike-scattershot:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Restores 120 MP"
+        },
+        {
+          "id": "spec:cleric:lightning-strike-scattershot:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Changes to mobile skill"
+        },
+        {
+          "id": "spec:cleric:lightning-strike-scattershot:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "Multi-Hit on hit"
+        },
+        {
+          "id": "spec:cleric:lightning-strike-scattershot:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "-1s all skill cooldowns on hit"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/lightning-strike-scattershot",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "conflicts": [
+        "spec:cleric:lightning-strike-scattershot:1 text: Metabot's skill page prints \"Absorbs 500, 500% HP\" (an unfilled template; its number is the percent x 100). Game text \"Absorbs 5% HP\" per aion2turkiye and daevaguides (cleric research §10) (2026-10-19, #493)."
+      ]
+    },
+    {
+      "id": "skill:cleric:prayer-of-concentration",
+      "key": "Prayer of Concentration",
+      "name": "Prayer of Concentration",
+      "type": "passive",
+      "learnLv": 17,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:zikel": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/prayer-of-concentration",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "learnLv": "owner-check",
+        "icon": "owner-check"
+      },
+      "notes": [
+        "learnLv 17 and icon: owner-check. The owner's Lv 4 Cleric screen (2026-10-19) shows the art of the file staged as Heal Block in the locked Lv 17 passive cell, so either the staged Metabot icon is mislabelled or Metabot puts this passive at the wrong level (Game Data Check, #493). No icon until the owner's tooltip screenshot names the cell (docs/ISSUES.md)."
+      ]
+    },
+    {
+      "id": "skill:cleric:radiant-benediction",
+      "key": "Radiant Benediction",
+      "name": "Radiant Benediction",
+      "type": "passive",
+      "learnLv": 25,
+      "levelGate": "flat",
+      "boardNodes": {
+        "perBoard": {
+          "board:zikel": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/radiant-benediction",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "learnLv": "owner-check",
+        "icon": "owner-check"
+      },
+      "notes": [
+        "learnLv 25 and icon: owner-check. The owner's Lv 4 Cleric screen (2026-10-19) shows the art of the file staged as Prayer of Concentration in the locked Lv 25 passive cell, so either the staged Metabot icon is mislabelled or Metabot puts this passive at the wrong level (Game Data Check, #493). No icon until the owner's tooltip screenshot names the cell (docs/ISSUES.md)."
+      ]
+    },
+    {
+      "id": "skill:cleric:radiant-recovery",
+      "key": "Radiant Recovery",
+      "name": "Radiant Recovery",
+      "type": "active",
+      "learnLv": 12,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:cleric:radiant-recovery:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Removes up to 2 debuffs"
+        },
+        {
+          "id": "spec:cleric:radiant-recovery:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+1 consecutive use"
+        },
+        {
+          "id": "spec:cleric:radiant-recovery:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "-3s cooldown"
+        },
+        {
+          "id": "spec:cleric:radiant-recovery:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "+10% Incoming Heal for 10s"
+        },
+        {
+          "id": "spec:cleric:radiant-recovery:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "+5% HP restored"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/radiant-recovery",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:cleric:survival-willpower",
+      "key": "Survival Willpower",
+      "name": "Survival Willpower",
+      "type": "passive",
+      "learnLv": 23,
+      "levelGate": "flat",
+      "boardNodes": {
+        "perBoard": {
+          "board:zikel": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/survival-willpower-cleric",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "fieldStatus": {
+        "learnLv": "owner-check",
+        "icon": "owner-check"
+      },
+      "notes": [
+        "Shared display name with a Gladiator skill (Metabot page slug survival-willpower-cleric).",
+        "learnLv 23 and icon: owner-check. The owner's Lv 4 Cleric screen (2026-10-19) shows plate armour, hands on the helmet (the Templar Lv 23 art); no staged file matches in the locked Lv 23 passive cell, so either the staged Metabot icon is mislabelled or Metabot puts this passive at the wrong level (Game Data Check, #493). No icon until the owner's tooltip screenshot names the cell (docs/ISSUES.md)."
+      ]
+    },
+    {
+      "id": "skill:cleric:warm-benediction",
+      "key": "Warm Benediction",
+      "name": "Warm Benediction",
+      "type": "passive",
+      "learnLv": 1,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/warm-benediction",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    }
+  ]
+}
