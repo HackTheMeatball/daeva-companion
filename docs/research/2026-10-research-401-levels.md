@@ -7,9 +7,17 @@ Game Data Check, 2026-10-20. Gate `research-401-levels` for P15 (#504). Three in
 - **Metabot EXP table** (`https://metabot.gg/en/aion-2/leveling`, same build, read 2026-10-20): EXP needed to finish
   each level.
 - **The owner's reward windows** (private repo `screenshots/`, commits c61678d and 5a8e7e1, 2026-10-15 alt run) show each
-  reward as a share of a level (100% or 50%). His Lv 4 frame with an empty EXP bar follows Shadow Forest. He also wrote
+  reward as a share of a level (100% or 50%). The owner's Lv 4 frame with an empty EXP bar follows Shadow Forest. The owner also wrote
   (Game Data Check thread, 2026-10-20 8:36 AM ET): "every quest in ishalgen when turned in levels you up, meaning when
   you finish the longest night you're level 10."
+
+Pages read (quest EXP rewards): <https://metabot.gg/en/aion-2/quests/a-village-in-the-fog>,
+<https://metabot.gg/en/aion-2/quests/prepare-to-escape>, <https://metabot.gg/en/aion-2/quests/shadow-forest>,
+<https://metabot.gg/en/aion-2/quests/isolated-lake>, <https://metabot.gg/en/aion-2/quests/the-being-beneath-the-lake>,
+<https://metabot.gg/en/aion-2/quests/spread-your-wings>, <https://metabot.gg/en/aion-2/quests/signs-of-a-crash-landing>,
+<https://metabot.gg/en/aion-2/quests/prison-compound-infiltration-plan>,
+<https://metabot.gg/en/aion-2/quests/brigade-prison-compound-infiltration-operation>,
+<https://metabot.gg/en/aion-2/quests/the-longest-night>. P15 cites these in `data/` so they reach the Sources card.
 
 ## Result
 
