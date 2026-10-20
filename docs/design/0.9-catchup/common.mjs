@@ -108,7 +108,7 @@ body.basic #spCard .tfoot.mk-keep, body.basic #dvBox .tfoot.mk-keep, body.basic 
 .mk-strip > span { flex: 1 1 13em; }
 .mk-strip b { color: var(--fg); font-weight: 600; }
 .mk-strip .mk-sb { margin-left: auto; flex: none; font: 600 11px var(--mono); padding: var(--space-4) var(--space-10); min-height: 24px; border-radius: var(--radius-pill); border: 1px solid var(--line); background: var(--panel); color: var(--fg); cursor: pointer; }
-.mk-strip .mk-menu { top: calc(100% + var(--space-6)); bottom: auto; min-width: min(300px, 100%); }
+.mk-strip .mk-menu { position: static; flex: 1 1 100%; box-shadow: none; min-width: 0; }
 .mk-menu label { display: grid; grid-template-columns: 18px minmax(0,1fr) auto; gap: var(--space-10); align-items: baseline; padding: var(--space-8) var(--space-10); border-radius: var(--radius-6); color: var(--fg); font: 500 13px var(--body); }
 .mk-menu label span { font: 500 11px var(--mono); color: var(--muted); }
 .mk-menu label.off { color: var(--muted); }
@@ -226,7 +226,7 @@ export const cuDone = mk(`for (let k = 0; k < 200; k++) { const b = $("#spBuy");
 export const dvCatch = (doneN, open = true) => mk(`
   const B = [["Nezekan", 10, 52], ["Zikel", 6, 47], ["Vaizel", 8, 39]], done = ${doneN};
   const sp = document.createElement("div"); sp.className = "mk-strip";
-  sp.innerHTML = '<span><b>' + (3 - done) + ' board' + (3 - done === 1 ? '' : 's') + '</b> opened before you joined' + (done ? ' · ' + done + ' marked' : '') + '</span><button type="button" class="mk-sb" aria-expanded="${open}">Mark bought ▾</button>' +
+  sp.innerHTML = '<span><b>3 boards</b> opened before you joined' + (done ? ' · ' + done + ' marked' : '') + '</span><button type="button" class="mk-sb" aria-expanded="${open}">Mark bought ▾</button>' +
     (${open} ? '<div class="mk-menu" role="menu">' + B.map((b, i) => '<label' + (i < done ? ' class="off"' : '') + '><input type="checkbox"' + (i < done ? ' checked disabled' : '') + '> ' + b[0] + ' board<span>' + b[1] + ' nodes · ' + b[2] + '</span></label>').join("") + '<p class="mk-mnote">Ticks the board&rsquo;s guide nodes, so Crystals left counts them as spent. Triniel opens at Lv 40.</p></div>' : '');
   const h = $("#dvNextList"); h.parentNode.insertBefore(sp, h); $("#dvRespec").textContent = "Respec ▾";
   frame($("#dvBox"));`);
@@ -235,7 +235,7 @@ export const dvCatch = (doneN, open = true) => mk(`
 export const stCatch = (doneN, open = true) => mk(`
   const S = [["Triniel's Dagger", 22], ["Illusive Clone", 27], ["Swift Contract", 32], ["Savage Fang", 37]], done = ${doneN};
   const sp = document.createElement("div"); sp.className = "mk-strip";
-  sp.innerHTML = '<span><b>' + (4 - done) + ' stigma slots</b> opened before you joined</span><button type="button" class="mk-sb" aria-expanded="${open}">Mark equipped ▾</button>' +
+  sp.innerHTML = '<span><b>4 stigma slots</b> opened before you joined' + (done ? ' · ' + done + ' marked' : '') + '</span><button type="button" class="mk-sb" aria-expanded="${open}">Mark equipped ▾</button>' +
     (${open} ? '<div class="mk-menu" role="menu">' + S.map((x, i) => '<label' + (i < done ? ' class="off"' : '') + '><input type="checkbox"' + (i < done ? ' checked disabled' : '') + '> ' + x[0] + '<span>slot ' + (i + 1) + ' · Lv ' + x[1] + '</span></label>').join("") + '<p class="mk-mnote">Marks the slot equipped. Set its level in Slots.</p></div>' : '');
   const pb = $("#stBody .ptbig"); if (pb) pb.after(sp); else $("#stBody").prepend(sp); stRs();
   frame($("#stCard"));`);

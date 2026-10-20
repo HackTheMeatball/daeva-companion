@@ -97,8 +97,11 @@ action. Above the hero, one strip says what opened before you joined, with a men
   Zikel).
 - Stigmas: "4 stigma slots opened before you joined · Mark equipped ▾", with each slot and its level. Marking one ticks the
   slot equipped; you set its level in Slots. After all four (`10-stigmas-after-*`) the strip is gone and the card is today's.
-- The crystal counts come from #602. Isaac's Zikel screen reads "Total: 42" against 47 here, so that one is with Game Data
-  Check before the build.
+- The crystal counts come from #602. Zikel is 47: Isaac's first notes said 42, a typo he corrected on 2026-10-20
+  (Game Data Check, `release/owner-notes-2026-10-20-lv39-fixed.txt`).
+- The strip keeps its total and counts what you've marked ("3 boards opened before you joined · 1 marked"). It goes when
+  every board or slot is marked, and the card is today's. The menu opens in the strip, pushing the hero down, so "Need N
+  more" stays in view while you mark.
 
 **The 1500 row** (`10-row-1500`): all three cards in catch-up together. The Skills card sets the row's height, Daevanion
 and Stigmas fill it, and the three foot rows line up.
@@ -186,10 +189,19 @@ take the skill to 12 adds "· slot 2: …" to its line.
 | 5 | Kept: "Respec ▾" is note 9's option A |
 | 6, 8 | Gone with the row list |
 | 7, 16 | Fixed: "Mark bought ▾", "Mark equipped ▾" |
-| 9 | With Game Data Check (Zikel 47 vs the owner's 42) |
+| 9 | Settled: 47. The owner's 42 was a typo he corrected (Game Data Check) |
 | 10, 17 | Fixed: the hero is the next action during catch-up too; after-states drawn (`10-boards-after-*`, `10-stigmas-after-*`) |
 | 13 | The "i" button has the accessible name "How shards work" (and a tooltip) |
 | 14 | Respec in Basic is the owner's ask (note 9, 0.8.1 F7); the one view keeps it |
 | 15 | Gone with the row list |
 | 18–24 | Fixed: the chore fold is dropped |
 | Lv 27 / 45 | Skills has them (`10-skills-lv27-390`, `10-skills-lv45-390`); the strip only changes its counts |
+
+**Fresh review re-check of 36fd319 (minor items)**
+
+| # | Answer |
+|---|---|
+| a | Fixed: the count was wrong. The strip keeps the total and adds "· N marked" |
+| b | Yes: the strip goes once everything is marked (stated above) |
+| c | The "i" button's accessible name and tooltip are "How points work" / "How shards work" (`aria-label` and `title`); the build keeps both |
+| d | Fixed: the menu opens inside the strip and pushes the hero down, so "Need N more" stays visible |
