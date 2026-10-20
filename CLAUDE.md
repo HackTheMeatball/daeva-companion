@@ -1,7 +1,7 @@
 # Working rules for AI sessions in this repo
 
 Daeva Companion: an unofficial AION 2 companion app. Today the leveling guide (Asmodian Assassin, Lv 1–45; 1.0 =
-all eight classes); 1.1 adds an end-game tracker (ROADMAP.md). Source in `src/` (page shell `index.html`, `styles/*.css`, ES modules
+all eight classes, plus an endgame guide past Lv 45 from 0.10); 1.1 adds the Elyos guide (ROADMAP.md). Source in `src/` (page shell `index.html`, `styles/*.css`, ES modules
 `main.js` / `data/*.js` / `site.js`); `npm run build` (esbuild) inlines it into one HTML file for the site
 (daevacompanion.com); the claude.ai artifact is deleted (owner, 2026-10-20); there is only the site. `src/index.html` doesn't run on its own: build, then
 `npm run serve`. Read `docs/ARCHITECTURE.md` before touching state, keys, data or the build.

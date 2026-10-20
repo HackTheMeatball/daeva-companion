@@ -43,6 +43,12 @@ _From #114 "Next up (queue; the planner fills it, kickoff.yml starts from the to
 
 ## Decisions
 
+### DEC-02
+
+_Written here by the Release Planner (2026-10-20) from the ledger summary, unchanged in meaning; #114 had no text for it. A wording that also counts server-verbatim copies of Isaac's words is waiting on an outside process review._
+
+- **DEC-02 Isaac's own words:** an OK needs Isaac's own typed words, in the thread whose session does the write.
+
 ### DEC-03
 
 _From #114 "Team-wide rules (homed here from team memory; rules audit, Isaac, typed in the Gus thread 2026-10-19 4:56 PM ET)"._
