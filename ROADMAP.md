@@ -136,6 +136,18 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
    disagreement between reviewers goes to the owner in the morning debrief. Watchdog (Mike) flags a merged tagged item
    with no fresh-review note (`review-skipped`). Once per minor a no-history thread re-checks 10 data fields Game Data
    Check fixed or passed.
+   **Review level (owner, 2026-10-20 6:45 PM ET; outside review Gomez 6:46 PM ET; DECISIONS "Every review is triaged
+   standing, blind or external"):** from 0.10 each spec carries `review: standing | blind | external — <reason>` in
+   place of the `fresh-review` tag (0.9's tagged items count as blind). Defaults: **external** (Team Audit or a
+   consultant) for process and rule changes, privacy, legal and ToS text, and standing hires; **blind** (a no-history
+   reviewer from the fixed brief, without the author's reasoning) for removals, owner-facing new looks, release PRs and
+   anything the standing reviewer helped write; **standing** for routine work in an approved spec. Unplanned PRs (fixes,
+   research) are standing unless they hit one of those triggers; a PR that adds scope can raise its level. Raising is
+   free; going below the default needs the outside reviewer's agreement. Blind and external items open with `hold`; the
+   reviewer's `FRESH REVIEW #<n> <sha7> OK` on the head SHA clears it (Build Pipeline's automation or the Release
+   Planner removes `hold`), and Watchdog flags a held PR 60 min after its review started with no marker. Known limit,
+   not a control: every comment posts under one account, so a marker's author rests on trust and is visible in the
+   thread. Kaizen grades findings and runs per level at each review, as cost per major finding.
 4. **Waves and lanes for the whole minor.** Lay every item out in waves before anything is queued: items in the same
    module or serial file run one after another; items in different modules may run at the same time, at most three
    builds (the cap in kickoff.yml; 3 under the owner's usage budget since 2026-10-20, five before). Name the critical path, put the items that unblock the most first, and give each item an `After:` line so
