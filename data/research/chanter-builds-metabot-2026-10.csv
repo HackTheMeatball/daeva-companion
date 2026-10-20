@@ -1,0 +1,43 @@
+build,voice,kind,order,name,value,status,checkedAt,page_url,notes
+leveling-1-45,editorial,skill-target,1,Onslaught,Lv 10,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,2,Incandescent Blow,Lv 10,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,3,Rushing Smash,Lv 10,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,4,Impactful Crush,Lv 10,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,5,Dark Crush,Lv 10,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,6,Spinning Strike,Lv 10,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,7,Recuperation,Lv 10,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,8,Blessing of Life,Lv 10,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,9,Attack Preparation,Lv 10,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,10,Tremor Crush,Lv 7,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,skill-target,11,Inspiring Spell,Lv 5,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter/build,listed order on the page; not stated as a training order
+leveling-1-45,editorial,stigma-slot,1,Undefeated Mantra,"slot 1 (Lv 22), stigma Lv 8",single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter/build,
+leveling-1-45,editorial,stigma-slot,2,Sprint Mantra,"slot 2 (Lv 27), stigma Lv 7",single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter/build,
+leveling-1-45,editorial,stigma-slot,3,Power of the Storm,"slot 3 (Lv 32), stigma Lv 5",single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter/build,
+leveling-1-45,editorial,stigma-slot,4,Marchutan's Wrath,"slot 4 (Lv 37), stigma Lv 4",single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter/build,
+leveling-1-45,editorial,rotation,1,"Rush in with Rushing Smash, stun with Impactful Crush, Dark Crush in the window, Spinning Strike for the crit buff, Incandescent Blow, Onslaught for MP, Recuperation when anyone is below half",,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter/build,"our summary of the page text, not its wording"
+endgame-pve-top-players,"aggregate (150 tracked Lv 45 players, updated ~2026-10-04)",stigma-slot,1,Undefeated Mantra,"slot 1 (Lv 22), pick 99%",single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter,
+endgame-pve-top-players,"aggregate (150 tracked Lv 45 players, updated ~2026-10-04)",stigma-slot,2,Sprint Mantra,"slot 2 (Lv 27), pick 95%",single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter,
+endgame-pve-top-players,"aggregate (150 tracked Lv 45 players, updated ~2026-10-04)",stigma-slot,3,Power of the Storm,"slot 3 (Lv 32), pick 65%",single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter,
+endgame-pve-top-players,"aggregate (150 tracked Lv 45 players, updated ~2026-10-04)",stigma-slot,4,Marchutan's Wrath,"slot 4 (Lv 37), pick 47%",single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter,
+endgame-pve-top-players,aggregate,core-skill,1,Onslaught,99% pick,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter,
+endgame-pve-top-players,aggregate,core-skill,2,Spinning Strike,99% pick,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter,
+endgame-pve-top-players,aggregate,core-skill,3,Incandescent Blow,99% pick,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter,
+endgame-pve-top-players,aggregate,core-skill,4,Rushing Smash,99% pick,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter,
+endgame-pve-top-players,aggregate,core-skill,5,Recuperation,99% pick,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter,
+class-builds-guide,editorial,stigma-slot,1,Undefeated Mantra,slot 1 (Lv 22),single-source,2026-10-19,https://metabot.gg/en/aion-2/guides/class-builds-guide,same order as the leveling build and the top players
+class-builds-guide,editorial,stigma-slot,2,Sprint Mantra,slot 2 (Lv 27),single-source,2026-10-19,https://metabot.gg/en/aion-2/guides/class-builds-guide,same order as the leveling build and the top players
+class-builds-guide,editorial,stigma-slot,3,Power of the Storm,slot 3 (Lv 32),single-source,2026-10-19,https://metabot.gg/en/aion-2/guides/class-builds-guide,same order as the leveling build and the top players
+class-builds-guide,editorial,stigma-slot,4,Marchutan's Wrath,slot 4 (Lv 37),single-source,2026-10-19,https://metabot.gg/en/aion-2/guides/class-builds-guide,same order as the leveling build and the top players
+class-builds-guide,editorial,stigma-swap,1,Obliterate,PvP swap,single-source,2026-10-19,https://metabot.gg/en/aion-2/guides/class-builds-guide,the build page PvP build puts Obliterate in slot 4
+class-builds-guide,editorial,core-skill,1,Spinning Strike,,single-source,2026-10-19,https://metabot.gg/en/aion-2/guides/class-builds-guide,"differs from the class page top-player core list (Onslaught and Recuperation there, Impactful Crush and Dark Crush here)"
+class-builds-guide,editorial,core-skill,2,Rushing Smash,,single-source,2026-10-19,https://metabot.gg/en/aion-2/guides/class-builds-guide,"differs from the class page top-player core list (Onslaught and Recuperation there, Impactful Crush and Dark Crush here)"
+class-builds-guide,editorial,core-skill,3,Impactful Crush,,single-source,2026-10-19,https://metabot.gg/en/aion-2/guides/class-builds-guide,"differs from the class page top-player core list (Onslaught and Recuperation there, Impactful Crush and Dark Crush here)"
+class-builds-guide,editorial,core-skill,4,Dark Crush,,single-source,2026-10-19,https://metabot.gg/en/aion-2/guides/class-builds-guide,"differs from the class page top-player core list (Onslaught and Recuperation there, Impactful Crush and Dark Crush here)"
+class-builds-guide,editorial,core-skill,5,Incandescent Blow,,single-source,2026-10-19,https://metabot.gg/en/aion-2/guides/class-builds-guide,"differs from the class page top-player core list (Onslaught and Recuperation there, Impactful Crush and Dark Crush here)"
+class-page-stat-priority,editorial,stat-priority,1,HP,,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter,class-builds guide gives the same five in the same order
+class-page-stat-priority,editorial,stat-priority,2,Attack,,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter,class-builds guide gives the same five in the same order
+class-page-stat-priority,editorial,stat-priority,3,Defense,,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter,class-builds guide gives the same five in the same order
+class-page-stat-priority,editorial,stat-priority,4,Critical Hit,,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter,class-builds guide gives the same five in the same order
+class-page-stat-priority,editorial,stat-priority,5,Accuracy Bonus,,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter,class-builds guide gives the same five in the same order
+class-page-daevanion-path,editorial,board-path,1,Nezekan: Attack Preparation and Protection Circle node pairs,,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter,class-builds guide says the same
+class-page-daevanion-path,editorial,board-path,2,Zikel: Earth's Promise,,single-source,2026-10-19,https://metabot.gg/en/aion-2/classes/chanter,Zikel opens at Lv 20; Earth's Promise is learned at Lv 21

@@ -229,6 +229,54 @@ on purpose: the guide shows nothing rather than an unverified value.
   | st-templar-shield-of-protection.png | Shield of Protection | <https://metabot.gg/en/aion-2/skills/shield-of-protection> | <https://metabot.gg/web/aion2/skills/12110000.webp> | 2026-10-19 |
   | st-templar-taunt.png | Taunt | <https://metabot.gg/en/aion-2/skills/taunt> | <https://metabot.gg/web/aion2/skills/12120000.webp> | 2026-10-19 |
 
+- **Chanter skill and stigma icons: saved before the guide item, three missing** (0.8 class research, 2026-10-19
+  8:42–8:43 PM ET, docs/research/2026-10-chanter-pack.md §7). 32 of 35 (19 skills, 13 stigmas) came from Metabot under
+  the standing icon OK (owner, 2026-10-14). Staged in `data/packs/aion2/asmodian/chanter/icons/` (256 px WebP → 128 px
+  RGB PNG, Lanczos), not wired into the app; names carry the class (`sk-chanter-<slug>.png`) because Impact Hit,
+  Defiance and Survival Willpower are shared names. **Matched to the owner's Lv 4 screen, not only to Metabot's pages**
+  (owner-screens/2026-10-19/chanter/skills-lv4-locked.png): Metabot's files are swapped for Earth's Promise and Wind's
+  Promise, and its Blessing of Life file is the game's Protection Circle, so three files below carry another page's
+  file URL. **For the owner (no approved source):** Blessing of Life (game: green light with gold ornaments), Recuperation
+  (game: one open hand with light) and Survival Willpower (Metabot has none; `18790000.webp` returns 403). Not staged:
+  Metabot's Recuperation file 18120000 and Protection Circle file 18730000, which match no cell on the screen.
+  Attack Preparation and Impact Hit are unconfirmed until a Lv 25+ screen shows the passives in colour. The guide item
+  moves the ones it shows to `src/assets/icons/` and sets each record's `icon`.
+
+  | File | Name | Source page | File URL | Retrieved | Matched by |
+  |---|---|---|---|---|---|
+  | sk-chanter-attack-preparation.png | Attack Preparation | <https://metabot.gg/en/aion-2/skills/attack-preparation-chanter> | <https://metabot.gg/web/aion2/skills/18750000.webp> | 2026-10-19 | Metabot page; owner's screen: same shape, different hue (unconfirmed) |
+  | sk-chanter-crossguard.png | Crossguard | <https://metabot.gg/en/aion-2/skills/crossguard> | <https://metabot.gg/web/aion2/skills/18720000.webp> | 2026-10-19 | Metabot page; owner's screen agrees |
+  | sk-chanter-dark-crush.png | Dark Crush | <https://metabot.gg/en/aion-2/skills/dark-crush> | <https://metabot.gg/web/aion2/skills/18100000.webp> | 2026-10-19 | Metabot page; owner's screen agrees |
+  | sk-chanter-defiance.png | Defiance | <https://metabot.gg/en/aion-2/skills/defiance-chanter> | <https://metabot.gg/web/aion2/skills/18200000.webp> | 2026-10-19 | Metabot page; owner's screen agrees |
+  | sk-chanter-earths-promise.png | Earth's Promise | <https://metabot.gg/en/aion-2/skills/winds-promise> | <https://metabot.gg/web/aion2/skills/18800000.webp> | 2026-10-19 | owner's screen: the Lv 21 cell shows Metabot's Wind's Promise art (§7) |
+  | sk-chanter-gust-rampage.png | Gust Rampage | <https://metabot.gg/en/aion-2/skills/gust-rampage> | <https://metabot.gg/web/aion2/skills/18300000.webp> | 2026-10-19 | Metabot page; owner's screen agrees |
+  | sk-chanter-heat-wave-blow.png | Heat Wave Blow | <https://metabot.gg/en/aion-2/skills/heat-wave-blow> | <https://metabot.gg/web/aion2/skills/18150000.webp> | 2026-10-19 | Metabot page; owner's screen agrees |
+  | sk-chanter-impact-hit.png | Impact Hit | <https://metabot.gg/en/aion-2/skills/impact-hit-chanter> | <https://metabot.gg/web/aion2/skills/18760000.webp> | 2026-10-19 | Metabot page; owner's screen: same shape, different hue (unconfirmed) |
+  | sk-chanter-impactful-crush.png | Impactful Crush | <https://metabot.gg/en/aion-2/skills/impactful-crush> | <https://metabot.gg/web/aion2/skills/18060000.webp> | 2026-10-19 | Metabot page; owner's screen agrees |
+  | sk-chanter-incandescent-blow.png | Incandescent Blow | <https://metabot.gg/en/aion-2/skills/incandescent-blow> | <https://metabot.gg/web/aion2/skills/18040000.webp> | 2026-10-19 | Metabot page; owner's screen agrees |
+  | sk-chanter-inspiring-spell.png | Inspiring Spell | <https://metabot.gg/en/aion-2/skills/inspiring-spell> | <https://metabot.gg/web/aion2/skills/18740000.webp> | 2026-10-19 | Metabot page; owner's screen agrees |
+  | sk-chanter-onslaught.png | Onslaught | <https://metabot.gg/en/aion-2/skills/onslaught> | <https://metabot.gg/web/aion2/skills/18010000.webp> | 2026-10-19 | Metabot page; owner's screen agrees |
+  | sk-chanter-protection-circle.png | Protection Circle | <https://metabot.gg/en/aion-2/skills/blessing-of-life> | <https://metabot.gg/web/aion2/skills/18710000.webp> | 2026-10-19 | owner's screen: the Lv 9 cell shows Metabot's Blessing of Life art (§7) |
+  | sk-chanter-raging-spell.png | Raging Spell | <https://metabot.gg/en/aion-2/skills/raging-spell> | <https://metabot.gg/web/aion2/skills/18770000.webp> | 2026-10-19 | Metabot page; owner's screen agrees |
+  | sk-chanter-rushing-smash.png | Rushing Smash | <https://metabot.gg/en/aion-2/skills/rushing-smash> | <https://metabot.gg/web/aion2/skills/18090000.webp> | 2026-10-19 | Metabot page; owner's screen agrees |
+  | sk-chanter-spinning-strike.png | Spinning Strike | <https://metabot.gg/en/aion-2/skills/spinning-strike> | <https://metabot.gg/web/aion2/skills/18290000.webp> | 2026-10-19 | Metabot page; owner's screen agrees |
+  | sk-chanter-tremor-crush.png | Tremor Crush | <https://metabot.gg/en/aion-2/skills/tremor-crush> | <https://metabot.gg/web/aion2/skills/18210000.webp> | 2026-10-19 | Metabot page; owner's screen agrees |
+  | sk-chanter-wave-blow.png | Wave Blow | <https://metabot.gg/en/aion-2/skills/wave-blow> | <https://metabot.gg/web/aion2/skills/18080000.webp> | 2026-10-19 | Metabot page; owner's screen agrees |
+  | sk-chanter-winds-promise.png | Wind's Promise | <https://metabot.gg/en/aion-2/skills/earths-promise> | <https://metabot.gg/web/aion2/skills/18780000.webp> | 2026-10-19 | owner's screen: the Lv 25 cell shows Metabot's Earth's Promise art (§7) |
+  | st-chanter-assault-shock.png | Assault Shock | <https://metabot.gg/en/aion-2/skills/assault-shock> | <https://metabot.gg/web/aion2/skills/18700000.webp> | 2026-10-19 | Metabot page only (stigmas not on the owner screen) |
+  | st-chanter-barrier-spell.png | Barrier Spell | <https://metabot.gg/en/aion-2/skills/barrier-spell> | <https://metabot.gg/web/aion2/skills/18440000.webp> | 2026-10-19 | Metabot page only (stigmas not on the owner screen) |
+  | st-chanter-ensnaring-mark.png | Ensnaring Mark | <https://metabot.gg/en/aion-2/skills/ensnaring-mark> | <https://metabot.gg/web/aion2/skills/18230000.webp> | 2026-10-19 | Metabot page only (stigmas not on the owner screen) |
+  | st-chanter-focused-defense.png | Focused Defense | <https://metabot.gg/en/aion-2/skills/focused-defense> | <https://metabot.gg/web/aion2/skills/18140000.webp> | 2026-10-19 | Metabot page only (stigmas not on the owner screen) |
+  | st-chanter-fracturing-blow.png | Fracturing Blow | <https://metabot.gg/en/aion-2/skills/fracturing-blow> | <https://metabot.gg/web/aion2/skills/18130000.webp> | 2026-10-19 | Metabot page only (stigmas not on the owner screen) |
+  | st-chanter-guardian-blessing.png | Guardian Blessing | <https://metabot.gg/en/aion-2/skills/guardian-blessing> | <https://metabot.gg/web/aion2/skills/18420000.webp> | 2026-10-19 | Metabot page only (stigmas not on the owner screen) |
+  | st-chanter-healing-touch.png | Healing Touch | <https://metabot.gg/en/aion-2/skills/healing-touch> | <https://metabot.gg/web/aion2/skills/18170000.webp> | 2026-10-19 | Metabot page only (stigmas not on the owner screen) |
+  | st-chanter-impeding-authority.png | Impeding Authority | <https://metabot.gg/en/aion-2/skills/impeding-authority> | <https://metabot.gg/web/aion2/skills/18240000.webp> | 2026-10-19 | Metabot page only (stigmas not on the owner screen) |
+  | st-chanter-marchutans-wrath.png | Marchutan's Wrath | <https://metabot.gg/en/aion-2/skills/marchutans-wrath> | <https://metabot.gg/web/aion2/skills/18330000.webp> | 2026-10-19 | Metabot page only (stigmas not on the owner screen) |
+  | st-chanter-obliterate.png | Obliterate | <https://metabot.gg/en/aion-2/skills/obliterate> | <https://metabot.gg/web/aion2/skills/18220000.webp> | 2026-10-19 | Metabot page only (stigmas not on the owner screen) |
+  | st-chanter-power-of-the-storm.png | Power of the Storm | <https://metabot.gg/en/aion-2/skills/power-of-the-storm> | <https://metabot.gg/web/aion2/skills/18250000.webp> | 2026-10-19 | Metabot page only (stigmas not on the owner screen) |
+  | st-chanter-sprint-mantra.png | Sprint Mantra | <https://metabot.gg/en/aion-2/skills/sprint-mantra> | <https://metabot.gg/web/aion2/skills/18160000.webp> | 2026-10-19 | Metabot page only (stigmas not on the owner screen) |
+  | st-chanter-undefeated-mantra.png | Undefeated Mantra | <https://metabot.gg/en/aion-2/skills/undefeated-mantra> | <https://metabot.gg/web/aion2/skills/18190000.webp> | 2026-10-19 | Metabot page only (stigmas not on the owner screen) |
+
 - **Cleric skill and stigma icons: fetched before the class ships** (0.8 class research, 2026-10-19 6:31–6:35 AM ET,
   docs/research/2026-10-cleric-pack.md §7; issue #441 item 4: the Gladiator and Spiritmaster shipped letter squares
   because their research saved no icon files). All 35 Cleric icons (22 skills, 13 stigmas) came from Metabot under the
