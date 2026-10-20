@@ -3,7 +3,8 @@
    gladiator-pack.mjs (values copied, never computed; each record cites the Metabot page its CSV row was read from, with the
    row's build and checkedAt), in its own file so the parallel 0.8 class-data items (P2, P4, P18), which extend
    gladiator-pack.mjs, don't collide with it. The five "Absorbs N, N% HP" specialties get the game text (GAME_TEXT, research
-   §5). Run once: node tools/research/sorcerer-pack.mjs, then npm run gen. */
+   §5). Run once: node tools/research/sorcerer-pack.mjs, then npm run gen. 0.8 P17 (#506): the class is released with
+   its guide pack, and every record names its icon. */
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -82,13 +83,15 @@ const fixConflicts = choices => choices.filter(c => GAME_TEXT[c.id]).map(c => {
 /* boardNodes "Nezekan 2 Vaizel 1 Triniel 1" -> { board:nezekan: 2, … } */
 const perBoard = s => Object.fromEntries([...s.matchAll(/([A-Z][a-z]+) (\d+)/g)].map(m => ['board:' + m[1].toLowerCase(), int(m[2])]));
 
-/* Icons: not set here. All 22 skill icons, passives included, match the owner's Lv 4 screen with the locked cells
-   brightened and compared one by one (sorcerer research §7), so no passive needs an owner check; the guide item (P17)
-   moves the staged sk-sorcerer-* files it shows into src/assets/icons/. */
+/* Icons: all 22 skill icons, passives included, match the owner's Lv 4 screen with the locked cells brightened and
+   compared one by one (sorcerer research §7), so no passive needs an owner check. 0.8 P17 (#506) moved all 35 staged files
+   into src/assets/icons/ (sk-sorcerer-<slug>.png, st-sorcerer-<slug>.png: Defiance and Revitalization Contract are shared
+   names) and every record names its file. */
+const icon = (r, kind) => `assets/icons/${kind}-sorcerer-${r.id.split(':')[2]}.png`;
 const skills = csv(`${CLS}-skills-metabot-2026-10.csv`).map(r => {
   const choices = choicesOf(r.id, r.page_url).map(gameText), conflicts = fixConflicts(choices);
   return {
-    id: r.id, key: r.key, name: r.name, type: r.type, learnLv: int(r.learnLv), levelGate: r.levelGate,
+    id: r.id, key: r.key, name: r.name, type: r.type, learnLv: int(r.learnLv), levelGate: r.levelGate, icon: icon(r, 'sk'),
     boardNodes: { perBoard: perBoard(r.boardNodes), cost: int(r.boardNodeCost) },
     ...(choices.length ? { specialtyChoices: choices } : {}),
     sources: [src(r), ...fixSources(choices)], verifiedAt: r.checkedAt, status: 'verified',
@@ -101,7 +104,7 @@ const stigmas = csv(`${CLS}-stigmas-metabot-2026-10.csv`).map(r => {
   const fs = Object.fromEntries(r.fieldStatus.split(';').filter(Boolean).map(x => x.split(':').map(y => y.trim())));
   const choices = choicesOf(r.id, r.page_url).map(gameText), conflicts = fixConflicts(choices);
   return {
-    id: r.id, key: r.key, name: r.name, availableLv: int(r.availableLv), maxLevel: int(r.maxLevel),
+    id: r.id, key: r.key, name: r.name, availableLv: int(r.availableLv), icon: icon(r, 'st'), maxLevel: int(r.maxLevel),
     specialtyChoices: choices,
     sources: [src(r), ...fixSources(choices)], verifiedAt: r.checkedAt, status: 'verified',
     ...(Object.keys(fs).length ? { fieldStatus: fs } : {}),
@@ -119,10 +122,10 @@ const nodes = csv(`${CLS}-board-nodes-metabot-2026-10.csv`).map(r => ({
 })).sort(byId);
 
 const cls = {
-  id: `class:${CLS}`, class: CLS, name: NAME, release: 'hidden', defaultBuild: `build:${CLS}:guide`,
+  id: `class:${CLS}`, class: CLS, name: NAME, release: 'released', defaultBuild: `build:${CLS}:guide`,
   sources: [{ url: `https://metabot.gg/en/aion-2/classes/${CLS}`, checkedAt: CHECKED, build: { scheme: 'metabot', value: '0.0.4387.0' } }],
   verifiedAt: CHECKED, status: 'verified',
-  notes: ['Hidden until 0.8 P17 adds its guide pack (data/packs/aion2/asmodian/sorcerer/, which defines build:sorcerer:guide) and lists it in the class picker.'],
+  notes: ['Released in 0.8 P17 (#506): its guide pack (data/packs/aion2/asmodian/sorcerer/) defines build:sorcerer:guide and the class picker lists it.'],
 };
 for (const id of Object.keys(GAME_TEXT)) if (!fixed.has(id)) throw new Error('game-text fix not applied: ' + id);
 

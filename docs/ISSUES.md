@@ -421,6 +421,9 @@ on purpose: the guide shows nothing rather than an unverified value.
   on that screen; the nine locked ones rest on that by-eye comparison of greyed cells. If Game Data Check's review finds a
   mismatch, that passive gets `fieldStatus` `icon: owner-check` and a row here, as the Templar's did.
 
+  **In the site since 0.8 P17 (#506):** all 35 files moved from the staging folder to `src/assets/icons/` under the same
+  names, and every Sorcerer skill and stigma record names its file. The table's source pages and file URLs still apply.
+
   | File | Name | Source page | File URL | Retrieved |
   |---|---|---|---|---|
   | sk-sorcerer-absorb-essence.png | Absorb Essence | <https://metabot.gg/en/aion-2/skills/absorb-essence> | <https://metabot.gg/web/aion2/skills/15760000.webp> | 2026-10-19 |
@@ -458,6 +461,18 @@ on purpose: the guide shows nothing rather than an unverified value.
   | st-sorcerer-lumiels-space.png | Lumiel's Space | <https://metabot.gg/en/aion-2/skills/lumiels-space> | <https://metabot.gg/web/aion2/skills/15300000.webp> | 2026-10-19 |
   | st-sorcerer-soul-freeze.png | Soul Freeze | <https://metabot.gg/en/aion-2/skills/soul-freeze> | <https://metabot.gg/web/aion2/skills/15130000.webp> | 2026-10-19 |
   | st-sorcerer-steel-barrier.png | Steel Barrier | <https://metabot.gg/en/aion-2/skills/steel-barrier> | <https://metabot.gg/web/aion2/skills/15160000.webp> | 2026-10-19 |
+
+- **Sorcerer guide: still missing** (0.8 P17, #506; the guide is playable to Lv 45 without these):
+  - **Disputed advice, labelled in the Confidence card**: Wish of Concentration 7 against 10 and Frost 5 (C44), the
+    stigma fourth (Delayed Explosion vs Steel Barrier) and slot order (C43), the first Daevanion nodes (C45), Blaze's and
+    Bittercold Wind's Lv 8 picks (C47). Fire Mark to 10 and the stat priority are single-source (C44, C42); Fire Mark
+    is bought after every core skill (core: false) for that reason.
+  - **Fire Mark on every Fire hit** (Korea's 16 Sep patch) is inferred, not checked in game (C89). **Owner:** on a
+    Sorcerer, check whether every Fire hit puts Fire Mark on the target.
+  - **No Wish of Concentration pick**: its agreed +10% Attack needs skill Lv 8, which the plan's Lv 7 doesn't reach.
+    Ice Chain's and Frost's picks are single-source and left out.
+  - **Recommended key layouts** (daevaguides, mmo-codex) disagree and are not shown; the Rotation section shows the
+    owner's default keys only (C49). Defiance has no default key on the owner's screen.
 
 - **Spiritmaster rotation: one source, not shown** (0.7 P4, #347). Metabot's leveling build gives a rotation (one site,
   `data/research/spiritmaster-builds-metabot-2026-10.csv`), but the Build drawer's Rotation section is written for the

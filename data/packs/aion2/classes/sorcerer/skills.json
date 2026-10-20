@@ -11,6 +11,7 @@
       "type": "passive",
       "learnLv": 13,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-sorcerer-absorb-essence.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 2,
@@ -39,6 +40,7 @@
       "type": "active",
       "learnLv": 3,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-sorcerer-bittercold-wind.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -100,6 +102,7 @@
       "type": "active",
       "learnLv": 4,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-sorcerer-blaze.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -188,6 +191,7 @@
       "type": "passive",
       "learnLv": 9,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-sorcerer-cold-snap.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 2,
@@ -216,6 +220,7 @@
       "type": "active",
       "learnLv": 16,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-sorcerer-defiance.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -280,6 +285,7 @@
       "type": "passive",
       "learnLv": 1,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-sorcerer-fire-mark.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 2,
@@ -308,6 +314,7 @@
       "type": "active",
       "learnLv": 1,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-sorcerer-firestorm.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -369,6 +376,7 @@
       "type": "active",
       "learnLv": 1,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-sorcerer-flame-arrow.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -457,6 +465,7 @@
       "type": "active",
       "learnLv": 5,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-sorcerer-flame-scattershot.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -537,6 +546,7 @@
       "type": "active",
       "learnLv": 7,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-sorcerer-frost.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -598,6 +608,7 @@
       "type": "active",
       "learnLv": 10,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-sorcerer-frost-burst.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -678,6 +689,7 @@
       "type": "passive",
       "learnLv": 21,
       "levelGate": "flat",
+      "icon": "assets/icons/sk-sorcerer-grace-of-enhancement.png",
       "boardNodes": {
         "perBoard": {
           "board:zikel": 2,
@@ -706,6 +718,7 @@
       "type": "passive",
       "learnLv": 15,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-sorcerer-grace-of-resistance.png",
       "boardNodes": {
         "perBoard": {
           "board:zikel": 2,
@@ -734,6 +747,7 @@
       "type": "active",
       "learnLv": 14,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-sorcerer-hellfire.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -795,6 +809,7 @@
       "type": "active",
       "learnLv": 1,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-sorcerer-ice-chain.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -856,6 +871,7 @@
       "type": "passive",
       "learnLv": 23,
       "levelGate": "flat",
+      "icon": "assets/icons/sk-sorcerer-revitalization-contract.png",
       "boardNodes": {
         "perBoard": {
           "board:zikel": 2,
@@ -887,6 +903,7 @@
       "type": "passive",
       "learnLv": 17,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-sorcerer-robe-of-cold.png",
       "boardNodes": {
         "perBoard": {
           "board:zikel": 2,
@@ -915,6 +932,7 @@
       "type": "passive",
       "learnLv": 6,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-sorcerer-robe-of-earth.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 2,
@@ -943,6 +961,7 @@
       "type": "passive",
       "learnLv": 11,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-sorcerer-robe-of-flame.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 2,
@@ -971,6 +990,7 @@
       "type": "passive",
       "learnLv": 25,
       "levelGate": "flat",
+      "icon": "assets/icons/sk-sorcerer-vitality-evaporation.png",
       "boardNodes": {
         "perBoard": {
           "board:zikel": 2,
@@ -999,6 +1019,7 @@
       "type": "active",
       "learnLv": 8,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-sorcerer-winters-shackles.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -1060,6 +1081,7 @@
       "type": "active",
       "learnLv": 12,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-sorcerer-wish-of-concentration.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,

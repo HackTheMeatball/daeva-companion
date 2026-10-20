@@ -8,7 +8,7 @@
       "id": "class:sorcerer",
       "class": "sorcerer",
       "name": "Sorcerer",
-      "release": "hidden",
+      "release": "released",
       "defaultBuild": "build:sorcerer:guide",
       "sources": [
         {
@@ -23,7 +23,7 @@
       "verifiedAt": "2026-10-19",
       "status": "verified",
       "notes": [
-        "Hidden until 0.8 P17 adds its guide pack (data/packs/aion2/asmodian/sorcerer/, which defines build:sorcerer:guide) and lists it in the class picker."
+        "Released in 0.8 P17 (#506): its guide pack (data/packs/aion2/asmodian/sorcerer/) defines build:sorcerer:guide and the class picker lists it."
       ]
     }
   ]
