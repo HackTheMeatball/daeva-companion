@@ -20,7 +20,7 @@ format only here, together with the parser and its test.
   `- [next] #<n> <opus|sonnet> lanes:<lane>[,<lane>…]`, `lanes:none`, or no lanes at all; `alone` is a separate word
   (`lanes:release alone`, or `- [next] #<n> opus alone`), never part of the lane list.
 - The **Inputs** bullet lists, in backticks, the repo paths the build reads (crops, boards, research files), or says
-  `none`; only its backticked paths count. An `Inputs: <path>, <path>` line in `## Lanes, model, order` may list them
+  `none`; only its backticked paths count. A spec with no Inputs bullet or line reads as `none`. An `Inputs: <path>, <path>` line in `## Lanes, model, order` may list them
   plain. Kickoff looks each one up on
   main (a directory or glob by its directory) and holds the item, with a `spec: input not in repo: <path>` comment, when
   one is missing or lies outside the repo (`~/…`, `/…`). A `/mnt/` path anywhere in the spec but its No-gos holds it the same way:
