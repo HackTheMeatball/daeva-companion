@@ -207,6 +207,25 @@ for (const [f, t] of users) {
   check(!later.length, `${f}: no full checkout follows a root sparse checkout of the parser`);
 }
 
+// Release freeze (owner OK 2026-10-20 1:35 PM ET, #574): while #114 carries "FREEZE: RC <sha> release #<n>", only docs,
+// ROADMAP.md and issue templates merge, plus the release PR and rc-blocker PRs.
+const fz = yml.match(/\/\/ FREEZE-CHECK START[^\n]*\n([\s\S]*?)\n\s*\/\/ FREEZE-CHECK END/);
+check(!!fz, 'auto-merge.yml has the FREEZE-CHECK block');
+const FZ = new Function(fz[1] + '\nreturn { FREEZE, freezeBlocker };')();
+const body114 = (line) => `# Pipeline state\n\n${line}\n\n- [next] #510 sonnet lanes:release alone\n`;
+const on = body114('FREEZE: RC 0123abcdef release #510').match(FZ.FREEZE);
+const pr = (ref, labels = []) => ({ head: { ref }, labels: labels.map((name) => ({ name })) });
+check(!!on && on[1] === '0123abcdef' && on[2] === '510', 'FREEZE line read from #114 (sha and release issue)');
+check(!body114('Freeze: none').match(FZ.FREEZE) && !body114('> FREEZE: RC 0123abc release #510').match(FZ.FREEZE), 'no FREEZE line (or a quoted one) -> no freeze');
+check(FZ.freezeBlocker(null, pr('claude/issue-502-1'), ['src/main.js']) === '', 'no freeze -> a build PR merges as before');
+check(/^release freeze \(RC 0123abc, #114\): changes src\/main\.js/.test(FZ.freezeBlocker(on, pr('claude/issue-502-1'), ['src/main.js', 'docs/a.md'])), 'freeze -> a PR that changes the build waits, and the log names the file');
+check(FZ.freezeBlocker(on, pr('claude/project-thread-x'), ['docs/DECISIONS.md', 'ROADMAP.md', '.github/ISSUE_TEMPLATE/bug.md']) === '', 'freeze -> docs/**, ROADMAP.md and issue templates still merge');
+check(FZ.freezeBlocker(on, pr('claude/issue-510-99'), ['package.json', 'CHANGELOG.md']) === '', 'freeze -> the release PR (kickoff branch of the named release issue) merges');
+check(FZ.freezeBlocker(on, pr('claude/issue-5100-1'), ['package.json']) !== '', 'freeze -> issue 5100 is not release #510');
+check(FZ.freezeBlocker(on, pr('claude/issue-502-1', ['rc-blocker']), ['src/main.js']) === '', 'freeze -> an rc-blocker PR merges');
+check(FZ.freezeBlocker(on, pr('claude/x'), ['.github/workflows/ci.yml', 'data/packs/a.json']) !== '', 'freeze -> workflows and data wait');
+check(/const frozen = freezeBlocker\(freeze, pr, touched\);/.test(yml) && yml.indexOf('const frozen = freezeBlocker(') < yml.indexOf('await github.rest.pulls.merge('), 'the freeze check runs before every merge');
+
 console.log(`\n${n - fail}/${n} auto-merge checks passed`);
 console.log(fail ? 'AUTOMERGE CHECKS FAILED' : 'AUTOMERGE CHECKS PASSED');
 process.exit(fail ? 1 : 0);

@@ -154,7 +154,9 @@ check(ip.repo.join() === 'docs/plans/0.8/inputs/a.png,src/assets/icons/*', 'the 
 check(fx.inputPaths(bullet('`src/x.js`', '- **Input.** The labels in `data/packs/**` themselves.\n')).repo.join() === 'data/packs/**', 'singular "Input." line read too (#509)');
 check(fx.lookupPath('src/assets/icons/*') === 'src/assets/icons' && fx.lookupPath('data/packs/**') === 'data/packs' && fx.lookupPath('docs/a.md') === 'docs/a.md', 'a glob is looked up by its directory');
 check(fx.inputPaths(bullet('`src/x.js`')).mnt.length === 0 && fx.inputPaths(bullet('`src/x.js`')).repo.length === 0, 'no Inputs line and no /mnt/ -> nothing to check');
-check(/missing\.length \|\| lookupFailed/.test(yml) && /spec: input not in repo: \$\{x\}/.test(yml) && /held: input not in repo/.test(yml), 'pick loop holds an item with a missing input and tells the planner once on the issue');
+// Intended change (Kaizen (Gale), 2026-10-20): an Inputs entry with no repo path holds the item too, so the condition and the
+// comment lines now include it.
+check(/missing\.length \|\| bare\.length \|\| lookupFailed/.test(yml) && /spec: input not in repo: \$\{x\}/.test(yml) && /Inputs: \$\{x\} has no repo path/.test(yml) && /held: input not in repo/.test(yml), 'pick loop holds an item with a missing input or an entry with no repo path and tells the planner once per entry on the issue');
 check(yml.indexOf('const ins = inputPaths(iss.body)') > yml.indexOf('const wait = await afterBlocker(kx)') && yml.indexOf('const ins = inputPaths(iss.body)') < yml.indexOf('const why = await alreadyBuilt(n)'), 'the input check runs after the After check and before a build starts');
 // Kaizen (Gale), 2026-10-20: a spec that changes what gen compiles must list the gen lane (spec-incomplete-files: #501, #504, #503).
 // #503's own Result and Files (re-spec 2, lanes build-card,a11y,rows); its PR #565 touched tools/gen.
@@ -196,6 +198,18 @@ check(fx.opusWork(lof(exLine), exs) === 'lane gen', 'template Example (Lanes: ge
 const lmo = (line) => `- **Problem.** x\n\n## Lanes, model, order\n\nLanes: gen. Model: Opus.\n${line}\n`;
 check(fx.inputPaths(lmo('Inputs: docs/plans/0.8/inputs/design-v4/, data/research/x.csv')).repo.join() === 'docs/plans/0.8/inputs/design-v4/,data/research/x.csv', '"Inputs: a, b" line read, a directory path kept');
 check(fx.inputPaths(lmo('Inputs: none')).repo.length === 0 && fx.inputPaths(lmo('Inputs: none')).mnt.length === 0, '"Inputs: none" names nothing');
+// Kaizen (Gale), 2026-10-20 (#221 1:20 PM ET): every Inputs entry names a repo path, says none, or names an After key.
+// #502's P13 named Metabot's marker as an input with no repo path; the build had nothing to read and stopped.
+const p13 = (marker) => lmo(`Inputs: \`docs/plans/0.8/inputs/design-v2/\`, \`docs/plans/0.8/inputs/design-v4/\`, \`docs/research/owner-crops-2026-10-18/\`, ${marker}`);
+check(fx.inputPaths(p13("Metabot's `quest_district` map marker")).bare.join() === "Metabot's `quest_district` map marker", "P13's Inputs naming Metabot's marker without a repo path -> held (no repo path)");
+check(fx.inputPaths(p13('`docs/research/map-icons-2026-10-20/quest-district.png`')).bare.length === 0 && fx.inputPaths(p13('`docs/research/map-icons-2026-10-20/quest-district.png`')).repo.includes('docs/research/map-icons-2026-10-20/quest-district.png'), 'the same Inputs with docs/research/map-icons-2026-10-20/quest-district.png -> passes, and the path is looked up on main');
+check(fx.inputPaths(bullet('`src/x.js`', '- **Inputs.** The marker from the research item `research-387-macro`.\n- **After:** `research-387-macro`.\n')).bare.length === 0, 'an Inputs entry naming an After key (a research item that runs first) -> passes');
+check(fx.inputPaths(bullet('`src/x.js`', '- **Inputs.** `docs/research/a.md` (after #562, #563 merge).\n')).bare.length === 0, 'a comma inside parentheses does not split an entry');
+check(fx.inputPaths(lmo('Inputs: none')).bare.length === 0 && fx.inputPaths(bullet('`src/x.js`')).bare.length === 0, '"Inputs: none" or no Inputs at all -> nothing bare');
+check(fx.inputPaths(lmo('Inputs: the owner screenshot from yesterday, `docs/a.md`')).bare.join() === 'the owner screenshot from yesterday' && fx.inputPaths(lmo('Inputs: the owner screenshot from yesterday, `docs/a.md`')).repo.join() === 'docs/a.md', 'an Inputs line entry with no path among real paths -> held, the paths still looked up');
+check(fx.inputPaths(bullet('`src/x.js`', "- **Input.** The labels in `data/packs/**` themselves (every record `fieldStatus`); Game Data Check's 2026-10-19 count was 448, most never render.\n")).bare.length === 0, "an Inputs bullet is prose: one path in it is enough (#509's bullet)");
+check(fx.inputPaths(bullet('`src/x.js`', "- **Inputs.** Metabot's `quest_district` map marker.\n")).bare.length === 1, 'an Inputs bullet with no path at all -> held');
+check(fx.inputPaths(exs).bare.length === 0, 'the spec template Example has no bare Inputs entry');
 check(fx.inputPaths(lmo('Inputs: ~/Desktop/crop.png, docs/a.md')).mnt.join() === '~/Desktop/crop.png' && fx.inputPaths(lmo('Inputs: ~/Desktop/crop.png, docs/a.md')).repo.join() === 'docs/a.md', 'an input outside the repo (~/) holds the item like /mnt/');
 const exIns = fx.inputPaths(exs).repo;
 check(exIns.length === 2 && exIns.every((x) => existsSync(join(ROOT, ...x.split('/')))), 'template Example: both its Inputs paths exist on this branch (keep the example honest)');
