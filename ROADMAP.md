@@ -21,6 +21,12 @@ evidence: [Daeva Companion: audit and plan to 1.0](https://claude.ai/code/artifa
 [Semantic versioning](https://semver.org/); 0.x is beta. Each part is its own counter (0.9 → 0.10 → 0.11), so there is
 no running out before 1.0: 1.0 ships when its scope is done.
 
+**Until 1.0 (owner, 2026-10-20 5:13 and 5:15 PM ET; DECISIONS "Standing OK until 1.0"):** the team plans, builds and ships
+every minor and patch without a separate owner go, each release on the Release Planner's GO. When the team judges a
+release ready for 1.0, the owner tests that candidate personally (on staging once it exists) and types go or no-go. A
+no-go relabels it as the next minor (for example 0.11) and another cycle runs. Still brought to the owner: product calls
+the team can't settle, hard blockers, what only the owner's hands can do, and one process box per kaizen review (K23).
+
 - **Minor (0.X.0)**: a theme, i.e. one or more related objectives. New ideas join a theme that fits before they start a
   new one.
 - **Patch (0.X.Y)**: fixes, data corrections, small polish and upkeep. No new features. New looks (what a player
@@ -156,6 +162,12 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
    Research gates start at pass start (kept from K10).
 6. **Write and review.** The plan goes into this file and the #114 queue in one PR, written by one session and
    reviewed by a separate one that didn't write it. Then the planner queues the items, top of the lane map first.
+
+**Usage budget (owner, 2026-10-20 5:17 PM ET; DECISIONS "Usage budget"):** the owner's weekly usage limit must last to
+each Tuesday 3 AM reset. Tracker Sync (Huell) opens one usage To-do a day for a Settings → Usage screenshot; the Release
+Planner logs each reading in #232 against the daily line (the week's budget spread evenly to the reset: from 22% at
+5:17 PM ET on 2026-10-20, about 12% a day). Kaizen (Gale) and Build Pipeline (Gus) set the pace (builds in flight,
+polling and health-check intervals). A reading over the line throttles work first, and the owner is told what was paused.
 
 **Release gate (owner, 2026-10-18 6:24 AM ET), for every release, patches included.** When every item of a release has
 merged, the Release Planner writes the release's CHANGELOG section into the release issue (Kaizen K17, 2026-10-19:
@@ -1174,16 +1186,167 @@ Game Data Check's research (#570, #584). Specs: [docs/plans/0.8.1/README.md](doc
 Also: #585 (simpler link preview) merged after the v0.8.0 tag. Release: `PRE-RELEASE CHECK 0.8.1`, then the release
 item after `DATA OK 0.8.1`; no RC play or freeze for a patch. Owner notes 9–16 go to the 0.9 pass (triage in #232).
 
-### 0.9 — the 1.0 audit's fixes
+### 0.9 — Ready for 1.0: saves, labels, late starters
 
-The classes moved into 0.8 (owner, 2026-10-19 8:30 PM ET). 0.9 carries the 1.0 audit's fixes as found, plus any class
-that slipped to 0.8.x and still needs work. Player-chosen keys (#388) is a 0.9 candidate; it waits on 0.8 P14, so the
-default keys are right first.
+Planning pass written 2026-10-20 (Release Planner). It came after Kaizen's release review
+([docs/kaizen/0.8-scorecard.md](docs/kaizen/0.8-scorecard.md); `KAIZEN REVIEW DONE 0.8`, 4:39 PM ET; changes K19–K26) and the
+owner's yes to its batch (DECISIONS 2026-10-20: K19 GO, K23 one box, K24 fresh reviews, the outside audit trial). Item
+specs: [docs/plans/0.9/README.md](docs/plans/0.9/README.md). Step 2 is the full pre-1.0 architecture, performance and UX
+audit (three audit reports of 2026-10-20, in the project's shared folder; every fact a build needs is copied into its
+spec). The owner's standing OK until 1.0 (5:13 and 5:15 PM ET) is the build go (`owner-ok-0.9-go`): items are queued once
+this plan is reviewed and merged.
+
+#### Audit (step 2), against `main` after 0.8.1 F6
+
+Path to 1.0 first:
+
+1. **Two more minors, then 1.0 (estimate).** All eight classes shipped in 0.8. What 1.0 still needs splits in two:
+   foundations that must land before saves turn strict (0.9), and the 1.0 look (0.10). The owner's design review for 1.0
+   (2026-10-19 1:57 PM ET: the app mustn't "look like AI made it"; a beginner must understand it) is "likely most of a
+   minor" in Design Lead's notes, so it gets 0.10 to itself, with its blind check run during 0.9. If that check finds more
+   than a minor's work, it becomes 0.10 and 0.11.
+2. **Saves turn strict at 1.0, and save keys still come from names and positions** (architecture audit F1: gen.mjs:108,
+   gen.mjs:438, journey.js:106,113, gen.mjs:183). A typo fix in a quest name moves a player's ticks. 0.9 makes the last
+   clean break (P2) and adds the load safety net and a key ledger (P9, P10). The frozen per-class save fixtures are
+   captured at 1.0 itself.
+3. **Correctness tests cover the Assassin only** (F3), and every class release edited hand-kept lists in the tests (F4,
+   Kaizen K22). P3, P11 and P12 make the tests read the class list from the data and run the invariants on all eight.
+4. **Unverified values show unlabelled** (Game Data Check's K25 audit, #607: 230 fields). A policy gap (CLAUDE.md), so P1
+   leads the queue.
+5. **A real company's release safety net** (team audit §8, owner 2026-10-20 3:06 PM ET: "run the way a real company
+   would"): staging before 1.0 (owner tap 4:33 PM ET; S4, needing the owner's answers below), a scripted live-site check
+   (S2), a CI path for the sync server (S3), a rollback drill on staging, an incident runbook and an owner-settings
+   checklist. A closed beta with real players (§8e) is the owner's call for 0.10.
+6. 1.1 is unchanged.
+
+Then 0.9:
+
+7. **Budgets.** gzip and elements are both at 89%, within 20% of their limits, so 0.9 carries a performance item (P5).
+   The performance audit projects 0.9's new UI at +9 to +18 K gzip (94–98%) and says 1.0 very likely crosses without
+   action. No build-only trims are left. P5 corrects the measuring tool and cuts repeated writes. P23 moves the Sources
+   lists into a chunk that loads when the card opens, gated on the owner because it changes how the credit links load.
+   No budget raise in 0.9; a reasoned raise is the 1.0 fallback.
+8. **The owner's Lv 39 notes** (2026-10-20 12:18 PM ET): notes 1–8 went to 0.8.1. Notes 9–12 are design items (P19–P22,
+   on Design Lead's mocks and the owner's look OK). Notes 13–15 are Game Data Check research, then data (P17, P16, P18).
+   Note 16 went to Kaizen.
+9. **UX audit findings** (Lv 39 late start, all classes): the slider path locks the board cards (P7), Ranger and
+   Spiritmaster show no specialty step (P15), small text and colour fixes (P8), Basic hides the catch-up tools and early
+   chores crowd Next up (P21). Finding 10 (letter-square icons) is fixed by 0.8.1 F5. Finding 12 (the same step in three
+   places) is a design question for the 1.0 look (0.10).
+
+**Budget trend** (`npm run build`; elements from `tests/site.js`; `update()` from `tests/perf.js`, one noisy local run):
+
+| | 0.7.0 | 0.8.0 | after 0.8.1 F6 | Limit | Use |
+|---|---|---|---|---|---|
+| Site page (index + largest class chunk) | 752,614 B | 747,379 B | 727,830 B | 870,000 B, blocking | 84% |
+| same, gzip -9 | 189,634 B | 185,395 B | 178,793 B | 200,000 B, blocking | **89%** |
+| Elements, 390 px fresh | 4,963 | 5,517 | 5,517 | 6,200, blocking | **89%** |
+| `update()` median | 11.4 ms | 11.9 ms | 12.4 ms | 15 ms, advisory | 84% |
+
+#### Items (step 3)
+
+Keys are `0.9 P<n>` (kickoff). Models follow #114's routing (Opus for `src/core/**`, saves, `tools/gen`, golden, `scripts/`
+and L items). Stall limits are 0.8.1's (S 44, M 90, L 120 min); no 0.8 build hit a limit (rules audit PIP-10). **FR** marks
+the `fresh-review` label (K24). S1–S4 are pipeline items Build Pipeline builds in its own thread (bots don't edit
+workflows).
+
+| Item | Problem → result | Size | Model | Lanes | After (real dependencies only) |
+|---|---|---|---|---|---|
+| P1 | 230 visible values the data marks unverified show with no label (#607) → every one carries "check in game" / "inferred" | M | Opus | gen, golden, rows, skills-card, build-card | none (input: #607's audit file) |
+| P2 FR | Save keys come from names and positions → stable ids, `companion-save-v6`, the last clean break | L | Opus | gen, golden, mig, nextup-card, journey-card | none |
+| P3 | Each class release edits test lists by hand (K22) → tests read classes from the data | M | Sonnet | schema, e2 | none |
+| P4 | 33 unused names, the deleted artifact's export branch, a narrow term scan → removed, scan widened | S | Opus | main.js, page-card | none |
+| P5 | `--sizes` overstates tables 8x, `update()` repeats identical writes → measured right, writes skipped | M | Opus | site, skills-card, nextup-card, page-card | none |
+| P6 FR | Data suite 12.7 s, invariant 89 s, ledger inside schema → faster, ledger its own suite | M | Opus | gen, schema | none |
+| P7 | Slider to Lv 39 leaves story at Lv 2 and boards locked → Journey asks for the story quest | M | Opus | journey-card, nextup-card, golden-journey, golden-nextup | none |
+| P8 | Point counts disagree, a doubled accessible name, Spent green vs pink, key hint cut at 390 → fixed | S | Sonnet | app.css, a11y, skills-card | none |
+| P9 FR | A newer or unreadable save can be overwritten → read-only banner, copy kept, migration flags | M | Opus | mig, main.js | P2 |
+| P10 FR | A removed save key fails nothing → committed key ledger, `gen:check` fails without `retired` | M | Opus | gen, schema | P2 |
+| P11 | Class roster and golden groups written by hand → generated | M | Opus | gen, golden | P2, P3 |
+| P12 | Invariants run on the Assassin only → all eight classes | L | Opus | golden | P11, P6 |
+| P13 | Game facts in code (key order, unlock text, `altgard`) → in data | M | Opus | gen, golden, build-card, nextup-card | P2 |
+| P14 | ARCHITECTURE drifted → matches a fresh run, describes the 1.0 save contract | S | Sonnet | none | P9, P10 |
+| P15 | Choice points with no pick (Ranger and Spiritmaster specialties, slots 2–3, effective level) → gen check (K25) and sourced picks | M | Opus | gen, golden, skills-card, nextup-card | `research-choice-points` |
+| P16 | Board paths and costs checked for the Assassin only (note 14) → every class | M | Opus | gen, golden | `research-node-paths` |
+| P17 | Assassin E stigma stack on one key? (note 13) → research answer applied | S | Opus | gen, golden | `research-e-stack` |
+| P18 | Rotation lists order, not play (note 15) → "how it plays" text per class | M | Opus | gen, golden, build-card | `research-rotation-play` |
+| P19 FR | Lv 39 join: 70–77 skill clicks in unlock order (note 10) → one row and one tap per skill | L | Opus | skills-card, nextup-card, app.css, golden, golden-nextup | `owner-ok-0.9-catchup-look`, P15 |
+| P20 FR | Daevanion ~22 ticks, no per-board or Stigma respec (note 9) → board rows, respec per board and all, Stigma respec | M | Opus | app.css, golden | `owner-ok-0.9-catchup-look`, P16 |
+| P21 | Basic hides catch-up tools; Lv 4–16 chores lead Next up → kept, folded | M | Sonnet | nextup-card, app.css, golden-nextup | `owner-ok-0.9-catchup-look` |
+| P22 FR | Key setup inline with small icons (notes 11, 12) → a sheet, icons fill each box | M | Opus | build-card, app.css, a11y, golden | `owner-ok-0.9-keys-look` |
+| P23 | Sources lists weigh 9.6 K gzip and 1,088 elements while closed → load on open | M | Opus | site, page-card | `owner-ok-0.9-sources-on-open` |
+| S1 FR | Golden shares a shard → its own shard | S | Gus | ci | P6 |
+| S2 FR | Nothing checks the live app works → scripted journey after each deploy and every 6 h | S | Gus | ci | none |
+| S3 FR | Sync server deployed by hand → CI tests and dry run, deploy on the owner's token | M | Gus | ci | none |
+| S4 FR | No staging → `/staging/` from main, root from tags | M | Gus | ci | `owner-ok-0.9-staging` |
+| R FR | Release 0.9.0 | S | Sonnet | release, alone | everything above, or moved; GO 0.9.0 |
+
+Not bot items (they run alongside): Game Data Check does the four research gates, naming each file with its slug
+(`choice-points`, `node-paths`, `e-stack`, `rotation-play`) so kickoff finds it, plus the owner's Vaizel Assault Stance
+(4 or 5) re-check. Design Lead mocks the catch-up flow (notes 9, 10 and UX findings 4, 6–8) and the key setup sheet
+(notes 11, 12), tagged for fresh review; a Design Critic briefed by Design Review reads them before the owner does. Design
+Lead and Source Vetting run the 1.0 look's blind check (3–5 people, a non-gamer among them) for 0.10. Watchdog and Build
+Pipeline write the incident runbook; Build Pipeline the owner-settings checklist and, once S4 is live, the rollback
+drill. Tracker Sync and Tracker Design move the tracker to one GitHub poll every 20 min (0.8 scorecard: tracker threads
+used 28% of project tokens). The outside "Daeva audit" trial is an owner To-do (below).
+
+No-gos for the whole minor: one save break only (P2, `companion-save-v6`), and no other key change after it; no AION 2
+term in the engine; no game data without its source or label; no fetching in bot builds; no `.github/workflows/` edits by
+bots; no new game art beyond the standing icon OK; no budget raise.
+
+#### Waves and lane map (step 4)
+
+At most five builds at a time. Ungated items queue first; gated ones go last and never hold a lane.
+
+- **Wave 1 (at the go):** P1, P2, P3, P4, P5, P6, P7, P8 and S2, S3. Queue order P1 → P2 → P3 → P7 → P8 → P4 → P5 → P6, so
+  the first five are lane-disjoint (P1 gen; P2 waits for P1 on gen and golden; P3, P7 and P8 start at once). Serial
+  lanes: **gen** P1 → P2 → P6 → P10 → P11 → P13 → P15 → P16 → P17 → P18; **golden** P1 → P2 → P11 → P12 → P13 → the
+  research items → P19 → P20 → P22; **skills-card** P1 → P8 → P5 → P15 → P19; **nextup-card** P2 → P7 → P5 → P13 → P15 →
+  P19 → P21; **page-card** P4 → P5 → P23; **mig** P2 → P9; **schema** P3 → P6 → P10; **app.css** P8 → P19 → P20 → P21 →
+  P22; **build-card** P1 → P13 → P18 → P22; **ci** (Gus) S2 → S3 → S1 → S4.
+- **Wave 2 (after P2):** P9, P10, P11, P13; then P12 (after P11 and P6) and P14 (after P9 and P10).
+- **Wave 3 (as research lands):** P15, P16, P17, P18, in the order their files land.
+- **Wave 4 (as owner OKs land):** P19, P20, P21 on the catch-up look; P22 on the keys look; P23 and S4 on their OKs.
+- **Critical path:** P2 → P11 → P12 → R (L + M + L, about 5.5 h of build at the stall limits, plus review). It runs
+  through no owner gate and no research. A gated item whose OK isn't typed by the time the rest is done moves to 0.10
+  rather than holding the release.
+
+Files two items share are split by lane above; P1 and P5 both touch `skills.js` and run one after the other on
+**skills-card**. P2 and P13 both touch `nextup.js` (pack) and `build.js` (data) and run in that order on **gen**.
+
+#### Owner input (step 5)
+
+Under the standing OK until 1.0 most of 0.9 needs nothing from the owner. What is left:
+
+1. **Build go and staging: given.** The standing OK is `owner-ok-0.9-go` and covers staging on Build Pipeline's option B
+   (`owner-ok-0.9-staging`: `/staging/` on the same site, hidden with `noindex` and a banner, no per-PR previews, $0 and
+   no owner setup). The owner tests the 1.0 candidate there.
+2. **Sources load when the card opens** (gates P23). It changes how the CLAUDE.md credit links load (per-page links only
+   when the card opens, one plain link per source site kept in the page), so it is a rule change and goes in the next
+   kaizen review's box (K23) as `owner-ok-0.9-sources-on-open`. Until then P23 waits at the end of the queue; if the
+   answer is no, a reasoned budget raise at 1.0 is the fallback.
+3. **Catch-up and key setup looks** (gate P19–P21 and P22): `owner-ok-0.9-catchup-look` and `owner-ok-0.9-keys-look`,
+   after Design Lead's mocks and the Design Critic's read. Whether the owner still approves looks under the standing OK is
+   asked once, on a card in the Release planning (Walter) thread.
+4. **Outside audit trial** (owner To-do: only the owner can do it): create the "Daeva audit" project with 7 days of Debug
+   access.
+5. **In-game check:** Vaizel Assault Stance, 4 or 5 nodes (Game Data Check's thread).
+6. **Weekly usage**: see "Usage budget" in "How a minor is planned"; each reading is logged in #232.
+
+### 0.10 — The 1.0 look (estimate)
+
+Design Lead's app design review for 1.0 (owner, 2026-10-19 1:57 PM ET): the blind check run in 0.9, a visual language
+mocked and approved by the owner, then built card by card. Player-chosen keys (#388) on top of 0.9 P22. Cards stop
+reading each other's DOM (architecture audit C3), which makes "add a feature" cheaper. The same step shown in three places
+(UX audit finding 12) is settled here. A closed beta with a few real players is the owner's call (team audit §8e). Planned in its own pass after
+0.9 ships; if the blind check finds more than a minor's work, it splits into 0.10 and 0.11.
 
 ### 1.0
 
 Full architecture, performance and UX audit (the planning pass in its full form), docs pass, all eight classes on the
-engine, Asmodian, Lv 1–45. The strict save rule returns (CLAUDE.md).
+engine, Asmodian, Lv 1–45. One save fixture per class is frozen (`tests/fixtures/saves-1.0/`) and every later build must
+load them. A reasoned budget raise if 0.9 and 0.10 land above 95%. The strict save rule returns (CLAUDE.md). The
+owner tests the candidate and gives go or no-go; a no-go makes it the next minor (Versioning).
 
 ### 1.1 — End-game tracker (owner, 2026-10-16)
 
