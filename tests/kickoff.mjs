@@ -88,8 +88,8 @@ check(/not understood/.test(await afterBlocker(unkeyed('owner-ok-0.7-sync.', '0.
 check(/not understood/.test(await afterBlocker(unkeyed('owner-ok-met.', null))), 'K12: unversioned issue with an owner-ok key stays unstarted (fails closed)');
 check((await afterBlocker(unkeyed('owner-ok-met.', '0.6.1'))) === '', '0.6.1 patch item keeps its old token -> starts');
 
-// The build cap is 5 (owner's Max 20x plan); the 0.8 overnight 8 ended at 06:40 UTC Oct 20 (owner, 2026-10-19).
-check(/const STATE = 114, MAX = 5;/.test(yml), 'kickoff: the build cap is a plain 5');
+// The build cap is 3 under the owner's usage budget (2026-10-20); it was 5 (Max 20x plan) and 8 for the 0.8 overnight run.
+check(/const STATE = 114, MAX = 3;/.test(yml), 'kickoff: the build cap is a plain 3');
 
 // The start loop runs the check on every [next] line before it starts one.
 const notes = yml.slice(yml.indexOf('const wait = await afterBlocker(kx);'), yml.indexOf('picked.push('));

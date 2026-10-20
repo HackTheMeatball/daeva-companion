@@ -137,8 +137,8 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
    with no fresh-review note (`review-skipped`). Once per minor a no-history thread re-checks 10 data fields Game Data
    Check fixed or passed.
 4. **Waves and lanes for the whole minor.** Lay every item out in waves before anything is queued: items in the same
-   module or serial file run one after another; items in different modules may run at the same time, at most five
-   builds (the cap in kickoff.yml). Name the critical path, put the items that unblock the most first, and give each item an `After:` line so
+   module or serial file run one after another; items in different modules may run at the same time, at most three
+   builds (the cap in kickoff.yml; 3 under the owner's usage budget since 2026-10-20, five before). Name the critical path, put the items that unblock the most first, and give each item an `After:` line so
    kickoff can queue it the moment its dependencies merge. An item whose owner OK isn't typed when the plan merges is off
    the critical path: route the path through ungated items and put gated ones last (Kaizen, 2026-10-19; 0.7's path
    ran through P2, which waited 747 min for its OK). An After line lists only real dependencies (code, data, research or owner gates); lane order lives in the wave plan, never in After (Kaizen, 2026-10-18: lane-order keys idled P14 and P18). Owner gates use the `owner-ok-<slug>` form kickoff reads from DECISIONS. From 0.7 on, the token carries its version, `owner-ok-<minor>-<slug>` (a patch item uses the patch version), and the copy box for the owner's typed OK names the same token. Kickoff treats an unversioned or wrong-version owner-ok key as not understood, so it fails closed (Kaizen K12, 2026-10-18: 0.7 P6 was queued on the 0.5 `owner-ok-S2` row). Check every wave for two items that touch the same file:
