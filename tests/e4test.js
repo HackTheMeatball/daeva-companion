@@ -88,8 +88,9 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   ok('#7 after turn-in: "Lv 45 story complete" in Journey and Next up; no dead button anywhere', r.end === last && !r.btn && /^Lv 45 story complete · next in game: "Waiting for the Next Journey" at Lv 46$/.test(r.txt) && !r.body && /Lv 45 story complete/.test(r.nu), r);
   await p.reload(); await p.waitForTimeout(400); r = await p.evaluate(() => !!document.getElementById('qsNext')); ok('#7 still no button after reload', !r, r);
 
-  /* #8 snoozing the only open regional quest keeps a compact card with an un-snooze control */
-  await set(30, `s.quest = 'Dying Light';`);
+  /* #8 snoozing every open regional quest keeps a compact card with an un-snooze control (at "Bitter Reality": Canyon's Secret is
+     turned in, so its Lv 30 quests are open; at "Dying Light" none is open since Her Last Favor got its story gate, 2026-10-20) */
+  await set(30, `s.quest = 'Bitter Reality';`);
   for (let i = 0; i < 12; i++) { const k = await p.evaluate(() => { const b = document.querySelector('#nowStar [data-snz]'); return b && b.dataset.snz; }); if (!k) break; await p.evaluate(k => document.querySelector(`#nowStar [data-snz="${k}"]`).click(), k); await p.waitForTimeout(250); }
   r = await p.evaluate(() => { const c = [...document.querySelectorAll('#nowStar .ns-card')].find(c => /Regional quests/.test(c.querySelector('h3').innerText)); return c ? { sub: c.querySelector('.title > p').innerText, rows: c.querySelectorAll('.ql').length, un: !!c.querySelector('[data-unsnz]'), aux: (c.querySelector('.rq-aux') || {}).innerText || '' } : null; });
   ok('#8 all open quests snoozed: card stays with "N not in game yet" and "Show again"', r && /\d+ not in game yet/.test(r.sub) && r.rows === 0 && r.un, r);

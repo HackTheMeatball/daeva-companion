@@ -21,7 +21,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Stigma slot 4 next · 1 to go Lv 37"],
     "ring": "0%",
-    "prog": ["Quests 2 0/58","Dungeons 53 0/60","Strongholds 11 0/15"]
+    "prog": ["Quests 0/58","Dungeons 53 0/60","Strongholds 11 0/15"]
   },
   "random/L36-q15-none-A": {
     "prev": "Contaminated Area Lv 11",
@@ -33,7 +33,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Stigma slot 4 next · 1 to go Lv 37"],
     "ring": "0%",
-    "prog": ["Quests 3 0/58","Dungeons 53 0/60","Strongholds 11 0/15"]
+    "prog": ["Quests 1 0/58","Dungeons 53 0/60","Strongholds 11 0/15"]
   },
   "random/L36-q15-rnd120p20-B-filters": {
     "prev": "Contaminated Area Lv 11",
@@ -45,7 +45,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Skills window missed · 8 open Lv 4","Wings and Ascension missed · 1 open Lv 6","Enhancement unlocks missed · 5 open Lv 9","Altgard opens missed · 5 open Lv 10","Daevanion board missed · 7 open Lv 13","Ring quest and skills missed · 1 open Lv 15","Legions missed · 7 open Lv 16","Skill tier: level 8 missed · 8 open Lv 19","Zikel board missed · 3 open Lv 20","Stigma slot 1 missed · 6 open Lv 22","Supply Requests missed · 7 open Lv 25","Stigma slot 2 missed · 5 open Lv 27","Daily dungeon and Vaizel board missed · 5 open Lv 30","Stigma slot 3 missed · 2 open Lv 32","Fire Temple missed · 1 open Lv 35","Stigma slot 4 next · 1 to go Lv 37","Triniel board Lv 40","Level cap Lv 45"],
     "ring": "17%",
-    "prog": ["Quests 1 5/58","Dungeons 40 13/60","Strongholds 8 5/15"]
+    "prog": ["Quests 5/58","Dungeons 40 13/60","Strongholds 8 5/15"]
   },
   "random/L36-q16-all-B-cube": {
     "prev": "Express Daeva Delivery Lv 12",
@@ -67,9 +67,9 @@
     "hint": "next milestone at Lv 37",
     "ahead": ["Ahead verified","Lv 13 🔓 Daevanion boards and the Shugo Festival your next quest · \"Urgent Pursuit\"","Lv 37 Stigma slot 4 1 level to go","Lv 40 Triniel board Fourth Daevanion board 4 levels to go"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
-    "track": ["Daevanion board missed · 1 open Lv 13","Legions missed · 2 open Lv 16","Stigma slot 1 missed · 1 open Lv 22","Stigma slot 2 cleared · 1 side quest Lv 27","Daily dungeon and Vaizel board cleared · 4 side quests Lv 30","Stigma slot 3 missed · 1 open Lv 32","Stigma slot 4 next · 1 to go Lv 37","Triniel board Lv 40","Level cap Lv 45"],
-    "ring": "47%",
-    "prog": ["Quests 6/58","Dungeons 53/60","Strongholds 8 3/15"]
+    "track": ["Daevanion board missed · 1 open Lv 13","Legions missed · 2 open Lv 16","Stigma slot 1 missed · 1 open Lv 22","Stigma slot 2 cleared · 1 side quest Lv 27","Daily dungeon and Vaizel board cleared · 5 side quests Lv 30","Stigma slot 3 missed · 1 open Lv 32","Stigma slot 4 next · 1 to go Lv 37","Triniel board Lv 40","Level cap Lv 45"],
+    "ring": "45%",
+    "prog": ["Quests 4/58","Dungeons 53/60","Strongholds 8 3/15"]
   },
   "random/L36-q18-before-A": {
     "prev": "Urgent Pursuit Lv 13",
@@ -80,8 +80,8 @@
     "ahead": ["Ahead verified","Lv 16 🔓 Legions 3 story quests · \"Buried Atrocities\"","Lv 37 Stigma slot 4 1 level to go","Lv 40 Triniel board Fourth Daevanion board 4 levels to go"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Stigma slot 4 next · 1 to go Lv 37"],
-    "ring": "47%",
-    "prog": ["Quests 6/58","Dungeons 53/60","Strongholds 8 3/15"]
+    "ring": "45%",
+    "prog": ["Quests 4/58","Dungeons 53/60","Strongholds 8 3/15"]
   },
   "random/L36-q20-none-B-cube": {
     "prev": "Back on the Scent Lv 14",
@@ -93,7 +93,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Stigma slot 4 next · 1 to go Lv 37"],
     "ring": "1%",
-    "prog": ["Quests 4 0/58","Dungeons 53 0/60","Strongholds 10 1/15"]
+    "prog": ["Quests 2 0/58","Dungeons 53 0/60","Strongholds 10 1/15"]
   },
   "random/L36-q28-all-A-objs": {
     "prev": "Imminent Threat Lv 20",
@@ -117,8 +117,8 @@
     "ahead": ["Ahead verified","Lv 22 🔓 Stigmas (via Asahr) and Expeditions your next quest · \"Daeva in a Dream\"","Lv 37 Stigma slot 4 1 level to go","Lv 40 Triniel board Fourth Daevanion board 4 levels to go"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Stigma slot 4 next · 1 to go Lv 37"],
-    "ring": "53%",
-    "prog": ["Quests 14/58","Dungeons 53/60","Strongholds 8 3/15"]
+    "ring": "51%",
+    "prog": ["Quests 12/58","Dungeons 53/60","Strongholds 8 3/15"]
   },
   "random/L36-q34-rnd146p95-B-stwait": {
     "prev": "Daeva in a Dream Lv 22",
@@ -274,7 +274,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Triniel board next · 3 to go Lv 40"],
     "ring": "36%",
-    "prog": ["Quests 1 24/58","Dungeons 37 16/60","Strongholds 4 8/15"]
+    "prog": ["Quests 24/58","Dungeons 37 16/60","Strongholds 4 8/15"]
   },
   "random/L37-q20-all-A-cube": {
     "prev": "Back on the Scent Lv 14",
@@ -297,8 +297,8 @@
     "ahead": ["Ahead verified","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 7 story quests · \"Daeva in a Dream\"","Lv 40 Triniel board Fourth Daevanion board 3 levels to go","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 8 levels to go"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Stigma slot 4 now Lv 37"],
-    "ring": "51%",
-    "prog": ["Quests 12/58","Dungeons 53/60","Strongholds 9 3/15"]
+    "ring": "50%",
+    "prog": ["Quests 10/58","Dungeons 53/60","Strongholds 9 3/15"]
   },
   "random/L37-q26-none-A-stwait": {
     "prev": "Broken Fang Lv 19",
@@ -310,7 +310,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Stigma slot 4 now Lv 37"],
     "ring": "1%",
-    "prog": ["Quests 10 0/58","Dungeons 53 0/60","Strongholds 11 1/15"]
+    "prog": ["Quests 8 0/58","Dungeons 53 0/60","Strongholds 11 1/15"]
   },
   "random/L37-q27-lvonly-A-stready": {
     "prev": "Watchful Eyes Lv 19",
@@ -345,8 +345,8 @@
     "ahead": ["Ahead verified","Lv 40 Triniel board Fourth Daevanion board 3 levels to go","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 8 levels to go"],
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Stigma slot 4 now Lv 37"],
-    "ring": "54%",
-    "prog": ["Quests 16/58","Dungeons 53/60","Strongholds 9 3/15"]
+    "ring": "53%",
+    "prog": ["Quests 14/58","Dungeons 53/60","Strongholds 9 3/15"]
   },
   "random/L37-q43-none-A-cube": {
     "prev": "Preparations for Restoration Lv 27",
@@ -358,7 +358,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Stigma slot 4 now Lv 37"],
     "ring": "1%",
-    "prog": ["Quests 13 0/58","Dungeons 53 0/60","Strongholds 11 1/15"]
+    "prog": ["Quests 12 0/58","Dungeons 53 0/60","Strongholds 11 1/15"]
   },
   "random/L37-q60-none-A-filters": {
     "prev": "Visible Trap Lv 34",
@@ -406,7 +406,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Stigma slot 4 now Lv 37"],
     "ring": "60%",
-    "prog": ["Quests 2 24/58","Dungeons 53/60","Strongholds 9 3/15"]
+    "prog": ["Quests 3 24/58","Dungeons 53/60","Strongholds 9 3/15"]
   },
   "random/L37-q81-before-A-rqmix": {
     "prev": "The High Priest Awakens Lv 44",
@@ -418,7 +418,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Stigma slot 4 now Lv 37"],
     "ring": "60%",
-    "prog": ["Quests 2 24/58","Dungeons 53/60","Strongholds 9 3/15"]
+    "prog": ["Quests 3 24/58","Dungeons 53/60","Strongholds 9 3/15"]
   },
   "random/L37-qxx-all-B": {
     "prev": "",
@@ -442,7 +442,7 @@
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Stigma slot 4 now Lv 37"],
     "ring": "0%",
-    "prog": ["Quests 2 0/58","Dungeons 53 0/60","Strongholds 12 0/15"]
+    "prog": ["Quests 0/58","Dungeons 53 0/60","Strongholds 12 0/15"]
   },
   "random/L38-q00-rnd126p95-B-stfull": {
     "prev": "",
@@ -466,7 +466,7 @@
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Triniel board next · 2 to go Lv 40"],
     "ring": "1%",
-    "prog": ["Quests 4 0/58","Dungeons 53 0/60","Strongholds 11 1/15"]
+    "prog": ["Quests 2 0/58","Dungeons 53 0/60","Strongholds 11 1/15"]
   },
   "random/L38-q26-none-A-stwait": {
     "prev": "Broken Fang Lv 19",
@@ -478,7 +478,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Triniel board next · 2 to go Lv 40"],
     "ring": "1%",
-    "prog": ["Quests 10 0/58","Dungeons 53 0/60","Strongholds 11 1/15"]
+    "prog": ["Quests 8 0/58","Dungeons 53 0/60","Strongholds 11 1/15"]
   },
   "random/L38-q50-none-B-objs": {
     "prev": "Bitter Reality Lv 32",
@@ -490,7 +490,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Triniel board next · 2 to go Lv 40"],
     "ring": "1%",
-    "prog": ["Quests 16 0/58","Dungeons 53 0/60","Strongholds 11 1/15"],
+    "prog": ["Quests 15 0/58","Dungeons 53 0/60","Strongholds 11 1/15"],
     "subs": {"head":"Objectives 2/4","items":2,"on":0,"end":""}
   },
   "random/L38-q54-before-A-sppts": {
@@ -613,7 +613,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Triniel board next · 2 to go Lv 40"],
     "ring": "64%",
-    "prog": ["Quests 1 20/58","Dungeons 1 52/60","Strongholds 1 13/15"]
+    "prog": ["Quests 20/58","Dungeons 1 52/60","Strongholds 1 13/15"]
   },
   "random/L39-q02-lvonly-B-filters": {
     "prev": "Prepare to Escape Lv 2",
@@ -637,7 +637,7 @@
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Triniel board next · 1 to go Lv 40"],
     "ring": "0%",
-    "prog": ["Quests 2 0/58","Dungeons 53 0/60","Strongholds 12 0/15"],
+    "prog": ["Quests 0/58","Dungeons 53 0/60","Strongholds 12 0/15"],
     "subs": {"head":"Objectives 1/4","items":3,"on":0,"end":""}
   },
   "random/L39-q06-before-A-stready": {
@@ -649,8 +649,8 @@
     "ahead": ["Ahead verified","Lv 10 🔓 Pets 6 story quests · \"Gathering Essentials\"","Lv 40 Triniel board Fourth Daevanion board 1 level to go","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 6 levels to go"],
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Triniel board next · 1 to go Lv 40"],
-    "ring": "47%",
-    "prog": ["Quests 6/58","Dungeons 53/60","Strongholds 9 3/15"]
+    "ring": "45%",
+    "prog": ["Quests 4/58","Dungeons 53/60","Strongholds 9 3/15"]
   },
   "random/L39-q13-rnd144p95-B-cube": {
     "prev": "Gathering Essentials Lv 10",
@@ -662,7 +662,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Triniel board next · 1 to go Lv 40"],
     "ring": "63%",
-    "prog": ["Quests 1 19/58","Dungeons 3 50/60","Strongholds ✓ 15/15"]
+    "prog": ["Quests 19/58","Dungeons 3 50/60","Strongholds ✓ 15/15"]
   },
   "random/L39-q18-rnd139p20-B": {
     "prev": "Urgent Pursuit Lv 13",
@@ -674,7 +674,7 @@
     "asc": "Ascension 2 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Triniel board next · 1 to go Lv 40"],
     "ring": "9%",
-    "prog": ["Quests 3 0/58","Dungeons 43 10/60","Strongholds 11 2/15"]
+    "prog": ["Quests 1 0/58","Dungeons 43 10/60","Strongholds 11 2/15"]
   },
   "random/L39-q27-none-B-stready": {
     "prev": "Watchful Eyes Lv 19",
@@ -686,7 +686,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Triniel board next · 1 to go Lv 40"],
     "ring": "1%",
-    "prog": ["Quests 10 0/58","Dungeons 53 0/60","Strongholds 11 1/15"]
+    "prog": ["Quests 8 0/58","Dungeons 53 0/60","Strongholds 11 1/15"]
   },
   "random/L39-q29-all-A": {
     "prev": "Crossroad Lv 20",
@@ -709,8 +709,8 @@
     "ahead": ["Ahead verified","Lv 40 Triniel board Fourth Daevanion board 1 level to go","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 6 levels to go"],
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Triniel board next · 1 to go Lv 40"],
-    "ring": "55%",
-    "prog": ["Quests 17/58","Dungeons 53/60","Strongholds 9 3/15"]
+    "ring": "53%",
+    "prog": ["Quests 15/58","Dungeons 53/60","Strongholds 9 3/15"]
   },
   "random/L39-q53-all-B": {
     "prev": "Rescue Operation Lv 32",
@@ -806,7 +806,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Triniel board next · 1 to go Lv 40"],
     "ring": "19%",
-    "prog": ["Quests 12 13/58","Dungeons 44 9/60","Strongholds 9 3/15"]
+    "prog": ["Quests 13 13/58","Dungeons 44 9/60","Strongholds 9 3/15"]
   },
   "random/L39-qxx-rnd105p95-B-cube": {
     "prev": "",
@@ -842,7 +842,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Level cap next · 5 to go Lv 45"],
     "ring": "65%",
-    "prog": ["Quests 1 15/58","Dungeons 3 57/60","Strongholds 1 14/15"]
+    "prog": ["Quests 15/58","Dungeons 3 57/60","Strongholds 1 14/15"]
   },
   "random/L40-q20-all-A-stready": {
     "prev": "Back on the Scent Lv 14",
@@ -877,8 +877,8 @@
     "ahead": ["Ahead verified","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 10 story quests · \"Daeva in a Dream\"","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 5 levels to go"],
     "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
     "track": ["Triniel board now Lv 40"],
-    "ring": "50%",
-    "prog": ["Quests 11/58","Dungeons 7 53/60","Strongholds 10 3/15"]
+    "ring": "49%",
+    "prog": ["Quests 9/58","Dungeons 7 53/60","Strongholds 10 3/15"]
   },
   "random/L40-q37-before-B": {
     "prev": "Prison Break Lv 24",
@@ -889,8 +889,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 5 levels to go"],
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Triniel board now Lv 40"],
-    "ring": "54%",
-    "prog": ["Quests 16/58","Dungeons 7 53/60","Strongholds 10 3/15"]
+    "ring": "53%",
+    "prog": ["Quests 14/58","Dungeons 7 53/60","Strongholds 10 3/15"]
   },
   "random/L40-q37-lvonly-A-stready": {
     "prev": "Prison Break Lv 24",
@@ -913,8 +913,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 5 levels to go"],
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Triniel board now Lv 40"],
-    "ring": "54%",
-    "prog": ["Quests 16/58","Dungeons 7 53/60","Strongholds 10 3/15"]
+    "ring": "53%",
+    "prog": ["Quests 14/58","Dungeons 7 53/60","Strongholds 10 3/15"]
   },
   "random/L40-q41-rnd102p50-A": {
     "prev": "The High Priest Slumbers Lv 26",
@@ -938,7 +938,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Triniel board now Lv 40"],
     "ring": "1%",
-    "prog": ["Quests 16 0/58","Dungeons 60 0/60","Strongholds 12 1/15"]
+    "prog": ["Quests 15 0/58","Dungeons 60 0/60","Strongholds 12 1/15"]
   },
   "random/L40-q53-all-A-stfull": {
     "prev": "Rescue Operation Lv 32",
@@ -1011,6 +1011,6 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Triniel board now Lv 40"],
     "ring": "62%",
-    "prog": ["Quests 26/58","Dungeons 7 53/60","Strongholds 10 3/15"]
+    "prog": ["Quests 1 26/58","Dungeons 7 53/60","Strongholds 10 3/15"]
   }
 }

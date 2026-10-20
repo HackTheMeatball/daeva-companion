@@ -1705,18 +1705,37 @@
         ]
       },
       "requires": {
-        "level": 10,
-        "basis": "sourced",
-        "sources": [
+        "all": [
           {
-            "url": "https://metabot.gg/en/aion-2/quests/her-last-favor",
-            "fields": [
-              "unlocksAt"
+            "level": 10,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/her-last-favor",
+                "fields": [
+                  "unlocksAt"
+                ]
+              }
             ]
+          },
+          {
+            "story": "sq:2102280",
+            "is": "turnedIn",
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://aion2.gaming.tools/quests/2202018",
+                "fields": [
+                  "requires"
+                ],
+                "checkedAt": "2026-10-20",
+                "note": "\"Required Quests: Canyon's Secret\" (owner's browser screenshot, 2026-10-20; docs/research/2026-10-owner-page-checks.md)"
+              }
+            ],
+            "note": "aion2.gaming.tools \"Required Quests: Canyon's Secret\" (the whole quest, so turned in; owner check 1)."
           }
         ]
       },
-      "requiresBasis": "unresearched",
       "completesWith": [
         "tick"
       ],
@@ -1784,36 +1803,8 @@
       "conflicts": [
         "Metabot shows no giver place/Kibelisk; app place 'Healing Spring' (Purifying Forest) is not on Metabot. Turn-in text says 'Talk to Reden at Odar's Shade' (Moslan Forest). Story references the Young Elim — possible thematic link to Young Elim's Story, not stated.",
         "Giver place 'Healing Spring' from allthings.how (not on Metabot) [2026-10-19: Metabot's quest page names the start as \"Reden · Healing Spring\" (build 0.0.4387.0).]",
-        "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
-      ],
-      "proposed": {
-        "requires": {
-          "all": [
-            {
-              "level": 10,
-              "basis": "sourced",
-              "sources": [
-                {
-                  "url": "https://metabot.gg/en/aion-2/quests/her-last-favor",
-                  "fields": [
-                    "unlocksAt"
-                  ]
-                }
-              ]
-            },
-            {
-              "story": "sq:2102280",
-              "is": "turnedIn",
-              "basis": "owner-check",
-              "note": "Candidate gate: no permitted source names a prerequisite (Metabot renders none). is \"turnedIn\" like every regional story gate (owner check 1 answered 2026-10-15)."
-            }
-          ]
-        },
-        "status": "owner-check",
-        "check": 7,
-        "basis": "prereq-gates §6 (noPre candidate)",
-        "change": "If confirmed: opens once \"Canyon's Secret\" is turned in (Lv 30) instead of at its recommended Lv 30."
-      }
+        "Prerequisites: no aion2.gaming.tools / aion2.th.gl page was reachable from our tools; checked 2026-10-20 on aion2.gaming.tools in the owner's browser (see requires)"
+      ]
     },
     {
       "id": "rq:2202019",
@@ -3390,16 +3381,24 @@
           },
           {
             "story": "sq:2102370",
-            "is": "turnedIn",
+            "is": "reached",
             "basis": "sourced",
             "sources": [
               {
                 "url": "https://metabot.gg/en/aion-2/quests/traveling-merchants-conundrum",
                 "section": "Required first",
                 "checkedAt": "2026-10-14"
+              },
+              {
+                "url": "https://aion2.gaming.tools/quests/2202029",
+                "fields": [
+                  "requires"
+                ],
+                "checkedAt": "2026-10-20",
+                "note": "\"Requirements: Step completed, Blood Monument\"; Blood Monument's Dependent quests: \"Traveling Merchant's Conundrum, Step 2\" (owner's browser screenshots, 2026-10-20)"
               }
             ],
-            "note": "Metabot \"Required first: Blood Monument\". is \"turnedIn\" like every regional story gate (owner check 1 answered 2026-10-15)."
+            "note": "aion2.gaming.tools: opens at Blood Monument Step 2 (talk to Dixie at Graverobber Campsite), before its turn-in. No step gate in the data, so \"reached\": it may show a few steps early."
           }
         ]
       },
@@ -3466,7 +3465,7 @@
       },
       "conflicts": [
         "Metabot shows no giver/turn-in/Kibelisk; giver name from step text only. Graverobber Campsite is mentioned in step text (Basfelt Ruins).",
-        "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
+        "Prerequisites: no aion2.gaming.tools / aion2.th.gl page was reachable from our tools; checked 2026-10-20 on aion2.gaming.tools in the owner's browser (see requires)"
       ]
     },
     {
@@ -3548,10 +3547,18 @@
             "fields": [
               "unlocksAt"
             ]
+          },
+          {
+            "url": "https://aion2.gaming.tools/quests/2202030",
+            "fields": [
+              "requires"
+            ],
+            "checkedAt": "2026-10-20",
+            "note": "No Required Quests or Requirements box; Required level 45 (owner's browser screenshot, 2026-10-20)"
           }
         ]
       },
-      "requiresBasis": "unresearched",
+      "requiresBasis": "verified-none",
       "completesWith": [
         "tick"
       ],
@@ -3604,27 +3611,8 @@
         "Spacetime Rift series: No Required Quests on 5 of 7 gaming.tools pages (Unknown Species 2202030 and Proof 2202035 not reachable). Not a chain. Gate: level 45 (Metabot 'Unlocks at 45' on all 7; allthings 244366 'Level 45') plus a rift that 'opens at random spots at set times' (allthings 244371)."
       ],
       "conflicts": [
-        "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
+        "Prerequisites: no aion2.gaming.tools / aion2.th.gl page was reachable from our tools; checked 2026-10-20 on aion2.gaming.tools in the owner's browser (see requires)"
       ],
-      "proposed": {
-        "requires": {
-          "level": 45,
-          "basis": "sourced",
-          "sources": [
-            {
-              "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-unknown-species",
-              "fields": [
-                "unlocksAt"
-              ]
-            }
-          ]
-        },
-        "requiresBasis": "verified-none",
-        "status": "owner-check",
-        "check": 8,
-        "basis": "prereq-gates §6 (Spacetime Rift)",
-        "change": "None on screen (opens at Lv 45 either way); the record moves from \"no prerequisite data\" to \"checked: none\"."
-      },
       "fieldStatus": {
         "zone": "inferred"
       }
@@ -4359,10 +4347,18 @@
             "fields": [
               "unlocksAt"
             ]
+          },
+          {
+            "url": "https://aion2.gaming.tools/quests/2202035",
+            "fields": [
+              "requires"
+            ],
+            "checkedAt": "2026-10-20",
+            "note": "No Required Quests or Requirements box; Required level 45 (owner's browser screenshot, 2026-10-20)"
           }
         ]
       },
-      "requiresBasis": "unresearched",
+      "requiresBasis": "verified-none",
       "completesWith": [
         "tick"
       ],
@@ -4412,30 +4408,11 @@
       "status": "verified",
       "conflicts": [
         "Metabot location field just 'Altgard'; place taken from nearest Kibelisk (Graverobber Campsite 32 m, same as An Honest Shugo)",
-        "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
+        "Prerequisites: no aion2.gaming.tools / aion2.th.gl page was reachable from our tools; checked 2026-10-20 on aion2.gaming.tools in the owner's browser (see requires)"
       ],
       "notes": [
         "Spacetime Rift series: No Required Quests on 5 of 7 gaming.tools pages (Unknown Species 2202030 and Proof 2202035 not reachable). Not a chain. Gate: level 45 (Metabot 'Unlocks at 45' on all 7; allthings 244366 'Level 45') plus a rift that 'opens at random spots at set times' (allthings 244371)."
       ],
-      "proposed": {
-        "requires": {
-          "level": 45,
-          "basis": "sourced",
-          "sources": [
-            {
-              "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-proof",
-              "fields": [
-                "unlocksAt"
-              ]
-            }
-          ]
-        },
-        "requiresBasis": "verified-none",
-        "status": "owner-check",
-        "check": 8,
-        "basis": "prereq-gates §6 (Spacetime Rift)",
-        "change": "None on screen (opens at Lv 45 either way); the record moves from \"no prerequisite data\" to \"checked: none\"."
-      },
       "fieldStatus": {
         "zone": "inferred"
       }
@@ -5351,18 +5328,37 @@
         ]
       },
       "requires": {
-        "level": 10,
-        "basis": "sourced",
-        "sources": [
+        "all": [
           {
-            "url": "https://metabot.gg/en/aion-2/quests/pain-unending",
-            "fields": [
-              "unlocksAt"
+            "level": 10,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/pain-unending",
+                "fields": [
+                  "unlocksAt"
+                ]
+              }
             ]
+          },
+          {
+            "story": "sq:2102340",
+            "is": "turnedIn",
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://aion2.gaming.tools/quests/2202040",
+                "fields": [
+                  "requires"
+                ],
+                "checkedAt": "2026-10-20",
+                "note": "\"Required Quests: Last of the Destruction Archons\" (owner's browser screenshot, 2026-10-20; docs/research/2026-10-owner-page-checks.md)"
+              }
+            ],
+            "note": "aion2.gaming.tools \"Required Quests: Last of the Destruction Archons\" (the whole quest, so turned in; owner check 1)."
           }
         ]
       },
-      "requiresBasis": "unresearched",
       "completesWith": [
         "tick"
       ],
@@ -5429,36 +5425,8 @@
       "conflicts": [
         "Metabot gives no giver place/Kibelisk for Bekrin; app has 'Battlescar Mound'. Turn-in at Briskwind Shelter (Elena). [2026-10-19: Metabot's quest page names the start as \"Bekrin · Battlescar Mound\" (build 0.0.4387.0).]",
         "Giver place 'Battlescar Mound' from allthings.how (not on Metabot)",
-        "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
-      ],
-      "proposed": {
-        "requires": {
-          "all": [
-            {
-              "level": 10,
-              "basis": "sourced",
-              "sources": [
-                {
-                  "url": "https://metabot.gg/en/aion-2/quests/pain-unending",
-                  "fields": [
-                    "unlocksAt"
-                  ]
-                }
-              ]
-            },
-            {
-              "story": "sq:2102340",
-              "is": "turnedIn",
-              "basis": "owner-check",
-              "note": "Candidate gate: no permitted source names a prerequisite (Metabot renders none). is \"turnedIn\" like every regional story gate (owner check 1 answered 2026-10-15)."
-            }
-          ]
-        },
-        "status": "owner-check",
-        "check": 7,
-        "basis": "prereq-gates §6 (noPre candidate)",
-        "change": "If confirmed: opens once \"Last of the Destruction Archons\" is turned in (Lv 32) instead of at its recommended Lv 32."
-      }
+        "Prerequisites: no aion2.gaming.tools / aion2.th.gl page was reachable from our tools; checked 2026-10-20 on aion2.gaming.tools in the owner's browser (see requires)"
+      ]
     },
     {
       "id": "rq:2202041",
@@ -6520,16 +6488,24 @@
           },
           {
             "story": "sq:2102780",
-            "is": "turnedIn",
+            "is": "reached",
             "basis": "sourced",
             "sources": [
               {
                 "url": "https://metabot.gg/en/aion-2/quests/lest-we-forget",
                 "section": "Required first",
                 "checkedAt": "2026-10-14"
+              },
+              {
+                "url": "https://aion2.gaming.tools/quests/2202046",
+                "fields": [
+                  "requires"
+                ],
+                "checkedAt": "2026-10-20",
+                "note": "\"Requirements: Step completed, Zikel's Core\"; Zikel's Core's Dependent quests: \"Lest We Forget, Step 1\" (owner's browser screenshots, 2026-10-20)"
               }
             ],
-            "note": "Metabot \"Required first: Zikel's Core\". is \"turnedIn\" like every regional story gate (owner check 1 answered 2026-10-15)."
+            "note": "aion2.gaming.tools: opens at Zikel's Core Step 1 (talk to Hort's Apparition at the Collapsed Hall of Fame), before its turn-in. No step gate in the data, so \"reached\": it may show a few steps early."
           }
         ]
       },
@@ -6588,7 +6564,7 @@
         "Metabot page not reachable; data from shugo.gg 2202046 + allthings.how Impetusium page. No Kibelisk. [2026-10-19: Metabot's quest page names the start as \"Nemon · Impetusium Square\" (build 0.0.4387.0).]",
         "shugo.gg shows 'Level 45' without separating unlock level; allthings says unlocks at 10. Not in Forgotten Commander's dependent list (unlike the other Impetusium Lv 45 quests); prerequisites not checked (gaming.tools page not reachable).",
         "shugo.gg turn-in header says Nemon but step 4 says Reuben's Apparition",
-        "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
+        "Prerequisites: no aion2.gaming.tools / aion2.th.gl page was reachable from our tools; checked 2026-10-20 on aion2.gaming.tools in the owner's browser (see requires)"
       ]
     },
     {
@@ -9137,14 +9113,19 @@
           },
           {
             "story": "sq:2102240",
-            "is": "turnedIn",
+            "is": "reached",
             "basis": "sourced",
             "sources": [
               {
-                "url": "https://aion2.gaming.tools/quests/2202062"
+                "url": "https://aion2.gaming.tools/quests/2202062",
+                "fields": [
+                  "requires"
+                ],
+                "checkedAt": "2026-10-20",
+                "note": "\"Requirements: Step completed, A Collective Effort\"; A Collective Effort's Dependent quests: \"Fight Poison with Poison, Step 4\" (owner's browser screenshots, 2026-10-20)"
               }
             ],
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15)."
+            "note": "aion2.gaming.tools: opens at A Collective Effort Step 4 (meet Ulgorn at Guide Rest Stop), before its turn-in. No step gate in the data, so \"reached\": it may show a few steps early."
           }
         ]
       },
@@ -9741,14 +9722,14 @@
       ],
       "verifiedAt": "2026-10-19",
       "status": "verified",
-      "fieldStatus": {
-        "turnin.zone": "inferred",
-        "zone": "disputed"
-      },
       "conflicts": [
         "Metabot page not reachable; data from aion2.gaming.tools 2202065 + allthings.how 244384. No Kibelisk. Zone Western Gribade Highland per allthings 244384 (missing from allthings list page). [2026-10-19: Metabot's quest page names the start as \"Fiona · Fafnite Deposit\" (build 0.0.4387.0).]",
         "zone: Metabot's quest page starts it in \"Fafnite Deposit\" (2026-10-19, build 0.0.4387.0); allthings.how and the data have Western Gribade Highland. Kept Western Gribade Highland until the owner checks in game (#325)."
-      ]
+      ],
+      "fieldStatus": {
+        "turnin.zone": "inferred",
+        "zone": "disputed"
+      }
     },
     {
       "id": "rq:2202066",
@@ -9819,18 +9800,37 @@
         ]
       },
       "requires": {
-        "level": 10,
-        "basis": "sourced",
-        "sources": [
+        "all": [
           {
-            "url": "https://metabot.gg/en/aion-2/quests/herb-pouch-heist",
-            "fields": [
-              "unlocksAt"
+            "level": 10,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/herb-pouch-heist",
+                "fields": [
+                  "unlocksAt"
+                ]
+              }
             ]
+          },
+          {
+            "story": "sq:2102660",
+            "is": "turnedIn",
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://aion2.gaming.tools/quests/2202066",
+                "fields": [
+                  "requires"
+                ],
+                "checkedAt": "2026-10-20",
+                "note": "\"Required Quests: Daybreak Society Rescue Operation\" (owner's browser screenshot, 2026-10-20; docs/research/2026-10-owner-page-checks.md)"
+              }
+            ],
+            "note": "aion2.gaming.tools \"Required Quests: Daybreak Society Rescue Operation\" (the whole quest, so turned in; owner check 1)."
           }
         ]
       },
-      "requiresBasis": "unresearched",
       "completesWith": [
         "tick"
       ],
@@ -9882,36 +9882,8 @@
       "status": "verified",
       "conflicts": [
         "Giver Kunpata is Daybreak Society; prerequisites not checked (no gaming.tools/th.gl page reachable; shugo.gg and gamers4.life show none but they do not show prerequisites for quests that do have them, e.g. The Future Within the Past). Not in Forgotten Commander's dependent list.",
-        "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
+        "Prerequisites: no aion2.gaming.tools / aion2.th.gl page was reachable from our tools; checked 2026-10-20 on aion2.gaming.tools in the owner's browser (see requires)"
       ],
-      "proposed": {
-        "requires": {
-          "all": [
-            {
-              "level": 10,
-              "basis": "sourced",
-              "sources": [
-                {
-                  "url": "https://metabot.gg/en/aion-2/quests/herb-pouch-heist",
-                  "fields": [
-                    "unlocksAt"
-                  ]
-                }
-              ]
-            },
-            {
-              "story": "sq:2102660",
-              "is": "turnedIn",
-              "basis": "owner-check",
-              "note": "Candidate gate: no permitted source names a prerequisite (Metabot renders none). is \"turnedIn\" like every regional story gate (owner check 1 answered 2026-10-15)."
-            }
-          ]
-        },
-        "status": "owner-check",
-        "check": 7,
-        "basis": "prereq-gates §6 (noPre candidate)",
-        "change": "If confirmed: opens once \"Daybreak Society Rescue Operation\" is turned in (Lv 41) instead of at its recommended Lv 44."
-      },
       "fieldStatus": {
         "zone": "inferred"
       }

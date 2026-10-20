@@ -55,10 +55,16 @@ const KNOWN = {
    off, held to the frozen rules by B; here the live data is compared with 0.2 and each regional quest that differs is known by its record. */
 const RQ_TURNED_IN = 'live story gate is "turned in" (owner check 1, 2026-10-15; data/packs/aion2/asmodian/regional-quests.json); 0.2 opened the quest when the story ' +
   'reached it [switch "regionalTurnedIn", held to 0.2 by B]';
+/* Owner page checks (2026-10-20): three regional quests open at a step of their story quest ("Step completed" on aion2.gaming.tools), so their
+   gate is "reached". Traveling Merchant's Conundrum and Lest We Forget had no story gate in 0.2 (E5, held to 0.2 by B with the switches off). */
+const RQ_STEP = 'live story gate is "reached": aion2.gaming.tools "Step completed" (owner page checks, 2026-10-20; docs/research/2026-10-owner-page-checks.md); ' +
+  '0.2 had no story gate for it (E5 switches "merchantGate" / "lestWeForgetGate", held to 0.2 by B)';
 const regionalKnown = M => {
   const out = {}, atoms = g => g.all ? g.all.flatMap(atoms) : g.any ? g.any.flatMap(atoms) : [g];
-  for (const [id, n] of Object.entries(M.GATE_GRAPH.nodes)) if (n.kind === 'rq' && atoms(n.req).some(a => a.story && a.is === 'turnedIn'))
-    for (const f of ['open', 'open without regional prerequisites']) for (const d of ['true / evaluator false', 'false / evaluator true']) out[`rq ${id} ${f}: 0.2 ${d}`] = RQ_TURNED_IN;
+  for (const [id, n] of Object.entries(M.GATE_GRAPH.nodes)) if (n.kind === 'rq' && atoms(n.req).some(a => a.story && (a.is === 'turnedIn' || a.is === 'reached'))) {
+    const why = atoms(n.req).some(a => a.story && a.is === 'turnedIn') ? RQ_TURNED_IN : RQ_STEP;
+    for (const f of ['open', 'open without regional prerequisites']) for (const d of ['true / evaluator false', 'false / evaluator true']) out[`rq ${id} ${f}: 0.2 ${d}`] = why;
+  }
   return out;
 };
 

@@ -26,8 +26,8 @@ Active list and on the quick-slot grid:
 | 2 | Ambush (3) |
 | 3 | Flash Slice (8) |
 | 4 | Insignia Explosion (14) |
-| E (stack) | Heart Gore (4) on top, then Storm Rampage (5) and Whirlwind Slice (7) below it |
-| Q (stack) | Infiltrate (10), Shadow Fall (12) |
+| E (stack) | row 0 Storm Rampage (5), row 1 Whirlwind Slice (7), row 2 Heart Gore (4); the grid draws row 0 at the bottom |
+| Q (stack) | row 0 Infiltrate (10), row 1 Shadow Fall (12) |
 | none | Defiance (16) |
 
 The same window shows every unlock level in `classes/assassin/skills.json`: actives 5, 7, 8, 10, 12, 14, 16 and passives

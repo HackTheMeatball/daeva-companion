@@ -45,9 +45,9 @@ export const GATE_CHANGES = {
     "Fire Temple Expedition runs (owner) and, \"probably\", Draupnir (inferred)", baseline: true },
   /* E5: the `ready` proposals of design §7, live data since 2026-10-16; with the switch off a record has its gate from before (GATE_OFF).
      baseline since E8: recorded in the snapshots by #78, so --explain keeps them on (else every E5 state reads "still differs with every change off") */
-  merchantGate: { baseline: true, records: ["rq:2202029"], what: "Traveling Merchant's Conundrum opens once \"Blood Monument\" is turned in (Metabot \"Required first\") " +
+  merchantGate: { baseline: true, records: ["rq:2202029"], what: "Traveling Merchant's Conundrum opens once the story reaches \"Blood Monument\" (Metabot \"Required first\"; Step 2 on aion2.gaming.tools, owner page checks 2026-10-20) " +
     "instead of at its recommended Lv 33 (no prerequisite data before)" },
-  lestWeForgetGate: { baseline: true, records: ["rq:2202046"], what: "Lest We Forget opens once \"Zikel's Core\" is turned in (Metabot \"Required first\") " +
+  lestWeForgetGate: { baseline: true, records: ["rq:2202046"], what: "Lest We Forget opens once the story reaches \"Zikel's Core\" (Metabot \"Required first\"; Step 1 on aion2.gaming.tools, owner page checks 2026-10-20) " +
     "instead of at its recommended Lv 45 (no prerequisite data before)" },
   beltGate: { baseline: true, records: ["g12:belt"], what: "the Noble Belt step is offered once \"Urgent Pursuit\" is turned in (it gives the belt; Metabot, owner screen " +
     "2026-10-15), not from Lv 13 alone" },

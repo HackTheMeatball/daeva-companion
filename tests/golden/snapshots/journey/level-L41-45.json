@@ -141,7 +141,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 4 to go Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
+    "prog": ["Quests 1 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
   },
   "level/L41-qxx-before-A": {
     "prev": "",
@@ -152,8 +152,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 4 levels to go"],
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Level cap next · 4 to go Lv 45"],
-    "ring": "53%",
-    "prog": ["Quests 6/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
+    "ring": "51%",
+    "prog": ["Quests 4/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
   },
   "level/L42-q75-lvonly-A": {
     "prev": "Symbol of Liberation Lv 40",
@@ -177,7 +177,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 3 to go Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
+    "prog": ["Quests 1 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
   },
   "level/L42-q78-before-B": {
     "prev": "The Breaking of the Day Lv 42",
@@ -189,7 +189,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 3 to go Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
+    "prog": ["Quests 1 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
   },
   "level/L42-q78-lvonly-A": {
     "prev": "The Breaking of the Day Lv 42",
@@ -201,7 +201,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 3 to go Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
+    "prog": ["Quests 1 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
   },
   "level/L42-q78-lvonly-B": {
     "prev": "The Breaking of the Day Lv 42",
@@ -213,7 +213,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 3 to go Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
+    "prog": ["Quests 1 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
   },
   "level/L42-q78-none-A": {
     "prev": "The Breaking of the Day Lv 42",
@@ -225,7 +225,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 3 to go Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 19 0/58","Dungeons 60 0/60","Strongholds 13 1/15"]
+    "prog": ["Quests 20 0/58","Dungeons 60 0/60","Strongholds 13 1/15"]
   },
   "level/L42-q78-none-B": {
     "prev": "The Breaking of the Day Lv 42",
@@ -237,7 +237,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 3 to go Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 19 0/58","Dungeons 60 0/60","Strongholds 13 1/15"]
+    "prog": ["Quests 20 0/58","Dungeons 60 0/60","Strongholds 13 1/15"]
   },
   "level/L42-q78-rnd1p50-A": {
     "prev": "The Breaking of the Day Lv 42",
@@ -249,7 +249,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 3 to go Lv 45"],
     "ring": "44%",
-    "prog": ["Quests 8 17/58","Dungeons 27 33/60","Strongholds 7 8/15"]
+    "prog": ["Quests 9 17/58","Dungeons 27 33/60","Strongholds 7 8/15"]
   },
   "level/L42-q78-rnd1p50-B": {
     "prev": "The Breaking of the Day Lv 42",
@@ -261,7 +261,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 3 to go Lv 45"],
     "ring": "44%",
-    "prog": ["Quests 8 17/58","Dungeons 27 33/60","Strongholds 7 8/15"]
+    "prog": ["Quests 9 17/58","Dungeons 27 33/60","Strongholds 7 8/15"]
   },
   "level/L42-q78-rnd2p85-A": {
     "prev": "The Breaking of the Day Lv 42",
@@ -273,7 +273,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 3 to go Lv 45"],
     "ring": "65%",
-    "prog": ["Quests 26/58","Dungeons 11 49/60","Strongholds 3 12/15"]
+    "prog": ["Quests 1 26/58","Dungeons 11 49/60","Strongholds 3 12/15"]
   },
   "level/L42-q78-rnd2p85-B": {
     "prev": "The Breaking of the Day Lv 42",
@@ -285,7 +285,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 3 to go Lv 45"],
     "ring": "65%",
-    "prog": ["Quests 26/58","Dungeons 11 49/60","Strongholds 3 12/15"]
+    "prog": ["Quests 1 26/58","Dungeons 11 49/60","Strongholds 3 12/15"]
   },
   "level/L42-q79-before-A": {
     "prev": "Chief of the Black Claw Lv 42",
@@ -297,7 +297,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 3 to go Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
+    "prog": ["Quests 1 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
   },
   "level/L42-qxx-before-A": {
     "prev": "",
@@ -308,8 +308,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 3 levels to go"],
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Level cap next · 3 to go Lv 45"],
-    "ring": "53%",
-    "prog": ["Quests 6/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
+    "ring": "51%",
+    "prog": ["Quests 4/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
   },
   "level/L43-q76-lvonly-A": {
     "prev": "Daybreak Society Lv 41",
@@ -333,7 +333,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 2 to go Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
+    "prog": ["Quests 1 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
   },
   "level/L43-q79-before-B": {
     "prev": "Chief of the Black Claw Lv 42",
@@ -345,7 +345,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 2 to go Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
+    "prog": ["Quests 1 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
   },
   "level/L43-q79-lvonly-A": {
     "prev": "Chief of the Black Claw Lv 42",
@@ -357,7 +357,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 2 to go Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
+    "prog": ["Quests 1 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
   },
   "level/L43-q79-lvonly-B": {
     "prev": "Chief of the Black Claw Lv 42",
@@ -369,7 +369,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 2 to go Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
+    "prog": ["Quests 1 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
   },
   "level/L43-q79-none-A": {
     "prev": "Chief of the Black Claw Lv 42",
@@ -381,7 +381,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 2 to go Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 19 0/58","Dungeons 60 0/60","Strongholds 13 1/15"]
+    "prog": ["Quests 20 0/58","Dungeons 60 0/60","Strongholds 13 1/15"]
   },
   "level/L43-q79-none-B": {
     "prev": "Chief of the Black Claw Lv 42",
@@ -393,7 +393,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 2 to go Lv 45"],
     "ring": "1%",
-    "prog": ["Quests 19 0/58","Dungeons 60 0/60","Strongholds 13 1/15"]
+    "prog": ["Quests 20 0/58","Dungeons 60 0/60","Strongholds 13 1/15"]
   },
   "level/L43-q79-rnd1p50-A": {
     "prev": "Chief of the Black Claw Lv 42",
@@ -405,7 +405,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 2 to go Lv 45"],
     "ring": "44%",
-    "prog": ["Quests 8 17/58","Dungeons 27 33/60","Strongholds 7 8/15"]
+    "prog": ["Quests 9 17/58","Dungeons 27 33/60","Strongholds 7 8/15"]
   },
   "level/L43-q79-rnd1p50-B": {
     "prev": "Chief of the Black Claw Lv 42",
@@ -417,7 +417,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 2 to go Lv 45"],
     "ring": "44%",
-    "prog": ["Quests 8 17/58","Dungeons 27 33/60","Strongholds 7 8/15"]
+    "prog": ["Quests 9 17/58","Dungeons 27 33/60","Strongholds 7 8/15"]
   },
   "level/L43-q79-rnd2p85-A": {
     "prev": "Chief of the Black Claw Lv 42",
@@ -429,7 +429,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 2 to go Lv 45"],
     "ring": "65%",
-    "prog": ["Quests 26/58","Dungeons 11 49/60","Strongholds 3 12/15"]
+    "prog": ["Quests 1 26/58","Dungeons 11 49/60","Strongholds 3 12/15"]
   },
   "level/L43-q79-rnd2p85-B": {
     "prev": "Chief of the Black Claw Lv 42",
@@ -441,7 +441,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 2 to go Lv 45"],
     "ring": "65%",
-    "prog": ["Quests 26/58","Dungeons 11 49/60","Strongholds 3 12/15"]
+    "prog": ["Quests 1 26/58","Dungeons 11 49/60","Strongholds 3 12/15"]
   },
   "level/L43-q80-before-A": {
     "prev": "High Priest's Fafnite Lv 43",
@@ -453,7 +453,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 2 to go Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
+    "prog": ["Quests 1 26/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
   },
   "level/L43-qxx-before-A": {
     "prev": "",
@@ -464,8 +464,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 2 levels to go"],
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Level cap next · 2 to go Lv 45"],
-    "ring": "53%",
-    "prog": ["Quests 6/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
+    "ring": "51%",
+    "prog": ["Quests 4/58","Dungeons ✓ 60/60","Strongholds 10 4/15"]
   },
   "level/L44-q79-lvonly-A": {
     "prev": "Chief of the Black Claw Lv 42",
@@ -609,7 +609,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap next · 1 to go Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 1 26/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "prog": ["Quests 2 26/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "level/L44-qxx-before-A": {
     "prev": "",
@@ -620,8 +620,8 @@
     "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 1 level to go"],
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Level cap next · 1 to go Lv 45"],
-    "ring": "53%",
-    "prog": ["Quests 1 6/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "51%",
+    "prog": ["Quests 4/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "level/L45-q83-lvonly-A": {
     "prev": "Blood Barrier Lv 44",
@@ -633,7 +633,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Level cap now Lv 45"],
     "ring": "68%",
-    "prog": ["Quests 7 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "prog": ["Quests 8 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   },
   "level/L45-q86-before-A": {
     "prev": "Forgotten Commander Lv 45",
@@ -764,7 +764,7 @@
     "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Level cap now Lv 45"],
-    "ring": "53%",
-    "prog": ["Quests 7 7/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+    "ring": "51%",
+    "prog": ["Quests 7 4/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
   }
 }

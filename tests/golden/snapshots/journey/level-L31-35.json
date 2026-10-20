@@ -69,7 +69,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Stigma slot 3 next · 1 to go Lv 32"],
     "ring": "1%",
-    "prog": ["Quests 13 0/58","Dungeons 43 0/60","Strongholds 7 1/15"]
+    "prog": ["Quests 12 0/58","Dungeons 43 0/60","Strongholds 7 1/15"]
   },
   "level/L31-q48-none-B": {
     "prev": "The Past Revealed Lv 30",
@@ -81,7 +81,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Stigma slot 3 next · 1 to go Lv 32"],
     "ring": "1%",
-    "prog": ["Quests 13 0/58","Dungeons 43 0/60","Strongholds 7 1/15"]
+    "prog": ["Quests 12 0/58","Dungeons 43 0/60","Strongholds 7 1/15"]
   },
   "level/L31-q48-rnd1p50-A": {
     "prev": "The Past Revealed Lv 30",
@@ -93,7 +93,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Stigma slot 3 next · 1 to go Lv 32"],
     "ring": "29%",
-    "prog": ["Quests 8 9/58","Dungeons 21 22/60","Strongholds 3 8/15"]
+    "prog": ["Quests 7 9/58","Dungeons 21 22/60","Strongholds 3 8/15"]
   },
   "level/L31-q48-rnd1p50-B": {
     "prev": "The Past Revealed Lv 30",
@@ -105,7 +105,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Stigma slot 3 next · 1 to go Lv 32"],
     "ring": "29%",
-    "prog": ["Quests 8 9/58","Dungeons 21 22/60","Strongholds 3 8/15"]
+    "prog": ["Quests 7 9/58","Dungeons 21 22/60","Strongholds 3 8/15"]
   },
   "level/L31-q48-rnd2p85-A": {
     "prev": "The Past Revealed Lv 30",
@@ -152,8 +152,8 @@
     "ahead": ["Ahead verified","Lv 32 Stigma slot 3 1 level to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 4 levels to go"],
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Stigma slot 3 next · 1 to go Lv 32"],
-    "ring": "38%",
-    "prog": ["Quests 4/58","Dungeons 43/60","Strongholds 5 3/15"]
+    "ring": "37%",
+    "prog": ["Quests 3/58","Dungeons 43/60","Strongholds 5 3/15"]
   },
   "level/L32-q51-lvonly-A": {
     "prev": "Eye of the Red Tower Lv 32",
@@ -165,7 +165,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Stigma slot 3 now Lv 32"],
     "ring": "49%",
-    "prog": ["Quests 1 19/58","Dungeons 43/60","Strongholds 5 3/15"]
+    "prog": ["Quests 19/58","Dungeons 43/60","Strongholds 5 3/15"]
   },
   "level/L32-q54-before-A": {
     "prev": "Last of the Destruction Archons Lv 32",
@@ -308,8 +308,8 @@
     "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 3 levels to go","Lv 37 Stigma slot 4 5 levels to go"],
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Stigma slot 3 now Lv 32"],
-    "ring": "38%",
-    "prog": ["Quests 1 4/58","Dungeons 43/60","Strongholds 5 3/15"]
+    "ring": "37%",
+    "prog": ["Quests 3/58","Dungeons 43/60","Strongholds 5 3/15"]
   },
   "level/L33-q54-lvonly-A": {
     "prev": "Last of the Destruction Archons Lv 32",
@@ -333,7 +333,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Fire Temple next · 2 to go Lv 35"],
     "ring": "51%",
-    "prog": ["Quests 1 22/58","Dungeons 43/60","Strongholds 7 3/15"]
+    "prog": ["Quests 2 22/58","Dungeons 43/60","Strongholds 7 3/15"]
   },
   "level/L33-q57-before-B": {
     "prev": "Scripture in the Ruins Lv 33",
@@ -345,7 +345,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Fire Temple next · 2 to go Lv 35"],
     "ring": "51%",
-    "prog": ["Quests 1 22/58","Dungeons 43/60","Strongholds 7 3/15"]
+    "prog": ["Quests 2 22/58","Dungeons 43/60","Strongholds 7 3/15"]
   },
   "level/L33-q57-lvonly-A": {
     "prev": "Scripture in the Ruins Lv 33",
@@ -357,7 +357,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Fire Temple next · 2 to go Lv 35"],
     "ring": "51%",
-    "prog": ["Quests 1 22/58","Dungeons 43/60","Strongholds 7 3/15"]
+    "prog": ["Quests 2 22/58","Dungeons 43/60","Strongholds 7 3/15"]
   },
   "level/L33-q57-lvonly-B": {
     "prev": "Scripture in the Ruins Lv 33",
@@ -369,7 +369,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Fire Temple next · 2 to go Lv 35"],
     "ring": "51%",
-    "prog": ["Quests 1 22/58","Dungeons 43/60","Strongholds 7 3/15"]
+    "prog": ["Quests 2 22/58","Dungeons 43/60","Strongholds 7 3/15"]
   },
   "level/L33-q57-none-A": {
     "prev": "Scripture in the Ruins Lv 33",
@@ -381,7 +381,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Fire Temple next · 2 to go Lv 35"],
     "ring": "1%",
-    "prog": ["Quests 17 0/58","Dungeons 43 0/60","Strongholds 9 1/15"]
+    "prog": ["Quests 18 0/58","Dungeons 43 0/60","Strongholds 9 1/15"]
   },
   "level/L33-q57-none-B": {
     "prev": "Scripture in the Ruins Lv 33",
@@ -393,7 +393,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Fire Temple next · 2 to go Lv 35"],
     "ring": "1%",
-    "prog": ["Quests 17 0/58","Dungeons 43 0/60","Strongholds 9 1/15"]
+    "prog": ["Quests 18 0/58","Dungeons 43 0/60","Strongholds 9 1/15"]
   },
   "level/L33-q57-rnd1p50-A": {
     "prev": "Scripture in the Ruins Lv 33",
@@ -464,8 +464,8 @@
     "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 2 levels to go","Lv 37 Stigma slot 4 4 levels to go"],
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Fire Temple next · 2 to go Lv 35"],
-    "ring": "38%",
-    "prog": ["Quests 5/58","Dungeons 43/60","Strongholds 7 3/15"]
+    "ring": "37%",
+    "prog": ["Quests 3/58","Dungeons 43/60","Strongholds 7 3/15"]
   },
   "level/L34-q57-lvonly-A": {
     "prev": "Scripture in the Ruins Lv 33",
@@ -620,8 +620,8 @@
     "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 1 level to go","Lv 37 Stigma slot 4 3 levels to go"],
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Fire Temple next · 1 to go Lv 35"],
-    "ring": "39%",
-    "prog": ["Quests 6/58","Dungeons 43/60","Strongholds 7 3/15"]
+    "ring": "38%",
+    "prog": ["Quests 4/58","Dungeons 43/60","Strongholds 7 3/15"]
   },
   "level/L35-q59-lvonly-A": {
     "prev": "Impending Threat Lv 34",
@@ -776,7 +776,7 @@
     "ahead": ["Ahead verified","Lv 37 Stigma slot 4 2 levels to go","Lv 40 Triniel board Fourth Daevanion board 5 levels to go"],
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Fire Temple now Lv 35"],
-    "ring": "39%",
-    "prog": ["Quests 6/58","Dungeons 10 43/60","Strongholds 8 3/15"]
+    "ring": "38%",
+    "prog": ["Quests 4/58","Dungeons 10 43/60","Strongholds 8 3/15"]
   }
 }

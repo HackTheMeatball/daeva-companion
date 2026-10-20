@@ -10,7 +10,7 @@ A claim that is not verified is tagged `[id · verdict]` (`owner source`: the ow
 Only facts were taken from these pages; the app reproduces no page text. Short quotations in the guides' `claims.json`
 stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Listing a site implies no endorsement.
 
-786 URLs · 494 in the Sources card · 292 cited only in the data files
+793 URLs · 501 in the Sources card · 292 cited only in the data files
 
 ## Metabot (564)
 
@@ -587,7 +587,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 |---|---|---|
 | [aion2-meta: Assassin](https://aion2-meta.com/guides/assassin/) | Skills, boards and stigmas | packs/aion2/asmodian/assassin/guide/claims.json: Quick Slice specialty slot 2: "-1s Insignia Explosion cooldown on hit" (choice 4, unlocks at skill Lv 12).; packs/aion2/asmodian/assassin/builds.json: Guide build |
 
-## aion2.gaming.tools (47)
+## aion2.gaming.tools (54)
 
 | Page | Card group | Backs |
 |---|---|---|
@@ -598,6 +598,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [aion2.gaming.tools: Odyle Jelly Misappropriation Investigation](https://aion2.gaming.tools/quests/2202014) | Regional quests | packs/aion2/asmodian/regional-quests.json: Odyle Jelly Misappropriation Investigation |
 | [aion2.gaming.tools: Blade of Vengeance](https://aion2.gaming.tools/quests/2202016) | Regional quests | packs/aion2/asmodian/regional-quests.json: Blade of Vengeance; packs/aion2/asmodian/regional-quests.json: In the Fang Legion's Name |
 | [aion2.gaming.tools: In the Fang Legion's Name](https://aion2.gaming.tools/quests/2202017) | Regional quests | packs/aion2/asmodian/regional-quests.json: In the Fang Legion's Name |
+| [aion2.gaming.tools: Her Last Favor](https://aion2.gaming.tools/quests/2202018) | Regional quests | packs/aion2/asmodian/regional-quests.json: Her Last Favor |
 | [aion2.gaming.tools: Young Elim's Story](https://aion2.gaming.tools/quests/2202019) | Regional quests | packs/aion2/asmodian/regional-quests.json: Young Elim's Story |
 | [aion2.gaming.tools: Hugo Mercenaries: An Old Promise](https://aion2.gaming.tools/quests/2202020) | Regional quests | packs/aion2/asmodian/regional-quests.json: Hugo Mercenaries: An Old Promise |
 | [aion2.gaming.tools: An Invitation to the Past: Part 1](https://aion2.gaming.tools/quests/2202021) | Regional quests | packs/aion2/asmodian/regional-quests.json: An Invitation to the Past: Part 1; packs/aion2/asmodian/regional-quests.json: An Invitation to the Past: Part 2 |
@@ -606,18 +607,23 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [aion2.gaming.tools: Spacetime Rift: Asmodian](https://aion2.gaming.tools/quests/2202026) | Regional quests | packs/aion2/asmodian/regional-quests.json: Spacetime Rift: Asmodian |
 | [aion2.gaming.tools: Immortal Isle's Distinct Ecology](https://aion2.gaming.tools/quests/2202027) | Regional quests | packs/aion2/asmodian/regional-quests.json: Immortal Isle's Distinct Ecology |
 | [aion2.gaming.tools: Reality Bites](https://aion2.gaming.tools/quests/2202028) | Regional quests | packs/aion2/asmodian/regional-quests.json: Reality Bites |
+| [aion2.gaming.tools: Traveling Merchant's Conundrum](https://aion2.gaming.tools/quests/2202029) | Regional quests | packs/aion2/asmodian/regional-quests.json: Traveling Merchant's Conundrum |
+| [aion2.gaming.tools: Spacetime Rift: Unknown Species](https://aion2.gaming.tools/quests/2202030) | Regional quests | packs/aion2/asmodian/regional-quests.json: Spacetime Rift: Unknown Species |
 | [aion2.gaming.tools: Spacetime Rift: Unfamiliar Material](https://aion2.gaming.tools/quests/2202031) | Regional quests | packs/aion2/asmodian/regional-quests.json: Spacetime Rift: Unfamiliar Material |
 | [aion2.gaming.tools: Spacetime Rift: Difference Between Here and There](https://aion2.gaming.tools/quests/2202032) | Regional quests | packs/aion2/asmodian/regional-quests.json: Spacetime Rift: Difference Between Here and There |
 | [aion2.gaming.tools: Spacetime Rift: Developing Travel Goods](https://aion2.gaming.tools/quests/2202033) | Regional quests | packs/aion2/asmodian/regional-quests.json: Spacetime Rift: Developing Travel Goods |
 | [aion2.gaming.tools: Spacetime Rift: An Honest Shugo](https://aion2.gaming.tools/quests/2202034) | Regional quests | packs/aion2/asmodian/regional-quests.json: Spacetime Rift: An Honest Shugo |
+| [aion2.gaming.tools: Spacetime Rift: Proof](https://aion2.gaming.tools/quests/2202035) | Regional quests | packs/aion2/asmodian/regional-quests.json: Spacetime Rift: Proof |
 | [aion2.gaming.tools: A Guardian's Sacrifice](https://aion2.gaming.tools/quests/2202036) | Regional quests | packs/aion2/asmodian/regional-quests.json: A Guardian's Sacrifice |
 | [aion2.gaming.tools: The Future Within the Past](https://aion2.gaming.tools/quests/2202037) | Regional quests | packs/aion2/asmodian/regional-quests.json: The Future Within the Past |
 | [aion2.gaming.tools: Bloodstained Rose](https://aion2.gaming.tools/quests/2202038) | Regional quests | packs/aion2/asmodian/regional-quests.json: Bloodstained Rose |
 | [aion2.gaming.tools: A Friend's Legacy](https://aion2.gaming.tools/quests/2202039) | Regional quests | packs/aion2/asmodian/regional-quests.json: A Friend's Legacy |
+| [aion2.gaming.tools: Pain Unending](https://aion2.gaming.tools/quests/2202040) | Regional quests | packs/aion2/asmodian/regional-quests.json: Pain Unending |
 | [aion2.gaming.tools: A Perfect Wedding](https://aion2.gaming.tools/quests/2202041) | Regional quests | packs/aion2/asmodian/regional-quests.json: A Perfect Wedding |
 | [aion2.gaming.tools: Fallout](https://aion2.gaming.tools/quests/2202042) | Regional quests | packs/aion2/asmodian/regional-quests.json: Fallout; packs/aion2/asmodian/regional-quests.json: Fallout Calmed |
 | [aion2.gaming.tools: Fallout Calmed](https://aion2.gaming.tools/quests/2202043) | Regional quests | packs/aion2/asmodian/regional-quests.json: Fallout Calmed |
 | [aion2.gaming.tools: Farewell, My Instructor](https://aion2.gaming.tools/quests/2202045) | Regional quests | packs/aion2/asmodian/regional-quests.json: Farewell, My Instructor |
+| [aion2.gaming.tools: Lest We Forget](https://aion2.gaming.tools/quests/2202046) | Regional quests | packs/aion2/asmodian/regional-quests.json: Lest We Forget |
 | [aion2.gaming.tools: Another Crisis!](https://aion2.gaming.tools/quests/2202047) | Regional quests | packs/aion2/asmodian/regional-quests.json: Another Crisis! |
 | [aion2.gaming.tools: I'm a Believer!](https://aion2.gaming.tools/quests/2202050) | Regional quests | packs/aion2/asmodian/regional-quests.json: I'm a Believer! |
 | [aion2.gaming.tools: A Traitor Within](https://aion2.gaming.tools/quests/2202052) | Regional quests | packs/aion2/asmodian/regional-quests.json: A Traitor Within |
@@ -633,6 +639,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [aion2.gaming.tools: Finders Keepers](https://aion2.gaming.tools/quests/2202063) | Regional quests | packs/aion2/asmodian/regional-quests.json: Finders Keepers |
 | [aion2.gaming.tools: Workplace Misunderstanding](https://aion2.gaming.tools/quests/2202064) | Regional quests | packs/aion2/asmodian/regional-quests.json: Workplace Misunderstanding |
 | [aion2.gaming.tools: Ravenous Recluse](https://aion2.gaming.tools/quests/2202065) | Regional quests | packs/aion2/asmodian/regional-quests.json: Ravenous Recluse |
+| [aion2.gaming.tools: Herb Pouch Heist](https://aion2.gaming.tools/quests/2202066) | Regional quests | packs/aion2/asmodian/regional-quests.json: Herb Pouch Heist |
 | [aion2.gaming.tools: A Comrade's Fate](https://aion2.gaming.tools/quests/2202067) | Regional quests | packs/aion2/asmodian/regional-quests.json: A Comrade's Fate |
 | [aion2.gaming.tools: Putting a Friend to Rest](https://aion2.gaming.tools/quests/2202068) | Regional quests | packs/aion2/asmodian/regional-quests.json: Putting a Friend to Rest |
 | [aion2.gaming.tools: Spirit Isle, Where Time Has Stopped](https://aion2.gaming.tools/quests/2202069) | Regional quests | packs/aion2/asmodian/regional-quests.json: Spirit Isle, Where Time Has Stopped |

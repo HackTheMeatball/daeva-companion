@@ -11,3 +11,4 @@ date,time,change,was,now,source
 2026-10-19,4:56 PM,"From 0.9, grading Gale's own rules moves to Francesca.",Gale,Francesca,DEC-20261019-from-0-9-rules-steward
 2026-10-19,4:57 PM,Gale grades the ledger rule that Francesca owns.,,Gale,DEC-20261019-kaizen-grades-the-ledger-rule
 2026-10-19,5:20 PM,Research threads fetch icons and facts for their own pack; Gretchen checks them.,Gretchen did every lookup,"Research threads, checked by Gretchen",DEC-20261019-research-threads-may-fetch-from
+2026-10-20,1:35 PM,"Walter became release manager: he sees each release from RC READY to the live site, and a minor has a merge freeze that Gus enforces.",Each release step had its own owner and no one saw the whole release through,Walter,DEC-20261020-release-manager-and-freeze

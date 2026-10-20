@@ -770,7 +770,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Altgard opens now Lv 10"],
     "ring": "1%",
-    "prog": ["Quests 14 0/58","Dungeons 13 0/60","Strongholds 1 1/15"]
+    "prog": ["Quests 15 0/58","Dungeons 13 0/60","Strongholds 1 1/15"]
   },
   "random/L10-q51-all-B": {
     "prev": "Eye of the Red Tower Lv 32",
@@ -794,7 +794,7 @@
     "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
     "track": ["Altgard opens now Lv 10"],
     "ring": "1%",
-    "prog": ["Quests 14 0/58","Dungeons 13 0/60","Strongholds 1 1/15"]
+    "prog": ["Quests 15 0/58","Dungeons 13 0/60","Strongholds 1 1/15"]
   },
   "random/L10-q66-lvonly-A-objs": {
     "prev": "Inevitable Encounter Lv 37",
@@ -806,7 +806,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Altgard opens now Lv 10"],
     "ring": "1%",
-    "prog": ["Quests 16 0/58","Dungeons 13 0/60","Strongholds 1 1/15"],
+    "prog": ["Quests 18 0/58","Dungeons 13 0/60","Strongholds 1 1/15"],
     "subs": {"head":"Objectives 2/5","items":3,"on":0,"end":""}
   },
   "random/L10-q82-lvonly-B-cube": {
@@ -819,7 +819,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Altgard opens now Lv 10"],
     "ring": "1%",
-    "prog": ["Quests 17 0/58","Dungeons 13 0/60","Strongholds 1 1/15"]
+    "prog": ["Quests 20 0/58","Dungeons 13 0/60","Strongholds 1 1/15"]
   },
   "random/L10-q85-lvonly-A-stwait": {
     "prev": "Farewells Lv 45",
@@ -831,7 +831,7 @@
     "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
     "track": ["Altgard opens now Lv 10"],
     "ring": "1%",
-    "prog": ["Quests 18 0/58","Dungeons 13 0/60","Strongholds 1 1/15"]
+    "prog": ["Quests 21 0/58","Dungeons 13 0/60","Strongholds 1 1/15"]
   },
   "random/L10-qxx-before-B-stfull": {
     "prev": "",

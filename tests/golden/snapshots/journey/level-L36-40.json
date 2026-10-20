@@ -152,8 +152,8 @@
     "ahead": ["Ahead verified","Lv 37 Stigma slot 4 1 level to go","Lv 40 Triniel board Fourth Daevanion board 4 levels to go"],
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Stigma slot 4 next · 1 to go Lv 37"],
-    "ring": "47%",
-    "prog": ["Quests 6/58","Dungeons 53/60","Strongholds 8 3/15"]
+    "ring": "45%",
+    "prog": ["Quests 4/58","Dungeons 53/60","Strongholds 8 3/15"]
   },
   "level/L37-q66-lvonly-A": {
     "prev": "Inevitable Encounter Lv 37",
@@ -308,8 +308,8 @@
     "ahead": ["Ahead verified","Lv 40 Triniel board Fourth Daevanion board 3 levels to go","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 8 levels to go"],
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Stigma slot 4 now Lv 37"],
-    "ring": "47%",
-    "prog": ["Quests 6/58","Dungeons 53/60","Strongholds 9 3/15"]
+    "ring": "45%",
+    "prog": ["Quests 4/58","Dungeons 53/60","Strongholds 9 3/15"]
   },
   "level/L38-q66-lvonly-A": {
     "prev": "Inevitable Encounter Lv 37",
@@ -464,8 +464,8 @@
     "ahead": ["Ahead verified","Lv 40 Triniel board Fourth Daevanion board 2 levels to go","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 7 levels to go"],
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Triniel board next · 2 to go Lv 40"],
-    "ring": "47%",
-    "prog": ["Quests 6/58","Dungeons 53/60","Strongholds 9 3/15"]
+    "ring": "45%",
+    "prog": ["Quests 4/58","Dungeons 53/60","Strongholds 9 3/15"]
   },
   "level/L39-q66-lvonly-A": {
     "prev": "Inevitable Encounter Lv 37",
@@ -620,8 +620,8 @@
     "ahead": ["Ahead verified","Lv 40 Triniel board Fourth Daevanion board 1 level to go","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 6 levels to go"],
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Triniel board next · 1 to go Lv 40"],
-    "ring": "47%",
-    "prog": ["Quests 6/58","Dungeons 53/60","Strongholds 9 3/15"]
+    "ring": "45%",
+    "prog": ["Quests 4/58","Dungeons 53/60","Strongholds 9 3/15"]
   },
   "level/L40-q71-lvonly-A": {
     "prev": "Fafnite's Whereabouts Lv 40",
@@ -776,7 +776,7 @@
     "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 5 levels to go"],
     "asc": "Ascension 0 / 4 · next: Perceives",
     "track": ["Triniel board now Lv 40"],
-    "ring": "47%",
-    "prog": ["Quests 6/58","Dungeons 7 53/60","Strongholds 10 3/15"]
+    "ring": "45%",
+    "prog": ["Quests 4/58","Dungeons 7 53/60","Strongholds 10 3/15"]
   }
 }

@@ -72,8 +72,9 @@ const cards = p => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-
   ok('equip: E stack uses the pick', JSON.stringify(t.estack) === JSON.stringify(["Triniel's Dagger*", 'Savage Fang*']), t.estack);
   await p.click('#rwToast .tu'); await p.waitForTimeout(200);
   ok('undo gives the shard back, stays equipped', (await p.evaluate(() => [char(state).stShards, char(state).checks['g27:0']])).join() === '3,true');
-  /* 6. Snooze (E3: at "Canyon's Secret" so more than one quest is open; quests without prerequisite data open at their rec) */
-  await setState(p, clean(30, "Canyon's Secret", 'advanced'));
+  /* 6. Snooze (at "Bitter Reality", so Canyon's Secret is turned in and its five Lv 30 quests are open; until 2026-10-20 Her
+     Last Favor opened at "Canyon's Secret" with no prerequisite data, now it waits for that turn-in like the rest) */
+  await setState(p, clean(30, 'Bitter Reality', 'advanced'));
   const before = await p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-qgrid .ql')].map(x => x.innerText));
   const zk = await p.evaluate(() => document.querySelector('#nowStar [data-snz]').dataset.snz);
   await p.click(`#nowStar [data-snz="${zk}"]`, { force: true }); await p.waitForTimeout(300);
