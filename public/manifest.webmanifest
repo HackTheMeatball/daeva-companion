@@ -1,7 +1,7 @@
 {
   "name": "Daeva Companion · unofficial AION 2 companion",
   "short_name": "Daeva",
-  "description": "Unofficial companion for AION 2, starting with the Asmodian Assassin leveling guide, Lv 1 to 45. Fan-made, not affiliated with NCSoft; progress stays in your browser.",
+  "description": "Unofficial AION 2 companion: Lv 1 to 45 leveling guides and builds for all eight Asmodian classes, with progress saved for each character. Fan-made, not affiliated with or endorsed by NCSoft.",
   "id": "/",
   "start_url": "./",
   "scope": "./",
