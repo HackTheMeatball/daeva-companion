@@ -150,7 +150,7 @@ Rules for every item:
   - [ ] A blocking count check: a second `update()` with no state change makes at most N real writes.
   - [ ] `npm run test:perf` run alone three times: median down at least 25% against a same-day baseline (pasted).
   - [ ] Golden and regress pinned diffs unchanged.
-- **Lanes:** site, skills-card, nextup-card, page-card. **Model:** Opus, M (90 min).
+- **Lanes:** site, skills-card, nextup-card, page-card, architecture. **Model:** Opus, M (90 min).
 - **After:** none.
 
 ## P6: Faster test suites
@@ -173,7 +173,7 @@ Rules for every item:
   - [ ] `--check-shards` passes; schema under 4 s and invariant under 60 s locally (pasted timings, before and after).
   - [ ] Every negative control still fails (pasted list).
   - [ ] A DECISIONS-only edit no longer reds `schema`.
-- **Lanes:** gen, schema. **Model:** Opus, M (90 min).
+- **Lanes:** gen, schema, run-mjs. **Model:** Opus, M (90 min).
 - **After:** none.
 
 ## P7: Raising the level by hand asks for the story quest
@@ -213,7 +213,7 @@ Rules for every item:
 - **Acceptance.**
   - [ ] a11y test: no accessible name contains "is … is".
   - [ ] Shots of each fix at 1500 and 390 px.
-- **Lanes:** app.css, a11y, skills-card, build-card. **Model:** Sonnet, S (44 min).
+- **Lanes:** app.css, a11y, skills-card, build-card, nextup-card, golden-nextup. **Model:** Opus, S (44 min). Opus because golden-nextup may need a re-record (the key hint).
 - **After:** none.
 
 ## P9: Saves can't be lost from 1.0 on
@@ -236,7 +236,7 @@ Rules for every item:
         character and survives `merge()`.
   - [ ] Browser `save`: a newer save is not overwritten after a tick.
   - [ ] Shot of the read-only banner at 390 px.
-- **Lanes:** mig, main.js. **Model:** Opus, M (90 min).
+- **Lanes:** mig, main.js, save, architecture. **Model:** Opus, M (90 min).
 - **After:** P2.
 
 ## P10: A ledger of every save key
@@ -266,7 +266,7 @@ Rules for every item:
 - **Acceptance.**
   - [ ] Golden identical; `tests/core/chars.test.mjs` green.
   - [ ] A dry run adding a fake class touches only `data/`, snapshots and `DATA_SOURCES.md` (pasted diff stat).
-- **Lanes:** gen, golden. **Model:** Opus, M (90 min).
+- **Lanes:** gen, golden, save. **Model:** Opus, M (90 min).
 - **After:** P2, P3.
 
 ## P12: Runtime invariants for every class
@@ -310,7 +310,7 @@ Rules for every item:
 - **No-gos.** No code change.
 - **Acceptance.**
   - [ ] Every number in it matches a run pasted in the PR.
-- **Lanes:** none. **Model:** Sonnet, S (44 min).
+- **Lanes:** architecture, run-mjs. **Model:** Sonnet, S (44 min).
 - **After:** P9, P10.
 
 ## P15: Every choice point has a recommendation
@@ -442,7 +442,7 @@ Rules for every item:
 - **Acceptance.**
   - [ ] Browser test: "All done" ticks the folded chores and Undo reverses it.
   - [ ] Shots of Basic at 390 px.
-- **Lanes:** nextup-card, app.css, golden-nextup. **Model:** Sonnet, M (90 min).
+- **Lanes:** nextup-card, app.css, golden-nextup. **Model:** Opus, M (90 min). Opus because golden-nextup starts on Opus.
 - **After:** none.
 
 ## P22: Key setup as a sheet: icons fill each box, and players choose their keys
@@ -485,7 +485,7 @@ Rules for every item:
   - [ ] Budget lines show gzip about 169 K and elements about 4.4 K (pasted).
   - [ ] An offline reload opens Sources from the cache (new `site` check).
   - [ ] Every URL check passes after the card is opened. No visible change in before / after shots.
-- **Lanes:** site, page-card. **Model:** Opus, M (90 min).
+- **Lanes:** site, page-card, e2. **Model:** Opus, M (90 min).
 - **After:** research-sources-credit.
 
 ## S1–S4: pipeline items (Build Pipeline builds them; no queue line)

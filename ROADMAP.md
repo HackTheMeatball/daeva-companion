@@ -1268,25 +1268,25 @@ workflows).
 | P2 FR | Save keys come from names and positions → stable ids, `companion-save-v6`, the last clean break | L | Opus | gen, golden, mig, nextup-card, journey-card | none |
 | P3 | Each class release edits test lists by hand (K22) → tests read classes from the data | M | Sonnet | schema, e2 | none |
 | P4 | 33 unused names, the deleted artifact's export branch, a narrow term scan → removed, scan widened | S | Opus | main.js, page-card | none |
-| P5 | `--sizes` overstates tables 8x, `update()` repeats identical writes → measured right, writes skipped | M | Opus | site, skills-card, nextup-card, page-card | none |
-| P6 FR | Data suite 12.7 s, invariant 89 s, ledger inside schema → faster, ledger its own suite | M | Opus | gen, schema | none |
+| P5 | `--sizes` overstates tables 8x, `update()` repeats identical writes → measured right, writes skipped | M | Opus | site, skills-card, nextup-card, page-card, architecture | none |
+| P6 FR | Data suite 12.7 s, invariant 89 s, ledger inside schema → faster, ledger its own suite | M | Opus | gen, schema, run-mjs | none |
 | P7 | Slider to Lv 39 leaves story at Lv 2 and boards locked → Journey asks for the story quest | M | Opus | journey-card, nextup-card, golden-journey, golden-nextup | none |
-| P8 | Point counts disagree, a doubled accessible name, Spent green vs pink, key hint cut at 390, E grid shows unequipped stigmas → fixed | S | Sonnet | app.css, a11y, skills-card, build-card | none |
-| P9 FR | A newer or unreadable save can be overwritten → read-only banner, copy kept, migration flags | M | Opus | mig, main.js | P2 |
+| P8 | Point counts disagree, a doubled accessible name, Spent green vs pink, key hint cut at 390, E grid shows unequipped stigmas → fixed | S | Opus | app.css, a11y, skills-card, build-card, nextup-card, golden-nextup | none |
+| P9 FR | A newer or unreadable save can be overwritten → read-only banner, copy kept, migration flags | M | Opus | mig, main.js, save, architecture | P2 |
 | P10 FR | A removed save key fails nothing → committed key ledger, `gen:check` fails without `retired` | M | Opus | gen, schema | P2 |
-| P11 | Class roster and golden groups written by hand → generated | M | Opus | gen, golden | P2, P3 |
+| P11 | Class roster and golden groups written by hand → generated | M | Opus | gen, golden, save | P2, P3 |
 | P12 | Invariants run on the Assassin only → all eight classes | L | Opus | golden | P11, P6 |
 | P13 | Game facts in code (key order, unlock text, `altgard`) → in data | M | Opus | gen, golden, build-card, nextup-card | P2 |
-| P14 | ARCHITECTURE drifted → matches a fresh run, describes the 1.0 save contract | S | Sonnet | none | P9, P10 |
+| P14 | ARCHITECTURE drifted → matches a fresh run, describes the 1.0 save contract | S | Sonnet | architecture, run-mjs | P9, P10 |
 | P15 | Choice points with no pick (Ranger and Spiritmaster specialties, slots 2–3, effective level) → gen check (K25) and sourced picks | M | Opus | gen, golden, skills-card, nextup-card | `research-choice-points` |
 | P16 | Board paths and costs checked for the Assassin only (note 14) → every class | M | Opus | gen, golden | `research-node-paths` |
 | P17 | Assassin E stigma stack on one key? (note 13) → research answer applied | S | Opus | gen, golden | `research-e-stigma-stack` |
 | P18 | Rotation lists order, not play (note 15) → "how it plays" text per class | M | Opus | gen, golden, build-card | `research-rotation-play` |
 | P19 FR | Lv 39 join: 70–77 skill clicks in unlock order (note 10) → one row and one tap per skill | L | Opus | skills-card, nextup-card, app.css, golden, golden-nextup | P15 (input: `docs/design/0.9-loadout-mockup.md`) |
 | P20 FR | Daevanion ~22 ticks, no per-board or Stigma respec (note 9) → board rows, respec per board and all, Stigma respec | M | Opus | app.css, golden | P16, `research-respec` (input: `docs/design/0.9-loadout-mockup.md`) |
-| P21 | Basic hides catch-up tools; Lv 4–16 chores lead Next up → kept, folded | M | Sonnet | nextup-card, app.css, golden-nextup | none (input: `docs/design/0.9-loadout-mockup.md`) |
+| P21 | Basic hides catch-up tools; Lv 4–16 chores lead Next up → kept, folded | M | Opus | nextup-card, app.css, golden-nextup | none (input: `docs/design/0.9-loadout-mockup.md`) |
 | P22 FR | Key setup inline with small icons, keys fixed (notes 11, 12, #388) → a sheet, icons fill each box, players rebind keys | L | Opus | build-card, app.css, a11y, golden, mig | `research-bindable-keys` (input: `docs/design/0.9-loadout-mockup.md`) |
-| P23 | Sources lists weigh 9.6 K gzip and 1,088 elements while closed → load on open | M | Opus | site, page-card | `research-sources-credit` |
+| P23 | Sources lists weigh 9.6 K gzip and 1,088 elements while closed → load on open | M | Opus | site, page-card, e2 | `research-sources-credit` |
 | S1 FR | Golden shares a shard → its own shard | S | Gus | ci | P6 |
 | S2 FR | Nothing checks the live app works → scripted journey after each deploy and every 6 h | S | Gus | ci | none |
 | S3 FR | Sync server deployed by hand → CI tests and dry run, deploy on the owner's token | M | Gus | ci | none |
@@ -1315,7 +1315,8 @@ At most five builds at a time. Ungated items queue first; gated ones go last and
   lanes: **gen** P1 → P2 → P6 → P10 → P11 → P13 → P15 → P16 → P17 → P18; **golden** P1 → P2 → P11 → P12 → P13 → the
   research items → P19 → P20 → P22; **skills-card** P1 → P8 → P5 → P15 → P19; **nextup-card** P2 → P7 → P5 → P13 → P15 →
   P19 → P21; **page-card** P4 → P5 → P23; **mig** P2 → P9; **schema** P3 → P6 → P10; **app.css** P8 → P19 → P20 → P21 →
-  P22; **build-card** P1 → P13 → P18 → P22; **ci** (Gus) S2 → S3 → S1 → S4.
+  P22; **build-card** P1 → P13 → P18 → P22; **ci** (Gus) S2 → S3 → S1 → S4. Shared test and doc files: **save** (`tests/save.js`) P9 → P11; **e2** (`tests/e2test.js`) P3 → P23;
+  **run-mjs** (`tests/run.mjs`) P6 → P14; **architecture** (`docs/ARCHITECTURE.md`) P5 → P9 → P14 (plan review, #609).
 - **Wave 2 (after P2):** P9, P10, P11, P13; then P12 (after P11 and P6) and P14 (after P9 and P10).
 - **Wave 3 (as research lands):** P15, P16, P17, P18, in the order their files land.
 - **Wave 4 (as mocks and OKs land):** P19, P20, P21 on the catch-up mock; P22 on the keys mock; P23 on the sources-credit verdict; S4 once #609 merges.
