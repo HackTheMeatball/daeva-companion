@@ -33,10 +33,14 @@ Creator names in brackets are the ones a compiler site credits.
 - **Three actives only fire on a condition** (CONFIRMED, skill text plus two guides): Blaze needs a Fire Mark target,
   Flame Scattershot a Staggered one, Frost Burst a Frosted one. Hellfire is a charged skill (hold for up to 3 charge
   levels; full charge is ×3 charge 1); daevaguides and mmo-codex both say a macro fires it at charge 1 only.
-- **The global client already has Korea's 16 Sep Sorcerer patch.** Metabot's Fire Mark text has no proc chance ("Inflicts
-  Fire Mark for 5s on landing a Fire attack") and Flame Arrow's specialty 4 is the new "+5% Fire Damage Boost … on
-  activating [Pyroclasm]". mmo-codex's own numbers are from the older client (20% mark chance) and say so; daevaguides
-  says the same. So on global every Fire hit marks the target, and Blaze is usable after any Fire hit (CONFIRMED).
+- **The global client likely has Korea's 16 Sep Sorcerer patch** (inferred). Metabot's Fire Mark text puts no chance on
+  applying the mark ("Inflicts Fire Mark for 5s on landing a Fire attack"); its 20% chance is now on the marked target's
+  extra damage. mmo-codex says its own client data is pre-patch (a 20% chance to apply the mark) and that the patch made
+  every Fire hit mark; daevaguides says the same. Flame Arrow's specialty 4 reads the new "+5% Fire Damage Boost for 10s
+  on activating [Pyroclasm]" on Metabot and on the owner's Lv 4 screen (2026-10-19, the Lv 12 row of Flame Arrow's
+  specialty list), which is the global-client evidence that the patch is in. So every Fire hit should mark the target and
+  Blaze should be usable after any Fire hit: inferred from the patch, single source for the mechanic (Metabot's text),
+  not checked in game.
 - **Metabot prints five "Absorbs N% HP" specialties wrong** (the #358 pattern): "Absorbs 100, 100% HP" where the game
   says "Absorbs 1% HP", and the same for 3, 5, 7 and 10% (§5). Each has the owner's screen or two guides for the game
   text.
@@ -236,10 +240,10 @@ first. The conditions are CONFIRMED by the skill text (§1). Two cautions for th
 | Spec id | Metabot page | Game text | Game-text sources |
 |---|---|---|---|
 | `spec:sorcerer:flame-arrow:2` | Absorbs 100, 100% HP | Absorbs 1% HP | owner's screen (2026-10-19), mmo-codex, daevaguides, aion2turkiye |
-| `spec:sorcerer:blaze:1` | Absorbs 300, 300% HP | Absorbs 3% HP | mmo-codex, daevaguides, aion2turkiye |
-| `spec:sorcerer:flame-scattershot:1` | Absorbs 500, 500% HP | Absorbs 5% HP | mmo-codex, daevaguides |
-| `spec:sorcerer:frost-burst:1` | Absorbs 700, 700% HP | Absorbs 7% HP | mmo-codex, daevaguides |
-| `stigma:sorcerer:divine-burst` spec 2 (`spec:sorcerer:divine-burst:2`) | Absorbs 1000, 1000% HP | Absorbs 10% HP | mmo-codex, daevaguides |
+| `spec:sorcerer:blaze:1` | Absorbs 300, 300% HP | Absorbs 3% HP | two-source (guides): mmo-codex, daevaguides, aion2turkiye |
+| `spec:sorcerer:flame-scattershot:1` | Absorbs 500, 500% HP | Absorbs 5% HP | two-source (guides): mmo-codex, daevaguides |
+| `spec:sorcerer:frost-burst:1` | Absorbs 700, 700% HP | Absorbs 7% HP | two-source (guides): mmo-codex, daevaguides |
+| `stigma:sorcerer:divine-burst` spec 2 (`spec:sorcerer:divine-burst:2`) | Absorbs 1000, 1000% HP | Absorbs 10% HP | two-source (guides): mmo-codex, daevaguides |
 
 The CSV keeps Metabot's text as read; the class-data item writes the game text (Game Data Check notes that gen's check
 enforces this). Every other specialty text was read as printed. The two with a thousands comma ("Restores 1,000 Stamina" on Defiance,
@@ -299,14 +303,15 @@ bug has the game text from two sources (§5).
 
 Policy: `CLAUDE.md` and `docs/research/SOURCES.md` (every host used is listed there; no new site, so SOURCES.md is
 unchanged). User-Agent `DaevaCompanionResearch/0.1 (+https://daevacompanion.com)`, one request at a time, at least 5 s
-apart on every host, cache 24 h, stop on 403 / 429 / a challenge (none happened). No page copy or WebP is committed;
+apart on every host with two exceptions on metabot.gg (robots.txt → terms 4 s; assault-bombardment → bittercold-wind
+skill pages 3 s; the request logs show both), at most 11 in any 60 s, cache 24 h, stop on 403 / 429 / a challenge (none happened). No page copy or WebP is committed;
 only the CSVs and the converted PNGs.
 
 - **metabot.gg (Full):** robots.txt and terms of service re-read first, before any content page (8:33–8:34 PM ET; robots
   first, terms 4 s later). robots.txt disallows only `/api/`, `/private/` and profile paths; nothing blocks Claude-User
   or our UA. Terms unchanged (effective 04/01/2026: "personal, non-commercial use", attribution required, "a reasonable
   request rate"). 76 requests in all (41 pages: robots, terms, class page, 35 skill pages, boards, build page,
-  class-builds guide; 35 icon files), 8:33–8:45 PM ET, about 10 a minute.
+  class-builds guide; 35 icon files), 8:33–8:45 PM ET.
 - **Second sources, 8:39–8:40 PM ET:** mmo-codex terms re-read first (last updated 29 Aug 2026, unchanged: **Spot**, it
   bans "automated republication and scraped copies"), so one content page. robots.txt re-read on mmo-codex (blocks only
   `/api/`), daevaguides (allows Claude-User explicitly), skycoach (blocks only query-string paths) and aion2turkiye
