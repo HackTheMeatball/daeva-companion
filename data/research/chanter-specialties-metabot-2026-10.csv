@@ -1,0 +1,113 @@
+id,skill,n,skillLv,text,build,checkedAt,status,page_url
+spec:chanter:assault-shock:1,stigma:chanter:assault-shock,1,5,+20% Attack for 5s on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/assault-shock
+spec:chanter:assault-shock:2,stigma:chanter:assault-shock,2,10,500 MP damage on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/assault-shock
+spec:chanter:assault-shock:3,stigma:chanter:assault-shock,3,15,+10m range,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/assault-shock
+spec:chanter:assault-shock:4,stigma:chanter:assault-shock,4,20,+20% Stun Chance,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/assault-shock
+spec:chanter:barrier-spell:1,stigma:chanter:barrier-spell,1,5,Restores 10% HP when effect expires naturally,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/barrier-spell
+spec:chanter:barrier-spell:2,stigma:chanter:barrier-spell,2,10,+10% PvE Damage Tolerance and +5% PvP Damage Tolerance for 10s when effect expires naturally,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/barrier-spell
+spec:chanter:barrier-spell:3,stigma:chanter:barrier-spell,3,15,+10% HP limit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/barrier-spell
+spec:chanter:barrier-spell:4,stigma:chanter:barrier-spell,4,20,+1s effect duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/barrier-spell
+spec:chanter:dark-crush:1,skill:chanter:dark-crush,1,8,"Absorbs 70, 70% HP",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/dark-crush
+spec:chanter:dark-crush:2,skill:chanter:dark-crush,2,8,Deals extra damage on attacking a target afflicted with Impact-type status,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/dark-crush
+spec:chanter:dark-crush:3,skill:chanter:dark-crush,3,8,Critical Hit on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/dark-crush
+spec:chanter:dark-crush:4,skill:chanter:dark-crush,4,12,Adds [Piercing Strike] Chain Skill,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/dark-crush
+spec:chanter:dark-crush:5,skill:chanter:dark-crush,5,16,Removes [Dark Crush] cooldown,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/dark-crush
+spec:chanter:defiance:1,skill:chanter:defiance,1,8,Adds [Crushing Strike] Chain Skill,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/defiance-chanter
+spec:chanter:defiance:2,skill:chanter:defiance,2,8,"Restores 1,000 Stamina on using [Defiance]",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/defiance-chanter
+spec:chanter:defiance:3,skill:chanter:defiance,3,8,Restores 10% HP on using [Defiance],0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/defiance-chanter
+spec:chanter:defiance:4,skill:chanter:defiance,4,12,+2s Tenacity duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/defiance-chanter
+spec:chanter:defiance:5,skill:chanter:defiance,5,16,+50% PvE Damage Tolerance and +25% PvP Damage Tolerance for Tenacity duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/defiance-chanter
+spec:chanter:ensnaring-mark:1,stigma:chanter:ensnaring-mark,1,5,50% chance to inflict Root,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/ensnaring-mark
+spec:chanter:ensnaring-mark:2,stigma:chanter:ensnaring-mark,2,10,"50% chance to inflict -1,000 enemy Max Stamina",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/ensnaring-mark
+spec:chanter:ensnaring-mark:3,stigma:chanter:ensnaring-mark,3,15,"+3s Seal, Root, Max Stamina reduction effect",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/ensnaring-mark
+spec:chanter:ensnaring-mark:4,stigma:chanter:ensnaring-mark,4,20,"+25% Seal, Root, Max Stamina reduction chance",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/ensnaring-mark
+spec:chanter:focused-defense:1,stigma:chanter:focused-defense,1,5,+1 consecutive use,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/focused-defense
+spec:chanter:focused-defense:2,stigma:chanter:focused-defense,2,10,Changes to mobile skill,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/focused-defense
+spec:chanter:focused-defense:3,stigma:chanter:focused-defense,3,15,+20% Move Speed for 3s on Block,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/focused-defense
+spec:chanter:focused-defense:4,stigma:chanter:focused-defense,4,20,Restores 5% HP once on Parry,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/focused-defense
+spec:chanter:fracturing-blow:1,stigma:chanter:fracturing-blow,1,5,-15s cooldown,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/fracturing-blow
+spec:chanter:fracturing-blow:2,stigma:chanter:fracturing-blow,2,10,Inflict Exposed for 5s on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/fracturing-blow
+spec:chanter:fracturing-blow:3,stigma:chanter:fracturing-blow,3,15,Critical Hit on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/fracturing-blow
+spec:chanter:fracturing-blow:4,stigma:chanter:fracturing-blow,4,20,+30% additional Impact-type Status target damage,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/fracturing-blow
+spec:chanter:guardian-blessing:1,stigma:chanter:guardian-blessing,1,5,+10% Status Effect Resist,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/guardian-blessing
+spec:chanter:guardian-blessing:2,stigma:chanter:guardian-blessing,2,10,x1.5 [Crossguard] effect for the duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/guardian-blessing
+spec:chanter:guardian-blessing:3,stigma:chanter:guardian-blessing,3,15,x1.5 [Wind's Promise] effect for the duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/guardian-blessing
+spec:chanter:guardian-blessing:4,stigma:chanter:guardian-blessing,4,20,+10% Incoming Heal,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/guardian-blessing
+spec:chanter:gust-rampage:1,skill:chanter:gust-rampage,1,8,"Absorbs 500, 500% HP",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/gust-rampage
+spec:chanter:gust-rampage:2,skill:chanter:gust-rampage,2,8,Restores 120 MP,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/gust-rampage
+spec:chanter:gust-rampage:3,skill:chanter:gust-rampage,3,8,Changes to mobile skill,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/gust-rampage
+spec:chanter:gust-rampage:4,skill:chanter:gust-rampage,4,12,Multi-Hit on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/gust-rampage
+spec:chanter:gust-rampage:5,skill:chanter:gust-rampage,5,16,-1s all skill cooldowns on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/gust-rampage
+spec:chanter:healing-touch:1,stigma:chanter:healing-touch,1,5,+20% amount healed when HP is 50% or less,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/healing-touch
+spec:chanter:healing-touch:2,stigma:chanter:healing-touch,2,10,"Restores 1,000 Stamina",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/healing-touch
+spec:chanter:healing-touch:3,stigma:chanter:healing-touch,3,15,"Removes 5, 5 debuff(s)",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/healing-touch
+spec:chanter:healing-touch:4,stigma:chanter:healing-touch,4,20,+5% HP restored,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/healing-touch
+spec:chanter:heat-wave-blow:1,skill:chanter:heat-wave-blow,1,8,40% chance to inflict Stun for 3s,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/heat-wave-blow
+spec:chanter:heat-wave-blow:2,skill:chanter:heat-wave-blow,2,8,+20% Seal Chance,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/heat-wave-blow
+spec:chanter:heat-wave-blow:3,skill:chanter:heat-wave-blow,3,8,Up to +20% damage when more targets hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/heat-wave-blow
+spec:chanter:heat-wave-blow:4,skill:chanter:heat-wave-blow,4,12,Ignores Block and Evasion and lands as Multi-Hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/heat-wave-blow
+spec:chanter:heat-wave-blow:5,skill:chanter:heat-wave-blow,5,16,25% chance to reset [Heat Wave Blow] cooldown on Block,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/heat-wave-blow
+spec:chanter:impactful-crush:1,skill:chanter:impactful-crush,1,8,Changes to AoE damage,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/impactful-crush
+spec:chanter:impactful-crush:2,skill:chanter:impactful-crush,2,8,+1s [Impactful Crush] Stun duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/impactful-crush
+spec:chanter:impactful-crush:3,skill:chanter:impactful-crush,3,8,Changes to mobile skill,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/impactful-crush
+spec:chanter:impactful-crush:4,skill:chanter:impactful-crush,4,12,+30% Skill Speed,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/impactful-crush
+spec:chanter:impactful-crush:5,skill:chanter:impactful-crush,5,16,+20% [Impactful Crush] Stun Chance,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/impactful-crush
+spec:chanter:impeding-authority:1,stigma:chanter:impeding-authority,1,5,+15% Defense,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/impeding-authority
+spec:chanter:impeding-authority:2,stigma:chanter:impeding-authority,2,10,+10% Incoming Heal,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/impeding-authority
+spec:chanter:impeding-authority:3,stigma:chanter:impeding-authority,3,15,"+10% PvE Damage Tolerance, +5% PvP Damage Tolerance",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/impeding-authority
+spec:chanter:impeding-authority:4,stigma:chanter:impeding-authority,4,20,Restores 7% of Max HP when Protective Shield ends or is broken,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/impeding-authority
+spec:chanter:incandescent-blow:1,skill:chanter:incandescent-blow,1,8,-20% MP consumed,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/incandescent-blow
+spec:chanter:incandescent-blow:2,skill:chanter:incandescent-blow,2,8,+200 Block while using skill,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/incandescent-blow
+spec:chanter:incandescent-blow:3,skill:chanter:incandescent-blow,3,8,Deals up to 12% more damage when less targets are hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/incandescent-blow
+spec:chanter:incandescent-blow:4,skill:chanter:incandescent-blow,4,12,-200 enemy Accuracy for 3s on landing Bursting Blow,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/incandescent-blow
+spec:chanter:incandescent-blow:5,skill:chanter:incandescent-blow,5,16,Ignores Block and Evasion and lands as Multi-Hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/incandescent-blow
+spec:chanter:marchutans-wrath:1,stigma:chanter:marchutans-wrath,1,5,Up to +20% damage when less targets hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/marchutans-wrath
+spec:chanter:marchutans-wrath:2,stigma:chanter:marchutans-wrath,2,10,50% chance to inflict Stun for 3s,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/marchutans-wrath
+spec:chanter:marchutans-wrath:3,stigma:chanter:marchutans-wrath,3,15,-70% Incoming Heal and Potion Recovery,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/marchutans-wrath
+spec:chanter:marchutans-wrath:4,stigma:chanter:marchutans-wrath,4,20,+25% additional Stun Chance,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/marchutans-wrath
+spec:chanter:obliterate:1,stigma:chanter:obliterate,1,5,Up to +20% damage when more targets hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/obliterate
+spec:chanter:obliterate:2,stigma:chanter:obliterate,2,10,+20% Skill Speed,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/obliterate
+spec:chanter:obliterate:3,stigma:chanter:obliterate,3,15,Critical Hit on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/obliterate
+spec:chanter:obliterate:4,stigma:chanter:obliterate,4,20,+25% Knockdown Chance,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/obliterate
+spec:chanter:onslaught:1,skill:chanter:onslaught,1,8,+20% MP restored,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/onslaught
+spec:chanter:onslaught:2,skill:chanter:onslaught,2,8,"Absorbs 70, 70% HP",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/onslaught
+spec:chanter:onslaught:3,skill:chanter:onslaught,3,8,+50% Multi-Hit on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/onslaught
+spec:chanter:onslaught:4,skill:chanter:onslaught,4,12,-1s [Spinning Strike] cooldown on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/onslaught
+spec:chanter:onslaught:5,skill:chanter:onslaught,5,16,Adds [Storm Chain] Chain Skill,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/onslaught
+spec:chanter:power-of-the-storm:1,stigma:chanter:power-of-the-storm,1,5,-30s cooldown,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/power-of-the-storm
+spec:chanter:power-of-the-storm:2,stigma:chanter:power-of-the-storm,2,10,+200 Accuracy,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/power-of-the-storm
+spec:chanter:power-of-the-storm:3,stigma:chanter:power-of-the-storm,3,15,+200 Critical Hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/power-of-the-storm
+spec:chanter:power-of-the-storm:4,stigma:chanter:power-of-the-storm,4,20,+20% Caster Attack and +10% party member Attack,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/power-of-the-storm
+spec:chanter:recuperation:1,skill:chanter:recuperation,1,8,+1 consecutive use and Heal over Time can stack up to 2 times,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/recuperation
+spec:chanter:recuperation:2,skill:chanter:recuperation,2,8,"Removes up to 2, 2 debuffs",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/recuperation
+spec:chanter:recuperation:3,skill:chanter:recuperation,3,8,+4s healing duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/recuperation
+spec:chanter:recuperation:4,skill:chanter:recuperation,4,12,+5% HP restored,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/recuperation
+spec:chanter:recuperation:5,skill:chanter:recuperation,5,16,-3s cooldown,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/recuperation
+spec:chanter:rushing-smash:1,skill:chanter:rushing-smash,1,8,-20% target's Impact-type Resist for 5s,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/rushing-smash
+spec:chanter:rushing-smash:2,skill:chanter:rushing-smash,2,8,"Changes to Charge Skill, dealing up to 200% more damage",0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/rushing-smash
+spec:chanter:rushing-smash:3,skill:chanter:rushing-smash,3,8,50% chance to trigger [Heat Wave Blow] on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/rushing-smash
+spec:chanter:rushing-smash:4,skill:chanter:rushing-smash,4,12,Resets cooldown on defeating an enemy,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/rushing-smash
+spec:chanter:rushing-smash:5,skill:chanter:rushing-smash,5,16,Ignores Block and Evasion and lands as Multi-Hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/rushing-smash
+spec:chanter:spinning-strike:1,skill:chanter:spinning-strike,1,8,-5s cooldown,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/spinning-strike
+spec:chanter:spinning-strike:2,skill:chanter:spinning-strike,2,8,+10% Heal Boost (up to 20%),0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/spinning-strike
+spec:chanter:spinning-strike:3,skill:chanter:spinning-strike,3,8,Up to +20% damage when less targets hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/spinning-strike
+spec:chanter:spinning-strike:4,skill:chanter:spinning-strike,4,12,40% chance to inflict Seal for 3s,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/spinning-strike
+spec:chanter:spinning-strike:5,skill:chanter:spinning-strike,5,16,Ignores Block and Evasion and lands as a Critical Hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/spinning-strike
+spec:chanter:sprint-mantra:1,stigma:chanter:sprint-mantra,1,5,+10% Incoming Heal,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/sprint-mantra
+spec:chanter:sprint-mantra:2,stigma:chanter:sprint-mantra,2,10,+30% Natural Stamina Regen,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/sprint-mantra
+spec:chanter:sprint-mantra:3,stigma:chanter:sprint-mantra,3,15,+50% amount restored when HP is 50% or less,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/sprint-mantra
+spec:chanter:sprint-mantra:4,stigma:chanter:sprint-mantra,4,20,+10% Restoration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/sprint-mantra
+spec:chanter:tremor-crush:1,skill:chanter:tremor-crush,1,8,Restores 300 Stamina on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/tremor-crush
+spec:chanter:tremor-crush:2,skill:chanter:tremor-crush,2,8,+10m [Tremor Crush] range,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/tremor-crush
+spec:chanter:tremor-crush:3,skill:chanter:tremor-crush,3,8,+50% Multi-Hit on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/tremor-crush
+spec:chanter:tremor-crush:4,skill:chanter:tremor-crush,4,12,Adds [Surging Strike] Chain Skill,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/tremor-crush
+spec:chanter:tremor-crush:5,skill:chanter:tremor-crush,5,16,+25% [Tremor Crush] Stun Chance,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/tremor-crush
+spec:chanter:undefeated-mantra:1,stigma:chanter:undefeated-mantra,1,5,+100 Critical Hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/undefeated-mantra
+spec:chanter:undefeated-mantra:2,stigma:chanter:undefeated-mantra,2,10,+100 Accuracy,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/undefeated-mantra
+spec:chanter:undefeated-mantra:3,stigma:chanter:undefeated-mantra,3,15,+5% Critical Damage Boost,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/undefeated-mantra
+spec:chanter:undefeated-mantra:4,stigma:chanter:undefeated-mantra,4,20,+5% Double Chance,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/undefeated-mantra
+spec:chanter:wave-blow:1,skill:chanter:wave-blow,1,8,Multi-Hit on hit,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/wave-blow
+spec:chanter:wave-blow:2,skill:chanter:wave-blow,2,8,+6m Range,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/wave-blow
+spec:chanter:wave-blow:3,skill:chanter:wave-blow,3,8,+1s Knockdown duration,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/wave-blow
+spec:chanter:wave-blow:4,skill:chanter:wave-blow,4,12,-15% target's PvE Damage Boost and -7.5% PvP Damage Boost for 10s,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/wave-blow
+spec:chanter:wave-blow:5,skill:chanter:wave-blow,5,16,-5s cooldown,0.0.4387.0,2026-10-19,verified,https://metabot.gg/en/aion-2/skills/wave-blow
