@@ -88,6 +88,7 @@ wherever the app shows its data) checked 2026-10-20, `2026-10-steam-and-news-vet
 | steamdb.info | Its FAQ (its terms): "We also do not allow scraping/crawling on SteamDB". Owner browser only | 2026-10-20 |
 | questlog.gg | Cloudflare challenge (403) on our first request, the terms page (`/terms`). Owner browser only | 2026-10-20 |
 | 6sword.com | robots.txt `User-Agent: *` / `Disallow: /`; terms (제7조) ban automated collection and scraping without written consent | 2026-10-20 |
+| zygorguides.com | Terms of Use ban navigating the site with "spiders, bots… or intelligent agents" and "aggregating, copying or duplicating" its materials. Product research only (Daeva Companion's inspiration); owner browser only | 2026-10-20 |
 | playnews.gg | 403 to our request for its home page (where its terms link would be); robots.txt itself loads. Owner browser only | 2026-10-20 |
 
 ## Keeping this current

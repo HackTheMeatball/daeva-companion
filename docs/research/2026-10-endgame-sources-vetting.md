@@ -52,3 +52,12 @@ our User-Agent.
 
 Gear-score progression: no new source found. Metabot (Full) and the owner's screens are the routes; the Bible gives
 leads only.
+
+## zygorguides.com (product research, owner ask 2026-10-20)
+
+robots.txt: `*` disallows only `/cgi-bin/` and member plugin paths. Terms of Use
+(`/p/zygor-guides-llc-terms-conditions/`, redirects to `/blog/zygor-guides-llc-terms-conditions/`) ban using "browsers,
+spiders, bots, avatars or intelligent agents" other than generally available browsers to navigate the site, and
+"aggregating, copying or duplicating" its materials: **Fail**. Requests: 4 (robots.txt; one manual page, read before the
+terms because it was the only way to find the terms link; the terms page twice, because of a 301). The findings use
+web-search summaries only, and no copies were kept.
