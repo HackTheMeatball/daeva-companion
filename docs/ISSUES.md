@@ -63,25 +63,14 @@ on purpose: the guide shows nothing rather than an unverified value.
 - C27 (optional board re-check prompt at Lv 20/30/40) not added; the board card already flags a total below the
   level formula.
 
-- **Passive icons from aion2-meta.com** (Game Data Check, 2026-10-20). Eight passives had no approved file that matched
-  the game. aion2-meta.com (allowed list, `docs/research/SOURCES.md`; robots.txt `Allow: /`) shows each on its class
-  guide page; each file was matched by eye to the owner's Skill window screens (Cleric 2026-10-19 Lv 4 and 2026-10-20
-  tooltips; Chanter 2026-10-20 grid; Templar Lv 23 art is the same file). Files are 64 px WebP, upscaled to 128 px RGB PNG
-  (Lanczos), so they look softer than Metabot's 256 px sources; replace them when a sharper approved file turns up.
-  Reuse terms of aion2-meta are unknown (SOURCES.md); the art is the game's.
+- **Passive icons with no approved source: for the owner** (Game Data Check, 2026-10-20). Nine passives have no
+  approved file that matches the game and stay `icon: owner-check`: Cleric Healing Enhancement, Immortal Veil, Survival
+  Willpower; Templar Survival Willpower; Chanter Blessing of Life, Attack Preparation, Impact Hit, Survival Willpower,
+  Recuperation. aion2-meta.com has 64 px files (`/icons/<class>-<slug>.webp`) for the first eight, but SOURCES.md lists
+  it as "Full, reuse unknown" (facts and a link only), so they are not used without an owner decision (as
+  `owner-ok-0.6.2-map-icons` did for aion2quest.pro). Owner: OK aion2-meta for these icons, or leave them owner-check.
 
-  | File | Name | Source page | File URL | Retrieved |
-  |---|---|---|---|---|
-  | sk-cleric-healing-enhancement.png | Healing Enhancement | <https://aion2-meta.com/guides/cleric/> | <https://aion2-meta.com/icons/cleric-healing-enhancement.webp> | 2026-10-20 |
-  | sk-cleric-immortal-veil.png | Immortal Veil | <https://aion2-meta.com/guides/cleric/> | <https://aion2-meta.com/icons/cleric-immortal-veil.webp> | 2026-10-20 |
-  | sk-cleric-survival-willpower.png | Survival Willpower | <https://aion2-meta.com/guides/cleric/> | <https://aion2-meta.com/icons/cleric-survival-willpower.webp> | 2026-10-20 |
-  | sk-templar-survival-willpower.png | Survival Willpower | <https://aion2-meta.com/guides/templar/> | <https://aion2-meta.com/icons/templar-survival-willpower.webp> | 2026-10-20 |
-  | sk-chanter-blessing-of-life.png | Blessing of Life | <https://aion2-meta.com/guides/chanter/> | <https://aion2-meta.com/icons/chanter-blessing-of-life.webp> | 2026-10-20 |
-  | sk-chanter-attack-preparation.png | Attack Preparation | <https://aion2-meta.com/guides/chanter/> | <https://aion2-meta.com/icons/chanter-attack-preparation.webp> | 2026-10-20 |
-  | sk-chanter-impact-hit.png | Impact Hit | <https://aion2-meta.com/guides/chanter/> | <https://aion2-meta.com/icons/chanter-impact-hit.webp> | 2026-10-20 |
-  | sk-chanter-survival-willpower.png | Survival Willpower | <https://aion2-meta.com/guides/chanter/> | <https://aion2-meta.com/icons/chanter-survival-willpower.webp> | 2026-10-20 |
-
-  The three Cleric files relabelled from Metabot keep their rows in the Cleric table above (source page = the page the
+  The three Cleric files relabelled from Metabot keep their rows in the Cleric table below (source page = the page the
   file came from): `sk-cleric-heal-block.png` ← sk-immortal-veil.png, `sk-cleric-prayer-of-concentration.png` ←
   sk-heal-block.png, `sk-cleric-radiant-benediction.png` ← sk-prayer-of-concentration.png.
 
@@ -250,8 +239,7 @@ on purpose: the guide shows nothing rather than an unverified value.
   | st-templar-shield-of-protection.png | Shield of Protection | <https://metabot.gg/en/aion-2/skills/shield-of-protection> | <https://metabot.gg/web/aion2/skills/12110000.webp> | 2026-10-19 |
   | st-templar-taunt.png | Taunt | <https://metabot.gg/en/aion-2/skills/taunt> | <https://metabot.gg/web/aion2/skills/12120000.webp> | 2026-10-19 |
 
-- **Templar passive icons: closed 2026-10-20** (0.8 P2, #491; Survival Willpower's icon now comes from aion2-meta.com,
-  see "Passive icons from aion2-meta.com" below). Metabot's passive icon files don't match the owner's
+- **Templar passive icons: one for the owner** (0.8 P2, #491). Metabot's passive icon files don't match the owner's
   screens for some passives, so the class data does not take Metabot's file names on trust. Game Data Check compared
   each passive's Metabot file with the owner's screen (`passive-icons-templar-cleric-2026-10-20.md`, PR #518 review,
   2026-10-20): eight Metabot files match and Impact Hit's art is the Assassin's file. Their records in
@@ -336,9 +324,7 @@ on purpose: the guide shows nothing rather than an unverified value.
   | st-chanter-sprint-mantra.png | Sprint Mantra | <https://metabot.gg/en/aion-2/skills/sprint-mantra> | <https://metabot.gg/web/aion2/skills/18160000.webp> | 2026-10-19 | Metabot page only (stigmas not on the owner screen) |
   | st-chanter-undefeated-mantra.png | Undefeated Mantra | <https://metabot.gg/en/aion-2/skills/undefeated-mantra> | <https://metabot.gg/web/aion2/skills/18190000.webp> | 2026-10-19 | Metabot page only (stigmas not on the owner screen) |
 
-- **Chanter passive icons: one left for the owner (Recuperation)** (0.8 P18, #507; on 2026-10-20 Blessing of Life,
-  Attack Preparation, Impact Hit and Survival Willpower got icons from aion2-meta.com, see "Passive icons from
-  aion2-meta.com" below; aion2-meta's Recuperation file is a green star, not the game's open hand, so it stays owner-check). The class data
+- **Chanter passive icons: five for the owner** (0.8 P18, #507). The class data
   (`data/packs/aion2/classes/chanter/skills.json`, written by `tools/research/chanter-pack.mjs`) follows the owner's Lv 4
   screen (chanter research §7), not Metabot's file names. Since 0.8 P19 (#508) every other record sets `icon`. Earth's Promise, Wind's Promise and Protection Circle carry a note naming the
   other page's file the screen shows. The five below carry `fieldStatus` `icon: owner-check`; P19 must not wire an icon
@@ -404,7 +390,8 @@ on purpose: the guide shows nothing rather than an unverified value.
   Survival Willpower 23, Radiant Benediction 25. Metabot's files are mislabelled: its Immortal Veil file (17750000) is
   Heal Block's art, its Heal Block file (17760000) is Prayer of Concentration's, its Prayer of Concentration file
   (17770000) is Radiant Benediction's; they ship under the right names (`sk-cleric-heal-block.png` etc.). The other three
-  come from aion2-meta.com (below). The text that follows is the 2026-10-20 morning state.
+  (Healing Enhancement, Immortal Veil, Survival Willpower) stay `icon: owner-check`: no approved source has a matching
+  file (see "Passive icons with no approved source" above). The text that follows is the 2026-10-20 morning state.
 
   **Passive icons vs the owner's Lv 4 Cleric screen** (Game Data Check, 2026-10-20, comment on #493; owner-screens
   2026-10-19 `cleric/skills-lv4-locked.png`; locked cells have no tooltip, so each cell is tied to a passive by unlock

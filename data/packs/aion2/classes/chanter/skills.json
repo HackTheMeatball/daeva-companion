@@ -11,7 +11,6 @@
       "type": "passive",
       "learnLv": 13,
       "levelGate": "stepped",
-      "icon": "assets/icons/sk-chanter-attack-preparation.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 2,
@@ -32,9 +31,12 @@
       ],
       "verifiedAt": "2026-10-19",
       "status": "verified",
+      "fieldStatus": {
+        "icon": "owner-check"
+      },
       "notes": [
         "Shared display name with another class (Metabot slug ends -chanter) (Metabot page slug attack-preparation-chanter).",
-        "icon from aion2-meta.com (its Chanter guide page, 64 px, upscaled to 128); it matches a red, flexed arm under a star in the Lv 13 cell on the owner's Chanter Skill window screen (Game Data Check, 2026-10-20, docs/ISSUES.md)."
+        "icon: owner-check. The owner's Lv 4 Chanter screen (2026-10-19) shows the shape of its page's file 18750000 in the Lv 13 cell, but red and purple where the file is blue (unconfirmed) (chanter research §7). No icon until the owner's tooltip screenshot names the art (docs/ISSUES.md)."
       ]
     },
     {
@@ -44,7 +46,6 @@
       "type": "passive",
       "learnLv": 1,
       "levelGate": "stepped",
-      "icon": "assets/icons/sk-chanter-blessing-of-life.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 2,
@@ -65,8 +66,11 @@
       ],
       "verifiedAt": "2026-10-19",
       "status": "verified",
+      "fieldStatus": {
+        "icon": "owner-check"
+      },
       "notes": [
-        "icon from aion2-meta.com (its Chanter guide page, 64 px, upscaled to 128); it matches green light with gold ornaments in the Lv 1 cell on the owner's Chanter Skill window screen (Game Data Check, 2026-10-20, docs/ISSUES.md)."
+        "icon: owner-check. The owner's Lv 4 Chanter screen (2026-10-19) shows green light with gold ornaments in the unlocked Lv 1 cell; no Metabot file has it (its page's file 18710000 is the game's Protection Circle art) (chanter research §7). No icon until the owner's tooltip screenshot names the art (docs/ISSUES.md)."
       ]
     },
     {
@@ -442,7 +446,6 @@
       "type": "passive",
       "learnLv": 15,
       "levelGate": "stepped",
-      "icon": "assets/icons/sk-chanter-impact-hit.png",
       "boardNodes": {
         "perBoard": {
           "board:zikel": 2,
@@ -463,9 +466,12 @@
       ],
       "verifiedAt": "2026-10-19",
       "status": "verified",
+      "fieldStatus": {
+        "icon": "owner-check"
+      },
       "notes": [
         "Shared display name with another class (Metabot slug ends -chanter) (Metabot page slug impact-hit-chanter).",
-        "icon from aion2-meta.com (its Chanter guide page, 64 px, upscaled to 128); it matches a purple arc in the Lv 15 cell on the owner's Chanter Skill window screen (Game Data Check, 2026-10-20, docs/ISSUES.md)."
+        "icon: owner-check. The owner's Lv 4 Chanter screen (2026-10-19) shows the shape of its page's file 18760000 in the Lv 15 cell, but red and purple where the file is blue (unconfirmed; may be the Assassin's 13760000, as on the Templar) (chanter research §7). No icon until the owner's tooltip screenshot names the art (docs/ISSUES.md)."
       ]
     },
     {
@@ -988,7 +994,6 @@
       "type": "passive",
       "learnLv": 23,
       "levelGate": "flat",
-      "icon": "assets/icons/sk-chanter-survival-willpower.png",
       "boardNodes": {
         "perBoard": {
           "board:zikel": 2,
@@ -1009,9 +1014,12 @@
       ],
       "verifiedAt": "2026-10-19",
       "status": "verified",
+      "fieldStatus": {
+        "icon": "owner-check"
+      },
       "notes": [
         "Shared display name with another class (Metabot slug ends -chanter) (Metabot page slug survival-willpower-chanter).",
-        "icon from aion2-meta.com (its Chanter guide page, 64 px, upscaled to 128); it matches an armoured figure, hands to the head in the Lv 23 cell on the owner's Chanter Skill window screen (Game Data Check, 2026-10-20, docs/ISSUES.md)."
+        "icon: owner-check. The owner's Lv 4 Chanter screen (2026-10-19) shows an armoured figure, hands to the head, in the Lv 23 cell; Metabot has no icon (18790000 returns 403) (chanter research §7). No icon until the owner's tooltip screenshot names the art (docs/ISSUES.md)."
       ]
     },
     {

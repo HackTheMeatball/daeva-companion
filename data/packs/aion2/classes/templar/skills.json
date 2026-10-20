@@ -959,7 +959,6 @@
       "type": "passive",
       "learnLv": 23,
       "levelGate": "flat",
-      "icon": "assets/icons/sk-templar-survival-willpower.png",
       "boardNodes": {
         "perBoard": {
           "board:zikel": 2,
@@ -980,9 +979,11 @@
       ],
       "verifiedAt": "2026-10-19",
       "status": "verified",
+      "fieldStatus": {
+        "icon": "owner-check"
+      },
       "notes": [
-        "Shared display name with another class (Metabot slug ends -templar) (Metabot page slug survival-willpower-templar).",
-        "icon from aion2-meta.com (its Templar guide page, 64 px, upscaled to 128); it matches an armoured figure, hands to the head in the Lv 23 cell on the owner's Templar Skill window screen (Game Data Check, 2026-10-20, docs/ISSUES.md)."
+        "Shared display name with another class (Metabot slug ends -templar) (Metabot page slug survival-willpower-templar)."
       ]
     },
     {

@@ -1803,7 +1803,7 @@
       "conflicts": [
         "Metabot shows no giver place/Kibelisk; app place 'Healing Spring' (Purifying Forest) is not on Metabot. Turn-in text says 'Talk to Reden at Odar's Shade' (Moslan Forest). Story references the Young Elim — possible thematic link to Young Elim's Story, not stated.",
         "Giver place 'Healing Spring' from allthings.how (not on Metabot) [2026-10-19: Metabot's quest page names the start as \"Reden · Healing Spring\" (build 0.0.4387.0).]",
-        "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest [2026-10-20: checked on aion2.gaming.tools in the owner's browser; see requires]"
+        "Prerequisites: no aion2.gaming.tools / aion2.th.gl page was reachable from our tools; checked 2026-10-20 on aion2.gaming.tools in the owner's browser (see requires)"
       ]
     },
     {
@@ -3465,7 +3465,7 @@
       },
       "conflicts": [
         "Metabot shows no giver/turn-in/Kibelisk; giver name from step text only. Graverobber Campsite is mentioned in step text (Basfelt Ruins).",
-        "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest [2026-10-20: checked on aion2.gaming.tools in the owner's browser; see requires]"
+        "Prerequisites: no aion2.gaming.tools / aion2.th.gl page was reachable from our tools; checked 2026-10-20 on aion2.gaming.tools in the owner's browser (see requires)"
       ]
     },
     {
@@ -3611,7 +3611,7 @@
         "Spacetime Rift series: No Required Quests on 5 of 7 gaming.tools pages (Unknown Species 2202030 and Proof 2202035 not reachable). Not a chain. Gate: level 45 (Metabot 'Unlocks at 45' on all 7; allthings 244366 'Level 45') plus a rift that 'opens at random spots at set times' (allthings 244371)."
       ],
       "conflicts": [
-        "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest [2026-10-20: checked on aion2.gaming.tools in the owner's browser; see requires]"
+        "Prerequisites: no aion2.gaming.tools / aion2.th.gl page was reachable from our tools; checked 2026-10-20 on aion2.gaming.tools in the owner's browser (see requires)"
       ],
       "fieldStatus": {
         "zone": "inferred"
@@ -4408,7 +4408,7 @@
       "status": "verified",
       "conflicts": [
         "Metabot location field just 'Altgard'; place taken from nearest Kibelisk (Graverobber Campsite 32 m, same as An Honest Shugo)",
-        "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest [2026-10-20: checked on aion2.gaming.tools in the owner's browser; see requires]"
+        "Prerequisites: no aion2.gaming.tools / aion2.th.gl page was reachable from our tools; checked 2026-10-20 on aion2.gaming.tools in the owner's browser (see requires)"
       ],
       "notes": [
         "Spacetime Rift series: No Required Quests on 5 of 7 gaming.tools pages (Unknown Species 2202030 and Proof 2202035 not reachable). Not a chain. Gate: level 45 (Metabot 'Unlocks at 45' on all 7; allthings 244366 'Level 45') plus a rift that 'opens at random spots at set times' (allthings 244371)."
@@ -5425,7 +5425,7 @@
       "conflicts": [
         "Metabot gives no giver place/Kibelisk for Bekrin; app has 'Battlescar Mound'. Turn-in at Briskwind Shelter (Elena). [2026-10-19: Metabot's quest page names the start as \"Bekrin · Battlescar Mound\" (build 0.0.4387.0).]",
         "Giver place 'Battlescar Mound' from allthings.how (not on Metabot)",
-        "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest [2026-10-20: checked on aion2.gaming.tools in the owner's browser; see requires]"
+        "Prerequisites: no aion2.gaming.tools / aion2.th.gl page was reachable from our tools; checked 2026-10-20 on aion2.gaming.tools in the owner's browser (see requires)"
       ]
     },
     {
@@ -6564,7 +6564,7 @@
         "Metabot page not reachable; data from shugo.gg 2202046 + allthings.how Impetusium page. No Kibelisk. [2026-10-19: Metabot's quest page names the start as \"Nemon · Impetusium Square\" (build 0.0.4387.0).]",
         "shugo.gg shows 'Level 45' without separating unlock level; allthings says unlocks at 10. Not in Forgotten Commander's dependent list (unlike the other Impetusium Lv 45 quests); prerequisites not checked (gaming.tools page not reachable).",
         "shugo.gg turn-in header says Nemon but step 4 says Reuben's Apparition",
-        "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest [2026-10-20: checked on aion2.gaming.tools in the owner's browser; see requires]"
+        "Prerequisites: no aion2.gaming.tools / aion2.th.gl page was reachable from our tools; checked 2026-10-20 on aion2.gaming.tools in the owner's browser (see requires)"
       ]
     },
     {
@@ -9117,9 +9117,6 @@
             "basis": "sourced",
             "sources": [
               {
-                "url": "https://aion2.gaming.tools/quests/2202062"
-              },
-              {
                 "url": "https://aion2.gaming.tools/quests/2202062",
                 "fields": [
                   "requires"
@@ -9885,7 +9882,7 @@
       "status": "verified",
       "conflicts": [
         "Giver Kunpata is Daybreak Society; prerequisites not checked (no gaming.tools/th.gl page reachable; shugo.gg and gamers4.life show none but they do not show prerequisites for quests that do have them, e.g. The Future Within the Past). Not in Forgotten Commander's dependent list.",
-        "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest [2026-10-20: checked on aion2.gaming.tools in the owner's browser; see requires]"
+        "Prerequisites: no aion2.gaming.tools / aion2.th.gl page was reachable from our tools; checked 2026-10-20 on aion2.gaming.tools in the owner's browser (see requires)"
       ],
       "fieldStatus": {
         "zone": "inferred"

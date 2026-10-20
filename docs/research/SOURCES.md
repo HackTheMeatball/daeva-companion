@@ -30,7 +30,7 @@ from 2026-10-14 and are older than this register; where they differ, this regist
 | aion2hub.com | Full, reuse unknown | Weak corroboration: story-quest order and levels, Sealed Dungeon bands, Global vs KR labels | Not `/api/`. Pre-launch snapshot (2026-09-19); never for prerequisites, unlock levels, specialties, locations | 2026-10-14 | `2026-10-source-vetting.md` §3.2 |
 | skycoach.gg | Full | Class build guides (skill order, specialties) | `Crawl-delay: 1`. Boosting shop: guides are editorial | 2026-10-18 | BGS §2 |
 | corpus.gg | Full | Class build guides, from named creators | Not `/data/` (terms: "don't access data outside the published pages") | 2026-10-18 | BGS §2 |
-| aion2-meta.com | Full, reuse unknown | Per-class skills, stigmas, Daevanion, specialties; skill icons (`/icons/<class>-<slug>.webp`, 64 px) where Metabot has none, each matched to an owner screen (Game Data Check, 2026-10-20) | Korean top-player data: a preview, never proof of a global fact | 2026-10-18 | BGS §2 |
+| aion2-meta.com | Full, reuse unknown | Per-class skills, stigmas, Daevanion, specialties | Korean top-player data: a preview, never proof of a global fact | 2026-10-18 | BGS §2 |
 | aion2turkiye.com | Full, reuse unknown | Leveling / dungeon / PvP build panels | — | 2026-10-18 | BGS §2 |
 | gamesfuze.com | Full, reuse unknown | Class builds | Picks are not slot-ordered (never a slot witness) | 2026-10-18 | BGS §2 |
 | aion2quest.pro | Full | Daevanion planner, titles database, map-marker icons (`UT_Marker_*`) where Metabot has none, and its purple Kibelisk crest (owner, 2026-10-18, DECISIONS `owner-ok-0.6.2-map-icons`) | Not `/api/` or `/sim/`. Its desktop app reads game traffic: check each field's origin before use | 2026-10-18 | BGS §2 |
@@ -54,7 +54,11 @@ expcarry.com, oslink.io, u4n.com (**Spot**: its terms ban scraping). All checked
 aion2kina.com (fan toolkit and map; terms ban only "unreasonable automated load"; its map markers aren't game art,
 inferred) checked 2026-10-19, `2026-10-t47-icon-check.md`. Steam Index API (public-api.steamidx.com: AION 2's Steam
 build ID changes with timestamps; owner-created key and the owner's network-list OK needed first; its site pages ask
-not to be scraped, so never those) checked 2026-10-20, `2026-10-steam-and-news-vetting.md`.
+not to be scraped, so never those; its API terms require a "Data from Steam Index" link, plus a Sources card entry,
+wherever the app shows its data) checked 2026-10-20, `2026-10-steam-and-news-vetting.md`. daevacompass.com (fan
+database, news, guides; terms ban only disruption, bypassing protections and abusive automated requests; robots allows
+all but `/api/` and account pages; its terms say game images belong to NCSOFT, so an icon from it needs the owner's
+OK) checked 2026-10-20, `2026-10-icon-sites-vetting.md`.
 
 ## Fail (never read by a session)
 
@@ -66,15 +70,17 @@ not to be scraped, so never those) checked 2026-10-20, `2026-10-steam-and-news-v
 | maxroll.gg, sportskeeda.com | robots.txt blocks Claude-User (`Disallow: /`) | 2026-10-18 |
 | metaroad.gg | Terms: "automated means (bots, scrapers)… without permission". Written permission could open it | 2026-10-18 |
 | bluestacks.com, invenglobal.com | Terms ban crawling / any "robot, spider or other automatic device" | 2026-10-18 |
-| dbaion2.ru / .online, gamers4.life (+ interactivemap.app), wikily.gg | Terms ban bots or automated collection | 2026-10-14 to 2026-10-18 |
+| dbaion2.ru / .online, gamers4.life (+ interactivemap.app), wikily.gg | Terms ban bots or automated collection (gamers4.life `/terms` re-read 2026-10-20, unchanged) | 2026-10-14 to 2026-10-20 |
 | aion2.online | No data of its own: its database links all go to gamers4.life | 2026-10-18 |
 | aion2.gaming.tools, games.gg, mobalytics.gg, eloboost24.eu, icy-veins.com, keengamer.com | 403 challenge to our requests (access, not a ban). Owner browser only | 2026-10-18 |
 | thegameswiki.com | 429 security checkpoint. Its content is CC BY-NC-SA: facts only, never wording | 2026-10-18 |
 | timesaver.gg | Connection reset, not reached | 2026-10-18 |
 | namu.wiki | Cloudflare challenge (403) on our first request, the terms page (`/w/나무위키:이용약관`). Owner browser only | 2026-10-19 |
 | Allakhazam / ZAM (\*.allakhazam.com, Fanbyte terms) | Terms ban "spiders, robots, crawlers, data mining tools" | 2026-10-19 |
-| Steam Web API (api.steampowered.com) | robots.txt `Disallow: /` for all agents (its API terms allow keyed use, but robots wins for us) | 2026-10-19 |
+| Steam Web API (api.steampowered.com) | Terms: Pass (keyed use). robots.txt `Disallow: /` for all agents, and robots wins for us | 2026-10-19 |
 | steamdb.info | Its FAQ (its terms): "We also do not allow scraping/crawling on SteamDB". Owner browser only | 2026-10-20 |
+| questlog.gg | Cloudflare challenge (403) on our first request, the terms page (`/terms`). Owner browser only | 2026-10-20 |
+| 6sword.com | robots.txt `User-Agent: *` / `Disallow: /`; terms (제7조) ban automated collection and scraping without written consent | 2026-10-20 |
 
 ## Keeping this current
 
