@@ -324,6 +324,8 @@ Rules for every item:
     sites are specialty slots 1–3 of core actives, stigma slots, and specialty slots reachable by Lv 45;
   - the picks Game Data Check sourced are in the data for all eight classes, with their labels;
   - a pick that opens earlier through board nodes shows at the effective level.
+  - the census's data issues are fixed (Game Data Check, #614: 166 choice points, 79 without a pick, 5 data issues, e.g.
+    the Gladiator's Ruinous Blow pick ships unlabelled though its verdict is disputed).
 - **Inputs.** `docs/research/` file named with `choice-points` (Game Data Check).
 - **Files.** `data/packs/aion2/checks.mjs`, `tools/gen/gen.mjs`, `data/schema/builds.schema.json` (`noPick`),
   `data/packs/aion2/asmodian/*/builds.json`, `src/packs/aion2/requirements.js`, `src/packs/aion2/cards/nextup-kinds.js`,
@@ -360,13 +362,13 @@ Rules for every item:
   on one key (note 13).
 - **Result.** Game Data Check's answer is applied to the Assassin's `keyStacks` and default keys; if the stack is
   right, the research file says so and this item closes with no change.
-- **Inputs.** `docs/research/` file named with `e-stack` (Game Data Check).
+- **Inputs.** `docs/research/` file named with `e-stigma-stack` (Game Data Check).
 - **Files.** `data/packs/aion2/asmodian/assassin/builds.json`, `data/packs/aion2/asmodian/assassin/guide/*.json`.
 - **No-gos.** Other classes are not changed here.
 - **Acceptance.**
   - [ ] Shot of the Assassin's key setup before and after (or the research line that closes it).
 - **Lanes:** gen, golden. **Model:** Opus, S (44 min).
-- **After:** research-e-stack.
+- **After:** research-e-stigma-stack.
 
 ## P18: How the rotation plays out
 
