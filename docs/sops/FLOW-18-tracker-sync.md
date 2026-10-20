@@ -1,0 +1,64 @@
+# FLOW-18: Tracker sync
+
+Index and status: [README.md](README.md). Steps say who does what; each rule is linked to its one home and never restated
+here. Where this page and a rule's home differ, the home wins and this page is fixed.
+
+## Purpose
+
+Keep Isaac's tracker a true live view of the work: cards, To-dos, versions, the Scrapbook and the ledger page.
+
+## Trigger
+
+A message from another flow (`MERGED`, `KICKOFF DISPATCHED`, a To-do ask, `OK RECORDED`, a plan merge, a release), or Huell's 3 h backstop poll (CLK-03).
+
+## Owner
+
+**Huell** (accountable for this flow end to end; each step names who does it).
+
+## Inputs
+
+- GitHub state
+- The tracker datasets
+- The tracker checker
+
+## Steps
+
+1. **Huell**: Runs the checker before each write (TRK-09) and writes with if_version, retrying up to 3 times (TRK-05).
+2. **Huell**: Moves item cards planned, next, working, done (TRK-03) and writes a done card for every merged PR (TRK-02).
+3. **Huell**: Publishes scrapbook cards within 30 min of a merge (TRK-07).
+4. **Huell**: Writes and closes To-dos and posts their notice lines ([FLOW-14](FLOW-14-owner-decision.md)).
+5. **Huell**: At each release, adds the versions row in the fixed formats (TRK-06).
+6. **Huell**: Keeps the ledger page datasets in step with main (DEC-20261019-tracker-sync-keeps-the-daeva).
+
+## Gates
+
+- Checker passes before every write (TRK-09).
+
+## Records
+
+- The tracker datasets (cards, To-dos, versions, gallery)
+
+## Failure and escalation
+
+- A write held for Isaac's OK pauses only itself (TRK-04).
+- Drift is caught by Mike's health check (HC-01) and fixed by Huell.
+- A denied write is not retried without Isaac's typed OK.
+
+## Rules it runs on
+
+- [TRK-01](../team/huell.md): sole writer
+- [COM-04](../team/huell.md): live view
+- [TRK-02](../team/huell.md): done cards
+- [TRK-03](../team/huell.md): item cards
+- [TRK-04](../team/huell.md): blocked writes
+- [TRK-05](../team/huell.md): if_version
+- [TRK-06](../team/huell.md): formats
+- [TRK-07](../team/huell.md): Scrapbook
+- [TRK-09](https://github.com/HackTheMeatball/daeva-companion/issues/222): checker
+- [CLK-03](../DECISIONS.md): backstop poll
+- [DEC-20261019-tracker-sync-keeps-the-daeva](../DECISIONS.md): ledger page
+- [HC-01](../team/mike.md): drift check
+
+## Last confirmed by owner
+
+Not yet.

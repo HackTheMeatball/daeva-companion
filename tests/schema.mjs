@@ -4,7 +4,7 @@
    (so a relaxed schema can't pass silently); then the generator's cross-record checks, and data/DATA_SOURCES.md must be
    what the generator writes; last, the rules and decisions ledger (tests/ledger.mjs, docs/kaizen/LEDGER.md).
    node tests/schema.mjs  (also in `npm test` and the fast CI job) */
-import { cpSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { ROOT, validateAll, validateDoc } from '../tools/gen/validate.mjs';
 import { dataSourcesMd, generate, guidePacks } from '../tools/gen/gen.mjs';
@@ -312,7 +312,21 @@ if (g) {
   { const p = checkLedger(ROOT, { teamCsv: tcsv.replace(/^Hank,(.*),folded,Mike,/m, 'Hank,$1,folded,Badger,') }); ok('ledger check rejects: folded into a thread that is not active', p.some(x => /folded_into "Badger"/.test(x)), p.slice(0, 3)); }
   { const p = checkLedger(ROOT, { changesCsv: readFileSync(join(ROOT, 'docs/kaizen/team-changes.csv'), 'utf8').replace('DEC-20261019-incident-log-folds-into-stall', 'DEC-nope') }); ok('ledger check rejects: a team change citing an unknown decision', p.some(x => /source "DEC-nope"/.test(x)), p.slice(0, 3)); }
   { const p = checkLedger(ROOT, { auditsCsv: readFileSync(join(ROOT, 'docs/kaizen/audits.csv'), 'utf8').replace(',done,', ',finished,') }); ok('ledger check rejects: an unknown audit status', p.some(x => /status "finished"/.test(x)), p.slice(0, 3)); }
-  { const p = checkLedger(ROOT, { ledgerMd: lmd.replace('| Only Huell changes what the tracker shows', '| Only Huell writes TRK-01 data') }); ok('ledger check rejects: a rule id in Who does what Plain', p.some(x => /Plain has "TRK-01"/.test(x)), p.slice(0, 3)); } }
+  { const p = checkLedger(ROOT, { ledgerMd: lmd.replace('| Only Huell changes what the tracker shows', '| Only Huell writes TRK-01 data') }); ok('ledger check rejects: a rule id in Who does what Plain', p.some(x => /Plain has "TRK-01"/.test(x)), p.slice(0, 3)); }
+  /* flow index and SOPs (docs/sops): a stale owner, a dead or retired rule, a link away from a rule's home, a dead
+     link, an unknown doer, an index row with no file */
+  const sdir = join(ROOT, 'docs/sops'), readme = readFileSync(join(sdir, 'README.md'), 'utf8');
+  const sops = Object.fromEntries(readdirSync(sdir).filter(f => /^FLOW-\d{2}-/.test(f)).map(f => [f, readFileSync(join(sdir, f), 'utf8')]));
+  ok('flow index lists every SOP file (22 flows)', Object.keys(sops).length >= 22 && Object.keys(sops).every(f => readme.includes(`](${f})`)), Object.keys(sops).length);
+  const merge = Object.keys(sops).find(f => f.startsWith('FLOW-09-'));
+  const sopFails = (label, o, re) => { const p = checkLedger(ROOT, o); ok('SOP check rejects: ' + label, p.some(x => re.test(x)), p.slice(0, 3)); };
+  sopFails('an owner who left the team', { sopReadme: readme.replace('| Merge | A PR meets every gate | Gus |', '| Merge | A PR meets every gate | Hank |') }, /owner "Hank" is not an active/);
+  sopFails('a retired rule', { sopFiles: { ...sops, [merge]: sops[merge] + '\nSee PIP-13.\n' } }, /cites PIP-13, which is retired/);
+  sopFails('a rule id not in the ledger', { sopFiles: { ...sops, [merge]: sops[merge] + '\nSee MRG-99.\n' } }, /cites MRG-99, which is not in ledger/);
+  sopFails('a rule linked away from its home', { sopFiles: { ...sops, [merge]: sops[merge].replace('[MRG-01](../team/gus.md)', '[MRG-01](../team/walter.md)') } }, /MRG-01 links to \.\.\/team\/walter\.md/);
+  sopFails('a dead link', { sopFiles: { ...sops, [merge]: sops[merge] + '\n[gone](../no-such-file.md)\n' } }, /dead link \.\.\/no-such-file\.md/);
+  sopFails('an unknown step doer', { sopFiles: { ...sops, [merge]: sops[merge].replace('1. **Auto-merge**', '1. **Hank**') } }, /step doer "Hank"/);
+  { const { [merge]: _, ...rest } = sops; sopFails('an index row with no file', { sopFiles: rest }, /FLOW-09: SOP link/); } }
 console.log(`${n - fail} ok, ${fail} failed (${Date.now() - t0} ms)`);
 console.log(fail ? `SCHEMA CHECKS FAILED (${fail})` : 'SCHEMA CHECKS PASSED');
 process.exit(fail ? 1 : 0);
