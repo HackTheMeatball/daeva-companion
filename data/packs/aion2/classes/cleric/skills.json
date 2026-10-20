@@ -862,6 +862,22 @@
             "scheme": "metabot",
             "value": "0.0.4387.0"
           }
+        },
+        {
+          "url": "https://daevaguides.com/en/cleric/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-19",
+          "note": "Class guide shows the specialty text for spec:cleric:lightning-strike-scattershot:1 (Game Data Check, #493)"
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/cleric/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-19",
+          "note": "Class guide shows the specialty text for spec:cleric:lightning-strike-scattershot:1 (Game Data Check, #493)"
         }
       ],
       "verifiedAt": "2026-10-19",

@@ -57,10 +57,13 @@ const choicesOf = (id, url) => (specs[id] || []).sort((a, b) => a.n - b.n).map(c
 /* boardNodes "Nezekan 2 Vaizel 1 Triniel 1" -> { board:nezekan: 2, … } */
 const perBoard = s => Object.fromEntries([...s.matchAll(/([A-Z][a-z]+) (\d+)/g)].map(m => ['board:' + m[1].toLowerCase(), int(m[2])]));
 
-/* research text fixes (#358 pattern): Metabot prints the percent x 100 into an unfilled template; the game text goes in */
+/* research text fixes (#358 pattern): Metabot prints the percent x 100 into an unfilled template; the game text goes in,
+   and the pages that print it become the record's refs (fetched per data/research/cleric-second-sources-2026-10.requests.log;
+   build unknown, so left out, DATA-FORMAT §5.2) */
 const TEXT_FIX = {
   cleric: {
-    'spec:cleric:lightning-strike-scattershot:1': ['Absorbs 500, 500% HP', 'Absorbs 5% HP', 'aion2turkiye and daevaguides (cleric research §10)'],
+    'spec:cleric:lightning-strike-scattershot:1': ['Absorbs 500, 500% HP', 'Absorbs 5% HP', 'aion2turkiye and daevaguides (cleric research §10)',
+      ['https://daevaguides.com/en/cleric/', 'https://aion2turkiye.com/en/class/cleric/']],
   },
 }[CLS] || {};
 /* Game Data Check (#493, 2026-10-20): the owner's Lv 4 Cleric screen shows other art in these passives' cells than their
@@ -76,12 +79,13 @@ const OWNER_CHECK = {
   },
 }[CLS] || {};
 const skills = csv(`${CLS}-skills-metabot-2026-10.csv`).map(r => {
-  const conflicts = [];
+  const conflicts = [], fixRefs = [];
   const choices = choicesOf(r.id, r.page_url).map(c => {
     const fix = TEXT_FIX[c.id];
     if (!fix) return c;
     if (c.text !== fix[0]) throw new Error(`${c.id}: expected Metabot text ${fix[0]}, read ${c.text}`);
     conflicts.push(`${c.id} text: Metabot's skill page prints "${fix[0]}" (an unfilled template; its number is the percent x 100). Game text "${fix[1]}" per ${fix[2]} (${CHECKED}, #493).`);
+    for (const url of fix[3]) fixRefs.push({ url, fields: ['specialtyChoices'], checkedAt: CHECKED, note: `Class guide shows the specialty text for ${c.id} (Game Data Check, #493)` });
     return { ...c, text: fix[1] };
   });
   const screen = OWNER_CHECK[r.id];
@@ -89,7 +93,7 @@ const skills = csv(`${CLS}-skills-metabot-2026-10.csv`).map(r => {
     id: r.id, key: r.key, name: r.name, type: r.type, learnLv: int(r.learnLv), levelGate: r.levelGate,
     boardNodes: { perBoard: perBoard(r.boardNodes), cost: int(r.boardNodeCost) },
     ...(choices.length ? { specialtyChoices: choices } : {}),
-    sources: [src(r)], verifiedAt: r.checkedAt, status: 'verified',
+    sources: [src(r), ...fixRefs], verifiedAt: r.checkedAt, status: 'verified',
     ...(screen ? { fieldStatus: { learnLv: 'owner-check', icon: 'owner-check' } } : {}),
     ...(r.notes || screen ? { notes: [
       ...(r.notes ? [r.notes + skillNote(r)] : []),
