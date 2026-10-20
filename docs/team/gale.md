@@ -25,7 +25,7 @@ _From #114 "Kaizen (owner, 2026-10-17 5:59 AM ET)", the "Who" bullet, and the "S
 
 ### Kaizen scope
 
-_From the owner, project chat 2026-10-20 6:46 PM ET: "kaizen is supposed to improve workflow every cycle by recommending adding, changing, or deleting any standing rules, decisions, instructions, etc". Outside review: Team Audit (Gomez), `PROCESS REVIEW kaizen-scope` CHANGES 6:47 PM ET, folded in._
+_From the owner, project chat 2026-10-20 6:46 PM ET: "kaizen is supposed to improve workflow every cycle by recommending adding, changing, or deleting any standing rules, decisions, instructions, etc". Outside review: Team Audit (Gomez), `PROCESS REVIEW kaizen-scope` CHANGES 6:47 PM ET, folded in. Revised after the fresh outside review, 6:58 PM ET._
 
 - **Scope:** each kaizen review recommends adding, changing or deleting anything standing, and deleting gets the same
   weight as adding: prune what no longer earns its cost. Kaizen recommends; each item's owner decides and applies, and
@@ -55,7 +55,10 @@ _From the owner, project chat 2026-10-20 6:46 PM ET: "kaizen is supposed to impr
 - **Org Design boundary (coordinator decision, 2026-10-20 6:53 PM ET):** items 3, 5 and 11 are inputs to the review,
   not recommendations Kaizen generates. Kaizen grades and scores them with the rest.
 - **Kaizen's own process isn't Kaizen's to grade:** a change to this file, KZ-01, the scorecard definitions that measure
-  Kaizen, or this scope goes to an outside reviewer (Team Audit, or a consultant if it touches Team Audit's role).
+  Kaizen, or this scope goes to the outside reviewer per the triage rule (ROADMAP step 3, "Review level").
+- **Coordinator hand-off audit (coordinator, 2026-10-20 6:59 PM ET):** at each kaizen review, Gale and Org Design audit
+  `coordinator/state.md` (one row per hand-off) from the record for skipped consults, stalls and misrouted work. The
+  test is zero re-asks and zero dropped commitments at the next coordinator change.
 - **Scorecard:** each scorecard lists, per item above, what it adds, changes and deletes (or "none"), and the net rule
   count for the minor (added minus retired).
 
@@ -64,8 +67,9 @@ _From the owner, project chat 2026-10-20 6:46 PM ET: "kaizen is supposed to impr
 _From the owner, project chat 2026-10-20 6:42 PM ET: "Can Gale update this on his own during his review moving forward?"_
 
 - **Project instructions:** at each kaizen review, redraft the project instructions in
-  `docs/kaizen/project-instructions.md` against what changed in the minor; Team Audit (Gomez) reviews the change
-  (`PROCESS REVIEW project-instructions OK`); then send the full text to the coordinator, who applies it in project
+  `docs/kaizen/project-instructions.md` against what changed in the minor; the outside reviewer per the triage rule
+  reviews the change (`PROCESS REVIEW project-instructions OK`), and it's a consultant for any draft that touches Team
+  Audit or the review system. Only after that OK, send the full text to the coordinator, who applies it in project
   settings. A change never loosens the owner-held limits.
 
 ### KZ-04

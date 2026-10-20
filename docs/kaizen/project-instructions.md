@@ -1,7 +1,8 @@
 # Project instructions (baseline)
 
 The text Isaac's project settings carry for every session. Threads can't edit project settings, so at each kaizen
-review Kaizen (Gale) redrafts it here, Team Audit (Gomez) reviews the change, and the coordinator applies the full
+review Kaizen (Gale) redrafts it here, the outside reviewer per the triage rule reviews the change (a consultant for
+any draft that touches Team Audit or the review system), and only after that OK the coordinator applies the full
 text in settings (owner, project chat 2026-10-20 6:42 PM ET). A change never loosens the owner-held limits
 (docs/DECISIONS.md, 2026-10-20 "seven owner-only limits"). This file keeps the history; git log shows each version.
 
