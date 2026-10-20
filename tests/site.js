@@ -51,14 +51,15 @@ const checkReport = (label, m, want) => {
       canonical: (document.querySelector('link[rel=canonical]') || {}).href, manifest: (document.querySelector('link[rel=manifest]') || {}).href,
       icon: (document.querySelector('link[rel=icon]') || {}).href, theme: (document.querySelector('meta[name=theme-color]') || {}).content,
       og: ['og:title', 'og:description', 'og:url', 'og:image', 'og:image:alt', 'og:type'].every(k => !!(document.querySelector(`meta[property="${k}"]`) || {}).content),
-      /* link previews describe the whole companion, not one class (owner, 2026-10-20) */
-      preview: ['meta[name=description]', 'meta[property="og:title"]', 'meta[property="og:description"]'].map(q => (document.querySelector(q) || {}).content || '').concat(document.title),
+      /* link previews just say what it is: an unofficial companion app for AION 2, no class named (owner, 2026-10-20) */
+      preview: ['meta[name=description]', 'meta[property="og:title"]', 'meta[property="og:description"]', 'meta[property="og:image:alt"]'].map(q => (document.querySelector(q) || {}).content || '').concat(document.title),
       lang: document.documentElement.lang, touch: (document.querySelector('link[rel=apple-touch-icon]') || {}).href,
       brand: !!document.querySelector('header.top .brand-name[role=img][aria-label="Daeva Companion"]') }));
     ok('head: standards mode, UTF-8, title, viewport, description, canonical, theme-color, favicon, manifest, Open Graph, lang',
-      head.mode === 'CSS1Compat' && head.charset === 'UTF-8' && head.title === 'Daeva Companion · unofficial AION 2 companion' && /width=device-width/.test(head.viewport) && head.desc &&
+      head.mode === 'CSS1Compat' && head.charset === 'UTF-8' && head.title === 'Daeva Companion · unofficial companion app for AION 2' && /width=device-width/.test(head.viewport) && head.desc &&
       head.canonical === 'https://daevacompanion.com/' && head.theme === '#110c13' && /favicon\.svg$/.test(head.icon) && /manifest\.webmanifest$/.test(head.manifest) && head.og && head.lang === 'en', head);
-    ok('head: link preview text names no single class and keeps the NCSoft line', head.preview.every(t => t && !/Assassin|Ranger|Gladiator|Spiritmaster|Templar|Cleric|Sorcerer|Chanter/.test(t)) && /not affiliated with or endorsed by NCSoft/.test(head.preview[2]), head.preview);
+    head.preview.push((await p.evaluate(() => fetch('manifest.webmanifest').then(r => r.json()))).description || '');
+    ok('head: link preview text and the manifest description name no class and keep the NCSoft line', head.preview.every(t => t && !/Assassin|Ranger|Gladiator|Spiritmaster|Templar|Cleric|Sorcerer|Chanter/.test(t)) && /not affiliated with or endorsed by NCSoft/i.test(head.preview[2]), head.preview);
     /* element budget (0.4 P7; docs/ARCHITECTURE.md §4): fresh browser, 390 px, no save */
     {
       const ctx390 = await b.newContext({ viewport: { width: 390, height: 800 } }), p390 = await ctx390.newPage();
