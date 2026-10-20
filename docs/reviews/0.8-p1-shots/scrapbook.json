@@ -1,0 +1,8 @@
+[
+  { "case": "gladiator-lv30-advanced-1500", "kind": "before-after", "title": "Gladiator skill and stigma icons",
+    "caption": "At level 30 the Gladiator's Skills, Stigmas and Next up cards show each skill's game icon instead of a letter square." },
+  { "case": "spiritmaster-lv45-advanced-390", "kind": "before-after", "title": "Spiritmaster icons on the phone",
+    "caption": "At level 45 on a phone, the Spiritmaster's Next up list shows Cold Shock and Combustion with their game icons." },
+  { "case": "spiritmaster-lv30-advanced-1500", "kind": "before-after", "title": "Spiritmaster skill and stigma icons",
+    "caption": "At level 30 the Spiritmaster's Skills card shows Cold Shock and the Stigmas card Summon: Ancient Spirit with their game icons." }
+]
