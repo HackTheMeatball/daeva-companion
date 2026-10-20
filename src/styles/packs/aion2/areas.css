@@ -28,6 +28,8 @@
 .item.arow .txt small { display: block; font-size: 12px; color: var(--muted); font-weight: 400; margin-top: var(--space-2); }
 .item.arow.rdone .txt, .item.arow.rdone .txt a, .item.arow.rdone .txt b { color: var(--good); }
 .item.arow.rdone .txt small { color: var(--good); opacity: .75; }
+/* a cleared row's label (0.8 P20) takes the row's green: the muted grey at .75 opacity misses the contrast minimum */
+.item.arow.rdone .txt small .ss-tag { color: inherit; }
 /* Areas card */
 .areas-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-4) var(--space-6); }
 
