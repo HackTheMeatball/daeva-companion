@@ -61,7 +61,7 @@ A thread needs a product call, an in-game check, an external setup or a setting 
 - [COM-07](../team/saul.md): notify format
 - [COM-08](../team/saul.md): judgment To-dos
 - [COM-01](../team/team-wide.md): times in ET
-- [DEC-02](https://github.com/HackTheMeatball/daeva-companion/issues/114): typed words only
+- [DEC-02](../team/walter.md): typed words only
 - [DEC-01](../DECISIONS.md): Walter writes DECISIONS
 - [DEC-03](../team/walter.md): OK RECORDED
 - [COM-13](../team/team-wide.md): done means merged
