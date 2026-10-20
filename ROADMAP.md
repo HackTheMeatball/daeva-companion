@@ -163,11 +163,12 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
 6. **Write and review.** The plan goes into this file and the #114 queue in one PR, written by one session and
    reviewed by a separate one that didn't write it. Then the planner queues the items, top of the lane map first.
 
-**Usage budget (owner, 2026-10-20 5:17 PM ET; DECISIONS "Usage budget"):** the owner's weekly usage limit must last to
-each Tuesday 3 AM reset. Tracker Sync (Huell) opens one usage To-do a day for a Settings → Usage screenshot; the Release
-Planner logs each reading in #232 against the daily line (the week's budget spread evenly to the reset: from 22% at
-5:17 PM ET on 2026-10-20, about 12% a day). Kaizen (Gale) and Build Pipeline (Gus) set the pace (builds in flight,
-polling and health-check intervals). A reading over the line throttles work first, and the owner is told what was paused.
+**Usage budget (owner, 2026-10-20 5:17 and 5:20 PM ET; DECISIONS "Usage budget"):** the owner's weekly usage limit must
+last to each Tuesday 3 AM reset. 22% at 5:17 PM ET on 2026-10-20 is the baseline, and the line is the week's budget
+spread evenly to the reset (about 12% a day). Readings come once per minor release (the release's owner list asks for
+Settings → Usage, and the Release Planner logs it in #232), so pace is kept by design: Kaizen (Gale) and Build Pipeline
+(Gus) set builds in flight, polling and health-check intervals and the throttle order. A reading over the line throttles
+work first, and the owner is told what was paused.
 
 **Release gate (owner, 2026-10-18 6:24 AM ET), for every release, patches included.** When every item of a release has
 merged, the Release Planner writes the release's CHANGELOG section into the release issue (Kaizen K17, 2026-10-19:
@@ -1331,7 +1332,7 @@ Under the standing OK until 1.0 most of 0.9 needs nothing from the owner. What i
 4. **Outside audit trial** (owner To-do: only the owner can do it): create the "Daeva audit" project with 7 days of Debug
    access.
 5. **In-game check:** Vaizel Assault Stance, 4 or 5 nodes (Game Data Check's thread).
-6. **Weekly usage**: see "Usage budget" in "How a minor is planned"; each reading is logged in #232.
+6. **Weekly usage** at the 0.9.0 release (Settings → Usage; "Usage budget" in "How a minor is planned"), logged in #232.
 
 ### 0.10 — The 1.0 look (estimate)
 
