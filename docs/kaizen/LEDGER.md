@@ -19,7 +19,7 @@ drift from it. If a summary and its home disagree, the home wins and the summary
 | `owner` | The one person accountable for the rule (list below). Every decision's owner is Isaac |
 | `enforced_by` | The others who carry it out or check it: names separated by `;`, or `all` (every thread), or `harness` (the platform's safety check enforces it). Empty when the owner does it alone. For a decision, the thread that carries it out, when that is clear |
 | `home` | Where the full text lives: `path/in/repo.md#<heading or phrase in that file>`, `docs/DECISIONS.md#YYYY-MM-DD / <Topic>` for a DECISIONS row, or a GitHub issue (`#114`, `#221`, `#222`, `#232`). Never a team-memory file |
-| `status` | `active`, `trial`, `pending` (a graded change not applied yet), `retired`, or `superseded` (a decision a later one replaced) |
+| `status` | `active`, `trial`, `pending` (approved but not yet in force: a new rule waiting to start; a graded change to a rule still in force stays `active`, with a note that it waits on its owner), `retired`, or `superseded` (a decision a later one replaced) |
 | `since` | Date it was OK'd (YYYY-MM-DD), if known |
 | `ok_by` | Who OK'd it (e.g. Isaac), if known |
 | `last_change` | The last review or PR that changed the row |
