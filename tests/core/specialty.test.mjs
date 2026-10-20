@@ -91,14 +91,34 @@ export default (test, M) => {
     assert.equal(M.specPickOf(at('Quick Slice', 10, 2), row('Quick Slice', 2)).lv, 12);
     assert.equal(M.specPickOf(at('Heart Gore', 10, 4), row('Heart Gore', 3)), null, 'slot 3 (Reset, needs skill 16) is past the cap of 14');
     assert.equal(row('Heart Gore', 3).s.specs[2].lv, 16);
-    /* research #77 at 8dd047d: Insignia Explosion slot 2 is disputed, Savage Roar slot 2 contested: no pick */
-    for (const n of ['Insignia Explosion', 'Savage Roar']) {
-      assert.equal(row(n, 2).s.specs.length, 1, `${n}: slot 1 pick only`);
-      assert.equal(M.specPickOf(at(n, 10, 4), row(n, 2)), null, `${n} slot 2: "pick a specialty"`);
-    }
-    assert.equal(M.specPickOf(at('Ambush', 10, 1), row('Ambush', 2)), null, 'no 2-source pick: none');
-    assert.equal(M.specPickOf(at('Shadowstrike', 10, 1), row('Shadowstrike', 3)), null);
+    assert.equal(M.specPickOf(at('Shadowstrike', 10, 4), row('Shadowstrike', 3)), null, 'no slot 3 pick');
     for (const x of slot1) assert.equal(M.specPickOf(at(x.s.n, 8, 0), x).t, x.s.spec, 'slot 1: today\'s pick');
+  });
+
+  /* 0.8.1 F2 (owner note 5, docs/research/2026-10-specialty-slot2.md): every core skill's slot 2 has a pick; the ones without
+     two slot witnesses carry their label (st) and a note naming the alternative (why). Before F2 these four said "pick a
+     specialty" (research #77 left disputed / contested slots empty, design Q6). */
+  test('every core slot 2 has a pick (never "pick a specialty"); the four labelled picks carry their label and alternative', () => {
+    const slot2 = M.SP_SLOTS.filter(x => x.slot === 2 && !x.s.extra);
+    assert.ok(slot2.length >= 6, 'the core specialty skills');
+    for (const x of slot2) assert.ok(x.s.specs && x.s.specs[1], `${x.s.n}: slot 2 has a guide pick`);
+    const all = M.char(S({ checks: tick([...M.SP_STEPS.map(y => y.k), ...M.DV_NODES().map(it => it.k)]) }));
+    for (const x of slot2) if (M.planReachOf(x) >= x.slotLv) assert.ok(M.specPickOf(all, x), `${x.s.n}: slot 2 open with the plan, so its pick shows`);
+    const lab = Object.fromEntries(slot2.map(x => [x.s.n, [x.s.specs[1].t, x.s.specs[1].st || '2+ sources']]));
+    assert.deepEqual(lab['Insignia Explosion'], ['Keeps 2 Insignia stacks after Insignia Explosion', 'disputed']);
+    assert.deepEqual(lab['Savage Roar'], ['-1s [Shadowstrike] cooldown on hit', 'contested']);
+    assert.deepEqual(lab['Ambush'], ['Absorbs 3% HP', 'disputed']);
+    assert.deepEqual(lab['Shadowstrike'], ['+1s Stun duration', 'inferred']);
+    assert.equal(lab['Heart Gore'][1], '2+ sources'); assert.equal(lab['Quick Slice'][1], '2+ sources');
+    for (const x of slot2) if (x.s.specs[1].st) assert.ok(x.s.specs[1].why.length > 20, `${x.s.n}: the note names the alternative`);
+  });
+
+  /* #590 review: F2 changes an existing row. Insignia Explosion's slot 3 was 3 in the old proposal (research #77 §5: 5 in
+     slot 2, 3 in slot 3); with 3 now in slot 2, slot 3 is 5 (-3s cooldown, Skycoach and aion2turkiye put it third). */
+  test('Insignia Explosion slot 3 is 5 (-3s cooldown), not 3', () => {
+    const x = M.SP_SLOTS.find(y => y.s.n === 'Insignia Explosion' && y.slot === 3);
+    assert.deepEqual(x.s.specs.map(p => p.t), ['+50% Multi-Hit on hit', 'Keeps 2 Insignia stacks after Insignia Explosion', '-3s cooldown']);
+    assert.equal(x.s.specs[2].lv, 16); assert.equal(x.s.specs[2].st, undefined, 'slot 3 rests on two slot witnesses');
   });
 
   test('switch specialtySlots off: slot 1 at the level of the skill\'s line 8 with nothing bought, no slots 2 / 3 (0.2)', () => {
