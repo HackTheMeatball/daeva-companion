@@ -34,9 +34,15 @@ details[open] .chev { transform: rotate(180deg); }
 #main li.storyreq.reached input:checked { background: var(--good); border-color: var(--good); border-style: solid; }
 #main li.storyreq .sr-sub { display: block; font-size: 12px; color: var(--muted); margin-top: var(--space-2); }
 body.basic :is(h2, div).sec .sec-tools .filt, body.basic :is(h2, div).sec .sec-tools #btnReset { display: none; }
-#gates li.qrow.running { background: color-mix(in srgb, var(--gold) 8%, transparent); border-radius: var(--radius-8); }
-#gates li.qrow.running input { border-color: var(--gold); }
-#gates li.qrow.running input:not(:checked)::after { content: ""; width: 9px; height: 2px; background: var(--gold); border: 0; transform: none; }
+/* Regional quest rows (0.8 P13, design-v2 §2 A, v4): the state icon in the box's column (the box stays, hidden, for the
+   engine's tick flow), and one button that says the next step in a fixed column on the right */
+#gates li.qrow > .qlab { flex: 1; min-width: 0; position: relative; display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: var(--space-10); padding: var(--space-10); }
+#gates li.qrow > .qlab > input[data-k] { position: absolute; left: 0; top: 0; width: 1px; height: 1px; margin: 0; opacity: 0; pointer-events: none; }
+#gates li.qrow > .q-act { margin: var(--space-8) var(--space-10) 0 0; }
+#gates li.qrow > .q-act[hidden] { display: none; }
+/* the legend under the "Regional quests" heading */
+#gates .sub-h.rq .rq-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 0 var(--space-4); margin: var(--space-4) 0 0; font: 500 12px var(--body); letter-spacing: 0; text-transform: none; color: var(--muted); }
+#gates .sub-h.rq .rq-legend span { margin: 0; }
 details.step.sideonly { opacity: .85; }
 #gates li.qrow.snoozed .txt { color: var(--muted); }
 #gates li.qrow:hover .q-snz, #gates li.qrow:focus-within .q-snz, #gates li.qrow .q-snz[aria-pressed="true"] { opacity: 1; }

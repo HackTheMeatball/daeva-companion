@@ -187,11 +187,6 @@ body.basic #nowStar .ns-card.first { animation: nsPulse 2.2s ease-in-out infinit
 #nowStar .ns-qgrid .ql { padding-left: 0; display: inline-flex; align-items: center; gap: var(--space-7); }
 #nowStar .ns-qgrid .ql::before { display: none; }
 #nowStar .ns-qgrid .ql > a, #nowStar .ns-qgrid .ql > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
-#nowStar .q-cb:hover { border-color: var(--good); }
-#nowStar .ql.run .q-cb { border-color: var(--gold); }
-#nowStar .ql.run .q-cb::after { content: ""; width: 6px; height: 1.5px; background: var(--gold); }
-#nowStar .ql.lock .q-cb { border-style: dashed; opacity: .5; cursor: default; }
-#nowStar .q-cb:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 /* E4: Next up extras */
 #nowStar .ns-mean { display: block; margin-top: var(--space-2); color: var(--muted); }
 #nowStar .ns-qgrid li.rq-aux { color: var(--muted); font-size: 12px; align-items: center; }
@@ -235,15 +230,13 @@ html.pip .pip-hint { flex: none; padding-top: var(--space-6); font: 500 10px var
 #nowStar .ns-pin { color: var(--muted); display: inline-flex; vertical-align: -2px; margin-left: var(--space-2); }
 #nowStar .ns-pin:hover { color: var(--accent-text); }
 #nowStar .ns-then { font-weight: 400; color: var(--muted); font-size: 14px; }
-#nowStar .q-near { display: inline-flex; color: var(--accent-text); flex: none; margin-left: calc(-1 * var(--space-2)); }
-#nowStar .q-near svg { width: 12px; height: 12px; }
 #nowStar .ql .q-snz.ico { display: inline-grid; place-items: center; width: 20px; height: 17px; padding: 0; flex: none; }
 #nowStar .ql:hover .q-snz, #nowStar .ql:focus-within .q-snz { opacity: 1; }
 /* Next up quest names wrap (no truncation: several names share a prefix). */
 #nowStar .ns-qgrid li.qg { flex-wrap: wrap; align-items: flex-start; row-gap: var(--space-2); }
 #nowStar .ns-qgrid .ql { white-space: normal; overflow: visible; align-items: flex-start; }
 #nowStar .ns-qgrid .ql > a, #nowStar .ns-qgrid .ql > span { overflow: visible; text-overflow: clip; }
-#nowStar .ns-qgrid .ql > .q-cb, #nowStar .ns-qgrid .q-ar { margin-top: var(--space-2); }
+#nowStar .ns-qgrid .q-ar { margin-top: var(--space-2); }
 #nowStar .ns-stack { transition: height .18s ease; }
 @supports (content: "x" / "") {
   #nowStar .rq-wait > summary::after { content: " ▾" / ""; }
@@ -318,3 +311,18 @@ html.pip .pip-hint { flex: none; padding-top: var(--space-6); font: 500 10px var
   #nowStar .ns-pgb { width: 44px; height: 44px; }
   #nowStar .ns-trk { min-height: 44px; }
 }
+/* Regional quests in Next up (0.8 P13, design-v2 §2 A and the owner's map pin answer; v4 buttons): every quest is one
+   row of fixed columns, state icon · name (cut with "…", the full name in its title) · map pin (32 px, 36 px on phones) ·
+   the button, so the left edges line up. The tile: the ❖ glyph in white on the regional teal, no dark panel (option A). */
+#nowStar .ns-card .num.ns-num:has(> .rq-tile) { background: #3ba281; border-color: #3ba281; color: #fff; }
+#nowStar .ns-qgrid li.qg:not(.rq-aux):not(.more) { display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; gap: var(--space-3); }
+#nowStar .ns-qgrid .ql { display: grid; grid-template-columns: 28px minmax(0, 1fr) 32px max-content; align-items: center; gap: var(--space-8); white-space: nowrap; overflow: visible; }
+#nowStar .ns-qgrid .q-nm { min-width: 0; display: flex; align-items: center; gap: var(--space-6); }
+#nowStar .ns-qgrid .q-nm > .q-n { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; border-bottom: 1px dotted currentColor; }
+#nowStar .ns-qgrid .q-nm > :not(.q-n) { flex: none; }
+#nowStar .q-pin { display: grid; place-items: center; align-self: stretch; min-height: 24px; color: var(--muted); }
+#nowStar .q-pin.near { color: var(--accent-text); }
+#nowStar .q-pin:hover { color: var(--accent-text); }
+#nowStar .q-pin svg { width: 16px; height: 16px; }
+#nowStar .ql .q-act { width: 76px; padding: var(--space-4) 0; font-size: 12.5px; }
+@media (max-width: 520px) { #nowStar .ns-qgrid .ql { grid-template-columns: 28px minmax(0, 1fr) 36px max-content; } }

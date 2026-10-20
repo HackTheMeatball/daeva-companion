@@ -51,7 +51,7 @@ const ALLOW = {
 };
 
 /* the controls given a hit area in 0.1.6 (src/styles/app.css, "Pointer targets of at least 24 px") and before */
-const HIT = ['.tip', '.tipbtn', '#nowStar .q-cb', '#stCard .st-lvctl button', '.modeseg button', '.sec .ns-pop', '.sd-close',
+const HIT = ['.tip', '.tipbtn', '#nowStar .q-act', '#gates li.qrow .q-act', '#nowStar a.q-pin','#stCard .st-lvctl button', '.modeseg button', '.sec .ns-pop', '.sd-close',
   '.zone-btn', '.ms-name', '.nsinfo', '#nowStar .ns-pin', '.trk-sum',
   '#nowStar .rq-wait > summary', '.jfilt-btn', '.jfilt-x', '.dvi', '#stCard .st-chg .st-pick',
   /* 0.6.1 F4 (#321 note 9): the Next up objective checkboxes (their label is the target) and the Dungeons "N traces" links */

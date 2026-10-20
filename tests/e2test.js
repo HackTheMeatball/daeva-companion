@@ -33,7 +33,7 @@ const expect = (QUESTS, st) => { const idx = n => QUESTS.findIndex(x => x[1] ===
 const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAll('#nowStar .ns-card')].find(c => /Regional quests/.test((c.querySelector('h3') || {}).innerText || ''));
   if (!card) return { card: false, rows: [], sub: '' };
   return { card: true, sub: card.querySelector('.title > p').innerText, more: (card.querySelector('.qg.more') || {}).innerText || '',
-    rows: [...card.querySelectorAll('.ql')].map(x => ({ name: (x.querySelector('a, span[title]') || {}).innerText, dis: x.querySelector('.q-cb').disabled, fu: x.classList.contains('fu'), k: x.querySelector('.q-cb').dataset.rqk })) }; });
+    rows: [...card.querySelectorAll('.ql')].map(x => ({ name: (x.querySelector('a, span[title]') || {}).innerText, dis: x.querySelector('.q-act').disabled, fu: x.classList.contains('fu'), k: x.querySelector('.q-act').dataset.rqk })) }; });
 
 (async () => {
   const b = await chromium.launch(); const ctx = await b.newContext({ viewport: { width: 1500, height: 1000 } }); const p = await ctx.newPage();

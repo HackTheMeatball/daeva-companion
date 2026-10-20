@@ -25,6 +25,16 @@ const mapMk = (k, cls = "mk-map", label = "") => `<img class="${cls}" src="${MAP
 /* The first "Kibelisk" in a card's html (text only, never inside a tag) gets its crest, kept on one line with the word. */
 const kibMark = html => { let hit = false;
   return html.split(/(<[^>]*>)/).map((p, i) => i % 2 || hit ? p : p.replace(/\bKibelisk\b/, m => { hit = true; return `<span class="mk-nw">${mapMk("kibelisk")}${m}</span>`; })).join(""); };
+/* A regional quest's state icon (0.8 P13, design-v2 §2 A, v4 buttons; sources in docs/ISSUES.md): the game's teal star
+   = to pick up, Metabot's quest_district marker = in progress, a green circle with an SVG check (never a ✓ glyph: glyph
+   metrics shift with the font) = turned in. st: "new" | "run" | "done"; cls "rq-st" = a row's 22 px icon, "rq-st lg" =
+   the legend's 15 px one. The label is the icon's text alternative. */
+const RQ_ST = { new: ["assets/icons/rq-available.png", "To pick up"], run: ["assets/icons/quest-district.png", "In progress"], done: ["", "Turned in"] };
+const RQ_CHECK = `<svg viewBox="0 0 22 22" aria-hidden="true"><path d="M6.4 11.4l3 3 6.2-6.6" fill="none" stroke="#0d1a12" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const rqStIco = (st, cls = "rq-st", label = RQ_ST[st][1]) => { const a = label ? `role="img" aria-label="${label}" title="${label}"` : `aria-hidden="true"`;
+  return st === "done" ? `<span class="${cls} ok" ${a}><span class="rq-ok">${RQ_CHECK}</span></span>` : `<span class="${cls} ${st}" ${a}><img src="${RQ_ST[st][0]}" alt=""></span>`; };
+/* The legend under a "Regional quests" heading: the three icons in their order. */
+const rqLegend = () => `<span class="rq-legend">${rqStIco("new", "rq-st lg", "")}to pick up · ${rqStIco("run", "rq-st lg", "")}in progress · ${rqStIco("done", "rq-st lg", "")}turned in</span>`;
 
 let tipSeq = 0; /* ids for the "i" popovers (aria-controls) */
 /* the next popover id number (the shell's milestone tips) */
@@ -44,4 +54,4 @@ function tipPop(kind) {
 /* Grey "i" with a popover, same as the Skills/Daevanion "need more" tips. */
 const stTip = () => `<span class="tipwrap"><button type="button" class="tipbtn" aria-label="Stigma shard costs" aria-expanded="false" aria-controls="tipPop${++tipSeq}">i</button><span class="tippop" id="tipPop${tipSeq}" role="tooltip"><b>Shards per level</b>1–5: 1 each · 6–10: 2 · 11–15: 4 · 16–20: 8 (75 to reach 20). Learning a stigma is its level 1. Bonuses at 5, 10, 15, 20.<br><br><b>More shards</b>1 per character level from 23 to 39 (2 from 40), plus achievements and shops.<br><br><b>Plan</b>Triniel's Dagger to 10, then Illusive Clone toward 20.<span class="tipopen">Costs from Metabot and allthings.how; not yet checked in game.</span></span></span>`;
 
-export { aion2TipId, tipPop, stTip, dvShort, ini, spMini, stIco, mapMk, kibMark };
+export { aion2TipId, tipPop, stTip, dvShort, ini, spMini, stIco, mapMk, kibMark, rqStIco, rqLegend };

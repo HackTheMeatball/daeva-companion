@@ -20,24 +20,30 @@ import { CLEAR_REWARD, RQ_K, eputK } from "../catalog.js";
 import { rqReqOf, slotNames } from "../requirements.js";
 import { aion2UndoDo, aion2UndoLast } from "./undo.js";
 import { aion2DungeonMap } from "./maps.js";
+import { rqStIco, rqLegend } from "./shared.js";
 import { aion2State as state, aion2Save as save, aion2Update as update, aion2MainEl as mainEl, aion2RewardToast as rewardToast, aion2STIGMA_SLOTS as STIGMA_SLOTS, aion2RqAvail as rqAvail } from "./page.js";
 
 /* Regional quests track like dungeons: first click on the box = in progress (char(state).started), second = completed.
-   Clicking a completed one undoes it. In progress doesn't count toward the milestone. */
+   Clicking a completed one undoes it. In progress doesn't count toward the milestone. Since 0.8 P13 the box is hidden
+   and the row's button (Pick up, Turn in, Undo) clicks it; dungeon rows still show their box. */
 function aion2QuestSync() {
   mainEl.querySelectorAll("#gates li.qrow input[data-k]").forEach(i => {
     const k = i.dataset.k, dv = "derived" in i.dataset, done = !!char(state).checks[k] || dv, run = !done && qProgOf(char(state), k) > 0, li = i.closest("li");
     li.classList.toggle("running", run); i.indeterminate = run;
-    if (!dv) i.title = done ? "Completed · click to undo" : run ? "In progress · click when turned in" : "Click when you take the quest; click again when turned in";
-    const txt = li.querySelector(".txt"); let tag = txt && txt.querySelector(":scope > .run-tag");
-    if (run && txt && !tag) { tag = document.createElement("span"); tag.className = "run-tag"; tag.textContent = "In progress"; const b = txt.querySelector("b"); b ? b.after(tag) : txt.prepend(tag); }
-    if (!run && tag) tag.remove();
+    /* 0.8 P13: the state icon in the box's place and one button that says the next step (Pick up → Turn in → Undo);
+       done in the story has no button (nothing to undo) */
+    const st = done ? "done" : run ? "run" : "new", name = ((li.querySelector(".txt b") || li.querySelector(".txt") || {}).textContent || "").trim();
+    if (li.dataset.st !== st || dv !== li.hasAttribute("data-dv")) { li.dataset.st = st; li.toggleAttribute("data-dv", dv);
+      const ico = li.querySelector(".qlab > .rq-st"); if (ico) ico.outerHTML = rqStIco(st, "rq-st", dv ? "Done in the story" : undefined); }
+    const ab = li.querySelector(":scope > .q-act");
+    if (ab) { const [t, tip] = done ? ["Undo", "Turned in · undo: back to to pick up"] : run ? ["Turn in", "In progress · press when you turn it in"] : ["Pick up", "Press when you take the quest"];
+      ab.textContent = t; ab.title = tip; ab.setAttribute("aria-label", `${t}: ${name}`); ab.classList.toggle("go", run); ab.hidden = dv; }
     /* "Not in game yet": only for a quest you haven't picked up; pressed = snoozed until your next Level up. */
     const zb = li.querySelector(":scope > .q-snz"), zz = !!(char(state).rqSnooze || {})[k], it = itemByK(k), shut = !done && !run && !!it && !rqAvail(it.q).ok;
     li.classList.toggle("locked", shut);
     if (zb) { zb.hidden = done || run || shut; zb.setAttribute("aria-pressed", String(zz)); zb.textContent = zz ? "Not in game yet · undo" : "Not in game yet"; }
     /* Locked by the guide's data but already offered in your game: one click marks it picked up (same as its box). */
-    const ib = li.querySelector(":scope > .q-inl"); if (ib) ib.hidden = !shut;
+    const ib = li.querySelector(":scope > .q-inl"); if (ib) ib.hidden = !shut; if (ab && shut) ab.hidden = true;
     /* What opens it only matters while it isn't picked up. E6: what still blocks it, from the evaluator (design §4), in
        place of the static "Opens …" list; nothing once it is open. */
     const rr = li.querySelector(".rq-req");
@@ -75,6 +81,9 @@ function aion2RowTicked(k, on, was) {
 function aion2RowClick(e) {
   const zb = e.target.closest && e.target.closest("li.qrow [data-snz]"); if (zb) { e.preventDefault(); aion2Snooze(zb.dataset.snz); return; }
   const ig = e.target.closest && e.target.closest("li.qrow [data-ingame]"); if (ig) { e.preventDefault(); const k = ig.dataset.ingame; char(state).started = char(state).started || {}; if (!char(state).checks[k]) { char(state).started[k] = 1; if (char(state).rqSnooze) delete char(state).rqSnooze[k]; save(); update(); } return; }
+  /* the state button: the same click on the row's (hidden) box, so the steps and the saved data are the box's */
+  const ab = e.target.closest && e.target.closest("li.qrow [data-qact]");
+  if (ab) { e.preventDefault(); const b = ab.closest("li").querySelector("input[data-k]"); if (b && !b.disabled) b.click(); return; }
   const i = e.target.closest && e.target.closest("li.qrow input[data-k]"); if (!i) return;
   const k = i.dataset.k; char(state).started = char(state).started || {};
   if (!char(state).checks[k] && !qProgOf(char(state), k)) { e.preventDefault(); char(state).started[k] = 1; save(); update(); return; }
@@ -93,7 +102,12 @@ function aion2RowText() {
 
 export const aion2RowRenderers = {
   /* a regional quest (picked up / turned in, "Not in game yet", "In my game") and the heading above them */
-  quest: (it, k, ctx) => it.sub ? ctx.row({ pre: " rq" }) : ctx.row({ pre: " qrow", post: `<button type="button" class="q-snz" data-snz="${k}" aria-pressed="false" title="The game doesn't offer this quest yet: hide it from Next up until your next Level up">Not in game yet</button><button type="button" class="q-inl" data-ingame="${k}" hidden title="The game already offers it: mark it picked up (same as clicking its box)">In my game</button>` }),
+  quest: (it, k, ctx) => it.sub ? ctx.row({ pre: " rq" }).replace(/<\/li>$/, `${rqLegend()}</li>`)
+    : ctx.row({ pre: " qrow", post: `<button type="button" class="q-snz" data-snz="${k}" aria-pressed="false" title="The game doesn't offer this quest yet: hide it from Next up until your next Level up">Not in game yet</button><button type="button" class="q-inl" data-ingame="${k}" hidden title="The game already offers it: mark it picked up (same as Pick up)">In my game</button><button type="button" class="q-act" data-qact="${k}">Pick up</button>` })
+      /* 0.8 P13: the state icon takes the box's place and the button says the next step; the box stays (hidden, out of the
+         tab order) because the engine's tick flow and the derived "done in the story" state run through it */
+      .replace("<label>", `<div class="qlab">`).replace("</label>", "</div>")
+      .replace(`data-k="${k}" `, `data-k="${k}" tabindex="-1" aria-hidden="true" `).replace(`<span class="txt">`, `${rqStIco("new")}<span class="txt">`),
   /* a plain row; one that names a Sealed Dungeon entrance gets its pin on the Metabot map */
   item: (it, k, ctx) => it.map ? ctx.row({ cls: " has-map", post: `<a class="amap" href="${aion2DungeonMap(it.map)}" target="_blank" rel="noopener" title="Show the entrance on the Altgard interactive map (Metabot)">${MAP_ICO}</a>` }) : ctx.row(),
 };
