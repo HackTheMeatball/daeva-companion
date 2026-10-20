@@ -269,28 +269,28 @@
     },
     {
       "id": "C95",
-      "claim": "Cleric specialty picks at skill Lv 8: Chain of Torment +3 s Damage over Time (:2), Condemnation up to +12% vs fewer targets (:2), Divine Aura AoE (:2), Healing Light +2 consecutive uses (:1), Light of Regeneration +20% healed at 50% HP or less (:2).",
+      "claim": "Cleric specialty picks at skill Lv 8: Chain of Torment +3 s Damage over Time (:2), Condemnation up to +12% vs fewer targets (:2), Divine Aura AoE (:2), Healing Light +2 consecutive uses (:1), Light of Regeneration +20% healed at 50% HP or less (:2). At skill Lv 12: Condemnation resets its cooldown on a Critical Hit (:4).",
       "verdict": "verified",
       "sources": [
         {
           "url": "https://mmo-codex.com/games/aion-2/classes/cleric/",
-          "note": "Lv 8 picks: Chain of Torment :2, Condemnation :2, Healing Light :1, Light of Regeneration :2."
+          "note": "Lv 8 picks: Chain of Torment :2, Condemnation :2, Healing Light :1, Light of Regeneration :2. Lv 12: Condemnation :4."
         },
         {
           "url": "https://aion2turkiye.com/en/class/cleric/",
-          "note": "Leveling build: Chain of Torment :2, Divine Aura :2, Healing Light :1, Light of Regeneration :2 (Condemnation :1 here; :2 in its dungeon build)."
+          "note": "Leveling build: Chain of Torment :2, Divine Aura :2, Healing Light :1, Light of Regeneration :2 (Condemnation :1 here; :2 in its dungeon build). Lv 12: Condemnation :4."
         },
         {
           "url": "https://daevaguides.com/en/cleric/",
-          "note": "Chain of Torment :2, Healing Light :1 (every source agrees), Divine Aura :2 for leveling [aLuckyRO], Light of Regeneration :2 (most creators; couga54 :1)."
+          "note": "Chain of Torment :2, Healing Light :1 (every source agrees), Divine Aura :2 for leveling [aLuckyRO], Light of Regeneration :2 (most creators; couga54 :1). Lv 12: Condemnation :4 (\"every source agrees\")."
         },
         {
           "url": "https://skycoach.gg/blog/aion-2/articles/cleric-guide",
-          "note": "Chain of Torment :2, Condemnation :2, Healing Light :1."
+          "note": "Chain of Torment :2, Condemnation :2, Healing Light :1. Lv 12: Condemnation :4."
         }
       ],
       "action": "keep",
-      "note": "docs/research/2026-10-cleric-pack.md §4. Each pick has two or more sources; Condemnation and Light of Regeneration are the majority with one dissent each. Earth's Retribution and Judgment Thunder are split two against two, so the guide picks neither. Lv 12 and 16 picks (Condemnation's cooldown reset among them) need skill levels past 10, which points alone don't reach before Lv 45, so the guide leaves them out, as the Ranger's does.",
+      "note": "docs/research/2026-10-cleric-pack.md §4. Each pick has two or more sources; Condemnation and Light of Regeneration are the majority with one dissent each. Earth's Retribution and Judgment Thunder are split two against two, so the guide picks neither. Condemnation's Lv 12 cooldown reset (:4) is agreed by every source and is the guide's key moment: skill Lv 10 from points plus the two Condemnation board nodes the plan buys (Nezekan, Zikel) reach effective Lv 12 inside the Lv 45 plan (skill Lv 10 opens at character Lv 32). Other Lv 12 and 16 picks need skill levels past 10 that the plan's points and nodes don't reach before Lv 45, so the guide leaves them out.",
       "appliesTo": [
         "build:cleric:guide",
         "conf:specialty-picks"

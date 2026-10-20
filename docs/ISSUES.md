@@ -404,7 +404,10 @@ on purpose: the guide shows nothing rather than an unverified value.
     (C90: Attack and Critical Hit while leveling, against Metabot's healer order), the first Daevanion nodes past
     Nezekan's Condemnation (C93). Earth's Retribution and Judgment Thunder have no Lv 8 pick (sources split 2 against 2).
   - **Bolt** is not in the plan (Metabot's build leaves it out; two sources raise it to 10 with quest and dungeon
-    points). Condemnation's Lv 12 cooldown reset needs board nodes past skill Lv 10, beyond a leveling plan.
+    points).
+  - **Condemnation's Lv 12 cooldown reset** (`spec:cleric:condemnation:4`, every source) is the second Condemnation
+    pick: skill Lv 10 from points plus the Nezekan and Zikel Condemnation nodes the plan buys reach effective Lv 12
+    (Game Data Check on #543). Other Lv 12 and 16 picks need levels the plan doesn't reach by 45.
 
 - **Sorcerer skill and stigma icons: saved before the guide item** (0.8 class research, docs/research/2026-10-sorcerer-pack.md
   §7; lesson from #441 item 4). All 35 (22 skills, 13 stigmas) came from Metabot under the standing icon OK (owner,

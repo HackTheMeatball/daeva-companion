@@ -83,6 +83,26 @@
           ]
         },
         {
+          "skill": "skill:cleric:earths-grace",
+          "core": false,
+          "status": "verified",
+          "basis": "Straight to Lv 10 when learned at 21 (flat gate): daevaguides; Metabot leveling and aion2turkiye raise it to 10, mmo-codex ranks it the first passive. Its Lv 21 gate keeps points off it before 21, so ranking it here only moves the 21 points at 21",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/classes/cleric/build",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://daevaguides.com/en/cleric/",
+              "checkedAt": "2026-10-19"
+            },
+            {
+              "url": "https://aion2turkiye.com/en/class/cleric/",
+              "checkedAt": "2026-10-19"
+            }
+          ]
+        },
+        {
           "skill": "skill:cleric:chain-of-torment",
           "core": true,
           "status": "verified",
@@ -215,26 +235,6 @@
           ]
         },
         {
-          "skill": "skill:cleric:earths-grace",
-          "core": false,
-          "status": "verified",
-          "basis": "Straight to Lv 10 when learned at 21 (flat gate): Metabot leveling, daevaguides, aion2turkiye; mmo-codex ranks it the first passive",
-          "sources": [
-            {
-              "url": "https://metabot.gg/en/aion-2/classes/cleric/build",
-              "checkedAt": "2026-10-19"
-            },
-            {
-              "url": "https://daevaguides.com/en/cleric/",
-              "checkedAt": "2026-10-19"
-            },
-            {
-              "url": "https://aion2turkiye.com/en/class/cleric/",
-              "checkedAt": "2026-10-19"
-            }
-          ]
-        },
-        {
           "skill": "skill:cleric:debilitating-mark",
           "core": false,
           "status": "disputed",
@@ -276,7 +276,7 @@
         }
       ],
       "skillOrderNotes": {
-        "interleave": "Two-source rules (docs/research/2026-10-cleric-pack.md §3.2: daevaguides, mmo-codex, skycoach, Metabot's leveling notes): attack skills before heals while leveling; Chain of Torment and Condemnation are raised as fast as their gates allow; Earth's Grace (21) goes to 10 the level it is learned (flat gate, so it is listed after the core eight, where the flat gate applies). Whether Earth's Retribution and Judgment Thunder (daevaguides) or Condemnation's pair (mmo-codex) take the first points is not agreed; before Lv 8 Condemnation doesn't exist, so the two orders only differ from Lv 8 to about 19, and the order between those rules is inferred.",
+        "interleave": "Two-source rules (docs/research/2026-10-cleric-pack.md §3.2: daevaguides, mmo-codex, skycoach, Metabot's leveling notes): attack skills before heals while leveling; Chain of Torment and Condemnation are raised as fast as their gates allow; Earth's Grace (21) goes to 10 the level it is learned (flat gate: all 21 points fit at 21, so it is listed right after Judgment Thunder; the gate keeps points off it before 21). Whether Earth's Retribution and Judgment Thunder (daevaguides) or Condemnation's pair (mmo-codex) take the first points is not agreed; before Lv 8 Condemnation doesn't exist, so the two orders only differ from Lv 8 to about 19, and the order between those rules is inferred.",
         "budget": "Core eight to Lv 10 = 8 × 21 = 168 points; Earth's Grace to 10 = 21 (189); Debilitating Mark to 7 = 9 (198), Radiant Recovery to 5 = 5 (203). LEVEL_POINTS[45] = 203 (Metabot; aion2turkiye agrees) plus Wisdom Stones. Bolt to 10 by 38 (daevaguides, aion2turkiye) needs quest and Sealed Dungeon points on top (claim C92)."
       },
       "specialtyPicks": {
@@ -284,7 +284,8 @@
           "spec:cleric:chain-of-torment:2"
         ],
         "skill:cleric:condemnation": [
-          "spec:cleric:condemnation:2"
+          "spec:cleric:condemnation:2",
+          "spec:cleric:condemnation:4"
         ],
         "skill:cleric:divine-aura": [
           "spec:cleric:divine-aura:2"
@@ -295,6 +296,18 @@
         "skill:cleric:light-of-regeneration": [
           "spec:cleric:light-of-regeneration:2"
         ]
+      },
+      "specialtyEvidence": {
+        "spec:cleric:condemnation:4": {
+          "slot": 2,
+          "label": "2+ sources",
+          "sources": [
+            "https://daevaguides.com/en/cleric/",
+            "https://mmo-codex.com/games/aion-2/classes/cleric/",
+            "https://aion2turkiye.com/en/class/cleric/",
+            "https://skycoach.gg/blog/aion-2/articles/cleric-guide"
+          ]
+        }
       },
       "stigmaSlots": [
         "stigma:cleric:earth-punishment",
