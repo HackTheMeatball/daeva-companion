@@ -352,6 +352,11 @@ Rules for every item:
 - **Acceptance.**
   - [ ] Each class's board totals match the research file (a test reads the totals from the data and checks them
         against the per-node costs).
+  - [ ] No plan asks for more points than the player has: at each row's level, the cumulative cost is at most the
+        level points plus the crystals the data says are earned by then (a test checks every class). The research found
+        the Assassin plan at 184 points by its Lv 40 row against about 165 available, and two rows that cost 0 because
+        an earlier path buys the node (Ranger Focused Eye, Templar Guarding Seal); reorder or move them so the plan is
+        affordable in order.
   - [ ] Shots of one non-Assassin board.
 - **Lanes:** gen, golden. **Model:** Opus, M (90 min).
 - **After:** research-node-paths.
