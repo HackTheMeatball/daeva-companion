@@ -1,0 +1,1118 @@
+{
+  "$schema": "../../schema/skills.schema.json",
+  "schemaVersion": 2,
+  "collection": "skills",
+  "class": "sorcerer",
+  "records": [
+    {
+      "id": "skill:sorcerer:absorb-essence",
+      "key": "Absorb Essence",
+      "name": "Absorb Essence",
+      "type": "passive",
+      "learnLv": 13,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/absorb-essence",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:sorcerer:bittercold-wind",
+      "key": "Bittercold Wind",
+      "name": "Bittercold Wind",
+      "type": "active",
+      "learnLv": 3,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:sorcerer:bittercold-wind:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "+1s [Bittercold Wind] summon duration"
+        },
+        {
+          "id": "spec:sorcerer:bittercold-wind:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Changes to mobile skill"
+        },
+        {
+          "id": "spec:sorcerer:bittercold-wind:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Pull effect"
+        },
+        {
+          "id": "spec:sorcerer:bittercold-wind:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "Ignores Block and Evasion and lands as a Critical Hit"
+        },
+        {
+          "id": "spec:sorcerer:bittercold-wind:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "-1s [Frost] cooldown on hit"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/bittercold-wind",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:sorcerer:blaze",
+      "key": "Blaze",
+      "name": "Blaze",
+      "type": "active",
+      "learnLv": 4,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:sorcerer:blaze:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Absorbs 3% HP"
+        },
+        {
+          "id": "spec:sorcerer:blaze:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+50% MP restored"
+        },
+        {
+          "id": "spec:sorcerer:blaze:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Delayed Damage after 3s"
+        },
+        {
+          "id": "spec:sorcerer:blaze:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "Multi-Hit on hit"
+        },
+        {
+          "id": "spec:sorcerer:blaze:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "-3s [Wish of Concentration] cooldown on hit"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/blaze",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        },
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/sorcerer/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-19",
+          "note": "Class guide shows the specialty text for spec:sorcerer:blaze:1 (sorcerer research §5)"
+        },
+        {
+          "url": "https://daevaguides.com/en/sorcerer/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-19",
+          "note": "Class guide shows the specialty text for spec:sorcerer:blaze:1 (sorcerer research §5)"
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/sorcerer/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-19",
+          "note": "Class guide shows the specialty text for spec:sorcerer:blaze:1 (sorcerer research §5)"
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "conflicts": [
+        "spec:sorcerer:blaze:1 text: Metabot's skill page prints \"Absorbs 300, 300% HP\" (an unfilled template; its number is the percent x 100). Game text \"Absorbs 3% HP\" per mmo-codex, daevaguides, aion2turkiye (sorcerer research §5)."
+      ]
+    },
+    {
+      "id": "skill:sorcerer:cold-snap",
+      "key": "Cold Snap",
+      "name": "Cold Snap",
+      "type": "passive",
+      "learnLv": 9,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/cold-snap",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:sorcerer:defiance",
+      "key": "Defiance",
+      "name": "Defiance",
+      "type": "active",
+      "learnLv": 16,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:sorcerer:defiance:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Adds [Curse: Old Tree] Chain Skill"
+        },
+        {
+          "id": "spec:sorcerer:defiance:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Restores 1,000 Stamina on using [Defiance]"
+        },
+        {
+          "id": "spec:sorcerer:defiance:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Restores 20% HP on using [Defiance]"
+        },
+        {
+          "id": "spec:sorcerer:defiance:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "+2s Tenacity duration"
+        },
+        {
+          "id": "spec:sorcerer:defiance:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "+50% PvE Damage Tolerance and +25% PvP Damage Tolerance for Tenacity duration"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/defiance-sorcerer",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "notes": [
+        "Shared display name with another class (Metabot slug ends -sorcerer) (Metabot page slug defiance-sorcerer)."
+      ]
+    },
+    {
+      "id": "skill:sorcerer:fire-mark",
+      "key": "Fire Mark",
+      "name": "Fire Mark",
+      "type": "passive",
+      "learnLv": 1,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/fire-mark",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:sorcerer:firestorm",
+      "key": "Firestorm",
+      "name": "Firestorm",
+      "type": "active",
+      "learnLv": 1,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:sorcerer:firestorm:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "-50% MP Cost"
+        },
+        {
+          "id": "spec:sorcerer:firestorm:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+20% Skill Speed"
+        },
+        {
+          "id": "spec:sorcerer:firestorm:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "-60% Incoming Heal for 5s on hit"
+        },
+        {
+          "id": "spec:sorcerer:firestorm:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "-2s [Hellfire] cooldown per fireball"
+        },
+        {
+          "id": "spec:sorcerer:firestorm:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "+15% damage per fireball, up to +75%"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/firestorm",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:sorcerer:flame-arrow",
+      "key": "Flame Arrow",
+      "name": "Flame Arrow",
+      "type": "active",
+      "learnLv": 1,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:sorcerer:flame-arrow:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "+20% MP restored"
+        },
+        {
+          "id": "spec:sorcerer:flame-arrow:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Absorbs 1% HP"
+        },
+        {
+          "id": "spec:sorcerer:flame-arrow:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "+50% Multi-Hit on hit"
+        },
+        {
+          "id": "spec:sorcerer:flame-arrow:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "+5% Fire Damage Boost for 10s on activating [Pyroclasm]"
+        },
+        {
+          "id": "spec:sorcerer:flame-arrow:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "Reset [Blaze] cooldown on landing [Pyroclasm]"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/flame-arrow",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        },
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/sorcerer/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-19",
+          "note": "Class guide shows the specialty text for spec:sorcerer:flame-arrow:2 (sorcerer research §5)"
+        },
+        {
+          "url": "https://daevaguides.com/en/sorcerer/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-19",
+          "note": "Class guide shows the specialty text for spec:sorcerer:flame-arrow:2 (sorcerer research §5)"
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/sorcerer/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-19",
+          "note": "Class guide shows the specialty text for spec:sorcerer:flame-arrow:2 (sorcerer research §5)"
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "conflicts": [
+        "spec:sorcerer:flame-arrow:2 text: Metabot's skill page prints \"Absorbs 100, 100% HP\" (an unfilled template; its number is the percent x 100). Game text \"Absorbs 1% HP\" per mmo-codex, daevaguides, aion2turkiye, and the owner's Sorcerer skill window (2026-10-19) (sorcerer research §5)."
+      ]
+    },
+    {
+      "id": "skill:sorcerer:flame-scattershot",
+      "key": "Flame Scattershot",
+      "name": "Flame Scattershot",
+      "type": "active",
+      "learnLv": 5,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:sorcerer:flame-scattershot:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Absorbs 5% HP"
+        },
+        {
+          "id": "spec:sorcerer:flame-scattershot:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Restores 120 MP"
+        },
+        {
+          "id": "spec:sorcerer:flame-scattershot:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Changes to mobile skill"
+        },
+        {
+          "id": "spec:sorcerer:flame-scattershot:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "Multi-Hit on hit"
+        },
+        {
+          "id": "spec:sorcerer:flame-scattershot:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "-1s all skill cooldowns on hit"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/flame-scattershot",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        },
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/sorcerer/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-19",
+          "note": "Class guide shows the specialty text for spec:sorcerer:flame-scattershot:1 (sorcerer research §5)"
+        },
+        {
+          "url": "https://daevaguides.com/en/sorcerer/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-19",
+          "note": "Class guide shows the specialty text for spec:sorcerer:flame-scattershot:1 (sorcerer research §5)"
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "conflicts": [
+        "spec:sorcerer:flame-scattershot:1 text: Metabot's skill page prints \"Absorbs 500, 500% HP\" (an unfilled template; its number is the percent x 100). Game text \"Absorbs 5% HP\" per mmo-codex, daevaguides (sorcerer research §5)."
+      ]
+    },
+    {
+      "id": "skill:sorcerer:frost",
+      "key": "Frost",
+      "name": "Frost",
+      "type": "active",
+      "learnLv": 7,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:sorcerer:frost:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Restores 200 MP"
+        },
+        {
+          "id": "spec:sorcerer:frost:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "-5s cooldown"
+        },
+        {
+          "id": "spec:sorcerer:frost:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Reset [Frost Burst] cooldown on landing Frost"
+        },
+        {
+          "id": "spec:sorcerer:frost:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "+25% PC target Frost Chance"
+        },
+        {
+          "id": "spec:sorcerer:frost:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "+1s Frost duration"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/frost",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:sorcerer:frost-burst",
+      "key": "Frost Burst",
+      "name": "Frost Burst",
+      "type": "active",
+      "learnLv": 10,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:sorcerer:frost-burst:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Absorbs 7% HP"
+        },
+        {
+          "id": "spec:sorcerer:frost-burst:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Changes to mobile skill"
+        },
+        {
+          "id": "spec:sorcerer:frost-burst:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "75% chance to Knock Back 2m"
+        },
+        {
+          "id": "spec:sorcerer:frost-burst:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "Ignores Block and Evasion and lands as a Critical Hit"
+        },
+        {
+          "id": "spec:sorcerer:frost-burst:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "50% chance to reset cooldown"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/frost-burst",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        },
+        {
+          "url": "https://mmo-codex.com/games/aion-2/classes/sorcerer/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-19",
+          "note": "Class guide shows the specialty text for spec:sorcerer:frost-burst:1 (sorcerer research §5)"
+        },
+        {
+          "url": "https://daevaguides.com/en/sorcerer/",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-19",
+          "note": "Class guide shows the specialty text for spec:sorcerer:frost-burst:1 (sorcerer research §5)"
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "conflicts": [
+        "spec:sorcerer:frost-burst:1 text: Metabot's skill page prints \"Absorbs 700, 700% HP\" (an unfilled template; its number is the percent x 100). Game text \"Absorbs 7% HP\" per mmo-codex, daevaguides (sorcerer research §5)."
+      ]
+    },
+    {
+      "id": "skill:sorcerer:grace-of-enhancement",
+      "key": "Grace of Enhancement",
+      "name": "Grace of Enhancement",
+      "type": "passive",
+      "learnLv": 21,
+      "levelGate": "flat",
+      "boardNodes": {
+        "perBoard": {
+          "board:zikel": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/grace-of-enhancement",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:sorcerer:grace-of-resistance",
+      "key": "Grace of Resistance",
+      "name": "Grace of Resistance",
+      "type": "passive",
+      "learnLv": 15,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:zikel": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/grace-of-resistance",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:sorcerer:hellfire",
+      "key": "Hellfire",
+      "name": "Hellfire",
+      "type": "active",
+      "learnLv": 14,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:sorcerer:hellfire:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "+30% Skill Speed"
+        },
+        {
+          "id": "spec:sorcerer:hellfire:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Fire Damage over Time for 10s on hit"
+        },
+        {
+          "id": "spec:sorcerer:hellfire:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Changes to mobile skill"
+        },
+        {
+          "id": "spec:sorcerer:hellfire:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "Ignores Block and Evasion and lands as Multi-Hit"
+        },
+        {
+          "id": "spec:sorcerer:hellfire:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "-15s cooldown"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/hellfire",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:sorcerer:ice-chain",
+      "key": "Ice Chain",
+      "name": "Ice Chain",
+      "type": "active",
+      "learnLv": 1,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:sorcerer:ice-chain:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "-20% MP Cost"
+        },
+        {
+          "id": "spec:sorcerer:ice-chain:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+20% Skill Speed"
+        },
+        {
+          "id": "spec:sorcerer:ice-chain:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Deals up to 12% more damage when less targets are hit"
+        },
+        {
+          "id": "spec:sorcerer:ice-chain:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "-1s [Winter's Shackles] cooldown on hit"
+        },
+        {
+          "id": "spec:sorcerer:ice-chain:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "5% chance to inflict Frost for 2s on landing [Cold Wave]"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/ice-chain",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:sorcerer:revitalization-contract",
+      "key": "Revitalization Contract",
+      "name": "Revitalization Contract",
+      "type": "passive",
+      "learnLv": 23,
+      "levelGate": "flat",
+      "boardNodes": {
+        "perBoard": {
+          "board:zikel": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/revitalization-contract-sorcerer",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified",
+      "notes": [
+        "Shared display name with another class (Metabot slug ends -sorcerer) (Metabot page slug revitalization-contract-sorcerer)."
+      ]
+    },
+    {
+      "id": "skill:sorcerer:robe-of-cold",
+      "key": "Robe of Cold",
+      "name": "Robe of Cold",
+      "type": "passive",
+      "learnLv": 17,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:zikel": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/robe-of-cold",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:sorcerer:robe-of-earth",
+      "key": "Robe of Earth",
+      "name": "Robe of Earth",
+      "type": "passive",
+      "learnLv": 6,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/robe-of-earth",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:sorcerer:robe-of-flame",
+      "key": "Robe of Flame",
+      "name": "Robe of Flame",
+      "type": "passive",
+      "learnLv": 11,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/robe-of-flame",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:sorcerer:vitality-evaporation",
+      "key": "Vitality Evaporation",
+      "name": "Vitality Evaporation",
+      "type": "passive",
+      "learnLv": 25,
+      "levelGate": "flat",
+      "boardNodes": {
+        "perBoard": {
+          "board:zikel": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/vitality-evaporation",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:sorcerer:winters-shackles",
+      "key": "Winter's Shackles",
+      "name": "Winter's Shackles",
+      "type": "active",
+      "learnLv": 8,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:sorcerer:winters-shackles:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Changes to mobile skill"
+        },
+        {
+          "id": "spec:sorcerer:winters-shackles:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "30% chance to inflict Frost for 3s on landing [Winter's Shackles]"
+        },
+        {
+          "id": "spec:sorcerer:winters-shackles:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "+20% PvE Damage Boost and +10% PvP Damage Boost for 5s on landing [Winter's Shackles]"
+        },
+        {
+          "id": "spec:sorcerer:winters-shackles:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "Adds [Winter's Illusion] Chain Skill"
+        },
+        {
+          "id": "spec:sorcerer:winters-shackles:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "-15s [Winter's Shackles] cooldown"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/winters-shackles",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    },
+    {
+      "id": "skill:sorcerer:wish-of-concentration",
+      "key": "Wish of Concentration",
+      "name": "Wish of Concentration",
+      "type": "active",
+      "learnLv": 12,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "specialtyChoices": [
+        {
+          "id": "spec:sorcerer:wish-of-concentration:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Reduces MP Cost by 10%"
+        },
+        {
+          "id": "spec:sorcerer:wish-of-concentration:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+10% additional Attack"
+        },
+        {
+          "id": "spec:sorcerer:wish-of-concentration:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "+500 Max MP"
+        },
+        {
+          "id": "spec:sorcerer:wish-of-concentration:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "+10% Combat Speed"
+        },
+        {
+          "id": "spec:sorcerer:wish-of-concentration:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "-10s all skill cooldowns"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/wish-of-concentration",
+          "checkedAt": "2026-10-19",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-19",
+      "status": "verified"
+    }
+  ]
+}
