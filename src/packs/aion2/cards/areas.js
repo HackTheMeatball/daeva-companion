@@ -54,12 +54,15 @@ function renderAreas() {
   const xs = cur.sort((a, b) => (allSh ? bandOf(a) - bandOf(b) : 0) || (a.area === NO_AREA) - (b.area === NO_AREA) || a.area.localeCompare(b.area) || a.it.name.localeCompare(b.it.name));
   const shs = xs.filter(x => x.it.kind === "stronghold"), sds = xs.filter(x => x.it.kind !== "stronghold");
   const mapIco = `<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-6-5.6-6-11a6 6 0 1 1 12 0c0 5.4-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>`;
+  /* a stronghold's level range carries its label (0.8 P20): when every listed range shares one, the header says it once
+     ("levels inferred") and a row tags only its own, differing label; each row's tooltip still names its label */
+  const shSt = shs.length && shs.every(x => x.it.lvSt === shs[0].it.lvSt) ? shs[0].it.lvSt || "" : "";
+  const shNote = `${SH_REWARD} each${stTag(shSt) ? ` · levels${stTag(shSt)}` : ""}`;
   const row = x => {
     if (!vis(x)) return "";
     const it = x.it, done = !!ad(x), sh = it.kind === "stronghold", run = !done && !!(char(state).areaRun || {})[x.k];
     const later = areaLater(char(state), x);
-    /* a stronghold's level range carries its label (0.8 P20: every range is inferred today) */
-    const sub = sh ? `${x.area} · ${SH_LV(it)}` : "", subTag = sh ? stTag(it.lvSt) : "";
+    const sub = sh ? `${x.area} · ${SH_LV(it)}` : "", subTag = sh && it.lvSt !== shSt ? stTag(it.lvSt) : "";
     const href = mapFocus(it);
     /* Name is plain text (ticks on click); the pin on the right opens its map page. */
     return `<li class="item arow${done ? " rdone" : ""}${run ? " running" : ""}${later ? " locked" : ""}${sh ? "" : " grouped"}" data-showall="1"><label><input type="checkbox" data-k="${x.k}" ${done ? "checked" : ""} title="${done ? "Cleared · click to undo" : run ? "In progress · click when cleared" : "Click when you go in; click again when cleared"}"><span class="txt"><b>${it.name}</b>${run ? `<span class="run-tag">In progress</span>` : ""}${sub ? `<small title="${sub}${stNote(it.lvSt)}">${sub}${subTag}</small>` : ""}</span></label><a class="amap" href="${href}" target="_blank" rel="noopener" title="Show on the Altgard interactive map (Metabot)">${mapIco}</a></li>`;
@@ -88,7 +91,7 @@ function renderAreas() {
   if (allSh) {
     const bands = [...new Set(shs.map(bandOf))];
     document.getElementById("areaList").innerHTML =
-      `<li class="asec sh"><span class="asec-t">${hdMk("Strongholds")}Strongholds ${T("", "stronghold", "What are Strongholds?")}</span><span class="asec-n${shs.every(x => ad(x)) ? " done" : ""}">${shs.filter(x => ad(x)).length}/${shs.length}</span></li><li class="sh-note">${SH_REWARD} each</li>` +
+      `<li class="asec sh"><span class="asec-t">${hdMk("Strongholds")}Strongholds ${T("", "stronghold", "What are Strongholds?")}</span><span class="asec-n${shs.every(x => ad(x)) ? " done" : ""}">${shs.filter(x => ad(x)).length}/${shs.length}</span></li><li class="sh-note">${shNote}</li>` +
       bands.map(bd => { const g = shs.filter(x => bandOf(x) === bd), d = g.filter(x => ad(x)).length;
         if (!g.some(vis)) return "";
         return `<li class="shband${d === g.length ? " done" : ""}"><span>Lv ${bd}${bd > lv ? " (later)" : ""}</span><span>${d}/${g.length}</span></li>` + g.map(row).join(""); }).join("");
@@ -96,7 +99,7 @@ function renderAreas() {
     return;
   }
   document.getElementById("areaList").innerHTML =
-    sec("sh", "Strongholds", "stronghold", SH_REWARD + " each", shs, false) +
+    sec("sh", "Strongholds", "stronghold", shNote, shs, false) +
     sec("sd" + (shs.length ? " split" : ""), "Sealed Dungeons", "hideout", `<span class="itl">${itemLine(SD_REWARD)} each</span>`, sds, true, sds.some(x => ZONE_TRACES[x.area]));
   document.querySelectorAll("#areaList li.running input[data-k]").forEach(i => { i.indeterminate = true; });
   derive();

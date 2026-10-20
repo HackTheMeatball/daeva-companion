@@ -39,9 +39,16 @@ const want = (r, f) => TAG[statusOf(r, f)] || null;
 
   /* strongholds: the level range in Dungeons & Strongholds (All strongholds) */
   const shs = recs('aion2/asmodian/strongholds.json');
-  const shRows = await p.evaluate(() => Object.fromEntries([...document.querySelectorAll('#areaList li.arow')].map(li => [li.querySelector('b').textContent, { small: (li.querySelector('small') || {}).textContent || '', tags: [...li.querySelectorAll('.ss-tag')].map(t => t.textContent) }])));
-  const badSh = shs.filter(s => { const r = shRows[s.name], w = want(s, 'levelRange'); return !r || (w ? !(r.tags.length === 1 && r.tags[0] === w && r.small.endsWith(' ' + w)) : r.tags.length !== 0); }).map(s => ({ name: s.name, status: statusOf(s, 'levelRange'), row: shRows[s.name] }));
-  ok(`Dungeons & Strongholds: each of ${shs.length} stronghold level ranges shows its tag, a verified one none`, !badSh.length, badSh.slice(0, 5));
+  /* one label shared by every range is said once, in the section's note ("levels inferred"); a row tags only a label
+     that differs from that shared one, and every row's tooltip names its own */
+  const shRows = await p.evaluate(() => Object.fromEntries([...document.querySelectorAll('#areaList li.arow')].map(li => { const s = li.querySelector('small'); return [li.querySelector('b').textContent, { small: (s || {}).textContent || '', tip: (s || {}).title || '', tags: [...li.querySelectorAll('.ss-tag')].map(t => t.textContent) }]; })));
+  const shHead = await p.evaluate(() => { const n = document.querySelector('#areaList li.asec.sh + li.sh-note'); return n ? { text: n.textContent.replace(/\s+/g, ' ').trim(), tags: [...n.querySelectorAll('.ss-tag')].map(t => t.textContent) } : null; });
+  const shSt = shs.every(s => statusOf(s, 'levelRange') === statusOf(shs[0], 'levelRange')) ? statusOf(shs[0], 'levelRange') : null, shared = shSt && TAG[shSt];
+  ok(`Dungeons & Strongholds: the section note carries the shared level label ${shared ? `once ("levels ${shared}")` : '(none: the labels differ or are verified)'}`,
+    !!shHead && (shared ? shHead.tags.length === 1 && shHead.tags[0] === shared && shHead.text.endsWith(`· levels ${shared}`) : shHead.tags.length === 0), shHead);
+  const badSh = shs.filter(s => { const r = shRows[s.name], w = want(s, 'levelRange'), own = w && !shared ? w : null;
+    return !r || (own ? !(r.tags.length === 1 && r.tags[0] === own && r.small.endsWith(' ' + own)) : r.tags.length !== 0) || (w ? !r.tip.endsWith(`(${w})`) : /\((check in game|inferred)\)/.test(r.tip)); }).map(s => ({ name: s.name, status: statusOf(s, 'levelRange'), row: shRows[s.name] }));
+  ok(`Dungeons & Strongholds: each of ${shs.length} stronghold level ranges is labelled (row tag only when it differs, tooltip always), a verified one none`, !badSh.length, badSh.slice(0, 5));
 
   /* Sealed Dungeon entrances: the Next up card's "Kibelisk: X" (single source today: no tag) */
   const sds = recs('aion2/asmodian/sealed-dungeons.json').filter(d => d.entrance && d.entrance.kibelisk);
