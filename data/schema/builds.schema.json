@@ -51,6 +51,12 @@
         "via": {
           "type": "string"
         },
+        "cost": {
+          "description": "Points this row takes in the guide's order, its path included (the owner's board, cited with fields [\"cost\"]): what the Daevanion card's cost box pre-fills. The generator checks it against the cheapest path (tools/gen/board-path.mjs).",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 200
+        },
         "milestone": {
           "type": "string",
           "pattern": "^g[0-9]+$"

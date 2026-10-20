@@ -7,7 +7,7 @@ import { ITEMS } from "../data/items.js";
 import { DV_TYPE, DV_TYPE_ICONS, SP_ICONS } from "../data/build.js";
 import { GATES } from "../data/milestones.js";
 import { DV_NODES } from "../catalog.js";
-import { dvNeed, dvNext, dvSpent, dvWaitOf } from "../requirements.js";
+import { dvCostOf, dvNeed, dvNext, dvSpent, dvWaitOf } from "../requirements.js";
 import { tipPop } from "./shared.js";
 import { keyChip } from "../hotkeys.js";
 import { aion2State as state, aion2Save as save, aion2Update as update, aion2Render as render, aion2RenderNow as renderNow, aion2RenderUndo as renderUndo, aion2FitSkills as fitSkills, aion2IsBasic as isBasic, aion2SpMini as spMini, aion2DvShort as dvShort, aion2LayoutEl as layoutEl, aion2DvGate as dvGate } from "./page.js";
@@ -21,8 +21,9 @@ function refreshDvGates() {
     const row = c.closest(".item, .dvrow"), w = row && row.querySelector(".dvwarn"); if (w) w.textContent = g.warn;
   });
 }
+/* The cost boxes show the logged cost, else the plan's (dvCostOf: pre-filled, not saved until the player types). */
 const dvRowHTML = it => {
-  const cost = (char(state).dvCost || {})[it.k], on = !!char(state).checks[it.k];
+  const cost = dvCostOf(char(state), it), on = !!char(state).checks[it.k];
   return `<li class="item dvn" data-dvk="${it.k}"><label><input type="checkbox" data-k="${it.k}" ${on ? "checked" : ""} ${dvGate(it.k).off ? "disabled" : ""}><span class="txt"><img class="dvmini" src="${dvIconSrc(it)}" alt="" loading="lazy" onerror="this.remove()">${dvName(it)}<span class="loc">${dvMeta(it)}<span class="dvwarn">${dvGate(it.k).warn}</span></span></span></label>` +
     `<label class="dvc-wrap" title="Points this node took, including its path">cost <input class="dvc" type="number" min="0" max="200" inputmode="numeric" data-dvc="${it.k}" value="${cost ?? ""}" placeholder="–"></label></li>`;
 };
@@ -40,7 +41,7 @@ function renderDaevanion() {
   /* One node at a time: the next unbought node on an unlocked board, in the milestones' order. */
   const opts = [dvNext(char(state))].filter(Boolean), list = document.getElementById("dvNextList");
   list.innerHTML = opts.length
-    ? opts.map(it => { const cost = (char(state).dvCost || {})[it.k];
+    ? opts.map(it => { const cost = dvCostOf(char(state), it);
         const st = !cost ? `<span class="dvst">enter in-game cost</span>` : cost <= (total - dvSpent(char(state))) ? `<span class="dvst ok">ready to buy</span>` : `<span class="dvst"></span>`;
         /* Next node, top to bottom: what (icon + name), progress (points left vs its cost, cost editable inline),
            action (one button whose label says exactly what's missing). The checkbox stays hidden for state sync. */
@@ -89,7 +90,7 @@ function renderDaevanion() {
   document.getElementById("dvAllList").hidden = !allOpen;
   const ab = document.getElementById("dvAllBtn"); ab.setAttribute("aria-expanded", String(allOpen)); ab.textContent = allOpen ? "Hide nodes" : "All nodes";
   /* Outline the tile when the next node is affordable (or points are waiting and its cost isn't logged yet). */
-  const nx = dvNext(char(state), char(state).level), nc = nx && (char(state).dvCost || {})[nx.k];
+  const nx = dvNext(char(state), char(state).level);
   document.getElementById("dvBox").classList.toggle("act", !!nx && total > 0 && left >= dvNeed(char(state), nx));
   refreshDvGates();
 }
@@ -109,7 +110,7 @@ function dvSplitTxt(total) {
 function dvNxUpdate() {
   const total = char(state).dvTotal || 0, left = Math.max(0, total - dvSpent(char(state)));
   document.querySelectorAll("#dvNextList .dvrow.nx").forEach(r => {
-    const k = r.dataset.nx, it = DV_NODES().find(n => n.k === k), c = (char(state).dvCost || {})[k], need = it ? dvNeed(char(state), it) : (c ?? 1);
+    const k = r.dataset.nx, it = DV_NODES().find(n => n.k === k), c = it ? dvCostOf(char(state), it) : (char(state).dvCost || {})[k], need = it ? dvNeed(char(state), it) : (c ?? 1);
     const ok = c != null && c <= left, short = left < need;
     const bar = r.querySelector(".dvtrack span"), btn = r.querySelector(".dvbuy"), st = r.querySelector(".dvstat"), lab = r.querySelector(".dvbar-l");
     bar.style.width = (need ? Math.min(100, left / need * 100) : 100) + "%";
@@ -132,12 +133,13 @@ function dvLive() {
   document.getElementById("dvBig").innerHTML = `<b class="dvsync" title="Click to match the game's crystals left">${total ? left : "–"}</b><span>crystal${total && left === 1 ? "" : "s"} left</span>${char(state).dvAdj ? `<em class="dvadj" title="Correction so this matches the game">${char(state).dvAdj > 0 ? "−" : "+"}${Math.abs(char(state).dvAdj)} adj</em>` : ""}${keyChip("daevanion")}`;
   document.getElementById("dvRemain").innerHTML = dvSplitTxt(total);
   document.querySelectorAll("#dvNextList .dvrow").forEach(r => {
-    const k = r.querySelector("input[type=checkbox]").dataset.k, c = (char(state).dvCost || {})[k], st = r.querySelector(".dvst");
+    const k = r.querySelector("input[type=checkbox]").dataset.k, st = r.querySelector(".dvst");
     if (!st) return;
+    const it = DV_NODES().find(n => n.k === k), c = it ? dvCostOf(char(state), it) : (char(state).dvCost || {})[k];
     st.className = "dvst" + (c != null && c <= left ? " ok" : "");
     st.textContent = c == null ? "enter in-game cost" : c <= left ? "ready to buy" : "";
   });
-  const nx = dvNext(char(state), char(state).level), nc = nx && (char(state).dvCost || {})[nx.k];
+  const nx = dvNext(char(state), char(state).level);
   document.getElementById("dvBox").classList.toggle("act", !!nx && total > 0 && left >= dvNeed(char(state), nx));
 }
 /* the cost boxes, the total, the crystals-left fix, All nodes, the buy button, Respec (from render(), once) */
@@ -159,9 +161,10 @@ function aion2DaevanionMount() {
     const has = e.target.value.trim() !== "" && v >= 0;
     if (has) char(state).dvCost[k] = v; else delete char(state).dvCost[k];
     save();
-    layoutEl.querySelectorAll(`[data-dvc="${k}"]`).forEach(i => { if (i !== e.target) i.value = has ? v : ""; });
+    /* a cleared box falls back to the plan's cost (dvCostOf), in the other boxes too */
+    const node = DV_NODES().find(n => n.k === k), shown = node ? dvCostOf(char(state), node) : has ? v : undefined;
+    layoutEl.querySelectorAll(`[data-dvc="${k}"]`).forEach(i => { if (i !== e.target) i.value = shown ?? ""; });
     /* A logged cost swaps the node art to its filled version. */
-    const node = DV_NODES().find(n => n.k === k);
     if (node && DV_TYPE_ICONS[node.ty]) layoutEl.querySelectorAll(`.dvrow.nx[data-nx="${k}"] .dvico img:first-child, .dvn[data-dvk="${k}"] img.dvmini`).forEach(im => { im.src = dvIconSrc(node); });
     refreshDvGates();
     dvLive();

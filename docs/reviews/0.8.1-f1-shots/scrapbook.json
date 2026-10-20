@@ -1,0 +1,8 @@
+[
+  { "case": "nezekan-390", "kind": "before-after", "title": "Nezekan costs filled in",
+    "caption": "At Lv 39 every Nezekan node's cost box starts with the cost from your board (52 in all), and the corner is now the Combat Speed corner." },
+  { "case": "zikel-390", "kind": "before-after", "title": "Zikel costs filled in",
+    "caption": "Zikel's costs (47 in all) are filled in; Defense Break 1 of 2 is free, bought on the way to Quick Slice." },
+  { "case": "vaizel-390", "kind": "before-after", "title": "Vaizel's extra nodes",
+    "caption": "Vaizel now lists Ambush and Exploit Weakness, bought on the way to the Critical Damage Boost corner, with costs filled in (39 in all)." }
+]

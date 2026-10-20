@@ -327,6 +327,7 @@
         {
           "node": "node:assassin:nezekan:r4c5",
           "label": "Heart Gore",
+          "cost": 9,
           "milestone": "g12",
           "order": 20,
           "requires": {
@@ -335,12 +336,29 @@
           },
           "completesWith": [
             "tick"
+          ],
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-20-board-costs-01",
+                "checkedAt": "2026-10-20",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Nezekan board at Lv 39: points per plan node in the guide's order, path included (docs/research/2026-10-assassin-board-costs.md §1)"
+              },
+              "fields": [
+                "cost"
+              ]
+            }
           ]
         },
         {
           "node": "node:assassin:nezekan:r3c7",
           "label": "Exploit Weakness · 1 of 2",
           "via": "branches off the Heart Gore path",
+          "cost": 2,
           "milestone": "g12",
           "order": 30,
           "requires": {
@@ -349,12 +367,29 @@
           },
           "completesWith": [
             "tick"
+          ],
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-20-board-costs-01",
+                "checkedAt": "2026-10-20",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Nezekan board at Lv 39: points per plan node in the guide's order, path included (docs/research/2026-10-assassin-board-costs.md §1)"
+              },
+              "fields": [
+                "cost"
+              ]
+            }
           ]
         },
         {
           "node": "node:assassin:nezekan:r11c8",
           "label": "Ambush",
           "via": "shares its first two nodes with Quick Slice",
+          "cost": 7,
           "milestone": "g12",
           "order": 40,
           "requires": {
@@ -363,12 +398,29 @@
           },
           "completesWith": [
             "tick"
+          ],
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-20-board-costs-01",
+                "checkedAt": "2026-10-20",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Nezekan board at Lv 39: points per plan node in the guide's order, path included (docs/research/2026-10-assassin-board-costs.md §1)"
+              },
+              "fields": [
+                "cost"
+              ]
+            }
           ]
         },
         {
           "node": "node:assassin:nezekan:r9c11",
           "label": "Quick Slice",
           "via": "shares its first two nodes with Ambush",
+          "cost": 4,
           "milestone": "g12",
           "order": 50,
           "requires": {
@@ -377,12 +429,29 @@
           },
           "completesWith": [
             "tick"
+          ],
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-20-board-costs-01",
+                "checkedAt": "2026-10-20",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Nezekan board at Lv 39: points per plan node in the guide's order, path included (docs/research/2026-10-assassin-board-costs.md §1)"
+              },
+              "fields": [
+                "cost"
+              ]
+            }
           ]
         },
         {
           "node": "node:assassin:nezekan:r11c13",
           "label": "Exploit Weakness · 2 of 2",
           "via": "past the Quick Slice node",
+          "cost": 5,
           "milestone": "g12",
           "order": 60,
           "requires": {
@@ -391,11 +460,28 @@
           },
           "completesWith": [
             "tick"
+          ],
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-20-board-costs-01",
+                "checkedAt": "2026-10-20",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Nezekan board at Lv 39: points per plan node in the guide's order, path included (docs/research/2026-10-assassin-board-costs.md §1)"
+              },
+              "fields": [
+                "cost"
+              ]
+            }
           ]
         },
         {
           "node": "node:assassin:nezekan:r7c10",
           "label": "Assault Stance · 1 of 2",
+          "cost": 3,
           "milestone": "g12",
           "order": 70,
           "requires": {
@@ -404,12 +490,29 @@
           },
           "completesWith": [
             "tick"
+          ],
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-20-board-costs-01",
+                "checkedAt": "2026-10-20",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Nezekan board at Lv 39: points per plan node in the guide's order, path included (docs/research/2026-10-assassin-board-costs.md §1)"
+              },
+              "fields": [
+                "cost"
+              ]
+            }
           ]
         },
         {
           "node": "node:assassin:nezekan:r11c3",
           "label": "Assault Stance · 2 of 2",
           "via": "its path also gives Rear Smite +1 (Back Attack Damage Boost)",
+          "cost": 9,
           "milestone": "g12",
           "order": 80,
           "requires": {
@@ -418,18 +521,33 @@
           },
           "completesWith": [
             "tick"
+          ],
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-20-board-costs-01",
+                "checkedAt": "2026-10-20",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Nezekan board at Lv 39: points per plan node in the guide's order, path included (docs/research/2026-10-assassin-board-costs.md §1)"
+              },
+              "fields": [
+                "cost"
+              ]
+            }
           ]
         },
         {
           "anyNode": [
-            "node:assassin:nezekan:r3c3",
-            "node:assassin:nezekan:r3c13",
-            "node:assassin:nezekan:r13c3",
-            "node:assassin:nezekan:r13c13"
+            "node:assassin:nezekan:r13c13",
+            "node:assassin:nezekan:r3c3"
           ],
           "key": "dv:corner",
-          "label": "Cooldown Reduction or Combat Speed corner",
-          "via": "corner node costs 4 (worked out from your board)",
+          "label": "Combat Speed corner",
+          "via": "Combat Speed first (2+ guides): every hit comes faster; the Cooldown Reduction corners come later",
+          "cost": 5,
           "milestone": "g12",
           "order": 90,
           "requires": {
@@ -447,14 +565,29 @@
                 "scheme": "metabot",
                 "value": "0.0.4387.0"
               },
-              "note": "the 4 matching corner (Unique) nodes of nezekan"
+              "note": "the 2 Combat Speed corner (Unique) nodes of nezekan"
+            },
+            {
+              "owner": {
+                "ref": "owner:2026-10-20-board-costs-01",
+                "checkedAt": "2026-10-20",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Nezekan board at Lv 39: points per plan node in the guide's order, path included (docs/research/2026-10-assassin-board-costs.md §1)"
+              },
+              "fields": [
+                "cost"
+              ]
             }
           ]
         },
         {
           "node": "node:assassin:nezekan:r13c7",
           "label": "Insignia Explosion",
-          "via": "bottom edge; path cost inferred, about 3–5 (GamesFuze node pick)",
+          "via": "bottom edge (GamesFuze node pick)",
+          "cost": 5,
           "milestone": "g12",
           "order": 100,
           "requires": {
@@ -465,12 +598,28 @@
           "completesWith": [
             "tick"
           ],
-          "status": "inferred"
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-20-board-costs-01",
+                "checkedAt": "2026-10-20",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Nezekan board at Lv 39: points per plan node in the guide's order, path included (docs/research/2026-10-assassin-board-costs.md §1)"
+              },
+              "fields": [
+                "cost"
+              ]
+            }
+          ]
         },
         {
           "node": "node:assassin:nezekan:r5c8",
           "label": "Shadowstrike",
-          "via": "just above Start; path cost inferred, about 3–5 (GamesFuze node pick)",
+          "via": "just above Start (GamesFuze node pick)",
+          "cost": 3,
           "milestone": "g12",
           "order": 110,
           "requires": {
@@ -481,11 +630,27 @@
           "completesWith": [
             "tick"
           ],
-          "status": "inferred"
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-20-board-costs-01",
+                "checkedAt": "2026-10-20",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Nezekan board at Lv 39: points per plan node in the guide's order, path included (docs/research/2026-10-assassin-board-costs.md §1)"
+              },
+              "fields": [
+                "cost"
+              ]
+            }
+          ]
         },
         {
           "node": "node:assassin:zikel:r13c5",
           "label": "Heart Gore",
+          "cost": 12,
           "milestone": "g20",
           "order": 30,
           "requires": {
@@ -494,11 +659,28 @@
           },
           "completesWith": [
             "tick"
+          ],
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-20-board-costs-02",
+                "checkedAt": "2026-10-20",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Zikel board at Lv 39: points per plan node in the guide's order, path included (docs/research/2026-10-assassin-board-costs.md §1)"
+              },
+              "fields": [
+                "cost"
+              ]
+            }
           ]
         },
         {
           "node": "node:assassin:zikel:r3c11",
           "label": "Insignia Explosion",
+          "cost": 12,
           "milestone": "g20",
           "order": 40,
           "requires": {
@@ -507,11 +689,28 @@
           },
           "completesWith": [
             "tick"
+          ],
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-20-board-costs-02",
+                "checkedAt": "2026-10-20",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Zikel board at Lv 39: points per plan node in the guide's order, path included (docs/research/2026-10-assassin-board-costs.md §1)"
+              },
+              "fields": [
+                "cost"
+              ]
+            }
           ]
         },
         {
           "node": "node:assassin:zikel:r5c3",
           "label": "Quick Slice",
+          "cost": 10,
           "milestone": "g20",
           "order": 50,
           "requires": {
@@ -520,6 +719,22 @@
           },
           "completesWith": [
             "tick"
+          ],
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-20-board-costs-02",
+                "checkedAt": "2026-10-20",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Zikel board at Lv 39: points per plan node in the guide's order, path included (docs/research/2026-10-assassin-board-costs.md §1)"
+              },
+              "fields": [
+                "cost"
+              ]
+            }
           ]
         },
         {
@@ -534,11 +749,30 @@
           },
           "completesWith": [
             "tick"
+          ],
+          "via": "bought on the way to Quick Slice",
+          "cost": 0,
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-20-board-costs-02",
+                "checkedAt": "2026-10-20",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Zikel board at Lv 39: points per plan node in the guide's order, path included (docs/research/2026-10-assassin-board-costs.md §1)"
+              },
+              "fields": [
+                "cost"
+              ]
+            }
           ]
         },
         {
           "node": "node:assassin:zikel:r12c11",
           "label": "Defense Break · 2 of 2",
+          "cost": 8,
           "milestone": "g20",
           "order": 70,
           "requires": {
@@ -548,12 +782,28 @@
           },
           "completesWith": [
             "tick"
+          ],
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-20-board-costs-02",
+                "checkedAt": "2026-10-20",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Zikel board at Lv 39: points per plan node in the guide's order, path included (docs/research/2026-10-assassin-board-costs.md §1)"
+              },
+              "fields": [
+                "cost"
+              ]
+            }
           ]
         },
         {
           "anyNode": [
-            "node:assassin:zikel:r3c13",
-            "node:assassin:zikel:r13c3"
+            "node:assassin:zikel:r13c3",
+            "node:assassin:zikel:r3c13"
           ],
           "key": "dv:z:corner",
           "label": "Damage Boost corner",
@@ -575,12 +825,29 @@
                 "value": "0.0.4387.0"
               },
               "note": "the 2 matching corner (Unique) nodes of zikel"
+            },
+            {
+              "owner": {
+                "ref": "owner:2026-10-20-board-costs-02",
+                "checkedAt": "2026-10-20",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Zikel board at Lv 39: points per plan node in the guide's order, path included (docs/research/2026-10-assassin-board-costs.md §1)"
+              },
+              "fields": [
+                "cost"
+              ]
             }
-          ]
+          ],
+          "via": "bottom-left, via Attack +3 next to Heart Gore (contested: one guide goes top-right first, via Defense +30)",
+          "cost": 5
         },
         {
           "node": "node:assassin:vaizel:r7c11",
           "label": "Heart Gore",
+          "cost": 6,
           "milestone": "g30",
           "order": 40.1,
           "requires": {
@@ -589,11 +856,28 @@
           },
           "completesWith": [
             "tick"
+          ],
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-20-board-costs-03",
+                "checkedAt": "2026-10-20",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Vaizel board at Lv 39: points per plan node in the guide's order, path included (docs/research/2026-10-assassin-board-costs.md §1)"
+              },
+              "fields": [
+                "cost"
+              ]
+            }
           ]
         },
         {
           "node": "node:assassin:vaizel:r9c5",
           "label": "Insignia Explosion",
+          "cost": 6,
           "milestone": "g30",
           "order": 40.2,
           "requires": {
@@ -602,11 +886,28 @@
           },
           "completesWith": [
             "tick"
+          ],
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-20-board-costs-03",
+                "checkedAt": "2026-10-20",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Vaizel board at Lv 39: points per plan node in the guide's order, path included (docs/research/2026-10-assassin-board-costs.md §1)"
+              },
+              "fields": [
+                "cost"
+              ]
+            }
           ]
         },
         {
           "node": "node:assassin:vaizel:r8c13",
           "label": "Quick Slice",
+          "cost": 5,
           "milestone": "g30",
           "order": 40.3,
           "requires": {
@@ -615,11 +916,28 @@
           },
           "completesWith": [
             "tick"
+          ],
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-20-board-costs-03",
+                "checkedAt": "2026-10-20",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Vaizel board at Lv 39: points per plan node in the guide's order, path included (docs/research/2026-10-assassin-board-costs.md §1)"
+              },
+              "fields": [
+                "cost"
+              ]
+            }
           ]
         },
         {
           "node": "node:assassin:vaizel:r5c13",
           "label": "Assault Stance",
+          "cost": 5,
           "milestone": "g30",
           "order": 40.4,
           "requires": {
@@ -628,11 +946,28 @@
           },
           "completesWith": [
             "tick"
+          ],
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-20-board-costs-03",
+                "checkedAt": "2026-10-20",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Vaizel board at Lv 39: points per plan node in the guide's order, path included (docs/research/2026-10-assassin-board-costs.md §1)"
+              },
+              "fields": [
+                "cost"
+              ]
+            }
           ]
         },
         {
           "node": "node:assassin:vaizel:r6c9",
           "label": "Defense Break",
+          "cost": 2,
           "milestone": "g30",
           "order": 40.5,
           "requires": {
@@ -641,16 +976,95 @@
           },
           "completesWith": [
             "tick"
+          ],
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-20-board-costs-03",
+                "checkedAt": "2026-10-20",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Vaizel board at Lv 39: points per plan node in the guide's order, path included (docs/research/2026-10-assassin-board-costs.md §1)"
+              },
+              "fields": [
+                "cost"
+              ]
+            }
+          ]
+        },
+        {
+          "node": "node:assassin:vaizel:r11c9",
+          "label": "Ambush",
+          "via": "on the way to the Critical Damage Boost corner",
+          "cost": 5,
+          "order": 40.55,
+          "milestone": "g30",
+          "requires": {
+            "level": 30,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-20-board-costs-03",
+                "checkedAt": "2026-10-20",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Vaizel board at Lv 39: points per plan node in the guide's order, path included (docs/research/2026-10-assassin-board-costs.md §1)"
+              },
+              "fields": [
+                "cost"
+              ]
+            }
+          ]
+        },
+        {
+          "node": "node:assassin:vaizel:r13c11",
+          "label": "Exploit Weakness",
+          "via": "on the way to the Critical Damage Boost corner",
+          "cost": 5,
+          "order": 40.58,
+          "milestone": "g30",
+          "requires": {
+            "level": 30,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-20-board-costs-03",
+                "checkedAt": "2026-10-20",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Vaizel board at Lv 39: points per plan node in the guide's order, path included (docs/research/2026-10-assassin-board-costs.md §1)"
+              },
+              "fields": [
+                "cost"
+              ]
+            }
           ]
         },
         {
           "anyNode": [
-            "node:assassin:vaizel:r3c3",
-            "node:assassin:vaizel:r13c13"
+            "node:assassin:vaizel:r13c13",
+            "node:assassin:vaizel:r3c3"
           ],
           "key": "dv:v:corner",
           "label": "Critical Damage Boost corner",
           "via": "corner stat inferred from the board's stat totals (Metabot)",
+          "cost": 5,
           "milestone": "g30",
           "order": 40.6,
           "requires": {
@@ -669,6 +1083,20 @@
                 "value": "0.0.4387.0"
               },
               "note": "the 2 matching corner (Unique) nodes of vaizel"
+            },
+            {
+              "owner": {
+                "ref": "owner:2026-10-20-board-costs-03",
+                "checkedAt": "2026-10-20",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Vaizel board at Lv 39: points per plan node in the guide's order, path included (docs/research/2026-10-assassin-board-costs.md §1)"
+              },
+              "fields": [
+                "cost"
+              ]
             }
           ],
           "status": "inferred"

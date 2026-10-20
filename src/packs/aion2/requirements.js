@@ -118,8 +118,11 @@ export const specPickOf =(c, x, ev = gatesOf(c)) => { const p = (x.s.specs || []
 export const skillBuy = (c, lv = c.level) => { const next = skillOpen(c, lv).now[0], { pts } = skillPoints(c, lv); return next && (next.spec || pts >= next.cost) ? next : null; };
 
 /* ---------- Daevanion board ---------- */
-/* Logged costs of the ticked nodes plus the correction (dvAdj). */
-export const dvSpent = c => DV_NODES().filter(it => c.checks[it.k]).reduce((a, it) => a + ((c.dvCost || {})[it.k] || 0), 0) + (c.dvAdj || 0);
+/* A node's cost: the one the player logged, else the plan's (0.8.1 F1: the owner's board, in the guide's order), else
+   undefined. The plan's number pre-fills the box and is never written to the save: a typed value always wins. */
+export const dvCostOf = (c, it) => (c.dvCost || {})[it.k] ?? it.cost;
+/* Costs of the ticked nodes plus the correction (dvAdj). */
+export const dvSpent = c => DV_NODES().filter(it => c.checks[it.k]).reduce((a, it) => a + (dvCostOf(c, it) || 0), 0) + (c.dvAdj || 0);
 /* The next unbought node on an open board, in the milestones' order. */
 export const dvNext = (c, lv = c.level) => { const ev = gatesOf(c, lv); return DV_NODES().find(it => { const r = ev.byKey(it.k); return r.done === false && r.open; }); };
 /* A board is open when any of its plan nodes is (board given), the Daevanion window when any plan node is (no board). */
@@ -133,13 +136,13 @@ export const dvWaitOf = (c, board) => {
   const lv = Math.min(...its.map(it => it.blv)), n = ev.byKey(its.find(it => it.blv === lv).k), r = n.root;
   return lv <= c.level && r && r.kind === "story" ? { lv, story: r.name, text: blockerText(n, ev, { omit: ["level"] }) } : { lv };
 };
-/* Its logged cost, else the cheapest it can be (the node itself; its path only adds). */
-export const dvNeed = (c, it) => (c.dvCost || {})[it.k] ?? (DV_MIN[it.ty] || 1);
-/* Points left for ticking (without the correction): a node can be ticked only when its cost is logged and you have that
-   many left (ticked nodes can always be unticked). */
-export const dvLeft = c => (c.dvTotal || 0) - DV_NODES().filter(it => c.checks[it.k]).reduce((a, it) => a + ((c.dvCost || {})[it.k] || 0), 0);
+/* Its cost (logged or the plan's), else the cheapest it can be (the node itself; its path only adds). */
+export const dvNeed = (c, it) => dvCostOf(c, it) ?? (DV_MIN[it.ty] || 1);
+/* Points left for ticking (without the correction): a node can be ticked only when its cost is known (logged or the
+   plan's) and you have that many left (ticked nodes can always be unticked). */
+export const dvLeft = c => (c.dvTotal || 0) - DV_NODES().filter(it => c.checks[it.k]).reduce((a, it) => a + (dvCostOf(c, it) || 0), 0);
 export const dvGateOf = (c, k) => {
-  const cost = (c.dvCost || {})[k], on = !!c.checks[k], left = dvLeft(c);
+  const it = DV_NODES().find(n => n.k === k), cost = it ? dvCostOf(c, it) : (c.dvCost || {})[k], on = !!c.checks[k], left = dvLeft(c);
   if (on) return { off: false, warn: "" };
   if (cost == null) return { off: true, warn: "" };
   return cost > left ? { off: true, warn: `needs ${cost}, ${left} left` } : { off: false, warn: "" };
