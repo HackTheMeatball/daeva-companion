@@ -1,3 +1,5 @@
 [
-  {"case": "phone-undo-toast", "kind": "before-after", "title": "Undo toast clears the tab bar", "caption": "On a phone the Undo toast now only fades in, so it never slides over the tab bar; the level-up chip stays in the level bar."}
+  {"case": "phone-undo-toast", "kind": "before-after", "title": "Undo toast clears the tab bar", "caption": "On a phone the Undo toast only fades in, so it never slides over the tab bar. Shot at rest, so before and after match."},
+  {"case": "phone-level-chip-390", "kind": "before-after", "title": "Level-up chip stays in the bar, 390", "caption": "250 ms after Level up at Lv 27: the chip sits between the level and the button instead of floating off screen."},
+  {"case": "phone-level-chip-360", "kind": "before-after", "title": "Level-up chip stays in the bar, 360", "caption": "Same at 360 px: the chip wraps to a small card and does not overlap the button."}
 ]
