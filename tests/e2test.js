@@ -2,7 +2,7 @@
    Expectations are computed here from the data files and QUESTS order, not from the page's own rqAvail. */
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path');
 const FILE = process.argv[2], ROOT = path.resolve(__dirname, '..');
-const { writeSave, liveState } = require('./support/save');
+const { writeSave, readSave, liveState } = require('./support/save');
 const J = p => JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8'));
 const V1 = require('./support/v1view'); /* the v1-shaped view of data/** (0.2 step 5b) */
 const RQ = V1.rq, CH = V1.chains, S45 = V1.story45, CLAIMS = V1.claims, BUILD = V1.build;
@@ -76,6 +76,25 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
     const nu = await nextUp(p), inNu = nu.rows.filter(r => BATCH.includes(r.name)).length, m = nu.sub.match(/(\d+) to pick up/);
     ok(`batch (${BATCH.length} quests) with the story at "${q}"${end ? ' (turned in)' : ''}: ${want ? 'open' : 'hidden'}`, BATCH.length === 23 && all.every(x => x === want) && (want ? inNu > 0 && +m[1] >= 23 : inNu === 0), { inNu, sub: nu.sub });
   }
+  /* 2b. 0.8 P13: a milestone quest row's button (Pick up → Turn in → Undo) says the next step in its accessible name, shows
+     the state icon, and saves exactly what the old checkbox's three clicks saved (timestamps aside) */
+  const noTs = s => JSON.stringify(s, (k, v) => k === 'mt' || k === 'savedAt' ? undefined : v); /* the save time and the sync clock's per-field times */
+  const qFlow = async (useBtn) => { await setState(p, { L: 30, q: 'Dying Light' });
+    const k = await p.evaluate(() => { const li = [...document.querySelectorAll('#gates li.qrow')].find(l => { const b = l.querySelector('.q-act'); return b && !b.hidden && !l.classList.contains('derived'); }); const d = li.closest('details'); d.open = true; return li.querySelector('input[data-k]').dataset.k; });
+    const steps = [];
+    for (let i = 0; i < 3; i++) {
+      const before = await p.evaluate(k => { const li = document.querySelector(`#gates li.qrow input[data-k="${CSS.escape(k)}"]`).closest('li'), b = li.querySelector('.q-act'), ico = li.querySelector('.qlab > .rq-st');
+        return { btn: b.textContent, aria: b.getAttribute('aria-label'), go: b.classList.contains('go'), ico: ico && ico.getAttribute('aria-label'), boxHidden: getComputedStyle(li.querySelector('input[data-k]')).opacity === '0' }; }, k);
+      if (useBtn) await p.click(`#gates li.qrow [data-qact="${k}"]`); else await p.evaluate(k => document.querySelector(`#gates li.qrow input[data-k="${CSS.escape(k)}"]`).click(), k);
+      await p.waitForTimeout(1300);
+      steps.push({ before, save: noTs(await readSave(p)) }); }
+    return { k, steps }; };
+  const viaBtn = await qFlow(true), viaBox = await qFlow(false);
+  ok('quest button: Pick up → Turn in (green) → Undo, each naming the quest; icons To pick up → In progress → Turned in; box hidden',
+    viaBtn.steps.map(s => `${s.before.btn}|${s.before.go}|${s.before.ico}|${s.before.boxHidden}|${s.before.aria.startsWith(s.before.btn + ': ')}`).join(' ; ') === 'Pick up|false|To pick up|true|true ; Turn in|true|In progress|true|true ; Undo|false|Turned in|true|true', viaBtn.steps.map(s => s.before));
+  ok('quest button: the saves after each step are byte-identical to the checkbox flow (same quest)', viaBtn.k === viaBox.k && viaBtn.steps.every((s, i) => s.save === viaBox.steps[i].save), { k: [viaBtn.k, viaBox.k], diff: viaBtn.steps.map((s, i) => { const a = JSON.parse(s.save), b = JSON.parse(viaBox.steps[i].save); return [...new Set([...Object.keys(a), ...Object.keys(b)])].filter(x => JSON.stringify(a[x]) !== JSON.stringify(b[x])).map(x => `${x}: ${JSON.stringify(a[x]).slice(0, 80)} vs ${JSON.stringify(b[x]).slice(0, 80)}`); }) });
+  ok('quest button: Pick up starts it, Turn in ticks it, Undo clears both', (() => { const s = viaBtn.steps.map(x => JSON.parse(x.save)); return !!(s[0].started || {})[viaBtn.k] && s[1].checks[viaBtn.k] === true && !(s[1].started || {})[viaBtn.k] && !s[2].checks[viaBtn.k] && !(s[2].started || {})[viaBtn.k]; })(), viaBtn.steps.map(x => x.save.length));
+
   /* 3. Rewards: strongholds credit nothing; Sealed Dungeons 2 + 2; regional quests 1 + 1 */
   await setState(p, { L: 30, q: 'Dying Light', extra: { pendSt: 0, pendCr: 0 } });
   const rw = await p.evaluate(() => ({ sh: AREA_ITEMS.filter(x => x.it.kind === 'stronghold').map(x => CLEAR_REWARD(x.k)), sd: [...new Set(AREA_ITEMS.filter(x => x.it.kind === 'hideout').map(x => JSON.stringify(CLEAR_REWARD(x.k))))], rq: [...new Set(RQ.map(q => JSON.stringify(CLEAR_REWARD('rq:' + q.id))))] }));
