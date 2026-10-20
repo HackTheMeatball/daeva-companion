@@ -82,19 +82,25 @@ jobs:
             // merge (main brought in) and nothing since changed this PR's own data files: each main merge into a class PR used to
             // void her check and ask for a fresh one (Release Planner (Walter), 2026-10-19). The squashed main commits a merge
             // brings in have one parent, so only commits missing from the base count. Any doubt (a plain commit of the PR's, a
-            // big compare, an API error) waits.
+            // big compare, an API error) waits. data/DATA_SOURCES.md is left out (Isaac, typed in the Gus thread 2026-10-20
+            // 5:50 AM ET): the generator rewrites it from the other data files and CI's gen check fails a stale copy, so a main
+            // merge that only regenerates it doesn't void her check. Game Data Check's conditions: every other data, research
+            // and icon file of the PR stays byte-identical to the verified head, and the carry log names the skipped file.
+            // Returns null when the verdict doesn't carry, else the skipped files that changed (often none).
+            const CARRYSKIP = new Set(['data/DATA_SOURCES.md']);
             const carried = async (on, sha, files, base) => {
               try {
                 const cmp = (await github.rest.repos.compareCommitsWithBasehead({ owner, repo, basehead: `${on}...${sha}` })).data;
-                if (cmp.status !== 'ahead' || !cmp.commits.length || cmp.commits.length >= 250 || (cmp.files || []).length >= 300) return false;
+                if (cmp.status !== 'ahead' || !cmp.commits.length || cmp.commits.length >= 250 || (cmp.files || []).length >= 300) return null;
                 const off = (await github.rest.repos.compareCommitsWithBasehead({ owner, repo, basehead: `${base}...${sha}` })).data;
-                if (!off.commits.length || off.commits.length >= 250) return false;
+                if (!off.commits.length || off.commits.length >= 250) return null;
                 const mine = new Set(off.commits.map((k) => k.sha));
                 const own = cmp.commits.filter((k) => mine.has(k.sha));
-                if (!own.length || !own.every((k) => k.parents.length === 2)) return false;
+                if (!own.length || !own.every((k) => k.parents.length === 2)) return null;
                 const changed = new Set((cmp.files || []).flatMap((f) => [f.filename, f.previous_filename].filter(Boolean)));
-                return !files.filter(DATAFILE).some((f) => changed.has(f));
-              } catch (e) { return false; }
+                const hit = files.filter(DATAFILE).filter((f) => changed.has(f));
+                return hit.every((f) => CARRYSKIP.has(f)) ? hit : null;
+              } catch (e) { return null; }
             };
             const dataBlocker = async (pr, files, comments, sha, headAt) => {
               if (!NEEDSDATA(pr, files)) return '';
@@ -106,8 +112,10 @@ jobs:
               if (verdict !== 'VERIFIED') return `Game Data Check says ${verdict} (ROL-03)`;
               if (sha.startsWith(on) && Date.parse(last.updated_at) >= headAt) return '';
               // no updated_at check on a carry: compare status 'ahead' means `on` is an ancestor, so the verdict came after it
-              if (!sha.startsWith(on) && await carried(on, sha, files, pr.base.ref)) {
-                core.info(`#${pr.number}: VERIFIED on ${on} carries to ${sha.slice(0, 7)} (only merges since, none changed its data files)`);
+              const skipped = sha.startsWith(on) ? null : await carried(on, sha, files, pr.base.ref);
+              if (skipped) {
+                core.info(`#${pr.number}: VERIFIED on ${on} carries to ${sha.slice(0, 7)} (only merges since, none changed its data files`
+                  + (skipped.length ? `; changed but left out of the check: ${skipped.join(', ')})` : ')'));
                 return '';
               }
               return `Game Data Check's VERIFIED does not cover the head ${sha.slice(0, 7)}`;
