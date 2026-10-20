@@ -353,6 +353,12 @@ on purpose: the guide shows nothing rather than an unverified value.
   (`sk-sorcerer-<slug>.png`) because Defiance and Revitalization Contract are names other classes use too. The 12 active
   icon ids match the ones Game Data Check read on 2026-10-19 (owner-screens/2026-10-19/sorcerer/NOTES.md). The guide item
   moves the ones it shows to `src/assets/icons/` (the build rejects unreferenced PNGs there) and sets each record's `icon`.
+  Passive icons (0.8 P16, #505): unlike the Templar and Cleric (Game Data Check's
+  `passive-icons-templar-cleric-2026-10-20.md`), research compared all ten Sorcerer passives with the owner's Lv 4
+  screen, the locked cells brightened one by one (§7), and found every Metabot file matches; so
+  `data/packs/aion2/classes/sorcerer/skills.json` carries no `icon: owner-check`. Fire Mark is the only passive unlocked
+  on that screen; the nine locked ones rest on that by-eye comparison of greyed cells. If Game Data Check's review finds a
+  mismatch, that passive gets `fieldStatus` `icon: owner-check` and a row here, as the Templar's did.
 
   | File | Name | Source page | File URL | Retrieved |
   |---|---|---|---|---|

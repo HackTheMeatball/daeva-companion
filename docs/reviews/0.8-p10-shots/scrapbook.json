@@ -1,0 +1,6 @@
+[
+  { "case": "sealed-advanced-390", "kind": "before-after", "title": "Sealed Dungeon card on a phone",
+    "caption": "The icon now sits beside Clear Dratona Cave with Show in the same row, and the detail lines use the full width, so the card is shorter." },
+  { "case": "stronghold-advanced-390", "kind": "before-after", "title": "Stronghold card on a phone",
+    "caption": "Same layout for the Stronghold card: icon and Show share the title row, and the lines below run the card's full width." }
+]

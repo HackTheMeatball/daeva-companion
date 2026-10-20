@@ -34,8 +34,9 @@
               has one (tests/scrapbook.mjs, docs/reviews/README.md; < 1 s). In the `checks` shard like tokens
      kickoff  Node, no browser: kickoff.yml's After check on fixtures; an unmet or unknown After key never starts a [next] line
               (tests/kickoff.mjs; < 1 s). In the `checks` shard like tokens
-     automerge  Node, no browser: auto-merge.yml's design check on fixtures; a PR with review shots never merges without
-              the Design Lead's DESIGN OK on its head (tests/automerge.mjs; < 1 s). In the `checks` shard
+     automerge  Node, no browser: auto-merge.yml's design and data checks on fixtures; a PR with review shots never merges
+              without the Design Lead's DESIGN OK on its head, a research PR never without Game Data Check's VERIFIED
+              (tests/automerge.mjs; < 1 s). In the `checks` shard
      schema   every v2 data file and schema example against data/schema/ (ajv Ajv2020, strict), then the generator's data checks
               and the rules and decisions ledger (tests/ledger.mjs)
      a11y     axe-core at 390 / 1500 px (fresh / Lv 27 / Lv 45 x Basic / Advanced; fails on rules outside its allowlist),

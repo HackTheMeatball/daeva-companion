@@ -108,6 +108,20 @@ const checkReport = (label, m, want) => {
       file: performance.getEntriesByType('resource').map(e => new URL(e.name).pathname).filter(x => /\/packs\/[\w.-]+\.js$/.test(x)), html: [...document.scripts].filter(s => s.src).map(s => new URL(s.src).pathname) }));
     ok('offline: the current character\'s class chunk (packs/<id>.<hash>.js) loads from the service worker cache', offChunk.pack === offChunk.pack2 && offChunk.tables > 0 && offChunk.file.length === 1
       && offChunk.html.some(x => x === offChunk.file[0]) && fs.readFileSync(path.join(CFG.ROOT, 'dist', 'sw.js'), 'utf8').includes(`"${offChunk.file[0].slice(1)}"`), offChunk);
+    /* 0.8 P6: the sync line is a chunk of its own (dist/sync.<hash>.js), precached; with sync shown (the test flag) it
+       mounts offline too */
+    {
+      const syncFiles = fs.readdirSync(path.join(CFG.ROOT, 'dist')).filter(f => /^sync\.[0-9a-f]{8}\.js$/.test(f));
+      const p2 = await ctx.newPage(), errs2 = []; p2.on('pageerror', e => errs2.push(e.message));
+      await p2.addInitScript(() => { window.__dcSyncTest = true; });
+      await p2.goto(CFG.CUR); await p2.waitForTimeout(700);
+      const offSync = await p2.evaluate(() => ({ sw: !!document.getElementById('dcsSw'), lbl: (document.getElementById('dcsLbl') || {}).textContent || '', css: getComputedStyle(document.getElementById('dcsLine')).display,
+        file: performance.getEntriesByType('resource').map(e => new URL(e.name).pathname).filter(x => /\/sync\.[0-9a-f]{8}\.js$/.test(x)) }));
+      ok('offline: with sync shown, the sync chunk (sync.<hash>.js, precached) loads from the service worker cache and mounts the sync line',
+        syncFiles.length === 1 && offSync.sw && !!offSync.lbl && offSync.css === 'flex' && offSync.file.length === 1 && offSync.file[0].endsWith('/' + syncFiles[0])
+        && fs.readFileSync(path.join(CFG.ROOT, 'dist', 'sw.js'), 'utf8').includes(`"${syncFiles[0]}"`) && !errs2.length, { offSync, syncFiles, errs2 });
+      await p2.close();
+    }
     await ctx.setOffline(false);
     ok('no page errors, failed requests or 4xx/5xx (the blocked font files aside)', !errs.length && !bad.length, { errs, bad });
     const third = reqs.filter(u => !u.startsWith(CFG.BASE + '/') && !/^(data|blob):/.test(u));
@@ -466,8 +480,10 @@ const checkReport = (label, m, want) => {
       c.on('request', q => { if (q.url().startsWith('https://sync.daevacompanion.com')) reqs.push(q.url()); });
       await c.route('https://sync.daevacompanion.com/**', r => r.abort('internetdisconnected'));
       const pg = await c.newPage(), errs = []; pg.on('pageerror', e => errs.push(e.message)); await pg.goto(CFG.CUR); await pg.waitForTimeout(1500);
-      const o = await pg.evaluate(() => ({ sw: !!document.getElementById('dcsSw'), any: document.querySelectorAll('[id^="dcs"], .syncline, .sync-panel').length, strip: document.querySelector('#xfer .xfer-text > span').textContent }));
-      ok('sync off: the production site (SYNC_LIVE false) has no #dcsSw or sync markup, makes no request to the sync origin, keeps the strip sentence', !o.sw && !o.any && o.strip === 'Progress is saved in this browser only.' && !reqs.length && !errs.length, { o, reqs, errs });
+      const o = await pg.evaluate(() => ({ sw: !!document.getElementById('dcsSw'), any: document.querySelectorAll('[id^="dcs"], .syncline, .sync-panel').length, strip: document.querySelector('#xfer .xfer-text > span').textContent,
+        chunk: [...document.scripts].filter(s => /sync\.[0-9a-f]{8}\.js$/.test(s.src)).length + performance.getEntriesByType('resource').filter(e => /\/sync\.[0-9a-f]{8}\.js$/.test(e.name)).length,
+        css: [...document.styleSheets].some(s => [...s.cssRules].some(r => /\.syncline\b/.test(r.selectorText || ''))) }));
+      ok('sync off: the production site (SYNC_LIVE false) has no #dcsSw or sync markup, loads no sync chunk or its styles, makes no request to the sync origin, keeps the strip sentence', !o.sw && !o.any && !o.chunk && !o.css && o.strip === 'Progress is saved in this browser only.' && !reqs.length && !errs.length, { o, reqs, errs });
       await c.close();
     }
   }
