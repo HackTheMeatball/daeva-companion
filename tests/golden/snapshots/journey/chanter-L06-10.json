@@ -1,0 +1,26 @@
+{
+  "chanter/L10-q12-none-A": {
+    "prev": "Survival Supplies Lv 10",
+    "quest": "Gathering Essentials",
+    "lv": "Lv 10",
+    "next": "Crash Site Rendezvous Lv 11",
+    "hint": "milestone now: Lv 10",
+    "ahead": ["Ahead verified","Lv 13 🔓 Daevanion boards and the Shugo Festival 5 story quests · \"Urgent Pursuit\"","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 10 levels to go","Lv 22 Stigma slot 1 12 levels to go"],
+    "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
+    "track": ["Altgard opens now Lv 10"],
+    "ring": "0%",
+    "prog": ["Quests 0/58","Dungeons 13 0/60","Strongholds 2 0/15"]
+  },
+  "chanter/L10-q12-none-B": {
+    "prev": "Survival Supplies Lv 10",
+    "quest": "Gathering Essentials",
+    "lv": "Lv 10",
+    "next": "Crash Site Rendezvous Lv 11",
+    "hint": "milestone now: Lv 10",
+    "ahead": ["Ahead verified","Lv 13 🔓 Daevanion boards and the Shugo Festival 5 story quests · \"Urgent Pursuit\"","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 10 levels to go","Lv 22 Stigma slot 1 12 levels to go"],
+    "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
+    "track": ["Altgard opens now Lv 10"],
+    "ring": "0%",
+    "prog": ["Quests 0/58","Dungeons 13 0/60","Strongholds 2 0/15"]
+  }
+}

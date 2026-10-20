@@ -9,6 +9,7 @@
       "key": "Assault Shock",
       "name": "Assault Shock",
       "availableLv": 22,
+      "icon": "assets/icons/st-chanter-assault-shock.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -60,6 +61,7 @@
       "key": "Barrier Spell",
       "name": "Barrier Spell",
       "availableLv": 22,
+      "icon": "assets/icons/st-chanter-barrier-spell.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -111,6 +113,7 @@
       "key": "Ensnaring Mark",
       "name": "Ensnaring Mark",
       "availableLv": 22,
+      "icon": "assets/icons/st-chanter-ensnaring-mark.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -162,6 +165,7 @@
       "key": "Focused Defense",
       "name": "Focused Defense",
       "availableLv": 22,
+      "icon": "assets/icons/st-chanter-focused-defense.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -213,6 +217,7 @@
       "key": "Fracturing Blow",
       "name": "Fracturing Blow",
       "availableLv": 22,
+      "icon": "assets/icons/st-chanter-fracturing-blow.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -264,6 +269,7 @@
       "key": "Guardian Blessing",
       "name": "Guardian Blessing",
       "availableLv": 22,
+      "icon": "assets/icons/st-chanter-guardian-blessing.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -315,6 +321,7 @@
       "key": "Healing Touch",
       "name": "Healing Touch",
       "availableLv": 22,
+      "icon": "assets/icons/st-chanter-healing-touch.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -385,6 +392,7 @@
       "key": "Impeding Authority",
       "name": "Impeding Authority",
       "availableLv": 22,
+      "icon": "assets/icons/st-chanter-impeding-authority.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -436,6 +444,7 @@
       "key": "Marchutan's Wrath",
       "name": "Marchutan's Wrath",
       "availableLv": 22,
+      "icon": "assets/icons/st-chanter-marchutans-wrath.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -487,6 +496,7 @@
       "key": "Obliterate",
       "name": "Obliterate",
       "availableLv": 22,
+      "icon": "assets/icons/st-chanter-obliterate.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -538,6 +548,7 @@
       "key": "Power of the Storm",
       "name": "Power of the Storm",
       "availableLv": 22,
+      "icon": "assets/icons/st-chanter-power-of-the-storm.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -589,6 +600,7 @@
       "key": "Sprint Mantra",
       "name": "Sprint Mantra",
       "availableLv": 22,
+      "icon": "assets/icons/st-chanter-sprint-mantra.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {
@@ -640,6 +652,7 @@
       "key": "Undefeated Mantra",
       "name": "Undefeated Mantra",
       "availableLv": 22,
+      "icon": "assets/icons/st-chanter-undefeated-mantra.png",
       "maxLevel": 25,
       "specialtyChoices": [
         {

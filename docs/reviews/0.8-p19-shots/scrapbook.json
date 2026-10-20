@@ -1,0 +1,12 @@
+[
+  { "case": "picker-new-character-390", "kind": "before-after", "title": "Pick a class: Chanter",
+    "caption": "New character now offers the Chanter after the Assassin, the Ranger, the Gladiator, the Spiritmaster, the Templar, the Cleric and the Sorcerer." },
+  { "case": "picker-new-character-bottom-390", "kind": "before-after", "title": "Eight classes, buttons in reach",
+    "caption": "On a phone the bottom of the New character sheet: the Chanter last, Create character above the bottom bar." },
+  { "case": "chanter-lv22-advanced-1500", "kind": "screenshot", "title": "A Chanter at level 22",
+    "caption": "A Chanter character gets its own guide: Dark Crush first, Undefeated Mantra for stigma slot 1, each with its game icon." },
+  { "case": "chanter-build-plan-1500", "kind": "screenshot", "title": "Conditions and the Dark Crush loop",
+    "caption": "The Build plan says which four Chanter skills fire only on a condition and how Impactful Crush opens Dark Crush." },
+  { "case": "chanter-build-drawer-1500", "kind": "screenshot", "title": "Chanter stats and keys",
+    "caption": "The Build tab shows HP, Attack and Defense first, plus the game's default keys from your Chanter screen." }
+]
