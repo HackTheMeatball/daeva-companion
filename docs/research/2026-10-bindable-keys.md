@@ -18,7 +18,7 @@ Settings (O) → Key Settings. Any of these can be changed there (aion2maps; the
 | Consumable slots 1–8 | F1–F8 | aion2maps | single source |
 | Transformation skills 1–4 | Ctrl + 1–4 | aion2maps | single source |
 | Macro | **none** (Key Settings → General → Gameplay → Macro) | daevaguides; aion2maps; claim C21 (single source until now) | 2+ sources |
-| Jump / glide / Defiance | Space | aion2maps; daevaguides (best-settings note, not read) | single source |
+| Jump / glide / Defiance | Space | aion2maps | single source |
 
 ## Rules that limit a binding
 
