@@ -231,7 +231,7 @@ come only after 45.
   Dark Crush and Onslaught nodes on Nezekan; daevaguides puts those active nodes first (Dark Crush → Onslaught →
   Spinning Strike → Incandescent Blow). The passive pairs first is two-source; the exact node order is disputed.
 
-### 4.6 Rotation (two-source)
+### 4.6 Rotation (four sources)
 
 Metabot, mmo-codex, daevaguides and aion2turkiye give the same leveling loop in different words: dash in with Rushing
 Smash, Impactful Crush (100% stun on NPCs) to open the Dark Crush window, Dark Crush inside it, Heat Wave Blow for the
@@ -351,7 +351,7 @@ and the converted PNGs.
   robots, terms, class page, 35 skill pages, boards, build page, class-builds guide; 35 icon files), 8:33–8:43 PM ET,
   at most 11 in any 60 s by the log's times. The last request, the unlinked Survival Willpower file `18790000.webp`, returned 403 with an
   S3 `AccessDenied` body (a missing object, inferred, not a challenge); I stopped there as the policy says, and it was
-  the last planned request anyway.
+  the last planned request anyway. That URL was guessed from the id pattern, not linked by any page; next time, stick to linked asset URLs.
 - **Second sources, 8:35–8:36 PM ET:** robots.txt re-read on mmo-codex (blocks only `/api/`), daevaguides (allows
   Claude-User explicitly), aion2turkiye (allows all), skycoach and gamesfuze (block only search, account and tracking
   paths). mmo-codex is **Spot** (its terms ban "automated republication and scraped copies"; re-read after its robots.txt but before the content page, unchanged), so one
