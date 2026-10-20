@@ -41,3 +41,5 @@ client, so the art is NCSOFT's and identical across them. The only difference is
 states its icon source. Metabot's 18120000.webp shows different art for the same skill ID, so a site's ID-to-icon
 mapping can be wrong even when the art itself comes from the client. The owner's screen is the check.
 
+The owner approved daevacompass.com as an icon source on 2026-10-20 at 12:46 PM ET (decision card in the Source
+Vetting thread; `DEC-20261020-daevacompass-icon-source`).

@@ -22,7 +22,7 @@ and quoted clauses are in the linked research notes, mostly `2026-10-build-guide
 `sources.json` (`data/packs/aion2/sources.json`) holds the per-site records the data cites. Its `access` fields date
 from 2026-10-14 and are older than this register; where they differ, this register wins until they are synced (issue #317).
 
-## Allowed domains (on the Limited environment, 2026-10-18)
+## Allowed domains (on the Limited environment, 2026-10-18; daevacompass.com added 2026-10-20)
 
 | Site | Use | Good for | Limits | Checked | Evidence |
 |---|---|---|---|---|---|
@@ -52,11 +52,20 @@ gameplay.tips, pixelnitro.com, mein-mmo.de (re-checked 2026-10-19: weekly mainte
 never game data; cited by `docs/kaizen/patch-watch.md`; `2026-10-steam-and-news-vetting.md`), gamerblurb.com
 (non-commercial terms), aion2tierlist.com (tier lists only), and the gold/boosting shops aoeah.com, mmoexp.com,
 expcarry.com, oslink.io, u4n.com (**Spot**: its terms ban scraping). All checked 2026-10-18, BGS §2 / §3a.
+expcarry.com re-read 2026-10-20 for its daily/weekly checklist guide (reset times, entry counts): terms now grant a
+"personal, non-commercial" licence and ban bots only as uploads; robots.txt doesn't block Claude-User. It stays
+**Spot**, never the only source (boosting shop, editorial), `2026-10-endgame-sources-vetting.md`.
 aion2kina.com (fan toolkit and map; terms ban only "unreasonable automated load"; its map markers aren't game art,
 inferred) checked 2026-10-19, `2026-10-t47-icon-check.md`. Steam Index API (public-api.steamidx.com: AION 2's Steam
-build ID changes with timestamps; owner-created key and the owner's network-list OK needed first; its site pages ask
+(app id 3393110) build ID changes with timestamps; owner-created key and the owner's network-list OK needed first; its site pages ask
 not to be scraped, so never those; its API terms require a "Data from Steam Index" link, plus a Sources card entry,
 wherever the app shows its data) checked 2026-10-20, `2026-10-steam-and-news-vetting.md`.
+
+## Owner-supplied documents (not fetched; read from the owner's upload)
+
+| Document | Use | Good for | Limits | Checked | Evidence |
+|---|---|---|---|---|---|
+| Kanon's Aion 2 Bible (PDF of a public Google Doc by the streamer Kanon, "Update Note 10/4/2026"; owner upload 2026-10-20) | Leads only, facts only | Leads for endgame gear: enhancement and Amp levels, gear transfer, soul binding, stigma shard sources, Arcana, Daevanion, Genus, wings | Never one of the two sources for a fact: single author, self-reported, written from KR at Lv 50 and only partly updated for Global (Lv 45 cap); Lv 50 / "Chapter 1" content is KR-only. No licence or sharing statement: never its wording, tables or structure. Barely covers dailies and weeklies | 2026-10-20 | `2026-10-endgame-sources-vetting.md` |
 
 ## Fail (never read by a session)
 
@@ -79,6 +88,8 @@ wherever the app shows its data) checked 2026-10-20, `2026-10-steam-and-news-vet
 | steamdb.info | Its FAQ (its terms): "We also do not allow scraping/crawling on SteamDB". Owner browser only | 2026-10-20 |
 | questlog.gg | Cloudflare challenge (403) on our first request, the terms page (`/terms`). Owner browser only | 2026-10-20 |
 | 6sword.com | robots.txt `User-Agent: *` / `Disallow: /`; terms (제7조) ban automated collection and scraping without written consent | 2026-10-20 |
+| zygorguides.com | Terms of Use ban navigating the site with "spiders, bots… or intelligent agents" and "aggregating, copying or duplicating" its materials. Product research only (Daeva Companion's inspiration); owner browser only | 2026-10-20 |
+| playnews.gg | 403 to our request for its home page (where its terms link would be); robots.txt itself loads. Owner browser only | 2026-10-20 |
 
 ## Keeping this current
 
