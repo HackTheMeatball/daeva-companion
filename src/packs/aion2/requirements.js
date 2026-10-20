@@ -4,7 +4,7 @@
    Functions take the character (c = char(state)) or, where a view setting changes the answer, the whole state. Nothing
    here writes. Every "is it open?" answer comes from the engine's evaluator glue (gatesOf, src/core/requirements.js). */
 import { QUEST_LOC, QUEST_STEPS, QUESTS } from "./data/story.js";
-import { DV_MIN, E_ORDER, KEYS, LEVEL_POINTS, RMB_STACK, SP_SLOTS, SP_STEPS, STIGMA_PLAN, ST_COST, ST_TARGETS } from "./data/build.js";
+import { DV_MIN, E_ORDER, GUIDE_KEYS, KEYS, LEVEL_POINTS, RMB_STACK, SP_SLOTS, SP_STEPS, STIGMA_PLAN, ST_COST, ST_TARGETS } from "./data/build.js";
 import { GATES } from "./data/milestones.js";
 import { RQ } from "./data/generated.js";
 import { NO_AREA } from "./data/areas.js";
@@ -179,11 +179,11 @@ export const skillLearned = (name, lv, ev = gatesOf({ level: lv, checks: {} })) 
 /* The hold-to-run keys at lv, holding only what the guide says you have there (F7): right click = the build's stack for
    lv without any skill not learned yet; Q = Shadowstrike once learned; E = the equipped stigmas whose slot is open at lv,
    else the stigmas of the slots open at lv, in E_ORDER. Row 0 first.
-   A build with the game's default keys (KEYS, 0.7 P11: the Ranger, the Gladiator) takes every key from them instead:
-   keys = [{ key, single, rows }], rows by the game's row (null = that row's skill not learned by lv), single = a key with
-   one row; rmb / q / e = the skills learned on right click / Q / E, row 0 first. */
+   A build with only the game's default keys (KEYS, 0.7 P11: the Ranger, the Gladiator; not GUIDE_KEYS) takes every key
+   from them instead: keys = [{ key, single, rows }], rows by the game's row (null = that row's skill not learned by lv),
+   single = a key with one row; rmb / q / e = the skills learned on right click / Q / E, row 0 first. */
 export const rotKeys = (c, lv) => {
-  if (KEYS.length) { const keys = KEYS.map(k => ({ key: k.key, single: k.rows.length === 1, rows: k.rows.map(r => lv >= r.lv ? r.n : null) })),
+  if (KEYS.length && !GUIDE_KEYS) { const keys = KEYS.map(k => ({ key: k.key, single: k.rows.length === 1, rows: k.rows.map(r => lv >= r.lv ? r.n : null) })),
     on = n => ((keys.find(k => k.key === n) || {}).rows || []).filter(Boolean);
     return { rmb: on("Right click"), q: on("Q"), e: on("E"), keys }; }
   const ev = gatesOf(c, lv), open = stigmaSlots(c).filter(x => slotLevelMet(ev, x)), eq = open.filter(x => c.checks[x.k]).map(x => x.name), e = eq.length ? eq : open.map(x => x.name);

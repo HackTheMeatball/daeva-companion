@@ -12,6 +12,11 @@ export { E_ORDER, KEYS, LEVEL_POINTS, SP_ICONS, STAT_NOTE, STAT_SRC, STAT_TIERS,
 /* the build has a key setup: the guide's right-click rows (the Assassin), or the game's default keys (KEYS, 0.7 P11: the
    Ranger and the Gladiator); without either the Build drawer shows no Rotation */
 export const HAS_KEYS = RMB_ROWS.length > 0 || KEYS.length > 0;
+/* the build suggests its own binding (the Assassin's right-click rows, 0.8 P14): its grid shows that binding, and KEYS (the
+   game's defaults, if any) are only listed beside it; without it KEYS are the grid */
+export const GUIDE_KEYS = RMB_ROWS.length > 0;
+/* the game's default key of a skill (KEYS), null if the build has none or the skill has no key */
+export const defaultKeyOf = n => (KEYS.find(k => k.rows.some(r => r.n === n)) || {}).key || null;
 /* Node colours match the game: blue = active skill (3), green = passive skill (2), orange = corner (4). Path stat nodes are grey (1). */
 export const DV_TYPE = { a: ["dv-a", "active skill"], p: ["dv-p", "passive skill"], c: ["dv-c", "corner"] };
 /* Skill point plan: the guide build's core skills in order ({n, learn, spec, passive}), then (E2) the skills after the
@@ -40,9 +45,10 @@ export const SP_SLOTS = [];
 SP_STEPS.filter(x => x.slot === 1).forEach(x => [2, 3].forEach(n => SP_SLOTS.push({ k: `${x.k}${n}`, s: x.s, rank: x.rank, L: 10 + n / 10,
   req: n === 2 ? x.s.learn + 24 : 46, cost: 0, spec: true, slot: n, slotLv: SPEC_SLOT_LV[n - 1] })));
 /* Key stacks for the hold-to-run setup (K grid): row 0 fires first. Right click = damage line, by character level (the guide
-   build's keyStacks.rightClick: the first row whose minLv the level reaches). Q = Shadowstrike alone (positioning, so it
-   never fires by accident); E = opener cooldowns as they unlock, E_ORDER. Row order is inferred. A build with the game's
-   default keys (KEYS) takes every key from them instead (requirements.js rotKeys). */
+   build's keyStacks.rightClick: the first row whose minLv the level reaches; with the macro on right click it sits in Quick
+   Use 2, shown on T). Q = Shadowstrike alone (positioning, so it never fires by accident); E = opener cooldowns as they
+   unlock, E_ORDER. This is the guide's suggested binding, not the game's defaults (KEYS); row order is inferred. A build
+   with only the game's default keys takes every key from them instead (requirements.js rotKeys). */
 /* a build with no key setup (the Ranger, 0.6 P5: RMB_ROWS empty) has an empty stack */
 export const RMB_STACK = lv => ((RMB_ROWS.find(r => lv >= r.minLv) || RMB_ROWS[RMB_ROWS.length - 1]) || { skills: [] }).skills.slice();
 /* Node icons by node type, cut from the player's screenshots: [not bought, bought]. Types without art yet use the crystal. */

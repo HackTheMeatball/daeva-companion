@@ -133,7 +133,8 @@ check(opusPath(spec('`src/core/x.js`', '')) === 'src/core/', 'Files as the last 
 check(opusPath('No files section; src/core/ in prose.') === 'no readable Files list', 'no Files section -> Opus (nobody checked its paths)');
 check(opusPath(spec('the welcome card and its tests')) === 'no readable Files list', 'a Files section with no path in it -> Opus');
 // Template-format specs write "- **Files.**" as a bullet; PIP-06 only read "## Files", so #509 (tools/gen/gen.mjs) started on Sonnet.
-const fx = new Function('ROUTE', of[1] + '\nreturn { specField, opusWork, inputPaths, lookupPath };')(ROUTE);
+const GEN = JSON.parse(readFileSync(join(ROOT, '.github', 'routing', 'gen-lane.json'), 'utf8'));
+const fx = new Function('ROUTE', 'GEN', of[1] + '\nreturn { specField, opusWork, inputPaths, lookupPath, genLaneMiss };')(ROUTE, GEN);
 const bullet = (files, extra = '') => `# 0.8 P20: x\n\n- **Problem.** Touches src/core/ in prose only.\n- **Files.** ${files}\n  more files on a wrapped line.\n- **Lanes:** nextup.css. **Model:** Sonnet.\n${extra}- **After:** none.\n\n## Lanes, model, order\n`;
 check(opusPath(bullet('`tools/gen/gen.mjs`, `src/packs/aion2/cards/rows.js`')) === 'tools/gen/', 'Files as a template bullet names tools/gen -> Opus (#509)');
 check(opusPath(bullet('`src/styles/cards/nextup.css`')) === null, 'Files bullet with no Opus path -> stays Sonnet (src/core/ only in Problem)');
@@ -155,6 +156,20 @@ check(fx.lookupPath('src/assets/icons/*') === 'src/assets/icons' && fx.lookupPat
 check(fx.inputPaths(bullet('`src/x.js`')).mnt.length === 0 && fx.inputPaths(bullet('`src/x.js`')).repo.length === 0, 'no Inputs line and no /mnt/ -> nothing to check');
 check(/missing\.length \|\| lookupFailed/.test(yml) && /spec: input not in repo: \$\{x\}/.test(yml) && /held: input not in repo/.test(yml), 'pick loop holds an item with a missing input and tells the planner once on the issue');
 check(yml.indexOf('const ins = inputPaths(iss.body)') > yml.indexOf('const wait = await afterBlocker(kx)') && yml.indexOf('const ins = inputPaths(iss.body)') < yml.indexOf('const why = await alreadyBuilt(n)'), 'the input check runs after the After check and before a build starts');
+// Kaizen (Gale), 2026-10-20: a spec that changes what gen compiles must list the gen lane (spec-incomplete-files: #501, #504, #503).
+// #503's own Result and Files (re-spec 2, lanes build-card,a11y,rows); its PR #565 touched tools/gen.
+const spec503 = `- **Result.**\n  - The Build pop-out's grid columns and macro steps match the research file.\n  - Game facts move from \`src/\` to \`data/\`.\n- **No-gos.**\n  - No player-chosen keys (#388, 0.9).\n- **Files.** \`src/packs/aion2/cards/build.html\`, \`src/packs/aion2/cards/rows.js\`, the Assassin \`builds.json\` and its copy in\n  \`data/schema/examples/packs/aion2/asmodian/assassin/builds.json\` (line 277), \`claims.json\`, and the a11y and golden tests.\n- **Lanes:** build-card, a11y, rows. **Model:** Opus, M (80 min).\n`;
+check(fx.genLaneMiss(new Set(['build-card', 'a11y', 'rows']), spec503) === 'its Result names data/', "#503's spec without the gen lane -> held (its Result names data/)");
+check(fx.genLaneMiss(new Set(['build-card', 'a11y', 'rows', 'gen']), spec503) === null, "#503's spec with the gen lane -> passes");
+check(fx.genLaneMiss(new Set(['build-card']), spec503.replace('  - Game facts move from `src/` to `data/`.\n', '')) === 'its Files names data/schema/', 'a Files list naming data/schema/ without the gen lane -> held');
+const clean = bullet('`src/styles/cards/nextup.css`, `src/packs/aion2/cards/nextup.html`', '- **Result.** The Next up card shows the zone name under the quest; `src/data/zones.js` is unchanged.\n');
+check(fx.genLaneMiss(new Set(['nextup.css']), clean) === null, 'a clean spec (no data/ change, src/data/ only in prose) -> passes');
+check(fx.genLaneMiss(new Set(['rows']), bullet('`data/packs/aion2/x.json`', '- **Result.** Each row shows a new pack field `zoneHint`.\n')) === 'it adds a new pack field', 'a new pack field without the gen lane -> held');
+check(fx.genLaneMiss(new Set(['rows']), bullet('`data/packs/aion2/asmodian/assassin/guide/steps.json`', '- **Result.** Step 12 reads "Talk to Hagen".\n')) === null, 'a plain data JSON edit (Files names data/packs only) -> passes');
+check(GEN.keywords.every((k) => { try { new RegExp(k.re, 'im'); return k.in.length && k.in.every((f) => ['Result', 'Files'].includes(f)) && !!k.says; } catch { return false; } }), 'gen-lane.json: every keyword is a valid regex with Result/Files fields and a says text');
+check(/const GEN = JSON\.parse\(Buffer\.from\(\(await github\.rest\.repos\.getContent\(\{ owner, repo, path: '\.github\/routing\/gen-lane\.json', ref: 'main' \}\)\)/.test(yml), 'kickoff reads gen-lane.json from main');
+check(/const genMiss = genLaneMiss\(want, iss\.body\);/.test(yml) && /held: spec: gen lane missing/.test(yml) && /spec: gen lane missing: \$\{genMiss\}/.test(yml), 'pick loop holds an item missing the gen lane and tells the planner once on the issue');
+check(yml.indexOf('const genMiss = genLaneMiss(') > yml.indexOf('const ins = inputPaths(iss.body)') && yml.indexOf('const genMiss = genLaneMiss(') < yml.indexOf('const why = await alreadyBuilt(n)'), 'the gen-lane check runs after the input check and before a build starts');
 check(/const fileHit = m\[2\] !== 'opus' && opusPath\(iss\.body\), workHit = m\[2\] !== 'opus' && !fileHit && opusWork\(want, iss\.body\);\s*\n\s*const hit = fileHit \|\| workHit;[\s\S]{0,500}model: m\[2\] === 'opus' \|\| hit \? 'claude-opus-5-5'/.test(yml), 'start loop: an Opus-path or gen/golden hit starts the build on Opus');
 
 // The spec template's Example (docs/plans/SPEC-TEMPLATE.md) is the format kickoff parses: run its After line as written,

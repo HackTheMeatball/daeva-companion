@@ -227,7 +227,7 @@
       "milestone": "g27",
       "order": 20,
       "route": "core",
-      "text": "<b>Put [[stigma:2]] on E</b>[[erow:2]]. Open with E, then [[build:text:opener]].",
+      "text": "<b>Put [[stigma:2]] on the guide's E stack</b>[[erow:2]]. Open with E, then [[build:text:opener]].",
       "stigmaKeySlot": 2,
       "requires": {
         "level": 27,
@@ -303,7 +303,7 @@
       "milestone": "g32",
       "order": 20,
       "route": "core",
-      "text": "<b>Put [[stigma:3]] on E</b>[[erow:3]]. Build tab (right edge) → Key setup shows where.",
+      "text": "<b>Put [[stigma:3]] on the guide's E stack</b>[[erow:3]]. Build tab (right edge) → Key setup shows where.",
       "stigmaKeySlot": 3,
       "requires": {
         "level": 32,
@@ -361,7 +361,7 @@
       "milestone": "g37",
       "order": 20,
       "route": "core",
-      "text": "<b>Put [[stigma:4]] on E[[erow:4]], then run the full rotation on a training dummy.</b>[[rotseq]]",
+      "text": "<b>Put [[stigma:4]] on the guide's E stack[[erow:4]], then run the full rotation on a training dummy.</b>[[rotseq]]",
       "stigmaKeySlot": 4,
       "requires": {
         "level": 37,
