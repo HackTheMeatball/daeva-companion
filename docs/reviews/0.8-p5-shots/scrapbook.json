@@ -1,0 +1,10 @@
+[
+  { "case": "picker-new-character-390", "kind": "before-after", "title": "Pick a class: Cleric",
+    "caption": "New character now offers the Cleric after the Assassin, the Ranger, the Gladiator, the Spiritmaster and the Templar." },
+  { "case": "cleric-lv22-advanced-1500", "kind": "screenshot", "title": "A Cleric at level 22",
+    "caption": "A Cleric character gets its own guide: Earth's Retribution first, Earth Punishment for stigma slot 1, each with its game icon." },
+  { "case": "cleric-build-plan-1500", "kind": "screenshot", "title": "Skills that fire on a condition",
+    "caption": "The Build plan says which two Cleric skills fire only on a condition, such as Condemnation after Chain of Torment." },
+  { "case": "cleric-build-drawer-1500", "kind": "screenshot", "title": "Cleric stats and keys",
+    "caption": "The Build tab shows Attack and Critical Hit first while leveling, plus the game's default Q and E keys from your Cleric screen." }
+]

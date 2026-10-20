@@ -1,0 +1,26 @@
+{
+  "cleric/L01-qxx-none-A": {
+    "prev": "",
+    "quest": "",
+    "lv": "",
+    "next": "Pick your current quest to place yourself on the story.",
+    "hint": "next milestone at Lv 6",
+    "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go"],
+    "asc": "Ascension 0 / 4 · next: Perceives",
+    "track": ["Wings and Ascension next · 5 to go Lv 6"],
+    "ring": "0%",
+    "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
+  },
+  "cleric/L01-qxx-none-B": {
+    "prev": "",
+    "quest": "",
+    "lv": "",
+    "next": "Pick your current quest to place yourself on the story.",
+    "hint": "next milestone at Lv 6",
+    "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go"],
+    "asc": "Ascension 0 / 4 · next: Perceives",
+    "track": ["Wings and Ascension next · 5 to go Lv 6"],
+    "ring": "0%",
+    "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
+  }
+}
