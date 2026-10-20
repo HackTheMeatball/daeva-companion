@@ -296,6 +296,55 @@ async function load(p, state, mode) {
     await ctx.close();
   }
 
+  /* Key setup grid probe (0.6.2 P18 #414; 0.8 P9 #498): run at 390 and 1500 px. Cells all 76 px (empty ones too), names
+     never break mid-word, every filled cell has an icon, key chips on one line under the columns, Left click its own
+     line under the grid, each filled cell's accessible name carries its key, and a long name wraps inside its cell. */
+  const keyGridProbe = () => {
+    const v = document.getElementById('stackViz'); if (!v) return null;
+    const cells = [...v.querySelectorAll(':scope > .sk')], hs = [...new Set(cells.map(c => Math.round(c.getBoundingClientRect().height)))];
+    const split = [];
+    for (const n of v.querySelectorAll('.sk .nm')) { const t = n.firstChild; let i = 0;
+      for (const w of t.textContent.split(' ')) { const r = document.createRange(); r.setStart(t, i); r.setEnd(t, i + w.length); i += w.length + 1;
+        if (new Set([...r.getClientRects()].map(b => Math.round(b.top))).size > 1) split.push(w); } }
+    const overWide = () => [...v.querySelectorAll(':scope > .sk .nm')].filter(n => { const c = n.parentElement, cs = getComputedStyle(c);
+      return n.scrollWidth > c.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight) + 0.5; }).map(n => n.textContent);
+    const over = overWide();
+    const noIco = cells.filter(c => !c.classList.contains('empty') && !c.querySelector('img.kv-ico')).map(c => c.textContent);
+    const keys = [...v.querySelectorAll(':scope > .kv-key')], row0 = cells.slice(-3), lmb = v.querySelector('.lmb');
+    const keyBad = keys.map((k, i) => { const b = k.getBoundingClientRect(), c = row0[i].getBoundingClientRect();
+      return b.height > 30 || b.top < c.bottom || b.left < c.left - 1 || b.right > c.right + 1 ? k.textContent : null; }).filter(Boolean);
+    const named = cells.filter(c => !c.classList.contains('empty')), cols = ['Right click', 'Q', 'E'];
+    const unnamed = named.filter(c => { const g = c.getAttribute('aria-label') || '', nm = c.querySelector('.nm').textContent;
+      return c.getAttribute('role') !== 'group' || !g.startsWith(nm + ', ') || !cols.some(k => g.includes(', ' + k + ',')); }).map(c => c.textContent);
+    /* a long name in a middle cell: two lines at most, inside the cell */
+    const nm0 = named[0].querySelector('.nm'), was = nm0.textContent; nm0.textContent = 'Swift Fang Strike';
+    const c0 = named[0], longFit = nm0.getBoundingClientRect().height <= 2 * 11 * 1.25 + 1
+      && (() => { const rg = document.createRange(); rg.selectNodeContents(nm0); const rs = [...rg.getClientRects()], nb = nm0.getBoundingClientRect();
+        return new Set(rs.map(b => Math.round(b.top))).size <= 2 && rs.every(b => b.bottom <= nb.bottom + 1); })()
+      &&nm0.getBoundingClientRect().bottom <= c0.getBoundingClientRect().bottom && c0.getBoundingClientRect().height === hs[0] && !overWide().length;
+    nm0.textContent = was;
+    return { n: cells.length, hs, split, over, noIco, unnamed, longFit, keys: keys.map(k => k.textContent), keyBad, lmbBelow: !!lmb && lmb.getBoundingClientRect().top >= keys[0].getBoundingClientRect().bottom };
+  };
+  const keyGridChecks = (kv, id) => {
+    if (!kv || !kv.n) return;
+    ok(`keys ${id}: all 12 Key setup cells are 76 px tall`, kv.n === 12 && kv.hs.length === 1 && kv.hs[0] === 76, kv);
+    ok(`keys ${id}: no skill name breaks mid-word`, !kv.split.length, kv.split);
+    ok(`keys ${id}: every skill name fits its cell's content width`, !kv.over.length, kv.over);
+    ok(`keys ${id}: a long skill name wraps to two lines inside its cell`, kv.longFit, kv);
+    ok(`keys ${id}: every filled cell shows its icon`, !kv.noIco.length, kv.noIco);
+    ok(`keys ${id}: every filled cell's accessible name carries its key and row`, !kv.unnamed.length, kv.unnamed);
+    ok(`keys ${id}: key chips Right click / Q / E on one line under their columns, Left click under them`,
+      kv.keys.join('|') === 'Right click|Q|E' && !kv.keyBad.length && kv.lmbBelow, kv);
+  };
+  for (const sn of ['lv27', 'lv45']) {
+    const { ctx, p } = await page(1500);
+    await load(p, typeof STATES[sn] === 'function' ? STATES[sn]() : STATES[sn], 'advanced');
+    await p.evaluate(() => { const d = document.getElementById('statDrawer'); if (d && !d.classList.contains('open')) document.getElementById('sdTab').click(); document.querySelectorAll('details').forEach(x => { x.open = true; }); });
+    await p.waitForTimeout(600);
+    keyGridChecks(await p.evaluate(keyGridProbe), `${sn} advanced 1500px`);
+    await ctx.close();
+  }
+
   /* ---------- 6. touch: field sizes, primary buttons, minimum text; 7. story connector ---------- */
   /* Lv 20 (generated) adds the Daevanion cost column, "open" board rows and "+N more" objectives */
   for (const sn of ['fresh', 'lv20', 'lv27', 'lv45']) for (const mode of ['basic', 'advanced']) {
@@ -330,31 +379,7 @@ async function load(p, state, mode) {
     ok(`touch ${id}: mode switch and number steppers at least 44 px (phone patch A)`, !r.tgt.length, r.tgt);
     ok(`touch ${id}: no text under 11 px (mono) / 12 px`, !r.small.length, r.small);
     if (sn === 'fresh') ok(`story ${id}: no connector above the first story row`, r.line === 'none', r.line);
-    /* 0.6.2 P18 (#414): Key setup cells all 72 px (empty ones too), names never break mid-word, every filled cell has an
-       icon (Shadowstrike too), key chips on one line under the columns, Left click its own line under the grid */
-    const kv = await p.evaluate(() => {
-      const v = document.getElementById('stackViz'); if (!v) return null;
-      const cells = [...v.querySelectorAll(':scope > .sk')], hs = [...new Set(cells.map(c => Math.round(c.getBoundingClientRect().height)))];
-      const split = [];
-      for (const n of v.querySelectorAll('.sk .nm')) { const t = n.firstChild; let i = 0;
-        for (const w of t.textContent.split(' ')) { const r = document.createRange(); r.setStart(t, i); r.setEnd(t, i + w.length); i += w.length + 1;
-          if (new Set([...r.getClientRects()].map(b => Math.round(b.top))).size > 1) split.push(w); } }
-      const over = [...v.querySelectorAll(':scope > .sk .nm')].filter(n => { const c = n.parentElement, cs = getComputedStyle(c);
-        return n.scrollWidth > c.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight) + 0.5; }).map(n => n.textContent);
-      const noIco = cells.filter(c => !c.classList.contains('empty') && !c.querySelector('img.kv-ico')).map(c => c.textContent);
-      const keys = [...v.querySelectorAll(':scope > .kv-key')], row0 = cells.slice(-3), lmb = v.querySelector('.lmb');
-      const keyBad = keys.map((k, i) => { const b = k.getBoundingClientRect(), c = row0[i].getBoundingClientRect();
-        return b.height > 30 || b.top < c.bottom || b.left < c.left - 1 || b.right > c.right + 1 ? k.textContent : null; }).filter(Boolean);
-      return { n: cells.length, hs, split, over, noIco, keys: keys.map(k => k.textContent), keyBad, lmbBelow: !!lmb && lmb.getBoundingClientRect().top >= keys[0].getBoundingClientRect().bottom };
-    });
-    if (kv && kv.n) {
-      ok(`keys ${id}: all 12 Key setup cells are 72 px tall`, kv.n === 12 && kv.hs.length === 1 && kv.hs[0] === 72, kv);
-      ok(`keys ${id}: no skill name breaks mid-word`, !kv.split.length, kv.split);
-      ok(`keys ${id}: every skill name fits its cell's content width`, !kv.over.length, kv.over);
-      ok(`keys ${id}: every filled cell shows its icon`, !kv.noIco.length, kv.noIco);
-      ok(`keys ${id}: key chips Right click / Q / E on one line under their columns, Left click under them`,
-        kv.keys.join('|') === 'Right click|Q|E' && !kv.keyBad.length && kv.lmbBelow, kv);
-    }
+    keyGridChecks(await p.evaluate(keyGridProbe), id);
     await ctx.close();
   }
 

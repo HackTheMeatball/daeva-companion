@@ -27,14 +27,16 @@ const rotWhere = x => `${x.key}${x.single ? "" : `, row ${x.r}${x.r === 0 ? " (f
 function renderStacks(lv) {
   if (!char(state).rotSeen || !char(state).rotSeen.every(k => k.split(":").length === 3)) rotMarkSeen(); /* first run: nothing counts as new */
   const fresh = new Set(rotNew(lv).map(x => x.n));
-  const cell = n => { if (!n) return `<span class="sk empty"></span>`; const nm = n.replace(/\*/g, ""), stig = n.includes("*");
-    return `<span class="sk${stig ? " stig" : ""}${fresh.has(nm) ? " new" : ""}">${gridIco(nm, stig)}<span class="nm">${nm}</span></span>`; };
+  /* Each filled cell is a labelled group naming its key and row, so a screen reader needn't wait for the key chips
+     after the last cell to learn which column a skill is in. */
+  const cell = (n, key, r) => { if (!n) return `<span class="sk empty"></span>`; const nm = n.replace(/\*/g, ""), stig = n.includes("*");
+    return `<span class="sk${stig ? " stig" : ""}${fresh.has(nm) ? " new" : ""}" role="group" aria-label="${nm}, ${key}${r === 0 ? ", row 0 (fires first)" : ", row " + r}">${gridIco(nm, stig)}<span class="nm">${nm}</span></span>`; };
   if (KEYS.length) return renderDefaultKeys(lv, fresh, cell);
   /* One grid (0.6.2 P18, like the game's K window): shared row numbers on the left, one column per key, each cell the
      skill's icon with its name under it, and the key chips under their columns (row 0 at the bottom, as in the game's bar). */
   const k = rotKeys(char(state), lv), keys = [k.rmb, k.q, E_STACK(lv)];
   document.getElementById("stackViz").innerHTML =
-    [3, 2, 1, 0].map(r => `<i class="rn">${r}</i>` + keys.map(k => cell(k[r]).replace('class="sk', `class="sk${r === 0 ? " r0" : ""}`)).join("")).join("") +
+    [3, 2, 1, 0].map(r => `<i class="rn">${r}</i>` + keys.map((k, i) => cell(k[r], ["Right click", "Q", "E"][i], r).replace('class="sk', `class="sk${r === 0 ? " r0" : ""}`)).join("")).join("") +
     `<span></span><span class="kv-key mouse">Right click</span><span class="kv-key">Q</span><span class="kv-key">E</span>` +
     `<p class="lmb">Left click: <span class="sk">${gridIco("Quick Slice")}<span class="nm">Quick Slice</span></span></p>` + stLaterHTML();
 }
@@ -45,7 +47,7 @@ function renderDefaultKeys(lv, fresh, cell) {
   const k = rotKeys(char(state), lv), cols = k.keys.filter(x => !x.single), singles = k.keys.filter(x => x.single && x.rows[0]);
   const depth = Math.max(0, ...cols.map(x => x.rows.length)), el = document.getElementById("stackViz");
   el.style.gridTemplateColumns = `12px repeat(${cols.length}, minmax(0, 1fr))`;
-  el.innerHTML = [...Array(depth).keys()].reverse().map(r => `<i class="rn">${r}</i>` + cols.map(x => cell(x.rows[r]).replace('class="sk', `class="sk${r === 0 ? " r0" : ""}`)).join("")).join("") +
+  el.innerHTML = [...Array(depth).keys()].reverse().map(r => `<i class="rn">${r}</i>` + cols.map(x => cell(x.rows[r], x.key, r).replace('class="sk', `class="sk${r === 0 ? " r0" : ""}`)).join("")).join("") +
     `<span></span>` + cols.map(x => `<span class="kv-key${/ click$/.test(x.key) ? " mouse" : ""}">${x.key}</span>`).join("") +
     singles.map(x => `<p class="lmb">${x.key}: <span class="sk${fresh.has(x.rows[0]) ? " new" : ""}">${gridIco(x.rows[0])}<span class="nm">${x.rows[0]}</span></span></p>`).join("") +
     `<p class="fine tline kv-note">The game's default keys. Row 0 is tried first; a skill on cooldown or not ready is skipped. A skill shows here from the level you learn it.</p>`;

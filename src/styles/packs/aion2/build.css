@@ -17,16 +17,16 @@
 .sk.stig { border-color: var(--accent); }
 /* Key setup grid (0.6.2 P18, docs/design/0.6.2-icons-locks-mockup.md §1, §1a): icon on top, name under it, every cell the
    same height; words never break mid-word. Key chips sit under their columns, like the game's skill bar. */
-.stackviz > .sk { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: var(--space-4); box-sizing: border-box; height: 72px; min-height: 72px;
+.stackviz > .sk { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: var(--space-4); box-sizing: border-box; height: 76px; min-height: 76px;
   padding: var(--space-6) var(--space-2); text-align: center; overflow-wrap: normal; word-break: normal; hyphens: none; }
 .stackviz .sk .kv-ico { width: 32px; height: 32px; border-radius: var(--radius-6); flex: none; object-fit: cover; }
 .stackviz .sk .kv-ico.ini { display: grid; place-items: center; background: var(--line); font: 600 12px var(--mono); color: var(--fg); }
 .stackviz .sk .kv-ico.ini::before { content: attr(data-ini); }
-.stackviz .sk .nm { font: 500 11px/1.25 var(--mono); letter-spacing: -.02em; }
+.stackviz .sk .nm { font: 500 11px/1.25 var(--mono); letter-spacing: -.04em; max-width: 100%; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden; } /* a long name wraps to two lines inside its cell */
 .stackviz .lmb .sk { display: inline-flex; align-items: center; gap: var(--space-6); vertical-align: middle; }
 .stackviz .lmb .sk .kv-ico { width: 24px; height: 24px; }
 .stackviz .kv-key { justify-self: center; min-width: 32px; box-sizing: border-box; padding: var(--space-2) var(--space-8); border: 1px solid var(--line); border-bottom-width: 2px; border-radius: var(--radius-6); background: var(--panel-2); font: 600 12px var(--mono); color: var(--fg); text-align: center; white-space: nowrap; }
-.stackviz .kv-key.mouse { font-size: 11px; }
+.stackviz .kv-key.mouse { font-size: 11px; padding-inline: var(--space-4); }
 /* the game's default keys (0.7 P11): the one-row keys' lines and the note under the grid span it */
 .stackviz .kv-note { grid-column: 1 / -1; margin: var(--space-6) 0 0; }
 .playsteps { margin: 0; padding-left: var(--space-20); display: grid; gap: var(--space-4); font-size: 14px; }
