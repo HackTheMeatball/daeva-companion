@@ -16,7 +16,8 @@ it gives no leads here (checked, 2343 lines of text).
 All times below are **server time, UTC+9**, shared by every Global region (NA, EU, LatAm, Asia). Sources: Metabot,
 aion2hub and allthings.how, all "community-confirmed, not official". **Disputed:** aion2atlas says the Reshanta times
 follow each region's own clock (CET for EU, Eastern for NA East, Pacific for NA West). Every countdown depends on which
-is right, so this is owner check 1 and it blocks the build. It matches the daily reset at 16:00 server = 07:00 UTC
+is right, so it is owner check 1. Until it is answered, the computed Reshanta timers carry "check in game". The time
+zone is a single data field, so it doesn't block the spec. It matches the daily reset at 16:00 server = 07:00 UTC
 (`2026-10-endgame-facts.md`). UTC+9 has no daylight saving, so store server time and convert at render time.
 Korea and Taiwan are separate services on their own schedules (KR/TW: Watcher Kaira every 4 h, Executors Wed and Sat
 22:30), which don't apply.
@@ -48,9 +49,14 @@ not timed"). Each respawns a fixed interval after it is killed:
 
 | Boss | Respawn after the kill (Global) | Sources | Label |
 |---|---|---|---|
-| Silent Dartan | 6 h | aion2atlas (Global column); allthings.how (aion2vault repeats it) | 2+ sources |
-| Soul Ruler Kashapa | 6 h | same | 2+ sources |
-| High Commander Lagta | 12 h | same | 2+ sources |
+| Silent Dartan | 6 h | aion2atlas (Global column); allthings.how (aion2vault repeats it) | 2+ sources (independence inferred) |
+| Soul Ruler Kashapa | 6 h | same | 2+ sources (independence inferred) |
+| High Commander Lagta | 12 h | same | 2+ sources (independence inferred) |
+
+Are the two independent? aion2vault cites allthings.how, so it doesn't count. Lydia found no citation between aion2atlas
+and allthings.how. aion2atlas also gives its own KR column (double), which allthings.how doesn't. So I count them as 2
+sources, with their independence inferred, not shown. The earlier "1 to 12 h" and "1 to 24 h" ranges came from search
+summaries covering every field boss, not from these three.
 
 All three are in both Verteron and Altgard. aion2atlas gives Korea double these intervals. Their level is disputed:
 aion2hub says Lv 45, Lydia's sources say 48. The game's Field Boss list (Exploration) shows "Spawned" or "Time Left" for
@@ -60,24 +66,26 @@ A countdown here depends on when someone on the server killed the boss. We can't
 state, which the no-sniffing rule rules out. The only buildable form is a manual timer: the player taps "killed at"
 (or copies the time left from the game's list), and the app counts down the interval above.
 
-## 4. Which bosses matter
+## 4. Which bosses matter (Walter's scope call, 2026-10-20)
 
-- **The 5 Lower Reshanta bosses** (Watcher Kaira, the 3 Executors, Guardian Lord Nahma): 2 sources, fixed clock. They
-  are the bosses a Global player can time. Ship them.
-- **The 4 Middle Reshanta bosses:** leaning KR/TW only. Leave them out of 1.0 unless the owner check finds them on Global.
-- **The 3 field bosses:** no clock, but the intervals have 2 sources. They fit a manual "killed at" timer, which is
-  Walter's call for scope.
-- Monster Lv 65 / 80 is the boss's level, not a player level (the cap is 45). Chaotic Reshanta is end-game Abyss PvPvE.
-  That these bosses are worth a Lv 45 player's time is **inferred**: no source here ranks them by reward.
+1. **In for 1.0, each with a timer computed from the server clock:** Watcher Kaira, Executor Argo, Executor Kaira,
+   Executor Tamasa and Guardian Lord Nahma. Monster Lv 65 is not a player level: this is endgame content for a Lv 45
+   character, which the endgame guide covers from 0.10.
+   - Guardian Lord Nahma is labelled **inferred** until a source names it as the "Abyss Siege Boss".
+   - Watcher Kaira spawns at a random spot, so show its zone, not a point.
+2. **Held out:** the 4 Middle Reshanta Lv 80 bosses. They are disputed with no second Global source, so they go on the
+   owner's To-do (owner check 2). A confirmation adds them later; they don't block 1.0.
+3. **Field bosses** (Silent Dartan, High Commander Lagta, Soul Ruler Kashapa): their location plus a manual "killed at"
+   timer that counts down the cooldown in §3, labelled with its sources.
 
 ## Owner checks (for To-do T-61, not urgent)
 
-1. **Blocks the build.** What time does Watcher Kaira (or the Artifact Siege) start on Isaac's server, in his local
+1. **Gates the "check in game" label on every computed timer.** What time does Watcher Kaira (or the Artifact Siege) start on Isaac's server, in his local
    time? One shared UTC+9 clock and per-region clocks give different answers.
 2. Is Chaotic Middle Reshanta open on Global, with its bosses in the event list?
 
 ## For Walter
 
-Q3 answered: the 5 scheduled bosses need no live state. They are a pure clock computation, once owner check 1 settles
-which clock. Only the field bosses depend on live state (who killed it and when), and those fall back to a manual
+Q3 answered: the 5 scheduled bosses need no live state. They are a pure clock computation. Owner check 1 decides which
+clock, and that is one data field. Only the field bosses depend on live state (who killed it and when), and those fall back to a manual
 "killed at" timer. Nothing needs to go back to the coordinator.
