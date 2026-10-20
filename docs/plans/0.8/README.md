@@ -145,8 +145,8 @@ The same as P3, for the Cleric. It runs after P3 because both edit `pack.js`.
 - **Problem.** A new character's "Your level" step shows a green and a grey "Start at Lv 1". They behave differently: the
   green one uses the slider and quest, and the grey one skips to Lv 1. A player can't tell them apart (#333-1;
   `src/cards/welcome.js` relabels Back for new characters).
-- **Result.** The two read differently. The grey button says what it does, for example "Skip, start at Lv 1". Design
-  Lead picks the words in the shot review.
+- **Result.** The two read differently. The grey button says what it does, "Skip, start fresh" (chosen by the Design
+  Lead in the shot review).
 - **No-gos.**
   - No flow change.
   - The first-visit welcome is unchanged.

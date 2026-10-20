@@ -8,7 +8,7 @@
    The card changes no save itself: Start at Lv 1 calls the shell's onStart(), Start at Lv N onJoin(level, quest); the
    shell writes `welcomed` (a top-level per-device field, never synced) and, for a join, the character's level (through
    Journey's level setter) and quest. A new character (0.5 P18) gets the join step straight away (welcomed 0, set by the
-   shell), its Back being "Skip: start at Lv 1" (never the same label as the green Start at Lv N). */
+   shell), its Back being "Skip, start fresh" (never the same label as the green Start at Lv N). */
 import { char } from "../core/state.js";
 import { pageQUESTS as QUESTS } from "./page.js";
 
@@ -61,7 +61,7 @@ export function welcomeCard({ onStart, onJoin }) {
       $("welQuest").innerHTML = QUESTS.map(([l, n]) => `<option value="${welEsc(n)}">Lv ${l} · ${welEsc(n)}</option>`).join("");
       /* a new character (welcomed 0) opens on the join step, whose second button then skips to Lv 1 */
       const newChar = ctx.state.welcomed === 0;
-      $("welBack").textContent = newChar ? "Skip: start at Lv 1" : "Back";
+      $("welBack").textContent = newChar ? "Skip, start fresh" : "Back";
       showStep(newChar, false);
       el.hidden = false;
       $("welStart").addEventListener("click", () => { onStart(); close(); });
