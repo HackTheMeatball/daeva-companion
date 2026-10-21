@@ -1462,6 +1462,23 @@ finding 7, project files). The line names up to 3 kinds with counts and opens to
 Fastest / Completionist track toggle (0.5) is a named removal, replaced by one "Main path only" setting that carries the
 track's drawbacks text while on. The adv and later cards that one view (0.9 P21) moves out of the headline land here.
 
+**Build view (the owner, 2026-10-21 10:01 AM ET, as quoted in Design Review's audit: "our skill setup and skill rotation
+pop out blade might not be big enough"; Design Review (Holly): GO, `design-review/audit-build-panel-surface-holly.md`;
+Design Lead's mock after outside review, `design/build-view/`, shared folder).** Key setup moves out of the 320 px drawer
+into a full-width Build view; the drawer keeps the glance. Built on 0.9's key list (P22), and planned first among the
+key items, since Simple keys and 1.0's Build choice both land inside it.
+- **The view** takes over the main column, with "‹ Route" back to the same scroll position; the left rail stays on
+  desktop, and on a phone the Build tab opens it in place of today's bottom sheet. It holds the build picker (one build
+  until 1.0's Build choice fills it), the Simple / Advanced switch slot, the key list for every key, and the macro steps,
+  open by default. Next up's "New: put X on E" opens it scrolled to that key, below the sticky phone bar.
+- **The drawer** keeps stat priority, the Rotation steps, the keys Rotation doesn't name (only what fires first on each),
+  the New note, and "Set up keys and macro ›". The full key list exists only in the view (no redundancy across cards).
+- **Basic mode** (one view, T-111) shows the picked build only; changing build and Custom sit behind "Change ›".
+- **Acceptance (Design Lead's conditions):** before / after shots for every class with keys, at 390 and 1500 px, in
+  Basic and Advanced; the save keys `buildId` and `rotSeen` are reused (no new key, no save break); 11 px greys reach
+  4.5:1; tap targets 44 px; the key columns balance by height at 1500; ships on Design Lead's DESIGN OK.
+- **Not here:** the respec pop-up and ranked options arrive with 1.0's Build choice, which uses this view's picker.
+
 **Simple keys (the owner's idea, 2026-10-21 9:57 AM ET: "an auto-pilot mode where it's just right and left click and
 Q, e, r, and f for one off 'ultimate' skills"; Design Review (Holly): GO with changes,
 `design-review/audit-simple-keys-mode-holly.md`, shared folder).** The key panel gets a per-character view setting,
@@ -1474,7 +1491,7 @@ builds get Simple automatically.
 - **Gates.**
   - Game Data Check (Gretchen) confirms per class that the layout is possible: macro and slot limits, whether R and F are free, and whether F is interact (the open key checks, T-61). A class whose layout can't be confirmed gets no Simple option.
   - The owner's in-game time-to-kill test (Assassin, Lv 45, 3 runs each against the current guide layout) decides the default: under about 10% slower makes Simple the default for new characters, otherwise it's opt-in. The 10% threshold is Holly's proposal, not sourced.
-- **Look and order.** Design Lead does the look as a toggle on the key panel component from the 0.9 key setup work (`docs/design/0.9-keys/`, P22). It is planned after that redesign, since both share `build.js` and the same shots. The name "Autopilot" was dropped because it reads like botting.
+- **Look and order.** Design Lead does the look as a toggle on the key panel component from the 0.9 key setup work (`docs/design/0.9-keys/`, P22). It is planned after that redesign and the Build view above, since all three share `build.js` and the same shots; the toggle sits in the Build view's switch slot. The name "Autopilot" was dropped because it reads like botting.
 
 Shaped in 0.10's own pass.
 
@@ -1536,7 +1553,7 @@ from Game Data Check and Org Design (`design-review/audit-simple-keys-mode-holly
 - computing the diff: Build Pipeline (Gus);
 - the pop-up's wording and look: Design Lead, with a fresh design review, since it's a new owner-facing element.
 
-**Order:** one build per class first, then the alternatives class by class. Each build's Simple keys stacks (0.10) come from its own skills. Items are shaped in 0.10's pass. If the alternatives don't fit before 1.0, the Release Planner takes it to the owner as a scope call.
+**Where:** the picker and the switch warning live in 0.10's Build view. **Order:** one build per class first, then the alternatives class by class. Each build's Simple keys stacks (0.10) come from its own skills. Items are shaped in 0.10's pass. If the alternatives don't fit before 1.0, the Release Planner takes it to the owner as a scope call.
 
 ### 1.1 — Elyos (estimate)
 
