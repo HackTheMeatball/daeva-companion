@@ -113,7 +113,7 @@ search, before reading any content page.
 Fetch log (ROL-08, team after the governance review, 2026-10-20). Every thread that fetches keeps one line per request
 in `/mnt/project-files/legal/fetch-log.md`: time (UTC), host, URL, purpose and thread, status code. Before the first
 content request to a new host, its line names the terms URL and robots.txt already read, and the verdict: terms OK,
-scraping-only (spot checks allowed) or opt-out (never fetch). No terms URL means no content request, except that "no terms page after the five paths above and a web search" is a logged verdict in its own right (recorded as such, facts and a link only). Legal (Chuck)
+scraping-only (spot checks allowed) or opt-out (never fetch). No terms URL means no content request. Legal (Chuck)
 confirms the log. A break of this order (content read before its terms) is closed out in the log: anything kept from it is deleted or re-sourced from a
 permitted source, and the facts it supports are re-verified or labelled. Each minor's fresh spot check verifies one
 terms-read entry against the live terms page.
