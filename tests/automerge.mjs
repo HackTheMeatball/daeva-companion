@@ -233,6 +233,56 @@ check(FZ.freezeBlocker(on, pr('claude/issue-502-1', ['rc-blocker']), ['src/main.
 check(FZ.freezeBlocker(on, pr('claude/x'), ['.github/workflows/ci.yml', 'data/packs/a.json']) !== '', 'freeze -> workflows and data wait');
 check(/const frozen = freezeBlocker\(freeze, pr, touched\);/.test(yml) && yml.indexOf('const frozen = freezeBlocker(') < yml.indexOf('await github.rest.pulls.merge('), 'the freeze check runs before every merge');
 
+// Named reviewers (incident fast path 2026-10-20 8:37 PM ET, automerge-race #553 #615 #653 #664): a named CHANGES is sticky
+// until the same reviewer approves the current head; a tagged APPROVE never stands in for the pipeline review.
+const nb = yml.match(/\/\/ NAMED-CHECK START[^\n]*\n([\s\S]*?)\n\s*\/\/ NAMED-CHECK END/);
+check(!!nb, 'auto-merge.yml has the NAMED-CHECK block');
+const namedLogs = [];
+const namedBlocker = new Function('owner', 'core', 'V', nb[1] + '\nreturn namedBlocker;')('HackTheMeatball',
+  { info: (s) => namedLogs.push(s), notice: (s) => namedLogs.push(s) }, V);
+const OWNER = 'HackTheMeatball', NEW = 'f00dfeed1234';
+check(namedBlocker([REVIEW], SHA) === '', 'no named verdict -> no wait');
+check(/CHANGES from francesca/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Francesca) on abc1234: the rule text contradicts LEDGER.', 6), REVIEW], SHA)),
+  "#664: a named CHANGES at the head blocks even after the bot's APPROVE");
+check(/CHANGES from gale/.test(namedBlocker([c(OWNER, '**VERDICT: CHANGES (reviewer: Gale)** on abc1234', 6), c('claude[bot]', 'Review of abc1234\nVERDICT: APPROVE', 9)], SHA)),
+  '#615: a named CHANGES followed by a later bot APPROVE still blocks');
+check(/CHANGES from francesca/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Francesca) on abc1234', 6)], NEW)),
+  'sticky: a push after a named CHANGES does not clear it');
+check(/CHANGES from francesca/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Francesca) on abc1234', 6), c(OWNER, 'VERDICT: APPROVE (reviewer: Francesca) on abc1234', 8)], NEW)),
+  'sticky: an APPROVE naming an older head does not clear it');
+check(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Francesca) on abc1234', 6), c(OWNER, 'VERDICT: OK (reviewer: francesca) on f00dfee', 8)], NEW) === '',
+  'the same reviewer (any case) approving the current head clears it');
+check(/CHANGES from francesca/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Francesca) on abc1234', 6), c(OWNER, 'VERDICT: APPROVE (reviewer: Howard) on f00dfee', 8)], NEW)),
+  "another reviewer's APPROVE does not clear Francesca's CHANGES");
+check(/CHANGES from francesca/.test(namedBlocker([c(OWNER, 'VERDICT: APPROVE (reviewer: Francesca) on f00dfee', 4), c(OWNER, 'VERDICT: CHANGES (reviewer: Francesca) on f00dfee', 6)], NEW)),
+  'an APPROVE older than the CHANGES does not clear it');
+check(namedBlocker([c('someone-else', 'VERDICT: CHANGES (reviewer: Francesca) on abc1234', 6)], SHA) === '', 'a named verdict from another account is not read');
+check(namedBlocker([c(OWNER, '~~VERDICT: CHANGES (reviewer: Francesca)~~ withdrawn', 6)], SHA) === '', 'a struck named CHANGES does not count');
+check(/CHANGES from design lead/.test(namedBlocker([c(OWNER, '**DESIGN CHANGES on abc1234** (Jane, design lead)', 6)], NEW)),
+  "the Design Lead's DESIGN CHANGES is a sticky named CHANGES, even on a PR without design files");
+check(namedBlocker([c(OWNER, 'DESIGN CHANGES on abc1234', 6), c(OWNER, 'DESIGN OK on f00dfee', 8)], NEW) === '', 'DESIGN OK naming the current head clears it');
+check(/CHANGES from game data check/.test(namedBlocker([c(OWNER, '**Game Data Check (ROL-03) on abc1234: CHANGES.**', 6), c(OWNER, '**Game Data Check (ROL-03) on abc1234: VERIFIED.**', 8)], NEW)),
+  "Game Data Check's CHANGES is cleared only by a VERIFIED on the current head");
+check(namedBlocker([c(OWNER, 'Game Data Check (ROL-03) on abc1234: HOLD', 6), c(OWNER, 'Game Data Check (ROL-03) on f00dfeed: VERIFIED', 8)], NEW) === '',
+  "Game Data Check's VERIFIED on the current head clears a HOLD");
+const CL = 'REVIEW CLEAR (reviewer: Skyler; trigger: none): Skyler ended at tracker round 2, no successor';
+check(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6), c(OWNER, CL, 8)], NEW) === '' && namedLogs.some((l) => /REVIEW CLEAR for skyler/.test(l)),
+  'deadlock exit: a coordinator REVIEW CLEAR with a reason clears an ended reviewer, and is logged');
+for (const t of ['2', '4b', '5', '6'])
+  check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6), c(OWNER, `REVIEW CLEAR (reviewer: Skyler; trigger: ${t}): Skyler ended, no successor`, 8)], NEW)),
+    `deadlock exit: refused on trigger ${t}`);
+check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6), c(OWNER, 'REVIEW CLEAR (reviewer: Skyler; trigger: none): ok', 8)], NEW)),
+  'deadlock exit: a clear without a real reason (under 10 characters) is not read');
+check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, CL, 4), c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6)], NEW)), 'deadlock exit: a clear older than the CHANGES does not clear it');
+const loopAt = yml.indexOf('const named = namedBlocker(comments, sha);');
+check(loopAt > 0 && /if \(named\) \{.*continue; \}/.test(yml.slice(loopAt, loopAt + 200)) && loopAt < yml.indexOf('await github.rest.pulls.merge('), 'merge loop: namedBlocker runs and skips before a PR is merged');
+check(/c\.user\.login === 'claude\[bot\]' && V\.reviewOf\(c\.body\) && V\.review\(c\.body\)/.test(yml), 'pipeline approval: only claude[bot] comments in the "Review of <sha>" form count');
+check(V.review('VERDICT: APPROVE (reviewer: Gale) on abc1234') === null, 'verdicts: a tagged APPROVE is never the bot review verdict');
+check(V.review('Review of abc1234\nVERDICT: CHANGES (reviewer: Francesca) was posted earlier\nVERDICT: APPROVE') === 'APPROVE', 'verdicts: a tagged CHANGES line does not turn a bot APPROVE into CHANGES');
+check(V.reviewOf('Review of abc1234\nVERDICT: APPROVE') === 'abc1234' && V.reviewOf('**Review of abc1234**') === 'abc1234', 'verdicts: "Review of <sha>" read (plain or bold)');
+check(V.reviewOf('VERDICT: APPROVE (reviewer: Howard)\nReview of abc1234') === null && V.reviewOf('A Review of abc1234') === null, 'verdicts: "Review of" only as the first line');
+check(V.tagged('VERDICT: CHANGES on abc1234').length === 0 && V.tagged('> **VERDICT: CHANGES (reviewer: Lydia)**')[0].reviewer === 'lydia', 'verdicts: untagged VERDICT is not named; a quoted bold tagged one is');
+
 console.log(`\n${n - fail}/${n} auto-merge checks passed`);
 console.log(fail ? 'AUTOMERGE CHECKS FAILED' : 'AUTOMERGE CHECKS PASSED');
 process.exit(fail ? 1 : 0);

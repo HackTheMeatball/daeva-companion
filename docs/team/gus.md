@@ -34,6 +34,13 @@ _From the ledger summary (no #114 text held it; written here 2026-10-20 at the R
 
 - A separate reviewer that didn't write the work reviews every PR, on Opus: the pipeline's review run, never the build session itself. Code Review (Howard) sets what the review checks and what counts as BLOCKING; Gus sets when it runs, the model, and the verdict format and parser (2026-10-20 split). A criteria edit that drops or narrows a check is a loosening and needs Isaac's typed OK.
 
+### Named reviewers (incident fix, 2026-10-20 8:37 PM ET; rule id pending from the Rules Steward)
+
+_Written here by Gus; the coordinator's incident fast path for automerge-race (#553, #615, #653, #664), reviewed by Fresh governance review._
+
+- A named reviewer writes `VERDICT: APPROVE`, `OK` or `CHANGES` with `(reviewer: <name>)` on the line, and names the head's short SHA in the comment. A named CHANGES blocks auto-merge until a later APPROVE or OK from the same name names the current head; a push does not clear it. The Design Lead's DESIGN CHANGES and Game Data Check's CHANGES or HOLD work the same way under their own names. A tagged APPROVE never counts as the pipeline review, which is only the claude[bot] comment that starts `Review of <sha7>`. A verdict sent only as a message to a session is not read: a PR that needs a named reviewer opens with `hold`.
+- Deadlock exit: for a reviewer who has ended, the coordinator posts `REVIEW CLEAR (reviewer: <name>; trigger: <n|none>): <reason>` on the PR. It is refused on triggers 2, 4b, 5 and 6; Watchdog (Mike) flags every clear and Kaizen (Gale) counts them.
+
 ### MRG-10
 
 _From #114 "Merge rule (AUTO since 2026-10-16 10:32Z, #115)"._

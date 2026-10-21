@@ -140,6 +140,42 @@ jobs:
               return `Game Data Check's VERIFIED does not cover the head ${sha.slice(0, 7)}`;
             };
             // DATA-CHECK END
+            // NAMED-CHECK START (tests/automerge.mjs runs this block)
+            // A named reviewer's CHANGES blocks the merge until the same reviewer approves the current head (automerge-race,
+            // incident fast path 2026-10-20 8:37 PM ET; #553, #615, #653, #664 merged over a CHANGES). Named verdicts are
+            // "VERDICT: APPROVE|OK|CHANGES (reviewer: <name>)", plus the Design Lead's DESIGN OK / CHANGES and Game Data Check's
+            // VERIFIED / CHANGES / HOLD under their own names. A CHANGES is sticky across pushes: only an APPROVE / OK / VERIFIED
+            // by that reviewer that is newer than it and names the head clears it. The deadlock exit is the coordinator's
+            // "REVIEW CLEAR (reviewer: <name>; trigger: <n|none>): <reason>" for a reviewer who has ended; it is refused on
+            // triggers 2, 4b, 5 and 6, and Watchdog (Mike) flags every clear. A message to a session is not a verdict.
+            // Known limit: sessions post as the owner's account, so the name is the comment's word, not a checked identity.
+            const NOCLEAR = new Set(['2', '4b', '5', '6']);
+            const namedBlocker = (comments, sha) => {
+              const s7 = sha.slice(0, 7);
+              const ev = [];
+              for (const c of comments) {
+                if (!c.user || !(c.user.login === 'claude[bot]' || c.user.login.toLowerCase() === owner.toLowerCase())) continue;
+                const at = Date.parse(c.updated_at), names = (c.body || '').includes(s7);
+                for (const t of V.tagged(c.body)) ev.push({ who: t.reviewer, ok: t.verdict !== 'CHANGES', head: names, at });
+                const d = V.design(c.body);
+                if (d) ev.push({ who: 'design lead', ok: d === 'OK', head: names, at });
+                for (const x of V.data(c.body)) ev.push({ who: 'game data check', ok: x.verdict === 'VERIFIED', head: sha.startsWith(x.sha), at });
+                for (const k of V.clears(c.body)) {
+                  if (NOCLEAR.has(k.trigger)) { core.info(`REVIEW CLEAR for ${k.reviewer} refused: trigger ${k.trigger} never allows one`); continue; }
+                  core.notice(`REVIEW CLEAR for ${k.reviewer} (trigger ${k.trigger}): ${k.reason}`);
+                  ev.push({ who: k.reviewer, ok: true, head: true, at, clear: true });
+                }
+              }
+              const open = [];
+              for (const who of new Set(ev.map((e) => e.who))) {
+                const mine = ev.filter((e) => e.who === who);
+                const lastNo = Math.max(...mine.filter((e) => !e.ok).map((e) => e.at));
+                if (lastNo === -Infinity) continue;
+                if (!mine.some((e) => e.ok && e.head && e.at > lastNo)) open.push(who);
+              }
+              return open.length ? `CHANGES from ${open.join(', ')} not yet cleared by an approval naming ${s7}` : '';
+            };
+            // NAMED-CHECK END
             // FREEZE-CHECK START (tests/automerge.mjs runs this block)
             // Release freeze (owner OK 2026-10-20 1:35 PM ET, DECISIONS via #574): from Release Planner (Walter)'s RC READY until
             // CI's tag, only docs/**, ROADMAP.md and .github/ISSUE_TEMPLATE/** may merge, plus the release PR (its kickoff branch
@@ -168,7 +204,9 @@ jobs:
               const commit = (await github.rest.repos.getCommit({ owner, repo, ref: sha })).data;
               const headAt = Date.parse(commit.commit.committer.date);
               const comments = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: pr.number, per_page: 100 });
-              const reviews = comments.filter((c) => c.user && c.user.login === 'claude[bot]' && V.review(c.body))
+              // Only the pipeline review's own form counts here ("Review of <sha7>" first, MRG-03); a named reviewer's tagged
+              // APPROVE never stands in for it (incident fix 2026-10-20).
+              const reviews = comments.filter((c) => c.user && c.user.login === 'claude[bot]' && V.reviewOf(c.body) && V.review(c.body))
                 .sort((a, b) => Date.parse(a.updated_at) - Date.parse(b.updated_at));
               const last = reviews[reviews.length - 1];
               if (!last || V.review(last.body) !== 'APPROVE') { core.info(`#${pr.number}: no approving review`); continue; }
@@ -178,6 +216,8 @@ jobs:
               const files = listed.map((f) => f.filename);
               // A rename out of data/ only shows its old path in previous_filename; the data check reads both.
               const touched = listed.flatMap((f) => [f.filename, f.previous_filename].filter(Boolean));
+              const named = namedBlocker(comments, sha);
+              if (named) { core.info(`#${pr.number}: ${named}`); continue; }
               const design = designBlocker(files, comments, sha, headAt);
               if (design) { core.info(`#${pr.number}: ${design}`); continue; }
               const data = await dataBlocker(pr, touched, comments, sha, headAt);

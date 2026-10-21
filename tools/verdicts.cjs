@@ -22,15 +22,30 @@ const design = (body) => {
 const DATA = /^Game Data Check \(ROL-03\) on ([0-9a-f]{7,40}): (VERIFIED|CHANGES|HOLD)\b/;
 const data = (body) => lines(body).map((l) => l.match(DATA)).filter(Boolean).map(([, sha, verdict]) => ({ sha, verdict }));
 
-// The bot review's "VERDICT: APPROVE|CHANGES", anywhere in the comment. 'CHANGES' when the text says it at all (an APPROVE
-// that also says VERDICT: CHANGES doesn't count), else 'APPROVE', else null.
+// A named reviewer's verdict: a line starting "VERDICT: APPROVE|OK|CHANGES" that carries "(reviewer: <name>)". Every such
+// line, in order, with the name lower-cased. These are never the bot review's verdict (review below skips them).
+const TAGGED = /^VERDICT:\s*(APPROVE|OK|CHANGES)\b.*?\(reviewer:\s*([^)]+?)\s*\)/;
+const tagged = (body) => lines(body).map((l) => l.match(TAGGED)).filter(Boolean)
+  .map(([, verdict, who]) => ({ reviewer: who.toLowerCase(), verdict }));
+
+// The coordinator's deadlock exit for a reviewer who has ended: "REVIEW CLEAR (reviewer: <name>; trigger: <n|none>): <reason>",
+// the reason at least 10 characters. Whether a clear is allowed (never on some triggers) stays in the workflow.
+const CLEAR = /^REVIEW CLEAR \(reviewer:\s*([^;)]+?)\s*;\s*trigger:\s*([0-9a-z]+)\s*\):\s*(\S.{9,})$/;
+const clears = (body) => lines(body).map((l) => l.match(CLEAR)).filter(Boolean)
+  .map(([, who, trigger, reason]) => ({ reviewer: who.toLowerCase(), trigger: trigger.toLowerCase(), reason: reason.trim() }));
+
+// The bot review's "VERDICT: APPROVE|CHANGES", anywhere in the comment except a named reviewer's tagged line. 'CHANGES' when
+// the text says it at all (an APPROVE that also says VERDICT: CHANGES doesn't count), else 'APPROVE', else null.
 const review = (body) => {
-  const text = lines(body).join('\n');
+  const text = lines(body).filter((l) => !TAGGED.test(l)).join('\n');
   return /VERDICT:\s*CHANGES/.test(text) ? 'CHANGES' : /VERDICT:\s*APPROVE/.test(text) ? 'APPROVE' : null;
 };
+
+// The pipeline review's own form: its first non-empty line is "Review of <sha7>" (MRG-03). Returns the sha or null.
+const reviewOf = (body) => { const l = lines(body).find((x) => x.trim()); const m = l && l.match(/^Review of ([0-9a-f]{7,40})\b/); return m ? m[1] : null; };
 
 // A Sonnet run handing over to Opus, and a run that reports it is stuck: a line starting with the marker.
 const needsOpus = (body) => lines(body).some((l) => /^\s*Needs @claude \(Opus\):/.test(l));
 const stuck = (body) => lines(body).some((l) => /^\s*Pipeline stuck:/.test(l));
 
-module.exports = { clean, lines, design, data, review, needsOpus, stuck };
+module.exports = { clean, lines, design, data, tagged, clears, review, reviewOf, needsOpus, stuck };
