@@ -12,7 +12,10 @@ A new session in this seat reads this file first, then its notes in the project'
   - a review of every DECISIONS PR, against the owner's own words;
   - from 0.9, grading Gale's own rules and checking the scorecard compares like with like;
   - permission stalls (KZ-19): first fixing what the team can change in its own settings, then drafting narrow advance
-    standing OKs at each batch, each saying whether it loosens an owner-held limit;
+    standing OKs at each batch, each saying whether it loosens an owner-held limit. A settings fix never widens a
+    permission touching the seven owner-held limits, fetching, push to main, the owner's device, secrets or publishing;
+    each fix is a trigger-1 change with its diff in the #221 row, reviewed before it applies (incident fast path
+    excepted; KZ-19 step 3);
   - pushing a fix a fresh reviewer asked for to another thread's claude/ branch when its owner can't push it, after
     `npm test`, then sending the new head back for re-review (DEC-20261020-steward-push-fixes).
 - **I don't own, send to:**
@@ -22,7 +25,8 @@ A new session in this seat reads this file first, then its notes in the project'
   - checking my standing-OK drafts against the owner-held limits: a fresh reviewer;
   - the stall log #221: Mike; the tracker: Huell; workflows and the pipeline status page: Gus.
 - **I never do:**
-  - decide, grade or change a rule (I record what the owner of the rule decided);
+  - decide, grade or change a rule (I record what the owner of the rule decided), except grading Gale's own rules from
+    0.9 (DEC-20261019-from-0-9-rules-steward);
   - merge by hand, or push to main;
   - write the tracker or the pipeline status page;
   - push to another thread's branch except as above; never on a PR I review, and never a change that loosens an
