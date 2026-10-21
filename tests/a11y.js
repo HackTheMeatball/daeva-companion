@@ -233,6 +233,10 @@ async function load(p, state, mode) {
     const r = await p.evaluate(() => new Promise(res => {
       const box = e => { const b = e.getBoundingClientRect(); return { l: b.left, t: b.top, r: b.right, b: b.bottom }; };
       const hit = (a, b) => a.l < b.r - 0.5 && a.r > b.l + 0.5 && a.t < b.b - 0.5 && a.b > b.t + 0.5;
+      /* a control the chip covers is one you can see there: some point of the overlap shows the control (the chip has
+         pointer-events: none). One scrolled under the sticky level bar, where the chip floats, is hidden by the bar already */
+      const seen = (e, a, b) => { const l = Math.max(a.l, b.l), r = Math.min(a.r, b.r), t = Math.max(a.t, b.t), bt = Math.min(a.b, b.b);
+        return [[.5, .5], [.15, .15], [.85, .15], [.15, .85], [.85, .85]].some(([x, y]) => { const top = document.elementFromPoint(l + (r - l) * x, t + (bt - t) * y); return !!top && (e === top || e.contains(top)); }); };
       const out = { frames: 0, toastFrames: 0, chipFrames: 0, toastOver: 0, chipOver: [], chipOut: 0 };
       rewardToast('Lv 2: "Test quest" turned in', () => {});
       document.getElementById('lvlUpBig').click();
@@ -244,7 +248,7 @@ async function load(p, state, mode) {
         if (c) {
           out.chipFrames++; const cb = box(c);
           if (cb.l < -0.5 || cb.r > innerWidth + 0.5) out.chipOut++;
-          for (const e of document.querySelectorAll('#charCard, #tabBar, #rwToast, #lvlUpBig, #lvlNum, #lvlUp, #lvlDown, #lvlRange, button, input, select, a[href], summary')) { if (e.classList.contains('lvl-float') || e.offsetParent === null && e.id !== 'tabBar') continue; const b = box(e); if (b.r > b.l && b.b > b.t && hit(cb, b)) out.chipOver.push(e.id || e.className || e.tagName); }
+          for (const e of document.querySelectorAll('#charCard, #tabBar, #rwToast, #lvlUpBig, #lvlNum, #lvlUp, #lvlDown, #lvlRange, button, input, select, a[href], summary')) { if (e.classList.contains('lvl-float') || e.offsetParent === null && e.id !== 'tabBar') continue; const b = box(e); if (b.r > b.l && b.b > b.t && hit(cb, b) && seen(e, cb, b)) out.chipOver.push(e.id || e.className || e.tagName); }
         }
         if (performance.now() - t0 < 2200) requestAnimationFrame(tick); else res(out);
       };

@@ -30,6 +30,7 @@ details[open] .chev { transform: rotate(180deg); }
    its 24 px target (.fold-btn's min-height, .tools-btn's min-width) */
 :is(h2, div).sec .sec-tools:has(> .tools-btn) { align-self: baseline; }
 :is(h2, div).sec .sec-tools .tools-btn { padding: 0; justify-content: flex-end; }
+@media (pointer: coarse) { :is(h2, div).sec .sec-tools .tools-btn { min-width: 44px; } } /* the 44 px touch target (phone patch A) */
 :is(h2, div).sec .sec-tools .filt-btn { height: 30px; }
 :is(h2, div).sec .sec-tools .filt-menu { font-size: 13px; color: var(--fg); }
 /* Automatic story prerequisite line at the top of a milestone */
