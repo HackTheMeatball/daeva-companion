@@ -268,7 +268,8 @@ jobs:
             core.setOutput('sha', sha);
 
   run:
-    name: run (${{ needs.decide.outputs.model }})
+    # The PR number in the name lets restart.yml's busy check tell which PR an event run is for.
+    name: "run #${{ needs.decide.outputs.pr }} (${{ needs.decide.outputs.model }})"
     needs: decide
     if: contains(fromJSON('["review","fix","merge"]'), needs.decide.outputs.step)
     runs-on: ubuntu-24.04

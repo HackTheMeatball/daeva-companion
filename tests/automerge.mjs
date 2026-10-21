@@ -337,6 +337,67 @@ check(/CHANGES from francesca/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (re
 check(namedBlocker([c(OWNER, 'FRESH REVIEW #685 abc1234\nMAJOR: owner refs dropped.', 6), c(OWNER, 'FRESH REVIEW #685 abc1234\nFRESH REVIEW OK abc1234', 8)], SHA) === '',
   '#686 case 5 (decided): fresh reviewers share one name, so the latest fresh OK on the head decides');
 
+// MRG-12 follow-ups (#686 bot review nits): DESIGN / data marks in the named check come from the owner account, unquoted;
+// a Review: line's no-clear trigger is read from the whole line after a reviewer count ("2 reviewers") is dropped.
+check(/CHANGES from design lead/.test(namedBlocker([c(OWNER, 'DESIGN CHANGES on abc1234', 6), c('claude[bot]', 'Review of f00dfee\nDESIGN OK on f00dfee\nVERDICT: APPROVE', 9)], NEW)),
+  "named check: a bot comment's DESIGN OK line does not clear the Design Lead's CHANGES");
+check(/CHANGES from design lead/.test(namedBlocker([c(OWNER, 'DESIGN CHANGES on abc1234', 6), c(OWNER, 'Status for f00dfee:\n> DESIGN OK on f00dfee', 8)], NEW)),
+  "named check: a quoted DESIGN OK does not clear the Design Lead's CHANGES");
+check(/CHANGES from game data check/.test(namedBlocker([c(OWNER, 'Game Data Check (ROL-03) on abc1234: CHANGES', 6), c('claude[bot]', 'Review of f00dfee\nGame Data Check (ROL-03) on f00dfee: VERIFIED', 9)], NEW)),
+  "named check: a bot comment's VERIFIED line does not clear Game Data Check's CHANGES");
+check(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6), c(OWNER, CL, 8)], NEW, 'Review: 2 reviewers, standing') === '',
+  'deadlock exit: "Review: 2 reviewers" names no trigger, so the clear stands');
+check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6), c(OWNER, CL, 8)], NEW, 'Review: fresh; triggers 1 and 5')),
+  'deadlock exit: "triggers 1 and 5" on the Review: line still refuses the clear');
+check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6), c(OWNER, CL, 8)], NEW, 'Before: x\n\n- **Review:** external \u2014 2')),
+  'deadlock exit: ROADMAP form "Review: external \u2014 2" (no word "trigger") still refuses the clear (#705 fresh review)');
+check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6), c(OWNER, CL, 8)], NEW, 'Review: blind \u2014 4b')),
+  'deadlock exit: ROADMAP form "Review: blind \u2014 4b" still refuses the clear (#705 fresh review)');
+check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6), c(OWNER, CL, 8)], NEW, 'Review: 2 reviewers \u2014 5')),
+  'deadlock exit: a reviewer count is dropped but a trigger after it still refuses the clear');
+
+check(/waits on fresh review/.test(namedBlocker([REVIEW], SHA, 'Before: x\n\n- **Review:** external (trigger 1)')),
+  '#695: a Review: line naming external review waits on a FRESH REVIEW OK on the head, with no hold label');
+check(/waits on fresh review/.test(namedBlocker([REVIEW, c(OWNER, 'FRESH REVIEW OK 9999999', 7)], SHA, 'Review: blind')), '#695: a blind review needs the OK on the head, not an older one');
+check(namedBlocker([REVIEW, c(OWNER, 'FRESH REVIEW #695 abc1234\nFRESH REVIEW OK abc1234', 7)], SHA, 'Review: fresh') === '', '#695: a FRESH REVIEW OK on the head meets a Review: fresh line');
+check(namedBlocker([REVIEW], SHA, 'Review: standing (Howard)') === '', 'a Review: standing line needs no fresh OK');
+const FCL = (t) => c(OWNER, `REVIEW CLEAR (reviewer: fresh review; trigger: ${t}): fresh reviewer ended, no successor`, 8);
+check(/waits on fresh review/.test(namedBlocker([REVIEW, FCL('1')], SHA, 'Review: external \u2014 1')),
+  '#705: no REVIEW CLEAR stands in for fresh review when the Review: line names external review');
+check(/waits on fresh review/.test(namedBlocker([REVIEW, FCL('none')], SHA, '- **Review:** blind \u2014 3')),
+  '#705: no REVIEW CLEAR stands in for fresh review when the Review: line names blind review');
+check(/CHANGES from fresh review/.test(namedBlocker([REVIEW, c(OWNER, 'FRESH REVIEW #9 abc1234\nFRESH REVIEW CHANGES', 6), FCL('1')], SHA, 'Review: external \u2014 1')),
+  '#705: a fresh CHANGES on an external PR is not cleared by a REVIEW CLEAR');
+check(namedBlocker([REVIEW, FCL('1')], SHA, 'Reviewers: fresh review\nReview: fresh \u2014 1') === '',
+  '#705: the deadlock exit still clears fresh review when the Review: line names neither external nor blind');
+check(namedBlocker([REVIEW, c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6), c(OWNER, CL, 8), c(OWNER, 'FRESH REVIEW OK abc1234', 9)], SHA, 'Review: external \u2014 1') === '',
+  '#705: on an external PR a clear for another reviewer still stands');
+
+// restart.yml's BUSY-CHECK block: only a Pipeline run for this PR holds back the lost-review start.
+const ryml = readFileSync(join(ROOT, '.github', 'workflows', 'restart.yml'), 'utf8');
+const bc = ryml.match(/\/\/ BUSY-CHECK START[^\n]*\n([\s\S]*?)\n\s*\/\/ BUSY-CHECK END/);
+check(!!bc, 'restart.yml has the BUSY-CHECK block');
+const busyFor = new Function(bc[1] + '\nreturn busyFor;')();
+const JOBS = { 1: [{ name: 'decide' }, { name: 'run #686 (claude-opus-5-5)' }], 2: [{ name: 'decide' }], 3: [{ name: 'decide' }, { name: 'run #68 (claude-opus-5-5)' }] };
+const jobsOf = async (id) => JOBS[id] || [];
+const R = (id, title, status = 'in_progress') => ({ id, display_title: title, status });
+check(!(await busyFor(655, [R(1, 'Pipeline')], jobsOf)), "busy: an event run for another PR (#686) doesn't hold back #655");
+check(await busyFor(686, [R(1, 'Pipeline')], jobsOf), 'busy: an event run for this PR does');
+check(await busyFor(655, [R(2, 'Pipeline')], jobsOf), 'busy: an event run still deciding (no run job yet) counts as busy');
+check(!(await busyFor(6, [R(3, 'Pipeline')], jobsOf)) && !(await busyFor(686, [R(3, 'Pipeline')], jobsOf)), 'busy: "#68 " is not #6 or #686');
+check(await busyFor(655, [R(9, 'Pipeline review #655')], jobsOf) && !(await busyFor(655, [R(9, 'Pipeline merge #659')], jobsOf)), 'busy: a dispatched run counts only for its own PR');
+check(!(await busyFor(655, [R(1, 'Pipeline', 'completed'), R(9, 'Pipeline review #655', 'completed')], jobsOf)), 'busy: finished runs never count');
+// YAML reads " #" in a plain (unquoted) scalar as the start of a comment, so the job name must be quoted or it is just "run"
+// (pipeline review of f0ae01a). Read the value the way YAML does: quoted, or cut at the first " #".
+const yamlValue = (v) => (/^"(.*)"\s*(?:#.*)?$/.exec(v) || [])[1] ?? v.replace(/\s#.*$/, '').trim();
+const runName = (/^ {4}name: (.*)$/m.exec(readFileSync(join(ROOT, '.github', 'workflows', 'pipeline.yml'), 'utf8').split('\n  run:\n')[1] || '') || [])[1] || '';
+check(yamlValue(runName) === 'run #${{ needs.decide.outputs.pr }} (${{ needs.decide.outputs.model }})', "pipeline.yml's run job name, as YAML reads it, carries the PR number");
+check(yamlValue('run #${{ x }} (y)') === 'run', 'yamlValue: an unquoted " #" ends the value, as in YAML');
+for (const f of readdirSync(join(ROOT, '.github', 'workflows')).filter((x) => x.endsWith('.yml'))) {
+  const bad = readFileSync(join(ROOT, '.github', 'workflows', f), 'utf8').split('\n').filter((l) => /^\s*(?:-\s+)?name: [^"'|>].*\s#/.test(l));
+  check(bad.length === 0, `${f}: no unquoted name: value is cut short by " #" (${bad.join(' | ')})`);
+}
+
 console.log(`\n${n - fail}/${n} auto-merge checks passed`);
 console.log(fail ? 'AUTOMERGE CHECKS FAILED' : 'AUTOMERGE CHECKS PASSED');
 process.exit(fail ? 1 : 0);
