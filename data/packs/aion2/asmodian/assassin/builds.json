@@ -1353,21 +1353,6 @@
             ]
           }
         ],
-        "macros": [
-          {
-            "key": "Right click",
-            "rows": [
-              {
-                "minLv": 1,
-                "steps": [
-                  {
-                    "slot": "Quick Use 2"
-                  }
-                ]
-              }
-            ]
-          }
-        ],
         "eOrder": [
           "stigma:assassin:illusive-clone",
           "stigma:assassin:swift-contract",
@@ -1407,7 +1392,7 @@
         "status": "inferred",
         "sources": [
           {
-            "inferred": "rightClick and eOrder are the guide's suggested binding (the stack on T via the macro, Shadowstrike on Q, the stigmas on E), not the game's defaults (defaultKeys, C21a). Right-click row order is the guide's reasoning (Insignia Explosion above the builders: it scales with Insignia stacks, Metabot). All four stigmas on one key is inferred (C21b)."
+            "inferred": "slots and eOrder are the guide's suggested binding (the stack on right click, Quick Use 2, whose second key is T; Shadowstrike on Q; the stigmas on E), not the game's defaults (defaultKeys, C21a). Right-click row order is the guide's reasoning (Insignia Explosion above the builders: it scales with Insignia stacks, Metabot). All four stigmas on one key is inferred (C21b)."
           },
           {
             "url": "https://daevaguides.com/en/assassin/",

@@ -420,7 +420,7 @@
           "type": "object",
           "properties": {
             "slots": {
-              "description": "The guide's suggested skill slots (the game's stack columns), each a stack by character level: a row shows from its minLv, the highest minLv the level reaches wins. Each skills array is row 0 first, the row that fires first (claim C21); the game draws row 0 at the bottom, which is drawing only (owner, 2026-10-21), so never reorder the array to match the screen. A slot holds at most 4 skills (claim C21, owner 2026-10-21). Skills only: whether a stigma can sit in a skill slot is open (T-61 item 6), and stigmas stay in eOrder. Guide advice (label on keyStacks.status), separate from defaultKeys, the game's own defaults. That the Quick Use 2 stack shows on T once a macro takes right click is inferred (C21 note).",
+              "description": "The guide's suggested stacks, one per skill quickslot (the game's 12, 'Skill Quickslot: Quick Use 1' to 'Quick Use 12'; owner screens, T-106, 2026-10-21), each a stack by character level: a row shows from its minLv, the highest minLv the level reaches wins. Default keys (rebindable, each with a second key; T-106): Quick Use 1 = Left click / R, 2 = Right click / T, 3-6 = 1-4, 7 = Q, 8 = E, 9-12 = 5-8. So T and R are second keys, not slots of their own. Each skills array is row 0 first, the row that fires first (claim C21); the game draws row 0 at the bottom, which is drawing only, so never reorder the array to match the screen. A quickslot holds at most 4 skills (rows 0-3; C21, owner T-106); Quick Use 1 (left click, the basic attack) holds row 0 only (owner 14:07Z and T-106 screen). A stigma may sit in a quickslot like a skill (owner, T-104 and 22:32Z); a skill or stigma sits in one quickslot at a time, never two (owner, 22:32Z; generator check per level). Quick Use 1 is reserved for the base attack (owner, 22:32Z). Guide advice (label on keyStacks.status), separate from defaultKeys, the game's own defaults.",
               "type": "array",
               "items": {
                 "type": "object",
@@ -431,10 +431,18 @@
                 "properties": {
                   "slot": {
                     "enum": [
-                      "Q",
-                      "E",
+                      "Quick Use 1",
                       "Quick Use 2",
-                      "T"
+                      "Quick Use 3",
+                      "Quick Use 4",
+                      "Quick Use 5",
+                      "Quick Use 6",
+                      "Quick Use 7",
+                      "Quick Use 8",
+                      "Quick Use 9",
+                      "Quick Use 10",
+                      "Quick Use 11",
+                      "Quick Use 12"
                     ]
                   },
                   "rows": {
@@ -457,7 +465,7 @@
                           "maxItems": 4,
                           "items": {
                             "type": "string",
-                            "pattern": "^skill:[a-z]+:[a-z0-9-]+$"
+                            "pattern": "^(skill|stigma):[a-z]+:[a-z0-9-]+$"
                           }
                         }
                       },
@@ -469,22 +477,29 @@
               }
             },
             "macros": {
-              "description": "The guide's suggested macros. A macro can sit on any key with a 0–3 stack (Q, E, T, right click) and a class can have several (owner, 2026-10-21), so nothing may assume right click: ordered steps, each naming a slot (fires that slot's whole stack, row 0 first) or one lone skill. A macro can therefore cycle more than 4 skills (owner, 2026-10-21). The step limit is unknown until the T-61 check 'try adding a 5th step'; the generator holds it in one constant (MACRO_MAX_STEPS). A step's slot must be one of 'slots'. The basic attack (the class's Left click default) may be a skill step, but only the last: a no-cooldown skill blocks every step above it (claim C21; generator check). Step delays are not modelled (no verified source). Guide advice, not a game fact. That the Quick Use 2 stack shows on T once a macro takes right click is inferred (C21 note).",
+              "description": "The guide's suggested macros. A macro sits on a quickslot with a 0-3 stack (Quick Use 2-12; that it can sit on any of them, not only right click, Q and E, applies the owner's rule 'any key with a full 0-3 row can have a macro' to the T-106 skill bar: inferred), never Quick Use 1 (left click). A class can have several, one per quickslot. Ordered steps, each naming a quickslot (fires its whole stack, row 0 first) or one lone skill (owner, 2026-10-21 16:19Z: a single-skill step needs a build guide that recommends it); a macro can therefore cycle more than 4 skills. At most 20 steps (owner, T-106, macro window; generator constant MACRO_MAX_STEPS). A step's quickslot must be one of 'slots'. A skill step names an active skill, never a stigma (stigmas fire from a quickslot's stack). The basic attack (the class's Left click default) may be fired by a macro only as the last skill: as a skill step or inside a stack a step fires (a no-cooldown skill blocks every step above it; claim C21; generator check on the expanded sequence). Each step may carry delayMs, the game's per-step Delay (T-106 screen); any delayMs given is guide advice and needs a cited build-guide page on keyStacks.sources. Guide advice, not a game fact.",
               "type": "array",
               "items": {
                 "type": "object",
                 "required": [
-                  "key",
+                  "quickslot",
                   "rows"
                 ],
                 "properties": {
-                  "key": {
-                    "description": "The key the macro is bound to, as the game names it. Only a key with a 0–3 stack slot takes a macro: Q, E, T or right click (Quick Use 2) (owner facts, 2026-10-21); never Left click, the basic attack.",
+                  "quickslot": {
+                    "description": "The quickslot the macro sits on (Quick Use 2-12; see macros). Never Quick Use 1, left click.",
                     "enum": [
-                      "Q",
-                      "E",
-                      "T",
-                      "Right click"
+                      "Quick Use 2",
+                      "Quick Use 3",
+                      "Quick Use 4",
+                      "Quick Use 5",
+                      "Quick Use 6",
+                      "Quick Use 7",
+                      "Quick Use 8",
+                      "Quick Use 9",
+                      "Quick Use 10",
+                      "Quick Use 11",
+                      "Quick Use 12"
                     ]
                   },
                   "rows": {
@@ -509,15 +524,29 @@
                             "properties": {
                               "slot": {
                                 "enum": [
-                                  "Q",
-                                  "E",
+                                  "Quick Use 1",
                                   "Quick Use 2",
-                                  "T"
+                                  "Quick Use 3",
+                                  "Quick Use 4",
+                                  "Quick Use 5",
+                                  "Quick Use 6",
+                                  "Quick Use 7",
+                                  "Quick Use 8",
+                                  "Quick Use 9",
+                                  "Quick Use 10",
+                                  "Quick Use 11",
+                                  "Quick Use 12"
                                 ]
                               },
                               "skill": {
                                 "type": "string",
                                 "pattern": "^skill:[a-z]+:[a-z0-9-]+$"
+                              },
+                              "delayMs": {
+                                "description": "The step's Delay in ms (the game's macro window; T-106). Optional; when given it is guide advice and needs a build-guide source. The 10000 maximum is a sanity cap, not a game fact.",
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 10000
                               }
                             },
                             "oneOf": [
@@ -541,7 +570,8 @@
                               }
                             ],
                             "additionalProperties": false
-                          }
+                          },
+                          "maxItems": 20
                         }
                       },
                       "additionalProperties": false
