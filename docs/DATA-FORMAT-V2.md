@@ -400,18 +400,18 @@ Anything else, an unknown token or an unknown `build:` kind fails validation.
   the table `KEYS` (`[{ key, rows: [{ n, lv }] }]`, per class). A build with `KEYS` takes every key of the Build drawer
   from it (`rotKeys`); without it (the Assassin) the drawer keeps the guide's right-click macro, Q Shadowstrike and the
   stigmas on E in `eOrder`. A guide's own recommended setup stays in `slots` / `macros`, never in `defaultKeys`.
-- `keyStacks.slots` and `keyStacks.macros` (builds & macros task 1, replacing the flat `rightClick` list): `slots[]` are
-  the guide's suggested stacks, `{ slot: Q|E|Quick Use 2|T, rows: [{ minLv, skills[] }] }`, a row shows from its `minLv`
-  and holds at most 4 skills (schema `maxItems` plus a generator check; row 0 fires first). `macros[]` are
-  `{ key, rows: [{ minLv, steps: [{ slot } | { skill }] }] }`: `key` is any key with a 0–3 stack (`Q`, `E`, `T`, `Right
-  click` = Quick Use 2; owner facts, 2026-10-21), never `Left click`; ordered steps, each naming a slot (fires that slot's whole
-  stack) or one lone skill, so a macro can cycle more than 4 skills (owner, 2026-10-21). The step count is unbounded
-  until the T-61 check "try adding a 5th step"; delays are not modelled (no verified source). The generator checks the key is
-  one of those four, every step slot is defined in `slots`, every skill is an active skill of the class, and the basic attack
-  (the class's `Left click` default key) is only ever the last step (a no-cooldown skill blocks every step above it, claim
-  C21); it compiles `RMB_ROWS` (the flat right-click list `RMB_STACK` reads) by expanding the `Right click` macro's steps per
-  level band (a legacy alias; the generator expands every macro on any of those keys, and a class can have several). Both the label and the sources
-  sit on `keyStacks.status` / `sources`; a build choice here is advice, never a game fact.
+- `keyStacks.slots` and `keyStacks.macros` (builds & macros task 1; quickslots from owner check T-106, 2026-10-21):
+  `slots[]` are the guide's suggested stacks, one per skill quickslot, `{ slot: Quick Use 1…12, rows: [{ minLv, skills[] }] }`.
+  The game's default keys (rebindable, each with a second key): Quick Use 1 = Left click / R, 2 = Right click / T, 3–6 = 1–4,
+  7 = Q, 8 = E, 9–12 = 5–8, so T and R are second keys, not slots. A row shows from its `minLv` and holds at most 4 skills or
+  stigmas (row 0 fires first); Quick Use 1 holds only the base attack. A skill or stigma sits in one quickslot at a time
+  (owner, 22:32Z). `macros[]` are `{ quickslot, rows: [{ minLv, steps: [{ slot, delayMs? } | { skill, delayMs? }] }] }`:
+  `quickslot` is one of Quick Use 2–12 (inferred from the owner's "any key with a full 0–3 row"), never Quick Use 1; at most
+  20 ordered steps (T-106), each naming a quickslot (fires its whole stack) or one lone skill. A lone-skill step other than
+  the base attack, or a step delay, needs a build guide's page on `keyStacks.sources`; the base attack may only be the last
+  step (claim C21). The generator checks all of these. It compiles `RMB_ROWS` (the flat right-click list `RMB_STACK` reads):
+  the macro on Quick Use 2 expanded per level band, else Quick Use 2's own stack; `MACROS_FLAT` expands every macro. Both the
+  label and the sources sit on `keyStacks.status` / `sources`; a build choice here is advice, never a game fact.
 - Each source's own order (today `stigmaRules.equipOrder`) moves to a claim that backs the disputed choice.
 - 5b compiles the guide build into today's `SP_SKILLS`, `SP_EXTRA`, `STIGMA_PLAN`, `ST_TARGETS`, `STAT_TIERS`,
   `STAT_SRC`, `RMB_STACK`, `E_ORDER` and the `dv` plan items, so the golden tests stay identical.
@@ -689,7 +689,7 @@ Not read by `gen.py`. Move to `tools/history/` in 5b after listing every value t
 | `SP_SKILLS` `{n, learn, spec, passive}` + order; `SP_EXTRA` | `skills` (`key`, `learnLv`, `type`); **`spec` → `specialtyChoices[].label` + `builds[guide].specialtyPicks`**; order → **`builds[guide].skillOrder`** |
 | `LEVEL_POINTS` | `rule:level-points` |
 | `spCost`, `ST_COST`, `DV_MIN`, `SP_STEPS` | derived |
-| `RMB_STACK` | **`builds[guide].keyStacks.macros` (the `Right click` macro, steps expanded) over `keyStacks.slots`** |
+| `RMB_STACK` | **`builds[guide].keyStacks` (the macro on Quick Use 2, steps expanded, else Quick Use 2's stack)** |
 | `SP_ICONS`, `STIGMA_ICON` | `skills[].icon`, `stigmas[].icon` |
 
 ### 12.11 `tools/gen/gen.py` and the generated block

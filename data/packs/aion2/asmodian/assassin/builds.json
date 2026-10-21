@@ -1353,21 +1353,6 @@
             ]
           }
         ],
-        "macros": [
-          {
-            "key": "Right click",
-            "rows": [
-              {
-                "minLv": 1,
-                "steps": [
-                  {
-                    "slot": "Quick Use 2"
-                  }
-                ]
-              }
-            ]
-          }
-        ],
         "eOrder": [
           "stigma:assassin:illusive-clone",
           "stigma:assassin:swift-contract",
@@ -1406,7 +1391,7 @@
         "status": "inferred",
         "sources": [
           {
-            "inferred": "rightClick and eOrder are the guide's suggested binding (the stack on T via the macro, Shadowstrike on Q, the stigmas on E), not the game's defaults (defaultKeys, C21a). Row order and the E stack (buffs first, then damage) are the guide's reasoning; no source gives an order. Insignia Explosion sits above the builders because it scales with Insignia stacks (Metabot)."
+            "inferred": "slots and eOrder are the guide's suggested binding (the stack on right click, Quick Use 2, whose second key is T; Shadowstrike on Q; the stigmas on E), not the game's defaults (defaultKeys, C21a). Row order and the E stack (buffs first, then damage) are the guide's reasoning; no source gives an order. Insignia Explosion sits above the builders because it scales with Insignia stacks (Metabot)."
           }
         ]
       },
