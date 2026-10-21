@@ -206,8 +206,10 @@ export function generate(opts = {}) {
   /* a skill order row's label (0.9 P1): its own status, else the build's; st (disputed / inferred) is tagged, single (single
      source, its basis) keeps the "single source" tag */
   const rowSt = e => e.status ?? build.status;
+  /* noPick (0.9 P15): per slot the build leaves without a pick, its note ("no guide pick", the reason in the tooltip) */
+  const noPickOf = sid => { const m = Object.entries(build.noPick || {}).filter(([k]) => k.startsWith(sid + '#')).map(([k, v]) => [k.split('#')[1], v.note]); return m.length ? { noPick: Object.fromEntries(m) } : {}; };
   const SP_SKILLS_CORE = build.skillOrder.filter(e => e.core).map(e => { const s = sk(e.skill), picks = build.specialtyPicks[e.skill] || [], pick = picks[0];
-    return { n: s.name, key: s.key, learn: s.learnLv, ...withSt('learnSt', unverified(s, 'learnLv')), ...(pick ? { spec: choice(pick).label || choice(pick).text, specs: picks.map(p => ({ t: choice(p).label || choice(p).text, lv: choice(p).skillLv, ...spLabel(p) })) } : {}),
+    return { n: s.name, key: s.key, learn: s.learnLv, ...withSt('learnSt', unverified(s, 'learnLv')), ...(pick ? { spec: choice(pick).label || choice(pick).text, specs: picks.map(p => ({ t: choice(p).label || choice(p).text, lv: choice(p).skillLv, ...spLabel(p) })) } : {}), ...noPickOf(e.skill),
       ...(s.type === 'passive' ? { passive: true } : {}), ...(s.levelGate === 'flat' ? { flat: true } : {}), ...withSt('st', tagSt(rowSt(e))) }; });
   const SP_EXTRA = build.skillOrder.filter(e => !e.core).map(e => { const s = sk(e.skill);
     return { n: s.name, key: s.key, learn: s.learnLv, ...withSt('learnSt', unverified(s, 'learnLv')), ...(s.type === 'passive' ? { passive: true } : {}), ...(s.levelGate === 'flat' ? { flat: true } : {}),
