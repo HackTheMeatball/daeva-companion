@@ -108,7 +108,9 @@ const SUITES = {
   schema: { args: ['tests/schema.mjs'], pass: /SCHEMA CHECKS PASSED/ },
   ledger: { args: ['tests/ledger.mjs'], pass: /LEDGER CHECKS PASSED/ },
   equiv: { args: ['tests/equiv.mjs'], pass: /EQUIV CHECKS PASSED/ },
-  invariant: { args: ['tests/invariant.mjs'], pass: /INVARIANT CHECKS PASSED/ },
+  /* a larger young generation: rankNext over 10,750 states allocates short-lived objects fast, and the default semi-space
+     spends ~9 s of the suite in scavenges (0.9 P6, profiled) */
+  invariant: { args: ['--max-semi-space-size=64', 'tests/invariant.mjs'], pass: /INVARIANT CHECKS PASSED/ },
   tokens: { args: ['tests/tokens.mjs'], pass: /TOKENS CHECKS PASSED/ },
   scrapbook: { args: ['tests/scrapbook.mjs'], pass: /SCRAPBOOK CHECKS PASSED/ },
   kickoff: { args: ['tests/kickoff.mjs'], pass: /KICKOFF CHECKS PASSED/ },
