@@ -242,7 +242,7 @@ jobs:
             // #737) unless its own HOLD line names a condition auto-merge can check (MRG-09 in gus.md, #744): the last line
             // `HOLD: <condition> (owner: <name>)`, on its own line in an owner-account comment posted at or after the last hold
             // labeled event, with <condition> one of the closed list FRESH REVIEW OK, DESIGN OK, Game Data Check VERIFIED or
-            // VERDICT: APPROVE (reviewer: <name>), optionally "until …" and "… on head". That reviewer then joins the ones
+            // VERDICT: APPROVE or OK (reviewer: <name>), optionally "until …" and "… on head". That reviewer then joins the ones
             // namedBlocker requires, and the hold lifts when they all approve the head. Any other condition (free text) never
             // lifts; the owner does. The owner name is someone to ping, not a checked identity (every session posts as the owner
             // account). Auto-merge's own hold lifts only when ci-ok is green on the head and namedBlocker finds

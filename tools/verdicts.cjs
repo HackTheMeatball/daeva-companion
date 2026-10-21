@@ -57,14 +57,14 @@ const reviewers = (body) => {
 
 // A person's hold line (MRG-09, #744): "HOLD: <condition> (owner: <name>)" on its own line, unquoted. Every such line, in
 // order, as { cond, owner, reviewer }: reviewer is the gate name the condition waits on when it is one of the closed list
-// (FRESH REVIEW OK, DESIGN OK, Game Data Check VERIFIED, VERDICT: APPROVE (reviewer: <name>); "until …" and "… on head"
+// (FRESH REVIEW OK, DESIGN OK, Game Data Check VERIFIED, VERDICT: APPROVE|OK (reviewer: <name>); "until …" and "… on head"
 // allowed), else null, and a free-text condition is for its owner to judge.
 const HOLD = /^HOLD:\s*(.+?)\s*\(owner:\s*([^)]+?)\s*\)\s*$/;
 const HOLDCONDS = [
   [/^FRESH REVIEW OK$/, () => 'fresh review'],
   [/^DESIGN OK$/, () => 'design lead'],
   [/^(?:Game Data Check(?: \(ROL-03\))? )?VERIFIED$/, () => 'game data check'],
-  [/^VERDICT:\s*APPROVE\s*\(reviewer:\s*([^)]+?)\s*\)$/, (m) => m[1].toLowerCase()],
+  [/^VERDICT:\s*(?:APPROVE|OK)\s*\(reviewer:\s*([^)]+?)\s*\)$/, (m) => m[1].toLowerCase()],
 ];
 const holds = (body) => own(body).map((l) => l.trim().match(HOLD)).filter(Boolean).map(([, cond, owner]) => {
   const c = cond.replace(/^until\s+/i, '').replace(/\s+on head$/i, '').trim();
