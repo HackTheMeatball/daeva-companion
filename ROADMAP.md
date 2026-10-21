@@ -217,7 +217,8 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
    and lanes follow kickoff's grammar (`tests/kickoff.mjs` fixtures); the plan reviewer checks every one before
    approving (Kaizen, 2026-10-19).
 5. **Owner input.** List what needs the owner (in-game checks, mockups, money, legal). Only a true blocker becomes a
-   tracker To-do; everything else follows the recommendation. The thread that needs the decision opens its own
+   tracker To-do that waits on him; everything else follows the recommendation. Every approval he gives still gets a
+   T-NN, logged as closed or answered (owner, 2026-10-21 9:40 AM ET). The thread that needs the decision opens its own
    To-do through Tracker sync (Huell): one owner and one owner's OK per card, listing what waits on it; it tells every
    thread the decision affects when it opens and when it is answered (owner, 2026-10-19 2:20 PM ET; trial through
    0.8). Every decision is recorded on the tracker as **user remediated** (the owner chose) or **Claude
