@@ -263,6 +263,24 @@ if (g) {
   ok('compiled: 87 story quests (Ishalgen is the starting map, not a quest; E10 added Daeva Trapped in a Nightmare), 58 regional quests, 15 strongholds, 60 Sealed Dungeons', c.QUESTS.length === 87 && c.RQ.length === 58 && c.SH_DATA.length === 15 && Object.keys(c.HIDEOUT_AREA).length === 60,
     [c.QUESTS.length, c.RQ.length, c.SH_DATA.length, Object.keys(c.HIDEOUT_AREA).length]);
 }
+/* allthings.how wording (0.8.1 F9, #662): its terms ban copying, so no source ref on an allthings.how URL keeps a `quote`
+   unless the quote is in Game Data Check's paraphrase table, and every paraphrase in that table is applied to data/ */
+{ const TABLE = 'docs/research/2026-10-allthings-paraphrases.md', table = readFileSync(join(ROOT, TABLE), 'utf8');
+  const facts = table.split('\n').filter(l => /^\| N?\d+ \|/.test(l)).map(l => l.split('|')[5].trim()).filter(f => !/^As row \d+\.$/.test(f));
+  const walk = d => readdirSync(d, { withFileTypes: true }).flatMap(e => e.isDirectory() ? walk(join(d, e.name)) : e.name.endsWith('.json') ? [join(d, e.name)] : []);
+  const refs = [], refsIn = (v, file) => { if (Array.isArray(v)) v.forEach(x => refsIn(x, file)); else if (v && typeof v === 'object') { if (typeof v.url === 'string' && /^https:\/\/allthings\.how\//.test(v.url)) refs.push({ file, ...v }); Object.values(v).forEach(x => refsIn(x, file)); } };
+  for (const f of walk(join(ROOT, 'data'))) refsIn(JSON.parse(readFileSync(f, 'utf8')), f.slice(ROOT.length + 1));
+  const strayOf = rs => rs.filter(r => 'quote' in r && !table.includes(r.quote)), quoted = refs.filter(r => 'quote' in r), stray = strayOf(refs);
+  ok(`no allthings.how quote outside the paraphrase table (${TABLE}): ${quoted.length} quote fields on ${refs.length} allthings.how refs, ${stray.length} not in the table`, !stray.length, stray.map(r => [r.file, r.quote]));
+  ok('rejects: an allthings.how quote not in the table (negative control: the old C01 quote)', strayOf([{ url: 'https://allthings.how/?p=215236', quote: 'Resets are free and unlimited' }]).length === 1);
+  ok(`the paraphrase table has its 20 distinct facts (16 quote rows less 1 "as row 2", N1 to N5)`, facts.length === 20, facts.length);
+  const missing = facts.filter(f => !refs.some(r => typeof r.note === 'string' && r.note.includes(f)));
+  ok('every paraphrase in the table is applied to an allthings.how source note in data/', !missing.length, missing);
+  ok('C02 carries the row 1 paraphrase in all 8 class guides', refs.filter(r => /^data\/packs\/aion2\/asmodian\/[a-z]+\/guide\/claims\.json$/.test(r.file) && r.note && r.note.startsWith(facts[0])).length === 8);
+  const shared = read('packs/aion2/asmodian/guide/claims.json').records, byId = Object.fromEntries(shared.map(x => [x.id, x]));
+  ok('C24 (Noble Belt never fails: allthings.how alone) is single source, C23 no longer says its belt costs are verified',
+    byId.C24.verdict === 'single-source' && byId.C23.verdict === 'single-source' && !/Belt costs verified/.test(byId.C23.note), [byId.C24.verdict, byId.C23.verdict]);
+}
 /* rules and decisions ledger: header, ids, homes and one row per DECISIONS row (docs/kaizen/LEDGER.md) */
 { const problems = checkLedger(); ok(`rules and decisions ledger checks (${problems.length} problems)`, !problems.length, problems);
   /* ...and it rejects broken copies: a dropped decision row, a doubled one, a bad status, a dead anchor, an empty plain,
