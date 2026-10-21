@@ -83,9 +83,10 @@ jobs:
             };
             // Kaizen (Gale), 2026-10-20 (#221 1:24 AM ET: #509 needed a gen run and a golden re-record and was routed to Sonnet,
             // whose limits stopped it): work on the gen or a golden lane, or a spec that runs `npm run gen` or re-records
-            // golden, starts on Opus whatever its tier.
+            // golden, starts on Opus whatever its tier. So does the architecture lane (module layout, a performance budget; FLOW-23,
+            // Gus 2026-10-21): src/*.js stays off the Opus paths, since most src changes are small UI fixes Sonnet does well.
             const opusWork = (lanes, body) => {
-              const l = [...lanes].find((x) => x === 'gen' || /^golden(-|$)/.test(x));
+              const l = [...lanes].find((x) => x === 'gen' || x === 'architecture' || /^golden(-|$)/.test(x));
               if (l) return `lane ${l}`;
               return ((body || '').match(/npm run gen\b|re-?record\w*[^.\n]{0,20}\bgolden|\bgolden[^.\n]{0,20}re-?record\w*/i) || [])[0] || null;
             };
