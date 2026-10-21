@@ -1251,35 +1251,55 @@
         }
       ],
       "keyStacks": {
-        "rightClick": [
+        "slots": [
           {
-            "minLv": 14,
-            "skills": [
-              "skill:assassin:heart-gore",
-              "skill:assassin:ambush",
-              "skill:assassin:insignia-explosion",
-              "skill:assassin:savage-roar"
+            "slot": "Quick Use 2",
+            "rows": [
+              {
+                "minLv": 14,
+                "skills": [
+                  "skill:assassin:heart-gore",
+                  "skill:assassin:ambush",
+                  "skill:assassin:insignia-explosion",
+                  "skill:assassin:savage-roar"
+                ]
+              },
+              {
+                "minLv": 4,
+                "skills": [
+                  "skill:assassin:heart-gore",
+                  "skill:assassin:ambush",
+                  "skill:assassin:savage-roar"
+                ]
+              },
+              {
+                "minLv": 3,
+                "skills": [
+                  "skill:assassin:ambush",
+                  "skill:assassin:savage-roar"
+                ]
+              },
+              {
+                "minLv": 1,
+                "skills": [
+                  "skill:assassin:savage-roar"
+                ]
+              }
             ]
-          },
+          }
+        ],
+        "macros": [
           {
-            "minLv": 4,
-            "skills": [
-              "skill:assassin:heart-gore",
-              "skill:assassin:ambush",
-              "skill:assassin:savage-roar"
-            ]
-          },
-          {
-            "minLv": 3,
-            "skills": [
-              "skill:assassin:ambush",
-              "skill:assassin:savage-roar"
-            ]
-          },
-          {
-            "minLv": 1,
-            "skills": [
-              "skill:assassin:savage-roar"
+            "key": "Right click",
+            "rows": [
+              {
+                "minLv": 1,
+                "steps": [
+                  {
+                    "slot": "Quick Use 2"
+                  }
+                ]
+              }
             ]
           }
         ],
