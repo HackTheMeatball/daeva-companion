@@ -130,6 +130,15 @@ packFails('a JSON file in a pack folder that is not listed', { add: { [PK + 'aio
 packFails('an unknown parent', editManifest(guide, m => { m.parent = 'aion2/elyos'; }), /aion2\/asmodian\/assassin parent: unknown pack "aion2\/elyos"/);
 packFails('an unknown pack in uses', editManifest(guide, m => { m.uses = ['aion2/classes/no-such-class']; }), /uses: unknown pack "aion2\/classes\/no-such-class"/);
 packFails('a cycle (the class uses the guide that uses it)', editManifest('aion2/classes/assassin', m => { m.uses = [guide]; }), /pack cycle: /);
+/* 0.9 P16: plan costs computed from the board path. An inferred source without the label, the label on an owner's number,
+   an inferred cost on a pick-one (anyNode) row, and a tied row's inferred cost without a via naming its path all fail */
+const planFails = (label, pack, edit, re) => job(ok => { const g1 = runs(ok, label, { pack, mutate: (rel, d) => { if (rel === `data/packs/${pack}/builds.json`) edit(d.records.find(r => r.boardPlan).boardPlan); } });
+  if (g1) ok('generator rejects: ' + label, g1.failed.some(x => re.test(x.check)), g1.failed.map(x => x.check).slice(0, 5)); });
+const inferredRef = { inferred: 'test', fields: ['cost'], checkedAt: '2026-10-21' };
+planFails('an inferred cost source without fieldStatus.cost', guide, p => { delete p.find(e => e.node === 'node:assassin:triniel:r9c10').fieldStatus; }, /triniel:r9c10: cost has its source/);
+planFails('fieldStatus.cost inferred on an owner\'s cost', guide, p => { p.find(e => e.cost !== undefined && !e.fieldStatus).fieldStatus = { cost: 'inferred' }; }, /cost has its source/);
+planFails('an inferred cost on a pick-one corner row', guide, p => Object.assign(p.find(e => e.key === 'dv:t:corner'), { cost: 15, fieldStatus: { cost: 'inferred' }, sources: [inferredRef] }), /Multi-Hit Chance corner: its inferred cost is the row's only one/);
+planFails('a tied inferred cost with no via naming its path', 'aion2/asmodian/cleric', p => { delete p.find(e => e.label === 'Light of Regeneration').via; }, /Light of Regeneration: its inferred cost is the row's only one/);
 /* --root is the one real copy left (tests/out/, not committed): it proves another packs root compiles the same */
 job((ok, G) => { const g = G(), copyRoot = join(ROOT, 'tests/out/packs-copy'); rmSync(copyRoot, { recursive: true, force: true }); cpSync(join(ROOT, 'data/packs'), copyRoot, { recursive: true });
   let gc = null; try { gc = generate({ root: copyRoot, pack: guide }); } catch (e) { ok('generator runs on a copied packs root', false, e.message); return; }
@@ -270,21 +279,28 @@ if (g) {
       const cls = id.split('/').pop(), plan = read(`packs/aion2/asmodian/${cls}/builds.json`).records.find(r => r.id === `build:${cls}:guide`).boardPlan;
       const nodes = classDoc(cls, 'board-nodes.json').records, boardOf = e => (e.node || e.anyNode[0]).split(':')[2];
       const name = Object.fromEntries(read('packs/aion2/boards.json').records.map(b => [b.id.split(':')[1], b.name]));
-      const got = {}, bad = [];
+      /* an anyNode row (the player picks one of several nodes, each its own cost) takes no computed cost (Game Data
+         Check on #749): it has the owner's number or stays blank. A blank one counts here at its first node's path cost,
+         as the research file counts it, and spends the most of its picks' path costs in the points check below */
+      const got = {}, bad = [], spend = new Map();
       for (const b of [...new Set(plan.map(boardOf))]) {
         const es = plan.filter(e => boardOf(e) === b).sort((x, y) => x.order - y.order);
         const path = checkPlanCosts(nodes.filter(n => n.board === 'board:' + b), es.map(e => ({ node: e.node || e.anyNode[0], cost: e.cost })));
-        es.forEach((e, i) => { if (e.cost === undefined || !(path[i].includes(e.cost) || EXCEPT.has(e.node))) bad.push(`${b} ${e.label}: ${e.cost} vs ${path[i]}`); });
-        got[name[b]] = es.reduce((a, e) => a + (e.cost || 0), 0);
+        const blank = e => e.anyNode && e.cost === undefined;
+        es.forEach((e, i) => { if (!blank(e) && (e.cost === undefined || !(path[i].includes(e.cost) || EXCEPT.has(e.node)) || (e.anyNode && (e.fieldStatus || {}).cost))) bad.push(`${b} ${e.label}: ${e.cost} vs ${path[i]}`); });
+        es.forEach((e, i) => { if (!blank(e)) return;
+          const picks = e.anyNode.map(n => checkPlanCosts(nodes.filter(x => x.board === 'board:' + b), [...es.slice(0, i).map(x => ({ node: x.node || x.anyNode[0], cost: x.cost })), { node: n }])[i]).flat();
+          spend.set(e, Math.max(...picks)); });
+        got[name[b]] = es.reduce((a, e, i) => a + (blank(e) ? path[i][0] : e.cost || 0), 0);
       }
       const w = want[cls] || { boards: {}, total: NaN }, total = Object.values(got).reduce((a, n) => a + n, 0);
-      ok(`board costs ${cls}: every row has a cost its cheapest path gives; totals by board ${JSON.stringify(got)} = ${total}, as the research file`, !bad.length
+      ok(`board costs ${cls}: every row has a cost its cheapest path gives (a pick-one row: the owner's, or blank); totals by board ${JSON.stringify(got)} = ${total}, as the research file`, !bad.length
         && Object.keys({ ...got, ...w.boards }).every(b => got[b] === w.boards[b]) && total === w.total, { bad, got, want: w });
       /* a board's rows all open with it (Nezekan's at Lv 12-13), so a row can wait a few levels for its points (Next up
          gates each tick on the points left, dvGateOf); it must fit before the next board opens (Lv 45 for the last) */
       let run = 0; const over = [], waits = [];
       for (const e of plan.slice().sort((x, y) => x.requires.level - y.requires.level || x.order - y.order)) {
-        run += e.cost || 0;
+        run += spend.has(e) ? spend.get(e) : e.cost || 0;
         const lv = e.requires.level, nextOpen = Math.min(45, ...boardLv.filter(l => l > lv)), fit = cpl.findIndex((_, L) => L >= lv && run <= points(L));
         if (fit < 0 || fit > nextOpen || (fit === nextOpen && nextOpen < 45)) over.push(`${e.label} (Lv ${lv}): ${run} points, ${points(lv)} at Lv ${lv}, fits at Lv ${fit < 0 ? 'none' : fit}, next board Lv ${nextOpen}`);
         else if (fit > lv) waits.push(`${e.label} Lv ${lv}→${fit}`);

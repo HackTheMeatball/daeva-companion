@@ -1292,7 +1292,6 @@
           "key": "dv:t:corner",
           "label": "Multi-Hit Chance corner",
           "via": "corner stat inferred from the board's stat totals (Metabot)",
-          "cost": 15,
           "milestone": "g40",
           "order": 30.6,
           "requires": {
@@ -1311,19 +1310,9 @@
                 "value": "0.0.4387.0"
               },
               "note": "the 3 matching corner (Unique) nodes of triniel"
-            },
-            {
-              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
-              "fields": [
-                "cost"
-              ],
-              "checkedAt": "2026-10-21"
             }
           ],
-          "status": "inferred",
-          "fieldStatus": {
-            "cost": "inferred"
-          }
+          "status": "inferred"
         }
       ],
       "keyStacks": {

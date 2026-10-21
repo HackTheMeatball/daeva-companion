@@ -339,6 +339,10 @@ export function generate(opts = {}) {
     const got = checkPlanCosts(nodes.filter(n => n.board === b.id), es.map(e => ({ node: e.node || e.anyNode[0], cost: e.cost })));
     es.forEach((e, i) => { if (e.cost === undefined) return;
       const id = e.node || e.anyNode[0], ok = got[i].includes(e.cost), ex = PATH_COST_EXCEPTIONS[id];
+      /* 0.9 P16 (Game Data Check): a computed cost is pre-filled only when it is the row's one cost: one node (an anyNode
+         row is the player's pick, each pick its own cost) and one cheapest-path cost, unless the row's `via` names the path */
+      if (costSt(e) === 'inferred') check(`board path: ${b.name} ${e.label}: its inferred cost is the row's only one (one node; one cheapest-path cost, or a via naming the path)`,
+        e.node && (got[i].length === 1 || !!e.via), { anyNode: e.anyNode, path: got[i] });
       if (ex) { check(`board path: exception ${id} still differs`, !ok, got[i]); report.pathCost.push({ row: `${b.name} ${e.label}`, cost: e.cost, path: got[i], exception: ex }); warn('board path: ' + ex); }
       else check(`board path: ${b.name} ${e.label} costs ${e.cost} on its cheapest path`, ok, got[i]); });
   }

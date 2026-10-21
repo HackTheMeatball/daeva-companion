@@ -113,8 +113,9 @@ const want = (r, f) => TAG[statusOf(r, f)] || null;
     for (const it of dvs) if (it.cst !== TAGGED(dvCst[it.k])) badBuild.push({ id, node: it.k, cst: it.cst, data: dvCst[it.k] });
     const stSt = TAGGED(statusOf(b, 'stigmaSlots')) || TAGGED(statusOf(b, 'stigmaTargets')) || null, dk = b.keyStacks.defaultKeys, kSt = dk ? TAGGED(dk.status ?? b.status) || null : null;
     if (g.STIGMA_ST !== stSt || g.KEYS_ST !== kSt) badBuild.push({ id, STIGMA_ST: g.STIGMA_ST, stSt, KEYS_ST: g.KEYS_ST, kSt });
-    /* the page: this class at Lv 20, nothing bought */
-    const sc = await p.evaluate(buildFixture, { L: 20, mode: 'advanced', fx: 'clean' }); sc.checks = {};
+    /* the page: this class at Lv 20, nothing bought and no cost logged (a logged cost is the player's own, so its box
+       drops the plan cost's tag; the fixture's Assassin costs share keys like dv:nezekan:r4c5 with other classes) */
+    const sc = await p.evaluate(buildFixture, { L: 20, mode: 'advanced', fx: 'clean' }); sc.checks = {}; sc.dvCost = {};
     const stored = toStored(sc); Object.assign(stored.chars[stored.current], { pack: id, class: cls });
     await writeRaw(p, JSON.stringify(stored)); await p.reload(); await p.waitForTimeout(400);
     const pg = await p.evaluate(() => { const tags = el => el ? [...el.querySelectorAll('.ss-tag')].map(t => t.textContent) : null;
