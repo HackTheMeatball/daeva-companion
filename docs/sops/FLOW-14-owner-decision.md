@@ -27,7 +27,7 @@ A thread needs a product call, an in-game check, an external setup, a setting th
 3. **Nacho**: Backs the ask before it reaches Isaac: Nacho checks routing and roles, and the owning department head checks the work. Both are logged in `coordinator/state.md` in the project's shared folder, naming who backed it.
 4. **Saul**: Puts a not-blocking ask in the one morning debrief (COM-02). A hard blocker goes out at once as a red To-do and a `HARD BLOCKER:` post (COM-05). A judgment To-do stays not red until its output is on main (COM-08).
 5. **Isaac**: Types the answer in the named thread.
-6. **Recorder**: The thread where Isaac typed it reads Isaac's own words (DEC-02) and forwards them verbatim to Walter.
+6. **Recorder**: The thread where Isaac typed it reads Isaac's own words (DEC-02) and forwards them verbatim to Walter. For an answer tapped on a decision card, the ask carries the card-tap record (COM-17).
 7. **Walter**: Writes the DECISIONS row and its ledger row (DEC-01), with times in ET (COM-01).
 8. **Recorder**: Sends Huell `OK RECORDED` once the PR has merged (DEC-03, COM-13).
 9. **Huell**: Closes the To-do only on `OK RECORDED` or a DECISIONS row (DEC-20261019-tracker-sync-closes-a), marks it user or Claude remediated (PLN-10), and posts the close line.
@@ -64,6 +64,7 @@ A thread needs a product call, an in-game check, an external setup, a setting th
 - [COM-08](../team/saul.md): judgment To-dos
 - [COM-01](../team/team-wide.md): times in ET
 - [DEC-02](../team/walter.md): typed words only
+- [COM-17](../team/team-wide.md): card-tap record in the ask
 - [DEC-01](../DECISIONS.md): Walter writes DECISIONS
 - [DEC-03](../team/walter.md): OK RECORDED
 - [COM-13](../team/team-wide.md): done means merged

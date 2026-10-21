@@ -32,7 +32,7 @@ After `RELEASE SHIPPED` and `PLAY DONE`, each input owner sends `REPORT READY <m
 
 1. **Every report owner**: Logs inputs live and sends Gale `REPORT READY <minor>` (DEC-20261019-kaizen-aggregates-each-review).
 2. **Gale**: Audits the workflow and writes `docs/kaizen/<minor>-scorecard.md` beside the previous one (PLN-04, KZ-09).
-3. **Gale**: Grades every active rule and decision: keep, tighten, loosen, merge or retire, with evidence (KZ-01).
+3. **Gale**: Grades every active rule and decision, Isaac's own included (COM-18): keep, tighten, loosen, merge or retire, with evidence (KZ-01).
 4. **Francesca**: Grades Gale's own rules and checks the scorecard compares like with like, reporting to the coordinator (DEC-20261019-from-0-9-rules-steward).
 5. **Gale**: Grades Q-14 (DEC-20261019-kaizen-grades-the-ledger-rule) and decides every open #222 row (KZ-05).
 6. **Gale**: Turns each repeated cause or worse metric into one change through [FLOW-15](FLOW-15-process-change.md), and redrafts `docs/kaizen/project-instructions.md` ([Project instructions redraft](../team/gale.md#project-instructions-redraft)); the outside reviewer per the triage rule reviews it (a consultant when it touches Team Audit or the review system), and the coordinator applies it only after that OK.
@@ -68,6 +68,7 @@ After `RELEASE SHIPPED` and `PLAY DONE`, each input owner sends `REPORT READY <m
 - [PLN-04](../../ROADMAP.md): scorecard
 - [KZ-09](https://github.com/HackTheMeatball/daeva-companion/issues/222): targets, blind spots, rule count
 - [KZ-01](../DECISIONS.md): graded audit
+- [COM-18](../team/team-wide.md): owner rules graded like any other
 - [KZ-05](https://github.com/HackTheMeatball/daeva-companion/issues/222): every #222 row decided
 - [KZ-10](../DECISIONS.md): done before planning
 - [KZ-02](../team/gale.md): safety limits

@@ -2,7 +2,7 @@
 
 These rules bind every thread. The ledger ([docs/kaizen/ledger.csv](../kaizen/ledger.csv)) indexes them.
 
-Each rule below is copied word for word from issue #114 (its body as of Oct 20, 3:48 PM ET); in it, "this issue", "here", "above" and "below" mean #114 and its sections.
+Each rule below is copied word for word from issue #114 (its body as of Oct 20, 3:48 PM ET); in it, "this issue", "here", "above" and "below" mean #114 and its sections. A rule added later (COM-17 on) names its own source in its italic line.
 
 ## Communication
 
@@ -23,6 +23,24 @@ _From #114 "Owners (Isaac, 2026-10-18 5:05 AM ET; replaces "Three parts, one tea
 _From #114 "Team-wide rules (homed here from team memory; rules audit, Isaac, typed in the Gus thread 2026-10-19 4:56 PM ET)"._
 
 - **COM-13 done means merged:** say "recorded" or "done" only after the PR merges.
+
+### COM-17
+
+_Owner, typed in the Org Design thread 2026-10-20 11:34 PM ET ("Sure let’s do it"), approving Org Design's Walter load
+recommendation item 2; backed by Org Design (Nacho)._
+
+- **Card taps travel with the ask:** a thread that asks Walter for a DECISIONS row from an owner decision card puts the
+  card-tap record in the ask: the card's message id, the option chosen, `chosen_by` and the tap time in ET. Walter
+  checks that record instead of looking for it. A typed answer is still forwarded verbatim (DEC-02).
+
+### COM-18
+
+_Owner, typed in the project chat 2026-10-20 11:43 PM ET: "every standing decision, rule, etc that I came up with is under
+scrutiny. Just cause I’m the owner doesn’t mean I’m right"; effect as Kaizen (Gale) worded it, for the coordinator._
+
+- **Owner rules get no pass:** a rule or decision Isaac originated is graded against real-world practice at each kaizen
+  review like any other rule, and any thread may propose changing it through the process-change route. Loosening one of
+  the seven owner-held limits still goes to Isaac, as a recommendation.
 
 ## Merging
 
