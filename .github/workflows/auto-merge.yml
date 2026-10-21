@@ -171,8 +171,9 @@ jobs:
             const SAVEKEY = (f) => f === 'src/core/state.js' || f === 'CHANGELOG.md';
             const prNoClear = (prBody, labels, files) => {
               const r = V.lines(prBody).find((l) => /^(?:[-*]\s+)?Review:/i.test(l));
-              // Only numbers after the word "trigger" count, so "Review: 2 reviewers" isn't read as trigger 2.
-              const t = r && (r.match(/\btriggers?\b([^.;)]*)/i) || [])[1];
+              // The whole line counts (ROADMAP's "Review: external — 2" has no word "trigger"); only a reviewer count such as
+              // "2 reviewers" is dropped first, so it isn't read as trigger 2. Anything else that reads as 2, 4b, 5 or 6 refuses.
+              const t = r && r.replace(/\b\d+\s+(?:fresh\s+|blind\s+|external\s+)?reviewers?\b/gi, '');
               if (t && /\b(2|4b|5|6)\b/i.test(t)) return `its Review: line names ${r.replace(/^(?:[-*]\s+)?Review:\s*/i, '')}`;
               const l = labels.find((x) => x === 'hold' || x === 'fresh-review');
               if (l) return `it carries ${l}`;

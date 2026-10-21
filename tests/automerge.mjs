@@ -349,6 +349,12 @@ check(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6
   'deadlock exit: "Review: 2 reviewers" names no trigger, so the clear stands');
 check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6), c(OWNER, CL, 8)], NEW, 'Review: fresh; triggers 1 and 5')),
   'deadlock exit: "triggers 1 and 5" on the Review: line still refuses the clear');
+check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6), c(OWNER, CL, 8)], NEW, 'Before: x\n\n- **Review:** external \u2014 2')),
+  'deadlock exit: ROADMAP form "Review: external \u2014 2" (no word "trigger") still refuses the clear (#705 fresh review)');
+check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6), c(OWNER, CL, 8)], NEW, 'Review: blind \u2014 4b')),
+  'deadlock exit: ROADMAP form "Review: blind \u2014 4b" still refuses the clear (#705 fresh review)');
+check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6), c(OWNER, CL, 8)], NEW, 'Review: 2 reviewers \u2014 5')),
+  'deadlock exit: a reviewer count is dropped but a trigger after it still refuses the clear');
 
 check(/waits on fresh review/.test(namedBlocker([REVIEW], SHA, 'Before: x\n\n- **Review:** external (trigger 1)')),
   '#695: a Review: line naming external review waits on a FRESH REVIEW OK on the head, with no hold label');
