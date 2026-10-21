@@ -3,6 +3,7 @@
    Node against fixtures, no network: an item with an unmet owner-ok key, an unknown key or an open dependency must stay
    unstarted; a met one must start (2026-10-18: explicit [next] lines skipped the check, Kaizen (Gale), #222). < 1 s. */
 import { existsSync, readFileSync } from 'node:fs';
+import { execSync } from 'node:child_process';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -265,18 +266,20 @@ check(opusPath(bullet('`src/cards/welcome.html`, `src/cards/welcome.js`, `src/st
 // reconstructed from §P22 as it stood before #687 (0a1f484^; the issue was written from it), checked against §P22 today.
 const pi = yml.match(/\/\/ PLAN-INPUTS START[^\n]*\n([\s\S]*?)\n\s*\/\/ PLAN-INPUTS END/);
 check(!!pi, 'kickoff.yml has the PLAN-INPUTS block');
-const px = new Function('ROUTE', 'GEN', of[1] + '\n' + pi[1] + '\nreturn { planRef, planSection, roadmapRows, planGaps };')(ROUTE, GEN);
+const px = new Function('ROUTE', 'GEN', of[1] + '\n' + pi[1] + '\nreturn { planRef, planSection, roadmapRows, planGaps, inputPaths };')(ROUTE, GEN);
 const fxt = (f) => readFileSync(join(ROOT, 'tests', 'fixtures', 'kickoff', f), 'utf8');
 const p22 = fxt('p22-plan.md'), pre644 = fxt('644-pre-fix.md'), now644 = fxt('644-re-spec.md');
+// Top-level entries on main: kickoff reads them with one getContent of the repo root; here git lists them.
+const TOPS = new Set(execSync('git ls-files', { cwd: ROOT, encoding: 'utf8' }).split('\n').filter(Boolean).map((f) => f.split('/')[0]));
 const ref644 = px.planRef(pre644);
 check(ref644 && ref644.file === 'docs/plans/0.9/README.md' && ref644.sec === 'P22', '"Plan: `docs/plans/0.9/README.md` §P22" is read as file and section');
-const g644 = px.planGaps(pre644, px.planSection(p22, 'P22'), '');
+const g644 = px.planGaps(pre644, px.planSection(p22, 'P22'), '', TOPS);
 check(g644.paths.includes('docs/design/0.9-keys-macro.md') && g644.keys.includes('research-skill-bar'), `#644 pre-fix spec -> refused, naming docs/design/0.9-keys-macro.md and research-skill-bar (${[...g644.paths, ...g644.keys].join(', ')})`);
 check(g644.keys.includes('owner-ok-0.9-key-grid') && g644.paths.includes('tools/gen/*') && !g644.paths.includes('docs/design/0.9-keys'), '#644 pre-fix: the new After gate and Files paths are named too; the input it had is not');
-const gNow = px.planGaps(now644, px.planSection(p22, 'P22'), '');
+const gNow = px.planGaps(now644, px.planSection(p22, 'P22'), '', TOPS);
 check(!gNow.paths.length && !gNow.keys.length, `#644 as re-specced -> passes (${[...gNow.paths, ...gNow.keys].join(', ')})`);
 const nn = pre644.replace('- **No-gos.**', '- **Inputs, not needed.** `docs/design/0.9-keys-macro.md` — not needed: the macro call landed in the mock.\n- **No-gos.**');
-const gNn = px.planGaps(nn, px.planSection(p22, 'P22'), '');
+const gNn = px.planGaps(nn, px.planSection(p22, 'P22'), '', TOPS);
 check(!gNn.paths.includes('docs/design/0.9-keys-macro.md') && gNn.notNeeded.length === 1 && /landed in the mock/.test(gNn.notNeeded[0].why), '"`<path>` — not needed: <reason>" counts as listed, and its reason is kept for the log');
 check(px.planSection(p22, 'P2') === null && /^## P22:/.test(px.planSection(p22, 'P22')), 'a section is matched by its exact key (§P2 is not §P22)');
 check(/^## P25:/.test(px.planSection('## P25–P27: group\n\nx\n\n## P25: one\n\n`a/b.md`\n\n## P26: two\n', 'P25')), 'a group heading "P25–P27" is not §P25');
@@ -284,8 +287,20 @@ check(px.planSection('whole `a/b.md` file', '') === 'whole `a/b.md` file', 'a pl
 const rows = '| Item | x |\n| [P22](docs/plans/0.6/P22-ranger-class-data.md) | No pack | L | `data/packs/aion2/classes/ranger/**`, `sources.json` | Opus |\n| [P5](docs/plans/0.6/P5.md) | `src/x.js` |';
 const r06 = px.roadmapRows(rows, { file: 'docs/plans/0.6/P22-ranger-class-data.md', sec: '' });
 check(/ranger\/\*\*/.test(r06) && !/P5/.test(r06), 'the ROADMAP row linking the plan file is plan text; other rows are not');
-check(px.planGaps('Plan: `docs/plans/0.6/P22-ranger-class-data.md`\n- **Files.** `src/a.js`.\n', '', r06).paths.join() === 'data/packs/aion2/classes/ranger/**', 'a path in the ROADMAP row and not in the spec -> named');
-check(px.planGaps('- **Files.** `src/a.js`.\n', 'See [the mock](docs/design/x.md) and `data/packs/<guide>/save-keys.json`, and https://example.com/a/b.', '').paths.join() === 'docs/design/x.md', 'a repo-relative link counts; a <placeholder> path and a web link do not');
+check(px.planGaps('Plan: `docs/plans/0.6/P22-ranger-class-data.md`\n- **Files.** `src/a.js`.\n', '', r06, TOPS).paths.join() === 'data/packs/aion2/classes/ranger/**', 'a path in the ROADMAP row and not in the spec -> named');
+check(px.planGaps('- **Files.** `src/a.js`.\n', 'See [the mock](docs/design/x.md) and `data/packs/<guide>/save-keys.json`, and https://example.com/a/b.', '', TOPS).paths.join() === 'docs/design/x.md', 'a repo-relative link counts; a <placeholder> path and a web link do not');
+// Repo paths only (fresh review of #720 at 8c18892): each of these was a false hold.
+const only = (plan, spec = '- **Files.** `src/a.js`.\n') => px.planGaps('Plan: `docs/plans/0.8/inputs/README.md`\n' + spec, plan, '', TOPS).paths;
+check(only('Hold `Ctrl/Alt`, at `1/45`, see P25/P26 and `P25/P26`.').length === 0, 'tokens that are not repo paths (Ctrl/Alt, 1/45, P25/P26) are not plan inputs');
+check(only('Serve at `daevacompanion.com/staging/`.').length === 0, 'a site path (daevacompanion.com/staging/) is not a plan input');
+check(only('Reads `src/core/state.js:18` and `src/core/merge.js:40-52`.', '- **Files.** `src/core/state.js`, `src/core/merge.js`.\n').length === 0, 'a `:line` or `:a-b` anchor is dropped, so listing the file covers it');
+check(only('Reads `src/core/state.js:18`.').join() === 'src/core/state.js', 'an anchored path the spec does not list is named without its anchor');
+check(only('Per [Templar](owner-keys/templar.md) and [up](../../../../ROADMAP.md).').join() === 'docs/plans/0.8/inputs/owner-keys/templar.md', "a relative link resolves against the plan file's directory");
+check(only('See [x](https://example.com/docs/a.md) and [m](mailto:a@b.c).').length === 0, 'a web or mail link is never resolved into a repo path');
+check(only('Never touch `node_modules/x` or `nope/y.md`.').length === 0, 'a first segment that is not a top-level entry on main is not a repo path');
+// A "not needed" line inside the Inputs field is not an input (fresh review: it was looked up on main and held the item).
+const nnIn = px.inputPaths('- **Inputs.** `docs/a.md`; `docs/never-made.md` — not needed: covered by the mock.\n- **Files.** `src/a.js`.\n');
+check(nnIn.repo.join() === 'docs/a.md' && !nnIn.bare.length, 'a "not needed" entry written inside Inputs is not looked up as an input');
 check(px.planRef('No plan named here.') === null, 'a spec with no Plan: reference is not checked');
 // Order: after the input check (whose lookup is where a listed input that doesn't exist on main holds the item, change 3)
 // and before a build starts.

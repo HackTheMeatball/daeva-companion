@@ -94,7 +94,8 @@ jobs:
             // doesn't have keeps the item queued but not started. Inputs come from the spec's "- **Inputs.**" bullet or an
             // "Inputs: a, b" line in "## Lanes, model, order" (Release Planner (Walter)); "Inputs: none" names none.
             const inputPaths = (body) => {
-              const b = body || '';
+              // A "`<path>` — not needed: <reason>" entry (PLAN-INPUTS below) lists a plan path the build doesn't read: not an input.
+              const b = (body || '').replace(/`[^`\s]+`\s*(?:—|–|-{1,2})\s*not needed:[^\n]*/gi, '');
               const ticks = (t) => [...t.matchAll(/`([^`\s]+)`/g)].map((m) => m[1]);
               // The bullet is prose, so only its backticked paths count; a bare "Inputs: a, b" line may list them plain.
               const lineTokens = [...b.matchAll(/^Inputs?:[ \t]*([^\n]*)$/gm)].flatMap((m) => (ticks(m[1]).length ? ticks(m[1]) : m[1].split(/[,\s]+/)));
@@ -153,15 +154,25 @@ jobs:
             const roadmapRows = (roadmap, ref) => (roadmap || '').split('\n').filter((l) => /^\|/.test(l) &&
               (ref.sec ? l.includes(`[${ref.sec}](${ref.file})`) : l.includes(`](${ref.file})`))).join('\n');
             const normPath = (p) => p.replace(/[.,;:]+$/, '').replace(/\/+$/, '');
-            const planPaths = (text) => {
-              const t = [...(text || '').matchAll(/`([^`\s]+)`/g)].map((m) => m[1]);
-              const links = [...(text || '').matchAll(/\]\(([^)\s#]+)(?:#[^)]*)?\)/g)].map((m) => m[1]);
-              return [...new Set([...t, ...links].filter((x) => x.includes('/') && !/[<>]/.test(x) && !/^(?:[~/]|https?:|mailto:)/.test(x)).map(normPath))];
+            // Repo paths only (fresh review of #720, 8c18892): a `:line` anchor is dropped, a token counts only when its first
+            // segment is a top-level entry on main (`tops`; so not Ctrl/Alt, 1/45 or daevacompanion.com/…), and a link is
+            // resolved against the directory of the file it is in (`base`; '' for ROADMAP, which sits at the root).
+            const joinPath = (base, rel) => { const out = [];
+              for (const seg of [...(base ? base.split('/') : []), ...rel.split('/')]) {
+                if (seg === '..') out.pop(); else if (seg && seg !== '.') out.push(seg); }
+              return out.join('/'); };
+            const planPaths = (text, base, tops) => {
+              const web = (x) => /[<>]/.test(x) || /^(?:[~/]|[a-z][\w+.-]*:)/i.test(x);
+              const t = [...(text || '').matchAll(/`([^`\s]+)`/g)].map((m) => m[1]).filter((x) => !web(x));
+              const links = [...(text || '').matchAll(/\]\(([^)\s#]+)(?:#[^)]*)?\)/g)].map((m) => m[1]).filter((x) => !web(x)).map((x) => joinPath(base, x));
+              return [...new Set([...t, ...links].filter((x) => x.includes('/')).map((x) => normPath(x.replace(/:\d+(?:-\d+)?$/, '')))
+                .filter((x) => tops.has(x.split('/')[0])))];
             };
             const notNeeded = (body) => [...(body || '').matchAll(/`([^`\s]+)`\s*(?:—|–|-{1,2})\s*not needed:\s*([^\n]+)/gi)]
               .map((m) => ({ path: normPath(m[1]), why: m[2].trim() }));
-            const planGaps = (body, plan, rows) => {
-              const text = [plan || '', rows || ''].join('\n');
+            const planGaps = (body, plan, rows, tops) => {
+              const text = [plan || '', rows || ''].join('\n'), ref = planRef(body);
+              const dir = ref ? ref.file.split('/').slice(0, -1).join('/') : '';
               const ins = inputPaths(body), nn = notNeeded(body);
               const tick = (t) => [...(t || '').matchAll(/`([^`\s]+)`/g)].map((m) => m[1]);
               const have = new Set([...ins.repo, ...ins.mnt, ...tick(specField(body, 'Files')), ...nn.map((x) => x.path), ...(planRef(body) ? [planRef(body).file] : [])].map(normPath)); // the plan file itself is not an input
@@ -170,13 +181,13 @@ jobs:
               const keys = new Set([...keysIn(afterOf(body || '')), ...keysIn(specField(body, 'Inputs?')), ...tick(specField(body, 'Inputs?'))]);
               const want = [...new Set([...keysIn(afterOf(plan || '')), ...[...text.matchAll(/\b(research-[\w.-]*\w)/g)].map((m) => m[1])])];
               return {
-                paths: planPaths(text).filter((p) => !have.has(p)),
+                paths: [...new Set([...planPaths(plan, dir, tops), ...planPaths(rows, '', tops)])].filter((p) => !have.has(p)),
                 keys: want.filter((k) => !keys.has(k)),
                 notNeeded: nn,
               };
             };
             // PLAN-INPUTS END
-            let roadmapText = null;
+            let roadmapText = null, repoTops = null;
             // Keep in step with lanes() in the refresh job below (same rules, two copies).
             const lanesOfFiles = (files) => {
               const out = new Set();
@@ -447,10 +458,11 @@ jobs:
                 let gaps = null, planWhy = '';
                 try {
                   const ptxt = Buffer.from((await github.rest.repos.getContent({ owner, repo, path: pref.file, ref: 'main' })).data.content, 'base64').toString('utf8');
+                  if (repoTops === null) repoTops = new Set((await github.rest.repos.getContent({ owner, repo, path: '', ref: 'main' })).data.map((x) => x.name));
                   if (roadmapText === null) roadmapText = Buffer.from((await github.rest.repos.getContent({ owner, repo, path: 'ROADMAP.md', ref: 'main' })).data.content, 'base64').toString('utf8');
                   const sec = planSection(ptxt, pref.sec);
                   if (sec === null) planWhy = `plan section §${pref.sec} not found in ${pref.file}`;
-                  else gaps = planGaps(iss.body, sec, roadmapRows(roadmapText, pref));
+                  else gaps = planGaps(iss.body, sec, roadmapRows(roadmapText, pref), repoTops);
                 } catch (e) {
                   if (e.status !== 404) { core.warning(`#${n}: could not read plan ${pref.file} (${e.status || e.message}); held this run`); if (alone) break; continue; }
                   planWhy = `plan file ${pref.file} not on main`;
