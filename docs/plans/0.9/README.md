@@ -408,6 +408,10 @@ Rules for every item:
 - **No-gos.** Progress stays manual: nothing is ticked without a tap. No save key change.
 - **Acceptance.**
   - [ ] Browser test: a Lv 39 join reaches every skill's target in one tap per skill; Undo reverses a tap.
+  - [ ] Endgame case (beta tester T1, owner report 2026-10-20 10:07 PM ET: "pretty clunky getting his skills caught
+        up"), measurement only: the same test on a Lv 45 join holding 180 stones, one tap per skill and no per-line
+        "Mark spent" clicks. Baseline on live 0.8.0 (Player Testing's endgame catch-up
+        script, 2026-10-21): 141 clicks for skills including specialty picks; paste the new count with the same script.
   - [ ] Shots at 1500 and 390 px, Basic and Advanced, against the mock.
 - **Lanes:** skills-card, nextup-card, app.css, golden, golden-nextup. **Model:** Opus, L (120 min).
 - **After:** P15.
@@ -430,6 +434,11 @@ Rules for every item:
 - **Acceptance.**
   - [ ] Browser test: "Have them" ticks one board's guide nodes, "Respec this board" clears only that board, Undo
         reverses both; Stigmas Respec clears the slots.
+  - [ ] Endgame case (beta tester T1, owner report 2026-10-20 10:07 PM ET), measurement only: a Lv 45 join holding the
+        tester's 336 Daevanion crystals and 90 stigma shards catches up every open board and the stigma slots in one tap
+        each.
+        Baseline on live 0.8.0 (the same script): 31 clicks for stigmas and 24 for Daevanion; paste the new counts.
+        Stigmas past Lv 45 ("didn't seem to scale well with endgame") are 0.10's endgame scope, not this item.
   - [ ] Shots at 1500 and 390 px against the mock.
 - **Lanes:** app.css, golden, daevanion-card. **Model:** Opus, M (90 min).
 - **After:** P16, research-respec.
@@ -483,22 +492,36 @@ Rules for every item:
 - **Problem.** The owner asked for key setup to rise from the bottom of the screen on desktop (note 11), and for the
   icons to fill each key box with the name in a tooltip, since the rotation already names them (note 12). Players can't
   set their own keys (#388). The Gladiator's and Ranger's key setups are bare next to the Assassin's (UX finding 11).
-  Design Lead made 11, 12 and #388 one design (#610).
+  Design Lead made 11, 12 and #388 one design (#610). Beta (owner, 2026-10-20 10:07 PM ET): the skill bar must match
+  the game exactly, and today's macro model is wrong (right-click can cycle more than 4 keys); the owner also asked for
+  a simple "autopilot" layout (hold left / right click plus Q / E / R / F) next to the advanced split. Game Data Check
+  ruled that a macro steps through slots, so it can cycle more than 4 skills, and that the macro is drawn as steps; the
+  ruling lands as a `skill-bar` research file (`research-skill-bar`). The grid follows the game, row 0 at the bottom
+  (DECISIONS `owner-ok-0.9-key-grid`, 2026-10-20 10:16 PM ET). Design Lead writes `docs/design/0.9-keys-macro.md`:
+  whether the simple layout and the macro steps change the keys mock, with the updated mock in `docs/design/0.9-keys/`
+  if they do.
 - **Result.** As Design Lead's approved mock shows: key setup is a bottom sheet; icons fill each box with a tap or
   focus tooltip; each key chip can be tapped to rebind; one `keys` save field with the class default when empty (no key
-  bump); every class in the same layout.
+  bump); every class in the same layout. The right-click macro is a list of steps, each naming a slot (a slot holds at
+  most 4 skills; a macro can step through several), replacing the flat `keyStacks.rightClick` stack in the data and
+  its schema for every class, per the skill-bar research file; its step limit comes from that file or is labelled
+  unknown.
 - **Inputs.** `docs/design/0.9-keys/` (Design Lead's mocks, #619 and #656; merged with Design Lead's look
-  OK after the fresh review; owner 2026-10-20 5:21 and 5:24 PM ET). Kickoff holds the item until they are on main.
-- **Files.** `src/packs/aion2/cards/build.js`, `src/packs/aion2/cards/build.html`, `src/core/state.js` (`keys`
+  OK after the fresh review; owner 2026-10-20 5:21 and 5:24 PM ET), `docs/design/0.9-keys-macro.md` (Design Lead's
+  call on the simple layout and macro steps). Kickoff holds the item until both are on main.
+- **Files.** `src/packs/aion2/cards/build.js`, `src/packs/aion2/cards/build.html`, `data/schema/` (the key stacks),
+  `data/schema/examples/**/builds.json`, `data/packs/aion2/asmodian/*/builds.json` (`keyStacks`), `tools/gen/*`,
+  `src/packs/aion2/data/build.js`, `src/core/state.js` (`keys`
   default), `src/core/merge.js`, `src/styles/app.css`, `tests/a11y.js`, `tests/save.js`, the tests.
 - **No-gos.** Only keys AION 2 can bind (Game Data Check's `bindable-keys` file: Design Lead's ask D3). No save key bump;
   an empty or unknown `keys` value falls back to the default. Names stay reachable by keyboard and screen reader.
 - **Acceptance.**
   - [ ] a11y: each key box has an accessible name; the tooltip opens on focus; rebinding works by keyboard.
   - [ ] Core: a save without `keys` loads with the default; `merge()` keeps the newer `keys`.
+  - [ ] `npm run gen` passes with the stepped macro for every class; Game Data Check's `DATA OK` on the head.
   - [ ] Shots at 1500 and 390 px against the mock.
-- **Lanes:** build-card, app.css, a11y, golden, mig, save. **Model:** Opus, L (120 min).
-- **After:** research-bindable-keys.
+- **Lanes:** gen, build-card, app.css, a11y, golden, mig, save. **Model:** Opus, L (120 min).
+- **After:** research-bindable-keys, research-skill-bar, owner-ok-0.9-key-grid.
 
 ## P23: The Sources lists load when the card opens
 
@@ -544,6 +567,197 @@ Rules for every item:
 - **Review:** blind (owner-held legal text; Code Review the code).
 - **Lanes:** site, page-card. **Model:** Sonnet, S (45 min).
 - **After:** P23, owner-ok-0.9-terms. If the owner's OK isn't in by 0.9's release gate, P24 moves to 0.10.
+
+## P25–P27: compliance checks (Legal's CK-1 to CK-3)
+
+Legal & Compliance (Chuck) found three rules with no test (compliance register C4, C6, C10; sent 2026-10-20) and
+routed them here as build items. Each turns an existing rule into a check and loosens nothing. They share one new file,
+`tests/compliance.mjs`, which the `schema` suite runs after the ledger checks, so they run in order on the schema lane.
+
+## P25: A licence header or file other than ours fails CI (CK-1)
+
+- **Problem.** Code is PolyForm Strict 1.0.0 and CLAUDE.md bans MIT or other licence headers or files, but nothing
+  checks it (register C4: "no test for stray licence headers or files").
+- **Result.**
+  - `tests/compliance.mjs` exports `checkCompliance(root, overrides)` returning a list of problems, in the shape of
+    `tests/ledger.mjs`. Its first check fails on: an `SPDX-License-Identifier` naming any licence but
+    PolyForm Strict 1.0.0 (`PolyForm-Strict-1.0.0`), an `MIT License` or `Permission is hereby granted, free of charge` text, or a `LICENSE*` /
+    `COPYING*` file other than the root `LICENSE`, in tracked files outside `node_modules/`. The font folders
+    (`src/assets/fonts/`, `tools/brand/fonts/`) are allowed their own licence files.
+  - `tests/schema.mjs` runs it after the ledger checks, with one negative fixture per pattern (each passed as an override,
+    never written to the repo).
+- **Inputs.** none.
+- **Files.** `tests/compliance.mjs` (new), `tests/schema.mjs`, `tests/run.mjs` (the schema line of the help text only).
+- **No-gos.** No change to LICENSE or any licence text. No new dependency.
+- **Acceptance.**
+  - [ ] `npm test` green on main as is (paste the compliance count).
+  - [ ] Each negative fixture (an MIT header, a foreign SPDX id, a stray `LICENSE.md`) makes the check fail; paste the
+        three messages.
+- **Review:** standing (a new check; it tightens).
+- **Lanes:** schema, compliance, run-mjs. **Model:** Sonnet, S (45 min).
+- **After:** none.
+
+## P26: PRIVACY.md names the save key the code uses (CK-3)
+
+- **Problem.** PRIVACY.md says progress is stored under `companion-save-v5`. A save-key bump (allowed before 1.0)
+  would leave it stale, and nothing checks it (register C10).
+- **Result.** A second check in `tests/compliance.mjs`: the `KEY` exported by `src/core/state.js` appears in PRIVACY.md,
+  and every `companion-save-v<n>` that PRIVACY.md names equals it (the `:before-import` suffix allowed). A negative
+  fixture in `tests/schema.mjs` (a PRIVACY text naming `-v4`) fails it.
+- **Inputs.** none.
+  P2 bumps the key to `companion-save-v6` and doesn't list PRIVACY.md, so this item also brings PRIVACY.md's key
+  lines to the code's key (those lines only).
+- **Files.** `tests/compliance.mjs`, `tests/schema.mjs`, `PRIVACY.md` (the key lines only).
+- **No-gos.** No other change to PRIVACY.md; no change to the save key.
+- **Acceptance.**
+  - [ ] Passes on this branch after P2; the fixture fails with a message naming both keys; the PRIVACY.md diff touches
+        only key names.
+- **Review:** standing.
+- **Lanes:** schema, compliance. **Model:** Sonnet, S (45 min).
+- **After:** P2, P25.
+
+## P27: Every shipped icon has its provenance row (CK-2)
+
+- **Problem.** The standing icon OK (2026-10-14) requires each icon's source page, file URL and date in
+  `docs/ISSUES.md`, but nothing checks it (register C6). On main on 2026-10-21, 29 of the 234 files in
+  `src/assets/icons/` have no row naming them (matched by base name), all of them `sk-*` skill icons.
+- **Result.**
+  - Game Data Check commits `docs/research/2026-10-icon-provenance.md`: one row per icon with no ISSUES.md row (file,
+    source page, file URL, date), from the batch records already in the repo or the shared folder; an icon with no
+    record is listed for the owner instead, never guessed.
+  - This item adds those rows to `docs/ISSUES.md` verbatim, and a third check in `tests/compliance.mjs`: every file in
+    `src/assets/icons/` has an ISSUES.md row naming it with a source page, a file URL and a date, or an entry on the
+    owner list section the research file names. A negative fixture (an extra icon file name) fails it.
+- **Inputs.** `docs/research/2026-10-icon-provenance.md`.
+- **Files.** `tests/compliance.mjs`, `tests/schema.mjs`, `docs/ISSUES.md`.
+- **No-gos.** No icon added, removed or replaced. No provenance invented: a row comes from the research file only.
+- **Acceptance.**
+  - [ ] The check passes on this branch and fails on the fixture; paste the count of icons with rows before and after.
+  - [ ] Every new ISSUES.md row matches the research file byte for byte.
+- **Review:** standing (Game Data Check confirms the rows).
+- **Lanes:** schema, compliance. **Model:** Sonnet, S (45 min).
+- **After:** P25, research-icon-provenance.
+
+## P28–P29: hiding a class takes one data edit (P3's acceptance run)
+
+P3 (#650) merged with its acceptance run unproven. Player Testing ran it at ea42e07 (#689) against the line in #622 and
+found it NOT PROVEN: flipping one class to `release: "hidden"` still needs test edits, and the hidden class stays in the
+picker and opens from a stored save. P28 finishes P3's own goal in the tests; P29 is the `src/` half P3's no-go kept out.
+
+## P28: The tests read hidden classes from the data (P3's remainder)
+
+- **Problem.** With only `data/packs/aion2/classes/chanter/class.json` flipped to `hidden`, e2 fails: `hiddenDirs` in
+  `tests/support/v1view.js` covers `classes/<class>/` but not the guide pack `asmodian/<class>/` (its `otherDirs` covers
+  both), so 14 Chanter URLs still count as "must be on the card". With the Chanter made idle (guide pack removed),
+  schema fails on a hand-kept assertion in `tests/schema.mjs` that names the Chanter ("no idle class pack is left").
+  Source: #689, set-ups A and B.
+- **Result.**
+  - `tests/support/v1view.js`: `hiddenDirs` holds both folders of each hidden class, derived the way `otherDirs` is.
+  - `tests/schema.mjs`: the idle-pack assertion reads the data (every idle pack's class is `hidden`) and names no class.
+  - The PR pastes both of #689's set-ups run on a scratch copy, with zero test-file edits between them and main: set-up A
+    (one class flipped) passes e2 and schema; set-up B (one class idle) passes schema and fails only
+    `tests/core/chars.test.mjs` "the AION 2 pack lists the classes with a guide pack", which is correct until P29.
+- **Inputs.** none.
+- **Files.** `tests/support/v1view.js`, `tests/schema.mjs`, `tests/e2test.js` (only if a derived name changes).
+- **No-gos.** No `src/` or data change. No check dropped or loosened: the idle assertion still fails when an idle pack's
+  class is released.
+- **Acceptance.**
+  - [ ] Set-ups A and B as above, pasted, zero test-file edits.
+  - [ ] Negative control: on set-up A, one leaked Chanter URL added to a shipped data file still fails e2.
+  - [ ] `npm test` green.
+- **Review:** standing.
+- **Lanes:** schema, e2. **Model:** Sonnet, S (45 min).
+- **After:** none.
+
+## P29: A hidden class is not offered and no save opens it
+
+- **Problem.** The playable class list is hand-kept in `src/packs/aion2/pack.js` (one constant per class and the
+  `classes` array), and nothing in `src/` reads `release`. So a class flipped to `hidden` is still in the welcome
+  picker and New character, and a stored save of it opens a working route (#689 set-up A, all suites green). With its
+  guide pack gone, the build's loader falls back to the default pack and the page shows Assassin skills under a
+  "Chanter" title (set-up B; core goes red there, but nothing blocks set-up A). No class is hidden on live today, so no
+  player is affected; this is the switch that 1.1's Elyos packs and any pulled class will rely on.
+- **Result.**
+  - The playable classes come from the data: P11's generated `GUIDE_CLASSES`, which `src/packs/aion2/pack.js` already
+    reads, leaves out any class whose `release` is `hidden` (a hidden class's guide pack stays in the data and
+    `DATA_SOURCES.md`). The emblem map may stay hand-kept (it is art, not a class list).
+  - The build makes a class chunk only for those classes (a hidden class's guide pack stays in `DATA_SOURCES.md` and
+    the data, never in a served file).
+  - A stored save whose current character's class is not playable never shows another class's tables: the loader and
+    the app open that save on the character list with the hidden character's row marked unavailable, the save left
+    unchanged (no write, no migration), and the player can switch to or create a playable character. Same for Import.
+  - Visible change only on that edge (no class is hidden on live): shots of the unavailable row from a set-up A copy
+    and `scrapbook.json`; Design Review (Holly) checks the row.
+- **Inputs.** `docs/ARCHITECTURE.md` (§4, per-class loading).
+- **Files.** `src/packs/aion2/pack.js`, `src/core/pack.js`, `src/core/state.js`, `src/cards/characters.js`,
+  `scripts/build.mjs`, `tools/gen/packs.mjs`, `tools/gen/*` (the generated class export), `docs/ARCHITECTURE.md` (§4),
+  `tests/core/chars.test.mjs`, `tests/core/state.test.mjs`, `tests/regress.js` (a new check),
+  `docs/reviews/0.9-p29-shots/`.
+- **No-gos.** No save-key bump and no change to the save shape. No class's release changed on main. No URL parameter
+  for a class (#689: the app reads none; keep it so).
+- **Acceptance.**
+  - [ ] On a copy with one class flipped to `hidden` (set-up A): it is absent from the welcome picker and New
+        character, its chunk is not built, and a stored save of it opens on the character list with the row marked
+        unavailable and the stored bytes unchanged (paste the before / after hash). Same on set-up B and via Import.
+  - [ ] On main as is: every class is offered as before ("No visible change" outside the edge; golden green).
+  - [ ] Player Testing (Jesse) re-runs #689's set-ups, the negative control and Import: `P3 PROVEN <sha>`.
+  - [ ] Engineering (Gus) reviews the architecture change (ownership since 2026-10-20). `npm test` green.
+- **Review:** standing, plus Engineering for the architecture and Design Review for the row.
+- **Lanes:** gen, e2, architecture. **Model:** Opus, M (90 min). (`src/core/state.js` and `tests/core/state.test.mjs`
+  are shared with P9 on **architecture**; `scripts/build.mjs`'s other 0.9 items, P4 and P5, have merged.)
+- **After:** P11, P28.
+
+## P30: Skip identical writes in the cards P5 left out
+
+- **Problem.** P5 (#627, build #684) moved the main renderers to `setHTML` and cut the no-change `update()` cost by 17%
+  against its 25% target (Build Pipeline, 2026-10-21). The Stigmas, Journey and Areas cards and the Daevanion
+  `dvNextList` / `dvAllList` writes still repeat identical `innerHTML` on every `update()`.
+- **Result.** Those renderers call P5's `setHTML` helper, except where code changes the same subtree after the write
+  (each such call site keeps `innerHTML`, with the reason in a comment, as in P5). P5's blocking count check covers them.
+- **Inputs.** none.
+- **Files.** `src/packs/aion2/cards/stigmas.js`, `src/cards/journey.js`, `src/packs/aion2/cards/journey-sections.js`,
+  `src/packs/aion2/cards/areas.js`, `src/packs/aion2/cards/daevanion.js`, `tests/site.js` (the count check's limit only).
+- **No-gos.** No budget raise, no lazy loading (P23), no visible change.
+- **Acceptance.**
+  - [ ] `npm run test:perf` run alone three times on this branch and on the commit before P5 merged, same day: median
+        down at least 25% (P5 and P30 together; both runs pasted).
+  - [ ] The count check's N goes down by the writes removed (pasted before / after).
+  - [ ] Golden and regress pinned diffs unchanged; "No visible change".
+- **Review:** standing.
+- **Lanes:** stigmas-card, journey-card, daevanion-card, nextup-card, site. **Model:** Opus, M (90 min).
+  (`journey-sections.js` is shared with P19 and `areas.js` with P13, both on **nextup-card**; `tests/site.js` with P23
+  and P24 on **site**.)
+- **After:** P5.
+
+## P31: Quotes from other hosts: credited or paraphrased (Legal's C7)
+
+- **Problem.** Legal's quotes ruling (C7, v2, outside review Gomez, 2026-10-21) found `quote` fields that don't meet
+  their hosts' terms: 26 from thegameswiki whose credit doesn't name and link CC BY-NC-SA, 15 of Metabot's 33 that
+  should be paraphrased, and 65 on 14 other hosts. Legal's ruling puts it before 0.9 ships, so unlike other gated items
+  (Q-09) it doesn't move to 0.10: the release waits on it. It follows 0.8.1's allthings.how batch (F9 #662, F10 #690),
+  which ships first; Game Data Check writes these tables after F10's.
+- **Result.**
+  - Game Data Check commits `docs/research/2026-10-quotes-c7.md` with one table per group, in F9's form: (a)
+    thegameswiki: each credit completed with the licence named and linked, or a paraphrase where the credit can't be
+    completed; (b) Metabot: the 15 tagged quotes paraphrased, after Legal's blind 10-sample of the tags; (c) the 65 other
+    quotes paraphrased; and (d) the hosts the ruling allows short credited quotes from, each with the credit it needs
+    (for thegameswiki: the licence named and linked).
+  - This item applies the tables byte for byte and adds the gen check (ruling item 7): a `quote` field fails unless its
+    host is in table (d) and its credit has what (d) requires. All tables apply in this item, so the check ships
+    complete, with no exception list.
+  - `npm run gen` rewrites `data/DATA_SOURCES.md`.
+- **Inputs.** `docs/research/2026-10-quotes-c7.md`.
+- **Files.** `data/packs/aion2/**/claims.json`, `data/packs/aion2/asmodian/regional-quests.json`,
+  `data/packs/aion2/asmodian/strongholds.json` (only rows the tables name), `data/schema/examples/**/claims.json`,
+  `data/DATA_SOURCES.md`, `tools/gen/*` (the check), the tests.
+- **No-gos.** No fetching, no fact or URL removed, no schema change, no verdict weakened.
+- **Acceptance.**
+  - [ ] Every table row applied byte for byte; paste the counts per group before and after.
+  - [ ] The gen check fails on a fixture (a thegameswiki quote with its licence link removed) and passes on this branch.
+  - [ ] "No visible change", or shots and `scrapbook.json` if a label shows in the app; Game Data Check's `DATA OK`.
+- **Review:** standing.
+- **Lanes:** gen, golden. **Model:** Opus, M (90 min).
+- **After:** research-quotes-c7.
 
 ## S1–S4: pipeline items (Build Pipeline builds them; no queue line)
 

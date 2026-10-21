@@ -1351,9 +1351,16 @@ workflows).
 | P19 FR | Lv 39 join: 70–77 skill clicks in unlock order (note 10) → one row and one tap per skill | L | Opus | skills-card, nextup-card, app.css, golden, golden-nextup | P15 (input: `docs/design/0.9-catchup/`) |
 | P20 FR | Daevanion ~22 ticks, no per-board or Stigma respec (note 9) → board rows, respec per board and all, Stigma respec | M | Opus | app.css, golden, daevanion-card | P16, `research-respec` (input: `docs/design/0.9-catchup/`) |
 | P21 | Two views (Basic / Advanced) to maintain; Basic hides catch-up tools; Lv 4–16 chores lead Next up → one view, folds, chores folded | L | Opus | main.js, nextup-card, page-card, daevanion-card, app.css, golden, golden-nextup | none (input: `docs/design/0.9-one-view.md`, `docs/design/0.9-catchup/`) |
-| P22 FR | Key setup inline with small icons, keys fixed (notes 11, 12, #388) → a sheet, icons fill each box, players rebind keys | L | Opus | build-card, app.css, a11y, golden, mig, save | `research-bindable-keys` (input: `docs/design/0.9-keys/`) |
+| P22 FR | Key setup inline with small icons, keys fixed (notes 11, 12, #388) → a sheet, icons fill each box, players rebind keys | L | Opus | gen, build-card, app.css, a11y, golden, mig, save | `research-bindable-keys`, `research-skill-bar`, `owner-ok-0.9-key-grid` (input: `docs/design/0.9-keys/`, `docs/design/0.9-keys-macro.md`) |
 | P23 | Sources lists weigh 9.6 K gzip and 1,088 elements while closed → load on open | M | Opus | site, page-card, e2 | `research-sources-credit` |
 | P24 | No Terms of Use; robots.txt allows AI training crawlers → `TERMS.md` linked in the footer, training crawlers blocked | S | Sonnet | site, page-card | P23, `owner-ok-0.9-terms` |
+| P25 | Nothing checks for foreign licence headers or files (CK-1) → `tests/compliance.mjs` fails on them | S | Sonnet | schema, compliance, run-mjs | none |
+| P26 | PRIVACY.md's save key can go stale (CK-3) → a check that it names the code's key | S | Sonnet | schema, compliance | P2, P25 |
+| P27 | Icons can ship without a provenance row (CK-2) → missing rows added from research, then a check | S | Sonnet | schema, compliance | P25, `research-icon-provenance` |
+| P28 | Hiding a class still needs test edits (P3 run, #689) → hidden dirs and the idle check read from the data | S | Sonnet | schema, e2 | none |
+| P29 | A hidden class is still offered and opens from a save (#689) → class list from the data, no chunk, save opens on the character list | M | Opus | gen, e2, architecture | P11, P28 |
+| P30 | P5 cut identical writes 17% of a 25% target (#684) → Stigmas, Journey, Areas, Daevanion lists skip them too | M | Opus | stigmas-card, journey-card, daevanion-card, nextup-card, site | P5 |
+| P31 | 106 quotes miss their hosts' terms (Legal's C7) → credited or paraphrased from research tables, then a gen check | M | Opus | gen, golden | `research-quotes-c7` |
 | S1 FR | Golden shares a shard → its own shard | S | Gus | ci | P6 |
 | S2 FR | Nothing checks the live app works → scripted journey after each deploy and every 6 h | S | Gus | ci | none |
 | S3 FR | Sync server deployed by hand → CI tests and dry run, deploy on the owner's token | M | Gus | ci | none |
@@ -1361,7 +1368,11 @@ workflows).
 | R FR | Release 0.9.0 | S | Sonnet | release, alone | everything above, or moved; GO 0.9.0 |
 
 Not bot items (they run alongside): Game Data Check does the four research gates, naming each file with its slug
-(`choice-points`, `node-paths`, `e-stack`, `rotation-play`, and Design Lead's data asks `respec` and `bindable-keys`) so kickoff finds it, plus the owner's Vaizel Assault Stance
+(`choice-points`, `node-paths`, `e-stack`, `rotation-play`, and Design Lead's data asks `respec` and `bindable-keys`) so kickoff finds it;
+from the 0.9 additions also `skill-bar` (`docs/research/2026-10-skill-bar.md`, the macro and skill-bar ruling, gates P22)
+`icon-provenance` (`docs/research/2026-10-icon-provenance.md`, gates P27), both started by the Release Planner's ask,
+and `quotes-c7` (`docs/research/2026-10-quotes-c7.md`, Legal's C7 tables, gates P31; the Metabot table after Legal's blind sample);
+Design Lead writes `docs/design/0.9-keys-macro.md` (P22's input); plus the owner's Vaizel Assault Stance
 (4 or 5) re-check. Design Lead mocks the catch-up flow (notes 9, 10 and UX findings 4, 6–8) and the key setup sheet
 (notes 11, 12), tagged for fresh review; a Design Critic briefed by Design Review reads them before the owner does. Design
 Lead and Source Vetting run the 1.0 look's blind check (3–5 people, a non-gamer among them) for 0.11. Watchdog and Build
@@ -1380,14 +1391,15 @@ At most five builds at a time. Ungated items queue first; gated ones go last and
 - **Wave 1 (at the go):** P1, P2, P3, P4, P5, P6, P7, P8 and S2, S3. Queue order P1 → P2 → P3 → P7 → P8 → P4 → P5 → P6, so the
   queue runs top-down: P1 and P3 start at once; P2, P7 and P8 wait for P1 on nextup-card (P8 also on skills-card and
   build-card), and kickoff serialises them from their queue-line lanes.
-  Serial lanes: **gen** P1 → P2 → P6 → P10 → P11 → P13 → P15 → P16 → P17 → P18; **golden** P1 → P2 → P11 → P12 → P13 → the
-  research items → P19 → P20 → P21 → P22; **skills-card** P1 → P8 → P5 → P15 → P19; **nextup-card** P1 → P2 → P7 → P8 → P5 → P13 → P15 →
-  P19 → P21; **page-card** P4 → P5 → P21 → P23 → P24; **mig** P2 → P9 → P22; **schema** P3 → P6 → P10; **app.css** P8 → P19 → P20 → P21 →
-  P22; **build-card** P1 → P8 → P5 → P13 → P18 → P22; **daevanion-card** P1 → P5 → P16 → P20 → P21; **a11y** P8 → P22; **site** P5 → P23 → P24; **golden-nextup** P7 → P8 → P19 → P21; **journey-card** P2 → P7; **main.js** P4 → P9 → P21; **ci** (Gus) S2 → S3 → S1 → S4. Shared test and doc files: **save** (`tests/save.js`) P9 → P11 → P22; **e2** (`tests/e2test.js`) P3 → P23;
-  **run-mjs** (`tests/run.mjs`) P6 → P14 → S1; **architecture** (`docs/ARCHITECTURE.md`) P5 → P9 → P14 (plan review, #609).
-- **Wave 2 (after P2):** P9, P10, P11, P13; then P12 (after P11 and P6) and P14 (after P9 and P10).
+  Serial lanes: **gen** P1 → P2 → P6 → P10 → P11 → P13 → P15 → P16 → P17 → P18 → P22 → P29 → P31; **golden** P1 → P2 → P11 → P12 → P13 → the
+  research items → P19 → P20 → P21 → P22 → P31; **skills-card** P1 → P8 → P5 → P15 → P19; **nextup-card** P1 → P2 → P7 → P8 → P5 → P13 → P15 →
+  P19 → P21 → P30; **page-card** P4 → P5 → P21 → P23 → P24; **mig** P2 → P9 → P22; **schema** P3 → P6 → P10 → P25 → P26 → P27 → P28; **app.css** P8 → P19 → P20 → P21 →
+  P22; **build-card** P1 → P8 → P5 → P13 → P18 → P22; **daevanion-card** P1 → P5 → P16 → P20 → P21 → P30; **a11y** P8 → P22; **site** P5 → P23 → P24 → P30; **golden-nextup** P7 → P8 → P19 → P21; **journey-card** P2 → P7 → P30; **main.js** P4 → P9 → P21; **ci** (Gus) S2 → S3 → S1 → S4. Shared test and doc files: **save** (`tests/save.js`) P9 → P11 → P22; **e2** (`tests/e2test.js`) P3 → P23 → P28 → P29;
+  **run-mjs** (`tests/run.mjs`) P6 → P14 → P25 → S1; **architecture** (`docs/ARCHITECTURE.md`) P5 → P9 → P14 → P29 (plan review, #609; P29 also shares `src/core/state.js` and `tests/core/state.test.mjs` with P9). **compliance** P25 → P26 → P27; **stigmas-card** P30.
+- **Wave 2 (after P2):** P9, P10, P11, P13, P26; then P12 (after P11 and P6) and P14 (after P9 and P10). P25 and P28
+  (no gate) queue with this wave, P29 after P11 and P28, P30 after P5.
 - **Wave 3 (as research lands):** P15, P16, P17, P18, in the order their files land.
-- **Wave 4 (as mocks and OKs land):** P19, P20 on the catch-up mock; P21 on the one-view hide list and the mock; P22 on the keys mock; P23 on the sources-credit verdict; S4 once #609 merges.
+- **Wave 4 (as mocks and OKs land):** P19, P20 on the catch-up mock; P21 on the one-view hide list and the mock; P22 on the keys mock, the skill-bar file and Design Lead's macro note; P27 on the icon-provenance file; P31 on the quotes-c7 file; P23 on the sources-credit verdict; S4 once #609 merges.
 - **Critical path:** P2 → P11 → P12 → R (L + M + L, about 5.5 h of build at the stall limits, plus review). It runs
   through no owner gate and no research. A gated item whose OK isn't typed by the time the rest is done moves to 0.10
   rather than holding the release.
@@ -1413,7 +1425,9 @@ Under the standing OK until 1.0 most of 0.9 needs nothing from the owner. What i
 4. **Outside audit trial** (owner To-do: only the owner can do it): create the "Daeva audit" project with 7 days of Debug
    access.
 5. **In-game check:** Vaizel Assault Stance, 4 or 5 nodes (Game Data Check's thread).
-6. **Weekly usage** at the 0.9.0 release (Settings → Usage; "Usage budget" in "How a minor is planned"), logged in #232.
+6. **Key grid order: given** (`owner-ok-0.9-key-grid`, 2026-10-20 10:16 PM ET: the game's order, row 0 at the bottom;
+   gates P22).
+7. **Weekly usage** at the 0.9.0 release (Settings → Usage; "Usage budget" in "How a minor is planned"), logged in #232.
 
 ### 0.10 — The endgame guide past Lv 45 (estimate)
 
