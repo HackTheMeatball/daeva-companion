@@ -24,7 +24,7 @@ A planned item's files include `src/core/`, saves or storage, `tools/gen`, `data
 ## Steps
 
 1. **Walter**: In the planning pass, audits architecture and budgets (PLN-05) and shapes the item with its owned files (PLN-06); a save or storage key change is tagged `fresh-review` (KZ-16).
-2. **Kickoff**: Starts it on Opus when its files hit an Opus path (PIP-06). A change only to `src/*.js` (module layout, a performance budget) hits no Opus path: `src/*.js` stays off the Opus paths (Gus, 2026-10-21); an architecture item is to start on Opus by its lane once Gus's pipeline change for it lands (not on main yet).
+2. **Kickoff**: Starts it on Opus when its files hit an Opus path (PIP-06). A change only to `src/*.js` (module layout, a performance budget) hits no Opus path: `src/*.js` stays off the Opus paths (Gus, 2026-10-21); an architecture item starts on Opus by its `architecture` lane (#762).
 3. **Builder**: Builds it per ARCHITECTURE.md; a save break bumps the key and notes it in the CHANGELOG (REPO-04); runs `npm test` (REPO-01).
 4. **Reviewer**: Reviews it ([FLOW-04](FLOW-04-code-review.md)); Howard briefs a fresh reviewer for a tagged item.
 5. **Gus**: Keeps ARCHITECTURE.md and the code-readability standard current with what merged, and answers architecture questions from builders and reviewers (from when the owner change in the Owner section takes effect).
