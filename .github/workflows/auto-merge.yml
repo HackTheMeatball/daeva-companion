@@ -320,7 +320,8 @@ jobs:
             const rosterNote = (body, comments) => {
               const bad = V.unknownReviewers(body, ROSTER);
               if (!bad.length) return '';
-              const list = bad.map((n) => `"${n}"`).join(', ');
+              // "--" is folded so an entry can't close the HTML marker early (#759 review).
+              const list = bad.map((n) => `"${n.replace(/-{2,}/g, '-')}"`).join(', ');
               const said = comments.some((c) => c.user && c.user.login === 'github-actions[bot]' && (c.body || '').includes(ROSTERMARK(list)));
               return said ? '' : `${ROSTERMARK(list)}\nThe \`Reviewers:\` line names ${list}, which is not an active team member (docs/kaizen/team.csv) or a gate name (design lead, game data check, fresh review). No verdict can match it, so this PR waits on it until the line is fixed: one first name per entry, notes in parentheses, e.g. \`Reviewers: gretchen; chuck\` (#741).`;
             };

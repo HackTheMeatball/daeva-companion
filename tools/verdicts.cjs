@@ -73,6 +73,8 @@ const csvRow = (l) => {
 const roster = (csv) => {
   const [head, ...rows] = String(csv).split(/\r?\n/).filter((l) => l.trim()).map(csvRow);
   const name = head.indexOf('name'), status = head.indexOf('status');
+  // A team.csv without either column throws, so auto-merge skips the note rather than flag every name (#759 review).
+  if (name < 0 || status < 0) throw new Error('team.csv needs name and status columns');
   return new Set([...GATES, ...rows.filter((r) => (r[status] || '').trim() === 'active').map((r) => r[name].trim().toLowerCase()).filter(Boolean)]);
 };
 const unknownReviewers = (body, names) => reviewers(body).filter((n) => !names.has(n));
