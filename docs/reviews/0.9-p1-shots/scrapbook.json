@@ -1,0 +1,14 @@
+[
+  { "case": "assassin-1500-stigmas", "kind": "before-after", "title": "The Stigmas plan is labelled",
+    "caption": "At Lv 39 the Assassin's Stigmas heading now says inferred, because the guide's stigma plan is not yet confirmed by two sources." },
+  { "case": "assassin-1500-skills", "kind": "before-after", "title": "Skill order rows show their label",
+    "caption": "At Lv 39 each Assassin skill buy the guide inferred carries an inferred tag; a confirmed row shows none." },
+  { "case": "assassin-1500-daevanion", "kind": "before-after", "title": "Daevanion plan nodes show their label",
+    "caption": "At Lv 39 the Assassin's next Daevanion nodes carry an inferred tag where the board plan is the guide's inference." },
+  { "case": "gladiator-1500-skills", "kind": "before-after", "title": "Disputed skills say check in game",
+    "caption": "At Lv 39 a Gladiator skill row the sources disagree on now says check in game instead of nothing or single source." },
+  { "case": "templar-390-keys", "kind": "before-after", "title": "Default keys are labelled",
+    "caption": "On a phone, the Templar's Key setup now marks the game's default keys as inferred." },
+  { "case": "assassin-390-nextup", "kind": "before-after", "title": "Next up cards carry the same labels",
+    "caption": "At Lv 39 on a phone, Next up's Heart Gore buy and Triniel's Dagger stigma cards show the same inferred tags as their page cards." }
+]
