@@ -132,6 +132,51 @@ jobs:
             // The part of a path before its first glob segment, so `src/assets/icons/*` is looked up as src/assets/icons.
             const lookupPath = (p) => { const segs = p.split('/'), k = segs.findIndex((x) => /[*?{[]/.test(x)); return (k < 0 ? segs : segs.slice(0, k)).filter(Boolean).join('/'); };
             // OPUS-FILES END
+            // PLAN-INPUTS START (tests/kickoff.mjs runs this block)
+            // Kaizen (Gale), 2026-10-21 (PROCESS REVIEW OK, fresh-governance-review verdicts "spec-inputs-check"): #644's
+            // plan was amended in #687 (a new input `docs/design/0.9-keys-macro.md`, a new After key `research-skill-bar`)
+            // but its issue was not, so its 04:28Z build started without them and stopped. The plan text is the issue's
+            // "Plan: `docs/plans/…md` §Pn" section (the whole file if it names no section) plus any ROADMAP row linking it as
+            // "[Pn](that file)". Every repo path in it (backticked, or a repo-relative link) must be in the spec's Inputs or
+            // Files, or written in the spec as "`<path>` — not needed: <reason>"; every key in its After line and every
+            // research-* key in it must be in the spec's After or Inputs. Otherwise kickoff holds the item and names each gap.
+            const planRef = (body) => {
+              const m = (body || '').match(/\bplan:?\s+`(docs\/plans\/[^`\s]+\.md)`(?:\s*§\s*([\w.]+))?/i);
+              return m ? { file: m[1], sec: m[2] || '' } : null;
+            };
+            const planSection = (text, sec) => {
+              if (!sec) return text || '';
+              const esc = sec.replace(/[.]/g, '\\.');
+              const h = (text || '').match(new RegExp(`^## ${esc}(?=[:\\s])[^\\n]*\\n([\\s\\S]*?)(?=^## |(?![\\s\\S]))`, 'm'));
+              return h ? h[0] : null;
+            };
+            const roadmapRows = (roadmap, ref) => (roadmap || '').split('\n').filter((l) => /^\|/.test(l) &&
+              (ref.sec ? l.includes(`[${ref.sec}](${ref.file})`) : l.includes(`](${ref.file})`))).join('\n');
+            const normPath = (p) => p.replace(/[.,;:]+$/, '').replace(/\/+$/, '');
+            const planPaths = (text) => {
+              const t = [...(text || '').matchAll(/`([^`\s]+)`/g)].map((m) => m[1]);
+              const links = [...(text || '').matchAll(/\]\(([^)\s#]+)(?:#[^)]*)?\)/g)].map((m) => m[1]);
+              return [...new Set([...t, ...links].filter((x) => x.includes('/') && !/[<>]/.test(x) && !/^(?:[~/]|https?:|mailto:)/.test(x)).map(normPath))];
+            };
+            const notNeeded = (body) => [...(body || '').matchAll(/`([^`\s]+)`\s*(?:—|–|-{1,2})\s*not needed:\s*([^\n]+)/gi)]
+              .map((m) => ({ path: normPath(m[1]), why: m[2].trim() }));
+            const planGaps = (body, plan, rows) => {
+              const text = [plan || '', rows || ''].join('\n');
+              const ins = inputPaths(body), nn = notNeeded(body);
+              const tick = (t) => [...(t || '').matchAll(/`([^`\s]+)`/g)].map((m) => m[1]);
+              const have = new Set([...ins.repo, ...ins.mnt, ...tick(specField(body, 'Files')), ...nn.map((x) => x.path), ...(planRef(body) ? [planRef(body).file] : [])].map(normPath)); // the plan file itself is not an input
+              const afterOf = (t) => specField(t, 'After') + ' ' + ((t.match(/^After:[^\n]*$/m) || [''])[0].replace(/^After:/, ''));
+              const keysIn = (t) => [...t.matchAll(/\b((?:research|owner-ok|owner-check|owner)-[\w.-]*\w)/g)].map((m) => m[1]);
+              const keys = new Set([...keysIn(afterOf(body || '')), ...keysIn(specField(body, 'Inputs?')), ...tick(specField(body, 'Inputs?'))]);
+              const want = [...new Set([...keysIn(afterOf(plan || '')), ...[...text.matchAll(/\b(research-[\w.-]*\w)/g)].map((m) => m[1])])];
+              return {
+                paths: planPaths(text).filter((p) => !have.has(p)),
+                keys: want.filter((k) => !keys.has(k)),
+                notNeeded: nn,
+              };
+            };
+            // PLAN-INPUTS END
+            let roadmapText = null;
             // Keep in step with lanes() in the refresh job below (same rules, two copies).
             const lanesOfFiles = (files) => {
               const out = new Set();
@@ -396,6 +441,41 @@ jobs:
                 }
                 if (alone) break; continue;
               }
+              // PLAN-INPUTS (block above): the plan's inputs and After keys must be in the spec.
+              const pref = planRef(iss.body);
+              if (pref) {
+                let gaps = null, planWhy = '';
+                try {
+                  const ptxt = Buffer.from((await github.rest.repos.getContent({ owner, repo, path: pref.file, ref: 'main' })).data.content, 'base64').toString('utf8');
+                  if (roadmapText === null) roadmapText = Buffer.from((await github.rest.repos.getContent({ owner, repo, path: 'ROADMAP.md', ref: 'main' })).data.content, 'base64').toString('utf8');
+                  const sec = planSection(ptxt, pref.sec);
+                  if (sec === null) planWhy = `plan section §${pref.sec} not found in ${pref.file}`;
+                  else gaps = planGaps(iss.body, sec, roadmapRows(roadmapText, pref));
+                } catch (e) {
+                  if (e.status !== 404) { core.warning(`#${n}: could not read plan ${pref.file} (${e.status || e.message}); held this run`); if (alone) break; continue; }
+                  planWhy = `plan file ${pref.file} not on main`;
+                }
+                const said = (gaps && gaps.notNeeded.length) || planWhy || (gaps && (gaps.paths.length || gaps.keys.length))
+                  ? (await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: n, per_page: 100 })).map((c) => c.body || '') : [];
+                // "not needed" counts as listed; the comment is where Watchdog logs it and Kaizen counts it.
+                const nnLines = (gaps ? gaps.notNeeded : []).map((x) => `spec: not needed: ${x.path} (${x.why})`).filter((x) => !said.some((b) => b.includes(x)));
+                if (nnLines.length) {
+                  core.notice(`#${n}: ${nnLines.join('; ')}`);
+                  await github.rest.issues.createComment({ owner, repo, issue_number: n, body: nnLines.join('\n') + '\n\nKickoff counts these plan paths as listed. Watchdog logs each one; Kaizen counts them.' });
+                }
+                const gapLines = planWhy ? [`spec: plan not readable: ${planWhy}`]
+                  : [...gaps.paths.map((x) => `spec: plan input missing: ${x}`), ...gaps.keys.map((x) => `spec: plan After key missing: ${x}`)];
+                if (gapLines.length) {
+                  core.warning(`#${n}: ${gapLines.join('; ')}; held`);
+                  const note = `  - held: spec misses plan inputs (kickoff ${stamp})`;
+                  if (!/^\s+- held: /.test(lines[i + 1] || '')) { lines.splice(i + 1, 0, note); pruned = true; }
+                  else if (!/held: spec misses plan inputs/.test(lines[i + 1])) { lines[i + 1] = note; pruned = true; }
+                  const fresh = gapLines.filter((x) => !said.some((b) => b.includes(x)));
+                  if (fresh.length) await github.rest.issues.createComment({ owner, repo, issue_number: n,
+                    body: fresh.join('\n') + `\n\nKickoff holds this item until the spec lists every repo path its plan text names (\`${pref.file}\`${pref.sec ? ` §${pref.sec}` : ''} and its ROADMAP row) in Inputs or Files, or as "\`<path>\` — not needed: <reason>", and every After or research key of the plan in its After line. Release Planner: re-spec the issue from the plan; the queue line stays. Watchdog: log this refusal.` });
+                  if (alone) break; continue;
+                }
+              }
               const genMiss = genLaneMiss(want, iss.body);
               if (genMiss) {
                 core.warning(`#${n}: spec: gen lane missing (${genMiss}); held`);
@@ -547,6 +627,12 @@ jobs:
           said=$(gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE/comments?since=$BUILD_START&per_page=100" \
             --jq '[.[] | select(.body | test("^(Blocked:|Needs @claude)"))] | length')
           echo "PRs for $BRANCH: $prs; Blocked/Needs comments since $BUILD_START: $said"
+          # Build Pipeline (Gus), 2026-10-21: the PR check's PR OPENED notices for #711, #715 and #717 came late, so the
+          # build's own run announces the PR on #114 as soon as it exists (the fallback below does the same for the PR it opens).
+          if [ "$prs" != 0 ]; then
+            pr=$(gh api "repos/$GITHUB_REPOSITORY/pulls?state=all&head=$GITHUB_REPOSITORY_OWNER:$BRANCH" --jq '.[0] | "#\(.number) \(.html_url)"')
+            gh api "repos/$GITHUB_REPOSITORY/issues/114/comments" -f body="PR OPENED: ${pr%% *} for #$ISSUE, by its build ($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID). ${pr#* }" >/dev/null || true
+          fi
           # Finished work pushed but no PR (0.6 P1, Kickoff 39091541671, 2026-10-17: a full Sonnet re-run just to open it,
           # #221 11:23 PM ET, #222 11:25 PM ET): the next step opens it. GITHUB_TOKEN can't (repo setting: "GitHub Actions
           # is not permitted to create or approve pull requests", 0.6 P21, Kickoff 39100109738), and the action above
@@ -603,6 +689,7 @@ jobs:
           url=$(gh api "repos/$GITHUB_REPOSITORY/pulls?state=all&head=$GITHUB_REPOSITORY_OWNER:$BRANCH" --jq '.[0].html_url // empty')
           if [ -n "$url" ]; then
             gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE/comments" -f body="Kickoff: the build pushed its work but opened no PR, so kickoff opened it: $url (CI and the review start on their own)." >/dev/null
+            gh api "repos/$GITHUB_REPOSITORY/issues/114/comments" -f body="PR OPENED: #${url##*/} for #$ISSUE, by kickoff's fallback ($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID). $url" >/dev/null || true
             echo "::notice::Opened $url for #$ISSUE"
             exit 0
           fi
