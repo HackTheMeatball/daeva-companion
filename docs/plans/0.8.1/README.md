@@ -1,5 +1,7 @@
 # 0.8.1 plan: data and bug fixes after 0.8.0
 
+**Folded into 0.9.0** (owner, 2026-10-21 5:35 PM ET; DECISIONS). No 0.8.1 release; the open items ship in 0.9.0 (0.9 plan §R). The Release section below is kept as written for the record.
+
 Release Planner, 2026-10-20, after 0.8.0 shipped (3:46 PM ET). A patch: no planning pass (ROADMAP "How a minor is
 planned"). The owner's rule of 2026-10-18 10:40 PM ET applies: new looks ship in the next minor unless the owner says
 "now". Every item here fixes data or a bug the owner or Player Testing hit; F7 and F8 are new looks the owner said
