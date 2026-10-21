@@ -18,7 +18,7 @@ let pipWin = null, nsHover = false;
 const nsWin = () => (nowEl && nowEl.ownerDocument.defaultView) || window;
 /* the pack's renderers and Next up hooks (docs/design/0.4-engine-contract.md §2 nowRenderers) */
 const nowR = () => activePack().nowRenderers;
-const nowCtx = () => ({ state, c: char(state), lv: char(state).level, basic: isBasic(), el: nowEl });
+const nowCtx = () => ({ state, c: char(state), lv: char(state).level, el: nowEl });
 
 /* "Next up": the north star. A short ranked list of what moves you forward right now, each with one action. The ranking
    is rankNext (src/core/nextup.js); nowCard turns one of its cards into the view object renderNow lays out. */
@@ -60,7 +60,6 @@ const specSub = x => nowR()["skill.slot"](x);
 const nsGate = g => `<a href="#${g.id}" data-now="gate:${g.id}">${g.title}</a>`;
 /* A blocker text at the start of a line. */
 const capFirst = s => s ? s[0].toUpperCase() + s.slice(1) : s;
-const isBasic = () => document.body.classList.contains("basic");
 function nowCard(a) {
   const { act } = a, lv = char(state).level, away = L => `${L - lv} level${L - lv === 1 ? "" : "s"} away`;
   switch (a.kind) {
@@ -105,8 +104,8 @@ function storyView(a) {
   return { story: true, ...storyIco(ready ? "ready" : "active"), t: `Story: <b>${a.quest}</b>`, sub: a.gated ? gatedSub : `${count}${where ? ` · ${where}` : ""}${a.nq ? ` · then ${a.nq[1]}` : ""}`, btn: "Turned in", act, tag, quest: a.objectives, row };
 }
 /* Phones (<= 600 px, 0.5 P3; docs/design/phone-layout.md 3.4): no nested scroll stack. The featured card is full width
-   with its action(s) under the text, the others are compact rows (tile, title, one line), and in Advanced a "1 of N"
-   pager picks the featured card (Basic hides the Next up header: no pager, owner 2026-10-17). Never in the pop-out. */
+   with its action(s) under the text, the others are compact rows (tile, title, one line), and a "1 of N" pager picks
+   the featured card. Never in the pop-out. */
 let nsPhoneQ = { matches: false }; /* the media query, from the mount (no DOM at import) */
 const nsPhone = () => !pipWin && nsPhoneQ.matches;
 let nsCur = 0;
@@ -120,20 +119,22 @@ const nsFit = w => { const c = nsCurCard(w); if (c) w.style.height = (c.offsetHe
 function renderNow() {
   const el = nowEl; if (!el) return;
   const lv = char(state).level;
-  const ranked = rankNext(state, { basic: isBasic() }), shown = ranked.map(nowCard);
+  /* one list (0.9 P21): the cards to act on now lead in the stack; the rest (fold: true) sit in the "More you could do"
+     fold under it, closed until opened (state.open.nsMore remembers) */
+  const ranked = rankNext(state), all = ranked.map(nowCard), nLead = ranked.filter(a => !a.fold).length, shown = all.slice(0, nLead), more = all.slice(nLead);
   /* band labels (0.5 P14, S1): above a card whose band differs from the card before it; rankNext sets lvBand only when
-     the list spans more than one band (Advanced). A band is its start level plus the missed flag, so a missed card next
+     the list spans more than one band. A band is its start level plus the missed flag, so a missed card next
      to a current one in the same band gets its own label (intended: "Missed · Lv 20–24", then "Lv 20–24") */
   const bandKey = b => b ? `${b.missed ? "m" : ""}${b.from}` : "";
   const bandTxt = b => `${b.missed ? "Missed · " : ""}Lv ${b.from}${b.to == null ? "+" : b.to > b.from ? `–${b.to}` : ""}`;
   const bandAt = i => { const b = ranked[i] && ranked[i].lvBand; return b && (i === 0 || bandKey(ranked[i - 1].lvBand) !== bandKey(b)) ? `<p class="ns-band">${bandTxt(b)}</p>` : ""; };
-  const top = shown[0], phone = nsPhone(), pager = phone && !isBasic() && shown.length > 1;
+  const top = shown[0], phone = nsPhone(), pager = phone && shown.length > 1;
   /* the featured card: the first one, or on a phone the one the pager is on */
   nsCur = pager ? Math.min(nsCur, shown.length - 1) : 0;
   /* One card per action, each laid out like a milestone header (icon box · what · its own control). Only the first
      shows; the rest sit below it in a snap-scroll stack (a sliver of the next one peeks out). */
   /* a queue (a view's queue name): only its first card gets the button, the rest say they come after it */
-  const firstOf = {}; shown.forEach((a, i) => { if (a.queue && !(a.queue in firstOf)) firstOf[a.queue] = i; });
+  const firstOf = {}; all.forEach((a, i) => { if (a.queue && !(a.queue in firstOf)) firstOf[a.queue] = i; });
   const info = (a, i) => a.info ? ` <button type="button" class="tipbtn nsinfo" aria-label="More info" aria-expanded="false" aria-controls="nsInfo${i}">i</button>` : "";
   const control = (a, i) => {
     if (a.later) return `<span class="tag">Later</span>`;
@@ -163,8 +164,10 @@ function renderNow() {
      before, since those clicks change the cards after the write. So is one that moved to another window (pop-out opened
      or closed) since its last write: the stack's timers, frames and observer must come from the window that holds it. */
   const vw = nsWin();
+  const moreOpen = !!(state.open && state.open.nsMore);
+  const moreHTML = more.length ? `<details class="ns-more" id="nsMore"${moreOpen ? " open" : ""}><summary>More you could do (${more.length})</summary><div class="ns-morelist">${more.map((a, j) => card(a, nLead + j)).join("")}</div></details>` : "";
   const wrote = setHTML(el, `<div class="sec ns-sec"><h2 class="sec-h">Next up</h2>${pg}${window.documentPictureInPicture ? `<button type="button" class="ns-pop" data-nspop title="Keep Next up in a small window on top of the game">Pop out</button>` : ""}</div>` + trackHTML() + (top ? `<div class="ns-stack${phone ? " ns-phone" : ""}" id="nsqWrap">${shown.map(card).join("")}</div>`
-    : `<div class="ns-stack"><article class="ns-card first"><div class="ns-mhead"><div class="num ns-num" aria-hidden="true">✓</div><div class="title"><h3>You're caught up for Lv ${lv}</h3><p>Push the story to the next level.</p></div><div class="meta"></div></div></article></div>`),
+    : `<div class="ns-stack"><article class="ns-card first"><div class="ns-mhead"><div class="num ns-num" aria-hidden="true">✓</div><div class="title"><h3>You're caught up for Lv ${lv}</h3><p>Push the story to the next level.</p></div><div class="meta"></div></div></article></div>`) + (pipWin ? "" : moreHTML),
     vw !== nsWroteWin || !!el.querySelector(".show-info, .out, .leaving, [data-go]"));
   if (wrote) nsWroteWin = vw;
   nsAnim = false;
@@ -180,11 +183,11 @@ function renderNow() {
   if (w && nsRefocus > Date.now()) { const c = w.querySelector(".ns-card.first .meta button, .ns-card.first .meta a"); if (c) c.focus({ preventScroll: true }); }
 }
 /* The track toggle (0.5 P14, S1): Fastest / Completionist, the view setting `track` (top-level, per device, not synced),
-   written only by a click. Advanced only, and hidden while no record has a non-core route (tracksDiffer; owner, S1 Q7,
-   DECISIONS 2026-10-17). Under it the drawbacks line, the pack's words ("track.drawbacks"; none: no line). After them
-   the pack's own view settings ("now.opts", 0.5 P16; S1 Q6': in this row in every Advanced frame, never in Basic). */
+   written only by a click. Hidden while no record has a non-core route (tracksDiffer; owner, S1 Q7, DECISIONS
+   2026-10-17); it stays open in the one view until "Main path only" replaces it (0.9 P21, docs/design/0.9-one-view.md).
+   Under it the drawbacks line, the pack's words ("track.drawbacks"; none: no line). After them the pack's own view
+   settings ("now.opts", 0.5 P16; S1 Q6'). */
 function trackHTML() {
-  if (isBasic()) return "";
   const R = nowR(), po = R["now.opts"] ? R["now.opts"](nowCtx()) : "";
   let tk = "";
   if (rankChangeOn("trackFilter") && tracksDiffer()) {
@@ -265,7 +268,7 @@ function nsKey(e, inPip) {
     if (b && !b.disabled) { e.preventDefault(); b.click(); } else if (inPip) e.preventDefault();
     return; }
   const d = k === "ArrowDown" || k === "ArrowRight" ? 1 : k === "ArrowUp" || k === "ArrowLeft" ? -1 : 0; if (!d) return;
-  /* on a phone the pager moves (Advanced); Basic's list is all in view */
+  /* on a phone the pager moves */
   if (!inPip && nsPhone()) { if (nowEl.querySelector("[data-nspg]")) { e.preventDefault(); nsPage(d, t && t.dataset && t.dataset.nspg); } return; }
   const w = nowEl.querySelector(".ns-stack"), cards = w ? [...w.children] : []; if (cards.length < 2) return;
   e.preventDefault();
@@ -278,7 +281,9 @@ function nsKey(e, inPip) {
 function nextUpMount(el) {
   nowEl = el;
   STORY_DONE = `Lv ${STORY_END.lv} story complete`; END_NEXT = `next in game: "${STORY_END.next}" at Lv ${STORY_END.nextLv}`;
-  nowEl.addEventListener("toggle", e => { const f = nowR()["now.toggle"]; if (f) f(e, nowCtx()); }, true);
+  nowEl.addEventListener("toggle", e => {
+    if (e.target.id === "nsMore") { if (!!state.open.nsMore !== e.target.open) { state.open.nsMore = e.target.open; save(); } return; }
+    const f = nowR()["now.toggle"]; if (f) f(e, nowCtx()); }, true);
   nowEl.addEventListener("click", e => {
     if (e.target.closest("[data-nspop]")) { popOutNow(); return; }
     const pgb = e.target.closest("[data-nspg]"); if (pgb) { nsPage(+pgb.dataset.nspg, pgb.dataset.nspg); return; }
@@ -347,4 +352,4 @@ function nextUpMount(el) {
 }
 
 const nextUpCard = { id: "nextup", slot: "main", order: 100, root: "nowStar", mount: nextUpMount, update: () => renderNow() };
-export { renderNow, nsFit, nowEl, pipWin, capFirst, isBasic, specSub, STORY_DONE, END_NEXT, nextUpCard };
+export { renderNow, nsFit, nowEl, pipWin, capFirst, specSub, STORY_DONE, END_NEXT, nextUpCard };

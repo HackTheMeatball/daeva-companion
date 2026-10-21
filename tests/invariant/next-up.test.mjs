@@ -96,7 +96,7 @@ export default (test, M, X) => {
     const errors = [];
     for (const { id, s, c } of loaded) {
       let cards;
-      try { cards = M.rankNext(s, { basic: s.mode === 'basic' }); }
+      try { cards = M.rankNext(s); }
       catch (e) { errors.push(`${id}: rankNext threw on a frozen save: ${e.message}`); continue; }
       shipped.set(id, cards);
       const o0 = OA.at(c, APP), o1 = o0;

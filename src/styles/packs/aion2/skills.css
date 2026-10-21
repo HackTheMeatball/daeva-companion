@@ -26,10 +26,5 @@
 .dvbar-ph { height: 18px; }
 #spCard .sphero .dvtext:has(.dvbar-ph) small { white-space: normal; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; font-size: 11.5px; line-height: 13px; }
 #spCard .sphero .dvtext .dvbar-ph { display: none; }
-/* Basic: a short "what's next" under each card: progress header + just the next upgrade / node */
-body.basic #spAfter { flex: none; min-height: 0; }
-body.basic #spSoon > li:nth-child(n+2) { display: none; }
 #spCard .sphero .dvhead .dvico img:first-child { width: 100%; height: 100%; }
 #spCard .sphero .dvhead .dvtext > .dvbar { margin-top: auto; }
-/* Skills card past the plan, in both modes. */
-body.basic #spCard .sphint.warn { display: block !important; }

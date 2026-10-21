@@ -173,8 +173,8 @@ aside.rail::-webkit-scrollbar-thumb { background: var(--line); border-radius: va
 aside.rail::-webkit-scrollbar-thumb:hover { background: var(--muted); }
 aside.rail::-webkit-scrollbar-track { background: transparent; }
 @media (max-width: 860px) { aside.rail { max-height: none; overflow: visible; } }
-/* Phones: #main (Next up, Journey, Progress, the top row, Milestones) comes before the rail (Dungeons & Strongholds, The map); main.js placeCards moves the cards. The Basic nth-child(n+4) rule below no longer finds The map there. */
-@media (max-width: 860px) { .layout > main { order: -1; } body.basic aside.rail > section.notes { display: none !important; } }
+/* Phones: #main (Next up, Journey, Progress, the top row, Milestones) comes before the rail (Dungeons & Strongholds, The map); main.js placeCards moves the cards. */
+@media (max-width: 860px) { .layout > main { order: -1; } }
 /* Sticky level bar (0.5 P4, phone-layout.md 3.2): phones only; main.js (placeLevelUp) moves #lvlUpBig in and sets
    --lvlbar-h (0 above 860 px) for the sheet scrim. */
 .lvlbar { display: none; }
@@ -627,34 +627,25 @@ header.top .sub b { color: var(--fg); font-weight: 600; }
 }
 /* Daevanion: name across the top; info + bar on the left, "cost ⓘ" over a stepper box on the right */
 #dvNextList .dvhead .dvtext { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--space-10); align-content: stretch;}
-/* Mode switch (top right) */
 header.top .eyebrow { display: flex; align-items: center; gap: var(--space-12); justify-content: flex-end; }
-.modeseg { display: inline-flex; padding: var(--space-2); border-radius: var(--radius-pill); border: 1px solid var(--line); background: var(--panel); }
-.modeseg button { all: unset; cursor: pointer; padding: var(--space-3) var(--space-10); border-radius: var(--radius-pill); font: 600 10.5px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
-.modeseg button[aria-pressed="true"] { background: var(--panel-2); color: var(--fg); box-shadow: var(--ring-inset-line); }
-.modeseg button:hover { color: var(--fg); }
-/* ---- Basic mode: same cards, essentials only ---- */
-body.basic header.top .sub,
-body.basic #ahead, body.basic #questSubs, body.basic #trackWrap, body.basic .ms-head .jfilt,
-body.basic #areas .achips, body.basic #areaList .sh-note, body.basic #areaList .ztr,
-body.basic #spCard .ctlcol em, body.basic #spCard .tfoot > :not(#spRespec), body.basic #stCard .ctlcol em, body.basic #stCard .tfoot, body.basic #spCard .sphint, body.basic #spCard .cubebar,
-body.basic #dvBox .ctlcol em, body.basic #dvBox #dvRemain, body.basic #dvUndo, body.basic #dvAllList, body.basic #dvBox .tfoot > :not(#dvRespec), body.basic #dvBox .cubebar,
-body.basic #gates details.step:not(.upnext):not(.overdue):not(.peek), body.basic #routeCard,
-body.basic #gates .loc, body.basic #gates .note, body.basic #gates .upsell, body.basic #gates small,
-
-body.basic #gates li.item:has(> label > input:checked), body.basic #gates li.item.optional, body.basic #gates li.storyreq.reached, body.basic #btnExpand,
-body.basic aside.rail > section:nth-child(n+4) { display: none !important; }
-body.basic #main .top-grid .tcard { min-height: 0; }
 @keyframes nsPulse { 0%, 100% { box-shadow: var(--shadow-pulse-from); border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); } 50% { box-shadow: var(--shadow-pulse-to); border-color: var(--accent); } }
-body.basic aside.rail { position: relative; top: 0; max-height: none; overflow-y: auto; scrollbar-width: none; align-self: start;
-  -webkit-mask-image: linear-gradient(to bottom, var(--mask) 85%, transparent); mask-image: linear-gradient(to bottom, var(--mask) 85%, transparent); }
-body.basic aside.rail::-webkit-scrollbar { display: none; }
-body.basic aside.rail.at-end { -webkit-mask-image: none; mask-image: none; }
-body.basic #spSoon, body.basic #dvThen { flex: none; min-height: 0 !important; overflow: visible; -webkit-mask-image: none; mask-image: none; }
-/* Basic: no board / skills progress headers; a node on a board that isn't open yet carries the board inline */
-body.basic #dvBoard, body.basic #spAfter .dvbh { display: none !important; }
-body.basic #spAfter, body.basic #dvThen { margin-top: var(--space-10); }
-body.basic #spSoon > li:first-child, body.basic #dvThen .soonlist > li { border-top: 0; }
+/* ---- One view (0.9 P21, docs/design/0.9-one-view.md): essentials open, the rest in folds (main.js applyFolds) ---- */
+.fold-btn { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: var(--space-6); font: 600 11px var(--mono); letter-spacing: .04em; color: var(--muted); }
+.fold-btn:hover { color: var(--fg); }
+.fold-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.fold-btn[hidden] { display: none; }
+.fold-btn:not(.tools-btn)::after { content: "▸"; font-size: 10px; transition: transform .2s; }
+.fold-btn[aria-expanded="true"]:not(.tools-btn)::after { transform: rotate(90deg); }
+.steps-fold { margin-top: var(--space-10); padding: var(--space-6) 0; }
+.done-fold { margin: var(--space-6) var(--space-16) var(--space-12); }
+.area-fold { margin: var(--space-6) 0 var(--space-8); }
+.tools-btn { min-width: 24px; justify-content: center; font-size: 15px; line-height: 1; }
+/* closed folds: what each one holds */
+body:not(.fo-steps) #gates details.step:not(.upnext):not(.overdue):not(.peek),
+#gates details.step:not(.fo-done) :is(li.item:has(> label > input:checked), li.item.optional, li.storyreq.reached),
+.sec[data-fbox]:not(.fo-tools) > .sec-tools > :not(.tools-btn),
+#areas:not(.fo-anotes) :is(.achips, #areaList .sh-note, #areaList .ztr),
+body:not(.fo-sync) .sync-adv { display: none !important; }
 /* Names wrap (no ellipsis); the row grows when a name needs two lines */
 #spCard .sphero .dvhead, #dvNextList .dvhead { height: auto; min-height: 56px; }
 #spCard .sphero .spname, #dvNextList .dvhead .dvname { white-space: normal; overflow: visible; text-overflow: clip; line-height: 18px; }
@@ -681,7 +672,6 @@ body.basic #spSoon > li:first-child, body.basic #dvThen .soonlist > li { border-
 #spCard .sphero .dvhead small, #dvNextList .dvlocked .dvhead small, #dvNextList .alldone .dvhead small, #stCard .dvhead small { display: block; align-self: stretch !important; font-size: 12px; line-height: 15px !important; min-height: 15px; margin: 0; padding: 0; color: var(--muted); white-space: normal; overflow: visible; }
 /* Same icon position in all three hero rows: top, beside the name. */
 #spCard .sphero .dvhead > .dvico, #dvNextList .dvhead > .dvico, #stCard .dvhead > .dvico { align-self: start !important; }
-body.basic aside.rail { align-content: start; }
 #gates li.flash { animation: rowFlash 1.6s ease; }
 @keyframes rowFlash { 0%, 60% { background: color-mix(in srgb, var(--accent) 18%, transparent); } 100% { background: transparent; } }
 #stCard .st-lvctl button { all: unset; cursor: pointer; width: 16px; height: 16px; display: grid; place-items: center; border-radius: var(--radius-4); border: 1px solid var(--line); color: var(--muted); font-size: 11px; line-height: 1; }
@@ -756,7 +746,6 @@ body.basic aside.rail { align-content: start; }
 .fanline a { color: var(--fg); text-decoration-color: var(--accent); text-underline-offset: 3px; }
 /* ---- 0.1.6 accessibility (no visible change at rest) ---- */
 /* Focus rings where all: unset / outline: none removed them (the input field's ring also shows on click: text fields match :focus-visible). */
-.modeseg button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 /* Taps act at once: no double-tap zoom delay on controls that are tapped in quick succession. */
 button, .numctl, .lvl-ctl, #nowStar .ns-stack { touch-action: manipulation; }
 /* Reduced motion: each animation on its own (no blanket duration override: #rwToast clears itself on animationend).
@@ -777,9 +766,9 @@ button, .numctl, .lvl-ctl, #nowStar .ns-stack { touch-action: manipulation; }
    Not here: bordered pills (.q-inl, .q-snz, .achip, the card footer pills) and the Confidence / Sources summaries:
    position: relative changes how their rounded border / rotated arrow is antialiased (screenshots differ), so they
    wait for the visible 0.1.7 pass (44 px touch buttons). The full-width summaries have no neighbours to reach anyway. */
-.modeseg button, :is(h2, div).sec .ns-pop, .sd-close, .zone-btn, .ms-name, .nsinfo, #nowStar .ns-pin, .trk-sum,
+.fold-btn, :is(h2, div).sec .ns-pop, .sd-close, .zone-btn, .ms-name, .nsinfo, #nowStar .ns-pin, .trk-sum,
 #nowStar .rq-wait > summary, .jfilt-x { position: relative; }
-.modeseg button::before, :is(h2, div).sec .ns-pop::before, #nowStar .rq-wait > summary::before,
+.fold-btn::before, :is(h2, div).sec .ns-pop::before, #nowStar .rq-wait > summary::before,
 .ms-name::before, .trk-sum::after { content: ""; position: absolute; inset: -3px 0; }
 .nsinfo::before, #nowStar .ns-pin::before, .dvi::before { content: ""; position: absolute; inset: -6px; }
 /* Touch screens (0.1.9, audit P1-4, P3-1; docs/audits/2026-10-mobile-a11y.md). Floors, hence !important: the rules they
@@ -795,7 +784,7 @@ button, .numctl, .lvl-ctl, #nowStar .ns-stack { touch-action: manipulation; }
   .lvl-ctl input, .tcard .numctl input { font-size: 18px !important; } /* the big number fields keep their 18 px */
   .ns-btn.primary, #nowStar .ns-card .ns-go, .dvbuy { min-height: 44px; }
   .ms-meta, .sd-tab, .where-sub, .where-sub > span, .dvbh-k, .lvl-ctl label, .numctl label, .ptbig > span, .qs-head > span,
-  .khead, .tier-n, :is(h2, div).sec .ns-pop, .stackviz .rn, .lmb, .ah-ver, .q-inl, #nowStar .q-inl, .asec-t, .modeseg button,
+  .khead, .tier-n, :is(h2, div).sec .ns-pop, .stackviz .rn, .lmb, .ah-ver, .q-inl, #nowStar .q-inl, .asec-t, .fold-btn,
   .behind-pill, .sptype, .spectag, .st-n, .opt-tag, .run-tag, .paid-tag, .tier .seq .src, .gate .num small, .q-snz, #nowStar .ql .q-snz,
   .dvcost-k, .soonlist li.then-board span:last-child, .dvb-new { font-size: 11px !important; }
   .dvcr, .ztr, .ah-main small, #nowStar .ah-main small, :is(h2, div).sec .sec-btn, .qs-sub-loc, .qs-list small, .ns-obj small,
@@ -804,7 +793,7 @@ button, .numctl, .lvl-ctl, #nowStar .ns-stack { touch-action: manipulation; }
 /* Phone layout patches A and B (docs/design/phone-layout.md §4; CSS only). Touch screens: 44 px targets on the small
    controls, through the invisible ::before pattern where the visible size must stay (no layout shift). */
 @media (pointer: coarse) {
-  .modeseg button { display: inline-flex; align-items: center; min-height: 44px; padding-inline: var(--space-12); }
+  .fold-btn { min-height: 44px; }
   .numctl button, .tcard .numctl button { width: 44px; height: 44px; }
   .q-inl, .amap { position: relative; }
   .q-inl::before { content: ""; position: absolute; inset: -11px 0; }

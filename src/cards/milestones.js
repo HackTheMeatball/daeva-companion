@@ -65,12 +65,13 @@ const cardHTML = (s, num, cls) => `
    that just got cleared does the same when "Cleared milestones" is on. tickKeep holds them visible meanwhile. */
 let tickKeep = new Set();
 /* Lines shown in the Now card are hidden from the milestone below it; a side-row heading with nothing left under it hides too. */
-/* A sub-heading (e.g. "… quests · Lv 14") with no visible rows under it is hidden (Basic hides done/locked rows). */
+/* A sub-heading (e.g. "… quests · Lv 14") with no visible rows under it is hidden (a closed "Done and optional" fold
+   hides done rows). */
 function hideEmptyHeads() {
   mainEl.querySelectorAll("#gates ul.items > li.sub-h").forEach(h => {
     h.classList.remove("empty-h"); let n = h.nextElementSibling, any = false;
-    const basic = document.body.classList.contains("basic");
-    while (n && !n.classList.contains("sub-h")) { if (!n.hidden && (!basic || n.offsetParent !== null)) { any = true; break; } n = n.nextElementSibling; }
+    const shut = !h.closest(".fo-done");
+    while (n && !n.classList.contains("sub-h")) { if (!n.hidden && (!shut || !n.matches(DONE_ROWS))) { any = true; break; } n = n.nextElementSibling; }
     h.classList.toggle("empty-h", !any);
   });
 }
@@ -180,10 +181,19 @@ function derivedBox(i, r) {
 let btnExpand = null;
 const gateCards = () => [...document.querySelectorAll("#gates details.step")].filter(d => !d.hidden);
 const syncExpand = () => { const all = gateCards(); btnExpand.textContent = all.length && all.every(d => d.open) ? "Collapse all" : "Expand all"; };
+/* the rows a step's "Done and optional" fold holds (the CSS hides the same rows while it is closed) */
+const DONE_ROWS = "li.item:has(> label > input:checked), li.item.optional, li.storyreq.reached";
 /* the milestone cards: render() draws them on every call (Sync levels and Respec redraw the page) */
 function renderMilestones() {
   const gatesEl = document.getElementById("gates");
   gatesEl.innerHTML = GATES.map(g => cardHTML(g, `<span><small>LV</small>${g.lv}</span>`, "gate")).join("");
+  /* one view (0.9 P21): ticked, optional and reached rows sit in each step's "Done and optional (N)" fold (main.js applyFolds) */
+  gatesEl.querySelectorAll(":scope > details.step").forEach(d => {
+    d.dataset.fbox = "";
+    const b = document.createElement("button"); b.type = "button"; b.className = "fold-btn done-fold"; b.dataset.fold = "done"; b.dataset.fkey = "done:" + d.id;
+    b.dataset.fcount = DONE_ROWS; b.setAttribute("aria-expanded", "false"); b.innerHTML = `Done and optional (<span class="fold-n">0</span>)`;
+    d.append(b);
+  });
   mainEl.querySelectorAll("details.step").forEach(d => {
     d.addEventListener("toggle", () => { state.open[d.id] = d.open; save(); });
   });

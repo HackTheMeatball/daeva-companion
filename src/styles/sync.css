@@ -16,7 +16,6 @@
 .sync-st.bad { color: var(--accent-text); }
 .sync-st.bad::before { background: var(--accent-text); }
 .xfer .xfer-btn:disabled { opacity: .45; cursor: default; }
-body.basic .sync-adv { display: none !important; }
 .sync-panel, .sync-menu { flex: 1 1 100%; max-width: 560px; }
 .sync-panel h2 { margin: 0 0 var(--space-8); font: 600 12px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
 .sync-panel p { margin: var(--space-2) 0 0; color: var(--muted); font-size: 13px; }
