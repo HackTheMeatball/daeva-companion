@@ -47,7 +47,22 @@ const trackedCache = new Map();
 export function checkCompliance(root = ROOT, { files = {} } = {}) {
   if (!trackedCache.has(root)) trackedCache.set(root, execFileSync('git', ['ls-files', '-z'], { cwd: root, maxBuffer: 64 << 20 }).toString().split('\0').filter(Boolean));
   const paths = [...new Set([...trackedCache.get(root), ...Object.keys(files)])].filter(p => !p.startsWith('node_modules/') && !p.includes('/node_modules/') && !exempt(p));
-  return paths.flatMap(p => problemsOf(root, p, files[p]));
+  return [...paths.flatMap(p => problemsOf(root, p, files[p])), ...privacyKeyProblems(root, files)];
+}
+
+/* CK-3 (0.9 P26): the save KEY exported by src/core/state.js appears in PRIVACY.md, and every companion-save-v<n> that
+   PRIVACY.md names is that key (a ":before-import" suffix is fine). Read as text, so no module is loaded. */
+const readText = (root, files, p) => files[p] ?? (existsSync(join(root, p)) ? readFileSync(join(root, p), 'utf8') : null);
+function privacyKeyProblems(root, files) {
+  const state = readText(root, files, 'src/core/state.js'), privacy = readText(root, files, 'PRIVACY.md');
+  if (state == null || privacy == null) return ['PRIVACY.md or src/core/state.js is missing; cannot check the save key'];
+  const key = /export const KEY\s*=\s*["'`]([^"'`]+)["'`]/.exec(state)?.[1];
+  if (!key) return ['src/core/state.js: no `export const KEY = "..."` found'];
+  const named = [...new Set([...privacy.matchAll(/companion-save-v\d+/g)].map(m => m[0]))];
+  const out = [];
+  if (!privacy.includes(key)) out.push(`PRIVACY.md does not name the save key ${key} that src/core/state.js uses`);
+  for (const n of named) if (n !== key) out.push(`PRIVACY.md names the save key ${n}, but src/core/state.js uses ${key}`);
+  return out;
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
