@@ -68,4 +68,4 @@ Vetting (terms first, then robots.txt; our UA, ≥ 5 s apart):
 **Close-out of the allthings.how read order (ROL-08, 2026-10-21).** The boss-timer article was read before its terms were
 found. Nothing from it was kept except facts, in this note, never its wording. Each fact it supports has another source:
 Kaira's 30 minutes (aion2atlas, aion2rifttimer), the Nahma schedule (Metabot's events page; Nahma = Siege boss stays inferred), and the
-Lv 48 kill timers (aion2atlas). The raw copy was deleted on 2026-10-21; the log is `legal/fetch-log.md` in the shared folder.
+Lv 48 kill timers (aion2atlas; the data, #685, also cites allthings.how as a Spot source and labels the cooldowns inferred). The raw copy was deleted on 2026-10-21; the log is `legal/fetch-log.md` in the shared folder (now the frozen archive).
