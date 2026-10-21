@@ -577,7 +577,7 @@ Rules for every item:
   - [ ] Source Vetting's live crawler re-check runs before the robots text freezes, noted on the PR.
   - [ ] Before / after shots of the footer at 1500 and 390 px, `scrapbook.json`; Design Lead's DESIGN OK.
 - **Review:** blind (owner-held legal text; Code Review the code).
-- **Lanes:** site, page-card. **Model:** Sonnet, S (45 min).
+- **Lanes:** release (CHANGELOG.md; `site` and `page-card` are not kickoff lanes). **Model:** Sonnet, S (45 min).
 - **After:** P23, owner-ok-0.9-terms. If the owner's OK isn't in by 0.9's release gate, P24 moves to 0.10.
 - **Planner notes (2026-10-21).** The owner's three Terms calls are in (DECISIONS `owner-ok-0.9-terms`). The owner
   approved the full text as drafted ("Ship as drafted", 2026-10-21 12:18 PM ET, same row), so the item ships it word for
@@ -825,7 +825,7 @@ picker and opens from a stored save. P28 finishes P3's own goal in the tests; P2
   - [ ] The test email confirmation is linked on the PR.
   - [ ] Before / after shots at 1500 and 390 px, `scrapbook.json`; Design Lead's DESIGN OK.
 - **Review:** blind (owner-held legal text; Code Review the code).
-- **Lanes:** site, page-card. **Model:** Sonnet, S (45 min).
+- **Lanes:** release (CHANGELOG.md; `site` and `page-card` are not kickoff lanes). **Model:** Sonnet, S (45 min).
 - **After:** P24, the gate above. If the gate isn't met by 0.9's release gate, P33 moves to 0.10.
 
 ## S1–S4: pipeline items (Build Pipeline builds them; no queue line)
