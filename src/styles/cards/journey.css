@@ -8,6 +8,12 @@
 .lvl-ctl input::-webkit-outer-spin-button, .lvl-ctl input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 .lvl-ctl button { width: 26px; height: 26px; padding: 0; display: grid; place-items: center; font: 600 15px var(--mono); border-radius: var(--radius-7); background: var(--panel); }
 .lvl-range { display: block; margin: 0 0 var(--space-14); }
+/* "Which story quest are you on?" (0.9 P7): under the slider after a level jump past the story; the welcome card's select
+   and buttons (welcome.css .welfld, .welbtns) */
+.lvq { display: grid; gap: var(--space-8); margin: 0 0 var(--space-14); padding: var(--space-10); border: 1px solid var(--accent); border-radius: var(--radius-10); background: var(--accent-soft); }
+.lvq[hidden] { display: none; }
+.lvq-t { margin: 0; font-size: 13px; color: var(--fg); }
+.lvq .welbtns { margin-top: 0; }
 .story { list-style: none; margin: 0 0 var(--space-14); padding: 0; position: relative; }
 .st + .st::before { content: ""; position: absolute; left: 6px; bottom: 50%; height: 100%; width: 2px; background: var(--line); }
 .st { display: grid; grid-template-columns: 14px minmax(0, 1fr) auto; gap: var(--space-10); align-items: center; padding: var(--space-4) 0; position: relative; font-size: 13px; }

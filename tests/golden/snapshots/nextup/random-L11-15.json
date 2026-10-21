@@ -414,7 +414,6 @@
   ],
   "random/L14-q81-all-B-stfull": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
     {"t":"Story: Lingering Apparitions","s":"Needs Lv 44: you're 14. Level up first.","c":"","bd":"Bind Collapsed Hall of Fame on the way 32 m from Nemon bind:kib:collapsed-hall-of-fame"}
   ],
   "random/L14-q86-none-A-dv": [
@@ -522,7 +521,6 @@
   ],
   "random/L15-q49-all-B-stfull": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
     {"t":"Story: Bitter Reality","s":"Needs Lv 32: you're 15. Level up first.","c":""}
   ],
   "random/L15-q50-rnd143p50-B": [
@@ -540,7 +538,6 @@
   ],
   "random/L15-q75-all-A-stfull": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
     {"t":"Story: Daybreak Society","s":"Needs Lv 41: you're 15. Level up first.","c":""}
   ],
   "random/L15-q82-all-A": [
