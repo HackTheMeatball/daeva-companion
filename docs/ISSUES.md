@@ -552,11 +552,20 @@ on purpose: the guide shows nothing rather than an unverified value.
   | sk-arrow-scattershot.png | skill | Ranger, Arrow Scattershot | <https://metabot.gg/en/aion-2/skills/arrow-scattershot> | <https://metabot.gg/web/aion2/skills/14330000.webp> | 2026-10-20 4:09 PM ET |
   | sk-suppressing-arrow.png | skill | Ranger, Suppressing Arrow | <https://metabot.gg/en/aion-2/skills/suppressing-arrow> | <https://metabot.gg/web/aion2/skills/14070000.webp> | 2026-10-20 4:09 PM ET |
 
-  **Still initials, found by F5's test:** the Build drawer's Key setup at Lv 45 shows two more skills with no icon file,
-  the Gladiator's Mocking Blade and the Ranger's Explosion Trap (`tests/e4test.js`, "F5"). Both have Metabot skill pages
-  (<https://metabot.gg/en/aion-2/skills/mocking-blade>, <https://metabot.gg/en/aion-2/skills/explosion-trap>), so they
-  are a Game Data Check fetch under the standing icon OK, not an owner item; no file was fetched here (bot builds have
-  no web access).
+  **Closed 2026-10-21:** the two skills F5's test still showed as initials, the Gladiator's Mocking Blade and the Ranger's
+  Explosion Trap, now have icons. They came in with three Assassin skills that had none: Infiltrate, Shadow Fall and
+  Whirlwind Slice, which the app names only as text in the game-default keys list so far. Game Data Check fetched all five
+  from Metabot under the standing icon OK (fetch log `legal/fetch-log/gretchen.md` in the shared folder: 10 requests, all
+  200). Each is Metabot's 256 px WebP resized to 128 px RGB PNG (Lanczos); the page's og:image and its icon references
+  match the file. Metabot has swapped icon files before (Chanter #486 §7), so the five go on the owner's icon look-over.
+
+  | File | Kind | Name | Source page | File URL | Retrieved |
+  |---|---|---|---|---|---|
+  | sk-mocking-blade.png | skill | Gladiator, Mocking Blade | <https://metabot.gg/en/aion-2/skills/mocking-blade> | <https://metabot.gg/web/aion2/skills/11290000.webp> | 2026-10-21 |
+  | sk-explosion-trap.png | skill | Ranger, Explosion Trap | <https://metabot.gg/en/aion-2/skills/explosion-trap> | <https://metabot.gg/web/aion2/skills/14170000.webp> | 2026-10-21 |
+  | sk-infiltrate.png | skill | Assassin, Infiltrate | <https://metabot.gg/en/aion-2/skills/infiltrate> | <https://metabot.gg/web/aion2/skills/13360000.webp> | 2026-10-21 |
+  | sk-shadow-fall.png | skill | Assassin, Shadow Fall | <https://metabot.gg/en/aion-2/skills/shadow-fall> | <https://metabot.gg/web/aion2/skills/13220000.webp> | 2026-10-21 |
+  | sk-whirlwind-slice.png | skill | Assassin, Whirlwind Slice | <https://metabot.gg/en/aion-2/skills/whirlwind-slice> | <https://metabot.gg/web/aion2/skills/13210000.webp> | 2026-10-21 |
 
 - **Story-quest icon: in the site** (0.6 P13, #272; owner OK: #254 note 7 and DECISIONS `owner-ok-story-icon`). The Next
   up story card shows the game's **active** story-quest icon on a dark tile; the 📜 emoji is the fallback when it can't

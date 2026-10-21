@@ -486,7 +486,7 @@
       "type": "active",
       "learnLv": 10,
       "levelGate": "stepped",
-      "icon": null,
+      "icon": "assets/icons/sk-infiltrate.png",
       "note": "Learn level from Metabot class page (+ thegameswiki assassin-skills). Skill page not fetched in R3; costs assumed same 1/2/4 bands as every fetched skill (11 of 11 matched). gate null: two fetched passives use a flat gate, so the +3/level pattern can't be assumed.",
       "sources": [
         {
@@ -821,7 +821,7 @@
       "type": "active",
       "learnLv": 12,
       "levelGate": "stepped",
-      "icon": null,
+      "icon": "assets/icons/sk-shadow-fall.png",
       "note": "Learn level from Metabot class page (+ thegameswiki assassin-skills). Skill page not fetched in R3; costs assumed same 1/2/4 bands as every fetched skill (11 of 11 matched). gate null: two fetched passives use a flat gate, so the +3/level pattern can't be assumed.",
       "sources": [
         {
@@ -1043,7 +1043,7 @@
       "type": "active",
       "learnLv": 7,
       "levelGate": "stepped",
-      "icon": null,
+      "icon": "assets/icons/sk-whirlwind-slice.png",
       "note": "Learn level from Metabot class page (+ thegameswiki assassin-skills). Skill page not fetched in R3; costs assumed same 1/2/4 bands as every fetched skill (11 of 11 matched). gate null: two fetched passives use a flat gate, so the +3/level pattern can't be assumed.",
       "sources": [
         {

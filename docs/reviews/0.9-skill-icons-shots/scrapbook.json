@@ -1,0 +1,6 @@
+[
+  { "case": "gladiator-lv45-1500", "kind": "before-after", "title": "Gladiator key icon",
+    "caption": "At Lv 45 the Gladiator's key setup shows the game's art for Mocking Blade on key 2, not a letter square." },
+  { "case": "ranger-lv45-1500", "kind": "before-after", "title": "Ranger key icon",
+    "caption": "At Lv 45 the Ranger's key setup shows the game's art for Explosion Trap, not a letter square." }
+]

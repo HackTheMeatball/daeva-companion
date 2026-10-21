@@ -187,16 +187,17 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
     ok(`P10: Lv ${L} play steps: icon or initials, decorative`, r.length > 0 && r.filter(x => !/^Hold/.test(x.text)).every(x => x.icos > 0 && !x.bad), r);
   }
   /* 0.8.1 F5 (#595, #586 finding 1): the Gladiator's and the Ranger's Build drawer at Lv 45 (Rotation, Key setup, Coming
-     to E) shows the five rotation icons that were missing. The only initials left are the two key-grid skills with no
-     icon file yet (docs/ISSUES.md "Gladiator and Ranger rotation icons"); a new gap or a fix shows here. */
-  const iniLeft = { gladiator: ['Mocking Blade'], ranger: ['Explosion Trap'] };
+     to E) shows the five rotation icons that were missing. Since 2026-10-21 the two key-grid skills that were still
+     initials (Mocking Blade, Explosion Trap) have icons too (docs/ISSUES.md "Gladiator and Ranger rotation icons"), so no
+     initials are left; a new gap shows here. */
+  const iniLeft = { gladiator: [], ranger: [] };
   for (const cls of ['gladiator', 'ranger']) {
     const st = toStored({ checks: {}, level: 45, mode: 'advanced', open: {} }); Object.assign(st.chars[TEST_SLOT], { pack: `aion2/asmodian/${cls}`, class: cls });
     await writeRaw(p, JSON.stringify(st)); await p.reload(); await p.waitForTimeout(300);
     r = await p.evaluate(() => { document.querySelector('#statDrawer details.mini').open = true; const d = document.getElementById('statDrawer');
       return { cls: char(state).class, ini: [...d.querySelectorAll('.ini')].map(x => x.parentElement.textContent.trim()), imgs: [...d.querySelectorAll('img.spmini, img.kv-ico')].map(x => x.getAttribute('src')) }; });
-    const want = cls === 'gladiator' ? ['aerial-snare', 'sword-aura-rampage', 'ankle-slice'] : ['arrow-scattershot', 'suppressing-arrow'];
-    ok(`F5: ${cls} Lv 45 Build drawer: the rotation icons shown (${want.join(', ')}); initials only for ${iniLeft[cls].join(', ')}`, r.cls === cls && JSON.stringify([...new Set(r.ini)]) === JSON.stringify(iniLeft[cls]) && want.every(s => r.imgs.includes(`assets/icons/sk-${s}.png`)), r);
+    const want = cls === 'gladiator' ? ['aerial-snare', 'sword-aura-rampage', 'ankle-slice', 'mocking-blade'] : ['arrow-scattershot', 'suppressing-arrow', 'explosion-trap'];
+    ok(`F5: ${cls} Lv 45 Build drawer: the rotation icons shown (${want.join(', ')}); initials only for ${iniLeft[cls].join(', ') || 'none'}`, r.cls === cls && JSON.stringify([...new Set(r.ini)]) === JSON.stringify(iniLeft[cls]) && want.every(s => r.imgs.includes(`assets/icons/sk-${s}.png`)), r);
   }
 
   /* 0.9 P7 (#623, UX audit finding 2): the slider from Lv 2 to Lv 39 with the story at Lv 2 asks for the story quest under
