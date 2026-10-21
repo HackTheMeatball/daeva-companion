@@ -42,6 +42,39 @@ scrutiny. Just cause I’m the owner doesn’t mean I’m right"; effect as Kaiz
   review like any other rule, and any thread may propose changing it through the process-change route. Loosening one of
   the seven owner-held limits still goes to Isaac, as a recommendation.
 
+## Kaizen
+
+### KZ-19
+
+_Owner's ask, typed in the project chat 2026-10-20 11:58 PM ET: "Yeah but we try to avoid those or think ahead and do the ok
+in advance". Spec by the coordinator 2026-10-21 12:01 AM ET, routing backed by Org Design (Nacho), outside review: Fresh
+governance review, OK with changes 04:01Z._
+
+- **Permission stalls are prevented with advance standing OKs:**
+  1. Every block on a permission prompt or on Isaac's typed OK is a #221 row of kind `permission` (thread, step, what was
+     blocked, cause, wait, how it cleared). Mike is the only writer of #221; a blocked thread sends him the ask text
+     (KZ-20).
+  2. Gale groups the rows into patterns, and at each kaizen review grades how the OKs worked out.
+  3. Francesca first fixes what the team can fix in its own settings, then drafts a standing OK for each remaining pattern.
+  4. At each batch the coordinator briefs a one-off fresh reviewer with no history on the drafts: never Francesca or Gale,
+     and never Gomez for rules Gomez co-wrote. That reviewer checks every draft against the seven owner-held limits, and
+     every team-fixed settings diff, consulting Howard on any permission or workflow diff.
+  5. Gale plants one draft that quietly loosens a limit in every batch. If the reviewer misses it, the batch doesn't go out;
+     the plant never reaches Isaac.
+  6. Each draft states "loosens owner-held limit N: yes/no"; any yes goes to Isaac on its own card, as a recommendation.
+  7. Each OK is narrow (the exact action, its conditions, how to undo it), is reviewed at the next kaizen review, and is
+     pruned if it went unused for a full minor.
+  8. Isaac adopts each OK in his own words; Walter records his verbatim text in DECISIONS.
+  Harness guards, such as the session self-modification block, are not fixed with an OK; they get a route change.
+
+### KZ-20
+
+_Kaizen (Gale), PROCESS REVIEW stall-ask-text OK (Fresh governance review, 2026-10-21 12:03 AM ET); serves KZ-19._
+
+- **Blocked threads send the ask text:** a thread blocked on a permission prompt or on the owner's typed OK sends the
+  prompt or ask text to Watchdog (Mike) at the moment it is blocked. The text goes verbatim, with credentials, tokens and
+  personal data replaced by [redacted]. Mike writes the #221 row.
+
 ## Merging
 
 ### MRG-11
