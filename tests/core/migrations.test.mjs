@@ -61,6 +61,43 @@ export default (test, M) => {
       M.migrate(again, true, () => writes.push(1), NOW); assert.deepEqual(again, once); assert.deepEqual(writes, []);
     }
   });
+  test('flagged steps (0.9 P9): none yet, so a load adds no migs', () => {
+    assert.deepEqual(M.MIG_STEPS, []);
+    const { state } = run(M, { checks: {}, level: 5, quest: '' });
+    assert.ok(!('migs' in C(state)));
+  });
+  test('flagged steps (0.9 P9): a step runs once per character (tombstones skipped), sets its flag, writes only on a loaded save', () => {
+    const seen = [], step = { flag: 'test1', run: c => { seen.push(c.id); c.checks['x:1'] = true; } };
+    const s = toStored({ checks: {}, level: 5, quest: '' }), writes = [];
+    s.chars.other = { ...clone(M.char(s)), id: 'other' }; s.chars.gone = { id: 'gone', deletedAt: 5 };
+    M.migrate(s, true, () => writes.push(1), NOW, [step]);
+    assert.deepEqual(seen.sort(), [s.current, 'other'].sort()); assert.equal(writes.length, 1);
+    for (const id of [s.current, 'other']) { assert.deepEqual(s.chars[id].migs, { test1: 1 }); assert.equal(s.chars[id].checks['x:1'], true); }
+    assert.deepEqual(s.chars.gone, { id: 'gone', deletedAt: 5 });
+    /* a second load: nothing runs, nothing is written */
+    const again = clone(s); M.migrate(again, true, () => writes.push(2), NOW, [step]);
+    assert.deepEqual(again, s); assert.equal(writes.length, 1); assert.equal(seen.length, 2);
+    /* a new step on the same save runs once and keeps the old flag */
+    M.migrate(again, true, () => writes.push(3), NOW, [step, { flag: 'test2', run: () => {} }]);
+    assert.deepEqual(M.char(again).migs, { test1: 1, test2: 1 }); assert.deepEqual(writes, [1, 3]);
+    /* a fresh start runs it in memory and writes nothing */
+    const fresh = M.loadState(null, { now: NOW * 1000, newId: () => 'n' }), fw = [];
+    M.migrate(fresh.state, fresh.hadSave, () => fw.push(1), NOW, [step]);
+    assert.deepEqual(M.char(fresh.state).migs, { test1: 1 }); assert.deepEqual(fw, []);
+  });
+  test('flagged steps (0.9 P9): the flag survives merge() (the union), so the step never runs again on either device', () => {
+    let n = 0; const step = { flag: 'test1', run: () => { n++; } };
+    const a = toStored({ checks: {}, level: 5, quest: '' }), b = clone(a);
+    M.runSteps(a, [step]); assert.equal(n, 1);
+    C(a).migs.other = 1; C(b).migs = { old: 1 };
+    const ab = M.merge(a, b), ba = M.merge(b, a);
+    assert.deepEqual(C(ab).migs, { old: 1, other: 1, test1: 1 }); assert.deepEqual(C(ba).migs, C(ab).migs, 'commutative');
+    assert.deepEqual(M.merge(ab, ab), ab, 'idempotent');
+    assert.deepEqual(M.syncedPart(ab).chars[ab.current].migs, C(ab).migs, 'synced');
+    M.runSteps(ba, [step]); assert.equal(n, 1, 'not run again after the merge');
+    /* neither side flagged: no migs */
+    const p = toStored({ checks: {}, level: 5, quest: '' }); assert.ok(!('migs' in C(M.merge(p, clone(p)))));
+  });
   test('owner save 2026-10-14 (Lv 39) as a v6 save (names put in as keys by tests/support/save.js): Next up ranks without throwing (one view)', () => {
     const { state } = run(M, JSON.parse(JSON.stringify(createRequire(import.meta.url)('../fixtures/fixture-user-2026-10-14-lv39.json'))));
     assert.ok(Array.isArray(M.rankNext(state)));

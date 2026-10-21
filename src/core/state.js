@@ -18,6 +18,7 @@ export const SAVE_V = 6;
 export const ENGINE_FIELDS = [
   "checks", "started", "level", "quest", "storyEnd", "qsteps", "qsub",
   "mt", /* per-item change times (5c, src/core/sync.js) */
+  "migs", /* the load-time steps that have run for this character, { <flag>: 1 } (0.9 P9, src/core/migrations.js) */
 ];
 export const charFields = () => [...ENGINE_FIELDS, ...Object.keys(activePack().charFields)];
 export const CHAR_META = ["id", "pack", "class", "name", "created"];
@@ -81,19 +82,32 @@ export function newSave({ now = 0, id }) {
   return { v: SAVE_V, current: c.id, chars: { [c.id]: c }, ...DEFAULT() };
 }
 
-/* A stored v6 save: an object with v 6 and a current slot that holds a character or a tombstone. Nothing else is read. */
+/* A stored v6 save: an object with v 6 and a current slot that holds a character or a tombstone. Nothing else is read.
+   A newer save (v above SAVE_V, 0.9 P9) has the same shape from 1.0 on (migrations only add), so this build can show it. */
 const isObj = x => !!x && typeof x === "object" && !Array.isArray(x);
-const isSave = s => isObj(s) && s.v === SAVE_V && isObj(s.chars) && typeof s.current === "string" && isObj(s.chars[s.current]);
+const isShape = s => isObj(s) && isObj(s.chars) && typeof s.current === "string" && isObj(s.chars[s.current]);
+const isSave = s => isShape(s) && s.v === SAVE_V;
+const isNewer = s => isObj(s) && typeof s.v === "number" && Number.isFinite(s.v) && s.v > SAVE_V;
 
 /* The state from the stored text (null = no save). Anything that isn't a v6 save (unreadable text, another shape, a v5 save) gives
    a new save, as if there were none. hadSave: a v6 save was loaded. opts { now (ms), newId () → slot id } make the new
    save; newId is only called then. A save whose current slot is a tombstone (merge() removed it, 0.6 P20) shows the
    first remaining character; one with no character left (each device removed the other's) gets a new one, current,
-   next to the tombstones (newId is called for it too). */
+   next to the tombstones (newId is called for it too).
+   Nothing stored is lost (0.9 P9): a save written by a newer build (v above SAVE_V: a stale tab, a cached page) gives
+   readOnly: true, shown as it is when its shape is readable (else a new save), and the page never writes it; any other
+   stored text that isn't a v6 save gives unreadable: the text, which the page copies to <KEY>:unreadable before the
+   fresh start overwrites it. */
 export function loadState(raw, { now = 0, newId } = {}) {
   let s = null;
-  try { s = JSON.parse(raw || "null"); } catch (e) { s = null; }
-  if (!isSave(s)) return { state: newSave({ now, id: newId && newId() }), hadSave: false };
+  try { s = JSON.parse(raw || "null"); } catch (e) { s = undefined; }
+  const newer = isNewer(s);
+  if (!(isSave(s) || (newer && isShape(s)))) {
+    const out = { state: newSave({ now, id: newId && newId() }), hadSave: false };
+    if (newer) out.readOnly = true;
+    else if (typeof raw === "string" && raw !== "" && s !== null) out.unreadable = raw;
+    return out;
+  }
   const state = Object.assign(DEFAULT(), s);
   Object.entries(state.chars).forEach(([k, c]) => { if (!isObj(c)) delete state.chars[k]; else if (!isRemoved(c)) state.chars[k] = Object.assign(CHAR_DEFAULT(), c); });
   if (isRemoved(state.chars[state.current])) {
@@ -101,7 +115,7 @@ export function loadState(raw, { now = 0, newId } = {}) {
     if (first) state.current = first;
     else { const c = newChar({ now, id: newId && newId() }); state.chars[c.id] = c; state.current = c.id; }
   }
-  return { state, hadSave: true };
+  return newer ? { state, hadSave: true, readOnly: true } : { state, hadSave: true };
 }
 /* An imported file's text: the parsed save when it is a v6 export (its current slot a character: an export is written
    from a loaded save), else null (an older export, or not a save). */

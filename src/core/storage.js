@@ -6,6 +6,15 @@
      remove(key)     → nothing; never throws
    memoryStorage() keeps the texts in a Map (Node tests). `quota`, if given, is the most characters (keys plus texts) it
    holds: a set that would go over it stores nothing and returns false, like a full browser storage. */
+/* Make key read-only in store (0.9 P9: a save from a newer build is never written): from now on set(key, …) stores
+   nothing and returns false, remove(key) does nothing; other keys work as before. Changes store itself, so every later
+   user of the same object (the sync chunk) gets the lock too. Returns store. */
+export function lockKey(store, key) {
+  const set = store.set, remove = store.remove;
+  store.set = (k, text) => k === key ? false : set.call(store, k, text);
+  store.remove = k => { if (k !== key) remove.call(store, k); };
+  return store;
+}
 export function memoryStorage(quota = Infinity) {
   const m = new Map();
   const size = () => { let n = 0; for (const [k, v] of m) n += k.length + v.length; return n; };

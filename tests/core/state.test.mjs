@@ -77,6 +77,41 @@ export default (test, M) => {
       assert.equal(r.hadSave, false, raw); assert.deepEqual(r.state, M.newSave({ id: 'fresh' }), raw);
     }
   });
+  test('load (0.9 P9): a newer save (v above SAVE_V) is read-only: shown when its shape is readable, a new save otherwise; never unreadable', () => {
+    const c = { id: 'k', pack: M.PACK, class: M.CLASS, name: '', created: 1, level: 30, checks: { 'g6:0': true }, futureField: { x: 1 } };
+    const raw = JSON.stringify({ v: 7, current: 'k', chars: { k: c }, mode: 'basic', newTop: 2 });
+    const r = M.loadState(raw, { newId: () => { throw new Error('called'); } });
+    assert.equal(r.readOnly, true); assert.equal(r.hadSave, true); assert.equal(r.unreadable, undefined);
+    assert.equal(M.char(r.state).level, 30); assert.deepEqual(M.char(r.state).futureField, { x: 1 }); assert.equal(r.state.newTop, 2);
+    assert.equal(raw, JSON.stringify({ v: 7, current: 'k', chars: { k: c }, mode: 'basic', newTop: 2 }), 'the text is left as it was');
+    for (const odd of [JSON.stringify({ v: 8, other: 'shape' }), JSON.stringify({ v: 7.5, current: 'a', chars: {} })]) {
+      const o = M.loadState(odd, { newId: () => 'fresh' });
+      assert.equal(o.readOnly, true, odd); assert.equal(o.hadSave, false, odd); assert.equal(o.unreadable, undefined, odd); assert.deepEqual(o.state, M.newSave({ id: 'fresh' }), odd);
+    }
+    /* a v6 save and no save are not read-only */
+    assert.equal(M.loadState(storedText({ checks: {}, level: 3, quest: '' })).readOnly, undefined);
+    assert.equal(M.loadState(null, { newId: () => 'a' }).readOnly, undefined);
+  });
+  test('load (0.9 P9): stored text that isn\'t a v6 save comes back as unreadable, byte for byte, for the page to keep; no save and a v6 save give none', () => {
+    for (const raw of ['{nope', '{}', '[]', '7', JSON.stringify({ v: 5, current: 'a', chars: { a: { id: 'a' } } }), JSON.stringify({ v: 6, current: 'b', chars: { a: {} } }), ' {"v":6 é']) {
+      const r = M.loadState(raw, { newId: () => 'fresh' });
+      assert.equal(r.unreadable, raw, raw); assert.equal(r.hadSave, false, raw); assert.equal(r.readOnly, undefined, raw);
+    }
+    for (const raw of [null, '', 'null', storedText({ checks: {}, level: 3, quest: '' })]) assert.equal(M.loadState(raw, { newId: () => 'fresh' }).unreadable, undefined, String(raw));
+  });
+  test('load (0.9 P9): a v7 save under this v6 reader is left byte-identical in storage (KEY locked, the page\'s writes refused)', () => {
+    const st = M.memoryStorage(), raw = JSON.stringify({ v: 7, current: 'k', chars: { k: { id: 'k', pack: M.PACK, class: M.CLASS, name: '', created: 1, level: 30, checks: {} } } });
+    st.set(M.KEY, raw);
+    const r = M.loadState(st.get(M.KEY), { now: 1 });
+    assert.equal(r.readOnly, true);
+    M.lockKey(st, M.KEY);
+    M.migrate(r.state, r.hadSave, () => { M.stampSave(r.state, 2000); st.set(M.KEY, JSON.stringify(r.state)); }, 1);
+    M.char(r.state).checks['g6:0'] = true; M.stampSave(r.state, 3000);
+    assert.equal(st.set(M.KEY, JSON.stringify(r.state)), false, 'a tick is not written');
+    st.remove(M.KEY);
+    assert.equal(st.get(M.KEY), raw, 'byte-identical');
+    assert.equal(st.set(M.KEY + ':before-import', 'x'), true, 'other keys still work');
+  });
   test('load: a slot that isn\'t an object is dropped; the others load', () => {
     const r = M.loadState(JSON.stringify({ v: 6, current: 'a', chars: { a: { id: 'a', level: 3 }, b: 'x' } }));
     assert.deepEqual(Object.keys(r.state.chars), ['a']);
