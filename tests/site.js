@@ -87,6 +87,15 @@ const checkReport = (label, m, want) => {
       const HTML_WRITES_MAX = 0;
       ok(`setHTML: a second update() with no state change makes at most ${HTML_WRITES_MAX} real writes`, W.same <= HTML_WRITES_MAX, W);
       ok('setHTML: an update() after a level change writes (negative control)', W.changed > 0, W);
+      /* Next up moved to another window (as the pop-out does; here a same-origin iframe) redraws on the next update() with
+         the same markup, and again when it comes back, so its stack's timers and observer come from the window holding it */
+      const MV = await pf.evaluate(() => { const n = document.getElementById('nowStar'), home = n.parentNode, next = n.nextSibling;
+        const f = document.createElement('iframe'); document.body.appendChild(f);
+        update(); const s0 = n.firstChild, a = htmlWrites();
+        f.contentDocument.body.appendChild(n); update(); const away = { writes: htmlWrites() - a, redrawn: n.firstChild !== s0 }, s1 = n.firstChild, b2 = htmlWrites();
+        home.insertBefore(n, next); update(); const back = { writes: htmlWrites() - b2, redrawn: n.firstChild !== s1 };
+        f.remove(); return { away, back }; });
+      ok('setHTML: Next up moved into another window and back is redrawn both times', MV.away.redrawn && MV.away.writes > 0 && MV.back.redrawn && MV.back.writes > 0, MV);
       ok('setHTML: no page errors', !ferrs.length, ferrs);
       await ctxF.close();
     }

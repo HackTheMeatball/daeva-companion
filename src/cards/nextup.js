@@ -110,6 +110,8 @@ function storyView(a) {
 let nsPhoneQ = { matches: false }; /* the media query, from the mount (no DOM at import) */
 const nsPhone = () => !pipWin && nsPhoneQ.matches;
 let nsCur = 0;
+/* the window that held Next up at its last write (its stack's listeners use that window's timers and observer) */
+let nsWroteWin = null;
 function renderNow() {
   const el = nowEl; if (!el) return;
   const lv = char(state).level;
@@ -153,13 +155,16 @@ function renderNow() {
   const pg = pager ? `<div class="ns-pg" role="group" aria-label="Next up cards"><button type="button" class="ns-pgb" data-nspg="-1" aria-label="Previous card">‹</button><span class="ns-pgn" aria-live="polite">${nsCur + 1} of ${shown.length}</span><button type="button" class="ns-pgb" data-nspg="1" aria-label="Next card">›</button></div>` : "";
   /* setHTML: an unchanged Next up isn't redrawn, so its stack keeps its scroll, listeners and observer (attached below
      only on a write). A card mid-interaction (info open, sliding out, a ticked objective fading) is always redrawn, as
-     before, since those clicks change the cards after the write. */
+     before, since those clicks change the cards after the write. So is one that moved to another window (pop-out opened
+     or closed) since its last write: the stack's timers, frames and observer must come from the window that holds it. */
+  const vw = nsWin();
   const wrote = setHTML(el, `<div class="sec ns-sec"><h2 class="sec-h">Next up</h2>${pg}${window.documentPictureInPicture ? `<button type="button" class="ns-pop" data-nspop title="Keep Next up in a small window on top of the game">Pop out</button>` : ""}</div>` + trackHTML() + (top ? `<div class="ns-stack${phone ? " ns-phone" : ""}" id="nsqWrap">${shown.map(card).join("")}</div>`
     : `<div class="ns-stack"><article class="ns-card first"><div class="ns-mhead"><div class="num ns-num" aria-hidden="true">✓</div><div class="title"><h3>You're caught up for Lv ${lv}</h3><p>Push the story to the next level.</p></div><div class="meta"></div></div></article></div>`),
-    !!el.querySelector(".show-info, .out, .leaving, [data-go]"));
+    vw !== nsWroteWin || !!el.querySelector(".show-info, .out, .leaving, [data-go]"));
+  if (wrote) nsWroteWin = vw;
   nsAnim = false;
   if (pipWin) syncPipClasses();
-  const w = el.querySelector("#nsqWrap"), vw = nsWin();
+  const w = el.querySelector("#nsqWrap");
   if (w && !phone && wrote) {
     /* The stack is as tall as the card snapped into view (+ a peek of the next one), so a taller card is never clipped. */
     const curCard = () => { const cs = [...w.children], t = w.scrollTop; let best = cs[0], bd = Infinity; cs.forEach(c => { const d = Math.abs(c.offsetTop - cs[0].offsetTop - t); if (d < bd) { bd = d; best = c; } }); return best; };
