@@ -130,7 +130,6 @@ least 5 s apart), for facts with a link only: no quotes, no copies kept. The evi
 read: before the first content request, the host's line says "no terms found" with the paths tried and the search query.
 If a terms page turns up later, the site is vetted again before any further read, and each minor's spot check also
 re-checks one no-terms entry. Copyright still applies, so no terms page is no
-permission to reuse wording. Legal (Chuck)
-confirms the log. A break of this order (content read before its terms) is closed out in the log: anything kept from it is deleted or re-sourced from a
+permission to reuse wording. Legal (Chuck) confirms every thread's file in `legal/fetch-log/` and the archive. A break of this order (content read before its terms) is closed out in the log: anything kept from it is deleted or re-sourced from a
 permitted source, and the facts it supports are re-verified or labelled. Each minor's fresh spot check verifies one
 terms-read entry against the live terms page.
