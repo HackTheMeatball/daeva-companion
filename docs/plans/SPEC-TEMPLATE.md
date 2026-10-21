@@ -33,6 +33,16 @@ format only here, together with the parser and its test.
 - Lanes are the serial files of docs/team/DISPATCH.md. Names outside kickoff's known list only warn, and kickoff still
   keeps same-named lanes apart.
 
+## Items that fetch
+
+Bot builds have no web access, so a build never fetches; the fetching happens in a research step a thread does first
+(the `research-<slug>` After key). When an item needs one, its spec says so under **Inputs** and states the fetch-log
+rule (coordinator, 2026-10-21, after a fetch incident): before the first content request to any host new to that
+task, the fetching thread adds a row to the project's fetch log (`legal/fetch-log.md` in the shared project folder)
+naming the host, the terms URL already read (and robots.txt), and the verdict: terms OK, scraping-only, or opt-out. No
+terms URL, no content request; an opt-out host is never fetched (CLAUDE.md "Fetching", `docs/research/SOURCES.md`).
+Name the fetch log in words as above, never by its `/mnt/` path, which holds the item (rule above).
+
 ## Example
 
 ```markdown
