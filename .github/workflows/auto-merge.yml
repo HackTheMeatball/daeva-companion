@@ -183,6 +183,10 @@ jobs:
             const namedBlocker = (comments, sha, prBody = '', implied = [], labels = [], files = []) => {
               const barred = prNoClear(prBody, labels, files);
               const s7 = sha.slice(0, 7);
+              const rl = V.lines(prBody).find((l) => /^(?:[-*]\s+)?Review:/i.test(l));
+              // A Review: line naming external or blind review needs a real FRESH REVIEW OK on the head: no REVIEW CLEAR stands in for
+              // fresh review there; a stuck fresh reviewer goes to the coordinator, who takes it to the owner (coordinator, #705).
+              const realFresh = !!rl && /\b(blind|external)\b/i.test(rl);
               const ev = [];
               for (const c of comments) {
                 if (!c.user || !(c.user.login === 'claude[bot]' || c.user.login.toLowerCase() === owner.toLowerCase())) continue;
@@ -202,6 +206,7 @@ jobs:
                 for (const k of person ? V.clears(c.body) : []) {
                   if (NOCLEAR.has(k.trigger)) { core.info(`REVIEW CLEAR for ${k.reviewer} refused: trigger ${k.trigger} never allows one`); continue; }
                   if (barred) { core.info(`REVIEW CLEAR for ${k.reviewer} refused: ${barred}`); continue; }
+                  if (realFresh && who(k.reviewer) === 'fresh review') { core.info('REVIEW CLEAR for fresh review refused: the Review: line names external or blind review'); continue; }
                   core.notice(`REVIEW CLEAR for ${k.reviewer} (trigger ${k.trigger}): ${k.reason}`);
                   ev.push({ who: who(k.reviewer), ok: true, head: true, at, clear: true });
                 }
@@ -216,7 +221,6 @@ jobs:
               if (open.length) return `CHANGES from ${open.join(', ')} not yet cleared by an approval naming ${s7}`;
               // A body "Review:" line naming fresh, blind or external review needs a FRESH REVIEW OK on the head, hold label or not
               // (#695 merged without one; Fresh governance review, 2026-10-21).
-              const rl = V.lines(prBody).find((l) => /^(?:[-*]\s+)?Review:/i.test(l));
               const fresh = rl && /\b(fresh|blind|external)\b/i.test(rl) ? ['fresh review'] : [];
               const missing = [...new Set([...V.reviewers(prBody), ...implied, ...fresh].map(who))].filter((r) => !ev.some((e) => e.who === r && e.ok && e.head));
               return missing.length ? `waits on ${missing.join(', ')} (Reviewers: line) to approve ${s7}` : '';

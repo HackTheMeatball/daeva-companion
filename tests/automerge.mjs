@@ -361,6 +361,17 @@ check(/waits on fresh review/.test(namedBlocker([REVIEW], SHA, 'Before: x\n\n- *
 check(/waits on fresh review/.test(namedBlocker([REVIEW, c(OWNER, 'FRESH REVIEW OK 9999999', 7)], SHA, 'Review: blind')), '#695: a blind review needs the OK on the head, not an older one');
 check(namedBlocker([REVIEW, c(OWNER, 'FRESH REVIEW #695 abc1234\nFRESH REVIEW OK abc1234', 7)], SHA, 'Review: fresh') === '', '#695: a FRESH REVIEW OK on the head meets a Review: fresh line');
 check(namedBlocker([REVIEW], SHA, 'Review: standing (Howard)') === '', 'a Review: standing line needs no fresh OK');
+const FCL = (t) => c(OWNER, `REVIEW CLEAR (reviewer: fresh review; trigger: ${t}): fresh reviewer ended, no successor`, 8);
+check(/waits on fresh review/.test(namedBlocker([REVIEW, FCL('1')], SHA, 'Review: external \u2014 1')),
+  '#705: no REVIEW CLEAR stands in for fresh review when the Review: line names external review');
+check(/waits on fresh review/.test(namedBlocker([REVIEW, FCL('none')], SHA, '- **Review:** blind \u2014 3')),
+  '#705: no REVIEW CLEAR stands in for fresh review when the Review: line names blind review');
+check(/CHANGES from fresh review/.test(namedBlocker([REVIEW, c(OWNER, 'FRESH REVIEW #9 abc1234\nFRESH REVIEW CHANGES', 6), FCL('1')], SHA, 'Review: external \u2014 1')),
+  '#705: a fresh CHANGES on an external PR is not cleared by a REVIEW CLEAR');
+check(namedBlocker([REVIEW, FCL('1')], SHA, 'Reviewers: fresh review\nReview: fresh \u2014 1') === '',
+  '#705: the deadlock exit still clears fresh review when the Review: line names neither external nor blind');
+check(namedBlocker([REVIEW, c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6), c(OWNER, CL, 8), c(OWNER, 'FRESH REVIEW OK abc1234', 9)], SHA, 'Review: external \u2014 1') === '',
+  '#705: on an external PR a clear for another reviewer still stands');
 
 // restart.yml's BUSY-CHECK block: only a Pipeline run for this PR holds back the lost-review start.
 const ryml = readFileSync(join(ROOT, '.github', 'workflows', 'restart.yml'), 'utf8');
