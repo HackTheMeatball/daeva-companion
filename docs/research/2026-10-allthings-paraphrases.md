@@ -3,8 +3,9 @@
 Game Data Check, 2026-10-21, for Legal (Chuck) and Walter. No pages were fetched for this note; it reads the repository
 only. allthings.how's terms (`/terms-and-conditions/`, found by Lydia on 2026-10-20, #651) ban copying, reproducing or
 downloading its material without written permission, but not reading it, so it is **Spot**: facts only, never its
-wording. (`SOURCES.md` on main still has the older "no terms read" row until #651 lands.) This note lists every `quote` field in `data/**` that sits on an allthings.how citation, with the
-fact in my own words, so a data PR can replace the quotes with paraphrases or drop them.
+wording (`SOURCES.md`, evidence in `2026-10-world-boss-sources.md`). This note lists every `quote` field in `data/**` that sits
+on an allthings.how citation, with the fact in my own words, so a data PR can replace the quotes with paraphrases or
+drop them.
 
 Found with a walk of every JSON file under `data/` (each object with an allthings.how `url`, then its `quote`):
 **23 quote fields, 15 distinct quotes**. 21 are in the shipped packs and 2 in `data/schema/examples/` (not shipped).
