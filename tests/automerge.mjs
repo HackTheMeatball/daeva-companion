@@ -521,6 +521,11 @@ check(rosterNote(B741, [c('github-actions[bot]', note, 3)]) === '' && rosterNote
 const two = rosterNote('Reviewers: amy, bob', []);
 check(rosterNote('Reviewers: amy', [c('github-actions[bot]', two, 3)]) !== '' && rosterNote('Reviewers: amy, bob', [c('github-actions[bot]', two, 3)]) === '',
   'roster note: a shrunk list gets a new note too (the marker holds the exact list; #757 review)');
+let threw = '';
+try { V.roster('who,role,status\nAmy,X,active\n'); } catch (e) { threw = e.message; }
+check(/name and status/.test(threw), 'roster: a team.csv without the name or status column throws, so the note is skipped (#759 review)');
+const dash = rosterNote('Reviewers: x --> y', []);
+check(!/-->[^\n]*-->/.test(dash.split('\n')[0]) && dash.split('\n')[0].endsWith('-->'), 'roster note: an entry holding "-->" cannot close the marker early (#759 review)');
 check(/try \{ ROSTER = V\.roster\([^\n]*\} catch \(e\) \{ core\.warning\(/.test(yml) && hl.includes('if (ROSTER && V.unknownReviewers('), 'roster: an unreadable team.csv skips the note with a warning, never the merge run (#757 review)');
 check(/sparse-checkout: \|\n\s+tools\/verdicts\.cjs\n\s+docs\/kaizen\/team\.csv\n/.test(yml), 'roster: auto-merge checks out docs/kaizen/team.csv from main');
 check(hl.indexOf('rosterNote(pr.body') > 0 && hl.indexOf('rosterNote(pr.body') < hl.indexOf('// HOLD: add or lift it') && !/rosterNote[^\n]*continue/.test(hl),
