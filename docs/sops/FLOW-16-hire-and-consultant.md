@@ -5,7 +5,7 @@ here. Where this page and a rule's home differ, the home wins and this page is f
 
 ## Purpose
 
-Start a standing or one-off thread only when cheaper options fail, with a complete brief, an outside review for standing hires, and a clean end.
+Start a standing or one-off thread only when cheaper options fail, with a complete brief, an outside review for every hire, and a clean end.
 
 ## Trigger
 
@@ -22,19 +22,23 @@ A department head or the coordinator sees work with no owner, or sustained overl
 
 ## Steps
 
-1. **Saul**: Assesses need: cut, reshuffle, automate or a one-off thread before a standing hire.
-2. **Saul**: Writes the brief; a brief missing any part does not start (DEC-20261020-hiring).
-3. **Gomez**: For a standing hire, reviews it before it starts and answers `HIRE OK` or `HIRE CHANGES`.
-4. **Saul**: Starts the thread (DEC-20261020-coordinator-creates-threads).
-5. **Francesca**: Records a standing hire in team.csv, team-changes.csv and Who does what, and adds it to OWNERS ([FLOW-19](FLOW-19-rule-and-roster-upkeep.md)). A consultant is logged, not added to team.csv.
-6. **New thread**: Works to its end condition and writes a handover.
-7. **Francesca**: On retirement, moves the thread's rows to their new owners.
-8. **Mike**: Flags a consultant kept past its end condition or past one minor.
+1. **Requesting thread**: The department head requests the hire and drafts the job description, with its justification; a brief missing any part does not start (DEC-20261020-hiring).
+2. **Saul**: Before any hire, checks whether reshuffling the work to existing threads covers it.
+3. **Saul**: Approves, modifies or denies the request. Saul doesn't write the brief.
+4. **Gomez**: Reviews every hire, standing or consultant, before it starts and answers `HIRE OK` or `HIRE CHANGES`.
+5. **Nacho**: Backs the hire before the thread starts: Nacho checks routing and roles, and the owning department head checks the work. Both are logged in `coordinator/state.md` in the project's shared folder, naming who backed it.
+6. **Saul**: Starts the thread (DEC-20261020-coordinator-creates-threads).
+7. **Francesca**: Records a standing hire in team.csv, team-changes.csv and Who does what, and adds it to OWNERS ([FLOW-19](FLOW-19-rule-and-roster-upkeep.md)). A consultant is logged, not added to team.csv.
+8. **New thread**: Works to its end condition and writes a handover.
+9. **Francesca**: On retirement, moves the thread's rows to their new owners.
+10. **Mike**: Flags a consultant kept past its end condition or past one minor.
 
 ## Gates
 
 - A complete brief.
-- `HIRE OK` before a standing hire starts.
+- A reshuffle check before any hire.
+- `HIRE OK` before any hire starts.
+- The backing logged in `coordinator/state.md` before the thread starts.
 
 ## Records
 
@@ -44,7 +48,7 @@ A department head or the coordinator sees work with no owner, or sustained overl
 
 ## Failure and escalation
 
-- A consultant past its end or one minor becomes a standing hire and gets the review.
+- A consultant past its end or one minor becomes a standing hire.
 - Graded at each kaizen review: did each thread earn its cost ([FLOW-17](FLOW-17-kaizen-review.md)).
 
 ## Rules it runs on
@@ -57,8 +61,8 @@ A department head or the coordinator sees work with no owner, or sustained overl
 ## Open questions for the owner of this flow
 
 - The hiring row says consultants are logged in docs/team/consultants.md; that file does not exist yet.
-- Org Design's adopted v2 process (department-head request, reshuffle check, fresh review before decision) is not in the repo, and Nacho is not on team.csv yet. Once both land, add the reshuffle-check step here.
+- DEC-20261020-hiring's home predates Org Design's adopted v2 hiring process: it still says the coordinator writes the brief and only standing hires get the outside review. This page follows the adopted process as the coordinator corrected it (2026-10-21: department head drafts, reshuffle first, review for every hire; no reason for exempting consultants is recorded). Walter updates the DECISIONS row to match; until it does, the row and this page differ and the coordinator's correction is the record.
 
 ## Last confirmed by owner
 
-Not yet.
+2026-10-21, by Saul (coordinator).

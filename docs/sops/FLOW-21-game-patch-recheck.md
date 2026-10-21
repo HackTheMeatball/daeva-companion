@@ -17,7 +17,7 @@ Metabot's game build changes (`data/packs/aion2/game-builds.json`), a patch note
 
 ## Inputs
 
-- [docs/team/patch-watch.md](../team/patch-watch.md) (order of checks and claim labels)
+- [docs/team/patch-watch.md](../team/patch-watch.md) (order of checks and claim labels; its sign-off section is out of date, and Gretchen rewrites it in a separate PR to point to [FLOW-09](FLOW-09-merge.md) and the departments)
 - data/packs/aion2/sources.json
 - `verifiedAt` on each record
 
@@ -50,10 +50,6 @@ Metabot's game build changes (`data/packs/aion2/game-builds.json`), a patch note
 - [ROL-03](../DECISIONS.md): Gretchen verifies
 - [REPO-04](../../CLAUDE.md): saves
 
-## Open questions for the owner of this flow
-
-- patch-watch.md's sign-off section still says nothing merges without the owner's OK and names old departments; the merge gate today is [FLOW-09](FLOW-09-merge.md). Fold or rewrite?
-
 ## Last confirmed by owner
 
-Not yet.
+2026-10-21, by Gretchen.

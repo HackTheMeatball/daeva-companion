@@ -25,9 +25,9 @@ A research pack for a class, a queued data-fix item, a data correction routed by
 ## Steps
 
 1. **Walter**: Queues the work as an item (a research pack or a data fix); it is never a direct edit (Q-01, Q-08).
-2. **Research thread**: Looks facts up only on approved domains for its own pack (ROL-03), under the fetching rules (REPO-06, REPO-07). A site not on the list goes to Lydia ([FLOW-07](FLOW-07-source-vetting.md)).
+2. **Research thread**: Logs every request in the shared fetch log first, and reads a new host's terms before its first content request ([ROL-08](../research/SOURCES.md#keeping-this-current)). Looks facts up only on approved domains for its own pack (ROL-03), under the fetching rules (REPO-06, REPO-07). A site not on the list goes to Lydia ([FLOW-07](FLOW-07-source-vetting.md)).
 3. **Research thread**: Changes the JSON in `data/`, labels anything not verified in `claims.json` (REPO-05), runs `npm run gen`, and opens the PR.
-4. **Gretchen**: Checks each fact against its sources and posts `Game Data Check (ROL-03) on <sha7>: VERIFIED`, `CHANGES` or `HOLD` on the PR head; auto-merge waits for VERIFIED.
+4. **Gretchen**: Checks each fact against its sources and posts `Game Data Check (ROL-03) on <sha7>: VERIFIED`, `CHANGES` or `HOLD` on the PR head. For a data PR (`data/**`, `docs/research/**`, icon paths) auto-merge waits for VERIFIED.
 5. **Gretchen**: Lists any fact no permitted source confirms for an owner in-game check (through [FLOW-14](FLOW-14-owner-decision.md) if it blocks).
 6. **Fresh reviewer**: Once per minor, re-checks 10 data fields Gretchen fixed or passed (KZ-16).
 
@@ -35,6 +35,8 @@ A research pack for a class, a queued data-fix item, a data correction routed by
 
 - Game Data Check VERIFIED on the head of every data, research or icon PR (ROL-03; carry rule DEC-20261020-verified-carry-skips-data-sources).
 - `npm run gen` and the schema checks green (REPO-01).
+- On a PR Gretchen authors (`claude/game-data-check-*`) that touches data, research or icon files, Lydia verifies it: auto-merge waits for her approval of the head (MRG-12).
+- On any other PR, a Game Data Check verdict counts only when posted on the PR with the head's short SHA on the line (MRG-12).
 
 ## Records
 
@@ -52,8 +54,10 @@ A research pack for a class, a queued data-fix item, a data correction routed by
 
 - [REPO-05](../../CLAUDE.md): verified data only
 - [ROL-03](../DECISIONS.md): who looks up, Gretchen verifies
+- [MRG-12](../team/gus.md): named reviewers
 - [DEC-20261019-research-threads-may-fetch-from](../DECISIONS.md): research threads fetch in their pack
 - [REPO-06](../../CLAUDE.md): fetching
+- [ROL-08](../research/SOURCES.md#keeping-this-current): fetch log first
 - [REPO-07](../../CLAUDE.md): banned sites and methods
 - [DEC-20261020-verified-carry-skips-data-sources](../DECISIONS.md): VERIFIED carry
 - [Q-08](../../ROADMAP.md): research gates
@@ -62,4 +66,4 @@ A research pack for a class, a queued data-fix item, a data correction routed by
 
 ## Last confirmed by owner
 
-Not yet.
+2026-10-21, by Gretchen.

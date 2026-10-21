@@ -2,7 +2,7 @@
 
 These rules bind every thread. The ledger ([docs/kaizen/ledger.csv](../kaizen/ledger.csv)) indexes them.
 
-Each rule below is copied word for word from issue #114 (its body as of Oct 20, 3:48 PM ET); in it, "this issue", "here", "above" and "below" mean #114 and its sections.
+Each rule below is copied word for word from issue #114 (its body as of Oct 20, 3:48 PM ET); in it, "this issue", "here", "above" and "below" mean #114 and its sections. A rule added later (COM-17 on) names its own source in its italic line.
 
 ## Communication
 
@@ -23,6 +23,60 @@ _From #114 "Owners (Isaac, 2026-10-18 5:05 AM ET; replaces "Three parts, one tea
 _From #114 "Team-wide rules (homed here from team memory; rules audit, Isaac, typed in the Gus thread 2026-10-19 4:56 PM ET)"._
 
 - **COM-13 done means merged:** say "recorded" or "done" only after the PR merges.
+
+### COM-17
+
+_Owner, typed in the Org Design thread 2026-10-20 11:34 PM ET ("Sure let’s do it"), approving Org Design's Walter load
+recommendation item 2; backed by Org Design (Nacho)._
+
+- **Card taps travel with the ask:** a thread that asks Walter for a DECISIONS row from an owner decision card puts the
+  card-tap record in the ask: the card's message id, the option chosen, `chosen_by` and the tap time in ET. Walter
+  checks that record instead of looking for it. A typed answer is still forwarded verbatim (DEC-02).
+
+### COM-18
+
+_Owner, typed in the project chat 2026-10-20 11:43 PM ET: "every standing decision, rule, etc that I came up with is under
+scrutiny. Just cause I’m the owner doesn’t mean I’m right"; effect as Kaizen (Gale) worded it, for the coordinator._
+
+- **Owner rules get no pass:** a rule or decision Isaac originated is graded against real-world practice at each kaizen
+  review like any other rule, and any thread may propose changing it through the process-change route. Loosening one of
+  the seven owner-held limits still goes to Isaac, as a recommendation.
+
+## Kaizen
+
+### KZ-19
+
+_Owner's ask, typed in the project chat 2026-10-20 11:58 PM ET: "Yeah but we try to avoid those or think ahead and do the ok
+in advance". Spec by the coordinator 2026-10-21 12:01 AM ET, routing backed by Org Design (Nacho), outside review: Fresh
+governance review, OK with changes 04:01Z._
+
+- **Permission stalls are prevented with advance standing OKs:**
+  1. Every block on a permission prompt or on Isaac's typed OK is a #221 row of kind `permission` (thread, step, what was
+     blocked, cause, wait, how it cleared). Mike is the only writer of #221; a blocked thread sends him the ask text
+     (KZ-20).
+  2. Gale groups the rows into patterns, and at each kaizen review grades how the OKs worked out.
+  3. Francesca first fixes what the team can fix in its own settings, then drafts a standing OK for each remaining pattern.
+     A team settings fix never widens a permission touching the seven owner-held limits, fetching, push to main, the
+     owner's device, secrets or publishing. Each fix is a trigger-1 change: its diff is in the #221 row, and it is
+     reviewed before it applies (the incident fast path excepted).
+  4. At each batch the coordinator briefs a one-off fresh reviewer with no history on the drafts: never Francesca or Gale,
+     and never Gomez for rules Gomez co-wrote. That reviewer checks every draft against the seven owner-held limits, and
+     every team-fixed settings diff, consulting Howard on any permission or workflow diff.
+  5. Gale plants one draft that quietly loosens a limit in every batch. If the reviewer misses it, the batch doesn't go out;
+     the plant never reaches Isaac.
+  6. Each draft states "loosens owner-held limit N: yes/no"; any yes goes to Isaac on its own card, as a recommendation.
+  7. Each OK is narrow (the exact action, its conditions, how to undo it), is reviewed at the next kaizen review, and is
+     pruned if it went unused for a full minor. Mike logs every use of an OK, so its use can be measured.
+  8. Isaac adopts each OK in his own words; Walter records his verbatim text in DECISIONS.
+  Harness guards, such as the session self-modification block, are not fixed with an OK; they get a route change.
+
+### KZ-20
+
+_Kaizen (Gale), PROCESS REVIEW stall-ask-text OK (Fresh governance review, 2026-10-21 12:03 AM ET); serves KZ-19._
+
+- **Blocked threads send the ask text:** a thread blocked on a permission prompt or on the owner's typed OK sends the
+  prompt or ask text to Watchdog (Mike) at the moment it is blocked. The text goes verbatim, with credentials, tokens and
+  personal data replaced by [redacted]. Mike writes the #221 row.
 
 ## Merging
 

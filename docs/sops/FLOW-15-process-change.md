@@ -24,33 +24,39 @@ Any thread proposes a change to a rule, a role or a permission, usually at a kai
 ## Steps
 
 1. **Proposer**: Writes the change under KZ-01: evidence, the check the next review tests, owner, kind, and the rows and homes it touches. Workflow changes are written for Gus (KZ-06).
-2. **Outside reviewer**: A thread with no history on it (Gomez by default, Howard for pipeline and code, Holly for design) reviews a fixed brief and posts `PROCESS REVIEW <id> OK`, `CHANGES` or `UNSURE` (DEC-20261020-process-change-procedure).
+2. **Outside reviewer**: The reviewer the review-triage rule picks (ROADMAP step 3, [Review level](../../ROADMAP.md); DEC-20261020-review-triage) reviews a fixed brief and posts `PROCESS REVIEW <id> OK`, `CHANGES` or `UNSURE` (DEC-20261020-process-change-procedure).
 3. **Proposer**: On CHANGES, revises once and goes back for review.
 4. **Rule owner**: On OK, has every ledger row and home written in one PR, with the rule owner as a reviewer.
 5. **Walter**: Writes the DECISIONS row in that PR (DEC-01).
 6. **Francesca**: Updates the ledger, Who does what and any SOP the change touches ([FLOW-19](FLOW-19-rule-and-roster-upkeep.md)).
-7. **Saul**: On UNSURE, or disagreement after one revision, sends Isaac one card with both views and a recommendation ([FLOW-14](FLOW-14-owner-decision.md)).
+7. **Saul** (the coordinator): On UNSURE, or disagreement after one revision, sends Isaac one card with both views and a recommendation ([FLOW-14](FLOW-14-owner-decision.md)).
 
 ## Gates
 
-- `PROCESS REVIEW <id> OK` before adoption; incidents adopt first and are reviewed the same day.
+- `PROCESS REVIEW <id> OK` before adoption.
+- A PR the triage rule sends to a fresh review keeps `hold` until a `FRESH REVIEW OK <sha7>` names its head (MRG-12).
+- Incident fast path: the coordinator declares and logs the incident, the change is adopted at once and reviewed the same day.
+- Changes found by a single trigger are batched for the kaizen review, except recurrences and incidents.
+- Process freeze until the 0.9 kaizen review: only incident fixes and Isaac's asks.
 - Loosening one of the seven owner-held limits stays Isaac's (DEC-20261020-team-owns-pipeline-and-permissions); a safety rule is never loosened for speed (KZ-02).
 
 ## Records
 
-- The review comment
+- The review verdict, posted on the PR (a tagged verdict or the reviewer's marker line), never only in a message; a PR that needs a named reviewer names it in a `Reviewers:` body line or opens with `hold` (MRG-12)
 - DECISIONS row (ok_by "team (outside review: ...)") and ledger rows
 - Kaizen log #222 row
 
 ## Failure and escalation
 
 - UNSURE: escalate as above.
-- A change to Gomez's own role or this gate goes to a consultant, never to Gomez.
+- A change Team Audit (Gomez) drafted, commented on or is the subject of goes to a consultant, never to Gomez.
 - A change whose check fails at the next review is reverted ([FLOW-17](FLOW-17-kaizen-review.md)).
 
 ## Rules it runs on
 
 - [DEC-20261020-process-change-procedure](../DECISIONS.md): the procedure
+- [DEC-20261020-review-triage](../DECISIONS.md): who the outside reviewer is
+- [MRG-12](../team/gus.md): named reviewers
 - [KZ-01](../DECISIONS.md): how a change is written
 - [KZ-02](../team/gale.md): never loosen safety
 - [KZ-06](../team/gale.md): workflow changes to Gus
