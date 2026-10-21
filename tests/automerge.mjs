@@ -533,6 +533,35 @@ check(/sparse-checkout: \|\n\s+tools\/verdicts\.cjs\n\s+docs\/kaizen\/team\.csv\
 check(hl.indexOf('rosterNote(pr.body') > 0 && hl.indexOf('rosterNote(pr.body') < hl.indexOf('// HOLD: add or lift it') && !/rosterNote[^\n]*continue/.test(hl),
   'loop: the roster note comes before the hold check and never skips the gates (the unknown name still blocks)');
 
+// A named approval that misses the head sha on its own line (#768, Kaizen 0.9 batch 17 + 21): Francesca's
+// "VERDICT: OK (reviewer: francesca)" named no sha and Walter lifted the hold on the comment header.
+check(V.lineSha('VERDICT: OK (reviewer: francesca) on abc1234', SHA) === 'abc1234' && V.lineSha('VERDICT: OK (reviewer: francesca)', SHA) === null
+  && V.lineSha('VERDICT: OK (reviewer: francesca) on 9999999', SHA) === '9999999', 'lineSha: the head, another sha, or none, read from the line only');
+const sm = yml.match(/\/\/ SHA-CHECK START\n([\s\S]*?)\n\s*\/\/ SHA-CHECK END/);
+check(!!sm, 'auto-merge.yml has the SHA-CHECK block');
+const SWHO = (name) => { const n = name.replace(/\s*\([^)]*\)\s*$/, '').trim(); return ({ jane: 'design lead', gretchen: 'game data check' })[n] || n; };
+const shaNote = sm ? new Function('V', 'owner', 'who', sm[1] + '\nreturn shaNote;')(V, 'HackTheMeatball', SWHO) : () => '';
+const B768 = 'Reviewers: francesca';
+const H768 = 'Rules Steward review of abc1234 (refs/pull/768/head = abc1234).\n- fine\nVERDICT: OK (reviewer: francesca)';
+const n768 = shaNote(B768, [c('HackTheMeatball', H768, 5)], SHA, HEAD);
+check(n768.startsWith('<!-- auto-merge:verdict-sha abc1234: francesca (no sha) -->') && n768.includes('on abc1234') && /header/.test(n768),
+  "sha note: #768's untagged-sha OK is named even though the header names the head");
+check(shaNote(B768, [c('HackTheMeatball', 'VERDICT: OK (reviewer: francesca) on abc1234', 5)], SHA, HEAD) === ''
+  && shaNote(B768, [c('HackTheMeatball', 'VERDICT: OK (reviewer: francesca) on 1111111', -5)], SHA, HEAD) === ''
+  && shaNote(B768, [c('HackTheMeatball', 'VERDICT: OK (reviewer: francesca) on 1111111', 5)], SHA, HEAD).includes('francesca (1111111)'),
+  'sha note: none on the head; an older approval of an old head is only pending; a newer one naming another sha is named');
+check(shaNote(B768, [c('HackTheMeatball', 'VERDICT: CHANGES (reviewer: francesca)', 5)], SHA, HEAD) === ''
+  && shaNote(B768, [c('claude[bot]', 'VERDICT: OK (reviewer: francesca)', 5)], SHA, HEAD) === ''
+  && shaNote('Reviewers: chuck', [c('HackTheMeatball', H768, 5)], SHA, HEAD) === ''
+  && shaNote(B768, [c('HackTheMeatball', H768, 5), c('HackTheMeatball', 'VERDICT: OK (reviewer: francesca) on abc1234', 6)], SHA, HEAD) === '',
+  'sha note: not for a CHANGES, a bot comment, a reviewer the PR does not name, or once a later line names the head');
+check(shaNote(B768, [c('HackTheMeatball', H768, 5), c('github-actions[bot]', n768, 6)], SHA, HEAD) === ''
+  && shaNote(B768, [c('HackTheMeatball', H768, 5), c('github-actions[bot]', n768, 6)], 'fff0000aaa', HEAD) !== '',
+  'sha note: posted once per head and list; a new head gets a new note');
+check(/\.\.\.\[\.\.\.last\]|\[\.\.\.last\]/.test(sm ? sm[1] : '') && /V\.reviewers\(pr\.body \|\| ''\)\.length\) \{\n[^\n]*\n[^\n]*getCommit[^\n]*\n[^\n]*shaNote\(/.test(yml)
+  && yml.indexOf('shaNote(pr.body') < yml.indexOf('// HOLD: add or lift it'),
+  'loop: the sha note is read before the hold check, with the head commit time');
+
 console.log(`\n${n - fail}/${n} auto-merge checks passed`);
 console.log(fail ? 'AUTOMERGE CHECKS FAILED' : 'AUTOMERGE CHECKS PASSED');
 process.exit(fail ? 1 : 0);
