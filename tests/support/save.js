@@ -4,13 +4,13 @@
 
    A test describes a save as a "flat" state: character fields (checks, level, quest, …; charFields() in
    src/core/state.js) at the top level beside the view settings. toStored() turns that into what the current build
-   stores (save v5, 0.4 P3c: one character slot, TEST_SLOT), fromStored() turns a stored save back into the flat shape
+   stores (save v6, 0.9 P2: one character slot, TEST_SLOT), fromStored() turns a stored save back into the flat shape
    (the current character's fields beside the view settings), so assertions stay as they are. The conversion lives
    here, in the tests, never in the app (CLAUDE.md "never read an old-shape save into new code").
 
-   A flat state without mt gets every value stamped at time 0 (unknown), as a v5 save is born (src/core/migrations.js):
+   A flat state without mt gets every value stamped at time 0 (unknown), as a v6 save is born (src/core/migrations.js):
    mtAtZero() mirrors stamp(c, 0) in src/core/sync.js, which tests/core/save-helper.test.mjs checks. The one-time flags
-   of the pre-0.4 saves (RETIRED_FLAGS) are left out: a v5 save has none.
+   of the pre-0.4 saves (RETIRED_FLAGS) are left out: a v6 save has none.
 
    SAVE_KEY is read from src/core/state.js, not typed again. V4_KEY is the pre-0.4 key: only the `save` suite uses it,
    to prove the app never reads it. */
@@ -46,18 +46,51 @@ function mtAtZero(c) {
   return mt;
 }
 
-/* flat test state -> the stored v5 object, and back. The input is never changed. */
+/* Save v6 (0.9 P2) keys a story quest by its id (sq:<gameId>), a skill's points sp:<skill key>:<L> and a stigma's level and
+   pick by its key (the id's last segment). A flat test state names them as a player reads them (quest names, sp:Heart
+   Gore:3, stigma names): toStored() puts the keys in, fromStored() the names back, so the suites keep their readable
+   fixtures. A stored save that holds a name where a key belongs throws: the app writes keys only. */
+const readRecs = f => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, f), 'utf8')).records; } catch (e) { return []; } };
+const CLASSES_DIR = path.join(ROOT, 'data', 'packs', 'aion2', 'classes');
+const classRecs = file => [CLASS, ...fs.readdirSync(CLASSES_DIR).filter(c => c !== CLASS)].flatMap(c => readRecs(path.join('data', 'packs', 'aion2', 'classes', c, file)));
+const nameMap = recs => { const to = new Map(), back = new Map(); for (const r of recs) { if (!to.has(r.name)) to.set(r.name, r.key); if (!back.has(r.key)) back.set(r.key, r.name); } return { to, back }; };
+const SQ = nameMap(readRecs('data/packs/aion2/asmodian/story-quests.json')), SK = nameMap(classRecs('skills.json')), ST = nameMap(classRecs('stigmas.json'));
+const mapKeys = (o, f) => o && typeof o === 'object' && !Array.isArray(o) ? Object.fromEntries(Object.entries(o).map(([k, v]) => [f(k), v])) : o;
+const nameIn = (m, what) => n => { if (m.to.has(n) && !m.back.has(n)) throw new Error(`tests/support/save.js: the save holds the ${what} name "${n}", not its key`); return m.back.get(n) ?? n; };
+const spOf = f => k => { const p = /^sp:(.+):((?:spec)?\d*)$/.exec(k); return p ? `sp:${f(p[1])}:${p[2]}` : k; };
+function keysIn(c, dir) {
+  const q = dir ? n => SQ.to.get(n) ?? n : nameIn(SQ, 'story quest'), st = dir ? n => ST.to.get(n) ?? n : nameIn(ST, 'stigma');
+  const sp = spOf(dir ? n => SK.to.get(n) ?? n : nameIn(SK, 'skill'));
+  const out = { ...c };
+  if (typeof c.quest === 'string' && c.quest) out.quest = q(c.quest);
+  if (typeof c.storyEnd === 'string') out.storyEnd = q(c.storyEnd);
+  if (c.qsteps) out.qsteps = mapKeys(c.qsteps, q);
+  if (c.qsub) out.qsub = mapKeys(c.qsub, q);
+  if (c.checks) out.checks = mapKeys(c.checks, sp);
+  if (c.stLv) out.stLv = mapKeys(c.stLv, st);
+  if (c.stPick) out.stPick = Object.fromEntries(Object.entries(c.stPick).map(([k, v]) => [k, typeof v === 'string' ? st(v) : v]));
+  if (c.mt && typeof c.mt === 'object') { const mt = out.mt = { ...c.mt };
+    for (const f of ['qsteps', 'qsub']) if (mt[f]) mt[f] = mapKeys(mt[f], q);
+    if (mt.checks) mt.checks = mapKeys(mt.checks, sp);
+    if (mt.stLv) mt.stLv = mapKeys(mt.stLv, st);
+    if (mt.stPick) mt.stPick = Object.fromEntries(Object.entries(mt.stPick).map(([k, s]) => [k, Array.isArray(s) && typeof s[1] === 'string' ? [s[0], st(s[1])] : s]));
+    if (Array.isArray(mt.quest) && Array.isArray(mt.quest[1])) mt.quest = [mt.quest[0], mt.quest[1].map(x => typeof x === 'string' && x ? q(x) : x)]; }
+  return out;
+}
+
+/* flat test state -> the stored v6 object, and back. The input is never changed. */
 function toStored(flat) {
-  const top = {}, c = { id: TEST_SLOT, pack: PACK, class: CLASS, name: '', created: 0 };
+  let top = {}, c = { id: TEST_SLOT, pack: PACK, class: CLASS, name: '', created: 0 };
   for (const [k, v] of Object.entries(flat)) {
     if (v === undefined || RETIRED_FLAGS.includes(k)) continue;
     if (CHAR_FIELDS.includes(k)) c[k] = JSON.parse(JSON.stringify(v)); else top[k] = JSON.parse(JSON.stringify(v));
   }
+  c = keysIn(c, true);
   if (!('mt' in c)) c.mt = mtAtZero(c);
-  return { v: 5, ...top, current: c.id, chars: { [c.id]: c } };
+  return { v: 6, ...top, current: c.id, chars: { [c.id]: c } };
 }
 function fromStored(stored) {
-  const { v, current, chars, ...top } = stored, c = (chars || {})[current] || {}, out = { ...top };
+  const { v, current, chars, ...top } = stored, c = keysIn((chars || {})[current] || {}, false), out = { ...top };
   for (const [k, x] of Object.entries(c)) if (!CHAR_META.includes(k)) out[k] = x;
   return out;
 }
