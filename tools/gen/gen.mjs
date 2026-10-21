@@ -234,39 +234,51 @@ export function generate(opts = {}) {
   const MACRO_MAX_STEPS = 20;
   const KS = build.keyStacks, KS_SLOTS = KS.slots || [], KS_MACROS = KS.macros || [];
   const ksName = id => id.startsWith('stigma:') ? stg(id).name : sk(id).name;   /* a quickslot row holds skills and stigmas */
+  /* the base attack: the skill the game's defaults put on Left click (defaultKeys; its rows carry no level) */
+  const BASIC = new Set(((KS.defaultKeys || { keys: [] }).keys.find(k => k.key === 'Left click') || { rows: [] }).rows.map(r => r.skill));
   const slotRow = (slot, lv) => ((KS_SLOTS.find(s => s.slot === slot) || { rows: [] }).rows.filter(r => r.minLv <= lv).sort((a, b) => b.minLv - a.minLv)[0] || { skills: [] }).skills;
   for (const s of KS_SLOTS) {
     check(`${build.id}: key slot named once: ${s.slot}`, KS_SLOTS.filter(x => x.slot === s.slot).length === 1);
     for (const r of s.rows) {
       check(`${build.id}: slot ${s.slot} from Lv ${r.minLv} holds at most 4 skills`, r.skills.length <= 4, r.skills.length);
       /* Quick Use 1 is left click, the basic attack: row 0 only (owner 14:07Z; T-106 skill bar) */
-      if (s.slot === 'Quick Use 1') check(`${build.id}: slot Quick Use 1 (left click) from Lv ${r.minLv} holds only the base attack`, r.skills.length === 1 && ((KS.defaultKeys || { keys: [] }).keys.find(k => k.key === 'Left click') || { rows: [] }).rows.some(x => x.skill === r.skills[0]), r.skills);
+      if (s.slot === 'Quick Use 1') {
+        check(`${build.id}: slot Quick Use 1 (left click) needs the class's base attack (a Left click default in keyStacks.defaultKeys)`, BASIC.size > 0);
+        check(`${build.id}: slot Quick Use 1 (left click) from Lv ${r.minLv} holds only the base attack`, r.skills.length === 1 && BASIC.has(r.skills[0]), r.skills); }
       check(`${build.id}: slot ${s.slot} from Lv ${r.minLv} holds each skill once`, new Set(r.skills).size === r.skills.length);
       for (const id of r.skills) { const k = skById[id] || stById[id];
         check(`${build.id}: slot ${s.slot}: ${id} is an active skill or a stigma of the class`, !!k && !!cls && id.split(':')[1] === cls.class && (id.startsWith('stigma:') || k.type === 'active'), k && k.type); }
     }
   }
-  /* a skill or stigma sits in one quickslot at a time, never two (owner, 2026-10-21 22:32Z): per level band, across slots */
-  for (const lv of new Set(KS_SLOTS.flatMap(s => s.rows.map(r => r.minLv)))) {
-    const ids = KS_SLOTS.flatMap(s => slotRow(s.slot, lv));
-    check(`${build.id}: from Lv ${lv} no skill or stigma sits in two quickslots`, new Set(ids).size === ids.length, ids.filter((x, i) => ids.indexOf(x) !== i)); }
+  /* a skill or stigma sits in one quickslot at a time, never two (owner, 2026-10-21 22:32Z): per level band, across the slots
+     and the E stigmas (eOrder, all levels). Q's Shadowstrike is not data yet (requirements.js, until the build lane), so the
+     check can't see it */
+  for (const lv of new Set([1, ...KS_SLOTS.flatMap(s => s.rows.map(r => r.minLv))])) {
+    const ids = [...KS_SLOTS.flatMap(s => slotRow(s.slot, lv)), ...(KS.eOrder || [])];
+    check(`${build.id}: from Lv ${lv} no skill or stigma sits in two quickslots (keyStacks.slots and eOrder)`, new Set(ids).size === ids.length, ids.filter((x, i) => ids.indexOf(x) !== i)); }
   /* a macro only goes on a quickslot with a 0–3 stack: Quick Use 2–12 (owner 14:07Z rule applied to the T-106 skill bar,
      inferred), never Quick Use 1, left click. The basic attack (the skill the game's defaults put on Left click) may be a
-     { skill } step, but only the last: a no-cooldown skill blocks every step above it (claim C21, two sources). A lone-skill
-     step other than the basic attack, or a step delay, is a build guide's advice and needs a cited page on keyStacks.sources
-     (owner 16:19Z; Game Data Check) */
+     step, or sit in a stack a step fires, but only as the last skill the macro fires: a no-cooldown skill blocks every step
+     above it (claim C21, two sources), so the check runs on the expanded sequence per level band. A lone-skill step other
+     than the basic attack, or a step delay, is a build guide's advice: the check only asks for a cited page (a url) on
+     keyStacks.sources; that the page is a build guide is Game Data Check's call (owner 16:19Z) */
   const MACRO_KEYS = Array.from({ length: 11 }, (_, i) => `Quick Use ${i + 2}`);
-  const BASIC = new Set(((build.keyStacks.defaultKeys || { keys: [] }).keys.find(k => k.key === 'Left click') || { rows: [] }).rows.map(r => r.skill));
   const KS_GUIDE_SRC = (KS.sources || []).some(r => r.url);
+  const macroBands = m => [...new Set([...m.rows.map(r => r.minLv), ...KS_SLOTS.flatMap(s => s.rows.map(r => r.minLv))])];
+  const macroRow = (m, lv) => m.rows.filter(r => r.minLv <= lv).sort((a, b) => b.minLv - a.minLv)[0];
   for (const m of KS_MACROS) {
     check(`${build.id}: macro quickslot named once: ${m.quickslot}`, KS_MACROS.filter(x => x.quickslot === m.quickslot).length === 1);
     check(`${build.id}: macro quickslot ${m.quickslot} has a 0–3 stack (Quick Use 2–12)`, MACRO_KEYS.includes(m.quickslot), m.quickslot);
     for (const r of m.rows) for (const st of r.steps) {
-      if (st.skill && !BASIC.has(st.skill)) check(`${build.id}: macro ${m.quickslot}: the lone-skill step ${st.skill} has a build guide's page in keyStacks.sources`, KS_GUIDE_SRC);
-      if (st.delayMs !== undefined) check(`${build.id}: macro ${m.quickslot}: a step delay has a build guide's page in keyStacks.sources`, KS_GUIDE_SRC); }
-    for (const r of m.rows) if (MACRO_MAX_STEPS != null) check(`${build.id}: macro ${m.quickslot} from Lv ${r.minLv} has at most ${MACRO_MAX_STEPS} steps`, r.steps.length <= MACRO_MAX_STEPS, r.steps.length);
+      if (st.skill && !BASIC.has(st.skill)) check(`${build.id}: macro ${m.quickslot}: the lone-skill step ${st.skill} has a cited page (url) in keyStacks.sources`, KS_GUIDE_SRC);
+      if (st.delayMs !== undefined) check(`${build.id}: macro ${m.quickslot}: a step delay has a cited page (url) in keyStacks.sources`, KS_GUIDE_SRC); }
+    check(`${build.id}: macro ${m.quickslot} needs the class's base attack (a Left click default in keyStacks.defaultKeys)`, BASIC.size > 0);
+    for (const r of m.rows) check(`${build.id}: macro ${m.quickslot} from Lv ${r.minLv} has at most ${MACRO_MAX_STEPS} steps`, r.steps.length <= MACRO_MAX_STEPS, r.steps.length);
     for (const r of m.rows) r.steps.forEach((st, i) => { if (st.skill && BASIC.has(st.skill))
       check(`${build.id}: macro ${m.quickslot} from Lv ${r.minLv}: basic attack ${st.skill} is the last step`, i === r.steps.length - 1, [i, r.steps.length]); });
+    for (const lv of macroBands(m)) { const mr = macroRow(m, lv); if (!mr) continue;
+      const fired = mr.steps.flatMap(st => st.slot ? slotRow(st.slot, lv) : [st.skill]);
+      fired.forEach((id, i) => { if (BASIC.has(id)) check(`${build.id}: macro ${m.quickslot} at Lv ${lv}: basic attack ${id} is the last skill fired`, i === fired.length - 1, [i, fired.length]); }); }
     for (const r of m.rows) for (const st of r.steps) {
       if (st.slot) check(`${build.id}: macro ${m.quickslot}: slot ${st.slot} is defined in keyStacks.slots`, KS_SLOTS.some(s => s.slot === st.slot));
       if (st.skill) { const k = skById[st.skill];
@@ -275,8 +287,8 @@ export function generate(opts = {}) {
   }
   /* a macro can sit on any quickslot with a 0–3 stack and a class can have several (owner, 2026-10-21): expand each one per level band (the union of
      its own and the slots' minLv), steps in order, a slot step being that slot's stack at the level. Names, not ids. */
-  const expandMacro = m => [...new Set([...m.rows.map(r => r.minLv), ...KS_SLOTS.flatMap(s => s.rows.map(r => r.minLv))])].map(lv => {
-    const mr = m.rows.filter(r => r.minLv <= lv).sort((a, b) => b.minLv - a.minLv)[0];
+  const expandMacro = m => macroBands(m).map(lv => {
+    const mr = macroRow(m, lv);
     return mr && { minLv: lv, skills: mr.steps.flatMap(st => st.slot ? slotRow(st.slot, lv) : [st.skill]).map(ksName) }; }).filter(Boolean).sort((a, b) => b.minLv - a.minLv);
   const MACROS_FLAT = KS_MACROS.map(m => ({ quickslot: m.quickslot, rows: expandMacro(m) }));
   /* RMB_ROWS: the drawer's legacy flat right-click list (RMB_STACK reads it): what right click (Quick Use 2) fires, per level

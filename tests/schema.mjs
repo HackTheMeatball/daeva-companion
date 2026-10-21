@@ -60,7 +60,20 @@ job(ok => { let msg = null; try { generate({ mutate: (rel, d) => { if (rel === '
 job(ok => { let msg = null; try { generate({ mutate: (rel, d) => { if (rel === 'data/packs/aion2/asmodian/assassin/builds.json') QU2_MACRO(Array.from({ length: 21 }, () => ({ slot: 'Quick Use 2' })))(d.records[0]); } }); } catch (e) { msg = e.message; }
   ok('generator rejects: a macro of 21 steps', !!msg && /must NOT have more than 20 items/.test(msg), msg); });
 genFails('the base attack before another macro step', QU2_MACRO([{ skill: 'skill:assassin:quick-slice' }, { slot: 'Quick Use 2' }]), /basic attack skill:assassin:quick-slice is the last step/);
-genFails('a lone-skill step with no build guide page', r => { QU2_MACRO([{ skill: 'skill:assassin:ambush' }])(r); r.keyStacks.sources = r.keyStacks.sources.filter(x => !x.url); }, /lone-skill step skill:assassin:ambush has a build guide/);
+genFails('a lone-skill step with no build guide page', r => { QU2_MACRO([{ skill: 'skill:assassin:ambush' }])(r); r.keyStacks.sources = r.keyStacks.sources.filter(x => !x.url); }, /lone-skill step skill:assassin:ambush has a cited page/);
+/* C21 on what a macro fires, not only its skill steps (#787 review): the base attack inside a fired stack must be last too */
+const QU_BASE = slot => r => { r.keyStacks.slots.push({ slot, rows: [{ minLv: 1, skills: ['skill:assassin:quick-slice'] }] }); };
+genFails('the base attack fired first through a Quick Use 1 step', r => { QU_BASE('Quick Use 1')(r); QU2_MACRO([{ slot: 'Quick Use 1' }, { slot: 'Quick Use 2' }])(r); }, /basic attack skill:assassin:quick-slice is the last skill fired/);
+genFails('the base attack fired first through another stack', r => { QU_BASE('Quick Use 3')(r); QU2_MACRO([{ slot: 'Quick Use 3' }, { slot: 'Quick Use 2' }])(r); }, /basic attack skill:assassin:quick-slice is the last skill fired/);
+genFails('a macro for a class with no base attack (no Left click default)', r => { QU2_MACRO([{ slot: 'Quick Use 2' }])(r); r.keyStacks.defaultKeys.keys = r.keyStacks.defaultKeys.keys.filter(k => k.key !== 'Left click'); }, /macro Quick Use 7 needs the class's base attack/);
+genFails('an E stigma also in a quickslot', r => { r.keyStacks.slots.push({ slot: 'Quick Use 3', rows: [{ minLv: 1, skills: [r.keyStacks.eOrder[0]] }] }); }, /no skill or stigma sits in two quickslots/);
+/* the positive side: the base attack as the last fired skill, and a stigma in a quickslot row, are accepted */
+const KS_FAIL = /keyStacks|quickslot|macro|Quick Use|base attack|basic attack/;
+job(ok => { const g1 = runs(ok, 'the base attack last, a stigma in a quickslot', { mutate: (rel, d) => { if (rel !== 'data/packs/aion2/asmodian/assassin/builds.json') return; const r = d.records[0];
+  QU_BASE('Quick Use 1')(r); QU2_MACRO([{ slot: 'Quick Use 2' }, { slot: 'Quick Use 1' }])(r);
+  r.keyStacks.slots.push({ slot: 'Quick Use 9', rows: [{ minLv: 1, skills: [r.keyStacks.eOrder.pop()] }] }); } }); if (!g1) return;
+  const bad = g1.failed.filter(x => KS_FAIL.test(x.check)).map(x => x.check);
+  ok('generator accepts: the base attack as the last fired skill and a stigma in a quickslot row', bad.length === 0, bad); });
 genFails('a step that names an undefined quickslot', QU2_MACRO([{ slot: 'Quick Use 9' }]), /slot Quick Use 9 is defined in keyStacks\.slots/);
 genFails('one skill in two quickslots', r => { r.keyStacks.slots.push({ slot: 'Quick Use 7', rows: [{ minLv: 1, skills: ['skill:assassin:savage-roar'] }] }); }, /no skill or stigma sits in two quickslots/);
 genFails('Quick Use 1 holding something other than the base attack', r => { r.keyStacks.slots.push({ slot: 'Quick Use 1', rows: [{ minLv: 1, skills: ['skill:assassin:shadowstrike'] }] }); }, /Quick Use 1 \(left click\) from Lv 1 holds only the base attack/);

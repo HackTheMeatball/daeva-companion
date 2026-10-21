@@ -405,11 +405,13 @@ Anything else, an unknown token or an unknown `build:` kind fails validation.
   The game's default keys (rebindable, each with a second key): Quick Use 1 = Left click / R, 2 = Right click / T, 3–6 = 1–4,
   7 = Q, 8 = E, 9–12 = 5–8, so T and R are second keys, not slots. A row shows from its `minLv` and holds at most 4 skills or
   stigmas (row 0 fires first); Quick Use 1 holds only the base attack. A skill or stigma sits in one quickslot at a time
-  (owner, 22:32Z). `macros[]` are `{ quickslot, rows: [{ minLv, steps: [{ slot, delayMs? } | { skill, delayMs? }] }] }`:
+  (owner, 22:32Z); the generator checks that across `slots` and `eOrder` (Q's Shadowstrike is still code, not data). `macros[]` are `{ quickslot, rows: [{ minLv, steps: [{ slot, delayMs? } | { skill, delayMs? }] }] }`:
   `quickslot` is one of Quick Use 2–12 (inferred from the owner's "any key with a full 0–3 row"), never Quick Use 1; at most
-  20 ordered steps (T-106), each naming a quickslot (fires its whole stack) or one lone skill. A lone-skill step other than
-  the base attack, or a step delay, needs a build guide's page on `keyStacks.sources`; the base attack may only be the last
-  step (claim C21). The generator checks all of these. It compiles `RMB_ROWS` (the flat right-click list `RMB_STACK` reads):
+  20 ordered steps (T-106), each naming a quickslot (fires its whole stack) or one lone active skill (not a stigma). A
+  lone-skill step other than the base attack, or any step delay, needs a cited build guide's page on `keyStacks.sources`
+  (the generator checks for a url; Game Data Check judges the page). The base attack may only be the last skill the macro
+  fires, as a step or inside a fired stack (claim C21; checked on the expanded sequence). `delayMs` is capped at 10000 as a
+  sanity bound, not a game fact. The generator checks all of these. It compiles `RMB_ROWS` (the flat right-click list `RMB_STACK` reads):
   the macro on Quick Use 2 expanded per level band, else Quick Use 2's own stack; `MACROS_FLAT` expands every macro. Both the
   label and the sources sit on `keyStacks.status` / `sources`; a build choice here is advice, never a game fact.
 - `keyStacks.eOrderStatus` (0.9 P17, optional): the E stack's own label when it is less certain than `keyStacks.status`
