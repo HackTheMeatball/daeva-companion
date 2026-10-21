@@ -11,6 +11,7 @@
       "type": "active",
       "learnLv": 5,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-arrow-scattershot.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -909,6 +910,7 @@
       "type": "active",
       "learnLv": 12,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-suppressing-arrow.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
