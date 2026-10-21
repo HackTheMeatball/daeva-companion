@@ -54,10 +54,11 @@ scrutiny. Just cause I’m the owner doesn’t mean I’m right"; effect as Kaiz
 
 ### COM-19
 
-_Owner, 2026-10-21 9:49 AM ET, on T-61 being one unreadable block: "Then make clarity a standing thing." Standard by
-Design Lead (Jane), reviewed by Fresh governance review and Kaizen (Gale). Recommended reply: owner, 10:19 AM ET ("Todo
-cards that need my input pasted here should have a recommended response that I can just hit copy on so I can just do
-that if I agree"). Board coordinates: owner, 10:44 AM ET (cmsg_01UNirAFgxf3jC8kQS8uvvHBSf8d34bdyGkgApyBzpTjmz, read by
+_Owner, 2026-10-21 9:49 AM ET (cmsg_01UNirAFgxf3jC8kQS8uvvHB86Nb9WvZr4rfzrUAMuftpG, read by id), on T-61 being one
+unreadable block: "Then make clarity a standing thing." Standard by Design Lead (Jane), reviewed by Fresh governance
+review and Kaizen (Gale). Recommended reply: owner, 10:18 AM ET (cmsg_01UNirAFgxf3jC8kQS8uvvHBV2npK89zoGgAqmUo2Kpppv,
+read by id): "Todo cards that need my input pasted here should have a recommended response that I can just hit copy on
+so I can just do that if I agree…". Board coordinates: owner, 10:44 AM ET (cmsg_01UNirAFgxf3jC8kQS8uvvHBSf8d34bdyGkgApyBzpTjmz, read by
 id): "…if you're asking me to check something you need to give me the board coordinates not the metabot frame
 coordinates because that's not how I'm going to count them in game. There is no frame in game". Routed: coordinator
 2026-10-21T20:20Z._
