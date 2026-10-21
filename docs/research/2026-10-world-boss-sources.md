@@ -6,7 +6,7 @@ one web search for corroboration. **Kanon's Bible has nothing on world bosses**:
 (Boss Attack and the like) and raid crit caps.
 
 ## Confirmed: game-database fields (Metabot reads the Global client's schedule tables, build 0.0.4387.0)
-All times are **server time, UTC+9**, shared by every Global region (NA, EU, LatAm, Asia). Korea and Taiwan are separate
+All times are **server time, UTC+9** (the clock itself is disputed: see the 23:20Z update), said to be shared by every Global region (NA, EU, LatAm, Asia). Korea and Taiwan are separate
 services. That the regions share UTC+9 is labelled by Metabot as "community-confirmed, not official". It matches the
 daily reset at 16:00 server time = 07:00 UTC.
 
@@ -35,7 +35,7 @@ Not in Metabot's timed list. Community trackers (aion2rifttimer.com, aion2vault.
 unvetted at first, now vetted in the 23:20Z update below) say these respawn a fixed interval **after the kill**, with cycles of
 1/2/3/4/6/8/12/24 h (e.g. Melted Danar 1 h, Silent Dartan 6 h, High Commander Lagta 12 h). Counts disagree (48 vs 49).
 There is no fixed clock, so a timer needs the player to enter the kill time (or uses the in-game Field Boss list's own
-countdown). Single source / inferred until vetted and checked in game (superseded: see the 23:20Z update below).
+countdown). Community only (two community sources, see the 23:20Z update below) and inferred until checked in game.
 
 ## Open points (inferred, for Walter)
 - "The ones that matter": the 9 timed bosses are the only ones on a fixed clock. Monster Lv 65/80 doesn't mean
