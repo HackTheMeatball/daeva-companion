@@ -23,7 +23,7 @@ Every item of the patch has merged. Walter is release manager from `PRE-RELEASE 
 ## Steps
 
 1. **Walter**: Plans the patch in ROADMAP without a planning pass (PLN-20); a new look only on Isaac's "now" (PLN-15); patch owner-ok tokens use the patch version (Q-04).
-2. **Walter**: Writes the CHANGELOG section into the release issue, covering every merge on main since the last tag, not only the patch's own items (a patch deploys main, so already-merged items of the next minor ship with it), and sends Gretchen `PRE-RELEASE CHECK <version>` (PLN-17, PLN-18).
+2. **Walter**: Writes the CHANGELOG section into the release issue, covering every merge on main since the last tag, not only the patch's own items (until 1.0 a patch ships only before the next minor's first merge, PLN-17), and sends Gretchen `PRE-RELEASE CHECK <version>` (PLN-17, PLN-18).
 3. **Gretchen**: Answers `DATA OK` or `DATA HOLD`.
 4. **Walter**: Posts `GO <version>` after DATA OK (a patch has no RC play, KZ-11).
 5. **Gus**: Starts the release item on GO (PIP-08, PLN-19).
