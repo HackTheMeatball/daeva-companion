@@ -51,7 +51,7 @@ let fail = 0; const ok = (n, c, d) => { console.log((c ? 'ok   ' : 'FAIL ') + n 
   await set(37, { quest: 'Mirror of Greed' }); cs = await cards();
   ok('P1-3 no "Mirror of Greed" milestone card next to the story card', cs.filter(c => /Mirror of Greed/.test(c)).length === 1, cs);
   await p.evaluate(() => document.querySelector('#nowStar [data-now="story"]').click()); await p.waitForTimeout(900);
-  r = await p.evaluate(() => ({ q: char(state).quest, g372: !!char(state).checks['g37:2'] })); ok('P1-3 Turned in on Mirror of Greed ticks its milestone step', r.g372 && r.q !== 'Mirror of Greed', r);
+  r = await p.evaluate(() => ({ q: questNameOf(char(state).quest), g372: !!char(state).checks['g37:2'] })); ok('P1-3 Turned in on Mirror of Greed ticks its milestone step', r.g372 && r.q !== 'Mirror of Greed', r);
   await set(45, { pendSt: 0, pendCr: 0, stones: 0 }); cs = await cards();
   const si = cs.findIndex(c => /^Story:|Altgard story/.test(c)), ai = cs.findIndex(c => /Ascension Trial|Abyss Points/.test(c));
   ok('P1-4 Lv 45 advice ranked after the story (or cut)', si >= 0 && (ai < 0 || ai > si), cs);

@@ -519,7 +519,7 @@ async function load(p, state, mode) {
       await p.goto(CFG.CUR);
       /* Lv 22, story one quest past "Daeva in a Dream" (g6:0 … g16:monolith byStory, g22:0 wrapper), a stored false on
          g16:0, "In the Fang Legion's Name" picked up (its prerequisites by follow-up) */
-      const q = await p.evaluate(() => QUESTS[QUESTS.findIndex(x => x[1] === 'Daeva in a Dream') + 1][1]);
+      const q = await p.evaluate(() => QUESTS[QUESTS.findIndex(x => questNameOf(x[1]) === 'Daeva in a Dream') + 1][1]); /* a story key (save v6) */
       await writeSave(p, { checks: { 'g16:0': false }, started: { 'rq:2202017': 1 }, level: 22, quest: q, mode, open: {} });
       await p.reload(); await p.waitForTimeout(400);
       await p.evaluate(() => document.querySelectorAll('#gates details.step').forEach(x => { x.open = true; x.hidden = false; }));
@@ -543,7 +543,7 @@ async function load(p, state, mode) {
       const axAsc = await p.evaluate(async () => (await axe.run('#asc', { resultTypes: ['violations'] })).violations.map(v => v.id));
       ok(`${id}: axe on the Ascension bar, no violations`, !axAsc.length, axAsc);
       /* A3: the story moves back before "Buried Atrocities": the stored false shows again, the box is enabled */
-      const back = await p.evaluate(() => { char(state).quest = 'Buried Atrocities'; update(); const i = document.querySelector('#gates input[data-k="g16:0"]');
+      const back = await p.evaluate(() => { char(state).quest = QUESTS.find(x => questNameOf(x[1]) === 'Buried Atrocities')[1] /* its story key (save v6) */; update(); const i = document.querySelector('#gates input[data-k="g16:0"]');
         return { checked: i.checked, disabled: i.disabled, derived: 'derived' in i.dataset, label: i.getAttribute('aria-label'), stored: char(state).checks['g16:0'] }; });
       ok(`${id}: story moved back: g16:0 unticked and enabled again, its stored false untouched`, !back.checked && !back.disabled && !back.derived && back.label === null && back.stored === false, back);
       await ctx.close();
