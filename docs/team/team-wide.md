@@ -58,7 +58,7 @@ _Owner, 2026-10-21 9:49 AM ET, on T-61 being one unreadable block: "Then make cl
 Design Lead (Jane), reviewed by Fresh governance review and Kaizen (Gale). Recommended reply: owner, 10:19 AM ET ("Todo
 cards that need my input pasted here should have a recommended response that I can just hit copy on so I can just do
 that if I agree"). Board coordinates: owner, 10:44 AM ET (cmsg_01UNirAFgxf3jC8kQS8uvvHBSf8d34bdyGkgApyBzpTjmz, read by
-id): "if you're asking me to check something you need to give me the board coordinates not the metabot frame
+id): "…if you're asking me to check something you need to give me the board coordinates not the metabot frame
 coordinates because that's not how I'm going to count them in game. There is no frame in game". Routed: coordinator
 2026-10-21T20:20Z._
 
@@ -68,9 +68,11 @@ coordinates because that's not how I'm going to count them in game. There is no 
   - **Title:** one ask, starting with a verb, at most 70 characters.
   - **Steps:** numbered, 1 to 7 (a hard cap); each one action starting with a verb, at most 120 characters. A check in
     game says what he should see or send. A place in game is described the way he sees it on screen: a menu path, a
-    named node, or a position counted from that board's or window's own top-left cell (on a Daevanion board, its own
-    rows and columns), never a source site's internal or frame coordinates. Anything longer splits into ordered items
-    ("Part 1 of 2"), each with its own Done when.
+    named node, or a position on that board's or window's own rows and columns, counted the way Isaac counts them in
+    game, never a source site's internal or frame coordinates. Until he confirms how he counts, rows from the top and
+    columns from the left, from 1 at the top-left cell, is the team's reading, not his words: each board ask states it
+    ("row 3 from the top, column 5 from the left") and its Recommended reply asks him to confirm or correct it.
+    Anything longer splits into ordered items ("Part 1 of 2"), each with its own Done when.
   - **Where:** in game (menu path or place), a settings page (its link), or a link to the page.
   - **Time:** about how long, in minutes or hours ("about 10 min").
   - **Why:** one sentence, at most 160 characters, on what it unblocks.
