@@ -3,7 +3,7 @@
    org-design/web-access-guardrails-chuck-lydia.md). Format, terms before content, rate per host, stop on 403 / 429 /
    challenge, banned hosts, a query on every web-search line and, for Chuck's log, a ruling, register row or T-NN on every
    line plus the 20-request budget per question. Judgment (scope, whether the purpose maps to legal output) stays with the
-   per-minor fresh spot check. CI can't read the shared folder, so Watchdog (Mike) runs this each sweep:
+   per-minor fresh spot check, and so do a scraping-only host's spot-check limits (a few pages, at least 5 s apart). CI can't read the shared folder, so Watchdog (Mike) runs this each sweep:
      node tools/fetchlog/check.mjs [--since <ISO time>] [file …]   (default: /mnt/project-files/legal/fetch-log/chuck.md)
    A file named chuck.md gets the Chuck rules. Exit 1 on any FAIL; WARN lines don't fail. */
 import { readFileSync } from 'node:fs';
@@ -28,13 +28,19 @@ export const parseTime = (s) => {
 
 export function checkLog(text, { file = 'log.md', chuck = basename(file) === 'chuck.md', since = 0 } = {}) {
   const out = [];
-  const fail = (ln, rule, msg) => out.push({ level: 'FAIL', ln, rule, msg });
-  const warn = (ln, rule, msg) => out.push({ level: 'WARN', ln, rule, msg });
+  // Lines before --since still build the state (terms read, opt-outs, stops, rate) but report nothing.
+  let quiet = false;
+  const fail = (ln, rule, msg) => { if (!quiet) out.push({ level: 'FAIL', ln, rule, msg }); };
+  const warn = (ln, rule, msg) => { if (!quiet) out.push({ level: 'WARN', ln, rule, msg }); };
   const rows = [];
   text.split('\n').forEach((line, i) => {
     if (!/^\s*\|/.test(line) || /^\s*\|\s*-{3}/.test(line) || /^\s*\|\s*Time\b/i.test(line)) return;
     rows.push({ ln: i + 1, c: cells(line) });
   });
+  // The logs are append-only, so a wrong purpose is fixed by a later "(correction)" line whose URL column names the earlier
+  // line's time (HH:MM:SS) and whose purpose column gives the right one. It satisfies that line's purpose check only.
+  const corrected = new Map();
+  for (const { c } of rows) if (/^\(correction\)$/i.test(c[1] || '')) for (const m of (c[2] || '').matchAll(/\b(\d{2}:\d{2}:\d{2})Z?\b/g)) corrected.set(m[1], c[3] || '');
   const seen = new Map(); // host -> { optOut, stopped: time }
   const times = new Map(); // host -> exact request times
   const budget = new Map();
@@ -43,23 +49,30 @@ export function checkLog(text, { file = 'log.md', chuck = basename(file) === 'ch
     const [time = '', host = '', url = '', purpose = '', status = '', , termsRead = '', verdict = ''] = c;
     const when = parseTime(time);
     if (!when) { fail(ln, 'format', `time "${time}" is not UTC YYYY-MM-DD HH:MM[:SS]`); continue; }
-    if (when.t < since) continue;
+    quiet = when.t < since;
     if (c.length < 8) { fail(ln, 'format', `${c.length} columns, the header has 8`); continue; }
     if (!host) { fail(ln, 'format', 'no host'); continue; }
     if (/^result\b/i.test(purpose)) { // the outcome of the line before
       if (lastReq && /\b(403|429)\b|challenge/i.test(status)) seen.get(lastReq).stopped = when.t;
       continue;
     }
-    if (/^note$/i.test(status) || (/^\(/.test(host) && !/search/i.test(host))) continue;
+    if (/^note$/i.test(status)) continue;
+    if (/^\(correction\)$/i.test(host)) {
+      if (!/\b\d{2}:\d{2}:\d{2}Z?\b/.test(url)) fail(ln, 'format', 'a correction line names no earlier line time (HH:MM:SS)');
+      else if (chuck && !PURPOSE.test(purpose)) fail(ln, 'purpose', 'the correction names no ruling, register row or T-NN either');
+      continue;
+    }
+    if (/^\(/.test(host) && !/web search/i.test(host)) { fail(ln, 'format', `host "${host}" is not a host: only "(web search tool)", "(correction)" and note lines may skip the host`); continue; }
     if (when.t + 60e3 < lastT) warn(ln, 'order', `earlier than the line above (${time}); lines are added at the end, before the request`);
     lastT = Math.max(lastT, when.t);
     if (/back-?fill/i.test(purpose)) warn(ln, 'before', 'back-filled: written after the request, not before it');
     const p = /^same\b/i.test(purpose) ? lastPurpose : purpose;
     lastPurpose = p;
     if (!p) fail(ln, 'purpose', 'no purpose');
-    else if (chuck && !PURPOSE.test(p)) fail(ln, 'purpose', 'names no ruling, register row or T-NN (guardrails §4: a line with no legal output is drift)');
+    else if (chuck && !PURPOSE.test(p) && !PURPOSE.test(corrected.get((time.match(/\d{2}:\d{2}:\d{2}/) || [''])[0]) || '')) fail(ln, 'purpose', 'names no ruling, register row or T-NN (guardrails §4: a line with no legal output is drift)');
     if (chuck) { const k = (p.match(KEY) || [p.slice(0, 40)])[0]; budget.set(k, (budget.get(k) || 0) + 1); }
-    if (/search/i.test(host)) {
+    if (/web search/i.test(host)) {
+      lastReq = null; // a result row after a search belongs to no host
       if (!/query|"/i.test(url)) fail(ln, 'search', 'a web-search line names no query');
       continue;
     }
@@ -73,8 +86,10 @@ export function checkLog(text, { file = 'log.md', chuck = basename(file) === 'ch
       if (!isTerms && !verdict) fail(ln, 'terms', `first content request to ${h} gives no verdict`);
     }
     const s = seen.get(h);
-    if (s.optOut && !isTerms) fail(ln, 'opt-out', `${h} was ruled an opt-out above; no content request may follow`);
-    if (/opt-?out/i.test(verdict) && !/terms OK|scraping-only/i.test(verdict)) s.optOut = true;
+    if (/opt-?out/i.test(verdict) && !/terms OK|scraping-only/i.test(verdict)) {
+      if (!isTerms) fail(ln, 'opt-out', `${h} is an opt-out; no content request may be made to it`);
+      s.optOut = true;
+    } else if (s.optOut && !isTerms) fail(ln, 'opt-out', `${h} was ruled an opt-out above; no content request may follow`);
     if (s.stopped !== null && when.t - s.stopped < 24 * 3600e3) fail(ln, 'stop', `${h} answered 403 / 429 / a challenge within 24 h before this request`);
     if (/\b(403|429)\b|challenge/i.test(status)) s.stopped = when.t;
     if (!when.approx) {
@@ -84,6 +99,7 @@ export function checkLog(text, { file = 'log.md', chuck = basename(file) === 'ch
       if (ts.length > 12) fail(ln, 'rate', `${ts.length} requests to ${h} within 60 s (max 12/min per host)`);
     }
   }
+  quiet = false;
   for (const [k, nReq] of budget) if (nReq > BUDGET) warn(0, 'budget', `${nReq} requests for "${k}" (budget ${BUDGET} before a coordinator check-in; log it as a #221 kind)`);
   return { rows: rows.length, findings: out };
 }
