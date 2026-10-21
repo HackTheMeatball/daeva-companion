@@ -95,7 +95,7 @@ const want = (r, f) => TAG[statusOf(r, f)] || null;
      its skill order rows (Skills card), its plan nodes (Daevanion card), its stigma plan's heading and its default keys'
      heading, and nowhere for a verified value */
   const TAGGED = s => ['disputed', 'owner-check', 'inferred'].includes(s) ? s : undefined;
-  const badBuild = [], badPage = [];
+  const badBuild = [], badPage = [], badMeta = []; let sawLv21Via = false;
   for (const id of guidePacks()) {
     const cls = id.split('/').pop(), g = generate({ pack: id }).constants, b = recs(`aion2/asmodian/${cls}/builds.json`).find(r => r.id === `build:${cls}:guide`);
     const skills = recs(`aion2/classes/${cls}/skills.json`), nm = Object.fromEntries(skills.map(s => [s.id, s.name])), rowOf = Object.fromEntries(b.skillOrder.map(e => [nm[e.skill], e]));
@@ -120,7 +120,7 @@ const want = (r, f) => TAG[statusOf(r, f)] || null;
     await writeRaw(p, JSON.stringify(stored)); await p.reload(); await p.waitForTimeout(400);
     const pg = await p.evaluate(() => { const tags = el => el ? [...el.querySelectorAll('.ss-tag')].map(t => t.textContent) : null;
       return { pack: char(state).pack, sk: [...document.querySelectorAll('#spSoon li:not(.isspec)')].map(li => ({ n: li.querySelector('.sname').textContent, tags: tags(li.querySelector('.sname')) })),
-        dv: [...document.querySelectorAll('#dvAllList li.dvn')].map(li => ({ k: li.dataset.dvk, tags: tags(li.querySelector('.txt')), cost: tags(li.querySelector('.dvc-wrap')) })),
+        dv: [...document.querySelectorAll('#dvAllList li.dvn')].map(li => ({ k: li.dataset.dvk, tags: tags(li.querySelector('.txt')), cost: tags(li.querySelector('.dvc-wrap')), meta: li.querySelector('.loc').textContent })),
         nx: [...document.querySelectorAll('#dvNextList .dvrow.nx')].map(r => ({ k: r.dataset.nx, cost: tags(r.querySelector('.dvcost-k')) })),
         stHead: tags(document.querySelector('#stCard .ns-head h2')), stRows: tags(document.getElementById('stBody')).concat(tags(document.getElementById('stList'))),
         keys: tags(document.querySelector('#stackViz .kv-note, #stackViz .kv-defs .khead')) }; });
@@ -136,7 +136,11 @@ const want = (r, f) => TAG[statusOf(r, f)] || null;
     const wK = TAG[kSt] || null;
     if (pg.keys && (wK ? !(pg.keys.length === 1 && pg.keys[0] === wK) : pg.keys.length)) badPage.push({ id, keys: pg.keys, want: wK });
     if (!pg.dv.length) badPage.push({ id, dv: 'no plan rows rendered' });
+    /* P16 design review: a row's meta never says a phrase twice ("Fury is learned at Lv 21 · learned at Lv 21") */
+    for (const r of pg.dv) { const parts = r.meta.split(' · '); if (parts.some((s, i) => parts.slice(0, i).some(q => q.includes(s)))) badMeta.push({ id, node: r.k, meta: r.meta }); }
+    sawLv21Via ||= pg.dv.some(r => / is learned at Lv 21$/.test(r.meta));
   }
+  ok('every class page: no Daevanion plan row\'s meta repeats a phrase', !badMeta.length && sawLv21Via, { badMeta: badMeta.slice(0, 5), sawLv21Via });
   ok('every guide pack: skill order rows, specialty picks, plan nodes, the stigma plan and the default keys carry exactly the data\'s tagged labels', !badBuild.length, badBuild.slice(0, 5));
   ok('every class page: Skills rows, Daevanion plan rows and their cost boxes, the Stigmas heading and the default keys heading show the tag exactly when the data labels them', !badPage.length, badPage.slice(0, 5));
   ok('the data has labelled plan nodes, skill order rows and a labelled stigma plan to check', (() => { const bs = guidePacks().map(id => recs(`aion2/asmodian/${id.split('/').pop()}/builds.json`)[0]);

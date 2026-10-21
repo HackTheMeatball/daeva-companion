@@ -16,7 +16,10 @@ import { aion2State as state, aion2Save as save, aion2Update as update, aion2Ren
 
 /* a plan row the data labels disputed or inferred (0.9 P1) carries its tag after the name */
 const dvName = it => `<span class="dvname ${DV_TYPE[it.ty][0]}">${it.t}</span>${stTag(it.st)}`;
-const dvMeta = it => `${it.board} · ${DV_TYPE[it.ty][1]}${it.via ? " · " + it.via : ""}${it.blv === 21 ? " · learned at Lv 21" : ""}`;
+/* board · type · via · "learned at Lv 21"; a part an earlier one already says is dropped (a via like "Fury is learned at
+   Lv 21" covers the Lv 21 suffix, P16 design review) */
+const dvMeta = it => [it.board, DV_TYPE[it.ty][1], it.via, it.blv === 21 && "learned at Lv 21"].filter(Boolean)
+  .filter((s, i, a) => !a.slice(0, i).some(p => p.includes(s))).join(" · ");
 /* Daevanion node row: "points spent" box first, then the tick (enabled once a cost is logged and the points cover it).
    No per-row "needs N, M left" line: the card's header already says how many points are missing (P16 design review). */
 function refreshDvGates() {
