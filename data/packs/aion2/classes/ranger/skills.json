@@ -409,6 +409,7 @@
       "type": "active",
       "learnLv": 8,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-explosion-trap.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,

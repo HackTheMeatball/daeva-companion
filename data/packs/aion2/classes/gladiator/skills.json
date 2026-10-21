@@ -599,6 +599,7 @@
       "type": "active",
       "learnLv": 3,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-mocking-blade.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
