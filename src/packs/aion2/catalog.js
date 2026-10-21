@@ -74,19 +74,24 @@ const rqItem = (q, inGroup) => ({ kind: "quest", name: q.name, k: "rq:" + q.id, 
 
 /* Fold each core skill upgrade into the first milestone at or after its unlock level (the extra skills sort after them all).
    gi / gj: the upgrade's milestone and place in it, the order the Skills card and Next up offer them in. */
+/* A specialty slot sits where the plan's lines and board nodes reach it (x.at, 0.8.1 F3; src/packs/aion2/data/build.js). */
+const atOf = x => x.at ?? x.req;
 SP_STEPS.filter(x => x.s.extra).forEach(x => { x.gi = 1000 + x.rank; x.gj = x.L; });
 GATES.forEach((g, i) => {
   const prev = i ? GATES[i - 1].lv : 0;
-  const steps = SP_STEPS.filter(x => !x.s.extra && x.req > prev && x.req <= g.lv);
+  const steps = SP_STEPS.filter(x => !x.s.extra && atOf(x) > prev && atOf(x) <= g.lv);
   steps.forEach((x, j) => { x.gi = i; x.gj = j; });
   if (!steps.length) return;
   steps.forEach(x => g.items.push({
-    k: x.k, req: x.req,
-    t: `<span class="cost">${spCostTxt(x)}</span>${spLabel(x)}<span class="req">unlocks at Lv ${x.req}</span>${x.spec ? `<span class="loc"><em>${x.s.spec}</em></span>` : (x.L === 8 && !x.s.passive ? `<span class="loc">opens first ${T("specialty slot", "specialty")}</span>` : "")}`,
+    k: x.k, req: atOf(x),
+    t: `<span class="cost">${spCostTxt(x)}</span>${spLabel(x)}<span class="req">unlocks at Lv ${atOf(x)}</span>${x.spec ? `<span class="loc"><em>${x.s.spec}</em></span>` : (x.L === 8 && !x.s.passive ? `<span class="loc">opens first ${T("specialty slot", "specialty")}</span>` : "")}`,
   }));
 });
-/* Specialty slots 2 and 3 (0.3 E7) are no milestone rows: they take their skill's slot 1 place in the order, right after it. */
-SP_SLOTS.forEach(x => { const s1 = SP_STEPS.find(y => y.slot === 1 && y.s === x.s); x.gi = s1.gi; x.gj = s1.gj + x.slot / 10; });
+/* Specialty slots 2 and 3 (0.3 E7) are no milestone rows. One the plan reaches (x.at) takes that milestone's place in the
+   order, after its skill's rows there; else its skill's slot 1 place, right after it. */
+SP_SLOTS.forEach(x => { const s1 = SP_STEPS.find(y => y.slot === 1 && y.s === x.s), i = x.at != null && !x.s.extra ? GATES.findIndex(g => g.lv >= x.at) : -1;
+  if (i < 0 || i <= s1.gi) { x.gi = s1.gi; x.gj = s1.gj + x.slot / 10; return; }
+  x.gi = i; x.gj = Math.max(-1, ...SP_STEPS.filter(y => y.s === x.s && y.gi === i).map(y => y.gj)) + x.slot / 10; });
 
 /* ---------- Lookups over the finished milestones (itemByK and cardRows are the engine's, src/core/catalog.js) ---------- */
 /* Daevanion nodes, in the milestones' order (Nezekan Lv 12, Zikel 20, Vaizel 30, Triniel 40). */

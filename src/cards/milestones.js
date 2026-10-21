@@ -6,6 +6,7 @@
    spots (src/main.js). */
 import { char } from "../core/state.js";
 import { activePack } from "../core/pack.js";
+import { setHTML } from "../core/cards.js";
 import { derivedOf, gatesOf } from "../core/requirements.js";
 import { pageState as state, pageSave as save, pageUpdate as update, pageMainEl as mainEl, pageLayoutEl as layoutEl, pageSMOOTH as SMOOTH, pageGATES as GATES, pageITEMS as ITEMS, pageRQ_K as RQ_K, pageCounts as counts, pageMainCounts as mainCounts, pageSideOpen as sideOpen } from "./page.js";
 
@@ -127,7 +128,7 @@ function updateMilestones() {
   /* Milestones after the next one fold behind a toggle (state.trackLater shows them). */
   const shown = trackRows.filter(r => !r.complete || !state.hideCards);
   const curRow = trackRows[GATES.indexOf(upcoming)];
-  document.getElementById("track").innerHTML = state.trackOpen ? shown.map(r => r.html).join("") : (curRow ? curRow.html : "");
+  setHTML(document.getElementById("track"), state.trackOpen ? shown.map(r => r.html).join("") : (curRow ? curRow.html : ""));
   document.getElementById("trkSum").setAttribute("aria-expanded", String(!!state.trackOpen));
 
   document.getElementById("gateHint").textContent = upcoming

@@ -10,6 +10,7 @@ const FONT_FILES = ['figtree-latin', 'figtree-latin-ext', 'jetbrains-mono-latin'
 const loadedFamilies = p => p.evaluate(async () => { await document.fonts.ready; await new Promise(r => setTimeout(r, 300)); await document.fonts.ready;
   return [...new Set([...document.fonts].filter(f => f.status === 'loaded').map(f => f.family.replace(/"/g, '')))].sort(); });
 const { SAVE_KEY: KEY, TEST_SLOT, writeSave, readSave, readRaw, toStored, fromStored } = require('./support/save');
+const { writeFixture } = require('./support/regress-fixture');
 const VERSION = JSON.parse(fs.readFileSync(path.join(CFG.ROOT, 'package.json'), 'utf8')).version;
 const REPO = 'https://github.com/hackthemeatball/daeva-companion';
 /* footer version link + "Report a problem" link: the version comes from package.json; the report URL carries exactly these
@@ -72,6 +73,31 @@ const checkReport = (label, m, want) => {
         return { shown: !!w && !w.hidden, text: w ? w.innerText : '', above: !!w && !!n && w.getBoundingClientRect().bottom <= n.getBoundingClientRect().top }; });
       ok('welcome: shown on a fresh browser above Next up, "Unofficial guide", not affiliated with or endorsed by NCSoft', wel.shown && wel.above && /Unofficial guide/.test(wel.text) && /not affiliated with or endorsed by NCSoft/i.test(wel.text), wel);
       await ctx390.close();
+    }
+    /* 0.9 P5: the element count of a full page (1500 px, Advanced, Lv 39; logged, not gated), and setHTML (src/core/cards.js):
+       a second update() with no state change rewrites none of the boxes it draws; a level change does rewrite some */
+    {
+      const ctxF = await b.newContext({ viewport: { width: 1500, height: 1000 } }), pf = await ctxF.newPage();
+      const ferrs = []; pf.on('pageerror', e => ferrs.push(e.message));
+      await pf.goto(CFG.CUR); await pf.waitForTimeout(300);
+      await writeFixture(pf, { L: 39, mode: 'advanced', fx: 'clean' }); await pf.reload(); await pf.waitForTimeout(600);
+      console.log(`  elements at 1500 px, Advanced, Lv 39: ${await pf.evaluate(() => document.querySelectorAll('*').length)} (logged, not gated)`);
+      const W = await pf.evaluate(() => { update(); const a = htmlWrites(); update(); const same = htmlWrites() - a;
+        char(state).level = 40; update(); return { same, changed: htmlWrites() - a - same }; });
+      const HTML_WRITES_MAX = 0;
+      ok(`setHTML: a second update() with no state change makes at most ${HTML_WRITES_MAX} real writes`, W.same <= HTML_WRITES_MAX, W);
+      ok('setHTML: an update() after a level change writes (negative control)', W.changed > 0, W);
+      /* Next up moved to another window (as the pop-out does; here a same-origin iframe) redraws on the next update() with
+         the same markup, and again when it comes back, so its stack's timers and observer come from the window holding it */
+      const MV = await pf.evaluate(() => { const n = document.getElementById('nowStar'), home = n.parentNode, next = n.nextSibling;
+        const f = document.createElement('iframe'); document.body.appendChild(f);
+        update(); const s0 = n.firstChild, a = htmlWrites();
+        f.contentDocument.body.appendChild(n); update(); const away = { writes: htmlWrites() - a, redrawn: n.firstChild !== s0 }, s1 = n.firstChild, b2 = htmlWrites();
+        home.insertBefore(n, next); update(); const back = { writes: htmlWrites() - b2, redrawn: n.firstChild !== s1 };
+        f.remove(); return { away, back }; });
+      ok('setHTML: Next up moved into another window and back is redrawn both times', MV.away.redrawn && MV.away.writes > 0 && MV.back.redrawn && MV.back.writes > 0, MV);
+      ok('setHTML: no page errors', !ferrs.length, ferrs);
+      await ctxF.close();
     }
     /* Your class on the welcome (0.8 P12, #501): every class of the game from the pack, a class with a guide pickable, the
        rest "Soon"; a pick other than the Assassin carries into Start and the join form, leaving one character of it */

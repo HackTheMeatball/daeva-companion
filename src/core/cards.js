@@ -82,6 +82,23 @@ export function cardLock(spec, ev) {
   return { text, label: `${spec.name}, ${text[0].toLowerCase()}${text.slice(1)}`, key: spec.key, levels };
 }
 
+/* setHTML(el, html) (0.9 P5): el.innerHTML = html, skipped when el still holds what the last setHTML wrote there (the same
+   string, and the same first and last child, so a write or swap by other code counts as a change); force writes anyway.
+   It touches only the element it is handed. Returns true when it wrote; htmlWrites() counts the real writes (the site
+   suite's no-change check). A card uses it for a box whose markup later code leaves alone or re-applies in full on every
+   pass (fitSkills, fadeScroll); a box whose rows or fields other code changes after the write keeps innerHTML, with the
+   reason beside it. */
+const lastHTML = new WeakMap();
+let htmlWriteCount = 0;
+export function setHTML(el, html, force = false) {
+  const was = lastHTML.get(el);
+  if (!force && was && was.html === html && was.first === el.firstChild && was.last === el.lastChild) return false;
+  el.innerHTML = html; htmlWriteCount++;
+  lastHTML.set(el, { html, first: el.firstChild, last: el.lastChild });
+  return true;
+}
+export const htmlWrites = () => htmlWriteCount;
+
 const PAGE_CARDS = cardRegistry();
 export const registerCard = spec => PAGE_CARDS.register(spec);
 export const registeredCards = () => PAGE_CARDS.cards();

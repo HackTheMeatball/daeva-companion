@@ -24,7 +24,7 @@ A CI run completes, or a verdict comment is posted, on an open `claude/` PR (`au
 
 1. **Auto-merge**: Checks every gate on the head (MRG-02, MRG-06, the data check) and the freeze; squash-merges pinned to that head.
 2. **Auto-merge**: Dispatches CI on main: deploy, smoke and, for a release, the tag ([docs/DEPLOY.md](../DEPLOY.md)).
-3. **Gus**: His PR check sends Huell `MERGED` (CLK-01).
+3. **Gus**: Gus's PR check sends Huell `MERGED` (CLK-01).
 4. **Huell**: Writes the done card (TRK-02) and publishes any scrapbook cards (TRK-07).
 5. **Kickoff**: Starts the next queued item ([FLOW-03](FLOW-03-build.md)).
 

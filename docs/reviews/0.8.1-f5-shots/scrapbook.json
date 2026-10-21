@@ -1,0 +1,8 @@
+[
+  { "case": "gladiator-lv45-1500", "kind": "before-after", "title": "Gladiator rotation icons",
+    "caption": "At Lv 45 the Gladiator's Build panel shows the game's art for Aerial Snare, Sword Aura Rampage and Ankle Slice, not letter squares." },
+  { "case": "ranger-lv45-1500", "kind": "before-after", "title": "Ranger rotation icons",
+    "caption": "At Lv 45 the Ranger's Build panel shows the game's art for Arrow Scattershot and Suppressing Arrow, not letter squares." },
+  { "case": "ranger-lv45-390", "kind": "before-after", "title": "Ranger key setup on a phone",
+    "caption": "On a phone at Lv 45 the Ranger's key setup shows the new icons too." }
+]

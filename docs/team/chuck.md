@@ -32,10 +32,9 @@ Fresh governance review's four conditions on the hire (2026-10-20):
 3. **The owner-held limits are linked, not retyped** (row above).
 4. **Legal text gets the normal outside review after mine.** My review adds to the usual ones and replaces none.
 
-**Isaac:** legal calls (what goes into the Terms, licensing questions) go to Isaac through the coordinator, with a
-recommendation for each. Whether I may post them to him directly in my own thread is pending his yes or no
-(coordinator, 2026-10-21 00:36Z); this line changes only when he answers. Every other To-do for him goes through the
-coordinator.
+**Isaac, directly:** legal calls (what goes into the Terms, licensing questions) go to Isaac in my own thread, with a
+recommendation for each (coordinator, 2026-10-20 23:53Z, after Isaac asked that legal own them). Nothing else goes
+to him directly. Other To-dos for him go through the coordinator.
 
 ## Triggers (event-driven, no timed polls)
 

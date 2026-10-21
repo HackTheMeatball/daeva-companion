@@ -33,6 +33,15 @@ format only here, together with the parser and its test.
 - Lanes are the serial files of docs/team/DISPATCH.md. Names outside kickoff's known list only warn, and kickoff still
   keeps same-named lanes apart.
 
+## Items that fetch
+
+Bot builds have no web access, so a build never fetches; the fetching happens in a research step a thread does first
+(the `research-<slug>` After key). When an item needs one, its **Result** names the research step and points to the
+fetch-log rule rather than restating it: ledger ROL-08 (coordinator, 2026-10-20 7:59 PM ET), whose text lives in
+`docs/research/SOURCES.md` "Keeping this current". Keep the pointer out of **Inputs** (every backticked path there is an
+input the build must find on main). Name the fetch log itself in words, never by a path: kickoff holds any spec with a
+`/mnt/` path outside No-gos (rule above).
+
 ## Example
 
 ```markdown

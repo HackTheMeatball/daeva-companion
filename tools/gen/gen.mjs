@@ -231,8 +231,11 @@ export function generate(opts = {}) {
   const dvItem = e => {
     const board = e.node ? boardById[nodeById[e.node].board] : boardById[nodeById[e.anyNode[0]].board];
     const ty = e.anyNode ? 'c' : sk(nodeById[e.node].skill).type === 'passive' ? 'p' : 'a';
-    const k = e.node ? nodeById[e.node].key : e.key;
-    return { k, dv: true, board: board.name, blv: e.requires.level, ty, t: e.label, ...(e.via ? { via: e.via } : {}), ...(e.cost !== undefined ? { cost: e.cost } : {}) };
+    const k = e.node ? nodeById[e.node].key : e.key, sn = e.node && nodeById[e.node].skill;
+    /* a node on a skill: its skill's name and what it adds to the effective level (as GATE_GRAPH's plan node), for where the
+       skill's specialty slots sit (0.8.1 F3, src/packs/aion2/data/build.js) */
+    return { k, dv: true, board: board.name, blv: e.requires.level, ty, t: e.label, ...(e.via ? { via: e.via } : {}), ...(e.cost !== undefined ? { cost: e.cost } : {}),
+      ...(sn ? { skill: sk(sn).name, adds: nodeById[e.node].adds ?? 1 } : {}) };
   };
   for (const e of build.boardPlan) for (const n of e.node ? [e.node] : e.anyNode) if (!nodeById[n]) throw new Error('board plan: unknown node ' + n);
   /* plan costs (0.8.1 F1): a row's `cost` (what the cost box pre-fills) is the owner's board number, cited with fields

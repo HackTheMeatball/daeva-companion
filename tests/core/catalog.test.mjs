@@ -25,9 +25,11 @@ export default (test, M) => {
     }
     assert.equal(M.AREA_ITEMS.filter(x => x.it.kind === 'stronghold').length, M.SH_DATA.length);
   });
-  test('skill upgrades are in the milestone at or after their unlock level, in gi/gj order', () => {
+  /* a specialty slot 1 row by the level the plan's lines and board nodes reach it (x.at, 0.8.1 F3), every other row by its unlock level */
+  test('skill upgrades are in the milestone at or after their unlock level (a slot: where the plan reaches it), in gi/gj order', () => {
     for (const x of M.SP_STEPS.filter(x => !x.s.extra)) {
-      const g = M.GATES[x.gi]; assert.ok(g.items.some(it => it.k === x.k), x.k); assert.ok(g.lv >= x.req && (x.gi === 0 || M.GATES[x.gi - 1].lv < x.req), x.k);
+      const g = M.GATES[x.gi], at = x.spec ? x.at : x.req; assert.ok(at >= 1 && at <= x.req, x.k);
+      assert.ok(g.items.some(it => it.k === x.k), x.k); assert.ok(g.lv >= at && (x.gi === 0 || M.GATES[x.gi - 1].lv < at), x.k);
     }
   });
   test('itemByK finds every keyed item; cardRows lists non-quest rows first, never sub-headings, board nodes or dungeons', () => {

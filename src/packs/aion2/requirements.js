@@ -85,10 +85,12 @@ export const skillPoints = (c, lv = c.level) => {
 };
 /* Open upgrades in the milestones' order, and the ones open at lv. With specialtySlots (0.3 E7) also specialty slots 2 and 3,
    each right after its skill's slot 1 (src/packs/aion2/catalog.js); slot 3 is never in `now` (out of reach inside Lv 45, never
-   offered: Q5). */
+   offered: Q5). In `now` an open specialty slot comes first (0.8.1 F3, owner note 6): it is free, so board nodes that open it
+   early make it the thing to do now, not a row behind every upgrade its milestone comes after. */
 export const skillRows = () => gateChangeOn("specialtySlots") ? SP_STEPS.concat(SP_SLOTS) : SP_STEPS;
 export const skillOpen = (c, lv = c.level) => { const ev = gatesOf(c, lv), open = skillRows().filter(x => ev.byKey(x.k).done === false).sort((a, b) => a.gi - b.gi || a.gj - b.gj);
-  return { open, now: open.filter(x => x.slot !== 3 && ev.byKey(x.k).open) }; };
+  const now = open.filter(x => x.slot !== 3 && ev.byKey(x.k).open);
+  return { open, now: gateChangeOn("specialtySlots") ? [...now.filter(x => x.spec), ...now.filter(x => !x.spec)] : now }; };
 /* Specialty slot x (a row with x.spec): its skill's effective level (highest line bought + plan nodes owned), and the build's
    pick for the slot when there is one and its choice is open at that level (design §9), else null ("pick a specialty"). With
    specialtySlots off, slot 1's pick as before. */

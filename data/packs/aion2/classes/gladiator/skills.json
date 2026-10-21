@@ -11,6 +11,7 @@
       "type": "active",
       "learnLv": 12,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-aerial-snare.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -72,6 +73,7 @@
       "type": "active",
       "learnLv": 7,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-ankle-slice.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
@@ -1060,6 +1062,7 @@
       "type": "active",
       "learnLv": 5,
       "levelGate": "stepped",
+      "icon": "assets/icons/sk-sword-aura-rampage.png",
       "boardNodes": {
         "perBoard": {
           "board:nezekan": 1,
