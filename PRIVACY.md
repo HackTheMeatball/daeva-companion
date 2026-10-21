@@ -8,11 +8,11 @@ This covers Daeva Companion, the unofficial AION 2 companion at daevacompanion.c
 
 - **Your progress** (per character: level, ticked quests and steps, stigma picks, the class, a random character id,
   and a character name once you can enter one; plus your settings and the dates of your last backups) is saved in your
-  browser's `localStorage` under the key `companion-save-v5` on `daevacompanion.com`. It never leaves your device.
-  When you import a file, the progress it replaces is kept under `companion-save-v5:before-import`. The key, the
-  export file's name and the *Report a problem* link never contain your character's name. Versions before 0.4 used
-  the key `aion2-assassin-route-v4`; this version doesn't read it and leaves it as it is (clear the site's data to
-  remove it).
+  browser's `localStorage` under the key `companion-save-v6` on `daevacompanion.com`. It never leaves your device.
+  When you import a file, the progress it replaces is kept under `companion-save-v6:before-import`. The key, the
+  export file's name and the *Report a problem* link never contain your character's name. Earlier versions used
+  the keys `aion2-assassin-route-v4` (before 0.4) and `companion-save-v5` (0.4 to 0.8); this version doesn't read
+  them and leaves them as they are (clear the site's data to remove them).
 - **Keeping your progress:** when you come back with saved progress, the site asks your browser to keep its storage
   (`navigator.storage.persist()`), so it isn't cleared automatically (Safari can clear site data after 7 days without a
   visit). Your browser decides; Firefox may ask you. It asks at most once per browser session (a flag in

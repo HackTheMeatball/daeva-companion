@@ -6,8 +6,19 @@ Removed, Action required, Known issues, Saved progress. The format is checked by
 
 Saved progress used the `localStorage` key `aion2-assassin-route-v4` from before 0.1.0 to 0.3.0, and every version
 through 0.3.0 loads every earlier save. From 0.4.0 the key is `companion-save-v5`, and 0.4.0 reset saves (the pre-1.0
-rule in CLAUDE.md). Entries before 0.1.0 are the internal build numbers of the original single-file claude.ai
+rule in CLAUDE.md); from 0.9.0 it is `companion-save-v6`, and 0.9.0 reset saves again, the last time before 1.0. Entries before 0.1.0 are the internal build numbers of the original single-file claude.ai
 artifact (`vNNN`) and are kept in their original form.
+
+## 0.9.0 — 2026-10-21
+
+Draft: the release sets the date and the summary.
+
+### Saved progress
+
+- Saves reset in this version. Progress is now kept under the key `companion-save-v6`; saves from 0.4 to 0.8
+  (`companion-save-v5`) are not read and stay in the browser untouched. Story progress, objectives, skill points and
+  stigmas are now stored by fixed ids, so a renamed quest, skill or stigma, or a new objective in the list, never moves
+  or drops a tick again. This is the last reset before 1.0.
 
 ## 0.8.0 — 2026-10-20
 
