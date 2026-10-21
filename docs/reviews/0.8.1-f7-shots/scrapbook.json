@@ -1,0 +1,8 @@
+[
+  { "case": "skills-1500", "kind": "before-after", "title": "Skills Respec in Basic mode",
+    "caption": "At level 16 in Basic mode the Skills card now shows its Respec button at the bottom right, as in Advanced. Click it twice to respec." },
+  { "case": "daevanion-1500", "kind": "before-after", "title": "Daevanion Respec in Basic mode",
+    "caption": "At level 16 in Basic mode the Daevanion card now shows its Respec button at the bottom right. All nodes stays an Advanced extra." },
+  { "case": "skills-390", "kind": "before-after", "title": "Respec on a phone in Basic mode",
+    "caption": "On a phone at level 16 the Skills card in Basic mode shows Respec too; Sync levels and How points work stay hidden." }
+]
