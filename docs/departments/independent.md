@@ -15,7 +15,7 @@ sourcing work, not checking.
 | Name | Role | Title | Owns | Charter | Never does |
 |---|---|---|---|---|---|
 | Gale | Kaizen | Continuous-improvement lead | rows naming Gale in [Who does what](../kaizen/LEDGER.md#who-does-what) | [docs/team/gale.md](../team/gale.md) | [team.csv](../kaizen/team.csv), Gale's row |
-| Gomez | Team Audit | Internal auditor | none in [Who does what](../kaizen/LEDGER.md#who-does-what) yet | [docs/team/gomez.md](../team/gomez.md) | [team.csv](../kaizen/team.csv), Gomez's row |
+| Gomez | Review Broker | Review coordinator (unplanned changes) | rows naming Gomez in [Who does what](../kaizen/LEDGER.md#who-does-what) | [docs/team/gomez.md](../team/gomez.md) | [team.csv](../kaizen/team.csv), Gomez's row |
 | Howard | Code Review | Code review criteria owner | rows naming Howard in [Who does what](../kaizen/LEDGER.md#who-does-what) | [docs/team/howard.md](../team/howard.md) | [team.csv](../kaizen/team.csv), Howard's row |
 | Holly | Design Review | Design review lead | rows naming Holly in [Who does what](../kaizen/LEDGER.md#who-does-what) | [docs/team/holly.md](../team/holly.md) | [team.csv](../kaizen/team.csv), Holly's row |
 | Mike | Watchdog | On-call reliability engineer | rows naming Mike in [Who does what](../kaizen/LEDGER.md#who-does-what) | [docs/team/mike.md](../team/mike.md) | [team.csv](../kaizen/team.csv), Mike's row |
@@ -28,7 +28,8 @@ sourcing work, not checking.
 
 - **Gale** changes the kaizen review, #222 and the scorecard in [docs/kaizen/](../kaizen/), and rule changes; never
   another owner's files.
-- **Gomez** writes audit reports and reviews proposals (project instructions, roster changes); changes no rules.
+- **Gomez** calls whether an unplanned change needs an outside review, briefs the one-off reviewer from the fixed
+  template and keeps the broker log; reviews nothing and changes no rules.
 - **Howard** changes the code review criteria and the cross-PR pattern log; never posts a gate line.
 - **Holly** changes [docs/design/review-checklist.md](../design/review-checklist.md), its findings log and fresh design
   briefs; never posts DESIGN OK or CHANGES.
@@ -57,7 +58,7 @@ sourcing work, not checking.
 ## Restart
 
 - A fresh session for Gale reads this file, then its handover (kaizen/handover.md in the shared folder), then its charter.
-- A fresh session for Gomez reads this file, then its handover (audit-1.0/handover.md in the shared folder), then its
+- A fresh session for Gomez reads this file, then its handover (reviews/handover.md in the shared folder), then its
   charter.
 - A fresh session for Howard reads this file, then its handover (code-review/handover.md in the shared folder), then its
   charter.

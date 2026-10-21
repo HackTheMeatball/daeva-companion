@@ -91,6 +91,47 @@ coordinates because that's not how I'm going to count them in game. There is no 
   open items. A failing item is rewritten by Huell in the same turn, or Huell tells the raiser and writes it once fixed,
   within the hour. Writers check place descriptions by hand, since the script can't.
 
+### COM-20
+
+_Org Design (Nacho), answering Isaac's question on seat names; routed by the coordinator 2026-10-21T23:09Z. Refined by
+the owner in the project chat, 2026-10-21 23:11:48Z (cmsg_01UNirAFgxf3jC8kQS8uvvHBFrc7gRqwtwNJqS9Qu4jStY): "Technically
+some of the names we use are better call Saul names but I think that’s fine. Moving forward only breaking bad characters
+please. If we run out then we can use better call Saul. Kim wexler deserves a spot somewhere if we hire someone that fits
+her persona." And 23:12:47Z (cmsg_01UNirAFgxf3jC8kQS8uvvHBAc1qTeo1rDNJ2zjWK8VtEL): "Wait why can’t they be reused?
+That’s an issue no? Since eventually we will run out of". The reuse wording below is the coordinator's, answering it.
+And 23:14:22Z (cmsg_01UNirAFgxf3jC8kQS8uvvHBJeM7g5aHazFHhov3g4RX1U): "Hmm you make a good point but wherever we have
+things saved or logged should reference the role itself vs the name right? Since the name is more for flavor and
+convenience"; the role-id wording below is the coordinator's. And in the Org Design thread 23:24:30Z
+(cmsg_01UNirAFgxf3jC8kQS8uvvHBXEAo6bdXGBpgWJrtrLsAVY): "Ooo you know what I like? Standing roles get breaking bad names
+and temp hires get better call Saul names.. whatcha think"; the both-shows and handover-rename wording is the
+coordinator's, the rename-PR steps Gus's (23:27Z). Routed: coordinator 2026-10-21T23:25Z. Overlap check: no
+rule named seats or set record identifiers before (no "role id" line anywhere in docs/); COM-11 (say which named thread
+gets the work) is about hand-offs and stays as is._
+
+- **Seat names:** standing seats get Breaking Bad character names; temporary and one-off hires get Better Call Saul
+  names, titled as the name plus the role (e.g. "Kim (Tracker Drift Review)"). A character who appears in both shows
+  counts as Breaking Bad. The four standing seats with Better Call Saul-only names (Nacho, Chuck, Howard, Ernesto) are
+  renamed only at their next handover. Each rename is one PR, built by Build Pipeline (Gus), that changes the team.csv
+  name, the names list in tests/ledger.mjs, docs/team/<old>.md to <new>.md, the SOP and ledger owner cells, and any open
+  PR's `Reviewers:` line that still uses the old name; nothing open may name the old name when it merges. Kim Wexler is kept in mind for a
+  hire who fits her persona. The name belongs to the seat, not the session: it survives rotation and a fresh session
+  in the seat keeps it. Org Design (Nacho) picks each name; Rules Steward (Francesca) records it in team.csv when the
+  seat is listed.
+- **Reuse:** a name can be reused once its old seat has closed, and only one live seat holds a name at a time. Where a
+  reused name's history could be ambiguous, refer to the seat by name and role, e.g. "Hank (Incident Log)".
+- **Records use the role, not the name:** the name is flavor. Anything saved or logged (team.csv keys, DECISIONS rows,
+  tracker fields, verdict tokens, incident and release logs) identifies a seat by a stable role id in lower case with
+  hyphens, such as `release-planner` or `review-broker`. The name may appear beside the role id, never alone as the
+  identifier. This applies to new entries. team.csv has a `role_id` column for this: filled for every row added
+  from 2026-10-21 (first use: `team-audit` closed, `review-broker` opened, both named Gomez), and a name may then appear
+  on two rows only with different role ids and at most one of them active. Existing name-keyed records (team.csv rows
+  without a role id, the ledger test's list of names, the `(reviewer: <name>)` verdict token, Who does what Owner cells,
+  ledger owner columns) stay as they are until a separate, scoped migration. Rules Steward (Francesca) keeps the list of these as drift.
+- **Named under this rule (2026-10-21):** the Review Broker (`review-broker`), a fresh seat, reuses Gomez from the closed
+  Team Audit seat (`team-audit`; Isaac, 23:18:50Z). Fresh governance review is Ted (was Cliff) and Builds &
+  Macros is Todd (was Werner), replacing Better Call Saul-only names given the same evening; Rules Steward picked Ted
+  and Todd on the coordinator's ask.
+
 ## Kaizen
 
 ### KZ-19

@@ -49,7 +49,8 @@ Any thread proposes a change to a rule, a role or a permission, usually at a kai
 ## Failure and escalation
 
 - UNSURE: escalate as above.
-- A change Team Audit (Gomez) drafted, commented on or is the subject of goes to a consultant, never to Gomez.
+- A change Gomez (Review Broker) called, briefed or is the subject of goes to the coordinator for a no-history one-off,
+  its brief checked by Fresh governance review, never back to Gomez.
 - A change whose check fails at the next review is reverted ([FLOW-17](FLOW-17-kaizen-review.md)).
 
 ## Rules it runs on
