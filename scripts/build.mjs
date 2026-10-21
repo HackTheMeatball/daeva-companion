@@ -320,29 +320,37 @@ console.log(`  ${('dist/' + SYNC_FILE).padEnd(26)} ${kb(join(DIST, SYNC_FILE))} 
 /* page budgets (0.4 P7): about 1.3x the 0.3.0 numbers; a PR that raises one says why (docs/ARCHITECTURE.md §4). The element
    budget is checked by the `site` suite. The site page is dist/index.html plus its largest class chunk (0.6 P2): what a
    visit loads. */
-const bigChunk = CLASS_PACKS.map(id => chunks[id]).sort((a, b) => Buffer.byteLength(b) - Buffer.byteLength(a))[0];
+const bigId = [...CLASS_PACKS].sort((a, b) => Buffer.byteLength(chunks[b]) - Buffer.byteLength(chunks[a]))[0], bigChunk = chunks[bigId];
 const BUDGETS = [
   ['site page bytes (index + chunk)', Buffer.byteLength(web) + Buffer.byteLength(bigChunk), 870000],
   ['site page gzip -9 bytes', gzipSync(web, { level: 9 }).length + gzipSync(bigChunk, { level: 9 }).length, 200000],
 ];
-/* node scripts/build.mjs --sizes (0.6 P1): where the page's gzip bytes go. A generated data table's row is its marginal cost:
-   the page's gzip -9 size minus the size with that table bundled as null. Every other row is the part gzipped on its own,
-   so those rows overlap (gzip shares repeated text across parts) and don't add up to the page. */
+/* node scripts/build.mjs --sizes (0.6 P1): where the page's gzip bytes go. A generated data table's row is its marginal cost
+   on the budgeted page (0.9 P5: dist/index.html plus the largest class chunk, each gzipped on its own, as BUDGETS counts
+   it): the page's size minus the size with that table bundled as null. A per-class table's row is marked "(chunk)"; those
+   rows add up to about the chunk. Every other row is the part gzipped on its own, so those rows overlap (gzip shares
+   repeated text across parts) and don't add up to the page. */
 if (process.argv.includes('--sizes')) {
   const gz = s => gzipSync(s, { level: 9 }).length;
   const rows = [];
   const add = (group, name, text) => rows.push([group, name, Buffer.byteLength(text), gz(text)]);
-  const gen = genResult();
-  /* measured on the page with every class chunk inlined (with one class: the site's index.html plus its chunk) */
-  const whole = gz(inline(shell)), keep = minified, keepChunks = chunks;
+  const gen = genResult(), perClass = new Set(genAll().perClass);
+  /* the loader keeps the real chunk file names, so a dropped table doesn't move index.html through a chunk hash */
+  const loader = siteClasses(), page = () => gz(tightPaths(tightHtml(stamp(inline(shell, loader), 'site')))) + gz(chunks[bigId]);
+  const whole = page(), keep = minified, keepChunks = chunks;
   const tables = [gen.module, gen.gateModule, gen.proposedModule, gen.placeModule].flatMap(m => [...m.matchAll(/^export const (\w+) = (.*);$/gm)].map(x => [x[1], x[2].length]));
+  let chunkSum = 0;
   for (const [name, raw] of tables) {
     dropTables([name]);
     minified = await minifyAll(Object.fromEntries(await Promise.all(Object.keys(bundles).map(async e => [e, await bundleOne(e)]))));
-    chunks = Object.fromEntries(await Promise.all(CLASS_PACKS.map(async id => [id, await minChunk(id)])));
-    rows.push(['data table', name, raw, whole - gz(inline(shell))]);
+    chunks = { ...keepChunks, [bigId]: await minChunk(bigId) };
+    const m = whole - page();
+    if (perClass.has(name)) chunkSum += m;
+    rows.push(['data table', name + (perClass.has(name) ? ' (chunk)' : ''), raw, m]);
   }
   dropTables([]); minified = keep; chunks = keepChunks;
+  add('page', `largest class chunk (${bigId})`, bigChunk);
+  rows.push(['page', '(chunk) data table rows, summed', 0, chunkSum]);
   for (const f of walk(P('src')).map(f => relative(P('src'), f).split('\\').join('/')).sort()) {
     if (f.endsWith('.css')) add('stylesheet', f, plainCss(f, readFileSync(P('src', f), 'utf8')));
     else if (f.endsWith('.js') && !/^(site|sw)\.js$/.test(f) && !f.startsWith('assets/')) add('script module', f, readFileSync(P('src', f), 'utf8'));
