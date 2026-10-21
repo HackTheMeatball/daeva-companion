@@ -412,6 +412,10 @@ Anything else, an unknown token or an unknown `build:` kind fails validation.
   step (claim C21). The generator checks all of these. It compiles `RMB_ROWS` (the flat right-click list `RMB_STACK` reads):
   the macro on Quick Use 2 expanded per level band, else Quick Use 2's own stack; `MACROS_FLAT` expands every macro. Both the
   label and the sources sit on `keyStacks.status` / `sources`; a build choice here is advice, never a game fact.
+- `keyStacks.eOrderStatus` (0.9 P17, optional): the E stack's own label when it is less certain than `keyStacks.status`
+  (the Assassin: `disputed`, claim C21b). The generator compiles it to `E_ST` (tagged statuses only, else null); the Build
+  drawer shows it on the E buff step and the key grid's heading line. The build text `e-buffs` (`E_NOTE`) is the short
+  "when to use the buffs" note after that step.
 - Each source's own order (today `stigmaRules.equipOrder`) moves to a claim that backs the disputed choice.
 - 5b compiles the guide build into today's `SP_SKILLS`, `SP_EXTRA`, `STIGMA_PLAN`, `ST_TARGETS`, `STAT_TIERS`,
   `STAT_SRC`, `RMB_STACK`, `E_ORDER` and the `dv` plan items, so the golden tests stay identical.

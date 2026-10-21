@@ -558,9 +558,13 @@ check(shaNote(B768, [c('HackTheMeatball', 'VERDICT: CHANGES (reviewer: francesca
 check(shaNote(B768, [c('HackTheMeatball', H768, 5), c('github-actions[bot]', n768, 6)], SHA, HEAD) === ''
   && shaNote(B768, [c('HackTheMeatball', H768, 5), c('github-actions[bot]', n768, 6)], 'fff0000aaa', HEAD) !== '',
   'sha note: posted once per head and list; a new head gets a new note');
-check(/\.\.\.\[\.\.\.last\]|\[\.\.\.last\]/.test(sm ? sm[1] : '') && /V\.reviewers\(pr\.body \|\| ''\)\.length\) \{\n[^\n]*\n[^\n]*getCommit[^\n]*\n[^\n]*shaNote\(/.test(yml)
-  && yml.indexOf('shaNote(pr.body') < yml.indexOf('// HOLD: add or lift it'),
+const inLoop = (x) => yml.indexOf(x, yml.indexOf('for (const pr of prs)'));
+check(inLoop('repos.getCommit') > 0 && inLoop('repos.getCommit') < inLoop('shaNote(pr.body') && inLoop('shaNote(pr.body') < inLoop('// HOLD: add or lift it'),
   'loop: the sha note is read before the hold check, with the head commit time');
+check(/try \{\n\s*if \(ROSTER && V\.unknownReviewers[\s\S]*?shaNote\(pr\.body[\s\S]*?\} catch \(e\) \{ core\.warning\(/.test(yml),
+  'loop: an API error in the roster or sha note is a warning for that PR, not the end of the run (#776 review)');
+check(shaNote(B768, [c('HackTheMeatball', 'VERDICT: OK (reviewer: francesca) on abc1234', 4), c('HackTheMeatball', 'VERDICT: OK (reviewer: francesca)', 6)], SHA, HEAD) === '',
+  'sha note: none when an earlier approval from the same reviewer names the head, as the gate counts it (#776 review)');
 
 console.log(`\n${n - fail}/${n} auto-merge checks passed`);
 console.log(fail ? 'AUTOMERGE CHECKS FAILED' : 'AUTOMERGE CHECKS PASSED');

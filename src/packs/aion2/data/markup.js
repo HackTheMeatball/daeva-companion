@@ -29,6 +29,9 @@ export const T = (label, key, name) => `<span class="term">${label}<button type=
 /* Placeholders in milestone text, filled by fillStigmaText() on every update. */
 export const stn = n => `<span class="stn" data-slot="${n}">${STIGMA_PLAN[n - 1]}</span>`;
 export const eRow = n => `<span class="erow" data-slot="${n}"></span>`;
+/* The stigmas a new one lands under on E (order: the E stack after adding it, r: its row) each move up a row; name the row
+   each lands on, not a direction (#774 Design Lead: row 0 is at the bottom, so "down" read wrong). "" when none move. */
+export const eShift = (order, r) => order.slice(r + 1).map((n, i) => `${n} ${i ? "to" : "moves up to"} row ${r + 1 + i}`).join(", ");
 export const DAEVA = `<b>Use your ${I("crystal")}</b> from the Cube, then spend the crystals on the current board's Heart Gore and Ambush nodes, then a corner.`;
 export const sub = (label, note) => ({ sub: label, subNote: note });
 /* An unverified value's label (0.8 P20): the generator carries a field's status when it isn't verified; disputed and

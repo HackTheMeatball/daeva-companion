@@ -122,6 +122,31 @@
       "verifiedAt": "2026-10-20"
     },
     {
+      "id": "C21b",
+      "claim": "Assassin E stack order: Illusive Clone, Swift Contract, Savage Fang, Triniel's Dagger (row 0 first); the two buffs only on bosses and elites.",
+      "verdict": "disputed",
+      "sources": [
+        {
+          "url": "https://daevaguides.com/en/assassin/",
+          "note": "Buffs in one line, Illusive Clone first (some players press Swift Contract first); Lv 37 opener: buffs, Shadowstrike, Savage Fang, then Triniel's Dagger; buffs only on bosses."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/assassin/",
+          "note": "Dungeon opener: Swift Contract, Illusive Clone, Shadowstrike, Savage Fang, Triniel's Dagger; leveling rotation has no buffs."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/triniels-dagger",
+          "note": "Specialization 2 (skill Lv 10): -10% to all skill cooldowns on hit."
+        }
+      ],
+      "action": "keep",
+      "note": "Savage Fang before Triniel's Dagger: two sources plus Metabot's cooldown mechanism. Illusive Clone vs Swift Contract first: the sources disagree, so the E stack carries the 'check in game' label (keyStacks.eOrderStatus); whether a stigma may sit in a regular slot is open too (stigma-slots, To-do T-61). One key for all four is inferred (no source binds them to one key). Research: docs/research/2026-10-e-stack.md (0.9 P17).",
+      "appliesTo": [
+        "build:assassin:guide"
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
       "id": "C22",
       "claim": "Board node costs: grey stat 1, green passive 2, blue active 3, orange corner 4 (+1.5%); Azphel paid with Azphel points from PvP shops.",
       "verdict": "verified",
