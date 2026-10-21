@@ -582,8 +582,9 @@ routed them here as build items. Each turns an existing rule into a check and lo
   - `tests/compliance.mjs` exports `checkCompliance(root, overrides)` returning a list of problems, in the shape of
     `tests/ledger.mjs`. Its first check fails on: an `SPDX-License-Identifier` naming any licence but
     PolyForm Strict 1.0.0 (`PolyForm-Strict-1.0.0`), an `MIT License` or `Permission is hereby granted, free of charge` text, or a `LICENSE*` /
-    `COPYING*` file other than the root `LICENSE`, in tracked files outside `node_modules/`. The font folders
-    (`src/assets/fonts/`, `tools/brand/fonts/`) are allowed their own licence files.
+    `COPYING*` file other than the root `LICENSE`, in tracked files outside `node_modules/`. Exempt: the root `LICENSE` (its line 72 names the MIT
+    License of earlier versions), `docs/**` (plans and research quote the patterns), `tests/compliance.mjs` itself, and
+    the font folders (`src/assets/fonts/`, `tools/brand/fonts/`), which keep their own licence files.
   - `tests/schema.mjs` runs it after the ledger checks, with one negative fixture per pattern (each passed as an override,
     never written to the repo).
 - **Inputs.** none.
@@ -603,10 +604,9 @@ routed them here as build items. Each turns an existing rule into a check and lo
   would leave it stale, and nothing checks it (register C10).
 - **Result.** A second check in `tests/compliance.mjs`: the `KEY` exported by `src/core/state.js` appears in PRIVACY.md,
   and every `companion-save-v<n>` that PRIVACY.md names equals it (the `:before-import` suffix allowed). A negative
-  fixture in `tests/schema.mjs` (a PRIVACY text naming `-v4`) fails it.
+  fixture in `tests/schema.mjs` (a PRIVACY text naming `-v4`) fails it. P2 bumps the key to `companion-save-v6` and
+  doesn't list PRIVACY.md, so this item also brings PRIVACY.md's key lines to the code's key (those lines only).
 - **Inputs.** none.
-  P2 bumps the key to `companion-save-v6` and doesn't list PRIVACY.md, so this item also brings PRIVACY.md's key
-  lines to the code's key (those lines only).
 - **Files.** `tests/compliance.mjs`, `tests/schema.mjs`, `PRIVACY.md` (the key lines only).
 - **No-gos.** No other change to PRIVACY.md; no change to the save key.
 - **Acceptance.**
@@ -775,6 +775,12 @@ picker and opens from a stored save. P28 finishes P3's own goal in the tests; P2
   option B): its own save-key prefix, `noindex`, a "Staging" banner, smoke on both. DEPLOY.md, the deploy, smoke and
   release job order, and CLAUDE.md's site line are rewritten. After `owner-ok-0.9-staging`. Then the rollback drill
   (below) runs on staging.
+- **S5: Automatic hold-lift.** `auto-merge.yml` lifts `hold` only when the PR body has a `Reviewers:` line, every
+  named reviewer approves the current head and `ci-ok` is green, then starts the pipeline review (pipeline.yml skips
+  held PRs, so the review can't be a lift condition). The merge still needs the pipeline APPROVE on the head and every
+  other check. A `Review:` line naming external or blind review adds `hold` automatically until FRESH REVIEW OK names
+  the head; a hold someone removed is never re-added, and a manual hold on a PR without a `Reviewers:` line stays manual. Lanes: auto-merge.yml, `tests/automerge.mjs`, gus.md; Opus; trigger-1
+  outside review. After #705 merges (owner OK 2026-10-21 03:34Z, "Sure let's do it").
 
 Alongside, not builds: Watchdog and Build Pipeline write the incident runbook (severity levels, one incident lead,
 blameless postmortem with dated fixes; team audit §8d); Build Pipeline writes the owner-settings checklist it reads

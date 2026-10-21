@@ -1369,6 +1369,7 @@ workflows).
 | S2 FR | Nothing checks the live app works → scripted journey after each deploy and every 6 h | S | Gus | ci | none |
 | S3 FR | Sync server deployed by hand → CI tests and dry run, deploy on the owner's token | M | Gus | ci | none |
 | S4 FR | No staging → `/staging/` from main, root from tags | M | Gus | ci | `owner-ok-0.9-staging` |
+| S5 FR | `hold` lifted by hand → auto-merge lifts it once named reviewers and ci-ok pass on the head; pipeline APPROVE stays a merge condition | S | Gus (Opus) | auto-merge | #705 |
 | R FR | Release 0.9.0 | S | Sonnet | release, alone | everything above, or moved; GO 0.9.0 |
 
 Not bot items (they run alongside): Game Data Check does the four research gates, naming each file with its slug
