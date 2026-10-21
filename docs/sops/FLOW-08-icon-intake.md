@@ -54,4 +54,4 @@ An item spec or research pack needs an icon that is not in `src/assets/icons/`.
 
 ## Last confirmed by owner
 
-Not yet.
+2026-10-21, by Gretchen.

@@ -18,14 +18,16 @@ so vetting a site and then fetching from it is no longer self-approved.
 
 - Fetching: [CLAUDE.md "Data and source policy"](../../CLAUDE.md) and [SOURCES.md](../research/SOURCES.md) (REPO-06,
   REPO-07 in the [ledger](../kaizen/ledger.csv)).
-- Lookups and verification: ROL-03; standing OK for stricter or new source rows: ROL-04; ROL-08.
+- Lookups and verification: ROL-03; standing OK for stricter or new source rows: ROL-04; the fetch log: ROL-08 (live).
 - Topics: DECISIONS "Source Vetting may help any thread research any topic externally; the fetching rules are
   unchanged" (owner, 2026-10-20).
 
 ## Fetch log
 
-`legal/fetch-log.md` in the project's shared folder (started 2026-10-20). One line per request (UTC time, host, URL,
-purpose and thread, status code), written when the request is made; for the first content request to a new host, written before it. The first content request to a new host also
+`legal/fetch-log/<thread>.md` in the project's shared folder, one file per thread, written only by that thread (since
+2026-10-21; `legal/fetch-log.md`, started 2026-10-20, is the frozen archive). One line per request (UTC time, host, URL,
+purpose and thread, status code), written before the request is made. The first content request to a new host also
 records the terms URL already read and its verdict (terms OK, scraping-only or opt-out); this applies to every
-fetching thread (incident fast path, Fresh governance review OK, 2026-10-21). Chuck checks compliance from this log,
-and a fresh reviewer spot-checks one entry against the live terms page each minor.
+fetching thread (incident fast path, Fresh governance review OK, 2026-10-21). Chuck checks compliance from these logs,
+and a fresh reviewer spot-checks one entry, from any thread's file including Legal's, against the live terms page each minor. Since 2026-10-21 Chuck has
+read-only web access and may re-open a terms page cited here to check the verdict, logging that fetch in Legal's own file (`legal/fetch-log/chuck.md`).

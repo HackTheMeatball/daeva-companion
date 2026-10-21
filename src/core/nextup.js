@@ -86,16 +86,22 @@ const bandOfLv = (L, lvs) => { const from = lvs.filter(m => m <= L).pop() ?? lvs
 
 export function rankNext(state, { basic = false, track = trackOf(state, basic) } = {}) {
   /* every "is it open?" below is the evaluator's (gatesOf, src/core/requirements.js); the ranking is 0.2's */
-  const P = activePack(), { milestones, rowKind, promised } = P.catalog;
+  const P = activePack(), { milestones, rowKind, promised, needs } = P.catalog;
   const c = char(state), lv = c.level, ev = gatesOf(c);
+  /* A card locked (0.9 P7): the node that opens a page card (the pack's catalog.needs for a step, an entry's own `needs`)
+     isn't open yet; Next up never points at such a card, so those steps and entries stay out. */
+  const shut = n => { if (!n) return false; const r = ev.node(n); return !!r && !r.open; };
+  const cardOpen = x => !shut(needs(x.it, x.k));
   const here = milestones.find(g => g.lv === lv && isOpen(countsOf(state, g)));
-  const hs = here ? openSteps(state, here) : [];
+  const hs = here ? openSteps(state, here).filter(cardOpen) : [];
   /* the story card's level gate (story.levelGate) */
   const { gated, gateLv } = P.story.levelGate(c);
   const ctx = { c, lv, ev, basic, story: { qi: questIdx(c), gated, gateLv }, here };
   const entries = [];
   for (const p of P.nextUpProducers) for (const e of p.produce(state, ctx)) {
     if (!NEXT_UP_PHASES.includes(e.phase)) throw new Error(`rankNext: producer "${p.id}" returned the unknown phase "${e.phase}"`);
+    /* (a Later card only says when its row opens, so its step may wait on a locked card) */
+    if (shut(e.needs) || (e.phase !== "later" && e.card.x && e.card.x.k && !cardOpen(e.card.x))) continue;
     entries.push(e);
   }
   const add = (phase, card) => entries.push({ phase, card });
@@ -106,7 +112,7 @@ export function rankNext(state, { basic = false, track = trackOf(state, basic) }
   /* Leftovers from milestones below your level. Unlock-type steps stay above the story; side rows keep the rank they had
      at their own level: after the story. */
   const missed = milestones.filter(g => g.lv < lv && isOpen(countsOf(state, g)));
-  const msAll = missed.flatMap(g => openSteps(state, g).filter(m => !firstK.has(m.k)).map(m => ({ ...m, g })));
+  const msAll = missed.flatMap(g => openSteps(state, g).filter(m => !firstK.has(m.k) && cardOpen(m)).map(m => ({ ...m, g })));
   let ms = msAll.filter(m => !m.rq && !m.adv);
   /* Catch-up (design §7): behind, every missed step, nearest first (byPlace on the zone the pack locates a key in; where
      the player isn't known, the catalog order); else the first MISSED_SHOWN, as 0.2. */

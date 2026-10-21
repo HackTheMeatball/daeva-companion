@@ -50,8 +50,10 @@ const PACK_KEYS = {
 };
 const PACK_REQUIRED = ["id", "data", "catalog"];
 /* promised(it, k): may Next up's Later card promise this row at its milestone's level (false for rows bought through a
-   card of their own); story.cardFields(state, ctx): the pack's own fields on the story card's objectives version (0.4 P2c) */
-const PACK_CATALOG_DEFAULTS = { rowKind: () => "main", offered: () => true, promised: () => true };
+   card of their own); needs(it, k): the node id of the unlock that opens the page card a row is done in, or null (0.9 P7:
+   Next up offers no step whose card is still locked); story.cardFields(state, ctx): the pack's own fields on the story
+   card's objectives version (0.4 P2c) */
+const PACK_CATALOG_DEFAULTS = { rowKind: () => "main", offered: () => true, promised: () => true, needs: () => null };
 const PACK_STORY_DEFAULTS = { levelGate: () => ({ gated: false, gateLv: 0 }), isTalkOnly: () => false, subs: () => [], here: () => null, meanwhile: () => null,
   cardFields: () => ({}) };
 

@@ -31,7 +31,7 @@ The last item of the minor merges. Walter is release manager from `RC READY` unt
 6. **Walter**: Posts `GO <version>` only when DATA OK and RC PLAY DONE name the same build (KZ-11), and asks for Isaac's weekly usage % (PLN-24).
 7. **Gus**: Starts the release item on GO alone (PIP-08): version bump and CHANGELOG in one commit (PLN-19).
 8. **CI**: Deploys, runs the smoke check, then tags and publishes the GitHub Release.
-9. **Walter**: Confirms the live site serves the new version, then sends `RELEASE SHIPPED`.
+9. **Walter**: Confirms the live site serves the new version, then sends `RELEASE SHIPPED`, and sends Gale `REPORT READY <version>`.
 10. **Jesse**: Plays the live site and sends `PLAY DONE` ([FLOW-20](FLOW-20-player-testing.md)), which leads into the kaizen review ([FLOW-17](FLOW-17-kaizen-review.md), COM-15).
 
 ## Gates
@@ -77,4 +77,4 @@ The last item of the minor merges. Walter is release manager from `RC READY` unt
 
 ## Last confirmed by owner
 
-Not yet.
+2026-10-21, by Walter.

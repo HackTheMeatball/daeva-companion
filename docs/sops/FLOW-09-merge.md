@@ -22,11 +22,12 @@ A CI run completes, or a verdict comment is posted, on an open `claude/` PR (`au
 
 ## Steps
 
-1. **Auto-merge**: Checks every gate on the head (MRG-02, MRG-06, the data check) and the freeze; squash-merges pinned to that head.
-2. **Auto-merge**: Dispatches CI on main: deploy, smoke and, for a release, the tag ([docs/DEPLOY.md](../DEPLOY.md)).
-3. **Gus**: Gus's PR check sends Huell `MERGED` (CLK-01).
-4. **Huell**: Writes the done card (TRK-02) and publishes any scrapbook cards (TRK-07).
-5. **Kickoff**: Starts the next queued item ([FLOW-03](FLOW-03-build.md)).
+1. **Walter**: For a PR held for a fresh review, removes `hold` once a `FRESH REVIEW OK <sha7>` names the current head ([FLOW-04](FLOW-04-code-review.md)). A PR whose body has a `Reviewers: fresh review` line needs no `hold`: auto-merge waits for that approval (MRG-12).
+2. **Auto-merge**: Checks every gate on the head (MRG-02, MRG-06, the data check) and the freeze; squash-merges pinned to that head.
+3. **Auto-merge**: Dispatches CI on main: deploy, smoke and, for a release, the tag ([docs/DEPLOY.md](../DEPLOY.md)).
+4. **Gus**: Gus's PR check sends Huell `MERGED` (CLK-01).
+5. **Huell**: Writes the done card (TRK-02) and publishes any scrapbook cards (TRK-07).
+6. **Kickoff**: Starts the next queued item ([FLOW-03](FLOW-03-build.md)).
 
 ## Gates
 
@@ -34,6 +35,7 @@ A CI run completes, or a verdict comment is posted, on an open `claude/` PR (`au
 - `DESIGN OK` for a shots PR (MRG-06).
 - Game Data Check VERIFIED for a data PR (ROL-03).
 - No `hold` label (MRG-09).
+- No named reviewer's latest tagged verdict is CHANGES, and every name in a `Reviewers:` body line approved the head (MRG-12).
 - During a minor's freeze, only the PRs the freeze allows (DEC-20261020-release-manager-and-freeze).
 
 ## Records
@@ -55,6 +57,7 @@ A CI run completes, or a verdict comment is posted, on an open `claude/` PR (`au
 - [MRG-06](../reviews/README.md): DESIGN OK hold
 - [ROL-03](../DECISIONS.md): data check
 - [MRG-09](../team/gus.md): labels
+- [MRG-12](../team/gus.md): named reviewers
 - [DEC-20261020-release-manager-and-freeze](../DECISIONS.md): freeze
 - [CLK-01](../DECISIONS.md): MERGED notice
 - [TRK-02](../team/huell.md): done cards
@@ -64,4 +67,4 @@ A CI run completes, or a verdict comment is posted, on an open `claude/` PR (`au
 
 ## Last confirmed by owner
 
-Not yet.
+2026-10-21, by Gus.

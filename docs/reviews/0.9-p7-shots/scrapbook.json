@@ -1,0 +1,6 @@
+[
+  { "case": "ask-1500", "kind": "before-after", "title": "Journey asks for your story quest",
+    "caption": "Moving the level from 2 to 39 with the story still at Lv 2 now asks which story quest you are on, with a quest list to pick from." },
+  { "case": "ask-390", "kind": "before-after", "title": "The same question on a phone",
+    "caption": "On a phone the question sits under the level slider; Set story quest moves the story, Skip leaves it as it is." }
+]

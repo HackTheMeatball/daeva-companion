@@ -30,7 +30,6 @@
   ],
   "random/L16-q24-all-B-stfull": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
     {"t":"Story: Malice Laid Bare","s":"Needs Lv 18: you're 16. Level up first.","c":""}
   ],
   "random/L16-q24-rnd104p20-A-filters": [
@@ -109,7 +108,6 @@
   ],
   "random/L17-q19-all-A-stready": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Upgrade Triniel's Dagger 2 → 3","s":"1 of your 3 shards","c":"primary \"Upgraded\" stup"},
     {"t":"Story: Back on the Scent","s":"0/2 objectives · then Dead Men Tell No Tales","c":"primary \"Turned in\" story","o":["Clear the path to the crematorium defeat Lost Specter defeat Ancient Revenant Knight investigate Brok's traces on the corpse Kibelisk : Neglected Crematorium","Turn in Kolina (Gravekeeper's Assistant), Neglected Crematorium"]}
   ],
   "random/L17-q19-rnd147p20-B-cube": [
@@ -191,7 +189,6 @@
   ],
   "random/L17-q66-all-B-stfull": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
     {"t":"Story: Unveiling the Truth","s":"Needs Lv 37: you're 17. Level up first.","c":""}
   ],
   "random/L17-q66-rnd145p80-B-stfull": [
@@ -233,7 +230,6 @@
   ],
   "random/L17-qxx-all-B-stfull": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
     {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"}
   ],
   "random/L18-q00-before-A-rqmix": [
@@ -513,14 +509,13 @@
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0"},
     {"t":"Story: A Village in the Fog","s":"0/2 objectives · then Prepare to Escape","c":"primary \"Turned in\" story","o":["Remember Aldelle Village bind with the Kibelisk","Turn in Ellin (Villager), Aldelle Village"]},
     {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk : Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
-    {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"}
+    {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"},
+    {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 1 level away · single source","c":"tag \"Later\"","f":"later"}
   ],
   "random/L20-q06-lvonly-A": [
-    {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Lv 20–21"},
-    {"t":"Story: Signs of a Crash Landing","s":"0/5 objectives · then Prison Compound Infiltration Plan","c":"primary \"Turned in\" story","o":["Go to Anturn Cliff go to Milred ( Kibelisk : Witch's Cabin)","Search the airship at the top of Anturn Cliff ride the Updraft to the top (Kibelisk: Witch's Cabin)","Return to Aldelle Village go to Aldelle Village","+2 more after these"]},
+    {"t":"Story: Signs of a Crash Landing","s":"0/5 objectives · then Prison Compound Infiltration Plan","c":"primary \"Turned in\" story","b":"Lv 20–21","o":["Go to Anturn Cliff go to Milred ( Kibelisk : Witch's Cabin)","Search the airship at the top of Anturn Cliff ride the Updraft to the top (Kibelisk: Witch's Cabin)","Return to Aldelle Village go to Aldelle Village","+2 more after these"]},
     {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk : Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"},
     {"t":"Buy Ambush 7 → 8","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
