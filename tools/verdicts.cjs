@@ -28,6 +28,17 @@ const TAGGED = /^VERDICT:\s*(APPROVE|OK|CHANGES)\b.*?\(reviewer:\s*([^)]+?)\s*\)
 const tagged = (body) => lines(body).map((l) => l.match(TAGGED)).filter(Boolean)
   .map(([, verdict, who]) => ({ reviewer: who.toLowerCase(), verdict }));
 
+// A fresh reviewer's mark: a line starting "FRESH REVIEW OK" or "FRESH REVIEW CHANGES". 'CHANGES' when any line says so, else
+// 'OK', else null. (The note's own first line, "FRESH REVIEW #<n> <sha7>", is neither.)
+const FRESH = /^FRESH REVIEW (OK|CHANGES)\b/;
+const fresh = (body) => {
+  const words = lines(body).map((l) => (l.match(FRESH) || [])[1]).filter(Boolean);
+  return words.includes('CHANGES') ? 'CHANGES' : words.length ? 'OK' : null;
+};
+
+// A PR body's "Reviewers: <name>, <name>" line: the named reviewers whose approval of the head the merge needs.
+const reviewers = (body) => { const l = lines(body).find((x) => /^Reviewers:/.test(x)); return l ? l.replace(/^Reviewers:/, '').split(/[,;]/).map((x) => x.trim().toLowerCase()).filter(Boolean) : []; };
+
 // The coordinator's deadlock exit for a reviewer who has ended: "REVIEW CLEAR (reviewer: <name>; trigger: <n|none>): <reason>",
 // the reason at least 10 characters. Whether a clear is allowed (never on some triggers) stays in the workflow.
 const CLEAR = /^REVIEW CLEAR \(reviewer:\s*([^;)]+?)\s*;\s*trigger:\s*([0-9a-z]+)\s*\):\s*(\S.{9,})$/;
@@ -48,4 +59,4 @@ const reviewOf = (body) => { const l = lines(body).find((x) => x.trim()); const 
 const needsOpus = (body) => lines(body).some((l) => /^\s*Needs @claude \(Opus\):/.test(l));
 const stuck = (body) => lines(body).some((l) => /^\s*Pipeline stuck:/.test(l));
 
-module.exports = { clean, lines, design, data, tagged, clears, review, reviewOf, needsOpus, stuck };
+module.exports = { clean, lines, design, data, tagged, fresh, reviewers, clears, review, reviewOf, needsOpus, stuck };

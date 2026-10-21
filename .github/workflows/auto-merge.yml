@@ -148,22 +148,30 @@ jobs:
             // by that reviewer that is newer than it and names the head clears it. The deadlock exit is the coordinator's
             // "REVIEW CLEAR (reviewer: <name>; trigger: <n|none>): <reason>" for a reviewer who has ended; it is refused on
             // triggers 2, 4b, 5 and 6, and Watchdog (Mike) flags every clear. A message to a session is not a verdict.
+            // Reviewers keep the marks the gates already parse (Kaizen, 2026-10-20): DESIGN OK / CHANGES counts as the Design
+            // Lead's (also "jane"), Game Data Check (ROL-03) as Game Data Check's (also "gretchen"), FRESH REVIEW OK / CHANGES as
+            // "fresh review"; everyone else tags the VERDICT line. A PR body line "Reviewers: <name>, ..." makes each named
+            // reviewer's approval of the head required, so such a PR needn't open with hold.
             // Known limit: sessions post as the owner's account, so the name is the comment's word, not a checked identity.
             const NOCLEAR = new Set(['2', '4b', '5', '6']);
-            const namedBlocker = (comments, sha) => {
+            const ALIAS = { jane: 'design lead', gretchen: 'game data check' };
+            const who = (name) => ALIAS[name] || name;
+            const namedBlocker = (comments, sha, prBody = '') => {
               const s7 = sha.slice(0, 7);
               const ev = [];
               for (const c of comments) {
                 if (!c.user || !(c.user.login === 'claude[bot]' || c.user.login.toLowerCase() === owner.toLowerCase())) continue;
                 const at = Date.parse(c.updated_at), names = (c.body || '').includes(s7);
-                for (const t of V.tagged(c.body)) ev.push({ who: t.reviewer, ok: t.verdict !== 'CHANGES', head: names, at });
+                for (const t of V.tagged(c.body)) ev.push({ who: who(t.reviewer), ok: t.verdict !== 'CHANGES', head: names, at });
+                const f = V.fresh(c.body);
+                if (f) ev.push({ who: 'fresh review', ok: f === 'OK', head: names, at });
                 const d = V.design(c.body);
                 if (d) ev.push({ who: 'design lead', ok: d === 'OK', head: names, at });
                 for (const x of V.data(c.body)) ev.push({ who: 'game data check', ok: x.verdict === 'VERIFIED', head: sha.startsWith(x.sha), at });
                 for (const k of V.clears(c.body)) {
                   if (NOCLEAR.has(k.trigger)) { core.info(`REVIEW CLEAR for ${k.reviewer} refused: trigger ${k.trigger} never allows one`); continue; }
                   core.notice(`REVIEW CLEAR for ${k.reviewer} (trigger ${k.trigger}): ${k.reason}`);
-                  ev.push({ who: k.reviewer, ok: true, head: true, at, clear: true });
+                  ev.push({ who: who(k.reviewer), ok: true, head: true, at, clear: true });
                 }
               }
               const open = [];
@@ -173,7 +181,9 @@ jobs:
                 if (lastNo === -Infinity) continue;
                 if (!mine.some((e) => e.ok && e.head && e.at > lastNo)) open.push(who);
               }
-              return open.length ? `CHANGES from ${open.join(', ')} not yet cleared by an approval naming ${s7}` : '';
+              if (open.length) return `CHANGES from ${open.join(', ')} not yet cleared by an approval naming ${s7}`;
+              const missing = V.reviewers(prBody).map(who).filter((r) => !ev.some((e) => e.who === r && e.ok && e.head));
+              return missing.length ? `waits on ${missing.join(', ')} (Reviewers: line) to approve ${s7}` : '';
             };
             // NAMED-CHECK END
             // FREEZE-CHECK START (tests/automerge.mjs runs this block)
@@ -216,7 +226,7 @@ jobs:
               const files = listed.map((f) => f.filename);
               // A rename out of data/ only shows its old path in previous_filename; the data check reads both.
               const touched = listed.flatMap((f) => [f.filename, f.previous_filename].filter(Boolean));
-              const named = namedBlocker(comments, sha);
+              const named = namedBlocker(comments, sha, pr.body || '');
               if (named) { core.info(`#${pr.number}: ${named}`); continue; }
               const design = designBlocker(files, comments, sha, headAt);
               if (design) { core.info(`#${pr.number}: ${design}`); continue; }
