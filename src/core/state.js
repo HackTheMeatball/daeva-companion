@@ -1,7 +1,7 @@
 /* The saved state (0.2 P3, pure: no DOM, no storage). docs/ARCHITECTURE.md §1 has the rules.
 
    Save v6 (0.9 P2, the last clean break before 1.0: the v5 key is never read, nor the v4 one; story progress is keyed by
-   the quest's id, objectives by their explicit index, skills and stigmas by their id's last segment). One save holds the
+   the quest's id and objectives by their explicit index, never by a name or a position). One save holds the
    view settings (mode, filters, folds), this browser's backup times, and the characters, one slot each:
      { v: 6, savedAt, current: <slot id>, chars: { <slot id>: character }, mode, open, hide, hideCards, …, backup }
    A character is { id, pack, class, name, created, ...charFields() }. The slot id is random (newId), never derived from
