@@ -1156,6 +1156,8 @@
         {
           "node": "node:assassin:triniel:r9c10",
           "label": "Heart Gore",
+          "cost": 5,
+          "costBasis": "path",
           "milestone": "g40",
           "order": 30.1,
           "requires": {
@@ -1169,6 +1171,8 @@
         {
           "node": "node:assassin:triniel:r8c14",
           "label": "Insignia Explosion",
+          "cost": 7,
+          "costBasis": "path",
           "milestone": "g40",
           "order": 30.2,
           "requires": {
@@ -1182,6 +1186,8 @@
         {
           "node": "node:assassin:triniel:r13c12",
           "label": "Quick Slice",
+          "cost": 6,
+          "costBasis": "path",
           "milestone": "g40",
           "order": 30.3,
           "requires": {
@@ -1195,6 +1201,8 @@
         {
           "node": "node:assassin:triniel:r9c4",
           "label": "Assault Stance",
+          "cost": 5,
+          "costBasis": "path",
           "milestone": "g40",
           "order": 30.4,
           "requires": {
@@ -1208,6 +1216,8 @@
         {
           "node": "node:assassin:triniel:r13c7",
           "label": "Defense Break",
+          "cost": 8,
+          "costBasis": "path",
           "milestone": "g40",
           "order": 30.5,
           "requires": {

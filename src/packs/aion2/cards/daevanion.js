@@ -24,11 +24,13 @@ function refreshDvGates() {
     const row = c.closest(".item, .dvrow"), w = row && row.querySelector(".dvwarn"); if (w) w.textContent = g.warn;
   });
 }
-/* The cost boxes show the logged cost, else the plan's (dvCostOf: pre-filled, not saved until the player types). */
+/* The cost boxes show the logged cost, else the plan's (dvCostOf: pre-filled, not saved until the player types). A plan cost
+   computed from the board (costBasis 'path', no owner screen) carries its label, costSt (#721 item 1). */
+const dvCostTag = it => (char(state).dvCost || {})[it.k] == null ? stTag(it.costSt) : "";
 const dvRowHTML = it => {
   const cost = dvCostOf(char(state), it), on = !!char(state).checks[it.k];
   return `<li class="item dvn" data-dvk="${it.k}"><label><input type="checkbox" data-k="${it.k}" ${on ? "checked" : ""} ${dvGate(it.k).off ? "disabled" : ""}><span class="txt"><img class="dvmini" src="${dvIconSrc(it)}" alt="" loading="lazy" onerror="this.remove()">${dvName(it)}<span class="loc">${dvMeta(it)}<span class="dvwarn">${dvGate(it.k).warn}</span></span></span></label>` +
-    `<label class="dvc-wrap" title="Points this node took, including its path">cost <input class="dvc" type="number" min="0" max="200" inputmode="numeric" data-dvc="${it.k}" value="${cost ?? ""}" placeholder="–"></label></li>`;
+    `<label class="dvc-wrap" title="Points this node took, including its path">cost${dvCostTag(it)} <input class="dvc" type="number" min="0" max="200" inputmode="numeric" data-dvc="${it.k}" value="${cost ?? ""}" placeholder="–"></label></li>`;
 };
 /* Daevanion: the player types the board's total points and logs what each node cost (path included);
    remaining = total − logged costs. Node order lives in the milestones (Nezekan Lv 13, Zikel 20, Vaizel 30, Triniel 40). */
@@ -52,7 +54,7 @@ function renderDaevanion() {
            action (one button whose label says exactly what's missing). The checkbox stays hidden for state sync. */
         return `<div class="dvrow nx" data-nx="${it.k}"><input type="checkbox" class="dvcb" data-k="${it.k}" hidden>` +
           `<div class="dvhead">${dvIcon(it)}<div class="dvtext">${dvName({ ...it, t: dvShort(it.t.split(" · ")[0]) })}<small title="${dvMeta(it)}">${it.board} · ${it.t.includes(" · ") ? it.t.split(" · ")[1] : DV_TYPE[it.ty][1].replace(" skill", "")}</small><div class="dvbar"><div class="dvtrack"><span></span></div><span class="dvbar-l"></span></div>` +
-          `<div class="dvcost dvcost-col"><span class="dvcost-k">cost <span class="dvi" tabindex="0" role="note" aria-label="Required amount of crystals to obtain selected Daevanion" data-tip="Required amount of crystals to obtain selected Daevanion">i</span></span><span class="cstep"><input class="dvc" type="number" min="0" max="200" inputmode="numeric" data-dvc="${it.k}" value="${cost ?? ""}" placeholder="?" aria-label="Cost in crystals"><span class="cstep-b"><button type="button" data-cst="1" tabindex="-1" aria-label="One more">▴</button><button type="button" data-cst="-1" tabindex="-1" aria-label="One fewer">▾</button></span></span></div></div></div>` +
+          `<div class="dvcost dvcost-col"><span class="dvcost-k">cost${dvCostTag(it)} <span class="dvi" tabindex="0" role="note" aria-label="Required amount of crystals to obtain selected Daevanion" data-tip="Required amount of crystals to obtain selected Daevanion">i</span></span><span class="cstep"><input class="dvc" type="number" min="0" max="200" inputmode="numeric" data-dvc="${it.k}" value="${cost ?? ""}" placeholder="?" aria-label="Cost in crystals"><span class="cstep-b"><button type="button" data-cst="1" tabindex="-1" aria-label="One more">▴</button><button type="button" data-cst="-1" tabindex="-1" aria-label="One fewer">▾</button></span></span></div></div></div>` +
           `<p class="dvstat"></p><div class="buyrow"><button type="button" class="dvbuy" data-buy="${it.k}"></button><div class="buystat" hidden></div></div></div>`; }).join("")
     : (() => { const nl = DV_NODES().find(it => !char(state).checks[it.k]); if (!nl) return null;
         const opensAt = Math.min(...DV_NODES().filter(n => n.board === nl.board).map(n => n.blv)), at = Math.max(opensAt, nl.blv), w = dvWaitOf(char(state), nl.board);

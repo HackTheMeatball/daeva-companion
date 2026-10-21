@@ -330,6 +330,8 @@
         {
           "node": "node:sorcerer:nezekan:r5c3",
           "label": "Fire Mark · 1 of 2",
+          "cost": 11,
+          "costBasis": "path",
           "milestone": "g12",
           "order": 20,
           "requires": {
@@ -344,6 +346,8 @@
         {
           "node": "node:sorcerer:nezekan:r13c9",
           "label": "Fire Mark · 2 of 2",
+          "cost": 7,
+          "costBasis": "path",
           "milestone": "g12",
           "order": 30,
           "requires": {
@@ -358,6 +362,8 @@
         {
           "node": "node:sorcerer:nezekan:r3c7",
           "label": "Robe of Earth · 1 of 2",
+          "cost": 5,
+          "costBasis": "path",
           "milestone": "g12",
           "order": 40,
           "requires": {
@@ -372,6 +378,8 @@
         {
           "node": "node:sorcerer:nezekan:r11c13",
           "label": "Robe of Earth · 2 of 2",
+          "cost": 8,
+          "costBasis": "path",
           "milestone": "g12",
           "order": 50,
           "requires": {
@@ -386,6 +394,8 @@
         {
           "node": "node:sorcerer:zikel:r6c7",
           "label": "Grace of Enhancement · 1 of 2",
+          "cost": 4,
+          "costBasis": "path",
           "via": "Grace of Enhancement is learned at Lv 21",
           "milestone": "g20",
           "order": 30,
@@ -411,6 +421,8 @@
         {
           "node": "node:sorcerer:zikel:r12c11",
           "label": "Grace of Enhancement · 2 of 2",
+          "cost": 9,
+          "costBasis": "path",
           "via": "Grace of Enhancement is learned at Lv 21",
           "milestone": "g20",
           "order": 40,

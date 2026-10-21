@@ -331,6 +331,8 @@
         {
           "node": "node:chanter:nezekan:r3c11",
           "label": "Protection Circle · 1 of 2",
+          "cost": 9,
+          "costBasis": "path",
           "milestone": "g12",
           "order": 20,
           "requires": {
@@ -345,6 +347,8 @@
         {
           "node": "node:chanter:nezekan:r13c5",
           "label": "Protection Circle · 2 of 2",
+          "cost": 9,
+          "costBasis": "path",
           "milestone": "g12",
           "order": 30,
           "requires": {
@@ -359,6 +363,8 @@
         {
           "node": "node:chanter:nezekan:r7c10",
           "label": "Attack Preparation · 1 of 2",
+          "cost": 2,
+          "costBasis": "path",
           "via": "Attack Preparation is learned at Lv 13",
           "milestone": "g12",
           "order": 40,
@@ -384,6 +390,8 @@
         {
           "node": "node:chanter:nezekan:r11c3",
           "label": "Attack Preparation · 2 of 2",
+          "cost": 6,
+          "costBasis": "path",
           "via": "Attack Preparation is learned at Lv 13",
           "milestone": "g12",
           "order": 50,
@@ -409,6 +417,8 @@
         {
           "node": "node:chanter:zikel:r6c7",
           "label": "Earth's Promise · 1 of 2",
+          "cost": 4,
+          "costBasis": "path",
           "via": "Earth's Promise is learned at Lv 21",
           "milestone": "g20",
           "order": 30,
@@ -434,6 +444,8 @@
         {
           "node": "node:chanter:zikel:r12c11",
           "label": "Earth's Promise · 2 of 2",
+          "cost": 9,
+          "costBasis": "path",
           "via": "Earth's Promise is learned at Lv 21",
           "milestone": "g20",
           "order": 40,

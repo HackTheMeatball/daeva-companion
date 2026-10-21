@@ -321,6 +321,8 @@
         {
           "node": "node:gladiator:nezekan:r4c5",
           "label": "Overhead Slam",
+          "cost": 9,
+          "costBasis": "path",
           "milestone": "g12",
           "order": 20,
           "requires": {
@@ -335,6 +337,8 @@
         {
           "node": "node:gladiator:nezekan:r7c5",
           "label": "Rending Blow",
+          "cost": 4,
+          "costBasis": "path",
           "milestone": "g12",
           "order": 30,
           "requires": {
@@ -349,6 +353,8 @@
         {
           "node": "node:gladiator:nezekan:r13c7",
           "label": "Ruinous Blow",
+          "cost": 8,
+          "costBasis": "path",
           "via": "Ruinous Blow is learned at Lv 14",
           "milestone": "g12",
           "order": 40,
@@ -374,6 +380,8 @@
         {
           "node": "node:gladiator:zikel:r13c5",
           "label": "Overhead Slam",
+          "cost": 12,
+          "costBasis": "path",
           "milestone": "g20",
           "order": 30,
           "requires": {
@@ -388,6 +396,8 @@
         {
           "node": "node:gladiator:zikel:r7c13",
           "label": "Rending Blow",
+          "cost": 9,
+          "costBasis": "path",
           "milestone": "g20",
           "order": 40,
           "requires": {
@@ -402,6 +412,8 @@
         {
           "node": "node:gladiator:zikel:r3c11",
           "label": "Ruinous Blow",
+          "cost": 8,
+          "costBasis": "path",
           "milestone": "g20",
           "order": 50,
           "requires": {

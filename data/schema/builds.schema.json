@@ -52,10 +52,14 @@
           "type": "string"
         },
         "cost": {
-          "description": "Points this row takes in the guide's order, its path included (the owner's board, cited with fields [\"cost\"]): what the Daevanion card's cost box pre-fills. The generator checks it against the cheapest path (tools/gen/board-path.mjs).",
+          "description": "Points this row takes in the guide's order, its path included (the owner's board, cited with fields [\"cost\"], or computed: costBasis 'path'): what the Daevanion card's cost box pre-fills. The generator checks it against the cheapest path (tools/gen/board-path.mjs).",
           "type": "integer",
           "minimum": 0,
           "maximum": 200
+        },
+        "costBasis": {
+          "description": "Where 'cost' comes from when no owner screen or page gives it. 'path': computed by tools/gen/board-path.mjs, the cheapest path in plan order from Start and the earlier rows, each node priced by its grade in board-nodes.json (common 1, rare 2, legend 3, unique 4; Metabot), side-by-side nodes assumed linked (owner check T-105). Always labelled inferred to the player. The generator requires exactly one cheapest-path cost and that it equals 'cost'; a row whose cheapest paths disagree (or an anyNode row) gets no computed cost.",
+          "enum": ["path"]
         },
         "milestone": {
           "type": "string",

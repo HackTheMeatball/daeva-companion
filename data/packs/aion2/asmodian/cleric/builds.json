@@ -369,6 +369,8 @@
         {
           "node": "node:cleric:nezekan:r5c11",
           "label": "Condemnation",
+          "cost": 9,
+          "costBasis": "path",
           "milestone": "g12",
           "order": 20,
           "requires": {
@@ -383,6 +385,8 @@
         {
           "node": "node:cleric:nezekan:r4c5",
           "label": "Chain of Torment",
+          "cost": 8,
+          "costBasis": "path",
           "milestone": "g12",
           "order": 30,
           "requires": {
@@ -397,6 +401,8 @@
         {
           "node": "node:cleric:nezekan:r11c8",
           "label": "Divine Aura",
+          "cost": 7,
+          "costBasis": "path",
           "milestone": "g12",
           "order": 40,
           "requires": {
@@ -425,6 +431,8 @@
         {
           "node": "node:cleric:zikel:r9c3",
           "label": "Condemnation",
+          "cost": 9,
+          "costBasis": "path",
           "milestone": "g20",
           "order": 20,
           "requires": {
@@ -439,6 +447,8 @@
         {
           "node": "node:cleric:zikel:r7c5",
           "label": "Divine Aura",
+          "cost": 5,
+          "costBasis": "path",
           "milestone": "g20",
           "order": 30,
           "requires": {
@@ -453,6 +463,8 @@
         {
           "node": "node:cleric:zikel:r6c7",
           "label": "Earth's Grace",
+          "cost": 3,
+          "costBasis": "path",
           "via": "Earth's Grace is learned at Lv 21",
           "milestone": "g20",
           "order": 40,

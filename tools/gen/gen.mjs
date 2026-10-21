@@ -311,7 +311,7 @@ export function generate(opts = {}) {
     /* a node on a skill: its skill's name and what it adds to the effective level (as GATE_GRAPH's plan node), for where the
        skill's specialty slots sit (0.8.1 F3, src/packs/aion2/data/build.js) */
     /* st: the plan row's label (0.9 P1), its own status else the build's */
-    return { k, dv: true, board: board.name, blv: e.requires.level, ty, t: e.label, ...(e.via ? { via: e.via } : {}), ...(e.cost !== undefined ? { cost: e.cost } : {}),
+    return { k, dv: true, board: board.name, blv: e.requires.level, ty, t: e.label, ...(e.via ? { via: e.via } : {}), ...(e.cost !== undefined ? { cost: e.cost } : {}), ...(e.costBasis === 'path' ? { costSt: 'inferred' } : {}),
       ...(sn ? { skill: sk(sn).name, adds: nodeById[e.node].adds ?? 1 } : {}), ...withSt('st', tagSt(e.status ?? build.status)) };
   };
   for (const e of build.boardPlan) for (const n of e.node ? [e.node] : e.anyNode) if (!nodeById[n]) throw new Error('board plan: unknown node ' + n);
@@ -323,8 +323,13 @@ export function generate(opts = {}) {
     'node:assassin:vaizel:r5c13': "Vaizel Assault Stance: the cheapest path (via r6c12, r5c12) gives 4, the owner's board says 5; the owner's 5 stands until an owner re-check (Release Planner, 2026-10-20)",
   };
   report.pathCost = [];
-  for (const e of build.boardPlan.filter(e => e.cost !== undefined))
+  /* a computed cost (costBasis 'path', #721 item 1: the classes and boards with no owner costs) needs no cited source, but
+     only exactly one cheapest-path cost may stand (below) and the player sees it labelled inferred (costSt) */
+  for (const e of build.boardPlan.filter(e => e.cost !== undefined && e.costBasis !== 'path'))
     check(`${build.id} boardPlan ${e.node || e.key}: cost has its source (owner screen or page, fields: cost)`, (e.sources || []).some(r => (r.owner || r.url) && (r.fields || []).includes('cost')));
+  for (const e of build.boardPlan.filter(e => e.costBasis !== undefined)) {
+    check(`${build.id} boardPlan ${e.node || e.key}: a computed cost names its node (not anyNode)`, !!e.node);
+    check(`${build.id} boardPlan ${e.node || e.key}: costBasis comes with a cost`, e.cost !== undefined); }
   for (const b of boards) {
     const es = build.boardPlan.filter(e => nodeById[e.node || e.anyNode[0]].board === b.id).sort(byNum('order'));
     if (!es.some(e => e.cost !== undefined)) continue;
@@ -332,6 +337,7 @@ export function generate(opts = {}) {
     es.forEach((e, i) => { if (e.cost === undefined) return;
       const id = e.node || e.anyNode[0], ok = got[i].includes(e.cost), ex = PATH_COST_EXCEPTIONS[id];
       if (ex) { check(`board path: exception ${id} still differs`, !ok, got[i]); report.pathCost.push({ row: `${b.name} ${e.label}`, cost: e.cost, path: got[i], exception: ex }); warn('board path: ' + ex); }
+      else if (e.costBasis === 'path') check(`board path: ${b.name} ${e.label}: computed cost ${e.cost} is its one cheapest-path cost`, got[i].length === 1 && ok, got[i]);
       else check(`board path: ${b.name} ${e.label} costs ${e.cost} on its cheapest path`, ok, got[i]); });
   }
   for (const id of Object.keys(PATH_COST_EXCEPTIONS)) if (nodeById[id] && build.boardPlan.some(e => e.node === id)) check(`board path: exception ${id} has a cost`, build.boardPlan.some(e => e.node === id && e.cost !== undefined));

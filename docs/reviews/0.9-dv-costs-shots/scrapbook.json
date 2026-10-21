@@ -1,0 +1,6 @@
+[
+  { "case": "gladiator-nezekan-390", "kind": "before-after", "title": "Daevanion costs for every class",
+    "caption": "A Gladiator's Nezekan nodes now come with a cost filled in, worked out from the board and tagged inferred, so the node can be ticked." },
+  { "case": "assassin-triniel-390", "kind": "before-after", "title": "Assassin Triniel costs",
+    "caption": "At Lv 40 the Assassin's Triniel nodes get costs worked out from the board, tagged inferred. The corner stays blank: the player picks it." }
+]

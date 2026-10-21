@@ -317,6 +317,8 @@
         {
           "node": "node:templar:nezekan:r5c3",
           "label": "Enhance Health · 1 of 2",
+          "cost": 11,
+          "costBasis": "path",
           "milestone": "g12",
           "order": 20,
           "requires": {
@@ -331,6 +333,8 @@
         {
           "node": "node:templar:nezekan:r13c9",
           "label": "Enhance Health · 2 of 2",
+          "cost": 7,
+          "costBasis": "path",
           "milestone": "g12",
           "order": 30,
           "requires": {
@@ -345,6 +349,8 @@
         {
           "node": "node:templar:nezekan:r9c6",
           "label": "Ironclad Defense · 1 of 2",
+          "cost": 3,
+          "costBasis": "path",
           "milestone": "g12",
           "order": 40,
           "requires": {
@@ -359,6 +365,8 @@
         {
           "node": "node:templar:nezekan:r5c13",
           "label": "Ironclad Defense · 2 of 2",
+          "cost": 9,
+          "costBasis": "path",
           "milestone": "g12",
           "order": 50,
           "requires": {
@@ -373,6 +381,8 @@
         {
           "node": "node:templar:nezekan:r7c10",
           "label": "Guarding Seal · 1 of 2",
+          "cost": 0,
+          "costBasis": "path",
           "via": "Guarding Seal is learned at Lv 13",
           "milestone": "g12",
           "order": 60,
@@ -398,6 +408,8 @@
         {
           "node": "node:templar:nezekan:r11c3",
           "label": "Guarding Seal · 2 of 2",
+          "cost": 6,
+          "costBasis": "path",
           "via": "Guarding Seal is learned at Lv 13",
           "milestone": "g12",
           "order": 70,
@@ -423,6 +435,8 @@
         {
           "node": "node:templar:zikel:r6c7",
           "label": "Fury · 1 of 2",
+          "cost": 4,
+          "costBasis": "path",
           "via": "Fury is learned at Lv 21",
           "milestone": "g20",
           "order": 30,
@@ -448,6 +462,8 @@
         {
           "node": "node:templar:zikel:r12c11",
           "label": "Fury · 2 of 2",
+          "cost": 9,
+          "costBasis": "path",
           "via": "Fury is learned at Lv 21",
           "milestone": "g20",
           "order": 40,
@@ -473,6 +489,8 @@
         {
           "node": "node:templar:zikel:r7c10",
           "label": "Insulting Roar · 1 of 2",
+          "cost": 3,
+          "costBasis": "path",
           "milestone": "g20",
           "order": 50,
           "requires": {
@@ -487,6 +505,8 @@
         {
           "node": "node:templar:zikel:r11c4",
           "label": "Insulting Roar · 2 of 2",
+          "cost": 8,
+          "costBasis": "path",
           "milestone": "g20",
           "order": 60,
           "requires": {
