@@ -1,8 +1,7 @@
 /* Assassin build data: stat tiers, skill point plan and costs, Daevanion node types, stigma plan, key stacks, icons.
    Every export is still a page global (scripts/build.mjs). */
 import { E_ORDER, KEYS, LEVEL_POINTS, RMB_ROWS, RULE_NODE_COSTS, RULE_SHARD_COST, RULE_SKILL_POINT_COST, RULE_SPEC_SLOTS, SP_EXTRA, SP_ICONS, SP_SKILLS_CORE,
-  STAT_NOTE, STAT_SRC, STAT_TIERS, STIGMA_ICON, STIGMA_PLAN, ST_TARGETS } from "./generated.js";
-/* Compiled from data/packs/aion2/classes/assassin/ and data/packs/aion2/asmodian/assassin/builds.json since 0.2 step 5b
+  GUIDE_GATES, STAT_NOTE, STAT_SRC, STAT_TIERS, STIGMA_ICON, STIGMA_PLAN, ST_TARGETS } from "./generated.js";/* Compiled from data/packs/aion2/classes/assassin/ and data/packs/aion2/asmodian/assassin/builds.json since 0.2 step 5b
    (tools/gen/gen.mjs): the guide build (builds.json: stat tiers,
    skill order and specialty picks, stigma plan and targets, key stacks), skills.json (learn levels, icons) and
    stigmas.json (icons), and rule:level-points. Re-exported here under their page names. Since 0.4 P2a the cost and slot
@@ -44,6 +43,18 @@ SP_SKILLS.forEach((s, rank) => {
 export const SP_SLOTS = [];
 SP_STEPS.filter(x => x.slot === 1).forEach(x => [2, 3].forEach(n => SP_SLOTS.push({ k: `${x.k}${n}`, s: x.s, rank: x.rank, L: 10 + n / 10,
   req: n === 2 ? x.s.learn + 24 : 46, cost: 0, spec: true, slot: n, slotLv: SPEC_SLOT_LV[n - 1] })));
+/* Where a slot row sits (0.8.1 F3, owner note 6, docs/research/2026-10-effective-skill-level.md): the first character level at
+   which the plan, taken in milestone order, reaches the slot's effective level: the highest skill line open by then plus
+   the adds (default 1) of the skill's plan board nodes in milestones at or below it (on-path rows included). Board nodes
+   can open a slot before its line alone would (slot 1: learn + 18). x.at = that level, the row's place (src/packs/aion2/
+   catalog.js); req stays the line-only level (slot 1 opens there with the switch specialtySlots off, rules.js). A slot the
+   plan doesn't reach by Lv 45 has no at and keeps its place (slot 2 / 3 after its slot 1). */
+const PLAN_ON = {};
+GUIDE_GATES.forEach(g => g.items.filter(it => it.dv && it.skill).forEach(it => (PLAN_ON[it.skill] = PLAN_ON[it.skill] || []).push({ lv: g.lv, adds: it.adds })));
+/* the skill's effective level at character level X if the player follows the plan */
+export const planEffAt = (x, X) => { const L = Math.max(1, ...SP_STEPS.filter(y => y.s === x.s && !y.spec && y.req <= X).map(y => y.L));
+  return L + (PLAN_ON[x.s.n] || []).filter(p => p.lv <= X).reduce((t, p) => t + p.adds, 0); };
+SP_STEPS.filter(x => x.slot === 1).concat(SP_SLOTS).forEach(x => { for (let X = 1; X <= 45; X++) if (planEffAt(x, X) >= x.slotLv) { x.at = X; break; } });
 /* Key stacks for the hold-to-run setup (K grid): row 0 fires first. Right click = damage line, by character level (the guide
    build's keyStacks.rightClick: the first row whose minLv the level reaches; with the macro on right click it sits in Quick
    Use 2, shown on T). Q = Shadowstrike alone (positioning, so it never fires by accident); E = opener cooldowns as they

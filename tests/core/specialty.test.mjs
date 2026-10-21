@@ -132,6 +132,43 @@ export default (test, M) => {
     assert.ok(M.skillOpen(c(45)).open.some(y => y.slot === 2));
   });
 
+  /* 0.8.1 F3 (owner note 6, docs/research/2026-10-effective-skill-level.md "Proposed check"): a Lv 39 Assassin on a fresh save
+     ticks Heart Gore's lines to 10, then its plan nodes in plan order (Nezekan, Zikel, Vaizel, Triniel). Slot 2 (effective 12)
+     is offered in Next up and the Skills card once the second node is ticked, not behind every upgrade before its milestone.
+     Before F3 it opened there but sat 41st in the Skills card's open rows, so Next up never showed it. */
+  test('research check: Heart Gore slot 2 is in Next up and the Skills card once the second plan node is ticked (Lv 39, fresh save)', () => {
+    const x = slot1.find(y => y.s.n === 'Heart Gore'), plan = planOf(x), k2 = 'sp:Heart Gore:spec2';
+    assert.deepEqual(plan, ['dv:hg', 'dv:z:hg', 'dv:v:hg', 'dv:t:hg'], 'plan order: Nezekan, Zikel, Vaizel, Triniel');
+    for (let n = 0; n <= plan.length; n++) {
+      const s = deepFreeze(S({ level: 39, checks: tick([...lines('Heart Gore', 10), ...plan.slice(0, n)]) })), c = M.char(s);
+      const nu = M.rankNext(s).filter(a => a.kind === 'skill').map(a => a.x.k), now = M.skillOpen(c).now.map(y => y.k);
+      assert.equal(M.openOf(c, k2), n >= 2, `${n} nodes: open`);
+      assert.equal(nu.includes(k2), n >= 2, `${n} nodes: Next up ${JSON.stringify(nu)}`);
+      assert.equal(now.includes(k2), n >= 2, `${n} nodes: Skills card`);
+      assert.deepEqual(now.slice(0, n >= 2 ? 2 : 1), ['sp:Heart Gore:spec', ...(n >= 2 ? [k2] : [])], `${n} nodes: the open slots come first`);
+    }
+  });
+
+  /* 0.8.1 F3: a slot row sits where the plan's lines and board nodes, in milestone order, reach the slot's effective level
+     (x.at); req stays the line-only level (slot 1 with the switch specialtySlots off). */
+  test('slot rows sit where the plan reaches them: lines + plan nodes (on-path rows too) in milestone order', () => {
+    const row = (n, slot) => [...M.SP_STEPS, ...M.SP_SLOTS].find(x => x.s.n === n && x.slot === slot);
+    /* Heart Gore (learn 4): line 7 at Lv 19 + the Nezekan node (g12) = 8; line 10 at Lv 28 + Nezekan + Zikel (g20) = 12 */
+    assert.deepEqual([row('Heart Gore', 1).req, row('Heart Gore', 1).at], [22, 19]);
+    assert.equal(row('Heart Gore', 2).at, 28);
+    /* Ambush slot 2: line 10 (Lv 27) + Nezekan only = 11; Vaizel's on-path Ambush node (F1, g30) makes 12 at Lv 30 */
+    assert.equal(row('Ambush', 2).at, 30);
+    assert.ok(M.GATES[row('Ambush', 2).gi].lv >= 30 && M.GATES[row('Ambush', 2).gi - 1].lv < 30);
+    /* the plan doesn't reach 12 for Savage Roar / Shadowstrike, nor 20 for any slot 3: no at, after slot 1 as before */
+    for (const n of ['Savage Roar', 'Shadowstrike']) { assert.equal(row(n, 2).at, undefined, n); assert.equal(row(n, 2).gi, row(n, 1).gi, n); }
+    for (const x of slot1) { assert.equal(row(x.s.n, 3).at, undefined, x.s.n); assert.ok(x.at <= x.req, x.s.n); }
+    /* every reached slot: the plan's effective level there is the slot's, one level earlier it isn't yet */
+    for (const x of [...slot1, ...M.SP_SLOTS.filter(y => y.at)]) {
+      assert.ok(M.planEffAt(x, x.at) >= x.slotLv && M.planEffAt(x, x.at - 1) < x.slotLv, x.k);
+      const g = M.GATES[x.gi]; assert.ok(g.lv >= x.at && (x.gi === 0 || M.GATES[x.gi - 1].lv < x.at), `${x.k} in the milestone at or after Lv ${x.at}`);
+    }
+  });
+
   test('keys: Next up offers slot 2 once open (sp:<skill>:spec2), nothing is written, slot 1 untouched', () => {
     const x = slot1.find(y => y.s.n === 'Heart Gore');
     const s = deepFreeze(S({ checks: tick([...M.SP_STEPS.map(y => y.k), ...planOf(x).slice(0, 2)]), stones: 99 }));
