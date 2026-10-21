@@ -52,8 +52,9 @@ notice; tester data growing past the beta; Terms that grant rights.
 
 ## Access
 
-Read-only public web, for compliance checks only (Isaac moved the project to an environment with web access for this
-role, 2026-10-21, on the coordinator's recommendation). Before that, Legal saw the web only through what Lydia brought
+**Pending Isaac's confirmation of scope; no fetches until then.** Isaac moved this thread to an environment with web
+access (2026-10-20 8:33 PM ET, on the coordinator's recommendation). The scope below, read-only public web for compliance
+checks only, is the coordinator's wording, which Isaac has been asked to confirm. Before that, Legal saw the web only through what Lydia brought
 back, so the per-minor spot check against the live terms page had a hole.
 
 - **For:** re-opening a terms page or robots.txt that a fetch-log or SOURCES.md row cites, an operator's crawler page,
