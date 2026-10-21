@@ -1,6 +1,7 @@
 /* Stigmas (0.4 P4b: moved verbatim from src/main.js; markup stigmas.html): shards to spend, the next equip or
    upgrade, Coming up, the slots' levels, the stigma pick. */
 import { char } from "../../../core/state.js";
+import { setHTML } from "../../../core/cards.js";
 import { gatesOf } from "../../../core/requirements.js";
 import { STIGMA_ICON, STIGMA_PLAN, ST_COST, ST_TARGETS } from "../data/build.js";
 import { eputK } from "../catalog.js";
@@ -51,10 +52,10 @@ function renderStigma() {
       `<div class="buyrow"><div class="buystat">${shut ? `Slot ${next.n} opens at Lv ${next.lv}` : `Finish "The One Who Hears the Voice" first`}</div></div></div>`;
   } else hero = `<div class="sphero st-hero"><div class="dvhead"><span class="dvico st-ico done-ico" aria-hidden="true">✓</span><div class="dvtext"><span class="spname">Planned upgrades done</span><small>${ST_TARGETS.map(([n, T]) => `${n} ${T}`).join(" · ")}</small></div></div></div>`;
   /* Slots (footer): equipped stigmas get − / + to match the game; the rest show when they open. */
-  document.getElementById("stList").innerHTML = slots.map(x => { const on = !!char(state).checks[x.k], open = ev.byKey(x.k).open, L = stLvOf(x.name);
+  setHTML(document.getElementById("stList"), slots.map(x => { const on = !!char(state).checks[x.k], open = ev.byKey(x.k).open, L = stLvOf(x.name);
     return `<li class="${on ? "st-on" : ""}"><span class="sname"><span class="st-n">${x.n}</span>${stIco(x.name, "st-mini")}${x.name}</span>` +
       (on ? `<span class="st-lvctl"><button type="button" data-stlv="${x.name}" data-d="-1" aria-label="Level down">−</button><span>Lv ${L}</span><button type="button" data-stlv="${x.name}" data-d="1" aria-label="Level up">+</button></span>`
-          : `<span class="slv${open ? " now" : ""}">${open ? "now" : "Lv " + x.lv}</span>`) + `</li>`; }).join("");
+          : `<span class="slv${open ? " now" : ""}">${open ? "now" : "Lv " + x.lv}</span>`) + `</li>`; }).join(""));
   const fromLv = shardsFromLv(lv); const note = document.getElementById("stLvNote"); if (note) { note.textContent = fromLv ? `${fromLv} earned from levels` : ""; note.title = `${fromLv} shard${fromLv === 1 ? "" : "s"} earned from character levels so far (1 per level from 23, 2 from 40); the number above is what you have left`; }
   /* Coming up: the upgrades after the hero, like the Skills card. "now ✓" if your shards cover it (counting the ones
      above it); otherwise the level where level-up shards would cover it, and how many you're short today. */
@@ -67,8 +68,9 @@ function renderStigma() {
   const planTotal = STIGMA_PLAN.reduce((t, n) => t + stC(stT(n)), 0);
   const soon = restSteps.map(st => { cum += st.cost; return soonRow(st, cum); }).join("");
   const nextSlot = !canEquip && next ? `<li class="st-slotrow"><span class="sname">${stIco(next.name, "st-mini")}${next.name}</span><span class="slv" title="Stigma slot ${next.n} opens">Lv ${next.lv}</span><span class="sst"></span></li>` : "";
-  body.innerHTML = `<div class="ptbig st-big"><b>${sh}</b><span>shard${sh === 1 ? "" : "s"} to spend</span></div>` + hero + (thenRow ? `<ul class="soonlist st-then">${thenRow}</ul>` : "") +
-    (soon || nextSlot ? `<div id="stAfter"><div class="dvbh"><div class="dvbh-top"><span class="dvbh-k">Coming up</span><span class="dvbh-n">${spentNow} of ${planTotal} spent</span></div><span class="dvbh-bar"><span style="width:${planTotal ? spentNow / planTotal * 100 : 0}%"></span></span></div><ul class="soonlist" id="stSoon">${nextSlot}${soon}</ul></div>` : "");
+  /* setHTML (0.9 P30): fadeScroll below re-applies its fade on every pass; nothing else changes the body after the write */
+  setHTML(body, `<div class="ptbig st-big"><b>${sh}</b><span>shard${sh === 1 ? "" : "s"} to spend</span></div>` + hero + (thenRow ? `<ul class="soonlist st-then">${thenRow}</ul>` : "") +
+    (soon || nextSlot ? `<div id="stAfter"><div class="dvbh"><div class="dvbh-top"><span class="dvbh-k">Coming up</span><span class="dvbh-n">${spentNow} of ${planTotal} spent</span></div><span class="dvbh-bar"><span style="width:${planTotal ? spentNow / planTotal * 100 : 0}%"></span></span></div><ul class="soonlist" id="stSoon">${nextSlot}${soon}</ul></div>` : ""));
   card.classList.toggle("act", (!!canEquip && learnCost <= sh) || (!canEquip && !!up && sh >= up.cost));
   fadeScroll(document.getElementById("stSoon"));
 }

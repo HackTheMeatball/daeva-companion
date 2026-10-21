@@ -36,7 +36,7 @@ function aion2QuestSync() {
     if (li.dataset.st !== st || dv !== li.hasAttribute("data-dv")) { li.dataset.st = st; li.toggleAttribute("data-dv", dv);
       const ico = li.querySelector(".qlab > .rq-st"); if (ico) ico.outerHTML = rqStIco(st, "rq-st", dv ? "Done in the story" : undefined); }
     const ab = li.querySelector(":scope > .q-act");
-    if (ab) { const [t, tip] = done ? ["Undo", "Turned in · undo: back to to pick up"] : run ? ["Turn in", "In progress · press when you turn it in"] : ["Pick up", "Press when you take the quest"];
+    if (ab) { const [t, tip] = done ? ["Undo", "Turned in · undo: back to pick up"] : run ? ["Turn in", "In progress · press when you turn it in"] : ["Pick up", "Press when you take the quest"];
       ab.textContent = t; ab.title = tip; ab.setAttribute("aria-label", `${t}: ${name}`); ab.classList.toggle("go", run); ab.hidden = dv; }
     /* "Not in game yet": only for a quest you haven't picked up; pressed = snoozed until your next Level up. */
     const zb = li.querySelector(":scope > .q-snz"), zz = !!(char(state).rqSnooze || {})[k], it = itemByK(k), shut = !done && !run && !!it && !rqAvail(it.q).ok;
@@ -100,6 +100,8 @@ function aion2RowText() {
   mainEl.querySelectorAll(".rotseq").forEach(x => { x.innerHTML = seq([pre.length ? "E: " + pre.join(" + ") : "", "Q: Shadowstrike (the guide's key" + (defaultKeyOf("Shadowstrike") ? `; the game's default is ${defaultKeyOf("Shadowstrike")})` : ")"), post.length ? "E: " + post.join(", ") : "", "Hold both mouse buttons"].filter(Boolean)); });
 }
 
+/* Every "Regional quests" heading carries the icon legend; CSS shows it under the first visible one only (0.8.1 F4, #586),
+   so it follows `.empty-h` (hideEmptyHeads) at runtime. */
 export const aion2RowRenderers = {
   /* a regional quest (picked up / turned in, "Not in game yet", "In my game") and the heading above them */
   quest: (it, k, ctx) => it.sub ? ctx.row({ pre: " rq" }).replace(/<\/li>$/, `${rqLegend()}</li>`)
