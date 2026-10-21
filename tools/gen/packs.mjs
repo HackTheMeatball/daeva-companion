@@ -41,11 +41,12 @@ export function fsView({ mutate = null, drop = [], add = {} } = {}) {
 /* the view for a generator's options: the disk unless a test passes mutate, drop or add */
 export const fsOf = ({ fs, mutate, drop, add } = {}) => fs || (mutate || drop || add ? fsView({ mutate, drop, add }) : realFs);
 
-/* the JSON files of one pack folder: not pack.json, not inside a nested pack */
+/* the JSON files of one pack folder: not pack.json, not the generated save-key ledger (save-keys.json, 0.9 P10: gen writes
+   it, it is no data file), not inside a nested pack */
 const ownJson = (fs, dir, base = dir) => fs.list(dir).map(e => e.name).sort().flatMap(n => {
   const f = join(dir, n);
   if (fs.isDir(f)) return fs.exists(join(f, 'pack.json')) ? [] : ownJson(fs, f, base);
-  return n.endsWith('.json') && f !== join(base, 'pack.json') ? [relative(base, f).split(sep).join('/')] : [];
+  return n.endsWith('.json') && f !== join(base, 'pack.json') && f !== join(base, 'save-keys.json') ? [relative(base, f).split(sep).join('/')] : [];
 });
 
 /* validateDoc is pure in (path, doc): a manifest that serializes the same as one validated before has the same errors

@@ -31,13 +31,15 @@ const stripProposed = recs => { for (const r of recs) { delete r.proposed; for (
 const validMemo = new Map(), validated = (f, doc) => { const k = f + '\0' + JSON.stringify(doc); if (!validMemo.has(k)) validMemo.set(k, validateDoc(f, doc)); return validMemo.get(k); };
 const loadBundle = ({ dropProposed = false, root, pack, fs = realFs } = {}) => {
   const { chain, files } = resolvePacks({ root, pack, fs }), by = {}, schemaErrors = [];
-  let retired = null, sources = null;
+  /* retired: every retired.json of the chain (0.9 P10: the faction's, then the class's), each entry with its file */
+  const retired = { keys: [] };
+  let sources = null;
   for (const { abs: f, rel, pack: from } of files) {
     const doc = fs.edit(f, JSON.parse(fs.read(f)));
     const errs = validated(f, doc);
     if (errs.length) schemaErrors.push(`${rel}: ${errs.slice(0, 5).join('; ')}${errs.length > 5 ? ` (+${errs.length - 5})` : ''}`);
     if (doc.schemaVersion !== 2) throw new Error(`${rel}: data schemaVersion ${doc.schemaVersion} is not 2 (this generator knows major 2 only)`);
-    if (basename(f) === 'retired.json') { retired = doc; continue; }
+    if (basename(f) === 'retired.json') { retired.keys.push(...(doc.keys || []).map(x => ({ ...x, file: rel }))); continue; }
     if (dropProposed) stripProposed(doc.records);
     if (doc.collection === 'sources') sources = doc;
     (by[doc.collection] = by[doc.collection] || []).push({ file: rel, pack: from, doc });
@@ -499,7 +501,7 @@ export function generate(opts = {}) {
       const k = (coll === 'skills' ? 'sp:' : 'stigma ') + r.key;
       if (k in keys) check('save key unique: ' + k, false, [keys[k], coll]); keys[k] = coll;
     }
-    const ret = new Set((B.retired ? B.retired.keys : []).map(x => x.key));
+    const ret = new Set(B.retired.keys.map(x => x.key));
     for (const k of Object.keys(keys)) check('retired key never reused: ' + k, !ret.has(k)); }
   /* references */
   const known = new Set(all.map(x => x.r.id));
@@ -662,6 +664,51 @@ export function generate(opts = {}) {
     return { GATE_GRAPH: { story: chain.map(s => [s.id, s.key]), nodes }, GATE_PROPOSED: proposed };
   })();
 
+  /* ---------------------------------------------------------------- the save-key ledger (0.9 P10) */
+  /* SAVE_KEYS: every key a save of this guide pack can hold, by group, key → the name of what it tracks (data/schema/
+     save-keys.schema.json). `npm run gen` commits it as <pack>/save-keys.json; here the data is checked against the committed
+     one: a key that left the data needs a retired.json entry (faction or class), and one whose record now carries another key
+     (same group, same name, a key new to the ledger) needs that entry's renamedTo. Objectives are <story key>#<i>, a sub-step
+     <story key>#<i>.<j> where the data gives its sub indices (the pack parses the others from the text, 0, 1, 2 …). */
+  const nameOf = t => String(t).replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim().slice(0, 80);
+  const SAVE_KEYS = { story: {}, objectives: {}, milestones: {}, rq: {}, sd: {}, sh: {}, dv: {}, sp: {}, stigmas: {} };
+  for (const s of chain) { SAVE_KEYS.story[s.key] = s.name;
+    for (const x of s.steps) { SAVE_KEYS.objectives[`${s.key}#${x.i}`] = nameOf(x.text);
+      (x.sub || []).forEach((j, p) => { SAVE_KEYS.objectives[`${s.key}#${x.i}.${j}`] = `${nameOf(x.text)} · part ${p + 1}`; }); } }
+  for (const s of steps) SAVE_KEYS.milestones[s.key] = nameOf(s.short || s.text);
+  for (const m of milestones) for (const x of m.items || []) SAVE_KEYS.milestones[x.key] = nameOf(x.short || x.text);
+  for (const q of rqs) SAVE_KEYS.rq[q.key] = q.name;
+  for (const d of sds) SAVE_KEYS.sd[d.key] = d.name;
+  for (const s of shs) SAVE_KEYS.sh[s.key] = s.name;
+  for (const e of build.boardPlan) SAVE_KEYS.dv[e.node ? nodeById[e.node].key : e.key] = e.label;
+  for (const n of Object.values(GATE_GRAPH.nodes)) if (n.kind === 'skill' || n.kind === 'spec') SAVE_KEYS.sp[n.key] = `${sk(n.skill).name} ${n.kind === 'skill' ? 'Lv ' + n.L : 'specialty slot ' + n.slot}`;
+  for (const s of stigmas) SAVE_KEYS.stigmas[s.key] = s.name;
+  for (const g of Object.keys(SAVE_KEYS)) SAVE_KEYS[g] = Object.fromEntries(Object.keys(SAVE_KEYS[g]).sort().map(k => [k, SAVE_KEYS[g][k]]));
+  const self = B.packs[B.packs.length - 1], packRoot = opts.root || DEFAULT_ROOT;
+  const saveKeysDoc = self.kind === 'guide' ? { $schema: '../'.repeat(self.id.split('/').length + 1) + 'schema/save-keys.schema.json', schemaVersion: 2, pack: self.id, keys: SAVE_KEYS } : null;
+  const saveKeysAbs = saveKeysDoc && join(packRoot, ...self.id.split('/'), 'save-keys.json');
+  if (saveKeysDoc) {
+    const nowKey = {}; for (const [g, m] of Object.entries(SAVE_KEYS)) for (const [k, name] of Object.entries(m)) nowKey[k] = { g, name };
+    const retiredBy = {}; for (const x of B.retired.keys) { if (x.key in retiredBy) check(`retired key listed once: ${x.key}`, false, [retiredBy[x.key].file, x.file]); retiredBy[x.key] = x; }
+    for (const x of B.retired.keys) if (x.renamedTo) check(`retired ${x.key}: renamedTo ${x.renamedTo} is a save key (in the ledger or retired)`, x.renamedTo in nowKey || x.renamedTo in retiredBy, x.file);
+    const reused = Object.keys(nowKey).filter(k => k in retiredBy);
+    check('save-keys: no retired key is in use', !reused.length, reused);
+    const prev = fs.exists(saveKeysAbs) ? fs.edit(saveKeysAbs, JSON.parse(fs.read(saveKeysAbs))) : null, ledgerRel = `${self.id}/save-keys.json`;
+    if (!prev) warn(`${ledgerRel}: no committed save-key ledger yet (npm run gen writes it)`);
+    else {
+      const errs = validated(saveKeysAbs, prev);
+      check(`${ledgerRel} fits save-keys.schema.json`, !errs.length, errs.slice(0, 5));
+      const was = new Set(Object.values(prev.keys || {}).flatMap(m => Object.keys(m || {}))), lost = [];
+      for (const [g, m] of Object.entries(prev.keys || {})) for (const [k, name] of Object.entries(m || {})) {
+        if (k in nowKey) continue;
+        const r = retiredBy[k], heirs = Object.keys(SAVE_KEYS[g] || {}).filter(h => !was.has(h) && SAVE_KEYS[g][h] === name);
+        if (!r) lost.push(k), check(`save key ${k} (${g}: ${name}) left the data without a retired entry (retired.json)`, false);
+        else if (heirs.length === 1 && !r.renamedTo) check(`save key ${k} (${g}: ${name}) was renamed to ${heirs[0]}: its retired entry needs renamedTo`, false, r.file);
+      }
+      check(`${ledgerRel}: every key that left the data is retired`, !lost.length, lost);
+    }
+  }
+
   /* ---------------------------------------------------------------- place tables (0.5 P8; docs/design/0.4-smart-next-up.md §3) */
   /* NODE_PLACE: per GATE_GRAPH node with a place (story, regional quest, Sealed Dungeon, stronghold) { route, zone, pts };
      zone = the record's zone (a story quest: its turn-in's), null on a placeholder zone; pts.giver / .turnin / .entrance are
@@ -773,7 +820,9 @@ export function generate(opts = {}) {
   report.stats = { checks: report.checks.length, failed: failed.length, rq: RQ_STATS, sources: Object.fromEntries(SOURCES.map(s => [s.id, s.links.length])), constants: Object.keys(C).length,
     gateNodes: Object.keys(GATE_GRAPH.nodes).length, places: Object.keys(NODE_PLACE).length, kibelisks: kibs.length };
   return { module, gateModule, proposedModule, placeModule, constants: C, gateGraph: GATE_GRAPH, gateProposed: GATE_PROPOSED, nodePlace: NODE_PLACE, kibelisks: KIBELISKS,
-    travelRules: TRAVEL_RULES, report, failed, sources: SOURCES, siteName, label, all, idle, B, counts };
+    travelRules: TRAVEL_RULES, report, failed, sources: SOURCES, siteName, label, all, idle, B, counts,
+    /* the save-key ledger (0.9 P10): saveKeysJson is the file `npm run gen` writes to saveKeysFile; null for a pack that is no guide */
+    saveKeys: SAVE_KEYS, saveKeysJson: saveKeysDoc ? JSON.stringify(saveKeysDoc, null, 2) + '\n' : null, saveKeysFile: saveKeysAbs };
 }
 
 /* data/expected-counts.json (0.9 P32): the reviewed data counts, { key: n }, read by every generate() unless opts.expected */
@@ -964,6 +1013,9 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   let others = [];
   if (isDefault) { try { others = guidePacks().filter(id => id !== DEFAULT_PACK).map(id => generate({ pack: id })); } catch (e) { console.error('gen: ' + e.message); process.exit(1); } }
   writeFileSync(join(ROOT, dsMd), dataSourcesMd(g, others));
+  /* the save-key ledgers (0.9 P10): each guide pack's save-keys.json, committed; the default root's in the pack folders, another
+     root's in tools/gen/out/. Written only from a run whose checks pass, so a key removed without its retired entry keeps failing */
+  for (const x of [g, ...others]) if (x.saveKeysJson && !x.failed.length) writeFileSync(isDefault ? x.saveKeysFile : join(ROOT, 'tools/gen/out/save-keys.json'), x.saveKeysJson);
   for (const o of others) for (const c of o.failed) g.failed.push(c);
   for (const c of g.failed) console.error('CHECK FAILED: ' + c.check + (c.detail !== undefined ? ' ' + JSON.stringify(c.detail) : ''));
   for (const w of g.report.warnings.filter(w => !/robots unchecked|terms unread/.test(w))) console.log('  warn: ' + w);

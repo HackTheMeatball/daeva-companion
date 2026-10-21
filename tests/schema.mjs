@@ -8,7 +8,7 @@
    while the main thread runs the rest (0.9 P32, 4-vCPU box: 7.7 s before, ~7 s after; target < 4 s not yet met); their lines print after the
    main thread's, in job order. Data counts are read from data/expected-counts.json (`npm run gen -- --counts`), not pinned here.
    node tests/schema.mjs  (also in `npm test` and the fast CI job) */
-import { cpSync, readFileSync, readdirSync, rmSync } from 'node:fs';
+import { cpSync, existsSync, readFileSync, readdirSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
 import { availableParallelism } from 'node:os';
 import { Worker, isMainThread, parentPort, workerData } from 'node:worker_threads';
@@ -110,6 +110,27 @@ genFailsIn('a story save key that is the quest name, not its id', SQ, d => { con
 genFailsIn('a duplicate skill key', 'data/packs/aion2/classes/assassin/skills.json', d => { d.records[1].key = d.records[0].key; }, /^save key unique: sp:/);
 genFailsIn('a skill key that is the skill name', 'data/packs/aion2/classes/assassin/skills.json', d => { d.records[0].key = d.records[0].name; }, /: save key is the id's last segment$/);
 genFailsIn('a duplicate stigma key', 'data/packs/aion2/classes/assassin/stigmas.json', d => { d.records[1].key = d.records[0].key; }, /^save key unique: stigma /);
+/* 0.9 P10: the save-key ledger (<pack>/save-keys.json). A key that leaves the data with no retired entry fails, one with its
+   entry passes; a key whose record now carries another key (a rename) needs renamedTo as well */
+const SH = 'data/packs/aion2/asmodian/strongholds.json', FRET = 'data/packs/aion2/asmodian/retired.json', SHK = 'sh:blades-temporary-outpost';
+const LEDGER_OK = 'aion2/asmodian/assassin/save-keys.json: every key that left the data is retired';
+const ledgerJob = (label, edits, rejects, re) => job(ok => { const g1 = runs(ok, label, { mutate: (rel, d) => edits[rel] && edits[rel](d) }); if (!g1) return;
+  const hit = g1.failed.filter(x => re.test(x.check));
+  ok((rejects ? 'generator rejects: ' : 'generator accepts: ') + label, rejects ? hit.length > 0 : !hit.length && g1.report.checks.some(x => x.check === LEDGER_OK && x.pass),
+    g1.failed.map(x => x.check).slice(0, 5)); });
+const dropSh = d => { d.records = d.records.filter(r => r.key !== SHK); };
+const renameSh = d => { d.records.find(r => r.key === SHK).key = 'sh:blades-outpost'; };
+const retireSh = (extra = {}) => d => { d.keys.push({ key: SHK, retired: '2026-10-21', ...extra }); };
+const SHRE = /^save key sh:blades-temporary-outpost |^aion2\/asmodian\/assassin\/save-keys\.json: every key that left the data is retired$/;
+ledgerJob('a save key removed from the data with no retired entry', { [SH]: dropSh }, true, /^save key sh:blades-temporary-outpost \(sh: Blades Temporary Outpost\) left the data without a retired entry/);
+ledgerJob('an objective removed from the data with no retired entry', { [SQ]: d => { d.records.find(r => r.id === 'sq:2101010').steps.pop(); } }, true, /^save key sq:2101010#\d+ \(objectives: .*\) left the data without a retired entry/);
+ledgerJob('a removed save key with its retired entry (faction retired.json)', { [SH]: dropSh, [FRET]: retireSh() }, false, SHRE);
+ledgerJob('a renamed save key retired without renamedTo', { [SH]: renameSh, [FRET]: retireSh() }, true, /^save key sh:blades-temporary-outpost .* was renamed to sh:blades-outpost: its retired entry needs renamedTo$/);
+ledgerJob('a renamed save key with no retired entry', { [SH]: renameSh }, true, /^save key sh:blades-temporary-outpost .*left the data without a retired entry/);
+ledgerJob('a renamed save key retired with renamedTo', { [SH]: renameSh, [FRET]: retireSh({ renamedTo: 'sh:blades-outpost' }) }, false, SHRE);
+ledgerJob('a renamedTo that is no save key', { [SH]: dropSh, [FRET]: retireSh({ renamedTo: 'sh:nowhere' }) }, true, /^retired sh:blades-temporary-outpost: renamedTo sh:nowhere is a save key/);
+ledgerJob('a retired key back in use', { [FRET]: d => { d.keys.push({ key: 'rq:2202010', retired: '2026-10-21' }); } }, true, /^save-keys: no retired key is in use$/);
+ledgerJob('a key retired in both the faction and the class file', { [FRET]: d => { d.keys.push({ key: 'g45:1', retired: '2026-10-21' }); } }, true, /^retired key listed once: g45:1$/);
 /* 0.9 P32: a count that changes in the data without `npm run gen -- --counts` fails, and so does a stale counts file */
 genFailsIn('a Sealed Dungeon dropped from the data without npm run gen -- --counts', 'data/packs/aion2/asmodian/sealed-dungeons.json', d => { d.records.pop(); }, /^count sealedDungeons = \d+: as in data\/expected-counts\.json/);
 genFailsIn('a story objective point dropped from the data without npm run gen -- --counts', SQ, d => { delete stepWith(d, x => x.at && !x.binds).at; }, /^count storyObjectivePoints = \d+: as in data\/expected-counts\.json/);
@@ -191,7 +212,7 @@ ok(`every data file and schema example validates (${files} files)`, !bad.length,
 
 /* negative controls on real records: each broken copy must fail validation */
 const broken = (label, p, mutate) => {
-  const doc = read(p); mutate(doc.records[0], doc);
+  const doc = read(p); mutate((doc.records || [])[0], doc);
   ok('rejects: ' + label, validateDoc(join(ROOT, 'data', p), doc).length > 0);
 };
 broken('unknown field on a regional quest', 'packs/aion2/asmodian/regional-quests.json', r => { r.bogus = 1; });
@@ -229,6 +250,13 @@ broken('proposal with neither requires nor completesWith', 'packs/aion2/asmodian
 broken('proposal naming a story quest in done', 'packs/aion2/asmodian/assassin/guide/steps.json', r => { r.proposed = { ...P, completesWith: ['tick', { done: 'sq:2102105' }] }; });
 broken('unknown field in a proposal', 'packs/aion2/asmodian/assassin/builds.json', r => { r.boardPlan[0].proposed = { ...P, apply: true }; });
 
+/* 0.9 P10: the save-key ledger and retired entries */
+broken('retired entry with an empty renamedTo', 'packs/aion2/asmodian/assassin/retired.json', (r, d) => { d.keys[0].renamedTo = ''; });
+broken('retired entry with an unknown field (renamed)', 'packs/aion2/asmodian/assassin/retired.json', (r, d) => { d.keys[0].renamed = 'g45:2'; });
+broken('save-key ledger with an unknown group', 'packs/aion2/asmodian/assassin/save-keys.json', (r, d) => { d.keys.titles = {}; });
+broken('save-key ledger without its story group', 'packs/aion2/asmodian/assassin/save-keys.json', (r, d) => { delete d.keys.story; });
+broken('save-key ledger name that is not a string', 'packs/aion2/asmodian/assassin/save-keys.json', (r, d) => { d.keys.sh[SHK] = 1; });
+
 /* 0.5 P8: the Kibelisk registry, binds facts and the travel rules */
 broken('binds without basis', 'packs/aion2/asmodian/story-quests.json', (r, d) => { delete stepWith(d, x => x.binds).binds.basis; });
 broken('owner binds without its note', 'packs/aion2/asmodian/story-quests.json', (r, d) => { delete stepWith(d, x => x.binds && x.binds.basis === 'owner').binds.note; });
@@ -254,6 +282,11 @@ if (g) {
   /* 0.6 P5: it lists every guide pack's pages (the Ranger's too) */
   const otherIds = guidePacks().filter(id => id !== 'aion2/asmodian/assassin'), others = otherIds.map(id => generate({ pack: id }));
   ok('data/DATA_SOURCES.md is current (npm run gen)', readFileSync(join(ROOT, 'data/DATA_SOURCES.md'), 'utf8') === dataSourcesMd(g, others));
+  /* 0.9 P10: every guide pack has its save-key ledger committed, and it is what npm run gen writes */
+  for (const [id, x] of [[guide, g], ...otherIds.map((id, i) => [id, others[i]])]) {
+    const f = x.saveKeysFile, cur = f && existsSync(f) ? readFileSync(f, 'utf8') : null;
+    ok(`${id}/save-keys.json is committed and current (npm run gen): ${x.saveKeys ? Object.values(x.saveKeys).reduce((t, m) => t + Object.keys(m).length, 0) : 0} keys`, !!cur && cur === x.saveKeysJson);
+  }
   /* #476: zone and Sealed Dungeon refs take their record's name as label, not the URL slug ("Calderon canyon") */
   const dsMd = dataSourcesMd(g, others);
   ok('Sources labels zone and dungeon pages by record name', ['[Metabot: Calderon Canyon]', "[Metabot: High Priest's Ruins]"].every(s => dsMd.includes(s)));

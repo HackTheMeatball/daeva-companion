@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://daevacompanion.com/schema/v2/retired.schema.json",
-  "title": "Retired save keys (packs/<game>/<faction>/<class>/retired.json)",
-  "description": "Save keys that existed and were removed (DATA-FORMAT-V2 §3). A retired key is never used again: the generator fails if one reappears on any record. Narrowed meanings get a new key and retire the old one (N6).",
+  "title": "Retired save keys (packs/<game>/<faction>/retired.json, packs/<game>/<faction>/<class>/retired.json)",
+  "description": "Save keys that existed and were removed (DATA-FORMAT-V2 §3). A retired key is never used again: the generator fails if one reappears on any record. Narrowed meanings get a new key and retire the old one (N6). The faction's file holds the keys every class shares (story, objectives, regional quests, Sealed Dungeons, strongholds), a class's file its own. A key that leaves the save-key ledger (save-keys.json, 0.9 P10) needs an entry here; when its record now carries another key, renamedTo names that key.",
   "type": "object",
   "required": ["schemaVersion", "keys"],
   "properties": {
@@ -16,6 +16,7 @@
         "properties": {
           "key": { "$ref": "common.schema.json#/$defs/saveKey" },
           "retired": { "$ref": "common.schema.json#/$defs/isoDate" },
+          "renamedTo": { "$ref": "common.schema.json#/$defs/saveKey" },
           "note": { "type": "string", "maxLength": 400 }
         },
         "additionalProperties": false
