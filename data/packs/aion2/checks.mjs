@@ -174,14 +174,17 @@ export function checks(ctx, check) {
     const GUIDE = ['milestones', 'steps', 'tips', 'claims', 'confidence'], shared = all.filter(x => GUIDE.includes(x.coll) && !isClass(x));
     const classIds = new Set(all.filter(isClass).map(x => x.r.id)), classTips = new Set(all.filter(x => x.coll === 'tips' && isClass(x)).map(x => x.r.key));
     const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), strs = v => typeof v === 'string' ? [v] : Array.isArray(v) ? v.flatMap(strs) : v && typeof v === 'object' ? Object.values(v).flatMap(strs) : [];
-    const words = [...skills, ...stigmas].map(s => ({ s, re: new RegExp('\\b' + esc(s.name) + '\\b') })), nodeRefs = Object.values(nodeById).flatMap(n => [n.id, n.key]);
+    const words = [...skills, ...stigmas].map(s => ({ s, re: new RegExp('\\b' + esc(s.name) + '\\b') }));
+    /* node refs grouped by their prefix up to the first ":" ("node:", "dv:"): a string that holds no prefix can hold none
+       of its refs, so only the groups whose prefix it holds are scanned (0.9 P6: the same hits, ~1,000 fewer scans a string) */
+    const nodeRefs = new Map(); for (const k of Object.values(nodeById).flatMap(n => [n.id, n.key])) { const p = k.slice(0, k.indexOf(':') + 1); (nodeRefs.get(p) || nodeRefs.set(p, []).get(p)).push(k); }
     const clsRe = ctx.cls ? new RegExp('\\b' + esc(ctx.cls.name) + '\\b', 'i') : null;
     for (const { r, file } of shared) {
       const hits = new Set();
       for (const t of strs(r).map(s => s.replace(/\[\[[^\]]*\]\]/g, ''))) {
         if (clsRe && clsRe.test(t)) hits.add(ctx.cls.name);
-        for (const { s, re } of words) { if (re.test(t)) hits.add(s.name); if (t.includes(s.id)) hits.add(s.id); }
-        for (const k of nodeRefs) if (t.includes(k)) hits.add(k);
+        for (const { s, re } of words) { if (t.includes(s.name) && re.test(t)) hits.add(s.name); if (t.includes(s.id)) hits.add(s.id); }
+        for (const [p, ks] of nodeRefs) if (t.includes(p)) for (const k of ks) if (t.includes(k)) hits.add(k);
       }
       check(`shared guide ${r.id} (${file}): names no class, skill, stigma or board node`, !hits.size, [...hits]);
       const gates = [r.requires, ...(r.completesWith || []), ...(r.proposed ? [r.proposed.requires, ...(r.proposed.completesWith || [])] : [])].filter(g => g && typeof g === 'object');
