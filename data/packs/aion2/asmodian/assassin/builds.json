@@ -645,7 +645,7 @@
           "requires": {
             "level": 20,
             "basis": "legacy",
-            "note": "the guide's level for this node (the board opens at 12)"
+            "note": "the guide's level for this node (Nezekan nodes need Lv 12; the board opens with Urgent Pursuit, Lv 13)"
           },
           "completesWith": [
             "tick"
@@ -677,7 +677,7 @@
           "requires": {
             "level": 20,
             "basis": "legacy",
-            "note": "the guide's level for this node (the board opens at 12)"
+            "note": "the guide's level for this node (Nezekan nodes need Lv 12; the board opens with Urgent Pursuit, Lv 13)"
           },
           "completesWith": [
             "tick"
@@ -1377,7 +1377,7 @@
       "notes": [
         "Skill order after the core eight (v1 verdict): 2-source for Assault Stance > Impact Hit and Flash Slice > Storm Rampage; rest single; interleave inferred",
         "v1: SP_SKILLS, SP_EXTRA, STIGMA_PLAN, ST_TARGETS, STAT_TIERS, STAT_SRC, RMB_STACK, E_ORDER and the dv milestone items. Up to two credited community builds may join it (owner decision).",
-        "stigmaRules.verdict (v1): No 2-source slot-by-level order. GamesFuze+Skycoach agree TD then IC as top two (supports app slots 1-2; these are priority lists, so equip timing is inferred). Slots 3-4: Metabot+Skycoach put Swift Contract before Savage Fang; GamesFuze the reverse. App's SF 32 / SC 37 is the minority order. Same four stigmas in all three sources (2-source+).",
+        "stigmaRules.verdict (v1): No 2-source slot-by-level order. GamesFuze+Skycoach agree TD then IC as top two (supports app slots 1-2; these are priority lists, so equip timing is inferred). Slots 3-4: Metabot+Skycoach put Swift Contract before Savage Fang; GamesFuze the reverse. The app follows the majority (SC 32 / SF 37). Same four stigmas in all three sources (2-source+).",
         "Upgrade priority (v1): Triniel's Dagger to 10 and Illusive Clone to 20 (GamesFuze + Skycoach, 2-source). App plan 'all to 5, then slot 1 to 10/15' is Metabot general advice (single).",
         "v1 board notes: Metaroad board page refused (provenance) and GameWith grid is unlabelled; Metabot gives no node coordinates. Path costs unknown; keep 'about 3–5 with its path' only as labelled inference or drop.",
         "Corner totals by board (Metabot full-board totals): Nezekan: Combat Speed +3%, Cooldown Reduction +3%; Zikel: Damage Boost +3%, Damage Tolerance +3%; Vaizel: Critical Damage Boost +3%, Critical Damage Tolerance +3%; Triniel: Multi-hit Chance +4.5%, Multi-hit Resist +4.5% (https://metabot.gg/en/aion-2/daevanion/assassin (full-board totals; the % stats are the corner stats by the +1.5%/corner rule))",

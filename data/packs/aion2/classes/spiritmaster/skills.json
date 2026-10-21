@@ -82,7 +82,8 @@
       "verifiedAt": "2026-10-18",
       "status": "verified",
       "conflicts": [
-        "spec:spiritmaster:cold-shock:2 text: Metabot's skill page prints \"Absorbs 100, 100% HP\" (an unfilled template; its number is the percent x 100). Game text \"Absorbs 1% HP\" per daevaguides and aion2turkiye (2026-10-18, #358)."
+        "spec:spiritmaster:cold-shock:2 text: Metabot's skill page prints \"Absorbs 100, 100% HP\" (an unfilled template; its number is the percent x 100). Game text \"Absorbs 1% HP\" per daevaguides and aion2turkiye (2026-10-18, #358).",
+        "spec:spiritmaster:cold-shock:4 and :5 text: Metabot names [Earth Tremor], which is no Spiritmaster skill or other record in the data; probably a template carry-over. Single source (Metabot); owner check on To-do T-61 (Game Data Check, #721 item 9, 2026-10-21)."
       ]
     },
     {

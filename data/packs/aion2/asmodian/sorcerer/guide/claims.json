@@ -219,7 +219,7 @@
         }
       ],
       "action": "keep",
-      "note": "docs/research/2026-10-sorcerer-pack.md §4.5: the board path is disputed. Nezekan opens at 12 and Zikel at 20, so a leveling player meets Nezekan's pairs first either way; the guide takes Metabot's nodes in the order the boards open. Grace of Enhancement is learned at Lv 21 (Metabot), so its nodes wait for it.",
+      "note": "docs/research/2026-10-sorcerer-pack.md §4.5: the board path is disputed. Nezekan opens with Urgent Pursuit (Lv 13) and Zikel at 20, so a leveling player meets Nezekan's pairs first either way; the guide takes Metabot's nodes in the order the boards open. Grace of Enhancement is learned at Lv 21 (Metabot), so its nodes wait for it.",
       "appliesTo": [
         "build:sorcerer:guide",
         "conf:first-nodes"
