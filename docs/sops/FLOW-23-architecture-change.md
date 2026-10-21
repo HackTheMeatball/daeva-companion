@@ -24,7 +24,7 @@ A planned item's files include `src/core/`, saves or storage, `tools/gen`, `data
 ## Steps
 
 1. **Walter**: In the planning pass, audits architecture and budgets (PLN-05) and shapes the item with its owned files (PLN-06); a save or storage key change is tagged `fresh-review` (KZ-16).
-2. **Kickoff**: Starts it on Opus because it touches an Opus path (PIP-06).
+2. **Kickoff**: Starts it on Opus when its files hit an Opus path (PIP-06). A change only to `src/*.js` (module layout, a performance budget) hits no Opus path today; see the open questions.
 3. **Builder**: Builds it per ARCHITECTURE.md; a save break bumps the key and notes it in the CHANGELOG (REPO-04); runs `npm test` (REPO-01).
 4. **Reviewer**: Reviews it ([FLOW-04](FLOW-04-code-review.md)); Howard briefs a fresh reviewer for a tagged item.
 5. **Gus**: Keeps ARCHITECTURE.md and the code-readability standard current with what merged, and answers architecture questions from builders and reviewers (from when the owner change in the Owner section takes effect).
@@ -37,7 +37,7 @@ A planned item's files include `src/core/`, saves or storage, `tools/gen`, `data
 ## Records
 
 - docs/ARCHITECTURE.md
-- CHANGELOG "Saved progress" line
+- CHANGELOG "Saves reset in this version" line, when saves break
 
 ## Failure and escalation
 
@@ -52,6 +52,11 @@ A planned item's files include `src/core/`, saves or storage, `tools/gen`, `data
 - [REPO-04](../../CLAUDE.md): saves before 1.0
 - [REPO-01](../../CLAUDE.md): tests
 - [DEC-20261016-saved-progress-before-1-0](../DECISIONS.md): clean breaks allowed
+
+## Open questions for the owner of this flow
+
+- Should `src/*.js` join the Opus paths in `.github/routing/opus-paths.json`, so a module layout or performance budget change starts on Opus by itself?
+- Who covers this flow until the relay work moves to Actions?
 
 ## Last confirmed by owner
 
