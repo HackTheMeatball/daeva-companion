@@ -369,6 +369,9 @@ if (g) {
   fails('an MIT permission text alone', { 'src/x.js': '// Permission is hereby ' + 'granted, free of charge, to any person' }, /contains a "Permission is hereby granted/);
   fails('a foreign SPDX id', { 'src/x.js': '// SPDX-License-' + 'Identifier: Apache-2.0\n' }, /SPDX-License-Identifier "Apache-2\.0"/);
   fails('a stray LICENSE.md', { 'tools/LICENSE.md': 'All rights reserved.\n' }, /tools\/LICENSE\.md: a licence file other than the root LICENSE/);
+  { const priv = readFileSync(join(ROOT, 'PRIVACY.md'), 'utf8'), key = /export const KEY\s*=\s*"([^"]+)"/.exec(readFileSync(join(ROOT, 'src/core/state.js'), 'utf8'))[1];
+    fails('a PRIVACY.md naming companion-save-v4 (CK-3)', { 'PRIVACY.md': priv.replaceAll(key, 'companion-save-v4') }, new RegExp(`PRIVACY\\.md names the save key companion-save-v4, but src/core/state\\.js uses ${key}`));
+    fails('a PRIVACY.md naming no save key (CK-3)', { 'PRIVACY.md': 'Progress is stored in localStorage.\n' }, new RegExp(`does not name the save key ${key}`)); }
   const ours = checkCompliance(ROOT, { files: { 'src/x.js': '/* SPDX-License-' + 'Identifier: PolyForm-Strict-1.0.0 */' } });
   ok('compliance check accepts our own SPDX id', !ours.length, ours.slice(0, 3)); }
 /* the generator's negative controls, from the workers, in job order; every job must have run */
