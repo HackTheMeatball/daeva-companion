@@ -100,14 +100,11 @@ function aion2RowText() {
   mainEl.querySelectorAll(".rotseq").forEach(x => { x.innerHTML = seq([pre.length ? "E: " + pre.join(" + ") : "", "Q: Shadowstrike (the guide's key" + (defaultKeyOf("Shadowstrike") ? `; the game's default is ${defaultKeyOf("Shadowstrike")})` : ")"), post.length ? "E: " + post.join(", ") : "", "Hold both mouse buttons"].filter(Boolean)); });
 }
 
-/* The icon legend goes under a card's first "Regional quests" heading only (0.8.1 F4, #586): a heading not in a milestone
-   (none today) keeps it. */
-const firstRqSub = it => { const g = GATES.find(g => g.items.includes(it));
-  return !g || g.items.find(x => x.sub && !x.hidden && (x.kind || x.group) === "quest") === it; };
-
+/* Every "Regional quests" heading carries the icon legend; CSS shows it under the first visible one only (0.8.1 F4, #586),
+   so it follows `.empty-h` (hideEmptyHeads) at runtime. */
 export const aion2RowRenderers = {
   /* a regional quest (picked up / turned in, "Not in game yet", "In my game") and the heading above them */
-  quest: (it, k, ctx) => it.sub ? ctx.row({ pre: " rq" }).replace(/<\/li>$/, firstRqSub(it) ? `${rqLegend()}</li>` : "</li>")
+  quest: (it, k, ctx) => it.sub ? ctx.row({ pre: " rq" }).replace(/<\/li>$/, `${rqLegend()}</li>`)
     : ctx.row({ pre: " qrow", post: `<button type="button" class="q-snz" data-snz="${k}" aria-pressed="false" title="The game doesn't offer this quest yet: hide it from Next up until your next Level up">Not in game yet</button><button type="button" class="q-inl" data-ingame="${k}" hidden title="The game already offers it: mark it picked up (same as Pick up)">In my game</button><button type="button" class="q-act" data-qact="${k}">Pick up</button>` })
       /* 0.8 P13: the state icon takes the box's place and the button says the next step; the box stays (hidden, out of the
          tab order) because the engine's tick flow and the derived "done in the story" state run through it */

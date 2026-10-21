@@ -98,8 +98,16 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
   ok('quest button: tooltips per step, Undo reads "back to pick up"', viaBtn.steps.map(s => s.before.tip).join(' ; ') === 'Press when you take the quest ; In progress · press when you turn it in ; Turned in · undo: back to pick up', viaBtn.steps.map(s => s.before.tip));
   /* 0.8.1 F4 (#586): the icon legend once per milestone card, under its first "Regional quests" heading */
   const lg = await p.evaluate(() => [...document.querySelectorAll('#gates details')].map(d => { const hs = [...d.querySelectorAll('li.sub-h.rq')];
-    return { hs: hs.length, legends: d.querySelectorAll('.rq-legend').length, first: !!hs.length && !!hs[0].querySelector('.rq-legend') }; }).filter(x => x.hs));
-  ok('regional quest legend: one per milestone card with a "Regional quests" heading, under the first such heading', lg.length > 0 && lg.every(x => x.legends === 1 && x.first) && lg.some(x => x.hs > 1), lg);
+    const vis = () => hs.filter(h => { const l = h.querySelector('.rq-legend'); return l && getComputedStyle(l).display !== 'none' && getComputedStyle(h).display !== 'none'; });
+    const v = vis();
+    return { hs: hs.length, legends: v.length, first: !!hs.length && v[0] === hs[0] }; }).filter(x => x.hs));
+  ok('regional quest legend: one visible per milestone card with a "Regional quests" heading, under the first such heading', lg.length > 0 && lg.every(x => x.legends === 1 && x.first) && lg.some(x => x.hs > 1), lg);
+  /* the first heading empty (hideEmptyHeads sets .empty-h): the legend moves to the next visible heading */
+  const lg2 = await p.evaluate(() => { const d = [...document.querySelectorAll('#gates details')].find(d => d.querySelectorAll('li.sub-h.rq').length > 1);
+    const hs = [...d.querySelectorAll('li.sub-h.rq')]; hs[0].classList.add('empty-h');
+    const v = hs.filter(h => getComputedStyle(h).display !== 'none' && getComputedStyle(h.querySelector('.rq-legend')).display !== 'none');
+    hs[0].classList.remove('empty-h'); return { n: v.length, second: v[0] === hs[1] }; });
+  ok('regional quest legend: when the first heading is empty, exactly one legend stays visible (under the next heading)', lg2.n === 1 && lg2.second, lg2);
 
   /* 3. Rewards: strongholds credit nothing; Sealed Dungeons 2 + 2; regional quests 1 + 1 */
   await setState(p, { L: 30, q: 'Dying Light', extra: { pendSt: 0, pendCr: 0 } });
