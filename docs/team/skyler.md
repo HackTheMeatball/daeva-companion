@@ -14,4 +14,6 @@ Each rule below is copied word for word from issue #114 (its body as of Oct 20, 
 
 _From #114 "Team-wide rules (homed here from team memory; rules audit, Isaac, typed in the Gus thread 2026-10-19 4:56 PM ET)"._
 
-- **TRK-10 tracker builds:** Tracker Design (Skyler) builds only Jane-approved designs, with Isaac's typed OK in Skyler's thread.
+- **TRK-10 tracker builds:** the tracker builds only Jane-approved designs: a tab is built from a design Jane approved
+  (DESIGN OK) after a fresh design review, with no typed OK from Isaac (owner, decision card in Jane's thread, 2026-10-20
+  10:22 PM ET). A change to a tracker look the owner already approved still needs his typed OK.
