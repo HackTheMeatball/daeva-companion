@@ -45,8 +45,32 @@ const fresh = (body) => {
 const freshOk = (body) => own(body).filter((l) => /^FRESH REVIEW OK\b/.test(l));
 
 // A PR body's "Reviewers: <name>, <name>" line: the named reviewers whose approval of the head the merge needs. A note in
-// parentheses is dropped before the split, so "Francesca (records, plan text)" stays one name.
-const reviewers = (body) => { const l = lines(body).find((x) => /^Reviewers:/.test(x)); return l ? l.replace(/^Reviewers:/, '').replace(/\([^)]*\)/g, '').split(/[,;]/).map((x) => x.trim().toLowerCase()).filter(Boolean) : []; };
+// parentheses after a name is dropped before the split, so "Francesca (records, plan text)" stays one name. A name written
+// only in parentheses, "(Gale)", is kept as that name, and an unclosed "(" drops the rest of its entry only, so neither
+// loses a reviewer or leaves one that can never approve (#745 review).
+const reviewers = (body) => {
+  const l = lines(body).find((x) => /^Reviewers:/.test(x));
+  if (!l) return [];
+  return l.replace(/^Reviewers:/, '').replace(/([^\s(,;])\s*\([^)]*\)/g, '$1').split(/[,;]/)
+    .map((x) => x.trim().replace(/^\(([^)]*)\)$/, '$1').replace(/\s*\(.*$/, '').trim().toLowerCase()).filter(Boolean);
+};
+
+// A person's hold line (MRG-09, #744): "HOLD: <condition> (owner: <name>)" on its own line, unquoted. Every such line, in
+// order, as { cond, owner, reviewer }: reviewer is the gate name the condition waits on when it is one of the closed list
+// (FRESH REVIEW OK, DESIGN OK, Game Data Check VERIFIED, VERDICT: APPROVE (reviewer: <name>); "until …" and "… on head"
+// allowed), else null, and a free-text condition is for its owner to judge.
+const HOLD = /^HOLD:\s*(.+?)\s*\(owner:\s*([^)]+?)\s*\)\s*$/;
+const HOLDCONDS = [
+  [/^FRESH REVIEW OK$/, () => 'fresh review'],
+  [/^DESIGN OK$/, () => 'design lead'],
+  [/^(?:Game Data Check(?: \(ROL-03\))? )?VERIFIED$/, () => 'game data check'],
+  [/^VERDICT:\s*APPROVE\s*\(reviewer:\s*([^)]+?)\s*\)$/, (m) => m[1].toLowerCase()],
+];
+const holds = (body) => own(body).map((l) => l.trim().match(HOLD)).filter(Boolean).map(([, cond, owner]) => {
+  const c = cond.replace(/^until\s+/i, '').replace(/\s+on head$/i, '').trim();
+  for (const [re, name] of HOLDCONDS) { const m = c.match(re); if (m) return { cond, owner, reviewer: name(m) }; }
+  return { cond, owner, reviewer: null };
+});
 
 // The coordinator's deadlock exit for a reviewer who has ended: "REVIEW CLEAR (reviewer: <name>; trigger: <n|none>): <reason>",
 // the reason at least 10 characters. Whether a clear is allowed (never on some triggers) stays in the workflow.
@@ -68,4 +92,4 @@ const reviewOf = (body) => { const l = lines(body).find((x) => x.trim()); const 
 const needsOpus = (body) => lines(body).some((l) => /^\s*Needs @claude \(Opus\):/.test(l));
 const stuck = (body) => lines(body).some((l) => /^\s*Pipeline stuck:/.test(l));
 
-module.exports = { clean, lines, own, design, data, tagged, fresh, freshOk, reviewers, clears, review, reviewOf, needsOpus, stuck };
+module.exports = { clean, lines, own, design, data, tagged, fresh, freshOk, reviewers, holds, clears, review, reviewOf, needsOpus, stuck };

@@ -403,7 +403,7 @@ for (const f of readdirSync(join(ROOT, '.github', 'workflows')).filter((x) => x.
 // reviewer (and a fresh reviewer for an external or blind Review: line) approves the head and ci-ok is green.
 const hb = yml.match(/\/\/ HOLD-CHECK START[^\n]*\n([\s\S]*?)\n\s*\/\/ HOLD-CHECK END/);
 check(!!hb, 'auto-merge.yml has the HOLD-CHECK block');
-const H = new Function('V', hb[1] + '\nreturn { AUTOHOLD, holdToAdd, holdStays };')(V);
+const H = new Function('V', hb[1] + '\nreturn { AUTOHOLD, holdToAdd, holdStays, holdLine };')(V);
 const ev = (event, login, min) => ({ event, label: { name: 'hold' }, actor: { login }, created_at: at(min) });
 const RB = 'Before: x\n\nReviewers: Francesca, Gale';
 const HELD = ['hold'];
@@ -450,6 +450,41 @@ check(H.holdToAdd(EB, [], [ev('labeled', OWNER, 1), ev('unlabeled', OWNER, 2)], 
 check(H.holdToAdd(EB, HELD, [], nbH([], EB)) === '', 'add: not when hold is already on');
 check(H.holdToAdd('Before: x\n\nReview: fresh', [], [], nbH([], 'Review: fresh')) === '', 'add: a plain fresh Review: line gets no hold (its FRESH REVIEW OK still gates the merge)');
 check(H.holdToAdd('Before: x', [], [], '') === '', 'add: a PR with no review rule gets no hold');
+const hl0 = yml.slice(yml.indexOf('for (const pr of prs)'));
+// A person's HOLD line (MRG-09, #744): a closed-list condition lifts that person's hold once met on the head; free text never.
+const HL = (cond, min = 2, login = OWNER) => c(login, `Holding for the outside review.\n\nHOLD: ${cond} (owner: Walter)`, min);
+check(JSON.stringify(V.holds('HOLD: until FRESH REVIEW OK on head (owner: Walter)')) === JSON.stringify([{ cond: 'until FRESH REVIEW OK on head', owner: 'Walter', reviewer: 'fresh review' }]), 'holds: "until FRESH REVIEW OK on head" waits on fresh review');
+check(V.holds('HOLD: DESIGN OK (owner: Jane)')[0].reviewer === 'design lead' && V.holds('HOLD: Game Data Check VERIFIED on head (owner: Gretchen)')[0].reviewer === 'game data check'
+  && V.holds('HOLD: until VERDICT: APPROVE (reviewer: Howard) on head (owner: Gus)')[0].reviewer === 'howard', 'holds: DESIGN OK, VERIFIED and a tagged APPROVE map to their gate names');
+check(V.holds('HOLD: until Isaac says go (owner: Walter)')[0].reviewer === null && V.holds('HOLD: FRESH REVIEW OK and DESIGN OK (owner: Walter)')[0].reviewer === null, 'holds: free text, or two conditions, names no reviewer (the owner lifts it)');
+check(V.holds('> HOLD: FRESH REVIEW OK (owner: Walter)').length === 0 && V.holds('Note: HOLD: FRESH REVIEW OK (owner: Walter)').length === 0, 'holds: a quoted line or one not starting HOLD: is not a hold line');
+const WH = [ev('labeled', OWNER, 1)];
+check(H.holdLine([HL('FRESH REVIEW OK')], WH, OWNER).reviewer === 'fresh review', 'holdLine: the owner-account HOLD line after the label counts');
+check(H.holdLine([HL('FRESH REVIEW OK', 0)], WH, OWNER) === null, 'holdLine: a HOLD line posted before the last labeled event is not this hold\'s');
+check(H.holdLine([HL('FRESH REVIEW OK', 2, 'claude[bot]')], WH, OWNER) === null, 'holdLine: a claude[bot] comment is never a HOLD line');
+check(H.holdLine([HL('FRESH REVIEW OK', 2), HL('until Isaac says go', 3)], WH, OWNER).reviewer === null, 'holdLine: the last HOLD line counts');
+const PB = 'Before: x';
+const nbP = (comments, need) => namedBlocker(comments, SHA, PB, need, HELD, []);
+const lineF = H.holdLine([HL('FRESH REVIEW OK')], WH, OWNER);
+check(H.holdStays(PB, HELD, WH, [HL('FRESH REVIEW OK'), FOK], true, (x) => nbP([HL('FRESH REVIEW OK'), FOK], x), lineF) === '', "lift: a person's hold whose HOLD condition (FRESH REVIEW OK) is met on the head");
+check(/waits on fresh review/.test(H.holdStays(PB, HELD, WH, [HL('FRESH REVIEW OK')], true, (x) => nbP([HL('FRESH REVIEW OK')], x), lineF)), "stays: a person's hold whose condition is not met yet");
+check(/waits on fresh review/.test(H.holdStays(PB, HELD, WH, [HL('FRESH REVIEW OK'), c(OWNER, 'FRESH REVIEW OK 9999999', 8)], true, (x) => nbP([HL('FRESH REVIEW OK'), c(OWNER, 'FRESH REVIEW OK 9999999', 8)], x), lineF)), "stays: the condition met only on an older head");
+check(/ci-ok not green/.test(H.holdStays(PB, HELD, WH, [HL('FRESH REVIEW OK'), FOK], false, (x) => nbP([HL('FRESH REVIEW OK'), FOK], x), lineF)), "stays: a person's hold with its condition met but ci-ok red");
+const lineT = H.holdLine([HL('until Isaac says go')], WH, OWNER);
+check(/not one auto-merge can check/.test(H.holdStays(PB, HELD, WH, [HL('until Isaac says go'), FOK], true, nbP([HL('until Isaac says go'), FOK], []), lineT)), "stays: a person's hold with a free-text condition, whatever reviews are in");
+check(/waits on fresh review/.test(H.holdStays(PB, HELD, WH, [HL('FRESH REVIEW OK')], true, (x) => nbP([HL('FRESH REVIEW OK')], x), lineF)) && H.holdStays(PB, HELD, WH, [HL('FRESH REVIEW OK')], true, (x) => nbP([HL('FRESH REVIEW OK')], []), lineF) === '',
+  'stays: the HOLD reviewer is added by holdStays itself (a blocker that ignores it would lift; the real one does not)');
+check(/cannot check/.test(H.holdStays(PB, HELD, WH, [HL('FRESH REVIEW OK'), FOK], true, '', lineF)), "stays: a person's HOLD condition with only a precomputed blocker is never lifted");
+check(/posted no HOLD line/.test(H.holdStays(PB, HELD, WH, [FOK], true, nbP([FOK], []), null)), "stays: a person's hold with no HOLD line");
+const lineH = H.holdLine([HL('VERDICT: APPROVE (reviewer: Howard)')], WH, OWNER);
+const OKH = c(OWNER, 'VERDICT: APPROVE (reviewer: Howard) on abc1234', 6), CHH = c(OWNER, 'VERDICT: CHANGES (reviewer: Howard) on abc1234', 7);
+check(H.holdStays(PB, HELD, WH, [HL('VERDICT: APPROVE (reviewer: Howard)'), OKH], true, (x) => nbP([OKH], x), lineH) === '', 'lift: a tagged APPROVE condition met on the head');
+check(/CHANGES from howard/.test(H.holdStays(PB, HELD, WH, [OKH, CHH], true, (x) => nbP([OKH, CHH], x), lineH)), 'stays: the named reviewer approved, then asked for changes');
+check(/waits on francesca, gale/.test(H.holdStays(RB, HELD, WH, [FOK], true, (x) => namedBlocker([FOK], SHA, RB, x, HELD, []), lineF)), "stays: the condition is met but the body's Reviewers: names still wait (every gate still counts)");
+// Reviewers: line edge cases (#745 review): a name only in parentheses, and an unclosed "(".
+check(V.reviewers('Reviewers: (Gale)') + '' === 'gale' && V.reviewers('Reviewers: Howard (code, Gale') + '' === 'howard,gale', 'verdicts: "(Gale)" keeps Gale; an unclosed "(" keeps both names (#745 review)');
+check(!/Reviewers: line\) to approve/.test(yml), 'the wait message no longer says "(Reviewers: line)" for a Review: line or implied wait (#745 review)');
+check(/holdStays\([^\n]*blockerFor, line\)/.test(hl0), 'loop: holdStays gets the blocker function and the HOLD line');
 // The loop: lift before the gates, then ask for the pipeline review; the freeze and every other gate still run after a lift.
 const hl = yml.slice(yml.indexOf('for (const pr of prs)'));
 const liftAt = hl.indexOf("name: 'hold' });"), mergeAt = hl.indexOf('github.rest.pulls.merge(');
@@ -459,7 +494,7 @@ check(/if \(stays\) \{[^\n]*?continue; \}\s*\n\s*await github\.rest\.issues\.rem
 check(/if \(add\) \{[\s\S]{0,600}?continue;\s*\n\s*\}/.test(hl), 'loop: a PR that just got hold is not merged in the same pass');
 check(/lifted && !\(last && last\.body\.includes\(sha\.slice\(0, 7\)\)\)\) \{[\s\S]{0,400}?workflow_id: 'pipeline\.yml'[\s\S]{0,200}?step: 'review'[\s\S]{0,200}?continue;/.test(hl),
   'loop: after a lift with no review of the head, the pipeline review is requested and the PR waits for its APPROVE');
-check(/namedBlocker\(comments, sha, pr\.body \|\| '', imp, \[\.\.\.new Set\(\[\.\.\.labels, 'hold'\]\)\], all\)/.test(hl), 'loop: the lift decision counts hold, so no REVIEW CLEAR stands in');
+check(/namedBlocker\(comments, sha, pr\.body \|\| '', \[\.\.\.imp, \.\.\.extra\], \[\.\.\.new Set\(\[\.\.\.labels, 'hold'\]\)\], all\)/.test(hl), 'loop: the lift decision counts hold, so no REVIEW CLEAR stands in');
 check(!/\.filter\(\(p\) => [^\n]*\n[^\n]*l\.name === 'hold'/.test(yml.slice(yml.indexOf('const prs ='), yml.indexOf('// DESIGN-CHECK START'))), 'PR list: held PRs are read so their hold can be lifted');
 
 console.log(`\n${n - fail}/${n} auto-merge checks passed`);
