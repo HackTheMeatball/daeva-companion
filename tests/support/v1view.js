@@ -22,7 +22,8 @@ const build = recs('builds').find(b => b.origin === 'guide'), skills = Object.fr
 /* the URLs the page's Sources card must list. A class pack whose class is hidden (release "hidden": data only, not
    offered, 0.6 P4 Gladiator) ships nothing to the page, so its URLs are hiddenUrls instead (in DATA_SOURCES.md, never
    on the card); the class becomes checked here when its release flips. */
-const hiddenDirs = DATA_FILES.filter((f, i) => docs[i].collection === 'classes' && docs[i].records.every(r => r.release === 'hidden')).map(f => path.dirname(f) + path.sep);
+const hiddenDirs = DATA_FILES.filter((f, i) => docs[i].collection === 'classes' && docs[i].records.every(r => r.release === 'hidden'))
+  .flatMap(f => [path.dirname(f) + path.sep, path.join(path.dirname(f), '..', '..', 'asmodian', path.basename(path.dirname(f))) + path.sep]);
 const isHidden = f => hiddenDirs.some(d => f.startsWith(d));
 /* another released class (0.6 P5: the Ranger) ships its class and guide packs to its own characters' page only: the
    Assassin page these suites open lists none of their own URLs (otherUrls; they are in DATA_SOURCES.md) */
