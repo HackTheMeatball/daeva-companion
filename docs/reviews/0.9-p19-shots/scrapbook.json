@@ -1,0 +1,10 @@
+[
+  { "case": "skills-advanced-1500", "kind": "before-after", "title": "Skills catch-up for a late start",
+    "caption": "A fresh Lv 39 Assassin now sees Heart Gore 1 → 10 as one step with its specialty, instead of one level at a time." },
+  { "case": "nextup-advanced-1500", "kind": "before-after", "title": "Next up names the whole skill jump",
+    "caption": "At Lv 39 Next up leads with \"Catch up: level Heart Gore 1 → 10\" and one Mark spent for the whole jump." },
+  { "case": "skills-mid-advanced-390", "kind": "before-after", "title": "Catch-up after three taps",
+    "caption": "After three taps on a phone, the Skills card shows the fourth skill's jump; each tap can be undone from the toast." },
+  { "case": "skills-lv45-advanced-1500", "kind": "before-after", "title": "Lv 45 join with 180 stones",
+    "caption": "A Lv 45 join holding 180 Wisdom Stones catches up 13 skills in 13 taps." }
+]
