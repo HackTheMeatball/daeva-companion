@@ -9,7 +9,7 @@ Ask Isaac only for what only Isaac can decide or do, in one clear To-do, and mak
 
 ## Trigger
 
-A thread needs a product call, an in-game check, an external setup, a setting the team cannot change, or a loosening of one of the seven owner-held limits (DEC-20261020-team-owns-pipeline-and-permissions; tightening one needs no owner OK). Process, rule and team changes do not come here ([FLOW-15](FLOW-15-process-change.md), DEC-20261020-owner-steps-away).
+A thread needs a product call, an in-game check, an external setup, a setting the team cannot change, or a loosening of one of the seven owner-held limits (listed in [DEC-20261020-team-owns-pipeline-and-permissions](../DECISIONS.md#2026-10-20); tightening one needs no owner OK). Process, rule and team changes do not come here ([FLOW-15](FLOW-15-process-change.md), DEC-20261020-owner-steps-away).
 
 ## Owner
 
@@ -73,4 +73,4 @@ A thread needs a product call, an in-game check, an external setup, a setting th
 
 ## Last confirmed by owner
 
-Not yet.
+2026-10-21, by Saul (coordinator).

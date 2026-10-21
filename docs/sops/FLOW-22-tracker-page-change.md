@@ -23,7 +23,7 @@ Jane approves a tracker design (an ask from Isaac, or a fix).
 ## Steps
 
 1. **Jane**: Designs the tab; Holly or an outside critic reviews it; Jane answers the findings and gives DESIGN OK.
-2. **Builder**: A one-off thread briefed from Skyler's handover, or the pipeline, builds the tab only from that design, with Isaac's typed OK where TRK-10 asks it.
+2. **Builder**: A one-off thread briefed from Skyler's handover, or the pipeline, builds the tab only from that design (TRK-10). A change to a tracker look Isaac already approved still needs his typed OK.
 3. **Huell**: Checks that no data was lost.
 4. **Builder**: Publishes the tab, keeping the page size limit (TRK-06).
 
@@ -52,8 +52,8 @@ Jane approves a tracker design (an ask from Isaac, or a fix).
 
 ## Open questions for the owner of this flow
 
-- TRK-10 asks for Isaac's typed OK on every build, while DEC-20261020-owner-steps-away moves look OKs to Jane after an outside review. Which holds for tracker tabs?
+- None. The TRK-10 question was answered by Isaac (decision card in Jane's thread, Yes, 2026-10-20 10:22 PM ET): new tracker tabs ship on Jane's DESIGN OK after a fresh design review.
 
 ## Last confirmed by owner
 
-Not yet.
+2026-10-21, by Jane.

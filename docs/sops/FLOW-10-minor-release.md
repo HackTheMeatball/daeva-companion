@@ -77,4 +77,4 @@ The last item of the minor merges. Walter is release manager from `RC READY` unt
 
 ## Last confirmed by owner
 
-Not yet.
+2026-10-21, by Walter.

@@ -9,7 +9,7 @@ Notice stuck work, red runs, idle queues and tracker drift; log every one before
 
 ## Trigger
 
-The health check (hourly while work is in flight, every 4 h idle: HC-06), any thread reporting a stall to Mike, an incident the coordinator or Gale declares (the fast path in [FLOW-15](FLOW-15-process-change.md)), or a one-shot follow-up Mike set.
+The health check (Mike is never idle: every 60 min while weekly usage is under 50%, every 120 min at 50% or above, per the coordinator's usage tiers of 2026-10-20 9:55 PM ET, whose DECISIONS row is in #687; this replaces HC-06's 4 h idle cadence, and HC-06's row is updated once that row merges), any thread reporting a stall to Mike, an incident the coordinator or Gale declares (the fast path in [FLOW-15](FLOW-15-process-change.md)), or a one-shot follow-up Mike set.
 
 ## Owner
 
@@ -76,4 +76,4 @@ The health check (hourly while work is in flight, every 4 h idle: HC-06), any th
 
 ## Last confirmed by owner
 
-Not yet.
+2026-10-21, by Mike.

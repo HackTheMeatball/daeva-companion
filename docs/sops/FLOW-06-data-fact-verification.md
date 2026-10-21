@@ -65,4 +65,4 @@ A research pack for a class, a queued data-fix item, a data correction routed by
 
 ## Last confirmed by owner
 
-Not yet.
+2026-10-21, by Gretchen.

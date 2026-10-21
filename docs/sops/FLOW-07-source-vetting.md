@@ -58,4 +58,4 @@ A thread needs a site that has no row in SOURCES.md, a site's terms or robots.tx
 
 ## Last confirmed by owner
 
-Not yet.
+2026-10-21, by Lydia.

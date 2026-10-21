@@ -65,4 +65,4 @@ The pipeline sees green CI on a claude/ PR head (PIP-01).
 
 ## Last confirmed by owner
 
-Not yet.
+2026-10-21, by Howard.

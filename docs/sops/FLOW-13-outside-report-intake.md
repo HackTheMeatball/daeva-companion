@@ -55,4 +55,4 @@ A new GitHub issue from *Report a problem* (`.github/ISSUE_TEMPLATE/`), or a rep
 
 ## Last confirmed by owner
 
-Not yet.
+2026-10-21, by Ernesto.

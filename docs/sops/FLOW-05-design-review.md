@@ -72,4 +72,4 @@ Two entry points: (a) Jane's mockups for a minor with visible changes are ready 
 
 ## Last confirmed by owner
 
-Not yet.
+2026-10-21, by Holly.
