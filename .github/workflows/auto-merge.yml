@@ -19,7 +19,7 @@ name: Auto-merge
 # (a merge made by this workflow does not fire the normal push trigger).
 #   - while #114 has a "FREEZE: RC <sha> release #<n>" line, only docs/ROADMAP/issue-template PRs, the release PR and
 #     rc-blocker PRs merge (owner OK 2026-10-20 1:35 PM ET; "FREEZE-CHECK" block below).
-# Pause it for one PR: add the label "hold" (auto-merge lifts a hold only on a PR with a Reviewers: line or one it held itself, #709). Stop it: Actions tab -> Auto-merge -> "..." -> Disable workflow.
+# Pause it for one PR: add the label "hold" (auto-merge lifts only a hold it added itself, #709). Stop it: Actions tab -> Auto-merge -> "..." -> Disable workflow.
 
 on:
   workflow_run:
@@ -231,23 +231,25 @@ jobs:
             // HOLD-CHECK START (tests/automerge.mjs runs this block)
             // Auto-merge adds and lifts `hold` itself (#709, owner OK 2026-10-21 9:37 AM ET: "auto-merge may add and lift hold per
             // #709"), so the Release Planner no longer lifts holds by hand.
-            // Add: a PR whose body Review: line names external or blind review, or that has a Reviewers: line, gets hold while a
-            // review it needs is missing on the head. A hold that was ever removed, by anyone, is never added back.
-            // Lift: only when ci-ok is green on the head and namedBlocker finds nothing, with hold still counted so no REVIEW
-            // CLEAR stands in (prNoClear). That needs every Reviewers: name to approve the head with no CHANGES left open, plus a
-            // FRESH REVIEW OK on the head when the Review: line names fresh, blind or external review. A hold on a PR with no
-            // Reviewers: line stays with people (freeze, planner judgment, interim and Watchdog holds), unless auto-merge added it
-            // for an external or blind Review: line. The pipeline APPROVE is not needed to lift: pipeline.yml stops on hold, so a
-            // held PR never gets one. The merge loop asks for that review after the lift, and the merge still needs its APPROVE.
+            // Add: a PR whose body Review: line names external or blind review gets hold while a review it needs is missing on
+            // the head. A hold that was ever removed, by anyone, is never added back. A Reviewers: line alone adds none: the named
+            // check already blocks the merge, and a hold would pause the pipeline review until the named reviewers approve, so a
+            // fix it then asked for would make their approvals stale (Fresh governance review on #737).
+            // Lift: only a hold auto-merge added itself (its last labeled event by github-actions[bot] and its marker comment).
+            // A person's hold always stays with people, whatever lines the PR has: Watchdog, planner judgment, interim holds such
+            // as #705's (Fresh governance review on #737). It lifts only when ci-ok is green on the head and namedBlocker finds
+            // nothing, with hold still counted so no REVIEW CLEAR stands in (prNoClear): a FRESH REVIEW OK on the head, plus every
+            // Reviewers: name approving the head with no CHANGES left open. The pipeline APPROVE is not needed to lift: pipeline.yml
+            // stops on hold, so a held PR never gets one. The merge loop asks for that review after the lift, and the merge still
+            // needs its APPROVE.
             const AUTOHOLD = '<!-- auto-merge:auto-hold -->';
             const reviewLine = (body) => V.lines(body).find((l) => /^(?:[-*]\s+)?Review:/i.test(l)) || '';
             const blindOrExternal = (body) => /\b(blind|external)\b/i.test(reviewLine(body));
             const holdEvents = (events) => events.filter((e) => ['labeled', 'unlabeled'].includes(e.event) && e.label && e.label.name === 'hold');
-            // '' = leave it; otherwise why hold is added. A PR whose reviewers already approve the head gets no hold.
+            // '' = leave it; otherwise why hold is added. A PR whose reviews already approve the head gets no hold.
             const holdToAdd = (body, labels, events, blocker) => {
               if (labels.includes('hold') || holdEvents(events).some((e) => e.event === 'unlabeled') || !blocker) return '';
-              if (blindOrExternal(body)) return `its Review: line names ${reviewLine(body).replace(/^(?:[-*]\s+)?Review:\s*/i, '')}`;
-              return V.reviewers(body).length ? 'it has a Reviewers: line' : '';
+              return blindOrExternal(body) ? `its Review: line names ${reviewLine(body).replace(/^(?:[-*]\s+)?Review:\s*/i, '')}` : '';
             };
             // '' = lift; otherwise why hold stays.
             const holdStays = (body, labels, events, comments, ciGreen, blocker) => {
@@ -255,7 +257,7 @@ jobs:
               const added = holdEvents(events).filter((e) => e.event === 'labeled').pop();
               const mine = !!added && added.actor && added.actor.login === 'github-actions[bot]'
                 && comments.some((c) => c.user && c.user.login === 'github-actions[bot]' && (c.body || '').includes(AUTOHOLD));
-              if (!V.reviewers(body).length && !(mine && blindOrExternal(body))) return 'hold stays with people: no Reviewers: line';
+              if (!mine) return 'hold stays with people: a person added it';
               if (!ciGreen) return 'hold stays: ci-ok not green on the head';
               return blocker ? `hold stays: ${blocker}` : '';
             };
@@ -290,7 +292,7 @@ jobs:
               const filesOf = async () => listed || (listed = await github.paginate(github.rest.pulls.listFiles, { owner, repo, pull_number: pr.number, per_page: 100 }));
               // HOLD: add or lift it (HOLD-CHECK block). Only PRs that hold or a hold rule applies to read their label events.
               let lifted = false;
-              if (labels.includes('hold') || blindOrExternal(pr.body || '') || V.reviewers(pr.body || '').length) {
+              if (labels.includes('hold') || blindOrExternal(pr.body || '')) {
                 comments = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: pr.number, per_page: 100 });
                 const events = await github.paginate(github.rest.issues.listEvents, { owner, repo, issue_number: pr.number, per_page: 100 });
                 const all = (await filesOf()).flatMap((f) => [f.filename, f.previous_filename].filter(Boolean));

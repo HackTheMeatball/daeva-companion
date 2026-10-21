@@ -409,40 +409,44 @@ const HELD = ['hold'];
 const nbH = (comments, body, sha = SHA) => namedBlocker(comments, sha, body, [], HELD, []);
 const OKF = c(OWNER, 'VERDICT: OK (reviewer: Francesca) on abc1234', 6), OKG = c(OWNER, 'VERDICT: APPROVE (reviewer: Gale) on abc1234', 7);
 const walter = [ev('labeled', OWNER, 1)];
-check(H.holdStays(RB, HELD, walter, [OKF, OKG], true, nbH([OKF, OKG], RB)) === '', 'lift: every named reviewer approves the head and ci-ok is green');
-check(/Gale.*approve abc1234|gale/i.test(H.holdStays(RB, HELD, walter, [OKF], true, nbH([OKF], RB))), 'stays: one named reviewer has not approved');
-check(/waits on gale/.test(H.holdStays(RB, HELD, walter, [OKF, c(OWNER, 'VERDICT: APPROVE (reviewer: Gale) on 9999999', 7)], true, nbH([OKF, c(OWNER, 'VERDICT: APPROVE (reviewer: Gale) on 9999999', 7)], RB))),
-  'stays: a reviewer approved an older head only');
-check(/no Reviewers: line/.test(H.holdStays('Before: x', HELD, walter, [OKF, OKG], true, nbH([OKF, OKG], 'Before: x'))), 'stays: no Reviewers: line (freeze, planner, interim, Watchdog holds)');
-const CHG = c(OWNER, 'VERDICT: CHANGES (reviewer: Gale) on abc1234', 8);
-check(/CHANGES from gale/.test(H.holdStays(RB, HELD, walter, [OKF, OKG, CHG], true, nbH([OKF, OKG, CHG], RB))), 'stays: a named CHANGES not yet cleared');
-check(/ci-ok not green/.test(H.holdStays(RB, HELD, walter, [OKF, OKG], false, nbH([OKF, OKG], RB))), 'stays: ci-ok red');
-const CLG = c(OWNER, 'REVIEW CLEAR (reviewer: Gale; trigger: none): Gale ended, no successor named', 9);
-check(/CHANGES from gale/.test(H.holdStays(RB, HELD, walter, [OKF, OKG, CHG, CLG], true, nbH([OKF, OKG, CHG, CLG], RB))), 'stays: no REVIEW CLEAR counts while hold is on');
-const RP = 'Before: x\n\nReviewers: Francesca (records and plan text)';
-check(H.holdStays(RP, HELD, walter, [OKF], true, nbH([OKF], RP)) === '', 'a Reviewers: name with a parenthetical matches the tagged verdict (#707)');
-check(/waits on francesca/.test(nbH([], RP)), 'a parenthetical name still waits for that reviewer');
-check(H.holdStays(RB, [], walter, [OKF, OKG], true, '') === 'no hold', 'no hold label: nothing to lift');
-// External or blind review: auto-merge adds the hold and lifts it on a FRESH REVIEW OK of the head.
+const AUTO = [ev('labeled', 'github-actions[bot]', 1)], MARK = c('github-actions[bot]', `${H.AUTOHOLD}\nAuto-merge added hold`, 1);
 const EB = 'Before: x\n\nReview: external — 1 (gate change; trigger-1 outside review)';
+const EBR = EB + '\nReviewers: Francesca, Gale';
+const FOK = c(OWNER, 'FRESH REVIEW OK abc1234: no blocking findings', 8);
+// A person's hold always stays with people (Fresh governance review on #737: Watchdog, planner and interim holds).
+check(/a person added it/.test(H.holdStays(RB, HELD, walter, [OKF, OKG], true, nbH([OKF, OKG], RB))), "stays: Walter's hold on a Reviewers: PR with every approval in place (#737)");
+check(/a person added it/.test(H.holdStays(EBR, HELD, walter, [MARK, OKF, OKG, FOK], true, nbH([MARK, OKF, OKG, FOK], EBR))), "stays: a person's hold, even with every review and the auto-hold marker present");
+check(/a person added it/.test(H.holdStays('Before: x', HELD, walter, [OKF, OKG], true, nbH([OKF, OKG], 'Before: x'))), 'stays: a hold on a PR with no review lines (freeze, planner, interim, Watchdog)');
+check(/a person added it/.test(H.holdStays(EB, HELD, [...AUTO, ev('unlabeled', 'github-actions[bot]', 3), ev('labeled', OWNER, 5)], [MARK, FOK], true, nbH([MARK, FOK], EB))),
+  "stays: a person added hold again after auto-merge's own hold came off");
+check(/a person added it/.test(H.holdStays(EB, HELD, AUTO, [FOK], true, nbH([FOK], EB))), 'stays: a bot-added hold without the auto-hold marker is not taken as its own');
+// Its own hold: lifted only on a FRESH REVIEW OK of the head, every named approval, no open CHANGES and a green ci-ok.
+check(H.holdStays(EB, HELD, AUTO, [MARK, FOK], true, nbH([MARK, FOK], EB)) === '', 'lift: its own external-review hold, once FRESH REVIEW OK names the head');
+check(H.holdStays(EBR, HELD, AUTO, [MARK, FOK, OKF, OKG], true, nbH([MARK, FOK, OKF, OKG], EBR)) === '', 'lift: its own hold with a Reviewers: line once every named reviewer and the fresh reviewer approve the head');
+check(/waits on fresh review/.test(H.holdStays(EB, HELD, AUTO, [MARK], true, nbH([MARK], EB))), 'stays: its own hold without a FRESH REVIEW OK');
+check(/waits on fresh review/.test(H.holdStays(EB, HELD, AUTO, [MARK, c(OWNER, 'FRESH REVIEW OK 9999999', 8)], true, nbH([MARK, c(OWNER, 'FRESH REVIEW OK 9999999', 8)], EB))), 'stays: a FRESH REVIEW OK of an older head');
+check(/waits on gale/.test(H.holdStays(EBR, HELD, AUTO, [MARK, FOK, OKF], true, nbH([MARK, FOK, OKF], EBR))), 'stays: one named reviewer has not approved');
+const OLDG = c(OWNER, 'VERDICT: APPROVE (reviewer: Gale) on 9999999', 7);
+check(/waits on gale/.test(H.holdStays(EBR, HELD, AUTO, [MARK, FOK, OKF, OLDG], true, nbH([MARK, FOK, OKF, OLDG], EBR))), 'stays: a reviewer approved an older head only');
+const CHG = c(OWNER, 'VERDICT: CHANGES (reviewer: Gale) on abc1234', 9);
+check(/CHANGES from gale/.test(H.holdStays(EBR, HELD, AUTO, [MARK, FOK, OKF, OKG, CHG], true, nbH([MARK, FOK, OKF, OKG, CHG], EBR))), 'stays: a named CHANGES not yet cleared');
+check(/ci-ok not green/.test(H.holdStays(EB, HELD, AUTO, [MARK, FOK], false, nbH([MARK, FOK], EB))), 'stays: ci-ok red');
+const CLG = c(OWNER, 'REVIEW CLEAR (reviewer: Gale; trigger: none): Gale ended, no successor named', 10);
+check(/CHANGES from gale/.test(H.holdStays(EBR, HELD, AUTO, [MARK, FOK, OKF, OKG, CHG, CLG], true, nbH([MARK, FOK, OKF, OKG, CHG, CLG], EBR))), 'stays: no REVIEW CLEAR counts while hold is on');
+const RP = 'Before: x\n\nReviewers: Francesca (records and plan text)';
+check(nbH([OKF], RP) === '', 'a Reviewers: name with a parenthetical matches the tagged verdict (#707)');
+check(/waits on francesca/.test(nbH([], RP)), 'a parenthetical name still waits for that reviewer');
+check(H.holdStays(EB, [], AUTO, [MARK, FOK], true, '') === 'no hold', 'no hold label: nothing to lift');
+// Adding: only an external or blind Review: line with a review missing on the head.
 check(/waits on fresh review/.test(nbH([], EB)), 'an external Review: line waits on fresh review');
 check(/Review: line names external/.test(H.holdToAdd(EB, [], [], nbH([], EB))), 'add: an external Review: line gets hold');
 check(/Review: line names blind/.test(H.holdToAdd('Review: blind', [], [], nbH([], 'Review: blind'))), 'add: a blind Review: line gets hold');
-check(/Reviewers: line/.test(H.holdToAdd(RB, [], [], nbH([OKF], RB))), 'add: a Reviewers: line with a review missing gets hold');
-check(H.holdToAdd(RB, [], [], nbH([OKF, OKG], RB)) === '', 'add: none when every named reviewer already approves the head');
-check(H.holdToAdd(RB, [], [ev('labeled', OWNER, 1), ev('unlabeled', OWNER, 2)], nbH([], RB)) === '', 'add: never again once anyone removed hold');
-check(H.holdToAdd(RB, HELD, [], nbH([], RB)) === '', 'add: not when hold is already on');
+check(H.holdToAdd(RB, [], [], nbH([OKF], RB)) === '', 'add: a Reviewers: line alone gets no hold (the named check blocks the merge; #737)');
+check(H.holdToAdd(EB, [], [], nbH([FOK], EB)) === '', 'add: none when the reviews already approve the head');
+check(H.holdToAdd(EB, [], [ev('labeled', OWNER, 1), ev('unlabeled', OWNER, 2)], nbH([], EB)) === '', 'add: never again once anyone removed hold');
+check(H.holdToAdd(EB, HELD, [], nbH([], EB)) === '', 'add: not when hold is already on');
 check(H.holdToAdd('Before: x\n\nReview: fresh', [], [], nbH([], 'Review: fresh')) === '', 'add: a plain fresh Review: line gets no hold (its FRESH REVIEW OK still gates the merge)');
 check(H.holdToAdd('Before: x', [], [], '') === '', 'add: a PR with no review rule gets no hold');
-const AUTO = [ev('labeled', 'github-actions[bot]', 1)], MARK = c('github-actions[bot]', `${H.AUTOHOLD}\nAuto-merge added hold`, 1);
-const FOK = c(OWNER, 'FRESH REVIEW OK abc1234: no blocking findings', 8);
-check(H.holdStays(EB, HELD, AUTO, [MARK, FOK], true, nbH([MARK, FOK], EB)) === '', 'lift: its own external-review hold, once FRESH REVIEW OK names the head');
-check(/waits on fresh review/.test(H.holdStays(EB, HELD, AUTO, [MARK], true, nbH([MARK], EB))), 'stays: its own external-review hold without a FRESH REVIEW OK');
-check(/waits on fresh review/.test(H.holdStays(EB, HELD, AUTO, [MARK, c(OWNER, 'FRESH REVIEW OK 9999999', 8)], true, nbH([MARK, c(OWNER, 'FRESH REVIEW OK 9999999', 8)], EB))), 'stays: a FRESH REVIEW OK of an older head');
-check(/no Reviewers: line/.test(H.holdStays(EB, HELD, walter, [MARK, FOK], true, nbH([MARK, FOK], EB))), "stays: a person's hold on an external-review PR stays with people");
-check(/no Reviewers: line/.test(H.holdStays(EB, HELD, [...AUTO, ev('unlabeled', 'github-actions[bot]', 3), ev('labeled', OWNER, 5)], [MARK, FOK], true, nbH([MARK, FOK], EB))),
-  "stays: a person added hold again after auto-merge's own hold came off");
-check(/no Reviewers: line/.test(H.holdStays(EB, HELD, AUTO, [FOK], true, nbH([FOK], EB))), 'stays: a bot-added hold without the auto-hold marker is not taken as its own');
 // The loop: lift before the gates, then ask for the pipeline review; the freeze and every other gate still run after a lift.
 const hl = yml.slice(yml.indexOf('for (const pr of prs)'));
 const liftAt = hl.indexOf("name: 'hold' });"), mergeAt = hl.indexOf('github.rest.pulls.merge(');
