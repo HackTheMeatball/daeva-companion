@@ -326,6 +326,30 @@ jobs:
               return said ? '' : `${ROSTERMARK(list)}\nThe \`Reviewers:\` line names ${list}, which is not an active team member (docs/kaizen/team.csv) or a gate name (design lead, game data check, fresh review). No verdict can match it, so this PR waits on it until the line is fixed: one first name per entry, notes in parentheses, e.g. \`Reviewers: gretchen; chuck\` (#741).`;
             };
             // ROSTER-CHECK END
+            // SHA-CHECK START
+            // A Reviewers: name's latest approval must name the head on its own VERDICT line (MRG-12). One that names no sha, or
+            // was posted after the head commit yet names another sha, never counts, so auto-merge says so once per head and list
+            // instead of waiting silently (#768, Kaizen 0.9 batch 17 + 21). An approval older than the head is just pending.
+            const SHAMARK = (s7, list) => `<!-- auto-merge:verdict-sha ${s7}: ${list} -->`;
+            const shaNote = (body, comments, sha, headAt) => {
+              const need = new Set(V.reviewers(body).map(who));
+              const last = new Map();
+              for (const c of comments) {
+                if (!c.user || c.user.login.toLowerCase() !== owner.toLowerCase()) continue;
+                const t = V.tagged(c.body).pop();
+                if (!t || !need.has(who(t.reviewer))) continue;
+                const at = Date.parse(c.created_at || c.updated_at), r = who(t.reviewer);
+                if (!last.has(r) || last.get(r).at <= at) last.set(r, { at, t });
+              }
+              const s7 = sha.slice(0, 7);
+              const bad = [...last].filter(([, x]) => x.t.verdict !== 'CHANGES').map(([r, x]) => [r, V.lineSha(x.t.line, sha), x.at])
+                .filter(([, s, at]) => s === null || (s !== s7 && at > headAt));
+              if (!bad.length) return '';
+              const list = bad.map(([r, s]) => `${r} (${s || 'no sha'})`).join(', ').replace(/-{2,}/g, '-');
+              const said = comments.some((c) => c.user && c.user.login === 'github-actions[bot]' && (c.body || '').includes(SHAMARK(s7, list)));
+              return said ? '' : `${SHAMARK(s7, list)}\nThe latest approval from ${list} does not name the head ${s7} on its VERDICT line, so it does not count for this head. Re-post it as \`VERDICT: OK (reviewer: <name>) on ${s7}\`. A comment header ("Review of ${s7}", an ls-remote note) never counts, for auto-merge or for anyone lifting a hold (MRG-12).`;
+            };
+            // SHA-CHECK END
             let merged = 0;
             const failed = [];
             for (const pr of prs) {
@@ -339,6 +363,12 @@ jobs:
                 comments = comments || await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: pr.number, per_page: 100 });
                 const note = rosterNote(pr.body || '', comments);
                 if (note) { await github.rest.issues.createComment({ owner, repo, issue_number: pr.number, body: note }); core.notice(`#${pr.number}: Reviewers: names off the roster`); }
+              }
+              if (V.reviewers(pr.body || '').length) {
+                comments = comments || await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: pr.number, per_page: 100 });
+                const hc = (await github.rest.repos.getCommit({ owner, repo, ref: sha })).data.commit;
+                const note = shaNote(pr.body || '', comments, sha, Date.parse(hc.committer.date));
+                if (note) { await github.rest.issues.createComment({ owner, repo, issue_number: pr.number, body: note }); core.notice(`#${pr.number}: a named approval misses the head sha`); }
               }
               // HOLD: add or lift it (HOLD-CHECK block). Only PRs that hold or a hold rule applies to read their label events.
               let lifted = false;

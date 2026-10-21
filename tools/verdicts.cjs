@@ -30,6 +30,9 @@ const data = (body) => lines(body).map((l) => l.match(DATA)).filter(Boolean).map
 const TAGGED = /^VERDICT:\s*(APPROVE|OK|CHANGES)\b.*?\(reviewer:\s*([^)]+?)\s*\)/;
 const tagged = (body) => own(body).map((l) => [l, l.match(TAGGED)]).filter(([, m]) => m)
   .map(([line, [, verdict, who]]) => ({ reviewer: who.toLowerCase(), verdict, line }));
+// The sha a tagged verdict line names: the head's short SHA when the line has it (the gate's own test), else the first other
+// 7-40 hex word, else null. Only the line counts, never the comment's header (#768: a "Review of <sha>" header was read as on-head).
+const lineSha = (line, sha) => (line.includes(sha.slice(0, 7)) ? sha.slice(0, 7) : ((line.match(/\b[0-9a-f]{7,40}\b/) || [])[0] || null));
 
 // A fresh reviewer's mark: a line starting "FRESH REVIEW OK" or "FRESH REVIEW CHANGES". 'CHANGES' when any line says so, else
 // 'OK'. A "FRESH REVIEW #<n> <sha7>" note with neither line is findings, so 'CHANGES' (Code Review, 2026-10-21: a sign-off
@@ -115,4 +118,4 @@ const reviewOf = (body) => { const l = lines(body).find((x) => x.trim()); const 
 const needsOpus = (body) => lines(body).some((l) => /^\s*Needs @claude \(Opus\):/.test(l));
 const stuck = (body) => lines(body).some((l) => /^\s*Pipeline stuck:/.test(l));
 
-module.exports = { clean, lines, own, design, data, tagged, fresh, freshOk, reviewers, roster, unknownReviewers, holds, clears, review, reviewOf, needsOpus, stuck };
+module.exports = { clean, lines, own, design, data, tagged, lineSha, fresh, freshOk, reviewers, roster, unknownReviewers, holds, clears, review, reviewOf, needsOpus, stuck };
