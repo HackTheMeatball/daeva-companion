@@ -83,7 +83,10 @@ export default (test, M) => {
     assert.deepEqual([11, 12, 45].map(M.dvFromLv), [0, 4, 136]);
   });
   test('board: a node ticks only with its cost logged and the points for it', () => {
-    const n = M.DV_NODES()[0], bare = M.DV_NODES().find(x => x.cost === undefined);
+    /* 0.9 P16: every Assassin plan row has a cost now (Triniel's inferred from the path), so the uncosted node is made
+       here: a key outside the plan, and a plan item with its cost removed */
+    const n = M.DV_NODES()[0], bare = { ...M.DV_NODES().find(x => x.ty === 'p'), k: 'dv:t:nocost', cost: undefined };
+    assert.ok(M.DV_NODES().every(x => x.cost !== undefined), 'every plan node has a cost');
     assert.deepEqual(M.dvGateOf(S({ dvTotal: 10 }), bare.k), { off: true, warn: '' }, 'no cost logged, none in the plan');
     assert.deepEqual(M.dvGateOf(S({ dvTotal: 2, dvCost: { [n.k]: 3 } }), n.k), { off: true, warn: 'needs 3, 2 left' });
     assert.deepEqual(M.dvGateOf(S({ dvTotal: 5, dvCost: { [n.k]: 3 } }), n.k), { off: false, warn: '' });
