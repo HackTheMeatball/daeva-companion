@@ -225,7 +225,7 @@ jobs:
               // (#695 merged without one; Fresh governance review, 2026-10-21).
               const fresh = rl && /\b(fresh|blind|external)\b/i.test(rl) ? ['fresh review'] : [];
               const missing = [...new Set([...V.reviewers(prBody), ...implied, ...fresh].map(who))].filter((r) => !ev.some((e) => e.who === r && e.ok && e.head));
-              return missing.length ? `waits on ${missing.join(', ')} (Reviewers: line) to approve ${s7}` : '';
+              return missing.length ? `waits on ${missing.join(', ')} to approve ${s7}` : '';
             };
             // NAMED-CHECK END
             // HOLD-CHECK START (tests/automerge.mjs runs this block)
@@ -238,8 +238,14 @@ jobs:
             // fix it then asked for would make their approvals stale (Fresh governance review on #737).
             // Lift: only a hold auto-merge added itself (its last labeled event by github-actions[bot], and its marker comment
             // posted at or after that event, so another bot's later hold is not taken for its own).
-            // A person's hold always stays with people, whatever lines the PR has: Watchdog, planner judgment, interim holds such
-            // as #705's (Fresh governance review on #737). It lifts only when ci-ok is green on the head and namedBlocker finds
+            // A person's hold stays with people (Watchdog, planner judgment, interim holds such as #705's; Fresh governance review on
+            // #737) unless its own HOLD line names a condition auto-merge can check (MRG-09 in gus.md, #744): the last line
+            // `HOLD: <condition> (owner: <name>)`, on its own line in an owner-account comment posted at or after the last hold
+            // labeled event, with <condition> one of the closed list FRESH REVIEW OK, DESIGN OK, Game Data Check VERIFIED or
+            // VERDICT: APPROVE (reviewer: <name>), optionally "until …" and "… on head". That reviewer then joins the ones
+            // namedBlocker requires, and the hold lifts when they all approve the head. Any other condition (free text) never
+            // lifts; the owner does. The owner name is someone to ping, not a checked identity (every session posts as the owner
+            // account). Auto-merge's own hold lifts only when ci-ok is green on the head and namedBlocker finds
             // nothing, with hold still counted so no REVIEW CLEAR stands in (prNoClear): a FRESH REVIEW OK on the head, plus every
             // Reviewers: name approving the head with no CHANGES left open. The pipeline APPROVE is not needed to lift: pipeline.yml
             // stops on hold, so a held PR never gets one. The merge loop asks for that review after the lift, and the merge still
@@ -253,16 +259,33 @@ jobs:
               if (labels.includes('hold') || holdEvents(events).some((e) => e.event === 'unlabeled') || !blocker) return '';
               return blindOrExternal(body) ? `its Review: line names ${reviewLine(body).replace(/^(?:[-*]\s+)?Review:\s*/i, '')}` : '';
             };
-            // '' = lift; otherwise why hold stays.
-            const holdStays = (body, labels, events, comments, ciGreen, blocker) => {
+            // The last HOLD line a person posted for the current hold, or null: { cond, owner, reviewer } with reviewer null for a
+            // condition outside the closed list. ownerLogin is the account sessions post as.
+            const holdLine = (comments, events, ownerLogin) => {
+              const added = holdEvents(events).filter((e) => e.event === 'labeled').pop();
+              if (!added) return null;
+              let found = null;
+              const after = comments.filter((c) => c.user && c.user.login.toLowerCase() === ownerLogin.toLowerCase()
+                && Date.parse(c.created_at) >= Date.parse(added.created_at)).sort((a, b) => Date.parse(a.created_at) - Date.parse(b.created_at));
+              for (const c of after) for (const h of V.holds(c.body)) found = h;
+              return found;
+            };
+            // '' = lift; otherwise why hold stays. blocker is namedBlocker's result, or a function (extra reviewers) => that
+            // result; line is holdLine()'s. A person's hold with a checkable HOLD line lifts only through the function, with the
+            // line's reviewer added, so the condition itself is checked here and not left to the caller.
+            const holdStays = (body, labels, events, comments, ciGreen, blocker, line = null) => {
               if (!labels.includes('hold')) return 'no hold';
               const added = holdEvents(events).filter((e) => e.event === 'labeled').pop();
               const mine = !!added && added.actor && added.actor.login === 'github-actions[bot]'
                 && comments.some((c) => c.user && c.user.login === 'github-actions[bot]' && (c.body || '').includes(AUTOHOLD)
                   && Date.parse(c.created_at) >= Date.parse(added.created_at));
-              if (!mine) return 'hold stays with people: a person added it';
+              if (!mine && !line) return 'hold stays with people: a person added it and posted no HOLD line';
+              if (!mine && !line.reviewer) return `hold stays with ${line.owner}: its HOLD condition "${line.cond}" is not one auto-merge can check`;
               if (!ciGreen) return 'hold stays: ci-ok not green on the head';
-              return blocker ? `hold stays: ${blocker}` : '';
+              const extra = !mine && line.reviewer ? [line.reviewer] : [];
+              if (extra.length && typeof blocker !== 'function') return `hold stays: cannot check ${line.reviewer}'s approval`;
+              const b = typeof blocker === 'function' ? blocker(extra) : blocker;
+              return b ? `hold stays: ${b}` : '';
             };
             // HOLD-CHECK END
             // FREEZE-CHECK START (tests/automerge.mjs runs this block)
@@ -300,7 +323,10 @@ jobs:
                 const events = await github.paginate(github.rest.issues.listEvents, { owner, repo, issue_number: pr.number, per_page: 100 });
                 const all = (await filesOf()).flatMap((f) => [f.filename, f.previous_filename].filter(Boolean));
                 const imp = /^claude\/game-data-check-/.test(pr.head.ref) && all.some(DATAFILE) ? ['lydia'] : [];
-                const blocker = namedBlocker(comments, sha, pr.body || '', imp, [...new Set([...labels, 'hold'])], all);
+                const blockerFor = (extra) => namedBlocker(comments, sha, pr.body || '', [...imp, ...extra], [...new Set([...labels, 'hold'])], all);
+                const blocker = blockerFor([]);
+                // A person's HOLD line with a checkable condition adds its reviewer to the ones the lift needs (MRG-09).
+                const line = labels.includes('hold') ? holdLine(comments, events, owner) : null;
                 const add = holdToAdd(pr.body || '', labels, events, blocker);
                 if (add) {
                   await github.rest.issues.addLabels({ owner, repo, issue_number: pr.number, labels: ['hold'] });
@@ -309,10 +335,10 @@ jobs:
                   continue;
                 }
                 if (labels.includes('hold')) {
-                  const stays = holdStays(pr.body || '', labels, events, comments, ciGreen, blocker);
+                  const stays = holdStays(pr.body || '', labels, events, comments, ciGreen, blockerFor, line);
                   if (stays) { core.info(`#${pr.number}: ${stays}`); continue; }
                   await github.rest.issues.removeLabel({ owner, repo, issue_number: pr.number, name: 'hold' });
-                  const by = [...V.reviewers(pr.body || ''), ...imp, ...(/\b(fresh|blind|external)\b/i.test(reviewLine(pr.body || '')) ? ['fresh review'] : [])].map(who);
+                  const by = [...V.reviewers(pr.body || ''), ...imp, ...(line && line.reviewer ? [line.reviewer] : []), ...(/\b(fresh|blind|external)\b/i.test(reviewLine(pr.body || '')) ? ['fresh review'] : [])].map(who);
                   core.notice(`#${pr.number}: hold lifted: ${[...new Set(by)].join(', ')} approve ${sha.slice(0, 7)} and ci-ok is green (#709)`);
                   lifted = true;
                 }
