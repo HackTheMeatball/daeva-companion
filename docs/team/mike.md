@@ -41,8 +41,10 @@ For each anomaly: first append one row to the **Stall log, issue #221** (re-read
 
 _From [team-wide.md COM-19](team-wide.md#com-19) (Isaac, 2026-10-21; not in #114)._
 
-- **Ask-format check:** on each health check, run Huell's ask-format script on Isaac's open To-dos and flag each failure
-  to Huell (he rewrites the item). Same script, no criteria of my own. Huell runs it on every write.
+- **Ask-format check:** on each health check, run Huell's ask-format script on Isaac's open To-dos, as written and only
+  after reading its current version. Flag to Huell (he rewrites the item) each FAIL older than 1 h; FLAG lines are his
+  call. A FAIL still unfixed at the next run gets a #221 row (ok-not-applied). No criteria of my own. Huell runs it on
+  every write.
 
 ## Logging
 
