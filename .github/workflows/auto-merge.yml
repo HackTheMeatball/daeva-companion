@@ -155,16 +155,32 @@ jobs:
             // reviewer's approval of the head required, so such a PR needn't open with hold.
             // Game Data Check's own data, research or icon PRs (claude/game-data-check-*) skip DATA-CHECK, so the merge loop
             // passes implied = ['lydia']: Source Vetting (Lydia) must approve their head (#665 merged over her CHANGES; K24 gap).
-            // Known limit: sessions post as the owner's account, so the name is the comment's word, not a checked identity.
+            // Verdicts are ordered by created_at, so editing an old comment doesn't move it past a later CHANGES. "Names the head"
+            // means the head's short SHA appears anywhere in the comment.
+            // Known limit: sessions post as the owner's account, so the name (and a REVIEW CLEAR) is the comment's word, not a
+            // checked identity.
             const NOCLEAR = new Set(['2', '4b', '5', '6']);
             const ALIAS = { jane: 'design lead', gretchen: 'game data check' };
             const who = (name) => ALIAS[name] || name;
-            const namedBlocker = (comments, sha, prBody = '', implied = []) => {
+            // A clear is refused when the PR itself shows one of those triggers, whatever the clear says: its body's "Review:" line
+            // names 2, 4b, 5 or 6, it carries hold or fresh-review, or it touches a save key (src/core/state.js) or is a release
+            // (CHANGELOG.md) (Fresh governance review, #686).
+            const SAVEKEY = (f) => f === 'src/core/state.js' || f === 'CHANGELOG.md';
+            const prNoClear = (prBody, labels, files) => {
+              const r = V.lines(prBody).find((l) => /^Review:/i.test(l));
+              if (r && /\b(2|4b|5|6)\b/i.test(r)) return `its Review: line names ${r.replace(/^Review:\s*/i, '')}`;
+              const l = labels.find((x) => x === 'hold' || x === 'fresh-review');
+              if (l) return `it carries ${l}`;
+              const f = files.find(SAVEKEY);
+              return f ? `it changes ${f}` : '';
+            };
+            const namedBlocker = (comments, sha, prBody = '', implied = [], labels = [], files = []) => {
+              const barred = prNoClear(prBody, labels, files);
               const s7 = sha.slice(0, 7);
               const ev = [];
               for (const c of comments) {
                 if (!c.user || !(c.user.login === 'claude[bot]' || c.user.login.toLowerCase() === owner.toLowerCase())) continue;
-                const at = Date.parse(c.updated_at), names = (c.body || '').includes(s7);
+                const at = Date.parse(c.created_at || c.updated_at), names = (c.body || '').includes(s7);
                 const t = V.tagged(c.body).pop();
                 if (t) ev.push({ who: who(t.reviewer), ok: t.verdict !== 'CHANGES', head: names, at });
                 const f = V.fresh(c.body);
@@ -174,6 +190,7 @@ jobs:
                 for (const x of V.data(c.body)) ev.push({ who: 'game data check', ok: x.verdict === 'VERIFIED', head: sha.startsWith(x.sha), at });
                 for (const k of V.clears(c.body)) {
                   if (NOCLEAR.has(k.trigger)) { core.info(`REVIEW CLEAR for ${k.reviewer} refused: trigger ${k.trigger} never allows one`); continue; }
+                  if (barred) { core.info(`REVIEW CLEAR for ${k.reviewer} refused: ${barred}`); continue; }
                   core.notice(`REVIEW CLEAR for ${k.reviewer} (trigger ${k.trigger}): ${k.reason}`);
                   ev.push({ who: who(k.reviewer), ok: true, head: true, at, clear: true });
                 }
@@ -232,7 +249,7 @@ jobs:
               const touched = listed.flatMap((f) => [f.filename, f.previous_filename].filter(Boolean));
               // Game Data Check's own data PRs skip DATA-CHECK, so a second data reviewer is required instead (MRG-12, #665).
               const implied = /^claude\/game-data-check-/.test(pr.head.ref) && touched.some(DATAFILE) ? ['lydia'] : [];
-              const named = namedBlocker(comments, sha, pr.body || '', implied);
+              const named = namedBlocker(comments, sha, pr.body || '', implied, pr.labels.map((l) => l.name), touched);
               if (named) { core.info(`#${pr.number}: ${named}`); continue; }
               const design = designBlocker(files, comments, sha, headAt);
               if (design) { core.info(`#${pr.number}: ${design}`); continue; }

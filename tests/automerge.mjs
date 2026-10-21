@@ -23,7 +23,7 @@ const designBlocker = new Function('owner', 'core', 'V', m[1] + '\nreturn design
 const SHA = 'abc1234def5678';
 const HEAD = Date.parse('2026-10-18T20:00:00Z');
 const at = (min) => new Date(HEAD + min * 60000).toISOString();
-const c = (login, body, min) => ({ user: { login }, body, updated_at: at(min) });
+const c = (login, body, min) => ({ user: { login }, body, created_at: at(min), updated_at: at(min) });
 const SHOTS = ['src/cards/sync.js', 'docs/reviews/0.7-p7-shots/scrapbook.json', 'docs/reviews/0.7-p7-shots/j1-390-after.png'];
 const REVIEW = c('claude[bot]', 'Review of abc1234\nNothing blocking.\nVERDICT: APPROVE', 5);
 
@@ -273,8 +273,20 @@ for (const t of ['2', '4b', '5', '6'])
     `deadlock exit: refused on trigger ${t}`);
 check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6), c(OWNER, 'REVIEW CLEAR (reviewer: Skyler; trigger: none): ok', 8)], NEW)),
   'deadlock exit: a clear without a real reason (under 10 characters) is not read');
+check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6), c(OWNER, CL, 8)], NEW, 'Before: x\n\nReview: fresh (trigger 5)')),
+  'deadlock exit: a clear tagged "none" on a PR whose Review: line says 5 still blocks');
+check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6), c(OWNER, CL, 8)], NEW, '', [], ['fresh-review'])),
+  'deadlock exit: refused on a PR labelled fresh-review');
+check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6), c(OWNER, CL, 8)], NEW, '', [], ['hold'])),
+  'deadlock exit: refused on a PR carrying hold');
+check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6), c(OWNER, CL, 8)], NEW, '', [], [], ['src/core/state.js'])),
+  'deadlock exit: refused on a PR that changes the save key (trigger 6)');
+check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6), c(OWNER, CL, 8)], NEW, '', [], [], ['CHANGELOG.md'])),
+  'deadlock exit: refused on a release PR (CHANGELOG.md)');
+check(/CHANGES from francesca/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Francesca) on abc1234', 6), { ...c(OWNER, 'VERDICT: APPROVE (reviewer: Francesca) on f00dfee', 4), updated_at: at(9) }], NEW)),
+  'an APPROVE edited after a CHANGES still dates from when it was posted (created_at), so it does not clear it');
 check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, CL, 4), c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6)], NEW)), 'deadlock exit: a clear older than the CHANGES does not clear it');
-const loopAt = yml.indexOf("const named = namedBlocker(comments, sha, pr.body || '', implied);");
+const loopAt = yml.indexOf("const named = namedBlocker(comments, sha, pr.body || '', implied, pr.labels.map((l) => l.name), touched);");
 check(loopAt > 0 && /if \(named\) \{.*continue; \}/.test(yml.slice(loopAt, loopAt + 200)) && loopAt < yml.indexOf('await github.rest.pulls.merge('), 'merge loop: namedBlocker runs and skips before a PR is merged');
 check(/CHANGES from lydia/.test(namedBlocker([c(OWNER, 'ROL-03 (Lydia): CHANGES on abc1234.\nVERDICT: CHANGES (reviewer: Lydia)', 6), c('claude[bot]', 'Review of abc1234\nVERDICT: APPROVE', 9)], SHA)),
   "#665: Lydia's tagged CHANGES blocks the bot APPROVE that merged it");
