@@ -1,6 +1,7 @@
 /* Progress (0.4 P4b: moved verbatim from src/main.js; markup progress.html): one-time clears with a running total.
    Drawn by the Skills card (renderNext calls renderCollection), so it registers with update: null. */
 import { char } from "../../../core/state.js";
+import { setHTML } from "../../../core/cards.js";
 import { gatesOf } from "../../../core/requirements.js";
 import { GATES } from "../data/milestones.js";
 import { AREA_ITEMS } from "../catalog.js";
@@ -20,13 +21,13 @@ function renderCollection() {
     { key: "sh", name: "Strongholds", reward: "2 belt scrolls each", all: shs, behind: shs.filter(x => areaOpen(char(state), x) && !cd(x.k)) },
   ];
   let D = 0, N = 0;
-  document.getElementById("progRows").innerHTML = rows.map(r => {
+  setHTML(document.getElementById("progRows"), rows.map(r => {
     const d = r.all.filter(x => cd(x.k)).length, n = r.all.length, b = r.behind.length; D += d; N += n;
     const full = { quest: "Regional quests", sd: "Sealed Dungeons", sh: "Strongholds" }[r.key];
     return `<button type="button" class="prow${d === n ? " done" : ""}" data-prog="${r.key}" title="${full}: ${d}/${n} · ${r.reward}${b ? ` · ${b} open at or below Lv ${lv} (click to show)` : d === n ? "" : " · caught up for your level"}">` +
       `<span class="prow-top"><span class="prow-name">${r.name}${b ? `<span class="behind-pill">${b}</span>` : ""}</span><span class="prow-n">${d === n ? "✓ " : ""}${d}/${n}</span></span>` +
       `<span class="prow-bar"><span style="width:${n ? d / n * 100 : 0}%"></span></span></button>`;
-  }).join("");
+  }).join(""));
   const pct = N ? Math.round(D / N * 100) : 0, C = 2 * Math.PI * 32, fg = document.getElementById("ringFg");
   fg.style.strokeDasharray = C; fg.style.strokeDashoffset = C * (1 - pct / 100);
   document.getElementById("ringTxt").textContent = pct + "%";

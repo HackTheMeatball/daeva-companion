@@ -6,6 +6,7 @@
    (docs/design/0.4-engine-contract.md §2; the hooks are listed where the pack defines them). */
 import { char } from "../core/state.js";
 import { activePack } from "../core/pack.js";
+import { setHTML } from "../core/cards.js";
 import { chainsOn, objPartsOf, questIdx, turnInNeedsLv } from "../core/requirements.js";
 import { TRACKS, rankChangeOn, rankNext, trackOf, tracksDiffer } from "../core/nextup.js";
 import { completeBefore, renderQuestSubs, setObj, setSub, stepQuest, subListHTML } from "./journey.js";
@@ -150,12 +151,16 @@ function renderNow() {
     bandAt(i) + `<div class="ns-mhead"><div class="num ns-num"${a.icoLabel ? ` role="img" aria-label="${a.icoLabel}"` : ` aria-hidden="true"`}>${a.ico}</div><div class="title"><h3>${itm(a.t)}${ti}</h3>${a.how ? `<p class="ns-how">${itm(a.how)}</p>` : ""}${sub || pi ? `<p>${pi}${sub}</p>` : ""}${a.row || ""}${a.info ? `<span class="ns-info" id="nsInfo${i}">${itm(a.info)}</span>` : ""}</div>` +
     (a.extra ? `<div class="ns-extra">${a.extra}</div>` : "") + `<div class="meta">${control(a, i)}</div></div>${a.quest ? nsObjHTML() : ""}${pb.bar ? `<div class="ns-bbar">${pb.bar}</div>` : ""}</article>`; };
   const pg = pager ? `<div class="ns-pg" role="group" aria-label="Next up cards"><button type="button" class="ns-pgb" data-nspg="-1" aria-label="Previous card">‹</button><span class="ns-pgn" aria-live="polite">${nsCur + 1} of ${shown.length}</span><button type="button" class="ns-pgb" data-nspg="1" aria-label="Next card">›</button></div>` : "";
-  el.innerHTML = `<div class="sec ns-sec"><h2 class="sec-h">Next up</h2>${pg}${window.documentPictureInPicture ? `<button type="button" class="ns-pop" data-nspop title="Keep Next up in a small window on top of the game">Pop out</button>` : ""}</div>` + trackHTML() + (top ? `<div class="ns-stack${phone ? " ns-phone" : ""}" id="nsqWrap">${shown.map(card).join("")}</div>`
-    : `<div class="ns-stack"><article class="ns-card first"><div class="ns-mhead"><div class="num ns-num" aria-hidden="true">✓</div><div class="title"><h3>You're caught up for Lv ${lv}</h3><p>Push the story to the next level.</p></div><div class="meta"></div></div></article></div>`);
+  /* setHTML: an unchanged Next up isn't redrawn, so its stack keeps its scroll, listeners and observer (attached below
+     only on a write). A card mid-interaction (info open, sliding out, a ticked objective fading) is always redrawn, as
+     before, since those clicks change the cards after the write. */
+  const wrote = setHTML(el, `<div class="sec ns-sec"><h2 class="sec-h">Next up</h2>${pg}${window.documentPictureInPicture ? `<button type="button" class="ns-pop" data-nspop title="Keep Next up in a small window on top of the game">Pop out</button>` : ""}</div>` + trackHTML() + (top ? `<div class="ns-stack${phone ? " ns-phone" : ""}" id="nsqWrap">${shown.map(card).join("")}</div>`
+    : `<div class="ns-stack"><article class="ns-card first"><div class="ns-mhead"><div class="num ns-num" aria-hidden="true">✓</div><div class="title"><h3>You're caught up for Lv ${lv}</h3><p>Push the story to the next level.</p></div><div class="meta"></div></div></article></div>`),
+    !!el.querySelector(".show-info, .out, .leaving, [data-go]"));
   nsAnim = false;
   if (pipWin) syncPipClasses();
   const w = el.querySelector("#nsqWrap"), vw = nsWin();
-  if (w && !phone) {
+  if (w && !phone && wrote) {
     /* The stack is as tall as the card snapped into view (+ a peek of the next one), so a taller card is never clipped. */
     const curCard = () => { const cs = [...w.children], t = w.scrollTop; let best = cs[0], bd = Infinity; cs.forEach(c => { const d = Math.abs(c.offsetTop - cs[0].offsetTop - t); if (d < bd) { bd = d; best = c; } }); return best; };
     const fit = () => { const c = curCard(); if (c) w.style.height = (c.offsetHeight + (c.nextElementSibling ? 30 : 0)) + "px"; };

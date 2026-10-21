@@ -2,6 +2,7 @@
    in-game cost, the board list, All nodes, Respec. Drawn by the Skills card (renderNext calls renderDaevanion), so it
    registers with update: null. */
 import { char } from "../../../core/state.js";
+import { setHTML } from "../../../core/cards.js";
 import { chainsOn, openOf } from "../../../core/requirements.js";
 import { ITEMS } from "../data/items.js";
 import { DV_TYPE, DV_TYPE_ICONS, SP_ICONS } from "../data/build.js";
@@ -36,10 +37,11 @@ function renderDaevanion() {
   /* The card stays shown before the window opens: it says what opens it. (It never hid: #dvBox's display: flex overrode
      `hidden`, so the old `box.hidden = !dvOpen(…)` was dead code; E6 removes it rather than hide the gate text.) */
   const total = char(state).dvTotal || 0, left = total - dvSpent(char(state));
-  document.getElementById("dvRemain").innerHTML = dvSplitTxt(total);
-  document.getElementById("dvBig").innerHTML = `<b class="dvsync" title="Click to match the game's crystals left">${total ? left : "–"}</b><span>crystal${total && left === 1 ? "" : "s"} left</span>${char(state).dvAdj ? `<em class="dvadj" title="Correction so this matches the game">${char(state).dvAdj > 0 ? "−" : "+"}${Math.abs(char(state).dvAdj)} adj</em>` : ""}${keyChip("daevanion")}`;
+  setHTML(document.getElementById("dvRemain"), dvSplitTxt(total));
+  setHTML(document.getElementById("dvBig"), dvBigHTML(total, left));
   /* One node at a time: the next unbought node on an unlocked board, in the milestones' order. */
   const opts = [dvNext(char(state))].filter(Boolean), list = document.getElementById("dvNextList");
+  /* innerHTML, not setHTML: dvNxUpdate (below and on every cost typed) fills its bar, label and button after the write */
   list.innerHTML = opts.length
     ? opts.map(it => { const cost = dvCostOf(char(state), it);
         const st = !cost ? `<span class="dvst">enter in-game cost</span>` : cost <= (total - dvSpent(char(state))) ? `<span class="dvst ok">ready to buy</span>` : `<span class="dvst"></span>`;
@@ -67,19 +69,21 @@ function renderDaevanion() {
   const curB = heroB || ([...DV_NODES()].reverse().find(it => char(state).checks[it.k] && openOf(char(state), it.k)) || DV_NODES()[0]).board;
   { const bl = DV_NODES().filter(it => it.board === curB), bd = bl.filter(it => char(state).checks[it.k]).length, isNew = !!heroB && bd === 0, full = bd === bl.length;
     /* Header for the list under it, styled like Skills' "Coming up": board name, bought count, a thin bar. */
-    document.getElementById("dvBoard").innerHTML = `<div class="dvbh${isNew ? " new" : ""}${full ? " full" : ""}"><div class="dvbh-top"><span class="dvbh-k">${curB} board${isNew ? ` <span class="dvb-new">New</span>` : ""}</span><span class="dvbh-n">${full ? "✓&nbsp;" : ""}${bd} of ${bl.length}<span class="dvbh-w"> acquired</span></span></div>` +
-      `<span class="dvbh-bar"><span style="width:${bd / bl.length * 100}%"></span></span></div>`; }
+    setHTML(document.getElementById("dvBoard"), `<div class="dvbh${isNew ? " new" : ""}${full ? " full" : ""}"><div class="dvbh-top"><span class="dvbh-k">${curB} board${isNew ? ` <span class="dvb-new">New</span>` : ""}</span><span class="dvbh-n">${full ? "✓&nbsp;" : ""}${bd} of ${bl.length}<span class="dvbh-w"> acquired</span></span></div>` +
+      `<span class="dvbh-bar"><span style="width:${bd / bl.length * 100}%"></span></span></div>`); }
   let prevB = curB;
-  document.getElementById("dvThen").innerHTML = after.length ? `<ul class="soonlist">` + after.map(it => {
+  setHTML(document.getElementById("dvThen"), after.length ? `<ul class="soonlist">` + after.map(it => {
     const opensAt = Math.min(...DV_NODES().filter(n => n.board === it.board).map(n => n.blv)), wB = dvWaitOf(char(state), it.board), shutB = !!wB;
     /* Not open yet: a bar from the last milestone below your level up to the board's level. */
     const fromLv = (GATES.filter(g => g.lv < char(state).level).pop() || { lv: 1 }).lv, pctB = Math.min(100, Math.max(0, (char(state).level - fromLv) / Math.max(1, opensAt - fromLv) * 100));
     const div = it.board !== prevB ? `<li class="then-board"><span>${it.board}</span><span>${!shutB ? "open" : wB.story ? dvWhy(wB) : `opens Lv ${opensAt} · ${opensAt - char(state).level} to go`}</span>${shutB && !wB.story ? `<span class="tb-bar"><span style="width:${pctB}%"></span></span>` : ""}</li>` : "";
     prevB = it.board;
-    return div + `<li title="${dvMeta(it)}"><span class="sname">${SP_ICONS[dvSkill(it)] ? spMini(dvSkill(it)) : `<img class="dvmini" src="${dvIconSrc(it)}" alt="" loading="lazy" onerror="this.remove()">`}<span class="dvname ${DV_TYPE[it.ty][0]}">${dvShort(it.t)}</span></span><span class="slv">${!openOf(char(state), it.k) && it.blv !== opensAt ? `Lv ${it.blv}` : ""}</span><span class="sst"></span>${shutB ? `<span class="nb-tag" title="${it.board} board ${wB.story ? (chainsOn() && !isBasic() && wB.text ? wB.text : `opens after "${wB.story}" is turned in`).replace(/"/g, "&quot;") : `opens at Lv ${opensAt}`}">${wB.story ? "Story" : `Lv ${opensAt}`}</span>` : ""}</li>`; }).join("") + `</ul>` : "";
+    return div + `<li title="${dvMeta(it)}"><span class="sname">${SP_ICONS[dvSkill(it)] ? spMini(dvSkill(it)) : `<img class="dvmini" src="${dvIconSrc(it)}" alt="" loading="lazy" onerror="this.remove()">`}<span class="dvname ${DV_TYPE[it.ty][0]}">${dvShort(it.t)}</span></span><span class="slv">${!openOf(char(state), it.k) && it.blv !== opensAt ? `Lv ${it.blv}` : ""}</span><span class="sst"></span>${shutB ? `<span class="nb-tag" title="${it.board} board ${wB.story ? (chainsOn() && !isBasic() && wB.text ? wB.text : `opens after "${wB.story}" is turned in`).replace(/"/g, "&quot;") : `opens at Lv ${opensAt}`}">${wB.story ? "Story" : `Lv ${opensAt}`}</span>` : ""}</li>`; }).join("") + `</ul>` : "");
   /* Full plan, grouped by board; boards not yet open are dimmed with their level. */
   const byBoard = {};
   DV_NODES().forEach(it => { (byBoard[it.board] = byBoard[it.board] || []).push(it); });
+  /* innerHTML, not setHTML: its rows and boxes change after the write (milestoneFilters hides ticked rows, refreshDvGates
+     and the tick and cost handlers set their boxes and art) */
   document.getElementById("dvAllList").innerHTML = Object.entries(byBoard).map(([b, list]) => {
     const opens = Math.min(...list.map(it => it.blv)), wb = dvWaitOf(char(state), b), shut = !!wb, done = list.filter(it => char(state).checks[it.k]).length;
     return `<ul class="items dv-board${shut ? " shut" : ""}"><li class="sub-h"><span class="sub-txt">${b} · ${shut ? (wb.story ? dvWhy(wb) : `opens at Lv ${opens}`) : `${done} of ${list.length} acquired`}</span></li>${list.map(dvRowHTML).join("")}</ul>`;
@@ -98,6 +102,8 @@ const dvIconSrc = it => { const set = DV_TYPE_ICONS[it.ty]; return set ? set[cha
 const dvSkill = it => (it.t || "").split(" · ")[0];
 /* The acquired art sits on top, hidden; it fades in while you hover the green "Mark acquired" button. */
 const dvIcon = it => `<span class="dvico${DV_TYPE_ICONS[it.ty] ? " art" : ""}"><img src="${dvIconSrc(it)}" alt="" loading="lazy" onerror="this.remove()">${DV_TYPE_ICONS[it.ty] && !char(state).checks[it.k] ? `<img class="dvon" src="${DV_TYPE_ICONS[it.ty][1]}" alt="" loading="lazy" onerror="this.remove()">` : ""}${SP_ICONS[dvSkill(it)] ? `<img class="dvbadge" src="${SP_ICONS[dvSkill(it)]}" alt="" loading="lazy" onerror="this.remove()">` : ""}</span>`;
+/* The crystals-left number (a click swaps it for a box: setHTML sees the swap and writes it back on the next pass) */
+const dvBigHTML = (total, left) => `<b class="dvsync" title="Click to match the game's crystals left">${total ? left : "–"}</b><span>crystal${total && left === 1 ? "" : "s"} left</span>${char(state).dvAdj ? `<em class="dvadj" title="Correction so this matches the game">${char(state).dvAdj > 0 ? "−" : "+"}${Math.abs(char(state).dvAdj)} adj</em>` : ""}${keyChip("daevanion")}`;
 /* Board total = 4 per level past 11 + 1 per Daevanion Crystal used (formula confirmed in game at Lv 16 and 17). */
 function dvSplitTxt(total) {
   const fromLv = Math.max(0, 4 * (char(state).level - 11)), cr = total - fromLv;
@@ -130,8 +136,8 @@ function dvNxUpdate() {
 function dvLive() {
   dvNxUpdate();
   const total = char(state).dvTotal || 0, left = total - dvSpent(char(state));
-  document.getElementById("dvBig").innerHTML = `<b class="dvsync" title="Click to match the game's crystals left">${total ? left : "–"}</b><span>crystal${total && left === 1 ? "" : "s"} left</span>${char(state).dvAdj ? `<em class="dvadj" title="Correction so this matches the game">${char(state).dvAdj > 0 ? "−" : "+"}${Math.abs(char(state).dvAdj)} adj</em>` : ""}${keyChip("daevanion")}`;
-  document.getElementById("dvRemain").innerHTML = dvSplitTxt(total);
+  setHTML(document.getElementById("dvBig"), dvBigHTML(total, left));
+  setHTML(document.getElementById("dvRemain"), dvSplitTxt(total));
   document.querySelectorAll("#dvNextList .dvrow").forEach(r => {
     const k = r.querySelector("input[type=checkbox]").dataset.k, st = r.querySelector(".dvst");
     if (!st) return;

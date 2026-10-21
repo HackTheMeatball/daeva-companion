@@ -118,8 +118,10 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
 2. **Audit the whole path to 1.0, then this minor.** First re-read the plan from this minor to 1.0 against the code
    and what the look-back found: is any later minor stale, in the wrong order, too big, or blocked on something
    nobody has started (research, owner input, hosting)? Change the later minors here, in this pass, before planning
-   this one. Then audit this minor's section the same way. Read the budget trend (page size, element count,
-   `update()` time); schedule a performance item only when a budget is within 20% of its limit. Before 1.0 and before
+   this one. Then audit this minor's section the same way. Read the budget trend and write it into this minor's
+   section with all its rows: site page bytes and gzip -9 (`npm run build`), elements at 390 px fresh (blocking) and at
+   1500 px, Advanced, Lv 39 (logged; both printed by `tests/site.js`), and the `update()` median (`npm run test:perf`, run
+   alone); `node scripts/build.mjs --sizes` says which tables and modules hold the gzip bytes. Schedule a performance item only when a budget is within 20% of its limit. Before 1.0 and before
    any store app, this step is a full architecture and performance audit.
 3. **Shape each item:** problem; appetite (S < 100 changed lines, M 100–300, L 300–1,000; bigger = split it); no-gos
    (what it will not do); the module(s) and files it owns (every acceptance line needs an owning file); the test that
