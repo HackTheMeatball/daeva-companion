@@ -863,9 +863,11 @@ project's tokens, the pipeline 18%; check at the 0.9 review: tracker share below
 **Fresh review** (release PR).
 
 - **What it does.** Version bump and the CHANGELOG section ("Saves reset in this version", from P2).
+- **0.8.1 folded in** (owner, 2026-10-21 5:35 PM ET; DECISIONS). The CHANGELOG section also lists the merged 0.8.1 items (F1–F7, F9, F11, #585) and F8 (#605) and F10 (#690). It says these items, and the save reset, went live on the site as they merged (every push to main deploys, `docs/DEPLOY.md`), and gives the date the reset went live (2026-10-21, #734). For F9 and F10 it says only that quoted source text was replaced with our own paraphrase (Legal).
+- **GO precondition.** F10 (#690) and F8 (#605) are merged. If F10 isn't, `GO 0.9.0` waits (Legal's condition; no fallback).
 - **K17.** The CHANGELOG section is written into the release issue before `PRE-RELEASE CHECK 0.9.0`.
 - **Release.** `RC READY 0.9 <sha>` to Player Testing with `PRE-RELEASE CHECK 0.9.0`; the Release Planner posts
   `GO 0.9.0` only after `DATA OK 0.9.0` and `RC PLAY DONE 0.9` name the same build (K19). With S4 live, the release
   candidate is the staging build.
 - **Lanes:** release, alone. **Model:** Sonnet, S (44 min).
-- **After:** every item above, or moved to 0.9.x or 0.10; GO 0.9.0.
+- **After:** every item above, or moved to 0.9.x or 0.10, and #605 and #690 (not movable); GO 0.9.0.

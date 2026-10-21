@@ -1253,6 +1253,8 @@ Decisions recorded on the tracker:
 
 ### 0.8.1 — data and bug fixes after 0.8.0 (Release Planner, 2026-10-20)
 
+**Folded into 0.9.0** (owner, decision card, 2026-10-21 5:35 PM ET; DECISIONS). There is no 0.8.1 release: main already carried 0.9's save reset, and every push to main deploys, so the merged items below went live as they merged. F8 (#605) and F10 (#690) ship in 0.9.0; the 0.9.0 CHANGELOG lists them all.
+
 A patch, no planning pass. From the owner's Lv 39 notes (2026-10-20 12:18 PM ET), Player Testing's RC report #586 and
 Game Data Check's research (#570, #584). Specs: [docs/plans/0.8.1/README.md](docs/plans/0.8.1/README.md).
 
