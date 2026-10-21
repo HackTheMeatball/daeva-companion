@@ -167,8 +167,8 @@ jobs:
             // (CHANGELOG.md) (Fresh governance review, #686).
             const SAVEKEY = (f) => f === 'src/core/state.js' || f === 'CHANGELOG.md';
             const prNoClear = (prBody, labels, files) => {
-              const r = V.lines(prBody).find((l) => /^Review:/i.test(l));
-              if (r && /\b(2|4b|5|6)\b/i.test(r)) return `its Review: line names ${r.replace(/^Review:\s*/i, '')}`;
+              const r = V.lines(prBody).find((l) => /^(?:[-*]\s+)?Review:/i.test(l));
+              if (r && /\b(2|4b|5|6)\b/i.test(r)) return `its Review: line names ${r.replace(/^(?:[-*]\s+)?Review:\s*/i, '')}`;
               const l = labels.find((x) => x === 'hold' || x === 'fresh-review');
               if (l) return `it carries ${l}`;
               const f = files.find(SAVEKEY);

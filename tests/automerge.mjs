@@ -275,6 +275,8 @@ check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (revie
   'deadlock exit: a clear without a real reason (under 10 characters) is not read');
 check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6), c(OWNER, CL, 8)], NEW, 'Before: x\n\nReview: fresh (trigger 5)')),
   'deadlock exit: a clear tagged "none" on a PR whose Review: line says 5 still blocks');
+check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6), c(OWNER, CL, 8)], NEW, 'Before: x\n\n- **Review:** fresh, trigger 6')),
+  'deadlock exit: the bullet form "- **Review:** ..." of the Review: line is read too');
 check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6), c(OWNER, CL, 8)], NEW, '', [], ['fresh-review'])),
   'deadlock exit: refused on a PR labelled fresh-review');
 check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6), c(OWNER, CL, 8)], NEW, '', [], ['hold'])),
