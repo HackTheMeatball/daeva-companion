@@ -66,6 +66,9 @@ const atomsOf = c => !c ? [] : c.all ? c.all.flatMap(atomsOf) : c.any ? c.any.fl
    see (src/packs/aion2/data/markup.js stTag): "check in game" for disputed and owner-check, "inferred" for inferred */
 const unverified = (r, f) => { const s = (r.fieldStatus || {})[f] ?? r.status; return s && s !== 'verified' ? s : null; };
 const withSt = (k, s) => s ? { [k]: s } : {};
+/* a status the page tags (0.9 P1): disputed, owner-check, inferred; null for verified and single source (which keeps its own
+   tags where it has them) */
+const tagSt = s => s && s !== 'verified' && s !== 'single-source' ? s : null;
 
 export function generate(opts = {}) {
   const fs = fsOf(opts), B = loadBundle({ ...opts, fs }), R = B.recs;
@@ -128,8 +131,10 @@ export function generate(opts = {}) {
   const LOC = s => { const o = {}; const put = (k, v) => { if (v !== null && v !== undefined) o[k] = v; };
     put('giverKib', s.giver.kibelisk); put('giverKibM', s.giver.meters); put('turnin', s.turnin.npc); put('turninPlace', s.turnin.place);
     put('turninKib', s.turnin.kibelisk); put('turninKibM', s.turnin.meters);
-    /* the turn-in's own zone for "near your story step"; "" = a placeholder (owner-check), so no area */
-    if (s.turnin.zone) o.turninZone = zones[s.turnin.zone].status === 'owner-check' ? '' : zname(s.turnin.zone); return o; };
+    /* the turn-in's own zone for "near your story step"; "" = a placeholder (owner-check), so no area; turninZoneSt: the
+       quest's own label for it (0.9 P1), tagged after "near your story step" */
+    if (s.turnin.zone) { o.turninZone = zones[s.turnin.zone].status === 'owner-check' ? '' : zname(s.turnin.zone); if (o.turninZone) Object.assign(o, withSt('turninZoneSt', tagSt(unverified(s, 'turnin.zone')))); }
+    return o; };
   const QUEST_LOC = Object.fromEntries(chain.map(s => [s.name, LOC(s)]).filter(([, o]) => Object.keys(o).length));
   const X = chain.filter(s => s.lv > 40);   /* Lv 41-45: the v1 block's separate constants, kept for the page globals */
   const QUESTS_X = X.map(s => [s.lv, s.name]);
@@ -185,14 +190,21 @@ export function generate(opts = {}) {
   /* spec: the slot 1 pick's text; specs (0.3 E7): the pick per slot in order, { t: text, lv: the choice's skill level, and for a
      labelled pick (0.8.1 F2, specialtyEvidence) st: disputed / contested / inferred, why: its note };
      flat: a flat-gated core skill (the Cleric's Earth's Grace, #543) has every level open at its learn level, as in GATE_GRAPH */
-  const spLabel = p => { const ev = (build.specialtyEvidence || {})[p]; return ev && ev.label !== '2+ sources' ? { st: ev.label, why: ev.note } : {}; };
+  /* a pick with no evidence of its own takes the build's label for its picks (0.9 P1: vst, tagged as values are) */
+  const spLabel = p => { const ev = (build.specialtyEvidence || {})[p]; return ev ? (ev.label !== '2+ sources' ? { st: ev.label, why: ev.note } : {}) : withSt('vst', tagSt(unverified(build, 'specialtyPicks'))); };
+  /* a skill order row's label (0.9 P1): its own status, else the build's; st (disputed / inferred) is tagged, single (single
+     source, its basis) keeps the "single source" tag */
+  const rowSt = e => e.status ?? build.status;
   const SP_SKILLS_CORE = build.skillOrder.filter(e => e.core).map(e => { const s = sk(e.skill), picks = build.specialtyPicks[e.skill] || [], pick = picks[0];
     return { n: s.name, learn: s.learnLv, ...withSt('learnSt', unverified(s, 'learnLv')), ...(pick ? { spec: choice(pick).label || choice(pick).text, specs: picks.map(p => ({ t: choice(p).label || choice(p).text, lv: choice(p).skillLv, ...spLabel(p) })) } : {}),
-      ...(s.type === 'passive' ? { passive: true } : {}), ...(s.levelGate === 'flat' ? { flat: true } : {}) }; });
+      ...(s.type === 'passive' ? { passive: true } : {}), ...(s.levelGate === 'flat' ? { flat: true } : {}), ...withSt('st', tagSt(rowSt(e))) }; });
   const SP_EXTRA = build.skillOrder.filter(e => !e.core).map(e => { const s = sk(e.skill);
-    return { n: s.name, learn: s.learnLv, ...withSt('learnSt', unverified(s, 'learnLv')), ...(s.type === 'passive' ? { passive: true } : {}), ...(s.levelGate === 'flat' ? { flat: true } : {}), ...(e.status !== 'verified' ? { single: e.basis.split(' (')[0] } : {}) }; });
+    return { n: s.name, learn: s.learnLv, ...withSt('learnSt', unverified(s, 'learnLv')), ...(s.type === 'passive' ? { passive: true } : {}), ...(s.levelGate === 'flat' ? { flat: true } : {}),
+      ...(rowSt(e) === 'single-source' ? { single: e.basis.split(' (')[0] } : {}), ...withSt('st', tagSt(rowSt(e))) }; });
   const STIGMA_PLAN = build.stigmaSlots.map(id => stg(id).name);
   const ST_TARGETS = build.stigmaTargets.map(t => [stg(t.stigma).name, t.level]);
+  /* the stigma plan's one label (0.9 P1): the whole list shares it, so the Stigmas card tags its heading, not each row */
+  const STIGMA_ST = tagSt(unverified(build, 'stigmaSlots')) || tagSt(unverified(build, 'stigmaTargets'));
   const STAT_TIERS = build.statPriority.tiers, STAT_SRC = build.statPriority.from;
   /* the stat priority's footnote when the build has its own (build text "stat-note"; null: the drawer's default) */
   const STAT_NOTE = (build.texts || {})['stat-note'] || null;
@@ -213,6 +225,8 @@ export function generate(opts = {}) {
       if (s && r.minLv != null) check(`${build.id}: default key ${k.key}: ${r.skill} minLv not below its learn level`, r.minLv >= s.learnLv, [r.minLv, s.learnLv]);
     }
   }
+  /* the default keys' one label (0.9 P1), on the Build drawer's keys heading */
+  const KEYS_ST = build.keyStacks.defaultKeys ? tagSt(build.keyStacks.defaultKeys.status ?? build.status) : null;
   const KEYS = DK.map(k => ({ key: k.key, rows: k.rows.filter(r => skById[r.skill]).map(r => ({ n: skById[r.skill].name, lv: r.minLv ?? skById[r.skill].learnLv })) }));
   const LEVEL_POINTS = ruleValue('rule:level-points');
   /* game rules the build tables use (0.4 P2a; src/data/build.js spCost, SPEC_SLOT_LV, DV_MIN, ST_COST): cost bands
@@ -238,8 +252,9 @@ export function generate(opts = {}) {
     const k = e.node ? nodeById[e.node].key : e.key, sn = e.node && nodeById[e.node].skill;
     /* a node on a skill: its skill's name and what it adds to the effective level (as GATE_GRAPH's plan node), for where the
        skill's specialty slots sit (0.8.1 F3, src/packs/aion2/data/build.js) */
+    /* st: the plan row's label (0.9 P1), its own status else the build's */
     return { k, dv: true, board: board.name, blv: e.requires.level, ty, t: e.label, ...(e.via ? { via: e.via } : {}), ...(e.cost !== undefined ? { cost: e.cost } : {}),
-      ...(sn ? { skill: sk(sn).name, adds: nodeById[e.node].adds ?? 1 } : {}) };
+      ...(sn ? { skill: sk(sn).name, adds: nodeById[e.node].adds ?? 1 } : {}), ...withSt('st', tagSt(e.status ?? build.status)) };
   };
   for (const e of build.boardPlan) for (const n of e.node ? [e.node] : e.anyNode) if (!nodeById[n]) throw new Error('board plan: unknown node ' + n);
   /* plan costs (0.8.1 F1): a row's `cost` (what the cost box pre-fills) is the owner's board number, cited with fields
@@ -266,7 +281,7 @@ export function generate(opts = {}) {
   const DV_BOARDS = {};
   for (const b of boards.slice().sort(byNum('lv'))) {
     const es = build.boardPlan.filter(e => nodeById[e.node || e.anyNode[0]].board === b.id).sort(byNum('order'));
-    if (es.length && es.every(e => e.requires.level === b.lv)) DV_BOARDS[b.name] = { lv: b.lv, nodes: es.map(dvItem).map(({ k, t, ty, via }) => ({ k, t, ty, ...(via ? { via } : {}) })) };
+    if (es.length && es.every(e => e.requires.level === b.lv)) DV_BOARDS[b.name] = { lv: b.lv, nodes: es.map(dvItem).map(({ k, t, ty, via, st }) => ({ k, t, ty, ...(via ? { via } : {}), ...(st ? { st } : {}) })) };
   }
 
   /* ---------------------------------------------------------------- milestones and route rules (token text) */
@@ -334,7 +349,7 @@ export function generate(opts = {}) {
   /* ---------------------------------------------------------------- confidence card */
   /* one card from every confidence file of the chain (0.6 P3): the group headings in chain order (each id once), the lines in id order */
   const conf = { groups: (B.by.confidence || []).flatMap(x => x.doc.groups || []).filter((g, i, gs) => gs.findIndex(h => h.id === g.id) === i), records: RI('confidence') };
-  const sp2 = SP_EXTRA.filter(x => !x.single).map(x => x.n), sp1 = SP_EXTRA.filter(x => x.single).map(x => x.n);
+  const sp2 = SP_EXTRA.filter(x => !x.single && !x.st).map(x => x.n), sp1 = SP_EXTRA.filter(x => x.single || x.st).map(x => x.n);
   const PH = { rqChained: RQ_STATS.chained, rqStoryGated: RQ_STATS.story, storyEndQuest: STORY_END.quest, storyEndLv: STORY_END.lv,
     boardList: boards.slice().sort(byNum('lv')).map(b => `${b.name} ${b.lv}`).join(', '), skillOrderTwoSource: sp2.join(', '), skillOrderSingle: sp1.join(', ') };
   const CONF = conf.groups.map(g => ({ g: g.title, sub: g.sub, items: conf.records.filter(r => r.group === g.id).sort(byNum('order'))
@@ -656,7 +671,7 @@ export function generate(opts = {}) {
   /* ---------------------------------------------------------------- the module */
   const C = { RQ, RQ_STATS, QUESTS_X, QUEST_STEPS_X, QUEST_LOC_X, STORY_END, SH_DATA, AREA_LOC, SD_RW, SP_EXTRA, DV_BOARDS, SOURCES, SRC_SITE, CONF,
     QUESTS, QUEST_STEPS, QUEST_STEP_NOTES, QUEST_LOC, STORY_UNLOCKS, UNLOCK_GATE, VERIFIED_UNLOCKS, HOTKEYS, TERMS, ASCENSION, GUIDE_GATES, GUIDE_STEPS, TIPS, ITEMS, HIDEOUT_AREA, ZONE_TRACES, SD_REWARD, SH_REWARD,
-    STAT_TIERS, STAT_SRC, STAT_NOTE, STIGMA_PLAN, ST_TARGETS, SP_SKILLS_CORE, LEVEL_POINTS, RMB_ROWS, E_ORDER, KEYS, SP_ICONS, STIGMA_ICON,
+    STAT_TIERS, STAT_SRC, STAT_NOTE, STIGMA_PLAN, ST_TARGETS, STIGMA_ST, SP_SKILLS_CORE, LEVEL_POINTS, RMB_ROWS, E_ORDER, KEYS, KEYS_ST, SP_ICONS, STIGMA_ICON,
     RULE_SKILL_POINT_COST, RULE_SPEC_SLOTS, RULE_NODE_COSTS, RULE_SHARD_COST, GAME_CLASSES };
   const J = v => JSON.stringify(v);
   const module = '/* Generated by tools/gen/gen.mjs from data/** (data format v2). Not stored: the build makes it on every run. */\n' +
@@ -757,8 +772,8 @@ function checkIdleClass({ root, pack, check, fs = realFs }) {
    and always go in the class's own set; every other table comes from the shared game and faction packs and is kept once,
    unless it differs between two classes, which moves it to the class sets too. scripts/build.mjs ships the shared
    tables in the page and each class set as its own chunk (docs/ARCHITECTURE.md §4, DATA-FORMAT-V2 §2.1). */
-export const CLASS_TABLES = ['SP_EXTRA', 'DV_BOARDS', 'SOURCES', 'CONF', 'GUIDE_GATES', 'GUIDE_STEPS', 'TIPS', 'STAT_TIERS', 'STAT_SRC', 'STAT_NOTE', 'STIGMA_PLAN', 'ST_TARGETS',
-  'SP_SKILLS_CORE', 'RMB_ROWS', 'E_ORDER', 'KEYS', 'SP_ICONS', 'STIGMA_ICON', 'GATE_GRAPH', 'GATE_PROPOSED'];
+export const CLASS_TABLES = ['SP_EXTRA', 'DV_BOARDS', 'SOURCES', 'CONF', 'GUIDE_GATES', 'GUIDE_STEPS', 'TIPS', 'STAT_TIERS', 'STAT_SRC', 'STAT_NOTE', 'STIGMA_PLAN', 'ST_TARGETS', 'STIGMA_ST',
+  'SP_SKILLS_CORE', 'RMB_ROWS', 'E_ORDER', 'KEYS', 'KEYS_ST', 'SP_ICONS', 'STIGMA_ICON', 'GATE_GRAPH', 'GATE_PROPOSED'];
 /* every table of one result by name, in module order (generated.js, gate-graph.js, gate-proposed.js, place.js) */
 export const tablesOf = g => ({ ...g.constants, GATE_GRAPH: g.gateGraph, GATE_PROPOSED: g.gateProposed, NODE_PLACE: g.nodePlace, KIBELISKS: g.kibelisks, TRAVEL_RULES: g.travelRules });
 /* the guide packs below a packs root, by id */

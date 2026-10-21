@@ -1,6 +1,6 @@
 {
   "behind/L35-q28-from20-lag-A": [
-    {"t":"Buy Insignia Explosion 3 → 4","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 35–36"},
+    {"t":"Buy Insignia Explosion 3 → 4","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 35–36"},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
     {"t":"Vaizel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g30:0","b":"Missed · Lv 30–31"},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1"},
@@ -8,12 +8,12 @@
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202016","x":["+16 waiting on the story Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Traveling Merchant's Conundrum In my game Finders Keepers In my game"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 29 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 9 open"},
-    {"t":"Buy Rear Smite 4 → 5","s":"2 pts","c":"tag \"After the one above\""},
-    {"t":"Buy Heart Gore 7 → 8","s":"4 pts","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 8 → 9","s":"4 pts","c":"tag \"After the one above\""}
+    {"t":"Buy Rear Smite 4 → 5","s":"2 pts · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Heart Gore 7 → 8","s":"4 pts · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 8 → 9","s":"4 pts · inferred","c":"tag \"After the one above\""}
   ],
   "behind/L35-q28-from20-lag-B": [
-    {"t":"Buy Insignia Explosion 3 → 4","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 35–36"},
+    {"t":"Buy Insignia Explosion 3 → 4","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 35–36"},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
     {"t":"Vaizel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g30:0","b":"Missed · Lv 30–31"},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1"},
@@ -21,9 +21,9 @@
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202016","x":["+16 waiting on the story Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Traveling Merchant's Conundrum In my game Finders Keepers In my game"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 29 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 9 open"},
-    {"t":"Buy Rear Smite 4 → 5","s":"2 pts","c":"tag \"After the one above\""},
-    {"t":"Buy Heart Gore 7 → 8","s":"4 pts","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 8 → 9","s":"4 pts","c":"tag \"After the one above\""}
+    {"t":"Buy Rear Smite 4 → 5","s":"2 pts · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Heart Gore 7 → 8","s":"4 pts · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 8 → 9","s":"4 pts · inferred","c":"tag \"After the one above\""}
   ],
   "behind/L35-q48-from30-lag-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
@@ -32,10 +32,10 @@
     {"t":"Story: Canyon's Secret","s":"0/2 objectives · then Bitter Reality","c":"primary \"Turned in\" story","b":"Lv 35–36","o":["Investigate the Urugugu Canyon complete the Urugugu Canyon investigation ( Kibelisk : Kraka Footpath Wastewater Downstream). This is your first run of the Urugugu Canyon Expedition.","Turn in Ulgorn, Nornir Assembly"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202011","x":["+10 waiting on the story Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Traveling Merchant's Conundrum In my game Finders Keepers In my game"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 17 open at your level"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
     {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
-    {"t":"Buy Insignia Explosion 6 → 7","s":"2 pts","c":"tag \"After the one above\""}
+    {"t":"Buy Insignia Explosion 6 → 7","s":"2 pts · inferred","c":"tag \"After the one above\""}
   ],
   "behind/L35-q48-from30-lag-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
@@ -44,44 +44,44 @@
     {"t":"Story: Canyon's Secret","s":"0/2 objectives · then Bitter Reality","c":"primary \"Turned in\" story","b":"Lv 35–36","o":["Investigate the Urugugu Canyon complete the Urugugu Canyon investigation ( Kibelisk : Kraka Footpath Wastewater Downstream). This is your first run of the Urugugu Canyon Expedition.","Turn in Ulgorn, Nornir Assembly"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202011","x":["+10 waiting on the story Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Traveling Merchant's Conundrum In my game Finders Keepers In my game"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 17 open at your level"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
     {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
-    {"t":"Buy Insignia Explosion 6 → 7","s":"2 pts","c":"tag \"After the one above\""}
+    {"t":"Buy Insignia Explosion 6 → 7","s":"2 pts · inferred","c":"tag \"After the one above\""}
   ],
   "behind/L35-q62-from20-lagq-A": [
-    {"t":"Buy Insignia Explosion 3 → 4","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 35–36"},
+    {"t":"Buy Insignia Explosion 3 → 4","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 35–36"},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
     {"t":"Vaizel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g30:0","b":"Missed · Lv 30–31"},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","b":"Lv 35–36","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Regional quests","s":"11 to pick up · 5 follow-ups · 0/16 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg | -> lock(disabled) Nine Wonders of Altgard: 2nd Leg","+10 more"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 29 open at your level"},
-    {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 9 open"},
-    {"t":"Buy Rear Smite 4 → 5","s":"2 pts","c":"tag \"After the one above\""},
-    {"t":"Buy Heart Gore 7 → 8","s":"4 pts","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 8 → 9","s":"4 pts","c":"tag \"After the one above\""}
+    {"t":"Buy Rear Smite 4 → 5","s":"2 pts · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Heart Gore 7 → 8","s":"4 pts · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 8 → 9","s":"4 pts · inferred","c":"tag \"After the one above\""}
   ],
   "behind/L35-q62-from20-lagq-B": [
-    {"t":"Buy Insignia Explosion 3 → 4","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 35–36"},
+    {"t":"Buy Insignia Explosion 3 → 4","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 35–36"},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
     {"t":"Vaizel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g30:0","b":"Missed · Lv 30–31"},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","b":"Lv 35–36","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Regional quests","s":"11 to pick up · 5 follow-ups · 0/16 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg | -> lock(disabled) Nine Wonders of Altgard: 2nd Leg","+10 more"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 29 open at your level"},
-    {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 9 open"},
-    {"t":"Buy Rear Smite 4 → 5","s":"2 pts","c":"tag \"After the one above\""},
-    {"t":"Buy Heart Gore 7 → 8","s":"4 pts","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 8 → 9","s":"4 pts","c":"tag \"After the one above\""}
+    {"t":"Buy Rear Smite 4 → 5","s":"2 pts · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Heart Gore 7 → 8","s":"4 pts · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 8 → 9","s":"4 pts · inferred","c":"tag \"After the one above\""}
   ],
   "behind/L35-q62-from20-miss2-s0-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 2 levels away · opens on \"Mirror of Greed\" · 7 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
@@ -89,13 +89,13 @@
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 2 levels away · opens on \"Mirror of Greed\" · 7 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "behind/L35-q62-from20-miss2-s1-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
@@ -103,7 +103,7 @@
   ],
   "behind/L35-q62-from20-miss2-s1-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
@@ -111,7 +111,7 @@
   ],
   "behind/L35-q62-from20-miss2-s2-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
@@ -119,7 +119,7 @@
   ],
   "behind/L35-q62-from20-miss2-s2-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
@@ -129,7 +129,7 @@
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 2 levels away · opens on \"Mirror of Greed\" · 7 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
@@ -137,13 +137,13 @@
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 2 levels away · opens on \"Mirror of Greed\" · 7 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "behind/L35-q62-from20-miss3-s1-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
@@ -151,7 +151,7 @@
   ],
   "behind/L35-q62-from20-miss3-s1-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
@@ -159,7 +159,7 @@
   ],
   "behind/L35-q62-from20-miss3-s2-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
@@ -167,7 +167,7 @@
   ],
   "behind/L35-q62-from20-miss3-s2-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
@@ -177,7 +177,7 @@
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 2 levels away · opens on \"Mirror of Greed\" · 7 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
@@ -185,13 +185,13 @@
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 2 levels away · opens on \"Mirror of Greed\" · 7 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "behind/L35-q62-from20-miss4-s1-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
@@ -199,7 +199,7 @@
   ],
   "behind/L35-q62-from20-miss4-s1-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
@@ -207,7 +207,7 @@
   ],
   "behind/L35-q62-from20-miss4-s2-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
@@ -215,7 +215,7 @@
   ],
   "behind/L35-q62-from20-miss4-s2-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
@@ -228,10 +228,10 @@
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","b":"Lv 35–36","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Regional quests","s":"8 to pick up · 2 follow-ups · 0/10 turned in","c":"go \"Show\" rqgo:rq:2202011","x":["new Hugo Mercenaries: Deep Shadow | -> lock(disabled) Hugo Mercenaries: An Old Promise","new Her Last Favor","new An Invitation to the Past: Part 1 | -> lock(disabled) An Invitation to the Past: Part 2","new The Future Within the Past","+4 more"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 17 open at your level"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
     {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
-    {"t":"Buy Insignia Explosion 6 → 7","s":"2 pts","c":"tag \"After the one above\""}
+    {"t":"Buy Insignia Explosion 6 → 7","s":"2 pts · inferred","c":"tag \"After the one above\""}
   ],
   "behind/L35-q62-from30-lagq-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
@@ -240,16 +240,16 @@
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","b":"Lv 35–36","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Regional quests","s":"8 to pick up · 2 follow-ups · 0/10 turned in","c":"go \"Show\" rqgo:rq:2202011","x":["new Hugo Mercenaries: Deep Shadow | -> lock(disabled) Hugo Mercenaries: An Old Promise","new Her Last Favor","new An Invitation to the Past: Part 1 | -> lock(disabled) An Invitation to the Past: Part 2","new The Future Within the Past","+4 more"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 17 open at your level"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
     {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
-    {"t":"Buy Insignia Explosion 6 → 7","s":"2 pts","c":"tag \"After the one above\""}
+    {"t":"Buy Insignia Explosion 6 → 7","s":"2 pts · inferred","c":"tag \"After the one above\""}
   ],
   "behind/L35-q62-from30-miss2-s0-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 2 levels away · opens on \"Mirror of Greed\" · 7 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
@@ -257,13 +257,13 @@
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 2 levels away · opens on \"Mirror of Greed\" · 7 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "behind/L35-q62-from30-miss2-s1-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
@@ -271,7 +271,7 @@
   ],
   "behind/L35-q62-from30-miss2-s1-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
@@ -279,7 +279,7 @@
   ],
   "behind/L35-q62-from30-miss2-s2-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
@@ -287,7 +287,7 @@
   ],
   "behind/L35-q62-from30-miss2-s2-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
@@ -297,7 +297,7 @@
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 2 levels away · opens on \"Mirror of Greed\" · 7 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
@@ -305,13 +305,13 @@
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 2 levels away · opens on \"Mirror of Greed\" · 7 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "behind/L35-q62-from30-miss3-s1-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
@@ -319,7 +319,7 @@
   ],
   "behind/L35-q62-from30-miss3-s1-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
@@ -327,7 +327,7 @@
   ],
   "behind/L35-q62-from30-miss3-s2-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
@@ -335,7 +335,7 @@
   ],
   "behind/L35-q62-from30-miss3-s2-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
@@ -345,7 +345,7 @@
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 2 levels away · opens on \"Mirror of Greed\" · 7 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
@@ -353,13 +353,13 @@
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 2 levels away · opens on \"Mirror of Greed\" · 7 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "behind/L35-q62-from30-miss4-s1-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
@@ -367,7 +367,7 @@
   ],
   "behind/L35-q62-from30-miss4-s1-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
@@ -375,7 +375,7 @@
   ],
   "behind/L35-q62-from30-miss4-s2-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
@@ -383,7 +383,7 @@
   ],
   "behind/L35-q62-from30-miss4-s2-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · then put it on E, row 1","c":"primary \"Equipped\" stequip"},
     {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner ( Kibelisk : Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},

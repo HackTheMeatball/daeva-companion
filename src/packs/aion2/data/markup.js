@@ -38,7 +38,7 @@ const ST_WORDS = { disputed: ["check in game", "Sources disagree on this: check 
 export const stTag = st => ST_WORDS[st] ? ` <span class="ss-tag" title="${ST_WORDS[st][1]}">${ST_WORDS[st][0]}</span>` : "";
 export const stNote = st => ST_WORDS[st] ? ` (${ST_WORDS[st][0]})` : "";
 /* Vaizel / Triniel plan nodes (DV_BOARDS, data/build.json); keys dv:v:* / dv:t:*. */
-export const dvNodes = b => DV_BOARDS[b].nodes.map(n => ({ k: n.k, dv: true, board: b, blv: DV_BOARDS[b].lv, ty: n.ty, t: n.t, ...(n.via ? { via: n.via } : {}) }));
+export const dvNodes = b => DV_BOARDS[b].nodes.map(n => ({ k: n.k, dv: true, board: b, blv: DV_BOARDS[b].lv, ty: n.ty, t: n.t, ...(n.via ? { via: n.via } : {}), ...(n.st ? { st: n.st } : {}) }));
 export const metaSlug = n => n.toLowerCase().replace(/['’]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 export const mapSlug = n => n.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 export const hideouts = (names, keyPrefix = "sd") => [{ ...sub("Sealed Dungeons"), group: "hideout" },

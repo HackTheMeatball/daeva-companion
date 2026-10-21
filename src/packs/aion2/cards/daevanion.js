@@ -10,10 +10,12 @@ import { GATES } from "../data/milestones.js";
 import { DV_NODES } from "../catalog.js";
 import { dvCostOf, dvNeed, dvNext, dvSpent, dvWaitOf } from "../requirements.js";
 import { tipPop } from "./shared.js";
+import { stTag } from "../data/markup.js";
 import { keyChip } from "../hotkeys.js";
 import { aion2State as state, aion2Save as save, aion2Update as update, aion2Render as render, aion2RenderNow as renderNow, aion2RenderUndo as renderUndo, aion2FitSkills as fitSkills, aion2SpMini as spMini, aion2DvShort as dvShort, aion2LayoutEl as layoutEl, aion2DvGate as dvGate } from "./page.js";
 
-const dvName = it => `<span class="dvname ${DV_TYPE[it.ty][0]}">${it.t}</span>`;
+/* a plan row the data labels disputed or inferred (0.9 P1) carries its tag after the name */
+const dvName = it => `<span class="dvname ${DV_TYPE[it.ty][0]}">${it.t}</span>${stTag(it.st)}`;
 const dvMeta = it => `${it.board} · ${DV_TYPE[it.ty][1]}${it.via ? " · " + it.via : ""}${it.blv === 21 ? " · learned at Lv 21" : ""}`;
 /* Daevanion node row: "points spent" box first, then the tick (enabled once a cost is logged). */
 function refreshDvGates() {
@@ -79,7 +81,7 @@ function renderDaevanion() {
     const fromLv = (GATES.filter(g => g.lv < char(state).level).pop() || { lv: 1 }).lv, pctB = Math.min(100, Math.max(0, (char(state).level - fromLv) / Math.max(1, opensAt - fromLv) * 100));
     const div = it.board !== prevB ? `<li class="then-board"><span>${it.board}</span><span>${!shutB ? "open" : wB.story ? dvWhy(wB) : `opens Lv ${opensAt} · ${opensAt - char(state).level} to go`}</span>${shutB && !wB.story ? `<span class="tb-bar"><span style="width:${pctB}%"></span></span>` : ""}</li>` : "";
     prevB = it.board;
-    return div + `<li title="${dvMeta(it)}"><span class="sname">${SP_ICONS[dvSkill(it)] ? spMini(dvSkill(it)) : `<img class="dvmini" src="${dvIconSrc(it)}" alt="" loading="lazy" onerror="this.remove()">`}<span class="dvname ${DV_TYPE[it.ty][0]}">${dvShort(it.t)}</span></span><span class="slv">${!openOf(char(state), it.k) && it.blv !== opensAt ? `Lv ${it.blv}` : ""}</span><span class="sst"></span>${shutB ? `<span class="nb-tag" title="${it.board} board ${wB.story ? (chainsOn() && wB.text ? wB.text : `opens after "${wB.story}" is turned in`).replace(/"/g, "&quot;") : `opens at Lv ${opensAt}`}">${wB.story ? "Story" : `Lv ${opensAt}`}</span>` : ""}</li>`; }).join("") + `</ul>` : "");
+    return div + `<li title="${dvMeta(it)}"><span class="sname">${SP_ICONS[dvSkill(it)] ? spMini(dvSkill(it)) : `<img class="dvmini" src="${dvIconSrc(it)}" alt="" loading="lazy" onerror="this.remove()">`}${dvName({ ...it, t: dvShort(it.t) })}</span><span class="slv">${!openOf(char(state), it.k) && it.blv !== opensAt ? `Lv ${it.blv}` : ""}</span><span class="sst"></span>${shutB ? `<span class="nb-tag" title="${it.board} board ${wB.story ? (chainsOn() && wB.text ? wB.text : `opens after "${wB.story}" is turned in`).replace(/"/g, "&quot;") : `opens at Lv ${opensAt}`}">${wB.story ? "Story" : `Lv ${opensAt}`}</span>` : ""}</li>`; }).join("") + `</ul>` : "");
   /* Full plan, grouped by board; boards not yet open are dimmed with their level. */
   const byBoard = {};
   DV_NODES().forEach(it => { (byBoard[it.board] = byBoard[it.board] || []).push(it); });

@@ -23,6 +23,7 @@
 import { char } from "../../../core/state.js";
 import { chainsOn, objIdxOf, openOf } from "../../../core/requirements.js";
 import { QUEST_STEPS } from "../data/story.js";
+import { STIGMA_ST } from "../data/build.js";
 import { MAP_ICO, rqTicked, snoozeToggle } from "../../../cards/milestones.js";
 import { capFirst, renderNow } from "../../../cards/nextup.js";
 import { travelAdviceOn } from "../nextup.js";
@@ -39,12 +40,14 @@ const pinLink = (href, label) => href ? ` <a class="ns-pin" href="${href}" targe
 const away = L => { const lv = char(state).level; return `${L - lv} level${L - lv === 1 ? "" : "s"} away`; };
 /* A skill upgrade backed by one source only: a small tag (the Skills card's tooltip names the source). */
 const ssTag = x => x.s.single ? ` · <span class="ss-tag" title="Single source (${x.s.single})">single source</span>` : "";
+/* a skill order row the data labels disputed or inferred (0.9 P1): the P18 tag; never on a specialty card (its pick has its own) */
+const soTag = x => !x.spec && x.s.st ? ` ·${stTag(x.s.st)}` : "";
 const spBuyT = x => `Buy <b>${x.s.n} ${x.spec ? "specialty" + (x.slot > 1 ? " slot " + x.slot : "") : (x.L - 1) + " → " + x.L}</b>`;
 /* A specialty slot's line (0.3 E7, design §9; Q6): the build's pick once its choice is open at the skill's effective level;
    a pick that needs a higher skill level says when ("Guide pick: X at skill Lv N"); no pick: "pick a specialty". A labelled
    pick (0.8.1 F2: disputed / contested / inferred) carries its label as a small tag, as 0.8 P20 labels values; the tooltip
    names the alternative. */
-const spPickTag = p => p.st ? ` <span class="ss-tag" title="${p.why.replace(/"/g, "&quot;")}">${p.st}</span>` : "";
+const spPickTag = p => p.st ? ` <span class="ss-tag" title="${p.why.replace(/"/g, "&quot;")}">${p.st}</span>` : stTag(p.vst);
 const spSlotSub = x => { const p = specPickOf(char(state), x); if (p) return `Pick: ${p.t}${spPickTag(p)}`;
   const q = (x.s.specs || [])[x.slot - 1], open = openOf(char(state), x.k);
   if (q) return `${open ? `Slot ${x.slot} open · ` : ""}Guide pick: ${q.t}${spPickTag(q)} at skill Lv ${q.lv}`;
@@ -53,13 +56,16 @@ const spSlotSub = x => { const p = specPickOf(char(state), x); if (p) return `Pi
    type; the old emoji when the file can't load */
 const SD_TILE = { ico: `<img class="mk-tile" src="assets/icons/map-sealed.png" alt="" onerror="this.replaceWith('⛏')">`, icoLabel: "Sealed Dungeon" };
 const SH_TILE = { ico: `<img class="mk-tile" src="assets/icons/map-stronghold.png" alt="" onerror="this.replaceWith('🏰')">`, icoLabel: "Stronghold" };
+/* the guide's stigma for a slot (the plan, not the player's own pick) carries the plan's one label (0.9 P1) */
+const stPlanTag = nx => nx.name === nx.plan ? stTag(STIGMA_ST) : "";
 const nsBar = (d, n, lbl) => `<span class="nsq-bar"><span style="width:${d / n * 100}%"></span></span><span class="nsq-barl">${lbl}</span>`;
 /* Zone (and whether it's where the story sends you) · nearest Kibelisk. */
 /* "I'll walk" (0.5 P16, design §8.3, Q4): the targets (story quest node ids) the player chose to walk to, this session only */
 const teleWalked = new Set();
 const teleShown = a => !!a.tele && !teleWalked.has(a.tele.to);
 /* kibSt: the entrance's label when not verified (0.8 P20; single source, the dungeons' today, shows none) */
-const nsWhere = (area, kib, hereArea, kibSt) => [area !== NO_AREA ? area + (area === hereArea ? " (near your story step)" : "") : "", kib ? `<span class="nw">Kibelisk: ${kib}</span>${stTag(kibSt)}` : ""].filter(Boolean).join(" · ");
+/* hereSt: the story turn-in zone's label (0.9 P1), after "near your story step" */
+const nsWhere = (area, kib, hereArea, kibSt, hereSt) => [area !== NO_AREA ? area + (area === hereArea ? ` (near your story step${stTag(hereSt)})` : "") : "", kib ? `<span class="nw">Kibelisk: ${kib}</span>${stTag(kibSt)}` : ""].filter(Boolean).join(" · ");
 
 /* The regional quests card's list. Chains: a follow-up sits under the quest that unlocks it (→), so it's clear what to finish first. */
 let rqWaitOpen = false; /* "+N waiting on the story" fold, kept across Next up re-renders */
@@ -78,7 +84,7 @@ function rqExtraHTML(a) {
     const btn = `<button type="button" class="q-act${x.run ? " go" : ""}" data-rqk="${x.k}"${x.lock ? " disabled" : ""} aria-label="${verb}: ${n}${x.lock ? " (locked)" : ""}" title="${x.lock ? `Unlocks when ${preTxt(x)} turned in` : x.run ? "In progress · press when you turn it in" : "Press when you pick it up"}">${verb}</button>`;
     const near = hereArea && q.zone === hereArea && !x.lock;
     /* the map pin: muted, or the accent when the quest is near your story step (was the inline .q-near pin) */
-    const pin = id && !x.lock ? `<a class="q-pin${near ? " near" : ""}" href="${aion2QuestMap(id)}" target="_blank" rel="noopener" title="${near ? `Near your story step (${hereArea})${stNote(q.zoneSt)} · show` : "Show"} on the map" aria-label="${n} on the map${near ? ", near your story step" : ""}">${MAP_ICO}</a>` : `<span class="q-pin"></span>`;
+    const pin = id && !x.lock ? `<a class="q-pin${near ? " near" : ""}" href="${aion2QuestMap(id)}" target="_blank" rel="noopener" title="${near ? `Near your story step (${hereArea}${stNote(a.hereSt)})${stNote(q.zoneSt)} · show` : "Show"} on the map" aria-label="${n} on the map${near ? ", near your story step" : ""}">${MAP_ICO}</a>` : `<span class="q-pin"></span>`;
     const zz = !x.run && !x.lock ? `<button type="button" class="q-snz ico" data-snz="${x.k}" title="Not in game yet: hide it until your next Level up" aria-label="${n}: not in game yet">${EYE_OFF}</button>` : "";
     /* A follow-up keeps its arrow with its name. */
     return `<span class="ql ${x.run ? "run" : x.lock ? "lock" : "new"}${fu ? " fu" : ""}${near ? " near" : ""}">${rqStIco(x.run ? "run" : "new", "rq-st", x.lock ? "Locked" : undefined)}<span class="q-nm">${fu ? `<span class="q-ar" aria-hidden="true">→</span>` : ""}${label}${hi}${zz}</span>${pin}${btn}</span>`; };
@@ -99,29 +105,29 @@ export const aion2NowRenderers = {
   cube: a => ({ ico: "🎒", t: `Use your Cube items: <b>${[a.st ? itemQty(a.st, `Wisdom Stone${a.st === 1 ? "" : "s"}`) : "", a.cr ? itemQty(a.cr, `crystal${a.cr === 1 ? "" : "s"}`) : ""].filter(Boolean).join(" + ")}</b>`, sub: "Open the Cube and use them, then confirm", btn: "Used", act: a.act, done: true }),
   /* skill buys queue: only the first one gets the button */
   skill: a => { const x = a.x, base = x.spec ? spSlotSub(x) : a.first ? `${spCostTxt(x)} · you have the points` : spCostTxt(x);
-    return a.first ? { ico: spMini(x.s.n) || "✦", t: spBuyT(x), sub: base + ssTag(x), btn: "Spent", act: a.act, done: true, queue: "skill", row: keyHint("skills") } : { ico: spMini(x.s.n) || "✦", t: spBuyT(x), sub: base + ssTag(x), act: a.act, done: true, queue: "skill" }; },
+    return a.first ? { ico: spMini(x.s.n) || "✦", t: spBuyT(x), sub: base + ssTag(x) + soTag(x), btn: "Spent", act: a.act, done: true, queue: "skill", row: keyHint("skills") } : { ico: spMini(x.s.n) || "✦", t: spBuyT(x), sub: base + ssTag(x) + soTag(x), act: a.act, done: true, queue: "skill" }; },
   /* the key hint line ("Open Daevanion: press U", 0.6 P14) on the rows you finish in that window */
-  board: a => ({ ico: "◆", t: `Buy <b>${dvShort(a.dn.t)}</b> on ${a.dn.board}`, sub: a.dc === 0 ? "Already on your board: just mark it" : `${a.dc} of your ${a.dLeft} crystals`, btn: "Acquired", act: a.act, done: true, row: keyHint("daevanion") }),
-  boardcost: a => ({ ico: "◆", t: `Check <b>${dvShort(a.dn.t)}</b>'s cost on ${a.dn.board}`, sub: `You have ${a.dLeft} crystals; type its cost to see if you can buy it`, btn: "Enter cost", act: a.act, row: keyHint("daevanion") }),
-  stwait: a => ({ ico: stIco(a.nx.name, "st-img") || "✧", t: `Equip <b>${a.nx.name}</b>`, sub: `Stigma slot ${a.nx.n} is open · needs 1 shard${a.at ? ` (+1 at Lv ${a.at})` : ""}`, tag: "Needs 1 shard", act: a.act }),
+  board: a => ({ ico: "◆", t: `Buy <b>${dvShort(a.dn.t)}</b>${stTag(a.dn.st)} on ${a.dn.board}`, sub: a.dc === 0 ? "Already on your board: just mark it" : `${a.dc} of your ${a.dLeft} crystals`, btn: "Acquired", act: a.act, done: true, row: keyHint("daevanion") }),
+  boardcost: a => ({ ico: "◆", t: `Check <b>${dvShort(a.dn.t)}</b>'s cost${stTag(a.dn.st)} on ${a.dn.board}`, sub: `You have ${a.dLeft} crystals; type its cost to see if you can buy it`, btn: "Enter cost", act: a.act, row: keyHint("daevanion") }),
+  stwait: a => ({ ico: stIco(a.nx.name, "st-img") || "✧", t: `Equip <b>${a.nx.name}</b>${stPlanTag(a.nx)}`, sub: `Stigma slot ${a.nx.n} is open · needs 1 shard${a.at ? ` (+1 at Lv ${a.at})` : ""}`, tag: "Needs 1 shard", act: a.act }),
   stequip: a => { const eTxt = a.r < 0 ? "" : ` · then put it on E, row ${a.r}${a.r === 0 ? " (fires first)" : ""}`;
-    return { ico: stIco(a.nx.name, "st-img") || "✧", t: `Equip <b>${a.nx.name}</b>`, sub: `Stigma slot ${a.nx.n} is open${eTxt}`, btn: "Equipped", act: a.act, done: true }; },
-  stup: a => ({ ico: stIco(a.up.x.name, "st-img") || "✧", t: `Upgrade <b>${a.up.x.name} ${a.up.L - 1} → ${a.up.L}</b>`, sub: `${a.up.cost} of your ${a.shards} shards`, btn: "Upgraded", act: a.act, done: true }),
+    return { ico: stIco(a.nx.name, "st-img") || "✧", t: `Equip <b>${a.nx.name}</b>${stPlanTag(a.nx)}`, sub: `Stigma slot ${a.nx.n} is open${eTxt}`, btn: "Equipped", act: a.act, done: true }; },
+  stup: a => ({ ico: stIco(a.up.x.name, "st-img") || "✧", t: `Upgrade <b>${a.up.x.name} ${a.up.L - 1} → ${a.up.L}</b>${stTag(STIGMA_ST)}`, sub: `${a.up.cost} of your ${a.shards} shards`, btn: "Upgraded", act: a.act, done: true }),
   sd: a => { const p = a.pick, L = a.loc, pin = `<b>${p.it.name}</b>${pinLink(mapFocus(p.it))}`;
     return { bar: a.band.n ? nsBar(a.band.d, a.band.n, `Lv ${a.band.bd}–${a.band.bd + 4} · ${a.band.d}/${a.band.n}`) : "", ...SD_TILE,
-      t: a.gated ? `Clear ${pin} <span class="ns-then">and others until Lv ${a.gateLv}</span>` : `Clear ${pin}`, sub: nsWhere(p.area, L.kib, a.hereArea, L.st),
+      t: a.gated ? `Clear ${pin} <span class="ns-then">and others until Lv ${a.gateLv}</span>` : `Clear ${pin}`, sub: nsWhere(p.area, L.kib, a.hereArea, L.st, a.hereSt),
       info: [`${itemQty(`+${SD_RW.cr}`, "crystals")}, ${itemQty(`+${SD_RW.st}`, "Wisdom Stones")} each · ~5 min`, L.kib && L.m ? `Kibelisk ${L.kib} is ${L.m} m away` : "", `${a.open} open at your level`].filter(Boolean).join(" · "), btn: "Show", act: a.act }; },
   sh: a => { const p = a.pick;
-    return { bar: nsBar(a.done, a.total, `${a.done}/${a.total} strongholds`), ...SH_TILE, t: `Run <b>${p.it.name}</b>${pinLink(mapFocus(p.it))}`, sub: nsWhere(p.area, p.it.kib, a.hereArea),
+    return { bar: nsBar(a.done, a.total, `${a.done}/${a.total} strongholds`), ...SH_TILE, t: `Run <b>${p.it.name}</b>${pinLink(mapFocus(p.it))}`, sub: nsWhere(p.area, p.it.kib, a.hereArea, undefined, a.hereSt),
       info: [`${SH_REWARD} each`, p.it.kib && p.it.m ? `Kibelisk ${p.it.kib} is ${p.it.m} m away` : "", `${a.open} open`].filter(Boolean).join(" · "), btn: "Show", act: a.act }; },
   /* the tile: today's ❖ glyph, white on the regional teal (0.8 P13, owner option A, T-58; a glyph, not game art) */
   rq: a => ({ ico: `<span class="rq-tile">❖</span>`, t: `<b>Regional quests</b>`,
     sub: [a.fresh ? `${a.fresh} to pick up` : "", a.run ? `${a.run} in progress` : "", a.lock ? `${a.lock} follow-up${a.lock === 1 ? "" : "s"}` : "", a.snz.length ? `${a.snz.length} not in game yet` : "",
-      a.near ? `<span class="nw">${a.near} near your story step</span>` : ""].filter(Boolean).join(" · ") || "None to pick up now",
+      a.near ? `<span class="nw">${a.near} near your story step</span>${stTag(a.hereSt)}` : ""].filter(Boolean).join(" · ") || "None to pick up now",
     bar: a.scope ? `<span class="nsq-bar rq"><span class="d" style="width:${a.done / a.scope * 100}%"></span><span class="r" style="width:${a.run / a.scope * 100}%"></span></span><span class="nsq-barl">${a.done}/${a.scope} turned in</span>` : "",
     btn: "Show", act: a.act, extra: rqExtraHTML(a) }),
   /* E6: what opens it, in the words every card uses (src/core/blockers.js) */
-  laterSkill: a => ({ ico: spMini(a.x.s.n) || "✦", t: spBuyT(a.x), sub: `${chainsOn() && a.why ? capFirst(a.why) : `Opens at Lv ${a.x.req}${stTag(a.x.s.learnSt)}`} · ${away(a.x.req)}${ssTag(a.x)}`, act: a.act, later: true }),
+  laterSkill: a => ({ ico: spMini(a.x.s.n) || "✦", t: spBuyT(a.x), sub: `${chainsOn() && a.why ? capFirst(a.why) : `Opens at Lv ${a.x.req}${stTag(a.x.s.learnSt)}`} · ${away(a.x.req)}${ssTag(a.x)}${soTag(a.x)}`, act: a.act, later: true }),
 
   /* level-gated story card: what else gives XP at your level */
   "story.meanwhile": m => { const xs = [];

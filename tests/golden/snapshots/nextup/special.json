@@ -1,32 +1,32 @@
 {
   "special/empty-object": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 4–5"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 4–5"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest","b":"Lv 4–5"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Exploit Weakness 1 → 2","s":"Needs Lv 6 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 6–8"},
+    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Exploit Weakness 1 → 2","s":"Needs Lv 6 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 6–8"},
     {"t":"Complete \"The Being Beneath the Lake\"","s":"Lv 6 milestone · 1 level away · opens on \"The Being Beneath the Lake\" · set your quest","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 3 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "special/fresh-no-save": [
     {"t":"Story: A Village in the Fog","s":"0/2 objectives · then Prepare to Escape","c":"primary \"Turned in\" story","o":["Remember Aldelle Village bind with the Kibelisk","Turn in Ellin (Villager), Aldelle Village"]},
-    {"t":"Buy Ambush 1 → 2","s":"Needs Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Heart Gore 1 → 2","s":"Needs Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Ambush 1 → 2","s":"Needs Lv 3 · 2 levels away · inferred","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Heart Gore 1 → 2","s":"Needs Lv 4 · 3 levels away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Lv 4 milestone · 3 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 4 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "special/not-v5-empty-object": [
     {"t":"Story: A Village in the Fog","s":"0/2 objectives · then Prepare to Escape","c":"primary \"Turned in\" story","o":["Remember Aldelle Village bind with the Kibelisk","Turn in Ellin (Villager), Aldelle Village"]},
-    {"t":"Buy Ambush 1 → 2","s":"Needs Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Heart Gore 1 → 2","s":"Needs Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Ambush 1 → 2","s":"Needs Lv 3 · 2 levels away · inferred","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Heart Gore 1 → 2","s":"Needs Lv 4 · 3 levels away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Lv 4 milestone · 3 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 4 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "special/not-v5-flat-L30": [
     {"t":"Story: A Village in the Fog","s":"0/2 objectives · then Prepare to Escape","c":"primary \"Turned in\" story","o":["Remember Aldelle Village bind with the Kibelisk","Turn in Ellin (Villager), Aldelle Village"]},
-    {"t":"Buy Ambush 1 → 2","s":"Needs Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Heart Gore 1 → 2","s":"Needs Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Ambush 1 → 2","s":"Needs Lv 3 · 2 levels away · inferred","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Heart Gore 1 → 2","s":"Needs Lv 4 · 3 levels away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Lv 4 milestone · 3 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 4 levels away","c":"tag \"Later\"","f":"later"}
   ],

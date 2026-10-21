@@ -16,7 +16,7 @@ import { KIBELISKS, NODE_PLACE } from "./data/place.js";
 import { nudgeOf, storyTargetOf, teleportOf } from "./travel.js";
 import { AREA_ITEMS, KIB_AREA, bandOf } from "./catalog.js";
 import { areaOpen, dvCostOf, dvNeed, dvNext, dvSpent, isAscensionKey, rqStatus, rqWaitsOnStory, shardsFromLv, skillBuy, skillOpen, stigmaEquipOpen, stigmaPlan, stigmaSlots,
-  storyAreaOf, storyHereOf } from "./requirements.js";
+  storyAreaOf, storyAreaStOf, storyHereOf } from "./requirements.js";
 import { blockerText } from "../../core/blockers.js";
 import { etaOf, rankChangeOn } from "../../core/nextup.js";
 import { perPack } from "../../core/pack.js";
@@ -49,7 +49,8 @@ const AREAS = new WeakMap();
 const areasOf = (state, ctx) => {
   let a = AREAS.get(ctx); if (a) return a;
   const { c, ev } = ctx;
-  a = { hereArea: storyAreaOf(storyHereOf(state), KIB_AREA), here: rankChangeOn("placeRank") ? whereNow(c) : null,
+  const sHere = storyHereOf(state);
+  a = { hereArea: storyAreaOf(sHere, KIB_AREA), hereSt: storyAreaStOf(sHere), here: rankChangeOn("placeRank") ? whereNow(c) : null,
     sdOpen: AREA_ITEMS.filter(x => x.it.kind === "hideout" && areaOpen(c, x, ev) && !doneOf(c, x.k, ev)).sort((a, b) => bandOf(a) - bandOf(b)),
     shOpen: AREA_ITEMS.filter(x => x.it.kind === "stronghold" && areaOpen(c, x, ev) && !doneOf(c, x.k, ev)) };
   AREAS.set(ctx, a);
@@ -113,14 +114,14 @@ function spend(state, { c, lv, ev }) {
 
 /* Regional quests as one card, and the Sealed Dungeon pick: above the story when it is level-gated (XP), else after it. */
 function regional(state, ctx) {
-  const { c, lv, ev, story: { gated, gateLv } } = ctx, { hereArea, here, sdOpen } = areasOf(state, ctx), out = [];
+  const { c, lv, ev, story: { gated, gateLv } } = ctx, { hereArea, hereSt, here, sdOpen } = areasOf(state, ctx), out = [], hs = hereSt ? { hereSt } : {};
   /* Sealed Dungeon pick: one in the story step's zone (highest band first); else one from the highest open band. Where
      the player is known (placeRank, a dated stamp): the highest open band, then the nearest (byPlace). */
   const byHigh = [...sdOpen].sort((a, b) => bandOf(b) - bandOf(a));
   const sdNear = here && byPlace(here, x => placeOfKey(x.k, "entrance", AREA_ITEMS.indexOf(x)));
   const sdPick = sdNear ? [...byHigh].sort((a, b) => bandOf(b) - bandOf(a) || sdNear(a, b))[0] : byHigh.find(x => x.area === hereArea) || byHigh[0];
   const bandCount = (kind, bd) => { const xs = AREA_ITEMS.filter(x => x.it.kind === kind && bandOf(x) === bd); return { bd, d: xs.filter(x => doneOf(c, x.k, ev)).length, n: xs.length }; };
-  const sdCard = sdOpen.length ? { kind: "sd", pick: sdPick, loc: AREA_LOC[sdPick.it.name] || {}, open: sdOpen.length, gated, gateLv, hereArea, band: bandCount("hideout", bandOf(sdPick)), act: "areas:" + bandOf(sdPick) } : null;
+  const sdCard = sdOpen.length ? { kind: "sd", pick: sdPick, loc: AREA_LOC[sdPick.it.name] || {}, open: sdOpen.length, gated, gateLv, hereArea, ...hs, band: bandCount("hideout", bandOf(sdPick)), act: "areas:" + bandOf(sdPick) } : null;
   /* Take them all, finish them in any order. Available = the quest's own recommended level (RQ rec), not its milestone's
      level. "Not in game yet" (rqSnooze) hides a quest until your next Level up or until the quest before it is turned in. */
   const snz = c.rqSnooze || {};
@@ -148,7 +149,7 @@ function regional(state, ctx) {
      P14–P16's, design §5's "near" row waits for them) */
   const rqCard = rqOpen.length || rqSnzK.length || rqWait.length ? { kind: "rq", all: rqAll, open: rqOpen, wait: rqWait, snz: rqAll.filter(x => x.snz),
     run: rqRun, lock: rqLock, fresh: rqOpen.length - rqRun - rqLock, scope: rqScope.length, done: rqScope.filter(x => x.done).length,
-    near: hereArea ? rqOpen.filter(x => !x.lock && x.it.q.zone === hereArea).length : 0, hereArea,
+    near: hereArea ? rqOpen.filter(x => !x.lock && x.it.q.zone === hereArea).length : 0, hereArea, ...hs,
     act: "rqgo:" + (rqFirst ? rqFirst.k : rqSnzK.length ? rqSnzK[0] : rqWait[0].k) } : null;
   if (rqCard) out.push({ phase: gated && rqOpen.length ? "beforeStory" : "side", keep: true, card: rqCard });
   /* cands: every open dungeon the pick is made from (the engine's tracks; the rq card's are its open rows) */
@@ -170,14 +171,14 @@ function stigma(state, { c, lv, ev }) {
 
 /* Strongholds: one pick (in the story step's zone, else the highest band), after the advice cards. */
 function stronghold(state, ctx) {
-  const { c, ev } = ctx, { hereArea, here, shOpen } = areasOf(state, ctx);
+  const { c, ev } = ctx, { hereArea, hereSt, here, shOpen } = areasOf(state, ctx);
   if (!shOpen.length) return [];
   const byLo = (a, b) => (b.it.lo || 0) - (a.it.lo || 0) || (a.it.hi || 45) - (b.it.hi || 45);
   /* where the player is known (placeRank): the nearest (byPlace), then lo / hi as before */
   const shNear = here && byPlace(here, x => placeOfKey(x.k, "entrance"));
   const shPick = shNear ? [...shOpen].sort((a, b) => shNear(a, b) || byLo(a, b))[0] : shOpen.find(x => x.area === hereArea) || [...shOpen].sort(byLo)[0];
   const shAll = AREA_ITEMS.filter(x => x.it.kind === "stronghold");
-  return [{ phase: "late", keep: true, cands: shOpen.map(x => x.k), card: { kind: "sh", pick: shPick, open: shOpen.length, done: shAll.filter(x => doneOf(c, x.k, ev)).length, total: shAll.length, hereArea, act: "areas:sh" } }];
+  return [{ phase: "late", keep: true, cands: shOpen.map(x => x.k), card: { kind: "sh", pick: shPick, open: shOpen.length, done: shAll.filter(x => doneOf(c, x.k, ev)).length, total: shAll.length, hereArea, ...(hereSt ? { hereSt } : {}), act: "areas:sh" } }];
 }
 
 /* Later: each skill's own next upgrade only (no jumps past a level you haven't bought), one card per skill, at most 3;

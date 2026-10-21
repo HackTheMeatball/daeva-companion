@@ -10,7 +10,7 @@
     {"t":"Story: Canyon's Secret","s":"0/2 objectives · then Bitter Reality","c":"primary \"Turned in\" story","b":"Lv 30–31","o":["Investigate the Urugugu Canyon complete the Urugugu Canyon investigation ( Kibelisk : Kraka Footpath Wastewater Downstream). This is your first run of the Urugugu Canyon Expedition.","Turn in Ulgorn, Nornir Assembly"]},
     {"t":"Regional quests","s":"12 to pick up · 2 follow-ups · 0/14 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+8 more","+5 waiting on the story Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game"]},
     {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk : Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
-    {"t":"Equip Lunge Stance","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 31)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Lunge Stance check in game","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 31)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk : Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 7 open"},
     {"t":"Buy Rending Blow 2 → 3","s":"1 pt","c":"tag \"After the one above\""}
   ],
@@ -25,7 +25,7 @@
     {"t":"Story: Canyon's Secret","s":"0/2 objectives · then Bitter Reality","c":"primary \"Turned in\" story","b":"Lv 30–31","o":["Investigate the Urugugu Canyon complete the Urugugu Canyon investigation ( Kibelisk : Kraka Footpath Wastewater Downstream). This is your first run of the Urugugu Canyon Expedition.","Turn in Ulgorn, Nornir Assembly"]},
     {"t":"Regional quests","s":"12 to pick up · 2 follow-ups · 0/14 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+8 more","+5 waiting on the story Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game"]},
     {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk : Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
-    {"t":"Equip Lunge Stance","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 31)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Lunge Stance check in game","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 31)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk : Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 7 open"},
     {"t":"Buy Rending Blow 2 → 3","s":"1 pt","c":"tag \"After the one above\""}
   ]
