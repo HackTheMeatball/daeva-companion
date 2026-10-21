@@ -1547,7 +1547,7 @@
               },
               {
                 "url": "https://allthings.how/?p=244377",
-                "note": "'picks up straight after Blade of Vengeance'; Blade turn-in Gamilla at Watcher's Tent = Fang Legion giver"
+                "note": "\"In the Fang Legion's Name\" opens once \"Blade of Vengeance\" is done. Blade turn-in Gamilla at Watcher's Tent = Fang Legion giver. Fetch date unknown."
               }
             ],
             "note": "App QUEST_AFTER direction is CORRECT. The P0-3 reading of Metabot was a misread: Metabot shows no giver for Blade and no prerequisite either way."
@@ -2542,7 +2542,7 @@
               },
               {
                 "url": "https://allthings.how/?p=244363",
-                "note": "'asks you back for the final act'"
+                "note": "Part 1 of \"An Invitation to the Past\" ends by sending you on to Part 2. Fetch date unknown."
               },
               {
                 "url": "https://metabot.gg/en/aion-2/quests/an-invitation-to-the-past-part-1",
@@ -10524,7 +10524,7 @@
               },
               {
                 "url": "https://allthings.how/?p=244384",
-                "note": "'points you to Battlescar Mound Cliff for the next wonder'"
+                "note": "The 1st Leg of \"Nine Wonders of Altgard\" ends by sending you to Battlescar Mound Cliff for the 2nd. Fetch date unknown."
               },
               {
                 "url": "https://allthings.how/aion-2-every-impetusium-square-regional-quest-and-reward-asmodian/",
@@ -10728,7 +10728,7 @@
               },
               {
                 "url": "https://allthings.how/aion-2-every-impetusium-square-regional-quest-and-reward-asmodian/",
-                "note": "'the next leg' at the end of the Basfelt Ruins cliff"
+                "note": "The Final Stretch follows the 2nd Leg, which ends at the Basfelt Ruins cliff. Fetch date unknown."
               }
             ],
             "note": "New edge."

@@ -7,7 +7,7 @@
     {
       "id": "C01", "claim": "Respec is free until Lv 31, Kina after.", "verdict": "disputed",
       "sources": [
-        { "url": "https://allthings.how/?p=215236", "quote": "Resets are free and unlimited" },
+        { "url": "https://allthings.how/?p=215236", "note": "Undoing spent skill points costs nothing, and you can do it any number of times. Fetch date unknown." },
         { "url": "https://www.exitlag.com/blog/aion-2-complete-character-progression/", "quote": "You can reset all skills for free anytime during leveling" },
         { "url": "https://thegameswiki.com/aion-2/wiki/skills-and-specialties", "quote": "points already spent can be refunded for a fee" }
       ],
