@@ -412,6 +412,8 @@ Rules for every item:
         up"), measurement only: the same test on a Lv 45 join holding 180 stones, one tap per skill and no per-line
         "Mark spent" clicks. Baseline on live 0.8.0 (Player Testing's endgame catch-up
         script, 2026-10-21): 141 clicks for skills including specialty picks; paste the new count with the same script.
+        Per-class baselines (8-class sweep #721, main 26c76f3): Templar 114, Cleric 104, Sorcerer 105, Chanter 105,
+        Ranger 99, Gladiator 94, Spiritmaster 99; paste every class's new count.
   - [ ] Shots at 1500 and 390 px, Basic and Advanced, against the mock.
 - **Lanes:** skills-card, nextup-card, app.css, golden, golden-nextup. **Model:** Opus, L (120 min).
 - **After:** P15.
@@ -438,6 +440,8 @@ Rules for every item:
         tester's 336 Daevanion crystals and 90 stigma shards catches up every open board and the stigma slots in one tap
         each.
         Baseline on live 0.8.0 (the same script): 31 clicks for stigmas and 24 for Daevanion; paste the new counts.
+        The other 7 classes (sweep #721): 24 stigma clicks each; paste their new counts. Their Daevanion count is 0
+        because no path costs exist yet (1.0 scope, owner screens via Game Data Check), so only the Assassin's is measured.
         Stigmas past Lv 45 ("didn't seem to scale well with endgame") are 0.10's endgame scope, not this item.
   - [ ] Shots at 1500 and 390 px against the mock.
 - **Lanes:** app.css, golden, daevanion-card. **Model:** Opus, M (90 min).
@@ -758,6 +762,32 @@ picker and opens from a stored save. P28 finishes P3's own goal in the tests; P2
 - **Review:** standing.
 - **Lanes:** gen, golden. **Model:** Opus, M (90 min).
 - **After:** research-quotes-c7.
+
+## P32: The rest of P6: schema under 4 s and one counts file
+
+- **Problem.** P6 (#629, PR #717) merged with two acceptance lines unmet: `schema` takes 8–10 s against its < 4 s target
+  (about 45 full `generate()` runs for the negative controls, ~110 ms each), and `expected-counts.json` was not built,
+  so data counts are still pinned in `tests/schema.mjs` and `checks.mjs`. Reviews also asked for a test that an
+  in-memory view with no edits compiles byte-identical modules, and for the ARCHITECTURE `schema` row to match.
+- **Result.**
+  - the generator negative controls in `tests/schema.mjs` run in worker threads (or a faster `generate()`), and
+    `schema` alone runs under 4 s locally;
+  - data counts live in one reviewed `data/expected-counts.json`, written by `npm run gen -- --counts`, and
+    `tests/schema.mjs` and `checks.mjs` read it;
+  - a test pins that `generate({ mutate: () => {} })` compiles byte-identical modules to the real file system;
+  - the ARCHITECTURE suite table gives the measured `schema` time and the `--root` copy that remains.
+- **Files.** `tests/schema.mjs`, `tools/gen/gen.mjs`, `tools/gen/packs.mjs`, `data/packs/aion2/checks.mjs`,
+  `data/expected-counts.json`, `docs/ARCHITECTURE.md`.
+- **No-gos.** No check removed or loosened; every negative control still fails (the 155 `schema` checks stay). No
+  workflow edit. A faster invariant "1, 2, 6" needs `rankNext` (src/) and is not this item.
+- **Acceptance.**
+  - [ ] `schema` alone under 4 s locally (pasted timings, before and after) and `--check-shards` passes.
+  - [ ] Every negative control still fails (pasted list), and a count changed in the data without
+        `npm run gen -- --counts` fails `schema`.
+  - [ ] The no-edit view test passes.
+- **Review:** standing.
+- **Lanes:** gen, schema. **Model:** Opus, M (90 min).
+- **After:** none.
 
 ## S1–S4: pipeline items (Build Pipeline builds them; no queue line)
 
