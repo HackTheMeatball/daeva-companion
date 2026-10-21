@@ -24,9 +24,9 @@ const log = []; const L = (...a) => { const s = a.join(' '); log.push(s); consol
   const S = () => p.evaluate(() => JSON.stringify(state));
   const top = () => p.evaluate(() => { const c = document.querySelector('#nsqWrap > .ns-card'); return c ? c.querySelector('h3').innerText.replace(/\s+/g, ' ') + ' | ' + ((c.querySelector('.title > p') || {}).innerText || '') : '(none: ' + (document.querySelector('#nowStar') || {}).innerText.replace(/\s+/g, ' ').slice(0, 120) + ')'; });
   const shots = async (lv) => {
-    for (const mode of ['advanced', 'basic']) { await p.click(`.modeseg [data-mode="${mode}"]`); await wait(350); await p.evaluate(() => window.scrollTo(0, 0));
-      await p.screenshot({ path: path.join(SH, `j-${lv}-${mode}.png`) }); }
-    await p.click('.modeseg [data-mode="advanced"]'); await wait(250); };
+    /* one view (0.9 P21): one shot per level */
+    await p.evaluate(() => window.scrollTo(0, 0)); await wait(100);
+    await p.screenshot({ path: path.join(SH, `j-${lv}.png`) }); };
   const dupCheck = async lv => { const d = await dump(p); const hs = d.cards.map(c => c.h); const dup = hs.filter((h, i) => hs.indexOf(h) !== i); if (dup.length) L(`  !! DUP cards at ${lv}: ${dup}`); return d; };
   const stepOnce = async lv => {
     /* returns description of action or null if nothing actionable */

@@ -9,8 +9,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "chanter/L10-q12-none-B": {
     "in": "c5a7281824f7",
@@ -22,7 +21,6 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   }
 }

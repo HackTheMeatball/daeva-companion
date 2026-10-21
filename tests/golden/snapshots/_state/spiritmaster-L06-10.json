@@ -7,8 +7,7 @@
       "open.g10": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true]
-    },
-    "mode": "advanced"
+    }
   },
   "spiritmaster/L10-q12-none-B": {
     "in": "64fa05f5e396",
@@ -18,7 +17,6 @@
       "open.g10": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true]
-    },
-    "mode": "basic"
+    }
   }
 }

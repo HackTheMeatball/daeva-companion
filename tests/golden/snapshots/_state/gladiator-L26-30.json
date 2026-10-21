@@ -19,8 +19,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "gladiator/L30-q48-none-B": {
     "in": "8ff40abf9ef0",
@@ -42,7 +41,6 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   }
 }

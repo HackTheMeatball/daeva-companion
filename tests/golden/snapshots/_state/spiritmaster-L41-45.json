@@ -22,8 +22,7 @@
       "open.g45": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true]
-    },
-    "mode": "advanced"
+    }
   },
   "spiritmaster/L45-q86-none-B": {
     "in": "e0f076e332ce",
@@ -48,7 +47,6 @@
       "open.g45": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true]
-    },
-    "mode": "basic"
+    }
   }
 }

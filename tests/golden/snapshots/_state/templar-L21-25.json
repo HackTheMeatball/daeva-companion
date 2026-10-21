@@ -15,8 +15,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "templar/L22-q34-none-B": {
     "in": "77f8d8f79386",
@@ -34,7 +33,6 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   }
 }

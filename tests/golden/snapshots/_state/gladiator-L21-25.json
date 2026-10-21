@@ -15,8 +15,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "gladiator/L22-q34-none-B": {
     "in": "5b728e3ce96f",
@@ -34,7 +33,6 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   }
 }

@@ -13,8 +13,7 @@
       "open.g22": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true]
-    },
-    "mode": "advanced"
+    }
   },
   "spiritmaster/L22-q34-none-B": {
     "in": "05e686881f46",
@@ -30,7 +29,6 @@
       "open.g22": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true]
-    },
-    "mode": "basic"
+    }
   }
 }

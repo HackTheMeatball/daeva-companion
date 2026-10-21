@@ -13,8 +13,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L16-q21-objs-A": {
     "in": "c304a27c3e1a",
@@ -30,8 +29,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L16-q22-none-A": {
     "in": "21511104bb38",
@@ -47,8 +45,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L16-q22-objs-A": {
     "in": "84235110ebc1",
@@ -64,8 +61,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L18-q23-none-A": {
     "in": "6e463c3fa282",
@@ -82,8 +78,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L18-q23-objs-A": {
     "in": "9e70050141cb",
@@ -100,8 +95,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L18-q24-none-A": {
     "in": "b0cfbacaa734",
@@ -118,8 +112,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L18-q24-objs-A": {
     "in": "010e05f4d6ab",
@@ -136,8 +129,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L19-q25-none-A": {
     "in": "d7ce33eb05b2",
@@ -154,8 +146,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L19-q25-objs-A": {
     "in": "1699f5c31c96",
@@ -172,8 +163,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L19-q26-none-A": {
     "in": "c492b923a057",
@@ -190,8 +180,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L19-q26-objs-A": {
     "in": "d3da3970d48b",
@@ -208,8 +197,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L20-q27-none-A": {
     "in": "1fbd9091d3aa",
@@ -227,8 +215,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L20-q27-objs-A": {
     "in": "3248f034c912",
@@ -246,8 +233,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L20-q28-none-A": {
     "in": "28abcfa53aba",
@@ -265,8 +251,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L20-q28-objs-A": {
     "in": "853004bdd8ff",
@@ -284,7 +269,6 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   }
 }

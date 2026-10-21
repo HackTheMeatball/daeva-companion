@@ -219,20 +219,20 @@ const setState = async (p, args) => { await writeFixture(p, args); await p.reloa
     await ctx.close();
   }
 
-  /* ---------- 0.8.1 F7 (#604): both Respec buttons show in Basic and work there; the rest of each footer stays hidden ---------- */
+  /* ---------- 0.8.1 F7 (#604): both Respec buttons show and work; 0.9 P21 (one view): with no mode in the save, every
+     card foot is open (docs/design/0.9-one-view.md "Card feet ... Open, with Respec") ---------- */
   for (const W of [1500, 390]) {
     const ctx = await b.newContext({ viewport: { width: W, height: 1000 } }), p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
-    await p.goto(CUR); await setState(p, { L: 30, mode: 'basic', fx: 'clean' });
-    const c = { level: 30, mode: 'basic', width: W, fixture: 'respec-basic' };
+    await p.goto(CUR); await setState(p, { L: 30, mode: undefined, fx: 'clean' });
+    const c = { level: 30, mode: 'one view', width: W, fixture: 'respec' };
     const foot = await p.evaluate(() => {
       const vis = e => !!e && !!(e.offsetWidth || e.offsetHeight || e.getClientRects().length);
       const rest = sel => [...document.querySelectorAll(sel + ' .tfoot > *')].filter(e => !/Respec$/.test(e.id) && vis(e)).map(e => e.id || e.className || e.tagName);
-      return { basic: document.body.classList.contains('basic'), sp: vis(document.getElementById('spRespec')), dv: vis(document.getElementById('dvRespec')), spRest: rest('#spCard'), dvRest: rest('#dvBox'), stFoot: vis(document.querySelector('#stCard .tfoot')) };
+      return { sp: vis(document.getElementById('spRespec')), dv: vis(document.getElementById('dvRespec')), spRest: rest('#spCard'), dvRest: rest('#dvBox'), stFoot: vis(document.querySelector('#stCard .tfoot')) };
     });
-    rec(c, 'respec basic: page is in Basic mode', foot.basic, foot);
     rec(c, 'respec basic: Skills and Daevanion Respec buttons visible', foot.sp && foot.dv, foot);
-    rec(c, 'respec basic: rest of both footers hidden (Sync levels, How points work, All nodes)', !foot.spRest.length && !foot.dvRest.length, foot);
-    rec(c, 'respec basic: Stigmas footer stays hidden', !foot.stFoot, foot);
+    rec(c, 'respec basic: the rest of both footers is open too (one view)', foot.spRest.length > 0 && foot.dvRest.length > 0, foot);
+    rec(c, 'respec basic: Stigmas footer open (one view)', foot.stFoot, foot);
     const n = pre => p.evaluate(pre => Object.keys(char(state).checks).filter(k => (pre === 'sp' ? /^sp:.+:([2-9]|10)$/ : /^dv:/).test(k) && char(state).checks[k]).length, pre);
     for (const [id, pre, other] of [['#spRespec', 'sp', 'dv'], ['#dvRespec', 'dv', 'sp']]) {
       const before = await n(pre), keep = await n(other);
@@ -320,7 +320,7 @@ const setState = async (p, args) => { await writeFixture(p, args); await p.reloa
     await ctx.close();
   }
 
-  /* ---------- Basic rail height is the same on every load (0.5 P1, #105 / #193) ----------
+  /* ---------- The rail height is the same on every load (0.5 P1, #105 / #193; one view since 0.9 P21) ----------
      With web fonts allowed (the suite blocks them; unrouteAll drops the blocker's routes for this context): fonts land
      after the first fit, and the milestone icons used to be sized to the measured text (which their own width rewraps),
      so two loads gave different rail and milestone list heights. Lv 30 shows both: two icon rows, one of them bistable. */
@@ -329,7 +329,7 @@ const setState = async (p, args) => { await writeFixture(p, args); await p.reloa
     const load = async (width, resize) => {
       const ctx = await b.newContext({ viewport: { width, height: H(width) } }); await ctx.unrouteAll();
       const p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
-      await p.goto(CUR); await writeFixture(p, { L: 30, mode: 'basic', fx: 'clean' }); await p.reload();
+      await p.goto(CUR); await writeFixture(p, { L: 30, fx: 'clean' }); await p.reload();
       const read = async () => { await p.evaluate(() => document.fonts.ready); await p.waitForTimeout(900);
         return p.evaluate(() => ({ rail: document.querySelector('aside.rail').getBoundingClientRect().height, list: document.getElementById('gates').getBoundingClientRect().height,
           fonts: [...document.fonts].filter(f => f.status === 'loaded').length, ico: [...document.querySelectorAll('#gates .has-ico .icos img')].filter(i => i.offsetParent).map(i => i.getBoundingClientRect().height) })); };
@@ -337,17 +337,17 @@ const setState = async (p, args) => { await writeFixture(p, args); await p.reloa
       if (resize) { await p.setViewportSize({ width: width === 390 ? 1100 : 390, height: H(width) }); await p.waitForTimeout(300); await p.setViewportSize({ width, height: H(width) }); m.after = (await read()).rail; }
       await ctx.close(); return { ...m, errs };
     };
-    const c = { level: 30, mode: 'basic', width: 1100, fixture: 'clean, web fonts' };
+    const c = { level: 30, mode: 'one view', width: 1100, fixture: 'clean, web fonts' };
     const runs = []; for (let i = 0; i < 6; i++) runs.push(await load(1100, false));
     const rails = [...new Set(runs.map(r => r.rail))], lists = [...new Set(runs.map(r => r.list))];
-    rec(c, 'Basic rail: web fonts load in this check', runs.every(r => r.fonts > 0), runs.map(r => r.fonts));
-    rec(c, 'Basic rail: 6 loads at 1100 px give one rail height and one milestone list height', rails.length === 1 && lists.length === 1 && runs[0].ico.length > 0, { rails, lists, ico: runs.map(r => r.ico.join('/')) });
+    rec(c, 'rail: web fonts load in this check', runs.every(r => r.fonts > 0), runs.map(r => r.fonts));
+    rec(c, 'rail: 6 loads at 1100 px give one rail height and one milestone list height', rails.length === 1 && lists.length === 1 && runs[0].ico.length > 0, { rails, lists, ico: runs.map(r => r.ico.join('/')) });
     for (const width of WIDTHS) {
       const r = await load(width, true);
-      rec({ ...c, width }, 'Basic rail: height after load equals height after a resize back and forth', r.rail === r.after, { load: r.rail, after: r.after });
+      rec({ ...c, width }, 'rail: height after load equals height after a resize back and forth', r.rail === r.after, { load: r.rail, after: r.after });
       runs.push(r);
     }
-    rec(c, 'Basic rail check: no page errors', runs.every(r => !r.errs.length), runs.flatMap(r => r.errs));
+    rec(c, 'rail check: no page errors', runs.every(r => !r.errs.length), runs.flatMap(r => r.errs));
   }
 
   /* ---------- review screenshots ---------- */

@@ -51,7 +51,7 @@ const ALLOW = {
 };
 
 /* the controls given a hit area in 0.1.6 (src/styles/app.css, "Pointer targets of at least 24 px") and before */
-const HIT = ['.tip', '.tipbtn', '#nowStar .q-act', '#gates li.qrow .q-act', '#nowStar a.q-pin','#stCard .st-lvctl button', '.modeseg button', '.sec .ns-pop', '.sd-close',
+const HIT = ['.tip', '.tipbtn', '#nowStar .q-act', '#gates li.qrow .q-act', '#nowStar a.q-pin','#stCard .st-lvctl button', '.fold-btn', '.sec .ns-pop', '.sd-close',
   '.zone-btn', '.ms-name', '.nsinfo', '#nowStar .ns-pin', '.trk-sum',
   '#nowStar .rq-wait > summary', '.jfilt-btn', '.jfilt-x', '.dvi', '#stCard .st-chg .st-pick',
   /* 0.6.1 F4 (#321 note 9): the Next up objective checkboxes (their label is the target) and the Dungeons "N traces" links */
@@ -74,7 +74,7 @@ async function load(p, state, mode) {
   else if (state) await writeSave(p, { ...state, mode }, { fresh: true });
   else await clearSave(p);
   await p.reload(); await p.waitForTimeout(400);
-  if (!state) await p.evaluate(m => { if (document.body.classList.contains('basic') !== (m === 'basic')) document.querySelector(`.modeseg [data-mode="${m}"]`).click(); }, mode);
+  /* one view (0.9 P21): mode is stored in the save but no longer read; both values open the same page */
   await p.waitForTimeout(150);
 }
 
@@ -411,7 +411,7 @@ async function load(p, state, mode) {
         const cs = getComputedStyle(e), fs = parseFloat(cs.fontSize), min = /Mono|monospace/.test(cs.fontFamily) ? 11 : 12;
         if (fs > 0 && fs < min - .01) /* 0 px: text deliberately not rendered (a folded cleared step) */ small.push((e.parentElement ? desc(e.parentElement) + ' > ' : '') + desc(e) + ' ' + fs);
       }
-      const tgt = [...document.querySelectorAll('.modeseg button, .numctl button')].filter(vis).map(e => [desc(e), e.getBoundingClientRect()])
+      const tgt = [...document.querySelectorAll('.fold-btn, .numctl button')].filter(vis).map(e => [desc(e), e.getBoundingClientRect()])
         .filter(([, b]) => b.width < 43.5 || b.height < 43.5).map(([d, b]) => d + ' ' + Math.round(b.width) + 'x' + Math.round(b.height));
       const first = document.querySelector('ul.story > li.st:not(:empty)');
       const line = first && getComputedStyle(first, '::before').content;
@@ -562,10 +562,8 @@ async function load(p, state, mode) {
         out.n++; if ((cs.whiteSpace === 'nowrap' || cs.textOverflow !== 'clip' || right > card + 0.5 || t.scrollWidth > t.clientWidth) && out.wide.length < 3) out.wide.push(`${t.textContent} (${cs.whiteSpace}, ${cs.textOverflow}, right ${right} vs card ${card})`); };
       for (const q of ['', ...QUESTS.map(x => x[1])]) { char(state).quest = q; update(); fits(); }
       Object.assign(char(state).checks, { 'g6:0': true, 'g22:0': true, 'g32:dreams': true, 'g45:witness': true }); update(); fits();
-      out.mode = (document.querySelector('.modeseg [data-mode][aria-pressed="true"]') || {}).dataset?.mode;
       return out;
     }, FIG);
-    ok(`${W}px run is in ${mode} mode`, r.mode === mode, r.mode);
     ok(`Ascension label never clipped at ${W}px (touch, ${mode}, ${r.size} Figtree, wraps rather than cuts off): ${r.n} positions`, r.size === '12px' && r.font === 'loaded' && r.n === r.want && !r.wide.length, r);
     await ctx.close();
   }

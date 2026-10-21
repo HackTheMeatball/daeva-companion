@@ -143,19 +143,24 @@ export function rankNext(state, { track = trackOf(state) } = {}) {
     .sort((a, b) => (b.e.first ? 1 : 0) - (a.e.first ? 1 : 0) || a.p - b.p || (a.e.phase === "later" ? (a.e.L || 0) - (b.e.L || 0) || (a.e.Q ?? -1) - (b.e.Q ?? -1) : 0) || a.i - b.i).map(x => x.e);
   /* At most 8 cards, plus the story card and the cards the pack keeps (keep: true), which always stay. Queue previews
      (more, catch-up) may push out what ranks after the story, never a step, a missed step or the story itself. */
-  const room = Math.max(0, 8 - ranked.filter(e => !e.more && NEXT_UP_PHASES.indexOf(e.phase) <= NEXT_UP_PHASES.indexOf("story")).length);
-  let extra = 0;
   /* the track filter runs after the cap, so fastest is always a subset of completionist (tracks nest, invariant 10) */
-  const capped = ranked.filter(e => !e.more || extra++ < room).filter((e, i) => i < 8 || e.card.story || e.keep).filter(onTrack);
-  /* completionist: the optional steps past the first three, after the list */
-  if (tracks && track === "completionist") advAll.slice(3, 3 + COMPLETIONIST_MORE).forEach(a => capped.push({ phase: "advice", card: advCard(a) }));
+  const capOf = list => {
+    const room = Math.max(0, 8 - list.filter(e => !e.more && NEXT_UP_PHASES.indexOf(e.phase) <= NEXT_UP_PHASES.indexOf("story")).length);
+    let extra = 0;
+    return list.filter(e => !e.more || extra++ < room).filter((e, i) => i < 8 || e.card.story || e.keep).filter(onTrack);
+  };
   /* One list (0.9 P21, docs/design/0.9-one-view.md): what you can act on now leads (no Later or advice cards, only the
-     first card of each queue); the rest follows, each card marked fold: true (Next up's "More you could do" fold). */
+     first card of each queue; capped on its own, so the full list's cap never cuts it); the rest of the capped full
+     list follows, each card marked fold: true (Next up's "More you could do" fold). */
   const firstOf = new Set();
-  const head = e => { if (e.card.later || e.card.adv) return false; if (!e.queue) return true;
-    if (firstOf.has(e.queue)) return false; firstOf.add(e.queue); return true; };
-  const lead = [], rest = [];
-  capped.forEach(e => (head(e) ? lead : rest).push(e));
+  const lead = capOf(ranked.filter(e => { if (e.card.later || e.card.adv) return false; if (!e.queue) return true;
+    if (firstOf.has(e.queue)) return false; firstOf.add(e.queue); return true; }));
+  /* the fold takes only the cap places the lead leaves (at most 8 cards besides the story and the kept ones, in all) */
+  const inLead = new Set(lead);
+  let slots = 8 - lead.filter(e => !e.card.story && !e.keep).length;
+  const rest = capOf(ranked).filter(e => !inLead.has(e)).filter(e => e.card.story || e.keep || slots-- > 0);
+  /* completionist: the optional steps past the first three, after the list */
+  if (tracks && track === "completionist") advAll.slice(3, 3 + COMPLETIONIST_MORE).forEach(a => rest.push({ phase: "advice", card: advCard(a) }));
   const out = [...lead, ...rest.map(e => ({ ...e, card: { ...e.card, fold: true } }))];
   if (!rankChangeOn("bandLabels")) return out.map(e => e.card);
   /* band labels: each card's lvBand ({ from, to }, missed: a missed step; not `band`, which the pack's cards use), only

@@ -259,7 +259,6 @@ function writeDiffFiles(rep, before, after, cards) {
         const sd = storeDiff(src, o.stored); if (sd) r.store = sd;
         if (o.keys && o.keys.length) r.keys = o.keys;
         if (o.err && o.err.length) r.err = [...new Set(o.err)];
-        r.mode = o.mode;
         Object.defineProperty(r, 'storedRaw', { value: o.stored, enumerable: false }); /* for the violations report, not saved */
         results[s.id] = r; done++;
         if (Date.now() - lastLog > 15000) { lastLog = Date.now(); console.log(`  … ${done}/${states.length} (${((Date.now() - tGen) / 1000).toFixed(0)} s)`); }
