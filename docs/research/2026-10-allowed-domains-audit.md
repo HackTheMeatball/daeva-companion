@@ -18,11 +18,11 @@ All counts come from `origin/main` on 2026-10-21, measured by script.
 
 | Site | Data refs | Claims (verdicts) | Known errors | Grade | Proposal |
 |---|---|---|---|---|---|
-| metabot.gg | 6227 | 51 verified, 34 single, 20 disputed, 18 wrong | Template prints some specialty texts wrong (#358 pattern, 5+ per class); several icon files swapped (Chanter #486 §7, 18120000) | **A** | Keep as the main source. The owner's screen stays the check for specialty text and icons (as now). |
+| metabot.gg | 6227 | 29 verified, 25 single, 18 disputed, 10 wrong, 1 inferred | Template prints some specialty texts wrong (#358 pattern, 5+ per class); several icon files swapped (Chanter #486 §7, 18120000) | **A** | Keep as the main source. The owner's screen stays the check for specialty text and icons (as now). |
 | daevacompass.com | 0 (16 icon rows in ISSUES) | none | One ID-to-icon mapping can be wrong (noted in its row) | **A−** | Keep: second database and icon source. |
 | aion2.app | 0 | none | none | **B** | Keep as **Spot**, never the only source: an independent database witness. |
-| daevaguides.com | 90 | 7 verified, 18 disputed | none | **B** | Keep as a build witness (named creators). |
-| mmo-codex.com | 46 | 13 verified, 15 disputed | One superseded pre-launch quote, not used | **B** | Keep as **Spot** build witness. It also caught a template error. |
+| daevaguides.com | 90 | 7 verified, 18 disputed, 1 inferred | none | **B** | Keep as a build witness (named creators). |
+| mmo-codex.com | 46 | 13 verified, 14 disputed, 1 inferred | One superseded pre-launch quote, not used | **B** | Keep as **Spot** build witness. It also caught a template error. |
 | aion2turkiye.com | 88 | 3 verified, 20 disputed | none | **B−** | Keep as a build witness (separate leveling, dungeon and PvP panels). It's the most frequent dissenting source, but on opinion, not facts. |
 | aion2-meta.com | 7 | 1 verified, 1 disputed | none | **C** | Keep as the one KR preview, never proof of a global fact. |
 | aion2quest.pro | 0 (icons used in 6 `src/` files) | none | none; its desktop app reads game traffic | **C** | Narrow it to the map-marker icons and crest already approved. No new facts. |
