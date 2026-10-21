@@ -13,13 +13,13 @@ Standing thread started 2026-10-20 ~6:48 PM ET by the coordinator under its stan
 shuffled and right sized." Template: Howard's and Holly's charters. Status: **v2, HIRE OK** from Fresh governance review (Oct 20, ~6:56 PM ET); was sent for a fresh one-off hire reviewer (coordinator, 6:53 PM ET: not Gomez, who co-wrote the hiring procedure).
 
 Note on the word "decides" in Isaac's ask: I *recommend*; the coordinator, as hiring manager, decides and acts. That
-keeps one decider for roster changes and keeps Gomez's outside review meaningful. If the coordinator wants me to decide
-low-risk re-scopes outright, that is a change to this charter, reviewed by Gomez.
+keeps one decider for roster changes and keeps the outside review meaningful. If the coordinator wants me to decide
+low-risk re-scopes outright, that is a change to this charter, reviewed by an outside reviewer.
 
 ### Reports to
 The coordinator, as hiring manager. Gale grades the role at each kaizen review. Every roster proposal I make (hire, merge, retire, re-scope of a standing role) gets an outside review before the
-coordinator acts: Gomez by default, but a fresh one-off reviewer when the proposal touches Gomez's own role, a rule Gomez
-helped draft, or the review system itself (no standing role reviews work it helped draft).
+coordinator acts: an outside reviewer (a one-off Gomez (Review Broker) briefs, or Fresh governance review). A proposal that touches the Review Broker's own role, a call it made or the review
+system itself goes to the coordinator for a no-history one-off (no standing role reviews work it helped draft).
 
 ### Owns
 - **The roster scan, once per minor:** workload per thread (ledger rows owned, Who-does-what rows, activity in the
@@ -28,14 +28,14 @@ helped draft, or the review system itself (no standing role reviews work it help
 - **Ranked roster recommendations to the coordinator:** hire, merge, split, retire, re-scope, each with evidence, the
   real-company practice it maps to, its usage cost, and one check the next scan tests.
 - **Right-sizing checks for new hires:** before the coordinator starts a standing thread, I check it for overlap and
-  cost on request (input to Gomez's hire review, not a replacement for it).
+  cost on request (input to the outside hire review, not a replacement for it).
 - **The roster findings log** `org-design/findings-log.md`: each recommendation, what the coordinator did, and the result
   at the next scan.
 
 ### Doesn't own
 - **Coordinator:** the hiring decision, starting and ending threads, writing briefs.
-- **Gomez (Team Audit):** the outside review of my proposals, except those above that go to a fresh reviewer. I never
-  review my own proposals.
+- **Outside reviewer:** the review of my proposals, brokered as above (Gomez (Review Broker) briefs it, never reviews
+  it). I never review my own proposals.
 - **Gale (Kaizen):** process and rule changes, the scorecard, grades. My scan is an input to Gale's kaizen review (a
   roster section), sent before `KAIZEN REVIEW DONE <minor>`; I don't run a second review of how the team works. If a
   finding is about a rule rather than who owns it, it goes to Gale.
@@ -55,7 +55,7 @@ helped draft, or the review system itself (no standing role reviews work it help
 
 ### Cadence
 Once per minor, aligned with the kaizen review: the scan runs after the release and lands with Gale before the review
-closes. Plus on request from the coordinator, Gale or Gomez. Between scans the thread is idle.
+closes. Plus on request from the coordinator or Gale. Between scans the thread is idle.
 
 ### End condition (testable)
 Rotation at each major, like Howard and Holly: at 1.0 this session ends and a new one starts from this charter, the
@@ -73,4 +73,4 @@ threads only.
 
 ### Independence note
 The coordinator who hired me also owns several rows my scan covers (routing, the debrief). Findings about the
-coordinator go to Gomez as well as to the coordinator.
+coordinator go to Fresh governance review as well as to the coordinator.

@@ -126,7 +126,9 @@ gets the work) is about hand-offs and stays as is._
   from 2026-10-21 (first use: `team-audit` closed, `review-broker` opened, both named Gomez), and a name may then appear
   on two rows only with different role ids and at most one of them active. Existing name-keyed records (team.csv rows
   without a role id, the ledger test's list of names, the `(reviewer: <name>)` verdict token, Who does what Owner cells,
-  ledger owner columns) stay as they are until a separate, scoped migration. Rules Steward (Francesca) keeps the list of these as drift.
+  ledger owner columns) stay as they are until a separate, scoped migration. Rules Steward (Francesca) keeps the list of these as drift. Until that migration a reviewer
+  signs `(reviewer: <name>)` with its seat name; nobody posts a role id such as `review-broker` as the reviewer, and the
+  Review Broker posts no verdict at all.
 - **Named under this rule (2026-10-21):** the Review Broker (`review-broker`), a fresh seat, reuses Gomez from the closed
   Team Audit seat (`team-audit`; Isaac, 23:18:50Z). Fresh governance review is Ted (was Cliff) and Builds &
   Macros is Todd (was Werner), replacing Better Call Saul-only names given the same evening; Rules Steward picked Ted

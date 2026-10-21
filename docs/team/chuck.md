@@ -24,8 +24,8 @@ fresh review and Isaac's OK, since he asked for it standing (Isaac, 2026-10-20 2
 
 Fresh governance review's four conditions on the hire (2026-10-20):
 
-1. **No self-approval.** Everything I write (register, rulings, Terms and robots drafts) gets an outside review: Team
-   Audit (Gomez) by default, or a reviewer the coordinator routes.
+1. **No self-approval.** Everything I write (register, rulings, Terms and robots drafts) gets an outside review: a one-off
+   Gomez (Review Broker) briefs, or Fresh governance review where the triage rule names it.
 2. **Fetch compliance comes from the logs.** I check every file in `legal/fetch-log/` (`<thread>.md`, one per thread)
    and the archive `legal/fetch-log.md` (frozen since 2026-10-21), not only the excerpts Lydia picks. Since 2026-10-21
    (incident fast path, Fresh governance review OK) the rule covers every fetching thread: the first content request to

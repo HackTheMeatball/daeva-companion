@@ -25,7 +25,7 @@ A department head or the coordinator sees work with no owner, or sustained overl
 1. **Requesting thread**: The department head requests the hire and drafts the job description, with its justification; a brief missing any part does not start (DEC-20261020-hiring).
 2. **Saul**: Before any hire, checks whether reshuffling the work to existing threads covers it.
 3. **Saul**: Approves, modifies or denies the request. Saul doesn't write the brief.
-4. **Outside reviewer**: Reviews every hire, standing or consultant, before it starts and answers `HIRE OK` or `HIRE CHANGES`: a one-off Gomez (Review Broker) briefs, or Fresh governance review where the triage rule names it.
+4. **Outside reviewer**: Reviews every hire, standing or consultant, before it starts and answers `HIRE OK` or `HIRE CHANGES`: a one-off the coordinator starts from the fixed brief template (`audit-1.0/fresh-reviewers.md`), or Fresh governance review where the triage rule names it. Every hire gets this review, so there is no broker call; Gomez (Review Broker) briefs only unplanned changes (`docs/team/gomez.md`).
 5. **Nacho**: Backs the hire before the thread starts: Nacho checks routing and roles, and the owning department head checks the work. Both are logged in `coordinator/state.md` in the project's shared folder, naming who backed it.
 6. **Saul**: Starts the thread (DEC-20261020-coordinator-creates-threads).
 7. **Francesca**: Records a standing hire in team.csv, team-changes.csv and Who does what, and adds it to OWNERS ([FLOW-19](FLOW-19-rule-and-roster-upkeep.md)). A consultant is logged, not added to team.csv.
