@@ -24,22 +24,17 @@
     {"t":"Refund the tutorial's Quick Slice point","s":"Lv 4 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L01-q18-all-B-filters": [
-    {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
     {"t":"Story: Cemetery Cleanup","s":"Needs Lv 13: you're 1. Level up first.","c":""}
   ],
   "random/L01-q26-all-B-dv": [
-    {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
     {"t":"Story: Watchful Eyes","s":"Needs Lv 19: you're 1. Level up first.","c":""}
   ],
   "random/L01-q33-before-A-sppts": [
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Shadowstrike 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Heightened Sixth Sense 1 → 2","s":"1 pt · single source","c":"tag \"After the one above\""},
     {"t":"Story: Daeva in a Dream","s":"Needs Lv 22: you're 1. Level up first.","c":""},
     {"t":"Buy Ambush 1 → 2","s":"Needs Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Heart Gore 1 → 2","s":"Needs Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Refund the tutorial's Quick Slice point","s":"Lv 4 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Refund the tutorial's Quick Slice point","s":"Lv 4 milestone · 3 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 4 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L01-q40-lvonly-A-rqmix": [
     {"t":"Story: The High Priest Slumbers","s":"Needs Lv 26: you're 1. Level up first.","c":""},
@@ -56,7 +51,6 @@
     {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 4 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L01-q51-before-B-sppts": [
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
     {"t":"Story: The Survivors","s":"Needs Lv 32: you're 1. Level up first.","c":""}
   ],
   "random/L01-q55-lvonly-A": [
@@ -74,12 +68,9 @@
     {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 4 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L01-q67-all-B": [
-    {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
     {"t":"Story: Lake of Confrontation","s":"Needs Lv 37: you're 1. Level up first.","c":""}
   ],
   "random/L01-q81-all-B-stready": [
-    {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Upgrade Triniel's Dagger 2 → 3","s":"1 of your 3 shards","c":"primary \"Upgraded\" stup"},
     {"t":"Story: Lingering Apparitions","s":"Needs Lv 44: you're 1. Level up first.","c":"","bd":"Bind Collapsed Hall of Fame on the way 32 m from Nemon bind:kib:collapsed-hall-of-fame"}
   ],
   "random/L01-qxx-rnd112p50-B-objs": [
@@ -93,7 +84,6 @@
     {"t":"Refund the tutorial's Quick Slice point","s":"Lv 4 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L02-q02-all-B": [
-    {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
     {"t":"Story: Shadow Forest","s":"Needs Lv 3: you're 2. Level up first.","c":""}
   ],
   "random/L02-q06-none-B": [
@@ -113,23 +103,18 @@
     {"t":"Story: Express Daeva Delivery","s":"Needs Lv 12: you're 2. Level up first.","c":"","bd":"Bind Quai Campsite on the way 30 m from Ulgorn bind:kib:quai-campsite"}
   ],
   "random/L02-q24-all-B": [
-    {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
     {"t":"Story: Malice Laid Bare","s":"Needs Lv 18: you're 2. Level up first.","c":""}
   ],
   "random/L02-q26-none-B-stwait": [
     {"t":"Story: Watchful Eyes","s":"Needs Lv 19: you're 2. Level up first.","c":""}
   ],
   "random/L02-q32-all-B-stfull": [
-    {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
     {"t":"Story: Verdant Melody","s":"Needs Lv 22: you're 2. Level up first.","c":""}
   ],
   "random/L02-q32-rnd112p95-B-stfull": [
     {"t":"Story: Verdant Melody","s":"Needs Lv 22: you're 2. Level up first.","c":""}
   ],
   "random/L02-q39-all-B-stready": [
-    {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Upgrade Triniel's Dagger 2 → 3","s":"1 of your 3 shards","c":"primary \"Upgraded\" stup"},
     {"t":"Story: Tangled Past","s":"Needs Lv 25: you're 2. Level up first.","c":""}
   ],
   "random/L02-q51-lvonly-A-stwait": [
@@ -140,14 +125,11 @@
     {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 3 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L02-q55-rnd141p80-A-sppts": [
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Shadowstrike 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Heightened Sixth Sense 1 → 2","s":"1 pt · single source","c":"tag \"After the one above\""},
     {"t":"Story: Last Refuge","s":"Needs Lv 33: you're 2. Level up first.","c":"","bd":"Bind Graverobber Campsite on the way 128 m from Nemon bind:kib:graverobber-campsite"},
     {"t":"Buy Ambush 1 → 2","s":"Needs Lv 3 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Heart Gore 1 → 2","s":"Needs Lv 4 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Refund the tutorial's Quick Slice point","s":"Lv 4 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Refund the tutorial's Quick Slice point","s":"Lv 4 milestone · 2 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 3 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L02-q57-rnd122p20-A": [
     {"t":"Story: Blood Monument","s":"Needs Lv 33: you're 2. Level up first.","c":""},
@@ -164,14 +146,11 @@
     {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 3 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L02-q67-rnd101p20-A-sppts": [
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Shadowstrike 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Heightened Sixth Sense 1 → 2","s":"1 pt · single source","c":"tag \"After the one above\""},
     {"t":"Story: Lake of Confrontation","s":"Needs Lv 37: you're 2. Level up first.","c":""},
     {"t":"Buy Ambush 1 → 2","s":"Needs Lv 3 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Heart Gore 1 → 2","s":"Needs Lv 4 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Refund the tutorial's Quick Slice point","s":"Lv 4 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Refund the tutorial's Quick Slice point","s":"Lv 4 milestone · 2 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 3 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L02-q83-lvonly-A-objs": [
     {"t":"Story: Zikel's Core","s":"Needs Lv 45: you're 2. Level up first.","c":"","bd":"Bind Outskirts Stall on the way 93 m from Nemon bind:kib:outskirts-stall"},
@@ -202,7 +181,6 @@
     {"t":"Story: Spread Your Wings","s":"Needs Lv 6: you're 3. Level up first.","c":""}
   ],
   "random/L03-q18-all-B": [
-    {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
     {"t":"Story: Cemetery Cleanup","s":"Needs Lv 13: you're 3. Level up first.","c":""}
   ],
   "random/L03-q20-before-A": [
@@ -251,7 +229,6 @@
     {"t":"Refund the tutorial's Quick Slice point","s":"Lv 4 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L03-q77-before-B-sppts": [
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
     {"t":"Story: The Breaking of the Day","s":"Needs Lv 42: you're 3. Level up first.","c":""}
   ],
   "random/L04-q01-lvonly-A-cube": [

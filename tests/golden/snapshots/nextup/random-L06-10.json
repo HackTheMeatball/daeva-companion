@@ -20,7 +20,6 @@
   ],
   "random/L06-q61-all-B-stfull": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
     {"t":"Story: Enemy Territory","s":"Needs Lv 35: you're 6. Level up first.","c":"","bd":"Bind Steel Hammer Workcamp on the way 53 m from Mannikiki bind:kib:steel-hammer-workcamp"}
   ],
   "random/L06-q65-before-B": [
@@ -168,7 +167,6 @@
   ],
   "random/L08-q45-all-A-stready": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Upgrade Triniel's Dagger 2 → 3","s":"1 of your 3 shards","c":"primary \"Upgraded\" stup"},
     {"t":"Story: Dying Light","s":"Needs Lv 30: you're 8. Level up first.","c":""}
   ],
   "random/L08-q58-rnd102p20-B-objs": [
