@@ -2,6 +2,7 @@
    up, Sync levels. renderNext still draws the cards it drew before (Progress, Build drawer, Journey, Daevanion; P0 §4
    "Calls between cards"). */
 import { char } from "../../../core/state.js";
+import { setHTML } from "../../../core/cards.js";
 import { ITEMS } from "../data/items.js";
 import { LEVEL_POINTS, SP_ICONS, SP_SKILLS, SP_STEPS } from "../data/build.js";
 import { spCostTxt } from "../catalog.js";
@@ -61,14 +62,14 @@ function renderNext() {
       `<div class="dvtext"><span class="spname">All planned upgrades spent</span><small>${pts} point${pts === 1 ? "" : "s"} spare · no sourced plan past this — spend on skills you use</small></div></div>` +
       (overTicked ? `<p class="sphint warn">Ticked lines cost ${spent} but you've earned ${fromLevels + stones}. Use "Sync levels" to fix.</p>` : "") + `</div>`;
   box.checked = false; box.dataset.sp = (skillBuy(char(state), lv) || {}).k || "";
-  document.getElementById("spHero").innerHTML = heroHTML;
+  setHTML(document.getElementById("spHero"), heroHTML);
   /* Coming up: everything after the hero, as many rows as fit the card (trimmed in fitSkills). */
   const rest = (next ? [...now.slice(1), ...ahead] : ahead.filter(x => x !== hero)).slice(0, 10);
   let cum = next ? 0 : (hero && !hero.spec ? hero.cost : 0);
   /* "N of M spent" counts SP_STEPS only, on purpose: slots 2 / 3 (SP_SLOTS) cost no points and slot 3 is out of reach (Q5),
      so counting them would keep the bar short of full at Lv 45 and change 0.2's count */
   const spB = SP_STEPS.filter(x => char(state).checks[x.k]).length, spN = SP_STEPS.length;
-  document.getElementById("spAfter").innerHTML = rest.length ? `<div class="dvbh"><div class="dvbh-top"><span class="dvbh-k">Coming up</span><span class="dvbh-n">${spB} of ${spN} spent</span></div><span class="dvbh-bar"><span style="width:${spB / spN * 100}%"></span></span></div><ul class="soonlist" id="spSoon">` + rest.map(x => {
+  setHTML(document.getElementById("spAfter"), rest.length ? `<div class="dvbh"><div class="dvbh-top"><span class="dvbh-k">Coming up</span><span class="dvbh-n">${spB} of ${spN} spent</span></div><span class="dvbh-bar"><span style="width:${spB / spN * 100}%"></span></span></div><ul class="soonlist" id="spSoon">` + rest.map(x => {
     cum += x.spec ? 0 : x.cost;
     const avail = now.includes(x), have = avail ? pts - (next ? next.cost : 0) : haveAt(x), short = cum - have;
     /* a specialty slot waits for a skill level, not a character level, and is free (never short of points, so an empty
@@ -77,7 +78,7 @@ function renderNext() {
       `<span class="sname">${spMini(x.s.n)}${x.s.n} ${spType(x.s)} <span class="spectag">${x.slot > 1 ? "slot " + x.slot : "spec"}</span></span><span class="slv${avail ? " now" : ""}">${avail ? "now" : "skill " + x.slotLv}</span><span class="sst"></span></li>`;
     /* a learn level not verified (0.8 P20: six Cleric passives are owner-check) carries its label */
     return `<li title="${spCostTxt(x)} · ${avail ? "available now" : "Lv " + x.req + stNote(x.s.learnSt)} · ${short > 0 ? `${short} short by then` : "points covered"}${x.s.single ? ` · single source (${x.s.single})` : ""}"><span class="sname">${spMini(x.s.n)}${x.s.n} ${spType(x.s)} <span class="lvarr">${x.L - 1} → ${x.L}${spBonus(x.s.n)}</span></span><span class="slv${avail ? " now" : ""}">${avail ? "now" : "Lv " + x.req + stTag(x.s.learnSt)}</span><span class="sst ${short > 0 ? "short" : "ok"}">${short > 0 ? `−${short}` : "✓"}</span></li>`;
-  }).join("") + `</ul>` : "";
+  }).join("") + `</ul>` : "");
   /* Sync levels: the box is the base level; the green bonus beside it, as in the game's tooltip title */
   SP_SKILLS.forEach((s, i) => { const b = document.getElementById("syncB" + i), x = skillBonusOf(char(state), s.n);
     b.textContent = x ? `(+${x})` : ""; b.title = x ? bonusTip(x) : ""; });
@@ -85,7 +86,7 @@ function renderNext() {
   if (document.activeElement !== ptsIn) ptsIn.value = stones;
   document.getElementById("spLv").textContent = `${fromLevels} earned from levels`;
   document.getElementById("spLv").title = `${fromLevels + stones} earned = ${fromLevels} from levels + ${stones} from Wisdom Stones; ${spent} spent`;
-  document.getElementById("spBig").innerHTML = `<b>${pts}</b><span>pt${pts === 1 ? "" : "s"} to spend</span>${keyChip("skills")}`;
+  setHTML(document.getElementById("spBig"), `<b>${pts}</b><span>pt${pts === 1 ? "" : "s"} to spend</span>${keyChip("skills")}`);
   document.getElementById("spCard").classList.toggle("act", !!next && (next.spec || pts >= next.cost));
   requestAnimationFrame(fitSkills);
   renderDaevanion();

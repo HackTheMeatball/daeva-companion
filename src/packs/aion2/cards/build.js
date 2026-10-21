@@ -2,6 +2,7 @@
    setup at your level, what's new on your keys. Drawn by the Skills card (renderNext calls renderRotation), so it
    registers with update: null; its mount places the drawer and wires its tab. */
 import { char } from "../../../core/state.js";
+import { setHTML } from "../../../core/cards.js";
 import { activePack, packClasses } from "../../../core/pack.js";
 import { E_ORDER, GUIDE_KEYS, HAS_KEYS, KEYS, SP_ICONS, STAT_NOTE, STAT_SRC, STAT_TIERS, STIGMA_ICON } from "../data/build.js";
 import { rotKeys } from "../requirements.js";
@@ -40,11 +41,11 @@ function renderStacks(lv) {
      default. The game's defaults for the skills learned by lv are listed under the grid. */
   const k = rotKeys(char(state), lv), lmb = (KEYS.find(x => x.key === "Left click") || { rows: [] }).rows.filter(r => lv >= r.lv).map(r => r.n);
   const cols = [["Q", k.q], ["E", E_STACK(lv)], ["T", k.rmb]];
-  document.getElementById("stackViz").innerHTML =
+  setHTML(document.getElementById("stackViz"),
     `<p class="fine muted kv-sugg">Suggested keys: Q, E and T (T holds the stack the right-click macro fires). Move the skills there yourself.</p>` +
     [3, 2, 1, 0].map(r => `<i class="rn">${r}</i>` + cols.map(([key, rows]) => cell(rows[r], key, r).replace('class="sk', `class="sk${r === 0 ? " r0" : ""}`)).join("")).join("") +
     `<span></span>` + cols.map(([key]) => `<span class="kv-key">${key}</span>`).join("") +
-    lmb.map(n => `<p class="lmb">Left click: <span class="sk">${gridIco(n)}<span class="nm">${n}</span></span></p>`).join("") + defaultKeysNote(lv) + stLaterHTML();
+    lmb.map(n => `<p class="lmb">Left click: <span class="sk">${gridIco(n)}<span class="nm">${n}</span></span></p>`).join("") + defaultKeysNote(lv) + stLaterHTML());
 }
 /* Under the guide's grid: the game's default keys of the skills learned by lv (KEYS), one line per key with the grid's
    key chip (Design Lead on #565: a list, not a paragraph), then the macro's place. That the macro moves the default
@@ -63,10 +64,10 @@ function renderDefaultKeys(lv, fresh, cell) {
   const k = rotKeys(char(state), lv), cols = k.keys.filter(x => !x.single), singles = k.keys.filter(x => x.single && x.rows[0]);
   const depth = Math.max(0, ...cols.map(x => x.rows.length)), el = document.getElementById("stackViz");
   el.style.gridTemplateColumns = `12px repeat(${cols.length}, minmax(0, 1fr))`;
-  el.innerHTML = [...Array(depth).keys()].reverse().map(r => `<i class="rn">${r}</i>` + cols.map(x => cell(x.rows[r], x.key, r).replace('class="sk', `class="sk${r === 0 ? " r0" : ""}`)).join("")).join("") +
+  setHTML(el, [...Array(depth).keys()].reverse().map(r => `<i class="rn">${r}</i>` + cols.map(x => cell(x.rows[r], x.key, r).replace('class="sk', `class="sk${r === 0 ? " r0" : ""}`)).join("")).join("") +
     `<span></span>` + cols.map(x => `<span class="kv-key${/ click$/.test(x.key) ? " mouse" : ""}">${x.key}</span>`).join("") +
     singles.map(x => `<p class="lmb">${x.key}: <span class="sk${fresh.has(x.rows[0]) ? " new" : ""}">${gridIco(x.rows[0])}<span class="nm">${x.rows[0]}</span></span></p>`).join("") +
-    `<p class="fine tline kv-note">The game's default keys. Row 0 is tried first; a skill on cooldown or not ready is skipped. A skill shows here from the level you learn it.</p>`;
+    `<p class="fine tline kv-note">The game's default keys. Row 0 is tried first; a skill on cooldown or not ready is skipped. A skill shows here from the level you learn it.</p>`);
 }
 /* Stigmas still to come: where each will go on E when you add it (in the order the slots open). */
 function stLaterHTML() {
@@ -82,7 +83,7 @@ const nameIco = (n, stig) => ico(n, stig) + n;
 function renderRotation() {
   /* a build without a sourced key setup (0.6 P5, the Ranger): stat priority only, with the build's own footnote */
   if (STAT_NOTE) document.getElementById("statNote").textContent = STAT_NOTE;
-  if (!HAS_KEYS) { document.querySelector("#statDrawer .sd-rot").hidden = true; document.getElementById("statSeq").innerHTML = statSeqHTML(); return; }
+  if (!HAS_KEYS) { document.querySelector("#statDrawer .sd-rot").hidden = true; setHTML(document.getElementById("statSeq"), statSeqHTML()); return; }
   const lv = char(state).level, { rmb, q, e, keys } = rotKeys(char(state), lv);
   if (keys) { renderDefaultRotation(lv, keys); return; }
   const before = e.filter(n => n === "Illusive Clone" || n === "Swift Contract"), after = e.filter(n => !before.includes(n));
@@ -93,18 +94,18 @@ function renderRotation() {
   if (after.length) steps.push(`<b>E</b> ${after.map(n => nameIco(n, true)).join(", then ")}`);
   steps.push(`<b>Hold</b> right + left click`);
   document.getElementById("rotLv").textContent = `at Lv ${lv}`;
-  document.getElementById("rotPlay").innerHTML = steps.map(x => `<li>${x}</li>`).join("");
-  document.getElementById("rotChain").innerHTML = rmb.map((n, i) => `<li><span class="dot"></span><span>${spMini(n)}${n}</span></li>`).join("");
+  setHTML(document.getElementById("rotPlay"), steps.map(x => `<li>${x}</li>`).join(""));
+  setHTML(document.getElementById("rotChain"), rmb.map((n, i) => `<li><span class="dot"></span><span>${spMini(n)}${n}</span></li>`).join(""));
   rotNewNote(lv);
 }
 /* The new-placement note, the tab badges and the stacks (both kinds of build) */
 function rotNewNote(lv) {
   const nw = rotNew(lv);
-  document.getElementById("rotNote").innerHTML = nw.length ? `<b class="rot-new">New</b> ${nw.map(x => `put ${ico(x.n, x.stig)}<b>${x.n}</b> on ${rotWhere(x)}`).join("; ")}. The key grid below shows the full setup; closing this panel clears this note.` : "";
+  setHTML(document.getElementById("rotNote"), nw.length ? `<b class="rot-new">New</b> ${nw.map(x => `put ${ico(x.n, x.stig)}<b>${x.n}</b> on ${rotWhere(x)}`).join("; ")}. The key grid below shows the full setup; closing this panel clears this note.` : "");
   const tb = document.getElementById("sdNew"); if (tb) tb.hidden = !nw.length;
   const bt = document.getElementById("tabBuild"); if (bt) bt.classList.toggle("has-new", !!nw.length);
   if (nw.length) { const ks = document.querySelector("#statDrawer details.mini"); if (ks) ks.open = true; }
-  document.getElementById("statSeq").innerHTML = statSeqHTML();
+  setHTML(document.getElementById("statSeq"), statSeqHTML());
   renderStacks(lv);
 }
 /* The Rotation section for the game's default keys (0.7 P11): what each key with rows fires, row 0 first, as the Assassin's
@@ -114,7 +115,7 @@ function renderDefaultRotation(lv, keys) {
   for (const el of rot.querySelectorAll(":scope > .playsteps, :scope > .rmbline, .macro-steps, details > .tline")) el.style.display = "none";
   let box = rot.querySelector(":scope > .rot-keys");
   if (!box) { box = document.createElement("div"); box.className = "rot-keys"; rot.querySelector(":scope > .ns-head").after(box); }
-  box.innerHTML = keys.filter(x => !x.single && x.rows.some(Boolean)).map(x => `<div class="rmbline"><span class="khead">${x.key} fires</span><ol class="chain">${x.rows.filter(Boolean).map(n => `<li><span class="dot"></span><span>${spMini(n)}${n}</span></li>`).join("")}</ol></div>`).join("");
+  setHTML(box, keys.filter(x => !x.single && x.rows.some(Boolean)).map(x => `<div class="rmbline"><span class="khead">${x.key} fires</span><ol class="chain">${x.rows.filter(Boolean).map(n => `<li><span class="dot"></span><span>${spMini(n)}${n}</span></li>`).join("")}</ol></div>`).join(""));
   document.getElementById("rotLv").textContent = `at Lv ${lv}`;
   rotNewNote(lv);
 }
