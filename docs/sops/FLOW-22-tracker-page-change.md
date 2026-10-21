@@ -13,7 +13,7 @@ Jane approves a tracker design (an ask from Isaac, or a fix).
 
 ## Owner
 
-**Skyler** (accountable for this flow end to end; each step names who does it).
+**Jane** (accountable for this flow end to end since Skyler ended, 2026-10-20; each step names who does it).
 
 ## Inputs
 
@@ -23,9 +23,9 @@ Jane approves a tracker design (an ask from Isaac, or a fix).
 ## Steps
 
 1. **Jane**: Designs the tab and gives DESIGN OK.
-2. **Skyler**: Builds the tab only from that design, with Isaac's typed OK in Skyler's thread where TRK-10 asks it.
+2. **Builder**: A one-off thread briefed from Skyler's handover, or the pipeline, builds the tab only from that design, with Isaac's typed OK where TRK-10 asks it.
 3. **Huell**: Checks that no data was lost.
-4. **Skyler**: Publishes the tab, keeping the page size limit (TRK-06).
+4. **Builder**: Publishes the tab, keeping the page size limit (TRK-06).
 
 ## Gates
 
@@ -37,8 +37,8 @@ Jane approves a tracker design (an ask from Isaac, or a fix).
 
 ## Failure and escalation
 
-- A data mismatch: Huell holds the tab; Skyler fixes it.
-- Skyler never writes tracker data (TRK-01).
+- A data mismatch: Huell holds the tab; the builder fixes it.
+- The builder never writes tracker data (TRK-01).
 
 ## Rules it runs on
 

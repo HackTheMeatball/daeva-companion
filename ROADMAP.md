@@ -140,9 +140,9 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
    **Review level (owner, 2026-10-20 6:45 PM ET; defaults from Org Design's trigger list; approved by Fresh governance
    review, 2026-10-20 7:02 PM ET):** every review is triaged `standing`, `blind` or `external`. The defaults list below sets each item's
    level, and that call isn't left to anyone's judgement. Anyone may raise a level. Only the coordinator may lower
-   triggers 1, 3 and 4 below their default, logged in the PR with a reason and counted at each kaizen review. Triggers 2,
-   5, 4b and 6 are never lowered. Trigger 2 is the roster, where the coordinator is the decider. Trigger 5 is the conflict
-   check, and the coordinator picks the reviewer. Triggers 4b and 6 are K24, so lowering them narrows an owner decision,
+   triggers 1, 3 and 4 below their default, logged in the PR with a reason and counted at each kaizen review. The team
+   never lowers triggers 2, 5, 4b or 6, and only Isaac can narrow 4b and 6. Trigger 2 is the roster, where the
+   coordinator is the decider. Trigger 5 is the conflict check, and the coordinator picks the reviewer. Triggers 4b and 6 are K24, so lowering them narrows an owner decision,
    and that goes to Isaac.
 
    | # | Default trigger | Level |
@@ -1346,11 +1346,12 @@ workflows).
 | P16 | Board paths and costs checked for the Assassin only (note 14) → every class | M | Opus | gen, golden, daevanion-card | `research-node-paths` |
 | P17 | Assassin E stigma stack on one key? (note 13) → research answer applied | S | Opus | gen, golden | `research-e-stack` |
 | P18 | Rotation lists order, not play (note 15) → "how it plays" text per class | M | Opus | gen, golden, build-card | `research-rotation-play` |
-| P19 FR | Lv 39 join: 70–77 skill clicks in unlock order (note 10) → one row and one tap per skill | L | Opus | skills-card, nextup-card, app.css, golden, golden-nextup | P15 (input: `docs/design/0.9-loadout-mockup.md`) |
-| P20 FR | Daevanion ~22 ticks, no per-board or Stigma respec (note 9) → board rows, respec per board and all, Stigma respec | M | Opus | app.css, golden, daevanion-card | P16, `research-respec` (input: `docs/design/0.9-loadout-mockup.md`) |
-| P21 | Two views (Basic / Advanced) to maintain; Basic hides catch-up tools; Lv 4–16 chores lead Next up → one view, folds, chores folded | L | Opus | main.js, nextup-card, page-card, daevanion-card, app.css, golden, golden-nextup | none (input: `docs/design/0.9-one-view.md`, `docs/design/0.9-loadout-mockup.md`) |
-| P22 FR | Key setup inline with small icons, keys fixed (notes 11, 12, #388) → a sheet, icons fill each box, players rebind keys | L | Opus | build-card, app.css, a11y, golden, mig, save | `research-bindable-keys` (input: `docs/design/0.9-loadout-mockup.md`) |
+| P19 FR | Lv 39 join: 70–77 skill clicks in unlock order (note 10) → one row and one tap per skill | L | Opus | skills-card, nextup-card, app.css, golden, golden-nextup | P15 (input: `docs/design/0.9-catchup/`) |
+| P20 FR | Daevanion ~22 ticks, no per-board or Stigma respec (note 9) → board rows, respec per board and all, Stigma respec | M | Opus | app.css, golden, daevanion-card | P16, `research-respec` (input: `docs/design/0.9-catchup/`) |
+| P21 | Two views (Basic / Advanced) to maintain; Basic hides catch-up tools; Lv 4–16 chores lead Next up → one view, folds, chores folded | L | Opus | main.js, nextup-card, page-card, daevanion-card, app.css, golden, golden-nextup | none (input: `docs/design/0.9-one-view.md`, `docs/design/0.9-catchup/`) |
+| P22 FR | Key setup inline with small icons, keys fixed (notes 11, 12, #388) → a sheet, icons fill each box, players rebind keys | L | Opus | build-card, app.css, a11y, golden, mig, save | `research-bindable-keys` (input: `docs/design/0.9-keys/`) |
 | P23 | Sources lists weigh 9.6 K gzip and 1,088 elements while closed → load on open | M | Opus | site, page-card, e2 | `research-sources-credit` |
+| P24 | No Terms of Use; robots.txt allows AI training crawlers → `TERMS.md` linked in the footer, training crawlers blocked | S | Sonnet | site, page-card | P23, `owner-ok-0.9-terms` |
 | S1 FR | Golden shares a shard → its own shard | S | Gus | ci | P6 |
 | S2 FR | Nothing checks the live app works → scripted journey after each deploy and every 6 h | S | Gus | ci | none |
 | S3 FR | Sync server deployed by hand → CI tests and dry run, deploy on the owner's token | M | Gus | ci | none |
@@ -1379,8 +1380,8 @@ At most five builds at a time. Ungated items queue first; gated ones go last and
   build-card), and kickoff serialises them from their queue-line lanes.
   Serial lanes: **gen** P1 → P2 → P6 → P10 → P11 → P13 → P15 → P16 → P17 → P18; **golden** P1 → P2 → P11 → P12 → P13 → the
   research items → P19 → P20 → P21 → P22; **skills-card** P1 → P8 → P5 → P15 → P19; **nextup-card** P1 → P2 → P7 → P8 → P5 → P13 → P15 →
-  P19 → P21; **page-card** P4 → P5 → P21 → P23; **mig** P2 → P9 → P22; **schema** P3 → P6 → P10; **app.css** P8 → P19 → P20 → P21 →
-  P22; **build-card** P1 → P8 → P5 → P13 → P18 → P22; **daevanion-card** P1 → P5 → P16 → P20 → P21; **a11y** P8 → P22; **site** P5 → P23; **golden-nextup** P7 → P8 → P19 → P21; **journey-card** P2 → P7; **main.js** P4 → P9 → P21; **ci** (Gus) S2 → S3 → S1 → S4. Shared test and doc files: **save** (`tests/save.js`) P9 → P11 → P22; **e2** (`tests/e2test.js`) P3 → P23;
+  P19 → P21; **page-card** P4 → P5 → P21 → P23 → P24; **mig** P2 → P9 → P22; **schema** P3 → P6 → P10; **app.css** P8 → P19 → P20 → P21 →
+  P22; **build-card** P1 → P8 → P5 → P13 → P18 → P22; **daevanion-card** P1 → P5 → P16 → P20 → P21; **a11y** P8 → P22; **site** P5 → P23 → P24; **golden-nextup** P7 → P8 → P19 → P21; **journey-card** P2 → P7; **main.js** P4 → P9 → P21; **ci** (Gus) S2 → S3 → S1 → S4. Shared test and doc files: **save** (`tests/save.js`) P9 → P11 → P22; **e2** (`tests/e2test.js`) P3 → P23;
   **run-mjs** (`tests/run.mjs`) P6 → P14 → S1; **architecture** (`docs/ARCHITECTURE.md`) P5 → P9 → P14 (plan review, #609).
 - **Wave 2 (after P2):** P9, P10, P11, P13; then P12 (after P11 and P6) and P14 (after P9 and P10).
 - **Wave 3 (as research lands):** P15, P16, P17, P18, in the order their files land.
@@ -1404,8 +1405,8 @@ Under the standing OK until 1.0 most of 0.9 needs nothing from the owner. What i
    write the verdict as a `docs/research/` file named with `sources-credit`. If they say no, a reasoned budget raise at
    1.0 is the fallback.
 3. **Catch-up and key setup looks: Design Lead approves** (owner's card answer, 2026-10-20 5:21 PM ET; every look from
-   5:24 PM ET). P19–P22 build from Design Lead's mocks (#610, `docs/design/0.9-loadout-mockup.md`) once they merge with the
-   look OK after the fresh review. Design Lead made notes 11, 12 and player-chosen keys (#388) one design, so #388 moves
+   5:24 PM ET). P19–P22 build from Design Lead's mocks (`docs/design/0.9-catchup/`, `docs/design/0.9-keys/`; #619 and #656),
+   merged with the look OK after the fresh re-check. Design Lead made notes 11, 12 and player-chosen keys (#388) one design, so #388 moves
    from the 1.0 look into P22.
 4. **Outside audit trial** (owner To-do: only the owner can do it): create the "Daeva audit" project with 7 days of Debug
    access.

@@ -189,21 +189,17 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
   const norm = u => { try { return new URL(u).href; } catch (e) { return u; } };
   const missing = [...dataUrls].filter(u => !hrefs.has(norm(u)) && !/^https?:\/\/metabot\.gg\/en\/aion-2\/quests\/daeva-trapped/.test(u));
   ok(`Sources card lists every URL in the data files (${dataUrls.size})`, !missing.length, missing);
-  /* a hidden class's pack (0.6 P4 Gladiator, release "hidden") ships nothing to this page: none of its own URLs is on the
-     card, and every one is in DATA_SOURCES.md. The Ranger (P22) was hidden too until 0.6 P5 released it with its guide
-     pack, so one hidden pack was left; 0.7 P3 (#346) adds the Spiritmaster, hidden, so two; 0.7 P2 (#345) releases the
-     Gladiator with its guide pack, so one again; 0.7 P4 (#347) releases the Spiritmaster, so none is left (the idle
-     pack checks run on a copy in tests/schema.mjs). The other classes' own URLs are checked the same way below (their
-     pages list them, this Assassin page doesn't). 0.8 P16 (#505) adds the Sorcerer, 0.8 P4 (#493) the Cleric, P18
-     (#507) the Chanter and 0.8 P2 (#491) the Templar, all hidden, so the check names the classes that may be hidden,
-     not a count; 0.8 P3 (#492) releases the Templar with its guide pack, so it moves to the released classes, and 0.8
-     P5 (#494) the Cleric, 0.8 P17 (#506) the Sorcerer and 0.8 P19 (#508) the Chanter, the last hidden one, so none is
-     left again */
-  { const ds = require('fs').readFileSync(require('path').join(__dirname, '..', 'data', 'DATA_SOURCES.md'), 'utf8'), hid = [...V1.hiddenUrls], oth = [...V1.otherUrls];
-    const hidCls = V1.hiddenDirs.map(d => (d.match(/classes[\\/]([a-z]+)[\\/]?$/) || [])[1]);
-    ok(`hidden class packs: none is left (the Chanter, hidden since 0.8 P18, released in 0.8 P19)`, !hidCls.length && !hid.length, { dirs: V1.hiddenDirs, urls: hid });
+  /* hidden class packs (release "hidden": data only, not offered) ship nothing to this page: none of their own URLs is on
+     the card and every one is in DATA_SOURCES.md. The other released classes' own URLs are checked the same way (their
+     pages list them, this Assassin page doesn't). Both lists are read from the data (V1.hiddenDirs; pack.json `classes`
+     minus the page's class and the hidden ones), so a class release or a new class needs no edit here (0.9 P3, #622) */
+  { const fs = require('fs'), path = require('path'), ds = fs.readFileSync(path.join(__dirname, '..', 'data', 'DATA_SOURCES.md'), 'utf8'), hid = [...V1.hiddenUrls], oth = [...V1.otherUrls];
+    const hidCls = V1.hiddenDirs.map(d => path.basename(d.replace(/[\\/]+$/, '')));
+    const packClasses = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'packs', 'aion2', 'pack.json'), 'utf8')).classes;
+    const bad = us => us.filter(u => !ds.includes('](' + u + ')') || hrefs.has(norm(u)));
+    ok(`hidden class packs (${hidCls.join(', ') || 'none'}): their ${hid.length} own URLs are in DATA_SOURCES.md and none is on the Assassin's Sources card`, !bad(hid).length, bad(hid));
     ok(`other released classes (${V1.otherClasses.join(', ')}): their ${oth.length} own URLs are in DATA_SOURCES.md and none is on the Assassin's Sources card`,
-      JSON.stringify(V1.otherClasses.slice().sort()) === '["chanter","cleric","gladiator","ranger","sorcerer","spiritmaster","templar"]' && oth.length > 0 && oth.every(u => ds.includes('](' + u + ')') && !hrefs.has(norm(u))), oth.filter(u => !ds.includes('](' + u + ')') || hrefs.has(norm(u)))); }
+      JSON.stringify(V1.otherClasses.slice().sort()) === JSON.stringify(packClasses.filter(c => c !== 'assassin' && !hidCls.includes(c)).sort()) && (oth.length > 0 || !V1.otherClasses.length) && !bad(oth).length, bad(oth)); }
   ok('Sources links: no nofollow / sponsored / ugc', links.every(([, r]) => !/nofollow|sponsored|ugc/.test(r)));
   /* 10. No new external requests (fonts only, as before) */
   ok('no external requests besides Google Fonts', [...reqs].every(u => /^https:\/\/fonts\.(googleapis|gstatic)\.com\//.test(u)), [...reqs]); /* stylesheet + the font files it names (only where the network allows) */

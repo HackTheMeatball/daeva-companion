@@ -401,7 +401,7 @@ Rules for every item:
   threshold), the Skills card and Next up show one row per build skill, "Heart Gore → Lv 10 · specialty: <name>", in
   the build's priority order, with one "Done" per skill that ticks its lines up to the target (one tap per skill,
   undoable); "Missed" skill lines in milestones fold behind it.
-- **Inputs.** `docs/design/0.9-loadout-mockup.md` and `docs/design/mockups/0.9-loadout/` (Design Lead's mocks, #610; merged with Design Lead's look OK after the fresh review; owner 2026-10-20 5:21 and 5:24 PM ET). Kickoff holds the item until they are on main.
+- **Inputs.** `docs/design/0.9-catchup/` (Design Lead's mocks, #619 and #656; merged with Design Lead's look OK after the fresh review; owner 2026-10-20 5:21 and 5:24 PM ET). Kickoff holds the item until they are on main.
 - **Files.** `src/packs/aion2/cards/skills.js`, `src/packs/aion2/cards/skills.html`, `src/packs/aion2/nextup.js`,
   `src/packs/aion2/cards/nextup-kinds.js`, `src/packs/aion2/requirements.js`, `src/core/nextup.js`,
   `src/packs/aion2/cards/journey-sections.js`, `src/styles/app.css`, the tests.
@@ -422,7 +422,7 @@ Rules for every item:
 - **Result.** As Design Lead's approved mock shows: one row per open board ("Nezekan · 10 guide nodes", "Have them",
   "Respec this board") plus "Respec all"; the Stigmas card lists its slots like Skills' and Daevanion's "Coming up", with
   a Respec in its foot.
-- **Inputs.** `docs/design/0.9-loadout-mockup.md` and `docs/design/mockups/0.9-loadout/` (Design Lead's mocks, #610; merged with Design Lead's look OK after the fresh review; owner 2026-10-20 5:21 and 5:24 PM ET). Kickoff holds the item until they are on main.
+- **Inputs.** `docs/design/0.9-catchup/` (Design Lead's mocks, #619 and #656; merged with Design Lead's look OK after the fresh review; owner 2026-10-20 5:21 and 5:24 PM ET). Kickoff holds the item until they are on main.
 - **Files.** `src/packs/aion2/cards/daevanion.js`, `src/packs/aion2/cards/daevanion.html`,
   `src/packs/aion2/cards/stigmas.js`, `src/packs/aion2/cards/stigmas.html`, `src/styles/app.css`, the tests.
 - **No-gos.** No save key change. Respec costs and whether a Stigma reset refunds or unequips only from sourced data
@@ -460,7 +460,7 @@ Rules for every item:
   being read and leaves the bug-report payload (no key bump, pre-1.0 rule); the rail
   keeps one behaviour on purpose (Basic's rail styles in `app.css` are layout, not hiding).
 - **Inputs.** `docs/design/0.9-one-view.md` (Design Lead's hide list: every element Basic hides today marked default
-  open, fold or drop, with the drops named), `docs/design/0.9-loadout-mockup.md` and `docs/design/mockups/0.9-loadout/`
+  open, fold or drop, with the drops named), `docs/design/0.9-catchup/`
   (Design Lead's mocks with the look OK; owner 2026-10-20 5:21 and 5:24 PM ET). Kickoff holds the item until they are on
   main.
 - **Files.** `src/main.js`, `src/core/nextup.js`, `src/cards/nextup.js`, `src/packs/aion2/nextup.js`,
@@ -487,7 +487,7 @@ Rules for every item:
 - **Result.** As Design Lead's approved mock shows: key setup is a bottom sheet; icons fill each box with a tap or
   focus tooltip; each key chip can be tapped to rebind; one `keys` save field with the class default when empty (no key
   bump); every class in the same layout.
-- **Inputs.** `docs/design/0.9-loadout-mockup.md` and `docs/design/mockups/0.9-loadout/` (Design Lead's mocks, #610; merged with Design Lead's look
+- **Inputs.** `docs/design/0.9-keys/` (Design Lead's mocks, #619 and #656; merged with Design Lead's look
   OK after the fresh review; owner 2026-10-20 5:21 and 5:24 PM ET). Kickoff holds the item until they are on main.
 - **Files.** `src/packs/aion2/cards/build.js`, `src/packs/aion2/cards/build.html`, `src/core/state.js` (`keys`
   default), `src/core/merge.js`, `src/styles/app.css`, `tests/a11y.js`, `tests/save.js`, the tests.
@@ -518,6 +518,32 @@ Rules for every item:
   - [ ] Every URL check passes after the card is opened. No visible change in before / after shots.
 - **Lanes:** site, page-card, e2. **Model:** Opus, M (90 min).
 - **After:** research-sources-credit.
+
+## P24: Terms of Use, and robots.txt blocks AI training crawlers
+
+- **Problem.** The site has no Terms of Use, and `public/robots.txt` allows every crawler, AI training crawlers included,
+  while LICENSE reserves the guide text, data selection, name and art. Source Vetting drafted both (coordinator routing,
+  2026-10-20). Published terms are legal text in the owner's name, so the final text is the owner's
+  (`owner-ok-0.9-terms`).
+- **Result.**
+  - `TERMS.md` at the repo root: the owner-approved text from `docs/legal/TERMS.md`, verbatim, with its date.
+  - The footer links "Terms" next to "Privacy", in the same form (a GitHub link, new tab).
+  - `public/robots.txt`: the training crawlers in `docs/legal/robots-policy.md` get `Disallow: /`; `*` stays allowed
+    (search engines and user-triggered assistants); the AI search crawlers as the owner chose; the sitemap line stays;
+    the comment points at the Terms' GitHub URL (the site serves no `/TERMS.md`).
+  - CHANGELOG notes the new Terms.
+- **Inputs.** `docs/legal/TERMS.md`, `docs/legal/robots-policy.md` (land with the owner-ok row; kickoff holds the item
+  until they are on main).
+- **Files.** `TERMS.md`, `src/index.html` (the footer line only), `public/robots.txt`, `tests/site.js`, `CHANGELOG.md`.
+- **No-gos.** No wording change to the approved text. The footer keeps "unofficial" and "not affiliated with or endorsed
+  by NCSoft". Search engines stay allowed.
+- **Acceptance.**
+  - [ ] `tests/site`: robots.txt blocks `GPTBot` and `ClaudeBot` with `Disallow: /`, keeps `User-agent: *` / `Allow: /` and
+        the sitemap line; the footer has a Terms link to `TERMS.md`; `TERMS.md` matches `docs/legal/TERMS.md`.
+  - [ ] Before / after shots of the footer at 1500 and 390 px, `scrapbook.json`; Design Lead's DESIGN OK.
+- **Review:** blind (owner-held legal text; Code Review the code).
+- **Lanes:** site, page-card. **Model:** Sonnet, S (45 min).
+- **After:** P23, owner-ok-0.9-terms. If the owner's OK isn't in by 0.9's release gate, P24 moves to 0.10.
 
 ## S1–S4: pipeline items (Build Pipeline builds them; no queue line)
 

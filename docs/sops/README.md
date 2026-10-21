@@ -42,7 +42,7 @@ one-off Process Mapper for Rules Steward (Francesca), who keeps it current.
 | FLOW-19 | Rule and roster upkeep | A merge changes a rule, decision, owner or thread | Francesca | [FLOW-19-rule-and-roster-upkeep.md](FLOW-19-rule-and-roster-upkeep.md) | Q-14, ROL-07 | draft |
 | FLOW-20 | Player testing | RC READY, a release, or a patch | Jesse | [FLOW-20-player-testing.md](FLOW-20-player-testing.md) | PLN-21, PLN-22, KZ-17 | draft |
 | FLOW-21 | Game patch re-check | AION 2 patches | Gretchen | [FLOW-21-game-patch-recheck.md](FLOW-21-game-patch-recheck.md) | REPO-05, REPO-06 | draft |
-| FLOW-22 | Tracker page change | A tracker design is approved | Skyler | [FLOW-22-tracker-page-change.md](FLOW-22-tracker-page-change.md) | TRK-10, DEC-20261018-tracker-2-0-tab-by | draft |
+| FLOW-22 | Tracker page change | A tracker design is approved | Jane | [FLOW-22-tracker-page-change.md](FLOW-22-tracker-page-change.md) | TRK-10, DEC-20261018-tracker-2-0-tab-by | draft |
 | FLOW-23 | Architecture change (Gus, effective once relay work moves to Actions) | An item touches state, saves, data format or build | Gus | [FLOW-23-architecture-change.md](FLOW-23-architecture-change.md) | REPO-04, PIP-06, KZ-16, PLN-05 | draft |
 
 "Runs on" names the main gates; each SOP lists every rule it uses.
