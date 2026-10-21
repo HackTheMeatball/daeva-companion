@@ -234,6 +234,7 @@
         {
           "node": "node:spiritmaster:nezekan:r5c3",
           "label": "Spirit Strike · 1 of 2",
+          "cost": 11,
           "milestone": "g12",
           "order": 20,
           "requires": {
@@ -243,11 +244,24 @@
           "completesWith": [
             "tick"
           ],
-          "status": "single-source"
+          "status": "single-source",
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
+          ]
         },
         {
           "node": "node:spiritmaster:nezekan:r13c9",
           "label": "Spirit Strike · 2 of 2",
+          "cost": 7,
           "milestone": "g12",
           "order": 30,
           "requires": {
@@ -257,11 +271,24 @@
           "completesWith": [
             "tick"
           ],
-          "status": "single-source"
+          "status": "single-source",
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
+          ]
         },
         {
           "node": "node:spiritmaster:zikel:r7c10",
           "label": "Consecutive Countercurrent · 1 of 2",
+          "cost": 4,
           "milestone": "g20",
           "order": 30,
           "requires": {
@@ -271,11 +298,24 @@
           "completesWith": [
             "tick"
           ],
-          "status": "single-source"
+          "status": "single-source",
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
+          ]
         },
         {
           "node": "node:spiritmaster:zikel:r11c4",
           "label": "Consecutive Countercurrent · 2 of 2",
+          "cost": 9,
           "milestone": "g20",
           "order": 40,
           "requires": {
@@ -285,12 +325,25 @@
           "completesWith": [
             "tick"
           ],
-          "status": "single-source"
+          "status": "single-source",
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
+          ]
         },
         {
           "node": "node:spiritmaster:zikel:r4c5",
           "label": "Element Unification · 1 of 2",
           "via": "Element Unification is learned at Lv 25",
+          "cost": 8,
           "milestone": "g20",
           "order": 50,
           "requires": {
@@ -310,12 +363,25 @@
           "completesWith": [
             "tick"
           ],
-          "status": "single-source"
+          "status": "single-source",
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
+          ]
         },
         {
           "node": "node:spiritmaster:zikel:r10c9",
           "label": "Element Unification · 2 of 2",
           "via": "Element Unification is learned at Lv 25",
+          "cost": 3,
           "milestone": "g20",
           "order": 60,
           "requires": {
@@ -335,7 +401,19 @@
           "completesWith": [
             "tick"
           ],
-          "status": "single-source"
+          "status": "single-source",
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
+          ]
         }
       ],
       "keyStacks": {

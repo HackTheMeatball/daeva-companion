@@ -52,7 +52,7 @@
           "type": "string"
         },
         "cost": {
-          "description": "Points this row takes in the guide's order, its path included (the owner's board, cited with fields [\"cost\"]): what the Daevanion card's cost box pre-fills. The generator checks it against the cheapest path (tools/gen/board-path.mjs).",
+          "description": "Points this row takes in the guide's order, its path included (the owner's board, cited with fields [\"cost\"]): what the Daevanion card's cost box pre-fills. A cost computed from the path instead cites an inferred source with fields [\"cost\"] and carries fieldStatus { cost: inferred } (0.9 P16). The generator checks it against the cheapest path (tools/gen/board-path.mjs).",
           "type": "integer",
           "minimum": 0,
           "maximum": 200
@@ -66,6 +66,18 @@
         },
         "status": {
           "$ref": "common.schema.json#/$defs/status"
+        },
+        "fieldStatus": {
+          "description": "Per-field verdict where it differs from the row's status: { \"cost\": \"inferred\" } for a cost computed from the board path (0.9 P16), not read from the game. The Daevanion card tags the cost box.",
+          "type": "object",
+          "propertyNames": {
+            "enum": [
+              "cost"
+            ]
+          },
+          "additionalProperties": {
+            "$ref": "common.schema.json#/$defs/status"
+          }
         },
         "sources": {
           "type": "array",

@@ -15,6 +15,7 @@ import { Worker, isMainThread, parentPort, workerData } from 'node:worker_thread
 import { ROOT, validateAll, validateDoc } from '../tools/gen/validate.mjs';
 import { COUNTS_FILE, countsJson, dataSourcesMd, generate, guidePacks, readExpected } from '../tools/gen/gen.mjs';
 import { checkCompliance } from './compliance.mjs';
+import { checkPlanCosts } from '../tools/gen/board-path.mjs';
 
 const read = p => JSON.parse(readFileSync(join(ROOT, 'data', p), 'utf8'));
 const E = readExpected() || {};
@@ -129,6 +130,15 @@ packFails('a JSON file in a pack folder that is not listed', { add: { [PK + 'aio
 packFails('an unknown parent', editManifest(guide, m => { m.parent = 'aion2/elyos'; }), /aion2\/asmodian\/assassin parent: unknown pack "aion2\/elyos"/);
 packFails('an unknown pack in uses', editManifest(guide, m => { m.uses = ['aion2/classes/no-such-class']; }), /uses: unknown pack "aion2\/classes\/no-such-class"/);
 packFails('a cycle (the class uses the guide that uses it)', editManifest('aion2/classes/assassin', m => { m.uses = [guide]; }), /pack cycle: /);
+/* 0.9 P16: plan costs computed from the board path. An inferred source without the label, the label on an owner's number,
+   an inferred cost on a pick-one (anyNode) row, and a tied row's inferred cost without a via naming its path all fail */
+const planFails = (label, pack, edit, re) => job(ok => { const g1 = runs(ok, label, { pack, mutate: (rel, d) => { if (rel === `data/packs/${pack}/builds.json`) edit(d.records.find(r => r.boardPlan).boardPlan); } });
+  if (g1) ok('generator rejects: ' + label, g1.failed.some(x => re.test(x.check)), g1.failed.map(x => x.check).slice(0, 5)); });
+const inferredRef = { inferred: 'test', fields: ['cost'], checkedAt: '2026-10-21' };
+planFails('an inferred cost source without fieldStatus.cost', guide, p => { delete p.find(e => e.node === 'node:assassin:triniel:r9c10').fieldStatus; }, /triniel:r9c10: cost has its source/);
+planFails('fieldStatus.cost inferred on an owner\'s cost', guide, p => { p.find(e => e.cost !== undefined && !e.fieldStatus).fieldStatus = { cost: 'inferred' }; }, /cost has its source/);
+planFails('an inferred cost on a pick-one corner row', guide, p => Object.assign(p.find(e => e.key === 'dv:t:corner'), { cost: 15, fieldStatus: { cost: 'inferred' }, sources: [inferredRef] }), /Multi-Hit Chance corner: its inferred cost is the row's only one/);
+planFails('a tied inferred cost with no via naming its path', 'aion2/asmodian/cleric', p => { delete p.find(e => e.label === 'Light of Regeneration').via; }, /Light of Regeneration: its inferred cost is the row's only one/);
 /* --root is the one real copy left (tests/out/, not committed): it proves another packs root compiles the same */
 job((ok, G) => { const g = G(), copyRoot = join(ROOT, 'tests/out/packs-copy'); rmSync(copyRoot, { recursive: true, force: true }); cpSync(join(ROOT, 'data/packs'), copyRoot, { recursive: true });
   let gc = null; try { gc = generate({ root: copyRoot, pack: guide }); } catch (e) { ok('generator runs on a copied packs root', false, e.message); return; }
@@ -248,6 +258,56 @@ if (g) {
   const dsMd = dataSourcesMd(g, others);
   ok('Sources labels zone and dungeon pages by record name', ['[Metabot: Calderon Canyon]', "[Metabot: High Priest's Ruins]"].every(s => dsMd.includes(s)));
   others.forEach((o, i) => ok(`guide pack ${otherIds[i]}: ${o.report.checks.length} cross-record checks pass`, !o.failed.length, o.failed.slice(0, 10)));
+  /* 0.9 P16: every class's board plan has its costs. (1) Each board's total in the data is the research file's
+     (docs/research/2026-10-node-paths.md "Per class", read from its table, not pinned here), and each row's cost is a
+     cost its cheapest path in plan order gives (board-path.mjs; the generator's own listed exceptions aside).
+     (2) No row asks for more than the player has: rows in the order the guide opens them (level, then plan order), the
+     running total fits the level's points (rule:crystals-per-level) plus the crystals the data says are earned by then
+     (regional quests by recommended level, Sealed Dungeon first clears by band) at the row's level or a later one before
+     the next board opens; the rows that wait are named in the line. */
+  { const md = readFileSync(join(ROOT, 'docs/research/2026-10-node-paths.md'), 'utf8');
+    const want = Object.fromEntries([...md.matchAll(/^\| (\w+) \| \d+ \| [^|]+ \| ([^|]+) \| (\d+) \|$/gm)].map(m => [m[1].toLowerCase(), { boards: Object.fromEntries(m[2].trim().split(', ').map(s => s.split(' ')).map(([b, n]) => [b, +n])), total: +m[3] }]));
+    const rules = read('packs/aion2/rules.json').records, cpl = rules.find(r => r.id === 'rule:crystals-per-level').value;
+    const sdCrystal = rules.find(r => r.id === 'rule:sd-first-clear-asmodian').value.rewards.crystal;
+    const rqs = read('packs/aion2/asmodian/regional-quests.json').records, sds = read('packs/aion2/asmodian/sealed-dungeons.json').records;
+    const points = L => cpl[L] + rqs.filter(q => q.rec <= L).reduce((a, q) => a + (q.rewards.crystal || 0), 0) + sdCrystal * sds.filter(d => d.band <= L).length;
+    const boardLv = read('packs/aion2/boards.json').records.map(b => b.lv);
+    const EXCEPT = new Set(['node:assassin:vaizel:r5c13']);   /* gen.mjs PATH_COST_EXCEPTIONS: the owner's 5 stands */
+    const packs = guidePacks();
+    ok(`board costs: the research file lists every guide class (${packs.length})`, packs.every(id => want[id.split('/').pop()]), Object.keys(want));
+    for (const id of packs) {
+      const cls = id.split('/').pop(), plan = read(`packs/aion2/asmodian/${cls}/builds.json`).records.find(r => r.id === `build:${cls}:guide`).boardPlan;
+      const nodes = classDoc(cls, 'board-nodes.json').records, boardOf = e => (e.node || e.anyNode[0]).split(':')[2];
+      const name = Object.fromEntries(read('packs/aion2/boards.json').records.map(b => [b.id.split(':')[1], b.name]));
+      /* an anyNode row (the player picks one of several nodes, each its own cost) takes no computed cost (Game Data
+         Check on #749): it has the owner's number or stays blank. A blank one counts here at its first node's path cost,
+         as the research file counts it, and spends the most of its picks' path costs in the points check below */
+      const got = {}, bad = [], spend = new Map();
+      for (const b of [...new Set(plan.map(boardOf))]) {
+        const es = plan.filter(e => boardOf(e) === b).sort((x, y) => x.order - y.order);
+        const path = checkPlanCosts(nodes.filter(n => n.board === 'board:' + b), es.map(e => ({ node: e.node || e.anyNode[0], cost: e.cost })));
+        const blank = e => e.anyNode && e.cost === undefined;
+        es.forEach((e, i) => { if (!blank(e) && (e.cost === undefined || !(path[i].includes(e.cost) || EXCEPT.has(e.node)) || (e.anyNode && (e.fieldStatus || {}).cost))) bad.push(`${b} ${e.label}: ${e.cost} vs ${path[i]}`); });
+        es.forEach((e, i) => { if (!blank(e)) return;
+          const picks = e.anyNode.map(n => checkPlanCosts(nodes.filter(x => x.board === 'board:' + b), [...es.slice(0, i).map(x => ({ node: x.node || x.anyNode[0], cost: x.cost })), { node: n }])[i]).flat();
+          spend.set(e, Math.max(...picks)); });
+        got[name[b]] = es.reduce((a, e, i) => a + (blank(e) ? path[i][0] : e.cost || 0), 0);
+      }
+      const w = want[cls] || { boards: {}, total: NaN }, total = Object.values(got).reduce((a, n) => a + n, 0);
+      ok(`board costs ${cls}: every row has a cost its cheapest path gives (a pick-one row: the owner's, or blank); totals by board ${JSON.stringify(got)} = ${total}, as the research file`, !bad.length
+        && Object.keys({ ...got, ...w.boards }).every(b => got[b] === w.boards[b]) && total === w.total, { bad, got, want: w });
+      /* a board's rows all open with it (Nezekan's at Lv 12-13), so a row can wait a few levels for its points (Next up
+         gates each tick on the points left, dvGateOf); it must fit before the next board opens (Lv 45 for the last) */
+      let run = 0; const over = [], waits = [];
+      for (const e of plan.slice().sort((x, y) => x.requires.level - y.requires.level || x.order - y.order)) {
+        run += spend.has(e) ? spend.get(e) : e.cost || 0;
+        const lv = e.requires.level, nextOpen = Math.min(45, ...boardLv.filter(l => l > lv)), fit = cpl.findIndex((_, L) => L >= lv && run <= points(L));
+        if (fit < 0 || fit > nextOpen || (fit === nextOpen && nextOpen < 45)) over.push(`${e.label} (Lv ${lv}): ${run} points, ${points(lv)} at Lv ${lv}, fits at Lv ${fit < 0 ? 'none' : fit}, next board Lv ${nextOpen}`);
+        else if (fit > lv) waits.push(`${e.label} Lv ${lv}→${fit}`);
+      }
+      ok(`board costs ${cls}: no row asks for more points than the player has before the next board opens (${run} by the last row${waits.length ? '; waits for points: ' + waits.join(', ') : ''})`, !over.length, over);
+    }
+  }
   /* 0.9 P32: the counts file is what `npm run gen -- --counts` writes, so it has no stale or missing key */
   ok(`${COUNTS_FILE} is current (npm run gen -- --counts): ${Object.keys(g.counts).length} counts`, Object.keys(g.counts).length > 0 && readFileSync(join(ROOT, COUNTS_FILE), 'utf8') === countsJson(g.counts),
     Object.keys(g.counts).filter(k => g.counts[k] !== E[k]).concat(Object.keys(E).filter(k => !(k in g.counts))));

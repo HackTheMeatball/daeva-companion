@@ -317,6 +317,7 @@
         {
           "node": "node:templar:nezekan:r5c3",
           "label": "Enhance Health · 1 of 2",
+          "cost": 11,
           "milestone": "g12",
           "order": 20,
           "requires": {
@@ -326,11 +327,24 @@
           "completesWith": [
             "tick"
           ],
-          "status": "single-source"
+          "status": "single-source",
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
+          ]
         },
         {
           "node": "node:templar:nezekan:r13c9",
           "label": "Enhance Health · 2 of 2",
+          "cost": 7,
           "milestone": "g12",
           "order": 30,
           "requires": {
@@ -340,11 +354,24 @@
           "completesWith": [
             "tick"
           ],
-          "status": "single-source"
+          "status": "single-source",
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
+          ]
         },
         {
           "node": "node:templar:nezekan:r9c6",
           "label": "Ironclad Defense · 1 of 2",
+          "cost": 3,
           "milestone": "g12",
           "order": 40,
           "requires": {
@@ -354,28 +381,65 @@
           "completesWith": [
             "tick"
           ],
-          "status": "single-source"
+          "status": "single-source",
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
+          ]
         },
         {
           "node": "node:templar:nezekan:r5c13",
           "label": "Ironclad Defense · 2 of 2",
+          "via": "waits for Guarding Seal 1 of 2 (Lv 13), which its path runs through",
+          "cost": 6,
           "milestone": "g12",
           "order": 50,
           "requires": {
-            "level": 12,
-            "basis": "rule"
+            "level": 13,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/skills/guarding-seal",
+                "fields": [
+                  "learnLv"
+                ],
+                "checkedAt": "2026-10-19"
+              }
+            ],
+            "note": "Guarding Seal 1 of 2 comes first (its learn level): this row's path runs through its node"
           },
           "completesWith": [
             "tick"
           ],
-          "status": "single-source"
+          "status": "single-source",
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
+          ]
         },
         {
           "node": "node:templar:nezekan:r7c10",
           "label": "Guarding Seal · 1 of 2",
-          "via": "Guarding Seal is learned at Lv 13",
+          "via": "Guarding Seal is learned at Lv 13; before Ironclad Defense 2 of 2, whose path runs through it",
+          "cost": 3,
           "milestone": "g12",
-          "order": 60,
+          "order": 45,
           "requires": {
             "level": 13,
             "basis": "sourced",
@@ -393,12 +457,25 @@
           "completesWith": [
             "tick"
           ],
-          "status": "single-source"
+          "status": "single-source",
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
+          ]
         },
         {
           "node": "node:templar:nezekan:r11c3",
           "label": "Guarding Seal · 2 of 2",
           "via": "Guarding Seal is learned at Lv 13",
+          "cost": 6,
           "milestone": "g12",
           "order": 70,
           "requires": {
@@ -418,14 +495,27 @@
           "completesWith": [
             "tick"
           ],
-          "status": "single-source"
+          "status": "single-source",
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
+          ]
         },
         {
           "node": "node:templar:zikel:r6c7",
           "label": "Fury · 1 of 2",
           "via": "Fury is learned at Lv 21",
+          "cost": 3,
           "milestone": "g20",
-          "order": 30,
+          "order": 50,
           "requires": {
             "level": 21,
             "basis": "sourced",
@@ -443,14 +533,27 @@
           "completesWith": [
             "tick"
           ],
-          "status": "single-source"
+          "status": "single-source",
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
+          ]
         },
         {
           "node": "node:templar:zikel:r12c11",
           "label": "Fury · 2 of 2",
           "via": "Fury is learned at Lv 21",
+          "cost": 8,
           "milestone": "g20",
-          "order": 40,
+          "order": 60,
           "requires": {
             "level": 21,
             "basis": "sourced",
@@ -468,13 +571,27 @@
           "completesWith": [
             "tick"
           ],
-          "status": "single-source"
+          "status": "single-source",
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
+          ]
         },
         {
           "node": "node:templar:zikel:r7c10",
           "label": "Insulting Roar · 1 of 2",
+          "via": "before Fury: Zikel opens at Lv 20, Fury is learned at Lv 21",
+          "cost": 4,
           "milestone": "g20",
-          "order": 50,
+          "order": 30,
           "requires": {
             "level": 20,
             "basis": "rule"
@@ -482,13 +599,26 @@
           "completesWith": [
             "tick"
           ],
-          "status": "single-source"
+          "status": "single-source",
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
+          ]
         },
         {
           "node": "node:templar:zikel:r11c4",
           "label": "Insulting Roar · 2 of 2",
+          "cost": 9,
           "milestone": "g20",
-          "order": 60,
+          "order": 40,
           "requires": {
             "level": 20,
             "basis": "rule"
@@ -496,7 +626,19 @@
           "completesWith": [
             "tick"
           ],
-          "status": "single-source"
+          "status": "single-source",
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
+          ]
         }
       ],
       "keyStacks": {

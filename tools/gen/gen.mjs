@@ -312,7 +312,9 @@ export function generate(opts = {}) {
        skill's specialty slots sit (0.8.1 F3, src/packs/aion2/data/build.js) */
     /* st: the plan row's label (0.9 P1), its own status else the build's */
     return { k, dv: true, board: board.name, blv: e.requires.level, ty, t: e.label, ...(e.via ? { via: e.via } : {}), ...(e.cost !== undefined ? { cost: e.cost } : {}),
-      ...(sn ? { skill: sk(sn).name, adds: nodeById[e.node].adds ?? 1 } : {}), ...withSt('st', tagSt(e.status ?? build.status)) };
+      ...(sn ? { skill: sk(sn).name, adds: nodeById[e.node].adds ?? 1 } : {}), ...withSt('st', tagSt(e.status ?? build.status)),
+      /* cst: the cost's own label (0.9 P16), on the cost box */
+      ...withSt('cst', tagSt((e.fieldStatus || {}).cost)) };
   };
   for (const e of build.boardPlan) for (const n of e.node ? [e.node] : e.anyNode) if (!nodeById[n]) throw new Error('board plan: unknown node ' + n);
   /* plan costs (0.8.1 F1): a row's `cost` (what the cost box pre-fills) is the owner's board number, cited with fields
@@ -323,14 +325,24 @@ export function generate(opts = {}) {
     'node:assassin:vaizel:r5c13': "Vaizel Assault Stance: the cheapest path (via r6c12, r5c12) gives 4, the owner's board says 5; the owner's 5 stands until an owner re-check (Release Planner, 2026-10-20)",
   };
   report.pathCost = [];
-  for (const e of build.boardPlan.filter(e => e.cost !== undefined))
-    check(`${build.id} boardPlan ${e.node || e.key}: cost has its source (owner screen or page, fields: cost)`, (e.sources || []).some(r => (r.owner || r.url) && (r.fields || []).includes('cost')));
+  /* 0.9 P16: a cost computed from the path (docs/research/2026-10-node-paths.md) cites an inferred source instead and is
+     labelled { fieldStatus: { cost: inferred } }; an owner's or a page's number is not */
+  const costSt = e => (e.fieldStatus || {}).cost;
+  for (const e of build.boardPlan.filter(e => e.cost !== undefined)) {
+    const refs = (e.sources || []).filter(r => (r.fields || []).includes('cost')), inf = costSt(e) === 'inferred';
+    check(`${build.id} boardPlan ${e.node || e.key}: cost has its source (owner screen or page, fields: cost; or inferred, labelled)`, refs.length && refs.every(r => inf ? r.inferred : r.owner || r.url));
+  }
+  for (const e of build.boardPlan) if (costSt(e)) check(`${build.id} boardPlan ${e.node || e.key}: a cost status has a cost`, e.cost !== undefined);
   for (const b of boards) {
     const es = build.boardPlan.filter(e => nodeById[e.node || e.anyNode[0]].board === b.id).sort(byNum('order'));
     if (!es.some(e => e.cost !== undefined)) continue;
     const got = checkPlanCosts(nodes.filter(n => n.board === b.id), es.map(e => ({ node: e.node || e.anyNode[0], cost: e.cost })));
     es.forEach((e, i) => { if (e.cost === undefined) return;
       const id = e.node || e.anyNode[0], ok = got[i].includes(e.cost), ex = PATH_COST_EXCEPTIONS[id];
+      /* 0.9 P16 (Game Data Check): a computed cost is pre-filled only when it is the row's one cost: one node (an anyNode
+         row is the player's pick, each pick its own cost) and one cheapest-path cost, unless the row's `via` names the path */
+      if (costSt(e) === 'inferred') check(`board path: ${b.name} ${e.label}: its inferred cost is the row's only one (one node; one cheapest-path cost, or a via naming the path)`,
+        e.node && (got[i].length === 1 || !!e.via), { anyNode: e.anyNode, path: got[i] });
       if (ex) { check(`board path: exception ${id} still differs`, !ok, got[i]); report.pathCost.push({ row: `${b.name} ${e.label}`, cost: e.cost, path: got[i], exception: ex }); warn('board path: ' + ex); }
       else check(`board path: ${b.name} ${e.label} costs ${e.cost} on its cheapest path`, ok, got[i]); });
   }
@@ -339,7 +351,7 @@ export function generate(opts = {}) {
   const DV_BOARDS = {};
   for (const b of boards.slice().sort(byNum('lv'))) {
     const es = build.boardPlan.filter(e => nodeById[e.node || e.anyNode[0]].board === b.id).sort(byNum('order'));
-    if (es.length && es.every(e => e.requires.level === b.lv)) DV_BOARDS[b.name] = { lv: b.lv, nodes: es.map(dvItem).map(({ k, t, ty, via, st }) => ({ k, t, ty, ...(via ? { via } : {}), ...(st ? { st } : {}) })) };
+    if (es.length && es.every(e => e.requires.level === b.lv)) DV_BOARDS[b.name] = { lv: b.lv, nodes: es.map(dvItem).map(({ k, t, ty, via, st, cst }) => ({ k, t, ty, ...(via ? { via } : {}), ...(st ? { st } : {}), ...(cst ? { cst } : {}) })) };
   }
 
   /* ---------------------------------------------------------------- milestones and route rules (token text) */

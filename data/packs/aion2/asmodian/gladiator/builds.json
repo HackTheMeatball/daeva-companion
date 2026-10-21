@@ -321,6 +321,7 @@
         {
           "node": "node:gladiator:nezekan:r4c5",
           "label": "Overhead Slam",
+          "cost": 9,
           "milestone": "g12",
           "order": 20,
           "requires": {
@@ -330,11 +331,24 @@
           "completesWith": [
             "tick"
           ],
-          "status": "disputed"
+          "status": "disputed",
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
+          ]
         },
         {
           "node": "node:gladiator:nezekan:r7c5",
           "label": "Rending Blow",
+          "cost": 4,
           "milestone": "g12",
           "order": 30,
           "requires": {
@@ -344,12 +358,25 @@
           "completesWith": [
             "tick"
           ],
-          "status": "disputed"
+          "status": "disputed",
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
+          ]
         },
         {
           "node": "node:gladiator:nezekan:r13c7",
           "label": "Ruinous Blow",
           "via": "Ruinous Blow is learned at Lv 14",
+          "cost": 8,
           "milestone": "g12",
           "order": 40,
           "requires": {
@@ -369,11 +396,24 @@
           "completesWith": [
             "tick"
           ],
-          "status": "disputed"
+          "status": "disputed",
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
+          ]
         },
         {
           "node": "node:gladiator:zikel:r13c5",
           "label": "Overhead Slam",
+          "cost": 12,
           "milestone": "g20",
           "order": 30,
           "requires": {
@@ -383,11 +423,24 @@
           "completesWith": [
             "tick"
           ],
-          "status": "disputed"
+          "status": "disputed",
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
+          ]
         },
         {
           "node": "node:gladiator:zikel:r7c13",
           "label": "Rending Blow",
+          "cost": 9,
           "milestone": "g20",
           "order": 40,
           "requires": {
@@ -397,11 +450,24 @@
           "completesWith": [
             "tick"
           ],
-          "status": "disputed"
+          "status": "disputed",
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
+          ]
         },
         {
           "node": "node:gladiator:zikel:r3c11",
           "label": "Ruinous Blow",
+          "cost": 8,
           "milestone": "g20",
           "order": 50,
           "requires": {
@@ -411,7 +477,19 @@
           "completesWith": [
             "tick"
           ],
-          "status": "disputed"
+          "status": "disputed",
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
+          ]
         }
       ],
       "keyStacks": {
