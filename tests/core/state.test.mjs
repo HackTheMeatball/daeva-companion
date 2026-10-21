@@ -1,4 +1,4 @@
-/* The saved state (save v5, 0.4 P3c): key, shape, char(), labelOf, loading, the import check. */
+/* The saved state (save v6, 0.9 P2; v5 0.4 P3c): key, shape, char(), labelOf, loading, the import check. */
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
@@ -7,17 +7,17 @@ const json = p => JSON.parse(readFileSync(new URL('../../' + p, import.meta.url)
 
 export default (test, M) => {
   const ids = () => { let n = 0; return () => `slot-${++n}`; };
-  test('storage key: companion-save-v5, not the v4 key, no game, class or player name in it', () => {
-    assert.equal(M.KEY, 'companion-save-v5'); assert.notEqual(M.KEY, V4_KEY); assert.equal(M.SAVE_V, 5);
+  test('storage key: companion-save-v6, not the v5 or v4 key, no game, class or player name in it', () => {
+    assert.equal(M.KEY, 'companion-save-v6'); assert.notEqual(M.KEY, V4_KEY); assert.notEqual(M.KEY, 'companion-save-v5'); assert.equal(M.SAVE_V, 6);
   });
   test('pack and class ids are the guide pack\'s and its class\'s (data/packs)', () => {
     assert.equal(M.PACK, json('data/packs/aion2/asmodian/assassin/pack.json').id);
     assert.ok(json('data/packs/aion2/asmodian/assassin/pack.json').uses.includes('aion2/classes/' + M.CLASS));
     assert.equal(M.CLASS, json('data/packs/aion2/classes/assassin/class.json').class);
   });
-  test('new save: v 5, one slot (current), the character\'s identity, the defaults; the id from newId', () => {
+  test('new save: v 6, one slot (current), the character\'s identity, the defaults; the id from newId', () => {
     const s = M.newSave({ now: 1234, id: 'slot-a' });
-    assert.deepEqual(s, { v: 5, current: 'slot-a', chars: { 'slot-a': { id: 'slot-a', pack: M.PACK, class: M.CLASS, name: '', created: 1234, checks: {}, level: 5, quest: '' } }, hide: false, open: {} });
+    assert.deepEqual(s, { v: 6, current: 'slot-a', chars: { 'slot-a': { id: 'slot-a', pack: M.PACK, class: M.CLASS, name: '', created: 1234, checks: {}, level: 5, quest: '' } }, hide: false, open: {} });
     assert.throws(() => M.newSave({}), /slot id/);
   });
   test('char(state) is state.chars[state.current]', () => {
@@ -47,7 +47,7 @@ export default (test, M) => {
       for (const lv of [1, 4, 5, 6, 45]) { assert.equal(M.levelOnTurnIn(lv, x), lv); assert.equal(M.levelOnUnturn(lv, x), lv); }
     /* the data (docs/research/2026-10-research-401-levels.md): the eight 100% EXP Ishalgen quests, each with the level
        it is turned in at and a source naming levelsUp */
-    assert.deepEqual(M.QUESTS.filter(x => x.length > 2).map(x => [x[1], x[2]]), [['A Village in the Fog', 1], ['Prepare to Escape', 2],
+    assert.deepEqual(M.QUESTS.filter(x => x.length > 2).map(x => [M.QUEST_NAME[x[1]], x[2]]), [['A Village in the Fog', 1], ['Prepare to Escape', 2],
       ['Shadow Forest', 3], ['Isolated Lake', 4], ['Signs of a Crash Landing', 6], ['Prison Compound Infiltration Plan', 7],
       ['Brigade Prison Compound Infiltration Operation', 8], ['The Longest Night', 9]]);
     const recs = json('data/packs/aion2/asmodian/story-quests.json').records;
@@ -55,7 +55,7 @@ export default (test, M) => {
     /* The Being Beneath the Lake and Spread Your Wings give 50% each: no levelsUp, so ticking them never changes the level */
     for (const n of ['The Being Beneath the Lake', 'Spread Your Wings']) {
       assert.ok(!recs.find(r => r.name === n).levelsUp, n);
-      const e = M.QUESTS.find(x => x[1] === n);
+      const e = M.QUESTS.find(x => x[1] === M.sq(n));
       for (const lv of [1, 4, 5, 6, 7, 45]) { assert.equal(M.levelOnTurnIn(lv, e), lv, n); assert.equal(M.levelOnUnturn(lv, e), lv, n); }
     }
   });
@@ -63,31 +63,32 @@ export default (test, M) => {
     const r = M.loadState(null, { now: 5, newId: ids() });
     assert.equal(r.hadSave, false); assert.deepEqual(r.state, M.newSave({ now: 5, id: 'slot-1' }));
   });
-  test('load: a v5 save is laid over the defaults (view and character); newId is not called', () => {
-    const raw = JSON.stringify({ v: 5, current: 'k', chars: { k: { id: 'k', pack: M.PACK, class: M.CLASS, name: '', created: 1, level: 30, checks: { 'g6:0': true } } }, mode: 'basic' });
+  test('load: a v6 save is laid over the defaults (view and character); newId is not called', () => {
+    const raw = JSON.stringify({ v: 6, current: 'k', chars: { k: { id: 'k', pack: M.PACK, class: M.CLASS, name: '', created: 1, level: 30, checks: { 'g6:0': true } } }, mode: 'basic' });
     const r = M.loadState(raw, { newId: () => { throw new Error('called'); } });
     assert.equal(r.hadSave, true);
-    assert.deepEqual(r.state, { hide: false, open: {}, v: 5, current: 'k', chars: { k: { checks: { 'g6:0': true }, level: 30, quest: '', id: 'k', pack: M.PACK, class: M.CLASS, name: '', created: 1 } }, mode: 'basic' });
+    assert.deepEqual(r.state, { hide: false, open: {}, v: 6, current: 'k', chars: { k: { checks: { 'g6:0': true }, level: 30, quest: '', id: 'k', pack: M.PACK, class: M.CLASS, name: '', created: 1 } }, mode: 'basic' });
   });
-  test('load: anything that isn\'t a v5 save starts fresh (v4 shape, wrong v, no current slot, unreadable text)', () => {
+  test('load: anything that isn\'t a v6 save starts fresh (a v5 save, v4 shape, wrong v, no current slot, unreadable text)', () => {
     const v4 = JSON.stringify({ checks: { 'g6:0': true }, level: 30, quest: 'Dying Light', seedLv12: true, migV5: true });
-    for (const raw of [v4, '{}', '[]', 'null', '{nope', '7', JSON.stringify({ v: 4, current: 'a', chars: { a: {} } }), JSON.stringify({ v: 5, current: 'b', chars: { a: {} } }), JSON.stringify({ v: 5, current: 'a', chars: { a: 3 } })]) {
+    for (const raw of [v4, '{}', '[]', 'null', '{nope', '7', JSON.stringify({ v: 4, current: 'a', chars: { a: {} } }), JSON.stringify({ v: 6, current: 'b', chars: { a: {} } }), JSON.stringify({ v: 6, current: 'a', chars: { a: 3 } }),
+      JSON.stringify({ v: 5, current: 'a', chars: { a: { id: 'a', pack: M.PACK, class: M.CLASS, name: '', created: 1, level: 30, checks: { 'g6:0': true } } } })]) {
       const r = M.loadState(raw, { newId: () => 'fresh' });
       assert.equal(r.hadSave, false, raw); assert.deepEqual(r.state, M.newSave({ id: 'fresh' }), raw);
     }
   });
   test('load: a slot that isn\'t an object is dropped; the others load', () => {
-    const r = M.loadState(JSON.stringify({ v: 5, current: 'a', chars: { a: { id: 'a', level: 3 }, b: 'x' } }));
+    const r = M.loadState(JSON.stringify({ v: 6, current: 'a', chars: { a: { id: 'a', level: 3 }, b: 'x' } }));
     assert.deepEqual(Object.keys(r.state.chars), ['a']);
   });
-  test('the tests\' v5 saves (toStored) load as saves with the test slot current', () => {
+  test('the tests\' v6 saves (toStored) load as saves with the test slot current', () => {
     const r = M.loadState(storedText({ checks: { 'g6:0': true }, level: 20, quest: '', mode: 'basic' }));
     assert.equal(r.hadSave, true); assert.equal(r.state.current, TEST_SLOT); assert.equal(M.char(r.state).level, 20); assert.equal(r.state.mode, 'basic');
   });
-  test('import: parseExport accepts a v5 export only (a v4 export, other JSON and non-JSON give null)', () => {
-    const v5 = storedText({ checks: { 'g6:0': true }, level: 20, quest: '' });
-    assert.deepEqual(M.parseExport(v5), JSON.parse(v5));
-    for (const raw of [JSON.stringify({ checks: { 'g6:0': true }, level: 20 }), '{}', 'not json', '', JSON.stringify({ v: 5, chars: {} })]) assert.equal(M.parseExport(raw), null, raw);
+  test('import: parseExport accepts a v6 export only (a v5 or v4 export, other JSON and non-JSON give null)', () => {
+    const v6 = storedText({ checks: { 'g6:0': true }, level: 20, quest: '' });
+    assert.deepEqual(M.parseExport(v6), JSON.parse(v6));
+    for (const raw of [JSON.stringify({ checks: { 'g6:0': true }, level: 20 }), '{}', 'not json', '', JSON.stringify({ v: 6, chars: {} }), v6.replace('"v":6', '"v":5')]) assert.equal(M.parseExport(raw), null, raw);
   });
   test('charFields(): the character fields, none of them a view setting; CHAR_META the identity', () => {
     for (const f of ['checks', 'level', 'quest', 'storyEnd', 'qsteps', 'qsub', 'started', 'areaRun', 'rqSnooze', 'stLv', 'stShards', 'stPick', 'stones', 'pendSt', 'pendCr', 'dvTotal', 'dvCost', 'dvAdj', 'mt'])

@@ -8,7 +8,7 @@
      mt.qsteps{quest}{i}, mt.qsub{quest}{i}{j}: per objective (value true; null once removed)
      mt.level and each of the pack's "register" fields: registers; mt.quest = [t, [quest, storyEnd]] (one register for both)
    null is a tombstone (the entry was removed). A stamp's time is when this device saw the value change; 0 = unknown
-   (a fresh browser's defaults). A v5 save is born with mt (src/core/migrations.js) and every write stamps it. */
+   (a fresh browser's defaults). A v6 save is born with mt (src/core/migrations.js) and every write stamps it. */
 import { char } from "./state.js";
 import { activePack, perPack } from "./pack.js";
 

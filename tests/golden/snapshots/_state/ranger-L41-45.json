@@ -1,9 +1,9 @@
 {
   "ranger/L45-q86-none-A": {
-    "in": "f9dc29e53aa2",
+    "in": "435a4a588499",
     "store": {
       "areaLv": ["(absent)","40"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/ranger","class":"ranger","name":"","created":0,"checks":{},"level":45,"quest":"Daeva Trapped in a Nightmare","mt":{"level":[0,45],"quest":[0,["Daeva Trapped in a Nightmare",null]]}},{"checks":{},"level":45,"quest":"Daeva Trapped in a Nightmare","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/ranger","class":"ranger","name":"","created":0,"mt":{"level":[0,45],"quest":[0,["Daeva Trapped in a Nightmare",null]],"rotSeen":[1790856000,["Left click:Snipe:0","Right click:Tempest Shot:0","Q:Burst Arrow:0","Q:Drill Dart:1","E:Arrow Scattershot:0","E:Suppressing Arrow:1","E:Marking Shot:2","1:Snare Shot:0","2:Gale Arrow:0","3:Explosion Trap:0","4:Deadshot:0"]]},"rotSeen":["Left click:Snipe:0","Right click:Tempest Shot:0","Q:Burst Arrow:0","Q:Drill Dart:1","E:Arrow Scattershot:0","E:Suppressing Arrow:1","E:Marking Shot:2","1:Snare Shot:0","2:Gale Arrow:0","3:Explosion Trap:0","4:Deadshot:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/ranger","class":"ranger","name":"","created":0,"checks":{},"level":45,"quest":"sq:2102810","mt":{"level":[0,45],"quest":[0,["sq:2102810",null]]}},{"checks":{},"level":45,"quest":"sq:2102810","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/ranger","class":"ranger","name":"","created":0,"mt":{"level":[0,45],"quest":[0,["sq:2102810",null]],"rotSeen":[1790856000,["Left click:Snipe:0","Right click:Tempest Shot:0","Q:Burst Arrow:0","Q:Drill Dart:1","E:Arrow Scattershot:0","E:Suppressing Arrow:1","E:Marking Shot:2","1:Snare Shot:0","2:Gale Arrow:0","3:Explosion Trap:0","4:Deadshot:0"]]},"rotSeen":["Left click:Snipe:0","Right click:Tempest Shot:0","Q:Burst Arrow:0","Q:Drill Dart:1","E:Arrow Scattershot:0","E:Suppressing Arrow:1","E:Marking Shot:2","1:Snare Shot:0","2:Gale Arrow:0","3:Explosion Trap:0","4:Deadshot:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -27,10 +27,10 @@
     }
   },
   "ranger/L45-q86-none-B": {
-    "in": "3e61be7e926f",
+    "in": "901bff95d519",
     "store": {
       "areaLv": ["(absent)","40"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/ranger","class":"ranger","name":"","created":0,"checks":{},"level":45,"quest":"Daeva Trapped in a Nightmare","mt":{"level":[0,45],"quest":[0,["Daeva Trapped in a Nightmare",null]]}},{"checks":{},"level":45,"quest":"Daeva Trapped in a Nightmare","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/ranger","class":"ranger","name":"","created":0,"mt":{"level":[0,45],"quest":[0,["Daeva Trapped in a Nightmare",null]],"rotSeen":[1790856000,["Left click:Snipe:0","Right click:Tempest Shot:0","Q:Burst Arrow:0","Q:Drill Dart:1","E:Arrow Scattershot:0","E:Suppressing Arrow:1","E:Marking Shot:2","1:Snare Shot:0","2:Gale Arrow:0","3:Explosion Trap:0","4:Deadshot:0"]]},"rotSeen":["Left click:Snipe:0","Right click:Tempest Shot:0","Q:Burst Arrow:0","Q:Drill Dart:1","E:Arrow Scattershot:0","E:Suppressing Arrow:1","E:Marking Shot:2","1:Snare Shot:0","2:Gale Arrow:0","3:Explosion Trap:0","4:Deadshot:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/ranger","class":"ranger","name":"","created":0,"checks":{},"level":45,"quest":"sq:2102810","mt":{"level":[0,45],"quest":[0,["sq:2102810",null]]}},{"checks":{},"level":45,"quest":"sq:2102810","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/ranger","class":"ranger","name":"","created":0,"mt":{"level":[0,45],"quest":[0,["sq:2102810",null]],"rotSeen":[1790856000,["Left click:Snipe:0","Right click:Tempest Shot:0","Q:Burst Arrow:0","Q:Drill Dart:1","E:Arrow Scattershot:0","E:Suppressing Arrow:1","E:Marking Shot:2","1:Snare Shot:0","2:Gale Arrow:0","3:Explosion Trap:0","4:Deadshot:0"]]},"rotSeen":["Left click:Snipe:0","Right click:Tempest Shot:0","Q:Burst Arrow:0","Q:Drill Dart:1","E:Arrow Scattershot:0","E:Suppressing Arrow:1","E:Marking Shot:2","1:Snare Shot:0","2:Gale Arrow:0","3:Explosion Trap:0","4:Deadshot:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],

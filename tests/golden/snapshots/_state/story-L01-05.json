@@ -1,199 +1,199 @@
 {
   "story/L01-q00-before-A": {
-    "in": "b5cb2f8877fa",
+    "in": "95d1be745b87",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":1,"quest":"A Village in the Fog","mt":{"level":[0,1],"quest":[0,["A Village in the Fog",null]]}},{"checks":{},"level":1,"quest":"A Village in the Fog","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,1],"quest":[0,["A Village in the Fog",null]],"rotSeen":[1790856000,["Right click:Savage Roar:0","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Savage Roar:0","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":1,"quest":"sq:2101010","mt":{"level":[0,1],"quest":[0,["sq:2101010",null]]}},{"checks":{},"level":1,"quest":"sq:2101010","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,1],"quest":[0,["sq:2101010",null]],"rotSeen":[1790856000,["Right click:Savage Roar:0","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Savage Roar:0","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g4": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
     }
   },
   "story/L01-q01-before-A": {
-    "in": "6c79e7f3ce91",
+    "in": "a294a4d9122d",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":1,"quest":"Prepare to Escape","mt":{"level":[0,1],"quest":[0,["Prepare to Escape",null]]}},{"checks":{},"level":1,"quest":"Prepare to Escape","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,1],"quest":[0,["Prepare to Escape",null]],"rotSeen":[1790856000,["Right click:Savage Roar:0","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Savage Roar:0","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":1,"quest":"sq:2101020","mt":{"level":[0,1],"quest":[0,["sq:2101020",null]]}},{"checks":{},"level":1,"quest":"sq:2101020","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,1],"quest":[0,["sq:2101020",null]],"rotSeen":[1790856000,["Right click:Savage Roar:0","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Savage Roar:0","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g4": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
     }
   },
   "story/L02-q00-before-A": {
-    "in": "7ec8f50b1d5f",
+    "in": "b93d053cf836",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":2,"quest":"A Village in the Fog","mt":{"level":[0,2],"quest":[0,["A Village in the Fog",null]]}},{"checks":{},"level":2,"quest":"A Village in the Fog","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,2],"quest":[0,["A Village in the Fog",null]],"rotSeen":[1790856000,["Right click:Savage Roar:0","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Savage Roar:0","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":2,"quest":"sq:2101010","mt":{"level":[0,2],"quest":[0,["sq:2101010",null]]}},{"checks":{},"level":2,"quest":"sq:2101010","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,2],"quest":[0,["sq:2101010",null]],"rotSeen":[1790856000,["Right click:Savage Roar:0","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Savage Roar:0","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g4": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
     }
   },
   "story/L02-q00-before-B": {
-    "in": "09706cc5495a",
+    "in": "e93bd03420b6",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":2,"quest":"A Village in the Fog","mt":{"level":[0,2],"quest":[0,["A Village in the Fog",null]]}},{"checks":{},"level":2,"quest":"A Village in the Fog","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,2],"quest":[0,["A Village in the Fog",null]],"rotSeen":[1790856000,["Right click:Savage Roar:0","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Savage Roar:0","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":2,"quest":"sq:2101010","mt":{"level":[0,2],"quest":[0,["sq:2101010",null]]}},{"checks":{},"level":2,"quest":"sq:2101010","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,2],"quest":[0,["sq:2101010",null]],"rotSeen":[1790856000,["Right click:Savage Roar:0","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Savage Roar:0","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g4": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
     }
   },
   "story/L02-q00-none-A": {
-    "in": "7ec8f50b1d5f",
+    "in": "b93d053cf836",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":2,"quest":"A Village in the Fog","mt":{"level":[0,2],"quest":[0,["A Village in the Fog",null]]}},{"checks":{},"level":2,"quest":"A Village in the Fog","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,2],"quest":[0,["A Village in the Fog",null]],"rotSeen":[1790856000,["Right click:Savage Roar:0","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Savage Roar:0","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":2,"quest":"sq:2101010","mt":{"level":[0,2],"quest":[0,["sq:2101010",null]]}},{"checks":{},"level":2,"quest":"sq:2101010","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,2],"quest":[0,["sq:2101010",null]],"rotSeen":[1790856000,["Right click:Savage Roar:0","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Savage Roar:0","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g4": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
     }
   },
   "story/L02-q01-before-A": {
-    "in": "04b251949a09",
+    "in": "1a2e380a4762",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":2,"quest":"Prepare to Escape","mt":{"level":[0,2],"quest":[0,["Prepare to Escape",null]]}},{"checks":{},"level":2,"quest":"Prepare to Escape","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,2],"quest":[0,["Prepare to Escape",null]],"rotSeen":[1790856000,["Right click:Savage Roar:0","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Savage Roar:0","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":2,"quest":"sq:2101020","mt":{"level":[0,2],"quest":[0,["sq:2101020",null]]}},{"checks":{},"level":2,"quest":"sq:2101020","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,2],"quest":[0,["sq:2101020",null]],"rotSeen":[1790856000,["Right click:Savage Roar:0","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Savage Roar:0","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g4": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
     }
   },
   "story/L02-q01-before-B": {
-    "in": "060c5d33d4d1",
+    "in": "069376cda9f2",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":2,"quest":"Prepare to Escape","mt":{"level":[0,2],"quest":[0,["Prepare to Escape",null]]}},{"checks":{},"level":2,"quest":"Prepare to Escape","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,2],"quest":[0,["Prepare to Escape",null]],"rotSeen":[1790856000,["Right click:Savage Roar:0","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Savage Roar:0","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":2,"quest":"sq:2101020","mt":{"level":[0,2],"quest":[0,["sq:2101020",null]]}},{"checks":{},"level":2,"quest":"sq:2101020","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,2],"quest":[0,["sq:2101020",null]],"rotSeen":[1790856000,["Right click:Savage Roar:0","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Savage Roar:0","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g4": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
     }
   },
   "story/L02-q01-none-A": {
-    "in": "04b251949a09",
+    "in": "1a2e380a4762",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":2,"quest":"Prepare to Escape","mt":{"level":[0,2],"quest":[0,["Prepare to Escape",null]]}},{"checks":{},"level":2,"quest":"Prepare to Escape","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,2],"quest":[0,["Prepare to Escape",null]],"rotSeen":[1790856000,["Right click:Savage Roar:0","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Savage Roar:0","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":2,"quest":"sq:2101020","mt":{"level":[0,2],"quest":[0,["sq:2101020",null]]}},{"checks":{},"level":2,"quest":"sq:2101020","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,2],"quest":[0,["sq:2101020",null]],"rotSeen":[1790856000,["Right click:Savage Roar:0","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Savage Roar:0","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g4": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
     }
   },
   "story/L02-q02-before-A": {
-    "in": "bbbf694a9e0f",
+    "in": "6042fa85d913",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":2,"quest":"Shadow Forest","mt":{"level":[0,2],"quest":[0,["Shadow Forest",null]]}},{"checks":{},"level":2,"quest":"Shadow Forest","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,2],"quest":[0,["Shadow Forest",null]],"rotSeen":[1790856000,["Right click:Savage Roar:0","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Savage Roar:0","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":2,"quest":"sq:2101030","mt":{"level":[0,2],"quest":[0,["sq:2101030",null]]}},{"checks":{},"level":2,"quest":"sq:2101030","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,2],"quest":[0,["sq:2101030",null]],"rotSeen":[1790856000,["Right click:Savage Roar:0","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Savage Roar:0","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g4": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
     }
   },
   "story/L03-q02-before-A": {
-    "in": "46382be09885",
+    "in": "686cccb82c85",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{"sp:Savage Roar:2":true,"sp:Quick Slice:2":true,"sp:Shadowstrike:2":true},"level":3,"quest":"Shadow Forest","mt":{"checks":{"sp:Savage Roar:2":[0,true],"sp:Quick Slice:2":[0,true],"sp:Shadowstrike:2":[0,true]},"level":[0,3],"quest":[0,["Shadow Forest",null]]}},{"checks":{"sp:Savage Roar:2":true,"sp:Quick Slice:2":true,"sp:Shadowstrike:2":true},"level":3,"quest":"Shadow Forest","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"checks":{"sp:Savage Roar:2":[0,true],"sp:Quick Slice:2":[0,true],"sp:Shadowstrike:2":[0,true]},"level":[0,3],"quest":[0,["Shadow Forest",null]],"rotSeen":[1790856000,["Right click:Ambush:0","Right click:Savage Roar:1","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Ambush:0","Right click:Savage Roar:1","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{"sp:savage-roar:2":true,"sp:quick-slice:2":true,"sp:shadowstrike:2":true},"level":3,"quest":"sq:2101030","mt":{"checks":{"sp:savage-roar:2":[0,true],"sp:quick-slice:2":[0,true],"sp:shadowstrike:2":[0,true]},"level":[0,3],"quest":[0,["sq:2101030",null]]}},{"checks":{"sp:savage-roar:2":true,"sp:quick-slice:2":true,"sp:shadowstrike:2":true},"level":3,"quest":"sq:2101030","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"checks":{"sp:savage-roar:2":[0,true],"sp:quick-slice:2":[0,true],"sp:shadowstrike:2":[0,true]},"level":[0,3],"quest":[0,["sq:2101030",null]],"rotSeen":[1790856000,["Right click:Ambush:0","Right click:Savage Roar:1","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Ambush:0","Right click:Savage Roar:1","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g4": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
     }
   },
   "story/L03-q02-before-B": {
-    "in": "effa9a59f0f5",
+    "in": "5eeb5abbfa16",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{"sp:Savage Roar:2":true,"sp:Quick Slice:2":true,"sp:Shadowstrike:2":true},"level":3,"quest":"Shadow Forest","mt":{"checks":{"sp:Savage Roar:2":[0,true],"sp:Quick Slice:2":[0,true],"sp:Shadowstrike:2":[0,true]},"level":[0,3],"quest":[0,["Shadow Forest",null]]}},{"checks":{"sp:Savage Roar:2":true,"sp:Quick Slice:2":true,"sp:Shadowstrike:2":true},"level":3,"quest":"Shadow Forest","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"checks":{"sp:Savage Roar:2":[0,true],"sp:Quick Slice:2":[0,true],"sp:Shadowstrike:2":[0,true]},"level":[0,3],"quest":[0,["Shadow Forest",null]],"rotSeen":[1790856000,["Right click:Ambush:0","Right click:Savage Roar:1","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Ambush:0","Right click:Savage Roar:1","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{"sp:savage-roar:2":true,"sp:quick-slice:2":true,"sp:shadowstrike:2":true},"level":3,"quest":"sq:2101030","mt":{"checks":{"sp:savage-roar:2":[0,true],"sp:quick-slice:2":[0,true],"sp:shadowstrike:2":[0,true]},"level":[0,3],"quest":[0,["sq:2101030",null]]}},{"checks":{"sp:savage-roar:2":true,"sp:quick-slice:2":true,"sp:shadowstrike:2":true},"level":3,"quest":"sq:2101030","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"checks":{"sp:savage-roar:2":[0,true],"sp:quick-slice:2":[0,true],"sp:shadowstrike:2":[0,true]},"level":[0,3],"quest":[0,["sq:2101030",null]],"rotSeen":[1790856000,["Right click:Ambush:0","Right click:Savage Roar:1","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Ambush:0","Right click:Savage Roar:1","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g4": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
     }
   },
   "story/L03-q02-none-A": {
-    "in": "8360e0293a2a",
+    "in": "d841c75cad60",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":3,"quest":"Shadow Forest","mt":{"level":[0,3],"quest":[0,["Shadow Forest",null]]}},{"checks":{},"level":3,"quest":"Shadow Forest","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,3],"quest":[0,["Shadow Forest",null]],"rotSeen":[1790856000,["Right click:Ambush:0","Right click:Savage Roar:1","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Ambush:0","Right click:Savage Roar:1","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":3,"quest":"sq:2101030","mt":{"level":[0,3],"quest":[0,["sq:2101030",null]]}},{"checks":{},"level":3,"quest":"sq:2101030","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,3],"quest":[0,["sq:2101030",null]],"rotSeen":[1790856000,["Right click:Ambush:0","Right click:Savage Roar:1","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Ambush:0","Right click:Savage Roar:1","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g4": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
     }
   },
   "story/L03-q03-before-A": {
-    "in": "98c64cf5045b",
+    "in": "a800f177b288",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{"sp:Savage Roar:2":true,"sp:Quick Slice:2":true,"sp:Shadowstrike:2":true},"level":3,"quest":"Isolated Lake","mt":{"checks":{"sp:Savage Roar:2":[0,true],"sp:Quick Slice:2":[0,true],"sp:Shadowstrike:2":[0,true]},"level":[0,3],"quest":[0,["Isolated Lake",null]]}},{"checks":{"sp:Savage Roar:2":true,"sp:Quick Slice:2":true,"sp:Shadowstrike:2":true},"level":3,"quest":"Isolated Lake","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"checks":{"sp:Savage Roar:2":[0,true],"sp:Quick Slice:2":[0,true],"sp:Shadowstrike:2":[0,true]},"level":[0,3],"quest":[0,["Isolated Lake",null]],"rotSeen":[1790856000,["Right click:Ambush:0","Right click:Savage Roar:1","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Ambush:0","Right click:Savage Roar:1","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{"sp:savage-roar:2":true,"sp:quick-slice:2":true,"sp:shadowstrike:2":true},"level":3,"quest":"sq:2101040","mt":{"checks":{"sp:savage-roar:2":[0,true],"sp:quick-slice:2":[0,true],"sp:shadowstrike:2":[0,true]},"level":[0,3],"quest":[0,["sq:2101040",null]]}},{"checks":{"sp:savage-roar:2":true,"sp:quick-slice:2":true,"sp:shadowstrike:2":true},"level":3,"quest":"sq:2101040","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"checks":{"sp:savage-roar:2":[0,true],"sp:quick-slice:2":[0,true],"sp:shadowstrike:2":[0,true]},"level":[0,3],"quest":[0,["sq:2101040",null]],"rotSeen":[1790856000,["Right click:Ambush:0","Right click:Savage Roar:1","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Ambush:0","Right click:Savage Roar:1","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g4": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
     }
   },
   "story/L04-q03-before-A": {
-    "in": "24535bfbb2aa",
+    "in": "b0bac5807252",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{"sp:Savage Roar:2":true,"sp:Quick Slice:2":true,"sp:Shadowstrike:2":true},"level":4,"quest":"Isolated Lake","mt":{"checks":{"sp:Savage Roar:2":[0,true],"sp:Quick Slice:2":[0,true],"sp:Shadowstrike:2":[0,true]},"level":[0,4],"quest":[0,["Isolated Lake",null]]}},{"checks":{"sp:Savage Roar:2":true,"sp:Quick Slice:2":true,"sp:Shadowstrike:2":true},"level":4,"quest":"Isolated Lake","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"checks":{"sp:Savage Roar:2":[0,true],"sp:Quick Slice:2":[0,true],"sp:Shadowstrike:2":[0,true]},"level":[0,4],"quest":[0,["Isolated Lake",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{"sp:savage-roar:2":true,"sp:quick-slice:2":true,"sp:shadowstrike:2":true},"level":4,"quest":"sq:2101040","mt":{"checks":{"sp:savage-roar:2":[0,true],"sp:quick-slice:2":[0,true],"sp:shadowstrike:2":[0,true]},"level":[0,4],"quest":[0,["sq:2101040",null]]}},{"checks":{"sp:savage-roar:2":true,"sp:quick-slice:2":true,"sp:shadowstrike:2":true},"level":4,"quest":"sq:2101040","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"checks":{"sp:savage-roar:2":[0,true],"sp:quick-slice:2":[0,true],"sp:shadowstrike:2":[0,true]},"level":[0,4],"quest":[0,["sq:2101040",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g4": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
     }
   },
   "story/L04-q03-before-B": {
-    "in": "71694eff4403",
+    "in": "58a1bb83e997",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{"sp:Savage Roar:2":true,"sp:Quick Slice:2":true,"sp:Shadowstrike:2":true},"level":4,"quest":"Isolated Lake","mt":{"checks":{"sp:Savage Roar:2":[0,true],"sp:Quick Slice:2":[0,true],"sp:Shadowstrike:2":[0,true]},"level":[0,4],"quest":[0,["Isolated Lake",null]]}},{"checks":{"sp:Savage Roar:2":true,"sp:Quick Slice:2":true,"sp:Shadowstrike:2":true},"level":4,"quest":"Isolated Lake","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"checks":{"sp:Savage Roar:2":[0,true],"sp:Quick Slice:2":[0,true],"sp:Shadowstrike:2":[0,true]},"level":[0,4],"quest":[0,["Isolated Lake",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{"sp:savage-roar:2":true,"sp:quick-slice:2":true,"sp:shadowstrike:2":true},"level":4,"quest":"sq:2101040","mt":{"checks":{"sp:savage-roar:2":[0,true],"sp:quick-slice:2":[0,true],"sp:shadowstrike:2":[0,true]},"level":[0,4],"quest":[0,["sq:2101040",null]]}},{"checks":{"sp:savage-roar:2":true,"sp:quick-slice:2":true,"sp:shadowstrike:2":true},"level":4,"quest":"sq:2101040","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"checks":{"sp:savage-roar:2":[0,true],"sp:quick-slice:2":[0,true],"sp:shadowstrike:2":[0,true]},"level":[0,4],"quest":[0,["sq:2101040",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g4": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
     }
   },
   "story/L04-q03-none-A": {
-    "in": "1405436ff670",
+    "in": "944292c75f92",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":4,"quest":"Isolated Lake","mt":{"level":[0,4],"quest":[0,["Isolated Lake",null]]}},{"checks":{},"level":4,"quest":"Isolated Lake","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,4],"quest":[0,["Isolated Lake",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":4,"quest":"sq:2101040","mt":{"level":[0,4],"quest":[0,["sq:2101040",null]]}},{"checks":{},"level":4,"quest":"sq:2101040","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,4],"quest":[0,["sq:2101040",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g4": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
     }
   },
   "story/L04-q04-before-A": {
-    "in": "3d8f4cc5a916",
+    "in": "466a635377d9",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{"sp:Savage Roar:2":true,"sp:Quick Slice:2":true,"sp:Shadowstrike:2":true},"level":4,"quest":"The Being Beneath the Lake","mt":{"checks":{"sp:Savage Roar:2":[0,true],"sp:Quick Slice:2":[0,true],"sp:Shadowstrike:2":[0,true]},"level":[0,4],"quest":[0,["The Being Beneath the Lake",null]]}},{"checks":{"sp:Savage Roar:2":true,"sp:Quick Slice:2":true,"sp:Shadowstrike:2":true},"level":4,"quest":"The Being Beneath the Lake","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"checks":{"sp:Savage Roar:2":[0,true],"sp:Quick Slice:2":[0,true],"sp:Shadowstrike:2":[0,true]},"level":[0,4],"quest":[0,["The Being Beneath the Lake",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{"sp:savage-roar:2":true,"sp:quick-slice:2":true,"sp:shadowstrike:2":true},"level":4,"quest":"sq:2101050","mt":{"checks":{"sp:savage-roar:2":[0,true],"sp:quick-slice:2":[0,true],"sp:shadowstrike:2":[0,true]},"level":[0,4],"quest":[0,["sq:2101050",null]]}},{"checks":{"sp:savage-roar:2":true,"sp:quick-slice:2":true,"sp:shadowstrike:2":true},"level":4,"quest":"sq:2101050","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"checks":{"sp:savage-roar:2":[0,true],"sp:quick-slice:2":[0,true],"sp:shadowstrike:2":[0,true]},"level":[0,4],"quest":[0,["sq:2101050",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g4": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
     }
   },
   "story/L05-q04-before-A": {
-    "in": "a4294081c064",
+    "in": "b72131d7d246",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{"g4:refund":true,"sp:Heart Gore:2":true,"sp:Savage Roar:2":true,"sp:Savage Roar:3":true,"sp:Quick Slice:2":true,"sp:Quick Slice:3":true,"sp:Ambush:2":true,"sp:Shadowstrike:2":true,"sp:Shadowstrike:3":true},"level":5,"quest":"The Being Beneath the Lake","mt":{"checks":{"g4:refund":[0,true],"sp:Heart Gore:2":[0,true],"sp:Savage Roar:2":[0,true],"sp:Savage Roar:3":[0,true],"sp:Quick Slice:2":[0,true],"sp:Quick Slice:3":[0,true],"sp:Ambush:2":[0,true],"sp:Shadowstrike:2":[0,true],"sp:Shadowstrike:3":[0,true]},"level":[0,5],"quest":[0,["The Being Beneath the Lake",null]]}},{"checks":{"g4:refund":true,"sp:Heart Gore:2":true,"sp:Savage Roar:2":true,"sp:Savage Roar:3":true,"sp:Quick Slice:2":true,"sp:Quick Slice:3":true,"sp:Ambush:2":true,"sp:Shadowstrike:2":true,"sp:Shadowstrike:3":true},"level":5,"quest":"The Being Beneath the Lake","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"checks":{"g4:refund":[0,true],"sp:Heart Gore:2":[0,true],"sp:Savage Roar:2":[0,true],"sp:Savage Roar:3":[0,true],"sp:Quick Slice:2":[0,true],"sp:Quick Slice:3":[0,true],"sp:Ambush:2":[0,true],"sp:Shadowstrike:2":[0,true],"sp:Shadowstrike:3":[0,true]},"level":[0,5],"quest":[0,["The Being Beneath the Lake",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{"g4:refund":true,"sp:heart-gore:2":true,"sp:savage-roar:2":true,"sp:savage-roar:3":true,"sp:quick-slice:2":true,"sp:quick-slice:3":true,"sp:ambush:2":true,"sp:shadowstrike:2":true,"sp:shadowstrike:3":true},"level":5,"quest":"sq:2101050","mt":{"checks":{"g4:refund":[0,true],"sp:heart-gore:2":[0,true],"sp:savage-roar:2":[0,true],"sp:savage-roar:3":[0,true],"sp:quick-slice:2":[0,true],"sp:quick-slice:3":[0,true],"sp:ambush:2":[0,true],"sp:shadowstrike:2":[0,true],"sp:shadowstrike:3":[0,true]},"level":[0,5],"quest":[0,["sq:2101050",null]]}},{"checks":{"g4:refund":true,"sp:heart-gore:2":true,"sp:savage-roar:2":true,"sp:savage-roar:3":true,"sp:quick-slice:2":true,"sp:quick-slice:3":true,"sp:ambush:2":true,"sp:shadowstrike:2":true,"sp:shadowstrike:3":true},"level":5,"quest":"sq:2101050","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"checks":{"g4:refund":[0,true],"sp:heart-gore:2":[0,true],"sp:savage-roar:2":[0,true],"sp:savage-roar:3":[0,true],"sp:quick-slice:2":[0,true],"sp:quick-slice:3":[0,true],"sp:ambush:2":[0,true],"sp:shadowstrike:2":[0,true],"sp:shadowstrike:3":[0,true]},"level":[0,5],"quest":[0,["sq:2101050",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g6": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
     }
   },
   "story/L05-q04-before-B": {
-    "in": "dbff2917d71a",
+    "in": "daa96815fb10",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{"g4:refund":true,"sp:Heart Gore:2":true,"sp:Savage Roar:2":true,"sp:Savage Roar:3":true,"sp:Quick Slice:2":true,"sp:Quick Slice:3":true,"sp:Ambush:2":true,"sp:Shadowstrike:2":true,"sp:Shadowstrike:3":true},"level":5,"quest":"The Being Beneath the Lake","mt":{"checks":{"g4:refund":[0,true],"sp:Heart Gore:2":[0,true],"sp:Savage Roar:2":[0,true],"sp:Savage Roar:3":[0,true],"sp:Quick Slice:2":[0,true],"sp:Quick Slice:3":[0,true],"sp:Ambush:2":[0,true],"sp:Shadowstrike:2":[0,true],"sp:Shadowstrike:3":[0,true]},"level":[0,5],"quest":[0,["The Being Beneath the Lake",null]]}},{"checks":{"g4:refund":true,"sp:Heart Gore:2":true,"sp:Savage Roar:2":true,"sp:Savage Roar:3":true,"sp:Quick Slice:2":true,"sp:Quick Slice:3":true,"sp:Ambush:2":true,"sp:Shadowstrike:2":true,"sp:Shadowstrike:3":true},"level":5,"quest":"The Being Beneath the Lake","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"checks":{"g4:refund":[0,true],"sp:Heart Gore:2":[0,true],"sp:Savage Roar:2":[0,true],"sp:Savage Roar:3":[0,true],"sp:Quick Slice:2":[0,true],"sp:Quick Slice:3":[0,true],"sp:Ambush:2":[0,true],"sp:Shadowstrike:2":[0,true],"sp:Shadowstrike:3":[0,true]},"level":[0,5],"quest":[0,["The Being Beneath the Lake",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{"g4:refund":true,"sp:heart-gore:2":true,"sp:savage-roar:2":true,"sp:savage-roar:3":true,"sp:quick-slice:2":true,"sp:quick-slice:3":true,"sp:ambush:2":true,"sp:shadowstrike:2":true,"sp:shadowstrike:3":true},"level":5,"quest":"sq:2101050","mt":{"checks":{"g4:refund":[0,true],"sp:heart-gore:2":[0,true],"sp:savage-roar:2":[0,true],"sp:savage-roar:3":[0,true],"sp:quick-slice:2":[0,true],"sp:quick-slice:3":[0,true],"sp:ambush:2":[0,true],"sp:shadowstrike:2":[0,true],"sp:shadowstrike:3":[0,true]},"level":[0,5],"quest":[0,["sq:2101050",null]]}},{"checks":{"g4:refund":true,"sp:heart-gore:2":true,"sp:savage-roar:2":true,"sp:savage-roar:3":true,"sp:quick-slice:2":true,"sp:quick-slice:3":true,"sp:ambush:2":true,"sp:shadowstrike:2":true,"sp:shadowstrike:3":true},"level":5,"quest":"sq:2101050","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"checks":{"g4:refund":[0,true],"sp:heart-gore:2":[0,true],"sp:savage-roar:2":[0,true],"sp:savage-roar:3":[0,true],"sp:quick-slice:2":[0,true],"sp:quick-slice:3":[0,true],"sp:ambush:2":[0,true],"sp:shadowstrike:2":[0,true],"sp:shadowstrike:3":[0,true]},"level":[0,5],"quest":[0,["sq:2101050",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g6": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
     }
   },
   "story/L05-q04-none-A": {
-    "in": "8efaa3d6876f",
+    "in": "78c278997752",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":5,"quest":"The Being Beneath the Lake","mt":{"level":[0,5],"quest":[0,["The Being Beneath the Lake",null]]}},{"checks":{},"level":5,"quest":"The Being Beneath the Lake","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,5],"quest":[0,["The Being Beneath the Lake",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":5,"quest":"sq:2101050","mt":{"level":[0,5],"quest":[0,["sq:2101050",null]]}},{"checks":{},"level":5,"quest":"sq:2101050","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,5],"quest":[0,["sq:2101050",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g4": ["(absent)",true],
       "open.g6": ["(absent)",true],
@@ -201,20 +201,20 @@
     }
   },
   "story/L05-q05-before-A": {
-    "in": "5b9f9e598a0c",
+    "in": "42591642bd33",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{"g4:refund":true,"sp:Heart Gore:2":true,"sp:Savage Roar:2":true,"sp:Savage Roar:3":true,"sp:Quick Slice:2":true,"sp:Quick Slice:3":true,"sp:Ambush:2":true,"sp:Shadowstrike:2":true,"sp:Shadowstrike:3":true},"level":5,"quest":"Spread Your Wings","mt":{"checks":{"g4:refund":[0,true],"sp:Heart Gore:2":[0,true],"sp:Savage Roar:2":[0,true],"sp:Savage Roar:3":[0,true],"sp:Quick Slice:2":[0,true],"sp:Quick Slice:3":[0,true],"sp:Ambush:2":[0,true],"sp:Shadowstrike:2":[0,true],"sp:Shadowstrike:3":[0,true]},"level":[0,5],"quest":[0,["Spread Your Wings",null]]}},{"checks":{"g4:refund":true,"sp:Heart Gore:2":true,"sp:Savage Roar:2":true,"sp:Savage Roar:3":true,"sp:Quick Slice:2":true,"sp:Quick Slice:3":true,"sp:Ambush:2":true,"sp:Shadowstrike:2":true,"sp:Shadowstrike:3":true},"level":5,"quest":"Spread Your Wings","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"checks":{"g4:refund":[0,true],"sp:Heart Gore:2":[0,true],"sp:Savage Roar:2":[0,true],"sp:Savage Roar:3":[0,true],"sp:Quick Slice:2":[0,true],"sp:Quick Slice:3":[0,true],"sp:Ambush:2":[0,true],"sp:Shadowstrike:2":[0,true],"sp:Shadowstrike:3":[0,true]},"level":[0,5],"quest":[0,["Spread Your Wings",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{"g4:refund":true,"sp:heart-gore:2":true,"sp:savage-roar:2":true,"sp:savage-roar:3":true,"sp:quick-slice:2":true,"sp:quick-slice:3":true,"sp:ambush:2":true,"sp:shadowstrike:2":true,"sp:shadowstrike:3":true},"level":5,"quest":"sq:2101060","mt":{"checks":{"g4:refund":[0,true],"sp:heart-gore:2":[0,true],"sp:savage-roar:2":[0,true],"sp:savage-roar:3":[0,true],"sp:quick-slice:2":[0,true],"sp:quick-slice:3":[0,true],"sp:ambush:2":[0,true],"sp:shadowstrike:2":[0,true],"sp:shadowstrike:3":[0,true]},"level":[0,5],"quest":[0,["sq:2101060",null]]}},{"checks":{"g4:refund":true,"sp:heart-gore:2":true,"sp:savage-roar:2":true,"sp:savage-roar:3":true,"sp:quick-slice:2":true,"sp:quick-slice:3":true,"sp:ambush:2":true,"sp:shadowstrike:2":true,"sp:shadowstrike:3":true},"level":5,"quest":"sq:2101060","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"checks":{"g4:refund":[0,true],"sp:heart-gore:2":[0,true],"sp:savage-roar:2":[0,true],"sp:savage-roar:3":[0,true],"sp:quick-slice:2":[0,true],"sp:quick-slice:3":[0,true],"sp:ambush:2":[0,true],"sp:shadowstrike:2":[0,true],"sp:shadowstrike:3":[0,true]},"level":[0,5],"quest":[0,["sq:2101060",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g6": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
     }
   },
   "story/L05-q06-before-A": {
-    "in": "af9449bda668",
+    "in": "e115b42d6c6e",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{"g4:refund":true,"sp:Heart Gore:2":true,"sp:Savage Roar:2":true,"sp:Savage Roar:3":true,"sp:Quick Slice:2":true,"sp:Quick Slice:3":true,"sp:Ambush:2":true,"sp:Shadowstrike:2":true,"sp:Shadowstrike:3":true},"level":5,"quest":"Signs of a Crash Landing","mt":{"checks":{"g4:refund":[0,true],"sp:Heart Gore:2":[0,true],"sp:Savage Roar:2":[0,true],"sp:Savage Roar:3":[0,true],"sp:Quick Slice:2":[0,true],"sp:Quick Slice:3":[0,true],"sp:Ambush:2":[0,true],"sp:Shadowstrike:2":[0,true],"sp:Shadowstrike:3":[0,true]},"level":[0,5],"quest":[0,["Signs of a Crash Landing",null]]}},{"checks":{"g4:refund":true,"sp:Heart Gore:2":true,"sp:Savage Roar:2":true,"sp:Savage Roar:3":true,"sp:Quick Slice:2":true,"sp:Quick Slice:3":true,"sp:Ambush:2":true,"sp:Shadowstrike:2":true,"sp:Shadowstrike:3":true},"level":5,"quest":"Signs of a Crash Landing","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"checks":{"g4:refund":[0,true],"sp:Heart Gore:2":[0,true],"sp:Savage Roar:2":[0,true],"sp:Savage Roar:3":[0,true],"sp:Quick Slice:2":[0,true],"sp:Quick Slice:3":[0,true],"sp:Ambush:2":[0,true],"sp:Shadowstrike:2":[0,true],"sp:Shadowstrike:3":[0,true]},"level":[0,5],"quest":[0,["Signs of a Crash Landing",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{"g4:refund":true,"sp:heart-gore:2":true,"sp:savage-roar:2":true,"sp:savage-roar:3":true,"sp:quick-slice:2":true,"sp:quick-slice:3":true,"sp:ambush:2":true,"sp:shadowstrike:2":true,"sp:shadowstrike:3":true},"level":5,"quest":"sq:2101070","mt":{"checks":{"g4:refund":[0,true],"sp:heart-gore:2":[0,true],"sp:savage-roar:2":[0,true],"sp:savage-roar:3":[0,true],"sp:quick-slice:2":[0,true],"sp:quick-slice:3":[0,true],"sp:ambush:2":[0,true],"sp:shadowstrike:2":[0,true],"sp:shadowstrike:3":[0,true]},"level":[0,5],"quest":[0,["sq:2101070",null]]}},{"checks":{"g4:refund":true,"sp:heart-gore:2":true,"sp:savage-roar:2":true,"sp:savage-roar:3":true,"sp:quick-slice:2":true,"sp:quick-slice:3":true,"sp:ambush:2":true,"sp:shadowstrike:2":true,"sp:shadowstrike:3":true},"level":5,"quest":"sq:2101070","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"checks":{"g4:refund":[0,true],"sp:heart-gore:2":[0,true],"sp:savage-roar:2":[0,true],"sp:savage-roar:3":[0,true],"sp:quick-slice:2":[0,true],"sp:quick-slice:3":[0,true],"sp:ambush:2":[0,true],"sp:shadowstrike:2":[0,true],"sp:shadowstrike:3":[0,true]},"level":[0,5],"quest":[0,["sq:2101070",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g6": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]

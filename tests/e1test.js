@@ -67,7 +67,7 @@ const cards = p => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-
   ok('pick: milestone lines and E row follow', s2.ms.every(x => x === 'Savage Fang') && s2.erow === ', row 1', s2);
   ok('pick: Next up card and button show −1 shard', /Savage Fang/.test(s2.eq) && /−1 shard/.test(s2.btn), s2);
   await p.click('#stCard [data-sttick]'); await p.waitForTimeout(300);
-  let t = await p.evaluate(() => ({ shards: char(state).stShards, eq: char(state).checks['g27:0'], lv: char(state).stLv['Savage Fang'], toast: (document.getElementById('rwToast') || {}).innerText, estack: E_STACK(char(state).level) }));
+  let t = await p.evaluate(() => ({ shards: char(state).stShards, eq: char(state).checks['g27:0'], lv: char(state).stLv[stKey('Savage Fang')], toast: (document.getElementById('rwToast') || {}).innerText, estack: E_STACK(char(state).level) }));
   ok('equip: −1 shard, toast with Undo', t.shards === 2 && t.eq === true && t.lv === 1 && /−1 shard/.test(t.toast) && /Undo/.test(t.toast), t);
   ok('equip: E stack uses the pick', JSON.stringify(t.estack) === JSON.stringify(["Triniel's Dagger*", 'Savage Fang*']), t.estack);
   await p.click('#rwToast .tu'); await p.waitForTimeout(200);
@@ -92,7 +92,7 @@ const cards = p => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-
   /* 7. Story end (0.3 E10: the data now ends at Daeva Trapped in a Nightmare, Lv 45; the game's next story quest unlocks at 46) */
   await setState(p, clean(45, 'Daeva Trapped in a Nightmare', 'advanced'));
   await p.evaluate(() => { const c = [...document.querySelectorAll('#nowStar .ns-card')].find(c => /Daeva Trapped in a Nightmare/.test(c.innerText)); c.querySelector('[data-now="story"]').click(); }); await p.waitForTimeout(800);
-  let se = await p.evaluate(() => ({ end: char(state).storyEnd, card: [...document.querySelectorAll('#nowStar .ns-card')].map(c => c.innerText).find(t => /story/i.test(t)), hasBtn: !!document.querySelector('#nowStar [data-now="story"]'), status: document.getElementById('questStatus').innerText }));
+  let se = await p.evaluate(() => ({ end: questNameOf(char(state).storyEnd), card: [...document.querySelectorAll('#nowStar .ns-card')].map(c => c.innerText).find(t => /story/i.test(t)), hasBtn: !!document.querySelector('#nowStar [data-now="story"]'), status: document.getElementById('questStatus').innerText }));
   ok('story end: "Lv 45 story complete", names the next quest in game, no dead Turned in', se.end === 'Daeva Trapped in a Nightmare' && /Lv 45 story complete/.test(se.card) && /Next in game: "Waiting for the Next Journey" at Lv 46/.test(se.card) && !se.hasBtn, se);
   ok('story end: Journey says the Lv 45 story is complete', /Lv 45 story complete — next in game: "Waiting for the Next Journey" at Lv 46/.test(se.status), se.status);
   await p.fill('#questIn', 'Waiting for the Next Journey'); await p.dispatchEvent('#questIn', 'change'); await p.waitForTimeout(100);

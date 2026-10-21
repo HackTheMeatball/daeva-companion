@@ -263,7 +263,7 @@ export default (test, M) => {
     }
     assert.ok(host.calls.slice(n).every(x => x.op === 'get'), 'no PUT after a failed decrypt');
     assert.deepEqual(host.objects.get(k.id).body, bad, 'the cloud copy is never overwritten');
-    const newer = { ...clone(s), v: 6 };
+    const newer = { ...clone(s), v: M.SAVE_V + 1 };
     host.objects.set(k.id, { ...o, body: await (async () => { const b = await M.sealSave(ENV, k, newer); return b; })() });
     const u = await M.syncOnce({ save: s, keys: k, host, env: ENV, store: () => assert.fail('nothing stored') });
     assert.equal(u.status, 'update');

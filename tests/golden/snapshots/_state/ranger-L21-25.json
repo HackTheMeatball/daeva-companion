@@ -1,9 +1,9 @@
 {
   "ranger/L22-q34-none-A": {
-    "in": "538ed086ba2d",
+    "in": "b49355ac5bbd",
     "store": {
       "areaLv": ["(absent)","20"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/ranger","class":"ranger","name":"","created":0,"checks":{},"level":22,"quest":"Disturbed Balance","mt":{"level":[0,22],"quest":[0,["Disturbed Balance",null]]}},{"checks":{},"level":22,"quest":"Disturbed Balance","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/ranger","class":"ranger","name":"","created":0,"mt":{"level":[0,22],"quest":[0,["Disturbed Balance",null]],"rotSeen":[1790856000,["Left click:Snipe:0","Right click:Tempest Shot:0","Q:Burst Arrow:0","Q:Drill Dart:1","E:Arrow Scattershot:0","E:Suppressing Arrow:1","E:Marking Shot:2","1:Snare Shot:0","2:Gale Arrow:0","3:Explosion Trap:0","4:Deadshot:0"]]},"rotSeen":["Left click:Snipe:0","Right click:Tempest Shot:0","Q:Burst Arrow:0","Q:Drill Dart:1","E:Arrow Scattershot:0","E:Suppressing Arrow:1","E:Marking Shot:2","1:Snare Shot:0","2:Gale Arrow:0","3:Explosion Trap:0","4:Deadshot:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/ranger","class":"ranger","name":"","created":0,"checks":{},"level":22,"quest":"sq:2102190","mt":{"level":[0,22],"quest":[0,["sq:2102190",null]]}},{"checks":{},"level":22,"quest":"sq:2102190","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/ranger","class":"ranger","name":"","created":0,"mt":{"level":[0,22],"quest":[0,["sq:2102190",null]],"rotSeen":[1790856000,["Left click:Snipe:0","Right click:Tempest Shot:0","Q:Burst Arrow:0","Q:Drill Dart:1","E:Arrow Scattershot:0","E:Suppressing Arrow:1","E:Marking Shot:2","1:Snare Shot:0","2:Gale Arrow:0","3:Explosion Trap:0","4:Deadshot:0"]]},"rotSeen":["Left click:Snipe:0","Right click:Tempest Shot:0","Q:Burst Arrow:0","Q:Drill Dart:1","E:Arrow Scattershot:0","E:Suppressing Arrow:1","E:Marking Shot:2","1:Snare Shot:0","2:Gale Arrow:0","3:Explosion Trap:0","4:Deadshot:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -18,10 +18,10 @@
     }
   },
   "ranger/L22-q34-none-B": {
-    "in": "4a54d61af95a",
+    "in": "0c4e72db4fa5",
     "store": {
       "areaLv": ["(absent)","20"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/ranger","class":"ranger","name":"","created":0,"checks":{},"level":22,"quest":"Disturbed Balance","mt":{"level":[0,22],"quest":[0,["Disturbed Balance",null]]}},{"checks":{},"level":22,"quest":"Disturbed Balance","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/ranger","class":"ranger","name":"","created":0,"mt":{"level":[0,22],"quest":[0,["Disturbed Balance",null]],"rotSeen":[1790856000,["Left click:Snipe:0","Right click:Tempest Shot:0","Q:Burst Arrow:0","Q:Drill Dart:1","E:Arrow Scattershot:0","E:Suppressing Arrow:1","E:Marking Shot:2","1:Snare Shot:0","2:Gale Arrow:0","3:Explosion Trap:0","4:Deadshot:0"]]},"rotSeen":["Left click:Snipe:0","Right click:Tempest Shot:0","Q:Burst Arrow:0","Q:Drill Dart:1","E:Arrow Scattershot:0","E:Suppressing Arrow:1","E:Marking Shot:2","1:Snare Shot:0","2:Gale Arrow:0","3:Explosion Trap:0","4:Deadshot:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/ranger","class":"ranger","name":"","created":0,"checks":{},"level":22,"quest":"sq:2102190","mt":{"level":[0,22],"quest":[0,["sq:2102190",null]]}},{"checks":{},"level":22,"quest":"sq:2102190","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/ranger","class":"ranger","name":"","created":0,"mt":{"level":[0,22],"quest":[0,["sq:2102190",null]],"rotSeen":[1790856000,["Left click:Snipe:0","Right click:Tempest Shot:0","Q:Burst Arrow:0","Q:Drill Dart:1","E:Arrow Scattershot:0","E:Suppressing Arrow:1","E:Marking Shot:2","1:Snare Shot:0","2:Gale Arrow:0","3:Explosion Trap:0","4:Deadshot:0"]]},"rotSeen":["Left click:Snipe:0","Right click:Tempest Shot:0","Q:Burst Arrow:0","Q:Drill Dart:1","E:Arrow Scattershot:0","E:Suppressing Arrow:1","E:Marking Shot:2","1:Snare Shot:0","2:Gale Arrow:0","3:Explosion Trap:0","4:Deadshot:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],

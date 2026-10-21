@@ -1,6 +1,6 @@
 {
   "spiritmaster/L01-qxx-none-A": {
-    "in": "7bd2b73f43df",
+    "in": "fa01d13164e8",
     "store": {
       "areaLv": ["(absent)","10"],
       "hide": ["(absent)",false],
@@ -8,7 +8,7 @@
     }
   },
   "spiritmaster/L01-qxx-none-B": {
-    "in": "84f11ba17faa",
+    "in": "eb7b97f53608",
     "store": {
       "areaLv": ["(absent)","10"],
       "hide": ["(absent)",false],

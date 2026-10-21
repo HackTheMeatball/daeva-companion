@@ -6,7 +6,7 @@
   "records": [
     {
       "id": "skill:templar:annihilate",
-      "key": "Annihilate",
+      "key": "annihilate",
       "name": "Annihilate",
       "type": "active",
       "learnLv": 12,
@@ -68,7 +68,7 @@
     },
     {
       "id": "skill:templar:block-pain",
-      "key": "Block Pain",
+      "key": "block-pain",
       "name": "Block Pain",
       "type": "passive",
       "learnLv": 25,
@@ -97,7 +97,7 @@
     },
     {
       "id": "skill:templar:debilitating-smash",
-      "key": "Debilitating Smash",
+      "key": "debilitating-smash",
       "name": "Debilitating Smash",
       "type": "active",
       "learnLv": 7,
@@ -159,7 +159,7 @@
     },
     {
       "id": "skill:templar:defiance",
-      "key": "Defiance",
+      "key": "defiance",
       "name": "Defiance",
       "type": "active",
       "learnLv": 16,
@@ -224,7 +224,7 @@
     },
     {
       "id": "skill:templar:enhance-health",
-      "key": "Enhance Health",
+      "key": "enhance-health",
       "name": "Enhance Health",
       "type": "passive",
       "learnLv": 1,
@@ -253,7 +253,7 @@
     },
     {
       "id": "skill:templar:flash-rampage",
-      "key": "Flash Rampage",
+      "key": "flash-rampage",
       "name": "Flash Rampage",
       "type": "active",
       "learnLv": 5,
@@ -334,7 +334,7 @@
     },
     {
       "id": "skill:templar:fury",
-      "key": "Fury",
+      "key": "fury",
       "name": "Fury",
       "type": "passive",
       "learnLv": 21,
@@ -363,7 +363,7 @@
     },
     {
       "id": "skill:templar:guarding-seal",
-      "key": "Guarding Seal",
+      "key": "guarding-seal",
       "name": "Guarding Seal",
       "type": "passive",
       "learnLv": 13,
@@ -392,7 +392,7 @@
     },
     {
       "id": "skill:templar:impact-hit",
-      "key": "Impact Hit",
+      "key": "impact-hit",
       "name": "Impact Hit",
       "type": "passive",
       "learnLv": 15,
@@ -424,7 +424,7 @@
     },
     {
       "id": "skill:templar:insulting-roar",
-      "key": "Insulting Roar",
+      "key": "insulting-roar",
       "name": "Insulting Roar",
       "type": "passive",
       "learnLv": 17,
@@ -453,7 +453,7 @@
     },
     {
       "id": "skill:templar:ironclad-defense",
-      "key": "Ironclad Defense",
+      "key": "ironclad-defense",
       "name": "Ironclad Defense",
       "type": "passive",
       "learnLv": 11,
@@ -482,7 +482,7 @@
     },
     {
       "id": "skill:templar:judgment",
-      "key": "Judgment",
+      "key": "judgment",
       "name": "Judgment",
       "type": "active",
       "learnLv": 4,
@@ -563,7 +563,7 @@
     },
     {
       "id": "skill:templar:poach",
-      "key": "Poach",
+      "key": "poach",
       "name": "Poach",
       "type": "active",
       "learnLv": 1,
@@ -625,7 +625,7 @@
     },
     {
       "id": "skill:templar:pummel",
-      "key": "Pummel",
+      "key": "pummel",
       "name": "Pummel",
       "type": "active",
       "learnLv": 1,
@@ -712,7 +712,7 @@
     },
     {
       "id": "skill:templar:punishing-benediction",
-      "key": "Punishing Benediction",
+      "key": "punishing-benediction",
       "name": "Punishing Benediction",
       "type": "passive",
       "learnLv": 9,
@@ -741,7 +741,7 @@
     },
     {
       "id": "skill:templar:punishment",
-      "key": "Punishment",
+      "key": "punishment",
       "name": "Punishment",
       "type": "active",
       "learnLv": 14,
@@ -830,7 +830,7 @@
     },
     {
       "id": "skill:templar:shield-rush",
-      "key": "Shield Rush",
+      "key": "shield-rush",
       "name": "Shield Rush",
       "type": "active",
       "learnLv": 10,
@@ -892,7 +892,7 @@
     },
     {
       "id": "skill:templar:shield-smite",
-      "key": "Shield Smite",
+      "key": "shield-smite",
       "name": "Shield Smite",
       "type": "active",
       "learnLv": 3,
@@ -954,7 +954,7 @@
     },
     {
       "id": "skill:templar:survival-willpower",
-      "key": "Survival Willpower",
+      "key": "survival-willpower",
       "name": "Survival Willpower",
       "type": "passive",
       "learnLv": 23,
@@ -987,7 +987,7 @@
     },
     {
       "id": "skill:templar:vicious-strike",
-      "key": "Vicious Strike",
+      "key": "vicious-strike",
       "name": "Vicious Strike",
       "type": "active",
       "learnLv": 1,
@@ -1068,7 +1068,7 @@
     },
     {
       "id": "skill:templar:warding-shield",
-      "key": "Warding Shield",
+      "key": "warding-shield",
       "name": "Warding Shield",
       "type": "passive",
       "learnLv": 6,
@@ -1097,7 +1097,7 @@
     },
     {
       "id": "skill:templar:warding-strike",
-      "key": "Warding Strike",
+      "key": "warding-strike",
       "name": "Warding Strike",
       "type": "active",
       "learnLv": 8,

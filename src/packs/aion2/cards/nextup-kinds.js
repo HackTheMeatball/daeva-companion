@@ -21,7 +21,7 @@
    - skill.slot(x) → html: a specialty slot's line (the shell hands src/cards/nextup.js's specSub to the Skills card)
    - ahead.cap(lv) → html: the Later list's last row at the level cap, or "" */
 import { char } from "../../../core/state.js";
-import { chainsOn, objIdxOf, openOf } from "../../../core/requirements.js";
+import { chainsOn, objDoneOf, objIdxOf, openOf, questNameOf } from "../../../core/requirements.js";
 import { QUEST_STEPS } from "../data/story.js";
 import { STIGMA_ST } from "../data/build.js";
 import { MAP_ICO, rqTicked, snoozeToggle } from "../../../cards/milestones.js";
@@ -95,7 +95,7 @@ function rqExtraHTML(a) {
   /* Snoozed ("Not in game yet", counted in the subline): one compact row with their names and one control that shows them again. */
   const zRow = a.snz.length ? `<li class="qg rq-aux"><span class="rq-auxt" title="Not in game yet: hidden until your next Level up">${a.snz.map(x => x.it.name).join(", ")}</span><button type="button" class="q-inl" data-unsnz="${a.snz.map(x => x.k).join("|")}">Show again</button></li>` : "";
   /* Waiting on the story: folded; each quest gets the milestone rows' "In my game" (= picked up). */
-  const wRow = a.wait.length ? `<li class="qg rq-aux"><details class="rq-wait"${rqWaitOpen ? " open" : ""}><summary>+${a.wait.length} waiting on the story</summary><ul>${a.wait.map(x => `<li><span title="${chainsOn() ? capFirst(rqReqOf(char(state), x.k)) : `Opens once ${x.it.q.turnedIn ? `${x.it.q.story} is turned in` : `the story reaches ${x.it.q.story}`}`}">${x.it.name}</span><button type="button" class="q-inl" data-rqig="${x.k}">In my game</button></li>`).join("")}</ul></details></li>` : "";
+  const wRow = a.wait.length ? `<li class="qg rq-aux"><details class="rq-wait"${rqWaitOpen ? " open" : ""}><summary>+${a.wait.length} waiting on the story</summary><ul>${a.wait.map(x => `<li><span title="${chainsOn() ? capFirst(rqReqOf(char(state), x.k)) : `Opens once ${x.it.q.turnedIn ? `${questNameOf(x.it.q.story)} is turned in` : `the story reaches ${questNameOf(x.it.q.story)}`}`}">${x.it.name}</span><button type="button" class="q-inl" data-rqig="${x.k}">In my game</button></li>`).join("")}</ul></details></li>` : "";
   return `<ul class="ns-qgrid">${groups}${more ? `<li class="qg more">+${more} more</li>` : ""}${zRow}${wRow}</ul>`;
 }
 
@@ -140,7 +140,7 @@ export const aion2NowRenderers = {
      that shows nothing but its turn-in (its other steps talk-only, hidden) stays active: nothing ticked says it's ready,
      and the card after "Turned in" starts out active (mockup §1) */
   "story.ready": a => { if (a.v !== "obj" || a.gated || a.turnInLv) return false;
-    const L = QUEST_STEPS[a.quest] || [], done = (char(state).qsteps || {})[a.quest] || [], vis = objIdxOf(state, L), ti = i => /^Turn in\b/i.test(L[i]);
+    const L = QUEST_STEPS[a.quest] || [], done = objDoneOf(char(state), a.quest), vis = objIdxOf(state, L), ti = i => /^Turn in\b/i.test(L[i]);
     return vis.some(ti) && vis.some(i => !ti(i)) && vis.every(i => ti(i) || done.includes(i)); },
   /* the Kibelisk hint; the travel line replaces it while shown (Q11) */
   "story.where": a => a.kib && !teleShown(a) ? `<span class="nw">Kibelisk: ${a.kib.kib}${a.kib.m ? ` (${a.kib.m} m)` : ""}</span>` : "",

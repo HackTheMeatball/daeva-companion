@@ -1,9 +1,9 @@
 {
   "bind/L11-q13-galorik-A": {
-    "in": "9cb32d599c33",
+    "in": "70ecce712f4e",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":11,"quest":"Crash Site Rendezvous","qsteps":{"Crash Site Rendezvous":[0]},"mt":{"qsteps":{"Crash Site Rendezvous":{"0":[1000,true]}},"level":[0,11],"quest":[500,["Crash Site Rendezvous",null]]}},{"checks":{},"level":11,"quest":"Crash Site Rendezvous","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Crash Site Rendezvous":[0]},"mt":{"qsteps":{"Crash Site Rendezvous":{"0":[1000,true]}},"level":[0,11],"quest":[500,["Crash Site Rendezvous",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":11,"quest":"sq:2102030","qsteps":{"sq:2102030":[0]},"mt":{"qsteps":{"sq:2102030":{"0":[1000,true]}},"level":[0,11],"quest":[500,["sq:2102030",null]]}},{"checks":{},"level":11,"quest":"sq:2102030","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102030":[0]},"mt":{"qsteps":{"sq:2102030":{"0":[1000,true]}},"level":[0,11],"quest":[500,["sq:2102030",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -14,10 +14,10 @@
     }
   },
   "bind/L11-q13-none-A": {
-    "in": "6d71c5abf79d",
+    "in": "914d51a0191d",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":11,"quest":"Crash Site Rendezvous","mt":{"level":[0,11],"quest":[500,["Crash Site Rendezvous",null]]}},{"checks":{},"level":11,"quest":"Crash Site Rendezvous","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,11],"quest":[500,["Crash Site Rendezvous",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":11,"quest":"sq:2102030","mt":{"level":[0,11],"quest":[500,["sq:2102030",null]]}},{"checks":{},"level":11,"quest":"sq:2102030","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,11],"quest":[500,["sq:2102030",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -28,10 +28,10 @@
     }
   },
   "bind/L11-q13-objs-A": {
-    "in": "559ae6cfbf3f",
+    "in": "1645a81bfd8d",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":11,"quest":"Crash Site Rendezvous","qsteps":{"Crash Site Rendezvous":[0,1,2,3,4]},"mt":{"qsteps":{"Crash Site Rendezvous":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,11],"quest":[500,["Crash Site Rendezvous",null]]}},{"checks":{},"level":11,"quest":"Crash Site Rendezvous","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Crash Site Rendezvous":[0,1,2,3,4]},"mt":{"qsteps":{"Crash Site Rendezvous":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,11],"quest":[500,["Crash Site Rendezvous",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":11,"quest":"sq:2102030","qsteps":{"sq:2102030":[0,1,2,3,4]},"mt":{"qsteps":{"sq:2102030":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,11],"quest":[500,["sq:2102030",null]]}},{"checks":{},"level":11,"quest":"sq:2102030","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102030":[0,1,2,3,4]},"mt":{"qsteps":{"sq:2102030":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,11],"quest":[500,["sq:2102030",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -42,10 +42,10 @@
     }
   },
   "bind/L11-q14-none-A": {
-    "in": "02c6ad18e5b4",
+    "in": "ddb280ec44f5",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":11,"quest":"Contaminated Area","mt":{"level":[0,11],"quest":[500,["Contaminated Area",null]]}},{"checks":{},"level":11,"quest":"Contaminated Area","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,11],"quest":[500,["Contaminated Area",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":11,"quest":"sq:2102040","mt":{"level":[0,11],"quest":[500,["sq:2102040",null]]}},{"checks":{},"level":11,"quest":"sq:2102040","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,11],"quest":[500,["sq:2102040",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -56,10 +56,10 @@
     }
   },
   "bind/L11-q14-objs-A": {
-    "in": "d4a26467099d",
+    "in": "97645a2dd2ed",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":11,"quest":"Contaminated Area","qsteps":{"Contaminated Area":[0,1,2,3,4]},"mt":{"qsteps":{"Contaminated Area":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,11],"quest":[500,["Contaminated Area",null]]}},{"checks":{},"level":11,"quest":"Contaminated Area","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Contaminated Area":[0,1,2,3,4]},"mt":{"qsteps":{"Contaminated Area":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,11],"quest":[500,["Contaminated Area",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":11,"quest":"sq:2102040","qsteps":{"sq:2102040":[0,1,2,3,4]},"mt":{"qsteps":{"sq:2102040":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,11],"quest":[500,["sq:2102040",null]]}},{"checks":{},"level":11,"quest":"sq:2102040","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102040":[0,1,2,3,4]},"mt":{"qsteps":{"sq:2102040":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,11],"quest":[500,["sq:2102040",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -70,10 +70,10 @@
     }
   },
   "bind/L12-q15-none-A": {
-    "in": "998506e2b402",
+    "in": "a78d97c84269",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":12,"quest":"Express Daeva Delivery","mt":{"level":[0,12],"quest":[500,["Express Daeva Delivery",null]]}},{"checks":{},"level":12,"quest":"Express Daeva Delivery","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,12],"quest":[500,["Express Daeva Delivery",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":12,"quest":"sq:2102050","mt":{"level":[0,12],"quest":[500,["sq:2102050",null]]}},{"checks":{},"level":12,"quest":"sq:2102050","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,12],"quest":[500,["sq:2102050",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -84,10 +84,10 @@
     }
   },
   "bind/L12-q15-objs-A": {
-    "in": "bd767f7ca721",
+    "in": "7dd2b0515cc2",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":12,"quest":"Express Daeva Delivery","qsteps":{"Express Daeva Delivery":[0,1]},"mt":{"qsteps":{"Express Daeva Delivery":{"0":[1000,true],"1":[1001,true]}},"level":[0,12],"quest":[500,["Express Daeva Delivery",null]]}},{"checks":{},"level":12,"quest":"Express Daeva Delivery","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Express Daeva Delivery":[0,1]},"mt":{"qsteps":{"Express Daeva Delivery":{"0":[1000,true],"1":[1001,true]}},"level":[0,12],"quest":[500,["Express Daeva Delivery",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":12,"quest":"sq:2102050","qsteps":{"sq:2102050":[0,1]},"mt":{"qsteps":{"sq:2102050":{"0":[1000,true],"1":[1001,true]}},"level":[0,12],"quest":[500,["sq:2102050",null]]}},{"checks":{},"level":12,"quest":"sq:2102050","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102050":[0,1]},"mt":{"qsteps":{"sq:2102050":{"0":[1000,true],"1":[1001,true]}},"level":[0,12],"quest":[500,["sq:2102050",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -98,10 +98,10 @@
     }
   },
   "bind/L12-q16-none-A": {
-    "in": "ac707360e61c",
+    "in": "239e7cda9508",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":12,"quest":"Veiled Truth","mt":{"level":[0,12],"quest":[500,["Veiled Truth",null]]}},{"checks":{},"level":12,"quest":"Veiled Truth","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,12],"quest":[500,["Veiled Truth",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":12,"quest":"sq:2102060","mt":{"level":[0,12],"quest":[500,["sq:2102060",null]]}},{"checks":{},"level":12,"quest":"sq:2102060","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,12],"quest":[500,["sq:2102060",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -112,10 +112,10 @@
     }
   },
   "bind/L12-q16-objs-A": {
-    "in": "adb4adde527e",
+    "in": "498580fe8b63",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":12,"quest":"Veiled Truth","qsteps":{"Veiled Truth":[0,1,2,3,4]},"mt":{"qsteps":{"Veiled Truth":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,12],"quest":[500,["Veiled Truth",null]]}},{"checks":{},"level":12,"quest":"Veiled Truth","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Veiled Truth":[0,1,2,3,4]},"mt":{"qsteps":{"Veiled Truth":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,12],"quest":[500,["Veiled Truth",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":12,"quest":"sq:2102060","qsteps":{"sq:2102060":[0,1,2,3,4]},"mt":{"qsteps":{"sq:2102060":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,12],"quest":[500,["sq:2102060",null]]}},{"checks":{},"level":12,"quest":"sq:2102060","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102060":[0,1,2,3,4]},"mt":{"qsteps":{"sq:2102060":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,12],"quest":[500,["sq:2102060",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -126,10 +126,10 @@
     }
   },
   "bind/L13-q17-none-A": {
-    "in": "f8708d5db507",
+    "in": "f2d3aecabe6d",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":13,"quest":"Urgent Pursuit","mt":{"level":[0,13],"quest":[500,["Urgent Pursuit",null]]}},{"checks":{},"level":13,"quest":"Urgent Pursuit","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,13],"quest":[500,["Urgent Pursuit",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":13,"quest":"sq:2102065","mt":{"level":[0,13],"quest":[500,["sq:2102065",null]]}},{"checks":{},"level":13,"quest":"sq:2102065","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,13],"quest":[500,["sq:2102065",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -140,10 +140,10 @@
     }
   },
   "bind/L13-q17-objs-A": {
-    "in": "8a6699857885",
+    "in": "be1debc1f519",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":13,"quest":"Urgent Pursuit","qsteps":{"Urgent Pursuit":[0,1,2,3,4]},"mt":{"qsteps":{"Urgent Pursuit":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,13],"quest":[500,["Urgent Pursuit",null]]}},{"checks":{},"level":13,"quest":"Urgent Pursuit","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Urgent Pursuit":[0,1,2,3,4]},"mt":{"qsteps":{"Urgent Pursuit":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,13],"quest":[500,["Urgent Pursuit",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":13,"quest":"sq:2102065","qsteps":{"sq:2102065":[0,1,2,3,4]},"mt":{"qsteps":{"sq:2102065":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,13],"quest":[500,["sq:2102065",null]]}},{"checks":{},"level":13,"quest":"sq:2102065","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102065":[0,1,2,3,4]},"mt":{"qsteps":{"sq:2102065":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,13],"quest":[500,["sq:2102065",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -154,10 +154,10 @@
     }
   },
   "bind/L13-q18-none-A": {
-    "in": "536a6dfe9321",
+    "in": "b8293e07ee7d",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":13,"quest":"Cemetery Cleanup","mt":{"level":[0,13],"quest":[500,["Cemetery Cleanup",null]]}},{"checks":{},"level":13,"quest":"Cemetery Cleanup","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,13],"quest":[500,["Cemetery Cleanup",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":13,"quest":"sq:2102070","mt":{"level":[0,13],"quest":[500,["sq:2102070",null]]}},{"checks":{},"level":13,"quest":"sq:2102070","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,13],"quest":[500,["sq:2102070",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -168,10 +168,10 @@
     }
   },
   "bind/L13-q18-objs-A": {
-    "in": "c44a37f6b1a4",
+    "in": "6777d0c6a2df",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":13,"quest":"Cemetery Cleanup","qsteps":{"Cemetery Cleanup":[0,1,2,3,4,5]},"mt":{"qsteps":{"Cemetery Cleanup":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true]}},"level":[0,13],"quest":[500,["Cemetery Cleanup",null]]}},{"checks":{},"level":13,"quest":"Cemetery Cleanup","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Cemetery Cleanup":[0,1,2,3,4,5]},"mt":{"qsteps":{"Cemetery Cleanup":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true]}},"level":[0,13],"quest":[500,["Cemetery Cleanup",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":13,"quest":"sq:2102070","qsteps":{"sq:2102070":[0,1,2,3,4,5]},"mt":{"qsteps":{"sq:2102070":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true]}},"level":[0,13],"quest":[500,["sq:2102070",null]]}},{"checks":{},"level":13,"quest":"sq:2102070","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102070":[0,1,2,3,4,5]},"mt":{"qsteps":{"sq:2102070":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true]}},"level":[0,13],"quest":[500,["sq:2102070",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -182,10 +182,10 @@
     }
   },
   "bind/L14-q19-none-A": {
-    "in": "45cc5ee6b6a3",
+    "in": "031d8b40980c",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":14,"quest":"Back on the Scent","mt":{"level":[0,14],"quest":[500,["Back on the Scent",null]]}},{"checks":{},"level":14,"quest":"Back on the Scent","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,14],"quest":[500,["Back on the Scent",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":14,"quest":"sq:2102080","mt":{"level":[0,14],"quest":[500,["sq:2102080",null]]}},{"checks":{},"level":14,"quest":"sq:2102080","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,14],"quest":[500,["sq:2102080",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -197,10 +197,10 @@
     }
   },
   "bind/L14-q19-objs-A": {
-    "in": "465ab54bac26",
+    "in": "821eaa002892",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":14,"quest":"Back on the Scent","qsteps":{"Back on the Scent":[0,1]},"mt":{"qsteps":{"Back on the Scent":{"0":[1000,true],"1":[1001,true]}},"level":[0,14],"quest":[500,["Back on the Scent",null]]}},{"checks":{},"level":14,"quest":"Back on the Scent","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Back on the Scent":[0,1]},"mt":{"qsteps":{"Back on the Scent":{"0":[1000,true],"1":[1001,true]}},"level":[0,14],"quest":[500,["Back on the Scent",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":14,"quest":"sq:2102080","qsteps":{"sq:2102080":[0,1]},"mt":{"qsteps":{"sq:2102080":{"0":[1000,true],"1":[1001,true]}},"level":[0,14],"quest":[500,["sq:2102080",null]]}},{"checks":{},"level":14,"quest":"sq:2102080","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102080":[0,1]},"mt":{"qsteps":{"sq:2102080":{"0":[1000,true],"1":[1001,true]}},"level":[0,14],"quest":[500,["sq:2102080",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -212,10 +212,10 @@
     }
   },
   "bind/L15-q20-none-A": {
-    "in": "ce2e168f64a0",
+    "in": "bb9d8c0e9714",
     "store": {
       "areaLv": ["(absent)","15"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":15,"quest":"Dead Men Tell No Tales","mt":{"level":[0,15],"quest":[500,["Dead Men Tell No Tales",null]]}},{"checks":{},"level":15,"quest":"Dead Men Tell No Tales","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,15],"quest":[500,["Dead Men Tell No Tales",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":15,"quest":"sq:2102090","mt":{"level":[0,15],"quest":[500,["sq:2102090",null]]}},{"checks":{},"level":15,"quest":"sq:2102090","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,15],"quest":[500,["sq:2102090",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -227,10 +227,10 @@
     }
   },
   "bind/L15-q20-objs-A": {
-    "in": "a8be75c1124b",
+    "in": "f932663230ec",
     "store": {
       "areaLv": ["(absent)","15"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":15,"quest":"Dead Men Tell No Tales","qsteps":{"Dead Men Tell No Tales":[0,1,2,3]},"mt":{"qsteps":{"Dead Men Tell No Tales":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true]}},"level":[0,15],"quest":[500,["Dead Men Tell No Tales",null]]}},{"checks":{},"level":15,"quest":"Dead Men Tell No Tales","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Dead Men Tell No Tales":[0,1,2,3]},"mt":{"qsteps":{"Dead Men Tell No Tales":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true]}},"level":[0,15],"quest":[500,["Dead Men Tell No Tales",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":15,"quest":"sq:2102090","qsteps":{"sq:2102090":[0,1,2,3]},"mt":{"qsteps":{"sq:2102090":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true]}},"level":[0,15],"quest":[500,["sq:2102090",null]]}},{"checks":{},"level":15,"quest":"sq:2102090","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102090":[0,1,2,3]},"mt":{"qsteps":{"sq:2102090":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true]}},"level":[0,15],"quest":[500,["sq:2102090",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],

@@ -60,7 +60,7 @@ const setState = async (p, args) => { await writeFixture(p, args); await p.reloa
     const ctx = await b.newContext({ viewport: { width: 1500, height: 1000 } }), p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
     await p.goto(CUR); await p.waitForTimeout(300);
     const s = await p.evaluate(() => ({ badAfter: RQ.flatMap(q => q.after.filter(n => !RQ_BY[n]).map(n => q.name + ' → ' + n)), badStory: RQ.filter(q => q.story && QUESTS.findIndex(x => x[1] === q.story) < 0).map(q => q.name + ' → ' + q.story),
-      last: QUESTS[QUESTS.length - 1], shRw: AREA_ITEMS.filter(x => x.it.kind === 'stronghold').map(x => CLEAR_REWARD(x.k)), sdRw: [...new Set(AREA_ITEMS.filter(x => x.it.kind === 'hideout').map(x => JSON.stringify(CLEAR_REWARD(x.k))))],
+      last: [QUESTS[QUESTS.length - 1][0], questNameOf(QUESTS[QUESTS.length - 1][1])], shRw: AREA_ITEMS.filter(x => x.it.kind === 'stronghold').map(x => CLEAR_REWARD(x.k)), sdRw: [...new Set(AREA_ITEMS.filter(x => x.it.kind === 'hideout').map(x => JSON.stringify(CLEAR_REWARD(x.k))))],
       xpLoc: Object.values(AREA_LOC).filter(v => 'xp' in v).length, noPre: RQ.filter(q => !q.story && !q.after.length && q.unlocksAt <= 10).map(q => q.name + ' (rec ' + q.rec + ')'),
       zones: [...new Set(RQ.map(q => q.zone))], places: [...new Set(RQ.map(q => q.place).filter(Boolean))], nLinks: document.querySelectorAll('#srcBody a').length, nGroups: document.querySelectorAll('#srcBody details, #srcBody .srcg').length,
       lvSorted: QUESTS.every((x, i) => !i || QUESTS[i - 1][0] <= x[0]) }));
@@ -115,7 +115,7 @@ const setState = async (p, args) => { await writeFixture(p, args); await p.reloa
       const zbad = rows.filter(x => !x.zone || !x.title.includes('· ' + x.zone));
       const msZ = r.msRows.filter(m => rows.some(x => x.k === m.k)).filter(m => { const z = rows.find(x => x.k === m.k).zone; return !m.loc.startsWith(z); });
       rec(c, 'every Next up quest row has a zone, same as its milestone row', !zbad.length && !msZ.length, { zbad: zbad.map(x => x.name), msZ: msZ.map(m => [m.name, m.loc.slice(0, 50)]) });
-      const fcIdx = await p.evaluate(() => QUESTS.findIndex(x => x[1] === 'Forgotten Commander')), curIdx = await p.evaluate(() => QUESTS.findIndex(x => x[1] === char(state).quest));
+      const fcIdx = await p.evaluate(() => QUESTS.findIndex(x => questNameOf(x[1]) === 'Forgotten Commander')), curIdx = await p.evaluate(() => QUESTS.findIndex(x => x[1] === char(state).quest));
       const batch = rows.filter(x => { const q = RQD.find(d => d.name === x.name); return CH.some(e => e.kind === 'story' && e.quest === x.name && e.after === 'Forgotten Commander'); });
       rec(c, 'Lv 44–45 batch only once the story reaches Forgotten Commander', curIdx >= fcIdx || !batch.length, batch.map(x => x.name));
       const far = rows.filter(x => !x.run && x.recN > L + 5);
@@ -175,9 +175,9 @@ const setState = async (p, args) => { await writeFixture(p, args); await p.reloa
     const c = { level: 27, mode: 'advanced', width: 1500, fixture: 'user-' + tag };
     const r = await p.evaluate(probe);
     const st = await p.evaluate(() => { const by = n => 'rq:' + RQ_BY[n].id; const s = n => char(state).checks[by(n)] ? 'done' : (char(state).started || {})[by(n)] ? 'run' : 'open';
-      return { q: ["Blade of Vengeance", "In the Fang Legion's Name", "Young Elim's Story", "A Guardian's Sacrifice", "Nine Wonders of Altgard: 1st Leg", "Fight Poison with Poison"].map(n => [n, s(n), rqAvail(RQ_BY[n]).ok]), shards: char(state).stShards, stLv: char(state).stLv, stones: char(state).stones, dv: char(state).dvTotal, dvLeft: dvLeftNow(), pick: char(state).stPick }; });
+      return { q: ["Blade of Vengeance", "In the Fang Legion's Name", "Young Elim's Story", "A Guardian's Sacrifice", "Nine Wonders of Altgard: 1st Leg", "Fight Poison with Poison"].map(n => [n, s(n), rqAvail(RQ_BY[n]).ok]), shards: char(state).stShards, stLv: char(state).stLv, trinLv: (char(state).stLv || {})[stKey("Triniel's Dagger")] /* stLv is keyed by the stigma key (save v6) */, stones: char(state).stones, dv: char(state).dvTotal, dvLeft: dvLeftNow(), pick: char(state).stPick }; });
     rec(c, 'user: quest states by name (the E1 keys the fixture was stored with)', JSON.stringify(st.q.map(x => x[1])) === JSON.stringify(['done', 'run', 'done', 'run', 'run', 'open']), st.q);
-    rec(c, 'user: shards 0, Triniel Lv 4, stones 58, crystals 114 preserved', st.shards === 0 && st.stLv["Triniel's Dagger"] === 4 && st.stones === 58 && st.dv === 114, st);
+    rec(c, 'user: shards 0, Triniel Lv 4, stones 58, crystals 114 preserved', st.shards === 0 && st.trinLv === 4 && st.stones === 58 && st.dv === 114, st);
     rec(c, 'user: no page errors', !errs.length, errs);
     const fp = r.rqInfo.rows.find(x => x.name === 'Fight Poison with Poison');
     /* E4 (QA3 #9): a story-locked quest at your level is offered in the Regional card's "+N waiting on the story" row with "In my game". */

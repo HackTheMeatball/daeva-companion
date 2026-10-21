@@ -12,7 +12,7 @@ const S = (o = {}) => toStored({ checks: {}, level: 45, hide: false, open: {}, q
 const deepFreeze = o => { if (o && typeof o === 'object' && !Object.isFrozen(o)) { Object.freeze(o); for (const v of Object.values(o)) deepFreeze(v); } return o; };
 
 export default (test, M) => {
-  const Q = n => { const i = M.QUESTS.findIndex(q => q[1] === n); assert.ok(i >= 0, n); return i; };
+  const Q = n => { const i = M.QUESTS.findIndex(q => q[1] === n || M.QUEST_NAME[q[1]] === n); assert.ok(i >= 0, n); return i; };
   const at = (n, d = 0) => M.QUESTS[Q(n) + d][1];
   const ALL = Object.keys(M.GATE_CHANGES);
   /* run fn with exactly these changes on, then restore the page's set */
@@ -48,31 +48,31 @@ export default (test, M) => {
   test('Expedition rows (g20:exp Krao Cave, g35:exp Fire Temple): done by the story step ticked or the quest turned in', () => {
     for (const [row, quest, i] of [['g20:exp', 'Disturbed Balance', 2], ['g35:exp', 'Mirror of Greed', 1]]) {
       const done = s => M.doneOf(M.char(s), row);
-      assert.match(M.objTextOf(quest, i), /This is your first run of the .* Expedition\.$/, quest + ' step note');
+      assert.match(M.objTextOf(M.sq(quest), i), /This is your first run of the .* Expedition\.$/, quest + ' step note');
       assert.equal(done(S({ quest })), false);
       assert.equal(done(S({ quest, qsteps: { [quest]: [i] } })), true);
       assert.equal(done(S({ quest: at(quest, 1) })), true);
       withChanges(['regionalTurnedIn', 'derived'], () => assert.equal(done(S({ quest, qsteps: { [quest]: [i] } })), false, 'off without storyStepDerived'));
     }
-    assert.match(M.objTextOf("Canyon's Secret", 1), /first run of the Urugugu Canyon Expedition\.$/);
-    assert.match(M.objTextOf('Forgotten Commander', 1), /This is probably your first run of the Draupnir Expedition\.$/, 'inferred until the owner confirms');
+    assert.match(M.objTextOf(M.sq("Canyon's Secret"), 1), /first run of the Urugugu Canyon Expedition\.$/);
+    assert.match(M.objTextOf(M.sq('Forgotten Commander'), 1), /This is probably your first run of the Draupnir Expedition\.$/, 'inferred until the owner confirms');
   });
   test('story step notes: shown after the objective (switch stepNotes), never part of the text the page parses', () => {
     const noted = Object.entries(M.QUEST_STEP_NOTES).flatMap(([q, o]) => Object.keys(o).map(i => [q, +i]));
-    assert.deepEqual(noted.map(([q, i]) => `${q} #${i}`).sort(), ["Canyon's Secret #1", 'Disturbed Balance #2', 'Forgotten Commander #1', 'Mirror of Greed #1']);
+    assert.deepEqual(noted.map(([q, i]) => `${M.QUEST_NAME[q]} #${i}`).sort(), ["Canyon's Secret #1", 'Disturbed Balance #2', 'Forgotten Commander #1', 'Mirror of Greed #1']);
     for (const [q, i] of noted) {
       const t = M.QUEST_STEPS[q][i];
       assert.doesNotMatch(t, /first run/, q + ': the objective text stays what the source says');
       assert.ok(M.objTextOf(q, i).startsWith(t.replace(/\.$/, '')) && M.objTextOf(q, i).endsWith(M.QUEST_STEP_NOTES[q][i]), q + ': note after the text');
       withChanges(ALL.filter(n => n !== 'stepNotes'), () => assert.equal(M.objTextOf(q, i), t, q + ': off without stepNotes'));
     }
-    assert.equal(M.objTextOf('Disturbed Balance', 0), M.QUEST_STEPS['Disturbed Balance'][0], 'an objective without a note is its text');
+    assert.equal(M.objTextOf(M.sq('Disturbed Balance'), 0), M.QUEST_STEPS[M.sq('Disturbed Balance')][0], 'an objective without a note is its text');
     /* the checklists' split (bold part, small part): the note is always in the small part (#73 review: Draupnir has no " — ") */
     for (const [q, i] of noted) { const [a, b] = M.objPartsOf(q, i), [ta] = M.QUEST_STEPS[q][i].split(' — ');
       assert.equal(a, ta.replace(/\.$/, ''), q + ': bold part is the objective only'); assert.ok(b.endsWith(M.QUEST_STEP_NOTES[q][i]), q + ': note in the small part'); }
-    assert.deepEqual(M.objPartsOf('Forgotten Commander', 1), [M.QUEST_STEPS['Forgotten Commander'][1], M.QUEST_STEP_NOTES['Forgotten Commander'][1]]);
-    assert.deepEqual(M.objPartsOf('Disturbed Balance', 0), M.QUEST_STEPS['Disturbed Balance'][0].split(' — '), 'no note: as before');
-    withChanges(ALL.filter(n => n !== 'stepNotes'), () => assert.deepEqual(M.objPartsOf('Forgotten Commander', 1), [M.QUEST_STEPS['Forgotten Commander'][1], undefined]));
+    assert.deepEqual(M.objPartsOf(M.sq('Forgotten Commander'), 1), [M.QUEST_STEPS[M.sq('Forgotten Commander')][1], M.QUEST_STEP_NOTES[M.sq('Forgotten Commander')][1]]);
+    assert.deepEqual(M.objPartsOf(M.sq('Disturbed Balance'), 0), M.QUEST_STEPS[M.sq('Disturbed Balance')][0].split(' — '), 'no note: as before');
+    withChanges(ALL.filter(n => n !== 'stepNotes'), () => assert.deepEqual(M.objPartsOf(M.sq('Forgotten Commander'), 1), [M.QUEST_STEPS[M.sq('Forgotten Commander')][1], undefined]));
   });
   test('regional quests open when the story quest is turned in (switch regionalTurnedIn); Shugo-of-All-Trades and Spooky Specters gained that gate', () => {
     const rq = n => M.RQ.find(q => q.name === n), st = (n, quest, level = 45) => M.rqStatus(M.char(S({ quest, level })), rq(n)).open;
@@ -82,7 +82,7 @@ export default (test, M) => {
     assert.equal(st(f.name, at(f.story, 1)), true, 'turned in');
     withChanges(['derived'], () => { assert.equal(st(f.name, f.story), true, '0.2: reached is enough'); });
     for (const [n, gate] of [['Shugo-of-All-Trades', 'Contaminated Area'], ['Spooky Specters', 'Cemetery Cleanup']]) {
-      assert.equal(rq(n).story, gate);
+      assert.equal(rq(n).story, M.sq(gate));
       assert.equal(st(n, gate), false, n + ': not offered while ' + gate + ' is current');
       assert.equal(st(n, at(gate, 1)), true, n + ': appears once ' + gate + ' is turned in');
       withChanges([], () => { assert.equal(st(n, at(gate, 1), 11), false, '0.2: from its recommended level'); });
@@ -95,7 +95,7 @@ export default (test, M) => {
     for (const [n, gate, sw] of [["Traveling Merchant's Conundrum", 'Blood Monument', 'merchantGate'], ['Lest We Forget', "Zikel's Core", 'lestWeForgetGate']]) {
       const q = rq(n);
       /* "reached" since the owner page checks (2026-10-20): both open at a step of their story quest ("Step completed" on aion2.gaming.tools) */
-      assert.equal(q.story, gate); assert.ok(!q.turnedIn, n + ': reached, not turned in'); assert.ok(!q.noPre, n + ': prerequisite data now');
+      assert.equal(q.story, M.sq(gate)); assert.ok(!q.turnedIn, n + ': reached, not turned in'); assert.ok(!q.noPre, n + ': prerequisite data now');
       assert.equal(st(n, at(gate, -1)), false, n + ': not before ' + gate + ' is current');
       assert.equal(st(n, gate), true, n + ': once the story reaches ' + gate);
       withChanges(ALL.filter(x => x !== sw), () => { assert.equal(st(n, at(gate, -1)), true, n + ': switch off, open from its recommended level');
@@ -168,7 +168,7 @@ export default (test, M) => {
     assert.equal(der(S({ level: 32, quest: at('A Daeva Dreaming Anew', 1) }), 'g32:dreams').via, 'turnedIn sq:2102345');
     assert.equal(der(S({ level: 32, quest: 'A Daeva Dreaming Anew' }), 'g32:dreams'), null);
     const last = M.QUESTS[M.QUESTS.length - 1][1];
-    assert.equal(last, 'Daeva Trapped in a Nightmare', 'E10: the story data ends at the wrapper of Witnesses');
+    assert.equal(M.QUEST_NAME[last], 'Daeva Trapped in a Nightmare', 'E10: the story data ends at the wrapper of Witnesses');
     assert.equal(der(S({ level: 45, quest: last, storyEnd: last }), 'g45:witness').via, 'turnedIn sq:2102810');
     assert.equal(der(S({ level: 45, quest: last }), 'g45:witness'), null, 'on Daeva Trapped, not turned in');
     assert.equal(der(S({ level: 45, quest: last, storyEnd: last }), 'g45:0'), null, 'the retired key has no node');
@@ -228,7 +228,7 @@ export default (test, M) => {
      no unlock-level atom, so a Lv 44 player can turn it in (level-gated card, all objectives ticked) and stand on
      Forgotten Commander at Lv 44; Level − after ticking at 45 and an imported save get there too (journey suite). */
   test('Lv 44 "Forgotten Commander": every objective ticked, no "Turned in" below its unlock level (45); at 45 it is offered', () => {
-    const n = M.QUEST_STEPS['Forgotten Commander'].length, qs = { 'Forgotten Commander': Array.from({ length: n }, (_, i) => i) };
+    const n = M.QUEST_STEPS[M.sq('Forgotten Commander')].length, qs = { 'Forgotten Commander': Array.from({ length: n }, (_, i) => i) };
     const card = s => M.rankNext(S(s)).find(a => a.story);
     const s44 = { level: 44, quest: 'Forgotten Commander', qsteps: qs, showTalk: true };
     assert.equal(M.turnInNeedsLv(M.char(S(s44))), 45);
@@ -239,7 +239,7 @@ export default (test, M) => {
     assert.equal(M.turnInNeedsLv(M.char(S({ ...s44, level: 45 }))), 0);
     withChanges(ALL.filter(n => n !== 'turnInLevel'), () => assert.equal(card(s44).act, 'story', 'without the fix: the E3 bug'));
     /* the quest before it (Farewells, rec 45, no unlock atom) can be turned in at Lv 44: that is how normal play gets here */
-    const fw = M.QUEST_STEPS['Farewells'] || [];
+    const fw = M.QUEST_STEPS[M.sq('Farewells')] || [];
     assert.equal(card({ level: 44, quest: 'Farewells', qsteps: { Farewells: fw.map((_, i) => i) }, showTalk: true }).act, fw.length ? 'story' : '');
     /* Finding Nemon (unlock Lv 10) has no objective list: below 10 its card never had an action */
     assert.equal(M.turnInNeedsLv(M.char(S({ level: 9, quest: 'Finding Nemon' }))), 10);

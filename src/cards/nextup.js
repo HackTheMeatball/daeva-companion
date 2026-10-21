@@ -7,7 +7,7 @@
 import { char } from "../core/state.js";
 import { activePack } from "../core/pack.js";
 import { setHTML } from "../core/cards.js";
-import { chainsOn, objPartsOf, questIdx, turnInNeedsLv } from "../core/requirements.js";
+import { chainsOn, objDoneOf, objPartsOf, questIdx, questNameOf, setObjDone, turnInNeedsLv } from "../core/requirements.js";
 import { TRACKS, rankChangeOn, rankNext, trackOf, tracksDiffer } from "../core/nextup.js";
 import { completeBefore, renderQuestSubs, setObj, setSub, stepQuest, subListHTML } from "./journey.js";
 import { showGate } from "./milestones.js";
@@ -88,21 +88,21 @@ const STORY_ICO = storyIco("active").ico;
 function storyView(a) {
   const { act } = a;
   if (a.v === "unset") return { story: true, ico: STORY_ICO, t: "Set your current main quest", sub: "In the Journey card; it places you on the story.", btn: "Show", act };
-  if (a.v === "end") return { story: true, ...storyIco("done"), t: STORY_DONE, sub: `${capFirst(END_NEXT)} · the guide's story ends at "${a.quest}"`, act };
+  if (a.v === "end") return { story: true, ...storyIco("done"), t: STORY_DONE, sub: `${capFirst(END_NEXT)} · the guide's story ends at "${questNameOf(a.quest)}"`, act };
   /* what else to do at your level, and where the objectives send you: in the pack's words */
   const R = nowR(), ctx = nowCtx();
   const xs = a.meanwhile && R["story.meanwhile"] ? R["story.meanwhile"](a.meanwhile, ctx) : "";
   const gatedSub = `Needs Lv ${a.gateLv}: you're ${a.lv}. Level up first.${xs ? `<span class="ns-mean">Meanwhile: ${xs}</span>` : ""}`;
   /* Below the quest's unlock level (turnInNeedsLv): no "Turned in", the tag says when (as the Journey card does). */
   const tag = a.turnInLv ? `Turn in at Lv ${a.turnInLv}` : undefined;
-  if (a.v === "nolist") return { story: true, ...storyIco("active"), t: `Continue the story: <b>${a.quest}</b>`, sub: a.gated ? gatedSub : a.nq ? `Main story · then ${a.nq[1]}` : "Main story", btn: "Turned in", act, tag };
+  if (a.v === "nolist") return { story: true, ...storyIco("active"), t: `Continue the story: <b>${questNameOf(a.quest)}</b>`, sub: a.gated ? gatedSub : a.nq ? `Main story · then ${questNameOf(a.nq[1])}` : "Main story", btn: "Turned in", act, tag };
   const where = R["story.where"] ? R["story.where"](a, ctx) : "";
   /* a row of the pack's under the text, above the action (0.5 P15: the "Bind X" row) */
   const row = R["story.row"] ? R["story.row"](a, ctx) : "";
   /* ready to turn in (the pack says when): the words replace the count; the Turn in row stays listed */
   const ready = !!(R["story.ready"] && R["story.ready"](a, ctx));
   const count = ready ? `<b class="ns-ready">Ready to turn in</b>` : `<span class="ns-objn">${a.done}/${a.total}</span> objectives`;
-  return { story: true, ...storyIco(ready ? "ready" : "active"), t: `Story: <b>${a.quest}</b>`, sub: a.gated ? gatedSub : `${count}${where ? ` · ${where}` : ""}${a.nq ? ` · then ${a.nq[1]}` : ""}`, btn: "Turned in", act, tag, quest: a.objectives, row };
+  return { story: true, ...storyIco(ready ? "ready" : "active"), t: `Story: <b>${questNameOf(a.quest)}</b>`, sub: a.gated ? gatedSub : `${count}${where ? ` · ${where}` : ""}${a.nq ? ` · then ${questNameOf(a.nq[1])}` : ""}`, btn: "Turned in", act, tag, quest: a.objectives, row };
 }
 /* Phones (<= 600 px, 0.5 P3; docs/design/phone-layout.md 3.4): no nested scroll stack. The featured card is full width
    with its action(s) under the text, the others are compact rows (tile, title, one line), and a "1 of N" pager picks
@@ -211,7 +211,7 @@ function nsPage(d, from) {
 let nsAnim = false, nsRefocus = 0;
 /* The current quest's open objectives, inside the Next up card when the story is the thing to do. */
 function nsObjHTML() {
-  const list = QUEST_STEPS[char(state).quest] || [], done = (char(state).qsteps || {})[char(state).quest] || [];
+  const list = QUEST_STEPS[char(state).quest] || [], done = objDoneOf(char(state), char(state).quest);
   const vis = objIdx(list), open = list.map((t, i) => [t, i]).filter(([, i]) => vis.includes(i) && !done.includes(i));
   /* First three open objectives; the rest wait their turn (all of them are in the Journey card). */
   const cap = pipWin ? 2 : 3, more = open.length - cap; /* the pop-out window is short */
@@ -220,7 +220,7 @@ function nsObjHTML() {
 /* The story card's "done/total objectives" moves on the tick itself (#334): the card re-renders only after the ticked
    row has faded out, so until then the count is set in place (counted as rankNext counts it, src/core/nextup.js). */
 function nsObjCount() {
-  const list = QUEST_STEPS[char(state).quest] || [], done = (char(state).qsteps || {})[char(state).quest] || [], vis = objIdx(list);
+  const list = QUEST_STEPS[char(state).quest] || [], done = objDoneOf(char(state), char(state).quest), vis = objIdx(list);
   nowEl.querySelectorAll(".ns-objn").forEach(e => { e.textContent = `${vis.filter(i => done.includes(i)).length}/${vis.length}`; });
 }
 /* Pop out: Next up in an always-on-top mini window (Document Picture-in-Picture) to keep over the game. The live
@@ -314,11 +314,11 @@ function nextUpMount(el) {
       /* Not on screen (e.g. a row outside the selected band): tick it through the same handler. */
       if (!char(state).checks[k]) { const tmp = document.createElement("input"); tmp.type = "checkbox"; tmp.dataset.k = k; tmp.checked = true; tmp.hidden = true; layoutEl.appendChild(tmp); tmp.dispatchEvent(new Event("change", { bubbles: true })); tmp.remove(); }
       return; }
-    if (a.startsWith("obj:")) { const i = +a.slice(4); char(state).qsteps = char(state).qsteps || {}; const cur = new Set(char(state).qsteps[char(state).quest] || []); cur.add(i); char(state).qsteps[char(state).quest] = [...cur]; save(); renderQuestSubs(); return; }
+    if (a.startsWith("obj:")) { const i = +a.slice(4); const cur = new Set(objDoneOf(char(state), char(state).quest)); cur.add(i); setObjDone(char(state), char(state).quest, [...cur]); save(); renderQuestSubs(); return; }
     if (a === "story") { /* "Turned in": every objective of the quest counts as done (sub-steps too), then the story moves on. */
       if (turnInNeedsLv(char(state))) return; /* not below the quest's unlock level (the card shows no button then) */
       const list = QUEST_STEPS[char(state).quest];
-      if (list) { char(state).qsteps = char(state).qsteps || {}; char(state).qsteps[char(state).quest] = list.map((_, i) => i); list.forEach((_, i) => setObj(i, true)); save(); }
+      if (list) { setObjDone(char(state), char(state).quest, list.map((_, i) => i)); list.forEach((_, i) => setObj(i, true)); save(); }
       /* Milestone steps that are this story quest (byStory) are done with it. */
       GATES.forEach(g => g.items.forEach(it => { if (it.byStory && it.story === char(state).quest) char(state).checks[it.k] = true; })); save();
       /* Last quest the guide covers: remember it's turned in (the card then says to continue in game). */
@@ -339,7 +339,7 @@ function nextUpMount(el) {
     const i = e.target.dataset && e.target.dataset.nsobj; if (i == null) return;
     completeBefore(+i, nowEl, "data-nsobj");
     setObj(+i, true);
-    char(state).qsteps = char(state).qsteps || {}; const cur = new Set(char(state).qsteps[char(state).quest] || []); cur.add(+i); char(state).qsteps[char(state).quest] = [...cur]; save(); nsObjCount();
+    const cur = new Set(objDoneOf(char(state), char(state).quest)); cur.add(+i); setObjDone(char(state), char(state).quest, [...cur]); save(); nsObjCount();
     const li = e.target.closest("li"); li.classList.add("on");
     st(() => li.classList.add("leaving"), 550);
     st(() => renderQuestSubs(), 1150);

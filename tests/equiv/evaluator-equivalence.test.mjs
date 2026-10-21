@@ -89,8 +89,8 @@ export default (test, M) => {
   const L = gates02(M);
   const ALLOWED = { ...regionalKnown(M), ...e5Known(M), ...e7Known(M) };   /* allowed by record, not pinned state by state: the gate differs only where a level or the story position puts the two readings apart */
   /* the golden states, built from the catalog the page would hand catalogInPage() (same data, same core) */
-  const C = new Function('QUESTS', 'QUEST_STEPS', 'GATES', 'STEPS', 'RQ', 'AREA_ITEMS', 'SP_STEPS', 'STIGMA_PLAN', 'STIGMA_SLOTS', 'DV_NODES', `return (${catalogInPage})();`)(
-    M.QUESTS, M.QUEST_STEPS, M.GATES, M.STEPS, M.RQ, M.AREA_ITEMS, M.SP_STEPS, M.STIGMA_PLAN, () => M.stigmaSlots({}), M.DV_NODES);
+  const C = new Function('QUESTS', 'QUEST_NAME', 'QUEST_STEPS', 'GATES', 'STEPS', 'RQ', 'AREA_ITEMS', 'SP_STEPS', 'STIGMA_PLAN', 'STIGMA_SLOTS', 'DV_NODES', `return (${catalogInPage})();`)(
+    M.QUESTS, M.QUEST_NAME, M.QUEST_STEPS, M.GATES, M.STEPS, M.RQ, M.AREA_ITEMS, M.SP_STEPS, M.STIGMA_PLAN, () => M.stigmaSlots({}), M.DV_NODES);
   const fixtures = fixtureStates(); /* the flat fixtures (tests/fixtures/*.flat.json) under their old state ids */
   /* the Assassin's states: the 0.2 oracle and this bundle's tables are the Assassin guide's, so the states of every other class
      (a group <class>/, the classes read from data/packs/aion2/pack.json) are left to the golden suite, which runs them on the page

@@ -207,8 +207,8 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   {
     const fresh = async () => { await writeSave(p, { checks: {}, level: 2, quest: 'A Village in the Fog', mode: 'advanced', open: {} }, { fresh: true }); await p.reload(); await p.waitForTimeout(400); };
     const slide = v => p.evaluate(v => { const r = document.getElementById('lvlRange'); r.value = String(v); r.dispatchEvent(new Event('input', { bubbles: true })); }, v);
-    const look = () => p.evaluate(() => ({ lv: char(state).level, quest: char(state).quest, ask: !document.getElementById('lvQ').hidden, text: document.getElementById('lvQText').textContent,
-      pick: document.getElementById('lvQSel').value, first: (QUESTS.find(([l]) => l >= 39) || [])[1], dv: !document.getElementById('dvBox').hidden, st: !document.getElementById('stCard').hidden, sp: !document.getElementById('spCard').hidden,
+    const look = () => p.evaluate(() => ({ lv: char(state).level, quest: questNameOf(char(state).quest), ask: !document.getElementById('lvQ').hidden, text: document.getElementById('lvQText').textContent,
+      pick: document.getElementById('lvQSel').value, first: (QUESTS.find(([l]) => l >= 39) || [])[1], firstName: questNameOf((QUESTS.find(([l]) => l >= 39) || [])[1]), dv: !document.getElementById('dvBox').hidden, st: !document.getElementById('stCard').hidden, sp: !document.getElementById('spCard').hidden,
       acts: [...document.querySelectorAll('#nowStar [data-now]')].map(x => x.dataset.now), txt: [...document.querySelectorAll('#nowStar .ns-card')].map(c => c.innerText.replace(/\s+/g, ' ')),
       boKeys: GATES.flatMap(g => g.items.filter(it => it.bo).map(it => it.k)) }));
     await fresh();
@@ -224,7 +224,7 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
     ok('P7: before an answer, Next up names no locked card (Daevanion / Stigmas / Skills)', !r.dv && !nm.daevanion && (r.st || !nm.stigmas) && (r.sp || !nm.skills), { dv: r.dv, st: r.st, sp: r.sp, nm, txt: r.txt });
     await p.click('#lvQSet'); await p.waitForTimeout(400);
     r = await look();
-    ok('P7: "Set story quest" sets the picked quest, keeps Lv 39, hides the question, and Daevanion and Stigmas open', !r.ask && r.quest === r.first && r.lv === 39 && r.dv && r.st, r);
+    ok('P7: "Set story quest" sets the picked quest, keeps Lv 39, hides the question, and Daevanion and Stigmas open', !r.ask && r.quest === r.firstName && r.lv === 39 && r.dv && r.st, r);
     await fresh(); await slide(39); await p.waitForTimeout(300);
     await p.click('#lvQSkip'); await p.waitForTimeout(300);
     r = await look(); nm = named(r);

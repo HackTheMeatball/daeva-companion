@@ -8,7 +8,7 @@ const rng = seed => () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Mat
 
 export default (test, M) => {
   const N = M.GATE_GRAPH.nodes, NP = M.NODE_PLACE, K = M.KIBELISKS, S = M.GATE_GRAPH.story, TR = M.TRAVEL_RULES;
-  const qi = name => S.findIndex(([, n]) => n === name);
+  const sq = M.sq, qi = x => S.findIndex(([id]) => id === (x.startsWith('sq:') ? x : sq(x)));
   const ch = o => ({ level: 45, checks: {}, quest: '', qsteps: {}, qsub: {}, started: {}, areaRun: {}, ...o });
   /* the story with every quest before `name` turned in (the current quest is name), or all of it turned in */
   const at = (name, o) => ch({ quest: name, ...o });
@@ -22,7 +22,7 @@ export default (test, M) => {
 
   /* ---------- binds that happen at an objective (0.6 P12) ---------- */
   test('auto-bind: Witch\'s Cabin bind-only step hidden, markers within 25 m dropped, none over; Safe Haven\'s "Bind" row kept', () => {
-    const A = M.autoBindsOf(M.GATE_GRAPH), bbl = 'The Being Beneath the Lake', P = M.aion2Pack;
+    const A = M.autoBindsOf(M.GATE_GRAPH), bbl = sq('The Being Beneath the Lake'), P = M.aion2Pack;
     assert.ok(A.length > 0 && A.every(x => x.m <= TR.bindRadius), 'every trim within the bind radius');
     assert.deepEqual(A.filter(x => x.only).map(x => [x.quest, x.i, x.kib, x.m]), [[bbl, 0, "Witch's Cabin", 13]]);
     assert.equal(P.story.isTalkOnly(M.QUEST_STEPS[bbl][0]), true, 'the bind-only step is hidden (done on arrival)');
@@ -38,7 +38,7 @@ export default (test, M) => {
 
   /* ---------- §8.1 bound ---------- */
   test('bound: Safe Haven by its binds fact at R = 25 m (Survival Supplies objective 0), not by distance', () => {
-    const ss = 'Survival Supplies', T = NP[S[qi(ss)][0]].pts.turnin;
+    const ss = sq('Survival Supplies'), T = NP[S[S.findIndex(([id]) => id === ss)][0]].pts.turnin;
     assert.deepEqual([T.anchor, T.m], ['kib:safe-haven', 32]);
     assert.equal(M.bound(at(ss), 'kib:safe-haven'), false, 'on the quest, objective 0 not ticked');
     assert.equal(M.bound(at(ss, { qsteps: { [ss]: [0] } }), 'kib:safe-haven'), true, 'objective 0 ticked');
@@ -49,7 +49,7 @@ export default (test, M) => {
     assert.equal(M.bound(all, 'kib:safe-haven', { R: 32, kibs: noBinds('kib:safe-haven') }), true, 'VeKauf binds it at R = 32 m');
   });
   test('bound: Abandoned Barracks Site at 9 m (the turn-in of Signs of a Crash Landing)', () => {
-    const q = 'Signs of a Crash Landing', T = NP[S[qi(q)][0]].pts.turnin;
+    const q = sq('Signs of a Crash Landing'), T = NP[S[S.findIndex(([id]) => id === q)][0]].pts.turnin;
     assert.deepEqual([T.anchor, T.m], ['kib:abandoned-barracks-site', 9]);
     assert.equal(M.bound(at(q), 'kib:abandoned-barracks-site'), false, 'on the quest');
     assert.equal(M.bound(at(q, { storyEnd: q }), 'kib:abandoned-barracks-site'), true, 'turned in (storyEnd)');
@@ -58,8 +58,8 @@ export default (test, M) => {
   });
   test('bound: Aldelle Village by its step-text fact (A Village in the Fog objective 1); a "bind:" tick binds; nothing ticked binds nothing', () => {
     assert.equal(M.boundSet(ch({})).size, 0);
-    assert.equal(M.bound(at('A Village in the Fog', { qsteps: { 'A Village in the Fog': [1] } }), 'kib:aldelle-village', { R: 0 }), true);
-    assert.equal(M.bound(at('A Village in the Fog'), 'kib:aldelle-village', { R: 0 }), false);
+    assert.equal(M.bound(at(sq('A Village in the Fog'), { qsteps: { [sq('A Village in the Fog')]: [1] } }), 'kib:aldelle-village', { R: 0 }), true);
+    assert.equal(M.bound(at(sq('A Village in the Fog')), 'kib:aldelle-village', { R: 0 }), false);
     assert.equal(M.bound(ch({ checks: { 'bind:kib:quai-campsite': true } }), 'kib:quai-campsite'), true);
     assert.equal(M.bound(ch({ checks: { 'bind:kib:quai-campsite': false } }), 'kib:quai-campsite'), false);
   });
@@ -110,7 +110,7 @@ export default (test, M) => {
     }
   });
   test('bound: deep-frozen input', () => {
-    const c = deepFreeze(atEnd({ checks: { 'bind:kib:quai-campsite': true, ...allDone() }, qsteps: { 'Survival Supplies': [0] }, started: {}, areaRun: {} }));
+    const c = deepFreeze(atEnd({ checks: { 'bind:kib:quai-campsite': true, ...allDone() }, qsteps: { [sq('Survival Supplies')]: [0] }, started: {}, areaRun: {} }));
     const b = M.boundSet(c); assert.ok(b.has('kib:quai-campsite') && b.has('kib:safe-haven') && b.has('kib:abandoned-barracks-site'));
     assert.equal(M.nudgeOf(c), null);
   });
@@ -132,8 +132,8 @@ export default (test, M) => {
     }
     assert.ok(seen.size >= 5, 'some rows: ' + [...seen.keys()]);
     /* Safe Haven's first in-band point is Finding Nemon's turn-in (96 m), not VeKauf (32 m) */
-    assert.equal(seen.get('kib:safe-haven'), 'Finding Nemon');
-    assert.equal(M.nudgeOf(at('Survival Supplies')), null);
+    assert.equal(seen.get('kib:safe-haven'), sq('Finding Nemon'));
+    assert.equal(M.nudgeOf(at(sq('Survival Supplies'))), null);
     assert.equal(M.nudgeOf(ch({})), null);
   });
 
@@ -161,13 +161,13 @@ export default (test, M) => {
      Fang Hideout" while its objectives are at Nornir Assembly) */
   test('story target: the turn-in only once every shown objective but "Turn in" is ticked; hidden talk-only ones don\'t count; none turned in', () => {
     /* Gathering Essentials: two talk-only steps, then "Turn in"; with talk-only hidden only the turn-in is shown */
-    const ge = 'Gathering Essentials', gL = M.QUEST_STEPS[ge], gT = NP[S[qi(ge)][0]].pts.turnin;
+    const ge = sq('Gathering Essentials'), gL = M.QUEST_STEPS[ge], gT = NP[S[qi(ge)][0]].pts.turnin;
     const shown = st => M.objIdxOf(st, gL);
     assert.deepEqual(shown({}), [gL.length - 1], 'only "Turn in" shown');
     assert.equal(M.storyTargetOf(at(ge)), null, 'all steps counted: the talk-only ones are open');
     assert.deepEqual(M.storyTargetOf(at(ge), { shown: shown({}) }).pt, gT, 'talk-only hidden: the turn-in');
     assert.equal(M.storyTargetOf(at(ge), { shown: shown({ showTalk: true }) }), null, 'talk-only shown and open');
-    for (const q of ['Farewells', 'Imminent Threat']) {
+    for (const q of ['Farewells', 'Imminent Threat'].map(sq)) {
       const L = M.QUEST_STEPS[q], ti = L.findIndex(t => /^Turn in\b/.test(t)), rest = L.map((t, i) => i).filter(i => i !== ti);
       assert.ok(ti >= 0, `${q} has a "Turn in" step`);
       assert.equal(M.storyTargetOf(at(q)), null, `${q}: nothing ticked`);

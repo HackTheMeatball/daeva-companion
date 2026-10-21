@@ -60,7 +60,7 @@ const log = []; const L = (...a) => { const s = a.join(' '); log.push(s); consol
   };
   let lv = await p.evaluate(() => char(state).level);
   for (; lv <= TO; ) {
-    L(`\n===== Lv ${lv} · story: ${await p.evaluate(() => char(state).quest)}`);
+    L(`\n===== Lv ${lv} · story: ${await p.evaluate(() => questNameOf(char(state).quest))}`);
     const d = await dupCheck(lv); L('  cards: ' + d.cards.map(c => `[${c.h} | ${c.p} | ${c.meta}]`).join(' '));
     L('  SP: ' + d.sp.slice(0, 220)); L('  ST: ' + d.st.slice(0, 260)); L('  DV: ' + d.dv.slice(0, 220)); L('  prog: ' + d.prog + ' · ahead: ' + d.ahead.slice(0, 200));
     await shots(lv);
@@ -117,7 +117,7 @@ const log = []; const L = (...a) => { const s = a.join(' '); log.push(s); consol
       const tickAll = async () => { for (let n = 0; n < 40; n++) { const i = await q.$('#questSubs input[data-qobj]:not(:checked)'); if (!i) break; await i.click(); await w2(1300); } };
       await steps(q, w2, tickAll);
       const r = await q.evaluate(() => { const c = char(state), n = (QUEST_STEPS[c.quest] || []).length, card = [...document.querySelectorAll('#nsqWrap .ns-card')].find(x => /Story:|Continue the story/.test(x.innerText));
-        return { lv: c.level, quest: c.quest, objs: ((c.qsteps || {})[c.quest] || []).length, n, turnIn: !!(card && card.querySelector('.ns-btn.primary')), qsNext: !!document.getElementById('qsNext'), wait: (document.querySelector('#questSubs .qs-wait') || {}).textContent || '' }; });
+        return { lv: c.level, quest: questNameOf(c.quest), objs: ((c.qsteps || {})[c.quest] || []).length, n, turnIn: !!(card && card.querySelector('.ns-btn.primary')), qsNext: !!document.getElementById('qsNext'), wait: (document.querySelector('#questSubs .qs-wait') || {}).textContent || '' }; });
       const reached = r.lv === 44 && r.quest === 'Forgotten Commander' && r.n > 0 && r.objs === r.n;
       L(`  Lv 44 edge ${name}: Lv ${r.lv} on "${r.quest}", ${r.objs}/${r.n} objectives → state reached: ${reached}; Next up "Turned in": ${r.turnIn}; Journey button: ${r.qsNext}; "${r.wait}"`);
       if (r.turnIn || r.qsNext) L(`  !! Lv 44 edge ${name}: "Turned in" offered below the unlock level`);

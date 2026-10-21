@@ -18,7 +18,7 @@ const UA = {
   ipad: 'Mozilla/5.0 (iPad; CPU OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1',
   desktop: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
 };
-/* a v5 save (tests/support/save.js): backup is a top-level field beside the character slot */
+/* a v6 save (tests/support/save.js): backup is a top-level field beside the character slot */
 const save = (backup, extra = {}) => toStored({ checks: { 'g6:0': true }, level: 20, quest: '', ...(backup === undefined ? {} : { backup }), ...extra });
 
 export default (test, M) => {

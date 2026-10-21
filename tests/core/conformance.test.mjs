@@ -4,7 +4,7 @@
    on a game that isn't AION 2.
      1. the generator (tools/gen/gen.mjs generate({ root, pack }), the CLI's --root / --pack) builds it with 0 failed
         checks: engine checks for every pack, a pack's own checks only where its manifests declare them (P6a);
-     2. a fresh v5 save through memoryStorage: Lv 1 on the first story quest;
+     2. a fresh v6 save through memoryStorage: Lv 1 on the first story quest;
      3. rankNext with the pack's producers: the story card on the first quest comes first; turning the quest in moves
         Next up on; the gated step (the first step whose gate waits on a quest being turned in) stays out until then;
      4. save, reload, merge() with itself: unchanged;
@@ -86,9 +86,9 @@ const runChain = (test, name, E) => {
   E.migrate(state, hadSave, save, NOW_S);
   const c = E.char(state);
   const cards = () => E.rankNext(state), keys = () => cards().filter(x => x.x).map(x => x.x.k);
-  test(`${name} 2: a fresh v5 save through memoryStorage starts at Lv 1 on the first story quest`, () => {
+  test(`${name} 2: a fresh v6 save through memoryStorage starts at Lv 1 on the first story quest`, () => {
     assert.equal(hadSave, false);
-    assert.equal(state.v, 5); assert.equal(E.SAVE_V, 5);
+    assert.equal(state.v, 6); assert.equal(E.SAVE_V, 6);
     assert.deepEqual([c.level, c.quest, c.pack], [1, quests[0][1], P.character.pack]);
     save();
     assert.equal(JSON.parse(store.get(E.KEY)).chars['slot-1'].quest, quests[0][1]);
@@ -144,7 +144,7 @@ export default (test, M) => {
     for (const x of gated) assert.ok(M.activePack().data.graph.nodes[x.opensWith], `${x.id}: ${x.opensWith} is not in the graph`);
   });
   test(`${A} 7: Skills open at Lv 4, Daevanion after "Urgent Pursuit", Stigmas at Lv 22 (locked before, with the unlock line)`, () => {
-    const c = freshChar(M), quests = M.activePack().data.story.quests, up = quests.findIndex(q => q[1] === 'Urgent Pursuit');
+    const c = freshChar(M), quests = M.activePack().data.story.quests, up = quests.findIndex(q => q[1] === M.sq('Urgent Pursuit'));
     assert.ok(up > 0, '"Urgent Pursuit" is in the story');
     const states = () => ['skills', 'daevanion', 'stigmas'].map(id => { const l = lockOf(M, c, id); return l ? l.text : 'open'; });
     assert.deepEqual(states(), ['Opens at Lv 4', 'Opens after "Urgent Pursuit"', 'Opens at Lv 22'], 'Lv 1');

@@ -1,9 +1,9 @@
 {
   "sorcerer/L10-q12-none-A": {
-    "in": "5f47bee05d21",
+    "in": "2aae1e2a9da4",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/sorcerer","class":"sorcerer","name":"","created":0,"checks":{},"level":10,"quest":"Gathering Essentials","mt":{"level":[0,10],"quest":[0,["Gathering Essentials",null]]}},{"checks":{},"level":10,"quest":"Gathering Essentials","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/sorcerer","class":"sorcerer","name":"","created":0,"mt":{"level":[0,10],"quest":[0,["Gathering Essentials",null]],"rotSeen":[1790856000,["Left click:Flame Arrow:0","Right click:Ice Chain:0","Q:Frost Burst:0","Q:Frost:1","E:Flame Scattershot:0","E:Blaze:1","1:Firestorm:0","2:Bittercold Wind:0","3:Winter's Shackles:0"]]},"rotSeen":["Left click:Flame Arrow:0","Right click:Ice Chain:0","Q:Frost Burst:0","Q:Frost:1","E:Flame Scattershot:0","E:Blaze:1","1:Firestorm:0","2:Bittercold Wind:0","3:Winter's Shackles:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/sorcerer","class":"sorcerer","name":"","created":0,"checks":{},"level":10,"quest":"sq:2102020","mt":{"level":[0,10],"quest":[0,["sq:2102020",null]]}},{"checks":{},"level":10,"quest":"sq:2102020","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/sorcerer","class":"sorcerer","name":"","created":0,"mt":{"level":[0,10],"quest":[0,["sq:2102020",null]],"rotSeen":[1790856000,["Left click:Flame Arrow:0","Right click:Ice Chain:0","Q:Frost Burst:0","Q:Frost:1","E:Flame Scattershot:0","E:Blaze:1","1:Firestorm:0","2:Bittercold Wind:0","3:Winter's Shackles:0"]]},"rotSeen":["Left click:Flame Arrow:0","Right click:Ice Chain:0","Q:Frost Burst:0","Q:Frost:1","E:Flame Scattershot:0","E:Blaze:1","1:Firestorm:0","2:Bittercold Wind:0","3:Winter's Shackles:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g6": ["(absent)",true],
@@ -12,10 +12,10 @@
     }
   },
   "sorcerer/L10-q12-none-B": {
-    "in": "6102b4a92ad7",
+    "in": "c6508b40482e",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/sorcerer","class":"sorcerer","name":"","created":0,"checks":{},"level":10,"quest":"Gathering Essentials","mt":{"level":[0,10],"quest":[0,["Gathering Essentials",null]]}},{"checks":{},"level":10,"quest":"Gathering Essentials","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/sorcerer","class":"sorcerer","name":"","created":0,"mt":{"level":[0,10],"quest":[0,["Gathering Essentials",null]],"rotSeen":[1790856000,["Left click:Flame Arrow:0","Right click:Ice Chain:0","Q:Frost Burst:0","Q:Frost:1","E:Flame Scattershot:0","E:Blaze:1","1:Firestorm:0","2:Bittercold Wind:0","3:Winter's Shackles:0"]]},"rotSeen":["Left click:Flame Arrow:0","Right click:Ice Chain:0","Q:Frost Burst:0","Q:Frost:1","E:Flame Scattershot:0","E:Blaze:1","1:Firestorm:0","2:Bittercold Wind:0","3:Winter's Shackles:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/sorcerer","class":"sorcerer","name":"","created":0,"checks":{},"level":10,"quest":"sq:2102020","mt":{"level":[0,10],"quest":[0,["sq:2102020",null]]}},{"checks":{},"level":10,"quest":"sq:2102020","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/sorcerer","class":"sorcerer","name":"","created":0,"mt":{"level":[0,10],"quest":[0,["sq:2102020",null]],"rotSeen":[1790856000,["Left click:Flame Arrow:0","Right click:Ice Chain:0","Q:Frost Burst:0","Q:Frost:1","E:Flame Scattershot:0","E:Blaze:1","1:Firestorm:0","2:Bittercold Wind:0","3:Winter's Shackles:0"]]},"rotSeen":["Left click:Flame Arrow:0","Right click:Ice Chain:0","Q:Frost Burst:0","Q:Frost:1","E:Flame Scattershot:0","E:Blaze:1","1:Firestorm:0","2:Bittercold Wind:0","3:Winter's Shackles:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g6": ["(absent)",true],

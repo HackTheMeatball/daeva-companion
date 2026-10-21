@@ -6,7 +6,7 @@ import { gatesOf } from "../../../core/requirements.js";
 import { STIGMA_ICON, STIGMA_PLAN, STIGMA_ST, ST_COST, ST_TARGETS } from "../data/build.js";
 import { stTag } from "../data/markup.js";
 import { eputK } from "../catalog.js";
-import { shardsFromLv, slotLevelMet, stigmaEquipOpen } from "../requirements.js";
+import { shardsFromLv, slotLevelMet, stKey, stigmaEquipOpen } from "../requirements.js";
 import { stTip } from "./shared.js";
 import { wireTerms } from "../terms.js";
 import { aion2State as state, aion2Save as save, aion2Update as update, aion2RenderNow as renderNow, aion2FitSkills as fitSkills, aion2FadeScroll as fadeScroll, aion2RewardToast as rewardToast, aion2Chime as chime, aion2StIco as stIco, aion2MainEl as mainEl, aion2STIGMA_SLOTS as STIGMA_SLOTS, aion2StPlan as stPlan, aion2StLvOf as stLvOf } from "./page.js";
@@ -28,7 +28,7 @@ function renderStigma() {
   /* Coming up's row: −N = shards short, counting everything above it. */
   const soonRow = (st, need) => { const ok = need <= sh, at = ok ? null : reach(need);
     return `<li title="${st.cost} shard${st.cost === 1 ? "" : "s"} · ${ok ? "shards covered" : `${need - sh} short now`}"><span class="sname">${stIco(st.x.name, "st-mini")}${st.x.name} <span class="lvarr">${st.L - 1} → ${st.L}</span></span><span class="slv${ok ? " now" : ""}">${ok ? "now" : at ? "Lv " + at : "later"}</span><span class="sst ${ok ? "ok" : "short"}">${ok ? "✓" : `−${need - sh}`}</span></li>`; };
-  const learnCost = canEquip && !(char(state).stLv || {})[next.name] ? 1 : 0;
+  const learnCost = canEquip && !(char(state).stLv || {})[stKey(next.name)] ? 1 : 0;
   if (canEquip) {
     /* Pick what you actually equipped in this slot (default = the plan): the planned stigmas not in earlier slots, or "Other…". */
     const taken = slots.filter(x => x.n < next.n).map(x => x.name), opts = [...new Set([...STIGMA_PLAN.filter(n => !taken.includes(n)), next.name])];
@@ -77,26 +77,26 @@ function renderStigma() {
 function stTickClick(e) { const b = e.target.closest && e.target.closest("[data-sttick]"); if (!b) return;
   const k = b.dataset.sttick, slot = STIGMA_SLOTS().find(x => x.k === k);
   /* Learning a stigma is its level 1: 1 shard (one source). Shown on the button and in a toast you can undo. */
-  if (slot) { char(state).stPick = char(state).stPick || {}; char(state).stPick[slot.n] = slot.name; char(state).stLv = char(state).stLv || {};
-    if (!char(state).stLv[slot.name]) { char(state).stLv[slot.name] = 1;
+  if (slot) { char(state).stPick = char(state).stPick || {}; char(state).stPick[slot.n] = stKey(slot.name); char(state).stLv = char(state).stLv || {};
+    if (!char(state).stLv[stKey(slot.name)]) { char(state).stLv[stKey(slot.name)] = 1;
       if ((char(state).stShards || 0) > 0) { char(state).stShards--; rewardToast(`Learned ${slot.name} · −1 shard`, () => { char(state).stShards = (char(state).stShards || 0) + 1; save(); update(); }); } } }
   const ek = slot && eputK(slot.n); if (ek) char(state).checks[ek] = true;
   const src = mainEl.querySelector(`input[data-k="${CSS.escape(k)}"]`);
   if (src) { if (!src.checked) src.click(); else { save(); update(); } } else { char(state).checks[k] = true; save(); update(); } }
 function stUpClick(e) { const b = e.target.closest && e.target.closest("[data-stup]"); if (!b) return;
   const up = stPlan()[0]; if (!up || (char(state).stShards || 0) < up.cost) return;
-  char(state).stLv = char(state).stLv || {}; char(state).stLv[up.x.name] = up.L; char(state).stShards = (char(state).stShards || 0) - up.cost;
+  char(state).stLv = char(state).stLv || {}; char(state).stLv[stKey(up.x.name)] = up.L; char(state).stShards = (char(state).stShards || 0) - up.cost;
   if (state.sound !== false) chime(); save(); update(); }
 function stLvClick(e) { const b = e.target.closest && e.target.closest("[data-stlv]"); if (!b) return;
-  char(state).stLv = char(state).stLv || {}; const n = b.dataset.stlv; char(state).stLv[n] = Math.max(1, Math.min(25, stLvOf(n) + (+b.dataset.d))); save(); update(); }
+  char(state).stLv = char(state).stLv || {}; const n = b.dataset.stlv; char(state).stLv[stKey(n)] = Math.max(1, Math.min(25, stLvOf(n) + (+b.dataset.d))); save(); update(); }
 /* Stigma pick (Stigmas card): which stigma went into the slot you're about to mark equipped. */
 let stOther = 0; /* slot whose "Other…" name field is open */
 function stPickChange(e) { const p = e.target.closest && e.target.closest("[data-stpick]"); if (!p) return;
   if (p.value === "__other") { stOther = +p.dataset.stpick; renderStigma(); const f = document.querySelector("#stCard [data-stother]"); if (f) f.focus(); return; }
-  char(state).stPick = char(state).stPick || {}; char(state).stPick[p.dataset.stpick] = p.value; save(); update(); }
+  char(state).stPick = char(state).stPick || {}; char(state).stPick[p.dataset.stpick] = stKey(p.value); save(); update(); }
 /* "Other…": a stigma off the plan, typed in; Enter or leaving the field saves it, Escape or an empty field cancels. */
 function stOtherDone(f, keep) { if (!f || !f.isConnected) return; const v = f.value.trim().replace(/\s+/g, " "), n = +f.dataset.stother; stOther = 0;
-  if (keep && v) { char(state).stPick = char(state).stPick || {}; char(state).stPick[n] = v; save(); update(); } else renderStigma(); }
+  if (keep && v) { char(state).stPick = char(state).stPick || {}; char(state).stPick[n] = stKey(v); save(); update(); } else renderStigma(); }
 /* the card's buttons, the pick, the shards box (from render(), once; the Next up pop-out adds the click handlers to
    its own document) */
 function aion2StigmasMount() {

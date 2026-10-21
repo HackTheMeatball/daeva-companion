@@ -6,7 +6,7 @@
   "records": [
     {
       "id": "skill:sorcerer:absorb-essence",
-      "key": "Absorb Essence",
+      "key": "absorb-essence",
       "name": "Absorb Essence",
       "type": "passive",
       "learnLv": 13,
@@ -35,7 +35,7 @@
     },
     {
       "id": "skill:sorcerer:bittercold-wind",
-      "key": "Bittercold Wind",
+      "key": "bittercold-wind",
       "name": "Bittercold Wind",
       "type": "active",
       "learnLv": 3,
@@ -97,7 +97,7 @@
     },
     {
       "id": "skill:sorcerer:blaze",
-      "key": "Blaze",
+      "key": "blaze",
       "name": "Blaze",
       "type": "active",
       "learnLv": 4,
@@ -186,7 +186,7 @@
     },
     {
       "id": "skill:sorcerer:cold-snap",
-      "key": "Cold Snap",
+      "key": "cold-snap",
       "name": "Cold Snap",
       "type": "passive",
       "learnLv": 9,
@@ -215,7 +215,7 @@
     },
     {
       "id": "skill:sorcerer:defiance",
-      "key": "Defiance",
+      "key": "defiance",
       "name": "Defiance",
       "type": "active",
       "learnLv": 16,
@@ -280,7 +280,7 @@
     },
     {
       "id": "skill:sorcerer:fire-mark",
-      "key": "Fire Mark",
+      "key": "fire-mark",
       "name": "Fire Mark",
       "type": "passive",
       "learnLv": 1,
@@ -309,7 +309,7 @@
     },
     {
       "id": "skill:sorcerer:firestorm",
-      "key": "Firestorm",
+      "key": "firestorm",
       "name": "Firestorm",
       "type": "active",
       "learnLv": 1,
@@ -371,7 +371,7 @@
     },
     {
       "id": "skill:sorcerer:flame-arrow",
-      "key": "Flame Arrow",
+      "key": "flame-arrow",
       "name": "Flame Arrow",
       "type": "active",
       "learnLv": 1,
@@ -460,7 +460,7 @@
     },
     {
       "id": "skill:sorcerer:flame-scattershot",
-      "key": "Flame Scattershot",
+      "key": "flame-scattershot",
       "name": "Flame Scattershot",
       "type": "active",
       "learnLv": 5,
@@ -541,7 +541,7 @@
     },
     {
       "id": "skill:sorcerer:frost",
-      "key": "Frost",
+      "key": "frost",
       "name": "Frost",
       "type": "active",
       "learnLv": 7,
@@ -603,7 +603,7 @@
     },
     {
       "id": "skill:sorcerer:frost-burst",
-      "key": "Frost Burst",
+      "key": "frost-burst",
       "name": "Frost Burst",
       "type": "active",
       "learnLv": 10,
@@ -684,7 +684,7 @@
     },
     {
       "id": "skill:sorcerer:grace-of-enhancement",
-      "key": "Grace of Enhancement",
+      "key": "grace-of-enhancement",
       "name": "Grace of Enhancement",
       "type": "passive",
       "learnLv": 21,
@@ -713,7 +713,7 @@
     },
     {
       "id": "skill:sorcerer:grace-of-resistance",
-      "key": "Grace of Resistance",
+      "key": "grace-of-resistance",
       "name": "Grace of Resistance",
       "type": "passive",
       "learnLv": 15,
@@ -742,7 +742,7 @@
     },
     {
       "id": "skill:sorcerer:hellfire",
-      "key": "Hellfire",
+      "key": "hellfire",
       "name": "Hellfire",
       "type": "active",
       "learnLv": 14,
@@ -804,7 +804,7 @@
     },
     {
       "id": "skill:sorcerer:ice-chain",
-      "key": "Ice Chain",
+      "key": "ice-chain",
       "name": "Ice Chain",
       "type": "active",
       "learnLv": 1,
@@ -866,7 +866,7 @@
     },
     {
       "id": "skill:sorcerer:revitalization-contract",
-      "key": "Revitalization Contract",
+      "key": "revitalization-contract",
       "name": "Revitalization Contract",
       "type": "passive",
       "learnLv": 23,
@@ -898,7 +898,7 @@
     },
     {
       "id": "skill:sorcerer:robe-of-cold",
-      "key": "Robe of Cold",
+      "key": "robe-of-cold",
       "name": "Robe of Cold",
       "type": "passive",
       "learnLv": 17,
@@ -927,7 +927,7 @@
     },
     {
       "id": "skill:sorcerer:robe-of-earth",
-      "key": "Robe of Earth",
+      "key": "robe-of-earth",
       "name": "Robe of Earth",
       "type": "passive",
       "learnLv": 6,
@@ -956,7 +956,7 @@
     },
     {
       "id": "skill:sorcerer:robe-of-flame",
-      "key": "Robe of Flame",
+      "key": "robe-of-flame",
       "name": "Robe of Flame",
       "type": "passive",
       "learnLv": 11,
@@ -985,7 +985,7 @@
     },
     {
       "id": "skill:sorcerer:vitality-evaporation",
-      "key": "Vitality Evaporation",
+      "key": "vitality-evaporation",
       "name": "Vitality Evaporation",
       "type": "passive",
       "learnLv": 25,
@@ -1014,7 +1014,7 @@
     },
     {
       "id": "skill:sorcerer:winters-shackles",
-      "key": "Winter's Shackles",
+      "key": "winters-shackles",
       "name": "Winter's Shackles",
       "type": "active",
       "learnLv": 8,
@@ -1076,7 +1076,7 @@
     },
     {
       "id": "skill:sorcerer:wish-of-concentration",
-      "key": "Wish of Concentration",
+      "key": "wish-of-concentration",
       "name": "Wish of Concentration",
       "type": "active",
       "learnLv": 12,

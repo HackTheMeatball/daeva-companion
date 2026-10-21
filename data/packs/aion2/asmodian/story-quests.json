@@ -6,7 +6,7 @@
   "records": [
     {
       "id": "sq:2101010",
-      "key": "A Village in the Fog",
+      "key": "sq:2101010",
       "name": "A Village in the Fog",
       "faction": "asmodian",
       "gameId": "2101010",
@@ -160,7 +160,7 @@
     },
     {
       "id": "sq:2101020",
-      "key": "Prepare to Escape",
+      "key": "sq:2101020",
       "name": "Prepare to Escape",
       "faction": "asmodian",
       "gameId": "2101020",
@@ -323,7 +323,7 @@
     },
     {
       "id": "sq:2101030",
-      "key": "Shadow Forest",
+      "key": "sq:2101030",
       "name": "Shadow Forest",
       "faction": "asmodian",
       "gameId": "2101030",
@@ -546,7 +546,7 @@
     },
     {
       "id": "sq:2101040",
-      "key": "Isolated Lake",
+      "key": "sq:2101040",
       "name": "Isolated Lake",
       "faction": "asmodian",
       "gameId": "2101040",
@@ -838,7 +838,7 @@
     },
     {
       "id": "sq:2101050",
-      "key": "The Being Beneath the Lake",
+      "key": "sq:2101050",
       "name": "The Being Beneath the Lake",
       "faction": "asmodian",
       "gameId": "2101050",
@@ -1038,7 +1038,7 @@
     },
     {
       "id": "sq:2101060",
-      "key": "Spread Your Wings",
+      "key": "sq:2101060",
       "name": "Spread Your Wings",
       "faction": "asmodian",
       "gameId": "2101060",
@@ -1175,7 +1175,7 @@
     },
     {
       "id": "sq:2101070",
-      "key": "Signs of a Crash Landing",
+      "key": "sq:2101070",
       "name": "Signs of a Crash Landing",
       "faction": "asmodian",
       "gameId": "2101070",
@@ -1497,7 +1497,7 @@
     },
     {
       "id": "sq:2101080",
-      "key": "Prison Compound Infiltration Plan",
+      "key": "sq:2101080",
       "name": "Prison Compound Infiltration Plan",
       "faction": "asmodian",
       "gameId": "2101080",
@@ -1736,7 +1736,7 @@
     },
     {
       "id": "sq:2101090",
-      "key": "Brigade Prison Compound Infiltration Operation",
+      "key": "sq:2101090",
       "name": "Brigade Prison Compound Infiltration Operation",
       "faction": "asmodian",
       "gameId": "2101090",
@@ -1948,7 +1948,7 @@
     },
     {
       "id": "sq:2101100",
-      "key": "The Longest Night",
+      "key": "sq:2101100",
       "name": "The Longest Night",
       "faction": "asmodian",
       "gameId": "2101100",
@@ -2090,7 +2090,7 @@
     },
     {
       "id": "sq:2102010",
-      "key": "Finding Nemon",
+      "key": "sq:2102010",
       "name": "Finding Nemon",
       "faction": "asmodian",
       "gameId": "2102010",
@@ -2233,7 +2233,7 @@
     },
     {
       "id": "sq:2102015",
-      "key": "Survival Supplies",
+      "key": "sq:2102015",
       "name": "Survival Supplies",
       "faction": "asmodian",
       "gameId": "2102015",
@@ -2420,7 +2420,7 @@
     },
     {
       "id": "sq:2102020",
-      "key": "Gathering Essentials",
+      "key": "sq:2102020",
       "name": "Gathering Essentials",
       "faction": "asmodian",
       "gameId": "2102020",
@@ -2608,7 +2608,7 @@
     },
     {
       "id": "sq:2102030",
-      "key": "Crash Site Rendezvous",
+      "key": "sq:2102030",
       "name": "Crash Site Rendezvous",
       "faction": "asmodian",
       "gameId": "2102030",
@@ -2838,7 +2838,7 @@
     },
     {
       "id": "sq:2102040",
-      "key": "Contaminated Area",
+      "key": "sq:2102040",
       "name": "Contaminated Area",
       "faction": "asmodian",
       "gameId": "2102040",
@@ -3086,7 +3086,7 @@
     },
     {
       "id": "sq:2102050",
-      "key": "Express Daeva Delivery",
+      "key": "sq:2102050",
       "name": "Express Daeva Delivery",
       "faction": "asmodian",
       "gameId": "2102050",
@@ -3268,7 +3268,7 @@
     },
     {
       "id": "sq:2102060",
-      "key": "Veiled Truth",
+      "key": "sq:2102060",
       "name": "Veiled Truth",
       "faction": "asmodian",
       "gameId": "2102060",
@@ -3516,7 +3516,7 @@
     },
     {
       "id": "sq:2102065",
-      "key": "Urgent Pursuit",
+      "key": "sq:2102065",
       "name": "Urgent Pursuit",
       "faction": "asmodian",
       "gameId": "2102065",
@@ -3729,7 +3729,7 @@
     },
     {
       "id": "sq:2102070",
-      "key": "Cemetery Cleanup",
+      "key": "sq:2102070",
       "name": "Cemetery Cleanup",
       "faction": "asmodian",
       "gameId": "2102070",
@@ -3960,7 +3960,7 @@
     },
     {
       "id": "sq:2102080",
-      "key": "Back on the Scent",
+      "key": "sq:2102080",
       "name": "Back on the Scent",
       "faction": "asmodian",
       "gameId": "2102080",
@@ -4142,7 +4142,7 @@
     },
     {
       "id": "sq:2102090",
-      "key": "Dead Men Tell No Tales",
+      "key": "sq:2102090",
       "name": "Dead Men Tell No Tales",
       "faction": "asmodian",
       "gameId": "2102090",
@@ -4363,7 +4363,7 @@
     },
     {
       "id": "sq:2102100",
-      "key": "Buried Atrocities",
+      "key": "sq:2102100",
       "name": "Buried Atrocities",
       "faction": "asmodian",
       "gameId": "2102100",
@@ -4527,7 +4527,7 @@
     },
     {
       "id": "sq:2102105",
-      "key": "Empyrean Monolith",
+      "key": "sq:2102105",
       "name": "Empyrean Monolith",
       "faction": "asmodian",
       "gameId": "2102105",
@@ -4800,7 +4800,7 @@
     },
     {
       "id": "sq:2102110",
-      "key": "A New Lead",
+      "key": "sq:2102110",
       "name": "A New Lead",
       "faction": "asmodian",
       "gameId": "2102110",
@@ -5014,7 +5014,7 @@
     },
     {
       "id": "sq:2102115",
-      "key": "Malice Laid Bare",
+      "key": "sq:2102115",
       "name": "Malice Laid Bare",
       "faction": "asmodian",
       "gameId": "2102115",
@@ -5272,7 +5272,7 @@
     },
     {
       "id": "sq:2102120",
-      "key": "Broken Fang",
+      "key": "sq:2102120",
       "name": "Broken Fang",
       "faction": "asmodian",
       "gameId": "2102120",
@@ -5534,7 +5534,7 @@
     },
     {
       "id": "sq:2102130",
-      "key": "Watchful Eyes",
+      "key": "sq:2102130",
       "name": "Watchful Eyes",
       "faction": "asmodian",
       "gameId": "2102130",
@@ -5752,7 +5752,7 @@
     },
     {
       "id": "sq:2102140",
-      "key": "Imminent Threat",
+      "key": "sq:2102140",
       "name": "Imminent Threat",
       "faction": "asmodian",
       "gameId": "2102140",
@@ -6010,7 +6010,7 @@
     },
     {
       "id": "sq:2102150",
-      "key": "Crossroad",
+      "key": "sq:2102150",
       "name": "Crossroad",
       "faction": "asmodian",
       "gameId": "2102150",
@@ -6254,7 +6254,7 @@
     },
     {
       "id": "sq:2102160",
-      "key": "Creeping Shadow",
+      "key": "sq:2102160",
       "name": "Creeping Shadow",
       "faction": "asmodian",
       "gameId": "2102160",
@@ -6538,7 +6538,7 @@
     },
     {
       "id": "sq:2102170",
-      "key": "Children of the Elim",
+      "key": "sq:2102170",
       "name": "Children of the Elim",
       "faction": "asmodian",
       "gameId": "2102170",
@@ -6884,7 +6884,7 @@
     },
     {
       "id": "sq:2102175",
-      "key": "In the Elims' Name",
+      "key": "sq:2102175",
       "name": "In the Elims' Name",
       "faction": "asmodian",
       "gameId": "2102175",
@@ -7102,7 +7102,7 @@
     },
     {
       "id": "sq:2102180",
-      "key": "Verdant Melody",
+      "key": "sq:2102180",
       "name": "Verdant Melody",
       "faction": "asmodian",
       "gameId": "2102180",
@@ -7316,7 +7316,7 @@
     },
     {
       "id": "sq:2102185",
-      "key": "Daeva in a Dream",
+      "key": "sq:2102185",
       "name": "Daeva in a Dream",
       "faction": "asmodian",
       "gameId": "2102185",
@@ -7450,7 +7450,7 @@
     },
     {
       "id": "sq:2102190",
-      "key": "Disturbed Balance",
+      "key": "sq:2102190",
       "name": "Disturbed Balance",
       "faction": "asmodian",
       "gameId": "2102190",
@@ -7679,7 +7679,7 @@
     },
     {
       "id": "sq:2102200",
-      "key": "Searching for Survivors",
+      "key": "sq:2102200",
       "name": "Searching for Survivors",
       "faction": "asmodian",
       "gameId": "2102200",
@@ -7877,7 +7877,7 @@
     },
     {
       "id": "sq:2102201",
-      "key": "Prison Break",
+      "key": "sq:2102201",
       "name": "Prison Break",
       "faction": "asmodian",
       "gameId": "2102201",
@@ -8027,7 +8027,7 @@
     },
     {
       "id": "sq:2102202",
-      "key": "Finding Stolen Relics",
+      "key": "sq:2102202",
       "name": "Finding Stolen Relics",
       "faction": "asmodian",
       "gameId": "2102202",
@@ -8179,7 +8179,7 @@
     },
     {
       "id": "sq:2102210",
-      "key": "Voice of Rage",
+      "key": "sq:2102210",
       "name": "Voice of Rage",
       "faction": "asmodian",
       "gameId": "2102210",
@@ -8363,7 +8363,7 @@
     },
     {
       "id": "sq:2102220",
-      "key": "Tangled Past",
+      "key": "sq:2102220",
       "name": "Tangled Past",
       "faction": "asmodian",
       "gameId": "2102220",
@@ -8590,7 +8590,7 @@
     },
     {
       "id": "sq:2102225",
-      "key": "The High Priest Slumbers",
+      "key": "sq:2102225",
       "name": "The High Priest Slumbers",
       "faction": "asmodian",
       "gameId": "2102225",
@@ -8737,7 +8737,7 @@
     },
     {
       "id": "sq:2102230",
-      "key": "Striving for Coexistence",
+      "key": "sq:2102230",
       "name": "Striving for Coexistence",
       "faction": "asmodian",
       "gameId": "2102230",
@@ -8926,7 +8926,7 @@
     },
     {
       "id": "sq:2102235",
-      "key": "Preparations for Restoration",
+      "key": "sq:2102235",
       "name": "Preparations for Restoration",
       "faction": "asmodian",
       "gameId": "2102235",
@@ -9189,7 +9189,7 @@
     },
     {
       "id": "sq:2102240",
-      "key": "A Collective Effort",
+      "key": "sq:2102240",
       "name": "A Collective Effort",
       "faction": "asmodian",
       "gameId": "2102240",
@@ -9474,7 +9474,7 @@
     },
     {
       "id": "sq:2102250",
-      "key": "Land of Rifts",
+      "key": "sq:2102250",
       "name": "Land of Rifts",
       "faction": "asmodian",
       "gameId": "2102250",
@@ -9645,7 +9645,7 @@
     },
     {
       "id": "sq:2102255",
-      "key": "Dying Light",
+      "key": "sq:2102255",
       "name": "Dying Light",
       "faction": "asmodian",
       "gameId": "2102255",
@@ -9882,7 +9882,7 @@
     },
     {
       "id": "sq:2102260",
-      "key": "Contaminated Sacred Tree",
+      "key": "sq:2102260",
       "name": "Contaminated Sacred Tree",
       "faction": "asmodian",
       "gameId": "2102260",
@@ -10073,7 +10073,7 @@
     },
     {
       "id": "sq:2102270",
-      "key": "The Past Revealed",
+      "key": "sq:2102270",
       "name": "The Past Revealed",
       "faction": "asmodian",
       "gameId": "2102270",
@@ -10262,7 +10262,7 @@
     },
     {
       "id": "sq:2102280",
-      "key": "Canyon's Secret",
+      "key": "sq:2102280",
       "name": "Canyon's Secret",
       "faction": "asmodian",
       "gameId": "2102280",
@@ -10466,7 +10466,7 @@
     },
     {
       "id": "sq:2102300",
-      "key": "Bitter Reality",
+      "key": "sq:2102300",
       "name": "Bitter Reality",
       "faction": "asmodian",
       "gameId": "2102300",
@@ -10697,7 +10697,7 @@
     },
     {
       "id": "sq:2102310",
-      "key": "Eye of the Red Tower",
+      "key": "sq:2102310",
       "name": "Eye of the Red Tower",
       "faction": "asmodian",
       "gameId": "2102310",
@@ -10898,7 +10898,7 @@
     },
     {
       "id": "sq:2102320",
-      "key": "The Survivors",
+      "key": "sq:2102320",
       "name": "The Survivors",
       "faction": "asmodian",
       "gameId": "2102320",
@@ -11084,7 +11084,7 @@
     },
     {
       "id": "sq:2102330",
-      "key": "Rescue Operation",
+      "key": "sq:2102330",
       "name": "Rescue Operation",
       "faction": "asmodian",
       "gameId": "2102330",
@@ -11317,7 +11317,7 @@
     },
     {
       "id": "sq:2102340",
-      "key": "Last of the Destruction Archons",
+      "key": "sq:2102340",
       "name": "Last of the Destruction Archons",
       "faction": "asmodian",
       "gameId": "2102340",
@@ -11550,7 +11550,7 @@
     },
     {
       "id": "sq:2102345",
-      "key": "A Daeva Dreaming Anew",
+      "key": "sq:2102345",
       "name": "A Daeva Dreaming Anew",
       "faction": "asmodian",
       "gameId": "2102345",
@@ -11672,7 +11672,7 @@
     },
     {
       "id": "sq:2102350",
-      "key": "Last Refuge",
+      "key": "sq:2102350",
       "name": "Last Refuge",
       "faction": "asmodian",
       "gameId": "2102350",
@@ -11997,7 +11997,7 @@
     },
     {
       "id": "sq:2102360",
-      "key": "Scripture in the Ruins",
+      "key": "sq:2102360",
       "name": "Scripture in the Ruins",
       "faction": "asmodian",
       "gameId": "2102360",
@@ -12230,7 +12230,7 @@
     },
     {
       "id": "sq:2102370",
-      "key": "Blood Monument",
+      "key": "sq:2102370",
       "name": "Blood Monument",
       "faction": "asmodian",
       "gameId": "2102370",
@@ -12467,7 +12467,7 @@
     },
     {
       "id": "sq:2102380",
-      "key": "Impending Threat",
+      "key": "sq:2102380",
       "name": "Impending Threat",
       "faction": "asmodian",
       "gameId": "2102380",
@@ -12664,7 +12664,7 @@
     },
     {
       "id": "sq:2102390",
-      "key": "Visible Trap",
+      "key": "sq:2102390",
       "name": "Visible Trap",
       "faction": "asmodian",
       "gameId": "2102390",
@@ -12853,7 +12853,7 @@
     },
     {
       "id": "sq:2102400",
-      "key": "Destruction Archon Underground Fortress",
+      "key": "sq:2102400",
       "name": "Destruction Archon Underground Fortress",
       "faction": "asmodian",
       "gameId": "2102400",
@@ -13064,7 +13064,7 @@
     },
     {
       "id": "sq:2102450",
-      "key": "Enemy Territory",
+      "key": "sq:2102450",
       "name": "Enemy Territory",
       "faction": "asmodian",
       "gameId": "2102450",
@@ -13324,7 +13324,7 @@
     },
     {
       "id": "sq:2102460",
-      "key": "Powder of Death",
+      "key": "sq:2102460",
       "name": "Powder of Death",
       "faction": "asmodian",
       "gameId": "2102460",
@@ -13566,7 +13566,7 @@
     },
     {
       "id": "sq:2102470",
-      "key": "Creion of Gribade",
+      "key": "sq:2102470",
       "name": "Creion of Gribade",
       "faction": "asmodian",
       "gameId": "2102470",
@@ -13760,7 +13760,7 @@
     },
     {
       "id": "sq:2102480",
-      "key": "Frozen Fafnite",
+      "key": "sq:2102480",
       "name": "Frozen Fafnite",
       "faction": "asmodian",
       "gameId": "2102480",
@@ -14048,7 +14048,7 @@
     },
     {
       "id": "sq:2102550",
-      "key": "Inevitable Encounter",
+      "key": "sq:2102550",
       "name": "Inevitable Encounter",
       "faction": "asmodian",
       "gameId": "2102550",
@@ -14264,7 +14264,7 @@
     },
     {
       "id": "sq:2102565",
-      "key": "Unveiling the Truth",
+      "key": "sq:2102565",
       "name": "Unveiling the Truth",
       "faction": "asmodian",
       "gameId": "2102565",
@@ -14509,7 +14509,7 @@
     },
     {
       "id": "sq:2102575",
-      "key": "Lake of Confrontation",
+      "key": "sq:2102575",
       "name": "Lake of Confrontation",
       "faction": "asmodian",
       "gameId": "2102575",
@@ -14676,7 +14676,7 @@
     },
     {
       "id": "sq:2102585",
-      "key": "An Ill Fate's Resolution",
+      "key": "sq:2102585",
       "name": "An Ill Fate's Resolution",
       "faction": "asmodian",
       "gameId": "2102585",
@@ -14869,7 +14869,7 @@
     },
     {
       "id": "sq:2102590",
-      "key": "Mirror of Greed",
+      "key": "sq:2102590",
       "name": "Mirror of Greed",
       "faction": "asmodian",
       "gameId": "2102590",
@@ -15067,7 +15067,7 @@
     },
     {
       "id": "sq:2102600",
-      "key": "Fafnite's Whereabouts",
+      "key": "sq:2102600",
       "name": "Fafnite's Whereabouts",
       "faction": "asmodian",
       "gameId": "2102600",
@@ -15352,7 +15352,7 @@
     },
     {
       "id": "sq:2102610",
-      "key": "Exiled Ritualist",
+      "key": "sq:2102610",
       "name": "Exiled Ritualist",
       "faction": "asmodian",
       "gameId": "2102610",
@@ -15519,7 +15519,7 @@
     },
     {
       "id": "sq:2102612",
-      "key": "Healing Herbs",
+      "key": "sq:2102612",
       "name": "Healing Herbs",
       "faction": "asmodian",
       "gameId": "2102612",
@@ -15664,7 +15664,7 @@
     },
     {
       "id": "sq:2102615",
-      "key": "Treatment",
+      "key": "sq:2102615",
       "name": "Treatment",
       "faction": "asmodian",
       "gameId": "2102615",
@@ -15809,7 +15809,7 @@
     },
     {
       "id": "sq:2102620",
-      "key": "Symbol of Liberation",
+      "key": "sq:2102620",
       "name": "Symbol of Liberation",
       "faction": "asmodian",
       "gameId": "2102620",
@@ -16020,7 +16020,7 @@
     },
     {
       "id": "sq:2102650",
-      "key": "Daybreak Society",
+      "key": "sq:2102650",
       "name": "Daybreak Society",
       "faction": "asmodian",
       "gameId": "2102650",
@@ -16276,7 +16276,7 @@
     },
     {
       "id": "sq:2102660",
-      "key": "Daybreak Society Rescue Operation",
+      "key": "sq:2102660",
       "name": "Daybreak Society Rescue Operation",
       "faction": "asmodian",
       "gameId": "2102660",
@@ -16440,7 +16440,7 @@
     },
     {
       "id": "sq:2102670",
-      "key": "The Breaking of the Day",
+      "key": "sq:2102670",
       "name": "The Breaking of the Day",
       "faction": "asmodian",
       "gameId": "2102670",
@@ -16601,7 +16601,7 @@
     },
     {
       "id": "sq:2102680",
-      "key": "Chief of the Black Claw",
+      "key": "sq:2102680",
       "name": "Chief of the Black Claw",
       "faction": "asmodian",
       "gameId": "2102680",
@@ -16739,7 +16739,7 @@
     },
     {
       "id": "sq:2102690",
-      "key": "High Priest's Fafnite",
+      "key": "sq:2102690",
       "name": "High Priest's Fafnite",
       "faction": "asmodian",
       "gameId": "2102690",
@@ -16968,7 +16968,7 @@
     },
     {
       "id": "sq:2102750",
-      "key": "The High Priest Awakens",
+      "key": "sq:2102750",
       "name": "The High Priest Awakens",
       "faction": "asmodian",
       "gameId": "2102750",
@@ -17150,7 +17150,7 @@
     },
     {
       "id": "sq:2102760",
-      "key": "Lingering Apparitions",
+      "key": "sq:2102760",
       "name": "Lingering Apparitions",
       "faction": "asmodian",
       "gameId": "2102760",
@@ -17376,7 +17376,7 @@
     },
     {
       "id": "sq:2102770",
-      "key": "Blood Barrier",
+      "key": "sq:2102770",
       "name": "Blood Barrier",
       "faction": "asmodian",
       "gameId": "2102770",
@@ -17563,7 +17563,7 @@
     },
     {
       "id": "sq:2102780",
-      "key": "Zikel's Core",
+      "key": "sq:2102780",
       "name": "Zikel's Core",
       "faction": "asmodian",
       "gameId": "2102780",
@@ -17748,7 +17748,7 @@
     },
     {
       "id": "sq:2102781",
-      "key": "Farewells",
+      "key": "sq:2102781",
       "name": "Farewells",
       "faction": "asmodian",
       "gameId": "2102781",
@@ -18026,7 +18026,7 @@
     },
     {
       "id": "sq:2102800",
-      "key": "Forgotten Commander",
+      "key": "sq:2102800",
       "name": "Forgotten Commander",
       "faction": "asmodian",
       "gameId": "2102800",
@@ -18253,7 +18253,7 @@
     },
     {
       "id": "sq:2102810",
-      "key": "Daeva Trapped in a Nightmare",
+      "key": "sq:2102810",
       "name": "Daeva Trapped in a Nightmare",
       "faction": "asmodian",
       "gameId": "2102810",

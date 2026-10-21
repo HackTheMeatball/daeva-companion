@@ -1,4 +1,4 @@
-/* 5c sync groundwork on save v5 (0.4 P3c): per-item change times (stamp, stampSave), merge(a, b) per character slot,
+/* 5c sync groundwork on save v6 (0.9 P2; v5 0.4 P3c): per-item change times (stamp, stampSave), merge(a, b) per character slot,
    and the last confirmed location derived from the change times (docs/DATA-FORMAT-V2.md §9, §13). */
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -10,7 +10,7 @@ const FIX = join(dirname(fileURLToPath(import.meta.url)), '../fixtures');
 const { toStored, storedText, TEST_SLOT } = createRequire(import.meta.url)('../support/save.js');
 const fixture = f => JSON.parse(readFileSync(join(FIX, f), 'utf8'));
 const clone = o => JSON.parse(JSON.stringify(o));
-/* load a flat test save as the page does (tests/support/save.js makes it v5, values stamped at 0): the load steps with
+/* load a flat test save as the page does (tests/support/save.js makes it v6, values stamped at 0): the load steps with
    the page's time on a copy; returns the state and the writes */
 const load = (M, flat, now) => { const state = toStored(flat), writes = []; M.migrate(state, true, () => writes.push(clone(state)), now); return { state, writes }; };
 /* a fresh browser: no save, a new one with the given slot id */
@@ -28,7 +28,7 @@ const SLOT_B = '00000000-0000-4000-8000-0000000000b2';
 export function genSave(M, seed) {
   const r = rng(seed), pick = a => a[Math.floor(r() * a.length)];
   const KEYS = ['g6:0', 'g22:0', 'g22:1', 'g32:dreams', 'build:0', 'sd:twisted-pit', 'sh:blades-temporary-outpost', ...M.RQ.slice(0, 6).map(q => 'rq:' + q.id)];
-  const QS = ['Land of Rifts', 'Tangled Past'];
+  const QS = [M.sq('Land of Rifts'), M.sq('Tangled Past')];
   const st = toStored({ checks: {}, level: 5, hide: false, open: {}, quest: '' }), unstamped = r() < 0.15;
   if (r() < 0.4) st.chars[SLOT_B] = { ...clone(st.chars[TEST_SLOT]), id: SLOT_B };
   if (unstamped) Object.values(st.chars).forEach(c => { delete c.mt; });
@@ -42,7 +42,7 @@ export function genSave(M, seed) {
       else if (x < 0.6) { c.qsub = c.qsub || {}; const q = c.qsub[pick(QS)] = c.qsub[pick(QS)] || {}; q[1] = r() < 0.5 ? [0] : [0, 1]; }
       else if (x < 0.68) c.level = 5 + Math.floor(r() * 40);
       else if (x < 0.76) { c.quest = pick(['', ...QS]); if (r() < 0.3) c.storyEnd = c.quest; else delete c.storyEnd; }
-      else if (x < 0.82) { c.stLv = c.stLv || {}; c.stLv["Triniel's Dagger"] = 1 + Math.floor(r() * 5); }
+      else if (x < 0.82) { c.stLv = c.stLv || {}; c.stLv['triniels-dagger'] = 1 + Math.floor(r() * 5); }
       else if (x < 0.87) c.stones = Math.floor(r() * 4);
       else if (x < 0.9) c.rotSeen = [pick(['a:1:0', 'b:2:1'])];
       else if (x < 0.95) c.buildId = pick(['build:assassin:guide', 'build:assassin:unknown-from-a-newer-build']);
@@ -61,27 +61,27 @@ export default (test, M) => {
 
   /* ---------- stamps ---------- */
   test('stamps: a tick, an un-tick, a removal (tombstone) and an objective each carry the time they were saved', () => {
-    const st = load(M, { checks: { 'g6:0': true }, level: 20, quest: 'Land of Rifts', started: { 'rq:2202017': 1 } }, 100).state;
+    const LR = M.sq('Land of Rifts'), st = load(M, { checks: { 'g6:0': true }, level: 20, quest: 'Land of Rifts', started: { 'rq:2202017': 1 } }, 100).state;
     assert.deepEqual(C(st).mt.checks, { 'g6:0': [0, true] }); assert.deepEqual(C(st).mt.level, [0, 20]);
     C(st).checks['g6:0'] = false; C(st).checks['g22:1'] = true; delete C(st).started['rq:2202017'];
-    C(st).qsteps = { 'Land of Rifts': [2] };
+    C(st).qsteps = { [LR]: [2] };
     const s1 = save(M, st, 1000);
     assert.deepEqual(C(s1).mt.checks, { 'g6:0': [1000, false], 'g22:1': [1000, true] });
     assert.deepEqual(C(s1).mt.started, { 'rq:2202017': [1000, null] });
-    assert.deepEqual(C(s1).mt.qsteps, { 'Land of Rifts': { 2: [1000, true] } });
+    assert.deepEqual(C(s1).mt.qsteps, { [LR]: { 2: [1000, true] } });
     assert.deepEqual(C(s1).mt.level, [0, 20]);
-    assert.equal(s1.savedAt, 1000000); assert.equal(s1.v, 5);
-    C(st).qsteps['Land of Rifts'] = []; C(st).level = 21; C(st).storyEnd = 'Land of Rifts';
+    assert.equal(s1.savedAt, 1000000); assert.equal(s1.v, 6);
+    C(st).qsteps[LR] = []; C(st).level = 21; C(st).storyEnd = LR;
     const s2 = save(M, st, 1010);
-    assert.deepEqual(C(s2).mt.qsteps, { 'Land of Rifts': { 2: [1010, null] } }); assert.deepEqual(C(s2).mt.level, [1010, 21]);
-    assert.deepEqual(C(s2).mt.quest, [1010, ['Land of Rifts', 'Land of Rifts']]);
+    assert.deepEqual(C(s2).mt.qsteps, { [LR]: { 2: [1010, null] } }); assert.deepEqual(C(s2).mt.level, [1010, 21]);
+    assert.deepEqual(C(s2).mt.quest, [1010, [LR, LR]]);
   });
   test('stamps: a write that changes no progress leaves mt and savedAt as they were (view settings only)', () => {
     const st = load(M, { checks: { 'g6:0': true }, level: 5, quest: '' }, 0).state, s1 = save(M, st, 100);
     st.mode = 'basic'; st.open = { g6: true }; const s2 = save(M, st, 200);
     assert.deepEqual(C(s2).mt, C(s1).mt); assert.equal(s2.savedAt, s1.savedAt);
   });
-  test('stamps: a v5 save is born with mt: the fresh start stamps its defaults at time 0 and writes nothing', () => {
+  test('stamps: a v6 save is born with mt: the fresh start stamps its defaults at time 0 and writes nothing', () => {
     const { state, hadSave } = M.loadState(null, { now: 2000000, newId: () => 'slot-x' }), writes = [];
     M.migrate(state, hadSave, () => writes.push(1), 2000);
     assert.deepEqual(writes, []);
@@ -259,34 +259,34 @@ export default (test, M) => {
   });
   test('merge: the result shares no objects with its inputs', () => {
     const A = load(M, { checks: {}, level: 30, quest: '' }, 0).state, B = clone(A);
-    C(B).customBuild = { base: 'build:assassin:guide', nodes: ['n1'] }; C(B).rotSeen = ['a:1:0']; C(B).qsteps = { 'Land of Rifts': [1] };
+    C(B).customBuild = { base: 'build:assassin:guide', nodes: ['n1'] }; C(B).rotSeen = ['a:1:0']; C(B).qsteps = { [M.sq('Land of Rifts')]: [1] };
     B.chars[SLOT_B] = { ...clone(B.chars[TEST_SLOT]), id: SLOT_B };
     const b = save(M, B, 100), a = save(M, A, 50), bCopy = clone(b), aCopy = clone(a);
     for (const m of [M.merge(a, b), M.merge(b, a)]) {
-      C(m).customBuild.nodes.push('x'); C(m).rotSeen.push('y'); C(m).qsteps['Land of Rifts'].push(9); C(m).mt.level[0] = -1; C(m).mt.customBuild[1].nodes.push('z'); C(m).checks.zz = true;
+      C(m).customBuild.nodes.push('x'); C(m).rotSeen.push('y'); C(m).qsteps[M.sq('Land of Rifts')].push(9); C(m).mt.level[0] = -1; C(m).mt.customBuild[1].nodes.push('z'); C(m).checks.zz = true;
       m.chars[SLOT_B].checks.zz = true; m.chars[SLOT_B].rotSeen.push('w');
     }
     assert.deepEqual([a, b], [aCopy, bCopy]);
   });
   test('merge: a removal is a dated tombstone (started, snooze, objective)', () => {
-    const A = load(M, { checks: {}, level: 20, quest: 'Land of Rifts', started: { 'rq:2202017': 1 }, rqSnooze: { 'rq:2202040': 26 }, qsteps: { 'Land of Rifts': [0, 1] } }, 0).state, B = clone(A);
-    delete C(A).started['rq:2202017']; C(A).qsteps['Land of Rifts'] = [0]; const a = save(M, A, 100);
+    const LR = M.sq('Land of Rifts'), A = load(M, { checks: {}, level: 20, quest: 'Land of Rifts', started: { 'rq:2202017': 1 }, rqSnooze: { 'rq:2202040': 26 }, qsteps: { 'Land of Rifts': [0, 1] } }, 0).state, B = clone(A);
+    delete C(A).started['rq:2202017']; C(A).qsteps[LR] = [0]; const a = save(M, A, 100);
     delete C(B).rqSnooze['rq:2202040']; C(B).started['rq:2202018'] = 1; const b = save(M, B, 90);
     for (const m of [M.merge(a, b), M.merge(b, a)]) {
-      assert.deepEqual(C(m).started, { 'rq:2202018': 1 }); assert.deepEqual(C(m).rqSnooze, {}); assert.deepEqual(C(m).qsteps, { 'Land of Rifts': [0] });
+      assert.deepEqual(C(m).started, { 'rq:2202018': 1 }); assert.deepEqual(C(m).rqSnooze, {}); assert.deepEqual(C(m).qsteps, { [LR]: [0] });
     }
   });
   test('merge: registers (level, story position, stones) take the latest change; equal times break on the value', () => {
     const A = load(M, { checks: {}, level: 20, quest: 'Land of Rifts' }, 0).state, B = clone(A);
     C(A).level = 24; C(A).stones = 3; const a = save(M, A, 100);
-    C(B).quest = 'Tangled Past'; C(B).storyEnd = 'Tangled Past'; C(B).level = 23; const b = save(M, B, 150);
-    for (const m of [M.merge(a, b), M.merge(b, a)]) { assert.equal(C(m).level, 23); assert.equal(C(m).quest, 'Tangled Past'); assert.equal(C(m).storyEnd, 'Tangled Past'); assert.equal(C(m).stones, 3); }
+    C(B).quest = M.sq('Tangled Past'); C(B).storyEnd = M.sq('Tangled Past'); C(B).level = 23; const b = save(M, B, 150);
+    for (const m of [M.merge(a, b), M.merge(b, a)]) { assert.equal(C(m).level, 23); assert.equal(C(m).quest, M.sq('Tangled Past')); assert.equal(C(m).storyEnd, M.sq('Tangled Past')); assert.equal(C(m).stones, 3); }
     C(B).level = 26; const b2 = save(M, B, 100);
     assert.equal(C(M.merge(a, b2)).level, 26); assert.equal(C(M.merge(b2, a)).level, 26);
   });
   test('merge: v and savedAt the larger; a malformed savedAt counts as 0', () => {
     const a = { ...toStored({ checks: {} }), savedAt: 10 }, b = { ...toStored({ checks: {} }), savedAt: 20 };
-    for (const m of [M.merge(a, b), M.merge(b, a)]) { assert.equal(m.v, 5); assert.equal(m.savedAt, 20); }
+    for (const m of [M.merge(a, b), M.merge(b, a)]) { assert.equal(m.v, 6); assert.equal(m.savedAt, 20); }
     assert.equal(M.merge({ ...a, savedAt: 'x' }, { ...b, savedAt: 5 }).savedAt, 5);
   });
   test('merge: view settings, current, the local undo (dvLast) and unknown top-level fields stay the local save\'s', () => {
@@ -311,7 +311,7 @@ export default (test, M) => {
     const A = M.loadState(JSON.stringify(exported)).state; M.importBackup(A, (T0 + 100) * 1000); M.migrate(A, true, () => {}, T0 + 100);
     for (const m of [M.merge(A, b), M.merge(b, A)]) { assert.equal(C(m).checks['g22:1'], false, 'B\'s un-tick survives'); assert.equal(C(m).checks['g32:0'], true, 'B\'s tick survives'); }
   });
-  test('owner save 2026-10-14 (Lv 39) as a v5 save: loads without a write, then merges with itself and with a later copy cleanly', () => {
+  test('owner save 2026-10-14 (Lv 39) as a v6 save: loads without a write, then merges with itself and with a later copy cleanly', () => {
     const { state, writes } = load(M, fixture('fixture-user-2026-10-14-lv39.json'), 1760440000);
     assert.deepEqual(writes, []);
     const again = clone(state); M.migrate(again, true, () => writes.push(1), 1760450000); assert.deepEqual(again, state); assert.deepEqual(writes, []);
@@ -364,8 +364,8 @@ export default (test, M) => {
   test('fresh browser (Lv 1, first quest) never resets another device\'s story position in merge()', () => {
     const f = fresh(M);
     assert.equal(C(f).quest, M.QUESTS[0][1]);
-    /* the review's cases: quests whose names sort before the first quest's, an unset quest, and a later quest */
-    const names = ['A New Lead', 'A Collective Effort', 'A Daeva Dreaming Anew', M.QUESTS[10][1]];
+    /* the review's cases: quests whose names sort before the first quest's (by key since save v6), an unset quest, and a later quest */
+    const names = [...['A New Lead', 'A Collective Effort', 'A Daeva Dreaming Anew'].map(M.sq), M.QUESTS[10][1]];
     names.forEach(n => assert.ok(M.QUESTS.some(([, q]) => q === n), n));
     for (const q of [...names, '']) {
       const other = sameSlot(f, load(M, { checks: {}, level: 30, quest: q }, 0).state);   /* all t = 0 */

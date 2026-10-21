@@ -6,7 +6,7 @@
   "records": [
     {
       "id": "stigma:spiritmaster:assault-terror",
-      "key": "Assault Terror",
+      "key": "assault-terror",
       "name": "Assault Terror",
       "availableLv": 22,
       "maxLevel": 25,
@@ -57,7 +57,7 @@
     },
     {
       "id": "stigma:spiritmaster:command-proxy",
-      "key": "Command: Proxy",
+      "key": "command-proxy",
       "name": "Command: Proxy",
       "availableLv": 22,
       "maxLevel": 25,
@@ -108,7 +108,7 @@
     },
     {
       "id": "stigma:spiritmaster:cry-of-terror",
-      "key": "Cry of Terror",
+      "key": "cry-of-terror",
       "name": "Cry of Terror",
       "availableLv": 22,
       "maxLevel": 25,
@@ -159,7 +159,7 @@
     },
     {
       "id": "stigma:spiritmaster:cursed-cloud",
-      "key": "Cursed Cloud",
+      "key": "cursed-cloud",
       "name": "Cursed Cloud",
       "availableLv": 22,
       "maxLevel": 25,
@@ -210,7 +210,7 @@
     },
     {
       "id": "stigma:spiritmaster:enhance-spirits-benediction",
-      "key": "Enhance: Spirit's Benediction",
+      "key": "enhance-spirits-benediction",
       "name": "Enhance: Spirit's Benediction",
       "availableLv": 22,
       "icon": "assets/icons/st-enhance-spirits-benediction.png",
@@ -262,7 +262,7 @@
     },
     {
       "id": "stigma:spiritmaster:flame-blessing",
-      "key": "Flame Blessing",
+      "key": "flame-blessing",
       "name": "Flame Blessing",
       "availableLv": 22,
       "icon": "assets/icons/st-flame-blessing.png",
@@ -314,7 +314,7 @@
     },
     {
       "id": "stigma:spiritmaster:jointstrike-corrode",
-      "key": "Jointstrike: Corrode",
+      "key": "jointstrike-corrode",
       "name": "Jointstrike: Corrode",
       "availableLv": 22,
       "icon": "assets/icons/st-jointstrike-corrode.png",
@@ -366,7 +366,7 @@
     },
     {
       "id": "stigma:spiritmaster:jointstrike-destructive-attack",
-      "key": "Jointstrike: Destructive Attack",
+      "key": "jointstrike-destructive-attack",
       "name": "Jointstrike: Destructive Attack",
       "availableLv": 22,
       "maxLevel": 25,
@@ -417,7 +417,7 @@
     },
     {
       "id": "stigma:spiritmaster:kaisinels-power",
-      "key": "Kaisinel's Power",
+      "key": "kaisinels-power",
       "name": "Kaisinel's Power",
       "availableLv": 22,
       "maxLevel": 25,
@@ -468,7 +468,7 @@
     },
     {
       "id": "stigma:spiritmaster:magic-block",
-      "key": "Magic Block",
+      "key": "magic-block",
       "name": "Magic Block",
       "availableLv": 22,
       "maxLevel": 25,
@@ -519,7 +519,7 @@
     },
     {
       "id": "stigma:spiritmaster:seize-magic",
-      "key": "Seize Magic",
+      "key": "seize-magic",
       "name": "Seize Magic",
       "availableLv": 22,
       "maxLevel": 25,
@@ -570,7 +570,7 @@
     },
     {
       "id": "stigma:spiritmaster:siphon",
-      "key": "Siphon",
+      "key": "siphon",
       "name": "Siphon",
       "availableLv": 22,
       "maxLevel": 25,
@@ -621,7 +621,7 @@
     },
     {
       "id": "stigma:spiritmaster:summon-ancient-spirit",
-      "key": "Summon: Ancient Spirit",
+      "key": "summon-ancient-spirit",
       "name": "Summon: Ancient Spirit",
       "availableLv": 22,
       "icon": "assets/icons/st-summon-ancient-spirit.png",

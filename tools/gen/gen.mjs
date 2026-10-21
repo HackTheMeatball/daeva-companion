@@ -110,19 +110,30 @@ export function generate(opts = {}) {
   const last = chain[chain.length - 1];
   check('story: last quest has an end marker and no next', !!last.end && last.next === null);
   for (const s of story) check('story id is sq:<gameId>: ' + s.name, s.id === 'sq:' + s.gameId);
-  /* [lv, name], and a third entry, the level it is turned in at, when turning it in there gives a full level (levelsUp
+  /* the save key is the id (0.9 P2, save v6: c.quest, storyEnd, qsteps, qsub), never the name, so a renamed quest keeps its progress */
+  for (const s of story) check('story save key is its id: ' + s.id, s.key === s.id, s.key);
+  /* [lv, key], and a third entry, the level it is turned in at, when turning it in there gives a full level (levelsUp
      { from }, 0.6 P19 / 0.8 P15: src/core/state.js levelOnTurnIn); levelsUp needs a source that names it, an owner screen
-     or a page, never the guide's own reasoning */
-  const QUESTS = chain.map(s => s.levelsUp ? [s.lv, s.name, s.levelsUp.from] : [s.lv, s.name]);
+     or a page, never the guide's own reasoning. The key (sq:<gameId>) is what the save stores; QUEST_NAME[key] is what
+     the page shows. Every story table below is keyed by it. */
+  const QUESTS = chain.map(s => s.levelsUp ? [s.lv, s.key, s.levelsUp.from] : [s.lv, s.key]);
+  const QUEST_NAME = Object.fromEntries(chain.map(s => [s.key, s.name]));
   for (const s of chain.filter(s => s.levelsUp)) {
     check(`${s.id}: levelsUp has its source (owner screen or page, fields: levelsUp)`, (s.sources || []).some(r => (r.owner || r.url) && (r.fields || []).includes('levelsUp')));
     check(`${s.id}: levelsUp.from is a level from 1 to 44`, Number.isInteger(s.levelsUp.from) && s.levelsUp.from >= 1 && s.levelsUp.from < 45, s.levelsUp.from);
   }
-  const sqName = id => { if (!sqById[id]) throw new Error('unknown story quest ' + id); return sqById[id].name; };
-  const QUEST_STEPS = Object.fromEntries(chain.filter(s => s.steps.length).map(s => [s.name, s.steps.map(x => x.text)]));
-  /* a step's own note (our line about it, e.g. a first Expedition run), by quest name and objective i. Kept out of QUEST_STEPS:
+  const sqKey = id => { if (!sqById[id]) throw new Error('unknown story quest ' + id); return sqById[id].key; };
+  const QUEST_STEPS = Object.fromEntries(chain.filter(s => s.steps.length).map(s => [s.key, s.steps.map(x => x.text)]));
+  /* each objective's save index (0.9 P2, save v6): its explicit i, in list order, for the quests where an i differs from its
+     position (src/core/requirements.js objKeys); qsteps / qsub store i, never the position, so an objective inserted
+     mid-list with a new i leaves every tick where it was. sub: the explicit save index of each of its sub-steps (the parts
+     the pack parses from the text, in order), when they differ from 0, 1, 2 … */
+  const QUEST_STEP_I = Object.fromEntries(chain.filter(s => s.steps.some((x, p) => x.i !== p)).map(s => [s.key, s.steps.map(x => x.i)]));
+  const QUEST_SUB_I = Object.fromEntries(chain.map(s => [s.key, Object.fromEntries(s.steps.filter(x => x.sub && x.sub.some((j, p) => j !== p)).map(x => [x.i, x.sub]))])
+    .filter(([, o]) => Object.keys(o).length));
+  /* a step's own note (our line about it, e.g. a first Expedition run), by quest key and objective position. Kept out of QUEST_STEPS:
      the objective text is parsed (sub-steps, Kibelisk, talk-only); the page shows the note after it (requirements.js objTextOf). */
-  const QUEST_STEP_NOTES = Object.fromEntries(chain.map(s => [s.name, Object.fromEntries(s.steps.filter(x => x.note).map(x => [x.i, x.note]))])
+  const QUEST_STEP_NOTES = Object.fromEntries(chain.map(s => [s.key, Object.fromEntries(s.steps.map((x, p) => [p, x.note]).filter(([, n]) => n))])
     .filter(([, o]) => Object.keys(o).length));
   for (const s of chain) for (const x of s.steps.filter(x => x.note)) {
     check(`${s.id} #${x.i}: a step note has its basis`, !!x.noteBasis);
@@ -135,15 +146,15 @@ export function generate(opts = {}) {
        quest's own label for it (0.9 P1), tagged after "near your story step" */
     if (s.turnin.zone) { o.turninZone = zones[s.turnin.zone].status === 'owner-check' ? '' : zname(s.turnin.zone); if (o.turninZone) Object.assign(o, withSt('turninZoneSt', tagSt(unverified(s, 'turnin.zone')))); }
     return o; };
-  const QUEST_LOC = Object.fromEntries(chain.map(s => [s.name, LOC(s)]).filter(([, o]) => Object.keys(o).length));
+  const QUEST_LOC = Object.fromEntries(chain.map(s => [s.key, LOC(s)]).filter(([, o]) => Object.keys(o).length));
   const X = chain.filter(s => s.lv > 40);   /* Lv 41-45: the v1 block's separate constants, kept for the page globals */
   const QUESTS_X = X.map(s => [s.lv, s.name]);
   const QUEST_STEPS_X = Object.fromEntries(X.map(s => [s.name, s.steps.map(x => x.text)]));
   const QUEST_LOC_X = Object.fromEntries(X.map(s => [s.name, LOC(s)]));
   const STORY_END = { quest: last.name, lv: last.lv, turnin: last.turnin.npc, place: last.turnin.place || last.turnin.kibelisk, region: last.end.region, regionFull: last.end.regionFull,
     next: last.end.next, nextLv: last.end.nextLv };
-  const STORY_UNLOCKS = Object.fromEntries(chain.filter(s => s.unlocks && s.unlocks.text).map(s => [s.name, s.unlocks.text]));
-  const UNLOCK_GATE = Object.fromEntries(chain.filter(s => s.unlocks).map(s => [s.name, s.unlocks.milestone]));
+  const STORY_UNLOCKS = Object.fromEntries(chain.filter(s => s.unlocks && s.unlocks.text).map(s => [s.key, s.unlocks.text]));
+  const UNLOCK_GATE = Object.fromEntries(chain.filter(s => s.unlocks).map(s => [s.key, s.unlocks.milestone]));
 
   /* ---------------------------------------------------------------- regional quests (RQ) */
   const shortItem = it => {
@@ -164,7 +175,7 @@ export function generate(opts = {}) {
     if (q.rewards.ap) its.unshift(`${Math.floor(q.rewards.ap / 1000)}k Abyss Points`);
     let place = q.giver.place || ''; if (place === zone) place = '';
     const row = { name: q.name, id: q.gameId, rec: q.rec, unlocksAt: q.unlocksAt, zone, place, npc: q.giver.npc || '', kib: q.giver.kibelisk, m: q.giver.meters,
-      after, story: st.length ? sqName(st[0].story) : null, ...(st.length && st[0].is === 'turnedIn' ? { turnedIn: true } : {}), reward: its.join(' · '), xp: q.rewards.xp ?? null, rw: { st: q.rewards.wisdom || 0, cr: q.rewards.crystal || 0 }, ...withSt('zoneSt', unverified(q, 'zone')) };
+      after, story: st.length ? sqKey(st[0].story) : null, ...(st.length && st[0].is === 'turnedIn' ? { turnedIn: true } : {}), reward: its.join(' · '), xp: q.rewards.xp ?? null, rw: { st: q.rewards.wisdom || 0, cr: q.rewards.crystal || 0 }, ...withSt('zoneSt', unverified(q, 'zone')) };
     if (q.requiresBasis === 'unresearched') row.noPre = 1;
     return row;
   });
@@ -196,12 +207,15 @@ export function generate(opts = {}) {
      source, its basis) keeps the "single source" tag */
   const rowSt = e => e.status ?? build.status;
   const SP_SKILLS_CORE = build.skillOrder.filter(e => e.core).map(e => { const s = sk(e.skill), picks = build.specialtyPicks[e.skill] || [], pick = picks[0];
-    return { n: s.name, learn: s.learnLv, ...withSt('learnSt', unverified(s, 'learnLv')), ...(pick ? { spec: choice(pick).label || choice(pick).text, specs: picks.map(p => ({ t: choice(p).label || choice(p).text, lv: choice(p).skillLv, ...spLabel(p) })) } : {}),
+    return { n: s.name, key: s.key, learn: s.learnLv, ...withSt('learnSt', unverified(s, 'learnLv')), ...(pick ? { spec: choice(pick).label || choice(pick).text, specs: picks.map(p => ({ t: choice(p).label || choice(p).text, lv: choice(p).skillLv, ...spLabel(p) })) } : {}),
       ...(s.type === 'passive' ? { passive: true } : {}), ...(s.levelGate === 'flat' ? { flat: true } : {}), ...withSt('st', tagSt(rowSt(e))) }; });
   const SP_EXTRA = build.skillOrder.filter(e => !e.core).map(e => { const s = sk(e.skill);
-    return { n: s.name, learn: s.learnLv, ...withSt('learnSt', unverified(s, 'learnLv')), ...(s.type === 'passive' ? { passive: true } : {}), ...(s.levelGate === 'flat' ? { flat: true } : {}),
+    return { n: s.name, key: s.key, learn: s.learnLv, ...withSt('learnSt', unverified(s, 'learnLv')), ...(s.type === 'passive' ? { passive: true } : {}), ...(s.levelGate === 'flat' ? { flat: true } : {}),
       ...(rowSt(e) === 'single-source' ? { single: e.basis.split(' (')[0] } : {}), ...withSt('st', tagSt(rowSt(e))) }; });
   const STIGMA_PLAN = build.stigmaSlots.map(id => stg(id).name);
+  /* a stigma's save key by its name (0.9 P2, save v6): stLv and stPick store the key, the cards show the name
+     (src/packs/aion2/requirements.js stKey / stName); a name typed for another stigma is stored as typed */
+  const STIGMA_KEY = Object.fromEntries(stigmas.map(s => [s.name, s.key]));
   const ST_TARGETS = build.stigmaTargets.map(t => [stg(t.stigma).name, t.level]);
   /* the stigma plan's one label (0.9 P1): the whole list shares it, so the Stigmas card tags its heading, not each row */
   const STIGMA_ST = tagSt(unverified(build, 'stigmaSlots')) || tagSt(unverified(build, 'stigmaTargets'));
@@ -292,11 +306,11 @@ export function generate(opts = {}) {
     if (s.storyQuest) it.byStory = true;
     if (s.short) it.ns = buildTok(s.short);
     for (const a of at) {
-      if (a.is === 'turnedIn') { it.story = sqName(a.story); it.turnedIn = sqName(a.story); }
-      else if (s.stigmaSlot) it.after = sqName(a.story);   /* a stigma equip step shows no story chip (v1 "after") */
-      else it.story = sqName(a.story);
+      if (a.is === 'turnedIn') { it.story = sqKey(a.story); it.turnedIn = sqKey(a.story); }
+      else if (s.stigmaSlot) it.after = sqKey(a.story);   /* a stigma equip step shows no story chip (v1 "after") */
+      else it.story = sqKey(a.story);
     }
-    if (s.storyQuest) check('byStory step requires its own quest: ' + s.id, it.story === sqName(s.storyQuest));
+    if (s.storyQuest) check('byStory step requires its own quest: ' + s.id, it.story === sqKey(s.storyQuest));
     /* a Route rules step with a level atom shows from that level on (src/cards/route.js asks the evaluator); it.lv carries the
        level for the tests' tick picking, as on milestone items; other kinds of atom keep today's behaviour */
     if (milestones.some(m => m.id === s.milestone && m.kind === 'routeRule')) { const lv = Math.max(0, ...atomsOf(s.requires).filter(a => typeof a.level === 'number').map(a => a.level)); if (lv) it.lv = lv; }
@@ -422,6 +436,13 @@ export function generate(opts = {}) {
   { const keys = {}; for (const { r, coll } of all) if (r.key !== undefined && !['items', 'tips', 'skills', 'stigmas'].includes(coll)) { if (r.key in keys) check('save key unique: ' + r.key, false, [keys[r.key], coll]); keys[r.key] = coll; }
     for (const e of build.boardPlan) if (e.key) { if (e.key in keys) check('save key unique: ' + e.key, false); keys[e.key] = 'boardPlan'; }
     for (const m of milestones) for (const x of m.items || []) { if (x.key in keys) check('save key unique: ' + x.key, false); keys[x.key] = 'milestone items'; }
+    /* skills and stigmas (0.9 P2, save v6): a skill's points are sp:<key>:<L>, a stigma's level and pick are its key in
+       stLv / stPick; each key is its id's last segment, so a renamed skill or stigma keeps its ticks */
+    for (const { r, coll } of all) if (coll === 'skills' || coll === 'stigmas') {
+      check(`${r.id}: save key is the id's last segment`, r.key === r.id.split(':').pop(), r.key);
+      const k = (coll === 'skills' ? 'sp:' : 'stigma ') + r.key;
+      if (k in keys) check('save key unique: ' + k, false, [keys[k], coll]); keys[k] = coll;
+    }
     const ret = new Set((B.retired ? B.retired.keys : []).map(x => x.key));
     for (const k of Object.keys(keys)) check('retired key never reused: ' + k, !ret.has(k)); }
   /* references */
@@ -483,8 +504,13 @@ export function generate(opts = {}) {
     for (const t of c.appliesTo || []) if (!t.startsWith('page:') && !t.startsWith('conf:') && !milestones.some(m => m.id === t)) { const x = all.find(y => y.r.id === t); check(`claim ${c.id} -> ${t} resolves and lists it`, x && (x.r.claims || []).includes(c.id)); }
   }
   for (const { r } of all) for (const cid of r.claims || []) check(`${r.id}: claim ${cid} names it in appliesTo`, (claimById[cid] && (claimById[cid].appliesTo || []).includes(r.id)));
-  /* i: dense from 0, never renumbered (positions are save indices; a pack checks its own, e.g. AION 2's choice n) */
-  for (const { r } of all) if (Array.isArray(r.steps)) check(`${r.id}: objective i = position`, r.steps.every((s, i) => s.i === i));
+  /* i: the objective's save index (0.9 P2, save v6), explicit in the data, unique within its quest and never reused: an
+     objective inserted mid-list takes a new i, so every tick stays where it was; sub: its sub-steps' save indices, unique */
+  const dupFree = xs => new Set(xs).size === xs.length;
+  for (const { r } of all) if (Array.isArray(r.steps)) {
+    check(`${r.id}: objective i unique`, dupFree(r.steps.map(s => s.i)), r.steps.map(s => s.i));
+    for (const s of r.steps.filter(s => s.sub)) check(`${r.id} #${s.i}: sub-step i unique`, dupFree(s.sub), s.sub);
+  }
   /* a location whose place is a village zone's name (Aldelle, Black Claw) sits in that village (0.2.4, issue #98). Villages
      only: a place named after a wider zone (Southern Gribade Highland, Spirit Isle) can sit in a neighbour's zone */
   { const zoneOfName = Object.fromEntries(Object.values(zones).filter(z => / Village$/.test(z.name)).map(z => [z.name, z.id]));
@@ -670,8 +696,8 @@ export function generate(opts = {}) {
   const failed = report.checks.filter(c => !c.pass);
   /* ---------------------------------------------------------------- the module */
   const C = { RQ, RQ_STATS, QUESTS_X, QUEST_STEPS_X, QUEST_LOC_X, STORY_END, SH_DATA, AREA_LOC, SD_RW, SP_EXTRA, DV_BOARDS, SOURCES, SRC_SITE, CONF,
-    QUESTS, QUEST_STEPS, QUEST_STEP_NOTES, QUEST_LOC, STORY_UNLOCKS, UNLOCK_GATE, VERIFIED_UNLOCKS, HOTKEYS, TERMS, ASCENSION, GUIDE_GATES, GUIDE_STEPS, TIPS, ITEMS, HIDEOUT_AREA, ZONE_TRACES, SD_REWARD, SH_REWARD,
-    STAT_TIERS, STAT_SRC, STAT_NOTE, STIGMA_PLAN, ST_TARGETS, STIGMA_ST, SP_SKILLS_CORE, LEVEL_POINTS, RMB_ROWS, E_ORDER, KEYS, KEYS_ST, SP_ICONS, STIGMA_ICON,
+    QUESTS, QUEST_NAME, QUEST_STEPS, QUEST_STEP_I, QUEST_SUB_I, QUEST_STEP_NOTES, QUEST_LOC, STORY_UNLOCKS, UNLOCK_GATE, VERIFIED_UNLOCKS, HOTKEYS, TERMS, ASCENSION, GUIDE_GATES, GUIDE_STEPS, TIPS, ITEMS, HIDEOUT_AREA, ZONE_TRACES, SD_REWARD, SH_REWARD,
+    STAT_TIERS, STAT_SRC, STAT_NOTE, STIGMA_PLAN, STIGMA_KEY, ST_TARGETS, STIGMA_ST, SP_SKILLS_CORE, LEVEL_POINTS, RMB_ROWS, E_ORDER, KEYS, KEYS_ST, SP_ICONS, STIGMA_ICON,
     RULE_SKILL_POINT_COST, RULE_SPEC_SLOTS, RULE_NODE_COSTS, RULE_SHARD_COST, GAME_CLASSES };
   const J = v => JSON.stringify(v);
   const module = '/* Generated by tools/gen/gen.mjs from data/** (data format v2). Not stored: the build makes it on every run. */\n' +

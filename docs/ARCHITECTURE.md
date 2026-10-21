@@ -38,12 +38,20 @@ no server copy. Rules:
 
 > **Pre-1.0 exception (owner, 2026-10-16):** there are no real players yet, so a change may break saves for a better
 > design. Do it cleanly: bump the storage key (`companion-save-v5` → `-v6`) so the app starts fresh, never read or
-> crash on an old save, and note it in the CHANGELOG. See CLAUDE.md. 0.4 (P3c) made one such break: save v5. The rules
-> below are the strict rules that return at 1.0.
+> crash on an old save, and note it in the CHANGELOG. See CLAUDE.md. 0.4 (P3c) made one such break: save v5; 0.9 (P2)
+> the last one: save v6, keys from stable ids. The rules below are the strict rules that return at 1.0.
 
-- **The storage key is `companion-save-v5`** (0.4 P3c; `…:before-import` holds the state an import replaced). No
-  game, class or player name in it. The 0.3 key `aion2-assassin-route-v4` is never read (not to migrate, detect or
-  warn); its data stays in storage untouched. From 1.0 the key is kept forever.
+- **The storage key is `companion-save-v6`** (0.9 P2; `…:before-import` holds the state an import replaced). No
+  game, class or player name in it. The keys before it, `aion2-assassin-route-v4` (0.3) and `companion-save-v5`
+  (0.4 to 0.8), are never read (not to migrate, detect or warn); their data stays in storage untouched. From 1.0 the
+  key is kept forever.
+- **Save keys come from stable ids, never from a name or a position** (0.9 P2). A story quest is stored by its id
+  (`sq:<gameId>`: `quest`, `storyEnd`, the keys of `qsteps` / `qsub`); an objective by its explicit `i` and a sub-step
+  by its explicit index (`sub`) in the data, unique within the quest and never reused, so an objective inserted
+  mid-list takes a new `i` (the page maps list positions to them: `objDoneOf` / `setObjDone` / `subDoneOf` /
+  `setSubDone` in `src/core/requirements.js`); a skill's points by its key, the id's last segment
+  (`sp:<key>:<L>`); a stigma's level and pick by its key (`stLv`, `stPick`; a name typed for another stigma is kept as
+  typed). The generator checks each (`tools/gen/gen.mjs`); the page shows names (`questNameOf`, `stName`).
 - **Item keys are permanent.** A key that is removed is retired, never reused for something else (`retired.json` in
   each pack lists them: `g45:1`, `g45:0`, `hold:0`, the position keys replaced in E1, …).
 - **Migrations only add** (from 1.0). They copy or tick, set a one-time flag, and leave the old data in place, so an
@@ -55,7 +63,7 @@ no server copy. Rules:
 
 ### State
 
-`state` is one JSON object, loaded at startup by `loadState(text, { now, newId })` (`src/core/state.js`): a v5 save is laid
+`state` is one JSON object, loaded at startup by `loadState(text, { now, newId })` (`src/core/state.js`): a v6 save is laid
 over the defaults (`DEFAULT()`, and `CHAR_DEFAULT()` under each character); anything else (no save, unreadable text,
 another shape, a pre-0.4 save) gives a new save with one empty slot (`newSave`, the id from `newId`,
 `src/shell/ids.js`: `crypto.randomUUID()`, else a v4 UUID from `getRandomValues`). It is written back by `save()` after every change. Every write (`save()` and the one-time steps below) goes through `storeState()`, which shows the
@@ -73,10 +81,10 @@ The only other localStorage key is `…:before-import` (see Import below). On th
 `navigator.storage.persist()` when it loaded saved progress, at most once per browser session (flag in
 `sessionStorage`, so the localStorage keys stay as they are; the `golden` suite records them).
 
-Shape (save v5):
+Shape (save v6):
 
 ```
-{ v: 5, savedAt, current: <slot id>, chars: { <slot id>: { id, pack, class, name, created, ...charFields() } },
+{ v: 6, savedAt, current: <slot id>, chars: { <slot id>: { id, pack, class, name, created, ...charFields() } },
   mode, open, hide, hideCards, hideOpt, areaLv, …, backup }
 ```
 
@@ -98,13 +106,13 @@ every reader of `chars` skips tombstones (`isRemoved`, `liveChars` in `src/core/
 
 | Field | Meaning |
 |---|---|
-| `v`, `savedAt`, `current`, `chars{id: character}` | save version (5), time of the last saved progress change (ms), the current slot, the slots |
+| `v`, `savedAt`, `current`, `chars{id: character}` | save version (6), time of the last saved progress change (ms), the current slot, the slots |
 | character: `checks{key: bool}` | every tick: milestone steps, regional quests, dungeons, strongholds, skill levels, board nodes |
 | character: `started{key: 1}` / `areaRun{key: ms}` | regional quest in progress / Sealed Dungeon run started (two-click boxes) |
 | character: `level`, `quest`, `storyEnd` | character level (changes only via Level up / − / + / slider), current main story quest, end-of-data marker |
-| character: `qsteps{quest: [i]}`, `qsub{quest: {i: [j]}}` | story objective ticks, keyed by **quest name** |
+| character: `qsteps{quest: [i]}`, `qsub{quest: {i: [j]}}` | story objective ticks, keyed by the **quest id** (`sq:<gameId>`), each tick the objective's and sub-step's explicit index |
 | character: `rqSnooze{key: level}` | "Not in game yet" snoozes (cleared by Level up / prerequisite turned in) |
-| character: `stLv{name: lv}`, `stShards`, `stPick{slot: name}` | stigma levels, shards, the stigma picked per slot |
+| character: `stLv{stigma key: lv}`, `stShards`, `stPick{slot: stigma key}` | stigma levels, shards, the stigma picked per slot |
 | character: `stones`, `pendSt`, `pendCr`, `dvTotal`, `dvCost{key: n}`, `dvAdj`, `dvLast…` | Wisdom Stones / pending Cube items / Daevanion points and node costs |
 | character: `mt` | per-item change times (see Change times below) |
 | `mode` (`basic`/`advanced`), `open{id}`, `hide`, `hideCards`, `hideOpt`, `areaLv`, … | view settings (per device) |
@@ -123,7 +131,7 @@ from the start. Rename and remove come with P19.
 stamps (`null` = removed). Stamps are not written at each mutation: `storeState()` calls `stampSave()`, which diffs the
 character against `mt` and stamps what changed with the write's time, bumped past the item's previous stamp (per-item
 Lamport bump, so a device with a slow clock still wins with a newer edit), and sets `savedAt`; writes that change only
-view settings leave `savedAt` alone, so a reload stores the same text. A v5 save is born with `mt` (the fresh start
+view settings leave `savedAt` alone, so a reload stores the same text. A v6 save is born with `mt` (the fresh start
 stamps its defaults at time 0). `merge(local, remote)` (not used by the UI yet) works per slot id: a slot on one side
 only is kept, a slot on both sides keeps the later change per item; a slot's newest removal (a tombstone, or a revived
 character's `removedAt`) drops every item changed at or before it, so only edits made after a removal bring a character

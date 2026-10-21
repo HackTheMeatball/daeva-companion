@@ -6,7 +6,7 @@
   "records": [
     {
       "id": "skill:gladiator:aerial-snare",
-      "key": "Aerial Snare",
+      "key": "aerial-snare",
       "name": "Aerial Snare",
       "type": "active",
       "learnLv": 12,
@@ -68,7 +68,7 @@
     },
     {
       "id": "skill:gladiator:ankle-slice",
-      "key": "Ankle Slice",
+      "key": "ankle-slice",
       "name": "Ankle Slice",
       "type": "active",
       "learnLv": 7,
@@ -130,7 +130,7 @@
     },
     {
       "id": "skill:gladiator:attack-preparation",
-      "key": "Attack Preparation",
+      "key": "attack-preparation",
       "name": "Attack Preparation",
       "type": "passive",
       "learnLv": 13,
@@ -162,7 +162,7 @@
     },
     {
       "id": "skill:gladiator:blood-absorption",
-      "key": "Blood Absorption",
+      "key": "blood-absorption",
       "name": "Blood Absorption",
       "type": "passive",
       "learnLv": 9,
@@ -190,7 +190,7 @@
     },
     {
       "id": "skill:gladiator:crushing-wave",
-      "key": "Crushing Wave",
+      "key": "crushing-wave",
       "name": "Crushing Wave",
       "type": "active",
       "learnLv": 8,
@@ -271,7 +271,7 @@
     },
     {
       "id": "skill:gladiator:defiance",
-      "key": "Defiance",
+      "key": "defiance",
       "name": "Defiance",
       "type": "active",
       "learnLv": 16,
@@ -335,7 +335,7 @@
     },
     {
       "id": "skill:gladiator:destructive-impulse",
-      "key": "Destructive Impulse",
+      "key": "destructive-impulse",
       "name": "Destructive Impulse",
       "type": "passive",
       "learnLv": 17,
@@ -363,7 +363,7 @@
     },
     {
       "id": "skill:gladiator:experienced-counterstrike",
-      "key": "Experienced Counterstrike",
+      "key": "experienced-counterstrike",
       "name": "Experienced Counterstrike",
       "type": "passive",
       "learnLv": 21,
@@ -392,7 +392,7 @@
     },
     {
       "id": "skill:gladiator:identify-weakness",
-      "key": "Identify Weakness",
+      "key": "identify-weakness",
       "name": "Identify Weakness",
       "type": "passive",
       "learnLv": 11,
@@ -420,7 +420,7 @@
     },
     {
       "id": "skill:gladiator:impact-hit",
-      "key": "Impact Hit",
+      "key": "impact-hit",
       "name": "Impact Hit",
       "type": "passive",
       "learnLv": 15,
@@ -451,7 +451,7 @@
     },
     {
       "id": "skill:gladiator:keen-strike",
-      "key": "Keen Strike",
+      "key": "keen-strike",
       "name": "Keen Strike",
       "type": "active",
       "learnLv": 1,
@@ -532,7 +532,7 @@
     },
     {
       "id": "skill:gladiator:leaping-slam",
-      "key": "Leaping Slam",
+      "key": "leaping-slam",
       "name": "Leaping Slam",
       "type": "active",
       "learnLv": 1,
@@ -594,7 +594,7 @@
     },
     {
       "id": "skill:gladiator:mocking-blade",
-      "key": "Mocking Blade",
+      "key": "mocking-blade",
       "name": "Mocking Blade",
       "type": "active",
       "learnLv": 3,
@@ -675,7 +675,7 @@
     },
     {
       "id": "skill:gladiator:murderous-burst",
-      "key": "Murderous Burst",
+      "key": "murderous-burst",
       "name": "Murderous Burst",
       "type": "passive",
       "learnLv": 25,
@@ -704,7 +704,7 @@
     },
     {
       "id": "skill:gladiator:overhead-slam",
-      "key": "Overhead Slam",
+      "key": "overhead-slam",
       "name": "Overhead Slam",
       "type": "active",
       "learnLv": 4,
@@ -785,7 +785,7 @@
     },
     {
       "id": "skill:gladiator:protection-armor",
-      "key": "Protection Armor",
+      "key": "protection-armor",
       "name": "Protection Armor",
       "type": "passive",
       "learnLv": 6,
@@ -813,7 +813,7 @@
     },
     {
       "id": "skill:gladiator:rending-blow",
-      "key": "Rending Blow",
+      "key": "rending-blow",
       "name": "Rending Blow",
       "type": "active",
       "learnLv": 1,
@@ -875,7 +875,7 @@
     },
     {
       "id": "skill:gladiator:ruinous-blow",
-      "key": "Ruinous Blow",
+      "key": "ruinous-blow",
       "name": "Ruinous Blow",
       "type": "active",
       "learnLv": 14,
@@ -937,7 +937,7 @@
     },
     {
       "id": "skill:gladiator:rush-strike",
-      "key": "Rush Strike",
+      "key": "rush-strike",
       "name": "Rush Strike",
       "type": "active",
       "learnLv": 10,
@@ -999,7 +999,7 @@
     },
     {
       "id": "skill:gladiator:survival-stance",
-      "key": "Survival Stance",
+      "key": "survival-stance",
       "name": "Survival Stance",
       "type": "passive",
       "learnLv": 1,
@@ -1027,7 +1027,7 @@
     },
     {
       "id": "skill:gladiator:survival-willpower",
-      "key": "Survival Willpower",
+      "key": "survival-willpower",
       "name": "Survival Willpower",
       "type": "passive",
       "learnLv": 23,
@@ -1058,7 +1058,7 @@
     },
     {
       "id": "skill:gladiator:sword-aura-rampage",
-      "key": "Sword Aura Rampage",
+      "key": "sword-aura-rampage",
       "name": "Sword Aura Rampage",
       "type": "active",
       "learnLv": 5,

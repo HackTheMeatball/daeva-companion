@@ -10,7 +10,7 @@ const { toStored } = createRequire(import.meta.url)('../support/save.js');
 const S = (o = {}) => ({ checks: {}, level: 5, hide: false, open: {}, quest: '', ...o }), SV = o => toStored(S(o));
 
 export default (test, M) => {
-  const qAt = n => M.QUESTS[M.storyIdx(n)][1], qBefore = n => M.QUESTS[M.storyIdx(n) - 1][1];
+  const kq = n => n in M.QUEST_NAME ? n : M.sq(n), qAt = n => M.QUESTS[M.storyIdx(kq(n))][1], qBefore = n => M.QUESTS[M.storyIdx(kq(n)) - 1][1];
   test('story index and current quest', () => {
     assert.equal(M.storyIdx(M.QUESTS[7][1]), 7); assert.equal(M.questIdx(S()), -1); assert.equal(M.questIdx(S({ quest: M.QUESTS[7][1] })), 7);
     assert.equal(M.questIdx(S({ quest: 'Not a quest' })), -1);
@@ -66,7 +66,7 @@ export default (test, M) => {
   });
   test('open steps: a step that is a story quest (byStory) is never offered (the story card and "Turned in" cover it)', () => {
     const g6 = M.GATES.find(g => g.id === 'g6'), q = 'The Being Beneath the Lake';
-    for (const quest of [qBefore(q), q, M.QUESTS[M.storyIdx(q) + 1][1]]) assert.ok(!M.openSteps(SV({ level: 6, quest }), g6).some(x => x.k === 'g6:0'), quest);
+    for (const quest of [qBefore(q), q, M.QUESTS[M.storyIdx(M.sq(q)) + 1][1]]) assert.ok(!M.openSteps(SV({ level: 6, quest }), g6).some(x => x.k === 'g6:0'), quest);
   });
   test('skill points: level table + Wisdom Stones − ticked lines', () => {
     assert.deepEqual(M.skillPoints(S({ level: 12 })), { fromLevels: 24, stones: 0, spent: 0, pts: 24 });
@@ -97,18 +97,18 @@ export default (test, M) => {
     assert.equal(M.dvSpent(S({ checks: { [n.k]: true } })), 9);
     assert.equal(M.dvSpent(S({ dvCost: { [n.k]: 0 }, checks: { [n.k]: true } })), 0, 'a logged 0 wins over the plan');
     /* E5: the Daevanion gate, "Urgent Pursuit" turned in (unlock:daevanion), on top of the board level */
-    const past = M.QUESTS[M.QUESTS.findIndex(([, q]) => q === 'Urgent Pursuit') + 1][1];
+    const past = M.QUESTS[M.QUESTS.findIndex(([, q]) => q === M.sq('Urgent Pursuit')) + 1][1];
     assert.equal(M.dvNext(S({ quest: past }), 11), undefined); assert.equal(M.dvNext(S({ quest: past }), 12), n);
-    assert.equal(M.dvNext(S(), 12), undefined, 'story unset'); assert.equal(M.dvNext(S({ quest: 'Urgent Pursuit' }), 12), undefined, 'on it, not turned in');
+    assert.equal(M.dvNext(S(), 12), undefined, 'story unset'); assert.equal(M.dvNext(S({ quest: M.sq('Urgent Pursuit') }), 12), undefined, 'on it, not turned in');
   });
   test('stigma slots: picks, duplicates fall back to the plan', () => {
     const P = M.STIGMA_PLAN;
     assert.deepEqual(M.slotNames(S()), P);
-    assert.deepEqual(M.slotNames(S({ stPick: { 1: P[1], 2: P[1] } })), [P[1], P[0], P[2], P[3]]);
+    assert.deepEqual(M.slotNames(S({ stPick: { 1: M.stKey(P[1]), 2: M.stKey(P[1]) } })), [P[1], P[0], P[2], P[3]]);
     assert.deepEqual(M.stigmaSlots(S()).map(x => [x.n, x.lv]), [[1, 22], [2, 27], [3, 32], [4, 37]]);
   });
   test('stigma plan: equipped stigmas up to their targets, shard cost per level', () => {
-    const s = S({ checks: { 'g22:1': true }, stLv: { [M.STIGMA_PLAN[0]]: 8 } });
+    const s = S({ checks: { 'g22:1': true }, stLv: { [M.stKey(M.STIGMA_PLAN[0])]: 8 } });
     assert.deepEqual(M.stigmaPlan(s).map(x => [x.x.name, x.L, x.cost]), [[M.STIGMA_PLAN[0], 9, 2], [M.STIGMA_PLAN[0], 10, 2]]);
   });
   test('F5: learning a stigma is its level 1 and costs 1 point; the plan counts it (owner-confirmed)', () => {

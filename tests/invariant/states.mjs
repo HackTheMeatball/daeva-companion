@@ -26,8 +26,8 @@ const mulberry32 = a => () => { a |= 0; a = (a + 0x6D2B79F5) | 0; let t = Math.i
 const pad = (n, w = 2) => String(n).padStart(w, '0');
 
 /* the catalog the golden generator reads, from the core bundle M (as tests/equiv does) */
-export const catalogOf = M => new Function('QUESTS', 'QUEST_STEPS', 'GATES', 'STEPS', 'RQ', 'AREA_ITEMS', 'SP_STEPS', 'STIGMA_PLAN', 'STIGMA_SLOTS', 'DV_NODES', `return (${catalogInPage})();`)(
-  M.QUESTS, M.QUEST_STEPS, M.GATES, M.STEPS, M.RQ, M.AREA_ITEMS, M.SP_STEPS, M.STIGMA_PLAN, () => M.stigmaSlots({}), M.DV_NODES);
+export const catalogOf = M => new Function('QUESTS', 'QUEST_NAME', 'QUEST_STEPS', 'GATES', 'STEPS', 'RQ', 'AREA_ITEMS', 'SP_STEPS', 'STIGMA_PLAN', 'STIGMA_SLOTS', 'DV_NODES', `return (${catalogInPage})();`)(
+  M.QUESTS, M.QUEST_NAME, M.QUEST_STEPS, M.GATES, M.STEPS, M.RQ, M.AREA_ITEMS, M.SP_STEPS, M.STIGMA_PLAN, () => M.stigmaSlots({}), M.DV_NODES);
 
 export function makeStates(M, { root, seed }) {
   const C = catalogOf(M), NQ = C.quests.length, out = new Map();
@@ -69,7 +69,7 @@ export function makeStates(M, { root, seed }) {
     const qi = NQ - 1, checks = t === 'none' ? {} : Object.fromEntries(keys.map(k => [k, true]));
     add(`target/story-end/L${lv}-${qid(qi)}-${t}`, { ...base(lv, qi, checks, 'advanced'), storyEnd: C.quests[qi][1] });
   }
-  { const up = qIdx('Urgent Pursuit'); if (up < 0) throw new Error('states: "Urgent Pursuit" is not on the chain');
+  { const up = qIdx(M.sq('Urgent Pursuit')); if (up < 0) throw new Error('states: "Urgent Pursuit" is not on the chain');
     for (const qi of [up - 1, up, up + 1]) for (const lv of [11, 12, 13]) for (const t of ['none', 'before']) for (const b of ['none', 'dv']) {
       const st = base(lv, qi, t === 'none' ? {} : keptUp(lv, qi), 'advanced');
       if (b === 'dv') { st.dvCost = Object.fromEntries(C.dvNodes.map((n, i) => [n.k, 1 + i % 4])); st.dvTotal = 40; }

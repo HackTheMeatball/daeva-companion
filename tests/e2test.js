@@ -39,7 +39,8 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
   const b = await chromium.launch(); const ctx = await b.newContext({ viewport: { width: 1500, height: 1000 } }); const p = await ctx.newPage();
   const errs = [], reqs = new Set(); p.on('pageerror', e => errs.push(e.message)); p.on('request', r => { const u = r.url(); if (!/^(file|data|blob):/.test(u) && !u.startsWith(require('./config').BASE + '/')) reqs.add(u.split('?')[0]); /* same origin = local, like file:// */ });
   await p.goto(FILE); await p.waitForTimeout(300);
-  const QUESTS = await p.evaluate(() => QUESTS);
+  /* save v6 (0.9 P2): the page's QUESTS rows are [lv, story key, from]; here [lv, name, from], as the data and liveState name them */
+  const QUESTS = await p.evaluate(() => QUESTS.map(([lv, k, ...r]) => [lv, QUEST_NAME[k], ...r]));
 
   /* 1. Regional quests in Next up: only when unlock level + story + regional prerequisites are met (locked follow-ups only as "→" under a shown prerequisite) */
   const idOf = n => RQ.find(r => r.name === n).id;
@@ -136,22 +137,23 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
   ok('no dungeon XP in Next up dungeon cards, Dungeons & Strongholds or AREA_LOC (Lv 15–45)', !xp.length, xp);
   ok('page source has no dungeon XP text', !/XP \(exploration\)|xp": \d/.test(SRC.replace(/(?:const|var) RQ = \[[\s\S]*?\n\];/, '') /* esbuild prints top-level const as var */));
   /* 5. Story chain continuous to Daeva Trapped in a Nightmare (0.3 E10); end-of-data state */
-  const sc5 = await p.evaluate(() => { const i0 = QUESTS.findIndex(x => x[1] === 'A New Lead'), tail = QUESTS.slice(i0);
-    return { lvSorted: QUESTS.every((x, i) => !i || QUESTS[i - 1][0] <= x[0]), missingSteps: tail.filter(([, n]) => !QUEST_STEPS[n]).map(x => x[1]), last: QUESTS[QUESTS.length - 1], afterSoL: QUESTS[QUESTS.findIndex(x => x[1] === 'Symbol of Liberation') + 1], dup: QUESTS.length - new Set(QUESTS.map(x => x[1])).size, loc45: QUESTS.filter(x => x[0] > 40).every(([, n]) => QUEST_LOC[n] && QUEST_LOC[n].giverKib && (QUEST_LOC[n].turninKib || n === 'Blood Barrier') || n === 'Daeva Trapped in a Nightmare') }; });
+  /* save v6 (0.9 P2): QUESTS rows and QUEST_STEPS / QUEST_LOC are keyed by the story key; QN rows are [lv, name, key] */
+  const sc5 = await p.evaluate(() => { const QN = QUESTS.map(([l, k]) => [l, QUEST_NAME[k], k]), i0 = QN.findIndex(x => x[1] === 'A New Lead'), tail = QN.slice(i0);
+    return { lvSorted: QUESTS.every((x, i) => !i || QUESTS[i - 1][0] <= x[0]), missingSteps: tail.filter(([, , k]) => !QUEST_STEPS[k]).map(x => x[1]), last: QN[QN.length - 1].slice(0, 2), afterSoL: QN[QN.findIndex(x => x[1] === 'Symbol of Liberation') + 1], dup: QN.length - new Set(QN.map(x => x[1])).size + QUESTS.length - new Set(QUESTS.map(x => x[1])).size, loc45: QN.filter(x => x[0] > 40).every(([, n, k]) => QUEST_LOC[k] && QUEST_LOC[k].giverKib && (QUEST_LOC[k].turninKib || n === 'Blood Barrier') || n === 'Daeva Trapped in a Nightmare') }; });
   let chain = 'Daybreak Society', order = []; while (chain) { order.push(chain); chain = S45[chain].next; }
   const qNames = QUESTS.map(x => x[1]), i0 = qNames.indexOf('Symbol of Liberation');
   ok('story chain continuous: Symbol of Liberation → … → Daeva Trapped in a Nightmare matches the data\'s next links (Lv 41–45)', JSON.stringify(qNames.slice(i0 + 1)) === JSON.stringify(order) && sc5.last[1] === 'Daeva Trapped in a Nightmare' && sc5.last[0] === 45, { tail: qNames.slice(i0 + 1), order });
   ok('every story quest from "A New Lead" on has objectives; levels non-decreasing; no duplicates; Lv 41–45 Kibelisks', !sc5.missingSteps.length && sc5.lvSorted && !sc5.dup && sc5.loc45, sc5); /* Blood Barrier: Metabot gives no turn-in Kibelisk; Daeva Trapped: no giver on Metabot, the owner's lookup names the place only (C41) */
   await setState(p, { L: 40, q: 'Symbol of Liberation' });
   await p.evaluate(() => [...document.querySelectorAll('#nowStar [data-now="story"]')].pop().click()); await p.waitForTimeout(900);
-  ok('"Turned in" on Symbol of Liberation moves to Daybreak Society', await p.evaluate(() => char(state).quest === 'Daybreak Society' && !char(state).storyEnd));
+  ok('"Turned in" on Symbol of Liberation moves to Daybreak Society', await p.evaluate(() => questNameOf(char(state).quest) === 'Daybreak Society' && !char(state).storyEnd));
   await setState(p, { L: 40, q: 'Symbol of Liberation', extra: { storyEnd: 'Symbol of Liberation' } });
-  ok('an E1 end-of-data save (storyEnd at Symbol of Liberation) moves on to Daybreak Society at load', await p.evaluate(() => char(state).quest === 'Daybreak Society' && !char(state).storyEnd));
+  ok('an E1 end-of-data save (storyEnd at Symbol of Liberation) moves on to Daybreak Society at load', await p.evaluate(() => questNameOf(char(state).quest) === 'Daybreak Society' && !char(state).storyEnd));
   for (const mode of ['advanced', 'basic']) {
     await setState(p, { L: 45, q: 'Daeva Trapped in a Nightmare', mode });
     const before = await p.evaluate(() => document.getElementById('questStatus').innerText);
     await p.evaluate(() => [...document.querySelectorAll('#nowStar [data-now="story"]')].pop().click()); await p.waitForTimeout(900);
-    const end = async () => p.evaluate(() => ({ end: char(state).storyEnd, q: char(state).quest, card: [...document.querySelectorAll('#nowStar .ns-card')].map(c => c.innerText).find(t => /Lv 45 story complete/.test(t)) || '', btn: !!document.querySelector('#nowStar [data-now="story"]'), status: document.getElementById('questStatus').innerText }));
+    const end = async () => p.evaluate(() => ({ end: questNameOf(char(state).storyEnd), q: questNameOf(char(state).quest), card: [...document.querySelectorAll('#nowStar .ns-card')].map(c => c.innerText).find(t => /Lv 45 story complete/.test(t)) || '', btn: !!document.querySelector('#nowStar [data-now="story"]'), status: document.getElementById('questStatus').innerText }));
     let e = await end();
     ok(`${mode}: last quest before turn-in says where it turns in`, /Last story quest in the guide · turns in to Nemon at Outskirts Stall/.test(before), before);
     ok(`${mode}: end state reads "Lv 45 story complete — next in game: …"; no dead Turned in`, e.end === 'Daeva Trapped in a Nightmare' && /Lv 45 story complete/.test(e.card) && /Next in game: "Waiting for the Next Journey" at Lv 46/.test(e.card) && !e.btn && /Lv 45 story complete — next in game: "Waiting for the Next Journey" at Lv 46/.test(e.status), e);

@@ -10,7 +10,7 @@ const { toStored } = createRequire(import.meta.url)('../support/save.js');
 const S = (o = {}) => toStored({ checks: {}, level: 45, hide: false, open: {}, quest: '', mode: 'advanced', ...o });
 
 export default (test, M) => {
-  const Q = n => { const i = M.QUESTS.findIndex(q => q[1] === n); assert.ok(i >= 0, n); return i; };
+  const Q = n => { const i = M.QUESTS.findIndex(q => q[1] === n || M.QUEST_NAME[q[1]] === n); assert.ok(i >= 0, n); return i; };
   const at = (n, d = 0) => M.QUESTS[Q(n) + d][1];
   const ALL = Object.keys(M.GATE_CHANGES);
   const withChanges = (names, fn) => { const on = ALL.filter(M.gateChangeOn); M.setGateChanges(names); try { return fn(); } finally { M.setGateChanges(on); } };
@@ -53,23 +53,23 @@ export default (test, M) => {
     /* g12's furthest story quest is "Cemetery Cleanup" (Spooky Specters under it waits for its turn-in, #73) */
     const g12 = M.GATES.find(g => g.id === 'g12'), up = 'Urgent Pursuit', cc = 'Cemetery Cleanup';
     const L = o => M.storyLineOf(C(o), g12);
-    assert.deepEqual(L({ quest: cc, level: 13 }), { q: cc, turnIn: true, ok: false, ahead: 1, chip: 'your current quest — turn it in' });
-    assert.deepEqual(L({ quest: at(cc, -2), level: 13 }), { q: cc, turnIn: true, ok: false, ahead: 3, chip: '2 quests ahead' });
-    assert.deepEqual(L({ quest: at(cc, 1), level: 13 }), { q: cc, turnIn: true, ok: true, ahead: 0, chip: 'turned in' });
+    assert.deepEqual(L({ quest: cc, level: 13 }), { q: M.sq(cc), turnIn: true, ok: false, ahead: 1, chip: 'your current quest — turn it in' });
+    assert.deepEqual(L({ quest: at(cc, -2), level: 13 }), { q: M.sq(cc), turnIn: true, ok: false, ahead: 3, chip: '2 quests ahead' });
+    assert.deepEqual(L({ quest: at(cc, 1), level: 13 }), { q: M.sq(cc), turnIn: true, ok: true, ahead: 0, chip: 'turned in' });
     assert.equal(L({ quest: '', level: 13 }).chip, '', 'story unset: the page says "set your quest"');
     /* the belt's chip says the same as the line (it used to read "your current quest" on Urgent Pursuit: reached) */
-    const chip = o => M.stepChipOf(C(o), 'g12:belt', up);
+    const chip = o => M.stepChipOf(C(o), 'g12:belt', M.sq(up));
     assert.deepEqual(chip({ quest: up, level: 13 }), { text: 'your current quest — turn it in', title: 'unlocks after "Urgent Pursuit" · your current quest — turn it in', cls: 'now' });
     assert.deepEqual(chip({ quest: at(up, -2), level: 13 }), { text: '2 quests ahead', title: 'unlocks after "Urgent Pursuit" · 2 quests ahead', cls: 'ahead' });
     /* a chain with a hop keeps its whole text (it names the step before) */
-    assert.equal(M.stepChipOf(C({ quest: at('Daeva in a Dream', -3), level: 22 }), 'g22:1', 'Daeva in a Dream').text, 'after "The One Who Hears the Voice" (opens on "Daeva in a Dream" · 3 quests ahead)');
+    assert.equal(M.stepChipOf(C({ quest: at('Daeva in a Dream', -3), level: 22 }), 'g22:1', M.sq('Daeva in a Dream')).text, 'after "The One Who Hears the Voice" (opens on "Daeva in a Dream" · 3 quests ahead)');
     assert.deepEqual(chip({ quest: at(up, 1), level: 13 }), { text: 'story: passed', cls: '' });
     assert.equal(chip({ quest: '', level: 13 }), null, 'story unset: empty chip, as before');
     /* a step gated on "reached": the line reads "Reach" where no row waits for a turn-in */
     const reach = M.GATES.map(g => [g, M.storyLineOf(C({ quest: '', level: 45 }), g)]).filter(([, x]) => x && !x.turnIn);
     for (const [g, x] of reach) assert.equal(M.storyLineOf(C({ quest: x.q, level: 45 }), g).chip, 'reached', g.id);
     /* switch off: the 0.2 / E5 line (reached) */
-    withChanges(ALL.filter(n => n !== 'blockerText'), () => assert.deepEqual(L({ quest: cc, level: 13 }), { q: cc, turnIn: false, ok: true, ahead: 0, chip: 'reached' }));
+    withChanges(ALL.filter(n => n !== 'blockerText'), () => assert.deepEqual(L({ quest: cc, level: 13 }), { q: M.sq(cc), turnIn: false, ok: true, ahead: 0, chip: 'reached' }));
   });
 
   test('regional row, Later cards, Daevanion: the same words; nothing once open', () => {
@@ -78,7 +78,7 @@ export default (test, M) => {
     assert.equal(M.rqReqOf(C({ quest: at('Blood Monument', -3), level: 33 }), 'rq:' + q.id), 'opens on "Blood Monument" · 3 quests ahead');
     assert.equal(M.rqReqOf(C({ quest: 'Blood Monument', level: 33 }), 'rq:' + q.id), '');
     const r = M.RQ.find(x => x.name === 'Bloodstained Rose');
-    assert.equal(M.rqReqOf(C({ quest: at(r.story, -3), level: 37 }), 'rq:' + r.id), `unlocks after "${r.story}" · 3 quests ahead`);
+    assert.equal(M.rqReqOf(C({ quest: at(r.story, -3), level: 37 }), 'rq:' + r.id), `unlocks after "${M.QUEST_NAME[r.story]}" · 3 quests ahead`);
     assert.equal(M.rqReqOf(C({ quest: at(r.story, 1), level: 37 }), 'rq:' + r.id), '');
     const lv4 = { quest: M.QUESTS.find(x => x[0] >= 4)[1], level: 4 }, later = M.rankNext(S(lv4)).filter(a => a.kind === 'laterSkill');
     assert.ok(later.length, 'a Later skill card at Lv 4');

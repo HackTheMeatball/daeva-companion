@@ -6,7 +6,7 @@
   "records": [
     {
       "id": "stigma:templar:armor-of-balance",
-      "key": "Armor of Balance",
+      "key": "armor-of-balance",
       "name": "Armor of Balance",
       "availableLv": 22,
       "icon": "assets/icons/st-templar-armor-of-balance.png",
@@ -59,7 +59,7 @@
     },
     {
       "id": "stigma:templar:assault-fury",
-      "key": "Assault Fury",
+      "key": "assault-fury",
       "name": "Assault Fury",
       "availableLv": 22,
       "icon": "assets/icons/st-templar-assault-fury.png",
@@ -111,7 +111,7 @@
     },
     {
       "id": "stigma:templar:battlefield-banner",
-      "key": "Battlefield Banner",
+      "key": "battlefield-banner",
       "name": "Battlefield Banner",
       "availableLv": 22,
       "icon": "assets/icons/st-templar-battlefield-banner.png",
@@ -163,7 +163,7 @@
     },
     {
       "id": "stigma:templar:comrade-in-arms",
-      "key": "Comrade in Arms",
+      "key": "comrade-in-arms",
       "name": "Comrade in Arms",
       "availableLv": 22,
       "icon": "assets/icons/st-templar-comrade-in-arms.png",
@@ -215,7 +215,7 @@
     },
     {
       "id": "stigma:templar:doom-shield",
-      "key": "Doom Shield",
+      "key": "doom-shield",
       "name": "Doom Shield",
       "availableLv": 22,
       "icon": "assets/icons/st-templar-doom-shield.png",
@@ -267,7 +267,7 @@
     },
     {
       "id": "stigma:templar:empyrean-lords-punishment",
-      "key": "Empyrean Lord's Punishment",
+      "key": "empyrean-lords-punishment",
       "name": "Empyrean Lord's Punishment",
       "availableLv": 22,
       "icon": "assets/icons/st-templar-empyrean-lords-punishment.png",
@@ -319,7 +319,7 @@
     },
     {
       "id": "stigma:templar:executing-blade",
-      "key": "Executing Blade",
+      "key": "executing-blade",
       "name": "Executing Blade",
       "availableLv": 22,
       "icon": "assets/icons/st-templar-executing-blade.png",
@@ -371,7 +371,7 @@
     },
     {
       "id": "stigma:templar:grapple",
-      "key": "Grapple",
+      "key": "grapple",
       "name": "Grapple",
       "availableLv": 22,
       "icon": "assets/icons/st-templar-grapple.png",
@@ -423,7 +423,7 @@
     },
     {
       "id": "stigma:templar:nezekans-shield",
-      "key": "Nezekan's Shield",
+      "key": "nezekans-shield",
       "name": "Nezekan's Shield",
       "availableLv": 22,
       "icon": "assets/icons/st-templar-nezekans-shield.png",
@@ -475,7 +475,7 @@
     },
     {
       "id": "stigma:templar:noble-armor",
-      "key": "Noble Armor",
+      "key": "noble-armor",
       "name": "Noble Armor",
       "availableLv": 22,
       "icon": "assets/icons/st-templar-noble-armor.png",
@@ -527,7 +527,7 @@
     },
     {
       "id": "stigma:templar:second-skin",
-      "key": "Second Skin",
+      "key": "second-skin",
       "name": "Second Skin",
       "availableLv": 22,
       "icon": "assets/icons/st-templar-second-skin.png",
@@ -579,7 +579,7 @@
     },
     {
       "id": "stigma:templar:shield-of-protection",
-      "key": "Shield of Protection",
+      "key": "shield-of-protection",
       "name": "Shield of Protection",
       "availableLv": 22,
       "icon": "assets/icons/st-templar-shield-of-protection.png",
@@ -631,7 +631,7 @@
     },
     {
       "id": "stigma:templar:taunt",
-      "key": "Taunt",
+      "key": "taunt",
       "name": "Taunt",
       "availableLv": 22,
       "icon": "assets/icons/st-templar-taunt.png",

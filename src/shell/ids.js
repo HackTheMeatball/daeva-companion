@@ -1,4 +1,4 @@
-/* A random character slot id (save v5, src/core/state.js): crypto.randomUUID() where the page has it (secure contexts),
+/* A random character slot id (save v6, src/core/state.js): crypto.randomUUID() where the page has it (secure contexts),
    else a version 4 UUID from crypto.getRandomValues (the site opened over plain http on a LAN address). Never derived
    from the name, class or level. The core takes it as a parameter (loadState's newId), so it stays free of browser APIs. */
 export function newId() {

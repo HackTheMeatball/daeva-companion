@@ -6,7 +6,7 @@
   "records": [
     {
       "id": "stigma:ranger:ambush-kick",
-      "key": "Ambush Kick",
+      "key": "ambush-kick",
       "name": "Ambush Kick",
       "availableLv": 22,
       "maxLevel": 40,
@@ -57,7 +57,7 @@
     },
     {
       "id": "stigma:ranger:arrow-storm",
-      "key": "Arrow Storm",
+      "key": "arrow-storm",
       "name": "Arrow Storm",
       "availableLv": 22,
       "maxLevel": 40,
@@ -108,7 +108,7 @@
     },
     {
       "id": "stigma:ranger:assault-smite",
-      "key": "Assault Smite",
+      "key": "assault-smite",
       "name": "Assault Smite",
       "availableLv": 22,
       "maxLevel": 40,
@@ -159,7 +159,7 @@
     },
     {
       "id": "stigma:ranger:bow-of-blessing",
-      "key": "Bow of Blessing",
+      "key": "bow-of-blessing",
       "name": "Bow of Blessing",
       "availableLv": 22,
       "icon": "assets/icons/st-bow-of-blessing.png",
@@ -211,7 +211,7 @@
     },
     {
       "id": "stigma:ranger:ensnaring-trap",
-      "key": "Ensnaring Trap",
+      "key": "ensnaring-trap",
       "name": "Ensnaring Trap",
       "availableLv": 22,
       "maxLevel": 40,
@@ -262,7 +262,7 @@
     },
     {
       "id": "stigma:ranger:explosive-arrow",
-      "key": "Explosive Arrow",
+      "key": "explosive-arrow",
       "name": "Explosive Arrow",
       "availableLv": 22,
       "maxLevel": 40,
@@ -313,7 +313,7 @@
     },
     {
       "id": "stigma:ranger:griffon-arrow",
-      "key": "Griffon Arrow",
+      "key": "griffon-arrow",
       "name": "Griffon Arrow",
       "availableLv": 22,
       "icon": "assets/icons/st-griffon-arrow.png",
@@ -365,7 +365,7 @@
     },
     {
       "id": "stigma:ranger:illusory-arrow",
-      "key": "Illusory Arrow",
+      "key": "illusory-arrow",
       "name": "Illusory Arrow",
       "availableLv": 22,
       "maxLevel": 40,
@@ -416,7 +416,7 @@
     },
     {
       "id": "stigma:ranger:mother-natures-breath",
-      "key": "Mother Nature's Breath",
+      "key": "mother-natures-breath",
       "name": "Mother Nature's Breath",
       "availableLv": 22,
       "maxLevel": 40,
@@ -467,7 +467,7 @@
     },
     {
       "id": "stigma:ranger:sealing-arrow",
-      "key": "Sealing Arrow",
+      "key": "sealing-arrow",
       "name": "Sealing Arrow",
       "availableLv": 22,
       "maxLevel": 40,
@@ -518,7 +518,7 @@
     },
     {
       "id": "stigma:ranger:stealth",
-      "key": "Stealth",
+      "key": "stealth",
       "name": "Stealth",
       "availableLv": 22,
       "maxLevel": 40,
@@ -569,7 +569,7 @@
     },
     {
       "id": "stigma:ranger:supporting-fire",
-      "key": "Supporting Fire",
+      "key": "supporting-fire",
       "name": "Supporting Fire",
       "availableLv": 22,
       "icon": "assets/icons/st-supporting-fire.png",
@@ -621,7 +621,7 @@
     },
     {
       "id": "stigma:ranger:vaizels-authority",
-      "key": "Vaizel's Authority",
+      "key": "vaizels-authority",
       "name": "Vaizel's Authority",
       "availableLv": 22,
       "icon": "assets/icons/st-vaizels-authority.png",

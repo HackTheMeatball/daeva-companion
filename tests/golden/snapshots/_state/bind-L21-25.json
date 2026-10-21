@@ -1,9 +1,9 @@
 {
   "bind/L21-q29-none-A": {
-    "in": "434c235a2d4a",
+    "in": "2d8a7cb3f5e2",
     "store": {
       "areaLv": ["(absent)","20"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":21,"quest":"Creeping Shadow","mt":{"level":[0,21],"quest":[500,["Creeping Shadow",null]]}},{"checks":{},"level":21,"quest":"Creeping Shadow","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,21],"quest":[500,["Creeping Shadow",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":21,"quest":"sq:2102160","mt":{"level":[0,21],"quest":[500,["sq:2102160",null]]}},{"checks":{},"level":21,"quest":"sq:2102160","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,21],"quest":[500,["sq:2102160",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -19,10 +19,10 @@
     }
   },
   "bind/L21-q29-objs-A": {
-    "in": "02a17d0012ea",
+    "in": "06e2fd5b7c25",
     "store": {
       "areaLv": ["(absent)","20"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":21,"quest":"Creeping Shadow","qsteps":{"Creeping Shadow":[0,1,2,3,4,5,6,7]},"mt":{"qsteps":{"Creeping Shadow":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true],"6":[1006,true],"7":[1007,true]}},"level":[0,21],"quest":[500,["Creeping Shadow",null]]}},{"checks":{},"level":21,"quest":"Creeping Shadow","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Creeping Shadow":[0,1,2,3,4,5,6,7]},"mt":{"qsteps":{"Creeping Shadow":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true],"6":[1006,true],"7":[1007,true]}},"level":[0,21],"quest":[500,["Creeping Shadow",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":21,"quest":"sq:2102160","qsteps":{"sq:2102160":[0,1,2,3,4,5,6,7]},"mt":{"qsteps":{"sq:2102160":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true],"6":[1006,true],"7":[1007,true]}},"level":[0,21],"quest":[500,["sq:2102160",null]]}},{"checks":{},"level":21,"quest":"sq:2102160","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102160":[0,1,2,3,4,5,6,7]},"mt":{"qsteps":{"sq:2102160":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true],"6":[1006,true],"7":[1007,true]}},"level":[0,21],"quest":[500,["sq:2102160",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -38,10 +38,10 @@
     }
   },
   "bind/L21-q30-none-A": {
-    "in": "77865964daaa",
+    "in": "fa0233d13e91",
     "store": {
       "areaLv": ["(absent)","20"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":21,"quest":"Children of the Elim","mt":{"level":[0,21],"quest":[500,["Children of the Elim",null]]}},{"checks":{},"level":21,"quest":"Children of the Elim","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,21],"quest":[500,["Children of the Elim",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":21,"quest":"sq:2102170","mt":{"level":[0,21],"quest":[500,["sq:2102170",null]]}},{"checks":{},"level":21,"quest":"sq:2102170","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,21],"quest":[500,["sq:2102170",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -57,10 +57,10 @@
     }
   },
   "bind/L21-q30-objs-A": {
-    "in": "e63a08e14cae",
+    "in": "82b270b4fb21",
     "store": {
       "areaLv": ["(absent)","20"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":21,"quest":"Children of the Elim","qsteps":{"Children of the Elim":[0,1,2,3,4,5,6,7,8,9]},"mt":{"qsteps":{"Children of the Elim":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true],"6":[1006,true],"7":[1007,true],"8":[1008,true],"9":[1009,true]}},"level":[0,21],"quest":[500,["Children of the Elim",null]]}},{"checks":{},"level":21,"quest":"Children of the Elim","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Children of the Elim":[0,1,2,3,4,5,6,7,8,9]},"mt":{"qsteps":{"Children of the Elim":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true],"6":[1006,true],"7":[1007,true],"8":[1008,true],"9":[1009,true]}},"level":[0,21],"quest":[500,["Children of the Elim",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":21,"quest":"sq:2102170","qsteps":{"sq:2102170":[0,1,2,3,4,5,6,7,8,9]},"mt":{"qsteps":{"sq:2102170":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true],"6":[1006,true],"7":[1007,true],"8":[1008,true],"9":[1009,true]}},"level":[0,21],"quest":[500,["sq:2102170",null]]}},{"checks":{},"level":21,"quest":"sq:2102170","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102170":[0,1,2,3,4,5,6,7,8,9]},"mt":{"qsteps":{"sq:2102170":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true],"6":[1006,true],"7":[1007,true],"8":[1008,true],"9":[1009,true]}},"level":[0,21],"quest":[500,["sq:2102170",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -76,10 +76,10 @@
     }
   },
   "bind/L21-q31-none-A": {
-    "in": "69cee594384f",
+    "in": "f567c0b56b80",
     "store": {
       "areaLv": ["(absent)","20"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":21,"quest":"In the Elims' Name","mt":{"level":[0,21],"quest":[500,["In the Elims' Name",null]]}},{"checks":{},"level":21,"quest":"In the Elims' Name","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,21],"quest":[500,["In the Elims' Name",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":21,"quest":"sq:2102175","mt":{"level":[0,21],"quest":[500,["sq:2102175",null]]}},{"checks":{},"level":21,"quest":"sq:2102175","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,21],"quest":[500,["sq:2102175",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -95,10 +95,10 @@
     }
   },
   "bind/L21-q31-objs-A": {
-    "in": "097da8166461",
+    "in": "93a300e5bf16",
     "store": {
       "areaLv": ["(absent)","20"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":21,"quest":"In the Elims' Name","qsteps":{"In the Elims' Name":[0,1,2,3,4]},"mt":{"qsteps":{"In the Elims' Name":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,21],"quest":[500,["In the Elims' Name",null]]}},{"checks":{},"level":21,"quest":"In the Elims' Name","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"In the Elims' Name":[0,1,2,3,4]},"mt":{"qsteps":{"In the Elims' Name":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,21],"quest":[500,["In the Elims' Name",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":21,"quest":"sq:2102175","qsteps":{"sq:2102175":[0,1,2,3,4]},"mt":{"qsteps":{"sq:2102175":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,21],"quest":[500,["sq:2102175",null]]}},{"checks":{},"level":21,"quest":"sq:2102175","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102175":[0,1,2,3,4]},"mt":{"qsteps":{"sq:2102175":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,21],"quest":[500,["sq:2102175",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -114,10 +114,10 @@
     }
   },
   "bind/L22-q32-none-A": {
-    "in": "03b2fa50fced",
+    "in": "a49a8b57a628",
     "store": {
       "areaLv": ["(absent)","20"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":22,"quest":"Verdant Melody","mt":{"level":[0,22],"quest":[500,["Verdant Melody",null]]}},{"checks":{},"level":22,"quest":"Verdant Melody","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,22],"quest":[500,["Verdant Melody",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":22,"quest":"sq:2102180","mt":{"level":[0,22],"quest":[500,["sq:2102180",null]]}},{"checks":{},"level":22,"quest":"sq:2102180","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,22],"quest":[500,["sq:2102180",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -133,10 +133,10 @@
     }
   },
   "bind/L22-q32-objs-A": {
-    "in": "ea10e50649ba",
+    "in": "27e13a5cfed3",
     "store": {
       "areaLv": ["(absent)","20"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":22,"quest":"Verdant Melody","qsteps":{"Verdant Melody":[0,1,2,3]},"mt":{"qsteps":{"Verdant Melody":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true]}},"level":[0,22],"quest":[500,["Verdant Melody",null]]}},{"checks":{},"level":22,"quest":"Verdant Melody","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Verdant Melody":[0,1,2,3]},"mt":{"qsteps":{"Verdant Melody":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true]}},"level":[0,22],"quest":[500,["Verdant Melody",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":22,"quest":"sq:2102180","qsteps":{"sq:2102180":[0,1,2,3]},"mt":{"qsteps":{"sq:2102180":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true]}},"level":[0,22],"quest":[500,["sq:2102180",null]]}},{"checks":{},"level":22,"quest":"sq:2102180","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102180":[0,1,2,3]},"mt":{"qsteps":{"sq:2102180":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true]}},"level":[0,22],"quest":[500,["sq:2102180",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -152,10 +152,10 @@
     }
   },
   "bind/L22-q33-none-A": {
-    "in": "c14d287a6329",
+    "in": "f2577fac1b7d",
     "store": {
       "areaLv": ["(absent)","20"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":22,"quest":"Daeva in a Dream","mt":{"level":[0,22],"quest":[500,["Daeva in a Dream",null]]}},{"checks":{},"level":22,"quest":"Daeva in a Dream","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,22],"quest":[500,["Daeva in a Dream",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":22,"quest":"sq:2102185","mt":{"level":[0,22],"quest":[500,["sq:2102185",null]]}},{"checks":{},"level":22,"quest":"sq:2102185","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,22],"quest":[500,["sq:2102185",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -171,10 +171,10 @@
     }
   },
   "bind/L22-q33-objs-A": {
-    "in": "7157746aa760",
+    "in": "af105ea6cc79",
     "store": {
       "areaLv": ["(absent)","20"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":22,"quest":"Daeva in a Dream","qsteps":{"Daeva in a Dream":[0,1]},"mt":{"qsteps":{"Daeva in a Dream":{"0":[1000,true],"1":[1001,true]}},"level":[0,22],"quest":[500,["Daeva in a Dream",null]]}},{"checks":{},"level":22,"quest":"Daeva in a Dream","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Daeva in a Dream":[0,1]},"mt":{"qsteps":{"Daeva in a Dream":{"0":[1000,true],"1":[1001,true]}},"level":[0,22],"quest":[500,["Daeva in a Dream",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":22,"quest":"sq:2102185","qsteps":{"sq:2102185":[0,1]},"mt":{"qsteps":{"sq:2102185":{"0":[1000,true],"1":[1001,true]}},"level":[0,22],"quest":[500,["sq:2102185",null]]}},{"checks":{},"level":22,"quest":"sq:2102185","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102185":[0,1]},"mt":{"qsteps":{"sq:2102185":{"0":[1000,true],"1":[1001,true]}},"level":[0,22],"quest":[500,["sq:2102185",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -190,10 +190,10 @@
     }
   },
   "bind/L22-q34-none-A": {
-    "in": "109b9f0ca3ae",
+    "in": "aa579b96634f",
     "store": {
       "areaLv": ["(absent)","20"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":22,"quest":"Disturbed Balance","mt":{"level":[0,22],"quest":[500,["Disturbed Balance",null]]}},{"checks":{},"level":22,"quest":"Disturbed Balance","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,22],"quest":[500,["Disturbed Balance",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":22,"quest":"sq:2102190","mt":{"level":[0,22],"quest":[500,["sq:2102190",null]]}},{"checks":{},"level":22,"quest":"sq:2102190","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,22],"quest":[500,["sq:2102190",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -209,10 +209,10 @@
     }
   },
   "bind/L22-q34-objs-A": {
-    "in": "642cb3740afc",
+    "in": "acc78fd1d4f4",
     "store": {
       "areaLv": ["(absent)","20"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":22,"quest":"Disturbed Balance","qsteps":{"Disturbed Balance":[0,1,2,3]},"mt":{"qsteps":{"Disturbed Balance":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true]}},"level":[0,22],"quest":[500,["Disturbed Balance",null]]}},{"checks":{},"level":22,"quest":"Disturbed Balance","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Disturbed Balance":[0,1,2,3]},"mt":{"qsteps":{"Disturbed Balance":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true]}},"level":[0,22],"quest":[500,["Disturbed Balance",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":22,"quest":"sq:2102190","qsteps":{"sq:2102190":[0,1,2,3]},"mt":{"qsteps":{"sq:2102190":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true]}},"level":[0,22],"quest":[500,["sq:2102190",null]]}},{"checks":{},"level":22,"quest":"sq:2102190","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102190":[0,1,2,3]},"mt":{"qsteps":{"sq:2102190":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true]}},"level":[0,22],"quest":[500,["sq:2102190",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -228,10 +228,10 @@
     }
   },
   "bind/L24-q35-none-A": {
-    "in": "d7cf49259bc3",
+    "in": "1aef5bea3411",
     "store": {
       "areaLv": ["(absent)","20"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":24,"quest":"Searching for Survivors","mt":{"level":[0,24],"quest":[500,["Searching for Survivors",null]]}},{"checks":{},"level":24,"quest":"Searching for Survivors","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,24],"quest":[500,["Searching for Survivors",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":24,"quest":"sq:2102200","mt":{"level":[0,24],"quest":[500,["sq:2102200",null]]}},{"checks":{},"level":24,"quest":"sq:2102200","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,24],"quest":[500,["sq:2102200",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -248,10 +248,10 @@
     }
   },
   "bind/L24-q35-objs-A": {
-    "in": "ca4597ec078d",
+    "in": "5fe559e6ea2d",
     "store": {
       "areaLv": ["(absent)","20"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":24,"quest":"Searching for Survivors","qsteps":{"Searching for Survivors":[0,1,2,3,4]},"mt":{"qsteps":{"Searching for Survivors":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,24],"quest":[500,["Searching for Survivors",null]]}},{"checks":{},"level":24,"quest":"Searching for Survivors","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Searching for Survivors":[0,1,2,3,4]},"mt":{"qsteps":{"Searching for Survivors":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,24],"quest":[500,["Searching for Survivors",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":24,"quest":"sq:2102200","qsteps":{"sq:2102200":[0,1,2,3,4]},"mt":{"qsteps":{"sq:2102200":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,24],"quest":[500,["sq:2102200",null]]}},{"checks":{},"level":24,"quest":"sq:2102200","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102200":[0,1,2,3,4]},"mt":{"qsteps":{"sq:2102200":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,24],"quest":[500,["sq:2102200",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -268,10 +268,10 @@
     }
   },
   "bind/L24-q36-none-A": {
-    "in": "e5ad06746969",
+    "in": "34675c23341b",
     "store": {
       "areaLv": ["(absent)","20"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":24,"quest":"Prison Break","mt":{"level":[0,24],"quest":[500,["Prison Break",null]]}},{"checks":{},"level":24,"quest":"Prison Break","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,24],"quest":[500,["Prison Break",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":24,"quest":"sq:2102201","mt":{"level":[0,24],"quest":[500,["sq:2102201",null]]}},{"checks":{},"level":24,"quest":"sq:2102201","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,24],"quest":[500,["sq:2102201",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -288,10 +288,10 @@
     }
   },
   "bind/L24-q36-objs-A": {
-    "in": "de51651ac361",
+    "in": "024899fa3aa4",
     "store": {
       "areaLv": ["(absent)","20"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":24,"quest":"Prison Break","qsteps":{"Prison Break":[0,1]},"mt":{"qsteps":{"Prison Break":{"0":[1000,true],"1":[1001,true]}},"level":[0,24],"quest":[500,["Prison Break",null]]}},{"checks":{},"level":24,"quest":"Prison Break","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Prison Break":[0,1]},"mt":{"qsteps":{"Prison Break":{"0":[1000,true],"1":[1001,true]}},"level":[0,24],"quest":[500,["Prison Break",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":24,"quest":"sq:2102201","qsteps":{"sq:2102201":[0,1]},"mt":{"qsteps":{"sq:2102201":{"0":[1000,true],"1":[1001,true]}},"level":[0,24],"quest":[500,["sq:2102201",null]]}},{"checks":{},"level":24,"quest":"sq:2102201","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102201":[0,1]},"mt":{"qsteps":{"sq:2102201":{"0":[1000,true],"1":[1001,true]}},"level":[0,24],"quest":[500,["sq:2102201",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -308,10 +308,10 @@
     }
   },
   "bind/L24-q37-none-A": {
-    "in": "f2b750441b3c",
+    "in": "4208f91a3a9c",
     "store": {
       "areaLv": ["(absent)","20"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":24,"quest":"Finding Stolen Relics","mt":{"level":[0,24],"quest":[500,["Finding Stolen Relics",null]]}},{"checks":{},"level":24,"quest":"Finding Stolen Relics","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,24],"quest":[500,["Finding Stolen Relics",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":24,"quest":"sq:2102202","mt":{"level":[0,24],"quest":[500,["sq:2102202",null]]}},{"checks":{},"level":24,"quest":"sq:2102202","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,24],"quest":[500,["sq:2102202",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -328,10 +328,10 @@
     }
   },
   "bind/L24-q37-objs-A": {
-    "in": "deb8dd821a92",
+    "in": "fa9e3832cef5",
     "store": {
       "areaLv": ["(absent)","20"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":24,"quest":"Finding Stolen Relics","qsteps":{"Finding Stolen Relics":[0,1]},"mt":{"qsteps":{"Finding Stolen Relics":{"0":[1000,true],"1":[1001,true]}},"level":[0,24],"quest":[500,["Finding Stolen Relics",null]]}},{"checks":{},"level":24,"quest":"Finding Stolen Relics","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Finding Stolen Relics":[0,1]},"mt":{"qsteps":{"Finding Stolen Relics":{"0":[1000,true],"1":[1001,true]}},"level":[0,24],"quest":[500,["Finding Stolen Relics",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":24,"quest":"sq:2102202","qsteps":{"sq:2102202":[0,1]},"mt":{"qsteps":{"sq:2102202":{"0":[1000,true],"1":[1001,true]}},"level":[0,24],"quest":[500,["sq:2102202",null]]}},{"checks":{},"level":24,"quest":"sq:2102202","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102202":[0,1]},"mt":{"qsteps":{"sq:2102202":{"0":[1000,true],"1":[1001,true]}},"level":[0,24],"quest":[500,["sq:2102202",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -348,10 +348,10 @@
     }
   },
   "bind/L25-q38-none-A": {
-    "in": "fe9f1762d986",
+    "in": "a0150d371d95",
     "store": {
       "areaLv": ["(absent)","25"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":25,"quest":"Voice of Rage","mt":{"level":[0,25],"quest":[500,["Voice of Rage",null]]}},{"checks":{},"level":25,"quest":"Voice of Rage","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,25],"quest":[500,["Voice of Rage",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":25,"quest":"sq:2102210","mt":{"level":[0,25],"quest":[500,["sq:2102210",null]]}},{"checks":{},"level":25,"quest":"sq:2102210","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,25],"quest":[500,["sq:2102210",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -368,10 +368,10 @@
     }
   },
   "bind/L25-q38-objs-A": {
-    "in": "00e49d347234",
+    "in": "eda17cf7339e",
     "store": {
       "areaLv": ["(absent)","25"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":25,"quest":"Voice of Rage","qsteps":{"Voice of Rage":[0,1,2]},"mt":{"qsteps":{"Voice of Rage":{"0":[1000,true],"1":[1001,true],"2":[1002,true]}},"level":[0,25],"quest":[500,["Voice of Rage",null]]}},{"checks":{},"level":25,"quest":"Voice of Rage","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Voice of Rage":[0,1,2]},"mt":{"qsteps":{"Voice of Rage":{"0":[1000,true],"1":[1001,true],"2":[1002,true]}},"level":[0,25],"quest":[500,["Voice of Rage",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":25,"quest":"sq:2102210","qsteps":{"sq:2102210":[0,1,2]},"mt":{"qsteps":{"sq:2102210":{"0":[1000,true],"1":[1001,true],"2":[1002,true]}},"level":[0,25],"quest":[500,["sq:2102210",null]]}},{"checks":{},"level":25,"quest":"sq:2102210","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102210":[0,1,2]},"mt":{"qsteps":{"sq:2102210":{"0":[1000,true],"1":[1001,true],"2":[1002,true]}},"level":[0,25],"quest":[500,["sq:2102210",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -388,10 +388,10 @@
     }
   },
   "bind/L25-q39-none-A": {
-    "in": "3c23d2dc8751",
+    "in": "2104859e00de",
     "store": {
       "areaLv": ["(absent)","25"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":25,"quest":"Tangled Past","mt":{"level":[0,25],"quest":[500,["Tangled Past",null]]}},{"checks":{},"level":25,"quest":"Tangled Past","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,25],"quest":[500,["Tangled Past",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":25,"quest":"sq:2102220","mt":{"level":[0,25],"quest":[500,["sq:2102220",null]]}},{"checks":{},"level":25,"quest":"sq:2102220","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,25],"quest":[500,["sq:2102220",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -408,10 +408,10 @@
     }
   },
   "bind/L25-q39-objs-A": {
-    "in": "f5b69ba49f00",
+    "in": "31822efad50f",
     "store": {
       "areaLv": ["(absent)","25"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":25,"quest":"Tangled Past","qsteps":{"Tangled Past":[0,1,2,3,4]},"mt":{"qsteps":{"Tangled Past":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,25],"quest":[500,["Tangled Past",null]]}},{"checks":{},"level":25,"quest":"Tangled Past","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Tangled Past":[0,1,2,3,4]},"mt":{"qsteps":{"Tangled Past":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,25],"quest":[500,["Tangled Past",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":25,"quest":"sq:2102220","qsteps":{"sq:2102220":[0,1,2,3,4]},"mt":{"qsteps":{"sq:2102220":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,25],"quest":[500,["sq:2102220",null]]}},{"checks":{},"level":25,"quest":"sq:2102220","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102220":[0,1,2,3,4]},"mt":{"qsteps":{"sq:2102220":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,25],"quest":[500,["sq:2102220",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],

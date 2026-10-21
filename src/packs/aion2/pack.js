@@ -5,7 +5,7 @@
 import { definePack } from "../../core/pack.js";
 import { GATE_GRAPH } from "./data/gate-graph.js";
 import { GATE_PROPOSED } from "./data/gate-proposed.js";
-import { QUESTS, QUEST_STEP_NOTES } from "./data/story.js";
+import { QUESTS, QUEST_NAME, QUEST_STEP_I, QUEST_STEP_NOTES, QUEST_SUB_I } from "./data/story.js";
 import { GAME_CLASSES } from "./data/classes.js";
 import { GATES, STEPS } from "./data/milestones.js";
 import { GATE_CHANGES, KEPT_RULES, aion2Transforms } from "./rules.js";
@@ -47,7 +47,7 @@ const SHOWN = stepsShownOf(GATE_GRAPH);
 
 export const aion2Pack = definePack({
   id: "aion2",
-  data: { graph: GATE_GRAPH, proposed: GATE_PROPOSED, story: { quests: QUESTS, steps: SHOWN.steps, notes: QUEST_STEP_NOTES } },
+  data: { graph: GATE_GRAPH, proposed: GATE_PROPOSED, story: { quests: QUESTS, names: QUEST_NAME, steps: SHOWN.steps, notes: QUEST_STEP_NOTES, ids: QUEST_STEP_I, subIds: QUEST_SUB_I } },
   catalog: {
     milestones: GATES, routes: STEPS,
     /* Sealed Dungeons (and their heading) and board nodes are tracked in their own cards, not as milestone rows; regional

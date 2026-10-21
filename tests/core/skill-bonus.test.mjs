@@ -1,4 +1,4 @@
-/* Green "(+x)" on skill levels (0.6 P9, #268): skillBonusOf(c, name) is the sum of `adds` over the ticked plan board nodes on
+/* Green "(+x)" on skill levels (0.6 P9, #268): skillBonusOf(c, key) (the skill's save key, 0.9 P2) is the sum of `adds` over the ticked plan board nodes on
    the skill (src/packs/aion2/requirements.js), 0 with none. Cases: no nodes → 0; two nodes on one skill → their sum; unticking
    removes it; another skill's node never counts. Live data: every Assassin board skill node has `skill` and `adds`, and every
    plan node on a skill board node is in the graph with them (else the PR lists it and the card shows nothing for it). */
@@ -14,24 +14,24 @@ export default (test, M) => {
   const c = checks => ({ checks, level: 45 });
 
   test('no ticked nodes: no bonus, whatever lines are bought', () => {
-    assert.equal(M.skillBonusOf(c({}), 'Heart Gore'), 0);
-    assert.equal(M.skillBonusOf(c(tick(['sp:Heart Gore:2', 'sp:Heart Gore:3'])), 'Heart Gore'), 0, 'lines are the base level, not a bonus');
+    assert.equal(M.skillBonusOf(c({}), 'heart-gore'), 0);
+    assert.equal(M.skillBonusOf(c(tick(['sp:heart-gore:2', 'sp:heart-gore:3'])), 'heart-gore'), 0, 'lines are the base level, not a bonus');
     assert.equal(M.skillBonusOf(c({}), 'No Such Skill'), 0, 'an unknown skill: 0, no throw');
   });
 
   test('two nodes on one skill: the sum of their adds; unticking one removes its share; another skill\'s node never counts', () => {
-    const plan = planOf('Heart Gore'), adds = k => Object.values(N).find(n => n.key === k).adds;
+    const plan = planOf('heart-gore'), adds = k => Object.values(N).find(n => n.key === k).adds;
     assert.ok(plan.length >= 2, `Heart Gore plan nodes: ${plan.length}`);
     const two = tick(plan.slice(0, 2));
-    assert.equal(M.skillBonusOf(c(two), 'Heart Gore'), adds(plan[0]) + adds(plan[1]));
-    assert.equal(M.skillBonusOf(c({ ...two, [plan[1]]: false }), 'Heart Gore'), adds(plan[0]), 'unticked (stored false)');
+    assert.equal(M.skillBonusOf(c(two), 'heart-gore'), adds(plan[0]) + adds(plan[1]));
+    assert.equal(M.skillBonusOf(c({ ...two, [plan[1]]: false }), 'heart-gore'), adds(plan[0]), 'unticked (stored false)');
     const one = { ...two }; delete one[plan[0]]; delete one[plan[1]];
-    assert.equal(M.skillBonusOf(c(one), 'Heart Gore'), 0, 'both unticked');
-    const other = planOf('Quick Slice');
-    assert.equal(M.skillBonusOf(c(tick([...plan.slice(0, 2), ...other])), 'Heart Gore'), adds(plan[0]) + adds(plan[1]));
+    assert.equal(M.skillBonusOf(c(one), 'heart-gore'), 0, 'both unticked');
+    const other = planOf('quick-slice');
+    assert.equal(M.skillBonusOf(c(tick([...plan.slice(0, 2), ...other])), 'heart-gore'), adds(plan[0]) + adds(plan[1]));
     /* the bonus is the effective level less the base: lines to 6 + the two nodes */
-    const lines = Array.from({ length: 5 }, (_, i) => `sp:Heart Gore:${i + 2}`), all = c(tick([...lines, ...plan.slice(0, 2)]));
-    assert.equal(M.evaluate(all).skillLv(N['sp:Heart Gore:2'].skill), 6 + M.skillBonusOf(all, 'Heart Gore'));
+    const lines = Array.from({ length: 5 }, (_, i) => `sp:heart-gore:${i + 2}`), all = c(tick([...lines, ...plan.slice(0, 2)]));
+    assert.equal(M.evaluate(all).skillLv(N['sp:heart-gore:2'].skill), 6 + M.skillBonusOf(all, 'heart-gore'));
   });
 
   test('hand-made graph: a plan node without adds counts nothing (no default)', () => {

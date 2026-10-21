@@ -16,6 +16,7 @@
    onJoin(level, quest, cls); each new pick also goes to onPick(cls) at once (0.8.1 F4: the page header follows it). */
 import { char } from "../core/state.js";
 import { classChoices } from "../core/pack.js";
+import { questNameOf } from "../core/blockers.js";
 import { pageQUESTS as QUESTS } from "./page.js";
 
 const welEsc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -40,8 +41,8 @@ export function joinQuestOf(lv) {
   const q = QUESTS.find(([l]) => l >= lv) || QUESTS[QUESTS.length - 1];
   return q ? q[1] : "";
 }
-/* the quest select's options, "Lv N · name" (the join step's, and Journey's "which story quest are you on?", 0.9 P7) */
-export const questOptionsHTML = () => QUESTS.map(([l, n]) => `<option value="${welEsc(n)}">Lv ${l} · ${welEsc(n)}</option>`).join("");
+/* the quest select's options, "Lv N · name", the value its key (the join step's, and Journey's "which story quest are you on?", 0.9 P7) */
+export const questOptionsHTML = () => QUESTS.map(([l, n]) => `<option value="${welEsc(n)}">Lv ${l} · ${welEsc(questNameOf(n))}</option>`).join("");
 
 /* the card spec; the shell hands over what the buttons do */
 export function welcomeCard({ onStart, onJoin, onPick }) {

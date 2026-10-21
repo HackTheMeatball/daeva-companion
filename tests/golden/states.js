@@ -16,16 +16,19 @@ const { storedText, flatFixture, mtAtZero } = require('../support/save');
 
 /* ---------- runs in the page (serialised by Playwright; must be self-contained) ---------- */
 function catalogInPage() {
-  const it2 = (g, it) => ({ k: it.k, lv: g.lv, kind: it.kind || '', story: ['g12:belt', 'g16:amulet'].includes(it.k) ? '' : it.story || '' /* E5: the belt / amulet steps gained a story gate; the generated saves stay what they were */, byStory: !!it.byStory, stig: it.stig || 0, eput: it.eput || 0,
+  /* the pre-v6 key of a skill step (sp:<skill name>:<L>), which the rnd rules hash, so save v6's key change (0.9 P2) picks the same keys */
+  const pkOf = Object.fromEntries(SP_STEPS.map(x => [x.k, x.k.replace(/^sp:[^:]+:/, () => 'sp:' + x.s.n + ':')]));
+  const it2 = (g, it) => ({ k: it.k, pk: pkOf[it.k] || it.k, lv: g.lv, kind: it.kind || '', story: ['g12:belt', 'g16:amulet'].includes(it.k) ? '' : it.story || '' /* E5: the belt / amulet steps gained a story gate; the generated saves stay what they were */, byStory: !!it.byStory, stig: it.stig || 0, eput: it.eput || 0,
     dv: !!it.dv, blv: it.blv || 0, opt: !!it.opt, adv: !!it.adv, hidden: !!it.hidden, sub: !!it.sub, ns: String(it.ns || '').replace(/<[^>]+>/g, '') });
   return {
     quests: QUESTS.map(([lv, n]) => [lv, n]),
+    questNames: { ...QUEST_NAME },   /* QUESTS hold the story key sq:<gameId> since save v6 (0.9 P2); this gives the name */
     questSteps: Object.fromEntries(Object.entries(QUEST_STEPS).map(([q, l]) => [q, l.length])),
     gates: GATES.map(g => ({ id: g.id, lv: g.lv, title: g.title, items: g.items.filter(it => it.k).map(it => it2(g, it)) })),
     steps: STEPS.map(s => ({ id: s.id, items: s.items.filter(it => it.k).map(it => it.k) })),
     rq: RQ.map(q => ({ id: String(q.id), name: q.name, rec: q.rec, unlocksAt: q.unlocksAt || 0, zone: q.zone || '', kib: q.kib || '', story: ['2202044', '2202051', '2202015', '2202029', '2202046'].includes(String(q.id)) ? '' : q.story || '' /* E9: Shugo / Spooky / Curse-Breaking Caper gained a story gate, E5: Traveling Merchant's Conundrum / Lest We Forget; the generated saves stay what they were, so --explain sees only behaviour */, after: q.after || [] })),
     areas: AREA_ITEMS.map(x => ({ k: x.k, kind: x.it.kind, lv: x.lv, lo: x.it.lo || 0, hi: x.it.hi || 45, area: x.area || '', kib: x.it.kib || '' })),
-    sp: SP_STEPS.map(x => ({ k: x.k, req: x.req, cost: x.cost, spec: !!x.spec, extra: !!(x.s && x.s.extra), n: x.s.n, L: x.L })),
+    sp: SP_STEPS.map(x => ({ k: x.k, pk: pkOf[x.k], req: x.req, cost: x.cost, spec: !!x.spec, extra: !!(x.s && x.s.extra), n: x.s.n, L: x.L })),
     stigmaPlan: STIGMA_PLAN.slice(),
     slots: STIGMA_SLOTS().map(s => ({ k: s.k, n: s.n, lv: s.lv })),
     dvNodes: DV_NODES().map(it => ({ k: it.k, blv: it.blv || 0, board: it.board || '' })),
@@ -68,10 +71,10 @@ function makeGen(C) {
     const m = /^rnd(\d+)p(\d+)$/.exec(rule); /* rnd<seed>p<percent>: per-key hash; only keys that exist at or below lv */
     if (m) {
       const seed = m[1], p = +m[2] / 100, pick = k => fnv(seed + '|' + k) < p;
-      allItems.forEach(it => { if (!it.sub && !it.hidden && it.kind !== 'quest' && (it.dv ? it.blv : it.lv) <= lv && pick(it.k)) ch[it.k] = true; });
+      allItems.forEach(it => { if (!it.sub && !it.hidden && it.kind !== 'quest' && (it.dv ? it.blv : it.lv) <= lv && pick(it.pk)) ch[it.k] = true; });
       C.rq.forEach(q => { if (q.rec <= lv && pick('rq:' + q.id)) ch['rq:' + q.id] = true; });
       C.areas.forEach(x => { if (x.lv <= lv && pick(x.k)) ch[x.k] = true; });
-      C.sp.forEach(x => { if (x.req <= lv && pick(x.k)) ch[x.k] = true; });
+      C.sp.forEach(x => { if (x.req <= lv && pick(x.pk)) ch[x.k] = true; });
       return ch;
     }
     throw new Error('unknown tick rule ' + rule);
@@ -189,7 +192,7 @@ function smartFamilies(C, G, add) {
     if (n) add('bind', `L${pad(lv)}-q${pad(qi)}-objs-A`, dated({ ...st, qsteps: { [quest]: Array.from({ length: n }, (_, i) => i) } },
       [[['quest'], T_QUEST], ...Array.from({ length: n }, (_, i) => [['qsteps', quest, String(i)], T_LAST + i])]));
   }
-  const gq = G.qIdx('Crash Site Rendezvous');
+  const gq = G.qIdx('sq:2102030');   /* "Crash Site Rendezvous" (the story is keyed by id since save v6, 0.9 P2) */
   if (gq < 0) throw new Error('states: "Crash Site Rendezvous" (the Galorik\'s Inspection Area state) is not in the story');
   { const [lv, quest] = C.quests[gq];
     add('bind', `L${pad(lv)}-q${pad(gq)}-galorik-A`, dated({ checks: {}, level: lv, quest, qsteps: { [quest]: [0] }, open: {}, mode: 'advanced' }, [[['quest'], T_QUEST], [['qsteps', quest, '0'], T_LAST]])); }

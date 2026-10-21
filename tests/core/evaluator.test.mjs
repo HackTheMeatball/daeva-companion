@@ -176,7 +176,7 @@ export default (test, M) => {
     assert.ok(!JSON.stringify(M.GATE_GRAPH).includes('"proposed"'));
   });
   test('evaluator on GATE_GRAPH: story quests done by the position; "Urgent Pursuit" opens unlock:daevanion once turned in', () => {
-    const qi = M.storyIdx('Urgent Pursuit'), e = M.evaluate({ checks: {}, level: 12, quest: 'Urgent Pursuit' });
+    const qi = M.storyIdx(M.sq('Urgent Pursuit')), e = M.evaluate({ checks: {}, level: 12, quest: M.sq('Urgent Pursuit') });
     assert.equal(e.node('unlock:daevanion').done, false);
     assert.equal(e.node(M.GATE_GRAPH.story[qi - 1][0]).done, 'derived'); assert.equal(e.node(M.GATE_GRAPH.story[qi][0]).done, false);
     assert.equal(M.evaluate({ checks: {}, level: 12, quest: M.QUESTS[qi + 1][1] }).node('unlock:daevanion').done, 'derived');

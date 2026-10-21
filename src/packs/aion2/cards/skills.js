@@ -49,7 +49,7 @@ function renderNext() {
     const pct = hero.spec ? (locked ? 0 : 100) : Math.min(100, Math.max(0, pts / cost * 100));
     heroHTML = `<div class="sphero ${state_}${hero.spec ? " spec" : ""}">` +
       `<div class="dvhead">${SP_ICONS[hero.s.n] ? `<span class="dvico spico art"><img src="${SP_ICONS[hero.s.n]}" alt="" loading="lazy" onerror="this.remove()"></span>` : `<span class="dvico spico ini" aria-hidden="true">${ini(hero.s.n)}</span>`}` +
-      `<div class="dvtext"><span class="spname">${hero.s.n} ${spType(hero.s)} ${hero.spec ? `<em>specialty${hero.slot > 1 ? " " + hero.slot : ""}</em>` :`<span class="lvarr">${hero.L - 1} → ${hero.L}${spBonus(hero.s.n)}</span>`}</span><small title="${sub.replace(/<[^>]+>/g, "")}">${sub}</small>` +
+      `<div class="dvtext"><span class="spname">${hero.s.n} ${spType(hero.s)} ${hero.spec ? `<em>specialty${hero.slot > 1 ? " " + hero.slot : ""}</em>` :`<span class="lvarr">${hero.L - 1} → ${hero.L}${spBonus(hero.s.key)}</span>`}</span><small title="${sub.replace(/<[^>]+>/g, "")}">${sub}</small>` +
       (hero.spec || locked ? `<span class="dvbar-ph"></span>` : `<div class="dvbar"><div class="dvtrack"><span style="width:${pct}%"></span></div><span class="dvbar-l" title="You have ${pts} point${pts === 1 ? "" : "s"}; this upgrade costs ${cost}"><b>${Math.min(pts, cost)}</b> of ${cost} pt${cost === 1 ? "" : "s"}</span></div>`) + `</div></div>` +
       `<div class="buyrow">${ok ? `<button type="button" class="dvbuy" id="spBuy">${btn}</button>` : `<div class="buystat">${btn}${tipPop("stones")}</div>`}</div>` +
 
@@ -79,10 +79,10 @@ function renderNext() {
     /* a learn level not verified (0.8 P20: six Cleric passives are owner-check) carries its label; so does a skill order row
        the data labels disputed or inferred (0.9 P1), after the upgrade and inside its no-wrap span, so the tag stays on the
        "1 → 2" line instead of wrapping alone */
-    return `<li title="${spCostTxt(x)} · ${avail ? "available now" : "Lv " + x.req + stNote(x.s.learnSt)} · ${short > 0 ? `${short} short by then` : "points covered"}${x.s.single ? ` · single source (${x.s.single})` : ""}${x.s.st ? ` · plan${stNote(x.s.st)}` : ""}"><span class="sname">${spMini(x.s.n)}${x.s.n} ${spType(x.s)} <span class="lvarr">${x.L - 1} → ${x.L}${spBonus(x.s.n)}${stTag(x.s.st)}</span></span><span class="slv${avail ? " now" : ""}">${avail ? "now" : "Lv " + x.req + stTag(x.s.learnSt)}</span><span class="sst ${short > 0 ? "short" : "ok"}">${short > 0 ? `−${short}` : "✓"}</span></li>`;
+    return `<li title="${spCostTxt(x)} · ${avail ? "available now" : "Lv " + x.req + stNote(x.s.learnSt)} · ${short > 0 ? `${short} short by then` : "points covered"}${x.s.single ? ` · single source (${x.s.single})` : ""}${x.s.st ? ` · plan${stNote(x.s.st)}` : ""}"><span class="sname">${spMini(x.s.n)}${x.s.n} ${spType(x.s)} <span class="lvarr">${x.L - 1} → ${x.L}${spBonus(x.s.key)}${stTag(x.s.st)}</span></span><span class="slv${avail ? " now" : ""}">${avail ? "now" : "Lv " + x.req + stTag(x.s.learnSt)}</span><span class="sst ${short > 0 ? "short" : "ok"}">${short > 0 ? `−${short}` : "✓"}</span></li>`;
   }).join("") + `</ul>` : "");
   /* Sync levels: the box is the base level; the green bonus beside it, as in the game's tooltip title */
-  SP_SKILLS.forEach((s, i) => { const b = document.getElementById("syncB" + i), x = skillBonusOf(char(state), s.n);
+  SP_SKILLS.forEach((s, i) => { const b = document.getElementById("syncB" + i), x = skillBonusOf(char(state), s.key);
     b.textContent = x ? `(+${x})` : ""; b.title = x ? bonusTip(x) : ""; });
   const ptsIn = document.getElementById("spPts");
   if (document.activeElement !== ptsIn) ptsIn.value = stones;
@@ -109,7 +109,7 @@ function aion2SkillsMount() {
     if (!e.target.open) return;
     SP_SKILLS.forEach((s, i) => {
       let lvl = 1;
-      for (let L = 2; L <= 10; L++) if (char(state).checks[`sp:${s.n}:${L}`]) lvl = L;
+      for (let L = 2; L <= 10; L++) if (char(state).checks[`sp:${s.key}:${L}`]) lvl = L;
       document.getElementById("sync" + i).value = lvl;
     });
     document.getElementById("syncMsg").textContent = "";
@@ -120,7 +120,7 @@ function aion2SkillsMount() {
       const v = parseInt(document.getElementById("sync" + i).value, 10);
       if (!Number.isFinite(v)) return;
       for (let L = 2; L <= 10; L++) {
-        const k = `sp:${s.n}:${L}`, want = L <= v;
+        const k = `sp:${s.key}:${L}`, want = L <= v;
         if (!!char(state).checks[k] !== want) { char(state).checks[k] = want; changed++; }
       }
     });
@@ -134,7 +134,7 @@ function aion2SkillsMount() {
   spRespec.addEventListener("click", () => {
     if (!spArmed) { spArmed = true; spRespec.textContent = "Click again to respec"; setTimeout(() => { spArmed = false; spRespec.textContent = "Respec"; }, 3000); return; }
     spArmed = false; spRespec.textContent = "Respec";
-    SP_SKILLS.forEach(s => { for (let L = 2; L <= 10; L++) delete char(state).checks[`sp:${s.n}:${L}`]; });
+    SP_SKILLS.forEach(s => { for (let L = 2; L <= 10; L++) delete char(state).checks[`sp:${s.key}:${L}`]; });
     save(); render(); update();
   });
   document.getElementById("spPts").addEventListener("input", e => {

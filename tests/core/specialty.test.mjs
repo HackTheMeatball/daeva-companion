@@ -59,12 +59,12 @@ export default (test, M) => {
   test('live data: Heart Gore bought only (8 opens slot 1, not slot 2), + 2 plan nodes (12 opens slot 2), all 4 nodes (14, the cap)', () => {
     const x = slot1.find(y => y.s.n === 'Heart Gore'), plan = planOf(x), ev = c => M.evaluate(c);
     assert.equal(plan.length, 4, 'one Heart Gore node per board in the plan');
-    const c8 = { checks: tick(lines('Heart Gore', 8)), level: 45 };
-    assert.equal(ev(c8).skillLv(skillOf(x)), 8); assert.equal(ev(c8).byKey('sp:Heart Gore:spec').open, true); assert.equal(ev(c8).byKey('sp:Heart Gore:spec2').open, false);
-    const c12 = { checks: tick([...lines('Heart Gore', 10), ...plan.slice(0, 2)]), level: 45 };
-    assert.equal(ev(c12).skillLv(skillOf(x)), 12); assert.equal(ev(c12).byKey('sp:Heart Gore:spec2').open, true);
-    const c14 = { checks: tick([...lines('Heart Gore', 10), ...plan]), level: 45 };
-    assert.equal(ev(c14).skillLv(skillOf(x)), 14); assert.equal(ev(c14).byKey('sp:Heart Gore:spec3').open, false);
+    const c8 = { checks: tick(lines('heart-gore', 8)), level: 45 };
+    assert.equal(ev(c8).skillLv(skillOf(x)), 8); assert.equal(ev(c8).byKey('sp:heart-gore:spec').open, true); assert.equal(ev(c8).byKey('sp:heart-gore:spec2').open, false);
+    const c12 = { checks: tick([...lines('heart-gore', 10), ...plan.slice(0, 2)]), level: 45 };
+    assert.equal(ev(c12).skillLv(skillOf(x)), 12); assert.equal(ev(c12).byKey('sp:heart-gore:spec2').open, true);
+    const c14 = { checks: tick([...lines('heart-gore', 10), ...plan]), level: 45 };
+    assert.equal(ev(c14).skillLv(skillOf(x)), 14); assert.equal(ev(c14).byKey('sp:heart-gore:spec3').open, false);
   });
 
   test('cap 14: for every specialty skill, every line and every plan node ticked stays below slot 3 (20); slot 3 is never offered (Q5)', () => {
@@ -137,15 +137,15 @@ export default (test, M) => {
      is offered in Next up and the Skills card once the second node is ticked, not behind every upgrade before its milestone.
      Before F3 it opened there but sat 41st in the Skills card's open rows, so Next up never showed it. */
   test('research check: Heart Gore slot 2 is in Next up and the Skills card once the second plan node is ticked (Lv 39, fresh save)', () => {
-    const x = slot1.find(y => y.s.n === 'Heart Gore'), plan = planOf(x), k2 = 'sp:Heart Gore:spec2';
+    const x = slot1.find(y => y.s.n === 'Heart Gore'), plan = planOf(x), k2 = 'sp:heart-gore:spec2';
     assert.deepEqual(plan, ['dv:hg', 'dv:z:hg', 'dv:v:hg', 'dv:t:hg'], 'plan order: Nezekan, Zikel, Vaizel, Triniel');
     for (let n = 0; n <= plan.length; n++) {
-      const s = deepFreeze(S({ level: 39, checks: tick([...lines('Heart Gore', 10), ...plan.slice(0, n)]) })), c = M.char(s);
+      const s = deepFreeze(S({ level: 39, checks: tick([...lines('heart-gore', 10), ...plan.slice(0, n)]) })), c = M.char(s);
       const nu = M.rankNext(s).filter(a => a.kind === 'skill').map(a => a.x.k), now = M.skillOpen(c).now.map(y => y.k);
       assert.equal(M.openOf(c, k2), n >= 2, `${n} nodes: open`);
       assert.equal(nu.includes(k2), n >= 2, `${n} nodes: Next up ${JSON.stringify(nu)}`);
       assert.equal(now.includes(k2), n >= 2, `${n} nodes: Skills card`);
-      assert.deepEqual(now.slice(0, n >= 2 ? 2 : 1), ['sp:Heart Gore:spec', ...(n >= 2 ? [k2] : [])], `${n} nodes: the open slots come first`);
+      assert.deepEqual(now.slice(0, n >= 2 ? 2 : 1), ['sp:heart-gore:spec', ...(n >= 2 ? [k2] : [])], `${n} nodes: the open slots come first`);
     }
   });
 
@@ -173,9 +173,9 @@ export default (test, M) => {
     const x = slot1.find(y => y.s.n === 'Heart Gore');
     const s = deepFreeze(S({ checks: tick([...M.SP_STEPS.map(y => y.k), ...planOf(x).slice(0, 2)]), stones: 99 }));
     const cards = M.rankNext(s), sk = cards.filter(a => a.kind === 'skill');
-    assert.deepEqual(sk.map(a => a.x.k), ['sp:Heart Gore:spec2']);
+    assert.deepEqual(sk.map(a => a.x.k), ['sp:heart-gore:spec2']);
     assert.equal(sk[0].act, 'skill');
-    assert.ok(!('sp:Heart Gore:spec2' in M.char(s).checks) && !('sp:Heart Gore:spec3' in M.char(s).checks));
-    assert.equal(M.skillBuy(M.char(s)).k, 'sp:Heart Gore:spec2');
+    assert.ok(!('sp:heart-gore:spec2' in M.char(s).checks) && !('sp:heart-gore:spec3' in M.char(s).checks));
+    assert.equal(M.skillBuy(M.char(s)).k, 'sp:heart-gore:spec2');
   });
 };

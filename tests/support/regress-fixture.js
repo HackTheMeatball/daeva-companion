@@ -39,6 +39,8 @@ function migMetrics() {
     if (it.kind === 'hideout') out.sd[it.name] = [!!char(state).checks[k], !!(char(state).areaRun || {})[k]]; }));
   AREA_ITEMS.filter(x => x.it.kind === 'stronghold').forEach(x => { out.sh[x.it.name] = !!char(state).checks[x.k]; });
   out.sp = SP_STEPS.filter(x => char(state).checks[x.k]).length; out.dv = Object.keys(char(state).checks).filter(k => k.startsWith('dv:') && char(state).checks[k]).length;
-  out.story = [char(state).quest, JSON.stringify(char(state).qsteps), JSON.stringify(char(state).qsub)]; out.stig = [char(state).stLv, char(state).stShards, !!char(state).checks['g22:1']]; return out;
+  /* save v6 (0.9 P2) keys story quests and stigmas by id; the v285 side names them, so the keys are read back as names */
+  const byName = (o, f) => o && Object.fromEntries(Object.entries(o).map(([k, v]) => [f(k), v]));
+  out.story = [questNameOf(char(state).quest), JSON.stringify(byName(char(state).qsteps, questNameOf)), JSON.stringify(byName(char(state).qsub, questNameOf))]; out.stig = [byName(char(state).stLv, stName), char(state).stShards, !!char(state).checks['g22:1']]; return out;
 }
 module.exports = { buildFixture, writeFixture, migMetrics };
