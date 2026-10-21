@@ -288,7 +288,7 @@ check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (revie
 check(/CHANGES from francesca/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Francesca) on abc1234', 6), { ...c(OWNER, 'VERDICT: APPROVE (reviewer: Francesca) on f00dfee', 4), updated_at: at(9) }], NEW)),
   'an APPROVE edited after a CHANGES still dates from when it was posted (created_at), so it does not clear it');
 check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, CL, 4), c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6)], NEW)), 'deadlock exit: a clear older than the CHANGES does not clear it');
-const loopAt = yml.indexOf("const named = namedBlocker(comments, sha, pr.body || '', implied, pr.labels.map((l) => l.name), touched);");
+const loopAt = yml.indexOf("const named = namedBlocker(comments, sha, pr.body || '', implied, labels.filter((l) => !lifted || l !== 'hold'), touched);");
 check(loopAt > 0 && /if \(named\) \{.*continue; \}/.test(yml.slice(loopAt, loopAt + 200)) && loopAt < yml.indexOf('await github.rest.pulls.merge('), 'merge loop: namedBlocker runs and skips before a PR is merged');
 check(/CHANGES from lydia/.test(namedBlocker([c(OWNER, 'ROL-03 (Lydia): CHANGES on abc1234.\nVERDICT: CHANGES (reviewer: Lydia)', 6), c('claude[bot]', 'Review of abc1234\nVERDICT: APPROVE', 9)], SHA)),
   "#665: Lydia's tagged CHANGES blocks the bot APPROVE that merged it");
@@ -397,6 +397,63 @@ for (const f of readdirSync(join(ROOT, '.github', 'workflows')).filter((x) => x.
   const bad = readFileSync(join(ROOT, '.github', 'workflows', f), 'utf8').split('\n').filter((l) => /^\s*(?:-\s+)?name: [^"'|>].*\s#/.test(l));
   check(bad.length === 0, `${f}: no unquoted name: value is cut short by " #" (${bad.join(' | ')})`);
 }
+
+// HOLD-CHECK (#709): auto-merge adds hold to a PR that needs named or external review, and lifts it only when every named
+// reviewer (and a fresh reviewer for an external or blind Review: line) approves the head and ci-ok is green.
+const hb = yml.match(/\/\/ HOLD-CHECK START[^\n]*\n([\s\S]*?)\n\s*\/\/ HOLD-CHECK END/);
+check(!!hb, 'auto-merge.yml has the HOLD-CHECK block');
+const H = new Function('V', hb[1] + '\nreturn { AUTOHOLD, holdToAdd, holdStays };')(V);
+const ev = (event, login, min) => ({ event, label: { name: 'hold' }, actor: { login }, created_at: at(min) });
+const RB = 'Before: x\n\nReviewers: Francesca, Gale';
+const HELD = ['hold'];
+const nbH = (comments, body, sha = SHA) => namedBlocker(comments, sha, body, [], HELD, []);
+const OKF = c(OWNER, 'VERDICT: OK (reviewer: Francesca) on abc1234', 6), OKG = c(OWNER, 'VERDICT: APPROVE (reviewer: Gale) on abc1234', 7);
+const walter = [ev('labeled', OWNER, 1)];
+check(H.holdStays(RB, HELD, walter, [OKF, OKG], true, nbH([OKF, OKG], RB)) === '', 'lift: every named reviewer approves the head and ci-ok is green');
+check(/Gale.*approve abc1234|gale/i.test(H.holdStays(RB, HELD, walter, [OKF], true, nbH([OKF], RB))), 'stays: one named reviewer has not approved');
+check(/waits on gale/.test(H.holdStays(RB, HELD, walter, [OKF, c(OWNER, 'VERDICT: APPROVE (reviewer: Gale) on 9999999', 7)], true, nbH([OKF, c(OWNER, 'VERDICT: APPROVE (reviewer: Gale) on 9999999', 7)], RB))),
+  'stays: a reviewer approved an older head only');
+check(/no Reviewers: line/.test(H.holdStays('Before: x', HELD, walter, [OKF, OKG], true, nbH([OKF, OKG], 'Before: x'))), 'stays: no Reviewers: line (freeze, planner, interim, Watchdog holds)');
+const CHG = c(OWNER, 'VERDICT: CHANGES (reviewer: Gale) on abc1234', 8);
+check(/CHANGES from gale/.test(H.holdStays(RB, HELD, walter, [OKF, OKG, CHG], true, nbH([OKF, OKG, CHG], RB))), 'stays: a named CHANGES not yet cleared');
+check(/ci-ok not green/.test(H.holdStays(RB, HELD, walter, [OKF, OKG], false, nbH([OKF, OKG], RB))), 'stays: ci-ok red');
+const CLG = c(OWNER, 'REVIEW CLEAR (reviewer: Gale; trigger: none): Gale ended, no successor named', 9);
+check(/CHANGES from gale/.test(H.holdStays(RB, HELD, walter, [OKF, OKG, CHG, CLG], true, nbH([OKF, OKG, CHG, CLG], RB))), 'stays: no REVIEW CLEAR counts while hold is on');
+const RP = 'Before: x\n\nReviewers: Francesca (records and plan text)';
+check(H.holdStays(RP, HELD, walter, [OKF], true, nbH([OKF], RP)) === '', 'a Reviewers: name with a parenthetical matches the tagged verdict (#707)');
+check(/waits on francesca/.test(nbH([], RP)), 'a parenthetical name still waits for that reviewer');
+check(H.holdStays(RB, [], walter, [OKF, OKG], true, '') === 'no hold', 'no hold label: nothing to lift');
+// External or blind review: auto-merge adds the hold and lifts it on a FRESH REVIEW OK of the head.
+const EB = 'Before: x\n\nReview: external — 1 (gate change; trigger-1 outside review)';
+check(/waits on fresh review/.test(nbH([], EB)), 'an external Review: line waits on fresh review');
+check(/Review: line names external/.test(H.holdToAdd(EB, [], [], nbH([], EB))), 'add: an external Review: line gets hold');
+check(/Review: line names blind/.test(H.holdToAdd('Review: blind', [], [], nbH([], 'Review: blind'))), 'add: a blind Review: line gets hold');
+check(/Reviewers: line/.test(H.holdToAdd(RB, [], [], nbH([OKF], RB))), 'add: a Reviewers: line with a review missing gets hold');
+check(H.holdToAdd(RB, [], [], nbH([OKF, OKG], RB)) === '', 'add: none when every named reviewer already approves the head');
+check(H.holdToAdd(RB, [], [ev('labeled', OWNER, 1), ev('unlabeled', OWNER, 2)], nbH([], RB)) === '', 'add: never again once anyone removed hold');
+check(H.holdToAdd(RB, HELD, [], nbH([], RB)) === '', 'add: not when hold is already on');
+check(H.holdToAdd('Before: x\n\nReview: fresh', [], [], nbH([], 'Review: fresh')) === '', 'add: a plain fresh Review: line gets no hold (its FRESH REVIEW OK still gates the merge)');
+check(H.holdToAdd('Before: x', [], [], '') === '', 'add: a PR with no review rule gets no hold');
+const AUTO = [ev('labeled', 'github-actions[bot]', 1)], MARK = c('github-actions[bot]', `${H.AUTOHOLD}\nAuto-merge added hold`, 1);
+const FOK = c(OWNER, 'FRESH REVIEW OK abc1234: no blocking findings', 8);
+check(H.holdStays(EB, HELD, AUTO, [MARK, FOK], true, nbH([MARK, FOK], EB)) === '', 'lift: its own external-review hold, once FRESH REVIEW OK names the head');
+check(/waits on fresh review/.test(H.holdStays(EB, HELD, AUTO, [MARK], true, nbH([MARK], EB))), 'stays: its own external-review hold without a FRESH REVIEW OK');
+check(/waits on fresh review/.test(H.holdStays(EB, HELD, AUTO, [MARK, c(OWNER, 'FRESH REVIEW OK 9999999', 8)], true, nbH([MARK, c(OWNER, 'FRESH REVIEW OK 9999999', 8)], EB))), 'stays: a FRESH REVIEW OK of an older head');
+check(/no Reviewers: line/.test(H.holdStays(EB, HELD, walter, [MARK, FOK], true, nbH([MARK, FOK], EB))), "stays: a person's hold on an external-review PR stays with people");
+check(/no Reviewers: line/.test(H.holdStays(EB, HELD, [...AUTO, ev('unlabeled', 'github-actions[bot]', 3), ev('labeled', OWNER, 5)], [MARK, FOK], true, nbH([MARK, FOK], EB))),
+  "stays: a person added hold again after auto-merge's own hold came off");
+check(/no Reviewers: line/.test(H.holdStays(EB, HELD, AUTO, [FOK], true, nbH([FOK], EB))), 'stays: a bot-added hold without the auto-hold marker is not taken as its own');
+// The loop: lift before the gates, then ask for the pipeline review; the freeze and every other gate still run after a lift.
+const hl = yml.slice(yml.indexOf('for (const pr of prs)'));
+const liftAt = hl.indexOf("name: 'hold' });"), mergeAt = hl.indexOf('github.rest.pulls.merge(');
+check(liftAt > 0 && liftAt < hl.indexOf('const named = namedBlocker(comments, sha') && liftAt < hl.indexOf('const frozen = freezeBlocker(') && hl.indexOf('const frozen = freezeBlocker(') < mergeAt,
+  'loop: hold is lifted before the named, design, data and freeze checks, which still run before the merge');
+check(/if \(stays\) \{[^\n]*?continue; \}\s*\n\s*await github\.rest\.issues\.removeLabel/.test(hl), 'loop: hold is removed only when holdStays is empty');
+check(/if \(add\) \{[\s\S]{0,600}?continue;\s*\n\s*\}/.test(hl), 'loop: a PR that just got hold is not merged in the same pass');
+check(/lifted && !\(last && last\.body\.includes\(sha\.slice\(0, 7\)\)\)\) \{[\s\S]{0,400}?workflow_id: 'pipeline\.yml'[\s\S]{0,200}?step: 'review'[\s\S]{0,200}?continue;/.test(hl),
+  'loop: after a lift with no review of the head, the pipeline review is requested and the PR waits for its APPROVE');
+check(/namedBlocker\(comments, sha, pr\.body \|\| '', imp, \[\.\.\.new Set\(\[\.\.\.labels, 'hold'\]\)\], all\)/.test(hl), 'loop: the lift decision counts hold, so no REVIEW CLEAR stands in');
+check(!/\.filter\(\(p\) => [^\n]*\n[^\n]*l\.name === 'hold'/.test(yml.slice(yml.indexOf('const prs ='), yml.indexOf('// DESIGN-CHECK START'))), 'PR list: held PRs are read so their hold can be lifted');
 
 console.log(`\n${n - fail}/${n} auto-merge checks passed`);
 console.log(fail ? 'AUTOMERGE CHECKS FAILED' : 'AUTOMERGE CHECKS PASSED');

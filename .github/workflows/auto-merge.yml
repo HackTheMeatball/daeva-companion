@@ -2,7 +2,8 @@ name: Auto-merge
 
 # Added by the owner (2026-10-16): merge a bot PR once it is green and reviewed, so the pipeline runs while he is away.
 # A PR qualifies only when ALL of these hold:
-#   - it comes from a claude/ branch in this repo, targets main, is open, not a draft, and has no "hold" label;
+#   - it comes from a claude/ branch in this repo, targets main, is open, not a draft, and has no "hold" label (auto-merge adds
+#     and lifts hold itself under the rules in the HOLD-CHECK block below, #709);
 #   - the required check ci-ok succeeded on its current head commit;
 #   - the latest claude[bot] review comment says "VERDICT: APPROVE", was written after the head commit, and names the head's
 #     short SHA (e.g. "Review of abc1234"), so a review of an older commit can't cover a newer one pushed later.
@@ -18,7 +19,7 @@ name: Auto-merge
 # (a merge made by this workflow does not fire the normal push trigger).
 #   - while #114 has a "FREEZE: RC <sha> release #<n>" line, only docs/ROADMAP/issue-template PRs, the release PR and
 #     rc-blocker PRs merge (owner OK 2026-10-20 1:35 PM ET; "FREEZE-CHECK" block below).
-# Pause it for one PR: add the label "hold". Stop it: Actions tab -> Auto-merge -> "..." -> Disable workflow.
+# Pause it for one PR: add the label "hold" (auto-merge lifts a hold only on a PR with a Reviewers: line or one it held itself, #709). Stop it: Actions tab -> Auto-merge -> "..." -> Disable workflow.
 
 on:
   workflow_run:
@@ -58,8 +59,7 @@ jobs:
             // Every verdict line is read by tools/verdicts.cjs (bold, `code` and "> " quotes allowed; struck text never counts).
             const V = require(`${process.env.GITHUB_WORKSPACE}/tools/verdicts.cjs`);
             const prs = (await github.paginate(github.rest.pulls.list, { owner, repo, state: 'open', base: 'main', per_page: 100 }))
-              .filter((p) => !p.draft && p.head.repo && p.head.repo.full_name === `${owner}/${repo}` && /^claude\//.test(p.head.ref)
-                && !p.labels.some((l) => l.name === 'hold'));
+              .filter((p) => !p.draft && p.head.repo && p.head.repo.full_name === `${owner}/${repo}` && /^claude\//.test(p.head.ref));
             // DESIGN-CHECK START (tests/automerge.mjs runs this block)
             // A PR with review shots waits for a line starting (bold or plain) "DESIGN OK" from claude[bot] or the repo owner that
             // names the head's short SHA and is newer than the head commit. The latest DESIGN OK / DESIGN CHANGES comment decides.
@@ -164,7 +164,9 @@ jobs:
             // checked identity.
             const NOCLEAR = new Set(['2', '4b', '5', '6']);
             const ALIAS = { jane: 'design lead', gretchen: 'game data check' };
-            const who = (name) => ALIAS[name] || name;
+            // A name's trailing parenthetical is a note, not part of the name: "Reviewers: Francesca (records and plan text)" (#707)
+            // never matched her tagged verdict and so failed closed (#709).
+            const who = (name) => { const n = name.replace(/\s*\([^)]*\)\s*$/, '').trim(); return ALIAS[n] || n; };
             // A clear is refused when the PR itself shows one of those triggers, whatever the clear says: its body's "Review:" line
             // names 2, 4b, 5 or 6, it carries hold or fresh-review, or it touches a save key (src/core/state.js) or is a release
             // (CHANGELOG.md) (Fresh governance review, #686).
@@ -226,6 +228,38 @@ jobs:
               return missing.length ? `waits on ${missing.join(', ')} (Reviewers: line) to approve ${s7}` : '';
             };
             // NAMED-CHECK END
+            // HOLD-CHECK START (tests/automerge.mjs runs this block)
+            // Auto-merge adds and lifts `hold` itself (#709, owner OK 2026-10-21 9:37 AM ET: "auto-merge may add and lift hold per
+            // #709"), so the Release Planner no longer lifts holds by hand.
+            // Add: a PR whose body Review: line names external or blind review, or that has a Reviewers: line, gets hold while a
+            // review it needs is missing on the head. A hold that was ever removed, by anyone, is never added back.
+            // Lift: only when ci-ok is green on the head and namedBlocker finds nothing, with hold still counted so no REVIEW
+            // CLEAR stands in (prNoClear). That needs every Reviewers: name to approve the head with no CHANGES left open, plus a
+            // FRESH REVIEW OK on the head when the Review: line names fresh, blind or external review. A hold on a PR with no
+            // Reviewers: line stays with people (freeze, planner judgment, interim and Watchdog holds), unless auto-merge added it
+            // for an external or blind Review: line. The pipeline APPROVE is not needed to lift: pipeline.yml stops on hold, so a
+            // held PR never gets one. The merge loop asks for that review after the lift, and the merge still needs its APPROVE.
+            const AUTOHOLD = '<!-- auto-merge:auto-hold -->';
+            const reviewLine = (body) => V.lines(body).find((l) => /^(?:[-*]\s+)?Review:/i.test(l)) || '';
+            const blindOrExternal = (body) => /\b(blind|external)\b/i.test(reviewLine(body));
+            const holdEvents = (events) => events.filter((e) => ['labeled', 'unlabeled'].includes(e.event) && e.label && e.label.name === 'hold');
+            // '' = leave it; otherwise why hold is added. A PR whose reviewers already approve the head gets no hold.
+            const holdToAdd = (body, labels, events, blocker) => {
+              if (labels.includes('hold') || holdEvents(events).some((e) => e.event === 'unlabeled') || !blocker) return '';
+              if (blindOrExternal(body)) return `its Review: line names ${reviewLine(body).replace(/^(?:[-*]\s+)?Review:\s*/i, '')}`;
+              return V.reviewers(body).length ? 'it has a Reviewers: line' : '';
+            };
+            // '' = lift; otherwise why hold stays.
+            const holdStays = (body, labels, events, comments, ciGreen, blocker) => {
+              if (!labels.includes('hold')) return 'no hold';
+              const added = holdEvents(events).filter((e) => e.event === 'labeled').pop();
+              const mine = !!added && added.actor && added.actor.login === 'github-actions[bot]'
+                && comments.some((c) => c.user && c.user.login === 'github-actions[bot]' && (c.body || '').includes(AUTOHOLD));
+              if (!V.reviewers(body).length && !(mine && blindOrExternal(body))) return 'hold stays with people: no Reviewers: line';
+              if (!ciGreen) return 'hold stays: ci-ok not green on the head';
+              return blocker ? `hold stays: ${blocker}` : '';
+            };
+            // HOLD-CHECK END
             // FREEZE-CHECK START (tests/automerge.mjs runs this block)
             // Release freeze (owner OK 2026-10-20 1:35 PM ET, DECISIONS via #574): from Release Planner (Walter)'s RC READY until
             // CI's tag, only docs/**, ROADMAP.md and .github/ISSUE_TEMPLATE/** may merge, plus the release PR (its kickoff branch
@@ -249,26 +283,60 @@ jobs:
             const failed = [];
             for (const pr of prs) {
               const sha = pr.head.sha;
+              const labels = pr.labels.map((l) => l.name);
               const runs = (await github.rest.checks.listForRef({ owner, repo, ref: sha, check_name: 'ci-ok', per_page: 50 })).data.check_runs;
-              if (!runs.some((r) => r.status === 'completed' && r.conclusion === 'success')) { core.info(`#${pr.number}: ci-ok not green`); continue; }
+              const ciGreen = runs.some((r) => r.status === 'completed' && r.conclusion === 'success');
+              let comments = null, listed = null;
+              const filesOf = async () => listed || (listed = await github.paginate(github.rest.pulls.listFiles, { owner, repo, pull_number: pr.number, per_page: 100 }));
+              // HOLD: add or lift it (HOLD-CHECK block). Only PRs that hold or a hold rule applies to read their label events.
+              let lifted = false;
+              if (labels.includes('hold') || blindOrExternal(pr.body || '') || V.reviewers(pr.body || '').length) {
+                comments = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: pr.number, per_page: 100 });
+                const events = await github.paginate(github.rest.issues.listEvents, { owner, repo, issue_number: pr.number, per_page: 100 });
+                const all = (await filesOf()).flatMap((f) => [f.filename, f.previous_filename].filter(Boolean));
+                const imp = /^claude\/game-data-check-/.test(pr.head.ref) && all.some(DATAFILE) ? ['lydia'] : [];
+                const blocker = namedBlocker(comments, sha, pr.body || '', imp, [...new Set([...labels, 'hold'])], all);
+                const add = holdToAdd(pr.body || '', labels, events, blocker);
+                if (add) {
+                  await github.rest.issues.addLabels({ owner, repo, issue_number: pr.number, labels: ['hold'] });
+                  await github.rest.issues.createComment({ owner, repo, issue_number: pr.number, body: `${AUTOHOLD}\nAuto-merge added \`hold\` because ${add}. Still needed: ${blocker}. Auto-merge lifts the hold itself once those reviews name the head and ci-ok is green (#709).` });
+                  core.notice(`#${pr.number}: hold added (${add}; ${blocker})`);
+                  continue;
+                }
+                if (labels.includes('hold')) {
+                  const stays = holdStays(pr.body || '', labels, events, comments, ciGreen, blocker);
+                  if (stays) { core.info(`#${pr.number}: ${stays}`); continue; }
+                  await github.rest.issues.removeLabel({ owner, repo, issue_number: pr.number, name: 'hold' });
+                  const by = [...V.reviewers(pr.body || ''), ...imp, ...(/\b(fresh|blind|external)\b/i.test(reviewLine(pr.body || '')) ? ['fresh review'] : [])].map(who);
+                  core.notice(`#${pr.number}: hold lifted: ${[...new Set(by)].join(', ')} approve ${sha.slice(0, 7)} and ci-ok is green (#709)`);
+                  lifted = true;
+                }
+              }
+              if (!ciGreen) { core.info(`#${pr.number}: ci-ok not green`); continue; }
               const commit = (await github.rest.repos.getCommit({ owner, repo, ref: sha })).data;
               const headAt = Date.parse(commit.commit.committer.date);
-              const comments = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: pr.number, per_page: 100 });
+              comments = comments || await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: pr.number, per_page: 100 });
               // Only the pipeline review's own form counts here ("Review of <sha7>" first, MRG-03); a named reviewer's tagged
               // APPROVE never stands in for it (incident fix 2026-10-20).
               const reviews = comments.filter((c) => c.user && c.user.login === 'claude[bot]' && V.reviewOf(c.body) && V.review(c.body))
                 .sort((a, b) => Date.parse(a.updated_at) - Date.parse(b.updated_at));
               const last = reviews[reviews.length - 1];
+              // A PR whose hold was just lifted never got its pipeline review (pipeline.yml stops on hold), and a label removed
+              // with this workflow's token starts no workflow, so ask for the review here unless one already names the head.
+              if (lifted && !(last && last.body.includes(sha.slice(0, 7)))) {
+                await github.rest.actions.createWorkflowDispatch({ owner, repo, workflow_id: 'pipeline.yml', ref: 'main', inputs: { pr: String(pr.number), step: 'review' } });
+                core.notice(`#${pr.number}: pipeline review requested after the hold was lifted`);
+                continue;
+              }
               if (!last || V.review(last.body) !== 'APPROVE') { core.info(`#${pr.number}: no approving review`); continue; }
               if (Date.parse(last.updated_at) < headAt) { core.info(`#${pr.number}: approval older than the head commit`); continue; }
               if (!last.body.includes(sha.slice(0, 7))) { core.info(`#${pr.number}: approval does not name the head ${sha.slice(0, 7)}`); continue; }
-              const listed = await github.paginate(github.rest.pulls.listFiles, { owner, repo, pull_number: pr.number, per_page: 100 });
-              const files = listed.map((f) => f.filename);
+              const files = (await filesOf()).map((f) => f.filename);
               // A rename out of data/ only shows its old path in previous_filename; the data check reads both.
-              const touched = listed.flatMap((f) => [f.filename, f.previous_filename].filter(Boolean));
+              const touched = (await filesOf()).flatMap((f) => [f.filename, f.previous_filename].filter(Boolean));
               // Game Data Check's own data PRs skip DATA-CHECK, so a second data reviewer is required instead (MRG-12, #665).
               const implied = /^claude\/game-data-check-/.test(pr.head.ref) && touched.some(DATAFILE) ? ['lydia'] : [];
-              const named = namedBlocker(comments, sha, pr.body || '', implied, pr.labels.map((l) => l.name), touched);
+              const named = namedBlocker(comments, sha, pr.body || '', implied, labels.filter((l) => !lifted || l !== 'hold'), touched);
               if (named) { core.info(`#${pr.number}: ${named}`); continue; }
               const design = designBlocker(files, comments, sha, headAt);
               if (design) { core.info(`#${pr.number}: ${design}`); continue; }
