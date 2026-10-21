@@ -1499,22 +1499,6 @@ engine, Asmodian, Lv 1–45, the endgame guide past Lv 45 (0.10), and timers for
 load them. A reasoned budget raise if 0.9 to 0.11 land above 95%. The strict save rule returns (CLAUDE.md). The
 owner tests the candidate and gives go or no-go; a no-go makes it the next minor (Versioning).
 
-**Build choice (owner, 2026-10-21 9:55 AM ET; DECISIONS "1.0 ships three builds per class, a custom build and a respec warning on switching").** 1.0 does
-not ship without:
-- the top 3 builds per class, from Lv 1 to 45 and on into the endgame guide;
-- a custom build option;
-- a warning pop-up when a player switches builds. It says every skill must be respecced and how to do it in game: reset
-  all skills, reset all stigmas, and reset each Daevanion board.
-
-The three builds are the guide build plus up to two credited alternatives, and a custom build starts from a listed build
-(data format v2 review, #30: two agreeing sources or labelled "single source"). The plan:
-- **Research.** It starts in 0.10's pass. The Builds & Macros researcher, whose role is being finished by Game Data Check, sources the three builds per class, and Game Data Check (Gretchen) verifies them.
-- **Look.** Design Lead (Jane) mocks the build picker, the custom build and the warning pop-up.
-- **Build.** The items are shaped in 0.10's pass. The respec steps reuse the sourced walk-through (0.6.2 P15, 0.9 `research-respec`).
-- **Beta testers' asks.** Tester T2, Tadweezy (B10, 2026-10-21), asked for the full build at the level a player joins, and tester T1 (B2) asked for a build review with current skill levels and specialties. Both land as the picker's build overview: 0.9 P19 and P20 cover the catch-up, and the overview card is 0.10 scope.
-
-Jane and Gretchen back this plan before 0.10's pass queues any of it.
-
 ### 1.1 — Elyos (estimate)
 
 The Elyos faction pack comes after 1.0 (Release Planner and coordinator, 2026-10-20, answering the owner's 5:40 PM ET
