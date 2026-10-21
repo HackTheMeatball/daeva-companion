@@ -338,7 +338,7 @@ check(namedBlocker([c(OWNER, 'FRESH REVIEW #685 abc1234\nMAJOR: owner refs dropp
   '#686 case 5 (decided): fresh reviewers share one name, so the latest fresh OK on the head decides');
 
 // MRG-12 follow-ups (#686 bot review nits): DESIGN / data marks in the named check come from the owner account, unquoted;
-// a Review: line's no-clear trigger is read only after the word "trigger".
+// a Review: line's no-clear trigger is read from the whole line after a reviewer count ("2 reviewers") is dropped.
 check(/CHANGES from design lead/.test(namedBlocker([c(OWNER, 'DESIGN CHANGES on abc1234', 6), c('claude[bot]', 'Review of f00dfee\nDESIGN OK on f00dfee\nVERDICT: APPROVE', 9)], NEW)),
   "named check: a bot comment's DESIGN OK line does not clear the Design Lead's CHANGES");
 check(/CHANGES from design lead/.test(namedBlocker([c(OWNER, 'DESIGN CHANGES on abc1234', 6), c(OWNER, 'Status for f00dfee:\n> DESIGN OK on f00dfee', 8)], NEW)),
@@ -387,7 +387,16 @@ check(await busyFor(655, [R(2, 'Pipeline')], jobsOf), 'busy: an event run still 
 check(!(await busyFor(6, [R(3, 'Pipeline')], jobsOf)) && !(await busyFor(686, [R(3, 'Pipeline')], jobsOf)), 'busy: "#68 " is not #6 or #686');
 check(await busyFor(655, [R(9, 'Pipeline review #655')], jobsOf) && !(await busyFor(655, [R(9, 'Pipeline merge #659')], jobsOf)), 'busy: a dispatched run counts only for its own PR');
 check(!(await busyFor(655, [R(1, 'Pipeline', 'completed'), R(9, 'Pipeline review #655', 'completed')], jobsOf)), 'busy: finished runs never count');
-check(/name: run #\$\{\{ needs\.decide\.outputs\.pr \}\} \(/.test(readFileSync(join(ROOT, '.github', 'workflows', 'pipeline.yml'), 'utf8')), "pipeline.yml's run job name carries the PR number");
+// YAML reads " #" in a plain (unquoted) scalar as the start of a comment, so the job name must be quoted or it is just "run"
+// (pipeline review of f0ae01a). Read the value the way YAML does: quoted, or cut at the first " #".
+const yamlValue = (v) => (/^"(.*)"\s*(?:#.*)?$/.exec(v) || [])[1] ?? v.replace(/\s#.*$/, '').trim();
+const runName = (/^ {4}name: (.*)$/m.exec(readFileSync(join(ROOT, '.github', 'workflows', 'pipeline.yml'), 'utf8').split('\n  run:\n')[1] || '') || [])[1] || '';
+check(yamlValue(runName) === 'run #${{ needs.decide.outputs.pr }} (${{ needs.decide.outputs.model }})', "pipeline.yml's run job name, as YAML reads it, carries the PR number");
+check(yamlValue('run #${{ x }} (y)') === 'run', 'yamlValue: an unquoted " #" ends the value, as in YAML');
+for (const f of readdirSync(join(ROOT, '.github', 'workflows')).filter((x) => x.endsWith('.yml'))) {
+  const bad = readFileSync(join(ROOT, '.github', 'workflows', f), 'utf8').split('\n').filter((l) => /^\s*(?:-\s+)?name: [^"'|>].*\s#/.test(l));
+  check(bad.length === 0, `${f}: no unquoted name: value is cut short by " #" (${bad.join(' | ')})`);
+}
 
 console.log(`\n${n - fail}/${n} auto-merge checks passed`);
 console.log(fail ? 'AUTOMERGE CHECKS FAILED' : 'AUTOMERGE CHECKS PASSED');
