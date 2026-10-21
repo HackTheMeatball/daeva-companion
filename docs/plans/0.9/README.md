@@ -733,16 +733,18 @@ picker and opens from a stored save. P28 finishes P3's own goal in the tests; P2
 
 - **Problem.** Legal's quotes ruling (C7, v2, outside review Gomez, 2026-10-21) found `quote` fields that don't meet
   their hosts' terms: 26 from thegameswiki whose credit doesn't name and link CC BY-NC-SA, 15 of Metabot's 33 that
-  should be paraphrased, and 65 on 14 other hosts. It must be done before 0.9 ships, after 0.8.1's allthings.how batch
-  (F9 #662, F10 #690).
+  should be paraphrased, and 65 on 14 other hosts. Legal's ruling puts it before 0.9 ships, so unlike other gated items
+  (Q-09) it doesn't move to 0.10: the release waits on it. It follows 0.8.1's allthings.how batch (F9 #662, F10 #690),
+  which ships first; Game Data Check writes these tables after F10's.
 - **Result.**
   - Game Data Check commits `docs/research/2026-10-quotes-c7.md` with one table per group, in F9's form: (a)
     thegameswiki: each credit completed with the licence named and linked, or a paraphrase where the credit can't be
     completed; (b) Metabot: the 15 tagged quotes paraphrased, after Legal's blind 10-sample of the tags; (c) the 65 other
-    quotes paraphrased.
-  - This item applies the tables byte for byte and adds the gen check for the quotes column (ruling item 7): a `quote`
-    field fails unless its host is allowed quotes by SOURCES.md and its credit is complete. Build Pipeline decides
-    whether it ships complete or with a shrinking exception list.
+    quotes paraphrased; and (d) the hosts the ruling allows short credited quotes from, each with the credit it needs
+    (for thegameswiki: the licence named and linked).
+  - This item applies the tables byte for byte and adds the gen check (ruling item 7): a `quote` field fails unless its
+    host is in table (d) and its credit has what (d) requires. All tables apply in this item, so the check ships
+    complete, with no exception list.
   - `npm run gen` rewrites `data/DATA_SOURCES.md`.
 - **Inputs.** `docs/research/2026-10-quotes-c7.md`.
 - **Files.** `data/packs/aion2/**/claims.json`, `data/packs/aion2/asmodian/regional-quests.json`,
