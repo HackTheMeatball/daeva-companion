@@ -62,6 +62,60 @@ _From the owner, project chat 2026-10-20 6:46 PM ET: "kaizen is supposed to impr
 - **Scorecard:** each scorecard lists, per item above, what it adds, changes and deletes (or "none"), and the net rule
   count for the minor (added minus retired).
 
+### Role review
+
+_From the owner, project chat 2026-10-20 7:00 PM ET: "No one is safe if their worth can't be proven." Outside review:
+Fresh governance review, `PROCESS REVIEW role-review` OK on v3, 2026-10-20 7:59 PM ET; comments from Team Audit and
+Org Design._
+
+**Role review (owner, 2026-10-20 7:00 PM ET):** every minor's kaizen review ends with one table, with a row for every
+standing role and every consultant past its end condition. Each row gives a **keep / change / cut** recommendation on
+evidence. No role is exempt: Kaizen, Org Design, Team Audit, the standing reviewers and the coordinator's hand-off log
+all get a row.
+
+- **Evidence per row:** everything comes from the record (git, PR comments, the Ledger, the scorecard), not from the
+  role's own account.
+  1. **Outcomes, not volume:** the escape rate (majors that got past a control role and were found later, target 0),
+     first-pass rate, and the rework or hand-interventions the role caused others.
+  2. **Seeded test, for control roles:** Watchdog, the reviewers, Game Data Check, Team Audit and any gate role are
+     tested once per minor with a planted defect where they should catch it, such as a stale To-do, a wrong data field,
+     a removal in a mock, or a red-flag process change. Whether they caught it is recorded. A quiet minor with 0 catches
+     isn't held against a control role that passes its test. Kaizen plants the defects; a fresh reviewer plants Kaizen's.
+     Seeds go only on throwaway branches, mocks or copies, are recorded before they're planted and removed afterwards,
+     and never touch main, live data or Isaac's tracker.
+  3. **Cost:** runs per role, plus per-day session spend as a relative cost proxy, until per-thread usage can be read
+     as a share of the usage reading.
+  4. **Isaac touches:** the process touches the role caused Isaac in the minor. Each one counts against the role,
+     whatever it shipped; the 1.0 goal is that Isaac only says "add X feature". Touches that an owner-held limit or an
+     in-game check requires don't count.
+  5. **Dependency:** what would break, or who would take on its work, without it. If nobody can name anything, that
+     counts against it.
+- **Cut tests:**
+  - A role with no value in the minor and no named dependency is recommended **cut**.
+  - A role whose value doesn't cover its cost two minors running is recommended **cut** or **change** (merge, narrow,
+    or move it to a consultant).
+  - A role in its first minor is graded against its hire brief's end condition instead.
+  - A control role that fails its seeded test is recommended **change** the first time and **cut** the second.
+- **Roles that review the coordinator:** cutting or narrowing one is trigger 2 of the triage rule. It needs a fresh
+  review first, and it goes on Isaac's per-minor list.
+- **Before a cut:** every row it owns (Ledger rows, Who-does-what rows, any owner-held duty) has a named successor
+  first. A cut takes effect only after `RELEASE SHIPPED` and the handover file, never inside a freeze.
+- **Who assesses whom:** a role never assesses itself.
+  - Kaizen drafts every row except its own.
+  - Org Design adds workload and overlap evidence, but not for its own row.
+  - Team Audit is fully recused on the roles it hire-reviewed and on its own row. For other roles it adds its view.
+  - Fresh governance review, or a one-off consultant, writes the rows for Kaizen, Org Design, Team Audit, the standing
+    reviewers (Howard, Holly) and the coordinator's log.
+- **Who decides:** the coordinator decides each row and logs the outcome (Ledger, team-changes.csv) with the evidence
+  link. A cut follows the hiring procedure's end steps: a handover file, then the thread ends. The coordinator's own
+  log row is written by the next one-off consultant, whose verdict stands. The coordinator logs it, doesn't override
+  it, and may add a dissent; the verdict and any dissent both go on Isaac's per-minor list.
+- **Lean:** the table goes into the existing scorecard (`docs/kaizen/<minor>-scorecard.md`). There is no new meeting
+  and no new thread, and each row is at most three lines. Org Design's roster section is the input for it, not a second
+  table.
+- **Graded at the next review:** whether each cut's work was covered afterwards (no dropped commitments), and whether a
+  kept role met its evidence the following minor.
+
 ### Project instructions redraft
 
 _From the owner, project chat 2026-10-20 6:42 PM ET: "Can Gale update this on his own during his review moving forward?"_
