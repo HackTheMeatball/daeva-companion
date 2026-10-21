@@ -26,7 +26,7 @@ doesn't apply here).
   beta reports. A duplicate adds "+1 beta tester (Tn)" to the existing item instead of a new one.
 - **Triage:** one type per report: `bug`, `data` (a game-data claim), `ux`, `feature`; plus `save` for lost or wrong
   progress (urgent, per `docs/team/support-templates.md`). Same labels and sort as `docs/team/support.md`, which this
-  role takes over (that file has no owner in the LEDGER "Who does what" table today).
+  role owns (Walter, Oct 20; LEDGER "Who does what").
 - **Routing**, through the existing owners only:
   - build bugs and save problems → **Gus** (with a reproduction at the reported version, level and story quest);
   - data claims → **Gretchen**, with the tester's evidence; nothing ships until she gives DATA OK under the two-source
@@ -48,17 +48,16 @@ doesn't apply here).
   whichever is first; only the anonymised `log.md` line stays. `handover.md` lists the next due deletion so a later
   session runs it. The contact handle and T-number key are kept while the tester is active and deleted when the beta
   ends or on request (Gale, #615).
-- **Privacy text:** I own PRIVACY.md (coordinator, Oct 20). Gale gave it an outside review on #615. I didn't
-  edit PRIVACY.md.
+- **Privacy text:** I own PRIVACY.md (coordinator, Oct 20; see Settled question 3). Gale gives an outside review of
+  changes to its beta section.
 - **Other players (Gale's outside review):** other players' names and chat in a screenshot are cropped or blurred
   before storing; they didn't consent.
 - **Screenshots are read by eye, for the bug only.** Nothing extracts game data from them (CLAUDE.md bans screenshot
   parsing); a data claim in one goes to Gretchen as a labelled claim.
 - **Deletion owner:** Beta Program runs the 30-day deletion itself, checked at every triage pass and at least weekly;
   the due dates sit in `handover.md`.
-- **Until PRIVACY.md has its beta section** (Gale: CHANGES, owner being named by the coordinator), no raw tester
-  material is stored: forwarded reports are logged as anonymised `log.md` lines only, and the raw text stays where
-  Isaac sent it.
+- **PRIVACY.md gate: met.** PRIVACY.md has its "Beta testers" section (#615, #624, Gale approved), so raw tester
+  material may be stored under these rules. If that section is ever removed, store nothing raw until it's back.
 - **Jesse's proposal format** (his ask): a message, not a file, with steps from a fresh start or save state, class and
   device size, expected vs seen, tester count with report links, and any duplicate.
 
@@ -86,6 +85,7 @@ doesn't apply here).
   and browser filled in. `data.yml` and `feature.yml` forms also exist. Blank issues are off.
 - As of 9:55 PM UTC every issue in the repo is opened by the pipeline (HackTheMeatball); **no tester report has
   arrived through GitHub.** So testers reach Isaac some other way today (unknown; asked once).
+- **Settled:** options 1 and 2 below (Isaac's card, Oct 20; see Status). Option 3 only if volume calls for it.
 - Proposal, lightest first: (1) testers use Report a problem (needs a GitHub account; public); (2) for testers without
   GitHub, Isaac forwards or pastes their messages into this thread, and I log them privately; (3) only if volume makes
   (2) a burden, a dedicated channel Isaac sets up (e.g. a Discord channel with a connector), decided then.
