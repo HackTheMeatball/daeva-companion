@@ -61,17 +61,18 @@ inferred) checked 2026-10-19, `2026-10-t47-icon-check.md`. Steam Index API (publ
 not to be scraped, so never those; its API terms require a "Data from Steam Index" link, plus a Sources card entry,
 wherever the app shows its data) checked 2026-10-20, `2026-10-steam-and-news-vetting.md`.
 World-boss trackers, checked 2026-10-20 (`2026-10-world-boss-sources.md`). They are not on the environment's network
-list; adding one needs the owner's OK. Community trackers: never the only source for a schedule.
+list; adding one needs the owner's OK. Community trackers: never the only source for a schedule. Rows marked "No terms found" are not fetched again until the owner decides whether a site with no
+findable terms page may be read (ROL-08, Gale 2026-10-21); facts already taken from them stay as community leads.
 
 | Site | Use | Good for | Limits | Checked | Evidence |
 |---|---|---|---|---|---|
 | aion2atlas.app | Full, facts only | World boss and field boss timers (Global and KR columns) | Not `/api/` (robots.txt; Claude-User falls under `*`). Terms (`/terms`): "do not copy whole pages or scrape the site at high volume"; short quotes with a link are fine; icons and art are NCSOFT's. Timers may be outdated after patches | 2026-10-20 | `2026-10-world-boss-sources.md` (23:20Z update) |
 | aion2vault.com | Full, facts only | Boss timers (cites allthings.how, so never an independent second source) | robots.txt allows all. Terms of Service (`/terms-of-service/`): no clause on bots or scraping; "may not copy, republish, or redistribute our content without attribution and a link back"; personal, non-commercial use, so review before monetising. Facts and a link only | 2026-10-20 | `2026-10-world-boss-sources.md` (23:20Z update) |
-| aion2data.com | Full, reuse unknown | Game data read from the Global client (v2.0.6.0 hotfix 1, per its About page) | Not `/api/` (robots.txt, Claude-User group). No terms page found (`/terms` is 404, no footer link); footer says game data and art belong to NCSOFT. Facts and a link only | 2026-10-20 | `2026-10-world-boss-sources.md` (23:20Z update) |
+| aion2data.com | No terms found: not fetched (owner check) | Game data read from the Global client (v2.0.6.0 hotfix 1, per its About page) | Not `/api/` (robots.txt, Claude-User group). No terms page found (`/terms` is 404, no footer link); footer says game data and art belong to NCSOFT. Facts and a link only | 2026-10-20 | `2026-10-world-boss-sources.md` (23:20Z update) |
 | allthings.how | Spot | News and guides, boss respawn times | robots.txt blocks only admin paths. Terms at `/terms-and-conditions/` (found by web search 2026-10-20; the footer's `/terms/` is 404) ban copying, reproducing or downloading its material without written permission, not reading it. Facts and a link only, never its wording | 2026-10-20 | `2026-10-world-boss-sources.md` (23:20Z update) |
-| aion2rifttimer.com | Full, reuse unknown | Boss, Artifact Siege and reset timers | robots.txt allows all. No terms or legal link on the site. Facts and a link only | 2026-10-20 | `2026-10-world-boss-sources.md` (23:20Z update) |
-| aion2rift.com | Full, reuse unknown | Rift and boss timers (region tags kr/tw) | robots.txt allows all. No terms link (only `/privacy/`); `/terms` is 404. Facts and a link only | 2026-10-20 | `2026-10-world-boss-sources.md` (23:20Z update) |
-| criticalhits.com.br | Full, reuse unknown | Portuguese news and guides | robots.txt blocks only admin and pagination paths. No terms of use page; footer has a legal notice (`/aviso-legal/`), not read. Facts and a link only | 2026-10-20 | `2026-10-world-boss-sources.md` (23:20Z update) |
+| aion2rifttimer.com | No terms found: not fetched (owner check) | Boss, Artifact Siege and reset timers | robots.txt allows all. No terms or legal link on the site. Facts and a link only | 2026-10-20 | `2026-10-world-boss-sources.md` (23:20Z update) |
+| aion2rift.com | No terms found: not fetched (owner check) | Rift and boss timers (region tags kr/tw) | robots.txt allows all. No terms link (only `/privacy/`); `/terms` is 404. Facts and a link only | 2026-10-20 | `2026-10-world-boss-sources.md` (23:20Z update) |
+| criticalhits.com.br | No terms found: not fetched (owner check) | Portuguese news and guides | robots.txt blocks only admin and pagination paths. No terms of use page; footer has a legal notice (`/aviso-legal/`), not read. Facts and a link only | 2026-10-20 | `2026-10-world-boss-sources.md` (23:20Z update) |
 
 ## Owner-supplied documents (not fetched; read from the owner's upload)
 
