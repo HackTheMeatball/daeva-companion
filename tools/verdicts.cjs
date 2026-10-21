@@ -55,12 +55,26 @@ const reviewers = (body) => {
     .map((x) => x.trim().replace(/^\(\s*/, '').replace(/\s*\)$/, '').replace(/\s*\(.*$/, '').trim().toLowerCase()).filter(Boolean);
 };
 
-// The team roster (#741, Walter): each person's docs/team/<name>.md opens "# Name (Role)", given here as those first lines,
-// plus the names the gates answer to. A Reviewers: entry outside it ("Legal sign-off per Chuck's ruling", #741, 84 min) can
-// never be matched by a verdict, so auto-merge names it instead of waiting silently; it still blocks.
-const GATES = ['design lead', 'game data check', 'fresh review', 'jane', 'gretchen'];
-const roster = (heads) => new Set([...GATES, ...heads.map((h) => (String(h).match(/^#\s+([A-Za-z]+)\s+\(/) || [])[1])
-  .filter(Boolean).map((n) => n.toLowerCase())]);
+// The team roster (#741, Walter): the active rows of docs/kaizen/team.csv, the authoritative record of who is on the team
+// (Org Design, Nacho, 2026-10-21: a closed or folded role such as Skyler or Hank is off it), plus the names the gates answer
+// to. A Reviewers: entry outside it ("Legal sign-off per Chuck's ruling", #741, 84 min) can never be matched by a verdict,
+// so auto-merge names it instead of waiting silently; it still blocks.
+const GATES = ['design lead', 'game data check', 'fresh review'];
+// One CSV row into fields: quoted fields may hold commas and "" for a quote.
+const csvRow = (l) => {
+  const out = []; let f = '', q = false;
+  for (let i = 0; i < l.length; i++) {
+    const ch = l[i];
+    if (q) { if (ch === '"' && l[i + 1] === '"') { f += '"'; i++; } else if (ch === '"') q = false; else f += ch; }
+    else if (ch === '"') q = true; else if (ch === ',') { out.push(f); f = ''; } else f += ch;
+  }
+  out.push(f); return out;
+};
+const roster = (csv) => {
+  const [head, ...rows] = String(csv).split(/\r?\n/).filter((l) => l.trim()).map(csvRow);
+  const name = head.indexOf('name'), status = head.indexOf('status');
+  return new Set([...GATES, ...rows.filter((r) => (r[status] || '').trim() === 'active').map((r) => r[name].trim().toLowerCase()).filter(Boolean)]);
+};
 const unknownReviewers = (body, names) => reviewers(body).filter((n) => !names.has(n));
 // A person's hold line (MRG-09, #744): "HOLD: <condition> (owner: <name>)" on its own line, unquoted. Every such line, in
 // order, as { cond, owner, reviewer }: reviewer is the gate name the condition waits on when it is one of the closed list
