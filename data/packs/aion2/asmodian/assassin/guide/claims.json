@@ -115,7 +115,7 @@
         }
       ],
       "action": "keep",
-      "note": "The owner's in-game screen (the source of truth). The keys are the game's defaults; the guide's own binding (keyStacks rightClick and eOrder: the stack on T via the macro, Shadowstrike on Q, the stigmas on E) is its suggestion and is labelled so. That the macro on right click displaces Savage Roar from its default slot is inferred (Game Data Check). The learn levels on the screen match skills.json. The grid draws row 0 at the bottom: the E column reads Storm Rampage, Whirlwind Slice, Heart Gore from the bottom up (Game Data Check on #565).",
+      "note": "The owner's in-game screen (the source of truth). The keys are the game's defaults; the guide's own binding (keyStacks slots, macros and eOrder: the Quick Use 2 stack on T, stepped by the right-click macro, Shadowstrike on Q, the stigmas on E) is its suggestion and is labelled so. That the macro on right click displaces Savage Roar from its default slot is inferred (Game Data Check). The learn levels on the screen match skills.json. The grid draws row 0 at the bottom: the E column reads Storm Rampage, Whirlwind Slice, Heart Gore from the bottom up (Game Data Check on #565).",
       "appliesTo": [
         "build:assassin:guide"
       ],

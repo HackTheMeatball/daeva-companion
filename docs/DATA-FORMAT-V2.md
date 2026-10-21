@@ -388,7 +388,7 @@ Anything else, an unknown token or an unknown `build:` kind fails validation.
 - Choices, all as record ids (the build checks each resolves): `statPriority {tiers, from}`, `skillOrder[]` (a skill
   is "in the plan", today's `tracked`, iff it appears here), `specialtyPicks {skill: [choice ids for slots 1..3]}`,
   `stigmaSlots[]`, `stigmaTargets[]`, `stigmaSpecialtyPicks`, `boardPlan[]` (which nodes to buy, placed in milestones
-  like today's `dv` items, each a step with `requires`/`completesWith`), `keyStacks {rightClick, eOrder, defaultKeys}`,
+  like today's `dv` items, each a step with `requires`/`completesWith`), `keyStacks {slots, macros, eOrder, defaultKeys}`,
   `texts{}`.
 - `keyStacks.defaultKeys` (0.7 P11): the game's default keys, with their own `status` and `sources` (owner screens).
   `keys[]` in display order, each `{ key, rows[] }`: `key` is the game's name (`Q`, `E`, `1`, `Left click`, `Right
@@ -396,8 +396,17 @@ Anything else, an unknown token or an unknown `build:` kind fails validation.
   else the skill's learn level). A key with one row is a single key. The generator checks every skill is one of the
   class's active skills, each key and each skill appears once, and `minLv` is not below the learn level; it compiles
   the table `KEYS` (`[{ key, rows: [{ n, lv }] }]`, per class). A build with `KEYS` takes every key of the Build drawer
-  from it (`rotKeys`); without it (the Assassin) the drawer keeps the guide's `rightClick` rows, Q Shadowstrike and the
-  stigmas on E in `eOrder`. A guide's own recommended setup stays in `rightClick`, never in `defaultKeys`.
+  from it (`rotKeys`); without it (the Assassin) the drawer keeps the guide's right-click macro, Q Shadowstrike and the
+  stigmas on E in `eOrder`. A guide's own recommended setup stays in `slots` / `macros`, never in `defaultKeys`.
+- `keyStacks.slots` and `keyStacks.macros` (builds & macros task 1, replacing the flat `rightClick` list): `slots[]` are
+  the guide's suggested stacks, `{ slot: Q|E|Quick Use 2|T, rows: [{ minLv, skills[] }] }`, a row shows from its `minLv`
+  and holds at most 4 skills (schema `maxItems` plus a generator check; row 0 fires first). `macros[]` are
+  `{ key, rows: [{ minLv, steps: [{ slot } | { skill }] }] }`: ordered steps, each naming a slot (fires that slot's whole
+  stack) or one lone skill, so a macro can cycle more than 4 skills (owner, 2026-10-21). The step count is unbounded
+  until the T-61 check "try adding a 5th step"; delays are not modelled (no verified source). The generator checks every step slot
+  is defined in `slots` and every skill is an active skill of the class, and compiles `RMB_ROWS` (the flat right-click
+  list `RMB_STACK` reads) by expanding the `Right click` macro's steps per level band (a legacy alias; the generator expands every macro, any key, and a class can have several). Both the label and the sources
+  sit on `keyStacks.status` / `sources`; a build choice here is advice, never a game fact.
 - Each source's own order (today `stigmaRules.equipOrder`) moves to a claim that backs the disputed choice.
 - 5b compiles the guide build into today's `SP_SKILLS`, `SP_EXTRA`, `STIGMA_PLAN`, `ST_TARGETS`, `STAT_TIERS`,
   `STAT_SRC`, `RMB_STACK`, `E_ORDER` and the `dv` plan items, so the golden tests stay identical.
@@ -675,7 +684,7 @@ Not read by `gen.py`. Move to `tools/history/` in 5b after listing every value t
 | `SP_SKILLS` `{n, learn, spec, passive}` + order; `SP_EXTRA` | `skills` (`key`, `learnLv`, `type`); **`spec` → `specialtyChoices[].label` + `builds[guide].specialtyPicks`**; order → **`builds[guide].skillOrder`** |
 | `LEVEL_POINTS` | `rule:level-points` |
 | `spCost`, `ST_COST`, `DV_MIN`, `SP_STEPS` | derived |
-| `RMB_STACK` | **`builds[guide].keyStacks.rightClick`** |
+| `RMB_STACK` | **`builds[guide].keyStacks.macros` (the `Right click` macro, steps expanded) over `keyStacks.slots`** |
 | `SP_ICONS`, `STIGMA_ICON` | `skills[].icon`, `stigmas[].icon` |
 
 ### 12.11 `tools/gen/gen.py` and the generated block

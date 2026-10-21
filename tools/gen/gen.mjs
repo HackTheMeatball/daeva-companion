@@ -93,7 +93,7 @@ export function generate(opts = {}) {
   const classes = R('classes'); if (classes.length > 1) throw new Error('one class per bundle in 0.2, got ' + classes.length);
   const cls = classes[0] || null, builds = R('builds');
   const build = cls ? builds.find(b => b.id === cls.defaultBuild) : { id: 'build:none', skillOrder: [], specialtyPicks: {}, stigmaSlots: [], stigmaTargets: [],
-    statPriority: { tiers: [], from: null }, keyStacks: { rightClick: [], eOrder: [] }, texts: {}, boardPlan: [] };
+    statPriority: { tiers: [], from: null }, keyStacks: { slots: [], macros: [], eOrder: [] }, texts: {}, boardPlan: [] };
   if (!build) throw new Error('default build missing: ' + cls.defaultBuild);
   const ruleValue = id => rules[id] ? rules[id].value : null;
   const milestones = RI('milestones'), steps = RI('steps'), tips = RI('tips'), unlocks = R('unlocks'), items = R('items'), asc = R('ascensionQuests');
@@ -223,7 +223,40 @@ export function generate(opts = {}) {
   /* the stat priority's footnote when the build has its own (build text "stat-note"; null: the drawer's default) */
   const STAT_NOTE = (build.texts || {})['stat-note'] || null;
   /* a build without a sourced key setup (the Ranger, 0.6 P5) has no right-click rows: the Build drawer then shows no Rotation */
-  const RMB_ROWS = (build.keyStacks.rightClick || []).map(r => ({ minLv: r.minLv, skills: r.skills.map(id => sk(id).name) })).sort((a, b) => b.minLv - a.minLv);
+  /* keyStacks.slots (a stack per slot, by level) and keyStacks.macros (ordered steps naming a slot or a lone skill; builds &
+     macros task 1). RMB_ROWS stays the flat right-click list the drawer draws until the build lane renders steps:
+     per level band, the right-click macro's steps expanded in order (a slot step is that slot's stack at the level) */
+  /* the macro step limit is unknown (owner check T-61 "try adding a 5th step"); set the number here once it is answered */
+  const MACRO_MAX_STEPS = null;
+  const KS = build.keyStacks, KS_SLOTS = KS.slots || [], KS_MACROS = KS.macros || [];
+  const slotRow = (slot, lv) => ((KS_SLOTS.find(s => s.slot === slot) || { rows: [] }).rows.filter(r => r.minLv <= lv).sort((a, b) => b.minLv - a.minLv)[0] || { skills: [] }).skills;
+  for (const s of KS_SLOTS) {
+    check(`${build.id}: key slot named once: ${s.slot}`, KS_SLOTS.filter(x => x.slot === s.slot).length === 1);
+    for (const r of s.rows) {
+      check(`${build.id}: slot ${s.slot} from Lv ${r.minLv} holds at most 4 skills`, r.skills.length <= 4, r.skills.length);
+      check(`${build.id}: slot ${s.slot} from Lv ${r.minLv} holds each skill once`, new Set(r.skills).size === r.skills.length);
+      for (const id of r.skills) { const k = skById[id];
+        check(`${build.id}: slot ${s.slot}: ${id} is an active skill of the class`, !!k && !!cls && id.split(':')[1] === cls.class && k.type === 'active', k && k.type); }
+    }
+  }
+  for (const m of KS_MACROS) {
+    check(`${build.id}: macro key named once: ${m.key}`, KS_MACROS.filter(x => x.key === m.key).length === 1);
+    for (const r of m.rows) if (MACRO_MAX_STEPS != null) check(`${build.id}: macro ${m.key} from Lv ${r.minLv} has at most ${MACRO_MAX_STEPS} steps`, r.steps.length <= MACRO_MAX_STEPS, r.steps.length);
+    for (const r of m.rows) for (const st of r.steps) {
+      if (st.slot) check(`${build.id}: macro ${m.key}: slot ${st.slot} is defined in keyStacks.slots`, KS_SLOTS.some(s => s.slot === st.slot));
+      if (st.skill) { const k = skById[st.skill];
+        check(`${build.id}: macro ${m.key}: ${st.skill} is an active skill of the class`, !!k && !!cls && st.skill.split(':')[1] === cls.class && k.type === 'active', k && k.type); }
+    }
+  }
+  /* a macro can sit on any key and a class can have several (owner, 2026-10-21): expand each one per level band (the union of
+     its own and the slots' minLv), steps in order, a slot step being that slot's stack at the level. Names, not ids. */
+  const expandMacro = m => [...new Set([...m.rows.map(r => r.minLv), ...KS_SLOTS.flatMap(s => s.rows.map(r => r.minLv))])].map(lv => {
+    const mr = m.rows.filter(r => r.minLv <= lv).sort((a, b) => b.minLv - a.minLv)[0];
+    return mr && { minLv: lv, skills: mr.steps.flatMap(st => st.slot ? slotRow(st.slot, lv) : [st.skill]).map(id => sk(id).name) }; }).filter(Boolean).sort((a, b) => b.minLv - a.minLv);
+  const MACROS_FLAT = KS_MACROS.map(m => ({ key: m.key, rows: expandMacro(m) }));
+  /* RMB_ROWS: the drawer's legacy flat right-click list (RMB_STACK reads it). It is only the macro bound to Right click, if any;
+     the build lane (0.9 P22) replaces it with MACROS_FLAT / the steps themselves, so nothing else may assume right click. */
+  const RMB_ROWS = (MACROS_FLAT.find(m => m.key === 'Right click') || { rows: [] }).rows;
   const E_ORDER = build.keyStacks.eOrder.map(id => stg(id).name);
   /* the game's default keys (0.7 P11, keyStacks.defaultKeys): [{ key, rows: [{ n, lv }] }], row 0 first, lv the row's minLv
      else its skill's learn level; [] when the build has none. The Assassin has both (0.8 P14): its grid is the guide's
@@ -697,7 +730,7 @@ export function generate(opts = {}) {
   /* ---------------------------------------------------------------- the module */
   const C = { RQ, RQ_STATS, QUESTS_X, QUEST_STEPS_X, QUEST_LOC_X, STORY_END, SH_DATA, AREA_LOC, SD_RW, SP_EXTRA, DV_BOARDS, SOURCES, SRC_SITE, CONF,
     QUESTS, QUEST_NAME, QUEST_STEPS, QUEST_STEP_I, QUEST_SUB_I, QUEST_STEP_NOTES, QUEST_LOC, STORY_UNLOCKS, UNLOCK_GATE, VERIFIED_UNLOCKS, HOTKEYS, TERMS, ASCENSION, GUIDE_GATES, GUIDE_STEPS, TIPS, ITEMS, HIDEOUT_AREA, ZONE_TRACES, SD_REWARD, SH_REWARD,
-    STAT_TIERS, STAT_SRC, STAT_NOTE, STIGMA_PLAN, STIGMA_KEY, ST_TARGETS, STIGMA_ST, SP_SKILLS_CORE, LEVEL_POINTS, RMB_ROWS, E_ORDER, KEYS, KEYS_ST, SP_ICONS, STIGMA_ICON,
+    STAT_TIERS, STAT_SRC, STAT_NOTE, STIGMA_PLAN, STIGMA_KEY, ST_TARGETS, STIGMA_ST, SP_SKILLS_CORE, LEVEL_POINTS, RMB_ROWS, MACROS_FLAT, E_ORDER, KEYS, KEYS_ST, SP_ICONS, STIGMA_ICON,
     RULE_SKILL_POINT_COST, RULE_SPEC_SLOTS, RULE_NODE_COSTS, RULE_SHARD_COST, GAME_CLASSES };
   const J = v => JSON.stringify(v);
   const module = '/* Generated by tools/gen/gen.mjs from data/** (data format v2). Not stored: the build makes it on every run. */\n' +
@@ -799,7 +832,7 @@ function checkIdleClass({ root, pack, check, fs = realFs }) {
    unless it differs between two classes, which moves it to the class sets too. scripts/build.mjs ships the shared
    tables in the page and each class set as its own chunk (docs/ARCHITECTURE.md §4, DATA-FORMAT-V2 §2.1). */
 export const CLASS_TABLES = ['SP_EXTRA', 'DV_BOARDS', 'SOURCES', 'CONF', 'GUIDE_GATES', 'GUIDE_STEPS', 'TIPS', 'STAT_TIERS', 'STAT_SRC', 'STAT_NOTE', 'STIGMA_PLAN', 'ST_TARGETS', 'STIGMA_ST',
-  'SP_SKILLS_CORE', 'RMB_ROWS', 'E_ORDER', 'KEYS', 'KEYS_ST', 'SP_ICONS', 'STIGMA_ICON', 'GATE_GRAPH', 'GATE_PROPOSED'];
+  'SP_SKILLS_CORE', 'RMB_ROWS', 'MACROS_FLAT', 'E_ORDER', 'KEYS', 'KEYS_ST', 'SP_ICONS', 'STIGMA_ICON', 'GATE_GRAPH', 'GATE_PROPOSED'];
 /* every table of one result by name, in module order (generated.js, gate-graph.js, gate-proposed.js, place.js) */
 export const tablesOf = g => ({ ...g.constants, GATE_GRAPH: g.gateGraph, GATE_PROPOSED: g.gateProposed, NODE_PLACE: g.nodePlace, KIBELISKS: g.kibelisks, TRAVEL_RULES: g.travelRules });
 /* the guide packs below a packs root, by id */
