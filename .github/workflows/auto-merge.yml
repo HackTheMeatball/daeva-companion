@@ -230,12 +230,14 @@ jobs:
             // NAMED-CHECK END
             // HOLD-CHECK START (tests/automerge.mjs runs this block)
             // Auto-merge adds and lifts `hold` itself (#709, owner OK 2026-10-21 9:37 AM ET: "auto-merge may add and lift hold per
-            // #709"), so the Release Planner no longer lifts holds by hand.
+            // #709"), so the Release Planner no longer lifts the holds auto-merge adds. A hold a person adds still needs a person to
+            // lift it.
             // Add: a PR whose body Review: line names external or blind review gets hold while a review it needs is missing on
             // the head. A hold that was ever removed, by anyone, is never added back. A Reviewers: line alone adds none: the named
             // check already blocks the merge, and a hold would pause the pipeline review until the named reviewers approve, so a
             // fix it then asked for would make their approvals stale (Fresh governance review on #737).
-            // Lift: only a hold auto-merge added itself (its last labeled event by github-actions[bot] and its marker comment).
+            // Lift: only a hold auto-merge added itself (its last labeled event by github-actions[bot], and its marker comment
+            // posted at or after that event, so another bot's later hold is not taken for its own).
             // A person's hold always stays with people, whatever lines the PR has: Watchdog, planner judgment, interim holds such
             // as #705's (Fresh governance review on #737). It lifts only when ci-ok is green on the head and namedBlocker finds
             // nothing, with hold still counted so no REVIEW CLEAR stands in (prNoClear): a FRESH REVIEW OK on the head, plus every
@@ -256,7 +258,8 @@ jobs:
               if (!labels.includes('hold')) return 'no hold';
               const added = holdEvents(events).filter((e) => e.event === 'labeled').pop();
               const mine = !!added && added.actor && added.actor.login === 'github-actions[bot]'
-                && comments.some((c) => c.user && c.user.login === 'github-actions[bot]' && (c.body || '').includes(AUTOHOLD));
+                && comments.some((c) => c.user && c.user.login === 'github-actions[bot]' && (c.body || '').includes(AUTOHOLD)
+                  && Date.parse(c.created_at) >= Date.parse(added.created_at));
               if (!mine) return 'hold stays with people: a person added it';
               if (!ciGreen) return 'hold stays: ci-ok not green on the head';
               return blocker ? `hold stays: ${blocker}` : '';
