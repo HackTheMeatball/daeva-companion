@@ -9,9 +9,9 @@ Daeva Companion (unofficial AION 2 companion; today the Asmodian Assassin leveli
 | `src/styles/fonts.css`, `src/styles/index.css`, `src/styles/brand.css` | the styles (the `@font-face` rules; the page's styles; the brand lockup in the header and footer), inlined verbatim. Every colour, radius, spacing step and shadow is a token in the `:root` block at the top of `app.css` (`docs/design-system.md`; `tests/tokens.mjs` enforces it in every `.css` under `src/styles/`) |
 | `src/styles/app.css` | the tokens, the page frame (layout, header, rail, footer, toast, export / import) and the rules several cards share (milestone-style step cards, checklist rows, the top cards' hero rows and lists, buttons, tips); first in `index.css` |
 | `src/styles/cards/*.css`, `src/styles/packs/aion2/*.css` | one stylesheet per card (0.4 P4d), moved verbatim from `app.css` in their original order: the engine's cards (`journey.css`, `ahead.css`, `nextup.css` with its pop-out, `milestones.css`, `route.css`, `sources.css`, `undo.css`) and the AION 2 pack's (`progress.css`, `ascension.css`, `areas.css`, `skills.css`, `daevanion.css`, `cube.css`, `stigmas.css`, `build.css`). `index.css` `@import`s `app.css`, then these in page order; the build puts each file in place, so both builds carry one inlined stylesheet. A card file comes after all of `app.css`: a card rule that would then beat a later `app.css` rule it loses to today (same element, property and specificity) stays in `app.css` until a feature splits the pair |
-| `src/main.js` | the page shell (ES module entry, ≈380 lines, still one global scope; no card of its own since 0.4 P4c): loading and saving, the pack wiring (`usePack`, the page API names the suites call, the AION 2 helpers it hands on), registering the cards, `render()` and `update()` calling them (§2), layout fitting (`fitRail`, `fitSkills`), the header (Basic / Advanced), the "i" popovers, the toast and sounds, the number steppers, export / import, *Report a problem*; it hands the cards the names they read (`aion2UsePage`, `useCardPage`) |
-| `src/core/*.js` | the engine (0.2 P3; since 0.4 P2b no game term, `docs/design/0.4-engine-contract.md`): `pack.js` (`definePack`, `usePack`, `activePack`: the one pack object the engine reads a game through; `packClasses`), `state.js` (key, defaults, loading, `char(state)`, `charFields()`), `chars.js` (add, switch, rename, remove a character, 0.5 P17), `migrations.js` (load-time steps), `catalog.js` (`itemByK`, `cardRows` over the pack's catalog), `requirements.js` (the evaluator glue `gatesOf` over the pack's graph and transforms, the switches over the pack's table, done / open, the story chain, objectives, milestone counts, Next up steps), `blockers.js` (blocker-chain text), `nextup.js` (Next up ranking over the engine's and the pack's producers, 0.4 P2c), `evaluator.js` (0.3 requirement evaluator over the pack's `data.graph`), `sync.js` (change times, `stamp`), `merge.js` and `sync-client.js` (sync chunk only, 0.8 P6), `backup.js`, `storage.js` |
-| `src/cards/*.js`, `src/cards/*.html` | the engine's cards (0.4 P4a): each exports its spec for the card registry (`src/core/cards.js`, §2); its markup is put into the shell by the build's `@card` line. `sources.js` / `sources.html` (Confidence, Sources; P4a); moved verbatim from `main.js` in P4c: `nextup.js` / `nextup.html` (Next up: `renderNow`, `nowCard`, the hotkeys, the pop-out), `milestones.js` / `milestones.html` (the milestone cards: `renderMilestones`, `cardHTML`, counts and tags, the rail's milestone list, the tick handler, regional quest rows, the filters), `route.js` / `route.html` (Route rules), `journey.js` / `journey.html` (Journey: the level control, `renderQuest`, `renderQuestSubs`, story chips and lines), `ahead.js` (Later, `renderAhead`, a section of Journey), `undo.js` (`renderUndo`), `characters.js` / `characters.html` (0.5 P18: the character switcher in the header; the shell hands it `onSwitch` / `onAdd`), and `page.js` (`useCardPage`: the shell's names and the pack's tables and helpers these cards still read, imported under their old names; `src/cards/` may import only `src/core/` and `src/cards/`, so the shell hands them over until P5a–d move them behind the pack object). Handlers wire in each card's `mount`, so a card module touches no DOM at import (the Node core bundle imports `src/cards/`) |
+| `src/main.js` | the page shell (ES module entry, 507 lines, still one global scope; no card of its own since 0.4 P4c): loading and saving, the pack wiring (`usePack`, the page API names the suites call, the AION 2 helpers it hands on), registering the cards, `render()` and `update()` calling them (§2), layout fitting (`fitRail`, `fitSkills`), the header (Basic / Advanced), the "i" popovers, the toast and sounds, the number steppers, export / import, *Report a problem*; it hands the cards the names they read (`aion2UsePage`, `useCardPage`) |
+| `src/core/*.js` | the engine (0.2 P3; since 0.4 P2b no game term, `docs/design/0.4-engine-contract.md`): `pack.js` (`definePack`, `usePack`, `activePack`: the one pack object the engine reads a game through; `packClasses`), `state.js` (key, defaults, loading, `char(state)`, `charFields()`), `chars.js` (add, switch, rename, remove a character, 0.5 P17), `migrations.js` (load-time steps), `cards.js` (the card registry, §2), `place.js` (`whereNow`, `byPlace`), `catalog.js` (`itemByK`, `cardRows` over the pack's catalog), `requirements.js` (the evaluator glue `gatesOf` over the pack's graph and transforms, the switches over the pack's table, done / open, the story chain, objectives, milestone counts, Next up steps), `blockers.js` (blocker-chain text), `nextup.js` (Next up ranking over the engine's and the pack's producers, 0.4 P2c), `evaluator.js` (0.3 requirement evaluator over the pack's `data.graph`), `sync.js` (change times, `stamp`), `merge.js` and `sync-client.js` (sync chunk only, 0.8 P6), `backup.js`, `storage.js` |
+| `src/cards/*.js`, `src/cards/*.html` | the engine's cards (0.4 P4a): each exports its spec for the card registry (`src/core/cards.js`, §2); its markup is put into the shell by the build's `@card` line. `sources.js` / `sources.html` (Confidence, Sources; P4a); moved verbatim from `main.js` in P4c: `nextup.js` / `nextup.html` (Next up: `renderNow`, `nowCard`, the hotkeys, the pop-out), `milestones.js` / `milestones.html` (the milestone cards: `renderMilestones`, `cardHTML`, counts and tags, the rail's milestone list, the tick handler, regional quest rows, the filters), `route.js` / `route.html` (Route rules), `journey.js` / `journey.html` (Journey: the level control, `renderQuest`, `renderQuestSubs`, story chips and lines), `ahead.js` (Later, `renderAhead`, a section of Journey), `undo.js` (`renderUndo`), `characters.js` / `characters.html` (0.5 P18: the character switcher in the header; the shell hands it `onSwitch` / `onAdd` / `onRename` / `onRemove`), `welcome.js` / `welcome.html` (0.6 P17: the first-visit card), `sync.js` / `sync.html` (the sync line, mounted by the sync chunk's `src/sync-ui.js`, not the registry; §4), and `page.js` (`useCardPage`: the shell's names and the pack's tables and helpers these cards still read, imported under their old names; `src/cards/` may import only `src/core/` and `src/cards/`, so the shell hands them over. 0.4 P5a–d merged without removing this hand-over; moving it behind the pack object is not scheduled, ROADMAP "0.4"). Handlers wire in each card's `mount`, so a card module touches no DOM at import (the Node core bundle imports `src/cards/`) |
 | `src/packs/aion2/*.js` | the AION 2 pack's code (0.4 P2b): `pack.js` (`aion2Pack`: data, catalog, `charFields`, `keptRules`, `gateChanges`, `graphTransforms`, story hooks, `hopName`, `locate`, `skipLocation`, `onLoad`), `rules.js` (`KEPT_RULES`, `GATE_CHANGES`, the graph transforms), `requirements.js` (regional quests, the story card's level gate, objective grammar and Kibelisks, skill points and lines, the Daevanion board, stigmas, Sealed Dungeons and strongholds, the Build drawer's keys, hop names, the last-location locator), `catalog.js` (the data finished into milestones, areas, lookups), `ascension.js` (0.3 E8: the Journey card's Ascension bar; display only), `load.js` (the stigma pick pinning), `nextup.js` (0.4 P2c: the Next up producers, the story card's "Meanwhile" and Kibelisk) |
 | `src/packs/aion2/cards/*.js`, `*.html` | the AION 2 pack's cards (0.4 P4b, moved verbatim from `main.js`; each exports its spec, `aion2Pack.cards` lists them, `index.js`): `skills.js` (Skills, `renderNext`), `daevanion.js`, `stigmas.js`, `cube.js` (the Cube bars), `areas.js` (Dungeons & Strongholds), `progress.js` (Progress, `renderCollection`), `build.js` (the Build drawer: `renderRotation`, `renderStacks`), `ascension.js` (0.4 P4c: the Ascension bar under Journey's timeline, `renderAscension`; since P5c a pack section of Journey, `journey.after-timeline`, registered by `main.js`), `journey-sections.js` (0.4 P5c: the AION 2 parts of the Journey card, handed over by the Ascension section's mount), their markup (put in place by the build's `@card` lines), `maps.js` (every Metabot map link), `shared.js` (helpers only these cards use) and `page.js` (`aion2UsePage`: the shell's names they still read, `state`, `save`, `update`, …, imported under their old names until they become clean modules). Handlers wire in each card's `mount`, so a card module touches no DOM at import (the Node core bundle imports the pack) |
 | `src/packs/aion2/data/*.js` | the data tables under their page names: since 0.2 step 5b mostly re-exports of the generated module, plus what stays code: `milestones.js` (GATES, STEPS: token text expanded), `build.js` (SP_SKILLS, SP_STEPS, SP_SLOTS, RMB_STACK, node types, costs), `areas.js` (NO_AREA), and `markup.js` (the pure text helpers: `I`, `T`, `seq`, `hideouts`, `expandTokens`, …) |
@@ -41,6 +41,13 @@ no server copy. Rules:
 > crash on an old save, and note it in the CHANGELOG. See CLAUDE.md. 0.4 (P3c) made one such break: save v5; 0.9 (P2)
 > the last one: save v6, keys from stable ids. The rules below are the strict rules that return at 1.0.
 
+**The 1.0 save contract** (after 0.9 P2, P9 and P10): one key, `companion-save-v6`, kept forever; every stored key
+comes from a stable id and is listed in the save-key ledger, so a data edit that drops or renames one fails the
+generator until it is retired (with `renamedTo` for a rename); a key is never reused; a migration only adds, runs once
+per character behind its `migs` flag and is idempotent; a save newer than the build opens read-only and is never
+written; text that isn't a readable save is kept under `:unreadable` before a fresh start. The bullets below spell out
+each part.
+
 - **The storage key is `companion-save-v6`** (0.9 P2; `…:before-import` holds the state an import replaced). No
   game, class or player name in it. The keys before it, `aion2-assassin-route-v4` (0.3) and `companion-save-v5`
   (0.4 to 0.8), are never read (not to migrate, detect or warn); their data stays in storage untouched. From 1.0 the
@@ -53,7 +60,15 @@ no server copy. Rules:
   (`sp:<key>:<L>`); a stigma's level and pick by its key (`stLv`, `stPick`; a name typed for another stigma is kept as
   typed). The generator checks each (`tools/gen/gen.mjs`); the page shows names (`questNameOf`, `stName`).
 - **Item keys are permanent.** A key that is removed is retired, never reused for something else (`retired.json` in
-  each pack lists them: `g45:1`, `g45:0`, `hold:0`, the position keys replaced in E1, …).
+  each guide pack and one in the faction pack `aion2/asmodian/` list them: `g45:1`, `g45:0`, `hold:0`, the position keys
+  replaced in E1, …; a key replaced by another names it in `renamedTo`).
+- **Every save key is in a ledger** (0.9 P10). The generator lists every key a save of a guide pack can hold, by group
+  (story, objectives `<story key>#<i>` and `#<i>.<j>`, milestones, `rq`, `sd`, `sh`, `dv`, `sp`, stigmas), with the name
+  of what it tracks, and `npm run gen` commits it as `data/packs/<guide>/save-keys.json` (schema
+  `data/schema/save-keys.schema.json`). Every gen run checks the data against the committed ledger: a key that left the
+  data needs a `retired.json` entry, a record that now carries another key needs that entry's `renamedTo`, and no
+  retired key may be in use; `gen:check` fails on a ledger that isn't what the generator writes. The `schema` suite's
+  negative controls (`ledgerJob`) and `tests/core/save-keys.test.mjs` cover it.
 - **Migrations only add** (from 1.0). They copy or tick, set their flag in the character's `migs`, and leave the old
   data in place, so an older build can still read a newer save. v6 has none yet (`MIG_STEPS` is empty).
 - **Nothing stored is lost** (0.9 P9). A save whose `v` is above the build's `SAVE_V` (a stale tab, a cached page)
@@ -130,7 +145,7 @@ fields (`charFields()` in `src/core/state.js`: the engine's `ENGINE_FIELDS` plus
 how `merge()` syncs it: `"map"`, `"register"` or `"local"`) are read and written only as `char(state).<field>`; the `core` suite
 fails on a direct `state.<field>` for a character field anywhere in `src/`. The switcher (`src/cards/characters.js`, 0.5 P18) lists the slots and adds one with a
 name; a switch or a new character is stored and the page reloads (`useSave` in `main.js`), so every card is drawn for it
-from the start. Rename and remove come with P19.
+from the start. Rename and remove (0.5 P19) go through the same switcher (`onRename`, `onRemove`).
 
 ### Change times and `merge()` (0.2 step 5c)
 
@@ -139,7 +154,7 @@ stamps (`null` = removed). Stamps are not written at each mutation: `storeState(
 character against `mt` and stamps what changed with the write's time, bumped past the item's previous stamp (per-item
 Lamport bump, so a device with a slow clock still wins with a newer edit), and sets `savedAt`; writes that change only
 view settings leave `savedAt` alone, so a reload stores the same text. A v6 save is born with `mt` (the fresh start
-stamps its defaults at time 0). `merge(local, remote)` (not used by the UI yet) works per slot id: a slot on one side
+stamps its defaults at time 0). `merge(local, remote)` (used by the sync client, `src/core/sync-client.js`; the page itself doesn't call it) works per slot id: a slot on one side
 only is kept, a slot on both sides keeps the later change per item; a slot's newest removal (a tombstone, or a revived
 character's `removedAt`) drops every item changed at or before it, so only edits made after a removal bring a character
 back, and a slot with none left stays the tombstone (a save left with no character gets a new one on load);
@@ -176,8 +191,8 @@ code (`src/packs/aion2/travel.js`: bound Kibelisks, the "Bind X" row, teleport v
   the Progress tally of one-time clears (`clearDoneOf`, switch `clearTally`): a derived regional quest or stronghold
   counts with its clear reward. The Cube and the stone / crystal totals still only move on a tick, so the reward is
   never written or counted twice.
-- Story objective ticks (`qsteps`, `qsub`) are keyed by quest name and the objective's permanent `i` (gen checks
-  `i` = position, never renumbered). The objective text in `QUEST_STEPS` is parsed (sub-steps, Kibelisk, talk-only), so
+- Story objective ticks (`qsteps`, `qsub`) are keyed by the quest's id (`sq:<gameId>`) and the objective's explicit,
+  permanent `i` (0.9 P2: set in the data, unique within the quest, never reused; gen checks it). The objective text in `QUEST_STEPS` is parsed (sub-steps, Kibelisk, talk-only), so
   a step `note` lives in its own table `QUEST_STEP_NOTES` and is only joined on for display (`objTextOf`, switch
   `stepNotes`); a note can never change a sub-step count or a save index.
 - Quests are placed into milestones **at runtime** by recommended level, so moving one between milestones never
@@ -186,7 +201,8 @@ code (`src/packs/aion2/travel.js`: bound Kibelisks, the "Bind X" row, teleport v
 ### Load-time steps (in load order)
 
 All of them are `migrate(state, hadSave, store, now)` in `src/core/migrations.js`; the page passes its `storeState` as
-`store` and its time in seconds as `now`. Save v5 (0.4 P3c) is a clean break, so there are no steps for old shapes:
+`store` and its time in seconds as `now`. Save v5 (0.4 P3c) and save v6 (0.9 P2) are clean breaks, so there are no
+steps for old shapes:
 `migV5` (`MIG_V5`), the player seeds `seedLv12` / `stTriniel1` / `dvReset1`, `eputSync1`, `g45Split1`, `stampV1` and
 `backup1` were removed with the pre-0.4 saves they were for.
 
@@ -201,8 +217,9 @@ All of them are `migrate(state, hadSave, store, now)` in `src/core/migrations.js
    on a loaded save (a fresh start is written with its first change). `merge()` keeps the union of both copies'
    `migs` and `syncedPart` carries it, so a step that ran on one device never runs again on another.
 
-**Import** accepts a v5 export only (`parseExport`): any other file, a pre-0.4 export included, gets "This file is from
-a version before 0.4 and can't be loaded." and nothing changes. A v5 file replaces the state (after confirming), the
+**Import** accepts a v6 export only (`parseExport`, `src/core/state.js`): any other file, a pre-0.4 export and a v5
+export (0.4 to 0.8) included, gets "This file is from a version before 0.4 and can't be loaded." and nothing changes
+(the wording predates v6: it is also shown for a v5 file). A v6 file replaces the state (after confirming), the
 old one is kept under `:before-import`, and the file's `backup` is replaced with `{ since: now, lastExportAt: now }`
 (the import counts as a backup); the steps above run on the reload. **Export** writes the save as it is to
 `companion-save-<date>.json`.
@@ -226,7 +243,8 @@ Adding a load-time step (from 1.0):
 - `render()` builds the static DOM: the milestone cards (`renderMilestones`, `GATES` via `cardHTML`) and Route rules
   (`renderRoute`, `STEPS`), on every call (Sync levels and Respec call `render()` again), then `mountAll` for the
   registered cards (below).
-- `update()` runs after every change (≈10 ms; the non-blocking `perf` suite checks it stays under 15 ms). Inside one
+- `update()` runs after every change (the non-blocking `perf` suite checks its median stays under 15 ms; not part of
+  `npm test`). Inside one
   `gatesPass`, `updatePass` calls, in this order: `milestones` (counts and tags: Cleared / Missed / Now / Side quests,
   the rail's milestone list, the derived boxes), `route` (Route rules counts), `journey` (the level control), `areas`,
   `milestoneFilters` (the milestone filters and toolbar), `skills` (`renderNext`, which also draws Progress, the Build
@@ -253,9 +271,10 @@ time; `main.js` registers them (`registerCard`) before the first `render()`.
 - **`render()`** resolves each registered `root` with `getElementById` and calls `mountAll(els, ctx)`; a card is
   mounted once (a later `render()` mounts only cards not mounted yet). **`update()`** calls
   `updateCard(id, ctx)` for each card at the spot its old code stood (inside its `gatesPass`), so the call order stays
-  the pre-0.4 one. Not `updateAll(ctx)` yet: the cards still depend on each other's DOM, and the slot order (rail, top,
+  the pre-0.4 one. Not `updateAll(ctx)`: the cards still depend on each other's DOM, and the slot order (rail, top,
   main) would run the milestone filters after Skills redraws the board rows they hide, and Next up before the milestone
-  text its step titles read (`stepHTML`); `updateAll` takes over once P5a–d make the cards independent. A card another
+  text its step titles read (`stepHTML`). 0.4 P5a–d merged without making the cards independent; switching to
+  `updateAll` is not scheduled (ROADMAP "0.4", finding 6: no user value). A card another
   card draws (`renderNext` calls `renderCollection`, `renderRotation`, `renderDaevanion`, `renderQuest`, …) registers
   with `update: null`.
 - **`ctx`** = `{ state, c: char(state), pack: activePack(), basic, ev }` (`cardCtx()` in `main.js`, built once per
@@ -276,6 +295,7 @@ time; `main.js` registers them (`registerCard`) before the first `render()`.
 | `top` | 300 | `cube` (no root: `#spCube`, `#dvCube`) | `src/packs/aion2/cards/cube.js` | mount, update |
 | `top` | 400 | `stigmas` (`#stCard`) | `src/packs/aion2/cards/stigmas.js` | mount, update |
 | `top` | 500 | `undo` (`#dvUndo`, in the Daevanion card) | `src/cards/undo.js` | mount; drawn by `daevanion` |
+| `main` | 40 | `welcome` (`#welcomeCard`) | `src/cards/welcome.js` | mount only (hidden unless the save is to be welcomed) |
 | `main` | 50 | `characters` (`#charCard`, in the header: no slot of its own, so it takes the first free order in `main`) | `src/cards/characters.js` | mount, update (the label) |
 | `main` | 100 | `nextup` (`#nowStar`) | `src/cards/nextup.js` | mount, update |
 | `main` | 200 | `milestones` (`#gates`) | `src/cards/milestones.js` | mount, update; drawn by `render()` |
@@ -285,14 +305,16 @@ time; `main.js` registers them (`registerCard`) before the first `render()`.
 | `drawer` | 100 | `build` (`#statDrawer`) | `src/packs/aion2/cards/build.js` | mount; drawn by `skills` |
 
 Confidence and Sources draw `CONF`, `SOURCES` and `SRC_SITE`, which are the pack's data; `src/cards/` may not import a
-pack, so `main.js` hands the tables to `sourcesCards(data)` until P5d moves them behind the pack object. The other engine
+pack, so `main.js` hands the tables to `sourcesCards(data)` (0.4 P5d merged without moving them behind the pack
+object; not scheduled). The other engine
 cards (P4c) read the pack's tables and helpers, and the shell's `state`, `save`, `update`, …, through `src/cards/page.js`
 (`useCardPage`, called by `main.js` before the first `render()`), the way the pack's cards read the shell through
 `aion2UsePage`. `ascension` is the pack's section of Journey (`journey.after-timeline`, 0.4 P5c); `main.js` registers
 it after the engine cards, since a section's card must be registered before the section (`aion2Pack.cards` is
 registered first). Its mount hands the Journey card the pack's parts (`useJourneyParts`: what a level change does
 beside the level, the Level up gains, an objective's place, what a story line opens; `src/packs/aion2/cards/journey-sections.js`),
-so `src/cards/journey.js` names no AION 2 term (the `core` suite scans it).
+so `src/cards/journey.js` names no AION 2 term. The `core` suite's term scan (`tests/core/terms.test.mjs`, the 0.4 P8
+done check) covers every file in `src/cards/` and `src/shell/` and `main.js` since 0.9 P4, code and comments.
 
 **Proving a card move:** `tests/support/dom-snapshot.mjs` writes `document.body.outerHTML` (script text emptied), the
 form state (checked / value / disabled of every field) and the stored save for 20 states (fresh, Lv 13, 27, 30, 45 ×
@@ -337,7 +359,8 @@ web sources ──(research sessions, by hand)──▶ data/packs/** (v2) ─�
   (`tools/gen/validate.mjs`), runs
   the cross-record checks (ids unique, keys unique, references resolve, story chain one path, URLs on registered sites
   and never on a banned or `mode: none` site, `verifiedAt` = latest `checkedAt`, claims ↔ `appliesTo`, retired keys,
-  objective indices, …; about 8,600 checks) and compiles today's constants: `RQ`, `RQ_STATS`, `QUESTS`, `QUEST_STEPS`,
+  objective indices, the save-key ledger, …; 17,245 checks for the Assassin pack, 17,368 to 17,586 for the other
+  seven, `schema` suite 2026-10-21) and compiles today's constants: `RQ`, `RQ_STATS`, `QUESTS`, `QUEST_STEPS`,
   `QUEST_LOC`, `STORY_END`, `SH_DATA`, `AREA_LOC`, `HIDEOUT_AREA`, `ZONE_TRACES`, `SD_RW`, `TIPS`, `ITEMS`,
   `VERIFIED_UNLOCKS`, the guide build's plan constants (`STIGMA_PLAN`, `ST_TARGETS`, `STAT_TIERS`, `SP_SKILLS_CORE`,
   `SP_EXTRA`, `RMB_ROWS`, `E_ORDER`, …), `SOURCES`, `SRC_SITE`, `CONF`, and `GUIDE_GATES` / `GUIDE_STEPS` (milestone
@@ -373,8 +396,8 @@ produced the v1 files (provenance; they no longer match `data/`). `tools/history
   top-level name or a free reference to one, and tests and inline handlers still see every top-level name; the class
   chunks are minified without it); no tree shaking, since names are used from inline `onclick` attributes and from tests). Every top-level name therefore
   stays a page global, as before modules. esbuild reprints the code: comments dropped, minified formatting, and
-  top-level `const` / `let` emitted as `var` (it does this whenever it bundles; none of the 244 top-level names is a
-  `window` property). Modules come first in import order (generated data, then the pack's data modules, the engine and
+  top-level `const` / `let` emitted as `var` (it does this whenever it bundles; no top-level name is a `window`
+  property). Modules come first in import order (generated data, then the pack's data modules, the engine and
   the pack's code), then `main.js`. The generated data modules are compiled by an esbuild plugin
   (`scripts/generated-data.mjs` → `tools/gen/gen.mjs`) and resolve under `src/packs/aion2/data/`; a schema error or
   failed data check stops the build, so does a real `generated.js` there (or in the old `src/data/`), so does a top-level
@@ -432,10 +455,11 @@ produced the v1 files (provenance; they no longer match `data/`). `tools/history
   first visit) and not counted in the page budget. `stamp()` and the change-time walkers stay in the page
   (`src/core/sync.js`, every save stamps). Page gzip -9: 190,590 B before, 181,369 B after.
 - **Page budgets** (0.4 P7, about 1.3x the 0.3.0 numbers; the build prints each with its limit and % used): the site page
-  (`dist/index.html` plus its largest class chunk, 0.6 P2) 870,000 B (0.3.0: 669,290), its gzip -9 (each file gzipped on
-  its own, summed) 200,000 B (153,871) fail the build (the claude.ai build's 1,030,000 B budget went with that build in
-  0.7 P9) (`BUDGETS` in `scripts/build.mjs`); 6,200 elements in a fresh browser at 390 px (4,741) fail the `site` suite
-  (`ELEMENT_MAX` in `tests/site.js`). To raise one, change that constant in the PR and say in the PR why. Timing
+  (`dist/index.html` plus its largest class chunk, 0.6 P2) 870,000 B (0.3.0: 669,290; build of 2026-10-21: 743,806, 85%),
+  its gzip -9 (each file gzipped on its own, summed) 200,000 B (153,871; 2026-10-21: 182,812, 91%) fail the build (the
+  claude.ai build's 1,030,000 B budget went with that build in 0.7 P9) (`BUDGETS` in `scripts/build.mjs`); 6,200
+  elements in a fresh browser at 390 px (4,741; 2026-10-21: 5,733, 92%) fail the `site` suite (`ELEMENT_MAX` in
+  `tests/site.js`). To raise one, change that constant in the PR and say in the PR why. Timing
   (`perf`) stays advisory.
 - Fonts (since 0.1.5): `src/assets/fonts/` holds the latin and latin-ext WOFF2 files Google Fonts serves for Marcellus SC,
   Figtree and JetBrains Mono, with their SIL OFL 1.1 texts. The `@font-face` rules copy Google's CSS (one face per
@@ -450,7 +474,7 @@ produced the v1 files (provenance; they no longer match `data/`). `tools/history
 - `src/sw.js`: precaches the shell, icons, fonts, the class chunks (`packs/*.js`, 0.6 P2) and the sync chunk (`sync.<hash>.js`, 0.8 P6); network-first for the page, cache-first for the rest; other
   `aion2-route-*` caches (older builds, the pre-0.1.5 Google Fonts cache) are deleted on activate. Registered only on
   https or localhost, and only in `dist/`.
-- Export: `window.claude.use("downloads")` when present (claude.ai), else a Blob download.
+- Export: a Blob download.
 - `scripts/serve.mjs`: static server for `dist/` (+ `/__baselines/` when started with `baselines`; no suite uses it since 0.4 P3c).
 
 **Pure core rules** (0.2 P3; engine and pack since 0.4 P2b, `docs/design/0.4-engine-contract.md` §1–§2): `src/core/`
@@ -483,18 +507,19 @@ docs/DEPLOY.md, "CI jobs").
 | `site` | element budget at 390 px (§4), head, footer (version, Report a problem), export (Blob download), service worker + offline, manifest, 404, the site's icons, self-hosted fonts, persistent storage, save-failure banner |
 | `e1`…`e4` | functional checks from each polish pass |
 | `labels` | 0.8 P20: unverified values carry their label. Reads every `fieldStatus` / `status` from `data/packs/**` and checks the fields players see (a regional quest's zone in its milestone row and Next up's tooltip, a stronghold's level range, a Sealed Dungeon's entrance, a plan skill's learn level in every guide pack and the Skills card): "check in game" for disputed / owner-check, "inferred" for inferred, no tag on a verified value; every tag ≥ 12 px |
-| `save` | save v5 (0.4 P3c) in the browser: fresh start, a v4 save present (never read: `getItem` spied, its entry byte-identical), round trip, import (v5 only; a v4 export refused), Level up (label vs slot id), the name and label in no key / link / file name, two slots |
+| `save` | save v6 (0.4 P3c; v6 since 0.9 P2) in the browser: fresh start, an older save present (never read: `getItem` spied, its entry byte-identical), round trip, import (v6 only; a v4 export refused), Level up (label vs slot id), the name and label in no key / link / file name, two slots, the switcher |
 | `regress` | Lv 25–45 × Basic/Advanced × 1500/1100/390 px × clean/messy saves, the user's save, pop-out |
 | `journey` | the user's save from Lv 27 to 45 by clicking through Next up (page timers on Playwright's fake clock; `JOURNEY_REALTIME=1` for real pauses) |
 | `perf` | non-blocking, not in `npm test`: `update()` median < 15 ms at e1's and regress's states (`npm run test:perf`) |
-| `golden` | golden master: 2,000 generated saves (every level × story position × tick subsets × Basic/Advanced × build states, plus the fixtures) against `tests/golden/snapshots/` |
+| `golden` | golden master: 2,818 states (2,000 core generated saves: every level × story position × tick subsets × Basic/Advanced × build states; the smart Next up families of 0.5 P11; the fixtures) against `tests/golden/snapshots/` |
 | `gates` | every story position × {quest level, 45}: no Next up step before its story gate or after the story passed it |
-| `schema` | data format v2 in Node, no browser (`node tests/schema.mjs`, `npm run test:data`; measured 0.9 P32 on a 4-vCPU box: 7.7 s before, ~7 s after, target < 4 s not yet met): every data file and schema example against `data/schema/` (ajv Ajv2020 strict), broken copies that must be rejected, the generator's cross-record checks, `DATA_SOURCES.md` and `data/expected-counts.json` current (data counts live only there, `npm run gen -- --counts`; `checks.mjs` pins them with `ctx.count`). The generator's 49 negative controls are jobs in worker threads (`--workers=N`), each an in-memory view of `data/packs` (`generate({ mutate, drop, add })`, `tools/gen/packs.mjs` `fsView`; a no-edit view compiles byte-identical modules); the one real copy left is the `--root` check (`tests/out/packs-copy`) |
+| `schema` | data format v2 in Node, no browser (`node tests/schema.mjs`, `npm run test:data`; measured 0.9 P32 on a 4-vCPU box: 7.7 s before, ~7 s after, target < 4 s not yet met; 7 s in the `npm test` run of 2026-10-21): every data file and schema example against `data/schema/` (ajv Ajv2020 strict), broken copies that must be rejected, the generator's cross-record checks, `DATA_SOURCES.md` and `data/expected-counts.json` current (data counts live only there, `npm run gen -- --counts`; `checks.mjs` pins them with `ctx.count`). The generator's 77 negative controls (2026-10-21, the save-key ledger's included) are jobs in worker threads (`--workers=N`), each an in-memory view of `data/packs` (`generate({ mutate, drop, add })`, `tools/gen/packs.mjs` `fsView`; a no-edit view compiles byte-identical modules); the one real copy left is the `--root` check (`tests/out/packs-copy`) |
 | `ledger` | Node, no browser, < 2 s (`node tests/ledger.mjs`; CI: the `checks` shard): the rules and decisions ledger and the SOP index with their negative controls; out of `schema` since 0.9 P6, so a DECISIONS-only edit can't red `schema` |
-| `core` | the engine and the AION 2 pack's code in Node, no browser, checks < 5 s and bundle < 3 s (`node tests/core.mjs`, `npm run test:core`; needs no build; the bundle calls `usePack(aion2Pack)` as the page does): source rules (no DOM in `core/`, the import rule per folder, no AION 2 term in `core/`, `char(state)` only, no label or name in keys / file names), the pack holder (`definePack` checks and defaults, the engine on a pack with no hooks), state (v5 shape, `char()`, `labelOf`, fresh start, import check), load-time steps (write points, idempotent), catalog, requirements, Next up (order rules, Basic, and the `gates` sweep in Node), the 0.3 evaluator (atom rows, chains, memo, no mutation), the §8 source check (no gate decided outside the evaluator; `tests/core/gate-sources.test.mjs`), sync (change times, per-slot `merge()` algebra over generated saves, N1 import, last confirmed location) |
-| `equiv` | Node, no browser, < 30 s (`node tests/equiv.mjs`, `npm run test:equiv`; CI: the `checks` shard): over the 2,000 golden states, the bare evaluator vs the frozen 0.2 gate rules (`tests/support/gates-0.2.mjs`; known differences pinned with their cause and kept rule, table in `tests/out/evaluator-equivalence.md`), and the page's gate functions (evaluator + `KEPT_RULES`) vs the same rules with no difference allowed |
-| `invariant` | Node, no browser, ~65 s in CI (warns above 90 s, fails above 150 s; `node tests/invariant.mjs`, `npm run test:invariant`; CI: the `checks` shard): over 10,000 states (the golden generator's 8,000 with `--all`, ~1,800 targeted edge states, a seeded random top-up; `tests/invariant/states.mjs`), an independent oracle written from the raw v2 data (`tests/support/oracle.mjs`, not `GATE_GRAPH`) judges Next up (never offers a blocked or done node; disagreements pinned with their cause, table in `tests/out/invariant.md`) and the evaluator (same open / done / blockers on every node), plus monotonic gates and no writes on a frozen save. Seeded: `--seed`, `--state <id>` replays a state. Each test file after the first runs in a child process at the same time (0.9 P6); `tests/run.mjs` gives it `--max-semi-space-size=64` |
+| `core` | the engine and the AION 2 pack's code in Node, no browser, checks < 5 s and bundle < 3 s (`node tests/core.mjs`, `npm run test:core`; needs no build; the bundle calls `usePack(aion2Pack)` as the page does): source rules (no DOM in `core/`, the import rule per folder, no AION 2 term in `core/`, `char(state)` only, no label or name in keys / file names), the pack holder (`definePack` checks and defaults, the engine on a pack with no hooks), state (v6 shape, `char()`, `labelOf`, fresh start, import check, read-only newer saves), load-time steps (write points, idempotent), catalog, requirements, Next up (order rules, Basic, and the `gates` sweep in Node), the 0.3 evaluator (atom rows, chains, memo, no mutation), the §8 source check (no gate decided outside the evaluator; `tests/core/gate-sources.test.mjs`), sync (change times, per-slot `merge()` algebra over generated saves, N1 import, last confirmed location) |
+| `equiv` | Node, no browser, < 30 s (`node tests/equiv.mjs`, `npm run test:equiv`; CI: the `checks` shard): over the 2,748 golden states (2,000 core saves and the smart Next up families), the bare evaluator vs the frozen 0.2 gate rules (`tests/support/gates-0.2.mjs`; known differences pinned with their cause and kept rule, table in `tests/out/evaluator-equivalence.md`), and the page's gate functions (evaluator + `KEPT_RULES`) vs the same rules with no difference allowed |
+| `invariant` | Node, no browser, 61 s in the `npm test` run of 2026-10-21 (warns above 90 s, fails above 150 s, `WARN_S` / `LIMIT_S`; `node tests/invariant.mjs`, `npm run test:invariant`; CI: the `checks` shard): over 10,750 states (`TOTAL`: the golden generator's 8,000 with `--all`, targeted edge states, a seeded random top-up; `tests/invariant/states.mjs`), an independent oracle written from the raw v2 data (`tests/support/oracle.mjs`, not `GATE_GRAPH`) judges Next up (never offers a blocked or done node; disagreements pinned with their cause, table in `tests/out/invariant.md`) and the evaluator (same open / done / blockers on every node), plus monotonic gates and no writes on a frozen save. Seeded: `--seed`, `--state <id>` replays a state. Each test file after the first runs in a child process at the same time (0.9 P6); `tests/run.mjs` gives it `--max-semi-space-size=64` |
 | `tokens` | Node, no browser, < 1 s (`node tests/tokens.mjs`; CI: the `checks` shard): in `src/styles/*.css`, no raw colour outside the custom-property declarations of a top-level `:root` rule; radius, spacing (margin / padding / gap) and shadows only through tokens; every `var(--x)` defined (or set by `main.js`, or with a fallback). `docs/design-system.md` |
+| `scrapbook`, `kickoff`, `automerge`, `fetchlog` | Node, no browser, < 1 s each (CI: the `checks` shard): every `docs/reviews/<folder>/scrapbook.json` publishable (`tests/scrapbook.mjs`); kickoff.yml's After check, auto-merge.yml's design and data checks and the shared-folder fetch-log check on fixtures (`tests/kickoff.mjs`, `tests/automerge.mjs`, `tests/fetchlog.mjs`) |
 | `a11y` | axe-core (pinned devDependency) at 390 / 1500 px in fresh / Lv 27 / Lv 45 × Basic / Advanced, failing on any rule outside the allowlist in `tests/a11y.js` (rules still open, each with its audit item); spoken button names; reduced motion after Level up; Escape on the "i" popovers; hit areas ≥ 24 px that never take a point from a neighbour; on touch at 390 px (since 0.1.9) fields ≥ 16 px, primary buttons ≥ 44 px, text ≥ 11 px mono / 12 px; no story connector above the first row; no sideways scroll at 260 px |
 
 **Golden master** (`tests/golden/README.md`): records Next up, milestone headers, the Journey card, the Dungeons &
@@ -512,7 +537,7 @@ shrinks: when a rule is fixed, remove it so it can't come back. Motion follows `
 `#rwToast` clears itself on `animationend`). Small controls get their 24 px target from an invisible `::before` /
 `::after` (`src/styles/app.css`, "Pointer targets"); the suite lists them in `HIT`.
 
-Saves in the suites go through `tests/support/save.js` (`toStored(flat)` wraps a flat test state into a v5 save with
+Saves in the suites go through `tests/support/save.js` (`toStored(flat)` wraps a flat test state into a v6 save with
 one slot; the old v285 / v287 baselines and the migration suites went with the clean break in 0.4 P3c). Web fonts are
 blocked in test browsers so layouts render with fallback fonts on every machine (`tests/support/block-web-fonts.cjs`:
 the self-hosted font files, the claude.ai build's inlined fonts, Google Fonts; service workers are blocked unless a context allows them, since a worker

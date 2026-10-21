@@ -16,18 +16,21 @@
      e1       E1 functional checks (keys, Next up, stigma pick, snooze, story end, export/import, layout, drawer)
      e2       E2 data checks (regional availability, story 41-45, strongholds, dungeons, build, claims, Sources)
      e3       E3 checks          e4   E4 checks (QA3 findings)
-     save     save v5 (0.4 P3c): fresh start, a v4 save never read, round trip, import (v5 only), label vs slot id
+     labels   unverified values the player sees carry their label ("check in game", "inferred"; 0.8 P20; tests/labels.js)
+     save     save v6 (0.4 P3c; v6 since 0.9 P2): fresh start, an older save never read, round trip, import (v6 only), label vs slot id
      regress  QA regression matrix: Lv 25-45 x Basic/Advanced x 1500/1100/390 px x clean/messy (+ migration, user save, pop-out)
      gates    story gates: no Next up step before its story prerequisite or after the story passed it (every story position)
      journey  the user's save from Lv 27 to 45 by clicking; fails on any "!!" line except the known harness issue below
-     golden   golden master: ~2,000 generated saves, Next up / milestones / Journey / dungeons / stored state vs
+     golden   golden master: 2,818 states (2,000 core generated saves, the smart Next up families, fixtures), Next up / milestones / Journey / dungeons / stored state vs
               tests/golden/snapshots (tests/golden/README.md; `node tests/golden.js --record` after an intended change)
-     core     the pure core (src/core/) in Node, no browser: state, migrations, catalog, requirements, Next up (checks < 5 s, bundle < 3 s)
+     core     the engine (src/core/) and the AION 2 pack's code in Node, no browser: state, migrations, catalog, requirements,
+              Next up, term scan, save keys (checks < 5 s, bundle < 3 s)
      equiv    Node, no browser: the requirement evaluator and the page's gate functions vs the frozen 0.2 gate rules over the
-              2,000 golden states (< 30 s; tests/equiv.mjs). In the `checks` shard (ci.yml has no step of its own for it)
-     invariant Node, no browser: over 10,000 seeded states, Next up never offers a blocked or done node, judged by an
-              independent oracle from the raw data (tests/support/oracle.mjs); evaluator = oracle on every node (~20 s, warns > 30 s, fails > 60 s;
-              tests/invariant.mjs). In the `checks` shard like equiv (the app can't edit ci.yml to give it a step)
+              2,748 golden states (< 30 s; tests/equiv.mjs). In the `checks` shard (ci.yml has no step of its own for it)
+     invariant Node, no browser: over 10,750 seeded states, Next up never offers a blocked or done node, judged by an
+              independent oracle from the raw data (tests/support/oracle.mjs); evaluator = oracle on every node (61 s on
+              2026-10-21, warns > 90 s, fails > 150 s; tests/invariant.mjs). In the `checks` shard like equiv (the app can't
+              edit ci.yml to give it a step)
      tokens   Node, no browser: no raw colour in any .css under src/styles/ outside the :root token definitions; radius, spacing and
               shadows use tokens; every var() is defined (tests/tokens.mjs, docs/design-system.md; < 1 s). In the `checks` shard
      scrapbook Node, no browser: every docs/reviews/<folder>/scrapbook.json is publishable and every shots folder with a cases.mjs
@@ -41,7 +44,7 @@
      fetchlog Node, no browser: the shared-folder fetch-log check (tools/fetchlog/check.mjs) on fixtures; each rule fails a
               line that breaks it (tests/fetchlog.mjs; < 1 s). In the `checks` shard
      schema   every v2 data file and schema example against data/schema/ (ajv Ajv2020, strict), then the generator's data checks
-              and licence compliance (tests/compliance.mjs)
+              (the save-key ledger included), its 77 negative controls and licence compliance (tests/compliance.mjs)
      ledger   Node, no browser: the rules and decisions ledger and the SOP index (tests/ledger.mjs, docs/kaizen/LEDGER.md) with
               their negative controls (< 2 s). In the `checks` shard (0.9 P6: out of schema, so a DECISIONS edit can't red it)
      a11y     axe-core at 390 / 1500 px (fresh / Lv 27 / Lv 45 x Basic / Advanced; fails on rules outside its allowlist),
