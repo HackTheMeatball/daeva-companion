@@ -3,11 +3,11 @@
    one Next up producer and one gated card (0.6 P16); every other hook keeps the engine's default. "fakegame:data" is the module tools/gen/gen.mjs
    compiles from this folder's packs (the test serves it), the way the AION 2 pack gets its generated data. */
 import { definePack } from "../../../../src/core/pack.js";
-import { GATE_GRAPH, GATE_PROPOSED, GUIDE_GATES, GUIDE_STEPS, QUESTS, QUEST_STEPS, QUEST_STEP_NOTES } from "fakegame:data";
+import { GATE_GRAPH, GATE_PROPOSED, GUIDE_GATES, GUIDE_STEPS, QUESTS, QUEST_NAME, QUEST_STEPS, QUEST_STEP_I, QUEST_STEP_NOTES, QUEST_SUB_I } from "fakegame:data";
 
 export const fakegamePack = definePack({
   id: "fakegame",
-  data: { graph: GATE_GRAPH, proposed: GATE_PROPOSED, story: { quests: QUESTS, steps: QUEST_STEPS, notes: QUEST_STEP_NOTES } },
+  data: { graph: GATE_GRAPH, proposed: GATE_PROPOSED, story: { quests: QUESTS, names: QUEST_NAME, steps: QUEST_STEPS, notes: QUEST_STEP_NOTES, ids: QUEST_STEP_I, subIds: QUEST_SUB_I } },
   catalog: { milestones: GUIDE_GATES, routes: GUIDE_STEPS },
   /* on the last story quest: a card of the pack's own kind, ranked late (after the story card) */
   nextUpProducers: [{ id: "fakegame-end", produce: (state, ctx) => ctx.story.qi === QUESTS.length - 1 ? [{ phase: "late", card: { kind: "fakeEnd", act: "" } }] : [] }],
