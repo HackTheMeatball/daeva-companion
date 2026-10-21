@@ -35,8 +35,8 @@ A research pack for a class, a queued data-fix item, a data correction routed by
 
 - Game Data Check VERIFIED on the head of every data, research or icon PR (ROL-03; carry rule DEC-20261020-verified-carry-skips-data-sources).
 - `npm run gen` and the schema checks green (REPO-01).
-- On a PR Gretchen authors, a non-author verifies it (Lydia by default), and the PR opens with `hold` until Gus's tagged-verdict merge check ships (not yet in the ledger).
-- On any other PR, a Game Data Check verdict counts only when posted on the PR as a `VERDICT:` line tagged `(reviewer: Game Data Check)`, and the PR opens with `hold` until that same check ships.
+- On a PR Gretchen authors (`claude/game-data-check-*`) that touches data, research or icon files, Lydia verifies it: auto-merge waits for her approval of the head (MRG-12).
+- On any other PR, a Game Data Check verdict counts only when posted on the PR with the head's short SHA on the line (MRG-12).
 
 ## Records
 
@@ -54,6 +54,7 @@ A research pack for a class, a queued data-fix item, a data correction routed by
 
 - [REPO-05](../../CLAUDE.md): verified data only
 - [ROL-03](../DECISIONS.md): who looks up, Gretchen verifies
+- [MRG-12](../team/gus.md): named reviewers
 - [DEC-20261019-research-threads-may-fetch-from](../DECISIONS.md): research threads fetch in their pack
 - [REPO-06](../../CLAUDE.md): fetching
 - [ROL-08](../research/SOURCES.md#keeping-this-current): fetch log first

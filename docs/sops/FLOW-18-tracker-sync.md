@@ -9,7 +9,7 @@ Keep Isaac's tracker a true live view of the work: cards, To-dos, versions, the 
 
 ## Trigger
 
-A message from another flow (`MERGED`, `KICKOFF DISPATCHED`, a To-do ask, `OK RECORDED`, a plan merge, a release). The backstop poll is off: Huell disabled it 2026-10-21 01:57Z under the coordinator's usage tiers (cut 4.1 of Kaizen's usage plan v2, `kaizen/usage-plan-v2.md` in the project's shared folder); CLK-03's row is updated once the usage-tiers DECISIONS row (#687) merges.
+A message from another flow (`MERGED`, `KICKOFF DISPATCHED`, a To-do ask, `OK RECORDED`, a plan merge, a release). The backstop poll is off: Huell disabled it 2026-10-21 01:57Z under the coordinator's usage tiers (cut 4.1 of Kaizen's usage plan v2, `kaizen/usage-plan-v2.md` in the project's shared folder) ([DEC-20261020-usage-tiers](../DECISIONS.md)).
 
 ## Owner
 

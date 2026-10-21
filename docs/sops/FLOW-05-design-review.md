@@ -50,7 +50,7 @@ Two entry points: (a) Jane's mockups for a minor with visible changes are ready 
 
 - `DESIGN CHANGES` starts a fix run (MRG-06).
 - A removal of something Isaac sees is named in the review summary and in Jane's decision note. A contested removal does not go ahead unless an outside reviewer with no history on that look agrees; Holly never accepts a removal because the team decided it.
-- Reviewers disagree: the morning debrief (KZ-16).
+- Reviewers disagree: the outside-review route in KZ-16's home; only an UNSURE, or a disagreement after one revision, reaches Isaac as one card from the coordinator (KZ-16).
 - A merged `fresh-review` item with no fresh-review note: Mike flags it as `review-skipped` (KZ-16).
 
 ## Rules it runs on
@@ -68,7 +68,7 @@ Two entry points: (a) Jane's mockups for a minor with visible changes are ready 
 
 ## Open questions for the owner of this flow
 
-- Reviewer disagreement: Holly's charter (docs/team/holly.md, PR #668) sends it through an outside review, with only an UNSURE reaching Isaac as one card. KZ-16's home still sends it to the morning debrief, so this page follows the home until the home changes; Holly raises it with Gale ([FLOW-15](FLOW-15-process-change.md)).
+- None. Reviewer disagreement follows KZ-16's home, which takes the outside-review route since #695 (PROCESS REVIEW kz16-disagreement-route OK, 2026-10-20 10:19 PM ET).
 
 ## Last confirmed by owner
 

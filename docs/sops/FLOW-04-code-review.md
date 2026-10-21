@@ -20,7 +20,7 @@ The pipeline sees green CI on a claude/ PR head (PIP-01).
 - The PR diff and its item spec
 - Howard's review criteria: the `Check:` line of the review prompt in [.github/workflows/pipeline.yml](../../.github/workflows/pipeline.yml)
 - For a `fresh-review` item: Howard's fixed brief, [docs/reviews/code-fresh-review-brief.md](../reviews/code-fresh-review-brief.md)
-- Howard's charter, docs/team/howard.md (in PR #666, not yet on main)
+- Howard's charter, [docs/team/howard.md](../team/howard.md)
 
 ## Steps
 
@@ -33,7 +33,7 @@ The pipeline sees green CI on a claude/ PR head (PIP-01).
 ## Gates
 
 - `VERDICT: APPROVE` naming the head sha7, newer than the head (MRG-02, checked in [FLOW-09](FLOW-09-merge.md)).
-- For a held item, `FRESH REVIEW OK <sha7>` naming the head.
+- For a held item, or any PR with a FRESH REVIEW note, `FRESH REVIEW OK <sha7>` naming the head (MRG-12).
 
 ## Records
 
@@ -45,7 +45,7 @@ The pipeline sees green CI on a claude/ PR head (PIP-01).
 ## Failure and escalation
 
 - `stuck` after three rounds: Mike flags it (HC-01); a push that answers the findings clears it (MRG-09).
-- Reviewers disagree on a fresh-review item: it goes to the owner in Saul's morning debrief (KZ-16).
+- Reviewers disagree on a fresh-review item: the outside-review route in KZ-16's home; only an UNSURE, or a disagreement after one revision, reaches Isaac as one card from the coordinator (KZ-16).
 - A merged `fresh-review` item with no fresh-review note: Mike flags it as `review-skipped` (KZ-16).
 - Workflow PRs get `stuck`, not a fix run; Gus drives them (PIP-03).
 
@@ -58,6 +58,7 @@ The pipeline sees green CI on a claude/ PR head (PIP-01).
 - [PIP-01](../team/gus.md): event pipeline
 - [PIP-02](../team/gus.md): fix-round models
 - [MRG-09](../team/gus.md): labels
+- [MRG-12](../team/gus.md): named reviewers
 - [PIP-03](../team/gus.md): workflow PRs
 - [KZ-16](../../ROADMAP.md): fresh review
 - [DEC-20261020-k24-design-and-code-review](../DECISIONS.md): Code Review thread
