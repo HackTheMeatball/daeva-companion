@@ -271,7 +271,7 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   const cuHero = () => p.evaluate(() => { const h = document.querySelector('#spHero .sphero'); if (!h) return null;
     const nm = h.querySelector('.spname'), arr = nm.querySelector('.lvarr'), sm = h.querySelector('.dvtext small');
     return { cu: h.classList.contains('cu'), name: nm.firstChild.textContent.trim(), to: arr ? +((arr.textContent.match(/→ (\d+)/) || [])[1] || 0) : 0,
-      of: +((sm.textContent.match(/catch up 1 of (\d+)/) || [])[1] || 0), spec: [...h.querySelectorAll('.sphint')].some(x => /specialty/.test(x.textContent)), btn: !!h.querySelector('#spBuy') }; });
+      of: +((sm.textContent.match(/· (\d+) jumps? left/) || [])[1] || 0), spec: [...h.querySelectorAll('.sphint')].some(x => /specialty/.test(x.textContent)), btn: !!h.querySelector('#spBuy') }; });
   const ticks = async () => Object.entries((await readSave(p)).checks || {}).filter(([k, v]) => v && k.startsWith('sp:')).map(([k]) => k).sort();
   /* tap the hero until catch-up hands back; per tap: the keys it added share one skill, reach the hero's target, and
      carry the specialty when the hero named one */
@@ -283,9 +283,28 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
     out.after = await cuHero(); return out; };
   await cuSave(39);
   let h0 = await cuHero();
-  ok('P19 Lv 39 join: the Skills hero is a catch-up jump ("Heart Gore 1 → 10", catch up 1 of N, N ≥ 3)', h0 && h0.cu && h0.name === 'Heart Gore' && h0.to === 10 && h0.of >= 3, h0);
-  r = await p.evaluate(() => { const c = document.querySelector('#nowStar .ns-card'); return { t: c.querySelector('h3').innerText, btn: (c.querySelector('.ns-btn') || {}).innerText }; });
-  ok('P19: Next up leads with "Catch up: level Heart Gore 1 → 10" and Mark spent', /^Catch up: level Heart Gore 1 → 10/.test(r.t) && r.btn === 'Mark spent', r);
+  ok('P19 Lv 39 join: the Skills hero is a catch-up jump ("Heart Gore 1 → 10", N jumps left, N ≥ 3)', h0 && h0.cu && h0.name === 'Heart Gore' && h0.to === 10 && h0.of >= 3, h0);
+  const nuCard = () => p.evaluate(() => { const c = document.querySelector('#nowStar .ns-card'); return { t: c.querySelector('h3').innerText, all: c.innerText, btn: (c.querySelector('.ns-btn') || {}).innerText }; });
+  r = await nuCard();
+  ok('P19: Next up leads with "Catch up: level Heart Gore 1 → 10", Mark spent and the hero\'s "N jumps left"', /^Catch up: level Heart Gore 1 → 10/.test(r.t) && r.btn === 'Mark spent' && r.all.includes(`${h0.of} jumps left`), r);
+  /* the count goes down with each tap, on both cards (Design Lead, PR #761: "1 of 5" after three taps read as a reset) */
+  for (let i = 0; i < 3; i++) { await p.click('#spBuy'); await p.waitForTimeout(150); }
+  const h3 = await cuHero(); r = await nuCard();
+  ok('P19: after three taps both cards say the same, three fewer jumps left', h3.of === h0.of - 3 && r.all.includes(`${h0.of - 3} jump${h0.of - 3 === 1 ? '' : 's'} left`), { h3, r });
+  await cuSave(39);
+  /* Mark all spent: one tap ticks every jump, the toast says how many, Undo puts the save back */
+  const cuA = await ticks();
+  await p.click('#spBuyAll'); await p.waitForTimeout(200);
+  const allT = await ticks(), allH = await cuHero();
+  r = { toast: await p.evaluate(() => document.getElementById('rwToast').innerText), added: allT.length - cuA.length, hero: allH };
+  ok('P19: Mark all spent ends the catch-up in one tap and the toast says "Marked N jumps spent"', r.added > 10 && !(allH && allH.cu) && r.toast.includes(`Marked ${h0.of} jumps spent`), r);
+  await p.click('#rwToast .tu'); await p.waitForTimeout(200);
+  ok('P19: Undo after Mark all spent restores the save', JSON.stringify(await ticks()) === JSON.stringify(cuA) && (await cuHero()).name === 'Heart Gore', await ticks());
+  /* the phone: Mark all spent is a 44 px tap target like the other buttons */
+  await p.setViewportSize({ width: 390, height: 844 }); await p.waitForTimeout(200);
+  r = await p.evaluate(() => document.getElementById('spBuyAll').getBoundingClientRect().height);
+  ok('P19: on the phone "Mark all spent" is at least 44 px tall', r >= 44, r);
+  await p.setViewportSize({ width: 1500, height: 1000 }); await p.waitForTimeout(200);
   const cu0 = await ticks(); await p.click('#spBuy'); await p.waitForTimeout(150);
   const cu1 = await ticks();
   ok('P19: one tap ticks Heart Gore Lv 2–10 and its specialty', ['sp:Heart Gore:spec', ...[2, 3, 4, 5, 6, 7, 8, 9, 10].map(L => 'sp:Heart Gore:' + L)].every(k => cu1.includes(k)) && cu1.length - cu0.length === 10, cu1.filter(k => !cu0.includes(k)));
@@ -299,6 +318,7 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   ok(`P19: the Lv 39 join reaches every skill's target in one tap per skill (${run.taps} taps for ${h0.of} skills)`, run.taps === h0.of && !run.bad.length, run.bad);
   r = await p.evaluate(() => ({ buy: !!document.getElementById('spBuy'), sub: (document.querySelector('#spHero .dvtext small') || {}).textContent }));
   ok('P19: after the last tap nothing affordable is left (no per-line Mark spent)', !r.buy && !run.after.cu, r);
+  ok('P19: Mark all spent ticked exactly what the taps one by one tick', JSON.stringify(await ticks()) === JSON.stringify(allT), { all: allT.length, taps: (await ticks()).length });
   /* the endgame case, every class (beta tester T1, owner report 2026-10-20): measurement for the PR */
   const counts = [];
   for (const cls of ['assassin', 'templar', 'cleric', 'sorcerer', 'chanter', 'ranger', 'gladiator', 'spiritmaster']) {

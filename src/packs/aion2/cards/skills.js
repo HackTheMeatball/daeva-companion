@@ -8,7 +8,7 @@ import { LEVEL_POINTS, SP_ICONS, SP_SKILLS, SP_STEPS } from "../data/build.js";
 import { spCostTxt } from "../catalog.js";
 import { stNote, stTag } from "../data/markup.js";
 import { planReachOf, skillBonusOf, skillBuy, skillJumps, skillLvOf, skillOpen, skillPoints } from "../requirements.js";
-import { cuSpecs, tipPop } from "./shared.js";
+import { cuLeft, cuSpecs, tipPop } from "./shared.js";
 import { keyChip } from "../hotkeys.js";
 import { wireTerms } from "../terms.js";
 import { renderCollection } from "./progress.js";
@@ -45,12 +45,12 @@ function renderNext() {
     const J = cu.jumps, j = J[0], n = J.length;
     heroHTML = `<div class="sphero ok cu">` +
       `<div class="dvhead">${SP_ICONS[j.n] ? `<span class="dvico spico art"><img src="${SP_ICONS[j.n]}" alt="" loading="lazy" onerror="this.remove()"></span>` : `<span class="dvico spico ini" aria-hidden="true">${ini(j.n)}</span>`}` +
-      `<div class="dvtext"><span class="spname">${j.n} ${spType(j.s)} ${j.rows.length ? `<span class="lvarr">${j.from} → ${j.to}</span>${spBonus(j.s.key)}` : `<em>specialty</em>`}</span><small title="Available now · priority #1 · catch up 1 of ${n}${j.s.single ? ` · single source (${j.s.single})` : ""}">Available now · <span class="nw">priority #1</span> · catch up 1 of ${n}${j.s.single ? ` · single source (${j.s.single})` : ""}${j.s.st ? ` ·${stTag(j.s.st)}` : ""}</small>` +
+      `<div class="dvtext"><span class="spname">${j.n} ${spType(j.s)} ${j.rows.length ? `<span class="lvarr">${j.from} → ${j.to}</span>${spBonus(j.s.key)}` : `<em>specialty</em>`}</span><small title="Available now · priority #1 · ${cuLeft(n)}${j.s.single ? ` · single source (${j.s.single})` : ""}">Available now · <span class="nw">priority #1</span> · ${cuLeft(n)}${j.s.single ? ` · single source (${j.s.single})` : ""}${j.s.st ? ` ·${stTag(j.s.st)}` : ""}</small>` +
       (j.cost ? `<div class="dvbar"><div class="dvtrack"><span style="width:100%"></span></div><span class="dvbar-l" title="You have ${pts} point${pts === 1 ? "" : "s"}; this jump costs ${j.cost}"><b>${j.cost}</b> of ${j.cost} pt${j.cost === 1 ? "" : "s"}</span></div>` : `<span class="dvbar-ph"></span>`) + `</div></div>` +
       `<div class="buyrow"><button type="button" class="dvbuy" id="spBuy">${j.cost ? `Mark spent · ${j.cost} pt${j.cost === 1 ? "" : "s"}` : "Mark specialty picked"}</button></div>` +
       (j.specs.length ? `<p class="sphint">${j.rows.length ? "Then pick its specialty" : "Specialty"}: ${cuSpecs(j)}</p>` : "") +
       (n > 1 ? `<p class="sphint">+${n - 1} more your points cover · <button type="button" class="cu-all" id="spBuyAll">Mark all spent</button></p>` : "") +
-      `<p class="sphint">${cu.stop ? `${cu.stop.x.s.n} stops at ${cu.stop.x.L - 1} for now. Lv ${cu.stop.x.L} needs ${cu.stop.need} more pt${cu.stop.need === 1 ? "" : "s"}. ` : ""}${cu.left ? `${cu.left} pt${cu.left === 1 ? " is" : "s are"} left over after these.` : "These use every point."}</p>` +
+      `<p class="sphint">${cu.stop ? `${cu.stop.x.s.n} stops at ${cu.stop.x.L - 1} (Lv ${cu.stop.x.L} needs ${cu.stop.need} more pt${cu.stop.need === 1 ? "" : "s"}) · ` : ""}${cu.left ? `${cu.left} pt${cu.left === 1 ? "" : "s"} left over` : "These use every point"}</p>` +
       (overTicked ? `<p class="sphint warn">Ticked lines cost ${spent} but you've earned ${fromLevels + stones}. Use "Sync levels" to fix.</p>` : "") + `</div>`;
     box.checked = false; box.dataset.sp = ""; box.dataset.jump = j.keys.join(" ");
   } else if (hero) {
@@ -165,7 +165,7 @@ function aion2SkillsMount() {
   /* Skills hero button: ticks the next upgrade (same path as its checkbox in the milestones). In catch-up it ticks the
      hero's whole jump, and "Mark all spent" every jump; one tap each, with Undo in the toast. */
   document.getElementById("spHero").addEventListener("click", e => {
-    if (e.target.closest("#spBuyAll")) { const J = skillJumps(char(state)).jumps; markJump(J.flatMap(j => j.keys), `${J.length} skills caught up`); return; }
+    if (e.target.closest("#spBuyAll")) { const J = skillJumps(char(state)).jumps; markJump(J.flatMap(j => j.keys), `Marked ${J.length} jump${J.length === 1 ? "" : "s"} spent`); return; }
     const b = e.target.closest("#spBuy"); if (!b || b.disabled) return;
     const box = document.getElementById("spNextBox");
     if (box.dataset.jump) { const j = skillJumps(char(state)).jumps[0]; if (j) markJump(j.keys, `${j.n}${j.rows.length ? ` → Lv ${j.to}` : " specialty"} marked`); return; }

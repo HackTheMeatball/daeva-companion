@@ -15,10 +15,12 @@
 .sphint { margin: var(--space-6) 0 0; font-size: 12px; color: var(--muted); }
 .sphint.ok { color: var(--good); }
 .sphint.warn { color: var(--warn); }
-/* catch-up (0.9 P19): the specialty pick in the hint, and "Mark all spent" as a quiet text button (24 px tap target) */
+/* catch-up (0.9 P19): the specialty pick in the hint, and "Mark all spent" as a quiet text button; a bulk action, so a
+   44 px tap target on the phone like the other buttons (Design Lead, PR #761) */
 .sphint b { color: var(--fg); font-weight: 600; }
 .sphint .cu-all { font: 600 11px var(--mono); background: transparent; border: 0; padding: var(--space-4) 0; min-height: 24px; color: var(--muted); text-decoration: underline dotted; cursor: pointer; }
 .sphint .cu-all:hover { color: var(--fg); }
+@media (pointer: coarse), (max-width: 600px) { .sphint .cu-all { min-height: 44px; padding: 0 var(--space-8); vertical-align: middle; } }
 .spico.art { background: none; border: 0; }
 .spico.art img { padding: 0; border-radius: var(--radius-10); box-shadow: var(--shadow-art); }
 .sptype { font: 600 9.5px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--muted-66); border-radius: var(--radius-4); padding: 0 var(--space-4); vertical-align: 1px; }

@@ -36,7 +36,8 @@ export const sub = (label, note) => ({ sub: label, subNote: note });
    stTag: the small tag after the value; stNote: the same words for a tooltip ("" when the value is verified). */
 const ST_WORDS = { disputed: ["check in game", "Sources disagree on this: check it in game"], "owner-check": ["check in game", "Not confirmed yet: check it in game"], inferred: ["inferred", "Inferred from nearby data, not stated by a source"] };
 export const stTag = st => ST_WORDS[st] ? ` <span class="ss-tag" title="${ST_WORDS[st][1]}">${ST_WORDS[st][0]}</span>` : "";
-export const stNote = st => ST_WORDS[st] ? ` (${ST_WORDS[st][0]})` : "";
+export const stWord = st => (ST_WORDS[st] || [])[0];
+export const stNote = st =>ST_WORDS[st] ? ` (${ST_WORDS[st][0]})` : "";
 /* Vaizel / Triniel plan nodes (DV_BOARDS, data/build.json); keys dv:v:* / dv:t:*. */
 export const dvNodes = b => DV_BOARDS[b].nodes.map(n => ({ k: n.k, dv: true, board: b, blv: DV_BOARDS[b].lv, ty: n.ty, t: n.t, ...(n.via ? { via: n.via } : {}), ...(n.st ? { st: n.st } : {}), ...(n.cst ? { cst: n.cst } : {}) }));
 export const metaSlug = n => n.toLowerCase().replace(/['’]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");

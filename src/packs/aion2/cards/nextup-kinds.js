@@ -28,8 +28,8 @@ import { MAP_ICO, rqTicked, snoozeToggle } from "../../../cards/milestones.js";
 import { capFirst, renderNow } from "../../../cards/nextup.js";
 import { travelAdviceOn } from "../nextup.js";
 import { keyHint } from "../hotkeys.js";
-import { cuSpecs, kibMark, rqStIco } from "./shared.js";
-import { itemLinkIcos, itemQty, stNote, stTag } from "../data/markup.js";
+import { cuLeft, cuSpecs, kibMark, rqStIco } from "./shared.js";
+import { itemLinkIcos, itemQty, stNote, stTag, stWord } from "../data/markup.js";
 import { pageState as state, pageSave as save, pageUpdate as update, pageMainEl as mainEl, pageSMOOTH as SMOOTH, pageSD_RW as SD_RW, pageSH_REWARD as SH_REWARD, pageNO_AREA as NO_AREA, pageSpCostTxt as spCostTxt, pageRqReqOf as rqReqOf, pageSpecPickOf as specPickOf, pageMapFocus as mapFocus, pageAion2QuestMap as aion2QuestMap, pageGoAreas as goAreas, pageCubeClick as cubeClick, pageStTickClick as stTickClick, pageStUpClick as stUpClick, pageStLvClick as stLvClick, pageSpMini as spMini, pageStIco as stIco, pageDvShort as dvShort, pageQProg as qProg } from "../../../cards/page.js";
 
 /* "Not in game yet" in Next up (compact): eye with a slash. */
@@ -110,9 +110,11 @@ export const aion2NowRenderers = {
   skill: a => { const x = a.x, base = x.spec ? spSlotSub(x) : a.first ? `${spCostTxt(x)} · you have the points` : spCostTxt(x);
     return a.first ? { ico: spMini(x.s.n) || "✦", t: spBuyT(x), sub: base + ssTag(x) + soTag(x), btn: "Spent", act: a.act, done: true, queue: "skill", row: keyHint("skills") } : { ico: spMini(x.s.n) || "✦", t: spBuyT(x), sub: base + ssTag(x) + soTag(x), act: a.act, done: true, queue: "skill" }; },
   /* catch-up (0.9 P19, docs/design/0.9-catchup/ option A): one card per skill's whole jump; the first one's Mark spent
-     ticks the jump (the Skills hero's button, with its Undo) */
+     ticks the jump (the Skills hero's button, with its Undo) and says how many jumps are left, as the hero does; the line's
+     own tag (soTag) is the one tag, so the pick drops a same tag */
   catchup: a => { const j = a.j, t = j.rows.length ? `Catch up: level <b>${j.n} ${j.from} → ${j.to}</b>` : `Catch up: pick <b>${j.n}</b>'s specialty`,
-      sub = [j.cost ? `${j.cost} pt${j.cost === 1 ? "" : "s"}` : "", j.specs.length ? `${j.cost ? "then pick the specialty" : "Specialty"} ${cuSpecs(j)}` : ""].filter(Boolean).join(" · ") + ssTag(a.x) + soTag(a.x);
+      skip = soTag(a.x) ? stWord(a.x.s.st) : undefined,
+      sub = [j.cost ? `${j.cost} pt${j.cost === 1 ? "" : "s"}` : "", j.specs.length ? `${j.cost ? "then pick the specialty" : "Specialty"} ${cuSpecs(j, skip)}` : "", a.first && a.n ? cuLeft(a.n) : ""].filter(Boolean).join(" · ") + ssTag(a.x) + soTag(a.x);
     return a.first ? { ico: spMini(j.n) || "✦", t, sub, btn: "Mark spent", act: a.act, done: true, queue: "skill", row: keyHint("skills") } : { ico: spMini(j.n) || "✦", t, sub, act: a.act, done: true, queue: "skill" }; },
   /* the key hint line ("Open Daevanion: press U", 0.6 P14) on the rows you finish in that window */
   board: a => ({ ico: "◆", t: `Buy <b>${dvShort(a.dn.t)}</b>${stTag(a.dn.st)} on ${a.dn.board}`, sub: a.dc === 0 ? "Already on your board: just mark it" : `${a.dc} of your ${a.dLeft} crystals`, btn: "Acquired", act: a.act, done: true, row: keyHint("daevanion") }),
