@@ -43,6 +43,7 @@ body.basic :is(h2, div).sec .sec-tools .filt, body.basic :is(h2, div).sec .sec-t
 /* the legend under the "Regional quests" heading */
 #gates .sub-h.rq .rq-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 0 var(--space-4); margin: var(--space-4) 0 0; font: 500 12px var(--body); letter-spacing: 0; text-transform: none; color: var(--muted); }
 #gates .sub-h.rq .rq-legend span { margin: 0; }
+#gates li.sub-h.rq:not(.empty-h) ~ li.sub-h.rq .rq-legend { display: none; }
 details.step.sideonly { opacity: .85; }
 #gates li.qrow.snoozed .txt { color: var(--muted); }
 #gates li.qrow:hover .q-snz, #gates li.qrow:focus-within .q-snz, #gates li.qrow .q-snz[aria-pressed="true"] { opacity: 1; }

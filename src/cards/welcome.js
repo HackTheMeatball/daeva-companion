@@ -13,7 +13,7 @@
    Your class (0.8 P12, design-v2 §3 option A, owner A 2026-10-19): on the first step, a radiogroup of the game's classes
    (classChoices, from the pack), each its emblem (the pack's icon) and name, the current character's class picked. A class
    with no guide yet says "Soon" and can't be picked; arrow keys skip it. The pick goes to onStart(cls) and
-   onJoin(level, quest, cls). */
+   onJoin(level, quest, cls); each new pick also goes to onPick(cls) at once (0.8.1 F4: the page header follows it). */
 import { char } from "../core/state.js";
 import { classChoices } from "../core/pack.js";
 import { pageQUESTS as QUESTS } from "./page.js";
@@ -42,7 +42,7 @@ export function joinQuestOf(lv) {
 }
 
 /* the card spec; the shell hands over what the buttons do */
-export function welcomeCard({ onStart, onJoin }) {
+export function welcomeCard({ onStart, onJoin, onPick }) {
   let el = null, intro = null, form = null, cls;
   const $ = id => el.querySelector("#" + id);
   const lvOf = () => Math.max(1, Math.min(45, parseInt($("welLv").value, 10) || 1));
@@ -63,6 +63,7 @@ export function welcomeCard({ onStart, onJoin }) {
   };
   /* the class pick: the badge's highlight only (aria-checked), and the one tab stop */
   const pick = (b, focus) => {
+    if (cls !== b.dataset.class && onPick) onPick(b.dataset.class);
     cls = b.dataset.class;
     for (const x of $("welClasses").querySelectorAll(".welclass:not(.welsoon)")) { const on = x === b; x.setAttribute("aria-checked", String(on)); x.tabIndex = on ? 0 : -1; }
     if (focus) b.focus();
