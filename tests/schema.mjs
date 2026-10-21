@@ -2,13 +2,13 @@
 /* Data format v2 checks in Node, no browser, no build (0.2 step 5b): every data file and every schema example against
    data/schema/ with ajv 8 Ajv2020 { strict: true, allErrors: true }; broken copies of real records must be rejected
    (so a relaxed schema can't pass silently); then the generator's cross-record checks, and data/DATA_SOURCES.md must be
-   what the generator writes; last, the rules and decisions ledger (tests/ledger.mjs, docs/kaizen/LEDGER.md).
+   what the generator writes; last, licence compliance. The rules and decisions ledger is its own suite (tests/ledger.mjs,
+   0.9 P6), so a DECISIONS-only edit can't red this one.
    node tests/schema.mjs  (also in `npm test` and the fast CI job) */
 import { cpSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { ROOT, validateAll, validateDoc } from '../tools/gen/validate.mjs';
 import { dataSourcesMd, generate, guidePacks } from '../tools/gen/gen.mjs';
-import { checkLedger } from './ledger.mjs';
 import { checkCompliance } from './compliance.mjs';
 
 let n = 0, fail = 0;
@@ -182,30 +182,33 @@ if (g) {
   ok('bind report: R = 25 (working value) / 32 / 35 / 40 m over 56 story and 71 cited Kibelisks, none without a point; the owner check list is the story ones not bound at 25 m and with no binds fact',
     !!kr && kr.split.map(s => s.r).join() === '25,32,35,40' && kr.split[0].working && kr.noPoint === 0 && kr.split.every(s => s.story.n === 56 && s.all.n === 71 && s.story.bound + s.story.nudge + s.story.none === 56)
     && kr.ownerCheck.length === kr.split[0].story.nudge + kr.split[0].story.none - 1 && !kr.ownerCheck.some(c => c.name === 'Safe Haven'), kr && kr.split);
-  /* 0.4 P1 pack manifests: a broken copy of data/packs (tests/out/, not committed) must stop the generator (packs.mjs) */
-  const packsCopy = (label, mutate) => { const root = join(ROOT, 'tests/out/packs-' + label); rmSync(root, { recursive: true, force: true });
-    cpSync(join(ROOT, 'data/packs'), root, { recursive: true }); mutate(root); return root; };
-  const editManifest = (root, id, f) => { const p = join(root, id, 'pack.json'), m = JSON.parse(readFileSync(p, 'utf8')); f(m); writeFileSync(p, JSON.stringify(m)); };
-  const packFails = (label, mutate, re) => { let msg = null; try { generate({ root: packsCopy(label, mutate) }); } catch (e) { msg = e.message; }
+  /* 0.4 P1 pack manifests: a broken copy of data/packs must stop the generator (packs.mjs). Since 0.9 P6 each broken copy
+     is an in-memory view of data/packs (generate({ mutate, drop, add }), packs.mjs fsView): nothing is copied or written */
+  const PK = 'data/packs/';
+  const editManifest = (id, f) => ({ mutate: (rel, d) => { if (rel === PK + id + '/pack.json') f(d); } });
+  const packFails = (label, view, re) => { let msg = null; try { generate(view); } catch (e) { msg = e.message; }
     ok('generator rejects: ' + label, !!msg && re.test(msg), msg); };
   const guide = 'aion2/asmodian/assassin', manifest = id => JSON.parse(readFileSync(join(ROOT, 'data/packs', id, 'pack.json'), 'utf8'));
   ok('rejects: pack manifest without id (pack.schema.json)', validateDoc(join(ROOT, 'data/packs', guide, 'pack.json'), (m => (delete m.id, m))(manifest(guide))).length > 0);
   ok('rejects: a faction pack without a parent (pack.schema.json)', validateDoc(join(ROOT, 'data/packs/aion2/asmodian/pack.json'), (m => (delete m.parent, m))(manifest('aion2/asmodian'))).length > 0);
   ok('rejects: a game pack with a parent (pack.schema.json)', validateDoc(join(ROOT, 'data/packs/aion2/pack.json'), { ...manifest('aion2'), parent: 'aion2' }).length > 0);
-  packFails('manifest without id', r => editManifest(r, guide, m => { delete m.id; }), /pack manifest fails pack\.schema\.json/);
-  packFails('manifest id that is not its folder', r => editManifest(r, 'aion2/asmodian', m => { m.id = 'aion2/elyos'; }), /id "aion2\/elyos" is not its folder/);
-  packFails('a listed file that does not exist', r => rmSync(join(r, 'aion2/items.json')), /pack aion2: listed file items\.json does not exist/);
-  packFails('a JSON file in a pack folder that is not listed', r => writeFileSync(join(r, 'aion2/asmodian/extra.json'), '{}'), /pack aion2\/asmodian: .*not listed in pack\.json: extra\.json/);
-  packFails('an unknown parent', r => editManifest(r, guide, m => { m.parent = 'aion2/elyos'; }), /aion2\/asmodian\/assassin parent: unknown pack "aion2\/elyos"/);
-  packFails('an unknown pack in uses', r => editManifest(r, guide, m => { m.uses = ['aion2/classes/no-such-class']; }), /uses: unknown pack "aion2\/classes\/no-such-class"/);
-  packFails('a cycle (the class uses the guide that uses it)', r => editManifest(r, 'aion2/classes/assassin', m => { m.uses = [guide]; }), /pack cycle: /);
-  let gc = null; try { gc = generate({ root: packsCopy('copy', () => {}), pack: guide }); } catch (e) { ok('generator runs on a copied packs root', false, e.message); }
+  packFails('manifest without id', editManifest(guide, m => { delete m.id; }), /pack manifest fails pack\.schema\.json/);
+  packFails('manifest id that is not its folder', editManifest('aion2/asmodian', m => { m.id = 'aion2/elyos'; }), /id "aion2\/elyos" is not its folder/);
+  packFails('a listed file that does not exist', { drop: [PK + 'aion2/items.json'] }, /pack aion2: listed file items\.json does not exist/);
+  packFails('a JSON file in a pack folder that is not listed', { add: { [PK + 'aion2/asmodian/extra.json']: '{}' } }, /pack aion2\/asmodian: .*not listed in pack\.json: extra\.json/);
+  packFails('an unknown parent', editManifest(guide, m => { m.parent = 'aion2/elyos'; }), /aion2\/asmodian\/assassin parent: unknown pack "aion2\/elyos"/);
+  packFails('an unknown pack in uses', editManifest(guide, m => { m.uses = ['aion2/classes/no-such-class']; }), /uses: unknown pack "aion2\/classes\/no-such-class"/);
+  packFails('a cycle (the class uses the guide that uses it)', editManifest('aion2/classes/assassin', m => { m.uses = [guide]; }), /pack cycle: /);
+  /* --root is the one real copy left (tests/out/, not committed): it proves another packs root compiles the same */
+  const copyRoot = join(ROOT, 'tests/out/packs-copy'); rmSync(copyRoot, { recursive: true, force: true }); cpSync(join(ROOT, 'data/packs'), copyRoot, { recursive: true });
+  let gc = null; try { gc = generate({ root: copyRoot, pack: guide }); } catch (e) { ok('generator runs on a copied packs root', false, e.message); }
   if (gc) ok('--root / --pack: an unchanged copy of data/packs, pack ' + guide + ', compiles the same modules', gc.module === g.module && gc.gateModule === g.gateModule && gc.proposedModule === g.proposedModule);
   /* An idle class pack (one no guide pack uses: checked and cited, compiled into no module). 0.6 P4's Gladiator, then 0.7
      P3's Spiritmaster were the idle pack here; 0.7 P4 gave the Spiritmaster its guide pack, so data/packs has none left.
-     The idle checks run on a copy where the Spiritmaster is idle again: its guide pack removed, its class hidden. */
-  const SM = 'aion2/classes/spiritmaster', editJson = (root, f, fn) => { const p = join(root, SM, f), d = JSON.parse(readFileSync(p, 'utf8')); fn(d); writeFileSync(p, JSON.stringify(d)); };
-  const makeIdle = r => { rmSync(join(r, 'aion2/asmodian/spiritmaster'), { recursive: true, force: true }); editJson(r, 'class.json', d => { d.records[0].release = 'hidden'; }); };
+     The idle checks run on a view where the Spiritmaster is idle again: its guide pack dropped, its class hidden. */
+  const SM = 'aion2/classes/spiritmaster', editJson = (f, fn) => ({ rel: PK + SM + '/' + f, fn });
+  const idleView = (...edits) => { const all = [editJson('class.json', d => { d.records[0].release = 'hidden'; }), ...edits];
+    return { drop: [PK + 'aion2/asmodian/spiritmaster'], mutate: (rel, d) => { for (const e of all) if (rel === e.rel) e.fn(d); } }; };
   /* 0.8 P16 (#505) adds the Sorcerer, 0.8 P4 (#493) the Cleric and P18 (#507) the Chanter as idle packs again (their
      guide items come later), so the check names the classes that may be idle, not a count; 0.8 P2 (#491) added the
      Templar idle and 0.8 P3 (#492) gave it its guide pack, so it is no longer among them; 0.8 P5 (#494) did the same for
@@ -238,8 +241,11 @@ if (g) {
   const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const dataFiles = d => readdirSync(d, { withFileTypes: true }).flatMap(e => e.isDirectory() ? dataFiles(join(d, e.name)) : e.name.endsWith('.json') ? [join(d, e.name)] : []);
   const corpus = dataFiles(join(ROOT, 'data/packs')).map(f => ({ f: f.split('\\').join('/'), t: readFileSync(f, 'utf8') }));
+  /* a game id occurs in a text when it stands as a whole digit run: an all-digit id is looked up in the text's set of digit
+     runs (0.9 P6: one pass a class instead of one regex scan of the corpus per board node; the same words) */
   const leakWords = c => { const rest = corpus.filter(x => !x.f.includes(`/aion2/classes/${c}/`) && !x.f.includes(`/aion2/asmodian/${c}/`)).map(x => x.t).join('\n').toLowerCase();
-    return [`(class|skill|stigma|spec|node|build):${esc(c)}\\b`, ...(c === 'ranger' ? [] : [`\\b${esc(c)}\\b`]),...classNames(c).filter(x => !rest.includes(x.toLowerCase())).map(esc), ...classGameIds(c).filter(x => !new RegExp(`(?<!\\d)${esc(x)}(?!\\d)`).test(rest)).map(x => `(?<!\\d)${esc(x)}(?!\\d)`)]; };
+    const runs = new Set(rest.match(/\d+/g)), inRest = x => /^\d+$/.test(x) ? runs.has(x) : new RegExp(`(?<!\\d)${esc(x)}(?!\\d)`).test(rest);
+    return [`(class|skill|stigma|spec|node|build):${esc(c)}\\b`, ...(c === 'ranger' ? [] : [`\\b${esc(c)}\\b`]),...classNames(c).filter(x => !rest.includes(x.toLowerCase())).map(esc), ...classGameIds(c).filter(x => !inRest(String(x))).map(x => `(?<!\\d)${esc(x)}(?!\\d)`)]; };
   const guideClasses = otherIds.map(id => ({ id, cls: id.split('/').pop(), pack: others[otherIds.indexOf(id)] }));
   ok(`every guide pack other than the Assassin's is a class of pack.json (${guideClasses.map(x => x.cls).join(', ')})`, guideClasses.every(x => allClasses.includes(x.cls)), guideClasses.map(x => x.cls));
   for (const { cls, pack } of guideClasses) {
@@ -251,18 +257,18 @@ if (g) {
     ok(`the Assassin bundle carries no ${cls} record (generated, gate, proposed and place modules)`, !inn.length, inn);
     ok(`rejects: a leaked ${cls} record (negative control: its skill id appended to the bundle is found)`, words.test(g.module + `\nskill:${cls}:leaked`));
   }
-  let gi = null; try { gi = generate({ root: packsCopy('idle', makeIdle) }); } catch (e) { ok('generator runs on a copy with an idle Spiritmaster', false, e.message); }
+  let gi = null; try { gi = generate(idleView()); } catch (e) { ok('generator runs on a copy with an idle Spiritmaster', false, e.message); }
   const sm = gi && (gi.idle || []).find(x => x.pack === SM), smColl = f => sm ? sm.all.filter(x => x.file.endsWith('/' + f)).length : 0;
   ok('idle class pack aion2/classes/spiritmaster (copy): 1 class, 22 skills, 13 stigmas, 537 board nodes, checked by the generator, modules unchanged', !!sm && smColl('class.json') === 1 && smColl('skills.json') === 22
     && smColl('stigmas.json') === 13 && smColl('board-nodes.json') === 537 && gi.report.checks.some(x => x.check.startsWith('aion2/classes/spiritmaster: board:triniel: 117 nodes')) && !gi.failed.length
     && gi.module === g.module && gi.gateModule === g.gateModule, sm && [smColl('skills.json'), smColl('board-nodes.json'), gi.failed.slice(0, 5)]);
-  const idleFails = (label, mutate, re) => { let g1 = null; try { g1 = generate({ root: packsCopy(label, r => { makeIdle(r); mutate(r); }) }); } catch (e) { ok('generator runs: ' + label, false, e.message); return; }
+  const idleFails = (label, edit, re) => { let g1 = null; try { g1 = generate(idleView(edit)); } catch (e) { ok('generator runs: ' + label, false, e.message); return; }
     ok('generator rejects: ' + label, g1.failed.some(x => re.test(x.check)), g1.failed.map(x => x.check).slice(0, 5)); };
-  idleFails('idle-node-cost', r => editJson(r, 'board-nodes.json', d => { d.records.find(n => n.board === 'board:zikel' && n.type === 'stat').cost += 1; }), /spiritmaster: board:zikel: .*points \(134\)/);
-  idleFails('idle-node-skill', r => editJson(r, 'board-nodes.json', d => { d.records.find(n => n.type === 'skill').skill = 'skill:spiritmaster:bogus'; }), /skill node names its skill/);
-  idleFails('idle-released', r => editJson(r, 'class.json', d => { d.records[0].release = 'released'; }), /spiritmaster: one class record, hidden/);
-  idleFails('idle-spec-level', r => editJson(r, 'stigmas.json', d => { d.records[0].specialtyChoices[0].skillLv = 4; }), /stigma:spiritmaster:.*specialty levels \[5,10,15,20\]/);
-  packFails('an idle class file that fails its schema', r => { makeIdle(r); editJson(r, 'skills.json', d => { delete d.records[0].levelGate; }); }, /schema validation failed:\n  .*aion2\/classes\/spiritmaster\/skills\.json: .*levelGate/);
+  idleFails('idle-node-cost', editJson('board-nodes.json', d => { d.records.find(n => n.board === 'board:zikel' && n.type === 'stat').cost += 1; }), /spiritmaster: board:zikel: .*points \(134\)/);
+  idleFails('idle-node-skill', editJson('board-nodes.json', d => { d.records.find(n => n.type === 'skill').skill = 'skill:spiritmaster:bogus'; }), /skill node names its skill/);
+  idleFails('idle-released', editJson('class.json', d => { d.records[0].release = 'released'; }), /spiritmaster: one class record, hidden/);
+  idleFails('idle-spec-level', editJson('stigmas.json', d => { d.records[0].specialtyChoices[0].skillLv = 4; }), /stigma:spiritmaster:.*specialty levels \[5,10,15,20\]/);
+  packFails('an idle class file that fails its schema', idleView(editJson('skills.json', d => { delete d.records[0].levelGate; })),/schema validation failed:\n  .*aion2\/classes\/spiritmaster\/skills\.json: .*levelGate/);
   const c = g.constants;
   ok('compiled: story turn-in zones: Aldelle Village where the turn-in is in the village, else Ishalgen', c.QUEST_LOC['A Village in the Fog'].turninZone === 'Aldelle Village'
     && c.QUEST_LOC['Brigade Prison Compound Infiltration Operation'].turninZone === 'Aldelle Village' && c.QUEST_LOC['Isolated Lake'].turninZone === 'Ishalgen',
@@ -290,60 +296,6 @@ if (g) {
   ok('C24 (Noble Belt never fails: allthings.how alone) is single source, C23 no longer says its belt costs are verified',
     byId.C24.verdict === 'single-source' && byId.C23.verdict === 'single-source' && !/Belt costs verified/.test(byId.C23.note), [byId.C24.verdict, byId.C23.verdict]);
 }
-/* rules and decisions ledger: header, ids, homes and one row per DECISIONS row (docs/kaizen/LEDGER.md) */
-{ const problems = checkLedger(); ok(`rules and decisions ledger checks (${problems.length} problems)`, !problems.length, problems);
-  /* ...and it rejects broken copies: a dropped decision row, a doubled one, a bad status, a dead anchor, an empty plain,
-     an owner outside the list, an unknown enforced_by or one repeating the owner, an id in plain, a "Retired:" prefix in plain, a decision not Isaac's,
-     a team.csv that differs from OWNERS or folds into a non-active thread, an unknown team-change source or audit status */
-  const csv = readFileSync(join(ROOT, 'docs/kaizen/ledger.csv'), 'utf8').split('\n'), dec = csv.findIndex(l => l.includes(',decision,'));
-  const rule = csv.findIndex((l, i) => i > 0 && l.includes(',CLAUDE.md#'));
-  const fails = (label, lines, re) => { const p = checkLedger(ROOT, { csvText: lines.join('\n') }); ok('ledger check rejects: ' + label, p.some(x => re.test(x)), p.slice(0, 3)); };
-  fails('a DECISIONS row with no ledger row', csv.filter((_, i) => i !== dec), /has no ledger row/);
-  fails('two ledger rows for one DECISIONS row', [...csv, csv[dec].replace(/^DEC-[^,]+/, 'DEC-dup')], /a second ledger row/);
-  fails('an unknown status', csv.map((l, i) => i === dec ? l.replace(',active,', ',live,') : l), /status "live"/);
-  fails('a dead anchor', csv.map((l, i) => i === rule ? l.replace(/CLAUDE\.md#[^,"]+/, 'CLAUDE.md#no such phrase anywhere') : l), /anchor "no such phrase anywhere" not found/);
-  /* plain wording and one owner per row (Design Lead, Rules tab): COM-01 is owner Saul, enforced_by all */
-  const com = csv.findIndex(l => l.startsWith('COM-01,'));
-  fails('an empty plain', csv.map((l, i) => i === com ? l.replace(',Any time given to Isaac is written in US Eastern time.,', ',,') : l), /empty plain/);
-  fails('an owner outside the list', csv.map((l, i) => i === com ? l.replace(',Saul,all,', ',Saul and Gus,all,') : l), /owner "Saul and Gus" is not one of/);
-  fails('an unknown enforced_by', csv.map((l, i) => i === com ? l.replace(',Saul,all,', ',Saul,everyone,') : l), /enforced_by "everyone"/);
-  fails('enforced_by repeating the owner', csv.map((l, i) => i === com ? l.replace(',Saul,all,', ',Saul,Saul,') : l), /enforced_by repeats the owner/);
-  fails('an issue number in plain', csv.map((l, i) => i === com ? l.replace(',Any time given to Isaac is written in US Eastern time.,', ',Any time given to Isaac is in ET (#114).,') : l), /plain names "#114"/);
-  fails('a rule id in plain', csv.map((l, i) => i === com ? l.replace(',Any time given to Isaac is written in US Eastern time.,', ',Same as COM-02.,') : l), /plain names "COM-02"/);
-  fails('a status prefix in plain', csv.map((l, i) => i === com ? l.replace(',Any time given to Isaac is written in US Eastern time.,', ',Retired: times were in UTC.,') : l), /plain starts "Retired"/);
-  fails('a decision not owned by Isaac', csv.map((l, i) => i === dec ? l.replace(/^([^,]*,decision,[^,]*,(?:"[^"]*"|[^,]*),(?:"[^"]*"|[^,]*),)Isaac,/, '$1Walter,') : l), /a decision's owner is Isaac/);
-  const lmd = readFileSync(join(ROOT, 'docs/kaizen/LEDGER.md'), 'utf8');
-  const tcsv = readFileSync(join(ROOT, 'docs/kaizen/team.csv'), 'utf8');
-  { const p = checkLedger(ROOT, { teamCsv: tcsv.replace(/^Gomez,/m, 'Badger,') }); ok('ledger check rejects: a team.csv that differs from OWNERS', p.some(x => /names "Badger"/.test(x)) && p.some(x => /missing "Gomez"/.test(x)), p.slice(0, 3)); }
-  { const p = checkLedger(ROOT, { teamCsv: tcsv.replace(/^Hank,(.*),folded,Mike,/m, 'Hank,$1,folded,Badger,') }); ok('ledger check rejects: folded into a thread that is not active', p.some(x => /folded_into "Badger"/.test(x)), p.slice(0, 3)); }
-  { const p = checkLedger(ROOT, { changesCsv: readFileSync(join(ROOT, 'docs/kaizen/team-changes.csv'), 'utf8').replace('DEC-20261019-incident-log-folds-into-stall', 'DEC-nope') }); ok('ledger check rejects: a team change citing an unknown decision', p.some(x => /source "DEC-nope"/.test(x)), p.slice(0, 3)); }
-  { const p = checkLedger(ROOT, { auditsCsv: readFileSync(join(ROOT, 'docs/kaizen/audits.csv'), 'utf8').replace(',done,', ',finished,') }); ok('ledger check rejects: an unknown audit status', p.some(x => /status "finished"/.test(x)), p.slice(0, 3)); }
-  { const p = checkLedger(ROOT, { ledgerMd: lmd.replace('| Only Huell changes what the tracker shows', '| Only Huell writes TRK-01 data') }); ok('ledger check rejects: a rule id in Who does what Plain', p.some(x => /Plain has "TRK-01"/.test(x)), p.slice(0, 3)); }
-  /* flow index and SOPs (docs/sops): a stale owner, a dead or retired rule, a link away from a rule's home, a dead
-     link, an unknown doer, an index row with no file */
-  const sdir = join(ROOT, 'docs/sops'), readme = readFileSync(join(sdir, 'README.md'), 'utf8');
-  const sops = Object.fromEntries(readdirSync(sdir).filter(f => /^FLOW-\d{2}-/.test(f)).map(f => [f, readFileSync(join(sdir, f), 'utf8')]));
-  ok('flow index lists every SOP file (at least 23 flows)', Object.keys(sops).length >= 23 && Object.keys(sops).every(f => readme.includes(`](${f})`)), Object.keys(sops).length);
-  const merge = Object.keys(sops).find(f => f.startsWith('FLOW-09-'));
-  const sopFails = (label, o, re) => { const p = checkLedger(ROOT, o); ok('SOP check rejects: ' + label, p.some(x => re.test(x)), p.slice(0, 3)); };
-  sopFails('an owner who left the team', { sopReadme: readme.replace('| Merge | A PR meets every gate | Gus |', '| Merge | A PR meets every gate | Hank |') }, /owner "Hank" is not an active/);
-  sopFails('a retired rule', { sopFiles: { ...sops, [merge]: sops[merge] + '\nSee PIP-13.\n' } }, /cites PIP-13, which is retired/);
-  sopFails('a rule id not in the ledger', { sopFiles: { ...sops, [merge]: sops[merge] + '\nSee MRG-99.\n' } }, /cites MRG-99, which is not in ledger/);
-  sopFails('a rule linked away from its home', { sopFiles: { ...sops, [merge]: sops[merge].replace('[MRG-01](../team/gus.md)', '[MRG-01](../team/walter.md)') } }, /MRG-01 links to \.\.\/team\/walter\.md/);
-  sopFails('a dead link', { sopFiles: { ...sops, [merge]: sops[merge] + '\n[gone](../no-such-file.md)\n' } }, /dead link \.\.\/no-such-file\.md/);
-  sopFails('an unknown step doer', { sopFiles: { ...sops, [merge]: sops[merge].replace(/^1\. \*\*[^*]+\*\*/m, '1. **Hank**') } }, /step doer "Hank"/);
-  { const { [merge]: _, ...rest } = sops; sopFails('an index row with no file', { sopFiles: rest }, /FLOW-09: SOP link/); }
-  sopFails('a file with no index row', { sopReadme: readme.split('\n').filter(l => !l.startsWith('| FLOW-09 ')).join('\n') }, /FLOW-09-merge\.md has no row in the flow index/);
-  sopFails('a file not named FLOW-NN-<slug>.md', { sopFiles: { ...sops, 'FLOW-100-x.md': sops[merge] } }, /FLOW-100-x\.md: not named/);
-  sopFails('a pending rule', { sopFiles: { ...sops, [merge]: sops[merge] + '\nSee KZ-12.\n' } }, /cites KZ-12, which is pending/);
-  sopFails('a missing section', { sopFiles: { ...sops, [merge]: sops[merge].replace('## Records', '## Logs') } }, /missing section "## Records"/);
-  sopFails('an empty section', { sopFiles: { ...sops, [merge]: sops[merge].replace(/## Gates\n[\s\S]*?\n## Records/, '## Gates\n\n## Records') } }, /section "## Gates" is empty/);
-  sopFails('a bad status', { sopReadme: readme.replace(/(\| FLOW-09 .*\| )(?:draft|confirmed) \|/, '$1done |') }, /status "done" not in draft\/confirmed/);
-  sopFails('an owner who only appears mid-cell', { sopReadme: readme.replace('| Merge | A PR meets every gate | Gus |', '| Merge | A PR meets every gate | Isaac |') }, /owner "Isaac" leads no "Who does what"/);
-  sopFails('a Runs on id the SOP does not list', { sopReadme: readme.replace(/(\| FLOW-09 .*\| )(MRG-01)/, '$1PIP-01, $2') }, /Runs on names PIP-01/);
-  sopFails('a Rules line that is not a link', { sopFiles: { ...sops, [merge]: sops[merge].replace('- [MRG-01](../team/gus.md)', '- MRG-01') } }, /Rules line "- MRG-01/);
-  sopFails('a dead anchor', { sopFiles: { ...sops, [merge]: sops[merge] + '\n[x](README.md#no-such-heading)\n' } }, /dead anchor README\.md#no-such-heading/);
-  sopFails('a dead reference-style link', { sopFiles: { ...sops, [merge]: sops[merge] + '\n[x]: ../gone.md\n' } }, /dead link \.\.\/gone\.md/); }
 /* licence compliance (tests/compliance.mjs): ours only; each fixture is passed as an override, never written. The patterns
    are split in the source so this file does not trip the check it tests. */
 { const problems = checkCompliance(); ok(`licence compliance checks (${problems.length} problems)`, !problems.length, problems);

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /* Rules and decisions ledger checks (docs/kaizen/LEDGER.md), Node only, no browser, no build. checkLedger() returns a
-   list of problems; tests/schema.mjs runs it (so the CI data job fails on any), and `node tests/ledger.mjs` runs it alone.
+   list of problems; `node tests/ledger.mjs` is the `ledger` suite (tests/run.mjs, `checks` shard): the checks and their
+   negative controls. It left tests/schema.mjs in 0.9 P6, so an edit to DECISIONS or the ledger can't red `schema`.
    Checks: the exact header; unique ids; non-empty summary, plain (≤ 200 chars, no issue numbers or rule ids, no
    "Retired:"/"Superseded:" prefix), owner and
    home; owner is one known name (Isaac for a decision) and enforced_by is empty or ;-separated known names, all or
@@ -106,6 +107,8 @@ export function checkLedger(root = ROOT, { csvText, ledgerMd, teamCsv, changesCs
   const recs = rows.map((r, i) => ({ line: i + 2, n: r.length, ...Object.fromEntries(HEADER.map((k, j) => [k, r[j] ?? ''])) }));
   const ids = new Set(), cache = new Map();
   const text = p => { if (!cache.has(p)) cache.set(p, readFileSync(join(root, p), 'utf8')); return cache.get(p); };
+  /* a home file normalized once, not once per row that anchors in it (0.9 P6: ~3 s of the old data suite) */
+  const ncache = new Map(), ntext = p => { if (!ncache.has(p)) ncache.set(p, norm(text(p))); return ncache.get(p); };
   const decMd = existsSync(join(root, 'docs/DECISIONS.md')) ? text('docs/DECISIONS.md') : '';
   const decs = decisionRows(decMd);
   for (const r of recs) {
@@ -137,7 +140,7 @@ export function checkLedger(root = ROOT, { csvText, ledgerMd, teamCsv, changesCs
     if (dm) {
       if (!decs.has(dm[1])) problems.push(`${at}: DECISIONS has no "## ${dm[1]}" heading`);
       else if (!decs.get(dm[1]).some(t => norm(t) === norm(dm[2]))) problems.push(`${at}: no DECISIONS row "${dm[2]}" under ## ${dm[1]}`);
-    } else if (!norm(text(path)).includes(norm(anchor))) problems.push(`${at}: anchor "${anchor}" not found in ${path}`);
+    } else if (!ntext(path).includes(norm(anchor))) problems.push(`${at}: anchor "${anchor}" not found in ${path}`);
   }
   for (const c of changes) if (c.source && !ids.has(c.source)) problems.push(`${c.at}: source "${c.source}" is not a ledger id`);
   for (const a of audits) if (a.decision && !ids.has(a.decision)) problems.push(`${a.at}: decision "${a.decision}" is not a ledger id`);
@@ -240,8 +243,66 @@ export function checkSops(root = ROOT, { recs = [], team = [], whoLeads = new Se
   return problems;
 }
 
+/* the `ledger` suite (0.9 P6: its own suite in the `checks` shard, so a DECISIONS-only edit can't red `schema`): the
+   ledger and SOP checks pass, and each rejects its broken copies (passed as overrides, never written) */
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
-  const problems = checkLedger();
-  if (problems.length) { console.log(`LEDGER CHECKS FAILED (${problems.length})`); for (const p of problems) console.log('  - ' + p); process.exit(1); }
-  console.log('LEDGER CHECKS PASSED');
+  let n = 0, fail = 0;
+  const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' : 'FAIL ') + name + (!c && d !== undefined ? '  · ' + JSON.stringify(d).slice(0, 900) : '')); if (!c) fail++; };
+  const t0 = Date.now();
+  const problems = checkLedger(); ok(`rules and decisions ledger checks (${problems.length} problems)`, !problems.length, problems);
+  /* ...and it rejects broken copies: a dropped decision row, a doubled one, a bad status, a dead anchor, an empty plain,
+     an owner outside the list, an unknown enforced_by or one repeating the owner, an id in plain, a "Retired:" prefix in plain, a decision not Isaac's,
+     a team.csv that differs from OWNERS or folds into a non-active thread, an unknown team-change source or audit status */
+  const csv = readFileSync(join(ROOT, 'docs/kaizen/ledger.csv'), 'utf8').split('\n'), dec = csv.findIndex(l => l.includes(',decision,'));
+  const rule = csv.findIndex((l, i) => i > 0 && l.includes(',CLAUDE.md#'));
+  const fails = (label, lines, re) => { const p = checkLedger(ROOT, { csvText: lines.join('\n') }); ok('ledger check rejects: ' + label, p.some(x => re.test(x)), p.slice(0, 3)); };
+  fails('a DECISIONS row with no ledger row', csv.filter((_, i) => i !== dec), /has no ledger row/);
+  fails('two ledger rows for one DECISIONS row', [...csv, csv[dec].replace(/^DEC-[^,]+/, 'DEC-dup')], /a second ledger row/);
+  fails('an unknown status', csv.map((l, i) => i === dec ? l.replace(',active,', ',live,') : l), /status "live"/);
+  fails('a dead anchor', csv.map((l, i) => i === rule ? l.replace(/CLAUDE\.md#[^,"]+/, 'CLAUDE.md#no such phrase anywhere') : l), /anchor "no such phrase anywhere" not found/);
+  /* plain wording and one owner per row (Design Lead, Rules tab): COM-01 is owner Saul, enforced_by all */
+  const com = csv.findIndex(l => l.startsWith('COM-01,'));
+  fails('an empty plain', csv.map((l, i) => i === com ? l.replace(',Any time given to Isaac is written in US Eastern time.,', ',,') : l), /empty plain/);
+  fails('an owner outside the list', csv.map((l, i) => i === com ? l.replace(',Saul,all,', ',Saul and Gus,all,') : l), /owner "Saul and Gus" is not one of/);
+  fails('an unknown enforced_by', csv.map((l, i) => i === com ? l.replace(',Saul,all,', ',Saul,everyone,') : l), /enforced_by "everyone"/);
+  fails('enforced_by repeating the owner', csv.map((l, i) => i === com ? l.replace(',Saul,all,', ',Saul,Saul,') : l), /enforced_by repeats the owner/);
+  fails('an issue number in plain', csv.map((l, i) => i === com ? l.replace(',Any time given to Isaac is written in US Eastern time.,', ',Any time given to Isaac is in ET (#114).,') : l), /plain names "#114"/);
+  fails('a rule id in plain', csv.map((l, i) => i === com ? l.replace(',Any time given to Isaac is written in US Eastern time.,', ',Same as COM-02.,') : l), /plain names "COM-02"/);
+  fails('a status prefix in plain', csv.map((l, i) => i === com ? l.replace(',Any time given to Isaac is written in US Eastern time.,', ',Retired: times were in UTC.,') : l), /plain starts "Retired"/);
+  fails('a decision not owned by Isaac', csv.map((l, i) => i === dec ? l.replace(/^([^,]*,decision,[^,]*,(?:"[^"]*"|[^,]*),(?:"[^"]*"|[^,]*),)Isaac,/, '$1Walter,') : l), /a decision's owner is Isaac/);
+  const lmd = readFileSync(join(ROOT, 'docs/kaizen/LEDGER.md'), 'utf8');
+  const tcsv = readFileSync(join(ROOT, 'docs/kaizen/team.csv'), 'utf8');
+  { const p = checkLedger(ROOT, { teamCsv: tcsv.replace(/^Gomez,/m, 'Badger,') }); ok('ledger check rejects: a team.csv that differs from OWNERS', p.some(x => /names "Badger"/.test(x)) && p.some(x => /missing "Gomez"/.test(x)), p.slice(0, 3)); }
+  { const p = checkLedger(ROOT, { teamCsv: tcsv.replace(/^Hank,(.*),folded,Mike,/m, 'Hank,$1,folded,Badger,') }); ok('ledger check rejects: folded into a thread that is not active', p.some(x => /folded_into "Badger"/.test(x)), p.slice(0, 3)); }
+  { const p = checkLedger(ROOT, { changesCsv: readFileSync(join(ROOT, 'docs/kaizen/team-changes.csv'), 'utf8').replace('DEC-20261019-incident-log-folds-into-stall', 'DEC-nope') }); ok('ledger check rejects: a team change citing an unknown decision', p.some(x => /source "DEC-nope"/.test(x)), p.slice(0, 3)); }
+  { const p = checkLedger(ROOT, { auditsCsv: readFileSync(join(ROOT, 'docs/kaizen/audits.csv'), 'utf8').replace(',done,', ',finished,') }); ok('ledger check rejects: an unknown audit status', p.some(x => /status "finished"/.test(x)), p.slice(0, 3)); }
+  { const p = checkLedger(ROOT, { ledgerMd: lmd.replace('| Only Huell changes what the tracker shows', '| Only Huell writes TRK-01 data') }); ok('ledger check rejects: a rule id in Who does what Plain', p.some(x => /Plain has "TRK-01"/.test(x)), p.slice(0, 3)); }
+  /* flow index and SOPs (docs/sops): a stale owner, a dead or retired rule, a link away from a rule's home, a dead
+     link, an unknown doer, an index row with no file */
+  const sdir = join(ROOT, 'docs/sops'), readme = readFileSync(join(sdir, 'README.md'), 'utf8');
+  const sops = Object.fromEntries(readdirSync(sdir).filter(f => /^FLOW-\d{2}-/.test(f)).map(f => [f, readFileSync(join(sdir, f), 'utf8')]));
+  ok('flow index lists every SOP file (at least 23 flows)', Object.keys(sops).length >= 23 && Object.keys(sops).every(f => readme.includes(`](${f})`)), Object.keys(sops).length);
+  const merge = Object.keys(sops).find(f => f.startsWith('FLOW-09-'));
+  const sopFails = (label, o, re) => { const p = checkLedger(ROOT, o); ok('SOP check rejects: ' + label, p.some(x => re.test(x)), p.slice(0, 3)); };
+  sopFails('an owner who left the team', { sopReadme: readme.replace('| Merge | A PR meets every gate | Gus |', '| Merge | A PR meets every gate | Hank |') }, /owner "Hank" is not an active/);
+  sopFails('a retired rule', { sopFiles: { ...sops, [merge]: sops[merge] + '\nSee PIP-13.\n' } }, /cites PIP-13, which is retired/);
+  sopFails('a rule id not in the ledger', { sopFiles: { ...sops, [merge]: sops[merge] + '\nSee MRG-99.\n' } }, /cites MRG-99, which is not in ledger/);
+  sopFails('a rule linked away from its home', { sopFiles: { ...sops, [merge]: sops[merge].replace('[MRG-01](../team/gus.md)', '[MRG-01](../team/walter.md)') } }, /MRG-01 links to \.\.\/team\/walter\.md/);
+  sopFails('a dead link', { sopFiles: { ...sops, [merge]: sops[merge] + '\n[gone](../no-such-file.md)\n' } }, /dead link \.\.\/no-such-file\.md/);
+  sopFails('an unknown step doer', { sopFiles: { ...sops, [merge]: sops[merge].replace(/^1\. \*\*[^*]+\*\*/m, '1. **Hank**') } }, /step doer "Hank"/);
+  { const { [merge]: _, ...rest } = sops; sopFails('an index row with no file', { sopFiles: rest }, /FLOW-09: SOP link/); }
+  sopFails('a file with no index row', { sopReadme: readme.split('\n').filter(l => !l.startsWith('| FLOW-09 ')).join('\n') }, /FLOW-09-merge\.md has no row in the flow index/);
+  sopFails('a file not named FLOW-NN-<slug>.md', { sopFiles: { ...sops, 'FLOW-100-x.md': sops[merge] } }, /FLOW-100-x\.md: not named/);
+  sopFails('a pending rule', { sopFiles: { ...sops, [merge]: sops[merge] + '\nSee KZ-12.\n' } }, /cites KZ-12, which is pending/);
+  sopFails('a missing section', { sopFiles: { ...sops, [merge]: sops[merge].replace('## Records', '## Logs') } }, /missing section "## Records"/);
+  sopFails('an empty section', { sopFiles: { ...sops, [merge]: sops[merge].replace(/## Gates\n[\s\S]*?\n## Records/, '## Gates\n\n## Records') } }, /section "## Gates" is empty/);
+  sopFails('a bad status', { sopReadme: readme.replace(/(\| FLOW-09 .*\| )(?:draft|confirmed) \|/, '$1done |') }, /status "done" not in draft\/confirmed/);
+  sopFails('an owner who only appears mid-cell', { sopReadme: readme.replace('| Merge | A PR meets every gate | Gus |', '| Merge | A PR meets every gate | Isaac |') }, /owner "Isaac" leads no "Who does what"/);
+  sopFails('a Runs on id the SOP does not list', { sopReadme: readme.replace(/(\| FLOW-09 .*\| )(MRG-01)/, '$1PIP-01, $2') }, /Runs on names PIP-01/);
+  sopFails('a Rules line that is not a link', { sopFiles: { ...sops, [merge]: sops[merge].replace('- [MRG-01](../team/gus.md)', '- MRG-01') } }, /Rules line "- MRG-01/);
+  sopFails('a dead anchor', { sopFiles: { ...sops, [merge]: sops[merge] + '\n[x](README.md#no-such-heading)\n' } }, /dead anchor README\.md#no-such-heading/);
+  sopFails('a dead reference-style link', { sopFiles: { ...sops, [merge]: sops[merge] + '\n[x]: ../gone.md\n' } }, /dead link \.\.\/gone\.md/);
+  console.log(`${n - fail} ok, ${fail} failed (${Date.now() - t0} ms)`);
+  console.log(fail ? `LEDGER CHECKS FAILED (${fail})` : 'LEDGER CHECKS PASSED');
+  process.exit(fail ? 1 : 0);
 }

@@ -6,6 +6,7 @@
    Deterministic: the golden states have their own fixed seeds, the random top-up uses SEED (printed on a failure).
    Usage: node tests/invariant.mjs [--seed <n>] [--state <id substring>] [--only <file substring>]
      --state replays the states whose id contains the text (same seed), e.g. --state random/42- */
+import { spawn } from 'node:child_process';
 import { readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -39,13 +40,30 @@ let LOADED = null;
 const loaded = () => LOADED || (LOADED = states.map(({ id, raw }) => { const { state, hadSave } = M.loadState(raw, { newId: () => 'fresh-slot' }); M.migrate(state, hadSave, () => {}, 0);
   return { id, s: deepFreeze(state), c: M.char(state) }; }));
 const X = { states, loaded, O, OA, APP_APPLY, root: ROOT, TOTAL: pickState ? states.length : TOTAL, seedHex, only: !!pickState };
-for (const f of readdirSync(join(ROOT, 'tests/invariant')).filter(f => f.endsWith('.test.mjs')).sort()) {
-  if (only && !f.includes(only)) continue;
+/* 0.9 P6: the first test file runs here; every other one in a child process of its own (`--only <file>`, the same seed,
+   --state and node flags), at the same time, so the suite takes about its longest file (next-up), not their sum. Each
+   child's lines are printed after this process's, and its checks count in the totals (a child that fails or doesn't
+   print its summary fails the suite). */
+const files = readdirSync(join(ROOT, 'tests/invariant')).filter(f => f.endsWith('.test.mjs')).sort().filter(f => !only || f.includes(only));
+const children = only ? [] : files.slice(1).map(f => new Promise(resolve => {
+  const child = spawn(process.execPath, [...process.execArgv, fileURLToPath(import.meta.url), '--only', f, '--seed', String(seed), ...(pickState ? ['--state', pickState] : [])], { cwd: ROOT });
+  let out = ''; child.stdout.on('data', d => { out += d; }); child.stderr.on('data', d => { out += d; });
+  child.on('close', code => resolve({ f, code, out }));
+}));
+for (const f of only ? files : files.slice(0, 1)) {
   console.log(`-- ${f}`);
   (await import(pathToFileURL(join(ROOT, 'tests/invariant', f)).href)).default(test, M, X);
 }
+let n = R.n, nFail = R.fail;
+for (const { f, code, out } of await Promise.all(children)) {
+  const lines = out.split('\n'), sum = out.match(/^(\d+)\/(\d+) invariant checks passed/m);
+  console.log(lines.filter(l => /^(-- |ok |FAIL |WARNING |\s{5})/.test(l)).join('\n'));
+  if (sum) { n += +sum[2]; nFail += +sum[2] - +sum[1]; }
+  if (!sum || code !== 0 || !/INVARIANT CHECKS PASSED/.test(out)) {
+    console.log(`FAIL invariant child for ${f}: exit ${code}${sum ? '' : ', no summary'}\n${lines.slice(-8).join('\n')}`); if (!sum) { n++; nFail++; } R.failed(); }
+}
 const s = (performance.now() - t0) / 1000;
-console.log(`\n${R.n - R.fail}/${R.n} invariant checks passed in ${s.toFixed(2)} s`);
+console.log(`\n${n - nFail}/${n} invariant checks passed in ${s.toFixed(2)} s`);
 if (s > LIMIT_S) { console.log(`FAIL invariant suite took longer than ${LIMIT_S} s (hang guard)`); R.failed(); }
 else if (s > WARN_S) console.log(`WARNING invariant suite took longer than ${WARN_S} s (fails above ${LIMIT_S} s): reduce its work or split it`);
 if (R.fail) console.log(`seed ${seedHex}: replay a failing state with  node tests/invariant.mjs --seed ${seedHex} --state <state id>`);
