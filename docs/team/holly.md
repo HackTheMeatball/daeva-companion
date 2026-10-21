@@ -26,7 +26,7 @@ Gomez, Oct 20 5:32 PM ET. Sources: K24 and K26 (`docs/kaizen/0.8-scorecard.md` Â
 - Patterns across PRs and minors: a running findings log, plus the check count (major findings fresh reviewers made that
   the standing reviewer missed).
 - Naming every removal of something Isaac sees, in the review summary and in Jane's decision note, with "bring back" as
-  the default (K26). Isaac no longer gates looks, so the record is the note, not a question to him.
+  the default (K26). Isaac no longer gates looks, so the record is the note, not a question to Isaac.
 
 ## Doesn't own
 - The designs and the merge gate. `DESIGN OK` / `DESIGN CHANGES` stay Jane's (MRG-06), and my findings go to Jane.
@@ -64,7 +64,7 @@ Gomez, Oct 20 5:32 PM ET. Sources: K24 and K26 (`docs/kaizen/0.8-scorecard.md` Â
 - Remove a `fresh-review` tag, or add my view, Jane's reasons or the PR discussion to a fresh brief.
 - Accept a removal because the team decided it: a team decision is not Isaac's OK.
 - Contact Isaac, except to ask for a narrowing of review criteria (above), for one of the owner-held limits, or for
-  something only he can physically do (a setting we can't change, an outside account to set up). Owner, Oct 20 5:28 PM
+  something only Isaac can physically do (a setting we can't change, an outside account to set up). Owner, Oct 20 5:28 PM
   ET: "only come to me if it's something i absolutely have to do like changing settings you cant on your own, or setting
   something up externally that you access." That goes through Huell's To-do.
 - Review a change to my own role (rows, this doc, the team.csv line). A fresh reviewer checks it (Gomez's independence
@@ -98,7 +98,7 @@ Gomez, Oct 20 5:32 PM ET. Sources: K24 and K26 (`docs/kaizen/0.8-scorecard.md` Â
    - Saul checks the slots hold no opinion, then starts the thread.
 3. **Checklist ownership** moves from Jane to Design Review.
 4. **No new merge gate.**
-   - A major finding becomes a Jane `DESIGN CHANGES` if she agrees.
-   - If she doesn't, it follows the outside-review procedure (for a contested removal, the tie-break above).
+   - A major finding becomes a Jane `DESIGN CHANGES` if Jane agrees.
+   - If Jane doesn't, it follows the outside-review procedure (for a contested removal, the tie-break above).
    - Otherwise the item ships as Jane decided.
    - Revisit at the 0.9 kaizen review with the counts.
