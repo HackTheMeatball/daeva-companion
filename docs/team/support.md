@@ -1,7 +1,7 @@
 # Support & feedback
 
 **Owner:** Beta Program (Ernesto), for all outside reports, beta or not (Walter, 2026-10-20; LEDGER "Who does what").
-Charter: the project's `beta-program/charter.md`.
+Charter: [ernesto.md](ernesto.md).
 
 **Owns:** what users tell us: GitHub issues from *Report a problem*, data corrections and ideas, and reports beta
 testers send outside GitHub.
