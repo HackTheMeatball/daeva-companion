@@ -36,7 +36,7 @@ function aion2QuestSync() {
     if (li.dataset.st !== st || dv !== li.hasAttribute("data-dv")) { li.dataset.st = st; li.toggleAttribute("data-dv", dv);
       const ico = li.querySelector(".qlab > .rq-st"); if (ico) ico.outerHTML = rqStIco(st, "rq-st", dv ? "Done in the story" : undefined); }
     const ab = li.querySelector(":scope > .q-act");
-    if (ab) { const [t, tip] = done ? ["Undo", "Turned in · undo: back to to pick up"] : run ? ["Turn in", "In progress · press when you turn it in"] : ["Pick up", "Press when you take the quest"];
+    if (ab) { const [t, tip] = done ? ["Undo", "Turned in · undo: back to pick up"] : run ? ["Turn in", "In progress · press when you turn it in"] : ["Pick up", "Press when you take the quest"];
       ab.textContent = t; ab.title = tip; ab.setAttribute("aria-label", `${t}: ${name}`); ab.classList.toggle("go", run); ab.hidden = dv; }
     /* "Not in game yet": only for a quest you haven't picked up; pressed = snoozed until your next Level up. */
     const zb = li.querySelector(":scope > .q-snz"), zz = !!(char(state).rqSnooze || {})[k], it = itemByK(k), shut = !done && !run && !!it && !rqAvail(it.q).ok;
@@ -100,9 +100,14 @@ function aion2RowText() {
   mainEl.querySelectorAll(".rotseq").forEach(x => { x.innerHTML = seq([pre.length ? "E: " + pre.join(" + ") : "", "Q: Shadowstrike (the guide's key" + (defaultKeyOf("Shadowstrike") ? `; the game's default is ${defaultKeyOf("Shadowstrike")})` : ")"), post.length ? "E: " + post.join(", ") : "", "Hold both mouse buttons"].filter(Boolean)); });
 }
 
+/* The icon legend goes under a card's first "Regional quests" heading only (0.8.1 F4, #586): a heading not in a milestone
+   (none today) keeps it. */
+const firstRqSub = it => { const g = GATES.find(g => g.items.includes(it));
+  return !g || g.items.find(x => x.sub && !x.hidden && (x.kind || x.group) === "quest") === it; };
+
 export const aion2RowRenderers = {
   /* a regional quest (picked up / turned in, "Not in game yet", "In my game") and the heading above them */
-  quest: (it, k, ctx) => it.sub ? ctx.row({ pre: " rq" }).replace(/<\/li>$/, `${rqLegend()}</li>`)
+  quest: (it, k, ctx) => it.sub ? ctx.row({ pre: " rq" }).replace(/<\/li>$/, firstRqSub(it) ? `${rqLegend()}</li>` : "</li>")
     : ctx.row({ pre: " qrow", post: `<button type="button" class="q-snz" data-snz="${k}" aria-pressed="false" title="The game doesn't offer this quest yet: hide it from Next up until your next Level up">Not in game yet</button><button type="button" class="q-inl" data-ingame="${k}" hidden title="The game already offers it: mark it picked up (same as Pick up)">In my game</button><button type="button" class="q-act" data-qact="${k}">Pick up</button>` })
       /* 0.8 P13: the state icon takes the box's place and the button says the next step; the box stays (hidden, out of the
          tab order) because the engine's tick flow and the derived "done in the story" state run through it */

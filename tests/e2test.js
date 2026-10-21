@@ -84,7 +84,7 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
     const steps = [];
     for (let i = 0; i < 3; i++) {
       const before = await p.evaluate(k => { const li = document.querySelector(`#gates li.qrow input[data-k="${CSS.escape(k)}"]`).closest('li'), b = li.querySelector('.q-act'), ico = li.querySelector('.qlab > .rq-st');
-        return { btn: b.textContent, aria: b.getAttribute('aria-label'), go: b.classList.contains('go'), ico: ico && ico.getAttribute('aria-label'), boxHidden: getComputedStyle(li.querySelector('input[data-k]')).opacity === '0' }; }, k);
+        return { btn: b.textContent, tip: b.title, aria: b.getAttribute('aria-label'), go: b.classList.contains('go'), ico: ico && ico.getAttribute('aria-label'), boxHidden: getComputedStyle(li.querySelector('input[data-k]')).opacity === '0' }; }, k);
       if (useBtn) await p.click(`#gates li.qrow [data-qact="${k}"]`); else await p.evaluate(k => document.querySelector(`#gates li.qrow input[data-k="${CSS.escape(k)}"]`).click(), k);
       await p.waitForTimeout(1300);
       steps.push({ before, save: noTs(await readSave(p)) }); }
@@ -94,6 +94,12 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
     viaBtn.steps.map(s => `${s.before.btn}|${s.before.go}|${s.before.ico}|${s.before.boxHidden}|${s.before.aria.startsWith(s.before.btn + ': ')}`).join(' ; ') === 'Pick up|false|To pick up|true|true ; Turn in|true|In progress|true|true ; Undo|false|Turned in|true|true', viaBtn.steps.map(s => s.before));
   ok('quest button: the saves after each step are byte-identical to the checkbox flow (same quest)', viaBtn.k === viaBox.k && viaBtn.steps.every((s, i) => s.save === viaBox.steps[i].save), { k: [viaBtn.k, viaBox.k], diff: viaBtn.steps.map((s, i) => { const a = JSON.parse(s.save), b = JSON.parse(viaBox.steps[i].save); return [...new Set([...Object.keys(a), ...Object.keys(b)])].filter(x => JSON.stringify(a[x]) !== JSON.stringify(b[x])).map(x => `${x}: ${JSON.stringify(a[x]).slice(0, 80)} vs ${JSON.stringify(b[x]).slice(0, 80)}`); }) });
   ok('quest button: Pick up starts it, Turn in ticks it, Undo clears both', (() => { const s = viaBtn.steps.map(x => JSON.parse(x.save)); return !!(s[0].started || {})[viaBtn.k] && s[1].checks[viaBtn.k] === true && !(s[1].started || {})[viaBtn.k] && !s[2].checks[viaBtn.k] && !(s[2].started || {})[viaBtn.k]; })(), viaBtn.steps.map(x => x.save.length));
+  /* 0.8.1 F4 (#586): the buttons' tooltips, the Undo one without the doubled "to" */
+  ok('quest button: tooltips per step, Undo reads "back to pick up"', viaBtn.steps.map(s => s.before.tip).join(' ; ') === 'Press when you take the quest ; In progress · press when you turn it in ; Turned in · undo: back to pick up', viaBtn.steps.map(s => s.before.tip));
+  /* 0.8.1 F4 (#586): the icon legend once per milestone card, under its first "Regional quests" heading */
+  const lg = await p.evaluate(() => [...document.querySelectorAll('#gates details')].map(d => { const hs = [...d.querySelectorAll('li.sub-h.rq')];
+    return { hs: hs.length, legends: d.querySelectorAll('.rq-legend').length, first: !!hs.length && !!hs[0].querySelector('.rq-legend') }; }).filter(x => x.hs));
+  ok('regional quest legend: one per milestone card with a "Regional quests" heading, under the first such heading', lg.length > 0 && lg.every(x => x.legends === 1 && x.first) && lg.some(x => x.hs > 1), lg);
 
   /* 3. Rewards: strongholds credit nothing; Sealed Dungeons 2 + 2; regional quests 1 + 1 */
   await setState(p, { L: 30, q: 'Dying Light', extra: { pendSt: 0, pendCr: 0 } });

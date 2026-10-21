@@ -1,0 +1,6 @@
+[
+  { "case": "legend-1500", "kind": "before-after", "title": "One quest icon legend per milestone",
+    "caption": "The Lv 32 milestone explains the three regional quest icons once, under its first Regional quests heading, instead of under every one." },
+  { "case": "legend-390", "kind": "before-after", "title": "One quest icon legend on phones",
+    "caption": "On a phone the Lv 32 milestone also shows the icon legend once, under the Lv 32 Regional quests heading only." }
+]
