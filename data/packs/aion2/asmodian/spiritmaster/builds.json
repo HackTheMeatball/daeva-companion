@@ -177,7 +177,35 @@
         "interleave": "Metabot lists skill targets, not a training order (docs/research/2026-10-spiritmaster-pack.md §3): the list order is kept as the guide's order, an inference.",
         "budget": "Core nine to Lv 10 = 9 × 21 = 189 points; Summon: Earth Spirit to 7 = 9, Spirit's Descent to 5 = 5. LEVEL_POINTS[45] = 203 plus Wisdom Stones."
       },
-      "specialtyPicks": {},
+      "specialtyPicks": {
+        "skill:spiritmaster:cold-shock": ["spec:spiritmaster:cold-shock:1"],
+        "skill:spiritmaster:combustion": ["spec:spiritmaster:combustion:1"],
+        "skill:spiritmaster:summon-fire-spirit": ["spec:spiritmaster:summon-fire-spirit:3"],
+        "skill:spiritmaster:summon-water-spirit": ["spec:spiritmaster:summon-water-spirit:3"],
+        "skill:spiritmaster:jointstrike-curse": ["spec:spiritmaster:jointstrike-curse:1"],
+        "skill:spiritmaster:dimensional-control": ["spec:spiritmaster:dimensional-control:2"],
+        "skill:spiritmaster:elemental-fusion": ["spec:spiritmaster:elemental-fusion:1"]
+      },
+      "specialtyEvidence": {
+        "spec:spiritmaster:summon-water-spirit:3": {
+          "slot": 1,
+          "label": "disputed",
+          "note": "daevaguides' level plan picks 10% chance to activate skill; aion2turkiye picks +10% Water Spirit Attack, for its dungeon build only.",
+          "sources": ["https://daevaguides.com/en/elementalist/", "https://aion2turkiye.com/en/class/spiritmaster/"]
+        },
+        "spec:spiritmaster:jointstrike-curse:1": {
+          "slot": 1,
+          "label": "contested",
+          "note": "aion2turkiye and two players daevaguides credits pick +2s Curse duration; three others pick +50% Multi-Hit on hit.",
+          "sources": ["https://aion2turkiye.com/en/class/spiritmaster/", "https://daevaguides.com/en/elementalist/"]
+        },
+        "spec:spiritmaster:dimensional-control:2": {
+          "slot": 1,
+          "label": "single source",
+          "note": "Only aion2turkiye names a pick (Extra damage after 3s on hit); daevaguides credits only the Lv 12 and 16 options.",
+          "sources": ["https://aion2turkiye.com/en/class/spiritmaster/"]
+        }
+      },
       "stigmaSlots": [
         "stigma:spiritmaster:summon-ancient-spirit",
         "stigma:spiritmaster:enhance-spirits-benediction",
@@ -356,12 +384,28 @@
             "statPriority"
           ],
           "note": "Class-builds guide: the same four stigmas in the same order and the same stat order (same site)."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/spiritmaster/",
+          "checkedAt": "2026-10-20",
+          "fields": [
+            "specialtyPicks"
+          ],
+          "note": "Leveling build: the Lv 8 specialty picks (docs/research/2026-10-choice-points.md, spot check)."
+        },
+        {
+          "url": "https://daevaguides.com/en/elementalist/",
+          "checkedAt": "2026-10-20",
+          "fields": [
+            "specialtyPicks"
+          ],
+          "note": "Level plan and credited picks per option (docs/research/2026-10-choice-points.md, spot check)."
         }
       ],
-      "verifiedAt": "2026-10-18",
+      "verifiedAt": "2026-10-20",
       "status": "single-source",
       "notes": [
-        "0.7 P4 (#347), from docs/research/2026-10-spiritmaster-pack.md §3: every advice field rests on Metabot alone (three pages, one site), so it is single-source (claims C70–C73). No specialty picks: no source names any.",
+        "0.7 P4 (#347), from docs/research/2026-10-spiritmaster-pack.md §3: every advice field rests on Metabot alone (three pages, one site), so it is single-source (claims C70–C73). Specialty slot 1 picks (0.9 P15, docs/research/2026-10-choice-points.md): aion2turkiye and daevaguides agree on four; Summon: Water Spirit is disputed, Jointstrike: Curse contested and Dimensional Control single source (specialtyEvidence). Slot 2 is out of the plan's reach.",
         "Learn levels of all 22 skills: Metabot's skill pages plus mmo-codex.com's unlock table (claim C75). The stigma max level 25 is single source (Metabot; the class page agrees), and a leveling guide does not reach it."
       ],
       "claims": [

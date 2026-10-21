@@ -134,12 +134,25 @@ export function checks(ctx, check) {
      (disputed / contested / inferred) with a note naming the alternative (0.8.1 F2, owner note 5: every slot 2 gets a
      pick, research 2026-10-specialty-slot2.md); no stale entries */
   const spEv = build.specialtyEvidence || {}, spSrc = new Set((build.sources || []).filter(r => r.url && (r.fields || []).includes('specialtyPicks')).map(r => r.url));
-  const SP_LABELS = ['disputed', 'contested', 'inferred'];
-  for (const [sid, picks] of Object.entries(build.specialtyPicks)) picks.forEach((p, i) => { if (!i) return; const ev = spEv[p];
+  const SP_LABELS = ['disputed', 'contested', 'inferred', 'single source'];
+  /* slot 1 needs no entry; a slot 1 pick with one (0.9 P15: its own label) is held to the same rule */
+  for (const [sid, picks] of Object.entries(build.specialtyPicks)) picks.forEach((p, i) => { if (!i && !spEv[p]) return; const ev = spEv[p];
     check(`specialty pick ${p} (slot ${i + 1}) has 2+ source evidence or a labelled reason`, ev && ev.slot === i + 1 && ev.sources.length > 0 && ev.sources.every(u => spSrc.has(u))
       && (ev.label === '2+ sources' ? new Set(ev.sources.map(u => new URL(u).hostname.replace(/^www\./, ''))).size >= 2 : SP_LABELS.includes(ev.label) && !!ev.note),
       ev || 'no specialtyEvidence entry'); });
   for (const p of Object.keys(spEv)) check(`specialtyEvidence ${p} backs a pick in its slot`, Object.values(build.specialtyPicks).some(ps => ps[spEv[p].slot - 1] === p));
+  /* choice points (0.9 P15, Kaizen K25, docs/research/2026-10-choice-points.md): every choice the player meets inside Lv 45
+     carries the build's pick or a noPick entry with its reason. The sites, listed from the data so a missing pick fails:
+     specialty slots of the core actives that the plan reaches (effective level = the skill's lines + the adds, default 1,
+     of the plan's board nodes on it, as requirements.js planReachOf; slot 3 at 20 is never reached), and the stigma slots.
+     A noPick entry for a site that has a pick or is out of reach is stale. */
+  { const maxLine = rules['rule:skill-level-gate'].value.maxFromPoints, noPick = build.noPick || {}, sites = new Map();
+    const planAdds = sid => build.boardPlan.filter(e => e.node && nodeById[e.node].skill === sid).reduce((t, e) => t + (nodeById[e.node].adds ?? 1), 0);
+    for (const e of build.skillOrder.filter(e => e.core && sk(e.skill).type === 'active')) { const reach = maxLine + planAdds(e.skill);
+      spSlots.slots.forEach((lv, i) => { if (reach >= lv) sites.set(`${e.skill}#${i + 1}`, { pick: (build.specialtyPicks[e.skill] || [])[i], what: `${sk(e.skill).name} specialty slot ${i + 1} (reach ${reach})` }); }); }
+    for (let i = 0; i < 4; i++) sites.set(`stigma#${i + 1}`, { pick: build.stigmaSlots[i], what: `stigma slot ${i + 1}` });
+    for (const [id, x] of sites) check(`choice point ${build.id} ${id} (${x.what}): a pick or a noPick reason, not both`, !!x.pick !== !!noPick[id], { pick: x.pick || null, noPick: noPick[id] || null });
+    for (const id of Object.keys(noPick)) check(`noPick ${build.id} ${id}: a choice point in reach`, sites.has(id)); }
   /* game rules the build tables use (0.4 P2a): cost bands [{ from, to, cost }] run without a gap over the levels they
      price; node costs by node type are numbers */
   const bands = (id, lo, hi) => { const v = rules[id] ? rules[id].value : null;

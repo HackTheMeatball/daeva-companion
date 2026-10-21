@@ -290,16 +290,17 @@
             "properties": {
               "slot": {
                 "type": "integer",
-                "minimum": 2,
+                "minimum": 1,
                 "maximum": 3
               },
               "label": {
-                "description": "'2+ sources': two or more publishers place the pick in this slot. disputed / contested / inferred (0.8.1 F2, owner note 5: every slot 2 gets a pick): a labelled pick, shown with its label; it needs a 'note' naming the alternative.",
+                "description": "'2+ sources': two or more publishers place the pick in this slot. disputed / contested / inferred / single source (0.8.1 F2, owner note 5: every slot 2 gets a pick; 0.9 P15: a slot 1 pick may carry its own label too): a labelled pick, shown with its label; it needs a 'note' naming the alternative.",
                 "enum": [
                   "2+ sources",
                   "disputed",
                   "contested",
-                  "inferred"
+                  "inferred",
+                  "single source"
                 ]
               },
               "note": {
@@ -312,7 +313,7 @@
                 "items": {
                   "$ref": "common.schema.json#/$defs/httpsUrl"
                 },
-                "minItems": 2
+                "minItems": 1
               },
               "owner": {
                 "description": "Owner screens that witness the choice in game (its text and unlock level). They back the choice, not the slot order: the '2+ sources' label still rests on the slot witnesses in 'sources'.",
@@ -321,6 +322,34 @@
                   "$ref": "common.schema.json#/$defs/ownerRef"
                 },
                 "minItems": 1
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "noPick": {
+          "description": "Choice points the build leaves without a pick (0.9 P15, docs/research/2026-10-choice-points.md), each with its reason. The generator lists every choice point in reach (specialty slots of core actives the plan's skill points and board nodes reach, stigma slots) and fails on one with neither a pick nor an entry here, and on an entry for a point that has a pick or is out of reach. Key: '<skill id>#<slot>' or 'stigma#<slot>'.",
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^(skill:[a-z]+:[a-z0-9-]+|stigma)#[1-9]$",
+            "type": "string"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "required": [
+              "reason",
+              "note"
+            ],
+            "properties": {
+              "reason": {
+                "enum": [
+                  "no-source",
+                  "disputed-left-out"
+                ]
+              },
+              "note": {
+                "type": "string",
+                "minLength": 1
               }
             },
             "additionalProperties": false
