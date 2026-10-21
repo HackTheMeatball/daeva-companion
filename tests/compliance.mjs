@@ -19,26 +19,35 @@ const TEXT_PATTERNS = [[/\bMIT License\b/i, 'an "MIT License" text'], [/Permissi
 
 const exempt = p => EXEMPT_FILES.has(p) || EXEMPT_DIRS.some(d => p.startsWith(d));
 
-export function checkCompliance(root = ROOT, { files = {} } = {}) {
-  const problems = [];
-  const tracked = execFileSync('git', ['ls-files', '-z'], { cwd: root, maxBuffer: 64 << 20 }).toString().split('\0').filter(Boolean);
-  const paths = [...new Set([...tracked, ...Object.keys(files)])].filter(p => !p.startsWith('node_modules/') && !p.includes('/node_modules/') && !exempt(p));
-  for (const p of paths) {
-    if (/^(LICENSE|COPYING)/i.test(basename(p))) problems.push(`${p}: a licence file other than the root LICENSE`);
-    let text = files[p];
-    if (text == null) {
-      if (!existsSync(join(root, p))) continue;
-      const buf = readFileSync(join(root, p));
-      if (buf.includes(0)) continue;
-      text = buf.toString('utf8');
-    }
-    for (const m of text.matchAll(/SPDX-License-Identifier:[ \t]*([^\r\n]*)/g)) {
-      const id = m[1].replace(/\s*(\*\/|-->|#}}|-}}).*$/, '').trim();
-      if (id !== ALLOWED_SPDX) problems.push(`${p}: SPDX-License-Identifier "${id}", expected ${ALLOWED_SPDX}`);
-    }
-    for (const [re, what] of TEXT_PATTERNS) if (re.test(text)) problems.push(`${p}: contains ${what}; code is PolyForm Strict 1.0.0`);
+/* one file's problems; a file on disk is read and checked once per process (0.9 P6: the fixture runs in tests/schema.mjs
+   re-read the whole tree each), an override text every time */
+const diskCache = new Map();
+const problemsOf = (root, p, text) => {
+  const out = [];
+  if (/^(LICENSE|COPYING)/i.test(basename(p))) out.push(`${p}: a licence file other than the root LICENSE`);
+  if (text == null) {
+    const k = root + '\0' + p;
+    if (diskCache.has(k)) return [...out, ...diskCache.get(k)];
+    const own = [];
+    if (existsSync(join(root, p))) { const buf = readFileSync(join(root, p)); if (!buf.includes(0)) own.push(...textProblems(p, buf.toString('utf8'))); }
+    diskCache.set(k, own); return [...out, ...own];
   }
-  return problems;
+  return [...out, ...textProblems(p, text)];
+};
+const textProblems = (p, text) => {
+  const out = [];
+  for (const m of text.matchAll(/SPDX-License-Identifier:[ \t]*([^\r\n]*)/g)) {
+    const id = m[1].replace(/\s*(\*\/|-->|#}}|-}}).*$/, '').trim();
+    if (id !== ALLOWED_SPDX) out.push(`${p}: SPDX-License-Identifier "${id}", expected ${ALLOWED_SPDX}`);
+  }
+  for (const [re, what] of TEXT_PATTERNS) if (re.test(text)) out.push(`${p}: contains ${what}; code is PolyForm Strict 1.0.0`);
+  return out;
+};
+const trackedCache = new Map();
+export function checkCompliance(root = ROOT, { files = {} } = {}) {
+  if (!trackedCache.has(root)) trackedCache.set(root, execFileSync('git', ['ls-files', '-z'], { cwd: root, maxBuffer: 64 << 20 }).toString().split('\0').filter(Boolean));
+  const paths = [...new Set([...trackedCache.get(root), ...Object.keys(files)])].filter(p => !p.startsWith('node_modules/') && !p.includes('/node_modules/') && !exempt(p));
+  return paths.flatMap(p => problemsOf(root, p, files[p]));
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {

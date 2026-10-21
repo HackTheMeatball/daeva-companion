@@ -20,7 +20,7 @@ Two entry points: (a) Jane's mockups for a minor with visible changes are ready 
 - [docs/design/review-checklist.md](../design/review-checklist.md)
 - The mockups or the PR's before/after shots and `scrapbook.json`
 - The baseline (what Isaac sees today)
-- Holly's charter, docs/team/holly.md (in PR #668, not yet on main): the tie-break, and that Holly's review adds no new merge gate
+- Holly's charter, [docs/team/holly.md](../team/holly.md): the tie-break, and that Holly's review adds no new merge gate
 
 ## Steps
 

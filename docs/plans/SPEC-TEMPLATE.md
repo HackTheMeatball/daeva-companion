@@ -25,6 +25,15 @@ format only here, together with the parser and its test.
   main (a directory or glob by its directory) and holds the item, with a `spec: input not in repo: <path>` comment, when
   one is missing or lies outside the repo (`~/…`, `/…`). A `/mnt/` path anywhere in the spec but its No-gos holds it the same way:
   builds can't read the project's shared folder (Kaizen, 2026-10-20; #502 sat 67 min).
+- The issue's `Plan: \`docs/plans/<minor>/README.md\` §P<n>` names its plan text: that `## P<n>:` section (the whole file
+  when no § is given) plus any ROADMAP row linking it as `[P<n>](<file>)`. Every repo path the plan text names (in
+  backticks, or as a link resolved against the file it is in; a `:line` anchor is dropped, and only a path whose first
+  segment is a top-level entry on main counts) must be in the spec's Inputs or Files, or written in the spec as
+  `` `<path>` — not needed: <reason> `` (kickoff posts it for Watchdog to log; best on its own line outside Inputs, and
+  kickoff never looks one up as an input); every key in the plan's After line and every
+  `research-<slug>` it names must be in the spec's After. Otherwise kickoff holds the item with a
+  `spec: plan input missing: <path>` or `spec: plan After key missing: <key>` comment (Kaizen, 2026-10-21: #644's plan
+  gained an input and an After key that its issue never got).
 - An item on the `gen` or a `golden` lane, or whose spec runs `npm run gen` or re-records golden, starts on Opus
   whatever its queue line says, and so does one whose **Files** line names an Opus path (`.github/routing/opus-paths.json`;
   Kaizen, 2026-10-20: #509 was routed to Sonnet and stopped) or names no path at all. Files must list every file the
