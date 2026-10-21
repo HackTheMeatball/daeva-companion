@@ -1,6 +1,6 @@
 {
   "bind/L36-q63-none-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 35–36"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 35–36"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -15,7 +15,7 @@
     {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland · Kibelisk : Eastern Gribade Highland Tail Island · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 230 m away · 10 open"}
   ],
   "bind/L36-q63-objs-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 35–36"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 35–36"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -30,7 +30,7 @@
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 10 open"}
   ],
   "bind/L36-q64-none-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 35–36"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 35–36"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -45,7 +45,7 @@
     {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland · Kibelisk : Eastern Gribade Highland Tail Island · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 230 m away · 10 open"}
   ],
   "bind/L36-q64-objs-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 35–36"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 35–36"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -60,7 +60,7 @@
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 10 open"}
   ],
   "bind/L37-q65-none-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 37–39"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -75,7 +75,7 @@
     {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland (near your story step) · Kibelisk : Zemurru's Tomb · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 11 open"}
   ],
   "bind/L37-q65-objs-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 37–39"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -90,7 +90,7 @@
     {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland (near your story step inferred ) · Kibelisk : Zemurru's Tomb · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 11 open"}
   ],
   "bind/L37-q66-none-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 37–39"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -105,7 +105,7 @@
     {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland (near your story step) · Kibelisk : Zemurru's Tomb · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 11 open"}
   ],
   "bind/L37-q66-objs-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 37–39"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -120,7 +120,7 @@
     {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland (near your story step inferred ) · Kibelisk : Zemurru's Tomb · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 11 open"}
   ],
   "bind/L37-q67-none-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 37–39"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -135,7 +135,7 @@
     {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland (near your story step) · Kibelisk : Zemurru's Tomb · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 11 open"}
   ],
   "bind/L37-q67-objs-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 37–39"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -150,7 +150,7 @@
     {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk : Zemurru's Tomb · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 11 open"}
   ],
   "bind/L37-q68-none-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 37–39"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -165,7 +165,7 @@
     {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk : Zemurru's Tomb · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 11 open"}
   ],
   "bind/L37-q68-objs-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 37–39"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -180,7 +180,7 @@
     {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk : Zemurru's Tomb · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 11 open"}
   ],
   "bind/L37-q69-none-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 37–39"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -195,7 +195,7 @@
     {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk : Zemurru's Tomb · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 11 open"}
   ],
   "bind/L37-q69-objs-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 37–39"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -210,7 +210,7 @@
     {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk : Zemurru's Tomb · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 11 open"}
   ],
   "bind/L40-q70-none-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 40–44"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 9 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 40–44"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
@@ -225,7 +225,7 @@
     {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland · Kibelisk : Eastern Gribade Highland Tail Island · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 230 m away · 12 open"}
   ],
   "bind/L40-q70-objs-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 40–44"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 9 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 40–44"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
@@ -240,7 +240,7 @@
     {"t":"Run Barahta Extermination Unit Outpost","s":"Idun's Lake · Kibelisk : Eastern Gribade Highland Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Cliff is 283 m away · 12 open"}
   ],
   "bind/L40-q71-none-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 40–44"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 9 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 40–44"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
@@ -255,7 +255,7 @@
     {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland · Kibelisk : Eastern Gribade Highland Tail Island · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 230 m away · 12 open"}
   ],
   "bind/L40-q71-objs-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 40–44"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 9 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 40–44"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
@@ -270,7 +270,7 @@
     {"t":"Run Barahta Extermination Unit Outpost","s":"Idun's Lake · Kibelisk : Eastern Gribade Highland Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Cliff is 283 m away · 12 open"}
   ],
   "bind/L40-q72-none-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 40–44"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 9 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 40–44"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
@@ -285,7 +285,7 @@
     {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland · Kibelisk : Eastern Gribade Highland Tail Island · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 230 m away · 12 open"}
   ],
   "bind/L40-q72-objs-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 40–44"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 9 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 40–44"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
@@ -300,7 +300,7 @@
     {"t":"Run Barahta Extermination Unit Outpost","s":"Idun's Lake · Kibelisk : Eastern Gribade Highland Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Cliff is 283 m away · 12 open"}
   ],
   "bind/L40-q73-none-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 40–44"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 9 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 40–44"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
@@ -315,7 +315,7 @@
     {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland · Kibelisk : Eastern Gribade Highland Tail Island · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 230 m away · 12 open"}
   ],
   "bind/L40-q73-objs-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 40–44"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 9 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 40–44"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
@@ -330,7 +330,7 @@
     {"t":"Run Barahta Extermination Unit Outpost","s":"Idun's Lake · Kibelisk : Eastern Gribade Highland Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Cliff is 283 m away · 12 open"}
   ],
   "bind/L40-q74-none-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 40–44"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 9 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 40–44"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
@@ -345,7 +345,7 @@
     {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland (near your story step) · Kibelisk : Eastern Gribade Highland Tail Island · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 230 m away · 12 open"}
   ],
   "bind/L40-q74-objs-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 40–44"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 9 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 40–44"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},

@@ -50,14 +50,14 @@
     {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · 2 levels away · opens on \"Daeva in a Dream\" · 5 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 22–24"}
   ],
   "build/L20-q28-before-A-sppts": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill"},
+    {"t":"Catch up: level Heart Gore 1 → 7","s":"9 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup"},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0"},
     {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
     {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk : Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Savage Roar 1 → 8","s":"13 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 8","s":"13 pts · then pick the specialty +50% Multi-Hit on hit · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 7","s":"9 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack · inferred","c":""}
   ],
   "build/L20-q28-before-A-stfull": [
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Lv 20–21"},
@@ -140,14 +140,14 @@
     {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · 2 levels away · opens on \"Daeva in a Dream\" · 5 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 22–24"}
   ],
   "build/L20-q28-before-B-sppts": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill"},
+    {"t":"Catch up: level Heart Gore 1 → 7","s":"9 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup"},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0"},
     {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
     {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk : Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Savage Roar 1 → 8","s":"13 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 8","s":"13 pts · then pick the specialty +50% Multi-Hit on hit · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 7","s":"9 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack · inferred","c":""}
   ],
   "build/L20-q28-before-B-stfull": [
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Lv 20–21"},

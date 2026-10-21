@@ -81,12 +81,13 @@ export default (test, M) => {
     }
   });
   test('catch-up, points: one kind (skill points) keeps the queue at 4 spend cards; two (and a stigma upgrade) lift it to what the points cover, never pushing out a step or the story; one skill card leads', () => {
-    const one = M.rankNext(behindAt(25)), two = M.rankNext(behindAt(25, { shards: 99 })), sk = cs => cs.filter(c => c.kind === 'skill').length;
+    /* 0.9 P19: these saves hold every skill line unbought, so the skill cards are catch-up jumps (one per skill), queued the same way */
+    const one = M.rankNext(behindAt(25)), two = M.rankNext(behindAt(25, { shards: 99 })), sk = cs => cs.filter(c => c.kind === 'skill' || c.kind === 'catchup').length;
     assert.equal(sk(one), 4); assert.ok(two.some(c => c.kind === 'stup'));
     assert.ok(sk(two) > 4, `${sk(two)} skill cards`); assert.equal(offCatchUp(() => sk(M.rankNext(behindAt(25, { shards: 99 })))), 4, 'catchUp off: 4 skill cards');
     /* the points cover more upgrades than the cap leaves room for: the previews stop where steps and the story would go */
     const s30 = behindAt(30, { shards: 99 }), at30 = M.rankNext(s30);
-    assert.deepEqual(at30.filter(c => c.kind !== 'skill').map(c => c.kind), offCatchUp(() => M.rankNext(s30)).filter(c => c.kind !== 'skill' && !c.later).map(c => c.kind));
+    assert.deepEqual(at30.filter(c => c.kind !== 'skill' && c.kind !== 'catchup').map(c => c.kind), offCatchUp(() => M.rankNext(s30)).filter(c => c.kind !== 'skill' && c.kind !== 'catchup' && !c.later).map(c => c.kind));
     assert.ok(at30.filter(c => !c.story && !c.later && !['rq', 'sd', 'sh', 'stwait'].includes(c.kind)).length <= 8);
     assert.equal(sk(M.rankNext(behindAt(25, { shards: 99 })).filter(c => !c.fold)), 1, 'one skill card leads');
   });

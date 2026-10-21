@@ -1,6 +1,6 @@
 {
   "behind/L30-q28-from20-lag-A": [
-    {"t":"Buy Insignia Explosion 3 → 4","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 30–31"},
+    {"t":"Catch up: level Insignia Explosion 3 → 5","s":"3 pts · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 30–31"},
     {"t":"Vaizel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g30:0"},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1"},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
@@ -8,12 +8,12 @@
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202016","x":["+11 waiting on the story Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game"]},
     {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk : Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 19 open at your level"},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 6 open"},
-    {"t":"Buy Rear Smite 4 → 5","s":"2 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Heart Gore 7 → 8","s":"4 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 8 → 9","s":"4 pts · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Rear Smite 4 → 5","s":"2 pts · inferred","c":""},
+    {"t":"Catch up: level Heart Gore 7 → 9","s":"8 pts · inferred","c":""},
+    {"t":"Catch up: level Savage Roar 8 → 10","s":"8 pts · inferred","c":""}
   ],
   "behind/L30-q28-from20-lag-B": [
-    {"t":"Buy Insignia Explosion 3 → 4","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 30–31"},
+    {"t":"Catch up: level Insignia Explosion 3 → 5","s":"3 pts · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 30–31"},
     {"t":"Vaizel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g30:0"},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1"},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
@@ -21,12 +21,12 @@
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202016","x":["+11 waiting on the story Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game"]},
     {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk : Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 19 open at your level"},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 6 open"},
-    {"t":"Buy Rear Smite 4 → 5","s":"2 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Heart Gore 7 → 8","s":"4 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 8 → 9","s":"4 pts · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Rear Smite 4 → 5","s":"2 pts · inferred","c":""},
+    {"t":"Catch up: level Heart Gore 7 → 9","s":"8 pts · inferred","c":""},
+    {"t":"Catch up: level Savage Roar 8 → 10","s":"8 pts · inferred","c":""}
   ],
   "behind/L30-q48-from20-lagq-A": [
-    {"t":"Buy Insignia Explosion 3 → 4","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 30–31"},
+    {"t":"Catch up: level Insignia Explosion 3 → 5","s":"3 pts · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 30–31"},
     {"t":"Vaizel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g30:0"},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1"},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
@@ -35,12 +35,12 @@
     {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk : Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 19 open at your level"},
     {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 31)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 6 open"},
-    {"t":"Buy Rear Smite 4 → 5","s":"2 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Heart Gore 7 → 8","s":"4 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 8 → 9","s":"4 pts · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Rear Smite 4 → 5","s":"2 pts · inferred","c":""},
+    {"t":"Catch up: level Heart Gore 7 → 9","s":"8 pts · inferred","c":""},
+    {"t":"Catch up: level Savage Roar 8 → 10","s":"8 pts · inferred","c":""}
   ],
   "behind/L30-q48-from20-lagq-B": [
-    {"t":"Buy Insignia Explosion 3 → 4","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 30–31"},
+    {"t":"Catch up: level Insignia Explosion 3 → 5","s":"3 pts · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 30–31"},
     {"t":"Vaizel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g30:0"},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1"},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
@@ -49,9 +49,9 @@
     {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk : Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 19 open at your level"},
     {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 31)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 6 open"},
-    {"t":"Buy Rear Smite 4 → 5","s":"2 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Heart Gore 7 → 8","s":"4 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 8 → 9","s":"4 pts · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Rear Smite 4 → 5","s":"2 pts · inferred","c":""},
+    {"t":"Catch up: level Heart Gore 7 → 9","s":"8 pts · inferred","c":""},
+    {"t":"Catch up: level Savage Roar 8 → 10","s":"8 pts · inferred","c":""}
   ],
   "behind/L30-q48-from20-miss2-s0-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},

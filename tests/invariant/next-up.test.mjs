@@ -77,6 +77,10 @@ export default (test, M, X) => {
       switch (a.kind) {
         case 'run': k2('run', a.x.k, true); break;
         case 'skill': k2('skill', a.x.k); break;
+        /* a catch-up jump (0.9 P19) ticks its keys in order: the first must be open now; the rest open as the ones
+           before them are ticked (each line on the one before, a specialty slot on the skill level the lines reach),
+           so they are judged as not done only */
+        case 'catchup': k2('catchup', a.x.k); a.j.keys.filter(k => k !== a.x.k).forEach(k => k2('catchup', k, true)); break;
         case 'board': case 'boardcost': k2(a.kind, a.dn.k); break;
         case 'stequip': k2('stequip', a.nx.k); break;
         case 'step': case 'missed': case 'adv': k2(a.kind, a.x.k); break;

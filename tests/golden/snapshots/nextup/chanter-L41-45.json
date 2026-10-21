@@ -1,7 +1,7 @@
 {
   "chanter/L45-q86-none-A": [
     {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"(recommended Lv 45) from Asahr.","c":"primary \"Done\" tick:g45:witness","b":"Lv 45+","i":"The next one, \"The One Who Swears the Oath\", is recommended Lv 49, past this guide, so expect it to need gear."},
-    {"t":"Buy Dark Crush 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Catch up: level Dark Crush 1 → 10","s":"21 pts · then pick the specialty Critical Hit on hit check in game · 10 jumps left","c":"primary \"Mark spent\" catchup"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
@@ -16,7 +16,7 @@
   ],
   "chanter/L45-q86-none-B": [
     {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"(recommended Lv 45) from Asahr.","c":"primary \"Done\" tick:g45:witness","b":"Lv 45+","i":"The next one, \"The One Who Swears the Oath\", is recommended Lv 49, past this guide, so expect it to need gear."},
-    {"t":"Buy Dark Crush 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Catch up: level Dark Crush 1 → 10","s":"21 pts · then pick the specialty Critical Hit on hit check in game · 10 jumps left","c":"primary \"Mark spent\" catchup"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},

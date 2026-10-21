@@ -40,7 +40,7 @@
     {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · 1 level away · opens on \"A Daeva Dreaming Anew\" · 6 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "level/L31-q48-none-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 30–31"},
+    {"t":"Catch up: level Heart Gore 1 → 9","s":"17 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 30–31"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -55,7 +55,7 @@
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk : Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 7 open"}
   ],
   "level/L31-q48-none-B": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 30–31"},
+    {"t":"Catch up: level Heart Gore 1 → 9","s":"17 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 30–31"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -176,7 +176,7 @@
   ],
   "level/L32-q54-none-A": [
     {"t":"Ascension quest \"The One Who Dreams\"","s":"(recommended Lv 32).","c":"primary \"Done\" tick:g32:dreams","b":"Lv 32–34"},
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill"},
+    {"t":"Catch up: level Heart Gore 1 → 9","s":"17 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -191,7 +191,7 @@
   ],
   "level/L32-q54-none-B": [
     {"t":"Ascension quest \"The One Who Dreams\"","s":"(recommended Lv 32).","c":"primary \"Done\" tick:g32:dreams","b":"Lv 32–34"},
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill"},
+    {"t":"Catch up: level Heart Gore 1 → 9","s":"17 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -311,7 +311,7 @@
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 4 levels away · opens on \"Mirror of Greed\" · 12 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "level/L33-q57-none-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 32–34"},
+    {"t":"Catch up: level Heart Gore 1 → 9","s":"17 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 32–34"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -326,7 +326,7 @@
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 9 open"}
   ],
   "level/L33-q57-none-B": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 32–34"},
+    {"t":"Catch up: level Heart Gore 1 → 9","s":"17 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 32–34"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -443,7 +443,7 @@
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 3 levels away · opens on \"Mirror of Greed\" · 9 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "level/L34-q60-none-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 32–34"},
+    {"t":"Catch up: level Heart Gore 1 → 9","s":"17 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 32–34"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -458,7 +458,7 @@
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins (near your story step) · Kibelisk : Shulak Street Stall · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 9 open"}
   ],
   "level/L34-q60-none-B": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 32–34"},
+    {"t":"Catch up: level Heart Gore 1 → 9","s":"17 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 32–34"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -569,7 +569,7 @@
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 2 levels away · opens on \"Mirror of Greed\" · 7 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "level/L35-q62-none-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 35–36"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 35–36"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -584,7 +584,7 @@
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 10 open"}
   ],
   "level/L35-q62-none-B": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 35–36"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 35–36"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},

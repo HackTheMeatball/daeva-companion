@@ -140,7 +140,20 @@ const want = (r, f) => TAG[statusOf(r, f)] || null;
     for (const r of pg.dv) { const parts = r.meta.split(' · '); if (parts.some((s, i) => parts.slice(0, i).some(q => q.includes(s)))) badMeta.push({ id, node: r.k, meta: r.meta }); }
     sawLv21Via ||= pg.dv.some(r => / is learned at Lv 21$/.test(r.meta));
   }
-  ok('every class page: no Daevanion plan row\'s meta repeats a phrase', !badMeta.length && sawLv21Via, { badMeta: badMeta.slice(0, 5), sawLv21Via });
+  /* 0.9 P19 design review (PR #761, "inferred · inferred"): a line never shows the same tag twice. Every class at a Lv 39
+     catch-up start (nothing bought), Next up's cards and the Skills hero / Coming up lines, one element per line */
+  const dupTags = []; let tagLines = 0;
+  for (const id of guidePacks()) {
+    const cls = id.split('/').pop(), sc = await p.evaluate(buildFixture, { L: 39, mode: 'advanced', fx: 'clean' }); sc.checks = {}; sc.dvCost = {};
+    const stored = toStored(sc); Object.assign(stored.chars[stored.current], { pack: id, class: cls });
+    await writeRaw(p, JSON.stringify(stored)); await p.reload(); await p.waitForTimeout(400);
+    const lines = await p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-card h3, #nowStar .ns-card .ns-sub, #nowStar .ns-card p, #nowStar .ns-card small, #spHero .spname, #spHero small, #spHero .sphint, #spSoon li')]
+      .map(el => ({ text: el.textContent.replace(/\s+/g, ' ').trim(), tags: [...el.querySelectorAll('.ss-tag')].map(t => t.textContent.trim()) })));
+    tagLines += lines.filter(l => l.tags.length).length;
+    for (const l of lines) if (new Set(l.tags).size !== l.tags.length) dupTags.push({ id, ...l });
+  }
+  ok(`every class at a Lv 39 catch-up: no line of Next up or the Skills card repeats a tag (${tagLines} tagged lines)`, tagLines > 0 && !dupTags.length, dupTags.slice(0, 5));
+  ok('every class page: no Daevanion plan row\'s meta repeats a phrase',!badMeta.length && sawLv21Via, { badMeta: badMeta.slice(0, 5), sawLv21Via });
   ok('every guide pack: skill order rows, specialty picks, plan nodes, the stigma plan and the default keys carry exactly the data\'s tagged labels', !badBuild.length, badBuild.slice(0, 5));
   ok('every class page: Skills rows, Daevanion plan rows and their cost boxes, the Stigmas heading and the default keys heading show the tag exactly when the data labels them', !badPage.length, badPage.slice(0, 5));
   ok('the data has labelled plan nodes, skill order rows and a labelled stigma plan to check', (() => { const bs = guidePacks().map(id => recs(`aion2/asmodian/${id.split('/').pop()}/builds.json`)[0]);

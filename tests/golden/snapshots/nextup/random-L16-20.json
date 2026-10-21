@@ -1,45 +1,44 @@
 {
   "random/L16-q09-none-B": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 16–18"},
+    {"t":"Catch up: level Heart Gore 1 → 5","s":"5 pts · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 16–18"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Story: The Longest Night","s":"0/2 objectives · then Finding Nemon","c":"primary \"Turned in\" story","b":"Lv 16–18","o":["Sleep at the village cabin go to the village cabin ( Kibelisk : Aldelle Village)","Turn in no NPC; escaping from Ishalgen completes the quest"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202044","x":["+8 waiting on the story Shugo-of-All-Trades In my game Spooky Specters In my game Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game Practice Makes Perfect, Nyerk! In my game"]},
     {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest · Kibelisk : Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
     {"t":"Run Graverobber Den","s":"Crypt · Kibelisk : Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 6 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Savage Roar 1 → 6","s":"7 pts · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 6","s":"7 pts · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 6","s":"7 pts · inferred","c":""}
   ],
   "random/L16-q14-rnd112p20-A-stready": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 16–18"},
+    {"t":"Catch up: level Heart Gore 1 → 5","s":"5 pts · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 16–18"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","b":"Lv 16–18","o":["Go to the Temporary Investigation Base talk to Niror","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk : Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202010","x":["+5 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game"]},
     {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk : Temporary Investigation Base · Lv 10–14 · 3/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 18 open at your level"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk : Safe Haven Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 5 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Savage Roar 1 → 6","s":"7 pts · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 6","s":"7 pts · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 5","s":"5 pts · inferred","c":""}
   ],
   "random/L16-q18-rnd126p50-B-stwait": [
-    {"t":"Buy Ambush 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 16–18"},
+    {"t":"Catch up: level Ambush 1 → 5","s":"5 pts · 3 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 16–18"},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
     {"t":"Story: Cemetery Cleanup","s":"0/3 objectives · then Back on the Scent","c":"primary \"Turned in\" story","b":"Lv 16–18","o":["Help the gravekeeper with chores defeat Vampire Vivel defeat Rafflesia Kibelisk : Gravekeeper Camp","Investigate the Graverobber Den retrieve the items stolen by graverobbers (Kibelisk: Gravekeeper Camp)","Turn in Tagar (Gravekeeper), Gravekeeper Camp"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202010","x":["+5 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game"]},
     {"t":"Clear Ossuary of the Noble","s":"Nameless Cemetery (near your story step) · Kibelisk : Neglected Crematorium · Lv 10–14 · 8/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 170 m away · 6 open at your level"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk : Safe Haven Cliff · 12/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 1 open"},
-    {"t":"Buy Shadowstrike 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Shadowstrike 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Ambush 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Shadowstrike 1 → 5","s":"5 pts · inferred","c":""},
+    {"t":"Catch up: level Exploit Weakness 1 → 3","s":"2 pts · inferred","c":""}
   ],
   "random/L16-q24-all-B-stfull": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
     {"t":"Story: Malice Laid Bare","s":"Needs Lv 18: you're 16. Level up first.","c":""}
   ],
   "random/L16-q24-rnd104p20-A-filters": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 16–18"},
+    {"t":"Catch up: level Heart Gore 1 → 5","s":"5 pts · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 16–18"},
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Regional quests","s":"7 to pick up · 0/7 turned in","c":"go \"Show\" rqgo:rq:2202051","x":["new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","new The Great Curse-Breaking Caper","+1 more"]},
     {"t":"Clear Blue Dragon's Trap and others until Lv 18","s":"Sanctum Outpost (near your story step) · Kibelisk : Temporary Retreat · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Retreat is 80 m away · 23 open at your level"},
@@ -47,9 +46,9 @@
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
     {"t":"Story: Malice Laid Bare","s":"Needs Lv 18: you're 16. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":"","b":"Lv 16–18"},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk : Silent Hill Mushroom Rock · 5/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 4 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Savage Roar 1 → 3","s":"2 pts · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 6","s":"7 pts · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 6","s":"7 pts · inferred","c":""}
   ],
   "random/L16-q31-before-A-stfull": [
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
@@ -72,7 +71,7 @@
     {"t":"Buy Flash Slice 4 → 5","s":"Needs Lv 17 · 1 level away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L16-q39-none-B-sppts": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 16–18"},
+    {"t":"Catch up: level Heart Gore 1 → 6","s":"7 pts · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 16–18"},
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Regional quests","s":"11 to pick up · 2 follow-ups · 0/13 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+7 more"]},
     {"t":"Clear Abandoned Archon Jail and others until Lv 25","s":"Moslan Forest · Kibelisk : Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
@@ -81,9 +80,9 @@
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
     {"t":"Story: Tangled Past","s":"Needs Lv 25: you're 16. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":"","b":"Lv 16–18"},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk : Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Savage Roar 1 → 7","s":"9 pts · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 7","s":"9 pts · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 6","s":"7 pts · inferred","c":""}
   ],
   "random/L16-q42-rnd127p95-A-cube": [
     {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube","b":"Lv 16–18"},
@@ -106,7 +105,7 @@
     {"t":"Zikel board opens","s":"Lv 20 milestone · 4 levels away","c":"tag \"Later\"","f":"later","b":"Lv 20–21"}
   ],
   "random/L16-q61-rnd132p20-A-stwait": [
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 16–18"},
+    {"t":"Catch up: level Quick Slice 1 → 4","s":"3 pts · 3 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 16–18"},
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Regional quests","s":"18 to pick up · 5 follow-ups · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount","new Creion Research Assistant","+17 more"]},
     {"t":"Clear Abandoned Archon Jail and others until Lv 35","s":"Moslan Forest · Kibelisk : Moslan Forest Cliff · Lv 15–19 · 1/11","c":"go \"Show\" areas:15","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 19 open at your level"},
@@ -114,9 +113,8 @@
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
     {"t":"Story: Enemy Territory","s":"Needs Lv 35: you're 16. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":"","b":"Lv 16–18","bd":"Bind Steel Hammer Workcamp on the way 53 m from Mannikiki bind:kib:steel-hammer-workcamp"},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 4 open"},
-    {"t":"Buy Quick Slice 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Shadowstrike 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Shadowstrike 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Shadowstrike 1 → 4","s":"3 pts · inferred","c":""},
+    {"t":"Catch up: level Exploit Weakness 1 → 3","s":"2 pts · inferred","c":""}
   ],
   "random/L16-q70-before-B": [
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
@@ -135,7 +133,7 @@
   "random/L17-q19-rnd147p20-B-cube": [
     {"t":"Finish Hidden Vein Cave","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:g10h:hidden-vein-cave","b":"Lv 16–18"},
     {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
-    {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit inferred","c":"primary \"Spent\" skill"},
+    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty +50% Multi-Hit on hit inferred · 7 jumps left","c":"primary \"Mark spent\" catchup"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -143,7 +141,7 @@
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202010","x":["+5 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game"]},
     {"t":"Clear Hidden Vein Cave","s":"Nameless Cemetery (near your story step) · Kibelisk : Safe Haven · Lv 10–14 · 6/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Safe Haven is 460 m away · 15 open at your level"},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk : Silent Hill Mushroom Rock · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 4 open"},
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Heart Gore 1 → 5","s":"5 pts · inferred","c":""}
   ],
   "random/L17-q22-rnd148p95-A-cube": [
     {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube","b":"Lv 16–18"},
@@ -183,15 +181,14 @@
     {"t":"Zikel board opens","s":"Lv 20 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 20–21"}
   ],
   "random/L17-q44-rnd114p50-B-filters": [
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 16–18"},
+    {"t":"Catch up: level Savage Roar 1 → 3","s":"2 pts · 2 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 16–18"},
     {"t":"Regional quests","s":"12 to pick up · 2 follow-ups · 1 near your story step · 0/14 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+8 more"]},
     {"t":"Clear Bloodsoaked Confessional and others until Lv 29","s":"Moslan Forest · Kibelisk : Forest Hideout · Lv 15–19 · 6/11","c":"go \"Show\" areas:15","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Forest Hideout is 140 m away · 13 open at your level"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Story: Land of Rifts","s":"Needs Lv 29: you're 17. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":"","b":"Lv 16–18"},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 9/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 2 open"},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Ambush 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Ambush 1 → 2","s":"1 pt · inferred","c":""}
   ],
   "random/L17-q48-lvonly-A": [
     {"t":"Regional quests","s":"4 to pick up · 2 follow-ups · 0/6 turned in","c":"go \"Show\" rqgo:rq:2202016","b":"Lv 16–18","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22]","new Fight Poison with Poison [Lv 27]"]},
@@ -300,7 +297,7 @@
     {"t":"Zikel board opens","s":"Lv 20 milestone · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 20–21"}
   ],
   "random/L18-q25-none-B": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 16–18"},
+    {"t":"Catch up: level Heart Gore 1 → 6","s":"7 pts · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 16–18"},
     {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+2 more"]},
     {"t":"Clear Abandoned Archon Jail and others until Lv 19","s":"Moslan Forest · Kibelisk : Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
@@ -309,12 +306,12 @@
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Story: Broken Fang","s":"Needs Lv 19: you're 18. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":"","b":"Lv 16–18"},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk : Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Savage Roar 1 → 7","s":"9 pts · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 7","s":"9 pts · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 6","s":"7 pts · inferred","c":""}
   ],
   "random/L18-q45-none-B-dv": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 16–18"},
+    {"t":"Catch up: level Heart Gore 1 → 6","s":"7 pts · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 16–18"},
     {"t":"Buy Heart Gore inferred on Nezekan","s":"3 of your 9 crystals","c":"primary \"Acquired\" board"},
     {"t":"Regional quests","s":"12 to pick up · 2 follow-ups · 1 near your story step · 0/14 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+8 more"]},
     {"t":"Clear Abandoned Archon Jail and others until Lv 30","s":"Moslan Forest · Kibelisk : Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
@@ -324,8 +321,8 @@
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Story: Dying Light","s":"Needs Lv 30: you're 18. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":"","b":"Lv 16–18"},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk : Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Savage Roar 1 → 7","s":"9 pts · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 7","s":"9 pts · inferred","c":""}
   ],
   "random/L18-q47-before-A-filters": [
     {"t":"Buy Insignia Explosion 2 → 3","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 16–18"},
@@ -366,7 +363,7 @@
     {"t":"Buy Assault Stance 3 → 4","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L18-q74-none-A-dv": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 16–18"},
+    {"t":"Catch up: level Heart Gore 1 → 6","s":"7 pts · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 16–18"},
     {"t":"Buy Heart Gore inferred on Nezekan","s":"3 of your 9 crystals","c":"primary \"Acquired\" board"},
     {"t":"Regional quests","s":"19 to pick up · 6 follow-ups · 0/26 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount | -> lock(disabled) A Friend's Legacy [Lv 37]","+19 more"]},
     {"t":"Clear Abandoned Archon Jail and others until Lv 40","s":"Moslan Forest · Kibelisk : Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
@@ -376,8 +373,8 @@
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Story: Symbol of Liberation","s":"Needs Lv 40: you're 18. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":"","b":"Lv 16–18","bd":"Bind Zemurru's Tomb on the way 27 m from Amunta bind:kib:zemurrus-tomb"},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk : Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Savage Roar 1 → 7","s":"9 pts · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 7","s":"9 pts · inferred","c":""}
   ],
   "random/L18-q76-lvonly-A-objs": [
     {"t":"Buy Insignia Explosion 2 → 3","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 16–18"},
@@ -456,7 +453,7 @@
     {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 2 levels away · single source","c":"tag \"Later\"","f":"later"}
   ],
   "random/L19-q25-none-B": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
+    {"t":"Catch up: level Heart Gore 1 → 7","s":"9 pts · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 19"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -465,26 +462,26 @@
     {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+2 more"]},
     {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest · Kibelisk : Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk : Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Savage Roar 1 → 8","s":"13 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 7","s":"9 pts · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 6","s":"7 pts · inferred","c":""}
   ],
   "random/L19-q34-all-B-rqmix": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
     {"t":"Story: Disturbed Balance","s":"Needs Lv 22: you're 19. Level up first.","c":""}
   ],
   "random/L19-q34-rnd129p50-B-filters": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill"},
+    {"t":"Catch up: level Heart Gore 1 → 5","s":"5 pts · 5 jumps left · inferred","c":"primary \"Mark spent\" catchup"},
     {"t":"Regional quests","s":"3 to pick up · 1 follow-up · 1 near your story step · 5/9 turned in","c":"go \"Show\" rqgo:rq:2202023","x":["new Practice Makes Perfect, Nyerk!","new Blade of Vengeance [Lv 22] (near) | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22]"]},
     {"t":"Clear Abandoned Archon Jail and others until Lv 22","s":"Moslan Forest (near your story step) · Kibelisk : Moslan Forest Cliff · Lv 15–19 · 3/11","c":"go \"Show\" areas:15","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 16 open at your level"},
     {"t":"Story: Disturbed Balance","s":"Needs Lv 22: you're 19. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk : Forest Hideout · 7/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 3 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Savage Roar 1 → 5","s":"5 pts · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 5","s":"5 pts · inferred","c":""},
+    {"t":"Catch up: level Shadowstrike 1 → 5","s":"5 pts · inferred","c":""}
   ],
   "random/L19-q37-none-B-sppts": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
+    {"t":"Catch up: level Heart Gore 1 → 7","s":"9 pts · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 19"},
     {"t":"Regional quests","s":"11 to pick up · 2 follow-ups · 0/13 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+7 more"]},
     {"t":"Clear Abandoned Archon Jail and others until Lv 24","s":"Moslan Forest · Kibelisk : Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
@@ -493,9 +490,9 @@
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Story: Finding Stolen Relics","s":"Needs Lv 24: you're 19. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":"","b":"Lv 19"},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk : Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Savage Roar 1 → 8","s":"13 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 8","s":"13 pts · then pick the specialty +50% Multi-Hit on hit · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 7","s":"9 pts · inferred","c":""}
   ],
   "random/L19-q50-lvonly-A-stwait": [
     {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
@@ -518,7 +515,7 @@
     {"t":"Run Logger's Rest Ruins","s":"Moslan Forest · Kibelisk : Elim's Rest · 9/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Elim's Rest is 224 m away · 2 open"}
   ],
   "random/L19-q55-rnd140p20-A-sppts": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
+    {"t":"Catch up: level Heart Gore 1 → 7","s":"9 pts · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 19"},
     {"t":"Regional quests","s":"16 to pick up · 5 follow-ups · 1 near your story step · 0/22 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount","new Creion Research Assistant","+15 more"]},
     {"t":"Clear Abandoned Archon Jail and others until Lv 33","s":"Moslan Forest · Kibelisk : Moslan Forest Cliff · Lv 15–19 · 3/11","c":"go \"Show\" areas:15","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 18 open at your level"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
@@ -527,9 +524,9 @@
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Story: Last Refuge","s":"Needs Lv 33: you're 19. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":"","b":"Lv 19","bd":"Bind Graverobber Campsite on the way 128 m from Nemon bind:kib:graverobber-campsite"},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 5/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 3 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Savage Roar 1 → 8","s":"13 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 8","s":"13 pts · then pick the specialty +50% Multi-Hit on hit · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 7","s":"9 pts · inferred","c":""}
   ],
   "random/L19-q60-before-B-stwait": [
     {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
@@ -552,7 +549,7 @@
     {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 2 levels away · single source","c":"tag \"Later\"","f":"later"}
   ],
   "random/L19-q61-none-B-stwait": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
+    {"t":"Catch up: level Heart Gore 1 → 7","s":"9 pts · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 19"},
     {"t":"Regional quests","s":"18 to pick up · 5 follow-ups · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount","new Creion Research Assistant","+17 more"]},
     {"t":"Clear Abandoned Archon Jail and others until Lv 35","s":"Moslan Forest · Kibelisk : Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
@@ -561,16 +558,16 @@
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Story: Enemy Territory","s":"Needs Lv 35: you're 19. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":"","b":"Lv 19","bd":"Bind Steel Hammer Workcamp on the way 53 m from Mannikiki bind:kib:steel-hammer-workcamp"},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk : Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Savage Roar 1 → 8","s":"13 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 7","s":"9 pts · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 6","s":"7 pts · inferred","c":""}
   ],
   "random/L19-q65-all-A-rqmix": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
     {"t":"Story: Inevitable Encounter","s":"Needs Lv 37: you're 19. Level up first.","c":""}
   ],
   "random/L19-q73-none-A-filters": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
+    {"t":"Catch up: level Heart Gore 1 → 7","s":"9 pts · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 19"},
     {"t":"Regional quests","s":"19 to pick up · 6 follow-ups · 0/26 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount | -> lock(disabled) A Friend's Legacy [Lv 37]","+19 more"]},
     {"t":"Clear Abandoned Archon Jail and others until Lv 40","s":"Moslan Forest · Kibelisk : Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
@@ -579,9 +576,9 @@
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Story: Treatment","s":"Needs Lv 40: you're 19. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":"","b":"Lv 19"},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk : Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Savage Roar 1 → 8","s":"13 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 7","s":"9 pts · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 6","s":"7 pts · inferred","c":""}
   ],
   "random/L19-qxx-all-A-dv": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
@@ -598,13 +595,13 @@
     {"t":"Zikel board opens","s":"Lv 20 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L20-q00-lvonly-A-sppts": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill"},
+    {"t":"Catch up: level Heart Gore 1 → 7","s":"9 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup"},
     {"t":"Story: A Village in the Fog","s":"0/2 objectives · then Prepare to Escape","c":"primary \"Turned in\" story","o":["Remember Aldelle Village bind with the Kibelisk","Turn in Ellin (Villager), Aldelle Village"]},
     {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk : Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Catch up: level Savage Roar 1 → 8","s":"13 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 8","s":"13 pts · then pick the specialty +50% Multi-Hit on hit · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 7","s":"9 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack · inferred","c":""},
     {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 1 level away · single source","c":"tag \"Later\"","f":"later"}
   ],
   "random/L20-q06-lvonly-A": [
@@ -647,7 +644,7 @@
     {"t":"Buy Ambush 7 → 8","s":"Needs Lv 21 · 1 level away · inferred","c":"tag \"Later\"","f":"later"}
   ],
   "random/L20-q39-none-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 20–21"},
+    {"t":"Catch up: level Heart Gore 1 → 7","s":"9 pts · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 20–21"},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0"},
     {"t":"Regional quests","s":"11 to pick up · 2 follow-ups · 0/13 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+7 more"]},
     {"t":"Clear Abandoned Memorial Room and others until Lv 25","s":"Uruthumheim · Kibelisk : Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 31 open at your level"},
@@ -657,11 +654,11 @@
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Story: Tangled Past","s":"Needs Lv 25: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":"","b":"Lv 20–21"},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk : Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 6 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Savage Roar 1 → 8","s":"13 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 8","s":"13 pts · then pick the specialty +50% Multi-Hit on hit · inferred","c":""}
   ],
   "random/L20-q49-rnd144p20-A-dv": [
-    {"t":"Buy Savage Roar specialty","s":"Pick: +20% Skill Speed inferred","c":"primary \"Spent\" skill","b":"Lv 20–21"},
+    {"t":"Catch up: level Savage Roar 1 → 3","s":"2 pts · then pick the specialty +20% Skill Speed · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 20–21"},
     {"t":"Buy Heart Gore inferred on Nezekan","s":"3 of your 9 crystals","c":"primary \"Acquired\" board"},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0"},
     {"t":"Regional quests","s":"13 to pick up · 3 follow-ups · 3/19 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Odyle Jelly Misappropriation Investigation","new The Great Curse-Breaking Caper","new Practice Makes Perfect, Nyerk!","new Nine Wonders of Altgard: 1st Leg [Lv 22]","+10 more"]},
@@ -671,11 +668,11 @@
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
     {"t":"Story: Bitter Reality","s":"Needs Lv 32: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":"","b":"Lv 20–21","bd":"Bind Briskwind Shelter on the way 63 m from Menrik bind:kib:briskwind-shelter"},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk : Silent Hill Mushroom Rock · 6/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 4 open"},
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Heart Gore 1 → 7","s":"9 pts · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 8","s":"13 pts · then pick the specialty +50% Multi-Hit on hit · inferred","c":""}
   ],
   "random/L20-q53-rnd141p20-A-stwait": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 20–21"},
+    {"t":"Catch up: level Heart Gore 1 → 7","s":"9 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 20–21"},
     {"t":"Regional quests","s":"15 to pick up · 4 follow-ups · 0/19 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount","new Creion Research Assistant","+13 more"]},
     {"t":"Clear Closed Hideout and others until Lv 32","s":"Uruthumheim · Kibelisk : Victorious Daeva's Statue · Lv 20–24 · 2/7","c":"go \"Show\" areas:20","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Victorious Daeva's Statue is 95 m away · 26 open at your level"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
@@ -683,12 +680,12 @@
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Story: Last of the Destruction Archons","s":"Needs Lv 32: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":"","b":"Lv 20–21"},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk : Silent Hill Mushroom Rock · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 6 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Savage Roar 1 → 8","s":"13 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 7","s":"9 pts · then pick the specialty +50% Multi-Hit on hit · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 6","s":"7 pts · inferred","c":""}
   ],
   "random/L20-q56-rnd102p20-B-filters": [
-    {"t":"Buy Shadowstrike specialty","s":"Pick: +20% Critical Damage Boost for 10s on hit inferred","c":"primary \"Spent\" skill","b":"Lv 20–21"},
+    {"t":"Catch up: pick Shadowstrike 's specialty","s":"Specialty +20% Critical Damage Boost for 10s on hit inferred · 8 jumps left","c":"primary \"Mark spent\" catchup","b":"Lv 20–21"},
     {"t":"Regional quests","s":"15 to pick up · 5 follow-ups · 1/22 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount","new Creion Research Assistant","+14 more"]},
     {"t":"Clear Destroyed Scriptorium and others until Lv 33","s":"Purifying Forest · Kibelisk : Faded Stump · Lv 20–24 · 3/7","c":"go \"Show\" areas:20","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Faded Stump is 200 m away · 27 open at your level"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
@@ -697,9 +694,9 @@
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Story: Scripture in the Ruins","s":"Needs Lv 33: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":"","b":"Lv 20–21"},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk : Silent Hill Mushroom Rock · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
-    {"t":"Buy Savage Roar specialty","s":"Pick: +20% Skill Speed inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: pick Savage Roar 's specialty","s":"Specialty +20% Skill Speed inferred","c":""},
+    {"t":"Catch up: level Heart Gore 1 → 5","s":"5 pts · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 6","s":"7 pts · inferred","c":""}
   ],
   "random/L20-q60-lvonly-A-objs": [
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0"},
@@ -754,11 +751,11 @@
     {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 1 level away · single source","c":"tag \"Later\"","f":"later"}
   ],
   "random/L20-q82-all-B-sppts": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 20–21"},
+    {"t":"Catch up: level Heart Gore 1 → 7","s":"9 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 20–21"},
     {"t":"Story: Blood Barrier","s":"Needs Lv 44: you're 20. Level up first. Meanwhile: Krao Cave (Lv 20+, item level 200)","c":""},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Catch up: level Savage Roar 1 → 8","s":"13 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 8","s":"13 pts · then pick the specialty +50% Multi-Hit on hit · slot 2: -1s Insignia Explosion cooldown on hit · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 7","s":"9 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack · inferred","c":""},
     {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 1 level away · single source","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Determination 1 → 2","s":"Needs Lv 25 · 5 levels away · single source","c":"tag \"Later\"","f":"later","b":"Lv 25–26"}
   ],
