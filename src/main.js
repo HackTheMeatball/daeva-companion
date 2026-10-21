@@ -9,12 +9,10 @@
 /* the game pack, as one module: "pack" is the pack's shell.js (scripts/build.mjs maps the name): the pack object, its
    tables and helpers the cards get by their old names, its cards' hand-over of the shell's names (aion2UsePage, below)
    and what the shell still calls of its cards */
-import { CONF, SD_RW, SOURCES, SRC_SITE, STORY_END, ITEMS, E_ORDER, LEVEL_POINTS, RMB_STACK, seq, TIPS, GATES, STEPS, QUESTS,
-  QUEST_STEPS, STORY_UNLOCKS, UNLOCK_GATE, VERIFIED_UNLOCKS, NO_AREA, SH_REWARD, aion2Pack, aion2UsePage, aion2DungeonMap,
-  aion2QuestMap, mapFocus, aion2TipId, ini, spMini, stIco, dvShort, goAreas, cubeClick, stLvClick, stTickClick, stUpClick,
-  AREA_ITEMS, CLEAR_REWARD, DV_NODES, RQ_BY, RQ_K, bandOf, eputK, spCostTxt, dvFromLv, dvGateOf, dvLeft, objSubs, rqStatus,
-  shardsFromLv, slotNames, specPickOf, stLvOfC, stigmaPlan, stigmaSlots, rqReqOf, ascensionOf, aion2AscensionCard,
-  renderAscension } from "pack";
+import { CONF, SD_RW, SOURCES, SRC_SITE, STORY_END, ITEMS, TIPS, GATES, STEPS, QUESTS, QUEST_STEPS, STORY_UNLOCKS,
+  UNLOCK_GATE, VERIFIED_UNLOCKS, NO_AREA, SH_REWARD, aion2Pack, aion2UsePage, aion2QuestMap, mapFocus, aion2TipId, ini,
+  spMini, stIco, dvShort, goAreas, cubeClick, stLvClick, stTickClick, stUpClick, RQ_K, spCostTxt, dvGateOf, dvLeft,
+  rqStatus, slotNames, specPickOf, stLvOfC, stigmaPlan, stigmaSlots, rqReqOf, aion2AscensionCard, renderAscension } from "pack";
 import { activePack, usePack } from "./core/pack.js";
 import { cardLock, mountAll, registerCard, registeredCards, updateCard } from "./core/cards.js";
 import LOCK_TEXTS from "../data/ui/lock-texts.json";
@@ -28,10 +26,8 @@ import { webStorage as saveStore } from "./shell/storage-web.js";
 import { newId } from "./shell/ids.js";
 /* the whole module lands in this bundle; src/site.js reads its line / nudge / hint helpers as page globals */
 import { importBackup, markExport } from "./core/backup.js";
-import { itemByK } from "./core/catalog.js";
-import { checkableOf, countsOf, derivedOf, doneOf, gateChangeOn, gatesOf, mainCountsOf, objIdxOf, objPartsOf, openOf, qProgOf, questIdx, sideOpenOf,
-  setGateChanges, gatesPass, storyGate, storyIdx, turnInNeedsLv, chainsOn, stepChipOf, storyLineOf } from "./core/requirements.js";
-import { rankNext, setRankChanges } from "./core/nextup.js";
+import { checkableOf, countsOf, gatesOf, mainCountsOf, objIdxOf, qProgOf, sideOpenOf, setGateChanges, gatesPass } from "./core/requirements.js";
+import { setRankChanges } from "./core/nextup.js";
 /* the engine's cards (0.4 P4c, src/cards/): what the shell still calls of them, and the hand-over of the shell's names
    they read (useCardPage, below) */
 import { useCardPage } from "./cards/page.js";
@@ -297,9 +293,6 @@ function placeLocks(ctx) {
     sh.innerHTML = `<div aria-hidden="true"><p class="lockline">${lock.text}${key}</p>${left}<p class="lockname">${x.name}</p><div class="lockbar"></div></div>`;
   });
 }
-/* Fill the Skills card down to the height of its neighbours: drop Coming up rows that don't fit (min 3). */
-/* Elastic lists (Skills "Coming up", the board list) show at least 3 rows, then add rows while their card
-   stays within the tallest card's natural height, so the row ends level without any card setting the height. */
 /* Scroll areas with a hidden bar and a bottom fade that clears once you reach the end. */
 function fadeScroll(el) {
   if (!el || el.dataset.fs) { if (el) requestAnimationFrame(() => el.classList.toggle("at-end", el.scrollTop + el.clientHeight >= el.scrollHeight - 2)); return; }
@@ -384,29 +377,15 @@ function syncHeroRows() {
 function fitSkills() {
   syncHeroRows();
   /* Basic mode: the shortest card sets the row height; Next up's content scrolls (with the fade) to match. */
-  const ns = pipWin ? null : nowEl, tg = document.querySelector("#main .top-grid");
+  const ns = pipWin ? null : nowEl;
   if (ns) ns.style.height = "";
   if (ns) { const w = ns.querySelector(".ns-stack"), f = w && w.querySelector(".ns-card"); if (f) w.style.height = (f.offsetHeight + (w.children.length > 1 ? 30 : 0)) + "px"; }
   /* The board list always shows at least its next 3 nodes; the row grows to that, and Skills / Next up fill the same height. */
   const dvt = document.getElementById("dvThen");
   if (dvt) { dvt.style.minHeight = ""; } if (dvt && !document.body.classList.contains("basic")) { const nodes = [...dvt.querySelectorAll(".soonlist > li:not(.then-board)")], n3 = nodes[Math.min(2, nodes.length - 1)];
     if (n3) { const top = dvt.getBoundingClientRect().top - dvt.scrollTop; dvt.style.minHeight = Math.ceil(n3.getBoundingClientRect().bottom - top + 14) + "px"; } }
+  /* Coming up and the board list scroll inside their cards, with the fade */
   fadeScroll(document.getElementById("spSoon")); fadeScroll(dvt);
-  const grid = document.querySelector("#main .top-grid"); if (!grid) return;
-  const lists = []; /* Coming up and the board list now scroll inside their cards (see fadeScroll) */
-  const single = getComputedStyle(grid).gridTemplateColumns.split(" ").length < 2;
-  /* Minimum: 3 node/skill rows (board headers don't count). */
-  const showFirst = (rows, n) => { let c = 0; rows.forEach(li => { const node = !li.classList.contains("then-board"); li.hidden = c >= n; if (node && c < n) c++; }); trimHead(rows); };
-  const trimHead = rows => { const vis = rows.filter(li => !li.hidden); const last = vis[vis.length - 1]; if (last && last.classList.contains("then-board")) last.hidden = true; };
-  lists.forEach(x => showFirst(x.rows, single ? 6 : x.min));
-  if (single) return;
-  grid.style.alignItems = "start";
-  const target = Math.max(0, ...[...grid.children].filter(c => !c.hidden).map(c => c.offsetHeight));
-  lists.forEach(x => {
-    for (const li of x.rows) { if (!li.hidden) continue; li.hidden = false; if (x.card.offsetHeight > target) { li.hidden = true; break; } }
-    trimHead(x.rows);
-  });
-  grid.style.alignItems = "";
 }
 window.addEventListener("resize", () => requestAnimationFrame(fitSkills));
 
@@ -449,32 +428,19 @@ layoutEl.addEventListener("click", e => {
   if (state.sound !== false && +i.value !== before) blip(+b.dataset.d > 0);
 });
 /* Export / import progress: localStorage is the only copy, so offer a JSON file download and upload (P2-9). */
-/* Inside claude.ai, saving a file goes through the viewer's downloads permission (the button only shows where that's available).
-   Anywhere else (the standalone site) it is a plain Blob download. */
-(async () => {
-  const btn = document.getElementById("expBtn"), msg = document.getElementById("xferMsg");
-  /* the save-failed banner offers the same Export action wherever this button is available */
-  const show = on => { btn.hidden = !on; document.getElementById("saveWarnExp").hidden = !on; };
+/* A plain Blob download; the button and the save-failed banner's Export start hidden in the markup and show here. */
+(() => {
+  const btn = document.getElementById("expBtn");
+  btn.hidden = false; document.getElementById("saveWarnExp").hidden = false;
   /* no name or label in the file name (it may carry the player's name; docs/ARCHITECTURE.md §1) */
   const fname = () => `companion-save-${new Date().toISOString().slice(0, 10)}.json`;
-  if (!(window.claude && window.claude.use)) {
-    show(true);
-    btn.addEventListener("click", () => {
-      /* 0.2.5: the export time is stored before the file is built, so the file equals the save at the moment of export
-         (the browser doesn't say whether the file was kept, hence "Last backup", not "saved") */
-      markExport(state, Date.now()); save();
-      const a = document.createElement("a"), url = URL.createObjectURL(new Blob([JSON.stringify(state, null, 1)], { type: "application/json" }));
-      a.href = url; a.download = fname(); document.body.appendChild(a); a.click(); a.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 1000);
-    });
-    return;
-  }
-  let dl = null; try { dl = await window.claude.use("downloads"); } catch (e) { dl = null; }
-  if (!dl) return;
-  show(true);
-  btn.addEventListener("click", async () => {
-    try { await dl.save({ filename: fname(), data: JSON.stringify(state, null, 1) }); }
-    catch (err) { const c = err && err.code; if (msg && c !== "declined") msg.textContent = c === "rate_limited" ? "A save prompt is already open." : "Export isn't available here."; if (c === "unavailable" || c === "not_granted") show(false); }
+  btn.addEventListener("click", () => {
+    /* 0.2.5: the export time is stored before the file is built, so the file equals the save at the moment of export
+       (the browser doesn't say whether the file was kept, hence "Last backup", not "saved") */
+    markExport(state, Date.now()); save();
+    const a = document.createElement("a"), url = URL.createObjectURL(new Blob([JSON.stringify(state, null, 1)], { type: "application/json" }));
+    a.href = url; a.download = fname(); document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
   });
 })();
 document.getElementById("impIn").addEventListener("change", async e => {
@@ -519,8 +485,6 @@ aion2UsePage({ state, save, update, render, renderNow, renderQuest, renderAscens
 /* the shell's names the engine cards read (src/cards/page.js), handed over before the first render() */
 useCardPage({ state, save, update, mainEl, layoutEl, SMOOTH, RMQ, rewardToast, chime, tipClick, tipGoClick, tipEsc, GATES,
   STEPS, QUESTS, QUEST_STEPS, STORY_UNLOCKS, UNLOCK_GATE, VERIFIED_UNLOCKS, STORY_END, SD_RW, SH_REWARD, NO_AREA,
-  ITEMS, E_ORDER, LEVEL_POINTS, seq, AREA_ITEMS, CLEAR_REWARD, DV_NODES, RQ_K, bandOf, eputK, spCostTxt, dvFromLv,
-  shardsFromLv, objSubs, rqReqOf, specPickOf, mapFocus, aion2QuestMap, aion2DungeonMap, goAreas, cubeClick,
-  stTickClick, stUpClick, stLvClick, spMini, stIco, dvShort, STIGMA_SLOTS, stNames, rqAvail, qProg, counts,
-  mainCounts, sideOpen, objIdx });
+  ITEMS, RQ_K, spCostTxt, rqReqOf, specPickOf, mapFocus, aion2QuestMap, goAreas, cubeClick, stTickClick, stUpClick,
+  stLvClick, spMini, stIco, dvShort, qProg, counts, mainCounts, sideOpen, objIdx });
 render(); update();
