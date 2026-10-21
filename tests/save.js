@@ -1,11 +1,11 @@
-/* Save v5 (0.4 P3c), in the browser: the clean break and the save's round trips. Suite `save` in tests/run.mjs (golden
+/* Save v6 (0.4 P3c; v6 since 0.9 P2), in the browser: the clean break and the save's round trips. Suite `save` in tests/run.mjs (golden
    shard, in place of the removed mig1 / mig2). node tests/save.js  (page at AION_BASE; see tests/config.js)
-     1. fresh browser: Lv 1 on the first quest; only the v5 key written; a random slot id
+     1. fresh browser: Lv 1 on the first quest; only the v6 key written; a random slot id
      2. a v4 save present: the app starts fresh, no page error, the v4 entry byte-identical, getItem never called with
         the v4 key (Storage.prototype.getItem spied from before the page's script runs)
-     3. v5 round trip: save, reload, identical text
+     3. v6 round trip: save, reload, identical text
      4. import of a v4 export: refused with the message, nothing changes
-     5. import of a v5 export: replaces the save, the old one kept under :before-import
+     5. import of a v6 export: replaces the save, the old one kept under :before-import
      6. Level up changes the label (labelOf), never the slot id or the key
      7. the player name and the label never leave the save: not in a storage key, the report link or the export file name
      8. two slots: the page shows the current one and leaves the other as it is
@@ -54,11 +54,11 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     await clearSave(p); await p.reload(); await p.waitForTimeout(400);
     const s = await p.evaluate(() => ({ lv: char(state).level, q: char(state).quest, q0: QUESTS[0][1], v: state.v, cur: state.current, ids: Object.keys(state.chars), c: char(state) }));
     ok('fresh: Lv 1 on the first story quest', s.lv === 1 && s.q === s.q0, s);
-    ok('fresh: one slot, current, a random v4 UUID; pack, class and an empty name', s.v === 5 && s.ids.length === 1 && s.ids[0] === s.cur && UUID4.test(s.cur) && s.c.id === s.cur && s.c.pack === 'aion2/asmodian/assassin' && s.c.class === 'assassin' && s.c.name === '', s);
+    ok('fresh: one slot, current, a random v4 UUID; pack, class and an empty name', s.v === 6 && s.ids.length === 1 && s.ids[0] === s.cur && UUID4.test(s.cur) && s.c.id === s.cur && s.c.pack === 'aion2/asmodian/assassin' && s.c.class === 'assassin' && s.c.name === '', s);
     await p.click('#lvlUp'); await p.waitForTimeout(150);
-    ok('fresh: only the v5 key is written', JSON.stringify(await keys(p)) === JSON.stringify([SAVE_KEY]), await keys(p));
+    ok('fresh: only the v6 key is written', JSON.stringify(await keys(p)) === JSON.stringify([SAVE_KEY]), await keys(p));
     const stored = JSON.parse(await readRaw(p));
-    ok('fresh: the stored save is v5 with the same slot and Lv 2 after Level up', stored.v === 5 && stored.current === s.cur && stored.chars[s.cur].level === 2, stored);
+    ok('fresh: the stored save is v6 with the same slot and Lv 2 after Level up', stored.v === 6 && stored.current === s.cur && stored.chars[s.cur].level === 2, stored);
     const other = await page(); await clearSave(other.p); await other.p.reload(); await other.p.waitForTimeout(300);
     const id2 = await other.p.evaluate(() => state.current); await other.ctx.close();
     ok('fresh: another browser gets another slot id', UUID4.test(id2) && id2 !== s.cur, [s.cur, id2]);
@@ -77,11 +77,11 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     const gets2 = await p.evaluate(() => window.__gets);
     ok('v4 save present: getItem never called with the v4 key after the reload either', gets2.length > 0 && !gets2.includes(V4_KEY), gets2);
     ok('v4 save present: its entry is byte-identical after a load, a save and a reload', await readRaw(p, { key: V4_KEY }) === V4_SAVE);
-    ok('v4 save present: the progress is saved under the v5 key only', JSON.stringify(await keys(p)) === JSON.stringify([V4_KEY, SAVE_KEY].sort()) && JSON.parse(await readRaw(p)).v === 5, await keys(p));
+    ok('v4 save present: the progress is saved under the v6 key only', JSON.stringify(await keys(p)) === JSON.stringify([V4_KEY, SAVE_KEY].sort()) && JSON.parse(await readRaw(p)).v === 6, await keys(p));
     ok('v4 save present: no page error', !errs.length, errs);
     await ctx.close();
   }
-  /* 3. v5 round trip */
+  /* 3. v6 round trip */
   const SAVED = { checks: { 'g6:0': true, 'g9:0': true, 'rq:2202010': true }, started: { 'rq:2202017': 1 }, level: 22, quest: 'Daeva in a Dream', open: {}, mode: 'advanced', stones: 3 };
   {
     const { ctx, p, errs } = await page();
@@ -108,7 +108,7 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     ok('import refused: no page errors', !errs.length, errs);
     await ctx.close();
   }
-  /* 5. import of a v5 export: replaces the save, keeps the old one under :before-import */
+  /* 5. import of a v6 export: replaces the save, keeps the old one under :before-import */
   {
     const { ctx, p, errs } = await page();
     await writeSave(p, SAVED, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
@@ -116,13 +116,13 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     const file = { ...toStored({ checks: { 'g6:0': true, 'g12:0': true }, level: 33, quest: 'Last Refuge', open: {}, mode: 'basic' }) };
     file.chars = { 'aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee': { ...file.chars[TEST_SLOT], id: 'aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee' } }; file.current = 'aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee';
     await importFile(p, JSON.stringify(file));
-    ok('import v5: asks before replacing (Lv 33, 2 ticks)', /Replace your progress with this file \(Lv 33, 2 ticks\)/.test(await p.innerText('#xferMsg')), await p.innerText('#xferMsg'));
+    ok('import v6: asks before replacing (Lv 33, 2 ticks)', /Replace your progress with this file \(Lv 33, 2 ticks\)/.test(await p.innerText('#xferMsg')), await p.innerText('#xferMsg'));
     await Promise.all([p.waitForEvent('load'), p.click('#impGo')]); await p.waitForTimeout(400);
-    const s = await p.evaluate(() => ({ lv: char(state).level, q: char(state).quest, cur: state.current, mode: state.mode }));
-    ok('import v5: the save is replaced (level, quest, slot id, view settings from the file)', s.lv === 33 && s.q === 'Last Refuge' && s.cur === file.current && s.mode === 'basic', s);
-    ok('import v5: the replaced save is kept under :before-import, as it was', (await readRaw(p, { key: BEFORE_IMPORT_KEY })) === mem0);
-    ok('import v5: only the v5 keys exist', JSON.stringify(await keys(p)) === JSON.stringify([SAVE_KEY, BEFORE_IMPORT_KEY].sort()), await keys(p));
-    ok('import v5: no page errors', !errs.length, errs);
+    const s = await p.evaluate(() => ({ lv: char(state).level, q: questNameOf(char(state).quest), cur: state.current, mode: state.mode }));
+    ok('import v6: the save is replaced (level, quest, slot id, view settings from the file)', s.lv === 33 && s.q === 'Last Refuge' && s.cur === file.current && s.mode === 'basic', s);
+    ok('import v6: the replaced save is kept under :before-import, as it was', (await readRaw(p, { key: BEFORE_IMPORT_KEY })) === mem0);
+    ok('import v6: only the v6 keys exist', JSON.stringify(await keys(p)) === JSON.stringify([SAVE_KEY, BEFORE_IMPORT_KEY].sort()), await keys(p));
+    ok('import v6: no page errors', !errs.length, errs);
     await ctx.close();
   }
   /* 6. Level up: the label changes, the slot id and the key don't */
@@ -160,7 +160,7 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
   {
     const { ctx, p, errs } = await page();
     const two = toStored(SAVED), B = '00000000-0000-4000-8000-0000000000b2';
-    two.chars[B] = { ...JSON.parse(JSON.stringify(two.chars[TEST_SLOT])), id: B, level: 40, quest: 'Forgotten Commander' }; two.current = B;
+    two.chars[B] = { ...JSON.parse(JSON.stringify(two.chars[TEST_SLOT])), id: B, level: 40, quest: toStored({ quest: 'Forgotten Commander' }).chars[TEST_SLOT].quest /* the story key (save v6) */ }; two.current = B;
     await writeRaw(p, JSON.stringify(two), { fresh: true }); await p.reload(); await p.waitForTimeout(400);
     await p.click('#lvlUp'); await p.waitForTimeout(150);
     const st = JSON.parse(await readRaw(p)), shown = await p.evaluate(() => document.getElementById('questIn').value);
@@ -561,7 +561,7 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     ok('remove the current character: the page shows the remaining one (assassin-lvl22, Lv 22, its quest)', shown.cur === TEST_SLOT && shown.lv === 22 && shown.q === SAVED.quest && shown.lbl === 'assassin-lvl22', shown);
     await p.click('#charBtn');
     ok('remove: back to one character, no Remove offered', (await rowsOf(p)).length === 1 && !(await p.$('#charRows [data-remove]')));
-    ok('remove: only the v5 key exists', JSON.stringify(await keys(p)) === JSON.stringify([SAVE_KEY]), await keys(p));
+    ok('remove: only the v6 key exists', JSON.stringify(await keys(p)) === JSON.stringify([SAVE_KEY]), await keys(p));
     ok('remove: no page errors', !errs.length, errs);
     await ctx.close();
   }
@@ -641,7 +641,7 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
       const b2 = await page(); await clearSave(b2.p); await b2.p.reload(); await b2.p.waitForTimeout(400);
       await b2.p.click('#welStart'); await b2.p.waitForTimeout(100);
       for (let i = 0; i < 19; i++) await b2.p.click('#lvlUpBig');
-      await b2.p.fill('#questIn', q20); await b2.p.dispatchEvent('#questIn', 'change'); await b2.p.waitForTimeout(400);
+      await b2.p.fill('#questIn', await b2.p.evaluate(k => questNameOf(k), q20)); /* Journey's field takes the quest's name; q20 is its key (save v6) */ await b2.p.dispatchEvent('#questIn', 'change'); await b2.p.waitForTimeout(400);
       const [pa, pb] = [await progress(a.p), await progress(b2.p)];
       ok('join at Lv 20: the character equals a played-through Lv 20 one (Level up ×19, quest set)', pb.level === 20 && isDeepStrictEqual(pa, pb), [pa, pb]);
       const [na, nb] = [await a.p.innerText('#nowStar'), await b2.p.innerText('#nowStar')];
@@ -685,14 +685,14 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
      again; at another level, or on a quest without levelsUp (the two 50% EXP quests), the level stays */
   {
     const { ctx, p, errs } = await page();
-    const lu = await p.evaluate(() => QUESTS.filter(q => q.length > 2).map(q => [q[1], q[2]]));
+    const lu = await p.evaluate(() => QUESTS.filter(q => q.length > 2).map(q => [questNameOf(q[1]), q[2]]));
     ok('levelsUp: the eight 100% EXP Ishalgen quests with their turn-in levels (research-401-levels)', JSON.stringify(lu) === JSON.stringify([['A Village in the Fog', 1], ['Prepare to Escape', 2], ['Shadow Forest', 3], ['Isolated Lake', 4],
       ['Signs of a Crash Landing', 6], ['Prison Compound Infiltration Plan', 7], ['Brigade Prison Compound Infiltration Operation', 8], ['The Longest Night', 9]]), lu);
     /* Shadow Forest: turned in at Lv 3 → Lv 4 (the owner's Lv 3 → 4 screen) */
-    const lv = 4, q0 = 'Shadow Forest', q1 = await p.evaluate(n => QUESTS[QUESTS.findIndex(x => x[1] === n) + 1][1], q0);
+    const lv = 4, q0 = 'Shadow Forest', q1 = await p.evaluate(n => questNameOf(QUESTS[QUESTS.findIndex(x => questNameOf(x[1]) === n) + 1][1]), q0);
     const at = async (level, quest) => { await writeSave(p, { level, quest, checks: {}, open: {}, welcomed: 1 }, { fresh: true }); await p.reload(); await p.waitForTimeout(400); };
     const turnIn = async () => { const btn = p.locator('#nowStar [data-now="story"]').first(); if (!(await btn.count())) return false; await btn.click(); await p.waitForTimeout(800); return true; };
-    const cur = () => p.evaluate(k => ({ level: char(state).level, quest: char(state).quest, stored: (s => s.chars[s.current].level)(JSON.parse(localStorage.getItem(k))), toast: (document.querySelector('#rwToast.has-undo') || {}).textContent || '' }), SAVE_KEY);
+    const cur = () => p.evaluate(k => ({ level: char(state).level, quest: questNameOf(char(state).quest), stored: (s => s.chars[s.current].level)(JSON.parse(localStorage.getItem(k))), toast: (document.querySelector('#rwToast.has-undo') || {}).textContent || '' }), SAVE_KEY);
     await at(lv - 1, q0);
     ok('levelsUp: Next up offers "Turned in" on it at Lv ' + (lv - 1), await turnIn());
     let s = await cur();
