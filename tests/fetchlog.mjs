@@ -28,6 +28,7 @@ check(warns(log(TERMS, ROBOTS, PAGE('2026-10-21 14:00:20', '/page', 'T-70, back-
 check(rules(log(row('2026-10-21 14:00:00', 'example.org', '/page', 'T-70', '200', 'no', '', '')), C).includes('terms'), 'terms: a first content request with no terms URL read fails');
 check(rules(log(row('2026-10-21 14:00:00', 'metabot.gg', '/en/aion-2/skills/x', 'T-70', '200', 'yes', 'SOURCES.md row', 'Full')), C).length === 0, 'terms: a vetted host citing its SOURCES.md row passes');
 check(rules(log(row('2026-10-21 14:00:00', 'example.org', '/terms', 'T-70', '200', '', '', 'opt-out'), PAGE('2026-10-21 14:00:30')), C).includes('opt-out'), 'opt-out: a content request after an opt-out verdict fails');
+check(rules(log(row('2026-10-21 14:00:00', 'example.org', '/terms', 'T-70', '200', '', '', 'opt-out'), row('2026-10-21 14:00:30', 'example.org', '/page', 'T-70', '200', 'yes', 'https://example.org/terms', 'opt-out')), C).includes('opt-out'), 'opt-out: a content line that repeats the opt-out verdict still fails');
 check(rules(log(row('2026-10-21 14:00:00', 'aion2.th.gl', '/terms', 'T-70', '200', '', 'https://aion2.th.gl/terms', 'opt-out')), C).includes('banned'), 'banned: aion2.th.gl is never fetched');
 check(rules(log(row('2026-10-21 14:00:00', 'game8.co', '/terms', 'T-70', '200', '', 'https://game8.co/terms', 'terms OK')), C).includes('banned'), 'banned: Game8 is never fetched');
 const STOP = row('2026-10-21 14:00:20', 'example.org', '/page', 'result', '429', '', '', '');
@@ -35,7 +36,7 @@ check(rules(log(TERMS, ROBOTS, PAGE('2026-10-21 14:00:15'), STOP, PAGE('2026-10-
 check(rules(log(TERMS, ROBOTS, PAGE('2026-10-21 14:00:15'), STOP, PAGE('2026-10-22 15:00:00')), C).length === 0, 'stop: the host may be asked again after 24 h');
 const burst = Array.from({ length: 13 }, (_, i) => PAGE(`2026-10-21 14:01:${String(10 + i * 4).padStart(2, '0')}`));
 check(rules(log(TERMS, ROBOTS, ...burst), C).includes('rate'), 'rate: 13 requests to one host within 60 s fails');
-check(!rules(log(TERMS, ROBOTS, ...burst.slice(0, 10)), C).includes('rate'), 'rate: 12 a minute or fewer passes');
+check(!rules(log(TERMS, ROBOTS, ...burst.slice(0, 12)), C).includes('rate'), 'rate: 12 a minute passes');
 check(rules(log(row('2026-10-21 14:00:00', '(web search tool)', '—', 'T-70', 'n/a', 'n/a', 'n/a', 'n/a')), C).includes('search'), 'search: a web-search line with no query fails');
 check(rules(log(row('2026-10-21 14:00:00', '(web search tool)', 'query "fan site terms"', 'T-70', 'n/a', 'n/a', 'n/a', 'n/a')), C).length === 0, 'search: a web-search line with its query passes');
 const many = Array.from({ length: 21 }, (_, i) => row(`2026-10-21 1${4 + Math.floor(i / 6)}:${String((i % 6) * 9).padStart(2, '0')}:00`, '(web search tool)', `query "q${i}"`, 'T-71 lawyer brief', 'n/a', 'n/a', 'n/a', 'n/a'));

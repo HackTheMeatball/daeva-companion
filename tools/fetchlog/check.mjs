@@ -73,8 +73,8 @@ export function checkLog(text, { file = 'log.md', chuck = basename(file) === 'ch
       if (!isTerms && !verdict) fail(ln, 'terms', `first content request to ${h} gives no verdict`);
     }
     const s = seen.get(h);
+    if (s.optOut && !isTerms) fail(ln, 'opt-out', `${h} was ruled an opt-out above; no content request may follow`);
     if (/opt-?out/i.test(verdict) && !/terms OK|scraping-only/i.test(verdict)) s.optOut = true;
-    else if (s.optOut && !isTerms) fail(ln, 'opt-out', `${h} was ruled an opt-out above; no content request may follow`);
     if (s.stopped !== null && when.t - s.stopped < 24 * 3600e3) fail(ln, 'stop', `${h} answered 403 / 429 / a challenge within 24 h before this request`);
     if (/\b(403|429)\b|challenge/i.test(status)) s.stopped = when.t;
     if (!when.approx) {
