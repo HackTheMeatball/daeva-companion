@@ -90,14 +90,8 @@
 #dvNextList .dvhead .dvico.art img.dvon { position: absolute; inset: -5px; width: calc(100% + 10px); height: calc(100% + 10px); object-fit: contain; opacity: 0; transition: opacity .25s ease; pointer-events: none; }
 #dvNextList .dvrow.nx:has(.dvbuy:not([hidden]):hover) .dvico img.dvon, #dvNextList .dvrow.nx:has(.dvbuy:not([hidden]):focus-visible) .dvico img.dvon { opacity: 1; }
 #dvNextList .dvhead .dvico img.dvbadge { z-index: 2; }
-body.basic #dvThen .soonlist > li:nth-child(n+2) { display: none; }
 .nb-tag { display: none; }
 
-body.basic #dvThen .soonlist:has(> li.then-board:first-child) > li:nth-child(2) { display: grid; }
-body.basic #dvThen .soonlist > li .nb-tag { grid-column: 2 / -1; justify-self: end; white-space: nowrap;}
-body.basic #dvThen .soonlist > li:has(.nb-tag) { grid-template-columns: minmax(0, 1fr) auto; }
-body.basic #dvThen .soonlist > li:has(.nb-tag) .slv, body.basic #dvThen .soonlist > li:has(.nb-tag) .sst { display: none; }
-body.basic #dvThen .soonlist > li:has(.nb-tag) .nb-tag { display: inline; }
 #dvNextList .dvhead .dvtext { grid-template-rows: auto 1fr auto; }
 #dvNextList .alldone .dvhead { display: grid; grid-template-columns: var(--hero, 56px) minmax(0, 1fr); gap: var(--space-12); align-items: center; }
 #dvNextList .alldone .dvtext { display: flex; flex-direction: column; justify-content: center; gap: var(--space-2); }
@@ -109,5 +103,3 @@ body.basic #dvThen .soonlist > li:has(.nb-tag) .nb-tag { display: inline; }
 #dvNextList .dvlocked .buyrow { margin-top: var(--space-10); }
 /* The node's subline wraps beside the cost box instead of being cut ("Vaizel · active"). */
 #dvNextList .dvrow.nx .dvhead .dvtext > small { white-space: normal; overflow: visible; text-overflow: clip; }
-/* Basic: the one row under each card looks the same — icon · name · "Lv N" in muted mono */
-body.basic #dvThen .soonlist > li .nb-tag { color: var(--muted); font: 600 11px var(--mono); }

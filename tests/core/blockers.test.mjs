@@ -83,7 +83,7 @@ export default (test, M) => {
     const lv4 = { quest: M.QUESTS.find(x => x[0] >= 4)[1], level: 4 }, later = M.rankNext(S(lv4)).filter(a => a.kind === 'laterSkill');
     assert.ok(later.length, 'a Later skill card at Lv 4');
     for (const a of later) assert.equal(a.why, `needs Lv ${a.x.req}`);
-    assert.ok(!M.rankNext(S({ ...lv4, mode: 'basic' }), { basic: true }).some(a => a.later), 'Basic: no Later cards');
+    assert.ok(!M.rankNext(S(lv4)).some(a => a.later && !a.fold), 'one view: no Later card leads (Later cards sit in the fold)');
     assert.equal(M.dvWaitOf(C({ quest: at('Urgent Pursuit', -2), level: 15 }), M.DV_NODES()[0].board).text, 'unlocks after "Urgent Pursuit" · 2 quests ahead');
   });
 

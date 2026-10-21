@@ -9,8 +9,7 @@
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "behind/L15-q12-from10-lag-B": {
     "in": "e4d4ff0fd24a",
@@ -22,8 +21,7 @@
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "behind/L15-q20-from10-lagq-A": {
     "in": "6a052055b62e",
@@ -35,8 +33,7 @@
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "behind/L15-q20-from10-lagq-B": {
     "in": "5e2746e20bbf",
@@ -48,8 +45,7 @@
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "behind/L15-q20-from10-miss2-s0-A": {
     "in": "ca842af17f56",
@@ -60,8 +56,7 @@
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "behind/L15-q20-from10-miss2-s0-B": {
     "in": "a627b0694713",
@@ -72,8 +67,7 @@
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "behind/L15-q20-from10-miss2-s1-A": {
     "in": "09b6932db166",
@@ -84,8 +78,7 @@
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "behind/L15-q20-from10-miss2-s1-B": {
     "in": "110f030953d4",
@@ -96,8 +89,7 @@
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "behind/L15-q20-from10-miss2-s2-A": {
     "in": "4d9c5d6a0193",
@@ -108,8 +100,7 @@
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "behind/L15-q20-from10-miss2-s2-B": {
     "in": "1f6e26750fdc",
@@ -120,8 +111,7 @@
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "behind/L15-q20-from10-miss3-s0-A": {
     "in": "fe129778a3b2",
@@ -132,8 +122,7 @@
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "behind/L15-q20-from10-miss3-s0-B": {
     "in": "d66349c6dd3c",
@@ -144,8 +133,7 @@
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "behind/L15-q20-from10-miss3-s1-A": {
     "in": "63303ae4b2fe",
@@ -156,8 +144,7 @@
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "behind/L15-q20-from10-miss3-s1-B": {
     "in": "13f87bab94ec",
@@ -168,8 +155,7 @@
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "behind/L15-q20-from10-miss3-s2-A": {
     "in": "5b57531bf413",
@@ -180,8 +166,7 @@
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "behind/L15-q20-from10-miss3-s2-B": {
     "in": "e6e1a79f3de8",
@@ -192,8 +177,7 @@
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "behind/L15-q20-from10-miss4-s0-A": {
     "in": "57b412d74ba8",
@@ -204,8 +188,7 @@
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "behind/L15-q20-from10-miss4-s0-B": {
     "in": "ff328e78442d",
@@ -216,8 +199,7 @@
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "behind/L15-q20-from10-miss4-s1-A": {
     "in": "0d8c3fa90135",
@@ -228,8 +210,7 @@
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "behind/L15-q20-from10-miss4-s1-B": {
     "in": "2a3f5480f65d",
@@ -240,8 +221,7 @@
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "behind/L15-q20-from10-miss4-s2-A": {
     "in": "9037f3d3dbde",
@@ -252,8 +232,7 @@
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "behind/L15-q20-from10-miss4-s2-B": {
     "in": "397ca82b883c",
@@ -264,7 +243,6 @@
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   }
 }

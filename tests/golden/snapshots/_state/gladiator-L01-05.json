@@ -7,8 +7,7 @@
       "hide": ["(absent)",false],
       "open.g6": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "gladiator/L01-qxx-none-B": {
     "in": "1c23986b255b",
@@ -18,7 +17,6 @@
       "hide": ["(absent)",false],
       "open.g6": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   }
 }

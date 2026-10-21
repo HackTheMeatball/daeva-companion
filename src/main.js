@@ -1,7 +1,7 @@
 /* The page shell (entry point). What the app decides lives in the pure core (src/core/: state, migrations, catalog,
    requirements, Next up ranking); the cards live in src/cards/ (the engine's) and in the game pack (the pack's).
    This file reads the save from storage and writes it back, hands the game pack to the engine, registers the cards and
-   calls them (render(), update()), and keeps what belongs to no card: the header (Basic / Advanced), layout fitting, the
+   calls them (render(), update()), and keeps what belongs to no card: the folds (one view), layout fitting, the
    "i" popovers, the toast and sounds, the number steppers, export / import and Report a problem. scripts/build.mjs
    bundles it with esbuild into one classic <script> inlined in the page, so its top-level names stay page globals (tests
    and the site-only script read them). Character data (level, story, ticks, build) is always read and written through
@@ -31,7 +31,7 @@ import { setRankChanges } from "./core/nextup.js";
 /* the engine's cards (0.4 P4c, src/cards/): what the shell still calls of them, and the hand-over of the shell's names
    they read (useCardPage, below) */
 import { useCardPage } from "./cards/page.js";
-import { nextUpCard, renderNow, nsFit, nowEl, pipWin, isBasic, specSub } from "./cards/nextup.js";
+import { nextUpCard, renderNow, nsFit, nowEl, pipWin, specSub } from "./cards/nextup.js";
 import { milestonesCard, renderMilestones, derivedBox, fillStigmaText, milestoneFilters, syncExpand, syncQRun } from "./cards/milestones.js";
 import { renderRoute, routeRulesCard } from "./cards/route.js";
 import { journeyCard, renderQuest, renderStoryChips, renderStoryReqs, applyLevel, setLevel } from "./cards/journey.js";
@@ -85,7 +85,7 @@ registerCard(welcomeCard({
 /* the pack's card in a section of Journey: registered after Journey, which declares the section */
 registerCard(aion2AscensionCard);
 /* what a card reads (P0 §4), built once per render() / update(); ev = the character's gates (memoised inside gatesPass) */
-const cardCtx = () => { const c = char(state); return { state, c, pack: activePack(), basic: state.mode === "basic", get ev() { return gatesOf(c); } }; };
+const cardCtx = () => { const c = char(state); return { state, c, pack: activePack(), get ev() { return gatesOf(c); } }; };
 
 /* Page API: the names the suites (and the old baseline builds they compare against) call, bound to the page's state. */
 const stNames = () => slotNames(char(state));
@@ -181,22 +181,22 @@ layoutEl.addEventListener("click", e => {
   btn.setAttribute("aria-expanded", "true"); btn.setAttribute("aria-controls", box.id);
 });
 /* Confidence and Sources fold; open state remembered. */
-document.querySelectorAll("details.foldcard").forEach(d => { const k = "fold_" + d.id; d.open = !!(state[k]); d.addEventListener("toggle", () => { state[k] = d.open; save(); }); });
+document.querySelectorAll("details.foldcard:not([data-okey])").forEach(d => { const k = "fold_" + d.id; d.open = !!(state[k]); d.addEventListener("toggle", () => { state[k] = d.open; save(); }); });
 /* Phones (<= 600 px): long cards fold too (docs/design/phone-layout.md 3.6, patch I; owner 2026-10-17): the Areas
-   card in both modes, Progress in Basic; Journey stays open (it holds Level − / + and the slider). The fold is a
+   card and Progress (0.9 P21: the phone rule is the rule); Journey stays open (it holds Level − / + and the slider). The fold is a
    details.foldcard inside the card: its title becomes the summary, the rest of the card the body, except `keep` (the
    Map link: a link inside a summary is nested interactive), which stays in the card on the summary's row. The card
    element itself stays (the phone moves above and the cards' code hold it). Folded by default; once the user opens or
-   closes one, its fold_<id> (a view setting) wins. Wider, or in a mode that doesn't fold the card, every node goes back
+   closes one, its fold_<id> (a view setting) wins. Wider, every node goes back
    where a fresh load has it. */
 const foldQ = window.matchMedia ? matchMedia("(max-width: 600px)") : { matches: false };
 const phoneFolds = [
-  { id: "areasFold", card: document.getElementById("areas"), head: ".areas-head > h2", keep: ".areas-head", basic: false },
-  { id: "progFold", card: document.getElementById("progRows")?.closest(".card"), head: ":scope > h2", basic: true },
+  { id: "areasFold", card: document.getElementById("areas"), head: ".areas-head > h2", keep: ".areas-head" },
+  { id: "progFold", card: document.getElementById("progRows")?.closest(".card"), head: ":scope > h2" },
 ].filter(f => f.card && f.card.querySelector(f.head));
 function placeFolds() {
   phoneFolds.forEach(f => {
-    const on = foldQ.matches && (!f.basic || state.mode === "basic");
+    const on = foldQ.matches;
     if (on === !!f.d) return;
     if (!on) { f.card.append(...f.kids); f.home.p.insertBefore(f.head0, f.home.n); f.d.remove(); f.d = null; return; }
     f.kids = [...f.card.childNodes];
@@ -210,15 +210,28 @@ function placeFolds() {
   });
 }
 if (foldQ.addEventListener) foldQ.addEventListener("change", placeFolds);
-/* Basic / Advanced view. Basic keeps each card to its essentials: what you have, the one thing to do, and its button. */
-function applyMode() {
-  const m = state.mode === "basic" ? "basic" : "advanced";
-  placeFolds();
-  document.body.classList.toggle("basic", m === "basic");
-  document.querySelectorAll(".modeseg [data-mode]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.mode === m)));
+placeFolds();
+/* One view (0.9 P21, docs/design/0.9-one-view.md): each card shows its essentials; the rest sits in a fold that starts
+   closed and remembers being opened. A fold is a button.fold-btn (data-fold: its name, data-fkey: its entry in the
+   save's `open` map); its box (the nearest [data-fbox], else the body) carries the class fo-<name> while it is open, and
+   the CSS shows the fold's content under that class. A fold with nothing in it (data-fcount: what it counts) hides. The
+   card folds (details.foldcard[data-okey]) keep their open state in the same map. */
+function applyFolds() {
+  document.querySelectorAll("button.fold-btn[data-fold]").forEach(b => {
+    const box = b.closest("[data-fbox]") || document.body, on = !!state.open[b.dataset.fkey];
+    box.classList.toggle("fo-" + b.dataset.fold, on);
+    b.setAttribute("aria-expanded", String(on));
+    if (b.dataset.fcount) { const n = box.querySelectorAll(b.dataset.fcount).length; b.hidden = !n; const c = b.querySelector(".fold-n"); if (c) c.textContent = n; }
+  });
 }
-document.querySelector(".modeseg").addEventListener("click", e => { const b = e.target.closest("[data-mode]"); if (!b) return; state.mode = b.dataset.mode; save(); applyMode(); update(); });
-applyMode();
+/* markup added after load with a fold in it (the sync chunk's Sync settings) sends "dc:folds", so a fold saved open
+   opens there too */
+document.addEventListener("dc:folds", applyFolds);
+document.addEventListener("click", e => {
+  const b = e.target.closest && e.target.closest("button.fold-btn[data-fold]"); if (!b) return;
+  state.open[b.dataset.fkey] = !state.open[b.dataset.fkey]; save(); update();
+});
+document.querySelectorAll("details.foldcard[data-okey]").forEach(d => { const k = d.dataset.okey; d.open = !!state.open[k]; d.addEventListener("toggle", () => { if (!!state.open[k] !== d.open) { state.open[k] = d.open; save(); } }); });
 /* A short message at the foot of the screen (rewards, the level-up gains under reduced motion), with an optional Undo. */
 function rewardToast(msg, undo) {
   let t = document.getElementById("rwToast"); if (!t) { t = document.createElement("div"); t.id = "rwToast"; t.setAttribute("role", "status"); document.body.appendChild(t);
@@ -269,11 +282,11 @@ function updatePass() {
      reads (stepHTML). updateAll takes over when P5a–d make the cards independent of each other. */
   /* Card sizing reads layout: it runs in the next frame (renderNext schedules fitSkills), so update() never forces a layout. */
   if (typeof syncExpand === "function") syncExpand();
-  requestAnimationFrame(fitRail);
+  applyFolds();
 }
 
 /* Cards that open with the game (0.6 P16, src/core/cards.js cardLock; owner-ok-S1 Q1, owner-ok-0.6.2-icons-locks Q1/Q2): a
-   locked card is hidden, and at desktop width (Basic and Advanced) a faded shell (made once, just before the card) stands
+   locked card is hidden, and at desktop width a faded shell (made once, just before the card) stands
    in its place with the unlock line, for a level unlock the levels to go ("18 levels to go", data/ui/lock-texts.json),
    the card's name and its key. On phones there is no shell. The shell is one block with the accessible name "<name>,
    opens at …" and nothing to tab to; when the card opens it shows where the shell stood. The card itself still mounts and
@@ -308,17 +321,6 @@ function fadeScroll(el) {
   el.dataset.fs = "1";
   const end = () => el.classList.toggle("at-end", el.scrollTop + el.clientHeight >= el.scrollHeight - 2);
   el.addEventListener("scroll", end, { passive: true }); requestAnimationFrame(end);
-}
-/* Basic mode: the left column ends where the milestone card ends, and scrolls with the same fade. */
-function fitRail() {
-  const rail = document.querySelector("aside.rail"), main = document.getElementById("main"); if (!rail || !main) return;
-  rail.style.height = "";
-  if (!document.body.classList.contains("basic") || getComputedStyle(document.querySelector(".layout")).gridTemplateColumns.split(" ").length < 2) return;
-  const vis = [...document.querySelectorAll("#gates details.step")].filter(d => getComputedStyle(d).display !== "none").pop();
-  const end = vis ? vis.getBoundingClientRect().bottom : main.getBoundingClientRect().bottom;
-  const h = Math.round(end - rail.getBoundingClientRect().top);
-  if (h > 120) rail.style.height = h + "px";
-  fadeScroll(rail);
 }
 /* Phones (<= 860 px): Next up, Journey, Progress lead the page (docs/design/phone-layout.md 3.1). The same three elements
    move into #main ahead of the top row (never copies); the CSS puts #main before the rail, which keeps the later cards
@@ -355,18 +357,13 @@ function placeCards() {
   if (phoneLayout) tg.before(...phoneCards.map(x => x.el));
   else [...phoneCards].reverse().forEach(x => x.p.insertBefore(x.el, x.n));
 }
-if (phoneQ.addEventListener) phoneQ.addEventListener("change", () => { placeCards(); gatesPass(() => placeLocks(cardCtx())); requestAnimationFrame(fitRail); });
+if (phoneQ.addEventListener) phoneQ.addEventListener("change", () => { placeCards(); gatesPass(() => placeLocks(cardCtx())); });
 placeCards();
-window.addEventListener("resize", () => requestAnimationFrame(fitRail));
-document.getElementById("gates").addEventListener("toggle", () => requestAnimationFrame(fitRail), true);
-/* Web fonts (font-display: swap) land after the first fit and rewrap the text: refit when the fonts settle (the hero
-   rows too, as on a resize: they set the top row's height) and whenever the main column or the milestone list changes
-   size, at most once a frame. */
-let railQueued = false, heroQueued = false;
-const refitRail = () => { if (railQueued) return; railQueued = true; requestAnimationFrame(() => { railQueued = false; if (heroQueued) { heroQueued = false; fitSkills(); } fitRail(); }); };
-const fontsSettled = () => { heroQueued = true; refitRail(); };
+/* Web fonts (font-display: swap) land after the first fit and rewrap the text: refit the hero rows when the fonts
+   settle (as on a resize: they set the top row's height), at most once a frame. */
+let heroQueued = false;
+const fontsSettled = () => { if (heroQueued) return; heroQueued = true; requestAnimationFrame(() => { heroQueued = false; fitSkills(); }); };
 if (document.fonts) { document.fonts.addEventListener("loadingdone", fontsSettled); document.fonts.ready.then(fontsSettled); }
-if (typeof ResizeObserver === "function") { const ro = new ResizeObserver(refitRail); ro.observe(document.getElementById("main")); ro.observe(document.getElementById("gates")); }
 /* Hero rows: names wrap instead of "…"; both cards' rows take the taller one's height so they stay aligned. */
 function syncHeroRows() {
   const a = document.querySelector("#spCard .sphero .dvhead"), b = document.querySelector("#dvNextList .dvhead"), c = document.querySelector("#stCard .dvhead");
@@ -385,14 +382,13 @@ function syncHeroRows() {
 }
 function fitSkills() {
   syncHeroRows();
-  /* Basic mode: the shortest card sets the row height; Next up's content scrolls (with the fade) to match. */
   const ns = pipWin ? null : nowEl;
   if (ns) ns.style.height = "";
   /* the card shown, not the first: an unchanged Next up isn't redrawn and keeps its scroll (nsFit, the stack's own fit) */
   if (ns) { const w = ns.querySelector(".ns-stack"); if (w) nsFit(w); }
   /* The board list always shows at least its next 3 nodes; the row grows to that, and Skills / Next up fill the same height. */
   const dvt = document.getElementById("dvThen");
-  if (dvt) { dvt.style.minHeight = ""; } if (dvt && !document.body.classList.contains("basic")) { const nodes = [...dvt.querySelectorAll(".soonlist > li:not(.then-board)")], n3 = nodes[Math.min(2, nodes.length - 1)];
+  if (dvt) { dvt.style.minHeight = ""; const nodes = [...dvt.querySelectorAll(".soonlist > li:not(.then-board)")], n3 = nodes[Math.min(2, nodes.length - 1)];
     if (n3) { const top = dvt.getBoundingClientRect().top - dvt.scrollTop; dvt.style.minHeight = Math.ceil(n3.getBoundingClientRect().bottom - top + 14) + "px"; } }
   /* Coming up and the board list scroll inside their cards, with the fade */
   fadeScroll(document.getElementById("spSoon")); fadeScroll(dvt);
@@ -473,7 +469,7 @@ document.getElementById("impIn").addEventListener("change", async e => {
 document.getElementById("saveWarnExp").addEventListener("click", () => document.getElementById("expBtn").click());
 document.getElementById("srcLink").addEventListener("click", () => { document.getElementById("srcCard").open = true; });
 /* Report a problem: a GitHub issue form (.github/ISSUE_TEMPLATE/bug.yml) whose fields are prefilled through the URL with
-   the version, level, story quest, view mode, build and browser. Nothing else from the saved progress goes into the link.
+   the version, level, story quest, build and browser. Nothing else from the saved progress goes into the link.
    The href is refreshed when the link is about to be used, so it always carries the current level and quest. */
 const APP_VERSION = "__APP_VERSION__", APP_BUILD = "__APP_BUILD__";
 const reportLink = document.getElementById("reportLink");
@@ -481,7 +477,7 @@ const reportLink = document.getElementById("reportLink");
 const reportBase = reportLink.getAttribute("href").split("?")[0];
 const reportURL = () => {
   const f = { template: "bug.yml", version: APP_VERSION, level: String(char(state).level || ""), quest: char(state).quest || "(not set)",
-    mode: state.mode === "basic" ? "Basic" : "Advanced", build: APP_BUILD, browser: navigator.userAgent };
+    build: APP_BUILD, browser: navigator.userAgent };
   return reportBase + "?" + Object.entries(f).map(([k, v]) => k + "=" + encodeURIComponent(v)).join("&");
 };
 const refreshReport = () => { reportLink.href = reportURL(); };
@@ -490,7 +486,7 @@ refreshReport();
 
 /* the shell's names the pack's cards read (the pack's cards/page.js), handed over before the first render() */
 aion2UsePage({ state, save, update, render, renderNow, renderQuest, renderAscension, renderStoryChips, renderStoryReqs, renderUndo,
-  fitSkills, fadeScroll, rewardToast, chime, SMOOTH, derivedBox, isBasic, spMini, ini, specSub, stIco, dvShort,
+  fitSkills, fadeScroll, rewardToast, chime, SMOOTH, derivedBox, spMini, ini, specSub, stIco, dvShort,
   mainEl, layoutEl, STIGMA_SLOTS, stPlan, stLvOf, rqAvail, dvGate });
 /* the shell's names the engine cards read (src/cards/page.js), handed over before the first render() */
 useCardPage({ state, save, update, mainEl, layoutEl, SMOOTH, RMQ, rewardToast, chime, tipClick, tipGoClick, tipEsc, GATES,

@@ -89,8 +89,8 @@ export default (test, M, X) => {
       for (const { id, s } of cases) {
         const c0 = M.char(s), st = { ...s, chars: { ...s.chars, [s.current]: deepFreeze({ ...c0, mt: retime(c0.mt || {}, () => 0) }) } };
         assert.equal(M.whereNow(M.char(st)), null, `${id}: a dated stamp is left`);
-        M.setRankChanges([]); const off = JSON.stringify(M.rankNext(st, { basic: st.mode === 'basic' }));
-        M.setRankChanges(on); const onR = JSON.stringify(M.rankNext(st, { basic: st.mode === 'basic' }));
+        M.setRankChanges([]); const off = JSON.stringify(M.rankNext(st));
+        M.setRankChanges(on); const onR = JSON.stringify(M.rankNext(st));
         if (off !== onR) bad.push(id);
       }
     } finally { M.setRankChanges(null); }
@@ -115,7 +115,7 @@ export default (test, M, X) => {
       const three = [s, at(retime(c0.mt, () => 0)), at(retime(c0.mt, p => 1 + Math.floor(fnv(id + '|in8|' + p.join('.')) * 40)))];
       const heres = three.map(st => JSON.stringify(M.whereNow(M.char(st))));
       if (new Set(heres).size > 1) moved++;
-      const runs = three.map(st => M.rankNext(st, { basic: st.mode === 'basic' }));
+      const runs = three.map(st => M.rankNext(st));
       const kinds = runs.map(r => r.map(a => a.kind).join(' '));
       if (new Set(kinds).size > 1) { bad.push(`${id}: card kinds ${kinds.join(' / ')}`); continue; }
       const same = runs.map(r => JSON.stringify(r.map(norm)));
@@ -199,12 +199,12 @@ export default (test, M, X) => {
     try {
       for (const { id, s, c } of loaded.filter(x => x.s && share('nucard', x, x.fam === 'bind' ? 1 : x.fam ? 0.2 : 0.02))) { n++;
         const card = r => r.find(a => a.kind === 'story') || {};
-        M.setRankChanges(null); const st = card(M.rankNext(s, { basic: s.mode === 'basic' })), want = M.nudgeOf(c);
+        M.setRankChanges(null); const st = card(M.rankNext(s)), want = M.nudgeOf(c);
         if (st.v === 'obj' && JSON.stringify(st.bind || null) !== JSON.stringify(want)) bad.push(`${id}: card ${JSON.stringify(st.bind)} / nudgeOf ${JSON.stringify(want)}`);
         if (st.bind) { rows++; if (st.quest !== c.quest || st.bind.key !== 'bind:' + st.bind.kib) bad.push(`${id}: row ${JSON.stringify(st.bind)} on ${st.quest}`); }
         if (!st.bind && !share('nucard-off', { id }, 0.2)) continue;
         for (const off of [ALL_RANK.filter(k => k !== 'bindNudge'), ALL_RANK.filter(k => k !== 'bindDerived')]) {
-          M.setRankChanges(off); if (card(M.rankNext(s, { basic: s.mode === 'basic' })).bind) bad.push(`${id}: a row with ${ALL_RANK.find(k => !off.includes(k))} off`); }
+          M.setRankChanges(off); if (card(M.rankNext(s)).bind) bad.push(`${id}: a row with ${ALL_RANK.find(k => !off.includes(k))} off`); }
       }
     } finally { M.setRankChanges(null); }
     assert.deepEqual(bad.slice(0, 5), [], `${bad.length} of ${n} states`);
@@ -219,7 +219,7 @@ export default (test, M, X) => {
      never on an Ascension step), the metres are the turn-in's data metres; none with travelAdvice off */
   test('13. teleport line: the oracle\'s; never with preferRun, never unbound, never cross-map on distance, never on an Ascension step; metres = the data', () => {
     const bad = []; let n = 0, lines = 0, dist = 0, zone = 0;
-    const rank = s => M.rankNext(s, { basic: s.mode === 'basic' });
+    const rank = s => M.rankNext(s);
     try {
       M.setRankChanges(null);
       for (const { id, s, c } of loaded.filter(x => x.s && share('tele', x, x.fam ? 1 : 0.02))) { n++;
@@ -267,7 +267,7 @@ export default (test, M, X) => {
         const c = x.c, before = JSON.stringify(x.s || c), here = M.whereNow(c);
         M.boundSet(c); M.nudgeOf(c);
         const T = c.quest && P.turnin(c.quest); if (T) M.teleportOf(c, { zone: null, pt: M.NODE_PLACE[S[S.findIndex(([, n]) => n === c.quest)][0]].pts.turnin }, here);
-        if (x.s) for (const on of [[], ALL_RANK]) { M.setRankChanges(on); M.rankNext(x.s, { basic: x.s.mode === 'basic' }); }
+        if (x.s) for (const on of [[], ALL_RANK]) { M.setRankChanges(on); M.rankNext(x.s); }
         assert.equal(JSON.stringify(x.s || c), before, x.id);
       }
     } finally { M.setRankChanges(null); }

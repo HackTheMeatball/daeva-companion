@@ -17,8 +17,7 @@
       "open.g30": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true]
-    },
-    "mode": "advanced"
+    }
   },
   "spiritmaster/L30-q48-none-B": {
     "in": "d2528b289d30",
@@ -38,7 +37,6 @@
       "open.g30": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true]
-    },
-    "mode": "basic"
+    }
   }
 }

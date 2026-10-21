@@ -66,7 +66,6 @@ function installProbe([KEY, EARLY]) {
     o.reg = { opts: $$('#areaSel option').filter(x => !x.disabled).map(x => (x.selected ? '* ' : '') + T(x)),
       list: $$('#areaList > li').map(li => li.classList.contains('arow') ? `  ${T(li.querySelector('label') || li)} [${[li.querySelector('input:checked') ? 'done' : '', cls(li, ['running', 'locked'])].filter(Boolean).join(',')}]`.replace(' []', '') : T(li)).filter(s => s.trim()) };
     /* the stored state after load (o.stored, o.keys: a migration or seed writing shows up there) is read after drain() */
-    o.mode = document.body.classList.contains('basic') ? 'basic' : 'advanced';
     return o;
   }
   /* <details> "toggle" events are queued tasks; the app's handlers save state.open from them. They can run before or

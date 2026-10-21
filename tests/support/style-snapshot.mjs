@@ -96,7 +96,6 @@ export async function eachState(dist, visit) {
       else if (st.how === 'user') await writeSave(p, { ...USER, mode: st.mode }, { fresh: true });
       else await writeFixture(p, { L: st.how, mode: st.mode, fx: 'clean' });
       await p.reload(); await p.waitForTimeout(400);
-      if (st.how === null) await p.evaluate(m => { if (document.body.classList.contains('basic') !== (m === 'basic')) document.querySelector(`.modeseg [data-mode="${m}"]`).click(); }, st.mode);
       await p.waitForTimeout(400);
       await p.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
       await visit(p, st);

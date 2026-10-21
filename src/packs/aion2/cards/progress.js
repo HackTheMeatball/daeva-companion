@@ -4,6 +4,7 @@ import { char } from "../../../core/state.js";
 import { setHTML } from "../../../core/cards.js";
 import { gatesOf } from "../../../core/requirements.js";
 import { GATES } from "../data/milestones.js";
+import { showGate } from "../../../cards/milestones.js";
 import { AREA_ITEMS } from "../catalog.js";
 import { areaOpen, clearDoneOf } from "../requirements.js";
 import { defaultBand, goAreas } from "./areas.js";
@@ -41,7 +42,8 @@ function aion2ProgressMount() {
     if (key === "quest") {
       const ev = gatesOf(char(state)), open = it => it.kind === "quest" && !clearDoneOf(char(state), it.k, ev);
       const g = GATES.find(g => g.items.some(it => open(it) && rqAvail(it.q, lv).ok)) || GATES.find(g => g.items.some(open));
-      if (g) { state.open[g.id] = true; save(); update(); const el = document.getElementById(g.id); if (el) { el.open = true; el.scrollIntoView({ behavior: SMOOTH(), block: "start" }); } }
+      const el = g && document.getElementById(g.id);
+      if (el) { showGate(el, false); update(); el.scrollIntoView({ behavior: SMOOTH(), block: "start" }); }
       return;
     }
     if (key === "sh") goAreas("sh");

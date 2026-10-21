@@ -17,6 +17,8 @@ import SYNC_HTML from "./cards/sync.html";
   document.head.append(css);
   const strip = document.getElementById("xfer");
   if (strip) strip.insertAdjacentHTML("beforeend", SYNC_HTML);
+  /* the line holds the Sync settings fold: main.js applies its saved state (0.9 P21) */
+  document.dispatchEvent(new Event("dc:folds"));
   const host = httpSyncHost(SYNC_BASE, (url, init) => fetch(url, init));
   const pageSet = webStorage.set;
   let own = false;

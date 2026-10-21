@@ -11,8 +11,7 @@
       "open.g37": ["(absent)",true],
       "open.g40": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "behind/L40-q48-from30-lag-B": {
     "in": "e917351ab427",
@@ -26,8 +25,7 @@
       "open.g37": ["(absent)",true],
       "open.g40": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "behind/L40-q74-from30-lagq-A": {
     "in": "ac129c898fc8",
@@ -41,8 +39,7 @@
       "open.g37": ["(absent)",true],
       "open.g40": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "behind/L40-q74-from30-lagq-B": {
     "in": "77192ee77e15",
@@ -56,8 +53,7 @@
       "open.g37": ["(absent)",true],
       "open.g40": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "behind/L40-q74-from30-miss2-s0-A": {
     "in": "2dd99b9cff8a",
@@ -68,8 +64,7 @@
       "open.g37": ["(absent)",true],
       "open.g40": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "behind/L40-q74-from30-miss2-s0-B": {
     "in": "f6d88b95203f",
@@ -80,8 +75,7 @@
       "open.g37": ["(absent)",true],
       "open.g40": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "behind/L40-q74-from30-miss2-s1-A": {
     "in": "4418b551218c",
@@ -92,8 +86,7 @@
       "open.g37": ["(absent)",true],
       "open.g40": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "behind/L40-q74-from30-miss2-s1-B": {
     "in": "c0c5e663e920",
@@ -104,8 +97,7 @@
       "open.g37": ["(absent)",true],
       "open.g40": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "behind/L40-q74-from30-miss2-s2-A": {
     "in": "8c851d349aaf",
@@ -116,8 +108,7 @@
       "open.g37": ["(absent)",true],
       "open.g40": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "behind/L40-q74-from30-miss2-s2-B": {
     "in": "23d2868aca19",
@@ -128,8 +119,7 @@
       "open.g37": ["(absent)",true],
       "open.g40": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "behind/L40-q74-from30-miss3-s0-A": {
     "in": "5c433efa23e0",
@@ -140,8 +130,7 @@
       "open.g37": ["(absent)",true],
       "open.g40": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "behind/L40-q74-from30-miss3-s0-B": {
     "in": "7eeaece174ab",
@@ -152,8 +141,7 @@
       "open.g37": ["(absent)",true],
       "open.g40": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "behind/L40-q74-from30-miss3-s1-A": {
     "in": "50992910bd11",
@@ -164,8 +152,7 @@
       "open.g37": ["(absent)",true],
       "open.g40": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "behind/L40-q74-from30-miss3-s1-B": {
     "in": "ef4dfeffa694",
@@ -176,8 +163,7 @@
       "open.g37": ["(absent)",true],
       "open.g40": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "behind/L40-q74-from30-miss3-s2-A": {
     "in": "f82b4e2679dd",
@@ -188,8 +174,7 @@
       "open.g37": ["(absent)",true],
       "open.g40": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "behind/L40-q74-from30-miss3-s2-B": {
     "in": "0ae0675ecfbc",
@@ -200,8 +185,7 @@
       "open.g37": ["(absent)",true],
       "open.g40": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "behind/L40-q74-from30-miss4-s0-A": {
     "in": "8271bf27e989",
@@ -213,8 +197,7 @@
       "open.g37": ["(absent)",true],
       "open.g40": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "behind/L40-q74-from30-miss4-s0-B": {
     "in": "4fb3ef224110",
@@ -226,8 +209,7 @@
       "open.g37": ["(absent)",true],
       "open.g40": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "behind/L40-q74-from30-miss4-s1-A": {
     "in": "adbb298666a7",
@@ -239,8 +221,7 @@
       "open.g37": ["(absent)",true],
       "open.g40": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "behind/L40-q74-from30-miss4-s1-B": {
     "in": "1a0eabcfdddd",
@@ -252,8 +233,7 @@
       "open.g37": ["(absent)",true],
       "open.g40": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "behind/L40-q74-from30-miss4-s2-A": {
     "in": "ab6408f0ad25",
@@ -265,8 +245,7 @@
       "open.g37": ["(absent)",true],
       "open.g40": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "behind/L40-q74-from30-miss4-s2-B": {
     "in": "7e398291385a",
@@ -278,7 +257,6 @@
       "open.g37": ["(absent)",true],
       "open.g40": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   }
 }

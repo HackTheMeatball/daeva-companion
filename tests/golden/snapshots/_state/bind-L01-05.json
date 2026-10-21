@@ -7,8 +7,7 @@
       "hide": ["(absent)",false],
       "open.g4": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L02-q00-objs-A": {
     "in": "6b6ed1d605ff",
@@ -18,8 +17,7 @@
       "hide": ["(absent)",false],
       "open.g4": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L02-q01-none-A": {
     "in": "2e8b10bce531",
@@ -29,8 +27,7 @@
       "hide": ["(absent)",false],
       "open.g4": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L02-q01-objs-A": {
     "in": "1fb788313fae",
@@ -40,8 +37,7 @@
       "hide": ["(absent)",false],
       "open.g4": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L03-q02-none-A": {
     "in": "74799d12dde8",
@@ -51,8 +47,7 @@
       "hide": ["(absent)",false],
       "open.g4": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L03-q02-objs-A": {
     "in": "1b1a686869de",
@@ -62,8 +57,7 @@
       "hide": ["(absent)",false],
       "open.g4": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L04-q03-none-A": {
     "in": "8115a4d2ac9e",
@@ -73,8 +67,7 @@
       "hide": ["(absent)",false],
       "open.g4": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L04-q03-objs-A": {
     "in": "4517052ac18c",
@@ -84,8 +77,7 @@
       "hide": ["(absent)",false],
       "open.g4": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L05-q04-none-A": {
     "in": "d4b49a6f46bc",
@@ -96,8 +88,7 @@
       "open.g4": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L05-q04-objs-A": {
     "in": "4796a0cc5b55",
@@ -108,7 +99,6 @@
       "open.g4": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   }
 }

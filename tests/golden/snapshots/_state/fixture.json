@@ -3,14 +3,12 @@
     "in": "4ddbafd3fcc8",
     "store": {
       "open.g4": ["(absent)",true]
-    },
-    "mode": "advanced"
+    }
   },
   "fixture/fixture-v285": {
     "in": "117451b0d870",
     "store": {
       "open.g4": ["(absent)",true]
-    },
-    "mode": "advanced"
+    }
   }
 }

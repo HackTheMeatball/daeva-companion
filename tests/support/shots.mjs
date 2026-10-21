@@ -11,6 +11,9 @@
      save          a flat test save (tests/support/save.js) for both builds; before / after override it per build;
                    with none, a fresh browser (mode then stays the app's default)
      char          { pack, class } written into the save's character (a class other than the default, e.g. the Ranger)
+     sync          true = the sync line is mounted (the tests' window.__dcSyncTest) and the sync server is offline
+                   (every request to it aborted, so no shot talks to the live server)
+     storage       { key: text }: more localStorage entries written beside the save (e.g. a sync record)
      act           a function run in the page after load (opens a menu, types a name); same for both builds
      shots         [{ sel, suffix = '', text }]: element screenshots (first match, holding text if given);
                    omitted = the top of the viewport (width x height)
@@ -52,11 +55,13 @@ let bad = 0;
 for (const c of CASES) for (const when of (afterOnly || c.afterOnly) ? ['after'] : ['before', 'after']) {
   const w = c.width || 390, h = c.height || 844, tag = (afterOnly || c.afterOnly) ? '' : '-' + when;
   const ctx = await b.newContext({ viewport: { width: w, height: h }, deviceScaleFactor: 2, serviceWorkers: 'block', reducedMotion: c.motion ? 'no-preference' : 'reduce' });
+  if (c.sync) { await ctx.route('https://sync.daevacompanion.com/**', r => r.abort('internetdisconnected')); await ctx.addInitScript(() => { window.__dcSyncTest = true; }); }
   const p = await ctx.newPage(), errs = []; p.on('pageerror', e => errs.push(e.message));
   await p.goto(servers[when].url + '/'); await p.waitForTimeout(300);
   const save = c[when] || c.save;
   if (save) await writeSave(p, { open: {}, hideCards: false, mode: c.mode || 'basic', ...save }, { fresh: true });
   else await p.evaluate(() => localStorage.clear());
+  if (c.storage) await p.evaluate(o => { for (const [k, v] of Object.entries(o)) localStorage.setItem(k, v); }, c.storage);
   /* char: { pack, class } for the save's character (0.6 P5: a Ranger) */
   if (save && c.char) await p.evaluate(([k, ch]) => { const s = JSON.parse(localStorage.getItem(k)); for (const x of Object.values(s.chars)) Object.assign(x, ch); localStorage.setItem(k, JSON.stringify(s)); }, [SAVE_KEY, c.char]);
   await p.reload(); await p.waitForTimeout(500);

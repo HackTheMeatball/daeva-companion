@@ -7,8 +7,7 @@
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "loc/L10-q12-before-A-obj": {
     "in": "e28e748bbd16",
@@ -18,8 +17,7 @@
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "loc/L10-q12-before-A-run-calderon-canyon": {
     "in": "6b0b00047223",
@@ -29,8 +27,7 @@
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "loc/L10-q12-before-A-run-dredgion-crash-site": {
     "in": "3cc98f87fb9d",
@@ -40,8 +37,7 @@
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "loc/L10-q12-before-A-run-nameless-cemetery": {
     "in": "0d880adb387b",
@@ -51,8 +47,7 @@
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "loc/L10-q12-before-A-shrun-dredgion-crash-site": {
     "in": "0509c6f245d6",
@@ -62,8 +57,7 @@
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "loc/L10-q12-before-B-bind-dredgion-crash-site": {
     "in": "4f3a10bf563b",
@@ -73,8 +67,7 @@
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "loc/L10-q12-before-B-obj": {
     "in": "6ab8b62ef0e5",
@@ -84,8 +77,7 @@
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "loc/L10-q12-before-B-run-calderon-canyon": {
     "in": "585ba89bf184",
@@ -95,8 +87,7 @@
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "loc/L10-q12-before-B-run-dredgion-crash-site": {
     "in": "c300870aa790",
@@ -106,8 +97,7 @@
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "loc/L10-q12-before-B-run-nameless-cemetery": {
     "in": "e1f4b867cca0",
@@ -117,8 +107,7 @@
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "loc/L10-q12-before-B-shrun-dredgion-crash-site": {
     "in": "cf258b5d7258",
@@ -128,7 +117,6 @@
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   }
 }
