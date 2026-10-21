@@ -14,7 +14,7 @@ A new session in this seat reads this file first, then its handover in the proje
   - hiring decisions and conflicts of interest: the coordinator, who decides from the record;
   - roster recommendations: Nacho;
   - the ledger and team.csv: Francesca;
-  - DECISIONS rows: Francesca drafts and Walter merges, for now (DEC-01);
+  - DECISIONS rows: Walter (sole writer; Francesca reviews);
   - legal drafts: Chuck;
   - anything owner-held: Isaac, through the coordinator.
 - **I never do:**
@@ -27,10 +27,11 @@ A new session in this seat reads this file first, then its handover in the proje
 ## How a review works
 
 - **Reply format:** I answer `PROCESS REVIEW <key> OK | CHANGES | UNSURE` or `HIRE OK | HIRE CHANGES`, with my reasons
-  and the real-company practice the item maps to.
+  and the real-company practice the item maps to. A verdict on a PR goes on the PR itself as
+  `VERDICT: APPROVE | CHANGES (reviewer: Gomez)`, never by message only (Kaizen, 2026-10-20 8:37 PM ET).
 - **What I check against:** the baseline is the current rule text plus Isaac's own words on it, quoted with time and
-  thread. Each reply says whether the change loosens one of the seven owner-held limits (DECISIONS,
-  "seven owner-only limits").
+  thread. Each reply says whether the change loosens one of the seven owner-held limits (DECISIONS row
+  "Pipeline, settings and permission changes are the team's").
 - **After CHANGES:** the author gets one revision, and I re-review the diff only.
 
 ## The bar
