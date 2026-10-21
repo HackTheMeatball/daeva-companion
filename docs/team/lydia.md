@@ -28,4 +28,5 @@ so vetting a site and then fetching from it is no longer self-approved.
 purpose and thread, status code), written when the request is made. The first content request to a new host also
 records the terms URL already read and its verdict (terms OK, scraping-only or opt-out); this applies to every
 fetching thread (incident fast path, Fresh governance review OK, 2026-10-21). Chuck checks compliance from this log,
-and a fresh reviewer spot-checks one entry against the live terms page each minor.
+and a fresh reviewer spot-checks one entry against the live terms page each minor. Since 2026-10-21 Chuck has
+read-only web access and may re-open a terms page cited here to check the verdict, logging that fetch here too.
