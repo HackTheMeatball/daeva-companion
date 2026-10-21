@@ -538,6 +538,26 @@ on purpose: the guide shows nothing rather than an unverified value.
   `keyStacks.rightClick`. Since 0.7 P11 (#418) the drawer shows the game's default keys instead (`keyStacks.defaultKeys`,
   owner screens, claim C66; the Ranger's too, C55); the guide's own right-click line is still not shown.
 
+- **Gladiator and Ranger rotation icons: in the site** (0.8.1 F5, #595; RC play #586 finding 1, 0.8.0 Known issues).
+  Five rotation skills still showed the initials square. Game Data Check fetched all five from Metabot under the standing
+  icon OK (owner, 2026-10-14), 128 px RGB PNG from Metabot's 256 px WebP, Lanczos, and matched each against
+  daevacompass.com's art for the same ability id (`docs/research/rotation-icons-2026-10-20/README.md`, #598). None goes
+  to the owner. **In the site since 0.8.1 F5:** copied to `src/assets/icons/` and each record's `icon` names its file.
+
+  | File | Kind | Name | Source page | File URL | Retrieved |
+  |---|---|---|---|---|---|
+  | sk-aerial-snare.png | skill | Gladiator, Aerial Snare | <https://metabot.gg/en/aion-2/skills/aerial-snare> | <https://metabot.gg/web/aion2/skills/11300000.webp> | 2026-10-20 4:08 PM ET |
+  | sk-sword-aura-rampage.png | skill | Gladiator, Sword Aura Rampage | <https://metabot.gg/en/aion-2/skills/sword-aura-rampage> | <https://metabot.gg/web/aion2/skills/11280000.webp> | 2026-10-20 4:09 PM ET |
+  | sk-ankle-slice.png | skill | Gladiator, Ankle Slice | <https://metabot.gg/en/aion-2/skills/ankle-slice> | <https://metabot.gg/web/aion2/skills/11200000.webp> | 2026-10-20 4:09 PM ET |
+  | sk-arrow-scattershot.png | skill | Ranger, Arrow Scattershot | <https://metabot.gg/en/aion-2/skills/arrow-scattershot> | <https://metabot.gg/web/aion2/skills/14330000.webp> | 2026-10-20 4:09 PM ET |
+  | sk-suppressing-arrow.png | skill | Ranger, Suppressing Arrow | <https://metabot.gg/en/aion-2/skills/suppressing-arrow> | <https://metabot.gg/web/aion2/skills/14070000.webp> | 2026-10-20 4:09 PM ET |
+
+  **Still initials, found by F5's test:** the Build drawer's Key setup at Lv 45 shows two more skills with no icon file,
+  the Gladiator's Mocking Blade and the Ranger's Explosion Trap (`tests/e4test.js`, "F5"). Both have Metabot skill pages
+  (<https://metabot.gg/en/aion-2/skills/mocking-blade>, <https://metabot.gg/en/aion-2/skills/explosion-trap>), so they
+  are a Game Data Check fetch under the standing icon OK, not an owner item; no file was fetched here (bot builds have
+  no web access).
+
 - **Story-quest icon: in the site** (0.6 P13, #272; owner OK: #254 note 7 and DECISIONS `owner-ok-story-icon`). The Next
   up story card shows the game's **active** story-quest icon on a dark tile; the 📜 emoji is the fallback when it can't
   load. Per the owner's icon source rule (DECISIONS, 2026-10-18 8:57 PM ET: a better online copy first, his crop as the
