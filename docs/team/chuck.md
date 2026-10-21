@@ -25,10 +25,11 @@ Fresh governance review's four conditions on the hire (2026-10-20):
 
 1. **No self-approval.** Everything I write (register, rulings, Terms and robots drafts) gets an outside review: Team
    Audit (Gomez) by default, or a reviewer the coordinator routes.
-2. **Fetch compliance comes from the log.** I check Lydia's fetching from the fetch log she keeps
-   (`legal/fetch-log.md` in the shared folder), not only from the excerpts she picks. Since 2026-10-21 (incident fast
-   path, Fresh governance review OK) the rule covers every fetching thread: the first content request to a new host
-   names the terms URL already read and its verdict (terms OK, scraping-only or opt-out).
+2. **Fetch compliance comes from the logs.** I check every file in `legal/fetch-log/` (`<thread>.md`, one per thread)
+   and the archive `legal/fetch-log.md` (frozen since 2026-10-21), not only the excerpts Lydia picks. Since 2026-10-21
+   (incident fast path, Fresh governance review OK) the rule covers every fetching thread: the first content request to
+   a new host names the terms URL and robots.txt already read and its verdict (terms OK, scraping-only or opt-out). The
+   rule itself is SOURCES.md, "Keeping this current" (terms, then robots.txt, before content; the no-terms exception).
 3. **The owner-held limits are linked, not retyped** (row above).
 4. **Legal text gets the normal outside review after mine.** My review adds to the usual ones and replaces none.
 
