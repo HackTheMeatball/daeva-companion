@@ -3,7 +3,7 @@
   "keywords": [
     { "re": "(^|[\\s`(\"'])data\\/", "in": ["Result"], "says": "its Result names data/" },
     { "re": "(^|[\\s`(\"'])data\\/schema\\/", "in": ["Files"], "says": "its Files names data/schema/" },
-    { "re": "\\bnew (pack |data |guide )?fields?\\b", "in": ["Result", "Files"], "says": "it adds a new pack field" },
+    { "re": "(?<!\\bno )\\bnew (pack |data |guide )?fields?\\b", "in": ["Result", "Files"], "says": "it adds a new pack field" },
     { "re": "\\b(game )?facts?\\b[^.\\n]{0,60}\\b(to|into) `?data\\/", "in": ["Result", "Files"], "says": "it moves game facts into data/" }
   ]
 }

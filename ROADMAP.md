@@ -1365,6 +1365,7 @@ workflows).
 | P29 | A hidden class is still offered and opens from a save (#689) → class list from the data, no chunk, save opens on the character list | M | Opus | gen, e2, architecture | P11, P28 |
 | P30 | P5 cut identical writes 17% of a 25% target (#684) → Stigmas, Journey, Areas, Daevanion lists skip them too | M | Opus | stigmas-card, journey-card, daevanion-card, nextup-card, site | P5 |
 | P31 | 106 quotes miss their hosts' terms (Legal's C7) → credited or paraphrased from research tables, then a gen check | M | Opus | gen, golden | `research-quotes-c7` |
+| P32 | P6 left schema at 8–10 s (target < 4 s) and no counts file (#717) → controls in workers, `expected-counts.json` | M | Opus | gen, schema | none |
 | S1 FR | Golden shares a shard → its own shard | S | Gus | ci | P6 |
 | S2 FR | Nothing checks the live app works → scripted journey after each deploy and every 6 h | S | Gus | ci | none |
 | S3 FR | Sync server deployed by hand → CI tests and dry run, deploy on the owner's token | M | Gus | ci | none |
