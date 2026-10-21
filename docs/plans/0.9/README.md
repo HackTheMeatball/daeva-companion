@@ -545,6 +545,73 @@ Rules for every item:
 - **Lanes:** site, page-card. **Model:** Sonnet, S (45 min).
 - **After:** P23, owner-ok-0.9-terms. If the owner's OK isn't in by 0.9's release gate, P24 moves to 0.10.
 
+## P25–P27: compliance checks (Legal's CK-1 to CK-3)
+
+Legal & Compliance (Chuck) found three rules with no test (compliance register C4, C6, C10; sent 2026-10-20) and
+routed them here as build items. Each turns an existing rule into a check and loosens nothing. They share one new file,
+`tests/compliance.mjs`, which the `schema` suite runs after the ledger checks, so they run in order on the schema lane.
+
+## P25: A licence header or file other than ours fails CI (CK-1)
+
+- **Problem.** Code is PolyForm Strict 1.0.0 and CLAUDE.md bans MIT or other licence headers or files, but nothing
+  checks it (register C4: "no test for stray licence headers or files").
+- **Result.**
+  - `tests/compliance.mjs` exports `checkCompliance(root, overrides)` returning a list of problems, in the shape of
+    `tests/ledger.mjs`. Its first check fails on: an `SPDX-License-Identifier` naming any licence but
+    PolyForm Strict 1.0.0 (`PolyForm-Strict-1.0.0`), an `MIT License` or `Permission is hereby granted, free of charge` text, or a `LICENSE*` /
+    `COPYING*` file other than the root `LICENSE`, in tracked files outside `node_modules/`. The font folders
+    (`src/assets/fonts/`, `tools/brand/fonts/`) are allowed their own licence files.
+  - `tests/schema.mjs` runs it after the ledger checks, with one negative fixture per pattern (each passed as an override,
+    never written to the repo).
+- **Inputs.** none.
+- **Files.** `tests/compliance.mjs` (new), `tests/schema.mjs`, `tests/run.mjs` (the schema line of the help text only).
+- **No-gos.** No change to LICENSE or any licence text. No new dependency.
+- **Acceptance.**
+  - [ ] `npm test` green on main as is (paste the compliance count).
+  - [ ] Each negative fixture (an MIT header, a foreign SPDX id, a stray `LICENSE.md`) makes the check fail; paste the
+        three messages.
+- **Review:** standing (a new check; it tightens).
+- **Lanes:** schema, compliance. **Model:** Sonnet, S (45 min).
+- **After:** none.
+
+## P26: PRIVACY.md names the save key the code uses (CK-3)
+
+- **Problem.** PRIVACY.md says progress is stored under `companion-save-v5`. A save-key bump (allowed before 1.0)
+  would leave it stale, and nothing checks it (register C10).
+- **Result.** A second check in `tests/compliance.mjs`: the `KEY` exported by `src/core/state.js` appears in PRIVACY.md,
+  and every `companion-save-v<n>` that PRIVACY.md names equals it (the `:before-import` suffix allowed). A negative
+  fixture in `tests/schema.mjs` (a PRIVACY text naming `-v4`) fails it.
+- **Inputs.** none.
+- **Files.** `tests/compliance.mjs`, `tests/schema.mjs`.
+- **No-gos.** No change to PRIVACY.md or the save key.
+- **Acceptance.**
+  - [ ] Passes on main; the fixture fails with a message naming both keys.
+- **Review:** standing.
+- **Lanes:** schema, compliance. **Model:** Sonnet, S (45 min).
+- **After:** P25.
+
+## P27: Every shipped icon has its provenance row (CK-2)
+
+- **Problem.** The standing icon OK (2026-10-14) requires each icon's source page, file URL and date in
+  `docs/ISSUES.md`, but nothing checks it (register C6). On main on 2026-10-21, 29 of the 234 files in
+  `src/assets/icons/` have no row naming them (matched by base name), all of them `sk-*` skill icons.
+- **Result.**
+  - Game Data Check commits `docs/research/2026-10-icon-provenance.md`: one row per icon with no ISSUES.md row (file,
+    source page, file URL, date), from the batch records already in the repo or the shared folder; an icon with no
+    record is listed for the owner instead, never guessed.
+  - This item adds those rows to `docs/ISSUES.md` verbatim, and a third check in `tests/compliance.mjs`: every file in
+    `src/assets/icons/` has an ISSUES.md row naming it with a source page, a file URL and a date, or an entry on the
+    owner list section the research file names. A negative fixture (an extra icon file name) fails it.
+- **Inputs.** `docs/research/2026-10-icon-provenance.md`.
+- **Files.** `tests/compliance.mjs`, `tests/schema.mjs`, `docs/ISSUES.md`.
+- **No-gos.** No icon added, removed or replaced. No provenance invented: a row comes from the research file only.
+- **Acceptance.**
+  - [ ] The check passes on this branch and fails on the fixture; paste the count of icons with rows before and after.
+  - [ ] Every new ISSUES.md row matches the research file byte for byte.
+- **Review:** standing (Game Data Check confirms the rows).
+- **Lanes:** schema, compliance. **Model:** Sonnet, S (45 min).
+- **After:** P25, research-icon-provenance.
+
 ## S1–S4: pipeline items (Build Pipeline builds them; no queue line)
 
 - **S1: Split the golden shard.** Golden alone; a11y, save and site in their own shard. Files `tests/run.mjs`,
