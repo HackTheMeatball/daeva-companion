@@ -25,10 +25,10 @@ Kickoff runs after each merge to main and when a thread dispatches it (`kickoff.
 
 1. **Kickoff**: Checks the top `[next]` line's After keys and owner-ok tokens (Q-05) and the spec's inputs on main (PIP-19); an unmet item stays in place with a log line.
 2. **Kickoff**: Picks the model (PIP-06), respects the builds-in-flight cap (PIP-07), starts the build and rewrites the line to `[started <time>]` (Q-01).
-3. **Requesting thread**: Any thread that dispatched kickoff by hand sends Huell `KICKOFF DISPATCHED` (PIP-16) and logs the hand dispatch (NEW-02).
+3. **Requesting thread**: Any thread that dispatched kickoff by hand sends Huell `KICKOFF DISPATCHED` (PIP-16) and reports the hand dispatch to Mike, who logs it (NEW-02).
 4. **Builder**: Builds on a `claude/` branch, runs `npm test` green before each commit (REPO-01), pushes after each step of a long item (PIP-11), and keeps to run hygiene (PIP-18).
 5. **Builder**: Opens the PR (MRG-11) with before/after shots and `scrapbook.json`, or "No visible change" (MRG-05).
-6. **Gus**: His PR check sees the new PR (CLK-01) and fixes a PR with no CI run by a real push (PIP-04).
+6. **Gus**: Gus's PR check sees the new PR (CLK-01) and fixes a PR with no CI run by a real push (PIP-04).
 7. **Huell**: Moves the item card to working (TRK-03).
 
 ## Gates

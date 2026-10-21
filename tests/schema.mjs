@@ -296,7 +296,7 @@ if (g) {
      link, an unknown doer, an index row with no file */
   const sdir = join(ROOT, 'docs/sops'), readme = readFileSync(join(sdir, 'README.md'), 'utf8');
   const sops = Object.fromEntries(readdirSync(sdir).filter(f => /^FLOW-\d{2}-/.test(f)).map(f => [f, readFileSync(join(sdir, f), 'utf8')]));
-  ok('flow index lists every SOP file (22 flows)', Object.keys(sops).length >= 22 && Object.keys(sops).every(f => readme.includes(`](${f})`)), Object.keys(sops).length);
+  ok('flow index lists every SOP file (at least 23 flows)', Object.keys(sops).length >= 23 && Object.keys(sops).every(f => readme.includes(`](${f})`)), Object.keys(sops).length);
   const merge = Object.keys(sops).find(f => f.startsWith('FLOW-09-'));
   const sopFails = (label, o, re) => { const p = checkLedger(ROOT, o); ok('SOP check rejects: ' + label, p.some(x => re.test(x)), p.slice(0, 3)); };
   sopFails('an owner who left the team', { sopReadme: readme.replace('| Merge | A PR meets every gate | Gus |', '| Merge | A PR meets every gate | Hank |') }, /owner "Hank" is not an active/);
@@ -305,7 +305,18 @@ if (g) {
   sopFails('a rule linked away from its home', { sopFiles: { ...sops, [merge]: sops[merge].replace('[MRG-01](../team/gus.md)', '[MRG-01](../team/walter.md)') } }, /MRG-01 links to \.\.\/team\/walter\.md/);
   sopFails('a dead link', { sopFiles: { ...sops, [merge]: sops[merge] + '\n[gone](../no-such-file.md)\n' } }, /dead link \.\.\/no-such-file\.md/);
   sopFails('an unknown step doer', { sopFiles: { ...sops, [merge]: sops[merge].replace('1. **Auto-merge**', '1. **Hank**') } }, /step doer "Hank"/);
-  { const { [merge]: _, ...rest } = sops; sopFails('an index row with no file', { sopFiles: rest }, /FLOW-09: SOP link/); } }
+  { const { [merge]: _, ...rest } = sops; sopFails('an index row with no file', { sopFiles: rest }, /FLOW-09: SOP link/); }
+  sopFails('a file with no index row', { sopReadme: readme.split('\n').filter(l => !l.startsWith('| FLOW-09 ')).join('\n') }, /FLOW-09-merge\.md has no row in the flow index/);
+  sopFails('a file not named FLOW-NN-<slug>.md', { sopFiles: { ...sops, 'FLOW-100-x.md': sops[merge] } }, /FLOW-100-x\.md: not named/);
+  sopFails('a pending rule', { sopFiles: { ...sops, [merge]: sops[merge] + '\nSee KZ-12.\n' } }, /cites KZ-12, which is pending/);
+  sopFails('a missing section', { sopFiles: { ...sops, [merge]: sops[merge].replace('## Records', '## Logs') } }, /missing section "## Records"/);
+  sopFails('an empty section', { sopFiles: { ...sops, [merge]: sops[merge].replace(/## Gates\n[\s\S]*?\n## Records/, '## Gates\n\n## Records') } }, /section "## Gates" is empty/);
+  sopFails('a bad status', { sopReadme: readme.replace(/(\| FLOW-09 .*\| )draft \|/, '$1done |') }, /status "done" not in draft\/confirmed/);
+  sopFails('an owner who only appears mid-cell', { sopReadme: readme.replace('| Merge | A PR meets every gate | Gus |', '| Merge | A PR meets every gate | Isaac |') }, /owner "Isaac" leads no "Who does what"/);
+  sopFails('a Runs on id the SOP does not list', { sopReadme: readme.replace(/(\| FLOW-09 .*\| )(MRG-01)/, '$1PIP-01, $2') }, /Runs on names PIP-01/);
+  sopFails('a Rules line that is not a link', { sopFiles: { ...sops, [merge]: sops[merge].replace('- [MRG-01](../team/gus.md)', '- MRG-01') } }, /Rules line "- MRG-01/);
+  sopFails('a dead anchor', { sopFiles: { ...sops, [merge]: sops[merge] + '\n[x](README.md#no-such-heading)\n' } }, /dead anchor README\.md#no-such-heading/);
+  sopFails('a dead reference-style link', { sopFiles: { ...sops, [merge]: sops[merge] + '\n[x]: ../gone.md\n' } }, /dead link \.\.\/gone\.md/); }
 console.log(`${n - fail} ok, ${fail} failed (${Date.now() - t0} ms)`);
 console.log(fail ? `SCHEMA CHECKS FAILED (${fail})` : 'SCHEMA CHECKS PASSED');
 process.exit(fail ? 1 : 0);
