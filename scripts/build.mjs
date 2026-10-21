@@ -23,15 +23,13 @@
    src/index.html is not runnable on its own: build, then `npm run serve`.
 
    dist/                       GitHub Pages site
-     index.html                the shell with styles and scripts inlined, build markers removed
+     index.html                the shell with styles and scripts inlined
      assets/icons/*.png        the icons the page references (src/assets/icons)
      assets/fonts/*            the self-hosted fonts (WOFF2) and their OFL license texts (src/assets/fonts)
      public/*                  CNAME, robots.txt, sitemap.xml, 404.html, favicon.svg, manifest, manifest icons
      sw.js                     src/sw.js with the build id and precache list filled in
 
    Card markup: a line "<!-- @card cards/X.html -->" in src/index.html is replaced by src/cards/X.html (0.4 P4a).
-   Markers in src/index.html: a line "<!-- @web-only -->" opens a block, "<!-- @end-web-only -->" closes it. They are
-   inert since the claude.ai build went (0.7 P9): the site keeps what they wrap and drops the marker lines.
    Placeholders anywhere in the page: __APP_VERSION__ becomes package.json's version, __APP_BUILD__ the build's name
    ("site"), so the version is never written by hand in the page.
    Usage: node scripts/build.mjs [--out <dir>] [--sizes]
@@ -47,7 +45,6 @@ import { DEFAULT_PACK } from '../tools/gen/packs.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const P = (...p) => join(ROOT, ...p);
-const OPEN = '<!-- @web-only -->', CLOSE = '<!-- @end-web-only -->';
 
 const die = msg => { console.error('build: ' + msg); process.exit(1); };
 const argOf = n => { const i = process.argv.indexOf('--' + n); return i < 0 ? null : process.argv[i + 1] || die(`--${n} needs a value`); };
@@ -261,19 +258,8 @@ if (!/^\d+\.\d+\.\d+$/.test(VERSION || '')) die(`package.json version "${VERSION
 if (!src.includes('__APP_VERSION__') || !src.includes('__APP_BUILD__')) die('src/ lacks the __APP_VERSION__ / __APP_BUILD__ placeholders');
 const stamp = (html, build) => html.replaceAll('__APP_VERSION__', VERSION).replaceAll('__APP_BUILD__', build);
 
-/* markers: balanced, on their own lines, not nested */
-{
-  let depth = 0;
-  shell.split('\n').forEach((line, i) => {
-    const t = line.trim();
-    if (t.includes('@web-only') || t.includes('@end-web-only')) {
-      if (t !== OPEN && t !== CLOSE) die(`line ${i + 1}: marker must be alone on its line`);
-      depth += t === OPEN ? 1 : -1;
-      if (depth < 0 || depth > 1) die(`line ${i + 1}: unbalanced or nested @web-only marker`);
-    }
-  });
-  if (depth) die('unclosed @web-only block');
-}
+/* the @web-only markers are gone (0.9 P4): there is one build, so one is never added back */
+if (shell.includes('@web-only') || shell.includes('@end-web-only')) die('src/index.html: @web-only markers are retired (one build since 0.7 P9)');
 
 /* icons: every referenced icon exists; every shipped icon is referenced. PNG, and WebP (0.8 P12: the class emblems, kept
    as the bytes Metabot served) */
@@ -296,7 +282,7 @@ for (const [f, html] of [['src/', src], ['public/404.html', readFileSync(P('publ
   if (/fonts\.(googleapis|gstatic)\.com/.test(html)) die(`${f} still requests Google Fonts`);
 
 /* web page */
-const web = tightPaths(tightHtml(stamp(inline(shell, siteClasses()).replace(/^[ \t]*<!-- @(end-)?web-only -->\n/gm, ''), 'site')));
+const web = tightPaths(tightHtml(stamp(inline(shell, siteClasses()), 'site')));
 if (/__APP_(VERSION|BUILD)__|__SYNC_CHUNK__/.test(web)) die('dist/index.html still contains a placeholder');
 if (!web.includes(SYNC_FILE)) die(`dist/index.html does not name the sync chunk ${SYNC_FILE}`);
 if (!web.startsWith('<!doctype html>')) die('dist/index.html must start with <!doctype html>');

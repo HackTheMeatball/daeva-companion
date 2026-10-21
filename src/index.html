@@ -1,12 +1,9 @@
-<!-- @web-only -->
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- @end-web-only -->
 <title>Daeva Companion · unofficial companion app for AION 2</title>
-<!-- @web-only -->
 <meta name="description" content="An unofficial, fan-made companion app for AION 2. Not affiliated with or endorsed by NCSoft.">
 <link rel="canonical" href="https://daevacompanion.com/">
 <meta name="theme-color" content="#110c13">
@@ -23,14 +20,11 @@
 <meta property="og:image" content="https://daevacompanion.com/icons/maskable-512.png">
 <meta property="og:image:alt" content="Daeva Companion logo: a red feather as the needle of a gold compass">
 <meta name="twitter:card" content="summary">
-<!-- @end-web-only -->
 <link rel="stylesheet" href="styles/fonts.css">
 <link rel="stylesheet" href="styles/index.css">
 <link rel="stylesheet" href="styles/brand.css">
-<!-- @web-only -->
 </head>
 <body>
-<!-- @end-web-only -->
 
 <div class="wrap">
   <header class="top">
@@ -45,14 +39,12 @@
 
   <div class="card savewarn" id="saveWarn" role="alert" hidden><span>Your progress couldn't be saved in this browser. Export a backup.</span>
     <button type="button" class="xfer-btn" id="saveWarnExp" hidden>Export progress</button></div>
-<!-- @web-only -->
   <div id="bkNote" role="status">
     <div class="card nudge" id="nudge" hidden><span id="nudgeTxt"></span>
       <button type="button" class="xfer-btn" id="nudgeExp">Export progress</button><button type="button" class="nudge-x" id="nudgeNo" aria-label="Dismiss backup reminder">Not now</button></div>
     <div class="card nudge" id="a2hs" hidden><span>Safari can clear a site's saved data after a week unused. To keep your progress, export it, then tap Share and Add to Home Screen.</span>
       <button type="button" class="xfer-btn" id="a2hsExp">Export progress</button><button type="button" class="nudge-x" id="a2hsOk" aria-label="Dismiss Home Screen tip">Got it</button></div>
   </div>
-<!-- @end-web-only -->
 
   <!-- @card cards/welcome.html -->
 
@@ -89,9 +81,7 @@
     <!-- @card cards/route.html -->
 <!-- @card cards/sources.html -->
     <div class="xfer" id="xfer"><span class="xfer-text"><span>Progress is saved in this browser only.</span>
-<!-- @web-only -->
       <span class="backup-line" id="backupLine"></span>
-<!-- @end-web-only -->
       </span>
       <button type="button" class="xfer-btn" id="expBtn" hidden>Export progress</button>
       <label class="xfer-btn">Import progress<input type="file" id="impIn" class="vh" accept=".json,application/json"></label>
@@ -105,8 +95,6 @@
 
 <!-- @card packs/aion2/cards/build.html -->
 <script type="module" src="main.js"></script>
-<!-- @web-only -->
 <script type="module" src="site.js"></script>
 </body>
 </html>
-<!-- @end-web-only -->

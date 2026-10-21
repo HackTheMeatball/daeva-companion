@@ -14,10 +14,9 @@ import { SYNC_LIVE } from "./shell/sync-live.js";
 })();
 /* Save safety (0.2.5, docs/design/0.2.5-save-safety.md): the "Last backup" line in the export row, and one card per
    visit under the header: the export nudge (14 days without an export) or, failing that, the one-time Add to Home
-   Screen hint in iPhone Safari. The markup is web-only; the rules are src/core/backup.js, whose helpers are page globals
+   Screen hint in iPhone Safari. The rules are src/core/backup.js, whose helpers are page globals
    from main.js's bundle (like state, storeState, hadSave and KEY here). main.js records the export itself (markExport). */
 (() => {
-  if (window.claude) return;
   const $ = id => document.getElementById(id);
   const line = $("backupLine"), nudge = $("nudge"), hint = $("a2hs"), warn = $("saveWarn"), exp = $("expBtn");
   if (!line || !nudge || !hint || !exp) return;
@@ -48,7 +47,7 @@ import { SYNC_LIVE } from "./shell/sync-live.js";
    the build names the file in __SYNC_CHUNK__), loaded only when sync is shown: SYNC_LIVE (the server is live) or the
    tests' flag. document.write (the page is still parsing) runs it right after this script, as the class loader does. */
 if (SYNC_LIVE || window.__dcSyncTest === true) document.write('<script src="__SYNC_CHUNK__"><\/script>');
-/* Offline support (standalone site only; never in the claude.ai build). Secure contexts only: https or localhost. */
+/* Offline support. Secure contexts only: https or localhost. */
 if ("serviceWorker" in navigator && (location.protocol === "https:" || /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname))) {
   addEventListener("load", () => { navigator.serviceWorker.register("sw.js").catch(() => {}); });
 }
