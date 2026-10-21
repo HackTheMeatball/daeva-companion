@@ -154,7 +154,7 @@
   "behind/L45-q86-from30-miss3-s1-A": [
     {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"(recommended Lv 45) from Asahr.","c":"primary \"Done\" tick:g45:witness","b":"Lv 45+","i":"The next one, \"The One Who Swears the Oath\", is recommended Lv 49, past this guide, so expect it to need gear."},
     {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 6 jumps left","c":"primary \"Mark spent\" catchup"},
-    {"t":"Equip Savage Fang inferred","s":"Stigma slot 4 is open · then put it on E, row 3","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Savage Fang inferred","s":"Stigma slot 4 is open · then put it on E, row 2","c":"primary \"Equipped\" stequip"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0","b":"Missed · Lv 40–44"},
     {"t":"Story: Daeva Trapped in a Nightmare","s":"0/2 objectives","c":"primary \"Turned in\" story","b":"Lv 45+","o":["Ascend to the next dimension of power as a Daeva complete The One Who Witnesses the Nightmare","Turn in Nemon, Outskirts Stall"]},
     {"t":"Regional quests","s":"30 to pick up · 1 follow-up · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202067","x":["new A Comrade's Fate","new A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest","+25 more"]},
@@ -166,7 +166,7 @@
   "behind/L45-q86-from30-miss3-s1-B": [
     {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"(recommended Lv 45) from Asahr.","c":"primary \"Done\" tick:g45:witness","b":"Lv 45+","i":"The next one, \"The One Who Swears the Oath\", is recommended Lv 49, past this guide, so expect it to need gear."},
     {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 6 jumps left","c":"primary \"Mark spent\" catchup"},
-    {"t":"Equip Savage Fang inferred","s":"Stigma slot 4 is open · then put it on E, row 3","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Savage Fang inferred","s":"Stigma slot 4 is open · then put it on E, row 2","c":"primary \"Equipped\" stequip"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0","b":"Missed · Lv 40–44"},
     {"t":"Story: Daeva Trapped in a Nightmare","s":"0/2 objectives","c":"primary \"Turned in\" story","b":"Lv 45+","o":["Ascend to the next dimension of power as a Daeva complete The One Who Witnesses the Nightmare","Turn in Nemon, Outskirts Stall"]},
     {"t":"Regional quests","s":"30 to pick up · 1 follow-up · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202067","x":["new A Comrade's Fate","new A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest","+25 more"]},
@@ -178,7 +178,7 @@
   "behind/L45-q86-from30-miss3-s2-A": [
     {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"(recommended Lv 45) from Asahr.","c":"primary \"Done\" tick:g45:witness","b":"Lv 45+","i":"The next one, \"The One Who Swears the Oath\", is recommended Lv 49, past this guide, so expect it to need gear."},
     {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 6 jumps left","c":"primary \"Mark spent\" catchup"},
-    {"t":"Equip Savage Fang inferred","s":"Stigma slot 4 is open · then put it on E, row 3","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Savage Fang inferred","s":"Stigma slot 4 is open · then put it on E, row 2","c":"primary \"Equipped\" stequip"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0","b":"Missed · Lv 40–44"},
     {"t":"Story: Daeva Trapped in a Nightmare","s":"0/2 objectives","c":"primary \"Turned in\" story","b":"Lv 45+","o":["Ascend to the next dimension of power as a Daeva complete The One Who Witnesses the Nightmare","Turn in Nemon, Outskirts Stall"]},
     {"t":"Regional quests","s":"30 to pick up · 1 follow-up · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202067","x":["new A Comrade's Fate","new A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest","+25 more"]},
@@ -190,7 +190,7 @@
   "behind/L45-q86-from30-miss3-s2-B": [
     {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"(recommended Lv 45) from Asahr.","c":"primary \"Done\" tick:g45:witness","b":"Lv 45+","i":"The next one, \"The One Who Swears the Oath\", is recommended Lv 49, past this guide, so expect it to need gear."},
     {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 6 jumps left","c":"primary \"Mark spent\" catchup"},
-    {"t":"Equip Savage Fang inferred","s":"Stigma slot 4 is open · then put it on E, row 3","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Savage Fang inferred","s":"Stigma slot 4 is open · then put it on E, row 2","c":"primary \"Equipped\" stequip"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0","b":"Missed · Lv 40–44"},
     {"t":"Story: Daeva Trapped in a Nightmare","s":"0/2 objectives","c":"primary \"Turned in\" story","b":"Lv 45+","o":["Ascend to the next dimension of power as a Daeva complete The One Who Witnesses the Nightmare","Turn in Nemon, Outskirts Stall"]},
     {"t":"Regional quests","s":"30 to pick up · 1 follow-up · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202067","x":["new A Comrade's Fate","new A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest","+25 more"]},
@@ -226,7 +226,7 @@
   "behind/L45-q86-from30-miss4-s1-A": [
     {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"(recommended Lv 45) from Asahr.","c":"primary \"Done\" tick:g45:witness","b":"Lv 45+","i":"The next one, \"The One Who Swears the Oath\", is recommended Lv 49, past this guide, so expect it to need gear."},
     {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 6 jumps left","c":"primary \"Mark spent\" catchup"},
-    {"t":"Equip Savage Fang inferred","s":"Stigma slot 4 is open · then put it on E, row 3","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Savage Fang inferred","s":"Stigma slot 4 is open · then put it on E, row 2","c":"primary \"Equipped\" stequip"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0","b":"Missed · Lv 40–44"},
     {"t":"Story: Daeva Trapped in a Nightmare","s":"0/2 objectives","c":"primary \"Turned in\" story","b":"Lv 45+","o":["Ascend to the next dimension of power as a Daeva complete The One Who Witnesses the Nightmare","Turn in Nemon, Outskirts Stall"]},
     {"t":"Regional quests","s":"30 to pick up · 1 follow-up · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202067","x":["new A Comrade's Fate","new A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest","+25 more"]},
@@ -238,7 +238,7 @@
   "behind/L45-q86-from30-miss4-s1-B": [
     {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"(recommended Lv 45) from Asahr.","c":"primary \"Done\" tick:g45:witness","b":"Lv 45+","i":"The next one, \"The One Who Swears the Oath\", is recommended Lv 49, past this guide, so expect it to need gear."},
     {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 6 jumps left","c":"primary \"Mark spent\" catchup"},
-    {"t":"Equip Savage Fang inferred","s":"Stigma slot 4 is open · then put it on E, row 3","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Savage Fang inferred","s":"Stigma slot 4 is open · then put it on E, row 2","c":"primary \"Equipped\" stequip"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0","b":"Missed · Lv 40–44"},
     {"t":"Story: Daeva Trapped in a Nightmare","s":"0/2 objectives","c":"primary \"Turned in\" story","b":"Lv 45+","o":["Ascend to the next dimension of power as a Daeva complete The One Who Witnesses the Nightmare","Turn in Nemon, Outskirts Stall"]},
     {"t":"Regional quests","s":"30 to pick up · 1 follow-up · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202067","x":["new A Comrade's Fate","new A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest","+25 more"]},
@@ -250,7 +250,7 @@
   "behind/L45-q86-from30-miss4-s2-A": [
     {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"(recommended Lv 45) from Asahr.","c":"primary \"Done\" tick:g45:witness","b":"Lv 45+","i":"The next one, \"The One Who Swears the Oath\", is recommended Lv 49, past this guide, so expect it to need gear."},
     {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 6 jumps left","c":"primary \"Mark spent\" catchup"},
-    {"t":"Equip Savage Fang inferred","s":"Stigma slot 4 is open · then put it on E, row 3","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Savage Fang inferred","s":"Stigma slot 4 is open · then put it on E, row 2","c":"primary \"Equipped\" stequip"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0","b":"Missed · Lv 40–44"},
     {"t":"Story: Daeva Trapped in a Nightmare","s":"0/2 objectives","c":"primary \"Turned in\" story","b":"Lv 45+","o":["Ascend to the next dimension of power as a Daeva complete The One Who Witnesses the Nightmare","Turn in Nemon, Outskirts Stall"]},
     {"t":"Regional quests","s":"30 to pick up · 1 follow-up · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202067","x":["new A Comrade's Fate","new A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest","+25 more"]},
@@ -262,7 +262,7 @@
   "behind/L45-q86-from30-miss4-s2-B": [
     {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"(recommended Lv 45) from Asahr.","c":"primary \"Done\" tick:g45:witness","b":"Lv 45+","i":"The next one, \"The One Who Swears the Oath\", is recommended Lv 49, past this guide, so expect it to need gear."},
     {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 6 jumps left","c":"primary \"Mark spent\" catchup"},
-    {"t":"Equip Savage Fang inferred","s":"Stigma slot 4 is open · then put it on E, row 3","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Savage Fang inferred","s":"Stigma slot 4 is open · then put it on E, row 2","c":"primary \"Equipped\" stequip"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0","b":"Missed · Lv 40–44"},
     {"t":"Story: Daeva Trapped in a Nightmare","s":"0/2 objectives","c":"primary \"Turned in\" story","b":"Lv 45+","o":["Ascend to the next dimension of power as a Daeva complete The One Who Witnesses the Nightmare","Turn in Nemon, Outskirts Stall"]},
     {"t":"Regional quests","s":"30 to pick up · 1 follow-up · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202067","x":["new A Comrade's Fate","new A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest","+25 more"]},

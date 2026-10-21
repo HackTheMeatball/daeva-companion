@@ -15,7 +15,7 @@ import { capFirst } from "../../../cards/nextup.js";
 import { MAP_ICO } from "../../../cards/milestones.js";
 import { GATES } from "../data/milestones.js";
 import { E_ORDER, defaultKeyOf } from "../data/build.js";
-import { seq } from "../data/markup.js";
+import { eShift, seq } from "../data/markup.js";
 import { CLEAR_REWARD, RQ_K, eputK } from "../catalog.js";
 import { rqReqOf, slotNames } from "../requirements.js";
 import { aion2UndoDo, aion2UndoLast } from "./undo.js";
@@ -89,13 +89,13 @@ function aion2RowClick(e) {
   if (!char(state).checks[k] && !qProgOf(char(state), k)) { e.preventDefault(); char(state).started[k] = 1; save(); update(); return; }
   delete char(state).started[k];
 }
-/* E row a slot's stigma goes to when added (stigmas in slots up to n, in E_ORDER), and who moves down. */
-const eRowOf = n => { const sl = STIGMA_SLOTS(), cur = sl.filter(x => x.n <= n).map(x => x.name), nm = sl[n - 1].name, order = E_ORDER.filter(x => cur.includes(x)), r = order.indexOf(nm); return { r, below: order.slice(r + 1) }; };
+/* E row a slot's stigma goes to when added (stigmas in slots up to n, in E_ORDER), and who moves up to which row. */
+const eRowOf = n => { const sl = STIGMA_SLOTS(), cur = sl.filter(x => x.n <= n).map(x => x.name), nm = sl[n - 1].name, order = E_ORDER.filter(x => cur.includes(x)), r = order.indexOf(nm); return { r, shift: eShift(order, r) }; };
 /* Milestone text follows the picks: stigma names, E rows, and the full-rotation line at slot 4. */
 function aion2RowText() {
   const names = slotNames(char(state));
   mainEl.querySelectorAll(".stn[data-slot]").forEach(x => { x.textContent = names[x.dataset.slot - 1]; });
-  mainEl.querySelectorAll(".erow[data-slot]").forEach(x => { const { r, below } = eRowOf(+x.dataset.slot); x.textContent = r < 0 ? "" : `, row ${r}${below.length ? ` (${below.join(", ")} move${below.length === 1 ? "s" : ""} down one)` : ""}`; });
+  mainEl.querySelectorAll(".erow[data-slot]").forEach(x => { const { r, shift } = eRowOf(+x.dataset.slot); x.textContent = r < 0 ? "" : `, row ${r}${shift ? ` (${shift})` : ""}`; });
   const e = E_ORDER.filter(x => names.includes(x)), pre = e.filter(n => n === "Illusive Clone" || n === "Swift Contract"), post = e.filter(n => !pre.includes(n));
   mainEl.querySelectorAll(".rotseq").forEach(x => { x.innerHTML = seq([pre.length ? "E: " + pre.join(" + ") : "", "Q: Shadowstrike (the guide's key" + (defaultKeyOf("Shadowstrike") ? `; the game's default is ${defaultKeyOf("Shadowstrike")})` : ")"), post.length ? "E: " + post.join(", ") : "", "Hold both mouse buttons"].filter(Boolean)); });
 }

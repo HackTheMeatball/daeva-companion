@@ -558,6 +558,10 @@
                 "pattern": "^stigma:[a-z]+:[a-z0-9-]+$"
               }
             },
+            "eOrderStatus": {
+              "description": "The E stack's own label (0.9 P17), when it is less certain than keyStacks.status: the Build drawer tags the E stack with it (\"check in game\" for disputed and owner-check). Absent: no tag of its own.",
+              "$ref": "common.schema.json#/$defs/status"
+            },
             "defaultKeys": {
               "description": "The game's default keys for the class (0.7 P11): one entry per key in the order the Key setup shows them, each a stack of skills, row 0 first (the row the game tries first). A key with one row is a single key. A row shows from its minLv, else from its skill's learn level. A guide's own recommended setup (slots, macros) stays separate.",
               "type": "object",
