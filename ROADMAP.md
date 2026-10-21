@@ -130,7 +130,11 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
    from 0.10):** for an item that changes what a player sees, at least one acceptance line is a player scenario: start
    state (class, level, save fixture, width), steps, and the exact expected result (text, value or position). A scenario
    that expects a game fact takes its value from a source or an owner screen, signed by Game Data Check, never from the
-   app's own output. The plan reviewer checks each line's testability, and Player Testing reads the lines in that same
+   app's own output. Each signed value records its source (a URL or an owner screen) and the date, and meets CLAUDE.md's
+   bar (two independent sources, a game-database field, or an owner screen); anything else stays unsigned or is labelled
+   "single source". Signed values in the golden route snapshots survive a re-record: a test fails CI when a re-record
+   changes a signed field unless the signed value changes in the same PR (built in 0.10, Build Pipeline or the golden
+   owner picks the form; until then a golden re-record PR lists any signed field it touches). The plan reviewer checks each line's testability, and Player Testing reads the lines in that same
    review. The Release Planner logs the start and end time (ET) of writing each spec's Acceptance lines in the minor's
    #232 row (the kaizen review measures it). An item with an
    unknown is a research item first, not a build. **Live dependencies** (Kaizen, 2026-10-19): anything the item needs
