@@ -14,7 +14,7 @@ import { basename, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
 import { ROOT, validateDoc } from './validate.mjs';
-import { DEFAULT_PACK, DEFAULT_ROOT, resolvePacks } from './packs.mjs';
+import { DEFAULT_PACK, DEFAULT_ROOT, fsOf, realFs, resolvePacks } from './packs.mjs';
 import { checkPlanCosts } from './board-path.mjs';
 const require = createRequire(import.meta.url);
 
@@ -22,15 +22,19 @@ const require = createRequire(import.meta.url);
 /* dropProposed: strip every `proposed` gate after validation (tests/schema.mjs proves the module is the same without
    them, i.e. nothing compiles a proposal; DATA-FORMAT-V2 §6, docs/design/0.3-requirement-engine.md §7). */
 const stripProposed = recs => { for (const r of recs) { delete r.proposed; for (const e of r.boardPlan || []) delete e.proposed; } };   /* where the schema allows it: records, build plan nodes */
-/* mutate(rel, doc): tests only, edits a file's doc before validation (negative controls for cross-record checks).
-   root, pack: the packs root and the pack to build (packs.mjs); the files are exactly those the pack chain lists. */
-const loadBundle = ({ dropProposed = false, mutate = null, root, pack } = {}) => {
-  const { chain, files } = resolvePacks({ root, pack }), by = {}, schemaErrors = [];
+/* mutate(rel, doc), drop, add: tests only, read through an in-memory view of the packs (packs.mjs fsView, 0.9 P6): mutate
+   edits a file's doc (or a pack.json) before validation, drop hides files or folders, add adds files (negative controls for
+   cross-record and pack checks; nothing is written). root, pack: the packs root and the pack to build (packs.mjs); the
+   files are exactly those the pack chain lists. */
+/* validateDoc is pure in (path, doc): a doc that serializes the same as one validated before has the same errors, so the
+   tests' many generate() calls validate each unchanged file once (0.9 P6) */
+const validMemo = new Map(), validated = (f, doc) => { const k = f + '\0' + JSON.stringify(doc); if (!validMemo.has(k)) validMemo.set(k, validateDoc(f, doc)); return validMemo.get(k); };
+const loadBundle = ({ dropProposed = false, root, pack, fs = realFs } = {}) => {
+  const { chain, files } = resolvePacks({ root, pack, fs }), by = {}, schemaErrors = [];
   let retired = null, sources = null;
   for (const { abs: f, rel, pack: from } of files) {
-    const doc = JSON.parse(readFileSync(f, 'utf8'));
-    if (mutate) mutate(rel, doc);
-    const errs = validateDoc(f, doc);
+    const doc = fs.edit(f, JSON.parse(fs.read(f)));
+    const errs = validated(f, doc);
     if (errs.length) schemaErrors.push(`${rel}: ${errs.slice(0, 5).join('; ')}${errs.length > 5 ? ` (+${errs.length - 5})` : ''}`);
     if (doc.schemaVersion !== 2) throw new Error(`${rel}: data schemaVersion ${doc.schemaVersion} is not 2 (this generator knows major 2 only)`);
     if (basename(f) === 'retired.json') { retired = doc; continue; }
@@ -64,7 +68,7 @@ const unverified = (r, f) => { const s = (r.fieldStatus || {})[f] ?? r.status; r
 const withSt = (k, s) => s ? { [k]: s } : {};
 
 export function generate(opts = {}) {
-  const B = loadBundle(opts), R = B.recs;
+  const fs = fsOf(opts), B = loadBundle({ ...opts, fs }), R = B.recs;
   const report = { checks: [], warnings: [], debt: {} };
   const check = (name, ok, detail) => { report.checks.push({ check: name, pass: !!ok, ...(ok ? {} : { detail }) }); };
   const warn = w => report.warnings.push(w);
@@ -339,7 +343,7 @@ export function generate(opts = {}) {
 
   /* ---------------------------------------------------------------- sources: the Sources card, SRC_SITE */
   const sites = B.sources.records;
-  const siteOf = u => { const h = hostOf(u); return sites.find(s => s.hosts.some(x => h === x || h.endsWith('.' + x))); };
+  const siteMemo = new Map(), siteOf = u => { if (!siteMemo.has(u)) { const h = hostOf(u); siteMemo.set(u, sites.find(s => s.hosts.some(x => h === x || h.endsWith('.' + x)))); } return siteMemo.get(u); };
   const siteName = u => { const s = siteOf(u); return s ? s.name : hostOf(u); };
   const SRC_SITE = Object.fromEntries(sites.filter(s => s.kind !== 'owner' && !s.use.banned && !s.withdrawn).flatMap(s => s.hosts.map(h => [h, s.name])));
   const pages = B.sources.pages || [];
@@ -444,8 +448,9 @@ export function generate(opts = {}) {
   }
   /* a bare page reference counts too ("aion2.th.gl q_2202054", "aion2.th.gl/…"); a note that only says the site was withdrawn does not */
   const strsIn = v => typeof v === 'string' ? [v] : Array.isArray(v) ? v.flatMap(strsIn) : v && typeof v === 'object' ? Object.values(v).flatMap(strsIn) : [];
-  const refRes = sites.filter(s => s.withdrawn).flatMap(s => s.hosts).map(h => new RegExp('(^|[^\\w.])' + h.replace(/\./g, '\\.') + '(/\\S|\\s+q_\\d)'));
-  for (const { r, file, coll } of all) if (coll !== 'sources') for (const t of strsIn(r)) if (refRes.some(re => re.test(t)) && !urlsIn(t).some(u => siteOf(u) && siteOf(u).withdrawn)) withdrawnHits.push(`${file} ${r.id}: "${t.slice(0, 80)}"`);
+  const wHosts = sites.filter(s => s.withdrawn).flatMap(s => s.hosts), refRes = wHosts.map(h => new RegExp('(^|[^\\w.])' + h.replace(/\./g, '\\.') + '(/\\S|\\s+q_\\d)'));
+  /* a string that holds no withdrawn host can't match its pattern: tested first (0.9 P6), same hits */
+  for (const { r, file, coll } of all) if (coll !== 'sources') for (const t of strsIn(r)) if (wHosts.some(h => t.includes(h)) && refRes.some(re => re.test(t)) &&!urlsIn(t).some(u => siteOf(u) && siteOf(u).withdrawn)) withdrawnHits.push(`${file} ${r.id}: "${t.slice(0, 80)}"`);
   /* a withdrawn site (aion2.th.gl) is never cited: re-source it (Metabot first) or label the fact owner-check (§5.1) */
   check('no citation of a withdrawn site', !withdrawnHits.length, withdrawnHits.slice(0, 10));
   for (const s of sites) if (s.access.terms === 'bans-automation') check('bans-automation forces human-only or none: ' + s.id, ['human-only', 'none'].includes(s.access.mode));
@@ -620,10 +625,10 @@ export function generate(opts = {}) {
      card's class picker ("Soon" for one without a guide pack). Every class pack of the game is listed once. */
   const game = B.packs.find(m => m.kind === 'game'), gameRoot = join(opts.root || DEFAULT_ROOT, ...game.id.split('/'));
   const classIds = game.classes || [], classDir = join(gameRoot, 'classes');
-  const classPackIds = (() => { try { return readdirSync(classDir, { withFileTypes: true }).filter(e => e.isDirectory()).map(e => e.name).sort(); } catch { return []; } })();
+  const classPackIds = (() => { try { return fs.list(classDir).filter(e => e.dir).map(e => e.name).sort(); } catch { return []; } })();
   if (game.classes) check(`${game.id}: pack.json classes lists every class pack once`, JSON.stringify([...classIds].sort()) === JSON.stringify(classPackIds), [classIds, classPackIds]);
   const GAME_CLASSES = classIds.filter(id => classPackIds.includes(id)).map(id => {
-    const [r] = JSON.parse(readFileSync(join(classDir, id, 'class.json'), 'utf8')).records;
+    const f = join(classDir, id, 'class.json'), [r] = fs.edit(f, JSON.parse(fs.read(f))).records;
     check(`${game.id}: class record ${id} names its class`, r && r.class === id, r && r.class);
     return { class: id, name: r ? r.name : id };
   });
@@ -639,7 +644,7 @@ export function generate(opts = {}) {
   /* ---------------------------------------------------------------- class packs no guide uses yet (0.6 P4) */
   /* A class pack is compiled only through a guide pack's chain; one that no guide uses yet (the Gladiator before P5) is
      still validated and checked here, and its records' URLs go to DATA_SOURCES.md, but nothing of it reaches a module. */
-  const idle = idleOf(opts.root || DEFAULT_ROOT);
+  const idle = idleOf(opts.root || DEFAULT_ROOT, fs);
   for (const x of idle) { for (const c of x.checks) check(...c); for (const { r, file } of x.all) if (known.has(r.id)) check(`${x.pack}: id unique repo-wide: ${r.id}`, false, file); }
 
   const failed = report.checks.filter(c => !c.pass);
@@ -670,30 +675,34 @@ export function generate(opts = {}) {
 }
 
 /* the class packs below a packs root that no guide pack's chain reaches, by id */
-export const idleClassPacks = (root = DEFAULT_ROOT) => {
-  const used = new Set(guidePacks(root).flatMap(id => resolvePacks({ root, pack: id }).chain.map(m => m.id))), ids = [];
-  const walk = d => { for (const e of readdirSync(d, { withFileTypes: true })) if (e.isDirectory()) walk(join(d, e.name));
-    else if (e.name === 'pack.json') { const m = JSON.parse(readFileSync(join(d, e.name), 'utf8')); if (m.kind === 'class' && !used.has(m.id)) ids.push(m.id); } };
+export const idleClassPacks = (root = DEFAULT_ROOT, fs = realFs) => {
+  const used = new Set(guidePacks(root, fs).flatMap(id => resolvePacks({ root, pack: id, fs }).chain.map(m => m.id))), ids = [];
+  const walk = d => { for (const e of fs.list(d)) if (e.dir) walk(join(d, e.name));
+    else if (e.name === 'pack.json') { const f = join(d, e.name), m = fs.edit(f, JSON.parse(fs.read(f))); if (m.kind === 'class' && !used.has(m.id)) ids.push(m.id); } };
   walk(root); return ids.sort();
 };
 /* the idle packs' checks don't depend on the bundle being compiled: kept per packs root while their files (and the
-   manifests, which decide what is idle) are unchanged, so the tests' many generate() calls pay for them once */
+   manifests, which decide what is idle) are unchanged, so the tests' many generate() calls pay for them once. An
+   in-memory view (tests' broken copies) is never cached: its edits don't show in the files' size or mtime. */
 const idleCache = new Map();
-const idleOf = root => {
-  const ids = idleClassPacks(root), sig = JSON.stringify(ids.flatMap(id => resolvePacks({ root, pack: id }).files.map(f => { const s = statSync(f.abs); return [f.rel, s.size, s.mtimeMs]; })));
+const idleOf = (root, fs = realFs) => {
+  const ids = idleClassPacks(root, fs);
+  const run = () => ids.map(id => { const checks = []; return { ...checkIdleClass({ root, pack: id, fs, check: (...c) => checks.push(c) }), checks }; });
+  if (!fs.real) return run();
+  const sig = JSON.stringify(ids.flatMap(id => resolvePacks({ root, pack: id }).files.map(f => { const s = statSync(f.abs); return [f.rel, s.size, s.mtimeMs]; })));
   const hit = idleCache.get(root);
   if (hit && hit.sig === sig) return hit.idle;
-  const idle = ids.map(id => { const checks = []; return { ...checkIdleClass({ root, pack: id, check: (...c) => checks.push(c) }), checks }; });
+  const idle = run();
   idleCache.set(root, { sig, idle }); return idle;
 };
 /* One idle class pack: schema-validates its files (throws like loadBundle) and checks its records against the game pack's
    boards: ids unique within the pack (generate() checks them against the bundle's), keys unique, class-scoped ids, every
    record cites a page, the class is hidden, skill nodes resolve and match their skill's boardNodes, board totals (points,
    skill and stat nodes) match boards.json, specialty ids and levels. Returns { pack, all: [{ r, file }] } for DATA_SOURCES.md. */
-function checkIdleClass({ root, pack, check }) {
-  const { files } = resolvePacks({ root, pack }), errs = [], docs = [];
+function checkIdleClass({ root, pack, check, fs = realFs }) {
+  const { files } = resolvePacks({ root, pack, fs }), errs = [], docs = [];
   for (const f of files) {
-    const d = JSON.parse(readFileSync(f.abs, 'utf8')), e = validateDoc(f.abs, d);
+    const d = fs.edit(f.abs, JSON.parse(fs.read(f.abs))), e = validateDoc(f.abs, d);
     if (e.length) errs.push(`${f.rel}: ${e.slice(0, 5).join('; ')}`);
     docs.push({ ...f, d });
   }
@@ -743,9 +752,9 @@ export const CLASS_TABLES = ['SP_EXTRA', 'DV_BOARDS', 'SOURCES', 'CONF', 'GUIDE_
 /* every table of one result by name, in module order (generated.js, gate-graph.js, gate-proposed.js, place.js) */
 export const tablesOf = g => ({ ...g.constants, GATE_GRAPH: g.gateGraph, GATE_PROPOSED: g.gateProposed, NODE_PLACE: g.nodePlace, KIBELISKS: g.kibelisks, TRAVEL_RULES: g.travelRules });
 /* the guide packs below a packs root, by id */
-export const guidePacks = (root = DEFAULT_ROOT) => {
-  const ids = [], walk = d => { for (const e of readdirSync(d, { withFileTypes: true }).sort((a, b) => a.name < b.name ? -1 : 1)) if (e.isDirectory()) walk(join(d, e.name));
-    else if (e.name === 'pack.json') { const m = JSON.parse(readFileSync(join(d, e.name), 'utf8')); if (m.kind === 'guide') ids.push(m.id); } };
+export const guidePacks = (root = DEFAULT_ROOT, fs = realFs) => {
+  const ids = [], walk = d => { for (const e of fs.list(d).sort((a, b) => a.name < b.name ? -1 : 1)) if (e.dir) walk(join(d, e.name));
+    else if (e.name === 'pack.json') { const f = join(d, e.name), m = fs.edit(f, JSON.parse(fs.read(f))); if (m.kind === 'guide') ids.push(m.id); } };
   walk(root); return ids.sort();
 };
 /* opts: root; packs (default: every guide pack); done: { id: result } already generated (the build's default pack) */
