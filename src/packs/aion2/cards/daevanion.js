@@ -30,7 +30,7 @@ const dvCostTag = it => (char(state).dvCost || {})[it.k] == null ? stTag(it.cost
 const dvRowHTML = it => {
   const cost = dvCostOf(char(state), it), on = !!char(state).checks[it.k];
   return `<li class="item dvn" data-dvk="${it.k}"><label><input type="checkbox" data-k="${it.k}" ${on ? "checked" : ""} ${dvGate(it.k).off ? "disabled" : ""}><span class="txt"><img class="dvmini" src="${dvIconSrc(it)}" alt="" loading="lazy" onerror="this.remove()">${dvName(it)}<span class="loc">${dvMeta(it)}<span class="dvwarn">${dvGate(it.k).warn}</span></span></span></label>` +
-    `<label class="dvc-wrap" title="Points this node took, including its path">cost${dvCostTag(it)} <input class="dvc" type="number" min="0" max="200" inputmode="numeric" data-dvc="${it.k}" value="${cost ?? ""}" placeholder="–"></label></li>`;
+    `<label class="dvc-wrap" title="Points this node took, including its path">cost <input class="dvc" type="number" min="0" max="200" inputmode="numeric" data-dvc="${it.k}" value="${cost ?? ""}" placeholder="–">${dvCostTag(it)}</label></li>`;
 };
 /* Daevanion: the player types the board's total points and logs what each node cost (path included);
    remaining = total − logged costs. Node order lives in the milestones (Nezekan Lv 13, Zikel 20, Vaizel 30, Triniel 40). */
