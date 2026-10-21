@@ -523,7 +523,9 @@ check(rosterNote('Reviewers: amy', [c('github-actions[bot]', two, 3)]) !== '' &&
   'roster note: a shrunk list gets a new note too (the marker holds the exact list; #757 review)');
 let threw = '';
 try { V.roster('who,role,status\nAmy,X,active\n'); } catch (e) { threw = e.message; }
-check(/name and status/.test(threw), 'roster: a team.csv without the name or status column throws, so the note is skipped (#759 review)');
+let threw2 = '';
+try { V.roster('name,role,state\nAmy,X,active\n'); } catch (e) { threw2 = e.message; }
+check(/name and status/.test(threw) && /name and status/.test(threw2), 'roster: a team.csv without the name or the status column throws, so the note is skipped (#759, #760 reviews)');
 const dash = rosterNote('Reviewers: x --> y', []);
 check(!/-->[^\n]*-->/.test(dash.split('\n')[0]) && dash.split('\n')[0].endsWith('-->'), 'roster note: an entry holding "-->" cannot close the marker early (#759 review)');
 check(/try \{ ROSTER = V\.roster\([^\n]*\} catch \(e\) \{ core\.warning\(/.test(yml) && hl.includes('if (ROSTER && V.unknownReviewers('), 'roster: an unreadable team.csv skips the note with a warning, never the merge run (#757 review)');

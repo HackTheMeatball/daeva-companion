@@ -144,6 +144,7 @@ check(/wrapped line/.test(fx.specField(bullet('`a/b.js`'), 'Files')) && !/Lanes/
 // Kaizen (Gale), 2026-10-20: gen or golden work starts on Opus whatever its tier.
 check(fx.opusWork(new Set(['gen', 'nextup.css']), '') === 'lane gen', 'gen lane -> Opus');
 check(fx.opusWork(new Set(['golden-nextup']), '') === 'lane golden-nextup', 'a golden card lane -> Opus');
+check(fx.opusWork(new Set(['architecture', 'main.js']), '') === 'lane architecture' && fx.opusWork(new Set(['architectural']), '') === null, 'the architecture lane -> Opus; a lane that only starts with the word does not (FLOW-23)');
 check(fx.opusWork(new Set(['nextup.css']), 'Then run `npm run gen` and commit.') === 'npm run gen', 'spec runs npm run gen -> Opus');
 check(!!fx.opusWork(new Set(['rows']), '- [ ] Re-record golden for the rows card.'), 'spec re-records golden -> Opus');
 check(fx.opusWork(new Set(['nextup.css', 'a11y']), 'Golden diff stays empty.') === null, 'no gen or golden work -> stays Sonnet');
