@@ -1,8 +1,9 @@
 # allthings.how quotes in data/** (0.8.1 F9, #662)
 
 Game Data Check, 2026-10-21, for Legal (Chuck) and Walter. No pages were fetched for this note; it reads the repository
-only. allthings.how has no terms page (its `/terms/` link returned 404 on 2026-10-20, `SOURCES.md`), so its rule is
-facts and a link only. This note lists every `quote` field in `data/**` that sits on an allthings.how citation, with the
+only. allthings.how's terms (`/terms-and-conditions/`, found by Lydia on 2026-10-20, #651) ban copying, reproducing or
+downloading its material without written permission, but not reading it, so it is **Spot**: facts only, never its
+wording. (`SOURCES.md` on main still has the older "no terms read" row until #651 lands.) This note lists every `quote` field in `data/**` that sits on an allthings.how citation, with the
 fact in my own words, so a data PR can replace the quotes with paraphrases or drop them.
 
 Found with a walk of every JSON file under `data/` (each object with an allthings.how `url`, then its `quote`):
@@ -24,8 +25,10 @@ quoted fragments inside `note` fields** on allthings.how citations, which a `quo
 - **Inferred: the quotes may not be verbatim.** WebFetch returns a model's summary of a page, not its text, and
   `tools/research/r1/partial.json` has a note on a "fetch summary" that mixed up two pages. So a `quote` here is
   either a short extract or a summary of the page. The owner or Chuck can only tell which by opening the page.
-- **Since then.** The only scripted read of allthings.how was mine on 2026-10-20 for the world-boss research, with our
-  User-Agent and ≥ 10 s apart (`docs/research/2026-10-world-boss-timers.md`). It added no quote under `data/` on main.
+- **Since then.** Two later reads, both for the world-boss research on 2026-10-20, are in the shared fetch log
+  (`/mnt/project-files/legal/fetch-log.md`). Lydia read one boss-timer article at 23:12, before the real terms page
+  had been found (disclosed there), and she found the terms at 23:25. Neither added a quote under `data/` on main.
+  Game Data Check itself has not requested any allthings.how page.
 
 ## Quotes
 
@@ -47,7 +50,7 @@ and the sources carry no `checkedAt`.
 | 7 | `asmodian/guide/claims.json` | C15 | https://allthings.how/?p=234744 | A Duty mission pays 2,000 Abyss Points and some Kina at base, plus between one and five random items. | **No** (single source). The app's Duty text doesn't use these figures. |
 | 8 | `asmodian/guide/claims.json` | C16 | https://allthings.how/?p=234744 | The Supply board has four tabs: Emergency, Weekly, and two standing ones for crafting and bosses. One hand-in pays 380 to 6,000 Abyss Points. | **Tabs: no permitted one** (keengamer and games.gg are owner-browser only, mein-mmo is passed but not allowed). **AP range: no**, and the app's text dropped it. The claim is `single-source`. |
 | 9 | `asmodian/guide/claims.json` | C23 | https://allthings.how/?p=234622 | Taking the belt to +10 at Rare costs 232,000 Kina and 9,280 Enhance Stones; a Substance Morph sends it back to +0 with better base stats. | **Costs: no permitted one** (fandomwire, unlisted). **Reset to +0: no**, allthings.how only, and the app dropped it. The claim is `single-source`. |
-| 10 | `asmodian/guide/claims.json` | C24 | https://allthings.how/?p=234622 | Enhancing the Noble Belt never fails. | **No permitted one** (fandomwire, unlisted). The claim is `verified` on these two sources. |
+| 10 | `asmodian/guide/claims.json` | C24 | https://allthings.how/?p=234622 | Enhancing the Noble Belt never fails. | **No: allthings.how alone** among permitted sources (fandomwire agrees but is unlisted). The claim ships as `verified`, so F9 relabels it `single source`. |
 | 11 | `asmodian/guide/claims.json` | C25 | https://allthings.how/aion-2/map/empyrean-traces/ | Altgard's map has 560 Empyrean Trace spots. | **Yes.** Metabot's Altgard trace map (Full): 560. |
 | 12 | `asmodian/guide/claims.json` | C28e | https://allthings.how/?p=244925 | A Sealed Dungeon is a one-player instance that you clear a single time. | **Solo: yes.** Metabot (Full) lists 1 player (claim note; Wikily is Fail and counts with Metabot). |
 | 13 | `asmodian/guide/claims.json` | C28g | https://allthings.how/?p=234744 | Supply Requests and their four tabs are a different system from Duty missions. | **Inferred yes.** No permitted source says it directly. They open at different levels: Supply at Lv 25 on Metabot's unlock table (Full, C16 note), Duty at Lv 45 (thegameswiki, neonsect). |
@@ -71,8 +74,9 @@ Rows 1 to 14 hold the 21 shipped quotes (row 1 covers 8 files). Rows 15 and 16 a
 
 - Replace each `quote` above with the paraphrase. One option is a `note` field, since the schema has no `paraphrase`
   field; the schema owner decides. That removes allthings.how wording from `data/` without losing the citation.
-- Rows 2, 7, 8 (tabs), 9 and 10 have no permitted second source. Rows 1 and 6 lack one for part of the fact. Two
-  shipped claims rest on these: C24 (`verified`) and C23's belt costs. Per CLAUDE.md, they need a "single source"
-  label in a data PR Lydia verifies, or an owner check. The rest are already labelled or not shown.
+- Rows 2, 7, 8 (tabs), 9 and 10 have no permitted second source. Rows 1 and 6 lack one for part of the fact. Only
+  C24 ships as `verified` on these. Per CLAUDE.md it needs a "single source" label in a data PR Lydia verifies (F9), or
+  an owner check. C23 is already `single-source`, but its `note` still says "Belt costs verified (2 sources)", so F9
+  should correct that note. The rest are already labelled or not shown.
 - Only allthings.how quotes and quoted note fragments are covered here. The other allthings.how citations (82 pages in `data/DATA_SOURCES.md`) are URLs and plain notes, so
   they need no paraphrase. Whether their facts have a second source is the separate question for Chuck.
