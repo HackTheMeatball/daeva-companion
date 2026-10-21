@@ -1349,7 +1349,7 @@ workflows).
 | P19 FR | Lv 39 join: 70–77 skill clicks in unlock order (note 10) → one row and one tap per skill | L | Opus | skills-card, nextup-card, app.css, golden, golden-nextup | P15 (input: `docs/design/0.9-catchup/`) |
 | P20 FR | Daevanion ~22 ticks, no per-board or Stigma respec (note 9) → board rows, respec per board and all, Stigma respec | M | Opus | app.css, golden, daevanion-card | P16, `research-respec` (input: `docs/design/0.9-catchup/`) |
 | P21 | Two views (Basic / Advanced) to maintain; Basic hides catch-up tools; Lv 4–16 chores lead Next up → one view, folds, chores folded | L | Opus | main.js, nextup-card, page-card, daevanion-card, app.css, golden, golden-nextup | none (input: `docs/design/0.9-one-view.md`, `docs/design/0.9-catchup/`) |
-| P22 FR | Key setup inline with small icons, keys fixed (notes 11, 12, #388) → a sheet, icons fill each box, players rebind keys | L | Opus | build-card, app.css, a11y, golden, mig, save | `research-bindable-keys`, `research-skill-bar` (input: `docs/design/0.9-keys/`) |
+| P22 FR | Key setup inline with small icons, keys fixed (notes 11, 12, #388) → a sheet, icons fill each box, players rebind keys | L | Opus | gen, build-card, app.css, a11y, golden, mig, save | `research-bindable-keys`, `research-skill-bar` (input: `docs/design/0.9-keys/`) |
 | P23 | Sources lists weigh 9.6 K gzip and 1,088 elements while closed → load on open | M | Opus | site, page-card, e2 | `research-sources-credit` |
 | P24 | No Terms of Use; robots.txt allows AI training crawlers → `TERMS.md` linked in the footer, training crawlers blocked | S | Sonnet | site, page-card | P23, `owner-ok-0.9-terms` |
 | P25 | Nothing checks for foreign licence headers or files (CK-1) → `tests/compliance.mjs` fails on them | S | Sonnet | schema, compliance | none |
@@ -1384,7 +1384,7 @@ At most five builds at a time. Ungated items queue first; gated ones go last and
 - **Wave 1 (at the go):** P1, P2, P3, P4, P5, P6, P7, P8 and S2, S3. Queue order P1 → P2 → P3 → P7 → P8 → P4 → P5 → P6, so the
   queue runs top-down: P1 and P3 start at once; P2, P7 and P8 wait for P1 on nextup-card (P8 also on skills-card and
   build-card), and kickoff serialises them from their queue-line lanes.
-  Serial lanes: **gen** P1 → P2 → P6 → P10 → P11 → P13 → P15 → P16 → P17 → P18 → P29; **golden** P1 → P2 → P11 → P12 → P13 → the
+  Serial lanes: **gen** P1 → P2 → P6 → P10 → P11 → P13 → P15 → P16 → P17 → P18 → P22 → P29; **golden** P1 → P2 → P11 → P12 → P13 → the
   research items → P19 → P20 → P21 → P22; **skills-card** P1 → P8 → P5 → P15 → P19; **nextup-card** P1 → P2 → P7 → P8 → P5 → P13 → P15 →
   P19 → P21; **page-card** P4 → P5 → P21 → P23 → P24; **mig** P2 → P9 → P22; **schema** P3 → P6 → P10 → P25 → P26 → P27 → P28; **app.css** P8 → P19 → P20 → P21 →
   P22; **build-card** P1 → P8 → P5 → P13 → P18 → P22; **daevanion-card** P1 → P5 → P16 → P20 → P21 → P30; **a11y** P8 → P22; **site** P5 → P23 → P24; **golden-nextup** P7 → P8 → P19 → P21; **journey-card** P2 → P7 → P30; **main.js** P4 → P9 → P21; **ci** (Gus) S2 → S3 → S1 → S4. Shared test and doc files: **save** (`tests/save.js`) P9 → P11 → P22; **e2** (`tests/e2test.js`) P3 → P23 → P28 → P29;

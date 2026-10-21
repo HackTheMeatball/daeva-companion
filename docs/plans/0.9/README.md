@@ -500,18 +500,24 @@ Rules for every item:
   macro steps change the keys mock, and if they do the updated mock is on main first.
 - **Result.** As Design Lead's approved mock shows: key setup is a bottom sheet; icons fill each box with a tap or
   focus tooltip; each key chip can be tapped to rebind; one `keys` save field with the class default when empty (no key
-  bump); every class in the same layout.
+  bump); every class in the same layout. The right-click macro is a list of steps, each naming a slot (a slot holds at
+  most 4 skills; a macro can step through several), replacing the flat `keyStacks.rightClick` stack in the data and
+  its schema for every class, per the skill-bar research file; its step limit comes from that file or is labelled
+  unknown.
 - **Inputs.** `docs/design/0.9-keys/` (Design Lead's mocks, #619 and #656; merged with Design Lead's look
   OK after the fresh review; owner 2026-10-20 5:21 and 5:24 PM ET). Kickoff holds the item until they are on main.
-- **Files.** `src/packs/aion2/cards/build.js`, `src/packs/aion2/cards/build.html`, `src/core/state.js` (`keys`
+- **Files.** `src/packs/aion2/cards/build.js`, `src/packs/aion2/cards/build.html`, `data/schema/` (the key stacks),
+  `data/schema/examples/**/builds.json`, `data/packs/aion2/asmodian/*/builds.json` (`keyStacks`), `tools/gen/*`,
+  `src/packs/aion2/data/build.js`, `src/core/state.js` (`keys`
   default), `src/core/merge.js`, `src/styles/app.css`, `tests/a11y.js`, `tests/save.js`, the tests.
 - **No-gos.** Only keys AION 2 can bind (Game Data Check's `bindable-keys` file: Design Lead's ask D3). No save key bump;
   an empty or unknown `keys` value falls back to the default. Names stay reachable by keyboard and screen reader.
 - **Acceptance.**
   - [ ] a11y: each key box has an accessible name; the tooltip opens on focus; rebinding works by keyboard.
   - [ ] Core: a save without `keys` loads with the default; `merge()` keeps the newer `keys`.
+  - [ ] `npm run gen` passes with the stepped macro for every class; Game Data Check's `DATA OK` on the head.
   - [ ] Shots at 1500 and 390 px against the mock.
-- **Lanes:** build-card, app.css, a11y, golden, mig, save. **Model:** Opus, L (120 min).
+- **Lanes:** gen, build-card, app.css, a11y, golden, mig, save. **Model:** Opus, L (120 min).
 - **After:** research-bindable-keys, research-skill-bar.
 
 ## P23: The Sources lists load when the card opens
