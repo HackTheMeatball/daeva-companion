@@ -46,10 +46,12 @@ jobs:
     timeout-minutes: 5
     if: github.event_name != 'issue_comment' || github.event.issue.pull_request
     steps:
-      # Only the shared verdict parser, from main (never a PR's copy).
+      # Only the shared verdict parser and the team roster (docs/team), from main (never a PR's copy).
       - uses: actions/checkout@v7
         with:
-          sparse-checkout: tools/verdicts.cjs
+          sparse-checkout: |
+            tools/verdicts.cjs
+            docs/team
           sparse-checkout-cone-mode: false
           persist-credentials: false
       - uses: actions/github-script@v7
@@ -307,6 +309,20 @@ jobs:
             // FREEZE-CHECK END
             const freeze = ((await github.rest.issues.get({ owner, repo, issue_number: 114 })).data.body || '').match(FREEZE);
             if (freeze) core.notice(`Release freeze on (RC ${freeze[1].slice(0, 7)}, release #${freeze[2]})`);
+            // Reviewers: names no verdict can match (#741, Walter) get one marker comment per list; the PR still waits on them.
+            const fs = require('fs');
+            const TEAM = `${process.env.GITHUB_WORKSPACE}/docs/team`;
+            const ROSTER = V.roster(fs.readdirSync(TEAM).filter((f) => f.endsWith('.md')).map((f) => fs.readFileSync(`${TEAM}/${f}`, 'utf8').split('\n')[0]));
+            // ROSTER-CHECK START
+            const ROSTERMARK = '<!-- auto-merge:unknown-reviewer -->';
+            const rosterNote = (body, comments) => {
+              const bad = V.unknownReviewers(body, ROSTER);
+              if (!bad.length) return '';
+              const list = bad.map((n) => `"${n}"`).join(', ');
+              const said = comments.some((c) => c.user && c.user.login === 'github-actions[bot]' && (c.body || '').includes(ROSTERMARK) && (c.body || '').includes(list));
+              return said ? '' : `${ROSTERMARK}\nThe \`Reviewers:\` line names ${list}, which is not a team member (docs/team/<name>.md) or a gate name (design lead, game data check, fresh review). No verdict can match it, so this PR waits on it until the line is fixed: one first name per entry, notes in parentheses, e.g. \`Reviewers: gretchen; chuck\` (#741).`;
+            };
+            // ROSTER-CHECK END
             let merged = 0;
             const failed = [];
             for (const pr of prs) {
@@ -316,6 +332,11 @@ jobs:
               const ciGreen = runs.some((r) => r.status === 'completed' && r.conclusion === 'success');
               let comments = null, listed = null;
               const filesOf = async () => listed || (listed = await github.paginate(github.rest.pulls.listFiles, { owner, repo, pull_number: pr.number, per_page: 100 }));
+              if (V.unknownReviewers(pr.body || '', ROSTER).length) {
+                comments = comments || await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: pr.number, per_page: 100 });
+                const note = rosterNote(pr.body || '', comments);
+                if (note) { await github.rest.issues.createComment({ owner, repo, issue_number: pr.number, body: note }); core.notice(`#${pr.number}: Reviewers: names off the roster`); }
+              }
               // HOLD: add or lift it (HOLD-CHECK block). Only PRs that hold or a hold rule applies to read their label events.
               let lifted = false;
               if (labels.includes('hold') || blindOrExternal(pr.body || '')) {
