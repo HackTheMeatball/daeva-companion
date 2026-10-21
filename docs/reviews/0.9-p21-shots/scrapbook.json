@@ -1,0 +1,10 @@
+[
+  { "case": "5-adv39-1500", "kind": "before-after", "title": "One view instead of Basic and Advanced",
+    "caption": "At Lv 39 the page has no Basic / Advanced switch: the milestone tools sit behind a ⋯ button and the dungeon filters under Filters and notes." },
+  { "case": "3-join39-1500", "kind": "before-after", "title": "A late start at level 39",
+    "caption": "A player starting at Lv 39 now sees every card's footer, Respec and the skills progress bar, with the extra detail folded." },
+  { "case": "4-join39-390", "kind": "before-after", "title": "The one view on a phone",
+    "caption": "On a phone at Lv 39 Next up has its 1 of N pager and Progress starts folded, the same for every player." },
+  { "case": "2-fresh-390", "kind": "before-after", "title": "A fresh start on a phone",
+    "caption": "A new player at Lv 1 opens the one view: Next up first, Route rules and The map in folds." }
+]
