@@ -51,6 +51,42 @@ scrutiny. Just cause I’m the owner doesn’t mean I’m right"; effect as Kaiz
   review like any other rule, and any thread may propose changing it through the process-change route. Loosening one of
   the seven owner-held limits still goes to Isaac, as a recommendation.
 
+### COM-19
+
+_Owner, 2026-10-21 9:49 AM ET, on T-61 being one unreadable block: "Then make clarity a standing thing." Standard by
+Design Lead (Jane), reviewed by Fresh governance review and Kaizen (Gale). Recommended reply: owner, 10:19 AM ET ("Todo
+cards that need my input pasted here should have a recommended response that I can just hit copy on so I can just do
+that if I agree"). Board coordinates: owner, 10:44 AM ET (cmsg_01UNirAFgxf3jC8kQS8uvvHBSf8d34bdyGkgApyBzpTjmz, read by
+id): "if you're asking me to check something you need to give me the board coordinates not the metabot frame
+coordinates because that's not how I'm going to count them in game. There is no frame in game". Routed: coordinator
+2026-10-21T20:20Z._
+
+- **Ask format:** every To-do on the tracker board assigned to Isaac has these fields, each field and each step on its
+  own line. Asks to him in chat follow the same format, unchecked (Kaizen samples them at each review). Decision cards
+  keep their own limits: one question, 2–4 options, one line each.
+  - **Title:** one ask, starting with a verb, at most 70 characters.
+  - **Steps:** numbered, 1 to 7 (a hard cap); each one action starting with a verb, at most 120 characters. A check in
+    game says what he should see or send. A place in game is described the way he sees it on screen: a menu path, a
+    named node, or a position counted from that board's or window's own top-left cell (on a Daevanion board, its own
+    rows and columns), never a source site's internal or frame coordinates. Anything longer splits into ordered items
+    ("Part 1 of 2"), each with its own Done when.
+  - **Where:** in game (menu path or place), a settings page (its link), or a link to the page.
+  - **Time:** about how long, in minutes or hours ("about 10 min").
+  - **Why:** one sentence, at most 160 characters, on what it unblocks.
+  - **Done when:** what he sends back, or what the team sees, that closes it.
+  - **Recommended reply:** whenever Done when includes anything he types: the exact text he pastes if he agrees, in its
+    own block with a Copy button, at most 300 characters, plain text. A choice or OK comes filled in with our
+    recommendation; a check in game gives a fill-in line with `___` for what only he can see ("Copy template"). A reply
+    that still contains `___` counts as not answered, and the reading thread asks him once for the missing part.
+  - **Source** (stored, shown only as a small link): the origin message or card id, and the DECISIONS row when the item
+    carries out a decision.
+- Plain language throughout: no internal ids, rule codes, file paths or PR numbers except as a link; at most 900
+  characters per item, not counting Recommended reply. Several in-game checks are separate items, or one item with one
+  check per step.
+- **The check:** one script, owned by Tracker Sync (Huell), runs on every write; Watchdog (Mike) runs the same script on
+  open items. A failing item is rewritten by Huell in the same turn, or Huell tells the raiser and writes it once fixed,
+  within the hour. Writers check place descriptions by hand, since the script can't.
+
 ## Kaizen
 
 ### KZ-19
