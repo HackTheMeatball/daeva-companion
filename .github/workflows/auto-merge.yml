@@ -333,16 +333,18 @@ jobs:
             const SHAMARK = (s7, list) => `<!-- auto-merge:verdict-sha ${s7}: ${list} -->`;
             const shaNote = (body, comments, sha, headAt) => {
               const need = new Set(V.reviewers(body).map(who));
-              const last = new Map();
+              const last = new Map(), onHead = new Set();
               for (const c of comments) {
                 if (!c.user || c.user.login.toLowerCase() !== owner.toLowerCase()) continue;
                 const t = V.tagged(c.body).pop();
                 if (!t || !need.has(who(t.reviewer))) continue;
                 const at = Date.parse(c.created_at || c.updated_at), r = who(t.reviewer);
+                if (t.verdict !== 'CHANGES' && t.line.includes(sha.slice(0, 7))) onHead.add(r);
                 if (!last.has(r) || last.get(r).at <= at) last.set(r, { at, t });
               }
               const s7 = sha.slice(0, 7);
-              const bad = [...last].filter(([, x]) => x.t.verdict !== 'CHANGES').map(([r, x]) => [r, V.lineSha(x.t.line, sha), x.at])
+              // The gate counts any approval naming the head, so a reviewer who has one gets no note (#776 review).
+              const bad = [...last].filter(([r, x]) => x.t.verdict !== 'CHANGES' && !onHead.has(r)).map(([r, x]) => [r, V.lineSha(x.t.line, sha), x.at])
                 .filter(([, s, at]) => s === null || (s !== s7 && at > headAt));
               if (!bad.length) return '';
               const list = bad.map(([r, s]) => `${r} (${s || 'no sha'})`).join(', ').replace(/-{2,}/g, '-');
@@ -359,17 +361,20 @@ jobs:
               const ciGreen = runs.some((r) => r.status === 'completed' && r.conclusion === 'success');
               let comments = null, listed = null;
               const filesOf = async () => listed || (listed = await github.paginate(github.rest.pulls.listFiles, { owner, repo, pull_number: pr.number, per_page: 100 }));
-              if (ROSTER && V.unknownReviewers(pr.body || '', ROSTER).length) {
-                comments = comments || await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: pr.number, per_page: 100 });
-                const note = rosterNote(pr.body || '', comments);
-                if (note) { await github.rest.issues.createComment({ owner, repo, issue_number: pr.number, body: note }); core.notice(`#${pr.number}: Reviewers: names off the roster`); }
-              }
-              if (V.reviewers(pr.body || '').length) {
-                comments = comments || await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: pr.number, per_page: 100 });
-                const hc = (await github.rest.repos.getCommit({ owner, repo, ref: sha })).data.commit;
-                const note = shaNote(pr.body || '', comments, sha, Date.parse(hc.committer.date));
-                if (note) { await github.rest.issues.createComment({ owner, repo, issue_number: pr.number, body: note }); core.notice(`#${pr.number}: a named approval misses the head sha`); }
-              }
+              // The two notes only make a wait visible: an API error in them is a warning for this PR, never the end of the run (#776 review).
+              try {
+                if (ROSTER && V.unknownReviewers(pr.body || '', ROSTER).length) {
+                  comments = comments || await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: pr.number, per_page: 100 });
+                  const note = rosterNote(pr.body || '', comments);
+                  if (note) { await github.rest.issues.createComment({ owner, repo, issue_number: pr.number, body: note }); core.notice(`#${pr.number}: Reviewers: names off the roster`); }
+                }
+                if (V.reviewers(pr.body || '').length) {
+                  comments = comments || await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: pr.number, per_page: 100 });
+                  const hc = (await github.rest.repos.getCommit({ owner, repo, ref: sha })).data.commit;
+                  const note = shaNote(pr.body || '', comments, sha, Date.parse(hc.committer.date));
+                  if (note) { await github.rest.issues.createComment({ owner, repo, issue_number: pr.number, body: note }); core.notice(`#${pr.number}: a named approval misses the head sha`); }
+                }
+              } catch (e) { core.warning(`#${pr.number}: Reviewers: notes skipped: ${e.message}`); }
               // HOLD: add or lift it (HOLD-CHECK block). Only PRs that hold or a hold rule applies to read their label events.
               let lifted = false;
               if (labels.includes('hold') || blindOrExternal(pr.body || '')) {
