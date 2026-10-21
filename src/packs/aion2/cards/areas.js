@@ -1,6 +1,7 @@
 /* Dungeons & Strongholds (0.4 P4b: moved verbatim from src/main.js; markup areas.html): pick a level band; Sealed
    Dungeons and Strongholds with two-click clears, zones that fold when cleared, "Hide cleared". */
 import { char } from "../../../core/state.js";
+import { setHTML } from "../../../core/cards.js";
 import { derivedOf, doneOf, gatesOf } from "../../../core/requirements.js";
 import { NO_AREA, SD_REWARD, SH_REWARD, ZONE_TRACES } from "../data/areas.js";
 import { T, itemLine, stNote, stTag } from "../data/markup.js";
@@ -43,11 +44,11 @@ function renderAreas() {
     : AREA_ITEMS.filter(x => bandOf(x) === +v && (shOn || x.it.kind !== "stronghold"));
   /* Open at or below your level: the same "behind" rule as the Progress card. */
   const behind = x => !ad(x) && areaOpen(char(state), x);
-  areaSel.innerHTML = opts.map(v => {
+  setHTML(areaSel, opts.map(v => {
     const xs = inBand(v), left = xs.filter(x => !ad(x)).length, bh = xs.filter(behind).length;
     const label = v === "sh" ? "All strongholds" : `Lv ${v}–${+v + 4}${+v > lv ? " (later)" : ""}`;
     return `${v === "sh" ? '<option disabled>──────────</option>' : ""}<option value="${v}"${v === state.areaLv ? " selected" : ""}>${label} · ${xs.length - left}/${xs.length}${left ? (bh && +v <= lv ? ` · ${bh} open` : "") : " ✓"}</option>`;
-  }).join("");
+  }).join(""));
   const cur = inBand(state.areaLv), curD = cur.filter(x => ad(x)).length, curB = cur.filter(behind).length;
 
   /* Sorted by zone so neighbours sit together. */
@@ -88,19 +89,22 @@ function renderAreas() {
     return `<li class="asec ${cls}"><span class="asec-t">${hdMk(title)}${title} ${T("", tip, `What are ${title}?`)}</span><span class="asec-n${d === list.length ? " done" : ""}">${d}/${list.length}</span></li><li class="sh-note">${note}</li>${traces ? legend : ""}` +
       (body || `<li class="sh-note ok">All cleared${doneOn ? "" : " (hidden)"}.</li>`);
   };
+  /* setHTML (0.9 P30): derive and the in-progress boxes below re-apply in full on every pass; the clear handlers' tick and
+     fade come with a state change that changes the markup, so the next pass rewrites the list */
+  const list = document.getElementById("areaList");
   if (allSh) {
     const bands = [...new Set(shs.map(bandOf))];
-    document.getElementById("areaList").innerHTML =
+    setHTML(list,
       `<li class="asec sh"><span class="asec-t">${hdMk("Strongholds")}Strongholds ${T("", "stronghold", "What are Strongholds?")}</span><span class="asec-n${shs.every(x => ad(x)) ? " done" : ""}">${shs.filter(x => ad(x)).length}/${shs.length}</span></li><li class="sh-note">${shNote}</li>` +
       bands.map(bd => { const g = shs.filter(x => bandOf(x) === bd), d = g.filter(x => ad(x)).length;
         if (!g.some(vis)) return "";
-        return `<li class="shband${d === g.length ? " done" : ""}"><span>Lv ${bd}${bd > lv ? " (later)" : ""}</span><span>${d}/${g.length}</span></li>` + g.map(row).join(""); }).join("");
+        return `<li class="shband${d === g.length ? " done" : ""}"><span>Lv ${bd}${bd > lv ? " (later)" : ""}</span><span>${d}/${g.length}</span></li>` + g.map(row).join(""); }).join(""));
     derive();
     return;
   }
-  document.getElementById("areaList").innerHTML =
+  setHTML(list,
     sec("sh", "Strongholds", "stronghold", shNote, shs, false) +
-    sec("sd" + (shs.length ? " split" : ""), "Sealed Dungeons", "hideout", `<span class="itl">${itemLine(SD_REWARD)} each</span>`, sds, true, sds.some(x => ZONE_TRACES[x.area]));
+    sec("sd" + (shs.length ? " split" : ""), "Sealed Dungeons", "hideout", `<span class="itl">${itemLine(SD_REWARD)} each</span>`, sds, true, sds.some(x => ZONE_TRACES[x.area])));
   document.querySelectorAll("#areaList li.running input[data-k]").forEach(i => { i.indeterminate = true; });
   derive();
 }
