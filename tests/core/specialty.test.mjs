@@ -141,7 +141,7 @@ export default (test, M) => {
     assert.deepEqual(plan, ['dv:hg', 'dv:z:hg', 'dv:v:hg', 'dv:t:hg'], 'plan order: Nezekan, Zikel, Vaizel, Triniel');
     for (let n = 0; n <= plan.length; n++) {
       const s = deepFreeze(S({ level: 39, checks: tick([...lines('heart-gore', 10), ...plan.slice(0, n)]) })), c = M.char(s);
-      const nu = M.rankNext(s).filter(a => a.kind === 'skill').map(a => a.x.k), now = M.skillOpen(c).now.map(y => y.k);
+      const nu = M.rankNext(s).flatMap(a => a.kind === 'skill' ? [a.x.k] : a.kind === 'catchup' ? a.j.keys : []), now = M.skillOpen(c).now.map(y => y.k);
       assert.equal(M.openOf(c, k2), n >= 2, `${n} nodes: open`);
       assert.equal(nu.includes(k2), n >= 2, `${n} nodes: Next up ${JSON.stringify(nu)}`);
       assert.equal(now.includes(k2), n >= 2, `${n} nodes: Skills card`);

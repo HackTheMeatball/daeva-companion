@@ -95,7 +95,7 @@ function spend(state, { c, lv, ev }) {
   if ((c.pendSt || 0) + (c.pendCr || 0) > 0) add({ kind: "cube", st: c.pendSt, cr: c.pendCr, act: "usecube" });
   /* Catch-up (0.9 P19): one card per skill's whole jump, in the jumps' order; the first has the button, the rest are the
      queue's previews (each becomes the top card in turn) */
-  const cu = sp && skillJumps(c, lv);
+  const cu = sp && rankChangeOn("catchUp") && skillJumps(c, lv);
   if (cu && cu.on) cu.jumps.forEach((j, i) => out.push({ phase: "spend", queue: "skill", ...(i === 0 ? { points: "skill" } : {}), ...(out.length >= 4 ? { more: true } : {}),
     card: { kind: "catchup", j, x: j.rows[0] || j.specs[0], ...(i === 0 ? { first: true } : {}), act: i === 0 ? "catchup" : "" } }));
   else if (sp) { out.push({ phase: "spend", queue: "skill", points: "skill", card: { kind: "skill", x: sp, first: true, act: "skill" } });

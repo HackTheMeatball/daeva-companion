@@ -63,14 +63,15 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   ok('#4 Sealed Dungeons named only while some are open', r.sd === /Sealed Dungeons/.test(r.mean), r);
   await set(30, `s.quest = "Canyon's Secret";`); r = await story(); ok('#4 not gated: no Meanwhile line', !r.mean, r);
 
-  /* #5 "+N more" counts what the points cover (0.9 P19: one skill's lines past 6 unticked, not every skill's, so the
-     points don't cover a catch-up of 3+ lines and the hero stays the one-level step this checks) */
-  await set(30, `Object.keys(s.checks).filter(k => k.startsWith('sp:Heart Gore:')).forEach(k => { const L = +k.split(':')[2]; if (L > 6) delete s.checks[k]; }); s.stones = 0;`);
+  /* #5 "+N more" counts what the points cover. 0.9 P19: this save (every line past 6 unticked) is a catch-up, whose
+     "+N more" counts the other skills' jumps, each covered by the points (Coming up lists them): checked in that form */
+  await set(30, `Object.keys(s.checks).filter(k => k.startsWith('sp:')).forEach(k => { const L = +k.split(':')[2]; if (L > 6) delete s.checks[k]; }); s.stones = 0;`);
   r = await p.evaluate(() => { const lv = char(state).level, now = SP_STEPS.filter(x => !char(state).checks[x.k] && x.req <= lv).sort((a, b) => a.gi - b.gi || a.gj - b.gj);
     const pts = (LEVEL_POINTS[lv] || 0) + (char(state).stones || 0) - SP_STEPS.filter(x => char(state).checks[x.k]).reduce((t, x) => t + x.cost, 0);
     let left = pts - now[0].cost, k = 0; now.slice(1).some(y => { if (y.cost > left) return true; left -= y.cost; k++; return false; });
-    return { hint: (document.querySelector('#spHero .sphint') || {}).innerText || '', k, left, nOpen: now.length, pts }; });
-  ok('#5 hint counts only what the points left cover', r.k ? r.hint === `+${r.k} more your points cover` : r.hint === `${r.nOpen - 1} more unlocked · ${r.left} pt${r.left === 1 ? '' : 's'} left`, r);
+    const cu = !!document.querySelector('#spHero .sphero.cu'), soon = document.querySelectorAll('#spSoon > li').length;
+    return { hint: ([...document.querySelectorAll('#spHero .sphint')].find(x => !cu || /more/.test(x.innerText)) || {}).innerText || '', k, left, nOpen: now.length, pts, cu, soon }; });
+  ok('#5 hint counts only what the points left cover', r.cu ? r.hint === `+${r.soon} more your points cover · Mark all spent` : r.k ? r.hint === `+${r.k} more your points cover` : r.hint === `${r.nOpen - 1} more unlocked · ${r.left} pt${r.left === 1 ? '' : 's'} left`, r);
   ok('#5 no "available now" count beyond the points', !/available now/.test(r.hint), r);
 
   /* #6 stigma "x of y spent": y = whole plan, stable across equipping */
@@ -291,7 +292,7 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   await p.click('#rwToast .tu'); await p.waitForTimeout(200);
   ok('P19: Undo reverses the tap', JSON.stringify(await ticks()) === JSON.stringify(cu0) && (await cuHero()).name === 'Heart Gore', await ticks());
   /* Next up's button ticks the same jump */
-  await p.click('#nowStar .ns-card .ns-btn'); await p.waitForTimeout(200);
+  await p.click('#nowStar .ns-card .ns-btn'); await p.waitForTimeout(1600);
   ok('P19: Next up\'s Mark spent ticks the hero\'s jump', (await ticks()).filter(k => !cu0.includes(k)).length === 10 && (await cuHero()).name !== 'Heart Gore');
   await p.click('#rwToast .tu'); await p.waitForTimeout(200);
   let run = await runCatchUp();
