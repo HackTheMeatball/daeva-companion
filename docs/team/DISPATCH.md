@@ -63,7 +63,7 @@ From HANDOFF and the Sonnet guard in claude.yml:
   holds the whole lane while it is open.
 - **`architecture`** (FLOW-23, 2026-10-21) is a routing lane, not a serial file: an item that changes the module layout or
   a performance budget takes `lanes:architecture`, and kickoff starts it on Opus whatever its tier. No file maps to it,
-  so it only waits on another queued or in-flight item that also names it.
+  so it only waits on a started item (or one picked earlier in the same kickoff run) that also names it.
 - Builder "O" = `@claude` (Opus), "S" = `@sonnet` (Sonnet). Reviewer "S" / "O" the same; "S+O" = both.
 
 ## Step table
