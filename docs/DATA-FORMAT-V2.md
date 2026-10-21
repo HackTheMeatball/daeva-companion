@@ -204,12 +204,12 @@ Dungeon slugs, every `dv:` key, every MIG_V5 target):
 | `checks` / `areaRun` `sd:<slug>`, `g10h:<slug>` | `sealedDungeons[].key` |
 | `checks` `sh:<slug>` | `strongholds[].key` |
 | `checks` `g<lv>:<n>`, `g<lv>:<word>`, `build:<n>`, `story:<n>`, `daily:<n>`, `f2p:<n>`, `hold:<n>` | `steps[].key` |
-| `checks` `sp:<skill name>:<L>` | `skills[].key` (the name segment); per-level keys generated |
-| `checks` `sp:<skill name>:spec` (slot 1, today) and **reserved** `sp:<skill name>:spec2`, `sp:<skill name>:spec3` (M4) | `skills[].key`; slots from `rule:specialty-slots` |
+| `checks` `sp:<skill key>:<L>` | `skills[].key` = the id's last segment (save v6, 0.9 P2; before: the name); per-level keys generated |
+| `checks` `sp:<skill key>:spec` (slot 1) and `sp:<skill key>:spec2`, `sp:<skill key>:spec3` (M4) | `skills[].key`; slots from `rule:specialty-slots` |
 | `checks` `dv:<n>`, `dv:z:` / `dv:v:` / `dv:t:<n>`; new `dv:<board>:r<row>c<col>` for nodes with no key today (M5) | `boardNodes[].key`; legacy "any one of these" keys (`dv:corner`) on `builds[].boardPlan[].key` |
-| `quest`, `storyEnd`, `qsteps{name}`, `qsub{name}` | `storyQuests[].key` = the English name (owner decision: names stay as save labels) |
-| `qsteps{name: [i]}`, `qsub{name: {i: [j]}}` | `steps[].i`, `steps[].subs[].j`, written out, never renumbered |
-| `stLv{name}`, `stPick{slot: name}` | `stigmas[].key` = the name |
+| `quest`, `storyEnd`, `qsteps{key}`, `qsub{key}` | `storyQuests[].key` = the id, `sq:<gameId>` (save v6, 0.9 P2, replacing Q5's English names: a rename or typo fix moved ticks) |
+| `qsteps{key: [i]}`, `qsub{key: {i: [j]}}` | `steps[].i` and `steps[].sub` (the sub-steps' indices, in parse order; absent = 0, 1, 2 …), written out, unique within the quest, never renumbered or reused: an objective inserted mid-list takes a new `i` |
+| `stLv{key}`, `stPick{slot: key}` | `stigmas[].key` = the id's last segment (save v6; a name typed for another stigma is stored as typed) |
 | `dvCost{key}` | node `key` |
 | `open{id}`, links `#g22` | `milestones[].id` |
 | new (5c/0.3): `buildId`, `customBuild` | §8.4 |
@@ -772,7 +772,7 @@ Derived completions are never in the save, so there is nothing to merge for them
 | — | Builds per class | One guide build + up to two credited alternatives | §8.1 |
 | — | Custom builds | Start from a listed build; saved per character and in Export; never silently dropped | §8.4 |
 | — | Fastest / completionist | Team proposes labels from today's guide; owner approves per milestone in 0.3. Confirmed drawbacks of the fastest track are recorded per milestone. **Whether two tracks make sense is re-evaluated in the 0.3 design.** | §6 `route`, `milestones[].drawbacks` |
-| Q5 | English names as save labels | Kept | §3 |
+| Q5 | English names as save labels | Kept, then replaced in 0.9 P2 (save v6: ids) | §3 |
 | Q6 | "Checked on" dates in the app | No per-item dates | §5.3 |
 | Q7 | Daeva Trapped in a Nightmare | Added like any story quest once the owner's check confirms the giver | `storyQuests`, no format change |
 | F15 | Location-aware Next up | Zone on every located record; adjacency; last location derived | §9 |

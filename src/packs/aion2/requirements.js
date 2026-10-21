@@ -106,10 +106,10 @@ export const planReachOf = x => { const N = activePack().data.graph.nodes, sid =
     PLAN_REACH[sid] = Math.max(...ns.filter(n => n.kind === "skill" && n.skill === sid).map(n => n.L)) + ns.filter(n => n.kind === "plan" && n.skill === sid).reduce((t, n) => t + (n.adds ?? 1), 0); }
   return PLAN_REACH[sid]; };
 /* The green "(+x)" beside a skill's level (0.6 P9; in game "Heart Gore Lv. 6 (+1)"): the sum of `adds` over the ticked plan
-   board nodes on skill `name` (the skill of its lines sp:<name>:<L>), 0 with none. A node without a numeric `adds` counts
+   board nodes on the skill with save key `key` (the skill of its lines sp:<key>:<L>), 0 with none. A node without a numeric `adds` counts
    nothing here (no default of 1, unlike the effective level): the card shows no bonus it has no data for. */
 const PLAN_BY_SKILL = new WeakMap();
-export const skillBonusOf = (c, name) => { const N = activePack().data.graph.nodes, line = N[`sp:${name}:2`];
+export const skillBonusOf = (c, key) => { const N = activePack().data.graph.nodes, line = N[`sp:${key}:2`];
   if (!line || !line.skill) return 0;
   if (!PLAN_BY_SKILL.has(N)) { const m = new Map();
     for (const n of Object.values(N)) if (n.kind === "plan" && n.skill && typeof n.adds === "number" && n.key !== undefined) { if (!m.has(n.skill)) m.set(n.skill, []); m.get(n.skill).push(n); }
