@@ -54,7 +54,7 @@ export function decisionRows(md) {
   return byDate;
 }
 
-export function checkLedger(root = ROOT, { csvText, ledgerMd, teamCsv, changesCsv, auditsCsv, sopReadme, sopFiles } = {}) {
+export function checkLedger(root = ROOT, { csvText, ledgerMd, teamCsv, changesCsv, auditsCsv, sopReadme, sopFiles, teamDocs } = {}) {
   const problems = [], file = join(root, 'docs/kaizen/ledger.csv');
   const md = ledgerMd ?? (existsSync(join(root, 'docs/kaizen/LEDGER.md')) ? readFileSync(join(root, 'docs/kaizen/LEDGER.md'), 'utf8') : '');
   /* team.csv, team-changes.csv, audits.csv: exact headers, as records keyed by column */
@@ -81,6 +81,14 @@ export function checkLedger(root = ROOT, { csvText, ledgerMd, teamCsv, changesCs
     else if (t.folded_into && byName.get(t.folded_into)?.status !== 'active') problems.push(`${t.at} (${t.name}): folded_into "${t.folded_into}" is not an active thread`);
   }
   for (const n of OWNERS) if (!names.includes(n)) problems.push(`team.csv is missing "${n}"`);
+  /* a role doc docs/team/<name>.md has a "Status: ended <date>" line exactly when team.csv says the role is not active
+     (team.csv is authoritative; Nacho's ruling on ending roles, 2026-10-21) */
+  for (const t of team) {
+    const f = join(root, 'docs/team', t.name.toLowerCase() + '.md');
+    if (!existsSync(f)) continue;
+    const ended = /^Status: ended \d{4}-\d{2}-\d{2}\s*$/m.test((teamDocs ?? {})[t.name] ?? readFileSync(f, 'utf8'));
+    if (ended !== (t.status !== 'active')) problems.push(`docs/team/${t.name.toLowerCase()}.md: ${ended ? 'says "Status: ended" but team.csv says active' : `has no "Status: ended <date>" line but team.csv says ${t.status}`}`);
+  }
   for (const c of changes) {
     if (c.n !== 6) problems.push(`${c.at}: ${c.n} fields, expected 6`);
     if (!/^\d{4}-\d{2}-\d{2}$/.test(c.date)) problems.push(`${c.at}: date "${c.date}" is not YYYY-MM-DD`);
@@ -274,6 +282,8 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   const tcsv = readFileSync(join(ROOT, 'docs/kaizen/team.csv'), 'utf8');
   { const p = checkLedger(ROOT, { teamCsv: tcsv.replace(/^Gomez,/m, 'Badger,') }); ok('ledger check rejects: a team.csv that differs from OWNERS', p.some(x => /names "Badger"/.test(x)) && p.some(x => /missing "Gomez"/.test(x)), p.slice(0, 3)); }
   { const p = checkLedger(ROOT, { teamCsv: tcsv.replace(/^Hank,(.*),folded,Mike,/m, 'Hank,$1,folded,Badger,') }); ok('ledger check rejects: folded into a thread that is not active', p.some(x => /folded_into "Badger"/.test(x)), p.slice(0, 3)); }
+  { const p = checkLedger(ROOT, { teamDocs: { Skyler: '# Skyler\n' } }); ok('ledger check rejects: an ended role whose doc has no Status: ended line', p.some(x => /skyler\.md: has no "Status: ended/.test(x)), p.slice(0, 3)); }
+  { const p = checkLedger(ROOT, { teamDocs: { Gus: '# Gus\n\nStatus: ended 2026-10-21\n' } }); ok('ledger check rejects: an active role whose doc says Status: ended', p.some(x => /gus\.md: says "Status: ended"/.test(x)), p.slice(0, 3)); }
   { const p = checkLedger(ROOT, { changesCsv: readFileSync(join(ROOT, 'docs/kaizen/team-changes.csv'), 'utf8').replace('DEC-20261019-incident-log-folds-into-stall', 'DEC-nope') }); ok('ledger check rejects: a team change citing an unknown decision', p.some(x => /source "DEC-nope"/.test(x)), p.slice(0, 3)); }
   { const p = checkLedger(ROOT, { auditsCsv: readFileSync(join(ROOT, 'docs/kaizen/audits.csv'), 'utf8').replace(',done,', ',finished,') }); ok('ledger check rejects: an unknown audit status', p.some(x => /status "finished"/.test(x)), p.slice(0, 3)); }
   { const p = checkLedger(ROOT, { ledgerMd: lmd.replace('| Only Huell changes what the tracker shows', '| Only Huell writes TRK-01 data') }); ok('ledger check rejects: a rule id in Who does what Plain', p.some(x => /Plain has "TRK-01"/.test(x)), p.slice(0, 3)); }
