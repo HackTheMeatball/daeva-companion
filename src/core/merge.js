@@ -119,15 +119,23 @@ function mergeChar(ca, cb, cut) {
   co.mt = mt;
   /* the later rename wins, so both devices end with the same name and the same payload */
   mergeName(co, ca, cb, cmpStamp);
+  /* the load-time steps run (migs, 0.9 P9): the union, so a step that ran on either copy never runs again */
+  const migs = migsOf(ca, cb);
+  if (migs) co.migs = migs; else delete co.migs;
   return co;
 }
-/* The part of a save that merge() syncs (for tests and, later, the sync layer): per slot, the character's progress, mt
-   and removedAt, or the tombstone; v and savedAt. */
+/* The union of two copies' migs flags ({ <flag>: 1 }, keys sorted), or null when neither has one. */
+const migsOf = (...cs) => {
+  const keys = [...new Set(cs.flatMap(c => c.migs && typeof c.migs === "object" && !Array.isArray(c.migs) ? Object.keys(c.migs).filter(k => c.migs[k]) : []))].sort();
+  return keys.length ? Object.fromEntries(keys.map(k => [k, 1])) : null;
+};
+/* The part of a save that merge() syncs (for tests and, later, the sync layer): per slot, the character's progress, mt,
+   migs and removedAt, or the tombstone; v and savedAt. */
 export function syncedPart(save) {
   const out = { chars: {} };
   Object.entries(charsOf(save)).forEach(([id, c]) => { const o = out.chars[id] = {};
     if (isRemoved(c)) { o.deletedAt = c.deletedAt; return; }
-    [...syncMaps(), ...syncRegs(), "qsteps", "qsub", "quest", "storyEnd", "mt", "removedAt"].forEach(f => { if (c[f] !== undefined) o[f] = c[f]; }); });
+    [...syncMaps(), ...syncRegs(), "qsteps", "qsub", "quest", "storyEnd", "mt", "migs", "removedAt"].forEach(f => { if (c[f] !== undefined) o[f] = c[f]; }); });
   ["v", "savedAt"].forEach(f => { if (save[f] !== undefined) out[f] = save[f]; });
   return out;
 }

@@ -27,7 +27,10 @@
       "open": ["(absent)",{"g4":true}],
       "savedAt": ["(absent)",1790856000000],
       "v": ["(absent)",6]
-    }
+    },
+    "keys": [
+      "companion-save-v6:unreadable"
+    ]
   },
   "special/not-v5-flat-L30": {
     "in": "d9bd3ac17ee6",
@@ -47,7 +50,10 @@
       "stLv": [{"Triniel's Dagger":1,"Illusive Clone":1},"(absent)"],
       "stShards": [20,"(absent)"],
       "v": ["(absent)",6]
-    }
+    },
+    "keys": [
+      "companion-save-v6:unreadable"
+    ]
   },
   "special/story-end-turned-in": {
     "in": "2dce5c378efa",

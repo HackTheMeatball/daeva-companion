@@ -24,7 +24,9 @@
         and its character and Next up equal a played-through Lv 20 state's; a new character opens on the join step
     10c. the site's classes (0.7 A1): the picker offers every playable class; a Ranger save loads its own guide, no note
     15. auto level-up (0.6 P19, 0.8 P15): "Turned in" on a levelsUp quest at its from-level (Shadow Forest at Lv 3) → one
-        level up, Undo and stepping back → down again; at a higher level or on a 50% EXP quest → no change */
+        level up, Undo and stepping back → down again; at a higher level or on a 50% EXP quest → no change
+    16. nothing stored is lost (0.9 P9): a v7 save opens read-only with the banner and stays byte-identical after a tick,
+        a Level up and a reload; unreadable text is kept under :unreadable before the fresh start */
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path'); const { isDeepStrictEqual } = require('util');
 const CFG = require('./config');
 const { SAVE_KEY, V4_KEY, BEFORE_IMPORT_KEY, TEST_SLOT, toStored, writeRaw, readRaw, writeSave, clearSave } = require('./support/save');
@@ -713,6 +715,38 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     await at(lv - 1, q0); await p.click('#lvlUpBig'); await p.waitForTimeout(200); await p.click('#lvlDown'); await p.waitForTimeout(200); s = await cur();
     ok('levelsUp: Level up and − unchanged (one each way, the story stays)', s.level === lv - 1 && s.quest === q0, s);
     ok('levelsUp: no page errors', !errs.length, errs);
+    await ctx.close();
+  }
+  /* 16. nothing stored is lost (0.9 P9): a save from a newer build opens read-only and is never written; unreadable
+     text is kept under :unreadable before the fresh start */
+  {
+    const { ctx, p, errs } = await page();
+    const v7 = toStored({ checks: { 'g6:0': true }, level: 22, quest: 'Daeva in a Dream', open: {}, welcomed: 1 }); v7.v = 7; v7.chars[TEST_SLOT].future = { kept: true };
+    const raw7 = JSON.stringify(v7);
+    await writeRaw(p, raw7, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
+    const s = await p.evaluate(() => ({ lv: char(state).level, banner: !document.getElementById('saveNewer').hidden, warn: !document.getElementById('saveWarn').hidden }));
+    ok('newer save: shown read-only (its level) with the banner, no save-failed banner', s.lv === 22 && s.banner && !s.warn, s);
+    /* tick a regional quest (two clicks: started, then done) and level up */
+    const rk = await p.evaluate(() => { const i = document.querySelector('#gates input[data-k^="rq:"]'); i.click(); i.click(); return i.dataset.k; }); await p.waitForTimeout(100);
+    await p.click('#lvlUp'); await p.waitForTimeout(200);
+    ok('newer save: Level up and a tick change the page only', (await p.evaluate(k => char(state).level === 23 && char(state).checks[k] === true, rk)), rk);
+    ok('newer save: the stored text is byte-identical after a Level up and a tick', (await readRaw(p)) === raw7);
+    ok('newer save: no other key written', JSON.stringify(await keys(p)) === JSON.stringify([SAVE_KEY]), await keys(p));
+    await p.reload(); await p.waitForTimeout(400);
+    ok('newer save: still read-only and unchanged after a reload', (await readRaw(p)) === raw7 && (await p.evaluate(() => !document.getElementById('saveNewer').hidden)));
+    ok('newer save: no page errors', !errs.length, errs);
+    await ctx.close();
+  }
+  {
+    const { ctx, p, errs } = await page();
+    const bad = '{"v":6,"current":"x","chars":{"x":{"level":30, broken';
+    await writeRaw(p, bad, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
+    const s = await p.evaluate(() => ({ lv: char(state).level, banner: !document.getElementById('saveNewer').hidden }));
+    ok('unreadable save: a fresh start (Lv 1), no read-only banner', s.lv === 1 && !s.banner, s);
+    ok('unreadable save: its text is kept under :unreadable, byte for byte', (await readRaw(p, { key: SAVE_KEY + ':unreadable' })) === bad);
+    await p.click('#lvlUp'); await p.waitForTimeout(150);
+    ok('unreadable save: the fresh save is written under the key; the copy stays', JSON.parse(await readRaw(p)).v === 6 && (await readRaw(p, { key: SAVE_KEY + ':unreadable' })) === bad);
+    ok('unreadable save: no page errors', !errs.length, errs);
     await ctx.close();
   }
   await b.close();

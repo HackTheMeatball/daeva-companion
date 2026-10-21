@@ -19,6 +19,9 @@ Draft: the release sets the date and the summary.
   (`companion-save-v5`) are not read and stay in the browser untouched. Story progress, objectives, skill points and
   stigmas are now stored by fixed ids, so a renamed quest, skill or stigma, or a new objective in the list, never moves
   or drops a tick again. This is the last reset before 1.0.
+- Progress saved by a newer version is never overwritten: an older tab or cached page shows it read-only, with a
+  banner to reload. Saved progress this version can't read is kept in the browser (`companion-save-v6:unreadable`)
+  before the app starts fresh.
 
 ## 0.8.0 — 2026-10-20
 

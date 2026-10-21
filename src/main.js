@@ -23,6 +23,7 @@ import { stamp, stampSave } from "./core/sync.js";
 import { addChar, removeChar, renameChar, startAs, switchChar } from "./core/chars.js";
 /* the save is read and written only through this storage (interface: src/core/storage.js) */
 import { webStorage as saveStore } from "./shell/storage-web.js";
+import { lockKey } from "./core/storage.js";
 import { newId } from "./shell/ids.js";
 /* the whole module lands in this bundle; src/site.js reads its line / nudge / hint helpers as page globals */
 import { importBackup, markExport } from "./core/backup.js";
@@ -112,18 +113,28 @@ if (Array.isArray(window.__gateChanges)) setGateChanges(window.__gateChanges);
 /* ... and the ranking changes of smart Next up (RANK_CHANGES and the pack's table) to run with; the page runs with each
    table's `on` (0.5 P11: all off). */
 if (Array.isArray(window.__rankChanges)) setRankChanges(window.__rankChanges);
-/* The save from storage (save v6; anything else starts fresh), then the load-time steps (src/core/migrations.js). */
-let { state, hadSave } = loadState(saveStore.get(KEY), { now: Date.now(), newId });
+/* The save from storage (save v6; anything else starts fresh), then the load-time steps (src/core/migrations.js).
+   Nothing stored is lost (0.9 P9): unreadable text is kept under KEY + ":unreadable" before the fresh start can
+   overwrite it, and a save from a newer build (readOnly) locks KEY, so no write of this page (or the sync chunk) replaces
+   it; the #saveNewer banner says so. */
+let { state, hadSave, readOnly = false, unreadable } = loadState(saveStore.get(KEY), { now: Date.now(), newId });
+if (unreadable != null) saveStore.set(KEY + ":unreadable", unreadable);
+if (readOnly) {
+  lockKey(saveStore, KEY); document.getElementById("saveNewer").hidden = false;
+  document.getElementById("saveNewerGo").addEventListener("click", () => location.reload());
+}
 migrate(state, hadSave, storeState, Math.floor(Date.now() / 1000));
 /* Every write of the progress goes through storeState(); each one stamps the current character's per-item change times
    (stampSave, src/core/sync.js). A write
-   that fails (storage full, private mode, storage disabled) shows the #saveWarn banner; the next write that works hides it. */
+   that fails (storage full, private mode, storage disabled) shows the #saveWarn banner; the next write that works hides it.
+   A read-only save (above) is never written, and #saveNewer already says why. */
 function storeState() {
   stampSave(state, Date.now());
+  if (readOnly) return;
   setSaveWarn(!saveStore.set(KEY, JSON.stringify(state)));
 }
 function setSaveWarn(on) {
-  const el = document.getElementById("saveWarn"); if (!el || el.hidden === !on) return;
+  const el = document.getElementById("saveWarn"); if (readOnly || !el || el.hidden === !on) return;
   el.hidden = !on;
 }
 const save = () => { storeState(); };

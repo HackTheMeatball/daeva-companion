@@ -54,8 +54,13 @@ no server copy. Rules:
   typed). The generator checks each (`tools/gen/gen.mjs`); the page shows names (`questNameOf`, `stName`).
 - **Item keys are permanent.** A key that is removed is retired, never reused for something else (`retired.json` in
   each pack lists them: `g45:1`, `g45:0`, `hold:0`, the position keys replaced in E1, …).
-- **Migrations only add** (from 1.0). They copy or tick, set a one-time flag, and leave the old data in place, so an
-  older build can still read a newer save. v5 has none yet.
+- **Migrations only add** (from 1.0). They copy or tick, set their flag in the character's `migs`, and leave the old
+  data in place, so an older build can still read a newer save. v6 has none yet (`MIG_STEPS` is empty).
+- **Nothing stored is lost** (0.9 P9). A save whose `v` is above the build's `SAVE_V` (a stale tab, a cached page)
+  opens read-only: `loadState` returns `readOnly`, the page locks the key (`lockKey`, `src/core/storage.js`: every
+  write of it, the sync chunk's included, is refused), shows the `#saveNewer` banner with Reload, and never writes the
+  save. Stored text that isn't a v6 save (unreadable JSON, another shape) is copied byte for byte to
+  `companion-save-v6:unreadable` before the fresh start can overwrite it.
 - **New fields must default safely** when absent: every existing save lacks them.
 - **The player name and the label never leave the save unencrypted**: no name or label (`labelOf`) in a storage key,
   the export file name, a URL, the *Report a problem* link or a log; the slot id is random, never derived from the
@@ -64,8 +69,9 @@ no server copy. Rules:
 ### State
 
 `state` is one JSON object, loaded at startup by `loadState(text, { now, newId })` (`src/core/state.js`): a v6 save is laid
-over the defaults (`DEFAULT()`, and `CHAR_DEFAULT()` under each character); anything else (no save, unreadable text,
-another shape, a pre-0.4 save) gives a new save with one empty slot (`newSave`, the id from `newId`,
+over the defaults (`DEFAULT()`, and `CHAR_DEFAULT()` under each character), and so is a newer save of the same shape
+(`readOnly`, see above); anything else (no save, unreadable text, another shape, a pre-0.4 save) gives a new save with
+one empty slot (stored text among these comes back as `unreadable`, for the page to keep) (`newSave`, the id from `newId`,
 `src/shell/ids.js`: `crypto.randomUUID()`, else a v4 UUID from `getRandomValues`). It is written back by `save()` after every change. Every write (`save()` and the one-time steps below) goes through `storeState()`, which shows the
 "couldn't be saved" banner (`#saveWarn`, with the Export action) when the write fails and hides it after
 the next write that works; what is written, and under which key, is unchanged.
@@ -77,7 +83,7 @@ storage object with the synchronous interface of `src/core/storage.js` (`get(key
 `core` suite tests. Same keys, same text as before the adapter. A native store app swaps the adapter (and reads its
 save into memory before start-up, so the interface stays synchronous).
 
-The only other localStorage key is `…:before-import` (see Import below). On the standalone site the page asks
+The only other localStorage keys of the save are `…:before-import` (see Import below) and `…:unreadable` (above). On the standalone site the page asks
 `navigator.storage.persist()` when it loaded saved progress, at most once per browser session (flag in
 `sessionStorage`, so the localStorage keys stay as they are; the `golden` suite records them).
 
@@ -115,6 +121,7 @@ every reader of `chars` skips tombstones (`isRemoved`, `liveChars` in `src/core/
 | character: `stLv{stigma key: lv}`, `stShards`, `stPick{slot: stigma key}` | stigma levels, shards, the stigma picked per slot |
 | character: `stones`, `pendSt`, `pendCr`, `dvTotal`, `dvCost{key: n}`, `dvAdj`, `dvLast…` | Wisdom Stones / pending Cube items / Daevanion points and node costs |
 | character: `mt` | per-item change times (see Change times below) |
+| character: `migs{flag: 1}` | the flagged load-time steps that have run for this character (absent until one has; `merge()` keeps the union) |
 | `mode` (`basic`/`advanced`), `open{id}`, `hide`, `hideCards`, `hideOpt`, `areaLv`, … | view settings (per device) |
 | `backup{lastExportAt, since, nudgeAt, a2hsAt}` | 0.2.5 save safety: this browser's backup times (ms, all optional); top level, not synced (`src/core/backup.js`) |
 
@@ -183,12 +190,16 @@ All of them are `migrate(state, hadSave, store, now)` in `src/core/migrations.js
 `migV5` (`MIG_V5`), the player seeds `seedLv12` / `stTriniel1` / `dvReset1`, `eputSync1`, `g45Split1`, `stampV1` and
 `backup1` were removed with the pre-0.4 saves they were for.
 
-1. Fresh start (no v5 save): Lv 1 on the first story quest (the pack's `data.story.quests`), cleared milestones folded,
+1. Fresh start (no v6 save): Lv 1 on the first story quest (the pack's `data.story.quests`), cleared milestones folded,
    `backup = { since: now }` (ms, the export nudge's baseline), the defaults stamped at time 0. Writes nothing itself.
 2. The pack's load hook (`onLoad(save, c, { fresh })`, in memory only; AION 2: `src/packs/aion2/load.js`): equipped
    stigma slots without a pick are pinned to the plan name they were equipped with (plan order can change).
 3. "Turned in" on the last covered quest (`storyEnd`) moves on to the next quest once the data covers more (0.3 E10: a
    save that ended at "Forgotten Commander" moves on to "Daeva Trapped in a Nightmare"). Writes the save.
+4. The flagged steps (`MIG_STEPS`, run by `runSteps`; none yet, 0.9 P9): each `{ flag, run(c) }` runs once on every
+   character (tombstones skipped) that lacks `migs[flag]`, then sets `migs[flag] = 1`. Writes the save when a step ran
+   on a loaded save (a fresh start is written with its first change). `merge()` keeps the union of both copies'
+   `migs` and `syncedPart` carries it, so a step that ran on one device never runs again on another.
 
 **Import** accepts a v5 export only (`parseExport`): any other file, a pre-0.4 export included, gets "This file is from
 a version before 0.4 and can't be loaded." and nothing changes. A v5 file replaces the state (after confirming), the
@@ -196,9 +207,16 @@ old one is kept under `:before-import`, and the file's `backup` is replaced with
 (the import counts as a backup); the steps above run on the reload. **Export** writes the save as it is to
 `companion-save-<date>.json`.
 
-Adding a load-time step (from 1.0): give it a new flag, make it idempotent and additive, run it after the existing ones
-in `migrate()`, save only if `hadSave`, and add a case to `tests/core/migrations.test.mjs` (additive, idempotent, write
-points) and to the `save` suite (`tests/save.js`).
+Adding a load-time step (from 1.0):
+
+1. Append `{ flag, run(c) }` to `MIG_STEPS` in `src/core/migrations.js`, with a flag never used before (flags are
+   permanent, like item keys). `run` changes one character only: it copies or ticks, never removes, renames or changes
+   the meaning of a field, and is idempotent (running it on its own output changes nothing).
+2. Leave `SAVE_V` and the key alone when the shape only grows (new fields default safely). Raise `SAVE_V` only when an
+   older build must not write the save any more: older builds then open it read-only (above), never overwrite it.
+3. Add a case to `tests/core/migrations.test.mjs` (once per character, flag set, additive, idempotent, written only on a
+   loaded save, the flag through `merge()`) and to the `save` suite (`tests/save.js`: a stored save before and after
+   the reload).
 
 ## 2. Render pipeline
 

@@ -1,0 +1,4 @@
+[
+  { "case": "1-newer-save-390", "kind": "screenshot", "title": "Progress from a newer version is kept",
+    "caption": "An old tab opening progress saved by a newer version (Lv 22) shows it read-only with this banner and never overwrites it." }
+]
