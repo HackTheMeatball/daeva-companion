@@ -67,9 +67,10 @@ fix as a #221 row; the same handover question at the next run counts as a doc Ga
 whoever wrote the task. Results are recorded here.
 
 Run 1 (#681 at dad68be, 2026-10-21 01:07Z): 7/7 answers right, 0/7 empty question lists; the four doc gaps it found were
-fixed before merge. Run 2 (2128b33, 01:42Z, tightened tasks): 7/7 correct, and by Rules Steward's sort no remaining
-question is one a department doc should answer (operations.md still needs a non-author sort); the rest are stale handovers (each sent to its owner), task reading and one unassigned
-item. Results on #681.
+fixed before merge. Run 2 (2128b33, 01:42Z, tightened tasks): 7/7 correct. By Rules Steward's sort no remaining
+question is one a department doc should answer, except in operations.md (sorted by the #758 reviewer): its missing
+charter was a doc question, fixed in #758. The rest are stale handovers (each sent to its owner), task reading and one
+unassigned item. Results on #681.
 
 | Doc | Role | Handover | Task | Result (run 2) | Questions it had |
 |---|---|---|---|---|---|
@@ -78,5 +79,5 @@ item. Results on #681.
 | engineering.md | Gus | pipeline/gus-handover.md | Which open claude/ PR is closest to merging, and what does it wait on? | Doc pass, Takeover fail | Handover only: holds and MRG-12 timing, PR-check fire time |
 | design.md | Jane | design/handover.md | Which open PR waits on a DESIGN OK, and what must it carry? | Doc pass, Takeover fail | Task reading only |
 | data-research.md | Gretchen | game-data-check/handover.md | Which open PR or item waits on a Game Data Check verdict, and what is the next step? | Doc pass, Takeover fail | Handover only: boss-data branch location, MRG-12 status |
-| operations.md | Francesca | rules-steward/handover.md | Which active team.csv name, Isaac aside, is not the Owner of any row in Who does what? | Takeover fail; Doc not yet sorted by a non-author | Task wording (does Isaac count); Rules Steward's charter missing |
+| operations.md | Francesca | rules-steward/handover.md | Which active team.csv name, Isaac aside, is not the Owner of any row in Who does what? | Doc fail (fixed in #758), Takeover fail | Task wording (does Isaac count); Rules Steward's charter missing |
 | independent.md | Mike | stall-log/mike-handover.md | What would the next health check look at first, and where is it recorded? | Doc pass, Takeover fail | Handover only: a stale handover-to-mike.md beside mike-handover.md |
