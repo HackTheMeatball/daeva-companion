@@ -25,9 +25,9 @@ The pipeline sees green CI on a claude/ PR head (PIP-01).
 
 1. **Pipeline**: Requests a review from a separate Opus session (MRG-04), asking for `Review of <sha7>` first and the VERDICT last (MRG-03).
 2. **Reviewer**: Reviews against the criteria and posts `VERDICT: APPROVE` or `VERDICT: CHANGES`; never starts a line with DESIGN OK or DESIGN CHANGES (MRG-07). A visible change without shots is CHANGES (MRG-05).
-3. **Pipeline**: On CHANGES, starts a fix run (round 1 Sonnet, rounds 2 and 3 Opus: PIP-02); after three rounds labels the PR `stuck` (MRG-09).
+3. **Pipeline**: On CHANGES, starts a fix run on the models PIP-02 sets; after three rounds labels the PR `stuck` (MRG-09).
 4. **Howard**: For an item tagged `fresh-review` (KZ-16), briefs a reviewer with no history on the work from the fixed template, and sends findings to the work's owner.
-5. **Howard**: Logs patterns that repeat across PRs in his findings log.
+5. **Howard**: Logs patterns that repeat across PRs in Howard's findings log.
 
 ## Gates
 
@@ -42,7 +42,8 @@ The pipeline sees green CI on a claude/ PR head (PIP-01).
 ## Failure and escalation
 
 - `stuck` after three rounds: Mike flags it (HC-01); a push that answers the findings clears it (MRG-09).
-- Reviewers disagree on a fresh-review item: the owner of the work decides; a remaining disagreement goes to Saul's morning debrief (KZ-16).
+- Reviewers disagree on a fresh-review item: it goes to the owner in Saul's morning debrief (KZ-16).
+- A merged `fresh-review` item with no fresh-review note: Mike flags it as `review-skipped` (KZ-16).
 - Workflow PRs get `stuck`, not a fix run; Gus drives them (PIP-03).
 
 ## Rules it runs on

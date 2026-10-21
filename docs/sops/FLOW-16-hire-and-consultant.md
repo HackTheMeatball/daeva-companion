@@ -40,7 +40,7 @@ A department head or the coordinator sees work with no owner, or sustained overl
 
 - The brief and handover (project files)
 - team.csv, team-changes.csv, Who does what
-- The consultant log
+- Consultants: no log exists yet (the hiring decision names docs/team/consultants.md); Francesca owns that gap
 
 ## Failure and escalation
 
