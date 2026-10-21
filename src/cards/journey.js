@@ -5,6 +5,7 @@
    the objective's place, what a story line opens) come from the pack's sections of this card (useJourneyParts). */
 import { char, levelOnTurnIn, levelOnUnturn } from "../core/state.js";
 import { activePack } from "../core/pack.js";
+import { setHTML } from "../core/cards.js";
 import { chainsOn, gatesOf, objPartsOf, questIdx, stepChipOf, storyGate, storyLineOf, turnInNeedsLv } from "../core/requirements.js";
 import { END_NEXT, STORY_DONE, capFirst, renderNow } from "./nextup.js";
 import { renderAhead } from "./ahead.js";
@@ -50,7 +51,7 @@ function renderStoryReqs() {
     row.hidden = ok && !!state.hide;
     const chip = !E6 ? (ok ? "reached" : d == null ? "set your quest" : `${d} story quest${d === 1 ? "" : "s"} ahead`) : L.chip || "set your quest";
     const now = E6 && !ok && L.turnIn && d === 1;
-    row.innerHTML = `<label><input type="checkbox" disabled ${ok ? "checked" : ""}><span class="txt"><span class="schip${ok ? "" : d == null ? "" : now ? " now" : " ahead"}">${chip}</span><b>${L.turnIn ? "Turn in" : "Reach"} "${q}" in the main story</b> <span class="sr-sub">Opens ${parts.reqOpens} that wait for it.${d != null && !ok ? ` You're on "${char(state).quest}".` : ""}</span></span></label>`;
+    setHTML(row, `<label><input type="checkbox" disabled ${ok ? "checked" : ""}><span class="txt"><span class="schip${ok ? "" : d == null ? "" : now ? " now" : " ahead"}">${chip}</span><b>${L.turnIn ? "Turn in" : "Reach"} "${q}" in the main story</b> <span class="sr-sub">Opens ${parts.reqOpens} that wait for it.${d != null && !ok ? ` You're on "${char(state).quest}".` : ""}</span></span></label>`);
   });
 }
 /* Chip on story-gated steps: how far that quest is from your current main quest. */
@@ -74,16 +75,17 @@ function renderStoryChips() {
 /* inUpdate: called from update(), which renders Next up itself afterwards (so it isn't rendered twice). */
 function renderQuest(inUpdate) {
   const st = document.getElementById("questStatus"), pv = document.getElementById("questPrev"), qlv = document.getElementById("questLv");
-  st.className = "st next"; pv.innerHTML = ""; qlv.textContent = ""; renderAhead();
+  /* setHTML (0.9 P30): the quest field's warning (below, in journeyMount) writes questStatus's text, which setHTML sees */
+  st.className = "st next"; qlv.textContent = ""; renderAhead();
   const row = (q, tag) => q ? `<span class="dot"></span><span class="st-name st-step" title="Set as current quest">${q[1]}${tag ? ` <span class="unl">${tag}</span>` : ""}</span><span class="st-lv">Lv ${q[0]}</span>` : "";
   /* No quest, or one no longer in the story (a quest the story has since dropped): ask for the current quest. */
   const i = questIdx(char(state));
-  if (i < 0) { st.innerHTML = `<span class="dot"></span><span class="st-name muted">Pick your current quest to place yourself on the story.</span>`; return; }
+  if (i < 0) { setHTML(pv, ""); setHTML(st, `<span class="dot"></span><span class="st-name muted">Pick your current quest to place yourself on the story.</span>`); return; }
   /* Story timeline: previous (dim), current (the input), next; then the next unlock as a callout linked to its milestone. */
   const prev = QUESTS[i - 1], nxt = QUESTS[i + 1];
-  pv.innerHTML = row(prev);
+  setHTML(pv, row(prev));
   qlv.textContent = `Lv ${QUESTS[i][0]}`;
-  st.innerHTML = nxt ? row(nxt, STORY_UNLOCKS[nxt[1]] ? `unlocks ${STORY_UNLOCKS[nxt[1]]}` : "") : `<span class="dot"></span><span class="st-name muted">${char(state).storyEnd === char(state).quest ? `${STORY_DONE} — ${END_NEXT}` : `Last story quest in the guide · turns in to ${STORY_END.turnin} at ${STORY_END.place}`}</span>`;
+  setHTML(st, nxt ? row(nxt, STORY_UNLOCKS[nxt[1]] ? `unlocks ${STORY_UNLOCKS[nxt[1]]}` : "") : `<span class="dot"></span><span class="st-name muted">${char(state).storyEnd === char(state).quest ? `${STORY_DONE} — ${END_NEXT}` : `Last story quest in the guide · turns in to ${STORY_END.turnin} at ${STORY_END.place}`}</span>`);
   if (qInput.value !== char(state).quest) qInput.value = char(state).quest;
   requestAnimationFrame(fitQuestIn);
   renderQuestSubs(inUpdate);
@@ -134,8 +136,9 @@ function renderQuestSubs(noNow) {
   const el = document.getElementById("questSubs"), list = char(state).quest && QUEST_STEPS[char(state).quest];
   syncJFilt();
   if (noNow !== true) renderNow();
-  if (!state.showObj) { el.innerHTML = ""; return; }
-  if (!list) { el.innerHTML = char(state).quest ? `<p class="qs-none">No objectives recorded for "${char(state).quest}" yet.</p>` : ""; return; }
+  /* setHTML (0.9 P30) for the empty and "none recorded" boxes; the list keeps innerHTML (below) */
+  if (!state.showObj) { setHTML(el, ""); return; }
+  if (!list) { setHTML(el, char(state).quest ? `<p class="qs-none">No objectives recorded for "${char(state).quest}" yet.</p>` : ""); return; }
   const done = (char(state).qsteps || {})[char(state).quest] || [], vis = objIdx(list), n = vis.filter(i => done.includes(i)).length, N = vis.length, showDone = !!state.qsShowDone;
   const head = `<div class="qs-head"><span>Objectives ${n}/${N}</span></div>`;
   /* Last quest the guide covers: the button turns it in (as Next up's "Turned in"); once turned in, the story continues in game. */
@@ -143,6 +146,7 @@ function renderQuestSubs(noNow) {
   const nextBtn = n !== N ? "" : last && char(state).storyEnd === char(state).quest ? `<p class="qs-end">${STORY_DONE} · ${END_NEXT}</p>`
     : needLv ? `<p class="qs-wait">Turn in at Lv ${needLv}: the game opens this quest at Lv ${needLv}</p>`
     : `<button type="button" class="qs-next" id="qsNext">${last ? "Quest done · mark turned in" : "Quest done · next quest ›"}</button>`;
+  /* innerHTML, not setHTML: the tick handlers (journeyMount) tick earlier objectives and mark rows on / leaving after the write */
   el.innerHTML = head + `<ol class="qs-list">` +
     list.map((t, i) => { if (!vis.includes(i)) return ""; const [a, b] = objPartsOf(char(state).quest, i); if (done.includes(i) && !showDone && n < N) return ""; const sl = subListHTML(i, "data-qsub"); return `<li class="${done.includes(i) ? "on" : ""}${sl ? " has-sub" : ""}"><label><input type="checkbox" data-qobj="${i}" ${done.includes(i) ? "checked" : ""}><span><b>${a}</b>${b && !sl ? `<small>${b}</small>` : ""}</span></label>${sl}</li>`; }).join("") + `</ol>` +
     nextBtn;

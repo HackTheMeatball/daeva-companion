@@ -13,7 +13,7 @@ import { CONF, SD_RW, SOURCES, SRC_SITE, STORY_END, ITEMS, TIPS, GATES, STEPS, Q
   UNLOCK_GATE, VERIFIED_UNLOCKS, NO_AREA, SH_REWARD, aion2Pack, aion2UsePage, aion2QuestMap, mapFocus, aion2TipId, ini,
   spMini, stIco, dvShort, goAreas, cubeClick, stLvClick, stTickClick, stUpClick, RQ_K, spCostTxt, dvGateOf, dvLeft,
   rqStatus, slotNames, specPickOf, stLvOfC, stigmaPlan, stigmaSlots, rqReqOf, aion2AscensionCard, renderAscension } from "pack";
-import { activePack, usePack } from "./core/pack.js";
+import { activePack, usePack, classChoices } from "./core/pack.js";
 import { cardLock, mountAll, registerCard, registeredCards, updateCard } from "./core/cards.js";
 import LOCK_TEXTS from "../data/ui/lock-texts.json";
 import { sourcesCards } from "./cards/sources.js";
@@ -57,8 +57,17 @@ registerCard(charactersCard({ onSwitch: id => useSave(switchChar(state, id)), on
    above Lv 1 sets the story quest (every earlier story quest counts as done, derived from the story order) and then the
    level through Journey's level setter (the one-time setter owner-ok-S1 approved), which stores and redraws; nothing else
    is ticked. The class picked on the card (0.8 P12) is the character's: another class than the untouched start's
-   replaces it (startAsSave), and the save is stored and the page reloaded (useSave) for that class's tables. */
+   replaces it (startAsSave), and the save is stored and the page reloaded (useSave) for that class's tables. A pick
+   renames the class in the page header at once (0.8.1 F4, #586), as aion2BuildMount names it on load. */
+const clsName = cls => (classChoices().find(e => e.class === cls) || {}).name;
+let headCls = null;
 registerCard(welcomeCard({
+  onPick: cls => {
+    const was = clsName(headCls || char(state).class), now = clsName(cls);
+    if (!was || !now) return;
+    for (const el of document.querySelectorAll(".eyebrow > span:first-child, h1")) el.textContent = el.textContent.replace(was, now);
+    headCls = cls;
+  },
   onStart: cls => {
     const next = startAsSave(cls);
     if (next) { next.welcomed = 1; useSave(next); return; }

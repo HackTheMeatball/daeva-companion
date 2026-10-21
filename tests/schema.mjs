@@ -9,6 +9,7 @@ import { join } from 'node:path';
 import { ROOT, validateAll, validateDoc } from '../tools/gen/validate.mjs';
 import { dataSourcesMd, generate, guidePacks } from '../tools/gen/gen.mjs';
 import { checkLedger } from './ledger.mjs';
+import { checkCompliance } from './compliance.mjs';
 
 let n = 0, fail = 0;
 const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' : 'FAIL ') + name + (!c && d !== undefined ? '  · ' + JSON.stringify(d).slice(0, 900) : '')); if (!c) fail++; };
@@ -335,6 +336,16 @@ if (g) {
   sopFails('a Rules line that is not a link', { sopFiles: { ...sops, [merge]: sops[merge].replace('- [MRG-01](../team/gus.md)', '- MRG-01') } }, /Rules line "- MRG-01/);
   sopFails('a dead anchor', { sopFiles: { ...sops, [merge]: sops[merge] + '\n[x](README.md#no-such-heading)\n' } }, /dead anchor README\.md#no-such-heading/);
   sopFails('a dead reference-style link', { sopFiles: { ...sops, [merge]: sops[merge] + '\n[x]: ../gone.md\n' } }, /dead link \.\.\/gone\.md/); }
+/* licence compliance (tests/compliance.mjs): ours only; each fixture is passed as an override, never written. The patterns
+   are split in the source so this file does not trip the check it tests. */
+{ const problems = checkCompliance(); ok(`licence compliance checks (${problems.length} problems)`, !problems.length, problems);
+  const fails = (label, files, re) => { const p = checkCompliance(ROOT, { files }); ok('compliance check rejects: ' + label, p.some(x => re.test(x)), p.slice(0, 3)); };
+  fails('an MIT header', { 'src/x.js': '/* ' + 'MIT Li' + 'cense\n\nPermission is hereby ' + 'granted, free of charge, to any person */' }, /src\/x\.js: contains an "MIT Li/);
+  fails('an MIT permission text alone', { 'src/x.js': '// Permission is hereby ' + 'granted, free of charge, to any person' }, /contains a "Permission is hereby granted/);
+  fails('a foreign SPDX id', { 'src/x.js': '// SPDX-License-' + 'Identifier: Apache-2.0\n' }, /SPDX-License-Identifier "Apache-2\.0"/);
+  fails('a stray LICENSE.md', { 'tools/LICENSE.md': 'All rights reserved.\n' }, /tools\/LICENSE\.md: a licence file other than the root LICENSE/);
+  const ours = checkCompliance(ROOT, { files: { 'src/x.js': '/* SPDX-License-' + 'Identifier: PolyForm-Strict-1.0.0 */' } });
+  ok('compliance check accepts our own SPDX id', !ours.length, ours.slice(0, 3)); }
 console.log(`${n - fail} ok, ${fail} failed (${Date.now() - t0} ms)`);
 console.log(fail ? `SCHEMA CHECKS FAILED (${fail})` : 'SCHEMA CHECKS PASSED');
 process.exit(fail ? 1 : 0);

@@ -41,8 +41,9 @@ function renderDaevanion() {
   setHTML(document.getElementById("dvBig"), dvBigHTML(total, left));
   /* One node at a time: the next unbought node on an unlocked board, in the milestones' order. */
   const opts = [dvNext(char(state))].filter(Boolean), list = document.getElementById("dvNextList");
-  /* innerHTML, not setHTML: dvNxUpdate (below and on every cost typed) fills its bar, label and button after the write */
-  list.innerHTML = opts.length
+  /* setHTML (0.9 P30): dvNxUpdate, run right after on every pass (and on every cost typed), re-applies its bar, label and
+     button in full; refreshDvGates and fitSkills likewise re-apply the box and the hero row's size */
+  setHTML(list, opts.length
     ? opts.map(it => { const cost = dvCostOf(char(state), it);
         const st = !cost ? `<span class="dvst">enter in-game cost</span>` : cost <= (total - dvSpent(char(state))) ? `<span class="dvst ok">ready to buy</span>` : `<span class="dvst"></span>`;
         /* Next node, top to bottom: what (icon + name), progress (points left vs its cost, cost editable inline),
@@ -58,7 +59,7 @@ function renderDaevanion() {
           /* E6: the hero's one-line small text keeps the quest, the status below it the distance (both fit at 390 px; nothing said twice) */
           `<div class="buyrow"><div class="buystat done">✓ All open nodes acquired · ${w && w.story && dvWhy(w).split(" · ")[1] ? `<span class="nw">next: ${nl.board}</span> · <span class="nw">${dvWhy(w).split(" · ")[1]}</span>`
             : `<span class="nw">next: ${nl.board} ${w && w.story ? dvWhy(w).replace(/^opens /, "") : `at Lv ${at}`}</span>`}</div></div></div>`; })()
-    || `<div class="alldone"><div class="dvhead"><span class="dvico done-ico" aria-hidden="true">✓</span><div class="dvtext"><span class="spname">All planned nodes acquired</span><small>Spare crystals: Critical Hit and Attack nodes</small></div></div></div>`;
+    || `<div class="alldone"><div class="dvhead"><span class="dvico done-ico" aria-hidden="true">✓</span><div class="dvtext"><span class="spname">All planned nodes acquired</span><small>Spare crystals: Critical Hit and Attack nodes</small></div></div></div>`);
   dvNxUpdate(); renderUndo(); requestAnimationFrame(() => typeof fitSkills === "function" && fitSkills());
   /* "Then": the next few nodes after this one (same order), like Skills' Coming up. */
   const after = DV_NODES().filter(it => !char(state).checks[it.k]).slice(opts.length || 1, (opts.length || 1) + 14);
@@ -83,7 +84,8 @@ function renderDaevanion() {
   const byBoard = {};
   DV_NODES().forEach(it => { (byBoard[it.board] = byBoard[it.board] || []).push(it); });
   /* innerHTML, not setHTML: its rows and boxes change after the write (milestoneFilters hides ticked rows, refreshDvGates
-     and the tick and cost handlers set their boxes and art) */
+     and the tick and cost handlers set their boxes and art); 0.9 P30 kept it: update() runs milestoneFilters before this
+     redraw, so a skipped write would leave rows as the last filters left them, not as a fresh write draws them */
   document.getElementById("dvAllList").innerHTML = Object.entries(byBoard).map(([b, list]) => {
     const opens = Math.min(...list.map(it => it.blv)), wb = dvWaitOf(char(state), b), shut = !!wb, done = list.filter(it => char(state).checks[it.k]).length;
     return `<ul class="items dv-board${shut ? " shut" : ""}"><li class="sub-h"><span class="sub-txt">${b} · ${shut ? (wb.story ? dvWhy(wb) : `opens at Lv ${opens}`) : `${done} of ${list.length} acquired`}</span></li>${list.map(dvRowHTML).join("")}</ul>`;

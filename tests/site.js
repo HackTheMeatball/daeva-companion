@@ -131,6 +131,17 @@ const checkReport = (label, m, want) => {
       /* force: Playwright won't click an aria-disabled element, which is the point here */
       if (soonCls) await pc.click(`.welclass[data-class="${soonCls}"]`, { force: true });
       ok('welcome class: clicking a "Soon" class picks nothing', await pc.evaluate(() => [...document.querySelectorAll('.welclass[aria-checked="true"]')].map(x => x.dataset.class).join()) === 'assassin');
+      /* 0.8.1 F4 (#586): the page header follows a pick at once, before Start; picking the Assassin again restores it */
+      {
+        const head = () => pc.evaluate(() => [document.querySelector('h1').textContent, document.querySelector('.eyebrow > span:first-child').textContent]);
+        const h0 = await head(), other = cl.playable.find(c => c !== 'assassin');
+        const otherName = await pc.evaluate(c => packClasses().find(e => e.class === c).name, other);
+        await pc.click(`.welclass[data-class="${other}"]`); const h1 = await head();
+        await pc.click('.welclass[data-class="assassin"]'); const h2 = await head();
+        ok(`welcome class: picking ${other} renames the page header at once, the Assassin again restores it`,
+          h0[0] === 'Asmodian Assassin Route' && h1[0] === `Asmodian ${otherName} Route` && h1[1].includes(` · ${otherName} · `) && !h1[1].includes('Assassin')
+          && JSON.stringify(h2) === JSON.stringify(h0) && !(await pc.evaluate(() => document.getElementById('welcomeCard').hidden)), { h0, h1, h2 });
+      }
       /* each class with a guide: a fresh browser starts as it, one character of that class (no leftover Assassin slot) */
       const live = () => pc.evaluate(k => Object.values(JSON.parse(localStorage.getItem(k)).chars).filter(c => !c.deletedAt).map(c => c.class), KEY).catch(e => String(e));
       for (const c of cl.playable) {
