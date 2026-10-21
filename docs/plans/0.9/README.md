@@ -409,8 +409,8 @@ Rules for every item:
 - **Acceptance.**
   - [ ] Browser test: a Lv 39 join reaches every skill's target in one tap per skill; Undo reverses a tap.
   - [ ] Endgame case (beta tester T1, owner report 2026-10-20 10:07 PM ET: "pretty clunky getting his skills caught
-        up"): the same test on a Lv 45 join holding 180 stones; the catch-up rows reflect what the stones buy and
-        nothing asks for per-line "Mark spent" clicks. Baseline on live 0.8.0 (Player Testing's endgame catch-up
+        up"), measurement only: the same test on a Lv 45 join holding 180 stones, one tap per skill and no per-line
+        "Mark spent" clicks. Baseline on live 0.8.0 (Player Testing's endgame catch-up
         script, 2026-10-21): 141 clicks for skills including specialty picks; paste the new count with the same script.
   - [ ] Shots at 1500 and 390 px, Basic and Advanced, against the mock.
 - **Lanes:** skills-card, nextup-card, app.css, golden, golden-nextup. **Model:** Opus, L (120 min).
@@ -434,8 +434,9 @@ Rules for every item:
 - **Acceptance.**
   - [ ] Browser test: "Have them" ticks one board's guide nodes, "Respec this board" clears only that board, Undo
         reverses both; Stigmas Respec clears the slots.
-  - [ ] Endgame case (beta tester T1, owner report 2026-10-20 10:07 PM ET): a Lv 45 join with 336 Daevanion crystals
-        and 90 stigma shards catches up every open board and the stigma slots in one tap each, with the totals filled.
+  - [ ] Endgame case (beta tester T1, owner report 2026-10-20 10:07 PM ET), measurement only: a Lv 45 join holding the
+        tester's 336 Daevanion crystals and 90 stigma shards catches up every open board and the stigma slots in one tap
+        each.
         Baseline on live 0.8.0 (the same script): 31 clicks for stigmas and 24 for Daevanion; paste the new counts.
         Stigmas past Lv 45 ("didn't seem to scale well with endgame") are 0.10's endgame scope, not this item.
   - [ ] Shots at 1500 and 390 px against the mock.
@@ -495,9 +496,10 @@ Rules for every item:
   the game exactly, and today's macro model is wrong (right-click can cycle more than 4 keys); the owner also asked for
   a simple "autopilot" layout (hold left / right click plus Q / E / R / F) next to the advanced split. Game Data Check
   ruled that a macro steps through slots, so it can cycle more than 4 skills, and that the macro is drawn as steps; the
-  ruling lands as a `skill-bar` research file (`research-skill-bar`), with the grid order (the game's row 0 at the
-  bottom or top-down) settled by the owner first. Design Lead says before kickoff whether the simple layout and the
-  macro steps change the keys mock, and if they do the updated mock is on main first.
+  ruling lands as a `skill-bar` research file (`research-skill-bar`). The grid follows the game, row 0 at the bottom
+  (DECISIONS `owner-ok-0.9-key-grid`, 2026-10-20 10:16 PM ET). Design Lead writes `docs/design/0.9-keys-macro.md`:
+  whether the simple layout and the macro steps change the keys mock, with the updated mock in `docs/design/0.9-keys/`
+  if they do.
 - **Result.** As Design Lead's approved mock shows: key setup is a bottom sheet; icons fill each box with a tap or
   focus tooltip; each key chip can be tapped to rebind; one `keys` save field with the class default when empty (no key
   bump); every class in the same layout. The right-click macro is a list of steps, each naming a slot (a slot holds at
@@ -505,7 +507,8 @@ Rules for every item:
   its schema for every class, per the skill-bar research file; its step limit comes from that file or is labelled
   unknown.
 - **Inputs.** `docs/design/0.9-keys/` (Design Lead's mocks, #619 and #656; merged with Design Lead's look
-  OK after the fresh review; owner 2026-10-20 5:21 and 5:24 PM ET). Kickoff holds the item until they are on main.
+  OK after the fresh review; owner 2026-10-20 5:21 and 5:24 PM ET), `docs/design/0.9-keys-macro.md` (Design Lead's
+  call on the simple layout and macro steps). Kickoff holds the item until both are on main.
 - **Files.** `src/packs/aion2/cards/build.js`, `src/packs/aion2/cards/build.html`, `data/schema/` (the key stacks),
   `data/schema/examples/**/builds.json`, `data/packs/aion2/asmodian/*/builds.json` (`keyStacks`), `tools/gen/*`,
   `src/packs/aion2/data/build.js`, `src/core/state.js` (`keys`
@@ -518,7 +521,7 @@ Rules for every item:
   - [ ] `npm run gen` passes with the stepped macro for every class; Game Data Check's `DATA OK` on the head.
   - [ ] Shots at 1500 and 390 px against the mock.
 - **Lanes:** gen, build-card, app.css, a11y, golden, mig, save. **Model:** Opus, L (120 min).
-- **After:** research-bindable-keys, research-skill-bar.
+- **After:** research-bindable-keys, research-skill-bar, owner-ok-0.9-key-grid.
 
 ## P23: The Sources lists load when the card opens
 
@@ -591,7 +594,7 @@ routed them here as build items. Each turns an existing rule into a check and lo
   - [ ] Each negative fixture (an MIT header, a foreign SPDX id, a stray `LICENSE.md`) makes the check fail; paste the
         three messages.
 - **Review:** standing (a new check; it tightens).
-- **Lanes:** schema, compliance. **Model:** Sonnet, S (45 min).
+- **Lanes:** schema, compliance, run-mjs. **Model:** Sonnet, S (45 min).
 - **After:** none.
 
 ## P26: PRIVACY.md names the save key the code uses (CK-3)
@@ -602,13 +605,16 @@ routed them here as build items. Each turns an existing rule into a check and lo
   and every `companion-save-v<n>` that PRIVACY.md names equals it (the `:before-import` suffix allowed). A negative
   fixture in `tests/schema.mjs` (a PRIVACY text naming `-v4`) fails it.
 - **Inputs.** none.
-- **Files.** `tests/compliance.mjs`, `tests/schema.mjs`.
-- **No-gos.** No change to PRIVACY.md or the save key.
+  P2 bumps the key to `companion-save-v6` and doesn't list PRIVACY.md, so this item also brings PRIVACY.md's key
+  lines to the code's key (those lines only).
+- **Files.** `tests/compliance.mjs`, `tests/schema.mjs`, `PRIVACY.md` (the key lines only).
+- **No-gos.** No other change to PRIVACY.md; no change to the save key.
 - **Acceptance.**
-  - [ ] Passes on main; the fixture fails with a message naming both keys.
+  - [ ] Passes on this branch after P2; the fixture fails with a message naming both keys; the PRIVACY.md diff touches
+        only key names.
 - **Review:** standing.
 - **Lanes:** schema, compliance. **Model:** Sonnet, S (45 min).
-- **After:** P25.
+- **After:** P2, P25.
 
 ## P27: Every shipped icon has its provenance row (CK-2)
 
@@ -661,7 +667,7 @@ picker and opens from a stored save. P28 finishes P3's own goal in the tests; P2
   - [ ] `npm test` green.
 - **Review:** standing.
 - **Lanes:** schema, e2. **Model:** Sonnet, S (45 min).
-- **After:** P27.
+- **After:** none.
 
 ## P29: A hidden class is not offered and no save opens it
 
@@ -672,9 +678,9 @@ picker and opens from a stored save. P28 finishes P3's own goal in the tests; P2
   "Chanter" title (set-up B; core goes red there, but nothing blocks set-up A). No class is hidden on live today, so no
   player is affected; this is the switch that 1.1's Elyos packs and any pulled class will rely on.
 - **Result.**
-  - The playable classes come from the data: the generated module exports each class's id, guide pack and name for
-    released classes with a guide pack, and `src/packs/aion2/pack.js` builds `classes` from it (the per-class constants
-    and the PR-history comment go). The emblem map may stay hand-kept (it is art, not a class list).
+  - The playable classes come from the data: P11's generated `GUIDE_CLASSES`, which `src/packs/aion2/pack.js` already
+    reads, leaves out any class whose `release` is `hidden` (a hidden class's guide pack stays in the data and
+    `DATA_SOURCES.md`). The emblem map may stay hand-kept (it is art, not a class list).
   - The build makes a class chunk only for those classes (a hidden class's guide pack stays in `DATA_SOURCES.md` and
     the data, never in a served file).
   - A stored save whose current character's class is not playable never shows another class's tables: the loader and
@@ -697,8 +703,9 @@ picker and opens from a stored save. P28 finishes P3's own goal in the tests; P2
   - [ ] Player Testing (Jesse) re-runs #689's set-ups, the negative control and Import: `P3 PROVEN <sha>`.
   - [ ] Engineering (Gus) reviews the architecture change (ownership since 2026-10-20). `npm test` green.
 - **Review:** standing, plus Engineering for the architecture and Design Review for the row.
-- **Lanes:** gen, e2. **Model:** Opus, M (90 min).
-- **After:** P28.
+- **Lanes:** gen, e2, architecture. **Model:** Opus, M (90 min). (`src/core/state.js` and `tests/core/state.test.mjs`
+  are shared with P9 on **architecture**; `scripts/build.mjs`'s other 0.9 items, P4 and P5, have merged.)
+- **After:** P11, P28.
 
 ## P30: Skip identical writes in the cards P5 left out
 
@@ -717,8 +724,38 @@ picker and opens from a stored save. P28 finishes P3's own goal in the tests; P2
   - [ ] The count check's N goes down by the writes removed (pasted before / after).
   - [ ] Golden and regress pinned diffs unchanged; "No visible change".
 - **Review:** standing.
-- **Lanes:** stigmas-card, journey-card, areas-card, daevanion-card. **Model:** Opus, M (90 min).
+- **Lanes:** stigmas-card, journey-card, daevanion-card, nextup-card, site. **Model:** Opus, M (90 min).
+  (`journey-sections.js` is shared with P19 and `areas.js` with P13, both on **nextup-card**; `tests/site.js` with P23
+  and P24 on **site**.)
 - **After:** P5.
+
+## P31: Quotes from other hosts: credited or paraphrased (Legal's C7)
+
+- **Problem.** Legal's quotes ruling (C7, v2, outside review Gomez, 2026-10-21) found `quote` fields that don't meet
+  their hosts' terms: 26 from thegameswiki whose credit doesn't name and link CC BY-NC-SA, 15 of Metabot's 33 that
+  should be paraphrased, and 65 on 14 other hosts. It must be done before 0.9 ships, after 0.8.1's allthings.how batch
+  (F9 #662, F10 #690).
+- **Result.**
+  - Game Data Check commits `docs/research/2026-10-quotes-c7.md` with one table per group, in F9's form: (a)
+    thegameswiki: each credit completed with the licence named and linked, or a paraphrase where the credit can't be
+    completed; (b) Metabot: the 15 tagged quotes paraphrased, after Legal's blind 10-sample of the tags; (c) the 65 other
+    quotes paraphrased.
+  - This item applies the tables byte for byte and adds the gen check for the quotes column (ruling item 7): a `quote`
+    field fails unless its host is allowed quotes by SOURCES.md and its credit is complete. Build Pipeline decides
+    whether it ships complete or with a shrinking exception list.
+  - `npm run gen` rewrites `data/DATA_SOURCES.md`.
+- **Inputs.** `docs/research/2026-10-quotes-c7.md`.
+- **Files.** `data/packs/aion2/**/claims.json`, `data/packs/aion2/asmodian/regional-quests.json`,
+  `data/packs/aion2/asmodian/strongholds.json` (only rows the tables name), `data/schema/examples/**/claims.json`,
+  `data/DATA_SOURCES.md`, `tools/gen/*` (the check), the tests.
+- **No-gos.** No fetching, no fact or URL removed, no schema change, no verdict weakened.
+- **Acceptance.**
+  - [ ] Every table row applied byte for byte; paste the counts per group before and after.
+  - [ ] The gen check fails on a fixture (a thegameswiki quote with its licence link removed) and passes on this branch.
+  - [ ] "No visible change", or shots and `scrapbook.json` if a label shows in the app; Game Data Check's `DATA OK`.
+- **Review:** standing.
+- **Lanes:** gen, golden. **Model:** Opus, M (90 min).
+- **After:** research-quotes-c7.
 
 ## S1–S4: pipeline items (Build Pipeline builds them; no queue line)
 
