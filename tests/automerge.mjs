@@ -484,6 +484,9 @@ check(H.holdStays(PB, HELD, WH, [HL('VERDICT: APPROVE (reviewer: Howard)'), OKH]
 check(/CHANGES from howard/.test(H.holdStays(PB, HELD, WH, [OKH, CHH], true, (x) => nbP([OKH, CHH], x), lineH)), 'stays: the named reviewer approved, then asked for changes');
 check(/waits on francesca, gale/.test(H.holdStays(RB, HELD, WH, [FOK], true, (x) => namedBlocker([FOK], SHA, RB, x, HELD, []), lineF)), "stays: the condition is met but the body's Reviewers: names still wait (every gate still counts)");
 // Reviewers: line edge cases (#745 review): a name only in parentheses, and an unclosed "(".
+check(V.reviewers('Reviewers: (Gale, Howard)') + '' === 'gale,howard', 'verdicts: a parenthesis around the whole list keeps every name (#750 review)');
+check(V.holds('HOLD: FRESH REVIEW OK on abc1234 (owner: Walter)')[0].reviewer === 'fresh review' && V.holds('HOLD: until DESIGN OK on f00dfee0 (owner: Jane)')[0].reviewer === 'design lead',
+  'holds: "… on <sha7>" names its reviewer like "on head" (the review must still name the head; #750 review)');
 check(V.reviewers('Reviewers: (Gale)') + '' === 'gale' && V.reviewers('Reviewers: Howard (code, Gale') + '' === 'howard,gale', 'verdicts: "(Gale)" keeps Gale; an unclosed "(" keeps both names (#745 review)');
 check(!/Reviewers: line\) to approve/.test(yml), 'the wait message no longer says "(Reviewers: line)" for a Review: line or implied wait (#745 review)');
 check(/holdStays\([^\n]*blockerFor, line\)/.test(hl0), 'loop: holdStays gets the blocker function and the HOLD line');

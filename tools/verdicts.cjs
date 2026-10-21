@@ -52,13 +52,13 @@ const reviewers = (body) => {
   const l = lines(body).find((x) => /^Reviewers:/.test(x));
   if (!l) return [];
   return l.replace(/^Reviewers:/, '').replace(/([^\s(,;])\s*\([^)]*\)/g, '$1').split(/[,;]/)
-    .map((x) => x.trim().replace(/^\(([^)]*)\)$/, '$1').replace(/\s*\(.*$/, '').trim().toLowerCase()).filter(Boolean);
+    .map((x) => x.trim().replace(/^\(\s*/, '').replace(/\s*\)$/, '').replace(/\s*\(.*$/, '').trim().toLowerCase()).filter(Boolean);
 };
 
 // A person's hold line (MRG-09, #744): "HOLD: <condition> (owner: <name>)" on its own line, unquoted. Every such line, in
 // order, as { cond, owner, reviewer }: reviewer is the gate name the condition waits on when it is one of the closed list
-// (FRESH REVIEW OK, DESIGN OK, Game Data Check VERIFIED, VERDICT: APPROVE|OK (reviewer: <name>); "until …" and "… on head"
-// allowed), else null, and a free-text condition is for its owner to judge.
+// (FRESH REVIEW OK, DESIGN OK, Game Data Check VERIFIED, VERDICT: APPROVE|OK (reviewer: <name>); "until …" and "… on head" or
+// "… on <sha7>" allowed; the review must still name the head), else null, and a free-text condition is for its owner to judge.
 const HOLD = /^HOLD:\s*(.+?)\s*\(owner:\s*([^)]+?)\s*\)\s*$/;
 const HOLDCONDS = [
   [/^FRESH REVIEW OK$/, () => 'fresh review'],
@@ -67,7 +67,7 @@ const HOLDCONDS = [
   [/^VERDICT:\s*(?:APPROVE|OK)\s*\(reviewer:\s*([^)]+?)\s*\)$/, (m) => m[1].toLowerCase()],
 ];
 const holds = (body) => own(body).map((l) => l.trim().match(HOLD)).filter(Boolean).map(([, cond, owner]) => {
-  const c = cond.replace(/^until\s+/i, '').replace(/\s+on head$/i, '').trim();
+  const c = cond.replace(/^until\s+/i, '').replace(/\s+on (?:head|[0-9a-f]{7,40})$/i, '').trim();
   for (const [re, name] of HOLDCONDS) { const m = c.match(re); if (m) return { cond, owner, reviewer: name(m) }; }
   return { cond, owner, reviewer: null };
 });
