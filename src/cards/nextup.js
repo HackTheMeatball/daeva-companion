@@ -10,6 +10,7 @@ import { setHTML } from "../core/cards.js";
 import { chainsOn, objPartsOf, questIdx, turnInNeedsLv } from "../core/requirements.js";
 import { TRACKS, rankChangeOn, rankNext, trackOf, tracksDiffer } from "../core/nextup.js";
 import { completeBefore, renderQuestSubs, setObj, setSub, stepQuest, subListHTML } from "./journey.js";
+import { showGate } from "./milestones.js";
 import { pageState as state, pageSave as save, pageUpdate as update, pageMainEl as mainEl, pageLayoutEl as layoutEl, pageSMOOTH as SMOOTH, pageTipClick as tipClick, pageTipGoClick as tipGoClick, pageTipEsc as tipEsc, pageGATES as GATES, pageQUESTS as QUESTS, pageQUEST_STEPS as QUEST_STEPS, pageSTORY_END as STORY_END, pageObjIdx as objIdx } from "./page.js";
 
 /* Next up (#nowStar) can move into a pop-out window, so it is always reached through this node. */
@@ -326,8 +327,8 @@ function nextUpMount(el) {
     else if (a === "setquest") { const i = document.getElementById("questIn"); i.scrollIntoView({ behavior: SMOOTH(), block: "center" }); i.focus(); }
     else if (a.startsWith("rqgo:")) { /* open the milestone and land on that quest's row */
       const inp = mainEl.querySelector(`input[data-k="${CSS.escape(a.slice(5))}"]`), d = inp && inp.closest("details");
-      if (d) { d.open = true; state.open[d.id] = true; save(); d.classList.add("peek"); d.hidden = false; requestAnimationFrame(() => { const li = inp.closest("li"); li.scrollIntoView({ behavior: SMOOTH(), block: "center" }); li.classList.add("flash"); setTimeout(() => li.classList.remove("flash"), 1600); }); } }
-    else if (a.startsWith("gate:")) { const g = document.getElementById(a.slice(5)); if (g) { g.open = true; g.scrollIntoView({ behavior: SMOOTH(), block: "start" }); } }
+      if (d) { showGate(d, false); requestAnimationFrame(() => { const li = inp.closest("li"); li.scrollIntoView({ behavior: SMOOTH(), block: "center" }); li.classList.add("flash"); setTimeout(() => li.classList.remove("flash"), 1600); }); } }
+    else if (a.startsWith("gate:")) { const g = document.getElementById(a.slice(5)); if (g) showGate(g); }
   });
   nowEl.addEventListener("change", e => {
     const sq = e.target.dataset && e.target.dataset.nssub, st = (f, t) => nsWin().setTimeout(f, t);

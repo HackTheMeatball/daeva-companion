@@ -223,6 +223,18 @@ const cards = p => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-
     }));
     ok(`one view ${w}px: every rail card reachable (Progress, Journey, Dungeons & Strongholds, The map)`, rail.length === 4 && rail.every(x => x.ok), rail);
   }
+  /* A jump to a milestone (an Ahead row; Journey's rows, Next up and Progress share showGate) shows it even while "All steps" is closed and the
+     milestone is one that fold hides: it lands open and on screen. */
+  await p.setViewportSize({ width: 1500, height: 900 }); await setState(p, clean(20, 'Symbol of Liberation'));
+  const jumpTo = await p.evaluate(() => { const a = [...document.querySelectorAll('.ah-row[data-gogate]')].reverse().find(a => a.checkVisibility() && !document.getElementById(a.dataset.gogate).checkVisibility());
+    if (a) a.setAttribute('data-t-jump', ''); return a ? a.dataset.gogate : null; });
+  ok('one view: an Ahead row points at a milestone the closed "All steps" fold hides', !!jumpTo && await p.evaluate(() => !state.open.allSteps));
+  if (jumpTo) {
+    await p.click('[data-t-jump]'); await p.waitForTimeout(900);
+    const at = await p.evaluate(id => { const d = document.getElementById(id), r = d.querySelector(':scope > summary').getBoundingClientRect();
+      return { vis: d.checkVisibility(), open: d.open, top: Math.round(r.top), bottom: Math.round(r.bottom), h: innerHeight }; }, jumpTo);
+    ok('one view: clicking an Ahead row opens that milestone and puts it on screen ("All steps" closed)', at.vis && at.open && at.bottom > 0 && at.top < at.h, { jumpTo, ...at });
+  }
   /* 12d. Phone folds (0.5 P6, phone-layout 3.6; 0.9 P21: always): at <= 600 px Dungeons & Strongholds and Progress fold,
      folded by default, each a 48 px summary row; Journey stays open; a Progress row's jump opens the fold; above
      600 px the cards are as a fresh load has them, saved fold_* keys or not. */

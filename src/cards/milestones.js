@@ -249,14 +249,19 @@ function milestonesMount() {
   layoutEl.addEventListener("click", e => {
     const a = e.target.closest("[data-gogate]"); if (!a) return;
     e.preventDefault();
-    const d = document.getElementById(a.dataset.gogate); if (!d) return;
-    d.hidden = false; d.open = true; state.open[d.id] = true; save();
-    d.scrollIntoView({ behavior: SMOOTH(), block: "start" });
+    const d = document.getElementById(a.dataset.gogate); if (d) showGate(d);
   });
   const btnReset = document.getElementById("btnReset");
   /* Reset filters: back to default (all off). Progress is never touched here. */
   btnReset.addEventListener("click", () => { state.hideCards = false; state.hide = false; state.hideOpt = false; save(); update(); });
 }
 
+/* Jump to a milestone: open it and mark it .peek, so it shows even while the "All steps" fold is closed (which hides
+   every step that isn't next up or missed) or "Hide cleared milestones" is on, then scroll it into view. */
+function showGate(d, scroll = true) {
+  d.classList.add("peek"); d.hidden = false; d.open = true; state.open[d.id] = true; save();
+  if (scroll) d.scrollIntoView({ behavior: SMOOTH(), block: "start" });
+}
+
 const milestonesCard = { id: "milestones", slot: "main", order: 200, root: "gates", mount: milestonesMount, update: () => updateMilestones() };
-export { MAP_ICO, cardHTML, renderMilestones, derivedBox, rqTicked, snoozeToggle, syncQRun, fillStigmaText, milestoneFilters, syncExpand, milestonesCard };
+export { MAP_ICO, cardHTML, renderMilestones, derivedBox, rqTicked, snoozeToggle, syncQRun, fillStigmaText, milestoneFilters, syncExpand, showGate, milestonesCard };
