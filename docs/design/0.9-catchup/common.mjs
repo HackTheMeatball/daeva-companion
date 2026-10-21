@@ -13,6 +13,11 @@ export const mid = { ...fresh, stShards: 3, dvTotal: 140, stLv: { "Triniel's Dag
 /* the same save just after each respec, so the card behind the toast shows the result: Nezekan unticked; stigmas at 1 with 18 shards back */
 export const afterDv = { ...mid, checks: Object.fromEntries(Object.entries(mid.checks).filter(([k]) => !dvN.includes(k))) };
 export const afterSt = { ...mid, stShards: 21, stLv: { "Triniel's Dagger": 1, 'Illusive Clone': 1, 'Swift Contract': 1, 'Savage Fang': 1 } };
+/* after marking Nezekan in the Daevanion catch-up: its guide nodes ticked; Total is still the player's own number (140,
+   the seed's), so Crystals left counts Nezekan's 52 as spent */
+export const nezDone = { ...fresh, dvTotal: 140, checks: Object.fromEntries(dvN.map(k => [k, true])) };
+/* after marking all four stigma slots equipped */
+export const stAll = { ...fresh, checks: Object.fromEntries(['g22:0', 'g22:1', 'g27:0', 'g32:0', 'g37:0'].map(k => [k, true])) };
 
 const COMMON = `
 const css = \`
@@ -97,6 +102,17 @@ li.sub-h { display: flex; align-items: center; }
 /* catch-up in Basic (UX audit 4): the card foot stays, with the catch-up tools only */
 body.basic #spCard .tfoot.mk-keep, body.basic #dvBox .tfoot.mk-keep, body.basic #stCard .tfoot.mk-keep { display: flex !important; }
 .tfoot.mk-keep .mk-hide { display: none !important; }
+/* Daevanion and Stigmas catch-up (fresh review of 4bafe69): a one-line strip above today's hero, with a menu to mark what
+   you already have; the hero, cost field and lists stay */
+.mk-strip { position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-10); padding: var(--space-8) var(--space-10); margin: 0 0 var(--space-10); border: 1px solid var(--line); border-radius: var(--radius-8); background: var(--panel-2); font-size: 12.5px; color: var(--muted); }
+.mk-strip > span { flex: 1 1 13em; }
+.mk-strip b { color: var(--fg); font-weight: 600; }
+.mk-strip .mk-sb { margin-left: auto; flex: none; font: 600 11px var(--mono); padding: var(--space-4) var(--space-10); min-height: 24px; border-radius: var(--radius-pill); border: 1px solid var(--line); background: var(--panel); color: var(--fg); cursor: pointer; }
+.mk-strip .mk-menu { position: static; flex: 1 1 100%; box-shadow: none; min-width: 0; }
+.mk-menu label { display: grid; grid-template-columns: 18px minmax(0,1fr) auto; gap: var(--space-10); align-items: baseline; padding: var(--space-8) var(--space-10); border-radius: var(--radius-6); color: var(--fg); font: 500 13px var(--body); }
+.mk-menu label span { font: 500 11px var(--mono); color: var(--muted); }
+.mk-menu label.off { color: var(--muted); }
+.mk-menu .mk-mnote { margin: var(--space-4) var(--space-10) var(--space-6); font-size: 12px; color: var(--muted); line-height: 1.4; }
 /* the board and slot catch-up rows reuse the skill rows */
 .mk-cu li.lock .t, .mk-cu li.lock .s { color: var(--muted); }
 .mk-cu .ini2 { width: 28px; height: 28px; grid-row: span 2; align-self: start; border-radius: var(--radius-6); }
@@ -204,38 +220,27 @@ export const cuCard = (doneN, set = 39) => mk(CU + `
   dispatchEvent(new Event("resize")); frame($("#spCard"));`);
 /* catch-up finished (or Mark all spent): the card hands back to today's hero by itself, here by buying every open line */
 export const cuDone = mk(`for (let k = 0; k < 200; k++) { const b = $("#spBuy"); if (!b) break; b.click(); } frame($("#spCard"));`);
-/* Daevanion catch-up (UX audit 6): one row per open board with its node count and crystals (costs from #602, the owner's
-   board screens), Have them ticks that board's plan nodes; Triniel isn't open yet. The footer keeps Respec ▾ (note 9). */
-export const dvCatch = (doneN) => mk(CU + `
-  $("#dvBox").classList.add("mk-cu-on");
-  const B = [["Nezekan", 10, 52], ["Zikel", 6, 47], ["Vaizel", 8, 39]], done = ${doneN}, dv = "assets/icons/blue-on.png";
-  const rows = B.map(b => ({ name: b[0] + " board", ico: '<img class="ini2" src="' + dv + '" alt="">', t: b[0] + ' board', s: b[1] + ' nodes · ' + b[2] + ' crystals', btn: "Have them" }));
-  rows.push({ lock: true, ico: '<img class="ini2" src="assets/icons/blue-off.png" alt="">', t: 'Triniel board', s: 'Opens at Lv 40' });
-  ["#dvNextList", "#dvBig", "#dvRemain", "#dvBoard", "#dvThen"].forEach(s => { const e = $(s); if (e) e.innerHTML = ""; });
-  $("#dvNextList").innerHTML = cuList(rows, done, "boards").replace('<ul', '<p class="mk-cu-sub">Boards open at your level. If you already bought a board&rsquo;s guide nodes, mark it; otherwise buy them one at a time below.</p><ul');
-  const b = $("#dvRespec"); b.textContent = "Respec ▾";
+/* Daevanion catch-up (UX audit 6; reworked after the fresh review of 4bafe69): today's card stays whole (hero next node,
+   cost field, Need N more, Crystals left, node list). A strip above it says how many boards opened before you joined, and
+   Mark bought ▾ lists them; marking one ticks its guide nodes (Total stays the number you type). Counts from #602. */
+export const dvCatch = (doneN, open = true) => mk(`
+  const B = [["Nezekan", 10, 52], ["Zikel", 6, 47], ["Vaizel", 8, 39]], done = ${doneN};
+  const sp = document.createElement("div"); sp.className = "mk-strip";
+  sp.innerHTML = '<span><b>3 boards</b> opened before you joined' + (done ? ' · ' + done + ' marked' : '') + '</span><button type="button" class="mk-sb" aria-expanded="${open}">Mark bought ▾</button>' +
+    (${open} ? '<div class="mk-menu" role="menu">' + B.map((b, i) => '<label' + (i < done ? ' class="off"' : '') + '><input type="checkbox"' + (i < done ? ' checked disabled' : '') + '> ' + b[0] + ' board<span>' + b[1] + ' nodes · ' + b[2] + '</span></label>').join("") + '<p class="mk-mnote">Ticks the board&rsquo;s guide nodes, so Crystals left counts them as spent. Triniel opens at Lv 40.</p></div>' : '');
+  const h = $("#dvNextList"); h.parentNode.insertBefore(sp, h); $("#dvRespec").textContent = "Respec ▾";
   frame($("#dvBox"));`);
-/* Stigmas (UX audit 7): the four slots as the card's list, in the same row pattern; Have it marks the slot equipped;
-   Respec in the foot. Plan levels from builds.json stigmaTargets. */
-export const stCatch = (doneN) => mk(CU + `
-  $("#stCard").classList.add("mk-cu-on");
-  const S = [["Triniel's Dagger", 1, 22, "plan Lv 10"], ["Illusive Clone", 2, 27, "plan Lv 20, after Triniel's Dagger"], ["Swift Contract", 3, 32, "stays at Lv 1"], ["Savage Fang", 4, 37, "stays at Lv 1"]];
-  const ic = n => document.querySelector('img[src*="' + n.toLowerCase().replace(/'/g, "").replace(/ /g, "-") + '"]');
-  const done = ${doneN}, rows = S.map(x => { const im = ic(x[0]); return { name: x[0], ico: '<img class="ini2" src="' + (im ? im.getAttribute("src") : "") + '" alt="">', t: x[0], s: 'Slot ' + x[1] + ' · opened at Lv ' + x[2] + ' · ' + x[3], btn: "Have it" }; });
-  const pb = $("#stBody .ptbig"); $("#stBody").innerHTML = (pb ? pb.outerHTML : "") + cuList(rows, done, "slots").replace('<ul', '<p class="mk-cu-sub">Mark the stigmas you already have equipped. Set their levels in Slots.</p><ul');
-  stRs(); frame($("#stCard"));`);
+/* Stigmas catch-up: today's next-stigma block and "change" stay; the strip's Mark equipped ▾ lists the slots opened before
+   you joined. Plan levels stay in the card's own lines. */
+export const stCatch = (doneN, open = true) => mk(`
+  const S = [["Triniel's Dagger", 22], ["Illusive Clone", 27], ["Swift Contract", 32], ["Savage Fang", 37]], done = ${doneN};
+  const sp = document.createElement("div"); sp.className = "mk-strip";
+  sp.innerHTML = '<span><b>4 stigma slots</b> opened before you joined' + (done ? ' · ' + done + ' marked' : '') + '</span><button type="button" class="mk-sb" aria-expanded="${open}">Mark equipped ▾</button>' +
+    (${open} ? '<div class="mk-menu" role="menu">' + S.map((x, i) => '<label' + (i < done ? ' class="off"' : '') + '><input type="checkbox"' + (i < done ? ' checked disabled' : '') + '> ' + x[0] + '<span>slot ' + (i + 1) + ' · Lv ' + x[1] + '</span></label>').join("") + '<p class="mk-mnote">Marks the slot equipped. Set its level in Slots.</p></div>' : '');
+  const pb = $("#stBody .ptbig"); if (pb) pb.after(sp); else $("#stBody").prepend(sp); stRs();
+  frame($("#stCard"));`);
 /* the 1500 top row with all three catch-ups (Holly 9): what the row does when the Skills card is in catch-up */
 export const cuRow = mk(CU + `$("#spCard").parentElement.classList.add("mk-row");`);
-/* Next up: the early Missed chores (more than 10 levels behind) fold into one row (UX audit 8). At a fresh Lv 39 join
-   these are the four below; board openings go to the Daevanion catch-up, Lv 30 and later stay as they are. */
-export const nuFold = (open) => mk(CU + `
-  const cs = [...document.querySelectorAll("#nowStar .ns-card")], early = cs.filter(c => /Refund the tutorial|Extract gear|Noble Belt|Revelation Amulet/.test(c.textContent));
-  const first = early[0]; early.slice(1).forEach(c => c.remove());
-  first.querySelector("h3").innerHTML = '<b>4 early steps</b> you have probably done';
-  const ps = first.querySelectorAll(".title > p"); ps.forEach((p, i) => { if (i) p.remove(); });
-  ps[0].innerHTML = 'Lv 4–16: refund the tutorial point, extract old gear, enhance the Noble Belt and the Revelation Amulet';
-  const meta = first.querySelector(".meta") || first; meta.innerHTML = '<button type="button" class="ns-btn">${open ? "Hide" : "Review"}</button> <button type="button" class="ns-btn">All done</button>';
-  frame(first);`);
 /* Next up keeps its level band (fresh review 3) and its button names the action the card names today */
 /* option A (recommended): one card per skill, in the list's order */
 export const nuStep = mk(CU + `

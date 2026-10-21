@@ -88,11 +88,20 @@ whole jump instead of one level.
 - Other levels: `10-skills-lv27-390` (96 pts, 8 skills at 4–9), `10-skills-lv45-390` (203 pts, 10 skills). Another class:
   `10-skills-ranger-*`, where specialties have no sourced pick yet ("Specialty slot 1 opens · no sourced pick yet").
 
-**Daevanion** (`10-boards-*`): one row per open board, with its plan nodes and crystals ("Nezekan board · 10 nodes · 52
-crystals · Have them"). Triniel is listed, greyed: "Opens at Lv 40". The crystal counts come from #602. Isaac's Zikel
-screen reads "Total: 42" against 47 here, so that one is with Game Data Check before the build. **Stigmas** (`10-stigmas-*`): the four slots in the
-same row pattern, with "Have it" and their plan levels. Each button's name says which row it marks ("Have them: Zikel
-board").
+**Daevanion and Stigmas** (`10-boards-*`, `10-stigmas-*`): today's cards stay whole: the hero next node with its cost
+field, "Need 9 more · +4 per level", Crystals left and the board's node list; the next stigma with "change ▾" and its
+action. Above the hero, one strip says what opened before you joined, with a menu to mark what you already have:
+- Daevanion: "3 boards opened before you joined · Mark bought ▾". The menu lists Nezekan (10 nodes · 52), Zikel (6 · 47)
+  and Vaizel (8 · 39), and says "Triniel opens at Lv 40". Marking a board ticks its guide nodes. Total stays the number you
+  type from the game, so Crystals left counts them as spent (`10-boards-after-*`: 140 typed, 88 left, the hero moves to
+  Zikel).
+- Stigmas: "4 stigma slots opened before you joined · Mark equipped ▾", with each slot and its level. Marking one ticks the
+  slot equipped; you set its level in Slots. After all four (`10-stigmas-after-*`) the strip is gone and the card is today's.
+- The crystal counts come from #602. Zikel is 47: Isaac's first notes said 42, a typo he corrected on 2026-10-20
+  (Game Data Check, `release/owner-notes-2026-10-20-lv39-fixed.txt`).
+- The strip keeps its total and counts what you've marked ("3 boards opened before you joined · 1 marked"). It goes when
+  every board or slot is marked, and the card is today's. The menu opens in the strip, pushing the hero down, so "Need N
+  more" stays in view while you mark.
 
 **The 1500 row** (`10-row-1500`): all three cards in catch-up together. The Skills card sets the row's height, Daevanion
 and Stigmas fill it, and the three foot rows line up.
@@ -104,11 +113,11 @@ specialty …", and Mark spent. This is what Isaac described.
 **Next up, option B** (`10-nextup-b-*`): one card for the whole catch-up ("Catch up 8 skills · 164 of your 165 pts · Heart
 Gore first", Show in Skills). Not picked: Next up stops naming the next action, which is its job.
 
-**Folded chores** (`10-nextup-fold-*`, UX audit 8): the four Missed chores from more than 10 levels back (Lv 4–16) fold into
-one card, "4 early steps you have probably done", with Review and All done.
+**Missed chores stay as they are.** The fold (UX audit 8) is dropped: a fresh review found it hid each chore's how-to,
+location and Done, and "All done" would dismiss four steps you hadn't seen. Today's chore cards keep all of that.
 
 **Cost:** no new card height: the Skills card keeps its shape, and the hero and Coming up only change what they count.
-Build work is a jump step in the Skills hero, a catch-up kind in Next up, and two row lists. No save field: a jump is done
+Build work is a jump step in the Skills hero, a catch-up kind in Next up, and one strip with a menu, used twice. No save field: a jump is done
 when its lines are ticked.
 
 **Out of scope, but it touches this:** slot 2 specialties (0.8.1 notes 5 and 6). Once they land, a jump whose board nodes
@@ -126,7 +135,8 @@ take the skill to 12 adds "· slot 2: …" to its line.
 |---|---|
 | Skills hero, its ACTIVE chip, "priority #1", "Mark spent", "+N more your points cover", Coming up and "N of 141 spent" in catch-up (Holly 2, 3; critic 2) | Brought back: catch-up now uses today's hero |
 | Next up's level band in catch-up (critic 3) | Brought back |
-| Daevanion's and Stigmas' heroes (next node, next stigma level) while their catch-up is open (Holly re-review) | Brought back after the catch-up: once the last "Have them" / "Have it" is marked, each card returns to today's hero, as Skills does (`10-skills-done-*`). During the catch-up the list is the card's next step. These two catch-up looks and the folded chores are new since the critic's pass, so they get one fresh look (K24) before the build |
+| Daevanion's and Stigmas' heroes, cost field, "Need N more", Crystals left, node list, the next stigma and "change ▾" (Holly re-review; fresh review of 4bafe69, 1–3, 11–12) | Brought back: both cards stay whole, and catch-up is a strip above the hero |
+| Each Missed chore's how-to, location and Done (fresh review 18–19) | Brought back: the fold is dropped |
 | "How points work" / "How shards work" labels | Kept, as the name and tooltip of the "i" button |
 | The two-step "Click again to respec" (critic 7) | Brought back, with Undo added. A fresh outside reviewer said bring back: the Undo toast lasts about 5 s, isn't saved, and sits a card away from the button on a phone, while a Daevanion respec also clears typed node costs. Undo alone would do only if it were kept in the save until the next change. |
 
@@ -142,7 +152,7 @@ take the skill to 12 adds "· slot 2: …" to its line.
 | 8 | Fixed: no dead band; the card keeps today's shape (the old view left `fitSkills`' min-height) |
 | 9 | Fixed: `10-row-1500` |
 | 10 | Fixed: Basic catch-up frames and the hand-back (`10-skills-done-*`) |
-| 11 | Fixed: "Mark spent", "Have them", "Have it"; Next up "Mark spent" |
+| 11 | Fixed: "Mark spent", "Mark bought", "Mark equipped"; Next up "Mark spent" |
 | 12 | Fixed: one foot row on all three cards (the "i" button) |
 | 14 | Fixed: "Nezekan reset · 10 nodes back · Undo" |
 | 15 | No data issue: specialty slot 1 opens at skill Lv 8 (`rule:specialty-slots`), so a pick at 9 is open |
@@ -169,3 +179,29 @@ take the skill to 12 adds "· slot 2: …" to its line.
 | B1, B2 | For Holly's brief template, not the design |
 | B3 | Fixed: Lv 27 and Lv 45 frames, 360 frames for the menu and the board chip |
 | Checklist | Names: each row button names its row; the ✓ is "Marked". Tap targets: Mark all spent, N more and the board chip are 24 px tall. Text: nothing under 11 px. Missing states drawn: Basic, nothing to respec, Lv 27 / 45, catch-up done. Not drawn: the Undo toast timing out (it leaves, and the respec stays); focus rings (the build's own `:focus-visible` applies; checked in the build PR). Saved progress: no new field. |
+
+**Fresh review of the catch-up looks** (`design-review/fresh-review-0.9-catchup.md`, items 1–24, at 4bafe69)
+
+| # | Answer |
+|---|---|
+| 1–3, 11, 12 | Fixed: the cards stay whole; catch-up is a strip above the hero |
+| 4 | Fixed: the NEW tag is back with the card |
+| 5 | Kept: "Respec ▾" is note 9's option A |
+| 6, 8 | Gone with the row list |
+| 7, 16 | Fixed: "Mark bought ▾", "Mark equipped ▾" |
+| 9 | Settled: 47. The owner's 42 was a typo he corrected (Game Data Check) |
+| 10, 17 | Fixed: the hero is the next action during catch-up too; after-states drawn (`10-boards-after-*`, `10-stigmas-after-*`) |
+| 13 | The "i" button has the accessible name "How shards work" (and a tooltip) |
+| 14 | Respec in Basic is the owner's ask (note 9, 0.8.1 F7); the one view keeps it |
+| 15 | Gone with the row list |
+| 18–24 | Fixed: the chore fold is dropped |
+| Lv 27 / 45 | Skills has them (`10-skills-lv27-390`, `10-skills-lv45-390`); the strip only changes its counts |
+
+**Fresh review re-check of 36fd319 (minor items)**
+
+| # | Answer |
+|---|---|
+| a | Fixed: the count was wrong. The strip keeps the total and adds "· N marked" |
+| b | Yes: the strip goes once everything is marked (stated above) |
+| c | The "i" button's accessible name and tooltip are "How points work" / "How shards work" (`aria-label` and `title`); the build keeps both |
+| d | Fixed: the menu opens inside the strip and pushes the hero down, so "Need N more" stays visible |

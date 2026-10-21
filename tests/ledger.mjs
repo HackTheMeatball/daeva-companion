@@ -11,14 +11,14 @@
    DECISIONS table row (matched by date and topic, both ways), so a new decision without a ledger row fails CI; and
    LEDGER.md's "Who does what" Plain column is everyday words; team.csv names exactly OWNERS (a folded thread names
    the active one it folded into); team-changes.csv and audits.csv have their headers, fixed values and real ledger ids. */
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 export const HEADER = ['id', 'kind', 'area', 'summary', 'plain', 'owner', 'enforced_by', 'home', 'status', 'since', 'ok_by', 'last_change', 'grade', 'replaced_by', 'note'];
 /* one accountable owner per row; enforced_by lists the others (or all / harness) */
-export const OWNERS = new Set(['Isaac', 'Saul', 'Walter', 'Gus', 'Jane', 'Hank', 'Mike', 'Skyler', 'Huell', 'Gretchen', 'Lydia', 'Jesse', 'Gale', 'Francesca', 'Gomez', 'Howard', 'Holly', 'Ernesto']);
+export const OWNERS = new Set(['Isaac', 'Saul', 'Walter', 'Gus', 'Jane', 'Hank', 'Mike', 'Skyler', 'Huell', 'Gretchen', 'Lydia', 'Jesse', 'Gale', 'Francesca', 'Gomez', 'Howard', 'Holly', 'Ernesto', 'Nacho', 'Chuck']);
 const KINDS = new Set(['safety', 'owner-rule', 'process', 'decision']);
 const STATUSES = new Set(['active', 'retired', 'trial', 'pending', 'superseded']);
 
@@ -53,7 +53,7 @@ export function decisionRows(md) {
   return byDate;
 }
 
-export function checkLedger(root = ROOT, { csvText, ledgerMd, teamCsv, changesCsv, auditsCsv } = {}) {
+export function checkLedger(root = ROOT, { csvText, ledgerMd, teamCsv, changesCsv, auditsCsv, sopReadme, sopFiles } = {}) {
   const problems = [], file = join(root, 'docs/kaizen/ledger.csv');
   const md = ledgerMd ?? (existsSync(join(root, 'docs/kaizen/LEDGER.md')) ? readFileSync(join(root, 'docs/kaizen/LEDGER.md'), 'utf8') : '');
   /* team.csv, team-changes.csv, audits.csv: exact headers, as records keyed by column */
@@ -152,6 +152,69 @@ export function checkLedger(root = ROOT, { csvText, ledgerMd, teamCsv, changesCs
     if (c) left.set(k, c - 1); else if (decs.has(m[1]) && decs.get(m[1]).some(t => norm(t) === norm(m[2]))) problems.push(`line ${r.line} (${r.id}): a second ledger row for DECISIONS "${m[1]} / ${m[2]}"`);
   }
   for (const [k, c] of left) if (c) problems.push(`DECISIONS row "${k}" has no ledger row` + (c > 1 ? ` (${c} missing)` : ''));
+  const whoOwners = who.map(l => l.replace(/^\||\|$/g, '').split('|')[2] || '').join(' ');
+  return [...problems, ...checkSops(root, { recs, team, whoOwners, readme: sopReadme, files: sopFiles })];
+}
+
+/* Flow index and SOPs (docs/sops/README.md, docs/sops/FLOW-NN-<slug>.md). Checks: every index row has its file and every
+   FLOW file has a row; the owner is one active team.csv name that owns a "Who does what" row, and matches the SOP's
+   Owner section; status is draft (Last confirmed "not yet") or confirmed (a YYYY-MM-DD date); the fixed sections are all
+   there; each numbered step starts with its doer in bold, a known name or one of SOP_ACTORS; every rule id cited exists in
+   ledger.csv and is active or trial; a rule id written as a link points at its ledger home; every relative link resolves. */
+export const SOP_SECTIONS = ['Purpose', 'Trigger', 'Owner', 'Inputs', 'Steps', 'Gates', 'Records', 'Failure and escalation',
+  'Rules it runs on', 'Last confirmed by owner'];
+/* doers that are automation or a role filled per run, not a standing thread */
+export const SOP_ACTORS = new Set(['Kickoff', 'Pipeline', 'Auto-merge', 'CI', 'Builder', 'Reviewer', 'Fresh reviewer',
+  'Research thread', 'Design Critic', 'Requesting thread', 'Recorder', 'Proposer', 'Outside reviewer', 'Rule owner',
+  'Every report owner', 'New thread']);
+const RULE_ID = /\bDEC-\d{8}-[a-z0-9-]+|\b(?:COM|MRG|PIP|Q|HC|LOG|PLN|KZ|DEC|TRK|CLK|ROL|REPO|NEW)-\d{2}\b/g;
+const REPO_URL = 'https://github.com/HackTheMeatball/daeva-companion/issues/';
+export function checkSops(root = ROOT, { recs = [], team = [], whoOwners = '', readme, files } = {}) {
+  const dir = join(root, 'docs/sops'), problems = [];
+  if (readme == null && !existsSync(join(dir, 'README.md'))) return existsSync(dir) ? ['docs/sops/README.md is missing'] : [];
+  readme ??= readFileSync(join(dir, 'README.md'), 'utf8');
+  files ??= Object.fromEntries(readdirSync(dir).filter(f => /^FLOW-\d{2}-[a-z0-9-]+\.md$/.test(f)).map(f => [f, readFileSync(join(dir, f), 'utf8')]));
+  const byId = new Map(recs.map(r => [r.id, r])), active = new Set(team.filter(t => t.status === 'active').map(t => t.name));
+  const homeOf = id => { const h = byId.get(id).home.trim(); return h.startsWith('#') ? REPO_URL + h.slice(1) : join(root, h.split('#')[0]); };
+  const target = to => /^https?:/.test(to) ? to : join(dir, decodeURI(to.split('#')[0]));
+  const cite = (at, text) => {
+    for (const id of new Set(text.match(RULE_ID) || []))
+      if (!byId.has(id)) problems.push(`${at}: cites ${id}, which is not in ledger.csv`);
+      else if (!['active', 'trial'].includes(byId.get(id).status)) problems.push(`${at}: cites ${id}, which is ${byId.get(id).status}`);
+    for (const [, id, to] of text.matchAll(/\[`?([A-Z][A-Za-z0-9-]+)`?\]\(([^)\s]+)\)/g))
+      if (byId.has(id) && target(to) !== homeOf(id)) problems.push(`${at}: ${id} links to ${to}, not its home ${byId.get(id).home.split('#')[0]}`);
+    for (const [, to] of text.matchAll(/\]\(([^)\s]+)\)/g))
+      if (!/^(https?:|mailto:|#)/.test(to) && !existsSync(join(dir, decodeURI(to.split('#')[0])))) problems.push(`${at}: dead link ${to}`);
+  };
+  cite('docs/sops/README.md', readme);
+  const flows = (readme.split(/^## Flows\s*$/m)[1] || '').split(/^## /m)[0].split('\n').filter(l => /^\| *FLOW-/.test(l));
+  if (!flows.length) problems.push('docs/sops/README.md: no rows under "## Flows"');
+  const listed = new Set();
+  for (const l of flows) {
+    const c = l.replace(/^\||\|$/g, '').split('|').map(x => x.trim()), [id, , , owner, sop, , status] = c, at = `docs/sops/README.md ${id}`;
+    if (c.length !== 7) { problems.push(`${at}: needs Id | Flow | Trigger | Owner | SOP | Runs on | Status`); continue; }
+    if (listed.has(id)) problems.push(`${at}: listed twice`);
+    listed.add(id);
+    const f = (sop.match(/\]\(([^)]+)\)/) || [])[1] || '';
+    if (!f.startsWith(id + '-') || !(f in files)) { problems.push(`${at}: SOP link "${f}" is not a docs/sops/${id}-<slug>.md file`); continue; }
+    if (!OWNERS.has(owner) || !active.has(owner)) problems.push(`${at}: owner "${owner}" is not an active team.csv name`);
+    else if (!new RegExp(`\\b${owner}\\b`).test(whoOwners)) problems.push(`${at}: owner "${owner}" owns no "Who does what" row`);
+    if (!['draft', 'confirmed'].includes(status)) problems.push(`${at}: status "${status}" not in draft/confirmed`);
+    const md = files[f], fa = `docs/sops/${f}`, sec = name => (md.split(new RegExp(`^## ${name}\\s*$`, 'm'))[1] || '').split(/^## /m)[0].trim();
+    for (const s of SOP_SECTIONS) if (!new RegExp(`^## ${s}\\s*$`, 'm').test(md)) problems.push(`${fa}: missing section "## ${s}"`);
+    if (!md.startsWith(`# ${id}: `)) problems.push(`${fa}: first line must be "# ${id}: <flow name>"`);
+    if ((sec('Owner').match(/^\*\*(\w+)\*\*/) || [])[1] !== owner) problems.push(`${fa}: Owner section must start with **${owner}** (the index owner)`);
+    const conf = sec('Last confirmed by owner');
+    if (status === 'confirmed' && !/\d{4}-\d{2}-\d{2}/.test(conf)) problems.push(`${fa}: confirmed, but "Last confirmed by owner" has no date`);
+    if (status === 'draft' && !/^Not yet/.test(conf)) problems.push(`${fa}: draft, so "Last confirmed by owner" starts "Not yet"`);
+    const steps = sec('Steps').split('\n').filter(x => /^\d+\. /.test(x));
+    if (!steps.length) problems.push(`${fa}: no numbered steps`);
+    for (const s of steps) { const d = (s.match(/^\d+\. \*\*([^*]+)\*\*/) || [])[1];
+      if (!d) problems.push(`${fa}: step "${s.slice(0, 40)}" doesn't start with its doer in bold`);
+      else if (!d.split(/ and |, /).every(n => (OWNERS.has(n) && (n === 'Isaac' || active.has(n))) || SOP_ACTORS.has(n))) problems.push(`${fa}: step doer "${d}" is not an active name or a known actor`); }
+    cite(fa, md);
+  }
+  for (const f of Object.keys(files)) if (!listed.has(f.slice(0, 7))) problems.push(`docs/sops/${f} has no row in the flow index`);
   return problems;
 }
 
