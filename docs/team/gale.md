@@ -52,6 +52,22 @@ _From the owner, project chat 2026-10-20 6:46 PM ET: "kaizen is supposed to impr
   15. risk, incidents and recovery: severity, incident lead, postmortems, rollback drills, live checks;
   16. data handling and privacy, process side only: tester data and retention, the source and claims-labelling
       workflow [Ernesto, Gretchen, Lydia]; fetching and ToS stay owner-held.
+  17. practice gaps against real-world practice [scored by a one-off reviewer; references: Lydia]: each review scores
+      a fixed checklist of named practices as done, partial or missing, with evidence. Each practice is a concrete
+      question with checkable evidence, not a name (for example "Is the live build exactly a tagged release? Evidence:
+      live build.json vs the latest tag" and "Does a person play the build against each item's acceptance lines?").
+      The practices: acceptance criteria, UAT, code review, CI, release management (including patch release branches),
+      postmortems, change management, monitoring, data QA, accessibility, security and docs. Lydia sources the
+      reference practice for each; her references follow SOURCES.md vetting like any other site. The scorer is a
+      one-off with no history, not Fresh governance review, briefed with the checklist, the evidence and Lydia's
+      references, nothing else. It may add up to one practice per review that isn't on the list. Each "missing", and
+      each "partial" that carries a real risk, becomes a proposal routed through the coordinator. The scorecard and its
+      status go in `docs/kaizen/` next to the waste scorecard. First run: the 0.9 kaizen review. _Source: Isaac,
+      project chat 2026-10-21 6:52 PM ET (cmsg_01UNirAFgxf3jC8kQS8uvvHBViiU6n169JFZBKWmY2KqgU): "When will I get the
+      next report on how close our development cycles align with real world examples? … If not, what would have it if
+      I didn’t bring it up?"; Kaizen batch-0.9 item 24; `PROCESS REVIEW practice-gap` OK with 3 changes (Fresh
+      governance review), applied by Rules Steward as neutral writer (2026-10-21 9:34 AM owner row). Routed:
+      coordinator 2026-10-21T22:54Z._
 - **Org Design boundary (coordinator decision, 2026-10-20 6:53 PM ET):** items 3, 5 and 11 are inputs to the review,
   not recommendations Kaizen generates. Kaizen grades and scores them with the rest.
 - **Kaizen's own process isn't Kaizen's to grade:** a change to this file, KZ-01, the scorecard definitions that measure
