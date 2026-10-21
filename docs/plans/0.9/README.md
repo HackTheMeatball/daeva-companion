@@ -582,8 +582,9 @@ routed them here as build items. Each turns an existing rule into a check and lo
   - `tests/compliance.mjs` exports `checkCompliance(root, overrides)` returning a list of problems, in the shape of
     `tests/ledger.mjs`. Its first check fails on: an `SPDX-License-Identifier` naming any licence but
     PolyForm Strict 1.0.0 (`PolyForm-Strict-1.0.0`), an `MIT License` or `Permission is hereby granted, free of charge` text, or a `LICENSE*` /
-    `COPYING*` file other than the root `LICENSE`, in tracked files outside `node_modules/`. The font folders
-    (`src/assets/fonts/`, `tools/brand/fonts/`) are allowed their own licence files.
+    `COPYING*` file other than the root `LICENSE`, in tracked files outside `node_modules/`. Exempt: the root `LICENSE` (its line 72 names the MIT
+    License of earlier versions), `docs/**` (plans and research quote the patterns), `tests/compliance.mjs` itself, and
+    the font folders (`src/assets/fonts/`, `tools/brand/fonts/`), which keep their own licence files.
   - `tests/schema.mjs` runs it after the ledger checks, with one negative fixture per pattern (each passed as an override,
     never written to the repo).
 - **Inputs.** none.
@@ -603,10 +604,9 @@ routed them here as build items. Each turns an existing rule into a check and lo
   would leave it stale, and nothing checks it (register C10).
 - **Result.** A second check in `tests/compliance.mjs`: the `KEY` exported by `src/core/state.js` appears in PRIVACY.md,
   and every `companion-save-v<n>` that PRIVACY.md names equals it (the `:before-import` suffix allowed). A negative
-  fixture in `tests/schema.mjs` (a PRIVACY text naming `-v4`) fails it.
+  fixture in `tests/schema.mjs` (a PRIVACY text naming `-v4`) fails it. P2 bumps the key to `companion-save-v6` and
+  doesn't list PRIVACY.md, so this item also brings PRIVACY.md's key lines to the code's key (those lines only).
 - **Inputs.** none.
-  P2 bumps the key to `companion-save-v6` and doesn't list PRIVACY.md, so this item also brings PRIVACY.md's key
-  lines to the code's key (those lines only).
 - **Files.** `tests/compliance.mjs`, `tests/schema.mjs`, `PRIVACY.md` (the key lines only).
 - **No-gos.** No other change to PRIVACY.md; no change to the save key.
 - **Acceptance.**
