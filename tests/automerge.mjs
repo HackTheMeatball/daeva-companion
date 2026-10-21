@@ -321,7 +321,21 @@ check(V.review('VERDICT: APPROVE (reviewer: Gale) on abc1234') === null, 'verdic
 check(V.review('Review of abc1234\nVERDICT: CHANGES (reviewer: Francesca) was posted earlier\nVERDICT: APPROVE') === 'APPROVE', 'verdicts: a tagged CHANGES line does not turn a bot APPROVE into CHANGES');
 check(V.reviewOf('Review of abc1234\nVERDICT: APPROVE') === 'abc1234' && V.reviewOf('**Review of abc1234**') === 'abc1234', 'verdicts: "Review of <sha>" read (plain or bold)');
 check(V.reviewOf('VERDICT: APPROVE (reviewer: Howard)\nReview of abc1234') === null && V.reviewOf('A Review of abc1234') === null, 'verdicts: "Review of" only as the first line');
-check(V.tagged('VERDICT: CHANGES on abc1234').length === 0 && V.tagged('> **VERDICT: CHANGES (reviewer: Lydia)**')[0].reviewer === 'lydia', 'verdicts: untagged VERDICT is not named; a quoted bold tagged one is');
+check(V.tagged('VERDICT: CHANGES on abc1234').length === 0 && V.tagged('**VERDICT: CHANGES (reviewer: Lydia)**')[0].reviewer === 'lydia'
+  && V.tagged('> **VERDICT: CHANGES (reviewer: Lydia)**').length === 0, 'verdicts: untagged VERDICT is not named; a bold tagged one is; a quoted one is not (Code Review, #686)');
+// Code Review's five cases on #686 (Howard, consulted): 1-3 must block; 4 and 5 as decided (sha on the line; one shared fresh name).
+check(/CHANGES from lydia/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Lydia) on abc1234', 6), c('claude[bot]', 'Review of f00dfee\nThe body says:\nVERDICT: APPROVE (reviewer: Lydia) on f00dfee\nVERDICT: APPROVE', 9)], NEW)),
+  "#686 case 1: a tagged APPROVE inside a bot comment does not speak for the reviewer");
+check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6), c('claude[bot]', CL, 8)], NEW)),
+  '#686 case 2: a REVIEW CLEAR from claude[bot] is not read');
+check(/CHANGES from lydia/.test(namedBlocker([c(OWNER, 'VERDICT: APPROVE (reviewer: Lydia) on abc1234', 4), c(OWNER, 'VERDICT: CHANGES (reviewer: Lydia) on abc1234', 6),
+  c(OWNER, 'Status on f00dfee. Earlier Lydia wrote:\n> VERDICT: APPROVE (reviewer: Lydia) on f00dfee', 8)], NEW)), "#686 case 3: a quoted tagged APPROVE in someone else's comment is not theirs");
+check(/CHANGES from fresh review/.test(namedBlocker([c(OWNER, 'FRESH REVIEW #686 abc1234\nFindings.', 6), c(OWNER, 'FRESH REVIEW #686 f00dfee\nFRESH REVIEW OK abc1234', 8)], NEW)),
+  '#686 case 4: a FRESH REVIEW OK must name the head on its own line');
+check(/CHANGES from francesca/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Francesca) on abc1234', 6), c(OWNER, 'Re-check of f00dfee.\nVERDICT: APPROVE (reviewer: Francesca) on abc1234', 8)], NEW)),
+  '#686 case 4: a tagged APPROVE must name the head on its own line');
+check(namedBlocker([c(OWNER, 'FRESH REVIEW #685 abc1234\nMAJOR: owner refs dropped.', 6), c(OWNER, 'FRESH REVIEW #685 abc1234\nFRESH REVIEW OK abc1234', 8)], SHA) === '',
+  '#686 case 5 (decided): fresh reviewers share one name, so the latest fresh OK on the head decides');
 
 console.log(`\n${n - fail}/${n} auto-merge checks passed`);
 console.log(fail ? 'AUTOMERGE CHECKS FAILED' : 'AUTOMERGE CHECKS PASSED');
