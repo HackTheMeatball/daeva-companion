@@ -1,9 +1,9 @@
 {
   "bind/L41-q75-none-A": {
-    "in": "07e0c74357b0",
+    "in": "49999f3ab43a",
     "store": {
       "areaLv": ["(absent)","40"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":41,"quest":"Daybreak Society","mt":{"level":[0,41],"quest":[500,["Daybreak Society",null]]}},{"checks":{},"level":41,"quest":"Daybreak Society","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,41],"quest":[500,["Daybreak Society",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":41,"quest":"sq:2102650","mt":{"level":[0,41],"quest":[500,["sq:2102650",null]]}},{"checks":{},"level":41,"quest":"sq:2102650","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,41],"quest":[500,["sq:2102650",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -28,10 +28,10 @@
     }
   },
   "bind/L41-q75-objs-A": {
-    "in": "9434076c291a",
+    "in": "3453d73f0d5f",
     "store": {
       "areaLv": ["(absent)","40"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":41,"quest":"Daybreak Society","qsteps":{"Daybreak Society":[0,1,2,3,4,5,6,7,8]},"mt":{"qsteps":{"Daybreak Society":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true],"6":[1006,true],"7":[1007,true],"8":[1008,true]}},"level":[0,41],"quest":[500,["Daybreak Society",null]]}},{"checks":{},"level":41,"quest":"Daybreak Society","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Daybreak Society":[0,1,2,3,4,5,6,7,8]},"mt":{"qsteps":{"Daybreak Society":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true],"6":[1006,true],"7":[1007,true],"8":[1008,true]}},"level":[0,41],"quest":[500,["Daybreak Society",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":41,"quest":"sq:2102650","qsteps":{"sq:2102650":[0,1,2,3,4,5,6,7,8]},"mt":{"qsteps":{"sq:2102650":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true],"6":[1006,true],"7":[1007,true],"8":[1008,true]}},"level":[0,41],"quest":[500,["sq:2102650",null]]}},{"checks":{},"level":41,"quest":"sq:2102650","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102650":[0,1,2,3,4,5,6,7,8]},"mt":{"qsteps":{"sq:2102650":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true],"6":[1006,true],"7":[1007,true],"8":[1008,true]}},"level":[0,41],"quest":[500,["sq:2102650",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -56,10 +56,10 @@
     }
   },
   "bind/L41-q76-none-A": {
-    "in": "935501141772",
+    "in": "c7ba5f270317",
     "store": {
       "areaLv": ["(absent)","40"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":41,"quest":"Daybreak Society Rescue Operation","mt":{"level":[0,41],"quest":[500,["Daybreak Society Rescue Operation",null]]}},{"checks":{},"level":41,"quest":"Daybreak Society Rescue Operation","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,41],"quest":[500,["Daybreak Society Rescue Operation",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":41,"quest":"sq:2102660","mt":{"level":[0,41],"quest":[500,["sq:2102660",null]]}},{"checks":{},"level":41,"quest":"sq:2102660","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,41],"quest":[500,["sq:2102660",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -84,10 +84,10 @@
     }
   },
   "bind/L41-q76-objs-A": {
-    "in": "e19e7b5a1731",
+    "in": "69eba45cdc0b",
     "store": {
       "areaLv": ["(absent)","40"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":41,"quest":"Daybreak Society Rescue Operation","qsteps":{"Daybreak Society Rescue Operation":[0,1,2,3]},"mt":{"qsteps":{"Daybreak Society Rescue Operation":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true]}},"level":[0,41],"quest":[500,["Daybreak Society Rescue Operation",null]]}},{"checks":{},"level":41,"quest":"Daybreak Society Rescue Operation","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Daybreak Society Rescue Operation":[0,1,2,3]},"mt":{"qsteps":{"Daybreak Society Rescue Operation":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true]}},"level":[0,41],"quest":[500,["Daybreak Society Rescue Operation",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":41,"quest":"sq:2102660","qsteps":{"sq:2102660":[0,1,2,3]},"mt":{"qsteps":{"sq:2102660":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true]}},"level":[0,41],"quest":[500,["sq:2102660",null]]}},{"checks":{},"level":41,"quest":"sq:2102660","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102660":[0,1,2,3]},"mt":{"qsteps":{"sq:2102660":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true]}},"level":[0,41],"quest":[500,["sq:2102660",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -112,10 +112,10 @@
     }
   },
   "bind/L42-q77-none-A": {
-    "in": "ab27040020cd",
+    "in": "863fd63acee2",
     "store": {
       "areaLv": ["(absent)","40"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":42,"quest":"The Breaking of the Day","mt":{"level":[0,42],"quest":[500,["The Breaking of the Day",null]]}},{"checks":{},"level":42,"quest":"The Breaking of the Day","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,42],"quest":[500,["The Breaking of the Day",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":42,"quest":"sq:2102670","mt":{"level":[0,42],"quest":[500,["sq:2102670",null]]}},{"checks":{},"level":42,"quest":"sq:2102670","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,42],"quest":[500,["sq:2102670",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -140,10 +140,10 @@
     }
   },
   "bind/L42-q77-objs-A": {
-    "in": "a319eb6868e3",
+    "in": "d0236920234d",
     "store": {
       "areaLv": ["(absent)","40"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":42,"quest":"The Breaking of the Day","qsteps":{"The Breaking of the Day":[0,1,2]},"mt":{"qsteps":{"The Breaking of the Day":{"0":[1000,true],"1":[1001,true],"2":[1002,true]}},"level":[0,42],"quest":[500,["The Breaking of the Day",null]]}},{"checks":{},"level":42,"quest":"The Breaking of the Day","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"The Breaking of the Day":[0,1,2]},"mt":{"qsteps":{"The Breaking of the Day":{"0":[1000,true],"1":[1001,true],"2":[1002,true]}},"level":[0,42],"quest":[500,["The Breaking of the Day",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":42,"quest":"sq:2102670","qsteps":{"sq:2102670":[0,1,2]},"mt":{"qsteps":{"sq:2102670":{"0":[1000,true],"1":[1001,true],"2":[1002,true]}},"level":[0,42],"quest":[500,["sq:2102670",null]]}},{"checks":{},"level":42,"quest":"sq:2102670","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102670":[0,1,2]},"mt":{"qsteps":{"sq:2102670":{"0":[1000,true],"1":[1001,true],"2":[1002,true]}},"level":[0,42],"quest":[500,["sq:2102670",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -168,10 +168,10 @@
     }
   },
   "bind/L42-q78-none-A": {
-    "in": "c48b8350a805",
+    "in": "879979c5b728",
     "store": {
       "areaLv": ["(absent)","40"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":42,"quest":"Chief of the Black Claw","mt":{"level":[0,42],"quest":[500,["Chief of the Black Claw",null]]}},{"checks":{},"level":42,"quest":"Chief of the Black Claw","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,42],"quest":[500,["Chief of the Black Claw",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":42,"quest":"sq:2102680","mt":{"level":[0,42],"quest":[500,["sq:2102680",null]]}},{"checks":{},"level":42,"quest":"sq:2102680","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,42],"quest":[500,["sq:2102680",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -196,10 +196,10 @@
     }
   },
   "bind/L42-q78-objs-A": {
-    "in": "1277366489cf",
+    "in": "fad99cdf8f5c",
     "store": {
       "areaLv": ["(absent)","40"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":42,"quest":"Chief of the Black Claw","qsteps":{"Chief of the Black Claw":[0,1]},"mt":{"qsteps":{"Chief of the Black Claw":{"0":[1000,true],"1":[1001,true]}},"level":[0,42],"quest":[500,["Chief of the Black Claw",null]]}},{"checks":{},"level":42,"quest":"Chief of the Black Claw","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Chief of the Black Claw":[0,1]},"mt":{"qsteps":{"Chief of the Black Claw":{"0":[1000,true],"1":[1001,true]}},"level":[0,42],"quest":[500,["Chief of the Black Claw",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":42,"quest":"sq:2102680","qsteps":{"sq:2102680":[0,1]},"mt":{"qsteps":{"sq:2102680":{"0":[1000,true],"1":[1001,true]}},"level":[0,42],"quest":[500,["sq:2102680",null]]}},{"checks":{},"level":42,"quest":"sq:2102680","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102680":[0,1]},"mt":{"qsteps":{"sq:2102680":{"0":[1000,true],"1":[1001,true]}},"level":[0,42],"quest":[500,["sq:2102680",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -224,10 +224,10 @@
     }
   },
   "bind/L43-q79-none-A": {
-    "in": "f963ec7e1e10",
+    "in": "027446df635e",
     "store": {
       "areaLv": ["(absent)","40"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":43,"quest":"High Priest's Fafnite","mt":{"level":[0,43],"quest":[500,["High Priest's Fafnite",null]]}},{"checks":{},"level":43,"quest":"High Priest's Fafnite","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,43],"quest":[500,["High Priest's Fafnite",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":43,"quest":"sq:2102690","mt":{"level":[0,43],"quest":[500,["sq:2102690",null]]}},{"checks":{},"level":43,"quest":"sq:2102690","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,43],"quest":[500,["sq:2102690",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -252,10 +252,10 @@
     }
   },
   "bind/L43-q79-objs-A": {
-    "in": "d59999537cbe",
+    "in": "ea79094caae9",
     "store": {
       "areaLv": ["(absent)","40"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":43,"quest":"High Priest's Fafnite","qsteps":{"High Priest's Fafnite":[0,1,2,3,4,5]},"mt":{"qsteps":{"High Priest's Fafnite":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true]}},"level":[0,43],"quest":[500,["High Priest's Fafnite",null]]}},{"checks":{},"level":43,"quest":"High Priest's Fafnite","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"High Priest's Fafnite":[0,1,2,3,4,5]},"mt":{"qsteps":{"High Priest's Fafnite":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true]}},"level":[0,43],"quest":[500,["High Priest's Fafnite",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":43,"quest":"sq:2102690","qsteps":{"sq:2102690":[0,1,2,3,4,5]},"mt":{"qsteps":{"sq:2102690":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true]}},"level":[0,43],"quest":[500,["sq:2102690",null]]}},{"checks":{},"level":43,"quest":"sq:2102690","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102690":[0,1,2,3,4,5]},"mt":{"qsteps":{"sq:2102690":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true]}},"level":[0,43],"quest":[500,["sq:2102690",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -280,10 +280,10 @@
     }
   },
   "bind/L44-q80-none-A": {
-    "in": "2e900dcc5a86",
+    "in": "ecad86d085c8",
     "store": {
       "areaLv": ["(absent)","40"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":44,"quest":"The High Priest Awakens","mt":{"level":[0,44],"quest":[500,["The High Priest Awakens",null]]}},{"checks":{},"level":44,"quest":"The High Priest Awakens","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,44],"quest":[500,["The High Priest Awakens",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":44,"quest":"sq:2102750","mt":{"level":[0,44],"quest":[500,["sq:2102750",null]]}},{"checks":{},"level":44,"quest":"sq:2102750","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,44],"quest":[500,["sq:2102750",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -308,10 +308,10 @@
     }
   },
   "bind/L44-q80-objs-A": {
-    "in": "cd469f0c131e",
+    "in": "68eebf8d5bcb",
     "store": {
       "areaLv": ["(absent)","40"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":44,"quest":"The High Priest Awakens","qsteps":{"The High Priest Awakens":[0,1,2,3]},"mt":{"qsteps":{"The High Priest Awakens":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true]}},"level":[0,44],"quest":[500,["The High Priest Awakens",null]]}},{"checks":{},"level":44,"quest":"The High Priest Awakens","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"The High Priest Awakens":[0,1,2,3]},"mt":{"qsteps":{"The High Priest Awakens":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true]}},"level":[0,44],"quest":[500,["The High Priest Awakens",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":44,"quest":"sq:2102750","qsteps":{"sq:2102750":[0,1,2,3]},"mt":{"qsteps":{"sq:2102750":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true]}},"level":[0,44],"quest":[500,["sq:2102750",null]]}},{"checks":{},"level":44,"quest":"sq:2102750","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102750":[0,1,2,3]},"mt":{"qsteps":{"sq:2102750":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true]}},"level":[0,44],"quest":[500,["sq:2102750",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -336,10 +336,10 @@
     }
   },
   "bind/L44-q81-none-A": {
-    "in": "16eeab70d7e1",
+    "in": "851423176b79",
     "store": {
       "areaLv": ["(absent)","40"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":44,"quest":"Lingering Apparitions","mt":{"level":[0,44],"quest":[500,["Lingering Apparitions",null]]}},{"checks":{},"level":44,"quest":"Lingering Apparitions","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,44],"quest":[500,["Lingering Apparitions",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":44,"quest":"sq:2102760","mt":{"level":[0,44],"quest":[500,["sq:2102760",null]]}},{"checks":{},"level":44,"quest":"sq:2102760","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,44],"quest":[500,["sq:2102760",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -364,10 +364,10 @@
     }
   },
   "bind/L44-q81-objs-A": {
-    "in": "7656341dfa04",
+    "in": "50822d0550aa",
     "store": {
       "areaLv": ["(absent)","40"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":44,"quest":"Lingering Apparitions","qsteps":{"Lingering Apparitions":[0,1,2,3,4,5]},"mt":{"qsteps":{"Lingering Apparitions":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true]}},"level":[0,44],"quest":[500,["Lingering Apparitions",null]]}},{"checks":{},"level":44,"quest":"Lingering Apparitions","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Lingering Apparitions":[0,1,2,3,4,5]},"mt":{"qsteps":{"Lingering Apparitions":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true]}},"level":[0,44],"quest":[500,["Lingering Apparitions",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":44,"quest":"sq:2102760","qsteps":{"sq:2102760":[0,1,2,3,4,5]},"mt":{"qsteps":{"sq:2102760":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true]}},"level":[0,44],"quest":[500,["sq:2102760",null]]}},{"checks":{},"level":44,"quest":"sq:2102760","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102760":[0,1,2,3,4,5]},"mt":{"qsteps":{"sq:2102760":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true]}},"level":[0,44],"quest":[500,["sq:2102760",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -392,10 +392,10 @@
     }
   },
   "bind/L44-q82-none-A": {
-    "in": "07811939f1fd",
+    "in": "7a1d651e9f72",
     "store": {
       "areaLv": ["(absent)","40"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":44,"quest":"Blood Barrier","mt":{"level":[0,44],"quest":[500,["Blood Barrier",null]]}},{"checks":{},"level":44,"quest":"Blood Barrier","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,44],"quest":[500,["Blood Barrier",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":44,"quest":"sq:2102770","mt":{"level":[0,44],"quest":[500,["sq:2102770",null]]}},{"checks":{},"level":44,"quest":"sq:2102770","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,44],"quest":[500,["sq:2102770",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -420,10 +420,10 @@
     }
   },
   "bind/L44-q82-objs-A": {
-    "in": "fad0f93e571e",
+    "in": "1171eceb8d66",
     "store": {
       "areaLv": ["(absent)","40"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":44,"quest":"Blood Barrier","qsteps":{"Blood Barrier":[0,1,2,3]},"mt":{"qsteps":{"Blood Barrier":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true]}},"level":[0,44],"quest":[500,["Blood Barrier",null]]}},{"checks":{},"level":44,"quest":"Blood Barrier","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Blood Barrier":[0,1,2,3]},"mt":{"qsteps":{"Blood Barrier":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true]}},"level":[0,44],"quest":[500,["Blood Barrier",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":44,"quest":"sq:2102770","qsteps":{"sq:2102770":[0,1,2,3]},"mt":{"qsteps":{"sq:2102770":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true]}},"level":[0,44],"quest":[500,["sq:2102770",null]]}},{"checks":{},"level":44,"quest":"sq:2102770","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102770":[0,1,2,3]},"mt":{"qsteps":{"sq:2102770":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true]}},"level":[0,44],"quest":[500,["sq:2102770",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -448,10 +448,10 @@
     }
   },
   "bind/L45-q83-none-A": {
-    "in": "5929bfb21162",
+    "in": "73eff919a50b",
     "store": {
       "areaLv": ["(absent)","40"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":45,"quest":"Zikel's Core","mt":{"level":[0,45],"quest":[500,["Zikel's Core",null]]}},{"checks":{},"level":45,"quest":"Zikel's Core","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,45],"quest":[500,["Zikel's Core",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":45,"quest":"sq:2102780","mt":{"level":[0,45],"quest":[500,["sq:2102780",null]]}},{"checks":{},"level":45,"quest":"sq:2102780","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,45],"quest":[500,["sq:2102780",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -476,10 +476,10 @@
     }
   },
   "bind/L45-q83-objs-A": {
-    "in": "61706a0c3223",
+    "in": "beeb184b546a",
     "store": {
       "areaLv": ["(absent)","40"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":45,"quest":"Zikel's Core","qsteps":{"Zikel's Core":[0,1,2,3]},"mt":{"qsteps":{"Zikel's Core":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true]}},"level":[0,45],"quest":[500,["Zikel's Core",null]]}},{"checks":{},"level":45,"quest":"Zikel's Core","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Zikel's Core":[0,1,2,3]},"mt":{"qsteps":{"Zikel's Core":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true]}},"level":[0,45],"quest":[500,["Zikel's Core",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":45,"quest":"sq:2102780","qsteps":{"sq:2102780":[0,1,2,3]},"mt":{"qsteps":{"sq:2102780":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true]}},"level":[0,45],"quest":[500,["sq:2102780",null]]}},{"checks":{},"level":45,"quest":"sq:2102780","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102780":[0,1,2,3]},"mt":{"qsteps":{"sq:2102780":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true]}},"level":[0,45],"quest":[500,["sq:2102780",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -504,10 +504,10 @@
     }
   },
   "bind/L45-q84-none-A": {
-    "in": "5e3bd89346b4",
+    "in": "9c76bbbb1837",
     "store": {
       "areaLv": ["(absent)","40"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":45,"quest":"Farewells","mt":{"level":[0,45],"quest":[500,["Farewells",null]]}},{"checks":{},"level":45,"quest":"Farewells","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,45],"quest":[500,["Farewells",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":45,"quest":"sq:2102781","mt":{"level":[0,45],"quest":[500,["sq:2102781",null]]}},{"checks":{},"level":45,"quest":"sq:2102781","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,45],"quest":[500,["sq:2102781",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -532,10 +532,10 @@
     }
   },
   "bind/L45-q84-objs-A": {
-    "in": "cb5edcafd944",
+    "in": "a58edf3e853f",
     "store": {
       "areaLv": ["(absent)","40"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":45,"quest":"Farewells","qsteps":{"Farewells":[0,1,2,3,4,5,6,7,8]},"mt":{"qsteps":{"Farewells":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true],"6":[1006,true],"7":[1007,true],"8":[1008,true]}},"level":[0,45],"quest":[500,["Farewells",null]]}},{"checks":{},"level":45,"quest":"Farewells","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Farewells":[0,1,2,3,4,5,6,7,8]},"mt":{"qsteps":{"Farewells":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true],"6":[1006,true],"7":[1007,true],"8":[1008,true]}},"level":[0,45],"quest":[500,["Farewells",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":45,"quest":"sq:2102781","qsteps":{"sq:2102781":[0,1,2,3,4,5,6,7,8]},"mt":{"qsteps":{"sq:2102781":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true],"6":[1006,true],"7":[1007,true],"8":[1008,true]}},"level":[0,45],"quest":[500,["sq:2102781",null]]}},{"checks":{},"level":45,"quest":"sq:2102781","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102781":[0,1,2,3,4,5,6,7,8]},"mt":{"qsteps":{"sq:2102781":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true],"5":[1005,true],"6":[1006,true],"7":[1007,true],"8":[1008,true]}},"level":[0,45],"quest":[500,["sq:2102781",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -560,10 +560,10 @@
     }
   },
   "bind/L45-q85-none-A": {
-    "in": "767120046d36",
+    "in": "325515b04486",
     "store": {
       "areaLv": ["(absent)","40"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":45,"quest":"Forgotten Commander","mt":{"level":[0,45],"quest":[500,["Forgotten Commander",null]]}},{"checks":{},"level":45,"quest":"Forgotten Commander","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,45],"quest":[500,["Forgotten Commander",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":45,"quest":"sq:2102800","mt":{"level":[0,45],"quest":[500,["sq:2102800",null]]}},{"checks":{},"level":45,"quest":"sq:2102800","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,45],"quest":[500,["sq:2102800",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -588,10 +588,10 @@
     }
   },
   "bind/L45-q85-objs-A": {
-    "in": "0149789846c8",
+    "in": "28ada2f48330",
     "store": {
       "areaLv": ["(absent)","40"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":45,"quest":"Forgotten Commander","qsteps":{"Forgotten Commander":[0,1,2,3,4]},"mt":{"qsteps":{"Forgotten Commander":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,45],"quest":[500,["Forgotten Commander",null]]}},{"checks":{},"level":45,"quest":"Forgotten Commander","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Forgotten Commander":[0,1,2,3,4]},"mt":{"qsteps":{"Forgotten Commander":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,45],"quest":[500,["Forgotten Commander",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":45,"quest":"sq:2102800","qsteps":{"sq:2102800":[0,1,2,3,4]},"mt":{"qsteps":{"sq:2102800":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,45],"quest":[500,["sq:2102800",null]]}},{"checks":{},"level":45,"quest":"sq:2102800","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102800":[0,1,2,3,4]},"mt":{"qsteps":{"sq:2102800":{"0":[1000,true],"1":[1001,true],"2":[1002,true],"3":[1003,true],"4":[1004,true]}},"level":[0,45],"quest":[500,["sq:2102800",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -616,10 +616,10 @@
     }
   },
   "bind/L45-q86-none-A": {
-    "in": "23a7c14d307d",
+    "in": "0fc3cbc9d8b3",
     "store": {
       "areaLv": ["(absent)","40"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":45,"quest":"Daeva Trapped in a Nightmare","mt":{"level":[0,45],"quest":[500,["Daeva Trapped in a Nightmare",null]]}},{"checks":{},"level":45,"quest":"Daeva Trapped in a Nightmare","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,45],"quest":[500,["Daeva Trapped in a Nightmare",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":45,"quest":"sq:2102810","mt":{"level":[0,45],"quest":[500,["sq:2102810",null]]}},{"checks":{},"level":45,"quest":"sq:2102810","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"level":[0,45],"quest":[500,["sq:2102810",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -644,10 +644,10 @@
     }
   },
   "bind/L45-q86-objs-A": {
-    "in": "a953d4958638",
+    "in": "df3729c6058b",
     "store": {
       "areaLv": ["(absent)","40"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":45,"quest":"Daeva Trapped in a Nightmare","qsteps":{"Daeva Trapped in a Nightmare":[0,1]},"mt":{"qsteps":{"Daeva Trapped in a Nightmare":{"0":[1000,true],"1":[1001,true]}},"level":[0,45],"quest":[500,["Daeva Trapped in a Nightmare",null]]}},{"checks":{},"level":45,"quest":"Daeva Trapped in a Nightmare","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"Daeva Trapped in a Nightmare":[0,1]},"mt":{"qsteps":{"Daeva Trapped in a Nightmare":{"0":[1000,true],"1":[1001,true]}},"level":[0,45],"quest":[500,["Daeva Trapped in a Nightmare",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{},"level":45,"quest":"sq:2102810","qsteps":{"sq:2102810":[0,1]},"mt":{"qsteps":{"sq:2102810":{"0":[1000,true],"1":[1001,true]}},"level":[0,45],"quest":[500,["sq:2102810",null]]}},{"checks":{},"level":45,"quest":"sq:2102810","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"qsteps":{"sq:2102810":[0,1]},"mt":{"qsteps":{"sq:2102810":{"0":[1000,true],"1":[1001,true]}},"level":[0,45],"quest":[500,["sq:2102810",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],

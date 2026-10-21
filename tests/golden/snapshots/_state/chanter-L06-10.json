@@ -1,9 +1,9 @@
 {
   "chanter/L10-q12-none-A": {
-    "in": "95e5f644986e",
+    "in": "1491548ebb92",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/chanter","class":"chanter","name":"","created":0,"checks":{},"level":10,"quest":"Gathering Essentials","mt":{"level":[0,10],"quest":[0,["Gathering Essentials",null]]}},{"checks":{},"level":10,"quest":"Gathering Essentials","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/chanter","class":"chanter","name":"","created":0,"mt":{"level":[0,10],"quest":[0,["Gathering Essentials",null]],"rotSeen":[1790856000,["Left click:Onslaught:0","Right click:Incandescent Blow:0","Q:Tremor Crush:0","E:Gust Rampage:0","E:Heat Wave Blow:1","E:Dark Crush:2","1:Rushing Smash:0","2:Impactful Crush:0","3:Recuperation:0"]]},"rotSeen":["Left click:Onslaught:0","Right click:Incandescent Blow:0","Q:Tremor Crush:0","E:Gust Rampage:0","E:Heat Wave Blow:1","E:Dark Crush:2","1:Rushing Smash:0","2:Impactful Crush:0","3:Recuperation:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/chanter","class":"chanter","name":"","created":0,"checks":{},"level":10,"quest":"sq:2102020","mt":{"level":[0,10],"quest":[0,["sq:2102020",null]]}},{"checks":{},"level":10,"quest":"sq:2102020","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/chanter","class":"chanter","name":"","created":0,"mt":{"level":[0,10],"quest":[0,["sq:2102020",null]],"rotSeen":[1790856000,["Left click:Onslaught:0","Right click:Incandescent Blow:0","Q:Tremor Crush:0","E:Gust Rampage:0","E:Heat Wave Blow:1","E:Dark Crush:2","1:Rushing Smash:0","2:Impactful Crush:0","3:Recuperation:0"]]},"rotSeen":["Left click:Onslaught:0","Right click:Incandescent Blow:0","Q:Tremor Crush:0","E:Gust Rampage:0","E:Heat Wave Blow:1","E:Dark Crush:2","1:Rushing Smash:0","2:Impactful Crush:0","3:Recuperation:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g6": ["(absent)",true],
@@ -12,10 +12,10 @@
     }
   },
   "chanter/L10-q12-none-B": {
-    "in": "c5a7281824f7",
+    "in": "0043493f42ca",
     "store": {
       "areaLv": ["(absent)","10"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/chanter","class":"chanter","name":"","created":0,"checks":{},"level":10,"quest":"Gathering Essentials","mt":{"level":[0,10],"quest":[0,["Gathering Essentials",null]]}},{"checks":{},"level":10,"quest":"Gathering Essentials","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/chanter","class":"chanter","name":"","created":0,"mt":{"level":[0,10],"quest":[0,["Gathering Essentials",null]],"rotSeen":[1790856000,["Left click:Onslaught:0","Right click:Incandescent Blow:0","Q:Tremor Crush:0","E:Gust Rampage:0","E:Heat Wave Blow:1","E:Dark Crush:2","1:Rushing Smash:0","2:Impactful Crush:0","3:Recuperation:0"]]},"rotSeen":["Left click:Onslaught:0","Right click:Incandescent Blow:0","Q:Tremor Crush:0","E:Gust Rampage:0","E:Heat Wave Blow:1","E:Dark Crush:2","1:Rushing Smash:0","2:Impactful Crush:0","3:Recuperation:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/chanter","class":"chanter","name":"","created":0,"checks":{},"level":10,"quest":"sq:2102020","mt":{"level":[0,10],"quest":[0,["sq:2102020",null]]}},{"checks":{},"level":10,"quest":"sq:2102020","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/chanter","class":"chanter","name":"","created":0,"mt":{"level":[0,10],"quest":[0,["sq:2102020",null]],"rotSeen":[1790856000,["Left click:Onslaught:0","Right click:Incandescent Blow:0","Q:Tremor Crush:0","E:Gust Rampage:0","E:Heat Wave Blow:1","E:Dark Crush:2","1:Rushing Smash:0","2:Impactful Crush:0","3:Recuperation:0"]]},"rotSeen":["Left click:Onslaught:0","Right click:Incandescent Blow:0","Q:Tremor Crush:0","E:Gust Rampage:0","E:Heat Wave Blow:1","E:Dark Crush:2","1:Rushing Smash:0","2:Impactful Crush:0","3:Recuperation:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g6": ["(absent)",true],

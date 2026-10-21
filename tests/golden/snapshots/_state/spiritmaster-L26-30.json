@@ -1,6 +1,6 @@
 {
   "spiritmaster/L30-q48-none-A": {
-    "in": "3d92adb165f8",
+    "in": "cab25cab552a",
     "store": {
       "areaLv": ["(absent)","30"],
       "hide": ["(absent)",false],
@@ -20,7 +20,7 @@
     }
   },
   "spiritmaster/L30-q48-none-B": {
-    "in": "d2528b289d30",
+    "in": "f500bef68e83",
     "store": {
       "areaLv": ["(absent)","30"],
       "hide": ["(absent)",false],

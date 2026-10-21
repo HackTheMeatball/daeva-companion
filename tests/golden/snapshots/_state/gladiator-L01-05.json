@@ -1,6 +1,6 @@
 {
   "gladiator/L01-qxx-none-A": {
-    "in": "60b5a060b1b3",
+    "in": "1853b9956600",
     "store": {
       "areaLv": ["(absent)","10"],
       "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/gladiator","class":"gladiator","name":"","created":0,"checks":{},"level":1,"quest":"","mt":{"level":[0,1],"quest":[0,["",null]]}},{"checks":{},"level":1,"quest":"","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/gladiator","class":"gladiator","name":"","created":0,"mt":{"level":[0,1],"quest":[0,["",null]],"rotSeen":[1790856000,["Left click:Keen Strike:0","Right click:Rending Blow:0","1:Leaping Slam:0"]]},"rotSeen":["Left click:Keen Strike:0","Right click:Rending Blow:0","1:Leaping Slam:0"]}],
@@ -10,7 +10,7 @@
     }
   },
   "gladiator/L01-qxx-none-B": {
-    "in": "1c23986b255b",
+    "in": "0a7078e8a950",
     "store": {
       "areaLv": ["(absent)","10"],
       "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/gladiator","class":"gladiator","name":"","created":0,"checks":{},"level":1,"quest":"","mt":{"level":[0,1],"quest":[0,["",null]]}},{"checks":{},"level":1,"quest":"","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/gladiator","class":"gladiator","name":"","created":0,"mt":{"level":[0,1],"quest":[0,["",null]],"rotSeen":[1790856000,["Left click:Keen Strike:0","Right click:Rending Blow:0","1:Leaping Slam:0"]]},"rotSeen":["Left click:Keen Strike:0","Right click:Rending Blow:0","1:Leaping Slam:0"]}],

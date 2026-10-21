@@ -1,9 +1,9 @@
 {
   "templar/L45-q86-none-A": {
-    "in": "0c7f188d12c3",
+    "in": "c12085fde8df",
     "store": {
       "areaLv": ["(absent)","40"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/templar","class":"templar","name":"","created":0,"checks":{},"level":45,"quest":"Daeva Trapped in a Nightmare","mt":{"level":[0,45],"quest":[0,["Daeva Trapped in a Nightmare",null]]}},{"checks":{},"level":45,"quest":"Daeva Trapped in a Nightmare","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/templar","class":"templar","name":"","created":0,"mt":{"level":[0,45],"quest":[0,["Daeva Trapped in a Nightmare",null]],"rotSeen":[1790856000,["Left click:Vicious Strike:0","Right click:Pummel:0","Q:Shield Rush:0","Q:Annihilate:1","E:Flash Rampage:0","E:Debilitating Smash:1","E:Judgment:2","1:Poach:0","2:Shield Smite:0","3:Warding Strike:0","4:Punishment:0"]]},"rotSeen":["Left click:Vicious Strike:0","Right click:Pummel:0","Q:Shield Rush:0","Q:Annihilate:1","E:Flash Rampage:0","E:Debilitating Smash:1","E:Judgment:2","1:Poach:0","2:Shield Smite:0","3:Warding Strike:0","4:Punishment:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/templar","class":"templar","name":"","created":0,"checks":{},"level":45,"quest":"sq:2102810","mt":{"level":[0,45],"quest":[0,["sq:2102810",null]]}},{"checks":{},"level":45,"quest":"sq:2102810","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/templar","class":"templar","name":"","created":0,"mt":{"level":[0,45],"quest":[0,["sq:2102810",null]],"rotSeen":[1790856000,["Left click:Vicious Strike:0","Right click:Pummel:0","Q:Shield Rush:0","Q:Annihilate:1","E:Flash Rampage:0","E:Debilitating Smash:1","E:Judgment:2","1:Poach:0","2:Shield Smite:0","3:Warding Strike:0","4:Punishment:0"]]},"rotSeen":["Left click:Vicious Strike:0","Right click:Pummel:0","Q:Shield Rush:0","Q:Annihilate:1","E:Flash Rampage:0","E:Debilitating Smash:1","E:Judgment:2","1:Poach:0","2:Shield Smite:0","3:Warding Strike:0","4:Punishment:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -27,10 +27,10 @@
     }
   },
   "templar/L45-q86-none-B": {
-    "in": "4dfbe5e36ece",
+    "in": "73a37e6f402d",
     "store": {
       "areaLv": ["(absent)","40"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/templar","class":"templar","name":"","created":0,"checks":{},"level":45,"quest":"Daeva Trapped in a Nightmare","mt":{"level":[0,45],"quest":[0,["Daeva Trapped in a Nightmare",null]]}},{"checks":{},"level":45,"quest":"Daeva Trapped in a Nightmare","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/templar","class":"templar","name":"","created":0,"mt":{"level":[0,45],"quest":[0,["Daeva Trapped in a Nightmare",null]],"rotSeen":[1790856000,["Left click:Vicious Strike:0","Right click:Pummel:0","Q:Shield Rush:0","Q:Annihilate:1","E:Flash Rampage:0","E:Debilitating Smash:1","E:Judgment:2","1:Poach:0","2:Shield Smite:0","3:Warding Strike:0","4:Punishment:0"]]},"rotSeen":["Left click:Vicious Strike:0","Right click:Pummel:0","Q:Shield Rush:0","Q:Annihilate:1","E:Flash Rampage:0","E:Debilitating Smash:1","E:Judgment:2","1:Poach:0","2:Shield Smite:0","3:Warding Strike:0","4:Punishment:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/templar","class":"templar","name":"","created":0,"checks":{},"level":45,"quest":"sq:2102810","mt":{"level":[0,45],"quest":[0,["sq:2102810",null]]}},{"checks":{},"level":45,"quest":"sq:2102810","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/templar","class":"templar","name":"","created":0,"mt":{"level":[0,45],"quest":[0,["sq:2102810",null]],"rotSeen":[1790856000,["Left click:Vicious Strike:0","Right click:Pummel:0","Q:Shield Rush:0","Q:Annihilate:1","E:Flash Rampage:0","E:Debilitating Smash:1","E:Judgment:2","1:Poach:0","2:Shield Smite:0","3:Warding Strike:0","4:Punishment:0"]]},"rotSeen":["Left click:Vicious Strike:0","Right click:Pummel:0","Q:Shield Rush:0","Q:Annihilate:1","E:Flash Rampage:0","E:Debilitating Smash:1","E:Judgment:2","1:Poach:0","2:Shield Smite:0","3:Warding Strike:0","4:Punishment:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],

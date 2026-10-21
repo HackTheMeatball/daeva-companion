@@ -32,7 +32,9 @@ function oracleMisses(o, cur, st, qIdx, ck) {
 }
 
 function findViolations(C, states, results) {
-  const qIdx = n => C.quests.findIndex(q => q[1] === n);
+  /* C.quests and the gate items' "story" hold the story key (sq:<gameId>, save v6); parseStored and ORACLE give names */
+  const keyOf = Object.fromEntries(Object.entries(C.questNames).map(([k, n]) => [n, k]));
+  const qIdx = n => C.quests.findIndex(q => q[1] === n || q[1] === keyOf[n]);
   const items = new Map(C.gates.flatMap(g => g.items.map(it => [it.k, it])));
   const sp = C.sp, out = [];
   for (const s of states) {
@@ -46,11 +48,11 @@ function findViolations(C, states, results) {
       if (act.startsWith('tick:')) {
         const k = act.slice(5), it = items.get(k); if (!it) return;
         if (it.lv > lv) add('level-gate', k, `milestone Lv ${it.lv} > level ${lv}`);
-        if (it.story) { const at = qIdx(it.story);
-          if (at >= 0 && cur < at) add('story-gate', k, `story not at "${it.story}" yet`);
+        if (it.story) { const at = qIdx(it.story), sn = C.questNames[it.story] || it.story;
+          if (at >= 0 && cur < at) add('story-gate', k, `story not at "${sn}" yet`);
           /* "story" is overloaded: the step IS that story quest (byStory, or its title names it: g6:0) or is only gated by
              it (g22:0, an Asahr quest after "Daeva in a Dream"). Only the first kind is done once the story is past it. */
-          else if (at >= 0 && cur > at && !ck[k] && (it.byStory || it.ns.includes(`"${it.story}"`))) add('done-by-story', k, `story is past "${it.story}"`); }
+          else if (at >= 0 && cur > at && !ck[k] && (it.byStory || it.ns.includes(`"${sn}"`))) add('done-by-story', k, `story is past "${sn}"`); }
         const o = ORACLE[k];
         if (o) { const why = oracleMisses(o, cur, st, qIdx, ck); if (why.length) add('oracle-gate', k, why.join('; ')); }
       } else if (act === 'skill') {
@@ -65,7 +67,7 @@ function findViolations(C, states, results) {
 }
 
 function renderReport(C, violations, nStates) {
-  const qName = i => i < 0 ? '(none)' : C.quests[i][1];
+  const qName = i => i < 0 ? '(none)' : C.questNames[C.quests[i][1]] || C.quests[i][1];
   const groups = new Map();
   for (const v of violations) { const g = v.kind + '\u0000' + v.key; if (!groups.has(g)) groups.set(g, []); groups.get(g).push(v); }
   const rows = [...groups.values()].sort((a, b) => b.length - a.length || (a[0].kind + a[0].key < b[0].kind + b[0].key ? -1 : 1));

@@ -1,9 +1,9 @@
 {
   "cleric/L22-q34-none-A": {
-    "in": "13946e5bb284",
+    "in": "692bfb03277d",
     "store": {
       "areaLv": ["(absent)","20"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/cleric","class":"cleric","name":"","created":0,"checks":{},"level":22,"quest":"Disturbed Balance","mt":{"level":[0,22],"quest":[0,["Disturbed Balance",null]]}},{"checks":{},"level":22,"quest":"Disturbed Balance","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/cleric","class":"cleric","name":"","created":0,"mt":{"level":[0,22],"quest":[0,["Disturbed Balance",null]],"rotSeen":[1790856000,["Left click:Earth's Retribution:0","Right click:Judgment Thunder:0","Q:Light of Regeneration:0","Q:Healing Light:1","E:Lightning Strike Scattershot:0","E:Condemnation:1","E:Chain of Torment:2","1:Debilitating Mark:0","2:Divine Aura:0","3:Radiant Recovery:0","4:Bolt:0"]]},"rotSeen":["Left click:Earth's Retribution:0","Right click:Judgment Thunder:0","Q:Light of Regeneration:0","Q:Healing Light:1","E:Lightning Strike Scattershot:0","E:Condemnation:1","E:Chain of Torment:2","1:Debilitating Mark:0","2:Divine Aura:0","3:Radiant Recovery:0","4:Bolt:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/cleric","class":"cleric","name":"","created":0,"checks":{},"level":22,"quest":"sq:2102190","mt":{"level":[0,22],"quest":[0,["sq:2102190",null]]}},{"checks":{},"level":22,"quest":"sq:2102190","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/cleric","class":"cleric","name":"","created":0,"mt":{"level":[0,22],"quest":[0,["sq:2102190",null]],"rotSeen":[1790856000,["Left click:Earth's Retribution:0","Right click:Judgment Thunder:0","Q:Light of Regeneration:0","Q:Healing Light:1","E:Lightning Strike Scattershot:0","E:Condemnation:1","E:Chain of Torment:2","1:Debilitating Mark:0","2:Divine Aura:0","3:Radiant Recovery:0","4:Bolt:0"]]},"rotSeen":["Left click:Earth's Retribution:0","Right click:Judgment Thunder:0","Q:Light of Regeneration:0","Q:Healing Light:1","E:Lightning Strike Scattershot:0","E:Condemnation:1","E:Chain of Torment:2","1:Debilitating Mark:0","2:Divine Aura:0","3:Radiant Recovery:0","4:Bolt:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
@@ -18,10 +18,10 @@
     }
   },
   "cleric/L22-q34-none-B": {
-    "in": "9fe3a7535e22",
+    "in": "3bc14c87c71c",
     "store": {
       "areaLv": ["(absent)","20"],
-      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/cleric","class":"cleric","name":"","created":0,"checks":{},"level":22,"quest":"Disturbed Balance","mt":{"level":[0,22],"quest":[0,["Disturbed Balance",null]]}},{"checks":{},"level":22,"quest":"Disturbed Balance","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/cleric","class":"cleric","name":"","created":0,"mt":{"level":[0,22],"quest":[0,["Disturbed Balance",null]],"rotSeen":[1790856000,["Left click:Earth's Retribution:0","Right click:Judgment Thunder:0","Q:Light of Regeneration:0","Q:Healing Light:1","E:Lightning Strike Scattershot:0","E:Condemnation:1","E:Chain of Torment:2","1:Debilitating Mark:0","2:Divine Aura:0","3:Radiant Recovery:0","4:Bolt:0"]]},"rotSeen":["Left click:Earth's Retribution:0","Right click:Judgment Thunder:0","Q:Light of Regeneration:0","Q:Healing Light:1","E:Lightning Strike Scattershot:0","E:Condemnation:1","E:Chain of Torment:2","1:Debilitating Mark:0","2:Divine Aura:0","3:Radiant Recovery:0","4:Bolt:0"]}],
+      "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/cleric","class":"cleric","name":"","created":0,"checks":{},"level":22,"quest":"sq:2102190","mt":{"level":[0,22],"quest":[0,["sq:2102190",null]]}},{"checks":{},"level":22,"quest":"sq:2102190","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/cleric","class":"cleric","name":"","created":0,"mt":{"level":[0,22],"quest":[0,["sq:2102190",null]],"rotSeen":[1790856000,["Left click:Earth's Retribution:0","Right click:Judgment Thunder:0","Q:Light of Regeneration:0","Q:Healing Light:1","E:Lightning Strike Scattershot:0","E:Condemnation:1","E:Chain of Torment:2","1:Debilitating Mark:0","2:Divine Aura:0","3:Radiant Recovery:0","4:Bolt:0"]]},"rotSeen":["Left click:Earth's Retribution:0","Right click:Judgment Thunder:0","Q:Light of Regeneration:0","Q:Healing Light:1","E:Lightning Strike Scattershot:0","E:Condemnation:1","E:Chain of Torment:2","1:Debilitating Mark:0","2:Divine Aura:0","3:Radiant Recovery:0","4:Bolt:0"]}],
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],

@@ -22,6 +22,7 @@ function catalogInPage() {
     dv: !!it.dv, blv: it.blv || 0, opt: !!it.opt, adv: !!it.adv, hidden: !!it.hidden, sub: !!it.sub, ns: String(it.ns || '').replace(/<[^>]+>/g, '') });
   return {
     quests: QUESTS.map(([lv, n]) => [lv, n]),
+    questNames: { ...QUEST_NAME },   /* QUESTS hold the story key sq:<gameId> since save v6 (0.9 P2); this gives the name */
     questSteps: Object.fromEntries(Object.entries(QUEST_STEPS).map(([q, l]) => [q, l.length])),
     gates: GATES.map(g => ({ id: g.id, lv: g.lv, title: g.title, items: g.items.filter(it => it.k).map(it => it2(g, it)) })),
     steps: STEPS.map(s => ({ id: s.id, items: s.items.filter(it => it.k).map(it => it.k) })),
