@@ -1,8 +1,9 @@
 # allthings.how quotes in data/** (0.8.1 F9, #662)
 
 Game Data Check, 2026-10-21, for Legal (Chuck) and Walter. No pages were fetched for this note; it reads the repository
-only. allthings.how has no terms page (its `/terms/` link returned 404 on 2026-10-20, `SOURCES.md`), so its rule is
-facts and a link only. This note lists every `quote` field in `data/**` that sits on an allthings.how citation, with the
+only. allthings.how's terms are at `/terms-and-conditions/` (its footer's `/terms/` is 404; found by web search
+2026-10-20, `SOURCES.md`, Spot). They ban copying, reproducing or downloading its material without written permission,
+but not reading it, so its rule is facts and a link only, and quoting its wording in `data/` is copying. This note lists every `quote` field in `data/**` that sits on an allthings.how citation, with the
 fact in my own words, so a data PR can replace the quotes with paraphrases or drop them.
 
 Found with a walk of every JSON file under `data/` (each object with an allthings.how `url`, then its `quote`):
@@ -24,8 +25,9 @@ quoted fragments inside `note` fields** on allthings.how citations, which a `quo
 - **Inferred: the quotes may not be verbatim.** WebFetch returns a model's summary of a page, not its text, and
   `tools/research/r1/partial.json` has a note on a "fetch summary" that mixed up two pages. So a `quote` here is
   either a short extract or a summary of the page. The owner or Chuck can only tell which by opening the page.
-- **Since then.** The only scripted read of allthings.how was mine on 2026-10-20 for the world-boss research, with our
-  User-Agent and ≥ 10 s apart (`docs/research/2026-10-world-boss-timers.md`). It added no quote under `data/` on main.
+- **Since then.** The only scripted reads of allthings.how were Source Vetting's (Lydia) on 2026-10-20 for the
+  world-boss research: one article, then the terms search, with our User-Agent, at least 5 s apart
+  (`docs/research/2026-10-world-boss-sources.md`; the article was read before its terms were found, disclosed there). It added no quote under `data/` on main.
 
 ## Quotes
 
