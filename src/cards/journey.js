@@ -6,7 +6,7 @@
 import { char, levelOnTurnIn, levelOnUnturn } from "../core/state.js";
 import { activePack } from "../core/pack.js";
 import { setHTML } from "../core/cards.js";
-import { chainsOn, gatesOf, objPartsOf, questIdx, stepChipOf, storyGate, storyLineOf, turnInNeedsLv } from "../core/requirements.js";
+import { chainsOn, gatesOf, objDoneOf, objPartsOf, questIdx, questNameOf, setObjDone, setSubDone, stepChipOf, storyGate, storyLineOf, subDoneOf, turnInNeedsLv } from "../core/requirements.js";
 import { END_NEXT, STORY_DONE, capFirst, renderNow } from "./nextup.js";
 import { renderAhead } from "./ahead.js";
 import { joinQuestOf, questOptionsHTML } from "./welcome.js";
@@ -31,9 +31,9 @@ let qInput = null;
 const norm = s => s.toLowerCase().replace(/[^a-z0-9]/g, "");
 function findQuest(txt) {
   const t = norm(txt); if (!t) return null;
-  const exact = QUESTS.findIndex(([, n]) => norm(n) === t);
+  const exact = QUESTS.findIndex(([, n]) => norm(questNameOf(n)) === t);
   if (exact >= 0) return exact;
-  const hits = QUESTS.map((q, i) => [i, norm(q[1]).includes(t)]).filter(x => x[1]);
+  const hits = QUESTS.map((q, i) => [i, norm(questNameOf(q[1])).includes(t)]).filter(x => x[1]);
   return hits.length === 1 ? hits[0][0] : (hits.length > 1 ? -2 : -1);
 }
 /* Milestones with story-gated steps get an automatic first line: "Reach <quest> in the main story". It ticks
@@ -52,7 +52,7 @@ function renderStoryReqs() {
     row.hidden = ok && !!state.hide;
     const chip = !E6 ? (ok ? "reached" : d == null ? "set your quest" : `${d} story quest${d === 1 ? "" : "s"} ahead`) : L.chip || "set your quest";
     const now = E6 && !ok && L.turnIn && d === 1;
-    setHTML(row, `<label><input type="checkbox" disabled ${ok ? "checked" : ""}><span class="txt"><span class="schip${ok ? "" : d == null ? "" : now ? " now" : " ahead"}">${chip}</span><b>${L.turnIn ? "Turn in" : "Reach"} "${q}" in the main story</b> <span class="sr-sub">Opens ${parts.reqOpens} that wait for it.${d != null && !ok ? ` You're on "${char(state).quest}".` : ""}</span></span></label>`);
+    setHTML(row, `<label><input type="checkbox" disabled ${ok ? "checked" : ""}><span class="txt"><span class="schip${ok ? "" : d == null ? "" : now ? " now" : " ahead"}">${chip}</span><b>${L.turnIn ? "Turn in" : "Reach"} "${questNameOf(q)}" in the main story</b> <span class="sr-sub">Opens ${parts.reqOpens} that wait for it.${d != null && !ok ? ` You're on "${questNameOf(char(state).quest)}".` : ""}</span></span></label>`);
   });
 }
 /* Chip on story-gated steps: how far that quest is from your current main quest. */
@@ -78,7 +78,7 @@ function renderQuest(inUpdate) {
   const st = document.getElementById("questStatus"), pv = document.getElementById("questPrev"), qlv = document.getElementById("questLv");
   /* setHTML (0.9 P30): the quest field's warning (below, in journeyMount) writes questStatus's text, which setHTML sees */
   st.className = "st next"; qlv.textContent = ""; renderAhead();
-  const row = (q, tag) => q ? `<span class="dot"></span><span class="st-name st-step" title="Set as current quest">${q[1]}${tag ? ` <span class="unl">${tag}</span>` : ""}</span><span class="st-lv">Lv ${q[0]}</span>` : "";
+  const row = (q, tag) => q ? `<span class="dot"></span><span class="st-name st-step" title="Set as current quest">${questNameOf(q[1])}${tag ? ` <span class="unl">${tag}</span>` : ""}</span><span class="st-lv">Lv ${q[0]}</span>` : "";
   /* No quest, or one no longer in the story (a quest the story has since dropped): ask for the current quest. */
   const i = questIdx(char(state));
   if (i < 0) { setHTML(pv, ""); setHTML(st, `<span class="dot"></span><span class="st-name muted">Pick your current quest to place yourself on the story.</span>`); return; }
@@ -87,7 +87,7 @@ function renderQuest(inUpdate) {
   setHTML(pv, row(prev));
   qlv.textContent = `Lv ${QUESTS[i][0]}`;
   setHTML(st, nxt ? row(nxt, STORY_UNLOCKS[nxt[1]] ? `unlocks ${STORY_UNLOCKS[nxt[1]]}` : "") : `<span class="dot"></span><span class="st-name muted">${char(state).storyEnd === char(state).quest ? `${STORY_DONE} — ${END_NEXT}` : `Last story quest in the guide · turns in to ${STORY_END.turnin} at ${STORY_END.place}`}</span>`);
-  if (qInput.value !== char(state).quest) qInput.value = char(state).quest;
+  if (qInput.value !== questNameOf(char(state).quest)) qInput.value = questNameOf(char(state).quest);
   requestAnimationFrame(fitQuestIn);
   renderQuestSubs(inUpdate);
 }
@@ -102,18 +102,18 @@ function fitQuestIn() {
 }
 /* Main story filter (icon right of "Main story"): objectives and ticked objectives are hidden by default;
    each box shows them. The badge counts what's switched on; × goes back to the default. */
-const subDone = (i) => ((char(state).qsub || {})[char(state).quest] || {})[i] || [];
+/* i, j: list and parse positions; the save holds the objective's and sub-step's own index (src/core/requirements.js objDoneOf) */
+const subDone = (i) => subDoneOf(char(state), char(state).quest, i);
 function setSub(i, j, on) {
-  char(state).qsub = char(state).qsub || {}; const q = char(state).qsub[char(state).quest] = char(state).qsub[char(state).quest] || {};
-  const cur = new Set(q[i] || []); on ? cur.add(j) : cur.delete(j); q[i] = [...cur];
-  const n = objPartsList(QUEST_STEPS[char(state).quest][i]).length, d = new Set((char(state).qsteps || {})[char(state).quest] || []);
+  const c = char(state), cur = new Set(subDone(i)); on ? cur.add(j) : cur.delete(j); setSubDone(c, c.quest, i, [...cur]);
+  const n = objPartsList(QUEST_STEPS[c.quest][i]).length, d = new Set(objDoneOf(c, c.quest));
   if (cur.size >= n) d.add(i); else d.delete(i);
-  char(state).qsteps = char(state).qsteps || {}; char(state).qsteps[char(state).quest] = [...d]; save();
+  setObjDone(c, c.quest, [...d]); save();
   return cur.size >= n;
 }
 function setObj(i, on) {
   const subs = objPartsList(QUEST_STEPS[char(state).quest][i]);
-  if (subs.length) { char(state).qsub = char(state).qsub || {}; const q = char(state).qsub[char(state).quest] = char(state).qsub[char(state).quest] || {}; q[i] = on ? subs.map((_, j) => j) : []; }
+  if (subs.length) setSubDone(char(state), char(state).quest, i, on ? subs.map((_, j) => j) : []);
 }
 const subListHTML = (i, attr) => { const t = QUEST_STEPS[char(state).quest][i], subs = objPartsList(t); if (!subs.length) return ""; const sd = subDone(i);
   const loc = parts.subPlace(t);
@@ -121,9 +121,9 @@ const subListHTML = (i, attr) => { const t = QUEST_STEPS[char(state).quest][i], 
 /* Objectives are done in order: ticking one (or one of its parts) also ticks every objective before it,
    and those fade out with it. Unticking never unticks the earlier ones. */
 function completeBefore(i, root, attr) {
-  char(state).qsteps = char(state).qsteps || {}; const cur = new Set(char(state).qsteps[char(state).quest] || []);
+  const cur = new Set(objDoneOf(char(state), char(state).quest));
   for (let j = 0; j < i; j++) if (!cur.has(j)) { cur.add(j); setObj(j, true); }
-  char(state).qsteps[char(state).quest] = [...cur]; save();
+  setObjDone(char(state), char(state).quest, [...cur]); save();
   if (root) root.querySelectorAll(`input[${attr}]`).forEach(inp => { const j = +inp.getAttribute(attr); if (j < i && !inp.checked) { inp.checked = true; const li = inp.closest("li"); li.classList.add("on"); setTimeout(() => li.classList.add("leaving"), 550); } });
 }
 function syncJFilt() {
@@ -139,8 +139,8 @@ function renderQuestSubs(noNow) {
   if (noNow !== true) renderNow();
   /* setHTML (0.9 P30) for the empty and "none recorded" boxes; the list keeps innerHTML (below) */
   if (!state.showObj) { setHTML(el, ""); return; }
-  if (!list) { setHTML(el, char(state).quest ? `<p class="qs-none">No objectives recorded for "${char(state).quest}" yet.</p>` : ""); return; }
-  const done = (char(state).qsteps || {})[char(state).quest] || [], vis = objIdx(list), n = vis.filter(i => done.includes(i)).length, N = vis.length, showDone = !!state.qsShowDone;
+  if (!list) { setHTML(el, char(state).quest ? `<p class="qs-none">No objectives recorded for "${questNameOf(char(state).quest)}" yet.</p>` : ""); return; }
+  const done = objDoneOf(char(state), char(state).quest), vis = objIdx(list), n = vis.filter(i => done.includes(i)).length, N = vis.length, showDone = !!state.qsShowDone;
   const head = `<div class="qs-head"><span>Objectives ${n}/${N}</span></div>`;
   /* Last quest the guide covers: the button turns it in (as Next up's "Turned in"); once turned in, the story continues in game. */
   const last = questIdx(char(state)) === QUESTS.length - 1, needLv = turnInNeedsLv(char(state));
@@ -163,7 +163,7 @@ function stepQuest(d) {
   if (to !== from) applyLevel(to);
   char(state).quest = QUESTS[j][1]; delete char(state).storyEnd; save();
   update();
-  if (to > from) rewardToast(`Lv ${to}: "${q[1]}" turned in`, () => { if (char(state).quest === QUESTS[j][1]) stepQuest(-1); });
+  if (to > from) rewardToast(`Lv ${to}: "${questNameOf(q[1])}" turned in`, () => { if (char(state).quest === QUESTS[j][1]) stepQuest(-1); });
   const ul = document.querySelector("ul.story"); if (!ul) return;
   ul.classList.remove("roll-next", "roll-prev"); void ul.offsetWidth; ul.classList.add(d > 0 ? "roll-next" : "roll-prev");
   setTimeout(() => ul.classList.remove("roll-next", "roll-prev"), 450);
@@ -207,7 +207,7 @@ function syncLevel() {
 /* the handlers (from render(), once) */
 function journeyMount() {
   qInput = document.getElementById("questIn");
-  document.getElementById("questList").innerHTML = QUESTS.map(([l, n]) => `<option value="${n}">Lv ${l}</option>`).join("");
+  document.getElementById("questList").innerHTML = QUESTS.map(([l, n]) => `<option value="${questNameOf(n)}">Lv ${l}</option>`).join("");
   window.addEventListener("resize", () => requestAnimationFrame(fitQuestIn));
   { const btn = document.getElementById("jFiltBtn"), menu = document.getElementById("jFiltMenu");
     const set = o => { menu.hidden = !o; btn.setAttribute("aria-expanded", String(o)); };
@@ -226,8 +226,8 @@ function journeyMount() {
     const i = e.target.dataset && e.target.dataset.qobj; if (i == null) return;
     if (e.target.checked) completeBefore(+i, document.getElementById("questSubs"), "data-qobj");
     setObj(+i, e.target.checked);
-    char(state).qsteps = char(state).qsteps || {}; const cur = new Set(char(state).qsteps[char(state).quest] || []);
-    e.target.checked ? cur.add(+i) : cur.delete(+i); char(state).qsteps[char(state).quest] = [...cur]; save();
+    const cur = new Set(objDoneOf(char(state), char(state).quest));
+    e.target.checked ? cur.add(+i) : cur.delete(+i); setObjDone(char(state), char(state).quest, [...cur]); save();
     /* Ticked: turn green, then fade and fold away (unless done ones are shown, or it was the last one). */
     const li = e.target.closest("li"), vis = objIdx(QUEST_STEPS[char(state).quest] || []), all = vis.length, cnt = vis.filter(x => cur.has(x)).length;
     if (e.target.checked && !state.qsShowDone && cnt < all) {
@@ -253,7 +253,7 @@ function journeyMount() {
     if (i === null) { char(state).quest = ""; save(); renderQuest(); return; }
     if (i < 0) {
       st.className = "st next warn";
-      st.textContent = i === -2 ? "Several quests match; pick one from the list." : `Not in the list. The guide's story ends at "${QUESTS[QUESTS.length - 1][1]}" (Lv ${QUESTS[QUESTS.length - 1][0]}); set your level above.`;
+      st.textContent = i === -2 ? "Several quests match; pick one from the list." : `Not in the list. The guide's story ends at "${questNameOf(QUESTS[QUESTS.length - 1][1])}" (Lv ${QUESTS[QUESTS.length - 1][0]}); set your level above.`;
       return;
     }
     char(state).quest = QUESTS[i][1]; delete char(state).storyEnd; save();

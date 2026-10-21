@@ -26,7 +26,7 @@ import { webStorage as saveStore } from "./shell/storage-web.js";
 import { newId } from "./shell/ids.js";
 /* the whole module lands in this bundle; src/site.js reads its line / nudge / hint helpers as page globals */
 import { importBackup, markExport } from "./core/backup.js";
-import { checkableOf, countsOf, gatesOf, mainCountsOf, objIdxOf, qProgOf, sideOpenOf, setGateChanges, gatesPass } from "./core/requirements.js";
+import { checkableOf, countsOf, gatesOf, mainCountsOf, objIdxOf, qProgOf, questNameOf, sideOpenOf, setGateChanges, gatesPass } from "./core/requirements.js";
 import { setRankChanges } from "./core/nextup.js";
 /* the engine's cards (0.4 P4c, src/cards/): what the shell still calls of them, and the hand-over of the shell's names
    they read (useCardPage, below) */
@@ -112,7 +112,7 @@ if (Array.isArray(window.__gateChanges)) setGateChanges(window.__gateChanges);
 /* ... and the ranking changes of smart Next up (RANK_CHANGES and the pack's table) to run with; the page runs with each
    table's `on` (0.5 P11: all off). */
 if (Array.isArray(window.__rankChanges)) setRankChanges(window.__rankChanges);
-/* The save from storage (save v5; anything else starts fresh), then the load-time steps (src/core/migrations.js). */
+/* The save from storage (save v6; anything else starts fresh), then the load-time steps (src/core/migrations.js). */
 let { state, hadSave } = loadState(saveStore.get(KEY), { now: Date.now(), newId });
 migrate(state, hadSave, storeState, Math.floor(Date.now() / 1000));
 /* Every write of the progress goes through storeState(); each one stamps the current character's per-item change times
@@ -451,7 +451,7 @@ layoutEl.addEventListener("click", e => {
 })();
 document.getElementById("impIn").addEventListener("change", async e => {
   const f = e.target.files && e.target.files[0], msg = document.getElementById("xferMsg"); e.target.value = ""; if (!f) return;
-  /* only a v5 export (0.4 on) loads; anything else, a pre-0.4 export included, changes nothing */
+  /* only a v6 export (0.9 on) loads; anything else, an older export included, changes nothing */
   const data = parseExport(await f.text());
   if (!data) { msg.textContent = "This file is from a version before 0.4 and can't be loaded."; return; }
   const c = char(data), n = Object.values(c.checks || {}).filter(Boolean).length;
@@ -476,7 +476,7 @@ const reportLink = document.getElementById("reportLink");
 /* the form's address as the page's markup holds it (src/index.html), before the first refresh adds the fields */
 const reportBase = reportLink.getAttribute("href").split("?")[0];
 const reportURL = () => {
-  const f = { template: "bug.yml", version: APP_VERSION, level: String(char(state).level || ""), quest: char(state).quest || "(not set)",
+  const f = { template: "bug.yml", version: APP_VERSION, level: String(char(state).level || ""), quest: (char(state).quest && questNameOf(char(state).quest)) || "(not set)",
     build: APP_BUILD, browser: navigator.userAgent };
   return reportBase + "?" + Object.entries(f).map(([k, v]) => k + "=" + encodeURIComponent(v)).join("&");
 };

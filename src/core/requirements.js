@@ -5,7 +5,7 @@
    The game's own rules and helpers are the pack's (keptRules, gateChanges, graphTransforms, story hooks; a pack's
    rules.js and requirements.js under src/packs/); this file reaches them through the pack object only. */
 import { evaluate } from "./evaluator.js";
-import { aheadText, blockerChain, leafText, questsAhead } from "./blockers.js";
+import { aheadText, blockerChain, leafText, questNameOf, questsAhead } from "./blockers.js";
 import { cardRows, itemByK } from "./catalog.js";
 import { activePack, perPack } from "./pack.js";
 import { char } from "./state.js";
@@ -142,6 +142,33 @@ export const objPartsOf = (quest, i) => { const { steps, notes } = activePack().
 /* The objectives shown (and counted): all of them with "talk-only steps" on (state.showTalk), else the ones the pack
    doesn't call talk-only (story.isTalkOnly). */
 export const objIdxOf = (state, list) => { const { isTalkOnly } = activePack().story; return list.map((t, i) => i).filter(i => state.showTalk || !isTalkOnly(list[i])); };
+
+/* ---------- Story save keys (0.9 P2, save v6) ---------- */
+/* A story quest is stored by its key (data.story.quests[n][1], the pack's stable id); the page shows its name
+   (questNameOf, src/core/blockers.js). */
+export { questNameOf };
+/* An objective is stored by its save index i, explicit in the data (data.story.ids[quest]: each objective's i in list
+   order, given where one differs from its position); the cards work in list positions. Its sub-steps likewise
+   (data.story.subIds[quest][i]: each sub-step's index, in parse order). An index the list no longer has is kept. */
+const objIds = q => (activePack().data.story.ids || {})[q];
+const subIds = (q, i) => ((activePack().data.story.subIds || {})[q] || {})[i];
+export const objKeyOf = (q, p) => { const a = objIds(q); return a ? a[p] : p; };
+export const objPosOf = (q, i) => { const a = objIds(q); return a ? a.indexOf(i) : i; };
+/* the ticked objectives of quest q, as list positions */
+export const objDoneOf = (c, q) => ((c.qsteps || {})[q] || []).map(i => objPosOf(q, i)).filter(p => p >= 0);
+/* sets them (positions), keeping a stored index no objective has now */
+export function setObjDone(c, q, ps) {
+  c.qsteps = c.qsteps || {}; const keep = (c.qsteps[q] || []).filter(i => objPosOf(q, i) < 0);
+  c.qsteps[q] = [...keep, ...ps.map(p => objKeyOf(q, p))];
+}
+/* the ticked sub-steps of objective p of quest q, as parse positions; and setting them */
+export const subDoneOf = (c, q, p) => { const i = objKeyOf(q, p), a = subIds(q, i);
+  return (((c.qsub || {})[q] || {})[i] || []).map(j => a ? a.indexOf(j) : j).filter(j => j >= 0); };
+export function setSubDone(c, q, p, js) {
+  const i = objKeyOf(q, p), a = subIds(q, i); c.qsub = c.qsub || {}; const o = c.qsub[q] = c.qsub[q] || {};
+  const keep = (o[i] || []).filter(j => a && !a.includes(j));
+  o[i] = [...keep, ...js.map(j => a ? a[j] : j)];
+}
 
 /* Quest progress: 0 = not picked up, 1 = in progress (old true values count as 1). */
 export const qProgOf = (c, k) => { const v = (c.started || {})[k]; return v === true ? 1 : (v || 0); };

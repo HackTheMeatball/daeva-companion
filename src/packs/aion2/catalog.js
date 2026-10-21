@@ -6,7 +6,7 @@
    2. Skill upgrades sorted (the milestones arrive in level order from the guide pack, skill-only ones like g19 included).
    3. Regional quests (RQ) placed into milestones by recommended level; skill lines folded into milestones.
    Keys never depend on where an item ends up (docs/ARCHITECTURE.md §1). */
-import { AREA_LOC, RQ, SD_RW, SH_DATA } from "./data/generated.js";
+import { AREA_LOC, QUEST_NAME, RQ, SD_RW, SH_DATA } from "./data/generated.js";
 import { SP_SLOTS, SP_STEPS } from "./data/build.js";
 import { T, mapQ, mapSlug, stTag, sub } from "./data/markup.js";
 import { GATES } from "./data/milestones.js";
@@ -55,7 +55,7 @@ export const spCostTxt = x => x.spec ? "free" : x.cost + " pt" + (x.cost > 1 ? "
 const qMap = q => [q.zone && q.zone + stTag(q.zoneSt), q.place && q.place !== q.zone ? q.place : "", q.id ? mapQ(q.id, q.npc || "map") : (q.npc || "map")].filter(Boolean).join(" · ");
 /* What opens a regional quest, in the row's second line: unlock level (if above 10), the story quest, earlier regional quests. */
 /* inGroup: the group heading already says it (story quest or unlock level), so the row doesn't repeat it. */
-const rqReqTxt = (q, inGroup) => { const xs = [q.unlocksAt > 10 && !inGroup ? `at Lv ${q.unlocksAt}` : "", q.story && !inGroup ? (q.turnedIn ? `once <em>${q.story}</em> is turned in` : `once the story reaches <em>${q.story}</em>`) : "",
+const rqReqTxt = (q, inGroup) => { const xs = [q.unlocksAt > 10 && !inGroup ? `at Lv ${q.unlocksAt}` : "", q.story && !inGroup ? (q.turnedIn ? `once <em>${QUEST_NAME[q.story]}</em> is turned in` : `once the story reaches <em>${QUEST_NAME[q.story]}</em>`) : "",
   q.after.length ? `after ${q.after.map(n => `<em>${n}</em>`).join(" and ")} ${q.after.length > 1 ? "are" : "is"} turned in` : ""].filter(Boolean);
   /* always the span (empty when nothing opens it): since E6 the page fills it from the evaluator (main.js syncQRun) */
   return `<span class="rq-req">${xs.length ? `<br>Opens ${xs.join(", ")}` : ""}</span>`; };
@@ -64,7 +64,7 @@ const rqItem = (q, inGroup) => ({ kind: "quest", name: q.name, k: "rq:" + q.id, 
   t: `<b>${q.name}</b><span class="loc">${qMap(q)}${rqReqTxt(q, inGroup)}${q.reward ? `<br>Reward: <em>${q.reward}</em>` : ""}</span>` });
 /* Regional quests into their milestones: the highest milestone at or below the quest's recommended level, grouped under
    "Regional quests · Lv N". A group of more than 8 splits by what opens it (story quest, unlock level). */
-{ const why = q => q.story ? `after "${q.story}"` : q.unlocksAt > 10 ? `opens at Lv ${q.unlocksAt}` : "";
+{ const why = q => q.story ? `after "${QUEST_NAME[q.story]}"` : q.unlocksAt > 10 ? `opens at Lv ${q.unlocksAt}` : "";
   const byGate = new Map();
   RQ.forEach(q => { const g = [...GATES].reverse().find(x => x.lv <= q.rec) || GATES[0]; if (!byGate.has(g)) byGate.set(g, []); byGate.get(g).push(q); });
   byGate.forEach((qs, g) => [...new Set(qs.map(q => q.rec))].sort((a, b) => a - b).forEach(r => {

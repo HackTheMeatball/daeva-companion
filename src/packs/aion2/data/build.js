@@ -1,14 +1,14 @@
 /* Assassin build data: stat tiers, skill point plan and costs, Daevanion node types, stigma plan, key stacks, icons.
    Every export is still a page global (scripts/build.mjs). */
 import { E_ORDER, KEYS, LEVEL_POINTS, RMB_ROWS, RULE_NODE_COSTS, RULE_SHARD_COST, RULE_SKILL_POINT_COST, RULE_SPEC_SLOTS, SP_EXTRA, SP_ICONS, SP_SKILLS_CORE,
-  GUIDE_GATES, KEYS_ST, STAT_NOTE, STAT_SRC, STAT_TIERS, STIGMA_ICON, STIGMA_PLAN, STIGMA_ST, ST_TARGETS } from "./generated.js";
+  GUIDE_GATES, KEYS_ST, STAT_NOTE, STAT_SRC, STAT_TIERS, STIGMA_ICON, STIGMA_KEY, STIGMA_PLAN, STIGMA_ST, ST_TARGETS } from "./generated.js";
 /* Compiled from data/packs/aion2/classes/assassin/ and data/packs/aion2/asmodian/assassin/builds.json since 0.2 step 5b
    (tools/gen/gen.mjs): the guide build (builds.json: stat tiers,
    skill order and specialty picks, stigma plan and targets, key stacks), skills.json (learn levels, icons) and
    stigmas.json (icons), and rule:level-points. Re-exported here under their page names. Since 0.4 P2a the cost and slot
    tables below are built from the pack's rules (RULE_*: rule:skill-point-cost, rule:specialty-slots, rule:node-costs,
    rule:stigma-shard-cost), not written out here. */
-export { E_ORDER, KEYS, KEYS_ST, LEVEL_POINTS, SP_ICONS, STAT_NOTE, STAT_SRC, STAT_TIERS, STIGMA_ICON, STIGMA_PLAN, STIGMA_ST, ST_TARGETS };
+export { E_ORDER, KEYS, KEYS_ST, LEVEL_POINTS, SP_ICONS, STAT_NOTE, STAT_SRC, STAT_TIERS, STIGMA_ICON, STIGMA_KEY, STIGMA_PLAN, STIGMA_ST, ST_TARGETS };
 /* the build has a key setup: the guide's right-click rows (the Assassin), or the game's default keys (KEYS, 0.7 P11: the
    Ranger and the Gladiator); without either the Build drawer shows no Rotation */
 export const HAS_KEYS = RMB_ROWS.length > 0 || KEYS.length > 0;
@@ -33,14 +33,14 @@ export const SPEC_SLOT_LV = RULE_SPEC_SLOTS.slice();
 export const SP_STEPS = [];
 SP_SKILLS.forEach((s, rank) => {
   for (let L = 2; L <= 10; L++) {
-    SP_STEPS.push({ k: `sp:${s.n}:${L}`, s, rank, L, req: s.flat ? s.learn : s.learn + 3 * (L - 2), cost: spCost(L) });
-    if (L === 8 && !s.passive && s.spec) SP_STEPS.push({ k: `sp:${s.n}:spec`, s, rank, L: 8.5, req: s.learn + 18, cost: 0, spec: true, slot: 1, slotLv: SPEC_SLOT_LV[0] });
+    SP_STEPS.push({ k: `sp:${s.key}:${L}`, s, rank, L, req: s.flat ? s.learn : s.learn + 3 * (L - 2), cost: spCost(L) });
+    if (L === 8 && !s.passive && s.spec) SP_STEPS.push({ k: `sp:${s.key}:spec`, s, rank, L: 8.5, req: s.learn + 18, cost: 0, spec: true, slot: 1, slotLv: SPEC_SLOT_LV[0] });
   }
 });
 /* Specialty slots 2 and 3 (0.3 E7, design §9): open at effective skill level 12 / 20 (rule:specialty-slots; the generator
    checks 8 / 12 / 20), on the skills with a slot 1 line. Not milestone rows: the Skills card and Next up only (slot 3, out of
    reach inside Lv 45, the Skills card only: Q5). req only orders them (slot 2: the level of skill line 10; slot 3: after
-   Lv 45). New keys sp:<skill>:spec2 / :spec3, written only when ticked. The build's pick per slot is s.specs[slot − 1]. */
+   Lv 45). New keys sp:<skill key>:spec2 / :spec3, written only when ticked. The build's pick per slot is s.specs[slot − 1]. */
 export const SP_SLOTS = [];
 SP_STEPS.filter(x => x.slot === 1).forEach(x => [2, 3].forEach(n => SP_SLOTS.push({ k: `${x.k}${n}`, s: x.s, rank: x.rank, L: 10 + n / 10,
   req: n === 2 ? x.s.learn + 24 : 46, cost: 0, spec: true, slot: n, slotLv: SPEC_SLOT_LV[n - 1] })));

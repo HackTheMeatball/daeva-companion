@@ -15,13 +15,13 @@ import { AREA_LOC } from "./data/generated.js";
 import { KIBELISKS, NODE_PLACE } from "./data/place.js";
 import { nudgeOf, storyTargetOf, teleportOf } from "./travel.js";
 import { AREA_ITEMS, KIB_AREA, bandOf } from "./catalog.js";
-import { areaOpen, dvCostOf, dvNeed, dvNext, dvSpent, isAscensionKey, rqStatus, rqWaitsOnStory, shardsFromLv, skillBuy, skillOpen, stigmaEquipOpen, stigmaPlan, stigmaSlots,
+import { areaOpen, dvCostOf, dvNeed, dvNext, dvSpent, isAscensionKey, rqStatus, rqWaitsOnStory, shardsFromLv, skillBuy, skillOpen, stigmaEquipOpen, stigmaPlan, stigmaSlots, stKey,
   storyAreaOf, storyAreaStOf, storyHereOf } from "./requirements.js";
 import { blockerText } from "../../core/blockers.js";
 import { etaOf, rankChangeOn } from "../../core/nextup.js";
 import { perPack } from "../../core/pack.js";
 import { byPlace, whereNow } from "../../core/place.js";
-import { doneOf, gatesOf, objIdxOf, openBut, openSteps, qProgOf } from "../../core/requirements.js";
+import { doneOf, gatesOf, objDoneOf, objIdxOf, openBut, openSteps, qProgOf } from "../../core/requirements.js";
 
 /* The pack's ranking changes (docs/design/0.4-smart-next-up.md §12), switches like the engine's RANK_CHANGES
    (src/core/nextup.js: rankChangeOn(n, AION2_RANK_CHANGES), setRankChanges); each ships off until the step that builds
@@ -161,7 +161,7 @@ function regional(state, ctx) {
 function stigma(state, { c, lv, ev }) {
   const sl = stigmaSlots(c), nx = sl.find(x => !c.checks[x.k]), up = stigmaPlan(c)[0];
   if (nx && stigmaEquipOpen(c, nx, ev)) { const r = E_ORDER.filter(n => n === nx.name || sl.some(x => x.name === n && c.checks[x.k])).indexOf(nx.name);
-    if (!(c.stLv || {})[nx.name] && !(c.stShards || 0)) { let at = null; for (let L = lv + 1; L <= 45 && at == null; L++) if (shardsFromLv(L) > shardsFromLv(lv)) at = L;
+    if (!(c.stLv || {})[stKey(nx.name)] && !(c.stShards || 0)) { let at = null; for (let L = lv + 1; L <= 45 && at == null; L++) if (shardsFromLv(L) > shardsFromLv(lv)) at = L;
       return [{ phase: "side", keep: true, needs: CARD_UNLOCK.stigmas, card: { kind: "stwait", nx, at, act: "" } }]; }
     return [{ phase: "spend", needs: CARD_UNLOCK.stigmas, card: { kind: "stequip", nx, r, act: "stequip" } }]; }
   if (up && (c.stShards || 0) >= up.cost) return [{ phase: "spend", points: "stigma", needs: CARD_UNLOCK.stigmas, card: { kind: "stup", up, shards: c.stShards, act: "stup" } }];
@@ -224,7 +224,7 @@ export const travelAdviceOn = () => ["bindDerived", "travelAdvice"].every(n => r
    the bind happens there (0.6 P12, travel.js autoBindsOf) still doesn't get the Kibelisk line. */
 export const aion2StoryFields = (state, { c, story: { gated } }) => {
   const sh = gated ? null : storyHereOf(state), on = n => rankChangeOn(n, AION2_RANK_CHANGES);
-  const L = QUEST_STEPS[c.quest] || [], shown = objIdxOf(state, L), done = (c.qsteps || {})[c.quest] || [], open = L[shown.find(i => !done.includes(i))];
+  const L = QUEST_STEPS[c.quest] || [], shown = objIdxOf(state, L), done = objDoneOf(c, c.quest), open = L[shown.find(i => !done.includes(i))];
   const bind = on("bindDerived") && on("bindNudge") ? nudgeOf(c) : null;
   const T = !gated && travelAdviceOn() && state.preferRun !== true ? storyTargetOf(c, { shown }) : null;
   const t = T && teleportOf(c, T, whereNow(c));

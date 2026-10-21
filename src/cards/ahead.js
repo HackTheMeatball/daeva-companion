@@ -2,7 +2,7 @@
    unlocks by level and the next story unlock. Drawn by renderQuest (Journey), so it registers with update: null. */
 import { char } from "../core/state.js";
 import { activePack } from "../core/pack.js";
-import { questIdx } from "../core/requirements.js";
+import { questIdx, questNameOf } from "../core/requirements.js";
 import { pageState as state, pageUpdate as update, pageGATES as GATES, pageQUESTS as QUESTS, pageSTORY_UNLOCKS as STORY_UNLOCKS, pageUNLOCK_GATE as UNLOCK_GATE, pageVERIFIED_UNLOCKS as VERIFIED_UNLOCKS } from "./page.js";
 
 function renderAhead() {
@@ -21,7 +21,7 @@ function renderAhead() {
       if (ui >= 0) { const uq = QUESTS[qi + 1 + ui], gid = UNLOCK_GATE[uq[1]];
         /* in level order with the unlock rows (#334): a Lv 2 story unlock goes above a Lv 3 one; ties keep it after them */
         const at = lvls.filter(L => L <= uq[0]).length;
-        rows.splice(at, 0, `<a class="ah-row"${gid ? ` href="#${gid}" data-gogate="${gid}"` : ""}><span class="ah-lv unl">Lv ${uq[0]}</span><span class="ah-main"><b>🔓 ${STORY_UNLOCKS[uq[1]]}</b><small>${ui === 0 ? "your next quest" : pl(ui + 1, "story quest")} · "${uq[1]}"</small></span></a>`); } }
+        rows.splice(at, 0, `<a class="ah-row"${gid ? ` href="#${gid}" data-gogate="${gid}"` : ""}><span class="ah-lv unl">Lv ${uq[0]}</span><span class="ah-main"><b>🔓 ${STORY_UNLOCKS[uq[1]]}</b><small>${ui === 0 ? "your next quest" : pl(ui + 1, "story quest")} · "${questNameOf(uq[1])}"</small></span></a>`); } }
     /* At the cap there's nothing above you: the pack's row says so instead of an empty box (0.4 P5a, nowRenderers). */
     const capRow = activePack().nowRenderers["ahead.cap"], cap = capRow ? capRow(lv, { state, c: char(state), lv }) : "";
     if (cap) rows.push(cap);

@@ -1,4 +1,4 @@
-/* Load-time steps (0.2 P3, pure: no DOM, no storage), in load order (docs/ARCHITECTURE.md §1). Save v5 (0.4 P3c) is a
+/* Load-time steps (0.2 P3, pure: no DOM, no storage), in load order (docs/ARCHITECTURE.md §1). Save v6 (0.9 P2) is a
    clean break, so no step reads an old shape: what is left is the fresh start, the pack's load hook (onLoad) and the
    story-end move-on (data growth). store() is the page's storeState(), called where a step changed saved progress. */
 import { activePack } from "./pack.js";

@@ -1,4 +1,4 @@
-/* merge(a, b) of two saves (per character slot, save v5) and the part of a save it syncs (0.2 step 5c, pure: no DOM, no
+/* merge(a, b) of two saves (per character slot, save v6) and the part of a save it syncs (0.2 step 5c, pure: no DOM, no
    storage, no clock); the change times it reads are src/core/sync.js's (stamp, the mt walkers). Only the sync client
    (src/core/sync-client.js) calls it, so it ships in the sync chunk (0.8 P6, src/sync-ui.js), not in the page.
    docs/DATA-FORMAT-V2.md §13 is the spec; docs/ARCHITECTURE.md §1 the save rules. */

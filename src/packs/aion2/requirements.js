@@ -4,7 +4,7 @@
    Functions take the character (c = char(state)) or, where a view setting changes the answer, the whole state. Nothing
    here writes. Every "is it open?" answer comes from the engine's evaluator glue (gatesOf, src/core/requirements.js). */
 import { QUEST_LOC, QUEST_STEPS, QUESTS } from "./data/story.js";
-import { DV_MIN, E_ORDER, GUIDE_KEYS, KEYS, LEVEL_POINTS, RMB_STACK, SP_SLOTS, SP_STEPS, STIGMA_PLAN, ST_COST, ST_TARGETS } from "./data/build.js";
+import { DV_MIN, E_ORDER, GUIDE_KEYS, KEYS, LEVEL_POINTS, RMB_STACK, SP_SLOTS, SP_STEPS, STIGMA_KEY, STIGMA_PLAN, ST_COST, ST_TARGETS } from "./data/build.js";
 import { GATES } from "./data/milestones.js";
 import { RQ } from "./data/generated.js";
 import { NO_AREA } from "./data/areas.js";
@@ -12,7 +12,7 @@ import { AREA_ITEMS, DV_NODES, RQ_K } from "./catalog.js";
 import { itemByK } from "../../core/catalog.js";
 import { blockerText, stepName } from "../../core/blockers.js";
 import { activePack } from "../../core/pack.js";
-import { derivedOf, gateChangeOn, gatesOf, liveGatesOf, objIdxOf, openBut, questIdx } from "../../core/requirements.js";
+import { derivedOf, gateChangeOn, gatesOf, liveGatesOf, objDoneOf, objIdxOf, openBut, questIdx, questNameOf } from "../../core/requirements.js";
 import { char } from "../../core/state.js";
 
 /* A one-time clear in the Progress tally (its clear reward, CLEAR_REWARD, counted): ticked, or with clearTally a regional
@@ -46,7 +46,7 @@ export function objSubs(t) {
 export function storyHereOf(state) {
   const c = char(state);
   if (!c.quest) return null;
-  const list = QUEST_STEPS[c.quest], done = (c.qsteps || {})[c.quest] || [], L = QUEST_LOC[c.quest] || {};
+  const list = QUEST_STEPS[c.quest], done = objDoneOf(c, c.quest), L = QUEST_LOC[c.quest] || {};
   const turnin = () => L.turninKib ? { kib: L.turninKib, m: L.turninKibM, zone: L.turninZone, ...(L.turninZoneSt ? { zoneSt: L.turninZoneSt } : {}) } : null;
   if (list) { const i = objIdxOf(state, list).find(i => !done.includes(i));
     if (i != null) { const t = list[i], m = t.match(/\(Kibelisk: ([^)]+)\)/);
@@ -138,7 +138,7 @@ export const dvWaitOf = (c, board) => {
   const ev = gatesOf(c), its = DV_NODES().filter(it => it.board === board);
   if (!its.length || its.some(it => ev.byKey(it.k).open)) return null;
   const lv = Math.min(...its.map(it => it.blv)), n = ev.byKey(its.find(it => it.blv === lv).k), r = n.root;
-  return lv <= c.level && r && r.kind === "story" ? { lv, story: r.name, text: blockerText(n, ev, { omit: ["level"] }) } : { lv };
+  return lv <= c.level && r && r.kind === "story" ? { lv, story: questNameOf(r.name), text: blockerText(n, ev, { omit: ["level"] }) } : { lv };
 };
 /* Its cost (logged or the plan's), else the cheapest it can be (the node itself; its path only adds). */
 export const dvNeed = (c, it) => dvCostOf(c, it) ?? (DV_MIN[it.ty] || 1);
@@ -158,13 +158,18 @@ export const dvFromLv = lv => Math.max(0, 4 * (lv - 11));
 /* Stigma Shards from levels (Metabot): 1 per level reached from 23 to 39, 2 per level from 40 to 45. */
 export const shardsFromLv = L => { let t = 0; for (let x = 23; x <= Math.min(L, 45); x++) t += x >= 40 ? 2 : 1; return t; };
 /* Effective name per slot 1–4: your pick, else the plan; a name already used by an earlier slot falls to the first free one. */
-export const slotNames = c => { const used = []; for (let n = 1; n <= 4; n++) { let nm = (c.stPick || {})[n]; if (!nm || used.includes(nm)) nm = STIGMA_PLAN[n - 1]; if (used.includes(nm)) nm = STIGMA_PLAN.find(x => !used.includes(x)); used.push(nm); } return used; };
+/* stLv and stPick hold a stigma's save key (0.9 P2, save v6), the cards its name; a name typed for a stigma the data
+   doesn't have is stored as typed */
+const STIGMA_NAME = Object.fromEntries(Object.entries(STIGMA_KEY).map(([n, k]) => [k, n]));
+export const stKey = n => STIGMA_KEY[n] || n;
+export const stName = k => STIGMA_NAME[k] || k;
+export const slotNames = c => { const used = []; for (let n = 1; n <= 4; n++) { let nm = (c.stPick || {})[n]; if (nm) nm = stName(nm); if (!nm || used.includes(nm)) nm = STIGMA_PLAN[n - 1]; if (used.includes(nm)) nm = STIGMA_PLAN.find(x => !used.includes(x)); used.push(nm); } return used; };
 /* The four slots from the milestones (22 / 27 / 32 / 37). A slot is open (openOf its key) at its level; slot 1 also needs
    "The One Who Hears the Voice" (g22:0; kept rule "stigma-slot-1-after-g22:0", src/packs/aion2/rules.js). */
 export const stigmaSlots = c => { const names = slotNames(c);
   return GATES.flatMap(g => g.items.filter(it => it.stig).map(it => ({ n: it.stig, lv: g.lv, gid: g.id, k: it.k, name: names[it.stig - 1], plan: STIGMA_PLAN[it.stig - 1],
     note: it.t.replace(/<b>.*?<\/b>\s*/, "").replace(/<[^>]+>/g, "") }))).sort((a, b) => a.n - b.n); };
-export const stLvOfC = (c, n) => (c.stLv || {})[n] || 1;
+export const stLvOfC = (c, n) => (c.stLv || {})[stKey(n)] || 1;
 /* Stigmas unlocked: "The One Who Hears the Voice" (g22:0) done. */
 export const stigmaUnlocked = (c, ev = gatesOf(c)) => ev.byKey("g22:0").done !== false;
 /* Kept rule "stigma-equip-after-g22:0": a slot can be equipped (Next up, the Stigmas card) once it is open and stigmas

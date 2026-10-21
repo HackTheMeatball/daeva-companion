@@ -1,15 +1,16 @@
 /* The saved state (0.2 P3, pure: no DOM, no storage). docs/ARCHITECTURE.md §1 has the rules.
 
-   Save v5 (0.4 P3c, a clean break: the v4 key is never read). One save holds the view settings (mode, filters, folds),
-   this browser's backup times, and the characters, one slot each:
-     { v: 5, savedAt, current: <slot id>, chars: { <slot id>: character }, mode, open, hide, hideCards, …, backup }
+   Save v6 (0.9 P2, the last clean break before 1.0: the v5 key is never read, nor the v4 one; story progress is keyed by
+   the quest's id, objectives by their explicit index, skills and stigmas by their id's last segment). One save holds the
+   view settings (mode, filters, folds), this browser's backup times, and the characters, one slot each:
+     { v: 6, savedAt, current: <slot id>, chars: { <slot id>: character }, mode, open, hide, hideCards, …, backup }
    A character is { id, pack, class, name, created, ...charFields() }. The slot id is random (newId), never derived from
    the name, class or level. Every read and write of character data goes through char(state); tests/core/purity.test.mjs
    fails on a direct state.<field> access to a charFields() name anywhere in src/. */
 import { activePack, packClasses } from "./pack.js";
 
-export const KEY = "companion-save-v5";
-export const SAVE_V = 5;
+export const KEY = "companion-save-v6";
+export const SAVE_V = 6;
 
 /* The character's progress fields: the engine's (ENGINE_FIELDS) and the active pack's own (its charFields, 0.4 P2b).
    Everything else in a character is its identity (CHAR_META: the guide pack and class a new character gets are the
@@ -80,19 +81,19 @@ export function newSave({ now = 0, id }) {
   return { v: SAVE_V, current: c.id, chars: { [c.id]: c }, ...DEFAULT() };
 }
 
-/* A stored v5 save: an object with v 5 and a current slot that holds a character or a tombstone. Nothing else is read. */
+/* A stored v6 save: an object with v 6 and a current slot that holds a character or a tombstone. Nothing else is read. */
 const isObj = x => !!x && typeof x === "object" && !Array.isArray(x);
-const isV5 = s => isObj(s) && s.v === SAVE_V && isObj(s.chars) && typeof s.current === "string" && isObj(s.chars[s.current]);
+const isSave = s => isObj(s) && s.v === SAVE_V && isObj(s.chars) && typeof s.current === "string" && isObj(s.chars[s.current]);
 
-/* The state from the stored text (null = no save). Anything that isn't a v5 save (unreadable text, another shape) gives
-   a new save, as if there were none. hadSave: a v5 save was loaded. opts { now (ms), newId () → slot id } make the new
+/* The state from the stored text (null = no save). Anything that isn't a v6 save (unreadable text, another shape, a v5 save) gives
+   a new save, as if there were none. hadSave: a v6 save was loaded. opts { now (ms), newId () → slot id } make the new
    save; newId is only called then. A save whose current slot is a tombstone (merge() removed it, 0.6 P20) shows the
    first remaining character; one with no character left (each device removed the other's) gets a new one, current,
    next to the tombstones (newId is called for it too). */
 export function loadState(raw, { now = 0, newId } = {}) {
   let s = null;
   try { s = JSON.parse(raw || "null"); } catch (e) { s = null; }
-  if (!isV5(s)) return { state: newSave({ now, id: newId && newId() }), hadSave: false };
+  if (!isSave(s)) return { state: newSave({ now, id: newId && newId() }), hadSave: false };
   const state = Object.assign(DEFAULT(), s);
   Object.entries(state.chars).forEach(([k, c]) => { if (!isObj(c)) delete state.chars[k]; else if (!isRemoved(c)) state.chars[k] = Object.assign(CHAR_DEFAULT(), c); });
   if (isRemoved(state.chars[state.current])) {
@@ -102,10 +103,10 @@ export function loadState(raw, { now = 0, newId } = {}) {
   }
   return { state, hadSave: true };
 }
-/* An imported file's text: the parsed save when it is a v5 export (its current slot a character: an export is written
-   from a loaded save), else null (a pre-0.4 export, or not a save). */
+/* An imported file's text: the parsed save when it is a v6 export (its current slot a character: an export is written
+   from a loaded save), else null (an older export, or not a save). */
 export function parseExport(raw) {
   let s = null;
   try { s = JSON.parse(raw); } catch (e) { return null; }
-  return isV5(s) && !isRemoved(s.chars[s.current]) ? s : null;
+  return isSave(s) && !isRemoved(s.chars[s.current]) ? s : null;
 }

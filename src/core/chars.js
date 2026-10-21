@@ -1,4 +1,4 @@
-/* The characters of a save (0.5 P17, pure: no DOM, no storage, no clock): add, switch, rename, remove a slot of save v5
+/* The characters of a save (0.5 P17, pure: no DOM, no storage, no clock): add, switch, rename, remove a slot of save v6
    (src/core/state.js). Each function takes a save and returns a new one; the input is never written, and every slot the
    call doesn't change is the same object as before. The slot id comes from the caller (the page's newId) and is never
    derived from the name, class or level; the name stays in the character, never in a key, a file name, a URL or a log. */

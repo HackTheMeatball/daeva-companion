@@ -22,7 +22,7 @@ import { blockerText } from "./blockers.js";
 import { cardRows, itemByK } from "./catalog.js";
 import { byPlace, whereNow } from "./place.js";
 import { char } from "./state.js";
-import { checkableOf, countsOf, doneOf, gatesOf, isOpen, objIdxOf, openSteps, questIdx, turnInNeedsLv } from "./requirements.js";
+import { checkableOf, countsOf, doneOf, gatesOf, isOpen, objDoneOf, objIdxOf, openSteps, questIdx, turnInNeedsLv } from "./requirements.js";
 
 export const NEXT_UP_PHASES = ["spend", "here", "beforeStory", "missed", "story", "side", "advice", "late", "later"];
 
@@ -197,7 +197,7 @@ function laterByEta(state, { c, lv, ev }) {
 function storyCard(state, ctx) {
   const c = char(state), lv = c.level, P = activePack(), { quests, steps } = P.data.story, { qi, gated, gateLv } = ctx.story;
   if (qi < 0) return { kind: "story", story: true, v: "unset", act: "setquest" };
-  const list = steps[c.quest], done = (c.qsteps || {})[c.quest] || [], nq = quests[qi + 1] || null;
+  const list = steps[c.quest], done = objDoneOf(c, c.quest), nq = quests[qi + 1] || null;
   /* Past the end of the guide's story data: no dead "Turned in"; the story goes on in game. */
   if (!nq && c.storyEnd === c.quest) return { kind: "story", story: true, v: "end", quest: c.quest, act: "" };
   const meanwhile = gated ? P.story.meanwhile(state, ctx) : null;

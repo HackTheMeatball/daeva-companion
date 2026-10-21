@@ -8,11 +8,11 @@
    to it. Story objectives have no points yet (design §3, S1), so an objective places the player only by its Kibelisk's
    zone, and the story card's target is the current quest's turn-in once its other objectives are ticked. */
 import { KIBELISKS, NODE_PLACE, TRAVEL_RULES } from "./data/place.js";
-import { QUEST_LOC, QUEST_STEPS } from "./data/story.js";
+import { QUEST_LOC, QUEST_STEP_I, QUEST_STEPS } from "./data/story.js";
 import { isAscensionKey } from "./requirements.js";
 import { activePack, perPack } from "../../core/pack.js";
 import { placeDist } from "../../core/place.js";
-import { gatesOf, qProgOf } from "../../core/requirements.js";
+import { gatesOf, objDoneOf, objPosOf, qProgOf } from "../../core/requirements.js";
 
 /* the gate graph is the pack object's (data.graph; only pack.js imports GATE_GRAPH); lookups built once per pack: save
    key → node id, quest name → story index, Kibelisk name → id */
@@ -46,7 +46,7 @@ export const aion2Place = {
     if (f === "started") { const x = travelNode(k); return x && x.P && x.n.kind === "rq" ? travelSpot(x.P.zone, x.P.pts.giver) : null; }
     if (f === "areaRun") { const x = travelNode(k); return x && x.P && (x.n.kind === "sd" || x.n.kind === "sh") ? travelSpot(x.P.zone, x.P.pts.entrance) : null; }
     if (f === "qsteps") {
-      const x = travelNode(k), m = ((QUEST_STEPS[k] || [])[+i] || "").match(TRAVEL_MARK), K = m && KIBELISKS[travelIx().kibByName.get(m[1])];
+      const x = travelNode(k), m = ((QUEST_STEPS[k] || [])[objPosOf(k, +i)] || "").match(TRAVEL_MARK), K = m && KIBELISKS[travelIx().kibByName.get(m[1])];
       return travelSpot(K ? K.zone : x && x.P ? x.P.zone : null, null);
     }
     if (f === "quest") {
@@ -120,7 +120,7 @@ export function autoBindsOf(graph, { R = TRAVEL_RULES.bindRadius, kibs = KIBELIS
   const out = [];
   for (const [id, n] of Object.entries(graph.nodes)) {
     const L = n.kind === "story" && QUEST_STEPS[n.key], pts = ((NODE_PLACE[id] || {}).pts || {}).steps || []; if (!L) continue;
-    const at = i => pts.find(p => p.i === i), near = (p, name) => !!p && p.anchor in kibs && kibs[p.anchor].name === name && p.m != null && p.m <= R;
+    const at = i => pts.find(p => p.i === ((QUEST_STEP_I[n.key] || [])[i] ?? i)), near = (p, name) => !!p && p.anchor in kibs && kibs[p.anchor].name === name && p.m != null && p.m <= R;
     L.forEach((t, i) => { const b = t.match(BIND_ONLY), m = t.match(TRAVEL_MARK), p = at(i) || (b ? at(i + 1) : null);
       if (b && (!b[2] || b[2] === b[1]) && near(p, b[1])) out.push({ quest: n.key, i, kib: b[1], m: p.m, only: true });
       else if (!b && m && near(at(i), m[1])) out.push({ quest: n.key, i, kib: m[1], m: at(i).m, only: false }); });
@@ -147,7 +147,7 @@ export const markerDropped = t => perPack("autoBindDropped", p => new Set(autoBi
 const TURN_IN_STEP = /^Turn in\b/i;
 export function storyTargetOf(c, { shown } = {}) {
   if (!c.quest || c.storyEnd === c.quest) return null;
-  const L = QUEST_STEPS[c.quest] || [], done = (c.qsteps || {})[c.quest] || [];
+  const L = QUEST_STEPS[c.quest] || [], done = objDoneOf(c, c.quest);
   if ((shown || L.map((t, i) => i)).some(i => !TURN_IN_STEP.test(L[i]) && !done.includes(i))) return null;
   const x = travelNode(c.quest), T = x && x.P && x.P.pts.turnin; if (!T) return null;
   return { zone: (KIBELISKS[T.anchor] || {}).zone || x.P.zone, pt: T, to: x.id, npc: (QUEST_LOC[c.quest] || {}).turnin || null };

@@ -29,9 +29,11 @@ export const questsAhead = b => b.ahead == null ? null : b.turnIn ? b.ahead - 1 
    line that already names the quest show this part alone. */
 export const aheadText = b => { const n = questsAhead(b);
   return n == null ? "set your quest" : n <= 0 ? (b.turnIn ? "your current quest — turn it in" : "your current quest") : pl(n, "quest") + " ahead"; };
+/* A story quest's name from its save key (0.9 P2: the save and the gates hold the key, data.story.names the name). */
+export const questNameOf = k => (activePack().data.story.names || {})[k] || k;
 /* One leaf: a story or level blocker. */
 export const leafText = b => b.kind === "level" ? `needs Lv ${b.need}`
-  : b.kind === "story" ? `${b.turnIn ? "unlocks after" : "opens on"} "${b.name}" · ${aheadText(b)}` : "";
+  : b.kind === "story" ? `${b.turnIn ? "unlocks after" : "opens on"} "${questNameOf(b.name)}" · ${aheadText(b)}` : "";
 
 /* The chain of a node result r, for this evaluation ev: { text, leaf, hop, names } or null when r is open.
    omit: blocker kinds left out (a milestone row leaves out the milestone's own level, which its card already shows).
