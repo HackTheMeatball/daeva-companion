@@ -316,6 +316,7 @@ check(/waits on fresh review/.test(namedBlocker([c(OWNER, 'VERDICT: APPROVE (rev
 check(namedBlocker([c(OWNER, 'VERDICT: APPROVE (reviewer: Francesca) on abc1234', 6), c(OWNER, 'FRESH REVIEW OK abc1234', 7)], SHA, 'Reviewers: Francesca, fresh review') === '', 'Reviewers: line -> all named approvals on the head merge');
 check(namedBlocker([c(OWNER, 'DESIGN OK on abc1234', 6)], SHA, 'Reviewers: Jane') === '', 'Reviewers: Jane is met by her DESIGN OK on the head');
 check(V.reviewers('Reviewers: Howard; Holly') + '' === 'howard,holly' && V.reviewers('No reviewers line').length === 0, 'verdicts: Reviewers: line read (comma or semicolon)');
+check(V.reviewers('Reviewers: Francesca (records, plan text), Gale') + '' === 'francesca,gale', 'verdicts: a comma inside a parenthetical note does not split the name (#737 review)');
 check(/c\.user\.login === 'claude\[bot\]' && V\.reviewOf\(c\.body\) && V\.review\(c\.body\)/.test(yml), 'pipeline approval: only claude[bot] comments in the "Review of <sha>" form count');
 check(V.review('VERDICT: APPROVE (reviewer: Gale) on abc1234') === null, 'verdicts: a tagged APPROVE is never the bot review verdict');
 check(V.review('Review of abc1234\nVERDICT: CHANGES (reviewer: Francesca) was posted earlier\nVERDICT: APPROVE') === 'APPROVE', 'verdicts: a tagged CHANGES line does not turn a bot APPROVE into CHANGES');
@@ -420,6 +421,8 @@ check(/a person added it/.test(H.holdStays('Before: x', HELD, walter, [OKF, OKG]
 check(/a person added it/.test(H.holdStays(EB, HELD, [...AUTO, ev('unlabeled', 'github-actions[bot]', 3), ev('labeled', OWNER, 5)], [MARK, FOK], true, nbH([MARK, FOK], EB))),
   "stays: a person added hold again after auto-merge's own hold came off");
 check(/a person added it/.test(H.holdStays(EB, HELD, AUTO, [FOK], true, nbH([FOK], EB))), 'stays: a bot-added hold without the auto-hold marker is not taken as its own');
+check(/a person added it/.test(H.holdStays(EB, HELD, [...AUTO, ev('unlabeled', 'github-actions[bot]', 3), ev('labeled', 'github-actions[bot]', 5)], [MARK, FOK], true, nbH([MARK, FOK], EB))),
+  "stays: a later bot hold with only an older marker is not taken as auto-merge's own (#737 review)");
 // Its own hold: lifted only on a FRESH REVIEW OK of the head, every named approval, no open CHANGES and a green ci-ok.
 check(H.holdStays(EB, HELD, AUTO, [MARK, FOK], true, nbH([MARK, FOK], EB)) === '', 'lift: its own external-review hold, once FRESH REVIEW OK names the head');
 check(H.holdStays(EBR, HELD, AUTO, [MARK, FOK, OKF, OKG], true, nbH([MARK, FOK, OKF, OKG], EBR)) === '', 'lift: its own hold with a Reviewers: line once every named reviewer and the fresh reviewer approve the head');

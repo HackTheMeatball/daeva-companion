@@ -44,8 +44,9 @@ const fresh = (body) => {
 // The "FRESH REVIEW OK <sha>" lines of a note, unquoted (the gate wants the head's sha on one of them).
 const freshOk = (body) => own(body).filter((l) => /^FRESH REVIEW OK\b/.test(l));
 
-// A PR body's "Reviewers: <name>, <name>" line: the named reviewers whose approval of the head the merge needs.
-const reviewers = (body) => { const l = lines(body).find((x) => /^Reviewers:/.test(x)); return l ? l.replace(/^Reviewers:/, '').split(/[,;]/).map((x) => x.trim().toLowerCase()).filter(Boolean) : []; };
+// A PR body's "Reviewers: <name>, <name>" line: the named reviewers whose approval of the head the merge needs. A note in
+// parentheses is dropped before the split, so "Francesca (records, plan text)" stays one name.
+const reviewers = (body) => { const l = lines(body).find((x) => /^Reviewers:/.test(x)); return l ? l.replace(/^Reviewers:/, '').replace(/\([^)]*\)/g, '').split(/[,;]/).map((x) => x.trim().toLowerCase()).filter(Boolean) : []; };
 
 // The coordinator's deadlock exit for a reviewer who has ended: "REVIEW CLEAR (reviewer: <name>; trigger: <n|none>): <reason>",
 // the reason at least 10 characters. Whether a clear is allowed (never on some triggers) stays in the workflow.
