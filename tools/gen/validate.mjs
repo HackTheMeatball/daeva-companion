@@ -32,7 +32,8 @@ export const dataFiles = () => ['data/packs', 'data/ui'].flatMap(d => walk(join(
 /* returns [{file, errors}] for files that fail; doc is the parsed file */
 export const validateDoc = (file, doc) => {
   const a = compiler();
-  const name = basename(file) === 'pack.json' ? 'pack.schema.json' : basename(file) === 'retired.json' ? 'retired.schema.json' : SCHEMA_OF[doc.collection] ? SCHEMA_OF[doc.collection] + '.schema.json' : null;
+  const name = basename(file) === 'pack.json' ? 'pack.schema.json' : basename(file) === 'retired.json' ? 'retired.schema.json'
+    : basename(file) === 'save-keys.json' ? 'save-keys.schema.json' : SCHEMA_OF[doc.collection] ? SCHEMA_OF[doc.collection] + '.schema.json' : null;
   if (!name) return [`unknown collection "${doc.collection}"`];
   const v = a.getSchema(name);
   if (v(doc)) return [];

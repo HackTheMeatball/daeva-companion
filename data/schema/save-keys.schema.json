@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/save-keys.schema.json",
+  "title": "Save-key ledger (packs/<game>/<faction>/<class>/save-keys.json)",
+  "description": "Every key a save of one guide pack can hold (0.9 P10), written by `npm run gen` and committed, like data/DATA_SOURCES.md; never edited by hand. Each group maps a key to the name of what it tracks. The generator compares the data against the committed ledger: a key that leaves the data needs a retired.json entry (the faction's or the class's), and a key whose record now carries another key (same group, same name) needs that entry's renamedTo. Objective keys are <story key>#<i>, a sub-step <story key>#<i>.<j> (explicit sub indices only).",
+  "type": "object",
+  "required": ["schemaVersion", "pack", "keys"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": 2 },
+    "pack": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*(/[a-z0-9][a-z0-9-]*)*$" },
+    "keys": {
+      "type": "object",
+      "required": ["story", "objectives", "milestones", "rq", "sd", "sh", "dv", "sp", "stigmas"],
+      "properties": {
+        "story": { "$ref": "#/$defs/group" },
+        "objectives": { "$ref": "#/$defs/group" },
+        "milestones": { "$ref": "#/$defs/group" },
+        "rq": { "$ref": "#/$defs/group" },
+        "sd": { "$ref": "#/$defs/group" },
+        "sh": { "$ref": "#/$defs/group" },
+        "dv": { "$ref": "#/$defs/group" },
+        "sp": { "$ref": "#/$defs/group" },
+        "stigmas": { "$ref": "#/$defs/group" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "group": {
+      "type": "object",
+      "propertyNames": { "$ref": "common.schema.json#/$defs/saveKey" },
+      "additionalProperties": { "type": "string", "maxLength": 200 }
+    }
+  }
+}

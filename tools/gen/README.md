@@ -9,7 +9,7 @@ npm run gen         # validate (validate.mjs) + cross-record checks; writes data
 node tools/gen/gen.mjs --pack <id> --root <dir>   # another pack / packs root (defaults: aion2/asmodian/assassin, data/packs);
                     # not the default: its DATA_SOURCES.md goes to out/, data/DATA_SOURCES.md is left alone
 npm run validate    # JSON Schema only: every data file and every schema example (ajv 8 Ajv2020, strict, allErrors)
-npm run gen:check   # the same as gen, then fails if data/DATA_SOURCES.md changed (CI runs it)
+npm run gen:check   # the same as gen, then fails if data/DATA_SOURCES.md or a save-keys.json changed (CI runs it)
 node tests/schema.mjs   # the `schema` suite: schemas, broken copies that must be rejected, checks, DATA_SOURCES.md current
 ```
 
@@ -38,6 +38,11 @@ node tests/schema.mjs   # the `schema` suite: schemas, broken copies that must b
   checks only. The module is loaded with `require` (Node >= 22.12) so `generate()` stays synchronous.
 - `validate.mjs` — the schema step (pack manifests included): all schemas in `data/schema/` compile under `{ strict: true, allErrors: true }`.
 - `../../data/DATA_SOURCES.md` — every source URL, the records that cite it, and its Sources-card group (committed).
+- `../../data/packs/<guide pack>/save-keys.json` (0.9 P10, `data/schema/save-keys.schema.json`) — the save-key ledger:
+  every key a save of that guide can hold, by group, with the name of what it tracks (committed; written only by a run
+  whose checks pass). `generate()` checks the data against it: a key that left the data needs an entry in a
+  `retired.json` of the chain (the faction's or the class's), and a renamed key (same group and name, new key) needs that
+  entry's `renamedTo`. `packs.mjs` doesn't load it as data.
 - The report's `debt` lists what the data still owes: citations of the withdrawn site (aion2.th.gl) and records on the
   placeholder zone `zone:altgard-unplaced` (DATA-FORMAT-V2 §9 data task).
 
