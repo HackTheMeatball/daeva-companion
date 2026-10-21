@@ -3,7 +3,7 @@
    registers with update: null. */
 import { char } from "../../../core/state.js";
 import { setHTML } from "../../../core/cards.js";
-import { chainsOn, openOf } from "../../../core/requirements.js";
+import { chainsOn, gatesOf, openOf } from "../../../core/requirements.js";
 import { ITEMS } from "../data/items.js";
 import { DV_TYPE, DV_TYPE_ICONS, SP_ICONS } from "../data/build.js";
 import { GATES } from "../data/milestones.js";
@@ -12,7 +12,7 @@ import { dvCostOf, dvNeed, dvNext, dvSpent, dvWaitOf } from "../requirements.js"
 import { tipPop } from "./shared.js";
 import { stTag } from "../data/markup.js";
 import { keyChip } from "../hotkeys.js";
-import { aion2State as state, aion2Save as save, aion2Update as update, aion2Render as render, aion2RenderNow as renderNow, aion2RenderUndo as renderUndo, aion2FitSkills as fitSkills, aion2SpMini as spMini, aion2DvShort as dvShort, aion2LayoutEl as layoutEl, aion2DvGate as dvGate } from "./page.js";
+import { aion2State as state, aion2Save as save, aion2Update as update, aion2Render as render, aion2RenderNow as renderNow, aion2RenderUndo as renderUndo, aion2FitSkills as fitSkills, aion2SpMini as spMini, aion2DvShort as dvShort, aion2LayoutEl as layoutEl, aion2DvGate as dvGate, aion2RewardToast as rewardToast } from "./page.js";
 
 /* a plan row the data labels disputed or inferred (0.9 P1) carries its tag after the name */
 const dvName = it => `<span class="dvname ${DV_TYPE[it.ty][0]}">${it.t}</span>${stTag(it.st)}`;
@@ -104,6 +104,66 @@ function renderDaevanion() {
   const nx = dvNext(char(state), char(state).level);
   document.getElementById("dvBox").classList.toggle("act", !!nx && total > 0 && left >= dvNeed(char(state), nx));
   refreshDvGates();
+  renderDvCatch(); renderDvRespec();
+}
+/* 0.9 P20 (docs/design/0.9-catchup, notes 9 and 10): per-board catch-up and respec. A board's guide nodes are its plan
+   nodes; a board is open when dvWaitOf has nothing to wait for. */
+const dvBoards = () => { const by = {}; DV_NODES().forEach(it => { (by[it.board] = by[it.board] || []).push(it); });
+  return Object.entries(by).map(([b, its]) => ({ b, its })); };
+const dvHas = (c, x) => x.its.filter(it => c.checks[it.k]).length;
+/* Catch-up: the first open board you haven't finished has nothing ticked, 2 or more levels after it opened (a late start,
+   or a board left alone). It lists every open board and stays until each is marked; a player who levels board by board
+   has ticked the board in progress, so it doesn't show. */
+function dvCatchUp(c) {
+  const open = dvBoards().filter(x => !dvWaitOf(c, x.b)), first = open.find(x => dvHas(c, x) < x.its.length);
+  if (!first || dvHas(c, first)) return null;
+  /* "2 or more levels after it opened": a node of it was open already at your level − 2 (the evaluator asked there) */
+  const ev2 = gatesOf(c, c.level - 2);
+  return first.its.some(it => ev2.byKey(it.k).open) ? open : null;
+}
+let dvCuOpen = false, dvRsOpen = false, dvArm = null, dvArmT = 0;
+function renderDvCatch() {
+  const el = document.getElementById("dvCatch"), c = char(state), open = dvCatchUp(c);
+  el.hidden = !open; if (!open) { dvCuOpen = false; setHTML(el, ""); return; }
+  const marked = open.filter(x => dvHas(c, x) === x.its.length).length, shut = dvBoards().map(x => [x, dvWaitOf(c, x.b)]).find(([, w]) => w);
+  const cost = x => { const v = x.its.map(it => dvCostOf(c, it)); return v.every(n => n != null) ? ` · ${v.reduce((a, n) => a + n, 0)}` : ""; };
+  setHTML(el, `<span><b>${open.length} board${open.length === 1 ? "" : "s"}</b> opened before you joined${marked ? ` · ${marked} marked` : ""}</span>` +
+    `<button type="button" class="cu-sb" id="dvCuBtn" aria-expanded="${dvCuOpen}" aria-controls="dvCuMenu">Mark bought ▾</button>` +
+    (dvCuOpen ? `<div class="cu-menu" id="dvCuMenu">` + open.map(x => { const done = dvHas(c, x) === x.its.length;
+      return `<label${done ? ` class="off"` : ""}><input type="checkbox" data-dvmark="${x.b}"${done ? " checked disabled" : ""}> ${x.b} board<span>${x.its.length} node${x.its.length === 1 ? "" : "s"}${cost(x)}</span></label>`; }).join("") +
+      `<p class="cu-note">Ticks the board&rsquo;s guide nodes, so Crystals left counts them as spent.${shut ? ` ${shut[0].b} ${shut[1].story ? dvWhy(shut[1]) : `opens at Lv ${shut[1].lv}`}.` : ""}</p></div>` : ""));
+}
+/* Respec ▾: one row per board that is open or has ticks (greyed with "none yet" when nothing is ticked), then All boards.
+   Each row needs a second click within 3 s, then a toast offers Undo. */
+function renderDvRespec() {
+  const c = char(state), btn = document.getElementById("dvRespec"), menu = document.getElementById("dvRsMenu");
+  const rows = dvBoards().filter(x => dvHas(c, x) || !dvWaitOf(c, x.b)), all = rows.reduce((a, x) => a + dvHas(c, x), 0);
+  btn.disabled = !all; btn.title = all ? "Untick a board's nodes, or every board's, and clear their costs; total points stay" : "Nothing to respec yet";
+  if (!all) dvRsOpen = false;
+  btn.setAttribute("aria-expanded", String(dvRsOpen)); menu.hidden = !dvRsOpen;
+  const row = (id, label, n, cls = "") => `<button type="button" role="menuitem"${cls ? ` class="${cls}"` : ""} data-dvrs="${id}"${n ? "" : " disabled"} title="In the app. In game, remove the nodes one by one.">${dvArm === id ? "Click again to respec" : label}<span>${n ? `${n} node${n === 1 ? "" : "s"}` : "none yet"}</span></button>`;
+  setHTML(menu, rows.map(x => row(x.b, `${x.b} board`, dvHas(c, x))).join("") + `<hr>` + row("*", "All boards", all, "rs-all"));
+}
+/* Respec a board ("*": every board, and the crystals-left correction): untick its nodes and clear their logged costs;
+   Undo puts back exactly what was there */
+function dvRespecDo(id) {
+  const c = char(state), its = DV_NODES().filter(it => id === "*" || it.board === id);
+  const was = { checks: its.map(it => [it.k, c.checks[it.k]]), cost: c.dvCost && { ...c.dvCost }, adj: c.dvAdj }, n = its.filter(it => c.checks[it.k]).length;
+  its.forEach(it => { delete c.checks[it.k]; if (c.dvCost) delete c.dvCost[it.k]; });
+  if (id === "*") { delete c.dvAdj; delete c.dvCost; }
+  save(); render(); update();
+  rewardToast(`${id === "*" ? "Daevanion" : id} reset · ${n} node${n === 1 ? "" : "s"} back`, () => { if (char(state) !== c) return;
+    was.checks.forEach(([k, v]) => { if (v === undefined) delete c.checks[k]; else c.checks[k] = v; });
+    if (was.cost) c.dvCost = was.cost; else delete c.dvCost;
+    if (was.adj !== undefined) c.dvAdj = was.adj; save(); render(); update(); });
+}
+/* Mark bought: tick a board's guide nodes in one tap (the player has them in game); Undo unticks what it ticked */
+function dvMarkBoard(b) {
+  const c = char(state), keys = DV_NODES().filter(it => it.board === b && !c.checks[it.k]).map(it => it.k);
+  if (!keys.length) return;
+  keys.forEach(k => { c.checks[k] = true; });
+  save(); render(); update();
+  rewardToast(`${b} marked · ${keys.length} node${keys.length === 1 ? "" : "s"}`, () => { if (char(state) !== c) return; keys.forEach(k => { delete c.checks[k]; }); save(); render(); update(); });
 }
 const dvIconSrc = it => { const set = DV_TYPE_ICONS[it.ty]; return set ? set[char(state).checks[it.k] ? 1 : 0] : ITEMS.crystal[2]; };
 const dvSkill = it => (it.t || "").split(" · ")[0];
@@ -206,16 +266,21 @@ function aion2DaevanionMount() {
     const cb = b.closest(".dvrow").querySelector("input.dvcb"); cb.checked = true;
     cb.dispatchEvent(new Event("change", { bubbles: true }));
   });
-  /* Board respec: untick every node and clear logged costs (two clicks, like Reset). Total points stay, as in the game. */
-  const dvRespec = document.getElementById("dvRespec");
-  let dvArmed = false;
-  dvRespec.addEventListener("click", () => {
-    if (!dvArmed) { dvArmed = true; dvRespec.textContent = "Click again to respec"; setTimeout(() => { dvArmed = false; dvRespec.textContent = "Respec"; }, 3000); return; }
-    dvArmed = false; dvRespec.textContent = "Respec"; delete char(state).dvAdj;
-    delete char(state).dvCost;
-    Object.keys(char(state).checks).forEach(k => { if (k.startsWith("dv:")) delete char(state).checks[k]; });
-    save(); render(); update();
+  /* Respec ▾ (0.9 P20): the menu of boards; a row arms on the first click and respecs on a second within 3 s, then the
+     toast offers Undo. Total points stay, as in the game. */
+  const box = document.getElementById("dvBox");
+  box.addEventListener("click", e => {
+    if (e.target.closest("#dvRespec")) { dvRsOpen = !dvRsOpen; dvArm = null; renderDvRespec(); return; }
+    const r = e.target.closest("[data-dvrs]");
+    if (r && !r.disabled) { const id = r.dataset.dvrs; clearTimeout(dvArmT);
+      if (dvArm !== id) { dvArm = id; dvArmT = setTimeout(() => { dvArm = null; renderDvRespec(); }, 3000); renderDvRespec(); return; }
+      dvArm = null; dvRsOpen = false; dvRespecDo(id); return; }
+    if (e.target.closest("#dvCuBtn")) { dvCuOpen = !dvCuOpen; renderDvCatch(); }
   });
+  box.addEventListener("change", e => { const m = e.target.dataset && e.target.dataset.dvmark; if (m && e.target.checked) dvMarkBoard(m); });
+  /* the menu closes on Escape (focus back to its button) and on a click outside it */
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && dvRsOpen) { dvRsOpen = false; dvArm = null; renderDvRespec(); document.getElementById("dvRespec").focus(); } });
+  document.addEventListener("click", e => { if (dvRsOpen && e.target.isConnected && !e.target.closest("#dvRsMenu, #dvRespec")) { dvRsOpen = false; dvArm = null; renderDvRespec(); } });
 }
 
 const aion2DaevanionCard = { id: "daevanion", slot: "top", order: 200, root: "dvBox", mount: aion2DaevanionMount, update: null };

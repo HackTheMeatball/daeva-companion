@@ -69,10 +69,54 @@ function renderStigma() {
      heading text is never rewritten), none per row */
   setHTML(document.getElementById("stPlanSt"), stTag(STIGMA_ST));
   /* setHTML (0.9 P30): fadeScroll below re-applies its fade on every pass; nothing else changes the body after the write */
-  setHTML(body, `<div class="ptbig st-big"><b>${sh}</b><span>shard${sh === 1 ? "" : "s"} to spend</span></div>` + hero +
+  setHTML(body, `<div class="ptbig st-big"><b>${sh}</b><span>shard${sh === 1 ? "" : "s"} to spend</span></div>` + stCatchHTML(slots, ev) + hero +
     (soon || nextSlot ? `<div id="stAfter"><div class="dvbh"><div class="dvbh-top"><span class="dvbh-k">Coming up</span><span class="dvbh-n">${spentNow} of ${planTotal} spent</span></div><span class="dvbh-bar"><span style="width:${planTotal ? spentNow / planTotal * 100 : 0}%"></span></span></div><ul class="soonlist" id="stSoon">${nextSlot}${soon}</ul></div>` : ""));
   card.classList.toggle("act", (!!canEquip && learnCost <= sh) || (!canEquip && !!up && sh >= up.cost));
   fadeScroll(document.getElementById("stSoon"));
+  const rs = document.getElementById("stRespec"), back = stRefund();
+  if (!stArmed) rs.textContent = "Respec";
+  rs.disabled = !back; rs.title = back ? "Set every stigma back to level 1; they stay equipped and the shards come back. Costs Kinah in game; check the price there" : "Nothing to respec yet";
+}
+/* 0.9 P20 (docs/design/0.9-catchup, notes 9 and 10). Catch-up: the slots that opened before you joined, with "Mark
+   equipped ▾" to tick the ones you already have (no shard: you learned them in game). It shows while an open slot is
+   unequipped 2 or more levels after it opened, lists every opened slot, and goes once each is marked. */
+let stCuOpen = false, stArmed = false;
+function stCatchHTML(slots, ev) {
+  const c = char(state), opened = slots.filter(x => c.checks[x.k] || stigmaEquipOpen(c, x, ev));
+  /* "2 or more levels after it opened": the slot was open already at your level − 2 (the evaluator asked there) */
+  const ev2 = gatesOf(c, c.level - 2);
+  if (!opened.some(x => !c.checks[x.k] && stigmaEquipOpen(c, x, ev2))) { stCuOpen = false; return ""; }
+  const marked = opened.filter(x => c.checks[x.k]).length;
+  return `<div class="cu-strip" id="stCatch"><span><b>${opened.length} stigma slot${opened.length === 1 ? "" : "s"}</b> opened before you joined${marked ? ` · ${marked} marked` : ""}</span>` +
+    `<button type="button" class="cu-sb" id="stCuBtn" aria-expanded="${stCuOpen}" aria-controls="stCuMenu">Mark equipped ▾</button>` +
+    (stCuOpen ? `<div class="cu-menu" id="stCuMenu">` + opened.map(x => { const on = !!c.checks[x.k];
+      return `<label${on ? ` class="off"` : ""}><input type="checkbox" data-stmark="${x.k}"${on ? " checked disabled" : ""}> ${x.name}<span>slot ${x.n} · Lv ${x.lv}</span></label>`; }).join("") +
+      `<p class="cu-note">Marks the slot equipped. Set its level in Slots.</p></div>` : "") + `</div>`;
+}
+/* Mark equipped from the strip: the same tick as the hero's (slot, its "Equip …" line, the pick, level 1), without the
+   learning shard; Undo puts back what each field was */
+function stMarkSlot(k) {
+  const c = char(state), slot = STIGMA_SLOTS().find(x => x.k === k); if (!slot || c.checks[k]) return;
+  const ek = eputK(slot.n), sk = stKey(slot.name), was = { ek: ek && c.checks[ek], pick: (c.stPick || {})[slot.n], lv: (c.stLv || {})[sk] };
+  c.checks[k] = true; if (ek) c.checks[ek] = true;
+  (c.stPick = c.stPick || {})[slot.n] = sk; c.stLv = c.stLv || {}; if (!c.stLv[sk]) c.stLv[sk] = 1;
+  save(); update();
+  rewardToast(`${slot.name} marked equipped`, () => { if (char(state) !== c) return; delete c.checks[k];
+    if (ek) { if (was.ek === undefined) delete c.checks[ek]; else c.checks[ek] = was.ek; }
+    if (was.pick === undefined) delete c.stPick[slot.n]; else c.stPick[slot.n] = was.pick;
+    if (was.lv === undefined) delete c.stLv[sk]; else c.stLv[sk] = was.lv; save(); update(); });
+}
+/* Respec: every stigma back to level 1 (they stay equipped) and the shards spent past level 1 come back (Metabot; the
+   Kinah price on Global is unknown: docs/research/2026-10-respec.md D1). The shards it would return, 0 if none. */
+const stRefund = () => Object.values(char(state).stLv || {}).reduce((t, L) => { for (let x = 2; x <= L; x++) t += ST_COST(x) || 0; return t; }, 0);
+function stRespecDo() {
+  const c = char(state), back = stRefund(); if (!back) return;
+  const was = { lv: { ...c.stLv }, sh: c.stShards };
+  Object.keys(c.stLv).forEach(k => { if (c.stLv[k] > 1) c.stLv[k] = 1; });
+  c.stShards = (c.stShards || 0) + back;
+  save(); update();
+  rewardToast(`Stigmas reset · ${back} shard${back === 1 ? "" : "s"} back`, () => { if (char(state) !== c) return; c.stLv = was.lv;
+    if (was.sh === undefined) delete c.stShards; else c.stShards = was.sh; save(); update(); });
 }
 function stTickClick(e) { const b = e.target.closest && e.target.closest("[data-sttick]"); if (!b) return;
   const k = b.dataset.sttick, slot = STIGMA_SLOTS().find(x => x.k === k);
@@ -105,6 +149,15 @@ function aion2StigmasMount() {
   document.addEventListener("focusout", e => { const f = e.target.closest && e.target.closest("[data-stother]"); if (f) setTimeout(() => stOtherDone(f, true), 0); });
   [stTickClick, stUpClick, stLvClick].forEach(f => document.addEventListener("click", f));
   document.addEventListener("change", stPickChange);
+  /* 0.9 P20: the catch-up strip's menu, and Respec (a second click within 3 s, like Skills and Daevanion; then Undo) */
+  const card = document.getElementById("stCard"), rs = document.getElementById("stRespec");
+  card.addEventListener("click", e => {
+    if (e.target.closest("#stCuBtn")) { stCuOpen = !stCuOpen; renderStigma(); return; }
+    if (!e.target.closest("#stRespec") || rs.disabled) return;
+    if (!stArmed) { stArmed = true; rs.textContent = "Click again to respec"; setTimeout(() => { stArmed = false; rs.textContent = "Respec"; }, 3000); return; }
+    stArmed = false; rs.textContent = "Respec"; stRespecDo();
+  });
+  card.addEventListener("change", e => { const k = e.target.dataset && e.target.dataset.stmark; if (k && e.target.checked) stMarkSlot(k); });
   document.getElementById("stShards").addEventListener("input", e => { char(state).stShards = Math.max(0, parseInt(e.target.value, 10) || 0); save(); renderStigma(); renderNow(); fitSkills(); });
 }
 
