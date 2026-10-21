@@ -1,6 +1,6 @@
 {
   "behind/L15-q12-from10-lag-A": [
-    {"t":"Catch up: level Heart Gore 3 → 5","s":"3 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
+    {"t":"Catch up: level Heart Gore 3 → 5","s":"3 pts · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Story: Gathering Essentials","s":"0/1 objectives · Kibelisk : Safe Haven (89 m) · then Crash Site Rendezvous","c":"primary \"Turned in\" story","b":"Lv 15","o":["Turn in Dinoh, Safe Haven"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202044","x":["+2 waiting on the story Shugo-of-All-Trades In my game Spooky Specters In my game"]},
@@ -11,7 +11,7 @@
     {"t":"Catch up: level Shadowstrike 4 → 6","s":"4 pts · inferred","c":""}
   ],
   "behind/L15-q12-from10-lag-B": [
-    {"t":"Catch up: level Heart Gore 3 → 5","s":"3 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
+    {"t":"Catch up: level Heart Gore 3 → 5","s":"3 pts · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Story: Gathering Essentials","s":"0/1 objectives · Kibelisk : Safe Haven (89 m) · then Crash Site Rendezvous","c":"primary \"Turned in\" story","b":"Lv 15","o":["Turn in Dinoh, Safe Haven"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202044","x":["+2 waiting on the story Shugo-of-All-Trades In my game Spooky Specters In my game"]},
@@ -22,7 +22,7 @@
     {"t":"Catch up: level Shadowstrike 4 → 6","s":"4 pts · inferred","c":""}
   ],
   "behind/L15-q20-from10-lagq-A": [
-    {"t":"Catch up: level Heart Gore 3 → 5","s":"3 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
+    {"t":"Catch up: level Heart Gore 3 → 5","s":"3 pts · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
     {"t":"Story: Dead Men Tell No Tales","s":"0/2 objectives · then Buried Atrocities","c":"primary \"Turned in\" story","b":"Lv 15","o":["Clear nearby threats defeat Evil Black Soul defeat Grudge Bearing Warrior Kibelisk : Neglected Crematorium","Turn in Ulgorn, Crypt"]},
@@ -34,7 +34,7 @@
     {"t":"Catch up: level Shadowstrike 4 → 6","s":"4 pts · inferred","c":""}
   ],
   "behind/L15-q20-from10-lagq-B": [
-    {"t":"Catch up: level Heart Gore 3 → 5","s":"3 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
+    {"t":"Catch up: level Heart Gore 3 → 5","s":"3 pts · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
     {"t":"Story: Dead Men Tell No Tales","s":"0/2 objectives · then Buried Atrocities","c":"primary \"Turned in\" story","b":"Lv 15","o":["Clear nearby threats defeat Evil Black Soul defeat Grudge Bearing Warrior Kibelisk : Neglected Crematorium","Turn in Ulgorn, Crypt"]},
@@ -166,7 +166,7 @@
     {"t":"Buy Savage Roar 6 → 7","s":"Needs Lv 16 · 1 level away · inferred","c":"tag \"Later\"","f":"later"}
   ],
   "behind/L15-q20-from10-miss4-s0-A": [
-    {"t":"Catch up: level Ambush 4 → 5","s":"2 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
+    {"t":"Catch up: level Ambush 4 → 5","s":"2 pts · 3 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
     {"t":"Story: Dead Men Tell No Tales","s":"0/2 objectives · then Buried Atrocities","c":"primary \"Turned in\" story","b":"Lv 15","o":["Clear nearby threats defeat Evil Black Soul defeat Grudge Bearing Warrior Kibelisk : Neglected Crematorium","Turn in Ulgorn, Crypt"]},
     {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest · Kibelisk : Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 11 open at your level"},
@@ -176,7 +176,7 @@
     {"t":"Buy Heart Gore 5 → 6","s":"Needs Lv 16 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 16–18"}
   ],
   "behind/L15-q20-from10-miss4-s0-B": [
-    {"t":"Catch up: level Ambush 4 → 5","s":"2 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
+    {"t":"Catch up: level Ambush 4 → 5","s":"2 pts · 3 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
     {"t":"Story: Dead Men Tell No Tales","s":"0/2 objectives · then Buried Atrocities","c":"primary \"Turned in\" story","b":"Lv 15","o":["Clear nearby threats defeat Evil Black Soul defeat Grudge Bearing Warrior Kibelisk : Neglected Crematorium","Turn in Ulgorn, Crypt"]},
     {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest · Kibelisk : Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 11 open at your level"},
@@ -186,7 +186,7 @@
     {"t":"Buy Heart Gore 5 → 6","s":"Needs Lv 16 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 16–18"}
   ],
   "behind/L15-q20-from10-miss4-s1-A": [
-    {"t":"Catch up: level Ambush 4 → 5","s":"2 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
+    {"t":"Catch up: level Ambush 4 → 5","s":"2 pts · 3 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
     {"t":"Story: Dead Men Tell No Tales","s":"0/2 objectives · then Buried Atrocities","c":"primary \"Turned in\" story","b":"Lv 15","o":["Clear nearby threats defeat Evil Black Soul defeat Grudge Bearing Warrior Kibelisk : Neglected Crematorium","Turn in Ulgorn, Crypt"]},
     {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest · Kibelisk : Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 11 open at your level"},
@@ -196,7 +196,7 @@
     {"t":"Buy Heart Gore 5 → 6","s":"Needs Lv 16 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 16–18"}
   ],
   "behind/L15-q20-from10-miss4-s1-B": [
-    {"t":"Catch up: level Ambush 4 → 5","s":"2 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
+    {"t":"Catch up: level Ambush 4 → 5","s":"2 pts · 3 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
     {"t":"Story: Dead Men Tell No Tales","s":"0/2 objectives · then Buried Atrocities","c":"primary \"Turned in\" story","b":"Lv 15","o":["Clear nearby threats defeat Evil Black Soul defeat Grudge Bearing Warrior Kibelisk : Neglected Crematorium","Turn in Ulgorn, Crypt"]},
     {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest · Kibelisk : Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 11 open at your level"},
@@ -206,7 +206,7 @@
     {"t":"Buy Heart Gore 5 → 6","s":"Needs Lv 16 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 16–18"}
   ],
   "behind/L15-q20-from10-miss4-s2-A": [
-    {"t":"Catch up: level Ambush 4 → 5","s":"2 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
+    {"t":"Catch up: level Ambush 4 → 5","s":"2 pts · 3 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
     {"t":"Story: Dead Men Tell No Tales","s":"0/2 objectives · then Buried Atrocities","c":"primary \"Turned in\" story","b":"Lv 15","o":["Clear nearby threats defeat Evil Black Soul defeat Grudge Bearing Warrior Kibelisk : Neglected Crematorium","Turn in Ulgorn, Crypt"]},
     {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest · Kibelisk : Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 11 open at your level"},
@@ -216,7 +216,7 @@
     {"t":"Buy Heart Gore 5 → 6","s":"Needs Lv 16 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 16–18"}
   ],
   "behind/L15-q20-from10-miss4-s2-B": [
-    {"t":"Catch up: level Ambush 4 → 5","s":"2 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
+    {"t":"Catch up: level Ambush 4 → 5","s":"2 pts · 3 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
     {"t":"Story: Dead Men Tell No Tales","s":"0/2 objectives · then Buried Atrocities","c":"primary \"Turned in\" story","b":"Lv 15","o":["Clear nearby threats defeat Evil Black Soul defeat Grudge Bearing Warrior Kibelisk : Neglected Crematorium","Turn in Ulgorn, Crypt"]},
     {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest · Kibelisk : Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 11 open at your level"},

@@ -46,14 +46,14 @@
     {"t":"Triniel board opens","s":"Lv 40 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 40–44"}
   ],
   "build/L37-q69-before-A-sppts": [
-    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · slot 2: Multi-Hit on hit · inferred","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · slot 2: Multi-Hit on hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup"},
     {"t":"Story: Mirror of Greed","s":"0/3 objectives · then Fafnite's Whereabouts","c":"primary \"Turned in\" story","bd":"Bind Steel Hammer Merchants HQ on the way 86 m from Crobakhi bind:kib:steel-hammer-merchants-hq","o":["Go to the Fire Temple Entrance talk to Trekhi","Investigate the Fire Temple complete the Fire Temple investigation. This is your first run of the Fire Temple Expedition.","Turn in Crobakhi, Steel Hammer Merchants HQ"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202039","x":["+2 waiting on the story A Friend's Legacy In my game Bloodstained Rose In my game"]},
     {"t":"Equip Savage Fang inferred","s":"Stigma slot 4 is open · needs 1 shard (+1 at Lv 38)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk : Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 9 open"},
-    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed inferred · inferred","c":""},
-    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit inferred · slot 2: -1s Insignia Explosion cooldown on hit · inferred","c":""},
-    {"t":"Catch up: level Ambush 1 → 10","s":"21 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack inferred · slot 2: Absorbs 3% HP disputed · inferred","c":""}
+    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit · slot 2: -1s Insignia Explosion cooldown on hit · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 10","s":"21 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack · slot 2: Absorbs 3% HP disputed · inferred","c":""}
   ],
   "build/L37-q69-before-A-stfull": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 37–39"},
@@ -129,14 +129,14 @@
     {"t":"Triniel board opens","s":"Lv 40 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 40–44"}
   ],
   "build/L37-q69-before-B-sppts": [
-    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · slot 2: Multi-Hit on hit · inferred","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · slot 2: Multi-Hit on hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup"},
     {"t":"Story: Mirror of Greed","s":"0/3 objectives · then Fafnite's Whereabouts","c":"primary \"Turned in\" story","bd":"Bind Steel Hammer Merchants HQ on the way 86 m from Crobakhi bind:kib:steel-hammer-merchants-hq","o":["Go to the Fire Temple Entrance talk to Trekhi","Investigate the Fire Temple complete the Fire Temple investigation. This is your first run of the Fire Temple Expedition.","Turn in Crobakhi, Steel Hammer Merchants HQ"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202039","x":["+2 waiting on the story A Friend's Legacy In my game Bloodstained Rose In my game"]},
     {"t":"Equip Savage Fang inferred","s":"Stigma slot 4 is open · needs 1 shard (+1 at Lv 38)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk : Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 9 open"},
-    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed inferred · inferred","c":""},
-    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit inferred · slot 2: -1s Insignia Explosion cooldown on hit · inferred","c":""},
-    {"t":"Catch up: level Ambush 1 → 10","s":"21 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack inferred · slot 2: Absorbs 3% HP disputed · inferred","c":""}
+    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit · slot 2: -1s Insignia Explosion cooldown on hit · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 10","s":"21 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack · slot 2: Absorbs 3% HP disputed · inferred","c":""}
   ],
   "build/L37-q69-before-B-stfull": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 37–39"},
@@ -168,7 +168,7 @@
   "build/L40-q74-before-A-cube": [
     {"t":"Finish Ascetic's Cave","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:sd:ascetic-s-cave"},
     {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
-    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 5 jumps left","c":"primary \"Mark spent\" catchup"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","bd":"Bind Zemurru's Tomb on the way 27 m from Amunta bind:kib:zemurrus-tomb","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk : Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
     {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk : Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 7 open at your level"},
@@ -176,7 +176,7 @@
     {"t":"Catch up: pick Heart Gore 's specialty","s":"Specialty slot 2: Multi-Hit on hit","c":""}
   ],
   "build/L40-q74-before-A-dv": [
-    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 5 jumps left","c":"primary \"Mark spent\" catchup"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","bd":"Bind Zemurru's Tomb on the way 27 m from Amunta bind:kib:zemurrus-tomb","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk : Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
     {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk : Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 7 open at your level"},
@@ -186,7 +186,7 @@
     {"t":"Catch up: pick Insignia Explosion 's specialty","s":"Specialty slot 2: Keeps 2 Insignia stacks after Insignia Explosion disputed","c":""}
   ],
   "build/L40-q74-before-A-filters": [
-    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 5 jumps left","c":"primary \"Mark spent\" catchup"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","bd":"Bind Zemurru's Tomb on the way 27 m from Amunta bind:kib:zemurrus-tomb","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk : Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
     {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk : Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 7 open at your level"},
@@ -196,7 +196,7 @@
     {"t":"Catch up: pick Insignia Explosion 's specialty","s":"Specialty slot 2: Keeps 2 Insignia stacks after Insignia Explosion disputed","c":""}
   ],
   "build/L40-q74-before-A-objs": [
-    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 5 jumps left","c":"primary \"Mark spent\" catchup"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: Symbol of Liberation","s":"2/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","bd":"Bind Zemurru's Tomb on the way 27 m from Amunta bind:kib:zemurrus-tomb","o":["Go to the Steel Hammer Temporary Trading Post meet with Amunta ( Kibelisk : Steel Hammer Temporary Trading Post)","Find materials necessary for infiltration gather materials from the Shulak Cart (Kibelisk: Steel Hammer Temporary Trading Post)","Turn in Amunta, Zemurru's Tomb"]},
     {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk : Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 7 open at your level"},
@@ -206,7 +206,7 @@
     {"t":"Catch up: pick Insignia Explosion 's specialty","s":"Specialty slot 2: Keeps 2 Insignia stacks after Insignia Explosion disputed","c":""}
   ],
   "build/L40-q74-before-A-rqmix": [
-    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 5 jumps left","c":"primary \"Mark spent\" catchup"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","bd":"Bind Zemurru's Tomb on the way 27 m from Amunta bind:kib:zemurrus-tomb","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk : Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
     {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk : Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 7 open at your level"},
@@ -216,17 +216,17 @@
     {"t":"Catch up: pick Insignia Explosion 's specialty","s":"Specialty slot 2: Keeps 2 Insignia stacks after Insignia Explosion disputed","c":""}
   ],
   "build/L40-q74-before-A-sppts": [
-    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · slot 2: Multi-Hit on hit · inferred","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · slot 2: Multi-Hit on hit · 9 jumps left · inferred","c":"primary \"Mark spent\" catchup"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","bd":"Bind Zemurru's Tomb on the way 27 m from Amunta bind:kib:zemurrus-tomb","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk : Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
     {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk : Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 7 open at your level"},
     {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland (near your story step) · Kibelisk : Eastern Gribade Highland Tail Island · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 230 m away · 10 open"},
-    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed inferred · inferred","c":""},
-    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit inferred · slot 2: -1s Insignia Explosion cooldown on hit · inferred","c":""},
-    {"t":"Catch up: level Ambush 1 → 10","s":"21 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack inferred · slot 2: Absorbs 3% HP disputed · inferred","c":""}
+    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit · slot 2: -1s Insignia Explosion cooldown on hit · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 10","s":"21 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack · slot 2: Absorbs 3% HP disputed · inferred","c":""}
   ],
   "build/L40-q74-before-A-stfull": [
-    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 5 jumps left","c":"primary \"Mark spent\" catchup"},
     {"t":"Upgrade Triniel's Dagger 1 → 2 inferred","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","bd":"Bind Zemurru's Tomb on the way 27 m from Amunta bind:kib:zemurrus-tomb","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk : Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
@@ -238,7 +238,7 @@
     {"t":"Catch up: level Assault Stance 1 → 4","s":"3 pts","c":""}
   ],
   "build/L40-q74-before-A-stready": [
-    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 5 jumps left","c":"primary \"Mark spent\" catchup"},
     {"t":"Equip Illusive Clone inferred","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","bd":"Bind Zemurru's Tomb on the way 27 m from Amunta bind:kib:zemurrus-tomb","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk : Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
@@ -249,7 +249,7 @@
     {"t":"Catch up: pick Insignia Explosion 's specialty","s":"Specialty slot 2: Keeps 2 Insignia stacks after Insignia Explosion disputed","c":""}
   ],
   "build/L40-q74-before-A-stwait": [
-    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 5 jumps left","c":"primary \"Mark spent\" catchup"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","bd":"Bind Zemurru's Tomb on the way 27 m from Amunta bind:kib:zemurrus-tomb","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk : Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
     {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk : Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 7 open at your level"},
@@ -262,7 +262,7 @@
   "build/L40-q74-before-B-cube": [
     {"t":"Finish Ascetic's Cave","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:sd:ascetic-s-cave"},
     {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
-    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 5 jumps left","c":"primary \"Mark spent\" catchup"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","bd":"Bind Zemurru's Tomb on the way 27 m from Amunta bind:kib:zemurrus-tomb","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk : Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
     {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk : Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 7 open at your level"},
@@ -270,7 +270,7 @@
     {"t":"Catch up: pick Heart Gore 's specialty","s":"Specialty slot 2: Multi-Hit on hit","c":""}
   ],
   "build/L40-q74-before-B-dv": [
-    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 5 jumps left","c":"primary \"Mark spent\" catchup"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","bd":"Bind Zemurru's Tomb on the way 27 m from Amunta bind:kib:zemurrus-tomb","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk : Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
     {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk : Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 7 open at your level"},
@@ -280,7 +280,7 @@
     {"t":"Catch up: pick Insignia Explosion 's specialty","s":"Specialty slot 2: Keeps 2 Insignia stacks after Insignia Explosion disputed","c":""}
   ],
   "build/L40-q74-before-B-filters": [
-    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 5 jumps left","c":"primary \"Mark spent\" catchup"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","bd":"Bind Zemurru's Tomb on the way 27 m from Amunta bind:kib:zemurrus-tomb","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk : Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
     {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk : Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 7 open at your level"},
@@ -290,7 +290,7 @@
     {"t":"Catch up: pick Insignia Explosion 's specialty","s":"Specialty slot 2: Keeps 2 Insignia stacks after Insignia Explosion disputed","c":""}
   ],
   "build/L40-q74-before-B-objs": [
-    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 5 jumps left","c":"primary \"Mark spent\" catchup"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: Symbol of Liberation","s":"2/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","bd":"Bind Zemurru's Tomb on the way 27 m from Amunta bind:kib:zemurrus-tomb","o":["Go to the Steel Hammer Temporary Trading Post meet with Amunta ( Kibelisk : Steel Hammer Temporary Trading Post)","Find materials necessary for infiltration gather materials from the Shulak Cart (Kibelisk: Steel Hammer Temporary Trading Post)","Turn in Amunta, Zemurru's Tomb"]},
     {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk : Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 7 open at your level"},
@@ -300,7 +300,7 @@
     {"t":"Catch up: pick Insignia Explosion 's specialty","s":"Specialty slot 2: Keeps 2 Insignia stacks after Insignia Explosion disputed","c":""}
   ],
   "build/L40-q74-before-B-rqmix": [
-    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 5 jumps left","c":"primary \"Mark spent\" catchup"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","bd":"Bind Zemurru's Tomb on the way 27 m from Amunta bind:kib:zemurrus-tomb","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk : Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
     {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk : Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 7 open at your level"},
@@ -310,17 +310,17 @@
     {"t":"Catch up: pick Insignia Explosion 's specialty","s":"Specialty slot 2: Keeps 2 Insignia stacks after Insignia Explosion disputed","c":""}
   ],
   "build/L40-q74-before-B-sppts": [
-    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · slot 2: Multi-Hit on hit · inferred","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · slot 2: Multi-Hit on hit · 9 jumps left · inferred","c":"primary \"Mark spent\" catchup"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","bd":"Bind Zemurru's Tomb on the way 27 m from Amunta bind:kib:zemurrus-tomb","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk : Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
     {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk : Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 7 open at your level"},
     {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland (near your story step) · Kibelisk : Eastern Gribade Highland Tail Island · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 230 m away · 10 open"},
-    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed inferred · inferred","c":""},
-    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit inferred · slot 2: -1s Insignia Explosion cooldown on hit · inferred","c":""},
-    {"t":"Catch up: level Ambush 1 → 10","s":"21 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack inferred · slot 2: Absorbs 3% HP disputed · inferred","c":""}
+    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit · slot 2: -1s Insignia Explosion cooldown on hit · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 10","s":"21 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack · slot 2: Absorbs 3% HP disputed · inferred","c":""}
   ],
   "build/L40-q74-before-B-stfull": [
-    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 5 jumps left","c":"primary \"Mark spent\" catchup"},
     {"t":"Upgrade Triniel's Dagger 1 → 2 inferred","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","bd":"Bind Zemurru's Tomb on the way 27 m from Amunta bind:kib:zemurrus-tomb","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk : Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
@@ -332,7 +332,7 @@
     {"t":"Catch up: level Assault Stance 1 → 4","s":"3 pts","c":""}
   ],
   "build/L40-q74-before-B-stready": [
-    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 5 jumps left","c":"primary \"Mark spent\" catchup"},
     {"t":"Equip Illusive Clone inferred","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","bd":"Bind Zemurru's Tomb on the way 27 m from Amunta bind:kib:zemurrus-tomb","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk : Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
@@ -343,7 +343,7 @@
     {"t":"Catch up: pick Insignia Explosion 's specialty","s":"Specialty slot 2: Keeps 2 Insignia stacks after Insignia Explosion disputed","c":""}
   ],
   "build/L40-q74-before-B-stwait": [
-    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 5 jumps left","c":"primary \"Mark spent\" catchup"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","bd":"Bind Zemurru's Tomb on the way 27 m from Amunta bind:kib:zemurrus-tomb","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk : Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
     {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk : Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 7 open at your level"},

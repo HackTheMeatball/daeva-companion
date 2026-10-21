@@ -60,7 +60,7 @@
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 4 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "bind/L05-q04-none-A": [
-    {"t":"Catch up: level Heart Gore 1 → 2","s":"1 pt · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 4–5"},
+    {"t":"Catch up: level Heart Gore 1 → 2","s":"1 pt · 2 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 4–5"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: The Being Beneath the Lake","s":"0/4 objectives · then Spread Your Wings","c":"primary \"Turned in\" story","b":"Lv 4–5","o":["Check the journal Elvida mentioned check the Timeworn Journal check the Worn Tome","Go to the path beneath the lake enter Tunapre Lake Cave ( Kibelisk : Witch's Cabin)","Learn to fly enter the Ascension Subspace","+1 more after these"]},
     {"t":"Catch up: level Savage Roar 1 → 3","s":"2 pts · inferred","c":""},
@@ -70,7 +70,7 @@
     {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 6 levels away · inferred","c":"tag \"Later\"","f":"later"}
   ],
   "bind/L05-q04-objs-A": [
-    {"t":"Catch up: level Heart Gore 1 → 2","s":"1 pt · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 4–5"},
+    {"t":"Catch up: level Heart Gore 1 → 2","s":"1 pt · 2 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 4–5"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: The Being Beneath the Lake","s":"Ready to turn in · then Spread Your Wings","c":"primary \"Turned in\" story","b":"Lv 4–5"},
     {"t":"Catch up: level Savage Roar 1 → 3","s":"2 pts · inferred","c":""},

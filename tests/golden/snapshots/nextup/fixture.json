@@ -1,21 +1,21 @@
 {
   "fixture/fixture-user-v285": [
-    {"t":"Catch up: level Quick Slice 8 → 10","s":"8 pts · then pick the specialty +50% Multi-Hit on hit inferred · slot 2: -1s Insignia Explosion cooldown on hit · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 27"},
+    {"t":"Catch up: level Quick Slice 8 → 10","s":"8 pts · then pick the specialty +50% Multi-Hit on hit · slot 2: -1s Insignia Explosion cooldown on hit · 11 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 27"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: Preparations for Restoration","s":"0/3 objectives · then A Collective Effort","c":"primary \"Turned in\" story","b":"Lv 27","bd":"Bind Purifying Forest Coastal Cliff on the way 89 m from Hadala bind:kib:purifying-forest-coastal-cliff","o":["Prepare to restore the Spirit Altar go to the Old Purifying Altar ( Kibelisk : Guide Rest Stop)","Clear around the Wind Altar defeat the contaminated spirits remove Poison Blood Clot Kibelisk: Guide Rest Stop","Turn in Hadala, Wind Altar"]},
     {"t":"Regional quests","s":"3 in progress · 2/5 turned in","c":"go \"Show\" rqgo:rq:2202017","x":["run In the Fang Legion's Name","run A Guardian's Sacrifice","run Nine Wonders of Altgard: 1st Leg","+1 waiting on the story Fight Poison with Poison In my game"]},
     {"t":"Clear Lamnah Base","s":"Purifying Forest (near your story step) · Kibelisk : Healing Spring · Lv 20–24 · 5/7","c":"go \"Show\" areas:20","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Healing Spring is 110 m away · 8 open at your level"},
     {"t":"Equip Illusive Clone inferred","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 28)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk : Purifying Forest Sunny Hill · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 6 open"},
-    {"t":"Catch up: level Heart Gore 7 → 9","s":"8 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · inferred","c":""},
-    {"t":"Catch up: level Shadowstrike 5 → 10","s":"16 pts · then pick the specialty +20% Critical Damage Boost for 10s on hit inferred · inferred","c":""},
+    {"t":"Catch up: level Heart Gore 7 → 9","s":"8 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · inferred","c":""},
+    {"t":"Catch up: level Shadowstrike 5 → 10","s":"16 pts · then pick the specialty +20% Critical Damage Boost for 10s on hit · inferred","c":""},
     {"t":"Catch up: level Exploit Weakness 4 → 9","s":"14 pts · inferred","c":""}
   ],
   "fixture/fixture-v285": [
     {"t":"Finish Fafnite Storage Room","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:sd:fafnite-storage-room","b":"Lv 25–26"},
     {"t":"Finish Drana Depository","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:sd:drana-depository"},
     {"t":"Use your Cube items: 2 Wisdom Stones + 2 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
-    {"t":"Catch up: level Quick Slice 8 → 10","s":"8 pts · then pick the specialty +50% Multi-Hit on hit inferred · inferred","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: level Quick Slice 8 → 10","s":"8 pts · then pick the specialty +50% Multi-Hit on hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup"},
     {"t":"Buy Exploit Weakness · 2 of 2 inferred on Nezekan","s":"5 of your 43 crystals","c":"primary \"Acquired\" board"},
     {"t":"Upgrade Triniel's Dagger 3 → 4 inferred","s":"1 of your 4 shards","c":"primary \"Upgraded\" stup"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},

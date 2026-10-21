@@ -7,7 +7,7 @@
     {"t":"Buy Insignia Explosion 9 → 10","s":"Needs Lv 38 · 2 levels away · inferred","c":"tag \"Later\"","f":"later"}
   ],
   "random/L36-q10-none-B": [
-    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 35–36"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 35–36"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1","b":"Missed · Lv 30–31"},
@@ -15,12 +15,12 @@
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202044","x":["+24 waiting on the story Shugo-of-All-Trades In my game Spooky Specters In my game Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Traveling Merchant's Conundrum In my game Finders Keepers In my game"]},
     {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step inferred ) · Kibelisk : Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 53 open at your level"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step inferred ) · Kibelisk : Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 11 open"},
-    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed inferred · inferred","c":""},
-    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit inferred · inferred","c":""},
-    {"t":"Catch up: level Ambush 1 → 10","s":"21 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack inferred · inferred","c":""}
+    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 10","s":"21 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack · inferred","c":""}
   ],
   "random/L36-q15-none-A": [
-    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 35–36"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 35–36"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1","b":"Missed · Lv 30–31"},
@@ -28,12 +28,12 @@
     {"t":"Regional quests","s":"1 to pick up · 1 near your story step · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades (near)","+23 waiting on the story Spooky Specters In my game Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Traveling Merchant's Conundrum In my game Finders Keepers In my game"]},
     {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk : Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 53 open at your level"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk : Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 11 open"},
-    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed inferred · inferred","c":""},
-    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit inferred · inferred","c":""},
-    {"t":"Catch up: level Ambush 1 → 10","s":"21 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack inferred · inferred","c":""}
+    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 10","s":"21 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack · inferred","c":""}
   ],
   "random/L36-q15-rnd120p20-B-filters": [
-    {"t":"Catch up: level Heart Gore 1 → 9","s":"17 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 35–36"},
+    {"t":"Catch up: level Heart Gore 1 → 9","s":"17 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 7 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 35–36"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1","b":"Missed · Lv 30–31"},
@@ -42,8 +42,8 @@
     {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk : Temporary Investigation Base · Lv 10–14 · 3/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 40 open at your level"},
     {"t":"Equip Illusive Clone inferred","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 37)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 5/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
-    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed inferred · inferred","c":""},
-    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit inferred · inferred","c":""},
+    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit · inferred","c":""},
     {"t":"Catch up: level Shadowstrike 1 → 9","s":"17 pts · inferred","c":""}
   ],
   "random/L36-q16-all-B-cube": [
@@ -70,7 +70,7 @@
   "random/L36-q20-none-B-cube": [
     {"t":"Finish Abandoned One's Grave","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:g10h:abandoned-one-s-grave","b":"Lv 35–36"},
     {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
-    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · inferred","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -86,13 +86,13 @@
     {"t":"Story: Crossroad","s":"3/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Rendezvous at the Watcher's Tent talk to Nemon","Defeat the Balaur guarding the lake clear the Balaur Skirmishers","Retrieve the hidden artifact open the right chest in the pond (decoys exist)","+1 more after these"]}
   ],
   "random/L36-q32-before-A-sppts": [
-    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · slot 2: Multi-Hit on hit · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 35–36"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · slot 2: Multi-Hit on hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 35–36"},
     {"t":"Story: Verdant Melody","s":"0/2 objectives · then Daeva in a Dream","c":"primary \"Turned in\" story","o":["Investigate the Etheria Rift rescue Ecco the Forest Spirit","Turn in Ecco (Forest Spirit), Odar's Shade"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202019","x":["+12 waiting on the story Young Elim's Story In my game A Guardian's Sacrifice In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game"]},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
-    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed inferred · inferred","c":""},
-    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit inferred · slot 2: -1s Insignia Explosion cooldown on hit · inferred","c":""},
-    {"t":"Catch up: level Ambush 1 → 10","s":"21 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack inferred · slot 2: Absorbs 3% HP disputed · inferred","c":""},
+    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit · slot 2: -1s Insignia Explosion cooldown on hit · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 10","s":"21 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack · slot 2: Absorbs 3% HP disputed · inferred","c":""},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 1 level away · opens on \"Mirror of Greed\" · 37 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "random/L36-q34-rnd146p95-B-stwait": [
@@ -217,7 +217,7 @@
     {"t":"Triniel board opens","s":"Lv 40 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 40–44"}
   ],
   "random/L37-q26-none-A-stwait": [
-    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -261,7 +261,7 @@
   "random/L37-q43-none-A-cube": [
     {"t":"Finish Abandoned One's Grave","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:g10h:abandoned-one-s-grave","b":"Lv 37–39"},
     {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
-    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · inferred","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -274,7 +274,7 @@
     {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk : Zemurru's Tomb · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 11 open"}
   ],
   "random/L37-q60-none-A-filters": [
-    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -325,7 +325,7 @@
     {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"}
   ],
   "random/L37-qxx-none-A-dv": [
-    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1","b":"Missed · Lv 30–31"},
@@ -333,9 +333,9 @@
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202044","x":["+26 waiting on the story Shugo-of-All-Trades In my game Spooky Specters In my game Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Traveling Merchant's Conundrum In my game Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 53 open at your level"},
     {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk : Zemurru's Tomb · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 12 open"},
-    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed inferred · inferred","c":""},
-    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit inferred · inferred","c":""},
-    {"t":"Catch up: level Ambush 1 → 10","s":"21 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack inferred · inferred","c":""}
+    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 10","s":"21 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack · inferred","c":""}
   ],
   "random/L38-q00-rnd126p95-B-stfull": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 37–39"},
@@ -347,7 +347,7 @@
     {"t":"Triniel board opens","s":"Lv 40 milestone · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 40–44"}
   ],
   "random/L38-q20-none-A": [
-    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -358,10 +358,10 @@
     {"t":"Regional quests","s":"2 to pick up · 1 near your story step · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters (near)","+24 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Traveling Merchant's Conundrum In my game Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
     {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery (near your story step) · Kibelisk : Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 53 open at your level"},
     {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk : Zemurru's Tomb · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 11 open"},
-    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed inferred · inferred","c":""}
+    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed · inferred","c":""}
   ],
   "random/L38-q26-none-A-stwait": [
-    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -376,7 +376,7 @@
     {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk : Zemurru's Tomb · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 11 open"}
   ],
   "random/L38-q50-none-B-objs": [
-    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -391,13 +391,13 @@
     {"t":"Run Latrima Outpost","s":"Dranactus (near your story step) · Kibelisk : Battlescar Mound Clifftop · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Battlescar Mound Clifftop is 160 m away · 11 open"}
   ],
   "random/L38-q54-before-A-sppts": [
-    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · slot 2: Multi-Hit on hit · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · slot 2: Multi-Hit on hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
     {"t":"Story: A Daeva Dreaming Anew","s":"0/2 objectives · then Last Refuge","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Dreams","Turn in Nemon, Briskwind Shelter"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202063","x":["+3 waiting on the story Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
     {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk : Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 9 open"},
-    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed inferred · inferred","c":""},
-    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit inferred · slot 2: -1s Insignia Explosion cooldown on hit · inferred","c":""},
-    {"t":"Catch up: level Ambush 1 → 10","s":"21 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack inferred · slot 2: Absorbs 3% HP disputed · inferred","c":""},
+    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit · slot 2: -1s Insignia Explosion cooldown on hit · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 10","s":"21 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack · slot 2: Absorbs 3% HP disputed · inferred","c":""},
     {"t":"Triniel board opens","s":"Lv 40 milestone · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 40–44"}
   ],
   "random/L38-q59-before-A": [
@@ -431,7 +431,7 @@
     {"t":"Triniel board opens","s":"Lv 40 milestone · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 40–44"}
   ],
   "random/L38-q72-none-A-objs": [
-    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
     {"t":"Regional quests","s":"19 to pick up · 6 follow-ups · 0/26 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount | -> lock(disabled) A Friend's Legacy","+19 more"]},
     {"t":"Clear Destruction Archons Armory and others until Lv 40","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 53 open at your level"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
@@ -442,8 +442,8 @@
     {"t":"Story: Healing Herbs","s":"Needs Lv 40: you're 38. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":"","b":"Lv 37–39"},
     {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 39)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk : Zemurru's Tomb · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 11 open"},
-    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed inferred · inferred","c":""},
-    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit inferred · inferred","c":""}
+    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit · inferred","c":""}
   ],
   "random/L38-q75-lvonly-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 37–39"},
@@ -480,7 +480,7 @@
     {"t":"Triniel board opens","s":"Lv 40 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 40–44"}
   ],
   "random/L39-q04-none-B-objs": [
-    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1","b":"Missed · Lv 30–31"},
@@ -488,9 +488,9 @@
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202044","x":["+26 waiting on the story Shugo-of-All-Trades In my game Spooky Specters In my game Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Traveling Merchant's Conundrum In my game Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 53 open at your level"},
     {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk : Zemurru's Tomb · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 12 open"},
-    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed inferred · inferred","c":""},
-    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit inferred · inferred","c":""},
-    {"t":"Catch up: level Ambush 1 → 10","s":"21 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack inferred · inferred","c":""}
+    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 10","s":"21 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack · inferred","c":""}
   ],
   "random/L39-q06-before-A-stready": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
@@ -513,7 +513,7 @@
     {"t":"Triniel board opens","s":"Lv 40 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 40–44"}
   ],
   "random/L39-q18-rnd139p20-B": [
-    {"t":"Catch up: pick Heart Gore 's specialty","s":"Specialty Up to +20% Critical Hit when fewer targets are hit inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
+    {"t":"Catch up: pick Heart Gore 's specialty","s":"Specialty Up to +20% Critical Hit when fewer targets are hit inferred · 8 jumps left","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Vaizel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g30:0","b":"Missed · Lv 30–31"},
@@ -522,12 +522,12 @@
     {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","+25 waiting on the story Spooky Specters In my game Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Traveling Merchant's Conundrum In my game Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
     {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery (near your story step) · Kibelisk : Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 43 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 11 open"},
-    {"t":"Catch up: level Savage Roar 1 → 9","s":"17 pts · then pick the specialty +20% Skill Speed inferred · inferred","c":""},
-    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit inferred · inferred","c":""},
+    {"t":"Catch up: level Savage Roar 1 → 9","s":"17 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit · inferred","c":""},
     {"t":"Catch up: level Ambush 1 → 9","s":"17 pts · inferred","c":""}
   ],
   "random/L39-q27-none-B-stready": [
-    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
     {"t":"Equip Illusive Clone inferred","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
@@ -545,13 +545,13 @@
     {"t":"Story: Creeping Shadow","s":"0/5 objectives · then Children of the Elim","c":"primary \"Turned in\" story","o":["Find out where Urd is go to Moslan Forest ( Kibelisk : Odar's Shade)","Find out where Urd is go to Odar's Shade","Search for survivors examine Nornir Corpse find Elim & Nornir survivors Kibelisk: Collapsed Chasm","+2 more after these"]}
   ],
   "random/L39-q45-before-A-sppts": [
-    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · slot 2: Multi-Hit on hit · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · slot 2: Multi-Hit on hit · 9 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
     {"t":"Story: Dying Light","s":"0/4 objectives · then Contaminated Sacred Tree","c":"primary \"Turned in\" story","o":["Restore the Water Altar purify the Water Altar ( Kibelisk : Healing Spring)","Clear around the Water Altar remove Contaminated Water defeat Water Mist Spirit defeat Cursed Poison Blood Kibelisk: Healing Spring","Help heal Grisilla remove Contaminated Root defeat Poison Blood Spider defeat Consumed Klaw Kibelisk: Healing Spring","+1 more after these"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202011","x":["+11 waiting on the story Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
     {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk : Purifying Forest Sunny Hill · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 9 open"},
-    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed inferred · inferred","c":""},
-    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit inferred · slot 2: -1s Insignia Explosion cooldown on hit · inferred","c":""},
-    {"t":"Catch up: level Ambush 1 → 10","s":"21 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack inferred · slot 2: Absorbs 3% HP disputed · inferred","c":""},
+    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit · slot 2: -1s Insignia Explosion cooldown on hit · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 10","s":"21 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack · slot 2: Absorbs 3% HP disputed · inferred","c":""},
     {"t":"Triniel board opens","s":"Lv 40 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 40–44"}
   ],
   "random/L39-q53-all-B": [
@@ -591,7 +591,7 @@
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins (near your story step) · Kibelisk : Shulak Street Stall · 9/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 5 open"}
   ],
   "random/L39-q59-rnd123p20-A": [
-    {"t":"Catch up: level Heart Gore 1 → 9","s":"17 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
+    {"t":"Catch up: level Heart Gore 1 → 9","s":"17 pts · 7 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
@@ -603,7 +603,7 @@
     {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 40)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins (near your story step) · Kibelisk : Shulak Street Stall · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 9 open"},
     {"t":"Catch up: level Savage Roar 1 → 9","s":"17 pts · inferred","c":""},
-    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit inferred · inferred","c":""}
+    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit · inferred","c":""}
   ],
   "random/L39-q73-rnd147p95-B-stwait": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 37–39"},
@@ -621,7 +621,7 @@
   "random/L39-q85-rnd143p20-A-cube": [
     {"t":"Finish Dratona Cave","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:g10h:dratona-cave","b":"Lv 37–39"},
     {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
-    {"t":"Catch up: level Heart Gore 1 → 9","s":"17 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · inferred","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: level Heart Gore 1 → 9","s":"17 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup"},
     {"t":"Regional quests","s":"13 to pick up · 2 follow-ups · 11/26 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","new The Great Curse-Breaking Caper","new Fight Poison with Poison","+9 more"]},
     {"t":"Clear Destruction Archons Armory and others until Lv 45","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 1/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 44 open at your level"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
@@ -630,7 +630,7 @@
     {"t":"Story: Forgotten Commander","s":"Needs Lv 45: you're 39. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":"tag \"Turn in at Lv 45\"","b":"Lv 37–39","bd":"Bind Latesran Eastern Root on the way 49 m from Koro bind:kib:latesran-eastern-root"},
     {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 40)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk : Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 9 open"},
-    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed inferred · inferred","c":""}
+    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed · inferred","c":""}
   ],
   "random/L39-qxx-rnd105p95-B-cube": [
     {"t":"Finish Lamnah Base","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:sd:lamnah-base","b":"Lv 37–39"},
@@ -642,7 +642,7 @@
     {"t":"Triniel board opens","s":"Lv 40 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 40–44"}
   ],
   "random/L40-q05-lvonly-B-stfull": [
-    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 5 jumps left","c":"primary \"Mark spent\" catchup"},
     {"t":"Upgrade Triniel's Dagger 1 → 2 inferred","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
     {"t":"Story: Spread Your Wings","s":"0/3 objectives · then Signs of a Crash Landing","c":"primary \"Turned in\" story","o":["Awaken your Daeva power in the dream complete 'The One Who Perceives'","Share the outcome go to the Witch's Cabin","Turn in Elvida, Witch's Cabin"]},
     {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk : Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 7 open at your level"},
@@ -666,7 +666,7 @@
     {"t":"Story: Dead Men Tell No Tales","s":"0/2 objectives · then Buried Atrocities","c":"primary \"Turned in\" story","o":["Clear nearby threats defeat Evil Black Soul defeat Grudge Bearing Warrior Kibelisk : Neglected Crematorium","Turn in Ulgorn, Crypt"]}
   ],
   "random/L40-q22-lvonly-B-rqmix": [
-    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 5 jumps left","c":"primary \"Mark spent\" catchup"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: Empyrean Monolith","s":"0/4 objectives · then A New Lead","c":"primary \"Turned in\" story","o":["Find Ruins Administrator Ollen talk to Ollen ( Kibelisk : Safe Haven)","Obtain the Empyrean Trace: Altgard retrieve the trace (Kibelisk: Safe Haven)","Resonate with the Monolith obtain the Revelation Amulet Enhance Scroll (Kibelisk: Safe Haven)","+1 more after these"]},
     {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk : Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 7 open at your level"},
@@ -676,18 +676,18 @@
     {"t":"Catch up: pick Insignia Explosion 's specialty","s":"Specialty slot 2: Keeps 2 Insignia stacks after Insignia Explosion disputed","c":""}
   ],
   "random/L40-q23-before-A-sppts": [
-    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · slot 2: Multi-Hit on hit · inferred","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · slot 2: Multi-Hit on hit · 9 jumps left · inferred","c":"primary \"Mark spent\" catchup"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: A New Lead","s":"0/4 objectives · then Malice Laid Bare","c":"primary \"Turned in\" story","o":["Take Odyle Jelly check the Worn Chest ( Kibelisk : Safe Haven)","Deliver the Odyle Jelly talk to Baba (Quai Campsite)","Retrieve the Quai Merchants' goods beat the marauders loot the Pile of Loot Fang Hideout","+1 more after these"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202016","x":["+17 waiting on the story Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
     {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk : Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 7 open at your level"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk : Safe Haven Cliff · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 10 open"},
-    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed inferred · inferred","c":""},
-    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit inferred · slot 2: -1s Insignia Explosion cooldown on hit · inferred","c":""},
-    {"t":"Catch up: level Ambush 1 → 10","s":"21 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack inferred · slot 2: Absorbs 3% HP disputed · inferred","c":""}
+    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit · slot 2: -1s Insignia Explosion cooldown on hit · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 10","s":"21 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack · slot 2: Absorbs 3% HP disputed · inferred","c":""}
   ],
   "random/L40-q37-before-B": [
-    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 5 jumps left","c":"primary \"Mark spent\" catchup"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: Finding Stolen Relics","s":"0/2 objectives · then Voice of Rage","c":"primary \"Turned in\" story","o":["Retrieve the stolen relics retrieve the Golden Uruthum Statue retrieve the History of Uruthumheim retrieve the Fragment of Minusha's Heart defeat the Ancient Ruins Apparatus Kibelisk : Minushan Site","Turn in Gohok, Minushan Site"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202062","x":["+12 waiting on the story Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
@@ -698,7 +698,7 @@
     {"t":"Catch up: pick Insignia Explosion 's specialty","s":"Specialty slot 2: Keeps 2 Insignia stacks after Insignia Explosion disputed","c":""}
   ],
   "random/L40-q37-lvonly-A-stready": [
-    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 5 jumps left","c":"primary \"Mark spent\" catchup"},
     {"t":"Equip Illusive Clone inferred","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: Finding Stolen Relics","s":"0/2 objectives · then Voice of Rage","c":"primary \"Turned in\" story","o":["Retrieve the stolen relics retrieve the Golden Uruthum Statue retrieve the History of Uruthumheim retrieve the Fragment of Minusha's Heart defeat the Ancient Ruins Apparatus Kibelisk : Minushan Site","Turn in Gohok, Minushan Site"]},
@@ -709,7 +709,7 @@
     {"t":"Catch up: pick Insignia Explosion 's specialty","s":"Specialty slot 2: Keeps 2 Insignia stacks after Insignia Explosion disputed","c":""}
   ],
   "random/L40-q38-before-B-rqmix": [
-    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 5 jumps left","c":"primary \"Mark spent\" catchup"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: Voice of Rage","s":"0/3 objectives · then Tangled Past","c":"primary \"Turned in\" story","bd":"Bind Uruthumheim Cliff on the way 46 m from Nemon bind:kib:uruthumheim-cliff","o":["Clear the way to the Eastern Altar defeat the Balaur in front of the altar defeat the Mind-Controlled Ancient Soldier and Ranger destroy the Midsize Fafnium","Find another Nornir survivor join Gohok in front of the Eastern Altar","Turn in Nemon, in front of the Collapsed Oracle"]},
     {"t":"Regional quests","s":"3 in progress · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202062","x":["run Fight Poison with Poison","run Hugo Mercenaries: Deep Shadow","run Her Last Favor","+9 waiting on the story An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
@@ -720,7 +720,7 @@
     {"t":"Catch up: pick Insignia Explosion 's specialty","s":"Specialty slot 2: Keeps 2 Insignia stacks after Insignia Explosion disputed","c":""}
   ],
   "random/L40-q41-rnd102p50-A": [
-    {"t":"Catch up: level Quick Slice 9 → 10","s":"4 pts · then pick the specialty +50% Multi-Hit on hit inferred · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 40–44"},
+    {"t":"Catch up: level Quick Slice 9 → 10","s":"4 pts · then pick the specialty +50% Multi-Hit on hit · 7 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 40–44"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -730,11 +730,11 @@
     {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 41)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk : Purifying Forest Sunny Hill · 7/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 6 open"},
     {"t":"Catch up: pick Shadowstrike 's specialty","s":"Specialty +20% Critical Damage Boost for 10s on hit inferred","c":""},
-    {"t":"Catch up: level Insignia Explosion 4 → 5","s":"2 pts · then pick the specialty +50% Multi-Hit on hit inferred · inferred","c":""},
+    {"t":"Catch up: level Insignia Explosion 4 → 5","s":"2 pts · then pick the specialty +50% Multi-Hit on hit · inferred","c":""},
     {"t":"Catch up: level Heart Gore 1 → 9","s":"17 pts · inferred","c":""}
   ],
   "random/L40-q52-none-B": [
-    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 40–44"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 9 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 40–44"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
@@ -756,7 +756,7 @@
   "random/L40-q68-lvonly-B-cube": [
     {"t":"Finish Ascetic's Cave","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:sd:ascetic-s-cave"},
     {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
-    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 5 jumps left","c":"primary \"Mark spent\" catchup"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Story: An Ill Fate's Resolution","s":"0/5 objectives · then Mirror of Greed","c":"primary \"Turned in\" story","o":["Prepare to enter Idun's Lake use Protection Serum","Go to Idun's Lake approach Idun's Lake ( Kibelisk : Steel Hammer Temporary Trading Post)","Find the Blades Hideout beneath Idun's Lake search the hideout entrance beneath the lake (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
     {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk : Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 7 open at your level"},
@@ -770,7 +770,7 @@
     {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"Lv 45 milestone · 5 levels away · unlocks after \"Forgotten Commander\" · 14 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 45+"}
   ],
   "random/L40-q72-none-A-objs": [
-    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 40–44"},
+    {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 9 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 40–44"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
@@ -789,7 +789,7 @@
     {"t":"Story: Treatment","s":"0/2 objectives · then Symbol of Liberation","c":"primary \"Turned in\" story","o":["Treat the Fallen Daybreak Society Members administer herbal medicine to the first member administer herbal medicine to the second member","Turn in Amunta, Amunta's Hideout"]}
   ],
   "random/L40-q81-before-A-stwait": [
-    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit","c":"primary \"Mark spent\" catchup"},
+    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit · 5 jumps left","c":"primary \"Mark spent\" catchup"},
     {"t":"Triniel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g40:0"},
     {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202066","x":["new Herb Pouch Heist [Lv 44]"]},
     {"t":"Clear Ascetic's Cave and others until Lv 44","s":"Impetusium Square (near your story step) · Kibelisk : Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 7 open at your level"},

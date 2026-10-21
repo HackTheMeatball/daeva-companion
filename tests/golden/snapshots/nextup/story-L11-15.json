@@ -16,7 +16,7 @@
     {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · 2 levels away · opens on \"Urgent Pursuit\" · 4 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "story/L11-q13-none-A": [
-    {"t":"Catch up: level Heart Gore 1 → 4","s":"3 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 10–12"},
+    {"t":"Catch up: level Heart Gore 1 → 4","s":"3 pts · 6 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 10–12"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Story: Crash Site Rendezvous","s":"0/4 objectives · then Contaminated Area","c":"primary \"Turned in\" story","b":"Lv 10–12","bd":"Bind Galorik's Inspection Area on the way 49 m from Ulgorn bind:kib:galoriks-inspection-area","o":["Find Hadala at Galorik's Inspection Area talk to Hadala ( Kibelisk : Galorik's Inspection Area)","Collect the neutralizer materials Poison Flower fruit Red Shell Mole shell Kibelisk: Galorik's Inspection Area","Find the herbalist and gather neutralizer materials talk to Matir (Kibelisk: Temporary Investigation Base)","+1 more after these"]},
@@ -43,7 +43,7 @@
     {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · 2 levels away · opens on \"Urgent Pursuit\" · 3 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "story/L11-q14-none-A": [
-    {"t":"Catch up: level Heart Gore 1 → 4","s":"3 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 10–12"},
+    {"t":"Catch up: level Heart Gore 1 → 4","s":"3 pts · 6 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 10–12"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Go to the Temporary Investigation Base talk to Niror","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk : Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
@@ -90,7 +90,7 @@
     {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · 1 level away · opens on \"Urgent Pursuit\" · 2 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "story/L12-q15-none-A": [
-    {"t":"Catch up: level Heart Gore 1 → 4","s":"3 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 10–12"},
+    {"t":"Catch up: level Heart Gore 1 → 4","s":"3 pts · 6 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 10–12"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Story: Express Daeva Delivery","s":"0/2 objectives · then Veiled Truth","c":"primary \"Turned in\" story","b":"Lv 10–12","bd":"Bind Quai Campsite on the way 30 m from Ulgorn bind:kib:quai-campsite","o":["Restore the supply route retrieve the Lost Supplies defeat Drana Predator defeat Congealed Drana Kibelisk : Creion Campsite","Turn in Ulgorn, Quai Campsite"]},
@@ -120,7 +120,7 @@
     {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · 1 level away · opens on \"Urgent Pursuit\" · 1 quest ahead","c":"tag \"Later\"","f":"later"}
   ],
   "story/L12-q16-none-A": [
-    {"t":"Catch up: level Heart Gore 1 → 4","s":"3 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 10–12"},
+    {"t":"Catch up: level Heart Gore 1 → 4","s":"3 pts · 6 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 10–12"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Meet Baba at Quai Campsite go inside","Find the broker's associate go to Barvir ( Kibelisk : Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
@@ -170,7 +170,7 @@
     {"t":"Complete \"Buried Atrocities\"","s":"Lv 16 milestone · 3 levels away · opens on \"Buried Atrocities\" · 4 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 16–18"}
   ],
   "story/L13-q17-none-A": [
-    {"t":"Catch up: level Heart Gore 1 → 5","s":"5 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 13–14"},
+    {"t":"Catch up: level Heart Gore 1 → 5","s":"5 pts · 6 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 13–14"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Story: Urgent Pursuit","s":"0/5 objectives · then Cemetery Cleanup","c":"primary \"Turned in\" story","b":"Lv 13–14","o":["Find out where the broker is talk to Tagar","Eliminate the hindrance defeat Corrupted Karas Handmaiden defeat Hungry Dead Kibelisk : Gravekeeper Camp","Investigate the Shaded Cave enter the Shaded Cave (Kibelisk: Gravekeeper Camp)","+2 more after these"]},
@@ -202,7 +202,7 @@
     {"t":"Buy Impact Hit 1 → 2","s":"Needs Lv 15 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 15"}
   ],
   "story/L13-q18-none-A": [
-    {"t":"Catch up: level Heart Gore 1 → 5","s":"5 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 13–14"},
+    {"t":"Catch up: level Heart Gore 1 → 5","s":"5 pts · 6 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 13–14"},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
@@ -243,7 +243,7 @@
     {"t":"Complete \"Buried Atrocities\"","s":"Lv 16 milestone · 2 levels away · opens on \"Buried Atrocities\" · 2 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 16–18"}
   ],
   "story/L14-q19-none-A": [
-    {"t":"Catch up: level Heart Gore 1 → 5","s":"5 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 13–14"},
+    {"t":"Catch up: level Heart Gore 1 → 5","s":"5 pts · 7 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 13–14"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -285,7 +285,7 @@
     {"t":"Complete \"Buried Atrocities\"","s":"Lv 16 milestone · 1 level away · opens on \"Buried Atrocities\" · 1 quest ahead","c":"tag \"Later\"","f":"later"}
   ],
   "story/L15-q20-none-A": [
-    {"t":"Catch up: level Heart Gore 1 → 5","s":"5 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
+    {"t":"Catch up: level Heart Gore 1 → 5","s":"5 pts · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},

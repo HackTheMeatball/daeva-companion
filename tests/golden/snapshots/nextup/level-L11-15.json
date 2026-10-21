@@ -40,7 +40,7 @@
     {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · 2 levels away · opens on \"Urgent Pursuit\" · 3 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "level/L11-q14-none-A": [
-    {"t":"Catch up: level Heart Gore 1 → 4","s":"3 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 10–12"},
+    {"t":"Catch up: level Heart Gore 1 → 4","s":"3 pts · 6 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 10–12"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Go to the Temporary Investigation Base talk to Niror","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk : Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
@@ -51,7 +51,7 @@
     {"t":"Catch up: level Ambush 1 → 4","s":"3 pts · inferred","c":""}
   ],
   "level/L11-q14-none-B": [
-    {"t":"Catch up: level Heart Gore 1 → 4","s":"3 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 10–12"},
+    {"t":"Catch up: level Heart Gore 1 → 4","s":"3 pts · 6 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 10–12"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Go to the Temporary Investigation Base talk to Niror","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk : Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
@@ -162,7 +162,7 @@
     {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · 1 level away · opens on \"Urgent Pursuit\" · 1 quest ahead","c":"tag \"Later\"","f":"later"}
   ],
   "level/L12-q16-none-A": [
-    {"t":"Catch up: level Heart Gore 1 → 4","s":"3 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 10–12"},
+    {"t":"Catch up: level Heart Gore 1 → 4","s":"3 pts · 6 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 10–12"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Meet Baba at Quai Campsite go inside","Find the broker's associate go to Barvir ( Kibelisk : Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
@@ -174,7 +174,7 @@
     {"t":"Catch up: level Ambush 1 → 4","s":"3 pts · inferred","c":""}
   ],
   "level/L12-q16-none-B": [
-    {"t":"Catch up: level Heart Gore 1 → 4","s":"3 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 10–12"},
+    {"t":"Catch up: level Heart Gore 1 → 4","s":"3 pts · 6 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 10–12"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Meet Baba at Quai Campsite go inside","Find the broker's associate go to Barvir ( Kibelisk : Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
@@ -186,7 +186,7 @@
     {"t":"Catch up: level Ambush 1 → 4","s":"3 pts · inferred","c":""}
   ],
   "level/L12-q16-rnd1p50-A": [
-    {"t":"Catch up: level Quick Slice 1 → 4","s":"3 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 10–12"},
+    {"t":"Catch up: level Quick Slice 1 → 4","s":"3 pts · 2 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 10–12"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Meet Baba at Quai Campsite go inside","Find the broker's associate go to Barvir ( Kibelisk : Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
     {"t":"Clear Dusk Pit","s":"Calderon Canyon (near your story step) · Kibelisk : Quai Campsite · Lv 10–14 · 7/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Quai Campsite is 200 m away · 6 open at your level"},
@@ -196,7 +196,7 @@
     {"t":"Buy Shadowstrike 5 → 6","s":"Needs Lv 13 · 1 level away · inferred","c":"tag \"Later\"","f":"later"}
   ],
   "level/L12-q16-rnd1p50-B": [
-    {"t":"Catch up: level Quick Slice 1 → 4","s":"3 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 10–12"},
+    {"t":"Catch up: level Quick Slice 1 → 4","s":"3 pts · 2 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 10–12"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Meet Baba at Quai Campsite go inside","Find the broker's associate go to Barvir ( Kibelisk : Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
     {"t":"Clear Dusk Pit","s":"Calderon Canyon (near your story step) · Kibelisk : Quai Campsite · Lv 10–14 · 7/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Quai Campsite is 200 m away · 6 open at your level"},
@@ -292,7 +292,7 @@
     {"t":"Buy Impact Hit 1 → 2","s":"Needs Lv 15 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 15"}
   ],
   "level/L13-q18-none-A": [
-    {"t":"Catch up: level Heart Gore 1 → 5","s":"5 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 13–14"},
+    {"t":"Catch up: level Heart Gore 1 → 5","s":"5 pts · 6 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 13–14"},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
@@ -305,7 +305,7 @@
     {"t":"Catch up: level Ambush 1 → 4","s":"3 pts · inferred","c":""}
   ],
   "level/L13-q18-none-B": [
-    {"t":"Catch up: level Heart Gore 1 → 5","s":"5 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 13–14"},
+    {"t":"Catch up: level Heart Gore 1 → 5","s":"5 pts · 6 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 13–14"},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
@@ -318,7 +318,7 @@
     {"t":"Catch up: level Ambush 1 → 4","s":"3 pts · inferred","c":""}
   ],
   "level/L13-q18-rnd1p50-A": [
-    {"t":"Catch up: level Quick Slice 1 → 3","s":"2 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 13–14"},
+    {"t":"Catch up: level Quick Slice 1 → 3","s":"2 pts · 2 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 13–14"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Story: Cemetery Cleanup","s":"0/3 objectives · then Back on the Scent","c":"primary \"Turned in\" story","b":"Lv 13–14","o":["Help the gravekeeper with chores defeat Vampire Vivel defeat Rafflesia Kibelisk : Gravekeeper Camp","Investigate the Graverobber Den retrieve the items stolen by graverobbers (Kibelisk: Gravekeeper Camp)","Turn in Tagar (Gravekeeper), Gravekeeper Camp"]},
     {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery (near your story step) · Kibelisk : Neglected Crematorium · Lv 10–14 · 7/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 6 open at your level"},
@@ -328,7 +328,7 @@
     {"t":"Buy Flash Slice 3 → 4","s":"Needs Lv 14 · 1 level away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L13-q18-rnd1p50-B": [
-    {"t":"Catch up: level Quick Slice 1 → 3","s":"2 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 13–14"},
+    {"t":"Catch up: level Quick Slice 1 → 3","s":"2 pts · 2 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 13–14"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Story: Cemetery Cleanup","s":"0/3 objectives · then Back on the Scent","c":"primary \"Turned in\" story","b":"Lv 13–14","o":["Help the gravekeeper with chores defeat Vampire Vivel defeat Rafflesia Kibelisk : Gravekeeper Camp","Investigate the Graverobber Den retrieve the items stolen by graverobbers (Kibelisk: Gravekeeper Camp)","Turn in Tagar (Gravekeeper), Gravekeeper Camp"]},
     {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery (near your story step) · Kibelisk : Neglected Crematorium · Lv 10–14 · 7/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 6 open at your level"},
@@ -421,7 +421,7 @@
     {"t":"Complete \"Buried Atrocities\"","s":"Lv 16 milestone · 2 levels away · opens on \"Buried Atrocities\" · 2 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 16–18"}
   ],
   "level/L14-q19-none-A": [
-    {"t":"Catch up: level Heart Gore 1 → 5","s":"5 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 13–14"},
+    {"t":"Catch up: level Heart Gore 1 → 5","s":"5 pts · 7 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 13–14"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -434,7 +434,7 @@
     {"t":"Catch up: level Ambush 1 → 5","s":"5 pts · inferred","c":""}
   ],
   "level/L14-q19-none-B": [
-    {"t":"Catch up: level Heart Gore 1 → 5","s":"5 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 13–14"},
+    {"t":"Catch up: level Heart Gore 1 → 5","s":"5 pts · 7 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 13–14"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -447,7 +447,7 @@
     {"t":"Catch up: level Ambush 1 → 5","s":"5 pts · inferred","c":""}
   ],
   "level/L14-q19-rnd1p50-A": [
-    {"t":"Catch up: level Quick Slice 1 → 4","s":"3 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 13–14"},
+    {"t":"Catch up: level Quick Slice 1 → 4","s":"3 pts · 2 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 13–14"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Story: Back on the Scent","s":"0/2 objectives · then Dead Men Tell No Tales","c":"primary \"Turned in\" story","b":"Lv 13–14","o":["Clear the path to the crematorium defeat Lost Specter defeat Ancient Revenant Knight investigate Brok's traces on the corpse Kibelisk : Neglected Crematorium","Turn in Kolina (Gravekeeper's Assistant), Neglected Crematorium"]},
     {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery (near your story step) · Kibelisk : Neglected Crematorium · Lv 10–14 · 7/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 6 open at your level"},
@@ -457,7 +457,7 @@
     {"t":"Buy Savage Roar 6 → 7","s":"Needs Lv 16 · 2 levels away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 16–18"}
   ],
   "level/L14-q19-rnd1p50-B": [
-    {"t":"Catch up: level Quick Slice 1 → 4","s":"3 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 13–14"},
+    {"t":"Catch up: level Quick Slice 1 → 4","s":"3 pts · 2 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 13–14"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Story: Back on the Scent","s":"0/2 objectives · then Dead Men Tell No Tales","c":"primary \"Turned in\" story","b":"Lv 13–14","o":["Clear the path to the crematorium defeat Lost Specter defeat Ancient Revenant Knight investigate Brok's traces on the corpse Kibelisk : Neglected Crematorium","Turn in Kolina (Gravekeeper's Assistant), Neglected Crematorium"]},
     {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery (near your story step) · Kibelisk : Neglected Crematorium · Lv 10–14 · 7/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 6 open at your level"},
@@ -553,7 +553,7 @@
     {"t":"Complete \"Buried Atrocities\"","s":"Lv 16 milestone · 1 level away · opens on \"Buried Atrocities\" · 1 quest ahead","c":"tag \"Later\"","f":"later"}
   ],
   "level/L15-q20-none-A": [
-    {"t":"Catch up: level Heart Gore 1 → 5","s":"5 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
+    {"t":"Catch up: level Heart Gore 1 → 5","s":"5 pts · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -566,7 +566,7 @@
     {"t":"Catch up: level Ambush 1 → 5","s":"5 pts · inferred","c":""}
   ],
   "level/L15-q20-none-B": [
-    {"t":"Catch up: level Heart Gore 1 → 5","s":"5 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
+    {"t":"Catch up: level Heart Gore 1 → 5","s":"5 pts · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -579,7 +579,7 @@
     {"t":"Catch up: level Ambush 1 → 5","s":"5 pts · inferred","c":""}
   ],
   "level/L15-q20-rnd1p50-A": [
-    {"t":"Catch up: level Quick Slice 1 → 5","s":"5 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
+    {"t":"Catch up: level Quick Slice 1 → 5","s":"5 pts · 2 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Story: Dead Men Tell No Tales","s":"0/2 objectives · then Buried Atrocities","c":"primary \"Turned in\" story","b":"Lv 15","o":["Clear nearby threats defeat Evil Black Soul defeat Grudge Bearing Warrior Kibelisk : Neglected Crematorium","Turn in Ulgorn, Crypt"]},
     {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery (near your story step) · Kibelisk : Neglected Crematorium · Lv 10–14 · 7/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 11 open at your level"},
@@ -589,7 +589,7 @@
     {"t":"Buy Shadowstrike 6 → 7","s":"Needs Lv 16 · 1 level away · inferred","c":"tag \"Later\"","f":"later"}
   ],
   "level/L15-q20-rnd1p50-B": [
-    {"t":"Catch up: level Quick Slice 1 → 5","s":"5 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
+    {"t":"Catch up: level Quick Slice 1 → 5","s":"5 pts · 2 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 15"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Story: Dead Men Tell No Tales","s":"0/2 objectives · then Buried Atrocities","c":"primary \"Turned in\" story","b":"Lv 15","o":["Clear nearby threats defeat Evil Black Soul defeat Grudge Bearing Warrior Kibelisk : Neglected Crematorium","Turn in Ulgorn, Crypt"]},
     {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery (near your story step) · Kibelisk : Neglected Crematorium · Lv 10–14 · 7/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 11 open at your level"},

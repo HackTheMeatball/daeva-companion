@@ -7,7 +7,7 @@
     {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 4 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "random/L06-q37-none-B-stfull": [
-    {"t":"Catch up: level Heart Gore 1 → 2","s":"1 pt · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 6–8"},
+    {"t":"Catch up: level Heart Gore 1 → 2","s":"1 pt · 3 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 6–8"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: Finding Stolen Relics","s":"Needs Lv 24: you're 6. Level up first.","c":"","b":"Lv 6–8"},
     {"t":"Catch up: level Savage Roar 1 → 3","s":"2 pts · inferred","c":""},
@@ -46,7 +46,7 @@
     {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 4 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "random/L06-q78-none-A-stfull": [
-    {"t":"Catch up: level Heart Gore 1 → 2","s":"1 pt · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 6–8"},
+    {"t":"Catch up: level Heart Gore 1 → 2","s":"1 pt · 3 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 6–8"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: Chief of the Black Claw","s":"Needs Lv 42: you're 6. Level up first.","c":"","b":"Lv 6–8"},
     {"t":"Catch up: level Savage Roar 1 → 3","s":"2 pts · inferred","c":""},
@@ -56,7 +56,7 @@
     {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 5 levels away · inferred","c":"tag \"Later\"","f":"later"}
   ],
   "random/L06-q83-all-B-sppts": [
-    {"t":"Catch up: level Heart Gore 1 → 2","s":"1 pt · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 6–8"},
+    {"t":"Catch up: level Heart Gore 1 → 2","s":"1 pt · 7 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 6–8"},
     {"t":"Story: Zikel's Core","s":"Needs Lv 45: you're 6. Level up first.","c":"","bd":"Bind Outskirts Stall on the way 93 m from Nemon bind:kib:outskirts-stall"},
     {"t":"Catch up: level Savage Roar 1 → 3","s":"2 pts · inferred","c":""},
     {"t":"Catch up: level Quick Slice 1 → 3","s":"2 pts · inferred","c":""},
@@ -66,7 +66,7 @@
     {"t":"Buy Assault Stance 1 → 2","s":"Needs Lv 13 · 7 levels away","c":"tag \"Later\"","f":"later","b":"Lv 13–14"}
   ],
   "random/L07-q09-none-A": [
-    {"t":"Catch up: level Heart Gore 1 → 2","s":"1 pt · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 6–8"},
+    {"t":"Catch up: level Heart Gore 1 → 2","s":"1 pt · 5 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 6–8"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: The Longest Night","s":"Needs Lv 9: you're 7. Level up first.","c":"","b":"Lv 6–8"},
     {"t":"Catch up: level Savage Roar 1 → 3","s":"2 pts · inferred","c":""},
@@ -124,7 +124,7 @@
     {"t":"Story: Powder of Death","s":"Needs Lv 35: you're 7. Level up first.","c":""}
   ],
   "random/L07-q67-none-B-stready": [
-    {"t":"Catch up: level Heart Gore 1 → 2","s":"1 pt · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 6–8"},
+    {"t":"Catch up: level Heart Gore 1 → 2","s":"1 pt · 5 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 6–8"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: Lake of Confrontation","s":"Needs Lv 37: you're 7. Level up first.","c":"","b":"Lv 6–8"},
     {"t":"Catch up: level Savage Roar 1 → 3","s":"2 pts · inferred","c":""},
@@ -134,7 +134,7 @@
     {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "random/L07-q73-none-A": [
-    {"t":"Catch up: level Heart Gore 1 → 2","s":"1 pt · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 6–8"},
+    {"t":"Catch up: level Heart Gore 1 → 2","s":"1 pt · 5 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 6–8"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: Treatment","s":"Needs Lv 40: you're 7. Level up first.","c":"","b":"Lv 6–8"},
     {"t":"Catch up: level Savage Roar 1 → 3","s":"2 pts · inferred","c":""},
@@ -144,7 +144,7 @@
     {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "random/L07-q79-rnd130p80-A-sppts": [
-    {"t":"Catch up: level Heart Gore 1 → 3","s":"2 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 6–8"},
+    {"t":"Catch up: level Heart Gore 1 → 3","s":"2 pts · 6 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 6–8"},
     {"t":"Story: High Priest's Fafnite","s":"Needs Lv 43: you're 7. Level up first.","c":""},
     {"t":"Catch up: level Savage Roar 1 → 4","s":"3 pts · inferred","c":""},
     {"t":"Catch up: level Quick Slice 1 → 4","s":"3 pts · inferred","c":""},
@@ -154,7 +154,7 @@
     {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 4 levels away · inferred","c":"tag \"Later\"","f":"later"}
   ],
   "random/L07-qxx-rnd108p20-A-rqmix": [
-    {"t":"Catch up: level Heart Gore 1 → 2","s":"1 pt · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 6–8"},
+    {"t":"Catch up: level Heart Gore 1 → 2","s":"1 pt · 3 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 6–8"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest","b":"Lv 6–8"},
     {"t":"Catch up: level Quick Slice 1 → 3","s":"2 pts · inferred","c":""},
@@ -220,7 +220,7 @@
     {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L08-q61-rnd132p50-B-sppts": [
-    {"t":"Catch up: level Heart Gore 1 → 3","s":"2 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 6–8"},
+    {"t":"Catch up: level Heart Gore 1 → 3","s":"2 pts · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 6–8"},
     {"t":"Story: Enemy Territory","s":"Needs Lv 35: you're 8. Level up first.","c":"","bd":"Bind Steel Hammer Workcamp on the way 53 m from Mannikiki bind:kib:steel-hammer-workcamp"},
     {"t":"Catch up: level Savage Roar 1 → 4","s":"3 pts · inferred","c":""},
     {"t":"Catch up: level Quick Slice 1 → 4","s":"3 pts · inferred","c":""},
@@ -237,7 +237,7 @@
     {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 3 levels away · inferred","c":"tag \"Later\"","f":"later"}
   ],
   "random/L08-qxx-none-A-filters": [
-    {"t":"Catch up: level Heart Gore 1 → 2","s":"1 pt · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 6–8"},
+    {"t":"Catch up: level Heart Gore 1 → 2","s":"1 pt · 6 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 6–8"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest","b":"Lv 6–8"},
     {"t":"Catch up: level Savage Roar 1 → 3","s":"2 pts · inferred","c":""},
@@ -247,7 +247,7 @@
     {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 3 levels away · inferred","c":"tag \"Later\"","f":"later"}
   ],
   "random/L08-qxx-none-A-stfull": [
-    {"t":"Catch up: level Heart Gore 1 → 2","s":"1 pt · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 6–8"},
+    {"t":"Catch up: level Heart Gore 1 → 2","s":"1 pt · 6 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 6–8"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest","b":"Lv 6–8"},
     {"t":"Catch up: level Savage Roar 1 → 3","s":"2 pts · inferred","c":""},
@@ -289,7 +289,7 @@
     {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L09-q21-rnd117p20-B": [
-    {"t":"Catch up: level Heart Gore 1 → 2","s":"1 pt · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 9"},
+    {"t":"Catch up: level Heart Gore 1 → 2","s":"1 pt · 3 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 9"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: Buried Atrocities","s":"Needs Lv 16: you're 9. Level up first.","c":"","b":"Lv 9"},
     {"t":"Catch up: level Quick Slice 1 → 3","s":"2 pts · inferred","c":""},
@@ -320,7 +320,7 @@
     {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L09-q34-none-A-stwait": [
-    {"t":"Catch up: level Heart Gore 1 → 3","s":"2 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 9"},
+    {"t":"Catch up: level Heart Gore 1 → 3","s":"2 pts · 6 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 9"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: Disturbed Balance","s":"Needs Lv 22: you're 9. Level up first.","c":"","b":"Lv 9"},
     {"t":"Catch up: level Savage Roar 1 → 4","s":"3 pts · inferred","c":""},
@@ -330,10 +330,10 @@
     {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 2 levels away · inferred","c":"tag \"Later\"","f":"later"}
   ],
   "random/L09-q46-all-A-sppts": [
-    {"t":"Catch up: level Heart Gore 1 → 3","s":"2 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 9"},
+    {"t":"Catch up: level Heart Gore 1 → 3","s":"2 pts · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 9"},
     {"t":"Story: Contaminated Sacred Tree","s":"Needs Lv 30: you're 9. Level up first.","c":""},
     {"t":"Catch up: level Savage Roar 1 → 4","s":"3 pts · inferred","c":""},
-    {"t":"Catch up: level Quick Slice 1 → 4","s":"3 pts · then pick the specialty +50% Multi-Hit on hit inferred · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 4","s":"3 pts · then pick the specialty +50% Multi-Hit on hit · inferred","c":""},
     {"t":"Catch up: level Ambush 1 → 4","s":"3 pts · inferred","c":""},
     {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 2 levels away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 10–12"},
     {"t":"Buy Assault Stance 1 → 2","s":"Needs Lv 13 · 4 levels away","c":"tag \"Later\"","f":"later","b":"Lv 13–14"},
@@ -354,7 +354,7 @@
     {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L09-q57-none-B-rqmix": [
-    {"t":"Catch up: level Heart Gore 1 → 3","s":"2 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 9"},
+    {"t":"Catch up: level Heart Gore 1 → 3","s":"2 pts · 6 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 9"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: Blood Monument","s":"Needs Lv 33: you're 9. Level up first.","c":"","b":"Lv 9"},
     {"t":"Catch up: level Savage Roar 1 → 4","s":"3 pts · inferred","c":""},
@@ -364,7 +364,7 @@
     {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 2 levels away · inferred","c":"tag \"Later\"","f":"later"}
   ],
   "random/L09-q59-none-A-dv": [
-    {"t":"Catch up: level Heart Gore 1 → 3","s":"2 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 9"},
+    {"t":"Catch up: level Heart Gore 1 → 3","s":"2 pts · 6 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 9"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: Visible Trap","s":"Needs Lv 34: you're 9. Level up first.","c":"","b":"Lv 9","bd":"Bind Shulak Street Stall on the way 35 m from Nemon bind:kib:shulak-street-stall"},
     {"t":"Catch up: level Savage Roar 1 → 4","s":"3 pts · inferred","c":""},
@@ -381,7 +381,7 @@
     {"t":"Extract gear you've replaced","s":"Lv 10 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L09-q63-rnd106p20-A-dv": [
-    {"t":"Catch up: level Heart Gore 1 → 3","s":"2 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 9"},
+    {"t":"Catch up: level Heart Gore 1 → 3","s":"2 pts · 6 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 9"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: Creion of Gribade","s":"Needs Lv 36: you're 9. Level up first.","c":"","b":"Lv 9"},
     {"t":"Catch up: level Savage Roar 1 → 4","s":"3 pts · inferred","c":""},
@@ -391,7 +391,7 @@
     {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 2 levels away · inferred","c":"tag \"Later\"","f":"later"}
   ],
   "random/L09-q67-rnd113p20-B": [
-    {"t":"Catch up: level Heart Gore 1 → 2","s":"1 pt · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 9"},
+    {"t":"Catch up: level Heart Gore 1 → 2","s":"1 pt · 3 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 9"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: Lake of Confrontation","s":"Needs Lv 37: you're 9. Level up first.","c":"","b":"Lv 9"},
     {"t":"Catch up: level Savage Roar 1 → 3","s":"2 pts · inferred","c":""},
@@ -401,7 +401,7 @@
     {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 2 levels away · inferred","c":"tag \"Later\"","f":"later"}
   ],
   "random/L09-q76-none-B": [
-    {"t":"Catch up: level Heart Gore 1 → 3","s":"2 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 9"},
+    {"t":"Catch up: level Heart Gore 1 → 3","s":"2 pts · 6 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 9"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: Daybreak Society Rescue Operation","s":"Needs Lv 41: you're 9. Level up first.","c":"","b":"Lv 9"},
     {"t":"Catch up: level Savage Roar 1 → 4","s":"3 pts · inferred","c":""},
@@ -411,7 +411,7 @@
     {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 2 levels away · inferred","c":"tag \"Later\"","f":"later"}
   ],
   "random/L09-q80-none-B": [
-    {"t":"Catch up: level Heart Gore 1 → 3","s":"2 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 9"},
+    {"t":"Catch up: level Heart Gore 1 → 3","s":"2 pts · 6 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 9"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: The High Priest Awakens","s":"Needs Lv 44: you're 9. Level up first.","c":"","b":"Lv 9"},
     {"t":"Catch up: level Savage Roar 1 → 4","s":"3 pts · inferred","c":""},

@@ -46,7 +46,7 @@
     {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · 1 level away · opens on \"Urgent Pursuit\" · 1 quest ahead","c":"tag \"Later\"","f":"later"}
   ],
   "build/L12-q16-before-A-sppts": [
-    {"t":"Catch up: level Heart Gore 1 → 4","s":"3 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 10–12"},
+    {"t":"Catch up: level Heart Gore 1 → 4","s":"3 pts · 9 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 10–12"},
     {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside","Find the broker's associate go to Barvir ( Kibelisk : Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
     {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades"]},
     {"t":"Run Graverobber Den","s":"Crypt · Kibelisk : Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"},
@@ -129,7 +129,7 @@
     {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · 1 level away · opens on \"Urgent Pursuit\" · 1 quest ahead","c":"tag \"Later\"","f":"later"}
   ],
   "build/L12-q16-before-B-sppts": [
-    {"t":"Catch up: level Heart Gore 1 → 4","s":"3 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 10–12"},
+    {"t":"Catch up: level Heart Gore 1 → 4","s":"3 pts · 9 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 10–12"},
     {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside","Find the broker's associate go to Barvir ( Kibelisk : Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
     {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades"]},
     {"t":"Run Graverobber Den","s":"Crypt · Kibelisk : Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"},

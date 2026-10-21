@@ -1,6 +1,6 @@
 {
   "cleric/L30-q48-none-A": [
-    {"t":"Catch up: level Earth's Retribution 1 → 9","s":"17 pts · then pick the specialty +20% MP restored disputed","c":"primary \"Mark spent\" catchup","b":"Lv 30–31"},
+    {"t":"Catch up: level Earth's Retribution 1 → 9","s":"17 pts · then pick the specialty +20% MP restored disputed · 9 jumps left","c":"primary \"Mark spent\" catchup","b":"Lv 30–31"},
     {"t":"Vaizel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g30:0"},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
@@ -15,7 +15,7 @@
     {"t":"Catch up: level Judgment Thunder 1 → 9","s":"17 pts · then pick the specialty -20% MP consumed disputed","c":""}
   ],
   "cleric/L30-q48-none-B": [
-    {"t":"Catch up: level Earth's Retribution 1 → 9","s":"17 pts · then pick the specialty +20% MP restored disputed","c":"primary \"Mark spent\" catchup","b":"Lv 30–31"},
+    {"t":"Catch up: level Earth's Retribution 1 → 9","s":"17 pts · then pick the specialty +20% MP restored disputed · 9 jumps left","c":"primary \"Mark spent\" catchup","b":"Lv 30–31"},
     {"t":"Vaizel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g30:0"},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
