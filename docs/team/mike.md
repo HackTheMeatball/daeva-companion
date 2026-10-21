@@ -29,6 +29,7 @@ _From #114 "Health check (owner design, 2026-10-17 5:51 AM ET; replaces the plan
   - a red, cancelled or skipped Kickoff, Restart, Pipeline or Auto-merge run, a run that died twice, main CI red or not deployed;
   - tracker drift: `datasets/today` older than the newest merge or PR open, or any card, To-do or ack that doesn't match GitHub;
   - a held PR past MRG-09's limits: a person's `hold` whose condition (one from MRG-09's closed list, on the head) has been met for 30 min (ping the owner; Walter at 2 h), one with a free-text condition that is 2 h old (timed from its last `hold` labeled event) with no owner comment since (owner; Walter at 4 h), or one with no `HOLD:` comment 30 min after the label was added (Walter). Auto-merge's own holds are excluded;
+  - a deploy's owner "now" that doesn't hold up: read every Isaac "now" quoted on #114 for a deploy by its message id (fresh governance review's deploy-cadence OK, 2026-10-21 ~22:12Z; routed by the coordinator 22:06Z). The message's author must be the user, and its text must say "now" for that deploy. A mismatch gets a #221 row, and the coordinator tells Isaac the same hour. A deploy with neither a release tag nor a quoted "now" gets a row too;
   - anything else odd.
 
 ### HC-02
@@ -39,8 +40,9 @@ For each anomaly: first append one row to the **Stall log, issue #221** (re-read
 
 - **Release checks** (amends HC-02, HC-06 and HC-07's QUEUE IDLE check, no new id; batch-0.9 item 22, after 0.8.1 sat at 7 of 8 steps for about 17 h; Isaac, 2026-10-21 5:36 PM ET: "this shouldn't happen again"; routed by the coordinator 2026-10-21 21:38Z). Every health check:
   - (a) Item check: every planned item of each open release (the items its release issue lists) has a #114 queue line, and none sits held (a `held:` sub-line) or `[blocked]` for more than 2 h. The only exception is a line the latest Kickoff run says waits on an unmet owner OK ([DECISIONS 2026-10-19](../DECISIONS.md), owner-gated lines count as idle); a spec, input or queue hold never counts as that exception.
-  - (b) Release check, the backstop for what (a)'s list misses: an open release whose count of done items hasn't moved in 4 h while one of its items is still open.
-  - Each miss gets a #221 row, Kind `release-stall`, and goes to Walter and the coordinator.
+  - (b) Release check, the backstop for what (a)'s list misses: an open release whose count of done items (closed issues among those its release issue lists) hasn't moved in 4 h while one of its items is still open.
+  - The 2 h clock starts at the kickoff time on the item's `held:` line, or, for an item with no queue line or with no time on its line, at the first health check that saw it that way.
+  - One #221 row per stall, Kind `release-stall`, sent to Walter and the coordinator; later checks update that row's cells, never add another, until the item is building or the release moves. While it stays open, re-ping Walter and the coordinator at least every 2 h, so a long stall never goes quiet after the first flag.
 
 ### COM-19 check
 
