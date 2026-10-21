@@ -51,7 +51,7 @@ const ALLOW = {
 };
 
 /* the controls given a hit area in 0.1.6 (src/styles/app.css, "Pointer targets of at least 24 px") and before */
-const HIT = ['.tip', '.tipbtn', '#nowStar .q-act', '#gates li.qrow .q-act', '#nowStar a.q-pin','#stCard .st-lvctl button', '.modeseg button', '.sec .ns-pop', '.sd-close',
+const HIT = ['.tip', '.tipbtn', '#nowStar .q-act', '#gates li.qrow .q-act', '#nowStar a.q-pin','#stCard .st-lvctl button', '.fold-btn', '.sec .ns-pop', '.sd-close',
   '.zone-btn', '.ms-name', '.nsinfo', '#nowStar .ns-pin', '.trk-sum',
   '#nowStar .rq-wait > summary', '.jfilt-btn', '.jfilt-x', '.dvi', '#stCard .st-chg .st-pick',
   /* 0.6.1 F4 (#321 note 9): the Next up objective checkboxes (their label is the target) and the Dungeons "N traces" links */
@@ -74,7 +74,7 @@ async function load(p, state, mode) {
   else if (state) await writeSave(p, { ...state, mode }, { fresh: true });
   else await clearSave(p);
   await p.reload(); await p.waitForTimeout(400);
-  if (!state) await p.evaluate(m => { if (document.body.classList.contains('basic') !== (m === 'basic')) document.querySelector(`.modeseg [data-mode="${m}"]`).click(); }, mode);
+  /* one view (0.9 P21): mode is stored in the save but no longer read; both values open the same page */
   await p.waitForTimeout(150);
 }
 
@@ -233,6 +233,10 @@ async function load(p, state, mode) {
     const r = await p.evaluate(() => new Promise(res => {
       const box = e => { const b = e.getBoundingClientRect(); return { l: b.left, t: b.top, r: b.right, b: b.bottom }; };
       const hit = (a, b) => a.l < b.r - 0.5 && a.r > b.l + 0.5 && a.t < b.b - 0.5 && a.b > b.t + 0.5;
+      /* a control the chip covers is one you can see there: some point of the overlap shows the control (the chip has
+         pointer-events: none). One scrolled under the sticky level bar, where the chip floats, is hidden by the bar already */
+      const seen = (e, a, b) => { const l = Math.max(a.l, b.l), r = Math.min(a.r, b.r), t = Math.max(a.t, b.t), bt = Math.min(a.b, b.b);
+        return [[.5, .5], [.15, .15], [.85, .15], [.15, .85], [.85, .85]].some(([x, y]) => { const top = document.elementFromPoint(l + (r - l) * x, t + (bt - t) * y); return !!top && (e === top || e.contains(top)); }); };
       const out = { frames: 0, toastFrames: 0, chipFrames: 0, toastOver: 0, chipOver: [], chipOut: 0 };
       rewardToast('Lv 2: "Test quest" turned in', () => {});
       document.getElementById('lvlUpBig').click();
@@ -244,7 +248,7 @@ async function load(p, state, mode) {
         if (c) {
           out.chipFrames++; const cb = box(c);
           if (cb.l < -0.5 || cb.r > innerWidth + 0.5) out.chipOut++;
-          for (const e of document.querySelectorAll('#charCard, #tabBar, #rwToast, #lvlUpBig, #lvlNum, #lvlUp, #lvlDown, #lvlRange, button, input, select, a[href], summary')) { if (e.classList.contains('lvl-float') || e.offsetParent === null && e.id !== 'tabBar') continue; const b = box(e); if (b.r > b.l && b.b > b.t && hit(cb, b)) out.chipOver.push(e.id || e.className || e.tagName); }
+          for (const e of document.querySelectorAll('#charCard, #tabBar, #rwToast, #lvlUpBig, #lvlNum, #lvlUp, #lvlDown, #lvlRange, button, input, select, a[href], summary')) { if (e.classList.contains('lvl-float') || e.offsetParent === null && e.id !== 'tabBar') continue; const b = box(e); if (b.r > b.l && b.b > b.t && hit(cb, b) && seen(e, cb, b)) out.chipOver.push(e.id || e.className || e.tagName); }
         }
         if (performance.now() - t0 < 2200) requestAnimationFrame(tick); else res(out);
       };
@@ -411,7 +415,7 @@ async function load(p, state, mode) {
         const cs = getComputedStyle(e), fs = parseFloat(cs.fontSize), min = /Mono|monospace/.test(cs.fontFamily) ? 11 : 12;
         if (fs > 0 && fs < min - .01) /* 0 px: text deliberately not rendered (a folded cleared step) */ small.push((e.parentElement ? desc(e.parentElement) + ' > ' : '') + desc(e) + ' ' + fs);
       }
-      const tgt = [...document.querySelectorAll('.modeseg button, .numctl button')].filter(vis).map(e => [desc(e), e.getBoundingClientRect()])
+      const tgt = [...document.querySelectorAll('.fold-btn, .numctl button')].filter(vis).map(e => [desc(e), e.getBoundingClientRect()])
         .filter(([, b]) => b.width < 43.5 || b.height < 43.5).map(([d, b]) => d + ' ' + Math.round(b.width) + 'x' + Math.round(b.height));
       const first = document.querySelector('ul.story > li.st:not(:empty)');
       const line = first && getComputedStyle(first, '::before').content;
@@ -482,6 +486,8 @@ async function load(p, state, mode) {
     /* every card, the cleared ones too (hidden by "hide cleared cards"): at Lv 45 on "Forgotten Commander" the only ticked row
        of a shown card was g45's story line, which since E6 waits for that quest's turn-in (unticked), so check them all */
     await p.evaluate(() => document.querySelectorAll('#gates details.step').forEach(x => { x.open = true; x.hidden = false; }));
+    /* one view (0.9 P21): ticked rows sit in each step's "Done and optional" fold, steps past the next in "All steps"; open them all */
+    await p.evaluate(() => { state.open.allSteps = true; document.querySelectorAll('#gates .done-fold').forEach(b => { state.open[b.dataset.fkey] = true; }); update(); });
     await p.waitForTimeout(250);
     const r = await p.evaluate(() => {
       /* rendered rows only (a done milestone keeps its list collapsed even when open) */
@@ -562,10 +568,8 @@ async function load(p, state, mode) {
         out.n++; if ((cs.whiteSpace === 'nowrap' || cs.textOverflow !== 'clip' || right > card + 0.5 || t.scrollWidth > t.clientWidth) && out.wide.length < 3) out.wide.push(`${t.textContent} (${cs.whiteSpace}, ${cs.textOverflow}, right ${right} vs card ${card})`); };
       for (const q of ['', ...QUESTS.map(x => x[1])]) { char(state).quest = q; update(); fits(); }
       Object.assign(char(state).checks, { 'g6:0': true, 'g22:0': true, 'g32:dreams': true, 'g45:witness': true }); update(); fits();
-      out.mode = (document.querySelector('.modeseg [data-mode][aria-pressed="true"]') || {}).dataset?.mode;
       return out;
     }, FIG);
-    ok(`${W}px run is in ${mode} mode`, r.mode === mode, r.mode);
     ok(`Ascension label never clipped at ${W}px (touch, ${mode}, ${r.size} Figtree, wraps rather than cuts off): ${r.n} positions`, r.size === '12px' && r.font === 'loaded' && r.n === r.want && !r.wide.length, r);
     await ctx.close();
   }

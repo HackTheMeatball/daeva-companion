@@ -7,8 +7,7 @@
       "hide": ["(absent)",false],
       "open.g22": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L21-q31-before-A": {
     "in": "4a2e91b4c7e0",
@@ -18,8 +17,7 @@
       "hide": ["(absent)",false],
       "open.g22": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L21-q31-before-B": {
     "in": "7089b5362077",
@@ -29,8 +27,7 @@
       "hide": ["(absent)",false],
       "open.g22": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "level/L21-q31-lvonly-A": {
     "in": "4a2e91b4c7e0",
@@ -40,8 +37,7 @@
       "hide": ["(absent)",false],
       "open.g22": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L21-q31-lvonly-B": {
     "in": "7089b5362077",
@@ -51,8 +47,7 @@
       "hide": ["(absent)",false],
       "open.g22": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "level/L21-q31-none-A": {
     "in": "d7f37ab453e8",
@@ -71,8 +66,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L21-q31-none-B": {
     "in": "dc2b430c62a8",
@@ -91,8 +85,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "level/L21-q31-rnd1p50-A": {
     "in": "8c40b7a4b39b",
@@ -111,8 +104,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L21-q31-rnd1p50-B": {
     "in": "701304259a2c",
@@ -131,8 +123,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "level/L21-q31-rnd2p85-A": {
     "in": "96226521016b",
@@ -150,8 +141,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L21-q31-rnd2p85-B": {
     "in": "19bfad2e3a9c",
@@ -169,8 +159,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "level/L21-q32-before-A": {
     "in": "47e99fb852ee",
@@ -180,8 +169,7 @@
       "hide": ["(absent)",false],
       "open.g22": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L21-qxx-before-A": {
     "in": "96f4d8e25c37",
@@ -195,8 +183,7 @@
       "open.g22": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L22-q31-lvonly-A": {
     "in": "f6208812e2c2",
@@ -206,8 +193,7 @@
       "hide": ["(absent)",false],
       "open.g22": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L22-q34-before-A": {
     "in": "d7fc9502fc90",
@@ -217,8 +203,7 @@
       "hide": ["(absent)",false],
       "open.g22": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L22-q34-before-B": {
     "in": "7ad88a23c877",
@@ -228,8 +213,7 @@
       "hide": ["(absent)",false],
       "open.g22": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "level/L22-q34-lvonly-A": {
     "in": "d7fc9502fc90",
@@ -239,8 +223,7 @@
       "hide": ["(absent)",false],
       "open.g22": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L22-q34-lvonly-B": {
     "in": "7ad88a23c877",
@@ -250,8 +233,7 @@
       "hide": ["(absent)",false],
       "open.g22": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "level/L22-q34-none-A": {
     "in": "31c912482ce9",
@@ -270,8 +252,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L22-q34-none-B": {
     "in": "214efd106b8f",
@@ -290,8 +271,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "level/L22-q34-rnd1p50-A": {
     "in": "72411989c42c",
@@ -310,8 +290,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L22-q34-rnd1p50-B": {
     "in": "723247e072b6",
@@ -330,8 +309,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "level/L22-q34-rnd2p85-A": {
     "in": "ae3868adf67d",
@@ -349,8 +327,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L22-q34-rnd2p85-B": {
     "in": "0f16f091f3e8",
@@ -368,8 +345,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "level/L22-q35-before-A": {
     "in": "0d79f06b08c9",
@@ -379,8 +355,7 @@
       "hide": ["(absent)",false],
       "open.g22": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L22-qxx-before-A": {
     "in": "01887d5a9e1a",
@@ -394,8 +369,7 @@
       "open.g22": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L23-q31-lvonly-A": {
     "in": "a0bbb86aae61",
@@ -405,8 +379,7 @@
       "hide": ["(absent)",false],
       "open.g25": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L23-q34-before-A": {
     "in": "16496d7731de",
@@ -416,8 +389,7 @@
       "hide": ["(absent)",false],
       "open.g25": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L23-q34-before-B": {
     "in": "510582f660d5",
@@ -427,8 +399,7 @@
       "hide": ["(absent)",false],
       "open.g25": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "level/L23-q34-lvonly-A": {
     "in": "16496d7731de",
@@ -438,8 +409,7 @@
       "hide": ["(absent)",false],
       "open.g25": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L23-q34-lvonly-B": {
     "in": "510582f660d5",
@@ -449,8 +419,7 @@
       "hide": ["(absent)",false],
       "open.g25": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "level/L23-q34-none-A": {
     "in": "f2698f02c639",
@@ -470,8 +439,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L23-q34-none-B": {
     "in": "728281bf6472",
@@ -491,8 +459,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "level/L23-q34-rnd1p50-A": {
     "in": "fcea2b1feb74",
@@ -512,8 +479,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L23-q34-rnd1p50-B": {
     "in": "3c39d809979c",
@@ -533,8 +499,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "level/L23-q34-rnd2p85-A": {
     "in": "1a2cd4f188fc",
@@ -553,8 +518,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L23-q34-rnd2p85-B": {
     "in": "46ca88e5e7a1",
@@ -573,8 +537,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "level/L23-q35-before-A": {
     "in": "a001b535e777",
@@ -584,8 +547,7 @@
       "hide": ["(absent)",false],
       "open.g25": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L23-qxx-before-A": {
     "in": "a2ca89a9cc1a",
@@ -600,8 +562,7 @@
       "open.g25": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L24-q34-lvonly-A": {
     "in": "87065cc8aac9",
@@ -611,8 +572,7 @@
       "hide": ["(absent)",false],
       "open.g25": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L24-q37-before-A": {
     "in": "64111c3000ef",
@@ -622,8 +582,7 @@
       "hide": ["(absent)",false],
       "open.g25": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L24-q37-before-B": {
     "in": "ff88edb160af",
@@ -633,8 +592,7 @@
       "hide": ["(absent)",false],
       "open.g25": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "level/L24-q37-lvonly-A": {
     "in": "64111c3000ef",
@@ -644,8 +602,7 @@
       "hide": ["(absent)",false],
       "open.g25": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L24-q37-lvonly-B": {
     "in": "ff88edb160af",
@@ -655,8 +612,7 @@
       "hide": ["(absent)",false],
       "open.g25": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "level/L24-q37-none-A": {
     "in": "1d3f264d0940",
@@ -676,8 +632,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L24-q37-none-B": {
     "in": "f595b7fb49ed",
@@ -697,8 +652,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "level/L24-q37-rnd1p50-A": {
     "in": "f9b9dbcbea94",
@@ -718,8 +672,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L24-q37-rnd1p50-B": {
     "in": "7310a8c2f211",
@@ -739,8 +692,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "level/L24-q37-rnd2p85-A": {
     "in": "dd2a4f2ed0c8",
@@ -759,8 +711,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L24-q37-rnd2p85-B": {
     "in": "98902daac7a4",
@@ -779,8 +730,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "level/L24-q38-before-A": {
     "in": "f5bbf51dcacf",
@@ -790,8 +740,7 @@
       "hide": ["(absent)",false],
       "open.g25": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L24-qxx-before-A": {
     "in": "f927102fde0b",
@@ -806,8 +755,7 @@
       "open.g25": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L25-q36-lvonly-A": {
     "in": "1a27b604b8c9",
@@ -817,8 +765,7 @@
       "hide": ["(absent)",false],
       "open.g25": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L25-q39-before-A": {
     "in": "e9d3e556342a",
@@ -828,8 +775,7 @@
       "hide": ["(absent)",false],
       "open.g25": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L25-q39-before-B": {
     "in": "6531897f0f75",
@@ -839,8 +785,7 @@
       "hide": ["(absent)",false],
       "open.g25": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "level/L25-q39-lvonly-A": {
     "in": "e9d3e556342a",
@@ -850,8 +795,7 @@
       "hide": ["(absent)",false],
       "open.g25": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L25-q39-lvonly-B": {
     "in": "6531897f0f75",
@@ -861,8 +805,7 @@
       "hide": ["(absent)",false],
       "open.g25": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "level/L25-q39-none-A": {
     "in": "eba1660c2ec0",
@@ -882,8 +825,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L25-q39-none-B": {
     "in": "8c19e7c6d46f",
@@ -903,8 +845,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "level/L25-q39-rnd1p50-A": {
     "in": "30b277edb3dd",
@@ -924,8 +865,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L25-q39-rnd1p50-B": {
     "in": "09575c9c489f",
@@ -945,8 +885,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "level/L25-q39-rnd2p85-A": {
     "in": "4ab2cd1495db",
@@ -965,8 +904,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L25-q39-rnd2p85-B": {
     "in": "017cb9d37651",
@@ -985,8 +923,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "level/L25-q40-before-A": {
     "in": "0492c32dd738",
@@ -996,8 +933,7 @@
       "hide": ["(absent)",false],
       "open.g25": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "level/L25-qxx-before-A": {
     "in": "e96518b36dd1",
@@ -1012,7 +948,6 @@
       "open.g25": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   }
 }

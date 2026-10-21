@@ -18,8 +18,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L26-q40-objs-A": {
     "in": "447c0c98f3df",
@@ -40,8 +39,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L26-q41-none-A": {
     "in": "d9804e6ea517",
@@ -62,8 +60,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L26-q41-objs-A": {
     "in": "87f99c2e1428",
@@ -84,8 +81,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L27-q42-none-A": {
     "in": "a351b0c5135f",
@@ -106,8 +102,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L27-q42-objs-A": {
     "in": "de7b08c9b66f",
@@ -128,8 +123,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L27-q43-none-A": {
     "in": "c001aeea4d8e",
@@ -150,8 +144,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L27-q43-objs-A": {
     "in": "99fe9758232c",
@@ -172,8 +165,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L29-q44-none-A": {
     "in": "e840990564e5",
@@ -196,8 +188,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L29-q44-objs-A": {
     "in": "6c29dc5b944c",
@@ -220,8 +211,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L30-q45-none-A": {
     "in": "41c0f74058eb",
@@ -244,8 +234,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L30-q45-objs-A": {
     "in": "ab5f77705683",
@@ -268,8 +257,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L30-q46-none-A": {
     "in": "6f2494d99b45",
@@ -292,8 +280,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L30-q46-objs-A": {
     "in": "4db8ffbc8719",
@@ -316,8 +303,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L30-q47-none-A": {
     "in": "307f7858473d",
@@ -340,8 +326,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L30-q47-objs-A": {
     "in": "15514e6d3240",
@@ -364,8 +349,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L30-q48-none-A": {
     "in": "479878530b9e",
@@ -388,8 +372,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "bind/L30-q48-objs-A": {
     "in": "1934299b57b7",
@@ -412,7 +395,6 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   }
 }

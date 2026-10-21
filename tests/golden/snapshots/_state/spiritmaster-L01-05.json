@@ -5,8 +5,7 @@
       "areaLv": ["(absent)","10"],
       "hide": ["(absent)",false],
       "open.g6": ["(absent)",true]
-    },
-    "mode": "advanced"
+    }
   },
   "spiritmaster/L01-qxx-none-B": {
     "in": "84f11ba17faa",
@@ -14,7 +13,6 @@
       "areaLv": ["(absent)","10"],
       "hide": ["(absent)",false],
       "open.g6": ["(absent)",true]
-    },
-    "mode": "basic"
+    }
   }
 }

@@ -22,9 +22,9 @@ function renderStigma() {
   const ico = n => `<span class="dvico st-ico${STIGMA_ICON[n] ? " art" : ""}">${stIco(n, "st-img") || n.split(" ").map(w => w[0]).join("").slice(0, 2)}</span>`;
   const bonusAt = L => [5, 10, 15, 20].find(t => t >= L);
   const toNext = up ? plan.filter(s => s.x === up.x && s.L <= bonusAt(up.L)).reduce((t, s) => t + s.cost, 0) : 0;
-  let hero = "", thenRow = "";
+  let hero = "";
   const fromLv0 = shardsFromLv(lv), reach = need => { for (let L = lv + 1; L <= 45; L++) if (sh + shardsFromLv(L) - fromLv0 >= need) return L; return null; };
-  /* One row format for "after this" (Basic) and Coming up (Advanced): −N = shards short, counting everything above it. */
+  /* Coming up's row: −N = shards short, counting everything above it. */
   const soonRow = (st, need) => { const ok = need <= sh, at = ok ? null : reach(need);
     return `<li title="${st.cost} shard${st.cost === 1 ? "" : "s"} · ${ok ? "shards covered" : `${need - sh} short now`}"><span class="sname">${stIco(st.x.name, "st-mini")}${st.x.name} <span class="lvarr">${st.L - 1} → ${st.L}</span></span><span class="slv${ok ? " now" : ""}">${ok ? "now" : at ? "Lv " + at : "later"}</span><span class="sst ${ok ? "ok" : "short"}">${ok ? "✓" : `−${need - sh}`}</span></li>`; };
   const learnCost = canEquip && !(char(state).stLv || {})[next.name] ? 1 : 0;
@@ -38,14 +38,10 @@ function renderStigma() {
     const blocked = learnCost > sh, at1 = blocked ? reach(1) : null;
     hero = `<div class="sphero st-hero ${blocked ? "short" : "ok"}"><div class="dvhead">${ico(next.name)}<div class="dvtext"><span class="spname">${stOther === next.n ? pick : next.name}</span><small title="${next.note}">Slot ${next.n} · ${blocked ? `needs 1 shard${at1 ? ` · +1 at Lv ${at1}` : ""}` : "ready to equip"}${next.name !== next.plan ? ` · plan: ${next.plan}` : ""}${stOther === next.n ? "" : ` · ${pick}`}</small></div></div>` +
       `<div class="buyrow"><button type="button" class="dvbuy" data-sttick="${next.k}"${blocked ? " disabled" : ""}>${blocked ? "Needs 1 shard" : `Mark equipped · ${learnCost ? "−1 shard" : `slot ${next.n}`}`}</button></div></div>`;
-    if (up) thenRow = soonRow(up, learnCost + up.cost);
   } else if (up) {
     const ok = sh >= up.cost, b = bonusAt(up.L);
     hero = `<div class="sphero st-hero ${ok ? "ok" : "short"}"><div class="dvhead">${ico(up.x.name)}<div class="dvtext"><span class="spname">${up.x.name} <span class="lvarr">${up.L - 1} → ${up.L}</span></span><small>${up.cost} shard${up.cost === 1 ? "" : "s"}${b ? ` · ${toNext} to the Lv ${b} bonus` : ""}</small></div></div>` +
       `<div class="buyrow">${ok ? `<button type="button" class="dvbuy" data-stup="1">Mark upgraded · ${up.cost} shard${up.cost === 1 ? "" : "s"}</button>` : `<div class="buystat">Need ${up.cost - sh} more shard${up.cost - sh === 1 ? "" : "s"} ${stTip()}</div>`}</div></div>`;
-    const nx = plan[1];
-    if (nx) thenRow = soonRow(nx, up.cost + nx.cost);
-    else if (next) thenRow = `<li><span class="sname">${stIco(next.name, "st-mini")}${next.name}</span><span class="slv">Lv ${next.lv}</span><span class="sst"></span></li>`;
   } else if (next) {
     const shut = !slotLevelMet(ev, next);
     hero = `<div class="sphero st-hero lock"><div class="dvhead">${ico(next.name)}<div class="dvtext"><span class="spname">${next.name}</span><small>Slot ${next.n} · ${shut ? `opens Lv ${next.lv}` : "Stigmas not unlocked yet"}</small></div></div>` +
@@ -69,7 +65,7 @@ function renderStigma() {
   const soon = restSteps.map(st => { cum += st.cost; return soonRow(st, cum); }).join("");
   const nextSlot = !canEquip && next ? `<li class="st-slotrow"><span class="sname">${stIco(next.name, "st-mini")}${next.name}</span><span class="slv" title="Stigma slot ${next.n} opens">Lv ${next.lv}</span><span class="sst"></span></li>` : "";
   /* setHTML (0.9 P30): fadeScroll below re-applies its fade on every pass; nothing else changes the body after the write */
-  setHTML(body, `<div class="ptbig st-big"><b>${sh}</b><span>shard${sh === 1 ? "" : "s"} to spend</span></div>` + hero + (thenRow ? `<ul class="soonlist st-then">${thenRow}</ul>` : "") +
+  setHTML(body, `<div class="ptbig st-big"><b>${sh}</b><span>shard${sh === 1 ? "" : "s"} to spend</span></div>` + hero +
     (soon || nextSlot ? `<div id="stAfter"><div class="dvbh"><div class="dvbh-top"><span class="dvbh-k">Coming up</span><span class="dvbh-n">${spentNow} of ${planTotal} spent</span></div><span class="dvbh-bar"><span style="width:${planTotal ? spentNow / planTotal * 100 : 0}%"></span></span></div><ul class="soonlist" id="stSoon">${nextSlot}${soon}</ul></div>` : ""));
   card.classList.toggle("act", (!!canEquip && learnCost <= sh) || (!canEquip && !!up && sh >= up.cost));
   fadeScroll(document.getElementById("stSoon"));

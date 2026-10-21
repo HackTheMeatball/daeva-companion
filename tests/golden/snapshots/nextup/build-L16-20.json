@@ -51,13 +51,13 @@
   ],
   "build/L20-q28-before-A-sppts": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0"},
     {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
     {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk : Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
-    {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"}
+    {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"},
+    {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+    {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""}
   ],
   "build/L20-q28-before-A-stfull": [
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Lv 20–21"},
@@ -95,56 +95,88 @@
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0"},
     {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
     {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk : Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
-    {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"}
+    {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"},
+    {"t":"Buy Ambush 7 → 8","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Exploit Weakness 6 → 7","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"}
   ],
   "build/L20-q28-before-B-dv": [
     {"t":"Buy Insignia Explosion on Nezekan","s":"5 of your 9 crystals","c":"primary \"Acquired\" board"},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0"},
     {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
     {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk : Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
-    {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"}
+    {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"},
+    {"t":"Buy Ambush 7 → 8","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Exploit Weakness 6 → 7","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 1 level away · single source","c":"tag \"Later\"","f":"later"}
   ],
   "build/L20-q28-before-B-filters": [
-    {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0"},
+    {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Lv 20–21"},
     {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
     {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk : Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
-    {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"}
+    {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"},
+    {"t":"Buy Ambush 7 → 8","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Exploit Weakness 6 → 7","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 1 level away · single source","c":"tag \"Later\"","f":"later"},
+    {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · 2 levels away · opens on \"Daeva in a Dream\" · 5 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 22–24"}
   ],
   "build/L20-q28-before-B-objs": [
-    {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0"},
+    {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Lv 20–21"},
     {"t":"Story: Crossroad","s":"3/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Rendezvous at the Watcher's Tent talk to Nemon","Defeat the Balaur guarding the lake clear the Balaur Skirmishers","Retrieve the hidden artifact open the right chest in the pond (decoys exist)","+1 more after these"]},
     {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk : Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
-    {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"}
+    {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"},
+    {"t":"Buy Ambush 7 → 8","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Exploit Weakness 6 → 7","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 1 level away · single source","c":"tag \"Later\"","f":"later"},
+    {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · 2 levels away · opens on \"Daeva in a Dream\" · 5 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 22–24"}
   ],
   "build/L20-q28-before-B-rqmix": [
-    {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0"},
+    {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Lv 20–21"},
     {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
     {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk : Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
-    {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"}
+    {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"},
+    {"t":"Buy Ambush 7 → 8","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Exploit Weakness 6 → 7","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 1 level away · single source","c":"tag \"Later\"","f":"later"},
+    {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · 2 levels away · opens on \"Daeva in a Dream\" · 5 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 22–24"}
   ],
   "build/L20-q28-before-B-sppts": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0"},
     {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
     {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk : Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
-    {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"}
+    {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"},
+    {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+    {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""}
   ],
   "build/L20-q28-before-B-stfull": [
-    {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0"},
+    {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Lv 20–21"},
     {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
     {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk : Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
-    {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"}
+    {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"},
+    {"t":"Buy Ambush 7 → 8","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Exploit Weakness 6 → 7","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 1 level away · single source","c":"tag \"Later\"","f":"later"},
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 10 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "build/L20-q28-before-B-stready": [
-    {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0"},
+    {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Lv 20–21"},
     {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
     {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk : Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
-    {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"}
+    {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"},
+    {"t":"Buy Ambush 7 → 8","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Exploit Weakness 6 → 7","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 1 level away · single source","c":"tag \"Later\"","f":"later"},
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 10 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "build/L20-q28-before-B-stwait": [
-    {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0"},
+    {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Lv 20–21"},
     {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
     {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk : Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
-    {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"}
+    {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"},
+    {"t":"Buy Ambush 7 → 8","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Exploit Weakness 6 → 7","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 1 level away · single source","c":"tag \"Later\"","f":"later"},
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 10 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ]
 }

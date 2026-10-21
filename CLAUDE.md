@@ -82,5 +82,6 @@ comes first) a change may break existing saves when that gives a better design. 
   exception (owner, 2026-10-17, DECISIONS `owner-ok-autolevel`): "Auto level-up OK: verified 100% EXP quests only,
   undoable". Ticking a story quest with `levelsUp: { from }` (sourced) at Lv from raises the level by one; unticking or Undo lowers it.
 - The guide must be correct and complete to Lv 45 without the user having to report problems.
-- Basic mode = essentials only. The site is the only build (owner, 2026-10-18: "the site is the only build"); the
+- One view: essentials open, detail in folds that remember (owner, 2026-10-20: "make sure that's reviewed to see if it
+  really needs to exist or we can just make one better version, so we don't have to maintain two views"). The site is the only build (owner, 2026-10-18: "the site is the only build"); the
   claude.ai artifact no longer exists (owner, 2026-10-20: "Not only is it frozen it's deleted. No longer exists. It's just the app now.").

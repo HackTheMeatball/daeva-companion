@@ -1,6 +1,6 @@
 /* The AION 2 Next up kinds (0.4 P5a, docs/design/0.4-engine-contract.md §2 `nowRenderers`; moved verbatim from
    src/cards/nextup.js and src/cards/ahead.js). The engine's Next up card lays out every card (icon, title, subline, the
-   act button, Basic / Advanced, the cap, the pop-out) and draws its own kinds (milestone steps, the story card, the
+   act button, the cap, the pop-out) and draws its own kinds (milestone steps, the story card, the
    milestone Later card); for a card whose kind is listed here it calls the pack's renderer, which returns the same view
    object nowCard returns (ico, t, sub, btn, act, tag, bar, info, extra, later, done, queue, row; html in the strings).
 
@@ -12,7 +12,7 @@
    - story.row(card, ctx) → html: a row inside the story card under its text, above its action (the "Bind X" row or the
      travel line), or ""
    - now.card(html) → html: a whole Next up card's markup, last (0.6.2 P21: the Kibelisk crest on its first mention)
-   - now.opts(ctx) → html: the pack's controls in the Advanced options row under the header ("Prefer running"), or ""
+   - now.opts(ctx) → html: the pack's controls in the options row under the header ("Prefer running"), or ""
    - now.items(html) → html: a card's text with the pack's inline item icons on its item links (title, how, info)
    - now.act(act, ctx) → true when handled: a data-now action (called before the engine's; false = the engine goes on)
    - now.click(e, ctx) → true when handled: a click on the pack's own controls inside Next up (the regional quests list)
@@ -24,7 +24,7 @@ import { char } from "../../../core/state.js";
 import { chainsOn, objIdxOf, openOf } from "../../../core/requirements.js";
 import { QUEST_STEPS } from "../data/story.js";
 import { MAP_ICO, rqTicked, snoozeToggle } from "../../../cards/milestones.js";
-import { capFirst, isBasic, renderNow } from "../../../cards/nextup.js";
+import { capFirst, renderNow } from "../../../cards/nextup.js";
 import { travelAdviceOn } from "../nextup.js";
 import { keyHint } from "../hotkeys.js";
 import { kibMark, rqStIco } from "./shared.js";
@@ -89,7 +89,7 @@ function rqExtraHTML(a) {
   /* Snoozed ("Not in game yet", counted in the subline): one compact row with their names and one control that shows them again. */
   const zRow = a.snz.length ? `<li class="qg rq-aux"><span class="rq-auxt" title="Not in game yet: hidden until your next Level up">${a.snz.map(x => x.it.name).join(", ")}</span><button type="button" class="q-inl" data-unsnz="${a.snz.map(x => x.k).join("|")}">Show again</button></li>` : "";
   /* Waiting on the story: folded; each quest gets the milestone rows' "In my game" (= picked up). */
-  const wRow = a.wait.length ? `<li class="qg rq-aux"><details class="rq-wait"${rqWaitOpen ? " open" : ""}><summary>+${a.wait.length} waiting on the story</summary><ul>${a.wait.map(x => `<li><span title="${chainsOn() && !isBasic() ? capFirst(rqReqOf(char(state), x.k)) : `Opens once ${x.it.q.turnedIn ? `${x.it.q.story} is turned in` : `the story reaches ${x.it.q.story}`}`}">${x.it.name}</span><button type="button" class="q-inl" data-rqig="${x.k}">In my game</button></li>`).join("")}</ul></details></li>` : "";
+  const wRow = a.wait.length ? `<li class="qg rq-aux"><details class="rq-wait"${rqWaitOpen ? " open" : ""}><summary>+${a.wait.length} waiting on the story</summary><ul>${a.wait.map(x => `<li><span title="${chainsOn() ? capFirst(rqReqOf(char(state), x.k)) : `Opens once ${x.it.q.turnedIn ? `${x.it.q.story} is turned in` : `the story reaches ${x.it.q.story}`}`}">${x.it.name}</span><button type="button" class="q-inl" data-rqig="${x.k}">In my game</button></li>`).join("")}</ul></details></li>` : "";
   return `<ul class="ns-qgrid">${groups}${more ? `<li class="qg more">+${more} more</li>` : ""}${zRow}${wRow}</ul>`;
 }
 
@@ -147,7 +147,7 @@ export const aion2NowRenderers = {
     if (b) return `<label class="ns-bind"><input type="checkbox" data-nsbind="${b.key}"><span>Bind <b>${b.name}</b> on the way<small>${b.m} m from ${b.npc || "the turn-in"}</small></span></label>`;
     if (!teleShown(a)) return "";
     return `<div class="ns-tele"><span>Teleport to <b>${t.name}</b> (1 scroll), then ${t.m} m</span><button type="button" class="ns-walk" data-nswalk="${t.to}" aria-label="I will walk to ${t.npc || "the turn-in"}">I'll walk</button></div>`; },
-  /* "Prefer running" (0.5 P16, S1 Q6'): the view setting preferRun, in the Advanced options row; no travel line while
+  /* "Prefer running" (0.5 P16, S1 Q6'): the view setting preferRun, in the options row; no travel line while
      on. Hidden while travel advice is off (it would change nothing). */
   /* item links on a Next up card get the item's inline icon (0.6.2 P17, i3; milestone rows keep only their tile) */
   "now.items": html => itemLinkIcos(html),

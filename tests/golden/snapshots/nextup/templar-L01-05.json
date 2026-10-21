@@ -7,6 +7,10 @@
     {"t":"Buy Warding Strike 1 → 2","s":"Needs Lv 8 · 7 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "templar/L01-qxx-none-B": [
-    {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"}
+    {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"},
+    {"t":"Buy Shield Smite 1 → 2","s":"Needs Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Judgment 1 → 2","s":"Needs Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Complete \"The Being Beneath the Lake\"","s":"Lv 6 milestone · 5 levels away · opens on \"The Being Beneath the Lake\" · set your quest","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Warding Strike 1 → 2","s":"Needs Lv 8 · 7 levels away","c":"tag \"Later\"","f":"later"}
   ]
 }

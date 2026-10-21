@@ -80,7 +80,7 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
      the state icon, and saves exactly what the old checkbox's three clicks saved (timestamps aside) */
   const noTs = s => JSON.stringify(s, (k, v) => k === 'mt' || k === 'savedAt' ? undefined : v); /* the save time and the sync clock's per-field times */
   const qFlow = async (useBtn) => { await setState(p, { L: 30, q: 'Dying Light' });
-    const k = await p.evaluate(() => { const li = [...document.querySelectorAll('#gates li.qrow')].find(l => { const b = l.querySelector('.q-act'); return b && !b.hidden && !l.classList.contains('derived'); }); const d = li.closest('details'); d.open = true; return li.querySelector('input[data-k]').dataset.k; });
+    const k = await p.evaluate(() => { state.open.allSteps = true; document.querySelectorAll('#gates .done-fold').forEach(b => { state.open[b.dataset.fkey] = true; }); update(); const li = [...document.querySelectorAll('#gates li.qrow')].find(l => { const b = l.querySelector('.q-act'); return b && !b.hidden && !l.classList.contains('derived'); }); const d = li.closest('details'); d.open = true; return li.querySelector('input[data-k]').dataset.k; });
     const steps = [];
     for (let i = 0; i < 3; i++) {
       const before = await p.evaluate(k => { const li = document.querySelector(`#gates li.qrow input[data-k="${CSS.escape(k)}"]`).closest('li'), b = li.querySelector('.q-act'), ico = li.querySelector('.qlab > .rq-st');

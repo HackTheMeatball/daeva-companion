@@ -7,8 +7,7 @@
       "hide": ["(absent)",false],
       "open.g6": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "templar/L01-qxx-none-B": {
     "in": "3e7a2cffd083",
@@ -18,7 +17,6 @@
       "hide": ["(absent)",false],
       "open.g6": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   }
 }

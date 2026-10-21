@@ -7,7 +7,7 @@ body:
     attributes:
       value: |
         **Issues are public.** Don't include personal details (real name, email, account or character names you want kept private).
-        The **Report a problem** link in the app fills in the version, level, story quest, mode, build and browser below; nothing else from your saved progress is sent. Edit or delete anything you don't want to share.
+        The **Report a problem** link in the app fills in the version, level, story quest, build and browser below; nothing else from your saved progress is sent. Edit or delete anything you don't want to share.
   - type: textarea
     id: what
     attributes:
@@ -40,13 +40,6 @@ body:
     id: quest
     attributes:
       label: Current story quest in the guide
-    validations:
-      required: false
-  - type: input
-    id: mode
-    attributes:
-      label: Mode
-      description: Basic or Advanced
     validations:
       required: false
   - type: input

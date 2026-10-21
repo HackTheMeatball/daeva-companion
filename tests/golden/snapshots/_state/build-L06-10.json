@@ -7,8 +7,7 @@
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "build/L10-q12-before-A-dv": {
     "in": "d38c16fa7480",
@@ -18,8 +17,7 @@
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "build/L10-q12-before-A-filters": {
     "in": "a3456c44030f",
@@ -28,8 +26,7 @@
       "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{"g4:refund":true,"sp:Heart Gore:2":true,"sp:Savage Roar:2":true,"sp:Savage Roar:3":true,"sp:Quick Slice:2":true,"sp:Quick Slice:3":true,"sp:Ambush:2":true,"sp:Shadowstrike:2":true,"sp:Shadowstrike:3":true,"g6:0":true,"sp:Ambush:3":true,"sp:Exploit Weakness:2":true,"sp:Heart Gore:3":true,"sp:Savage Roar:4":true,"sp:Quick Slice:4":true,"sp:Ambush:4":true,"sp:Exploit Weakness:3":true,"sp:Shadowstrike:4":true},"level":10,"quest":"Gathering Essentials","mt":{"checks":{"g4:refund":[0,true],"sp:Heart Gore:2":[0,true],"sp:Savage Roar:2":[0,true],"sp:Savage Roar:3":[0,true],"sp:Quick Slice:2":[0,true],"sp:Quick Slice:3":[0,true],"sp:Ambush:2":[0,true],"sp:Shadowstrike:2":[0,true],"sp:Shadowstrike:3":[0,true],"g6:0":[0,true],"sp:Ambush:3":[0,true],"sp:Exploit Weakness:2":[0,true],"sp:Heart Gore:3":[0,true],"sp:Savage Roar:4":[0,true],"sp:Quick Slice:4":[0,true],"sp:Ambush:4":[0,true],"sp:Exploit Weakness:3":[0,true],"sp:Shadowstrike:4":[0,true]},"level":[0,10],"quest":[0,["Gathering Essentials",null]]}},{"checks":{"g4:refund":true,"sp:Heart Gore:2":true,"sp:Savage Roar:2":true,"sp:Savage Roar:3":true,"sp:Quick Slice:2":true,"sp:Quick Slice:3":true,"sp:Ambush:2":true,"sp:Shadowstrike:2":true,"sp:Shadowstrike:3":true,"g6:0":true,"sp:Ambush:3":true,"sp:Exploit Weakness:2":true,"sp:Heart Gore:3":true,"sp:Savage Roar:4":true,"sp:Quick Slice:4":true,"sp:Ambush:4":true,"sp:Exploit Weakness:3":true,"sp:Shadowstrike:4":true},"level":10,"quest":"Gathering Essentials","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"checks":{"g4:refund":[0,true],"sp:Heart Gore:2":[0,true],"sp:Savage Roar:2":[0,true],"sp:Savage Roar:3":[0,true],"sp:Quick Slice:2":[0,true],"sp:Quick Slice:3":[0,true],"sp:Ambush:2":[0,true],"sp:Shadowstrike:2":[0,true],"sp:Shadowstrike:3":[0,true],"g6:0":[0,true],"sp:Ambush:3":[0,true],"sp:Exploit Weakness:2":[0,true],"sp:Heart Gore:3":[0,true],"sp:Savage Roar:4":[0,true],"sp:Quick Slice:4":[0,true],"sp:Ambush:4":[0,true],"sp:Exploit Weakness:3":[0,true],"sp:Shadowstrike:4":[0,true]},"level":[0,10],"quest":[0,["Gathering Essentials",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "open.g10": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "build/L10-q12-before-A-objs": {
     "in": "08e8e1d830ee",
@@ -39,8 +36,7 @@
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "build/L10-q12-before-A-rqmix": {
     "in": "5dd7cde6648f",
@@ -50,8 +46,7 @@
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "build/L10-q12-before-A-sppts": {
     "in": "e31599a9ac25",
@@ -64,8 +59,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "build/L10-q12-before-A-stfull": {
     "in": "d97a8dcf5c72",
@@ -75,8 +69,7 @@
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "build/L10-q12-before-A-stready": {
     "in": "968cf21eba17",
@@ -86,8 +79,7 @@
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "build/L10-q12-before-A-stwait": {
     "in": "d49f6fd394c9",
@@ -97,8 +89,7 @@
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "advanced"
+    }
   },
   "build/L10-q12-before-B-cube": {
     "in": "55340a127440",
@@ -108,8 +99,7 @@
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "build/L10-q12-before-B-dv": {
     "in": "3cc94dbaaa93",
@@ -119,8 +109,7 @@
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "build/L10-q12-before-B-filters": {
     "in": "6c36dad3cd1a",
@@ -129,8 +118,7 @@
       "chars.00000000-0000-4000-8000-00000000c0de": [{"id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"checks":{"g4:refund":true,"sp:Heart Gore:2":true,"sp:Savage Roar:2":true,"sp:Savage Roar:3":true,"sp:Quick Slice:2":true,"sp:Quick Slice:3":true,"sp:Ambush:2":true,"sp:Shadowstrike:2":true,"sp:Shadowstrike:3":true,"g6:0":true,"sp:Ambush:3":true,"sp:Exploit Weakness:2":true,"sp:Heart Gore:3":true,"sp:Savage Roar:4":true,"sp:Quick Slice:4":true,"sp:Ambush:4":true,"sp:Exploit Weakness:3":true,"sp:Shadowstrike:4":true},"level":10,"quest":"Gathering Essentials","mt":{"checks":{"g4:refund":[0,true],"sp:Heart Gore:2":[0,true],"sp:Savage Roar:2":[0,true],"sp:Savage Roar:3":[0,true],"sp:Quick Slice:2":[0,true],"sp:Quick Slice:3":[0,true],"sp:Ambush:2":[0,true],"sp:Shadowstrike:2":[0,true],"sp:Shadowstrike:3":[0,true],"g6:0":[0,true],"sp:Ambush:3":[0,true],"sp:Exploit Weakness:2":[0,true],"sp:Heart Gore:3":[0,true],"sp:Savage Roar:4":[0,true],"sp:Quick Slice:4":[0,true],"sp:Ambush:4":[0,true],"sp:Exploit Weakness:3":[0,true],"sp:Shadowstrike:4":[0,true]},"level":[0,10],"quest":[0,["Gathering Essentials",null]]}},{"checks":{"g4:refund":true,"sp:Heart Gore:2":true,"sp:Savage Roar:2":true,"sp:Savage Roar:3":true,"sp:Quick Slice:2":true,"sp:Quick Slice:3":true,"sp:Ambush:2":true,"sp:Shadowstrike:2":true,"sp:Shadowstrike:3":true,"g6:0":true,"sp:Ambush:3":true,"sp:Exploit Weakness:2":true,"sp:Heart Gore:3":true,"sp:Savage Roar:4":true,"sp:Quick Slice:4":true,"sp:Ambush:4":true,"sp:Exploit Weakness:3":true,"sp:Shadowstrike:4":true},"level":10,"quest":"Gathering Essentials","id":"00000000-0000-4000-8000-00000000c0de","pack":"aion2/asmodian/assassin","class":"assassin","name":"","created":0,"mt":{"checks":{"g4:refund":[0,true],"sp:Heart Gore:2":[0,true],"sp:Savage Roar:2":[0,true],"sp:Savage Roar:3":[0,true],"sp:Quick Slice:2":[0,true],"sp:Quick Slice:3":[0,true],"sp:Ambush:2":[0,true],"sp:Shadowstrike:2":[0,true],"sp:Shadowstrike:3":[0,true],"g6:0":[0,true],"sp:Ambush:3":[0,true],"sp:Exploit Weakness:2":[0,true],"sp:Heart Gore:3":[0,true],"sp:Savage Roar:4":[0,true],"sp:Quick Slice:4":[0,true],"sp:Ambush:4":[0,true],"sp:Exploit Weakness:3":[0,true],"sp:Shadowstrike:4":[0,true]},"level":[0,10],"quest":[0,["Gathering Essentials",null]],"rotSeen":[1790856000,["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]},"rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]}],
       "open.g10": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "build/L10-q12-before-B-objs": {
     "in": "2de8cc565926",
@@ -140,8 +128,7 @@
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "build/L10-q12-before-B-rqmix": {
     "in": "b8641686bbd3",
@@ -151,8 +138,7 @@
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "build/L10-q12-before-B-sppts": {
     "in": "2dea21ef8884",
@@ -165,8 +151,7 @@
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "build/L10-q12-before-B-stfull": {
     "in": "76c174ae3e49",
@@ -176,8 +161,7 @@
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "build/L10-q12-before-B-stready": {
     "in": "063097d67b9a",
@@ -187,8 +171,7 @@
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   },
   "build/L10-q12-before-B-stwait": {
     "in": "45844a4724bb",
@@ -198,7 +181,6 @@
       "hide": ["(absent)",false],
       "open.g10": ["(absent)",true],
       "savedAt": ["(absent)",1790856000000]
-    },
-    "mode": "basic"
+    }
   }
 }

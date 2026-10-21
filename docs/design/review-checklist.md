@@ -18,7 +18,7 @@ written reason. The tracker and the Ledger use the same lines, except where a li
 ## Setup
 - [ ] Build first: `npm run build`, then `npm run serve`. The source page does not run on its own.
 - [ ] Review the built result, not the diff. Use a fresh save, a Lv 27 save and a Lv 45 save.
-- [ ] Look at it in **Basic** and **Advanced**, at **1500 px** (what the suites use) and **390 px**.
+- [ ] Look at it with **folds closed and open**, at **1500 px** (what the suites use) and **390 px**.
 
 ## Look and feel
 - [ ] **Minimal distraction.** Nothing new draws the eye that does not need to. No extra colours, borders, badges or motion.
@@ -59,7 +59,7 @@ A design fails here when it looks generated rather than made for this app. Each 
 - [ ] **Manual progress.** Nothing ticks or levels up by itself. Level changes only through Level up, −, + or the slider,
   plus the one owner-approved exception: ticking a sourced 100 % EXP story quest (`levelsUp: { from }`) at its from-level
   raises the level by one, and unticking or Undo lowers it (CLAUDE.md, DECISIONS `owner-ok-autolevel`).
-- [ ] **Basic mode = essentials only.** Anything not essential is hidden in Basic, and Basic still reads complete.
+- [ ] **One view: essentials open, detail in folds that remember** (owner, 2026-10-20). Anything not essential sits in a fold that starts closed, and the page still reads complete with every fold closed.
 - [ ] **Saved progress is safe.** Same storage key as today (`KEY` in `src/core/state.js`, see `docs/ARCHITECTURE.md`),
   unless the change is a planned pre-1.0 clean break per CLAUDE.md (new key, fresh start without errors, CHANGELOG says
   saves reset). No renamed, reused or position-derived item keys; new keys follow `rq:<id>` / `sd:<slug>`. Nothing

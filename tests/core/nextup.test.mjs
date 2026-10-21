@@ -77,10 +77,10 @@ export default (test, M) => {
       const s = behindAt(25, { miss: ks.slice(0, n) }), on = M.rankNext(s), off = offCatchUp(() => M.rankNext(s));
       assert.deepEqual(missedOf(on), ks.slice(0, n < M.BEHIND_MISSED ? M.MISSED_SHOWN : n), `${n} missed`);
       assert.deepEqual(missedOf(off), ks.slice(0, 2), `${n} missed, catchUp off`);
-      assert.deepEqual(missedOf(M.rankNext(s, { basic: true })), missedOf(on), `${n} missed, Basic shows the same missed steps`);
+      assert.deepEqual(missedOf(on.filter(c => !c.fold)), missedOf(on), `${n} missed, all lead (none in the fold)`);
     }
   });
-  test('catch-up, points: one kind (skill points) keeps the queue at 4 spend cards; two (and a stigma upgrade) lift it to what the points cover, never pushing out a step or the story; Basic: one skill card', () => {
+  test('catch-up, points: one kind (skill points) keeps the queue at 4 spend cards; two (and a stigma upgrade) lift it to what the points cover, never pushing out a step or the story; one skill card leads', () => {
     const one = M.rankNext(behindAt(25)), two = M.rankNext(behindAt(25, { shards: 99 })), sk = cs => cs.filter(c => c.kind === 'skill').length;
     assert.equal(sk(one), 4); assert.ok(two.some(c => c.kind === 'stup'));
     assert.ok(sk(two) > 4, `${sk(two)} skill cards`); assert.equal(offCatchUp(() => sk(M.rankNext(behindAt(25, { shards: 99 })))), 4, 'catchUp off: 4 skill cards');
@@ -88,7 +88,7 @@ export default (test, M) => {
     const s30 = behindAt(30, { shards: 99 }), at30 = M.rankNext(s30);
     assert.deepEqual(at30.filter(c => c.kind !== 'skill').map(c => c.kind), offCatchUp(() => M.rankNext(s30)).filter(c => c.kind !== 'skill' && !c.later).map(c => c.kind));
     assert.ok(at30.filter(c => !c.story && !c.later && !['rq', 'sd', 'sh', 'stwait'].includes(c.kind)).length <= 8);
-    assert.equal(sk(M.rankNext(behindAt(25, { shards: 99 }), { basic: true })), 1, 'Basic');
+    assert.equal(sk(M.rankNext(behindAt(25, { shards: 99 })).filter(c => !c.fold)), 1, 'one skill card leads');
   });
   test('Later by eta: the Later cards in the order they open (level, then story position); the Later step is the closed step that opens first', () => {
     for (const L of [10, 15, 20, 25, 30, 35, 40]) {
@@ -110,16 +110,17 @@ export default (test, M) => {
     const k2 = kinds(M.rankNext(S({ level: q[0], quest: q[1] })));
     assert.ok(k2.indexOf('sd') > k2.indexOf('story'), k2.join(' '));
   });
-  test('Basic: no Later or advice cards, one skill card; at most 8 cards plus the story and side-content cards', () => {
+  /* 0.9 P21: one list; the cards Basic used to drop now follow in the "More you could do" fold (fold: true) */
+  test('one list: no Later or advice card leads, one skill card leads; at most 8 cards plus the story and side-content cards', () => {
     for (const lv of [10, 20, 30, 40, 45]) {
-      const s = S({ level: lv, quest: M.QUESTS.find(([l]) => l >= lv)?.[1] || '' }), adv = M.rankNext(s), basic = M.rankNext(s, { basic: true });
-      assert.ok(basic.every(c => !c.later && !c.adv), lv); assert.ok(basic.filter(c => c.act === 'skill').length <= 1, lv);
-      for (const cs of [adv, basic]) assert.ok(cs.filter(c => !c.story && !['rq', 'sd', 'sh', 'stwait'].includes(c.kind)).length <= 8, lv);
+      const s = S({ level: lv, quest: M.QUESTS.find(([l]) => l >= lv)?.[1] || '' }), cs = M.rankNext(s), lead = cs.filter(c => !c.fold);
+      assert.ok(lead.every(c => !c.later && !c.adv), lv); assert.ok(lead.filter(c => c.act === 'skill').length <= 1, lv);
+      assert.ok(cs.filter(c => !c.story && !['rq', 'sd', 'sh', 'stwait'].includes(c.kind)).length <= 8, lv);
     }
   });
   test('ranking reads the save and never writes it', () => {
     for (const s of [S(), S({ level: 30, quest: M.QUESTS[50][1], rqSnooze: { x: 1 }, stShards: 3, dvTotal: 40 }), S({ level: 45, quest: 'Forgotten Commander', storyEnd: 'Forgotten Commander' })]) {
-      const before = JSON.stringify(s); M.rankNext(s); M.rankNext(s, { basic: true }); assert.equal(JSON.stringify(s), before);
+      const before = JSON.stringify(s); M.rankNext(s); assert.equal(JSON.stringify(s), before);
     }
   });
   test('story end: "Altgard story complete", no Turned in', () => {
@@ -170,12 +171,12 @@ export default (test, M) => {
     const full = saves.map(s => M.rankNext(s));
     try {
       M.usePack(bare);
-      saves.forEach((s, i) => { for (const basic of [false, true]) {
-        const cs = M.rankNext(s, { basic }); cs.forEach(c => seen.add(c.kind));
+      saves.forEach((s, i) => { {
+        const cs = M.rankNext(s); cs.forEach(c => seen.add(c.kind));
         assert.deepEqual(cs.filter(c => !ENGINE.includes(c.kind)).map(c => c.kind), [], `save ${i}`);
         assert.equal(cs.filter(c => c.story).length, 1, `save ${i}: one story card`);
         /* the pack's cards take cap places, so with them the engine's are the same cards in the same order, some cut */
-        if (!basic) { const mine = cs.map(c => c.kind + ' ' + c.act), j = { n: 0 };
+        { const mine = cs.map(c => c.kind + ' ' + c.act), j = { n: 0 };
           const withPack = full[i].filter(c => ENGINE.includes(c.kind)).map(c => c.kind + ' ' + c.act);
           assert.ok(withPack.every(x => { while (j.n < mine.length && mine[j.n] !== x) j.n++; return j.n++ < mine.length; }), `save ${i}: ${withPack} in ${mine}`); }
       } });
@@ -191,8 +192,8 @@ export default (test, M) => {
     const bad = [];
     const gateOf = it => it && (it.story || it.after);
     M.QUESTS.forEach(([ql, name], i) => {
-      for (const lv of [...new Set([Math.max(1, ql - 1), ql, 45])]) for (const basic of [false, true]) {
-        const s = S({ level: lv, quest: name }), cs = M.rankNext(s, { basic }), tag = `Lv${lv}@${i}${basic ? 'B' : ''}`;
+      for (const lv of [...new Set([Math.max(1, ql - 1), ql, 45])]) {
+        const s = S({ level: lv, quest: name }), cs = M.rankNext(s), tag = `Lv${lv}@${i}`;
         if (cs.filter(c => c.story).length !== 1) bad.push(tag + ' story cards');
         for (const c of cs) {
           if (c.kind === 'skill' && c.x.req > lv) bad.push(`${tag} skill ${c.x.k}`);

@@ -169,6 +169,8 @@ check(fx.genLaneMiss(new Set(['build-card']), spec503.replace('  - Game facts mo
 const clean = bullet('`src/styles/cards/nextup.css`, `src/packs/aion2/cards/nextup.html`', '- **Result.** The Next up card shows the zone name under the quest; `src/data/zones.js` is unchanged.\n');
 check(fx.genLaneMiss(new Set(['nextup.css']), clean) === null, 'a clean spec (no data/ change, src/data/ only in prose) -> passes');
 check(fx.genLaneMiss(new Set(['rows']), bullet('`data/packs/aion2/x.json`', '- **Result.** Each row shows a new pack field `zoneHint`.\n')) === 'it adds a new pack field', 'a new pack field without the gen lane -> held');
+// Release Planner, 2026-10-21: #643 was held because "(per fold id; no new field)" matched "new field"; a negated mention passes.
+check(fx.genLaneMiss(new Set(['main.js']), bullet('`src/main.js`', '- **Result.** Fold state lives in the save\'s existing `open` map (per fold id; no new field).\n')) === null, 'a spec saying "no new field" -> passes (#643)');
 check(fx.genLaneMiss(new Set(['rows']), bullet('`data/packs/aion2/asmodian/assassin/guide/steps.json`', '- **Result.** Step 12 reads "Talk to Hagen".\n')) === null, 'a plain data JSON edit (Files names data/packs only) -> passes');
 check(GEN.keywords.every((k) => { try { new RegExp(k.re, 'im'); return k.in.length && k.in.every((f) => ['Result', 'Files'].includes(f)) && !!k.says; } catch { return false; } }), 'gen-lane.json: every keyword is a valid regex with Result/Files fields and a says text');
 check(/const GEN = JSON\.parse\(Buffer\.from\(\(await github\.rest\.repos\.getContent\(\{ owner, repo, path: '\.github\/routing\/gen-lane\.json', ref: 'main' \}\)\)/.test(yml), 'kickoff reads gen-lane.json from main');

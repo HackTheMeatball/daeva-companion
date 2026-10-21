@@ -15,26 +15,21 @@
 #stCard .st-n { display: inline-grid; place-items: center; width: 18px; height: 18px; margin-right: var(--space-8); border-radius: var(--radius-5); font: 700 10.5px var(--mono); color: var(--muted); border: 1px solid var(--line); }
 #stList li.st-on .sname { color: var(--good); }
 #stList .sst { color: var(--good); }
-body.basic #stAfter { display: none; }
-#stCard .st-then { display: none; }
-body.basic #stCard .st-then { display: block;}
-body.basic #stCard .st-then li { border-top: 0; padding-top: 0; }
 #stCard .st-ico.art { padding: 0; overflow: hidden; background: var(--panel-2); }
 #stCard .st-ico .st-img { width: 100%; height: 100%; object-fit: cover; display: block; }
 #stCard .st-mini { width: 18px; height: 18px; border-radius: var(--radius-4); object-fit: cover; margin-right: var(--space-8); vertical-align: -4px; }
 #stCard .sname { display: flex; align-items: center; }
-body.basic #stCard .st-then { margin-top: var(--space-18); }
 #stCard .st-lvctl { display: inline-flex; align-items: center; gap: var(--space-6); font: 600 11px var(--mono); color: var(--fg); justify-self: end; grid-column: 2 / -1; }
 #stCard .st-lvctl button:hover { color: var(--fg); border-color: var(--muted); }
 #stCard .sphero.short .buystat { color: var(--warn); }
 #stCard .tfoot #stList { margin-top: var(--space-6); }
 
 #stCard #stSoon { max-height: 168px; overflow-y: auto; scrollbar-width: none; }
-#stCard #stSoon .sname, #stCard .st-then .sname { display: block; }
-#stCard #stSoon .st-mini, #stCard .st-then .st-mini { vertical-align: -4px; margin-right: var(--space-6); }
+#stCard #stSoon .sname { display: block; }
+#stCard #stSoon .st-mini { vertical-align: -4px; margin-right: var(--space-6); }
 #stCard #stList .sname { display: flex; flex-wrap: nowrap; align-items: center; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 #stCard #stList > li { grid-template-columns: minmax(0, 1fr) auto; }
-#stCard #stSoon > li, #stCard .st-then > li { grid-template-columns: minmax(0, 1fr) auto minmax(26px, auto); }
+#stCard #stSoon > li { grid-template-columns: minmax(0, 1fr) auto minmax(26px, auto); }
 
 #stCard #stSoon { -webkit-mask-image: linear-gradient(to bottom, var(--mask) 70%, transparent); mask-image: linear-gradient(to bottom, var(--mask) 70%, transparent); }
 #stCard #stSoon.at-end { -webkit-mask-image: none; mask-image: none; }

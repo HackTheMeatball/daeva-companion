@@ -213,7 +213,7 @@ export default (test, M) => {
   test('nothing is written: rankNext, countsOf and the evaluator on deep-frozen saves with derived rows', () => {
     const s = deepFreeze(S({ level: 32, quest: at('A Daeva Dreaming Anew', 2), checks: { 'g16:0': false, 'g22:0': false }, started: { 'rq:2202017': 1 } }));
     const before = JSON.stringify(s);
-    M.rankNext(s); M.rankNext(s, { basic: true }); M.GATES.forEach(g => M.countsOf(s, g)); M.gatesOf(M.char(s)).list();
+    M.rankNext(s); M.GATES.forEach(g => M.countsOf(s, g)); M.gatesOf(M.char(s)).list();
     assert.equal(JSON.stringify(s), before);
   });
 

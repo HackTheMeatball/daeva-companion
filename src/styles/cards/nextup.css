@@ -71,12 +71,11 @@
 .nsinfo:hover, .show-info .nsinfo { background: var(--fg); color: var(--bg); }
 .ns-info { display: none; font-size: 11.5px; line-height: 1.4; color: var(--muted); margin-top: var(--space-4); }
 .show-info .ns-info { display: block; }
-/* Basic: Next up drops its header; its first card pulses to say "this one" (#nowStar.wide itself never animates: see its !important reset). */
-body.basic #nowStar .ns-head { display: none; }
-body.basic #nowStar .ns-primary { border: 0; background: none; padding: 0; box-shadow: none; }
+/* Next up's first card is flat and pulses to say "this one" (#nowStar.wide itself never animates: see its !important reset). */
+#nowStar .ns-primary { border: 0; background: none; padding: 0; box-shadow: none; }
 /* Next up, now a wide card above Milestones: the action on the left, what follows on the right */
 #nowStar.wide .ns-primary { flex: 0 0 40%; min-width: 0; }
-body.basic #nowStar.wide .ns-primary { align-self: center; }
+#nowStar.wide .ns-primary { align-self: center; }
 /* Next up: milestone-card look */
 #nowStar.wide { display: block; margin: var(--space-14) 0 var(--space-4); border-radius: var(--radius-12);}
 #nowStar.wide .ns-primary { border: 0; background: none; padding: 0; box-shadow: none; display: block; }
@@ -87,7 +86,7 @@ body.basic #nowStar.wide .ns-primary { align-self: center; }
 #nowStar.wide .ns-go { font: 600 11px var(--mono); letter-spacing: .06em; padding: var(--space-3) var(--space-8); border-radius: var(--radius-pill); border: 1px solid var(--line); background: none; white-space: nowrap; align-self: center;}
 
 #nowStar.wide .ns-go:hover { border-color: var(--accent); }
-body.basic #nowStar.wide .nsq { padding: var(--space-7) var(--space-10); }
+#nowStar.wide .nsq { padding: var(--space-7) var(--space-10); }
 @media (max-width: 520px) { #nowStar.wide .ns-mhead { grid-template-columns: 48px minmax(0, 1fr); padding: var(--space-14); }   #nowStar.wide .ns-obj { margin-left: var(--space-14); } }
 /* Next up: a stack of single-action cards; one shows, scroll for the next */
 #nowStar.wide { background: none !important; border: 0 !important; box-shadow: none !important; overflow: visible; padding: 0; animation: none !important; }
@@ -117,8 +116,8 @@ body.basic #nowStar.wide .nsq { padding: var(--space-7) var(--space-10); }
 
 #nowStar .ns-card .ns-obj { margin: calc(-1 * var(--space-4)) var(--space-18) var(--space-14) var(--space-84); }
 #nowStar .ns-card .nsq-bar { max-width: 280px; }
-body.basic #nowStar .ns-card.first { animation: nsPulse 2.2s ease-in-out infinite; }
-@media (prefers-reduced-motion: reduce) { body.basic #nowStar .ns-card.first { animation: none; } }
+#nowStar .ns-card.first { animation: nsPulse 2.2s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { #nowStar .ns-card.first { animation: none; } }
 @media (max-width: 520px) { #nowStar .ns-card .ns-mhead { grid-template-columns: 48px minmax(0, 1fr); padding: var(--space-14); } #nowStar .ns-card .meta { grid-column: 1 / -1;} #nowStar .ns-card .ns-num { width: 48px; } #nowStar .ns-card .ns-obj { margin-left: var(--space-14); } }
 #nowStar .ns-card, #nowStar.wide .ns-card.ns-primary { flex: none !important; display: block; padding: 0; background: var(--panel); border-radius: var(--radius-12); }
 #nowStar.wide .ns-card.first { border: 1px solid var(--accent); }

@@ -77,8 +77,6 @@
 #areaList .zone-btn { flex-direction: row-reverse; }
 #areaList .zone-btn .zchev { font-size: 10px; color: var(--muted); }
 .zone-btn::before { content: ""; position: absolute; inset: -4px 0; }
-/* B: a gap under the level-band select (Basic hides the chips that normally sit there); locked rows stay readable. */
-body.basic #areaSel { margin-bottom: var(--space-12); }
 @media (max-width: 520px) { .area-list .item.locked .txt { opacity: 1; } }
 /* Folded by default on phones (main.js, phone-layout.md 3.6): the title is the summary, one 48 px row as Progress's;
    the Map link stays outside the summary, drawn on that row left of the fold arrow. */

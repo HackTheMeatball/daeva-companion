@@ -61,8 +61,8 @@ export default (test, M) => {
       M.migrate(again, true, () => writes.push(1), NOW); assert.deepEqual(again, once); assert.deepEqual(writes, []);
     }
   });
-  test('owner save 2026-10-14 (Lv 39) as a v5 save: Next up ranks in Basic and Advanced without throwing', () => {
+  test('owner save 2026-10-14 (Lv 39) as a v5 save: Next up ranks without throwing (one view)', () => {
     const { state } = run(M, JSON.parse(JSON.stringify(createRequire(import.meta.url)('../fixtures/fixture-user-2026-10-14-lv39.json'))));
-    for (const basic of [true, false]) assert.ok(Array.isArray(M.rankNext(state, { basic })), `basic=${basic}`);
+    assert.ok(Array.isArray(M.rankNext(state)));
   });
 };

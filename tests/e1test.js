@@ -143,7 +143,7 @@ const cards = p => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-
   await p.setViewportSize({ width: 390, height: 850 }); await p.waitForTimeout(400);
   const narrow = await order(), narrowHtml = await layoutHtml();
   ok('390px: Next up, Journey, Progress, Skills, Milestones, Dungeons & Strongholds in that order, both landmarks present', narrow.landmarks && narrow.y.every((v, i) => !i || v > narrow.y[i - 1]) && narrow.y[0] < 500, narrow);
-  ok('390px: Basic keeps The map hidden', await p.evaluate(() => { document.body.classList.add('basic'); const n = document.querySelector('aside.rail > section.notes'); const h = getComputedStyle(n).display === 'none'; document.body.classList.remove('basic'); return h; }));
+  ok('390px: The map is a fold, closed by default (one view)', await p.evaluate(() => { const d = document.getElementById('mapFold'); return !!d && !d.open && !d.querySelector('p').checkVisibility(); }));
   await p.setViewportSize({ width: 1100, height: 900 }); await p.waitForTimeout(400);
   ok('crossing 860 px up: same markup as a fresh load at 1100', (await layoutHtml()) === wideFresh && (await order()).dom === wideOrder.dom);
   await p.setViewportSize({ width: 390, height: 850 }); await p.waitForTimeout(400);
@@ -204,25 +204,49 @@ const cards = p => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-
     const st0 = await pp.evaluate(() => JSON.stringify(char(state).checks));
     await pp.click('#nowStar .ns-card.first .meta button'); await pp.waitForTimeout(800);
     ok('phone: the featured card\'s action completes it', await pp.evaluate(() => JSON.stringify(char(state).checks)) !== st0);
-    await load('basic');
-    m = await look();
-    ok('phone Basic Lv 27: no pager, the first card featured with 44 px actions, no nested scroll', m.phone && m.pg === null && m.cur === 0 && m.btns.length > 0 && m.btns.every(x => x.h >= 44 && x.w >= 44) && !m.nested, m);
     await pp.setViewportSize({ width: 601, height: 844 }); await pp.waitForTimeout(300);
     ok('601 px: the desktop stack (no pager, no phone layout)', await pp.evaluate(() => !document.querySelector('#nowStar .ns-pg, #nowStar .ns-phone') && !!document.querySelector('#nowStar h3 .nsinfo, #nowStar .ns-stack')));
     await pctx.close();
   }
-  /* 12d. Phone folds (0.5 P6, phone-layout 3.6): at <= 600 px Dungeons & Strongholds folds in both modes and Progress in
-     Basic, folded by default, each a 48 px summary row; Journey stays open; a Progress row's jump opens the fold; above
+  /* 12c'. One view (0.9 P21, docs/design/0.9-one-view.md): a fold opened stays open after a reload (the save's open map),
+     and every rail card is reachable (its heading can be scrolled to and is on top) at 390 and 1500 px. */
+  await p.setViewportSize({ width: 1500, height: 900 }); await setState(p, clean(20, 'Symbol of Liberation'));
+  ok('one view: "All steps" starts closed', await p.evaluate(() => !state.open.allSteps && document.querySelector('.steps-fold').getAttribute('aria-expanded') === 'false'));
+  await p.click('.steps-fold'); await p.waitForTimeout(150); await p.reload(); await p.waitForTimeout(600);
+  ok('one view: "All steps" opened stays open after a reload', await p.evaluate(() => state.open.allSteps === true && document.body.classList.contains('fo-steps') && document.querySelector('.steps-fold').getAttribute('aria-expanded') === 'true'));
+  await p.click('.steps-fold'); await p.waitForTimeout(150);
+  for (const w of [390, 1500]) {
+    await p.setViewportSize({ width: w, height: 850 }); await p.waitForTimeout(400);
+    const rail = await p.evaluate(() => [document.getElementById('progRows').closest('.card'), document.querySelector('section.where'), document.getElementById('areas'), document.querySelector('section.notes')].map(el => {
+      const h = el.querySelector('h2'); h.scrollIntoView({ block: 'center' }); const r = h.getBoundingClientRect(), hit = document.elementFromPoint(r.left + Math.min(8, r.width / 2), r.top + r.height / 2);
+      return { h: h.textContent.trim().slice(0, 30), ok: r.width > 0 && !!hit && el.contains(hit) };
+    }));
+    ok(`one view ${w}px: every rail card reachable (Progress, Journey, Dungeons & Strongholds, The map)`, rail.length === 4 && rail.every(x => x.ok), rail);
+  }
+  /* A jump to a milestone (an Ahead row; Journey's rows, Next up and Progress share showGate) shows it even while "All steps" is closed and the
+     milestone is one that fold hides: it lands open and on screen. */
+  await p.setViewportSize({ width: 1500, height: 900 }); await setState(p, clean(20, 'Symbol of Liberation'));
+  const jumpTo = await p.evaluate(() => { const a = [...document.querySelectorAll('.ah-row[data-gogate]')].reverse().find(a => a.checkVisibility() && !document.getElementById(a.dataset.gogate).checkVisibility());
+    if (a) a.setAttribute('data-t-jump', ''); return a ? a.dataset.gogate : null; });
+  ok('one view: an Ahead row points at a milestone the closed "All steps" fold hides', !!jumpTo && await p.evaluate(() => !state.open.allSteps));
+  if (jumpTo) {
+    await p.click('[data-t-jump]'); await p.waitForTimeout(900);
+    const at = await p.evaluate(id => { const d = document.getElementById(id), r = d.querySelector(':scope > summary').getBoundingClientRect();
+      return { vis: d.checkVisibility(), open: d.open, top: Math.round(r.top), bottom: Math.round(r.bottom), h: innerHeight }; }, jumpTo);
+    ok('one view: clicking an Ahead row opens that milestone and puts it on screen ("All steps" closed)', at.vis && at.open && at.bottom > 0 && at.top < at.h, { jumpTo, ...at });
+  }
+  /* 12d. Phone folds (0.5 P6, phone-layout 3.6; 0.9 P21: always): at <= 600 px Dungeons & Strongholds and Progress fold,
+     folded by default, each a 48 px summary row; Journey stays open; a Progress row's jump opens the fold; above
      600 px the cards are as a fresh load has them, saved fold_* keys or not. */
   const folds = () => p.evaluate(() => Object.fromEntries(['areasFold', 'progFold'].map(id => { const d = document.getElementById(id); return [id, d && { open: d.open, h: d.querySelector(':scope > summary').getBoundingClientRect().height }]; })));
   await p.setViewportSize({ width: 390, height: 850 }); await setState(p, clean(20, 'Symbol of Liberation', 'basic'));
   let fd = await folds();
-  ok('390px Basic: Dungeons & Strongholds and Progress folded, summary rows 48 px', fd.areasFold && !fd.areasFold.open && fd.areasFold.h === 48 && fd.progFold && !fd.progFold.open && fd.progFold.h === 48, fd);
-  ok('390px Basic: Journey not folded, its Level − / + and slider visible', await p.evaluate(() => !document.querySelector('section.where details') && ['lvlDown', 'lvlUp', 'lvlNum'].every(id => document.getElementById(id).checkVisibility())));
-  ok('390px Basic: the folded bodies are not shown, the Map link is', await p.evaluate(() => !document.getElementById('progRows').checkVisibility() && !document.getElementById('areaList').checkVisibility() && document.getElementById('areaMapLink').checkVisibility()));
-  await p.click('.modeseg [data-mode="advanced"]'); await p.waitForTimeout(200);
+  ok('390px: Dungeons & Strongholds and Progress folded, summary rows 48 px', fd.areasFold && !fd.areasFold.open && fd.areasFold.h === 48 && fd.progFold && !fd.progFold.open && fd.progFold.h === 48, fd);
+  ok('390px: Journey not folded, its Level − / + and slider visible', await p.evaluate(() => !document.querySelector('section.where details') && ['lvlDown', 'lvlUp', 'lvlNum'].every(id => document.getElementById(id).checkVisibility())));
+  ok('390px: the folded bodies are not shown, the Map link is', await p.evaluate(() => !document.getElementById('progRows').checkVisibility() && !document.getElementById('areaList').checkVisibility() && document.getElementById('areaMapLink').checkVisibility()));
   fd = await folds();
-  ok('390px Advanced: Progress open (no fold), Dungeons & Strongholds still folded', !fd.progFold && fd.areasFold && !fd.areasFold.open && await p.evaluate(() => document.getElementById('progRows').checkVisibility()), fd);
+  ok('390px: Progress folded on a phone always (one view), Dungeons & Strongholds folded too', fd.progFold && !fd.progFold.open && fd.areasFold && !fd.areasFold.open, fd);
+  await p.click('#progFold > summary'); await p.waitForTimeout(200);
   await p.click('#progRows [data-prog="sd"]'); await p.waitForTimeout(300);
   ok('390px: a Progress row jump opens the Dungeons & Strongholds fold', (await folds()).areasFold.open && await p.evaluate(() => document.getElementById('areaList').checkVisibility() && state.fold_areasFold === true));
   /* the two cards' markup (the rest of the page keeps resize traces, e.g. the Daevanion card's data-fs, which 12 covers) */
