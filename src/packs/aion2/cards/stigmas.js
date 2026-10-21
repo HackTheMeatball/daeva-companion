@@ -3,7 +3,8 @@
 import { char } from "../../../core/state.js";
 import { setHTML } from "../../../core/cards.js";
 import { gatesOf } from "../../../core/requirements.js";
-import { STIGMA_ICON, STIGMA_PLAN, ST_COST, ST_TARGETS } from "../data/build.js";
+import { STIGMA_ICON, STIGMA_PLAN, STIGMA_ST, ST_COST, ST_TARGETS } from "../data/build.js";
+import { stTag } from "../data/markup.js";
 import { eputK } from "../catalog.js";
 import { shardsFromLv, slotLevelMet, stigmaEquipOpen } from "../requirements.js";
 import { stTip } from "./shared.js";
@@ -64,6 +65,8 @@ function renderStigma() {
   const planTotal = STIGMA_PLAN.reduce((t, n) => t + stC(stT(n)), 0);
   const soon = restSteps.map(st => { cum += st.cost; return soonRow(st, cum); }).join("");
   const nextSlot = !canEquip && next ? `<li class="st-slotrow"><span class="sname">${stIco(next.name, "st-mini")}${next.name}</span><span class="slv" title="Stigma slot ${next.n} opens">Lv ${next.lv}</span><span class="sst"></span></li>` : "";
+  /* the guide's stigma plan shares one label (0.9 P1): one tag on the card's heading, none per row */
+  setHTML(document.querySelector("#stCard .ns-head h2"), `Stigmas${stTag(STIGMA_ST)}`);
   /* setHTML (0.9 P30): fadeScroll below re-applies its fade on every pass; nothing else changes the body after the write */
   setHTML(body, `<div class="ptbig st-big"><b>${sh}</b><span>shard${sh === 1 ? "" : "s"} to spend</span></div>` + hero +
     (soon || nextSlot ? `<div id="stAfter"><div class="dvbh"><div class="dvbh-top"><span class="dvbh-k">Coming up</span><span class="dvbh-n">${spentNow} of ${planTotal} spent</span></div><span class="dvbh-bar"><span style="width:${planTotal ? spentNow / planTotal * 100 : 0}%"></span></span></div><ul class="soonlist" id="stSoon">${nextSlot}${soon}</ul></div>` : ""));

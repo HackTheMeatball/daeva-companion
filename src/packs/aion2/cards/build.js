@@ -4,7 +4,8 @@
 import { char } from "../../../core/state.js";
 import { setHTML } from "../../../core/cards.js";
 import { activePack, packClasses } from "../../../core/pack.js";
-import { E_ORDER, GUIDE_KEYS, HAS_KEYS, KEYS, SP_ICONS, STAT_NOTE, STAT_SRC, STAT_TIERS, STIGMA_ICON } from "../data/build.js";
+import { E_ORDER, GUIDE_KEYS, HAS_KEYS, KEYS, KEYS_ST, SP_ICONS, STAT_NOTE, STAT_SRC, STAT_TIERS, STIGMA_ICON } from "../data/build.js";
+import { stTag } from "../data/markup.js";
 import { rotKeys } from "../requirements.js";
 import { aion2State as state, aion2Save as save, aion2Update as update, aion2STIGMA_SLOTS as STIGMA_SLOTS, aion2StIco as stIco, aion2SpMini as spMini, aion2Ini as ini } from "./page.js";
 
@@ -54,7 +55,7 @@ function defaultKeysNote(lv) {
   const on = KEYS.map(x => ({ key: x.key, n: x.rows.filter(r => lv >= r.lv).map(r => r.n) })).filter(x => x.n.length);
   const rc = on.find(x => x.key === "Right click");
   return `<div class="kv-note kv-defs">` +
-    (on.length ? `<span class="khead">Game default keys</span><ul>${on.map(x => `<li><span class="kv-key${/ click$/.test(x.key) ? " mouse" : ""}">${x.key}</span> ${x.n.join(", ")}</li>`).join("")}</ul>` : "") +
+    (on.length ? `<span class="khead">Game default keys${stTag(KEYS_ST)}</span><ul>${on.map(x => `<li><span class="kv-key${/ click$/.test(x.key) ? " mouse" : ""}">${x.key}</span> ${x.n.join(", ")}</li>`).join("")}</ul>` : "") +
     (rc ? `<p class="fine">The macro takes right click from ${rc.n.join(", ")} (inferred).</p>` : "") + `</div>`;
 }
 /* The game's default keys (0.7 P11, KEYS: the Ranger, the Gladiator), drawn like the Assassin's grid: one column per key
@@ -67,7 +68,7 @@ function renderDefaultKeys(lv, fresh, cell) {
   setHTML(el, [...Array(depth).keys()].reverse().map(r => `<i class="rn">${r}</i>` + cols.map(x => cell(x.rows[r], x.key, r).replace('class="sk', `class="sk${r === 0 ? " r0" : ""}`)).join("")).join("") +
     `<span></span>` + cols.map(x => `<span class="kv-key${/ click$/.test(x.key) ? " mouse" : ""}">${x.key}</span>`).join("") +
     singles.map(x => `<p class="lmb">${x.key}: <span class="sk${fresh.has(x.rows[0]) ? " new" : ""}">${gridIco(x.rows[0])}<span class="nm">${x.rows[0]}</span></span></p>`).join("") +
-    `<p class="fine tline kv-note">The game's default keys. Row 0 is tried first; a skill on cooldown or not ready is skipped. A skill shows here from the level you learn it.</p>`);
+    `<p class="fine tline kv-note">The game's default keys${stTag(KEYS_ST)}. Row 0 is tried first; a skill on cooldown or not ready is skipped. A skill shows here from the level you learn it.</p>`);
 }
 /* Stigmas still to come: where each will go on E when you add it (in the order the slots open). */
 function stLaterHTML() {

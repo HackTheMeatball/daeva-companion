@@ -43,7 +43,7 @@ function renderNext() {
     const ok = !locked && (hero.spec || pts >= cost);
     const state_ = hero.spec ? (locked ? "lock" : "ok") : locked ? (have >= cost ? "lock" : "short") : ok ? "ok" : "short";
     const sub = hero.spec ? specSub(hero) :
-      `${locked ? `Lv ${hero.req}${stTag(hero.s.learnSt)}` : "Available now"} · <span class="nw">priority #${hero.rank + 1}</span>${hero.s.single ? ` · single source (${hero.s.single})` : ""}`;
+      `${locked ? `Lv ${hero.req}${stTag(hero.s.learnSt)}` : "Available now"} · <span class="nw">priority #${hero.rank + 1}</span>${hero.s.single ? ` · single source (${hero.s.single})` : ""}${hero.s.st ? ` ·${stTag(hero.s.st)}` : ""}`;
     const btn = hero.spec ? (locked ? `Opens at skill Lv ${hero.slotLv} · yours: ${skillLvOf(char(state), hero)}` : "Mark specialty picked") :
       ok ? `Mark spent · ${spCostTxt(hero)}` : locked ? (have >= cost ? `All Lv ${lv} spent · next at Lv ${hero.req}` : `Lv ${hero.req} · need ${cost - have} more pts`) : `Need ${cost - pts} more pts`;
     const pct = hero.spec ? (locked ? 0 : 100) : Math.min(100, Math.max(0, pts / cost * 100));
@@ -76,8 +76,9 @@ function renderNext() {
        status like the Stigmas card's slot row, not the green "points covered" ✓); slot 3 is past what points and plan nodes reach (Q5) */
     if (x.spec) return `<li class="isspec" title="Specialty slot ${x.slot}: ${specSub(x).replace(/<[^>]+>/g, "")} · ${avail ? "available now" : `at skill Lv ${x.slotLv} (yours: ${skillLvOf(char(state), x)})`}${planReachOf(x) < x.slotLv ? ` · the plan's skill points and board nodes reach skill Lv ${planReachOf(x)}` : ""}">` +
       `<span class="sname">${spMini(x.s.n)}${x.s.n} ${spType(x.s)} <span class="spectag">${x.slot > 1 ? "slot " + x.slot : "spec"}</span></span><span class="slv${avail ? " now" : ""}">${avail ? "now" : "skill " + x.slotLv}</span><span class="sst"></span></li>`;
-    /* a learn level not verified (0.8 P20: six Cleric passives are owner-check) carries its label */
-    return `<li title="${spCostTxt(x)} · ${avail ? "available now" : "Lv " + x.req + stNote(x.s.learnSt)} · ${short > 0 ? `${short} short by then` : "points covered"}${x.s.single ? ` · single source (${x.s.single})` : ""}"><span class="sname">${spMini(x.s.n)}${x.s.n} ${spType(x.s)} <span class="lvarr">${x.L - 1} → ${x.L}${spBonus(x.s.n)}</span></span><span class="slv${avail ? " now" : ""}">${avail ? "now" : "Lv " + x.req + stTag(x.s.learnSt)}</span><span class="sst ${short > 0 ? "short" : "ok"}">${short > 0 ? `−${short}` : "✓"}</span></li>`;
+    /* a learn level not verified (0.8 P20: six Cleric passives are owner-check) carries its label; so does a skill order row
+       the data labels disputed or inferred (0.9 P1), after the upgrade */
+    return `<li title="${spCostTxt(x)} · ${avail ? "available now" : "Lv " + x.req + stNote(x.s.learnSt)} · ${short > 0 ? `${short} short by then` : "points covered"}${x.s.single ? ` · single source (${x.s.single})` : ""}${x.s.st ? ` · plan${stNote(x.s.st)}` : ""}"><span class="sname">${spMini(x.s.n)}${x.s.n} ${spType(x.s)} <span class="lvarr">${x.L - 1} → ${x.L}${spBonus(x.s.n)}</span>${stTag(x.s.st)}</span><span class="slv${avail ? " now" : ""}">${avail ? "now" : "Lv " + x.req + stTag(x.s.learnSt)}</span><span class="sst ${short > 0 ? "short" : "ok"}">${short > 0 ? `−${short}` : "✓"}</span></li>`;
   }).join("") + `</ul>` : "");
   /* Sync levels: the box is the base level; the green bonus beside it, as in the game's tooltip title */
   SP_SKILLS.forEach((s, i) => { const b = document.getElementById("syncB" + i), x = skillBonusOf(char(state), s.n);

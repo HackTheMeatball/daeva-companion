@@ -47,7 +47,7 @@ export function storyHereOf(state) {
   const c = char(state);
   if (!c.quest) return null;
   const list = QUEST_STEPS[c.quest], done = (c.qsteps || {})[c.quest] || [], L = QUEST_LOC[c.quest] || {};
-  const turnin = () => L.turninKib ? { kib: L.turninKib, m: L.turninKibM, zone: L.turninZone } : null;
+  const turnin = () => L.turninKib ? { kib: L.turninKib, m: L.turninKibM, zone: L.turninZone, ...(L.turninZoneSt ? { zoneSt: L.turninZoneSt } : {}) } : null;
   if (list) { const i = objIdxOf(state, list).find(i => !done.includes(i));
     if (i != null) { const t = list[i], m = t.match(/\(Kibelisk: ([^)]+)\)/);
       if (/^Turn in\b/.test(t)) return turnin();
@@ -57,6 +57,8 @@ export function storyHereOf(state) {
 /* The zone of the story step, for "near your story step": the record's own zone wins over the Kibelisk's zone vote
    (KIB_AREA, from regional / dungeon / stronghold data); a placeholder zone means no area, never a guess. */
 export const storyAreaOf = (sHere, kibArea) => !sHere ? null : sHere.zone !== undefined ? sHere.zone || null : kibArea[sHere.kib] || null;
+/* that zone's label (0.9 P1): the turn-in zone's own when the record's zone is used, else none */
+export const storyAreaStOf = sHere => sHere && sHere.zone ? sHere.zoneSt || null : null;
 
 /* ---------- Regional quests ---------- */
 const RQ_BY_KEY = Object.fromEntries(RQ.map(q => ["rq:" + q.id, q]));
@@ -114,7 +116,7 @@ export const skillBonusOf = (c, name) => { const N = activePack().data.graph.nod
     PLAN_BY_SKILL.set(N, m); }
   return (PLAN_BY_SKILL.get(N).get(line.skill) || []).reduce((t, n) => t + (c.checks[n.key] ? n.adds : 0), 0); };
 export const specPickOf =(c, x, ev = gatesOf(c)) => { const p = (x.s.specs || [])[x.slot - 1];
-  if (!gateChangeOn("specialtySlots")) return x.slot === 1 ? { t: x.s.spec, lv: x.slotLv } : null;
+  if (!gateChangeOn("specialtySlots")) return x.slot === 1 ? { ...(p || {}), t: x.s.spec, lv: x.slotLv } : null;
   return p && skillLvOf(c, x, ev) >= p.lv ? p : null; };
 /* The upgrade to buy now: the first open one, if you have the points (a specialty is free); else null. */
 export const skillBuy = (c, lv = c.level) => { const next = skillOpen(c, lv).now[0], { pts } = skillPoints(c, lv); return next && (next.spec || pts >= next.cost) ? next : null; };

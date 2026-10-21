@@ -6,7 +6,7 @@
    stronghold's level range (Dungeons & Strongholds), a Sealed Dungeon's entrance (Next up), a skill's learn level (Skills
    card; every guide pack's compiled tables). Story quest zones never show as text, so they have no tag to check. */
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path'); const ROOT = path.resolve(__dirname, '..'); const CFG = require('./config');
-const { buildFixture } = require('./support/regress-fixture'); const { writeSave } = require('./support/save');
+const { buildFixture } = require('./support/regress-fixture'); const { writeSave, writeRaw, toStored } = require('./support/save');
 let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' : 'FAIL ') + name + (!c && d !== undefined ? '  · ' + JSON.stringify(d).slice(0, 700) : '')); if (!c) fail++; };
 const recs = rel => JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'packs', rel), 'utf8')).records;
 const statusOf = (r, f) => (r.fieldStatus || {})[f] ?? r.status;
@@ -88,6 +88,58 @@ const want = (r, f) => TAG[statusOf(r, f)] || null;
   const nLab = Object.values(lbl).filter(l => l !== '2+ sources').length;
   const badTag = sp1.filter(r => { const t = r.tags; return !(t.length === 0 || (t.length === 1 && ['disputed', 'contested', 'inferred'].includes(t[0][0]) && t[0][1].length > 20)); });
   ok(`specialty slot 2: ${nLab} labelled picks each show their label with the alternative in the tooltip`, sp1.filter(r => r.tags.length === 1).length === nLab && !badTag.length, sp1);
+
+  /* 0.9 P1: the build's own labels, for all eight classes. Each value's status comes from the data (a row's own status,
+     else the build's; a list's fieldStatus, else the build's): the generator carries exactly the tagged ones (disputed,
+     owner-check, inferred), a single-source skill order row keeps "single source", and each class's page shows the tag on
+     its skill order rows (Skills card), its plan nodes (Daevanion card), its stigma plan's heading and its default keys'
+     heading, and nowhere for a verified value */
+  const TAGGED = s => ['disputed', 'owner-check', 'inferred'].includes(s) ? s : undefined;
+  const badBuild = [], badPage = [];
+  for (const id of guidePacks()) {
+    const cls = id.split('/').pop(), g = generate({ pack: id }).constants, b = recs(`aion2/asmodian/${cls}/builds.json`).find(r => r.id === `build:${cls}:guide`);
+    const skills = recs(`aion2/classes/${cls}/skills.json`), nm = Object.fromEntries(skills.map(s => [s.id, s.name])), rowOf = Object.fromEntries(b.skillOrder.map(e => [nm[e.skill], e]));
+    for (const x of [...g.SP_SKILLS_CORE, ...g.SP_EXTRA]) { const e = rowOf[x.n], s = e.status ?? b.status;
+      if (x.st !== TAGGED(s) || !!x.single !== (s === 'single-source' && !e.core)) badBuild.push({ id, skill: x.n, st: x.st, single: x.single, data: s }); }
+    const picks = statusOf(b, 'specialtyPicks');
+    for (const x of g.SP_SKILLS_CORE) for (const [i, p] of (x.specs || []).entries()) { const pid = b.specialtyPicks[skills.find(s => s.name === x.n).id][i], ev = (b.specialtyEvidence || {})[pid];
+      if (ev ? p.vst !== undefined : p.vst !== TAGGED(picks)) badBuild.push({ id, pick: pid, vst: p.vst, data: ev ? ev.label : picks }); }
+    const nodes = recs(`aion2/classes/${cls}/board-nodes.json`), keyOf = Object.fromEntries(nodes.map(n => [n.id, n.key]));
+    const dvSt = Object.fromEntries(b.boardPlan.map(e => [e.node ? keyOf[e.node] : e.key, e.status ?? b.status]));
+    const dvs = g.GUIDE_GATES.flatMap(m => m.items.filter(it => it.dv));
+    for (const it of dvs) if (it.st !== TAGGED(dvSt[it.k])) badBuild.push({ id, node: it.k, st: it.st, data: dvSt[it.k] });
+    const stSt = TAGGED(statusOf(b, 'stigmaSlots')) || TAGGED(statusOf(b, 'stigmaTargets')) || null, dk = b.keyStacks.defaultKeys, kSt = dk ? TAGGED(dk.status ?? b.status) || null : null;
+    if (g.STIGMA_ST !== stSt || g.KEYS_ST !== kSt) badBuild.push({ id, STIGMA_ST: g.STIGMA_ST, stSt, KEYS_ST: g.KEYS_ST, kSt });
+    /* the page: this class at Lv 20, nothing bought */
+    const sc = await p.evaluate(buildFixture, { L: 20, mode: 'advanced', fx: 'clean' }); sc.checks = {};
+    const stored = toStored(sc); Object.assign(stored.chars[stored.current], { pack: id, class: cls });
+    await writeRaw(p, JSON.stringify(stored)); await p.reload(); await p.waitForTimeout(400);
+    const pg = await p.evaluate(() => { const tags = el => el ? [...el.querySelectorAll('.ss-tag')].map(t => t.textContent) : null;
+      return { pack: char(state).pack, sk: [...document.querySelectorAll('#spSoon li:not(.isspec)')].map(li => ({ n: li.querySelector('.sname').textContent, tags: tags(li.querySelector('.sname')) })),
+        dv: [...document.querySelectorAll('#dvAllList li.dvn')].map(li => ({ k: li.dataset.dvk, tags: tags(li.querySelector('.txt')) })),
+        stHead: tags(document.querySelector('#stCard .ns-head h2')), stRows: tags(document.getElementById('stBody')).concat(tags(document.getElementById('stList'))),
+        keys: tags(document.querySelector('#stackViz .kv-note, #stackViz .kv-defs .khead')) }; });
+    if (pg.pack !== id) { badPage.push({ id, loaded: pg.pack }); continue; }
+    const wSk = Object.fromEntries([...g.SP_SKILLS_CORE, ...g.SP_EXTRA].map(x => [x.n, TAG[x.st] || null]));
+    for (const r of pg.sk) { const n = Object.keys(wSk).sort((a, c) => c.length - a.length).find(k => r.n.startsWith(k)), w = wSk[n];
+      if (w ? !(r.tags.length === 1 && r.tags[0] === w) : r.tags.length) badPage.push({ id, row: r.n, tags: r.tags, want: w }); }
+    for (const r of pg.dv) { const w = TAG[TAGGED(dvSt[r.k])] || null; if (w ? !(r.tags.length === 1 && r.tags[0] === w) : r.tags.length) badPage.push({ id, node: r.k, tags: r.tags, want: w }); }
+    const wSt = TAG[stSt] || null;
+    if (!pg.stHead || (wSt ? !(pg.stHead.length === 1 && pg.stHead[0] === wSt) : pg.stHead.length) || pg.stRows.includes(wSt)) badPage.push({ id, stHead: pg.stHead, stRows: pg.stRows, want: wSt });
+    const wK = TAG[kSt] || null;
+    if (pg.keys && (wK ? !(pg.keys.length === 1 && pg.keys[0] === wK) : pg.keys.length)) badPage.push({ id, keys: pg.keys, want: wK });
+    if (!pg.dv.length) badPage.push({ id, dv: 'no plan rows rendered' });
+  }
+  ok('every guide pack: skill order rows, specialty picks, plan nodes, the stigma plan and the default keys carry exactly the data\'s tagged labels', !badBuild.length, badBuild.slice(0, 5));
+  ok('every class page: Skills rows, Daevanion plan rows, the Stigmas heading and the default keys heading show the tag exactly when the data labels them', !badPage.length, badPage.slice(0, 5));
+  ok('the data has labelled plan nodes, skill order rows and a labelled stigma plan to check', (() => { const bs = guidePacks().map(id => recs(`aion2/asmodian/${id.split('/').pop()}/builds.json`)[0]);
+    return bs.some(b => b.boardPlan.some(e => TAGGED(e.status ?? b.status))) && bs.some(b => b.skillOrder.some(e => TAGGED(e.status ?? b.status))) && bs.some(b => TAGGED(statusOf(b, 'stigmaSlots'))); })());
+  /* story turn-in zones: QUEST_LOC carries the quest's own label for its turn-in zone */
+  const sqs = recs('aion2/asmodian/story-quests.json'), loc = generate({ pack: guidePacks()[0] }).constants.QUEST_LOC;
+  const badZ = sqs.filter(s => loc[s.name] && loc[s.name].turninZone).filter(s => loc[s.name].turninZoneSt !== TAGGED(statusOf(s, 'turnin.zone'))).map(s => ({ id: s.id, got: loc[s.name].turninZoneSt, data: statusOf(s, 'turnin.zone') }));
+  ok('story quests: a shown turn-in zone carries its label exactly when the data has one', !badZ.length, badZ.slice(0, 5));
+  const nearTags = await p.evaluate(() => { const box = document.createElement('div'); box.innerHTML = nsWhere('Ishalgen', null, 'Ishalgen', null, 'owner-check') + '|' + nsWhere('Ishalgen', null, 'Ishalgen', null, null); return box.textContent; });
+  ok('"near your story step" carries the turn-in zone\'s tag, none when verified', nearTags === 'Ishalgen (near your story step check in game)|Ishalgen (near your story step)', nearTags);
 
   /* the tag's text is at least 12 px wherever it shows (Design Critic checklist) */
   const sizes = await p.evaluate(() => [...document.querySelectorAll('.ss-tag')].map(t => parseFloat(getComputedStyle(t).fontSize)));
