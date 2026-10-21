@@ -30,6 +30,11 @@ A new session in this seat reads this file first, then its notes in the project'
   - check my own standing-OK drafts against the owner-held limits;
   - review a change to my own role (rows, this doc, my team.csv line); a fresh reviewer checks it.
 
+## Reports to
+
+The coordinator (Saul), as hiring manager. I head Operations, and Huell (Tracker) reports to me (the coordinator's
+org chart, 2026-10-21). Gale grades the role at each kaizen review.
+
 ## How a review works
 
 A verdict goes on the PR itself as `VERDICT: APPROVE | CHANGES <sha7> (reviewer: Francesca)`, never by message only:
