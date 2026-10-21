@@ -352,7 +352,8 @@
       },
       "access": {
         "robots": "allows",
-        "terms": "unread",
+        "terms": "allows",
+        "termsUrl": "https://allthings.how/terms-and-conditions/",
         "mode": "scripted",
         "checkedAt": "2026-10-20"
       },
@@ -364,7 +365,7 @@
       },
       "verifiedAt": "2026-10-20",
       "notes": [
-        "Re-vetted 2026-10-20 (Source Vetting): no terms page at the usual paths, robots.txt allows all; world boss timers."
+        "Re-vetted 2026-10-20 (Source Vetting): terms at /terms-and-conditions/ (found by web search; the footer's /terms/ is 404) ban copying, reproducing or downloading its material without written permission, not reading it. Spot in docs/research/SOURCES.md: facts only, a few pages per task. Its quotes in data/ are being replaced by paraphrases (0.8.1 F9, #662)."
       ]
     },
     {

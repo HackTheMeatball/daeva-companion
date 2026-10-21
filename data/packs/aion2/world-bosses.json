@@ -209,6 +209,14 @@
         {
           "map": "Chaotic Lower Reshanta",
           "area": "Reshanta's Root"
+        },
+        {
+          "map": "Chaotic Lower Reshanta",
+          "area": "Devastated Remnants - Shade Island"
+        },
+        {
+          "map": "Chaotic Lower Reshanta",
+          "area": "Black Fragments Area - Lonely Island"
         }
       ],
       "schedule": [
@@ -258,7 +266,8 @@
         "name": "inferred"
       },
       "notes": [
-        "Metabot's client table names the Fri/Sun 21:00 boss Guardian Lord Nahma. aion2hub and allthings.how list an unnamed \"Abyss Siege Boss\" in the same slot and map; that it is the same boss is inferred (no source names another Fri/Sun boss)."
+        "Metabot's client table names the Fri/Sun 21:00 boss Guardian Lord Nahma. aion2hub and allthings.how list an unnamed \"Abyss Siege Boss\" in the same slot and map; that it is the same boss is inferred (no source names another Fri/Sun boss).",
+        "Metabot lists three spawn spots and three slots for each time; which spot is used is not given."
       ],
       "verifiedAt": "2026-10-20"
     },
@@ -266,25 +275,43 @@
       "id": "wb:high-commander-lagta",
       "name": "High Commander Lagta",
       "kind": "respawn",
-      "level": 45,
+      "level": 48,
       "places": [
         {
           "map": "Altgard",
+          "area": "Lagta Fortress",
           "faction": "asmodian"
         },
         {
           "map": "Verteron",
+          "area": "Drana Plantation",
           "faction": "elyos"
         }
       ],
       "cooldownHours": 12,
       "sources": [
         {
-          "url": "https://aion2hub.com/tools/world-bosses",
+          "url": "https://metabot.gg/en/aion-2/monsters/high-commander-lagta",
           "fields": [
             "name",
             "level",
             "places"
+          ],
+          "checkedAt": "2026-10-21",
+          "section": "Where to find (Verteron zone; Altgard map)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard",
+          "fields": [
+            "places"
+          ],
+          "checkedAt": "2026-10-21",
+          "section": "Altgard named monsters (Lv 48, zone)"
+        },
+        {
+          "url": "https://aion2hub.com/tools/world-bosses",
+          "fields": [
+            "name"
           ],
           "checkedAt": "2026-10-20",
           "section": "Zone Field Bosses"
@@ -292,9 +319,7 @@
         {
           "url": "https://aion2atlas.app/boss-timer/",
           "fields": [
-            "cooldownHours",
-            "level",
-            "places"
+            "cooldownHours"
           ],
           "checkedAt": "2026-10-20",
           "section": "Global column"
@@ -309,40 +334,55 @@
       ],
       "status": "verified",
       "fieldStatus": {
-        "cooldownHours": "inferred",
-        "level": "disputed"
+        "cooldownHours": "inferred"
       },
       "notes": [
-        "Two sources for the cooldown; that they are independent is inferred (neither cites the other). Korea doubles it."
+        "Two sources for the cooldown; that they are independent is inferred (neither cites the other). Korea doubles it.",
+        "Level 48 and the zones are Metabot's game-database fields (2026-10-21). aion2hub's 45 came from its 2026-09-19 pre-launch snapshot."
       ],
-      "conflicts": [
-        "Level: aion2hub's Global client read says 45; aion2atlas says 48. 45 is kept."
-      ],
-      "verifiedAt": "2026-10-20"
+      "verifiedAt": "2026-10-21"
     },
     {
       "id": "wb:silent-dartan",
       "name": "Silent Dartan",
       "kind": "respawn",
-      "level": 45,
+      "level": 48,
       "places": [
         {
           "map": "Altgard",
+          "area": "Basfelt Ruins",
           "faction": "asmodian"
         },
         {
           "map": "Verteron",
+          "area": "Southern Altamia Highland",
           "faction": "elyos"
         }
       ],
       "cooldownHours": 6,
       "sources": [
         {
-          "url": "https://aion2hub.com/tools/world-bosses",
+          "url": "https://metabot.gg/en/aion-2/monsters/silent-dartan",
           "fields": [
             "name",
             "level",
             "places"
+          ],
+          "checkedAt": "2026-10-21",
+          "section": "Where to find (Verteron zone; Altgard map)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard",
+          "fields": [
+            "places"
+          ],
+          "checkedAt": "2026-10-21",
+          "section": "Altgard named monsters (Lv 48, zone)"
+        },
+        {
+          "url": "https://aion2hub.com/tools/world-bosses",
+          "fields": [
+            "name"
           ],
           "checkedAt": "2026-10-20",
           "section": "Zone Field Bosses"
@@ -350,9 +390,7 @@
         {
           "url": "https://aion2atlas.app/boss-timer/",
           "fields": [
-            "cooldownHours",
-            "level",
-            "places"
+            "cooldownHours"
           ],
           "checkedAt": "2026-10-20",
           "section": "Global column"
@@ -367,40 +405,55 @@
       ],
       "status": "verified",
       "fieldStatus": {
-        "cooldownHours": "inferred",
-        "level": "disputed"
+        "cooldownHours": "inferred"
       },
       "notes": [
-        "Two sources for the cooldown; that they are independent is inferred (neither cites the other; aion2vault, which repeats allthings.how, is not counted). Korea doubles it."
+        "Two sources for the cooldown; that they are independent is inferred (neither cites the other; aion2vault, which repeats allthings.how, is not counted). Korea doubles it.",
+        "Level 48 and the zones are Metabot's game-database fields (2026-10-21). aion2hub's 45 came from its 2026-09-19 pre-launch snapshot."
       ],
-      "conflicts": [
-        "Level: aion2hub's Global client read says 45; aion2atlas says 48. 45 is kept."
-      ],
-      "verifiedAt": "2026-10-20"
+      "verifiedAt": "2026-10-21"
     },
     {
       "id": "wb:soul-ruler-kashapa",
       "name": "Soul Ruler Kashapa",
       "kind": "respawn",
-      "level": 45,
+      "level": 48,
       "places": [
         {
           "map": "Altgard",
+          "area": "Fafnite Deposit",
           "faction": "asmodian"
         },
         {
           "map": "Verteron",
+          "area": "Eastern Altamia Highland",
           "faction": "elyos"
         }
       ],
       "cooldownHours": 6,
       "sources": [
         {
-          "url": "https://aion2hub.com/tools/world-bosses",
+          "url": "https://metabot.gg/en/aion-2/monsters/soul-ruler-kashapa",
           "fields": [
             "name",
             "level",
             "places"
+          ],
+          "checkedAt": "2026-10-21",
+          "section": "Where to find (Verteron zone; Altgard map)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard",
+          "fields": [
+            "places"
+          ],
+          "checkedAt": "2026-10-21",
+          "section": "Altgard named monsters (Lv 48, zone)"
+        },
+        {
+          "url": "https://aion2hub.com/tools/world-bosses",
+          "fields": [
+            "name"
           ],
           "checkedAt": "2026-10-20",
           "section": "Zone Field Bosses"
@@ -408,9 +461,7 @@
         {
           "url": "https://aion2atlas.app/boss-timer/",
           "fields": [
-            "cooldownHours",
-            "level",
-            "places"
+            "cooldownHours"
           ],
           "checkedAt": "2026-10-20",
           "section": "Global column"
@@ -425,16 +476,13 @@
       ],
       "status": "verified",
       "fieldStatus": {
-        "cooldownHours": "inferred",
-        "level": "disputed"
+        "cooldownHours": "inferred"
       },
       "notes": [
-        "Two sources for the cooldown; that they are independent is inferred (neither cites the other). Korea doubles it."
+        "Two sources for the cooldown; that they are independent is inferred (neither cites the other). Korea doubles it.",
+        "Level 48 and the zones are Metabot's game-database fields (2026-10-21). aion2hub's 45 came from its 2026-09-19 pre-launch snapshot."
       ],
-      "conflicts": [
-        "Level: aion2hub's Global client read says 45; aion2atlas says 48. 45 is kept."
-      ],
-      "verifiedAt": "2026-10-20"
+      "verifiedAt": "2026-10-21"
     },
     {
       "id": "wb:watcher-kaira",
