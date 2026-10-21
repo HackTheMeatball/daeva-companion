@@ -775,6 +775,10 @@ picker and opens from a stored save. P28 finishes P3's own goal in the tests; P2
   option B): its own save-key prefix, `noindex`, a "Staging" banner, smoke on both. DEPLOY.md, the deploy, smoke and
   release job order, and CLAUDE.md's site line are rewritten. After `owner-ok-0.9-staging`. Then the rollback drill
   (below) runs on staging.
+- **S5: Automatic hold-lift.** `auto-merge.yml` lifts `hold` only when the PR body has a `Reviewers:` line, every
+  named reviewer approves the current head, the pipeline review approves it and `ci-ok` is green; a manual hold on a
+  PR without a `Reviewers:` line stays manual. Lanes: auto-merge.yml, `tests/automerge.mjs`, gus.md; Opus; trigger-1
+  outside review. After #705 merges (owner OK 2026-10-21 03:34Z, "Sure let's do it").
 
 Alongside, not builds: Watchdog and Build Pipeline write the incident runbook (severity levels, one incident lead,
 blameless postmortem with dated fixes; team audit §8d); Build Pipeline writes the owner-settings checklist it reads
