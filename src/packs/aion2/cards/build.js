@@ -4,7 +4,7 @@
 import { char } from "../../../core/state.js";
 import { setHTML } from "../../../core/cards.js";
 import { activePack, packClasses } from "../../../core/pack.js";
-import { E_ORDER, GUIDE_KEYS, HAS_KEYS, KEYS, KEYS_ST, SP_ICONS, STAT_NOTE, STAT_SRC, STAT_TIERS, STIGMA_ICON } from "../data/build.js";
+import { E_NOTE, E_ORDER, E_ST, GUIDE_KEYS, HAS_KEYS, KEYS, KEYS_ST, SP_ICONS, STAT_NOTE, STAT_SRC, STAT_TIERS, STIGMA_ICON } from "../data/build.js";
 import { stTag } from "../data/markup.js";
 import { rotKeys } from "../requirements.js";
 import { aion2State as state, aion2Save as save, aion2Update as update, aion2STIGMA_SLOTS as STIGMA_SLOTS, aion2StIco as stIco, aion2SpMini as spMini, aion2Ini as ini } from "./page.js";
@@ -43,7 +43,7 @@ function renderStacks(lv) {
   const k = rotKeys(char(state), lv), lmb = (KEYS.find(x => x.key === "Left click") || { rows: [] }).rows.filter(r => lv >= r.lv).map(r => r.n);
   const cols = [["Q", k.q], ["E", E_STACK(lv)], ["T", k.rmb]];
   setHTML(document.getElementById("stackViz"),
-    `<p class="fine muted kv-sugg">Suggested keys: Q, E and T (T holds the stack the right-click macro fires). Move the skills there yourself.</p>` +
+    `<p class="fine muted kv-sugg">Suggested keys: Q, E and T (T holds the stack the right-click macro fires). Move the skills there yourself.${E_ST ? " The stigmas on E:" + stTag(E_ST) : ""}</p>` +
     [3, 2, 1, 0].map(r => `<i class="rn">${r}</i>` + cols.map(([key, rows]) => cell(rows[r], key, r).replace('class="sk', `class="sk${r === 0 ? " r0" : ""}`)).join("")).join("") +
     `<span></span>` + cols.map(([key]) => `<span class="kv-key">${key}</span>`).join("") +
     lmb.map(n => `<p class="lmb">Left click: <span class="sk">${gridIco(n)}<span class="nm">${n}</span></span></p>`).join("") + defaultKeysNote(lv) + stLaterHTML());
@@ -90,7 +90,8 @@ function renderRotation() {
   const before = e.filter(n => n === "Illusive Clone" || n === "Swift Contract"), after = e.filter(n => !before.includes(n));
   const steps = [];
   /* Q and E are the guide's suggested binding, not the game's defaults: the Key setup grid's heading line says so once */
-  if (before.length) steps.push(`<b>E</b> ${before.map(n => nameIco(n, true)).join(" + ")}`);
+  /* the buffs' order is the disputed part of the E stack (0.9 P17, C21b): its label sits on this step */
+  if (before.length) steps.push(`<b>E</b> ${before.map(n => nameIco(n, true)).join(" + ")}${E_NOTE ? " " + E_NOTE : ""}${stTag(E_ST)}`);
   if (q.length) steps.push(`<b>Q</b> ${nameIco(q[0])} to get behind the target`);
   if (after.length) steps.push(`<b>E</b> ${after.map(n => nameIco(n, true)).join(", then ")}`);
   steps.push(`<b>Hold</b> right + left click`);

@@ -377,8 +377,9 @@ async function load(p, state, mode) {
        game's default) its own line under them, then the game's default keys */
     ok(`keys ${id}: key chips Q / E / T on one line under their columns, Left click under them, the defaults note under that`,
       kv.keys.join('|') === 'Q|E|T' && !kv.keyBad.length && kv.lmbBelow && kv.noteBelow, kv);
-    ok(`keys ${id}: one line above the grid says Q, E and T are suggested keys; the chips carry no mark`,
-      /^Suggested keys: Q, E and T \(T holds the stack the right-click macro fires\)\. Move the skills there yourself\.$/.test(kv.head) && !kv.marked.length, { head: kv.head, marked: kv.marked });
+    /* 0.9 P17: the same line ends on the E stack's label (keyStacks.eOrderStatus: disputed, C21b) */
+    ok(`keys ${id}: one line above the grid says Q, E and T are suggested keys, then the E stack's label; the chips carry no mark`,
+      /^Suggested keys: Q, E and T \(T holds the stack the right-click macro fires\)\. Move the skills there yourself\. The stigmas on E: check in game$/.test(kv.head) && !kv.marked.length, { head: kv.head, marked: kv.marked });
     /* Design Lead on #565 (2026-10-20): the defaults are a list under a "Game default keys" eyebrow, one key chip per
        line, then the macro's place, still labelled (inferred) */
     ok(`keys ${id}: the defaults list puts key 1 on Shadowstrike, one chip per line, and ends with the inferred macro line`,

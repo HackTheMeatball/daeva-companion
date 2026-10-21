@@ -113,6 +113,9 @@ const want = (r, f) => TAG[statusOf(r, f)] || null;
     for (const it of dvs) if (it.cst !== TAGGED(dvCst[it.k])) badBuild.push({ id, node: it.k, cst: it.cst, data: dvCst[it.k] });
     const stSt = TAGGED(statusOf(b, 'stigmaSlots')) || TAGGED(statusOf(b, 'stigmaTargets')) || null, dk = b.keyStacks.defaultKeys, kSt = dk ? TAGGED(dk.status ?? b.status) || null : null;
     if (g.STIGMA_ST !== stSt || g.KEYS_ST !== kSt) badBuild.push({ id, STIGMA_ST: g.STIGMA_ST, stSt, KEYS_ST: g.KEYS_ST, kSt });
+    /* 0.9 P17: the E stack's own label (keyStacks.eOrderStatus) */
+    const eSt = TAGGED(b.keyStacks.eOrderStatus) || null;
+    if (g.E_ST !== eSt) badBuild.push({ id, E_ST: g.E_ST, eSt });
     /* the page: this class at Lv 20, nothing bought and no cost logged (a logged cost is the player's own, so its box
        drops the plan cost's tag; the fixture's Assassin costs share keys like dv:nezekan:r4c5 with other classes) */
     const sc = await p.evaluate(buildFixture, { L: 20, mode: 'advanced', fx: 'clean' }); sc.checks = {}; sc.dvCost = {};
@@ -123,7 +126,7 @@ const want = (r, f) => TAG[statusOf(r, f)] || null;
         dv: [...document.querySelectorAll('#dvAllList li.dvn')].map(li => ({ k: li.dataset.dvk, tags: tags(li.querySelector('.txt')), cost: tags(li.querySelector('.dvc-wrap')), meta: li.querySelector('.loc').textContent })),
         nx: [...document.querySelectorAll('#dvNextList .dvrow.nx')].map(r => ({ k: r.dataset.nx, cost: tags(r.querySelector('.dvcost-k')) })),
         stHead: tags(document.querySelector('#stCard .ns-head h2')), stRows: tags(document.getElementById('stBody')).concat(tags(document.getElementById('stList'))),
-        keys: tags(document.querySelector('#stackViz .kv-note, #stackViz .kv-defs .khead')) }; });
+        keys: tags(document.querySelector('#stackViz .kv-note, #stackViz .kv-defs .khead')), eKeys: tags(document.querySelector('#stackViz .kv-sugg')) }; });
     if (pg.pack !== id) { badPage.push({ id, loaded: pg.pack }); continue; }
     const wSk = Object.fromEntries([...g.SP_SKILLS_CORE, ...g.SP_EXTRA].map(x => [x.n, TAG[x.st] || null]));
     for (const r of pg.sk) { const n = Object.keys(wSk).sort((a, c) => c.length - a.length).find(k => r.n.startsWith(k)), w = wSk[n];
@@ -135,6 +138,10 @@ const want = (r, f) => TAG[statusOf(r, f)] || null;
     if (!pg.stHead || (wSt ? !(pg.stHead.length === 1 && pg.stHead[0] === wSt) : pg.stHead.length) || pg.stRows.includes(wSt)) badPage.push({ id, stHead: pg.stHead, stRows: pg.stRows, want: wSt });
     const wK = TAG[kSt] || null;
     if (pg.keys && (wK ? !(pg.keys.length === 1 && pg.keys[0] === wK) : pg.keys.length)) badPage.push({ id, keys: pg.keys, want: wK });
+    /* the guide's own key grid (the Assassin) names the E stack's label on its heading line; a build with eOrderStatus but
+       no guide grid would lose it, so that counts as a miss too */
+    const wE = TAG[eSt] || null;
+    if (pg.eKeys ? (wE ? !(pg.eKeys.length === 1 && pg.eKeys[0] === wE) : pg.eKeys.length) : wE) badPage.push({ id, eKeys: pg.eKeys, want: wE });
     if (!pg.dv.length) badPage.push({ id, dv: 'no plan rows rendered' });
     /* P16 design review: a row's meta never says a phrase twice ("Fury is learned at Lv 21 · learned at Lv 21") */
     for (const r of pg.dv) { const parts = r.meta.split(' · '); if (parts.some((s, i) => parts.slice(0, i).some(q => q.includes(s)))) badMeta.push({ id, node: r.k, meta: r.meta }); }

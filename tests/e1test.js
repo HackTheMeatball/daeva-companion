@@ -64,12 +64,12 @@ const cards = p => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-
   await p.selectOption('#stCard [data-stpick]', 'Savage Fang'); await p.waitForTimeout(200);
   let s2 = await p.evaluate(() => ({ names: stNames(), ms: [...document.querySelectorAll('#g27 .stn')].map(x => x.textContent), erow: (document.querySelector('#g27 .erow') || {}).textContent, btn: document.querySelector('#stCard [data-sttick]').textContent, eq: (document.querySelector('#nowStar .ns-card h3') ? [...document.querySelectorAll('#nowStar .ns-card h3')].map(h => h.innerText).find(t => /^Equip/.test(t)) : '') }));
   ok('pick: names follow (slot 2 = Savage Fang, slot 4 falls to Illusive Clone)', s2.names.join('|') === "Triniel's Dagger|Savage Fang|Swift Contract|Illusive Clone", s2.names); /* E2 plan order */
-  ok('pick: milestone lines and E row follow', s2.ms.every(x => x === 'Savage Fang') && s2.erow === ', row 1', s2);
+  ok('pick: milestone lines and E row follow', s2.ms.every(x => x === 'Savage Fang') && s2.erow === ", row 0 (Triniel's Dagger moves down one)", s2); /* 0.9 P17: Savage Fang fires before Triniel's Dagger */
   ok('pick: Next up card and button show −1 shard', /Savage Fang/.test(s2.eq) && /−1 shard/.test(s2.btn), s2);
   await p.click('#stCard [data-sttick]'); await p.waitForTimeout(300);
   let t = await p.evaluate(() => ({ shards: char(state).stShards, eq: char(state).checks['g27:0'], lv: char(state).stLv[stKey('Savage Fang')], toast: (document.getElementById('rwToast') || {}).innerText, estack: E_STACK(char(state).level) }));
   ok('equip: −1 shard, toast with Undo', t.shards === 2 && t.eq === true && t.lv === 1 && /−1 shard/.test(t.toast) && /Undo/.test(t.toast), t);
-  ok('equip: E stack uses the pick', JSON.stringify(t.estack) === JSON.stringify(["Triniel's Dagger*", 'Savage Fang*']), t.estack);
+  ok('equip: E stack uses the pick', JSON.stringify(t.estack) === JSON.stringify(['Savage Fang*', "Triniel's Dagger*"]), t.estack);
   await p.click('#rwToast .tu'); await p.waitForTimeout(200);
   ok('undo gives the shard back, stays equipped', (await p.evaluate(() => [char(state).stShards, char(state).checks['g27:0']])).join() === '3,true');
   /* 6. Snooze (at "Bitter Reality", so Canyon's Secret is turned in and its five Lv 30 quests are open; until 2026-10-20 Her
