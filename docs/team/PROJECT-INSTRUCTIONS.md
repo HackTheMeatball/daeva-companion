@@ -7,6 +7,8 @@ It is retired: its rules now live in one place each.
 - **Rules and decisions:** [docs/kaizen/ledger.csv](../kaizen/ledger.csv) (every rule, its owner and its home) and
   [docs/DECISIONS.md](../DECISIONS.md).
 - **Working rules for every session:** [CLAUDE.md](../../CLAUDE.md).
+- **Text pasted into the Claude project's instructions:** [docs/kaizen/project-instructions.md](../kaizen/project-instructions.md)
+  (current version and history; Kaizen redrafts it).
 - **Current status, plan and temporary rules:** the "CEO pipeline state" issue (#114) and [ROADMAP.md](../../ROADMAP.md).
 
 Nothing merges by hand: auto-merge only (MRG-01).
