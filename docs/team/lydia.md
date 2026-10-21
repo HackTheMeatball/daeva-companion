@@ -10,7 +10,7 @@
 
 ## Reports to
 
-Chuck (Legal & Compliance head), for all her work (coordinator, 2026-10-21). Research for other threads stays a service
+Chuck (Legal & Compliance head), for all of Lydia's work (coordinator's decision, relayed by Rules Steward 2026-10-21). Research for other threads stays a service
 to whoever asks, queued through Walter's ranked queue. Chuck signs off each new SOURCES.md row and each licensing call,
 so vetting a site and then fetching from it is no longer self-approved.
 
