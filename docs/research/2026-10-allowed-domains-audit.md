@@ -7,7 +7,9 @@ the evidence for the SOURCES.md changes of 2026-10-21. Gretchen (Game Data Check
 
 All counts come from `origin/main` on 2026-10-21, measured by script.
 - **Data refs**: how many times the host's URLs appear in `data/packs/**` (not claims or sources).
-- **Claims**: the verdicts of the claims (all 9 `claims.json` files) that list the host as a source.
+- **Claims**: counted per source ref, not per claim. Each time a claim in the 9 `claims.json` files lists one of the
+  host's URLs, that claim's verdict counts once, so a claim citing two of the host's pages counts twice. Per claim,
+  Metabot is 29 verified, 25 single-source, 18 disputed, 10 wrong and 1 inferred (Game Data Check, #712).
 - A "disputed" count does **not** mean the site was wrong. For builds it nearly always means guides disagree with
   each other: builds are opinion. Disputes come from having many build opinions, not from any one site.
 - **Known errors** are cases in docs/ or data/ where the site was the source that turned out wrong.

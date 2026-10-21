@@ -126,7 +126,10 @@ content request to a new host, its line names the terms URL and robots.txt alrea
 scraping-only (spot checks allowed) or opt-out (never fetch). No terms URL means no content request, with one exception (owner, 2026-10-21, Source Vetting thread; Legal's
 conditions): a site whose terms page the five paths above and a web search don't find may be read when robots.txt
 allows it, with the paths tried and the search logged in the thread's file as evidence, at Spot level (a few pages, at
-least 5 s apart), for facts with a link only: no quotes, no copies kept. Copyright still applies, so no terms page is no
+least 5 s apart), for facts with a link only: no quotes, no copies kept. The evidence follows the same timing as a terms
+read: before the first content request, the host's line says "no terms found" with the paths tried and the search query.
+If a terms page turns up later, the site is vetted again before any further read, and each minor's spot check also
+re-checks one no-terms entry. Copyright still applies, so no terms page is no
 permission to reuse wording. Legal (Chuck)
 confirms the log. A break of this order (content read before its terms) is closed out in the log: anything kept from it is deleted or re-sourced from a
 permitted source, and the facts it supports are re-verified or labelled. Each minor's fresh spot check verifies one
