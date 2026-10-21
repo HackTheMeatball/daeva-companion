@@ -119,7 +119,7 @@ export default (test, M) => {
     }
   });
   test('ranking reads the save and never writes it', () => {
-    for (const s of [S(), S({ level: 30, quest: M.QUESTS[50][1], rqSnooze: { x: 1 }, stShards: 3, dvTotal: 40 }), S({ level: 45, quest: 'Forgotten Commander', storyEnd: 'Forgotten Commander' })]) {
+    for (const s of [S(), S({ level: 30, quest: M.QUESTS[50][1], rqSnooze: { x: 1 }, stShards: 3, dvTotal: 40 }), S({ level: 45, quest: M.sq('Forgotten Commander'), storyEnd: M.sq('Forgotten Commander') })]) {
       const before = JSON.stringify(s); M.rankNext(s); assert.equal(JSON.stringify(s), before);
     }
   });
@@ -129,7 +129,7 @@ export default (test, M) => {
   });
   /* "Near your story step" (PR #47 review finding 1): the story record's own turn-in zone, never a Kibelisk guess.
      atTurnin = the turn-in is the next open step (every objective before it ticked). */
-  const atTurnin = (q, lv) => { const n = (M.QUEST_STEPS[q] || []).length;
+  const atTurnin = (q, lv) => { if (!q.startsWith('sq:')) q = M.sq(q); const n = (M.QUEST_STEPS[q] || []).length;
     return S({ level: lv, quest: q, showTalk: true, qsteps: n ? { [q]: Array.from({ length: n - 1 }, (_, i) => i) } : {} }); };
   const areaAt = s => M.storyAreaOf(M.storyHereOf(s), M.KIB_AREA), cardArea = s => M.rankNext(s).filter(c => ['sd', 'sh', 'rq'].includes(c.kind)).map(c => c.hereArea);
   test('near your story step: a placeholder turn-in zone gives no area, even with a Kibelisk that has a zone vote', () => {
@@ -154,8 +154,8 @@ export default (test, M) => {
        - Farewells' turn-in zone is still the placeholder. */
     const CHANGED = { 'Lake of Confrontation': "Idun's Lake", "An Ill Fate's Resolution": "Idun's Lake", 'Preparations for Restoration': 'Purifying Forest',
       'Visible Trap': 'Basfelt Ruins', 'Destruction Archon Underground Fortress': 'Basfelt Ruins', 'Voice of Rage': 'Uruthumheim', Farewells: null }, bad = [];
-    M.QUESTS.filter(([l]) => l >= 24).forEach(([l, q]) => { const L = M.QUEST_LOC[q] || {}; if (!L.turninKib) return;
-      const want = q in CHANGED ? CHANGED[q] : M.KIB_AREA[L.turninKib] || null, got = areaAt(atTurnin(q, l));
+    M.QUESTS.filter(([l]) => l >= 24).forEach(([l, k]) => { const q = M.QUEST_NAME[k], L = M.QUEST_LOC[k] || {}; if (!L.turninKib) return;
+      const want = q in CHANGED ? CHANGED[q] : M.KIB_AREA[L.turninKib] || null, got = areaAt(atTurnin(k, l));
       if (got !== want) bad.push(`${q}: ${got} ≠ ${want}`);
       if (q in CHANGED && want === (M.KIB_AREA[L.turninKib] || null)) bad.push(`${q}: listed as changed but isn't`); });
     assert.deepEqual(bad, []);

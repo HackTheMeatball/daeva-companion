@@ -11,7 +11,7 @@ const S = (o = {}) => toStored({ checks: {}, level: 45, hide: false, open: {}, q
 const deepFreeze = o => { if (o && typeof o === 'object' && !Object.isFrozen(o)) { Object.freeze(o); for (const v of Object.values(o)) deepFreeze(v); } return o; };
 
 export default (test, M) => {
-  const Q = n => { const i = M.QUESTS.findIndex(q => q[1] === n); assert.ok(i >= 0, n); return i; };
+  const Q = n => { const i = M.QUESTS.findIndex(q => q[1] === n || M.QUEST_NAME[q[1]] === n); assert.ok(i >= 0, n); return i; };
   const at = (n, d = 0) => M.QUESTS[Q(n) + d][1];
   const asc = s => M.ascensionOf(M.char(s));
   const ALL = Object.keys(M.GATE_CHANGES);

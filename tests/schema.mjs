@@ -82,6 +82,15 @@ genFailsIn('an objective point naming an unknown Kibelisk', SQ, d => { sqStep(d,
 genFailsIn('an objective point on another map than its Kibelisk', SQ, d => { sqStep(d, 'sq:2102235', 1).at.map = 'ishalgen'; }, /sq:2102235 #1: at\.map is its Kibelisk's map/);
 genFailsIn('an objective point on a regional quest', 'data/packs/aion2/asmodian/regional-quests.json', d => { const r = d.records.find(r => (r.steps || []).length);
   r.steps[0].at = { map: 'altgard', x: 1, y: 1, kibelisk: 'Safe Haven', meters: 1, sources: [{ url: 'https://metabot.gg/en/aion-2/quests/survival-supplies' }] }; }, /#0: at only on story objectives/);
+/* 0.9 P2 (save v6): save keys are stable ids. An objective's i is unique in its quest (an inserted one takes a new i; the
+   old "i = position" rule is gone on purpose), a sub-step's index unique, a story key is its id, a skill or stigma key its
+   id's last segment and unique */
+genFailsIn('a duplicate objective i', SQ, d => { const r = d.records.find(r => r.steps.length > 1); r.steps[1].i = r.steps[0].i; }, /: objective i unique$/);
+genFailsIn('a duplicate sub-step index', SQ, d => { d.records.find(r => r.steps.length).steps[0].sub = [0, 0]; }, /: sub-step i unique$/);
+genFailsIn('a story save key that is the quest name, not its id', SQ, d => { const r = d.records.find(r => r.id === 'sq:2101010'); r.key = r.name; }, /^story save key is its id: sq:2101010$/);
+genFailsIn('a duplicate skill key', 'data/packs/aion2/classes/assassin/skills.json', d => { d.records[1].key = d.records[0].key; }, /^save key unique: sp:/);
+genFailsIn('a skill key that is the skill name', 'data/packs/aion2/classes/assassin/skills.json', d => { d.records[0].key = d.records[0].name; }, /: save key is the id's last segment$/);
+genFailsIn('a duplicate stigma key', 'data/packs/aion2/classes/assassin/stigmas.json', d => { d.records[1].key = d.records[0].key; }, /^save key unique: stigma /);
 /* 0.9 P32: a count that changes in the data without `npm run gen -- --counts` fails, and so does a stale counts file */
 genFailsIn('a Sealed Dungeon dropped from the data without npm run gen -- --counts', 'data/packs/aion2/asmodian/sealed-dungeons.json', d => { d.records.pop(); }, /^count sealedDungeons = \d+: as in data\/expected-counts\.json/);
 genFailsIn('a story objective point dropped from the data without npm run gen -- --counts', SQ, d => { delete stepWith(d, x => x.at && !x.binds).at; }, /^count storyObjectivePoints = \d+: as in data\/expected-counts\.json/);
@@ -321,9 +330,13 @@ if (g) {
     ok(`rejects: a leaked ${cls} record (negative control: its skill id appended to the bundle is found)`, words.test(g.module + `\nskill:${cls}:leaked`));
   }
   const c = g.constants;
-  ok('compiled: story turn-in zones: Aldelle Village where the turn-in is in the village, else Ishalgen', c.QUEST_LOC['A Village in the Fog'].turninZone === 'Aldelle Village'
-    && c.QUEST_LOC['Brigade Prison Compound Infiltration Operation'].turninZone === 'Aldelle Village' && c.QUEST_LOC['Isolated Lake'].turninZone === 'Ishalgen',
-    ['A Village in the Fog', 'Brigade Prison Compound Infiltration Operation', 'Isolated Lake'].map(n => (c.QUEST_LOC[n] || {}).turninZone));
+  /* the story tables are keyed by the quest's save key (save v6, 0.9 P2); QUEST_NAME gives the name */
+  const locOf = n => c.QUEST_LOC[Object.keys(c.QUEST_NAME).find(k => c.QUEST_NAME[k] === n)] || {};
+  ok('compiled: story turn-in zones: Aldelle Village where the turn-in is in the village, else Ishalgen', locOf('A Village in the Fog').turninZone === 'Aldelle Village'
+    && locOf('Brigade Prison Compound Infiltration Operation').turninZone === 'Aldelle Village' && locOf('Isolated Lake').turninZone === 'Ishalgen',
+    ['A Village in the Fog', 'Brigade Prison Compound Infiltration Operation', 'Isolated Lake'].map(n => locOf(n).turninZone));
+  ok('compiled: QUESTS hold the story key (sq:<gameId>), QUEST_NAME its name, every story table is keyed by it', c.QUESTS.every(q => /^sq:\d+$/.test(q[1]) && typeof c.QUEST_NAME[q[1]] === 'string')
+    && [c.QUEST_STEPS, c.QUEST_LOC, c.STORY_UNLOCKS, c.UNLOCK_GATE].every(t => Object.keys(t).every(k => k in c.QUEST_NAME)), c.QUESTS.slice(0, 2));
   ok(`compiled: ${E.storyQuests} story quests (Ishalgen is the starting map, not a quest), ${E.regionalQuests} regional quests, ${E.strongholds} strongholds, ${E.sealedDungeons} Sealed Dungeons`,
     c.QUESTS.length === E.storyQuests && c.RQ.length === E.regionalQuests && c.SH_DATA.length === E.strongholds && Object.keys(c.HIDEOUT_AREA).length === E.sealedDungeons,
     [c.QUESTS.length, c.RQ.length, c.SH_DATA.length, Object.keys(c.HIDEOUT_AREA).length]);

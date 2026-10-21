@@ -13,7 +13,7 @@
    (docs/design/0.6-onboarding-mockup.md §1.2), with the card's name and an optional key from the spec. A card without
    opensWith is always open. */
 
-import { blockerChain } from "./blockers.js";
+import { blockerChain, questNameOf } from "./blockers.js";
 
 export const CARD_SLOTS =["rail", "top", "main", "foot", "drawer"];
 const cardFnOk = f => f === undefined || f === null || typeof f === "function";
@@ -77,7 +77,7 @@ export function cardLock(spec, ev) {
   if (!r || r.open) return null;
   const x = blockerChain(r, ev), b = x && x.leaf, atLv = !(x && x.hop) && b && b.kind === "level";
   const text = x && x.hop ? `Opens after "${x.hop.name}"` : atLv ? `Opens at Lv ${b.need}`
-    : b && b.kind === "story" ? `Opens ${b.turnIn ? "after" : "on"} "${b.name}"` : "Opens later";
+    : b && b.kind === "story" ? `Opens ${b.turnIn ? "after" : "on"} "${questNameOf(b.name)}"` : "Opens later";
   const levels = atLv && Number.isFinite(b.have) && b.need > b.have ? b.need - b.have : null;
   return { text, label: `${spec.name}, ${text[0].toLowerCase()}${text.slice(1)}`, key: spec.key, levels };
 }

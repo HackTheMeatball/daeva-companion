@@ -69,7 +69,7 @@ export const gates02 = M => {
   /* story card: level-gated on the current quest's recommended level, never on the first quest */
   const storyGated = c => { const qi = questIdx(c), gateLv = qi > 0 ? QUESTS[qi][0] : 0; return { qi, gateLv, gated: gateLv > c.level }; };
   /* "Meanwhile": Krao Cave also needs "Daeva in a Dream" (qi ≥ 0 there: the card is level-gated) */
-  const kraoStory = c => questIdx(c) >= storyIdx("Daeva in a Dream");
+  const kraoStory = c => questIdx(c) >= storyIdx(M.sq("Daeva in a Dream"))   /* the story is keyed by id since save v6 (0.9 P2) */;
   const skillLater = (c, x) => x.req > c.level;
 
   /* main.js */

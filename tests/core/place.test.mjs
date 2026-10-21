@@ -13,7 +13,7 @@ export default (test, M) => {
   const rqId = nodeOf('rq'), sdId = nodeOf('sd'), shId = nodeOf('sh');
   const rqK = N[rqId].key, sdK = N[sdId].key, shK = N[shId].key;
   const xy = p => p && p.map ? { map: p.map, x: p.x, y: p.y } : null;
-  const S = M.GATE_GRAPH.story, signs = S.findIndex(([, n]) => n === 'Signs of a Crash Landing');
+  const S = M.GATE_GRAPH.story, signs = S.findIndex(([, n]) => n === M.sq('Signs of a Crash Landing'));
   const W = mt => M.whereNow({ mt });
 
   /* ---------- §4: each row of the table moves it ---------- */
@@ -56,8 +56,8 @@ export default (test, M) => {
     const base = { checks: { [rqK]: [100, true] } }, want = W(base);
     for (const extra of [{ [asc]: [200, true] }, { 'g6:0': [200, true] }, { [sdK]: [200, false] }, { [shK]: [200, null] }, { 'bind:kib:no-such-place': [200, true] }])
       assert.deepEqual(W({ checks: { ...base.checks, ...extra } }), want, JSON.stringify(extra));
-    assert.deepEqual(W({ ...base, started: { [rqK]: [300, null] }, qsteps: { 'Land of Rifts': { 0: [300, null] } }, quest: [300, null] }), want);
-    assert.equal(W({ checks: { [rqK]: [0, true] }, quest: [0, ['Land of Rifts', null]] }), null);
+    assert.deepEqual(W({ ...base, started: { [rqK]: [300, null] }, qsteps: { [M.sq('Land of Rifts')]: { 0: [300, null] } }, quest: [300, null] }), want);
+    assert.equal(W({ checks: { [rqK]: [0, true] }, quest: [0, [M.sq('Land of Rifts'), null]] }), null);
   });
   test('whereNow: the newest stamp wins across kinds', () => {
     const q = S[signs][1], mt = { checks: { [rqK]: [100, true], [sdK]: [300, true] }, started: { [rqK]: [200, 1] }, qsteps: { [q]: { 1: [400, true] } }, quest: [250, [q, null]] };

@@ -1,4 +1,4 @@
-/* Load-time steps on save v5 (0.4 P3c): the fresh start, the stigma pick pinning, the story-end move-on. The steps for
+/* Load-time steps on save v6 (0.9 P2; v5 0.4 P3c): the fresh start, the stigma pick pinning, the story-end move-on. The steps for
    pre-0.4 saves (migV5, the player seeds, eputSync1, g45Split1, stampV1, backup1) are gone with the clean break: no
    pre-0.4 save is ever read again, so their cases were removed with them. */
 import assert from 'node:assert/strict';
@@ -6,7 +6,7 @@ import { createRequire } from 'node:module';
 const { toStored } = createRequire(import.meta.url)('../support/save.js');
 
 const clone = o => JSON.parse(JSON.stringify(o));
-/* run the load steps on a v5 save made from a flat test state; returns the state and what each write stored */
+/* run the load steps on a v6 save made from a flat test state; returns the state and what each write stored */
 const run = (M, flat, now = 0) => { const state = toStored(flat), writes = []; M.migrate(state, true, () => writes.push(clone(state)), now); return { state, writes }; };
 const NOW = 1760000000;   /* seconds, as main.js passes it */
 
@@ -17,8 +17,8 @@ export default (test, M) => {
     M.migrate(state, hadSave, () => writes.push(1), NOW);
     assert.deepEqual(writes, []);
     const q0 = M.QUESTS[0][1];
-    assert.equal(q0, 'A Village in the Fog');
-    assert.deepEqual(state, { v: 5, current: 'slot-new', hide: false, open: {}, hideCards: true, backup: { since: NOW * 1000 },
+    assert.equal(q0, M.sq('A Village in the Fog'));
+    assert.deepEqual(state, { v: 6, current: 'slot-new', hide: false, open: {}, hideCards: true, backup: { since: NOW * 1000 },
       chars: { 'slot-new': { id: 'slot-new', pack: M.PACK, class: M.CLASS, name: '', created: NOW * 1000, checks: {}, level: 1, quest: q0, mt: { level: [0, 1], quest: [0, [q0, null]] } } } });
   });
   test('a stored save is never re-defaulted: its level, quest, filters and backup stay', () => {
@@ -36,7 +36,7 @@ export default (test, M) => {
   test('stigma pick: an equipped slot keeps the stigma it was equipped with; written with the next save', () => {
     const slot1 = M.GATES.flatMap(g => g.items).find(it => it.stig === 1);
     const { state, writes } = run(M, { checks: { [slot1.k]: true }, level: 22, quest: '' });
-    assert.deepEqual(C(state).stPick, { 1: M.STIGMA_PLAN[0] }); assert.deepEqual(writes, []);
+    assert.deepEqual(C(state).stPick, { 1: M.stKey(M.STIGMA_PLAN[0]) }); assert.deepEqual(writes, []);
     const kept = run(M, { checks: { [slot1.k]: true }, level: 22, quest: '', stPick: { 1: 'Something else' } });
     assert.deepEqual(C(kept.state).stPick, { 1: 'Something else' });
   });
@@ -47,7 +47,7 @@ export default (test, M) => {
     assert.equal(C(end.state).quest, last); assert.equal(C(end.state).storyEnd, last); assert.deepEqual(end.writes, []);
     /* 0.3 E10: the data used to end at Forgotten Commander; such a save moves on to Daeva Trapped in a Nightmare */
     const fc = run(M, { checks: {}, level: 45, quest: 'Forgotten Commander', storyEnd: 'Forgotten Commander' });
-    assert.equal(C(fc.state).quest, 'Daeva Trapped in a Nightmare'); assert.equal(C(fc.state).storyEnd, undefined); assert.equal(fc.writes.length, 1);
+    assert.equal(C(fc.state).quest, M.sq('Daeva Trapped in a Nightmare')); assert.equal(C(fc.state).storyEnd, undefined); assert.equal(fc.writes.length, 1);
   });
   test('the steps touch only the current slot', () => {
     const q = M.QUESTS[3][1], s = toStored({ checks: {}, level: 5, quest: '' });
@@ -61,7 +61,7 @@ export default (test, M) => {
       M.migrate(again, true, () => writes.push(1), NOW); assert.deepEqual(again, once); assert.deepEqual(writes, []);
     }
   });
-  test('owner save 2026-10-14 (Lv 39) as a v5 save: Next up ranks without throwing (one view)', () => {
+  test('owner save 2026-10-14 (Lv 39) as a v6 save (names put in as keys by tests/support/save.js): Next up ranks without throwing (one view)', () => {
     const { state } = run(M, JSON.parse(JSON.stringify(createRequire(import.meta.url)('../fixtures/fixture-user-2026-10-14-lv39.json'))));
     assert.ok(Array.isArray(M.rankNext(state)));
   });

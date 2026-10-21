@@ -69,7 +69,7 @@ export function makeStates(M, { root, seed }) {
     const qi = NQ - 1, checks = t === 'none' ? {} : Object.fromEntries(keys.map(k => [k, true]));
     add(`target/story-end/L${lv}-${qid(qi)}-${t}`, { ...base(lv, qi, checks, 'advanced'), storyEnd: C.quests[qi][1] });
   }
-  { const up = qIdx('Urgent Pursuit'); if (up < 0) throw new Error('states: "Urgent Pursuit" is not on the chain');
+  { const up = qIdx(M.sq('Urgent Pursuit')); if (up < 0) throw new Error('states: "Urgent Pursuit" is not on the chain');
     for (const qi of [up - 1, up, up + 1]) for (const lv of [11, 12, 13]) for (const t of ['none', 'before']) for (const b of ['none', 'dv']) {
       const st = base(lv, qi, t === 'none' ? {} : keptUp(lv, qi), 'advanced');
       if (b === 'dv') { st.dvCost = Object.fromEntries(C.dvNodes.map((n, i) => [n.k, 1 + i % 4])); st.dvTotal = 40; }

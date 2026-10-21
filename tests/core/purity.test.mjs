@@ -102,7 +102,7 @@ export default (test, M) => {
     assert.deepEqual(f.slice(M.ENGINE_FIELDS.length), Object.keys(M.aion2Pack.charFields));
     assert.equal(new Set(f).size, f.length);
   });
-  test('char(state) is the current slot of the save (save v5)', () => {
+  test('char(state) is the current slot of the save (save v6)', () => {
     const s = M.newSave({ id: 'slot-a' }); assert.equal(M.char(s), s.chars['slot-a']);
   });
   /* the label and the name may carry the player's name: never in a storage key, a file name, a URL or a log (P3c) */
@@ -122,7 +122,7 @@ export default (test, M) => {
     assert.deepEqual(leaks, []);
   });
   test('the storage key and the export file name carry no game, class or player name', () => {
-    assert.equal(M.KEY, 'companion-save-v5');
+    assert.equal(M.KEY, 'companion-save-v6');
     const main = code(read('main.js')), fname = /const fname = \(\) => `([^`]*)`/.exec(main);
     assert.ok(fname, 'the export file name is built in main.js as `const fname = () => `...``');
     assert.equal(fname[1], 'companion-save-${new Date().toISOString().slice(0, 10)}.json');

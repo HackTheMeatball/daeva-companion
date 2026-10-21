@@ -1,4 +1,4 @@
-/* Characters in the engine (0.5 P17, src/core/chars.js): add, switch, rename, remove a slot of save v5; the pack's playable
+/* Characters in the engine (0.5 P17, src/core/chars.js): add, switch, rename, remove a slot of save v6; the pack's playable
    classes (definePack `classes`, packClasses) and newChar's class input. Every call leaves the input unwritten (deep-frozen
    saves) and every other slot byte-identical (same object, same JSON). */
 import assert from 'node:assert/strict';
@@ -108,7 +108,7 @@ export default (test, M) => {
     const gone = M.removeChar(s, 'b', 9000), m = M.merge(s, gone);
     assert.equal(m.current, 'a', 'the local current, removed by the merge, moves to the first remaining character');
   });
-  test('chars: a save after add / rename / switch / remove still loads as a v5 save with the same characters and tombstone', () => {
+  test('chars: a save after add / rename / switch / remove still loads as a v6 save with the same characters and tombstone', () => {
     let s = M.newSave({ id: 'a' });
     s = M.addChar(s, { id: 'b', name: 'Zed' }); s = M.renameChar(s, 'a', 'Ann'); s = M.switchChar(s, 'a'); s = M.removeChar(s, 'b', 77);
     const r = M.loadState(JSON.stringify(s));

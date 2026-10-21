@@ -189,7 +189,7 @@ function smartFamilies(C, G, add) {
     if (n) add('bind', `L${pad(lv)}-q${pad(qi)}-objs-A`, dated({ ...st, qsteps: { [quest]: Array.from({ length: n }, (_, i) => i) } },
       [[['quest'], T_QUEST], ...Array.from({ length: n }, (_, i) => [['qsteps', quest, String(i)], T_LAST + i])]));
   }
-  const gq = G.qIdx('Crash Site Rendezvous');
+  const gq = G.qIdx('sq:2102030');   /* "Crash Site Rendezvous" (the story is keyed by id since save v6, 0.9 P2) */
   if (gq < 0) throw new Error('states: "Crash Site Rendezvous" (the Galorik\'s Inspection Area state) is not in the story');
   { const [lv, quest] = C.quests[gq];
     add('bind', `L${pad(lv)}-q${pad(gq)}-galorik-A`, dated({ checks: {}, level: lv, quest, qsteps: { [quest]: [0] }, open: {}, mode: 'advanced' }, [[['quest'], T_QUEST], [['qsteps', quest, '0'], T_LAST]])); }
