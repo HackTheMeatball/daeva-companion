@@ -51,12 +51,32 @@ genFails('labelled slot 2 pick without a note naming the alternative (Savage Roa
 genFails('slot witness not cited for specialtyPicks (GamesFuze)', r => { r.specialtyEvidence['spec:assassin:quick-slice:4'].sources[0] = 'https://gamesfuze.com/guides/aion-2-assassin-build-best-skills-stigmas-and-rotation/'; }, /quick-slice:4 \(slot 2\) has 2\+ source/);
 genFails('evidence from one publisher only', r => { r.specialtyEvidence['spec:assassin:heart-gore:5'].sources = ['https://skycoach.gg/blog/aion-2/articles/assassin-guide', 'https://skycoach.gg/blog/aion-2/articles/assassin-guide']; }, /heart-gore:5 \(slot 3\) has 2\+ source/);
 genFails('evidence for the wrong slot', r => { r.specialtyEvidence['spec:assassin:heart-gore:5'].slot = 2; }, /heart-gore:5 \(slot 3\) has 2\+ source/);
-/* builds & macros task 1 (owner facts, 2026-10-21): a macro goes only on a key with a 0–3 stack (Q, E, T, right click), and
-   the basic attack (the Left click default) may only be a macro's last step (claim C21: a no-cooldown skill blocks the rest) */
-/* the schema's key enum stops it before the generator's own check (which guards a schema edit) */
-job(ok => { let msg = null; try { generate({ mutate: (rel, d) => { if (rel === 'data/packs/aion2/asmodian/assassin/builds.json') d.records[0].keyStacks.macros[0].key = 'Left click'; } }); } catch (e) { msg = e.message; }
-  ok('generator rejects: a macro on Left click', !!msg && /keyStacks\/macros\/0\/key must be equal to one of the allowed values/.test(msg), msg); });
-genFails('the basic attack before another macro step', r => { r.keyStacks.macros[0].rows[0].steps.unshift({ skill: 'skill:assassin:quick-slice' }); }, /basic attack skill:assassin:quick-slice is the last step/);
+/* builds & macros (owner facts 2026-10-21; quickslots T-106): a macro sits on Quick Use 2–12, never Quick Use 1 (left click);
+   the base attack (the Left click default) may only be a macro's last step (claim C21); at most 20 steps; a skill or stigma in
+   one quickslot at a time; Quick Use 1 holds only the base attack; a lone-skill step needs a build guide's page */
+const QU2_MACRO = steps => r => { r.keyStacks.macros = [{ quickslot: 'Quick Use 7', rows: [{ minLv: 1, steps }] }]; };
+job(ok => { let msg = null; try { generate({ mutate: (rel, d) => { if (rel === 'data/packs/aion2/asmodian/assassin/builds.json') { QU2_MACRO([{ slot: 'Quick Use 2' }])(d.records[0]); d.records[0].keyStacks.macros[0].quickslot = 'Quick Use 1'; } } }); } catch (e) { msg = e.message; }
+  ok('generator rejects: a macro on Quick Use 1 (left click)', !!msg && /keyStacks\/macros\/0\/quickslot must be equal to one of the allowed values/.test(msg), msg); });
+job(ok => { let msg = null; try { generate({ mutate: (rel, d) => { if (rel === 'data/packs/aion2/asmodian/assassin/builds.json') QU2_MACRO(Array.from({ length: 21 }, () => ({ slot: 'Quick Use 2' })))(d.records[0]); } }); } catch (e) { msg = e.message; }
+  ok('generator rejects: a macro of 21 steps', !!msg && /must NOT have more than 20 items/.test(msg), msg); });
+genFails('the base attack before another macro step', QU2_MACRO([{ skill: 'skill:assassin:quick-slice' }, { slot: 'Quick Use 2' }]), /basic attack skill:assassin:quick-slice is the last step/);
+genFails('a lone-skill step with no build guide page', r => { QU2_MACRO([{ skill: 'skill:assassin:ambush' }])(r); r.keyStacks.sources = r.keyStacks.sources.filter(x => !x.url); }, /lone-skill step skill:assassin:ambush has a cited page/);
+/* C21 on what a macro fires, not only its skill steps (#787 review): the base attack inside a fired stack must be last too */
+const QU_BASE = slot => r => { r.keyStacks.slots.push({ slot, rows: [{ minLv: 1, skills: ['skill:assassin:quick-slice'] }] }); };
+genFails('the base attack fired first through a Quick Use 1 step', r => { QU_BASE('Quick Use 1')(r); QU2_MACRO([{ slot: 'Quick Use 1' }, { slot: 'Quick Use 2' }])(r); }, /basic attack skill:assassin:quick-slice is the last skill fired/);
+genFails('the base attack fired first through another stack', r => { QU_BASE('Quick Use 3')(r); QU2_MACRO([{ slot: 'Quick Use 3' }, { slot: 'Quick Use 2' }])(r); }, /basic attack skill:assassin:quick-slice is the last skill fired/);
+genFails('a macro for a class with no base attack (no Left click default)', r => { QU2_MACRO([{ slot: 'Quick Use 2' }])(r); r.keyStacks.defaultKeys.keys = r.keyStacks.defaultKeys.keys.filter(k => k.key !== 'Left click'); }, /macro Quick Use 7 needs the class's base attack/);
+genFails('an E stigma also in a quickslot', r => { r.keyStacks.slots.push({ slot: 'Quick Use 3', rows: [{ minLv: 1, skills: [r.keyStacks.eOrder[0]] }] }); }, /no skill or stigma sits in two quickslots/);
+/* the positive side: the base attack as the last fired skill, and a stigma in a quickslot row, are accepted */
+const KS_FAIL = /keyStacks|quickslot|macro|Quick Use|base attack|basic attack/;
+job(ok => { const g1 = runs(ok, 'the base attack last, a stigma in a quickslot', { mutate: (rel, d) => { if (rel !== 'data/packs/aion2/asmodian/assassin/builds.json') return; const r = d.records[0];
+  QU_BASE('Quick Use 1')(r); QU2_MACRO([{ slot: 'Quick Use 2' }, { slot: 'Quick Use 1' }])(r);
+  r.keyStacks.slots.push({ slot: 'Quick Use 9', rows: [{ minLv: 1, skills: [r.keyStacks.eOrder.pop()] }] }); } }); if (!g1) return;
+  const bad = g1.failed.filter(x => KS_FAIL.test(x.check)).map(x => x.check);
+  ok('generator accepts: the base attack as the last fired skill and a stigma in a quickslot row', bad.length === 0, bad); });
+genFails('a step that names an undefined quickslot', QU2_MACRO([{ slot: 'Quick Use 9' }]), /slot Quick Use 9 is defined in keyStacks\.slots/);
+genFails('one skill in two quickslots', r => { r.keyStacks.slots.push({ slot: 'Quick Use 7', rows: [{ minLv: 1, skills: ['skill:assassin:savage-roar'] }] }); }, /no skill or stigma sits in two quickslots/);
+genFails('Quick Use 1 holding something other than the base attack', r => { r.keyStacks.slots.push({ slot: 'Quick Use 1', rows: [{ minLv: 1, skills: ['skill:assassin:shadowstrike'] }] }); }, /Quick Use 1 \(left click\) from Lv 1 holds only the base attack/);
 const genFailsIn = (label, rel, mutate, re) => job(ok => { const g1 = runs(ok, label, { mutate: (p, d) => p === rel && mutate(d) }); if (!g1) return;
   ok('generator rejects: ' + label, g1.failed.some(x => re.test(x.check)), g1.failed.map(x => x.check)); });
 /* 0.9 P15 choice points: a choice in reach with neither a pick nor a noPick reason fails, naming the site; so does a noPick
