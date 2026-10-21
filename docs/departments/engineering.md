@@ -45,6 +45,4 @@ working rules are [CLAUDE.md](../../CLAUDE.md) and the item spec.
 
 ## Gaps
 
-- FLOW-23 open question 1 is answered (Gus): `src/*.js` does not join the Opus paths; the architecture lane starts on
-  Opus instead. The SOP text follows in Rules Steward's batch of SOP corrections.
 - FLOW-23 open question 2, who covers the flow until the relay work moves to Actions, waits on the coordinator.

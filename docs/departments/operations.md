@@ -9,7 +9,7 @@ reads.
 
 | Name | Role | Title | Owns | Charter | Never does |
 |---|---|---|---|---|---|
-| Francesca (head) | Rules Steward | Policy records officer | rows naming Francesca in [Who does what](../kaizen/LEDGER.md#who-does-what) | Gap: docs/team/francesca.md is still to be written | [team.csv](../kaizen/team.csv), Francesca's row |
+| Francesca (head) | Rules Steward | Policy records officer | rows naming Francesca in [Who does what](../kaizen/LEDGER.md#who-does-what) | [docs/team/francesca.md](../team/francesca.md) | [team.csv](../kaizen/team.csv), Francesca's row |
 | Huell | Tracker Sync | Data steward | rows naming Huell in [Who does what](../kaizen/LEDGER.md#who-does-what) | [docs/team/huell.md](../team/huell.md) | [team.csv](../kaizen/team.csv), Huell's row |
 
 ## Lanes
@@ -17,8 +17,10 @@ reads.
 - **Francesca** changes [ledger.csv](../kaizen/ledger.csv), [LEDGER.md](../kaizen/LEDGER.md), [team.csv](../kaizen/team.csv),
   `team-changes.csv`, `audits.csv`, [docs/sops/](../sops/README.md) and this folder. Records, never decides: rule
   changes go to Gale, decisions to Walter.
-- **Huell** changes tracker data only (cards, To-dos, versions, Scrapbook) and tells the coordinator about each To-do of
-  Isaac's. Never pushes or comments on GitHub. Tracker page code goes to Jane.
+- **Huell** changes tracker data (cards, To-dos, versions, Scrapbook) and tells the coordinator about each To-do of
+  Isaac's; publishes a tracker page change once Jane and an outside reviewer have approved it and no data was lost
+  (T-113, [FLOW-22](../sops/FLOW-22-tracker-page-change.md)). Never pushes or comments on GitHub. Tracker page code is built by a one-off or pipeline builder from Jane's
+  approved design (FLOW-22 step 2), not by Huell or Jane.
 
 ## SOPs it owns
 
@@ -40,5 +42,4 @@ reads.
 
 ## Gaps
 
-- Francesca's charter is not written yet.
 - Lanes are read from Who does what and the role docs, not confirmed by each role yet.

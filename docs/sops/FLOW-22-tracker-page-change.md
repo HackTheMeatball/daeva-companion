@@ -24,12 +24,12 @@ Jane approves a tracker design (an ask from Isaac, or a fix).
 
 1. **Jane**: Designs the tab; Holly or an outside critic reviews it; Jane answers the findings and gives DESIGN OK.
 2. **Builder**: A one-off thread briefed from Skyler's handover, or the pipeline, builds the tab only from that design (TRK-10). A change to a tracker look Isaac already approved still needs his typed OK.
-3. **Huell**: Checks that no data was lost.
-4. **Builder**: Publishes the tab, keeping the page size limit (TRK-06).
+3. **Howard**: Reviews the built tab's code as the outside reviewer ([FLOW-04](FLOW-04-code-review.md)); Jane approves that it matches her design.
+4. **Huell**: Checks that no data was lost, then publishes the tab, keeping the page size limit (TRK-06).
 
 ## Gates
 
-- Jane's DESIGN OK and Huell's data check, tab by tab (DEC-20261018-tracker-2-0-tab-by).
+- Jane's DESIGN OK, Howard's outside code review and Huell's data check, tab by tab (DEC-20261018-tracker-2-0-tab-by, amended 2026-10-21).
 
 ## Records
 

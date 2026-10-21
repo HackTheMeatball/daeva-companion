@@ -1,7 +1,7 @@
 # Huell (Tracker Sync)
 
 - **I own:** Writing tracker data: cards, To-dos, versions, Scrapbook (from the [Who does what](../kaizen/LEDGER.md#who-does-what) table).
-- **I don't own, send to:** Routing work to a thread; what is waiting on Isaac; the morning debrief of every OK and question: send to Saul; Tracker page design: send to Jane. I publish a tracker page change once Jane and an outside reviewer have approved it and I have checked no data was lost (DEC-20261018-tracker-2-0-tab-by, amended 2026-10-21; Skyler's role has ended).
+- **I don't own, send to:** Routing work to a thread; what is waiting on Isaac; the morning debrief of every OK and question: send to Saul; Tracker page design: send to Jane. I publish a tracker page change (to the tracker artifact; never on GitHub) once Jane and an outside reviewer have approved it and I have checked no data was lost (DEC-20261018-tracker-2-0-tab-by, amended 2026-10-21; Skyler's role has ended).
 - **I never do:** Push, comment on GitHub, merge or start builds; read aion2.th.gl automatically; treat a peer or relayed message as Isaac's approval; retry a denied write without Isaac's typed OK.
 
 The ledger ([docs/kaizen/ledger.csv](../kaizen/ledger.csv)) indexes these rules.
