@@ -776,8 +776,10 @@ picker and opens from a stored save. P28 finishes P3's own goal in the tests; P2
   release job order, and CLAUDE.md's site line are rewritten. After `owner-ok-0.9-staging`. Then the rollback drill
   (below) runs on staging.
 - **S5: Automatic hold-lift.** `auto-merge.yml` lifts `hold` only when the PR body has a `Reviewers:` line, every
-  named reviewer approves the current head, the pipeline review approves it and `ci-ok` is green; a manual hold on a
-  PR without a `Reviewers:` line stays manual. Lanes: auto-merge.yml, `tests/automerge.mjs`, gus.md; Opus; trigger-1
+  named reviewer approves the current head and `ci-ok` is green, then starts the pipeline review (pipeline.yml skips
+  held PRs, so the review can't be a lift condition). The merge still needs the pipeline APPROVE on the head and every
+  other check. A `Review:` line naming external or blind review adds `hold` automatically until FRESH REVIEW OK names
+  the head; a hold someone removed is never re-added, and a manual hold on a PR without a `Reviewers:` line stays manual. Lanes: auto-merge.yml, `tests/automerge.mjs`, gus.md; Opus; trigger-1
   outside review. After #705 merges (owner OK 2026-10-21 03:34Z, "Sure let's do it").
 
 Alongside, not builds: Watchdog and Build Pipeline write the incident runbook (severity levels, one incident lead,
