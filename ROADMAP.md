@@ -1461,6 +1461,22 @@ finding 7, project files). The line names up to 3 kinds with counts and opens to
 Fastest / Completionist track toggle (0.5) is a named removal, replaced by one "Main path only" setting that carries the
 track's drawbacks text while on. The adv and later cards that one view (0.9 P21) moves out of the headline land here.
 
+**Simple keys (the owner's idea, 2026-10-21 9:57 AM ET: "an auto-pilot mode where it's just right and left click and
+Q, e, r, and f for one off 'ultimate' skills"; Design Review (Holly): GO with changes,
+`design-review/audit-simple-keys-mode-holly.md`, shared folder).** The key panel gets a per-character view setting,
+"Simple keys" or "Advanced keys". It is not a build: builds stay the same and only the key panel changes, so custom
+builds get Simple automatically.
+- **What goes where.** Simple puts only damage skills that fire on cooldown in the two mouse stacks (up to 4 skills each, where the game fires the highest-priority ready one). Conditional, positional, charge, toggle, defensive and heal skills go on single keys, with one line each on when to press them. For a healer, that means damage on the mouse and heals on keys.
+- **Sourced orders only.** Each class's stack order comes from the sourced stacks in `docs/research/2026-10-rotation-play.md`, with that file's label. Advanced exists only where a source gives an order.
+- **Honesty.** The panel says once what Simple gives up. Next up suggests switching to Advanced when it matters, for example at Lv 45 before the first end-game boss.
+- **Warnings and keys.** One warning line covers AION 1 control mode, where mouse skills stop working. If R or F is taken, the setup uses another key and says "rebind".
+- **Gates.**
+  - Game Data Check (Gretchen) confirms per class that the layout is possible: macro and slot limits, whether R and F are free, and whether F is interact (the open key checks, T-61). A class whose layout can't be confirmed gets no Simple option.
+  - The owner's in-game time-to-kill test (Assassin, Lv 45, 3 runs each against the current guide layout) decides the default: under about 10% slower makes Simple the default for new characters, otherwise it's opt-in. The 10% threshold is Holly's proposal, not sourced.
+- **Look and order.** Design Lead does the look as a toggle on the key panel component from the 0.9 key setup work (`docs/design/0.9-keys/`, P22). It is planned after that redesign, since both share `build.js` and the same shots. The name "Autopilot" was dropped because it reads like botting.
+
+Shaped in 0.10's own pass.
+
 ### 0.11 — The 1.0 look and the microscope pass (estimate)
 
 Design Lead's app design review for 1.0 (owner, 2026-10-19 1:57 PM ET): the blind check run in 0.9, a visual language
@@ -1498,6 +1514,28 @@ Full architecture, performance and UX audit (the planning pass in its full form)
 engine, Asmodian, Lv 1–45, the endgame guide past Lv 45 (0.10), and timers for the world bosses that matter (0.10; owner, 2026-10-20 7:02 PM ET). 1.0 does not ship without the timers. One save fixture per class is frozen (`tests/fixtures/saves-1.0/`) and every later build must
 load them. A reasoned budget raise if 0.9 to 0.11 land above 95%. The strict save rule returns (CLAUDE.md). The
 owner tests the candidate and gives go or no-go; a no-go makes it the next minor (Versioning).
+
+**Build choice (owner, 2026-10-21 9:55 AM ET; DECISIONS "1.0 ships up to three builds per class, a custom build and a respec warning on switching").**
+Reviewed before planning, under the owner's review-first rule: Design Review (Holly), GO with changes, with input
+from Game Data Check and Org Design (`design-review/audit-simple-keys-mode-holly.md` Part 2, shared folder). 1.0 ships:
+- **Up to three builds per class**, from Lv 1 to 45 and on into the endgame guide. They are the guide build plus up to two credited alternatives (data format v2 review, #30).
+  - "Top" follows SOURCES.md "Build sources": an endgame pick needs Metabot's pick rate plus one witness, and a levelling pick needs two witnesses.
+  - A class never gets padded to three or shows an empty slot. Expect fewer than three levelling builds for most classes; Game Data Check's inference is that levelling has one, maybe two, per class.
+  - Each build carries its per-level pick order, labelled as a choice.
+- **A custom build** that starts from a listed build, is saved per character and in Export, and is never silently dropped.
+- **A warning when switching builds**, offering switch or cancel. The old build stays selectable and its ticks are kept.
+  - It lists what differs between the two builds rather than "reset everything": stigmas and Daevanion nodes as a diff, with nodes removed outside-in.
+  - Skills say "reset all skills" until single-skill reset is settled (T-61).
+  - It states the reset cost and that stigma resets are blocked in combat.
+  - A per-board Daevanion reset stays "check in game" until the owner's screen settles it (T-61 C2).
+  - This differs from the owner's words ("all skills must be respecd … reset each daevinion board") on purpose: those steps aren't all true or sourced for every pair of builds.
+
+**Who owns what:**
+- reset facts: the Builds & Macros researcher, with Game Data Check's DATA OK;
+- computing the diff: Build Pipeline (Gus);
+- the pop-up's wording and look: Design Lead, with a fresh design review, since it's a new owner-facing element.
+
+**Order:** one build per class first, then the alternatives class by class. Each build's Simple keys stacks (0.10) come from its own skills. Items are shaped in 0.10's pass. If the alternatives don't fit before 1.0, the Release Planner takes it to the owner as a scope call.
 
 ### 1.1 — Elyos (estimate)
 
