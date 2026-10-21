@@ -194,7 +194,7 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
      pages list them, this Assassin page doesn't). Both lists are read from the data (V1.hiddenDirs; pack.json `classes`
      minus the page's class and the hidden ones), so a class release or a new class needs no edit here (0.9 P3, #622) */
   { const fs = require('fs'), path = require('path'), ds = fs.readFileSync(path.join(__dirname, '..', 'data', 'DATA_SOURCES.md'), 'utf8'), hid = [...V1.hiddenUrls], oth = [...V1.otherUrls];
-    const hidCls = V1.hiddenDirs.map(d => path.basename(d.replace(/[\\/]+$/, '')));
+    const hidCls = [...new Set(V1.hiddenDirs.map(d => path.basename(d.replace(/[\\/]+$/, ''))))];
     const packClasses = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'packs', 'aion2', 'pack.json'), 'utf8')).classes;
     const bad = us => us.filter(u => !ds.includes('](' + u + ')') || hrefs.has(norm(u)));
     ok(`hidden class packs (${hidCls.join(', ') || 'none'}): their ${hid.length} own URLs are in DATA_SOURCES.md and none is on the Assassin's Sources card`, !bad(hid).length, bad(hid));
