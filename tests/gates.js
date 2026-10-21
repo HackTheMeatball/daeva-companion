@@ -8,7 +8,8 @@ let fail = 0; const ok = (n, c, d) => { console.log((c ? 'ok   ' : 'FAIL ') + n 
   const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: 1500, height: 1000 } });
   const errs = []; p.on('pageerror', e => errs.push(e.message));
   await p.goto(CFG.CUR); await p.waitForTimeout(300);
-  const Q = await p.evaluate(() => QUESTS); const qi = n => Q.findIndex(([, q]) => q === n);
+  /* save v6 (0.9 P2): QUESTS rows are [lv, story key, from]; the sweep names quests as a player reads them */
+  const Q = await p.evaluate(() => QUESTS.map(([lv, k, ...r]) => [lv, QUEST_NAME[k], ...r])); const qi = n => Q.findIndex(([, q]) => q === n);
   /* Load a save and return the actionable Next up cards: [{k, h}] (k = milestone key for "tick:" cards). */
   const at = async (lv, quest, extra = {}) => {
     await writeSave(p, { checks: {}, level: lv, quest, open: {}, mode: 'advanced', ...extra });
@@ -53,7 +54,7 @@ let fail = 0; const ok = (n, c, d) => { console.log((c ? 'ok   ' : 'FAIL ') + n 
   r = await p.evaluate(() => [...document.querySelectorAll('#nsqWrap [data-now^="tick:g45:witness"]')].length);
   ok('Basic, Lv 45 on "Forgotten Commander" (not turned in): no g45:witness card', r === 0, r);
   await p.evaluate(() => document.querySelector('#nsqWrap [data-now="story"]').click()); await p.waitForTimeout(300);
-  r = await p.evaluate(() => ({ quest: char(state).quest, end: char(state).storyEnd || null, card: !!document.querySelector('#nsqWrap [data-now="tick:g45:witness"]') }));
+  r = await p.evaluate(() => ({ quest: questNameOf(char(state).quest), end: char(state).storyEnd || null, card: !!document.querySelector('#nsqWrap [data-now="tick:g45:witness"]') }));
   ok('Basic: "Turned in" on "Forgotten Commander" -> on "Daeva Trapped in a Nightmare", g45:witness card offered', r.quest === 'Daeva Trapped in a Nightmare' && !r.end && r.card, r);
 
   /* Text fixes (claims C36-C38). */
