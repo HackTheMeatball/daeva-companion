@@ -385,6 +385,8 @@ export function generate(opts = {}) {
     ['areas', 'Strongholds and Sealed Dungeons', [...shs, ...sds, ...ruleRecs.filter(r => r.kind === 'firstClearReward')]],
     ['build', 'Skills, boards and stigmas', [...skills, ...stigmas, ...boards, ...nodes, ...builds, cls, ...ruleRecs.filter(r => r.kind !== 'firstClearReward'), ...unlocks, ...items]],
     ['claims', 'Tips and rules', [...claims, ...Object.values(zones), ...R('kibelisks'), ...terms]],
+    /* world boss timers (1.0): their sources are listed from the data PR on, ahead of the build item that shows the timers */
+    ['bosses', 'World bosses', R('worldBosses')],
     ['old', 'Leveling guides, build and tips', pages.map(p => p.url)],
   ];
   const SOURCES = [], seen = new Set();

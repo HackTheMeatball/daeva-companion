@@ -1,0 +1,260 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/world-bosses.schema.json",
+  "title": "World bosses (packs/<game>/world-bosses.json)",
+  "description": "World boss timers (1.0, research docs/research/2026-10-world-boss-timers.md). One clock record (the server time zone every schedule is written in) and one record per boss. A `schedule` boss spawns by the server clock (an interval or set weekdays). A `respawn` boss comes back a fixed cooldown after it is killed; nobody outside the game knows when that was, so the app counts it only from a time the player enters. All times are server time, HH:MM.",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "worldBosses"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/clock"
+          },
+          {
+            "$ref": "#/$defs/boss"
+          }
+        ]
+      }
+    }
+  },
+  "$defs": {
+    "hhmm": {
+      "type": "string",
+      "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+    },
+    "weekday": {
+      "enum": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat",
+        "sun"
+      ]
+    },
+    "utcOffset": {
+      "description": "A fixed UTC offset, e.g. +09:00. The servers' zone has no daylight saving; the player's local time is converted at render time.",
+      "type": "string",
+      "pattern": "^[+-](0[0-9]|1[0-4]):(00|30|45)$"
+    },
+    "clock": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/provenance"
+        }
+      ],
+      "required": [
+        "id",
+        "kind",
+        "serverTz"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^clock:[a-z0-9-]+$"
+        },
+        "kind": {
+          "const": "clock"
+        },
+        "serverTz": {
+          "description": "The server clock every schedule is written in, shared by every Global region.",
+          "$ref": "#/$defs/utcOffset"
+        },
+        "regions": {
+          "description": "Only if regions turn out to run their own clocks: per server region, its clock. Absent = every region uses serverTz.",
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^[a-z]+(-[a-z]+)*$"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 60
+          },
+          "minProperties": 1
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "place": {
+      "type": "object",
+      "required": [
+        "map"
+      ],
+      "properties": {
+        "map": {
+          "description": "The map as the game names it (Chaotic Lower Reshanta, Altgard).",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "area": {
+          "description": "The area within the map, as the source names it.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "faction": {
+          "description": "Whose map it is, when only one faction goes there.",
+          "$ref": "common.schema.json#/$defs/faction"
+        },
+        "spot": {
+          "description": "random: the boss appears at a random spot in the area, so the app shows the area, not a point.",
+          "enum": [
+            "fixed",
+            "random"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "rule": {
+      "description": "One spawn rule. every: every N hours from a start time (the day's first spawn). days + at: on those weekdays at that time.",
+      "type": "object",
+      "oneOf": [
+        {
+          "required": [
+            "everyHours",
+            "from"
+          ],
+          "properties": {
+            "everyHours": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 24
+            },
+            "from": {
+              "$ref": "#/$defs/hhmm"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "required": [
+            "days",
+            "at"
+          ],
+          "properties": {
+            "days": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/weekday"
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "at": {
+              "$ref": "#/$defs/hhmm"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "boss": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/provenance"
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "schedule"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "schedule"
+            ],
+            "properties": {
+              "schedule": true,
+              "cooldownHours": false
+            }
+          },
+          "else": {
+            "required": [
+              "cooldownHours"
+            ],
+            "properties": {
+              "cooldownHours": true,
+              "schedule": false
+            }
+          }
+        }
+      ],
+      "required": [
+        "id",
+        "name",
+        "kind",
+        "level",
+        "places"
+      ],
+      "properties": {
+        "id": {
+          "description": "wb:<slug>, frozen when the record is created.",
+          "type": "string",
+          "pattern": "^wb:[a-z0-9]+(-[a-z0-9]+)*$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "kind": {
+          "enum": [
+            "schedule",
+            "respawn"
+          ]
+        },
+        "level": {
+          "description": "The boss's level (a monster level, not the player's).",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "places": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/place"
+          },
+          "minItems": 1
+        },
+        "schedule": {
+          "description": "kind schedule only: when it spawns, server time.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/rule"
+          },
+          "minItems": 1
+        },
+        "upMinutes": {
+          "description": "How long it stays up after it spawns, when a source says.",
+          "type": "integer",
+          "minimum": 1
+        },
+        "cooldownHours": {
+          "description": "kind respawn only: hours from the kill to the respawn.",
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 72
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  },
+  "type": "object"
+}

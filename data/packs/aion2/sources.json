@@ -251,6 +251,35 @@
       "verifiedAt": "2026-10-14"
     },
     {
+      "id": "src:aion2atlas",
+      "name": "aion2atlas",
+      "hosts": [
+        "aion2atlas.app"
+      ],
+      "kind": "community",
+      "independenceGroup": "aion2atlas",
+      "licence": {
+        "id": "unknown",
+        "note": "Terms: don't copy whole pages or scrape at high volume; short quotes with a link are fine (Lydia, 2026-10-20). Facts only."
+      },
+      "access": {
+        "robots": "allows",
+        "terms": "allows",
+        "mode": "scripted",
+        "checkedAt": "2026-10-20"
+      },
+      "use": {
+        "facts": true,
+        "wording": false,
+        "quotes": "none",
+        "link": "dofollow"
+      },
+      "notes": [
+        "Boss timers (Global and KR columns). Vetted by Source Vetting 2026-10-20 (docs/research/2026-10-world-boss-timers.md, docs/research/2026-10-world-boss-sources.md)."
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
       "id": "src:aion2hub",
       "name": "AION2HUB",
       "hosts": [
@@ -322,10 +351,11 @@
         "id": "unknown"
       },
       "access": {
-        "robots": "unchecked",
-        "terms": "unread",
-        "mode": "human-only",
-        "checkedAt": "2026-10-14"
+        "robots": "allows",
+        "terms": "allows",
+        "termsUrl": "https://allthings.how/terms-and-conditions/",
+        "mode": "scripted",
+        "checkedAt": "2026-10-20"
       },
       "use": {
         "facts": true,
@@ -333,7 +363,10 @@
         "quotes": "short-credited",
         "link": "dofollow"
       },
-      "verifiedAt": "2026-10-14"
+      "verifiedAt": "2026-10-20",
+      "notes": [
+        "Re-vetted 2026-10-20 (Source Vetting): terms at /terms-and-conditions/ (found by web search; the footer's /terms/ is 404) ban copying, reproducing or downloading its material without written permission, not reading it. Spot in docs/research/SOURCES.md: facts only, a few pages per task. Its quotes in data/ are being replaced by paraphrases (0.8.1 F9, #662)."
+      ]
     },
     {
       "id": "src:corpus",

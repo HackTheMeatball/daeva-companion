@@ -197,4 +197,29 @@ export function checks(ctx, check) {
     const lv = atomsOf(q.requires).filter(a => a.level !== undefined).map(a => a.level);
     check('GATE_GRAPH: regional level atom = unlocksAt: ' + q.id, lv.length === 1 && lv[0] === q.unlocksAt, lv);
   }
+
+  /* ---------------------------------------------------------------- world bosses (1.0, docs/research/2026-10-world-boss-sources.md) */
+  { const wb = ctx.R('worldBosses'), clocks = wb.filter(r => r.kind === 'clock'), bosses = wb.filter(r => r.kind !== 'clock');
+    check('world bosses: exactly one server clock record', clocks.length === 1, clocks.map(r => r.id));
+    /* the timing field is what a countdown rests on: a source must name it, and a verified one needs two publishers or a
+       game database (sources.json independenceGroup / kind) */
+    const site = u => ctx.B.sources.records.find(s => s.hosts.some(h => { const x = u.replace(/^https:\/\/(www\.)?/, '').split('/')[0]; return x === h || x.endsWith('.' + h); }));
+    for (const r of [...clocks, ...bosses]) {
+      const f = r.kind === 'clock' ? 'serverTz' : r.kind === 'schedule' ? 'schedule' : 'cooldownHours', st = (r.fieldStatus || {})[f] ?? r.status;
+      /* a ref backs f when it names f or a path inside it (schedule[0].at); the owner's in-game screen backs it too, and is
+         enough on its own to verify it (CLAUDE.md: the source of truth) */
+      const names = s => !s.fields || s.fields.some(x => x === f || x.startsWith(f + '[') || x.startsWith(f + '.'));
+      const refs = r.sources.filter(names), owner = refs.some(s => s.owner);
+      const by = refs.filter(s => s.url).map(s => site(s.url)).filter(Boolean);
+      check(`world boss ${r.id}: a source backs ${f}`, by.length > 0 || owner);
+      if (st === 'verified') check(`world boss ${r.id}: verified ${f} has two publishers, a game database or the owner's screen`, owner || new Set(by.map(s => s.independenceGroup)).size >= 2 || by.some(s => s.kind === 'game-database'), by.map(s => s.id));
+    }
+    /* an interval spawn repeats the same times every day */
+    for (const r of bosses) for (const x of r.schedule || []) if (x.everyHours) {
+      check(`world boss ${r.id}: every ${x.everyHours} h divides the day`, 24 % x.everyHours === 0);
+      /* from is the day's first spawn, so it comes before the first interval ends */
+      const [h, m] = x.from.split(':').map(Number);
+      check(`world boss ${r.id}: from ${x.from} is the day's first spawn (before ${x.everyHours}:00)`, h * 60 + m < x.everyHours * 60); }
+    /* a boss lists each map and area once */
+    for (const r of bosses) check(`world boss ${r.id}: places are distinct`, new Set(r.places.map(p => p.map + '|' + (p.area || ''))).size === r.places.length); }
 }

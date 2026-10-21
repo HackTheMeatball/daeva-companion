@@ -534,6 +534,7 @@ This is 0.3 engine behaviour (0.2 keeps today's order); it needs no new data bey
 | `skills` | class | facts; `type` active/passive (F2); `specialtyChoices` |
 | `boardNodes` (`board-nodes`) | class | §8.3 |
 | `stigmas` | class | `maxLevel`, `specialtyChoices` |
+| `worldBosses` (`world-bosses`) | game | 1.0 world boss timers. One `clock:` record (`serverTz`, a fixed UTC offset; `regions` only if regions run their own clocks) and `wb:` bosses: `kind` `schedule` (`schedule` rules `{everyHours, from}` or `{days, at}`, server time HH:MM; optional `upMinutes`) or `respawn` (`cooldownHours` from a player-entered kill time; no live game state). `places` with `map`, optional `area`, `faction`, `spot: random`. Pack checks: one clock; the timing field has a source (a URL or the owner's screen), and a verified one has two publishers, a game database or the owner's screen; `everyHours` divides the day and `from` is the day's first spawn. Their URLs are on the Sources card ("World bosses") and in DATA_SOURCES.md from 1.0; the timers themselves show with the 0.10 build item. |
 
 ## 12. Field mapping: every current field
 
