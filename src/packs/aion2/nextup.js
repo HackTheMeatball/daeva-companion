@@ -15,7 +15,7 @@ import { AREA_LOC } from "./data/generated.js";
 import { KIBELISKS, NODE_PLACE } from "./data/place.js";
 import { nudgeOf, storyTargetOf, teleportOf } from "./travel.js";
 import { AREA_ITEMS, KIB_AREA, bandOf } from "./catalog.js";
-import { areaOpen, dvCostOf, dvNeed, dvNext, dvSpent, isAscensionKey, rqStatus, rqWaitsOnStory, shardsFromLv, skillBuy, skillOpen, stigmaEquipOpen, stigmaPlan, stigmaSlots, stKey,
+import { areaOpen, dvCostOf, dvNeed, dvNext, dvSpent, isAscensionKey, rqStatus, rqWaitsOnStory, shardsFromLv, skillBuy, skillJumps, skillOpen, stigmaEquipOpen, stigmaPlan, stigmaSlots, stKey,
   storyAreaOf, storyAreaStOf, storyHereOf } from "./requirements.js";
 import { blockerText } from "../../core/blockers.js";
 import { etaOf, rankChangeOn } from "../../core/nextup.js";
@@ -93,7 +93,12 @@ function spend(state, { c, lv, ev }) {
   Object.keys(c.areaRun || {}).filter(k => !doneOf(c, k, ev)).forEach(k => { const x = AREA_ITEMS.find(y => y.k === k); if (!x) return;
     add({ kind: "run", x, act: "tick:" + k }); });
   if ((c.pendSt || 0) + (c.pendCr || 0) > 0) add({ kind: "cube", st: c.pendSt, cr: c.pendCr, act: "usecube" });
-  if (sp) { out.push({ phase: "spend", queue: "skill", points: "skill", card: { kind: "skill", x: sp, first: true, act: "skill" } });
+  /* Catch-up (0.9 P19): one card per skill's whole jump, in the jumps' order; the first has the button, the rest are the
+     queue's previews (each becomes the top card in turn) */
+  const cu = sp && skillJumps(c, lv);
+  if (cu && cu.on) cu.jumps.forEach((j, i) => out.push({ phase: "spend", queue: "skill", ...(i === 0 ? { points: "skill" } : {}), ...(out.length >= 4 ? { more: true } : {}),
+    card: { kind: "catchup", j, x: j.rows[0] || j.specs[0], ...(i === 0 ? { first: true } : {}), act: i === 0 ? "catchup" : "" } }));
+  else if (sp) { out.push({ phase: "spend", queue: "skill", points: "skill", card: { kind: "skill", x: sp, first: true, act: "skill" } });
     /* The upgrades right after it that your current points also cover (queue previews; each becomes the top card in turn).
        Past 4 spend cards they are previews the engine shows only when you are behind (more: catchUp, design §7). */
     const pts = (LEVEL_POINTS[Math.min(45, Math.max(0, lv))] || 0) + (c.stones || 0) - SP_STEPS.filter(x => c.checks[x.k]).reduce((t, x) => t + x.cost, 0);

@@ -7,6 +7,7 @@ import { RQ } from "../data/generated.js";
 import { AREA_ITEMS } from "../catalog.js";
 import { areaOpen } from "../requirements.js";
 import { SP_ICONS, STIGMA_ICON } from "../data/build.js";
+import { stTag } from "../data/markup.js";
 import { aion2State as state, aion2RqAvail as rqAvail } from "./page.js";
 
 /* A board node's short name (Next up, Undo, the Daevanion card). */
@@ -53,5 +54,13 @@ function tipPop(kind) {
 }
 /* Grey "i" with a popover, same as the Skills/Daevanion "need more" tips. */
 const stTip = () => `<span class="tipwrap"><button type="button" class="tipbtn" aria-label="Stigma shard costs" aria-expanded="false" aria-controls="tipPop${++tipSeq}">i</button><span class="tippop" id="tipPop${tipSeq}" role="tooltip"><b>Shards per level</b>1–5: 1 each · 6–10: 2 · 11–15: 4 · 16–20: 8 (75 to reach 20). Learning a stigma is its level 1. Bonuses at 5, 10, 15, 20.<br><br><b>More shards</b>1 per character level from 23 to 39 (2 from 40), plus achievements and shops.<br><br><b>Plan</b>Triniel's Dagger to 10, then Illusive Clone toward 20.<span class="tipopen">Costs from Metabot and allthings.how; not yet checked in game.</span></span></span>`;
+/* A catch-up jump's specialty (0.9 P19): the build's pick for the slot (bold, with its label), the slot the build leaves
+   open on purpose, or none sourced yet. The pick is named before the skill reaches its level: the jump gets it there. */
+const cuSpec = x => { const p = (x.s.specs || [])[x.slot - 1] || (x.slot === 1 && x.s.spec ? { t: x.s.spec } : null), q = s => String(s).replace(/"/g, "&quot;");
+  if (p) return `<b>${p.t}</b>${p.st ? ` <span class="ss-tag" title="${q(p.why || p.st)}">${p.st}</span>` : stTag(p.vst)}`;
+  const why = (x.s.noPick || {})[x.slot];
+  return why ? `pick your own · <span class="ss-tag" title="${q(why)}">no guide pick</span>` : "no sourced pick yet"; };
+/* every specialty slot a jump opens, slot 2 and up named ("… · slot 2: …") */
+const cuSpecs = j => j.specs.map(x => (x.slot > 1 ? `slot ${x.slot}: ` : "") + cuSpec(x)).join(" · ");
 
-export { aion2TipId, tipPop, stTip, dvShort, ini, spMini, stIco, mapMk, kibMark, rqStIco, rqLegend };
+export { aion2TipId, tipPop, stTip, dvShort, ini, spMini, stIco, mapMk, kibMark, rqStIco, rqLegend, cuSpecs };

@@ -121,6 +121,45 @@ export const specPickOf =(c, x, ev = gatesOf(c)) => { const p = (x.s.specs || []
 /* The upgrade to buy now: the first open one, if you have the points (a specialty is free); else null. */
 export const skillBuy = (c, lv = c.level) => { const next = skillOpen(c, lv).now[0], { pts } = skillPoints(c, lv); return next && (next.spec || pts >= next.cost) ? next : null; };
 
+/* Catch-up for late starts (0.9 P19, docs/design/0.9-catchup/README.md note 10): the guide's own spend of the points you
+   have now, bought one upgrade at a time as skillBuy would (an open specialty first, else the next line while the points
+   cover it), grouped into one jump per skill in the order each skill is first bought. A line that opens only once the
+   lines before it are bought, or a specialty slot that opens only at the skill level those lines reach, counts as bought
+   in turn; the gates are read once (no evaluator per step). On when the jumps level up CATCHUP_SKILLS or more skills at
+   once (a late start, after a Skills respec, a long break; Design Lead's threshold, inferred), or buy CATCHUP_LINES or
+   more lines in all (so a catch-up doesn't hand back to one-level steps for its last two skills). Pure: nothing is
+   ticked here.
+   → { on, jumps: [{ n, s, rows, keys, from, to, cost, specs }], left: points left after them, stop: the next line they
+   can't cover ({ x, need }) or null } */
+export const CATCHUP_SKILLS = 3, CATCHUP_LINES = 3;
+export const skillJumps = (c, lv = c.level) => {
+  const ev = gatesOf(c, lv), N = activePack().data.graph.nodes, { open } = skillOpen(c, lv);
+  let left = skillPoints(c, lv).pts;
+  /* top: the highest line bought so far per skill; sidTop: how far that lifted each skill's level (by graph skill id) */
+  const got = new Set(), top = {}, topOf = x => top[x.s.n] ?? Math.max(1, ...SP_STEPS.filter(y => y.s === x.s && !y.spec && c.checks[y.k]).map(y => y.L));
+  const keyOf = id => (N[id] || {}).key, sidTop = {};
+  const ok = x => { const r = ev.byKey(x.k); if (r.open) return true;
+    return r.blockers.every(b => b.kind === "done" ? got.has(keyOf(b.of)) : b.kind === "skill" ? b.have + ((sidTop[b.skill] || 0)) >= b.need : false); };
+  const cands = open.filter(x => x.slot !== 3), bought = [];
+  let stop = null;
+  for (let guard = 0; guard <= cands.length; guard++) {
+    const avail = cands.filter(x => !got.has(x.k) && ok(x)), x = avail.find(y => y.spec) || avail[0];
+    if (!x) break;
+    if (!x.spec && x.cost > left) { stop = { x, need: x.cost - left }; break; }
+    got.add(x.k); bought.push(x);
+    if (!x.spec) { left -= x.cost; const was = topOf(x); top[x.s.n] = Math.max(was, x.L); const sid = N[x.k] && N[x.k].skill; if (sid) sidTop[sid] = (sidTop[sid] || 0) + Math.max(0, x.L - was); }
+  }
+  const by = new Map();
+  for (const x of bought) { let j = by.get(x.s.n);
+    if (!j) by.set(x.s.n, j = { n: x.s.n, s: x.s, rows: [], keys: [], from: 0, to: 0, cost: 0, specs: [] });
+    j.keys.push(x.k);
+    if (x.spec) j.specs.push(x); else { j.rows.push(x); j.cost += x.cost; } }
+  const jumps = [...by.values()];
+  jumps.forEach(j => { j.specs.sort((a, b) => a.slot - b.slot); j.from = j.rows.length ? j.rows[0].L - 1 : 0; j.to = j.rows.length ? j.rows[j.rows.length - 1].L : 0; });
+  /* stays on to the end of a catch-up: the last two skills' jumps (Insignia Explosion 1 → 9) are still one tap each */
+  return { on: jumps.filter(j => j.rows.length).length >= CATCHUP_SKILLS || bought.filter(x => !x.spec).length >= CATCHUP_LINES, jumps, left, stop };
+};
+
 /* ---------- Daevanion board ---------- */
 /* A node's cost: the one the player logged, else the plan's (0.8.1 F1: the owner's board, in the guide's order), else
    undefined. The plan's number pre-fills the box and is never written to the save: a typed value always wins. */

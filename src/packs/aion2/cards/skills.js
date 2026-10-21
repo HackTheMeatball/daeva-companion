@@ -7,14 +7,14 @@ import { ITEMS } from "../data/items.js";
 import { LEVEL_POINTS, SP_ICONS, SP_SKILLS, SP_STEPS } from "../data/build.js";
 import { spCostTxt } from "../catalog.js";
 import { stNote, stTag } from "../data/markup.js";
-import { planReachOf, skillBonusOf, skillBuy, skillLvOf, skillOpen, skillPoints } from "../requirements.js";
-import { tipPop } from "./shared.js";
+import { planReachOf, skillBonusOf, skillBuy, skillJumps, skillLvOf, skillOpen, skillPoints } from "../requirements.js";
+import { cuSpecs, tipPop } from "./shared.js";
 import { keyChip } from "../hotkeys.js";
 import { wireTerms } from "../terms.js";
 import { renderCollection } from "./progress.js";
 import { renderRotation } from "./build.js";
 import { renderDaevanion } from "./daevanion.js";
-import { aion2State as state, aion2Save as save, aion2Update as update, aion2Render as render, aion2RenderNow as renderNow, aion2RenderQuest as renderQuest, aion2RenderAscension as renderAscension, aion2RenderStoryChips as renderStoryChips, aion2RenderStoryReqs as renderStoryReqs, aion2FitSkills as fitSkills, aion2SpMini as spMini, aion2Ini as ini, aion2SpecSub as specSub, aion2MainEl as mainEl } from "./page.js";
+import { aion2State as state, aion2Save as save, aion2Update as update, aion2Render as render, aion2RenderNow as renderNow, aion2RenderQuest as renderQuest, aion2RenderAscension as renderAscension, aion2RenderStoryChips as renderStoryChips, aion2RenderStoryReqs as renderStoryReqs, aion2FitSkills as fitSkills, aion2SpMini as spMini, aion2Ini as ini, aion2SpecSub as specSub, aion2MainEl as mainEl, aion2RewardToast as rewardToast } from "./page.js";
 
 function renderNext() {
   renderCollection();
@@ -37,7 +37,23 @@ function renderNext() {
   /* Points you'll have when x unlocks: spare now (after buying what's open) + level points gained by then. */
   const haveAt = x => pts - (next ? nowCost : 0) + (LEVEL_POINTS[Math.min(45, x.req)] || 0) - fromLevels;
   let heroHTML = "";
-  if (hero) {
+  /* Catch-up (0.9 P19): the points cover upgrades on 3+ skills at once, so the hero is the next skill's whole jump
+     ("Heart Gore 1 → 10", one Mark spent for its lines and its specialty) and Coming up lists the other jumps */
+  const cu = skillJumps(char(state), lv);
+  box.dataset.jump = "";
+  if (cu.on) {
+    const J = cu.jumps, j = J[0], n = J.length;
+    heroHTML = `<div class="sphero ok cu">` +
+      `<div class="dvhead">${SP_ICONS[j.n] ? `<span class="dvico spico art"><img src="${SP_ICONS[j.n]}" alt="" loading="lazy" onerror="this.remove()"></span>` : `<span class="dvico spico ini" aria-hidden="true">${ini(j.n)}</span>`}` +
+      `<div class="dvtext"><span class="spname">${j.n} ${spType(j.s)} ${j.rows.length ? `<span class="lvarr">${j.from} → ${j.to}${spBonus(j.s.key)}</span>` : `<em>specialty</em>`}</span><small title="Available now · priority #1 · catch up 1 of ${n}${j.s.single ? ` · single source (${j.s.single})` : ""}">Available now · <span class="nw">priority #1</span> · catch up 1 of ${n}${j.s.single ? ` · single source (${j.s.single})` : ""}${j.s.st ? ` ·${stTag(j.s.st)}` : ""}</small>` +
+      (j.cost ? `<div class="dvbar"><div class="dvtrack"><span style="width:100%"></span></div><span class="dvbar-l" title="You have ${pts} point${pts === 1 ? "" : "s"}; this jump costs ${j.cost}"><b>${j.cost}</b> of ${j.cost} pt${j.cost === 1 ? "" : "s"}</span></div>` : `<span class="dvbar-ph"></span>`) + `</div></div>` +
+      `<div class="buyrow"><button type="button" class="dvbuy" id="spBuy">${j.cost ? `Mark spent · ${j.cost} pt${j.cost === 1 ? "" : "s"}` : "Mark specialty picked"}</button></div>` +
+      (j.specs.length ? `<p class="sphint">${j.rows.length ? "Then pick its specialty" : "Specialty"}: ${cuSpecs(j)}</p>` : "") +
+      (n > 1 ? `<p class="sphint">+${n - 1} more your points cover · <button type="button" class="cu-all" id="spBuyAll">Mark all spent</button></p>` : "") +
+      `<p class="sphint">${cu.stop ? `${cu.stop.x.s.n} stops at ${cu.stop.x.L - 1} for now. Lv ${cu.stop.x.L} needs ${cu.stop.need} more pt${cu.stop.need === 1 ? "" : "s"}. ` : ""}${cu.left ? `${cu.left} pt${cu.left === 1 ? " is" : "s are"} left over after these.` : "These use every point."}</p>` +
+      (overTicked ? `<p class="sphint warn">Ticked lines cost ${spent} but you've earned ${fromLevels + stones}. Use "Sync levels" to fix.</p>` : "") + `</div>`;
+    box.checked = false; box.dataset.sp = ""; box.dataset.jump = j.keys.join(" ");
+  } else if (hero) {
     const locked = !now.includes(hero), cost = hero.spec ? 0 : hero.cost;
     const have = locked ? haveAt(hero) + (next ? 0 : 0) : pts;
     const ok = !locked && (hero.spec || pts >= cost);
@@ -61,15 +77,19 @@ function renderNext() {
   } else heroHTML = `<div class="sphero ok spdone"><div class="dvhead"><span class="dvico spico"><img src="${ITEMS.wisdom[2]}" alt="" loading="lazy" onerror="this.remove()"></span>` +
       `<div class="dvtext"><span class="spname">All planned upgrades spent</span><small>${pts} point${pts === 1 ? "" : "s"} spare · no sourced plan past this — spend on skills you use</small></div></div>` +
       (overTicked ? `<p class="sphint warn">Ticked lines cost ${spent} but you've earned ${fromLevels + stones}. Use "Sync levels" to fix.</p>` : "") + `</div>`;
-  box.checked = false; box.dataset.sp = (skillBuy(char(state), lv) || {}).k || "";
+  if (!cu.on) { box.checked = false; box.dataset.sp = (skillBuy(char(state), lv) || {}).k || ""; }
   setHTML(document.getElementById("spHero"), heroHTML);
   /* Coming up: everything after the hero, as many rows as fit the card (trimmed in fitSkills). */
-  const rest = (next ? [...now.slice(1), ...ahead] : ahead.filter(x => x !== hero)).slice(0, 10);
+  const rest = cu.on ? [] : (next ? [...now.slice(1), ...ahead] : ahead.filter(x => x !== hero)).slice(0, 10);
   let cum = next ? 0 : (hero && !hero.spec ? hero.cost : 0);
   /* "N of M spent" counts SP_STEPS only, on purpose: slots 2 / 3 (SP_SLOTS) cost no points and slot 3 is out of reach (Q5),
      so counting them would keep the bar short of full at Lv 45 and change 0.2's count */
   const spB = SP_STEPS.filter(x => char(state).checks[x.k]).length, spN = SP_STEPS.length;
-  setHTML(document.getElementById("spAfter"), rest.length ? `<div class="dvbh"><div class="dvbh-top"><span class="dvbh-k">Coming up</span><span class="dvbh-n">${spB} of ${spN} spent</span></div><span class="dvbh-bar"><span style="width:${spB / spN * 100}%"></span></span></div><ul class="soonlist" id="spSoon">` + rest.map(x => {
+  const soonHead = `<div class="dvbh"><div class="dvbh-top"><span class="dvbh-k">Coming up</span><span class="dvbh-n">${spB} of ${spN} spent</span></div><span class="dvbh-bar"><span style="width:${spB / spN * 100}%"></span></span></div>`;
+  /* catch-up: the other jumps, each covered by the points (the hero's hints name a shortfall) */
+  if (cu.on) setHTML(document.getElementById("spAfter"), cu.jumps.length > 1 ? soonHead + `<ul class="soonlist" id="spSoon">` + cu.jumps.slice(1).map(j =>
+    `<li title="${j.cost} pt${j.cost === 1 ? "" : "s"} · available now · points covered${j.specs.length ? " · then its specialty" : ""}${j.s.single ? ` · single source (${j.s.single})` : ""}${j.s.st ? ` · plan${stNote(j.s.st)}` : ""}"><span class="sname">${spMini(j.n)}${j.n} ${spType(j.s)} <span class="lvarr">${j.rows.length ? `${j.from} → ${j.to}` : "specialty"}${spBonus(j.s.key)}${stTag(j.s.st)}</span></span><span class="slv now">now</span><span class="sst ok">✓</span></li>`).join("") + `</ul>` : "");
+  else setHTML(document.getElementById("spAfter"), rest.length ? soonHead + `<ul class="soonlist" id="spSoon">` + rest.map(x => {
     cum += x.spec ? 0 : x.cost;
     const avail = now.includes(x), have = avail ? pts - (next ? next.cost : 0) : haveAt(x), short = cum - have;
     /* a specialty slot waits for a skill level, not a character level, and is free (never short of points, so an empty
@@ -89,7 +109,7 @@ function renderNext() {
   document.getElementById("spLv").textContent = `${fromLevels} earned from levels`;
   document.getElementById("spLv").title = `${fromLevels + stones} earned = ${fromLevels} from levels + ${stones} from Wisdom Stones; ${spent} spent`;
   setHTML(document.getElementById("spBig"), `<b>${pts}</b><span>pt${pts === 1 ? "" : "s"} to spend</span>${keyChip("skills")}`);
-  document.getElementById("spCard").classList.toggle("act", !!next && (next.spec || pts >= next.cost));
+  document.getElementById("spCard").classList.toggle("act", cu.on || (!!next && (next.spec || pts >= next.cost)));
   requestAnimationFrame(fitSkills);
   renderDaevanion();
 }
@@ -142,10 +162,14 @@ function aion2SkillsMount() {
     char(state).stones = Math.max(0, parseInt(v, 10) || 0);
     save(); renderNext(); renderNow(); fitSkills();
   });
-  /* Skills hero button: ticks the next upgrade (same path as its checkbox in the milestones). */
+  /* Skills hero button: ticks the next upgrade (same path as its checkbox in the milestones). In catch-up it ticks the
+     hero's whole jump, and "Mark all spent" every jump; one tap each, with Undo in the toast. */
   document.getElementById("spHero").addEventListener("click", e => {
+    if (e.target.closest("#spBuyAll")) { const J = skillJumps(char(state)).jumps; markJump(J.flatMap(j => j.keys), `${J.length} skills caught up`); return; }
     const b = e.target.closest("#spBuy"); if (!b || b.disabled) return;
-    const box = document.getElementById("spNextBox"); if (!box.dataset.sp) return;
+    const box = document.getElementById("spNextBox");
+    if (box.dataset.jump) { const j = skillJumps(char(state)).jumps[0]; if (j) markJump(j.keys, `${j.n}${j.rows.length ? ` → Lv ${j.to}` : " specialty"} marked`); return; }
+    if (!box.dataset.sp) return;
     box.checked = true; box.dispatchEvent(new Event("change"));
   });
   document.getElementById("spNextBox").addEventListener("change", e => {
@@ -154,6 +178,15 @@ function aion2SkillsMount() {
     const cb = mainEl.querySelector(`input[data-k="${k}"]`); if (cb) cb.checked = true;
     update();
   });
+}
+
+/* Tick a catch-up jump's lines (and its specialty) as one step; Undo puts back exactly what each key was before */
+function markJump(keys, msg) {
+  if (!keys.length) return;
+  const was = keys.map(k => [k, char(state).checks[k]]), c = char(state);
+  keys.forEach(k => { c.checks[k] = true; });
+  save(); render(); update();
+  rewardToast(msg, () => { if (char(state) !== c) return; was.forEach(([k, v]) => { if (v === undefined) delete c.checks[k]; else c.checks[k] = v; }); save(); render(); update(); });
 }
 
 const aion2SkillsCard = { id: "skills", slot: "top", order: 100, root: "spCard", mount: aion2SkillsMount, update: () => renderNext() };
