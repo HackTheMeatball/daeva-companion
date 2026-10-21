@@ -1,0 +1,7 @@
+[
+  {"case": "nextup-step-1500", "kind": "before-after", "title": "Next up names the specialty pick", "caption": "Buy Heart Gore 7 → 8 takes the skill to Lv 8, where its first specialty slot opens: the step now names the guide's pick."},
+  {"case": "nextup-step-390", "kind": "before-after", "title": "Phone: the pick on the skill step", "caption": "The same save at 390 px: the pick sits in the step's line under Buy Heart Gore 7 → 8."},
+  {"case": "nextup-respec-1500", "kind": "before-after", "title": "After a Respec: picks kept", "caption": "Lv 39, every line bought, then Skills Respec. Respec keeps specialty picks, so the steps that level each skill back up now say the pick is kept instead of saying nothing."},
+  {"case": "nextup-respec-390", "kind": "before-after", "title": "Phone: picks kept after a Respec", "caption": "The same respec at 390 px."},
+  {"case": "skills-hint-390", "kind": "before-after", "title": "Skills hint agrees with the points", "caption": "Lv 39 after Mark all spent: Insignia Explosion 9 → 10 is short of points. The hint under it now counts from the 1 point you have, as the header does, not 0."}
+]

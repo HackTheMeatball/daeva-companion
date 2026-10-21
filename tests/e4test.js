@@ -438,11 +438,10 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   ok('F8: after a Respec the catch-up step "Heart Gore 1 → 10" says its specialty is kept, not to pick it', r.card && /Heart Gore 1 → 10/.test(r.card.t) && r.card.sub.includes(`specialty kept: ${f8.p1}`) && !/pick the specialty/.test(r.card.sub), r);
   /* the Skills hero hint at a fresh Lv 39 after buying every open line: the hero short, its hint counts from the header's points */
   await cuSave(39, {}, ASN); await p.click('#spBuyAll'); await p.waitForTimeout(200);
-  /* the hint is "+k more your points cover" (the first k after the hero cost no more than the header's points) or "N more
-     unlocked · X pts left" with X the header's points; before F8 it read "N more unlocked · 0 pts left" with 1 pt to spend */
-  r = await p.evaluate(() => { const now = skillOpen(char(state)).now, h = +document.querySelector('#spBig b').textContent, hint = ([...document.querySelectorAll('#spHero .sphint')].find(x => /more/.test(x.innerText)) || {}).innerText || '', k = +((hint.match(/^\+(\d+) more your points cover$/) || [])[1] || 0);
-    return { head: h, hint, k, costK: now.slice(1, 1 + k).reduce((t, y) => t + (y.spec ? 0 : y.cost), 0), short: !!document.querySelector('#spHero .sphero.short') }; });
-  ok('F8: Lv 39, every open line bought, hero short: the hint counts from the header\'s points', r.short && r.head > 0 && (r.k ? r.costK <= r.head : /^\d+ more unlocked · \d+ pts? left$/.test(r.hint) && +r.hint.match(/· (\d+) pt/)[1] === r.head), r);
+  /* "N more unlocked · X pts left" with X the header's points (before F8: "0 pts left" beside 1 pt to spend); never "+k
+     more your points cover" while the hero itself is short (the guide buys it first; Coming up shows the rest short) */
+  r = await p.evaluate(() => ({ head: +document.querySelector('#spBig b').textContent, hint: ([...document.querySelectorAll('#spHero .sphint')].find(x => /more/.test(x.innerText)) || {}).innerText || '', short: !!document.querySelector('#spHero .sphero.short') }));
+  ok('F8: Lv 39, every open line bought, hero short: the hint\'s points left match the header', r.short && r.head > 0 && /^\d+ more unlocked · \d+ pts? left$/.test(r.hint) && +r.hint.match(/· (\d+) pt/)[1] === r.head, r);
 
   ok('no page errors', !errs.length, errs);
   console.log(`${n - fail} ok, ${fail} failed`); console.log(fail ? `E4 CHECKS FAILED (${fail})` : 'E4 CHECKS PASSED'); await b.close(); process.exit(fail ? 1 : 0); })();
