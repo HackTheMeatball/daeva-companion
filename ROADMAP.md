@@ -134,8 +134,12 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
    or storage key change, or a release PR, plus one full design pass per minor (the Design Critic run in step 5, briefed by
    Design Review). The standing Design Review and Code Review
    threads may add a tag, never remove one, and brief a reviewer with no history on the work from a fixed template (the
-   checklist, the work and its acceptance line, and its baseline once K26 is in; nothing from the author); findings go to the work's owner, and a
-   disagreement between reviewers goes to the owner in the morning debrief. Watchdog (Mike) flags a merged tagged item
+   checklist, the work and its acceptance line, and its baseline once K26 is in; nothing from the author); findings go to the work's owner. A
+   disagreement between reviewers follows the outside-review route (owner, 2026-10-20 5:24 PM ET): each reviewer and the
+   work's owner write their view, the work is revised once and reviewed again, and only an UNSURE or a disagreement after
+   that revision reaches the owner, as one card from the coordinator with the question, options, a recommendation and every
+   view. Exception: a contested removal stays removed only if a second fresh reviewer agrees (Design Review's charter, K26
+   "bring back"). Watchdog (Mike) flags a merged tagged item
    with no fresh-review note (`review-skipped`). Once per minor a no-history thread re-checks 10 data fields Game Data
    Check fixed or passed.
 
