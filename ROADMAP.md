@@ -1515,6 +1515,28 @@ engine, Asmodian, Lv 1–45, the endgame guide past Lv 45 (0.10), and timers for
 load them. A reasoned budget raise if 0.9 to 0.11 land above 95%. The strict save rule returns (CLAUDE.md). The
 owner tests the candidate and gives go or no-go; a no-go makes it the next minor (Versioning).
 
+**Build choice (owner, 2026-10-21 9:55 AM ET; DECISIONS "1.0 ships up to three builds per class, a custom build and a respec warning on switching").**
+Reviewed before planning, under the owner's review-first rule: Design Review (Holly), GO with changes, with input
+from Game Data Check and Org Design (`design-review/audit-simple-keys-mode-holly.md` Part 2, shared folder). 1.0 ships:
+- **Up to three builds per class**, from Lv 1 to 45 and on into the endgame guide. They are the guide build plus up to two credited alternatives (data format v2 review, #30).
+  - "Top" follows SOURCES.md "Build sources": an endgame pick needs Metabot's pick rate plus one witness, and a levelling pick needs two witnesses.
+  - A class never gets padded to three or shows an empty slot. Expect fewer than three levelling builds for most classes; Game Data Check's inference is that levelling has one, maybe two, per class.
+  - Each build carries its per-level pick order, labelled as a choice.
+- **A custom build** that starts from a listed build, is saved per character and in Export, and is never silently dropped.
+- **A warning when switching builds**, offering switch or cancel. The old build stays selectable and its ticks are kept.
+  - It lists what differs between the two builds rather than "reset everything": stigmas and Daevanion nodes as a diff, with nodes removed outside-in.
+  - Skills say "reset all skills" until single-skill reset is settled (T-61).
+  - It states the reset cost and that stigma resets are blocked in combat.
+  - A per-board Daevanion reset stays "check in game" until the owner's screen settles it (T-61 C2).
+  - This differs from the owner's words ("all skills must be respecd … reset each daevinion board") on purpose: those steps aren't all true or sourced for every pair of builds.
+
+**Who owns what:**
+- reset facts: the Builds & Macros researcher, with Game Data Check's DATA OK;
+- computing the diff: Build Pipeline (Gus);
+- the pop-up's wording and look: Design Lead, with a fresh design review, since it's a new owner-facing element.
+
+**Order:** one build per class first, then the alternatives class by class. Each build's Simple keys stacks (0.10) come from its own skills. Items are shaped in 0.10's pass. If the alternatives don't fit before 1.0, the Release Planner takes it to the owner as a scope call.
+
 ### 1.1 — Elyos (estimate)
 
 The Elyos faction pack comes after 1.0 (Release Planner and coordinator, 2026-10-20, answering the owner's 5:40 PM ET
