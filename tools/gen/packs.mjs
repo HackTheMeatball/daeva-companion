@@ -10,7 +10,7 @@ import { ROOT, validateDoc } from './validate.mjs';
 export const DEFAULT_ROOT = join(ROOT, 'data/packs');
 export const DEFAULT_PACK = 'aion2/asmodian/assassin';
 
-const rel = f => relative(ROOT, f).split(sep).join('/');
+const rel = f => (f.startsWith(ROOT + sep) ? f.slice(ROOT.length + 1) : relative(ROOT, f)).split(sep).join('/');
 
 /* The files the generator reads (0.9 P6). realFs is the disk. fsView() is the disk seen through test edits, all in memory
    (nothing is written, so tests/schema.mjs no longer copies data/packs for each broken copy): mutate(rel, doc) edits any
@@ -20,13 +20,16 @@ const listDisk = d => readdirSync(d, { withFileTypes: true }).map(e => ({ name: 
 export const realFs = { real: true, exists: existsSync, isDir: f => statSync(f).isDirectory(), list: listDisk, read: f => readFileSync(f, 'utf8'), edit: (f, doc) => doc };
 export function fsView({ mutate = null, drop = [], add = {} } = {}) {
   const gone = r => drop.some(d => r === d || r.startsWith(d + '/')), added = Object.keys(add), below = r => added.some(a => a.startsWith(r + '/'));
-  const onDisk = f => !gone(rel(f)) && existsSync(f);
+  /* one generate() resolves ~10 pack chains over the same folders: the view looks each disk path up once (0.9 P32) */
+  const memo = fn => { const m = new Map(); return f => { if (!m.has(f)) m.set(f, fn(f)); return m.get(f); }; };
+  const diskExists = memo(existsSync), diskDir = memo(f => statSync(f).isDirectory()), diskList = memo(listDisk);
+  const onDisk = f => !gone(rel(f)) && diskExists(f);
   return {
     real: false,
     exists: f => rel(f) in add || onDisk(f) || below(rel(f)),
-    isDir: f => !(rel(f) in add) && (onDisk(f) ? statSync(f).isDirectory() : below(rel(f))),
+    isDir: f => !(rel(f) in add) && (onDisk(f) ? diskDir(f) : below(rel(f))),
     list: d => {
-      const r = rel(d), out = onDisk(d) ? listDisk(d).filter(e => !gone(r + '/' + e.name)) : [];
+      const r = rel(d), out = onDisk(d) ? diskList(d).filter(e => !gone(r + '/' + e.name)) : [];
       for (const a of added) if (a.startsWith(r + '/')) { const rest = a.slice(r.length + 1), name = rest.split('/')[0]; if (!out.some(e => e.name === name)) out.push({ name, dir: rest.includes('/') }); }
       return out;
     },
@@ -44,6 +47,10 @@ const ownJson = (fs, dir, base = dir) => fs.list(dir).map(e => e.name).sort().fl
   return n.endsWith('.json') && f !== join(base, 'pack.json') ? [relative(base, f).split(sep).join('/')] : [];
 });
 
+/* validateDoc is pure in (path, doc): a manifest that serializes the same as one validated before has the same errors
+   (0.9 P32: the tests' many generate() calls resolve ~10 chains each, every one re-reading the same manifests) */
+const manifestMemo = new Map(), validManifest = (f, m) => { const k = f + '\0' + JSON.stringify(m); if (!manifestMemo.has(k)) manifestMemo.set(k, validateDoc(f, m)); return manifestMemo.get(k); };
+
 export function resolvePacks({ root = DEFAULT_ROOT, pack = DEFAULT_PACK, fs = realFs } = {}) {
   const manifests = new Map(), state = new Map(), stack = [], chain = [];
   const load = id => {
@@ -53,7 +60,7 @@ export function resolvePacks({ root = DEFAULT_ROOT, pack = DEFAULT_PACK, fs = re
     if (/^[a-z0-9][a-z0-9-]*(\/[a-z0-9][a-z0-9-]*)*$/.test(id) && fs.exists(f)) {
       try { m = JSON.parse(fs.read(f)); } catch (e) { throw new Error(`${rel(f)}: not JSON: ${e.message}`); }
       fs.edit(f, m);
-      const errs = validateDoc(f, m);
+      const errs = validManifest(f, m);
       if (errs.length) throw new Error(`${rel(f)}: pack manifest fails pack.schema.json: ${errs.slice(0, 5).join('; ')}`);
       if (m.id !== id) throw new Error(`${rel(f)}: id "${m.id}" is not its folder "${id}"`);
     }

@@ -4,22 +4,155 @@
    (so a relaxed schema can't pass silently); then the generator's cross-record checks, and data/DATA_SOURCES.md must be
    what the generator writes; last, licence compliance. The rules and decisions ledger is its own suite (tests/ledger.mjs,
    0.9 P6), so a DECISIONS-only edit can't red this one.
+   The generator's negative controls (each a generate() on an in-memory view, ~110 ms) are jobs that run in worker threads
+   while the main thread runs the rest (0.9 P32: the suite went from 8–10 s to under 4 s); their lines print after the
+   main thread's, in job order. Data counts are read from data/expected-counts.json (`npm run gen -- --counts`), not pinned here.
    node tests/schema.mjs  (also in `npm test` and the fast CI job) */
-import { cpSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, readFileSync, readdirSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
+import { availableParallelism } from 'node:os';
+import { Worker, isMainThread, parentPort, workerData } from 'node:worker_threads';
 import { ROOT, validateAll, validateDoc } from '../tools/gen/validate.mjs';
-import { dataSourcesMd, generate, guidePacks } from '../tools/gen/gen.mjs';
+import { COUNTS_FILE, countsJson, dataSourcesMd, generate, guidePacks, readExpected } from '../tools/gen/gen.mjs';
 import { checkCompliance } from './compliance.mjs';
 
+const read = p => JSON.parse(readFileSync(join(ROOT, 'data', p), 'utf8'));
+const E = readExpected() || {};
+const SQ = 'data/packs/aion2/asmodian/story-quests.json', KIB = 'data/packs/aion2/asmodian/kibelisks.json', PK = 'data/packs/';
+const stepWith = (d, f) => d.records.flatMap(r => r.steps).find(f);
+const sqStep = (d, id, i) => d.records.find(r => r.id === id).steps.find(x => x.i === i);
+const classDoc = (c, f) => JSON.parse(readFileSync(join(ROOT, 'data/packs/aion2/classes', c, f), 'utf8'));
+
+/* ------------------------------------------------------------------ the generator's negative controls (worker jobs) */
+/* job(fn): fn(ok, G) runs in a worker; ok(name, c, d) records a line, G() is that thread's generate() on the disk (lazy).
+   The list is built the same way in every thread, so a job index means the same job everywhere. */
+const JOBS = [], job = fn => JOBS.push(fn);
+const runs = (ok, label, view) => { try { return generate(view); } catch (e) { ok('generator runs: ' + label, false, e.message); return null; } };
+/* proposals never reach the page's data module: it is byte-identical without them (0.2 behaviour unchanged) */
+job((ok, G) => { const g = G(); let g0 = null; try { g0 = generate({ dropProposed: true }); } catch (e) { ok('generator runs without proposals', false, e.message); return; }
+  ok(`proposed 0.3 gates are not in the data module: identical without the ${g.report.proposed.length} proposals`, g0.module === g.module && g.report.proposed.length > 0);
+  /* GATE_GRAPH (0.3 E1) compiles the live gates only: proposals off */
+  ok('GATE_GRAPH identical without the proposals (live requires / completesWith only)', g0.gateModule === g.gateModule);
+  /* GATE_PROPOSED (0.3 E4) holds exactly the proposals, compiled (the evaluator applies one only when asked, per id) */
+  ok('GATE_PROPOSED: one entry per proposal, empty without them', Object.keys(g.gateProposed).sort().join() === g.report.proposed.map(p => p.id).sort().join() && Object.keys(g0.gateProposed).length === 0,
+    [Object.keys(g.gateProposed).length, g.report.proposed.length, Object.keys(g0.gateProposed).length]); });
+/* 0.9 P32: an in-memory view with no edits (packs.mjs fsView) compiles byte-identical modules to the real file system, so
+   every control below differs from the real data by its edit only */
+job((ok, G) => { const g = G(), gv = runs(ok, 'an in-memory view with no edits', { mutate: () => {} }); if (!gv) return;
+  ok('an in-memory view with no edits (generate({ mutate: () => {} })) compiles byte-identical modules and the same checks', gv.module === g.module && gv.gateModule === g.gateModule
+    && gv.proposedModule === g.proposedModule && gv.placeModule === g.placeModule && JSON.stringify(gv.report.checks) === JSON.stringify(g.report.checks), [gv.module === g.module, gv.report.checks.length, g.report.checks.length]); });
+/* 0.3 E7 guard: a specialty pick beyond slot 1 needs a 2+ source slot witness in specialtyEvidence (owner on #75) */
+const genFails = (label, mutate, re) => job(ok => { const g1 = runs(ok, label, { mutate: (rel, d) => rel === 'data/packs/aion2/asmodian/assassin/builds.json' && mutate(d.records[0]) }); if (!g1) return;
+  ok('generator rejects: ' + label, g1.failed.some(x => re.test(x.check)), g1.failed.map(x => x.check)); });
+/* 0.8.1 F2 made Savage Roar 4 a labelled slot 2 pick (contested): the guard now uses a pick no entry backs, Storm Rampage 4 */
+genFails('slot 2 pick without evidence (Storm Rampage 4)', r => { r.specialtyPicks['skill:assassin:storm-rampage'] = [...(r.specialtyPicks['skill:assassin:storm-rampage'] || ['spec:assassin:storm-rampage:1']), 'spec:assassin:storm-rampage:4'].slice(-2); }, /storm-rampage:4 \(slot 2\) has 2\+ source/);
+genFails('labelled slot 2 pick without a note naming the alternative (Savage Roar 4, contested)', r => { delete r.specialtyEvidence['spec:assassin:savage-roar:4'].note; }, /savage-roar:4 \(slot 2\) has 2\+ source/);
+genFails('slot witness not cited for specialtyPicks (GamesFuze)', r => { r.specialtyEvidence['spec:assassin:quick-slice:4'].sources[0] = 'https://gamesfuze.com/guides/aion-2-assassin-build-best-skills-stigmas-and-rotation/'; }, /quick-slice:4 \(slot 2\) has 2\+ source/);
+genFails('evidence from one publisher only', r => { r.specialtyEvidence['spec:assassin:heart-gore:5'].sources = ['https://skycoach.gg/blog/aion-2/articles/assassin-guide', 'https://skycoach.gg/blog/aion-2/articles/assassin-guide']; }, /heart-gore:5 \(slot 3\) has 2\+ source/);
+genFails('evidence for the wrong slot', r => { r.specialtyEvidence['spec:assassin:heart-gore:5'].slot = 2; }, /heart-gore:5 \(slot 3\) has 2\+ source/);
+const genFailsIn = (label, rel, mutate, re) => job(ok => { const g1 = runs(ok, label, { mutate: (p, d) => p === rel && mutate(d) }); if (!g1) return;
+  ok('generator rejects: ' + label, g1.failed.some(x => re.test(x.check)), g1.failed.map(x => x.check)); });
+/* 0.2.4 villages as zones (issue #98): the checks that keep places and Kibelisks in the village zone */
+genFailsIn('Aldelle Village Kibelisk in two zones', 'data/packs/aion2/asmodian/zones.json', d => { d.records.find(z => z.id === 'zone:ishalgen').kibelisks = ['Aldelle Village']; }, /Kibelisk Aldelle Village resolves to one zone/);
+genFailsIn('a giver placed in Aldelle Village but zoned Ishalgen', SQ, d => { d.records.find(r => r.id === 'sq:2101010').giver.zone = 'zone:ishalgen'; }, /sq:2101010: place Aldelle Village is in zone:aldelle-village/);
+genFailsIn('a giver placed in Black Claw Village but zoned elsewhere', SQ, d => { d.records.find(r => r.id === 'sq:2102781').giver.zone = 'zone:impetusium-square'; }, /sq:2102781: place Black Claw Village is in zone:black-claw-village/);
+/* 0.5 P8: every Kibelisk name resolves to one registry record; ids, zones, binds and rules are checked */
+genFailsIn('an unknown Kibelisk name on a story giver', SQ, d => { d.records.find(r => r.id === 'sq:2102015').giver.kibelisk = 'Safe Haven Plaza'; }, /Kibelisk "Safe Haven Plaza" resolves to a registry record/);
+genFailsIn('an unknown Kibelisk name in an objective marker', SQ, d => { d.records.find(r => r.id === 'sq:2102015').steps[0].text = 'Receive additional supplies — go to VeKauf (Kibelisk: Safe Havn)'; }, /Kibelisk "Safe Havn" resolves/);
+genFailsIn('a duplicate Kibelisk id', KIB, d => { d.records.splice(1, 0, { ...d.records[0], name: 'Abandoned Barracks Site 2' }); }, /id unique repo-wide: kib:abandoned-barracks-site/);
+genFailsIn('a Kibelisk name twice in the registry', KIB, d => { d.records.push({ ...d.records[0], id: 'kib:zz-copy' }); }, /Kibelisk name unique in the registry: Abandoned Barracks Site/);
+genFailsIn('a registry zone against the points\' majority', KIB, d => { d.records.find(k => k.id === 'kib:safe-haven').zone = 'zone:crypt'; }, /kib:safe-haven: zone zone:crypt is the majority zone zone:dredgion-crash-site/);
+genFailsIn('zones[].kibelisks naming a Kibelisk filed elsewhere', 'data/packs/aion2/asmodian/zones.json', d => { d.records.find(z => z.id === 'zone:crypt').kibelisks.push('Safe Haven'); }, /zone:crypt: Kibelisk Safe Haven is a registry record filed in this zone/);
+genFailsIn('binds naming an id not in the registry', SQ, d => { stepWith(d, x => x.binds).binds.kibelisk = 'kib:safe-haven-plaza'; }, /binds kib:safe-haven-plaza is a registry id/);
+genFailsIn('a step-text bind whose text does not say bind', SQ, d => { const x = stepWith(d, x => x.binds && x.binds.basis === 'step-text'); x.text = 'Remember Aldelle Village'; }, /a step-text bind says "bind"/);
+genFailsIn('binds on a regional quest objective', 'data/packs/aion2/asmodian/regional-quests.json', d => { d.records.find(r => (r.steps || []).length).steps[0].binds = { kibelisk: 'kib:safe-haven', basis: 'step-text' }; }, /binds only on story objectives/);
+genFailsIn('a bind radius not inside the nudge radius', 'data/packs/aion2/rules.json', d => { d.records.find(x => x.id === 'rule:kibelisk-bind-radius').value = 100; d.records.find(x => x.id === 'rule:kibelisk-nudge-radius').value = 100; }, /rule:kibelisk-bind-radius < rule:kibelisk-nudge-radius/);
+/* 0.6 P3: the shared Asmodian guide names no class, skill, stigma or board node and points at no class guide record */
+const SG = 'data/packs/aion2/asmodian/guide/', sgStep = (d, id) => d.records.find(r => r.id === id);
+genFailsIn('a shared guide step naming a class skill', SG + 'steps.json', d => { sgStep(d, 'story:1').text += ' Then use Heart Gore.'; }, /^shared guide story:1 .*names no class, skill, stigma or board node$/);
+genFailsIn('a shared guide step naming a stigma id', SG + 'steps.json', d => { sgStep(d, 'story:1').loc = 'stigma:assassin:savage-fang'; }, /^shared guide story:1 .*names no class, skill, stigma or board node$/);
+genFailsIn('a shared guide step naming a board node key', SG + 'steps.json', d => { sgStep(d, 'story:1').text += ' (dv:azphel:r10c1)'; }, /^shared guide story:1 .*names no class, skill, stigma or board node$/);
+genFailsIn('a shared guide tip naming the class', SG + 'tips.json', d => { d.records.find(r => r.id === 'tip:kibelisk').credit += ', an assassin guide'; }, /^shared guide tip:kibelisk .*names no class/);
+genFailsIn('a shared guide confidence line naming a stigma', SG + 'confidence.json', d => { d.records[0].text += ' Savage Fang first.'; }, /^shared guide conf:abyss-points .*names no class/);
+genFailsIn('a shared guide step linking a class guide tip', SG + 'steps.json', d => { sgStep(d, 'story:1').text += ' [[tip:wisdom|Skill Points]]'; }, /^shared guide story:1 .*points at no guide or class record$/);
+genFailsIn('a shared guide step in a class guide milestone', SG + 'steps.json', d => { sgStep(d, 'story:1').milestone = 'g28'; }, /^shared guide story:1 .*points at no guide or class record$/);
+/* 0.5 P9: story objective points: the marker equals the point's Kibelisk, story objectives only, the Kibelisk's map */
+genFailsIn('a (Kibelisk: X) marker that differs from at.kibelisk', SQ, d => { sqStep(d, 'sq:2102235', 1).at.kibelisk = 'Guide Rest Stop'; }, /sq:2102235 #1: \(Kibelisk: X\) marker = at\.kibelisk/);
+genFailsIn('an objective point naming an unknown Kibelisk', SQ, d => { sqStep(d, 'sq:2102590', 1).at.kibelisk = 'Alert Observation Tower'; }, /Kibelisk "Alert Observation Tower" resolves to a registry record/);
+genFailsIn('an objective point on another map than its Kibelisk', SQ, d => { sqStep(d, 'sq:2102235', 1).at.map = 'ishalgen'; }, /sq:2102235 #1: at\.map is its Kibelisk's map/);
+genFailsIn('an objective point on a regional quest', 'data/packs/aion2/asmodian/regional-quests.json', d => { const r = d.records.find(r => (r.steps || []).length);
+  r.steps[0].at = { map: 'altgard', x: 1, y: 1, kibelisk: 'Safe Haven', meters: 1, sources: [{ url: 'https://metabot.gg/en/aion-2/quests/survival-supplies' }] }; }, /#0: at only on story objectives/);
+/* 0.9 P32: a count that changes in the data without `npm run gen -- --counts` fails, and so does a stale counts file */
+genFailsIn('a Sealed Dungeon dropped from the data without npm run gen -- --counts', 'data/packs/aion2/asmodian/sealed-dungeons.json', d => { d.records.pop(); }, /^count sealedDungeons = \d+: as in data\/expected-counts\.json/);
+genFailsIn('a story objective point dropped from the data without npm run gen -- --counts', SQ, d => { delete stepWith(d, x => x.at && !x.binds).at; }, /^count storyObjectivePoints = \d+: as in data\/expected-counts\.json/);
+job(ok => { const g1 = runs(ok, 'a counts file with a stale count', { expected: { ...E, regionalQuests: E.regionalQuests + 1 } }); if (!g1) return;
+  ok('generator rejects: a counts file with a stale count (regionalQuests + 1)', g1.failed.some(x => /^count regionalQuests = \d+: as in data\/expected-counts\.json/.test(x.check)), g1.failed.map(x => x.check)); });
+job(ok => { const g1 = runs(ok, 'no counts file', { expected: null }); if (!g1) return;
+  ok('generator rejects: no counts file (every count fails)', Object.keys(E).length > 0 && Object.keys(E).every(k => g1.failed.some(x => x.check.startsWith(`count ${k} = `))), g1.failed.length); });
+/* 0.4 P1 pack manifests: a broken copy of data/packs must stop the generator (packs.mjs). Since 0.9 P6 each broken copy
+   is an in-memory view of data/packs (generate({ mutate, drop, add }), packs.mjs fsView): nothing is copied or written */
+const editManifest = (id, f) => ({ mutate: (rel, d) => { if (rel === PK + id + '/pack.json') f(d); } });
+const packFails = (label, view, re) => job(ok => { let msg = null; try { generate(view); } catch (e) { msg = e.message; }
+  ok('generator rejects: ' + label, !!msg && re.test(msg), msg); });
+const guide = 'aion2/asmodian/assassin';
+packFails('manifest without id', editManifest(guide, m => { delete m.id; }), /pack manifest fails pack\.schema\.json/);
+packFails('manifest id that is not its folder', editManifest('aion2/asmodian', m => { m.id = 'aion2/elyos'; }), /id "aion2\/elyos" is not its folder/);
+packFails('a listed file that does not exist', { drop: [PK + 'aion2/items.json'] }, /pack aion2: listed file items\.json does not exist/);
+packFails('a JSON file in a pack folder that is not listed', { add: { [PK + 'aion2/asmodian/extra.json']: '{}' } }, /pack aion2\/asmodian: .*not listed in pack\.json: extra\.json/);
+packFails('an unknown parent', editManifest(guide, m => { m.parent = 'aion2/elyos'; }), /aion2\/asmodian\/assassin parent: unknown pack "aion2\/elyos"/);
+packFails('an unknown pack in uses', editManifest(guide, m => { m.uses = ['aion2/classes/no-such-class']; }), /uses: unknown pack "aion2\/classes\/no-such-class"/);
+packFails('a cycle (the class uses the guide that uses it)', editManifest('aion2/classes/assassin', m => { m.uses = [guide]; }), /pack cycle: /);
+/* --root is the one real copy left (tests/out/, not committed): it proves another packs root compiles the same */
+job((ok, G) => { const g = G(), copyRoot = join(ROOT, 'tests/out/packs-copy'); rmSync(copyRoot, { recursive: true, force: true }); cpSync(join(ROOT, 'data/packs'), copyRoot, { recursive: true });
+  let gc = null; try { gc = generate({ root: copyRoot, pack: guide }); } catch (e) { ok('generator runs on a copied packs root', false, e.message); return; }
+  ok('--root / --pack: an unchanged copy of data/packs, pack ' + guide + ', compiles the same modules', gc.module === g.module && gc.gateModule === g.gateModule && gc.proposedModule === g.proposedModule); });
+/* An idle class pack (one no guide pack uses: checked and cited, compiled into no module). 0.6 P4's Gladiator, then 0.7
+   P3's Spiritmaster were the idle pack here; 0.7 P4 gave the Spiritmaster its guide pack, so data/packs has none left.
+   The idle checks run on a view where the Spiritmaster is idle again: its guide pack dropped, its class hidden. Its counts
+   are read from its own files (0.9 P32), as for the other classes below. */
+const SM = 'aion2/classes/spiritmaster', editJson = (f, fn) => ({ rel: PK + SM + '/' + f, fn });
+const idleView = (...edits) => { const all = [editJson('class.json', d => { d.records[0].release = 'hidden'; }), ...edits];
+  return { drop: [PK + 'aion2/asmodian/spiritmaster'], mutate: (rel, d) => { for (const e of all) if (rel === e.rel) e.fn(d); } }; };
+job((ok, G) => { const g = G(), gi = runs(ok, 'on a copy with an idle Spiritmaster', idleView());
+  const sm = gi && (gi.idle || []).find(x => x.pack === SM), smColl = f => sm ? sm.all.filter(x => x.file.endsWith('/' + f)).length : 0;
+  const want = f => classDoc('spiritmaster', f).records.length, triniel = classDoc('spiritmaster', 'board-nodes.json').records.filter(x => x.board === 'board:triniel').length;
+  ok(`idle class pack aion2/classes/spiritmaster (copy): 1 class, ${want('skills.json')} skills, ${want('stigmas.json')} stigmas, ${want('board-nodes.json')} board nodes, checked by the generator, modules unchanged`,
+    !!sm && smColl('class.json') === 1 && ['skills.json', 'stigmas.json', 'board-nodes.json'].every(f => want(f) > 0 && smColl(f) === want(f))
+    && gi.report.checks.some(x => x.check.startsWith(`aion2/classes/spiritmaster: board:triniel: ${triniel} nodes`)) && !gi.failed.length
+    && gi.module === g.module && gi.gateModule === g.gateModule, sm && [smColl('skills.json'), smColl('board-nodes.json'), gi.failed.slice(0, 5)]); });
+const idleFails = (label, edit, re) => job(ok => { const g1 = runs(ok, label, idleView(edit)); if (!g1) return;
+  ok('generator rejects: ' + label, g1.failed.some(x => re.test(x.check)), g1.failed.map(x => x.check).slice(0, 5)); });
+const zikel = read('packs/aion2/boards.json').records.find(b => b.id === 'board:zikel').points;
+idleFails('idle-node-cost', editJson('board-nodes.json', d => { d.records.find(n => n.board === 'board:zikel' && n.type === 'stat').cost += 1; }), new RegExp(`spiritmaster: board:zikel: .*points \\(${zikel}\\)`));
+idleFails('idle-node-skill', editJson('board-nodes.json', d => { d.records.find(n => n.type === 'skill').skill = 'skill:spiritmaster:bogus'; }), /skill node names its skill/);
+idleFails('idle-released', editJson('class.json', d => { d.records[0].release = 'released'; }), /spiritmaster: one class record, hidden/);
+idleFails('idle-spec-level', editJson('stigmas.json', d => { d.records[0].specialtyChoices[0].skillLv = 4; }), /stigma:spiritmaster:.*specialty levels \[5,10,15,20\]/);
+packFails('an idle class file that fails its schema', idleView(editJson('skills.json', d => { delete d.records[0].levelGate; })),/schema validation failed:\n  .*aion2\/classes\/spiritmaster\/skills\.json: .*levelGate/);
+
+/* a worker: claim jobs off the shared counter until none is left, then post its lines */
+if (!isMainThread) {
+  const next = new Int32Array(workerData.next), lines = [];
+  let g = null; const G = () => g || (g = generate());
+  for (let i; (i = Atomics.add(next, 0, 1)) < JOBS.length;) {
+    const ok = (name, c, d) => lines.push({ i, name, c: !!c, d: !c && d !== undefined ? JSON.stringify(d).slice(0, 900) : undefined });
+    try { JOBS[i](ok, G); } catch (e) { ok(`generator control job ${i} runs`, false, e.message); }
+  }
+  parentPort.postMessage(lines);
+} else {
+
 let n = 0, fail = 0;
-const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' : 'FAIL ') + name + (!c && d !== undefined ? '  · ' + JSON.stringify(d).slice(0, 900) : '')); if (!c) fail++; };
+const line = (name, c, d) => { n++; console.log((c ? 'ok   ' : 'FAIL ') + name + (!c && d !== undefined ? '  · ' + d : '')); if (!c) fail++; };
+const ok = (name, c, d) => line(name, c, d === undefined ? undefined : JSON.stringify(d).slice(0, 900));
 const t0 = Date.now();
+/* the workers start first and run beside everything below; at most one per spare core, at least two (--workers=N to measure) */
+const W = +(process.argv.find(a => a.startsWith('--workers=')) || '=0').split('=')[1] || Math.max(2, Math.min(4, availableParallelism() - 1)), next = new SharedArrayBuffer(4);
+const workers = Array.from({ length: W }, () => new Promise(res => { const w = new Worker(new URL(import.meta.url), { workerData: { next } }); let got = null;
+  w.on('message', m => { got = m; }); w.on('error', e => { got = got || [{ i: -1, name: 'a control worker runs', c: false, d: JSON.stringify(e.message) }]; }); w.on('exit', () => res(got || [{ i: -1, name: 'a control worker posts its lines', c: false }])); }));
 
 const { files, bad } = validateAll();
 ok(`every data file and schema example validates (${files} files)`, !bad.length, bad.map(b => `${b.file}: ${b.errors.slice(0, 3).join('; ')}`));
 
 /* negative controls on real records: each broken copy must fail validation */
-const read = p => JSON.parse(readFileSync(join(ROOT, 'data', p), 'utf8'));
 const broken = (label, p, mutate) => {
   const doc = read(p); mutate(doc.records[0], doc);
   ok('rejects: ' + label, validateDoc(join(ROOT, 'data', p), doc).length > 0);
@@ -60,7 +193,6 @@ broken('proposal naming a story quest in done', 'packs/aion2/asmodian/assassin/g
 broken('unknown field in a proposal', 'packs/aion2/asmodian/assassin/builds.json', r => { r.boardPlan[0].proposed = { ...P, apply: true }; });
 
 /* 0.5 P8: the Kibelisk registry, binds facts and the travel rules */
-const stepWith = (d, f) => d.records.flatMap(r => r.steps).find(f);
 broken('binds without basis', 'packs/aion2/asmodian/story-quests.json', (r, d) => { delete stepWith(d, x => x.binds).binds.basis; });
 broken('owner binds without its note', 'packs/aion2/asmodian/story-quests.json', (r, d) => { delete stepWith(d, x => x.binds && x.binds.basis === 'owner').binds.note; });
 broken('binds naming a Kibelisk by name, not kib:<slug>', 'packs/aion2/asmodian/story-quests.json', (r, d) => { stepWith(d, x => x.binds).binds.kibelisk = 'Safe Haven'; });
@@ -89,24 +221,10 @@ if (g) {
   const dsMd = dataSourcesMd(g, others);
   ok('Sources labels zone and dungeon pages by record name', ['[Metabot: Calderon Canyon]', "[Metabot: High Priest's Ruins]"].every(s => dsMd.includes(s)));
   others.forEach((o, i) => ok(`guide pack ${otherIds[i]}: ${o.report.checks.length} cross-record checks pass`, !o.failed.length, o.failed.slice(0, 10)));
-  /* proposals never reach the page's data module: it is byte-identical without them (0.2 behaviour unchanged) */
-  let g0 = null; try { g0 = generate({ dropProposed: true }); } catch (e) { ok('generator runs without proposals', false, e.message); }
-  if (g0) ok(`proposed 0.3 gates are not in the data module: identical without the ${g.report.proposed.length} proposals`, g0.module === g.module && g.report.proposed.length > 0);
-  /* GATE_GRAPH (0.3 E1) compiles the live gates only: proposals off */
-  if (g0) ok('GATE_GRAPH identical without the proposals (live requires / completesWith only)', g0.gateModule === g.gateModule);
-  /* GATE_PROPOSED (0.3 E4) holds exactly the proposals, compiled (the evaluator applies one only when asked, per id) */
-  if (g0) ok('GATE_PROPOSED: one entry per proposal, empty without them', Object.keys(g.gateProposed).sort().join() === g.report.proposed.map(p => p.id).sort().join() && Object.keys(g0.gateProposed).length === 0,
-    [Object.keys(g.gateProposed).length, g.report.proposed.length, Object.keys(g0.gateProposed).length]);
-  /* 0.3 E7 guard: a specialty pick beyond slot 1 needs a 2+ source slot witness in specialtyEvidence (owner on #75) */
-  const genFails = (label, mutate, re) => { let g1 = null; try { g1 = generate({ mutate: (rel, d) => rel === 'data/packs/aion2/asmodian/assassin/builds.json' && mutate(d.records[0]) }); } catch (e) { ok('generator runs: ' + label, false, e.message); return; }
-    ok('generator rejects: ' + label, g1.failed.some(x => re.test(x.check)), g1.failed.map(x => x.check)); };
-  /* 0.8.1 F2 made Savage Roar 4 a labelled slot 2 pick (contested): the guard now uses a pick no entry backs, Storm Rampage 4 */
-  genFails('slot 2 pick without evidence (Storm Rampage 4)', r => { r.specialtyPicks['skill:assassin:storm-rampage'] = [...(r.specialtyPicks['skill:assassin:storm-rampage'] || ['spec:assassin:storm-rampage:1']), 'spec:assassin:storm-rampage:4'].slice(-2); }, /storm-rampage:4 \(slot 2\) has 2\+ source/);
-  genFails('labelled slot 2 pick without a note naming the alternative (Savage Roar 4, contested)', r => { delete r.specialtyEvidence['spec:assassin:savage-roar:4'].note; }, /savage-roar:4 \(slot 2\) has 2\+ source/);
-  genFails('slot witness not cited for specialtyPicks (GamesFuze)', r => { r.specialtyEvidence['spec:assassin:quick-slice:4'].sources[0] = 'https://gamesfuze.com/guides/aion-2-assassin-build-best-skills-stigmas-and-rotation/'; }, /quick-slice:4 \(slot 2\) has 2\+ source/);
-  genFails('evidence from one publisher only', r => { r.specialtyEvidence['spec:assassin:heart-gore:5'].sources = ['https://skycoach.gg/blog/aion-2/articles/assassin-guide', 'https://skycoach.gg/blog/aion-2/articles/assassin-guide']; }, /heart-gore:5 \(slot 3\) has 2\+ source/);
-  genFails('evidence for the wrong slot', r => { r.specialtyEvidence['spec:assassin:heart-gore:5'].slot = 2; }, /heart-gore:5 \(slot 3\) has 2\+ source/);
-  /* 0.2.4 villages as zones (issue #98): the village zone record, and the checks that keep places and Kibelisks in it */
+  /* 0.9 P32: the counts file is what `npm run gen -- --counts` writes, so it has no stale or missing key */
+  ok(`${COUNTS_FILE} is current (npm run gen -- --counts): ${Object.keys(g.counts).length} counts`, Object.keys(g.counts).length > 0 && readFileSync(join(ROOT, COUNTS_FILE), 'utf8') === countsJson(g.counts),
+    Object.keys(g.counts).filter(k => g.counts[k] !== E[k]).concat(Object.keys(E).filter(k => !(k in g.counts))));
+  /* 0.2.4 villages as zones (issue #98): the village zone record */
   const zs = read('packs/aion2/asmodian/zones.json').records, av = zs.find(z => z.id === 'zone:aldelle-village');
   ok('zone:aldelle-village: Aldelle Village, region Ishalgen, verified, its Kibelisk, no trace count', !!av && av.name === 'Aldelle Village' && av.region === 'Ishalgen' && av.status === 'verified'
     && av.kibelisks.join() === 'Aldelle Village' && av.traces === null, av);
@@ -114,101 +232,47 @@ if (g) {
     && av.sources.some(s => s.owner && /^owner:/.test(s.owner.ref)), av && av.sources);
   ok('zone:ishalgen no longer lists the Aldelle Village Kibelisk', !(zs.find(z => z.id === 'zone:ishalgen').kibelisks || []).includes('Aldelle Village'));
   const sq = read('packs/aion2/asmodian/story-quests.json').records, sides = sq.flatMap(r => ['giver', 'turnin'].map(k => ({ id: r.id, k, l: r[k] })));
-  ok('story: every giver / turn-in placed in Aldelle Village is in zone:aldelle-village (10 sides), and only those', sides.filter(x => x.l.zone === 'zone:aldelle-village').length === 10
+  ok(`story: every giver / turn-in placed in Aldelle Village is in zone:aldelle-village (${E.storyAldelleVillageSides} sides), and only those`, sides.filter(x => x.l.zone === 'zone:aldelle-village').length === E.storyAldelleVillageSides
     && sides.every(x => (x.l.place === 'Aldelle Village') === (x.l.zone === 'zone:aldelle-village')), sides.filter(x => x.l.place === 'Aldelle Village' || x.l.zone === 'zone:aldelle-village').map(x => `${x.id} ${x.k} ${x.l.zone}`));
   ok('story: a re-pointed village side cites the Metabot quest page for its zone, with no owner-check label left', sq.every(r => ['giver', 'turnin'].every(k => r[k].zone !== 'zone:aldelle-village'
     || (r.sources.some(s => (s.url || '').includes('metabot.gg') && (s.fields || []).includes(k + '.zone')) && !(r.fieldStatus || {})[k + '.zone']))));
-  const genFailsIn = (label, rel, mutate, re) => { let g1 = null; try { g1 = generate({ mutate: (p, d) => p === rel && mutate(d) }); } catch (e) { ok('generator runs: ' + label, false, e.message); return; }
-    ok('generator rejects: ' + label, g1.failed.some(x => re.test(x.check)), g1.failed.map(x => x.check)); };
-  genFailsIn('Aldelle Village Kibelisk in two zones', 'data/packs/aion2/asmodian/zones.json', d => { d.records.find(z => z.id === 'zone:ishalgen').kibelisks = ['Aldelle Village']; }, /Kibelisk Aldelle Village resolves to one zone/);
-  genFailsIn('a giver placed in Aldelle Village but zoned Ishalgen', 'data/packs/aion2/asmodian/story-quests.json', d => { d.records.find(r => r.id === 'sq:2101010').giver.zone = 'zone:ishalgen'; }, /sq:2101010: place Aldelle Village is in zone:aldelle-village/);
-  genFailsIn('a giver placed in Black Claw Village but zoned elsewhere', 'data/packs/aion2/asmodian/story-quests.json', d => { d.records.find(r => r.id === 'sq:2102781').giver.zone = 'zone:impetusium-square'; }, /sq:2102781: place Black Claw Village is in zone:black-claw-village/);
-  /* 0.5 P8: every Kibelisk name resolves to one registry record; ids, zones, binds and rules are checked */
-  const KIB = 'data/packs/aion2/asmodian/kibelisks.json', SQ = 'data/packs/aion2/asmodian/story-quests.json';
-  genFailsIn('an unknown Kibelisk name on a story giver', SQ, d => { d.records.find(r => r.id === 'sq:2102015').giver.kibelisk = 'Safe Haven Plaza'; }, /Kibelisk "Safe Haven Plaza" resolves to a registry record/);
-  genFailsIn('an unknown Kibelisk name in an objective marker', SQ, d => { d.records.find(r => r.id === 'sq:2102015').steps[0].text = 'Receive additional supplies — go to VeKauf (Kibelisk: Safe Havn)'; }, /Kibelisk "Safe Havn" resolves/);
-  genFailsIn('a duplicate Kibelisk id', KIB, d => { d.records.splice(1, 0, { ...d.records[0], name: 'Abandoned Barracks Site 2' }); }, /id unique repo-wide: kib:abandoned-barracks-site/);
-  genFailsIn('a Kibelisk name twice in the registry', KIB, d => { d.records.push({ ...d.records[0], id: 'kib:zz-copy' }); }, /Kibelisk name unique in the registry: Abandoned Barracks Site/);
-  genFailsIn('a registry zone against the points\' majority', KIB, d => { d.records.find(k => k.id === 'kib:safe-haven').zone = 'zone:crypt'; }, /kib:safe-haven: zone zone:crypt is the majority zone zone:dredgion-crash-site/);
-  genFailsIn('zones[].kibelisks naming a Kibelisk filed elsewhere', 'data/packs/aion2/asmodian/zones.json', d => { d.records.find(z => z.id === 'zone:crypt').kibelisks.push('Safe Haven'); }, /zone:crypt: Kibelisk Safe Haven is a registry record filed in this zone/);
-  genFailsIn('binds naming an id not in the registry', SQ, d => { stepWith(d, x => x.binds).binds.kibelisk = 'kib:safe-haven-plaza'; }, /binds kib:safe-haven-plaza is a registry id/);
-  genFailsIn('a step-text bind whose text does not say bind', SQ, d => { const x = stepWith(d, x => x.binds && x.binds.basis === 'step-text'); x.text = 'Remember Aldelle Village'; }, /a step-text bind says "bind"/);
-  genFailsIn('binds on a regional quest objective', 'data/packs/aion2/asmodian/regional-quests.json', d => { d.records.find(r => (r.steps || []).length).steps[0].binds = { kibelisk: 'kib:safe-haven', basis: 'step-text' }; }, /binds only on story objectives/);
-  genFailsIn('a bind radius not inside the nudge radius', 'data/packs/aion2/rules.json', d => { d.records.find(x => x.id === 'rule:kibelisk-bind-radius').value = 100; d.records.find(x => x.id === 'rule:kibelisk-nudge-radius').value = 100; }, /rule:kibelisk-bind-radius < rule:kibelisk-nudge-radius/);
-  /* 0.6 P3: the shared Asmodian guide names no class, skill, stigma or board node and points at no class guide record */
-  const SG = 'data/packs/aion2/asmodian/guide/', sgStep = (d, id) => d.records.find(r => r.id === id);
-  genFailsIn('a shared guide step naming a class skill', SG + 'steps.json', d => { sgStep(d, 'story:1').text += ' Then use Heart Gore.'; }, /^shared guide story:1 .*names no class, skill, stigma or board node$/);
-  genFailsIn('a shared guide step naming a stigma id', SG + 'steps.json', d => { sgStep(d, 'story:1').loc = 'stigma:assassin:savage-fang'; }, /^shared guide story:1 .*names no class, skill, stigma or board node$/);
-  genFailsIn('a shared guide step naming a board node key', SG + 'steps.json', d => { sgStep(d, 'story:1').text += ' (dv:azphel:r10c1)'; }, /^shared guide story:1 .*names no class, skill, stigma or board node$/);
-  genFailsIn('a shared guide tip naming the class', SG + 'tips.json', d => { d.records.find(r => r.id === 'tip:kibelisk').credit += ', an assassin guide'; }, /^shared guide tip:kibelisk .*names no class/);
-  genFailsIn('a shared guide confidence line naming a stigma', SG + 'confidence.json', d => { d.records[0].text += ' Savage Fang first.'; }, /^shared guide conf:abyss-points .*names no class/);
-  genFailsIn('a shared guide step linking a class guide tip', SG + 'steps.json', d => { sgStep(d, 'story:1').text += ' [[tip:wisdom|Skill Points]]'; }, /^shared guide story:1 .*points at no guide or class record$/);
-  genFailsIn('a shared guide step in a class guide milestone', SG + 'steps.json', d => { sgStep(d, 'story:1').milestone = 'g28'; }, /^shared guide story:1 .*points at no guide or class record$/);
-  /* 0.5 P9: story objective points: the marker equals the point's Kibelisk, story objectives only, the Kibelisk's map */
-  const sqStep = (d, id, i) => d.records.find(r => r.id === id).steps.find(x => x.i === i);
-  genFailsIn('a (Kibelisk: X) marker that differs from at.kibelisk', SQ, d => { sqStep(d, 'sq:2102235', 1).at.kibelisk = 'Guide Rest Stop'; }, /sq:2102235 #1: \(Kibelisk: X\) marker = at\.kibelisk/);
-  genFailsIn('an objective point naming an unknown Kibelisk', SQ, d => { sqStep(d, 'sq:2102590', 1).at.kibelisk = 'Alert Observation Tower'; }, /Kibelisk "Alert Observation Tower" resolves to a registry record/);
-  genFailsIn('an objective point on another map than its Kibelisk', SQ, d => { sqStep(d, 'sq:2102235', 1).at.map = 'ishalgen'; }, /sq:2102235 #1: at\.map is its Kibelisk's map/);
-  genFailsIn('an objective point on a regional quest', 'data/packs/aion2/asmodian/regional-quests.json', d => { const r = d.records.find(r => (r.steps || []).length);
-    r.steps[0].at = { map: 'altgard', x: 1, y: 1, kibelisk: 'Safe Haven', meters: 1, sources: [{ url: 'https://metabot.gg/en/aion-2/quests/survival-supplies' }] }; }, /#0: at only on story objectives/);
   { const ats = sq.flatMap(r => r.steps.filter(x => x.at).map(x => ({ r, x })));
-    ok('story objective points: 300 on 83 quests (research CSV, confirmed rows), each from its Metabot quest page checked 2026-10-17 on build 0.0.4387.0', ats.length === 300 && new Set(ats.map(a => a.r.id)).size === 83
+    ok(`story objective points: ${E.storyObjectivePoints} on ${E.storyQuestsWithObjectivePoints} quests (research CSV, confirmed rows), each from its Metabot quest page checked 2026-10-17 on build 0.0.4387.0`, ats.length === E.storyObjectivePoints && new Set(ats.map(a => a.r.id)).size === E.storyQuestsWithObjectivePoints
       && ats.every(({ x }) => x.at.sources.length === 1 && /^https:\/\/metabot\.gg\/en\/aion-2\/quests\//.test(x.at.sources[0].url) && x.at.sources[0].checkedAt === '2026-10-17' && x.at.sources[0].build.value === '0.0.4387.0'),
       [ats.length, new Set(ats.map(a => a.r.id)).size]);
     ok('story objective points: none on a turn-in line or a "via Selvis" line; Finding Nemon (no objective lines) has none', ats.every(({ x }) => !/^Turn in/.test(x.text) && !/via Selvis/.test(x.text))
       && !sq.find(r => r.id === 'sq:2102010').steps.some(x => x.at)); }
   /* the compiled tables (src/packs/aion2/data/place.js): one place per story / regional / dungeon / stronghold node */
   const np = g.nodePlace, kb = g.kibelisks, nodes = Object.entries(g.gateGraph.nodes);
-  ok('NODE_PLACE: 87 story + 58 regional + 60 Sealed Dungeon + 15 stronghold nodes, keyed by GATE_GRAPH id', Object.keys(np).length === 220
-    && nodes.filter(([, n]) => ['story', 'rq', 'sd', 'sh'].includes(n.kind)).every(([id]) => id in np), Object.keys(np).length);
+  ok(`NODE_PLACE: ${E.storyQuests} story + ${E.regionalQuests} regional + ${E.sealedDungeons} Sealed Dungeon + ${E.strongholds} stronghold nodes, keyed by GATE_GRAPH id`, Object.keys(np).length === E.nodePlace
+    && E.nodePlace === E.storyQuests + E.regionalQuests + E.sealedDungeons + E.strongholds && nodes.filter(([, n]) => ['story', 'rq', 'sd', 'sh'].includes(n.kind)).every(([id]) => id in np), Object.keys(np).length);
   ok('NODE_PLACE: Survival Supplies turn-in is VeKauf\'s point, 32 m from Safe Haven', JSON.stringify(np['sq:2102015'].pts.turnin) === JSON.stringify({ map: 'altgard', x: 3183, y: 2881, anchor: 'kib:safe-haven', m: 32 })
     && np['sq:2102015'].route === 'core' && np['sq:2102015'].zone === 'zone:dredgion-crash-site', np['sq:2102015']);
   ok('NODE_PLACE: a point with no Kibelisk and no coords is left out; a placeholder zone is null', Object.values(np).every(p => Object.entries(p.pts).flatMap(([k, v]) => k === 'steps' ? v : [v]).every(x => x.anchor || x.map))
     && Object.values(np).every(p => p.zone !== 'zone:altgard-unplaced'));
   ok('NODE_PLACE: a story quest\'s objective points in pts.steps, in objective order, none for the "via Selvis" lines (Preparations for Restoration: objectives 1–6)',
     JSON.stringify(np['sq:2102235'].pts.steps.map(p => p.i)) === '[1,2,3,4,5,6]' && JSON.stringify(np['sq:2102235'].pts.steps[0]) === JSON.stringify({ i: 1, map: 'altgard', x: 4997, y: 3852, anchor: 'kib:nornir-assembly', m: 143 })
-    && Object.values(np).reduce((n, p) => n + (p.pts.steps || []).length, 0) === 300 && Object.values(np).every(p => !p.pts.steps || p.pts.steps.length > 0), np['sq:2102235'].pts.steps);
-  /* 73 = P8's 72 + Alert Observation Post, which only a story objective point names (0.5 P9) */
-  ok('KIBELISKS: 73 records; binds facts Survival Supplies #0 → Safe Haven (owner), A Village in the Fog #1 → Aldelle Village (step text)', Object.keys(kb).length === 73
+    && Object.values(np).reduce((n, p) => n + (p.pts.steps || []).length, 0) === E.storyObjectivePoints && Object.values(np).every(p => !p.pts.steps || p.pts.steps.length > 0), np['sq:2102235'].pts.steps);
+  /* 73 at 0.5 P9 = P8's 72 + Alert Observation Post, which only a story objective point names */
+  ok(`KIBELISKS: ${E.kibelisks} records; binds facts Survival Supplies #0 → Safe Haven (owner), A Village in the Fog #1 → Aldelle Village (step text)`, Object.keys(kb).length === E.kibelisks
     && JSON.stringify(kb['kib:safe-haven'].binds) === JSON.stringify([{ node: 'sq:2102015', i: 0, basis: 'owner' }])
     && JSON.stringify(kb['kib:aldelle-village'].binds) === JSON.stringify([{ node: 'sq:2101010', i: 1, basis: 'step-text' }])
-    && Object.values(kb).filter(k => k.binds).length === 2, Object.keys(kb).length);
+    && Object.values(kb).reduce((n, k) => n + (k.binds || []).length, 0) === E.kibeliskBinds, Object.keys(kb).length);
   ok('place module: NODE_PLACE, KIBELISKS and TRAVEL_RULES (25 / 150 / 400 m) only, not in the page\'s data module', /^export const NODE_PLACE = /m.test(g.placeModule) && /^export const KIBELISKS = /m.test(g.placeModule)
     && g.placeModule.includes('export const TRAVEL_RULES = {"bindRadius":25,"nudgeRadius":150,"teleportGain":400};')
     && (g.placeModule.match(/^export const /gm) || []).length === 3 && !/NODE_PLACE|KIBELISKS|TRAVEL_RULES/.test(g.module));
   const kr = g.report.kibelisks;
   /* 0.5 P9: the objective points cite 3 more story Kibelisks (56) and 2 more in all (71: Alert Observation Post, Silent
      Hill Coastal Cliff); every story Kibelisk now has a point (P8: 15 were cited only by objective markers) */
-  ok('bind report: R = 25 (working value) / 32 / 35 / 40 m over 56 story and 71 cited Kibelisks, none without a point; the owner check list is the story ones not bound at 25 m and with no binds fact',
-    !!kr && kr.split.map(s => s.r).join() === '25,32,35,40' && kr.split[0].working && kr.noPoint === 0 && kr.split.every(s => s.story.n === 56 && s.all.n === 71 && s.story.bound + s.story.nudge + s.story.none === 56)
+  const kS = E.bindReportStoryKibelisks, kA = E.bindReportCitedKibelisks;
+  ok(`bind report: R = 25 (working value) / 32 / 35 / 40 m over ${kS} story and ${kA} cited Kibelisks, none without a point; the owner check list is the story ones not bound at 25 m and with no binds fact`,
+    !!kr && kr.split.map(s => s.r).join() === '25,32,35,40' && kr.split[0].working && kr.noPoint === 0 && kr.split.every(s => s.story.n === kS && s.all.n === kA && s.story.bound + s.story.nudge + s.story.none === kS)
     && kr.ownerCheck.length === kr.split[0].story.nudge + kr.split[0].story.none - 1 && !kr.ownerCheck.some(c => c.name === 'Safe Haven'), kr && kr.split);
-  /* 0.4 P1 pack manifests: a broken copy of data/packs must stop the generator (packs.mjs). Since 0.9 P6 each broken copy
-     is an in-memory view of data/packs (generate({ mutate, drop, add }), packs.mjs fsView): nothing is copied or written */
-  const PK = 'data/packs/';
-  const editManifest = (id, f) => ({ mutate: (rel, d) => { if (rel === PK + id + '/pack.json') f(d); } });
-  const packFails = (label, view, re) => { let msg = null; try { generate(view); } catch (e) { msg = e.message; }
-    ok('generator rejects: ' + label, !!msg && re.test(msg), msg); };
-  const guide = 'aion2/asmodian/assassin', manifest = id => JSON.parse(readFileSync(join(ROOT, 'data/packs', id, 'pack.json'), 'utf8'));
+  /* 0.4 P1 pack manifests: a broken manifest fails pack.schema.json (the generator's broken copies are worker jobs above) */
+  const manifest = id => JSON.parse(readFileSync(join(ROOT, 'data/packs', id, 'pack.json'), 'utf8'));
   ok('rejects: pack manifest without id (pack.schema.json)', validateDoc(join(ROOT, 'data/packs', guide, 'pack.json'), (m => (delete m.id, m))(manifest(guide))).length > 0);
   ok('rejects: a faction pack without a parent (pack.schema.json)', validateDoc(join(ROOT, 'data/packs/aion2/asmodian/pack.json'), (m => (delete m.parent, m))(manifest('aion2/asmodian'))).length > 0);
   ok('rejects: a game pack with a parent (pack.schema.json)', validateDoc(join(ROOT, 'data/packs/aion2/pack.json'), { ...manifest('aion2'), parent: 'aion2' }).length > 0);
-  packFails('manifest without id', editManifest(guide, m => { delete m.id; }), /pack manifest fails pack\.schema\.json/);
-  packFails('manifest id that is not its folder', editManifest('aion2/asmodian', m => { m.id = 'aion2/elyos'; }), /id "aion2\/elyos" is not its folder/);
-  packFails('a listed file that does not exist', { drop: [PK + 'aion2/items.json'] }, /pack aion2: listed file items\.json does not exist/);
-  packFails('a JSON file in a pack folder that is not listed', { add: { [PK + 'aion2/asmodian/extra.json']: '{}' } }, /pack aion2\/asmodian: .*not listed in pack\.json: extra\.json/);
-  packFails('an unknown parent', editManifest(guide, m => { m.parent = 'aion2/elyos'; }), /aion2\/asmodian\/assassin parent: unknown pack "aion2\/elyos"/);
-  packFails('an unknown pack in uses', editManifest(guide, m => { m.uses = ['aion2/classes/no-such-class']; }), /uses: unknown pack "aion2\/classes\/no-such-class"/);
-  packFails('a cycle (the class uses the guide that uses it)', editManifest('aion2/classes/assassin', m => { m.uses = [guide]; }), /pack cycle: /);
-  /* --root is the one real copy left (tests/out/, not committed): it proves another packs root compiles the same */
-  const copyRoot = join(ROOT, 'tests/out/packs-copy'); rmSync(copyRoot, { recursive: true, force: true }); cpSync(join(ROOT, 'data/packs'), copyRoot, { recursive: true });
-  let gc = null; try { gc = generate({ root: copyRoot, pack: guide }); } catch (e) { ok('generator runs on a copied packs root', false, e.message); }
-  if (gc) ok('--root / --pack: an unchanged copy of data/packs, pack ' + guide + ', compiles the same modules', gc.module === g.module && gc.gateModule === g.gateModule && gc.proposedModule === g.proposedModule);
-  /* An idle class pack (one no guide pack uses: checked and cited, compiled into no module). 0.6 P4's Gladiator, then 0.7
-     P3's Spiritmaster were the idle pack here; 0.7 P4 gave the Spiritmaster its guide pack, so data/packs has none left.
-     The idle checks run on a view where the Spiritmaster is idle again: its guide pack dropped, its class hidden. */
-  const SM = 'aion2/classes/spiritmaster', editJson = (f, fn) => ({ rel: PK + SM + '/' + f, fn });
-  const idleView = (...edits) => { const all = [editJson('class.json', d => { d.records[0].release = 'hidden'; }), ...edits];
-    return { drop: [PK + 'aion2/asmodian/spiritmaster'], mutate: (rel, d) => { for (const e of all) if (rel === e.rel) e.fn(d); } }; };
   /* 0.8 P16 (#505) adds the Sorcerer, 0.8 P4 (#493) the Cleric and P18 (#507) the Chanter as idle packs again (their
      guide items come later), so the check names the classes that may be idle, not a count; 0.8 P2 (#491) added the
      Templar idle and 0.8 P3 (#492) gave it its guide pack, so it is no longer among them; 0.8 P5 (#494) did the same for
@@ -234,7 +298,6 @@ if (g) {
      game ids) minus any word that also occurs elsewhere in data/packs (other classes, quest text). Quest text names NPC Rangers, so the class id matches only in its
      record-id form. */
   const classFiles = ['class.json', 'skills.json', 'stigmas.json', 'board-nodes.json'];
-  const classDoc = (c, f) => JSON.parse(readFileSync(join(ROOT, 'data/packs/aion2/classes', c, f), 'utf8'));
   const allClasses = JSON.parse(readFileSync(join(ROOT, 'data/packs/aion2/pack.json'), 'utf8')).classes;
   const classNames = c => classDoc(c, 'skills.json').records.concat(classDoc(c, 'stigmas.json').records).map(r => r.name);
   const classGameIds = c => classDoc(c, 'board-nodes.json').records.map(r => r.gameId).filter(Boolean);
@@ -257,23 +320,12 @@ if (g) {
     ok(`the Assassin bundle carries no ${cls} record (generated, gate, proposed and place modules)`, !inn.length, inn);
     ok(`rejects: a leaked ${cls} record (negative control: its skill id appended to the bundle is found)`, words.test(g.module + `\nskill:${cls}:leaked`));
   }
-  let gi = null; try { gi = generate(idleView()); } catch (e) { ok('generator runs on a copy with an idle Spiritmaster', false, e.message); }
-  const sm = gi && (gi.idle || []).find(x => x.pack === SM), smColl = f => sm ? sm.all.filter(x => x.file.endsWith('/' + f)).length : 0;
-  ok('idle class pack aion2/classes/spiritmaster (copy): 1 class, 22 skills, 13 stigmas, 537 board nodes, checked by the generator, modules unchanged', !!sm && smColl('class.json') === 1 && smColl('skills.json') === 22
-    && smColl('stigmas.json') === 13 && smColl('board-nodes.json') === 537 && gi.report.checks.some(x => x.check.startsWith('aion2/classes/spiritmaster: board:triniel: 117 nodes')) && !gi.failed.length
-    && gi.module === g.module && gi.gateModule === g.gateModule, sm && [smColl('skills.json'), smColl('board-nodes.json'), gi.failed.slice(0, 5)]);
-  const idleFails = (label, edit, re) => { let g1 = null; try { g1 = generate(idleView(edit)); } catch (e) { ok('generator runs: ' + label, false, e.message); return; }
-    ok('generator rejects: ' + label, g1.failed.some(x => re.test(x.check)), g1.failed.map(x => x.check).slice(0, 5)); };
-  idleFails('idle-node-cost', editJson('board-nodes.json', d => { d.records.find(n => n.board === 'board:zikel' && n.type === 'stat').cost += 1; }), /spiritmaster: board:zikel: .*points \(134\)/);
-  idleFails('idle-node-skill', editJson('board-nodes.json', d => { d.records.find(n => n.type === 'skill').skill = 'skill:spiritmaster:bogus'; }), /skill node names its skill/);
-  idleFails('idle-released', editJson('class.json', d => { d.records[0].release = 'released'; }), /spiritmaster: one class record, hidden/);
-  idleFails('idle-spec-level', editJson('stigmas.json', d => { d.records[0].specialtyChoices[0].skillLv = 4; }), /stigma:spiritmaster:.*specialty levels \[5,10,15,20\]/);
-  packFails('an idle class file that fails its schema', idleView(editJson('skills.json', d => { delete d.records[0].levelGate; })),/schema validation failed:\n  .*aion2\/classes\/spiritmaster\/skills\.json: .*levelGate/);
   const c = g.constants;
   ok('compiled: story turn-in zones: Aldelle Village where the turn-in is in the village, else Ishalgen', c.QUEST_LOC['A Village in the Fog'].turninZone === 'Aldelle Village'
     && c.QUEST_LOC['Brigade Prison Compound Infiltration Operation'].turninZone === 'Aldelle Village' && c.QUEST_LOC['Isolated Lake'].turninZone === 'Ishalgen',
     ['A Village in the Fog', 'Brigade Prison Compound Infiltration Operation', 'Isolated Lake'].map(n => (c.QUEST_LOC[n] || {}).turninZone));
-  ok('compiled: 87 story quests (Ishalgen is the starting map, not a quest; E10 added Daeva Trapped in a Nightmare), 58 regional quests, 15 strongholds, 60 Sealed Dungeons', c.QUESTS.length === 87 && c.RQ.length === 58 && c.SH_DATA.length === 15 && Object.keys(c.HIDEOUT_AREA).length === 60,
+  ok(`compiled: ${E.storyQuests} story quests (Ishalgen is the starting map, not a quest), ${E.regionalQuests} regional quests, ${E.strongholds} strongholds, ${E.sealedDungeons} Sealed Dungeons`,
+    c.QUESTS.length === E.storyQuests && c.RQ.length === E.regionalQuests && c.SH_DATA.length === E.strongholds && Object.keys(c.HIDEOUT_AREA).length === E.sealedDungeons,
     [c.QUESTS.length, c.RQ.length, c.SH_DATA.length, Object.keys(c.HIDEOUT_AREA).length]);
 }
 /* allthings.how wording (0.8.1 F9, #662): its terms ban copying, so no source ref on an allthings.how URL keeps a `quote`
@@ -306,6 +358,13 @@ if (g) {
   fails('a stray LICENSE.md', { 'tools/LICENSE.md': 'All rights reserved.\n' }, /tools\/LICENSE\.md: a licence file other than the root LICENSE/);
   const ours = checkCompliance(ROOT, { files: { 'src/x.js': '/* SPDX-License-' + 'Identifier: PolyForm-Strict-1.0.0 */' } });
   ok('compliance check accepts our own SPDX id', !ours.length, ours.slice(0, 3)); }
+/* the generator's negative controls, from the workers, in job order; every job must have run */
+{ const tMain = Date.now() - t0, lines = (await Promise.all(workers)).flat().sort((a, b) => a.i - b.i);
+  console.log(`-- generator negative controls: ${JOBS.length} jobs in ${W} worker threads (main thread done at ${tMain} ms)`);
+  for (const l of lines) line(l.name, l.c, l.d);
+  const missing = JOBS.map((_, i) => i).filter(i => !lines.some(l => l.i === i));
+  ok(`every generator control job ran and reported (${JOBS.length})`, !missing.length, missing); }
 console.log(`${n - fail} ok, ${fail} failed (${Date.now() - t0} ms)`);
 console.log(fail ? `SCHEMA CHECKS FAILED (${fail})` : 'SCHEMA CHECKS PASSED');
 process.exit(fail ? 1 : 0);
+}
