@@ -40,7 +40,8 @@ recommendation item 2; backed by Org Design (Nacho)._
 - **Decision cards for Isaac:** get the card's T-NN first, then tell the coordinator in the same turn you post it
   ([DEC-20261020-todo-notifications](../DECISIONS.md)). Look up the coordinator's session with `get_channel_session_id`
   each time, never from memory; if the send fails, look it up again and retry once, and if that fails too, post the
-  CARD READY line in your thread and tell Watchdog (Mike).
+  CARD READY line in your thread and tell Watchdog (Mike). If Huell hasn't given the T-NN in time, use `T-pending` as
+  [huell.md](huell.md) says; a card with neither is a miss.
 
 ### COM-18
 
