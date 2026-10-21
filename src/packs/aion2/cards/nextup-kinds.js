@@ -28,7 +28,8 @@ import { MAP_ICO, rqTicked, snoozeToggle } from "../../../cards/milestones.js";
 import { capFirst, renderNow } from "../../../cards/nextup.js";
 import { travelAdviceOn } from "../nextup.js";
 import { keyHint } from "../hotkeys.js";
-import { cuLeft, cuSpecs, kibMark, rqStIco } from "./shared.js";
+import { cuLeft, cuSpecs, kibMark, rqStIco, spReach } from "./shared.js";
+import { slotsReachedOf } from "../requirements.js";
 import { itemLinkIcos, itemQty, stNote, stTag, stWord } from "../data/markup.js";
 import { pageState as state, pageSave as save, pageUpdate as update, pageMainEl as mainEl, pageSMOOTH as SMOOTH, pageSD_RW as SD_RW, pageSH_REWARD as SH_REWARD, pageNO_AREA as NO_AREA, pageSpCostTxt as spCostTxt, pageRqReqOf as rqReqOf, pageSpecPickOf as specPickOf, pageMapFocus as mapFocus, pageAion2QuestMap as aion2QuestMap, pageGoAreas as goAreas, pageCubeClick as cubeClick, pageStTickClick as stTickClick, pageStUpClick as stUpClick, pageStLvClick as stLvClick, pageSpMini as spMini, pageStIco as stIco, pageDvShort as dvShort, pageQProg as qProg } from "../../../cards/page.js";
 
@@ -42,6 +43,9 @@ const away = L => { const lv = char(state).level; return `${L - lv} level${L - l
 const ssTag = x => x.s.single ? ` · <span class="ss-tag" title="Single source (${x.s.single})">single source</span>` : "";
 /* a skill order row the data labels disputed or inferred (0.9 P1): the P18 tag; never on a specialty card (its pick has its own) */
 const soTag = x => !x.spec && x.s.st ? ` ·${stTag(x.s.st)}` : "";
+/* a skill-level step that gets the skill to a specialty slot's level names the pick, or that it's kept (0.8.1 F8); the
+   line's own tag is the one tag, as on a catch-up card */
+const slotReach = x => { const rs = slotsReachedOf(char(state), x); return rs.length ? " · " + spReach(rs, soTag(x) ? stWord(x.s.st) : undefined) : ""; };
 const spBuyT = x => `Buy <b>${x.s.n} ${x.spec ? "specialty" + (x.slot > 1 ? " slot " + x.slot : "") : (x.L - 1) + " → " + x.L}</b>`;
 /* A specialty slot's line (0.3 E7, design §9; Q6): the build's pick once its choice is open at the skill's effective level;
    a pick that needs a higher skill level says when ("Guide pick: X at skill Lv N"); no pick: "pick a specialty". A labelled
@@ -107,14 +111,15 @@ export const aion2NowRenderers = {
     return { ...(sh ? SH_TILE : SD_TILE), t: `Finish <b>${a.x.it.name}</b>`, sub: `In progress · ${sh ? "Stronghold" : "Sealed Dungeon"}`, btn: "Cleared", act: a.act }; },
   cube: a => ({ ico: "🎒", t: `Use your Cube items: <b>${[a.st ? itemQty(a.st, `Wisdom Stone${a.st === 1 ? "" : "s"}`) : "", a.cr ? itemQty(a.cr, `crystal${a.cr === 1 ? "" : "s"}`) : ""].filter(Boolean).join(" + ")}</b>`, sub: "Open the Cube and use them, then confirm", btn: "Used", act: a.act, done: true }),
   /* skill buys queue: only the first one gets the button */
-  skill: a => { const x = a.x, base = x.spec ? spSlotSub(x) : a.first ? `${spCostTxt(x)} · you have the points` : spCostTxt(x);
+  skill: a => { const x = a.x, base = x.spec ? spSlotSub(x) : (a.first ? `${spCostTxt(x)} · you have the points` : spCostTxt(x)) + slotReach(x);
     return a.first ? { ico: spMini(x.s.n) || "✦", t: spBuyT(x), sub: base + ssTag(x) + soTag(x), btn: "Spent", act: a.act, done: true, queue: "skill", row: keyHint("skills") } : { ico: spMini(x.s.n) || "✦", t: spBuyT(x), sub: base + ssTag(x) + soTag(x), act: a.act, done: true, queue: "skill" }; },
   /* catch-up (0.9 P19, docs/design/0.9-catchup/ option A): one card per skill's whole jump; the first one's Mark spent
      ticks the jump (the Skills hero's button, with its Undo) and says how many jumps are left, as the hero does; the line's
      own tag (soTag) is the one tag, so the pick drops a same tag */
   catchup: a => { const j = a.j, t = j.rows.length ? `Catch up: level <b>${j.n} ${j.from} → ${j.to}</b>` : `Catch up: pick <b>${j.n}</b>'s specialty`,
       skip = soTag(a.x) ? stWord(a.x.s.st) : undefined,
-      sub = [j.cost ? `${j.cost} pt${j.cost === 1 ? "" : "s"}` : "", j.specs.length ? `${j.cost ? "then pick the specialty" : "Specialty"} ${cuSpecs(j, skip)}` : "", a.first && a.n ? cuLeft(a.n) : ""].filter(Boolean).join(" · ") + ssTag(a.x) + soTag(a.x);
+      kept = j.rows.length ? slotsReachedOf(char(state), j.rows[0], j.to).filter(r => r.kept) : [],
+      sub = [j.cost ? `${j.cost} pt${j.cost === 1 ? "" : "s"}` : "", j.specs.length ? `${j.cost ? "then pick the specialty" : "Specialty"} ${cuSpecs(j, skip)}` : "", kept.length ? spReach(kept) : "", a.first && a.n ? cuLeft(a.n) : ""].filter(Boolean).join(" · ") + ssTag(a.x) + soTag(a.x);
     return a.first ? { ico: spMini(j.n) || "✦", t, sub, btn: "Mark spent", act: a.act, done: true, queue: "skill", row: keyHint("skills") } : { ico: spMini(j.n) || "✦", t, sub, act: a.act, done: true, queue: "skill" }; },
   /* the key hint line ("Open Daevanion: press U", 0.6 P14) on the rows you finish in that window */
   board: a => ({ ico: "◆", t: `Buy <b>${dvShort(a.dn.t)}</b>${stTag(a.dn.st)} on ${a.dn.board}`, sub: a.dc === 0 ? "Already on your board: just mark it" : `${a.dc} of your ${a.dLeft} crystals`, btn: "Acquired", act: a.act, done: true, row: keyHint("daevanion") }),

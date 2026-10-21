@@ -44,7 +44,7 @@
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 5/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
     {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
     {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit · inferred","c":""},
-    {"t":"Catch up: level Shadowstrike 1 → 9","s":"17 pts · inferred","c":""}
+    {"t":"Catch up: level Shadowstrike 1 → 9","s":"17 pts · specialty kept: +20% Critical Damage Boost for 10s on hit · inferred","c":""}
   ],
   "random/L36-q16-all-B-cube": [
     {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
@@ -524,7 +524,7 @@
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 11 open"},
     {"t":"Catch up: level Savage Roar 1 → 9","s":"17 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
     {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit · inferred","c":""},
-    {"t":"Catch up: level Ambush 1 → 9","s":"17 pts · inferred","c":""}
+    {"t":"Catch up: level Ambush 1 → 9","s":"17 pts · specialty kept: Engraves 2 Insignias when it lands as a Back attack · inferred","c":""}
   ],
   "random/L39-q27-none-B-stready": [
     {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 8 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
@@ -591,7 +591,7 @@
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins (near your story step) · Kibelisk : Shulak Street Stall · 9/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 5 open"}
   ],
   "random/L39-q59-rnd123p20-A": [
-    {"t":"Catch up: level Heart Gore 1 → 9","s":"17 pts · 7 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
+    {"t":"Catch up: level Heart Gore 1 → 9","s":"17 pts · specialty kept: Up to +20% Critical Hit when fewer targets are hit · 7 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 37–39"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
@@ -731,7 +731,7 @@
     {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk : Purifying Forest Sunny Hill · 7/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 6 open"},
     {"t":"Catch up: pick Shadowstrike 's specialty","s":"Specialty +20% Critical Damage Boost for 10s on hit inferred","c":""},
     {"t":"Catch up: level Insignia Explosion 4 → 5","s":"2 pts · then pick the specialty +50% Multi-Hit on hit · inferred","c":""},
-    {"t":"Catch up: level Heart Gore 1 → 9","s":"17 pts · inferred","c":""}
+    {"t":"Catch up: level Heart Gore 1 → 9","s":"17 pts · specialty kept: Up to +20% Critical Hit when fewer targets are hit · inferred","c":""}
   ],
   "random/L40-q52-none-B": [
     {"t":"Catch up: level Heart Gore 1 → 10","s":"21 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · 9 jumps left · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 40–44"},

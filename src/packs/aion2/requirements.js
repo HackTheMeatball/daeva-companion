@@ -118,6 +118,15 @@ export const skillBonusOf = (c, key) => { const N = activePack().data.graph.node
 export const specPickOf =(c, x, ev = gatesOf(c)) => { const p = (x.s.specs || [])[x.slot - 1];
   if (!gateChangeOn("specialtySlots")) return x.slot === 1 ? { ...(p || {}), t: x.s.spec, lv: x.slotLv } : null;
   return p && skillLvOf(c, x, ev) >= p.lv ? p : null; };
+/* The specialty slots an upgrade of x's skill gets it to (0.8.1 F8, owner note 8): the slots (never slot 3: Q5) whose level
+   is above the skill's effective level now and at or below where buying its lines up to `to` takes it (each line +1, the
+   plan nodes it has stay). kept: the slot is ticked already (a Skills Respec keeps specialty picks), so a step that levels
+   the skill back up names the pick without asking for it again. → [{ x: the slot row, kept }] */
+export const slotsReachedOf = (c, x, to = x.L, ev = gatesOf(c)) => {
+  const slots = skillRows().filter(y => y.spec && y.s === x.s && y.slot !== 3).sort((a, b) => a.slot - b.slot);
+  if (!slots.length) return [];
+  const top = Math.max(1, ...SP_STEPS.filter(y => y.s === x.s && !y.spec && c.checks[y.k]).map(y => y.L)), now = skillLvOf(c, slots[0], ev), at = now + Math.max(0, to - top);
+  return slots.filter(y => y.slotLv > now && y.slotLv <= at).map(y => ({ x: y, kept: !!c.checks[y.k] })); };
 /* The upgrade to buy now: the first open one, if you have the points (a specialty is free); else null. */
 export const skillBuy = (c, lv = c.level) => { const next = skillOpen(c, lv).now[0], { pts } = skillPoints(c, lv); return next && (next.spec || pts >= next.cost) ? next : null; };
 

@@ -410,5 +410,39 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   }
   console.log('P20 endgame catch-up clicks (Lv 45, 336 crystals, 90 shards): ' + p20.join(', '));
 
+  /* 0.8.1 F8 (#605, owner note 8): a Next up skill-level step that gets the skill to a specialty slot's level names the
+     guide's pick; after a Skills Respec (picks kept) the step that levels it back up says the pick is kept. Heart Gore:
+     every other line and slot bought, Heart Gore up to line `top`, `plan` of its plan board nodes ticked. */
+  const ASN = { pack: 'aion2/asmodian/assassin', class: 'assassin' };
+  const hgSave = async ({ top, plan = 0, spec1 = false, spec2 = false, lv }) => { await cuSave(lv, { stones: 2000 }, ASN);
+    return p.evaluate(({ top, plan, spec1, spec2 }) => { const c = char(state), hg = SP_STEPS.find(x => x.s.n === 'Heart Gore').s, N = activePack().data.graph.nodes;
+      SP_STEPS.forEach(x => { c.checks[x.k] = x.s !== hg || (!x.spec && x.L <= top) || (x.spec && spec1); });
+      SP_SLOTS.forEach(x => { c.checks[x.k] = x.s !== hg ? x.slot === 2 : x.slot === 2 && spec2; });
+      const sid = N[`sp:${hg.key}:2`].skill; Object.values(N).filter(n => n.kind === 'plan' && n.skill === sid && n.key !== undefined).slice(0, plan).forEach(n => { c.checks[n.key] = true; });
+      save(); return { p1: (hg.specs || [])[0] ? hg.specs[0].t : hg.spec, p2: ((hg.specs || [])[1] || {}).t, eff: skillLvOf(c, SP_STEPS.find(x => x.s === hg && x.slot === 1)), learn: hg.learn }; }, { top, plan, spec1, spec2 }); };
+  const hgCard = () => p.evaluate(() => { const c = [...document.querySelectorAll('#nowStar .ns-card')].find(c => /Heart Gore/.test(c.querySelector('h3').innerText)); return c ? { t: c.querySelector('h3').innerText, sub: c.querySelector('.title > p').innerText } : null; });
+  await cuSave(39, {}, ASN);
+  const hg0 = await p.evaluate(() => SP_STEPS.find(x => x.s.n === 'Heart Gore').s.learn);
+  let f8 = await hgSave({ top: 7, lv: hg0 + 18 }); await p.reload(); await p.waitForTimeout(400); r = { f8, card: await hgCard() };
+  ok('F8: the step "Buy Heart Gore 7 → 8" (skill Lv 7 → 8) names the slot 1 pick', f8.eff === 7 && r.card && /7 → 8/.test(r.card.t) && r.card.sub.includes(`opens its specialty: ${f8.p1}`), r);
+  f8 = await hgSave({ top: 9, plan: 2, spec1: true, lv: hg0 + 24 }); await p.reload(); await p.waitForTimeout(400); r = { f8, card: await hgCard() };
+  ok('F8: the step "Buy Heart Gore 9 → 10" (skill Lv 11 → 12) names the slot 2 pick, not slot 1 again', f8.eff === 11 && !!f8.p2 && r.card && /9 → 10/.test(r.card.t) && r.card.sub.includes(`opens slot 2: ${f8.p2}`) && !/its specialty/.test(r.card.sub), r);
+  /* after a Respec: lines gone, picks kept */
+  f8 = await hgSave({ top: 7, spec1: true, lv: hg0 + 18 }); await p.reload(); await p.waitForTimeout(400); r = { f8, card: await hgCard() };
+  ok('F8: with the slot 1 pick kept, "Buy Heart Gore 7 → 8" says "specialty kept: <pick>", nothing to pick', r.card && /7 → 8/.test(r.card.t) && r.card.sub.includes(`specialty kept: ${f8.p1}`) && !/opens/.test(r.card.sub), r);
+  await cuSave(39, {}, ASN); await p.click('#spBuyAll'); await p.waitForTimeout(200);
+  const rsp = await ticks();
+  await p.click('#spRespec'); await p.click('#spRespec'); await p.waitForTimeout(300);
+  const rsq = await ticks(); r = { card: await hgCard(), kept: rsq };
+  ok('F8: Respec keeps the specialty picks and clears the lines', rsp.includes('sp:Heart Gore:spec') && rsq.includes('sp:Heart Gore:spec') && !rsq.some(k => /:\d+$/.test(k)), rsq);
+  ok('F8: after a Respec the catch-up step "Heart Gore 1 → 10" says its specialty is kept, not to pick it', r.card && /Heart Gore 1 → 10/.test(r.card.t) && r.card.sub.includes(`specialty kept: ${f8.p1}`) && !/pick the specialty/.test(r.card.sub), r);
+  /* the Skills hero hint at a fresh Lv 39 after buying every open line: the hero short, its hint counts from the header's points */
+  await cuSave(39, {}, ASN); await p.click('#spBuyAll'); await p.waitForTimeout(200);
+  /* the hint is "+k more your points cover" (the first k after the hero cost no more than the header's points) or "N more
+     unlocked · X pts left" with X the header's points; before F8 it read "N more unlocked · 0 pts left" with 1 pt to spend */
+  r = await p.evaluate(() => { const now = skillOpen(char(state)).now, h = +document.querySelector('#spBig b').textContent, hint = ([...document.querySelectorAll('#spHero .sphint')].find(x => /more/.test(x.innerText)) || {}).innerText || '', k = +((hint.match(/^\+(\d+) more your points cover$/) || [])[1] || 0);
+    return { head: h, hint, k, costK: now.slice(1, 1 + k).reduce((t, y) => t + (y.spec ? 0 : y.cost), 0), short: !!document.querySelector('#spHero .sphero.short') }; });
+  ok('F8: Lv 39, every open line bought, hero short: the hint counts from the header\'s points', r.short && r.head > 0 && (r.k ? r.costK <= r.head : /^\d+ more unlocked · \d+ pts? left$/.test(r.hint) && +r.hint.match(/· (\d+) pt/)[1] === r.head), r);
+
   ok('no page errors', !errs.length, errs);
   console.log(`${n - fail} ok, ${fail} failed`); console.log(fail ? `E4 CHECKS FAILED (${fail})` : 'E4 CHECKS PASSED'); await b.close(); process.exit(fail ? 1 : 0); })();

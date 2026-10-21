@@ -64,7 +64,14 @@ const cuSpec = (x, skip) => { const p = (x.s.specs || [])[x.slot - 1] || (x.slot
   return why ? `pick your own · <span class="ss-tag" title="${q(why)}">no guide pick</span>` : "no sourced pick yet"; };
 /* every specialty slot a jump opens, slot 2 and up named ("… · slot 2: …") */
 const cuSpecs = (j, skip) => j.specs.map(x => (x.slot > 1 ? `slot ${x.slot}: ` : "") + cuSpec(x, skip)).join(" · ");
+/* The specialty slots a skill-level step reaches (0.8.1 F8, slotsReachedOf): "opens its specialty: X" / "opens slot 2: X"
+   with the build's pick; a slot already picked (kept through a Skills Respec) reads "specialty kept: X", plain, so it isn't
+   another thing to do */
+const spReach = (rs, skip) => rs.map(({ x, kept }) => { const sl = x.slot > 1 ? `slot ${x.slot}` : "specialty";
+  if (!kept) return `opens ${x.slot > 1 ? sl : "its specialty"}: ${cuSpec(x, skip)}`;
+  const p = (x.s.specs || [])[x.slot - 1] || (x.slot === 1 && x.s.spec ? { t: x.s.spec } : null);
+  return `<span class="sp-kept">${sl} kept${p ? `: ${p.t}` : ""}</span>`; }).join(" · ");
 /* where a catch-up stands, the same words on the Skills hero and Next up: the jumps still to tap, this one included */
 const cuLeft = n => `${n} jump${n === 1 ? "" : "s"} left`;
 
-export { aion2TipId, tipPop, stTip, dvShort, ini, spMini, stIco, mapMk, kibMark, rqStIco, rqLegend, cuSpecs, cuLeft };
+export { aion2TipId, tipPop, stTip, dvShort, ini, spMini, stIco, mapMk, kibMark, rqStIco, rqLegend, cuSpecs, cuLeft, spReach };
