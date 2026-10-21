@@ -1,7 +1,7 @@
 {
   "random/L31-q01-none-B-stfull": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 30–31"},
-    {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 30–31"},
+    {"t":"Upgrade Triniel's Dagger 1 → 2 inferred","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1","b":"Missed · Lv 30–31"},
@@ -9,16 +9,16 @@
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202044","x":["+19 waiting on the story Shugo-of-All-Trades In my game Spooky Specters In my game Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game"]},
     {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk : Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
     {"t":"Run Graverobber Den","s":"Crypt · Kibelisk : Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 8 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""}
+    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
   ],
   "random/L31-q05-lvonly-B-filters": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 30–31"},
     {"t":"Story: Spread Your Wings","s":"0/3 objectives · then Signs of a Crash Landing","c":"primary \"Turned in\" story","o":["Awaken your Daeva power in the dream complete 'The One Who Perceives'","Share the outcome go to the Witch's Cabin","Turn in Elvida, Witch's Cabin"]},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
-    {"t":"Buy Insignia Explosion 7 → 8","s":"Needs Lv 32 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 32–34"},
-    {"t":"Buy Rear Smite 8 → 9","s":"Needs Lv 32 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 7 → 8","s":"Needs Lv 32 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 32–34"},
+    {"t":"Buy Rear Smite 8 → 9","s":"Needs Lv 32 · 1 level away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · 1 level away · opens on \"A Daeva Dreaming Anew\" · 49 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "random/L31-q06-rnd120p80-A": [
@@ -28,44 +28,44 @@
     {"t":"Story: Signs of a Crash Landing","s":"0/5 objectives · then Prison Compound Infiltration Plan","c":"primary \"Turned in\" story","b":"Lv 30–31","o":["Go to Anturn Cliff go to Milred ( Kibelisk : Witch's Cabin)","Search the airship at the top of Anturn Cliff ride the Updraft to the top (Kibelisk: Witch's Cabin)","Return to Aldelle Village go to Aldelle Village","+2 more after these"]},
     {"t":"Clear Dratona Assembly Area","s":"Basfelt Ruins · Kibelisk : Graverobber Campsite · Lv 30–34 · 4/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Graverobber Campsite is 111 m away · 8 open at your level"},
     {"t":"Run Latrima Outpost","s":"Dranactus · Kibelisk : Battlescar Mound Clifftop · 13/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Battlescar Mound Clifftop is 160 m away · 1 open"},
-    {"t":"Buy Rear Smite 8 → 9","s":"Needs Lv 32 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 32–34"},
+    {"t":"Buy Rear Smite 8 → 9","s":"Needs Lv 32 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 32–34"},
     {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · 1 level away · opens on \"A Daeva Dreaming Anew\" · 48 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "random/L31-q09-lvonly-A-objs": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 30–31"},
     {"t":"Story: The Longest Night","s":"Ready to turn in · then Finding Nemon","c":"primary \"Turned in\" story","o":["Turn in no NPC; escaping from Ishalgen completes the quest"]},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
-    {"t":"Buy Insignia Explosion 7 → 8","s":"Needs Lv 32 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 32–34"},
-    {"t":"Buy Rear Smite 8 → 9","s":"Needs Lv 32 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 7 → 8","s":"Needs Lv 32 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 32–34"},
+    {"t":"Buy Rear Smite 8 → 9","s":"Needs Lv 32 · 1 level away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · 1 level away · opens on \"A Daeva Dreaming Anew\" · 45 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "random/L31-q09-rnd148p50-B-cube": [
     {"t":"Finish Hidden Vein Cave","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:g10h:hidden-vein-cave","b":"Lv 30–31"},
     {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
-    {"t":"Buy Shadowstrike specialty","s":"Pick: +20% Critical Damage Boost for 10s on hit","c":"primary \"Spent\" skill"},
+    {"t":"Buy Shadowstrike specialty","s":"Pick: +20% Critical Damage Boost for 10s on hit inferred","c":"primary \"Spent\" skill"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: The Longest Night","s":"0/2 objectives · then Finding Nemon","c":"primary \"Turned in\" story","b":"Lv 30–31","o":["Sleep at the village cabin go to the village cabin ( Kibelisk : Aldelle Village)","Turn in no NPC; escaping from Ishalgen completes the quest"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202044","x":["+8 waiting on the story Shugo-of-All-Trades In my game Spooky Specters In my game Practice Makes Perfect, Nyerk! In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game"]},
     {"t":"Clear Final Haven","s":"Battlescar Mound · Kibelisk : Basfelt Waterfall · Lv 30–34 · 5/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Basfelt Waterfall is 50 m away · 22 open at your level"},
-    {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 32)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Illusive Clone inferred","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 32)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk : Silent Hill Mushroom Rock · 6/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 4 open"},
-    {"t":"Buy Ambush specialty","s":"Pick: Engraves 2 Insignias when it lands as a Back attack","c":"tag \"After the one above\""}
+    {"t":"Buy Ambush specialty","s":"Pick: Engraves 2 Insignias when it lands as a Back attack inferred","c":"tag \"After the one above\""}
   ],
   "random/L31-q10-none-B-rqmix": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 30–31"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 30–31"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1","b":"Missed · Lv 30–31"},
     {"t":"Continue the story: Finding Nemon","s":"Main story · then Survival Supplies","c":"primary \"Turned in\" story","b":"Lv 30–31"},
-    {"t":"Regional quests","s":"3 in progress · 2 near your story step · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["run Shugo-of-All-Trades (near)","run Spooky Specters","run Hugo Mercenaries: Past and Present (near)","+16 waiting on the story Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game"]},
-    {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk : Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 43 open at your level"},
-    {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk : Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 8 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""}
+    {"t":"Regional quests","s":"3 in progress · 2 near your story step inferred · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["run Shugo-of-All-Trades (near)","run Spooky Specters","run Hugo Mercenaries: Past and Present (near)","+16 waiting on the story Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game"]},
+    {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step inferred ) · Kibelisk : Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 43 open at your level"},
+    {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step inferred ) · Kibelisk : Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 8 open"},
+    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
   ],
   "random/L31-q31-none-A-sppts": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 30–31"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 30–31"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -83,20 +83,20 @@
     {"t":"Story: A Collective Effort","s":"0/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","bd":"Bind Faded Stump on the way 29 m from Darmand bind:kib:faded-stump","o":["Restore the Wind Altar purify the Wind Altar ( Kibelisk : Purifying Forest Coastal Cliff)","Clear around the Fire Altar eliminate the Rift Fragment defeat the Flame Rock Spider remove the Vines Corroded by Poison Blood Kibelisk: Guide Rest Stop","Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","+1 more after these"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202011","x":["+5 waiting on the story Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game"]},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
-    {"t":"Buy Insignia Explosion 7 → 8","s":"Needs Lv 32 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 32–34"},
-    {"t":"Buy Rear Smite 8 → 9","s":"Needs Lv 32 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 7 → 8","s":"Needs Lv 32 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 32–34"},
+    {"t":"Buy Rear Smite 8 → 9","s":"Needs Lv 32 · 1 level away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · 1 level away · opens on \"A Daeva Dreaming Anew\" · 11 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "random/L31-q50-before-A-rqmix": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 30–31"},
     {"t":"Story: Eye of the Red Tower","s":"Needs Lv 32: you're 31. Level up first. Meanwhile: Strongholds / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":""},
     {"t":"Run Latrima Outpost","s":"Dranactus (near your story step) · Kibelisk : Battlescar Mound Clifftop · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Battlescar Mound Clifftop is 160 m away · 5 open"},
-    {"t":"Buy Insignia Explosion 7 → 8","s":"Needs Lv 32 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 32–34"},
-    {"t":"Buy Rear Smite 8 → 9","s":"Needs Lv 32 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 7 → 8","s":"Needs Lv 32 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 32–34"},
+    {"t":"Buy Rear Smite 8 → 9","s":"Needs Lv 32 · 1 level away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · 1 level away · opens on \"A Daeva Dreaming Anew\" · 4 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "random/L31-q52-none-B": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 30–31"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 30–31"},
     {"t":"Regional quests","s":"15 to pick up · 4 follow-ups · 0/19 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+13 more"]},
     {"t":"Clear Dark Root Cave and others until Lv 32","s":"Dranactus (near your story step) · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 43 open at your level"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
@@ -105,24 +105,24 @@
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
     {"t":"Story: Rescue Operation","s":"Needs Lv 32: you're 31. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":"","b":"Lv 30–31"},
-    {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 32)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 32)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Latrima Outpost","s":"Dranactus (near your story step) · Kibelisk : Battlescar Mound Clifftop · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Battlescar Mound Clifftop is 160 m away · 7 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""}
+    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""}
   ],
   "random/L31-q54-lvonly-A-stwait": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 30–31"},
     {"t":"Regional quests","s":"3 to pick up · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise [Lv 32]","new Pain Unending [Lv 32]","new Nine Wonders of Altgard: 2nd Leg [Lv 32]"]},
     {"t":"Story: A Daeva Dreaming Anew","s":"Needs Lv 32: you're 31. Level up first. Meanwhile: Strongholds / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":""},
-    {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 32)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 32)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
-    {"t":"Buy Insignia Explosion 7 → 8","s":"Needs Lv 32 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 32–34"},
-    {"t":"Buy Rear Smite 8 → 9","s":"Needs Lv 32 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 7 → 8","s":"Needs Lv 32 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 32–34"},
+    {"t":"Buy Rear Smite 8 → 9","s":"Needs Lv 32 · 1 level away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L31-q55-none-A-stfull": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 30–31"},
-    {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 30–31"},
+    {"t":"Upgrade Triniel's Dagger 1 → 2 inferred","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
     {"t":"Regional quests","s":"16 to pick up · 5 follow-ups · 1 near your story step · 0/22 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+15 more"]},
     {"t":"Clear All-Curing Cave and others until Lv 33","s":"Battlescar Mound (near your story step) · Kibelisk : Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
@@ -131,8 +131,8 @@
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Story: Last Refuge","s":"Needs Lv 33: you're 31. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":"","b":"Lv 30–31","bd":"Bind Graverobber Campsite on the way 128 m from Nemon bind:kib:graverobber-campsite"},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk : Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 7 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""}
+    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""}
   ],
   "random/L31-q68-all-B-dv": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
@@ -143,8 +143,8 @@
     {"t":"Regional quests","s":"7 to pick up · 0/7 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise [Lv 32]","new Pain Unending [Lv 32]","new Nine Wonders of Altgard: 2nd Leg [Lv 32]","new Traveling Merchant's Conundrum [Lv 33]","new Finders Keepers [Lv 33]","new A Friend's Legacy [Lv 37]","+1 more"]},
     {"t":"Story: Fafnite's Whereabouts","s":"Needs Lv 40: you're 31. Level up first. Meanwhile: Strongholds / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":""},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
-    {"t":"Buy Insignia Explosion 7 → 8","s":"Needs Lv 32 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 32–34"},
-    {"t":"Buy Rear Smite 8 → 9","s":"Needs Lv 32 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 7 → 8","s":"Needs Lv 32 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 32–34"},
+    {"t":"Buy Rear Smite 8 → 9","s":"Needs Lv 32 · 1 level away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"Triniel board opens","s":"Lv 40 milestone · 9 levels away","c":"tag \"Later\"","f":"later","b":"Lv 40–44"}
   ],
   "random/L31-q70-rnd140p95-B-stwait": [
@@ -152,9 +152,9 @@
     {"t":"Regional quests","s":"7 to pick up · 0/7 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise [Lv 32]","new Pain Unending [Lv 32]","new Nine Wonders of Altgard: 2nd Leg [Lv 32]","new Traveling Merchant's Conundrum [Lv 33]","new Finders Keepers [Lv 33]","new A Friend's Legacy [Lv 37]","+1 more"]},
     {"t":"Clear Fortuneteller's Grave and others until Lv 40","s":"Moslan Forest · Kibelisk : Moslan Forest Dry Shade · Lv 15–19 · 9/11","c":"go \"Show\" areas:15","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Dry Shade is 70 m away · 3 open at your level"},
     {"t":"Story: Fafnite's Whereabouts","s":"Needs Lv 40: you're 31. Level up first. Meanwhile: Sealed Dungeons / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":""},
-    {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 32)","c":"tag \"Needs 1 shard\""},
-    {"t":"Buy Insignia Explosion 7 → 8","s":"Needs Lv 32 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 32–34"},
-    {"t":"Buy Rear Smite 8 → 9","s":"Needs Lv 32 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 32)","c":"tag \"Needs 1 shard\""},
+    {"t":"Buy Insignia Explosion 7 → 8","s":"Needs Lv 32 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 32–34"},
+    {"t":"Buy Rear Smite 8 → 9","s":"Needs Lv 32 · 1 level away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Flash Slice 9 → 10","s":"Needs Lv 32 · 1 level away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L31-q73-lvonly-B": [
@@ -162,23 +162,23 @@
     {"t":"Regional quests","s":"7 to pick up · 0/7 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise [Lv 32]","new Pain Unending [Lv 32]","new Nine Wonders of Altgard: 2nd Leg [Lv 32]","new Traveling Merchant's Conundrum [Lv 33]","new Finders Keepers [Lv 33]","new A Friend's Legacy [Lv 37]","+1 more"]},
     {"t":"Story: Treatment","s":"Needs Lv 40: you're 31. Level up first. Meanwhile: Strongholds / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":""},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
-    {"t":"Buy Insignia Explosion 7 → 8","s":"Needs Lv 32 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 32–34"},
-    {"t":"Buy Rear Smite 8 → 9","s":"Needs Lv 32 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 7 → 8","s":"Needs Lv 32 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 32–34"},
+    {"t":"Buy Rear Smite 8 → 9","s":"Needs Lv 32 · 1 level away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"Triniel board opens","s":"Lv 40 milestone · 9 levels away","c":"tag \"Later\"","f":"later","b":"Lv 40–44"}
   ],
   "random/L31-q77-all-A-stfull": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
+    {"t":"Upgrade Triniel's Dagger 1 → 2 inferred","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
     {"t":"Story: The Breaking of the Day","s":"Needs Lv 42: you're 31. Level up first. Meanwhile: Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":""}
   ],
   "random/L31-q83-before-A-stfull": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 30–31"},
-    {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
+    {"t":"Upgrade Triniel's Dagger 1 → 2 inferred","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
     {"t":"Regional quests","s":"9 to pick up · 1 near your story step · 0/9 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise [Lv 32]","new Pain Unending [Lv 32]","new Nine Wonders of Altgard: 2nd Leg [Lv 32]","new Traveling Merchant's Conundrum [Lv 33]","new Finders Keepers [Lv 33]","new A Friend's Legacy [Lv 37]","+3 more"]},
     {"t":"Story: Zikel's Core","s":"Needs Lv 45: you're 31. Level up first. Meanwhile: Strongholds / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":"","bd":"Bind Outskirts Stall on the way 93 m from Nemon bind:kib:outskirts-stall"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
-    {"t":"Buy Insignia Explosion 7 → 8","s":"Needs Lv 32 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 32–34"},
-    {"t":"Buy Rear Smite 8 → 9","s":"Needs Lv 32 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 7 → 8","s":"Needs Lv 32 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 32–34"},
+    {"t":"Buy Rear Smite 8 → 9","s":"Needs Lv 32 · 1 level away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"Triniel board opens","s":"Lv 40 milestone · 9 levels away","c":"tag \"Later\"","f":"later","b":"Lv 40–44"}
   ],
   "random/L31-q84-before-A-rqmix": [
@@ -186,8 +186,8 @@
     {"t":"Regional quests","s":"9 to pick up · 0/9 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise [Lv 32]","new Pain Unending [Lv 32]","new Nine Wonders of Altgard: 2nd Leg [Lv 32]","new Traveling Merchant's Conundrum [Lv 33]","new Finders Keepers [Lv 33]","new A Friend's Legacy [Lv 37]","+3 more"]},
     {"t":"Story: Farewells","s":"Needs Lv 45: you're 31. Level up first. Meanwhile: Strongholds / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":""},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
-    {"t":"Buy Insignia Explosion 7 → 8","s":"Needs Lv 32 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 32–34"},
-    {"t":"Buy Rear Smite 8 → 9","s":"Needs Lv 32 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 7 → 8","s":"Needs Lv 32 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 32–34"},
+    {"t":"Buy Rear Smite 8 → 9","s":"Needs Lv 32 · 1 level away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"Triniel board opens","s":"Lv 40 milestone · 9 levels away","c":"tag \"Later\"","f":"later","b":"Lv 40–44"}
   ],
   "random/L31-qxx-before-B-filters": [
@@ -195,12 +195,12 @@
     {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202010","x":["+16 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game"]},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
-    {"t":"Buy Insignia Explosion 7 → 8","s":"Needs Lv 32 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 32–34"},
-    {"t":"Buy Rear Smite 8 → 9","s":"Needs Lv 32 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 7 → 8","s":"Needs Lv 32 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 32–34"},
+    {"t":"Buy Rear Smite 8 → 9","s":"Needs Lv 32 · 1 level away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · 1 level away · opens on \"A Daeva Dreaming Anew\" · set your quest","c":"tag \"Later\"","f":"later"}
   ],
   "random/L31-qxx-none-B": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 30–31"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 30–31"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1","b":"Missed · Lv 30–31"},
@@ -208,19 +208,19 @@
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202044","x":["+19 waiting on the story Shugo-of-All-Trades In my game Spooky Specters In my game Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game"]},
     {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk : Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
     {"t":"Run Graverobber Den","s":"Crypt · Kibelisk : Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 8 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""}
+    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
   ],
   "random/L32-q03-rnd108p50-A": [
-    {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill"},
+    {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit inferred","c":"primary \"Spent\" skill"},
     {"t":"Story: Isolated Lake","s":"0/4 objectives · then The Being Beneath the Lake","c":"primary \"Turned in\" story","o":["Remove the hazards at the lake defeat the beasts at the lake ( Kibelisk : Witch's Cabin)","Check the Veil Jewel at Tunapre Lake check the Veil Jewel (Kibelisk: Witch's Cabin)","Go to Elvida's residence","+1 more after these"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202044","x":["+18 waiting on the story Shugo-of-All-Trades In my game Spooky Specters In my game Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game A Guardian's Sacrifice In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game"]},
     {"t":"Clear Insectoid Tunnel","s":"Basfelt Ruins · Kibelisk : Basfelt Waterfall Arch Zone · Lv 30–34 · 4/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Basfelt Waterfall Arch Zone is 320 m away · 22 open at your level"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Graverobber Den","s":"Crypt · Kibelisk : Galorik's Inspection Area · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 7 open"},
-    {"t":"Buy Savage Roar specialty","s":"Pick: +20% Skill Speed","c":"tag \"After the one above\""},
-    {"t":"Buy Insignia Explosion specialty","s":"Pick: +50% Multi-Hit on hit","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar specialty","s":"Pick: +20% Skill Speed inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Insignia Explosion specialty","s":"Pick: +50% Multi-Hit on hit inferred","c":"tag \"After the one above\""},
     {"t":"Buy Ambush specialty slot 2","s":"Pick: Absorbs 3% HP disputed","c":"tag \"After the one above\""}
   ],
   "random/L32-q04-before-B-rqmix": [
@@ -231,24 +231,24 @@
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 5 levels away · opens on \"Mirror of Greed\" · 65 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "random/L32-q04-rnd118p20-B-stfull": [
-    {"t":"Buy Ambush specialty","s":"Pick: Engraves 2 Insignias when it lands as a Back attack","c":"primary \"Spent\" skill","b":"Lv 32–34"},
-    {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
+    {"t":"Buy Ambush specialty","s":"Pick: Engraves 2 Insignias when it lands as a Back attack inferred","c":"primary \"Spent\" skill","b":"Lv 32–34"},
+    {"t":"Upgrade Triniel's Dagger 1 → 2 inferred","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Story: The Being Beneath the Lake","s":"0/4 objectives · then Spread Your Wings","c":"primary \"Turned in\" story","b":"Lv 32–34","o":["Check the journal Elvida mentioned check the Timeworn Journal check the Worn Tome","Go to the path beneath the lake enter Tunapre Lake Cave ( Kibelisk : Witch's Cabin)","Learn to fly enter the Ascension Subspace","+1 more after these"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202044","x":["+22 waiting on the story Shugo-of-All-Trades In my game Spooky Specters In my game Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game"]},
     {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk : Battlescar Mound Clifftop · Lv 30–34 · 1/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 35 open at your level"},
     {"t":"Run Graverobber Den","s":"Crypt · Kibelisk : Galorik's Inspection Area · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 8 open"},
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""}
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""}
   ],
   "random/L32-q10-lvonly-B-dv": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 32–34"},
     {"t":"Continue the story: Finding Nemon","s":"Main story · then Survival Supplies","c":"primary \"Turned in\" story"},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202020","x":["+3 waiting on the story Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game"]},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
-    {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk : Safe Haven Cliff · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 5 open"},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
+    {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step inferred ) · Kibelisk : Safe Haven Cliff · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 5 open"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 5 levels away · opens on \"Mirror of Greed\" · 59 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "random/L32-q12-all-B-filters": [
@@ -256,17 +256,17 @@
     {"t":"Story: Gathering Essentials","s":"0/1 objectives · Kibelisk : Safe Haven (89 m) · then Crash Site Rendezvous","c":"primary \"Turned in\" story","o":["Turn in Dinoh, Safe Haven"]}
   ],
   "random/L32-q12-rnd141p80-A-objs": [
-    {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit","c":"primary \"Spent\" skill","b":"Lv 32–34"},
+    {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit inferred","c":"primary \"Spent\" skill","b":"Lv 32–34"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Story: Gathering Essentials","s":"0/1 objectives · Kibelisk : Safe Haven (89 m) · then Crash Site Rendezvous","c":"primary \"Turned in\" story","b":"Lv 32–34","o":["Turn in Dinoh, Safe Haven"]},
-    {"t":"Clear Valka's Nest","s":"Dredgion Crash Site (near your story step) · Kibelisk : Temporary Investigation Base · Lv 10–14 · 11/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 360 m away · 8 open at your level"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
-    {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk : Safe Haven Cliff · 9/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"},
+    {"t":"Clear Valka's Nest","s":"Dredgion Crash Site (near your story step inferred ) · Kibelisk : Temporary Investigation Base · Lv 10–14 · 11/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 360 m away · 8 open at your level"},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
+    {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step inferred ) · Kibelisk : Safe Haven Cliff · 9/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"},
     {"t":"Buy Impact Hit 7 → 8","s":"Needs Lv 33 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 35–36"}
+    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 3 levels away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 35–36"}
   ],
   "random/L32-q16-rnd121p50-B-rqmix": [
-    {"t":"Buy Shadowstrike specialty","s":"Pick: +20% Critical Damage Boost for 10s on hit","c":"primary \"Spent\" skill","b":"Lv 32–34"},
+    {"t":"Buy Shadowstrike specialty","s":"Pick: +20% Critical Damage Boost for 10s on hit inferred","c":"primary \"Spent\" skill","b":"Lv 32–34"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1","b":"Missed · Lv 30–31"},
     {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","b":"Lv 32–34","o":["Meet Baba at Quai Campsite go inside","Find the broker's associate go to Barvir ( Kibelisk : Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
@@ -283,8 +283,8 @@
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 5 levels away · opens on \"Mirror of Greed\" · 50 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "random/L32-q29-rnd139p80-B-stready": [
-    {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill","b":"Lv 32–34"},
-    {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
+    {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit inferred","c":"primary \"Spent\" skill","b":"Lv 32–34"},
+    {"t":"Equip Illusive Clone inferred","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Vaizel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g30:0","b":"Missed · Lv 30–31"},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1"},
@@ -294,7 +294,7 @@
     {"t":"Run Logger's Rest Ruins","s":"Moslan Forest (near your story step) · Kibelisk : Elim's Rest · 12/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Elim's Rest is 224 m away · 2 open"}
   ],
   "random/L32-q46-rnd145p50-A-objs": [
-    {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill","b":"Lv 32–34"},
+    {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit inferred","c":"primary \"Spent\" skill","b":"Lv 32–34"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
@@ -303,19 +303,19 @@
     {"t":"Story: Contaminated Sacred Tree","s":"1/3 objectives · then The Past Revealed","c":"primary \"Turned in\" story","b":"Lv 32–34","o":["Deliver the Life Essence talk to Nemon ( Kibelisk : Faded Stump)","Turn in Urd, Healing Spring"]},
     {"t":"Regional quests","s":"10 to pick up · 2 follow-ups · 1/13 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+6 more","+7 waiting on the story Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game"]},
     {"t":"Clear Predator's Lair","s":"Purifying Forest (near your story step) · Kibelisk : Guide Rest Stop · Lv 20–24 · 3/7","c":"go \"Show\" areas:20","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Guide Rest Stop is 140 m away · 17 open at your level"},
-    {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Latrima Outpost","s":"Dranactus · Kibelisk : Battlescar Mound Clifftop · 9/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Battlescar Mound Clifftop is 160 m away · 1 open"}
   ],
   "random/L32-q52-lvonly-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 32–34"},
     {"t":"Story: Rescue Operation","s":"0/6 objectives · then Last of the Destruction Archons","c":"primary \"Turned in\" story","o":["Collect supplies to deliver to the Hidden Cave steal weapons from Draconute Sentinel steal armor from Draconute Patrol search for food and recovery potions from the supply chest Kibelisk : Hidden Cave","Find out what is currently happening in the Hidden Cave join with Menrik","Explore the escape route search for the patrol log (Kibelisk: Hidden Cave)","+3 more after these"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202020","x":["+3 waiting on the story Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game"]},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Latrima Outpost","s":"Dranactus (near your story step) · Kibelisk : Battlescar Mound Clifftop · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Battlescar Mound Clifftop is 160 m away · 5 open"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 5 levels away · opens on \"Mirror of Greed\" · 17 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "random/L32-q53-none-B": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 32–34"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 32–34"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -326,12 +326,12 @@
     {"t":"Story: Last of the Destruction Archons","s":"0/5 objectives · then A Daeva Dreaming Anew","c":"primary \"Turned in\" story","b":"Lv 32–34","o":["Prepare to infiltrate the underkeep go to the entrance of the underkeep ( Kibelisk : Dranactus Shore)","Rescue a Destruction Archon go into the underkeep","Find out the current situation of Briskwind Shelter talk to Ulgorn talk to Menrik","+2 more after these"]},
     {"t":"Regional quests","s":"15 to pick up · 4 follow-ups · 0/19 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+13 more","+3 waiting on the story Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus (near your story step) · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 43 open at your level"},
-    {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Latrima Outpost","s":"Dranactus (near your story step) · Kibelisk : Battlescar Mound Clifftop · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Battlescar Mound Clifftop is 160 m away · 7 open"}
   ],
   "random/L32-q68-all-B-stready": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Illusive Clone inferred","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
     {"t":"Story: An Ill Fate's Resolution","s":"Needs Lv 37: you're 32. Level up first. Meanwhile: Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":""}
   ],
   "random/L32-q69-lvonly-A-cube": [
@@ -339,39 +339,39 @@
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
     {"t":"Regional quests","s":"5 to pick up · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise","new Pain Unending","new Nine Wonders of Altgard: 2nd Leg","new Traveling Merchant's Conundrum [Lv 33]","new Finders Keepers [Lv 33]"]},
     {"t":"Story: Mirror of Greed","s":"Needs Lv 37: you're 32. Level up first. Meanwhile: Strongholds / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":"","bd":"Bind Steel Hammer Merchants HQ on the way 86 m from Crobakhi bind:kib:steel-hammer-merchants-hq"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
     {"t":"Triniel board opens","s":"Lv 40 milestone · 8 levels away","c":"tag \"Later\"","f":"later","b":"Lv 40–44"}
   ],
   "random/L32-q70-before-A-stready": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 32–34"},
-    {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Illusive Clone inferred","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
     {"t":"Regional quests","s":"7 to pick up · 0/7 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise","new Pain Unending","new Nine Wonders of Altgard: 2nd Leg","new Traveling Merchant's Conundrum [Lv 33]","new Finders Keepers [Lv 33]","new A Friend's Legacy [Lv 37]","+1 more"]},
     {"t":"Story: Fafnite's Whereabouts","s":"Needs Lv 40: you're 32. Level up first. Meanwhile: Strongholds / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":""},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
     {"t":"Triniel board opens","s":"Lv 40 milestone · 8 levels away","c":"tag \"Later\"","f":"later","b":"Lv 40–44"}
   ],
   "random/L32-q72-rnd107p80-A": [
-    {"t":"Buy Ambush specialty","s":"Pick: Engraves 2 Insignias when it lands as a Back attack","c":"primary \"Spent\" skill","b":"Lv 32–34"},
+    {"t":"Buy Ambush specialty","s":"Pick: Engraves 2 Insignias when it lands as a Back attack inferred","c":"primary \"Spent\" skill","b":"Lv 32–34"},
     {"t":"Regional quests","s":"5 to pick up · 3/8 turned in","c":"go \"Show\" rqgo:rq:2202051","x":["new Spooky Specters","new Traveling Merchant's Conundrum [Lv 33]","new Finders Keepers [Lv 33]","new A Friend's Legacy [Lv 37]","new Bloodstained Rose [Lv 37]"]},
     {"t":"Clear Final Haven and others until Lv 40","s":"Battlescar Mound · Kibelisk : Basfelt Waterfall · Lv 30–34 · 5/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Basfelt Waterfall is 50 m away · 10 open at your level"},
     {"t":"Story: Healing Herbs","s":"Needs Lv 40: you're 32. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":""},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 12/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 1 open"},
     {"t":"Buy Impact Hit 7 → 8","s":"Needs Lv 33 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Assault Stance 8 → 9","s":"Needs Lv 34 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 35–36"}
+    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 3 levels away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 35–36"}
   ],
   "random/L33-q02-before-A-filters": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 32–34"},
     {"t":"Story: Shadow Forest","s":"0/3 objectives · then Isolated Lake","c":"primary \"Turned in\" story","o":["Search Munihelle Forest investigate Munihelle Forest with Maard ( Kibelisk : Witch's Cabin)","Find Maard near the village talk to Maard (Kibelisk: Aldelle Village)","Turn in Pelleir (Village Chief), Aldelle Village"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202010","x":["+21 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Traveling Merchant's Conundrum In my game Finders Keepers In my game"]},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 7 open"},
-    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
-    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 2 levels away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
+    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 2 levels away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 4 levels away · opens on \"Mirror of Greed\" · 67 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "random/L33-q05-none-B-objs": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 32–34"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 32–34"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1","b":"Missed · Lv 30–31"},
@@ -379,17 +379,17 @@
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202044","x":["+24 waiting on the story Shugo-of-All-Trades In my game Spooky Specters In my game Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Traveling Merchant's Conundrum In my game Finders Keepers In my game"]},
     {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk : Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 10 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""}
+    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
   ],
   "random/L33-q14-lvonly-B-objs": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 32–34"},
     {"t":"Story: Contaminated Area","s":"1/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","o":["Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk : Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202029","x":["+2 waiting on the story Traveling Merchant's Conundrum In my game Finders Keepers In my game"]},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk : Safe Haven Cliff · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 7 open"},
-    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
-    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 2 levels away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
+    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 2 levels away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 4 levels away · opens on \"Mirror of Greed\" · 55 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "random/L33-q17-before-B-dv": [
@@ -397,8 +397,8 @@
     {"t":"Story: Urgent Pursuit","s":"0/5 objectives · then Cemetery Cleanup","c":"primary \"Turned in\" story","o":["Find out where the broker is talk to Tagar","Eliminate the hindrance defeat Corrupted Karas Handmaiden defeat Hungry Dead Kibelisk : Gravekeeper Camp","Investigate the Shaded Cave enter the Shaded Cave (Kibelisk: Gravekeeper Camp)","+2 more after these"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202010","x":["+21 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Traveling Merchant's Conundrum In my game Finders Keepers In my game"]},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 7 open"},
-    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
-    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 2 levels away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
+    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 2 levels away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 4 levels away · opens on \"Mirror of Greed\" · 52 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "random/L33-q17-lvonly-B-dv": [
@@ -406,19 +406,19 @@
     {"t":"Story: Urgent Pursuit","s":"0/5 objectives · then Cemetery Cleanup","c":"primary \"Turned in\" story","o":["Find out where the broker is talk to Tagar","Eliminate the hindrance defeat Corrupted Karas Handmaiden defeat Hungry Dead Kibelisk : Gravekeeper Camp","Investigate the Shaded Cave enter the Shaded Cave (Kibelisk: Gravekeeper Camp)","+2 more after these"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202029","x":["+2 waiting on the story Traveling Merchant's Conundrum In my game Finders Keepers In my game"]},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 7 open"},
-    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
-    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 2 levels away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
+    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 2 levels away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 4 levels away · opens on \"Mirror of Greed\" · 52 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "random/L33-q17-rnd109p80-A-dv": [
-    {"t":"Buy Insignia Explosion specialty","s":"Pick: +50% Multi-Hit on hit","c":"primary \"Spent\" skill","b":"Lv 32–34"},
+    {"t":"Buy Insignia Explosion specialty","s":"Pick: +50% Multi-Hit on hit inferred","c":"primary \"Spent\" skill","b":"Lv 32–34"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Story: Urgent Pursuit","s":"0/5 objectives · then Cemetery Cleanup","c":"primary \"Turned in\" story","b":"Lv 32–34","o":["Find out where the broker is talk to Tagar","Eliminate the hindrance defeat Corrupted Karas Handmaiden defeat Hungry Dead Kibelisk : Gravekeeper Camp","Investigate the Shaded Cave enter the Shaded Cave (Kibelisk: Gravekeeper Camp)","+2 more after these"]},
     {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk : Battlescar Mound Clifftop · Lv 30–34 · 6/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 6 open at your level"},
-    {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 34)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Illusive Clone inferred","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 34)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk : Silent Hill Mushroom Rock · 13/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 1 open"},
     {"t":"Buy Assault Stance 8 → 9","s":"Needs Lv 34 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 35–36"}
+    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 2 levels away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 35–36"}
   ],
   "random/L33-q21-rnd105p95-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 32–34"},
@@ -427,21 +427,21 @@
     {"t":"Clear Lamnah Base","s":"Purifying Forest · Kibelisk : Healing Spring · Lv 20–24 · 6/7","c":"go \"Show\" areas:20","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Healing Spring is 110 m away · 1 open at your level"},
     {"t":"Run Logger's Rest Ruins","s":"Moslan Forest · Kibelisk : Elim's Rest · 14/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Elim's Rest is 224 m away · 1 open"},
     {"t":"Buy Assault Stance 8 → 9","s":"Needs Lv 34 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
-    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 2 levels away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
+    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 2 levels away · inferred","c":"tag \"Later\"","f":"later"}
   ],
   "random/L33-q24-lvonly-B-stready": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 32–34"},
-    {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Illusive Clone inferred","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
     {"t":"Story: Malice Laid Bare","s":"0/5 objectives · then Broken Fang","c":"primary \"Turned in\" story","o":["Interrogate Blades Captive enter the captive's prison cell ( Kibelisk : Fang Hideout)","Collect infiltration materials Balaur Language Manual Draconute Superior Soldier weapon Draconute Tinkerer tissue","Deliver the transformation materials talk to Menrik (Fang Hideout)","+2 more after these"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202029","x":["+2 waiting on the story Traveling Merchant's Conundrum In my game Finders Keepers In my game"]},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 7 open"},
-    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
-    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 2 levels away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
+    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 2 levels away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 4 levels away · opens on \"Mirror of Greed\" · 45 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "random/L33-q24-none-B-rqmix": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 32–34"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 32–34"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -460,12 +460,12 @@
     {"t":"Story: Voice of Rage","s":"0/3 objectives · then Tangled Past","c":"primary \"Turned in\" story","bd":"Bind Uruthumheim Cliff on the way 46 m from Nemon bind:kib:uruthumheim-cliff","o":["Clear the way to the Eastern Altar defeat the Balaur in front of the altar defeat the Mind-Controlled Ancient Soldier and Ranger destroy the Midsize Fafnium","Find another Nornir survivor join Gohok in front of the Eastern Altar","Turn in Nemon, in front of the Collapsed Oracle"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202029","x":["+2 waiting on the story Traveling Merchant's Conundrum In my game Finders Keepers In my game"]},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 7 open"},
-    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
-    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 2 levels away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
+    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 2 levels away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 4 levels away · opens on \"Mirror of Greed\" · 31 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "random/L33-q38-none-B-stwait": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 32–34"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 32–34"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -476,31 +476,31 @@
     {"t":"Story: Voice of Rage","s":"0/3 objectives · then Tangled Past","c":"primary \"Turned in\" story","b":"Lv 32–34","bd":"Bind Uruthumheim Cliff on the way 46 m from Nemon bind:kib:uruthumheim-cliff","o":["Clear the way to the Eastern Altar defeat the Balaur in front of the altar defeat the Mind-Controlled Ancient Soldier and Ranger destroy the Midsize Fafnium","Find another Nornir survivor join Gohok in front of the Eastern Altar","Turn in Nemon, in front of the Collapsed Oracle"]},
     {"t":"Regional quests","s":"11 to pick up · 2 follow-ups · 0/13 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+7 more","+11 waiting on the story Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Traveling Merchant's Conundrum In my game Finders Keepers In my game"]},
     {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk : Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
-    {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 34)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 34)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 9 open"}
   ],
   "random/L33-q41-rnd119p80-A": [
-    {"t":"Buy Savage Roar specialty","s":"Pick: +20% Skill Speed","c":"primary \"Spent\" skill","b":"Lv 32–34"},
+    {"t":"Buy Savage Roar specialty","s":"Pick: +20% Skill Speed inferred","c":"primary \"Spent\" skill","b":"Lv 32–34"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Vaizel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g30:0","b":"Missed · Lv 30–31"},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1"},
     {"t":"Story: Striving for Coexistence","s":"0/3 objectives · then Preparations for Restoration","c":"primary \"Turned in\" story","b":"Lv 32–34","bd":"Bind Nornir Assembly on the way 133 m from Varron bind:kib:nornir-assembly","o":["Get potion ingredients from the Soft Breeze Spirit gather antidote ingredients ( Kibelisk : Guide Rest Stop)","Find supplies for the patients check the General Goods Chest check the Garment Chest Kibelisk: Nornir Assembly","Turn in Varron, Nornir Assembly"]},
     {"t":"Regional quests","s":"9 to pick up · 2 follow-ups · 2/13 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+5 more","+7 waiting on the story Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game"]},
     {"t":"Clear Predator's Lair","s":"Purifying Forest (near your story step) · Kibelisk : Guide Rest Stop · Lv 20–24 · 6/7","c":"go \"Show\" areas:20","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Guide Rest Stop is 140 m away · 10 open at your level"},
-    {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 34)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 34)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 12/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 1 open"}
   ],
   "random/L33-q48-all-B-sppts": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill"},
     {"t":"Story: Canyon's Secret","s":"0/2 objectives · then Bitter Reality","c":"primary \"Turned in\" story","o":["Investigate the Urugugu Canyon complete the Urugugu Canyon investigation ( Kibelisk : Kraka Footpath Wastewater Downstream). This is your first run of the Urugugu Canyon Expedition.","Turn in Ulgorn, Nornir Assembly"]},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""}
+    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
   ],
   "random/L33-q49-all-A-stwait": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
     {"t":"Story: Bitter Reality","s":"0/3 objectives · then Eye of the Red Tower","c":"primary \"Turned in\" story","o":["Learn the Mau language use the Language Artifact to learn","Learn the Mau Language read the Mau Language Manual","Turn in Menrik, Briskwind Shelter"]},
-    {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 34)","c":"tag \"Needs 1 shard\""}
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 34)","c":"tag \"Needs 1 shard\""}
   ],
   "random/L33-q52-all-B-rqmix": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
@@ -512,19 +512,19 @@
     {"t":"Story: A Daeva Dreaming Anew","s":"0/2 objectives · then Last Refuge","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Dreams","Turn in Nemon, Briskwind Shelter"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202029","x":["+2 waiting on the story Traveling Merchant's Conundrum In my game Finders Keepers In my game"]},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 7 open"},
-    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
-    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 2 levels away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
+    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 2 levels away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 4 levels away · opens on \"Mirror of Greed\" · 15 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "random/L33-q54-rnd108p80-A-rqmix": [
     {"t":"Ascension quest \"The One Who Dreams\"","s":"(recommended Lv 32).","c":"primary \"Done\" tick:g32:dreams","b":"Missed · Lv 32–34"},
-    {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit","c":"primary \"Spent\" skill","b":"Lv 32–34"},
+    {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit inferred","c":"primary \"Spent\" skill","b":"Lv 32–34"},
     {"t":"Story: A Daeva Dreaming Anew","s":"0/2 objectives · then Last Refuge","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Dreams","Turn in Nemon, Briskwind Shelter"]},
     {"t":"Regional quests","s":"5 to pick up · 3 in progress · 1 follow-up · 13/22 turned in","c":"go \"Show\" rqgo:rq:2202036","x":["run Shugo-of-All-Trades","run Spooky Specters","run Practice Makes Perfect, Nyerk!","new A Guardian's Sacrifice","new An Invitation to the Past: Part 1 | -> lock(disabled) An Invitation to the Past: Part 2","+3 more","+1 waiting on the story Traveling Merchant's Conundrum In my game"]},
     {"t":"Clear Insectoid Tunnel","s":"Basfelt Ruins · Kibelisk : Basfelt Waterfall Arch Zone · Lv 30–34 · 6/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Basfelt Waterfall Arch Zone is 320 m away · 7 open at your level"},
     {"t":"Run Legion Base Ruins","s":"Basfelt Ruins · Kibelisk : Fissure Cave · 11/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Fissure Cave is 200 m away · 3 open"},
     {"t":"Buy Assault Stance 8 → 9","s":"Needs Lv 34 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 35–36"}
+    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 2 levels away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 35–36"}
   ],
   "random/L33-q57-all-A-rqmix": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
@@ -539,8 +539,8 @@
     {"t":"Regional quests","s":"2 to pick up · 3/5 turned in","c":"go \"Show\" rqgo:rq:2202029","x":["new Traveling Merchant's Conundrum","new Finders Keepers"]},
     {"t":"Story: Enemy Territory","s":"Needs Lv 35: you're 33. Level up first. Meanwhile: Strongholds / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":"","bd":"Bind Steel Hammer Workcamp on the way 53 m from Mannikiki bind:kib:steel-hammer-workcamp"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 7 open"},
-    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
-    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 2 levels away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
+    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 2 levels away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 4 levels away · opens on \"Mirror of Greed\" · 8 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "random/L33-q68-rnd120p95-B-rqmix": [
@@ -548,24 +548,24 @@
     {"t":"Clear Dratona Assembly Area and others until Lv 37","s":"Basfelt Ruins · Kibelisk : Graverobber Campsite · Lv 30–34 · 5/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Graverobber Campsite is 111 m away · 4 open at your level"},
     {"t":"Story: An Ill Fate's Resolution","s":"Needs Lv 37: you're 33. Level up first. Meanwhile: Sealed Dungeons / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":""},
     {"t":"Buy Assault Stance 8 → 9","s":"Needs Lv 34 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
+    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 2 levels away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
     {"t":"Buy Impact Hit 8 → 9","s":"Needs Lv 36 · 3 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 4 levels away · opens on \"Mirror of Greed\" · 1 quest ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "random/L33-q68-rnd130p50-A-stfull": [
-    {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit","c":"primary \"Spent\" skill","b":"Lv 32–34"},
-    {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
+    {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit inferred","c":"primary \"Spent\" skill","b":"Lv 32–34"},
+    {"t":"Upgrade Triniel's Dagger 1 → 2 inferred","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
     {"t":"Regional quests","s":"10 to pick up · 1 follow-up · 11/22 turned in","c":"go \"Show\" rqgo:rq:2202012","x":["new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","new The Great Curse-Breaking Caper","new Blade of Vengeance | -> lock(disabled) In the Fang Legion's Name","+5 more"]},
     {"t":"Clear Library of Wisdom and others until Lv 37","s":"Basfelt Ruins · Kibelisk : Basfelt Ruins Cliff · Lv 30–34 · 5/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Basfelt Ruins Cliff is 137 m away · 18 open at your level"},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
     {"t":"Story: An Ill Fate's Resolution","s":"Needs Lv 37: you're 33. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":"","b":"Lv 32–34"},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk : Silent Hill Mushroom Rock · 9/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 4 open"},
-    {"t":"Buy Shadowstrike specialty","s":"Pick: +20% Critical Damage Boost for 10s on hit","c":"tag \"After the one above\""},
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""}
+    {"t":"Buy Shadowstrike specialty","s":"Pick: +20% Critical Damage Boost for 10s on hit inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
   ],
   "random/L33-q73-none-A-objs": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 32–34"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 32–34"},
     {"t":"Regional quests","s":"19 to pick up · 6 follow-ups · 0/26 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount | -> lock(disabled) A Friend's Legacy [Lv 37]","+19 more"]},
     {"t":"Clear All-Curing Cave and others until Lv 40","s":"Battlescar Mound · Kibelisk : Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
@@ -574,10 +574,10 @@
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
     {"t":"Story: Treatment","s":"Needs Lv 40: you're 33. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":"","b":"Lv 32–34"},
-    {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 34)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 34)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 9 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""}
+    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""}
   ],
   "random/L33-q75-before-B-cube": [
     {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube","b":"Lv 32–34"},
@@ -585,46 +585,46 @@
     {"t":"Regional quests","s":"4 to pick up · 3/7 turned in","c":"go \"Show\" rqgo:rq:2202029","x":["new Traveling Merchant's Conundrum","new Finders Keepers","new A Friend's Legacy [Lv 37]","new Bloodstained Rose [Lv 37]"]},
     {"t":"Story: Daybreak Society","s":"Needs Lv 41: you're 33. Level up first. Meanwhile: Strongholds / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 7 open"},
-    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
-    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 2 levels away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
+    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 2 levels away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"Triniel board opens","s":"Lv 40 milestone · 7 levels away","c":"tag \"Later\"","f":"later","b":"Lv 40–44"}
   ],
   "random/L33-q83-none-A-cube": [
     {"t":"Finish Abandoned One's Grave","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:g10h:abandoned-one-s-grave","b":"Lv 32–34"},
     {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill"},
     {"t":"Regional quests","s":"21 to pick up · 6 follow-ups · 1 near your story step · 0/28 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount | -> lock(disabled) A Friend's Legacy [Lv 37]","+21 more"]},
     {"t":"Clear All-Curing Cave and others until Lv 45","s":"Battlescar Mound · Kibelisk : Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
     {"t":"Story: Zikel's Core","s":"Needs Lv 45: you're 33. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":"","b":"Lv 32–34","bd":"Bind Outskirts Stall on the way 93 m from Nemon bind:kib:outskirts-stall"},
-    {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 34)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 34)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 9 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""}
+    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
   ],
   "random/L33-q86-rnd149p95-B-objs": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 32–34"},
-    {"t":"Regional quests","s":"26 to pick up · 1 follow-up · 3 near your story step · 0/27 turned in","c":"go \"Show\" rqgo:rq:2202039","x":["new A Friend's Legacy [Lv 37]","new Bloodstained Rose [Lv 37]","new Herb Pouch Heist [Lv 44]","new A Comrade's Fate [Lv 45] (near)","new A Perfect Wedding [Lv 45]","new Restoration Materials [Lv 45]","+21 more"]},
+    {"t":"Regional quests","s":"26 to pick up · 1 follow-up · 3 near your story step inferred · 0/27 turned in","c":"go \"Show\" rqgo:rq:2202039","x":["new A Friend's Legacy [Lv 37]","new Bloodstained Rose [Lv 37]","new Herb Pouch Heist [Lv 44]","new A Comrade's Fate [Lv 45] (near)","new A Perfect Wedding [Lv 45]","new Restoration Materials [Lv 45]","+21 more"]},
     {"t":"Clear Old Graveyard and others until Lv 45","s":"Nameless Cemetery · Kibelisk : Gravekeeper Camp · Lv 10–14 · 11/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Gravekeeper Camp is 150 m away · 2 open at your level"},
     {"t":"Story: Daeva Trapped in a Nightmare","s":"Needs Lv 45: you're 33. Level up first. Meanwhile: Sealed Dungeons / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":"tag \"Turn in at Lv 45\""},
     {"t":"Buy Assault Stance 8 → 9","s":"Needs Lv 34 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
-    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 2 levels away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
+    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 2 levels away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"Triniel board opens","s":"Lv 40 milestone · 7 levels away","c":"tag \"Later\"","f":"later","b":"Lv 40–44"}
   ],
   "random/L33-qxx-before-A-sppts": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 32–34"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 32–34"},
     {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202010","x":["+21 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Traveling Merchant's Conundrum In my game Finders Keepers In my game"]},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 7 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 4 levels away · opens on \"Mirror of Greed\" · set your quest","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "random/L34-q05-none-B-sppts": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 32–34"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 32–34"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1","b":"Missed · Lv 30–31"},
@@ -632,45 +632,45 @@
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202044","x":["+24 waiting on the story Shugo-of-All-Trades In my game Spooky Specters In my game Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Traveling Merchant's Conundrum In my game Finders Keepers In my game"]},
     {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk : Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 10 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""}
+    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
   ],
   "random/L34-q07-none-B-stwait": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 32–34"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 32–34"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1","b":"Missed · Lv 30–31"},
     {"t":"Story: Prison Compound Infiltration Plan","s":"0/5 objectives · then Brigade Prison Compound Infiltration Operation","c":"primary \"Turned in\" story","b":"Lv 32–34","o":["Find information on the Azrakar Brigade Prison Compound defeat Azrakar Watcher investigate the Azrakar Brigade Command Kibelisk : Abandoned Barracks Site","Deliver the information to Anders talk to Anders","Obtain the key from Balaur collect the key (Kibelisk: Abandoned Barracks Site)","+2 more after these"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202044","x":["+24 waiting on the story Shugo-of-All-Trades In my game Spooky Specters In my game Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Traveling Merchant's Conundrum In my game Finders Keepers In my game"]},
     {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk : Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
-    {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 35)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 35)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 10 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""}
+    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
   ],
   "random/L34-q14-none-B-stwait": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 32–34"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 32–34"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1","b":"Missed · Lv 30–31"},
     {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","b":"Lv 32–34","o":["Go to the Temporary Investigation Base talk to Niror","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk : Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202044","x":["+24 waiting on the story Shugo-of-All-Trades In my game Spooky Specters In my game Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Traveling Merchant's Conundrum In my game Finders Keepers In my game"]},
     {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk : Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 43 open at your level"},
-    {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 35)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 35)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk : Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 10 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""}
+    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
   ],
   "random/L34-q15-before-B-filters": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 32–34"},
     {"t":"Story: Express Daeva Delivery","s":"0/2 objectives · then Veiled Truth","c":"primary \"Turned in\" story","bd":"Bind Quai Campsite on the way 30 m from Ulgorn bind:kib:quai-campsite","o":["Restore the supply route retrieve the Lost Supplies defeat Drana Predator defeat Congealed Drana Kibelisk : Creion Campsite","Turn in Ulgorn, Quai Campsite"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202010","x":["+20 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game"]},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk : Safe Haven Cliff · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 7 open"},
-    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
-    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
+    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 1 level away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 3 levels away · opens on \"Mirror of Greed\" · 54 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "random/L34-q21-all-A-objs": [
@@ -682,7 +682,7 @@
     {"t":"Story: Empyrean Monolith","s":"0/4 objectives · then A New Lead","c":"primary \"Turned in\" story","o":["Find Ruins Administrator Ollen talk to Ollen ( Kibelisk : Safe Haven)","Obtain the Empyrean Trace: Altgard retrieve the trace (Kibelisk: Safe Haven)","Resonate with the Monolith obtain the Revelation Amulet Enhance Scroll (Kibelisk: Safe Haven)","+1 more after these"]},
     {"t":"Regional quests","s":"2 to pick up · 1 near your story step · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades (near)","new Spooky Specters","+2 waiting on the story A Guardian's Sacrifice In my game Pain Unending In my game"]},
     {"t":"Clear Library of Patience","s":"Basfelt Ruins · Kibelisk : Fissure Cave · Lv 30–34 · 6/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Fissure Cave is 140 m away · 1 open at your level"},
-    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
+    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
     {"t":"Buy Impact Hit 8 → 9","s":"Needs Lv 36 · 2 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Assault Stance 9 → 10","s":"Needs Lv 37 · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 37–39"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 3 levels away · opens on \"Mirror of Greed\" · 47 quests ahead","c":"tag \"Later\"","f":"later"}
@@ -696,8 +696,8 @@
     {"t":"Story: Broken Fang","s":"0/3 objectives · then Watchful Eyes","c":"primary \"Turned in\" story","o":["Search for the infiltrator inspect Fallen Member talk to Draconute Warrior talk to Ranger talk to Superior Combatant","Collect Selvis repair parts Outpost Probe eyes Dratona Tinkerer ore (Lv19) Broken Remnants fragments","Turn in Gamilla (Fang Legion), Temporary Retreat"]}
   ],
   "random/L34-q26-none-B-stfull": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 32–34"},
-    {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 32–34"},
+    {"t":"Upgrade Triniel's Dagger 1 → 2 inferred","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -713,12 +713,12 @@
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 32–34"},
     {"t":"Story: Voice of Rage","s":"0/3 objectives · then Tangled Past","c":"primary \"Turned in\" story","bd":"Bind Uruthumheim Cliff on the way 46 m from Nemon bind:kib:uruthumheim-cliff","o":["Clear the way to the Eastern Altar defeat the Balaur in front of the altar defeat the Mind-Controlled Ancient Soldier and Ranger destroy the Midsize Fafnium","Find another Nornir survivor join Gohok in front of the Eastern Altar","Turn in Nemon, in front of the Collapsed Oracle"]},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 7 open"},
-    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
-    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
+    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 1 level away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 3 levels away · opens on \"Mirror of Greed\" · 31 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "random/L34-q38-none-A-filters": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 32–34"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 32–34"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -729,11 +729,11 @@
     {"t":"Story: Voice of Rage","s":"0/3 objectives · then Tangled Past","c":"primary \"Turned in\" story","b":"Lv 32–34","bd":"Bind Uruthumheim Cliff on the way 46 m from Nemon bind:kib:uruthumheim-cliff","o":["Clear the way to the Eastern Altar defeat the Balaur in front of the altar defeat the Mind-Controlled Ancient Soldier and Ranger destroy the Midsize Fafnium","Find another Nornir survivor join Gohok in front of the Eastern Altar","Turn in Nemon, in front of the Collapsed Oracle"]},
     {"t":"Regional quests","s":"11 to pick up · 2 follow-ups · 0/13 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+7 more","+11 waiting on the story Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Traveling Merchant's Conundrum In my game Finders Keepers In my game"]},
     {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk : Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
-    {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 35)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 35)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 9 open"}
   ],
   "random/L34-q40-none-B": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 32–34"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 32–34"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -744,7 +744,7 @@
     {"t":"Story: The High Priest Slumbers","s":"0/2 objectives · then Striving for Coexistence","c":"primary \"Turned in\" story","b":"Lv 32–34","o":["Check if Hystan's body is safe go to the Nornir Altar","Turn in Urd, Nornir Assembly ( Kibelisk : Nornir Assembly)"]},
     {"t":"Regional quests","s":"11 to pick up · 2 follow-ups · 0/13 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+7 more","+11 waiting on the story Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Traveling Merchant's Conundrum In my game Finders Keepers In my game"]},
     {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk : Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
-    {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 35)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 35)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 9 open"}
   ],
   "random/L34-q46-before-A-objs": [
@@ -752,8 +752,8 @@
     {"t":"Story: Contaminated Sacred Tree","s":"1/3 objectives · then The Past Revealed","c":"primary \"Turned in\" story","o":["Deliver the Life Essence talk to Nemon ( Kibelisk : Faded Stump)","Turn in Urd, Healing Spring"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202011","x":["+9 waiting on the story Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game"]},
     {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk : Purifying Forest Sunny Hill · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 7 open"},
-    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
-    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
+    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 1 level away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 3 levels away · opens on \"Mirror of Greed\" · 23 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "random/L34-q47-before-A": [
@@ -761,16 +761,16 @@
     {"t":"Story: The Past Revealed","s":"0/2 objectives · then Canyon's Secret","c":"primary \"Turned in\" story","o":["Go to see the high priest's memories go to Nornir Altar ( Kibelisk : Purifying Forest Coastal Cliff)","Turn in Ulgorn, Nornir Assembly"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202011","x":["+9 waiting on the story Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game"]},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 7 open"},
-    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
-    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
+    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 1 level away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 3 levels away · opens on \"Mirror of Greed\" · 22 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "random/L34-q47-lvonly-A-filters": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 32–34"},
     {"t":"Story: The Past Revealed","s":"0/2 objectives · then Canyon's Secret","c":"primary \"Turned in\" story","o":["Go to see the high priest's memories go to Nornir Altar ( Kibelisk : Purifying Forest Coastal Cliff)","Turn in Ulgorn, Nornir Assembly"]},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 7 open"},
-    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
-    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
+    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 1 level away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 3 levels away · opens on \"Mirror of Greed\" · 22 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "random/L34-q48-before-A-rqmix": [
@@ -778,8 +778,8 @@
     {"t":"Story: Canyon's Secret","s":"0/2 objectives · then Bitter Reality","c":"primary \"Turned in\" story","o":["Investigate the Urugugu Canyon complete the Urugugu Canyon investigation ( Kibelisk : Kraka Footpath Wastewater Downstream). This is your first run of the Urugugu Canyon Expedition.","Turn in Ulgorn, Nornir Assembly"]},
     {"t":"Regional quests","s":"3 in progress · 1/4 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["run Hugo Mercenaries: An Old Promise","run Pain Unending","run Nine Wonders of Altgard: 2nd Leg","+1 waiting on the story Finders Keepers In my game"]},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 7 open"},
-    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
-    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
+    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 1 level away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 3 levels away · opens on \"Mirror of Greed\" · 21 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "random/L34-q53-all-B": [
@@ -790,15 +790,15 @@
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 32–34"},
     {"t":"Story: Last of the Destruction Archons","s":"0/5 objectives · then A Daeva Dreaming Anew","c":"primary \"Turned in\" story","o":["Prepare to infiltrate the underkeep go to the entrance of the underkeep ( Kibelisk : Dranactus Shore)","Rescue a Destruction Archon go into the underkeep","Find out the current situation of Briskwind Shelter talk to Ulgorn talk to Menrik","+2 more after these"]},
     {"t":"Run Latrima Outpost","s":"Dranactus (near your story step) · Kibelisk : Battlescar Mound Clifftop · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Battlescar Mound Clifftop is 160 m away · 7 open"},
-    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
-    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
+    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 1 level away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 3 levels away · opens on \"Mirror of Greed\" · 16 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "random/L34-q57-rnd143p95-B-objs": [
     {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"primary \"Spent\" skill","b":"Lv 32–34"},
     {"t":"Story: Blood Monument","s":"2/4 objectives · then Impending Threat","c":"primary \"Turned in\" story","o":["Insert Zikel's Seal into the Blood Monument operate the Blood Monument ( Kibelisk : Graverobber Campsite)","Turn in Nemon, Destroyed Ruins"]},
     {"t":"Clear Dratona Assembly Area","s":"Basfelt Ruins (near your story step) · Kibelisk : Graverobber Campsite · Lv 30–34 · 6/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Graverobber Campsite is 111 m away · 3 open at your level"},
-    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
+    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
     {"t":"Buy Impact Hit 8 → 9","s":"Needs Lv 36 · 2 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Assault Stance 9 → 10","s":"Needs Lv 37 · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 37–39"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 3 levels away · opens on \"Mirror of Greed\" · 12 quests ahead","c":"tag \"Later\"","f":"later"}
@@ -808,8 +808,8 @@
     {"t":"Regional quests","s":"2 to pick up · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202039","x":["new A Friend's Legacy [Lv 37]","new Bloodstained Rose [Lv 37]"]},
     {"t":"Story: Fafnite's Whereabouts","s":"Needs Lv 40: you're 34. Level up first. Meanwhile: Strongholds / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 7 open"},
-    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
-    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 8 → 9","s":"Needs Lv 35 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 35–36"},
+    {"t":"Buy Rear Smite 9 → 10","s":"Needs Lv 35 · 1 level away · inferred","c":"tag \"Later\"","f":"later"},
     {"t":"Triniel board opens","s":"Lv 40 milestone · 6 levels away","c":"tag \"Later\"","f":"later","b":"Lv 40–44"}
   ],
   "random/L34-q75-all-B": [
@@ -821,7 +821,7 @@
     {"t":"Story: High Priest's Fafnite","s":"Needs Lv 43: you're 34. Level up first. Meanwhile: Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":""}
   ],
   "random/L34-q86-none-B": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 32–34"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 32–34"},
     {"t":"Regional quests","s":"37 to pick up · 11 follow-ups · 0/51 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow | -> lock(disabled) A Traitor Within [Lv 45]","new Odyle Jelly Misappropriation Investigation","+42 more"]},
     {"t":"Clear All-Curing Cave and others until Lv 45","s":"Battlescar Mound · Kibelisk : Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
@@ -830,13 +830,13 @@
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
     {"t":"Story: Daeva Trapped in a Nightmare","s":"Needs Lv 45: you're 34. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":"tag \"Turn in at Lv 45\"","b":"Lv 32–34"},
-    {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 35)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 35)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 9 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""}
+    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""}
   ],
   "random/L35-q08-none-B-rqmix": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 35–36"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 35–36"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1","b":"Missed · Lv 30–31"},
@@ -844,13 +844,13 @@
     {"t":"Regional quests","s":"3 in progress · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["run Shugo-of-All-Trades","run Spooky Specters","run Hugo Mercenaries: Past and Present","+21 waiting on the story Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Traveling Merchant's Conundrum In my game Finders Keepers In my game"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 53 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 11 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""}
+    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
   ],
   "random/L35-q11-before-B-stready": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Illusive Clone inferred","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
     {"t":"Story: Survival Supplies","s":"0/2 objectives · then Gathering Essentials","c":"primary \"Turned in\" story","o":["Receive additional supplies go to VeKauf ( Kibelisk : Safe Haven)","Turn in VeKauf (Militia Supply Officer), Safe Haven"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202010","x":["+20 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
@@ -870,8 +870,8 @@
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 2 levels away · opens on \"Mirror of Greed\" · 50 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "random/L35-q21-none-A-stfull": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 35–36"},
+    {"t":"Upgrade Triniel's Dagger 1 → 2 inferred","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
@@ -891,13 +891,13 @@
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 2 levels away · opens on \"Mirror of Greed\" · 36 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "random/L35-q36-lvonly-B-sppts": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 35–36"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 35–36"},
     {"t":"Story: Prison Break","s":"0/2 objectives · then Finding Stolen Relics","c":"primary \"Turned in\" story","bd":"Bind Minushan Site on the way 34 m from Hadala bind:kib:minushan-site","o":["Rescue the prisoners with Nemon rescue the prisoners ( Kibelisk : Victorious Daeva's Statue)","Turn in Hadala, Minushan Site"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 10 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 2 levels away · opens on \"Mirror of Greed\" · 33 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"}
   ],
   "random/L35-q39-before-A": [
@@ -920,11 +920,11 @@
   ],
   "random/L35-q65-all-A-stfull": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
+    {"t":"Upgrade Triniel's Dagger 1 → 2 inferred","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
     {"t":"Story: Inevitable Encounter","s":"Needs Lv 37: you're 35. Level up first. Meanwhile: Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""}
   ],
   "random/L35-q68-none-A-rqmix": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 35–36"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 35–36"},
     {"t":"Regional quests","s":"15 to pick up · 3 in progress · 5 follow-ups · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202012","x":["run Shugo-of-All-Trades","run Spooky Specters","run Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+17 more"]},
     {"t":"Clear Destruction Archons Armory and others until Lv 37","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 53 open at your level"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
@@ -933,14 +933,14 @@
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
     {"t":"Story: An Ill Fate's Resolution","s":"Needs Lv 37: you're 35. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":"","b":"Lv 35–36"},
-    {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 10 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""}
+    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""}
   ],
   "random/L35-q77-none-A-stfull": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 35–36"},
+    {"t":"Upgrade Triniel's Dagger 1 → 2 inferred","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
     {"t":"Regional quests","s":"20 to pick up · 6 follow-ups · 1 near your story step · 0/27 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount | -> lock(disabled) A Friend's Legacy [Lv 37]","+20 more"]},
     {"t":"Clear Place of Rest and others until Lv 42","s":"Black Claw Village (near your story step) · Kibelisk : Zemurru's Tomb · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Zemurru's Tomb is 99 m away · 53 open at your level"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
@@ -949,22 +949,22 @@
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Story: The Breaking of the Day","s":"Needs Lv 42: you're 35. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":"","b":"Lv 35–36"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 10 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""}
+    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""}
   ],
   "random/L35-q81-none-A-cube": [
     {"t":"Finish Abandoned One's Grave","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:g10h:abandoned-one-s-grave","b":"Lv 35–36"},
     {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill"},
     {"t":"Regional quests","s":"20 to pick up · 6 follow-ups · 0/27 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount | -> lock(disabled) A Friend's Legacy [Lv 37]","+20 more"]},
     {"t":"Clear Destruction Archons Armory and others until Lv 44","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 53 open at your level"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
     {"t":"Story: Lingering Apparitions","s":"Needs Lv 44: you're 35. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":"","b":"Lv 35–36","bd":"Bind Collapsed Hall of Fame on the way 32 m from Nemon bind:kib:collapsed-hall-of-fame"},
-    {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 10 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""}
+    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
   ],
   "random/L35-q85-all-A-cube": [
     {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
