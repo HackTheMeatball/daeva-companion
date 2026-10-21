@@ -75,4 +75,4 @@ Kickoff runs after each merge to main and when a thread dispatches it (`kickoff.
 
 ## Last confirmed by owner
 
-Not yet.
+2026-10-21, by Gus.

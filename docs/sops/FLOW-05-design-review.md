@@ -20,16 +20,19 @@ Two entry points: (a) Jane's mockups for a minor with visible changes are ready 
 - [docs/design/review-checklist.md](../design/review-checklist.md)
 - The mockups or the PR's before/after shots and `scrapbook.json`
 - The baseline (what Isaac sees today)
+- Holly's charter, docs/team/holly.md (in PR #668, not yet on main): the tie-break, and that Holly's review adds no new merge gate
 
 ## Steps
 
 1. **Saul**: (a) Starts a one-off Design Critic thread that took no part in the design (DEC-20261019-design-critic-reviews-a-minor).
 2. **Holly**: (a) Briefs it from the fixed template: the checklist, the work, its acceptance line and its baseline, nothing from the author.
 3. **Design Critic**: (a) Reviews the mockups and sends findings to Jane and to Saul's morning debrief.
-4. **Jane**: (a) Answers each finding in writing, then gives the final look OK (ROADMAP step 5).
-5. **Jane**: (b) Checks the PR's shots against the checklist and comments `DESIGN OK on <sha7>` or `DESIGN CHANGES on <sha7>` (MRG-06).
-6. **Holly**: (b) For a `fresh-review` item (KZ-16), briefs a fresh reviewer from the same template and logs findings.
-7. **Huell**: After merge, publishes the PR's scrapbook cards (TRK-07).
+4. **Holly**: (a) and (b) After Jane's own pass, reviews the mockups or shots against the checklist from a named baseline (K26 in [docs/kaizen/0.8-scorecard.md](../kaizen/0.8-scorecard.md), section 7). Names every removal of something Isaac sees, with "bring back" as the default. Sends findings to Jane, numbered, each starting `DESIGN REVIEW:`. (a) Mockups wait for this review before Jane hands them to Walter. (b) On a PR it may land after merge; agreed findings ride the next PR.
+5. **Jane**: (a) Answers each finding in writing, then gives the final look OK (ROADMAP step 5).
+6. **Jane**: (b) Checks the PR's shots against the checklist and comments `DESIGN OK on <sha7>` or `DESIGN CHANGES on <sha7>` (MRG-06).
+7. **Holly**: (b) For a `fresh-review` item (KZ-16), writes the fresh reviewer's brief from the same template, sends it to Saul, and logs the findings.
+8. **Saul**: (b) Checks that the brief's slots hold no opinion, then starts the fresh-review thread.
+9. **Huell**: After merge, publishes the PR's scrapbook cards (TRK-07).
 
 ## Gates
 
@@ -46,7 +49,7 @@ Two entry points: (a) Jane's mockups for a minor with visible changes are ready 
 ## Failure and escalation
 
 - `DESIGN CHANGES` starts a fix run (MRG-06).
-- A removal of something Isaac sees is named to Isaac (Holly never accepts one because the team decided it).
+- A removal of something Isaac sees is named in the review summary and in Jane's decision note. A contested removal does not go ahead unless an outside reviewer with no history on that look agrees; Holly never accepts a removal because the team decided it.
 - Reviewers disagree: the morning debrief (KZ-16).
 - A merged `fresh-review` item with no fresh-review note: Mike flags it as `review-skipped` (KZ-16).
 
@@ -65,7 +68,7 @@ Two entry points: (a) Jane's mockups for a minor with visible changes are ready 
 
 ## Open questions for the owner of this flow
 
-- Owner: Holly (design review and the Critic pass) or Jane (the DESIGN OK gate)? Drafted as Holly, with Jane's steps named; if the two differ, the coordinator decides (an ownership question).
+- Reviewer disagreement: Holly's charter (docs/team/holly.md, PR #668) sends it through an outside review, with only an UNSURE reaching Isaac as one card. KZ-16's home still sends it to the morning debrief, so this page follows the home until the home changes; Holly raises it with Gale ([FLOW-15](FLOW-15-process-change.md)).
 
 ## Last confirmed by owner
 

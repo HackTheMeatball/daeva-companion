@@ -9,7 +9,7 @@ Ask Isaac only for what only Isaac can decide or do, in one clear To-do, and mak
 
 ## Trigger
 
-A thread needs a product call, an in-game check, an external setup or a setting the team cannot change. Process, rule and team changes do not come here ([FLOW-15](FLOW-15-process-change.md), DEC-20261020-owner-steps-away).
+A thread needs a product call, an in-game check, an external setup, a setting the team cannot change, or a loosening of one of the seven owner-held limits (DEC-20261020-team-owns-pipeline-and-permissions; tightening one needs no owner OK). Process, rule and team changes do not come here ([FLOW-15](FLOW-15-process-change.md), DEC-20261020-owner-steps-away).
 
 ## Owner
 
@@ -24,12 +24,13 @@ A thread needs a product call, an in-game check, an external setup or a setting 
 
 1. **Requesting thread**: Checks it is a true blocker only Isaac can clear (PLN-07, DEC-20261020-team-owns-pipeline-and-permissions), then asks Huell for a To-do: one owner, one OK, what waits on it, a copy box naming the thread (COM-09; DEC-20261019-each-thread-opens-its).
 2. **Huell**: Writes the To-do and sends the coordinator one `NEW TODO` line for the project chat (DEC-20261020-todo-notifications).
-3. **Saul**: Puts a not-blocking ask in the one morning debrief (COM-02). A hard blocker goes out at once as a red To-do and a `HARD BLOCKER:` post (COM-05). A judgment To-do stays not red until its output is on main (COM-08).
-4. **Isaac**: Types the answer in the named thread.
-5. **Recorder**: The thread where Isaac typed it reads Isaac's own words (DEC-02) and forwards them verbatim to Walter.
-6. **Walter**: Writes the DECISIONS row and its ledger row (DEC-01), with times in ET (COM-01).
-7. **Recorder**: Sends Huell `OK RECORDED` once the PR has merged (DEC-03, COM-13).
-8. **Huell**: Closes the To-do (DEC-20261019-tracker-sync-closes-a), marks it user or Claude remediated (PLN-10), and posts the close line.
+3. **Nacho**: Backs the ask before it reaches Isaac: Nacho checks routing and roles, and the owning department head checks the work. Both are logged in `coordinator/state.md` in the project's shared folder, naming who backed it.
+4. **Saul**: Puts a not-blocking ask in the one morning debrief (COM-02). A hard blocker goes out at once as a red To-do and a `HARD BLOCKER:` post (COM-05). A judgment To-do stays not red until its output is on main (COM-08).
+5. **Isaac**: Types the answer in the named thread.
+6. **Recorder**: The thread where Isaac typed it reads Isaac's own words (DEC-02) and forwards them verbatim to Walter.
+7. **Walter**: Writes the DECISIONS row and its ledger row (DEC-01), with times in ET (COM-01).
+8. **Recorder**: Sends Huell `OK RECORDED` once the PR has merged (DEC-03, COM-13).
+9. **Huell**: Closes the To-do only on `OK RECORDED` or a DECISIONS row (DEC-20261019-tracker-sync-closes-a), marks it user or Claude remediated (PLN-10), and posts the close line.
 
 ## Gates
 
@@ -41,6 +42,7 @@ A thread needs a product call, an in-game check, an external setup or a setting 
 - Tracker To-do
 - docs/DECISIONS.md row and ledger.csv row
 - The morning debrief
+- `coordinator/state.md` in the project's shared folder (who backed each ask)
 
 ## Failure and escalation
 
@@ -51,7 +53,7 @@ A thread needs a product call, an in-game check, an external setup or a setting 
 ## Rules it runs on
 
 - [PLN-07](../../ROADMAP.md): only true blockers
-- [DEC-20261020-team-owns-pipeline-and-permissions](../DECISIONS.md): what only Isaac decides
+- [DEC-20261020-team-owns-pipeline-and-permissions](../DECISIONS.md): what only Isaac decides; the seven owner-held limits
 - [DEC-20261020-owner-steps-away](../DECISIONS.md): process asks stay with the team
 - [DEC-20261019-each-thread-opens-its](../DECISIONS.md): the thread opens its To-do
 - [COM-09](../team/team-wide.md): copy boxes

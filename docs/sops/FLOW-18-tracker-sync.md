@@ -9,7 +9,7 @@ Keep Isaac's tracker a true live view of the work: cards, To-dos, versions, the 
 
 ## Trigger
 
-A message from another flow (`MERGED`, `KICKOFF DISPATCHED`, a To-do ask, `OK RECORDED`, a plan merge, a release), or Huell's 3 h backstop poll (CLK-03).
+A message from another flow (`MERGED`, `KICKOFF DISPATCHED`, a To-do ask, `OK RECORDED`, a plan merge, a release), or Huell's backstop poll (CLK-03, until the schedules cut lands).
 
 ## Owner
 
@@ -23,12 +23,12 @@ A message from another flow (`MERGED`, `KICKOFF DISPATCHED`, a To-do ask, `OK RE
 
 ## Steps
 
-1. **Huell**: Runs the checker before each write (TRK-09) and writes with if_version, retrying up to 3 times (TRK-05).
+1. **Huell**: Runs the checker before each write (TRK-09) and writes with if_version, retrying up to 3 times (TRK-05). Events within 5 minutes share one write, and every event still shows within 10 minutes ([DEC-20261020-tracker-coalesce-window](../DECISIONS.md#2026-10-20)).
 2. **Huell**: Moves item cards planned, next, working, done (TRK-03) and writes a done card for every merged PR (TRK-02).
 3. **Huell**: Publishes scrapbook cards within 30 min of a merge (TRK-07).
-4. **Huell**: Writes and closes To-dos and posts their notice lines ([FLOW-14](FLOW-14-owner-decision.md)).
+4. **Huell**: Writes and closes To-dos ([FLOW-14](FLOW-14-owner-decision.md)). For each To-do assigned to Isaac, sends the coordinator one `NEW TODO T-xx` line when it opens and one `CLOSED TODO T-xx` line when it closes; team-internal To-dos are not sent ([DEC-20261020-todo-notifications](../DECISIONS.md#2026-10-20)). A To-do closes only with its evidence named in the log.
 5. **Huell**: At each release, adds the versions row in the fixed formats (TRK-06).
-6. **Huell**: Keeps the ledger page datasets in step with main (DEC-20261019-tracker-sync-keeps-the-daeva).
+6. **Huell**: Keeps the ledger page datasets in step with main, re-reading the five `docs/kaizen` files on any change to them (DEC-20261019-tracker-sync-keeps-the-daeva).
 
 ## Gates
 
@@ -56,6 +56,8 @@ A message from another flow (`MERGED`, `KICKOFF DISPATCHED`, a To-do ask, `OK RE
 - [TRK-07](../team/huell.md): Scrapbook
 - [TRK-09](https://github.com/HackTheMeatball/daeva-companion/issues/222): checker
 - [CLK-03](../DECISIONS.md): backstop poll
+- [DEC-20261020-tracker-coalesce-window](../DECISIONS.md#2026-10-20): coalesce window
+- [DEC-20261020-todo-notifications](../DECISIONS.md#2026-10-20): To-do notices
 - [DEC-20261019-tracker-sync-keeps-the-daeva](../DECISIONS.md): ledger page
 - [HC-01](../team/mike.md): drift check
 

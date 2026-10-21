@@ -23,7 +23,7 @@ Any of: a design or product ask from Isaac; a player finding issue from a play (
 
 ## Steps
 
-1. **Requesting thread**: Sends the idea to Walter, with its source link. A design ask from Isaac goes to Walter and Jane together (PLN-12).
+1. **Requesting thread**: Sends the idea to Walter, with its source link. A research ask from any thread goes into Walter's single ranked research queue. A design ask from Isaac goes to Walter and Jane together (PLN-12).
 2. **Walter**: Files it as a planning input (an issue, or a line in the next minor's ROADMAP section) with a target version. It is not queued.
 3. **Walter**: At the next planning pass ([FLOW-02](FLOW-02-planning-pass-and-queue.md)), decides every open input: plan it, fold it into an item, defer it or close it, with a reason (PLN-16).
 4. **Walter**: For a planned input, writes the item in the shape the pass requires (PLN-06, PLN-25), naming any live dependency (NEW-01). A new look goes in the next minor unless Isaac says "now" (PLN-15).
@@ -57,4 +57,4 @@ Any of: a design or product ask from Isaac; a player finding issue from a play (
 
 ## Last confirmed by owner
 
-Not yet.
+2026-10-21, by Walter.

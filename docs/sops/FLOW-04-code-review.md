@@ -13,30 +13,33 @@ The pipeline sees green CI on a claude/ PR head (PIP-01).
 
 ## Owner
 
-**Howard** (accountable for this flow end to end; each step names who does it).
+**Howard** (accountable for the criteria, steps 4–5 and the brief; Gus owns the pipeline steps; each step names who does it).
 
 ## Inputs
 
 - The PR diff and its item spec
-- Howard's review criteria (what earns APPROVE or CHANGES, what is blocking)
-- For a `fresh-review` item: Howard's fixed brief
+- Howard's review criteria: the `Check:` line of the review prompt in [.github/workflows/pipeline.yml](../../.github/workflows/pipeline.yml)
+- For a `fresh-review` item: Howard's fixed brief, [docs/reviews/code-fresh-review-brief.md](../reviews/code-fresh-review-brief.md)
+- Howard's charter, docs/team/howard.md (in PR #666, not yet on main)
 
 ## Steps
 
-1. **Pipeline**: Requests a review from a separate Opus session (MRG-04), asking for `Review of <sha7>` first and the VERDICT last (MRG-03).
+1. **Gus**: The pipeline requests a review from a separate Opus session (MRG-04), asking for `Review of <sha7>` first and the VERDICT last (MRG-03).
 2. **Reviewer**: Reviews against the criteria and posts `VERDICT: APPROVE` or `VERDICT: CHANGES`; never starts a line with DESIGN OK or DESIGN CHANGES (MRG-07). A visible change without shots is CHANGES (MRG-05).
-3. **Pipeline**: On CHANGES, starts a fix run on the models PIP-02 sets; after three rounds labels the PR `stuck` (MRG-09).
-4. **Howard**: For an item tagged `fresh-review` (KZ-16), briefs a reviewer with no history on the work from the fixed template, and sends findings to the work's owner.
+3. **Gus**: On CHANGES, the pipeline starts a fix run on the models PIP-02 sets; after three rounds labels the PR `stuck` (MRG-09).
+4. **Howard**: For a code item at review level `blind` (trigger 6, or any item raised to blind; KZ-16), writes the fresh note as one PR comment starting `FRESH REVIEW #<n> <sha7>`, ending `FRESH REVIEW OK <sha7>` when clean. A trigger-1 item is `external`: an outside reviewer writes the note and Howard is consulted. Findings go to the work's owner. Only automation or Walter removes `hold` ([FLOW-09](FLOW-09-merge.md)).
 5. **Howard**: Logs patterns that repeat across PRs in Howard's findings log.
 
 ## Gates
 
 - `VERDICT: APPROVE` naming the head sha7, newer than the head (MRG-02, checked in [FLOW-09](FLOW-09-merge.md)).
+- For a held item, `FRESH REVIEW OK <sha7>` naming the head.
 
 ## Records
 
 - PR review comments
-- Howard's cross-PR findings log (project files, code-review/findings-log.md)
+- Howard's cross-PR findings log (`code-review/findings-log.md` in the project's shared folder)
+- Howard's handover (`code-review/handover.md` in the project's shared folder; state only)
 - #114 Waste comment for each redone run (PIP-15)
 
 ## Failure and escalation
@@ -59,10 +62,6 @@ The pipeline sees green CI on a claude/ PR head (PIP-01).
 - [KZ-16](../../ROADMAP.md): fresh review
 - [DEC-20261020-k24-design-and-code-review](../DECISIONS.md): Code Review thread
 - [HC-01](../team/mike.md): stuck PRs flagged
-
-## Open questions for the owner of this flow
-
-- Howard's criteria have no repo home yet (the charter and log are in project files). Where should the SOP link for them?
 
 ## Last confirmed by owner
 

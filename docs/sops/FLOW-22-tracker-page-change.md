@@ -22,7 +22,7 @@ Jane approves a tracker design (an ask from Isaac, or a fix).
 
 ## Steps
 
-1. **Jane**: Designs the tab and gives DESIGN OK.
+1. **Jane**: Designs the tab; Holly or an outside critic reviews it; Jane answers the findings and gives DESIGN OK.
 2. **Builder**: A one-off thread briefed from Skyler's handover, or the pipeline, builds the tab only from that design, with Isaac's typed OK where TRK-10 asks it.
 3. **Huell**: Checks that no data was lost.
 4. **Builder**: Publishes the tab, keeping the page size limit (TRK-06).

@@ -28,12 +28,13 @@ Every item of the patch has merged. Walter is release manager from `PRE-RELEASE 
 4. **Walter**: Posts `GO <version>` after DATA OK (a patch has no RC play, KZ-11).
 5. **Gus**: Starts the release item on GO (PIP-08, PLN-19).
 6. **CI**: Deploys, smoke-checks, tags and publishes.
-7. **Walter**: Confirms the live site serves the version.
+7. **Walter**: Confirms the live site serves the version, then sends Gale `REPORT READY <version>`.
 8. **Jesse**: Runs a delta check of the patch, or a full play at three or more visible items (PLN-21, PLN-13).
 
 ## Gates
 
 - `DATA OK`, then `GO` (KZ-11).
+- The release starts only on Walter's own GO (KZ-11).
 - Smoke check green before the tag.
 
 ## Records
