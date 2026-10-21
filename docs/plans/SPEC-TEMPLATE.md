@@ -36,12 +36,11 @@ format only here, together with the parser and its test.
 ## Items that fetch
 
 Bot builds have no web access, so a build never fetches; the fetching happens in a research step a thread does first
-(the `research-<slug>` After key). When an item needs one, its spec says so under **Inputs** and states the fetch-log
-rule (coordinator, 2026-10-21, after a fetch incident): before the first content request to any host new to that
-task, the fetching thread adds a row to the project's fetch log (`legal/fetch-log.md` in the shared project folder)
-naming the host, the terms URL already read (and robots.txt), and the verdict: terms OK, scraping-only, or opt-out. No
-terms URL, no content request; an opt-out host is never fetched (CLAUDE.md "Fetching", `docs/research/SOURCES.md`).
-Name the fetch log in words as above, never by its `/mnt/` path, which holds the item (rule above).
+(the `research-<slug>` After key). When an item needs one, its **Result** names the research step and points to the
+fetch-log rule rather than restating it: ledger ROL-08 (coordinator, 2026-10-20 7:59 PM ET), whose text lives in
+`docs/research/SOURCES.md` "Keeping this current". Keep the pointer out of **Inputs** (every backticked path there is an
+input the build must find on main). Name the fetch log itself in words, never by a path: kickoff holds any spec with a
+`/mnt/` path outside No-gos (rule above).
 
 ## Example
 
