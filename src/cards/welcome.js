@@ -40,6 +40,8 @@ export function joinQuestOf(lv) {
   const q = QUESTS.find(([l]) => l >= lv) || QUESTS[QUESTS.length - 1];
   return q ? q[1] : "";
 }
+/* the quest select's options, "Lv N · name" (the join step's, and Journey's "which story quest are you on?", 0.9 P7) */
+export const questOptionsHTML = () => QUESTS.map(([l, n]) => `<option value="${welEsc(n)}">Lv ${l} · ${welEsc(n)}</option>`).join("");
 
 /* the card spec; the shell hands over what the buttons do */
 export function welcomeCard({ onStart, onJoin, onPick }) {
@@ -88,7 +90,7 @@ export function welcomeCard({ onStart, onJoin, onPick }) {
     mount(root, ctx) {
       el = root; intro = $("welIntro"); form = $("welForm");
       if (!showWelcome(ctx.state)) { el.hidden = true; return; }
-      $("welQuest").innerHTML = QUESTS.map(([l, n]) => `<option value="${welEsc(n)}">Lv ${l} · ${welEsc(n)}</option>`).join("");
+      $("welQuest").innerHTML = questOptionsHTML();
       const choices = classChoices(ctx.pack);
       cls = (choices.find(e => e.pack && e.class === ctx.c.class) || choices.find(e => e.pack) || {}).class;
       $("welClasses").innerHTML = choices.map(e => classBadge(e, e.class === cls)).join("");

@@ -34,6 +34,14 @@ export const AION2_RANK_CHANGES = {
   travelAdvice: { on: true, needs: ["bindDerived", "placeRank"], what: "teleport vs walk: one line on the story card when its target's Kibelisk is bound and teleporting saves the teleport gain (travel.js teleportOf, design §8.3)" },
 };
 
+/* The unlock that opens each page card a Next up card sends you to (0.9 P7; the cards' opensWith, cards/index.js): Next up
+   offers nothing whose card is still locked (src/core/nextup.js). aion2Needs is the catalog's needs(it, k): skill lines
+   are bought in Skills, board lines and the "<Board> board opens" steps in Daevanion, stigma equips and "Put … on E" in
+   Stigmas. */
+export const CARD_UNLOCK = { skills: "unlock:skills-window", daevanion: "unlock:daevanion", stigmas: "unlock:stigma-slot-1" };
+export const aion2Needs = (it, k) => /^sp:/.test(k) ? CARD_UNLOCK.skills : /^dv:/.test(k) || (it && it.bo) ? CARD_UNLOCK.daevanion
+  : it && (it.stig || it.eput) ? CARD_UNLOCK.stigmas : null;
+
 /* What several producers (and the story card's "Meanwhile") read, worked out once per ranking (ctx is one per call):
    the story step's zone, where the player is (placeRank on: whereNow, else null), the open Sealed Dungeons (lowest band
    first) and Strongholds. */
@@ -98,8 +106,8 @@ function spend(state, { c, lv, ev }) {
   const boOpen = dn && GATES.some(g => g.lv <= lv && g.items.some(it => it.bo === dn.board && !c.checks[it.k]));
   if (boOpen) { /* the milestone card covers it */ }
   else if (dn && dLeft < dvNeed(c, dn) && dc !== 0) { /* can't afford even the cheapest version of the next node: nothing to do on the board yet */ }
-  else if (dn && dc != null && dc <= dLeft) out.push({ phase: "spend", points: "board", card: { kind: "board", dn, dc, dLeft, act: "board" } });
-  else if (dn && dc == null && dLeft > 0) out.push({ phase: "spend", points: "board", card: { kind: "boardcost", dn, dLeft, act: "boardcost" } });
+  else if (dn && dc != null && dc <= dLeft) out.push({ phase: "spend", points: "board", needs: CARD_UNLOCK.daevanion, card: { kind: "board", dn, dc, dLeft, act: "board" } });
+  else if (dn && dc == null && dLeft > 0) out.push({ phase: "spend", points: "board", needs: CARD_UNLOCK.daevanion, card: { kind: "boardcost", dn, dLeft, act: "boardcost" } });
   return out;
 }
 
@@ -153,9 +161,9 @@ function stigma(state, { c, lv, ev }) {
   const sl = stigmaSlots(c), nx = sl.find(x => !c.checks[x.k]), up = stigmaPlan(c)[0];
   if (nx && stigmaEquipOpen(c, nx, ev)) { const r = E_ORDER.filter(n => n === nx.name || sl.some(x => x.name === n && c.checks[x.k])).indexOf(nx.name);
     if (!(c.stLv || {})[nx.name] && !(c.stShards || 0)) { let at = null; for (let L = lv + 1; L <= 45 && at == null; L++) if (shardsFromLv(L) > shardsFromLv(lv)) at = L;
-      return [{ phase: "side", keep: true, card: { kind: "stwait", nx, at, act: "" } }]; }
-    return [{ phase: "spend", card: { kind: "stequip", nx, r, act: "stequip" } }]; }
-  if (up && (c.stShards || 0) >= up.cost) return [{ phase: "spend", points: "stigma", card: { kind: "stup", up, shards: c.stShards, act: "stup" } }];
+      return [{ phase: "side", keep: true, needs: CARD_UNLOCK.stigmas, card: { kind: "stwait", nx, at, act: "" } }]; }
+    return [{ phase: "spend", needs: CARD_UNLOCK.stigmas, card: { kind: "stequip", nx, r, act: "stequip" } }]; }
+  if (up && (c.stShards || 0) >= up.cost) return [{ phase: "spend", points: "stigma", needs: CARD_UNLOCK.stigmas, card: { kind: "stup", up, shards: c.stShards, act: "stup" } }];
   /* Key placement for new skills/stigmas is already a milestone step ("Put … in row 0 of E"); the Build tab shows a "new" badge. */
   return [];
 }

@@ -9,6 +9,7 @@ import { setHTML } from "../core/cards.js";
 import { chainsOn, gatesOf, objPartsOf, questIdx, stepChipOf, storyGate, storyLineOf, turnInNeedsLv } from "../core/requirements.js";
 import { END_NEXT, STORY_DONE, capFirst, renderNow } from "./nextup.js";
 import { renderAhead } from "./ahead.js";
+import { joinQuestOf, questOptionsHTML } from "./welcome.js";
 import { pageState as state, pageSave as save, pageUpdate as update, pageMainEl as mainEl, pageRMQ as RMQ, pageRewardToast as rewardToast, pageChime as chime, pageGATES as GATES, pageQUESTS as QUESTS, pageQUEST_STEPS as QUEST_STEPS, pageSTORY_UNLOCKS as STORY_UNLOCKS, pageSTORY_END as STORY_END, pageObjIdx as objIdx } from "./page.js";
 
 /* The pack's parts of this card (0.4 P5c, P0 §4: a card's pack sections). A pack section of Journey hands them over from
@@ -175,9 +176,25 @@ function applyLevel(v) {
   char(state).level = v;
   GATES.forEach(g => delete state.open[g.id]);
 }
+/* "Which story quest are you on?" (0.9 P7): a level set by hand (Level up, − / +, the slider) more than STORY_LAG levels
+   past the current story quest's level asks for the story quest, with the welcome card's select (joinQuestOf picks the
+   first quest at the new level). Only "Set story quest" changes the story; Skip hides the question until the story quest
+   changes. In memory only (this page view): nothing is saved but the quest picked. */
+const STORY_LAG = 5;
+let lvAsk = false, lvSkipped = null, lvAskLv = 0;
+const storyLag = () => { const c = char(state), i = questIdx(c); return i < 0 ? 0 : c.level - QUESTS[i][0]; };
 function setLevel(v) {
   applyLevel(v);
+  if (storyLag() > STORY_LAG) lvAsk = true;
   save(); update();
+}
+function syncLvAsk() {
+  const box = document.getElementById("lvQ"), c = char(state), on = lvAsk && lvSkipped !== c.quest && storyLag() > STORY_LAG;
+  box.hidden = !on;
+  if (!on) { lvAskLv = 0; return; }
+  document.getElementById("lvQText").textContent = `You're Lv ${c.level} but your story is at Lv ${QUESTS[questIdx(c)][0]}. Which story quest are you on?`;
+  /* the pick follows the level (a pick made after the last level change stays) */
+  if (lvAskLv !== c.level) { lvAskLv = c.level; document.getElementById("lvQSel").value = joinQuestOf(c.level); }
 }
 /* the level control follows the level */
 function syncLevel() {
@@ -185,6 +202,7 @@ function syncLevel() {
   document.getElementById("lvlNum").value = lv;
   document.getElementById("lvlRange").value = lv;
   { const lb = document.getElementById("lvlUpBig"); lb.disabled = lv >= 45; lb.title = lv >= 45 ? "Level cap (45)" : ""; }
+  syncLvAsk();
 }
 /* the handlers (from render(), once) */
 function journeyMount() {
@@ -241,6 +259,10 @@ function journeyMount() {
     char(state).quest = QUESTS[i][1]; delete char(state).storyEnd; save();
     update();
   });
+  document.getElementById("lvQSel").innerHTML = questOptionsHTML();
+  document.getElementById("lvQSet").addEventListener("click", () => {
+    char(state).quest = document.getElementById("lvQSel").value; delete char(state).storyEnd; lvAsk = false; save(); update(); });
+  document.getElementById("lvQSkip").addEventListener("click", () => { lvSkipped = char(state).quest; lvAsk = false; syncLvAsk(); });
   document.getElementById("lvlNum").addEventListener("change", e => setLevel(e.target.value));
   document.getElementById("lvlRange").addEventListener("input", e => setLevel(e.target.value));
   document.getElementById("lvlDown").addEventListener("click", () => setLevel(char(state).level - 1));

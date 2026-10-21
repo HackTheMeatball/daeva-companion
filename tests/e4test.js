@@ -197,6 +197,43 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
     ok(`F5: ${cls} Lv 45 Build drawer: the rotation icons shown (${want.join(', ')}); initials only for ${iniLeft[cls].join(', ')}`, r.cls === cls && JSON.stringify([...new Set(r.ini)]) === JSON.stringify(iniLeft[cls]) && want.every(s => r.imgs.includes(`assets/icons/sk-${s}.png`)), r);
   }
 
+  /* 0.9 P7 (#623, UX audit finding 2): the slider from Lv 2 to Lv 39 with the story at Lv 2 asks for the story quest under
+     the slider (the welcome card's select, pre-filled with the first story quest at Lv 39); the answer opens Daevanion and
+     Stigmas; Skip hides the question and Next up names no locked card (no "<Board> board opens" step, board or stigma card
+     while its card is locked). The level stays where the slider put it. */
+  {
+    const fresh = async () => { await writeSave(p, { checks: {}, level: 2, quest: 'A Village in the Fog', mode: 'advanced', open: {} }, { fresh: true }); await p.reload(); await p.waitForTimeout(400); };
+    const slide = v => p.evaluate(v => { const r = document.getElementById('lvlRange'); r.value = String(v); r.dispatchEvent(new Event('input', { bubbles: true })); }, v);
+    const look = () => p.evaluate(() => ({ lv: char(state).level, quest: char(state).quest, ask: !document.getElementById('lvQ').hidden, text: document.getElementById('lvQText').textContent,
+      pick: document.getElementById('lvQSel').value, first: (QUESTS.find(([l]) => l >= 39) || [])[1], dv: !document.getElementById('dvBox').hidden, st: !document.getElementById('stCard').hidden, sp: !document.getElementById('spCard').hidden,
+      acts: [...document.querySelectorAll('#nowStar [data-now]')].map(x => x.dataset.now), txt: [...document.querySelectorAll('#nowStar .ns-card')].map(c => c.innerText.replace(/\s+/g, ' ')),
+      boKeys: GATES.flatMap(g => g.items.filter(it => it.bo).map(it => it.k)) }));
+    await fresh();
+    r = await look();
+    ok('P7: at Lv 2 on the Lv 2 story quest no story question', !r.ask && r.lv === 2, r);
+    await slide(39); await p.waitForTimeout(300);
+    r = await look();
+    ok('P7: slider 2 → 39 asks "You\'re Lv 39 but your story is at Lv 2. Which story quest are you on?" with the first Lv 39+ quest picked, story unchanged',
+      r.ask && r.text === "You're Lv 39 but your story is at Lv 2. Which story quest are you on?" && r.pick === r.first && r.quest === 'A Village in the Fog' && r.lv === 39, r);
+    const named = x => ({ daevanion: x.acts.some(a => a === 'board' || a === 'boardcost' || x.boKeys.includes(a.replace(/^tick:/, ''))) || x.txt.some(t => /board opens|Daevanion board card/.test(t)),
+      stigmas: x.acts.some(a => /^st(equip|up)$/.test(a)) || x.txt.some(t => /^Equip |Stigma slot/.test(t)), skills: x.acts.includes('skill') });
+    let nm = named(r);
+    ok('P7: before an answer, Next up names no locked card (Daevanion / Stigmas / Skills)', !r.dv && !nm.daevanion && (r.st || !nm.stigmas) && (r.sp || !nm.skills), { dv: r.dv, st: r.st, sp: r.sp, nm, txt: r.txt });
+    await p.click('#lvQSet'); await p.waitForTimeout(400);
+    r = await look();
+    ok('P7: "Set story quest" sets the picked quest, keeps Lv 39, hides the question, and Daevanion and Stigmas open', !r.ask && r.quest === r.first && r.lv === 39 && r.dv && r.st, r);
+    await fresh(); await slide(39); await p.waitForTimeout(300);
+    await p.click('#lvQSkip'); await p.waitForTimeout(300);
+    r = await look(); nm = named(r);
+    ok('P7: Skip hides the question and leaves the story at Lv 2', !r.ask && r.quest === 'A Village in the Fog' && r.lv === 39, r);
+    ok('P7: after Skip, Next up names no locked card', (r.dv || !nm.daevanion) && (r.st || !nm.stigmas) && (r.sp || !nm.skills), { dv: r.dv, st: r.st, sp: r.sp, nm, txt: r.txt });
+    await p.click('#lvlUp'); await p.waitForTimeout(300);
+    r = await look();
+    ok('P7: after Skip, + to Lv 40 does not ask again for the same story quest', !r.ask && r.lv === 40, r);
+    await fresh(); await p.click('#lvlUp'); await p.waitForTimeout(300);
+    ok('P7: + from Lv 2 to 3 (within 5 levels of the story) does not ask', !(await look()).ask);
+  }
+
   /* 0.6.1 F2 (#335): at 390x844 the Undo toast sits above the tab bar, the Build sheet leaves the bar tappable, a tab closes
      the sheet and goes there, and the toast goes after its timeout; Undo works inside it. */
   await p.setViewportSize({ width: 390, height: 844 });
