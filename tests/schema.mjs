@@ -5,7 +5,7 @@
    what the generator writes; last, licence compliance. The rules and decisions ledger is its own suite (tests/ledger.mjs,
    0.9 P6), so a DECISIONS-only edit can't red this one.
    The generator's negative controls (each a generate() on an in-memory view, ~110 ms) are jobs that run in worker threads
-   while the main thread runs the rest (0.9 P32: the suite went from 8–10 s to under 4 s); their lines print after the
+   while the main thread runs the rest (0.9 P32, 4-vCPU box: 7.7 s before, ~7 s after; target < 4 s not yet met); their lines print after the
    main thread's, in job order. Data counts are read from data/expected-counts.json (`npm run gen -- --counts`), not pinned here.
    node tests/schema.mjs  (also in `npm test` and the fast CI job) */
 import { cpSync, readFileSync, readdirSync, rmSync } from 'node:fs';

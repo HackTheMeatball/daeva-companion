@@ -20,7 +20,8 @@ const listDisk = d => readdirSync(d, { withFileTypes: true }).map(e => ({ name: 
 export const realFs = { real: true, exists: existsSync, isDir: f => statSync(f).isDirectory(), list: listDisk, read: f => readFileSync(f, 'utf8'), edit: (f, doc) => doc };
 export function fsView({ mutate = null, drop = [], add = {} } = {}) {
   const gone = r => drop.some(d => r === d || r.startsWith(d + '/')), added = Object.keys(add), below = r => added.some(a => a.startsWith(r + '/'));
-  /* one generate() resolves ~10 pack chains over the same folders: the view looks each disk path up once (0.9 P32) */
+  /* one generate() resolves ~10 pack chains over the same folders: the view looks each disk path up once (0.9 P32); a memoized
+     diskList array is shared, so copy it (list() filters) and never mutate it */
   const memo = fn => { const m = new Map(); return f => { if (!m.has(f)) m.set(f, fn(f)); return m.get(f); }; };
   const diskExists = memo(existsSync), diskDir = memo(f => statSync(f).isDirectory()), diskList = memo(listDisk);
   const onDisk = f => !gone(rel(f)) && diskExists(f);
