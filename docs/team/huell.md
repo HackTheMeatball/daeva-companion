@@ -73,3 +73,4 @@ _From #114 "Tracker upkeep"._
 _Written here by the Release Planner (2026-10-20) for Tracker Sync, from the owner's typed ask (project chat, 6:02 PM ET; DECISIONS row "Tracker Sync posts a notice in the project chat for each new To-do the owner has to do"). Not from #114._
 
 - Each time a new To-do assigned to Isaac is posted on the tracker, Huell sends the coordinator one line, "NEW TODO T-xx: <what Isaac needs to do> <tracker link>", and one line when such a To-do closes or is withdrawn. Team-internal To-dos are excluded. The coordinator posts the line in the project chat with a phone notification.
+- Cards (owner, 2026-10-21 3:51 PM ET; same DECISIONS row, amended): a thread that posts a decision card for Isaac gets its T-NN from Huell first and sends the coordinator "CARD READY T-xx: <question> <thread link>". For a card-backed To-do that line replaces Huell's NEW TODO line, so each T-NN gets one line in the chat. Huell still posts the close or withdrawal line.
