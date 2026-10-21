@@ -5,7 +5,7 @@ import { char } from "../../../core/state.js";
 import { setHTML } from "../../../core/cards.js";
 import { activePack, packClasses } from "../../../core/pack.js";
 import { E_NOTE, E_ORDER, E_ST, GUIDE_KEYS, HAS_KEYS, KEYS, KEYS_ST, SP_ICONS, STAT_NOTE, STAT_SRC, STAT_TIERS, STIGMA_ICON } from "../data/build.js";
-import { stTag } from "../data/markup.js";
+import { eShift, stTag } from "../data/markup.js";
 import { rotKeys } from "../requirements.js";
 import { aion2State as state, aion2Save as save, aion2Update as update, aion2STIGMA_SLOTS as STIGMA_SLOTS, aion2StIco as stIco, aion2SpMini as spMini, aion2Ini as ini } from "./page.js";
 
@@ -43,7 +43,7 @@ function renderStacks(lv) {
   const k = rotKeys(char(state), lv), lmb = (KEYS.find(x => x.key === "Left click") || { rows: [] }).rows.filter(r => lv >= r.lv).map(r => r.n);
   const cols = [["Q", k.q], ["E", E_STACK(lv)], ["T", k.rmb]];
   setHTML(document.getElementById("stackViz"),
-    `<p class="fine muted kv-sugg">Suggested keys: Q, E and T (T holds the stack the right-click macro fires). Move the skills there yourself.${E_ST ? " The stigmas on E:" + stTag(E_ST) : ""}</p>` +
+    `<p class="fine muted kv-sugg">Suggested keys: Q, E and T (T holds the stack the right-click macro fires). Move the skills there yourself.${E_ST ? " The stigma order on E is unsure:" + stTag(E_ST) : ""}</p>` +
     [3, 2, 1, 0].map(r => `<i class="rn">${r}</i>` + cols.map(([key, rows]) => cell(rows[r], key, r).replace('class="sk', `class="sk${r === 0 ? " r0" : ""}`)).join("")).join("") +
     `<span></span>` + cols.map(([key]) => `<span class="kv-key">${key}</span>`).join("") +
     lmb.map(n => `<p class="lmb">Left click: <span class="sk">${gridIco(n)}<span class="nm">${n}</span></span></p>`).join("") + defaultKeysNote(lv) + stLaterHTML());
@@ -74,8 +74,8 @@ function renderDefaultKeys(lv, fresh, cell) {
 function stLaterHTML() {
   const sl = STIGMA_SLOTS(), have = sl.filter(x => char(state).checks[x.k]).map(x => x.name), todo = sl.filter(x => !char(state).checks[x.k]).sort((a, b) => a.lv - b.lv);
   if (!todo.length) return "";
-  const cur = [...have], rows = todo.map(x => { cur.push(x.name); const order = E_ORDER.filter(n => cur.includes(n)), r = order.indexOf(x.name), below = order.slice(r + 1);
-    return `<li><span class="sk ghost">${stIco(x.name, "st-mini")}${x.name}</span><span class="lt-lv">Lv ${x.lv}</span><span class="lt-where">E, row ${r}${r === 0 ? " (fires first)" : ""}${below.length ? ` · ${below.join(", ")} move${below.length === 1 ? "s" : ""} down one` : ""}</span></li>`; }).join("");
+  const cur = [...have], rows = todo.map(x => { cur.push(x.name); const order = E_ORDER.filter(n => cur.includes(n)), r = order.indexOf(x.name), shift = eShift(order, r);
+    return `<li><span class="sk ghost">${stIco(x.name, "st-mini")}${x.name}</span><span class="lt-lv">Lv ${x.lv}</span><span class="lt-where">E, row ${r}${r === 0 ? " (fires first)" : ""}${shift ? ` · ${shift}` : ""}</span></li>`; }).join("");
   return `<div class="st-later"><span class="khead">Coming to E</span><ul>${rows}</ul></div>`;
 }
 /* The icon (or initials) before a name: skills as in the chain, stigmas (E) with their own art. Decorative: the name is the text. */

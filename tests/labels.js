@@ -95,7 +95,7 @@ const want = (r, f) => TAG[statusOf(r, f)] || null;
      its skill order rows (Skills card), its plan nodes (Daevanion card), its stigma plan's heading and its default keys'
      heading, and nowhere for a verified value */
   const TAGGED = s => ['disputed', 'owner-check', 'inferred'].includes(s) ? s : undefined;
-  const badBuild = [], badPage = [], badMeta = []; let sawLv21Via = false;
+  const badBuild = [], badPage = [], badMeta = [], badMoves = []; let sawLv21Via = false, sawMoves = 0;
   for (const id of guidePacks()) {
     const cls = id.split('/').pop(), g = generate({ pack: id }).constants, b = recs(`aion2/asmodian/${cls}/builds.json`).find(r => r.id === `build:${cls}:guide`);
     const skills = recs(`aion2/classes/${cls}/skills.json`), nm = Object.fromEntries(skills.map(s => [s.id, s.name])), rowOf = Object.fromEntries(b.skillOrder.map(e => [nm[e.skill], e]));
@@ -126,7 +126,9 @@ const want = (r, f) => TAG[statusOf(r, f)] || null;
         dv: [...document.querySelectorAll('#dvAllList li.dvn')].map(li => ({ k: li.dataset.dvk, tags: tags(li.querySelector('.txt')), cost: tags(li.querySelector('.dvc-wrap')), meta: li.querySelector('.loc').textContent })),
         nx: [...document.querySelectorAll('#dvNextList .dvrow.nx')].map(r => ({ k: r.dataset.nx, cost: tags(r.querySelector('.dvcost-k')) })),
         stHead: tags(document.querySelector('#stCard .ns-head h2')), stRows: tags(document.getElementById('stBody')).concat(tags(document.getElementById('stList'))),
-        keys: tags(document.querySelector('#stackViz .kv-note, #stackViz .kv-defs .khead')), eKeys: tags(document.querySelector('#stackViz .kv-sugg')) }; });
+        keys: tags(document.querySelector('#stackViz .kv-note, #stackViz .kv-defs .khead')), eKeys: tags(document.querySelector('#stackViz .kv-sugg')),
+        slots: stNames(), later: [...document.querySelectorAll('#stackViz .st-later li')].map(li => ({ n: li.querySelector('.sk').textContent, where: li.querySelector('.lt-where').textContent })),
+        erows: [...document.querySelectorAll('.erow[data-slot]')].map(x => ({ slot: +x.dataset.slot, text: x.textContent })) }; });
     if (pg.pack !== id) { badPage.push({ id, loaded: pg.pack }); continue; }
     const wSk = Object.fromEntries([...g.SP_SKILLS_CORE, ...g.SP_EXTRA].map(x => [x.n, TAG[x.st] || null]));
     for (const r of pg.sk) { const n = Object.keys(wSk).sort((a, c) => c.length - a.length).find(k => r.n.startsWith(k)), w = wSk[n];
@@ -142,6 +144,16 @@ const want = (r, f) => TAG[statusOf(r, f)] || null;
        no guide grid would lose it, so that counts as a miss too */
     const wE = TAG[eSt] || null;
     if (pg.eKeys ? (wE ? !(pg.eKeys.length === 1 && pg.eKeys[0] === wE) : pg.eKeys.length) : wE) badPage.push({ id, eKeys: pg.eKeys, want: wE });
+    /* #774 Design Lead: a stigma added to E pushes the ones after it in E_ORDER up a row (row 0 is at the bottom). Every
+       "moves …" line (Coming to E, the milestones' E row) names the row each one lands on, never a direction alone */
+    const movers = (txt, order, r) => { const got = [...txt.matchAll(/(?:, |\(|· )([^,(·]+?) (?:moves up to|to) row (\d+)/g)].map(m => m[1] + ':' + m[2]);
+      return { ok: !/down/.test(txt) && got.join('|') === order.slice(r + 1).map((n, i) => n + ':' + (r + 1 + i)).join('|'), got }; };
+    const cur = []; /* nothing equipped at Lv 20: Coming to E lists every slot */
+    for (const l of pg.later) { const n = pg.slots.find(s => l.n.endsWith(s)); cur.push(n); const order = g.E_ORDER.filter(x => cur.includes(x)), r = order.indexOf(n);
+      const m = movers(l.where, order, r); sawMoves += m.got.length; if (!m.ok || !l.where.startsWith(`E, row ${r}`)) badMoves.push({ id, n, where: l.where, order }); }
+    for (const e of pg.erows) { const order = g.E_ORDER.filter(x => pg.slots.slice(0, e.slot).includes(x)), r = order.indexOf(pg.slots[e.slot - 1]);
+      if (r < 0) { if (e.text) badMoves.push({ id, slot: e.slot, text: e.text }); continue; }
+      const m = movers(e.text, order, r); sawMoves += m.got.length; if (!m.ok || !e.text.startsWith(`, row ${r}`)) badMoves.push({ id, slot: e.slot, text: e.text, order }); }
     if (!pg.dv.length) badPage.push({ id, dv: 'no plan rows rendered' });
     /* P16 design review: a row's meta never says a phrase twice ("Fury is learned at Lv 21 · learned at Lv 21") */
     for (const r of pg.dv) { const parts = r.meta.split(' · '); if (parts.some((s, i) => parts.slice(0, i).some(q => q.includes(s)))) badMeta.push({ id, node: r.k, meta: r.meta }); }
@@ -160,6 +172,7 @@ const want = (r, f) => TAG[statusOf(r, f)] || null;
     for (const l of lines) if (new Set(l.tags).size !== l.tags.length) dupTags.push({ id, ...l });
   }
   ok(`every class at a Lv 39 catch-up: no line of Next up or the Skills card repeats a tag (${tagLines} tagged lines)`, tagLines > 0 && !dupTags.length, dupTags.slice(0, 5));
+  ok(`every class page: each stigma that moves up on E names the row it lands on (${sawMoves} moves)`, sawMoves > 0 && !badMoves.length, badMoves.slice(0, 5));
   ok('every class page: no Daevanion plan row\'s meta repeats a phrase',!badMeta.length && sawLv21Via, { badMeta: badMeta.slice(0, 5), sawLv21Via });
   ok('every guide pack: skill order rows, specialty picks, plan nodes, the stigma plan and the default keys carry exactly the data\'s tagged labels', !badBuild.length, badBuild.slice(0, 5));
   ok('every class page: Skills rows, Daevanion plan rows and their cost boxes, the Stigmas heading and the default keys heading show the tag exactly when the data labels them', !badPage.length, badPage.slice(0, 5));
