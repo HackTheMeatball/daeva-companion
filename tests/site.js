@@ -455,7 +455,7 @@ const checkReport = (label, m, want) => {
       const pg = await c.newPage(), errs = []; pg.on('pageerror', e => errs.push(e.message)); await pg.goto(CFG.CUR); await pg.waitForTimeout(500); return { c, p: pg, errs }; };
     const ui = pg => pg.evaluate(() => { const $ = id => document.getElementById(id), vis = e => !!e && !e.hidden && e.getClientRects().length > 0;
       return { on: $('dcsSw').getAttribute('aria-checked'), st: $('dcsSt').textContent, tone: $('dcsSt').className, strip: document.querySelector('#xfer .xfer-text > span').textContent,
-        now: vis($('dcsNow')), opts: vis($('dcsOpts')), reload: vis($('dcsReload')), panel: vis($('dcsPanel')) ? $('dcsPanel').textContent : '', menu: vis($('dcsMenu')) ? $('dcsMenu').innerText : '',
+        fold: vis(document.querySelector('#dcsLine .sync-fold')), now: vis($('dcsNow')), opts: vis($('dcsOpts')), reload: vis($('dcsReload')), panel: vis($('dcsPanel')) ? $('dcsPanel').textContent : '', menu: vis($('dcsMenu')) ? $('dcsMenu').innerText : '',
         msg: $('dcsMsg').textContent, code: ($('dcsPanel').querySelector('.sync-code') || {}).textContent || '', rec: localStorage.getItem('companion-sync-v1'), focus: document.activeElement && document.activeElement.id }; });
     const until = async (pg, f, ms = 8000) => { const t = Date.now(); let u; while (Date.now() - t < ms) { u = await ui(pg); if (f(u)) return u; await pg.waitForTimeout(100); } return u; };
     const clickText = (pg, text) => pg.locator('#dcsPanel button:visible, #dcsMenu button:visible').filter({ hasText: text }).first().click();
@@ -463,7 +463,7 @@ const checkReport = (label, m, want) => {
 
     const A = await device(), p = A.p;
     let u = await ui(p);
-    ok('sync n1: off on load: switch off, no status, no Sync now / options, today\'s strip sentence, no request', u.on === 'false' && !u.st && !u.now && !u.opts && !u.panel && u.strip === 'Progress is saved in this browser only.' && net.n === 0, { u, n: net.n });
+    ok('sync n1: off on load: switch off, no status, no Sync settings / Sync now / options, today\'s strip sentence, no request', u.on === 'false' && !u.st && !u.fold && !u.now && !u.opts && !u.panel && u.strip === 'Progress is saved in this browser only.' && net.n === 0, { u, n: net.n });
     await p.click('#dcsSw'); u = await ui(p);
     ok('sync t1: the switch opens "Turn on sync" with its two choices and Cancel; panel focused; strip unchanged', u.on === 'true' && u.panel.includes(T['on.title']) && u.panel.includes(T['on.new']) && u.panel.includes(T['on.have']) && u.focus === 'dcsPanel' && u.strip === 'Progress is saved in this browser only.', u);
     await clickText(p, T.cancel); u = await ui(p);
@@ -489,6 +489,9 @@ const checkReport = (label, m, want) => {
     await p.click('.sync-fold'); u = await ui(p);
     ok('sync s1: with Sync settings folded: label, switch and status only', syncedRe.test(u.st) && !u.now && !u.opts && u.on === 'true', u);
     await p.click('.sync-fold'); u = await ui(p);
+    /* the fold's button comes with the sync chunk, after main.js applied the folds: its saved state must still apply */
+    await p.reload(); u = await until(p, x => syncedRe.test(x.st) && x.now);
+    ok('sync s1: Sync settings left open stays open after a reload: Sync now and Sync options shown', u.now && u.opts && u.fold, u);
     let release; net.hold = new Promise(r => { release = r; });
     await p.click('#dcsNow'); u = await until(p, x => x.st === T['status.syncing'], 3000);
     ok('sync s3: a running round shows "Syncing…"', u.st === T['status.syncing'], u);

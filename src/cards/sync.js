@@ -26,7 +26,7 @@ export const syncLastGroup = code => code.split("-").pop();
 export function mountSync(o) {
   const T = o.T, $ = id => document.getElementById(id);
   const sw = $("dcsSw"), st = $("dcsSt"), now = $("dcsNow"), opts = $("dcsOpts"), menu = $("dcsMenu"), panel = $("dcsPanel"),
-    msg = $("dcsMsg"), reload = $("dcsReload"), strip = document.querySelector("#xfer .xfer-text > span");
+    msg = $("dcsMsg"), reload = $("dcsReload"), fold = document.querySelector("#dcsLine .sync-fold"), strip = document.querySelector("#xfer .xfer-text > span");
   if (!sw || !panel || !strip) return null;
   const stripOff = strip.textContent;
   const readRec = () => { try { const r = JSON.parse(o.store.get(SYNC_KEY)); return r && typeof r.code === "string" && parseSyncCode(r.code) ? r : null; } catch (e) { return null; } };
@@ -49,6 +49,8 @@ export function mountSync(o) {
     st.className = "sync-st" + (shown && SYNC_TONE[status] ? " " + SYNC_TONE[status] : "");
     reload.hidden = !(on && status === "update");
     now.hidden = opts.hidden = !on;
+    /* Sync settings (0.9 P21) folds Sync now and Sync options, so it shows only while sync is on */
+    if (fold) fold.hidden = !on;
     now.disabled = status === "syncing";
     if (!on) closeMenu();
   }

@@ -640,6 +640,15 @@ header.top .eyebrow { display: flex; align-items: center; gap: var(--space-12); 
 .done-fold { margin: var(--space-6) var(--space-16) var(--space-12); }
 .area-fold { margin: var(--space-6) 0 var(--space-8); }
 .tools-btn { min-width: 24px; justify-content: center; font-size: 15px; line-height: 1; }
+/* Next up's "More you could do" is a <details> (nextup.js), drawn like the fold buttons: one line across the column,
+   not the milestone summary's icon grid */
+#nowStar .ns-more { margin-top: var(--space-10); }
+#nowStar .ns-more > summary { display: flex; align-items: center; gap: var(--space-6); min-height: 24px; padding: var(--space-6) 0; font: 600 11px var(--mono); letter-spacing: .04em; color: var(--muted); }
+#nowStar .ns-more > summary:hover { color: var(--fg); }
+#nowStar .ns-more > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+#nowStar .ns-more > summary::after { content: "▸"; font-size: 10px; transition: transform .2s; }
+#nowStar .ns-more[open] > summary::after { transform: rotate(90deg); }
+#nowStar .ns-morelist { display: flex; flex-direction: column; gap: var(--space-10); margin-top: var(--space-6); }
 /* closed folds: what each one holds */
 body:not(.fo-steps) #gates details.step:not(.upnext):not(.overdue):not(.peek),
 #gates details.step:not(.fo-done) :is(li.item:has(> label > input:checked), li.item.optional, li.storyreq.reached),
@@ -793,7 +802,7 @@ button, .numctl, .lvl-ctl, #nowStar .ns-stack { touch-action: manipulation; }
 /* Phone layout patches A and B (docs/design/phone-layout.md §4; CSS only). Touch screens: 44 px targets on the small
    controls, through the invisible ::before pattern where the visible size must stay (no layout shift). */
 @media (pointer: coarse) {
-  .fold-btn { min-height: 44px; }
+  .fold-btn, #nowStar .ns-more > summary { min-height: 44px; }
   .numctl button, .tcard .numctl button { width: 44px; height: 44px; }
   .q-inl, .amap { position: relative; }
   .q-inl::before { content: ""; position: absolute; inset: -11px 0; }

@@ -26,6 +26,10 @@ details[open] .chev { transform: rotate(180deg); }
 /* Filters + Expand live on the Milestones header */
 :is(h2, div).sec .sec-tools { margin: 0 0 0 auto; display: inline-flex; align-items: center; gap: var(--space-6); align-self: center; letter-spacing: 0; text-transform: none; font-family: var(--body); position: relative; }
 :is(h2, div).sec .sec-tools .sec-btn { margin-left: 0; }
+/* the ⋯ tools button (0.9 P21) sits on the heading's baseline, its glyph flush with the card's right edge; it keeps
+   its 24 px target (.fold-btn's min-height, .tools-btn's min-width) */
+:is(h2, div).sec .sec-tools:has(> .tools-btn) { align-self: baseline; }
+:is(h2, div).sec .sec-tools .tools-btn { padding: 0; justify-content: flex-end; }
 :is(h2, div).sec .sec-tools .filt-btn { height: 30px; }
 :is(h2, div).sec .sec-tools .filt-menu { font-size: 13px; color: var(--fg); }
 /* Automatic story prerequisite line at the top of a milestone */

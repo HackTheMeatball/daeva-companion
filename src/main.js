@@ -224,6 +224,9 @@ function applyFolds() {
     if (b.dataset.fcount) { const n = box.querySelectorAll(b.dataset.fcount).length; b.hidden = !n; const c = b.querySelector(".fold-n"); if (c) c.textContent = n; }
   });
 }
+/* markup added after load with a fold in it (the sync chunk's Sync settings) sends "dc:folds", so a fold saved open
+   opens there too */
+document.addEventListener("dc:folds", applyFolds);
 document.addEventListener("click", e => {
   const b = e.target.closest && e.target.closest("button.fold-btn[data-fold]"); if (!b) return;
   state.open[b.dataset.fkey] = !state.open[b.dataset.fkey]; save(); update();
