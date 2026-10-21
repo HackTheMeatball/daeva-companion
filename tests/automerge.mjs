@@ -201,7 +201,7 @@ for (const [f, t] of users) {
   // A require of `${GITHUB_WORKSPACE}/<dir>tools/verdicts.cjs` needs an earlier sparse checkout of it from the default branch at <dir>.
   const bad = steps.map((st, i) => [st, i, (st.match(/require\(`\$\{process\.env\.GITHUB_WORKSPACE\}\/((?:[\w.-]+\/)?)tools\/verdicts\.cjs`\)/) || [])[1]])
     .filter(([, , dir]) => dir !== undefined)
-    .filter(([, i, dir]) => !steps.slice(0, i).some((p) => /uses: actions\/checkout@/.test(p) && /sparse-checkout: tools\/verdicts\.cjs/.test(p)
+    .filter(([, i, dir]) => !steps.slice(0, i).some((p) => /uses: actions\/checkout@/.test(p) && /sparse-checkout: (?:\|\n\s+)?tools\/verdicts\.cjs\n/.test(p)
       && /sparse-checkout-cone-mode: false/.test(p) && !/\bref:/.test(p) && (p.match(/\bpath: (\S+)/) || [, ''])[1].replace(/\/?$/, dir ? '/' : '') === dir));
   check(!bad.length && steps.some((st) => st.includes('tools/verdicts.cjs`)')), `${f}: every step requiring the parser follows a sparse checkout of it from the default branch`);
   // A sparse checkout at the workspace root keeps its sparse setting through a later full checkout there, which then holds only
@@ -501,6 +501,30 @@ check(/lifted && !\(last && last\.body\.includes\(sha\.slice\(0, 7\)\)\)\) \{[\s
   'loop: after a lift with no review of the head, the pipeline review is requested and the PR waits for its APPROVE');
 check(/namedBlocker\(comments, sha, pr\.body \|\| '', \[\.\.\.imp, \.\.\.extra\], \[\.\.\.new Set\(\[\.\.\.labels, 'hold'\]\)\], all\)/.test(hl), 'loop: the lift decision counts hold, so no REVIEW CLEAR stands in');
 check(!/\.filter\(\(p\) => [^\n]*\n[^\n]*l\.name === 'hold'/.test(yml.slice(yml.indexOf('const prs ='), yml.indexOf('// DESIGN-CHECK START'))), 'PR list: held PRs are read so their hold can be lifted');
+
+// Reviewers: names off the roster (#741, Walter): "Legal sign-off per Chuck's ruling" waited 84 min with no word.
+const RO = V.roster(readFileSync(join(ROOT, 'docs', 'kaizen', 'team.csv'), 'utf8'));
+check(['chuck', 'gus', 'lydia', 'francesca', 'howard', 'gale', 'walter', 'jane', 'gretchen', 'design lead', 'game data check', 'fresh review'].every((x) => RO.has(x))
+  && !RO.has('skyler') && !RO.has('hank'), "roster: team.csv's active rows and the gate names; a closed (Skyler) or folded (Hank) role is off it (Nacho, 2026-10-21)");
+const RC = V.roster('name,role,status,note\nAmy,X,active,"a, quoted ""note"""\nBo,Y,closed,\nCy,Z,folded,"Amy, later"\n');
+check(RC.has('amy') && !RC.has('bo') && !RC.has('cy') && V.unknownReviewers('Reviewers: Amy, Bo', RC) + '' === 'bo', 'roster: a quoted CSV field with commas and quotes does not shift the status column');
+const B741 = "Reviewers: gretchen (DATA OK on the Build sources text); Legal sign-off per Chuck's ruling";
+check(V.unknownReviewers(B741, RO) + '' === "legal sign-off per chuck's ruling" && V.unknownReviewers('Reviewers: gretchen; chuck', RO).length === 0
+  && V.unknownReviewers('Reviewers: Francesca (records), Game Data Check', RO).length === 0 && V.unknownReviewers('No line', RO).length === 0, "roster: #741's line names one unknown reviewer; first names, notes and gate names pass");
+const rm = yml.match(/\/\/ ROSTER-CHECK START\n([\s\S]*?)\n\s*\/\/ ROSTER-CHECK END/);
+check(!!rm, 'auto-merge.yml has the ROSTER-CHECK block');
+const rosterNote = rm ? new Function('V', 'ROSTER', rm[1] + '\nreturn rosterNote;')(V, RO) : () => '';
+const note = rosterNote(B741, []);
+check(note.startsWith(`<!-- auto-merge:unknown-reviewer: "legal sign-off per chuck's ruling" -->`) && note.includes(`"legal sign-off per chuck's ruling"`) && rosterNote('Reviewers: gretchen; chuck', []) === '', 'roster note: names the unknown entry; none for a clean line');
+check(rosterNote(B741, [c('github-actions[bot]', note, 3)]) === '' && rosterNote(B741, [c('HackTheMeatball', note, 3)]) !== ''
+  && rosterNote('Reviewers: chuck, bob', [c('github-actions[bot]', note, 3)]).includes('"bob"'), 'roster note: posted once per list by the bot; a changed list gets a new note');
+const two = rosterNote('Reviewers: amy, bob', []);
+check(rosterNote('Reviewers: amy', [c('github-actions[bot]', two, 3)]) !== '' && rosterNote('Reviewers: amy, bob', [c('github-actions[bot]', two, 3)]) === '',
+  'roster note: a shrunk list gets a new note too (the marker holds the exact list; #757 review)');
+check(/try \{ ROSTER = V\.roster\([^\n]*\} catch \(e\) \{ core\.warning\(/.test(yml) && hl.includes('if (ROSTER && V.unknownReviewers('), 'roster: an unreadable team.csv skips the note with a warning, never the merge run (#757 review)');
+check(/sparse-checkout: \|\n\s+tools\/verdicts\.cjs\n\s+docs\/kaizen\/team\.csv\n/.test(yml), 'roster: auto-merge checks out docs/kaizen/team.csv from main');
+check(hl.indexOf('rosterNote(pr.body') > 0 && hl.indexOf('rosterNote(pr.body') < hl.indexOf('// HOLD: add or lift it') && !/rosterNote[^\n]*continue/.test(hl),
+  'loop: the roster note comes before the hold check and never skips the gates (the unknown name still blocks)');
 
 console.log(`\n${n - fail}/${n} auto-merge checks passed`);
 console.log(fail ? 'AUTOMERGE CHECKS FAILED' : 'AUTOMERGE CHECKS PASSED');
