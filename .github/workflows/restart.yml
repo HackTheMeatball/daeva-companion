@@ -98,9 +98,26 @@ jobs:
                 const tried = (await github.rest.actions.listWorkflowRuns({ owner, repo, workflow_id: 'pipeline.yml', event: 'workflow_dispatch', per_page: 50 })).data.workflow_runs
                   .some((r) => r.display_title === `Pipeline review #${p.number}` && Date.parse(r.created_at) >= headAt);
                 if (tried) { core.info(`#${p.number}: a review of ${sha.slice(0, 7)} was already started and left no comment; left for the planner`); continue; }
-                const busy = (await github.rest.actions.listWorkflowRuns({ owner, repo, workflow_id: 'pipeline.yml', per_page: 20 })).data.workflow_runs
-                  .some((r) => ['queued', 'in_progress', 'waiting', 'pending'].includes(r.status));
-                if (busy) { core.info(`#${p.number}: green and unreviewed, but a Pipeline run is going; next sweep`); continue; }
+                // BUSY-CHECK START (tests/automerge.mjs runs this block)
+                // Only a Pipeline run for this PR holds the start back. Any going run used to, and with a comment-triggered run on
+                // some PR nearly always going, #655 sat green and unreviewed for an hour (2026-10-20). A dispatched run names its PR
+                // ("Pipeline <step> #<n>"); an event run is "Pipeline" until its run job ("run #<n> (<model>)") exists, so one
+                // still deciding counts as busy (it ends in seconds).
+                const GOING = ['queued', 'in_progress', 'waiting', 'pending'];
+                const busyFor = async (n, runs, jobsOf) => {
+                  for (const r of runs.filter((x) => GOING.includes(x.status))) {
+                    const d = r.display_title.match(/^Pipeline \S+ #(\d+)$/);
+                    if (d) { if (+d[1] === n) return true; continue; }
+                    const jobs = await jobsOf(r.id);
+                    const run = jobs.find((j) => /^run\b/.test(j.name));
+                    if (!run || run.name.includes(`#${n} `)) return true;
+                  }
+                  return false;
+                };
+                // BUSY-CHECK END
+                const runs = (await github.rest.actions.listWorkflowRuns({ owner, repo, workflow_id: 'pipeline.yml', per_page: 20 })).data.workflow_runs;
+                const jobsOf = async (id) => (await github.rest.actions.listJobsForWorkflowRun({ owner, repo, run_id: id })).data.jobs;
+                if (await busyFor(p.number, runs, jobsOf)) { core.info(`#${p.number}: green and unreviewed, but a Pipeline run for it is going; next sweep`); continue; }
                 await github.rest.actions.createWorkflowDispatch({ owner, repo, workflow_id: 'pipeline.yml', ref: 'main', inputs: { pr: String(p.number), step: 'review' } });
                 core.notice(`#${p.number}: head ${sha.slice(0, 7)} is green with no review: started pipeline step=review`);
               }

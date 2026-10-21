@@ -157,7 +157,8 @@ jobs:
             // passes implied = ['lydia']: Source Vetting (Lydia) must approve their head (#665 merged over her CHANGES; K24 gap).
             // Verdicts are ordered by created_at, so editing an old comment doesn't move it past a later CHANGES. A tagged verdict
             // or a FRESH REVIEW OK names the head when the head's short SHA is on that line; a DESIGN or data mark, anywhere in
-            // the comment. Quoted lines ("> ...") are never a tagged verdict, fresh mark or clear. Every fresh reviewer shares
+            // the comment. Quoted lines ("> ...") and claude[bot] comments are never a named verdict here (DESIGN and data marks included; the
+            // design and data gates below keep their own readers). Every fresh reviewer shares
             // the one name "fresh review": the last fresh note decides (one fresh reviewer per PR).
             // Known limit: sessions post as the owner's account, so the name (and a REVIEW CLEAR) is the comment's word, not a
             // checked identity.
@@ -170,7 +171,9 @@ jobs:
             const SAVEKEY = (f) => f === 'src/core/state.js' || f === 'CHANGELOG.md';
             const prNoClear = (prBody, labels, files) => {
               const r = V.lines(prBody).find((l) => /^(?:[-*]\s+)?Review:/i.test(l));
-              if (r && /\b(2|4b|5|6)\b/i.test(r)) return `its Review: line names ${r.replace(/^(?:[-*]\s+)?Review:\s*/i, '')}`;
+              // Only numbers after the word "trigger" count, so "Review: 2 reviewers" isn't read as trigger 2.
+              const t = r && (r.match(/\btriggers?\b([^.;)]*)/i) || [])[1];
+              if (t && /\b(2|4b|5|6)\b/i.test(t)) return `its Review: line names ${r.replace(/^(?:[-*]\s+)?Review:\s*/i, '')}`;
               const l = labels.find((x) => x === 'hold' || x === 'fresh-review');
               if (l) return `it carries ${l}`;
               const f = files.find(SAVEKEY);
@@ -190,9 +193,11 @@ jobs:
                 if (t) ev.push({ who: who(t.reviewer), ok: t.verdict !== 'CHANGES', head: t.line.includes(s7), at });
                 const f = person && V.fresh(c.body);
                 if (f) ev.push({ who: 'fresh review', ok: f === 'OK', head: V.freshOk(c.body).some((l) => l.includes(s7)), at });
-                const d = V.design(c.body);
+                // DESIGN and Game Data Check marks too: from the owner account, unquoted (bot review nit on #686).
+                const mine = person ? V.own(c.body).join('\n') : '';
+                const d = V.design(mine);
                 if (d) ev.push({ who: 'design lead', ok: d === 'OK', head: names, at });
-                for (const x of V.data(c.body)) ev.push({ who: 'game data check', ok: x.verdict === 'VERIFIED', head: sha.startsWith(x.sha), at });
+                for (const x of V.data(mine)) ev.push({ who: 'game data check', ok: x.verdict === 'VERIFIED', head: sha.startsWith(x.sha), at });
                 for (const k of person ? V.clears(c.body) : []) {
                   if (NOCLEAR.has(k.trigger)) { core.info(`REVIEW CLEAR for ${k.reviewer} refused: trigger ${k.trigger} never allows one`); continue; }
                   if (barred) { core.info(`REVIEW CLEAR for ${k.reviewer} refused: ${barred}`); continue; }
@@ -208,7 +213,11 @@ jobs:
                 if (!mine.some((e) => e.ok && e.head && e.at > lastNo)) open.push(who);
               }
               if (open.length) return `CHANGES from ${open.join(', ')} not yet cleared by an approval naming ${s7}`;
-              const missing = [...new Set([...V.reviewers(prBody), ...implied].map(who))].filter((r) => !ev.some((e) => e.who === r && e.ok && e.head));
+              // A body "Review:" line naming fresh, blind or external review needs a FRESH REVIEW OK on the head, hold label or not
+              // (#695 merged without one; Fresh governance review, 2026-10-21).
+              const rl = V.lines(prBody).find((l) => /^(?:[-*]\s+)?Review:/i.test(l));
+              const fresh = rl && /\b(fresh|blind|external)\b/i.test(rl) ? ['fresh review'] : [];
+              const missing = [...new Set([...V.reviewers(prBody), ...implied, ...fresh].map(who))].filter((r) => !ev.some((e) => e.who === r && e.ok && e.head));
               return missing.length ? `waits on ${missing.join(', ')} (Reviewers: line) to approve ${s7}` : '';
             };
             // NAMED-CHECK END
