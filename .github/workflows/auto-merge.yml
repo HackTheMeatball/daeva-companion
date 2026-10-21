@@ -153,11 +153,13 @@ jobs:
             // "fresh review" (a FRESH REVIEW #<n> note without an OK line is a CHANGES); everyone else tags the VERDICT line, and only a
             // comment's last tagged line counts. A PR body line "Reviewers: <name>, ..." makes each named
             // reviewer's approval of the head required, so such a PR needn't open with hold.
+            // Game Data Check's own data, research or icon PRs (claude/game-data-check-*) skip DATA-CHECK, so the merge loop
+            // passes implied = ['lydia']: Source Vetting (Lydia) must approve their head (#665 merged over her CHANGES; K24 gap).
             // Known limit: sessions post as the owner's account, so the name is the comment's word, not a checked identity.
             const NOCLEAR = new Set(['2', '4b', '5', '6']);
             const ALIAS = { jane: 'design lead', gretchen: 'game data check' };
             const who = (name) => ALIAS[name] || name;
-            const namedBlocker = (comments, sha, prBody = '') => {
+            const namedBlocker = (comments, sha, prBody = '', implied = []) => {
               const s7 = sha.slice(0, 7);
               const ev = [];
               for (const c of comments) {
@@ -184,7 +186,7 @@ jobs:
                 if (!mine.some((e) => e.ok && e.head && e.at > lastNo)) open.push(who);
               }
               if (open.length) return `CHANGES from ${open.join(', ')} not yet cleared by an approval naming ${s7}`;
-              const missing = V.reviewers(prBody).map(who).filter((r) => !ev.some((e) => e.who === r && e.ok && e.head));
+              const missing = [...new Set([...V.reviewers(prBody), ...implied].map(who))].filter((r) => !ev.some((e) => e.who === r && e.ok && e.head));
               return missing.length ? `waits on ${missing.join(', ')} (Reviewers: line) to approve ${s7}` : '';
             };
             // NAMED-CHECK END
@@ -228,7 +230,9 @@ jobs:
               const files = listed.map((f) => f.filename);
               // A rename out of data/ only shows its old path in previous_filename; the data check reads both.
               const touched = listed.flatMap((f) => [f.filename, f.previous_filename].filter(Boolean));
-              const named = namedBlocker(comments, sha, pr.body || '');
+              // Game Data Check's own data PRs skip DATA-CHECK, so a second data reviewer is required instead (MRG-12, #665).
+              const implied = /^claude\/game-data-check-/.test(pr.head.ref) && touched.some(DATAFILE) ? ['lydia'] : [];
+              const named = namedBlocker(comments, sha, pr.body || '', implied);
               if (named) { core.info(`#${pr.number}: ${named}`); continue; }
               const design = designBlocker(files, comments, sha, headAt);
               if (design) { core.info(`#${pr.number}: ${design}`); continue; }

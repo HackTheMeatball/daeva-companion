@@ -274,12 +274,18 @@ for (const t of ['2', '4b', '5', '6'])
 check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6), c(OWNER, 'REVIEW CLEAR (reviewer: Skyler; trigger: none): ok', 8)], NEW)),
   'deadlock exit: a clear without a real reason (under 10 characters) is not read');
 check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, CL, 4), c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6)], NEW)), 'deadlock exit: a clear older than the CHANGES does not clear it');
-const loopAt = yml.indexOf("const named = namedBlocker(comments, sha, pr.body || '');");
+const loopAt = yml.indexOf("const named = namedBlocker(comments, sha, pr.body || '', implied);");
 check(loopAt > 0 && /if \(named\) \{.*continue; \}/.test(yml.slice(loopAt, loopAt + 200)) && loopAt < yml.indexOf('await github.rest.pulls.merge('), 'merge loop: namedBlocker runs and skips before a PR is merged');
 check(/CHANGES from lydia/.test(namedBlocker([c(OWNER, 'ROL-03 (Lydia): CHANGES on abc1234.\nVERDICT: CHANGES (reviewer: Lydia)', 6), c('claude[bot]', 'Review of abc1234\nVERDICT: APPROVE', 9)], SHA)),
   "#665: Lydia's tagged CHANGES blocks the bot APPROVE that merged it");
 check(/CHANGES from fresh review/.test(namedBlocker([c(OWNER, 'FRESH REVIEW #655 abc1234\nScope is wrong.\nFRESH REVIEW CHANGES abc1234', 6)], NEW)), 'FRESH REVIEW CHANGES is a sticky named CHANGES');
 check(namedBlocker([c(OWNER, 'FRESH REVIEW CHANGES abc1234', 6), c(OWNER, 'FRESH REVIEW #655 f00dfee\nFRESH REVIEW OK f00dfee', 8)], NEW) === '', 'FRESH REVIEW OK naming the head clears it');
+check(/waits on lydia/.test(namedBlocker([c('claude[bot]', 'Review of abc1234\nVERDICT: APPROVE', 9)], SHA, '', ['lydia'])),
+  "#665: a Game Data Check data PR (implied reviewer lydia) does not merge on the bot APPROVE alone");
+check(/CHANGES from lydia/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Lydia) on abc1234', 6), c(OWNER, 'VERDICT: APPROVE (reviewer: Lydia) on abc1234', 8)], NEW, '', ['lydia'])),
+  '#665: implied lydia, her APPROVE of an older head does not count');
+check(namedBlocker([c(OWNER, 'VERDICT: APPROVE (reviewer: Lydia) on abc1234', 8)], SHA, 'Reviewers: Lydia', ['lydia']) === '', "#665: Lydia's tagged APPROVE of the head meets the implied reviewer (named once even if also listed)");
+check(/const implied = \/\^claude\\\/game-data-check-\/\.test\(pr\.head\.ref\) && touched\.some\(DATAFILE\) \? \['lydia'\] : \[\];/.test(yml), 'merge loop: claude/game-data-check-* PRs touching data files imply reviewer lydia');
 check(/CHANGES from fresh review/.test(namedBlocker([c(OWNER, 'FRESH REVIEW #655 abc1234\nThe scope misses docs/design/.', 6)], SHA)),
   'a FRESH REVIEW #<n> note without a FRESH REVIEW OK line is findings, so it blocks');
 check(namedBlocker([c(OWNER, 'FRESH REVIEW #655 abc1234\nLooks right.\nFRESH REVIEW OK abc1234', 6)], SHA) === '', 'a FRESH REVIEW note ending FRESH REVIEW OK <head> passes');
