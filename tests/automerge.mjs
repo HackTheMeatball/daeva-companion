@@ -456,6 +456,8 @@ const HL = (cond, min = 2, login = OWNER) => c(login, `Holding for the outside r
 check(JSON.stringify(V.holds('HOLD: until FRESH REVIEW OK on head (owner: Walter)')) === JSON.stringify([{ cond: 'until FRESH REVIEW OK on head', owner: 'Walter', reviewer: 'fresh review' }]), 'holds: "until FRESH REVIEW OK on head" waits on fresh review');
 check(V.holds('HOLD: DESIGN OK (owner: Jane)')[0].reviewer === 'design lead' && V.holds('HOLD: Game Data Check VERIFIED on head (owner: Gretchen)')[0].reviewer === 'game data check'
   && V.holds('HOLD: until VERDICT: APPROVE (reviewer: Howard) on head (owner: Gus)')[0].reviewer === 'howard', 'holds: DESIGN OK, VERIFIED and a tagged APPROVE map to their gate names');
+check(V.holds('HOLD: VERDICT: OK (reviewer: Francesca) (owner: Walter)')[0].reviewer === 'francesca' && V.holds('HOLD: VERDICT: CHANGES (reviewer: Francesca) (owner: Walter)')[0].reviewer === null,
+  'holds: VERDICT: OK names its reviewer like APPROVE (MRG-12 treats OK as approval); CHANGES is free text');
 check(V.holds('HOLD: until Isaac says go (owner: Walter)')[0].reviewer === null && V.holds('HOLD: FRESH REVIEW OK and DESIGN OK (owner: Walter)')[0].reviewer === null, 'holds: free text, or two conditions, names no reviewer (the owner lifts it)');
 check(V.holds('> HOLD: FRESH REVIEW OK (owner: Walter)').length === 0 && V.holds('Note: HOLD: FRESH REVIEW OK (owner: Walter)').length === 0, 'holds: a quoted line or one not starting HOLD: is not a hold line');
 const WH = [ev('labeled', OWNER, 1)];

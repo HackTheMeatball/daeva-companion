@@ -28,7 +28,7 @@ _From #114 "Health check (owner design, 2026-10-17 5:51 AM ET; replaces the plan
   - `[next]` lines with nothing building for 10 min, or an unblocked item (all After keys merged) with no queue line;
   - a red, cancelled or skipped Kickoff, Restart, Pipeline or Auto-merge run, a run that died twice, main CI red or not deployed;
   - tracker drift: `datasets/today` older than the newest merge or PR open, or any card, To-do or ack that doesn't match GitHub;
-  - a held PR past MRG-09's limits: a person's `hold` whose condition (one from MRG-09's closed list, on the head) has been met for 30 min (ping the owner; Walter at 2 h), one with a free-text condition and no owner comment for 2 h (owner; Walter at 4 h), or one with no `HOLD:` comment (Walter). Auto-merge's own holds are excluded;
+  - a held PR past MRG-09's limits: a person's `hold` whose condition (one from MRG-09's closed list, on the head) has been met for 30 min (ping the owner; Walter at 2 h), one with a free-text condition that is 2 h old (timed from its last `hold` labeled event) with no owner comment since (owner; Walter at 4 h), or one with no `HOLD:` comment (Walter). Auto-merge's own holds are excluded;
   - anything else odd.
 
 ### HC-02
