@@ -61,6 +61,11 @@ Vetting (terms first, then robots.txt; our UA, ≥ 5 s apart):
 1. **Middle Reshanta Lv 80 bosses on Global: DISPUTED, leaning KR/TW only.** aion2atlas ("KR/TW only so far") and aion2rift (region tags tw/kr only) say KR/TW. aion2vault says "provisional". aion2rifttimer marks them "confirmed", but its citations (Shugo.GG, Questlog) may be KR. Metabot's client tables list them, but a client table can carry rows for content that isn't live (inferred). Recommendation: leave them out of 1.0, or show them labelled "disputed".
 2. **Nahma = "Abyss Siege Boss": INFERRED yes.** allthings.how lists both as separate rows with the same window (Fri/Sun 21:00) and the same zone (Chaotic Lower Reshanta). aion2rifttimer calls it "Guardian General Nahma". No source names a different Fri/Sun boss.
 3. **Lv 48 field bosses: kill-based; two community sources** (aion2vault copies allthings.how, so it doesn't count separately). Silent Dartan and Soul Ruler Kashapa 6 h, High Commander Lagta 12 h after the kill (aion2atlas's Global column, and allthings.how via aion2vault). aion2atlas lists Korea at double (12 h / 24 h): "about half the Korean respawn timers". All three bosses exist in both Verteron and Altgard. The in-game Field Boss list (Exploration) shows "Spawned" or "Time Left" per server.
-4. **Watcher Kaira stays up 30 min: two-plus sources** (aion2atlas "30 min", allthings.how "stays for 30 minutes", aion2rifttimer "30-minute reported activity window").
+4. **Watcher Kaira stays up 30 min: two-plus sources** (aion2atlas "30 min", allthings.how, same 30 minutes, aion2rifttimer "30-minute reported activity window").
 
 **New dispute on the clock:** aion2atlas says Global Reshanta times "appear to follow each region's own clock (CET for EU, Eastern for NA East, Pacific for NA West)". Metabot and allthings.how say a single shared UTC+9 clock. This changes every countdown, so an owner check of the in-game time is worth it now: what time does Watcher Kaira (or the Siege) actually start on Isaac's server?
+
+**Close-out of the allthings.how read order (ROL-08, 2026-10-21).** The boss-timer article was read before its terms were
+found. Nothing from it was kept except facts, in this note, never its wording. Each fact it supports has another source:
+Kaira's 30 minutes (aion2atlas, aion2rifttimer), the Nahma schedule (Metabot's events page; Nahma = Siege boss stays inferred), and the
+Lv 48 kill timers (aion2atlas). The raw copy was deleted on 2026-10-21; the log is `legal/fetch-log.md` in the shared folder.
