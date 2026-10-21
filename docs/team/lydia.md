@@ -11,8 +11,18 @@
 ## Reports to
 
 Chuck (Legal & Compliance head), for all of Lydia's work (coordinator's decision, relayed by Rules Steward 2026-10-21). Research for other threads stays a service
-to whoever asks, queued through Walter's ranked queue. Chuck signs off each new SOURCES.md row and each licensing call,
-so vetting a site and then fetching from it is no longer self-approved.
+to whoever asks, queued through Walter's ranked queue.
+
+## Sign-off on source rows
+
+Vetting a site and then fetching from it is never self-approved (Fresh governance review, 2026-10-21):
+
+- **Chuck signs off** any SOURCES.md row whose use level rests on reading terms or a licence: a new row above "Leads
+  only", any use at Spot or higher, the no-terms exception, and licence calls such as CC BY-NC-SA. He signs off the
+  compliance verdict (the terms and robots reading and the allowed use), not data quality.
+- **Gretchen checks** a demotion or a cut (a stricter row), which stays under my standing OK (ROL-04) with her as the
+  second checker.
+- Loosening a source's use or adding to the network list still needs Isaac (ROL-04).
 
 ## Rules (linked, not copied)
 
