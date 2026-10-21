@@ -280,7 +280,15 @@ check(/CHANGES from lydia/.test(namedBlocker([c(OWNER, 'ROL-03 (Lydia): CHANGES 
   "#665: Lydia's tagged CHANGES blocks the bot APPROVE that merged it");
 check(/CHANGES from fresh review/.test(namedBlocker([c(OWNER, 'FRESH REVIEW #655 abc1234\nScope is wrong.\nFRESH REVIEW CHANGES abc1234', 6)], NEW)), 'FRESH REVIEW CHANGES is a sticky named CHANGES');
 check(namedBlocker([c(OWNER, 'FRESH REVIEW CHANGES abc1234', 6), c(OWNER, 'FRESH REVIEW #655 f00dfee\nFRESH REVIEW OK f00dfee', 8)], NEW) === '', 'FRESH REVIEW OK naming the head clears it');
-check(namedBlocker([c(OWNER, 'FRESH REVIEW #655 abc1234\nnotes only', 6)], SHA) === '', 'the FRESH REVIEW #<n> heading alone is no verdict');
+check(/CHANGES from fresh review/.test(namedBlocker([c(OWNER, 'FRESH REVIEW #655 abc1234\nThe scope misses docs/design/.', 6)], SHA)),
+  'a FRESH REVIEW #<n> note without a FRESH REVIEW OK line is findings, so it blocks');
+check(namedBlocker([c(OWNER, 'FRESH REVIEW #655 abc1234\nLooks right.\nFRESH REVIEW OK abc1234', 6)], SHA) === '', 'a FRESH REVIEW note ending FRESH REVIEW OK <head> passes');
+check(/CHANGES from francesca/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Francesca) on abc1234', 6), c('claude[bot]', 'Review of f00dfee\nVERDICT: APPROVE', 9)], NEW)),
+  'CHANGES, then a push, then a bot APPROVE of the new head only: still blocks');
+check(namedBlocker([c(OWNER, 'Earlier:\n> VERDICT: CHANGES (reviewer: Francesca) on abc1234\nFixed in f00dfee.\nVERDICT: APPROVE (reviewer: Francesca) on f00dfee', 6)], NEW) === '',
+  "only a comment's last tagged line counts: a quoted earlier CHANGES above an APPROVE does not block");
+check(/CHANGES from francesca/.test(namedBlocker([c(OWNER, 'VERDICT: APPROVE (reviewer: Francesca) on f00dfee\nOn second look:\nVERDICT: CHANGES (reviewer: Francesca) on f00dfee', 6)], NEW)),
+  "only a comment's last tagged line counts: a CHANGES after an APPROVE in one comment blocks");
 check(namedBlocker([c(OWNER, 'DESIGN CHANGES on abc1234', 6), c(OWNER, 'VERDICT: APPROVE (reviewer: Jane) on f00dfee', 8)], NEW) === '', 'alias: a tagged APPROVE from Jane clears her DESIGN CHANGES');
 check(/waits on francesca, fresh review/.test(namedBlocker([REVIEW], SHA, 'Before: x\n\nReviewers: Francesca, Fresh review')), 'Reviewers: line -> each named reviewer must approve the head');
 check(/waits on fresh review/.test(namedBlocker([c(OWNER, 'VERDICT: APPROVE (reviewer: Francesca) on abc1234', 6), c(OWNER, 'FRESH REVIEW OK 9999999', 7)], SHA, 'Reviewers: Francesca, fresh review')),

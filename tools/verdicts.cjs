@@ -23,17 +23,21 @@ const DATA = /^Game Data Check \(ROL-03\) on ([0-9a-f]{7,40}): (VERIFIED|CHANGES
 const data = (body) => lines(body).map((l) => l.match(DATA)).filter(Boolean).map(([, sha, verdict]) => ({ sha, verdict }));
 
 // A named reviewer's verdict: a line starting "VERDICT: APPROVE|OK|CHANGES" that carries "(reviewer: <name>)". Every such
-// line, in order, with the name lower-cased. These are never the bot review's verdict (review below skips them).
+// line, in order, with the name lower-cased; the gate reads only a comment's last one, so a quoted earlier CHANGES above an
+// APPROVE doesn't count (Code Review, 2026-10-21). These are never the bot review's verdict (review below skips them).
 const TAGGED = /^VERDICT:\s*(APPROVE|OK|CHANGES)\b.*?\(reviewer:\s*([^)]+?)\s*\)/;
 const tagged = (body) => lines(body).map((l) => l.match(TAGGED)).filter(Boolean)
   .map(([, verdict, who]) => ({ reviewer: who.toLowerCase(), verdict }));
 
 // A fresh reviewer's mark: a line starting "FRESH REVIEW OK" or "FRESH REVIEW CHANGES". 'CHANGES' when any line says so, else
-// 'OK', else null. (The note's own first line, "FRESH REVIEW #<n> <sha7>", is neither.)
+// 'OK'. A "FRESH REVIEW #<n> <sha7>" note with neither line is findings, so 'CHANGES' (Code Review, 2026-10-21: a sign-off
+// ends "FRESH REVIEW OK <sha7>"). Otherwise null.
 const FRESH = /^FRESH REVIEW (OK|CHANGES)\b/;
 const fresh = (body) => {
-  const words = lines(body).map((l) => (l.match(FRESH) || [])[1]).filter(Boolean);
-  return words.includes('CHANGES') ? 'CHANGES' : words.length ? 'OK' : null;
+  const all = lines(body), words = all.map((l) => (l.match(FRESH) || [])[1]).filter(Boolean);
+  if (words.includes('CHANGES')) return 'CHANGES';
+  if (words.length) return 'OK';
+  return all.some((l) => /^FRESH REVIEW #\d+/.test(l)) ? 'CHANGES' : null;
 };
 
 // A PR body's "Reviewers: <name>, <name>" line: the named reviewers whose approval of the head the merge needs.

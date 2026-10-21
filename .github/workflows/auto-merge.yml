@@ -150,7 +150,8 @@ jobs:
             // triggers 2, 4b, 5 and 6, and Watchdog (Mike) flags every clear. A message to a session is not a verdict.
             // Reviewers keep the marks the gates already parse (Kaizen, 2026-10-20): DESIGN OK / CHANGES counts as the Design
             // Lead's (also "jane"), Game Data Check (ROL-03) as Game Data Check's (also "gretchen"), FRESH REVIEW OK / CHANGES as
-            // "fresh review"; everyone else tags the VERDICT line. A PR body line "Reviewers: <name>, ..." makes each named
+            // "fresh review" (a FRESH REVIEW #<n> note without an OK line is a CHANGES); everyone else tags the VERDICT line, and only a
+            // comment's last tagged line counts. A PR body line "Reviewers: <name>, ..." makes each named
             // reviewer's approval of the head required, so such a PR needn't open with hold.
             // Known limit: sessions post as the owner's account, so the name is the comment's word, not a checked identity.
             const NOCLEAR = new Set(['2', '4b', '5', '6']);
@@ -162,7 +163,8 @@ jobs:
               for (const c of comments) {
                 if (!c.user || !(c.user.login === 'claude[bot]' || c.user.login.toLowerCase() === owner.toLowerCase())) continue;
                 const at = Date.parse(c.updated_at), names = (c.body || '').includes(s7);
-                for (const t of V.tagged(c.body)) ev.push({ who: who(t.reviewer), ok: t.verdict !== 'CHANGES', head: names, at });
+                const t = V.tagged(c.body).pop();
+                if (t) ev.push({ who: who(t.reviewer), ok: t.verdict !== 'CHANGES', head: names, at });
                 const f = V.fresh(c.body);
                 if (f) ev.push({ who: 'fresh review', ok: f === 'OK', head: names, at });
                 const d = V.design(c.body);
