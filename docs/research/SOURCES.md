@@ -49,10 +49,13 @@ aion2-meta), aionbuilds.com (player-shared builds), aion2maps.com (overlaps daev
 guides). None was cited in `data/`. They are not read for new work. They stay on the environment's network list until the
 owner removes them there.
 
-**Build sources** (audit 2026-10-21). Build picks cite Metabot's top-player pick rate and the three build witnesses,
-daevaguides.com, mmo-codex.com and aion2turkiye.com; no other build site is cited for picks. How a pick is labelled
-(pick rate is never "verified"; leveling picks need two witnesses) is Game Data Check's standard (ROL-03), proposed in
-the audit note.
+**Build sources** (audit 2026-10-21; gamewith.ai added by Game Data Check 2026-10-21). Build picks cite top-player
+pick rates from Metabot and gamewith.ai build-stats (Global regions only; KR and TW are disputed for Global by default),
+and the three build witnesses, daevaguides.com, mmo-codex.com and aion2turkiye.com; no other build site is cited for
+picks. gamewith.ai is Spot level under Legal's ruling (`/mnt/project-files/legal/ruling-gamewith-guildorder-2026-10-21.md`):
+individual facts a pick needs, linked, paraphrased, never a table or ranking reproduced, never the only source.
+How a pick is labelled (pick rate is never "verified"; leveling picks need two witnesses; two pick rates that disagree
+make it "disputed") is Game Data Check's standard (ROL-03), proposed in the audit note.
 
 ## Passed but not on the allowed list (low value; add only if a task needs one)
 
@@ -68,6 +71,7 @@ inferred) checked 2026-10-19, `2026-10-t47-icon-check.md`. Steam Index API (publ
 (app id 3393110) build ID changes with timestamps; owner-created key and the owner's network-list OK needed first; its site pages ask
 not to be scraped, so never those; its API terms require a "Data from Steam Index" link, plus a Sources card entry,
 wherever the app shows its data) checked 2026-10-20, `2026-10-steam-and-news-vetting.md`.
+gamewith.ai (checked 2026-10-21, `2026-10-build-sites.md`): **Spot**, facts only (Legal ruling 2026-10-21, `/mnt/project-files/legal/ruling-gamewith-guildorder-2026-10-21.md`; re-review of its §1 pending). Its build-stats pages (`/aion2/en/build-stats/<region>/<class>`) give per-region top-player shares for gear, skill levels and Daevanion from a stated sample. Terms: no bot clause; robots.txt is 404. Cite single facts with a link, paraphrased; never copy its tables, rankings or sets of shares (terms act 14), and no systematic extraction (only the facts a given pick needs); never the only source. The permission ends if the project monetises (act 16, commercial use). Its pick-rate use is set in "Build sources" above.
 World-boss trackers, checked 2026-10-20 (`2026-10-world-boss-sources.md`). They are not on the environment's network
 list; adding one needs the owner's OK. Community trackers: never the only source for a schedule. Rows marked "No terms found" may be read
 under the no-terms rule in "Keeping this current" (owner, 2026-10-21).
@@ -101,6 +105,9 @@ under the no-terms rule in "Keeping this current" (owner, 2026-10-21).
 | dbaion2.ru / .online, gamers4.life (+ interactivemap.app), wikily.gg | Terms ban bots or automated collection (gamers4.life `/terms` re-read at the owner's request 2026-10-20, unchanged) | 2026-10-14 to 2026-10-20 |
 | aion2.online | No data of its own: its database links all go to gamers4.life | 2026-10-18 |
 | aion2.gaming.tools, games.gg, mobalytics.gg, eloboost24.eu, icy-veins.com, keengamer.com | 403 challenge to our requests (access, not a ban). Owner browser only | 2026-10-18 |
+| noping.com | 403 to our request for its terms page (`/terms/terms-of-use`). Owner browser only; its AION 2 build blog is dated 2025-11 (pre-Global) | 2026-10-21 |
+| guildorder.com | Acceptable Use Policy bans "Using automated tools (bots) to interact with the Platform without authorization". An opt-out (Legal ruling 2026-10-21): never fetched, owner browser only; robots.txt and content not read | 2026-10-21 |
+| neonsect.com | Terms page (`/terms-of-service/`) doesn't render to a script, so its terms are unread; a boosting shop. No new use (Legal, 2026-10-21); owner browser only | 2026-10-21 |
 | thegameswiki.com | 429 security checkpoint. Its content is CC BY-NC-SA: facts only, never wording | 2026-10-18 |
 | timesaver.gg | Connection reset, not reached | 2026-10-18 |
 | namu.wiki | Cloudflare challenge (403) on our first request, the terms page (`/w/나무위키:이용약관`). Owner browser only | 2026-10-19 |
