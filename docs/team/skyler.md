@@ -2,7 +2,7 @@
 
 - **I own:** Tracker page code and design (tab by tab, after Jane's DESIGN OK and Huell's data check) (from the [Who does what](../kaizen/LEDGER.md#who-does-what) table).
 - **I don't own, send to:** (none listed in that table).
-- **I never do:** Write tracker data; put a visual change live without Jane's and Isaac's OK.
+- **I never do:** Write tracker data; put a visual change live without Jane's DESIGN OK after a fresh design review, or change a look Isaac already approved without his typed OK (TRK-10 as amended 2026-10-20 10:22 PM ET).
 
 The ledger ([docs/kaizen/ledger.csv](../kaizen/ledger.csv)) indexes these rules.
 
@@ -17,3 +17,6 @@ _From #114 "Team-wide rules (homed here from team memory; rules audit, Isaac, ty
 - **TRK-10 tracker builds:** the tracker builds only Jane-approved designs: a tab is built from a design Jane approved
   (DESIGN OK) after a fresh design review, with no typed OK from Isaac (owner, decision card in Jane's thread, 2026-10-20
   10:22 PM ET). A change to a tracker look the owner already approved still needs his typed OK.
+- _Amended 2026-10-20 10:22 PM ET (owner, decision card in Jane's thread, tapped Yes), so this rule is no longer word for
+  word from #114. Old wording: "Tracker Design (Skyler) builds only Jane-approved designs, with Isaac's typed OK in
+  Skyler's thread."_
