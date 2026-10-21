@@ -2,6 +2,9 @@
 
 Game Data Check, 2026-10-21. Input for P27 (#698). Research only; nothing fetched for this file.
 
+**Corrected by `2026-10-icon-provenance-v2.md`:** this file's count (239 of 239) treated blank ISSUES.md rows as records;
+v2 gives the 28 icons that fail the strict test. The 29 rows below still stand.
+
 ## Method
 
 - Every file in `src/assets/icons/` on main (f05a6bf8, 239 files) checked for an ISSUES.md row naming its base name.
