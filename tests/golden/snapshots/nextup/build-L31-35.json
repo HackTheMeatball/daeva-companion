@@ -47,14 +47,14 @@
   ],
   "build/L32-q54-before-A-sppts": [
     {"t":"Ascension quest \"The One Who Dreams\"","s":"(recommended Lv 32).","c":"primary \"Done\" tick:g32:dreams"},
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill"},
+    {"t":"Catch up: level Heart Gore 1 → 9","s":"17 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · slot 2: Multi-Hit on hit · inferred","c":"primary \"Mark spent\" catchup"},
     {"t":"Story: A Daeva Dreaming Anew","s":"0/2 objectives · then Last Refuge","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Dreams","Turn in Nemon, Briskwind Shelter"]},
     {"t":"Regional quests","s":"3 to pick up · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise","new Pain Unending","new Nine Wonders of Altgard: 2nd Leg"]},
     {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed inferred · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit inferred · slot 2: -1s Insignia Explosion cooldown on hit · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 10","s":"21 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack inferred · slot 2: Absorbs 3% HP disputed · inferred","c":""}
   ],
   "build/L32-q54-before-A-stfull": [
     {"t":"Ascension quest \"The One Who Dreams\"","s":"(recommended Lv 32).","c":"primary \"Done\" tick:g32:dreams","b":"Lv 32–34"},
@@ -131,14 +131,14 @@
   ],
   "build/L32-q54-before-B-sppts": [
     {"t":"Ascension quest \"The One Who Dreams\"","s":"(recommended Lv 32).","c":"primary \"Done\" tick:g32:dreams"},
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill"},
+    {"t":"Catch up: level Heart Gore 1 → 9","s":"17 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · slot 2: Multi-Hit on hit · inferred","c":"primary \"Mark spent\" catchup"},
     {"t":"Story: A Daeva Dreaming Anew","s":"0/2 objectives · then Last Refuge","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Dreams","Turn in Nemon, Briskwind Shelter"]},
     {"t":"Regional quests","s":"3 to pick up · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise","new Pain Unending","new Nine Wonders of Altgard: 2nd Leg"]},
     {"t":"Equip Swift Contract inferred","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed inferred · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 1 → 10","s":"21 pts · then pick the specialty +50% Multi-Hit on hit inferred · slot 2: -1s Insignia Explosion cooldown on hit · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 10","s":"21 pts · then pick the specialty Engraves 2 Insignias when it lands as a Back attack inferred · slot 2: Absorbs 3% HP disputed · inferred","c":""}
   ],
   "build/L32-q54-before-B-stfull": [
     {"t":"Ascension quest \"The One Who Dreams\"","s":"(recommended Lv 32).","c":"primary \"Done\" tick:g32:dreams","b":"Lv 32–34"},

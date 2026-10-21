@@ -1,6 +1,6 @@
 {
   "templar/L22-q34-none-A": [
-    {"t":"Buy Judgment 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 22–24"},
+    {"t":"Catch up: level Judgment 1 → 8","s":"13 pts · then pick the specialty Extra damage on hit check in game","c":"primary \"Mark spent\" catchup","b":"Lv 22–24"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
@@ -10,12 +10,12 @@
     {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest (near your story step) · Kibelisk : Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 31 open at your level"},
     {"t":"Equip Taunt check in game","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 23)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk : Forest Hideout · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 6 open"},
-    {"t":"Buy Vicious Strike 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Vicious Strike 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Pummel 1 → 2","s":"1 pt","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Vicious Strike 1 → 9","s":"17 pts · then pick the specialty +20% MP restored check in game","c":""},
+    {"t":"Catch up: level Pummel 1 → 9","s":"17 pts · then pick the specialty -20% MP consumed check in game","c":""},
+    {"t":"Catch up: level Shield Smite 1 → 7","s":"9 pts","c":""}
   ],
   "templar/L22-q34-none-B": [
-    {"t":"Buy Judgment 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 22–24"},
+    {"t":"Catch up: level Judgment 1 → 8","s":"13 pts · then pick the specialty Extra damage on hit check in game","c":"primary \"Mark spent\" catchup","b":"Lv 22–24"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
@@ -25,8 +25,8 @@
     {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest (near your story step) · Kibelisk : Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 31 open at your level"},
     {"t":"Equip Taunt check in game","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 23)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk : Forest Hideout · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 6 open"},
-    {"t":"Buy Vicious Strike 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Vicious Strike 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Pummel 1 → 2","s":"1 pt","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Vicious Strike 1 → 9","s":"17 pts · then pick the specialty +20% MP restored check in game","c":""},
+    {"t":"Catch up: level Pummel 1 → 9","s":"17 pts · then pick the specialty -20% MP consumed check in game","c":""},
+    {"t":"Catch up: level Shield Smite 1 → 7","s":"9 pts","c":""}
   ]
 }

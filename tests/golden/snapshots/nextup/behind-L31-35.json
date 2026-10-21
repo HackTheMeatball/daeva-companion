@@ -1,6 +1,6 @@
 {
   "behind/L35-q28-from20-lag-A": [
-    {"t":"Buy Insignia Explosion 3 → 4","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 35–36"},
+    {"t":"Catch up: level Insignia Explosion 3 → 7","s":"7 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 35–36"},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
     {"t":"Vaizel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g30:0","b":"Missed · Lv 30–31"},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1"},
@@ -8,12 +8,12 @@
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202016","x":["+16 waiting on the story Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Traveling Merchant's Conundrum In my game Finders Keepers In my game"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 29 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 9 open"},
-    {"t":"Buy Rear Smite 4 → 5","s":"2 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Heart Gore 7 → 8","s":"4 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 8 → 9","s":"4 pts · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Rear Smite 4 → 7","s":"6 pts · inferred","c":""},
+    {"t":"Catch up: level Heart Gore 7 → 10","s":"12 pts · inferred","c":""},
+    {"t":"Catch up: level Savage Roar 8 → 10","s":"8 pts · inferred","c":""}
   ],
   "behind/L35-q28-from20-lag-B": [
-    {"t":"Buy Insignia Explosion 3 → 4","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 35–36"},
+    {"t":"Catch up: level Insignia Explosion 3 → 7","s":"7 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 35–36"},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
     {"t":"Vaizel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g30:0","b":"Missed · Lv 30–31"},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1"},
@@ -21,9 +21,9 @@
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202016","x":["+16 waiting on the story Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game Her Last Favor In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Pain Unending In my game Nine Wonders of Altgard: 2nd Leg In my game Traveling Merchant's Conundrum In my game Finders Keepers In my game"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 29 open at your level"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 9 open"},
-    {"t":"Buy Rear Smite 4 → 5","s":"2 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Heart Gore 7 → 8","s":"4 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 8 → 9","s":"4 pts · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Rear Smite 4 → 7","s":"6 pts · inferred","c":""},
+    {"t":"Catch up: level Heart Gore 7 → 10","s":"12 pts · inferred","c":""},
+    {"t":"Catch up: level Savage Roar 8 → 10","s":"8 pts · inferred","c":""}
   ],
   "behind/L35-q48-from30-lag-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
@@ -50,7 +50,7 @@
     {"t":"Buy Insignia Explosion 6 → 7","s":"2 pts · inferred","c":"tag \"After the one above\""}
   ],
   "behind/L35-q62-from20-lagq-A": [
-    {"t":"Buy Insignia Explosion 3 → 4","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 35–36"},
+    {"t":"Catch up: level Insignia Explosion 3 → 7","s":"7 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 35–36"},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
     {"t":"Vaizel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g30:0","b":"Missed · Lv 30–31"},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1"},
@@ -59,12 +59,12 @@
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 29 open at your level"},
     {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 9 open"},
-    {"t":"Buy Rear Smite 4 → 5","s":"2 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Heart Gore 7 → 8","s":"4 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 8 → 9","s":"4 pts · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Rear Smite 4 → 7","s":"6 pts · inferred","c":""},
+    {"t":"Catch up: level Heart Gore 7 → 10","s":"12 pts · inferred","c":""},
+    {"t":"Catch up: level Savage Roar 8 → 10","s":"8 pts · inferred","c":""}
   ],
   "behind/L35-q62-from20-lagq-B": [
-    {"t":"Buy Insignia Explosion 3 → 4","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 35–36"},
+    {"t":"Catch up: level Insignia Explosion 3 → 7","s":"7 pts · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 35–36"},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
     {"t":"Vaizel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g30:0","b":"Missed · Lv 30–31"},
     {"t":"Start the daily dungeon","s":"Run Daeva Bio-Research Base for Enhance Stones .","c":"primary \"Done\" tick:g30:1"},
@@ -73,9 +73,9 @@
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk : Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 29 open at your level"},
     {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk : Shulak Street Stall · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 9 open"},
-    {"t":"Buy Rear Smite 4 → 5","s":"2 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Heart Gore 7 → 8","s":"4 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 8 → 9","s":"4 pts · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Rear Smite 4 → 7","s":"6 pts · inferred","c":""},
+    {"t":"Catch up: level Heart Gore 7 → 10","s":"12 pts · inferred","c":""},
+    {"t":"Catch up: level Savage Roar 8 → 10","s":"8 pts · inferred","c":""}
   ],
   "behind/L35-q62-from20-miss2-s0-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},

@@ -1,13 +1,13 @@
 {
   "special/empty-object": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 4–5"},
+    {"t":"Catch up: level Heart Gore 1 → 2","s":"1 pt · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 4–5"},
     {"t":"Refund the tutorial's Quick Slice point","s":"Press K , select Quick Slice, then click the circular-arrow button to the left of Level Up .","c":"primary \"Done\" tick:g4:refund","b":"Missed · Lv 4–5","i":"Confirm \"Would you like to reset the skill?\" with Reset . The Skills tutorial has you level up Quick Slice; the point comes back to spend on the build's upgrades."},
     {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest","b":"Lv 4–5"},
-    {"t":"Buy Savage Roar 1 → 2","s":"1 pt · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 2 → 3","s":"1 pt · inferred","c":"tag \"After the one above\""},
+    {"t":"Catch up: level Savage Roar 1 → 3","s":"2 pts · inferred","c":""},
     {"t":"Buy Exploit Weakness 1 → 2","s":"Needs Lv 6 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 6–8"},
     {"t":"Complete \"The Being Beneath the Lake\"","s":"Lv 6 milestone · 1 level away · opens on \"The Being Beneath the Lake\" · set your quest","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 3 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 3 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 6 levels away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 10–12"}
   ],
   "special/fresh-no-save": [
     {"t":"Story: A Village in the Fog","s":"0/2 objectives · then Prepare to Escape","c":"primary \"Turned in\" story","o":["Remember Aldelle Village bind with the Kibelisk","Turn in Ellin (Villager), Aldelle Village"]},
@@ -31,13 +31,13 @@
     {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 4 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "special/story-end-turned-in": [
-    {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
+    {"t":"Catch up: pick Quick Slice 's specialty","s":"Specialty slot 2: -1s Insignia Explosion cooldown on hit","c":"primary \"Mark spent\" catchup"},
     {"t":"Lv 45 story complete","s":"Next in game: \"Waiting for the Next Journey\" at Lv 46 · the guide's story ends at \"Daeva Trapped in a Nightmare\"","c":""},
     {"t":"Regional quests","s":"30 to pick up · 1 follow-up · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202067","x":["new A Comrade's Fate","new A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest","+25 more"]},
     {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk : Steel Hammer Temporary Trading Post · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 11 open"},
-    {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
-    {"t":"Buy Ambush specialty slot 2","s":"Pick: Absorbs 3% HP disputed","c":"tag \"After the one above\""},
-    {"t":"Buy Insignia Explosion specialty slot 2","s":"Pick: Keeps 2 Insignia stacks after Insignia Explosion disputed","c":"tag \"After the one above\""},
+    {"t":"Catch up: pick Heart Gore 's specialty","s":"Specialty slot 2: Multi-Hit on hit","c":""},
+    {"t":"Catch up: pick Ambush 's specialty","s":"Specialty slot 2: Absorbs 3% HP disputed","c":""},
+    {"t":"Catch up: pick Insignia Explosion 's specialty","s":"Specialty slot 2: Keeps 2 Insignia stacks after Insignia Explosion disputed","c":""},
     {"t":"Azphel board opens","s":"Stat nodes only, paid with Azphel crystals (from battleground fragments or Abyss Points), not Daevanion Crystals.","c":"primary \"Done\" tick:g45:2"},
     {"t":"Time your Ascension Trial","s":"Easy needs item level 1,000, Normal 1,500.","c":"primary \"Done\" tick:g45:3","i":"Run your 3 weekly entries late in the week, after you've raised your item level."}
   ],

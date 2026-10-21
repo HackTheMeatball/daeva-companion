@@ -1,50 +1,50 @@
 {
   "behind/L25-q12-from10-lag-A": [
-    {"t":"Buy Heart Gore 3 → 4","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 25–26"},
+    {"t":"Catch up: level Heart Gore 3 → 8","s":"11 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 25–26"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Story: Gathering Essentials","s":"0/1 objectives · Kibelisk : Safe Haven (89 m) · then Crash Site Rendezvous","c":"primary \"Turned in\" story","b":"Lv 25–26","o":["Turn in Dinoh, Safe Haven"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202044","x":["+13 waiting on the story Shugo-of-All-Trades In my game Spooky Specters In my game Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game"]},
     {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step inferred ) · Kibelisk : Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 36 open at your level"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step inferred ) · Kibelisk : Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 8 open"},
-    {"t":"Buy Savage Roar 4 → 5","s":"2 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 4 → 5","s":"2 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Shadowstrike 4 → 5","s":"2 pts · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Savage Roar 4 → 9","s":"14 pts · then pick the specialty +20% Skill Speed inferred · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 4 → 9","s":"14 pts · then pick the specialty +50% Multi-Hit on hit inferred · inferred","c":""},
+    {"t":"Catch up: level Shadowstrike 4 → 8","s":"10 pts · then pick the specialty +20% Critical Damage Boost for 10s on hit inferred · inferred","c":""}
   ],
   "behind/L25-q12-from10-lag-B": [
-    {"t":"Buy Heart Gore 3 → 4","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 25–26"},
+    {"t":"Catch up: level Heart Gore 3 → 8","s":"11 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 25–26"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Story: Gathering Essentials","s":"0/1 objectives · Kibelisk : Safe Haven (89 m) · then Crash Site Rendezvous","c":"primary \"Turned in\" story","b":"Lv 25–26","o":["Turn in Dinoh, Safe Haven"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202044","x":["+13 waiting on the story Shugo-of-All-Trades In my game Spooky Specters In my game Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game"]},
     {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step inferred ) · Kibelisk : Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 36 open at your level"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step inferred ) · Kibelisk : Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 8 open"},
-    {"t":"Buy Savage Roar 4 → 5","s":"2 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 4 → 5","s":"2 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Shadowstrike 4 → 5","s":"2 pts · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Savage Roar 4 → 9","s":"14 pts · then pick the specialty +20% Skill Speed inferred · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 4 → 9","s":"14 pts · then pick the specialty +50% Multi-Hit on hit inferred · inferred","c":""},
+    {"t":"Catch up: level Shadowstrike 4 → 8","s":"10 pts · then pick the specialty +20% Critical Damage Boost for 10s on hit inferred · inferred","c":""}
   ],
   "behind/L25-q28-from20-lag-A": [
-    {"t":"Buy Insignia Explosion 3 → 4","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 25–26"},
+    {"t":"Catch up: level Insignia Explosion 3 → 4","s":"1 pt · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 25–26"},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
     {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","b":"Lv 25–26","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202016","x":["+5 waiting on the story Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 12 open at your level"},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 6 open"},
-    {"t":"Buy Rear Smite 4 → 5","s":"2 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Heart Gore 7 → 8","s":"4 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 8 → 9","s":"4 pts · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Rear Smite 4 → 5","s":"2 pts · inferred","c":""},
+    {"t":"Catch up: level Heart Gore 7 → 8","s":"4 pts · inferred","c":""},
+    {"t":"Catch up: level Savage Roar 8 → 9","s":"4 pts · inferred","c":""}
   ],
   "behind/L25-q28-from20-lag-B": [
-    {"t":"Buy Insignia Explosion 3 → 4","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 25–26"},
+    {"t":"Catch up: level Insignia Explosion 3 → 4","s":"1 pt · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 25–26"},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
     {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","b":"Lv 25–26","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202016","x":["+5 waiting on the story Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 12 open at your level"},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 6 open"},
-    {"t":"Buy Rear Smite 4 → 5","s":"2 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Heart Gore 7 → 8","s":"4 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 8 → 9","s":"4 pts · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Rear Smite 4 → 5","s":"2 pts · inferred","c":""},
+    {"t":"Catch up: level Heart Gore 7 → 8","s":"4 pts · inferred","c":""},
+    {"t":"Catch up: level Savage Roar 8 → 9","s":"4 pts · inferred","c":""}
   ],
   "behind/L25-q39-from10-lagq-A": [
-    {"t":"Buy Heart Gore 3 → 4","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 25–26"},
+    {"t":"Catch up: level Heart Gore 3 → 8","s":"11 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 25–26"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
@@ -54,12 +54,12 @@
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 36 open at your level"},
     {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 26)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk : Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 7 open"},
-    {"t":"Buy Savage Roar 4 → 5","s":"2 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 4 → 5","s":"2 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Shadowstrike 4 → 5","s":"2 pts · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Savage Roar 4 → 9","s":"14 pts · then pick the specialty +20% Skill Speed inferred · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 4 → 9","s":"14 pts · then pick the specialty +50% Multi-Hit on hit inferred · inferred","c":""},
+    {"t":"Catch up: level Shadowstrike 4 → 8","s":"10 pts · then pick the specialty +20% Critical Damage Boost for 10s on hit inferred · inferred","c":""}
   ],
   "behind/L25-q39-from10-lagq-B": [
-    {"t":"Buy Heart Gore 3 → 4","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 25–26"},
+    {"t":"Catch up: level Heart Gore 3 → 8","s":"11 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit inferred · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 25–26"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Noble Belt","s":"The main story hands it to you around Lv 13 (it can't be missed).","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14","i":"Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons & Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."},
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
@@ -69,9 +69,9 @@
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 36 open at your level"},
     {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 26)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk : Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 7 open"},
-    {"t":"Buy Savage Roar 4 → 5","s":"2 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 4 → 5","s":"2 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Shadowstrike 4 → 5","s":"2 pts · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Savage Roar 4 → 9","s":"14 pts · then pick the specialty +20% Skill Speed inferred · inferred","c":""},
+    {"t":"Catch up: level Quick Slice 4 → 9","s":"14 pts · then pick the specialty +50% Multi-Hit on hit inferred · inferred","c":""},
+    {"t":"Catch up: level Shadowstrike 4 → 8","s":"10 pts · then pick the specialty +20% Critical Damage Boost for 10s on hit inferred · inferred","c":""}
   ],
   "behind/L25-q39-from10-miss2-s0-A": [
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","b":"Lv 25–26","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
@@ -236,28 +236,28 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "behind/L25-q39-from20-lagq-A": [
-    {"t":"Buy Insignia Explosion 3 → 4","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 25–26"},
+    {"t":"Catch up: level Insignia Explosion 3 → 4","s":"1 pt · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 25–26"},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","b":"Lv 25–26","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 12 open at your level"},
     {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 26)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 6 open"},
-    {"t":"Buy Rear Smite 4 → 5","s":"2 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Heart Gore 7 → 8","s":"4 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 8 → 9","s":"4 pts · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Rear Smite 4 → 5","s":"2 pts · inferred","c":""},
+    {"t":"Catch up: level Heart Gore 7 → 8","s":"4 pts · inferred","c":""},
+    {"t":"Catch up: level Savage Roar 8 → 9","s":"4 pts · inferred","c":""}
   ],
   "behind/L25-q39-from20-lagq-B": [
-    {"t":"Buy Insignia Explosion 3 → 4","s":"1 pt · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 25–26"},
+    {"t":"Catch up: level Insignia Explosion 3 → 4","s":"1 pt · inferred","c":"primary \"Mark spent\" catchup","b":"Lv 25–26"},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","b":"Lv 25–26","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 12 open at your level"},
     {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 26)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 6 open"},
-    {"t":"Buy Rear Smite 4 → 5","s":"2 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Heart Gore 7 → 8","s":"4 pts · inferred","c":"tag \"After the one above\""},
-    {"t":"Buy Savage Roar 8 → 9","s":"4 pts · inferred","c":"tag \"After the one above\""}
+    {"t":"Catch up: level Rear Smite 4 → 5","s":"2 pts · inferred","c":""},
+    {"t":"Catch up: level Heart Gore 7 → 8","s":"4 pts · inferred","c":""},
+    {"t":"Catch up: level Savage Roar 8 → 9","s":"4 pts · inferred","c":""}
   ],
   "behind/L25-q39-from20-miss2-s0-A": [
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","b":"Lv 25–26","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
