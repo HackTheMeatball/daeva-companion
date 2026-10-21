@@ -39,7 +39,7 @@
               the shared verdict parser tools/verdicts.cjs, and no workflow keeping its own verdict regex
               (tests/automerge.mjs; < 1 s). In the `checks` shard
      schema   every v2 data file and schema example against data/schema/ (ajv Ajv2020, strict), then the generator's data checks
-              and the rules and decisions ledger (tests/ledger.mjs)
+              the rules and decisions ledger (tests/ledger.mjs), and licence compliance (tests/compliance.mjs)
      a11y     axe-core at 390 / 1500 px (fresh / Lv 27 / Lv 45 x Basic / Advanced; fails on rules outside its allowlist),
               spoken names, reduced motion after Level up, Escape on "i" popovers, hit areas vs neighbours
      perf     update() median < 15 ms at e1's and regress's states (non-blocking: not in the default run or ci-ok) */
