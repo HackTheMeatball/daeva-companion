@@ -55,6 +55,13 @@ const reviewers = (body) => {
     .map((x) => x.trim().replace(/^\(\s*/, '').replace(/\s*\)$/, '').replace(/\s*\(.*$/, '').trim().toLowerCase()).filter(Boolean);
 };
 
+// The team roster (#741, Walter): each person's docs/team/<name>.md opens "# Name (Role)", given here as those first lines,
+// plus the names the gates answer to. A Reviewers: entry outside it ("Legal sign-off per Chuck's ruling", #741, 84 min) can
+// never be matched by a verdict, so auto-merge names it instead of waiting silently; it still blocks.
+const GATES = ['design lead', 'game data check', 'fresh review', 'jane', 'gretchen'];
+const roster = (heads) => new Set([...GATES, ...heads.map((h) => (String(h).match(/^#\s+([A-Za-z]+)\s+\(/) || [])[1])
+  .filter(Boolean).map((n) => n.toLowerCase())]);
+const unknownReviewers = (body, names) => reviewers(body).filter((n) => !names.has(n));
 // A person's hold line (MRG-09, #744): "HOLD: <condition> (owner: <name>)" on its own line, unquoted. Every such line, in
 // order, as { cond, owner, reviewer }: reviewer is the gate name the condition waits on when it is one of the closed list
 // (FRESH REVIEW OK, DESIGN OK, Game Data Check VERIFIED, VERDICT: APPROVE|OK (reviewer: <name>); "until …" and "… on head" or
@@ -92,4 +99,4 @@ const reviewOf = (body) => { const l = lines(body).find((x) => x.trim()); const 
 const needsOpus = (body) => lines(body).some((l) => /^\s*Needs @claude \(Opus\):/.test(l));
 const stuck = (body) => lines(body).some((l) => /^\s*Pipeline stuck:/.test(l));
 
-module.exports = { clean, lines, own, design, data, tagged, fresh, freshOk, reviewers, holds, clears, review, reviewOf, needsOpus, stuck };
+module.exports = { clean, lines, own, design, data, tagged, fresh, freshOk, reviewers, roster, unknownReviewers, holds, clears, review, reviewOf, needsOpus, stuck };
