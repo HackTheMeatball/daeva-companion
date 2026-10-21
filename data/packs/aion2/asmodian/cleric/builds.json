@@ -313,23 +313,21 @@
         "spec:cleric:earths-retribution:1": {
           "slot": 1,
           "label": "disputed",
-          "note": "mmo-codex and most of daevaguides' players pick +20% MP restored for leveling; aion2turkiye and skycoach pick +20% [Discharge] Chain Skill trigger chance.",
+          "note": "mmo-codex and most of daevaguides' players pick +20% MP restored for leveling; aion2turkiye picks +20% [Discharge] Chain Skill trigger chance.",
           "sources": [
             "https://mmo-codex.com/games/aion-2/classes/cleric/",
             "https://daevaguides.com/en/cleric/",
-            "https://aion2turkiye.com/en/class/cleric/",
-            "https://skycoach.gg/blog/aion-2/articles/cleric-guide"
+            "https://aion2turkiye.com/en/class/cleric/"
           ]
         },
         "spec:cleric:judgment-thunder:1": {
           "slot": 1,
           "label": "disputed",
-          "note": "mmo-codex and aion2turkiye's leveling build pick -20% MP consumed; daevaguides' plan, aion2turkiye's dungeon build and skycoach pick Deals up to 12% more damage when less targets are hit.",
+          "note": "mmo-codex and aion2turkiye's leveling build pick -20% MP consumed; daevaguides' plan and aion2turkiye's dungeon build pick Deals up to 12% more damage when less targets are hit.",
           "sources": [
             "https://mmo-codex.com/games/aion-2/classes/cleric/",
             "https://aion2turkiye.com/en/class/cleric/",
-            "https://daevaguides.com/en/cleric/",
-            "https://skycoach.gg/blog/aion-2/articles/cleric-guide"
+            "https://daevaguides.com/en/cleric/"
           ]
         },
         "spec:cleric:condemnation:4": {

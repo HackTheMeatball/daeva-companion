@@ -260,10 +260,9 @@
         "spec:gladiator:ruinous-blow:1": {
           "slot": 1,
           "label": "disputed",
-          "note": "daevaguides' majority and skycoach pick +20% Skill Speed; aion2turkiye and two players daevaguides credits pick +30% Skill Critical Hit (docs/research/2026-10-gladiator-guide.md §4).",
+          "note": "daevaguides' majority picks +20% Skill Speed; aion2turkiye and two players daevaguides credits pick +30% Skill Critical Hit (docs/research/2026-10-gladiator-guide.md §4).",
           "sources": [
             "https://daevaguides.com/en/gladiator/",
-            "https://skycoach.gg/blog/aion-2/articles/gladiator-guide",
             "https://aion2turkiye.com/en/class/gladiator/"
           ]
         },
