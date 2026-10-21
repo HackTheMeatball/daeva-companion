@@ -54,9 +54,9 @@ notice; tester data growing past the beta; Terms that grant rights.
 
 Read-only public web for legal and compliance research. Isaac moved this thread to an environment with web access
 (2026-10-20 8:33 PM ET, on the coordinator's recommendation) and set its purpose (2026-10-21 9:36 AM ET: "The point was
-chuck gets web access for research so this can be adjusted"). Legal-only is narrower than his words, by the team's
-choice (Fresh governance review, 2026-10-21): it is applied while he answers one To-do asking "legal and compliance
-only, or any topic?". Before the move, Legal saw the web only through what Lydia brought back, so the per-minor spot
+chuck gets web access for research so this can be adjusted"). He then chose the scope himself, answering To-do T-102
+(2026-10-21 10:30 AM ET: "Network access: Full. Scope: legal and compliance only. OK to all sites. Close T-102").
+Before the move, Legal saw the web only through what Lydia brought back, so the per-minor spot
 check against the live terms page had a hole.
 
 - **For:** site terms and robots.txt, licences, IP and fan-content policies, store guidelines, privacy and consumer
@@ -71,9 +71,11 @@ check against the live terms page had a hole.
   downloads; no recurring or scripted pulls. Every line names the ruling, register row or To-do it serves, and each
   web search gets a line too. At most 20 requests per question before a check-in with the coordinator; hitting it is
   logged in #221.
-- **New hosts:** a legal host outside the environment's network list is added only with Isaac's OK (limit 6), asked
-  once in advance for a named list. A host off that list stops on the first 403.
-- **Who checks my log:** not me, and not Lydia, who reports to me. A checker script (Gus) covers the mechanics; the
+- **Hosts:** the environment's network access is Full, so there is no allowlist to change. Isaac OK'd the 13 hosts in
+  `legal/web-hosts-for-legal-2026-10-21.md` (shared folder) in the same answer. A legal host not on that list goes to
+  him first, through the coordinator, as a To-do (limit 6).
+- **Who checks my log:** not me, and not Lydia, who reports to me. A checker script (Gus; it comes with the Mike charter PR, not yet
+  running) covers the mechanics; the
   per-minor fresh spot check samples at least one of my lines and checks it maps to a ruling, register row or To-do.
 - Widening this access is owner-held (limit 6).
 

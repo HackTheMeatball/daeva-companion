@@ -18,9 +18,9 @@ to whoever asks, queued through Walter's ranked queue.
 Vetting a site and then fetching from it is never self-approved (Fresh governance review, 2026-10-21):
 
 - **Chuck signs off** any SOURCES.md row whose use level rests on reading terms or a licence: a new row above "Leads
-  only", any use at Spot or higher, the no-terms exception, and licence calls such as CC BY-NC-SA. He signs off the
+  only", any use at Spot or higher, the no-terms exception, and licence calls such as CC BY-NC-SA. Chuck signs off the
   compliance verdict (the terms and robots reading and the allowed use), not data quality.
-- **Gretchen checks** a demotion or a cut (a stricter row), which stays under my standing OK (ROL-04) with her as the
+- **Gretchen checks** a demotion or a cut (a stricter row), which stays under my standing OK (ROL-04) with Gretchen as the
   second checker.
 - Loosening a source's use or adding to the network list still needs Isaac (ROL-04).
 
