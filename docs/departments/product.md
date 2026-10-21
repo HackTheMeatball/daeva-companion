@@ -2,22 +2,24 @@
 
 ## Purpose
 
-Decide what the app does next and get it to players: plans, the queue, releases, player testing, outside reports and
-the privacy notice.
+Decide what the app does next and get it to players: plans, the queue, releases, outside reports and the privacy
+notice. Player testing checks Product's releases, so it sits in the independent group (coordinator, 2026-10-21 00:47Z).
 
 ## Head and members
 
 | Name | Role | Title | Owns | Charter | Never does |
 |---|---|---|---|---|---|
 | Walter (head) | Release Planner | Product and release manager | rows naming Walter in [Who does what](../kaizen/LEDGER.md#who-does-what) | [docs/team/walter.md](../team/walter.md) | [team.csv](../kaizen/team.csv), Walter's row |
-| Jesse | Player Testing | Acceptance tester | rows naming Jesse in [Who does what](../kaizen/LEDGER.md#who-does-what) | [docs/team/jesse.md](../team/jesse.md) | [team.csv](../kaizen/team.csv), Jesse's row |
-| Ernesto | Beta Program | Beta program manager | rows naming Ernesto in [Who does what](../kaizen/LEDGER.md#who-does-what) | Gap: only in the shared folder (beta-program/charter.md) | [team.csv](../kaizen/team.csv), Ernesto's row |
+| Ernesto | Beta Program | Beta program manager | rows naming Ernesto in [Who does what](../kaizen/LEDGER.md#who-does-what) | [docs/team/ernesto.md](../team/ernesto.md) | [team.csv](../kaizen/team.csv), Ernesto's row |
 
 ## Lanes
 
-- **Walter** changes [ROADMAP.md](../../ROADMAP.md), [docs/DECISIONS.md](../DECISIONS.md), `docs/plans/`, item specs and
-  the queue lines in #114. Hands builds to Gus (the queue), facts to Gretchen, design asks to Jane.
-- **Jesse** changes only player findings issues and its own reports. Hands findings to Walter (planning) or Mike (a stall).
+- **Walter** changes [ROADMAP.md](../../ROADMAP.md), [docs/DECISIONS.md](../DECISIONS.md) and their `DEC-*` twin rows
+  in [ledger.csv](../kaizen/ledger.csv) (the rest of the ledger is Operations'), `docs/plans/`, item specs, the queue
+  lines in #114, the planner log #232, and the release issues with the CHANGELOG section written into them. Removes
+  `hold` once the `FRESH REVIEW OK` marker names the head, until the pipeline's automation takes that over. Hands
+  builds to Gus (the queue), design asks to Jane, and research asks from one ranked research queue to Lydia (sources)
+  and Gretchen (facts).
 - **Ernesto** changes [PRIVACY.md](../../PRIVACY.md) and [docs/team/support.md](../team/support.md), and replies to
   reporters. Hands each report to Gus, Gretchen, Jane or Walter, as its Who does what row says.
 
@@ -26,24 +28,21 @@ the privacy notice.
 - Walter: [FLOW-01](../sops/FLOW-01-idea-to-plan-item.md), [FLOW-02](../sops/FLOW-02-planning-pass-and-queue.md),
   [FLOW-10](../sops/FLOW-10-minor-release.md), [FLOW-11](../sops/FLOW-11-patch-release.md)
 - Ernesto: [FLOW-13](../sops/FLOW-13-outside-report-intake.md)
-- Jesse: [FLOW-20](../sops/FLOW-20-player-testing.md)
 
 ## Policies that apply
 
 - All of the [Policies table](../sops/README.md#policies); Decisions and Privacy are kept in this department.
-- Rules: [DEC-01](../DECISIONS.md), [PLN-01](../../ROADMAP.md), [Q-01](../team/walter.md), [PLN-21](../team/jesse.md), and every ledger row whose owner is Walter, Jesse or Ernesto
+- Rules: [DEC-01](../DECISIONS.md), [PLN-01](../../ROADMAP.md), [Q-01](../team/walter.md), and every ledger row whose owner is Walter or Ernesto
   ([ledger.csv](../kaizen/ledger.csv)).
 
 ## Restart
 
-- A fresh session for Walter reads this file, then its handover (release/walter-handover-2026-10-21.md in the shared
-  folder), then its charter.
-- A fresh session for Jesse reads this file, then its handover (player-testing/handover.md in the shared folder), then
-  its charter.
+- A fresh session for Walter reads this file, then its handover (release/walter-handover.md in the shared folder,
+  which names the newest dated handover), then its charter.
 - A fresh session for Ernesto reads this file, then its handover (beta-program/handover.md in the shared folder), then
   its charter.
 
 ## Gaps
 
-- Ernesto's charter is not in the repo yet (docs/team/ernesto.md was asked for).
-- Lanes are read from Who does what and the role docs, not confirmed by each role yet.
+- Walter confirmed Walter's rows on #681; Ernesto's rows are not confirmed yet.
+- Cite DEC-20261020-decisions-sole-writer next to DEC-01 once #675 merges.

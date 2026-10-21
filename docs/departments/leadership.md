@@ -31,6 +31,9 @@ what is waiting on Isaac.
 
 - A fresh session for Saul reads this file, then its handover (coordinator/state.md in the shared folder), then its
   charter.
+- What is waiting on Isaac lives in two places: the open To-dos on the tracker (Huell keeps them) and the open decision
+  cards in threads. List the cards by listing the project's threads in the blocked state (waiting on Isaac) and reading
+  each one's latest card.
 
 ## Gaps
 

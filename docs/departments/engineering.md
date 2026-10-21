@@ -15,9 +15,11 @@ working rules are [CLAUDE.md](../../CLAUDE.md) and the item spec.
 
 ## Lanes
 
-- **Gus** changes `.github/workflows/`, the #114 body (each owner edits only its own status line there) and the
-  pipeline's own docs ([docs/DEPLOY.md](../DEPLOY.md)). Hands review to Howard's criteria, design shots to Jane, facts
-  to Gretchen, releases to Walter.
+- **Gus** changes `.github/workflows/`, `.github/routing/`, `tools/verdicts.cjs`, `tests/kickoff.mjs`,
+  `tests/automerge.mjs`, the #114 body (each owner edits only its own status line there), the pipeline's own docs
+  ([docs/DEPLOY.md](../DEPLOY.md)), and for FLOW-23 [docs/ARCHITECTURE.md](../ARCHITECTURE.md) and the readability
+  standard. Runs the PR-check clock. Hands review to Howard's criteria, design shots to Jane, facts to Gretchen,
+  releases to the Release Planner.
 - **Builders** change only what their item names, inside the serial lanes in
   [DISPATCH.md](../team/DISPATCH.md#routing-rule-applied-to-every-row) (one PR per lane at a time).
 - Old-structure notes that are still live: the *Standing notes* in [docs/team/engineering.md](../team/engineering.md)
@@ -43,5 +45,6 @@ working rules are [CLAUDE.md](../../CLAUDE.md) and the item spec.
 
 ## Gaps
 
-- Who covers FLOW-23 until the relay work moves to Actions is not written down (an open question in FLOW-23).
-- Lanes are read from Who does what and the role docs, not confirmed by Gus yet.
+- FLOW-23 open question 1 is answered (Gus): `src/*.js` does not join the Opus paths; the architecture lane starts on
+  Opus instead. The SOP text follows in Rules Steward's batch of SOP corrections.
+- FLOW-23 open question 2, who covers the flow until the relay work moves to Actions, waits on the coordinator.

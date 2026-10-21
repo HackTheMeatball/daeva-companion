@@ -16,7 +16,8 @@ Tracker page builds are one-off threads or pipeline runs; Skyler's role ended on
 ## Lanes
 
 - **Jane** changes `docs/design/` (mockups, the design system) and [docs/team/design.md](../team/design.md), and posts
-  DESIGN OK or DESIGN CHANGES on PRs with shots. Writes no app or tracker code. Hands builds to Walter (the queue) or a
+  DESIGN OK or DESIGN CHANGES on PRs with shots. Writes the mock harness code under `docs/design/` (such as `cases.mjs`
+  and `common.mjs`), but no app or tracker code. Hands builds to the Release Planner (the queue) or a
   one-off tracker build, and tracker data to Huell.
 - Holly (independent) reviews Jane's designs against the checklist; Huell checks no tracker data was lost before a
   tracker build.
@@ -24,7 +25,8 @@ Tracker page builds are one-off threads or pipeline runs; Skyler's role ended on
 ## SOPs it owns
 
 - Jane: [FLOW-22](../sops/FLOW-22-tracker-page-change.md)
-- [FLOW-05](../sops/FLOW-05-design-review.md) is owned by Holly (independent) while its owner question is open; see Gaps.
+- [FLOW-05](../sops/FLOW-05-design-review.md) Design review is Holly's (independent) end to end; Jane keeps the final
+  look OK and DESIGN OK / DESIGN CHANGES ([MRG-06](../reviews/README.md)).
 
 ## Policies that apply
 
@@ -38,5 +40,4 @@ Tracker page builds are one-off threads or pipeline runs; Skyler's role ended on
 
 ## Gaps
 
-- FLOW-05's owner (Holly or Jane) is an open question for the coordinator.
-- Lanes are read from Who does what and the role docs, not confirmed by Jane yet.
+None; Jane confirmed this doc on #681.

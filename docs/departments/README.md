@@ -19,15 +19,16 @@ cited here once it lands.
 | Department | Head | Members | Doc |
 |---|---|---|---|
 | Leadership | Isaac (owner, board) | Saul (coordinator, the CEO) | [leadership.md](leadership.md) |
-| Product | Walter | Jesse, Ernesto | [product.md](product.md) |
+| Product | Walter | Ernesto | [product.md](product.md) |
 | Engineering | Gus | one-off build threads (the pipeline) | [engineering.md](engineering.md) |
 | Design | Jane | one-off build threads for the tracker page | [design.md](design.md) |
 | Data & Research | Gretchen | one-off research threads | [data-research.md](data-research.md) |
 | Operations | Francesca | Huell | [operations.md](operations.md) |
-| Independent group (no head; reports to the coordinator) | — | Gale, Gomez, Howard, Holly, Mike, Nacho, Chuck (second line); Lydia is listed here under Chuck but does sourcing, not checking | [independent.md](independent.md) |
+| Independent group (no head; reports to the coordinator) | — | Gale, Gomez, Howard, Holly, Jesse, Mike, Nacho, Chuck (second line); Lydia is listed here under Chuck but does sourcing, not checking | [independent.md](independent.md) |
 
-An independent role never reports to a department it checks: Howard reviews Gus's code, Holly reviews Jane's
-designs, Mike watches Gus's pipeline, Chuck checks Lydia's fetching.
+Nobody reports to someone they check (Org Design's reporting pass v13; coordinator, 2026-10-21 00:47Z). Howard reviews
+Gus's code, Holly reviews Jane's designs, Mike watches Gus's pipeline, Jesse plays Walter's releases, and Chuck checks
+Lydia's fetching, so none of them sits in the department it checks.
 
 ## Every department doc has the same sections
 
@@ -59,9 +60,9 @@ that doc. Results are recorded here.
 | Doc | Role | Handover | Task | Result | Questions it had |
 |---|---|---|---|---|---|
 | leadership.md | Saul | coordinator/state.md | What is waiting on Isaac right now, and whose is each item? | not run yet | |
-| product.md | Walter | release/walter-handover-2026-10-21.md | What is the next step on the open minor, and whose is it? | not run yet | |
+| product.md | Walter | release/walter-handover.md | What is the next step on 0.9, and whose is it? | not run yet | |
 | engineering.md | Gus | pipeline/gus-handover.md | Which open claude/ PR is closest to merging, and what does it wait on? | not run yet | |
 | design.md | Jane | design/handover.md | Which open PR waits on a DESIGN OK, and what must it carry? | not run yet | |
 | data-research.md | Gretchen | game-data-check/handover.md | Which open PR or item waits on a Game Data Check verdict, and what is the next step? | not run yet | |
-| operations.md | Francesca | rules-steward/handover.md | Which active team.csv name has no row in Who does what? | not run yet | |
+| operations.md | Francesca | rules-steward/handover.md | Which active team.csv name is not the Owner of any row in Who does what? | not run yet | |
 | independent.md | Mike | stall-log/mike-handover.md | What would the next health check look at first, and where is it recorded? | not run yet | |
