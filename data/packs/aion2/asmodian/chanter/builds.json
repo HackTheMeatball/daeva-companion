@@ -331,6 +331,7 @@
         {
           "node": "node:chanter:nezekan:r3c11",
           "label": "Protection Circle · 1 of 2",
+          "cost": 9,
           "milestone": "g12",
           "order": 20,
           "requires": {
@@ -340,11 +341,24 @@
           "completesWith": [
             "tick"
           ],
-          "status": "disputed"
+          "status": "disputed",
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
+          ]
         },
         {
           "node": "node:chanter:nezekan:r13c5",
           "label": "Protection Circle · 2 of 2",
+          "cost": 9,
           "milestone": "g12",
           "order": 30,
           "requires": {
@@ -354,12 +368,25 @@
           "completesWith": [
             "tick"
           ],
-          "status": "disputed"
+          "status": "disputed",
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
+          ]
         },
         {
           "node": "node:chanter:nezekan:r7c10",
           "label": "Attack Preparation · 1 of 2",
           "via": "Attack Preparation is learned at Lv 13",
+          "cost": 2,
           "milestone": "g12",
           "order": 40,
           "requires": {
@@ -379,12 +406,25 @@
           "completesWith": [
             "tick"
           ],
-          "status": "disputed"
+          "status": "disputed",
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
+          ]
         },
         {
           "node": "node:chanter:nezekan:r11c3",
           "label": "Attack Preparation · 2 of 2",
           "via": "Attack Preparation is learned at Lv 13",
+          "cost": 6,
           "milestone": "g12",
           "order": 50,
           "requires": {
@@ -404,12 +444,25 @@
           "completesWith": [
             "tick"
           ],
-          "status": "disputed"
+          "status": "disputed",
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
+          ]
         },
         {
           "node": "node:chanter:zikel:r6c7",
           "label": "Earth's Promise · 1 of 2",
           "via": "Earth's Promise is learned at Lv 21",
+          "cost": 4,
           "milestone": "g20",
           "order": 30,
           "requires": {
@@ -429,12 +482,25 @@
           "completesWith": [
             "tick"
           ],
-          "status": "disputed"
+          "status": "disputed",
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
+          ]
         },
         {
           "node": "node:chanter:zikel:r12c11",
           "label": "Earth's Promise · 2 of 2",
           "via": "Earth's Promise is learned at Lv 21",
+          "cost": 9,
           "milestone": "g20",
           "order": 40,
           "requires": {
@@ -454,7 +520,19 @@
           "completesWith": [
             "tick"
           ],
-          "status": "disputed"
+          "status": "disputed",
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
+          ]
         }
       ],
       "keyStacks": {

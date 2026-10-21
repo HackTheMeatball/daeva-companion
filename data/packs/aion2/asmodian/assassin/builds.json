@@ -1156,6 +1156,7 @@
         {
           "node": "node:assassin:triniel:r9c10",
           "label": "Heart Gore",
+          "cost": 5,
           "milestone": "g40",
           "order": 30.1,
           "requires": {
@@ -1164,11 +1165,24 @@
           },
           "completesWith": [
             "tick"
+          ],
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
           ]
         },
         {
           "node": "node:assassin:triniel:r8c14",
           "label": "Insignia Explosion",
+          "cost": 7,
           "milestone": "g40",
           "order": 30.2,
           "requires": {
@@ -1177,11 +1191,24 @@
           },
           "completesWith": [
             "tick"
+          ],
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
           ]
         },
         {
           "node": "node:assassin:triniel:r13c12",
           "label": "Quick Slice",
+          "cost": 6,
           "milestone": "g40",
           "order": 30.3,
           "requires": {
@@ -1190,11 +1217,24 @@
           },
           "completesWith": [
             "tick"
+          ],
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
           ]
         },
         {
           "node": "node:assassin:triniel:r9c4",
           "label": "Assault Stance",
+          "cost": 5,
           "milestone": "g40",
           "order": 30.4,
           "requires": {
@@ -1203,11 +1243,24 @@
           },
           "completesWith": [
             "tick"
+          ],
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
           ]
         },
         {
           "node": "node:assassin:triniel:r13c7",
           "label": "Defense Break",
+          "cost": 8,
           "milestone": "g40",
           "order": 30.5,
           "requires": {
@@ -1216,6 +1269,18 @@
           },
           "completesWith": [
             "tick"
+          ],
+          "fieldStatus": {
+            "cost": "inferred"
+          },
+          "sources": [
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
+            }
           ]
         },
         {
@@ -1227,6 +1292,7 @@
           "key": "dv:t:corner",
           "label": "Multi-Hit Chance corner",
           "via": "corner stat inferred from the board's stat totals (Metabot)",
+          "cost": 15,
           "milestone": "g40",
           "order": 30.6,
           "requires": {
@@ -1245,9 +1311,19 @@
                 "value": "0.0.4387.0"
               },
               "note": "the 3 matching corner (Unique) nodes of triniel"
+            },
+            {
+              "inferred": "The row's cheapest path in plan order, priced by node colour (owner's rule: common 1, rare 2, legend 3, unique 4) with tools/gen/board-path.mjs; not read from an in-game board (docs/research/2026-10-node-paths.md)",
+              "fields": [
+                "cost"
+              ],
+              "checkedAt": "2026-10-21"
             }
           ],
-          "status": "inferred"
+          "status": "inferred",
+          "fieldStatus": {
+            "cost": "inferred"
+          }
         }
       ],
       "keyStacks": {
