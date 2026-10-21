@@ -42,7 +42,7 @@ For each anomaly: first append one row to the **Stall log, issue #221** (re-read
   - (a) Item check: every planned item of each open release (the items its release issue lists) has a #114 queue line, and none sits held (a `held:` sub-line) or `[blocked]` for more than 2 h. The only exception is a line the latest Kickoff run says waits on an unmet owner OK ([DECISIONS 2026-10-19](../DECISIONS.md), owner-gated lines count as idle); a spec, input or queue hold never counts as that exception.
   - (b) Release check, the backstop for what (a)'s list misses: an open release whose count of done items (closed issues among those its release issue lists) hasn't moved in 4 h while one of its items is still open.
   - The 2 h clock starts at the kickoff time on the item's `held:` line, or, for an item with no queue line or with no time on its line, at the first health check that saw it that way.
-  - One #221 row per stall, Kind `release-stall`, sent to Walter and the coordinator; later checks update that row's cells, never add another, until the item is building or the release moves.
+  - One #221 row per stall, Kind `release-stall`, sent to Walter and the coordinator; later checks update that row's cells, never add another, until the item is building or the release moves. While it stays open, re-ping Walter and the coordinator at least every 2 h, so a long stall never goes quiet after the first flag.
 
 ### COM-19 check
 
