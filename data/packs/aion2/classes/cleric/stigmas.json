@@ -6,7 +6,7 @@
   "records": [
     {
       "id": "stigma:cleric:absolution",
-      "key": "Absolution",
+      "key": "absolution",
       "name": "Absolution",
       "availableLv": 22,
       "icon": "assets/icons/st-cleric-absolution.png",
@@ -58,7 +58,7 @@
     },
     {
       "id": "stigma:cleric:assault-mark",
-      "key": "Assault Mark",
+      "key": "assault-mark",
       "name": "Assault Mark",
       "availableLv": 22,
       "icon": "assets/icons/st-cleric-assault-mark.png",
@@ -110,7 +110,7 @@
     },
     {
       "id": "stigma:cleric:benevolence",
-      "key": "Benevolence",
+      "key": "benevolence",
       "name": "Benevolence",
       "availableLv": 22,
       "icon": "assets/icons/st-cleric-benevolence.png",
@@ -162,7 +162,7 @@
     },
     {
       "id": "stigma:cleric:earth-punishment",
-      "key": "Earth Punishment",
+      "key": "earth-punishment",
       "name": "Earth Punishment",
       "availableLv": 22,
       "icon": "assets/icons/st-cleric-earth-punishment.png",
@@ -214,7 +214,7 @@
     },
     {
       "id": "stigma:cleric:light-of-protection",
-      "key": "Light of Protection",
+      "key": "light-of-protection",
       "name": "Light of Protection",
       "availableLv": 22,
       "icon": "assets/icons/st-cleric-light-of-protection.png",
@@ -266,7 +266,7 @@
     },
     {
       "id": "stigma:cleric:noble-aura",
-      "key": "Noble Aura",
+      "key": "noble-aura",
       "name": "Noble Aura",
       "availableLv": 22,
       "icon": "assets/icons/st-cleric-noble-aura.png",
@@ -318,7 +318,7 @@
     },
     {
       "id": "stigma:cleric:power-burst",
-      "key": "Power Burst",
+      "key": "power-burst",
       "name": "Power Burst",
       "availableLv": 22,
       "icon": "assets/icons/st-cleric-power-burst.png",
@@ -370,7 +370,7 @@
     },
     {
       "id": "stigma:cleric:prayer-of-amplification",
-      "key": "Prayer of Amplification",
+      "key": "prayer-of-amplification",
       "name": "Prayer of Amplification",
       "availableLv": 22,
       "icon": "assets/icons/st-cleric-prayer-of-amplification.png",
@@ -422,7 +422,7 @@
     },
     {
       "id": "stigma:cleric:root",
-      "key": "Root",
+      "key": "root",
       "name": "Root",
       "availableLv": 22,
       "icon": "assets/icons/st-cleric-root.png",
@@ -474,7 +474,7 @@
     },
     {
       "id": "stigma:cleric:salvation",
-      "key": "Salvation",
+      "key": "salvation",
       "name": "Salvation",
       "availableLv": 22,
       "icon": "assets/icons/st-cleric-salvation.png",
@@ -526,7 +526,7 @@
     },
     {
       "id": "stigma:cleric:summon-resurrection",
-      "key": "Summon Resurrection",
+      "key": "summon-resurrection",
       "name": "Summon Resurrection",
       "availableLv": 22,
       "icon": "assets/icons/st-cleric-summon-resurrection.png",
@@ -578,7 +578,7 @@
     },
     {
       "id": "stigma:cleric:voice-of-doom",
-      "key": "Voice of Doom",
+      "key": "voice-of-doom",
       "name": "Voice of Doom",
       "availableLv": 22,
       "icon": "assets/icons/st-cleric-voice-of-doom.png",
@@ -630,7 +630,7 @@
     },
     {
       "id": "stigma:cleric:yustiels-power",
-      "key": "Yustiel's Power",
+      "key": "yustiels-power",
       "name": "Yustiel's Power",
       "availableLv": 22,
       "icon": "assets/icons/st-cleric-yustiels-power.png",

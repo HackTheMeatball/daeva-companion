@@ -15,7 +15,7 @@
       "maxLength": 120
     },
     "saveKey": {
-      "description": "The key a save stores progress under (checks, started, areaRun, qsteps, state.quest, sp:<key>:<L>). Permanent: may differ from id for records that predate v2 (e.g. story quests are keyed by their English name). Unique within one compiled class bundle.",
+      "description": "The key a save stores progress under (checks, started, areaRun, qsteps, state.quest, sp:<key>:<L>). Permanent: may differ from id for records that predate v2 (story quests, skills and stigmas carry id-based keys since save v6, 0.9 P2). Unique within one compiled class bundle.",
       "type": "string",
       "minLength": 1,
       "maxLength": 200,
@@ -305,7 +305,7 @@
       "additionalProperties": false
     },
     "questStep": {
-      "description": "One objective. 'i' is its permanent save index (state.qsteps); display order is array order. Never renumber.",
+      "description": "One objective. 'i' is its permanent save index (state.qsteps, state.qsub), unique within its quest; display order is array order. Never renumber or reuse: an objective inserted mid-list takes a new i.",
       "type": "object",
       "required": [
         "i",
@@ -315,6 +315,14 @@
         "i": {
           "type": "integer",
           "minimum": 0
+        },
+        "sub": {
+          "description": "The permanent save indices (state.qsub) of the sub-steps the page parses from the text, in order; absent = 0, 1, 2 …. A sub-step inserted later takes a new index.",
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0
+          }
         },
         "text": {
           "type": "string",

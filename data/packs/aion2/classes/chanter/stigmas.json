@@ -6,7 +6,7 @@
   "records": [
     {
       "id": "stigma:chanter:assault-shock",
-      "key": "Assault Shock",
+      "key": "assault-shock",
       "name": "Assault Shock",
       "availableLv": 22,
       "icon": "assets/icons/st-chanter-assault-shock.png",
@@ -58,7 +58,7 @@
     },
     {
       "id": "stigma:chanter:barrier-spell",
-      "key": "Barrier Spell",
+      "key": "barrier-spell",
       "name": "Barrier Spell",
       "availableLv": 22,
       "icon": "assets/icons/st-chanter-barrier-spell.png",
@@ -110,7 +110,7 @@
     },
     {
       "id": "stigma:chanter:ensnaring-mark",
-      "key": "Ensnaring Mark",
+      "key": "ensnaring-mark",
       "name": "Ensnaring Mark",
       "availableLv": 22,
       "icon": "assets/icons/st-chanter-ensnaring-mark.png",
@@ -162,7 +162,7 @@
     },
     {
       "id": "stigma:chanter:focused-defense",
-      "key": "Focused Defense",
+      "key": "focused-defense",
       "name": "Focused Defense",
       "availableLv": 22,
       "icon": "assets/icons/st-chanter-focused-defense.png",
@@ -214,7 +214,7 @@
     },
     {
       "id": "stigma:chanter:fracturing-blow",
-      "key": "Fracturing Blow",
+      "key": "fracturing-blow",
       "name": "Fracturing Blow",
       "availableLv": 22,
       "icon": "assets/icons/st-chanter-fracturing-blow.png",
@@ -266,7 +266,7 @@
     },
     {
       "id": "stigma:chanter:guardian-blessing",
-      "key": "Guardian Blessing",
+      "key": "guardian-blessing",
       "name": "Guardian Blessing",
       "availableLv": 22,
       "icon": "assets/icons/st-chanter-guardian-blessing.png",
@@ -318,7 +318,7 @@
     },
     {
       "id": "stigma:chanter:healing-touch",
-      "key": "Healing Touch",
+      "key": "healing-touch",
       "name": "Healing Touch",
       "availableLv": 22,
       "icon": "assets/icons/st-chanter-healing-touch.png",
@@ -389,7 +389,7 @@
     },
     {
       "id": "stigma:chanter:impeding-authority",
-      "key": "Impeding Authority",
+      "key": "impeding-authority",
       "name": "Impeding Authority",
       "availableLv": 22,
       "icon": "assets/icons/st-chanter-impeding-authority.png",
@@ -441,7 +441,7 @@
     },
     {
       "id": "stigma:chanter:marchutans-wrath",
-      "key": "Marchutan's Wrath",
+      "key": "marchutans-wrath",
       "name": "Marchutan's Wrath",
       "availableLv": 22,
       "icon": "assets/icons/st-chanter-marchutans-wrath.png",
@@ -493,7 +493,7 @@
     },
     {
       "id": "stigma:chanter:obliterate",
-      "key": "Obliterate",
+      "key": "obliterate",
       "name": "Obliterate",
       "availableLv": 22,
       "icon": "assets/icons/st-chanter-obliterate.png",
@@ -545,7 +545,7 @@
     },
     {
       "id": "stigma:chanter:power-of-the-storm",
-      "key": "Power of the Storm",
+      "key": "power-of-the-storm",
       "name": "Power of the Storm",
       "availableLv": 22,
       "icon": "assets/icons/st-chanter-power-of-the-storm.png",
@@ -597,7 +597,7 @@
     },
     {
       "id": "stigma:chanter:sprint-mantra",
-      "key": "Sprint Mantra",
+      "key": "sprint-mantra",
       "name": "Sprint Mantra",
       "availableLv": 22,
       "icon": "assets/icons/st-chanter-sprint-mantra.png",
@@ -649,7 +649,7 @@
     },
     {
       "id": "stigma:chanter:undefeated-mantra",
-      "key": "Undefeated Mantra",
+      "key": "undefeated-mantra",
       "name": "Undefeated Mantra",
       "availableLv": 22,
       "icon": "assets/icons/st-chanter-undefeated-mantra.png",

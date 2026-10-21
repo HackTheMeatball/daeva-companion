@@ -41,7 +41,7 @@
           "pattern": "^skill:[a-z]+:[a-z0-9-]+$"
         },
         "key": {
-          "description": "Save-key segment: today the English skill name (sp:Heart Gore:3). Permanent.",
+          "description": "Save-key segment: the id's last segment (sp:heart-gore:3; save v6, 0.9 P2). Permanent even if the skill is renamed.",
           "$ref": "common.schema.json#/$defs/saveKey"
         },
         "name": {

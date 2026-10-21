@@ -6,7 +6,7 @@
   "records": [
     {
       "id": "stigma:sorcerer:arctic-armor",
-      "key": "Arctic Armor",
+      "key": "arctic-armor",
       "name": "Arctic Armor",
       "availableLv": 22,
       "icon": "assets/icons/st-sorcerer-arctic-armor.png",
@@ -58,7 +58,7 @@
     },
     {
       "id": "stigma:sorcerer:assault-bombardment",
-      "key": "Assault Bombardment",
+      "key": "assault-bombardment",
       "name": "Assault Bombardment",
       "availableLv": 22,
       "icon": "assets/icons/st-sorcerer-assault-bombardment.png",
@@ -110,7 +110,7 @@
     },
     {
       "id": "stigma:sorcerer:cold-storm",
-      "key": "Cold Storm",
+      "key": "cold-storm",
       "name": "Cold Storm",
       "availableLv": 22,
       "icon": "assets/icons/st-sorcerer-cold-storm.png",
@@ -162,7 +162,7 @@
     },
     {
       "id": "stigma:sorcerer:curse-tree",
-      "key": "Curse: Tree",
+      "key": "curse-tree",
       "name": "Curse: Tree",
       "availableLv": 22,
       "icon": "assets/icons/st-sorcerer-curse-tree.png",
@@ -214,7 +214,7 @@
     },
     {
       "id": "stigma:sorcerer:delayed-explosion",
-      "key": "Delayed Explosion",
+      "key": "delayed-explosion",
       "name": "Delayed Explosion",
       "availableLv": 22,
       "icon": "assets/icons/st-sorcerer-delayed-explosion.png",
@@ -266,7 +266,7 @@
     },
     {
       "id": "stigma:sorcerer:divine-burst",
-      "key": "Divine Burst",
+      "key": "divine-burst",
       "name": "Divine Burst",
       "availableLv": 22,
       "icon": "assets/icons/st-sorcerer-divine-burst.png",
@@ -337,7 +337,7 @@
     },
     {
       "id": "stigma:sorcerer:element-enhancement",
-      "key": "Element Enhancement",
+      "key": "element-enhancement",
       "name": "Element Enhancement",
       "availableLv": 22,
       "icon": "assets/icons/st-sorcerer-element-enhancement.png",
@@ -389,7 +389,7 @@
     },
     {
       "id": "stigma:sorcerer:fire-wall",
-      "key": "Fire Wall",
+      "key": "fire-wall",
       "name": "Fire Wall",
       "availableLv": 22,
       "icon": "assets/icons/st-sorcerer-fire-wall.png",
@@ -441,7 +441,7 @@
     },
     {
       "id": "stigma:sorcerer:glacial-smite",
-      "key": "Glacial Smite",
+      "key": "glacial-smite",
       "name": "Glacial Smite",
       "availableLv": 22,
       "icon": "assets/icons/st-sorcerer-glacial-smite.png",
@@ -493,7 +493,7 @@
     },
     {
       "id": "stigma:sorcerer:hibernation",
-      "key": "Hibernation",
+      "key": "hibernation",
       "name": "Hibernation",
       "availableLv": 22,
       "icon": "assets/icons/st-sorcerer-hibernation.png",
@@ -545,7 +545,7 @@
     },
     {
       "id": "stigma:sorcerer:lumiels-space",
-      "key": "Lumiel's Space",
+      "key": "lumiels-space",
       "name": "Lumiel's Space",
       "availableLv": 22,
       "icon": "assets/icons/st-sorcerer-lumiels-space.png",
@@ -597,7 +597,7 @@
     },
     {
       "id": "stigma:sorcerer:soul-freeze",
-      "key": "Soul Freeze",
+      "key": "soul-freeze",
       "name": "Soul Freeze",
       "availableLv": 22,
       "icon": "assets/icons/st-sorcerer-soul-freeze.png",
@@ -649,7 +649,7 @@
     },
     {
       "id": "stigma:sorcerer:steel-barrier",
-      "key": "Steel Barrier",
+      "key": "steel-barrier",
       "name": "Steel Barrier",
       "availableLv": 22,
       "icon": "assets/icons/st-sorcerer-steel-barrier.png",

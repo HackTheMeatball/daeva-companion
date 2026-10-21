@@ -6,7 +6,7 @@
   "records": [
     {
       "id": "skill:chanter:attack-preparation",
-      "key": "Attack Preparation",
+      "key": "attack-preparation",
       "name": "Attack Preparation",
       "type": "passive",
       "learnLv": 13,
@@ -39,7 +39,7 @@
     },
     {
       "id": "skill:chanter:blessing-of-life",
-      "key": "Blessing of Life",
+      "key": "blessing-of-life",
       "name": "Blessing of Life",
       "type": "passive",
       "learnLv": 1,
@@ -71,7 +71,7 @@
     },
     {
       "id": "skill:chanter:crossguard",
-      "key": "Crossguard",
+      "key": "crossguard",
       "name": "Crossguard",
       "type": "passive",
       "learnLv": 6,
@@ -100,7 +100,7 @@
     },
     {
       "id": "skill:chanter:dark-crush",
-      "key": "Dark Crush",
+      "key": "dark-crush",
       "name": "Dark Crush",
       "type": "active",
       "learnLv": 4,
@@ -189,7 +189,7 @@
     },
     {
       "id": "skill:chanter:defiance",
-      "key": "Defiance",
+      "key": "defiance",
       "name": "Defiance",
       "type": "active",
       "learnLv": 16,
@@ -254,7 +254,7 @@
     },
     {
       "id": "skill:chanter:earths-promise",
-      "key": "Earth's Promise",
+      "key": "earths-promise",
       "name": "Earth's Promise",
       "type": "passive",
       "learnLv": 21,
@@ -286,7 +286,7 @@
     },
     {
       "id": "skill:chanter:gust-rampage",
-      "key": "Gust Rampage",
+      "key": "gust-rampage",
       "name": "Gust Rampage",
       "type": "active",
       "learnLv": 5,
@@ -375,7 +375,7 @@
     },
     {
       "id": "skill:chanter:heat-wave-blow",
-      "key": "Heat Wave Blow",
+      "key": "heat-wave-blow",
       "name": "Heat Wave Blow",
       "type": "active",
       "learnLv": 7,
@@ -437,7 +437,7 @@
     },
     {
       "id": "skill:chanter:impact-hit",
-      "key": "Impact Hit",
+      "key": "impact-hit",
       "name": "Impact Hit",
       "type": "passive",
       "learnLv": 15,
@@ -470,7 +470,7 @@
     },
     {
       "id": "skill:chanter:impactful-crush",
-      "key": "Impactful Crush",
+      "key": "impactful-crush",
       "name": "Impactful Crush",
       "type": "active",
       "learnLv": 3,
@@ -532,7 +532,7 @@
     },
     {
       "id": "skill:chanter:incandescent-blow",
-      "key": "Incandescent Blow",
+      "key": "incandescent-blow",
       "name": "Incandescent Blow",
       "type": "active",
       "learnLv": 1,
@@ -594,7 +594,7 @@
     },
     {
       "id": "skill:chanter:inspiring-spell",
-      "key": "Inspiring Spell",
+      "key": "inspiring-spell",
       "name": "Inspiring Spell",
       "type": "passive",
       "learnLv": 11,
@@ -623,7 +623,7 @@
     },
     {
       "id": "skill:chanter:onslaught",
-      "key": "Onslaught",
+      "key": "onslaught",
       "name": "Onslaught",
       "type": "active",
       "learnLv": 1,
@@ -712,7 +712,7 @@
     },
     {
       "id": "skill:chanter:protection-circle",
-      "key": "Protection Circle",
+      "key": "protection-circle",
       "name": "Protection Circle",
       "type": "passive",
       "learnLv": 9,
@@ -744,7 +744,7 @@
     },
     {
       "id": "skill:chanter:raging-spell",
-      "key": "Raging Spell",
+      "key": "raging-spell",
       "name": "Raging Spell",
       "type": "passive",
       "learnLv": 17,
@@ -773,7 +773,7 @@
     },
     {
       "id": "skill:chanter:recuperation",
-      "key": "Recuperation",
+      "key": "recuperation",
       "name": "Recuperation",
       "type": "active",
       "learnLv": 8,
@@ -857,7 +857,7 @@
     },
     {
       "id": "skill:chanter:rushing-smash",
-      "key": "Rushing Smash",
+      "key": "rushing-smash",
       "name": "Rushing Smash",
       "type": "active",
       "learnLv": 1,
@@ -919,7 +919,7 @@
     },
     {
       "id": "skill:chanter:spinning-strike",
-      "key": "Spinning Strike",
+      "key": "spinning-strike",
       "name": "Spinning Strike",
       "type": "active",
       "learnLv": 14,
@@ -981,7 +981,7 @@
     },
     {
       "id": "skill:chanter:survival-willpower",
-      "key": "Survival Willpower",
+      "key": "survival-willpower",
       "name": "Survival Willpower",
       "type": "passive",
       "learnLv": 23,
@@ -1014,7 +1014,7 @@
     },
     {
       "id": "skill:chanter:tremor-crush",
-      "key": "Tremor Crush",
+      "key": "tremor-crush",
       "name": "Tremor Crush",
       "type": "active",
       "learnLv": 10,
@@ -1076,7 +1076,7 @@
     },
     {
       "id": "skill:chanter:wave-blow",
-      "key": "Wave Blow",
+      "key": "wave-blow",
       "name": "Wave Blow",
       "type": "active",
       "learnLv": 12,
@@ -1141,7 +1141,7 @@
     },
     {
       "id": "skill:chanter:winds-promise",
-      "key": "Wind's Promise",
+      "key": "winds-promise",
       "name": "Wind's Promise",
       "type": "passive",
       "learnLv": 25,

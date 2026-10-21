@@ -6,7 +6,7 @@
   "records": [
     {
       "id": "skill:assassin:ambush",
-      "key": "Ambush",
+      "key": "ambush",
       "name": "Ambush",
       "type": "active",
       "learnLv": 3,
@@ -93,7 +93,7 @@
     },
     {
       "id": "skill:assassin:ambush-stance",
-      "key": "Ambush Stance",
+      "key": "ambush-stance",
       "name": "Ambush Stance",
       "type": "passive",
       "learnLv": 17,
@@ -110,7 +110,7 @@
     },
     {
       "id": "skill:assassin:apply-poison",
-      "key": "Apply Poison",
+      "key": "apply-poison",
       "name": "Apply Poison",
       "type": "passive",
       "learnLv": 9,
@@ -144,7 +144,7 @@
     },
     {
       "id": "skill:assassin:assault-stance",
-      "key": "Assault Stance",
+      "key": "assault-stance",
       "name": "Assault Stance",
       "type": "passive",
       "learnLv": 13,
@@ -169,7 +169,7 @@
     },
     {
       "id": "skill:assassin:defense-break",
-      "key": "Defense Break",
+      "key": "defense-break",
       "name": "Defense Break",
       "type": "passive",
       "learnLv": 21,
@@ -194,7 +194,7 @@
     },
     {
       "id": "skill:assassin:defiance",
-      "key": "Defiance",
+      "key": "defiance",
       "name": "Defiance",
       "type": "active",
       "learnLv": 16,
@@ -262,7 +262,7 @@
     },
     {
       "id": "skill:assassin:determination",
-      "key": "Determination",
+      "key": "determination",
       "name": "Determination",
       "type": "passive",
       "learnLv": 25,
@@ -287,7 +287,7 @@
     },
     {
       "id": "skill:assassin:exploit-weakness",
-      "key": "Exploit Weakness",
+      "key": "exploit-weakness",
       "name": "Exploit Weakness",
       "type": "passive",
       "learnLv": 6,
@@ -321,7 +321,7 @@
     },
     {
       "id": "skill:assassin:flash-slice",
-      "key": "Flash Slice",
+      "key": "flash-slice",
       "name": "Flash Slice",
       "type": "active",
       "learnLv": 8,
@@ -370,7 +370,7 @@
     },
     {
       "id": "skill:assassin:heart-gore",
-      "key": "Heart Gore",
+      "key": "heart-gore",
       "name": "Heart Gore",
       "type": "active",
       "learnLv": 4,
@@ -447,7 +447,7 @@
     },
     {
       "id": "skill:assassin:heightened-sixth-sense",
-      "key": "Heightened Sixth Sense",
+      "key": "heightened-sixth-sense",
       "name": "Heightened Sixth Sense",
       "type": "passive",
       "learnLv": 1,
@@ -464,7 +464,7 @@
     },
     {
       "id": "skill:assassin:impact-hit",
-      "key": "Impact Hit",
+      "key": "impact-hit",
       "name": "Impact Hit",
       "type": "passive",
       "learnLv": 15,
@@ -481,7 +481,7 @@
     },
     {
       "id": "skill:assassin:infiltrate",
-      "key": "Infiltrate",
+      "key": "infiltrate",
       "name": "Infiltrate",
       "type": "active",
       "learnLv": 10,
@@ -548,7 +548,7 @@
     },
     {
       "id": "skill:assassin:insignia-explosion",
-      "key": "Insignia Explosion",
+      "key": "insignia-explosion",
       "name": "Insignia Explosion",
       "type": "active",
       "learnLv": 14,
@@ -605,7 +605,7 @@
     },
     {
       "id": "skill:assassin:quick-slice",
-      "key": "Quick Slice",
+      "key": "quick-slice",
       "name": "Quick Slice",
       "type": "active",
       "learnLv": 1,
@@ -681,7 +681,7 @@
     },
     {
       "id": "skill:assassin:rear-smite",
-      "key": "Rear Smite",
+      "key": "rear-smite",
       "name": "Rear Smite",
       "type": "passive",
       "learnLv": 11,
@@ -715,7 +715,7 @@
     },
     {
       "id": "skill:assassin:revitalization-contract",
-      "key": "Revitalization Contract",
+      "key": "revitalization-contract",
       "name": "Revitalization Contract",
       "type": "passive",
       "learnLv": 23,
@@ -749,7 +749,7 @@
     },
     {
       "id": "skill:assassin:savage-roar",
-      "key": "Savage Roar",
+      "key": "savage-roar",
       "name": "Savage Roar",
       "type": "active",
       "learnLv": 1,
@@ -816,7 +816,7 @@
     },
     {
       "id": "skill:assassin:shadow-fall",
-      "key": "Shadow Fall",
+      "key": "shadow-fall",
       "name": "Shadow Fall",
       "type": "active",
       "learnLv": 12,
@@ -902,7 +902,7 @@
     },
     {
       "id": "skill:assassin:shadowstrike",
-      "key": "Shadowstrike",
+      "key": "shadowstrike",
       "name": "Shadowstrike",
       "type": "active",
       "learnLv": 1,
@@ -970,7 +970,7 @@
     },
     {
       "id": "skill:assassin:storm-rampage",
-      "key": "Storm Rampage",
+      "key": "storm-rampage",
       "name": "Storm Rampage",
       "type": "active",
       "learnLv": 5,
@@ -1038,7 +1038,7 @@
     },
     {
       "id": "skill:assassin:whirlwind-slice",
-      "key": "Whirlwind Slice",
+      "key": "whirlwind-slice",
       "name": "Whirlwind Slice",
       "type": "active",
       "learnLv": 7,

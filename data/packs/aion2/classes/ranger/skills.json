@@ -6,7 +6,7 @@
   "records": [
     {
       "id": "skill:ranger:arrow-scattershot",
-      "key": "Arrow Scattershot",
+      "key": "arrow-scattershot",
       "name": "Arrow Scattershot",
       "type": "active",
       "learnLv": 5,
@@ -87,7 +87,7 @@
     },
     {
       "id": "skill:ranger:burst-arrow",
-      "key": "Burst Arrow",
+      "key": "burst-arrow",
       "name": "Burst Arrow",
       "type": "active",
       "learnLv": 10,
@@ -168,7 +168,7 @@
     },
     {
       "id": "skill:ranger:concentrated-fire",
-      "key": "Concentrated Fire",
+      "key": "concentrated-fire",
       "name": "Concentrated Fire",
       "type": "passive",
       "learnLv": 6,
@@ -197,7 +197,7 @@
     },
     {
       "id": "skill:ranger:deadshot",
-      "key": "Deadshot",
+      "key": "deadshot",
       "name": "Deadshot",
       "type": "active",
       "learnLv": 14,
@@ -259,7 +259,7 @@
     },
     {
       "id": "skill:ranger:defiance",
-      "key": "Defiance",
+      "key": "defiance",
       "name": "Defiance",
       "type": "active",
       "learnLv": 16,
@@ -323,7 +323,7 @@
     },
     {
       "id": "skill:ranger:drill-dart",
-      "key": "Drill Dart",
+      "key": "drill-dart",
       "name": "Drill Dart",
       "type": "active",
       "learnLv": 4,
@@ -404,7 +404,7 @@
     },
     {
       "id": "skill:ranger:explosion-trap",
-      "key": "Explosion Trap",
+      "key": "explosion-trap",
       "name": "Explosion Trap",
       "type": "active",
       "learnLv": 8,
@@ -466,7 +466,7 @@
     },
     {
       "id": "skill:ranger:focused-eye",
-      "key": "Focused Eye",
+      "key": "focused-eye",
       "name": "Focused Eye",
       "type": "passive",
       "learnLv": 11,
@@ -495,7 +495,7 @@
     },
     {
       "id": "skill:ranger:gale-arrow",
-      "key": "Gale Arrow",
+      "key": "gale-arrow",
       "name": "Gale Arrow",
       "type": "active",
       "learnLv": 7,
@@ -557,7 +557,7 @@
     },
     {
       "id": "skill:ranger:hunters-resolve",
-      "key": "Hunter's Resolve",
+      "key": "hunters-resolve",
       "name": "Hunter's Resolve",
       "type": "passive",
       "learnLv": 13,
@@ -586,7 +586,7 @@
     },
     {
       "id": "skill:ranger:hunters-soul",
-      "key": "Hunter's Soul",
+      "key": "hunters-soul",
       "name": "Hunter's Soul",
       "type": "passive",
       "learnLv": 25,
@@ -614,7 +614,7 @@
     },
     {
       "id": "skill:ranger:marking-shot",
-      "key": "Marking Shot",
+      "key": "marking-shot",
       "name": "Marking Shot",
       "type": "active",
       "learnLv": 3,
@@ -676,7 +676,7 @@
     },
     {
       "id": "skill:ranger:melee-fire",
-      "key": "Melee Fire",
+      "key": "melee-fire",
       "name": "Melee Fire",
       "type": "passive",
       "learnLv": 21,
@@ -704,7 +704,7 @@
     },
     {
       "id": "skill:ranger:revitalization-contract",
-      "key": "Revitalization Contract",
+      "key": "revitalization-contract",
       "name": "Revitalization Contract",
       "type": "passive",
       "learnLv": 23,
@@ -735,7 +735,7 @@
     },
     {
       "id": "skill:ranger:rooting-eye",
-      "key": "Rooting Eye",
+      "key": "rooting-eye",
       "name": "Rooting Eye",
       "type": "passive",
       "learnLv": 17,
@@ -763,7 +763,7 @@
     },
     {
       "id": "skill:ranger:snare-shot",
-      "key": "Snare Shot",
+      "key": "snare-shot",
       "name": "Snare Shot",
       "type": "active",
       "learnLv": 1,
@@ -825,7 +825,7 @@
     },
     {
       "id": "skill:ranger:snipe",
-      "key": "Snipe",
+      "key": "snipe",
       "name": "Snipe",
       "type": "active",
       "learnLv": 1,
@@ -906,7 +906,7 @@
     },
     {
       "id": "skill:ranger:suppressing-arrow",
-      "key": "Suppressing Arrow",
+      "key": "suppressing-arrow",
       "name": "Suppressing Arrow",
       "type": "active",
       "learnLv": 12,
@@ -968,7 +968,7 @@
     },
     {
       "id": "skill:ranger:tempest-shot",
-      "key": "Tempest Shot",
+      "key": "tempest-shot",
       "name": "Tempest Shot",
       "type": "active",
       "learnLv": 1,
@@ -1030,7 +1030,7 @@
     },
     {
       "id": "skill:ranger:unyielding-resolve",
-      "key": "Unyielding Resolve",
+      "key": "unyielding-resolve",
       "name": "Unyielding Resolve",
       "type": "passive",
       "learnLv": 15,
@@ -1058,7 +1058,7 @@
     },
     {
       "id": "skill:ranger:vigilant-eye",
-      "key": "Vigilant Eye",
+      "key": "vigilant-eye",
       "name": "Vigilant Eye",
       "type": "passive",
       "learnLv": 1,
@@ -1086,7 +1086,7 @@
     },
     {
       "id": "skill:ranger:wind-vigor",
-      "key": "Wind Vigor",
+      "key": "wind-vigor",
       "name": "Wind Vigor",
       "type": "passive",
       "learnLv": 9,

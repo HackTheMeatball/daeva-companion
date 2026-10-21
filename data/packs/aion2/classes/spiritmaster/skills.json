@@ -6,7 +6,7 @@
   "records": [
     {
       "id": "skill:spiritmaster:cold-shock",
-      "key": "Cold Shock",
+      "key": "cold-shock",
       "name": "Cold Shock",
       "type": "active",
       "learnLv": 1,
@@ -88,7 +88,7 @@
     },
     {
       "id": "skill:spiritmaster:combustion",
-      "key": "Combustion",
+      "key": "combustion",
       "name": "Combustion",
       "type": "active",
       "learnLv": 1,
@@ -150,7 +150,7 @@
     },
     {
       "id": "skill:spiritmaster:consecutive-countercurrent",
-      "key": "Consecutive Countercurrent",
+      "key": "consecutive-countercurrent",
       "name": "Consecutive Countercurrent",
       "type": "passive",
       "learnLv": 17,
@@ -178,7 +178,7 @@
     },
     {
       "id": "skill:spiritmaster:corrode",
-      "key": "Corrode",
+      "key": "corrode",
       "name": "Corrode",
       "type": "passive",
       "learnLv": 11,
@@ -207,7 +207,7 @@
     },
     {
       "id": "skill:spiritmaster:defiance",
-      "key": "Defiance",
+      "key": "defiance",
       "name": "Defiance",
       "type": "active",
       "learnLv": 16,
@@ -271,7 +271,7 @@
     },
     {
       "id": "skill:spiritmaster:dimensional-control",
-      "key": "Dimensional Control",
+      "key": "dimensional-control",
       "name": "Dimensional Control",
       "type": "active",
       "learnLv": 8,
@@ -333,7 +333,7 @@
     },
     {
       "id": "skill:spiritmaster:element-unification",
-      "key": "Element Unification",
+      "key": "element-unification",
       "name": "Element Unification",
       "type": "passive",
       "learnLv": 25,
@@ -361,7 +361,7 @@
     },
     {
       "id": "skill:spiritmaster:elemental-fusion",
-      "key": "Elemental Fusion",
+      "key": "elemental-fusion",
       "name": "Elemental Fusion",
       "type": "active",
       "learnLv": 14,
@@ -423,7 +423,7 @@
     },
     {
       "id": "skill:spiritmaster:jointstrike-curse",
-      "key": "Jointstrike: Curse",
+      "key": "jointstrike-curse",
       "name": "Jointstrike: Curse",
       "type": "active",
       "learnLv": 4,
@@ -485,7 +485,7 @@
     },
     {
       "id": "skill:spiritmaster:mental-focus",
-      "key": "Mental Focus",
+      "key": "mental-focus",
       "name": "Mental Focus",
       "type": "passive",
       "learnLv": 15,
@@ -513,7 +513,7 @@
     },
     {
       "id": "skill:spiritmaster:rapid-scattershot",
-      "key": "Rapid Scattershot",
+      "key": "rapid-scattershot",
       "name": "Rapid Scattershot",
       "type": "active",
       "learnLv": 5,
@@ -593,7 +593,7 @@
     },
     {
       "id": "skill:spiritmaster:revitalization-contract",
-      "key": "Revitalization Contract",
+      "key": "revitalization-contract",
       "name": "Revitalization Contract",
       "type": "passive",
       "learnLv": 23,
@@ -624,7 +624,7 @@
     },
     {
       "id": "skill:spiritmaster:souls-cry",
-      "key": "Soul's Cry",
+      "key": "souls-cry",
       "name": "Soul's Cry",
       "type": "active",
       "learnLv": 12,
@@ -685,7 +685,7 @@
     },
     {
       "id": "skill:spiritmaster:spirit-communion",
-      "key": "Spirit Communion",
+      "key": "spirit-communion",
       "name": "Spirit Communion",
       "type": "passive",
       "learnLv": 21,
@@ -713,7 +713,7 @@
     },
     {
       "id": "skill:spiritmaster:spirit-protection",
-      "key": "Spirit Protection",
+      "key": "spirit-protection",
       "name": "Spirit Protection",
       "type": "passive",
       "learnLv": 6,
@@ -741,7 +741,7 @@
     },
     {
       "id": "skill:spiritmaster:spirit-revitalization",
-      "key": "Spirit Revitalization",
+      "key": "spirit-revitalization",
       "name": "Spirit Revitalization",
       "type": "passive",
       "learnLv": 13,
@@ -769,7 +769,7 @@
     },
     {
       "id": "skill:spiritmaster:spirit-strike",
-      "key": "Spirit Strike",
+      "key": "spirit-strike",
       "name": "Spirit Strike",
       "type": "passive",
       "learnLv": 1,
@@ -798,7 +798,7 @@
     },
     {
       "id": "skill:spiritmaster:spirits-descent",
-      "key": "Spirit's Descent",
+      "key": "spirits-descent",
       "name": "Spirit's Descent",
       "type": "passive",
       "learnLv": 9,
@@ -827,7 +827,7 @@
     },
     {
       "id": "skill:spiritmaster:summon-earth-spirit",
-      "key": "Summon: Earth Spirit",
+      "key": "summon-earth-spirit",
       "name": "Summon: Earth Spirit",
       "type": "active",
       "learnLv": 7,
@@ -889,7 +889,7 @@
     },
     {
       "id": "skill:spiritmaster:summon-fire-spirit",
-      "key": "Summon: Fire Spirit",
+      "key": "summon-fire-spirit",
       "name": "Summon: Fire Spirit",
       "type": "active",
       "learnLv": 1,
@@ -951,7 +951,7 @@
     },
     {
       "id": "skill:spiritmaster:summon-water-spirit",
-      "key": "Summon: Water Spirit",
+      "key": "summon-water-spirit",
       "name": "Summon: Water Spirit",
       "type": "active",
       "learnLv": 3,
@@ -1013,7 +1013,7 @@
     },
     {
       "id": "skill:spiritmaster:summon-wind-spirit",
-      "key": "Summon: Wind Spirit",
+      "key": "summon-wind-spirit",
       "name": "Summon: Wind Spirit",
       "type": "active",
       "learnLv": 10,

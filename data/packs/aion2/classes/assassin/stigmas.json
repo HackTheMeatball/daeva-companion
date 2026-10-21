@@ -6,7 +6,7 @@
   "records": [
     {
       "id": "stigma:assassin:illusive-clone",
-      "key": "Illusive Clone",
+      "key": "illusive-clone",
       "name": "Illusive Clone",
       "availableLv": 22,
       "icon": "assets/icons/st-illusive-clone.png",
@@ -34,7 +34,7 @@
     },
     {
       "id": "stigma:assassin:savage-fang",
-      "key": "Savage Fang",
+      "key": "savage-fang",
       "name": "Savage Fang",
       "availableLv": 22,
       "icon": "assets/icons/st-savage-fang.png",
@@ -58,7 +58,7 @@
     },
     {
       "id": "stigma:assassin:swift-contract",
-      "key": "Swift Contract",
+      "key": "swift-contract",
       "name": "Swift Contract",
       "availableLv": 22,
       "icon": "assets/icons/st-swift-contract.png",
@@ -82,7 +82,7 @@
     },
     {
       "id": "stigma:assassin:triniels-dagger",
-      "key": "Triniel's Dagger",
+      "key": "triniels-dagger",
       "name": "Triniel's Dagger",
       "availableLv": 22,
       "icon": "assets/icons/st-triniels-dagger.png",

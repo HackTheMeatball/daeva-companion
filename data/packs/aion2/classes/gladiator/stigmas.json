@@ -6,7 +6,7 @@
   "records": [
     {
       "id": "stigma:gladiator:armor-of-balance",
-      "key": "Armor of Balance",
+      "key": "armor-of-balance",
       "name": "Armor of Balance",
       "availableLv": 22,
       "maxLevel": 25,
@@ -57,7 +57,7 @@
     },
     {
       "id": "stigma:gladiator:assault-strike",
-      "key": "Assault Strike",
+      "key": "assault-strike",
       "name": "Assault Strike",
       "availableLv": 22,
       "maxLevel": 25,
@@ -108,7 +108,7 @@
     },
     {
       "id": "stigma:gladiator:blade-toss",
-      "key": "Blade Toss",
+      "key": "blade-toss",
       "name": "Blade Toss",
       "availableLv": 22,
       "maxLevel": 25,
@@ -159,7 +159,7 @@
     },
     {
       "id": "stigma:gladiator:focused-block",
-      "key": "Focused Block",
+      "key": "focused-block",
       "name": "Focused Block",
       "availableLv": 22,
       "maxLevel": 25,
@@ -210,7 +210,7 @@
     },
     {
       "id": "stigma:gladiator:forced-restraint",
-      "key": "Forced Restraint",
+      "key": "forced-restraint",
       "name": "Forced Restraint",
       "availableLv": 22,
       "maxLevel": 25,
@@ -261,7 +261,7 @@
     },
     {
       "id": "stigma:gladiator:fracturing-rush",
-      "key": "Fracturing Rush",
+      "key": "fracturing-rush",
       "name": "Fracturing Rush",
       "availableLv": 22,
       "maxLevel": 25,
@@ -312,7 +312,7 @@
     },
     {
       "id": "stigma:gladiator:lifestealing-blade",
-      "key": "Lifestealing Blade",
+      "key": "lifestealing-blade",
       "name": "Lifestealing Blade",
       "availableLv": 22,
       "icon": "assets/icons/st-lifestealing-blade.png",
@@ -364,7 +364,7 @@
     },
     {
       "id": "stigma:gladiator:lunge-stance",
-      "key": "Lunge Stance",
+      "key": "lunge-stance",
       "name": "Lunge Stance",
       "availableLv": 22,
       "icon": "assets/icons/st-lunge-stance.png",
@@ -416,7 +416,7 @@
     },
     {
       "id": "stigma:gladiator:rage-burst",
-      "key": "Rage Burst",
+      "key": "rage-burst",
       "name": "Rage Burst",
       "availableLv": 22,
       "icon": "assets/icons/st-rage-burst.png",
@@ -468,7 +468,7 @@
     },
     {
       "id": "stigma:gladiator:tenaciousness",
-      "key": "Tenaciousness",
+      "key": "tenaciousness",
       "name": "Tenaciousness",
       "availableLv": 22,
       "maxLevel": 25,
@@ -519,7 +519,7 @@
     },
     {
       "id": "stigma:gladiator:wave-armor",
-      "key": "Wave Armor",
+      "key": "wave-armor",
       "name": "Wave Armor",
       "availableLv": 22,
       "maxLevel": 25,
@@ -589,7 +589,7 @@
     },
     {
       "id": "stigma:gladiator:wrath-wave",
-      "key": "Wrath Wave",
+      "key": "wrath-wave",
       "name": "Wrath Wave",
       "availableLv": 22,
       "maxLevel": 25,
@@ -640,7 +640,7 @@
     },
     {
       "id": "stigma:gladiator:zikels-blessing",
-      "key": "Zikel's Blessing",
+      "key": "zikels-blessing",
       "name": "Zikel's Blessing",
       "availableLv": 22,
       "icon": "assets/icons/st-zikels-blessing.png",

@@ -6,7 +6,7 @@
   "records": [
     {
       "id": "skill:cleric:bolt",
-      "key": "Bolt",
+      "key": "bolt",
       "name": "Bolt",
       "type": "active",
       "learnLv": 14,
@@ -68,7 +68,7 @@
     },
     {
       "id": "skill:cleric:chain-of-torment",
-      "key": "Chain of Torment",
+      "key": "chain-of-torment",
       "name": "Chain of Torment",
       "type": "active",
       "learnLv": 4,
@@ -130,7 +130,7 @@
     },
     {
       "id": "skill:cleric:condemnation",
-      "key": "Condemnation",
+      "key": "condemnation",
       "name": "Condemnation",
       "type": "active",
       "learnLv": 8,
@@ -192,7 +192,7 @@
     },
     {
       "id": "skill:cleric:debilitating-mark",
-      "key": "Debilitating Mark",
+      "key": "debilitating-mark",
       "name": "Debilitating Mark",
       "type": "active",
       "learnLv": 1,
@@ -254,7 +254,7 @@
     },
     {
       "id": "skill:cleric:defiance",
-      "key": "Defiance",
+      "key": "defiance",
       "name": "Defiance",
       "type": "active",
       "learnLv": 16,
@@ -319,7 +319,7 @@
     },
     {
       "id": "skill:cleric:divine-aura",
-      "key": "Divine Aura",
+      "key": "divine-aura",
       "name": "Divine Aura",
       "type": "active",
       "learnLv": 3,
@@ -381,7 +381,7 @@
     },
     {
       "id": "skill:cleric:earths-grace",
-      "key": "Earth's Grace",
+      "key": "earths-grace",
       "name": "Earth's Grace",
       "type": "passive",
       "learnLv": 21,
@@ -410,7 +410,7 @@
     },
     {
       "id": "skill:cleric:earths-retribution",
-      "key": "Earth's Retribution",
+      "key": "earths-retribution",
       "name": "Earth's Retribution",
       "type": "active",
       "learnLv": 1,
@@ -472,7 +472,7 @@
     },
     {
       "id": "skill:cleric:empyrean-lords-benediction",
-      "key": "Empyrean Lords' Benediction",
+      "key": "empyrean-lords-benediction",
       "name": "Empyrean Lords' Benediction",
       "type": "passive",
       "learnLv": 6,
@@ -501,7 +501,7 @@
     },
     {
       "id": "skill:cleric:empyrean-lords-grace",
-      "key": "Empyrean Lord's Grace",
+      "key": "empyrean-lords-grace",
       "name": "Empyrean Lord's Grace",
       "type": "passive",
       "learnLv": 9,
@@ -530,7 +530,7 @@
     },
     {
       "id": "skill:cleric:heal-block",
-      "key": "Heal Block",
+      "key": "heal-block",
       "name": "Heal Block",
       "type": "passive",
       "learnLv": 15,
@@ -577,7 +577,7 @@
     },
     {
       "id": "skill:cleric:healing-enhancement",
-      "key": "Healing Enhancement",
+      "key": "healing-enhancement",
       "name": "Healing Enhancement",
       "type": "passive",
       "learnLv": 11,
@@ -624,7 +624,7 @@
     },
     {
       "id": "skill:cleric:healing-light",
-      "key": "Healing Light",
+      "key": "healing-light",
       "name": "Healing Light",
       "type": "active",
       "learnLv": 10,
@@ -686,7 +686,7 @@
     },
     {
       "id": "skill:cleric:immortal-veil",
-      "key": "Immortal Veil",
+      "key": "immortal-veil",
       "name": "Immortal Veil",
       "type": "passive",
       "learnLv": 13,
@@ -733,7 +733,7 @@
     },
     {
       "id": "skill:cleric:judgment-thunder",
-      "key": "Judgment Thunder",
+      "key": "judgment-thunder",
       "name": "Judgment Thunder",
       "type": "active",
       "learnLv": 1,
@@ -795,7 +795,7 @@
     },
     {
       "id": "skill:cleric:light-of-regeneration",
-      "key": "Light of Regeneration",
+      "key": "light-of-regeneration",
       "name": "Light of Regeneration",
       "type": "active",
       "learnLv": 7,
@@ -857,7 +857,7 @@
     },
     {
       "id": "skill:cleric:lightning-strike-scattershot",
-      "key": "Lightning Strike Scattershot",
+      "key": "lightning-strike-scattershot",
       "name": "Lightning Strike Scattershot",
       "type": "active",
       "learnLv": 5,
@@ -938,7 +938,7 @@
     },
     {
       "id": "skill:cleric:prayer-of-concentration",
-      "key": "Prayer of Concentration",
+      "key": "prayer-of-concentration",
       "name": "Prayer of Concentration",
       "type": "passive",
       "learnLv": 17,
@@ -985,7 +985,7 @@
     },
     {
       "id": "skill:cleric:radiant-benediction",
-      "key": "Radiant Benediction",
+      "key": "radiant-benediction",
       "name": "Radiant Benediction",
       "type": "passive",
       "learnLv": 25,
@@ -1032,7 +1032,7 @@
     },
     {
       "id": "skill:cleric:radiant-recovery",
-      "key": "Radiant Recovery",
+      "key": "radiant-recovery",
       "name": "Radiant Recovery",
       "type": "active",
       "learnLv": 12,
@@ -1094,7 +1094,7 @@
     },
     {
       "id": "skill:cleric:survival-willpower",
-      "key": "Survival Willpower",
+      "key": "survival-willpower",
       "name": "Survival Willpower",
       "type": "passive",
       "learnLv": 23,
@@ -1142,7 +1142,7 @@
     },
     {
       "id": "skill:cleric:warm-benediction",
-      "key": "Warm Benediction",
+      "key": "warm-benediction",
       "name": "Warm Benediction",
       "type": "passive",
       "learnLv": 1,
