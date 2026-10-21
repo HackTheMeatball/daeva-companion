@@ -200,16 +200,17 @@ Rules for every item:
 
 ## P8: Small text and colour fixes
 
-- **Problem.** UX audit finding 13 (verified): Skills says "1 PT TO SPEND" and two lines lower "0 pts left"; an info
+- **Problem.** UX audit finding 13 (verified): an info
   button's accessible name reads "What is Respec is free?"; Next up's hero "Spent" button is green at 1500 px and pink
   at 390 px in the same state; at 390 px Next up cuts the key hint before its row placement. Design Lead found (#610, F1)
   that the E grid shows stigmas not yet equipped while "Coming to E" lists them too.
-- **Result.** The point counts agree; the info button has its own name; one colour for the "Spent" state at both
+- **Result.** The info button has its own name; one colour for the "Spent" state at both
   widths; the key hint keeps its row placement at 390 px (the start of the line is shortened instead); the E grid shows
   only equipped stigmas.
 - **Files.** `src/packs/aion2/cards/skills.js`, `src/data/markup.js`, `src/styles/app.css`,
   `src/packs/aion2/cards/nextup-kinds.js`, `src/packs/aion2/cards/build.js`, the tests.
-- **No-gos.** No new colour or token.
+- **No-gos.** No new colour or token. The Skills point counts ("1 PT TO SPEND" against "0 pts left") are F8's (#605),
+  which fixes the same mismatch; moved there 2026-10-21 so the two builds don't both edit it.
 - **Acceptance.**
   - [ ] a11y test: no accessible name contains "is … is".
   - [ ] Shots of each fix at 1500 and 390 px.
@@ -801,6 +802,30 @@ picker and opens from a stored save. P28 finishes P3's own goal in the tests; P2
 - **Lanes:** gen, schema. **Model:** Opus, M (90 min).
 - **After:** none.
 
+## P32b: `schema` under 4 s, and the Spiritmaster counts pinned again (#728)
+
+Added 2026-10-21 (Release Planner). P32 (#722, PR #726) merged without its first acceptance line.
+
+- **Problem.** `schema` alone takes about 7 s on CI's runner. #726 measured one `generate()` at about 110 ms alone but
+  250–400 ms with 3–4 worker threads, and about 1.5 s of cold start per worker (ajv compile plus the first full
+  validation); parallel throughput is about 1.5×. #726 also made the Spiritmaster check read its numbers from the files
+  it checks, so a dropped Spiritmaster record no longer fails `schema`.
+- **Result.**
+  - The Spiritmaster skill, stigma, node and Triniel-node counts (22, 13, 537, 117) are pinned in
+    `data/expected-counts.json`, with a negative control that a dropped Spiritmaster record fails `schema`. This part
+    ships in 0.9 whatever happens to the speed line.
+  - `schema` alone runs in under 4 s on CI's runner with every check and negative control still failing as required.
+    If that can't be met without dropping or loosening a check, the build stops at the coverage fix, says so on the PR
+    with its measurements, and the speed line moves to 0.10.
+- **Files.** `tests/schema*`, `data/expected-counts.json`, `scripts/` (generate) as the build finds.
+- **Inputs.** none.
+- **No-gos.** No check removed, loosened or skipped. Generated modules byte-identical; `DATA_SOURCES.md` unchanged.
+- **Acceptance.**
+  - [ ] The negative control fails `schema` when a Spiritmaster record is dropped.
+  - [ ] `schema` timing on CI's runner in the PR body (before / after), or the 0.10 note above.
+- **Lanes:** gen, schema. **Model:** Opus, M (90 min).
+- **After:** none.
+
 ## P33: A private contact for legal notices (T-63)
 
 - **Problem.** The only contact is a public GitHub issue, so a rights holder (NCSoft, a source site) has no private way
@@ -827,6 +852,27 @@ picker and opens from a stored save. P28 finishes P3's own goal in the tests; P2
 - **Review:** blind (owner-held legal text; Code Review the code).
 - **Lanes:** release (CHANGELOG.md; `site` and `page-card` are not kickoff lanes). **Model:** Sonnet, S (45 min).
 - **After:** P24, the gate above. If the gate isn't met by 0.9's release gate, P33 moves to 0.10.
+
+## P34–P37: data fixes from the owner's screens and the 2026-10-21 patch (Game Data Check)
+
+Added 2026-10-21 6:35–6:45 PM ET (Release Planner) from Game Data Check's rulings (patch impact check against a5a340b8;
+T-105; T-104; T-107). Each issue holds the full spec; owner screens are the source of truth (CLAUDE.md). Each PR gets
+Game Data Check's `VERIFIED`.
+
+- **P34 (#781): Ariel, a sixth board, endgame only.** The official patch notes (2026-10-21, owner-supplied) add the Ariel
+  board, fed only by Ariel Fragments from Expedition (Hard) at item level 2600. The eight `guide/tips.json` keep five
+  boards to Lv 45 and add one clause; the `boards.json` notes drop "absent on Global". No node data (no permitted
+  source). Visible: shots and `scrapbook.json`. **Lanes:** gen, golden. **After:** none.
+- **P35 (#782): Vaizel Assault Stance costs 4.** The owner's board counted 5 without Quick Slice open; in the guide's
+  order (Quick Slice first) it is 4, and the two total 9 either way. Assassin `builds.json` order 40.4. Visible.
+  **Lanes:** gen, golden. **After:** none.
+- **P36 (#783): respec tips match the owner's screens.** The Stigmas reset was free at Lv 39 (no "always free"); the
+  Daevanion reset is per board, with a button on each board (no price). `stigmas.html`, `stigmas.js`, `daevanion.js`,
+  and `docs/research/2026-10-respec.md` §D1 and §D2. Visible. **Lanes:** golden. **After:** none.
+- **P37 (#785): Spiritmaster Cold Shock notes.** The owner's tooltips confirm "Absorbs 1% HP" and show [Earth Tremor] in
+  specialties 4 and 5; the `conflicts` notes drop "single source" and "template carry-over". No visible change.
+  **Lanes:** gen. **After:** none.
+- **Model:** Opus for all four (gen and golden work starts on Opus), S (44 min) each.
 
 ## S1–S4: pipeline items (Build Pipeline builds them; no queue line)
 
@@ -865,6 +911,10 @@ project's tokens, the pipeline 18%; check at the 0.9 review: tracker share below
 - **What it does.** Version bump and the CHANGELOG section ("Saves reset in this version", from P2).
 - **0.8.1 folded in** (owner, 2026-10-21 5:35 PM ET; DECISIONS). The CHANGELOG section also lists the merged 0.8.1 items (F1–F7, F9, F11, #585) and F8 (#605) and F10 (#690). It says these items, and the save reset, went live on the site as they merged (every push to main deploys, `docs/DEPLOY.md`), and gives the date the reset went live (2026-10-21, #734). For F9 and F10 it says only that quoted source text was replaced with our own paraphrase (Legal).
 - **GO precondition.** F10 (#690) and F8 (#605) are merged. If F10 isn't, `GO 0.9.0` waits (Legal's condition; no fallback).
+- **UAT trial** (UAT plan, 2026-10-21). At `RC READY 0.9`, Player Testing also checks 0.9's visible items against their
+  existing acceptance lines in the RC build (new scenario lines only where writing them doesn't delay RC READY) and adds
+  an item × line × pass/fail × evidence table to `RC PLAY DONE 0.9`. The trial holds nothing; a fail takes today's blocker
+  path only if the Release Planner judges it a blocker. Lines checked, untestable lines, fails and minutes go to the 0.10 review.
 - **K17.** The CHANGELOG section is written into the release issue before `PRE-RELEASE CHECK 0.9.0`.
 - **Release.** `RC READY 0.9 <sha>` to Player Testing with `PRE-RELEASE CHECK 0.9.0`; the Release Planner posts
   `GO 0.9.0` only after `DATA OK 0.9.0` and `RC PLAY DONE 0.9` name the same build (K19). With S4 live, the release

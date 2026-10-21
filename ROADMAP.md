@@ -125,7 +125,14 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
    any store app, this step is a full architecture and performance audit.
 3. **Shape each item:** problem; appetite (S < 100 changed lines, M 100–300, L 300–1,000; bigger = split it); no-gos
    (what it will not do); the module(s) and files it owns (every acceptance line needs an owning file); the test that
-   proves it done; builder model (routing rule in #114, as step 1 left it); its stall limit from step 1's build times. An item with an
+   proves it done; builder model (routing rule in #114, as step 1 left it); its stall limit from step 1's build times. **Player scenarios (team, 2026-10-21 7:00 PM ET;
+   Routed: coordinator 2026-10-21T22:52Z; Fresh governance review OK on the UAT plan, `release/uat-plan.md` in the shared folder;
+   from 0.10):** for an item that changes what a player sees, at least one acceptance line is a player scenario: start
+   state (class, level, save fixture, width), steps, and the exact expected result (text, value or position). A scenario
+   that expects a game fact takes its value from a source or an owner screen, signed by Game Data Check, never from the
+   app's own output. The plan reviewer checks each line's testability, and Player Testing reads the lines in that same
+   review. The Release Planner logs the start and end time (ET) of writing each spec's Acceptance lines in the minor's
+   #232 row (the kaizen review measures it). An item with an
    unknown is a research item first, not a build. **Live dependencies** (Kaizen, 2026-10-19): anything the item needs
    that isn't on the live site yet (a server, a feature of another item). Such an item ships hidden behind a flag until
    the dependency is live, and the reviewer checks the flag (0.7's sync line showed for ~5 h with no server).
@@ -261,13 +268,18 @@ means the named data is fixed first. Watchdog (Mike) flags a check unanswered af
 after her check, she re-runs it before the tag. **Release-candidate play (owner, 2026-10-19 4:56 PM ET), for every
 minor from 0.8.0:** with `PRE-RELEASE CHECK` the Release Planner sends Player Testing (Jesse) `RC READY <minor> <sha>`
 (main's head once every item has merged); Jesse plays main built locally at that commit and answers
-`RC PLAY DONE <minor>` with an issue link. The Release Planner reads that report before telling Gus `DATA OK`. **The
+`RC PLAY DONE <minor>` with an issue link. The Release Planner reads that report before telling Gus `DATA OK`. **From 0.10** (UAT plan, as above): the report gives each acceptance scenario of
+the minor's items as pass or fail with evidence (the value read and a screenshot). A failed scenario is a blocker under the
+blocker-fix clause, or the Release Planner moves the item to the next release and the CHANGELOG says so; the owner decides only
+for an item he marked must-ship (his word, recorded in DECISIONS). Passed scenarios join Player Testing's scripts and run in
+each RC play and patch delta check. **The
 release starts on one GO (owner, 2026-10-20 4:39 PM ET; Kaizen K19):** the Release Planner posts `GO <version>` only after
 `DATA OK` and `RC PLAY DONE` name the same build (build.json; a patch has no RC play, so after `DATA OK`), and Gus starts the
 release item on GO and nothing else; the owner's standing ship OK covers a release once GO is in. The
 live play after release and the per-patch delta check stay.
 
 **When the site changes, and patches (team, 2026-10-21 6:06 PM ET; Routed: coordinator 2026-10-21T22:06Z; Fresh governance review OK on Revision 1, `release/deploy-cadence-combined-proposal-draft.md` in the shared folder; amends this gate, loosens no owner-held limit).** The site deploys only from a release: a push to main that changes package.json's `version`, or a deploy dispatch at a named sha (a failed release is re-run that way). Ordinary merges go live at the next release. Until 1.0 or public launch, a patch ships only from main before the next minor's first merge; after that, fixes ship in that minor. The only other path is the guarded deploy dispatch: Isaac's quoted "now" on #114 (message id), or for a legal remedy Legal (Chuck)'s written ruling there plus that "now". Two people: the thread that asks never dispatches; the coordinator reads the "now" by id, then dispatches. The run lists the commits since the last tag on #114 and refuses a save-key change or a "Saves reset" line unless the "now" names it; Watchdog (Mike) flags in #221 any deploy with neither a version change nor a quoted "now". Mechanics: `.github/workflows/ci.yml` and `docs/DEPLOY.md` (Build Pipeline (Gus)); until they merge, every push to main still deploys. At 1.0 the Release Planner brings a release-branch proposal to review. Why: 0.9's save reset went live under the 0.8.0 label (#734), and 0.8.1 stalled behind it (folded into 0.9.0, DECISIONS 2026-10-21).
+
 **Release manager and merge freeze (owner, 2026-10-20 1:35 PM ET), from 0.8.0:** the Release Planner owns every release
 from `RC READY` (a patch: from `PRE-RELEASE CHECK`) until the live site shows the new version, and checks that every step
 finishes. For a minor, from `RC READY` until CI's tag, Gus merges only PRs whose files are all `docs/**`, `ROADMAP.md` or
@@ -1371,6 +1383,11 @@ workflows).
 | P30 | P5 cut identical writes 17% of a 25% target (#684) → Stigmas, Journey, Areas, Daevanion lists skip them too | M | Opus | stigmas-card, journey-card, daevanion-card, nextup-card, site | P5 |
 | P31 | 106 quotes miss their hosts' terms (Legal's C7) → credited or paraphrased from research tables, then a gen check | M | Opus | gen, golden | `research-quotes-c7` |
 | P32 | P6 left schema at 8–10 s (target < 4 s) and no counts file (#717) → controls in workers, `expected-counts.json` | M | Opus | gen, schema | none |
+| P32b | #726 left schema at about 7 s and unpinned the Spiritmaster counts (#728) → counts pinned with a control; speed or a 0.10 note | M | Opus | gen, schema | none |
+| P34 | The 2026-10-21 patch adds a sixth board, Ariel, endgame only (#781) → tips and boards notes | S | Opus | gen, golden | none |
+| P35 | Vaizel Assault Stance shows 5; the guide's order makes it 4 (owner board, #782) → builds.json cost | S | Opus | gen, golden | none |
+| P36 | Respec tips say Stigmas cost Kinah and Daevanion goes node by node (owner screens, #783) → free at Lv 39, per board | S | Opus | golden | none |
+| P37 | Cold Shock notes call [Earth Tremor] a template guess (owner tooltips, #785) → notes follow the game | S | Opus | gen | none |
 | S1 FR | Golden shares a shard → its own shard | S | Gus | ci | P6 |
 | S2 FR | Nothing checks the live app works → scripted journey after each deploy and every 6 h | S | Gus | ci | none |
 | S3 FR | Sync server deployed by hand → CI tests and dry run, deploy on the owner's token | M | Gus | ci | none |
