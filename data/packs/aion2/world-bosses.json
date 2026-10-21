@@ -547,8 +547,12 @@
         }
       ],
       "status": "verified",
+      "fieldStatus": {
+        "upMinutes": "inferred"
+      },
       "notes": [
-        "Korea and Taiwan spawn it every 4 h; that doesn't apply to Global."
+        "Korea and Taiwan spawn it every 4 h; that doesn't apply to Global.",
+        "Up 30 min: two community sources (aion2atlas, allthings.how); that they are independent is inferred, as for the field-boss cooldowns."
       ],
       "verifiedAt": "2026-10-20"
     }
