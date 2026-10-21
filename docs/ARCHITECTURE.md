@@ -206,7 +206,10 @@ points) and to the `save` suite (`tests/save.js`).
   `milestoneFilters` (the milestone filters and toolbar), `skills` (`renderNext`, which also draws Progress, the Build
   drawer, Journey's timeline, Later, Ascension, the story chips and lines, Daevanion and Undo), `cube`, `stigmas`,
   `fillStigmaText` and `syncQRun` (milestone row text), `nextup` (`renderNow`), then `syncExpand`. Layout fitting runs
-  in `requestAnimationFrame`, not inside `update()`.
+  in `requestAnimationFrame`, not inside `update()`. Skills, Progress, the Build drawer, Daevanion, the milestone rail
+  and Next up write their boxes with `setHTML(el, html)` (`src/core/cards.js`, 0.9 P5), which skips a write when the
+  box still holds the same markup; a box other code changes after the write keeps `innerHTML` (the reason is beside
+  it). The `site` suite checks a second `update()` with no change writes nothing through it.
 
 ### Card registry (0.4 P4a)
 
@@ -339,9 +342,10 @@ produced the v1 files (provenance; they no longer match `data/`). `tools/history
   `src/cards/X.html` as it is (0.4 P4a; a missing file, an `@card` line inside a card file or a leftover
   `@card` line stops the build), then each `<link rel="stylesheet" href="styles/X.css">` line of the shell becomes a
   `<style>` with the file as it is; each `<script type="module" src="X.js"></script>` line becomes one classic `<script>`
-  holding esbuild's bundle of that entry (format `esm` with no imports or exports left, so no wrapper; minified for whitespace and syntax only (0.5 P20: `minifyWhitespace` + `minifySyntax`, never
-  `minifyIdentifiers`, so stack traces and tests still see the top-level names; about 84 KB raw and 8.6 KB gzip less,
-  for budget headroom); no tree shaking, since names are used from inline `onclick` attributes and from tests). Every top-level name therefore
+  holding esbuild's bundle of that entry (format `esm` with no imports or exports left, so no wrapper; minified (0.5 P20: `minifyWhitespace` + `minifySyntax`, about 84 KB raw and 8.6 KB gzip less; 0.8.1 F6 #597 added
+  `minifyIdentifiers`, which shortens local names only: the transform runs without a format, so it never renames a
+  top-level name or a free reference to one, and tests and inline handlers still see every top-level name; the class
+  chunks are minified without it); no tree shaking, since names are used from inline `onclick` attributes and from tests). Every top-level name therefore
   stays a page global, as before modules. esbuild reprints the code: comments dropped, minified formatting, and
   top-level `const` / `let` emitted as `var` (it does this whenever it bundles; none of the 244 top-level names is a
   `window` property). Modules come first in import order (generated data, then the pack's data modules, the engine and
@@ -370,8 +374,10 @@ produced the v1 files (provenance; they no longer match `data/`). `tools/history
   `QUEST_STEPS_X`, `QUEST_LOC_X`, `RQ_STATS` today; the generator still makes them for its checks and the Node core
   tests still see every table; a name that only appears in a comment counts as used). The tables of `generated.js`
   are also served in name order, which gzip's 32 KB window happened to like best (re-check after a big data change).
-  `node scripts/build.mjs --sizes` prints where the gzip bytes go: for each generated table its marginal cost (page
-  size minus the page with that table bundled as `null`), for every other part (script modules, stylesheets as shipped,
+  `node scripts/build.mjs --sizes` prints where the gzip bytes go: for each generated table its marginal cost on the
+  budgeted page (0.9 P5: `dist/index.html` plus the largest class chunk, each gzipped on its own, as the budget counts
+  them; the page size minus the page with that table bundled as `null`; a per-class table's row says "(chunk)", and
+  those rows' sum is printed beside the chunk's own gzip size), for every other part (script modules, stylesheets as shipped,
   card markup, fonts) its size gzipped alone, so those rows overlap and don't add up to the page. Measure with it
   before cutting; record row-encoding of the tables was tried and made the page larger (gzip already folds repeated keys).
 - **Per-class chunks** (0.6 P2, DATA-FORMAT-V2 §2.1): the generator compiles every guide pack (one playable class) on

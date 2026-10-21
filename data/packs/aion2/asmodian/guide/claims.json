@@ -11,7 +11,7 @@
       "sources": [
         {
           "url": "https://allthings.how/?p=215236",
-          "quote": "Resets are free and unlimited"
+          "note": "Undoing spent skill points costs nothing, and you can do it any number of times. Fetch date unknown."
         },
         {
           "url": "https://www.exitlag.com/blog/aion-2-complete-character-progression/",
@@ -47,7 +47,7 @@
         },
         {
           "url": "https://allthings.how/?p=215236",
-          "quote": "The first arrives at level 8, the second at level 12, and the third at level 16, with further slots ... at level 20"
+          "note": "Specialty slots open at skill levels 8, 12 and 16, with more at 20. Fetch date unknown."
         }
       ],
       "action": "keep",
@@ -276,11 +276,11 @@
         },
         {
           "url": "https://allthings.how/?p=244925",
-          "quote": "Every single clear hands you: 15,000 Kina, 1,250 Enhance Stone, 2 Daevanion Crystal (Bound), 2 Wisdom Stone (Bound), 1 unique title ... a solo instance you enter, clear once"
+          "note": "Each Sealed Dungeon's first clear gives 15,000 Kina, 1,250 Enhance Stones, two each of bound Daevanion Crystals and Wisdom Stones, and a title. Fetch date unknown."
         },
         {
           "url": "https://allthings.how/aion-2/map/library-of-wisdom/",
-          "quote": "Clearing the dungeon pays 15,000 Kina and 1,250 Enhance Stone, plus 2 each of Sealed Wing Featherdown (Bound), Statue Scrap ... Daevanion Crystal (Bound) and Wisdom Stone (Bound)"
+          "note": "Library of Wisdom's clear gives the same Kina and stones, plus two each of the bound wing feathers, statue scraps, crystals and Wisdom Stones. Fetch date unknown."
         }
       ],
       "action": "keep",
@@ -303,7 +303,7 @@
         },
         {
           "url": "https://allthings.how/?p=234622",
-          "quote": "rewards two Noble Belt Enhance Scrolls plus 15,000 Kina on completion ... Many players also pick up extra scrolls from green quests and map question marks"
+          "note": "A Stronghold clear gives two Noble Belt Enhance Scrolls and 15,000 Kina; green quests and the \"?\" map markers drop more scrolls. Fetch date unknown."
         },
         {
           "url": "https://fandomwire.com/aion-2-noble-belt-enhance-scroll-how-to-upgrade/",
@@ -367,7 +367,7 @@
         },
         {
           "url": "https://allthings.how/?p=234744",
-          "quote": "A Duty mission's base payout is 2,000 Abyss Points, along with Kina, plus one to five random bonus items"
+          "note": "A Duty mission pays 2,000 Abyss Points and some Kina at base, plus between one and five random items. Fetch date unknown."
         }
       ],
       "action": "rewrite",
@@ -387,7 +387,7 @@
       "sources": [
         {
           "url": "https://allthings.how/?p=234744",
-          "quote": "four tabs: Emergency, Weekly, Regular: Craft, and Regular: Boss ... each delivery pays between 380 and 6,000 Abyss Points"
+          "note": "The Supply board has four tabs: Emergency, Weekly, and two standing ones for crafting and bosses. One hand-in pays 380 to 6,000 Abyss Points. Fetch date unknown."
         },
         {
           "url": "https://www.keengamer.com/articles/guides/aion-2-daily-and-weekly-checklist-what-to-do-before-each-reset/",
@@ -496,12 +496,12 @@
         },
         {
           "url": "https://allthings.how/?p=234622",
-          "quote": "Rare: 232,000 Kina and 9,280 Enhance Stones ... A successful morph resets the belt to +0 with higher base stats"
+          "note": "Taking the belt to +10 at Rare costs 232,000 Kina and 9,280 Enhance Stones; a Substance Morph sends it back to +0 with better base stats. Fetch date unknown."
         }
       ],
       "action": "rewrite",
       "newText": "The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier.",
-      "note": "Belt costs verified (2 sources). No source gives the amulet's cost, so 'each' is dropped. '+0 reset' is allthings.how only; 'Lv 45 Kina sink' is inference. Both dropped.",
+      "note": "Belt costs: single source (allthings.how is the only permitted one; FandomWire agrees but isn't in the source register; 0.8.1 F9). No source gives the amulet's cost, so 'each' is dropped. '+0 reset' is allthings.how only; 'Lv 45 Kina sink' is inference. Both dropped.",
       "appliesTo": [
         "g16:amulet",
         "tip:extract",
@@ -512,7 +512,7 @@
     {
       "id": "C24",
       "claim": "Noble Belt enhance success is 100%.",
-      "verdict": "verified",
+      "verdict": "single-source",
       "sources": [
         {
           "url": "https://fandomwire.com/aion-2-noble-belt-enhance-scroll-how-to-upgrade/",
@@ -520,11 +520,11 @@
         },
         {
           "url": "https://allthings.how/?p=234622",
-          "quote": "Each enhancement attempt has a 100% success rate"
+          "note": "Enhancing the Noble Belt never fails. Fetch date unknown."
         }
       ],
       "action": "keep",
-      "note": "Belt only. Line 2010 also says 100% for the amulet, and no source checked here says that; check it in game.",
+      "note": "Belt only. Line 2010 also says 100% for the amulet, and no source checked here says that; check it in game. Single source since 0.8.1 (F9): allthings.how is the only permitted source for the 100%; FandomWire agrees but isn't in the source register.",
       "appliesTo": [
         "g12:belt"
       ],
@@ -541,7 +541,7 @@
         },
         {
           "url": "https://allthings.how/aion-2/map/empyrean-traces/",
-          "quote": "Empyrean Traces also appears on the Altgard map, at 560 spots"
+          "note": "Altgard's map has 560 Empyrean Trace spots. Fetch date unknown."
         },
         {
           "url": "https://www.playnews.gg/en/guides/empyrean-traces-feathers-in-aion-2-how-to-find-use-and-hide-them-from-the-map",
@@ -662,7 +662,7 @@
       "sources": [
         {
           "url": "https://allthings.how/?p=244925",
-          "quote": "a solo instance you enter, clear once"
+          "note": "A Sealed Dungeon is a one-player instance that you clear a single time. Fetch date unknown."
         }
       ],
       "action": "rewrite",
@@ -707,7 +707,7 @@
         },
         {
           "url": "https://allthings.how/?p=234744",
-          "quote": "Supply ... tabs: Emergency, Weekly, Regular: Craft, Regular: Boss (separate from Duty missions)"
+          "note": "Supply Requests and their four tabs are a different system from Duty missions. Fetch date unknown."
         }
       ],
       "action": "keep",
@@ -768,7 +768,7 @@
         {
           "url": "https://allthings.how/?p=232647",
           "label": "speedrun guide (Ascension Gauge at 22 and 32)",
-          "quote": "At levels 22 and 32, advancement in the main story is gated by a required Ascension quest. Before either quest becomes available, its Ascension Gauge must reach 100%."
+          "note": "The story stops at Lv 22 and Lv 32 for an Ascension quest, which opens only once the Ascension Gauge is full. Fetch date unknown."
         },
         {
           "url": "https://skycoach.gg/blog/aion-2/articles/aion-2-leveling-guide",

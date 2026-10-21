@@ -359,7 +359,7 @@
               },
               {
                 "url": "https://allthings.how/?p=244377",
-                "quote": "picks up straight after Blade of Vengeance"
+                "note": "\"In the Fang Legion's Name\" comes right after \"Blade of Vengeance\". Fetch date unknown."
               }
             ]
           },
@@ -405,7 +405,7 @@
         "turnin.zone": "inferred"
       },
       "notes": [
-        "allthings.how: picks up straight after Blade of Vengeance"
+        "allthings.how: \"In the Fang Legion's Name\" comes right after \"Blade of Vengeance\""
       ],
       "conflicts": [
         "Metabot turn-in location field says 'Sanctum Outpost, Altgard'; completion text says 'Talk to Menrik at Fang Hideout'",
