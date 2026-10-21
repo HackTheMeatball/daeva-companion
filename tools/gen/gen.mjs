@@ -9,7 +9,7 @@
        committed) for review; `npm run gen:check` fails if DATA_SOURCES.md is not current.
      - tests (core, e4) call generate() for the values the page should carry.
    Fails (throws / exit 1) on a schema error, a failed cross-record check or an unknown data major version. */
-import { mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { basename, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
@@ -637,8 +637,13 @@ export function generate(opts = {}) {
   /* Everything above runs for every pack. A pack's own rules (fixed counts, named records, its game's collections) live in
      the module its manifest names in `checks` (pack.schema.json), called with the bundle and the compiled tables and the
      same check(name, ok, detail); they run after the engine's checks, in chain order. */
+  /* data counts (0.9 P32): a pack's checks pin a count with count(key, n), never a number of their own; the reviewed numbers
+     live in data/expected-counts.json, written by `npm run gen -- --counts`, so a count that changes in the data fails until
+     that file is rewritten (and reviewed). opts.expected: false records the counts without checking them (--counts). */
+  const expected = opts.expected !== undefined ? opts.expected : readExpected(), counts = {};
+  const count = (key, n) => { counts[key] = n; if (expected !== false) check(`count ${key} = ${n}: as in ${COUNTS_FILE} (npm run gen -- --counts)`, !!expected && expected[key] === n, expected ? expected[key] : 'no ' + COUNTS_FILE); };
   const ctx = { B, R, zones, story, sqById, chain, rqs, rqById, skills, skById, stigmas, stById, nodes, nodeById, boards, boardById, sds, shs, rules, claims,
-    cls, builds, build, milestones, steps, tips, unlocks, items, asc, all, packs: B.packs, RQ, STORY_END, SH_DATA, GATE_GRAPH, kibs, NODE_PLACE, KIBELISKS, atomsOf, byNum, refCheck };
+    cls, builds, build, milestones, steps, tips, unlocks, items, asc, all, packs: B.packs, RQ, STORY_END, SH_DATA, GATE_GRAPH, kibs, NODE_PLACE, KIBELISKS, KIB_REPORT, atomsOf, byNum, refCheck, count };
   for (const p of B.packChecks) p.checks(ctx, check);
 
   /* ---------------------------------------------------------------- class packs no guide uses yet (0.6 P4) */
@@ -671,8 +676,13 @@ export function generate(opts = {}) {
   report.stats = { checks: report.checks.length, failed: failed.length, rq: RQ_STATS, sources: Object.fromEntries(SOURCES.map(s => [s.id, s.links.length])), constants: Object.keys(C).length,
     gateNodes: Object.keys(GATE_GRAPH.nodes).length, places: Object.keys(NODE_PLACE).length, kibelisks: kibs.length };
   return { module, gateModule, proposedModule, placeModule, constants: C, gateGraph: GATE_GRAPH, gateProposed: GATE_PROPOSED, nodePlace: NODE_PLACE, kibelisks: KIBELISKS,
-    travelRules: TRAVEL_RULES, report, failed, sources: SOURCES, siteName, label, all, idle, B };
+    travelRules: TRAVEL_RULES, report, failed, sources: SOURCES, siteName, label, all, idle, B, counts };
 }
+
+/* data/expected-counts.json (0.9 P32): the reviewed data counts, { key: n }, read by every generate() unless opts.expected */
+export const COUNTS_FILE = 'data/expected-counts.json';
+export const readExpected = () => { const f = join(ROOT, COUNTS_FILE); return existsSync(f) ? JSON.parse(readFileSync(f, 'utf8')) : null; };
+export const countsJson = counts => JSON.stringify(Object.fromEntries(Object.keys(counts).sort().map(k => [k, counts[k]])), null, 2) + '\n';
 
 /* the class packs below a packs root that no guide pack's chain reaches, by id */
 export const idleClassPacks = (root = DEFAULT_ROOT, fs = realFs) => {
@@ -826,17 +836,27 @@ export function dataSourcesMd(g, others = []) {
 }
 
 /* ------------------------------------------------------------------ CLI */
-/* node tools/gen/gen.mjs [--pack <id>] [--root <dir>]: defaults aion2/asmodian/assassin and data/packs. data/DATA_SOURCES.md
-   is the default pack's; another pack or root writes its DATA_SOURCES.md to tools/gen/out/ instead. */
+/* node tools/gen/gen.mjs [--pack <id>] [--root <dir>] [--counts]: defaults aion2/asmodian/assassin and data/packs.
+   data/DATA_SOURCES.md is the default pack's; another pack or root writes its DATA_SOURCES.md to tools/gen/out/ instead.
+   --counts (default pack and root only) first rewrites data/expected-counts.json from the data, for review in the diff. */
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const t0 = Date.now(), args = process.argv.slice(2), opt = { pack: DEFAULT_PACK, root: DEFAULT_ROOT };
+  let writeCounts = false;
+  const usage = () => { console.error('usage: node tools/gen/gen.mjs [--pack <id>] [--root <dir>] [--counts]'); process.exit(2); };
   for (let i = 0; i < args.length; i++) {
+    if (args[i] === '--counts') { writeCounts = true; continue; }
     const k = args[i].replace(/^--/, '');
-    if (!['pack', 'root'].includes(k) || !args[i].startsWith('--') || args[i + 1] === undefined) { console.error('usage: node tools/gen/gen.mjs [--pack <id>] [--root <dir>]'); process.exit(2); }
+    if (!['pack', 'root'].includes(k) || !args[i].startsWith('--') || args[i + 1] === undefined) usage();
     opt[k] = k === 'root' ? resolve(args[++i]) : args[++i];
   }
-  let g; try { g = generate(opt); } catch (e) { console.error('gen: ' + e.message); process.exit(1); }
   const isDefault = opt.pack === DEFAULT_PACK && opt.root === DEFAULT_ROOT, dsMd = isDefault ? 'data/DATA_SOURCES.md' : 'tools/gen/out/DATA_SOURCES.md';
+  if (writeCounts && !isDefault) { console.error('gen: --counts writes the default pack\'s counts only (no --pack / --root)'); process.exit(2); }
+  if (writeCounts) {
+    let c; try { c = generate({ ...opt, expected: false }).counts; } catch (e) { console.error('gen: ' + e.message); process.exit(1); }
+    writeFileSync(join(ROOT, COUNTS_FILE), countsJson(c));
+    console.log(`gen: ${COUNTS_FILE} written (${Object.keys(c).length} counts); review its diff`);
+  }
+  let g; try { g = generate(opt); } catch (e) { console.error('gen: ' + e.message); process.exit(1); }
   mkdirSync(join(ROOT, 'tools/gen/out'), { recursive: true });
   writeFileSync(join(ROOT, 'tools/gen/out/generated.js'), g.module);
   writeFileSync(join(ROOT, 'tools/gen/out/gate-graph.js'), g.gateModule);

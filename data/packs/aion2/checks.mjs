@@ -3,7 +3,7 @@
    compiled tables (gen.mjs, "pack-declared checks"); check(name, ok, detail) is the generator's. Names and order are the
    ones these checks had inside gen.mjs (0.4 P6a moved them unchanged). No imports: a copied packs root runs as is. */
 export function checks(ctx, check) {
-  const { zones, chain, rqs, skills, stigmas, nodeById, boards, sds, shs, rules, builds, build, milestones, steps, asc, all, RQ, STORY_END, SH_DATA, atomsOf, byNum, refCheck } = ctx;
+  const { zones, chain, rqs, skills, stigmas, nodeById, boards, sds, shs, rules, builds, build, milestones, steps, asc, all, RQ, STORY_END, SH_DATA, atomsOf, byNum, refCheck, count } = ctx;
   const sk = id => { if (!ctx.skById[id]) throw new Error('unknown skill ' + id); return ctx.skById[id]; };
 
   /* ---------------------------------------------------------------- story */
@@ -25,7 +25,9 @@ export function checks(ctx, check) {
     check('regional: zone = giver zone: ' + q.name, q.zone === q.giver.zone);
     check('regional: id = key = rq:<gameId>: ' + q.name, q.id === 'rq:' + q.gameId && q.key === q.id);
   }
-  check('58 regional quests', RQ.length === 58, RQ.length);
+  /* the data counts (0.9 P32): count(key, n) checks n against data/expected-counts.json (`npm run gen -- --counts`) */
+  count('regionalQuests', RQ.length);
+  count('storyQuests', chain.length);
   check('every regional quest has unlocksAt and rec', RQ.every(x => x.unlocksAt && x.rec));
   /* a camp (giver place, or a Kibelisk within 100 m of the giver) belongs to one zone; a nearest Kibelisk further away
      may lie across a zone border (Pain Unending: Basfelt Waterfall 309 m) */
@@ -34,12 +36,12 @@ export function checks(ctx, check) {
   check('Nine Wonders of Altgard: 2nd Leg is in Battlescar Mound (E4)', (RQ.find(x => x.name === 'Nine Wonders of Altgard: 2nd Leg') || {}).zone === 'Battlescar Mound');
 
   /* ---------------------------------------------------------------- strongholds, Sealed Dungeons, zones */
-  check('15 strongholds', SH_DATA.length === 15);
+  count('strongholds', SH_DATA.length);
   check('every stronghold has zone, range and Kibelisk', SH_DATA.every(x => x.zone && x.lo && x.hi && x.kib));
   for (const s of shs) check('stronghold pays no stones/crystals: ' + s.name, !s.rewards.wisdom && !s.rewards.crystal);
   const mapSlug = n => n.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   for (const d of sds) check('Sealed Dungeon key = <band prefix>:<slug>: ' + d.name, d.key === `${d.band === 10 ? 'g10h' : 'sd'}:${mapSlug(d.name)}` && d.id === 'sd:' + mapSlug(d.name));
-  check('60 Sealed Dungeons', sds.length === 60, sds.length);
+  count('sealedDungeons', sds.length);
   const sdRule = rules['rule:sd-first-clear-asmodian'];
   check('Sealed Dungeon reward is 2 Wisdom Stones + 2 crystals in every sampled band', !!sdRule && sdRule.value.evidence.every(b => b.wisdom === 2 && b.crystal === 2));
   for (const z of Object.values(zones)) for (const c of [...(z.camps || []), ...(z.kibelisks || [])]) {
@@ -58,9 +60,17 @@ export function checks(ctx, check) {
       for (const x of r.steps || []) { if (x.kibelisk) use(x.kibelisk, r.id); if (x.at) use(x.at.kibelisk, r.id); for (const m of x.text.matchAll(MARK)) use(m[1], r.id); }
     }
     for (const [n, ids] of uses) check(`Kibelisk "${n}" resolves to a registry record`, n in byName, [...ids].slice(0, 5));
-    /* 71 = P8's 69 + two that only story objective points name (0.5 P9): Alert Observation Post (new to the registry) and
+    /* 71 at 0.5 P9 = P8's 69 + two that only story objective points name: Alert Observation Post (new to the registry) and
        Silent Hill Coastal Cliff (a listed registry name no record cited before) */
-    check('Kibelisk names in story, regional, Sealed Dungeon and stronghold records: 71, all in the registry', uses.size === 71 && [...uses.keys()].every(n => n in byName), uses.size);
+    count('kibeliskNamesCited', uses.size);
+    check('Kibelisk names in story, regional, Sealed Dungeon and stronghold records: all in the registry', [...uses.keys()].every(n => n in byName), uses.size);
+    count('kibelisks', kibs.length);
+    /* story objective points (0.5 P9, research CSV confirmed rows) and the story givers / turn-ins in Aldelle Village (#98) */
+    { const ats = chain.flatMap(r => r.steps.filter(x => x.at).map(() => r.id));
+      count('storyObjectivePoints', ats.length); count('storyQuestsWithObjectivePoints', new Set(ats).size);
+      count('storyAldelleVillageSides', chain.flatMap(r => [r.giver, r.turnin]).filter(l => l.zone === 'zone:aldelle-village').length); }
+    count('kibeliskBinds', chain.reduce((n, s) => n + s.steps.filter(x => x.binds).length, 0));
+    if (ctx.KIB_REPORT) { count('bindReportStoryKibelisks', ctx.KIB_REPORT.split[0].story.n); count('bindReportCitedKibelisks', ctx.KIB_REPORT.split[0].all.n); }
     for (const z of Object.values(zones)) for (const n of z.kibelisks || []) check(`${z.id}: Kibelisk ${n} is a registry record filed in this zone`, n in byName && kibById[byName[n]].zone === z.id, n in byName ? kibById[byName[n]].zone : 'not in the registry');
     for (const k of kibs) if (k.zone) check(`${k.id}: listed in ${k.zone}'s kibelisks`, !!zones[k.zone] && (zones[k.zone].kibelisks || []).includes(k.name));
     /* a registry zone agrees with the record points that name it: the strict majority zone of the points within 100 m (a
@@ -105,6 +115,7 @@ export function checks(ctx, check) {
     /* the place table: one entry per story / regional / Sealed Dungeon / stronghold node, every anchor a registry id */
     const placed = Object.entries(ctx.GATE_GRAPH.nodes).filter(([, x]) => ['story', 'rq', 'sd', 'sh'].includes(x.kind)).map(([id]) => id);
     check('NODE_PLACE: one entry per story, regional, Sealed Dungeon and stronghold node', placed.length === Object.keys(ctx.NODE_PLACE).length && placed.every(id => id in ctx.NODE_PLACE), [placed.length, Object.keys(ctx.NODE_PLACE).length]);
+    count('nodePlace', Object.keys(ctx.NODE_PLACE).length);
     for (const [id, p] of Object.entries(ctx.NODE_PLACE)) for (const [side, pt] of Object.entries(p.pts).flatMap(([k, v]) => k === 'steps' ? v.map(x => ['objective ' + x.i, x]) : [[k, v]]))
       check(`NODE_PLACE ${id} ${side}: anchor is null or a registry id`, pt.anchor === null || pt.anchor in kibById, pt.anchor); }
 
