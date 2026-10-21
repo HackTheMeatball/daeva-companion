@@ -1,7 +1,6 @@
 {
   "story/L21-q29-before-A": [
-    {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill","b":"Lv 20–21"},
-    {"t":"Story: Creeping Shadow","s":"0/5 objectives · then Children of the Elim","c":"primary \"Turned in\" story","o":["Find out where Urd is go to Moslan Forest ( Kibelisk : Odar's Shade)","Find out where Urd is go to Odar's Shade","Search for survivors examine Nornir Corpse find Elim & Nornir survivors Kibelisk: Collapsed Chasm","+2 more after these"]},
+    {"t":"Story: Creeping Shadow","s":"0/5 objectives · then Children of the Elim","c":"primary \"Turned in\" story","b":"Lv 20–21","o":["Find out where Urd is go to Moslan Forest ( Kibelisk : Odar's Shade)","Find out where Urd is go to Odar's Shade","Search for survivors examine Nornir Corpse find Elim & Nornir survivors Kibelisk: Collapsed Chasm","+2 more after these"]},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"},
     {"t":"Buy Heart Gore 7 → 8","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 22–24"},
     {"t":"Buy Savage Roar 8 → 9","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -9,7 +8,6 @@
     {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · 1 level away · opens on \"Daeva in a Dream\" · 4 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "story/L21-q29-before-B": [
-    {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill"},
     {"t":"Story: Creeping Shadow","s":"0/5 objectives · then Children of the Elim","c":"primary \"Turned in\" story","o":["Find out where Urd is go to Moslan Forest ( Kibelisk : Odar's Shade)","Find out where Urd is go to Odar's Shade","Search for survivors examine Nornir Corpse find Elim & Nornir survivors Kibelisk: Collapsed Chasm","+2 more after these"]},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"}
   ],
@@ -28,8 +26,7 @@
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk : Forest Hideout · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 6 open"}
   ],
   "story/L21-q30-before-A": [
-    {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill","b":"Lv 20–21"},
-    {"t":"Story: Children of the Elim","s":"0/8 objectives · then In the Elims' Name","c":"primary \"Turned in\" story","o":["Gain the Elim's favor collect Forest Essence kill Ashen Ursus & Black Ash Basilisk Lv21","Deliver the Forest Essence talk to Ninir","Find the Young Elim go to the marked location","+5 more after these"]},
+    {"t":"Story: Children of the Elim","s":"0/8 objectives · then In the Elims' Name","c":"primary \"Turned in\" story","b":"Lv 20–21","o":["Gain the Elim's favor collect Forest Essence kill Ashen Ursus & Black Ash Basilisk Lv21","Deliver the Forest Essence talk to Ninir","Find the Young Elim go to the marked location","+5 more after these"]},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"},
     {"t":"Buy Heart Gore 7 → 8","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 22–24"},
     {"t":"Buy Savage Roar 8 → 9","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -37,7 +34,6 @@
     {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · 1 level away · opens on \"Daeva in a Dream\" · 3 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "story/L21-q30-before-B": [
-    {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill"},
     {"t":"Story: Children of the Elim","s":"0/8 objectives · then In the Elims' Name","c":"primary \"Turned in\" story","o":["Gain the Elim's favor collect Forest Essence kill Ashen Ursus & Black Ash Basilisk Lv21","Deliver the Forest Essence talk to Ninir","Find the Young Elim go to the marked location","+5 more after these"]},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"}
   ],
@@ -56,8 +52,7 @@
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk : Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 6 open"}
   ],
   "story/L21-q31-before-A": [
-    {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill","b":"Lv 20–21"},
-    {"t":"Story: In the Elims' Name","s":"0/3 objectives · then Verdant Melody","c":"primary \"Turned in\" story","o":["Find the hiding young Elim search with Nemon (Altgard)","Find Ecco's whereabouts go to Odar's Shade","Turn in Hadala, Odar's Shade"]},
+    {"t":"Story: In the Elims' Name","s":"0/3 objectives · then Verdant Melody","c":"primary \"Turned in\" story","b":"Lv 20–21","o":["Find the hiding young Elim search with Nemon (Altgard)","Find Ecco's whereabouts go to Odar's Shade","Turn in Hadala, Odar's Shade"]},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"},
     {"t":"Buy Heart Gore 7 → 8","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 22–24"},
     {"t":"Buy Savage Roar 8 → 9","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -65,7 +60,6 @@
     {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · 1 level away · opens on \"Daeva in a Dream\" · 2 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "story/L21-q31-before-B": [
-    {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill"},
     {"t":"Story: In the Elims' Name","s":"0/3 objectives · then Verdant Melody","c":"primary \"Turned in\" story","o":["Find the hiding young Elim search with Nemon (Altgard)","Find Ecco's whereabouts go to Odar's Shade","Turn in Hadala, Odar's Shade"]},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"}
   ],
@@ -84,8 +78,7 @@
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk : Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 6 open"}
   ],
   "story/L21-q32-before-A": [
-    {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill","b":"Lv 20–21"},
-    {"t":"Story: Verdant Melody","s":"Needs Lv 22: you're 21. Level up first. Meanwhile: Strongholds","c":""},
+    {"t":"Story: Verdant Melody","s":"Needs Lv 22: you're 21. Level up first. Meanwhile: Strongholds","c":"","b":"Lv 20–21"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"},
     {"t":"Buy Heart Gore 7 → 8","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 22–24"},
     {"t":"Buy Savage Roar 8 → 9","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -93,8 +86,7 @@
     {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · 1 level away · opens on \"Daeva in a Dream\" · 1 quest ahead","c":"tag \"Later\"","f":"later"}
   ],
   "story/L21-q33-before-A": [
-    {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill","b":"Lv 20–21"},
-    {"t":"Regional quests","s":"2 to pick up · 1 follow-up · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22]"]},
+    {"t":"Regional quests","s":"2 to pick up · 1 follow-up · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202016","b":"Lv 20–21","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22]"]},
     {"t":"Story: Daeva in a Dream","s":"Needs Lv 22: you're 21. Level up first. Meanwhile: Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"},
     {"t":"Buy Heart Gore 7 → 8","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 22–24"},
@@ -103,8 +95,7 @@
     {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
   ],
   "story/L21-q34-before-A": [
-    {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill","b":"Lv 20–21"},
-    {"t":"Regional quests","s":"2 to pick up · 1 follow-up · 1 near your story step · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] (near) | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22]"]},
+    {"t":"Regional quests","s":"2 to pick up · 1 follow-up · 1 near your story step · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202016","b":"Lv 20–21","x":["new Blade of Vengeance [Lv 22] (near) | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22]"]},
     {"t":"Story: Disturbed Balance","s":"Needs Lv 22: you're 21. Level up first. Meanwhile: Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"},
     {"t":"Buy Heart Gore 7 → 8","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 22–24"},
