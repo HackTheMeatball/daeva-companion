@@ -140,6 +140,78 @@ jobs:
               return `Game Data Check's VERIFIED does not cover the head ${sha.slice(0, 7)}`;
             };
             // DATA-CHECK END
+            // NAMED-CHECK START (tests/automerge.mjs runs this block)
+            // A named reviewer's CHANGES blocks the merge until the same reviewer approves the current head (automerge-race,
+            // incident fast path 2026-10-20 8:37 PM ET; #553, #615, #653, #664 merged over a CHANGES). Named verdicts are
+            // "VERDICT: APPROVE|OK|CHANGES (reviewer: <name>)", plus the Design Lead's DESIGN OK / CHANGES and Game Data Check's
+            // VERIFIED / CHANGES / HOLD under their own names. A CHANGES is sticky across pushes: only an APPROVE / OK / VERIFIED
+            // by that reviewer that is newer than it and names the head clears it. The deadlock exit is the coordinator's
+            // "REVIEW CLEAR (reviewer: <name>; trigger: <n|none>): <reason>" for a reviewer who has ended; it is refused on
+            // triggers 2, 4b, 5 and 6, and Watchdog (Mike) flags every clear. A message to a session is not a verdict.
+            // Reviewers keep the marks the gates already parse (Kaizen, 2026-10-20): DESIGN OK / CHANGES counts as the Design
+            // Lead's (also "jane"), Game Data Check (ROL-03) as Game Data Check's (also "gretchen"), FRESH REVIEW OK / CHANGES as
+            // "fresh review" (a FRESH REVIEW #<n> note without an OK line is a CHANGES); everyone else tags the VERDICT line, and only a
+            // comment's last tagged line counts. A PR body line "Reviewers: <name>, ..." makes each named
+            // reviewer's approval of the head required, so such a PR needn't open with hold.
+            // Game Data Check's own data, research or icon PRs (claude/game-data-check-*) skip DATA-CHECK, so the merge loop
+            // passes implied = ['lydia']: Source Vetting (Lydia) must approve their head (#665 merged over her CHANGES; K24 gap).
+            // Verdicts are ordered by created_at, so editing an old comment doesn't move it past a later CHANGES. A tagged verdict
+            // or a FRESH REVIEW OK names the head when the head's short SHA is on that line; a DESIGN or data mark, anywhere in
+            // the comment. Quoted lines ("> ...") are never a tagged verdict, fresh mark or clear. Every fresh reviewer shares
+            // the one name "fresh review": the last fresh note decides (one fresh reviewer per PR).
+            // Known limit: sessions post as the owner's account, so the name (and a REVIEW CLEAR) is the comment's word, not a
+            // checked identity.
+            const NOCLEAR = new Set(['2', '4b', '5', '6']);
+            const ALIAS = { jane: 'design lead', gretchen: 'game data check' };
+            const who = (name) => ALIAS[name] || name;
+            // A clear is refused when the PR itself shows one of those triggers, whatever the clear says: its body's "Review:" line
+            // names 2, 4b, 5 or 6, it carries hold or fresh-review, or it touches a save key (src/core/state.js) or is a release
+            // (CHANGELOG.md) (Fresh governance review, #686).
+            const SAVEKEY = (f) => f === 'src/core/state.js' || f === 'CHANGELOG.md';
+            const prNoClear = (prBody, labels, files) => {
+              const r = V.lines(prBody).find((l) => /^(?:[-*]\s+)?Review:/i.test(l));
+              if (r && /\b(2|4b|5|6)\b/i.test(r)) return `its Review: line names ${r.replace(/^(?:[-*]\s+)?Review:\s*/i, '')}`;
+              const l = labels.find((x) => x === 'hold' || x === 'fresh-review');
+              if (l) return `it carries ${l}`;
+              const f = files.find(SAVEKEY);
+              return f ? `it changes ${f}` : '';
+            };
+            const namedBlocker = (comments, sha, prBody = '', implied = [], labels = [], files = []) => {
+              const barred = prNoClear(prBody, labels, files);
+              const s7 = sha.slice(0, 7);
+              const ev = [];
+              for (const c of comments) {
+                if (!c.user || !(c.user.login === 'claude[bot]' || c.user.login.toLowerCase() === owner.toLowerCase())) continue;
+                const at = Date.parse(c.created_at || c.updated_at), names = (c.body || '').includes(s7);
+                // Tagged verdicts, fresh notes and clears come from the owner account only: a bot review's text follows the PR's
+                // content, so a tagged line in it could speak for a reviewer (Code Review, #686).
+                const person = c.user.login.toLowerCase() === owner.toLowerCase();
+                const t = person && V.tagged(c.body).pop();
+                if (t) ev.push({ who: who(t.reviewer), ok: t.verdict !== 'CHANGES', head: t.line.includes(s7), at });
+                const f = person && V.fresh(c.body);
+                if (f) ev.push({ who: 'fresh review', ok: f === 'OK', head: V.freshOk(c.body).some((l) => l.includes(s7)), at });
+                const d = V.design(c.body);
+                if (d) ev.push({ who: 'design lead', ok: d === 'OK', head: names, at });
+                for (const x of V.data(c.body)) ev.push({ who: 'game data check', ok: x.verdict === 'VERIFIED', head: sha.startsWith(x.sha), at });
+                for (const k of person ? V.clears(c.body) : []) {
+                  if (NOCLEAR.has(k.trigger)) { core.info(`REVIEW CLEAR for ${k.reviewer} refused: trigger ${k.trigger} never allows one`); continue; }
+                  if (barred) { core.info(`REVIEW CLEAR for ${k.reviewer} refused: ${barred}`); continue; }
+                  core.notice(`REVIEW CLEAR for ${k.reviewer} (trigger ${k.trigger}): ${k.reason}`);
+                  ev.push({ who: who(k.reviewer), ok: true, head: true, at, clear: true });
+                }
+              }
+              const open = [];
+              for (const who of new Set(ev.map((e) => e.who))) {
+                const mine = ev.filter((e) => e.who === who);
+                const lastNo = Math.max(...mine.filter((e) => !e.ok).map((e) => e.at));
+                if (lastNo === -Infinity) continue;
+                if (!mine.some((e) => e.ok && e.head && e.at > lastNo)) open.push(who);
+              }
+              if (open.length) return `CHANGES from ${open.join(', ')} not yet cleared by an approval naming ${s7}`;
+              const missing = [...new Set([...V.reviewers(prBody), ...implied].map(who))].filter((r) => !ev.some((e) => e.who === r && e.ok && e.head));
+              return missing.length ? `waits on ${missing.join(', ')} (Reviewers: line) to approve ${s7}` : '';
+            };
+            // NAMED-CHECK END
             // FREEZE-CHECK START (tests/automerge.mjs runs this block)
             // Release freeze (owner OK 2026-10-20 1:35 PM ET, DECISIONS via #574): from Release Planner (Walter)'s RC READY until
             // CI's tag, only docs/**, ROADMAP.md and .github/ISSUE_TEMPLATE/** may merge, plus the release PR (its kickoff branch
@@ -168,7 +240,9 @@ jobs:
               const commit = (await github.rest.repos.getCommit({ owner, repo, ref: sha })).data;
               const headAt = Date.parse(commit.commit.committer.date);
               const comments = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: pr.number, per_page: 100 });
-              const reviews = comments.filter((c) => c.user && c.user.login === 'claude[bot]' && V.review(c.body))
+              // Only the pipeline review's own form counts here ("Review of <sha7>" first, MRG-03); a named reviewer's tagged
+              // APPROVE never stands in for it (incident fix 2026-10-20).
+              const reviews = comments.filter((c) => c.user && c.user.login === 'claude[bot]' && V.reviewOf(c.body) && V.review(c.body))
                 .sort((a, b) => Date.parse(a.updated_at) - Date.parse(b.updated_at));
               const last = reviews[reviews.length - 1];
               if (!last || V.review(last.body) !== 'APPROVE') { core.info(`#${pr.number}: no approving review`); continue; }
@@ -178,6 +252,10 @@ jobs:
               const files = listed.map((f) => f.filename);
               // A rename out of data/ only shows its old path in previous_filename; the data check reads both.
               const touched = listed.flatMap((f) => [f.filename, f.previous_filename].filter(Boolean));
+              // Game Data Check's own data PRs skip DATA-CHECK, so a second data reviewer is required instead (MRG-12, #665).
+              const implied = /^claude\/game-data-check-/.test(pr.head.ref) && touched.some(DATAFILE) ? ['lydia'] : [];
+              const named = namedBlocker(comments, sha, pr.body || '', implied, pr.labels.map((l) => l.name), touched);
+              if (named) { core.info(`#${pr.number}: ${named}`); continue; }
               const design = designBlocker(files, comments, sha, headAt);
               if (design) { core.info(`#${pr.number}: ${design}`); continue; }
               const data = await dataBlocker(pr, touched, comments, sha, headAt);
