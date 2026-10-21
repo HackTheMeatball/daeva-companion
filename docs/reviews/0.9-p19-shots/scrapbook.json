@@ -6,5 +6,5 @@
   { "case": "skills-mid-advanced-390", "kind": "before-after", "title": "Catch-up after three taps",
     "caption": "After three taps on a phone, the Skills card shows the fourth skill's jump; each tap can be undone from the toast." },
   { "case": "skills-lv45-advanced-1500", "kind": "before-after", "title": "Lv 45 join with 180 stones",
-    "caption": "A Lv 45 join holding 180 Wisdom Stones catches up 13 skills in 13 taps." }
+    "caption": "A Lv 45 join holding 180 Wisdom Stones catches up its skills in 15 taps, one per skill jump." }
 ]
