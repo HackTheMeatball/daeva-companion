@@ -56,6 +56,9 @@ governance review, OK with changes 04:01Z._
      (KZ-20).
   2. Gale groups the rows into patterns, and at each kaizen review grades how the OKs worked out.
   3. Francesca first fixes what the team can fix in its own settings, then drafts a standing OK for each remaining pattern.
+     A team settings fix never widens a permission touching the seven owner-held limits, fetching, push to main, the
+     owner's device, secrets or publishing. Each fix is a trigger-1 change: its diff is in the #221 row, and it is
+     reviewed before it applies (the incident fast path excepted).
   4. At each batch the coordinator briefs a one-off fresh reviewer with no history on the drafts: never Francesca or Gale,
      and never Gomez for rules Gomez co-wrote. That reviewer checks every draft against the seven owner-held limits, and
      every team-fixed settings diff, consulting Howard on any permission or workflow diff.
@@ -63,7 +66,7 @@ governance review, OK with changes 04:01Z._
      the plant never reaches Isaac.
   6. Each draft states "loosens owner-held limit N: yes/no"; any yes goes to Isaac on its own card, as a recommendation.
   7. Each OK is narrow (the exact action, its conditions, how to undo it), is reviewed at the next kaizen review, and is
-     pruned if it went unused for a full minor.
+     pruned if it went unused for a full minor. Mike logs every use of an OK, so its use can be measured.
   8. Isaac adopts each OK in his own words; Walter records his verbatim text in DECISIONS.
   Harness guards, such as the session self-modification block, are not fixed with an OK; they get a route change.
 
