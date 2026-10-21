@@ -19,7 +19,10 @@ export async function coreBundle() {
     ...CARDS.map(f => `export * from "./cards/${f}";`),
     ...PACK.map(f => `export * from "./packs/aion2/${f}";`),
     'export { GATES, STEPS } from "./packs/aion2/data/milestones.js";',
-    'export { QUESTS, QUEST_STEPS, QUEST_STEP_NOTES, QUEST_LOC } from "./packs/aion2/data/story.js";',
+    'export { QUESTS, QUEST_NAME, QUEST_STEPS, QUEST_STEP_NOTES, QUEST_LOC } from "./packs/aion2/data/story.js";',
+    /* save v6 (0.9 P2): a story quest's save key by its name, for the suites that name quests as a player reads them */
+    'import { QUEST_NAME as __QN } from "./packs/aion2/data/story.js";',
+    'export const sq = n => { const k = Object.keys(__QN).find(k => __QN[k] === n); if (!k) throw new Error("no story quest " + n); return k; };',
     'export { SP_SLOTS, SP_STEPS, STIGMA_PLAN, ST_COST, ST_TARGETS, E_ORDER, LEVEL_POINTS, RMB_STACK, spCost, SPEC_SLOT_LV, DV_MIN, planEffAt } from "./packs/aion2/data/build.js";',
     'export { RQ, SH_DATA } from "./packs/aion2/data/generated.js";',
     'export { GATE_GRAPH } from "./packs/aion2/data/gate-graph.js";',
