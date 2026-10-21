@@ -31,8 +31,10 @@ const PATTERNS = {
       'a turned-in last quest on to the next one (a save step, untouched by E2); merge.js (from sync.js, 0.8 P6) ranks two story positions when merging saves' },
   'story gate by a quest name in code (storyIdx("…"))': { re: /storyIdx\(\s*["'`]/g, allow: {} },
   'plan node / board level compared (.blv)': { re: cmpRe(String.raw`\.blv`), allow: {} },
-  'skill line level compared (.req)': { re: cmpRe(String.raw`\.req`), allow: { 'src/packs/aion2/catalog.js': 2 },
-    why: 'catalog.js files each skill line under the first milestone at or after its unlock level (placement, not a gate)' },
+  'skill line level compared (.req)': { re: cmpRe(String.raw`\.req`), allow: { 'src/packs/aion2/data/build.js': 1 },
+    why: 'build.js finds the level at which the plan\'s skill lines (and board nodes) reach a specialty slot, the level catalog.js files ' +
+      'the slot under (0.8.1 F3; catalog.js files each row under the first milestone at or after it via atOf, no longer comparing .req ' +
+      'itself): placement, not a gate' },
   'stronghold lowest level compared (.lo)': { re: cmpRe(String.raw`\.lo`), allow: {} },
   'area band compared (bandOf(…) vs a level)': { re: /bandOf\([^)]*\)\s*[<>]|(?<![=\-])[<>]=?\s*bandOf\(/g, allow: {} },
   'stigma slot / Sealed Dungeon level compared (x.lv, nx.lv, …)': { re: cmpRe(String.raw`\b(?:x|y|it|nx|next|sl|s)\.lv`), allow: { 'src/packs/aion2/catalog.js': 1 },

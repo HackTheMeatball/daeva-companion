@@ -50,9 +50,9 @@
     {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
     {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk : Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"},
+    {"t":"Buy Exploit Weakness 6 → 7","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 1 level away · single source","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Heart Gore 7 → 8","s":"Needs Lv 22 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 22–24"},
-    {"t":"Buy Savage Roar 8 → 9","s":"Needs Lv 22 · 2 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · 2 levels away · opens on \"Daeva in a Dream\" · 5 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "behind/L20-q28-from10-miss2-s0-B": [
@@ -66,9 +66,9 @@
     {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
     {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk : Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"},
+    {"t":"Buy Exploit Weakness 6 → 7","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 1 level away · single source","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Heart Gore 7 → 8","s":"Needs Lv 22 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 22–24"},
-    {"t":"Buy Savage Roar 8 → 9","s":"Needs Lv 22 · 2 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · 2 levels away · opens on \"Daeva in a Dream\" · 5 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "behind/L20-q28-from10-miss2-s1-B": [
@@ -83,9 +83,9 @@
     {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
     {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk : Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"},
+    {"t":"Buy Exploit Weakness 6 → 7","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 1 level away · single source","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Heart Gore 7 → 8","s":"Needs Lv 22 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 22–24"},
-    {"t":"Buy Savage Roar 8 → 9","s":"Needs Lv 22 · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Buy Heart Gore 7 → 8","s":"Needs Lv 22 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 22–24"}
   ],
   "behind/L20-q28-from10-miss2-s2-B": [
     {"t":"Buy Insignia Explosion on Nezekan","s":"5 of your 9 crystals","c":"primary \"Acquired\" board"},
@@ -100,8 +100,8 @@
     {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk : Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"},
     {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 1 level away · single source","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Savage Roar 8 → 9","s":"Needs Lv 22 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 22–24"},
-    {"t":"Buy Quick Slice 8 → 9","s":"Needs Lv 22 · 2 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Heart Gore 7 → 8","s":"Needs Lv 22 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 22–24"},
+    {"t":"Buy Savage Roar 8 → 9","s":"Needs Lv 22 · 2 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · 2 levels away · opens on \"Daeva in a Dream\" · 5 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "behind/L20-q28-from10-miss3-s0-B": [
@@ -116,8 +116,8 @@
     {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk : Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"},
     {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 1 level away · single source","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Savage Roar 8 → 9","s":"Needs Lv 22 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 22–24"},
-    {"t":"Buy Quick Slice 8 → 9","s":"Needs Lv 22 · 2 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Heart Gore 7 → 8","s":"Needs Lv 22 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 22–24"},
+    {"t":"Buy Savage Roar 8 → 9","s":"Needs Lv 22 · 2 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · 2 levels away · opens on \"Daeva in a Dream\" · 5 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "behind/L20-q28-from10-miss3-s1-B": [
@@ -133,8 +133,8 @@
     {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk : Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"},
     {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 1 level away · single source","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Savage Roar 8 → 9","s":"Needs Lv 22 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 22–24"},
-    {"t":"Buy Quick Slice 8 → 9","s":"Needs Lv 22 · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Buy Heart Gore 7 → 8","s":"Needs Lv 22 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 22–24"},
+    {"t":"Buy Savage Roar 8 → 9","s":"Needs Lv 22 · 2 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "behind/L20-q28-from10-miss3-s2-B": [
     {"t":"Buy Insignia Explosion on Nezekan","s":"5 of your 9 crystals","c":"primary \"Acquired\" board"},

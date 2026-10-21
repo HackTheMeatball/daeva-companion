@@ -1,0 +1,6 @@
+[
+  {"case": "milestone-lv16-1500", "kind": "before-after", "title": "Specialty picks move to Lv 16", "caption": "With the Daevanion plan, Quick Slice and Shadowstrike reach their specialty at Lv 16, so the pick rows now sit in the Lv 16 milestone, not Lv 19."},
+  {"case": "milestone-lv26-1500", "kind": "before-after", "title": "Insignia Explosion pick at Lv 26", "caption": "The Insignia Explosion specialty pick moves from the Lv 32 milestone to Stigma slot 2 (Lv 27), unlocking at Lv 26 with the plan."},
+  {"case": "nextup-slot2-1500", "kind": "before-after", "title": "Next up: open specialty slots first", "caption": "Lv 39, Heart Gore at 10 with two plan nodes: Next up now leads with the free Heart Gore specialty picks, slot 2 included, before paid upgrades."},
+  {"case": "nextup-slot2-390", "kind": "before-after", "title": "Phone: specialty pick in Next up", "caption": "The same Lv 39 save at 390 px: Buy Heart Gore specialty is the top card."}
+]

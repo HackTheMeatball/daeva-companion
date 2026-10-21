@@ -67,6 +67,7 @@
     {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village (near your story step) · Kibelisk : Impetusium Lower Path · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 13 open"}
   ],
   "level/L41-q76-rnd1p50-A": [
+    {"t":"Buy Savage Roar specialty","s":"Pick: +20% Skill Speed","c":"primary \"Spent\" skill","b":"Lv 40–44"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
@@ -79,6 +80,7 @@
     {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village (near your story step) · Kibelisk : Impetusium Lower Path · 8/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 7 open"}
   ],
   "level/L41-q76-rnd1p50-B": [
+    {"t":"Buy Savage Roar specialty","s":"Pick: +20% Skill Speed","c":"primary \"Spent\" skill"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0"},
@@ -91,13 +93,15 @@
     {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village (near your story step) · Kibelisk : Impetusium Lower Path · 8/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 7 open"}
   ],
   "level/L41-q76-rnd2p85-A": [
-    {"t":"Story: Daybreak Society Rescue Operation","s":"0/3 objectives · then The Breaking of the Day","c":"primary \"Turned in\" story","b":"Lv 40–44","o":["Distract the Black Claw soldiers destroy the Balaur Sacred Totem defeat Mumu Watcher defeat Tamed Tayga Kibelisk : Kumrica's Cellar","Rescue the Daybreak Society member follow the tracks of the Society Member (Kibelisk: Kumrica's Cellar)","Turn in Kumrica, Kumrica's Cellar"]},
+    {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill","b":"Lv 40–44"},
+    {"t":"Story: Daybreak Society Rescue Operation","s":"0/3 objectives · then The Breaking of the Day","c":"primary \"Turned in\" story","o":["Distract the Black Claw soldiers destroy the Balaur Sacred Totem defeat Mumu Watcher defeat Tamed Tayga Kibelisk : Kumrica's Cellar","Rescue the Daybreak Society member follow the tracks of the Society Member (Kibelisk: Kumrica's Cellar)","Turn in Kumrica, Kumrica's Cellar"]},
     {"t":"Clear Kumbahum's Cave","s":"Black Claw Village (near your story step) · Kibelisk : Kumrica's Cellar · Lv 40–44 · 5/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Kumrica's Cellar is 310 m away · 11 open at your level"},
     {"t":"Equip Savage Fang","s":"Stigma slot 4 is open · needs 1 shard (+1 at Lv 42)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Legion Base Ruins","s":"Basfelt Ruins · Kibelisk : Fissure Cave · 12/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Fissure Cave is 200 m away · 3 open"},
     {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"Lv 45 milestone · 4 levels away · unlocks after \"Forgotten Commander\" · 9 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 45+"}
   ],
   "level/L41-q76-rnd2p85-B": [
+    {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill"},
     {"t":"Story: Daybreak Society Rescue Operation","s":"0/3 objectives · then The Breaking of the Day","c":"primary \"Turned in\" story","o":["Distract the Black Claw soldiers destroy the Balaur Sacred Totem defeat Mumu Watcher defeat Tamed Tayga Kibelisk : Kumrica's Cellar","Rescue the Daybreak Society member follow the tracks of the Society Member (Kibelisk: Kumrica's Cellar)","Turn in Kumrica, Kumrica's Cellar"]},
     {"t":"Clear Kumbahum's Cave","s":"Black Claw Village (near your story step) · Kibelisk : Kumrica's Cellar · Lv 40–44 · 5/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Kumrica's Cellar is 310 m away · 11 open at your level"},
     {"t":"Equip Savage Fang","s":"Stigma slot 4 is open · needs 1 shard (+1 at Lv 42)","c":"tag \"Needs 1 shard\""},
@@ -195,6 +199,9 @@
     {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village (near your story step) · Kibelisk : Impetusium Lower Path · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 13 open"}
   ],
   "level/L42-q78-rnd1p50-A": [
+    {"t":"Buy Savage Roar specialty","s":"Pick: +20% Skill Speed","c":"primary \"Spent\" skill","b":"Lv 40–44"},
+    {"t":"Buy Ambush specialty","s":"Pick: Engraves 2 Insignias when it lands as a Back attack","c":"tag \"After the one above\""},
+    {"t":"Buy Ambush specialty slot 2","s":"Pick: Absorbs 3% HP disputed","c":"tag \"After the one above\""},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
@@ -207,6 +214,7 @@
     {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village (near your story step) · Kibelisk : Impetusium Lower Path · 8/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 7 open"}
   ],
   "level/L42-q78-rnd1p50-B": [
+    {"t":"Buy Savage Roar specialty","s":"Pick: +20% Skill Speed","c":"primary \"Spent\" skill"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0"},
@@ -219,7 +227,8 @@
     {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village (near your story step) · Kibelisk : Impetusium Lower Path · 8/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 7 open"}
   ],
   "level/L42-q78-rnd2p85-A": [
-    {"t":"Story: Chief of the Black Claw","s":"0/2 objectives · then High Priest's Fafnite","c":"primary \"Turned in\" story","b":"Lv 40–44","o":["Rescue Nemon at Muqaka's Quarters go to Muqaka's Quarters ( Kibelisk : Kumrica's Cellar)","Turn in Kumrica, Kumrica's Cellar"]},
+    {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill","b":"Lv 40–44"},
+    {"t":"Story: Chief of the Black Claw","s":"0/2 objectives · then High Priest's Fafnite","c":"primary \"Turned in\" story","o":["Rescue Nemon at Muqaka's Quarters go to Muqaka's Quarters ( Kibelisk : Kumrica's Cellar)","Turn in Kumrica, Kumrica's Cellar"]},
     {"t":"Regional quests","s":"1 to pick up · 1 near your story step · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202066","x":["new Herb Pouch Heist [Lv 44] (near)"]},
     {"t":"Clear Kumbahum's Cave","s":"Black Claw Village (near your story step) · Kibelisk : Kumrica's Cellar · Lv 40–44 · 5/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Kumrica's Cellar is 310 m away · 11 open at your level"},
     {"t":"Equip Savage Fang","s":"Stigma slot 4 is open · needs 1 shard (+1 at Lv 43)","c":"tag \"Needs 1 shard\""},
@@ -227,6 +236,7 @@
     {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"Lv 45 milestone · 3 levels away · unlocks after \"Forgotten Commander\" · 7 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 45+"}
   ],
   "level/L42-q78-rnd2p85-B": [
+    {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill"},
     {"t":"Story: Chief of the Black Claw","s":"0/2 objectives · then High Priest's Fafnite","c":"primary \"Turned in\" story","o":["Rescue Nemon at Muqaka's Quarters go to Muqaka's Quarters ( Kibelisk : Kumrica's Cellar)","Turn in Kumrica, Kumrica's Cellar"]},
     {"t":"Regional quests","s":"1 to pick up · 1 near your story step · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202066","x":["new Herb Pouch Heist [Lv 44] (near)"]},
     {"t":"Clear Kumbahum's Cave","s":"Black Claw Village (near your story step) · Kibelisk : Kumrica's Cellar · Lv 40–44 · 5/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Kumrica's Cellar is 310 m away · 11 open at your level"},
@@ -325,10 +335,10 @@
     {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village (near your story step) · Kibelisk : Impetusium Lower Path · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 13 open"}
   ],
   "level/L43-q79-rnd1p50-A": [
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 40–44"},
-    {"t":"Buy Quick Slice 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Ambush 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 3 → 4","s":"1 pt","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar specialty","s":"Pick: +20% Skill Speed","c":"primary \"Spent\" skill","b":"Lv 40–44"},
+    {"t":"Buy Ambush specialty","s":"Pick: Engraves 2 Insignias when it lands as a Back attack","c":"tag \"After the one above\""},
+    {"t":"Buy Ambush specialty slot 2","s":"Pick: Absorbs 3% HP disputed","c":"tag \"After the one above\""},
+    {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
@@ -340,7 +350,7 @@
     {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village (near your story step) · Kibelisk : Impetusium Lower Path · 8/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 7 open"}
   ],
   "level/L43-q79-rnd1p50-B": [
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Buy Savage Roar specialty","s":"Pick: +20% Skill Speed","c":"primary \"Spent\" skill"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0"},
@@ -353,7 +363,8 @@
     {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village (near your story step) · Kibelisk : Impetusium Lower Path · 8/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 7 open"}
   ],
   "level/L43-q79-rnd2p85-A": [
-    {"t":"Story: High Priest's Fafnite","s":"0/3 objectives · then The High Priest Awakens","c":"primary \"Turned in\" story","b":"Lv 40–44","o":["Go deeper into Lagta Fortress talk to the Fafnite Storage Watcher ( Kibelisk : Kumrica's Cellar)","Find the High Priest's Fafnite go to the Fafnite Storage (Kibelisk: Kumrica's Cellar)","Turn in Nemon, Zemurru's Tomb"]},
+    {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill","b":"Lv 40–44"},
+    {"t":"Story: High Priest's Fafnite","s":"0/3 objectives · then The High Priest Awakens","c":"primary \"Turned in\" story","o":["Go deeper into Lagta Fortress talk to the Fafnite Storage Watcher ( Kibelisk : Kumrica's Cellar)","Find the High Priest's Fafnite go to the Fafnite Storage (Kibelisk: Kumrica's Cellar)","Turn in Nemon, Zemurru's Tomb"]},
     {"t":"Regional quests","s":"1 to pick up · 1 near your story step · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202066","x":["new Herb Pouch Heist [Lv 44] (near)"]},
     {"t":"Clear Kumbahum's Cave","s":"Black Claw Village (near your story step) · Kibelisk : Kumrica's Cellar · Lv 40–44 · 5/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Kumrica's Cellar is 310 m away · 11 open at your level"},
     {"t":"Equip Savage Fang","s":"Stigma slot 4 is open · needs 1 shard (+1 at Lv 44)","c":"tag \"Needs 1 shard\""},
@@ -361,6 +372,7 @@
     {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"Lv 45 milestone · 2 levels away · unlocks after \"Forgotten Commander\" · 6 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 45+"}
   ],
   "level/L43-q79-rnd2p85-B": [
+    {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill"},
     {"t":"Story: High Priest's Fafnite","s":"0/3 objectives · then The High Priest Awakens","c":"primary \"Turned in\" story","o":["Go deeper into Lagta Fortress talk to the Fafnite Storage Watcher ( Kibelisk : Kumrica's Cellar)","Find the High Priest's Fafnite go to the Fafnite Storage (Kibelisk: Kumrica's Cellar)","Turn in Nemon, Zemurru's Tomb"]},
     {"t":"Regional quests","s":"1 to pick up · 1 near your story step · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202066","x":["new Herb Pouch Heist [Lv 44] (near)"]},
     {"t":"Clear Kumbahum's Cave","s":"Black Claw Village (near your story step) · Kibelisk : Kumrica's Cellar · Lv 40–44 · 5/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Kumrica's Cellar is 310 m away · 11 open at your level"},
@@ -460,10 +472,10 @@
     {"t":"Run Andsha Forward Base","s":"Impetusium Square (near your story step) · Kibelisk : Steel Hammer Temporary Trading Post · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 14 open"}
   ],
   "level/L44-q82-rnd1p50-A": [
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 40–44"},
-    {"t":"Buy Quick Slice 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Ambush 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 3 → 4","s":"1 pt","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar specialty","s":"Pick: +20% Skill Speed","c":"primary \"Spent\" skill","b":"Lv 40–44"},
+    {"t":"Buy Ambush specialty","s":"Pick: Engraves 2 Insignias when it lands as a Back attack","c":"tag \"After the one above\""},
+    {"t":"Buy Ambush specialty slot 2","s":"Pick: Absorbs 3% HP disputed","c":"tag \"After the one above\""},
+    {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
@@ -475,7 +487,7 @@
     {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk : Impetusium Lower Path · 8/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 7 open"}
   ],
   "level/L44-q82-rnd1p50-B": [
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Buy Savage Roar specialty","s":"Pick: +20% Skill Speed","c":"primary \"Spent\" skill"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0"},
@@ -488,13 +500,15 @@
     {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk : Impetusium Lower Path · 8/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 7 open"}
   ],
   "level/L44-q82-rnd2p85-A": [
-    {"t":"Story: Blood Barrier","s":"0/2 objectives · then Zikel's Core","c":"primary \"Turned in\" story","b":"Lv 40–44","o":["Weaken the Subspace Aura destroy the Incomplete Subspace Rift defeat Remnant of Subspace defeat the Balaur Dispatch Kibelisk : Collapsed Hall of Fame","Turn in Nemon, Collapsed Hall of Fame"]},
+    {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill","b":"Lv 40–44"},
+    {"t":"Story: Blood Barrier","s":"0/2 objectives · then Zikel's Core","c":"primary \"Turned in\" story","o":["Weaken the Subspace Aura destroy the Incomplete Subspace Rift defeat Remnant of Subspace defeat the Balaur Dispatch Kibelisk : Collapsed Hall of Fame","Turn in Nemon, Collapsed Hall of Fame"]},
     {"t":"Clear Kumbahum's Cave","s":"Black Claw Village · Kibelisk : Kumrica's Cellar · Lv 40–44 · 5/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Kumrica's Cellar is 310 m away · 11 open at your level"},
     {"t":"Equip Savage Fang","s":"Stigma slot 4 is open · needs 1 shard (+1 at Lv 45)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Legion Base Ruins","s":"Basfelt Ruins · Kibelisk : Fissure Cave · 12/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Fissure Cave is 200 m away · 3 open"},
     {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"Lv 45 milestone · 1 level away · unlocks after \"Forgotten Commander\" · 3 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 45+"}
   ],
   "level/L44-q82-rnd2p85-B": [
+    {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill"},
     {"t":"Story: Blood Barrier","s":"0/2 objectives · then Zikel's Core","c":"primary \"Turned in\" story","o":["Weaken the Subspace Aura destroy the Incomplete Subspace Rift defeat Remnant of Subspace defeat the Balaur Dispatch Kibelisk : Collapsed Hall of Fame","Turn in Nemon, Collapsed Hall of Fame"]},
     {"t":"Clear Kumbahum's Cave","s":"Black Claw Village · Kibelisk : Kumrica's Cellar · Lv 40–44 · 5/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Kumrica's Cellar is 310 m away · 11 open at your level"},
     {"t":"Equip Savage Fang","s":"Stigma slot 4 is open · needs 1 shard (+1 at Lv 45)","c":"tag \"Needs 1 shard\""},
@@ -598,10 +612,10 @@
     {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk : Steel Hammer Temporary Trading Post · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 14 open"}
   ],
   "level/L45-q86-rnd1p50-A": [
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 45+"},
-    {"t":"Buy Quick Slice 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Ambush 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Buy Quick Slice 3 → 4","s":"1 pt","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar specialty","s":"Pick: +20% Skill Speed","c":"primary \"Spent\" skill","b":"Lv 45+"},
+    {"t":"Buy Ambush specialty","s":"Pick: Engraves 2 Insignias when it lands as a Back attack","c":"tag \"After the one above\""},
+    {"t":"Buy Ambush specialty slot 2","s":"Pick: Absorbs 3% HP disputed","c":"tag \"After the one above\""},
+    {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
@@ -613,7 +627,7 @@
     {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk : Impetusium Lower Path · 8/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 7 open"}
   ],
   "level/L45-q86-rnd1p50-B": [
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Buy Savage Roar specialty","s":"Pick: +20% Skill Speed","c":"primary \"Spent\" skill"},
     {"t":"Extract gear you've replaced","s":"Open the Cube, click the old piece, choose Extract and confirm.","c":"primary \"Done\" tick:g10:0","i":"Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."},
     {"t":"Enhance the Revelation Amulet","s":"The story gives it at Lv 16, just before the Monolith quest.","c":"primary \"Done\" tick:g16:amulet","i":"Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll ; use each one right away (+1, plus Enhance Stones and Kina). The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier."},
     {"t":"Zikel board opens","s":"Use all your Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top.","c":"primary \"Done\" tick:g20:0"},
@@ -626,12 +640,14 @@
     {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk : Impetusium Lower Path · 8/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 7 open"}
   ],
   "level/L45-q86-rnd2p85-A": [
+    {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill"},
     {"t":"Story: Daeva Trapped in a Nightmare","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Witnesses the Nightmare","Turn in Nemon, Outskirts Stall"]},
     {"t":"Clear Kumbahum's Cave","s":"Black Claw Village · Kibelisk : Kumrica's Cellar · Lv 40–44 · 5/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Kumrica's Cellar is 310 m away · 11 open at your level"},
     {"t":"Equip Savage Fang","s":"Stigma slot 4 is open · needs 1 shard","c":"tag \"Needs 1 shard\""},
     {"t":"Run Legion Base Ruins","s":"Basfelt Ruins · Kibelisk : Fissure Cave · 12/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Fissure Cave is 200 m away · 3 open"}
   ],
   "level/L45-q86-rnd2p85-B": [
+    {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill"},
     {"t":"Story: Daeva Trapped in a Nightmare","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Witnesses the Nightmare","Turn in Nemon, Outskirts Stall"]},
     {"t":"Clear Kumbahum's Cave","s":"Black Claw Village · Kibelisk : Kumrica's Cellar · Lv 40–44 · 5/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Kumrica's Cellar is 310 m away · 11 open at your level"},
     {"t":"Equip Savage Fang","s":"Stigma slot 4 is open · needs 1 shard","c":"tag \"Needs 1 shard\""},
