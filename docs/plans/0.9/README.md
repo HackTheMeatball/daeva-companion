@@ -577,13 +577,12 @@ Rules for every item:
   - [ ] Source Vetting's live crawler re-check runs before the robots text freezes, noted on the PR.
   - [ ] Before / after shots of the footer at 1500 and 390 px, `scrapbook.json`; Design Lead's DESIGN OK.
 - **Review:** blind (owner-held legal text; Code Review the code).
-- **Lanes:** site, page-card. **Model:** Sonnet, S (45 min).
+- **Lanes:** release (CHANGELOG.md; `site` and `page-card` are not kickoff lanes). **Model:** Sonnet, S (45 min).
 - **After:** P23, owner-ok-0.9-terms. If the owner's OK isn't in by 0.9's release gate, P24 moves to 0.10.
 - **Planner notes (2026-10-21).** The owner's three Terms calls are in (DECISIONS `owner-ok-0.9-terms`). The owner
   approved the full text as drafted ("Ship as drafted", 2026-10-21 12:18 PM ET, same row), so the item ships it word for
   word once its reviews pass. Not in this item: the Report a problem warning (a
-  visible change with shots, own item) and the Terms Contact line plus the site line naming the private address (wait on
-  T-63).
+  visible change with shots, own item) and the Terms Contact line plus the site line naming the private address (P33).
 
 ## P25–P27: compliance checks (Legal's CK-1 to CK-3)
 
@@ -801,6 +800,33 @@ picker and opens from a stored save. P28 finishes P3's own goal in the tests; P2
 - **Review:** standing.
 - **Lanes:** gen, schema. **Model:** Opus, M (90 min).
 - **After:** none.
+
+## P33: A private contact for legal notices (T-63)
+
+- **Problem.** The only contact is a public GitHub issue, so a rights holder (NCSoft, a source site) has no private way
+  to send a takedown or notice (Legal's review A5, register C14). The owner named `legal@daevacompanion.com` the official
+  contact for legal notices (DECISIONS `owner-ok-0.9-terms`, amended 2026-10-21, T-63).
+- **Result.**
+  - The Terms "Contact" section names the address for legal notices, next to the GitHub issue line, in Legal's wording.
+  - One "Rights holders" line on the site names the address, in Legal's wording; Design Lead places it.
+  - CHANGELOG notes the change.
+- **Inputs.** Legal's (Chuck) wording for both lines, in `docs/legal/` (`docs/legal/TERMS.md` updated, plus the site
+  line), reviewed by Team Audit.
+- **Gate.** The address is published only after one test email to it has been confirmed received; Legal asks the owner
+  on a card once the mailbox is set up. The Release Planner opens this item's issue only when the gate and the inputs
+  are met, so no `[next]` line exists before then.
+- **Files.** `TERMS.md`, `docs/legal/TERMS.md`, `src/index.html` or the card Design Lead picks (the one line only),
+  `tests/site.js`, `CHANGELOG.md`.
+- **No-gos.** No other change to the approved Terms text. No personal name or personal address anywhere. The footer
+  keeps "unofficial" and "not affiliated with or endorsed by NCSoft".
+- **Acceptance.**
+  - [ ] `tests/site`: the Terms Contact section and the site line both carry the address; `TERMS.md` still matches
+        `docs/legal/TERMS.md` except "Effective:".
+  - [ ] The test email confirmation is linked on the PR.
+  - [ ] Before / after shots at 1500 and 390 px, `scrapbook.json`; Design Lead's DESIGN OK.
+- **Review:** blind (owner-held legal text; Code Review the code).
+- **Lanes:** release (CHANGELOG.md; `site` and `page-card` are not kickoff lanes). **Model:** Sonnet, S (45 min).
+- **After:** P24, the gate above. If the gate isn't met by 0.9's release gate, P33 moves to 0.10.
 
 ## S1–S4: pipeline items (Build Pipeline builds them; no queue line)
 

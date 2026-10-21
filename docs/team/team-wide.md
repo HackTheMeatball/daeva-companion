@@ -32,6 +32,15 @@ recommendation item 2; backed by Org Design (Nacho)._
 - **Card taps travel with the ask:** a thread that asks Walter for a DECISIONS row from an owner decision card puts the
   card-tap record in the ask: the card's message id, the option chosen, `chosen_by` and the tap time in ET. Walter
   checks that record instead of looking for it. A typed answer is still forwarded verbatim (DEC-02).
+- **New rules go through the coordinator:** any new rule, decision or process change goes to the coordinator first. That
+  includes one Isaac states in your own thread, which you forward verbatim, and one you propose. Don't write it into any doc
+  yourself. The coordinator routes it with the overlap check (DEC-01 as amended 2026-10-21; process-change procedure step 2).
+  Look up the coordinator's session with `get_channel_session_id` each time. A PR that touches a rule carries
+  `Routed: coordinator <UTC time>`.
+- **Decision cards for Isaac:** get the card's T-NN first, then tell the coordinator in the same turn you post it
+  ([DEC-20261020-todo-notifications](../DECISIONS.md)). Look up the coordinator's session with `get_channel_session_id`
+  each time, never from memory; if the send fails, look it up again and retry once, and if that fails too, post the
+  CARD READY line in your thread and tell Watchdog (Mike).
 
 ### COM-18
 
