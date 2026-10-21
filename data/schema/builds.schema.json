@@ -428,7 +428,7 @@
               }
             },
             "macros": {
-              "description": "The guide's suggested macros. A macro can sit on any key and a class can have several (owner, 2026-10-21), so nothing may assume right click: ordered steps, each naming a slot (fires that slot's whole stack, row 0 first) or one lone skill. A macro can therefore cycle more than 4 skills (owner, 2026-10-21). The step limit is unknown until the T-61 check 'try adding a 5th step'; the generator holds it in one constant (MACRO_MAX_STEPS). A step's slot must be one of 'slots'. Step delays are not modelled (no verified source). Guide advice, not a game fact. That the Quick Use 2 stack shows on T once a macro takes right click is inferred (C21 note).",
+              "description": "The guide's suggested macros. A macro can sit on any key with a 0–3 stack (Q, E, T, right click) and a class can have several (owner, 2026-10-21), so nothing may assume right click: ordered steps, each naming a slot (fires that slot's whole stack, row 0 first) or one lone skill. A macro can therefore cycle more than 4 skills (owner, 2026-10-21). The step limit is unknown until the T-61 check 'try adding a 5th step'; the generator holds it in one constant (MACRO_MAX_STEPS). A step's slot must be one of 'slots'. The basic attack (the class's Left click default) may be a skill step, but only the last: a no-cooldown skill blocks every step above it (claim C21; generator check). Step delays are not modelled (no verified source). Guide advice, not a game fact. That the Quick Use 2 stack shows on T once a macro takes right click is inferred (C21 note).",
               "type": "array",
               "items": {
                 "type": "object",
@@ -438,9 +438,13 @@
                 ],
                 "properties": {
                   "key": {
-                    "description": "The key the macro is bound to, as the game names it.",
-                    "type": "string",
-                    "pattern": "^([A-Z0-9]|F[0-9]{1,2}|Left click|Right click|Middle click)$"
+                    "description": "The key the macro is bound to, as the game names it. Only a key with a 0–3 stack slot takes a macro: Q, E, T or right click (Quick Use 2) (owner facts, 2026-10-21); never Left click, the basic attack.",
+                    "enum": [
+                      "Q",
+                      "E",
+                      "T",
+                      "Right click"
+                    ]
                   },
                   "rows": {
                     "type": "array",

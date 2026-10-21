@@ -239,23 +239,32 @@ export function generate(opts = {}) {
         check(`${build.id}: slot ${s.slot}: ${id} is an active skill of the class`, !!k && !!cls && id.split(':')[1] === cls.class && k.type === 'active', k && k.type); }
     }
   }
+  /* a macro only goes on a key with a 0–3 stack slot: Q, E, T or right click (Quick Use 2) (owner facts, 2026-10-21 14:07Z);
+     Left click, the basic attack, never takes a macro. The basic attack (the skill the game's defaults put on Left click) may
+     be a { skill } step, but only the last: a no-cooldown skill blocks every step above it (claim C21, two sources) */
+  const MACRO_KEYS = ['Q', 'E', 'T', 'Right click'];
+  const BASIC = new Set(((build.keyStacks.defaultKeys || { keys: [] }).keys.find(k => k.key === 'Left click') || { rows: [] }).rows.map(r => r.skill));
   for (const m of KS_MACROS) {
     check(`${build.id}: macro key named once: ${m.key}`, KS_MACROS.filter(x => x.key === m.key).length === 1);
+    check(`${build.id}: macro key ${m.key} has a 0–3 stack slot (Q, E, T, Right click)`, MACRO_KEYS.includes(m.key), m.key);
     for (const r of m.rows) if (MACRO_MAX_STEPS != null) check(`${build.id}: macro ${m.key} from Lv ${r.minLv} has at most ${MACRO_MAX_STEPS} steps`, r.steps.length <= MACRO_MAX_STEPS, r.steps.length);
+    for (const r of m.rows) r.steps.forEach((st, i) => { if (st.skill && BASIC.has(st.skill))
+      check(`${build.id}: macro ${m.key} from Lv ${r.minLv}: basic attack ${st.skill} is the last step`, i === r.steps.length - 1, [i, r.steps.length]); });
     for (const r of m.rows) for (const st of r.steps) {
       if (st.slot) check(`${build.id}: macro ${m.key}: slot ${st.slot} is defined in keyStacks.slots`, KS_SLOTS.some(s => s.slot === st.slot));
       if (st.skill) { const k = skById[st.skill];
         check(`${build.id}: macro ${m.key}: ${st.skill} is an active skill of the class`, !!k && !!cls && st.skill.split(':')[1] === cls.class && k.type === 'active', k && k.type); }
     }
   }
-  /* a macro can sit on any key and a class can have several (owner, 2026-10-21): expand each one per level band (the union of
+  /* a macro can sit on any key with a 0–3 stack (Q, E, T, right click) and a class can have several (owner, 2026-10-21): expand each one per level band (the union of
      its own and the slots' minLv), steps in order, a slot step being that slot's stack at the level. Names, not ids. */
   const expandMacro = m => [...new Set([...m.rows.map(r => r.minLv), ...KS_SLOTS.flatMap(s => s.rows.map(r => r.minLv))])].map(lv => {
     const mr = m.rows.filter(r => r.minLv <= lv).sort((a, b) => b.minLv - a.minLv)[0];
     return mr && { minLv: lv, skills: mr.steps.flatMap(st => st.slot ? slotRow(st.slot, lv) : [st.skill]).map(id => sk(id).name) }; }).filter(Boolean).sort((a, b) => b.minLv - a.minLv);
   const MACROS_FLAT = KS_MACROS.map(m => ({ key: m.key, rows: expandMacro(m) }));
   /* RMB_ROWS: the drawer's legacy flat right-click list (RMB_STACK reads it). It is only the macro bound to Right click, if any;
-     the build lane (0.9 P22) replaces it with MACROS_FLAT / the steps themselves, so nothing else may assume right click. */
+     the build lane (0.9 P22) replaces it with MACROS_FLAT / the steps themselves, so nothing else may assume right click
+     (a macro may sit on any key with a 0–3 stack: Q, E, T, right click). */
   const RMB_ROWS = (MACROS_FLAT.find(m => m.key === 'Right click') || { rows: [] }).rows;
   const E_ORDER = build.keyStacks.eOrder.map(id => stg(id).name);
   /* the game's default keys (0.7 P11, keyStacks.defaultKeys): [{ key, rows: [{ n, lv }] }], row 0 first, lv the row's minLv

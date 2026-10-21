@@ -401,11 +401,14 @@ Anything else, an unknown token or an unknown `build:` kind fails validation.
 - `keyStacks.slots` and `keyStacks.macros` (builds & macros task 1, replacing the flat `rightClick` list): `slots[]` are
   the guide's suggested stacks, `{ slot: Q|E|Quick Use 2|T, rows: [{ minLv, skills[] }] }`, a row shows from its `minLv`
   and holds at most 4 skills (schema `maxItems` plus a generator check; row 0 fires first). `macros[]` are
-  `{ key, rows: [{ minLv, steps: [{ slot } | { skill }] }] }`: ordered steps, each naming a slot (fires that slot's whole
+  `{ key, rows: [{ minLv, steps: [{ slot } | { skill }] }] }`: `key` is any key with a 0–3 stack (`Q`, `E`, `T`, `Right
+  click` = Quick Use 2; owner facts, 2026-10-21), never `Left click`; ordered steps, each naming a slot (fires that slot's whole
   stack) or one lone skill, so a macro can cycle more than 4 skills (owner, 2026-10-21). The step count is unbounded
-  until the T-61 check "try adding a 5th step"; delays are not modelled (no verified source). The generator checks every step slot
-  is defined in `slots` and every skill is an active skill of the class, and compiles `RMB_ROWS` (the flat right-click
-  list `RMB_STACK` reads) by expanding the `Right click` macro's steps per level band (a legacy alias; the generator expands every macro, any key, and a class can have several). Both the label and the sources
+  until the T-61 check "try adding a 5th step"; delays are not modelled (no verified source). The generator checks the key is
+  one of those four, every step slot is defined in `slots`, every skill is an active skill of the class, and the basic attack
+  (the class's `Left click` default key) is only ever the last step (a no-cooldown skill blocks every step above it, claim
+  C21); it compiles `RMB_ROWS` (the flat right-click list `RMB_STACK` reads) by expanding the `Right click` macro's steps per
+  level band (a legacy alias; the generator expands every macro on any of those keys, and a class can have several). Both the label and the sources
   sit on `keyStacks.status` / `sources`; a build choice here is advice, never a game fact.
 - Each source's own order (today `stigmaRules.equipOrder`) moves to a claim that backs the disputed choice.
 - 5b compiles the guide build into today's `SP_SKILLS`, `SP_EXTRA`, `STIGMA_PLAN`, `ST_TARGETS`, `STAT_TIERS`,

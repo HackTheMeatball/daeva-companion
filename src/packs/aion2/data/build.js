@@ -58,7 +58,7 @@ export const planEffAt = (x, X) => { const L = Math.max(1, ...SP_STEPS.filter(y 
 SP_STEPS.filter(x => x.slot === 1).concat(SP_SLOTS).forEach(x => { for (let X = 1; X <= 45; X++) if (planEffAt(x, X) >= x.slotLv) { x.at = X; break; } });
 /* Key stacks for the hold-to-run setup (K grid): row 0 fires first. Right click = damage line, by character level (the guide
    build's macro on Right click, RMB_ROWS: its steps expanded per level band, the first row whose minLv the level reaches; the
-   Assassin's macro steps through Quick Use 2, shown on T). A macro can sit on any key (MACROS_FLAT); this drawer still
+   Assassin's macro steps through Quick Use 2, shown on T). A macro can sit on any key with a 0–3 stack (Q, E, T, right click; MACROS_FLAT); this drawer still
    draws only the right-click one until 0.9 P22's build lane renders steps. Q = Shadowstrike alone (positioning, so it never fires by accident); E = opener cooldowns as they
    unlock, E_ORDER. This is the guide's suggested binding, not the game's defaults (KEYS); row order is inferred. A build
    with only the game's default keys takes every key from them instead (requirements.js rotKeys). */

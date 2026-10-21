@@ -50,6 +50,12 @@ genFails('labelled slot 2 pick without a note naming the alternative (Savage Roa
 genFails('slot witness not cited for specialtyPicks (GamesFuze)', r => { r.specialtyEvidence['spec:assassin:quick-slice:4'].sources[0] = 'https://gamesfuze.com/guides/aion-2-assassin-build-best-skills-stigmas-and-rotation/'; }, /quick-slice:4 \(slot 2\) has 2\+ source/);
 genFails('evidence from one publisher only', r => { r.specialtyEvidence['spec:assassin:heart-gore:5'].sources = ['https://skycoach.gg/blog/aion-2/articles/assassin-guide', 'https://skycoach.gg/blog/aion-2/articles/assassin-guide']; }, /heart-gore:5 \(slot 3\) has 2\+ source/);
 genFails('evidence for the wrong slot', r => { r.specialtyEvidence['spec:assassin:heart-gore:5'].slot = 2; }, /heart-gore:5 \(slot 3\) has 2\+ source/);
+/* builds & macros task 1 (owner facts, 2026-10-21): a macro goes only on a key with a 0–3 stack (Q, E, T, right click), and
+   the basic attack (the Left click default) may only be a macro's last step (claim C21: a no-cooldown skill blocks the rest) */
+/* the schema's key enum stops it before the generator's own check (which guards a schema edit) */
+job(ok => { let msg = null; try { generate({ mutate: (rel, d) => { if (rel === 'data/packs/aion2/asmodian/assassin/builds.json') d.records[0].keyStacks.macros[0].key = 'Left click'; } }); } catch (e) { msg = e.message; }
+  ok('generator rejects: a macro on Left click', !!msg && /keyStacks\/macros\/0\/key must be equal to one of the allowed values/.test(msg), msg); });
+genFails('the basic attack before another macro step', r => { r.keyStacks.macros[0].rows[0].steps.unshift({ skill: 'skill:assassin:quick-slice' }); }, /basic attack skill:assassin:quick-slice is the last step/);
 const genFailsIn = (label, rel, mutate, re) => job(ok => { const g1 = runs(ok, label, { mutate: (p, d) => p === rel && mutate(d) }); if (!g1) return;
   ok('generator rejects: ' + label, g1.failed.some(x => re.test(x.check)), g1.failed.map(x => x.check)); });
 /* 0.2.4 villages as zones (issue #98): the checks that keep places and Kibelisks in the village zone */
