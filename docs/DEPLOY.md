@@ -5,14 +5,36 @@ Two targets, built from the same source by `npm run build`.
 ## GitHub Pages (daevacompanion.com)
 
 Every push to `main` runs `.github/workflows/ci.yml`: the blocking tests (**data** and the **browser** shards, summed
-up by **ci-ok**, see *CI jobs* below), then, only if all of them pass, the **deploy** job builds `dist/` and publishes it
-with `actions/configure-pages`, `actions/upload-pages-artifact` and `actions/deploy-pages`. The **smoke** job then
-checks the live site really serves that build (see *Smoke check* below). Only after it passes, the **release** job tags
-and publishes a GitHub Release for every CHANGELOG version that has none yet (see *Releases* below).
+up by **ci-ok**, see *CI jobs* below). **Only a release deploys** (PLN-17; Fresh governance review, deploy-cadence OK,
+2026-10-21). Before that, every merge went live at once, so 0.9's save reset reached players under the 0.8.0 label. The
+**gate** job decides:
 
-Order on `main`: data + browser shards → ci-ok → deploy → smoke → release. Pull requests run the same tests (data,
-browser shards, perf, ci-ok) and never deploy. Pushes to other branches run CI only through their pull request (no
-duplicate run per push); to test a branch without a PR, run the workflow by hand (Actions → CI → Run workflow).
+- **A push whose own diff changes `package.json`'s `version`** (the release commit, see *Releases*) deploys once its tests
+  pass. Any other merge stops at ci-ok and the live site stays on the last release. A `before` sha of all zeros counts as
+  no change.
+- **A dispatch at a release commit** (Actions → CI → Run workflow on `main`, input `sha` = a commit whose version differs
+  from its parent's) deploys exactly that commit. That's how a failed release is re-run, and how to roll back to an older
+  release. The next merge never deploys a failed release.
+- **The escape hatch: a dispatch at any other commit**, for a fix the owner wants live now, or a legal remedy on Legal's
+  ruling plus the owner's "now" (PLN-17). Needs input `now_comment`, the id of a #114 comment holding the line
+  `DEPLOY NOW <sha7>: "<Isaac's quote>" (verified by id <message id>)`. The coordinator reads Isaac's message by id and
+  posts that line, and the thread that wants the deploy never dispatches it itself (two-person dispatch). The run lists
+  the commits since the last tag in its summary. It refuses if they change the save key or add a "Saves reset" CHANGELOG
+  line, unless the quote says "save" or "reset". Every session posts as the owner account, so the line is a trust marker,
+  not proof. Watchdog (Mike) re-checks each quote by id and flags any deploy with neither a version change nor a logged
+  quote.
+- Any dispatch needs the sha on `main` with **ci-ok** green on it. A dispatch without `sha`, or on a branch, runs the tests
+  only.
+
+Then the **deploy** job builds that sha's `dist/` and publishes it with `actions/configure-pages`,
+`actions/upload-pages-artifact` and `actions/deploy-pages`. The **smoke** job checks the live site really serves that
+build (see *Smoke check* below). Only after it passes, the **release** job tags and publishes a GitHub Release for every
+CHANGELOG version that has none yet (see *Releases* below).
+
+Order on `main`: data + browser shards → ci-ok, and gate → deploy → smoke → release. Pull requests run the same tests
+(data, browser shards, perf, ci-ok) and never deploy. Pushes to other branches run CI only through their pull request (no
+duplicate run per push); to test a branch without a PR, run the workflow by hand on it (Actions → CI → Run workflow, no
+`sha`).
 
 ### CI jobs
 
@@ -25,7 +47,8 @@ duplicate run per push); to test a branch without a PR, run the workflow by hand
 | `browser (checks)` | yes | `--shard checks`: e1, e2, gates, e4, e3 | ≈ 2 min |
 | `perf` | **no** | `update()` median < 15 ms (`tests/perf.js`); a slow run is a `::warning` annotation, the job stays green | ≈ 1 min |
 | `ci-ok` | the required check | succeeds only if every blocking job succeeded (see below) | seconds |
-| `deploy` → `smoke` → `release` | main only | see above | |
+| `gate` | main only | decides whether this run deploys and which sha (see above; tests/deploy.mjs) | seconds |
+| `deploy` → `smoke` → `release` | main, release only | see above | |
 
 Jobs start together, so a PR's result arrives after the slowest shard: ≈ 4 min (was ≈ 13 min with one `test` job).
 
@@ -67,7 +90,7 @@ results. Move to a newer image on purpose, in its own commit, with a green run.
    section at the top of CHANGELOG.md in the house format (docs/team/qa-release.md, "Changelog format").
 2. Push to `main` (through a PR). The data job fails early if the version has no CHANGELOG section or any section
    breaks the format (`node scripts/release-notes.mjs`).
-3. After the deploy, the release job creates tag `vX.Y.Z` and the GitHub Release (title "X.Y.Z — summary", notes =
+3. That push is the release: the gate deploys it (no other merge does). After the deploy, the release job creates tag `vX.Y.Z` and the GitHub Release (title "X.Y.Z — summary", notes =
    that CHANGELOG section, marked latest). Older CHANGELOG versions without a tag are backfilled at the commit that first set them in
    `package.json`. Releases that already exist get their title and notes updated whenever their CHANGELOG section
    changes. Don't create or edit tags or releases by hand.
@@ -114,8 +137,10 @@ local `dist/build.json`), or `npm run build && npm run serve`, then
 
 ### Rolling back
 
-Revert the commit on `main` and push; the workflow redeploys the previous state. (Or re-run an older successful
-workflow run's deploy job.) Saved progress is unaffected either way.
+Dispatch CI on `main` with `sha` = the release commit to go back to (for example the commit tagged `v0.8.0`). That's a
+release commit, so no quote is needed. A revert pushed to `main` no longer redeploys by itself: it goes out with the next
+release, or through the escape hatch. Saved progress is unaffected either way, except that going back to a release with an
+older save key starts players fresh, as that release did.
 
 ## claude.ai artifact
 
