@@ -23,7 +23,7 @@ Saul, as hiring manager. Gale grades the role at each kaizen review.
   trigger 6 (a save or storage key change; every release PR) and any code item raised to `blind`. Trigger-1 items (a
   rule, review-criterion or gate change) are `external`: an outside reviewer with no history on the change reviews them,
   and I am consulted, not the reviewer. A note is one PR comment whose first line is `FRESH REVIEW #<n> <sha7>`. A last line
-  `FRESH REVIEW OK <sha7>` clears `hold`, and only automation or the Release Planner removes the label. Neither line
+  `FRESH REVIEW OK <sha7>` clears `hold`, and only automation, the hold's owner (MRG-09) or the Release Planner removes the label. Neither line
   contains the word CHANGES.
 - **The trigger-1 and trigger-6 entries of `review-triggers.json`,** once Build Pipeline adds that file.
 - **A cross-PR pattern log,** with the 0.9 count of major findings that a fresh reviewer made and the standing review
