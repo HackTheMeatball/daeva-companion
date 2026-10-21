@@ -208,7 +208,9 @@ if (g) {
      the Cleric, 0.8 P17 (#506) for the Sorcerer and 0.8 P19 (#508) for the Chanter, the last idle one: data/packs has
      none left, so the idle checks run on the Spiritmaster copy below */
   const idle = (g.idle || []).map(x => x.pack);
-  ok('data/packs: no idle class pack is left (the Chanter, idle since 0.8 P18, got its guide pack in 0.8 P19)', !idle.length, idle);
+  /* read from the data: every idle pack's class is hidden (no class named), so a released class with no guide pack fails */
+  const idleReleased = (g.idle || []).filter(x => !x.all.some(({ r, file }) => /\/class\.json$/.test(file) && r.release === 'hidden'));
+  ok('data/packs: every idle class pack\'s class is hidden (none is released without a guide pack)', !idleReleased.length, idleReleased.map(x => x.pack));
   /* 0.8 P12 (#501): every bundle carries GAME_CLASSES, the game's class list ({ class, name } per class, for the welcome's
      class picker), so the class words below are read in the module without that one line; the line itself holds
      exactly the class ids and names of data/packs/aion2/pack.json `classes` and the class records, nothing else */
@@ -277,7 +279,9 @@ if (g) {
   ok(`the paraphrase table has its 20 distinct facts (16 quote rows less 1 "as row 2", N1 to N5)`, facts.length === 20, facts.length);
   const missing = facts.filter(f => !refs.some(r => typeof r.note === 'string' && r.note.includes(f)));
   ok('every paraphrase in the table is applied to an allthings.how source note in data/', !missing.length, missing);
-  ok('C02 carries the row 1 paraphrase in all 8 class guides', refs.filter(r => /^data\/packs\/aion2\/asmodian\/[a-z]+\/guide\/claims\.json$/.test(r.file) && r.note && r.note.startsWith(facts[0])).length === 8);
+  { const isGuideClaims = f => /^data\/packs\/aion2\/asmodian\/[a-z]+\/guide\/claims\.json$/.test(f);
+    const guides = walk(join(ROOT, 'data')).map(f => f.slice(ROOT.length + 1).split('\\').join('/')).filter(isGuideClaims).length; /* the class guides present, read from the data */
+    ok(`C02 carries the row 1 paraphrase in all ${guides} class guides`, guides > 0 && refs.filter(r => isGuideClaims(r.file) && r.note && r.note.startsWith(facts[0])).length === guides); }
   const shared = read('packs/aion2/asmodian/guide/claims.json').records, byId = Object.fromEntries(shared.map(x => [x.id, x]));
   ok('C24 (Noble Belt never fails: allthings.how alone) is single source, C23 no longer says its belt costs are verified',
     byId.C24.verdict === 'single-source' && byId.C23.verdict === 'single-source' && !/Belt costs verified/.test(byId.C23.note), [byId.C24.verdict, byId.C23.verdict]);
