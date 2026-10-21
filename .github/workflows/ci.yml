@@ -1,11 +1,20 @@
 name: CI
 
 on:
-  # Branch pushes run CI through their pull request only (no duplicate run per push); main runs on every push (deploy).
+  # Branch pushes run CI through their pull request only (no duplicate run per push); main runs on every push. Only a
+  # release deploys (gate job below).
   push:
     branches: [main]
   pull_request:
+  # On main, a dispatch with `sha` deploys that commit (gate job); without it, or on a branch, it runs the tests only.
   workflow_dispatch:
+    inputs:
+      sha:
+        description: "Deploy this commit on main: a release commit (re-run or rollback), or any commit with now_comment"
+        required: false
+      now_comment:
+        description: "Escape hatch only: id of the #114 comment holding DEPLOY NOW <sha7>: \"<Isaac's quote>\" (verified by id <id>)"
+        required: false
 
 permissions:
   contents: read
@@ -148,9 +157,95 @@ jobs:
           script: |
             await github.rest.actions.createWorkflowDispatch({ ...context.repo, workflow_id: 'kickoff.yml', ref: 'main', inputs: { sha: context.sha } });
 
-  deploy:
-    needs: [data, browser, ci-ok]
+  # Deploy only on a release (PLN-17; Fresh governance review, deploy-cadence OK on Revision 1, 2026-10-21): a push to main
+  # whose own diff changes package.json's version, or a dispatch that names a sha. Every other merge stops at ci-ok, so the
+  # live site is always a release or a logged owner "now", never "main as it is" (0.9's save reset went live under 0.8.0).
+  # - Push: deploy when the version at `before` differs from the pushed sha's. A `before` of all zeros counts as no change.
+  # - Dispatch at a release commit (its version differs from its parent's): re-run of a failed release, or a rollback to an
+  #   older release. No quote needed; the next merge never deploys a failed release.
+  # - Dispatch at any other commit (the escape hatch, also for a legal remedy on Legal's ruling): needs now_comment, the id of
+  #   a #114 comment with the line `DEPLOY NOW <sha7>: "<Isaac's quote>" (verified by id <id>)`. The coordinator reads
+  #   Isaac's message by id first, and the thread that wants the deploy never dispatches it (two-person dispatch). The run
+  #   lists the commits since the last tag and refuses when they change the save key or add a "Saves reset" CHANGELOG line,
+  #   unless the quote says "save" or "reset". Every session posts as the owner account, so the comment is a trust marker:
+  #   Watchdog (Mike) re-checks each quote by id and flags any deploy with neither a version change nor a logged quote.
+  # Any dispatch needs the sha on main with ci-ok green on it; deploy, smoke and release then all use that sha.
+  gate:
     if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    permissions:
+      contents: read
+      checks: read
+      issues: read
+    outputs:
+      deploy: ${{ steps.g.outputs.deploy }}
+      sha: ${{ steps.g.outputs.sha }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - id: g
+        uses: actions/github-script@v7
+        env:
+          IN_SHA: ${{ inputs.sha }}
+          IN_NOW: ${{ inputs.now_comment }}
+          BEFORE: ${{ github.event.before }}
+        with:
+          script: |
+            const { execFileSync } = require('child_process');
+            const git = (...a) => { try { return execFileSync('git', a, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim(); } catch (e) { return null; } };
+            const versionAt = (ref) => { const t = git('show', `${ref}:package.json`); try { return t ? JSON.parse(t).version : null; } catch (e) { return null; } };
+            // DEPLOY-GATE START (tests/deploy.mjs runs this block)
+            const ZERO = /^0*$/;
+            const nowLine = (sha) => new RegExp(`^DEPLOY NOW ${sha.slice(0, 7)}: "(.+)" \\(verified by id \\S+\\)\\s*$`, 'm');
+            const decide = (x) => {
+              if (x.event === 'push') {
+                if (!x.before || ZERO.test(x.before)) return { deploy: false, why: 'push with no earlier sha: no version change' };
+                return x.vBefore !== x.vSha ? { deploy: true, why: `version ${x.vBefore} -> ${x.vSha}` } : { deploy: false, why: `version unchanged (${x.vSha}): CI only` };
+              }
+              if (!x.sha) return { deploy: false, why: 'dispatch without sha: tests only' };
+              if (!x.onMain) return { refuse: `${x.sha} is not a commit on main` };
+              if (!x.ciGreen) return { refuse: `ci-ok is not green on ${x.sha}` };
+              if (x.vParent !== x.vSha) return { deploy: true, why: `release commit ${x.vSha} (re-run or rollback)` };
+              if (!x.nowIs114) return { refuse: 'not a release commit: the escape hatch needs now_comment, a comment on #114' };
+              const m = (x.nowBody || '').match(nowLine(x.sha));
+              if (!m) return { refuse: `comment ${x.now} has no line DEPLOY NOW ${x.sha.slice(0, 7)}: "<quote>" (verified by id <id>)` };
+              if (x.saveChange && !/\b(save|saves|reset)\b/i.test(m[1])) return { refuse: `the commits since ${x.lastTag} change the save key or add a "Saves reset" line, and the quoted "now" doesn't name it` };
+              return { deploy: true, why: `escape hatch, owner's "now": "${m[1]}"` };
+            };
+            // DEPLOY-GATE END
+            const ev = context.eventName, sha = ev === 'push' ? context.sha : git('rev-parse', '--verify', `${process.env.IN_SHA || ''}^{commit}`);
+            const x = { event: ev, before: process.env.BEFORE, sha: ev === 'push' ? context.sha : (process.env.IN_SHA ? sha || process.env.IN_SHA : ''), now: process.env.IN_NOW };
+            if (ev === 'push') { x.vBefore = versionAt(x.before); x.vSha = versionAt(x.sha); }
+            else if (x.sha) {
+              x.onMain = !!sha && git('merge-base', '--is-ancestor', sha, 'origin/main') !== null;
+              const runs = sha ? (await github.rest.checks.listForRef({ ...context.repo, ref: sha, check_name: 'ci-ok', per_page: 50 })).data.check_runs : [];
+              x.ciGreen = runs.some((r) => r.status === 'completed' && r.conclusion === 'success');
+              x.vSha = versionAt(sha); x.vParent = versionAt(`${sha}^`);
+              x.lastTag = git('describe', '--tags', '--abbrev=0', '--match', 'v*', sha) || '';
+              const range = x.lastTag ? `${x.lastTag}..${sha}` : sha;
+              const commits = (git('log', '--format=%h %s', range) || '').split('\n').filter(Boolean);
+              const srcDiff = git('diff', x.lastTag || `${sha}^`, sha, '--', 'src') || '', logDiff = git('diff', x.lastTag || `${sha}^`, sha, '--', 'CHANGELOG.md') || '';
+              x.saveChange = /^[-+].*companion-save-v\d+/m.test(srcDiff) || /^\+.*Saves reset/m.test(logDiff);
+              if (x.now) {
+                try {
+                  const c = (await github.rest.issues.getComment({ ...context.repo, comment_id: Number(x.now) })).data;
+                  x.nowIs114 = /\/issues\/114$/.test(c.issue_url); x.nowBody = c.body;
+                } catch (e) { core.warning(`now_comment ${x.now} unread: ${e.message}`); }
+              }
+              await core.summary.addHeading(`Commits since ${x.lastTag || 'the first commit'}`, 3).addList(commits.length ? commits : ['(none)']).write();
+            }
+            const d = decide(x);
+            if (d.refuse) { core.setFailed(`Deploy refused: ${d.refuse}`); return; }
+            core.notice(`${d.deploy ? 'Deploying' : 'Not deploying'} ${x.sha ? x.sha.slice(0, 7) : ''}: ${d.why}`);
+            core.setOutput('deploy', String(d.deploy));
+            core.setOutput('sha', x.sha || context.sha);
+
+  deploy:
+    needs: [data, browser, ci-ok, gate]
+    # A push deploys only after its own tests pass; a dispatch's gate already checked ci-ok on the named sha.
+    if: always() && needs.gate.outputs.deploy == 'true' && (github.event_name == 'workflow_dispatch' || needs.ci-ok.result == 'success')
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     permissions:
@@ -166,6 +261,8 @@ jobs:
       build_json: ${{ steps.build.outputs.build_json }}
     steps:
       - uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.gate.outputs.sha }}
       - uses: actions/setup-node@v7
         with:
           node-version: 22
@@ -191,12 +288,14 @@ jobs:
   # deploy's dist/build.json, then checks the footer shows package.json's version. A deploy that "succeeds" but never
   # goes live fails here, before a release is tagged. Failures are ::error annotations.
   smoke:
-    needs: deploy
-    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
+    needs: [gate, deploy]
+    if: always() && needs.deploy.result == 'success'
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.gate.outputs.sha }}
       - uses: actions/setup-node@v7
         with:
           node-version: 22
@@ -208,8 +307,8 @@ jobs:
   # A new version in package.json gets its tag and GitHub Release once it is tested and live (smoke passed). Notes come
   # from its CHANGELOG section. Versions already tagged are skipped, so ordinary pushes to main do nothing here.
   release:
-    needs: [deploy, smoke]
-    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
+    needs: [gate, deploy, smoke]
+    if: always() && needs.smoke.result == 'success'
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     permissions:
@@ -220,6 +319,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
+          ref: ${{ needs.gate.outputs.sha }}
           fetch-depth: 0
       - uses: actions/setup-node@v7
         with:
@@ -227,8 +327,9 @@ jobs:
       - name: Tag and publish new CHANGELOG versions; keep existing release notes in sync
         env:
           GH_TOKEN: ${{ github.token }}
+          DEPLOY_SHA: ${{ needs.gate.outputs.sha }}
         run: |
-          # Each version is released at the first commit that set it in package.json (the current version at HEAD).
+          # Each version is released at the first commit that set it in package.json (the current version at the deployed sha).
           cur="$(node -p 'require("./package.json").version')"
           for ver in $(node scripts/release-notes.mjs --list); do
             tag="v$ver"
@@ -247,7 +348,7 @@ jobs:
               fi
               continue
             fi
-            if [ "$ver" = "$cur" ]; then sha="$GITHUB_SHA"; else
+            if [ "$ver" = "$cur" ]; then sha="$DEPLOY_SHA"; else
               sha="$(git log --reverse --format=%H -G"\"version\": \"$ver\"" -- package.json | head -1)"
             fi
             if [ -z "$sha" ]; then echo "::warning::No commit sets version $ver in package.json; not releasing it."; continue; fi
