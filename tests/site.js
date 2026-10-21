@@ -15,7 +15,7 @@ const VERSION = JSON.parse(fs.readFileSync(path.join(CFG.ROOT, 'package.json'), 
 const REPO = 'https://github.com/hackthemeatball/daeva-companion';
 /* footer version link + "Report a problem" link: the version comes from package.json; the report URL carries exactly these
    issue-form fields and nothing else from the save */
-const REPORT_FIELDS = ['template', 'version', 'level', 'quest', 'mode', 'build', 'browser'];
+const REPORT_FIELDS = ['template', 'version', 'level', 'quest', 'build', 'browser'];
 const footerMeta = p => p.evaluate(() => { const v = document.getElementById('verLink'), r = document.getElementById('reportLink');
   r.dispatchEvent(new Event('focus'));
   return { vText: v && v.textContent, vHref: v && v.getAttribute('href'), vPrev: v && v.previousElementSibling && v.previousElementSibling.textContent,
@@ -24,7 +24,7 @@ const checkReport = (label, m, want) => {
   let u = null; try { u = new URL(m.rHref); } catch (e) { /* bad URL */ }
   const keys = u ? [...u.searchParams.keys()] : [], got = u ? Object.fromEntries(u.searchParams) : {};
   ok(`${label}: "Report a problem" opens the GitHub bug form in a new tab`, m.rText === 'Report a problem' && u && u.origin + u.pathname === REPO + '/issues/new' && m.rTarget === '_blank', m);
-  ok(`${label}: report link carries only version, level, story quest, mode, build and browser`,
+  ok(`${label}: report link carries only version, level, story quest, build and browser`,
     JSON.stringify(keys) === JSON.stringify(REPORT_FIELDS) && Object.entries({ ...want, browser: m.ua }).every(([k, v]) => got[k] === v), { keys, got, want });
   ok(`${label}: report link has nothing else from the save`, !/g22|checks|seedLv12|migV5|stTriniel|dvReset/.test(decodeURIComponent(m.rHref)), m.rHref);
   /* save v5 (0.4 P3c): never the slot id, the character label (<name>-<class>-lvl<level>) or the class */
@@ -177,11 +177,11 @@ const checkReport = (label, m, want) => {
     await p.reload(); await p.waitForTimeout(500);
     const fm = await footerMeta(p);
     ok('footer: version after the Privacy link equals package.json, links to the CHANGELOG', fm.vText === 'v' + VERSION && fm.vPrev === 'Privacy' && fm.vHref === REPO + '/blob/main/CHANGELOG.md', { fm, VERSION });
-    checkReport('footer', fm, { template: 'bug.yml', version: VERSION, level: '27', quest: 'Preparations for Restoration', mode: 'Advanced', build: 'site' });
-    await p.click('.modeseg [data-mode=basic]'); await p.click('#lvlUp'); await p.waitForTimeout(100);
+    checkReport('footer', fm, { template: 'bug.yml', version: VERSION, level: '27', quest: 'Preparations for Restoration', build: 'site' });
+    await p.click('#lvlUp'); await p.waitForTimeout(100);
     const fm2 = await footerMeta(p), lv2 = await p.evaluate(() => String(char(state).level));
-    checkReport('footer after a change', fm2, { template: 'bug.yml', version: VERSION, level: lv2, quest: 'Preparations for Restoration', mode: 'Basic', build: 'site' });
-    await p.click('.modeseg [data-mode=advanced]'); await p.click('#lvlDown'); await p.waitForTimeout(100);
+    checkReport('footer after a change', fm2, { template: 'bug.yml', version: VERSION, level: lv2, quest: 'Preparations for Restoration', build: 'site' });
+    await p.click('#lvlDown'); await p.waitForTimeout(100);
     ok('export: button visible outside claude.ai', await p.evaluate(() => !document.getElementById('expBtn').hidden));
     const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#expBtn')]);
     const exported = JSON.parse(fs.readFileSync(await dl.path(), 'utf8')), live = await p.evaluate(() => state);
@@ -363,9 +363,7 @@ const checkReport = (label, m, want) => {
       ok('nudge: shown on day 14, same N as the line', n14.nudge && n14.nudgeTxt === "You haven't exported a backup in 14 days. Progress lives in this browser only." && n14.line === 'Last backup: 14 days ago.', n14);
       await load(p, { ...SAVED, backup: { lastExportAt: T - 15 * DAY } });
       const role = await p.evaluate(() => { const c = document.getElementById('nudge'); return c.closest('[role=status]') && c.closest('[role=status]').id; });
-      ok('nudge: shown at 15 days in the full view, inside the role=status slot', (await ui(p)).nudge && role === 'bkNote', role);
-      await p.click('.modeseg [data-mode=basic]'); await p.waitForTimeout(100);
-      ok('nudge: shown in Basic mode too', (await ui(p)).nudge);
+      ok('nudge: shown at 15 days, inside the role=status slot', (await ui(p)).nudge && role === 'bkNote', role);
       await p.evaluate(() => setSaveWarn(true));
       const sw = (await ui(p)).nudge; await p.evaluate(() => setSaveWarn(false));
       ok('nudge: hidden while the save-failed banner shows, back when it goes', !sw && (await ui(p)).nudge, sw);
@@ -479,7 +477,8 @@ const checkReport = (label, m, want) => {
     ok('sync t3: typing the last group enables I\'ve saved it', await p.evaluate(() => ![...document.querySelectorAll('#dcsPanel button')].find(x => /saved/.test(x.textContent)).disabled));
     await clickText(p, T['code.saved']);
     u = await until(p, x => syncedRe.test(x.st));
-    ok('sync s2: stored, first round uploads; Advanced: status "Synced · just now", Sync now then Sync options; strip says synced', syncedRe.test(u.st) && /ok/.test(u.tone) && JSON.parse(u.rec).code === code && host.objects.size === 1 && u.now && u.opts && u.strip === T['strip.on'] && !u.panel, u);
+    await p.click('.sync-fold'); u = await ui(p);
+    ok('sync s2: stored, first round uploads; Sync settings open: status "Synced · just now", Sync now then Sync options; strip says synced', syncedRe.test(u.st) && /ok/.test(u.tone) && JSON.parse(u.rec).code === code && host.objects.size === 1 && u.now && u.opts && u.strip === T['strip.on'] && !u.panel, u);
     ok('sync s2: Sync now comes before Sync options', await p.evaluate(() => !!(document.getElementById('dcsNow').compareDocumentPosition(document.getElementById('dcsOpts')) & Node.DOCUMENT_POSITION_FOLLOWING)));
     /* the code never leaves the record: not in the save, an Export file or the Report link */
     const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#expBtn')]);
@@ -487,9 +486,9 @@ const checkReport = (label, m, want) => {
     const bare = code.replace(/-/g, '');
     const leak = s => s.includes(code) || s.includes(bare);
     ok('sync: Export and Report a problem never include the sync code (nor the save)', !leak(expText) && !leak(decodeURIComponent(rep)) && !leak(await p.evaluate(k => localStorage.getItem(k), KEY)) && !/companion-sync/.test(expText), { rep });
-    await p.click('.modeseg [data-mode=basic]'); u = await ui(p);
-    ok('sync s1: Basic shows label, switch and status only', syncedRe.test(u.st) && !u.now && !u.opts && u.on === 'true', u);
-    await p.click('.modeseg [data-mode=advanced]');
+    await p.click('.sync-fold'); u = await ui(p);
+    ok('sync s1: with Sync settings folded: label, switch and status only', syncedRe.test(u.st) && !u.now && !u.opts && u.on === 'true', u);
+    await p.click('.sync-fold'); u = await ui(p);
     let release; net.hold = new Promise(r => { release = r; });
     await p.click('#dcsNow'); u = await until(p, x => x.st === T['status.syncing'], 3000);
     ok('sync s3: a running round shows "Syncing…"', u.st === T['status.syncing'], u);
@@ -552,7 +551,7 @@ const checkReport = (label, m, want) => {
     const lvA = await p.evaluate(() => String(char(state).level)), lvB = await q.evaluate(() => String(char(state).level));
     ok('sync j4: the joined device shows the cloud copy\'s character', lvA === lvB, { lvA, lvB });
     /* §4a: at 390 px the code box never breaks inside a group and no line starts with "-" */
-    await q.click('.modeseg [data-mode=advanced]'); await q.click('#dcsOpts'); await clickText(q, T['opt.show']);
+    await q.click('.sync-fold'); await q.click('#dcsOpts'); await clickText(q, T['opt.show']);
     const wrap = await q.evaluate(() => { const box = document.querySelector('#dcsPanel .sync-code'), grps = [...box.querySelectorAll('.sync-grp')];
       const lines = new Set(grps.map(g => Math.round(g.getBoundingClientRect().top)));
       const hy = [...box.childNodes].filter(nd => nd.nodeType === 3).map(nd => { const r = document.createRange(); r.selectNodeContents(nd); return Math.round(r.getBoundingClientRect().top); });
