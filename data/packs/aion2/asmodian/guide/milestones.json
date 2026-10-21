@@ -56,7 +56,7 @@
       "order": 50,
       "lv": 15,
       "title": "Ring quest and skills",
-      "blurb": "Spooky Specters for a ring, plus four skill upgrades.",
+      "blurb": "Spooky Specters for a ring, plus skill upgrades.",
       "includes": [
         {
           "sealedDungeonBand": 15,
@@ -158,7 +158,7 @@
       "order": 140,
       "lv": 37,
       "title": "Stigma slot 4",
-      "blurb": "Full rotation online; the story takes you into the Fire Temple."
+      "blurb": "The story takes you into the Fire Temple."
     },
     {
       "id": "g40",

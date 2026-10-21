@@ -349,7 +349,7 @@
                 "checkedAt": "2026-10-18"
               }
             ],
-            "note": "the skill's learn level (the board opens at 12)"
+            "note": "the skill's learn level (the board opens with Urgent Pursuit, Lv 13)"
           },
           "completesWith": [
             "tick"

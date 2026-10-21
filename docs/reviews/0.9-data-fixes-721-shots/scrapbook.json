@@ -1,0 +1,6 @@
+[
+  { "case": "milestone-lv15-1500", "kind": "before-after", "title": "Lv 15 milestone for every class",
+    "caption": "The Lv 15 milestone no longer promises four skill upgrades, which only fit the Assassin; it now says skill upgrades." },
+  { "case": "milestone-lv37-1500", "kind": "before-after", "title": "Lv 37 milestone for every class",
+    "caption": "The Lv 37 milestone drops \"Full rotation online\", which was wrong for the Spiritmaster and other classes." }
+]

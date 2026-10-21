@@ -9896,7 +9896,7 @@
       "verifiedAt": "2026-10-19",
       "status": "verified",
       "conflicts": [
-        "Giver Kunpata is Daybreak Society; prerequisites not checked (no gaming.tools/th.gl page reachable; shugo.gg and gamers4.life show none but they do not show prerequisites for quests that do have them, e.g. The Future Within the Past). Not in Forgotten Commander's dependent list.",
+        "Giver Kunpata is Daybreak Society; prerequisites not checked (no gaming.tools/th.gl page reachable; shugo.gg shows none but it does not show prerequisites for quests that do have them, e.g. The Future Within the Past). Not in Forgotten Commander's dependent list.",
         "Prerequisites: no aion2.gaming.tools / aion2.th.gl page was reachable from our tools; checked 2026-10-20 on aion2.gaming.tools in the owner's browser (see requires)"
       ],
       "fieldStatus": {
