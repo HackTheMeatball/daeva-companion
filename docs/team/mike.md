@@ -37,6 +37,11 @@ _From #114 "Health check (owner design, 2026-10-17 5:51 AM ET; replaces the plan
 
 For each anomaly: first append one row to the **Stall log, issue #221** (re-read before writing, append only, verify after; columns and Kinds in its header; times ET), then fix it and fill the Fix cell. Needs Isaac -> the usual To-do + Notify. Watchdog (Mike) sends KIND RECURRED to Kaizen (Gale) the same day (#221 header) (HC-02, Isaac typed in the Gus thread 2026-10-19 1:41 PM ET). Nothing found -> edit only the "Health check:" line, stop.
 
+- **Release checks** (amends HC-02, HC-06 and HC-07's QUEUE IDLE check, no new id; batch-0.9 item 22, after 0.8.1 sat at 7 of 8 steps for about 17 h; Isaac, 2026-10-21 5:36 PM ET: "this shouldn't happen again"; routed by the coordinator 2026-10-21 21:38Z). Every health check:
+  - (a) Item check: every planned item of each open release (the items its release issue lists) has a #114 queue line, and none sits held (a `held:` sub-line) or `[blocked]` for more than 2 h. The only exception is a line the latest Kickoff run says waits on an unmet owner OK ([DECISIONS 2026-10-19](../DECISIONS.md), owner-gated lines count as idle); a spec, input or queue hold never counts as that exception.
+  - (b) Release check, the backstop for what (a)'s list misses: an open release whose count of done items hasn't moved in 4 h while one of its items is still open.
+  - Each miss gets a #221 row, Kind `release-stall`, and goes to Walter and the coordinator.
+
 ### COM-19 check
 
 _From [team-wide.md COM-19](team-wide.md#com-19) (Isaac, 2026-10-21; not in #114)._
