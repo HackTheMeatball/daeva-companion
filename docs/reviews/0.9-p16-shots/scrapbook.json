@@ -1,0 +1,6 @@
+[
+  { "case": "templar-390-daevanion", "kind": "before-after", "title": "Templar board costs filled in",
+    "caption": "At Lv 39 every Templar board node now shows its path cost, tagged inferred, and Guarding Seal comes before the node whose path runs through it." },
+  { "case": "templar-1500-daevanion", "kind": "before-after", "title": "Templar board costs, wide screen",
+    "caption": "The same Templar Daevanion card at desktop width: each cost box is pre-filled and marked inferred until checked in game." }
+]
