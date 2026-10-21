@@ -256,6 +256,44 @@ const setState = async (p, args) => { await writeFixture(p, args); await p.reloa
     await ctx.close();
   }
 
+  /* ---------- 0.8.1 F11: an unrelated tick keeps the Next up stack fitted to the card shown ----------
+     An update() that leaves Next up unchanged skips its write (setHTML), so the stack keeps its scroll; fitSkills then
+     has to size the stack to the card scrolled into view (nsFit), not to the first card, or a taller card 2 is clipped.
+     The state: the first desktop fixture (Lv 25-45) with a later card taller than the first, n its index (card 2 when
+     it can be); the tick: the first milestone checkbox whose tick leaves Next up as it was (a write would reset the scroll
+     and prove nothing). */
+  {
+    const ctx = await b.newContext({ viewport: { width: 1500, height: 1000 } }), p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
+    await p.goto(CUR);
+    const c = { level: null, mode: 'advanced', width: 1500, fixture: 'f11-stack' };
+    const hs = () => p.evaluate(() => { const w = document.getElementById('nsqWrap'); return w ? [...w.children].map(x => x.offsetHeight) : []; });
+    const toCard = async n => { await p.evaluate(n => { const w = document.getElementById('nsqWrap'), cs = w.children; w.scrollTop = cs[n].offsetTop - cs[0].offsetTop; }, n); await p.waitForTimeout(600); };
+    const look = n => p.evaluate(n => { const w = document.getElementById('nsqWrap'), r = w.getBoundingClientRect(), k = w.children[n].getBoundingClientRect();
+      return { h1: w.children[0].offsetHeight, hn: w.children[n].offsetHeight, stack: Math.round(r.height), top: Math.round(k.top - r.top), bottom: Math.round(r.bottom - k.bottom), scroll: w.scrollTop }; }, n);
+    let st = null; const seen = [];
+    for (const fx of FIXTURES) { for (let L = 25; L <= 45; L++) { await setState(p, { L, mode: 'advanced', fx }); const h = await hs(), n = h.findIndex((x, i) => i > 0 && x > h[0] + 8); seen.push(`${fx} ${L}: ${h.join('/')}`); if (n > 0) { st = { L, fx, n }; break; } } if (st) break; }
+    rec(c, 'F11: a desktop state with a Next up card taller than the first', !!st, seen);
+    if (st) {
+      c.level = st.L; c.fixture = `f11-stack ${st.fx}, card ${st.n + 1}`;
+      await toCard(st.n); const shown = await look(st.n);
+      rec(c, 'F11: scrolled to the taller card, the stack fits it', shown.scroll > 0 && shown.top >= -1 && shown.bottom >= -1, shown);
+      const keys = await p.evaluate(() => [...document.querySelectorAll('#gates input[data-k]:not(:checked)')].map(i => i.dataset.k));
+      let used = null, after = null;
+      for (const k of keys.slice(0, 40)) {
+        /* a Next up write replaces the stack node, so the mark on it is gone */
+        await p.evaluate(k => { document.getElementById('nsqWrap').f11 = 1; const i = document.querySelector(`#gates input[data-k="${CSS.escape(k)}"]`); i.click(); }, k); await p.waitForTimeout(600);
+        const same = await p.evaluate(() => (document.getElementById('nsqWrap') || {}).f11 === 1);
+        if (same) { used = k; after = await look(st.n); break; }
+        await setState(p, { L: st.L, mode: 'advanced', fx: st.fx }); await toCard(st.n);
+      }
+      rec(c, 'F11: found a milestone tick that leaves Next up unchanged', !!used, keys.length);
+      if (used) rec(c, 'F11: after an unrelated tick the stack still fits the taller card (nothing clipped)', after.scroll > 0 && after.top >= -1 && after.bottom >= -1 && after.stack >= after.hn, { tick: used, before: shown, after });
+      if (used && !NOSHOTS) await (await p.$('#nowStar')).screenshot({ path: path.join(SHOTS, 'f11-nextup-after-tick.png') });
+    }
+    rec(c, 'F11: no page errors', !errs.length, errs);
+    await ctx.close();
+  }
+
   /* ---------- Basic rail height is the same on every load (0.5 P1, #105 / #193) ----------
      With web fonts allowed (the suite blocks them; unrouteAll drops the blocker's routes for this context): fonts land
      after the first fit, and the milestone icons used to be sized to the measured text (which their own width rewraps),
