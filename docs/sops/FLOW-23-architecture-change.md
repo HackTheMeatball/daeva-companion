@@ -13,7 +13,7 @@ A planned item's files include `src/core/`, saves or storage, `tools/gen`, `data
 
 ## Owner
 
-**Gus** (accountable for this flow end to end; each step names who does it).
+**Gus** (accountable for this flow end to end; each step names who does it), from when Gus's relay work moves to Actions (coordinator's decision, on Org Design's evidence). Howard reviews changes against it; the data rules stay with Gretchen. Until then Who does what has no architecture row; Francesca adds it when the change takes effect, and Walter writes the DECISIONS row (DEC-01).
 
 ## Inputs
 
@@ -27,7 +27,7 @@ A planned item's files include `src/core/`, saves or storage, `tools/gen`, `data
 2. **Kickoff**: Starts it on Opus because it touches an Opus path (PIP-06).
 3. **Builder**: Builds it per ARCHITECTURE.md; a save break bumps the key and notes it in the CHANGELOG (REPO-04); runs `npm test` (REPO-01).
 4. **Reviewer**: Reviews it ([FLOW-04](FLOW-04-code-review.md)); Howard briefs a fresh reviewer for a tagged item.
-5. **Gus**: Keeps ARCHITECTURE.md current with what merged and answers architecture questions from builders and reviewers.
+5. **Gus**: Keeps ARCHITECTURE.md and the code-readability standard current with what merged, and answers architecture questions from builders and reviewers (from when the owner change in the Owner section takes effect).
 
 ## Gates
 
@@ -52,10 +52,6 @@ A planned item's files include `src/core/`, saves or storage, `tools/gen`, `data
 - [REPO-04](../../CLAUDE.md): saves before 1.0
 - [REPO-01](../../CLAUDE.md): tests
 - [DEC-20261016-saved-progress-before-1-0](../DECISIONS.md): clean breaks allowed
-
-## Open questions for the owner of this flow
-
-- Owner pending: Gus (proposed by Org Design, with Howard reviewing changes against it; a fresh review rules on it). Until then nobody owns architecture in Who does what, and Francesca records the decision.
 
 ## Last confirmed by owner
 

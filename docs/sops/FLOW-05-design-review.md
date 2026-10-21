@@ -46,7 +46,7 @@ Two entry points: (a) Jane's mockups for a minor with visible changes are ready 
 ## Failure and escalation
 
 - `DESIGN CHANGES` starts a fix run (MRG-06).
-- A removal of something Isaac sees is named to him (Holly never accepts one because the team decided it).
+- A removal of something Isaac sees is named to Isaac (Holly never accepts one because the team decided it).
 - Reviewers disagree: the morning debrief (KZ-16).
 - A merged `fresh-review` item with no fresh-review note: Mike flags it as `review-skipped` (KZ-16).
 
@@ -65,7 +65,7 @@ Two entry points: (a) Jane's mockups for a minor with visible changes are ready 
 
 ## Open questions for the owner of this flow
 
-- Owner: Holly (design review and the Critic pass) or Jane (the DESIGN OK gate)? Drafted as Holly, with Jane's steps named; if the two differ, Walter decides.
+- Owner: Holly (design review and the Critic pass) or Jane (the DESIGN OK gate)? Drafted as Holly, with Jane's steps named; if the two differ, the coordinator decides (an ownership question).
 
 ## Last confirmed by owner
 
