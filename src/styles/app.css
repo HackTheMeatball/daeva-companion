@@ -637,8 +637,8 @@ header.top .eyebrow { display: flex; align-items: center; gap: var(--space-12); 
 body.basic header.top .sub,
 body.basic #ahead, body.basic #questSubs, body.basic #trackWrap, body.basic .ms-head .jfilt,
 body.basic #areas .achips, body.basic #areaList .sh-note, body.basic #areaList .ztr,
-body.basic #spCard .ctlcol em, body.basic #spCard .tfoot, body.basic #stCard .ctlcol em, body.basic #stCard .tfoot, body.basic #spCard .sphint, body.basic #spCard .cubebar,
-body.basic #dvBox .ctlcol em, body.basic #dvBox #dvRemain, body.basic #dvUndo, body.basic #dvAllList, body.basic #dvBox .tfoot, body.basic #dvBox .cubebar,
+body.basic #spCard .ctlcol em, body.basic #spCard .tfoot > :not(#spRespec), body.basic #stCard .ctlcol em, body.basic #stCard .tfoot, body.basic #spCard .sphint, body.basic #spCard .cubebar,
+body.basic #dvBox .ctlcol em, body.basic #dvBox #dvRemain, body.basic #dvUndo, body.basic #dvAllList, body.basic #dvBox .tfoot > :not(#dvRespec), body.basic #dvBox .cubebar,
 body.basic #gates details.step:not(.upnext):not(.overdue):not(.peek), body.basic #routeCard,
 body.basic #gates .loc, body.basic #gates .note, body.basic #gates .upsell, body.basic #gates small,
 

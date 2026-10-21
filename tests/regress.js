@@ -219,6 +219,32 @@ const setState = async (p, args) => { await writeFixture(p, args); await p.reloa
     await ctx.close();
   }
 
+  /* ---------- 0.8.1 F7 (#604): both Respec buttons show in Basic and work there; the rest of each footer stays hidden ---------- */
+  for (const W of [1500, 390]) {
+    const ctx = await b.newContext({ viewport: { width: W, height: 1000 } }), p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
+    await p.goto(CUR); await setState(p, { L: 30, mode: 'basic', fx: 'clean' });
+    const c = { level: 30, mode: 'basic', width: W, fixture: 'respec-basic' };
+    const foot = await p.evaluate(() => {
+      const vis = e => !!e && !!(e.offsetWidth || e.offsetHeight || e.getClientRects().length);
+      const rest = sel => [...document.querySelectorAll(sel + ' .tfoot > *')].filter(e => !/Respec$/.test(e.id) && vis(e)).map(e => e.id || e.className || e.tagName);
+      return { basic: document.body.classList.contains('basic'), sp: vis(document.getElementById('spRespec')), dv: vis(document.getElementById('dvRespec')), spRest: rest('#spCard'), dvRest: rest('#dvBox'), stFoot: vis(document.querySelector('#stCard .tfoot')) };
+    });
+    rec(c, 'respec basic: page is in Basic mode', foot.basic, foot);
+    rec(c, 'respec basic: Skills and Daevanion Respec buttons visible', foot.sp && foot.dv, foot);
+    rec(c, 'respec basic: rest of both footers hidden (Sync levels, How points work, All nodes)', !foot.spRest.length && !foot.dvRest.length, foot);
+    rec(c, 'respec basic: Stigmas footer stays hidden', !foot.stFoot, foot);
+    const n = pre => p.evaluate(pre => Object.keys(char(state).checks).filter(k => (pre === 'sp' ? /^sp:.+:([2-9]|10)$/ : /^dv:/).test(k) && char(state).checks[k]).length, pre);
+    for (const [id, pre, other] of [['#spRespec', 'sp', 'dv'], ['#dvRespec', 'dv', 'sp']]) {
+      const before = await n(pre), keep = await n(other);
+      rec(c, `respec basic ${pre}: fixture has ticks to clear`, before > 0, before);
+      const btn = p.locator(id);
+      await btn.click(); rec(c, `respec basic ${pre}: first click arms, changes nothing`, (await btn.innerText()) === 'Click again to respec' && (await n(pre)) === before);
+      await btn.click(); rec(c, `respec basic ${pre}: second click clears, other card untouched`, (await n(pre)) === 0 && (await n(other)) === keep && (await btn.innerText()) === 'Respec', { left: await n(pre), keep, other: await n(other) });
+    }
+    rec(c, 'respec basic: no page errors', !errs.length, errs);
+    await ctx.close();
+  }
+
   /* ---------- pop-out (Document PiP stubbed with window.open) ---------- */
   {
     const ctx = await b.newContext({ viewport: { width: 1500, height: 1000 } });
