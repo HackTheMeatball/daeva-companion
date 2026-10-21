@@ -111,8 +111,10 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
 
   /* #10 single-source skill buys tagged in Next up; Skills card tooltip names the source */
   /* tag: the "single source" tag; label: a specialty pick's own label (0.8.1 F2: disputed / contested / inferred), a different tag */
-  const tagRows = () => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-card')].filter(c => /^Buy /.test(c.querySelector('h3').innerText)).map(c => { const nm = c.querySelector('h3 b').innerText.replace(/ \d+ → \d+$| specialty$/, ''); const s = SP_STEPS.find(x => x.s.n === nm), tags = [...c.querySelectorAll('.ss-tag')].map(t => t.textContent.trim());
-    return { nm, single: !!(s && s.s.single), tag: tags.includes('single source'), label: tags.filter(t => t !== 'single source') }; }));
+  /* one view (0.9 P21): the queued skill cards sit in "More you could do"; opened, so their text renders */
+  const tagRows = () => p.evaluate(() => { const mo = document.getElementById('nsMore'); if (mo) mo.open = true;
+    return [...document.querySelectorAll('#nowStar .ns-card')].filter(c => /^Buy /.test(c.querySelector('h3').innerText)).map(c => { const nm = c.querySelector('h3 b').innerText.replace(/ \d+ → \d+$| specialty$/, ''); const s = SP_STEPS.find(x => x.s.n === nm), tags = [...c.querySelectorAll('.ss-tag')].map(t => t.textContent.trim());
+    return { nm, single: !!(s && s.s.single), tag: tags.includes('single source'), label: tags.filter(t => t !== 'single source') }; }); });
   await set(41, `s.stones = 300;`); const r0 = await tagRows();
   ok('#10 two-source skill cards carry no tag', r0.length && r0.every(x => !x.single && !x.tag), r0);
   ok('#10 specialty slot 2 cards: Ambush and Insignia Explosion carry their "disputed" label, Heart Gore and Quick Slice (2+ sources) none',
