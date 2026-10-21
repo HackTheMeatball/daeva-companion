@@ -1461,6 +1461,22 @@ finding 7, project files). The line names up to 3 kinds with counts and opens to
 Fastest / Completionist track toggle (0.5) is a named removal, replaced by one "Main path only" setting that carries the
 track's drawbacks text while on. The adv and later cards that one view (0.9 P21) moves out of the headline land here.
 
+**Simple keys (the owner's idea, 2026-10-21 9:57 AM ET: "an auto-pilot mode where it's just right and left click and
+Q, e, r, and f for one off 'ultimate' skills"; Design Review (Holly): GO with changes,
+`design-review/audit-simple-keys-mode-holly.md`, shared folder).** The key panel gets a per-character view setting,
+"Simple keys" or "Advanced keys". It is not a build: builds stay the same and only the key panel changes, so custom
+builds get Simple automatically.
+- **What goes where.** Simple puts only damage skills that fire on cooldown in the two mouse stacks (up to 4 skills each, where the game fires the highest-priority ready one). Conditional, positional, charge, toggle, defensive and heal skills go on single keys, with one line each on when to press them. For a healer, that means damage on the mouse and heals on keys.
+- **Sourced orders only.** Each class's stack order comes from the sourced stacks in `docs/research/2026-10-rotation-play.md`, with that file's label. Advanced exists only where a source gives an order.
+- **Honesty.** The panel says once what Simple gives up. Next up suggests switching to Advanced when it matters, for example at Lv 45 before the first end-game boss.
+- **Warnings and keys.** One warning line covers AION 1 control mode, where mouse skills stop working. If R or F is taken, the setup uses another key and says "rebind".
+- **Gates.**
+  - Game Data Check (Gretchen) confirms per class that the layout is possible: macro and slot limits, whether R and F are free, and whether F is interact (the open key checks, T-61). A class whose layout can't be confirmed gets no Simple option.
+  - The owner's in-game time-to-kill test (Assassin, Lv 45, 3 runs each against the current guide layout) decides the default: under about 10% slower makes Simple the default for new characters, otherwise it's opt-in. The 10% threshold is Holly's proposal, not sourced.
+- **Look and order.** Design Lead does the look as a toggle on the key panel component from the 0.9 key setup work (`docs/design/0.9-keys/`, P22). It is planned after that redesign, since both share `build.js` and the same shots. The name "Autopilot" was dropped because it reads like botting.
+
+Shaped in 0.10's own pass.
+
 ### 0.11 — The 1.0 look and the microscope pass (estimate)
 
 Design Lead's app design review for 1.0 (owner, 2026-10-19 1:57 PM ET): the blind check run in 0.9, a visual language
