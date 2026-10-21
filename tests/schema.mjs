@@ -58,6 +58,18 @@ job(ok => { let msg = null; try { generate({ mutate: (rel, d) => { if (rel === '
 genFails('the basic attack before another macro step', r => { r.keyStacks.macros[0].rows[0].steps.unshift({ skill: 'skill:assassin:quick-slice' }); }, /basic attack skill:assassin:quick-slice is the last step/);
 const genFailsIn = (label, rel, mutate, re) => job(ok => { const g1 = runs(ok, label, { mutate: (p, d) => p === rel && mutate(d) }); if (!g1) return;
   ok('generator rejects: ' + label, g1.failed.some(x => re.test(x.check)), g1.failed.map(x => x.check)); });
+/* 0.9 P15 choice points: a choice in reach with neither a pick nor a noPick reason fails, naming the site; so does a noPick
+   entry for a site that has a pick or is out of reach, and a labelled slot 1 pick without its note */
+const genFailsFor = (label, cls, mutate, re) => job(ok => { const rel = `data/packs/aion2/asmodian/${cls}/builds.json`;
+  const g1 = runs(ok, label, { pack: 'aion2/asmodian/' + cls, mutate: (p, d) => p === rel && mutate(d.records[0]) }); if (!g1) return;
+  ok('generator rejects: ' + label, g1.failed.some(x => re.test(x.check)), g1.failed.map(x => x.check)); });
+genFails('a core skill\'s slot 1 pick removed (Heart Gore)', r => { delete r.specialtyPicks['skill:assassin:heart-gore']; }, /choice point build:assassin:guide skill:assassin:heart-gore#1 \(Heart Gore specialty slot 1/);
+genFailsFor('a Ranger specialty pick removed (Snipe)', 'ranger', r => { delete r.specialtyPicks['skill:ranger:snipe']; }, /choice point build:ranger:guide skill:ranger:snipe#1 /);
+genFailsFor('a reachable slot 2 with neither a pick nor a noPick (Cleric Divine Aura)', 'cleric', r => { delete r.noPick; }, /choice point build:cleric:guide skill:cleric:divine-aura#2 /);
+genFailsFor('a noPick beside a pick (Gladiator Ruinous Blow slot 1)', 'gladiator', r => { r.noPick['skill:gladiator:ruinous-blow#1'] = { reason: 'no-source', note: 'x' }; }, /choice point build:gladiator:guide skill:gladiator:ruinous-blow#1 /);
+genFailsFor('a noPick for a slot out of reach (Ranger Snipe slot 2)', 'ranger', r => { r.noPick = { 'skill:ranger:snipe#2': { reason: 'no-source', note: 'x' } }; }, /noPick build:ranger:guide skill:ranger:snipe#2: a choice point in reach/);
+genFailsFor('a stigma slot emptied', 'templar', r => { r.stigmaSlots.pop(); }, /choice point build:templar:guide stigma#4 /);
+genFailsFor('a labelled slot 1 pick without its note (Ranger Deadshot)', 'ranger', r => { delete r.specialtyEvidence['spec:ranger:deadshot:1'].note; }, /deadshot:1 \(slot 1\) has 2\+ source/);
 /* 0.2.4 villages as zones (issue #98): the checks that keep places and Kibelisks in the village zone */
 genFailsIn('Aldelle Village Kibelisk in two zones', 'data/packs/aion2/asmodian/zones.json', d => { d.records.find(z => z.id === 'zone:ishalgen').kibelisks = ['Aldelle Village']; }, /Kibelisk Aldelle Village resolves to one zone/);
 genFailsIn('a giver placed in Aldelle Village but zoned Ishalgen', SQ, d => { d.records.find(r => r.id === 'sq:2101010').giver.zone = 'zone:ishalgen'; }, /sq:2101010: place Aldelle Village is in zone:aldelle-village/);

@@ -177,7 +177,29 @@
         "interleave": "Metabot lists skill targets, not a training order (docs/research/2026-10-ranger-pack.md §3): the list order is kept as the guide's order, an inference.",
         "budget": "Core nine to Lv 10 = 9 × 21 = 189 points; Snare Shot to 7 = 9, Concentrated Fire to 5 = 5. LEVEL_POINTS[45] = 203 plus Wisdom Stones."
       },
-      "specialtyPicks": {},
+      "specialtyPicks": {
+        "skill:ranger:snipe": ["spec:ranger:snipe:1"],
+        "skill:ranger:tempest-shot": ["spec:ranger:tempest-shot:1"],
+        "skill:ranger:marking-shot": ["spec:ranger:marking-shot:3"],
+        "skill:ranger:drill-dart": ["spec:ranger:drill-dart:1"],
+        "skill:ranger:gale-arrow": ["spec:ranger:gale-arrow:1"],
+        "skill:ranger:burst-arrow": ["spec:ranger:burst-arrow:1"],
+        "skill:ranger:deadshot": ["spec:ranger:deadshot:1"]
+      },
+      "specialtyEvidence": {
+        "spec:ranger:gale-arrow:1": {
+          "slot": 1,
+          "label": "disputed",
+          "note": "aion2turkiye's leveling build picks +5s duration; daevaguides' level plan picks Changes to mobile skill (it credits +5s duration to five other players).",
+          "sources": ["https://aion2turkiye.com/en/class/ranger/", "https://daevaguides.com/en/ranger/"]
+        },
+        "spec:ranger:deadshot:1": {
+          "slot": 1,
+          "label": "disputed",
+          "note": "aion2turkiye's leveling build picks Removes MP consumed; daevaguides' level plan picks +30% Skill Speed.",
+          "sources": ["https://aion2turkiye.com/en/class/ranger/", "https://daevaguides.com/en/ranger/"]
+        }
+      },
       "stigmaSlots": [
         "stigma:ranger:vaizels-authority",
         "stigma:ranger:bow-of-blessing",
@@ -412,12 +434,28 @@
             "stigmaSlots"
           ],
           "note": "Class-builds guide: the same four stigmas in the same order (same site)."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/ranger/",
+          "checkedAt": "2026-10-20",
+          "fields": [
+            "specialtyPicks"
+          ],
+          "note": "Leveling build: the Lv 8 specialty picks (docs/research/2026-10-choice-points.md, spot check)."
+        },
+        {
+          "url": "https://daevaguides.com/en/ranger/",
+          "checkedAt": "2026-10-20",
+          "fields": [
+            "specialtyPicks"
+          ],
+          "note": "Level plan and credited picks per option (docs/research/2026-10-choice-points.md, spot check)."
         }
       ],
-      "verifiedAt": "2026-10-18",
+      "verifiedAt": "2026-10-20",
       "status": "single-source",
       "notes": [
-        "0.6 P5 (#264), from docs/research/2026-10-ranger-pack.md §3: every advice field rests on Metabot alone (three pages, one site), so it is single-source (claims C50–C53). No specialty picks: no source names any.",
+        "0.6 P5 (#264), from docs/research/2026-10-ranger-pack.md §3: every advice field rests on Metabot alone (three pages, one site), so it is single-source (claims C50–C53). Specialty slot 1 picks (0.9 P15, docs/research/2026-10-choice-points.md): aion2turkiye and daevaguides agree on five; Gale Arrow and Deadshot are disputed (specialtyEvidence names the alternative). Slot 2 is out of the plan's reach (skill Lv 10, no plan nodes on these skills).",
         "Learn levels of Marking Shot (3), Burst Arrow (10) and Deadshot (14): Metabot plus mmo-codex.com, daevaguides.com and aion2-guides.info, which may share upstream data (claim C54)."
       ],
       "claims": [

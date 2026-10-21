@@ -250,7 +250,22 @@
           "spec:gladiator:ruinous-blow:1"
         ]
       },
+      "noPick": {
+        "skill:gladiator:ruinous-blow#2": {
+          "reason": "no-source",
+          "note": "The plan's Ruinous Blow board nodes take it to skill Lv 12, but no source read so far names a slot 2 pick (docs/research/2026-10-choice-points.md)."
+        }
+      },
       "specialtyEvidence": {
+        "spec:gladiator:ruinous-blow:1": {
+          "slot": 1,
+          "label": "disputed",
+          "note": "daevaguides' majority picks +20% Skill Speed; aion2turkiye and two players daevaguides credits pick +30% Skill Critical Hit (docs/research/2026-10-gladiator-guide.md §4).",
+          "sources": [
+            "https://daevaguides.com/en/gladiator/",
+            "https://aion2turkiye.com/en/class/gladiator/"
+          ]
+        },
         "spec:gladiator:rending-blow:4": {
           "slot": 2,
           "label": "2+ sources",

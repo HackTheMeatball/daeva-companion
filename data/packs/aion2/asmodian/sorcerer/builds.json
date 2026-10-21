@@ -287,7 +287,20 @@
         ],
         "skill:sorcerer:winters-shackles": [
           "spec:sorcerer:winters-shackles:3"
+        ],
+        "skill:sorcerer:ice-chain": [
+          "spec:sorcerer:ice-chain:1"
         ]
+      },
+      "specialtyEvidence": {
+        "spec:sorcerer:ice-chain:1": {
+          "slot": 1,
+          "label": "single source",
+          "note": "Only daevaguides (couga54) names a Lv 8 pick, -20% MP Cost; mmo-codex (berdugz) names only a Lv 12–14 one (docs/research/2026-10-sorcerer-pack.md §4).",
+          "sources": [
+            "https://daevaguides.com/en/sorcerer/"
+          ]
+        }
       },
       "stigmaSlots": [
         "stigma:sorcerer:element-enhancement",

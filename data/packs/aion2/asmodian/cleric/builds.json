@@ -295,9 +295,41 @@
         ],
         "skill:cleric:light-of-regeneration": [
           "spec:cleric:light-of-regeneration:2"
+        ],
+        "skill:cleric:earths-retribution": [
+          "spec:cleric:earths-retribution:1"
+        ],
+        "skill:cleric:judgment-thunder": [
+          "spec:cleric:judgment-thunder:1"
         ]
       },
+      "noPick": {
+        "skill:cleric:divine-aura#2": {
+          "reason": "no-source",
+          "note": "The plan's two Divine Aura board nodes take it to skill Lv 12, but no source read so far names a slot 2 pick (docs/research/2026-10-choice-points.md)."
+        }
+      },
       "specialtyEvidence": {
+        "spec:cleric:earths-retribution:1": {
+          "slot": 1,
+          "label": "disputed",
+          "note": "mmo-codex and most of daevaguides' players pick +20% MP restored for leveling; aion2turkiye picks +20% [Discharge] Chain Skill trigger chance.",
+          "sources": [
+            "https://mmo-codex.com/games/aion-2/classes/cleric/",
+            "https://daevaguides.com/en/cleric/",
+            "https://aion2turkiye.com/en/class/cleric/"
+          ]
+        },
+        "spec:cleric:judgment-thunder:1": {
+          "slot": 1,
+          "label": "disputed",
+          "note": "mmo-codex and aion2turkiye's leveling build pick -20% MP consumed; daevaguides' plan and aion2turkiye's dungeon build pick Deals up to 12% more damage when less targets are hit.",
+          "sources": [
+            "https://mmo-codex.com/games/aion-2/classes/cleric/",
+            "https://aion2turkiye.com/en/class/cleric/",
+            "https://daevaguides.com/en/cleric/"
+          ]
+        },
         "spec:cleric:condemnation:4": {
           "slot": 2,
           "label": "2+ sources",
