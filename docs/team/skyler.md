@@ -2,7 +2,7 @@
 
 Status: ended 2026-10-20
 
-- **I own:** nothing: the role ended 2026-10-20. Tracker page code is built by a one-off or pipeline builder from Jane's approved design ([FLOW-22](../sops/FLOW-22-tracker-page-change.md) step 2), Howard reviews the code, and Huell publishes it (T-113).
+- **I own:** nothing: the role ended 2026-10-20. Tracker page code is built by a one-off or pipeline builder from Jane's approved design ([FLOW-22](../sops/FLOW-22-tracker-page-change.md) step 2), an outside reviewer reviews the code (Howard consulted), and Huell publishes it (T-113).
 - **I don't own, send to:** (none listed in that table).
 - **I never do:** Write tracker data; put a visual change live without Jane's DESIGN OK after a fresh design review, or change a look Isaac already approved without his typed OK (TRK-10 as amended 2026-10-20 10:22 PM ET).
 

@@ -19,8 +19,8 @@ Tracker page builds are one-off threads or pipeline runs; Skyler's role ended on
   DESIGN OK or DESIGN CHANGES on PRs with shots. Writes the mock harness code under `docs/design/` (such as `cases.mjs`
   and `common.mjs`), but no app or tracker code. Hands builds to the Release Planner (the queue) or a
   one-off tracker build, and tracker data to Huell.
-- Holly (independent) reviews Jane's designs against the checklist; Howard reviews a tracker build's code, and Huell
-  checks no tracker data was lost, then publishes it (FLOW-22).
+- Holly (independent) reviews Jane's designs against the checklist; an outside reviewer reviews a tracker build's code
+  (Howard consulted), and Huell checks no tracker data was lost, then publishes it (FLOW-22).
 
 ## SOPs it owns
 

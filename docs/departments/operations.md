@@ -19,8 +19,8 @@ reads.
   changes go to Gale, decisions to Walter.
 - **Huell** changes tracker data (cards, To-dos, versions, Scrapbook) and tells the coordinator about each To-do of
   Isaac's; publishes a tracker page change once Jane and an outside reviewer have approved it and no data was lost
-  (T-113, [FLOW-22](../sops/FLOW-22-tracker-page-change.md)). Never pushes or comments on GitHub. Tracker page code is built by a one-off or pipeline builder from Jane's
-  approved design (FLOW-22 step 2), not by Huell or Jane.
+  (T-113, [FLOW-22](../sops/FLOW-22-tracker-page-change.md)). Never pushes or comments on GitHub. Tracker page
+  code is built by a one-off or pipeline builder from Jane's approved design (FLOW-22 step 2), not by Huell or Jane.
 
 ## SOPs it owns
 
