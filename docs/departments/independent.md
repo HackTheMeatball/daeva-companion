@@ -15,11 +15,11 @@ sourcing work, not checking.
 | Name | Role | Title | Owns | Charter | Never does |
 |---|---|---|---|---|---|
 | Gale | Kaizen | Continuous-improvement lead | rows naming Gale in [Who does what](../kaizen/LEDGER.md#who-does-what) | [docs/team/gale.md](../team/gale.md) | [team.csv](../kaizen/team.csv), Gale's row |
-| Gomez | Team Audit | Internal auditor | none in [Who does what](../kaizen/LEDGER.md#who-does-what) yet | [docs/team/gomez.md](../team/gomez.md) | [team.csv](../kaizen/team.csv), Gomez's row (empty) |
-| Howard | Code Review | Code review criteria owner | rows naming Howard in [Who does what](../kaizen/LEDGER.md#who-does-what) | Gap: docs/team/howard.md is in an open PR | [team.csv](../kaizen/team.csv), Howard's row |
-| Holly | Design Review | Design review lead | rows naming Holly in [Who does what](../kaizen/LEDGER.md#who-does-what) | Gap: only a draft in the shared folder (design-review/charter-draft.md) | [team.csv](../kaizen/team.csv), Holly's row |
+| Gomez | Team Audit | Internal auditor | none in [Who does what](../kaizen/LEDGER.md#who-does-what) yet | [docs/team/gomez.md](../team/gomez.md) | [team.csv](../kaizen/team.csv), Gomez's row |
+| Howard | Code Review | Code review criteria owner | rows naming Howard in [Who does what](../kaizen/LEDGER.md#who-does-what) | [docs/team/howard.md](../team/howard.md) | [team.csv](../kaizen/team.csv), Howard's row |
+| Holly | Design Review | Design review lead | rows naming Holly in [Who does what](../kaizen/LEDGER.md#who-does-what) | [docs/team/holly.md](../team/holly.md) | [team.csv](../kaizen/team.csv), Holly's row |
 | Mike | Watchdog | On-call reliability engineer | rows naming Mike in [Who does what](../kaizen/LEDGER.md#who-does-what) | [docs/team/mike.md](../team/mike.md) | [team.csv](../kaizen/team.csv), Mike's row |
-| Nacho | Org Design | Organization design lead | rows naming Nacho in [Who does what](../kaizen/LEDGER.md#who-does-what) | Gap: only in the shared folder (org-design/charter.md) | [team.csv](../kaizen/team.csv), Nacho's row |
+| Nacho | Org Design | Organization design lead | rows naming Nacho in [Who does what](../kaizen/LEDGER.md#who-does-what) | [docs/team/nacho.md](../team/nacho.md) | [team.csv](../kaizen/team.csv), Nacho's row |
 | Chuck | Legal & Compliance | Legal and compliance head (second line) | rows naming Chuck in [Who does what](../kaizen/LEDGER.md#who-does-what) | [docs/team/chuck.md](../team/chuck.md) | [team.csv](../kaizen/team.csv), Chuck's row |
 | Jesse | Player Testing | Acceptance tester | rows naming Jesse in [Who does what](../kaizen/LEDGER.md#who-does-what) | [docs/team/jesse.md](../team/jesse.md) | [team.csv](../kaizen/team.csv), Jesse's row |
 | Lydia (reports to Chuck; not independent) | Source Vetting | Licensing and compliance analyst | rows naming Lydia in [Who does what](../kaizen/LEDGER.md#who-does-what) | [docs/team/lydia.md](../team/lydia.md) | [team.csv](../kaizen/team.csv), Lydia's row (empty) |
@@ -34,7 +34,8 @@ sourcing work, not checking.
   briefs; never posts DESIGN OK or CHANGES.
 - **Mike** writes the stall log #221 and runs the health check; reports, never fixes another lane's work.
 - **Nacho** writes roster scans and recommendations; the coordinator decides.
-- **Chuck** changes the compliance register and the Terms draft only, and reviews every change with legal risk.
+- **Chuck** changes the compliance register and the Terms draft only, and reviews every change with legal risk. Uses the
+  web for legal and compliance research only, on the hosts Isaac OK'd (T-102; [chuck.md](../team/chuck.md) Access).
 - **Jesse** changes only player findings issues and its own reports. Hands findings to the Release Planner (planning) or Mike (a stall).
 - **Lydia** changes [docs/research/SOURCES.md](../research/SOURCES.md) and does outside research under the fetching rules.
 
@@ -66,7 +67,7 @@ sourcing work, not checking.
   charter.
 - A fresh session for Nacho reads this file, then its handover (org-design/handover.md in the shared folder), then its
   charter.
-- A fresh session for Chuck reads this file, then its handover (not written yet: see Gaps), then its charter.
+- A fresh session for Chuck reads this file, then its handover (legal/handover.md in the shared folder), then its charter.
 - A fresh session for Jesse reads this file, then its handover (player-testing/handover.md in the shared folder), then
   its charter.
 - A fresh session for Lydia reads this file, then its handover (research/handover.md in the shared folder), then its
@@ -74,7 +75,5 @@ sourcing work, not checking.
 
 ## Gaps
 
-- Charters not in the repo yet: Howard (in an open PR), Holly, Nacho.
-- Chuck has no handover file.
-- Gomez and Lydia have no never-does list in team.csv.
+- Lydia has no never-does list in team.csv.
 - Lanes are read from Who does what and the role docs, not confirmed by each role yet.

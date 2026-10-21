@@ -54,15 +54,30 @@ else, with `<doc>`, `<role>`, `<handover>` and `<task>` taken from the table bel
 > read-only task: `<task>`. Change nothing. Answer in five lines or fewer, and end with a list of every question you
 > had to guess at or would have asked.
 
-A doc passes when the answer is correct and the list of questions is empty. Each question listed is a Gap to fix in
-that doc. Results are recorded here.
+Each run records two results (Gale's pass bar, outside OK with changes, 2026-10-21):
 
-| Doc | Role | Handover | Task | Result | Questions it had |
+- **Doc** passes when the answer is correct and no question is one the doc itself should answer. Tie rule: if the
+  doc's Restart or Gaps section should have pointed to where the answer lives, it is a doc question, and a Gap to fix
+  in that doc.
+- **Takeover** passes only when all three counts are zero: doc, handover and task-reading questions.
+
+Whoever runs the test sorts the questions, but never on their own doc (operations.md is sorted by someone other than
+Rules Steward). Handover questions go to the handover's owner, who fixes the handover before the next run and logs the
+fix as a #221 row; the same handover question at the next run counts as a doc Gap. Task-reading questions go to
+whoever wrote the task. Results are recorded here.
+
+Run 1 (#681 at dad68be, 2026-10-21 01:07Z): 7/7 answers right, 0/7 empty question lists; the four doc gaps it found were
+fixed before merge. Run 2 (2128b33, 01:42Z, tightened tasks): 7/7 correct. By Rules Steward's sort no remaining
+question is one a department doc should answer, except in operations.md (sorted by the #758 reviewer): its missing
+charter was a doc question, fixed in #758. The rest are stale handovers (each sent to its owner), task reading and one
+unassigned item. Results on #681.
+
+| Doc | Role | Handover | Task | Result (run 2) | Questions it had |
 |---|---|---|---|---|---|
-| leadership.md | Saul | coordinator/state.md | What is waiting on Isaac right now, and whose is each item? | not run yet | |
-| product.md | Walter | release/walter-handover.md | What is the next step on 0.9, and whose is it? | not run yet | |
-| engineering.md | Gus | pipeline/gus-handover.md | Which open claude/ PR is closest to merging, and what does it wait on? | not run yet | |
-| design.md | Jane | design/handover.md | Which open PR waits on a DESIGN OK, and what must it carry? | not run yet | |
-| data-research.md | Gretchen | game-data-check/handover.md | Which open PR or item waits on a Game Data Check verdict, and what is the next step? | not run yet | |
-| operations.md | Francesca | rules-steward/handover.md | Which active team.csv name is not the Owner of any row in Who does what? | not run yet | |
-| independent.md | Mike | stall-log/mike-handover.md | What would the next health check look at first, and where is it recorded? | not run yet | |
+| leadership.md | Saul | coordinator/state.md | What is waiting on Isaac right now, and whose is each item? | Doc pass, Takeover fail | Handover only: where To-dos live; card ids in state.md given as fragments |
+| product.md | Walter | release/walter-handover.md | What is the next step on 0.9, and whose is it? | Doc pass, Takeover fail | Owner of the P3 acceptance run not named (unassigned, sent to the coordinator) |
+| engineering.md | Gus | pipeline/gus-handover.md | Which open claude/ PR is closest to merging, and what does it wait on? | Doc pass, Takeover fail | Handover only: holds and MRG-12 timing, PR-check fire time |
+| design.md | Jane | design/handover.md | Which open PR waits on a DESIGN OK, and what must it carry? | Doc pass, Takeover fail | Task reading only |
+| data-research.md | Gretchen | game-data-check/handover.md | Which open PR or item waits on a Game Data Check verdict, and what is the next step? | Doc pass, Takeover fail | Handover only: boss-data branch location, MRG-12 status |
+| operations.md | Francesca | rules-steward/handover.md | Which active team.csv name, Isaac aside, is not the Owner of any row in Who does what? | Doc fail (fixed in #758), Takeover fail | Task wording (does Isaac count); Rules Steward's charter missing |
+| independent.md | Mike | stall-log/mike-handover.md | What would the next health check look at first, and where is it recorded? | Doc pass, Takeover fail | Handover only: a stale handover-to-mike.md beside mike-handover.md |
