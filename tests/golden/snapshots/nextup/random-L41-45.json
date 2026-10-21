@@ -320,9 +320,9 @@
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202013","x":["+9 waiting on the story Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Fight Poison with Poison In my game Her Last Favor In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game"]},
     {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk : Outskirts Stall · Lv 40–44 · 1/7","c":"go \"Show\" areas:40","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 51 open at your level"},
     {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk : Impetusium Lower Path · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 11 open"},
-    {"t":"Catch up: level Heart Gore 1 → 9","s":"17 pts · inferred","c":""},
-    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · inferred","c":""},
-    {"t":"Catch up: level Ambush 1 → 10","s":"21 pts · inferred","c":""}
+    {"t":"Catch up: level Heart Gore 1 → 9","s":"17 pts · specialty kept: Up to +20% Critical Hit when fewer targets are hit · inferred","c":""},
+    {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · specialty kept: +20% Skill Speed · inferred","c":""},
+    {"t":"Catch up: level Ambush 1 → 10","s":"21 pts · specialty kept: Engraves 2 Insignias when it lands as a Back attack · inferred","c":""}
   ],
   "random/L43-q03-all-A-filters": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},

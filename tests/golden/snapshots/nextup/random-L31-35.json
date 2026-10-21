@@ -241,7 +241,7 @@
     {"t":"Run Graverobber Den","s":"Crypt · Kibelisk : Galorik's Inspection Area · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 8 open"},
     {"t":"Catch up: level Heart Gore 1 → 9","s":"17 pts · then pick the specialty Up to +20% Critical Hit when fewer targets are hit · inferred","c":""},
     {"t":"Catch up: level Savage Roar 1 → 10","s":"21 pts · then pick the specialty +20% Skill Speed · inferred","c":""},
-    {"t":"Catch up: level Quick Slice 1 → 9","s":"17 pts · inferred","c":""}
+    {"t":"Catch up: level Quick Slice 1 → 9","s":"17 pts · specialty kept: +50% Multi-Hit on hit · inferred","c":""}
   ],
   "random/L32-q10-lvonly-B-dv": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 32–34"},
@@ -561,7 +561,7 @@
     {"t":"Story: An Ill Fate's Resolution","s":"Needs Lv 37: you're 33. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":"","b":"Lv 32–34"},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk : Silent Hill Mushroom Rock · 9/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 4 open"},
     {"t":"Catch up: level Shadowstrike 1 → 7","s":"9 pts · then pick the specialty +20% Critical Damage Boost for 10s on hit · inferred","c":""},
-    {"t":"Catch up: level Heart Gore 1 → 7","s":"9 pts · inferred","c":""},
+    {"t":"Catch up: level Heart Gore 1 → 7","s":"9 pts · specialty kept: Up to +20% Critical Hit when fewer targets are hit · inferred","c":""},
     {"t":"Catch up: level Savage Roar 1 → 8","s":"13 pts · inferred","c":""}
   ],
   "random/L33-q73-none-A-objs": [

@@ -391,7 +391,7 @@
     {"t":"Zikel board opens","s":"Lv 20 milestone · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 20–21"}
   ],
   "level/L19-q23-lvonly-A": [
-    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
+    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · opens its specialty: Up to +20% Critical Hit when fewer targets are hit · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
     {"t":"Story: A New Lead","s":"0/4 objectives · then Malice Laid Bare","c":"primary \"Turned in\" story","o":["Take Odyle Jelly check the Worn Chest ( Kibelisk : Safe Haven)","Deliver the Odyle Jelly talk to Baba (Quai Campsite)","Retrieve the Quai Merchants' goods beat the marauders loot the Pile of Loot Fang Hideout","+1 more after these"]},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk : Safe Haven Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 4 open"},
     {"t":"Buy Insignia Explosion 3 → 4","s":"Needs Lv 20 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 20–21"},
@@ -400,7 +400,7 @@
     {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 2 levels away · single source","c":"tag \"Later\"","f":"later"}
   ],
   "level/L19-q26-before-A": [
-    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
+    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · opens its specialty: Up to +20% Critical Hit when fewer targets are hit · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
     {"t":"Story: Watchful Eyes","s":"0/3 objectives · then Imminent Threat","c":"primary \"Turned in\" story","o":["Check for survivors search Sanctum Dumpsite","Get the storage key take the storage key from the Balaur's belongings","Turn in Bataar (Fang Legion), Sanctum Dumpsite"]},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 4 open"},
     {"t":"Buy Insignia Explosion 3 → 4","s":"Needs Lv 20 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 20–21"},
@@ -409,7 +409,7 @@
     {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 2 levels away · single source","c":"tag \"Later\"","f":"later"}
   ],
   "level/L19-q26-before-B": [
-    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
+    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · opens its specialty: Up to +20% Critical Hit when fewer targets are hit · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
     {"t":"Story: Watchful Eyes","s":"0/3 objectives · then Imminent Threat","c":"primary \"Turned in\" story","o":["Check for survivors search Sanctum Dumpsite","Get the storage key take the storage key from the Balaur's belongings","Turn in Bataar (Fang Legion), Sanctum Dumpsite"]},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 4 open"},
     {"t":"Buy Insignia Explosion 3 → 4","s":"Needs Lv 20 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 20–21"},
@@ -418,7 +418,7 @@
     {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 2 levels away · single source","c":"tag \"Later\"","f":"later"}
   ],
   "level/L19-q26-lvonly-A": [
-    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
+    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · opens its specialty: Up to +20% Critical Hit when fewer targets are hit · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
     {"t":"Story: Watchful Eyes","s":"0/3 objectives · then Imminent Threat","c":"primary \"Turned in\" story","o":["Check for survivors search Sanctum Dumpsite","Get the storage key take the storage key from the Balaur's belongings","Turn in Bataar (Fang Legion), Sanctum Dumpsite"]},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 4 open"},
     {"t":"Buy Insignia Explosion 3 → 4","s":"Needs Lv 20 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 20–21"},
@@ -427,7 +427,7 @@
     {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 2 levels away · single source","c":"tag \"Later\"","f":"later"}
   ],
   "level/L19-q26-lvonly-B": [
-    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
+    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · opens its specialty: Up to +20% Critical Hit when fewer targets are hit · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
     {"t":"Story: Watchful Eyes","s":"0/3 objectives · then Imminent Threat","c":"primary \"Turned in\" story","o":["Check for survivors search Sanctum Dumpsite","Get the storage key take the storage key from the Balaur's belongings","Turn in Bataar (Fang Legion), Sanctum Dumpsite"]},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 4 open"},
     {"t":"Buy Insignia Explosion 3 → 4","s":"Needs Lv 20 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 20–21"},
@@ -506,7 +506,7 @@
     {"t":"Zikel board opens","s":"Lv 20 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L19-q27-before-A": [
-    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
+    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · opens its specialty: Up to +20% Critical Hit when fewer targets are hit · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
     {"t":"Story: Imminent Threat","s":"Needs Lv 20: you're 19. Level up first. Meanwhile: Strongholds","c":""},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 4 open"},
     {"t":"Buy Insignia Explosion 3 → 4","s":"Needs Lv 20 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 20–21"},
@@ -515,7 +515,7 @@
     {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 2 levels away · single source","c":"tag \"Later\"","f":"later"}
   ],
   "level/L19-qxx-before-A": [
-    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
+    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · opens its specialty: Up to +20% Critical Hit when fewer targets are hit · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
     {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202010","x":["+5 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game"]},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 4 open"},

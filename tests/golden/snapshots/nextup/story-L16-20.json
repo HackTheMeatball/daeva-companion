@@ -163,7 +163,7 @@
     {"t":"Zikel board opens","s":"Lv 20 milestone · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 20–21"}
   ],
   "story/L19-q25-before-A": [
-    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
+    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · opens its specialty: Up to +20% Critical Hit when fewer targets are hit · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
     {"t":"Story: Broken Fang","s":"0/3 objectives · then Watchful Eyes","c":"primary \"Turned in\" story","o":["Search for the infiltrator inspect Fallen Member talk to Draconute Warrior talk to Ranger talk to Superior Combatant","Collect Selvis repair parts Outpost Probe eyes Dratona Tinkerer ore (Lv19) Broken Remnants fragments","Turn in Gamilla (Fang Legion), Temporary Retreat"]},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 4 open"},
     {"t":"Buy Insignia Explosion 3 → 4","s":"Needs Lv 20 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 20–21"},
@@ -172,7 +172,7 @@
     {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 2 levels away · single source","c":"tag \"Later\"","f":"later"}
   ],
   "story/L19-q25-before-B": [
-    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
+    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · opens its specialty: Up to +20% Critical Hit when fewer targets are hit · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
     {"t":"Story: Broken Fang","s":"0/3 objectives · then Watchful Eyes","c":"primary \"Turned in\" story","o":["Search for the infiltrator inspect Fallen Member talk to Draconute Warrior talk to Ranger talk to Superior Combatant","Collect Selvis repair parts Outpost Probe eyes Dratona Tinkerer ore (Lv19) Broken Remnants fragments","Turn in Gamilla (Fang Legion), Temporary Retreat"]},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 4 open"},
     {"t":"Buy Insignia Explosion 3 → 4","s":"Needs Lv 20 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 20–21"},
@@ -195,7 +195,7 @@
     {"t":"Catch up: level Ambush 1 → 6","s":"7 pts · inferred","c":""}
   ],
   "story/L19-q26-before-A": [
-    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
+    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · opens its specialty: Up to +20% Critical Hit when fewer targets are hit · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
     {"t":"Story: Watchful Eyes","s":"0/3 objectives · then Imminent Threat","c":"primary \"Turned in\" story","o":["Check for survivors search Sanctum Dumpsite","Get the storage key take the storage key from the Balaur's belongings","Turn in Bataar (Fang Legion), Sanctum Dumpsite"]},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 4 open"},
     {"t":"Buy Insignia Explosion 3 → 4","s":"Needs Lv 20 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 20–21"},
@@ -204,7 +204,7 @@
     {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 2 levels away · single source","c":"tag \"Later\"","f":"later"}
   ],
   "story/L19-q26-before-B": [
-    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
+    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · opens its specialty: Up to +20% Critical Hit when fewer targets are hit · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
     {"t":"Story: Watchful Eyes","s":"0/3 objectives · then Imminent Threat","c":"primary \"Turned in\" story","o":["Check for survivors search Sanctum Dumpsite","Get the storage key take the storage key from the Balaur's belongings","Turn in Bataar (Fang Legion), Sanctum Dumpsite"]},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 4 open"},
     {"t":"Buy Insignia Explosion 3 → 4","s":"Needs Lv 20 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 20–21"},
@@ -227,7 +227,7 @@
     {"t":"Catch up: level Ambush 1 → 6","s":"7 pts · inferred","c":""}
   ],
   "story/L19-q27-before-A": [
-    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
+    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · opens its specialty: Up to +20% Critical Hit when fewer targets are hit · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
     {"t":"Story: Imminent Threat","s":"Needs Lv 20: you're 19. Level up first. Meanwhile: Strongholds","c":""},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 4 open"},
     {"t":"Buy Insignia Explosion 3 → 4","s":"Needs Lv 20 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 20–21"},
@@ -236,7 +236,7 @@
     {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 2 levels away · single source","c":"tag \"Later\"","f":"later"}
   ],
   "story/L19-q28-before-A": [
-    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
+    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · opens its specialty: Up to +20% Critical Hit when fewer targets are hit · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
     {"t":"Story: Crossroad","s":"Needs Lv 20: you're 19. Level up first. Meanwhile: Strongholds","c":""},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 4 open"},
     {"t":"Buy Insignia Explosion 3 → 4","s":"Needs Lv 20 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 20–21"},

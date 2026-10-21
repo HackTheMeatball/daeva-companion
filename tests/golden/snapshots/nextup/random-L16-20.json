@@ -406,7 +406,7 @@
     {"t":"Zikel board opens","s":"Lv 20 milestone · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 20–21"}
   ],
   "random/L19-q01-before-B-rqmix": [
-    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
+    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · opens its specialty: Up to +20% Critical Hit when fewer targets are hit · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
     {"t":"Story: Prepare to Escape","s":"0/2 objectives · then Shadow Forest","c":"primary \"Turned in\" story","o":["Find gear in the Supply Chest check the Supply Chest ( Kibelisk : Aldelle Village)","Turn in Stellan (Villager), Aldelle Village"]},
     {"t":"Regional quests","s":"3 in progress · 1/4 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["run Hugo Mercenaries: Past and Present","run Missing Mount","run Creion Research Assistant","+2 waiting on the story Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game"]},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 4 open"},
@@ -416,7 +416,7 @@
     {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 2 levels away · single source","c":"tag \"Later\"","f":"later"}
   ],
   "random/L19-q05-lvonly-B-stwait": [
-    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
+    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · opens its specialty: Up to +20% Critical Hit when fewer targets are hit · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
     {"t":"Story: Spread Your Wings","s":"0/3 objectives · then Signs of a Crash Landing","c":"primary \"Turned in\" story","o":["Awaken your Daeva power in the dream complete 'The One Who Perceives'","Share the outcome go to the Witch's Cabin","Turn in Elvida, Witch's Cabin"]},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 4 open"},
     {"t":"Buy Insignia Explosion 3 → 4","s":"Needs Lv 20 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 20–21"},
@@ -435,7 +435,7 @@
     {"t":"Buy Rear Smite 4 → 5","s":"Needs Lv 20 · 1 level away · inferred","c":"tag \"Later\"","f":"later"}
   ],
   "random/L19-q15-lvonly-B": [
-    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
+    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · opens its specialty: Up to +20% Critical Hit when fewer targets are hit · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
     {"t":"Story: Express Daeva Delivery","s":"0/2 objectives · then Veiled Truth","c":"primary \"Turned in\" story","bd":"Bind Quai Campsite on the way 30 m from Ulgorn bind:kib:quai-campsite","o":["Restore the supply route retrieve the Lost Supplies defeat Drana Predator defeat Congealed Drana Kibelisk : Creion Campsite","Turn in Ulgorn, Quai Campsite"]},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk : Safe Haven Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 4 open"},
     {"t":"Buy Insignia Explosion 3 → 4","s":"Needs Lv 20 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 20–21"},
@@ -444,7 +444,7 @@
     {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 2 levels away · single source","c":"tag \"Later\"","f":"later"}
   ],
   "random/L19-q17-lvonly-B-filters": [
-    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
+    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · opens its specialty: Up to +20% Critical Hit when fewer targets are hit · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
     {"t":"Story: Urgent Pursuit","s":"0/5 objectives · then Cemetery Cleanup","c":"primary \"Turned in\" story","o":["Find out where the broker is talk to Tagar","Eliminate the hindrance defeat Corrupted Karas Handmaiden defeat Hungry Dead Kibelisk : Gravekeeper Camp","Investigate the Shaded Cave enter the Shaded Cave (Kibelisk: Gravekeeper Camp)","+2 more after these"]},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 4 open"},
     {"t":"Buy Insignia Explosion 3 → 4","s":"Needs Lv 20 · 1 level away · inferred","c":"tag \"Later\"","f":"later","b":"Lv 20–21"},
@@ -495,7 +495,7 @@
     {"t":"Catch up: level Ambush 1 → 7","s":"9 pts · inferred","c":""}
   ],
   "random/L19-q50-lvonly-A-stwait": [
-    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
+    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · opens its specialty: Up to +20% Critical Hit when fewer targets are hit · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
     {"t":"Regional quests","s":"8 to pick up · 3 follow-ups · 0/11 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22]","new Fight Poison with Poison [Lv 27]","+5 more"]},
     {"t":"Story: Eye of the Red Tower","s":"Needs Lv 32: you're 19. Level up first. Meanwhile: Strongholds","c":""},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 4 open"},
@@ -529,7 +529,7 @@
     {"t":"Catch up: level Ambush 1 → 7","s":"9 pts · inferred","c":""}
   ],
   "random/L19-q60-before-B-stwait": [
-    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
+    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · opens its specialty: Up to +20% Critical Hit when fewer targets are hit · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
     {"t":"Regional quests","s":"11 to pick up · 5 follow-ups · 2 near your story step · 0/16 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22] | -> lock(disabled) Nine Wonders of Altgard: 2nd Leg [Lv 32]","+10 more"]},
     {"t":"Story: Destruction Archon Underground Fortress","s":"Needs Lv 34: you're 19. Level up first. Meanwhile: Strongholds","c":""},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 4 open"},
@@ -539,7 +539,7 @@
     {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 2 levels away · single source","c":"tag \"Later\"","f":"later"}
   ],
   "random/L19-q61-lvonly-A-dv": [
-    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
+    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points · opens its specialty: Up to +20% Critical Hit when fewer targets are hit · inferred","c":"primary \"Spent\" skill","b":"Lv 19"},
     {"t":"Regional quests","s":"11 to pick up · 5 follow-ups · 0/16 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22] | -> lock(disabled) Nine Wonders of Altgard: 2nd Leg [Lv 32]","+10 more"]},
     {"t":"Story: Enemy Territory","s":"Needs Lv 35: you're 19. Level up first. Meanwhile: Strongholds","c":"","bd":"Bind Steel Hammer Workcamp on the way 53 m from Mannikiki bind:kib:steel-hammer-workcamp"},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk : Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 4 open"},

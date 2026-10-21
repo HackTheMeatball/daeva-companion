@@ -69,8 +69,10 @@ function renderNext() {
       (hero.spec || locked ? `<span class="dvbar-ph"></span>` : `<div class="dvbar"><div class="dvtrack"><span style="width:${pct}%"></span></div><span class="dvbar-l" title="You have ${pts} point${pts === 1 ? "" : "s"}; this upgrade costs ${cost}"><b>${Math.min(pts, cost)}</b> of ${cost} pt${cost === 1 ? "" : "s"}</span></div>`) + `</div></div>` +
       `<div class="buyrow">${ok ? `<button type="button" class="dvbuy" id="spBuy">${btn}</button>` : `<div class="buystat">${btn}${tipPop("stones")}</div>`}</div>` +
 
-      (next && now.length > 1 ? (() => { /* after this one: how many of the next open upgrades (in order) the points left cover */
-        let left = pts - (next.spec ? 0 : next.cost), k = 0; now.slice(1).some(y => { const c = y.spec ? 0 : y.cost; if (c > left) return true; left -= c; k++; return false; });
+      (next && now.length > 1 ? (() => { /* after this one: how many of the next open upgrades (in order) the points left cover;
+        a hero short of points isn't bought: the points left are the header's (0.8.1 F8), and nothing after it counts as
+        covered, since the guide buys the hero first (Coming up's shortfalls say the same) */
+        let left = pts - (next.spec || !ok ? 0 : next.cost), k = 0; if (ok) now.slice(1).some(y => { const c = y.spec ? 0 : y.cost; if (c > left) return true; left -= c; k++; return false; });
         return `<p class="sphint">${k ? `+${k} more your points cover` : `${now.length - 1} more unlocked · ${Math.max(0, left)} pt${left === 1 ? "" : "s"} left`}</p>`; })() : "") +
       (overTicked ? `<p class="sphint warn">Ticked lines cost ${spent} but you've earned ${fromLevels + stones}. Use "Sync levels" to fix.</p>` : "") +
       `</div>`;

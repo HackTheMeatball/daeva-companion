@@ -305,7 +305,7 @@
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 2/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 27 open at your level"},
     {"t":"Run Graverobber Den","s":"Crypt · Kibelisk : Galorik's Inspection Area · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 7 open"},
     {"t":"Catch up: level Heart Gore 1 → 7","s":"9 pts · inferred","c":""},
-    {"t":"Catch up: level Savage Roar 1 → 8","s":"13 pts · inferred","c":""},
+    {"t":"Catch up: level Savage Roar 1 → 8","s":"13 pts · specialty kept: +20% Skill Speed · inferred","c":""},
     {"t":"Catch up: level Quick Slice 1 → 7","s":"9 pts · inferred","c":""}
   ],
   "random/L28-q09-none-A": [
