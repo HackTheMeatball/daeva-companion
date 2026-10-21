@@ -559,18 +559,31 @@ Rules for every item:
     (search engines and user-triggered assistants); the AI search crawlers as the owner chose; the sitemap line stays;
     the comment points at the Terms' GitHub URL (the site serves no `/TERMS.md`).
   - CHANGELOG notes the new Terms.
+  - LICENSE part 2 gains one sentence matching the Terms' quotes line (a sentence or two, with a link back to the page),
+    per the owner's quotes call (DECISIONS `owner-ok-0.9-terms`).
 - **Inputs.** `docs/legal/TERMS.md`, `docs/legal/robots-policy.md` (land with the owner-ok row; kickoff holds the item
   until they are on main).
-- **Files.** `TERMS.md`, `src/index.html` (the footer line only), `public/robots.txt`, `tests/site.js`, `CHANGELOG.md`.
+- **Files.** `TERMS.md`, `LICENSE` (the one part 2 sentence), `src/index.html` (the footer line only), `public/robots.txt`,
+  `tests/site.js`, `CHANGELOG.md`.
 - **No-gos.** No wording change to the approved text. The footer keeps "unofficial" and "not affiliated with or endorsed
   by NCSoft". Search engines stay allowed.
 - **Acceptance.**
   - [ ] `tests/site`: robots.txt blocks `GPTBot` and `ClaudeBot` with `Disallow: /`, keeps `User-agent: *` / `Allow: /` and
-        the sitemap line; the footer has a Terms link to `TERMS.md`; `TERMS.md` matches `docs/legal/TERMS.md`.
+        the sitemap line; the footer has a Terms link to `TERMS.md`; `TERMS.md` matches `docs/legal/TERMS.md` except the
+        "Effective:" field. Robots R2 asserts (`docs/legal/robots-policy.md`): `Claude-User` and `ChatGPT-User` are in the
+        blocked group; `OAI-SearchBot`, `Claude-SearchBot` and the four preview bots are not.
+  - [ ] Code Review checks the Terms' code-licence sentence against LICENSE (T-62 fix 3), and the new part 2 sentence
+        against the Terms' quotes line.
+  - [ ] Source Vetting's live crawler re-check runs before the robots text freezes, noted on the PR.
   - [ ] Before / after shots of the footer at 1500 and 390 px, `scrapbook.json`; Design Lead's DESIGN OK.
 - **Review:** blind (owner-held legal text; Code Review the code).
 - **Lanes:** site, page-card. **Model:** Sonnet, S (45 min).
 - **After:** P23, owner-ok-0.9-terms. If the owner's OK isn't in by 0.9's release gate, P24 moves to 0.10.
+- **Planner notes (2026-10-21).** The owner's three Terms calls are in (DECISIONS `owner-ok-0.9-terms`). The owner
+  approved the full text as drafted ("Ship as drafted", 2026-10-21 12:18 PM ET, same row), so the item ships it word for
+  word once its reviews pass. Not in this item: the Report a problem warning (a
+  visible change with shots, own item) and the Terms Contact line plus the site line naming the private address (wait on
+  T-63).
 
 ## P25–P27: compliance checks (Legal's CK-1 to CK-3)
 

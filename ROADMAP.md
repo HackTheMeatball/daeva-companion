@@ -1450,6 +1450,14 @@ matter"):** for the world bosses that matter, picked by Game Data Check (Gretche
 Aion 2 Bible) and research, with Source Vetting (Lydia) doing every fetch outside the approved list. The spawn rules
 (fixed times or random windows, server and time zone) must be sourced like any game fact; if they can't be, the
 fallback is a manual "killed at" timer per boss, reported back before it is specced. Design Lead owns the look.
+**Clock (Game Data Check's T-103 ruling, 2026-10-21, from the owner's in-game boss list;
+`game-data-check/server-clock-ruling-2026-10-21.md`, shared folder):** each Global region runs on its own local clock
+(NA East = Eastern), not one UTC+9 server clock. The world-bosses `clock:server` record (+09:00, disputed) changes to
+per-region clocks, schedules are read in the player's region clock, and times show in the device's time zone. One
+item, data and app together. Owner: the build pipeline, from the Release Planner's spec in 0.10's pass; DATA OK Game
+Data Check (Gretchen), backup Source Vetting (Lydia); Code Review (Howard), backup Build Pipeline (Gus). Before it
+ships: Source Vetting finds a second source for the EU and NA West clocks (aion2atlas only today) or they ship labelled
+"single source"; the ~9 min Executor gap goes to the owner as an in-game check, or the time is labelled.
 Items are shaped in 0.10's own pass once that research is in. Acceptance bar: the Vision (top of this file), so for a
 Lv 45 character Next up always shows the best thing to do next.
 
@@ -1473,9 +1481,10 @@ key items, since Simple keys and 1.0's Build choice both land inside it.
   open by default. Next up's "New: put X on E" opens it scrolled to that key, below the sticky phone bar.
 - **The drawer** keeps stat priority, the Rotation steps, the keys Rotation doesn't name (only what fires first on each),
   the New note, and "Set up keys and macro ›". The full key list exists only in the view (no redundancy across cards).
-- **Basic mode** (one view, T-111) shows the picked build only; changing build and Custom sit behind "Change ›".
+- **Essentials first** (DECISIONS "One view: the Basic/Advanced switch goes…", 0.9 P21): the picked build shows; changing
+  build and Custom sit in a fold behind "Change ›". Design Lead corrected the mock's "Basic mode" line to this (`design/build-view/README.md`, 11:57 AM ET).
 - **Acceptance (Design Lead's conditions):** before / after shots for every class with keys, at 390 and 1500 px, in
-  Basic and Advanced; the save keys `buildId` and `rotSeen` are reused (no new key, no save break); 11 px greys reach
+  folds closed and open; the save keys `buildId` and `rotSeen` are reused (no new key, no save break); 11 px greys reach
   4.5:1; tap targets 44 px; the key columns balance by height at 1500; ships on Design Lead's DESIGN OK.
 - **Not here:** the respec pop-up and ranked options arrive with 1.0's Build choice, which uses this view's picker.
 
