@@ -5,6 +5,7 @@
         </div>
         <div class="cubebar" id="dvCube" hidden></div>
         <div class="tmain">
+          <div class="cu-strip" id="dvCatch" hidden></div>
           <div id="dvNextList"></div>
           <div class="ptbig" id="dvBig"></div>
         </div>
@@ -15,6 +16,7 @@
         <div id="dvAllList" hidden></div>
         <div class="tfoot dv-foot">
           <button type="button" class="linkbtn" id="dvAllBtn" aria-expanded="false">All nodes</button>
-          <button type="button" id="dvRespec" title="Untick every node and clear their costs; total points stay">Respec</button>
+          <button type="button" id="dvRespec" aria-haspopup="menu" aria-expanded="false" aria-controls="dvRsMenu" title="Untick a board's nodes, or every board's, and clear their costs; total points stay">Respec ▾</button>
+          <div class="rs-menu" id="dvRsMenu" role="menu" aria-label="Respec" hidden></div>
         </div>
       </section>

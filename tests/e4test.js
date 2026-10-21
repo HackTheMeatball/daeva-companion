@@ -330,5 +330,85 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   }
   console.log('P19 endgame catch-up clicks (Lv 45, 180 stones): ' + counts.join(', '));
 
+  /* 0.9 P20 (#642): Daevanion and Stigmas catch-up and respec (docs/design/0.9-catchup, notes 9 and 10). A Lv 39 join
+     sees "N boards opened before you joined · Mark bought ▾"; one tap marks one board's guide nodes; Respec ▾ clears one
+     board (a second click within 3 s) or all; Undo reverses each; Stigmas Respec sets the slots back to Lv 1 with the
+     shards back. Then the endgame case (Lv 45, 336 crystals, 90 shards), every class, with the click counts printed. */
+  const dvT = async () => Object.entries((await readSave(p)).checks || {}).filter(([k, v]) => v && k.startsWith('dv:')).map(([k]) => k).sort();
+  const undo = async () => { await p.click('#rwToast .tu'); await p.waitForTimeout(200); };
+  await cuSave(39, { dvTotal: 140 });
+  const strip = sel => p.evaluate(sel => { const s = document.querySelector(sel); return s && !s.hidden ? s.innerText : ''; }, sel);
+  r = await strip('#dvCatch');
+  ok('P20 Lv 39 join: the Daevanion strip says "N boards opened before you joined" (N ≥ 2) with Mark bought', /(\d+) boards opened before you joined/.test(r) && +r.match(/(\d+) boards/)[1] >= 2 && /Mark bought/.test(r), r);
+  const nBoards = +r.match(/(\d+) boards/)[1];
+  await p.click('#dvCuBtn'); await p.waitForTimeout(150);
+  const boards = await p.evaluate(() => [...document.querySelectorAll('#dvCuMenu [data-dvmark]')].map(i => ({ b: i.dataset.dvmark, n: +i.closest('label').querySelector('span').textContent.match(/(\d+) node/)[1] })));
+  ok('P20: the menu lists one row per open board with its node count', boards.length === nBoards && boards.every(x => x.n > 0), boards);
+  await p.click(`#dvCuMenu [data-dvmark="${boards[0].b}"]`); await p.waitForTimeout(200);
+  const dvA = await dvT();
+  r = { ticks: dvA.length, strip: await strip('#dvCatch'), toast: await p.evaluate(() => document.getElementById('rwToast').innerText) };
+  ok(`P20: Mark bought ticks ${boards[0].b}'s ${boards[0].n} guide nodes in one tap, "1 marked"`, r.ticks === boards[0].n && r.strip.includes('1 marked') && r.toast.includes(`${boards[0].b} marked`), r);
+  await undo();
+  ok('P20: Undo unticks the marked board', (await dvT()).length === 0, await dvT());
+  await p.click(`#dvCuMenu [data-dvmark="${boards[0].b}"]`); await p.waitForTimeout(200);
+  await p.click(`#dvCuMenu [data-dvmark="${boards[1].b}"]`); await p.waitForTimeout(200);
+  const dvAB = await dvT();
+  ok('P20: two taps mark two boards', dvAB.length === boards[0].n + boards[1].n, dvAB.length);
+  /* Respec ▾: one row per board; the first click arms the row, the second within 3 s clears that board only */
+  await p.click('#dvRespec'); await p.waitForTimeout(150);
+  r = await p.evaluate(() => [...document.querySelectorAll('#dvRsMenu [data-dvrs]')].map(b => ({ id: b.dataset.dvrs, t: b.innerText.replace(/\s+/g, ' '), off: b.disabled })));
+  ok('P20: Respec ▾ lists each board with its ticked count, then All boards', r.some(x => x.id === boards[0].b && x.t.includes(`${boards[0].n} nodes`)) && r.at(-1).id === '*' && r.at(-1).t.includes(`${dvAB.length} nodes`), r);
+  const row0 = `#dvRsMenu [data-dvrs="${boards[0].b}"]`;
+  await p.click(row0); await p.waitForTimeout(150);
+  r = { t: await p.innerText(row0), n: (await dvT()).length };
+  ok('P20: the first click arms the row ("Click again to respec") and changes nothing', r.t.startsWith('Click again to respec') && r.n === dvAB.length, r);
+  await p.click(row0); await p.waitForTimeout(200);
+  const dvB = await dvT();
+  r = { left: dvB.length, toast: await p.evaluate(() => document.getElementById('rwToast').innerText) };
+  ok(`P20: "Respec this board" clears only ${boards[0].b}; the toast says "${boards[0].b} reset · ${boards[0].n} nodes back"`, dvB.length === boards[1].n && dvB.every(k => !dvA.includes(k)) && r.toast.includes(`${boards[0].b} reset · ${boards[0].n} nodes back`), r);
+  await undo();
+  ok('P20: Undo puts the board back', JSON.stringify(await dvT()) === JSON.stringify(dvAB), (await dvT()).length);
+  await p.click('#dvRespec'); await p.waitForTimeout(150);
+  await p.click('#dvRsMenu [data-dvrs="*"]'); await p.waitForTimeout(150); await p.click('#dvRsMenu [data-dvrs="*"]'); await p.waitForTimeout(200);
+  r = { n: (await dvT()).length, off: await p.evaluate(() => document.getElementById('dvRespec').disabled) };
+  ok('P20: All boards clears every board; with nothing ticked Respec is greyed', r.n === 0 && r.off, r);
+  await undo();
+  ok('P20: Undo after All boards restores both boards', JSON.stringify(await dvT()) === JSON.stringify(dvAB));
+  /* Stigmas: mark the slots from the strip, raise one in Slots, then Respec */
+  r = await strip('#stCatch');
+  ok('P20 Lv 39 join: the Stigmas strip says "N stigma slots opened before you joined" with Mark equipped', /\d+ stigma slots? opened before you joined/.test(r) && /Mark equipped/.test(r), r);
+  await p.click('#stCuBtn'); await p.waitForTimeout(150);
+  const slotsN = await p.evaluate(() => document.querySelectorAll('#stCuMenu [data-stmark]').length);
+  for (let i = 0; i < slotsN; i++) { await p.click('#stCuMenu [data-stmark]:not(:disabled)'); await p.waitForTimeout(150); }
+  r = { strip: await strip('#stCatch'), on: await p.evaluate(() => document.querySelectorAll('#stList .st-lvctl').length) };
+  ok(`P20: Mark equipped marks each of the ${slotsN} slots in one tap; the strip goes`, slotsN > 0 && !r.strip && r.on === slotsN, r);
+  await p.evaluate(() => { document.getElementById('stSlotsBox').open = true; });
+  for (let i = 0; i < 9; i++) { await p.click('#stList [data-stlv][data-d="1"]'); await p.waitForTimeout(80); }
+  const s0 = await readSave(p);
+  const rs = p.locator('#stRespec');
+  await rs.click(); r = { t: await rs.innerText(), lv: JSON.stringify((await readSave(p)).stLv) };
+  ok('P20: Stigmas Respec arms on the first click and changes nothing', r.t === 'Click again to respec' && r.lv === JSON.stringify(s0.stLv), r);
+  await rs.click(); await p.waitForTimeout(200);
+  const s1 = await readSave(p);
+  r = { lv: s1.stLv, sh: [s0.stShards || 0, s1.stShards], toast: await p.evaluate(() => document.getElementById('rwToast').innerText) };
+  ok('P20: Stigmas Respec clears the slots to Lv 1, keeps them equipped and gives 14 shards back (Lv 10: 4 × 1 + 5 × 2)', Object.values(s1.stLv).every(L => L === 1) && s1.stShards - (s0.stShards || 0) === 14 && r.toast.includes('Stigmas reset · 14 shards back') && (await p.evaluate(() => document.querySelectorAll('#stList .st-lvctl').length)) === slotsN, r);
+  await undo();
+  const s2 = await readSave(p);
+  ok('P20: Undo restores the stigma levels and shards', JSON.stringify(s2.stLv) === JSON.stringify(s0.stLv) && (s2.stShards || 0) === (s0.stShards || 0), { was: s0.stLv, now: s2.stLv });
+  /* the endgame case (beta tester T1): every open board and every stigma slot in one tap each, plus the menu's opener */
+  const p20 = [];
+  for (const cls of ['assassin', 'templar', 'cleric', 'sorcerer', 'chanter', 'ranger', 'gladiator', 'spiritmaster']) {
+    await cuSave(45, { dvTotal: 336, stShards: 90 }, { pack: 'aion2/asmodian/' + cls, class: cls });
+    let dvC = 0, stC = 0;
+    if (await strip('#dvCatch')) { await p.click('#dvCuBtn'); dvC++;
+      for (let i = 0; i < 8 && await p.$('#dvCuMenu [data-dvmark]:not(:disabled)'); i++) { await p.click('#dvCuMenu [data-dvmark]:not(:disabled)'); await p.waitForTimeout(120); dvC++; } }
+    if (await strip('#stCatch')) { await p.click('#stCuBtn'); stC++;
+      for (let i = 0; i < 6 && await p.$('#stCuMenu [data-stmark]:not(:disabled)'); i++) { await p.click('#stCuMenu [data-stmark]:not(:disabled)'); await p.waitForTimeout(120); stC++; } }
+    r = { dv: await strip('#dvCatch'), st: await strip('#stCatch'), dvC, stC };
+    p20.push(`${cls} daevanion ${dvC} stigmas ${stC}`);
+    ok(`P20 Lv 45 join, ${cls}: every open board and stigma slot marked in one tap each; both strips gone`, !r.dv && !r.st && stC > 1, r);
+  }
+  console.log('P20 endgame catch-up clicks (Lv 45, 336 crystals, 90 shards): ' + p20.join(', '));
+
   ok('no page errors', !errs.length, errs);
   console.log(`${n - fail} ok, ${fail} failed`); console.log(fail ? `E4 CHECKS FAILED (${fail})` : 'E4 CHECKS PASSED'); await b.close(); process.exit(fail ? 1 : 0); })();

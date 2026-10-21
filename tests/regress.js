@@ -234,12 +234,15 @@ const setState = async (p, args) => { await writeFixture(p, args); await p.reloa
     rec(c, 'respec basic: the rest of both footers is open too (one view)', foot.spRest.length > 0 && foot.dvRest.length > 0, foot);
     rec(c, 'respec basic: Stigmas footer open (one view)', foot.stFoot, foot);
     const n = pre => p.evaluate(pre => Object.keys(char(state).checks).filter(k => (pre === 'sp' ? /^sp:.+:([2-9]|10)$/ : /^dv:/).test(k) && char(state).checks[k]).length, pre);
-    for (const [id, pre, other] of [['#spRespec', 'sp', 'dv'], ['#dvRespec', 'dv', 'sp']]) {
+    /* 0.9 P20 (#642): Daevanion's Respec opens a menu of boards (docs/design/0.9-catchup note 9, option A); its "All
+       boards" row keeps the two clicks the button had, so the dv case opens the menu and clicks that row */
+    for (const [id, pre, other, menu] of [['#spRespec', 'sp', 'dv', null], ['#dvRespec', 'dv', 'sp', '#dvRsMenu [data-dvrs="*"]']]) {
       const before = await n(pre), keep = await n(other);
       rec(c, `respec basic ${pre}: fixture has ticks to clear`, before > 0, before);
-      const btn = p.locator(id);
-      await btn.click(); rec(c, `respec basic ${pre}: first click arms, changes nothing`, (await btn.innerText()) === 'Click again to respec' && (await n(pre)) === before);
-      await btn.click(); rec(c, `respec basic ${pre}: second click clears, other card untouched`, (await n(pre)) === 0 && (await n(other)) === keep && (await btn.innerText()) === 'Respec', { left: await n(pre), keep, other: await n(other) });
+      if (menu) await p.click(id);
+      const btn = p.locator(menu || id);
+      await btn.click(); rec(c, `respec basic ${pre}: first click arms, changes nothing`, (await btn.innerText()).startsWith('Click again to respec') && (await n(pre)) === before);
+      await btn.click(); rec(c, `respec basic ${pre}: second click clears, other card untouched`, (await n(pre)) === 0 && (await n(other)) === keep && (menu ? !(await p.isVisible('#dvRsMenu')) : (await btn.innerText()) === 'Respec'), { left: await n(pre), keep, other: await n(other) });
     }
     rec(c, 'respec basic: no page errors', !errs.length, errs);
     await ctx.close();

@@ -420,10 +420,35 @@ footer.foot { margin-top: var(--space-28); display: grid; gap: var(--space-14); 
 .top-grid .soonlist .sname { display: block; color: var(--fg); line-height: 1.3; }
 .top-grid .soonlist small { display: block; font-size: 11.5px; color: var(--muted); }
 .tfoot { gap: var(--space-6); }
-.tfoot .mini summary, .tfoot .linkbtn, .tfoot #dvRespec, .tfoot #spRespec { font: 600 11px var(--mono); padding: var(--space-3) var(--space-10); border-radius: var(--radius-pill); border: 1px solid var(--line); color: var(--muted); background: transparent; text-decoration: none; cursor: pointer; }
-.tfoot .mini summary:hover, .tfoot .linkbtn:hover, .tfoot #dvRespec:hover, .tfoot #spRespec:hover { color: var(--fg); border-color: var(--muted); }
+.tfoot .mini summary, .tfoot .linkbtn, .tfoot #dvRespec, .tfoot #spRespec, .tfoot #stRespec { font: 600 11px var(--mono); padding: var(--space-3) var(--space-10); border-radius: var(--radius-pill); border: 1px solid var(--line); color: var(--muted); background: transparent; text-decoration: none; cursor: pointer; }
+.tfoot .mini summary:hover, .tfoot .linkbtn:hover, .tfoot #dvRespec:not(:disabled):hover, .tfoot #spRespec:hover, .tfoot #stRespec:not(:disabled):hover { color: var(--fg); border-color: var(--muted); }
 .tfoot .mini[open] summary { color: var(--fg); }
 .tfoot .mini summary::-webkit-details-marker { display: none; }
+/* 0.9 P20 (docs/design/0.9-catchup): Respec at the right end of every foot */
+.tfoot #stRespec { margin-left: auto; }
+.tfoot #dvRespec[aria-expanded="true"] { color: var(--fg); border-color: var(--muted); }
+.tfoot #dvRespec:disabled, .tfoot #stRespec:disabled { opacity: .5; cursor: default; }
+.dv-foot { position: relative; }
+.rs-menu { position: absolute; right: 0; bottom: calc(100% + var(--space-6)); z-index: 5; min-width: 240px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius-10); box-shadow: var(--shadow-float); padding: var(--space-6); display: grid; gap: var(--space-2); }
+.rs-menu[hidden] { display: none; }
+.rs-menu button { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--space-10); align-items: baseline; text-align: left; background: transparent; border: 0; border-radius: var(--radius-6); padding: var(--space-8) var(--space-10); color: var(--fg); font: 500 13px var(--body); cursor: pointer; }
+.rs-menu button span { font: 500 11px var(--mono); color: var(--muted); }
+.rs-menu button:hover:not(:disabled), .rs-menu button:focus-visible { background: var(--panel-2); }
+.rs-menu button:disabled { color: var(--muted); cursor: default; }
+.rs-menu hr { border: 0; border-top: 1px solid var(--line); margin: var(--space-2) var(--space-4); }
+.rs-menu .rs-all { font-weight: 600; }
+/* the catch-up strip above the Daevanion and Stigmas heroes: what opened before you joined, and a menu to mark it */
+.cu-strip { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-10); padding: var(--space-8) var(--space-10); margin: 0 0 var(--space-10); border: 1px solid var(--line); border-radius: var(--radius-8); background: var(--panel-2); font-size: 12.5px; color: var(--muted); }
+.cu-strip[hidden] { display: none; }
+.tmain > .cu-strip { margin: 0; }
+.cu-strip > span { flex: 1 1 13em; }
+.cu-strip b { color: var(--fg); font-weight: 600; }
+.cu-strip .cu-sb { margin-left: auto; flex: none; font: 600 11px var(--mono); padding: var(--space-4) var(--space-10); min-height: 24px; border-radius: var(--radius-pill); border: 1px solid var(--line); background: var(--panel); color: var(--fg); cursor: pointer; }
+.cu-menu { flex: 1 1 100%; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius-10); padding: var(--space-6); display: grid; gap: var(--space-2); }
+.cu-menu label { display: grid; grid-template-columns: 18px minmax(0, 1fr) auto; gap: var(--space-10); align-items: baseline; padding: var(--space-8) var(--space-10); border-radius: var(--radius-6); color: var(--fg); font: 500 13px var(--body); cursor: pointer; }
+.cu-menu label span { font: 500 11px var(--mono); color: var(--muted); }
+.cu-menu label.off { color: var(--muted); cursor: default; }
+.cu-menu .cu-note { margin: var(--space-4) var(--space-10) var(--space-6); font-size: 12px; color: var(--muted); line-height: 1.4; }
 /* Points as a stat line under the header (number + label), so the main text gets the full tile width. */
 .top-grid .tmain { grid-template-columns: minmax(0, 1fr); gap: var(--space-10); }
 .top-grid .tmain .ptbig { order: -1; display: flex; align-items: baseline; gap: var(--space-8); text-align: left; }
