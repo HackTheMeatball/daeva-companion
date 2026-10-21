@@ -4,5 +4,5 @@
   { "case": "cleric-lv45-disputed-pick", "kind": "before-after", "title": "A disputed specialty pick",
     "caption": "With Earth's Retribution at skill level 8, the Cleric's Skills card now leads with its specialty: the guide's pick, tagged disputed because sources split." },
   { "case": "cleric-lv45-no-pick", "kind": "before-after", "title": "When no source names a pick",
-    "caption": "Divine Aura's second specialty slot now says \"no guide pick\" instead of \"Pick a specialty\"; the tag's tooltip gives the reason." }
+    "caption": "Divine Aura's second specialty slot now says \"Pick your own · no guide pick\" instead of \"Pick a specialty\"; the tag's tooltip gives the reason." }
 ]

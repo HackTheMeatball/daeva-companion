@@ -1,7 +1,7 @@
 /* 0.9 P15: every choice point has a recommendation. The Ranger's Skills card at Lv 19 with Snipe at skill Lv 8: before,
    no specialty step (the build had no picks); after, Snipe's slot 1 pick. The Cleric at 390 px, with the save set so the
    Skills card's hero is the slot in question: Earth's Retribution at skill Lv 8 (slot 1 now has a pick, tagged disputed),
-   and every planned line bought with each slot 1 taken (28 Wisdom Stones cover the extra lines), so the hero is Divine Aura's slot 2, which now says "no guide pick"
+   and every planned line bought with each slot 1 taken (28 Wisdom Stones cover the extra lines), so the hero is Divine Aura's slot 2, which now says "Pick your own · no guide pick"
    with its reason in the tag's tooltip instead of "pick a specialty".
    Run: npm run build && node tests/support/shots.mjs docs/reviews/0.9-p15-shots */
 const ranger = { pack: 'aion2/asmodian/ranger', class: 'ranger' }, cleric = { pack: 'aion2/asmodian/cleric', class: 'cleric' };

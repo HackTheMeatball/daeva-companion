@@ -53,7 +53,7 @@ const spSlotSub = x => { const p = specPickOf(char(state), x); if (p) return `Pi
   if (q) return `${open ? `Slot ${x.slot} open · ` : ""}Guide pick: ${q.t}${spPickTag(q)} at skill Lv ${q.lv}`;
   /* a slot the build leaves open on purpose (0.9 P15, noPick): says so, the reason in the tag's tooltip */
   const why = (x.s.noPick || {})[x.slot];
-  if (why) return `${open ? `Slot ${x.slot} open · ` : ""}Your pick <span class="ss-tag" title="${why.replace(/"/g, "&quot;")}">no guide pick</span>`;
+  if (why) return `${open ? `Slot ${x.slot} open · ` : ""}Pick your own · <span class="ss-tag" title="${why.replace(/"/g, "&quot;")}">no guide pick</span>`;
   return `${open ? `Slot ${x.slot} open: pick` : "Pick"} a specialty`; };
 /* A Sealed Dungeon / Stronghold card's tile: the game's map marker on the dark tile (0.6.2 P21), labelled with the place
    type; the old emoji when the file can't load */
