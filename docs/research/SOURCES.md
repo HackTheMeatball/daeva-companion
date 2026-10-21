@@ -29,9 +29,9 @@ from 2026-10-14 and are older than this register; where they differ, this regist
 | metabot.gg | Full | Main source: game data read from the global client (skills, specialties, stigmas, quests, Daevanion boards, locations); class meta pick rates from top players (official character pages) | Not `/api/` or profile pages. Terms: "personal, non-commercial use". Credit with plain dofollow links | 2026-10-18 | BGS §2; methodology page read 2026-10-18 3:07 AM ET |
 | aion2hub.com | Full, reuse unknown | Weak corroboration: story-quest order and levels, Sealed Dungeon bands, Global vs KR labels; boss schedules (weak, 2026-10-20) | Not `/api/`. Pre-launch snapshot (2026-09-19); never for prerequisites, unlock levels, specialties, locations | 2026-10-14 | `2026-10-source-vetting.md` §3.2 |
 | aion2atlas.app | Full, facts only | World boss and field boss timers (Global and KR columns) | Not `/api/` (robots.txt; Claude-User falls under `*`). Terms (`/terms`): "do not copy whole pages or scrape the site at high volume"; short quotes with a link are fine; icons and art are NCSOFT's. Timers may be outdated after patches | 2026-10-20 | `2026-10-world-boss-timers.md` |
-| aion2vault.com | Full, reuse unknown | Boss timers (cites allthings.how, so never an independent second source) | robots.txt allows all. Terms of Service (`/terms-of-service/`): no clause on bots or scraping; "may not copy, republish, or redistribute our content without attribution and a link back"; personal, non-commercial use. Facts and a link only | 2026-10-20 | `2026-10-world-boss-timers.md` |
+| aion2vault.com | Full, facts only | Boss timers (cites allthings.how, so never an independent second source) | robots.txt allows all. Terms of Service (`/terms-of-service/`): no clause on bots or scraping; "may not copy, republish, or redistribute our content without attribution and a link back"; personal, non-commercial use, so review before monetising. Facts and a link only | 2026-10-20 | `2026-10-world-boss-timers.md` |
 | aion2data.com | Full, reuse unknown | Game data read from the Global client (v2.0.6.0 hotfix 1, per its About page) | Not `/api/` (robots.txt, Claude-User group). No terms page found (`/terms` is 404, no footer link); footer says game data and art belong to NCSOFT. Facts and a link only | 2026-10-20 | `2026-10-world-boss-timers.md` |
-| allthings.how | Full, reuse unknown | News and guides, boss respawn times | robots.txt blocks only admin paths. Footer links `/terms/`, which returned 404 on 2026-10-20: no terms read. Facts and a link only | 2026-10-20 | `2026-10-world-boss-timers.md` |
+| allthings.how | Spot | News and guides, boss respawn times | robots.txt blocks only admin paths. Terms at `/terms-and-conditions/` (found by web search 2026-10-20; the footer's `/terms/` is 404) ban copying, reproducing or downloading its material without written permission, not reading it. Facts and a link only, never its wording | 2026-10-20 | `2026-10-world-boss-sources.md` |
 | aion2rifttimer.com | Full, reuse unknown | Boss, Artifact Siege and reset timers | robots.txt allows all. No terms or legal link on the site. Facts and a link only | 2026-10-20 | `2026-10-world-boss-timers.md` |
 | aion2rift.com | Full, reuse unknown | Rift and boss timers (region tags kr/tw) | robots.txt allows all. No terms link (only `/privacy/`); `/terms` is 404. Facts and a link only | 2026-10-20 | `2026-10-world-boss-timers.md` |
 | criticalhits.com.br | Full, reuse unknown | Portuguese news and guides | robots.txt blocks only admin and pagination paths. No terms of use page; footer has a legal notice (`/aviso-legal/`), not read. Facts and a link only | 2026-10-20 | `2026-10-world-boss-timers.md` |
@@ -67,13 +67,8 @@ inferred) checked 2026-10-19, `2026-10-t47-icon-check.md`. Steam Index API (publ
 (app id 3393110) build ID changes with timestamps; owner-created key and the owner's network-list OK needed first; its site pages ask
 not to be scraped, so never those; its API terms require a "Data from Steam Index" link, plus a Sources card entry,
 wherever the app shows its data) checked 2026-10-20, `2026-10-steam-and-news-vetting.md`.
-World-boss trackers, checked 2026-10-20 (`2026-10-world-boss-sources.md`): aion2atlas.app (**Full**; terms: no
-high-volume scraping or whole-page copies, short quotes with a link are fine), aion2vault.com (**Full, facts only**;
-terms: personal, non-commercial, so review before monetising; no republishing without attribution; its boss table cites allthings.how, so it isn't
-independent of it), allthings.how (**Spot**: `/terms-and-conditions/`, found by web search, bans copying,
-reproducing or downloading its material without written permission but not reading it), and aion2data.com (robots.txt explicitly allows Claude-User), aion2rifttimer.com,
-aion2rift.com and criticalhits.com.br (**Full, reuse unknown**: no terms page at the usual paths). Community trackers:
-never the only source for a schedule.
+World-boss trackers (checked 2026-10-20, `2026-10-world-boss-sources.md`) are rows in the Allowed table above. Community
+trackers: never the only source for a schedule.
 
 ## Owner-supplied documents (not fetched; read from the owner's upload)
 
@@ -108,5 +103,14 @@ never the only source for a schedule.
 ## Keeping this current
 
 Any session that vets a site, or finds a change (new terms, a new block), updates its row here in the same PR, with the
-date and the research note that holds the evidence. When a site's terms URL is unknown, try `/terms`, `/terms-of-service`
-and `/tos`, then a web search, before reading any content page.
+date and the research note that holds the evidence. When a site's terms URL is unknown, try `/terms`, `/terms-of-service`,
+`/tos`, `/terms-of-use` and `/terms-and-conditions` (with `curl -L`, since many redirect to a trailing slash), then a web
+search, before reading any content page.
+
+Fetch log (ROL-08, team after the governance review, 2026-10-20). Every thread that fetches keeps one line per request
+in `/mnt/project-files/legal/fetch-log.md`: time (UTC), host, URL, purpose and thread, status code. Before the first
+content request to a new host, its line names the terms URL and robots.txt already read, and the verdict: terms OK,
+scraping-only (spot checks allowed) or opt-out (never fetch). No terms URL means no content request. Legal (Chuck)
+confirms the log. An order break is closed out in the log: anything kept from it is deleted or re-sourced from a
+permitted source, and the facts it supports are re-verified or labelled. Each minor's fresh spot check verifies one
+terms-read entry against the live terms page.
