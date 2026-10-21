@@ -31,7 +31,7 @@ import { setRankChanges } from "./core/nextup.js";
 /* the engine's cards (0.4 P4c, src/cards/): what the shell still calls of them, and the hand-over of the shell's names
    they read (useCardPage, below) */
 import { useCardPage } from "./cards/page.js";
-import { nextUpCard, renderNow, nowEl, pipWin, isBasic, specSub } from "./cards/nextup.js";
+import { nextUpCard, renderNow, nsFit, nowEl, pipWin, isBasic, specSub } from "./cards/nextup.js";
 import { milestonesCard, renderMilestones, derivedBox, fillStigmaText, milestoneFilters, syncExpand, syncQRun } from "./cards/milestones.js";
 import { renderRoute, routeRulesCard } from "./cards/route.js";
 import { journeyCard, renderQuest, renderStoryChips, renderStoryReqs, applyLevel, setLevel } from "./cards/journey.js";
@@ -388,7 +388,8 @@ function fitSkills() {
   /* Basic mode: the shortest card sets the row height; Next up's content scrolls (with the fade) to match. */
   const ns = pipWin ? null : nowEl;
   if (ns) ns.style.height = "";
-  if (ns) { const w = ns.querySelector(".ns-stack"), f = w && w.querySelector(".ns-card"); if (f) w.style.height = (f.offsetHeight + (w.children.length > 1 ? 30 : 0)) + "px"; }
+  /* the card shown, not the first: an unchanged Next up isn't redrawn and keeps its scroll (nsFit, the stack's own fit) */
+  if (ns) { const w = ns.querySelector(".ns-stack"); if (w) nsFit(w); }
   /* The board list always shows at least its next 3 nodes; the row grows to that, and Skills / Next up fill the same height. */
   const dvt = document.getElementById("dvThen");
   if (dvt) { dvt.style.minHeight = ""; } if (dvt && !document.body.classList.contains("basic")) { const nodes = [...dvt.querySelectorAll(".soonlist > li:not(.then-board)")], n3 = nodes[Math.min(2, nodes.length - 1)];

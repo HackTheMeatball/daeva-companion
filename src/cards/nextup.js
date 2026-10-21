@@ -112,6 +112,11 @@ const nsPhone = () => !pipWin && nsPhoneQ.matches;
 let nsCur = 0;
 /* the window that held Next up at its last write (its stack's listeners use that window's timers and observer) */
 let nsWroteWin = null;
+/* The stack is as tall as the card snapped into view (+ a peek of the next one), so a taller card is never clipped. The
+   stack's own scroll / resize fit and the shell's fitSkills both size it here: a skipped write keeps the scroll, so
+   fitSkills must measure the card shown, not the first one (0.8.1 F11). */
+const nsCurCard = w => { const cs = [...w.children], t = w.scrollTop; let best = cs[0], bd = Infinity; cs.forEach(c => { const d = Math.abs(c.offsetTop - cs[0].offsetTop - t); if (d < bd) { bd = d; best = c; } }); return best; };
+const nsFit = w => { const c = nsCurCard(w); if (c) w.style.height = (c.offsetHeight + (c.nextElementSibling ? 30 : 0)) + "px"; };
 function renderNow() {
   const el = nowEl; if (!el) return;
   const lv = char(state).level;
@@ -166,9 +171,7 @@ function renderNow() {
   if (pipWin) syncPipClasses();
   const w = el.querySelector("#nsqWrap");
   if (w && !phone && wrote) {
-    /* The stack is as tall as the card snapped into view (+ a peek of the next one), so a taller card is never clipped. */
-    const curCard = () => { const cs = [...w.children], t = w.scrollTop; let best = cs[0], bd = Infinity; cs.forEach(c => { const d = Math.abs(c.offsetTop - cs[0].offsetTop - t); if (d < bd) { bd = d; best = c; } }); return best; };
-    const fit = () => { const c = curCard(); if (c) w.style.height = (c.offsetHeight + (c.nextElementSibling ? 30 : 0)) + "px"; };
+    const fit = () => nsFit(w);
     const end = () => w.classList.toggle("at-end", w.scrollTop + w.clientHeight >= w.scrollHeight - 2);
     let fitT = 0; w.addEventListener("scroll", () => { end(); vw.clearTimeout(fitT); fitT = vw.setTimeout(() => { fit(); end(); }, 140); }, { passive: true }); vw.requestAnimationFrame(() => { fit(); end(); });
     const RO = vw.ResizeObserver || window.ResizeObserver; if (typeof RO === "function") { const ro = new RO(() => { fit(); end(); }); [...w.children].forEach(c => ro.observe(c)); }
@@ -344,4 +347,4 @@ function nextUpMount(el) {
 }
 
 const nextUpCard = { id: "nextup", slot: "main", order: 100, root: "nowStar", mount: nextUpMount, update: () => renderNow() };
-export { renderNow, nowEl, pipWin, capFirst, isBasic, specSub, STORY_DONE, END_NEXT, nextUpCard };
+export { renderNow, nsFit, nowEl, pipWin, capFirst, isBasic, specSub, STORY_DONE, END_NEXT, nextUpCard };
