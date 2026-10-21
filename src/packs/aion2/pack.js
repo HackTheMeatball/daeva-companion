@@ -64,8 +64,8 @@ export const aion2Pack = definePack({
   charFields: {
     areaRun: "map", rqSnooze: "map", stLv: "map", stPick: "map",
     stones: "register", pendSt: "register", pendCr: "register", stShards: "register", dvTotal: "register", dvCost: "map", dvAdj: "register",
-    /* the 10-second undo of a board node (local), and two retired fields */
-    dvLast: "local", dvLastAt: "local", dvPts: "local", crystals: "local",
+    /* the 10-second undo of a board node (local) */
+    dvLast: "local", dvLastAt: "local",
     rotSeen: "register",
   },
   character: { pack: PACK, class: CLASS },

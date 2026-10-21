@@ -65,8 +65,9 @@ const nahma = (c, t) => row('Guardian Lord Nahma<span class="ss-tag" title="Two 
 const killed = '<button type="button" class="kb" aria-haspopup="true" aria-expanded="false">Killed ▾</button>';
 /* field boss states: blank (Killed), counting (time + Undo), may be up (since + Killed); a row resets one cooldown after "may be up" */
 const fb = (n, h, st) => {
-  if (st && st[0] === 'may') return row(n, 'May be up since ' + st[1] + ' · respawns ' + h + ' after a kill', killed, '', '', n + ', may be up since ' + st[1]);
-  return row(n, 'Respawns ' + h + ' after a kill', !st ? killed : st[1], !st ? '' : st[2], '', '').replace('</li>', st ? '<span class="ud"><button type="button" class="kb">Undo kill</button></span></li>' : '</li>');
+  const at = { 'Silent Dartan': 'Basfelt Ruins', 'Soul Ruler Kashapa': 'Fafnite Deposit', 'High Commander Lagta': 'Lagta Fortress' }[n];
+  if (st && st[0] === 'may') return row(n, 'May be up since ' + st[1] + ' · ' + at, killed, '', '', n + ', may be up since ' + st[1]);
+  return row(n, at + ' · ' + h + ' respawn', !st ? killed : st[1], !st ? '' : st[2], '', '').replace('</li>', st ? '<span class="ud"><button type="button" class="kb">Undo kill</button></span></li>' : '</li>');
 };
 `;
 const mk = body => new Function(COMMON + body);
