@@ -1,0 +1,10 @@
+[
+  { "case": "dv-1500", "kind": "before-after", "title": "Daevanion catch-up for a late start",
+    "caption": "A fresh Lv 39 Assassin sees \"3 boards opened before you joined · Mark bought ▾\": one tap per board ticks its guide nodes, with Undo." },
+  { "case": "dvmenu-390", "kind": "before-after", "title": "Respec per board on a phone",
+    "caption": "Respec ▾ opens one row per board with its ticked nodes, then All boards. Each needs a second click, then the toast offers Undo." },
+  { "case": "st-1500", "kind": "before-after", "title": "Stigmas catch-up",
+    "caption": "\"4 stigma slots opened before you joined · Mark equipped ▾\" marks each slot in one tap. \"How shards work\" is now the round i button." },
+  { "case": "stdone-1500", "kind": "before-after", "title": "Stigmas Respec",
+    "caption": "With every slot marked, the strip is gone and Respec sits at the right of the foot. It sets every stigma back to Lv 1 and gives the shards back." }
+]
