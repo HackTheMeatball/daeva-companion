@@ -46,8 +46,9 @@ _Named reviewers. Written here by Gus; the coordinator's incident fast path for 
   match proves unreliable, Build Pipeline (Gus) falls back to the file: any change to a home file needs that file's
   rule owners. A CI check reads ledger.csv and fails while a required owner is missing from `Reviewers:`; auto-merge
   then waits on that owner's approval of the head in the form above: a tagged VERDICT, or the
-  owner's own gate mark where the seat has one (Design Lead `DESIGN OK`, Game Data Check `VERIFIED`). A rule Isaac owns or OK'd (`ok_by` Isaac)
-  still also needs his typed OK; this check doesn't name him as a reviewer.
+  owner's own gate mark where the seat has one (Design Lead `DESIGN OK`, Game Data Check `VERIFIED`). A change that loosens, narrows the scope of,
+  or reverses a rule Isaac owns or OK'd (`ok_by` Isaac) still also needs his typed OK, as today; this check doesn't
+  name him as a reviewer.
 - Known limit: sessions post as the owner's account, so the tag is a trust marker, not authentication.
 - Deadlock exit: for a reviewer who has ended, the coordinator posts `REVIEW CLEAR (reviewer: <name>; trigger: <n|none>): <reason>` on the PR. It is refused on triggers 2, 4b, 5 and 6, both when the clear names one and when the PR shows one (its body's `Review:` line names it, it carries `hold` or `fresh-review`, or it changes the save key or CHANGELOG.md); Watchdog (Mike) flags every clear and Kaizen (Gale) counts them. Like the tags, a clear is the comment's word, not a checked identity.
 - Reviewers: roster check (#741, Walter 2026-10-21): auto-merge posts one marker comment when a `Reviewers:` entry is not an active row of docs/kaizen/team.csv (the authoritative roster, Org Design 2026-10-21: a closed or folded role is off it) or a gate name (design lead, game data check, fresh review), and again only if the list changes. No verdict can match such an entry, so the PR still waits on it until the author fixes the line; the note only makes the wait visible.
