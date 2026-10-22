@@ -6,7 +6,8 @@ on:
   push:
     branches: [main]
   pull_request:
-  # On main, a dispatch with `sha` deploys that commit (gate job); without it, or on a branch, it runs the tests only.
+  # On main, a dispatch with `sha` deploys that commit (gate job). Without it, it counts as a merge of main's HEAD (auto-merge
+  # starts CI this way), so it deploys only when HEAD is a release commit. On a branch it runs the tests only.
   workflow_dispatch:
     inputs:
       sha:
@@ -174,7 +175,7 @@ jobs:
   #   lists the commits since the last tag and refuses when they change the save key or add a "Saves reset" CHANGELOG line,
   #   unless the quote says "save" or "reset". Every session posts as the owner account, so the comment is a trust marker:
   #   Watchdog (Mike) re-checks each quote by id and flags any deploy with neither a version change nor a logged quote.
-  # Any dispatch needs the sha on main with ci-ok green on it; deploy, smoke and release then all use that sha.
+  # A dispatch with a sha needs it on main with ci-ok green on it; deploy, smoke and release then all use that sha.
   gate:
     if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
