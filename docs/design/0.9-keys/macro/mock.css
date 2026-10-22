@@ -1,27 +1,3 @@
-.km { width:min(820px,100%); box-sizing:border-box; display:grid; gap:var(--space-16); }
-.km-head { display:flex; align-items:center; justify-content:space-between; gap:var(--space-12); }
-.km-head h2 { margin:0; font:600 11px var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
-.km-x { min-width:44px; min-height:44px; border:1px solid var(--line); border-radius:var(--radius-8); background:none; color:var(--fg); }
-.km h3 { margin:0 0 var(--space-8); font:600 11px var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
-.km-play { list-style:none; margin:0; padding:0; display:grid; gap:var(--space-10); }
-.km-play li { display:grid; grid-template-columns:auto minmax(0,1fr); gap:var(--space-10); align-items:center; font-size:15px; }
-.km-play .do { display:flex; gap:var(--space-4); align-items:center; white-space:nowrap; font-size:13px; color:var(--muted); }
-.kcap { min-width:32px; text-align:center; padding:var(--space-2) var(--space-8); border:1px solid var(--line); border-bottom-width:2px; border-radius:var(--radius-6); background:var(--panel-2); font:600 12px var(--mono); color:var(--fg); }
-.km-play .w { color:var(--muted); font-size:13px; }
-.km-play img, .km-step img { width:24px; height:24px; border-radius:5px; vertical-align:middle; }
-.km-fold > summary { cursor:pointer; min-height:44px; display:flex; align-items:center; font-weight:600; font-size:14px; }
-.km-grid { border:1px dashed var(--line); border-radius:var(--radius-10); padding:var(--space-16); color:var(--muted); font-size:13px; text-align:center; }
-.km-steps { list-style:none; margin:0; padding:0; }
-.km-step { display:grid; grid-template-columns:28px minmax(0,1fr); gap:var(--space-10); align-items:start; padding:var(--space-10) 0; }
-.km-step .n { font:600 16px var(--mono); color:var(--muted); line-height:1; padding-top:2px; }
-.km-step .t { display:flex; flex-wrap:wrap; gap:var(--space-6); align-items:center; font-size:14px; }
-.km-step .sub { font-size:12.5px; color:var(--muted); margin-top:var(--space-4); }
-.km-step .icos { display:inline-flex; gap:2px; }
-.km-delay { display:flex; align-items:center; gap:var(--space-8); font:500 12px var(--mono); color:var(--muted); }
-.km-delay::before, .km-delay::after { content:""; flex:1; border-top:1px solid var(--line); }
-.km-delay b { color:var(--fg); font-weight:600; }
-.km-note { font-size:12.5px; color:var(--muted); margin:var(--space-8) 0 0; }
-.mocktag { font:600 10px var(--mono); color:var(--warn); letter-spacing:.1em; }
-
-.km-fold > summary { padding:0; }
-@media (max-width:620px){ .km-play li { grid-template-columns:1fr; gap:var(--space-4); } }
+/* 0.9 P22 rev 2: the macro block reuses the drawer's own classes (.rmbline, .khead, .playsteps, .fine, .tline); only the mock tag is new */
+.mac .playsteps { margin-top: var(--space-4); }
+.mocktag { font: 600 10px var(--mono); color: var(--warn); letter-spacing: .1em; }
