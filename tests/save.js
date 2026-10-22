@@ -33,6 +33,10 @@ const { SAVE_KEY, V4_KEY, BEFORE_IMPORT_KEY, TEST_SLOT, toStored, writeRaw, read
 let fail = 0; const ok = (name, cond, detail) => { console.log((cond ? 'ok   ' : 'FAIL ') + name + (!cond && detail !== undefined ? '  · ' + JSON.stringify(detail).slice(0, 700) : '')); if (!cond) fail++; };
 const UUID4 = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
 const OLD_MSG = "This file is from a version before 0.4 and can't be loaded.";
+/* the classes shipped by 0.8, in the picker's order: the page lists them in this order among the ones it reads from
+   GUIDE_CLASSES (0.9 P11), so a new class needs no edit here */
+const SHIPPED = ['assassin', 'ranger', 'gladiator', 'spiritmaster', 'templar', 'cleric', 'sorcerer', 'chanter'];
+const inShippedOrder = cs => JSON.stringify(cs.filter(c => SHIPPED.includes(c))) === JSON.stringify(SHIPPED);
 /* a pre-0.4 save and export, as the 0.3 build stored and exported it (flat, under the v4 key) */
 const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:2202010': true }, level: 30, quest: 'Dying Light', open: {}, mode: 'advanced', seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true, stampV1: true, schemaVersion: 1, backup1: true, backup: { since: 1759000000000 }, mt: { level: [0, 30] } });
 
@@ -191,11 +195,14 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     ok('switcher: Escape in the list closes it and returns focus to the button', b2.exp === 'false' && !b2.open && b2.focus === 'charBtn', b2);
     await p.keyboard.press('Enter'); await p.focus('#charNew'); await p.keyboard.press('Enter'); await p.waitForTimeout(100);
     const f = await p.evaluate(() => ({ focus: document.activeElement.id, label: document.querySelector('label[for="charName"]').textContent, legend: document.querySelector('#charForm legend').textContent,
-      radios: [...document.querySelectorAll('#charPick input[type=radio]')].map(r => [r.value, r.checked, r.closest('label').innerText.trim()]), list: !document.getElementById('charList').hidden }));
+      radios: [...document.querySelectorAll('#charPick input[type=radio]')].map(r => [r.value, r.checked, r.closest('label').innerText.trim()]), list: !document.getElementById('charList').hidden,
+      want: GUIDE_CLASSES.map((e, i) => [e.class, !i, e.name]) }));
     ok('switcher: New character opens the form with the focus in "Name (optional)"', f.focus === 'charName' && f.label === 'Name (optional)' && !f.list, f);
     /* 0.6 P5: the Ranger joined the Assassin; 0.7 P2: the Gladiator got its guide pack and joined them; 0.7 P4: the
-       Spiritmaster after them; 0.8 P3: the Templar; 0.8 P5: the Cleric; 0.8 P17: the Sorcerer; 0.8 P19: the Chanter last */
-    ok('switcher: the class picker offers the Assassin (picked), the Ranger, the Gladiator, the Spiritmaster, the Templar, the Cleric, the Sorcerer and the Chanter', f.legend === 'Class' && JSON.stringify(f.radios) === JSON.stringify([['assassin', true, 'Assassin'], ['ranger', false, 'Ranger'], ['gladiator', false, 'Gladiator'], ['spiritmaster', false, 'Spiritmaster'], ['templar', false, 'Templar'], ['cleric', false, 'Cleric'], ['sorcerer', false, 'Sorcerer'], ['chanter', false, 'Chanter']]), f.radios);
+       Spiritmaster after them; 0.8 P3: the Templar; 0.8 P5: the Cleric; 0.8 P17: the Sorcerer; 0.8 P19: the Chanter.
+       0.9 P11: the list is the page's GUIDE_CLASSES (class, name), the Assassin first and picked, those eight in this order */
+    ok('switcher: the class picker offers every playable class by name, the Assassin (picked), then the Ranger, the Gladiator, the Spiritmaster, the Templar, the Cleric, the Sorcerer and the Chanter in that order', f.legend === 'Class'
+      && JSON.stringify(f.radios) === JSON.stringify(f.want) && f.radios[0][0] === 'assassin' && f.radios[0][2] === 'Assassin' && inShippedOrder(f.radios.map(r => r[0])), f.radios);
     await p.keyboard.type('  Zed  '); await p.waitForTimeout(50);
     ok('switcher: the form previews the label Zed-assassin-lvl1 (name trimmed)', await p.innerText('#charPrev') === 'Zed-assassin-lvl1', await p.innerText('#charPrev'));
     await p.keyboard.press('Escape'); await p.waitForTimeout(100);
@@ -317,12 +324,12 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     const { ctx, p, errs } = await page();
     const ranger = toStored(SAVED); Object.assign(ranger.chars[TEST_SLOT], { pack: 'aion2/asmodian/ranger', class: 'ranger' });
     const look = async () => { await p.click('#charBtn'); await p.click('#charNew'); await p.waitForTimeout(50);
-      const r = await p.evaluate(() => ({ pack: self.DAEVA_PACK, radios: [...document.querySelectorAll('#charPick input[type=radio]')].map(x => x.value),
+      const r = await p.evaluate(() => ({ pack: self.DAEVA_PACK, want: GUIDE_CLASSES.map(e => e.class), radios: [...document.querySelectorAll('#charPick input[type=radio]')].map(x => x.value),
         note: (n => n && { text: n.textContent, shown: !!n.offsetParent, after: n.previousElementSibling && n.previousElementSibling.id })(document.getElementById('charNote')), lbl: document.getElementById('charLbl').textContent }));
       await p.click('#charCancel'); await p.keyboard.press('Escape'); return r; };
     await p.goto(CFG.CUR); await writeRaw(p, JSON.stringify(ranger), { fresh: true }); await p.reload(); await p.waitForTimeout(400);
     const site = await look();
-    ok('site classes: the picker offers every playable class (the Gladiator too, 0.7 P2; the Spiritmaster, 0.7 P4; the Templar, 0.8 P3; the Cleric, 0.8 P5; the Sorcerer, 0.8 P17; the Chanter, 0.8 P19) and shows no note',JSON.stringify(site.radios) === JSON.stringify(['assassin', 'ranger', 'gladiator', 'spiritmaster', 'templar', 'cleric', 'sorcerer', 'chanter']) && !site.note && site.pack === 'aion2/asmodian/ranger', site);
+    ok('site classes: the picker offers every playable class (the Gladiator too, 0.7 P2; the Spiritmaster, 0.7 P4; the Templar, 0.8 P3; the Cleric, 0.8 P5; the Sorcerer, 0.8 P17; the Chanter, 0.8 P19: the page\'s GUIDE_CLASSES, those eight in order) and shows no note', JSON.stringify(site.radios) === JSON.stringify(site.want) && site.radios[0] === 'assassin' && inShippedOrder(site.radios) && !site.note && site.pack === 'aion2/asmodian/ranger', site);
     ok('site classes: no page errors', !errs.length, errs);
     await ctx.close();
   }
