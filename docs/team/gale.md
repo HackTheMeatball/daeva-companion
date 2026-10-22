@@ -82,18 +82,19 @@ _From the owner, project chat 2026-10-20 6:46 PM ET: "kaizen is supposed to impr
 
 _From the owner, project chat 2026-10-20 7:00 PM ET: "No one is safe if their worth can't be proven." Outside review:
 Fresh governance review, `PROCESS REVIEW role-review` OK on v3, 2026-10-20 7:59 PM ET; comments from Team Audit and
-Org Design._
+Org Design. Conformed 2026-10-22 to #791 (Team Audit seat closed, Review Broker opened) by Rules Steward as neutral
+writer; routed: coordinator 2026-10-22T00:35Z._
 
 **Role review (owner, 2026-10-20 7:00 PM ET):** every minor's kaizen review ends with one table, with a row for every
 standing role and every consultant past its end condition. Each row gives a **keep / change / cut** recommendation on
-evidence. No role is exempt: Kaizen, Org Design, Team Audit, the standing reviewers and the coordinator's hand-off log
+evidence. No role is exempt: Kaizen, Org Design, the Review Broker, the standing reviewers and the coordinator's hand-off log
 all get a row.
 
 - **Evidence per row:** everything comes from the record (git, PR comments, the Ledger, the scorecard), not from the
   role's own account.
   1. **Outcomes, not volume:** the escape rate (majors that got past a control role and were found later, target 0),
      first-pass rate, and the rework or hand-interventions the role caused others.
-  2. **Seeded test, for control roles:** Watchdog, the reviewers, Game Data Check, Team Audit and any gate role are
+  2. **Seeded test, for control roles:** Watchdog, the reviewers, Game Data Check, the Review Broker and any gate role are
      tested once per minor with a planted defect where they should catch it, such as a stale To-do, a wrong data field,
      a removal in a mock, or a red-flag process change. Whether they caught it is recorded. A quiet minor with 0 catches
      isn't held against a control role that passes its test. Kaizen plants the defects; a fresh reviewer plants Kaizen's.
@@ -119,8 +120,7 @@ all get a row.
 - **Who assesses whom:** a role never assesses itself.
   - Kaizen drafts every row except its own.
   - Org Design adds workload and overlap evidence, but not for its own row.
-  - Team Audit is fully recused on the roles it hire-reviewed and on its own row. For other roles it adds its view.
-  - Fresh governance review, or a one-off consultant, writes the rows for Kaizen, Org Design, Team Audit, the standing
+  - Fresh governance review, or a one-off consultant, writes the rows for Kaizen, Org Design, the Review Broker, the standing
     reviewers (Howard, Holly) and the coordinator's log.
 - **Who decides:** the coordinator decides each row and logs the outcome (Ledger, team-changes.csv) with the evidence
   link. A cut follows the hiring procedure's end steps: a handover file, then the thread ends. The coordinator's own
