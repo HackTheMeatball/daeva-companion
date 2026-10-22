@@ -86,7 +86,11 @@ T-123 waited 16 min behind a write limit kept only in Huell's own notes, with no
   To-do closes in that write, with the answer as its closing evidence, and the close line to the coordinator goes in
   the same run.
 - **A held write is announced:** when Huell holds a change for the limit, Huell tells the coordinator, and the session
-  that sent the change, in one line: "HELD <what> until <UTC time>". The write goes out by that time.
+  that sent the change, in one line: "HELD <what> until <UTC time>". The write goes out by that time. A held write is
+  announced once per window, with its release time; routine syncs that arrive later in the same window join the queue
+  silently and go out together at the slot. Owner answers and decisions still go out at once, as above (Kaizen
+  batch-0.9 item 35, Gale's draft from Gomez's sample: about 30% of 59 Huell turns were empty, 4 of them HELD notices;
+  routed by the coordinator 2026-10-22T05:48Z).
 
 ### TRK-13
 
