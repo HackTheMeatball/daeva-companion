@@ -3,6 +3,7 @@
   "schemaVersion": 2,
   "collection": "zones",
   "faction": "asmodian",
+  "map": "https://metabot.gg/en/aion-2/map/altgard",
   "records": [
     {
       "id": "zone:aldelle-village",

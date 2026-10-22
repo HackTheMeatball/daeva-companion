@@ -19,6 +19,9 @@ export function checks(ctx, check) {
       check(`${r.id} #${x.i}: objective line names its object, not "it" / "them" / "there"`, PRONOUN_OK.has(`${r.id} #${x.i}`) || !PRONOUN.test(obj), x.text);
     } }
 
+  /* 0.9 P13: the pack's map links (src/packs/aion2/cards/maps.js, markup.js, areas.js) start at the faction's map */
+  check('zones: the faction map (zones.json `map`) is set', !!ctx.MAP_BASE, ctx.MAP_BASE);
+
   /* ---------------------------------------------------------------- regional quests (in RQ order) */
   for (const q of rqs.slice().sort(byNum('order'))) {
     check('regional: at most one story gate: ' + q.name, atomsOf(q.requires).filter(a => a.story).length <= 1);

@@ -1351,6 +1351,17 @@
                 ]
               }
             ]
+          },
+          {
+            "slot": "Quick Use 7",
+            "rows": [
+              {
+                "minLv": 1,
+                "skills": [
+                  "skill:assassin:shadowstrike"
+                ]
+              }
+            ]
           }
         ],
         "eOrder": [
@@ -1358,6 +1369,10 @@
           "stigma:assassin:swift-contract",
           "stigma:assassin:savage-fang",
           "stigma:assassin:triniels-dagger"
+        ],
+        "eBeforeQ": [
+          "stigma:assassin:illusive-clone",
+          "stigma:assassin:swift-contract"
         ],
         "eOrderStatus": "disputed",
         "defaultKeys": {
@@ -1406,9 +1421,10 @@
             "url": "https://aion2turkiye.com/en/class/assassin/",
             "checkedAt": "2026-10-20",
             "fields": [
-              "eOrder"
+              "eOrder",
+              "eBeforeQ"
             ],
-            "note": "E order (C21b): dungeon opener Swift Contract, Illusive Clone, Shadowstrike, Savage Fang, Triniel's Dagger; no buffs in the leveling rotation."
+            "note": "E order (C21b): dungeon opener Swift Contract, Illusive Clone, Shadowstrike, Savage Fang, Triniel's Dagger; no buffs in the leveling rotation. eBeforeQ: the two buffs come before Shadowstrike (Q), the other two after it."
           },
           {
             "url": "https://metabot.gg/en/aion-2/skills/triniels-dagger",

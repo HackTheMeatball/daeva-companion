@@ -1,6 +1,6 @@
 /* Assassin build data: stat tiers, skill point plan and costs, Daevanion node types, stigma plan, key stacks, icons.
    Every export is still a page global (scripts/build.mjs). */
-import { E_NOTE, E_ORDER, E_ST, KEYS, LEVEL_POINTS, RMB_ROWS, RULE_NODE_COSTS, RULE_SHARD_COST, RULE_SKILL_POINT_COST, RULE_SPEC_SLOTS, SP_EXTRA, SP_ICONS, SP_SKILLS_CORE,
+import { E_BEFORE_Q, E_NOTE, E_ORDER, E_ST, KEYS, LEVEL_POINTS, Q_ROWS, RMB_ROWS, RULE_NODE_COSTS, RULE_SHARD_COST, RULE_SKILL_POINT_COST, RULE_SPEC_SLOTS, SP_EXTRA, SP_ICONS, SP_SKILLS_CORE,
   GUIDE_GATES, KEYS_ST, STAT_NOTE, STAT_SRC, STAT_TIERS, STIGMA_ICON, STIGMA_KEY, STIGMA_PLAN, STIGMA_ST, ST_TARGETS } from "./generated.js";
 /* Compiled from data/packs/aion2/classes/assassin/ and data/packs/aion2/asmodian/assassin/builds.json since 0.2 step 5b
    (tools/gen/gen.mjs): the guide build (builds.json: stat tiers,
@@ -8,7 +8,7 @@ import { E_NOTE, E_ORDER, E_ST, KEYS, LEVEL_POINTS, RMB_ROWS, RULE_NODE_COSTS, R
    stigmas.json (icons), and rule:level-points. Re-exported here under their page names. Since 0.4 P2a the cost and slot
    tables below are built from the pack's rules (RULE_*: rule:skill-point-cost, rule:specialty-slots, rule:node-costs,
    rule:stigma-shard-cost), not written out here. */
-export { E_NOTE, E_ORDER, E_ST, KEYS, KEYS_ST, LEVEL_POINTS, SP_ICONS, STAT_NOTE, STAT_SRC, STAT_TIERS, STIGMA_ICON, STIGMA_KEY, STIGMA_PLAN, STIGMA_ST, ST_TARGETS };
+export { E_BEFORE_Q, E_NOTE, E_ORDER, E_ST, KEYS, KEYS_ST, LEVEL_POINTS, SP_ICONS, STAT_NOTE, STAT_SRC, STAT_TIERS, STIGMA_ICON, STIGMA_KEY, STIGMA_PLAN, STIGMA_ST, ST_TARGETS };
 /* the build has a key setup: the guide's right-click rows (the Assassin), or the game's default keys (KEYS, 0.7 P11: the
    Ranger and the Gladiator); without either the Build drawer shows no Rotation */
 export const HAS_KEYS = RMB_ROWS.length > 0 || KEYS.length > 0;
@@ -59,11 +59,14 @@ SP_STEPS.filter(x => x.slot === 1).concat(SP_SLOTS).forEach(x => { for (let X = 
 /* Key stacks for the hold-to-run setup (K grid): row 0 fires first. Right click = damage line, by character level (RMB_ROWS:
    what right click, Quick Use 2, fires: a macro there, else its own stack; the Assassin's stack, whose second key is T). A
    macro can sit on any quickslot with a 0–3 stack (MACROS_FLAT); this drawer still draws only right click until 0.9 P22's
-   build lane renders steps. Q = Shadowstrike alone (positioning, so it never fires by accident); E = opener cooldowns as they
-   unlock, E_ORDER. This is the guide's suggested binding, not the game's defaults (KEYS); row order is inferred. A build
-   with only the game's default keys takes every key from them instead (requirements.js rotKeys). */
+   build lane renders steps. Q = the guide's Quick Use 7 stack (Q_ROWS; the Assassin: one positioning skill alone, so it
+   never fires by accident); E = opener cooldowns as they unlock, E_ORDER, E_BEFORE_Q fired before Q. This is the guide's
+   suggested binding, not the game's defaults (KEYS); row order is inferred. A build with only the game's default keys takes
+   every key from them instead (requirements.js rotKeys). */
 /* a build with no key setup (the Ranger, 0.6 P5: RMB_ROWS empty) has an empty stack */
-export const RMB_STACK = lv => ((RMB_ROWS.find(r => lv >= r.minLv) || RMB_ROWS[RMB_ROWS.length - 1]) || { skills: [] }).skills.slice();
+const stackAt = (rows, lv) => ((rows.find(r => lv >= r.minLv) || rows[rows.length - 1]) || { skills: [] }).skills.slice();
+export const RMB_STACK = lv => stackAt(RMB_ROWS, lv);
+export const Q_STACK = lv => stackAt(Q_ROWS, lv);
 /* Node icons by node type, cut from the player's screenshots: [not bought, bought]. Types without art yet use the crystal. */
 /* Node art cut from the player's screenshots: [not bought, bought] per node colour. */
 export const DV_TYPE_ICONS = {

@@ -114,6 +114,23 @@ export default (test, M) => {
       .filter(([, , l]) => /\blabelOf\b|char\([^)]*\)\.name\b|\bc\.name\b/.test(l)).map(([f, n, l]) => `${f}:${n}: ${l.trim().slice(0, 120)}`));
     assert.deepEqual(bad, []);
   });
+  /* 0.9 P13: game facts live in data/ (CLAUDE.md), so the AION 2 pack's code names no skill, stigma or quest: the build's
+     key order, the Meanwhile unlocks, the map base and the stigma plan come from the data. Names of 4+ characters from the
+     data's skills, stigmas, story / regional / Ascension quests, looked for in the code without its comments. */
+  const NAME_COLLS = ['skills', 'stigmas', 'storyQuests', 'regionalQuests', 'ascensionQuests'];
+  const NAME_FILES = ['skills.json', 'stigmas.json', 'story-quests.json', 'regional-quests.json', 'ascension-quests.json'];
+  const jsonsUnder = d => readdirSync(d, { withFileTypes: true }).flatMap(e => e.isDirectory() ? jsonsUnder(join(d, e.name)) : NAME_FILES.includes(e.name) ? [join(d, e.name)] : []);
+  const GAME_NAMES = [...new Set(jsonsUnder(join(SRC, '../data/packs')).map(f => JSON.parse(readFileSync(f, 'utf8'))).filter(d => NAME_COLLS.includes(d.collection))
+    .flatMap(d => d.records.map(r => r.name)).filter(n => typeof n === 'string' && n.length > 3))];
+  const namesIn = files => Object.entries(files).flatMap(([f, s]) => code(s).split('\n').flatMap((l, i) => GAME_NAMES.filter(n => l.includes(n)).map(n => `${f}:${i + 1}: ${n}`)));
+  test('no skill, stigma or quest name in src/packs/aion2/**/*.js outside comments (0.9 P13)', () => {
+    assert.ok(GAME_NAMES.length > 100, `the data's names are read (${GAME_NAMES.length})`);
+    assert.deepEqual(namesIn(Object.fromEntries(PACKS.filter(f => f.startsWith('packs/aion2/')).map(f => [f, read(f)]))), []);
+  });
+  test('no skill, stigma or quest name in the pack code: planted names are caught, commented ones are not (negative control)', () => {
+    assert.deepEqual(namesIn({ 'packs/aion2/x.js': '/* Shadowstrike on Q */\nconst q = ["Shadowstrike"];\n// Heart Gore\nconst t = `Finish "Urgent Pursuit"`;' }),
+      ['packs/aion2/x.js:2: Shadowstrike', 'packs/aion2/x.js:4: Urgent Pursuit']);
+  });
   test('the switcher card puts the label on screen only: no log, title, URL, storage or request', () => {
     const src = code(read('cards/characters.js'));
     assert.ok(/\blabelOf\b/.test(src), 'the switcher shows the label');

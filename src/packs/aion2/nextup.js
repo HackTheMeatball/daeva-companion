@@ -8,10 +8,10 @@
    leveling path; Sealed Dungeons (one-time, fixed: 2 crystals + 2 Wisdom Stones + Enhance Stones + Kina, ~5 min) and
    Strongholds are for power, done on your route, or first when the story is level-gated above you (phase beforeStory).
    A crystal shortage alone doesn't move them above the story. */
-import { QUEST_STEPS, VERIFIED_UNLOCKS } from "./data/story.js";
+import { QUEST_STEPS } from "./data/story.js";
 import { E_ORDER, LEVEL_POINTS, SP_STEPS } from "./data/build.js";
 import { GATES } from "./data/milestones.js";
-import { AREA_LOC } from "./data/generated.js";
+import { AREA_LOC, MEANWHILE } from "./data/generated.js";
 import { KIBELISKS, NODE_PLACE } from "./data/place.js";
 import { nudgeOf, storyTargetOf, teleportOf } from "./travel.js";
 import { AREA_ITEMS, KIB_AREA, bandOf } from "./catalog.js";
@@ -206,15 +206,14 @@ export const aion2NextUp = [
   { id: "laterSkills", produce: laterSkills },
 ];
 
-/* The story card's "Meanwhile" line when it is level-gated: what gives XP at your level (verified unlocks only): Sealed
-   Dungeons and Strongholds still to clear, the highest Expedition you've unlocked (Krao Cave also needs its step's story
-   gate, g20:exp: "Daeva in a Dream" reached), the daily dungeon. */
+/* The story card's "Meanwhile" line when it is level-gated: what gives XP at your level (verified unlocks only, MEANWHILE:
+   unlock.meanwhile, 0.9 P13): Sealed Dungeons and Strongholds still to clear, the highest Expedition you've unlocked (one
+   with a step, unlock.step, also needs that step's other gates: Krao Cave's g20:exp waits for its story gate), the daily
+   dungeon. */
 export function aion2Meanwhile(state, ctx) {
-  const { c, lv } = ctx, { sdOpen, shOpen } = areasOf(state, ctx);
-  const krao = openBut(gatesOf(c).byKey("g20:exp"), "level");
-  const ex = VERIFIED_UNLOCKS.filter(x => x[0] <= lv && /^Expedition/.test(x[2]) && (x[1] !== "Krao Cave" || krao)).pop();
-  const dd = VERIFIED_UNLOCKS.find(x => x[1] === "Daily dungeon");
-  return { sd: sdOpen.length > 0, sh: shOpen.length > 0, ex: ex ? { lv: ex[0], name: ex[1], il: (ex[2].match(/item level (\d+)/) || [])[1] || null } : null, dd: dd && dd[0] <= lv ? dd[0] : null };
+  const { c, lv } = ctx, { sdOpen, shOpen } = areasOf(state, ctx), ev = gatesOf(c);
+  const ex = MEANWHILE.ex.filter(u => u.lv <= lv && (!u.step || openBut(ev.byKey(u.step), "level"))).pop();
+  return { sd: sdOpen.length > 0, sh: shOpen.length > 0, ex: ex ? { lv: ex.lv, name: ex.name, il: ex.il } : null, dd: MEANWHILE.dd != null && MEANWHILE.dd <= lv ? MEANWHILE.dd : null };
 }
 
 /* Where to go next on the story card (not level-gated): the story's Kibelisk, unless the open objective already names

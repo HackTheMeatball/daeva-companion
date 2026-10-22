@@ -15,7 +15,7 @@ export const KEPT_RULES = {
   "stronghold-band": "a stronghold opens at its Sealed Dungeon band (src/packs/aion2/catalog.js AREA_BANDS, inferred) as well as at " +
     "its lowest level (the live gate); the Areas list's \"later\" tag reads the lowest level only (areaLater)",
   "stigma-slot-1-after-g22:0": "slot 1 (g22:1) opens at its level once \"g22:0\" is done, not on the live gate's legacy " +
-    "story atom (\"Daeva in a Dream\" reached); data: owner-check proposal, check 3",
+    "story atom (sq:2102185 reached); data: owner-check proposal, check 3",
   "stigma-equip-after-g22:0": "the equip offer (Next up, the Stigmas card's hero) waits for \"g22:0\" on every slot, " +
     "not only slot 1 (stigmaEquipOpen)",
   "stigma-rotation-slot-level": "the Build drawer's E keys count a slot from its level alone (slotLevelMet)",
@@ -28,33 +28,33 @@ export const KEPT_RULES = {
    turns that on too. Derived values are computed on every evaluation and never written. */
 export const GATE_CHANGES = {
   regionalTurnedIn: { what: "regional quests open when their story quest is turned in, not when it is reached (owner check 1, 2026-10-15: " +
-    "Shugo-of-All-Trades and Spooky Specters are not offered while the quest before them is current; Empyrean Monolith check, 20:12 ET: all 6 of its " +
-    "regional quests appear only once it is turned in); those two and The Great Curse-Breaking Caper also gain the story gate they lacked", baseline: true },
+    "rq:2202044 and rq:2202051 are not offered while the quest before them is current; sq:2102105 check, 20:12 ET: all 6 of its " +
+    "regional quests appear only once it is turned in); those two and rq:2202015 also gain the story gate they lacked", baseline: true },
   derived: { what: "derived completion: a step that can be ticked is also done by its other completesWith (byStory steps " +
     "once their story quest is turned in, \"Put … on E\" once its slot is equipped, the wrapper quests g22:0 / g32:dreams once " +
-    "\"Daeva in a Dream\" / \"A Daeva Dreaming Anew\" is turned in: owner-approved proposals, live data since 2026-10-15; g45:witness once " +
-    "\"Daeva Trapped in a Nightmare\" is turned in: 0.3 E10)", baseline: true },
-  storyStepDerived: { needs: ["derived"], what: "derived completion from a story step (owner, 2026-10-15): the Graverobber Den stronghold once Cemetery Cleanup's " +
+    "sq:2102185 / sq:2102345 is turned in: owner-approved proposals, live data since 2026-10-15; g45:witness once " +
+    "sq:2102810 is turned in: 0.3 E10)", baseline: true },
+  storyStepDerived: { needs: ["derived"], what: "derived completion from a story step (owner, 2026-10-15): the Graverobber Den stronghold once sq:2102070's " +
     "step 4 is ticked or the quest turned in; the Krao Cave and Fire Temple \"Expedition opens\" rows once their story step is ticked or the quest turned in", baseline: true },
   followUps: { what: "a regional quest picked up or turned in proves the regional quests before it were turned in (Q3)", baseline: true },
   turnInLevel: { what: "\"Turned in\" on the current story quest waits for its unlock level (Q10 follow-up)", baseline: true },
   clearTally: { needs: ["followUps"], baseline: true, what: "Progress (one-time clears): a regional quest done by derivation (a follow-up proves it " +
-    "turned in), or the Graverobber Den stronghold done by Cemetery Cleanup, counts with its clear reward (Wisdom Stone + crystal; belt scrolls) like a ticked one" },
+    "turned in), or the Graverobber Den stronghold done by sq:2102070, counts with its clear reward (Wisdom Stone + crystal; belt scrolls) like a ticked one" },
   /* not a gate: guide text only, a switch so --explain attributes the states that show it */
   stepNotes: { what: "story objectives show our one-line note after their text (E9, owner 2026-10-15): the first Krao Cave, Urugugu Canyon and " +
     "Fire Temple Expedition runs (owner) and, \"probably\", Draupnir (inferred)", baseline: true },
   /* E5: the `ready` proposals of design §7, live data since 2026-10-16; with the switch off a record has its gate from before (GATE_OFF).
      baseline since E8: recorded in the snapshots by #78, so --explain keeps them on (else every E5 state reads "still differs with every change off") */
-  merchantGate: { baseline: true, records: ["rq:2202029"], what: "Traveling Merchant's Conundrum opens once the story reaches \"Blood Monument\" (Metabot \"Required first\"; Step 2 on aion2.gaming.tools, owner page checks 2026-10-20) " +
+  merchantGate: { baseline: true, records: ["rq:2202029"], what: "the quest opens once the story reaches sq:2102370 (Metabot \"Required first\"; Step 2 on aion2.gaming.tools, owner page checks 2026-10-20) " +
     "instead of at its recommended Lv 33 (no prerequisite data before)" },
-  lestWeForgetGate: { baseline: true, records: ["rq:2202046"], what: "Lest We Forget opens once the story reaches \"Zikel's Core\" (Metabot \"Required first\"; Step 1 on aion2.gaming.tools, owner page checks 2026-10-20) " +
+  lestWeForgetGate: { baseline: true, records: ["rq:2202046"], what: "the quest opens once the story reaches sq:2102780 (Metabot \"Required first\"; Step 1 on aion2.gaming.tools, owner page checks 2026-10-20) " +
     "instead of at its recommended Lv 45 (no prerequisite data before)" },
-  beltGate: { baseline: true, records: ["g12:belt"], what: "the Noble Belt step is offered once \"Urgent Pursuit\" is turned in (it gives the belt; Metabot, owner screen " +
+  beltGate: { baseline: true, records: ["g12:belt"], what: "the Noble Belt step is offered once sq:2102065 is turned in (it gives the belt; Metabot, owner screen " +
     "2026-10-15), not from Lv 13 alone" },
-  amuletGate: { baseline: true, records: ["g16:amulet"], what: "the Revelation Amulet step is offered once \"Buried Atrocities\" is turned in (it gives the amulet; " +
+  amuletGate: { baseline: true, records: ["g16:amulet"], what: "the Revelation Amulet step is offered once sq:2102100 is turned in (it gives the amulet; " +
     "Metabot, owner screen 2026-10-15), not from Lv 16 alone" },
   daevanionGate: { baseline: true, records: ["board:nezekan", "board:vaizel", "board:triniel", "board:zikel", "board:azphel"], what: "the Daevanion gate (the whole board screen): every " +
-    "plan node is offered once \"Urgent Pursuit\" is turned in (unlock:daevanion, owner screen 2026-10-14) as well as at its board level" },
+    "plan node is offered once sq:2102065 is turned in (unlock:daevanion, owner screen 2026-10-14) as well as at its board level" },
   /* E8: not a gate, display only (src/packs/aion2/ascension.js); a switch so --explain attributes the Journey card's new line (recorded with E8: baseline) */
   ascensionBar: { baseline: true, records: ["asc:perceives", "asc:hears-the-voice", "asc:dreams", "asc:witnesses"], what: "the Journey card shows the Ascension bar under " +
     "the story timeline (design §11, both modes): 4 in-cap chapters, each filled once its wrapper quest is turned in or its guide step ticked, and a one-line label " +

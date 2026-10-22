@@ -14,7 +14,7 @@ import { chainsOn, qProgOf } from "../../../core/requirements.js";
 import { capFirst } from "../../../cards/nextup.js";
 import { MAP_ICO } from "../../../cards/milestones.js";
 import { GATES } from "../data/milestones.js";
-import { E_ORDER, defaultKeyOf } from "../data/build.js";
+import { E_BEFORE_Q, E_ORDER, Q_STACK, defaultKeyOf } from "../data/build.js";
 import { eShift, seq } from "../data/markup.js";
 import { CLEAR_REWARD, RQ_K, eputK } from "../catalog.js";
 import { rqReqOf, slotNames } from "../requirements.js";
@@ -96,8 +96,10 @@ function aion2RowText() {
   const names = slotNames(char(state));
   mainEl.querySelectorAll(".stn[data-slot]").forEach(x => { x.textContent = names[x.dataset.slot - 1]; });
   mainEl.querySelectorAll(".erow[data-slot]").forEach(x => { const { r, shift } = eRowOf(+x.dataset.slot); x.textContent = r < 0 ? "" : `, row ${r}${shift ? ` (${shift})` : ""}`; });
-  const e = E_ORDER.filter(x => names.includes(x)), pre = e.filter(n => n === "Illusive Clone" || n === "Swift Contract"), post = e.filter(n => !pre.includes(n));
-  mainEl.querySelectorAll(".rotseq").forEach(x => { x.innerHTML = seq([pre.length ? "E: " + pre.join(" + ") : "", "Q: Shadowstrike (the guide's key" + (defaultKeyOf("Shadowstrike") ? `; the game's default is ${defaultKeyOf("Shadowstrike")})` : ")"), post.length ? "E: " + post.join(", ") : "", "Hold both mouse buttons"].filter(Boolean)); });
+  /* E_BEFORE_Q, then Q (the build's Q stack, Q_STACK), then the rest of E (keyStacks.eBeforeQ, 0.9 P13) */
+  const e = E_ORDER.filter(x => names.includes(x)), pre = e.filter(n => E_BEFORE_Q.includes(n)), post = e.filter(n => !pre.includes(n));
+  const qs = Q_STACK(char(state).level).map(n => `Q: ${n} (the guide's key` + (defaultKeyOf(n) ? `; the game's default is ${defaultKeyOf(n)})` : ")"));
+  mainEl.querySelectorAll(".rotseq").forEach(x => { x.innerHTML = seq([pre.length ? "E: " + pre.join(" + ") : "", ...qs, post.length ? "E: " + post.join(", ") : "", "Hold both mouse buttons"].filter(Boolean)); });
 }
 
 /* Every "Regional quests" heading carries the icon legend; CSS shows it under the first visible one only (0.8.1 F4, #586),

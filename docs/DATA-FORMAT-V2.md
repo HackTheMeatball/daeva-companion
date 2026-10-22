@@ -368,7 +368,7 @@ Guide text has no code in it. Tokens expand to exactly today's HTML:
 | `${T("Respec is free", "respec")}` | `[[tip:respec\|Respec is free]]` |
 | `${stn(1)}`, `${eRow(2)}` | `[[stigma:1]]` (the stigma in slot 1: the player's pick, else the build's), `[[erow:2]]` |
 | `${mapQ(2102100, "Ulgorn")}` | `[[mapq:2102100\|Ulgorn]]` |
-| `${ASC}`, `${DAEVA}`, `<span class="rotseq"></span>` | `[[asc]]`, `[[daeva]]`, `[[rotseq]]` (their text stays in code, review R9) |
+| `${ASC}`, `<span class="rotseq"></span>` | `[[asc]]`, `[[rotseq]]` (their text stays in code, review R9; `[[daeva]]`, unused, left in 0.9 P13 with its skill names) |
 | `<span class="loc">…</span>` | its own field `loc` |
 | "Plan: Triniel's Dagger", "raised to level 10" (M2) | `[[build:stigma:1]]`, `[[build:stigmaTarget:1]]` |
 | node and skill-order mentions (M2) | `[[build:node:<board>:N]]`, `[[build:skillOrder:N]]` |

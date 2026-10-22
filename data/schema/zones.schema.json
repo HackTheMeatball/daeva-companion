@@ -12,6 +12,10 @@
     "collection": {
       "const": "zones"
     },
+    "map": {
+      "description": "The faction's interactive map page (0.9 P13): the base of every map link the pack draws (area rows, dungeon and stronghold pins, quest pins, Empyrean Traces). A record of the pack must cite it, so it is in the Sources card (generator check).",
+      "$ref": "common.schema.json#/$defs/httpsUrl"
+    },
     "records": {
       "type": "array",
       "items": {

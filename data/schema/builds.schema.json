@@ -588,6 +588,15 @@
                 "pattern": "^stigma:[a-z]+:[a-z0-9-]+$"
               }
             },
+            "eBeforeQ": {
+              "description": "The E stigmas the rotation fires before the Q quickslot (Quick Use 7), in eOrder's order; the rest of eOrder fires after Q (0.9 P13: the Build drawer's play steps and the milestone's rotation line). Each must be in eOrder (generator check). Absent: every E stigma after Q.",
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^stigma:[a-z]+:[a-z0-9-]+$"
+              },
+              "uniqueItems": true
+            },
             "eOrderStatus": {
               "description": "The E stack's own label (0.9 P17), when it is less certain than keyStacks.status: the Build drawer tags the E stack with it (\"check in game\" for disputed and owner-check). Absent: no tag of its own.",
               "$ref": "common.schema.json#/$defs/status"

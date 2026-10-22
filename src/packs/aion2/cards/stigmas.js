@@ -9,6 +9,10 @@ import { eputK } from "../catalog.js";
 import { shardsFromLv, slotLevelMet, stKey, stigmaEquipOpen } from "../requirements.js";
 import { stTip } from "./shared.js";
 import { wireTerms } from "../terms.js";
+import { ASCENSION } from "../data/story.js";
+
+/* the quest that unlocks Stigmas: the Ascension quest of their gate, g22:0 (stigmaUnlocked; ascension-quests.json guideStep) */
+const stUnlockQuest = () => (ASCENSION.find(a => a.step === "g22:0") || {}).name;
 import { aion2State as state, aion2Save as save, aion2Update as update, aion2RenderNow as renderNow, aion2FitSkills as fitSkills, aion2FadeScroll as fadeScroll, aion2RewardToast as rewardToast, aion2Chime as chime, aion2StIco as stIco, aion2MainEl as mainEl, aion2STIGMA_SLOTS as STIGMA_SLOTS, aion2StPlan as stPlan, aion2StLvOf as stLvOf } from "./page.js";
 
 /* Stigma card: the four slots from the milestones (22 / 27 / 32 / 37). Ticking "equipped" here is the same tick as the
@@ -46,7 +50,7 @@ function renderStigma() {
   } else if (next) {
     const shut = !slotLevelMet(ev, next);
     hero = `<div class="sphero st-hero lock"><div class="dvhead">${ico(next.name)}<div class="dvtext"><span class="spname">${next.name}</span><small>Slot ${next.n} · ${shut ? `opens Lv ${next.lv}` : "Stigmas not unlocked yet"}</small></div></div>` +
-      `<div class="buyrow"><div class="buystat">${shut ? `Slot ${next.n} opens at Lv ${next.lv}` : `Finish "The One Who Hears the Voice" first`}</div></div></div>`;
+      `<div class="buyrow"><div class="buystat">${shut ? `Slot ${next.n} opens at Lv ${next.lv}` : `Finish "${stUnlockQuest()}" first`}</div></div></div>`;
   } else hero = `<div class="sphero st-hero"><div class="dvhead"><span class="dvico st-ico done-ico" aria-hidden="true">✓</span><div class="dvtext"><span class="spname">Planned upgrades done</span><small>${ST_TARGETS.map(([n, T]) => `${n} ${T}`).join(" · ")}</small></div></div></div>`;
   /* Slots (footer): equipped stigmas get − / + to match the game; the rest show when they open. */
   setHTML(document.getElementById("stList"), slots.map(x => { const on = !!char(state).checks[x.k], open = ev.byKey(x.k).open, L = stLvOf(x.name);

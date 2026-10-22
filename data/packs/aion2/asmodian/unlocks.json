@@ -95,6 +95,7 @@
       },
       "credit": "Metabot, thegameswiki, your game",
       "order": 100,
+      "meanwhile": "daily-dungeon",
       "otherNames": [
         "Odylium Repository (pet boxes; lv not stated)",
         "Crobahki's Secret Depository (Kina; lv not stated)"
@@ -248,6 +249,7 @@
       },
       "credit": "Metabot, thegameswiki, Wikily, ExpCarry",
       "order": 130,
+      "meanwhile": "expedition",
       "party": "1–5",
       "conquest": {
         "lv": 45,
@@ -336,6 +338,8 @@
       },
       "credit": "PlayNews, thegameswiki, GamesFuze",
       "order": 30,
+      "meanwhile": "expedition",
+      "step": "g20:exp",
       "party": "1–5",
       "conquest": {
         "lv": 45,
@@ -1304,6 +1308,7 @@
       },
       "credit": "Metabot, thegameswiki, ExpCarry, allthings.how, games.gg",
       "order": 80,
+      "meanwhile": "expedition",
       "party": "2–5",
       "timeLimit": "60 min (allthings.how)",
       "conquest": {

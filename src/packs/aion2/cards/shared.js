@@ -6,7 +6,7 @@ import { char } from "../../../core/state.js";
 import { RQ } from "../data/generated.js";
 import { AREA_ITEMS } from "../catalog.js";
 import { areaOpen } from "../requirements.js";
-import { SP_ICONS, STIGMA_ICON } from "../data/build.js";
+import { SP_ICONS, STIGMA_ICON, ST_TARGETS } from "../data/build.js";
 import { stTag, stWord } from "../data/markup.js";
 import { aion2State as state, aion2RqAvail as rqAvail } from "./page.js";
 
@@ -53,7 +53,9 @@ function tipPop(kind) {
   return `<span class="tipwrap"><button type="button" class="tipbtn" aria-label="How to get more" aria-expanded="false" aria-controls="${id}">i</button><span class="tippop" id="${id}" role="tooltip">${body}${open ? `<span class="tipopen">${open}</span>` : ""}</span></span>`;
 }
 /* Grey "i" with a popover, same as the Skills/Daevanion "need more" tips. */
-const stTip = () => `<span class="tipwrap"><button type="button" class="tipbtn" aria-label="Stigma shard costs" aria-expanded="false" aria-controls="tipPop${++tipSeq}">i</button><span class="tippop" id="tipPop${tipSeq}" role="tooltip"><b>Shards per level</b>1–5: 1 each · 6–10: 2 · 11–15: 4 · 16–20: 8 (75 to reach 20). Learning a stigma is its level 1. Bonuses at 5, 10, 15, 20.<br><br><b>More shards</b>1 per character level from 23 to 39 (2 from 40), plus achievements and shops.<br><br><b>Plan</b>Triniel's Dagger to 10, then Illusive Clone toward 20.<span class="tipopen">Costs from Metabot and allthings.how; not yet checked in game.</span></span></span>`;
+/* the tip's plan line: the build's upgrade targets in order (ST_TARGETS, stigmaTargets; 0.9 P13), none without targets */
+const stPlanTxt = () => ST_TARGETS.length ? `<br><br><b>Plan</b>${ST_TARGETS.map(([n, T], i) => i ? `${n} toward ${T}` : `${n} to ${T}`).join(", then ")}.` : "";
+const stTip = () => `<span class="tipwrap"><button type="button" class="tipbtn" aria-label="Stigma shard costs" aria-expanded="false" aria-controls="tipPop${++tipSeq}">i</button><span class="tippop" id="tipPop${tipSeq}" role="tooltip"><b>Shards per level</b>1–5: 1 each · 6–10: 2 · 11–15: 4 · 16–20: 8 (75 to reach 20). Learning a stigma is its level 1. Bonuses at 5, 10, 15, 20.<br><br><b>More shards</b>1 per character level from 23 to 39 (2 from 40), plus achievements and shops.${stPlanTxt()}<span class="tipopen">Costs from Metabot and allthings.how; not yet checked in game.</span></span></span>`;
 /* A catch-up jump's specialty (0.9 P19): the build's pick for the slot (bold, with its label), the slot the build leaves
    open on purpose, or none sourced yet. The pick is named before the skill reaches its level: the jump gets it there.
    skip: the tag the line itself carries (Next up's card adds it after); a pick with the same tag doesn't repeat it, so a
