@@ -125,8 +125,9 @@ export const aion2NowRenderers = {
   board: a => ({ ico: "◆", t: `Buy <b>${dvShort(a.dn.t)}</b>${stTag(a.dn.st)} on ${a.dn.board}`, sub: a.dc === 0 ? "Already on your board: just mark it" : `${a.dc} of your ${a.dLeft} crystals`, btn: "Acquired", act: a.act, done: true, row: keyHint("daevanion") }),
   boardcost: a => ({ ico: "◆", t: `Check <b>${dvShort(a.dn.t)}</b>'s cost${stTag(a.dn.st)} on ${a.dn.board}`, sub: `You have ${a.dLeft} crystals; type its cost to see if you can buy it`, btn: "Enter cost", act: a.act, row: keyHint("daevanion") }),
   stwait: a => ({ ico: stIco(a.nx.name, "st-img") || "✧", t: `Equip <b>${a.nx.name}</b>${stPlanTag(a.nx)}`, sub: `Stigma slot ${a.nx.n} is open · needs 1 shard${a.at ? ` (+1 at Lv ${a.at})` : ""}`, tag: "Needs 1 shard", act: a.act }),
-  stequip: a => { const eTxt = a.r < 0 ? "" : ` · then put it on E, row ${a.r}${a.r === 0 ? " (fires first)" : ""}`;
-    return { ico: stIco(a.nx.name, "st-img") || "✧", t: `Equip <b>${a.nx.name}</b>${stPlanTag(a.nx)}`, sub: `Stigma slot ${a.nx.n} is open${eTxt}`, btn: "Equipped", act: a.act, done: true }; },
+  /* the E row is the line's point: on a one-line phone row the start ("Stigma slot N is open") is cut, never the row */
+  stequip: a => { const eTxt = a.r < 0 ? "" : `<span class="ns-tail">&nbsp;· then put it on E, row ${a.r}${a.r === 0 ? " (fires first)" : ""}</span>`;
+    return { ico: stIco(a.nx.name, "st-img") || "✧", t: `Equip <b>${a.nx.name}</b>${stPlanTag(a.nx)}`, sub: `<span class="ns-lead">Stigma slot ${a.nx.n} is open</span>${eTxt}`, btn: "Equipped", act: a.act, done: true }; },
   stup: a => ({ ico: stIco(a.up.x.name, "st-img") || "✧", t: `Upgrade <b>${a.up.x.name} ${a.up.L - 1} → ${a.up.L}</b>${stTag(STIGMA_ST)}`, sub: `${a.up.cost} of your ${a.shards} shards`, btn: "Upgraded", act: a.act, done: true }),
   sd: a => { const p = a.pick, L = a.loc, pin = `<b>${p.it.name}</b>${pinLink(mapFocus(p.it))}`;
     return { bar: a.band.n ? nsBar(a.band.d, a.band.n, `Lv ${a.band.bd}–${a.band.bd + 4} · ${a.band.d}/${a.band.n}`) : "", ...SD_TILE,

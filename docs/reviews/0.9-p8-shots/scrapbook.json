@@ -1,0 +1,6 @@
+[
+  { "case": "1-spent-390", "kind": "before-after", "title": "One colour for Spent on a phone",
+    "caption": "At Lv 4 Next up's Spent button is now green on a phone too, as it is on a wide screen." },
+  { "case": "3-egrid-1500", "kind": "before-after", "title": "Key setup shows only equipped stigmas",
+    "caption": "At Lv 25 with no stigma equipped, E no longer shows Triniel's Dagger; Coming to E lists it with its row." }
+]
