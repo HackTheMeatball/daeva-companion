@@ -215,7 +215,7 @@ _From #114 "Merge rule (AUTO since 2026-10-16 10:32Z, #115)"._
   - **Pushing to an approved PR** (amends MRG-11, no new id; Kaizen batch-0.9 item 36, Gale's draft; routed by the
     coordinator 2026-10-22T06:06Z; three times on 2026-10-22, on #824, #832 and #833, a fix pushed after the approvals
     landed lost the race to auto-merge, which took the approved sha, so each fix needed a follow-up PR and another
-    review round): first check the PR is still open. If every reviewer it needs may already have approved the head,
+    review round): first check the PR is still open. If any approval is already on the PR,
     add `hold` and post a closed-list HOLD line before pushing, for example `HOLD: VERDICT: OK (reviewer: <a required
     reviewer>) on head (owner: <author>)`, or `HOLD: FRESH REVIEW OK on head (owner: <author>)` when the PR waits on a fresh review.
     Auto-merge lifts it once that marker names the new head and every other review the PR needs approves it too
