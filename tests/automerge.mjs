@@ -233,6 +233,43 @@ check(FZ.freezeBlocker(on, pr('claude/issue-502-1', ['rc-blocker']), ['src/main.
 check(FZ.freezeBlocker(on, pr('claude/x'), ['.github/workflows/ci.yml', 'data/packs/a.json']) !== '', 'freeze -> workflows and data wait');
 check(/const frozen = freezeBlocker\(freeze, pr, touched\);/.test(yml) && yml.indexOf('const frozen = freezeBlocker(') < yml.indexOf('await github.rest.pulls.merge('), 'the freeze check runs before every merge');
 
+// Release freeze (PLN-17; Routed: coordinator 2026-10-22T00:12Z): after a release merges, nothing else merges until main's
+// version is tagged, so the release's own CI run (the only one that deploys it) is never skipped or cancelled.
+const rb = yml.match(/\/\/ RELEASE-CHECK START[^\n]*\n([\s\S]*?)\n\s*\/\/ RELEASE-CHECK END/);
+check(!!rb, 'auto-merge.yml has the RELEASE-CHECK block');
+const RLB = new Function(rb[1] + '\nreturn { releaseBlocker, releaseOf };')();
+const live = (o = {}) => ({ version: '0.9.0', tagged: true, merged: '', ...o });
+const bump = { filename: 'package.json', patch: '@@ -1,4 +1,4 @@\n {\n   "name": "daeva-companion",\n-  "version": "0.8.0",\n+  "version": "0.9.0",\n' };
+check(RLB.releaseOf(bump) === '0.9.0' && RLB.releaseOf(undefined) === ''
+  && RLB.releaseOf({ filename: 'package.json', patch: '@@ -10,3 +10,3 @@\n-    "esbuild": "0.24.0"\n+    "esbuild": "0.24.2"\n' }) === ''
+  && RLB.releaseOf({ filename: 'package.json' }) === 'unknown',
+  "release PR: its own package.json diff sets the version (a dependency bump isn't one; a diff GitHub left out counts as one)");
+check(RLB.releaseBlocker(live(), false, pr('claude/x')) === '' && RLB.releaseBlocker(live(), true, pr('claude/issue-600-1')) === '',
+  'release freeze: with main\'s version tagged (live), build and release PRs merge as before');
+// Race 1: a release and another PR in one auto-merge run. CI starts once, after the loop, so the other PR must not merge.
+check(/merged in this run/.test(RLB.releaseBlocker(live({ merged: '0.9.1' }), false, pr('claude/x')))
+  && /merged in this run/.test(RLB.releaseBlocker(live({ merged: '0.9.1' }), false, pr('claude/x', ['rc-blocker'])))
+  && /merged in this run/.test(RLB.releaseBlocker(live({ merged: '0.9.1' }), true, pr('claude/issue-601-1'))),
+  'race 1 (same run): after a release merges, every other PR waits, rc-blocker and a second release included');
+// Race 2: the next run, while the release's CI run is still pending (main's version untagged): a merge now would cancel it.
+const pending = live({ version: '0.9.1', tagged: false });
+check(/release 0\.9\.1 is not live yet \(no tag v0\.9\.1\)/.test(RLB.releaseBlocker(pending, false, pr('claude/x'))),
+  'race 2 (quick succession): while main\'s version has no tag, an ordinary PR waits (its CI run would cancel the pending release run)');
+// A failed release stays frozen: same state, however long it lasts; its fixes and a replacement bump still merge.
+check(RLB.releaseBlocker(pending, false, pr('claude/x')) !== '' && RLB.releaseBlocker(pending, false, pr('claude/fix', ['rc-blocker'])) === ''
+  && RLB.releaseBlocker(pending, true, pr('claude/issue-602-1')) === '',
+  'failed release: stays frozen for ordinary PRs; an rc-blocker fix and a new version bump still merge');
+check(RLB.releaseBlocker(live({ version: '0.9.1', tagged: true }), false, pr('claude/x')) === '', 'the freeze lifts once CI tags the release');
+check(/could not be read/.test(RLB.releaseBlocker(live({ version: null, tagged: null }), true, pr('claude/issue-600-1')))
+  && /could not be read/.test(RLB.releaseBlocker(live({ tagged: null }), false, pr('claude/x', ['rc-blocker']))),
+  'release freeze: main\'s version or tag unread -> nothing merges this run (fails closed)');
+const relAt = yml.indexOf('const releasing = releaseBlocker(rel, isRelease, pr);');
+check(relAt > 0 && /if \(releasing\) \{ core\.info\(`#\$\{pr\.number\}: \$\{releasing\}`\); continue; \}/.test(yml.slice(relAt, relAt + 200))
+  && relAt < yml.indexOf('await github.rest.pulls.merge(') && /if \(isRelease\) \{ rel\.merged = prVersion;/.test(yml)
+  && yml.indexOf('rel.merged = prVersion') > yml.indexOf('await github.rest.pulls.merge(')
+  && /rest\.git\.getRef\(\{ owner, repo, ref: `tags\/v\$\{rel\.version\}` \}\); rel\.tagged = true; \}\s*catch \(e\) \{ if \(e\.status === 404\) rel\.tagged = false; else throw e; \}/.test(yml),
+  'merge loop: the release check runs before every merge, a merged release freezes the rest of the run, and a missing tag (404) means not live');
+
 // Named reviewers (incident fast path 2026-10-20 8:37 PM ET, automerge-race #553 #615 #653 #664): a named CHANGES is sticky
 // until the same reviewer approves the current head; a tagged APPROVE never stands in for the pipeline review.
 const nb = yml.match(/\/\/ NAMED-CHECK START[^\n]*\n([\s\S]*?)\n\s*\/\/ NAMED-CHECK END/);
