@@ -56,6 +56,16 @@ _From #114 "Health check (owner design, 2026-10-17 5:51 AM ET; replaces the plan
       no post for 2 h) and leaves it unresolved until the next check has run. That check must flag it and record the
       scan count. Each seeded run is recorded as one #221 row, Kind `thread-stall`, with "seeded" in its Item cell and
       "flagged" or "missed" in its Fix cell; a miss is also sent to the coordinator the same hour.
+  - a flaky suite (amends HC-01, no new id; Kaizen batch-0.9 item 26; routed by the coordinator 2026-10-22T02:35Z):
+    `tests/run.mjs` retries a failed suite and prints `FLAKY <suite>` when the retry passes. Build Pipeline (Gus) makes
+    it also emit a `::warning` annotation titled `FLAKY <suite>` and a step-summary line. Each health check counts those
+    annotations per suite on main and PR CI runs since the last check. A suite that is FLAKY in 2 runs within 24 h
+    gets one #221 row, Kind `flaky-suite`, naming the suite, the runs and their first-run failures; later checks
+    update that row's cells, never add another, and it closes once the suite has gone 24 h with no FLAKY or its fix
+    merges. Until Gus's annotation exists, Mike counts the `FLAKY <suite>` lines in the job logs instead. Retries are
+    unchanged and nothing is loosened. The core suite's known timing flake (HC-11) counts like any other suite: each
+    `FLAKY` line (later its annotation and step-summary line) is the per-occurrence log HC-11 asks for, and the #221
+    row is an escalation on top of it, so HC-11 is not narrowed;
   - anything else odd.
 
 ### HC-02

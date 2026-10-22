@@ -37,7 +37,8 @@ recommendation item 2; backed by Org Design (Nacho)._
   yourself. The coordinator routes it with the overlap check (DEC-01 as amended 2026-10-21; process-change procedure step 2).
   Look up the coordinator's session with `get_channel_session_id` each time. A PR that touches a rule carries
   `Routed: coordinator <UTC time>`.
-- **Decision cards for Isaac:** get the card's T-NN first, then tell the coordinator in the same turn you post it
+- **Decision cards for Isaac:** get the card's T-NN first and open the card's question with it ([COM-19](#com-19), card
+  titles), then tell the coordinator in the same turn you post it
   ([DEC-20261020-todo-notifications](../DECISIONS.md)). Look up the coordinator's session with `get_channel_session_id`
   each time, never from memory; if the send fails, look it up again and retry once, and if that fails too, post the
   CARD READY line in your thread and tell Watchdog (Mike). If Huell hasn't given the T-NN in time, use `T-pending` as
@@ -84,8 +85,28 @@ coordinates because that's not how I'm going to count them in game. There is no 
     that still contains `___` counts as not answered, and the reading thread asks him once for the missing part.
   - **Source** (stored, shown only as a small link): the origin message or card id, and the DECISIONS row when the item
     carries out a decision.
-- Plain language throughout: no internal ids, rule codes, file paths or PR numbers except as a link; at most 900
-  characters per item, not counting Recommended reply. Several in-game checks are separate items, or one item with one
+- **Card titles carry every handle that applies** (coordinator for Isaac, 2026-10-22; Isaac, project chat 02:31:55Z
+  (cmsg_01UNirAFgxf3jC8kQS8uvvHBC4n4g3m1ugL2fN8Nn94bSo): "I don’t see any mention of Q-13 FYI", and 02:32:23Z
+  (cmsg_01UNirAFgxf3jC8kQS8uvvHBEaceu2VbJanMm53qR38XT5): "No mention of P27 either", after he couldn't match a card
+  titled by issue numbers to the "Q-13 / P27" he was pointed to; then 02:34:15Z
+  (cmsg_01UNirAFgxf3jC8kQS8uvvHBJ9Ccgs6bUT4W2nk5rHLJR1): "It’s okay to show both just make sure you show the P-NN
+  T-NN Q-NN etc as well". The wording below is the team's, not his. Routed: coordinator 2026-10-22T02:34Z): a
+  decision card for Isaac opens its question with every handle that applies to it: its T-NN (or `T-pending`), the
+  release item and its short name (P-NN), and the id of any rule or ledger row the card changes (such as Q-13), e.g.
+  "T-123 · P27 icon check · changes Q-13: OK to edit one #114 line?". Issue and PR numbers may appear alongside them,
+  never instead of them. Each handle names only what it is: a ledger id is shown as the rule being changed, never as
+  a card number. Every pointer to the card (the CARD READY line, the coordinator's posts, the debrief) uses the same
+  handles as its title. A pointer naming a handle the title doesn't carry is a miss, fixed in the same hour: the
+  pointer is corrected, or, since a posted card can't be edited, the thread withdraws it and posts it again.
+  The same handles lead the card's To-do title, as a prefix that ends at its first colon. The ask-format check
+  (Huell's `tracker-sync/askcheck.py`, 2026-10-22, tests in `askcheck-tests.py`) exempts that prefix only when it
+  starts with a handle (T-NN, `T-pending`, P-NN, Q-NN, a rule id such as COM-19, or an issue or PR number), has at
+  most 4 segments joined by " · " (each a handle with at most 4 plain words, or at most 5 plain words), and is at
+  most 60 characters. Internal ids (`cmsg_`, `cse_`, `session_`) still fail inside it. After a qualifying prefix, the
+  verb-first check, 70-character cap and rule-code and PR-number ban run on the rest of the title; a title whose
+  prefix doesn't qualify gets them on the whole title, and every other field is checked as before.
+- Plain language throughout: no internal ids, rule codes, file paths or PR numbers except as a link, and except the
+  handles a card title must carry (above); at most 900 characters per item, not counting Recommended reply. Several in-game checks are separate items, or one item with one
   check per step.
 - **The check:** one script, owned by Tracker Sync (Huell), runs on every write; Watchdog (Mike) runs the same script on
   open items. A failing item is rewritten by Huell in the same turn, or Huell tells the raiser and writes it once fixed,
