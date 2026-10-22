@@ -19,7 +19,9 @@ up by **ci-ok**, see *CI jobs* below). **Only a release deploys** (PLN-17; Fresh
   version bump, or use the escape hatch.
 - **Auto-merge freezes while a release isn't live** (PLN-17), so a later merge can't take a release's own CI run away.
   After it merges a release (a PR whose own diff sets `package.json`'s `version`), it merges nothing else in that run, and
-  in later runs, while main's version has no `vX.Y.Z` tag, only a release PR (a new bump) or an `rc-blocker` PR merges.
+  in later runs, while main's version has no `vX.Y.Z` tag, only a release PR (a new bump) or an `rc-blocker` PR (a fix
+  the Release Planner, Walter, labels) merges, one per run, and only when no main CI run is queued or running (its run
+  would cancel a pending release run).
   The tag is CI's release job, after deploy and smoke, so the freeze lifts once the release is live. Each waiting PR's
   reason is in the auto-merge log ("release X.Y.Z is not live yet"). A failed release stays frozen until it is re-run
   or replaced. If main's version or its tag can't be read, nothing merges that run.

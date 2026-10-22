@@ -252,13 +252,17 @@ check(/merged in this run/.test(RLB.releaseBlocker(live({ merged: '0.9.1' }), fa
   && /merged in this run/.test(RLB.releaseBlocker(live({ merged: '0.9.1' }), true, pr('claude/issue-601-1'))),
   'race 1 (same run): after a release merges, every other PR waits, rc-blocker and a second release included');
 // Race 2: the next run, while the release's CI run is still pending (main's version untagged): a merge now would cancel it.
-const pending = live({ version: '0.9.1', tagged: false });
+const pending = live({ version: '0.9.1', tagged: false, ciBusy: true }), idle = live({ version: '0.9.1', tagged: false, ciBusy: false });
 check(/release 0\.9\.1 is not live yet \(no tag v0\.9\.1\)/.test(RLB.releaseBlocker(pending, false, pr('claude/x'))),
   'race 2 (quick succession): while main\'s version has no tag, an ordinary PR waits (its CI run would cancel the pending release run)');
 // A failed release stays frozen: same state, however long it lasts; its fixes and a replacement bump still merge.
-check(RLB.releaseBlocker(pending, false, pr('claude/x')) !== '' && RLB.releaseBlocker(pending, false, pr('claude/fix', ['rc-blocker'])) === ''
-  && RLB.releaseBlocker(pending, true, pr('claude/issue-602-1')) === '',
-  'failed release: stays frozen for ordinary PRs; an rc-blocker fix and a new version bump still merge');
+check(/main CI is busy/.test(RLB.releaseBlocker(pending, false, pr('claude/fix', ['rc-blocker']))) && /main CI is busy/.test(RLB.releaseBlocker(pending, true, pr('claude/issue-602-1'))),
+  'race 2: while the release run is queued or running, even an rc-blocker fix or a new bump waits (its run would cancel the pending one; FGR on #800)');
+check(RLB.releaseBlocker(idle, false, pr('claude/x')) !== '' && RLB.releaseBlocker(idle, false, pr('claude/fix', ['rc-blocker'])) === ''
+  && RLB.releaseBlocker(idle, true, pr('claude/issue-602-1')) === '',
+  'failed release (no main CI run left): stays frozen for ordinary PRs; an rc-blocker fix or a new version bump merges');
+check(/could not be read/.test(RLB.releaseBlocker(live({ version: '0.9.1', tagged: false, ciBusy: null }), true, pr('claude/issue-602-1'))),
+  'failed release: main CI runs unread -> the exemptions wait too (fails closed)');
 check(RLB.releaseBlocker(live({ version: '0.9.1', tagged: true }), false, pr('claude/x')) === '', 'the freeze lifts once CI tags the release');
 check(/could not be read/.test(RLB.releaseBlocker(live({ version: null, tagged: null }), true, pr('claude/issue-600-1')))
   && /could not be read/.test(RLB.releaseBlocker(live({ tagged: null }), false, pr('claude/x', ['rc-blocker']))),
@@ -267,8 +271,9 @@ const relAt = yml.indexOf('const releasing = releaseBlocker(rel, isRelease, pr);
 check(relAt > 0 && /if \(releasing\) \{ core\.info\(`#\$\{pr\.number\}: \$\{releasing\}`\); continue; \}/.test(yml.slice(relAt, relAt + 200))
   && relAt < yml.indexOf('await github.rest.pulls.merge(') && /if \(isRelease\) \{ rel\.merged = prVersion;/.test(yml)
   && yml.indexOf('rel.merged = prVersion') > yml.indexOf('await github.rest.pulls.merge(')
+  && /if \(rel\.tagged === false\) rel\.ciBusy = true;/.test(yml) && /listWorkflowRuns\(\{ owner, repo, workflow_id: 'ci\.yml', branch: 'main', status/.test(yml)
   && /rest\.git\.getRef\(\{ owner, repo, ref: `tags\/v\$\{rel\.version\}` \}\); rel\.tagged = true; \}\s*catch \(e\) \{ if \(e\.status === 404\) rel\.tagged = false; else throw e; \}/.test(yml),
-  'merge loop: the release check runs before every merge, a merged release freezes the rest of the run, and a missing tag (404) means not live');
+  'merge loop: the release check runs before every merge, a merged release freezes the rest of the run, a merge while frozen makes CI busy for the rest of it, and a missing tag (404) means not live');
 
 // Named reviewers (incident fast path 2026-10-20 8:37 PM ET, automerge-race #553 #615 #653 #664): a named CHANGES is sticky
 // until the same reviewer approves the current head; a tagged APPROVE never stands in for the pipeline review.

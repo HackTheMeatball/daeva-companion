@@ -316,14 +316,20 @@ jobs:
             // merge's run cancels a pending one. So after a release merges, nothing else merges until its version is tagged
             // (CI's release job tags after deploy and smoke): not later in this run, and not in later runs. A failed release
             // stays frozen until it is re-run (a dispatch at its release commit) or replaced; while main's version has no tag,
-            // only a release PR (a new bump) and rc-blocker PRs (its fixes) merge, one release per run. When main's version or
-            // its tag can't be read, nothing merges this run.
-            //   rel: { version: main's version, tagged: true | false | null (unread), merged: the version merged this run, or '' }
+            // only a release PR (a new bump) or an rc-blocker PR (its fix; the Release Planner labels it) merges, and only when no
+            // main CI run is queued or running, since its merge's run would cancel a pending one (Fresh governance review on
+            // #800). One such merge per run. When main's version, its tag or main's CI runs can't be read, nothing merges.
+            //   rel: { version: main's version, tagged: true | false | null (unread), merged: the release merged this run, or '',
+            //          ciBusy: a main CI run is queued or running, or this run already merged (true | false | null unread) }
             const releaseBlocker = (rel, isRelease, pr) => {
               if (rel.merged) return `release ${rel.merged} merged in this run: the rest wait for its deploy and tag`;
               if (rel.tagged === true) return '';
               if (rel.tagged !== false) return "main's version or its tag could not be read this run: nothing merges";
-              if (isRelease || pr.labels.some((l) => l.name === 'rc-blocker')) return '';
+              if (isRelease || pr.labels.some((l) => l.name === 'rc-blocker')) {
+                if (rel.ciBusy === false) return '';
+                return rel.ciBusy === true ? `release ${rel.version} is not live yet and main CI is busy: this PR merges once no main CI run is queued or running (its run would cancel the pending one)`
+                  : "main's CI runs could not be read this run: nothing merges";
+              }
               return `release ${rel.version} is not live yet (no tag v${rel.version}): only a release or rc-blocker PR merges until its deploy tags it (docs/DEPLOY.md)`;
             };
             // A release PR: its own diff (against its merge base, as listFiles gives it) sets package.json's "version". Returns
@@ -336,12 +342,20 @@ jobs:
             };
             // RELEASE-CHECK END
             const versionAt = async (ref) => JSON.parse(Buffer.from((await github.rest.repos.getContent({ owner, repo, path: 'package.json', ref })).data.content, 'base64').toString('utf8')).version;
-            const rel = { version: null, tagged: null, merged: '' };
+            const rel = { version: null, tagged: null, merged: '', ciBusy: null };
             try {
               rel.version = await versionAt('main');
               try { await github.rest.git.getRef({ owner, repo, ref: `tags/v${rel.version}` }); rel.tagged = true; }
               catch (e) { if (e.status === 404) rel.tagged = false; else throw e; }
             } catch (e) { rel.tagged = null; core.warning(`release check: ${e.message}; nothing merges this run`); }
+            if (rel.tagged === false) {
+              try {
+                const busy = [];
+                for (const status of ['queued', 'in_progress', 'waiting', 'pending', 'requested'])
+                  busy.push(...(await github.rest.actions.listWorkflowRuns({ owner, repo, workflow_id: 'ci.yml', branch: 'main', status, per_page: 10 })).data.workflow_runs);
+                rel.ciBusy = busy.length > 0;
+              } catch (e) { core.warning(`release check: main CI runs unread: ${e.message}`); }
+            }
             if (rel.tagged === false) core.notice(`Release ${rel.version} not live yet (no tag v${rel.version}): only release and rc-blocker PRs merge`);
             const freeze = ((await github.rest.issues.get({ owner, repo, issue_number: 114 })).data.body || '').match(FREEZE);
             if (freeze) core.notice(`Release freeze on (RC ${freeze[1].slice(0, 7)}, release #${freeze[2]})`);
@@ -478,6 +492,7 @@ jobs:
                 await github.rest.pulls.merge({ owner, repo, pull_number: pr.number, sha, merge_method: 'squash' });
                 core.notice(`Merged #${pr.number}`); merged++;
                 if (isRelease) { rel.merged = prVersion; core.notice(`#${pr.number} is release ${prVersion}: nothing else merges until it is tagged`); }
+                if (rel.tagged === false) rel.ciBusy = true;
                 // A merge made with this workflow's token doesn't close the issues the PR names ("Closes #N"): #135-#145
                 // stayed open on 2026-10-16, and their kickoff "started" lines in #114 held slots. Close them here: every
                 // "Closes/Fixes/Resolves #N" in the title or body, plus N of a kickoff branch claude/issue-N-<run>.
