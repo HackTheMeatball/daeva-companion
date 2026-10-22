@@ -16,23 +16,29 @@
 .sk.empty { background: transparent; border-style: dashed; opacity: .5; }
 .sk.stig { border-color: var(--accent); }
 /* Key setup grid (0.9 P22, note 12, docs/design/0.9-keys/README.md §12): the skill's icon fills each square box, up to
-   112 px; the name leaves the box for its accessible name and the tooltip on hover or focus (a tap focuses). Key chips sit
-   under their columns, like the game's skill bar. */
-.stackviz > .sk { position: relative; display: block; box-sizing: border-box; width: 100%; max-width: 112px; justify-self: center; aspect-ratio: 1; min-height: 0; padding: 0; overflow: visible; }
+   88 px at every width (rev 2.2 §2); the name leaves the box for its accessible name and the tooltip on hover or focus (a
+   tap focuses). Key chips sit under their columns, like the game's skill bar. The grid is a size container so a tooltip
+   can be capped at a share of its width (cqw). */
+.stackviz > .sk { position: relative; display: block; box-sizing: border-box; width: 100%; max-width: 88px; justify-self: center; aspect-ratio: 1; min-height: 0; padding: 0; overflow: visible; }
 .stackviz > .sk .kv-ico { display: block; width: 100%; height: 100%; border-radius: var(--radius-5); object-fit: cover; }
-.stackviz > .sk.empty { max-width: 112px; }
+.stackviz > .sk.empty { max-width: 88px; }
 .stackviz .sk .kv-ico.ini { display: grid; place-items: center; background: var(--line); font: 600 12px var(--mono); color: var(--fg); }
 .stackviz .sk .kv-ico.ini::before { content: attr(data-ini); }
 .stackviz > .sk .nm { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+/* the tooltip (rev 2.2 §1): opens toward the grid's middle (tip-l / tip-r, build.js tipSide), at most 60% of the grid wide,
+   so it stays inside the screen at 360 and 260 px; long text wraps whole */
+.stackviz { container-type: inline-size; }
 .stackviz > .sk[data-tip]:is(:hover, :focus-visible, :focus)::after { content: attr(data-tip); position: absolute; z-index: 2; left: 50%; bottom: calc(100% + var(--space-4)); transform: translateX(-50%);
-  width: max-content; max-width: 220px; padding: var(--space-3) var(--space-6); border-radius: var(--radius-5); background: var(--fg); color: var(--bg); font: 500 11px/1.3 var(--mono); pointer-events: none; }
+  width: max-content; max-width: min(220px, 60cqw); white-space: normal; overflow-wrap: break-word; padding: var(--space-3) var(--space-6); border-radius: var(--radius-5); background: var(--fg); color: var(--bg); font: 500 11px/1.3 var(--mono); pointer-events: none; }
+.stackviz > .sk.tip-l[data-tip]:is(:hover, :focus-visible, :focus)::after { left: 0; transform: none; }
+.stackviz > .sk.tip-r[data-tip]:is(:hover, :focus-visible, :focus)::after { left: auto; right: 0; transform: none; }
 .stackviz > .sk:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 .stackviz .lmb .sk { display: inline-flex; align-items: center; gap: var(--space-6); vertical-align: middle; }
 .stackviz .lmb .sk .kv-ico { width: 24px; height: 24px; }
 .stackviz .kv-key { justify-self: center; min-width: 32px; box-sizing: border-box; padding: var(--space-2) var(--space-8); border: 1px solid var(--line); border-bottom-width: 2px; border-radius: var(--radius-6); background: var(--panel-2); font: 600 12px var(--mono); color: var(--fg); text-align: center; white-space: nowrap; }
 .stackviz .kv-key.mouse { font-size: 11px; padding-inline: var(--space-4); }
 /* #388: a chip is a button (a caret says so); your own key gets the accent edge; listening reads "Press a key" */
-.stackviz button.kv-key { cursor: pointer; }
+.stackviz button.kv-key { cursor: pointer; min-height: 28px; } /* a tap target of 24 px or more (rev 2.2 §5) */
 .stackviz button.kv-key:hover { border-color: var(--muted); }
 .stackviz .kv-key.mine { border-color: var(--accent); }
 .stackviz .kv-key.listen { border-color: var(--accent); color: var(--accent); font-weight: 500; }
@@ -52,8 +58,10 @@
 .stackviz .kv-defs .fine { margin-top: var(--space-8); }
 .playsteps { margin: 0; padding-left: var(--space-20); display: grid; gap: var(--space-4); font-size: 14px; }
 .playsteps b { font-family: var(--mono); font-size: 12px; background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--radius-5); padding: var(--space-1) var(--space-6); margin-right: var(--space-4); }
-/* the macro as steps (0.9 P22): the old macro-steps list's top margin, kept for the block */
+/* the macro as steps (0.9 P22): the old macro-steps list's top margin, kept for the block; its how-to is the old
+   numbered list again (rev 2.2 §3) */
 .kv-mac { margin: var(--space-8) 0 0; }
+.macro-steps { margin: var(--space-8) 0 0; padding-left: var(--space-18); display: grid; gap: var(--space-6); }
 /* Stat drawer: tab pinned to the right edge, panel slides out */
 .statdrawer { position: fixed; top: 16px; right: 0; align-items: flex-start !important; z-index: 50; display: flex; align-items: center; pointer-events: none; }
 .sd-tab { pointer-events: auto; display: flex; flex-direction: column; align-items: center; gap: var(--space-6); padding: var(--space-10) var(--space-6); border-radius: var(--radius-10) 0 0 var(--radius-10); border: 1px solid var(--line); border-right: 0; background: var(--panel); color: var(--muted); font: 600 10px var(--mono); letter-spacing: .14em; text-transform: uppercase; cursor: pointer; }

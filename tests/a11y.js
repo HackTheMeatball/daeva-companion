@@ -331,20 +331,20 @@ async function load(p, state, mode) {
   }
 
   /* Key setup grid probe (0.6.2 P18 #414; 0.8 P9 #498; 0.9 P22 note 12): run at 390 and 1500 px. Every box (empty ones
-     too) the same square, at most 112 px, the icon filling it; the name leaves the box (visually hidden) and is its
+     too) the same square, at most 88 px (Design Lead on #853, rev 2.2 §2: was 112), the icon filling it; the name leaves the box (visually hidden) and is its
      accessible name and its tooltip; key chips (buttons since #388) on one line under the columns, the defaults note under
      the grid (0.8 P14), each filled cell's accessible name carries its key. (The 0.6.2 name-wrap checks went with the names
      in the boxes: an intended change, docs/design/0.9-keys/README.md §12.) */
   const keyGridProbe = () => {
     const v = document.getElementById('stackViz'); if (!v) return null;
     const cells = [...v.querySelectorAll(':scope > .sk')], hs = [...new Set(cells.map(c => Math.round(c.getBoundingClientRect().height)))];
-    const notSquare = cells.filter(c => { const b = c.getBoundingClientRect(); return Math.abs(b.width - b.height) > 1 || b.width > 112.5; }).map(c => c.getAttribute('aria-label') || 'empty');
+    const notSquare = cells.filter(c => { const b = c.getBoundingClientRect(); return Math.abs(b.width - b.height) > 1 || b.width > 88.5; }).map(c => c.getAttribute('aria-label') || 'empty');
     const shown = [...v.querySelectorAll(':scope > .sk .nm')].filter(n => n.getBoundingClientRect().width > 1).map(n => n.textContent);
     const noIco = cells.filter(c => !c.classList.contains('empty') && !c.querySelector('img.kv-ico')).map(c => c.textContent);
     const icoSmall = cells.filter(c => { const i = c.querySelector('img.kv-ico'); return i && i.getBoundingClientRect().width < c.getBoundingClientRect().width - 4; }).map(c => c.textContent);
     const keys = [...v.querySelectorAll(':scope > .kv-key')], row0 = cells.slice(-keys.length), note = v.querySelector('.kv-note'), lmb = v.querySelector('.lmb');
     const keyBad = keys.map((k, i) => { const b = k.getBoundingClientRect(), c = row0[i].getBoundingClientRect();
-      return b.height > 30 || b.top < c.bottom || b.left < c.left - 1 || b.right > c.right + 1 || k.tagName !== 'BUTTON' ? k.textContent : null; }).filter(Boolean);
+      return b.height > 30 || b.height < 24 || b.top < c.bottom || b.left < c.left - 1 || b.right > c.right + 1 || k.tagName !== 'BUTTON' ? k.textContent : null; }).filter(Boolean);
     const named = cells.filter(c => !c.classList.contains('empty')), cols = ['Q', 'E', 'T'];
     const unnamed = named.filter(c => { const g = c.getAttribute('aria-label') || '', nm = c.querySelector('.nm').textContent;
       return c.getAttribute('role') !== 'group' || c.tabIndex !== 0 || !g.startsWith(nm + ', ') || !cols.some(k => g.includes(', ' + k + ','))
@@ -361,14 +361,14 @@ async function load(p, state, mode) {
   };
   const keyGridChecks = (kv, id) => {
     if (!kv || !kv.n) return;
-    ok(`keys ${id}: all 12 Key setup boxes are one square size, at most 112 px`, kv.n === 12 && kv.hs.length === 1 && !kv.notSquare.length, kv);
+    ok(`keys ${id}: all 12 Key setup boxes are one square size, at most 88 px`, kv.n === 12 && kv.hs.length === 1 && !kv.notSquare.length, kv);
     ok(`keys ${id}: no skill name is drawn in a box (it's the accessible name and the tooltip)`, !kv.shown.length, kv.shown);
     ok(`keys ${id}: every filled cell shows its icon, filling the box`, !kv.noIco.length && !kv.icoSmall.length, kv);
     ok(`keys ${id}: every filled cell is focusable, its accessible name and tooltip carry its name, key and row`, !kv.unnamed.length, kv.unnamed);
     /* 0.8 P14 (#503): the game's columns (research-387-macro): Q, E and T (the macro's stack), all three the guide's
        suggested binding, said once in a line heading the grid (Design Lead on #565: no † per chip); left click (the
        game's default) its own line under them, then the game's default keys */
-    ok(`keys ${id}: key chips Q / E / T on one line under their columns, Left click under them, the defaults note under that`,
+    ok(`keys ${id}: key chips Q / E / T (buttons 24–30 px tall, rev 2.2 §5) on one line under their columns, Left click under them, the defaults note under that`,
       kv.keys.join('|') === 'Q|E|T' && !kv.keyBad.length && kv.lmbBelow && kv.noteBelow, kv);
     /* 0.9 P17: the same line ends on the E stack's label (keyStacks.eOrderStatus: disputed, C21b), as a sentence (#774
        Design Lead: "The stigmas on E: check in game" was a fragment) */
@@ -378,7 +378,7 @@ async function load(p, state, mode) {
        line, then the macro's place, still labelled (inferred) */
     ok(`keys ${id}: the defaults list puts key 1 on Shadowstrike, one chip per line, and ends with the inferred macro line`,
       kv.defs.head === 'Game default keys' && kv.defs.rows.includes('1|Shadowstrike') && kv.defs.chipFirst
-      && /^This guide's macro on right click \(its choice, not a rule\) takes right click from Savage Roar \(inferred\)\.$/.test(kv.defs.last), kv.defs);
+      && /^The macro takes right click from Savage Roar \(inferred\)\.$/.test(kv.defs.last), kv.defs); /* rev 2.2 §4: "not a rule" said once, in the how-to */
   };
   /* 0.9 P22 (docs/design/0.9-keys-macro.md, #388): the macro as steps, the Hold clause, the tooltip on focus, rebinding by
      keyboard (Esc cancels; a clash asks; Swap them; Back to suggested keys) and every key line following */
@@ -386,12 +386,14 @@ async function load(p, state, mode) {
     const id = `keys ${sn} 1500px`;
     let r = await p.evaluate(() => { const m = document.querySelector('#kvMacro .kv-mac'), txt = s => (s || {}).textContent || '';
       return { head: txt(m && m.querySelector('.khead')), steps: m ? [...m.querySelectorAll('ol.playsteps > li')].map(li => li.textContent) : [],
-        fine: m ? [...m.querySelectorAll('.fine')].map(x => x.textContent) : [], hold: txt([...document.querySelectorAll('#rotPlay li')].pop()),
+        fine: m ? [...m.querySelectorAll('ol.macro-steps > li')].map(x => x.textContent) : [], lead: m ? [...m.querySelectorAll('ol.macro-steps > li > b:first-child')].map(x => x.textContent) : [], hold: txt([...document.querySelectorAll('#rotPlay li')].pop()),
         drawer: document.getElementById('statDrawer').textContent };
     });
     ok(`${id}: one macro, headed "Macro on right click" with no step count (one step)`, r.head === 'Macro on right click', r.head);
     ok(`${id}: its one step names the T key and Quick Use 2, the whole stack, row 0 first, no delay`, r.steps.length === 1 && r.steps[0] === 'T: Quick Use 2 · the whole T stack, row 0 first', r.steps);
-    ok(`${id}: the make-it line states the 10 ms default once, without the 2+ steps line`, r.fine.length === 2 && /Each step's Delay starts at 10 ms, the game's default/.test(r.fine[0]) && !/Up to 20 steps/.test(r.fine.join(' ')) && /^Put the macro on right click \(this guide's choice, not a rule\): Esc, Key Settings/.test(r.fine[1]), r.fine);
+    /* the how-to is a numbered list with bold lead-ins, make then bind (Design Lead on #853, rev 2.2 §3: was two lines) */
+    ok(`${id}: the numbered how-to: make (the 10 ms default, no 2+ steps line), then put it on right click`, r.fine.length === 2 && r.lead.join('|') === 'Make the macro:|Put it on right click'
+      && /Each step's Delay starts at 10 ms, the game's default/.test(r.fine[0]) && !/Up to 20 steps/.test(r.fine.join(' ')) && /^Put it on right click \(this guide's choice, not a rule\): Esc, Key Settings/.test(r.fine[1]), r);
     ok(`${id}: the old third line is gone and the Hold step carries its warning`, !/Hold right and left click together/.test(r.drawer) && r.hold === 'Hold right + left click · right click alone drains MP (your test)', r.hold);
     /* the tooltip opens on focus */
     r = await p.evaluate(() => { const c = document.querySelector('#stackViz > .sk:not(.empty)'); c.focus(); return { tip: getComputedStyle(c, '::after').content, want: c.dataset.tip }; });
@@ -449,15 +451,35 @@ async function load(p, state, mode) {
     await p.waitForTimeout(600);
     const r = await p.evaluate(() => { const m = document.querySelector('#kvMacro .kv-mac');
       return { n: document.querySelectorAll('#kvMacro .kv-mac').length, head: m.querySelector('.khead').textContent, steps: [...m.querySelectorAll('ol.playsteps > li')].map(li => li.textContent.trim()),
-        fine: [...m.querySelectorAll('.fine')].map(x => x.textContent) }; });
+        fine: [...m.querySelectorAll('ol.macro-steps > li')].map(x => x.textContent) }; });
     const id = 'keys fixture macro lv27 1500px';
     ok(`${id}: a macro on Q is headed with its key and its step count`, r.n === 1 && r.head === 'Macro on Q · 3 steps', r.head);
     ok(`${id}: its steps in order: the Q stack, the right-click stack with "· Delay 50 ms", then one skill`, r.steps.length === 3
       && r.steps[0] === 'Q: Quick Use 7 · the whole Q stack, row 0 first'
-      && r.steps[1] === 'Right click: Quick Use 2 · the whole Right click stack, row 0 first · Delay 50 ms'
+      && r.steps[1] === 'Right click: Quick Use 2 · the whole right click stack, row 0 first · Delay 50 ms'
       && /Shadowstrike · one skill$/.test(r.steps[2]) && !/Delay/.test(r.steps[0] + r.steps[2]), r.steps);
     ok(`${id}: 2+ steps add "Up to 20 steps" to the make-it line, and the key line names Q`, r.fine.length === 2
-      && /Up to 20 steps\. Left click can only be the last step\.$/.test(r.fine[0]) && /^Put the macro on Q \(this guide's choice, not a rule\)/.test(r.fine[1]), r.fine);
+      && /Up to 20 steps\. Left click can only be the last step\.$/.test(r.fine[0]) && /^Put it on Q \(this guide's choice, not a rule\)/.test(r.fine[1]), r.fine);
+    await ctx.close();
+  }
+  /* The key box tooltip on a phone (Design Lead on #853, rev 2.2 §1): at 360 and 260 px, Lv 45 (the longest names), every
+     filled box's tooltip, opened by a tap (a click focuses the box), sits inside the grid and the screen and holds the whole
+     "name · key, row N" text. The ::after's box is worked out from its used width and the box's side class. */
+  for (const w of [360, 260]) {
+    const { ctx, p } = await page(w);
+    await load(p, typeof STATES.lv45 === 'function' ? STATES.lv45() : STATES.lv45, 'advanced');
+    await p.evaluate(() => { const d = document.getElementById('statDrawer'); if (d && !d.classList.contains('open')) document.getElementById('tabBuild').click(); document.querySelectorAll('#statDrawer details').forEach(x => { x.open = true; }); });
+    await p.waitForTimeout(600);
+    const n = await p.evaluate(() => document.querySelectorAll('#stackViz > .sk[data-tip]').length), bad = [];
+    for (let i = 0; i < n; i++) {
+      const box = p.locator('#stackViz > .sk[data-tip]').nth(i);
+      await box.scrollIntoViewIfNeeded(); await box.click(); await p.waitForTimeout(30);
+      bad.push(await box.evaluate(c => { const s = getComputedStyle(c, '::after'), b = c.getBoundingClientRect(), g = c.parentElement.getBoundingClientRect(), tw = parseFloat(s.width);
+        const left = c.classList.contains('tip-l') ? b.left : c.classList.contains('tip-r') ? b.right - tw : b.left + b.width / 2 - tw / 2;
+        const ok = document.activeElement === c && s.content === JSON.stringify(c.dataset.tip) && s.whiteSpace === 'normal' && left >= g.left - 0.5 && left + tw <= g.right + 0.5 && left >= 0 && left + tw <= innerWidth;
+        return ok ? null : { tip: c.dataset.tip, left, tw, g: [g.left, g.right], focused: document.activeElement === c }; }));
+    }
+    ok(`keys tooltip lv45 ${w}px: a tap opens each box's tooltip, inside the grid and the screen, wrapping whole`, n > 0 && !bad.filter(Boolean).length, bad.filter(Boolean));
     await ctx.close();
   }
   for (const sn of ['lv27', 'lv45']) {

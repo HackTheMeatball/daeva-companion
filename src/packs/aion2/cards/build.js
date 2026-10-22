@@ -32,11 +32,12 @@ let kvCols = [];
 const setKeys = m => { const keys = Object.fromEntries(Object.entries(m).filter(([c, k]) => k !== c));
   if (Object.keys(keys).length) char(state).keyBinds = keys; else delete char(state).keyBinds; save(); };
 /* a key pressed while listening: Esc cancels; a key another column holds asks first (the kvClash state); Tab moves focus
-   on, which cancels (onKeysFocusOut); a modifier alone or a key KV_BAD refuses is skipped */
+   on, which cancels (onKeysFocusOut); a modifier alone, a key KV_BAD refuses or one over 12 characters (kvKeyOf
+   wouldn't show it) is skipped */
 function onListenKey(e) {
   if (!kvListen || e.key === "Tab") return;
   e.preventDefault(); e.stopImmediatePropagation();
-  if (["Shift", "Control", "Alt", "Meta"].includes(e.key) || KV_BAD.test(e.key)) return;
+  if (["Shift", "Control", "Alt", "Meta"].includes(e.key) || KV_BAD.test(e.key) || e.key.length > 12) return;
   const col = kvListen; kvListen = null;
   if (e.key !== "Escape") {
     const key = e.key === " " ? "Space" : e.key.length === 1 ? e.key.toUpperCase() : e.key;
@@ -47,7 +48,9 @@ function onListenKey(e) {
   renderRotation(); focusChip(col);
 }
 function onKeysClick(e) {
-  const chip = e.target.closest("[data-col]"), act = e.target.closest("[data-kv]");
+  const chip = e.target.closest("[data-col]"), act = e.target.closest("[data-kv]"), box = e.target.closest("#stackViz > .sk[data-tip]");
+  /* a tap on a key box opens its tooltip (focus shows it; mobile Safari doesn't focus a tapped span by itself) */
+  if (box) { box.focus({ preventScroll: true }); return; }
   if (chip) { kvListen = chip.dataset.col; kvClash = null; renderRotation(); focusChip(kvListen); return; }
   if (!act) return;
   const a = act.dataset.kv, c = kvClash; kvClash = null;
@@ -85,6 +88,7 @@ const rotMarkSeen = () => { char(state).rotSeen = rotNow(char(state).level).map(
    attribute so the cell's text stays the name. */
 const gridIco = (n, stig) => { const src = (stig ? STIGMA_ICON : SP_ICONS)[n];
   return src ? `<img class="kv-ico" src="${src}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">` : `<span class="kv-ico ini" aria-hidden="true" data-ini="${ini(n)}"></span>`; };
+const tipSide = (i, n) => i < (n - 1) / 2 ? " tip-l" : i > (n - 1) / 2 ? " tip-r" : "";
 const rotWhere = x => `${kvKeyOf(x.at || x.key)}${x.single ? "" : `, row ${x.r}${x.r === 0 ? " (fires first)" : ""}`}`;
 function renderStacks(lv) {
   if (!char(state).rotSeen || !char(state).rotSeen.every(k => k.split(":").length === 3)) rotMarkSeen(); /* first run: nothing counts as new */
@@ -93,8 +97,10 @@ function renderStacks(lv) {
      after the last cell to learn which column a skill is in. */
   /* The icon fills the box (0.9 P22, note 12); the name is the box's accessible name and its tooltip, on hover or focus
      (tap focuses it on a phone) */
-  const cell = (n, key, r) => { if (!n) return `<span class="sk empty"></span>`; const nm = n.replace(/\*/g, ""), stig = n.includes("*"), where = `${kvKeyOf(key)}${r === 0 ? ", row 0 (fires first)" : ", row " + r}`;
-    return `<span class="sk${stig ? " stig" : ""}${fresh.has(nm) ? " new" : ""}" role="group" tabindex="0" aria-label="${nm}, ${where}" data-tip="${nm} · ${where}">${gridIco(nm, stig)}<span class="nm">${nm}</span></span>`; };
+  /* the tooltip opens toward the grid's middle (0.9 P22 rev 2.2): left-half columns anchor it at their left edge,
+     right-half ones at their right edge, a middle column centres it, so it stays on screen at 360 and 260 px (tipSide) */
+  const cell = (n, key, r, side = "") => { if (!n) return `<span class="sk empty"></span>`; const nm = n.replace(/\*/g, ""), stig = n.includes("*"), where = `${kvKeyOf(key)}${r === 0 ? ", row 0 (fires first)" : ", row " + r}`;
+    return `<span class="sk${stig ? " stig" : ""}${fresh.has(nm) ? " new" : ""}${side}" role="group" tabindex="0" aria-label="${nm}, ${where}" data-tip="${nm} · ${where}">${gridIco(nm, stig)}<span class="nm">${nm}</span></span>`; };
   if (KEYS.length && !GUIDE_KEYS) return renderDefaultKeys(lv, fresh, cell);
   /* One grid (0.6.2 P18, like the game's K window): shared row numbers on the left, one column per key, each cell the
      skill's icon with its name under it, and the key chips under their columns (row 0 at the bottom, as in the game's bar).
@@ -108,7 +114,7 @@ function renderStacks(lv) {
   const yours = kvCols.some(kvMine), ks = kvCols.map(kvKeyOf);
   setHTML(document.getElementById("stackViz"),
     `<p class="fine muted kv-sugg">${yours ? "Your keys" : "Suggested keys"}: ${ks[0]}, ${ks[1]} and ${ks[2]} (${ks[2]} holds the stack the right-click macro fires). Move the skills there yourself.${E_ST ? ` The stigma order on ${ks[1]} is unsure:` + stTag(E_ST) : ""}</p>` +
-    [3, 2, 1, 0].map(r => `<i class="rn">${r}</i>` + cols.map(([key, rows]) => cell(rows[r], key, r).replace('class="sk', `class="sk${r === 0 ? " r0" : ""}`)).join("")).join("") +
+    [3, 2, 1, 0].map(r => `<i class="rn">${r}</i>` + cols.map(([key, rows], i) => cell(rows[r], key, r, tipSide(i, cols.length)).replace('class="sk', `class="sk${r === 0 ? " r0" : ""}`)).join("")).join("") +
     `<span></span>` + cols.map(([key]) => chipHTML(key)).join("") +
     lmb.map(n => `<p class="lmb">Left click: <span class="sk">${gridIco(n)}<span class="nm">${n}</span></span></p>`).join("") + defaultKeysNote(lv) + stLaterHTML());
   setHTML(document.getElementById("kvHint"), hintHTML(kvCols));
@@ -137,12 +143,14 @@ function renderMacro(lv) {
     const steps = macroStepsAt(m, lv).filter(st => st.skill || stackOf(st.slot).length).map(st => {
       if (st.skill) return `<li>${spMini(st.skill)}${st.skill} <span class="muted">· one skill</span>${delay(st)}</li>`;
       const key = kvKeyOf(colOf(st.slot, m));
-      return `<li><b>${key}</b><span class="vh">: </span>${st.slot} <span class="muted">· the whole ${key} stack, row 0 first</span>${delay(st)}</li>`; });
+      return `<li><b>${key}</b><span class="vh">: </span>${st.slot} <span class="muted">· the whole ${keyWord(key)} stack, row 0 first</span>${delay(st)}</li>`; });
     if (!steps.length) return "";
     const on = keyWord(SLOT_KEYS(m.quickslot)[0]), n = steps.length;
     return `<div class="kv-mac"><span class="khead">Macro on ${on}${n > 1 ? ` · ${n} steps` : ""}</span><ol class="playsteps">${steps.join("")}</ol>` +
-      `<p class="fine tline">Make it in game: press K, open Macro (top right), then Add Macro, one step per line above. Each step's Delay starts at ${MACRO_DELAY_MS} ms, the game's default; if ready skills get skipped, raise it there.${n > 1 ? ` Up to ${MACRO_MAX} steps. Left click can only be the last step.` : ""}</p>` +
-      `<p class="fine tline">Put the macro on ${on} (this guide's choice, not a rule): Esc, Key Settings, General, Gameplay, Macro (no key by default, single source), press ${on} and confirm moving it from its current key (only in the current control mode, not AION 1 mode).</p></div>`;
+      /* the how-to as a numbered walk-through with bold lead-ins, make then bind (owner-ok Q5; 0.9-keys-macro.md rev 2.2 §3) */
+      `<ol class="fine macro-steps">` +
+      `<li><b>Make the macro:</b> press K, open Macro (top right), then Add Macro, one step per line above. Each step's Delay starts at ${MACRO_DELAY_MS} ms, the game's default; if ready skills get skipped, raise it there.${n > 1 ? ` Up to ${MACRO_MAX} steps. Left click can only be the last step.` : ""}</li>` +
+      `<li><b>Put it on ${on}</b> (this guide's choice, not a rule): Esc, Key Settings, General, Gameplay, Macro (no key by default, single source), press ${on} and confirm moving it from its current key (only in the current control mode, not AION 1 mode).</li></ol></div>`;
   }).join(""));
 }
 /* Under the guide's grid: the game's default keys of the skills learned by lv (KEYS), one line per key with the grid's
@@ -153,7 +161,7 @@ function defaultKeysNote(lv) {
   const rc = on.find(x => x.key === "Right click");
   return `<div class="kv-note kv-defs">` +
     (on.length ? `<span class="khead">Game default keys${stTag(KEYS_ST)}</span><ul>${on.map(x => `<li><span class="kv-key${/ click$/.test(x.key) ? " mouse" : ""}">${x.key}</span> ${x.n.join(", ")}</li>`).join("")}</ul>` : "") +
-    (rc ? `<p class="fine">This guide's macro on right click (its choice, not a rule) takes right click from ${rc.n.join(", ")} (inferred).</p>` : "") + `</div>`;
+    (rc ? `<p class="fine">The macro takes right click from ${rc.n.join(", ")} (inferred).</p>` : "") + `</div>`;
 }
 /* The game's default keys (0.7 P11, KEYS: the Ranger, the Gladiator), drawn like the Assassin's grid: one column per key
    with rows, as deep as the deepest key's data, row 0 at the bottom; a key with one row (the mouse, 1–4) gets a line under
@@ -163,7 +171,7 @@ function renderDefaultKeys(lv, fresh, cell) {
   const depth = Math.max(0, ...cols.map(x => x.rows.length)), el = document.getElementById("stackViz");
   el.style.gridTemplateColumns = `12px repeat(${cols.length}, minmax(0, 1fr))`;
   kvCols = cols.map(x => x.key);
-  setHTML(el, [...Array(depth).keys()].reverse().map(r => `<i class="rn">${r}</i>` + cols.map(x => cell(x.rows[r], x.key, r).replace('class="sk', `class="sk${r === 0 ? " r0" : ""}`)).join("")).join("") +
+  setHTML(el, [...Array(depth).keys()].reverse().map(r => `<i class="rn">${r}</i>` + cols.map((x, i) => cell(x.rows[r], x.key, r, tipSide(i, cols.length)).replace('class="sk', `class="sk${r === 0 ? " r0" : ""}`)).join("")).join("") +
     `<span></span>` + cols.map(x => chipHTML(x.key, / click$/.test(kvKeyOf(x.key)) ? " mouse" : "")).join("") +
     singles.map(x => `<p class="lmb">${x.key}: <span class="sk${fresh.has(x.rows[0]) ? " new" : ""}">${gridIco(x.rows[0])}<span class="nm">${x.rows[0]}</span></span></p>`).join("") +
     `<p class="fine tline kv-note">The game's default keys${stTag(KEYS_ST) && "," + stTag(KEYS_ST)}. Row 0 is tried first; a skill on cooldown or not ready is skipped. A skill shows here from the level you learn it.</p>`);

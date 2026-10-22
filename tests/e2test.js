@@ -190,7 +190,7 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
   /* 0.9 P22 replaced V1's one-line macro step with the macro drawn as steps (docs/design/0.9-keys-macro.md §2): the step
      names its slot as the game's Macro window does ("Quick Use 2", skill-bar facts 1, 11), and the delay advice is the
      game's 10 ms default with "raise it there" (facts 12, 12a) */
-  ok('C21: the macro is drawn as steps, with the default-delay wording', SRC.includes("Make it in game: press K, open Macro (top right), then Add Macro, one step per line above. Each step's Delay starts at ")
+  ok('C21: the macro is drawn as steps, with the default-delay wording', SRC.includes("<b>Make the macro:</b> press K, open Macro (top right), then Add Macro, one step per line above. Each step's Delay starts at ")
     && SRC.includes(" ms, the game's default; if ready skills get skipped, raise it there.") && !SRC.includes('Step 1 = the right-click macro slot'));
   /* 8. Build data */
   const bd = await p.evaluate(() => ({ plan: STIGMA_PLAN, extra: SP_SKILLS.filter(s => s.extra).map(s => s.n), vz: DV_NODES().filter(n => n.board === 'Vaizel').map(n => n.k + '=' + n.t), tr: DV_NODES().filter(n => n.board === 'Triniel').map(n => n.k + '=' + n.t), flat: SP_STEPS.filter(x => x.s.n === 'Defense Break').map(x => x.req), msExtra: GATES.some(g => g.items.some(it => /^sp:(Assault Stance|Impact Hit|Flash Slice|Storm Rampage|Defense Break|Determination|Heightened Sixth Sense):/.test(it.k || ''))) }));
