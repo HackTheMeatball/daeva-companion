@@ -1423,10 +1423,10 @@ At most five builds at a time. Ungated items queue first; gated ones go last and
 - **Wave 1 (at the go):** P1, P2, P3, P4, P5, P6, P7, P8 and S2, S3. Queue order P1 → P2 → P3 → P7 → P8 → P4 → P5 → P6, so the
   queue runs top-down: P1 and P3 start at once; P2, P7 and P8 wait for P1 on nextup-card (P8 also on skills-card and
   build-card), and kickoff serialises them from their queue-line lanes.
-  Serial lanes: **gen** P1 → P2 → P6 → P10 → P11 → P13 → P15 → P16 → P17 → P18 → P22 → P29 → P31; **golden** P1 → P2 → P11 → P12 → P13 → the
+  Serial lanes: **gen** P1 → P2 → P6 → P10 → P11 → P13 → P15 → P16 → P17 → P18 → P22 → P29 → P31 → P23; **golden** P1 → P2 → P11 → P12 → P13 → the
   research items → P19 → P20 → P21 → P22 → P31; **skills-card** P1 → P8 → P5 → P15 → P19; **nextup-card** P1 → P2 → P7 → P8 → P5 → P13 → P15 →
   P19 → P21 → P30; **page-card** P4 → P5 → P21 → P24; **sources-card** P23; **mig** P2 → P9 → P22; **schema** P3 → P6 → P10 → P25 → P26 → P27 → P28; **app.css** P8 → P19 → P20 → P21 →
-  P22; **build-card** P1 → P8 → P5 → P13 → P18 → P22; **daevanion-card** P1 → P5 → P16 → P20 → P21 → P30; **a11y** P8 → P22; **site** P5 → P23 → P24 → P30; **golden-nextup** P7 → P8 → P19 → P21; **journey-card** P2 → P7 → P30; **main.js** P4 → P9 → P21; **ci** (Gus) S2 → S3 → S1 → S4. Shared test and doc files: **save** (`tests/save.js`) P9 → P11 → P22; **e2** (`tests/e2test.js`) P3 → P23 → P28 → P29;
+  P22; **build-card** P1 → P8 → P5 → P13 → P18 → P22; **daevanion-card** P1 → P5 → P16 → P20 → P21 → P30; **a11y** P8 → P22; **site** P5 → P23 → P24 → P29 → P30; **golden-nextup** P7 → P8 → P19 → P21; **journey-card** P2 → P7 → P30; **main.js** P4 → P9 → P21; **ci** (Gus) S2 → S3 → S1 → S4. Shared test and doc files: **save** (`tests/save.js`, `src/core/state.js`) P9 → P11 → P22 → P29; **e2** (`tests/e2test.js`; lane retired by #834, merged items only) P3 → P28;
   **run-mjs** (`tests/run.mjs`) P6 → P14 → P25 → S1; **architecture** (`docs/ARCHITECTURE.md`) P5 → P9 → P14 → P29 (plan review, #609; P29 also shares `src/core/state.js` and `tests/core/state.test.mjs` with P9). **compliance** P25 → P26 → P27; **stigmas-card** P30.
 - **Wave 2 (after P2):** P9, P10, P11, P13, P26; then P12 (after P11 and P6) and P14 (after P9 and P10). P25 and P28
   (no gate) queue with this wave, P29 after P11 and P28, P30 after P5.
