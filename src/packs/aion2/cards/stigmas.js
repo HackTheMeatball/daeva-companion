@@ -75,7 +75,7 @@ function renderStigma() {
   fadeScroll(document.getElementById("stSoon"));
   const rs = document.getElementById("stRespec"), back = stRefund();
   if (!stArmed) rs.textContent = "Respec";
-  rs.disabled = !back; rs.title = back ? "Set every stigma back to level 1; they stay equipped and the shards come back. Costs Kinah in game; check the price there" : "Nothing to respec yet";
+  rs.disabled = !back; rs.title = back ? "Set every stigma back to level 1; they stay equipped and the shards come back. In game the reset was free when checked at Lv 39" : "Nothing to respec yet";
 }
 /* 0.9 P20 (docs/design/0.9-catchup, notes 9 and 10). Catch-up: the slots that opened before you joined, with "Mark
    equipped ▾" to tick the ones you already have (no shard: you learned them in game). It shows while an open slot is
@@ -106,8 +106,8 @@ function stMarkSlot(k) {
     if (was.pick === undefined) delete c.stPick[slot.n]; else c.stPick[slot.n] = was.pick;
     if (was.lv === undefined) delete c.stLv[sk]; else c.stLv[sk] = was.lv; save(); update(); });
 }
-/* Respec: every stigma back to level 1 (they stay equipped) and the shards spent past level 1 come back (Metabot; the
-   Kinah price on Global is unknown: docs/research/2026-10-respec.md D1). The shards it would return, 0 if none. */
+/* Respec: every stigma back to level 1 (they stay equipped) and the shards spent past level 1 come back (Metabot). In
+   game it was free at Lv 39 (owner, 2026-10-21); other levels unchecked: docs/research/2026-10-respec.md D1. The shards it would return, 0 if none. */
 const stRefund = () => Object.values(char(state).stLv || {}).reduce((t, L) => { for (let x = 2; x <= L; x++) t += ST_COST(x) || 0; return t; }, 0);
 function stRespecDo() {
   const c = char(state), back = stRefund(); if (!back) return;

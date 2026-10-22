@@ -141,7 +141,7 @@ function renderDvRespec() {
   btn.disabled = !all; btn.title = all ? "Untick a board's nodes, or every board's, and clear their costs; total points stay" : "Nothing to respec yet";
   if (!all) dvRsOpen = false;
   btn.setAttribute("aria-expanded", String(dvRsOpen)); menu.hidden = !dvRsOpen;
-  const row = (id, label, n, cls = "") => `<button type="button" role="menuitem"${cls ? ` class="${cls}"` : ""} data-dvrs="${id}"${n ? "" : " disabled"} title="In the app. In game, remove the nodes one by one.">${dvArm === id ? "Click again to respec" : label}<span>${n ? `${n} node${n === 1 ? "" : "s"}` : "none yet"}</span></button>`;
+  const row = (id, label, n, cls = "") => `<button type="button" role="menuitem"${cls ? ` class="${cls}"` : ""} data-dvrs="${id}"${n ? "" : " disabled"} title="In the app. In game, each board has its own reset button, so boards reset one at a time.">${dvArm === id ? "Click again to respec" : label}<span>${n ? `${n} node${n === 1 ? "" : "s"}` : "none yet"}</span></button>`;
   setHTML(menu, rows.map(x => row(x.b, `${x.b} board`, dvHas(c, x))).join("") + `<hr>` + row("*", "All boards", all, "rs-all"));
 }
 /* Respec a board ("*": every board, and the crystals-left correction): untick its nodes and clear their logged costs;
