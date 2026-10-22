@@ -519,7 +519,7 @@ Rules for every item:
   `src/packs/aion2/data/build.js`, `src/core/state.js` (`keys`
   default), `src/core/merge.js`, `src/styles/app.css`, `tests/a11y.js`, `tests/save.js`, the tests.
 - **No-gos.** Only keys AION 2 can bind (Game Data Check's `bindable-keys` file: Design Lead's ask D3). No save key bump;
-  an empty or unknown `keys` value falls back to the default. Names stay reachable by keyboard and screen reader. Each macro step's Delay is shown as a value the player can edit (`skill-bar` fact 12, #806: the owner's in-game test plus two guides; fact 12a, the default, is open). 10 ms may be shown as the guides' usual setting, never called the game's "default" until T-123 settles it (single source).
+  an empty or unknown `keys` value falls back to the default. Names stay reachable by keyboard and screen reader. Each macro step's Delay is shown as a value the player can edit (`skill-bar` fact 12, #806: the owner's in-game test plus two guides), and 10 ms may be called the game's default (fact 12a, settled by the owner, T-123, 2026-10-21 10:39 PM ET).
 - **Acceptance.**
   - [ ] a11y: each key box has an accessible name; the tooltip opens on focus; rebinding works by keyboard.
   - [ ] Core: a save without `keys` loads with the default; `merge()` keeps the newer `keys`.
