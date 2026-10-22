@@ -67,8 +67,8 @@ Gomez, Oct 20 5:32 PM ET. Sources: K24 and K26 (`docs/kaizen/0.8-scorecard.md` Â
   something only Isaac can physically do (a setting we can't change, an outside account to set up). Owner, Oct 20 5:28 PM
   ET: "only come to me if it's something i absolutely have to do like changing settings you cant on your own, or setting
   something up externally that you access." That goes through Huell's To-do.
-- Review a change to my own role (rows, this doc, the team.csv line). A fresh reviewer checks it (Gomez's independence
-  note). Flag: I reviewed #601's K24 rows before this rule existed.
+- Review a change to my own role (rows, this doc, the team.csv line). A fresh reviewer checks it (the independence
+  rule for review roles, DECISIONS). Flag: I reviewed #601's K24 rows before this rule existed.
 
 ## Reports to, end, cost, handover
 - **Reports to:** the coordinator (Saul) as hiring manager. Kaizen (Gale) grades the role at each kaizen review.

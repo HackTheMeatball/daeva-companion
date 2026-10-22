@@ -19,7 +19,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 export const HEADER = ['id', 'kind', 'area', 'summary', 'plain', 'owner', 'enforced_by', 'home', 'status', 'since', 'ok_by', 'last_change', 'grade', 'replaced_by', 'note'];
 /* one accountable owner per row; enforced_by lists the others (or all / harness) */
-export const OWNERS = new Set(['Isaac', 'Saul', 'Walter', 'Gus', 'Jane', 'Hank', 'Mike', 'Skyler', 'Huell', 'Gretchen', 'Lydia', 'Jesse', 'Gale', 'Francesca', 'Gomez', 'Howard', 'Holly', 'Ernesto', 'Nacho', 'Chuck']);
+export const OWNERS = new Set(['Isaac', 'Saul', 'Walter', 'Gus', 'Jane', 'Hank', 'Mike', 'Skyler', 'Huell', 'Gretchen', 'Lydia', 'Jesse', 'Gale', 'Francesca', 'Gomez', 'Howard', 'Holly', 'Ernesto', 'Nacho', 'Chuck', 'Ted', 'Todd']);
 const KINDS = new Set(['safety', 'owner-rule', 'process', 'decision']);
 const STATUSES = new Set(['active', 'retired', 'trial', 'pending', 'superseded']);
 
@@ -65,15 +65,23 @@ export function checkLedger(root = ROOT, { csvText, ledgerMd, teamCsv, changesCs
     if (h.join(',') !== header.join(',')) problems.push(`${name}: header is "${h.join(',')}", expected "${header.join(',')}"`);
     return rs.map((r, i) => ({ at: `${name} line ${i + 2}`, n: r.length, ...Object.fromEntries(header.map((k, j) => [k, r[j] ?? ''])) }));
   };
-  const team = side('team.csv', teamCsv, ['name', 'role', 'title', 'joined', 'status', 'folded_into', 'used_to_own', 'never_does']);
+  const team = side('team.csv', teamCsv, ['name', 'role', 'title', 'joined', 'status', 'folded_into', 'used_to_own', 'never_does', 'role_id']);
   const changes = side('team-changes.csv', changesCsv, ['date', 'time', 'change', 'was', 'now', 'source']);
   const audits = side('audits.csv', auditsCsv, ['audit', 'rec', 'text', 'decides', 'status', 'decision', 'note']);
   /* team.csv names exactly OWNERS; a folded thread names the active thread it folded into */
-  const names = team.map(t => t.name), byName = new Map(team.map(t => [t.name, t]));
+  /* COM-20: a name may sit on two rows only when every such row has its own role_id and at most one is active;
+     byName keeps the active row (else the last) */
+  const names = team.map(t => t.name), byName = new Map();
+  for (const t of team) if (!byName.has(t.name) || t.status === 'active') byName.set(t.name, t);
+  const roleIds = team.map(t => t.role_id).filter(Boolean);
   for (const t of team) {
-    if (t.n !== 8) problems.push(`${t.at} (${t.name}): ${t.n} fields, expected 8`);
+    if (t.n !== 9) problems.push(`${t.at} (${t.name}): ${t.n} fields, expected 9`);
     if (!OWNERS.has(t.name)) problems.push(`${t.at}: team.csv names "${t.name}", not in OWNERS`);
-    if (names.indexOf(t.name) !== names.lastIndexOf(t.name)) problems.push(`${t.at}: "${t.name}" is listed twice`);
+    if (!t.role_id && t.joined >= '2026-10-21') problems.push(`${t.at} (${t.name}): no role_id (COM-20: every row that joined from 2026-10-21 has one; a reused name is checked below)`);
+    if (t.role_id && !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(t.role_id)) problems.push(`${t.at} (${t.name}): role_id "${t.role_id}" is not lower-case-with-hyphens`);
+    if (t.role_id && roleIds.indexOf(t.role_id) !== roleIds.lastIndexOf(t.role_id)) problems.push(`${t.at}: role_id "${t.role_id}" is listed twice`);
+    const same = team.filter(u => u.name === t.name);
+    if (same.length > 1 && (same.some(u => !u.role_id) || same.filter(u => u.status === 'active').length > 1)) problems.push(`${t.at}: "${t.name}" is listed twice (a reused name needs a role_id on each row and at most one active)`);
     if (!t.role || !t.title) problems.push(`${t.at} (${t.name}): empty role or title`);
     if (t.joined && !/^\d{4}-\d{2}-\d{2}$/.test(t.joined)) problems.push(`${t.at} (${t.name}): joined "${t.joined}" is not YYYY-MM-DD`);
     if (!['active', 'folded', 'closed'].includes(t.status)) problems.push(`${t.at} (${t.name}): status "${t.status}" not in active/folded/closed`);
@@ -86,6 +94,7 @@ export function checkLedger(root = ROOT, { csvText, ledgerMd, teamCsv, changesCs
   for (const t of team) {
     const f = join(root, 'docs/team', t.name.toLowerCase() + '.md');
     if (!existsSync(f)) continue;
+    if (byName.get(t.name) !== t) continue;
     const ended = /^Status: ended \d{4}-\d{2}-\d{2}\s*$/m.test((teamDocs ?? {})[t.name] ?? readFileSync(f, 'utf8'));
     if (ended !== (t.status !== 'active')) problems.push(`docs/team/${t.name.toLowerCase()}.md: ${ended ? 'says "Status: ended" but team.csv says active' : `has no "Status: ended <date>" line but team.csv says ${t.status}`}`);
   }
@@ -280,8 +289,13 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   fails('a decision not owned by Isaac', csv.map((l, i) => i === dec ? l.replace(/^([^,]*,decision,[^,]*,(?:"[^"]*"|[^,]*),(?:"[^"]*"|[^,]*),)Isaac,/, '$1Walter,') : l), /a decision's owner is Isaac/);
   const lmd = readFileSync(join(ROOT, 'docs/kaizen/LEDGER.md'), 'utf8');
   const tcsv = readFileSync(join(ROOT, 'docs/kaizen/team.csv'), 'utf8');
-  { const p = checkLedger(ROOT, { teamCsv: tcsv.replace(/^Gomez,/m, 'Badger,') }); ok('ledger check rejects: a team.csv that differs from OWNERS', p.some(x => /names "Badger"/.test(x)) && p.some(x => /missing "Gomez"/.test(x)), p.slice(0, 3)); }
+  { const p = checkLedger(ROOT, { teamCsv: tcsv.replace(/^Gomez,/gm, 'Badger,') }); ok('ledger check rejects: a team.csv that differs from OWNERS', p.some(x => /names "Badger"/.test(x)) && p.some(x => /missing "Gomez"/.test(x)), p.slice(0, 3)); }
   { const p = checkLedger(ROOT, { teamCsv: tcsv.replace(/^Hank,(.*),folded,Mike,/m, 'Hank,$1,folded,Badger,') }); ok('ledger check rejects: folded into a thread that is not active', p.some(x => /folded_into "Badger"/.test(x)), p.slice(0, 3)); }
+  { const p = checkLedger(ROOT, { teamCsv: tcsv.replace(/,closed,(.*),team-audit$/m, ',active,$1,team-audit') }); ok('ledger check rejects: a reused name with two active rows', p.some(x => /"Gomez" is listed twice/.test(x)), p.slice(0, 3)); }
+  { const p = checkLedger(ROOT, { teamCsv: tcsv.replace(/,team-audit$/m, ',') }); ok('ledger check rejects: a reused name on a row without a role_id', p.some(x => /"Gomez" is listed twice/.test(x)), p.slice(0, 3)); }
+  { const p = checkLedger(ROOT, { teamCsv: tcsv.replace(/,builds-macros$/m, ',') }); ok('ledger check rejects: a row added from 2026-10-21 without a role_id', p.some(x => /\(Todd\): no role_id/.test(x)), p.slice(0, 3)); }
+  { const p = checkLedger(ROOT, { teamCsv: tcsv.replace(/,team-audit$/m, ',review-broker') }); ok('ledger check rejects: a duplicate role_id', p.some(x => /role_id "review-broker" is listed twice/.test(x)), p.slice(0, 3)); }
+  { const p = checkLedger(ROOT, { teamCsv: tcsv.replace(/,team-audit$/m, ',Team_Audit') }); ok('ledger check rejects: a role_id not lower-case-with-hyphens', p.some(x => /role_id "Team_Audit"/.test(x)), p.slice(0, 3)); }
   { const p = checkLedger(ROOT, { teamDocs: { Skyler: '# Skyler\n' } }); ok('ledger check rejects: an ended role whose doc has no Status: ended line', p.some(x => /skyler\.md: has no "Status: ended/.test(x)), p.slice(0, 3)); }
   { const p = checkLedger(ROOT, { teamDocs: { Gus: '# Gus\n\nStatus: ended 2026-10-21\n' } }); ok('ledger check rejects: an active role whose doc says Status: ended', p.some(x => /gus\.md: says "Status: ended"/.test(x)), p.slice(0, 3)); }
   { const p = checkLedger(ROOT, { changesCsv: readFileSync(join(ROOT, 'docs/kaizen/team-changes.csv'), 'utf8').replace('DEC-20261019-incident-log-folds-into-stall', 'DEC-nope') }); ok('ledger check rejects: a team change citing an unknown decision', p.some(x => /source "DEC-nope"/.test(x)), p.slice(0, 3)); }

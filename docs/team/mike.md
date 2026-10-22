@@ -30,6 +30,32 @@ _From #114 "Health check (owner design, 2026-10-17 5:51 AM ET; replaces the plan
   - tracker drift: `datasets/today` older than the newest merge or PR open, or any card, To-do or ack that doesn't match GitHub;
   - a held PR past MRG-09's limits: a person's `hold` whose condition (one from MRG-09's closed list, on the head) has been met for 30 min (ping the owner; Walter at 2 h), one with a free-text condition that is 2 h old (timed from its last `hold` labeled event) with no owner comment since (owner; Walter at 4 h), or one with no `HOLD:` comment 30 min after the label was added (Walter). Auto-merge's own holds are excluded;
   - a deploy's owner "now" that doesn't hold up: read every Isaac "now" quoted on #114 for a deploy by its message id (fresh governance review's deploy-cadence OK, 2026-10-21 ~22:12Z; routed by the coordinator 22:06Z). The message's author must be the user, and its text must say "now" for that deploy. A mismatch gets a #221 row, and the coordinator tells Isaac the same hour. A deploy with neither a release tag nor a quoted "now" gets a row too;
+  - a quiet work thread (thread liveness for every thread, not only owner threads; amends HC-01, no new id; after
+    Isaac found a work thread silent for 21 h, 2026-10-21; Watchdog's interim practice from 23:51Z; fresh governance
+    review's PROCESS REVIEW OK with 6 changes, ~23:5xZ; routed by the coordinator 23:52Z):
+    - **Scan:** list the threads with no `since` filter and page through `next_cursor` to the end; each check records
+      how many threads it scanned.
+    - **Flag** an unresolved thread with no post for 2 h when the thread list shows it `working`, OR its status checklist
+      has a ✱ or ○ line, OR its last message says work is in progress. The last test catches a thread that died with no
+      checklist.
+    - **Not flagged,** only when the thread links the thing it waits on:
+      - a question to Isaac: the thread links an open Owner To-do (T-NN) on the tracker, or the message id of its
+        question to Isaac. That wait is logged as `owner-wait` (LOG-02) once it passes 60 min, not as `thread-stall`.
+        Once Isaac answers, the exclusion ends: an OK nothing acts on within 60 min is `ok-not-applied`, and a thread
+        that is still quiet after that is `thread-stall`;
+      - a named dependency: the thread links a live PR, issue or thread it waits on.
+    - **Logging (same cadence as HC-02's release checks):** one #221 row per stall, Kind `thread-stall`, sent to the
+      coordinator for a nudge; later checks update that row's cells, never add another. Re-ping the coordinator every 2 h
+      from the first flag while it stays open. The flag clears when the thread posts, is resolved, or its owner drops it.
+    - **Dedupe:** only when an open `release-stall` row (HC-02 (a)) already exists for the release item the thread carries
+      does that row win; the thread flag then only points to it. With no such row (e.g. a queued, un-held item), the
+      thread gets its own `thread-stall` row.
+    - **Detection bound:** at the 120-minute cadence (HC-06 as amended by the usage tiers), a stall can go unseen for up
+      to about 4 h (2 h quiet plus up to 2 h between checks).
+    - **Seeded test:** before this counts as live, and once per minor, the coordinator plants a quiet thread (a ○ line,
+      no post for 2 h) and leaves it unresolved until the next check has run. That check must flag it and record the
+      scan count. Each seeded run is recorded as one #221 row, Kind `thread-stall`, with "seeded" in its Item cell and
+      "flagged" or "missed" in its Fix cell; a miss is also sent to the coordinator the same hour.
   - anything else odd.
 
 ### HC-02
