@@ -66,6 +66,23 @@ _From #114 "Tracker upkeep"._
 
 - **Scrapbook (Isaac's ask, 2026-10-17 11:24 AM ET; #221, #222):** a PR that changes what a player sees commits before / after shots and `docs/reviews/<folder>/scrapbook.json` (CLAUDE.md, docs/reviews/README.md, `tests/support/shots.mjs`). When it merges, **Tracker sync** publishes those cards (brief section "Scrapbook on merge": a new `files/gallery-<n>.js`, its script tag in index.html, rows with `src` in the `datasets/gallery` asset). Huell checks its own cards reach `datasets/gallery` within 30 min of the merge; Watchdog (Mike) only spot-checks (M3, 2026-10-18). Replaces "scrapbook pairs only at releases", which no release ran: the Scrapbook stopped at Oct 16 5:45 AM ET until the 11:55 AM ET Oct 17 backfill (0.3 and 0.5 cards; next file gallery-10.js).
 
+### TRK-12
+
+_Written here by the Rules Steward (Francesca) for Tracker Sync (coordinator, 2026-10-22, after Isaac's answer to
+T-123 waited 16 min behind a write limit kept only in Huell's own notes, with no one told; Routed: coordinator
+2026-10-22T02:55Z). Not from #114._
+
+- **Write-rate limit:** routine syncs (PR, build and merge cards, Scrapbook cards, plan copies) go out at most once
+  every 20 minutes, and changes that arrive within about 10 minutes of each other share one write (reason inferred,
+  original reason unrecorded: to keep the tracker's token use down). Any other limit on how often or when Huell
+  writes is written here before it is used; a limit kept only in Huell's own notes is a miss.
+- **Owner answers go out at once:** an answer or decision from Isaac (a To-do he answered, a card he tapped, or a typed
+  answer naming it) is written at once, outside the limit; that write may carry any other pending changes. An answered
+  To-do closes in that write, with the answer as its closing evidence, and the close line to the coordinator goes in
+  the same run.
+- **A held write is announced:** when Huell holds a change for the limit, Huell tells the coordinator, and the session
+  that sent the change, in one line: "HELD <what> until <UTC time>". The write goes out by that time.
+
 ## Notifications
 
 ### To-do notifications
@@ -74,4 +91,4 @@ _Written here by the Release Planner (2026-10-20) for Tracker Sync, from the own
 
 - Each time a new To-do assigned to Isaac is posted on the tracker, Huell sends the coordinator one line, "NEW TODO T-xx: <what Isaac needs to do> <tracker link>", and one line when such a To-do closes or is withdrawn. Team-internal To-dos are excluded. The coordinator posts the line in the project chat with a phone notification.
 - Cards (owner, 2026-10-21 3:51 PM ET; same DECISIONS row, amended): a thread that posts a decision card for Isaac gets its T-NN from Huell first and sends the coordinator "CARD READY T-xx: <question> <thread link>". For a card-backed To-do that line replaces Huell's NEW TODO line, so each T-NN gets one line in the chat. Huell still posts the close or withdrawal line.
-- If Huell is slow (coordinator and Huell, 2026-10-21 20:25Z; Routed: coordinator 2026-10-21T20:25Z): a thread asks Huell first for the T-NN, sending the card's title and its source message id. If no answer has come by the time the card must go out, the thread posts it as "T-pending" and sends Huell and the coordinator the title and source message id. Huell backfills the number at the next tracker write and sends it to the thread. A card with neither a T-NN nor "T-pending" is a miss. Huell hands out the number at once; only the tracker write waits for its 20-minute limit.
+- If Huell is slow (coordinator and Huell, 2026-10-21 20:25Z; Routed: coordinator 2026-10-21T20:25Z): a thread asks Huell first for the T-NN, sending the card's title and its source message id. If no answer has come by the time the card must go out, the thread posts it as "T-pending" and sends Huell and the coordinator the title and source message id. Huell backfills the number at the next tracker write and sends it to the thread. A card with neither a T-NN nor "T-pending" is a miss. Huell hands out the number at once; only the tracker write waits for its write-rate limit (TRK-12).
