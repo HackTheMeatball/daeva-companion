@@ -9,7 +9,9 @@
    Web fonts (and service workers, except where a suite allows them) are blocked in the browsers unless --with-fonts
    (tests/support/block-web-fonts.cjs), so layouts render with fallback fonts on every machine.
    A failed suite is re-run once (--retries 0 to turn off); a pass on retry is reported as FLAKY with the first run's
-   failures, so it stays visible; on CI it is also a `::warning` titled `FLAKY <suite>` and a step-summary line (HC-01).
+   failures, so it stays visible; on CI it is also a `::warning` titled `FLAKY <suite>` ("passed on retry N; first run:
+   …") and a step-summary line (HC-01). A suite stopped by a signal (SIGKILL: likely the kernel's out-of-memory killer)
+   reads KILLED, and any run with a kill in it is a `::warning` titled `KILLED <suite>` instead.
    (The update() < 15 ms timing checks that used to need this live in `perf` now.)
 
    Suites (each is a standalone Playwright script; output in tests/out/<name>.out):
@@ -164,9 +166,16 @@ const retries = Math.max(0, +(opt('retries') ?? 1));
 // The workflow command's message ends at a newline and treats % as an escape, so both go; ::warning title=... is what the
 // health check counts per suite.
 const flakyNote = (name, attempt, fails, kind = 'FLAKY', passed = true) => {
-  const why = ((fails || []).slice(0, 3).join(' | ') || 'first run failed').replace(/[\r\n%]/g, ' ');
+  const why = ((fails || []).slice(0, 3).join(' | ') || 'no FAIL line').replace(/[\r\n%]/g, ' ');
   const what = passed ? `passed on retry ${attempt}; first run: ${why}` : `${why} (attempt ${attempt + 1})`;
   return { warning: `::warning title=${kind} ${name}::${what}`, summary: `- ${kind} \`${name}\`: ${what}\n` };
+};
+// Which runs are annotated: a pass on retry (FLAKY), and any run with a kill in it (KILLED), the last attempt's or the
+// first's, so a kill followed by an ordinary failure on retry still reaches the health check (#831 review).
+const noteFor = (name, attempt, ok, killed, firstKilled, firstFails) => {
+  if (killed) return flakyNote(name, attempt, [killed], 'KILLED', ok);
+  if (firstKilled) return flakyNote(name, attempt, firstFails, 'KILLED', ok);
+  return ok && attempt ? flakyNote(name, attempt, firstFails) : null;
 };
 // FLAKY-NOTE END
 const runOne = (name, attempt = 0) => new Promise(resolve => {
@@ -191,9 +200,10 @@ const runOne = (name, attempt = 0) => new Promise(resolve => {
     console.log(results[name].line);
     // HC-01 (Watchdog, flaky suites; Kaizen batch-0.9 item 26): a pass on retry is also a CI annotation and a step-summary
     // line, so the health check can count it per suite. A retry still passes; this only makes it visible.
-    // A kill is annotated as KILLED, whether the retry passed or not, so the health check counts kills apart from flakes.
-    if ((ok && attempt) || killed) {
-      const note = flakyNote(name, attempt, killed ? [killed] : firstFails, killed || firstKilled ? 'KILLED' : 'FLAKY', ok);
+    // A kill is annotated as KILLED, whether the retry passed or not, so the health check counts kills apart from flakes
+    // (noteFor, FLAKY-NOTE block).
+    const note = noteFor(name, attempt, ok, killed, firstKilled, firstFails);
+    if (note) {
       if (process.env.GITHUB_ACTIONS) console.log(note.warning);
       if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, note.summary);
     }
