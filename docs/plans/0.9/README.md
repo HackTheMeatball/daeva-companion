@@ -923,7 +923,7 @@ project's tokens, the pipeline 18%; check at the 0.9 review: tracker share below
 - **What it does.** Version bump and the CHANGELOG section ("Saves reset in this version", from P2).
 - **0.8.1 folded in** (owner, 2026-10-21 5:35 PM ET; DECISIONS). The CHANGELOG section also lists the merged 0.8.1 items (F1–F7, F9, F11, #585) and F8 (#605) and F10 (#690). It says these items, and the save reset, went live on the site as they merged (every push to main deploys, `docs/DEPLOY.md`), and gives the date the reset went live (2026-10-21, #734). For F9 and F10 it says only that quoted source text was replaced with our own paraphrase (Legal).
 - **GO precondition.** F10 (#690) and F8 (#605) are merged. If F10 isn't, `GO 0.9.0` waits (Legal's condition; no fallback).
-- **Going live.** Since #786, the merge of the release PR deploys only when CI sees the version change. Until Build Pipeline's (Gus) follow-up fix merges, a release merged by auto-merge runs tests only, so Build Pipeline (Gus) dispatches CI at the release commit right after the merge and confirms the deploy and tag; Watchdog (Mike) checks them in the next health check (ROADMAP "When the site changes, and patches"). If the fix is in by then, this step drops.
+- **Going live.** The release PR's merge deploys and tags 0.9.0 on its own (#786, #795); Watchdog (Mike) confirms the deploy and tag in the next health check.
 - **UAT trial** (UAT plan, 2026-10-21). At `RC READY 0.9`, Player Testing also checks 0.9's visible items against their
   existing acceptance lines in the RC build (new scenario lines only where writing them doesn't delay RC READY) and adds
   an item × line × pass/fail × evidence table to `RC PLAY DONE 0.9`. The trial holds nothing; a fail takes today's blocker
