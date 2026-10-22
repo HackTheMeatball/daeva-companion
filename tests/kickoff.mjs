@@ -362,6 +362,27 @@ check(jsEnd.length >= 1 && jqEnd.length >= 1 && [...jsEnd, ...jqEnd].every((a) =
 const ended = yml.match(/const ended = [^\n]*\/\^\(([^)]*)\)\//);
 check(!!ended && ended[1].startsWith('Blocked:|Needs @claude|'), 'the stalled-build check reads the same markers plus its own');
 
+// FILE-LANES (2026-10-22, Release Planner's maps): module lanes are known, and an open PR that edits a mapped file marks
+// its lane busy, in the pick job and in the merge job's copy alike.
+const flb = yml.match(/\/\/ FILE-LANES START[^\n]*\n([\s\S]*?)\n\s*\/\/ FILE-LANES END/);
+check(!!flb, 'kickoff has the FILE-LANES block');
+const { FILE_LANES: FL, LANES: LN } = new Function(flb[1] + '\nreturn { FILE_LANES, LANES };')();
+const mapSrc = (src) => (src.match(/( *)const FILE_LANES = \{\n[\s\S]*?\n\1\};\n/g) || []);
+check(mapSrc(yml).length === 2 && mapSrc(yml)[0] === mapSrc(yml)[1], 'the merge job copies FILE_LANES byte for byte');
+check(['build-card', 'nextup-card', 'skills-card', 'daevanion-card', 'journey-card', 'page-card', 'sources-card', 'rows', 'site', 'save'].every((l) => LN.includes(l)) && !LN.includes('e2'), 'the 0.9 module lanes are known; e2 is not');
+const missing = Object.values(FL).flat().filter((f) => !existsSync(join(ROOT, f)));
+check(!missing.length, `every FILE_LANES path exists (${missing.join(', ') || 'all'})`);
+const lofSrc = yml.match(/( *)const lanesOfFiles = \(files\) => \{\n[\s\S]*?\n\1\};/);
+const lof2Src = yml.match(/( *)const lanes = \(files\) => \{\n[\s\S]*?\n\1\};/);
+check(!!lofSrc && !!lof2Src && lofSrc[0].replace(/const lanesOfFiles =/, 'const lanes =') === lof2Src[0], "the merge job's lanes() matches the pick job's lanesOfFiles()");
+const lofFn = new Function('FILE_LANES', lofSrc[0] + '\nreturn lanesOfFiles;')(FL);
+const L = (...fs) => [...lofFn(fs.map((filename) => ({ filename })))].sort().join(',');
+check(L('src/packs/aion2/cards/build.js') === 'build-card', 'build.js -> build-card');
+check(L('src/packs/aion2/nextup.js', 'src/cards/sources.js') === 'nextup-card,sources-card', 'the Next up producers -> nextup-card; sources.js -> sources-card');
+check(L('src/core/state.js', 'tests/save.js', 'src/main.js') === 'main.js,save', 'state.js and tests/save.js -> save, beside main.js');
+check(L('src/sw.js', 'tools/gen/gen.mjs') === 'gen,site', 'sw.js -> site; tools/gen stays gen');
+check(L('src/packs/aion2/cards/areas.js', 'src/core/nextup.js') === '', 'unmapped files mark no lane');
+
 console.log(`\n${n - fail}/${n} kickoff checks passed`);
 console.log(fail ? 'KICKOFF CHECKS FAILED' : 'KICKOFF CHECKS PASSED');
 process.exit(fail ? 1 : 0);
