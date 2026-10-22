@@ -77,18 +77,32 @@ _Written here by the Rules Steward (Francesca) for Tracker Sync (coordinator, 20
 T-123 waited 16 min behind a write limit kept only in Huell's own notes, with no one told; Routed: coordinator
 2026-10-22T02:55Z). Not from #114._
 
-- **Write-rate limit:** routine syncs (PR, build and merge cards, Scrapbook cards, plan copies) go out at most once
-  every 20 minutes, and changes that arrive within about 10 minutes of each other share one write (reason inferred,
-  original reason unrecorded: to keep the tracker's token use down). Any other limit on how often or when Huell
-  writes is written here before it is used; a limit kept only in Huell's own notes is a miss.
+- **Write-rate limit:** routine syncs (PR, build and merge cards, Scrapbook cards, plan copies) that arrive within 5
+  minutes of each other share one write, and each is written within 10 minutes of the message that tells Huell of it.
+  This amends [DEC-20261020-tracker-coalesce-window](../DECISIONS.md#2026-10-20): the 5- and 10-minute numbers are the
+  coordinator's (2026-10-20 7:58 PM ET); the aim they serve, a real-time tracker, is Isaac's (2026-10-20 7:31 PM ET,
+  per the record). The coordinator amended the row 2026-10-22 (Kaizen batch-0.9 item 44, Gale; routed 11:12Z, 11:14Z,
+  11:41Z): an event someone announces shows within 10 minutes of Huell hearing of it; one nobody announces shows within
+  about 30 minutes. The 20-minute limit first written here, with 10-minute coalescing (reason inferred: the tracker's
+  token use), broke the 10 minutes, and at 09:34Z the board still showed #846 and #839 as working about 30 minutes after
+  they merged. A thread whose PR merges tells Huell at once (`MERGED #<n>`, team-wide.md MRG-11). A merge, start or PR
+  nobody announces (mainly kickoff builds Gus misses) still reaches Huell only through Build Pipeline (Gus)'s PR check,
+  every 20 minutes (CLK-01), so it can take up to about 30 minutes end to end. Any other limit on how often or when
+  Huell writes is written here before it is used; a limit kept only in Huell's own notes is a miss.
+- **Write cost, logged for one day:** from #856's merge on 2026-10-22 until the same time on 2026-10-23, Huell logs
+  every write turn in `tracker-sync/write-usage.md` in the shared folder: the UTC time, the tokens the turn used, and the
+  minutes from the wake that brought the change to the write. Gus estimated peak writes rise from about 4 to 7–8 an
+  hour; Kaizen (Gale) reads the log, and a cost that proves high goes to Isaac at the 0.9 review (item 44, external
+  review of #856).
 - **Owner answers go out at once:** an answer or decision from Isaac (a To-do he answered, a card he tapped, or a typed
   answer naming it) is written at once, outside the limit; that write may carry any other pending changes. An answered
   To-do closes in that write, with the answer as its closing evidence, and the close line to the coordinator goes in
   the same run.
 - **A held write is announced:** when Huell holds a change for the limit, Huell tells the coordinator, and the session
-  that sent the change, in one line: "HELD <what> until <UTC time>". The write goes out by that time. A held write is
-  announced once per window, with its release time; routine syncs that arrive later in the same window join the queue
-  silently and go out together at the slot. Owner answers and decisions still go out at once, as above (Kaizen
+  that sent the change, in one line: "HELD <what> until <UTC time>". The write goes out by that time, which is never
+  more than 10 minutes after Huell heard of the oldest change it carries. A held write is announced once per window, with its release
+  time; routine syncs that arrive later in the same window join the queue silently and go out together at that release
+  time (item 44: the release is within the 10-minute ceiling, not at a 20-minute slot). Owner answers and decisions still go out at once, as above (Kaizen
   batch-0.9 item 35, Gale's draft from Gomez's sample: about 30% of 59 Huell turns were empty, 4 of them HELD notices;
   routed by the coordinator 2026-10-22T05:48Z).
 - **Each sync checks for missing cards** (amends TRK-12, no new id; Kaizen batch-0.9 item 38, Gale; routed by the

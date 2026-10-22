@@ -221,6 +221,14 @@ _From #114 "Merge rule (AUTO since 2026-10-16 10:32Z, #115)"._
     Auto-merge lifts it once that marker names the new head and every other review the PR needs approves it too
     (MRG-09), so no new marker is needed. If the PR merged before the hold landed, the fix goes in a follow-up PR as
     before. MRG-12 already keeps an unreviewed head from merging; this saves the rework, not a safety gap.
+  - **A merged PR wakes Tracker Sync** (amends TRK-12, no new id; decided by the coordinator 2026-10-21 9:52 AM ET,
+    option (a) in Kaizen's usage plan v2 §4.1, and left unrecorded until Kaizen batch-0.9 item 44, routed 2026-10-22T11:15Z):
+    a thread whose own PR merges sends Tracker Sync (Huell) one line, `MERGED #<n>`, in the turn its merge event wakes
+    it; Build Pipeline (Gus) sends the kickoff build merges, and Huell's `freshness.py` and the health check catch
+    misses. Huell has no timer (CLK-03) and receives no GitHub events: a merge reaches Huell only by a
+    message or by the GitHub read in a write Huell is already making. So #846 (merged 09:01Z) waited for Build Pipeline
+    (Gus)'s 09:34Z PR check, and #851 (merged 10:52:56Z) for the 11:09Z one. Gus's PR check (CLK-01) stays the backstop,
+    and Huell's diff on each sync makes a duplicate line harmless.
 
 ## Pipeline
 
