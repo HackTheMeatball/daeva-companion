@@ -15,6 +15,8 @@ name: Restart
 # last 90 min. A main CI re-run that passes then starts Kickoff. It also brings main into claude/ PRs that conflict,
 # and starts the review of a claude/ PR whose head is green with no review yet (CI that kickoff dispatched with
 # GITHUB_TOKEN, e.g. on a PR kickoff opened itself, sends no workflow_run to pipeline.yml).
+# For an open claude/ PR whose head's CI died before any test ran (a setup step: checkout, setup-node, npm ci, or a lost
+# runner), it re-runs that CI's failed jobs once and says so on the PR; a test failure is never re-run.
 
 on:
   workflow_run:
@@ -41,7 +43,7 @@ jobs:
     permissions:
       actions: write
       pull-requests: read
-      issues: read
+      issues: write
       checks: read
     steps:
       - uses: actions/github-script@v7
@@ -76,8 +78,45 @@ jobs:
             // merge it conflicted with and had no CI until someone noticed (2026-10-17). Start pipeline step=merge for it; pipeline runs at most
             // one merge per PR per main commit, so this repeats nothing.
             if (context.eventName === 'schedule' || context.eventName === 'workflow_dispatch') {
-              const open = (await github.paginate(github.rest.pulls.list, { owner, repo, state: 'open', base: 'main', per_page: 100 }))
-                .filter((p) => !p.draft && /^claude\//.test(p.head.ref) && !p.labels.some((l) => ['hold', 'stuck'].includes(l.name)));
+              const all = (await github.paginate(github.rest.pulls.list, { owner, repo, state: 'open', base: 'main', per_page: 100 }))
+                .filter((p) => !p.draft && /^claude\//.test(p.head.ref));
+              // PR CI that died before any test ran (coordinator OK 2026-10-22T04:10Z): #818's data job died in `npm ci` and
+              // ci-ok sat red for an hour, since this sweep only re-ran Kickoff and main CI. An attempt-1 CI run on the PR's
+              // head whose every dead job (ci-ok aside, it only reports the others) stopped in a setup step is re-run once.
+              // A failure inside a test step is never re-run; it is the fix round's. Each re-run is logged (a notice here and
+              // a comment on the PR), so a recurring `npm ci` death stays visible.
+              // INFRA-DEATH START (tests/automerge.mjs runs this block)
+              const SETUP = /^(Set up job|Run actions\/(checkout|setup-node|cache)@\S+|Run npm ci)$/;
+              const infraDeath = (jobs) => {
+                const dead = jobs.filter((j) => ['failure', 'cancelled', 'timed_out'].includes(j.conclusion) && j.name !== 'ci-ok');
+                if (!dead.length) return null;
+                const at = [];
+                for (const j of dead) {
+                  const s = (j.steps || []).find((x) => x.conclusion !== 'success' && x.conclusion !== 'skipped');
+                  if (!s || !SETUP.test(s.name)) return null;
+                  at.push(`${j.name} (${s.name}: ${s.conclusion || 'runner lost'})`);
+                }
+                return at;
+              };
+              // INFRA-DEATH END
+              for (const p of all.filter((x) => !x.labels.some((l) => l.name === 'stuck'))) {
+                const sha = p.head.sha;
+                const ciRuns = (await github.rest.actions.listWorkflowRuns({ owner, repo, workflow_id: 'ci.yml', head_sha: sha, per_page: 10 })).data.workflow_runs;
+                const lastCi = ciRuns.sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at))[0];
+                if (lastCi && lastCi.status === 'completed' && lastCi.run_attempt === 1 && BAD.includes(lastCi.conclusion)) {
+                  const died = infraDeath(await github.paginate(github.rest.actions.listJobsForWorkflowRun, { owner, repo, run_id: lastCi.id, per_page: 100 }));
+                  if (died) {
+                    try {
+                      await github.rest.actions.reRunWorkflowFailedJobs({ owner, repo, run_id: lastCi.id });
+                      core.notice(`#${p.number}: CI run ${lastCi.html_url} died before any test (${died.join('; ')}); re-ran its failed jobs (attempt 2 of 2)`);
+                      await github.rest.issues.createComment({ owner, repo, issue_number: p.number,
+                        body: `Restart: CI on ${sha.slice(0, 7)} died before any test ran (${died.join('; ')}); re-ran its failed jobs once (${lastCi.html_url}). A second death goes to this PR's owner.` });
+                    } catch (e) { core.warning(`#${p.number}: CI re-run failed: ${e.message}`); }
+                    continue;
+                  }
+                }
+              }
+              const open = all.filter((p) => !p.labels.some((l) => ['hold', 'stuck'].includes(l.name)));
               for (const p of open) {
                 const pr = (await github.rest.pulls.get({ owner, repo, pull_number: p.number })).data;
                 if (pr.mergeable_state === 'dirty') {
@@ -85,8 +124,8 @@ jobs:
                   core.notice(`#${p.number} conflicts with main: started pipeline step=merge`);
                   continue;
                 }
-                // Green head, no review of it, and no Pipeline run going: the review event was lost (a GITHUB_TOKEN CI run).
                 const sha = pr.head.sha;
+                // Green head, no review of it, and no Pipeline run going: the review event was lost (a GITHUB_TOKEN CI run).
                 const ok = (await github.rest.checks.listForRef({ owner, repo, ref: sha, check_name: 'ci-ok' })).data.check_runs
                   .some((c) => c.conclusion === 'success');
                 if (!ok) continue;

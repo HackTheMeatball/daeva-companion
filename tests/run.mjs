@@ -9,7 +9,8 @@
    Web fonts (and service workers, except where a suite allows them) are blocked in the browsers unless --with-fonts
    (tests/support/block-web-fonts.cjs), so layouts render with fallback fonts on every machine.
    A failed suite is re-run once (--retries 0 to turn off); a pass on retry is reported as FLAKY with the first run's
-   failures, so it stays visible. (The update() < 15 ms timing checks that used to need this live in `perf` now.)
+   failures, so it stays visible; on CI it is also a `::warning` titled `FLAKY <suite>` and a step-summary line (HC-01).
+   (The update() < 15 ms timing checks that used to need this live in `perf` now.)
 
    Suites (each is a standalone Playwright script; output in tests/out/<name>.out):
      site     standalone site: head, footer, export, service worker/offline, manifest, 404, fonts, build checks
@@ -54,7 +55,7 @@
               spoken names, reduced motion after Level up, Escape on "i" popovers, hit areas vs neighbours
      perf     update() median < 15 ms at e1's and regress's states (non-blocking: not in the default run or ci-ok) */
 import { spawn, execSync } from 'node:child_process';
-import { createWriteStream, existsSync, mkdirSync, readFileSync } from 'node:fs';
+import { appendFileSync, createWriteStream, existsSync, mkdirSync, readFileSync } from 'node:fs';
 import { cpus } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -172,12 +173,27 @@ const runOne = (name, attempt = 0) => new Promise(resolve => {
     if (!ok && attempt < retries) { results[name] = { fails: (out.match(/^FAIL .*/gm) || []).concat(problems).map(l => l.slice(0, 160)) }; console.log(`retry ${name} (failed: ${results[name].fails.slice(0, 3).join(' | ') || 'exit ' + code})`); return resolve(runOne(name, attempt + 1)); }
     results[name] = { ok, line: `${ok ? (attempt ? 'FLAKY' : 'PASS ') : 'FAIL '} ${name.padEnd(8)} ${((Date.now() - t) / 1000).toFixed(0).padStart(4)} s  ${nOk || nFail ? `${nOk} ok, ${nFail} FAIL · ` : ''}${last.slice(0, 120)}${problems.length ? ' · ' + problems.slice(0, 3).join(' | ') : ''}${ok && attempt ? ' · first run: ' + firstFails.slice(0, 3).join(' | ') : ''}` };
     console.log(results[name].line);
+    // HC-01 (Watchdog, flaky suites; Kaizen batch-0.9 item 26): a pass on retry is also a CI annotation and a step-summary
+    // line, so the health check can count it per suite. A retry still passes; this only makes it visible.
+    if (ok && attempt) {
+      const note = flakyNote(name, attempt, firstFails);
+      if (process.env.GITHUB_ACTIONS) console.log(note.warning);
+      if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, note.summary);
+    }
     // A suite near its time budget prints a WARNING line into its own output only; echo it into the main log so CI
     // shows it and the pipeline's review sees it (P15 merged on a lucky re-run of the invariant hang guard, 2026-10-17).
     for (const w of out.match(/^WARNING .*took longer than.*$/gm) || []) console.log(w.slice(0, 200));
     resolve();
   });
 });
+// FLAKY-NOTE START (tests/deploy.mjs runs this block)
+// The workflow command's message ends at a newline and treats % as an escape, so both go; ::warning title=... is what the
+// health check counts per suite.
+const flakyNote = (name, attempt, fails) => {
+  const why = ((fails || []).slice(0, 3).join(' | ') || 'first run failed').replace(/[\r\n%]/g, ' ');
+  return { warning: `::warning title=FLAKY ${name}::${why}`, summary: `- FLAKY \`${name}\`: passed on retry ${attempt}; first run: ${why}\n` };
+};
+// FLAKY-NOTE END
 const queue = [...order];
 await Promise.all(Array.from({ length: Math.min(jobs, queue.length) }, async () => { while (queue.length) await runOne(queue.shift()); }));
 server.close();
