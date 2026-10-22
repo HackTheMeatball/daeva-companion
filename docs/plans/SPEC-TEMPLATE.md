@@ -34,6 +34,11 @@ format only here, together with the parser and its test.
   `research-<slug>` it names must be in the spec's After. Otherwise kickoff holds the item with a
   `spec: plan input missing: <path>` or `spec: plan After key missing: <key>` comment (Kaizen, 2026-10-21: #644's plan
   gained an input and an After key that its issue never got).
+- Kickoff runs every spec check (inputs on main, plan inputs and After keys, the gen lane) before it holds, so one hold
+  comment lists every gap and the held note under the queue line names every reason. To check a spec before queueing
+  it, run kickoff with `preflight: <issue>` (`gh workflow run kickoff.yml -f preflight=<n>`): it posts the same list
+  on the issue as a "Spec preflight" comment and holds or starts nothing (Kaizen, batch-0.9 item 28: P23 lost three
+  kickoff cycles finding its gaps one at a time).
 - An item on the `gen` or a `golden` lane, or whose spec runs `npm run gen` or re-records golden, starts on Opus
   whatever its queue line says, and so does one whose **Files** line names an Opus path (`.github/routing/opus-paths.json`;
   Kaizen, 2026-10-20: #509 was routed to Sonnet and stopped) or names no path at all. Files must list every file the
