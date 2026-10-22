@@ -519,7 +519,7 @@ Rules for every item:
   `src/packs/aion2/data/build.js`, `src/core/state.js` (`keys`
   default), `src/core/merge.js`, `src/styles/app.css`, `tests/a11y.js`, `tests/save.js`, the tests.
 - **No-gos.** Only keys AION 2 can bind (Game Data Check's `bindable-keys` file: Design Lead's ask D3). No save key bump;
-  an empty or unknown `keys` value falls back to the default. Names stay reachable by keyboard and screen reader.
+  an empty or unknown `keys` value falls back to the default. Names stay reachable by keyboard and screen reader. The 10 ms gap between macro steps (`skill-bar` fact 12, owner's in-game test) is never shown as a Delay value the player sets until Game Data Check rules whether it is a fixed engine gap or the per-step Delay default.
 - **Acceptance.**
   - [ ] a11y: each key box has an accessible name; the tooltip opens on focus; rebinding works by keyboard.
   - [ ] Core: a save without `keys` loads with the default; `merge()` keeps the newer `keys`.
@@ -637,23 +637,35 @@ routed them here as build items. Each turns an existing rule into a check and lo
 
 - **Problem.** The standing icon OK (2026-10-14) requires each icon's source page, file URL and date in
   `docs/ISSUES.md`, but nothing checks it (register C6). On main on 2026-10-21, 29 of the 234 files in
-  `src/assets/icons/` have no row naming them (matched by base name), all of them `sk-*` skill icons.
+  `src/assets/icons/` have no row naming them (matched by base name), all of them `sk-*` skill icons. The first build
+  (blocked 2026-10-21 23:03Z) found more: with those 29 rows added, a strict check still fails 28 icons, 25 of which have
+  only blank placeholder rows in `docs/ISSUES.md` (lines 121–126). A blank placeholder row is not a provenance row.
 - **Result.**
-  - Game Data Check commits `docs/research/2026-10-icon-provenance.md`: one row per icon with no ISSUES.md row (file,
-    source page, file URL, date), from the batch records already in the repo or the shared folder; an icon with no
-    record is listed for the owner instead, never guessed.
-  - This item adds those rows to `docs/ISSUES.md` verbatim, and a third check in `tests/compliance.mjs`: every file in
-    `src/assets/icons/` has an ISSUES.md row naming it with a source page, a file URL and a date, or an entry on the
-    owner list section the research file names. A negative fixture (an extra icon file name) fails it.
-- **Inputs.** `docs/research/2026-10-icon-provenance.md`.
+  - Game Data Check commits `docs/research/2026-10-icon-provenance-v2.md`, covering **every** icon the strict check
+    fails, the first 29 and the 28 the build found: one row per icon (file, source page, file URL, date), from the batch
+    records already in the repo or the shared folder; an icon with no record is listed in the file's owner-list section
+    instead, never guessed.
+  - This item adds those rows to `docs/ISSUES.md` verbatim (replacing the blank placeholders), and a third check in
+    `tests/compliance.mjs`: every file in `src/assets/icons/` has an ISSUES.md row naming it with a source page, a file
+    URL and a date, or an entry on the owner-list section the research file names. A row of kind `owner-upload` or
+    `owner-crop` (v2's "Rows to add" table) has no file URL anywhere; it passes with an owner source (the screen or
+    upload it names) and a date instead (for `owner-upload` the bound "before 2026-10-12 (in de17312d)" counts, and the row calls it a bound, not a date). Every
+    other row needs all three. Negative fixtures fail it: an extra icon file name, a blank placeholder row, and an
+    `owner-upload` row with no owner source.
+- **Inputs.** `docs/research/2026-10-icon-provenance.md`, `docs/research/2026-10-icon-provenance-v2.md`.
 - **Files.** `tests/compliance.mjs`, `tests/schema.mjs`, `docs/ISSUES.md`.
-- **No-gos.** No icon added, removed or replaced. No provenance invented: a row comes from the research file only.
+- **No-gos.** No icon added, removed or replaced. No provenance invented: a row comes from the research files only. The
+  check isn't narrowed to pass: every icon file is covered.
 - **Acceptance.**
-  - [ ] The check passes on this branch and fails on the fixture; paste the count of icons with rows before and after.
-  - [ ] Every new ISSUES.md row matches the research file byte for byte.
+  - [ ] The check passes on this branch and fails on all three fixtures; paste the count of icons with rows before and after.
+  - [ ] Every new ISSUES.md row matches the research files byte for byte.
 - **Review:** standing (Game Data Check confirms the rows).
 - **Lanes:** schema, compliance. **Model:** Sonnet, S (45 min).
-- **After:** P25, research-icon-provenance.
+- **After:** P25, research-icon-provenance-v2.
+
+Re-spec 2026-10-21 7:25 PM ET (Release Planner): the first build blocked at 23:03Z because the research file covered 29 icons while the strict check fails 28 more (25 with blank placeholder rows). The research must cover them all, so the After key is now `research-icon-provenance-v2`, met when Game Data Check's v2 file is on main. The check is not narrowed.
+
+Re-spec 2026-10-21 8:30 PM ET (Release Planner; Watchdog #221 row 7:18 PM): Game Data Check's 23:42Z comment and v2's "For P27's check" section: owner-upload and owner-crop records have no file URL anywhere, so the check takes an owner source and a date for those two kinds and still needs page URL, file URL and date for every other row. Not a narrowing: every icon file is still covered, and a third negative fixture is added.
 
 ## P28–P29: hiding a class takes one data edit (P3's acceptance run)
 
@@ -911,6 +923,7 @@ project's tokens, the pipeline 18%; check at the 0.9 review: tracker share below
 - **What it does.** Version bump and the CHANGELOG section ("Saves reset in this version", from P2).
 - **0.8.1 folded in** (owner, 2026-10-21 5:35 PM ET; DECISIONS). The CHANGELOG section also lists the merged 0.8.1 items (F1–F7, F9, F11, #585) and F8 (#605) and F10 (#690). It says these items, and the save reset, went live on the site as they merged (every push to main deploys, `docs/DEPLOY.md`), and gives the date the reset went live (2026-10-21, #734). For F9 and F10 it says only that quoted source text was replaced with our own paraphrase (Legal).
 - **GO precondition.** F10 (#690) and F8 (#605) are merged. If F10 isn't, `GO 0.9.0` waits (Legal's condition; no fallback).
+- **Going live.** The release PR's merge deploys and tags 0.9.0 on its own (#786, #795); Watchdog (Mike) confirms the deploy and tag in the next health check.
 - **UAT trial** (UAT plan, 2026-10-21). At `RC READY 0.9`, Player Testing also checks 0.9's visible items against their
   existing acceptance lines in the RC build (new scenario lines only where writing them doesn't delay RC READY) and adds
   an item × line × pass/fail × evidence table to `RC PLAY DONE 0.9`. The trial holds nothing; a fail takes today's blocker
