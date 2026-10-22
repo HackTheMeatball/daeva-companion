@@ -110,8 +110,9 @@ all get a row.
      in-game check requires don't count.
   5. **Dependency:** what would break, or who would take on its work, without it. If nobody can name anything, that
      counts against it.
-  6. **Model and effort fit** (Gale, routed by the coordinator 2026-10-22T03:05Z after Isaac's in-principle OK,
-     cmsg_01UNirAFgxf3jC8kQS8uvvHBXt9ktTtRrErW4HsQXfGJ1t): is the seat on the right model and effort level for its
+  6. **Model and effort fit** (Gale; Isaac, project chat 2026-10-22 03:06:14Z,
+     cmsg_01UNirAFgxf3jC8kQS8uvvHBBov91SA97tQYudYm5cQ81S: "Yeah I agree", to the coordinator's recommendation; routed
+     by the coordinator 03:05Z and 03:22Z): is the seat on the right model and effort level for its
      work? Judged from the record, not taste: the misses and rework that trace to judgment (such as the model rule's
      line-3 triggers), calls outside the brief, and the seat's usage from 3. The row recommends keep, up or down for
      the model and for the effort level. A model change the model rule (DECISIONS `owner-ok-model-rule`) already
