@@ -71,7 +71,9 @@ const setState = async (p, args) => { await writeFixture(p, args); await p.reloa
     rec(c0, 'strongholds credit nothing; Sealed Dungeons 2+2', s.shRw.every(x => x === null) && s.sdRw.join() === '{"st":2,"cr":2}', { sh: s.shRw.slice(0, 3), sd: s.sdRw });
     rec(c0, 'no dungeon XP in AREA_LOC', !s.xpLoc, s.xpLoc);
     rec(c0, '"Ariel" in the page source only as the Daevanion tip\'s endgame sentence (2026-10-21 patch, #781)', !/Ariel/.test(SRC.replace(/A sixth board, Ariel, is endgame: its points come only from Expedition \(Hard\)\./g, '')));
-    rec(c0, 'no "Quick Use 2" / "not covered" leftovers in source', !/Quick Use 2|aren't covered|not covered yet/.test(SRC));
+    /* "Quick Use 2" left this check in 0.9 P22: the macro step names the slot as the game's Macro window does
+       (docs/design/0.9-keys-macro.md §2; skill-bar facts 1, 11); tests/a11y.js pins that step's wording */
+    rec(c0, 'no "not covered" leftovers in source', !/aren't covered|not covered yet/.test(SRC));
     const zoneNames = new Set(RQD.map(r => r.zone)); /* zones that are also used as a camp/place elsewhere = a camp used as a zone */
     const campAsZone = s.zones.filter(z => s.places.includes(z));
     rec(c0, 'regional quest zones are not camp names (zone vs place)', !campAsZone.length && !s.zones.includes('Quai Campsite'), { campAsZone, quai: s.zones.includes('Quai Campsite') }, true);
