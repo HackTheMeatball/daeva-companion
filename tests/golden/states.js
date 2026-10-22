@@ -32,6 +32,8 @@ function catalogInPage() {
     stigmaPlan: STIGMA_PLAN.slice(),
     slots: STIGMA_SLOTS().map(s => ({ k: s.k, n: s.n, lv: s.lv })),
     dvNodes: DV_NODES().map(it => ({ k: it.k, blv: it.blv || 0, board: it.board || '' })),
+    /* the playable classes (0.9 P11: the generated GUIDE_CLASSES, the default class first): a group of states for each other one */
+    classes: GUIDE_CLASSES.map(e => ({ class: e.class, pack: e.pack })),
   };
 }
 
@@ -250,54 +252,17 @@ function generate(C, { fixtures = [], all = false } = {}) {
   /* the smart Next up families (0.5 P11), after everything above */
   smartFamilies(C, G, (group, rest, flat) => { const i = group + '/' + rest; if (out.has(i)) throw new Error('states: duplicate state id ' + i);
     out.set(i, { id: i, tier: 'core', raw: storedText(flat) }); });
-  /* ranger (0.6 P5): a Ranger character (pack aion2/asmodian/ranger) at Lv 1 / 10 / 22 / 30 / 45, story on track, no
-     ticks (the tick rules read the Assassin's catalog), both modes; a group of its own, added last, so no Assassin state
-     moves or changes */
-  for (const lv of [1, 10, 22, 30, 45]) for (const mode of ['advanced', 'basic']) {
-    const r = { lv, qi: G.onTrack(lv), ticks: 'none', mode }, i = 'ranger/' + G.id(r), s = JSON.parse(storedText(G.state(r)));
-    for (const c of Object.values(s.chars)) Object.assign(c, { pack: 'aion2/asmodian/ranger', class: 'ranger' });
-    out.set(i, { id: i, tier: 'core', raw: JSON.stringify(s) });
-  }
-  /* gladiator (0.7 P2): the same five levels and two modes for a Gladiator character (pack aion2/asmodian/gladiator); a
-     group of its own, added after the Ranger's, so no Assassin or Ranger state moves or changes */
-  for (const lv of [1, 10, 22, 30, 45]) for (const mode of ['advanced', 'basic']) {
-    const r = { lv, qi: G.onTrack(lv), ticks: 'none', mode }, i = 'gladiator/' + G.id(r), s = JSON.parse(storedText(G.state(r)));
-    for (const c of Object.values(s.chars)) Object.assign(c, { pack: 'aion2/asmodian/gladiator', class: 'gladiator' });
-    out.set(i, { id: i, tier: 'core', raw: JSON.stringify(s) });
-  }
-  /* spiritmaster (0.7 P4): the same five levels and two modes for a Spiritmaster character (pack
-     aion2/asmodian/spiritmaster); a group of its own, added after the Gladiator's, so no other state moves or changes */
-  for (const lv of [1, 10, 22, 30, 45]) for (const mode of ['advanced', 'basic']) {
-    const r = { lv, qi: G.onTrack(lv), ticks: 'none', mode }, i = 'spiritmaster/' + G.id(r), s = JSON.parse(storedText(G.state(r)));
-    for (const c of Object.values(s.chars)) Object.assign(c, { pack: 'aion2/asmodian/spiritmaster', class: 'spiritmaster' });
-    out.set(i, { id: i, tier: 'core', raw: JSON.stringify(s) });
-  }
-  /* templar (0.8 P3): the same five levels and two modes for a Templar character (pack aion2/asmodian/templar); a group
-     of its own, added after the Spiritmaster's, so no other state moves or changes */
-  for (const lv of [1, 10, 22, 30, 45]) for (const mode of ['advanced', 'basic']) {
-    const r = { lv, qi: G.onTrack(lv), ticks: 'none', mode }, i = 'templar/' + G.id(r), s = JSON.parse(storedText(G.state(r)));
-    for (const c of Object.values(s.chars)) Object.assign(c, { pack: 'aion2/asmodian/templar', class: 'templar' });
-    out.set(i, { id: i, tier: 'core', raw: JSON.stringify(s) });
-  }
-  /* cleric (0.8 P5): the same five levels and two modes for a Cleric character (pack aion2/asmodian/cleric); a group of
-     its own, added after the Templar's, so no other state moves or changes */
-  for (const lv of [1, 10, 22, 30, 45]) for (const mode of ['advanced', 'basic']) {
-    const r = { lv, qi: G.onTrack(lv), ticks: 'none', mode }, i = 'cleric/' + G.id(r), s = JSON.parse(storedText(G.state(r)));
-    for (const c of Object.values(s.chars)) Object.assign(c, { pack: 'aion2/asmodian/cleric', class: 'cleric' });
-    out.set(i, { id: i, tier: 'core', raw: JSON.stringify(s) });
-  }
-  /* sorcerer (0.8 P17): the same five levels and two modes for a Sorcerer character (pack aion2/asmodian/sorcerer); a
-     group of its own, added after the Cleric's, so no other state moves or changes */
-  for (const lv of [1, 10, 22, 30, 45]) for (const mode of ['advanced', 'basic']) {
-    const r = { lv, qi: G.onTrack(lv), ticks: 'none', mode }, i = 'sorcerer/' + G.id(r), s = JSON.parse(storedText(G.state(r)));
-    for (const c of Object.values(s.chars)) Object.assign(c, { pack: 'aion2/asmodian/sorcerer', class: 'sorcerer' });
-    out.set(i, { id: i, tier: 'core', raw: JSON.stringify(s) });
-  }
-  /* chanter (0.8 P19): the same five levels and two modes for a Chanter character (pack aion2/asmodian/chanter); a
-     group of its own, added after the Sorcerer's, so no other state moves or changes */
-  for (const lv of [1, 10, 22, 30, 45]) for (const mode of ['advanced', 'basic']) {
-    const r = { lv, qi: G.onTrack(lv), ticks: 'none', mode }, i = 'chanter/' + G.id(r), s = JSON.parse(storedText(G.state(r)));
-    for (const c of Object.values(s.chars)) Object.assign(c, { pack: 'aion2/asmodian/chanter', class: 'chanter' });
+  /* one group per playable class other than the default (0.6 P5 the Ranger … 0.8 P19 the Chanter; 0.9 P11: read from the
+     catalog's classes, the generated GUIDE_CLASSES, so a new class needs no edit here): a character of that class (its
+     guide pack) at Lv 1 / 10 / 22 / 30 / 45, story on track, no ticks (the tick rules read the Assassin's catalog), both
+     modes; the group is named by the class id and added after everything above, so no other state moves or changes */
+  if (!Array.isArray(C.classes) || !C.classes.length) throw new Error('states: the catalog has no classes (GUIDE_CLASSES)');
+  { const def = Object.values(JSON.parse(storedText(G.state({ lv: 1, qi: -1, ticks: 'none', mode: 'advanced' }))).chars)[0];
+    if (C.classes[0].pack !== def.pack || C.classes[0].class !== def.class) throw new Error(`states: the first class (${C.classes[0].pack}) is not the default (${def.pack})`); }
+  for (const { class: cls, pack } of C.classes.slice(1)) for (const lv of [1, 10, 22, 30, 45]) for (const mode of ['advanced', 'basic']) {
+    const r = { lv, qi: G.onTrack(lv), ticks: 'none', mode }, i = cls + '/' + G.id(r), s = JSON.parse(storedText(G.state(r)));
+    if (out.has(i)) throw new Error('states: duplicate state id ' + i);
+    for (const c of Object.values(s.chars)) Object.assign(c, { pack, class: cls });
     out.set(i, { id: i, tier: 'core', raw: JSON.stringify(s) });
   }
 

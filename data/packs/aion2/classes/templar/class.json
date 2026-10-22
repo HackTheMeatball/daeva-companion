@@ -9,6 +9,7 @@
       "class": "templar",
       "name": "Templar",
       "release": "released",
+      "releaseOrder": 5,
       "defaultBuild": "build:templar:guide",
       "sources": [
         {

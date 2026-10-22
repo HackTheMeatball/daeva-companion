@@ -9,6 +9,7 @@
       "class": "chanter",
       "name": "Chanter",
       "release": "released",
+      "releaseOrder": 8,
       "defaultBuild": "build:chanter:guide",
       "sources": [
         {

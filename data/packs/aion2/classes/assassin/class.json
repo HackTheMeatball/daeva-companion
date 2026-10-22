@@ -9,6 +9,7 @@
       "class": "assassin",
       "name": "Assassin",
       "release": "released",
+      "releaseOrder": 1,
       "defaultBuild": "build:assassin:guide",
       "sources": [
         {
