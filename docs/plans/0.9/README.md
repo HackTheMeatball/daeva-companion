@@ -520,12 +520,14 @@ Rules for every item:
   default), `src/core/merge.js`, `src/styles/app.css`, `tests/a11y.js`, `tests/save.js`, the tests.
 - **No-gos.** Only keys AION 2 can bind (Game Data Check's `bindable-keys` file: Design Lead's ask D3). No save key bump;
   an empty or unknown `keys` value falls back to the default. Names stay reachable by keyboard and screen reader. Each macro step's Delay is shown as a value the player edits in game, not as an app input (`skill-bar` fact 12, #806: the owner's in-game test plus two guides), and 10 ms may be called the game's default (fact 12a, settled by the owner, T-123, 2026-10-21 10:39 PM ET).
-- **Design Lead's macro call (`docs/design/0.9-keys-macro.md`, #839).** Key setup opens with an always-open **How you play** block, with the grid and macro in a remembered fold, **Your keys and macro**; no Simple / Advanced switch and no mode state. The macro is numbered steps, each with a "Delay 10 ms" divider, up to 20 steps (skill-bar fact 7, T-106). The Delay is shown, not taken as input: the player edits it in game (fact 12), no save field; 10 ms may be called the default (fact 12a, T-123). Frames: `docs/design/0.9-keys/22-*.png`.
+- **Design Lead's macro call (`docs/design/0.9-keys-macro.md` rev 2.1, #839; DESIGN OK on 0cfaa49 after the Design Critic, Holly's checklist and Saul's blind review).** The simple layout is the drawer's Rotation section, unchanged except that its Hold step adds, muted, "· right click alone drains MP (your test)" (`build.js` `renderRotation`); no How you play block, no Simple / Advanced switch, no mode state. Inside the Key setup fold the macro is numbered `.playsteps` rows under a `.khead` "Macro on <key>" ("· N steps" with 2+), one per step: a key step names the slot and "the whole <key> stack, row 0 first", a single-skill step its skill; a delay shows only when it isn't 10 ms, with no dividers. The fold's old third line is removed (its warning moves to the Hold step), which makes this design triage 4b. The issue (#644) carries the full list, the builder notes and the Scrapbook caption. Frames: the `22-*` PNGs in `docs/design/0.9-keys/`.
+- **Review:** external — 4b (coordinator, 2026-10-22T08:07Z): the build PR opens with `hold` and merges only after a `FRESH REVIEW OK` on its own head.
 - **Acceptance.**
   - [ ] a11y: each key box has an accessible name; the tooltip opens on focus; rebinding works by keyboard.
   - [ ] Core: a save without `keys` loads with the default; `merge()` keeps the newer `keys`.
   - [ ] `npm run gen` passes with the stepped macro for every class; Game Data Check's `DATA OK` on the head.
-  - [ ] Shots at 1500 and 390 px against the mock, including the `22-*` frames.
+  - [ ] Shots at 1500 and 390 px against the mock's `22-*` frames (fold closed, Lv 1 / 20 / 27 / 45, 360 px, Basic, the stepped macro), with the Scrapbook caption.
+  - [ ] Tests for the new behaviour (#644 lists them).
 - **Lanes:** gen, build-card, app.css, a11y, golden, mig, save. **Model:** Opus, L (120 min).
 - **After:** research-bindable-keys, research-skill-bar, owner-ok-0.9-key-grid.
 
