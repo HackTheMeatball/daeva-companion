@@ -37,7 +37,8 @@ recommendation item 2; backed by Org Design (Nacho)._
   yourself. The coordinator routes it with the overlap check (DEC-01 as amended 2026-10-21; process-change procedure step 2).
   Look up the coordinator's session with `get_channel_session_id` each time. A PR that touches a rule carries
   `Routed: coordinator <UTC time>`.
-- **Decision cards for Isaac:** get the card's T-NN first, then tell the coordinator in the same turn you post it
+- **Decision cards for Isaac:** get the card's T-NN first and open the card's question with it ([COM-19](#com-19), card
+  titles), then tell the coordinator in the same turn you post it
   ([DEC-20261020-todo-notifications](../DECISIONS.md)). Look up the coordinator's session with `get_channel_session_id`
   each time, never from memory; if the send fails, look it up again and retry once, and if that fails too, post the
   CARD READY line in your thread and tell Watchdog (Mike). If Huell hasn't given the T-NN in time, use `T-pending` as
@@ -84,8 +85,19 @@ coordinates because that's not how I'm going to count them in game. There is no 
     that still contains `___` counts as not answered, and the reading thread asks him once for the missing part.
   - **Source** (stored, shown only as a small link): the origin message or card id, and the DECISIONS row when the item
     carries out a decision.
-- Plain language throughout: no internal ids, rule codes, file paths or PR numbers except as a link; at most 900
-  characters per item, not counting Recommended reply. Several in-game checks are separate items, or one item with one
+- **Card titles carry the handles we point with** (coordinator for Isaac, 2026-10-22; Isaac, project chat 02:31:55Z
+  (cmsg_01UNirAFgxf3jC8kQS8uvvHBC4n4g3m1ugL2fN8Nn94bSo): "I don’t see any mention of Q-13 FYI", and 02:32:23Z
+  (cmsg_01UNirAFgxf3jC8kQS8uvvHBEaceu2VbJanMm53qR38XT5): "No mention of P27 either", after he couldn't match a card
+  titled by issue numbers to the "Q-13 / P27" the team pointed him to; the wording below is the team's, not his.
+  Routed: coordinator 2026-10-22T02:32Z): a decision card for Isaac opens its question with the handles the team uses
+  when it points him to the card: its T-NN (or `T-pending`), or the owner-question number when the coordinator's list
+  uses one, then the release item and its short name ("T-123 · P27 icon check: OK to edit one queue line?"). Every
+  pointer to the card (the CARD READY line, the coordinator's posts, the debrief) uses exactly those handles. An issue
+  or PR number may follow them, never replace them. A pointer that names a handle the card's title doesn't carry is a
+  miss, fixed in the same hour: the pointer is corrected, or, since a posted card can't be edited, the thread withdraws
+  it and posts it again with the handles.
+- Plain language throughout: no internal ids, rule codes, file paths or PR numbers except as a link, and except the
+  handles a card title must carry (above); at most 900 characters per item, not counting Recommended reply. Several in-game checks are separate items, or one item with one
   check per step.
 - **The check:** one script, owned by Tracker Sync (Huell), runs on every write; Watchdog (Mike) runs the same script on
   open items. A failing item is rewritten by Huell in the same turn, or Huell tells the raiser and writes it once fixed,
