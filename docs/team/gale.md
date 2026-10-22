@@ -96,7 +96,10 @@ all get a row.
      first-pass rate, and the rework or hand-interventions the role caused others.
   2. **Seeded test, for control roles:** Watchdog, the reviewers, Game Data Check, the Review Broker and any gate role are
      tested once per minor with a planted defect where they should catch it, such as a stale To-do, a wrong data field,
-     a removal in a mock, or a red-flag process change. Whether they caught it is recorded. A quiet minor with 0 catches
+     a removal in a mock, or a red-flag process change. For the Review Broker, the planted defect is an unplanned change
+     that meets an `external` trigger of the Review level list (ROADMAP "How a minor is planned", step 3) sent to it
+     with no review asked; it catches it by brokering an outside one-off before the change is applied. Whether they
+     caught it is recorded. A quiet minor with 0 catches
      isn't held against a control role that passes its test. Kaizen plants the defects; a fresh reviewer plants Kaizen's.
      Seeds go only on throwaway branches, mocks or copies, are recorded before they're planted and removed afterwards,
      and never touch main, live data or Isaac's tracker.
