@@ -21,9 +21,9 @@ Lead approves the 0.9 catch-up and key setup looks"); any look not delegated to 
 check the links yet; the reviewers of the PR do. Such a PR also names `holly` on its `Reviewers:` line: Design Review
 (Holly)'s tagged VERDICT on the head gates the merge (MRG-12), so the author's own OK is never the only gate. A
 disagreement between Jane and Holly follows the outside-review procedure and reaches Isaac only on UNSURE; when the
-outside reviewer sides with Jane, Holly posts an OK on the head linking that review; if Holly's session has ended,
-MRG-12's deadlock exit applies, with the coordinator's `REVIEW CLEAR (reviewer: holly; …)` citing that review. If Holly
-hasn't posted a tagged verdict on the head within 24 h of the PR asking, the coordinator names a fresh one-off reviewer
+outside reviewer sides with Jane, Holly posts an OK on the head linking that review; if Holly's session has ended after a
+CHANGES, MRG-12's deadlock exit applies, with the coordinator's `REVIEW CLEAR (reviewer: holly; …)` citing that review. If Holly
+hasn't posted a tagged verdict on the head within 24 h of the PR asking (or Holly's session ended before posting one), the coordinator names a fresh one-off reviewer
 under the outside-review procedure, posted or recorded per "Who posts", who replaces `holly` on the `Reviewers:` line
 (holly.md point 4; fresh review of #846, routed 09:35Z; #851, with Org Design's conditions). (Rules Steward, 2026-10-22; routed by the coordinator 08:00Z after #839,
 where the author's own OK was the only design gate: the OK has to show its independent check.)
