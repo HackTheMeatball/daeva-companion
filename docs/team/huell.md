@@ -47,6 +47,10 @@ _From #114 "Tracker upkeep"._
 _From #114 "Smart mode (owner, 2026-10-16 18:22 ET; replaces low power mode)", from the "Tracker (owner, 2026-10-16 6:30 PM ET)" bullet._
 
 - Writes use if_version (on conflict re-read, re-apply, retry up to 3x).
+- **Read back what the page serves** (Kaizen batch-0.9 item 33; routed by the coordinator 2026-10-22T05:22Z): after each
+  write, Huell reads the written datasets the way the live tracker page does (the dataset record, then the file it
+  points at), not the local copy, and confirms the page would show the new data. A write that doesn't read back is
+  fixed before the next one.
 
 ### TRK-06
 
