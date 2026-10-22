@@ -252,6 +252,14 @@ and is listed here so it isn't lost.
 
 ## 10. What the data PR should change
 
+**Decided (Isaac, 2026-10-22):**
+- **The framing (05:40Z):** "if we're making decisions today, it's for a leveling guide." The endgame picks can only
+  appear as labelled alternatives.
+- **The picks (05:40:52Z, decision card):** "Change all four". That covers Impact Hit out and Flash Slice in, Illusive
+  Clone in stigma slot 1, the leveling slot-1 specialties, and Attack in stat tier 1.
+- So every item below is decided. The disputed values (Shadowstrike and Ambush 8 against 10, stigma slots 3 and 4,
+  Quick Slice 1 against 2) still ship with their labels.
+
 1. `skillOrder`: cite Metabot (leveling build), daevaguides and aion2turkiye.
    - Mark the six CONFIRMED skills `verified` and Assault Stance two-source.
    - Mark Shadowstrike and Ambush disputed with a target of 8.
@@ -270,8 +278,8 @@ and is listed here so it isn't lost.
 7. `sources` and `conflicts`: remove games.gg, gamesfuze, skycoach, corpus and aion2-meta, and add the URLs in §2. The
    generator carries them to the Sources card and `data/DATA_SOURCES.md`.
 
-Every item except the pure re-sourcing in item 7 (and the text-only rows of §9.1) changes a pick. I'm sending those changes
-to Isaac to decide: Impact Hit out and Flash Slice in, stigma slot 1, the slot-1 specialties and Attack in tier 1. The
+Every item except the pure re-sourcing in item 7 (and the text-only rows of §9.1) changes a pick. These went to Isaac
+(decided above): Impact Hit out and Flash Slice in, stigma slot 1, the slot-1 specialties and Attack in tier 1. The
 right-click row order (item 6) is a fact correction, not a pick. Three witnesses agree on it, against an `inferred` value
 that has no source, so it's Game Data Check's call (ruled on #826, 2026-10-22). The citations can be swapped whatever he decides. A pick he keeps against this research keeps its
 label (`disputed` or `inferred`) and names the dissenting sources.
