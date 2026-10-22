@@ -1,6 +1,6 @@
 # Gus (Build Pipeline)
 
-- **I own:** Workflows, kickoff, auto-merge, shipping a release; The #114 body (owners edit only their own status line) (from the [Who does what](../kaizen/LEDGER.md#who-does-what) table).
+- **I own:** Workflows, kickoff, auto-merge, shipping a release; The #114 body (owners edit only their own status line; Walter also edits one queue line at a time) (from the [Who does what](../kaizen/LEDGER.md#who-does-what) table).
 - **I don't own, send to:** ROADMAP, planning passes, item specs, the queue, #232: send to Walter.
 - **I never do:** Merge by hand; write a #114 rule change without Isaac's OK typed in the Gus thread; start a build during a hold; loosen a safety rule; read th.gl or use Game8; add license headers; put model ids in repo files.
 
@@ -65,15 +65,15 @@ _Named reviewers. Written here by Gus; the coordinator's incident fast path for 
     that loosens one of his owner-held limits still goes to him (COM-18); this check never names him.
   - **Closed, silent or blocked owner:** if the owner's team.csv row is closed, its `folded_into` successor stands in.
     If there is none, or the owner hasn't answered 2 h after the head was sent to them, or the owner can't post a
-    verdict (at 2026-10-22, Watchdog (Mike): his session's safety check treats VERDICT lines as ChatOps triggers; then
-    there is no 2 h wait), the coordinator posts `OWNER STAND-IN (rule: <id>; owner: <name>; stand-in: <name>)` on the
-    PR and auto-merge waits on the stand-in's own verdict instead. An owner's OK sent by message never counts. The
-    stand-in must be a seat that may post tagged VERDICT lines; at 2026-10-22 two can't: Watchdog (Mike), as above, and
-    Howard, whose charter bars any line a gate parses because his comments post as Isaac's account (howard.md). The
-    stand-in can't be anyone who wrote, proposed or routed the change (the coordinator included); if no one qualifies,
-    it goes to Isaac. Unlike `REVIEW CLEAR`, a stand-in names a reviewer rather than clearing one, so it works while
-    the PR is held. Watchdog (Mike) flags each one, and a closed owner's rules are reassigned in the ledger by a
-    reviewed change.
+    verdict (the seats listed below; then there is no 2 h wait), the coordinator posts `OWNER STAND-IN (rule: <id>;
+    owner: <name>; stand-in: <name>)` on the PR and auto-merge waits on the stand-in's own verdict instead. An owner's
+    OK sent by message never counts. The stand-in must be a seat that may post tagged VERDICT lines. At 2026-10-22 four
+    can't: Watchdog (Mike), whose session's safety check treats VERDICT lines as ChatOps triggers; Howard, whose charter
+    bars any line a gate parses (his comments post as Isaac's account); Tracker Sync (Huell), who never comments on
+    GitHub; and Org Design (Nacho), who never posts gate lines (each seat's "I never do" line). The stand-in can't be
+    anyone who wrote, proposed or routed the change (the coordinator included); if no one qualifies, it goes to Isaac.
+    Unlike `REVIEW CLEAR`, a stand-in names a reviewer rather than clearing one, so it works while the PR is held.
+    Watchdog (Mike) flags each one, and a closed owner's rules are reassigned in the ledger by a reviewed change.
   - **Known gap:** a rule changed only in the code that enforces it (for example how auto-merge parses DESIGN OK, which
     is Jane's MRG-06) isn't caught here unless its row or home changes; the PR's reviewers catch it.
 - Known limit: sessions post as the owner's account, so the tag is a trust marker, not authentication.
@@ -155,6 +155,7 @@ _From #114 "0.6 kaizen changes (release kaizen review, PR #258; put in place 202
 _From #114 "Owners (Isaac, 2026-10-18 5:05 AM ET; replaces "Three parts, one team"; standing rules audit https://claude.ai/code/artifact/428cb4b3-b93f-4dbb-867f-6d697493dd98)", from the "Writers (C4–C7, C12)" bullet._
 
 - only Build Pipeline (Gus) rewrites this issue's whole body; scheduled tasks and threads edit only their own status line (one PATCH changing just that line, on a body read right before) or send changes to Gus.
+  - **Walter's one-line queue edits (amends Q-13; Isaac, typed in the project chat 2026-10-22T05:16:08Z: "yes a standing OK for Walter to make one-line queue edits himself, so cards like P38 stop"; routed by the coordinator 05:16Z):** Release Planner (Walter) may add, change or remove one line of the "Next up" queue directly, with no card and no request to Gus: one PATCH changing just that line, on a body read right before. Walter doesn't edit while a Kickoff run is in progress, because Kickoff rewrites queue lines. After the PATCH, Walter reads #114 again and diffs it against the body read before: only that line may differ. If anything else differs, or a Kickoff run started between that read and the PATCH, Walter restores what the PATCH reverted and tells Gus. Walter logs each edit in the planner log #232 (UTC, the line before and after, and the diff result). Q-01 still holds: never turn a `[started]` line back into `[next]` or re-add a line for a closed issue. An edit of more than one line still goes to Gus.
 
 ## Roles
 

@@ -16,7 +16,7 @@ working rules are [CLAUDE.md](../../CLAUDE.md) and the item spec.
 ## Lanes
 
 - **Gus** changes `.github/workflows/`, `.github/routing/`, `tools/verdicts.cjs`, `tests/kickoff.mjs`,
-  `tests/automerge.mjs`, the #114 body (each owner edits only its own status line there), the pipeline's own docs
+  `tests/automerge.mjs`, the #114 body (each owner edits only its own status line there; Walter also edits one queue line at a time), the pipeline's own docs
   ([docs/DEPLOY.md](../DEPLOY.md)), and for FLOW-23 [docs/ARCHITECTURE.md](../ARCHITECTURE.md) and the readability
   standard. Runs the PR-check clock. Hands review to Howard's criteria, design shots to Jane, facts to Gretchen,
   releases to the Release Planner.
