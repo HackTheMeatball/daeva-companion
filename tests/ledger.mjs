@@ -77,7 +77,7 @@ export function checkLedger(root = ROOT, { csvText, ledgerMd, teamCsv, changesCs
   for (const t of team) {
     if (t.n !== 9) problems.push(`${t.at} (${t.name}): ${t.n} fields, expected 9`);
     if (!OWNERS.has(t.name)) problems.push(`${t.at}: team.csv names "${t.name}", not in OWNERS`);
-    if (!t.role_id && t.joined >= '2026-10-21') problems.push(`${t.at} (${t.name}): no role_id (COM-20: every row that joined from 2026-10-21 has one; a reused name is checked below)`);
+    if (!t.role_id && (t.joined >= '2026-10-21' || (!t.joined && !['Isaac', 'Saul'].includes(t.name)))) problems.push(`${t.at} (${t.name}): no role_id (COM-20: every row that joined from 2026-10-21, or has no joined date and isn't Isaac's or Saul's, has one)`);
     if (t.role_id && !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(t.role_id)) problems.push(`${t.at} (${t.name}): role_id "${t.role_id}" is not lower-case-with-hyphens`);
     if (t.role_id && roleIds.indexOf(t.role_id) !== roleIds.lastIndexOf(t.role_id)) problems.push(`${t.at}: role_id "${t.role_id}" is listed twice`);
     const same = team.filter(u => u.name === t.name);
@@ -189,7 +189,7 @@ export const SOP_SECTIONS = ['Purpose', 'Trigger', 'Owner', 'Inputs', 'Steps', '
 /* doers that are automation or a role filled per run, not a standing thread */
 export const SOP_ACTORS = new Set(['Kickoff', 'Pipeline', 'Auto-merge', 'CI', 'Builder', 'Reviewer', 'Fresh reviewer',
   'Research thread', 'Design Critic', 'Requesting thread', 'Recorder', 'Proposer', 'Outside reviewer', 'Rule owner',
-  'Every report owner', 'New thread']);
+  'Every report owner', 'New thread', 'Scorer']);
 const RULE_ID = /\bDEC-\d{8}-[a-z0-9-]+|\b(?:COM|MRG|PIP|Q|HC|LOG|PLN|KZ|DEC|TRK|CLK|ROL|REPO|NEW)-\d{2}\b/g;
 const REPO_URL = 'https://github.com/HackTheMeatball/daeva-companion/issues/';
 /* GitHub's heading anchors: lower case, punctuation dropped, spaces to hyphens */
@@ -294,6 +294,7 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   { const p = checkLedger(ROOT, { teamCsv: tcsv.replace(/,closed,(.*),team-audit$/m, ',active,$1,team-audit') }); ok('ledger check rejects: a reused name with two active rows', p.some(x => /"Gomez" is listed twice/.test(x)), p.slice(0, 3)); }
   { const p = checkLedger(ROOT, { teamCsv: tcsv.replace(/,team-audit$/m, ',') }); ok('ledger check rejects: a reused name on a row without a role_id', p.some(x => /"Gomez" is listed twice/.test(x)), p.slice(0, 3)); }
   { const p = checkLedger(ROOT, { teamCsv: tcsv.replace(/,builds-macros$/m, ',') }); ok('ledger check rejects: a row added from 2026-10-21 without a role_id', p.some(x => /\(Todd\): no role_id/.test(x)), p.slice(0, 3)); }
+  { const p = checkLedger(ROOT, { teamCsv: tcsv.replace(/^Todd,(.*?),2026-10-21,(.*),builds-macros$/m, 'Todd,$1,,$2,') }); ok('ledger check rejects: a row with no joined date and no role_id', p.some(x => /\(Todd\): no role_id/.test(x)), p.slice(0, 3)); }
   { const p = checkLedger(ROOT, { teamCsv: tcsv.replace(/,team-audit$/m, ',review-broker') }); ok('ledger check rejects: a duplicate role_id', p.some(x => /role_id "review-broker" is listed twice/.test(x)), p.slice(0, 3)); }
   { const p = checkLedger(ROOT, { teamCsv: tcsv.replace(/,team-audit$/m, ',Team_Audit') }); ok('ledger check rejects: a role_id not lower-case-with-hyphens', p.some(x => /role_id "Team_Audit"/.test(x)), p.slice(0, 3)); }
   { const p = checkLedger(ROOT, { teamDocs: { Skyler: '# Skyler\n' } }); ok('ledger check rejects: an ended role whose doc has no Status: ended line', p.some(x => /skyler\.md: has no "Status: ended/.test(x)), p.slice(0, 3)); }
