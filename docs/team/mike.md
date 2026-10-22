@@ -28,15 +28,16 @@ _From #114 "Health check (owner design, 2026-10-17 5:51 AM ET; replaces the plan
   - `[next]` lines with nothing building for 10 min, or an unblocked item (all After keys merged) with no queue line;
   - a red, cancelled or skipped Kickoff, Restart, Pipeline or Auto-merge run, a run that died twice, main CI red or not deployed;
   - tracker drift: `datasets/today` older than the newest merge or PR open, or any card, To-do or ack that doesn't match GitHub;
-  - **a clock off its cadence** (amends HC-01, no new id; Kaizen batch-0.9 item 46; routed by the coordinator
+  - a clock off its cadence** (amends HC-01, no new id; Kaizen batch-0.9 item 46; routed by the coordinator
     2026-10-22T11:20Z): beyond checking that each clock is alive, read each clock's fire times from the trigger list
     (completed triggers included: `last_fired_at`, `created_at`, `run_once_at`) and compare the latest fire-to-fire gap
     with the cadence in its ledger row (CLK-01 to CLK-04, HC-06; where a row gives two cadences, such as CLK-01's 20 min
-    busy and 3 h idle, the cadence for the state when the clock last re-armed, which is the earlier fire of the pair). A
-    gap over 1.5 times the row's cadence (over 30 min for CLK-01's 20) gets one #221 row, Kind `clock-drift`, and a
-    message to the clock's owner. This is part of the same read and adds no clock or turn. A liveness-only check missed
-    Gus's 30-minute re-arm for about 20 h (Mike, 2026-10-22 11:22Z); at 20 minutes the measured gaps are about 21 to 25
-    minutes, so 1.5 times leaves 5 minutes of margin.
+    busy and 3 h idle, the cadence for the state when the clock last re-armed, read from the trigger's `created_at`,
+    which is usually within a minute of the earlier fire of the pair). A gap over 1.5 times the row's cadence (over 30
+    min for CLK-01's 20) gets one #221 row, Kind `clock-drift`, and a message to the clock's owner. This is part of the
+    same read and adds no clock or turn. A liveness-only check missed Gus's 30-minute re-arm for about 20 h (Mike,
+    2026-10-22 11:22Z); at 20 minutes the measured gaps are about 21 to 25 minutes, so 1.5 times leaves 5 minutes of
+    margin.
     **Tracker drift, end to end** (amends HC-01, no new id; Kaizen batch-0.9 item 33, Gale's draft; owner and runner
     Watchdog (Mike), per Isaac in the project chat 2026-10-22T05:24:18Z; routed by the coordinator 05:22Z and 05:24Z;
     after the tracker served its 03:15Z data for about 2 h because Huell's writes went into a wrongly nested field, the
