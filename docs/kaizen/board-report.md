@@ -105,7 +105,7 @@ no previous". That isn't a failed M.
 
 | # | | Check | Pass test |
 |---|---|---|---|
-| B1 | M | **Progress to 1.0**, by the frozen definitions below. | Same rows as last report: previous, now, delta. A removed or redefined row is explained. Fails while the definitions below still read "Draft". |
+| B1 | M | **Progress to 1.0**, by the frozen definitions below. | Same rows as last report: previous, now, delta. A removed or redefined row is explained. Fails while the definitions below lack the Release Planner's OK. |
 | B2 | M | **What players got:** the top 3–5 changes in player words, each linked to its CHANGELOG entry, and one before/after shot from the scrapbook or "No visible change". | At most 5 bullets, no ids or jargon, every link resolves. |
 | B3 | M | **Plan against shipped adds up and names who decided.** | planned + added − dropped = shipped; every added, dropped or rescoped item names its decider (DECISIONS row or role). Numbers match the plan PR and the release PR. Tracker Sync's write check enforces the sum (step 6). |
 | B4 | M | **Quality and incidents:** escapes after the tag by severity, each with the gate that missed it; incidents in #221 for the window with their fix status; Player Testing's verdict on the live build. | Every #221 incident in the window appears, or it reads "none in #221 for <dates>". Every escape links an issue and a "missed by". |
@@ -133,17 +133,23 @@ report's Decisions.
 
 ### Progress to 1.0: definitions (B1)
 
-**Draft, frozen pending Release Planner OK.** From ROADMAP's 1.0 line: "all eight classes, Asmodian only, Lv 1–45, and
+**Frozen by the Release Planner's OK on the merged head of the PR that adds them** (`RELEASE PLANNER OK <sha>`); before
+that OK they are a draft. From ROADMAP's 1.0 line and its `### 1.0` section: "all eight classes, Asmodian only, Lv 1–45, and
 the endgame guide past Lv 45. Every class meets the bar the Assassin guide sets today: verified data only, Next up always
 correct, saved progress never broken." Once frozen, a change needs a "definition changed" note with the old value
 recomputed (A4's rule).
 
 | Row | Counts | Source |
 |---|---|---|
-| Classes with a Lv 1–45 guide live | n / 8: classes whose Lv 1–45 guide is in the released build | the release's CHANGELOG and the class packs in `data/packs/aion2/` at the tag (C) |
-| Classes at the bar | n / 8: of those, classes whose last Player Testing class pass found no open player-facing defect and which ship no unlabelled unverified value | Player Testing's play issue for the release; gen's checks (C) |
-| Endgame guide past Lv 45 | not started / n of m planned sections live / complete | the minor's plan and CHANGELOG (C; m from the plan) |
-| Open 1.0 items | count of 1.0-scope items in ROADMAP not yet shipped, plus open microscope-pass findings once 0.11 starts | ROADMAP at the tag (C) |
+| 1.0 must-ship list | n / m: entries shipped, m fixed at freeze. Entries, each linked when frozen: world boss timers ("1.0 does not ship without the timers", owner 2026-10-20 7:02 PM ET); the build choice (a guide build per class, credited alternatives where sourced, a custom build, the switch warning; DECISIONS "1.0 ships up to three builds per class…"); one frozen save fixture per class (`tests/fixtures/saves-1.0/`); the strict save rule restored; the full architecture, performance and UX audit; the docs pass. An entry the owner adds later carries A4's "definition changed" note. | ROADMAP `### 1.0` at the tag (C) |
+| Classes at the bar: data | n / 8: classes shipping no unlabelled unverified value | gen's checks (C) |
+| Classes at the bar: Next up | n / 8: classes whose journey and golden coverage (where it exists) pass and whose last Player Testing class pass found no wrong Next up step | test runs and Player Testing's play issue; inferred (I) until per-class test evidence exists, never counted. First to confirm: whether golden and journey run per class |
+| Classes at the bar: saves | n / 8: classes whose saves load: the save suite now, the class's frozen fixture from 1.0 | test runs (C) |
+| Endgame guide past Lv 45 | "not started (sections not yet planned)" until 0.10's plan PR merges and fixes m; then n of m sections live, or complete | 0.10's plan and the CHANGELOG (C) |
+| Classes with a Lv 1–45 guide live | n / 8: classes whose Lv 1–45 guide is in the released build. Already 8 / 8; expected to stay flat | class packs in `data/packs/aion2/` at the tag (C) |
+
+Microscope-pass findings (from 0.11) are a separate count, not part of these rows. Out of scope, never counted toward
+progress: Elyos (1.1) and anything ROADMAP lists after 1.0.
 
 ### C2: the check's fixed brief
 
