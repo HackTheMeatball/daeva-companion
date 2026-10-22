@@ -45,7 +45,8 @@ _Named reviewers. Written here by Gus; the coordinator's incident fast path for 
   changed when its ledger.csv row changes or the diff touches the section its `home` points to; where that section
   match proves unreliable, Build Pipeline (Gus) falls back to the file: any change to a home file needs that file's
   rule owners. A CI check reads ledger.csv and fails while a required owner is missing from `Reviewers:`; auto-merge
-  then waits on that owner's tagged VERDICT naming the head, as above. A rule Isaac owns or OK'd (`ok_by` Isaac)
+  then waits on that owner's approval of the head in the form above: a tagged VERDICT, or the
+  owner's own gate mark where the seat has one (Design Lead `DESIGN OK`, Game Data Check `VERIFIED`). A rule Isaac owns or OK'd (`ok_by` Isaac)
   still also needs his typed OK; this check doesn't name him as a reviewer.
 - Known limit: sessions post as the owner's account, so the tag is a trust marker, not authentication.
 - Deadlock exit: for a reviewer who has ended, the coordinator posts `REVIEW CLEAR (reviewer: <name>; trigger: <n|none>): <reason>` on the PR. It is refused on triggers 2, 4b, 5 and 6, both when the clear names one and when the PR shows one (its body's `Review:` line names it, it carries `hold` or `fresh-review`, or it changes the save key or CHANGELOG.md); Watchdog (Mike) flags every clear and Kaizen (Gale) counts them. Like the tags, a clear is the comment's word, not a checked identity.
