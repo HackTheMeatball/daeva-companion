@@ -649,7 +649,7 @@ routed them here as build items. Each turns an existing rule into a check and lo
     `tests/compliance.mjs`: every file in `src/assets/icons/` has an ISSUES.md row naming it with a source page, a file
     URL and a date, or an entry on the owner-list section the research file names. A row of kind `owner-upload` or
     `owner-crop` (v2's "Rows to add" table) has no file URL anywhere; it passes with an owner source (the screen or
-    upload it names) and a date instead (for `owner-upload` the bound "before 2026-10-12 (in de17312d)" counts). Every
+    upload it names) and a date instead (for `owner-upload` the bound "before 2026-10-12 (in de17312d)" counts, and the row calls it a bound, not a date). Every
     other row needs all three. Negative fixtures fail it: an extra icon file name, a blank placeholder row, and an
     `owner-upload` row with no owner source.
 - **Inputs.** `docs/research/2026-10-icon-provenance.md`, `docs/research/2026-10-icon-provenance-v2.md`.
