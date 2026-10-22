@@ -519,7 +519,7 @@ Rules for every item:
   `src/packs/aion2/data/build.js`, `src/core/state.js` (`keys`
   default), `src/core/merge.js`, `src/styles/app.css`, `tests/a11y.js`, `tests/save.js`, the tests.
 - **No-gos.** Only keys AION 2 can bind (Game Data Check's `bindable-keys` file: Design Lead's ask D3). No save key bump;
-  an empty or unknown `keys` value falls back to the default. Names stay reachable by keyboard and screen reader.
+  an empty or unknown `keys` value falls back to the default. Names stay reachable by keyboard and screen reader. The 10 ms gap between macro steps (`skill-bar` fact 12, owner's in-game test) is never shown as a Delay value the player sets until Game Data Check rules whether it is a fixed engine gap or the per-step Delay default.
 - **Acceptance.**
   - [ ] a11y: each key box has an accessible name; the tooltip opens on focus; rebinding works by keyboard.
   - [ ] Core: a save without `keys` loads with the default; `merge()` keeps the newer `keys`.
@@ -911,6 +911,7 @@ project's tokens, the pipeline 18%; check at the 0.9 review: tracker share below
 - **What it does.** Version bump and the CHANGELOG section ("Saves reset in this version", from P2).
 - **0.8.1 folded in** (owner, 2026-10-21 5:35 PM ET; DECISIONS). The CHANGELOG section also lists the merged 0.8.1 items (F1–F7, F9, F11, #585) and F8 (#605) and F10 (#690). It says these items, and the save reset, went live on the site as they merged (every push to main deploys, `docs/DEPLOY.md`), and gives the date the reset went live (2026-10-21, #734). For F9 and F10 it says only that quoted source text was replaced with our own paraphrase (Legal).
 - **GO precondition.** F10 (#690) and F8 (#605) are merged. If F10 isn't, `GO 0.9.0` waits (Legal's condition; no fallback).
+- **Going live.** Since #786, the merge of the release PR deploys only when CI sees the version change. Until Build Pipeline's (Gus) follow-up fix merges, a release merged by auto-merge runs tests only, so Build Pipeline (Gus) dispatches CI at the release commit right after the merge and confirms the deploy and tag; Watchdog (Mike) checks them in the next health check (ROADMAP "When the site changes, and patches"). If the fix is in by then, this step drops.
 - **UAT trial** (UAT plan, 2026-10-21). At `RC READY 0.9`, Player Testing also checks 0.9's visible items against their
   existing acceptance lines in the RC build (new scenario lines only where writing them doesn't delay RC READY) and adds
   an item × line × pass/fail × evidence table to `RC PLAY DONE 0.9`. The trial holds nothing; a fail takes today's blocker
