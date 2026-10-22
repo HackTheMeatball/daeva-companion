@@ -201,7 +201,12 @@ jobs:
                 // content, so a tagged line in it could speak for a reviewer (Code Review, #686).
                 const person = c.user.login.toLowerCase() === owner.toLowerCase();
                 const t = person && V.tagged(c.body).pop();
-                if (t) ev.push({ who: who(t.reviewer), ok: t.verdict !== 'CHANGES', head: t.line.includes(s7), at });
+                // A tagged verdict counts only for a name on the roster: an active seat whose charter lets it post gate lines
+                // (E10, 2026-10-22: nine verdicts by the closed Team Audit seat "Gomez" passed, since the active Review Broker
+                // has the same name). A CHANGES still counts, so this only ever refuses an approval. ROSTER is read from main's
+                // team.csv below; unread, no verdict is refused (the run warns).
+                if (t && t.verdict !== 'CHANGES' && ROSTER && !ROSTER.has(who(t.reviewer))) core.info(`VERDICT by ${t.reviewer} not counted: no active seat of that name may post gate lines (docs/kaizen/team.csv)`);
+                else if (t) ev.push({ who: who(t.reviewer), ok: t.verdict !== 'CHANGES', head: t.line.includes(s7), at });
                 const f = person && V.fresh(c.body);
                 if (f) ev.push({ who: 'fresh review', ok: f === 'OK', head: V.freshOk(c.body).some((l) => l.includes(s7)), at });
                 // DESIGN and Game Data Check marks too: from the owner account, unquoted (bot review nit on #686).
@@ -373,7 +378,7 @@ jobs:
               // "--" is folded so an entry can't close the HTML marker early (#759 review).
               const list = bad.map((n) => `"${n.replace(/-{2,}/g, '-')}"`).join(', ');
               const said = comments.some((c) => c.user && c.user.login === 'github-actions[bot]' && (c.body || '').includes(ROSTERMARK(list)));
-              return said ? '' : `${ROSTERMARK(list)}\nThe \`Reviewers:\` line names ${list}, which is not an active team member (docs/kaizen/team.csv) or a gate name (design lead, game data check, fresh review). No verdict can match it, so this PR waits on it until the line is fixed: one first name per entry, notes in parentheses, e.g. \`Reviewers: gretchen; chuck\` (#741).`;
+              return said ? '' : `${ROSTERMARK(list)}\nThe \`Reviewers:\` line names ${list}, which is not an active team member allowed to post verdicts (docs/kaizen/team.csv) or a gate name (design lead, game data check, fresh review). No verdict can match it, so this PR waits on it until the line is fixed: one first name per entry, notes in parentheses, e.g. \`Reviewers: gretchen; chuck\` (#741).`;
             };
             // ROSTER-CHECK END
             // SHA-CHECK START

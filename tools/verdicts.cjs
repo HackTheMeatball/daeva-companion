@@ -73,12 +73,17 @@ const csvRow = (l) => {
   }
   out.push(f); return out;
 };
+// A seat whose never_does bars verdicts or gate lines can't review: its name is off the roster unless another active row
+// of the same name may post them. Names aren't seats (E10, 2026-10-22: the active Review Broker is also "Gomez", so nine
+// verdicts by the closed Team Audit seat passed and #856 and #858 merged without Mike's approval).
+const NOGATE = /\bverdicts?\b|\bgate lines\b|\bgate parses\b/i;
 const roster = (csv) => {
   const [head, ...rows] = String(csv).split(/\r?\n/).filter((l) => l.trim()).map(csvRow);
-  const name = head.indexOf('name'), status = head.indexOf('status');
+  const name = head.indexOf('name'), status = head.indexOf('status'), never = head.indexOf('never_does');
   // A team.csv without either column throws, so auto-merge skips the note rather than flag every name (#759 review).
   if (name < 0 || status < 0) throw new Error('team.csv needs name and status columns');
-  return new Set([...GATES, ...rows.filter((r) => (r[status] || '').trim() === 'active').map((r) => r[name].trim().toLowerCase()).filter(Boolean)]);
+  return new Set([...GATES, ...rows.filter((r) => (r[status] || '').trim() === 'active' && !(never >= 0 && NOGATE.test(r[never] || '')))
+    .map((r) => r[name].trim().toLowerCase()).filter(Boolean)]);
 };
 const unknownReviewers = (body, names) => reviewers(body).filter((n) => !names.has(n));
 // A person's hold line (MRG-09, #744): "HOLD: <condition> (owner: <name>)" on its own line, unquoted. Every such line, in
