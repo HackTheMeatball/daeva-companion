@@ -217,7 +217,7 @@ _From #114 "Merge rule (AUTO since 2026-10-16 10:32Z, #115)"._
     landed lost the race to auto-merge, which took the approved sha, so each fix needed a follow-up PR and another
     review round): first check the PR is still open. If every reviewer it needs may already have approved the head,
     add `hold` and post a closed-list HOLD line before pushing, for example `HOLD: VERDICT: OK (reviewer: <a required
-    reviewer>) on head (owner: <author>)`, or `HOLD: FRESH REVIEW OK on head` when the PR waits on a fresh review.
+    reviewer>) on head (owner: <author>)`, or `HOLD: FRESH REVIEW OK on head (owner: <author>)` when the PR waits on a fresh review.
     Auto-merge lifts it once that marker names the new head and every other review the PR needs approves it too
     (MRG-09), so no new marker is needed. If the PR merged before the hold landed, the fix goes in a follow-up PR as
     before. MRG-12 already keeps an unreviewed head from merging; this saves the rework, not a safety gap.
