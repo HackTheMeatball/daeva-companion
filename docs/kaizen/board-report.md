@@ -26,9 +26,10 @@ inference; the first report asks the owner to confirm it.
    coordinator may reply; a change or cut of the coordinator role goes to the owner as a To-do).
 5. **Report:** the coordinator assembles it in `docs/kaizen/reports/board-<minor>.md` by PR, copying the role rows
    verbatim. Tracker Sync (Huell) publishes it as a `board` row on the Reports tab.
-5b. **Independent check (C2):** before the report's PR merges, a one-off with no history checks it against the
+6. **Independent check (C2):** before the report's PR merges, a one-off with no history checks it against the
    Checklist below, from the fixed brief there, and signs a check file the report links. Tracker Sync publishes only
-   after `BOARD CHECK <release> PASS` (Publishing gate below).
+   after `BOARD CHECK <release> PASS` (Publishing gate below). Tracker Sync's write check for the `board` row also
+   enforces B3's sum and that B7 matches the release's CHANGELOG text exactly; a row that fails isn't written.
 
 ## The report's six sections
 
@@ -104,14 +105,14 @@ no previous". That isn't a failed M.
 
 | # | | Check | Pass test |
 |---|---|---|---|
-| B1 | M | **Progress to 1.0**, by the frozen definitions below. | Same rows as last report: previous, now, delta. A removed or redefined row is explained. |
+| B1 | M | **Progress to 1.0**, by the frozen definitions below. | Same rows as last report: previous, now, delta. A removed or redefined row is explained. Fails while the definitions below still read "Draft". |
 | B2 | M | **What players got:** the top 3–5 changes in player words, each linked to its CHANGELOG entry, and one before/after shot from the scrapbook or "No visible change". | At most 5 bullets, no ids or jargon, every link resolves. |
-| B3 | M | **Plan against shipped adds up and names who decided.** | planned + added − dropped = shipped; every added, dropped or rescoped item names its decider (DECISIONS row or role). Numbers match the plan PR and the release PR. |
+| B3 | M | **Plan against shipped adds up and names who decided.** | planned + added − dropped = shipped; every added, dropped or rescoped item names its decider (DECISIONS row or role). Numbers match the plan PR and the release PR. Tracker Sync's write check enforces the sum (step 6). |
 | B4 | M | **Quality and incidents:** escapes after the tag by severity, each with the gate that missed it; incidents in #221 for the window with their fix status; Player Testing's verdict on the live build. | Every #221 incident in the window appears, or it reads "none in #221 for <dates>". Every escape links an issue and a "missed by". |
 | B5 | M | **Lowlights:** at least one, with impact, cause and the fix's owner. | Present every release, or "None, checked against #221 and #222". |
 | B6 | M | **Data trust:** shipped facts by label (verified, single source, inferred, disputed) with the delta; facts that changed label; open owner in-game checks. | Counts from `npm run gen` output. Until gen prints label counts, the line is labelled inferred, never hand-counted. |
-| B7 | M | **Player-facing breaks:** whether saves reset and why; the Action required and Known issues lines. | Matches that release's CHANGELOG text exactly. |
-| B8 | M | **Compliance, exceptions only:** one line "All checks passed" or the failing items. Checks: only hosts SOURCES.md permits for that use were fetched, none of aion2.th.gl or an opt-out site; 403 / 429 / challenge stops listed; the NCSoft disclaimer test passes; LICENSE unchanged and no outside licence headers; every new icon has its docs/ISSUES.md row; every new URL is in DATA_SOURCES.md; PRIVACY.md still true (no new third-party requests in the built HTML); `npm audit` high or critical; deploys only from a release or a quoted "now". | Each check is tagged "test" or "attested by <role>", and an attested line says what it rests on (for example "searched session and PR transcripts and the repo for th.gl hosts, <date>"). A check not run reads "not run", never "passed". |
+| B7 | M | **Player-facing breaks:** whether saves reset and why; the Action required and Known issues lines. | Matches that release's CHANGELOG text exactly; Tracker Sync's write check enforces it (step 6). |
+| B8 | M | **Compliance, exceptions only:** one line "All checks passed" or the failing items. Checks: only hosts SOURCES.md permits for that use were fetched, none of aion2.th.gl or an opt-out site; 403 / 429 / challenge stops listed; the NCSoft disclaimer test passes; LICENSE unchanged and no outside licence headers; every new icon has its docs/ISSUES.md row; every new URL is in DATA_SOURCES.md; PRIVACY.md still true (no new third-party requests in the built HTML); `npm audit` high or critical; deploys only from a release or a quoted "now". | Each check is tagged "test" or "attested by <role>", and an attested line says what it rests on (for example "searched session and PR transcripts and the repo for th.gl hosts, <date>"). A check not run reads "not run", never "passed". Fetch-log evidence for B8 goes into the 0.10 planning pass as a candidate. |
 | B9 | S | **Risks carried over:** the top 3 keep stable ids, each with its trend (↑ → ↓) and a reason for any change. | Last report's risks are present or marked closed with a reason. |
 | B10 | S | **Decided for you:** material team decisions under a standing OK (scope, process, rules), each with its DECISIONS or ledger row and its outside reviewer. A loosening of an owner-held limit goes in A3, not here. | Matches the ledger.csv diff since the last tag. |
 | B11 | S | **Next:** the next minor's theme, 1–3 checkable goals and expected usage. "Pending" with an ETA while its planning pass isn't written. | Every goal from last report appears with met or missed. |
