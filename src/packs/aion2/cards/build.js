@@ -11,9 +11,11 @@ import { rotKeys } from "../requirements.js";
 import { aion2State as state, aion2Save as save, aion2Update as update, aion2STIGMA_SLOTS as STIGMA_SLOTS, aion2StIco as stIco, aion2SpMini as spMini, aion2Ini as ini } from "./page.js";
 
 /* Your own keys (0.9 P22, #388; docs/design/0.9-keys/README.md): char.keyBinds maps a Key setup column's suggested key (Q, E,
-   T; a default-keys build's own keys) to the key the player uses for it. Absent, empty or not a string: the suggestion. */
+   T; a default-keys build's own keys) to the key the player uses for it. Absent, empty, not a string or holding a character
+   HTML would read (KV_BAD; the key goes into markup and attributes): the suggestion. */
+const KV_BAD = /[<>&"'`]/;
 const kvKeyOf = col => { const m = char(state).keyBinds, k = m && typeof m === "object" && !Array.isArray(m) ? m[col] : null;
-  return typeof k === "string" && k.trim() && k.length <= 12 ? k : col; };
+  return typeof k === "string" && k.trim() && k.length <= 12 && !KV_BAD.test(k) ? k : col; };
 const kvMine = col => kvKeyOf(col) !== col;
 /* the chip being rebound (its column) and a pending kvClash { col, key, other }; neither is saved */
 let kvListen = null, kvClash = null;
@@ -29,11 +31,12 @@ function hintHTML(cols) {
 let kvCols = [];
 const setKeys = m => { const keys = Object.fromEntries(Object.entries(m).filter(([c, k]) => k !== c));
   if (Object.keys(keys).length) char(state).keyBinds = keys; else delete char(state).keyBinds; save(); };
-/* a key pressed while listening: Esc cancels; a key another column holds asks first (the kvClash state) */
+/* a key pressed while listening: Esc cancels; a key another column holds asks first (the kvClash state); Tab moves focus
+   on, which cancels (onKeysFocusOut); a modifier alone or a key KV_BAD refuses is skipped */
 function onListenKey(e) {
-  if (!kvListen) return;
+  if (!kvListen || e.key === "Tab") return;
   e.preventDefault(); e.stopImmediatePropagation();
-  if (["Shift", "Control", "Alt", "Meta", "Tab"].includes(e.key)) return;
+  if (["Shift", "Control", "Alt", "Meta"].includes(e.key) || KV_BAD.test(e.key)) return;
   const col = kvListen; kvListen = null;
   if (e.key !== "Escape") {
     const key = e.key === " " ? "Space" : e.key.length === 1 ? e.key.toUpperCase() : e.key;
@@ -52,6 +55,15 @@ function onKeysClick(e) {
   if (a === "other" && c) kvListen = c.col;
   if (a === "reset") setKeys({});
   renderRotation(); focusChip(c ? c.col : kvCols[0]);
+}
+/* listening ends when focus leaves the listening chip (a click elsewhere, Tab) or the drawer closes, so no later key press
+   anywhere is taken. Focus moving to another chip is left to its click (a re-render now would swallow it); otherwise
+   checked a tick later, as a re-render replaces the chip and focusChip refocuses its successor. */
+const kvCancel = () => { if (!kvListen && !kvClash) return; kvListen = null; kvClash = null; renderRotation(); };
+function onKeysFocusOut(e) {
+  if (!kvListen || (e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest("#stackViz [data-col]"))) return;
+  setTimeout(() => { const a = document.activeElement;
+    if (kvListen && !(a && a.matches && a.matches(`#stackViz [data-col="${kvListen}"]`))) { kvListen = null; renderRotation(); } }, 0);
 }
 const focusChip = col => { const el = col && document.querySelector(`#stackViz [data-col="${col}"]`); if (el) el.focus({ preventScroll: true }); };
 const statSeqHTML = () => STAT_TIERS.map((t, i) => `<div class="tier"><span class="tier-n">Tier ${i + 1}</span><div class="seq">${t.map(x => `<span>${x}<em class="src">${STAT_SRC[x] || ""}</em></span>`).join("")}</div></div>`).join("");
@@ -108,15 +120,20 @@ function renderStacks(lv) {
    data carries another value than the game's 10 ms (skill-bar facts 5–7, 12, 12a). No macro in the data, no block. */
 const MACRO_DELAY_MS = 10, MACRO_MAX = 20;
 const keyWord = k => / click$/.test(k) ? k.toLowerCase() : k;
+/* Test hook (tests/a11y.js): fixture macros (MACROS' shape) set by the runner before the page loads, for the cases no
+   class's data has yet (a Delay other than 10 ms, 2+ steps, a macro off right click); the page runs with MACROS. */
+const macrosNow = () => Array.isArray(window.__macros) ? window.__macros : MACROS;
 function renderMacro(lv) {
   const el = document.getElementById("kvMacro"); if (!el) return;
   const k = rotKeys(char(state), lv);
   /* the grid column a slot step fires: the slot's second key when the macro takes its first (right click → T) */
   const colOf = (slot, m) => { const [a, b] = SLOT_KEYS(slot); return slot === m.quickslot && b ? b : a; };
+  /* the stack a slot step fires: the guide's grid columns (Quick Use 2 / 7 / 8 = right click / Q / E, the Assassin's
+     keyStacks), else the game's default keys (KEYS). A class whose own stacks sit on other slots needs them added here. */
   const stackOf = slot => slot === "Quick Use 2" ? k.rmb : slot === "Quick Use 7" ? k.q : slot === "Quick Use 8" ? E_STACK(lv)
     : ((KEYS.find(x => x.key === SLOT_KEYS(slot)[0]) || { rows: [] }).rows.filter(r => lv >= r.lv).map(r => r.n));
   const delay = st => st.delayMs !== undefined && st.delayMs !== MACRO_DELAY_MS ? ` <span class="muted">· Delay ${st.delayMs} ms</span>` : "";
-  setHTML(el, MACROS.map(m => {
+  setHTML(el, macrosNow().map(m => {
     const steps = macroStepsAt(m, lv).filter(st => st.skill || stackOf(st.slot).length).map(st => {
       if (st.skill) return `<li>${spMini(st.skill)}${st.skill} <span class="muted">· one skill</span>${delay(st)}</li>`;
       const key = kvKeyOf(colOf(st.slot, m));
@@ -226,6 +243,7 @@ function aion2BuildMount() {
     if (cur && cur.class !== activePack().character.class) for (const el of document.querySelectorAll(".eyebrow > span:first-child, h1")) el.textContent = el.textContent.replace("Assassin", cur.name); }
   /* rebinding (0.9 P22, #388): a chip listens for the next key; capture, so Esc cancels here before it closes the drawer */
   document.getElementById("statDrawer").addEventListener("click", onKeysClick);
+  document.getElementById("statDrawer").addEventListener("focusout", onKeysFocusOut);
   addEventListener("keydown", onListenKey, true);
   /* Stat priority drawer: a tab pinned to the right edge; open state remembered.
      It starts level with the top of the cards row and sticks 16px from the top once you scroll past it. */
@@ -247,6 +265,7 @@ function aion2BuildMount() {
       /* (also after a scrim tap, which leaves focus on the page, and after Escape with focus on Level up in the bar) */
       if (!o && was && (viaKey || d.contains(document.activeElement) || document.activeElement === document.body)) tab.focus({ preventScroll: true });
       /* Closing the panel after seeing a new key placement counts as done. */
+      if (!o) kvCancel();
       if (was && !o && rotNew(char(state).level).length) { rotMarkSeen(); update(); } else save(); };
     if (state.statOpen) { d.classList.add("open"); tab.setAttribute("aria-expanded", "true"); }
     for (const t of [sideTab, barTab]) t.addEventListener("click", () => set(!d.classList.contains("open")));

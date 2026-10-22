@@ -58,7 +58,7 @@ export const planEffAt = (x, X) => { const L = Math.max(1, ...SP_STEPS.filter(y 
 SP_STEPS.filter(x => x.slot === 1).concat(SP_SLOTS).forEach(x => { for (let X = 1; X <= 45; X++) if (planEffAt(x, X) >= x.slotLv) { x.at = X; break; } });
 /* Key stacks for the hold-to-run setup (K grid): row 0 fires first. Right click = damage line, by character level (RMB_ROWS:
    what right click, Quick Use 2, fires: a macro there, else its own stack; the Assassin's stack, whose second key is T). A
-   macro can sit on any quickslot with a 0–3 stack; the Key setup draws each one as its steps (MACROS, 0.9 P22). Q =the guide's Quick Use 7 stack (Q_ROWS; the Assassin: one positioning skill alone, so it
+   macro can sit on any quickslot with a 0–3 stack; the Key setup draws each one as its steps (MACROS, 0.9 P22). Q = the guide's Quick Use 7 stack (Q_ROWS; the Assassin: one positioning skill alone, so it
    never fires by accident); E = opener cooldowns as they unlock, E_ORDER, E_BEFORE_Q fired before Q. This is the guide's
    suggested binding, not the game's defaults (KEYS); row order is inferred. A build with only the game's default keys takes
    every key from them instead (requirements.js rotKeys). */

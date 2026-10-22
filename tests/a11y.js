@@ -420,7 +420,46 @@ async function load(p, state, mode) {
     await p.click('#kvHint [data-kv="reset"]'); await p.waitForTimeout(80);
     r = await p.evaluate(() => { const s = JSON.parse(localStorage.getItem('companion-save-v6')); return { has: 'keyBinds' in s.chars[s.current], chips: [...document.querySelectorAll('#stackViz > .kv-key')].map(k => k.firstChild.textContent).join('|') }; });
     ok(`${id}: Back to suggested keys drops the field and restores Q / E / T`, !r.has && r.chips === 'Q|E|T', r);
+    /* listening ends when focus leaves the chip or the drawer closes: no later key press anywhere binds (review of #853) */
+    const unbound = () => p.evaluate(() => { const s = JSON.parse(localStorage.getItem('companion-save-v6')); return { has: 'keyBinds' in s.chars[s.current], listen: !!document.querySelector('#stackViz .kv-key.listen') }; });
+    await p.click(chip('Q')); await p.click('#kvMacro .khead'); await p.waitForTimeout(80); await p.keyboard.press('r'); await p.waitForTimeout(80);
+    r = await unbound();
+    ok(`${id}: clicking away from a listening chip cancels it, so a later key binds nothing`, !r.has && !r.listen, r);
+    await p.focus(chip('Q')); await p.keyboard.press('Enter'); await p.keyboard.press('Tab'); await p.waitForTimeout(80); await p.keyboard.press('r'); await p.waitForTimeout(80);
+    r = await unbound();
+    ok(`${id}: Tab from a listening chip cancels it`, !r.has && !r.listen, r);
+    await p.click(chip('Q')); await p.click('#sdClose'); await p.waitForTimeout(80); await p.keyboard.press('r'); await p.waitForTimeout(80);
+    r = await unbound();
+    ok(`${id}: closing the drawer cancels a listening chip`, !r.has && !r.listen, r);
+    /* a key HTML would read never becomes a binding (it goes into the chip's markup and aria-label) */
+    await p.evaluate(() => { const s = JSON.parse(localStorage.getItem('companion-save-v6')); s.chars[s.current].keyBinds = { Q: '"' }; localStorage.setItem('companion-save-v6', JSON.stringify(s)); });
+    await p.reload(); await p.waitForTimeout(400);
+    await p.evaluate(() => { const d = document.getElementById('statDrawer'); if (!d.classList.contains('open')) document.getElementById('sdTab').click(); document.querySelectorAll('details').forEach(x => { x.open = true; }); });
+    await p.waitForTimeout(300);
+    r = await p.evaluate(() => document.querySelector('#stackViz [data-col="Q"]').getAttribute('aria-label'));
+    ok(`${id}: a saved key with a quote falls back to the suggestion`, r === 'Q: change the key for this stack', r);
   };
+  /* Fixture macro (window.__macros, the page's test hook; no class's data has these cases yet): a macro on Q of three
+     steps, one a Delay other than 10 ms, one a lone skill */
+  {
+    const { ctx, p } = await page(1500);
+    await ctx.addInitScript(() => { window.__macros = [{ quickslot: 'Quick Use 7', rows: [{ minLv: 1, steps: [{ slot: 'Quick Use 7' }, { slot: 'Quick Use 2', delayMs: 50 }, { skill: 'Shadowstrike' }] }] }]; });
+    await load(p, typeof STATES.lv27 === 'function' ? STATES.lv27() : STATES.lv27, 'advanced');
+    await p.evaluate(() => { const d = document.getElementById('statDrawer'); if (d && !d.classList.contains('open')) document.getElementById('sdTab').click(); document.querySelectorAll('details').forEach(x => { x.open = true; }); });
+    await p.waitForTimeout(600);
+    const r = await p.evaluate(() => { const m = document.querySelector('#kvMacro .kv-mac');
+      return { n: document.querySelectorAll('#kvMacro .kv-mac').length, head: m.querySelector('.khead').textContent, steps: [...m.querySelectorAll('ol.playsteps > li')].map(li => li.textContent.trim()),
+        fine: [...m.querySelectorAll('.fine')].map(x => x.textContent) }; });
+    const id = 'keys fixture macro lv27 1500px';
+    ok(`${id}: a macro on Q is headed with its key and its step count`, r.n === 1 && r.head === 'Macro on Q · 3 steps', r.head);
+    ok(`${id}: its steps in order: the Q stack, the right-click stack with "· Delay 50 ms", then one skill`, r.steps.length === 3
+      && r.steps[0] === 'Q: Quick Use 7 · the whole Q stack, row 0 first'
+      && r.steps[1] === 'Right click: Quick Use 2 · the whole Right click stack, row 0 first · Delay 50 ms'
+      && /Shadowstrike · one skill$/.test(r.steps[2]) && !/Delay/.test(r.steps[0] + r.steps[2]), r.steps);
+    ok(`${id}: 2+ steps add "Up to 20 steps" to the make-it line, and the key line names Q`, r.fine.length === 2
+      && /Up to 20 steps\. Left click can only be the last step\.$/.test(r.fine[0]) && /^Put the macro on Q \(this guide's choice, not a rule\)/.test(r.fine[1]), r.fine);
+    await ctx.close();
+  }
   for (const sn of ['lv27', 'lv45']) {
     const { ctx, p } = await page(1500);
     await load(p, typeof STATES[sn] === 'function' ? STATES[sn]() : STATES[sn], 'advanced');
