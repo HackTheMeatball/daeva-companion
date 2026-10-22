@@ -533,8 +533,15 @@ Rules for every item:
 - **Problem.** SOURCES is 9.6 K gzip and its card 1,088 collapsed elements, both out of view until the card opens
   (performance audit F6). Without it the page likely crosses its gzip and element budgets at 1.0.
 - **Result.** The per-page link lists move to an on-demand chunk (precached by `sw.js`, like the sync chunk), rendered on
-  the card's first open; the page keeps the count line and, if the owner chooses it, one plain link per source site.
-- **Files.** `scripts/build.mjs`, `scripts/generated-data.mjs`, `src/cards/sources.js`, `src/sw.js`, `tests/site.js`,
+  the card's first open; the page keeps the count line and, if the owner chooses it, one plain link per source site
+  beside the lists (never in place of them).
+  - Per the sources-credit verdict (`docs/research/2026-10-sources-credit.md`, conditional pass), each per-page link keeps
+    today's markup: `<a href="<the specific page>">`, no `rel` of `nofollow`, `sponsored` or `ugc`, label unchanged.
+  - The build also emits a plain HTML sources page (e.g. `sources.html`) listing every URL in `data/DATA_SOURCES.md` as
+    such a link, readable with no script. The Sources card links it with a plain link, and it is listed in
+    `public/sitemap.xml`. This is a visible change: one new link on the card, and one new page.
+- **Inputs.** `docs/research/2026-10-sources-credit.md`.
+- **Files.** `scripts/build.mjs`, `scripts/generated-data.mjs`, `src/cards/sources.js`, `src/sw.js`, `public/sitemap.xml`, `tests/site.js`,
   `tests/regress.js`, `tests/e2test.js`.
 - **Gate.** Source Vetting (Lydia) and an outside reviewer check that per-page credit links rendered on open still meet
   CLAUDE.md's "plain dofollow links" credit and Metabot's terms; their verdict is a `docs/research/` file named with
@@ -543,9 +550,17 @@ Rules for every item:
 - **Acceptance.**
   - [ ] Budget lines show gzip about 169 K and elements about 4.4 K (pasted).
   - [ ] An offline reload opens Sources from the cache (new `site` check).
-  - [ ] Every URL check passes after the card is opened. No visible change in before / after shots.
+  - [ ] Every URL check passes after the card is opened, and `tests/site` checks that every URL has an `<a>` with none of
+    the three forbidden `rel` values.
+  - [ ] The sources page contains every URL in `data/DATA_SOURCES.md` with the same check, is listed in the sitemap, and is
+    linked from the card (new `site` checks).
+  - [ ] Visible change: before / after shots of the Sources card (closed and open) and of the new page at 1500 and 390 px,
+    a `scrapbook.json`, and Design Lead's (Jane) DESIGN OK on the link and the page.
+- **Review:** standing; Source Vetting (Lydia) confirms the four verdict conditions on the head; Design Lead's DESIGN OK.
 - **Lanes:** site, page-card, e2. **Model:** Opus, M (90 min).
 - **After:** research-sources-credit.
+
+Re-spec 2026-10-21 8:50 PM ET (Release Planner; Routed: coordinator 2026-10-22T00:44Z): Lydia's sources-credit verdict (#802) is a conditional pass. P23 adds the crawlable sources page (condition 2), keeps the per-page markup and lists (1, 3) and tests them (4); that makes it a visible change, so the "No visible change" line is replaced by shots, a scrapbook and DESIGN OK. The After key is unchanged.
 
 ## P24: Terms of Use, and robots.txt blocks AI training crawlers
 
