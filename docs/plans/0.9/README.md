@@ -519,7 +519,7 @@ Rules for every item:
   `src/packs/aion2/data/build.js`, `src/core/state.js` (`keys`
   default), `src/core/merge.js`, `src/styles/app.css`, `tests/a11y.js`, `tests/save.js`, the tests.
 - **No-gos.** Only keys AION 2 can bind (Game Data Check's `bindable-keys` file: Design Lead's ask D3). No save key bump;
-  an empty or unknown `keys` value falls back to the default. Names stay reachable by keyboard and screen reader. The 10 ms gap between macro steps (`skill-bar` fact 12, owner's in-game test) is never shown as a Delay value the player sets until Game Data Check rules whether it is a fixed engine gap or the per-step Delay default.
+  an empty or unknown `keys` value falls back to the default. Names stay reachable by keyboard and screen reader. Each macro step's Delay is shown as a value the player can edit (`skill-bar` facts 12 and 12a, #806: the owner's in-game test plus two guides). 10 ms may be shown as the guides' usual setting, never called the game's "default" until T-123 settles it (single source).
 - **Acceptance.**
   - [ ] a11y: each key box has an accessible name; the tooltip opens on focus; rebinding works by keyboard.
   - [ ] Core: a save without `keys` loads with the default; `merge()` keeps the newer `keys`.
@@ -554,6 +554,9 @@ Rules for every item:
     the three forbidden `rel` values.
   - [ ] The sources page contains every URL in `data/DATA_SOURCES.md` with the same check, is listed in the sitemap, and is
     linked from the card (new `site` checks).
+  - [ ] The sources page carries the same notice as `data/DATA_SOURCES.md` (generated from `data/packs/aion2/sources.json`,
+    not retyped), including "thegameswiki quotations are CC BY-NC-SA 4.0" and the no-endorsement line, and the
+    "unofficial" / "not affiliated with or endorsed by NCSoft" wording (`site` checks on the page).
   - [ ] Visible change: before / after shots of the Sources card (closed and open) and of the new page at 1500 and 390 px,
     a `scrapbook.json`, and Design Lead's (Jane) DESIGN OK on the link and the page.
 - **Review:** standing; Source Vetting (Lydia) confirms the four verdict conditions on the head; Design Lead's DESIGN OK.
