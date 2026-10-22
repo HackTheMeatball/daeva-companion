@@ -29,7 +29,10 @@ inference; the first report asks the owner to confirm it.
 6. **Independent check (C2):** before the report's PR merges, a one-off with no history checks it against the
    Checklist below, from the fixed brief there, and signs a check file the report links. Tracker Sync publishes only
    after `BOARD CHECK <release> PASS` (Publishing gate below). Tracker Sync's write check for the `board` row also
-   enforces B3's sum and that B7 matches the release's CHANGELOG text exactly; a row that fails isn't written.
+   enforces B3's sum and that B7 matches the release's CHANGELOG text exactly, once Tracker Sync's validator follow-up
+   lands (#808, owner Tracker Sync); a row that fails isn't written. **Interim, until #808 lands:** the C2 brief below
+   re-derives B3's sum and compares B7 to the CHANGELOG character for character. The PR that lands #808 removes this
+   interim text and the matching sentence in the brief.
 
 ## The report's six sections
 
@@ -98,7 +101,7 @@ no previous". That isn't a failed M.
 |---|---|---|---|
 | A1 | M | **The verdict can't be greener than the facts.** The verdict line names the release and says whether 1.0 got closer. | "Good" is impossible while any of these holds: an owner-held limit touched without Isaac's quoted OK, a player-facing escape, a failed seeded test, an incident on the live site. |
 | A2 | M | **Owner actions first.** | Each item is a live T-NN with what, where, rough time and what it blocks. With none, it reads "Nothing needs you" (never hidden). Nothing in it is a call the team could make. |
-| A3 | M | **Owner-held limits attestation.** | One line per limit (1)–(7) of the docs/DECISIONS.md row "Pipeline, settings and permission changes are the team's; seven owner-only limits", cited by number, never copied: untouched, touched with Isaac's OK (the message id resolves to him), or breached (links the incident). It collapses to "All 7 untouched" when true; any other state opens it and sets A1. Renumbering: see Publishing gate. |
+| A3 | M | **Owner-held limits attestation.** | One line per limit (1)–(7) of the docs/DECISIONS.md row starting "Pipeline, settings and permission changes are the team's; seven owner-only limits", cited by number, never copied: untouched, touched with Isaac's OK (the message id resolves to him), or breached (links the incident). It collapses to "All 7 untouched" when true; any other state opens it and sets A1. Renumbering: see Publishing gate. |
 | A4 | M | **Key numbers, the same six every release**, each beside last release's value: weekly usage % at release (Settings → Usage, with its time; read from #232, not a second reading) and pace against the budget line; usage per shipped item; owner touches; escapes; first-pass review rate; median lead time go → merge. | Each number names its source (a Kaizen scorecard row, or the query or script). Names and definitions match last report, or carry a "definition changed" note with the old value recomputed. A missing reading shows "missing", never an estimate. Counts sit beside rates. |
 
 ### B. In folds (the count in each fold label)
@@ -123,7 +126,7 @@ no previous". That isn't a failed M.
 |---|---|---|---|
 | C1 | M | **Every number is labelled counted or inferred**, and the report ends with one Data gaps line: what couldn't be measured and which S checks were missed. | No unlabelled number. |
 | C2 | M | **Independent check against this checklist** (brief below). | The signed check file exists and the report links it before the report's PR merges. A failed M blocks publishing. |
-| C3 | M | **The open part fits one phone screen.** | A 390×844 shot from `tests/support/shots.mjs` shows the verdict through the key numbers without scrolling. If it doesn't, the open part shrinks in this order: A4 shows only the numbers that changed, with "all six ›" in a fold; then the roles that need attention move into the All roles fold. No appendix (that would be a second view). Until the Reports tab card is built, C3 reads "not run (tab not built)" in Data gaps and doesn't block. |
+| C3 | M | **The open part fits one phone screen.** | A 390×844 shot from `tests/support/shots.mjs` shows the verdict through the key numbers without scrolling. If it doesn't, the open part shrinks in this order: A4 shows only the numbers that changed, with "all six ›" in a fold; then the roles that need attention move into the All roles fold. No appendix (that would be a second view). Until the board card is live on the Reports tab, C3 reads "not run (tab not built)" in Data gaps and doesn't block; from the first report after the card PR is published, C3 runs. |
 
 ### Patch releases (0.X.Y)
 
@@ -135,8 +138,8 @@ report's Decisions.
 
 **Frozen by the Release Planner's OK on the merged head of the PR that adds them** (`RELEASE PLANNER OK <sha>`); before
 that OK they are a draft. From ROADMAP's 1.0 line and its `### 1.0` section: "all eight classes, Asmodian only, Lv 1–45, and
-the endgame guide past Lv 45. Every class meets the bar the Assassin guide sets today: verified data only, Next up always
-correct, saved progress never broken." Once frozen, a change needs a "definition changed" note with the old value
+the endgame guide past Lv 45. Every class meets the bar the Assassin guide sets today: verified data only (see CLAUDE.md), Next up
+always correct, saved progress never broken." Once frozen, a change needs a "definition changed" note with the old value
 recomputed (A4's rule).
 
 | Row | Counts | Source |
@@ -160,7 +163,9 @@ The coordinator pastes this word for word at the top of the check file and adds 
 > role-health scorer, not a role that produced a number in this report, and not an author of this checklist or spec.
 > Inputs: the report draft, docs/kaizen/board-report.md, and read access to its sources; for C3, the 390×844 shot when
 > the card exists. Tick every M and S line pass, fail or "not run", with one line of evidence each. Re-derive from the
-> sources A1's verdict rule and every A3 and A4 value. Then pick three numbers from section B yourself, write down how
+> sources A1's verdict rule and every A3 and A4 value. Until #808 lands, also re-derive B3's sum (planned + added −
+> dropped − slipped = shipped, every slip listed) and compare B7 to the release's CHANGELOG section character for
+> character. Then pick three numbers from section B yourself, write down how
 > you picked them, and re-derive them. Sign with the date. Any failed M: write `BOARD CHECK <release> FAIL` and the
 > lines; otherwise `BOARD CHECK <release> PASS`.
 
