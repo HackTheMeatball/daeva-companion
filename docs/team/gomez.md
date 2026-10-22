@@ -66,7 +66,7 @@ already in flight, then closes, and routing of new outside reviews stays paused.
   state notes in the shared folder for working rules that are in no charter, SOP or ledger row. Each rule found gets
   an owner and a recorded reason and goes into the rulebook, or is dropped. The reviewer's findings go to the Rules
   Steward (Francesca), who lands them through the usual overlap check and review. The root cause is seat replacement
-  (Isaac, 03:04:02Z, cmsg_01UNirAFgxf3jC8kQS8uvvHB9UPehTeFkXfdHyuiUfevUB: "huell got recreated at some point with a
+  (Isaac, 03:04:02Z, cmsg_01UNirAFgxf3jC8kQS8uvvHB9UPehTeFkXfdHyuiUfevUB: "…huell got recreated at some point with a
   handoff"): a predecessor wrote the limit into the handover without its reason, and the successor inherited it as a
   bare rule. So the audit also checks that any working rule left in a handover states its owner and reason; whether
   that becomes a standing check on handovers is Gale's call.
