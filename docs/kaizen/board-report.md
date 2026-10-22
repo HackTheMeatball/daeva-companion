@@ -30,7 +30,9 @@ inference; the first report asks the owner to confirm it.
    Checklist below, from the fixed brief there, and signs a check file the report links. Tracker Sync publishes only
    after `BOARD CHECK <release> PASS` (Publishing gate below). Tracker Sync's write check for the `board` row also
    enforces B3's sum and that B7 matches the release's CHANGELOG text exactly, once Tracker Sync's validator follow-up
-   lands (until then the C2 check covers both); a row that fails isn't written.
+   lands (#808, owner Tracker Sync); a row that fails isn't written. **Interim, until #808 lands:** the C2 brief below
+   re-derives B3's sum and compares B7 to the CHANGELOG character for character. The PR that lands #808 removes this
+   interim text and the matching sentence in the brief.
 
 ## The report's six sections
 
@@ -161,7 +163,9 @@ The coordinator pastes this word for word at the top of the check file and adds 
 > role-health scorer, not a role that produced a number in this report, and not an author of this checklist or spec.
 > Inputs: the report draft, docs/kaizen/board-report.md, and read access to its sources; for C3, the 390×844 shot when
 > the card exists. Tick every M and S line pass, fail or "not run", with one line of evidence each. Re-derive from the
-> sources A1's verdict rule and every A3 and A4 value. Then pick three numbers from section B yourself, write down how
+> sources A1's verdict rule and every A3 and A4 value. Until #808 lands, also re-derive B3's sum (planned + added −
+> dropped − slipped = shipped, every slip listed) and compare B7 to the release's CHANGELOG section character for
+> character. Then pick three numbers from section B yourself, write down how
 > you picked them, and re-derive them. Sign with the date. Any failed M: write `BOARD CHECK <release> FAIL` and the
 > lines; otherwise `BOARD CHECK <release> PASS`.
 
