@@ -38,7 +38,11 @@ format only here, together with the parser and its test.
     the coordinator 2026-10-22T06:22Z, after #644 named `docs/design/0.9-keys-macro.md` as an input that isn't on main
     and that no After item makes, found only through Watchdog's KIND RECURRED): every Inputs path not on main is in the
     **Files** line of an item the spec's After names. A path the build doesn't need comes out of Inputs and is written in
-    the not-needed form above. Kickoff's spec check and the `preflight` run report any other as `spec: input <path> not
+    the not-needed form above. An input made outside the pipeline (an owner screenshot, an in-game check, a file another
+    thread writes) stays in Inputs followed by `(external: <who provides it>)`; kickoff still holds on it until it is on
+    main, as for any input, and the planning-time report lists it as external rather than as a missing producer (fresh
+    review of #851: without this form, a real outside input would need a fake After item or a false "not needed").
+    Kickoff's spec check and the `preflight` run report any other as `spec: input <path> not
     on main and no After item produces it`, so it shows at planning time, not only when the item reaches the top of the
     queue. The spec side is the Release Planner's (Walter); the check is Build Pipeline's (Gus), and until it is live
     Walter runs `preflight` and checks each missing input against the After items' Files lines by hand.

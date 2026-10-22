@@ -77,7 +77,8 @@ _Named reviewers. Written here by Gus; the coordinator's incident fast path for 
     verdict (the seats listed below; then there is no 2 h wait), the coordinator decides an `OWNER STAND-IN (rule: <id>;
     owner: <name>; stand-in: <name>)`, posted per "Who posts a stand-in or a clear" below, and auto-merge waits on the
     stand-in's own verdict instead. Until auto-merge reads owners from main's ledger, the stand-in counts once the author
-    names it on the `Reviewers:` line; the posted line is the record, not the gate. An owner's
+    names it on the `Reviewers:` line and the coordinator's decision is posted or recorded before the stand-in's
+    approval; the posted line is the record, not the gate. An owner's
     OK sent by message never counts. The stand-in must be a seat that may post tagged VERDICT lines. At 2026-10-22 four
     can't: Watchdog (Mike), whose session's safety check treats VERDICT lines as ChatOps triggers; Howard, whose charter
     bars any line a gate parses (his comments post as Isaac's account); Tracker Sync (Huell), who never comments on
@@ -90,9 +91,10 @@ _Named reviewers. Written here by Gus; the coordinator's incident fast path for 
     Watchdog (Mike) flags each one, and a closed owner's rules are reassigned in the ledger by a reviewed change.
   - **Rule changes get a trigger 1 review** (Kaizen batch-0.9 item 42, Gale; routed by the coordinator 2026-10-22T09:33Z,
     after #846 opened at `Review: standing` and merged with no fresh review): a PR that changes a rule, as **Changed**
-    defines it above, carries `Review: external`, `blind` or `fresh`, or a `REVIEW LEVEL LOWERED (trigger 1; <reason>)
-    (decided by the coordinator, <UTC time>)` line posted per "Who posts a stand-in or a clear", never by the PR's
-    author (only the coordinator may lower trigger 1, ROADMAP "Review level"). Once Build Pipeline (Gus) has built
+    defines it above, carries `Review: external` (trigger 1's default, ROADMAP "Review level"), or a `REVIEW LEVEL LOWERED (trigger 1;
+    <level>; <reason>) (decided by the coordinator, <UTC time>)` line posted per "Who posts a stand-in or a clear", never
+    by the PR's author (only the coordinator may lower trigger 1); `blind` or `standing` alone never meets it (fresh
+    review of #851). Once Build Pipeline (Gus) has built
     item 30's rule-change detection, auto-merge holds such a PR and posts one marker comment, "rule change needs
     trigger 1 review"; it's an auto-merge blocker, not red CI, so no fix round writes the line. Until then the
     author sets the level and every reviewer checks it. A DECISIONS PR adds ledger rows, so it is a rule change too;

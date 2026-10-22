@@ -19,8 +19,11 @@ written answer to each of their findings. With any of these links missing there 
 on. This OK covers only a look the owner delegated to the Design Lead (for 0.9, P19–P22: DECISIONS 2026-10-20 "Design
 Lead approves the 0.9 catch-up and key setup looks"); any look not delegated to the Design Lead in DECISIONS still needs Isaac's typed OK. Auto-merge doesn't
 check the links yet; the reviewers of the PR do. Such a PR also names `holly` on its `Reviewers:` line: Design Review
-(Holly)'s tagged VERDICT on the head gates the merge (MRG-12), so the author's own OK is never the only gate, and a
-disagreement between Jane and Holly goes to Isaac in the morning debrief (fresh review of #846; routed 09:35Z). (Rules Steward, 2026-10-22; routed by the coordinator 08:00Z after #839,
+(Holly)'s tagged VERDICT on the head gates the merge (MRG-12), so the author's own OK is never the only gate. A
+disagreement between Jane and Holly follows the outside-review procedure and reaches Isaac only on UNSURE; when the
+outside reviewer sides with Jane, Holly posts an OK on the head linking that review; if Holly's session has ended,
+MRG-12's deadlock exit applies, with the coordinator's `REVIEW CLEAR (reviewer: holly; …)` citing that review (holly.md
+point 4; fresh review of #846, routed 09:35Z; #851). (Rules Steward, 2026-10-22; routed by the coordinator 08:00Z after #839,
 where the author's own OK was the only design gate: the OK has to show its independent check.)
 
 ## The folder

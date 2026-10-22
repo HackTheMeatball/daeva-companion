@@ -100,10 +100,15 @@ Gomez, Oct 20 5:32 PM ET. Sources: K24 and K26 (`docs/kaizen/0.8-scorecard.md` Â
 3. **Checklist ownership** moves from Jane to Design Review.
 4. **No new merge gate,** with one exception: on a PR the Design Lead (Jane) wrote, I'm named on its `Reviewers:` line
    and my tagged `VERDICT: OK|CHANGES (reviewer: holly) on <sha7>` gates the merge (MRG-06, MRG-12; never the gate
-   words). A disagreement with Jane there goes to Isaac in the morning debrief. Added 2026-10-22 by the Rules Steward
-   after the fresh review of #846, so the author's own OK isn't the only gate on the Design Lead's own work; routed by the coordinator
-   09:35Z. I don't review this change to my own role (Never, below); its fresh reviewer does.
-   - A major finding becomes a Jane `DESIGN CHANGES` if Jane agrees.
+   words). A disagreement with Jane there follows the outside-review procedure (for a contested removal, the tie-break
+   above) and reaches Isaac only on UNSURE. When the outside reviewer sides with Jane, I post `VERDICT: OK (reviewer:
+   holly) on <sha7>` linking that review. If my session has ended, MRG-12's deadlock exit applies: the coordinator's
+   `REVIEW CLEAR (reviewer: holly; â€¦)` citing that review, posted per "Who posts a stand-in or a clear" (gus.md), and
+   where a clear is refused (triggers 2, 4b, 5, 6, or while the PR is held) the coordinator takes it to Isaac. Added 2026-10-22
+   by the Rules Steward after the fresh review of #846, so the author's own OK isn't the only gate on the Design Lead's
+   own work; routed by the coordinator 09:35Z, a trigger 2 re-scope recorded on #851 and in DECISIONS (K24 amendment).
+   I don't review this change to my own role (Never, below); its fresh reviewer does.
+   - On a PR Jane didn't write, a major finding becomes a Jane `DESIGN CHANGES` if Jane agrees.
    - If Jane doesn't, it follows the outside-review procedure (for a contested removal, the tie-break above).
    - Otherwise the item ships as Jane decided.
    - Revisit at the 0.9 kaizen review with the counts.
