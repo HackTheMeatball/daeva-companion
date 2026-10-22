@@ -26,7 +26,8 @@ _From #114 "Owners (Isaac, 2026-10-18 5:05 AM ET; replaces "Three parts, one tea
     - A seat that writes the same kind of state again and again keeps a scripted builder for that write in its own
       folder and uses it.
     - After a context compaction, the first write of each kind is built from that script or from a fresh read of the
-      target, never from memory.
+      target, never from memory or an earlier call. After the write, read back its top-level fields through the
+      consumer's path (Gomez's replay evidence, `audit-1.0/replay-huell/results.md` in the shared folder).
     - A #221 row for a bad write says "after compaction" when that applies.
 
 ### COM-13
