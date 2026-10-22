@@ -33,8 +33,8 @@ compiler site credits.
 - **Stat priority:** Critical Hit and Attack are the top two in every source, but the order is disputed. Back Attack
   Damage Boost and Combat Speed are two-source each.
 - **Other citations (§9):** every Assassin build citation gets a permitted replacement. Of the shared-guide claims that
-  `claims-notes.md` logs, four drop below two permitted sources once the four sites go: C08, C17, C19 and the Lv 32
-  gauge line. They are labelled for Isaac in §9.2.
+  `claims-notes.md` logs, six drop below two permitted sources once the four sites go: C06, C08, C15, C17, C19 and the
+  Lv 32 gauge line. They are labelled for Isaac in §9.2. (mein-mmo is never counted for game data.)
 
 ## 2. Sources read
 
@@ -122,6 +122,10 @@ can be replaced with these two sources and labelled two-source.
 aion2turkiye's top 25 back this up: Illusive Clone 100%, Swift Contract 100%, Triniel's Dagger 80%, Savage Fang 68%.
 mmo-codex's Korean meter has all four at 89–96%.
 
+daevaguides adds that solo players and questers can swap Savage Fang for Throw Shadowblade at 37, since it resets on a kill.
+aion2turkiye's top 25 carry it at 52%. That's a situational swap from one guide, so the guide can mention it as a labelled
+alternative.
+
 **Order:**
 - **Slot 1 = Illusive Clone and slot 2 = Swift Contract: CONFIRMED** (Metabot, daevaguides, mmo-codex).
 - **Ours is wrong at slot 1.** Triniel's Dagger at 22 appears in no source.
@@ -175,8 +179,8 @@ and mmo-codex; every CONFIRMED row above already has two of them.
 Default (GUESS): tier 1 Critical Hit and Attack (disputed order), tier 2 Back Attack Damage Boost and Combat Speed.
 Replace games.gg and gamesfuze in `statPriority.sources` with the Metabot guide, daevaguides and mmo-codex.
 
-**Board path:** this is already corroborated
-(`/mnt/project-files/game-data-check/metaroad-builds-2026-10-22.md`, the Assassin trial).
+**Board path:** Metabot and aion2turkiye carry it between them. (The Metaroad comparison in the project files is a lead
+only, per Legal's conditions, and is not counted.)
 - The Metabot guide runs Nezekan's Assault Stance and Exploit Weakness node pairs first, then Zikel's Defense Break.
 - Metabot's top players pick Heart Gore on Nezekan and Insignia Explosion on Zikel at 98% each.
 - aion2turkiye opens Nezekan then Zikel, through the +1 Heart Gore, Insignia Explosion and Quick Slice nodes (95%+ of
@@ -228,20 +232,23 @@ once it is changed.
 These claims live in `data/packs/aion2/asmodian/guide/claims.json`, not in an Assassin file. The Assassin notes file is
 only where the evidence was logged. The table drops the four sites and shows what is left. I didn't fetch anything new
 for these. A new source for each "needs a source" row is a follow-up (a Metabot spot check first), and the owner check
-is the fallback.
+is the fallback. Two counting rules apply:
+- mein-mmo.de is not counted: its SOURCES.md row says "never game data".
+- thegameswiki and KeenGamer are now owner-browser only. thegameswiki is on the Fail table (a 429 checkpoint), and
+  KeenGamer gets a 403. Their earlier reads are listed, but we can't re-check them.
 
 | Claim (shared) | Verdict today | Left after dropping the four sites | Outcome |
 |---|---|---|---|
-| C06 Ascension Trial 1,000 / 1,500 | verified | thegameswiki, mein-mmo | still two sources (mein-mmo's SOURCES.md row is narrow: worth a look) |
+| C06 Ascension Trial 1,000 / 1,500 | verified | thegameswiki only (mein-mmo not counted) | **needs a source**: drops to single-source |
 | C07 Abyss Points spending | single-source | KeenGamer (owner browser only) | stays single-source |
 | C08 Krao Cave Normal gear score 700 | verified | thegameswiki only | **needs a source**: drops to single-source. Metabot's Krao Cave page is the first place to check |
-| C09 Shugo Festival keys | wrong | Metabot, mein-mmo | still backed |
+| C09 Shugo Festival keys | wrong | Metabot (mein-mmo not counted) | still backed: Metabot's event page gives the key cap and the modest Lv 45 bump |
 | C11 Expedition 7×/week | disputed | KeenGamer, Metabot, thegameswiki | stays disputed |
-| C15 Duty Quests | verified | thegameswiki, KeenGamer, mein-mmo, allthings.how (neonsect is No new use) | still two sources |
-| C16 Supply Requests | single-source | allthings.how, KeenGamer, mein-mmo | stays single-source |
+| C15 Duty Quests | verified | allthings.how (Spot); thegameswiki and KeenGamer, owner browser only (mein-mmo not counted; neonsect is No new use) | **needs a source**: allthings.how is the only one we can still check. The three listed agree on 5 a day, so an owner check or one Metabot page would settle it |
+| C16 Supply Requests | single-source | allthings.how, KeenGamer (owner browser only; mein-mmo not counted) | stays single-source |
 | C17 Marketplace needs the subscription | verified | playnews.gg (owner browser only), massivelyop.com (not in SOURCES.md) | **needs a source**: no vetted source left. Owner check |
 | C18 Cash shop cosmetic | disputed | playnews.gg, massivelyop.com | stays disputed |
-| C19 Command scrolls vendor | verified | mein-mmo only | **needs a source**: drops to single-source |
+| C19 Command scrolls vendor | verified | none (mein-mmo not counted) | **owner check**: no counted source is left |
 | Lv 32 ascension gauge at 100% (C36–C38 note) | verified | allthings.how only (Spot) | **needs a source**: drops to single-source |
 | Lesser Daeva Wings on The Being Beneath the Lake | DB field | Metabot game-database field | still verified (a DB field); the Skycoach dissent just goes |
 
