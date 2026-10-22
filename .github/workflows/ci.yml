@@ -160,7 +160,12 @@ jobs:
   # Deploy only on a release (PLN-17; Fresh governance review, deploy-cadence OK on Revision 1, 2026-10-21): a push to main
   # whose own diff changes package.json's version, or a dispatch that names a sha. Every other merge stops at ci-ok, so the
   # live site is always a release or a logged owner "now", never "main as it is" (0.9's save reset went live under 0.8.0).
-  # - Push: deploy when the version at `before` differs from the pushed sha's. A `before` of all zeros counts as no change.
+  # - Push: deploy when the version at `before` differs from the pushed sha's. A `before` of all zeros counts as no change
+  #   (a new branch or a force-push with no usable earlier sha: never a deploy on its own; dispatch at the release instead).
+  # - Dispatch with no sha: auto-merge starts main CI this way after every merge (auto-merge.yml; a merge made with
+  #   GITHUB_TOKEN sends no push event). It counts as that merge: deploy when the commit's own diff changes the version.
+  # - Either of those, without a deploy, warns when the current version has no tag yet: its release never finished (a
+  #   failed run, or a pending run cancelled by the next merge), so dispatch at the release commit named in the warning.
   # - Dispatch at a release commit (its version differs from its parent's): re-run of a failed release, or a rollback to an
   #   older release. No quote needed; the next merge never deploys a failed release.
   # - Dispatch at any other commit (the escape hatch, also for a legal remedy on Legal's ruling): needs now_comment, the id of
@@ -180,6 +185,7 @@ jobs:
       issues: read
     outputs:
       deploy: ${{ steps.g.outputs.deploy }}
+      own_ci: ${{ steps.g.outputs.own_ci }}
       sha: ${{ steps.g.outputs.sha }}
     steps:
       - uses: actions/checkout@v7
@@ -204,7 +210,10 @@ jobs:
                 if (!x.before || ZERO.test(x.before)) return { deploy: false, why: 'push with no earlier sha: no version change' };
                 return x.vBefore !== x.vSha ? { deploy: true, why: `version ${x.vBefore} -> ${x.vSha}` } : { deploy: false, why: `version unchanged (${x.vSha}): CI only` };
               }
-              if (!x.sha) return { deploy: false, why: 'dispatch without sha: tests only' };
+              if (!x.sha) {
+                if (x.vParent !== x.vSha) return { deploy: true, why: `merge of release ${x.vSha}` };
+                return { deploy: false, why: `version unchanged (${x.vSha}): CI only` };
+              }
               if (!x.onMain) return { refuse: `${x.sha} is not a commit on main` };
               if (!x.ciGreen) return { refuse: `ci-ok is not green on ${x.sha}` };
               if (x.vParent !== x.vSha) return { deploy: true, why: `release commit ${x.vSha} (re-run or rollback)` };
@@ -214,11 +223,20 @@ jobs:
               if (x.saveChange && !/\b(save|saves|reset)\b/i.test(m[1])) return { refuse: `the commits since ${x.lastTag} change the save key or add a "Saves reset" line, and the quoted "now" doesn't name it` };
               return { deploy: true, why: `escape hatch, owner's "now": "${m[1]}"` };
             };
+            // A version with no tag after a run that didn't deploy: its release run never finished.
+            const lost = (x, d) => (!d.deploy && !d.refuse && x.vSha && x.tagged === false
+              ? `v${x.vSha} has no tag: its release never finished. Re-run it with a dispatch at ${x.relSha ? x.relSha.slice(0, 7) : 'the release commit'} (docs/DEPLOY.md).` : '');
             // DEPLOY-GATE END
             const ev = context.eventName, sha = ev === 'push' ? context.sha : git('rev-parse', '--verify', `${process.env.IN_SHA || ''}^{commit}`);
             const x = { event: ev, before: process.env.BEFORE, sha: ev === 'push' ? context.sha : (process.env.IN_SHA ? sha || process.env.IN_SHA : ''), now: process.env.IN_NOW };
+            const own = ev === 'push' || !x.sha, at = own ? context.sha : sha;
             if (ev === 'push') { x.vBefore = versionAt(x.before); x.vSha = versionAt(x.sha); }
-            else if (x.sha) {
+            else if (!x.sha) { x.vSha = versionAt(at); x.vParent = versionAt(`${at}^`); }
+            if (own && x.vSha) {
+              x.tagged = git('rev-parse', '-q', '--verify', `refs/tags/v${x.vSha}`) !== null;
+              x.relSha = (git('log', '--reverse', '--format=%H', `-G"version": "${x.vSha}"`, at, '--', 'package.json') || '').split('\n')[0] || '';
+            }
+            if (!own) {
               x.onMain = !!sha && git('merge-base', '--is-ancestor', sha, 'origin/main') !== null;
               const runs = sha ? (await github.rest.checks.listForRef({ ...context.repo, ref: sha, check_name: 'ci-ok', per_page: 50 })).data.check_runs : [];
               x.ciGreen = runs.some((r) => r.status === 'completed' && r.conclusion === 'success');
@@ -238,14 +256,18 @@ jobs:
             }
             const d = decide(x);
             if (d.refuse) { core.setFailed(`Deploy refused: ${d.refuse}`); return; }
-            core.notice(`${d.deploy ? 'Deploying' : 'Not deploying'} ${x.sha ? x.sha.slice(0, 7) : ''}: ${d.why}`);
+            core.notice(`${d.deploy ? 'Deploying' : 'Not deploying'} ${(x.sha || context.sha).slice(0, 7)}: ${d.why}`);
+            const warn = lost(x, d);
+            if (warn) core.warning(warn, { title: 'Release not live' });
             core.setOutput('deploy', String(d.deploy));
+            core.setOutput('own_ci', String(own));
             core.setOutput('sha', x.sha || context.sha);
 
   deploy:
     needs: [data, browser, ci-ok, gate]
-    # A push deploys only after its own tests pass; a dispatch's gate already checked ci-ok on the named sha.
-    if: always() && needs.gate.outputs.deploy == 'true' && (github.event_name == 'workflow_dispatch' || needs.ci-ok.result == 'success')
+    # A push or a merge's dispatch (own_ci) deploys only after this run's ci-ok; a dispatch at a named sha's gate already
+    # checked ci-ok on that sha. !cancelled(): a cancelled run never deploys.
+    if: ${{ !cancelled() && needs.gate.outputs.deploy == 'true' && (needs.gate.outputs.own_ci != 'true' || needs.ci-ok.result == 'success') }}
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     permissions:

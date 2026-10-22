@@ -14,7 +14,7 @@ const check = (ok, what) => { n++; if (!ok) fail++; console.log(`${ok ? 'ok  ' :
 const m = yml.match(/\/\/ DEPLOY-GATE START[^\n]*\n([\s\S]*?)\n\s*\/\/ DEPLOY-GATE END/);
 check(!!m, 'ci.yml has the DEPLOY-GATE block');
 if (!m) { console.log('DEPLOY CHECKS FAILED'); process.exit(1); }
-const decide = new Function(m[1] + '\nreturn decide;')();
+const { decide, lost } = new Function(m[1] + '\nreturn { decide, lost };')();
 
 const SHA = 'abc1234def5678abc1234def5678abc1234def5', S7 = SHA.slice(0, 7);
 const push = (vBefore, vSha, before = 'f'.repeat(40)) => decide({ event: 'push', before, sha: SHA, vBefore, vSha });
@@ -25,7 +25,18 @@ check(push('0.8.0', '0.9.0', '0'.repeat(40)).deploy === false && push('0.8.0', '
 
 const NOW = (q, s7 = S7) => `Coordinator, two-person dispatch.\nDEPLOY NOW ${s7}: "${q}" (verified by id cmsg_01ABC)`;
 const disp = (o) => decide({ event: 'workflow_dispatch', sha: SHA, onMain: true, ciGreen: true, vSha: '0.9.0', vParent: '0.9.0', lastTag: 'v0.8.0', saveChange: false, now: '42', nowIs114: true, nowBody: NOW('now'), ...o });
-check(decide({ event: 'workflow_dispatch', sha: '' }).deploy === false, 'dispatch without sha: tests only, as before');
+// The auto-merge path: every merge starts main CI as a dispatch with no inputs (no push event for GITHUB_TOKEN merges).
+const am = readFileSync(join(ROOT, '.github', 'workflows', 'auto-merge.yml'), 'utf8');
+check(/createWorkflowDispatch\(\{ owner, repo, workflow_id: 'ci\.yml', ref: 'main' \}\)/.test(am),
+  "auto-merge starts main CI as a dispatch with no inputs (the path the gate's no-sha case must deploy a release on)");
+const merged = (vParent, vSha) => decide({ event: 'workflow_dispatch', sha: '', vParent, vSha });
+check(merged('0.8.0', '0.9.0').deploy === true && merged('0.9.0', '0.9.0').deploy === false,
+  "auto-merge's dispatch: a merged release deploys, an ordinary merge stops at ci-ok (#786 deployed neither)");
+check(lost({ vSha: '0.9.0', tagged: false, relSha: SHA }, merged('0.9.0', '0.9.0')).includes(S7)
+  && lost({ vSha: '0.9.0', tagged: false }, push('0.9.0', '0.9.0')) !== ''
+  && lost({ vSha: '0.9.0', tagged: true }, merged('0.9.0', '0.9.0')) === ''
+  && lost({ vSha: '0.9.0', tagged: false }, merged('0.8.0', '0.9.0')) === '',
+  'a run that does not deploy warns when the version has no tag (a release that never finished), naming the release commit');
 check(!!disp({ onMain: false }).refuse && !!disp({ ciGreen: false }).refuse, 'dispatch: refused off main or without ci-ok green on the sha');
 check(disp({ vParent: '0.8.0', nowIs114: false, nowBody: '' }).deploy === true,
   'dispatch at a release commit (version differs from its parent): re-run or rollback, no quote needed');
@@ -39,8 +50,9 @@ check(!!disp({ saveChange: true }).refuse && disp({ saveChange: true, nowBody: N
 // Wiring: deploy, smoke and release follow the gate's sha; nothing deploys without the gate.
 const job = (name) => (yml.match(new RegExp(`\\n  ${name}:\\n([\\s\\S]*?)(?=\\n  [a-z-]+:\\n|$)`)) || [])[1] || '';
 const dep = job('deploy'), smk = job('smoke'), rel = job('release');
-check(/needs: \[data, browser, ci-ok, gate\]/.test(dep) && /needs\.gate\.outputs\.deploy == 'true'/.test(dep) && /needs\.ci-ok\.result == 'success'/.test(dep),
-  'deploy: only when the gate says so, and a push only after its own ci-ok');
+check(/needs: \[data, browser, ci-ok, gate\]/.test(dep) && /needs\.gate\.outputs\.deploy == 'true'/.test(dep)
+  && /needs\.gate\.outputs\.own_ci != 'true' \|\| needs\.ci-ok\.result == 'success'/.test(dep) && /if: \$\{\{ !cancelled\(\) && /.test(dep) && !/always\(\)/.test(dep),
+  "deploy: only when the gate says so, a push or a merge's dispatch only after its own ci-ok, and never from a cancelled run");
 check([dep, smk, rel].every((j) => /ref: \$\{\{ needs\.gate\.outputs\.sha \}\}/.test(j)) && /sha="\$DEPLOY_SHA"/.test(rel),
   'deploy, smoke and release all check out and tag the gate\'s sha');
 check(/needs\.deploy\.result == 'success'/.test(smk) && /needs\.smoke\.result == 'success'/.test(rel), 'smoke only after a deploy, release only after smoke');
