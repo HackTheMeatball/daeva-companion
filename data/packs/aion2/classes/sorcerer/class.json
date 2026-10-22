@@ -9,6 +9,7 @@
       "class": "sorcerer",
       "name": "Sorcerer",
       "release": "released",
+      "releaseOrder": 7,
       "defaultBuild": "build:sorcerer:guide",
       "sources": [
         {

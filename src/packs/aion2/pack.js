@@ -6,7 +6,7 @@ import { definePack } from "../../core/pack.js";
 import { GATE_GRAPH } from "./data/gate-graph.js";
 import { GATE_PROPOSED } from "./data/gate-proposed.js";
 import { QUESTS, QUEST_NAME, QUEST_STEP_I, QUEST_STEP_NOTES, QUEST_SUB_I } from "./data/story.js";
-import { GAME_CLASSES } from "./data/classes.js";
+import { GAME_CLASSES, GUIDE_CLASSES } from "./data/classes.js";
 import { GATES, STEPS } from "./data/milestones.js";
 import { GATE_CHANGES, KEPT_RULES, aion2Transforms } from "./rules.js";
 import { hopName, isAscensionKey, objLow, objSubs, storyHereOf, storyRecGate, zoneOfKey } from "./requirements.js";
@@ -19,23 +19,13 @@ import { aion2RowHooks, aion2RowRenderers } from "./cards/rows.js";
 import { aion2Place, stepsShownOf } from "./travel.js";
 
 /* The default guide pack (data/packs/aion2/asmodian/assassin/pack.json) and its class (data/packs/aion2/classes/assassin):
-   what a fresh save starts with; tests/core/state.test.mjs checks both against data/. Every class with a guide pack is
-   playable (`classes`): the Assassin, since 0.6 P5 the Ranger (data/packs/aion2/asmodian/ranger), since 0.7 P2 the
-   Gladiator (data/packs/aion2/asmodian/gladiator), since 0.7 P4 the Spiritmaster (data/packs/aion2/asmodian/spiritmaster) and
-   since 0.8 P3 the Templar (data/packs/aion2/asmodian/templar), since 0.8 P5 the Cleric (data/packs/aion2/asmodian/cleric),
-   since 0.8 P17 the Sorcerer (data/packs/aion2/asmodian/sorcerer) and since 0.8 P19 the Chanter
-   (data/packs/aion2/asmodian/chanter).
+   what a fresh save starts with; tests/core/state.test.mjs checks both against data/. Every released class with a guide
+   pack is playable (`classes`): GUIDE_CLASSES, compiled from the data (0.9 P11, tools/gen/gen.mjs), in the class records'
+   `releaseOrder` (the Assassin, then the order they were released).
    A character of another class is shown after the reload a switch does (the page loads one class's tables,
    docs/ARCHITECTURE.md §4). */
 export const PACK = "aion2/asmodian/assassin";
 export const CLASS = "assassin";
-const RANGER = { class: "ranger", pack: "aion2/asmodian/ranger", name: "Ranger" };
-const GLADIATOR = { class: "gladiator", pack: "aion2/asmodian/gladiator", name: "Gladiator" };
-const SPIRITMASTER = { class: "spiritmaster", pack: "aion2/asmodian/spiritmaster", name: "Spiritmaster" };
-const TEMPLAR = { class: "templar", pack: "aion2/asmodian/templar", name: "Templar" };
-const CLERIC = { class: "cleric", pack: "aion2/asmodian/cleric", name: "Cleric" };
-const SORCERER = { class: "sorcerer", pack: "aion2/asmodian/sorcerer", name: "Sorcerer" };
-const CHANTER = { class: "chanter", pack: "aion2/asmodian/chanter", name: "Chanter" };
 
 /* the class emblems (0.8 P12: Metabot's, the exact fetched bytes; docs/ISSUES.md "Class emblems") */
 const CLASS_EMBLEM = { gladiator: "assets/icons/class-gladiator.webp", templar: "assets/icons/class-templar.webp", assassin: "assets/icons/class-assassin.webp",
@@ -72,7 +62,7 @@ export const aion2Pack = definePack({
   },
   character: { pack: PACK, class: CLASS },
   /* the names are the class records' (data/packs/aion2/classes/<class>/class.json; tests/core/chars.test.mjs) */
-  classes: [{ class: CLASS, pack: PACK, name: "Assassin" }, RANGER, GLADIATOR, SPIRITMASTER, TEMPLAR, CLERIC, SORCERER, CHANTER],
+  classes: GUIDE_CLASSES,
   /* every class of the game, guide or not (0.8 P12: the welcome card's class picker shows the others as "Soon") */
   gameClasses: GAME_CLASSES.map(e => ({ ...e, icon: CLASS_EMBLEM[e.class] })),
   keptRules: KEPT_RULES,
