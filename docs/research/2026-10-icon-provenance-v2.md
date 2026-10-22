@@ -77,14 +77,15 @@ image and its hash. Nothing below is guessed; each row says how it was establish
 | extract-flask.png | owner-crop | Extract action | existing ISSUES.md row (owner screen 2026-10-18, T-47) | — (owner crop) | 2026-10-18 | already recorded |
 | story-complete.png | owner-crop | Story quest complete check | existing ISSUES.md row (owner screen 2026-10-18) | — (owner crop) | 2026-10-18 | already recorded |
 
-The 6 blank placeholder rows at ISSUES.md 121–126 should be replaced by these rows, not kept beside them.
+The 5 blank placeholder rows at ISSUES.md 121–124 and 126 should be replaced by these rows, not kept beside them.
+Line 125 (`sk-shadowstrike.png`) is a filled row and stays.
 
 ## Owner list (icons with no provenance record)
 
 None. All 28 have a record above.
 
 One check for the owner, not a gap in the record: the 9 owner-upload files are images the owner gave the project before
-the repo existed. If any of them came from a website, not a game screenshot, he can name the site. Until he does, the
+the repo existed. If any of them came from a website, not a game screenshot, the owner can name the site. Until then, the
 record answers a takedown or permission question as "supplied by the owner".
 
 ## For P27's check
@@ -94,5 +95,5 @@ record answers a takedown or permission question as "supplied by the owner".
 - The strict test must accept the two owner kinds (`owner-upload`, `owner-crop`) without a file URL. Instead it needs an
   owner source (screen or upload) and a date. For `owner-upload`, the date "before 2026-10-12 (in de17312d)" is a bound,
   not an exact day; that bound is the most the record holds. Every other row needs a page URL, a file URL and a date.
-- This doesn't narrow the check: the 6 files with no URL have no URL anywhere, and the check was always going to have to
+- This doesn't narrow the check: the 12 files with no file URL (9 owner-upload, 3 owner-crop) have none anywhere, and the check was always going to have to
   read these rows' kind.
