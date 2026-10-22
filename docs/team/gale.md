@@ -83,7 +83,7 @@ _From the owner, project chat 2026-10-20 6:46 PM ET: "kaizen is supposed to impr
 _From the owner, project chat 2026-10-20 7:00 PM ET: "No one is safe if their worth can't be proven." Outside review:
 Fresh governance review, `PROCESS REVIEW role-review` OK on v3, 2026-10-20 7:59 PM ET; comments from Team Audit and
 Org Design. Conformed 2026-10-22 to #791 (Team Audit seat closed, Review Broker opened) by Rules Steward as neutral
-writer; routed: coordinator 2026-10-22T00:35Z._
+writer; routed: coordinator 2026-10-22T00:35Z. Who assesses whom follows board-report.md (#790, #798)._
 
 **Role review (owner, 2026-10-20 7:00 PM ET):** every minor's kaizen review ends with one table, with a row for every
 standing role and every consultant past its end condition. Each row gives a **keep / change / cut** recommendation on
@@ -118,13 +118,15 @@ all get a row.
 - **Before a cut:** every row it owns (Ledger rows, Who-does-what rows, any owner-held duty) has a named successor
   first. A cut takes effect only after `RELEASE SHIPPED` and the handover file, never inside a freeze.
 - **Who assesses whom:** a role never assesses itself.
-  - Kaizen drafts every row except its own.
+  - Kaizen does the data pull, from the sources in the brief in [board-report.md](../kaizen/board-report.md) and no
+    others, and grades nothing.
+  - A one-off scorer with no history, not Fresh governance review, drafts every row from that brief, Kaizen's, Org
+    Design's, the Review Broker's, the standing reviewers' and the coordinator's included (board-report.md "Steps",
+    the spec's one home).
   - Org Design adds workload and overlap evidence, but not for its own row.
-  - Fresh governance review, or a one-off consultant, writes the rows for Kaizen, Org Design, the Review Broker, the standing
-    reviewers (Howard, Holly) and the coordinator's log.
 - **Who decides:** the coordinator decides each row and logs the outcome (Ledger, team-changes.csv) with the evidence
   link. A cut follows the hiring procedure's end steps: a handover file, then the thread ends. The coordinator's own
-  log row is written by the next one-off consultant, whose verdict stands. The coordinator logs it, doesn't override
+  row stands as the scorer wrote it. The coordinator logs it, doesn't override
   it, and may add a dissent; the verdict and any dissent both go on Isaac's per-minor list.
 - **Lean:** the table goes into the existing scorecard (`docs/kaizen/<minor>-scorecard.md`). There is no new meeting
   and no new thread, and each row is at most three lines. Org Design's roster section is the input for it, not a second
@@ -138,8 +140,8 @@ _From the owner, project chat 2026-10-20 6:42 PM ET: "Can Gale update this on hi
 
 - **Project instructions:** at each kaizen review, redraft the project instructions in
   `docs/kaizen/project-instructions.md` against what changed in the minor; the outside reviewer per the triage rule
-  reviews the change (`PROCESS REVIEW project-instructions OK`), and it's a consultant for any draft that touches Team
-  Audit or the review system. Only after that OK, send the full text to the coordinator, who applies it in project
+  reviews the change (`PROCESS REVIEW project-instructions OK`), and it's a consultant for any draft that touches the
+  Review Broker or the review system. Only after that OK, send the full text to the coordinator, who applies it in project
   settings. A change never loosens the owner-held limits.
 
 ### KZ-04
