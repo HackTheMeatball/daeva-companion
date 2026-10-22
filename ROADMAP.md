@@ -1529,6 +1529,8 @@ builds get Simple automatically.
   - The owner's in-game time-to-kill test (Assassin, Lv 45, 3 runs each against the current guide layout) decides the default: under about 10% slower makes Simple the default for new characters, otherwise it's opt-in. The 10% threshold is Holly's proposal, not sourced.
 - **Look and order.** Design Lead does the look as a toggle on the key panel component from the 0.9 key setup work (`docs/design/0.9-keys/`, P22). It is planned after that redesign and the Build view above, since all three share `build.js` and the same shots; the toggle sits in the Build view's switch slot. The name "Autopilot" was dropped because it reads like botting.
 
+**Candidate for the 0.10 pass: thegameswiki wording check (Source Vetting's proposal, 2026-10-21; Routed: coordinator 2026-10-22T01:15Z).** An assurance check, not a known gap: Legal confirmed no thegameswiki wording ships today. About 57 strings (about 1,800 words) in records citing 11 thegameswiki pages, credited quotes excluded, are compared by script (6-word runs and difflib ≥ 0.6, calibrated on two controls) against copies of the 11 pages the owner saves (one To-do, about 15 min, with Legal's OK for a temporary copy); Legal reviews only the flagged strings. Cost about 1 h Source Vetting, 15 min owner, 30 min review. Placed in 0.10 rather than 0.9: no known gap, and 0.9 is closing.
+
 Shaped in 0.10's own pass.
 
 ### 0.11 — The 1.0 look and the microscope pass (estimate)
