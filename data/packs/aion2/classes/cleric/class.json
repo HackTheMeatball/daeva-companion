@@ -9,6 +9,7 @@
       "class": "cleric",
       "name": "Cleric",
       "release": "released",
+      "releaseOrder": 6,
       "defaultBuild": "build:cleric:guide",
       "sources": [
         {

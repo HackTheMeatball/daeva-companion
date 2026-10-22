@@ -9,6 +9,7 @@
       "class": "gladiator",
       "name": "Gladiator",
       "release": "released",
+      "releaseOrder": 3,
       "defaultBuild": "build:gladiator:guide",
       "sources": [
         {

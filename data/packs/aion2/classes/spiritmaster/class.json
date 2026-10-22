@@ -9,6 +9,7 @@
       "class": "spiritmaster",
       "name": "Spiritmaster",
       "release": "released",
+      "releaseOrder": 4,
       "defaultBuild": "build:spiritmaster:guide",
       "sources": [
         {

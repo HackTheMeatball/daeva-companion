@@ -33,6 +33,10 @@ const { SAVE_KEY, V4_KEY, BEFORE_IMPORT_KEY, TEST_SLOT, toStored, writeRaw, read
 let fail = 0; const ok = (name, cond, detail) => { console.log((cond ? 'ok   ' : 'FAIL ') + name + (!cond && detail !== undefined ? '  · ' + JSON.stringify(detail).slice(0, 700) : '')); if (!cond) fail++; };
 const UUID4 = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
 const OLD_MSG = "This file is from a version before 0.4 and can't be loaded.";
+/* the classes shipped by 0.8, in the picker's order: the page lists them in this order among the ones it reads from
+   GUIDE_CLASSES (0.9 P11), so a new class needs no edit here */
+const SHIPPED = ['assassin', 'ranger', 'gladiator', 'spiritmaster', 'templar', 'cleric', 'sorcerer', 'chanter'];
+const inShippedOrder = cs => JSON.stringify(cs.filter(c => SHIPPED.includes(c))) === JSON.stringify(SHIPPED);
 /* a pre-0.4 save and export, as the 0.3 build stored and exported it (flat, under the v4 key) */
 const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:2202010': true }, level: 30, quest: 'Dying Light', open: {}, mode: 'advanced', seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true, stampV1: true, schemaVersion: 1, backup1: true, backup: { since: 1759000000000 }, mt: { level: [0, 30] } });
 
@@ -191,11 +195,14 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     ok('switcher: Escape in the list closes it and returns focus to the button', b2.exp === 'false' && !b2.open && b2.focus === 'charBtn', b2);
     await p.keyboard.press('Enter'); await p.focus('#charNew'); await p.keyboard.press('Enter'); await p.waitForTimeout(100);
     const f = await p.evaluate(() => ({ focus: document.activeElement.id, label: document.querySelector('label[for="charName"]').textContent, legend: document.querySelector('#charForm legend').textContent,
-      radios: [...document.querySelectorAll('#charPick input[type=radio]')].map(r => [r.value, r.checked, r.closest('label').innerText.trim()]), list: !document.getElementById('charList').hidden }));
+      radios: [...document.querySelectorAll('#charPick input[type=radio]')].map(r => [r.value, r.checked, r.closest('label').innerText.trim()]), list: !document.getElementById('charList').hidden,
+      want: GUIDE_CLASSES.map((e, i) => [e.class, !i, e.name]) }));
     ok('switcher: New character opens the form with the focus in "Name (optional)"', f.focus === 'charName' && f.label === 'Name (optional)' && !f.list, f);
     /* 0.6 P5: the Ranger joined the Assassin; 0.7 P2: the Gladiator got its guide pack and joined them; 0.7 P4: the
-       Spiritmaster after them; 0.8 P3: the Templar; 0.8 P5: the Cleric; 0.8 P17: the Sorcerer; 0.8 P19: the Chanter last */
-    ok('switcher: the class picker offers the Assassin (picked), the Ranger, the Gladiator, the Spiritmaster, the Templar, the Cleric, the Sorcerer and the Chanter', f.legend === 'Class' && JSON.stringify(f.radios) === JSON.stringify([['assassin', true, 'Assassin'], ['ranger', false, 'Ranger'], ['gladiator', false, 'Gladiator'], ['spiritmaster', false, 'Spiritmaster'], ['templar', false, 'Templar'], ['cleric', false, 'Cleric'], ['sorcerer', false, 'Sorcerer'], ['chanter', false, 'Chanter']]), f.radios);
+       Spiritmaster after them; 0.8 P3: the Templar; 0.8 P5: the Cleric; 0.8 P17: the Sorcerer; 0.8 P19: the Chanter.
+       0.9 P11: the list is the page's GUIDE_CLASSES (class, name), the Assassin first and picked, those eight in this order */
+    ok('switcher: the class picker offers every playable class by name, the Assassin (picked), then the Ranger, the Gladiator, the Spiritmaster, the Templar, the Cleric, the Sorcerer and the Chanter in that order', f.legend === 'Class'
+      && JSON.stringify(f.radios) === JSON.stringify(f.want) && f.radios[0][0] === 'assassin' && f.radios[0][2] === 'Assassin' && inShippedOrder(f.radios.map(r => r[0])), f.radios);
     await p.keyboard.type('  Zed  '); await p.waitForTimeout(50);
     ok('switcher: the form previews the label Zed-assassin-lvl1 (name trimmed)', await p.innerText('#charPrev') === 'Zed-assassin-lvl1', await p.innerText('#charPrev'));
     await p.keyboard.press('Escape'); await p.waitForTimeout(100);
@@ -244,195 +251,71 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     ok('two characters: no page errors', !errs.length, errs);
     await ctx.close();
   }
-  /* 10b. a Ranger (0.6 P5): picking the class makes a ranger character, and switching characters switches the guide (the
-     reload loads that class's tables: stigma plan, skills, board nodes); switching back shows the Assassin's again */
+  /* 10b. every other playable class (0.6 P5 the Ranger … 0.8 P19 the Chanter; 0.9 P11: one loop over the page's
+     GUIDE_CLASSES, the data's list, so a new class needs no edit here): picking the class makes a character of it, and
+     switching characters switches the guide (the reload loads that class's tables: stigma plan, skills, board nodes);
+     switching back shows the Assassin's again. A class in GUIDE_PINS also checks its pinned facts: its stigma plan, first
+     skills (one of them shown in the page), the Rotation section (the game's default keys, 0.7 P11, or only how it plays),
+     how it plays (0.9 P18) and its own guide steps (the Assassin's page has none of them) */
+  const GUIDE_PINS = {
+    ranger: { plan: ["Vaizel's Authority", 'Bow of Blessing', 'Supporting Fire', 'Griffon Arrow'], sk: ['Snipe'], shown: 'Snipe',
+      keys: ['Left click: Snipe', 'Right click: Tempest Shot', '1: Snare Shot'], notKeys: /Quick Slice|Marking Shot|Drill Dart/, how: ['Gale Arrow first', "aion2turkiye's Ranger page"], notHow: ['Insignia Explosion'], steps: [] },
+    gladiator: { plan: ['Lunge Stance', "Zikel's Blessing", 'Lifestealing Blade', 'Rage Burst'], sk: ['Rending Blow', 'Overhead Slam'], shown: 'Rending Blow',
+      keys: ['Left click: Keen Strike', 'Right click: Rending Blow', '1: Leaping Slam'], notKeys: /Quick Slice|Overhead Slam/, how: ['Overhead Slam above Rending Blow', "aion2turkiye's Gladiator page"], notHow: [], steps: [] },
+    /* no key setup, so its Rotation section holds only how it plays (0.9 P18: before, no Rotation section) */
+    spiritmaster: { plan: ['Summon: Ancient Spirit', "Enhance: Spirit's Benediction", 'Jointstrike: Corrode', 'Flame Blessing'], sk: ['Cold Shock', 'Combustion'], shown: 'Cold Shock',
+      onlyHow: true, how: ['Jointstrike: Curse above Dimensional Control', "aion2turkiye's Spiritmaster page"], notHow: [], steps: [['build:triggers', 'Three skills only fire on a condition']] },
+    /* the owner's Templar, Cleric, Sorcerer and Chanter screens: their default keys */
+    templar: { plan: ['Taunt', "Empyrean Lord's Punishment", 'Battlefield Banner', 'Doom Shield'], sk: ['Judgment', 'Vicious Strike'], shown: 'Vicious Strike',
+      keys: ['Left click: Vicious Strike', 'Right click: Pummel', '1: Poach'], notKeys: /Quick Slice|Judgment|Rending Blow/, how: [], notHow: [], steps: [['build:triggers', 'Five skills only fire on a condition']] },
+    cleric: { plan: ['Earth Punishment', 'Light of Protection', 'Noble Aura', 'Prayer of Amplification'], sk: ["Earth's Retribution", 'Judgment Thunder'], shown: "Earth's Retribution",
+      keys: ["Left click: Earth's Retribution", 'Right click: Judgment Thunder', '1: Debilitating Mark'], notKeys: /Quick Slice|Vicious Strike|Condemnation/, how: [], notHow: [], steps: [['build:triggers', 'Two skills only fire on a condition']] },
+    sorcerer: { plan: ['Element Enhancement', 'Delayed Explosion', 'Fire Wall', 'Cold Storm'], sk: ['Flame Arrow', 'Ice Chain', 'Firestorm'], shown: 'Flame Arrow',
+      keys: ['Left click: Flame Arrow', 'Right click: Ice Chain', '1: Firestorm'], notKeys: /Quick Slice|Earth's Retribution|Hellfire/, how: [], notHow: [],
+      steps: [['build:triggers', 'Three skills only fire on a condition'], ['build:hellfire', 'Hold 4 to charge Hellfire']] },
+    chanter: { plan: ['Undefeated Mantra', 'Sprint Mantra', 'Power of the Storm', "Marchutan's Wrath"], sk: ['Dark Crush', 'Onslaught', 'Spinning Strike'], shown: 'Onslaught',
+      keys: ['Left click: Onslaught', 'Right click: Incandescent Blow', '1: Rushing Smash'], notKeys: /Quick Slice|Flame Arrow|Spinning Strike/, how: [], notHow: [],
+      steps: [['build:triggers', 'Four skills only fire on a condition'], ['build:rotation', 'Impactful Crush (2) stuns and opens Dark Crush']] },
+  };
+  const guideOf = (p, pin = {}) => p.evaluate(({ shown, steps }) => ({ pack: self.DAEVA_PACK, cls: char(state).class, plan: STIGMA_PLAN.slice(), sk: SP_SKILLS_CORE.map(x => x.n),
+    lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, how: document.getElementById('rotHow').hidden ? '' : document.getElementById('rotHow').textContent,
+    shown: !!shown && document.getElementById('main').innerText.includes(shown), keys: document.getElementById('stackViz').textContent,
+    onlyHow: [...document.querySelectorAll('#statDrawer .sd-rot > :not(.ns-head, .rot-how)')].every(e => e.style.display === 'none'),
+    steps: steps.map(([k, t]) => STEPS.some(g => g.items.some(i => i.k === k && i.t.includes(t)))) }), { shown: pin.shown || '', steps: pin.steps || [] });
+  const assassinAgain = (b, first, now) => b.pack === 'aion2/asmodian/assassin' && b.plan[0] === "Triniel's Dagger" && b.lbl === 'assassin-lvl22' && b.h1 === 'Asmodian Assassin Route' && isDeepStrictEqual(now, first);
   {
     const { ctx, p, errs } = await page();
     await writeSave(p, SAVED, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
-    const first = JSON.parse(await readRaw(p)).chars[TEST_SLOT];
-    const guide = () => p.evaluate(() => ({ pack: self.DAEVA_PACK, cls: char(state).class, plan: STIGMA_PLAN.slice(), sk: SP_SKILLS_CORE.map(x => x.n).slice(0, 2),
-      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, how: document.getElementById('rotHow').hidden ? '' : document.getElementById('rotHow').textContent, skills: document.getElementById('main').innerText.includes('Snipe'),
-      keys: document.getElementById('stackViz').textContent }));
-    const a = await guide();
-    ok('Assassin guide: its pack, plan and skills', a.pack === 'aion2/asmodian/assassin' && a.cls === 'assassin' && a.plan[0] === "Triniel's Dagger" && a.sk[0] === 'Heart Gore' && a.rot && !a.skills, a);
+    const a = await guideOf(p, GUIDE_PINS.ranger);
+    ok('Assassin guide: its pack, plan and skills', a.pack === 'aion2/asmodian/assassin' && a.cls === 'assassin' && a.plan[0] === "Triniel's Dagger" && a.sk[0] === 'Heart Gore' && a.rot && !a.shown, a);
     /* 0.9 P18: under the rotation, how it plays (the guide's tip:rotation-play) with its source */
     ok('Assassin: the Rotation section says how it plays, with its source', a.how.startsWith('How it plays') && a.how.includes('Insignia Explosion (from Lv 14) first') && a.how.includes("Source: daevaguides macro guide and aion2turkiye's Assassin page"), a.how);
-    await p.click('#charBtn'); await p.click('#charNew'); await p.check('#charPick input[value="ranger"]'); await p.waitForTimeout(50);
-    ok('ranger: the form previews ranger-lvl1', await p.innerText('#charPrev') === 'ranger-lvl1', await p.innerText('#charPrev'));
-    await Promise.all([p.waitForEvent('load'), p.click('#charCreate')]); await p.waitForTimeout(400);
-    const r = await guide(), s = JSON.parse(await readRaw(p)), rid = s.current;
-    ok('ranger: a new current slot of class ranger, pack aion2/asmodian/ranger; the first character stored as it was', rid !== TEST_SLOT && s.chars[rid].class === 'ranger' && s.chars[rid].pack === 'aion2/asmodian/ranger' && isDeepStrictEqual(s.chars[TEST_SLOT], first), s.chars[rid]);
-    /* 0.7 P11 (#418): the Ranger now has the game's default keys, so the Rotation section shows them (Lv 1: the mouse and 1) */
-    ok('ranger: the page runs the Ranger guide (its pack, stigma plan, skills shown; Rotation from its default keys)', r.pack === 'aion2/asmodian/ranger' && r.cls === 'ranger' && JSON.stringify(r.plan) === JSON.stringify(["Vaizel's Authority", 'Bow of Blessing', 'Supporting Fire', 'Griffon Arrow'])
-      && r.sk[0] === 'Snipe' && r.skills && r.rot && ['Left click: Snipe', 'Right click: Tempest Shot', '1: Snare Shot'].every(x => r.keys.includes(x)) && !/Quick Slice|Marking Shot|Drill Dart/.test(r.keys)
-      && r.lbl === 'ranger-lvl1' && r.h1 === 'Asmodian Ranger Route', r);
-    ok('ranger: how it plays is the Ranger\'s, with its source (0.9 P18)', r.how.includes('Gale Arrow first') && r.how.includes("aion2turkiye's Ranger page") && !r.how.includes('Insignia Explosion'), r.how);
-    await p.click('#charBtn');
-    await Promise.all([p.waitForEvent('load'), p.click(`#charRows [data-char="${TEST_SLOT}"]`)]); await p.waitForTimeout(400);
-    const b = await guide();
-    ok('switch back: the Assassin guide again, its character unchanged', b.pack === 'aion2/asmodian/assassin' && b.plan[0] === "Triniel's Dagger" && b.lbl === 'assassin-lvl22' && b.h1 === 'Asmodian Assassin Route' && isDeepStrictEqual(JSON.parse(await readRaw(p)).chars[TEST_SLOT], first), b);
-    ok('ranger: no page errors', !errs.length, errs);
+    ok('Assassin: no page errors', !errs.length, errs);
     await ctx.close();
   }
-  /* 10b'. a Gladiator (0.7 P2): the same for the third class; its Rotation section shows the game's default keys (0.7 P11) */
-  {
-    const { ctx, p, errs } = await page();
+  const others = await (async () => { const { ctx, p } = await page(); const l = await p.evaluate(() => GUIDE_CLASSES.map(e => ({ ...e }))); await ctx.close(); return l; })();
+  ok('classes: the page\'s GUIDE_CLASSES starts with the Assassin and lists every class GUIDE_PINS pins', others[0] && others[0].pack === 'aion2/asmodian/assassin' && Object.keys(GUIDE_PINS).every(c => others.some(e => e.class === c)), others);
+  for (const { class: cls, pack, name } of others.slice(1)) {
+    const { ctx, p, errs } = await page(), pin = GUIDE_PINS[cls];
     await writeSave(p, SAVED, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
     const first = JSON.parse(await readRaw(p)).chars[TEST_SLOT];
-    const guide = () => p.evaluate(() => ({ pack: self.DAEVA_PACK, cls: char(state).class, plan: STIGMA_PLAN.slice(), sk: SP_SKILLS_CORE.map(x => x.n).slice(0, 2),
-      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, how: document.getElementById('rotHow').hidden ? '' : document.getElementById('rotHow').textContent, skills: document.getElementById('main').innerText.includes('Rending Blow'),
-      keys: document.getElementById('stackViz').textContent }));
-    await p.click('#charBtn'); await p.click('#charNew'); await p.check('#charPick input[value="gladiator"]'); await p.waitForTimeout(50);
-    ok('gladiator: the form previews gladiator-lvl1', await p.innerText('#charPrev') === 'gladiator-lvl1', await p.innerText('#charPrev'));
+    await p.click('#charBtn'); await p.click('#charNew'); await p.check(`#charPick input[value="${cls}"]`); await p.waitForTimeout(50);
+    ok(`${cls}: the form previews ${cls}-lvl1`, await p.innerText('#charPrev') === cls + '-lvl1', await p.innerText('#charPrev'));
     await Promise.all([p.waitForEvent('load'), p.click('#charCreate')]); await p.waitForTimeout(400);
-    const g = await guide(), s = JSON.parse(await readRaw(p)), gid = s.current;
-    ok('gladiator: a new current slot of class gladiator, pack aion2/asmodian/gladiator; the first character stored as it was', gid !== TEST_SLOT && s.chars[gid].class === 'gladiator' && s.chars[gid].pack === 'aion2/asmodian/gladiator' && isDeepStrictEqual(s.chars[TEST_SLOT], first), s.chars[gid]);
-    /* 0.7 P11 (#418): the game's default keys, so a Rotation section (Lv 1: the mouse and 1) */
-    ok('gladiator: the page runs the Gladiator guide (its pack, stigma plan, skills shown; Rotation from its default keys)', g.pack === 'aion2/asmodian/gladiator' && g.cls === 'gladiator' && JSON.stringify(g.plan) === JSON.stringify(['Lunge Stance', "Zikel's Blessing", 'Lifestealing Blade', 'Rage Burst'])
-      && JSON.stringify(g.sk) === JSON.stringify(['Rending Blow', 'Overhead Slam']) && g.skills && g.rot
-      && ['Left click: Keen Strike', 'Right click: Rending Blow', '1: Leaping Slam'].every(x => g.keys.includes(x)) && !/Quick Slice|Overhead Slam/.test(g.keys) && g.lbl === 'gladiator-lvl1' && g.h1 === 'Asmodian Gladiator Route', g);
-    ok('gladiator: how it plays is the Gladiator\'s, with its source (0.9 P18)', g.how.includes('Overhead Slam above Rending Blow') && g.how.includes("aion2turkiye's Gladiator page"), g.how);
+    const g = await guideOf(p, pin), s = JSON.parse(await readRaw(p)), id = s.current;
+    ok(`${cls}: a new current slot of class ${cls}, pack ${pack}; the first character stored as it was`, id !== TEST_SLOT && s.chars[id].class === cls && s.chars[id].pack === pack && isDeepStrictEqual(s.chars[TEST_SLOT], first), s.chars[id]);
+    ok(`${cls}: the page runs the ${name} guide (its pack, a stigma plan, the label, the title)`, g.pack === pack && g.cls === cls && g.plan.length > 0 && g.lbl === cls + '-lvl1' && g.h1 === `Asmodian ${name} Route`, g);
+    if (pin) {
+      ok(`${cls}: its stigma plan, skills shown, its own steps; a Rotation section ${pin.onlyHow ? 'with only how it plays' : 'from its default keys'}`, JSON.stringify(g.plan) === JSON.stringify(pin.plan)
+        && JSON.stringify(g.sk.slice(0, pin.sk.length)) === JSON.stringify(pin.sk) && g.shown && g.rot && g.steps.every(Boolean)
+        && (pin.onlyHow ? g.onlyHow : pin.keys.every(x => g.keys.includes(x)) && !pin.notKeys.test(g.keys)), g);
+      if (pin.how.length) ok(`${cls}: how it plays is the ${name}'s, with its source (0.9 P18)`, pin.how.every(x => g.how.includes(x)) && !pin.notHow.some(x => g.how.includes(x)), g.how);
+    }
     await p.click('#charBtn');
     await Promise.all([p.waitForEvent('load'), p.click(`#charRows [data-char="${TEST_SLOT}"]`)]); await p.waitForTimeout(400);
-    const b = await guide();
-    ok('gladiator, switch back: the Assassin guide again, its character unchanged', b.pack === 'aion2/asmodian/assassin' && b.plan[0] === "Triniel's Dagger" && b.lbl === 'assassin-lvl22' && b.h1 === 'Asmodian Assassin Route' && isDeepStrictEqual(JSON.parse(await readRaw(p)).chars[TEST_SLOT], first), b);
-    ok('gladiator: no page errors', !errs.length, errs);
-    await ctx.close();
-  }
-  /* 10b''. a Spiritmaster (0.7 P4): the same for the fourth class; no key setup either, so its Rotation section holds only
-     how it plays (0.9 P18: before, no Rotation section), and the Build plan card states the three skills that fire only on
-     a condition */
-  {
-    const { ctx, p, errs } = await page();
-    await writeSave(p, SAVED, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
-    const first = JSON.parse(await readRaw(p)).chars[TEST_SLOT];
-    const guide = () => p.evaluate(() => ({ pack: self.DAEVA_PACK, cls: char(state).class, plan: STIGMA_PLAN.slice(), sk: SP_SKILLS_CORE.map(x => x.n).slice(0, 2),
-      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, how: document.getElementById('rotHow').hidden ? '' : document.getElementById('rotHow').textContent, skills: document.getElementById('main').innerText.includes('Cold Shock'),
-      onlyHow: [...document.querySelectorAll('#statDrawer .sd-rot > :not(.ns-head, .rot-how)')].every(e => e.style.display === 'none'),
-      triggers: STEPS.some(g => g.items.some(i => i.k === 'build:triggers' && i.t.includes('Three skills only fire on a condition'))) }));
-    await p.click('#charBtn'); await p.click('#charNew'); await p.check('#charPick input[value="spiritmaster"]'); await p.waitForTimeout(50);
-    ok('spiritmaster: the form previews spiritmaster-lvl1', await p.innerText('#charPrev') === 'spiritmaster-lvl1', await p.innerText('#charPrev'));
-    await Promise.all([p.waitForEvent('load'), p.click('#charCreate')]); await p.waitForTimeout(400);
-    const m = await guide(), s = JSON.parse(await readRaw(p)), mid = s.current;
-    ok('spiritmaster: a new current slot of class spiritmaster, pack aion2/asmodian/spiritmaster; the first character stored as it was', mid !== TEST_SLOT && s.chars[mid].class === 'spiritmaster' && s.chars[mid].pack === 'aion2/asmodian/spiritmaster' && isDeepStrictEqual(s.chars[TEST_SLOT], first), s.chars[mid]);
-    ok('spiritmaster: the page runs the Spiritmaster guide (its pack, stigma plan, skills shown, the conditions step; a Rotation section with only how it plays)', m.pack === 'aion2/asmodian/spiritmaster' && m.cls === 'spiritmaster'
-      && JSON.stringify(m.plan) === JSON.stringify(['Summon: Ancient Spirit', "Enhance: Spirit's Benediction", 'Jointstrike: Corrode', 'Flame Blessing'])
-      && JSON.stringify(m.sk) === JSON.stringify(['Cold Shock', 'Combustion']) && m.skills && m.triggers && m.rot && m.onlyHow
-      && m.how.includes('Jointstrike: Curse above Dimensional Control') && m.how.includes("aion2turkiye's Spiritmaster page") && m.lbl === 'spiritmaster-lvl1' && m.h1 === 'Asmodian Spiritmaster Route', m);
-    await p.click('#charBtn');
-    await Promise.all([p.waitForEvent('load'), p.click(`#charRows [data-char="${TEST_SLOT}"]`)]); await p.waitForTimeout(400);
-    const b = await guide();
-    ok('spiritmaster, switch back: the Assassin guide again (no conditions step), its character unchanged', b.pack === 'aion2/asmodian/assassin' && b.plan[0] === "Triniel's Dagger" && !b.triggers && b.lbl === 'assassin-lvl22' && b.h1 === 'Asmodian Assassin Route' && isDeepStrictEqual(JSON.parse(await readRaw(p)).chars[TEST_SLOT], first), b);
-    ok('spiritmaster: no page errors', !errs.length, errs);
-    await ctx.close();
-  }
-  /* 10b'''. a Templar (0.8 P3): the same for the fifth class; its Rotation section shows the game's default keys (the
-     owner's Templar screen) and the Build plan card states the five skills that fire only on a condition */
-  {
-    const { ctx, p, errs } = await page();
-    await writeSave(p, SAVED, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
-    const first = JSON.parse(await readRaw(p)).chars[TEST_SLOT];
-    const guide = () => p.evaluate(() => ({ pack: self.DAEVA_PACK, cls: char(state).class, plan: STIGMA_PLAN.slice(), sk: SP_SKILLS_CORE.map(x => x.n).slice(0, 2),
-      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, how: document.getElementById('rotHow').hidden ? '' : document.getElementById('rotHow').textContent, skills: document.getElementById('main').innerText.includes('Vicious Strike'),
-      keys: document.getElementById('stackViz').textContent,
-      triggers: STEPS.some(g => g.items.some(i => i.k === 'build:triggers' && i.t.includes('Five skills only fire on a condition'))) }));
-    await p.click('#charBtn'); await p.click('#charNew'); await p.check('#charPick input[value="templar"]'); await p.waitForTimeout(50);
-    ok('templar: the form previews templar-lvl1', await p.innerText('#charPrev') === 'templar-lvl1', await p.innerText('#charPrev'));
-    await Promise.all([p.waitForEvent('load'), p.click('#charCreate')]); await p.waitForTimeout(400);
-    const t = await guide(), s = JSON.parse(await readRaw(p)), tid = s.current;
-    ok('templar: a new current slot of class templar, pack aion2/asmodian/templar; the first character stored as it was', tid !== TEST_SLOT && s.chars[tid].class === 'templar' && s.chars[tid].pack === 'aion2/asmodian/templar' && isDeepStrictEqual(s.chars[TEST_SLOT], first), s.chars[tid]);
-    ok('templar: the page runs the Templar guide (its pack, stigma plan, skills shown, the conditions step; Rotation from its default keys)', t.pack === 'aion2/asmodian/templar' && t.cls === 'templar'
-      && JSON.stringify(t.plan) === JSON.stringify(['Taunt', "Empyrean Lord's Punishment", 'Battlefield Banner', 'Doom Shield'])
-      && JSON.stringify(t.sk) === JSON.stringify(['Judgment', 'Vicious Strike']) && t.skills && t.triggers && t.rot
-      && ['Left click: Vicious Strike', 'Right click: Pummel', '1: Poach'].every(x => t.keys.includes(x)) && !/Quick Slice|Judgment|Rending Blow/.test(t.keys) && t.lbl === 'templar-lvl1' && t.h1 === 'Asmodian Templar Route', t);
-    await p.click('#charBtn');
-    await Promise.all([p.waitForEvent('load'), p.click(`#charRows [data-char="${TEST_SLOT}"]`)]); await p.waitForTimeout(400);
-    const b = await guide();
-    ok('templar, switch back: the Assassin guide again (no conditions step), its character unchanged', b.pack === 'aion2/asmodian/assassin' && b.plan[0] === "Triniel's Dagger" && !b.triggers && b.lbl === 'assassin-lvl22' && b.h1 === 'Asmodian Assassin Route' && isDeepStrictEqual(JSON.parse(await readRaw(p)).chars[TEST_SLOT], first), b);
-    ok('templar: no page errors', !errs.length, errs);
-    await ctx.close();
-  }
-  /* 10b''''. a Cleric (0.8 P5): the same for the sixth class; its Rotation section shows the game's default keys (the
-     owner's Cleric screen, both mouse buttons read from it) and the Build plan card states the two skills that fire only
-     on a condition */
-  {
-    const { ctx, p, errs } = await page();
-    await writeSave(p, SAVED, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
-    const first = JSON.parse(await readRaw(p)).chars[TEST_SLOT];
-    const guide = () => p.evaluate(() => ({ pack: self.DAEVA_PACK, cls: char(state).class, plan: STIGMA_PLAN.slice(), sk: SP_SKILLS_CORE.map(x => x.n).slice(0, 2),
-      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, how: document.getElementById('rotHow').hidden ? '' : document.getElementById('rotHow').textContent, skills: document.getElementById('main').innerText.includes("Earth's Retribution"),
-      keys: document.getElementById('stackViz').textContent,
-      triggers: STEPS.some(g => g.items.some(i => i.k === 'build:triggers' && i.t.includes('Two skills only fire on a condition'))) }));
-    await p.click('#charBtn'); await p.click('#charNew'); await p.check('#charPick input[value="cleric"]'); await p.waitForTimeout(50);
-    ok('cleric: the form previews cleric-lvl1', await p.innerText('#charPrev') === 'cleric-lvl1', await p.innerText('#charPrev'));
-    await Promise.all([p.waitForEvent('load'), p.click('#charCreate')]); await p.waitForTimeout(400);
-    const c = await guide(), s = JSON.parse(await readRaw(p)), cid = s.current;
-    ok('cleric: a new current slot of class cleric, pack aion2/asmodian/cleric; the first character stored as it was', cid !== TEST_SLOT && s.chars[cid].class === 'cleric' && s.chars[cid].pack === 'aion2/asmodian/cleric' && isDeepStrictEqual(s.chars[TEST_SLOT], first), s.chars[cid]);
-    ok('cleric: the page runs the Cleric guide (its pack, stigma plan, skills shown, the conditions step; Rotation from its default keys)', c.pack === 'aion2/asmodian/cleric' && c.cls === 'cleric'
-      && JSON.stringify(c.plan) === JSON.stringify(['Earth Punishment', 'Light of Protection', 'Noble Aura', 'Prayer of Amplification'])
-      && JSON.stringify(c.sk) === JSON.stringify(["Earth's Retribution", 'Judgment Thunder']) && c.skills && c.triggers && c.rot
-      && ["Left click: Earth's Retribution", 'Right click: Judgment Thunder', '1: Debilitating Mark'].every(x => c.keys.includes(x)) && !/Quick Slice|Vicious Strike|Condemnation/.test(c.keys) && c.lbl === 'cleric-lvl1' && c.h1 === 'Asmodian Cleric Route', c);
-    await p.click('#charBtn');
-    await Promise.all([p.waitForEvent('load'), p.click(`#charRows [data-char="${TEST_SLOT}"]`)]); await p.waitForTimeout(400);
-    const b = await guide();
-    ok('cleric, switch back: the Assassin guide again (no conditions step), its character unchanged', b.pack === 'aion2/asmodian/assassin' && b.plan[0] === "Triniel's Dagger" && !b.triggers && b.lbl === 'assassin-lvl22' && b.h1 === 'Asmodian Assassin Route' && isDeepStrictEqual(JSON.parse(await readRaw(p)).chars[TEST_SLOT], first), b);
-    ok('cleric: no page errors', !errs.length, errs);
-    await ctx.close();
-  }
-  /* 10b'''''. a Sorcerer (0.8 P17): the same for the seventh class; its Rotation section shows the game's default keys (the
-     owner's Sorcerer screen, both mouse buttons read from it), the Build plan card states the three skills that fire only
-     on a condition, and Hellfire's step says to hold its key to charge it */
-  {
-    const { ctx, p, errs } = await page();
-    await writeSave(p, SAVED, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
-    const first = JSON.parse(await readRaw(p)).chars[TEST_SLOT];
-    const guide = () => p.evaluate(() => ({ pack: self.DAEVA_PACK, cls: char(state).class, plan: STIGMA_PLAN.slice(), sk: SP_SKILLS_CORE.map(x => x.n).slice(0, 3),
-      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, how: document.getElementById('rotHow').hidden ? '' : document.getElementById('rotHow').textContent, skills: document.getElementById('main').innerText.includes('Flame Arrow'),
-      keys: document.getElementById('stackViz').textContent,
-      triggers: STEPS.some(g => g.items.some(i => i.k === 'build:triggers' && i.t.includes('Three skills only fire on a condition'))),
-      hold: STEPS.some(g => g.items.some(i => i.k === 'build:hellfire' && i.t.includes('Hold 4 to charge Hellfire'))) }));
-    await p.click('#charBtn'); await p.click('#charNew'); await p.check('#charPick input[value="sorcerer"]'); await p.waitForTimeout(50);
-    ok('sorcerer: the form previews sorcerer-lvl1', await p.innerText('#charPrev') === 'sorcerer-lvl1', await p.innerText('#charPrev'));
-    await Promise.all([p.waitForEvent('load'), p.click('#charCreate')]); await p.waitForTimeout(400);
-    const c = await guide(), s = JSON.parse(await readRaw(p)), cid = s.current;
-    ok('sorcerer: a new current slot of class sorcerer, pack aion2/asmodian/sorcerer; the first character stored as it was', cid !== TEST_SLOT && s.chars[cid].class === 'sorcerer' && s.chars[cid].pack === 'aion2/asmodian/sorcerer' && isDeepStrictEqual(s.chars[TEST_SLOT], first), s.chars[cid]);
-    ok('sorcerer: the page runs the Sorcerer guide (its pack, stigma plan, skills shown, the conditions and Hellfire steps; Rotation from its default keys)', c.pack === 'aion2/asmodian/sorcerer' && c.cls === 'sorcerer'
-      && JSON.stringify(c.plan) === JSON.stringify(['Element Enhancement', 'Delayed Explosion', 'Fire Wall', 'Cold Storm'])
-      && JSON.stringify(c.sk) === JSON.stringify(['Flame Arrow', 'Ice Chain', 'Firestorm']) && c.skills && c.triggers && c.hold && c.rot
-      && ['Left click: Flame Arrow', 'Right click: Ice Chain', '1: Firestorm'].every(x => c.keys.includes(x)) && !/Quick Slice|Earth's Retribution|Hellfire/.test(c.keys) && c.lbl === 'sorcerer-lvl1' && c.h1 === 'Asmodian Sorcerer Route', c);
-    await p.click('#charBtn');
-    await Promise.all([p.waitForEvent('load'), p.click(`#charRows [data-char="${TEST_SLOT}"]`)]); await p.waitForTimeout(400);
-    const b = await guide();
-    ok('sorcerer, switch back: the Assassin guide again (no conditions or Hellfire step), its character unchanged', b.pack === 'aion2/asmodian/assassin' && b.plan[0] === "Triniel's Dagger" && !b.triggers && !b.hold && b.lbl === 'assassin-lvl22' && b.h1 === 'Asmodian Assassin Route' && isDeepStrictEqual(JSON.parse(await readRaw(p)).chars[TEST_SLOT], first), b);
-    ok('sorcerer: no page errors', !errs.length, errs);
-    await ctx.close();
-  }
-  /* 10b''''''. a Chanter (0.8 P19): the same for the eighth class; its Rotation section shows the game's default keys (the
-     owner's Chanter screen, both mouse buttons read from it), the Build plan card states the four skills that fire only on
-     a condition, and the leveling loop step opens Dark Crush's window with Impactful Crush */
-  {
-    const { ctx, p, errs } = await page();
-    await writeSave(p, SAVED, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
-    const first = JSON.parse(await readRaw(p)).chars[TEST_SLOT];
-    const guide = () => p.evaluate(() => ({ pack: self.DAEVA_PACK, cls: char(state).class, plan: STIGMA_PLAN.slice(), sk: SP_SKILLS_CORE.map(x => x.n).slice(0, 3),
-      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, how: document.getElementById('rotHow').hidden ? '' : document.getElementById('rotHow').textContent, skills: document.getElementById('main').innerText.includes('Onslaught'),
-      keys: document.getElementById('stackViz').textContent,
-      triggers: STEPS.some(g => g.items.some(i => i.k === 'build:triggers' && i.t.includes('Four skills only fire on a condition'))),
-      loop: STEPS.some(g => g.items.some(i => i.k === 'build:rotation' && i.t.includes('Impactful Crush (2) stuns and opens Dark Crush'))) }));
-    await p.click('#charBtn'); await p.click('#charNew'); await p.check('#charPick input[value="chanter"]'); await p.waitForTimeout(50);
-    ok('chanter: the form previews chanter-lvl1', await p.innerText('#charPrev') === 'chanter-lvl1', await p.innerText('#charPrev'));
-    await Promise.all([p.waitForEvent('load'), p.click('#charCreate')]); await p.waitForTimeout(400);
-    const c = await guide(), s = JSON.parse(await readRaw(p)), cid = s.current;
-    ok('chanter: a new current slot of class chanter, pack aion2/asmodian/chanter; the first character stored as it was', cid !== TEST_SLOT && s.chars[cid].class === 'chanter' && s.chars[cid].pack === 'aion2/asmodian/chanter' && isDeepStrictEqual(s.chars[TEST_SLOT], first), s.chars[cid]);
-    ok('chanter: the page runs the Chanter guide (its pack, stigma plan, skills shown, the conditions and loop steps; Rotation from its default keys)', c.pack === 'aion2/asmodian/chanter' && c.cls === 'chanter'
-      && JSON.stringify(c.plan) === JSON.stringify(['Undefeated Mantra', 'Sprint Mantra', 'Power of the Storm', "Marchutan's Wrath"])
-      && JSON.stringify(c.sk) === JSON.stringify(['Dark Crush', 'Onslaught', 'Spinning Strike']) && c.skills && c.triggers && c.loop && c.rot
-      && ['Left click: Onslaught', 'Right click: Incandescent Blow', '1: Rushing Smash'].every(x => c.keys.includes(x)) && !/Quick Slice|Flame Arrow|Spinning Strike/.test(c.keys) && c.lbl === 'chanter-lvl1' && c.h1 === 'Asmodian Chanter Route', c);
-    await p.click('#charBtn');
-    await Promise.all([p.waitForEvent('load'), p.click(`#charRows [data-char="${TEST_SLOT}"]`)]); await p.waitForTimeout(400);
-    const b = await guide();
-    ok('chanter, switch back: the Assassin guide again (no conditions or Chanter loop step), its character unchanged', b.pack === 'aion2/asmodian/assassin' && b.plan[0] === "Triniel's Dagger" && !b.triggers && !b.loop && b.lbl === 'assassin-lvl22' && b.h1 === 'Asmodian Assassin Route' && isDeepStrictEqual(JSON.parse(await readRaw(p)).chars[TEST_SLOT], first), b);
-    ok('chanter: no page errors', !errs.length, errs);
+    const b = await guideOf(p, pin);
+    ok(`${cls}, switch back: the Assassin guide again${pin && pin.steps.length ? ' (none of its own steps)' : ''}, its character unchanged`, assassinAgain(b, first, JSON.parse(await readRaw(p)).chars[TEST_SLOT]) && !b.steps.some(Boolean), b);
+    ok(`${cls}: no page errors`, !errs.length, errs);
     await ctx.close();
   }
   /* 10c. the site's classes (0.7 A1; the claude.ai build's class list went with that build in 0.7 P9): the site sets no class
@@ -441,12 +324,12 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     const { ctx, p, errs } = await page();
     const ranger = toStored(SAVED); Object.assign(ranger.chars[TEST_SLOT], { pack: 'aion2/asmodian/ranger', class: 'ranger' });
     const look = async () => { await p.click('#charBtn'); await p.click('#charNew'); await p.waitForTimeout(50);
-      const r = await p.evaluate(() => ({ pack: self.DAEVA_PACK, radios: [...document.querySelectorAll('#charPick input[type=radio]')].map(x => x.value),
+      const r = await p.evaluate(() => ({ pack: self.DAEVA_PACK, want: GUIDE_CLASSES.map(e => e.class), radios: [...document.querySelectorAll('#charPick input[type=radio]')].map(x => x.value),
         note: (n => n && { text: n.textContent, shown: !!n.offsetParent, after: n.previousElementSibling && n.previousElementSibling.id })(document.getElementById('charNote')), lbl: document.getElementById('charLbl').textContent }));
       await p.click('#charCancel'); await p.keyboard.press('Escape'); return r; };
     await p.goto(CFG.CUR); await writeRaw(p, JSON.stringify(ranger), { fresh: true }); await p.reload(); await p.waitForTimeout(400);
     const site = await look();
-    ok('site classes: the picker offers every playable class (the Gladiator too, 0.7 P2; the Spiritmaster, 0.7 P4; the Templar, 0.8 P3; the Cleric, 0.8 P5; the Sorcerer, 0.8 P17; the Chanter, 0.8 P19) and shows no note',JSON.stringify(site.radios) === JSON.stringify(['assassin', 'ranger', 'gladiator', 'spiritmaster', 'templar', 'cleric', 'sorcerer', 'chanter']) && !site.note && site.pack === 'aion2/asmodian/ranger', site);
+    ok('site classes: the picker offers every playable class (the Gladiator too, 0.7 P2; the Spiritmaster, 0.7 P4; the Templar, 0.8 P3; the Cleric, 0.8 P5; the Sorcerer, 0.8 P17; the Chanter, 0.8 P19: the page\'s GUIDE_CLASSES, those eight in order) and shows no note', JSON.stringify(site.radios) === JSON.stringify(site.want) && site.radios[0] === 'assassin' && inShippedOrder(site.radios) && !site.note && site.pack === 'aion2/asmodian/ranger', site);
     ok('site classes: no page errors', !errs.length, errs);
     await ctx.close();
   }

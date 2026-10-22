@@ -26,8 +26,8 @@ const mulberry32 = a => () => { a |= 0; a = (a + 0x6D2B79F5) | 0; let t = Math.i
 const pad = (n, w = 2) => String(n).padStart(w, '0');
 
 /* the catalog the golden generator reads, from the core bundle M (as tests/equiv does) */
-export const catalogOf = M => new Function('QUESTS', 'QUEST_NAME', 'QUEST_STEPS', 'GATES', 'STEPS', 'RQ', 'AREA_ITEMS', 'SP_STEPS', 'STIGMA_PLAN', 'STIGMA_SLOTS', 'DV_NODES', `return (${catalogInPage})();`)(
-  M.QUESTS, M.QUEST_NAME, M.QUEST_STEPS, M.GATES, M.STEPS, M.RQ, M.AREA_ITEMS, M.SP_STEPS, M.STIGMA_PLAN, () => M.stigmaSlots({}), M.DV_NODES);
+export const catalogOf = M => new Function('QUESTS', 'QUEST_NAME', 'QUEST_STEPS', 'GATES', 'STEPS', 'RQ', 'AREA_ITEMS', 'SP_STEPS', 'STIGMA_PLAN', 'STIGMA_SLOTS', 'DV_NODES', 'GUIDE_CLASSES', `return (${catalogInPage})();`)(
+  M.QUESTS, M.QUEST_NAME, M.QUEST_STEPS, M.GATES, M.STEPS, M.RQ, M.AREA_ITEMS, M.SP_STEPS, M.STIGMA_PLAN, () => M.stigmaSlots({}), M.DV_NODES, M.aion2Pack.classes);
 
 export function makeStates(M, { root, seed }) {
   const C = catalogOf(M), NQ = C.quests.length, out = new Map();
