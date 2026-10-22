@@ -1,0 +1,6 @@
+[
+  { "case": "keysetup-lv27-390", "kind": "before-after", "title": "Rotation and Key setup at level 27",
+    "caption": "You asked for a Simple mode. It's the Rotation section at the top of Build, always open; the keys and macro are in the Key setup fold under it (one view)." },
+  { "case": "keysetup-lv27-1500", "kind": "before-after", "title": "Key setup: icons, your keys, the macro",
+    "caption": "At level 27 each key box is the skill's icon (name on hover), you can set your own key per stack, and the macro shows as its steps." }
+]
