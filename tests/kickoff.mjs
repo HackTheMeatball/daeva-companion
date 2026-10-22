@@ -159,8 +159,10 @@ check(fx.lookupPath('src/assets/icons/*') === 'src/assets/icons' && fx.lookupPat
 check(fx.inputPaths(bullet('`src/x.js`')).mnt.length === 0 && fx.inputPaths(bullet('`src/x.js`')).repo.length === 0, 'no Inputs line and no /mnt/ -> nothing to check');
 // Intended change (Kaizen (Gale), 2026-10-20): an Inputs entry with no repo path holds the item too, so the condition and the
 // comment lines now include it.
-check(/missing\.length \|\| bare\.length \|\| lookupFailed/.test(yml) && /spec: input not in repo: \$\{x\}/.test(yml) && /Inputs: \$\{x\} has no repo path/.test(yml) && /held: input not in repo/.test(yml), 'pick loop holds an item with a missing input or an entry with no repo path and tells the planner once per entry on the issue');
-check(yml.indexOf('const ins = inputPaths(iss.body)') > yml.indexOf('const wait = await afterBlocker(kx)') && yml.indexOf('const ins = inputPaths(iss.body)') < yml.indexOf('const why = await alreadyBuilt(n)'), 'the input check runs after the After check and before a build starts');
+check(/missing\.length \|\| bare\.length\) out\.gaps\.push\(\{ note: 'input not in repo'/.test(yml) && /spec: input not in repo: \$\{x\}/.test(yml) && /Inputs: \$\{x\} has no repo path/.test(yml), 'spec gaps: a missing input or an entry with no repo path is a gap, one line per entry');
+// Intended change (Kaizen (Gale), batch-0.9 item 28): the input, plan and gen checks run together in specGaps, so the pick
+// loop calls it once after the After check and before a build starts.
+check(yml.indexOf('const sg = await specGaps(n, iss, want)') > yml.indexOf('const wait = await afterBlocker(kx)') && yml.indexOf('const sg = await specGaps(n, iss, want)') < yml.indexOf('const why = await alreadyBuilt(n)'), 'the spec checks run after the After check and before a build starts');
 // Kaizen (Gale), 2026-10-20: a spec that changes what gen compiles must list the gen lane (spec-incomplete-files: #501, #504, #503).
 // #503's own Result and Files (re-spec 2, lanes build-card,a11y,rows); its PR #565 touched tools/gen.
 const spec503 = `- **Result.**\n  - The Build pop-out's grid columns and macro steps match the research file.\n  - Game facts move from \`src/\` to \`data/\`.\n- **No-gos.**\n  - No player-chosen keys (#388, 0.9).\n- **Files.** \`src/packs/aion2/cards/build.html\`, \`src/packs/aion2/cards/rows.js\`, the Assassin \`builds.json\` and its copy in\n  \`data/schema/examples/packs/aion2/asmodian/assassin/builds.json\` (line 277), \`claims.json\`, and the a11y and golden tests.\n- **Lanes:** build-card, a11y, rows. **Model:** Opus, M (80 min).\n`;
@@ -175,7 +177,7 @@ check(fx.genLaneMiss(new Set(['main.js']), bullet('`src/main.js`', '- **Result.*
 check(fx.genLaneMiss(new Set(['rows']), bullet('`data/packs/aion2/asmodian/assassin/guide/steps.json`', '- **Result.** Step 12 reads "Talk to Hagen".\n')) === null, 'a plain data JSON edit (Files names data/packs only) -> passes');
 check(GEN.keywords.every((k) => { try { new RegExp(k.re, 'im'); return k.in.length && k.in.every((f) => ['Result', 'Files'].includes(f)) && !!k.says; } catch { return false; } }), 'gen-lane.json: every keyword is a valid regex with Result/Files fields and a says text');
 check(/const GEN = JSON\.parse\(Buffer\.from\(\(await github\.rest\.repos\.getContent\(\{ owner, repo, path: '\.github\/routing\/gen-lane\.json', ref: 'main' \}\)\)/.test(yml), 'kickoff reads gen-lane.json from main');
-check(/const genMiss = genLaneMiss\(want, iss\.body\);/.test(yml) && /held: spec: gen lane missing/.test(yml) && /spec: gen lane missing: \$\{genMiss\}/.test(yml), 'pick loop holds an item missing the gen lane and tells the planner once on the issue');
+check(/const genMiss = genLaneMiss\(want, iss\.body\);/.test(yml) && /note: 'spec: gen lane missing'/.test(yml) && /spec: gen lane missing: \$\{genMiss\}/.test(yml), 'spec gaps: a missing gen lane is a gap with its own line and held-note reason');
 check(yml.indexOf('const genMiss = genLaneMiss(') > yml.indexOf('const ins = inputPaths(iss.body)') && yml.indexOf('const genMiss = genLaneMiss(') < yml.indexOf('const why = await alreadyBuilt(n)'), 'the gen-lane check runs after the input check and before a build starts');
 check(/const fileHit = m\[2\] !== 'opus' && opusPath\(iss\.body\), workHit = m\[2\] !== 'opus' && !fileHit && opusWork\(want, iss\.body\);\s*\n\s*const hit = fileHit \|\| workHit;[\s\S]{0,500}model: m\[2\] === 'opus' \|\| hit \? 'claude-opus-5-5'/.test(yml), 'start loop: an Opus-path or gen/golden hit starts the build on Opus');
 
@@ -225,7 +227,7 @@ check(fx.inputPaths(bullet('`src/x.js`', '- **No-gos.** Never read /mnt/project-
 check(fx.inputPaths(bullet('`src/x.js`', '- **No-gos.** Nothing else.\n- **Result.** Per /mnt/project-files/x.png.\n')).mnt.join() === '/mnt/project-files/x.png', 'a /mnt/ path outside No-gos still holds the item');
 // A held note under a lane-blocked line is re-read (#503 kept a stale "not understood" note), and a note whose reason changed is replaced.
 check(/if \(overlap\(want, busy\)\) \{[\s\S]{0,600}held: After not understood\/\.test\(lines\[i \+ 1\][\s\S]{0,300}afterBlocker\(kxOf\([\s\S]{0,120}lines\.splice\(i \+ 1, 1\)[\s\S]{0,80}continue;/.test(yml), 'start loop: a lane-blocked line re-reads its After line and drops a stale not-understood note');
-check(/else if \(!\/held: input not in repo\/\.test\(lines\[i \+ 1\]\)\) \{ lines\[i \+ 1\] = note;/.test(yml) && /else if \(!\/held: After not understood\/\.test\(lines\[i \+ 1\]\)\) \{ lines\[i \+ 1\] = `  - held: After not understood/.test(yml), 'start loop: a held note with an outdated reason is replaced, not kept');
+check(/lines\[i \+ 1\]\.replace\(\/ \\\(kickoff \[\^\)\]\*\\\)\$\/, ''\) !== note\.replace\(\/ \\\(kickoff \[\^\)\]\*\\\)\$\/, ''\)\) \{ lines\[i \+ 1\] = note;/.test(yml) && /else if \(!\/held: After not understood\/\.test\(lines\[i \+ 1\]\)\) \{ lines\[i \+ 1\] = `  - held: After not understood/.test(yml), 'start loop: a held note with an outdated reason is replaced, not kept');
 check((await afterBlocker(exAfter('none.'))) === '', 'template form, After: none -> starts');
 check((await afterBlocker(exAfter('P1.'))) === '', 'template form, one key -> starts');
 check((await afterBlocker(exAfter('`P1`, `research-templar`, `owner-ok-0.8-icon-box`.'))) === '', 'template form, backticked keys -> starts');
@@ -309,9 +311,46 @@ check(px.planRef('No plan named here.') === null, 'a spec with no Plan: referenc
 // and before a build starts.
 check(yml.indexOf('const pref = planRef(iss.body)') > yml.indexOf('const ins = inputPaths(iss.body)') && yml.indexOf('const pref = planRef(iss.body)') < yml.indexOf('const why = await alreadyBuilt(n)'), 'the plan check runs after the input check and before a build starts');
 check(/missing\.push\(pth\)/.test(yml) && /spec: input not in repo: \$\{x\}/.test(yml), 'a listed input missing on main is still refused by name');
-check(/spec: plan input missing: \$\{x\}/.test(yml) && /spec: plan After key missing: \$\{x\}/.test(yml) && /held: spec misses plan inputs \(kickoff \$\{stamp\}\)/.test(yml) && /Watchdog: log this refusal/.test(yml), 'a refusal names each gap on the issue, holds the line in #114 and asks Watchdog to log it');
+check(/spec: plan input missing: \$\{x\}/.test(yml) && /spec: plan After key missing: \$\{x\}/.test(yml) && /note: 'spec misses plan inputs'/.test(yml) && /Watchdog: log this refusal/.test(yml) && /const note = `  - held: \$\{sg\.gaps\.map\(\(g\) => g\.note\)\.join\('; '\)\} \(kickoff \$\{stamp\}\)`/.test(yml), 'a refusal names each gap on the issue, holds the line in #114 with every reason and asks Watchdog to log it');
 check(/spec: not needed: \$\{x\.path\} \(\$\{x\.why\}\)/.test(yml), 'a "not needed" path is posted with its reason for Watchdog to log');
 check(/PR OPENED: \$\{pr%% \*\} for #\$ISSUE, by its build/.test(yml) && /PR OPENED: #\$\{url##\*\/\} for #\$ISSUE, by kickoff's fallback/.test(yml), 'kickoff announces each PR its build or fallback opens on #114');
+
+// Kaizen (Gale), batch-0.9 item 28: P23 lost 3 kickoff cycles because the first failed spec check held the item and the
+// rest never ran. specGaps runs the input, plan and gen checks in full, so one hold names every gap. Here the #644 pre-fix
+// spec gets a missing input and a data/ Result on lanes without gen: all three kinds must come back in one call.
+const sgb = yml.match(/\/\/ SPEC-GAPS START[^\n]*\n([\s\S]*?)\n\s*\/\/ SPEC-GAPS END/);
+check(!!sgb, 'kickoff.yml has the SPEC-GAPS block');
+const ghMock = (said = []) => ({
+  rest: { repos: { getContent: async ({ path }) => {
+    if (path === '') return { data: [...TOPS].map((name) => ({ name })) };
+    if (path === 'docs/plans/0.9/README.md') return { data: { content: Buffer.from(p22).toString('base64') } };
+    if (path === 'ROADMAP.md') return { data: { content: Buffer.from('').toString('base64') } };
+    if (existsSync(join(ROOT, ...path.split('/')))) return { data: {} };
+    throw Object.assign(new Error('Not Found'), { status: 404 });
+  } }, issues: { listComments: 'listComments' } },
+  paginate: async () => said.map((body) => ({ body })),
+});
+const mkGaps = (gh) => new Function('ROUTE', 'GEN', 'github', 'owner', 'repo', of[1] + '\n' + pi[1] + '\nlet roadmapText = null, repoTops = null;\n' + sgb[1] + '\nreturn { specGaps, saidOn };')(ROUTE, GEN, gh, 'o', 'r');
+const sgx = mkGaps(ghMock(['Spec preflight (kickoff x): 1 gap.\n\nspec: input not in repo: docs/never-made.md', 'spec: gen lane missing: its Result names data/']));
+const three = pre644.replace('- **Inputs.** `docs/design/0.9-keys/`', '- **Inputs.** `docs/design/0.9-keys/`, `docs/never-made.md`')
+  .replace('- **Result.** ', '- **Result.** Game facts move from `src/` to `data/`. ');
+const g3 = await sgx.specGaps(644, { body: three }, new Set(['build-card', 'a11y']));
+check(g3.gaps.map((g) => g.note).join(' | ') === 'input not in repo | spec misses plan inputs | spec: gen lane missing', `three gaps in one spec -> all three kinds in one call, in check order (${g3.gaps.map((g) => g.note).join(' | ')})`);
+check(g3.gaps[0].lines.includes('spec: input not in repo: docs/never-made.md') && g3.gaps[1].lines.includes('spec: plan input missing: docs/design/0.9-keys-macro.md') && g3.gaps[2].lines[0].startsWith('spec: gen lane missing: '), 'each kind names its own gaps');
+check(!g3.transient.length && g3.gaps.every((g) => g.todo), 'no transient reads; every gap kind says what the planner does');
+const gNone = await sgx.specGaps(644, { body: now644 }, new Set(['build-card', 'gen']));
+check(!gNone.gaps.some((g) => g.note !== 'input not in repo'), `#644 as re-specced, with gen -> no plan or gen gap (${gNone.gaps.flatMap((g) => g.lines).join(', ')})`);
+const said = await sgx.saidOn(644);
+check(said.length === 1 && said[0].startsWith('spec: gen lane missing'), 'a Spec preflight report does not count as said, so the hold still lists its gaps');
+// The hold posts one comment for every fresh gap, and the old early continues are gone.
+check(/body: fresh\.join\('\\n'\) \+ '\\n\\nKickoff holds this item until every gap above is fixed; it ran every spec check/.test(yml) && !/lookupFailed/.test(yml) && (yml.match(/spec: gen lane missing: \$\{genMiss\}/g) || []).length === 1, 'one hold comment lists every fresh gap; no check stops the others');
+// Spec preflight (batch-0.9 item 28): runs specGaps and the After check on one issue, posts the list, holds nothing.
+const pfb = yml.match(/\/\/ SPEC-PREFLIGHT START\n([\s\S]*?)\n\s*\/\/ SPEC-PREFLIGHT END/);
+check(!!pfb && /preflight:\n\s+description: [^\n]*\n\s+required: false/.test(yml) && /PREFLIGHT: \$\{\{ inputs\.preflight \}\}/.test(yml), 'kickoff has a preflight dispatch input, passed to the pick script');
+check(!!pfb && /await specGaps\(PRE, iss, want\)/.test(pfb[1]) && /afterBlocker\(kxOf\(PRE, iss\)\)/.test(pfb[1]) && /return;\s*\}$/.test(pfb[1]), 'preflight runs the same checks and returns');
+check(!!pfb && !/issues\.update|lines\[|lines\.splice|setOutput|picked/.test(pfb[1]), 'preflight never writes #114, the queue lines or the build list');
+check(!!pfb && yml.indexOf('// SPEC-PREFLIGHT START') < yml.indexOf('for (let i = 0; i < lines.length && inflight < MAX; i++)') && yml.indexOf('// SPEC-PREFLIGHT START') > yml.indexOf('const kxOf = '), 'preflight returns before the pick loop');
+check(!!pfb && /body: report/.test(pfb[1]) && /`Spec preflight \(kickoff \$\{stamp\}\)/.test(pfb[1]), 'the report is posted on the issue, starting "Spec preflight"');
 
 // A build's end marker is read twice: by the slot check in JS and by the shell jq test that frees a run. They stay out of
 // tools/verdicts.cjs (jq can't require it), so pin them to the same markers here (Kaizen (Gale), 2026-10-20, #561).
