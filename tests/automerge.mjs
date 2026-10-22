@@ -659,6 +659,9 @@ check(ST.staleAsk('data', '', NEW40, [verOld], []) === '' && ST.staleAsk('data',
 check(ST.markSha('design', [c('claude[bot]', 'DESIGN OK on 1111111', 1), desOld]) === OLD7 && ST.markSha('data', [verOld]) === OLD7 && ST.markSha('design', []) === null
   && ST.staleAsk('data', WHYD, NEW40, [verOld], null).includes('could not be listed'),
   'stale ask: reads the latest mark\'s sha; a failed file listing still asks');
+check(ST.markSha('data', [c('HackTheMeatball', `Game Data Check (ROL-03) on ${OLD7}: VERIFIED\nGame Data Check (ROL-03) on 2222222: VERIFIED`, 5)]) === OLD7
+  && ST.markSha('design', [c('claude[bot]', 'DESIGN OK, defaced frame fixed, on 3333333', 5)]) === '3333333' && ST.markSha('design', [c('claude[bot]', 'DESIGN OK', 5)]) === null,
+  'stale ask: the data sha is the line the gate reads (the first); the design sha follows "on", not any hex word (#847 review)');
 const loopSrc = yml.slice(yml.indexOf('for (const pr of prs)'));
 check(/const design = designBlocker\([^)]*\);\s*const data = await dataBlocker\([^)]*\);[\s\S]*?staleAsk\(seat, why, sha, comments, changed\)[\s\S]*?\} catch \(e\) \{ core\.warning\(`#\$\{pr\.number\}: stale-mark ask skipped[\s\S]*?if \(design \|\| data\) continue;/.test(loopSrc),
   'loop: both gates are read, a stale mark is asked for (an API error is a warning), and either blocker still stops the merge');

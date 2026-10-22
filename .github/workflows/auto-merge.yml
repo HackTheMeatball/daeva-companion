@@ -419,9 +419,10 @@ jobs:
                 && (seat === 'design' ? V.design(c.body) : V.data(c.body).length)).sort((a, b) => Date.parse(a.updated_at) - Date.parse(b.updated_at));
               const last = marks[marks.length - 1];
               if (!last) return null;
-              if (seat === 'data') return V.data(last.body).pop().sha;
+              // The same line the gate reads: dataBlocker takes the comment's first verdict line.
+              if (seat === 'data') return V.data(last.body)[0].sha;
               const line = V.lines(last.body).find((l) => /^DESIGN OK\b/.test(l));
-              return ((line || '').match(/\b[0-9a-f]{7,40}\b/) || [])[0] || null;
+              return ((line || '').match(/\bon ([0-9a-f]{7,40})\b/) || [])[1] || null;
             };
             // why: the blocker's own text; only "does not cover the head" is a stale mark. changed: the PR's files changed
             // between the marked sha and the head, or null when they could not be listed.
