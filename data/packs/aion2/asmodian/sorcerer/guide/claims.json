@@ -346,6 +346,29 @@
       "verifiedAt": "2026-10-19"
     },
     {
+      "id": "C57",
+      "claim": "Sorcerer macro line (leveling): Bittercold Wind, Blaze, Firestorm, Wish of Concentration, with Flame Arrow on left click; Hellfire off the macro.",
+      "verdict": "verified",
+      "sources": [
+        {
+          "url": "https://daevaguides.com/en/guides/macros/",
+          "checkedAt": "2026-10-20",
+          "note": "Macro for every class: Sorcerer Bittercold Wind (row 0), Blaze, Firestorm, Wish of Concentration (row 3), one step, with Flame Arrow."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/sorcerer/",
+          "checkedAt": "2026-10-20",
+          "note": "Leveling macro column: the same four with Flame Arrow; Hellfire on its own key."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-rotation-play.md (0.9 P18): the two lines match. Hellfire's charge is C98's (the Route rules step), so the drawer only points there. The guide's own wording.",
+      "appliesTo": [
+        "tip:rotation-play"
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
       "id": "C89",
       "claim": "Every Fire hit puts Fire Mark on the target (Korea's 16 Sep Sorcerer patch), so Blaze can follow any Fire attack.",
       "verdict": "inferred",

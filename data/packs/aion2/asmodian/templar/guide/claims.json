@@ -118,6 +118,29 @@
       "verifiedAt": "2026-10-16"
     },
     {
+      "id": "C57",
+      "claim": "Templar macro (leveling): Judgment first, Pummel in it too; Doom Shield (charged), Punishment and pulls by hand.",
+      "verdict": "verified",
+      "sources": [
+        {
+          "url": "https://daevaguides.com/en/guides/macros/",
+          "checkedAt": "2026-10-20",
+          "note": "Macro for every class: Templar Judgment line above Shield Smite and Warding Strike, then Annihilate, Debilitating Smash, Pummel; two macro steps."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/templar/",
+          "checkedAt": "2026-10-20",
+          "note": "Leveling macro column: Judgment, Pummel, Vicious Strike."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-rotation-play.md (0.9 P18). Judgment first and Pummel in the macro agree; the line split differs, so the text says one or two lines. The guide's own wording.",
+      "appliesTo": [
+        "tip:rotation-play"
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
       "id": "C80",
       "claim": "Templar stat priority: Block, Defense, HP (then Critical Hit Resist, Attack).",
       "verdict": "single-source",

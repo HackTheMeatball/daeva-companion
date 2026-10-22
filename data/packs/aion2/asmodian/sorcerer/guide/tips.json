@@ -16,6 +16,17 @@
       ]
     },
     {
+      "id": "tip:rotation-play",
+      "key": "rotation",
+      "title": "How it plays",
+      "body": "<ul><li><b>The loop:</b> both sources build the same macro line: Bittercold Wind first, then Blaze, Firestorm and Wish of Concentration, held together with left click (Flame Arrow). Hellfire stays off it (see Route rules).</li></ul>",
+      "credit": "daevaguides macro guide and aion2turkiye's Sorcerer page",
+      "verifiedAt": "2026-10-20",
+      "claims": [
+        "C57"
+      ]
+    },
+    {
       "id": "tip:stigma",
       "key": "stigma",
       "title": "Stigma",

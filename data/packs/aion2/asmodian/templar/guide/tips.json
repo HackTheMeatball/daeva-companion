@@ -16,6 +16,17 @@
       ]
     },
     {
+      "id": "tip:rotation-play",
+      "key": "rotation",
+      "title": "How it plays",
+      "body": "<ul><li><b>The loop:</b> both sources start the macro with Judgment and put Pummel in it too, held together with left click (Vicious Strike). They split the skills over one or two lines.</li><li><b>By hand:</b> Doom Shield (a charged skill: a macro fires only its first stage), Punishment and your pulls.</li></ul>",
+      "credit": "daevaguides macro guide and aion2turkiye's Templar page",
+      "verifiedAt": "2026-10-20",
+      "claims": [
+        "C57"
+      ]
+    },
+    {
       "id": "tip:stigma",
       "key": "stigma",
       "title": "Stigma",

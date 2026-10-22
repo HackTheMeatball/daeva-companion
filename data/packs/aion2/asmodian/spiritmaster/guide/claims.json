@@ -118,6 +118,29 @@
       "verifiedAt": "2026-10-16"
     },
     {
+      "id": "C57",
+      "claim": "Spiritmaster macro line (leveling): Jointstrike: Curse above Dimensional Control, Combustion below; buffs, Summon: Ancient Spirit and Jointstrike: Destructive Attack by hand.",
+      "verdict": "verified",
+      "sources": [
+        {
+          "url": "https://daevaguides.com/en/guides/macros/",
+          "checkedAt": "2026-10-20",
+          "note": "Macro for every class: Spiritmaster Jointstrike line (Corrode row 0, Curse, Dimensional Control, Combustion filler), then a spirit line."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/spiritmaster/",
+          "checkedAt": "2026-10-20",
+          "note": "Leveling macro column: Curse, Dimensional Control, Combustion, with Cold Shock."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-rotation-play.md (0.9 P18). Curse > Dimensional Control > Combustion agree; Corrode (a Lv 32 stigma) and the spirit line are daevaguides only and left out. The guide's own wording.",
+      "appliesTo": [
+        "tip:rotation-play"
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
       "id": "C70",
       "claim": "Spiritmaster stat priority: Attack, Critical Hit, Accuracy Bonus (then HP, MP).",
       "verdict": "single-source",
