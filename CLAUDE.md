@@ -9,8 +9,8 @@ all eight classes, plus an endgame guide past Lv 45 from 0.10); 1.1 adds the Ely
 ## Who's who
 
 - **The board (Isaac):** the human. Sets direction and approves big calls (releases, loosening limits, legal and
-  licensing, outside access, usage). Every choice for the board goes through Heisenberg, with the recommendation named.
-- **Heisenberg (operator):** runs the team day to day. Assigns work, starts the team's Claude Code sessions on its
+  licensing, outside access, usage). Every choice for the board goes through Vision, with the recommendation named.
+- **Vision (operator):** runs the team day to day. Assigns work, starts the team's Claude Code sessions on its
   computer under the Services account, reviews each diff before it is pushed, keeps the release path moving, and
   brings big calls to the board.
 - **Saul's team (chiefs and agents):** Saul (team lead), Walter (Release Planner), Gus (Build Pipeline) and Jane
