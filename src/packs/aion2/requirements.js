@@ -4,7 +4,7 @@
    Functions take the character (c = char(state)) or, where a view setting changes the answer, the whole state. Nothing
    here writes. Every "is it open?" answer comes from the engine's evaluator glue (gatesOf, src/core/requirements.js). */
 import { QUEST_LOC, QUEST_STEPS, QUESTS } from "./data/story.js";
-import { DV_MIN, E_ORDER, GUIDE_KEYS, KEYS, LEVEL_POINTS, RMB_STACK, SP_SLOTS, SP_STEPS, STIGMA_KEY, STIGMA_PLAN, ST_COST, ST_TARGETS } from "./data/build.js";
+import { DV_MIN, E_ORDER, GUIDE_KEYS, KEYS, LEVEL_POINTS, Q_STACK, RMB_STACK, SP_SLOTS, SP_STEPS, STIGMA_KEY, STIGMA_PLAN, ST_COST, ST_TARGETS } from "./data/build.js";
 import { GATES } from "./data/milestones.js";
 import { RQ } from "./data/generated.js";
 import { NO_AREA } from "./data/areas.js";
@@ -237,7 +237,7 @@ export const areaLater = (c, x) => !liveGatesOf(c).byKey(x.k).open;
    (SP_STEPS req), and the card offers the skill from then on. A skill outside the plan is unknown to the guide: never yours. */
 export const skillLearned = (name, lv, ev = gatesOf({ level: lv, checks: {} })) => SP_STEPS.some(x => x.s.n === name && x.L === 2 && ev.byKey(x.k).open);
 /* The hold-to-run keys at lv, holding only what the guide says you have there (F7): right click = the build's stack for
-   lv without any skill not learned yet; Q = Shadowstrike once learned; E = the equipped stigmas whose slot is open at lv,
+   lv without any skill not learned yet; Q = the build's Q stack (Q_STACK) once learned; E = the equipped stigmas whose slot is open at lv,
    else the stigmas of the slots open at lv, in E_ORDER. Row 0 first.
    A build with only the game's default keys (KEYS, 0.7 P11: the Ranger, the Gladiator; not GUIDE_KEYS) takes every key
    from them instead: keys = [{ key, single, rows }], rows by the game's row (null = that row's skill not learned by lv),
@@ -247,7 +247,7 @@ export const rotKeys = (c, lv) => {
     on = n => ((keys.find(k => k.key === n) || {}).rows || []).filter(Boolean);
     return { rmb: on("Right click"), q: on("Q"), e: on("E"), keys }; }
   const ev = gatesOf(c, lv), open = stigmaSlots(c).filter(x => slotLevelMet(ev, x)), eq = open.filter(x => c.checks[x.k]).map(x => x.name), e = eq.length ? eq : open.map(x => x.name);
-  return { rmb: RMB_STACK(lv).filter(n => skillLearned(n, lv, ev)), q: ["Shadowstrike"].filter(n => skillLearned(n, lv, ev)), e: E_ORDER.filter(n => e.includes(n)) };
+  return { rmb: RMB_STACK(lv).filter(n => skillLearned(n, lv, ev)), q: Q_STACK(lv).filter(n => skillLearned(n, lv, ev)), e: E_ORDER.filter(n => e.includes(n)) };
 };
 /* Upgrade order: ST_TARGETS in turn, for the stigmas you have equipped. Other stigmas stay at level 1 (the plan's sources). */
 export const stigmaPlan = c => {

@@ -4,6 +4,7 @@ import { char } from "../../../core/state.js";
 import { setHTML } from "../../../core/cards.js";
 import { derivedOf, doneOf, gatesOf } from "../../../core/requirements.js";
 import { NO_AREA, SD_REWARD, SH_REWARD, ZONE_TRACES } from "../data/areas.js";
+import { MAP_BASE } from "../data/generated.js";
 import { T, itemLine, stNote, stTag } from "../data/markup.js";
 import { AREA_BANDS, AREA_ITEMS, bandOf } from "../catalog.js";
 import { areaLater, areaOpen } from "../requirements.js";
@@ -78,7 +79,7 @@ function renderAreas() {
     const gd = g.filter(x => ad(x)).length, tr = ZONE_TRACES[z], rk = state.areaLv + "|" + z;
     return `<li class="zone-h${gd === g.length ? " done" : ""}"><button type="button" class="zone-btn" data-zone="${rk}" aria-expanded="${open}"><span class="zchev" aria-hidden="true">${open ? "▾" : "▸"}</span>${z}</button>` +
       /* the count and the feather marker (0.6.2 P21): the icon stands in for the word, kept as its label and tooltip */
-      `${tr ? `<a class="ztr" href="https://metabot.gg/en/aion-2/map/altgard/empyrean-traces" target="_blank" rel="noopener" title="${tr} Empyrean Traces (feathers) in this zone: grab them while you're here">${tr} ${mapMk("trace", "mk-map", "Empyrean Traces")}</a>` : ""}<span class="zn">${gd === g.length ? "✓ " : ""}${gd}/${g.length}</span></li>`;
+      `${tr ? `<a class="ztr" href="${MAP_BASE}/empyrean-traces" target="_blank" rel="noopener" title="${tr} Empyrean Traces (feathers) in this zone: grab them while you're here">${tr} ${mapMk("trace", "mk-map", "Empyrean Traces")}</a>` : ""}<span class="zn">${gd === g.length ? "✓ " : ""}${gd}/${g.length}</span></li>`;
   };
   /* the feather's label once for touch screens (no hover), under the reward line, while a region shows a trace count */
   const legend = `<li class="sh-note mk-legend">${mapMk("trace")}Empyrean Traces in each region</li>`;
@@ -115,6 +116,8 @@ let areaKeep = new Set();
 /* the card's handlers (from render(), once) */
 function aion2AreasMount() {
   areaSel = document.getElementById("areaSel");
+  /* the header's Map link: the faction's map (MAP_BASE, 0.9 P13; areas.html holds the same URL until mount) */
+  { const ml = document.getElementById("areaMapLink"); if (ml) ml.setAttribute("href", MAP_BASE); }
   /* Two clicks per clear: the first marks it "in progress" (you went in), the second marks it cleared. Clicking a
      cleared one undoes it. In-progress runs show at the top of Next up so you finish what you started. */
   document.getElementById("areaList").addEventListener("click", e => {

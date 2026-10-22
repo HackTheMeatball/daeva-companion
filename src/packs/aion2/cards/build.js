@@ -4,7 +4,7 @@
 import { char } from "../../../core/state.js";
 import { setHTML } from "../../../core/cards.js";
 import { activePack, packClasses } from "../../../core/pack.js";
-import { E_NOTE, E_ORDER, E_ST, GUIDE_KEYS, HAS_KEYS, KEYS, KEYS_ST, SP_ICONS, STAT_NOTE, STAT_SRC, STAT_TIERS, STIGMA_ICON } from "../data/build.js";
+import { E_BEFORE_Q, E_NOTE, E_ORDER, E_ST, GUIDE_KEYS, HAS_KEYS, KEYS, KEYS_ST, SP_ICONS, STAT_NOTE, STAT_SRC, STAT_TIERS, STIGMA_ICON } from "../data/build.js";
 import { eShift, stTag } from "../data/markup.js";
 import { TIPS } from "../data/tips.js";
 import { rotKeys } from "../requirements.js";
@@ -103,7 +103,8 @@ function renderRotation() {
     setHTML(document.getElementById("statSeq"), statSeqHTML()); return; }
   const lv = char(state).level, { rmb, q, e, keys } = rotKeys(char(state), lv);
   if (keys) { renderDefaultRotation(lv, keys); return; }
-  const before = e.filter(n => n === "Illusive Clone" || n === "Swift Contract"), after = e.filter(n => !before.includes(n));
+  /* the E stigmas fired before Q (E_BEFORE_Q, keyStacks.eBeforeQ), then Q, then the rest of E */
+  const before = e.filter(n => E_BEFORE_Q.includes(n)), after = e.filter(n => !before.includes(n));
   const steps = [];
   /* Q and E are the guide's suggested binding, not the game's defaults: the Key setup grid's heading line says so once */
   /* the buffs' order is the disputed part of the E stack (0.9 P17, C21b): its label sits on this step */

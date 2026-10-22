@@ -112,6 +112,18 @@
         "order": {
           "description": "Display order among the credited unlocks (records are stored sorted by id).",
           "type": "number"
+        },
+        "meanwhile": {
+          "description": "Its role on the story card's \"Meanwhile\" line (0.9 P13): an Expedition (the highest one open is named, with its item level from `at`) or the daily dungeon (at most one). Only on verified, credited records (generator check).",
+          "enum": [
+            "expedition",
+            "daily-dungeon"
+          ]
+        },
+        "step": {
+          "description": "The guide step of this unlock whose other gates (all but its level) must also be met before the Meanwhile line names it (0.9 P13: Krao Cave's g20:exp, which waits for its story gate). Must be a guide step (generator check).",
+          "type": "string",
+          "pattern": "^g[0-9]+:[a-z0-9-]+$"
         }
       },
       "unevaluatedProperties": false

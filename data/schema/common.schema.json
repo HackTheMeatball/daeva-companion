@@ -866,7 +866,7 @@
             "type": "string"
           },
           {
-            "pattern": "\\[\\[(?!(item|tip|stigma|erow|mapq|asc|daeva|rotseq|build)[:|\\]])",
+            "pattern": "\\[\\[(?!(item|tip|stigma|erow|mapq|asc|rotseq|build)[:|\\]])",
             "type": "string"
           },
           {
@@ -888,7 +888,7 @@
             "type": "string"
           },
           {
-            "pattern": "\\[\\[(?!(item|tip|stigma|erow|mapq|asc|daeva|rotseq|build)[:|\\]])",
+            "pattern": "\\[\\[(?!(item|tip|stigma|erow|mapq|asc|rotseq|build)[:|\\]])",
             "type": "string"
           },
           {

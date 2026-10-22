@@ -259,8 +259,7 @@ export function generate(opts = {}) {
     }
   }
   /* a skill or stigma sits in one quickslot at a time, never two (owner, 2026-10-21 22:32Z): per level band, across the slots
-     and the E stigmas (eOrder, all levels). Q's Shadowstrike is not data yet (requirements.js, until the build lane), so the
-     check can't see it */
+     (Q, Quick Use 7, is a slot since 0.9 P13) and the E stigmas (eOrder, all levels) */
   for (const lv of new Set([1, ...KS_SLOTS.flatMap(s => s.rows.map(r => r.minLv))])) {
     const ids = [...KS_SLOTS.flatMap(s => slotRow(s.slot, lv)), ...(KS.eOrder || [])];
     check(`${build.id}: from Lv ${lv} no skill or stigma sits in two quickslots (keyStacks.slots and eOrder)`, new Set(ids).size === ids.length, ids.filter((x, i) => ids.indexOf(x) !== i)); }
@@ -304,7 +303,15 @@ export function generate(opts = {}) {
      MACROS_FLAT / the steps themselves, so nothing else may assume right click. */
   const QU2 = KS_SLOTS.find(s => s.slot === 'Quick Use 2');
   const RMB_ROWS = (MACROS_FLAT.find(m => m.quickslot === 'Quick Use 2') || { rows: QU2 ? QU2.rows.map(r => ({ minLv: r.minLv, skills: r.skills.map(ksName) })).sort((a, b) => b.minLv - a.minLv) : [] }).rows;
+  /* Q_ROWS (0.9 P13): the guide's Q, Quick Use 7, per level band as RMB_ROWS (names, highest minLv first); [] without one */
+  const QU7 = KS_SLOTS.find(s => s.slot === 'Quick Use 7');
+  const Q_ROWS = QU7 ? QU7.rows.map(r => ({ minLv: r.minLv, skills: r.skills.map(ksName) })).sort((a, b) => b.minLv - a.minLv) : [];
   const E_ORDER = build.keyStacks.eOrder.map(id => stg(id).name);
+  /* E_BEFORE_Q (0.9 P13, keyStacks.eBeforeQ): the E stigmas the rotation fires before Q; the rest of E_ORDER comes after it */
+  const EBQ = build.keyStacks.eBeforeQ || [];
+  for (const id of EBQ) check(`${build.id}: keyStacks.eBeforeQ ${id} is in eOrder`, build.keyStacks.eOrder.includes(id));
+  if (EBQ.length) check(`${build.id}: keyStacks.eBeforeQ needs the Q quickslot (Quick Use 7) in keyStacks.slots`, !!QU7);
+  const E_BEFORE_Q = EBQ.map(id => stg(id).name);
   /* the game's default keys (0.7 P11, keyStacks.defaultKeys): [{ key, rows: [{ n, lv }] }], row 0 first, lv the row's minLv
      else its skill's learn level; [] when the build has none. The Assassin has both (0.8 P14): its grid is the guide's
      suggested binding (RMB_ROWS, E_ORDER) and KEYS, the game's defaults, are listed beside it */
@@ -441,6 +448,21 @@ export function generate(opts = {}) {
   const ITEMS = Object.fromEntries(items.map(i => [i.key, [i.label, i.metabotSlug, i.icon || '', i.gameName]]));
   const lvOf = c => (atomsOf(c).find(a => a.level !== undefined) || {}).level;
   const VERIFIED_UNLOCKS = unlocks.filter(u => u.credit && u.status === 'verified').sort(byNum('order')).map(u => [lvOf(u.at), u.what, u.detail || '', u.credit]);
+  /* the story card's "Meanwhile" line (0.9 P13, unlock.meanwhile): the Expeditions in display order, each { lv, name, il
+     (its item level, a string; null without one), step (a guide step whose other gates must also be met) }, and the daily
+     dungeon's level. Only verified, credited unlocks (the Ahead row's), so the flag never shows a fact the Ahead row hides */
+  const mwOf = k => unlocks.filter(u => u.meanwhile === k).sort(byNum('order'));
+  for (const u of unlocks.filter(u => u.meanwhile)) check(`${u.id}: a Meanwhile unlock is verified and credited`, u.credit && u.status === 'verified', u.status);
+  for (const u of unlocks.filter(u => u.step)) check(`${u.id}: its step ${u.step} is a guide step`, steps.some(s => s.id === u.step));
+  const ilOf = u => { const a = atomsOf(u.at).find(a => a.itemLevel !== undefined); return a ? String(a.itemLevel) : null; };
+  check('unlocks: one daily dungeon on the Meanwhile line', mwOf('daily-dungeon').length <= 1, mwOf('daily-dungeon').map(u => u.id));
+  const MEANWHILE = { ex: mwOf('expedition').map(u => ({ lv: lvOf(u.at), name: u.what, il: ilOf(u), ...(u.step ? { step: u.step } : {}) })),
+    dd: (mwOf('daily-dungeon').map(u => lvOf(u.at))[0]) ?? null };
+  /* the faction's interactive map (0.9 P13, zones.json's `map`): the base of every map link (areas, dungeons, strongholds,
+     quest pins); a page some record cites, so it is in the Sources card. null without one (a pack that draws map links
+     requires it in its own checks: data/packs/aion2/checks.mjs) */
+  const MAP_BASE = (B.by.zones || []).map(x => x.doc.map).find(Boolean) || null;
+  if (MAP_BASE) check('zones: the faction map (zones.json `map`) is cited by a record', Object.values(B.by).flat().some(x => x.doc.records.some(r => urlsIn(r).includes(MAP_BASE))), MAP_BASE);
   /* default keys (0.6 P14): unlock id → key, only from the owner's screens: the hotkey's ref is one of the record's owner
      sources and that source shows the key in brackets ("Skills (K): Reach Level 4") */
   for (const u of unlocks.filter(u => u.hotkey)) { const s = (u.sources || []).find(s => s.owner && s.owner.ref === u.hotkey.ref);
@@ -847,7 +869,7 @@ export function generate(opts = {}) {
      guide's chain does not load; [] for a file that does not exist */
   const classRecords = (id, file) => { const f = join(classDir, id, file); return fs.exists(f) ? fs.edit(f, JSON.parse(fs.read(f))).records || [] : []; };
   const ctx = { B, R, zones, story, sqById, chain, rqs, rqById, skills, skById, stigmas, stById, nodes, nodeById, boards, boardById, sds, shs, rules, claims,
-    cls, builds, build, milestones, steps, tips, unlocks, items, asc, all, packs: B.packs, RQ, STORY_END, SH_DATA, GATE_GRAPH, kibs, NODE_PLACE, KIBELISKS, KIB_REPORT, atomsOf, byNum, refCheck, count, classRecords };
+    cls, builds, build, milestones, steps, tips, unlocks, items, asc, all, packs: B.packs, RQ, STORY_END, SH_DATA, GATE_GRAPH, kibs, NODE_PLACE, KIBELISKS, KIB_REPORT, atomsOf, byNum, refCheck, count, classRecords, MAP_BASE };
   for (const p of B.packChecks) p.checks(ctx, check);
 
   /* ---------------------------------------------------------------- class packs no guide uses yet (0.6 P4) */
@@ -860,8 +882,8 @@ export function generate(opts = {}) {
   /* ---------------------------------------------------------------- the module */
   const C = { RQ, RQ_STATS, QUESTS_X, QUEST_STEPS_X, QUEST_LOC_X, STORY_END, SH_DATA, AREA_LOC, SD_RW, SP_EXTRA, DV_BOARDS, SOURCES, SRC_SITE, CONF,
     QUESTS, QUEST_NAME, QUEST_STEPS, QUEST_STEP_I, QUEST_SUB_I, QUEST_STEP_NOTES, QUEST_LOC, STORY_UNLOCKS, UNLOCK_GATE, VERIFIED_UNLOCKS, HOTKEYS, TERMS, ASCENSION, GUIDE_GATES, GUIDE_STEPS, TIPS, ITEMS, HIDEOUT_AREA, ZONE_TRACES, SD_REWARD, SH_REWARD,
-    STAT_TIERS, STAT_SRC, STAT_NOTE, STIGMA_PLAN, STIGMA_KEY, ST_TARGETS, STIGMA_ST, SP_SKILLS_CORE, LEVEL_POINTS, RMB_ROWS, MACROS_FLAT, E_ORDER, E_ST, E_NOTE, KEYS, KEYS_ST, SP_ICONS, STIGMA_ICON,
-    RULE_SKILL_POINT_COST, RULE_SPEC_SLOTS, RULE_NODE_COSTS, RULE_SHARD_COST, GAME_CLASSES, GUIDE_CLASSES };
+    STAT_TIERS, STAT_SRC, STAT_NOTE, STIGMA_PLAN, STIGMA_KEY, ST_TARGETS, STIGMA_ST, SP_SKILLS_CORE, LEVEL_POINTS, RMB_ROWS, Q_ROWS, MACROS_FLAT, E_ORDER, E_BEFORE_Q, E_ST, E_NOTE, KEYS, KEYS_ST, SP_ICONS, STIGMA_ICON,
+    MEANWHILE, MAP_BASE, RULE_SKILL_POINT_COST, RULE_SPEC_SLOTS, RULE_NODE_COSTS, RULE_SHARD_COST, GAME_CLASSES, GUIDE_CLASSES };
   const J = v => JSON.stringify(v);
   const module = '/* Generated by tools/gen/gen.mjs from data/** (data format v2). Not stored: the build makes it on every run. */\n' +
     Object.entries(C).map(([k, v]) => `export const ${k} = ${J(v)};`).join('\n') + '\n';
@@ -964,7 +986,7 @@ function checkIdleClass({ root, pack, check, fs = realFs }) {
    unless it differs between two classes, which moves it to the class sets too. scripts/build.mjs ships the shared
    tables in the page and each class set as its own chunk (docs/ARCHITECTURE.md §4, DATA-FORMAT-V2 §2.1). */
 export const CLASS_TABLES = ['SP_EXTRA', 'DV_BOARDS', 'SOURCES', 'CONF', 'GUIDE_GATES', 'GUIDE_STEPS', 'TIPS', 'STAT_TIERS', 'STAT_SRC', 'STAT_NOTE', 'STIGMA_PLAN', 'ST_TARGETS', 'STIGMA_ST',
-  'SP_SKILLS_CORE', 'RMB_ROWS', 'MACROS_FLAT', 'E_ORDER', 'E_ST', 'E_NOTE', 'KEYS', 'KEYS_ST', 'SP_ICONS', 'STIGMA_ICON', 'GATE_GRAPH', 'GATE_PROPOSED'];
+  'SP_SKILLS_CORE', 'RMB_ROWS', 'Q_ROWS', 'MACROS_FLAT', 'E_ORDER', 'E_BEFORE_Q', 'E_ST', 'E_NOTE', 'KEYS', 'KEYS_ST', 'SP_ICONS', 'STIGMA_ICON', 'GATE_GRAPH', 'GATE_PROPOSED'];
 /* every table of one result by name, in module order (generated.js, gate-graph.js, gate-proposed.js, place.js) */
 export const tablesOf = g => ({ ...g.constants, GATE_GRAPH: g.gateGraph, GATE_PROPOSED: g.gateProposed, NODE_PLACE: g.nodePlace, KIBELISKS: g.kibelisks, TRAVEL_RULES: g.travelRules });
 /* the guide packs below a packs root, by id */
