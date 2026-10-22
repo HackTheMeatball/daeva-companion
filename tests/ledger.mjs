@@ -189,7 +189,7 @@ export const SOP_SECTIONS = ['Purpose', 'Trigger', 'Owner', 'Inputs', 'Steps', '
 /* doers that are automation or a role filled per run, not a standing thread */
 export const SOP_ACTORS = new Set(['Kickoff', 'Pipeline', 'Auto-merge', 'CI', 'Builder', 'Reviewer', 'Fresh reviewer',
   'Research thread', 'Design Critic', 'Requesting thread', 'Recorder', 'Proposer', 'Outside reviewer', 'Rule owner',
-  'Every report owner', 'New thread']);
+  'Every report owner', 'New thread', 'Scorer']);
 const RULE_ID = /\bDEC-\d{8}-[a-z0-9-]+|\b(?:COM|MRG|PIP|Q|HC|LOG|PLN|KZ|DEC|TRK|CLK|ROL|REPO|NEW)-\d{2}\b/g;
 const REPO_URL = 'https://github.com/HackTheMeatball/daeva-companion/issues/';
 /* GitHub's heading anchors: lower case, punctuation dropped, spaces to hyphens */
