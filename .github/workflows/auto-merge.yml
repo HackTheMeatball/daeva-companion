@@ -413,11 +413,12 @@ jobs:
             const STALEMARK = (seat, s7) => `<!-- auto-merge:stale-mark ${seat} ${s7} -->`;
             const SEATS = { design: { who: 'the Design Lead (Jane)', mark: 'DESIGN OK', rule: 'MRG-06' },
               data: { who: 'Game Data Check (Gretchen)', mark: 'VERIFIED', rule: 'ROL-03' } };
-            // The sha the seat's latest mark names (claude[bot] or the owner, as the gates read them), or null.
+            // The seat's latest mark (claude[bot] or the owner, as the gates read them), or undefined.
+            const lastMark = (seat, comments) => comments.filter((c) => c.user && (c.user.login === 'claude[bot]' || c.user.login.toLowerCase() === owner.toLowerCase())
+              && (seat === 'design' ? V.design(c.body) : V.data(c.body).length)).sort((a, b) => Date.parse(a.updated_at) - Date.parse(b.updated_at)).pop();
+            // The sha the seat's latest mark names, or null.
             const markSha = (seat, comments) => {
-              const marks = comments.filter((c) => c.user && (c.user.login === 'claude[bot]' || c.user.login.toLowerCase() === owner.toLowerCase())
-                && (seat === 'design' ? V.design(c.body) : V.data(c.body).length)).sort((a, b) => Date.parse(a.updated_at) - Date.parse(b.updated_at));
-              const last = marks[marks.length - 1];
+              const last = lastMark(seat, comments);
               if (!last) return null;
               // The same line the gate reads: dataBlocker takes the comment's first verdict line.
               if (seat === 'data') return V.data(last.body)[0].sha;
@@ -435,6 +436,21 @@ jobs:
                 : changed.length ? `this PR's files changed between them: ${changed.slice(0, 20).map((f) => `\`${f}\``).join(', ')}${changed.length > 20 ? ` and ${changed.length - 20} more` : ''}`
                   : 'none of this PR\'s files changed between them';
               return `${STALEMARK(seat, s7)}\nAuto-merge is waiting on ${S.who}: the latest ${S.mark} names ${on ? `\`${on.slice(0, 7)}\`` : 'no sha'}, not the head \`${s7}\` (${S.rule}). Please check the current head; ${files}. If the wait passes 30 min, Watchdog follows up (HC-01).`;
+            };
+            // A seat named on the Reviewers: line is waited on by the named check first (its DESIGN OK / VERIFIED counts as the
+            // design lead's / game data check's approval), which stops the loop before the design and data gates. When the named
+            // check waits only on those seats and each one's latest mark approves an older head, they are asked too (fresh
+            // review of #847: the ask never fired on a PR whose Reviewers: line names jane or gretchen, the PRs MRG-12 has
+            // authors write). A seat with no mark yet, or whose latest mark is a CHANGES, gets no ask.
+            const SEATOF = { 'design lead': 'design', 'game data check': 'data' };
+            const staleSeats = (named, comments) => {
+              const m = /^waits on (.+) to approve [0-9a-f]+$/.exec(named || '');
+              const names = m ? m[1].split(', ') : [];
+              if (!names.length || !names.every((w) => SEATOF[w])) return [];
+              return names.map((w) => SEATOF[w]).filter((seat) => {
+                const last = lastMark(seat, comments);
+                return last && (seat === 'design' ? V.design(last.body) === 'OK' : V.data(last.body)[0].verdict === 'VERIFIED');
+              });
             };
             // STALE-CHECK END
             let merged = 0;
@@ -511,16 +527,10 @@ jobs:
               const touched = (await filesOf()).flatMap((f) => [f.filename, f.previous_filename].filter(Boolean));
               // Game Data Check's own data PRs skip DATA-CHECK, so a second data reviewer is required instead (MRG-12, #665).
               const implied = /^claude\/game-data-check-/.test(pr.head.ref) && touched.some(DATAFILE) ? ['lydia'] : [];
-              const named = namedBlocker(comments, sha, pr.body || '', implied, labels.filter((l) => !lifted || l !== 'hold'), touched);
-              if (named) { core.info(`#${pr.number}: ${named}`); continue; }
-              const design = designBlocker(files, comments, sha, headAt);
-              const data = await dataBlocker(pr, touched, comments, sha, headAt);
-              for (const [seat, why] of [['design', design], ['data', data]]) {
-                if (!why) continue;
-                core.info(`#${pr.number}: ${why}`);
-                // The ask (STALE-CHECK block) only makes a wait visible: an API error in it is a warning, never the end of the run.
+              // The ask (STALE-CHECK block) only makes a wait visible: an API error in it is a warning, never the end of the run.
+              const askStale = async (seat, why) => {
                 try {
-                  if (!/does not cover the head/.test(why)) continue;
+                  if (!/does not cover the head/.test(why)) return;
                   const on = markSha(seat, comments);
                   let changed = null;
                   if (on) {
@@ -531,6 +541,19 @@ jobs:
                   const ask = staleAsk(seat, why, sha, comments, changed);
                   if (ask) { await github.rest.issues.createComment({ owner, repo, issue_number: pr.number, body: ask }); core.notice(`#${pr.number}: asked ${seat} to check the head ${sha.slice(0, 7)}`); }
                 } catch (e) { core.warning(`#${pr.number}: stale-mark ask skipped: ${e.message}`); }
+              };
+              const named = namedBlocker(comments, sha, pr.body || '', implied, labels.filter((l) => !lifted || l !== 'hold'), touched);
+              if (named) {
+                core.info(`#${pr.number}: ${named}`);
+                for (const seat of staleSeats(named, comments)) await askStale(seat, `${seat === 'design' ? 'DESIGN OK' : "Game Data Check's VERIFIED"} does not cover the head ${sha.slice(0, 7)}`);
+                continue;
+              }
+              const design = designBlocker(files, comments, sha, headAt);
+              const data = await dataBlocker(pr, touched, comments, sha, headAt);
+              for (const [seat, why] of [['design', design], ['data', data]]) {
+                if (!why) continue;
+                core.info(`#${pr.number}: ${why}`);
+                await askStale(seat, why);
               }
               if (design || data) continue;
               const frozen = freezeBlocker(freeze, pr, touched);

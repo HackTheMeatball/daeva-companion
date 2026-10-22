@@ -48,9 +48,11 @@ _Named reviewers. Written here by Gus; the coordinator's incident fast path for 
     item 40, Gale; routed by the coordinator 2026-10-22T08:21Z, after #836 sat green for 86 min on a stale mark): when
     auto-merge waits only because the latest `DESIGN OK` or Game Data Check `VERIFIED` names an older head, it posts one
     comment per head asking that seat to check the current head, naming both sha7s and the files changed between
-    them. The comment quotes the mark inside a sentence and never starts a line with it, so it can't parse as a mark
-    or a verdict (MRG-07; `tools/verdicts.cjs`). A carried VERIFIED (merge-only head, DECISIONS 2026-10-20) needs no
-    ask. Watchdog (Mike) messages the seat if the wait passes 30 min (HC-01).
+    them. This includes a PR whose `Reviewers:` line names the seat (jane, gretchen), where the named check is what
+    waits on the mark (fresh review of #847). The comment quotes the mark inside a sentence and never starts a line
+    with it, so it can't parse as a mark or a verdict (MRG-07; `tools/verdicts.cjs`). A carried VERIFIED (merge-only
+    head, DECISIONS 2026-10-20) needs no ask. Watchdog (Mike) messages the seat if the wait passes 30 min after the ask
+    was posted (HC-01).
   - **Changed** means the rule's ledger row changes (a new row needs its named owner; a row whose `owner` changes needs
     the old owner), or the diff touches the rule's home section. The home section is: for a `file#Heading` home, the
     text under that heading up to the next heading of the same or a higher level; for a `file#phrase` home that is not
