@@ -68,7 +68,25 @@ jobs:
             core.setOutput('touches', ROUTE.sonnetMayNotTouch);
             // Words that mean a spec changes what gen compiles, so it needs the gen lane (Kaizen (Gale), 2026-10-20).
             const GEN = JSON.parse(Buffer.from((await github.rest.repos.getContent({ owner, repo, path: '.github/routing/gen-lane.json', ref: 'main' })).data.content, 'base64').toString('utf8'));
-            const LANES = ['golden', 'golden-nextup', 'golden-journey', 'golden-milestones', 'golden-regional', 'golden-route', 'mig', 'main.js', 'gates', 'gen', 'app.css', 'ci', 'a11y', 'release', 'architecture'];
+            // FILE-LANES START (tests/kickoff.mjs runs this block; the merge job below keeps a byte-identical copy of FILE_LANES)
+            // Module lanes named in the 0.9 specs, each with the files that mark it busy while an open PR edits them (Release
+            // Planner (Walter) confirmed the maps, routed by the coordinator 2026-10-22T05:38Z; `e2` dropped: a test suite, and
+            // tests/e2-migtest is the `mig` lane). Before this they only warned: they kept queue items apart while one was
+            // started, but no PR's files ever marked them busy.
+            const FILE_LANES = {
+              'build-card': ['src/packs/aion2/cards/build.js', 'src/packs/aion2/cards/build.html'],
+              'nextup-card': ['src/cards/nextup.js', 'src/cards/nextup.html', 'src/packs/aion2/cards/nextup-kinds.js', 'src/packs/aion2/nextup.js'],
+              'skills-card': ['src/packs/aion2/cards/skills.js', 'src/packs/aion2/cards/skills.html'],
+              'daevanion-card': ['src/packs/aion2/cards/daevanion.js', 'src/packs/aion2/cards/daevanion.html'],
+              'journey-card': ['src/cards/journey.js', 'src/cards/journey.html', 'src/packs/aion2/cards/journey-sections.js'],
+              'page-card': ['src/cards/page.js', 'src/packs/aion2/cards/page.js'],
+              'sources-card': ['src/cards/sources.js'],
+              'rows': ['src/packs/aion2/cards/rows.js'],
+              'site': ['src/site.js', 'scripts/build.mjs', 'src/sw.js', 'public/sitemap.xml'],
+              'save': ['src/core/state.js', 'src/core/storage.js', 'src/core/migrations.js', 'src/core/backup.js', 'src/core/merge.js', 'src/shell/storage-web.js', 'tests/save.js'],
+            };
+            const LANES = ['golden', 'golden-nextup', 'golden-journey', 'golden-milestones', 'golden-regional', 'golden-route', 'mig', 'main.js', 'gates', 'gen', 'app.css', 'ci', 'a11y', 'release', 'architecture', ...Object.keys(FILE_LANES)];
+            // FILE-LANES END
             // OPUS-FILES START (tests/kickoff.mjs runs this block)
             // PIP-06 (Kaizen (Gale), 0.7 rules audit, 2026-10-19): a Sonnet build whose issue's "## Files" section names an
             // Opus path (#114 Effort: src/core, saves/storage/migrations, gates, golden/mig1, tools/gen, data/schema,
@@ -215,6 +233,7 @@ jobs:
                 if (n === '.github/workflows/ci.yml') out.add('ci');
                 if (n === 'tests/a11y.js') out.add('a11y');
                 if (n === 'package.json' || n === 'CHANGELOG.md') out.add('release');
+                for (const [lane, fs] of Object.entries(FILE_LANES)) if (fs.includes(n)) out.add(lane);
               }
               return out;
             };
@@ -780,6 +799,19 @@ jobs:
             const { owner, repo } = context.repo;
             const merged = (await github.rest.repos.getCommit({ owner, repo, ref: context.payload.inputs.sha })).data.files || [];
             // Keep in step with lanesOfFiles() in the pick job above (same rules, two copies).
+            // FILE_LANES: a byte-identical copy of the pick job's (tests/kickoff.mjs checks it).
+            const FILE_LANES = {
+              'build-card': ['src/packs/aion2/cards/build.js', 'src/packs/aion2/cards/build.html'],
+              'nextup-card': ['src/cards/nextup.js', 'src/cards/nextup.html', 'src/packs/aion2/cards/nextup-kinds.js', 'src/packs/aion2/nextup.js'],
+              'skills-card': ['src/packs/aion2/cards/skills.js', 'src/packs/aion2/cards/skills.html'],
+              'daevanion-card': ['src/packs/aion2/cards/daevanion.js', 'src/packs/aion2/cards/daevanion.html'],
+              'journey-card': ['src/cards/journey.js', 'src/cards/journey.html', 'src/packs/aion2/cards/journey-sections.js'],
+              'page-card': ['src/cards/page.js', 'src/packs/aion2/cards/page.js'],
+              'sources-card': ['src/cards/sources.js'],
+              'rows': ['src/packs/aion2/cards/rows.js'],
+              'site': ['src/site.js', 'scripts/build.mjs', 'src/sw.js', 'public/sitemap.xml'],
+              'save': ['src/core/state.js', 'src/core/storage.js', 'src/core/migrations.js', 'src/core/backup.js', 'src/core/merge.js', 'src/shell/storage-web.js', 'tests/save.js'],
+            };
             const lanes = (files) => {
               const out = new Set();
               for (const f of files) {
@@ -796,6 +828,7 @@ jobs:
                 if (n === '.github/workflows/ci.yml') out.add('ci');
                 if (n === 'tests/a11y.js') out.add('a11y');
                 if (n === 'package.json' || n === 'CHANGELOG.md') out.add('release');
+                for (const [lane, fs] of Object.entries(FILE_LANES)) if (fs.includes(n)) out.add(lane);
               }
               return out;
             };

@@ -64,10 +64,24 @@ const fb = runSrc.match(/\/\/ FLAKY-NOTE START[^\n]*\n([\s\S]*?)\n\/\/ FLAKY-NOT
 check(!!fb, 'tests/run.mjs has the FLAKY-NOTE block');
 const flakyNote = fb ? new Function(fb[1] + '\nreturn flakyNote;')() : () => ({});
 const fnote = flakyNote('core', 1, ['FAIL core checks took longer than 5 s', 'FAIL x 100%\nmore']);
-check(fnote.warning === '::warning title=FLAKY core::FAIL core checks took longer than 5 s | FAIL x 100  more', `a retry pass is a ::warning titled FLAKY <suite>, one line, no % (${fnote.warning})`);
+// Intended change (Kaizen item 29): the message now says "passed on retry N; first run: …", and a kill has its own title.
+check(fnote.warning === '::warning title=FLAKY core::passed on retry 1; first run: FAIL core checks took longer than 5 s | FAIL x 100  more', `a retry pass is a ::warning titled FLAKY <suite>, one line, no % (${fnote.warning})`);
 check(fnote.summary === '- FLAKY `core`: passed on retry 1; first run: FAIL core checks took longer than 5 s | FAIL x 100  more\n', 'and a step-summary line');
-check(flakyNote('equiv', 1, []).warning === '::warning title=FLAKY equiv::first run failed', 'a first run with no FAIL line still names the suite');
-check(/if \(ok && attempt\) \{\s*const note = flakyNote\(name, attempt, firstFails\);\s*if \(process\.env\.GITHUB_ACTIONS\) console\.log\(note\.warning\);\s*if \(process\.env\.GITHUB_STEP_SUMMARY\) appendFileSync\(process\.env\.GITHUB_STEP_SUMMARY, note\.summary\);/.test(runSrc), 'run.mjs emits both only for a pass on retry, and only on CI');
+check(flakyNote('equiv', 1, []).warning === '::warning title=FLAKY equiv::passed on retry 1; first run: no FAIL line', 'a first run with no FAIL line still names the suite');
+const kOk = flakyNote('equiv', 1, ['KILLED by SIGKILL (likely out of memory)'], 'KILLED', true);
+check(kOk.warning === '::warning title=KILLED equiv::passed on retry 1; first run: KILLED by SIGKILL (likely out of memory)', `a kill that passes on retry is annotated KILLED, not FLAKY (${kOk.warning})`);
+const kBad = flakyNote('equiv', 1, ['KILLED by SIGKILL (likely out of memory)'], 'KILLED', false);
+check(kBad.warning === '::warning title=KILLED equiv::KILLED by SIGKILL (likely out of memory) (attempt 2)', `a kill on the last attempt is annotated too (${kBad.warning})`);
+check(/child\.on\('close', \(code, signal\) => \{/.test(runSrc) && /const killed = signal \? `KILLED by \$\{signal\}\$\{signal === 'SIGKILL' \? ' \(likely out of memory\)' : ''\}` : '';/.test(runSrc), 'run.mjs reads the exit signal and names a kill');
+check(/ok \? \(attempt \? 'FLAKY' : 'PASS '\) : killed \? 'KILLED' : 'FAIL '/.test(runSrc), 'a killed suite is labelled KILLED, not FAIL');
+const noteFor = fb ? new Function(fb[1] + '\nreturn noteFor;')() : () => null;
+const KL = 'KILLED by SIGKILL (likely out of memory)';
+check(noteFor('core', 0, true, '', '', []) === null && noteFor('core', 0, false, '', '', []) === null, 'a plain pass or a plain failure is not annotated');
+check(noteFor('core', 1, true, '', '', ['FAIL x']).warning === '::warning title=FLAKY core::passed on retry 1; first run: FAIL x', 'a pass on retry -> FLAKY');
+check(noteFor('equiv', 1, true, '', KL, [KL]).warning === `::warning title=KILLED equiv::passed on retry 1; first run: ${KL}`, 'a kill, then a pass -> KILLED');
+check(noteFor('equiv', 1, false, KL, '', ['FAIL y']).warning === `::warning title=KILLED equiv::${KL} (attempt 2)`, 'a kill on the last attempt -> KILLED');
+check(noteFor('equiv', 1, false, '', KL, [KL, 'FAIL z']).warning === `::warning title=KILLED equiv::${KL} | FAIL z (attempt 2)`, 'a kill, then an ordinary failure -> still KILLED (#831 review)');
+check(/const note = noteFor\(name, attempt, ok, killed, firstKilled, firstFails\);\s*if \(note\) \{\s*if \(process\.env\.GITHUB_ACTIONS\) console\.log\(note\.warning\);\s*if \(process\.env\.GITHUB_STEP_SUMMARY\) appendFileSync\(process\.env\.GITHUB_STEP_SUMMARY, note\.summary\);/.test(runSrc), 'run.mjs writes noteFor\'s annotation and summary line');
 
 console.log(`\n${n - fail}/${n} deploy checks passed`);
 console.log(fail ? 'DEPLOY CHECKS FAILED' : 'DEPLOY CHECKS PASSED');
