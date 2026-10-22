@@ -180,7 +180,7 @@ const noteFor = (name, attempt, ok, killed, firstKilled, firstFails) => {
 // FLAKY-NOTE END
 const runOne = (name, attempt = 0) => new Promise(resolve => {
   const s = SUITES[name], file = join(OUT, name + (attempt ? `.retry${attempt}` : '') + '.out'), log = createWriteStream(file), t = Date.now();
-  const pre = flag('with-fonts') ? [] : ['--require', join(ROOT, 'tests', 'support', 'block-web-fonts.cjs')];
+  const pre = ['--require', join(ROOT, 'tests', 'support', 'flush-exit.cjs'), ...(flag('with-fonts') ? [] : ['--require', join(ROOT, 'tests', 'support', 'block-web-fonts.cjs')])];
   const child = spawn(process.execPath, [...pre, ...s.args], { cwd: ROOT, env });
   let out = '';
   for (const st of [child.stdout, child.stderr]) st.on('data', d => { out += d; log.write(d); });
@@ -195,7 +195,9 @@ const runOne = (name, attempt = 0) => new Promise(resolve => {
     // equiv died this way under two parallel npm test runs and read as an evaluator difference).
     const killed = signal ? `KILLED by ${signal}${signal === 'SIGKILL' ? ' (likely out of memory)' : ''}` : '';
     const firstFails = attempt ? (results[name].fails || []) : [], firstKilled = attempt ? results[name].killed : '';
-    if (!ok && attempt < retries) { results[name] = { killed, fails: (killed ? [killed] : []).concat(out.match(/^FAIL .*/gm) || [], problems).map(l => l.slice(0, 160)) }; console.log(`retry ${name} (failed: ${results[name].fails.slice(0, 3).join(' | ') || 'exit ' + code})`); return resolve(runOne(name, attempt + 1)); }
+    /* exit 0 without the pass line: output cut short or a suite that stopped early; the last line says which */
+    const noPass = code === 0 && s.pass && !s.pass.test(out) ? [`exit 0 without its pass line; last line: ${last.slice(0, 100)}`] : [];
+    if (!ok && attempt < retries) { results[name] = { killed, fails: (killed ? [killed] : []).concat(out.match(/^FAIL .*/gm) || [], problems, noPass).map(l => l.slice(0, 160)) }; console.log(`retry ${name} (failed: ${results[name].fails.slice(0, 3).join(' | ') || 'exit ' + code})`); return resolve(runOne(name, attempt + 1)); }
     results[name] = { ok, killed, line: `${ok ? (attempt ? 'FLAKY' : 'PASS ') : killed ? 'KILLED' : 'FAIL '} ${name.padEnd(8)} ${((Date.now() - t) / 1000).toFixed(0).padStart(4)} s  ${nOk || nFail ? `${nOk} ok, ${nFail} FAIL · ` : ''}${killed ? killed + ' · last line: ' : ''}${last.slice(0, 120)}${problems.length ? ' · ' + problems.slice(0, 3).join(' | ') : ''}${ok && attempt ? ' · first run: ' + firstFails.slice(0, 3).join(' | ') : ''}` };
     console.log(results[name].line);
     // HC-01 (Watchdog, flaky suites; Kaizen batch-0.9 item 26): a pass on retry is also a CI annotation and a step-summary
