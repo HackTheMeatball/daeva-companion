@@ -70,7 +70,7 @@ const setState = async (p, args) => { await writeFixture(p, args); await p.reloa
     rec(c0, 'story data ends at Daeva Trapped in a Nightmare (Lv 45, 0.3 E10), levels non-decreasing', s.last[1] === 'Daeva Trapped in a Nightmare' && s.last[0] === 45 && s.lvSorted, s.last);
     rec(c0, 'strongholds credit nothing; Sealed Dungeons 2+2', s.shRw.every(x => x === null) && s.sdRw.join() === '{"st":2,"cr":2}', { sh: s.shRw.slice(0, 3), sd: s.sdRw });
     rec(c0, 'no dungeon XP in AREA_LOC', !s.xpLoc, s.xpLoc);
-    rec(c0, 'no "Ariel" in the page source', !/Ariel/.test(SRC));
+    rec(c0, '"Ariel" in the page source only as the Daevanion tip\'s endgame sentence (2026-10-21 patch, #781)', !/Ariel/.test(SRC.replace(/A sixth board, Ariel, is endgame: its points come only from Expedition \(Hard\)\./g, '')));
     rec(c0, 'no "Quick Use 2" / "not covered" leftovers in source', !/Quick Use 2|aren't covered|not covered yet/.test(SRC));
     const zoneNames = new Set(RQD.map(r => r.zone)); /* zones that are also used as a camp/place elsewhere = a camp used as a zone */
     const campAsZone = s.zones.filter(z => s.places.includes(z));

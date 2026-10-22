@@ -8,11 +8,25 @@
       "id": "tip:daevanion",
       "key": "daevanion",
       "title": "Daevanion board",
-      "body": "<p>Five talent boards: Nezekan (when you complete the story quest \"Urgent Pursuit\", Lv 13), Zikel (Lv 20), Vaizel (Lv 30), Triniel (Lv 40) and Azphel (Lv 45). You use <b>Daevanion Crystals</b> from the Cube (2 per Sealed Dungeon, 1 per regional quest) to add crystals to the board, then buy nodes connected to the free centre.</p>\n    <p>Grey nodes are stats (1 crystal). Blue nodes add +1 level to an active skill (3 crystals), green nodes to a passive (2 crystals); some passives have two nodes on a board. Orange corner nodes cost 4 and give +1.5% of a big stat. Azphel has no skill nodes and uses its own Azphel crystals (from battleground fragments or Abyss Points) instead.</p>\n    <p>Like a paragon board: a skill node is a permanent +1 to that skill, on top of the levels you buy with Skill Points (from your game). Board levels count toward a skill's specialty slots (seen in your game). Not documented: whether board levels can push a skill past 10, and the reset cost.</p>",
-      "credit": "Metabot Daevanion guide and Ranger boards (the same grid as the Assassin's), Metaroad Assassin boards, AION2HUB, your game",
-      "verifiedAt": "2026-10-14",
+      "body": "<p>Five talent boards: Nezekan (when you complete the story quest \"Urgent Pursuit\", Lv 13), Zikel (Lv 20), Vaizel (Lv 30), Triniel (Lv 40) and Azphel (Lv 45). A sixth board, Ariel, is endgame: its points come only from Expedition (Hard). You use <b>Daevanion Crystals</b> from the Cube (2 per Sealed Dungeon, 1 per regional quest) to add crystals to the board, then buy nodes connected to the free centre.</p>\n    <p>Grey nodes are stats (1 crystal). Blue nodes add +1 level to an active skill (3 crystals), green nodes to a passive (2 crystals); some passives have two nodes on a board. Orange corner nodes cost 4 and give +1.5% of a big stat. Azphel has no skill nodes and uses its own Azphel crystals (from battleground fragments or Abyss Points) instead.</p>\n    <p>Like a paragon board: a skill node is a permanent +1 to that skill, on top of the levels you buy with Skill Points (from your game). Board levels count toward a skill's specialty slots (seen in your game). Not documented: whether board levels can push a skill past 10, and the reset cost.</p>",
+      "credit": "Metabot Daevanion guide and Ranger boards (the same grid as the Assassin's), Metaroad Assassin boards, AION2HUB, your game, AION 2 patch notes (2026-10-21)",
+      "verifiedAt": "2026-10-21",
       "claims": [
         "C22"
+      ],
+      "sources": [
+        {
+          "owner": {
+            "ref": "owner:2026-10-21-patch-notes-01",
+            "checkedAt": "2026-10-21",
+            "build": {
+              "scheme": "patch",
+              "value": "2026-10-21"
+            },
+            "region": "global",
+            "what": "Official AION 2 patch notes, 2026-10-21 (owner PDF): Ariel board added; points only from Ariel Fragments, Expedition (Hard), item level 2600"
+          }
+        }
       ]
     },
     {
