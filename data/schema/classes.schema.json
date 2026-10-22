@@ -59,7 +59,7 @@
           ]
         },
         "releaseOrder": {
-          "description": "0.9 P11: where the class picker lists this class among the playable ones (1 = the default class, then the order the classes were released); the generator's GUIDE_CLASSES is sorted by it. Every released class with a guide pack has one, each number once.",
+          "description": "0.9 P11: where the class picker lists this class among the playable ones (1 = the default class, then the order their guides shipped in this app, not a game fact); the generator's GUIDE_CLASSES is sorted by it. Every released class with a guide pack has one, each number once.",
           "type": "integer",
           "minimum": 1
         },

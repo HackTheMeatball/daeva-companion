@@ -21,7 +21,7 @@ import { aion2Place, stepsShownOf } from "./travel.js";
 /* The default guide pack (data/packs/aion2/asmodian/assassin/pack.json) and its class (data/packs/aion2/classes/assassin):
    what a fresh save starts with; tests/core/state.test.mjs checks both against data/. Every released class with a guide
    pack is playable (`classes`): GUIDE_CLASSES, compiled from the data (0.9 P11, tools/gen/gen.mjs), in the class records'
-   `releaseOrder` (the Assassin, then the order they were released).
+   `releaseOrder` (the Assassin, then the order their guides shipped).
    A character of another class is shown after the reload a switch does (the page loads one class's tables,
    docs/ARCHITECTURE.md §4). */
 export const PACK = "aion2/asmodian/assassin";

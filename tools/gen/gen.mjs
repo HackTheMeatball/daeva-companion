@@ -817,7 +817,7 @@ export function generate(opts = {}) {
   });
   /* GUIDE_CLASSES (0.9 P11): the playable classes, [{ class, pack, name }]: every guide pack below the packs root whose class
      (the class pack it `uses`) is released, in the class records' `releaseOrder` (the default class first, then the order
-     they were released: the class picker's order), the name from the class record. src/packs/aion2/pack.js reads it as
+     their guides shipped in this app, not a game fact: the class picker's order), the name from the class record. src/packs/aion2/pack.js reads it as
      its `classes`; the golden states make a group for each (tests/golden/states.js). */
   const GUIDE_CLASSES = guidePacks(opts.root || DEFAULT_ROOT, fs).flatMap(id => {
     const mf = join(opts.root || DEFAULT_ROOT, ...id.split('/'), 'pack.json'), m = fs.edit(mf, JSON.parse(fs.read(mf)));

@@ -198,7 +198,7 @@ job((ok, G) => { const g = G(), copyRoot = join(ROOT, 'tests/out/packs-copy'); r
    they check, so a dropped Spiritmaster record fails here and in the generator's count check. */
 /* the generated module without its GUIDE_CLASSES line (0.9 P11: the one table that follows which guide packs exist) */
 const noGuideClasses = m => m.replace(/^export const GUIDE_CLASSES = .*;$/m, '');
-const SM = 'aion2/classes/spiritmaster', editJson =(f, fn) => ({ rel: PK + SM + '/' + f, fn });
+const SM = 'aion2/classes/spiritmaster', editJson = (f, fn) => ({ rel: PK + SM + '/' + f, fn });
 const idleView = (...edits) => { const all = [editJson('class.json', d => { d.records[0].release = 'hidden'; }), ...edits];
   return { drop: [PK + 'aion2/asmodian/spiritmaster'], mutate: (rel, d) => { for (const e of all) if (rel === e.rel) e.fn(d); } }; };
 job((ok, G) => { const g = G(), gi = runs(ok, 'on a copy with an idle Spiritmaster', idleView());
@@ -211,7 +211,8 @@ job((ok, G) => { const g = G(), gi = runs(ok, 'on a copy with an idle Spiritmast
   /* 0.9 P11: the playable classes are read from the data, so the copy's GUIDE_CLASSES is the real one without the Spiritmaster */
   const gu = m => JSON.parse((m.match(/^export const GUIDE_CLASSES = (.*);$/m) || [])[1] || 'null');
   ok('idle class pack aion2/classes/spiritmaster (copy): GUIDE_CLASSES is the real list less the Spiritmaster (its guide pack dropped)', !!gi && JSON.stringify(gu(gi.module)) === JSON.stringify((gu(g.module) || []).filter(e => e.class !== 'spiritmaster'))
-    && gu(g.module).some(e => e.class === 'spiritmaster'), gi && gu(gi.module)); });const idleFails = (label, edit, re) => job(ok => { const g1 = runs(ok, label, idleView(edit)); if (!g1) return;
+    && gu(g.module).some(e => e.class === 'spiritmaster'), gi && gu(gi.module)); });
+const idleFails = (label, edit, re) => job(ok => { const g1 = runs(ok, label, idleView(edit)); if (!g1) return;
   ok('generator rejects: ' + label, g1.failed.some(x => re.test(x.check)), g1.failed.map(x => x.check).slice(0, 5)); });
 const zikel = read('packs/aion2/boards.json').records.find(b => b.id === 'board:zikel').points;
 idleFails('idle-node-cost', editJson('board-nodes.json', d => { d.records.find(n => n.board === 'board:zikel' && n.type === 'stat').cost += 1; }), new RegExp(`spiritmaster: board:zikel: .*points \\(${zikel}\\)`));
