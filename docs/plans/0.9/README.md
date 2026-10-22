@@ -519,7 +519,7 @@ Rules for every item:
   `src/packs/aion2/data/build.js`, `src/core/state.js` (`keys`
   default), `src/core/merge.js`, `src/styles/app.css`, `tests/a11y.js`, `tests/save.js`, the tests.
 - **No-gos.** Only keys AION 2 can bind (Game Data Check's `bindable-keys` file: Design Lead's ask D3). No save key bump;
-  an empty or unknown `keys` value falls back to the default. Names stay reachable by keyboard and screen reader. Each macro step's Delay is shown as a value the player can edit (`skill-bar` fact 12, #806: the owner's in-game test plus two guides), and 10 ms may be called the game's default (fact 12a, settled by the owner, T-123, 2026-10-21 10:39 PM ET).
+  an empty or unknown `keys` value falls back to the default. Names stay reachable by keyboard and screen reader. Each macro step's Delay is shown as a value the player edits in game, not as an app input (`skill-bar` fact 12, #806: the owner's in-game test plus two guides), and 10 ms may be called the game's default (fact 12a, settled by the owner, T-123, 2026-10-21 10:39 PM ET).
 - **Design Lead's macro call (`docs/design/0.9-keys-macro.md`, #839).** Key setup opens with an always-open **How you play** block, with the grid and macro in a remembered fold, **Your keys and macro**; no Simple / Advanced switch and no mode state. The macro is numbered steps, each with a "Delay 10 ms" divider, up to 20 steps (skill-bar fact 7, T-106). The Delay is shown, not taken as input: the player edits it in game (fact 12), no save field; 10 ms may be called the default (fact 12a, T-123). Frames: `docs/design/0.9-keys/22-*.png`.
 - **Acceptance.**
   - [ ] a11y: each key box has an accessible name; the tooltip opens on focus; rebinding works by keyboard.
