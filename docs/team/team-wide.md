@@ -92,9 +92,10 @@ coordinates because that's not how I'm going to count them in game. There is no 
   (cmsg_01UNirAFgxf3jC8kQS8uvvHBJ9Ccgs6bUT4W2nk5rHLJR1): "It’s okay to show both just make sure you show the P-NN
   T-NN Q-NN etc as well". The wording below is the team's, not his. Routed: coordinator 2026-10-22T02:34Z): a
   decision card for Isaac opens its question with every handle that applies to it: its T-NN (or `T-pending`), the
-  release item and its short name (P-NN), and the id of any rule or ledger row the card changes (such as Q-13), e.g.
-  "T-123 · P27 icon check · changes Q-13: OK to edit one #114 line?". Issue and PR numbers may appear alongside them,
-  never instead of them. Each handle names only what it is: a ledger id is shown as the rule being changed, never as
+  release item and its short name (P-NN, written as in the plan, e.g. P27), and the id of any rule or ledger row the card changes (such as Q-13), e.g.
+  "T-123 · P27 icon check · changes Q-13: OK to edit one line of the pipeline issue?". Issue and PR numbers may appear alongside them,
+  never instead of them. That handle prefix has the same limits as the To-do prefix below (at most 4 segments and 60
+  characters). Each handle names only what it is: a ledger id is shown as the rule being changed, never as
   a card number. Every pointer to the card (the CARD READY line, the coordinator's posts, the debrief) uses the same
   handles as its title. A pointer naming a handle the title doesn't carry is a miss, fixed in the same hour: the
   pointer is corrected, or, since a posted card can't be edited, the thread withdraws it and posts it again.

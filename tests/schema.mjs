@@ -506,6 +506,46 @@ if (g) {
   ok('C24 (Noble Belt never fails: allthings.how alone) is single source, C23 no longer says its belt costs are verified',
     byId.C24.verdict === 'single-source' && byId.C23.verdict === 'single-source' && !/Belt costs verified/.test(byId.C23.note), [byId.C24.verdict, byId.C23.verdict]);
 }
+/* allthings.how wording in plain strings (0.8.1 F10, #690): F9's walk reads `quote` fields only. This one reads every string
+   in data/packs (string arrays included) that names allthings.how outside an allthings.how source ref, bare URLs aside.
+   Each must be where Game Data Check's notes table puts it: an F row's string carries its "Replace with" text, any other
+   string is one of the K ("no change") strings that table counts for that record field. Fields are keyed without array
+   indices, so reordering a notes array doesn't red this; a string added or put back where the table has none does. A
+   quoted fragment right after an allthings.how mention ("allthings.how: '…" or "allthings.how 244371 ('…") fails anywhere. */
+{ const NOTES = 'docs/research/2026-10-allthings-notes.md', md = readFileSync(join(ROOT, NOTES), 'utf8');
+  const rows = md.split('\n').filter(l => /^\| [FK]\d+ \|/.test(l)).map(l => l.split('|').map(c => c.trim()));
+  const keyOf = loc => { const m = /^(\S+) (\S+) `([^`]+)`$/.exec(loc); return m ? `${m[1]} ${m[2]} ${m[3].replace(/\[\d+\]/g, '')}` : null; };
+  const F = [], K = {}, badLocs = [];
+  for (const [, n, where, third] of rows) for (const loc of where.split('<br>')) { const k = keyOf(loc); if (!k) badLocs.push([n, loc]); else if (n[0] === 'F') F.push({ n, k, text: third }); else K[k] = (K[k] || 0) + 1; }
+  ok(`the notes table (${NOTES}) parses: ${rows.filter(r => r[1][0] === 'F').length} change rows (${F.length} strings), ${rows.filter(r => r[1][0] === 'K').length} no-change rows`,
+    !badLocs.length && F.length === 29 && rows.length === 23 + 105, badLocs.length ? badLocs : [F.length, rows.length]);
+  const isAt = v => v && typeof v === 'object' && typeof v.url === 'string' && /^https:\/\/allthings\.how\//.test(v.url);
+  const strings = (v, path, acc) => { if (typeof v === 'string') acc.push([path, v]); else if (Array.isArray(v)) v.forEach(x => strings(x, path, acc)); else if (v && typeof v === 'object' && !isAt(v)) for (const [k, x] of Object.entries(v)) strings(x, path ? `${path}.${k}` : k, acc); };
+  const SHAPE = /allthings(?:\.how)?[^.;:(,]*(?:: '|\(')/;
+  const walk = d => readdirSync(d, { withFileTypes: true }).flatMap(e => e.isDirectory() ? walk(join(d, e.name)) : e.name.endsWith('.json') ? [join(d, e.name)] : []);
+  const docs = walk(join(ROOT, 'data/packs')).map(f => [f.slice(ROOT.length + 1).split('\\').join('/').replace(/^data\/packs\/aion2\//, ''), JSON.parse(readFileSync(f, 'utf8'))]);
+  /* audit(docs, edit?): edit(file, id, path, s) may return a replacement string, for the negative controls (nothing written) */
+  const audit = (edit = null, extra = []) => { const used = new Set(), seen = {}, stray = [], shaped = []; let n = 0;
+    for (const [file, doc] of docs) for (const r of doc.records || [{ id: '-', ...doc }]) { const acc = []; strings(r, '', acc);
+      for (const [x, y, path, s0] of extra) if (x === file && y === r.id) acc.push([path, s0]);
+      for (let [path, s] of acc) { if (edit) s = edit(file, r.id, path, s) ?? s;
+        if (!/allthings/i.test(s) || /^https?:\/\/\S+$/.test(s)) continue;
+        n++; const k = `${file} ${r.id} ${path}`, f = F.find(x => !used.has(x) && x.k === k && s.includes(x.text));
+        if (SHAPE.test(s) && !f) shaped.push([k, s]);
+        if (f) { used.add(f); continue; }
+        seen[k] = (seen[k] || 0) + 1; if (seen[k] > (K[k] || 0)) stray.push([k, s]); } }
+    return { n, stray, shaped, missing: F.filter(x => !used.has(x)).map(x => [x.n, x.k]) }; };
+  const a = audit();
+  ok(`every allthings.how string in data/packs is in the notes table: ${a.n} strings, ${a.stray.length} not in it, ${a.shaped.length} with a quoted fragment`, a.n > 0 && !a.stray.length && !a.shaped.length, [...a.stray, ...a.shaped]);
+  ok(`every change row of the notes table is applied (${F.length} strings carry their "Replace with" text)`, !a.missing.length, a.missing);
+  const RQ = 'asmodian/regional-quests.json';
+  const put = audit(null, [[RQ, 'rq:2202018', 'notes', 'allthings.how: rift opens at random spots at set times']]);
+  ok('rejects: an allthings.how sentence put back into a notes array (negative control: rq:2202018 notes)', put.stray.length === 1, put.stray);
+  const back = audit((file, id, path, s) => file === RQ && id === 'rq:2202032' && path === 'notes' && s.startsWith('allthings.how: the rift') ? 'allthings.how: rift opens at random spots at set times' : null);
+  ok('rejects: a change row reverted to its old wording (negative control: rq:2202032, F10)', back.missing.length === 1 && back.stray.length === 1, [back.missing, back.stray]);
+  const quoted = audit((file, id, path, s) => file === RQ && id === 'rq:2202014' && path === 'conflicts' && /allthings/.test(s) ? s.replace('allthings.how', "allthings.how ('a copied line')") : null);
+  ok('rejects: a quoted fragment after allthings.how in a no-change string (negative control: rq:2202014 conflicts)', quoted.shaped.length === 1 && !quoted.stray.length, quoted.shaped);
+}
 /* licence compliance (tests/compliance.mjs): ours only; each fixture is passed as an override, never written. The patterns
    are split in the source so this file does not trip the check it tests. */
 { const problems = checkCompliance(); ok(`licence compliance checks (${problems.length} problems)`, !problems.length, problems);

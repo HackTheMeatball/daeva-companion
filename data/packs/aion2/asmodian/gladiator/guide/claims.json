@@ -118,6 +118,29 @@
       "verifiedAt": "2026-10-16"
     },
     {
+      "id": "C57",
+      "claim": "Gladiator macro line (leveling): Overhead Slam above Rending Blow, held with left click; Leaping Slam and the stigmas by hand.",
+      "verdict": "verified",
+      "sources": [
+        {
+          "url": "https://daevaguides.com/en/guides/macros/",
+          "checkedAt": "2026-10-20",
+          "note": "Macro for every class: Gladiator Rage Burst (row 0), Overhead Slam, Sword Aura Rampage, Rending Blow as the filler, from Lv 27."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/gladiator/",
+          "checkedAt": "2026-10-20",
+          "note": "Leveling macro column: Overhead Slam, Rending Blow, Keen Strike (only when MP is low)."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-rotation-play.md (0.9 P18). Only what both agree on is shown: Overhead Slam over Rending Blow, and what stays off the macro. Rage Burst and Sword Aura Rampage (daevaguides only) and Keen Strike in the macro (aion2turkiye only) are left out. The guide's own wording.",
+      "appliesTo": [
+        "tip:rotation-play"
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
       "id": "C60",
       "claim": "Gladiator stat priority: Attack, Critical Hit, Accuracy Bonus (then HP, Block).",
       "verdict": "single-source",

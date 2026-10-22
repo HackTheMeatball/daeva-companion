@@ -448,6 +448,9 @@ jobs:
             // still lists every gap the day the item is queued.
             const saidOn = async (n) => (await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: n, per_page: 100 }))
               .map((c) => c.body || '').filter((b) => !b.startsWith('Spec preflight'));
+            // A spec's own Lanes, for a preflight on an issue with no #114 line: "- **Lanes:** a, b. **Model:** …" (the template)
+            // or a plain "Lanes: a, b." line ("## Lanes, model, order").
+            const specLanes = (body) => (((body || '').match(/\*\*Lanes:\*\*\s*([^*\n]*)/) || (body || '').match(/^Lanes:\s*([^\n]*)/m) || [])[1] || '').split(/\.(?=\s|$)/)[0].trim();
             // SPEC-GAPS END
             // A held note whose line was removed, moved or started by hand is stale: drop it.
             for (let i = lines.length - 1; i >= 0; i--)
@@ -466,7 +469,7 @@ jobs:
               let want, from;
               if (ql) { want = lanesOfLine(ql); from = `its queue line \`${ql.trim()}\``; }
               else {
-                const sl = (((iss.body || '').match(/\*\*Lanes:\*\*\s*([^*\n]*)/) || (iss.body || '').match(/^Lanes:\s*([^\n]*)/m) || [])[1] || '').split(/\.(?=\s|$)/)[0].trim();
+                const sl = specLanes(iss.body);
                 want = new Set(sl.split(/[,\s]+/).filter((x) => x && x !== 'none'));
                 from = sl ? `its spec's Lanes (${sl})` : 'nowhere (no #114 line, no Lanes in the spec): checked as lanes:none';
               }
@@ -540,7 +543,7 @@ jobs:
                 else if (lines[i + 1].replace(/ \(kickoff [^)]*\)$/, '') !== note.replace(/ \(kickoff [^)]*\)$/, '')) { lines[i + 1] = note; pruned = true; }
                 const fresh = gapLines.filter((x) => !said.some((b) => b.includes(x)));
                 if (fresh.length) await github.rest.issues.createComment({ owner, repo, issue_number: n,
-                  body: fresh.join('\n') + '\n\nKickoff holds this item until every gap above is fixed; it ran every spec check, so this is the whole list.\n' +
+                  body: fresh.join('\n') + '\n\nKickoff holds this item until every gap above is fixed; ' + (sg.transient.length ? 'a read failed this run, so a later run may find more.\n' : 'it ran every spec check, so this is the whole list.\n') +
                     sg.gaps.filter((g) => g.lines.some((x) => fresh.includes(x))).map((g) => `- ${g.todo}`).join('\n') + '\n\nThe queue line stays. Walter can re-check a fixed spec without queueing it: run kickoff with `preflight: <issue>`.' });
               }
               if (sg.gaps.length || sg.transient.length) { if (alone) break; continue; }

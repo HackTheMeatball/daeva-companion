@@ -355,7 +355,7 @@
       "status": "verified",
       "fieldStatus": {},
       "notes": [
-        "Not found on Metabot's dungeon list page (list was truncated at Lv 25). allthings.how gives 'roughly 160 m' to the Outskirts Stall teleport statue."
+        "Not found on Metabot's dungeon list page (list was truncated at Lv 25). allthings.how gives about 160 m to the Outskirts Stall teleport statue."
       ],
       "conflicts": [
         "Entrance distance: v1 held a rounded figure (meters 160 -> 165); the dungeon's Exploration-quest page gives the exact one (location-coverage §6)."

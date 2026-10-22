@@ -16,6 +16,17 @@
       ]
     },
     {
+      "id": "tip:rotation-play",
+      "key": "rotation",
+      "title": "How it plays",
+      "body": "<ul><li><b>The loop:</b> both sources build one macro line with Overhead Slam above Rending Blow, and hold its key together with left click (Keen Strike).</li><li><b>By hand:</b> Leaping Slam and your stigmas. A macro would spend buffs on trash and fire only a charged skill's first stage.</li></ul>",
+      "credit": "daevaguides macro guide and aion2turkiye's Gladiator page",
+      "verifiedAt": "2026-10-20",
+      "claims": [
+        "C57"
+      ]
+    },
+    {
       "id": "tip:stigma",
       "key": "stigma",
       "title": "Stigma",

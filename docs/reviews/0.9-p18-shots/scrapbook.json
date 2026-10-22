@@ -1,0 +1,6 @@
+[
+  { "case": "rotation-play-lv20-1500", "kind": "before-after", "title": "How the rotation plays",
+    "caption": "At level 20 the Build tab now says how the rotation plays under the chains: what both guides put first and last, and what stays off the macro." },
+  { "case": "rotation-play-lv20-390", "kind": "before-after", "title": "How it plays, on a phone",
+    "caption": "The same text on a phone at level 20, with the two guides it comes from named under it." }
+]

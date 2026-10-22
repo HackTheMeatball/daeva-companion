@@ -330,7 +330,7 @@ const ghMock = (said = []) => ({
   } }, issues: { listComments: 'listComments' } },
   paginate: async () => said.map((body) => ({ body })),
 });
-const mkGaps = (gh) => new Function('ROUTE', 'GEN', 'github', 'owner', 'repo', of[1] + '\n' + pi[1] + '\nlet roadmapText = null, repoTops = null;\n' + sgb[1] + '\nreturn { specGaps, saidOn };')(ROUTE, GEN, gh, 'o', 'r');
+const mkGaps = (gh) => new Function('ROUTE', 'GEN', 'github', 'owner', 'repo', of[1] + '\n' + pi[1] + '\nlet roadmapText = null, repoTops = null;\n' + sgb[1] + '\nreturn { specGaps, saidOn, specLanes };')(ROUTE, GEN, gh, 'o', 'r');
 const sgx = mkGaps(ghMock(['Spec preflight (kickoff x): 1 gap.\n\nspec: input not in repo: docs/never-made.md', 'spec: gen lane missing: its Result names data/']));
 const three = pre644.replace('- **Inputs.** `docs/design/0.9-keys/`', '- **Inputs.** `docs/design/0.9-keys/`, `docs/never-made.md`')
   .replace('- **Result.** ', '- **Result.** Game facts move from `src/` to `data/`. ');
@@ -342,8 +342,10 @@ const gNone = await sgx.specGaps(644, { body: now644 }, new Set(['build-card', '
 check(!gNone.gaps.some((g) => g.note !== 'input not in repo'), `#644 as re-specced, with gen -> no plan or gen gap (${gNone.gaps.flatMap((g) => g.lines).join(', ')})`);
 const said = await sgx.saidOn(644);
 check(said.length === 1 && said[0].startsWith('spec: gen lane missing'), 'a Spec preflight report does not count as said, so the hold still lists its gaps');
+// Preflight on an issue with no #114 line reads the spec's Lanes (#821 review nit).
+check(sgx.specLanes(spec503) === 'build-card, a11y, rows' && sgx.specLanes(lmo('x')) === 'gen' && sgx.specLanes('- **Problem.** x\n') === '', `a spec's Lanes: the template bullet (${sgx.specLanes(spec503)}), a plain "Lanes:" line, none`);
 // The hold posts one comment for every fresh gap, and the old early continues are gone.
-check(/body: fresh\.join\('\\n'\) \+ '\\n\\nKickoff holds this item until every gap above is fixed; it ran every spec check/.test(yml) && !/lookupFailed/.test(yml) && (yml.match(/spec: gen lane missing: \$\{genMiss\}/g) || []).length === 1, 'one hold comment lists every fresh gap; no check stops the others');
+check(/body: fresh\.join\('\\n'\) \+ '\\n\\nKickoff holds this item until every gap above is fixed; ' \+ \(sg\.transient\.length \? 'a read failed this run, so a later run may find more/.test(yml) && !/lookupFailed/.test(yml) && (yml.match(/spec: gen lane missing: \$\{genMiss\}/g) || []).length === 1, 'one hold comment lists every fresh gap; no check stops the others');
 // Spec preflight (batch-0.9 item 28): runs specGaps and the After check on one issue, posts the list, holds nothing.
 const pfb = yml.match(/\/\/ SPEC-PREFLIGHT START\n([\s\S]*?)\n\s*\/\/ SPEC-PREFLIGHT END/);
 check(!!pfb && /preflight:\n\s+description: [^\n]*\n\s+required: false/.test(yml) && /PREFLIGHT: \$\{\{ inputs\.preflight \}\}/.test(yml), 'kickoff has a preflight dispatch input, passed to the pick script');

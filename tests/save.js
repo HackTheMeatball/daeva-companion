@@ -251,10 +251,12 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     await writeSave(p, SAVED, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
     const first = JSON.parse(await readRaw(p)).chars[TEST_SLOT];
     const guide = () => p.evaluate(() => ({ pack: self.DAEVA_PACK, cls: char(state).class, plan: STIGMA_PLAN.slice(), sk: SP_SKILLS_CORE.map(x => x.n).slice(0, 2),
-      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, skills: document.getElementById('main').innerText.includes('Snipe'),
+      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, how: document.getElementById('rotHow').hidden ? '' : document.getElementById('rotHow').textContent, skills: document.getElementById('main').innerText.includes('Snipe'),
       keys: document.getElementById('stackViz').textContent }));
     const a = await guide();
     ok('Assassin guide: its pack, plan and skills', a.pack === 'aion2/asmodian/assassin' && a.cls === 'assassin' && a.plan[0] === "Triniel's Dagger" && a.sk[0] === 'Heart Gore' && a.rot && !a.skills, a);
+    /* 0.9 P18: under the rotation, how it plays (the guide's tip:rotation-play) with its source */
+    ok('Assassin: the Rotation section says how it plays, with its source', a.how.startsWith('How it plays') && a.how.includes('Insignia Explosion (from Lv 14) first') && a.how.includes("Source: daevaguides macro guide and aion2turkiye's Assassin page"), a.how);
     await p.click('#charBtn'); await p.click('#charNew'); await p.check('#charPick input[value="ranger"]'); await p.waitForTimeout(50);
     ok('ranger: the form previews ranger-lvl1', await p.innerText('#charPrev') === 'ranger-lvl1', await p.innerText('#charPrev'));
     await Promise.all([p.waitForEvent('load'), p.click('#charCreate')]); await p.waitForTimeout(400);
@@ -264,6 +266,7 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     ok('ranger: the page runs the Ranger guide (its pack, stigma plan, skills shown; Rotation from its default keys)', r.pack === 'aion2/asmodian/ranger' && r.cls === 'ranger' && JSON.stringify(r.plan) === JSON.stringify(["Vaizel's Authority", 'Bow of Blessing', 'Supporting Fire', 'Griffon Arrow'])
       && r.sk[0] === 'Snipe' && r.skills && r.rot && ['Left click: Snipe', 'Right click: Tempest Shot', '1: Snare Shot'].every(x => r.keys.includes(x)) && !/Quick Slice|Marking Shot|Drill Dart/.test(r.keys)
       && r.lbl === 'ranger-lvl1' && r.h1 === 'Asmodian Ranger Route', r);
+    ok('ranger: how it plays is the Ranger\'s, with its source (0.9 P18)', r.how.includes('Gale Arrow first') && r.how.includes("aion2turkiye's Ranger page") && !r.how.includes('Insignia Explosion'), r.how);
     await p.click('#charBtn');
     await Promise.all([p.waitForEvent('load'), p.click(`#charRows [data-char="${TEST_SLOT}"]`)]); await p.waitForTimeout(400);
     const b = await guide();
@@ -277,7 +280,7 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     await writeSave(p, SAVED, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
     const first = JSON.parse(await readRaw(p)).chars[TEST_SLOT];
     const guide = () => p.evaluate(() => ({ pack: self.DAEVA_PACK, cls: char(state).class, plan: STIGMA_PLAN.slice(), sk: SP_SKILLS_CORE.map(x => x.n).slice(0, 2),
-      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, skills: document.getElementById('main').innerText.includes('Rending Blow'),
+      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, how: document.getElementById('rotHow').hidden ? '' : document.getElementById('rotHow').textContent, skills: document.getElementById('main').innerText.includes('Rending Blow'),
       keys: document.getElementById('stackViz').textContent }));
     await p.click('#charBtn'); await p.click('#charNew'); await p.check('#charPick input[value="gladiator"]'); await p.waitForTimeout(50);
     ok('gladiator: the form previews gladiator-lvl1', await p.innerText('#charPrev') === 'gladiator-lvl1', await p.innerText('#charPrev'));
@@ -288,6 +291,7 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     ok('gladiator: the page runs the Gladiator guide (its pack, stigma plan, skills shown; Rotation from its default keys)', g.pack === 'aion2/asmodian/gladiator' && g.cls === 'gladiator' && JSON.stringify(g.plan) === JSON.stringify(['Lunge Stance', "Zikel's Blessing", 'Lifestealing Blade', 'Rage Burst'])
       && JSON.stringify(g.sk) === JSON.stringify(['Rending Blow', 'Overhead Slam']) && g.skills && g.rot
       && ['Left click: Keen Strike', 'Right click: Rending Blow', '1: Leaping Slam'].every(x => g.keys.includes(x)) && !/Quick Slice|Overhead Slam/.test(g.keys) && g.lbl === 'gladiator-lvl1' && g.h1 === 'Asmodian Gladiator Route', g);
+    ok('gladiator: how it plays is the Gladiator\'s, with its source (0.9 P18)', g.how.includes('Overhead Slam above Rending Blow') && g.how.includes("aion2turkiye's Gladiator page"), g.how);
     await p.click('#charBtn');
     await Promise.all([p.waitForEvent('load'), p.click(`#charRows [data-char="${TEST_SLOT}"]`)]); await p.waitForTimeout(400);
     const b = await guide();
@@ -295,23 +299,26 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     ok('gladiator: no page errors', !errs.length, errs);
     await ctx.close();
   }
-  /* 10b''. a Spiritmaster (0.7 P4): the same for the fourth class; no key setup either, so no Rotation section, and the
-     Build plan card states the three skills that fire only on a condition */
+  /* 10b''. a Spiritmaster (0.7 P4): the same for the fourth class; no key setup either, so its Rotation section holds only
+     how it plays (0.9 P18: before, no Rotation section), and the Build plan card states the three skills that fire only on
+     a condition */
   {
     const { ctx, p, errs } = await page();
     await writeSave(p, SAVED, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
     const first = JSON.parse(await readRaw(p)).chars[TEST_SLOT];
     const guide = () => p.evaluate(() => ({ pack: self.DAEVA_PACK, cls: char(state).class, plan: STIGMA_PLAN.slice(), sk: SP_SKILLS_CORE.map(x => x.n).slice(0, 2),
-      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, skills: document.getElementById('main').innerText.includes('Cold Shock'),
+      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, how: document.getElementById('rotHow').hidden ? '' : document.getElementById('rotHow').textContent, skills: document.getElementById('main').innerText.includes('Cold Shock'),
+      onlyHow: [...document.querySelectorAll('#statDrawer .sd-rot > :not(.ns-head, .rot-how)')].every(e => e.style.display === 'none'),
       triggers: STEPS.some(g => g.items.some(i => i.k === 'build:triggers' && i.t.includes('Three skills only fire on a condition'))) }));
     await p.click('#charBtn'); await p.click('#charNew'); await p.check('#charPick input[value="spiritmaster"]'); await p.waitForTimeout(50);
     ok('spiritmaster: the form previews spiritmaster-lvl1', await p.innerText('#charPrev') === 'spiritmaster-lvl1', await p.innerText('#charPrev'));
     await Promise.all([p.waitForEvent('load'), p.click('#charCreate')]); await p.waitForTimeout(400);
     const m = await guide(), s = JSON.parse(await readRaw(p)), mid = s.current;
     ok('spiritmaster: a new current slot of class spiritmaster, pack aion2/asmodian/spiritmaster; the first character stored as it was', mid !== TEST_SLOT && s.chars[mid].class === 'spiritmaster' && s.chars[mid].pack === 'aion2/asmodian/spiritmaster' && isDeepStrictEqual(s.chars[TEST_SLOT], first), s.chars[mid]);
-    ok('spiritmaster: the page runs the Spiritmaster guide (its pack, stigma plan, skills shown, the conditions step; no Rotation section)', m.pack === 'aion2/asmodian/spiritmaster' && m.cls === 'spiritmaster'
+    ok('spiritmaster: the page runs the Spiritmaster guide (its pack, stigma plan, skills shown, the conditions step; a Rotation section with only how it plays)', m.pack === 'aion2/asmodian/spiritmaster' && m.cls === 'spiritmaster'
       && JSON.stringify(m.plan) === JSON.stringify(['Summon: Ancient Spirit', "Enhance: Spirit's Benediction", 'Jointstrike: Corrode', 'Flame Blessing'])
-      && JSON.stringify(m.sk) === JSON.stringify(['Cold Shock', 'Combustion']) && m.skills && m.triggers && !m.rot && m.lbl === 'spiritmaster-lvl1' && m.h1 === 'Asmodian Spiritmaster Route', m);
+      && JSON.stringify(m.sk) === JSON.stringify(['Cold Shock', 'Combustion']) && m.skills && m.triggers && m.rot && m.onlyHow
+      && m.how.includes('Jointstrike: Curse above Dimensional Control') && m.how.includes("aion2turkiye's Spiritmaster page") && m.lbl === 'spiritmaster-lvl1' && m.h1 === 'Asmodian Spiritmaster Route', m);
     await p.click('#charBtn');
     await Promise.all([p.waitForEvent('load'), p.click(`#charRows [data-char="${TEST_SLOT}"]`)]); await p.waitForTimeout(400);
     const b = await guide();
@@ -326,7 +333,7 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     await writeSave(p, SAVED, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
     const first = JSON.parse(await readRaw(p)).chars[TEST_SLOT];
     const guide = () => p.evaluate(() => ({ pack: self.DAEVA_PACK, cls: char(state).class, plan: STIGMA_PLAN.slice(), sk: SP_SKILLS_CORE.map(x => x.n).slice(0, 2),
-      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, skills: document.getElementById('main').innerText.includes('Vicious Strike'),
+      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, how: document.getElementById('rotHow').hidden ? '' : document.getElementById('rotHow').textContent, skills: document.getElementById('main').innerText.includes('Vicious Strike'),
       keys: document.getElementById('stackViz').textContent,
       triggers: STEPS.some(g => g.items.some(i => i.k === 'build:triggers' && i.t.includes('Five skills only fire on a condition'))) }));
     await p.click('#charBtn'); await p.click('#charNew'); await p.check('#charPick input[value="templar"]'); await p.waitForTimeout(50);
@@ -353,7 +360,7 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     await writeSave(p, SAVED, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
     const first = JSON.parse(await readRaw(p)).chars[TEST_SLOT];
     const guide = () => p.evaluate(() => ({ pack: self.DAEVA_PACK, cls: char(state).class, plan: STIGMA_PLAN.slice(), sk: SP_SKILLS_CORE.map(x => x.n).slice(0, 2),
-      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, skills: document.getElementById('main').innerText.includes("Earth's Retribution"),
+      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, how: document.getElementById('rotHow').hidden ? '' : document.getElementById('rotHow').textContent, skills: document.getElementById('main').innerText.includes("Earth's Retribution"),
       keys: document.getElementById('stackViz').textContent,
       triggers: STEPS.some(g => g.items.some(i => i.k === 'build:triggers' && i.t.includes('Two skills only fire on a condition'))) }));
     await p.click('#charBtn'); await p.click('#charNew'); await p.check('#charPick input[value="cleric"]'); await p.waitForTimeout(50);
@@ -380,7 +387,7 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     await writeSave(p, SAVED, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
     const first = JSON.parse(await readRaw(p)).chars[TEST_SLOT];
     const guide = () => p.evaluate(() => ({ pack: self.DAEVA_PACK, cls: char(state).class, plan: STIGMA_PLAN.slice(), sk: SP_SKILLS_CORE.map(x => x.n).slice(0, 3),
-      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, skills: document.getElementById('main').innerText.includes('Flame Arrow'),
+      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, how: document.getElementById('rotHow').hidden ? '' : document.getElementById('rotHow').textContent, skills: document.getElementById('main').innerText.includes('Flame Arrow'),
       keys: document.getElementById('stackViz').textContent,
       triggers: STEPS.some(g => g.items.some(i => i.k === 'build:triggers' && i.t.includes('Three skills only fire on a condition'))),
       hold: STEPS.some(g => g.items.some(i => i.k === 'build:hellfire' && i.t.includes('Hold 4 to charge Hellfire'))) }));
@@ -408,7 +415,7 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     await writeSave(p, SAVED, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
     const first = JSON.parse(await readRaw(p)).chars[TEST_SLOT];
     const guide = () => p.evaluate(() => ({ pack: self.DAEVA_PACK, cls: char(state).class, plan: STIGMA_PLAN.slice(), sk: SP_SKILLS_CORE.map(x => x.n).slice(0, 3),
-      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, skills: document.getElementById('main').innerText.includes('Onslaught'),
+      lbl: document.getElementById('charLbl').textContent, h1: document.querySelector('h1').textContent, rot: !document.querySelector('#statDrawer .sd-rot').hidden, how: document.getElementById('rotHow').hidden ? '' : document.getElementById('rotHow').textContent, skills: document.getElementById('main').innerText.includes('Onslaught'),
       keys: document.getElementById('stackViz').textContent,
       triggers: STEPS.some(g => g.items.some(i => i.k === 'build:triggers' && i.t.includes('Four skills only fire on a condition'))),
       loop: STEPS.some(g => g.items.some(i => i.k === 'build:rotation' && i.t.includes('Impactful Crush (2) stuns and opens Dark Crush'))) }));

@@ -16,6 +16,17 @@
       ]
     },
     {
+      "id": "tip:rotation-play",
+      "key": "rotation",
+      "title": "How it plays",
+      "body": "<ul><li><b>The loop:</b> both sources fire Gale Arrow first and Tempest Shot, the skill with no cooldown, last, with Drill Dart, Burst Arrow and Snare Shot between (over one or two lines). Hold the macro key together with left click (Snipe).</li><li><b>By hand:</b> Deadshot (a charged skill, on its own key: a macro fires only its first stage), Marking Shot and your buffs.</li></ul>",
+      "credit": "daevaguides macro guide and aion2turkiye's Ranger page",
+      "verifiedAt": "2026-10-20",
+      "claims": [
+        "C57"
+      ]
+    },
+    {
       "id": "tip:stigma",
       "key": "stigma",
       "title": "Stigma",

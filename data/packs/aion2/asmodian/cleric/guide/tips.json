@@ -16,6 +16,17 @@
       ]
     },
     {
+      "id": "tip:rotation-play",
+      "key": "rotation",
+      "title": "How it plays",
+      "body": "<ul><li><b>The loop:</b> both sources put Earth Punishment, Divine Aura, Condemnation and Chain of Torment in the macro and Judgment Thunder, the skill with no cooldown, last; they order the middle differently. Hold the macro key together with left click (Earth's Retribution).</li><li><b>By hand:</b> your heals, Bolt (a charged skill: a macro fires only its first stage), Debilitating Mark and Light of Protection (a toggle: a second press turns it off).</li></ul>",
+      "credit": "daevaguides macro guide and aion2turkiye's Cleric page",
+      "verifiedAt": "2026-10-20",
+      "claims": [
+        "C57"
+      ]
+    },
+    {
       "id": "tip:stigma",
       "key": "stigma",
       "title": "Stigma",
