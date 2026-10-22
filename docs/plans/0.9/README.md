@@ -560,7 +560,7 @@ Rules for every item:
   - [ ] Visible change: before / after shots of the Sources card (closed and open) and of the new page at 1500 and 390 px,
     a `scrapbook.json`, and Design Lead's (Jane) DESIGN OK on the link and the page.
 - **Review:** standing; Source Vetting (Lydia) confirms the four verdict conditions on the head; Design Lead's DESIGN OK.
-- **Lanes:** site, page-card, e2. **Model:** Opus, M (90 min).
+- **Lanes:** gen, site, sources-card. **Model:** Opus, M (90 min).
 - **After:** research-sources-credit.
 
 Re-spec 2026-10-21 8:50 PM ET (Release Planner; Routed: coordinator 2026-10-22T00:44Z): Lydia's sources-credit verdict (#802) is a conditional pass. P23 adds the crawlable sources page (condition 2), keeps the per-page markup and lists (1, 3) and tests them (4); that makes it a visible change, so the "No visible change" line is replaced by shots, a scrapbook and DESIGN OK. The After key is unchanged.
