@@ -91,6 +91,11 @@ T-123 waited 16 min behind a write limit kept only in Huell's own notes, with no
   silently and go out together at the slot. Owner answers and decisions still go out at once, as above (Kaizen
   batch-0.9 item 35, Gale's draft from Gomez's sample: about 30% of 59 Huell turns were empty, 4 of them HELD notices;
   routed by the coordinator 2026-10-22T05:48Z).
+- **Each sync checks for missing cards** (amends TRK-12, no new id; Kaizen batch-0.9 item 38, Gale; routed by the
+  coordinator 2026-10-22T06:25Z, after kickoff starts and new PRs reached the board late on #632, #836 and #640): every
+  sync Huell writes also diffs #114's `[started]` lines and the open claude/ PRs against the board and adds any
+  missing card in the same write. This adds no clock: syncs stay event-driven (CLK-03), and Build Pipeline (Gus)'s PR
+  check is what wakes Huell for starts and PRs no thread announced (gus.md, PIP-04 section).
 
 ### TRK-13
 
