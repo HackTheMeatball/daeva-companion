@@ -28,6 +28,11 @@ export function checks(ctx, check) {
   /* the data counts (0.9 P32): count(key, n) checks n against data/expected-counts.json (`npm run gen -- --counts`) */
   count('regionalQuests', RQ.length);
   count('storyQuests', chain.length);
+  /* 0.9 P32b: the Spiritmaster's files, pinned here because tests/schema.mjs runs its idle-pack checks on them, so a dropped
+     Spiritmaster record fails in every pack's generate(), not only in its own guide pack */
+  { const sm = f => ctx.classRecords('spiritmaster', f), smNodes = sm('board-nodes.json');
+    count('spiritmasterSkills', sm('skills.json').length); count('spiritmasterStigmas', sm('stigmas.json').length);
+    count('spiritmasterBoardNodes', smNodes.length); count('spiritmasterTrinielNodes', smNodes.filter(n => n.board === 'board:triniel').length); }
   check('every regional quest has unlocksAt and rec', RQ.every(x => x.unlocksAt && x.rec));
   /* a camp (giver place, or a Kibelisk within 100 m of the giver) belongs to one zone; a nearest Kibelisk further away
      may lie across a zone border (Pain Unending: Basfelt Waterfall 309 m) */

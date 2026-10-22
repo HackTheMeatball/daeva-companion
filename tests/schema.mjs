@@ -5,7 +5,8 @@
    what the generator writes; last, licence compliance. The rules and decisions ledger is its own suite (tests/ledger.mjs,
    0.9 P6), so a DECISIONS-only edit can't red this one.
    The generator's negative controls (each a generate() on an in-memory view, ~110 ms) are jobs that run in worker threads
-   while the main thread runs the rest (0.9 P32, 4-vCPU box: 7.7 s before, ~7 s after; target < 4 s not yet met); their lines print after the
+   while the main thread runs the rest (0.9 P32, 4-vCPU box: 7.7 s before, ~7 s after; P32b: ~5.4 s locally;
+   target < 4 s not yet met, moved to 0.10); their lines print after the
    main thread's, in job order. Data counts are read from data/expected-counts.json (`npm run gen -- --counts`), not pinned here.
    node tests/schema.mjs  (also in `npm test` and the fast CI job) */
 import { cpSync, existsSync, readFileSync, readdirSync, rmSync } from 'node:fs';
@@ -187,13 +188,14 @@ job((ok, G) => { const g = G(), copyRoot = join(ROOT, 'tests/out/packs-copy'); r
 /* An idle class pack (one no guide pack uses: checked and cited, compiled into no module). 0.6 P4's Gladiator, then 0.7
    P3's Spiritmaster were the idle pack here; 0.7 P4 gave the Spiritmaster its guide pack, so data/packs has none left.
    The idle checks run on a view where the Spiritmaster is idle again: its guide pack dropped, its class hidden. Its counts
-   are read from its own files (0.9 P32), as for the other classes below. */
+   are the reviewed ones in data/expected-counts.json (0.9 P32b; aion2/checks.mjs counts them), not read from the files
+   they check, so a dropped Spiritmaster record fails here and in the generator's count check. */
 const SM = 'aion2/classes/spiritmaster', editJson = (f, fn) => ({ rel: PK + SM + '/' + f, fn });
 const idleView = (...edits) => { const all = [editJson('class.json', d => { d.records[0].release = 'hidden'; }), ...edits];
   return { drop: [PK + 'aion2/asmodian/spiritmaster'], mutate: (rel, d) => { for (const e of all) if (rel === e.rel) e.fn(d); } }; };
 job((ok, G) => { const g = G(), gi = runs(ok, 'on a copy with an idle Spiritmaster', idleView());
   const sm = gi && (gi.idle || []).find(x => x.pack === SM), smColl = f => sm ? sm.all.filter(x => x.file.endsWith('/' + f)).length : 0;
-  const want = f => classDoc('spiritmaster', f).records.length, triniel = classDoc('spiritmaster', 'board-nodes.json').records.filter(x => x.board === 'board:triniel').length;
+  const want = f => ({ 'skills.json': E.spiritmasterSkills, 'stigmas.json': E.spiritmasterStigmas, 'board-nodes.json': E.spiritmasterBoardNodes })[f], triniel = E.spiritmasterTrinielNodes;
   ok(`idle class pack aion2/classes/spiritmaster (copy): 1 class, ${want('skills.json')} skills, ${want('stigmas.json')} stigmas, ${want('board-nodes.json')} board nodes, checked by the generator, modules unchanged`,
     !!sm && smColl('class.json') === 1 && ['skills.json', 'stigmas.json', 'board-nodes.json'].every(f => want(f) > 0 && smColl(f) === want(f))
     && gi.report.checks.some(x => x.check.startsWith(`aion2/classes/spiritmaster: board:triniel: ${triniel} nodes`)) && !gi.failed.length
@@ -205,6 +207,12 @@ idleFails('idle-node-cost', editJson('board-nodes.json', d => { d.records.find(n
 idleFails('idle-node-skill', editJson('board-nodes.json', d => { d.records.find(n => n.type === 'skill').skill = 'skill:spiritmaster:bogus'; }), /skill node names its skill/);
 idleFails('idle-released', editJson('class.json', d => { d.records[0].release = 'released'; }), /spiritmaster: one class record, hidden/);
 idleFails('idle-spec-level', editJson('stigmas.json', d => { d.records[0].specialtyChoices[0].skillLv = 4; }), /stigma:spiritmaster:.*specialty levels \[5,10,15,20\]/);
+/* 0.9 P32b: a dropped Spiritmaster record fails its pinned count, in the Assassin's generate() and on the idle copy */
+const SMF = f => PK + SM + '/' + f, oneLess = k => new RegExp(`^count ${k} = ${E[k] - 1}: as in data/expected-counts\\.json`);
+genFailsIn('a Spiritmaster skill dropped', SMF('skills.json'), d => { d.records.pop(); }, oneLess('spiritmasterSkills'));
+genFailsIn('a Spiritmaster stigma dropped', SMF('stigmas.json'), d => { d.records.pop(); }, oneLess('spiritmasterStigmas'));
+genFailsIn('a Spiritmaster Triniel node dropped', SMF('board-nodes.json'), d => { d.records.splice(d.records.findIndex(n => n.board === 'board:triniel'), 1); }, oneLess('spiritmasterTrinielNodes'));
+idleFails('a Spiritmaster board node dropped (idle copy)', editJson('board-nodes.json', d => { d.records.pop(); }), oneLess('spiritmasterBoardNodes'));
 packFails('an idle class file that fails its schema', idleView(editJson('skills.json', d => { delete d.records[0].levelGate; })),/schema validation failed:\n  .*aion2\/classes\/spiritmaster\/skills\.json: .*levelGate/);
 
 /* a worker: claim jobs off the shared counter until none is left, then post its lines */

@@ -59,8 +59,14 @@ const loadBundle = ({ dropProposed = false, root, pack, fs = realFs } = {}) => {
 
 /* ------------------------------------------------------------------ helpers */
 const URL_RE = /https?:\/\/[^\s)\]'"]+/g;
-const urlsIn = v => typeof v === 'string' ? (v.match(URL_RE) || []).map(u => u.replace(/[.,;]+$/, ''))
-  : Array.isArray(v) ? v.flatMap(urlsIn) : v && typeof v === 'object' ? Object.values(v).flatMap(urlsIn) : [];
+/* every URL in a value's strings, in walk order (one accumulator, no array per node: 0.9 P32b, same result as the flatMap walk) */
+const urlsInto = (v, out) => {
+  if (typeof v === 'string') { if (v.includes('http')) for (const u of v.match(URL_RE) || []) out.push(u.replace(/[.,;]+$/, '')); }
+  else if (Array.isArray(v)) for (const x of v) urlsInto(x, out);
+  else if (v && typeof v === 'object') for (const k in v) urlsInto(v[k], out);
+  return out;
+};
+const urlsIn = v => urlsInto(v, []);
 const hostOf = u => u.replace(/^https?:\/\/(www\.)?/, '').split('/')[0];
 const byNum = k => (a, b) => a[k] - b[k];
 const atomsOf = c => !c ? [] : c.all ? c.all.flatMap(atomsOf) : c.any ? c.any.flatMap(atomsOf) : [c];
@@ -571,7 +577,8 @@ export function generate(opts = {}) {
     else check(`URL not on a mode:none site: ${u}`, s.access.mode !== 'none');
   }
   /* a bare page reference counts too ("aion2.th.gl q_2202054", "aion2.th.gl/…"); a note that only says the site was withdrawn does not */
-  const strsIn = v => typeof v === 'string' ? [v] : Array.isArray(v) ? v.flatMap(strsIn) : v && typeof v === 'object' ? Object.values(v).flatMap(strsIn) : [];
+  const strsInto = (v, out) => { if (typeof v === 'string') out.push(v); else if (Array.isArray(v)) for (const x of v) strsInto(x, out); else if (v && typeof v === 'object') for (const k in v) strsInto(v[k], out); return out; };
+  const strsIn = v => strsInto(v, []);
   const wHosts = sites.filter(s => s.withdrawn).flatMap(s => s.hosts), refRes = wHosts.map(h => new RegExp('(^|[^\\w.])' + h.replace(/\./g, '\\.') + '(/\\S|\\s+q_\\d)'));
   /* a string that holds no withdrawn host can't match its pattern: tested first (0.9 P6), same hits */
   for (const { r, file, coll } of all) if (coll !== 'sources') for (const t of strsIn(r)) if (wHosts.some(h => t.includes(h)) && refRes.some(re => re.test(t)) &&!urlsIn(t).some(u => siteOf(u) && siteOf(u).withdrawn)) withdrawnHits.push(`${file} ${r.id}: "${t.slice(0, 80)}"`);
@@ -816,8 +823,11 @@ export function generate(opts = {}) {
      that file is rewritten (and reviewed). opts.expected: false records the counts without checking them (--counts). */
   const expected = opts.expected !== undefined ? opts.expected : readExpected(), counts = {};
   const count = (key, n) => { counts[key] = n; if (expected !== false) check(`count ${key} = ${n}: as in ${COUNTS_FILE} (npm run gen -- --counts)`, !!expected && expected[key] === n, expected ? expected[key] : 'no ' + COUNTS_FILE); };
+  /* classRecords(id, file): a class pack's records read through the same view (0.9 P32b), so a pack can count a class this
+     guide's chain does not load; [] for a file that does not exist */
+  const classRecords = (id, file) => { const f = join(classDir, id, file); return fs.exists(f) ? fs.edit(f, JSON.parse(fs.read(f))).records || [] : []; };
   const ctx = { B, R, zones, story, sqById, chain, rqs, rqById, skills, skById, stigmas, stById, nodes, nodeById, boards, boardById, sds, shs, rules, claims,
-    cls, builds, build, milestones, steps, tips, unlocks, items, asc, all, packs: B.packs, RQ, STORY_END, SH_DATA, GATE_GRAPH, kibs, NODE_PLACE, KIBELISKS, KIB_REPORT, atomsOf, byNum, refCheck, count };
+    cls, builds, build, milestones, steps, tips, unlocks, items, asc, all, packs: B.packs, RQ, STORY_END, SH_DATA, GATE_GRAPH, kibs, NODE_PLACE, KIBELISKS, KIB_REPORT, atomsOf, byNum, refCheck, count, classRecords };
   for (const p of B.packChecks) p.checks(ctx, check);
 
   /* ---------------------------------------------------------------- class packs no guide uses yet (0.6 P4) */
