@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 /* ci.yml's deploy gate (the block between "DEPLOY-GATE START" and "DEPLOY-GATE END") run in Node against fixtures, no network:
    only a push that changes package.json's version, or a dispatch at a named sha, deploys; the escape hatch needs the owner's
-   quoted "now" on #114 and refuses an unnamed save reset (PLN-17; Fresh governance review, deploy-cadence OK, 2026-10-21). < 1 s. */
+   quoted "now" on #114 and refuses an unnamed save reset (PLN-17; Fresh governance review, deploy-cadence OK, 2026-10-21). About 1 s (the pipe check waits 1 s). */
 import { readFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -82,6 +83,14 @@ check(noteFor('equiv', 1, true, '', KL, [KL]).warning === `::warning title=KILLE
 check(noteFor('equiv', 1, false, KL, '', ['FAIL y']).warning === `::warning title=KILLED equiv::${KL} (attempt 2)`, 'a kill on the last attempt -> KILLED');
 check(noteFor('equiv', 1, false, '', KL, [KL, 'FAIL z']).warning === `::warning title=KILLED equiv::${KL} | FAIL z (attempt 2)`, 'a kill, then an ordinary failure -> still KILLED (#831 review)');
 check(/const note = noteFor\(name, attempt, ok, killed, firstKilled, firstFails\);\s*if \(note\) \{\s*if \(process\.env\.GITHUB_ACTIONS\) console\.log\(note\.warning\);\s*if \(process\.env\.GITHUB_STEP_SUMMARY\) appendFileSync\(process\.env\.GITHUB_STEP_SUMMARY, note\.summary\);/.test(runSrc), 'run.mjs writes noteFor\'s annotation and summary line');
+
+// A suite's output reaches run.mjs whole before it exits (tests/support/flush-exit.cjs): equiv and a11y exited 0 without their
+// PASSED line in CI (run 39735746083). Without the preload, 2 MB written to a pipe read 1 s late is cut at the pipe's buffer.
+const FLUSH = join(ROOT, 'tests', 'support', 'flush-exit.cjs');
+check(/const pre = \['--require', join\(ROOT, 'tests', 'support', 'flush-exit\.cjs'\)/.test(runSrc), 'run.mjs preloads flush-exit.cjs into every suite, --with-fonts included');
+const piped = pre => execFileSync('sh', ['-c', `"${process.execPath}" ${pre} -e "process.stdout.write('x'.repeat(2000000)); process.exit(0)" | (sleep 1; wc -c)`], { encoding: 'utf8' }).trim();
+check(piped(`--require "${FLUSH}"`) === '2000000', 'with the preload, all 2 MB reach a slow reader before exit');
+check(/exit 0 without its pass line; last line: /.test(runSrc), 'a suite that exits 0 without its pass line says so, with its last line');
 
 console.log(`\n${n - fail}/${n} deploy checks passed`);
 console.log(fail ? 'DEPLOY CHECKS FAILED' : 'DEPLOY CHECKS PASSED');
