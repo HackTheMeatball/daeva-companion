@@ -65,15 +65,15 @@ _Named reviewers. Written here by Gus; the coordinator's incident fast path for 
     that loosens one of his owner-held limits still goes to him (COM-18); this check never names him.
   - **Closed, silent or blocked owner:** if the owner's team.csv row is closed, its `folded_into` successor stands in.
     If there is none, or the owner hasn't answered 2 h after the head was sent to them, or the owner can't post a
-    verdict (at 2026-10-22, Watchdog (Mike): his session's safety check treats VERDICT lines as ChatOps triggers; then
-    there is no 2 h wait), the coordinator posts `OWNER STAND-IN (rule: <id>; owner: <name>; stand-in: <name>)` on the
-    PR and auto-merge waits on the stand-in's own verdict instead. An owner's OK sent by message never counts. The
-    stand-in must be a seat that may post tagged VERDICT lines; at 2026-10-22 two can't: Watchdog (Mike), as above, and
-    Howard, whose charter bars any line a gate parses because his comments post as Isaac's account (howard.md). The
-    stand-in can't be anyone who wrote, proposed or routed the change (the coordinator included); if no one qualifies,
-    it goes to Isaac. Unlike `REVIEW CLEAR`, a stand-in names a reviewer rather than clearing one, so it works while
-    the PR is held. Watchdog (Mike) flags each one, and a closed owner's rules are reassigned in the ledger by a
-    reviewed change.
+    verdict (the seats listed below; then there is no 2 h wait), the coordinator posts `OWNER STAND-IN (rule: <id>;
+    owner: <name>; stand-in: <name>)` on the PR and auto-merge waits on the stand-in's own verdict instead. An owner's
+    OK sent by message never counts. The stand-in must be a seat that may post tagged VERDICT lines. At 2026-10-22 four
+    can't: Watchdog (Mike), whose session's safety check treats VERDICT lines as ChatOps triggers; Howard, whose charter
+    bars any line a gate parses (his comments post as Isaac's account); Tracker Sync (Huell), who never comments on
+    GitHub; and Org Design (Nacho), who never posts gate lines (each seat's "I never do" line). The stand-in can't be
+    anyone who wrote, proposed or routed the change (the coordinator included); if no one qualifies, it goes to Isaac.
+    Unlike `REVIEW CLEAR`, a stand-in names a reviewer rather than clearing one, so it works while the PR is held.
+    Watchdog (Mike) flags each one, and a closed owner's rules are reassigned in the ledger by a reviewed change.
   - **Known gap:** a rule changed only in the code that enforces it (for example how auto-merge parses DESIGN OK, which
     is Jane's MRG-06) isn't caught here unless its row or home changes; the PR's reviewers catch it.
 - Known limit: sessions post as the owner's account, so the tag is a trust marker, not authentication.
