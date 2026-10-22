@@ -85,6 +85,7 @@ under the no-terms rule in "Keeping this current" (owner, 2026-10-21).
 | aion2rifttimer.com | No terms found: **Spot**, facts only (owner, 2026-10-21) | Boss, Artifact Siege and reset timers | robots.txt allows all. No terms or legal link on the site. Facts and a link only | 2026-10-20 | `2026-10-world-boss-sources.md` (23:20Z update) |
 | aion2rift.com | No terms found: **Spot**, facts only (owner, 2026-10-21) | Rift and boss timers (region tags kr/tw) | robots.txt allows all. No terms link (only `/privacy/`); `/terms` is 404. Facts and a link only | 2026-10-20 | `2026-10-world-boss-sources.md` (23:20Z update) |
 | criticalhits.com.br | No terms found: **Spot**, facts only (owner, 2026-10-21) | Portuguese news and guides | robots.txt blocks only admin and pagination paths. No terms of use page; footer has a legal notice (`/aviso-legal/`), not read. Facts and a link only | 2026-10-20 | `2026-10-world-boss-sources.md` (23:20Z update) |
+| wakayashi.gg | No terms found: **Spot**, facts only (owner, 2026-10-21) | German streamer's AION 2 hub `/aion2`: endgame build guides for all 8 classes, dated 09.10.2026 (a tabbed section, `#class-guides`, on the same page, not separate articles; the text is in the page's embedded script data, not the visible HTML), plus articles on crafting, enhancement, Kinah, Pantheon CP, soul binding stats per class and patch notes | Not `/admin` or `/api/` (robots.txt, `*` allows the rest). No terms page (`/terms`, `/terms-of-service`, `/tos`, `/terms-of-use`, `/terms-and-conditions` all 404; web search found none); only `/impressum` (RAHFT Management GmbH) and `/datenschutz`. Not a build witness. Facts and a link only, no quotes, never the only source | 2026-10-22 | `legal/fetch-log/lydia.md` (03:56–03:58Z; class guides re-checked 04:04Z) |
 
 ## Owner-supplied documents (not fetched; read from the owner's upload)
 
@@ -125,6 +126,16 @@ Any session that vets a site, or finds a change (new terms, a new block), update
 date and the research note that holds the evidence. When a site's terms URL is unknown, try `/terms`, `/terms-of-service`,
 `/tos`, `/terms-of-use` and `/terms-and-conditions` (with `curl -L`, since many redirect to a trailing slash), then a web
 search, before reading any content page.
+
+**Coverage before "none".** A "none" or "not found" finding names what was checked, as `not found in <coverage>`: for example article links,
+tabs and collapsed sections opened, sitemap, site search. It is never a bare "none". Before reporting one, the vetter
+checks tabbed, collapsed and script-built sections, and the sitemap or site search where robots.txt and the terms allow,
+within the fetch limits. It also searches the page text for the terms the task needs (for class content, the 8 class
+names). A sitemap or search request counts as one of the task's few pages, and so does each page followed from it; a
+sitemap only locates the pages the task needs, it isn't a reading list. No site search where the terms ban automated
+queries or robots.txt disallows the search path; never on an opt-out site. Each request is logged (Legal, Chuck,
+2026-10-22). (Kaizen batch-0.9 item 31; routed by the coordinator 2026-10-22T04:04Z; cause: wakayashi.gg `/aion2`
+`#class-guides` reported as "no class guides", caught by Isaac.)
 
 Fetch log (ROL-08, team after the governance review, 2026-10-20). Every thread that fetches keeps one line per request
 in its own file, `/mnt/project-files/legal/fetch-log/<thread>.md`, which only that thread writes, adding lines at the end
