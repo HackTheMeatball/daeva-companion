@@ -53,7 +53,8 @@ check(/asked for changes/.test(designBlocker(SHOTS, [c('claude[bot]', 'DESIGN OK
 
 // The merge loop runs the check after the review checks and before it merges.
 const loop = yml.slice(yml.indexOf('for (const pr of prs)'), yml.indexOf('github.rest.pulls.merge('));
-check(/const design = designBlocker\(files, comments, sha, headAt\);\s*\n\s*if \(design\) \{.*continue; \}/.test(loop), 'merge loop: designBlocker runs and skips before a PR is merged');
+// Item 40: both gates are read before either skips, so a stale mark on each seat can be asked for in one run.
+check(/const design = designBlocker\(files, comments, sha, headAt\);[\s\S]*?if \(design \|\| data\) continue;/.test(loop), 'merge loop: designBlocker runs and skips before a PR is merged');
 
 // Data check (ROL-03): a data or research PR waits for Game Data Check's VERIFIED on its head (Chanter pack #486 merged without it).
 const d = yml.match(/\/\/ DATA-CHECK START[^\n]*\n([\s\S]*?)\n\s*\/\/ DATA-CHECK END/);
@@ -128,7 +129,7 @@ check(/does not cover the head/.test(await dataBlocker(BPR, ['data/DATA_SOURCES.
 check(/waits on Game Data Check/.test(await dataBlocker(BPR, ['data/DATA_SOURCES.md'], [REVIEW], SHA, HEAD)), 'DATA_SOURCES.md alone still needs a verdict');
 const NOBASE = { ...BPR, base: { ref: 'gone' } };
 check(/does not cover the head/.test(await dataBlocker(NOBASE, PACK, [REVIEW, VER(OLD)], SHA, HEAD)), 'base compare fails -> waits');
-check(/const data = await dataBlocker\(pr, touched, comments, sha, headAt\);\s*\n\s*if \(data\) \{.*continue; \}/.test(loop), 'merge loop: dataBlocker runs and skips before a PR is merged');
+check(/const data = await dataBlocker\(pr, touched, comments, sha, headAt\);[\s\S]*?if \(design \|\| data\) continue;/.test(loop), 'merge loop: dataBlocker runs and skips before a PR is merged');
 
 // pipeline.yml starts a fix round from Game Data Check's CHANGES (#518 got none from it, 2026-10-19).
 const pipe = readFileSync(join(ROOT, '.github', 'workflows', 'pipeline.yml'), 'utf8');
@@ -331,7 +332,8 @@ check(/CHANGES from francesca/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (re
   'an APPROVE edited after a CHANGES still dates from when it was posted (created_at), so it does not clear it');
 check(/CHANGES from skyler/.test(namedBlocker([c(OWNER, CL, 4), c(OWNER, 'VERDICT: CHANGES (reviewer: Skyler) on abc1234', 6)], NEW)), 'deadlock exit: a clear older than the CHANGES does not clear it');
 const loopAt = yml.indexOf("const named = namedBlocker(comments, sha, pr.body || '', implied, labels.filter((l) => !lifted || l !== 'hold'), touched);");
-check(loopAt > 0 && /if \(named\) \{.*continue; \}/.test(yml.slice(loopAt, loopAt + 200)) && loopAt < yml.indexOf('await github.rest.pulls.merge('), 'merge loop: namedBlocker runs and skips before a PR is merged');
+// Item 40 (fresh review of #847): the named branch may ask a stale seat before it skips; it still always skips.
+check(loopAt > 0 && /if \(named\) \{\n\s*core\.info\([^\n]*\n\s*for \(const seat of staleSeats\(named, comments\)\) await askStale\([^\n]*\n\s*continue;\n\s*\}/.test(yml.slice(loopAt, loopAt + 500)) && loopAt < yml.indexOf('await github.rest.pulls.merge('), 'merge loop: namedBlocker runs and skips before a PR is merged');
 check(/CHANGES from lydia/.test(namedBlocker([c(OWNER, 'ROL-03 (Lydia): CHANGES on abc1234.\nVERDICT: CHANGES (reviewer: Lydia)', 6), c('claude[bot]', 'Review of abc1234\nVERDICT: APPROVE', 9)], SHA)),
   "#665: Lydia's tagged CHANGES blocks the bot APPROVE that merged it");
 check(/CHANGES from fresh review/.test(namedBlocker([c(OWNER, 'FRESH REVIEW #655 abc1234\nScope is wrong.\nFRESH REVIEW CHANGES abc1234', 6)], NEW)), 'FRESH REVIEW CHANGES is a sticky named CHANGES');
@@ -632,6 +634,53 @@ check(/try \{\n\s*if \(ROSTER && V\.unknownReviewers[\s\S]*?shaNote\(pr\.body[\s
   'loop: an API error in the roster or sha note is a warning for that PR, not the end of the run (#776 review)');
 check(shaNote(B768, [c('HackTheMeatball', 'VERDICT: OK (reviewer: francesca) on abc1234', 4), c('HackTheMeatball', 'VERDICT: OK (reviewer: francesca)', 6)], SHA, HEAD) === '',
   'sha note: none when an earlier approval from the same reviewer names the head, as the gate counts it (#776 review)');
+
+// A gate mark on an older head is asked for again (Kaizen batch-0.9 item 40; #836 sat green 86 min on a VERIFIED of the head
+// before a fix round).
+const stm = yml.match(/\/\/ STALE-CHECK START[^\n]*\n([\s\S]*?)\n\s*\/\/ STALE-CHECK END/);
+check(!!stm, 'auto-merge.yml has the STALE-CHECK block');
+const ST = stm ? new Function('V', 'owner', stm[1] + '\nreturn { staleAsk, markSha };')(V, 'HackTheMeatball') : { staleAsk: () => '', markSha: () => null };
+const OLD7 = '5fd1bc2', NEW40 = 'abc1234def5678';
+const verOld = c('HackTheMeatball', `Game Data Check (ROL-03) on ${OLD7}: VERIFIED`, 5);
+const desOld = c('claude[bot]', `**DESIGN OK on ${OLD7}**`, 5);
+const WHYD = `Game Data Check's VERIFIED does not cover the head ${NEW40.slice(0, 7)}`, WHYS = `DESIGN OK does not cover the head ${NEW40.slice(0, 7)}`;
+const askD = ST.staleAsk('data', WHYD, NEW40, [verOld], ['tests/save.js']), askS = ST.staleAsk('design', WHYS, NEW40, [desOld], []);
+check(askD.startsWith('<!-- auto-merge:stale-mark data abc1234 -->') && askD.includes('`5fd1bc2`') && askD.includes('`abc1234`') && askD.includes('`tests/save.js`')
+  && askS.startsWith('<!-- auto-merge:stale-mark design abc1234 -->') && askS.includes('`5fd1bc2`') && /none of this PR's files changed/.test(askS),
+  'stale ask: names the seat, both sha7s and the files changed between them');
+check([askD, askS].every((b) => !V.design(b) && !V.data(b).length && !V.review(b) && !V.reviewOf(b) && !V.tagged(b).length),
+  'stale ask: the body parses as no mark and no verdict (MRG-07), for the DESIGN and the VERIFIED wording');
+check(ST.staleAsk('data', WHYD, NEW40, [verOld, c('github-actions[bot]', askD, 6)], []) === ''
+  && ST.staleAsk('data', WHYD, 'fff0000aaa', [verOld, c('github-actions[bot]', askD, 6)], []) !== ''
+  && ST.staleAsk('design', WHYS, NEW40, [desOld, c('github-actions[bot]', askD, 6)], []) !== '',
+  'stale ask: one comment per seat and head; a new head or the other seat gets its own');
+check(ST.staleAsk('data', '', NEW40, [verOld], []) === '' && ST.staleAsk('data', "Game Data Check says CHANGES (ROL-03)", NEW40, [verOld], []) === ''
+  && ST.staleAsk('design', 'shots wait on DESIGN OK', NEW40, [], []) === '' && ST.staleAsk('data', WHYD, NEW40, [c('HackTheMeatball', 'Game Data Check (ROL-03) on abc1234: VERIFIED', 5)], []) === '',
+  'stale ask: none when the VERIFIED carries (no blocker), on a CHANGES, with no mark at all, or when the mark names the head');
+check(ST.markSha('design', [c('claude[bot]', 'DESIGN OK on 1111111', 1), desOld]) === OLD7 && ST.markSha('data', [verOld]) === OLD7 && ST.markSha('design', []) === null
+  && ST.staleAsk('data', WHYD, NEW40, [verOld], null).includes('could not be listed'),
+  'stale ask: reads the latest mark\'s sha; a failed file listing still asks');
+check(ST.markSha('data', [c('HackTheMeatball', `Game Data Check (ROL-03) on ${OLD7}: VERIFIED\nGame Data Check (ROL-03) on 2222222: VERIFIED`, 5)]) === OLD7
+  && ST.markSha('design', [c('claude[bot]', 'DESIGN OK, defaced frame fixed, on 3333333', 5)]) === '3333333' && ST.markSha('design', [c('claude[bot]', 'DESIGN OK', 5)]) === null,
+  'stale ask: the data sha is the line the gate reads (the first); the design sha follows "on", not any hex word (#847 review)');
+const loopSrc = yml.slice(yml.indexOf('for (const pr of prs)'));
+check(/const askStale = async \(seat, why\) => \{\n\s*try \{[\s\S]*?staleAsk\(seat, why, sha, comments, changed\)[\s\S]*?\} catch \(e\) \{ core\.warning\(`#\$\{pr\.number\}: stale-mark ask skipped[\s\S]*?const named = namedBlocker[\s\S]*?const design = designBlocker\([^)]*\);\s*const data = await dataBlocker\([^)]*\);[\s\S]*?await askStale\(seat, why\);[\s\S]*?if \(design \|\| data\) continue;/.test(loopSrc),
+  'loop: both gates are read, a stale mark is asked for (an API error is a warning), and either blocker still stops the merge');
+// The fresh review's repro: a seat named on Reviewers: is waited on by namedBlocker, which skips before the gates.
+const STS = stm ? new Function('V', 'owner', stm[1] + '\nreturn staleSeats;')(V, 'HackTheMeatball') : () => [];
+const gOld = c('HackTheMeatball', `Game Data Check (ROL-03) on ${OLD7}: VERIFIED`, 5), jOld = c('HackTheMeatball', `DESIGN OK on ${OLD7}`, 5);
+check(namedBlocker([gOld], NEW40, 'Reviewers: gretchen') === 'waits on game data check to approve abc1234'
+  && namedBlocker([jOld], NEW40, 'Reviewers: jane') === 'waits on design lead to approve abc1234',
+  'repro (fresh review of #847): a stale DESIGN OK / VERIFIED leaves the named check waiting on jane / gretchen');
+check(STS('waits on game data check to approve abc1234', [gOld]).join() === 'data' && STS('waits on design lead to approve abc1234', [jOld]).join() === 'design'
+  && STS('waits on design lead, game data check to approve abc1234', [jOld, gOld]).join() === 'design,data',
+  'named wait on only the design lead / game data check, each with an approving mark on an older head -> those seats are asked');
+check(STS('waits on design lead, francesca to approve abc1234', [jOld]).length === 0 && STS('waits on game data check to approve abc1234', []).length === 0
+  && STS('waits on game data check to approve abc1234', [c('HackTheMeatball', `Game Data Check (ROL-03) on ${OLD7}: CHANGES`, 5)]).length === 0
+  && STS('CHANGES from design lead not yet cleared by an approval naming abc1234', [jOld]).length === 0 && STS('', [jOld]).length === 0,
+  'no ask from the named branch when another reviewer is also missing, the seat has no mark, its latest mark is a CHANGES, or the wait is a CHANGES');
+const askN = ST.staleAsk('data', "Game Data Check's VERIFIED does not cover the head abc1234", NEW40, [gOld], []);
+check(askN.startsWith('<!-- auto-merge:stale-mark data abc1234 -->') && askN.includes('`5fd1bc2`'), 'the named branch asks with the same text and dedupe marker as the gate branch');
 
 console.log(`\n${n - fail}/${n} auto-merge checks passed`);
 console.log(fail ? 'AUTOMERGE CHECKS FAILED' : 'AUTOMERGE CHECKS PASSED');
