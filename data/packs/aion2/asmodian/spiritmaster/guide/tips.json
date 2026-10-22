@@ -16,6 +16,17 @@
       ]
     },
     {
+      "id": "tip:rotation-play",
+      "key": "rotation",
+      "title": "How it plays",
+      "body": "<ul><li><b>The loop:</b> both sources put Jointstrike: Curse above Dimensional Control in the macro line and Combustion below them, held together with left click.</li><li><b>By hand:</b> your buffs (a macro would spend them on trash), Summon: Ancient Spirit and Jointstrike: Destructive Attack.</li></ul>",
+      "credit": "daevaguides macro guide and aion2turkiye's Spiritmaster page",
+      "verifiedAt": "2026-10-20",
+      "claims": [
+        "C57"
+      ]
+    },
+    {
       "id": "tip:stigma",
       "key": "stigma",
       "title": "Stigma",

@@ -325,6 +325,29 @@
       "verifiedAt": "2026-10-16"
     },
     {
+      "id": "C57",
+      "claim": "Chanter macro line (leveling): Dark Crush, Spinning Strike, Incandescent Blow, with Onslaught on left click; mantras, Impactful Crush (until 45) and Marchutan's Wrath by hand.",
+      "verdict": "verified",
+      "sources": [
+        {
+          "url": "https://daevaguides.com/en/guides/macros/",
+          "checkedAt": "2026-10-20",
+          "note": "Macro for every class: Chanter Dark Crush (row 0), Spinning Strike, Incandescent Blow filler, with Onslaught."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/chanter/",
+          "checkedAt": "2026-10-20",
+          "note": "Leveling macro column: the same three with Onslaught."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-rotation-play.md (0.9 P18): the two lines match. The guide's own wording.",
+      "appliesTo": [
+        "tip:rotation-play"
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
       "id": "C67",
       "claim": "Chanter default keys: left click Onslaught, right click Incandescent Blow; 1 Rushing Smash, 2 Impactful Crush, 3 Recuperation, 4 Spinning Strike; E Gust Rampage (row 0), Heat Wave Blow (1), Dark Crush (2); Q Tremor Crush (0), Wave Blow (1); Defiance no key.",
       "verdict": "verified",

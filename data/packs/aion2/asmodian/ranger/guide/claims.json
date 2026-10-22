@@ -245,6 +245,29 @@
         "build:ranger:guide"
       ],
       "verifiedAt": "2026-10-18"
+    },
+    {
+      "id": "C57",
+      "claim": "Ranger macro (leveling): Gale Arrow first, Tempest Shot (no cooldown) last, Drill Dart, Burst Arrow and Snare Shot between; Deadshot (charged), Marking Shot and buffs by hand.",
+      "verdict": "verified",
+      "sources": [
+        {
+          "url": "https://daevaguides.com/en/guides/macros/",
+          "checkedAt": "2026-10-20",
+          "note": "Macro for every class: Ranger Griffon line (Griffon / Explosive Arrow from 37, Snare Shot, Burst Arrow), then the Gale line (Gale Arrow row 0, Drill Dart, Tempest Shot filler)."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/ranger/",
+          "checkedAt": "2026-10-20",
+          "note": "Leveling macro column: Gale Arrow, Drill Dart, Burst Arrow, Snare Shot, Tempest Shot, with Snipe."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-rotation-play.md (0.9 P18). Same skills, Gale Arrow first and Tempest Shot last in both; the line split differs. The Lv 37 stigmas (daevaguides only) are left out. The guide's own wording.",
+      "appliesTo": [
+        "tip:rotation-play"
+      ],
+      "verifiedAt": "2026-10-20"
     }
   ]
 }

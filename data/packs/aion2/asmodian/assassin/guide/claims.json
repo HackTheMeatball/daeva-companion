@@ -318,6 +318,29 @@
         "build:assassin:guide"
       ],
       "verifiedAt": "2026-10-20"
+    },
+    {
+      "id": "C57",
+      "claim": "Assassin macro line (leveling): Insignia Explosion first, Savage Roar (no cooldown) last; buffs, charged skills and pulls stay off the macro.",
+      "verdict": "verified",
+      "sources": [
+        {
+          "url": "https://daevaguides.com/en/guides/macros/",
+          "checkedAt": "2026-10-20",
+          "note": "Macro for every class: Assassin row 0 Insignia Explosion, then Heart Gore, Ambush, Savage Roar as the filler; buffs, charged skills and pulls kept out."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/assassin/",
+          "checkedAt": "2026-10-20",
+          "note": "Leveling macro column: Insignia Explosion, Heart Gore, Whirlwind Slice, Savage Roar; stigmas kept manual."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-rotation-play.md (0.9 P18). Head and filler agree; the third row differs (Ambush or Whirlwind Slice), so the text names neither. Both sources put Insignia Explosion above Heart Gore, the guide's stack (keyStacks.slots) the other way round, which stays labelled inferred; a Game Data Check item, not changed here. The guide's own wording.",
+      "appliesTo": [
+        "tip:rotation-play"
+      ],
+      "verifiedAt": "2026-10-20"
     }
   ]
 }

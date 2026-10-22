@@ -16,6 +16,17 @@
       ]
     },
     {
+      "id": "tip:rotation-play",
+      "key": "rotation",
+      "title": "How it plays",
+      "body": "<ul><li><b>The loop:</b> both sources build the same macro line: Dark Crush first, then Spinning Strike (from Lv 14) and Incandescent Blow, held together with left click (Onslaught).</li><li><b>By hand:</b> your mantras (a second press turns a mantra off), Impactful Crush (until Lv 45) and Marchutan's Wrath.</li></ul>",
+      "credit": "daevaguides macro guide and aion2turkiye's Chanter page",
+      "verifiedAt": "2026-10-20",
+      "claims": [
+        "C57"
+      ]
+    },
+    {
       "id": "tip:stigma",
       "key": "stigma",
       "title": "Stigma",

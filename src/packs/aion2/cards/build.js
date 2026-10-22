@@ -6,6 +6,7 @@ import { setHTML } from "../../../core/cards.js";
 import { activePack, packClasses } from "../../../core/pack.js";
 import { E_NOTE, E_ORDER, E_ST, GUIDE_KEYS, HAS_KEYS, KEYS, KEYS_ST, SP_ICONS, STAT_NOTE, STAT_SRC, STAT_TIERS, STIGMA_ICON } from "../data/build.js";
 import { eShift, stTag } from "../data/markup.js";
+import { TIPS } from "../data/tips.js";
 import { rotKeys } from "../requirements.js";
 import { aion2State as state, aion2Save as save, aion2Update as update, aion2STIGMA_SLOTS as STIGMA_SLOTS, aion2StIco as stIco, aion2SpMini as spMini, aion2Ini as ini } from "./page.js";
 
@@ -84,10 +85,22 @@ function stLaterHTML() {
 /* The icon (or initials) before a name: skills as in the chain, stigmas (E) with their own art. Decorative: the name is the text. */
 const ico = (n, stig) => stig ? stIco(n, "st-mini") : spMini(n);
 const nameIco = (n, stig) => ico(n, stig) + n;
+/* How the rotation plays (0.9 P18): the guide's tip "rotation" (tip:rotation-play, the macro line both sources agree on
+   and what stays off it), under the rotation with its source; false when the guide has none */
+function renderHow() {
+  const el = document.getElementById("rotHow"), t = TIPS.rotation;
+  el.hidden = !t;
+  if (t) setHTML(el, `<span class="khead">${t.h}</span>${t.b}<p class="fine">Source: ${t.src}</p>`);
+  return !!t;
+}
 function renderRotation() {
-  /* a build without a sourced key setup (0.6 P5, the Ranger): stat priority only, with the build's own footnote */
+  /* a build without a sourced key setup (0.6 P5, the Spiritmaster): stat priority, with the build's own footnote, and only
+     the how-it-plays text in the Rotation section (no section without it) */
   if (STAT_NOTE) document.getElementById("statNote").textContent = STAT_NOTE;
-  if (!HAS_KEYS) { document.querySelector("#statDrawer .sd-rot").hidden = true; setHTML(document.getElementById("statSeq"), statSeqHTML()); return; }
+  const how = renderHow();
+  if (!HAS_KEYS) { const rot = document.querySelector("#statDrawer .sd-rot"); rot.hidden = !how;
+    for (const el of rot.querySelectorAll(":scope > :not(.ns-head, .rot-how)")) el.style.display = "none";
+    setHTML(document.getElementById("statSeq"), statSeqHTML()); return; }
   const lv = char(state).level, { rmb, q, e, keys } = rotKeys(char(state), lv);
   if (keys) { renderDefaultRotation(lv, keys); return; }
   const before = e.filter(n => n === "Illusive Clone" || n === "Swift Contract"), after = e.filter(n => !before.includes(n));

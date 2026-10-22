@@ -118,6 +118,29 @@
       "verifiedAt": "2026-10-16"
     },
     {
+      "id": "C57",
+      "claim": "Cleric macro (leveling): Earth Punishment, Divine Aura, Condemnation, Chain of Torment, Judgment Thunder (no cooldown) last; heals, Bolt (charged), Debilitating Mark and Light of Protection (toggle) by hand.",
+      "verdict": "verified",
+      "sources": [
+        {
+          "url": "https://daevaguides.com/en/guides/macros/",
+          "checkedAt": "2026-10-20",
+          "note": "Macro for every class: Cleric Prayer of Amplification (row 0), Earth Punishment, Chain of Torment, Condemnation; second line Scattershot, Divine Aura, Light of Regeneration, Judgment Thunder filler."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/cleric/",
+          "checkedAt": "2026-10-20",
+          "note": "Leveling macro column: Earth Punishment, Divine Aura, Condemnation, Chain of Torment, Judgment Thunder; left with right click."
+        }
+      ],
+      "action": "keep",
+      "note": "docs/research/2026-10-rotation-play.md (0.9 P18). Same skills and Judgment Thunder last in both; the middle order and line split differ, so the text gives no order for them. Prayer of Amplification and the second line's extra skills are daevaguides only and left out. The guide's own wording.",
+      "appliesTo": [
+        "tip:rotation-play"
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
       "id": "C90",
       "claim": "Cleric stat priority while leveling: Attack and Critical Hit (Metabot's party-healer order is HP, Defense, MP).",
       "verdict": "disputed",
