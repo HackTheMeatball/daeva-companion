@@ -15,7 +15,7 @@ const t0 = performance.now();
 const only = process.argv.includes('--only') ? process.argv[process.argv.indexOf('--only') + 1] : null;
 
 const M = await coreBundle();
-const tBuild = performance.now() - t0;
+const tBuild = performance.now() - t0, c0 = process.cpuUsage();
 
 const R = runner(), { test } = R;
 for (const f of readdirSync(join(ROOT, 'tests/core')).filter(f => f.endsWith('.test.mjs')).sort()) {
@@ -24,8 +24,9 @@ for (const f of readdirSync(join(ROOT, 'tests/core')).filter(f => f.endsWith('.t
   (await import(pathToFileURL(join(ROOT, 'tests/core', f)).href)).default(test, M);
   await R.settle();
 }
-const ms = performance.now() - t0, tChecks = ms - tBuild;
-console.log(`\n${R.n - R.fail}/${R.n} core checks passed in ${(ms / 1000).toFixed(2)} s (checks ${(tChecks / 1000).toFixed(2)} s, bundle ${tBuild.toFixed(0)} ms)`);
+const ms = performance.now() - t0, tChecks = ms - tBuild, cu = process.cpuUsage(c0), cpuChecks = (cu.user + cu.system) / 1000;
+// CPU time of the checks (this process, V8's GC and JIT threads included) is printed to measure a CPU-time budget.
+console.log(`\n${R.n - R.fail}/${R.n} core checks passed in ${(ms / 1000).toFixed(2)} s (checks ${(tChecks / 1000).toFixed(2)} s, ${(cpuChecks / 1000).toFixed(2)} s CPU; bundle ${tBuild.toFixed(0)} ms)`);
 // Two budgets, set by "slowest seen + 0.5 s, rounded up to 0.5 s" (owner OK 2026-10-18, #222): checks 5 s, bundle 3 s.
 if (tChecks > 5000) { console.log('FAIL core checks took longer than 5 s'); R.failed(); }
 if (tBuild > 3000) { console.log('FAIL core bundle took longer than 3 s'); R.failed(); }
