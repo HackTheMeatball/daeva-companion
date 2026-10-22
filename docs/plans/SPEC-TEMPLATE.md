@@ -53,8 +53,8 @@ format only here, together with the parser and its test.
   Kaizen, 2026-10-20: #509 was routed to Sonnet and stopped) or names no path at all. Files must list every file the
   Result needs, core, save, pack and build files included: routing only sees what is listed (#501 stopped on src/core
   and scripts/ files its spec left out).
-- Lanes are the serial files of docs/team/DISPATCH.md. Names outside kickoff's known list only warn, and kickoff still
-  keeps same-named lanes apart.
+- Lanes are the serial files and module lanes of docs/team/DISPATCH.md. Names outside kickoff's known list only warn:
+  kickoff still keeps same-named queue items apart, but no PR's files mark them busy.
 
 ## Items that fetch
 
