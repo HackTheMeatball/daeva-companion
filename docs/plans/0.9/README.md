@@ -750,7 +750,7 @@ picker and opens from a stored save. P28 finishes P3's own goal in the tests; P2
   - [ ] Player Testing (Jesse) re-runs #689's set-ups, the negative control and Import: `P3 PROVEN <sha>`.
   - [ ] Engineering (Gus) reviews the architecture change (ownership since 2026-10-20). `npm test` green.
 - **Review:** standing, plus Engineering for the architecture and Design Review for the row.
-- **Lanes:** gen, e2, architecture. **Model:** Opus, M (90 min). (`src/core/state.js` and `tests/core/state.test.mjs`
+- **Lanes:** gen, save, site, architecture. **Model:** Opus, M (90 min). (`src/core/state.js` and `tests/core/state.test.mjs`
   are shared with P9 on **architecture**; `scripts/build.mjs`'s other 0.9 items, P4 and P5, have merged.)
 - **After:** P11, P28.
 
