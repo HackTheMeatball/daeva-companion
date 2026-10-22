@@ -38,3 +38,13 @@ favicon, icons, manifest theme colour); the app keeps its plum palette until the
 - **No dead space around icons** (Isaac, 2026-10-18 10:22 PM ET): an icon tile lines up with the title it belongs to,
   and every line under the title runs the card's full width; the tile never sits vertically centred beside a tall text
   block. Mockup: `docs/design/0.6.2-icon-fit-mockup.md`. Applies to every card we build (app and tracker).
+- **Progress views remember their filters; To do starts on All** (Isaac, project chat 2026-10-22 8:09 AM ET, 12:09Z:
+  "have the site remember the last filter /group settings used for all 3 primary views on the progress tab"; routed by
+  the coordinator 12:14Z; spec `design/progress-views/README.md` in the shared folder). On the tracker's Progress tab,
+  Kanban, Grid and Gantt each keep their own last filter, group by, sort and show-done settings on this device. A
+  remembered filter always shows its chips and "Showing N of M" on load, and the tiles and release band above ignore
+  view filters, so a filter never hides anything silently. If a remembered filter hides any Waiting-on-you or Stuck item, the Showing line names them
+  ("Showing 12 of 46 · 2 waiting on you hidden"), so a chip missed on a phone can't hide work that needs Isaac. The To-do board keeps its existing rule, from the Design Lead's
+  To-do spec (`design/todo-categories.md` in the shared folder), not an owner decision: its filters reset to All on each
+  load, so nothing waiting on Isaac stays hidden from one day to the next. Isaac's ask names the
+  Progress tab only; a change to To do needs his word.

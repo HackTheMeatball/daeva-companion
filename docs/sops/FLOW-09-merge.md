@@ -25,7 +25,7 @@ A CI run completes, or a verdict comment is posted, on an open `claude/` PR (`au
 1. **Walter**: For a PR held for a fresh review, removes `hold` once a `FRESH REVIEW OK <sha7>` names the current head ([FLOW-04](FLOW-04-code-review.md)). A PR whose body has a `Reviewers: fresh review` line needs no `hold`: auto-merge waits for that approval (MRG-12).
 2. **Auto-merge**: Checks every gate on the head (MRG-02, MRG-06, the data check) and the freeze; squash-merges pinned to that head.
 3. **Auto-merge**: Dispatches CI on main: deploy, smoke and, for a release, the tag ([docs/DEPLOY.md](../DEPLOY.md)).
-4. **Gus**: Gus's PR check sends Huell `MERGED` (CLK-01).
+4. **PR author**: the thread whose PR merged sends Huell `MERGED #<n>` in the turn its merge event wakes it (MRG-11, "A merged PR wakes Tracker Sync"). Gus sends it for kickoff builds; Gus's PR check (CLK-01) is the backstop for a merge nobody announces.
 5. **Huell**: Writes the done card (TRK-02) and publishes any scrapbook cards (TRK-07).
 6. **Kickoff**: Starts the next queued item ([FLOW-03](FLOW-03-build.md)).
 

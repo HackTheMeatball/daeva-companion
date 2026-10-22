@@ -230,6 +230,16 @@ _From #114 "Merge rule (AUTO since 2026-10-16 10:32Z, #115)"._
     (Gus)'s 09:34Z PR check, and #851 (merged 10:52:56Z) for the 11:09Z one. Gus's PR check (CLK-01) stays the backstop,
     and Huell's diff on each sync makes a duplicate line harmless.
 
+### Clocks
+
+- **A clock's cadence lives in its ledger row** (amends CLK-01 to CLK-04 and HC-06, no new id; Kaizen batch-0.9 item
+  46, Gale; routed by the coordinator 2026-10-22T11:20Z): every self-re-arming clock (a scheduled trigger or wake that
+  sets its own next run) names its ledger id and cadence in the prompt it re-arms with, for example `CLK-01: 20 min
+  while a claude/ PR is open or a build runs, 3 h idle`, and re-arms from that row, never from memory or an earlier
+  prompt. A clock with no row gets one before it runs. Gus's PR check re-armed every 30 minutes from 2026-10-21 to
+  2026-10-22 11:29Z against CLK-01's 20 (Watchdog (Mike)'s read of the trigger history: 35 of 35 gaps from Oct 21 15:20Z
+  to Oct 22 11:09Z were 31 to 50 minutes), because the stored prompt said 30 and nothing tied it to the row.
+
 ## Pipeline
 
 ### PIP-16

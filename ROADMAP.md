@@ -88,7 +88,10 @@ no `KAIZEN REVIEW DONE` after 60 min. Patches (0.X.Y) skip the pass, Kaizen incl
      the rest "no baseline".
    - **Rules audit, and when the review is done (owner, 2026-10-19 10:17 AM and 1:49 PM ET, Kaizen thread).** The
      review grades every active rule and decision against the minor's data (keep / tighten / loosen / merge /
-     retire, each with evidence) and reports the rule count and any conflicts. From 0.9 the release kaizen review
+     retire, each with evidence) and reports the rule count and any conflicts. As part of it, every seat with a stored
+     prompt (a scheduled trigger's prompt or a re-arm prompt; for a seat with neither, its handover file) diffs it against its charter and the ledger, and the
+     scorecard counts the drifts found (Kaizen batch-0.9 item 46; routed by the coordinator 2026-10-22T11:20Z: Gus's PR
+     check ran on a stored "30 min" for a day against CLK-01's 20). From 0.9 the release kaizen review
      is complete only when that graded audit is written and reviewed, and its rule and ledger changes are merged
      or handed to their owners. Kaizen (Gale) then sends `KAIZEN REVIEW DONE <minor>` naming the audit file. The
      Release Planner starts no planning pass, writes no plan and queues nothing for the minor before that message.
