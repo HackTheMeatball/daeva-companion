@@ -104,7 +104,11 @@ Gomez, Oct 20 5:32 PM ET. Sources: K24 and K26 (`docs/kaizen/0.8-scorecard.md` Â
    above) and reaches Isaac only on UNSURE. When the outside reviewer sides with Jane, I post `VERDICT: OK (reviewer:
    holly) on <sha7>` linking that review. If my session has ended, MRG-12's deadlock exit applies: the coordinator's
    `REVIEW CLEAR (reviewer: holly; â€¦)` citing that review, posted per "Who posts a stand-in or a clear" (gus.md), and
-   where a clear is refused (triggers 2, 4b, 5, 6, or while the PR is held) the coordinator takes it to Isaac. Added 2026-10-22
+   where a clear is refused (triggers 2, 4b, 5, 6, or while the PR is held) the coordinator takes it to Isaac. If I haven't
+   posted a tagged verdict on the head within 24 h of the PR asking me for it (or my session has ended first), it doesn't
+   wait silently (#741): the coordinator names a fresh one-off reviewer under the outside-review procedure, posted or
+   recorded per "Who posts a stand-in or a clear", and only then does the author put that name on the `Reviewers:` line
+   in place of `holly`; its tagged VERDICT on the head gates instead (Org Design's condition 1, #851). Added 2026-10-22
    by the Rules Steward after the fresh review of #846, so the author's own OK isn't the only gate on the Design Lead's
    own work; routed by the coordinator 09:35Z, a trigger 2 re-scope recorded on #851 and in DECISIONS (K24 amendment).
    I don't review this change to my own role (Never, below); its fresh reviewer does.
