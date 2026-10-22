@@ -268,7 +268,7 @@ export function generate(opts = {}) {
      inferred), never Quick Use 1, left click. The basic attack (the skill the game's defaults put on Left click) may be a
      step, or sit in a stack a step fires, but only as the last skill the macro fires: a no-cooldown skill blocks every step
      above it (claim C21, two sources), so the check runs on the expanded sequence per level band. A lone-skill step other
-     than the basic attack, or a step delay, is a build guide's advice: the check only asks for a cited page (a url) on
+     than the basic attack, or a step delay other than the 10 ms default (T-123), is a build guide's advice: the check only asks for a cited page (a url) on
      keyStacks.sources; that the page is a build guide is Game Data Check's call (owner 16:19Z) */
   const MACRO_KEYS = Array.from({ length: 11 }, (_, i) => `Quick Use ${i + 2}`);
   const KS_GUIDE_SRC = (KS.sources || []).some(r => r.url);
