@@ -47,10 +47,13 @@ _Named reviewers. Written here by Gus; the coordinator's incident fast path for 
   - **Changed** means the rule's ledger row changes (a new row needs its named owner; a row whose `owner` changes needs
     the old owner), or the diff touches the rule's home section. The home section is: for a `file#Heading` home, the
     text under that heading up to the next heading of the same or a higher level; for a `file#phrase` home that is not
-    a heading, the bullet or paragraph that contains the phrase; for a DECISIONS `date / title` home, that DECISIONS
-    row. A home that is only an issue reference (such as `#222`) is covered by a row change only. A home that resolves
-    nowhere fails the check until it is fixed (at 2026-10-22, per the fresh review on #824: PIP-19, Q-11, REPO-07,
-    KZ-11). There is no whole-file fallback.
+    a heading, the list item or paragraph that holds the phrase (matched ignoring case, line breaks, runs of spaces,
+    backticks and asterisks), from the line that starts it down to the next item at the same or lower indent, a blank
+    line or a heading, nested sub-items included; for a DECISIONS `date / title` home, the table row under that date's
+    heading whose Topic cell starts with the title. A home that is only an issue reference (such as `#222`) counts as
+    resolved and is covered by a row change only. A home that resolves nowhere fails the check until it is fixed (at
+    2026-10-22, per the fresh review on #824: PIP-19, Q-11, REPO-07, KZ-11; Gus's normalized match resolves
+    Q-11). There is no whole-file fallback.
   - **Where the owners come from:** `owner` and `home` are read from main's ledger.csv at merge time, never from the
     PR's own ledger or body, so a PR can't drop its owner by editing either. Auto-merge works out the required owners
     itself and adds them to the wait, as it already adds the implied `lydia` (#665). Build Pipeline (Gus) builds this;
