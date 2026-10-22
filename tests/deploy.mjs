@@ -57,6 +57,18 @@ check([dep, smk, rel].every((j) => /ref: \$\{\{ needs\.gate\.outputs\.sha \}\}/.
   'deploy, smoke and release all check out and tag the gate\'s sha');
 check(/needs\.deploy\.result == 'success'/.test(smk) && /needs\.smoke\.result == 'success'/.test(rel), 'smoke only after a deploy, release only after smoke');
 
+// HC-01 (Watchdog, flaky suites; Kaizen batch-0.9 item 26): a suite that passes on retry is a CI annotation titled
+// `FLAKY <suite>` and a step-summary line, which the health check counts (tests/run.mjs, FLAKY-NOTE block).
+const runSrc = readFileSync(join(ROOT, 'tests', 'run.mjs'), 'utf8');
+const fb = runSrc.match(/\/\/ FLAKY-NOTE START[^\n]*\n([\s\S]*?)\n\/\/ FLAKY-NOTE END/);
+check(!!fb, 'tests/run.mjs has the FLAKY-NOTE block');
+const flakyNote = fb ? new Function(fb[1] + '\nreturn flakyNote;')() : () => ({});
+const fnote = flakyNote('core', 1, ['FAIL core checks took longer than 5 s', 'FAIL x 100%\nmore']);
+check(fnote.warning === '::warning title=FLAKY core::FAIL core checks took longer than 5 s | FAIL x 100  more', `a retry pass is a ::warning titled FLAKY <suite>, one line, no % (${fnote.warning})`);
+check(fnote.summary === '- FLAKY `core`: passed on retry 1; first run: FAIL core checks took longer than 5 s | FAIL x 100  more\n', 'and a step-summary line');
+check(flakyNote('equiv', 1, []).warning === '::warning title=FLAKY equiv::first run failed', 'a first run with no FAIL line still names the suite');
+check(/if \(ok && attempt\) \{\s*const note = flakyNote\(name, attempt, firstFails\);\s*if \(process\.env\.GITHUB_ACTIONS\) console\.log\(note\.warning\);\s*if \(process\.env\.GITHUB_STEP_SUMMARY\) appendFileSync\(process\.env\.GITHUB_STEP_SUMMARY, note\.summary\);/.test(runSrc), 'run.mjs emits both only for a pass on retry, and only on CI');
+
 console.log(`\n${n - fail}/${n} deploy checks passed`);
 console.log(fail ? 'DEPLOY CHECKS FAILED' : 'DEPLOY CHECKS PASSED');
 process.exit(fail ? 1 : 0);

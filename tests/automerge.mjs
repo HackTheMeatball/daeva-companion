@@ -430,6 +430,26 @@ check(await busyFor(655, [R(2, 'Pipeline')], jobsOf), 'busy: an event run still 
 check(!(await busyFor(6, [R(3, 'Pipeline')], jobsOf)) && !(await busyFor(686, [R(3, 'Pipeline')], jobsOf)), 'busy: "#68 " is not #6 or #686');
 check(await busyFor(655, [R(9, 'Pipeline review #655')], jobsOf) && !(await busyFor(655, [R(9, 'Pipeline merge #659')], jobsOf)), 'busy: a dispatched run counts only for its own PR');
 check(!(await busyFor(655, [R(1, 'Pipeline', 'completed'), R(9, 'Pipeline review #655', 'completed')], jobsOf)), 'busy: finished runs never count');
+// restart.yml's INFRA-DEATH block (PIP-04 amendment, Kaizen batch-0.9 item 32): PR CI whose every dead job stopped in a
+// setup step is re-run once; a failure inside a test step never is. The data job is #818's real attempt 1 (run 39715295287).
+const idb = ryml.match(/\/\/ INFRA-DEATH START[^\n]*\n([\s\S]*?)\n\s*\/\/ INFRA-DEATH END/);
+check(!!idb, 'restart.yml has the INFRA-DEATH block');
+const infraDeath = new Function(idb[1] + '\nreturn infraDeath;')();
+const D818 = {"conclusion": "cancelled", "name": "data", "steps": [{"conclusion": "success", "name": "Set up job"}, {"conclusion": "success", "name": "Run actions/checkout@v7"}, {"conclusion": "success", "name": "Run actions/setup-node@v7"}, {"conclusion": "cancelled", "name": "Run npm ci"}, {"conclusion": "skipped", "name": "Data format v2 (schemas, cross-record checks, DATA_SOURCES.md)"}, {"conclusion": "skipped", "name": "Generated data is current"}, {"conclusion": "skipped", "name": "Pure core (Node)"}, {"conclusion": "skipped", "name": "CHANGELOG has an entry for this version"}, {"conclusion": "skipped", "name": "Every blocking suite is in exactly one browser shard"}, {"conclusion": "skipped", "name": "Build both deliverables"}, {"conclusion": "skipped", "name": "Post Run actions/setup-node@v7"}, {"conclusion": "success", "name": "Post Run actions/checkout@v7"}, {"conclusion": "success", "name": "Complete job"}]};
+const OK = (name) => ({ name, conclusion: 'success', steps: [{ name: 'Set up job', conclusion: 'success' }] });
+const CIOK = { name: 'ci-ok', conclusion: 'failure', steps: [{ name: 'Set up job', conclusion: 'success' }, { name: 'All blocking jobs succeeded', conclusion: 'failure' }] };
+check(JSON.stringify(infraDeath([D818, OK('perf'), CIOK])) === '["data (Run npm ci: cancelled)"]', "#818: data died in npm ci, ci-ok only reported it -> re-run, naming the step");
+const step = (name, conclusion) => ({ name, conclusion });
+const job = (name, conclusion, steps) => ({ name, conclusion, steps });
+check(infraDeath([job('data', 'failure', [step('Set up job', 'success'), step('Run actions/checkout@v7', 'success'), step('Run npm ci', 'success'), step('Pure core (Node)', 'failure')]), CIOK]) === null, 'a failure inside a test step -> never re-run');
+check(infraDeath([D818, job('browser (golden)', 'failure', [step('Set up job', 'success'), step('Run npm ci', 'success'), step('Run node tests/run.mjs --shard golden', 'failure')]), CIOK]) === null, 'one setup death beside one test failure -> not re-run (the fix round owns it)');
+check(JSON.stringify(infraDeath([job('perf', 'failure', [step('Set up job', 'success'), step('Run actions/checkout@v7', null)])])) === '["perf (Run actions/checkout@v7: runner lost)"]', 'a runner lost during checkout -> re-run');
+check(infraDeath([job('perf', 'failure', [step('Set up job', 'success'), step('Run npm ci', 'success'), step('Run npm run build', null)])]) === null, 'a runner lost after setup (in the build) -> not re-run');
+check(infraDeath([CIOK]) === null && infraDeath([OK('data')]) === null, 'only ci-ok red, or nothing dead -> nothing to re-run');
+check(infraDeath([job('data', 'failure', [])]) === null, 'a dead job with no steps listed -> not re-run (nothing shows it died in setup)');
+check(/run_attempt === 1 && BAD\.includes\(lastCi\.conclusion\)/.test(ryml) && /reRunWorkflowFailedJobs\(\{ owner, repo, run_id: lastCi\.id \}\)/.test(ryml) && /body: `Restart: CI on \$\{sha\.slice\(0, 7\)\} died before any test ran/.test(ryml), "sweep: only the head's latest CI run, attempt 1, re-run once, and logged on the PR");
+check(/for \(const p of all\.filter\(\(x\) => !x\.labels\.some\(\(l\) => l\.name === 'stuck'\)\)\)/.test(ryml) && /issues: write/.test(ryml), 'sweep: held PRs are covered too (their CI must still finish), stuck ones are not; the job may comment');
+
 // YAML reads " #" in a plain (unquoted) scalar as the start of a comment, so the job name must be quoted or it is just "run"
 // (pipeline review of f0ae01a). Read the value the way YAML does: quoted, or cut at the first " #".
 const yamlValue = (v) => (/^"(.*)"\s*(?:#.*)?$/.exec(v) || [])[1] ?? v.replace(/\s#.*$/, '').trim();
