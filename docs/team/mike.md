@@ -24,7 +24,7 @@ _From #114 "Health check (owner design, 2026-10-17 5:51 AM ET; replaces the plan
 
 - **Health check** (trig_01RQWCQmdi7i9Gmwy1xjDMVy, :18 ET, wakes the Watchdog (Mike) thread, session_01NCNHEix7y9ocMh8pWBRZ2U, and runs whenever the planner messages it; replaced the disabled trig_011rTnRRyT64GnZ2NbPFrn6A 2026-10-18 5:08 AM ET; its rules live in this section): checks for
   - a `[started]` build past its size limit ("Stall limits" below) with no PR, a `[blocked]` line, or a "Blocked:" / "Needs @claude" comment not yet re-specced;
-  - an open claude/ PR that is `stuck`, conflicts with main (`mergeable_state` dirty), has no push, CI or review for 15 min, red CI with no fix round or green with no review after 30 min, `action_required` CI over 10 min, or a branch with no PR after 30 min;
+  - an open claude/ PR that is `stuck`, conflicts with main (`mergeable_state` dirty), has no push, CI or review for 15 min, red CI with no fix round or green with no review after 30 min, green with every review in but a `DESIGN OK` or `VERIFIED` that names an older head after 30 min (message the seat; item 40), `action_required` CI over 10 min, or a branch with no PR after 30 min;
   - `[next]` lines with nothing building for 10 min, or an unblocked item (all After keys merged) with no queue line;
   - a red, cancelled or skipped Kickoff, Restart, Pipeline or Auto-merge run, a run that died twice, main CI red or not deployed;
   - tracker drift: `datasets/today` older than the newest merge or PR open, or any card, To-do or ack that doesn't match GitHub;

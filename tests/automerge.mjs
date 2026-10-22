@@ -53,7 +53,8 @@ check(/asked for changes/.test(designBlocker(SHOTS, [c('claude[bot]', 'DESIGN OK
 
 // The merge loop runs the check after the review checks and before it merges.
 const loop = yml.slice(yml.indexOf('for (const pr of prs)'), yml.indexOf('github.rest.pulls.merge('));
-check(/const design = designBlocker\(files, comments, sha, headAt\);\s*\n\s*if \(design\) \{.*continue; \}/.test(loop), 'merge loop: designBlocker runs and skips before a PR is merged');
+// Item 40: both gates are read before either skips, so a stale mark on each seat can be asked for in one run.
+check(/const design = designBlocker\(files, comments, sha, headAt\);[\s\S]*?if \(design \|\| data\) continue;/.test(loop), 'merge loop: designBlocker runs and skips before a PR is merged');
 
 // Data check (ROL-03): a data or research PR waits for Game Data Check's VERIFIED on its head (Chanter pack #486 merged without it).
 const d = yml.match(/\/\/ DATA-CHECK START[^\n]*\n([\s\S]*?)\n\s*\/\/ DATA-CHECK END/);
@@ -128,7 +129,7 @@ check(/does not cover the head/.test(await dataBlocker(BPR, ['data/DATA_SOURCES.
 check(/waits on Game Data Check/.test(await dataBlocker(BPR, ['data/DATA_SOURCES.md'], [REVIEW], SHA, HEAD)), 'DATA_SOURCES.md alone still needs a verdict');
 const NOBASE = { ...BPR, base: { ref: 'gone' } };
 check(/does not cover the head/.test(await dataBlocker(NOBASE, PACK, [REVIEW, VER(OLD)], SHA, HEAD)), 'base compare fails -> waits');
-check(/const data = await dataBlocker\(pr, touched, comments, sha, headAt\);\s*\n\s*if \(data\) \{.*continue; \}/.test(loop), 'merge loop: dataBlocker runs and skips before a PR is merged');
+check(/const data = await dataBlocker\(pr, touched, comments, sha, headAt\);[\s\S]*?if \(design \|\| data\) continue;/.test(loop), 'merge loop: dataBlocker runs and skips before a PR is merged');
 
 // pipeline.yml starts a fix round from Game Data Check's CHANGES (#518 got none from it, 2026-10-19).
 const pipe = readFileSync(join(ROOT, '.github', 'workflows', 'pipeline.yml'), 'utf8');
@@ -632,6 +633,35 @@ check(/try \{\n\s*if \(ROSTER && V\.unknownReviewers[\s\S]*?shaNote\(pr\.body[\s
   'loop: an API error in the roster or sha note is a warning for that PR, not the end of the run (#776 review)');
 check(shaNote(B768, [c('HackTheMeatball', 'VERDICT: OK (reviewer: francesca) on abc1234', 4), c('HackTheMeatball', 'VERDICT: OK (reviewer: francesca)', 6)], SHA, HEAD) === '',
   'sha note: none when an earlier approval from the same reviewer names the head, as the gate counts it (#776 review)');
+
+// A gate mark on an older head is asked for again (Kaizen batch-0.9 item 40; #836 sat green 86 min on a VERIFIED of the head
+// before a fix round).
+const stm = yml.match(/\/\/ STALE-CHECK START[^\n]*\n([\s\S]*?)\n\s*\/\/ STALE-CHECK END/);
+check(!!stm, 'auto-merge.yml has the STALE-CHECK block');
+const ST = stm ? new Function('V', 'owner', stm[1] + '\nreturn { staleAsk, markSha };')(V, 'HackTheMeatball') : { staleAsk: () => '', markSha: () => null };
+const OLD7 = '5fd1bc2', NEW40 = 'abc1234def5678';
+const verOld = c('HackTheMeatball', `Game Data Check (ROL-03) on ${OLD7}: VERIFIED`, 5);
+const desOld = c('claude[bot]', `**DESIGN OK on ${OLD7}**`, 5);
+const WHYD = `Game Data Check's VERIFIED does not cover the head ${NEW40.slice(0, 7)}`, WHYS = `DESIGN OK does not cover the head ${NEW40.slice(0, 7)}`;
+const askD = ST.staleAsk('data', WHYD, NEW40, [verOld], ['tests/save.js']), askS = ST.staleAsk('design', WHYS, NEW40, [desOld], []);
+check(askD.startsWith('<!-- auto-merge:stale-mark data abc1234 -->') && askD.includes('`5fd1bc2`') && askD.includes('`abc1234`') && askD.includes('`tests/save.js`')
+  && askS.startsWith('<!-- auto-merge:stale-mark design abc1234 -->') && askS.includes('`5fd1bc2`') && /none of this PR's files changed/.test(askS),
+  'stale ask: names the seat, both sha7s and the files changed between them');
+check([askD, askS].every((b) => !V.design(b) && !V.data(b).length && !V.review(b) && !V.reviewOf(b) && !V.tagged(b).length),
+  'stale ask: the body parses as no mark and no verdict (MRG-07), for the DESIGN and the VERIFIED wording');
+check(ST.staleAsk('data', WHYD, NEW40, [verOld, c('github-actions[bot]', askD, 6)], []) === ''
+  && ST.staleAsk('data', WHYD, 'fff0000aaa', [verOld, c('github-actions[bot]', askD, 6)], []) !== ''
+  && ST.staleAsk('design', WHYS, NEW40, [desOld, c('github-actions[bot]', askD, 6)], []) !== '',
+  'stale ask: one comment per seat and head; a new head or the other seat gets its own');
+check(ST.staleAsk('data', '', NEW40, [verOld], []) === '' && ST.staleAsk('data', "Game Data Check says CHANGES (ROL-03)", NEW40, [verOld], []) === ''
+  && ST.staleAsk('design', 'shots wait on DESIGN OK', NEW40, [], []) === '' && ST.staleAsk('data', WHYD, NEW40, [c('HackTheMeatball', 'Game Data Check (ROL-03) on abc1234: VERIFIED', 5)], []) === '',
+  'stale ask: none when the VERIFIED carries (no blocker), on a CHANGES, with no mark at all, or when the mark names the head');
+check(ST.markSha('design', [c('claude[bot]', 'DESIGN OK on 1111111', 1), desOld]) === OLD7 && ST.markSha('data', [verOld]) === OLD7 && ST.markSha('design', []) === null
+  && ST.staleAsk('data', WHYD, NEW40, [verOld], null).includes('could not be listed'),
+  'stale ask: reads the latest mark\'s sha; a failed file listing still asks');
+const loopSrc = yml.slice(yml.indexOf('for (const pr of prs)'));
+check(/const design = designBlocker\([^)]*\);\s*const data = await dataBlocker\([^)]*\);[\s\S]*?staleAsk\(seat, why, sha, comments, changed\)[\s\S]*?\} catch \(e\) \{ core\.warning\(`#\$\{pr\.number\}: stale-mark ask skipped[\s\S]*?if \(design \|\| data\) continue;/.test(loopSrc),
+  'loop: both gates are read, a stale mark is asked for (an API error is a warning), and either blocker still stops the merge');
 
 console.log(`\n${n - fail}/${n} auto-merge checks passed`);
 console.log(fail ? 'AUTOMERGE CHECKS FAILED' : 'AUTOMERGE CHECKS PASSED');

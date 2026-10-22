@@ -44,6 +44,13 @@ _Named reviewers. Written here by Gus; the coordinator's incident fast path for 
   applied): a PR that changes a rule waits on the approval of that rule's ledger `owner`, in the form above: a tagged
   VERDICT, or the owner's own gate mark where the seat has one (Design Lead `DESIGN OK`, Game Data Check `VERIFIED`;
   on a PR with shots one DESIGN OK counts as both the design approval and the rule sign-off).
+  - **A gate mark on an older head is asked for again** (amends the enforcement of MRG-06 and ROL-03; Kaizen batch-0.9
+    item 40, Gale; routed by the coordinator 2026-10-22T08:21Z, after #836 sat green for 86 min on a stale mark): when
+    auto-merge waits only because the latest `DESIGN OK` or Game Data Check `VERIFIED` names an older head, it posts one
+    comment per head asking that seat to check the current head, naming both sha7s and the files changed between
+    them. The comment quotes the mark inside a sentence and never starts a line with it, so it can't parse as a mark
+    or a verdict (MRG-07; `tools/verdicts.cjs`). A carried VERIFIED (merge-only head, DECISIONS 2026-10-20) needs no
+    ask. Watchdog (Mike) messages the seat if the wait passes 30 min (HC-01).
   - **Changed** means the rule's ledger row changes (a new row needs its named owner; a row whose `owner` changes needs
     the old owner), or the diff touches the rule's home section. The home section is: for a `file#Heading` home, the
     text under that heading up to the next heading of the same or a higher level; for a `file#phrase` home that is not

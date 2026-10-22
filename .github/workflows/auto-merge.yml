@@ -402,6 +402,40 @@ jobs:
               return said ? '' : `${SHAMARK(s7, list)}\nThe latest approval from ${list} does not name the head ${s7} on its VERDICT line, so it does not count for this head. Re-post it as \`VERDICT: OK (reviewer: <name>) on ${s7}\`. A comment header ("Review of ${s7}", an ls-remote note) never counts, for auto-merge or for anyone lifting a hold (MRG-12).`;
             };
             // SHA-CHECK END
+            // STALE-CHECK START (tests/automerge.mjs runs this block)
+            // A gate mark on an older head is asked for again (Kaizen batch-0.9 item 40, Gale; routed by the coordinator
+            // 2026-10-22T08:21Z): #836 sat green for 86 min because Game Data Check's VERIFIED named the head before a fix round
+            // and nobody told her. When the design or data check waits only because its latest DESIGN OK / VERIFIED names an
+            // older head, one comment per seat and head asks that seat to check the current head, with both sha7s and the PR's
+            // files changed between them. The ask quotes the mark inside a sentence, never at a line's start, so it can't parse
+            // as a mark or a verdict (MRG-07). A carried VERIFIED (merge-only head) needs no ask: dataBlocker returns '' for it.
+            // Watchdog (Mike) messages the seat if the wait passes 30 min (HC-01).
+            const STALEMARK = (seat, s7) => `<!-- auto-merge:stale-mark ${seat} ${s7} -->`;
+            const SEATS = { design: { who: 'the Design Lead (Jane)', mark: 'DESIGN OK', rule: 'MRG-06' },
+              data: { who: 'Game Data Check (Gretchen)', mark: 'VERIFIED', rule: 'ROL-03' } };
+            // The sha the seat's latest mark names (claude[bot] or the owner, as the gates read them), or null.
+            const markSha = (seat, comments) => {
+              const marks = comments.filter((c) => c.user && (c.user.login === 'claude[bot]' || c.user.login.toLowerCase() === owner.toLowerCase())
+                && (seat === 'design' ? V.design(c.body) : V.data(c.body).length)).sort((a, b) => Date.parse(a.updated_at) - Date.parse(b.updated_at));
+              const last = marks[marks.length - 1];
+              if (!last) return null;
+              if (seat === 'data') return V.data(last.body).pop().sha;
+              const line = V.lines(last.body).find((l) => /^DESIGN OK\b/.test(l));
+              return ((line || '').match(/\b[0-9a-f]{7,40}\b/) || [])[0] || null;
+            };
+            // why: the blocker's own text; only "does not cover the head" is a stale mark. changed: the PR's files changed
+            // between the marked sha and the head, or null when they could not be listed.
+            const staleAsk = (seat, why, sha, comments, changed) => {
+              if (!/does not cover the head/.test(why || '')) return '';
+              const s7 = sha.slice(0, 7), on = markSha(seat, comments), S = SEATS[seat];
+              if (on && sha.startsWith(on)) return '';
+              if (comments.some((c) => c.user && c.user.login === 'github-actions[bot]' && (c.body || '').includes(STALEMARK(seat, s7)))) return '';
+              const files = changed === null ? 'the files changed between them could not be listed'
+                : changed.length ? `this PR's files changed between them: ${changed.slice(0, 20).map((f) => `\`${f}\``).join(', ')}${changed.length > 20 ? ` and ${changed.length - 20} more` : ''}`
+                  : 'none of this PR\'s files changed between them';
+              return `${STALEMARK(seat, s7)}\nAuto-merge is waiting on ${S.who}: the latest ${S.mark} names ${on ? `\`${on.slice(0, 7)}\`` : 'no sha'}, not the head \`${s7}\` (${S.rule}). Please check the current head; ${files}. If the wait passes 30 min, Watchdog follows up (HC-01).`;
+            };
+            // STALE-CHECK END
             let merged = 0;
             const failed = [];
             for (const pr of prs) {
@@ -479,9 +513,25 @@ jobs:
               const named = namedBlocker(comments, sha, pr.body || '', implied, labels.filter((l) => !lifted || l !== 'hold'), touched);
               if (named) { core.info(`#${pr.number}: ${named}`); continue; }
               const design = designBlocker(files, comments, sha, headAt);
-              if (design) { core.info(`#${pr.number}: ${design}`); continue; }
               const data = await dataBlocker(pr, touched, comments, sha, headAt);
-              if (data) { core.info(`#${pr.number}: ${data}`); continue; }
+              for (const [seat, why] of [['design', design], ['data', data]]) {
+                if (!why) continue;
+                core.info(`#${pr.number}: ${why}`);
+                // The ask (STALE-CHECK block) only makes a wait visible: an API error in it is a warning, never the end of the run.
+                try {
+                  if (!/does not cover the head/.test(why)) continue;
+                  const on = markSha(seat, comments);
+                  let changed = null;
+                  if (on) {
+                    try { const cmp = (await github.rest.repos.compareCommitsWithBasehead({ owner, repo, basehead: `${on}...${sha}` })).data;
+                      const moved = new Set((cmp.files || []).flatMap((f) => [f.filename, f.previous_filename].filter(Boolean)));
+                      changed = files.filter((f) => moved.has(f)); } catch (e) { changed = null; }
+                  }
+                  const ask = staleAsk(seat, why, sha, comments, changed);
+                  if (ask) { await github.rest.issues.createComment({ owner, repo, issue_number: pr.number, body: ask }); core.notice(`#${pr.number}: asked ${seat} to check the head ${sha.slice(0, 7)}`); }
+                } catch (e) { core.warning(`#${pr.number}: stale-mark ask skipped: ${e.message}`); }
+              }
+              if (design || data) continue;
               const frozen = freezeBlocker(freeze, pr, touched);
               if (frozen) { core.info(`#${pr.number}: ${frozen}`); continue; }
               const prVersion = releaseOf((await filesOf()).find((f) => f.filename === 'package.json'));
