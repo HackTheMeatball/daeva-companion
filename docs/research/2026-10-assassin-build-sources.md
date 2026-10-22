@@ -122,7 +122,9 @@ can be replaced with these two sources and labelled two-source.
 aion2turkiye's top 25 back this up: Illusive Clone 100%, Swift Contract 100%, Triniel's Dagger 80%, Savage Fang 68%.
 mmo-codex's Korean meter has all four at 89–96%.
 
-daevaguides adds that solo players and questers can swap Savage Fang for Throw Shadowblade at 37, since it resets on a kill.
+daevaguides adds that solo players and questers can swap Savage Fang for Throw Shadowblade at 37. (Its reason, that
+Throw Shadowblade resets on a kill, is single source and doesn't apply while leveling: aion2turkiye puts the reset at
+stigma Lv 10, and leveling plans stop at 5. Don't give that reason in the guide.)
 aion2turkiye's top 25 carry it at 52%. That's a situational swap from one guide, so the guide can mention it as a labelled
 alternative.
 
