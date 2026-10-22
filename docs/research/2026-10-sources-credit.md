@@ -2,7 +2,8 @@
 
 Source Vetting (Lydia), 2026-10-22. Gate `research-sources-credit` for P23 (#645); P24 (#754) waits on it. The plan asks
 whether per-page credit links rendered only when the Sources card opens still meet CLAUDE.md's "plain dofollow links"
-and Metabot's terms. Owner, 2026-10-20 5:24 PM ET: the team decides after an outside review. **Outside review: pending.**
+and Metabot's terms. Owner, 2026-10-20 5:24 PM ET: the team decides after an outside review. **Outside review: passed** (Ted, fresh governance review, at 0fbcbb7, #802; reached the same conditional pass
+independently).
 
 ## Verdict
 
@@ -14,11 +15,13 @@ search engines see, which is the reason the terms ask for dofollow links at all.
    `"sponsored"` or `"ugc"` (`noopener` is fine), label unchanged.
 2. **A crawlable copy.** The build also emits a plain HTML page (for example `sources.html`) that lists every URL in
    `data/DATA_SOURCES.md` as such a link, with no script needed to see them. It is linked from the Sources card by a plain
-   link and listed in `public/sitemap.xml`.
+   link and listed in `public/sitemap.xml`. It names thegameswiki's licence (CC BY-NC-SA 4.0, linked) beside that site's
+   links (Ted's review). The Sources card names no licence today (source at 57bd9d3), so that line is new.
 3. **No per-site substitute.** The owner's option "one plain link per source site" may sit beside the lists, never
    replace them. A link to `metabot.gg` does not credit "the specific metabot.gg page the data came from".
 4. **Tests.** `tests/site`: after the card opens, every URL has an `<a>` with none of the three forbidden `rel` values;
-   the crawlable page contains every URL in `DATA_SOURCES.md`, with the same check.
+   the crawlable page contains every URL in `DATA_SOURCES.md`, with the same check; it is reached from the card's plain
+   link with script off, and `sitemap.xml` lists it (bot review on #802).
 
 Condition 2 adds one link to the page and a new file on the site, so it is a visible change: P23's "No visible change"
 acceptance line would have to change, with before / after shots. That is the plan owner's call.
