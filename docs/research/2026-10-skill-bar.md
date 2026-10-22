@@ -19,8 +19,8 @@ and screens (the source of truth), claim C21 / C21a, `2026-10-research-387-macro
 | 9 | A stigma can join a skill-slot stack: it goes in any slot a skill can | Verified | Owner, 2026-10-21 22:21 and 22:32 UTC (T-104, T-61 item 6) |
 | 10 | Holding right click alone runs out of MP; holding both clicks prevents it | Verified | Owner, 2026-10-20 (research-387 row c) |
 | 11 | R and T are not quickslots of their own: by default R is Quick Use 1's (left click's) second key and T is Quick Use 2's (right click's). F holds no skill (F1–F8 are consumables). The Spiritmaster has no recorded default keys yet | Verified | Owner (owner, 2026-10-21 22:29 and 22:32 UTC; Key Settings > Quickslot screens, `builds-macros/screens-t106/` in the project's shared folder (not in the repo)); `defaultKeys`, owner screens for 7 classes (2026-10-18). Corrects this row's earlier "R holds no skill" |
-| 12 | A macro steps from one quickslot to the next with a 10 ms gap between steps. The gap is the step's Delay field (fact 7), which the player can edit per step, and 10 ms is the common setting | Verified | Owner's in-game test, 2026-10-21 23:53 UTC (cmsg_01UNirAFgxf3jC8kQS8uvvHB35kUNWCuLKCKUKisf9B99p); daevaguides.com <https://daevaguides.com/en/guides/macros/> (Delay = 10 ms on every step; 40–50 ms at 80–100 ms ping); allthings.how <https://allthings.how/aion-2-how-to-use-macros-and-pick-the-right-delay/> (per-entry Delay in ms). Both spot-checked by Source Vetting, 2026-10-22 00:06 UTC |
-| 12a | 10 ms is the Delay field's default, lowered from 50 ms by an update | Single source | allthings.how (above) only; daevaguides doesn't say "default". Owner check: add a new macro step and read its Delay before touching it |
+| 12 | A macro steps from one quickslot to the next with a 10 ms gap between steps. The gap is the step's Delay field (fact 7), which the player can edit per step, and 10 ms is the usual value in guides | Verified | Owner's in-game test, 2026-10-21 23:53 UTC (cmsg_01UNirAFgxf3jC8kQS8uvvHB35kUNWCuLKCKUKisf9B99p); daevaguides.com <https://daevaguides.com/en/guides/macros/> (Delay = 10 ms on every step; 40–50 ms at 80–100 ms ping); allthings.how <https://allthings.how/aion-2-how-to-use-macros-and-pick-the-right-delay/> (per-entry Delay in ms). Both spot-checked by Source Vetting, 2026-10-22 00:04 UTC. Claim C21 also records a 10 ms delay |
+| 12a | A new macro step's Delay defaults to 10 ms | Verified | Owner, 2026-10-22 02:39 UTC (T-123: "10ms default", cmsg_01UNirAFgxf3jC8kQS8uvvHB2PcJXdcTbJDcJ7wfWkG6AM); allthings.how (above). That an update lowered it from 50 ms is allthings.how only (single source) |
 
 ## What the app must draw (owner decisions)
 
@@ -44,6 +44,7 @@ and screens (the source of truth), claim C21 / C21a, `2026-10-research-387-macro
 
 - Where the macro information comes from: the owner's own play (Ernesto, 2026-10-21 16:05 UTC); closed.
 - Facts 7–9 and 11: answered by the owner on 2026-10-21 (T-104, T-106, T-61 items 6 and 10).
+- Fact 12a (is 10 ms the default?): answered by the owner on 2026-10-22 (T-123). A 10–9,900 ms range seen only in a
+  search snippet of an unvetted site is left out.
 - Open: what "Separate Special Skill Hotkey" (Quick Use 1 and 2, default off) does; a macro seen on a number-key
-  quickslot; fact 12a (is 10 ms the default?), owner check in the row. A 10–9,900 ms range seen only in a search snippet
-  of an unvetted site is left out.
+  quickslot.
