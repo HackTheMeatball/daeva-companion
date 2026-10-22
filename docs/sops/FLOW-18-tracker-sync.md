@@ -23,7 +23,7 @@ A message from another flow (`MERGED`, `KICKOFF DISPATCHED`, a To-do ask, `OK RE
 
 ## Steps
 
-1. **Huell**: Runs the checker before each write (TRK-09) and writes with if_version, retrying up to 3 times (TRK-05). Events within 5 minutes share one write, and every event still shows within 10 minutes ([DEC-20261020-tracker-coalesce-window](../DECISIONS.md#2026-10-20)). Every write also sets the snapshot sync stamp, because the page's Updated label shows the oldest of the today, versions and snapshot stamps.
+1. **Huell**: Runs the checker before each write (TRK-09) and writes with if_version, retrying up to 3 times (TRK-05). Events within 5 minutes share one write, made within 10 minutes of Huell hearing of them (TRK-12). An announced event shows within about 10 minutes; one nobody announces reaches Huell through Gus's PR check (CLK-01) and can take up to about 30 minutes ([DEC-20261020-tracker-coalesce-window](../DECISIONS.md#2026-10-20), amended 2026-10-22). Every write also sets the snapshot sync stamp, because the page's Updated label shows the oldest of the today, versions and snapshot stamps.
 2. **Huell**: Moves item cards planned, next, working, done (TRK-03) and writes a done card for every merged PR (TRK-02).
 3. **Huell**: Publishes scrapbook cards within 30 min of a merge (TRK-07).
 4. **Huell**: Writes and closes To-dos ([FLOW-14](FLOW-14-owner-decision.md)). For each To-do assigned to Isaac, sends the coordinator one `NEW TODO T-xx` line when it opens and one `CLOSED TODO T-xx` line when it closes; team-internal To-dos are not sent ([DEC-20261020-todo-notifications](../DECISIONS.md#2026-10-20)). A To-do closes only with its evidence named in the log.
