@@ -200,6 +200,8 @@ needs to be thought through", until now kept only in the coordinator's notes._
     "Org Design: pre-backed". Org Design answers BACKED or REDIRECT live only when the receiver isn't the listed owner,
     it creates a new duty, the receiver would gain more than 2 new duties in a day, or it touches an independent role
     or an owner-held limit.
+  - **Stall risk:** Org Design's cap of 60 messages a day can make a live check the slow step. The fix is a wider
+    pre-backed route, never a hand-off without the check (Org Design, 2026-10-22).
   - **Starting a thread or one-off is the coordinator's** (DEC-20261020-hiring); a role that needs a builder or helper
     asks the coordinator, never starts its own.
 

@@ -69,7 +69,7 @@ reused across unrelated works.
 > since merged work has no gate.
 >
 > Never write a line a merge gate reads other than that last line: no `VERDICT`, no `DESIGN OK` / `DESIGN CHANGES`, no
-> `HOLD:`. Don't push, merge, label or edit files.
+> `HOLD:`. Don't push, merge or label, and edit no file other than the audit's output file.
 
 ### After the review
 - The verdict goes to the work's owner, with a copy to the broker for broker-log.md. A finding the owner disputes isn't
