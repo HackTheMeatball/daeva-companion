@@ -257,7 +257,9 @@ and is listed here so it isn't lost.
   appear as labelled alternatives.
 - **The picks (05:40:52Z, decision card):** "Change all four". That covers Impact Hit out and Flash Slice in, Illusive
   Clone in stigma slot 1, the leveling slot-1 specialties, and Attack in stat tier 1.
-- So every item below is decided. The disputed values (Shadowstrike and Ambush 8 against 10, stigma slots 3 and 4,
+- **Pending:** item 3 (`stigmaTargets`) is not covered by that tap. Until Isaac answers the card in Game Data Check's
+  thread, P38 keeps today's value (Triniel's Dagger 10, then Illusive Clone 20), labelled, as the plan §P38 no-go says.
+- So every item below except item 3 is decided. The disputed values (Shadowstrike and Ambush 8 against 10, stigma slots 3 and 4,
   Quick Slice 1 against 2) still ship with their labels.
 
 1. `skillOrder`: cite Metabot (leveling build), daevaguides and aion2turkiye.
@@ -267,7 +269,7 @@ and is listed here so it isn't lost.
    - Move Impact Hit, Defense Break, Determination and Heightened Sixth Sense out of the leveling order (or after 45).
    - Rewrite `skillOrderNotes` (skip list, budget).
 2. `stigmaSlots`: Illusive Clone, Swift Contract, Savage Fang, Triniel's Dagger (slots 3 and 4 disputed).
-3. `stigmaTargets`: all four to 5, then Illusive Clone. Keep the after-45 order (Triniel's Dagger 10, Illusive Clone 20)
+3. `stigmaTargets` (**pending Isaac's card; until then keep today's value, labelled**): all four to 5, then Illusive Clone. Keep the after-45 order (Triniel's Dagger 10, Illusive Clone 20)
    as a labelled note.
 4. `specialtyPicks` slot 1: Heart Gore 1, Ambush 2, Quick Slice 1 or 2 (disputed). Rewrite `specialtyEvidence` against
    the witnesses. Shadowstrike slot 2 stays `inferred` or is dropped.
