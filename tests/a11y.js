@@ -352,12 +352,20 @@ async function load(p, state, mode) {
       return c.getAttribute('role') !== 'group' || !g.startsWith(nm + ', ') || !cols.some(k => g.includes(', ' + k + ',')); }).map(c => c.textContent);
     /* a long name in a middle cell: two lines at most, inside the cell */
     const nm0 = named[0].querySelector('.nm'), was = nm0.textContent; nm0.textContent = 'Swift Fang Strike';
-    const c0 = named[0], longFit = nm0.getBoundingClientRect().height <= 2 * 11 * 1.25 + 1
-      && (() => { const rg = document.createRange(); rg.selectNodeContents(nm0); const rs = [...rg.getClientRects()], nb = nm0.getBoundingClientRect();
-        return new Set(rs.map(b => Math.round(b.top))).size <= 2 && rs.every(b => b.bottom <= nb.bottom + 1); })()
-      &&nm0.getBoundingClientRect().bottom <= c0.getBoundingClientRect().bottom && c0.getBoundingClientRect().height === hs[0] && !overWide().length;
+    /* each part named, so a failure says which part failed and with what numbers (a local-only failure under load,
+       2026-10-22, printed only longFit: false); the cell height is compared rounded, as hs is built */
+    const c0 = named[0], nb = nm0.getBoundingClientRect(), cb = c0.getBoundingClientRect(), rg = document.createRange();
+    rg.selectNodeContents(nm0); const rs = [...rg.getClientRects()], ow = overWide();
+    const longWhy = Object.entries({
+      [`name ${nb.height} px tall, over two 11 px lines`]: nb.height > 2 * 11 * 1.25 + 1,
+      [`name runs to ${new Set(rs.map(b => Math.round(b.top))).size} lines`]: new Set(rs.map(b => Math.round(b.top))).size > 2,
+      [`a line ends below the name box (${rs.map(b => b.bottom).join(', ')} > ${nb.bottom})`]: !rs.every(b => b.bottom <= nb.bottom + 1),
+      [`name bottom ${nb.bottom} below cell bottom ${cb.bottom}`]: nb.bottom > cb.bottom,
+      [`cell ${cb.height} px tall, others ${hs[0]}`]: Math.round(cb.height) !== hs[0],
+      [`too wide: ${ow.join(', ')}`]: ow.length > 0,
+    }).filter(([, bad]) => bad).map(([why]) => why), longFit = !longWhy.length;
     nm0.textContent = was;
-    return { n: cells.length, hs, split, over, noIco, unnamed, longFit, keys: keys.map(k => k.textContent), keyBad,
+    return { n: cells.length, hs, split, over, noIco, unnamed, longFit, longWhy, keys: keys.map(k => k.textContent), keyBad,
       marked: keys.filter(k => /†/.test(k.textContent + getComputedStyle(k, '::after').content)).map(k => k.textContent),
       head: (h => !!h && h === v.firstElementChild && h.getBoundingClientRect().bottom <= cells[0].getBoundingClientRect().top + 0.5 ? h.textContent : '')(v.querySelector(':scope > .kv-sugg')),
       lmbBelow: !!lmb && lmb.getBoundingClientRect().top >= keys[0].getBoundingClientRect().bottom,
