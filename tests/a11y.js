@@ -113,6 +113,9 @@ async function load(p, state, mode) {
     res.filter(v => ALLOW[v.id]).forEach(v => { seen[v.id] = (seen[v.id] || 0) + v.n; });
     const names = await p.evaluate(() => [...document.querySelectorAll('button')].map(x => ({ n: (x.getAttribute('aria-label') || x.textContent || x.title || '').replace(/\s+/g, ' ').trim(), c: x.className })));
     ok(`names ${id}: no "What is ?" button, every button named`, !names.some(x => /What is\s*\?/.test(x.n)) && names.every(x => x.n), names.filter(x => !x.n || /What is\s*\?/.test(x.n)));
+    /* 0.9 P8 (#625): a clause as a tip's label ("Respec is free") read "What is Respec is free?"; such a button takes its tip's title */
+    const isIs = names.filter(x => /\bis\b.*\bis\b/i.test(x.n));
+    ok(`names ${id}: no accessible name reads "is … is"`, !isIs.length, isIs);
     if (mode === 'advanced' || width === 390) {
       await p.addStyleTag({ content: '.a11y-nohit::before, .a11y-nohit::after { pointer-events: none !important; } #stCard .st-chg .st-pick.a11y-nohit { inset: 0 !important; width: 100% !important; height: 100% !important; }' });
       const hit = await p.evaluate(async HIT => {

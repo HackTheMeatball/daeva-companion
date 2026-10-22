@@ -1,0 +1,8 @@
+[
+  { "case": "1-spent-390", "kind": "before-after", "title": "One colour for Spent on a phone",
+    "caption": "At Lv 4 Next up's Spent button is now green on a phone too, as it is on a wide screen." },
+  { "case": "4-equip-row-390", "kind": "before-after", "title": "The E row stays on a phone row",
+    "caption": "At Lv 22 with a shard, the Equip Triniel's Dagger row on a phone now cuts the start and keeps \"then put it on E, row 0 (fires first)\" whole." },
+  { "case": "3-egrid-1500", "kind": "before-after", "title": "Key setup shows only equipped stigmas",
+    "caption": "At Lv 25 with no stigma equipped, E no longer shows Triniel's Dagger; Coming to E lists it with its row." }
+]

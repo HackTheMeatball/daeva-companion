@@ -1,6 +1,6 @@
 /* Text helpers the data tables use to build their HTML (item links, "i" buttons, map links, placeholders).
    Moved out of src/main.js unchanged (0.2 P2). Every export is still a page global (scripts/build.mjs). */
-import { DV_BOARDS } from "./generated.js";
+import { DV_BOARDS, TIPS } from "./generated.js";
 import { ITEMS } from "./items.js";
 import { STIGMA_PLAN } from "./build.js";
 export const seq = (arr) => '<span class="seq">' + arr.map(s => `<span>${s}</span>`).join('<i>→</i>') + '</span>';
@@ -54,7 +54,8 @@ export const ASC = "Journal (J) → Ascension tab → Teleport (bottom right) ta
    markup and wording stay here in code. Build tokens ([[build:…]]) are expanded by the generator with the guide build. */
 export const expandTokens = s => s.replace(/\[\[([a-z]+)(?::([^|\]]*))?(?:\|([^\]]*))?\]\]/g, (m, kind, arg, label) => {
   if (kind === "item") return I(arg, label);
-  if (kind === "tip") return T(label, arg);
+  /* a label that is a clause ("Respec is free") would read "What is Respec is free?": name the button by its tip's title */
+  if (kind === "tip") return T(label, arg, /\sis\s/.test(label) && TIPS[arg] ? `About ${TIPS[arg].h.toLowerCase()}` : undefined);
   if (kind === "mapq") return mapQ(arg, label);
   if (kind === "stigma") return stn(+arg);
   if (kind === "erow") return eRow(+arg);

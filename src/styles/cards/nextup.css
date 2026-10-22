@@ -255,6 +255,8 @@ html.pip .pip-hint { flex: none; padding-top: var(--space-6); font: 500 10px var
 #nowStar .ns-stack.ns-phone .ns-card .meta:empty { display: none; }
 #nowStar .ns-stack.ns-phone .ns-card .meta :is(.ns-btn, .ns-go) { width: 100%; padding: var(--space-10) var(--space-12); font: 600 14px var(--body); letter-spacing: 0; text-align: center; border-radius: var(--radius-9); background: var(--accent-fill); border: 1px solid var(--accent-fill); color: var(--on-fill); box-shadow: none; }
 #nowStar .ns-stack.ns-phone .ns-card .meta :is(.ns-btn, .ns-go):hover { border-color: var(--accent); }
+/* a button that completes the card ("Spent", "Equipped") keeps the desktop's green on a phone: one colour per state */
+#nowStar .ns-stack.ns-phone .ns-card .meta .ns-btn.primary { background: linear-gradient(180deg, var(--go-hi), var(--go-lo)); border-color: var(--go-line); color: var(--go-ink); }
 /* the featured card says why it has no button ("Later", "After the one above"; app.css hides tags under 520 px) */
 #nowStar .ns-stack.ns-phone .ns-card .meta .tag { display: inline-block; align-self: flex-start; }
 #nowStar .ns-stack.ns-phone .ns-card .ns-obj { margin: calc(-1 * var(--space-4)) var(--space-14) var(--space-14); }
@@ -267,7 +269,11 @@ html.pip .pip-hint { flex: none; padding-top: var(--space-6); font: 500 10px var
 #nowStar .ns-stack.ns-phone .ns-card:not(.first) .ns-num img { width: 24px; height: 24px; }
 #nowStar .ns-stack.ns-phone .ns-card:not(.first) .title h3 { font-size: 14.5px; }
 #nowStar .ns-stack.ns-phone .ns-card:not(.first) .title p { font-size: 12.5px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; line-clamp: 1; overflow: hidden; }
-#nowStar .ns-stack.ns-phone .ns-card:not(.first) :is(.meta, .ns-extra, .ns-info, .nsinfo, .ns-how, .ns-obj, .ns-bbar) { display: none; }
+/* a line whose end is its point (the stigma's E row, nextup-kinds.js stequip): the start is cut instead */
+#nowStar .ns-stack.ns-phone .ns-card:not(.first) .title p:has(> .ns-tail) { display: flex; }
+#nowStar .ns-stack.ns-phone .ns-card:not(.first) .title p > .ns-lead { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#nowStar .ns-stack.ns-phone .ns-card:not(.first) .title p > .ns-tail { flex: none; white-space: nowrap; }
+#nowStar .ns-stack.ns-phone .ns-card:not(.first) :is(.meta,.ns-extra, .ns-info, .nsinfo, .ns-how, .ns-obj, .ns-bbar) { display: none; }
 /* the pager: ‹ 1 of N › in the header, before Pop out */
 #nowStar .ns-pg { display: flex; align-items: center; gap: var(--space-4); margin-left: auto; }
 #nowStar .ns-pg + .ns-pop { margin-left: var(--space-8); }

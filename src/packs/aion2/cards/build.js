@@ -11,8 +11,11 @@ import { aion2State as state, aion2Save as save, aion2Update as update, aion2STI
 
 const statSeqHTML = () => STAT_TIERS.map((t, i) => `<div class="tier"><span class="tier-n">Tier ${i + 1}</span><div class="seq">${t.map(x => `<span>${x}<em class="src">${STAT_SRC[x] || ""}</em></span>`).join("")}</div></div>`).join("");
 /* The keys at lv hold only what the guide says you have there (rotKeys, src/core/requirements.js: the Skills card's
-   unlock rule for skills, the slot levels for stigmas). E_STACK marks stigmas with "*". */
-const E_STACK = lv => rotKeys(char(state), lv).e.map(n => n + "*");
+   unlock rule for skills, the slot levels for stigmas). E_STACK marks stigmas with "*". The grid's E holds only the
+   stigmas you have equipped (#610 F1): before the first one, rotKeys falls back to the open slots' stigmas, which
+   "Coming to E" under the grid already lists. */
+const E_STACK = lv => { const eq = STIGMA_SLOTS().filter(x => char(state).checks[x.k]).map(x => x.name);
+  return rotKeys(char(state), lv).e.filter(n => eq.includes(n)).map(n => n + "*"); };
 /* What's on your keys now, and what's been added since you last looked at the key setup (char(state).rotSeen). single: a
    key without rows (the Assassin's Q; a default key with one row). */
 const rotNow = lv => { const out = [], k = rotKeys(char(state), lv);
