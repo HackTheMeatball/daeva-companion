@@ -13,12 +13,14 @@ auto-merge can't tell whose comment it is.
 A PR whose change is meant to look exactly the same (a refactor with identical golden snapshots) needs neither; say
 "No visible change" in the PR body.
 
-On a PR the Design Lead (Jane) wrote that adds or changes mockup frames, the `DESIGN OK` line also links the Design
+On a PR the Design Lead (Jane) wrote (shots, mockup frames or any other look), the `DESIGN OK` line also links the Design
 Critic's read of that minor's mockups and Design Review (Holly)'s checklist review of the frames on that head, and Jane's
 written answer to each of their findings. With any of these links missing there is no `DESIGN OK`: Jane says what the PR waits
 on. This OK covers only a look the owner delegated to the Design Lead (for 0.9, P19–P22: DECISIONS 2026-10-20 "Design
-Lead approves the 0.9 catch-up and key setup looks"); any other new look still needs Isaac's typed OK. Auto-merge doesn't
-check the links yet; the reviewers of the PR do. (Rules Steward, 2026-10-22; routed by the coordinator 08:00Z after #839,
+Lead approves the 0.9 catch-up and key setup looks"); any look not delegated to the Design Lead in DECISIONS still needs Isaac's typed OK. Auto-merge doesn't
+check the links yet; the reviewers of the PR do. Such a PR also names `holly` on its `Reviewers:` line: Design Review
+(Holly)'s tagged VERDICT on the head gates the merge (MRG-12), so the author's own OK is never the only gate, and a
+disagreement between Jane and Holly goes to Isaac in the morning debrief (fresh review of #846; routed 09:35Z). (Rules Steward, 2026-10-22; routed by the coordinator 08:00Z after #839,
 where the author's own OK was the only design gate: the OK has to show its independent check.)
 
 ## The folder

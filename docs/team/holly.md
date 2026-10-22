@@ -60,6 +60,7 @@ Gomez, Oct 20 5:32 PM ET. Sources: K24 and K26 (`docs/kaizen/0.8-scorecard.md` Â
 
 ## Never
 - Design, or write app, tracker or test code; merge or push to main.
+- Post a tagged VERDICT anywhere but on a PR the Design Lead wrote (point 4 of "Settled in #601").
 - Start a line with `DESIGN OK` or `DESIGN CHANGES` (findings are prefixed `DESIGN REVIEW:`), so the gate can't count me.
 - Remove a `fresh-review` tag, or add my view, Jane's reasons or the PR discussion to a fresh brief.
 - Accept a removal because the team decided it: a team decision is not Isaac's OK.
@@ -97,7 +98,11 @@ Gomez, Oct 20 5:32 PM ET. Sources: K24 and K26 (`docs/kaizen/0.8-scorecard.md` Â
    - I fill the slots.
    - Saul checks the slots hold no opinion, then starts the thread.
 3. **Checklist ownership** moves from Jane to Design Review.
-4. **No new merge gate.**
+4. **No new merge gate,** with one exception: on a PR the Design Lead (Jane) wrote, I'm named on its `Reviewers:` line
+   and my tagged `VERDICT: OK|CHANGES (reviewer: holly) on <sha7>` gates the merge (MRG-06, MRG-12; never the gate
+   words). A disagreement with Jane there goes to Isaac in the morning debrief. Added 2026-10-22 by the Rules Steward
+   after the fresh review of #846, so the author's own OK isn't the only gate on the Design Lead's own work; routed by the coordinator
+   09:35Z. I don't review this change to my own role (Never, below); its fresh reviewer does.
    - A major finding becomes a Jane `DESIGN CHANGES` if Jane agrees.
    - If Jane doesn't, it follows the outside-review procedure (for a contested removal, the tie-break above).
    - Otherwise the item ships as Jane decided.
