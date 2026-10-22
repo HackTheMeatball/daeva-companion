@@ -256,7 +256,7 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     const a = await guide();
     ok('Assassin guide: its pack, plan and skills', a.pack === 'aion2/asmodian/assassin' && a.cls === 'assassin' && a.plan[0] === "Triniel's Dagger" && a.sk[0] === 'Heart Gore' && a.rot && !a.skills, a);
     /* 0.9 P18: under the rotation, how it plays (the guide's tip:rotation-play) with its source */
-    ok('Assassin: the Rotation section says how it plays, with its source', a.how.startsWith('How it plays') && a.how.includes('Insignia Explosion (from Lv 14) first') && a.how.includes("Source: daevaguides macro guide and aion2turkiye's Assassin page"), a.how);
+    ok('Assassin: the Rotation section says how it plays, with its source', a.how.startsWith('How it plays') && a.how.includes('Insignia Explosion (from Lv 14) leads the macro line, then Heart Gore') && !a.how.includes('inferred') && a.how.includes("Source: daevaguides macro guide and aion2turkiye's Assassin page"), a.how);
     await p.click('#charBtn'); await p.click('#charNew'); await p.check('#charPick input[value="ranger"]'); await p.waitForTimeout(50);
     ok('ranger: the form previews ranger-lvl1', await p.innerText('#charPrev') === 'ranger-lvl1', await p.innerText('#charPrev'));
     await Promise.all([p.waitForEvent('load'), p.click('#charCreate')]); await p.waitForTimeout(400);

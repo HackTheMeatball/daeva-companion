@@ -321,7 +321,7 @@
     },
     {
       "id": "C57",
-      "claim": "Assassin macro line (leveling): Insignia Explosion first, Savage Roar (no cooldown) last; buffs, charged skills and pulls stay off the macro.",
+      "claim": "Assassin macro line (leveling): Insignia Explosion first, Heart Gore second, Savage Roar (no cooldown) last; buffs, charged skills and pulls stay off the macro.",
       "verdict": "verified",
       "sources": [
         {
@@ -336,7 +336,7 @@
         }
       ],
       "action": "keep",
-      "note": "docs/research/2026-10-rotation-play.md (0.9 P18). Head and filler agree; the third row differs (Ambush or Whirlwind Slice), so the text names neither. Both sources put Insignia Explosion above Heart Gore, the guide's stack (keyStacks.slots) the other way round, which stays labelled inferred; a Game Data Check item, not changed here. The guide's own wording.",
+      "note": "docs/research/2026-10-rotation-play.md (0.9 P18). Head, second row and filler agree; the third row differs (Ambush or Whirlwind Slice), so the text names neither. Both sources put Insignia Explosion above Heart Gore; the guide's stack (keyStacks.slots, Lv 14 row) had Heart Gore first with no source for it, so it now follows the two sources (Design Lead on PR #826, option a) and the text no longer contrasts them. The guide's own wording.",
       "appliesTo": [
         "tip:rotation-play"
       ],

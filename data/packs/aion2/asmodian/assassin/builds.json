@@ -1323,9 +1323,9 @@
               {
                 "minLv": 14,
                 "skills": [
+                  "skill:assassin:insignia-explosion",
                   "skill:assassin:heart-gore",
                   "skill:assassin:ambush",
-                  "skill:assassin:insignia-explosion",
                   "skill:assassin:savage-roar"
                 ]
               },
@@ -1392,7 +1392,7 @@
         "status": "inferred",
         "sources": [
           {
-            "inferred": "slots and eOrder are the guide's suggested binding (the stack on right click, Quick Use 2, whose second key is T; Shadowstrike on Q; the stigmas on E), not the game's defaults (defaultKeys, C21a). Right-click row order is the guide's reasoning (Insignia Explosion above the builders: it scales with Insignia stacks, Metabot). All four stigmas on one key is inferred (C21b)."
+            "inferred": "slots and eOrder are the guide's suggested binding (the stack on right click, Quick Use 2, whose second key is T; Shadowstrike on Q; the stigmas on E), not the game's defaults (defaultKeys, C21a). Right-click row order is the guide's reasoning (Insignia Explosion above the builders: it scales with Insignia stacks, Metabot; head order per C57). All four stigmas on one key is inferred (C21b)."
           },
           {
             "url": "https://daevaguides.com/en/assassin/",
