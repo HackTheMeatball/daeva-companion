@@ -824,7 +824,7 @@ button, .numctl, .lvl-ctl, #nowStar .ns-stack { touch-action: manipulation; }
   .ms-meta, .sd-tab, .where-sub, .where-sub > span, .dvbh-k, .lvl-ctl label, .numctl label, .ptbig > span, .qs-head > span,
   .khead, .tier-n, :is(h2, div).sec .ns-pop, .stackviz .rn, .lmb, .ah-ver, .q-inl, #nowStar .q-inl, .asec-t, .fold-btn,
   .behind-pill, .sptype, .spectag, .st-n, .opt-tag, .run-tag, .paid-tag, .tier .seq .src, .gate .num small, .q-snz, #nowStar .ql .q-snz,
-  .dvcost-k, .soonlist li.then-board span:last-child, .dvb-new { font-size: 11px !important; }
+  .dvcost-k, .soonlist li.then-board span:last-child, .dvb-new, .rot-new { font-size: 11px !important; }
   .dvcr, .ztr, .ah-main small, #nowStar .ah-main small, :is(h2, div).sec .sec-btn, .qs-sub-loc, .qs-list small, .ns-obj small,
   .top-grid .soonlist small, #spCard .sphero .dvtext small, .ns-obj-more, .cube-btn, .st .unl, .asc-txt { font-size: 12px !important; }
 }
