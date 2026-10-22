@@ -118,12 +118,77 @@ on purpose: the guide shows nothing rather than an unverified value.
   | sk-storm-rampage.png | <https://metabot.gg/en/aion-2/skills/storm-rampage> · file <https://metabot.gg/web/aion2/skills/13340000.webp> (256 px WebP → 128 px PNG) | 2026-10-15 |
   | sk-determination.png | <https://metabot.gg/en/aion-2/skills/determination> · file <https://metabot.gg/web/aion2/skills/13800000.webp> (256 px WebP → 128 px PNG) | 2026-10-15 |
   | sk-heightened-sixth-sense.png | <https://metabot.gg/en/aion-2/skills/heightened-sixth-sense> · file <https://metabot.gg/web/aion2/skills/13710000.webp> (256 px WebP → 128 px PNG) | 2026-10-15 |
-  | blue-off.png, blue-on.png, green-off2.png, green-on2.png, orange-off.png, orange-on.png | | |
-  | daevanion-crystal.png, enhance-stone.png, wisdom-stone.png | | |
-  | sk-ambush.png, sk-assault-stance.png, sk-defense-break.png, sk-exploit-weakness.png, sk-heart-gore.png | | |
-  | sk-insignia-explosion.png, sk-quick-slice.png, sk-rear-smite.png, sk-savage-roar.png | | |
   | sk-shadowstrike.png | <https://metabot.gg/en/aion-2/skills/shadowstrike> · file <https://metabot.gg/web/aion2/skills/13070000.webp> (256 px WebP → 128 px PNG; matches the 256 px copy in docs/research/map-icons-2026-10-18/ scaled down, mean pixel difference under 3 of 255) | 2026-10-18 (match checked) |
-  | st-illusive-clone.png, st-savage-fang.png, st-swift-contract.png, st-triniels-dagger.png | | |
+
+  Rows from `docs/research/2026-10-icon-provenance-v2.md` (Game Data Check, 2026-10-21), copied verbatim; they replace
+  the blank placeholder rows that stood here. Kinds `owner-upload` and `owner-crop` have no file URL: the record is the
+  owner's image, and "before 2026-10-12" is a bound, not a day. `tests/compliance.mjs` checks every icon file against
+  these tables.
+
+  | File | Kind | Name | Source page | File URL | Retrieved | How established |
+  |---|---|---|---|---|---|---|
+  | sk-ambush.png | metabot | Ambush | <https://metabot.gg/en/aion-2/skills/ambush> | <https://metabot.gg/web/aion2/skills/13060000.webp> | 2026-10-21 (match checked) | mean diff 2.89 |
+  | sk-assault-stance.png | metabot | Assault Stance | <https://metabot.gg/en/aion-2/skills/assault-stance> | <https://metabot.gg/web/aion2/skills/13750000.webp> | 2026-10-21 (match checked) | mean diff 2.22 |
+  | sk-defense-break.png | metabot | Defense Break | <https://metabot.gg/en/aion-2/skills/defense-break> | <https://metabot.gg/web/aion2/skills/13780000.webp> | 2026-10-21 (match checked) | mean diff 2.70 |
+  | sk-exploit-weakness.png | metabot | Exploit Weakness | <https://metabot.gg/en/aion-2/skills/exploit-weakness> | <https://metabot.gg/web/aion2/skills/13720000.webp> | 2026-10-21 (match checked) | mean diff 2.47 |
+  | sk-heart-gore.png | metabot | Heart Gore | <https://metabot.gg/en/aion-2/skills/heart-gore> | <https://metabot.gg/web/aion2/skills/13350000.webp> | 2026-10-21 (match checked) | mean diff 2.47 |
+  | sk-insignia-explosion.png | metabot | Insignia Explosion | <https://metabot.gg/en/aion-2/skills/insignia-explosion> | <https://metabot.gg/web/aion2/skills/13130000.webp> | 2026-10-21 (match checked) | mean diff 2.24 |
+  | sk-quick-slice.png | metabot | Quick Slice | <https://metabot.gg/en/aion-2/skills/quick-slice> | <https://metabot.gg/web/aion2/skills/13010000.webp> | 2026-10-21 (match checked) | mean diff 2.73 |
+  | sk-rear-smite.png | metabot | Rear Smite | <https://metabot.gg/en/aion-2/skills/rear-smite> | <https://metabot.gg/web/aion2/skills/13740000.webp> | 2026-10-21 (match checked) | mean diff 2.28 |
+  | sk-savage-roar.png | metabot | Savage Roar | <https://metabot.gg/en/aion-2/skills/savage-roar> | <https://metabot.gg/web/aion2/skills/13100000.webp> | 2026-10-21 (match checked) | mean diff 1.76 |
+  | st-illusive-clone.png | metabot | Illusive Clone | <https://metabot.gg/en/aion-2/skills/illusive-clone> | <https://metabot.gg/web/aion2/skills/13310000.webp> | 2026-10-21 (match checked) | mean diff 0.00 |
+  | st-savage-fang.png | metabot | Savage Fang | <https://metabot.gg/en/aion-2/skills/savage-fang> | <https://metabot.gg/web/aion2/skills/13270000.webp> | 2026-10-21 (match checked) | mean diff 0.00 |
+  | st-swift-contract.png | metabot | Swift Contract | <https://metabot.gg/en/aion-2/skills/swift-contract> | <https://metabot.gg/web/aion2/skills/13390000.webp> | 2026-10-21 (match checked) | mean diff 0.00 |
+  | st-triniels-dagger.png | metabot | Triniel's Dagger | <https://metabot.gg/en/aion-2/skills/triniels-dagger> | <https://metabot.gg/web/aion2/skills/13300000.webp> | 2026-10-21 (match checked) | mean diff 0.00 |
+  | sk-cleric-heal-block.png | metabot | Heal Block | <https://metabot.gg/en/aion-2/skills/immortal-veil> (file mislabelled there) | <https://metabot.gg/web/aion2/skills/17750000.webp> | 2026-10-19 | C100 of staged `sk-immortal-veil.png` (fdd9b03d) |
+  | sk-cleric-prayer-of-concentration.png | metabot | Prayer of Concentration | <https://metabot.gg/en/aion-2/skills/heal-block> (file mislabelled there) | <https://metabot.gg/web/aion2/skills/17760000.webp> | 2026-10-19 | C100 of staged `sk-heal-block.png` (fdd9b03d) |
+  | sk-cleric-radiant-benediction.png | metabot | Radiant Benediction | <https://metabot.gg/en/aion-2/skills/prayer-of-concentration> (file mislabelled there) | <https://metabot.gg/web/aion2/skills/17770000.webp> | 2026-10-19 | C100 of staged `sk-prayer-of-concentration.png` (fdd9b03d) |
+  | blue-off.png | owner-upload | Daevanion node, blue, not bought | owner upload `f6f30d8f-image.png` (original claude.ai project), cut with the archive's `icons/cut*.py` | — (owner upload) | before 2026-10-12 (in de17312d) | src sha256 in archive MANIFEST; shipped `8a16aed5…` = archive |
+  | blue-on.png | owner-upload | Daevanion node, blue, bought | owner upload `e436c8c9-image.png`, cut as above | — (owner upload) | before 2026-10-12 (in de17312d) | shipped `335adbdf…` = archive |
+  | green-off2.png | owner-upload | Daevanion node, green, not bought | owner upload `bae912b7-image.png`, cut as above | — (owner upload) | before 2026-10-12 (in de17312d) | shipped `5040ad62…` = archive |
+  | green-on2.png | owner-upload | Daevanion node, green, bought | owner upload `5ed5bb6c-image.png`, cut as above | — (owner upload) | before 2026-10-12 (in de17312d) | shipped `6a92da1f…` = archive |
+  | orange-off.png | owner-upload | Daevanion node, orange, not bought | owner upload `a4ba3845-image.png`, cut as above | — (owner upload) | before 2026-10-12 (in de17312d) | shipped `532604ac…` = archive |
+  | orange-on.png | owner-upload | Daevanion node, orange, bought | owner upload `2357222e-image.png`, cut as above | — (owner upload) | before 2026-10-12 (in de17312d) | shipped `c5602e30…` = archive |
+  | daevanion-crystal.png | owner-upload | Daevanion Crystal | owner upload `8722a333-image.png`, unchanged | — (owner upload) | before 2026-10-12 (in de17312d) | shipped `9e6088f4…` = upload (archived as wisdom-stone.png before 477f366b fixed the swapped names) |
+  | wisdom-stone.png | owner-upload | Wisdom Stone | owner upload `8df21e92-image.png`, unchanged | — (owner upload) | before 2026-10-12 (in de17312d) | shipped `b62714e2…` = upload (archived as daevanion-crystal.png before 477f366b) |
+  | enhance-stone.png | owner-upload | Enhance Stone | owner upload `a60a6ac1-image.png`, unchanged | — (owner upload) | before 2026-10-12 (in de17312d) | shipped `e060a29b…` = upload |
+  | rq-available.png | owner-crop | Regional quest available | existing ISSUES.md row (owner screen 2026-10-18, T-47) | — (owner crop) | 2026-10-18 | already recorded |
+  | extract-flask.png | owner-crop | Extract action | existing ISSUES.md row (owner screen 2026-10-18, T-47) | — (owner crop) | 2026-10-18 | already recorded |
+  | story-complete.png | owner-crop | Story quest complete check | existing ISSUES.md row (owner screen 2026-10-18) | — (owner crop) | 2026-10-18 | already recorded |
+
+  Cleric icons, rows from `docs/research/2026-10-icon-provenance.md` (Game Data Check, 2026-10-21), copied verbatim:
+
+  | File | Name | Source page | File URL | Retrieved | Staged as |
+  |---|---|---|---|---|---|
+  | sk-cleric-bolt.png | Bolt | <https://metabot.gg/en/aion-2/skills/bolt> | <https://metabot.gg/web/aion2/skills/17060000.webp> | 2026-10-19 | sk-bolt.png |
+  | sk-cleric-chain-of-torment.png | Chain of Torment | <https://metabot.gg/en/aion-2/skills/chain-of-torment> | <https://metabot.gg/web/aion2/skills/17070000.webp> | 2026-10-19 | sk-chain-of-torment.png |
+  | sk-cleric-condemnation.png | Condemnation | <https://metabot.gg/en/aion-2/skills/condemnation> | <https://metabot.gg/web/aion2/skills/17350000.webp> | 2026-10-19 | sk-condemnation.png |
+  | sk-cleric-debilitating-mark.png | Debilitating Mark | <https://metabot.gg/en/aion-2/skills/debilitating-mark> | <https://metabot.gg/web/aion2/skills/17080000.webp> | 2026-10-19 | sk-debilitating-mark.png |
+  | sk-cleric-defiance.png | Defiance | <https://metabot.gg/en/aion-2/skills/defiance-cleric> | <https://metabot.gg/web/aion2/skills/17240000.webp> | 2026-10-19 | sk-defiance.png |
+  | sk-cleric-divine-aura.png | Divine Aura | <https://metabot.gg/en/aion-2/skills/divine-aura> | <https://metabot.gg/web/aion2/skills/17150000.webp> | 2026-10-19 | sk-divine-aura.png |
+  | sk-cleric-earths-grace.png | Earth's Grace | <https://metabot.gg/en/aion-2/skills/earths-grace> | <https://metabot.gg/web/aion2/skills/17780000.webp> | 2026-10-19 | sk-earths-grace.png |
+  | sk-cleric-earths-retribution.png | Earth's Retribution | <https://metabot.gg/en/aion-2/skills/earths-retribution> | <https://metabot.gg/web/aion2/skills/17010000.webp> | 2026-10-19 | sk-earths-retribution.png |
+  | sk-cleric-empyrean-lords-benediction.png | Empyrean Lords' Benediction | <https://metabot.gg/en/aion-2/skills/empyrean-lords-benediction> | <https://metabot.gg/web/aion2/skills/17720000.webp> | 2026-10-19 | sk-empyrean-lords-benediction.png |
+  | sk-cleric-empyrean-lords-grace.png | Empyrean Lord's Grace | <https://metabot.gg/en/aion-2/skills/empyrean-lords-grace> | <https://metabot.gg/web/aion2/skills/17730000.webp> | 2026-10-19 | sk-empyrean-lords-grace.png |
+  | sk-cleric-healing-light.png | Healing Light | <https://metabot.gg/en/aion-2/skills/healing-light> | <https://metabot.gg/web/aion2/skills/17100000.webp> | 2026-10-19 | sk-healing-light.png |
+  | sk-cleric-judgment-thunder.png | Judgment Thunder | <https://metabot.gg/en/aion-2/skills/judgment-thunder> | <https://metabot.gg/web/aion2/skills/17040000.webp> | 2026-10-19 | sk-judgment-thunder.png |
+  | sk-cleric-light-of-regeneration.png | Light of Regeneration | <https://metabot.gg/en/aion-2/skills/light-of-regeneration> | <https://metabot.gg/web/aion2/skills/17090000.webp> | 2026-10-19 | sk-light-of-regeneration.png |
+  | sk-cleric-lightning-strike-scattershot.png | Lightning Strike Scattershot | <https://metabot.gg/en/aion-2/skills/lightning-strike-scattershot> | <https://metabot.gg/web/aion2/skills/17370000.webp> | 2026-10-19 | sk-lightning-strike-scattershot.png |
+  | sk-cleric-radiant-recovery.png | Radiant Recovery | <https://metabot.gg/en/aion-2/skills/radiant-recovery> | <https://metabot.gg/web/aion2/skills/17120000.webp> | 2026-10-19 | sk-radiant-recovery.png |
+  | sk-cleric-warm-benediction.png | Warm Benediction | <https://metabot.gg/en/aion-2/skills/warm-benediction> | <https://metabot.gg/web/aion2/skills/17710000.webp> | 2026-10-19 | sk-warm-benediction.png |
+  | st-cleric-absolution.png | Absolution | <https://metabot.gg/en/aion-2/skills/absolution> | <https://metabot.gg/web/aion2/skills/17290000.webp> | 2026-10-19 | st-absolution.png |
+  | st-cleric-assault-mark.png | Assault Mark | <https://metabot.gg/en/aion-2/skills/assault-mark> | <https://metabot.gg/web/aion2/skills/17700000.webp> | 2026-10-19 | st-assault-mark.png |
+  | st-cleric-benevolence.png | Benevolence | <https://metabot.gg/en/aion-2/skills/benevolence> | <https://metabot.gg/web/aion2/skills/17160000.webp> | 2026-10-19 | st-benevolence.png |
+  | st-cleric-earth-punishment.png | Earth Punishment | <https://metabot.gg/en/aion-2/skills/earth-punishment> | <https://metabot.gg/web/aion2/skills/17400000.webp> | 2026-10-19 | st-earth-punishment.png |
+  | st-cleric-light-of-protection.png | Light of Protection | <https://metabot.gg/en/aion-2/skills/light-of-protection> | <https://metabot.gg/web/aion2/skills/17410000.webp> | 2026-10-19 | st-light-of-protection.png |
+  | st-cleric-noble-aura.png | Noble Aura | <https://metabot.gg/en/aion-2/skills/noble-aura> | <https://metabot.gg/web/aion2/skills/17440000.webp> | 2026-10-19 | st-noble-aura.png |
+  | st-cleric-power-burst.png | Power Burst | <https://metabot.gg/en/aion-2/skills/power-burst> | <https://metabot.gg/web/aion2/skills/17280000.webp> | 2026-10-19 | st-power-burst.png |
+  | st-cleric-prayer-of-amplification.png | Prayer of Amplification | <https://metabot.gg/en/aion-2/skills/prayer-of-amplification> | <https://metabot.gg/web/aion2/skills/17430000.webp> | 2026-10-19 | st-prayer-of-amplification.png |
+  | st-cleric-root.png | Root | <https://metabot.gg/en/aion-2/skills/root> | <https://metabot.gg/web/aion2/skills/17190000.webp> | 2026-10-19 | st-root.png |
+  | st-cleric-salvation.png | Salvation | <https://metabot.gg/en/aion-2/skills/salvation> | <https://metabot.gg/web/aion2/skills/17270000.webp> | 2026-10-19 | st-salvation.png |
+  | st-cleric-summon-resurrection.png | Summon Resurrection | <https://metabot.gg/en/aion-2/skills/summon-resurrection> | <https://metabot.gg/web/aion2/skills/17390000.webp> | 2026-10-19 | st-summon-resurrection.png |
+  | st-cleric-voice-of-doom.png | Voice of Doom | <https://metabot.gg/en/aion-2/skills/voice-of-doom> | <https://metabot.gg/web/aion2/skills/17300000.webp> | 2026-10-19 | st-voice-of-doom.png |
+  | st-cleric-yustiels-power.png | Yustiel's Power | <https://metabot.gg/en/aion-2/skills/yustiels-power> | <https://metabot.gg/web/aion2/skills/17420000.webp> | 2026-10-19 | st-yustiels-power.png |
 - **Ranger skill and stigma icons: in the site, initials in the claude.ai artifact** (0.6 P5 shipped without them, #264;
   fetched 2026-10-18 7:17–7:21 AM ET for 0.6.1 F5, gate `research-ranger-icons`, docs/research/2026-10-ranger-icons.md).
   All 15 planned icons (11 skills, 4 stigmas: every Ranger skill and stigma the build plan shows) came from Metabot; none
