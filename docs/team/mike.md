@@ -62,8 +62,10 @@ _From #114 "Health check (owner design, 2026-10-17 5:51 AM ET; replaces the plan
     annotations per suite on main and PR CI runs since the last check. A suite that is FLAKY in 2 runs within 24 h
     gets one #221 row, Kind `flaky-suite`, naming the suite, the runs and their first-run failures; later checks
     update that row's cells, never add another, and it closes once the suite has gone 24 h with no FLAKY or its fix
-    merges. Retries are unchanged and nothing is loosened. The core suite's known timing flake (HC-11) counts like any
-    other suite: this row is how HC-11's "log it" is done;
+    merges. Until Gus's annotation exists, Mike counts the `FLAKY <suite>` lines in the job logs instead. Retries are
+    unchanged and nothing is loosened. The core suite's known timing flake (HC-11) counts like any other suite: each
+    `FLAKY` line (later its annotation and step-summary line) is the per-occurrence log HC-11 asks for, and the #221
+    row is an escalation on top of it, so HC-11 is not narrowed;
   - anything else odd.
 
 ### HC-02

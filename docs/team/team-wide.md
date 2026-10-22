@@ -98,6 +98,10 @@ coordinates because that's not how I'm going to count them in game. There is no 
   a card number. Every pointer to the card (the CARD READY line, the coordinator's posts, the debrief) uses the same
   handles as its title. A pointer naming a handle the title doesn't carry is a miss, fixed in the same hour: the
   pointer is corrected, or, since a posted card can't be edited, the thread withdraws it and posts it again.
+  The same handles lead the card's To-do title, ending at its first colon. The ask-format check (Huell's
+  `tracker-sync/askcheck.py`, 2026-10-22, tests in `askcheck-tests.py`) exempts only that leading prefix: its
+  verb-first check, 70-character cap and rule-code and PR-number ban run on the rest of the title and on every other
+  field as before.
 - Plain language throughout: no internal ids, rule codes, file paths or PR numbers except as a link, and except the
   handles a card title must carry (above); at most 900 characters per item, not counting Recommended reply. Several in-game checks are separate items, or one item with one
   check per step.
