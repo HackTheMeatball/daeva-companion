@@ -116,10 +116,13 @@ const SUITES = {
   core: { args: ['tests/core.mjs'], pass: /CORE CHECKS PASSED/ },
   schema: { args: ['tests/schema.mjs'], pass: /SCHEMA CHECKS PASSED/ },
   ledger: { args: ['tests/ledger.mjs'], pass: /LEDGER CHECKS PASSED/ },
-  equiv: { args: ['tests/equiv.mjs'], pass: /EQUIV CHECKS PASSED/ },
+  /* an old-space cap: with the default (sized from the machine's memory) V8 lets the heap reach ~1.3 GB before a full GC, though
+     the live set stays ~320 MB; capped, the peak is ~0.64 GB at the same speed. Two parallel npm test runs held two such peaks
+     and the kernel OOM-killed equiv silently (batch-0.9 item 29, 2026-10-22). A live set past the cap fails loud (exit 134). */
+  equiv: { args: ['--max-old-space-size=768', 'tests/equiv.mjs'], pass: /EQUIV CHECKS PASSED/ },
   /* a larger young generation: rankNext over 10,750 states allocates short-lived objects fast, and the default semi-space
-     spends ~9 s of the suite in scavenges (0.9 P6, profiled) */
-  invariant: { args: ['--max-semi-space-size=64', 'tests/invariant.mjs'], pass: /INVARIANT CHECKS PASSED/ },
+     spends ~9 s of the suite in scavenges (0.9 P6, profiled); the old-space cap as for equiv (peak 1.4 GB → 0.9 GB, +3 s) */
+  invariant: { args: ['--max-semi-space-size=64', '--max-old-space-size=768', 'tests/invariant.mjs'], pass: /INVARIANT CHECKS PASSED/ },
   tokens: { args: ['tests/tokens.mjs'], pass: /TOKENS CHECKS PASSED/ },
   scrapbook: { args: ['tests/scrapbook.mjs'], pass: /SCRAPBOOK CHECKS PASSED/ },
   kickoff: { args: ['tests/kickoff.mjs'], pass: /KICKOFF CHECKS PASSED/ },
@@ -157,26 +160,40 @@ mkdirSync(OUT, { recursive: true });
 console.log(`serving dist/ at ${url} · ${order.length} suites · ${jobs} at a time · output in tests/out/`);
 const t0 = Date.now(), results = {};
 const retries = Math.max(0, +(opt('retries') ?? 1));
+// FLAKY-NOTE START (tests/deploy.mjs runs this block)
+// The workflow command's message ends at a newline and treats % as an escape, so both go; ::warning title=... is what the
+// health check counts per suite.
+const flakyNote = (name, attempt, fails, kind = 'FLAKY', passed = true) => {
+  const why = ((fails || []).slice(0, 3).join(' | ') || 'first run failed').replace(/[\r\n%]/g, ' ');
+  const what = passed ? `passed on retry ${attempt}; first run: ${why}` : `${why} (attempt ${attempt + 1})`;
+  return { warning: `::warning title=${kind} ${name}::${what}`, summary: `- ${kind} \`${name}\`: ${what}\n` };
+};
+// FLAKY-NOTE END
 const runOne = (name, attempt = 0) => new Promise(resolve => {
   const s = SUITES[name], file = join(OUT, name + (attempt ? `.retry${attempt}` : '') + '.out'), log = createWriteStream(file), t = Date.now();
   const pre = flag('with-fonts') ? [] : ['--require', join(ROOT, 'tests', 'support', 'block-web-fonts.cjs')];
   const child = spawn(process.execPath, [...pre, ...s.args], { cwd: ROOT, env });
   let out = '';
   for (const st of [child.stdout, child.stderr]) st.on('data', d => { out += d; log.write(d); });
-  child.on('close', code => {
+  child.on('close', (code, signal) => {
     log.end();
     const problems = s.check ? s.check(out) : [];
     const ok = code === 0 && (!s.pass || s.pass.test(out)) && !problems.length;
     const nOk = (out.match(/^ok\b/gm) || []).length, nFail = (out.match(/^FAIL\b/gm) || []).length;
     const last = out.trim().split('\n').filter(l => !/^\s*$/.test(l)).slice(name === 'regress' ? 0 : -1)[0] || '';
-    const firstFails = attempt ? (results[name].fails || []) : [];
-    if (!ok && attempt < retries) { results[name] = { fails: (out.match(/^FAIL .*/gm) || []).concat(problems).map(l => l.slice(0, 160)) }; console.log(`retry ${name} (failed: ${results[name].fails.slice(0, 3).join(' | ') || 'exit ' + code})`); return resolve(runOne(name, attempt + 1)); }
-    results[name] = { ok, line: `${ok ? (attempt ? 'FLAKY' : 'PASS ') : 'FAIL '} ${name.padEnd(8)} ${((Date.now() - t) / 1000).toFixed(0).padStart(4)} s  ${nOk || nFail ? `${nOk} ok, ${nFail} FAIL · ` : ''}${last.slice(0, 120)}${problems.length ? ' · ' + problems.slice(0, 3).join(' | ') : ''}${ok && attempt ? ' · first run: ' + firstFails.slice(0, 3).join(' | ') : ''}` };
+    // A child killed by a signal (the kernel's out-of-memory killer sends SIGKILL) stops mid-output with nothing on stderr;
+    // its last line is whatever it was printing, so it is labelled KILLED, never read as a test failure (Kaizen item 29:
+    // equiv died this way under two parallel npm test runs and read as an evaluator difference).
+    const killed = signal ? `KILLED by ${signal}${signal === 'SIGKILL' ? ' (likely out of memory)' : ''}` : '';
+    const firstFails = attempt ? (results[name].fails || []) : [], firstKilled = attempt ? results[name].killed : '';
+    if (!ok && attempt < retries) { results[name] = { killed, fails: (killed ? [killed] : []).concat(out.match(/^FAIL .*/gm) || [], problems).map(l => l.slice(0, 160)) }; console.log(`retry ${name} (failed: ${results[name].fails.slice(0, 3).join(' | ') || 'exit ' + code})`); return resolve(runOne(name, attempt + 1)); }
+    results[name] = { ok, killed, line: `${ok ? (attempt ? 'FLAKY' : 'PASS ') : killed ? 'KILLED' : 'FAIL '} ${name.padEnd(8)} ${((Date.now() - t) / 1000).toFixed(0).padStart(4)} s  ${nOk || nFail ? `${nOk} ok, ${nFail} FAIL · ` : ''}${killed ? killed + ' · last line: ' : ''}${last.slice(0, 120)}${problems.length ? ' · ' + problems.slice(0, 3).join(' | ') : ''}${ok && attempt ? ' · first run: ' + firstFails.slice(0, 3).join(' | ') : ''}` };
     console.log(results[name].line);
     // HC-01 (Watchdog, flaky suites; Kaizen batch-0.9 item 26): a pass on retry is also a CI annotation and a step-summary
     // line, so the health check can count it per suite. A retry still passes; this only makes it visible.
-    if (ok && attempt) {
-      const note = flakyNote(name, attempt, firstFails);
+    // A kill is annotated as KILLED, whether the retry passed or not, so the health check counts kills apart from flakes.
+    if ((ok && attempt) || killed) {
+      const note = flakyNote(name, attempt, killed ? [killed] : firstFails, killed || firstKilled ? 'KILLED' : 'FLAKY', ok);
       if (process.env.GITHUB_ACTIONS) console.log(note.warning);
       if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, note.summary);
     }
@@ -186,14 +203,6 @@ const runOne = (name, attempt = 0) => new Promise(resolve => {
     resolve();
   });
 });
-// FLAKY-NOTE START (tests/deploy.mjs runs this block)
-// The workflow command's message ends at a newline and treats % as an escape, so both go; ::warning title=... is what the
-// health check counts per suite.
-const flakyNote = (name, attempt, fails) => {
-  const why = ((fails || []).slice(0, 3).join(' | ') || 'first run failed').replace(/[\r\n%]/g, ' ');
-  return { warning: `::warning title=FLAKY ${name}::${why}`, summary: `- FLAKY \`${name}\`: passed on retry ${attempt}; first run: ${why}\n` };
-};
-// FLAKY-NOTE END
 const queue = [...order];
 await Promise.all(Array.from({ length: Math.min(jobs, queue.length) }, async () => { while (queue.length) await runOne(queue.shift()); }));
 server.close();
