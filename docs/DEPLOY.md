@@ -9,9 +9,14 @@ up by **ci-ok**, see *CI jobs* below). **Only a release deploys** (PLN-17; Fresh
 2026-10-21). Before that, every merge went live at once, so 0.9's save reset reached players under the 0.8.0 label. The
 **gate** job decides:
 
-- **A push whose own diff changes `package.json`'s `version`** (the release commit, see *Releases*) deploys once its tests
-  pass. Any other merge stops at ci-ok and the live site stays on the last release. A `before` sha of all zeros counts as
-  no change.
+- **A merge whose own diff changes `package.json`'s `version`** (the release commit, see *Releases*) deploys once its tests
+  pass. Any other merge stops at ci-ok and the live site stays on the last release. A merge reaches CI one of two ways, and
+  the gate reads both the same: a push, or (for a merge auto-merge makes, which sends no push event) auto-merge's dispatch
+  with no inputs. For a push, a `before` sha of all zeros (a new branch, or a force-push) counts as no change.
+- **A release that never went live** (its tests failed, or its pending run was cancelled by the next merge) doesn't come
+  back by itself. Every later run that doesn't deploy warns "vX.Y.Z has no tag" and names the release commit. A failed
+  infrastructure step is re-run with a dispatch at that commit (next item). If a test really fails, fix it and ship a new
+  version bump, or use the escape hatch.
 - **A dispatch at a release commit** (Actions → CI → Run workflow on `main`, input `sha` = a commit whose version differs
   from its parent's) deploys exactly that commit. That's how a failed release is re-run, and how to roll back to an older
   release. The next merge never deploys a failed release.
@@ -23,8 +28,8 @@ up by **ci-ok**, see *CI jobs* below). **Only a release deploys** (PLN-17; Fresh
   line, unless the quote says "save" or "reset". Every session posts as the owner account, so the line is a trust marker,
   not proof. Watchdog (Mike) re-checks each quote by id and flags any deploy with neither a version change nor a logged
   quote.
-- Any dispatch needs the sha on `main` with **ci-ok** green on it. A dispatch without `sha`, or on a branch, runs the tests
-  only.
+- Any dispatch with a `sha` needs that sha on `main` with **ci-ok** green on it. A dispatch on a branch runs the tests
+  only. A run that was cancelled never deploys.
 
 Then the **deploy** job builds that sha's `dist/` and publishes it with `actions/configure-pages`,
 `actions/upload-pages-artifact` and `actions/deploy-pages`. The **smoke** job checks the live site really serves that
