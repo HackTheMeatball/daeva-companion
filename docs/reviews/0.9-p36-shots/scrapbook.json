@@ -1,0 +1,6 @@
+[
+  { "case": "st-390", "kind": "before-after", "title": "Stigma Respec tip",
+    "caption": "At Lv 39 the Stigmas Respec tip no longer says the reset costs Kinah: in game it was free when checked at Lv 39." },
+  { "case": "dv-390", "kind": "before-after", "title": "Daevanion Respec tip",
+    "caption": "At Lv 39 a board row in Daevanion's Respec menu now says the game has a reset button on each board, so boards reset one at a time." }
+]
