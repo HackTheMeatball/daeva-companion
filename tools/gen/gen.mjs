@@ -816,8 +816,11 @@ export function generate(opts = {}) {
      that file is rewritten (and reviewed). opts.expected: false records the counts without checking them (--counts). */
   const expected = opts.expected !== undefined ? opts.expected : readExpected(), counts = {};
   const count = (key, n) => { counts[key] = n; if (expected !== false) check(`count ${key} = ${n}: as in ${COUNTS_FILE} (npm run gen -- --counts)`, !!expected && expected[key] === n, expected ? expected[key] : 'no ' + COUNTS_FILE); };
+  /* classRecords(id, file): a class pack's records read through the same view (0.9 P32b), so a pack can count a class this
+     guide's chain does not load; [] for a file that does not exist */
+  const classRecords = (id, file) => { const f = join(classDir, id, file); return fs.exists(f) ? fs.edit(f, JSON.parse(fs.read(f))).records || [] : []; };
   const ctx = { B, R, zones, story, sqById, chain, rqs, rqById, skills, skById, stigmas, stById, nodes, nodeById, boards, boardById, sds, shs, rules, claims,
-    cls, builds, build, milestones, steps, tips, unlocks, items, asc, all, packs: B.packs, RQ, STORY_END, SH_DATA, GATE_GRAPH, kibs, NODE_PLACE, KIBELISKS, KIB_REPORT, atomsOf, byNum, refCheck, count };
+    cls, builds, build, milestones, steps, tips, unlocks, items, asc, all, packs: B.packs, RQ, STORY_END, SH_DATA, GATE_GRAPH, kibs, NODE_PLACE, KIBELISKS, KIB_REPORT, atomsOf, byNum, refCheck, count, classRecords };
   for (const p of B.packChecks) p.checks(ctx, check);
 
   /* ---------------------------------------------------------------- class packs no guide uses yet (0.6 P4) */
