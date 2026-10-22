@@ -517,6 +517,13 @@ if (g) {
   { const priv = readFileSync(join(ROOT, 'PRIVACY.md'), 'utf8'), key = /export const KEY\s*=\s*"([^"]+)"/.exec(readFileSync(join(ROOT, 'src/core/state.js'), 'utf8'))[1];
     fails('a PRIVACY.md naming companion-save-v4 (CK-3)', { 'PRIVACY.md': priv.replaceAll(key, 'companion-save-v4') }, new RegExp(`PRIVACY\\.md names the save key companion-save-v4, but src/core/state\\.js uses ${key}`));
     fails('a PRIVACY.md naming no save key (CK-3)', { 'PRIVACY.md': 'Progress is stored in localStorage.\n' }, new RegExp(`does not name the save key ${key}`)); }
+  { /* CK-2 (0.9 P27): every icon file has a complete ISSUES.md row */
+    const issues = readFileSync(join(ROOT, 'docs/ISSUES.md'), 'utf8'), rowOf = f => issues.split('\n').find(l => l.startsWith(`  | ${f} | `));
+    const ambush = rowOf('sk-ambush.png'), upload = rowOf('blue-off.png');
+    ok('the fixtures find their ISSUES.md rows', !!ambush && !!upload && ambush !== upload, [ambush, upload]);
+    fails('an icon file with no ISSUES.md row (CK-2)', { 'src/assets/icons/zz-extra-icon.png': '' }, /zz-extra-icon\.png: no docs\/ISSUES\.md row/);
+    fails('a blank placeholder row (CK-2)', { 'docs/ISSUES.md': issues.replace(ambush, '  | sk-ambush.png | | |') }, /sk-ambush\.png: no docs\/ISSUES\.md row/);
+    fails('an owner-upload row with no owner source (CK-2)', { 'docs/ISSUES.md': issues.replace(upload, upload.replace(/owner upload `[^`]*`/, 'an upload')) }, /blue-off\.png: no docs\/ISSUES\.md row/); }
   const ours = checkCompliance(ROOT, { files: { 'src/x.js': '/* SPDX-License-' + 'Identifier: PolyForm-Strict-1.0.0 */' } });
   ok('compliance check accepts our own SPDX id', !ours.length, ours.slice(0, 3)); }
 /* the generator's negative controls, from the workers, in job order; every job must have run */

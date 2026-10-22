@@ -47,7 +47,37 @@ const trackedCache = new Map();
 export function checkCompliance(root = ROOT, { files = {} } = {}) {
   if (!trackedCache.has(root)) trackedCache.set(root, execFileSync('git', ['ls-files', '-z'], { cwd: root, maxBuffer: 64 << 20 }).toString().split('\0').filter(Boolean));
   const paths = [...new Set([...trackedCache.get(root), ...Object.keys(files)])].filter(p => !p.startsWith('node_modules/') && !p.includes('/node_modules/') && !exempt(p));
-  return [...paths.flatMap(p => problemsOf(root, p, files[p])), ...privacyKeyProblems(root, files)];
+  return [...paths.flatMap(p => problemsOf(root, p, files[p])), ...privacyKeyProblems(root, files), ...iconProvenanceProblems(root, files)];
+}
+
+/* CK-2 (0.9 P27): every file in src/assets/icons/ has a docs/ISSUES.md line naming it with a source page, a file URL and a
+   date (two distinct URLs and a YYYY-MM-DD), or an entry in the "Owner list" section of the v2 research file. A row of kind
+   owner-upload / owner-crop has no file URL anywhere: it needs an owner source (the screen or upload it names, in one cell)
+   and a date instead. A blank placeholder row has neither, so it never counts. */
+const ICON_DIR = 'src/assets/icons/', ICON_RESEARCH = 'docs/research/2026-10-icon-provenance-v2.md';
+const escapeRe = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+function rowOk(line) {
+  if (!/\d{4}-\d{2}-\d{2}/.test(line)) return false;
+  if (/owner[- ](upload|crop)/i.test(line)) return line.split('|').some(c => /owner (upload|screen)\b[^|]*(`[^`]+`|\d{4}-\d{2}-\d{2})/i.test(c));
+  return new Set(line.match(/https?:\/\/[^\s<>|)]+/g)).size >= 2;
+}
+function iconProvenanceProblems(root, files) {
+  const issues = readText(root, files, 'docs/ISSUES.md');
+  if (issues == null) return ['docs/ISSUES.md is missing; cannot check icon provenance'];
+  const research = readText(root, files, ICON_RESEARCH);
+  const ownerList = research == null ? '' : (/^## Owner list[^\n]*\n([\s\S]*?)(?=^## |$(?![\s\S]))/m.exec(research)?.[1] ?? '');
+  const listed = new Set(ownerList.match(/[\w-]+\.png/g));
+  const tracked = [...new Set([...trackedCache.get(root), ...Object.keys(files)])];
+  const icons = tracked.filter(p => p.startsWith(ICON_DIR) && !p.slice(ICON_DIR.length).includes('/') && (p in files || existsSync(join(root, p)))).map(p => p.slice(ICON_DIR.length));
+  const lines = issues.split('\n');
+  const out = [];
+  for (const name of icons) {
+    if (listed.has(name)) continue;
+    const re = new RegExp('(?<![\\w.-])' + escapeRe(name) + '(?![\\w-])');
+    const named = lines.filter(l => re.test(l));
+    if (!named.some(rowOk)) out.push(`${ICON_DIR}${name}: no docs/ISSUES.md row with a source page, a file URL and a date (owner-upload / owner-crop: an owner source and a date), and not on the owner list in ${ICON_RESEARCH}${named.length ? ' (' + named.length + ' row(s) name it, none complete)' : ''}`);
+  }
+  return out;
 }
 
 /* CK-3 (0.9 P26): the save KEY exported by src/core/state.js appears in PRIVACY.md, and every companion-save-v<n> that
