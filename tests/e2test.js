@@ -161,11 +161,12 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
     ok(`${mode}: end state survives a reload`, e.end === 'Daeva Trapped in a Nightmare' && /Lv 45 story complete/.test(e.card), e);
   }
   ok('old "40–45 not covered" text gone', !/aren't covered|not covered yet|End of the covered story/.test(SRC));
-  /* 6. Ahead: no Ariel at any level; nowhere on the page */
+  /* 6. Ahead: no Ariel at any level; in the page source only as the Daevanion tip's endgame sentence (2026-10-21 patch, #781) */
   const ariel = [];
   for (let L = 25; L <= 45; L++) { await p.evaluate(L => { char(state).level = L; update(); }, L); if (/Ariel/.test(await p.innerText('#ahead'))) ariel.push(L); }
   ok('Ahead never mentions Ariel (Lv 25–45)', !ariel.length, ariel);
-  ok('no "Ariel" anywhere in the page source', !/Ariel/.test(SRC));
+  const arielOk = /A sixth board, Ariel, is endgame: its points come only from Expedition \(Hard\)\./g;
+  ok('"Ariel" in the page source only as the Daevanion tip\'s endgame sentence', !/Ariel/.test(SRC.replace(arielOk, '')) && arielOk.test(SRC));
   /* 7. Claims lint (claims.json; v1 edits frozen in tests/fixtures/claims-v1-edits.json): dropped / rewritten old text gone, new text in */
   const oldGone = [], newIn = [];
   const plain = s => s.replace(/\$\{T\("([^"]*)", "[^"]*"\)\}/g, '$1').replace(/\$\{I\("[^"]*"\)\}/g, '');
