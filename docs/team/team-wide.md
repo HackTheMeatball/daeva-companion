@@ -23,8 +23,9 @@ _From #114 "Owners (Isaac, 2026-10-18 5:05 AM ET; replaces "Three parts, one tea
     a likely pattern, not a proven one): before writing to any shared state (the tracker, the ledger, #114, #221, a
     shared-folder file), re-read the target; afterwards, read it back through the path its consumer reads, not your own
     write path.
-    - A seat that writes the same kind of state again and again keeps a scripted builder for that write in its own
-      folder and uses it.
+    - A seat that repeatedly writes a structured payload through an API (the tracker datasets, the #114 body) keeps a
+      scripted builder for that write in the shared folder (`<seat>/` there) and uses it; other writes start from a
+      fresh read of the target (fresh review on #841).
     - After a context compaction, the first write of each kind is built from that script or from a fresh read of the
       target, never from memory or an earlier call. After the write, read back its top-level fields through the
       consumer's path (Gomez's replay evidence, `audit-1.0/replay-huell/results.md` in the shared folder).

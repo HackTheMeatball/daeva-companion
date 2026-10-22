@@ -33,10 +33,11 @@ _From #114 "Health check (owner design, 2026-10-17 5:51 AM ET; replaces the plan
     after the tracker served its 03:15Z data for about 2 h because Huell's writes went into a wrongly nested field, the
     third stale-tracker incident): each health check reads the `today` dataset the way the live tracker page does (the
     dataset record, then the file it points at), never Huell's local copy, and runs `tracker-sync/freshness.py --today`
-    on that file. Either result gets one #221 row, Kind `tracker-stale`, and a ping to Huell: STALE (a merge not shown
-    after 10 min), or a served "last checked" stamp (the page's Updated label: the oldest of the `today`, `versions` and
-    `snapshot` stamps, `snapshot` read from its file's `synced_at` row) more than 10 min older than Huell's last logged
-    write.
+    on that file with `--n 30`. Either result gets one #221 row, Kind `tracker-stale`, and a ping to Huell: STALE (a
+    merge not shown after 30 min), or a served "last checked" stamp (the page's Updated label: the oldest of the
+    `today`, `versions` and `snapshot` stamps, `snapshot` read from its file's `synced_at` row) more than 30 min older
+    than Huell's last logged write. 30, not 10: TRK-12 may hold a routine merge card for up to 20 min (fresh review on
+    #841).
   - a held PR past MRG-09's limits: a person's `hold` whose condition (one from MRG-09's closed list, on the head) has been met for 30 min (ping the owner; Walter at 2 h), one with a free-text condition that is 2 h old (timed from its last `hold` labeled event) with no owner comment since (owner; Walter at 4 h), or one with no `HOLD:` comment 30 min after the label was added (Walter). Auto-merge's own holds are excluded;
   - a deploy's owner "now" that doesn't hold up: read every Isaac "now" quoted on #114 for a deploy by its message id (fresh governance review's deploy-cadence OK, 2026-10-21 ~22:12Z; routed by the coordinator 22:06Z). The message's author must be the user, and its text must say "now" for that deploy. A mismatch gets a #221 row, and the coordinator tells Isaac the same hour. A deploy with neither a release tag nor a quoted "now" gets a row too. **Every dispatch deploy is logged** (fresh governance review nits on #786 and #795; routed by the coordinator 2026-10-22T00:11Z): each CI run started by a dispatch with a `sha` input that deployed (a re-run at a release commit, the escape hatch, or a rollback to an earlier release, docs/DEPLOY.md "Rolling back"; not auto-merge's no-input release dispatch) gets one #221 row, Kind `deploy-dispatch`, naming the sha, the session or thread that dispatched it (from its #114 line or the coordinator's log, since every session posts as the owner account) and its basis (release commit, quoted "now" or rollback). A rollback row is also sent to Walter and the coordinator the same hour. These rows log a deploy, not a stall; a rollback that recurs still goes to Gale as KIND RECURRED;
   - a quiet work thread (thread liveness for every thread, not only owner threads; amends HC-01, no new id; after

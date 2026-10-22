@@ -101,7 +101,8 @@ Huell's card at 05:22:03Z; scope narrowed by Isaac in the project chat 05:25:33Z
 
 - **Repairs of my own data writes need no card:** when a write of Huell's own landed wrong (a dataset pointer such as
   `today` or `snapshot` left on an old file, or a field written into the wrong place), Huell repairs it without asking
-  Isaac each time, and may retry the repair after a safety check denied it. The repair re-points those records at the
+  Isaac each time, and may retry the identical repair once after a safety check denied it; a second denial goes to
+  Isaac as a card (fresh review on #841). The repair re-points those records at the
   files Huell last wrote under these rules and removes the misplaced field; it adds no data that wasn't already written
   or due (no new card, To-do, answer or snapshot number; TRK-06 still holds), deletes no data file, card or To-do, and
   touches neither another seat's files nor the tracker page. TRK-05 (if_version) and TRK-09 (checker first) still
