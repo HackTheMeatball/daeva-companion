@@ -196,6 +196,8 @@ job((ok, G) => { const g = G(), copyRoot = join(ROOT, 'tests/out/packs-copy'); r
    The idle checks run on a view where the Spiritmaster is idle again: its guide pack dropped, its class hidden. Its counts
    are the reviewed ones in data/expected-counts.json (0.9 P32b; aion2/checks.mjs counts them), not read from the files
    they check, so a dropped Spiritmaster record fails here and in the generator's count check. */
+/* the generated module without its GUIDE_CLASSES line (0.9 P11: the one table that follows which guide packs exist) */
+const noGuideClasses = m => m.replace(/^export const GUIDE_CLASSES = .*;$/m, '');
 const SM = 'aion2/classes/spiritmaster', editJson = (f, fn) => ({ rel: PK + SM + '/' + f, fn });
 const idleView = (...edits) => { const all = [editJson('class.json', d => { d.records[0].release = 'hidden'; }), ...edits];
   return { drop: [PK + 'aion2/asmodian/spiritmaster'], mutate: (rel, d) => { for (const e of all) if (rel === e.rel) e.fn(d); } }; };
@@ -205,7 +207,11 @@ job((ok, G) => { const g = G(), gi = runs(ok, 'on a copy with an idle Spiritmast
   ok(`idle class pack aion2/classes/spiritmaster (copy): 1 class, ${want('skills.json')} skills, ${want('stigmas.json')} stigmas, ${want('board-nodes.json')} board nodes, checked by the generator, modules unchanged`,
     !!sm && smColl('class.json') === 1 && ['skills.json', 'stigmas.json', 'board-nodes.json'].every(f => want(f) > 0 && smColl(f) === want(f))
     && gi.report.checks.some(x => x.check.startsWith(`aion2/classes/spiritmaster: board:triniel: ${triniel} nodes`)) && !gi.failed.length
-    && gi.module === g.module && gi.gateModule === g.gateModule, sm && [smColl('skills.json'), smColl('board-nodes.json'), gi.failed.slice(0, 5)]); });
+    && noGuideClasses(gi.module) === noGuideClasses(g.module) && gi.gateModule === g.gateModule, sm && [smColl('skills.json'), smColl('board-nodes.json'), gi.failed.slice(0, 5)]);
+  /* 0.9 P11: the playable classes are read from the data, so the copy's GUIDE_CLASSES is the real one without the Spiritmaster */
+  const gu = m => JSON.parse((m.match(/^export const GUIDE_CLASSES = (.*);$/m) || [])[1] || 'null');
+  ok('idle class pack aion2/classes/spiritmaster (copy): GUIDE_CLASSES is the real list less the Spiritmaster (its guide pack dropped)', !!gi && JSON.stringify(gu(gi.module)) === JSON.stringify((gu(g.module) || []).filter(e => e.class !== 'spiritmaster'))
+    && gu(g.module).some(e => e.class === 'spiritmaster'), gi && gu(gi.module)); });
 const idleFails = (label, edit, re) => job(ok => { const g1 = runs(ok, label, idleView(edit)); if (!g1) return;
   ok('generator rejects: ' + label, g1.failed.some(x => re.test(x.check)), g1.failed.map(x => x.check).slice(0, 5)); });
 const zikel = read('packs/aion2/boards.json').records.find(b => b.id === 'board:zikel').points;
@@ -439,11 +445,18 @@ if (g) {
   /* 0.8 P12 (#501): every bundle carries GAME_CLASSES, the game's class list ({ class, name } per class, for the welcome's
      class picker), so the class words below are read in the module without that one line; the line itself holds
      exactly the class ids and names of data/packs/aion2/pack.json `classes` and the class records, nothing else */
-  const GC_LINE = /^export const GAME_CLASSES = (.*);$/m, recordsOnly = m => m.replace(GC_LINE, '');
+  /* 0.9 P11 (#632): GUIDE_CLASSES, the playable classes ({ class, pack, name } per released class with a guide pack, in
+     releaseOrder), is read the same way: the leak words below are looked for without that line, and the line itself holds
+     exactly the guide packs below data/packs, their class ids and the class records' names, nothing else */
+  const GC_LINE = /^export const GAME_CLASSES = (.*);$/m, GU_LINE = /^export const GUIDE_CLASSES = (.*);$/m, recordsOnly = m => m.replace(GC_LINE, '').replace(GU_LINE, '');
   {
     const gc = JSON.parse((g.module.match(GC_LINE) || [])[1] || 'null'), ids = JSON.parse(readFileSync(join(ROOT, 'data/packs/aion2/pack.json'), 'utf8')).classes;
     ok('GAME_CLASSES: the game\'s classes in pack.json order, each { class, name } from its class record, nothing else', Array.isArray(gc) && JSON.stringify(gc.map(e => e.class)) === JSON.stringify(ids)
       && gc.every(e => JSON.stringify(Object.keys(e)) === '["class","name"]' && JSON.parse(readFileSync(join(ROOT, `data/packs/aion2/classes/${e.class}/class.json`), 'utf8')).records[0].name === e.name), gc);
+    const gu = JSON.parse((g.module.match(GU_LINE) || [])[1] || 'null'), rec = c => JSON.parse(readFileSync(join(ROOT, `data/packs/aion2/classes/${c}/class.json`), 'utf8')).records[0];
+    ok('GUIDE_CLASSES: every guide pack once, each { class, pack, name } with its class record\'s name, released, in releaseOrder (the Assassin first), nothing else', Array.isArray(gu)
+      && JSON.stringify(gu.map(e => e.pack).sort()) === JSON.stringify(guidePacks()) && gu[0].pack === guide
+      && gu.every((e, i) => JSON.stringify(Object.keys(e)) === '["class","pack","name"]' && e.pack === 'aion2/asmodian/' + e.class && rec(e.class).name === e.name && rec(e.class).release === 'released' && (!i || rec(gu[i - 1].class).releaseOrder < rec(e.class).releaseOrder)), gu);
   }
   /* every other guide pack (0.9 P3, #622): the class list is read from the data, so a new class or a flipped release needs
      no edit here. For each guide pack in `others`: its class pack is no longer idle, the guide pack compiles 1 class and

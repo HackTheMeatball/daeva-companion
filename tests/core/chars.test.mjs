@@ -153,8 +153,12 @@ export default (test, M) => {
     const listed = M.packClasses();
     assert.equal(listed[0].class, M.CLASS); assert.equal(listed[0].pack, M.PACK);
     assert.deepEqual(listed.map(e => e.class).sort(), guideClasses().sort());
-    /* the order is the pack's own (src/packs/aion2/pack.js: the Assassin, then the release order), not pack.json's */
-    assert.deepEqual(listed.map(e => e.class), ['assassin', 'ranger', 'gladiator', 'spiritmaster', 'templar', 'cleric', 'sorcerer', 'chanter']);
+    /* the order is the class records' releaseOrder (0.9 P11, data/packs/aion2/classes/<id>/class.json: the Assassin, then
+       the order their guides shipped), not pack.json's; the eight classes of 0.8 keep their order (an ordered subsequence) */
+    const order = c => json(`data/packs/aion2/classes/${c}/class.json`).records.find(r => r.id === 'class:' + c).releaseOrder;
+    assert.deepEqual(listed.map(e => e.class), guideClasses().sort((a, b) => order(a) - order(b)));
+    const shipped = ['assassin', 'ranger', 'gladiator', 'spiritmaster', 'templar', 'cleric', 'sorcerer', 'chanter'];
+    assert.deepEqual(listed.map(e => e.class).filter(c => shipped.includes(c)), shipped);
     assert.ok(listed.every(e => e.pack === 'aion2/asmodian/' + e.class || e.class === M.CLASS));
     assert.ok(Object.isFrozen(M.aion2Pack.classes) && M.aion2Pack.classes.every(Object.isFrozen));
     for (const e of M.packClasses()) {

@@ -9,6 +9,7 @@
       "class": "ranger",
       "name": "Ranger",
       "release": "released",
+      "releaseOrder": 2,
       "defaultBuild": "build:ranger:guide",
       "sources": [
         {
