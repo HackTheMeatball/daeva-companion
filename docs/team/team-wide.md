@@ -85,17 +85,19 @@ coordinates because that's not how I'm going to count them in game. There is no 
     that still contains `___` counts as not answered, and the reading thread asks him once for the missing part.
   - **Source** (stored, shown only as a small link): the origin message or card id, and the DECISIONS row when the item
     carries out a decision.
-- **Card titles carry the handles we point with** (coordinator for Isaac, 2026-10-22; Isaac, project chat 02:31:55Z
+- **Card titles carry every handle that applies** (coordinator for Isaac, 2026-10-22; Isaac, project chat 02:31:55Z
   (cmsg_01UNirAFgxf3jC8kQS8uvvHBC4n4g3m1ugL2fN8Nn94bSo): "I don’t see any mention of Q-13 FYI", and 02:32:23Z
   (cmsg_01UNirAFgxf3jC8kQS8uvvHBEaceu2VbJanMm53qR38XT5): "No mention of P27 either", after he couldn't match a card
-  titled by issue numbers to the "Q-13 / P27" the team pointed him to; the wording below is the team's, not his.
-  Routed: coordinator 2026-10-22T02:32Z): a decision card for Isaac opens its question with the handles the team uses
-  when it points him to the card: its T-NN (or `T-pending`), or the owner-question number when the coordinator's list
-  uses one, then the release item and its short name ("T-123 · P27 icon check: OK to edit one queue line?"). Every
-  pointer to the card (the CARD READY line, the coordinator's posts, the debrief) uses exactly those handles. An issue
-  or PR number may follow them, never replace them. A pointer that names a handle the card's title doesn't carry is a
-  miss, fixed in the same hour: the pointer is corrected, or, since a posted card can't be edited, the thread withdraws
-  it and posts it again with the handles.
+  titled by issue numbers to the "Q-13 / P27" he was pointed to; then 02:34:15Z
+  (cmsg_01UNirAFgxf3jC8kQS8uvvHBJ9Ccgs6bUT4W2nk5rHLJR1): "It’s okay to show both just make sure you show the P-NN
+  T-NN Q-NN etc as well". The wording below is the team's, not his. Routed: coordinator 2026-10-22T02:34Z): a
+  decision card for Isaac opens its question with every handle that applies to it: its T-NN (or `T-pending`), the
+  release item and its short name (P-NN), and the id of any rule or ledger row the card changes (such as Q-13), e.g.
+  "T-123 · P27 icon check · changes Q-13: OK to edit one #114 line?". Issue and PR numbers may appear alongside them,
+  never instead of them. Each handle names only what it is: a ledger id is shown as the rule being changed, never as
+  a card number. Every pointer to the card (the CARD READY line, the coordinator's posts, the debrief) uses the same
+  handles as its title. A pointer naming a handle the title doesn't carry is a miss, fixed in the same hour: the
+  pointer is corrected, or, since a posted card can't be edited, the thread withdraws it and posts it again.
 - Plain language throughout: no internal ids, rule codes, file paths or PR numbers except as a link, and except the
   handles a card title must carry (above); at most 900 characters per item, not counting Recommended reply. Several in-game checks are separate items, or one item with one
   check per step.
