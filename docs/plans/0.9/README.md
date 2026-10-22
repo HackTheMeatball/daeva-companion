@@ -519,12 +519,13 @@ Rules for every item:
   `src/packs/aion2/data/build.js`, `src/core/state.js` (`keys`
   default), `src/core/merge.js`, `src/styles/app.css`, `tests/a11y.js`, `tests/save.js`, the tests.
 - **No-gos.** Only keys AION 2 can bind (Game Data Check's `bindable-keys` file: Design Lead's ask D3). No save key bump;
-  an empty or unknown `keys` value falls back to the default. Names stay reachable by keyboard and screen reader. Each macro step's Delay is shown as a value the player can edit (`skill-bar` fact 12, #806: the owner's in-game test plus two guides), and 10 ms may be called the game's default (fact 12a, settled by the owner, T-123, 2026-10-21 10:39 PM ET).
+  an empty or unknown `keys` value falls back to the default. Names stay reachable by keyboard and screen reader. Each macro step's Delay is shown as a value the player edits in game, not as an app input (`skill-bar` fact 12, #806: the owner's in-game test plus two guides), and 10 ms may be called the game's default (fact 12a, settled by the owner, T-123, 2026-10-21 10:39 PM ET).
+- **Design Lead's macro call (`docs/design/0.9-keys-macro.md`, #839).** Key setup opens with an always-open **How you play** block, with the grid and macro in a remembered fold, **Your keys and macro**; no Simple / Advanced switch and no mode state. The macro is numbered steps, each with a "Delay 10 ms" divider, up to 20 steps (skill-bar fact 7, T-106). The Delay is shown, not taken as input: the player edits it in game (fact 12), no save field; 10 ms may be called the default (fact 12a, T-123). Frames: `docs/design/0.9-keys/22-*.png`.
 - **Acceptance.**
   - [ ] a11y: each key box has an accessible name; the tooltip opens on focus; rebinding works by keyboard.
   - [ ] Core: a save without `keys` loads with the default; `merge()` keeps the newer `keys`.
   - [ ] `npm run gen` passes with the stepped macro for every class; Game Data Check's `DATA OK` on the head.
-  - [ ] Shots at 1500 and 390 px against the mock.
+  - [ ] Shots at 1500 and 390 px against the mock, including the `22-*` frames.
 - **Lanes:** gen, build-card, app.css, a11y, golden, mig, save. **Model:** Opus, L (120 min).
 - **After:** research-bindable-keys, research-skill-bar, owner-ok-0.9-key-grid.
 
@@ -560,7 +561,7 @@ Rules for every item:
   - [ ] Visible change: before / after shots of the Sources card (closed and open) and of the new page at 1500 and 390 px,
     a `scrapbook.json`, and Design Lead's (Jane) DESIGN OK on the link and the page.
 - **Review:** standing; Source Vetting (Lydia) confirms the four verdict conditions on the head; Design Lead's DESIGN OK.
-- **Lanes:** site, page-card, e2. **Model:** Opus, M (90 min).
+- **Lanes:** gen, site, sources-card. **Model:** Opus, M (90 min).
 - **After:** research-sources-credit.
 
 Re-spec 2026-10-21 8:50 PM ET (Release Planner; Routed: coordinator 2026-10-22T00:44Z): Lydia's sources-credit verdict (#802) is a conditional pass. P23 adds the crawlable sources page (condition 2), keeps the per-page markup and lists (1, 3) and tests them (4); that makes it a visible change, so the "No visible change" line is replaced by shots, a scrapbook and DESIGN OK. The After key is unchanged.
@@ -750,7 +751,7 @@ picker and opens from a stored save. P28 finishes P3's own goal in the tests; P2
   - [ ] Player Testing (Jesse) re-runs #689's set-ups, the negative control and Import: `P3 PROVEN <sha>`.
   - [ ] Engineering (Gus) reviews the architecture change (ownership since 2026-10-20). `npm test` green.
 - **Review:** standing, plus Engineering for the architecture and Design Review for the row.
-- **Lanes:** gen, e2, architecture. **Model:** Opus, M (90 min). (`src/core/state.js` and `tests/core/state.test.mjs`
+- **Lanes:** gen, save, site, architecture. **Model:** Opus, M (90 min). (`src/core/state.js` and `tests/core/state.test.mjs`
   are shared with P9 on **architecture**; `scripts/build.mjs`'s other 0.9 items, P4 and P5, have merged.)
 - **After:** P11, P28.
 
@@ -909,17 +910,18 @@ Game Data Check's `VERIFIED`.
 Added 2026-10-22 1:00 AM ET (Release Planner) from Game Data Check's finding; routed by the coordinator 05:00Z. A GO 0.9.0
 precondition (§R).
 
-- **Problem.** The Assassin's `builds.json` is the weakest-sourced of the eight classes. Its picks cite games.gg (SOURCES.md's Fail list: 403 challenge, owner browser only, so not a source we can verify) plus GamesFuze, Skycoach and corpus.gg, none of them a build source under SOURCES.md "Build sources". The same citations also sit in `guide/claims.json`, `guide/confidence.json` and `claims-notes.md`, some backing stigmas and stat tiers. Whether the order itself changes is for the research to decide from top-player data and the witnesses (usage shares near 99% say nothing about priority, so they are not cited as findings). The stigma, stat priority and board path picks are sound (Game Data Check); only their citations change.
+- **Problem.** The Assassin's `builds.json` is the weakest-sourced of the eight classes. Its picks cite games.gg (SOURCES.md's Fail list: 403 challenge, owner browser only, so not a source we can verify) plus GamesFuze, Skycoach and corpus.gg, none of them a build source under SOURCES.md "Build sources". The same citations also sit in `guide/claims.json`, `guide/confidence.json` and `claims-notes.md`, some backing stigmas and stat tiers. Whether the order itself changes is for the research to decide from top-player data and the witnesses (usage shares near 99% say nothing about priority, so they are not cited as findings). The research found four picks the sources disagree with; the owner chose to follow the sources for those (No-gos); every other stigma, stat priority and board path pick keeps its value and only its citations change.
 - **Result.**
   - Game Data Check commits `docs/research/2026-10-assassin-build-sources.md`: the skill order re-derived, and every other Assassin citation of those four sites (stigmas and stat tiers included) replaced by a permitted source for the same pick, under SOURCES.md "Build sources": top-player pick rates from Metabot (and gamewith.ai spot facts, Global only) plus the three witnesses; each pick with its sources and label (verified, single source, disputed).
   - This item applies that file verbatim to `builds.json`, `guide/claims.json`, `guide/confidence.json` and `claims-notes.md`: no games.gg, GamesFuze, Skycoach or corpus.gg citation is left in the Assassin pack; a pick where top-player data and the witnesses disagree is labelled "disputed", never guessed. Then `npm run gen` and the golden re-records the new order needs.
 - **Inputs.** `docs/research/2026-10-assassin-build-sources.md`, `docs/research/SOURCES.md` ("Build sources", read only).
-- **Files.** `data/packs/aion2/asmodian/assassin/builds.json`, `data/packs/aion2/asmodian/assassin/guide/claims.json`, `data/packs/aion2/asmodian/assassin/guide/confidence.json`, `data/packs/aion2/asmodian/assassin/claims-notes.md`, golden records the order change touches, `data/DATA_SOURCES.md` (regenerated by gen).
-- **No-gos.** No stigma, stat priority or board path pick changes (their citations may); if the research finds one of those picks unsupported, it is labelled, not changed, and goes to the owner. No other class. No source outside SOURCES.md "Build sources". No save-key change: item keys stay as they are.
+- **Files.** `data/packs/aion2/asmodian/assassin/builds.json`, `data/packs/aion2/asmodian/assassin/guide/claims.json`, `data/packs/aion2/asmodian/assassin/guide/confidence.json`, `data/packs/aion2/asmodian/assassin/claims-notes.md`, `data/packs/aion2/asmodian/assassin/guide/tips.json` (the last sentence of `tip:rotation-play`, research §10 item 6), the tests whose expectations pin the Assassin's opener or key rows (the #787 keyStacks checks, research §10), golden records the order change touches, `data/DATA_SOURCES.md` (regenerated by gen).
+- **Builder notes (Game Data Check, 2026-10-22, after #830 merged).** `stigmaTargets` keeps today's value, labelled, until the owner answers (§10 item 3). The `tip:rotation-play` sentence and C57's note apply to #826's text, on main (§10 item 6). "Resets on a kill" is not the reason for the Throw Shadowblade solo swap (aion2turkiye puts that effect at stigma Lv 10). The Quick Use 2 rows are `keyStacks.slots`, Quick Use 2, the `minLv` 14 row. Run `e2-migtest` (the research infers no save break).
+- **No-gos.** No stigma, stat priority or board path pick changes (their citations may) beyond the four the owner chose on 2026-10-22 (DECISIONS "The Assassin's four disputed picks follow the sources": Flash Slice for Impact Hit, Illusive Clone in stigma slot 1, which puts the slots in the research order Illusive Clone, Swift Contract, Savage Fang, Triniel's Dagger with slots 3 and 4 labelled disputed, the leveling slot-1 specialty picks for Heart Gore, Ambush and Quick Slice, Attack in stat tier 1; research §10); `stigmaTargets` is not covered by that choice and keeps its current value (Triniel's Dagger 10, then Illusive Clone 20; the research proposes "all four to 5, then Illusive Clone"), labelled, until the owner answers Game Data Check's card; any other such pick the research finds unsupported is labelled, not changed, and goes to the owner. No other class. No source outside SOURCES.md "Build sources". No save-key change: item keys stay as they are.
 - **Acceptance.**
   - [ ] `npm test` green; a search of `data/packs/aion2/asmodian/assassin/` finds no games.gg, gamesfuze, skycoach or corpus.gg URL (paste the command and its empty output).
   - [ ] Every changed pick matches the research file byte for byte; gen's label counts before and after pasted.
-  - [ ] Before and after shots of the Assassin skill order (1500 and 390 px) and a `scrapbook.json` (visible change).
+  - [ ] Before and after shots of the Assassin skill order, including the open skill drawer, at 1500 and 390 px, and a `scrapbook.json` (visible change). Design Review (Jane) DESIGN OK on the head.
   - [ ] Game Data Check's `VERIFIED` on the PR head.
 - **Review:** standing (Game Data Check).
 - **Lanes:** gen, golden. **Model:** Opus (gen and golden work starts on Opus), M (90 min).

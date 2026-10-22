@@ -443,6 +443,11 @@ const step = (name, conclusion) => ({ name, conclusion });
 const job = (name, conclusion, steps) => ({ name, conclusion, steps });
 check(infraDeath([job('data', 'failure', [step('Set up job', 'success'), step('Run actions/checkout@v7', 'success'), step('Run npm ci', 'success'), step('Pure core (Node)', 'failure')]), CIOK]) === null, 'a failure inside a test step -> never re-run');
 check(infraDeath([D818, job('browser (golden)', 'failure', [step('Set up job', 'success'), step('Run npm ci', 'success'), step('Run node tests/run.mjs --shard golden', 'failure')]), CIOK]) === null, 'one setup death beside one test failure -> not re-run (the fix round owns it)');
+// SETUP matches GitHub's default step names; a `name:` on a ci.yml setup step would silently read as a test step (fails safe,
+// no re-run), so pin them unnamed (#827 review nit). Each such step is the first line of its list item.
+{ const ci = readFileSync(join(ROOT, '.github', 'workflows', 'ci.yml'), 'utf8');
+  const setupSteps = ci.split('\n').filter((l) => /^\s+(- )?(uses: actions\/(checkout|setup-node|cache)@|run: npm ci\s*$)/.test(l));
+  check(setupSteps.length >= 3 && setupSteps.every((l) => /^\s+- (uses|run):/.test(l)), `ci.yml setup steps (checkout, setup-node, cache, npm ci) carry no name:, so restart.yml's SETUP matches them (${setupSteps.filter((l) => !/^\s+- /.test(l)).map((l) => l.trim()).join('; ') || 'all unnamed'})`); }
 check(JSON.stringify(infraDeath([job('perf', 'failure', [step('Set up job', 'success'), step('Run actions/checkout@v7', null)])])) === '["perf (Run actions/checkout@v7: runner lost)"]', 'a runner lost during checkout -> re-run');
 check(infraDeath([job('perf', 'failure', [step('Set up job', 'success'), step('Run npm ci', 'success'), step('Run npm run build', null)])]) === null, 'a runner lost after setup (in the build) -> not re-run');
 check(infraDeath([CIOK]) === null && infraDeath([OK('data')]) === null, 'only ci-ok red, or nothing dead -> nothing to re-run');

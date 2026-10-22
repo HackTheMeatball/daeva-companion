@@ -1377,13 +1377,13 @@ workflows).
 | P20 FR | Daevanion ~22 ticks, no per-board or Stigma respec (note 9) → board rows, respec per board and all, Stigma respec | M | Opus | app.css, golden, daevanion-card | P16, `research-respec` (input: `docs/design/0.9-catchup/`) |
 | P21 | Two views (Basic / Advanced) to maintain; Basic hides catch-up tools; Lv 4–16 chores lead Next up → one view, folds, chores folded | L | Opus | main.js, nextup-card, page-card, daevanion-card, app.css, golden, golden-nextup | none (input: `docs/design/0.9-one-view.md`, `docs/design/0.9-catchup/`) |
 | P22 FR | Key setup inline with small icons, keys fixed (notes 11, 12, #388) → a sheet, icons fill each box, players rebind keys | L | Opus | gen, build-card, app.css, a11y, golden, mig, save | `research-bindable-keys`, `research-skill-bar`, `owner-ok-0.9-key-grid` (input: `docs/design/0.9-keys/`, `docs/design/0.9-keys-macro.md`) |
-| P23 | Sources lists weigh 9.6 K gzip and 1,088 elements while closed → load on open | M | Opus | site, page-card, e2 | `research-sources-credit` |
+| P23 | Sources lists weigh 9.6 K gzip and 1,088 elements while closed → load on open | M | Opus | gen, site, sources-card | `research-sources-credit` |
 | P24 | No Terms of Use; robots.txt allows AI training crawlers → `TERMS.md` linked in the footer, training crawlers blocked | S | Sonnet | site, page-card | P23, `owner-ok-0.9-terms` |
 | P25 | Nothing checks for foreign licence headers or files (CK-1) → `tests/compliance.mjs` fails on them | S | Sonnet | schema, compliance, run-mjs | none |
 | P26 | PRIVACY.md's save key can go stale (CK-3) → a check that it names the code's key | S | Sonnet | schema, compliance | P2, P25 |
 | P27 | Icons can ship without a provenance row (CK-2) → missing rows added from research, then a check | S | Sonnet | schema, compliance | P25, `research-icon-provenance` |
 | P28 | Hiding a class still needs test edits (P3 run, #689) → hidden dirs and the idle check read from the data | S | Sonnet | schema, e2 | none |
-| P29 | A hidden class is still offered and opens from a save (#689) → class list from the data, no chunk, save opens on the character list | M | Opus | gen, e2, architecture | P11, P28 |
+| P29 | A hidden class is still offered and opens from a save (#689) → class list from the data, no chunk, save opens on the character list | M | Opus | gen, save, site, architecture | P11, P28 |
 | P30 | P5 cut identical writes 17% of a 25% target (#684) → Stigmas, Journey, Areas, Daevanion lists skip them too | M | Opus | stigmas-card, journey-card, daevanion-card, nextup-card, site | P5 |
 | P31 | 106 quotes miss their hosts' terms (Legal's C7) → credited or paraphrased from research tables, then a gen check | M | Opus | gen, golden | `research-quotes-c7` |
 | P32 | P6 left schema at 8–10 s (target < 4 s) and no counts file (#717) → controls in workers, `expected-counts.json` | M | Opus | gen, schema | none |
@@ -1423,10 +1423,10 @@ At most five builds at a time. Ungated items queue first; gated ones go last and
 - **Wave 1 (at the go):** P1, P2, P3, P4, P5, P6, P7, P8 and S2, S3. Queue order P1 → P2 → P3 → P7 → P8 → P4 → P5 → P6, so the
   queue runs top-down: P1 and P3 start at once; P2, P7 and P8 wait for P1 on nextup-card (P8 also on skills-card and
   build-card), and kickoff serialises them from their queue-line lanes.
-  Serial lanes: **gen** P1 → P2 → P6 → P10 → P11 → P13 → P15 → P16 → P17 → P18 → P22 → P29 → P31; **golden** P1 → P2 → P11 → P12 → P13 → the
+  Serial lanes: **gen** P1 → P2 → P6 → P10 → P11 → P13 → P15 → P16 → P17 → P18 → P22 → P29 → P31 → P23; **golden** P1 → P2 → P11 → P12 → P13 → the
   research items → P19 → P20 → P21 → P22 → P31; **skills-card** P1 → P8 → P5 → P15 → P19; **nextup-card** P1 → P2 → P7 → P8 → P5 → P13 → P15 →
-  P19 → P21 → P30; **page-card** P4 → P5 → P21 → P23 → P24; **mig** P2 → P9 → P22; **schema** P3 → P6 → P10 → P25 → P26 → P27 → P28; **app.css** P8 → P19 → P20 → P21 →
-  P22; **build-card** P1 → P8 → P5 → P13 → P18 → P22; **daevanion-card** P1 → P5 → P16 → P20 → P21 → P30; **a11y** P8 → P22; **site** P5 → P23 → P24 → P30; **golden-nextup** P7 → P8 → P19 → P21; **journey-card** P2 → P7 → P30; **main.js** P4 → P9 → P21; **ci** (Gus) S2 → S3 → S1 → S4. Shared test and doc files: **save** (`tests/save.js`) P9 → P11 → P22; **e2** (`tests/e2test.js`) P3 → P23 → P28 → P29;
+  P19 → P21 → P30; **page-card** P4 → P5 → P21 → P24; **sources-card** P23; **mig** P2 → P9 → P22; **schema** P3 → P6 → P10 → P25 → P26 → P27 → P28; **app.css** P8 → P19 → P20 → P21 →
+  P22; **build-card** P1 → P8 → P5 → P13 → P18 → P22; **daevanion-card** P1 → P5 → P16 → P20 → P21 → P30; **a11y** P8 → P22; **site** P5 → P23 → P24 → P29 → P30; **golden-nextup** P7 → P8 → P19 → P21; **journey-card** P2 → P7 → P30; **main.js** P4 → P9 → P21; **ci** (Gus) S2 → S3 → S1 → S4. Shared test and doc files: **save** (`tests/save.js`, `src/core/state.js`) P9 → P11 → P22 → P29; **e2** (`tests/e2test.js`; lane retired by #834, merged items only) P3 → P28;
   **run-mjs** (`tests/run.mjs`) P6 → P14 → P25 → S1; **architecture** (`docs/ARCHITECTURE.md`) P5 → P9 → P14 → P29 (plan review, #609; P29 also shares `src/core/state.js` and `tests/core/state.test.mjs` with P9). **compliance** P25 → P26 → P27; **stigmas-card** P30.
 - **Wave 2 (after P2):** P9, P10, P11, P13, P26; then P12 (after P11 and P6) and P14 (after P9 and P10). P25 and P28
   (no gate) queue with this wave, P29 after P11 and P28, P30 after P5.

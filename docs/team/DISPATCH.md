@@ -54,7 +54,11 @@ From HANDOFF and the Sonnet guard in claude.yml:
   (`requires` / `completesWith` / `is`), `tools/gen/`, `src/styles/app.css`, `.github/workflows/ci.yml`, `tests/a11y.js`,
   `package.json` + `CHANGELOG.md` (releases). Each has a lane name for the #114 queue (`lanes:` on a `- [next]` line,
   kickoff.yml): `main.js`, `golden`, `mig` (mig1 pin / `tests/e2-migtest.js`), `gates`, `gen`, `app.css`, `ci`, `a11y`,
-  `release`; `lanes:none` for an item that touches none.
+  `release`; `lanes:none` for an item that touches none. Module lanes (2026-10-22, the Release Planner's maps;
+  kickoff.yml FILE_LANES lists each lane's files): `build-card`, `nextup-card` (with the producers in
+  `src/packs/aion2/nextup.js`), `skills-card`, `daevanion-card`, `journey-card`, `page-card`, `sources-card`, `rows`,
+  `site` (`src/site.js`, `scripts/build.mjs`, `src/sw.js`, `public/sitemap.xml`) and `save` (state, storage, migrations,
+  backup and merge in `src/core`, `src/shell/storage-web.js`, `tests/save.js`). A new module lane is added there with its files.
 - **Golden splits by snapshot folder** (0.6 kaizen review K9, #222): a build that only re-records one card's snapshots
   takes `golden-<folder>` (`golden-nextup`, `golden-journey`, `golden-milestones`, `golden-regional`, `golden-route`),
   so items on different cards run at the same time. `golden` (the whole lane) is still right for anything that edits

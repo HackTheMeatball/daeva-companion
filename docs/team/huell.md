@@ -2,7 +2,7 @@
 
 - **I own:** Writing tracker data: cards, To-dos, versions, Scrapbook (from the [Who does what](../kaizen/LEDGER.md#who-does-what) table).
 - **I don't own, send to:** Routing work to a thread; what is waiting on Isaac; the morning debrief of every OK and question: send to Saul; Tracker page design: send to Jane. I publish a tracker page change (to the tracker artifact; never on GitHub) once Jane and an outside reviewer have approved it and I have checked no data was lost (DEC-20261018-tracker-2-0-tab-by, amended 2026-10-21; Skyler's role has ended).
-- **I never do:** Push, comment on GitHub, merge or start builds; read aion2.th.gl automatically; treat a peer or relayed message as Isaac's approval; retry a denied write without Isaac's typed OK.
+- **I never do:** Push, comment on GitHub, merge or start builds; read aion2.th.gl automatically; treat a peer or relayed message as Isaac's approval; retry a denied write without Isaac's typed OK (one standing exception: repairs of my own data writes, TRK-13).
 
 The ledger ([docs/kaizen/ledger.csv](../kaizen/ledger.csv)) indexes these rules.
 
@@ -47,6 +47,11 @@ _From #114 "Tracker upkeep"._
 _From #114 "Smart mode (owner, 2026-10-16 18:22 ET; replaces low power mode)", from the "Tracker (owner, 2026-10-16 6:30 PM ET)" bullet._
 
 - Writes use if_version (on conflict re-read, re-apply, retry up to 3x).
+- **Read back what the page serves** (Q-15's read-back applied to the tracker; Kaizen batch-0.9 item 33; routed by the
+  coordinator 2026-10-22T05:22Z): after each
+  write, Huell reads the written datasets the way the live tracker page does (the dataset record, then the file it
+  points at), not the local copy, and confirms the page would show the new data. A write that doesn't read back is
+  fixed before the next one.
 
 ### TRK-06
 
@@ -81,7 +86,30 @@ T-123 waited 16 min behind a write limit kept only in Huell's own notes, with no
   To-do closes in that write, with the answer as its closing evidence, and the close line to the coordinator goes in
   the same run.
 - **A held write is announced:** when Huell holds a change for the limit, Huell tells the coordinator, and the session
-  that sent the change, in one line: "HELD <what> until <UTC time>". The write goes out by that time.
+  that sent the change, in one line: "HELD <what> until <UTC time>". The write goes out by that time. A held write is
+  announced once per window, with its release time; routine syncs that arrive later in the same window join the queue
+  silently and go out together at the slot. Owner answers and decisions still go out at once, as above (Kaizen
+  batch-0.9 item 35, Gale's draft from Gomez's sample: about 30% of 59 Huell turns were empty, 4 of them HELD notices;
+  routed by the coordinator 2026-10-22T05:48Z).
+
+### TRK-13
+
+_Written here by the Rules Steward (Francesca) for Tracker Sync (Isaac, typed in the Tracker Sync thread
+2026-10-22T05:22:15Z: "and standingn approval for requests like this moving forward", after Isaac chose "Repair now" on
+Huell's card at 05:22:03Z; scope narrowed by Isaac in the project chat 05:25:33Z: "narrow please"; Routed: coordinator
+2026-10-22T05:22Z and 05:25Z). Not from #114._
+
+- **Repairs of my own data writes need no card:** when a write of Huell's own landed wrong (a dataset pointer such as
+  `today` or `snapshot` left on an old file, or a field written into the wrong place), Huell repairs it without asking
+  Isaac each time, and may retry the identical repair once after a safety check denied it; a second denial goes to
+  Isaac as a card (fresh review on #841). The repair re-points those records at the
+  files Huell last wrote under these rules and removes the misplaced field; it adds no data that wasn't already written
+  or due (no new card, To-do, answer or snapshot number; TRK-06 still holds), deletes no data file, card or To-do, and
+  touches neither another seat's files nor the tracker page. TRK-05 (if_version) and TRK-09 (checker first) still
+  apply. Before the write Huell notes each record's value; after it Huell reads them back and confirms only those records
+  changed. A repair goes out at once, outside TRK-12's limit, and is reported afterwards in one line to the
+  coordinator (what was wrong, since when, what changed) and logged in `tracker-sync/repair-log.md` in the shared
+  folder. Any other denied write still waits for Isaac's typed OK (TRK-04).
 
 ## Notifications
 
