@@ -238,6 +238,8 @@ export function generate(opts = {}) {
      per level band, the right-click macro's steps expanded in order (a slot step is that slot's stack at the level) */
   /* a macro holds at most 20 steps (owner, T-106, 2026-10-21: the macro window ends at 20; the schema's maxItems too) */
   const MACRO_MAX_STEPS = 20;
+  /* a new macro step's Delay is 10 ms (owner, T-123, 2026-10-22 02:39Z): only another value is a guide's advice */
+  const MACRO_DEFAULT_DELAY_MS = 10;
   const KS = build.keyStacks, KS_SLOTS = KS.slots || [], KS_MACROS = KS.macros || [];
   const ksName = id => id.startsWith('stigma:') ? stg(id).name : sk(id).name;   /* a quickslot row holds skills and stigmas */
   /* the base attack: the skill the game's defaults put on Left click (defaultKeys; its rows carry no level) */
@@ -277,7 +279,7 @@ export function generate(opts = {}) {
     check(`${build.id}: macro quickslot ${m.quickslot} has a 0–3 stack (Quick Use 2–12)`, MACRO_KEYS.includes(m.quickslot), m.quickslot);
     for (const r of m.rows) for (const st of r.steps) {
       if (st.skill && !BASIC.has(st.skill)) check(`${build.id}: macro ${m.quickslot}: the lone-skill step ${st.skill} has a cited page (url) in keyStacks.sources`, KS_GUIDE_SRC);
-      if (st.delayMs !== undefined) check(`${build.id}: macro ${m.quickslot}: a step delay has a cited page (url) in keyStacks.sources`, KS_GUIDE_SRC); }
+      if (st.delayMs !== undefined && st.delayMs !== MACRO_DEFAULT_DELAY_MS) check(`${build.id}: macro ${m.quickslot}: a step delay other than the game's ${MACRO_DEFAULT_DELAY_MS} ms has a cited page (url) in keyStacks.sources`, KS_GUIDE_SRC); }
     check(`${build.id}: macro ${m.quickslot} needs the class's base attack (a Left click default in keyStacks.defaultKeys)`, BASIC.size > 0);
     for (const r of m.rows) check(`${build.id}: macro ${m.quickslot} from Lv ${r.minLv} has at most ${MACRO_MAX_STEPS} steps`, r.steps.length <= MACRO_MAX_STEPS, r.steps.length);
     for (const r of m.rows) r.steps.forEach((st, i) => { if (st.skill && BASIC.has(st.skill))

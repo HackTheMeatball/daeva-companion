@@ -75,6 +75,12 @@ job(ok => { const g1 = runs(ok, 'the base attack last, a stigma in a quickslot',
   r.keyStacks.slots.push({ slot: 'Quick Use 9', rows: [{ minLv: 1, skills: [r.keyStacks.eOrder.pop()] }] }); } }); if (!g1) return;
   const bad = g1.failed.filter(x => KS_FAIL.test(x.check)).map(x => x.check);
   ok('generator accepts: the base attack as the last fired skill and a stigma in a quickslot row', bad.length === 0, bad); });
+/* T-123 (owner 2026-10-22): a new step's Delay is 10 ms, so only another value needs a guide's page */
+genFails('a step delay other than 10 ms with no cited page', r => { QU2_MACRO([{ slot: 'Quick Use 2', delayMs: 50 }])(r); r.keyStacks.sources = r.keyStacks.sources.filter(x => !x.url); }, /a step delay other than the game's 10 ms has a cited page/);
+job(ok => { const g1 = runs(ok, 'the 10 ms default delay without a page', { mutate: (rel, d) => { if (rel !== 'data/packs/aion2/asmodian/assassin/builds.json') return; const r = d.records[0];
+  QU2_MACRO([{ slot: 'Quick Use 2', delayMs: 10 }])(r); r.keyStacks.sources = r.keyStacks.sources.filter(x => !x.url); } }); if (!g1) return;
+  const bad = g1.failed.filter(x => /delay/.test(x.check)).map(x => x.check);
+  ok('generator accepts: the game\'s 10 ms default delay with no cited page', bad.length === 0, bad); });
 genFails('a step that names an undefined quickslot', QU2_MACRO([{ slot: 'Quick Use 9' }]), /slot Quick Use 9 is defined in keyStacks\.slots/);
 genFails('one skill in two quickslots', r => { r.keyStacks.slots.push({ slot: 'Quick Use 7', rows: [{ minLv: 1, skills: ['skill:assassin:savage-roar'] }] }); }, /no skill or stigma sits in two quickslots/);
 genFails('Quick Use 1 holding something other than the base attack', r => { r.keyStacks.slots.push({ slot: 'Quick Use 1', rows: [{ minLv: 1, skills: ['skill:assassin:shadowstrike'] }] }); }, /Quick Use 1 \(left click\) from Lv 1 holds only the base attack/);

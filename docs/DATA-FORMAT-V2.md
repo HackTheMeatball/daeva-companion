@@ -408,7 +408,7 @@ Anything else, an unknown token or an unknown `build:` kind fails validation.
   (owner, 22:32Z); the generator checks that across `slots` and `eOrder` (Q's Shadowstrike is still code, not data). `macros[]` are `{ quickslot, rows: [{ minLv, steps: [{ slot, delayMs? } | { skill, delayMs? }] }] }`:
   `quickslot` is one of Quick Use 2–12 (inferred from the owner's "any key with a full 0–3 row"), never Quick Use 1; at most
   20 ordered steps (T-106), each naming a quickslot (fires its whole stack) or one lone active skill (not a stigma). A
-  lone-skill step other than the base attack, or any step delay, needs a cited build guide's page on `keyStacks.sources`
+  lone-skill step other than the base attack, or a step delay other than the game's 10 ms default (owner, T-123), needs a cited build guide's page on `keyStacks.sources`
   (the generator checks for a url; Game Data Check judges the page). The base attack may only be the last skill the macro
   fires, as a step or inside a fired stack (claim C21; checked on the expanded sequence). `delayMs` is capped at 10000 as a
   sanity bound, not a game fact. The generator checks all of these. It compiles `RMB_ROWS` (the flat right-click list `RMB_STACK` reads):
