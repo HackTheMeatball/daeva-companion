@@ -19,11 +19,8 @@
         <details class="mini">
           <summary>Key setup</summary>
           <div class="stackviz" id="stackViz"></div>
-          <ol class="fine macro-steps">
-            <li><b>Put the macro on right click:</b> Esc → Key Settings → General → Gameplay → Macro (no key by default, single source), press right click and confirm moving it from its current key (only in the current control mode, not AION 1 mode).</li>
-            <li><b>Make the macro:</b> K → Macro (top right) → Add Macro. Step 1 = the right-click macro slot (the right-click stack). If ready skills get skipped, add a short delay.</li>
-            <li><b>Hold right and left click together</b> in a fight. Right click alone drains MP; holding left click too keeps it full (your test).</li>
-          </ol>
+          <p class="fine kv-hint" id="kvHint" aria-live="polite"></p>
+          <div class="kv-macro" id="kvMacro"></div>
           <p class="fine tline">Without the macro, each click fires one skill from the stack, so you'd have to keep clicking. Press K to open this grid in game and put each skill in the row shown. Row 0 is tried first; anything on cooldown or not ready is skipped. Quick Slice stays alone on left click: with no cooldown it would block everything above it in a stack.</p>
           <p class="fine tline">Right click fires the first ready skill, row 0 first, so Heart Gore jumps in whenever a crit opens it. Left click (Quick Slice) restores the MP Savage Roar spends.</p>
           <p class="fine tline">Row order and the E stack are the guide's inference (Heart Gore first because it only opens after a crit; Insignia Explosion after the builders because it scales with stacks). Test on a training dummy; if a skill never fires, move it down a row.</p>
