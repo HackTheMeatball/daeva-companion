@@ -17,6 +17,17 @@ _From #114 "Owner rules (Isaac, 2026-10-16)"._
 _From #114 "Owners (Isaac, 2026-10-18 5:05 AM ET; replaces "Three parts, one team"; standing rules audit https://claude.ai/code/artifact/428cb4b3-b93f-4dbb-867f-6d697493dd98)"._
 
 - **Unchanged for everyone:** the safety rules, times in ET, copy boxes for anything Isaac types, append-only logs re-read before writing.
+  - **Writes to shared state** (amends Q-15, no new id; Kaizen batch-0.9 item 34, Gale's draft; routed by the coordinator
+    2026-10-22T05:24Z; after Huell's first write after a context compaction double-wrapped the tracker's `data` field and
+    every later write copied it, and Gale twice cited a superseded OK or misread a commit after a compaction: two seats,
+    a likely pattern, not a proven one): before writing to any shared state (the tracker, the ledger, #114, #221, a
+    shared-folder file), re-read the target; afterwards, read it back through the path its consumer reads, not your own
+    write path.
+    - A seat that writes the same kind of state again and again keeps a scripted builder for that write in its own
+      folder and uses it.
+    - After a context compaction, the first write of each kind is built from that script or from a fresh read of the
+      target, never from memory.
+    - A #221 row for a bad write says "after compaction" when that applies.
 
 ### COM-13
 
