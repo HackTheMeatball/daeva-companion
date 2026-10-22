@@ -110,6 +110,16 @@ all get a row.
      in-game check requires don't count.
   5. **Dependency:** what would break, or who would take on its work, without it. If nobody can name anything, that
      counts against it.
+  6. **Model and effort fit** (Gale; Isaac, project chat 2026-10-22 03:06:14Z,
+     cmsg_01UNirAFgxf3jC8kQS8uvvHBBov91SA97tQYudYm5cQ81S: "Yeah I agree", answering the coordinator's recommendation, project chat
+     03:05Z, cmsg_01UNirAFgxf3jC8kQS8uvvHB4UraCTmEwDaXyrfjcvJqKu, edited before 03:06Z; routed by the coordinator
+     03:05Z and 03:22Z): is the seat on the right model and effort level for its
+     work? Judged from the record, not taste: the misses and rework that trace to judgment (such as the model rule's
+     line-3 triggers), calls outside the brief, and the seat's usage from 3. The row recommends keep, up or down for
+     the model and for the effort level. A model change the model rule (DECISIONS `owner-ok-model-rule`) already
+     calls for is applied at the seat's next handover, as its line 4 says; anything else, any effort-level change
+     included, goes to Isaac as a recommendation, because those settings are his. Reviewing the rule itself stays
+     with its line 5.
 - **Cut tests:**
   - A role with no value in the minor and no named dependency is recommended **cut**.
   - A role whose value doesn't cover its cost two minors running is recommended **cut** or **change** (merge, narrow,

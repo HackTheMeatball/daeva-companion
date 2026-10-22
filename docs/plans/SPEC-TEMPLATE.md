@@ -39,6 +39,15 @@ format only here, together with the parser and its test.
   it, run kickoff with `preflight: <issue>` (`gh workflow run kickoff.yml -f preflight=<n>`): it posts the same list
   on the issue as a "Spec preflight" comment and holds or starts nothing (Kaizen, batch-0.9 item 28: P23 lost three
   kickoff cycles finding its gaps one at a time).
+- **Plan edits keep specs in step** (Kaizen batch-0.9 item 28, Gale; routed by the coordinator 2026-10-22T03:21Z, after
+  three plan PRs (#803, #809 and a gen-paths edit) added paths to 0.9 §P23 without updating #645, and kickoff held it
+  each time, 2 h 19 min in all): a PR that changes a plan section's repo paths, After keys or `data/` scope also
+  updates the spec (Inputs, Files, lanes) of every queued or open item whose `Plan:` line cites that section, in the
+  same PR or one merged before it. CI enforces it: a check on PRs touching `docs/plans/` or `ROADMAP.md` runs kickoff's
+  own spec checks against each citing item and fails the PR, listing every gap at once. A path written as
+  `` `<path>` — not needed: <reason> `` counts as covered, as it does for kickoff. Build Pipeline (Gus) builds the
+  check; until it is live, the Release Planner (Walter) runs kickoff's `preflight` on each citing issue before opening
+  a plan PR.
 - An item on the `gen` or a `golden` lane, or whose spec runs `npm run gen` or re-records golden, starts on Opus
   whatever its queue line says, and so does one whose **Files** line names an Opus path (`.github/routing/opus-paths.json`;
   Kaizen, 2026-10-20: #509 was routed to Sonnet and stopped) or names no path at all. Files must list every file the
