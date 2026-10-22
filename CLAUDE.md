@@ -76,6 +76,9 @@ comes first) a change may break existing saves when that gives a better design. 
 ## What the user wants
 
 - Technical, direct communication; call out assumptions; propose tests rather than guess.
+- Recommendations (owner, 2026-10-22): (1) every recommendation must be clear: state plainly what it is and why,
+  with no vague or hedged wording. (2) Every choice put to the owner must name the recommendation, and when several
+  things are recommended they go in one option, like "Approve both: A + B (recommended)", so one tap approves all of it.
 - Minimal visual distraction, no redundancy across cards, consistent alignment, uniform card layouts (Skills /
   Daevanion / Stigmas; Next up cards look like milestone cards).
 - Manual progress is intended: ticking quests, Level up. Level changes only via Level up / − / + / slider, with one
