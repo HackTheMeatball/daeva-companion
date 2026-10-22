@@ -5,6 +5,12 @@ owner; since 2026-10-18 11:12 AM ET Release Planner (Walter) is the only writer 
 send an OK the owner typed to Walter, verbatim with its time and thread. A row that answers a tracker To-do names its id (e.g. T-59), in the row and in the commit message. Department charters a decision affects are updated by
 each charter's owner thread.
 
+## 2026-10-22
+
+| # | Topic | Decision |
+|---|---|---|
+| — | Wakayashi is not a build witness | Owner, typed in another thread 2026-10-22 12:58 AM ET (04:58:03Z, message cmsg_01UNirAFgxf3jC8kQS8uvvHB2G14gFfPo5zLzPsFonJ3eu; Release Planner read it by id): "no you're right, we should use true meta top builds", answering Game Data Check's recommendation not to add Wakayashi to the build source list (04:56:28Z). Wakayashi stays readable at spot-check level (facts with a link, no terms page) but is never cited for a build pick: picks rest on top-player data plus the approved witnesses, as `docs/research/SOURCES.md` "Build sources" already says ("no other build site is cited for picks"; Rules Steward's overlap check: a confirmation, no rule change). Still open, not decided here: KeenGamer, Mobalytics, Mythic Store and Metaroad (pending the owner's confirmation), and his question whether the three current witnesses provide top-player data. Routed: coordinator 2026-10-22T04:59Z. |
+
 ## 2026-10-21
 
 | # | Topic | Decision |
