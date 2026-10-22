@@ -1393,7 +1393,7 @@
         "zone": "inferred"
       },
       "notes": [
-        "allthings.how: next quest 'picks up straight after' this one; the two Menrik quests 'tell one story'"
+        "allthings.how: the next quest follows straight on from this one, and the two Menrik quests are one storyline"
       ],
       "conflicts": [
         "Metabot shows no quest giver and no turn-in; single step 'Meet Menrik ... near the Fang Hideout' — consistent with an auto-granted follow-up of In the Fang Legion's Name (which ends talking to Menrik at Fang Hideout). App's giver 'Nemon · Forest Hideout' is not supported by Metabot.",
@@ -1629,7 +1629,7 @@
         "zone": "inferred"
       },
       "notes": [
-        "allthings.how: picks up straight after Blade of Vengeance"
+        "allthings.how: follows straight on from Blade of Vengeance"
       ],
       "conflicts": [
         "Metabot turn-in location field says 'Sanctum Outpost, Altgard'; completion text says 'Talk to Menrik at Fang Hideout'",
@@ -1798,7 +1798,7 @@
         "zone": "inferred"
       },
       "notes": [
-        "allthings.how: With the Poison Blood now cleared from the tree's roots, Reden fears the barrier protecting the children has weakened."
+        "allthings.how: once the Poison Blood is gone from the tree's roots, Reden worries the barrier shielding the children is weaker."
       ],
       "conflicts": [
         "Metabot shows no giver place/Kibelisk; app place 'Healing Spring' (Purifying Forest) is not on Metabot. Turn-in text says 'Talk to Reden at Odar's Shade' (Moslan Forest). Story references the Young Elim — possible thematic link to Young Elim's Story, not stated.",
@@ -2241,7 +2241,7 @@
         "zone": "inferred"
       },
       "notes": [
-        "allthings.how: Hadala reluctantly passes along another letter from Derk"
+        "allthings.how: Hadala, unwillingly, hands over another letter from Derk"
       ],
       "conflicts": [
         "Most steps are in Safe Haven / Nameless Cemetery although giver is at Briskwind Shelter (Dranactus)",
@@ -2428,7 +2428,7 @@
       "status": "verified",
       "notes": [
         "Dialogue: 'Please participate in the second act if you'd like.'",
-        "allthings.how: completes when Hallina 'asks you back for the final act'"
+        "allthings.how: it completes when Hallina invites you back for the last act"
       ],
       "conflicts": [
         "App lists reward 'bracelet · Statue: Urd' for Part 1; Metabot Part 1 gives Chaser Earrings and no statue (Statue: Urd is a Part 2 reward)"
@@ -2607,7 +2607,7 @@
       "verifiedAt": "2026-10-19",
       "status": "verified",
       "notes": [
-        "allthings.how: second act of Part 1; 'Enter the second stage to play through the final act.'"
+        "allthings.how: the second act of Part 1; you go into the second stage to play the last act"
       ]
     },
     {
@@ -2945,8 +2945,8 @@
       "verifiedAt": "2026-10-19",
       "status": "verified",
       "notes": [
-        "allthings.how: Uru sends you through instead across three quests, each given and turned in at the Collapsed Chasm",
-        "Spacetime Rift series: No Required Quests on 5 of 7 gaming.tools pages (Unknown Species 2202030 and Proof 2202035 not reachable). Not a chain. Gate: level 45 (Metabot 'Unlocks at 45' on all 7; allthings 244366 'Level 45') plus a rift that 'opens at random spots at set times' (allthings 244371)."
+        "allthings.how: Uru sends you through the rift instead, over three quests that are all given and handed in at the Collapsed Chasm",
+        "Spacetime Rift series: No Required Quests on 5 of 7 gaming.tools pages (Unknown Species 2202030 and Proof 2202035 not reachable). Not a chain. Gate: level 45 (Metabot 'Unlocks at 45' on all 7; allthings 244366 gives Lv 45) plus a rift that appears at random places on a fixed schedule (allthings 244371)."
       ],
       "conflicts": [
         "Metabot page name is 'Spacetime Rift' (slug spacetime-rift-asmodian); app calls it 'Spacetime Rift: Asmodian'",
@@ -3607,8 +3607,8 @@
       "verifiedAt": "2026-10-19",
       "status": "verified",
       "notes": [
-        "allthings.how: After Uru discovers beings in Altgard unlike any he has seen",
-        "Spacetime Rift series: No Required Quests on 5 of 7 gaming.tools pages (Unknown Species 2202030 and Proof 2202035 not reachable). Not a chain. Gate: level 45 (Metabot 'Unlocks at 45' on all 7; allthings 244366 'Level 45') plus a rift that 'opens at random spots at set times' (allthings 244371)."
+        "allthings.how: it follows Uru finding creatures in Altgard he has never seen before",
+        "Spacetime Rift series: No Required Quests on 5 of 7 gaming.tools pages (Unknown Species 2202030 and Proof 2202035 not reachable). Not a chain. Gate: level 45 (Metabot 'Unlocks at 45' on all 7; allthings 244366 gives Lv 45) plus a rift that appears at random places on a fixed schedule (allthings 244371)."
       ],
       "conflicts": [
         "Prerequisites: no aion2.gaming.tools / aion2.th.gl page was reachable from our tools; checked 2026-10-20 on aion2.gaming.tools in the owner's browser (see requires)"
@@ -3781,7 +3781,7 @@
         "Giver place 'Collapsed Chasm' from allthings.how (not on Metabot)"
       ],
       "notes": [
-        "Spacetime Rift series: No Required Quests on 5 of 7 gaming.tools pages (Unknown Species 2202030 and Proof 2202035 not reachable). Not a chain. Gate: level 45 (Metabot 'Unlocks at 45' on all 7; allthings 244366 'Level 45') plus a rift that 'opens at random spots at set times' (allthings 244371)."
+        "Spacetime Rift series: No Required Quests on 5 of 7 gaming.tools pages (Unknown Species 2202030 and Proof 2202035 not reachable). Not a chain. Gate: level 45 (Metabot 'Unlocks at 45' on all 7; allthings 244366 gives Lv 45) plus a rift that appears at random places on a fixed schedule (allthings 244371)."
       ]
     },
     {
@@ -3942,8 +3942,8 @@
         "zone": "inferred"
       },
       "notes": [
-        "allthings.how: rift opens at random spots at set times",
-        "Spacetime Rift series: No Required Quests on 5 of 7 gaming.tools pages (Unknown Species 2202030 and Proof 2202035 not reachable). Not a chain. Gate: level 45 (Metabot 'Unlocks at 45' on all 7; allthings 244366 'Level 45') plus a rift that 'opens at random spots at set times' (allthings 244371)."
+        "allthings.how: the rift appears at random places on a fixed schedule",
+        "Spacetime Rift series: No Required Quests on 5 of 7 gaming.tools pages (Unknown Species 2202030 and Proof 2202035 not reachable). Not a chain. Gate: level 45 (Metabot 'Unlocks at 45' on all 7; allthings 244366 gives Lv 45) plus a rift that appears at random places on a fixed schedule (allthings 244371)."
       ],
       "conflicts": [
         "Metabot gives no giver place; app 'Guide Rest Stop' (Purifying Forest) not on Metabot [2026-10-19: Metabot's quest page names the start as \"Uru · Guide Rest Stop\" (build 0.0.4387.0).]",
@@ -4114,7 +4114,7 @@
         "Giver place 'Guide Rest Stop' from allthings.how (not on Metabot) [2026-10-19: Metabot's quest page names the start as \"Uru · Guide Rest Stop\" (build 0.0.4387.0).]"
       ],
       "notes": [
-        "Spacetime Rift series: No Required Quests on 5 of 7 gaming.tools pages (Unknown Species 2202030 and Proof 2202035 not reachable). Not a chain. Gate: level 45 (Metabot 'Unlocks at 45' on all 7; allthings 244366 'Level 45') plus a rift that 'opens at random spots at set times' (allthings 244371)."
+        "Spacetime Rift series: No Required Quests on 5 of 7 gaming.tools pages (Unknown Species 2202030 and Proof 2202035 not reachable). Not a chain. Gate: level 45 (Metabot 'Unlocks at 45' on all 7; allthings 244366 gives Lv 45) plus a rift that appears at random places on a fixed schedule (allthings 244371)."
       ]
     },
     {
@@ -4262,7 +4262,7 @@
       "status": "verified",
       "notes": [
         "Dialogue: Uru says a new rift appeared nearby; 'head west' (Shirakiki waits for the items) — no quest named",
-        "Spacetime Rift series: No Required Quests on 5 of 7 gaming.tools pages (Unknown Species 2202030 and Proof 2202035 not reachable). Not a chain. Gate: level 45 (Metabot 'Unlocks at 45' on all 7; allthings 244366 'Level 45') plus a rift that 'opens at random spots at set times' (allthings 244371)."
+        "Spacetime Rift series: No Required Quests on 5 of 7 gaming.tools pages (Unknown Species 2202030 and Proof 2202035 not reachable). Not a chain. Gate: level 45 (Metabot 'Unlocks at 45' on all 7; allthings 244366 gives Lv 45) plus a rift that appears at random places on a fixed schedule (allthings 244371)."
       ],
       "fieldStatus": {
         "zone": "inferred"
@@ -4411,7 +4411,7 @@
         "Prerequisites: no aion2.gaming.tools / aion2.th.gl page was reachable from our tools; checked 2026-10-20 on aion2.gaming.tools in the owner's browser (see requires)"
       ],
       "notes": [
-        "Spacetime Rift series: No Required Quests on 5 of 7 gaming.tools pages (Unknown Species 2202030 and Proof 2202035 not reachable). Not a chain. Gate: level 45 (Metabot 'Unlocks at 45' on all 7; allthings 244366 'Level 45') plus a rift that 'opens at random spots at set times' (allthings 244371)."
+        "Spacetime Rift series: No Required Quests on 5 of 7 gaming.tools pages (Unknown Species 2202030 and Proof 2202035 not reachable). Not a chain. Gate: level 45 (Metabot 'Unlocks at 45' on all 7; allthings 244366 gives Lv 45) plus a rift that appears at random places on a fixed schedule (allthings 244371)."
       ],
       "fieldStatus": {
         "zone": "inferred"
@@ -4822,7 +4822,7 @@
       "verifiedAt": "2026-10-19",
       "status": "verified",
       "notes": [
-        "allthings.how: After reassembling the last piece of Minusha's Heart"
+        "allthings.how: it starts once the last piece of Minusha's Heart is put back together"
       ],
       "conflicts": [
         "Metabot gives no Kibelisk for giver or steps; giver place taken from turn-in text 'Talk to Harald at the Abandoned Site'",
@@ -5202,7 +5202,7 @@
         "zone": "inferred"
       },
       "notes": [
-        "allthings.how: Though the dust crisis has been resolved, Nemon still mourns Ulgorn."
+        "allthings.how: the dust crisis is over, but Nemon is still grieving for Ulgorn."
       ]
     },
     {
@@ -5807,7 +5807,7 @@
       "status": "verified",
       "notes": [
         "Karumba closing line: 'I have a bad feeling we'll need your help again soon enough.' (no quest named)",
-        "allthings.how: The Lagta Brigade is searching for Amunta, who was taken to the hideout for safety before contact was lost."
+        "allthings.how: the Lagta Brigade is looking for Amunta, who was moved to the hideout to keep safe and then stopped answering."
       ],
       "conflicts": [
         "zone: allthings.how files it under \"Southern Gribade Highland\"; the giver's camp / place puts it in Western Gribade Highland (E3 CAMP_ZONE / E4 giver-zone rule)."
@@ -6030,7 +6030,7 @@
         "turnin.zone": "inferred"
       },
       "notes": [
-        "allthings.how: After the Daybreak Society escaped from prison"
+        "allthings.how: it follows the Daybreak Society's escape from prison"
       ],
       "conflicts": [
         "Metabot page fetched later: shows no giver field (Lakiba only in intro), no turn-in, no Kibelisk; wikily gives giver Lakiba, turn-in Amunta; allthings gives Lakiba at Amunta's Hideout. Giver Kibelisk unknown (Fallout step 2 shows Kibelisk 'Amunta's Hideout' 22 m from the hideout).",
@@ -6395,7 +6395,7 @@
         "turnin.zone": "inferred"
       },
       "conflicts": [
-        "Metabot page not reachable; data from aion2.gaming.tools 2202045 + allthings.how 244363 (Baba 'at the Assembly'). No Kibelisk, no step list. [2026-10-19: Metabot's quest page names the start as \"Baba · Nornir Assembly\" (build 0.0.4387.0).]"
+        "Metabot page not reachable; data from aion2.gaming.tools 2202045 + allthings.how 244363 (Baba at Nornir Assembly). No Kibelisk, no step list. [2026-10-19: Metabot's quest page names the start as \"Baba · Nornir Assembly\" (build 0.0.4387.0).]"
       ]
     },
     {
@@ -6782,7 +6782,7 @@
       "verifiedAt": "2026-10-19",
       "status": "verified",
       "notes": [
-        "allthings.how: Tefra is now Snotra's assistant."
+        "allthings.how: Tefra has become Snotra's assistant."
       ],
       "fieldStatus": {
         "zone": "inferred"
@@ -7506,7 +7506,7 @@
         "zone": "disputed"
       },
       "notes": [
-        "allthings.how: Surprised by your speed, she points you to Battlescar Mound Cliff for the next wonder."
+        "allthings.how: Tina, impressed by how quickly you got there, sends you to Battlescar Mound Cliff for the next wonder."
       ],
       "conflicts": [
         "Metabot gives no giver place/Kibelisk; app place 'under the Tranein Highland bridge' is from another source (not on Metabot). Turn-in text: 'Talk to Tina at Safe Haven' [2026-10-19: Metabot's quest page names the start as \"Tina · Calderon Canyon\" (build 0.0.4387.0).]",
@@ -9038,10 +9038,10 @@
         "zone": "inferred"
       },
       "notes": [
-        "allthings.how: Finish the route at the Wind Altar after checking all four."
+        "allthings.how: the route ends at the Wind Altar once all four are checked."
       ],
       "conflicts": [
-        "Metabot page not reachable; data from aion2.gaming.tools 2202061 + allthings.how 244371 ('Finish the route at the Wind Altar after checking all four'). No Kibelisk. [2026-10-19: Metabot's quest page names the start as \"Ivan · Faded Stump\" (build 0.0.4387.0).]"
+        "Metabot page not reachable; data from aion2.gaming.tools 2202061 + allthings.how 244371 (the route ends at the Wind Altar once all four are checked). No Kibelisk. [2026-10-19: Metabot's quest page names the start as \"Ivan · Faded Stump\" (build 0.0.4387.0).]"
       ]
     },
     {
@@ -10603,7 +10603,7 @@
       },
       "notes": [
         "Text: Tina 'shared the locations of two more wonders' (no quest named)",
-        "allthings.how: 'continues Tina's tour of Altgard's landmarks'; Tina points you toward 'the next leg' at the end of the Basfelt Ruins cliff"
+        "allthings.how: carries on Tina's tour of Altgard's landmarks; at the Basfelt Ruins cliff she sends you on to the following leg"
       ],
       "conflicts": [
         "Metabot gives no giver place/Kibelisk; app place 'Impetusium Square' not on Metabot. 1st Leg ends 'Talk to Tina at Safe Haven'; 2nd Leg ends at Nornir Assembly. [2026-10-19: Metabot's quest page names the start as \"Tina · Battlescar Mound\" (build 0.0.4387.0).]",
@@ -10796,8 +10796,8 @@
         "turnin.zone": "inferred"
       },
       "conflicts": [
-        "Metabot page not reachable; data from aion2.gaming.tools 2202071. Giver place unknown: app 'Basfelt Ruins Cliff' is consistent with allthings 2nd-Leg text ('the next leg' at the end of the Basfelt Ruins cliff) but not stated as the pickup. Zone Basfelt Ruins per allthings list page. [2026-10-19: Metabot's quest page names the start as \"Tina · Basfelt Ruins\" (build 0.0.4387.0).]",
-        "Unlock level: allthings states 'unlocks at level 10' only for the Verteron (Elyos) Final Stretch; recorded 10 from gaming.tools header 'Level 10'"
+        "Metabot page not reachable; data from aion2.gaming.tools 2202071. Giver place unknown: app 'Basfelt Ruins Cliff' is consistent with allthings.how's 2nd Leg page (it ends with Tina sending you on from the Basfelt Ruins cliff) but not stated as the pickup. Zone Basfelt Ruins per allthings list page. [2026-10-19: Metabot's quest page names the start as \"Tina · Basfelt Ruins\" (build 0.0.4387.0).]",
+        "Unlock level: allthings.how gives Lv 10 as the unlock only for the Verteron (Elyos) Final Stretch; recorded 10 from gaming.tools header 'Level 10'"
       ]
     }
   ]
