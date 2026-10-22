@@ -330,42 +330,26 @@ async function load(p, state, mode) {
     await ctx.close();
   }
 
-  /* Key setup grid probe (0.6.2 P18 #414; 0.8 P9 #498): run at 390 and 1500 px. Cells all 76 px (empty ones too), names
-     never break mid-word, every filled cell has an icon, key chips on one line under the columns, the defaults note under
-     the grid (0.8 P14), each filled cell's accessible name carries its key, and a long name wraps inside its cell. */
+  /* Key setup grid probe (0.6.2 P18 #414; 0.8 P9 #498; 0.9 P22 note 12): run at 390 and 1500 px. Every box (empty ones
+     too) the same square, at most 112 px, the icon filling it; the name leaves the box (visually hidden) and is its
+     accessible name and its tooltip; key chips (buttons since #388) on one line under the columns, the defaults note under
+     the grid (0.8 P14), each filled cell's accessible name carries its key. (The 0.6.2 name-wrap checks went with the names
+     in the boxes: an intended change, docs/design/0.9-keys/README.md §12.) */
   const keyGridProbe = () => {
     const v = document.getElementById('stackViz'); if (!v) return null;
     const cells = [...v.querySelectorAll(':scope > .sk')], hs = [...new Set(cells.map(c => Math.round(c.getBoundingClientRect().height)))];
-    const split = [];
-    for (const n of v.querySelectorAll('.sk .nm')) { const t = n.firstChild; let i = 0;
-      for (const w of t.textContent.split(' ')) { const r = document.createRange(); r.setStart(t, i); r.setEnd(t, i + w.length); i += w.length + 1;
-        if (new Set([...r.getClientRects()].map(b => Math.round(b.top))).size > 1) split.push(w); } }
-    const overWide = () => [...v.querySelectorAll(':scope > .sk .nm')].filter(n => { const c = n.parentElement, cs = getComputedStyle(c);
-      return n.scrollWidth > c.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight) + 0.5; }).map(n => n.textContent);
-    const over = overWide();
+    const notSquare = cells.filter(c => { const b = c.getBoundingClientRect(); return Math.abs(b.width - b.height) > 1 || b.width > 112.5; }).map(c => c.getAttribute('aria-label') || 'empty');
+    const shown = [...v.querySelectorAll(':scope > .sk .nm')].filter(n => n.getBoundingClientRect().width > 1).map(n => n.textContent);
     const noIco = cells.filter(c => !c.classList.contains('empty') && !c.querySelector('img.kv-ico')).map(c => c.textContent);
+    const icoSmall = cells.filter(c => { const i = c.querySelector('img.kv-ico'); return i && i.getBoundingClientRect().width < c.getBoundingClientRect().width - 4; }).map(c => c.textContent);
     const keys = [...v.querySelectorAll(':scope > .kv-key')], row0 = cells.slice(-keys.length), note = v.querySelector('.kv-note'), lmb = v.querySelector('.lmb');
     const keyBad = keys.map((k, i) => { const b = k.getBoundingClientRect(), c = row0[i].getBoundingClientRect();
-      return b.height > 30 || b.top < c.bottom || b.left < c.left - 1 || b.right > c.right + 1 ? k.textContent : null; }).filter(Boolean);
+      return b.height > 30 || b.top < c.bottom || b.left < c.left - 1 || b.right > c.right + 1 || k.tagName !== 'BUTTON' ? k.textContent : null; }).filter(Boolean);
     const named = cells.filter(c => !c.classList.contains('empty')), cols = ['Q', 'E', 'T'];
     const unnamed = named.filter(c => { const g = c.getAttribute('aria-label') || '', nm = c.querySelector('.nm').textContent;
-      return c.getAttribute('role') !== 'group' || !g.startsWith(nm + ', ') || !cols.some(k => g.includes(', ' + k + ',')); }).map(c => c.textContent);
-    /* a long name in a middle cell: two lines at most, inside the cell */
-    const nm0 = named[0].querySelector('.nm'), was = nm0.textContent; nm0.textContent = 'Swift Fang Strike';
-    /* each part named, so a failure says which part failed and with what numbers (a local-only failure under load,
-       2026-10-22, printed only longFit: false); the cell height is compared rounded, as hs is built */
-    const c0 = named[0], nb = nm0.getBoundingClientRect(), cb = c0.getBoundingClientRect(), rg = document.createRange();
-    rg.selectNodeContents(nm0); const rs = [...rg.getClientRects()], ow = overWide();
-    const longWhy = Object.entries({
-      [`name ${nb.height} px tall, over two 11 px lines`]: nb.height > 2 * 11 * 1.25 + 1,
-      [`name runs to ${new Set(rs.map(b => Math.round(b.top))).size} lines`]: new Set(rs.map(b => Math.round(b.top))).size > 2,
-      [`a line ends below the name box (${rs.map(b => b.bottom).join(', ')} > ${nb.bottom})`]: !rs.every(b => b.bottom <= nb.bottom + 1),
-      [`name bottom ${nb.bottom} below cell bottom ${cb.bottom}`]: nb.bottom > cb.bottom,
-      [`cell ${cb.height} px tall, others ${hs[0]}`]: Math.round(cb.height) !== hs[0],
-      [`too wide: ${ow.join(', ')}`]: ow.length > 0,
-    }).filter(([, bad]) => bad).map(([why]) => why), longFit = !longWhy.length;
-    nm0.textContent = was;
-    return { n: cells.length, hs, split, over, noIco, unnamed, longFit, longWhy, keys: keys.map(k => k.textContent), keyBad,
+      return c.getAttribute('role') !== 'group' || c.tabIndex !== 0 || !g.startsWith(nm + ', ') || !cols.some(k => g.includes(', ' + k + ','))
+        || c.dataset.tip !== nm + ' · ' + g.slice(nm.length + 2); }).map(c => c.textContent);
+    return { n: cells.length, hs, notSquare, shown, icoSmall, noIco, unnamed, keys: keys.map(k => k.firstChild.textContent), keyBad,
       marked: keys.filter(k => /†/.test(k.textContent + getComputedStyle(k, '::after').content)).map(k => k.textContent),
       head: (h => !!h && h === v.firstElementChild && h.getBoundingClientRect().bottom <= cells[0].getBoundingClientRect().top + 0.5 ? h.textContent : '')(v.querySelector(':scope > .kv-sugg')),
       lmbBelow: !!lmb && lmb.getBoundingClientRect().top >= keys[0].getBoundingClientRect().bottom,
@@ -377,12 +361,10 @@ async function load(p, state, mode) {
   };
   const keyGridChecks = (kv, id) => {
     if (!kv || !kv.n) return;
-    ok(`keys ${id}: all 12 Key setup cells are 76 px tall`, kv.n === 12 && kv.hs.length === 1 && kv.hs[0] === 76, kv);
-    ok(`keys ${id}: no skill name breaks mid-word`, !kv.split.length, kv.split);
-    ok(`keys ${id}: every skill name fits its cell's content width`, !kv.over.length, kv.over);
-    ok(`keys ${id}: a long skill name wraps to two lines inside its cell`, kv.longFit, kv);
-    ok(`keys ${id}: every filled cell shows its icon`, !kv.noIco.length, kv.noIco);
-    ok(`keys ${id}: every filled cell's accessible name carries its key and row`, !kv.unnamed.length, kv.unnamed);
+    ok(`keys ${id}: all 12 Key setup boxes are one square size, at most 112 px`, kv.n === 12 && kv.hs.length === 1 && !kv.notSquare.length, kv);
+    ok(`keys ${id}: no skill name is drawn in a box (it's the accessible name and the tooltip)`, !kv.shown.length, kv.shown);
+    ok(`keys ${id}: every filled cell shows its icon, filling the box`, !kv.noIco.length && !kv.icoSmall.length, kv);
+    ok(`keys ${id}: every filled cell is focusable, its accessible name and tooltip carry its name, key and row`, !kv.unnamed.length, kv.unnamed);
     /* 0.8 P14 (#503): the game's columns (research-387-macro): Q, E and T (the macro's stack), all three the guide's
        suggested binding, said once in a line heading the grid (Design Lead on #565: no † per chip); left click (the
        game's default) its own line under them, then the game's default keys */
@@ -396,7 +378,48 @@ async function load(p, state, mode) {
        line, then the macro's place, still labelled (inferred) */
     ok(`keys ${id}: the defaults list puts key 1 on Shadowstrike, one chip per line, and ends with the inferred macro line`,
       kv.defs.head === 'Game default keys' && kv.defs.rows.includes('1|Shadowstrike') && kv.defs.chipFirst
-      && /^The macro takes right click from Savage Roar \(inferred\)\.$/.test(kv.defs.last), kv.defs);
+      && /^This guide's macro on right click \(its choice, not a rule\) takes right click from Savage Roar \(inferred\)\.$/.test(kv.defs.last), kv.defs);
+  };
+  /* 0.9 P22 (docs/design/0.9-keys-macro.md, #388): the macro as steps, the Hold clause, the tooltip on focus, rebinding by
+     keyboard (Esc cancels; a clash asks; Swap them; Back to suggested keys) and every key line following */
+  const keySetupBehaviour = async (p, sn) => {
+    const id = `keys ${sn} 1500px`;
+    let r = await p.evaluate(() => { const m = document.querySelector('#kvMacro .kv-mac'), txt = s => (s || {}).textContent || '';
+      return { head: txt(m && m.querySelector('.khead')), steps: m ? [...m.querySelectorAll('ol.playsteps > li')].map(li => li.textContent) : [],
+        fine: m ? [...m.querySelectorAll('.fine')].map(x => x.textContent) : [], hold: txt([...document.querySelectorAll('#rotPlay li')].pop()),
+        drawer: document.getElementById('statDrawer').textContent };
+    });
+    ok(`${id}: one macro, headed "Macro on right click" with no step count (one step)`, r.head === 'Macro on right click', r.head);
+    ok(`${id}: its one step names the T key and Quick Use 2, the whole stack, row 0 first, no delay`, r.steps.length === 1 && r.steps[0] === 'T: Quick Use 2 · the whole T stack, row 0 first', r.steps);
+    ok(`${id}: the make-it line states the 10 ms default once, without the 2+ steps line`, r.fine.length === 2 && /Each step's Delay starts at 10 ms, the game's default/.test(r.fine[0]) && !/Up to 20 steps/.test(r.fine.join(' ')) && /^Put the macro on right click \(this guide's choice, not a rule\): Esc, Key Settings/.test(r.fine[1]), r.fine);
+    ok(`${id}: the old third line is gone and the Hold step carries its warning`, !/Hold right and left click together/.test(r.drawer) && r.hold === 'Hold right + left click · right click alone drains MP (your test)', r.hold);
+    /* the tooltip opens on focus */
+    r = await p.evaluate(() => { const c = document.querySelector('#stackViz > .sk:not(.empty)'); c.focus(); return { tip: getComputedStyle(c, '::after').content, want: c.dataset.tip }; });
+    ok(`${id}: a key box's tooltip opens on focus`, r.tip === JSON.stringify(r.want), r);
+    /* rebinding by keyboard: Enter on the Q chip listens, Esc cancels, then R makes Q's column R */
+    const chip = col => `#stackViz [data-col="${col}"]`;
+    await p.focus(chip('Q')); await p.keyboard.press('Enter'); await p.waitForTimeout(50);
+    r = await p.evaluate(() => ({ t: document.querySelector('#stackViz [data-col="Q"]').textContent, f: document.activeElement.dataset.col, hint: document.getElementById('kvHint').textContent, open: document.getElementById('statDrawer').classList.contains('open') }));
+    ok(`${id}: Enter on a key chip listens ("Press a key", focus kept, the hint says Esc cancels)`, r.t === 'Press a key' && r.f === 'Q' && /Esc cancels/.test(r.hint), r);
+    await p.keyboard.press('Escape'); await p.waitForTimeout(50);
+    r = await p.evaluate(() => ({ t: document.querySelector('#stackViz [data-col="Q"]').firstChild.textContent, open: document.getElementById('statDrawer').classList.contains('open') }));
+    ok(`${id}: Esc cancels the listening chip and leaves the drawer open`, r.t === 'Q' && r.open, r);
+    await p.focus(chip('Q')); await p.keyboard.press('Enter'); await p.keyboard.press('r'); await p.waitForTimeout(80);
+    r = await p.evaluate(() => { const s = JSON.parse(localStorage.getItem('companion-save-v6')), c = s.chars[s.current];
+      return { keys: c.keyBinds, chip: document.querySelector('#stackViz [data-col="Q"]').firstChild.textContent, mine: document.querySelector('#stackViz [data-col="Q"]').classList.contains('mine'),
+        sugg: document.querySelector('#stackViz .kv-sugg').textContent, rot: document.getElementById('rotPlay').textContent, reset: !!document.querySelector('#kvHint [data-kv="reset"]') }; });
+    ok(`${id}: pressing R rebinds Q's column to R, saved as keyBinds, the chip marked yours`, JSON.stringify(r.keys) === '{"Q":"R"}' && r.chip === 'R' && r.mine && r.reset, r);
+    ok(`${id}: the suggestion line and the Rotation follow the new key`, /^Your keys: R, E and T/.test(r.sugg) && /\bR\b.*Shadowstrike/.test(r.rot), r);
+    /* a clash: T on E's column asks, Swap them swaps */
+    await p.focus(chip('E')); await p.keyboard.press('Enter'); await p.keyboard.press('t'); await p.waitForTimeout(80);
+    r = await p.evaluate(() => document.getElementById('kvHint').textContent);
+    ok(`${id}: a key another column holds asks first (Swap them / Pick another)`, /^T already holds the right-click stack\. Swap them Pick another$/.test(r), r);
+    await p.click('#kvHint [data-kv="swap"]'); await p.waitForTimeout(80);
+    r = await p.evaluate(() => { const s = JSON.parse(localStorage.getItem('companion-save-v6')); return { keys: s.chars[s.current].keyBinds, step: document.querySelector('#kvMacro li').textContent }; });
+    ok(`${id}: Swap them swaps the two keys, and the macro step's chip follows`, JSON.stringify(r.keys) === '{"Q":"R","E":"T","T":"E"}' && r.step === 'E: Quick Use 2 · the whole E stack, row 0 first', r);
+    await p.click('#kvHint [data-kv="reset"]'); await p.waitForTimeout(80);
+    r = await p.evaluate(() => { const s = JSON.parse(localStorage.getItem('companion-save-v6')); return { has: 'keyBinds' in s.chars[s.current], chips: [...document.querySelectorAll('#stackViz > .kv-key')].map(k => k.firstChild.textContent).join('|') }; });
+    ok(`${id}: Back to suggested keys drops the field and restores Q / E / T`, !r.has && r.chips === 'Q|E|T', r);
   };
   for (const sn of ['lv27', 'lv45']) {
     const { ctx, p } = await page(1500);
@@ -404,6 +427,7 @@ async function load(p, state, mode) {
     await p.evaluate(() => { const d = document.getElementById('statDrawer'); if (d && !d.classList.contains('open')) document.getElementById('sdTab').click(); document.querySelectorAll('details').forEach(x => { x.open = true; }); });
     await p.waitForTimeout(600);
     keyGridChecks(await p.evaluate(keyGridProbe), `${sn} advanced 1500px`);
+    if (sn === 'lv27') await keySetupBehaviour(p, sn);
     await ctx.close();
   }
 

@@ -10,9 +10,9 @@ import { TIPS } from "../data/tips.js";
 import { rotKeys } from "../requirements.js";
 import { aion2State as state, aion2Save as save, aion2Update as update, aion2STIGMA_SLOTS as STIGMA_SLOTS, aion2StIco as stIco, aion2SpMini as spMini, aion2Ini as ini } from "./page.js";
 
-/* Your own keys (0.9 P22, #388; docs/design/0.9-keys/README.md): char.keys maps a Key setup column's suggested key (Q, E,
+/* Your own keys (0.9 P22, #388; docs/design/0.9-keys/README.md): char.keyBinds maps a Key setup column's suggested key (Q, E,
    T; a default-keys build's own keys) to the key the player uses for it. Absent, empty or not a string: the suggestion. */
-const kvKeyOf = col => { const m = char(state).keys, k = m && typeof m === "object" && !Array.isArray(m) ? m[col] : null;
+const kvKeyOf = col => { const m = char(state).keyBinds, k = m && typeof m === "object" && !Array.isArray(m) ? m[col] : null;
   return typeof k === "string" && k.trim() && k.length <= 12 ? k : col; };
 const kvMine = col => kvKeyOf(col) !== col;
 /* the chip being rebound (its column) and a pending kvClash { col, key, other }; neither is saved */
@@ -22,13 +22,13 @@ const chipHTML = (col, cls = "") => kvListen === col
   : `<button type="button" class="kv-key${cls}${kvMine(col) ? " mine" : ""}" data-col="${col}" aria-label="${kvKeyOf(col)}: change the key for this stack">${kvKeyOf(col)}<span class="kv-caret" aria-hidden="true">▾</span></button>`;
 /* the hint under the grid: listening, a kvClash, or "Back to suggested keys" once a key is yours */
 function hintHTML(cols) {
-  if (kvClash) return `${kvClash.key} already holds the ${kvClash.other} stack. <button type="button" class="linkbtn" data-kv="swap">Swap them</button> <button type="button" class="linkbtn" data-kv="other">Pick another</button>`;
+  if (kvClash) return `${kvClash.key} already holds the ${GUIDE_KEYS && kvClash.other === "T" ? "right-click" : kvClash.other} stack. <button type="button" class="linkbtn" data-kv="swap">Swap them</button> <button type="button" class="linkbtn" data-kv="other">Pick another</button>`;
   if (kvListen) return "Press the key you use for this stack in game. Esc cancels.";
-  return cols.some(mine) ? `<button type="button" class="linkbtn" data-kv="reset">Back to suggested keys</button>` : "";
+  return cols.some(kvMine) ? `<button type="button" class="linkbtn" data-kv="reset">Back to suggested keys</button>` : "";
 }
 let kvCols = [];
 const setKeys = m => { const keys = Object.fromEntries(Object.entries(m).filter(([c, k]) => k !== c));
-  if (Object.keys(keys).length) char(state).keys = keys; else delete char(state).keys; save(); };
+  if (Object.keys(keys).length) char(state).keyBinds = keys; else delete char(state).keyBinds; save(); };
 /* a key pressed while listening: Esc cancels; a key another column holds asks first (the kvClash state) */
 function onListenKey(e) {
   if (!kvListen) return;
@@ -39,7 +39,7 @@ function onListenKey(e) {
     const key = e.key === " " ? "Space" : e.key.length === 1 ? e.key.toUpperCase() : e.key;
     const other = kvCols.find(c => c !== col && kvKeyOf(c) === key);
     if (other) kvClash = { col, key, other };
-    else setKeys({ ...(char(state).keys || {}), [col]: key });
+    else setKeys({ ...(char(state).keyBinds || {}), [col]: key });
   }
   renderRotation(); focusChip(col);
 }
@@ -48,7 +48,7 @@ function onKeysClick(e) {
   if (chip) { kvListen = chip.dataset.col; kvClash = null; renderRotation(); focusChip(kvListen); return; }
   if (!act) return;
   const a = act.dataset.kv, c = kvClash; kvClash = null;
-  if (a === "swap" && c) setKeys({ ...(char(state).keys || {}), [c.col]: c.key, [c.other]: kvKeyOf(c.col) });
+  if (a === "swap" && c) setKeys({ ...(char(state).keyBinds || {}), [c.col]: c.key, [c.other]: kvKeyOf(c.col) });
   if (a === "other" && c) kvListen = c.col;
   if (a === "reset") setKeys({});
   renderRotation(); focusChip(c ? c.col : kvCols[0]);
