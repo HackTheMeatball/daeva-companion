@@ -27,16 +27,18 @@ import { join } from 'node:path';
 
 const read = (root, f) => JSON.parse(readFileSync(join(root, 'data', f), 'utf8'));
 
-export function loadOracle({ root, apply = new Set() }) {
+/* cls (0.9 P12): the class whose guide, skills, board nodes and build the oracle reads (default the Assassin) */
+export function loadOracle({ root, apply = new Set(), cls = 'assassin' }) {
   const recs = f => read(root, f).records;
-  /* the guide steps: the shared Asmodian guide's and the Assassin's (0.6 P3), in id order as one file had them */
-  const story = recs('packs/aion2/asmodian/story-quests.json'), steps = [...recs('packs/aion2/asmodian/guide/steps.json'), ...recs('packs/aion2/asmodian/assassin/guide/steps.json')]
+  if (!/^[a-z]+$/.test(cls)) throw new Error('oracle: class id ' + cls);
+  /* the guide steps: the shared Asmodian guide's and the class's (0.6 P3), in id order as one file had them */
+  const story = recs('packs/aion2/asmodian/story-quests.json'), steps = [...recs('packs/aion2/asmodian/guide/steps.json'), ...recs(`packs/aion2/asmodian/${cls}/guide/steps.json`)]
     .sort((a, b) => (a.id < b.id ? -1 : 1));
   const rqs = recs('packs/aion2/asmodian/regional-quests.json'), sds = recs('packs/aion2/asmodian/sealed-dungeons.json');
   const shs = recs('packs/aion2/asmodian/strongholds.json'), unlocks = recs('packs/aion2/asmodian/unlocks.json');
   const ascs = recs('packs/aion2/asmodian/ascension-quests.json'), boards = recs('packs/aion2/boards.json');
-  const skills = recs('packs/aion2/classes/assassin/skills.json'), bnodes = recs('packs/aion2/classes/assassin/board-nodes.json');
-  const build = recs('packs/aion2/asmodian/assassin/builds.json')[0], rules = Object.fromEntries(recs('packs/aion2/rules.json').map(r => [r.id, r]));
+  const skills = recs(`packs/aion2/classes/${cls}/skills.json`), bnodes = recs(`packs/aion2/classes/${cls}/board-nodes.json`);
+  const build = recs(`packs/aion2/asmodian/${cls}/builds.json`)[0], rules = Object.fromEntries(recs('packs/aion2/rules.json').map(r => [r.id, r]));
 
   /* the story chain: start at the quest no other quest names as `next`, follow `next` */
   const sById = new Map(story.map(s => [s.id, s])), named = new Set(story.map(s => s.next).filter(Boolean));

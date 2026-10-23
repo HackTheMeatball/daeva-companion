@@ -9,7 +9,7 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { classChunk as chunkOf, generate, generateAll } from '../tools/gen/gen.mjs';
+import { classChunk as chunkOf, generate, generateAll, tablesOf } from '../tools/gen/gen.mjs';
 import { DEFAULT_PACK } from '../tools/gen/packs.mjs';
 import { dataFiles } from '../tools/gen/validate.mjs';
 
@@ -62,13 +62,34 @@ const arrange = text => { const L = text.split('\n'), isTable = l => l.startsWit
 const MODULES = { 'generated.js': () => served(arrange(genResult().module)), 'gate-graph.js': () => served(genResult().gateModule), 'gate-proposed.js': () => served(genResult().proposedModule), 'place.js': () => served(genResult().placeModule) };
 /* a stored copy of a generated module (in the pack's data folder, or the pre-0.4 src/data), else null */
 export const staleGenerated = () => [DATA_DIR, 'src/data'].flatMap(d => Object.keys(MODULES).map(f => d + '/' + f)).find(f => existsSync(P(f))) || null;
-export const generatedData = {
-  name: 'generated-data',
+const pluginOf = (name, text) => ({
+  name,
   setup(b) {
     b.onResolve({ filter: /^(\.\.?\/)+([\w-]+\/)*(generated|gate-graph|gate-proposed|place)\.js$/ }, a => {
       const f = Object.keys(MODULES).find(f => join(a.resolveDir, a.path) === P(DATA_DIR, f));
       return f ? { path: 'data/' + f, namespace: 'generated' } : undefined;
     });
-    b.onLoad({ filter: /.*/, namespace: 'generated' }, a => ({ contents: MODULES[a.path.slice('data/'.length)](), loader: 'js', resolveDir: P(DATA_DIR), watchFiles: dataFiles() }));
+    b.onLoad({ filter: /.*/, namespace: 'generated' }, a => ({ contents: text(a.path.slice('data/'.length)), loader: 'js', resolveDir: P(DATA_DIR), watchFiles: dataFiles() }));
   },
+});
+export const generatedData = pluginOf('generated-data', f => MODULES[f]());
+/* The Node suites' modules for one guide pack (0.9 P12: the invariant suite per class): the default pack's modules with
+   every table that pack has differently served as its own value, as the page sees it once that class's chunk set
+   DAEVA_CLASS (gen.mjs classChunk writes the same JSON). mutate (tests only): a data edit for that pack's generate, in
+   memory (packs.mjs fsView), so a test can seed a bug into one class's data behind the oracle's back. */
+export const generatedDataFor = (pack, { mutate = null } = {}) => {
+  if (pack === DEFAULT_PACK && !mutate) return generatedData;
+  let own = null;
+  const tables = () => {
+    if (own) return own;
+    const g = generate({ pack, ...(mutate ? { mutate } : {}) });
+    if (g.failed.length) throw new Error(`${pack}: data checks failed (${g.failed.length}): ` + g.failed.slice(0, 5).map(c => c.check).join('; '));
+    return (own = { t: tablesOf(g), def: tablesOf(genResult()) });
+  };
+  return pluginOf('generated-data:' + pack, f => MODULES[f]().replace(/^export const (\w+) = .*;$/gm, (line, n) => {
+    const { t, def } = tables();
+    if (!(n in t)) throw new Error(`${pack}: no table ${n}`);
+    const v = JSON.stringify(t[n]);
+    return v === JSON.stringify(def[n]) ? line : `export const ${n} = ${v};`;
+  }));
 };

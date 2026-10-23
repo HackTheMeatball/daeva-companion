@@ -34,6 +34,15 @@ const { fnv } = createRequire(import.meta.url)('../golden/states.js');
 /* (E3 pinned "blocked story sq:2102800 [level]" here: "Turned in" on Forgotten Commander at Lv 44 with every objective
    ticked. E4 fixes it: the turn-in waits for the quest's unlock level, turnInNeedsLv; core nextup.test.mjs pins it.) */
 export const KNOWN = {};
+/* 0.9 P12: nodes the oracle builds that GATE_GRAPH lacks, per class (exactly these; one more or fewer fails). The Chanter's
+   build picks specialties for two non-core skills: the oracle gives every non-passive skill with a pick its 3 slots,
+   tools/gen/gen.mjs only core skills. Found by P12 (#633), reported for its own fix there; the evaluator file skips these
+   nodes (the app has none to compare). */
+export const KNOWN_NODES = {
+  chanter: { cause: 'gen: specialty slots only for core skills; oracle: every skill with a pick (Impactful Crush, Tremor Crush)',
+    nodes: ['sp:impactful-crush:spec', 'sp:impactful-crush:spec2', 'sp:impactful-crush:spec3', 'sp:tremor-crush:spec', 'sp:tremor-crush:spec2', 'sp:tremor-crush:spec3'] },
+};
+export const pinnedNodes = cls => new Set((KNOWN_NODES[cls] || {}).nodes || []);
 /* invariant 3's Ascension steps (step nodes; the test fails unless all three exist, so a rename can't empty it) */
 const ASC_IDS = ['g22:0', 'g32:dreams', 'g45:witness'];
 
@@ -57,8 +66,12 @@ export default (test, M, X) => {
   const ASC = ASC_IDS.filter(n => N[n] && N[n].kind === 'step' && O.ids.includes(n));
 
   test('oracle: the same nodes and story chain as GATE_GRAPH (built independently from data/**)', () => {
-    assert.deepEqual(O.ids.slice().sort(), Object.keys(N).sort());
+    const pin = pinnedNodes(X.cls);
+    assert.deepEqual(O.ids.filter(n => !N[n]).sort(), [...pin].sort(), `the oracle's nodes GATE_GRAPH lacks (pinned: KNOWN_NODES.${X.cls || 'assassin'})`);
+    assert.deepEqual(O.ids.filter(n => !pin.has(n)).sort(), Object.keys(N).sort());
     assert.deepEqual(O.chain, M.GATE_GRAPH.story);
+    /* tests/invariant.mjs counts these lines: one per class (0.9 P12) */
+    console.log(`     chain: ${X.cls || 'assassin'} · ${O.chain.length} story quests · ${O.ids.length} nodes`);
   });
 
   test(`${states.length} states loaded, migrated and deep-frozen`, () => {
@@ -164,8 +177,9 @@ export default (test, M, X) => {
       '| Disagreement | States | Example | Cause (KNOWN) |', '|---|---|---|---|',
       ...rows.map(([k, x]) => `| ${k} | ${x.n} (${[...x.ids].sort().join(', ').slice(0, 200)}) | ${x.ex.replace(/\|/g, '/')} | ${KNOWN[k] ? KNOWN[k].cause : '**not in KNOWN**'} |`)].join('\n');
     mkdirSync(join(root, 'tests/out'), { recursive: true });
-    writeFileSync(join(root, 'tests/out/invariant.md'), md + '\n');
-    console.log(`     ${rows.length} disagreement kinds (tests/out/invariant.md)`);
+    const file = `tests/out/invariant${X.cls ? '-' + X.cls : ''}.md`;
+    writeFileSync(join(root, file), md + '\n');
+    console.log(`     ${rows.length} disagreement kinds (${file})`);
     const unknown = rows.filter(([k]) => !KNOWN[k]).map(([k, x]) => `${k} · ${x.n} states, e.g. ${x.ex}`);
     assert.deepEqual(unknown, [], 'disagreements not in KNOWN');
     /* every KNOWN key is hit by exactly its pinned states (with --state: the pinned ones that were run) */
