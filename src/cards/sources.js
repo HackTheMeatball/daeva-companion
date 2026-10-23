@@ -19,8 +19,9 @@ export function renderConfidence(el, { CONF }) {
 export function renderSources(el, { SOURCES, SRC_SITE }) {
   const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
   const body = el.querySelector("#srcBody"), n = Array.isArray(SOURCES) ? SOURCES.reduce((t, g) => t + g.links.length, 0) : SOURCES.n;
-  body.innerHTML = `<p class="fine src-intro">${esc(activePack().text.sourcesIntro || "").replace("{n}", n)}</p>`;
-  if (Array.isArray(SOURCES)) { body.insertAdjacentHTML("beforeend", sourceRows(SOURCES, SRC_SITE)); return; }
+  const intro = `<p class="fine src-intro">${esc(activePack().text.sourcesIntro || "").replace("{n}", n)}</p>`;
+  body.innerHTML = Array.isArray(SOURCES) ? intro + sourceRows(SOURCES, SRC_SITE) : intro;
+  if (Array.isArray(SOURCES)) return;
   let phase = 0; /* 0 not loaded, 1 loading, 2 drawn */
   const load = () => {
     if (phase || !el.open) return;
