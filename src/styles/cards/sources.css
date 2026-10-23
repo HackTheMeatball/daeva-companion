@@ -14,7 +14,7 @@
 #srcBody .src-what { color: var(--muted); font-size: 12.5px; }
 #srcBody .src-intro { margin-bottom: var(--space-8) !important; }
 /* the plain link to sources.html (0.9 P23): below the site rows, under a rule like theirs */
-#srcCard .src-page { margin: 0; padding-top: var(--space-8); border-top: 1px solid var(--line); }
+#srcCard .src-page { margin: 0; max-width: none;padding-top: var(--space-8); border-top: 1px solid var(--line); }
 #srcCard .src-page a { color: var(--fg); text-decoration-color: var(--accent); text-underline-offset: 3px; }
 @media (max-width: 520px) { #srcBody .srcg > summary { grid-template-columns: minmax(0, 1fr) 36px; } #srcBody .src-what { grid-column: 1 / -1; } }
 /* The whole card top is the hit area: the summary grows over the card's padding (no visual change). */

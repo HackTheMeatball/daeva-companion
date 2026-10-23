@@ -1,0 +1,10 @@
+[
+  { "case": "card-open-1500", "kind": "before-after", "title": "Sources card links one full list",
+    "caption": "The open Sources card shows the same site rows as before and now ends on a link to every source page, on one page." },
+  { "case": "card-closed-390", "kind": "before-after", "title": "The closed card on a phone",
+    "caption": "Closed, the Sources card looks as before; its page lists now load only when you open it." },
+  { "case": "sources-page-1500", "kind": "screenshot", "title": "A page with every source",
+    "caption": "A new plain page lists all 810 source pages for every class, grouped by site, with the data notice and the unofficial line." },
+  { "case": "sources-page-390", "kind": "screenshot", "title": "The sources page on a phone",
+    "caption": "On a phone the sources page is one column of links under each site's name." }
+]
