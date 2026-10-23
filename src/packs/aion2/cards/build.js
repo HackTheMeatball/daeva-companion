@@ -165,11 +165,15 @@ function renderStacks(lv) {
   const cols = [["Q", k.q], ["E", E_STACK(lv)], ["T", k.rmb]];
   kvCols = cols.map(([key]) => key); kvTop = Object.fromEntries(cols.map(([key, rows]) => [key, (rows.find(Boolean) || "").replace(/\*/g, "")]));
   const yours = kvCols.some(kvMine), ks = kvCols.map(kvKeyOf);
+  /* the wide panel puts the game's default keys in its right column, under the macro (README §11); the drawer's fold and
+     the phone keep them under the grid */
+  const wide = document.getElementById("statDrawer").classList.contains("kv-wide");
+  setHTML(document.getElementById("kvDefs"), wide ? defaultKeysNote(lv) : "");
   setHTML(document.getElementById("stackViz"),
     `<p class="fine muted kv-sugg">${yours ? "Your keys" : "Suggested keys"}: ${ks[0]}, ${ks[1]} and ${ks[2]} (${ks[2]} holds the stack the right-click macro fires). Move the skills there yourself.${E_ST ? ` The stigma order on ${ks[1]} is unsure:` + stTag(E_ST) : ""}</p>` +
     [3, 2, 1, 0].map(r => `<i class="rn">${r}</i>` + cols.map(([key, rows], i) => cell(rows[r], key, r, tipSide(i, cols.length)).replace('class="sk', `class="sk${r === 0 ? " r0" : ""}`)).join("")).join("") +
     `<span></span>` + cols.map(([key]) => chipHTML(key)).join("") +
-    lmb.map(n => `<p class="lmb">Left click: <span class="sk">${gridIco(n)}<span class="nm">${n}</span></span></p>`).join("") + defaultKeysNote(lv) + stLaterHTML());
+    lmb.map(n => `<p class="lmb">Left click: <span class="sk">${gridIco(n)}<span class="nm">${n}</span></span></p>`).join("") + (wide ? "" : defaultKeysNote(lv)) + stLaterHTML());
   kvAfter(lv);
 }
 /* after either grid: one Tab stop for its boxes, the hint, the phone's picker, the panel's level and the macro */
@@ -341,6 +345,7 @@ function aion2BuildMount() {
     const wide = () => { const on = !sheetQ.matches && fold.open && d.classList.contains("open");
       if (on === d.classList.contains("kv-wide")) return;
       d.classList.toggle("kv-wide", on); head.textContent = on ? "Key setup" : "Stat priority"; kvLv.hidden = back.hidden = !on;
+      renderRotation(); /* the game's default keys change columns (renderStacks) */
       document.getElementById("sdPanel").scrollTop = 0;
       if (on) requestAnimationFrame(() => back.focus({ preventScroll: true })); };
     const unwide = () => { fold.open = false; wide(); fold.querySelector("summary").focus({ preventScroll: true }); };

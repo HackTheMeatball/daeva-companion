@@ -342,7 +342,8 @@ async function load(p, state, mode) {
     const shown = [...v.querySelectorAll(':scope > .sk .nm')].filter(n => n.getBoundingClientRect().width > 1).map(n => n.textContent);
     const noIco = cells.filter(c => !c.classList.contains('empty') && !c.querySelector('img.kv-ico')).map(c => c.textContent);
     const icoSmall = cells.filter(c => { const i = c.querySelector('img.kv-ico'); return i && i.getBoundingClientRect().width < c.getBoundingClientRect().width - 4; }).map(c => c.textContent);
-    const keys = [...v.querySelectorAll(':scope > .kv-key')], row0 = cells.slice(-keys.length), note = v.querySelector('.kv-note'), lmb = v.querySelector('.lmb');
+    /* the wide panel (0.9 P22b, README §11) lists the game's default keys in its right column, under the macro */
+    const keys = [...v.querySelectorAll(':scope > .kv-key')], row0 = cells.slice(-keys.length), note = v.querySelector('.kv-note') || document.querySelector('#kvDefs .kv-note'), lmb = v.querySelector('.lmb');
     const keyBad = keys.map((k, i) => { const b = k.getBoundingClientRect(), c = row0[i].getBoundingClientRect();
       return b.height > 30 || b.height < 24 || b.top < c.bottom || b.left < c.left - 1 || b.right > c.right + 1 || k.tagName !== 'BUTTON' ? k.textContent : null; }).filter(Boolean);
     const named = cells.filter(c => !c.classList.contains('empty')), cols = ['Q', 'E', 'T'];
@@ -353,7 +354,9 @@ async function load(p, state, mode) {
       marked: keys.filter(k => /†/.test(k.textContent + getComputedStyle(k, '::after').content)).map(k => k.textContent),
       head: (h => !!h && h === v.firstElementChild && h.getBoundingClientRect().bottom <= cells[0].getBoundingClientRect().top + 0.5 ? h.textContent : '')(v.querySelector(':scope > .kv-sugg')),
       lmbBelow: !!lmb && lmb.getBoundingClientRect().top >= keys[0].getBoundingClientRect().bottom,
-      noteBelow: !!note && !!lmb && note.getBoundingClientRect().top >= lmb.getBoundingClientRect().bottom,
+      noteBelow: !!note && !!lmb && (v.contains(note) ? note.getBoundingClientRect().top >= lmb.getBoundingClientRect().bottom
+        : document.getElementById('statDrawer').classList.contains('kv-wide') && note.getBoundingClientRect().left >= v.getBoundingClientRect().right
+          && note.getBoundingClientRect().top >= document.getElementById('kvMacro').getBoundingClientRect().bottom),
       defs: (lis => ({ head: (note && note.querySelector(':scope > .khead') || {}).textContent || '',
         rows: lis.map(li => (li.querySelector('.kv-key') || {}).textContent + '|' + [...li.childNodes].filter(n => n.nodeType === 3).map(n => n.textContent).join('').trim()),
         chipFirst: !!lis.length && lis.every(li => { const c = li.firstElementChild; return !!c && c === li.firstChild && c.classList.contains('kv-key') && c.getBoundingClientRect().height <= 24; }),
@@ -370,8 +373,9 @@ async function load(p, state, mode) {
     ok(`keys ${id}: the grid's boxes are one Tab stop`, kv.stops === 1, kv.stops);
     /* 0.8 P14 (#503): the game's columns (research-387-macro): Q, E and T (the macro's stack), all three the guide's
        suggested binding, said once in a line heading the grid (Design Lead on #565: no † per chip); left click (the
-       game's default) its own line under them, then the game's default keys */
-    ok(`keys ${id}: key chips Q / E / T (buttons 24–30 px tall, rev 2.2 §5) on one line under their columns, Left click under them, the defaults note under that`,
+       game's default) its own line under them, then the game's default keys (in the wide panel: its right column, under the
+       macro, README §11; Design Lead local review on #866) */
+    ok(`keys ${id}: key chips Q / E / T (buttons 24–30 px tall, rev 2.2 §5) on one line under their columns, Left click under them, the defaults note under that (wide panel: right column, under the macro)`,
       kv.keys.join('|') === 'Q|E|T' && !kv.keyBad.length && kv.lmbBelow && kv.noteBelow, kv);
     /* 0.9 P17: the same line ends on the E stack's label (keyStacks.eOrderStatus: disputed, C21b), as a sentence (#774
        Design Lead: "The stigmas on E: check in game" was a fragment) */
