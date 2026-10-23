@@ -395,8 +395,10 @@ async function load(p, state, mode) {
     ok(`${id}: one macro, headed "Macro on right click" with no step count (one step)`, r.head === 'Macro on right click', r.head);
     /* 0.9 P22b (#855): on desktop the open fold is the wide Key setup panel: "Key setup · Lv N" heading, the grid left and the
        macro right, the Rotation hidden; Tab from the grid's one stop reaches the chips; Esc folds it back into the drawer
-       (focus on the "Key setup ↑" summary, the drawer still open), and opening the summary again brings it back */
-    r = await p.evaluate(() => { const d = document.getElementById('statDrawer'), b = s => document.querySelector(s).getBoundingClientRect();
+       (focus on the "Key setup ↑" summary, the drawer still open), and opening the summary again brings it back; its own r,
+       so the macro checks below read theirs */
+    {
+    let r = await p.evaluate(() => { const d = document.getElementById('statDrawer'), b = s => document.querySelector(s).getBoundingClientRect();
       return { wide: d.classList.contains('kv-wide'), w: Math.round(b('#sdPanel').width), head: [...d.querySelector('.sd-head').children].filter(e => !e.hidden).map(e => e.textContent).join(' '),
         sideBySide: b('#kvMacro').left >= b('#stackViz').right, rot: getComputedStyle(document.getElementById('rotPlay')).display, up: getComputedStyle(document.querySelector('.kv-fold .kv-up')).display }; });
     ok(`${id}: the open Key setup is the wide panel (up to 820 px), headed "Key setup Lv 27", grid left and macro right, the Rotation hidden`,
@@ -413,6 +415,7 @@ async function load(p, state, mode) {
     await p.keyboard.press('Enter'); await p.waitForTimeout(120);
     r = await p.evaluate(() => ({ wide: document.getElementById('statDrawer').classList.contains('kv-wide'), f: document.activeElement.id }));
     ok(`${id}: Enter on "Key setup ↑" opens the panel again, focus on Back to Build`, r.wide && r.f === 'kvBack', r);
+    }
     ok(`${id}: its one step names the T key and Quick Use 2, the whole stack, row 0 first, no delay`, r.steps.length === 1 && r.steps[0] === 'T: Quick Use 2 · the whole T stack, row 0 first', r.steps);
     /* the how-to is a numbered list with bold lead-ins, make then bind (Design Lead on #853, rev 2.2 §3: was two lines) */
     ok(`${id}: the numbered how-to: make (the 10 ms default, no 2+ steps line), then put it on right click`, r.fine.length === 2 && r.lead.join('|') === 'Make the macro:|Put it on right click'

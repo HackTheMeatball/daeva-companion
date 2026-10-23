@@ -320,7 +320,9 @@ function aion2BuildMount() {
      It starts level with the top of the cards row and sticks 16px from the top once you scroll past it. */
   (() => {
     const place = () => { const g = document.querySelector("#main .top-grid"), d = document.getElementById("statDrawer");
-      if (g && d) d.style.top = Math.max(16, Math.round(g.getBoundingClientRect().top)) + "px"; };
+      if (g && d) { const top = Math.max(16, Math.round(g.getBoundingClientRect().top)); d.style.top = top + "px";
+        /* the Key setup panel's height stops above the window's bottom edge (build.css .kv-wide) */
+        d.style.setProperty("--sd-top", top + "px"); } };
     addEventListener("scroll", place, { passive: true }); addEventListener("resize", place); requestAnimationFrame(place);
   })();
   (() => {

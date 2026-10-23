@@ -64,7 +64,7 @@
 .kv-up, .kv-back[hidden] { display: none; }
 @media (min-width: 601px) {
   .kv-up { display: inline; }
-  .statdrawer.open.kv-wide .sd-panel { width: min(820px, 60vw); }
+  .statdrawer.open.kv-wide .sd-panel { width: min(820px, 60vw); max-height: calc(100vh - var(--sd-top, 16px) - 16px); max-height: calc(100dvh - var(--sd-top, 16px) - 16px); }
   .statdrawer.kv-wide .sd-panel > :not(.sd-head, .sd-rot), .statdrawer.kv-wide .sd-rot > :not(.tfoot), .statdrawer.kv-wide .kv-fold > summary { display: none; }
   .statdrawer.kv-wide .sd-rot { margin-top: 0; padding-top: 0; border-top: 0; }
   .statdrawer.kv-wide .sd-rot .tfoot { margin-top: 0; }
