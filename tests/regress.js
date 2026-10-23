@@ -59,6 +59,8 @@ const setState = async (p, args) => { await writeFixture(p, args); await p.reloa
   {
     const ctx = await b.newContext({ viewport: { width: 1500, height: 1000 } }), p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
     await p.goto(CUR); await p.waitForTimeout(300);
+    /* the Sources lists load when the card first opens (0.9 P23) */
+    await p.evaluate(() => { document.getElementById('srcCard').open = true; }); await p.waitForSelector('#srcBody .srcg', { state: 'attached' });
     const s = await p.evaluate(() => ({ badAfter: RQ.flatMap(q => q.after.filter(n => !RQ_BY[n]).map(n => q.name + ' → ' + n)), badStory: RQ.filter(q => q.story && QUESTS.findIndex(x => x[1] === q.story) < 0).map(q => q.name + ' → ' + q.story),
       last: [QUESTS[QUESTS.length - 1][0], questNameOf(QUESTS[QUESTS.length - 1][1])], shRw: AREA_ITEMS.filter(x => x.it.kind === 'stronghold').map(x => CLEAR_REWARD(x.k)), sdRw: [...new Set(AREA_ITEMS.filter(x => x.it.kind === 'hideout').map(x => JSON.stringify(CLEAR_REWARD(x.k))))],
       xpLoc: Object.values(AREA_LOC).filter(v => 'xp' in v).length, noPre: RQ.filter(q => !q.story && !q.after.length && q.unlocksAt <= 10).map(q => q.name + ' (rec ' + q.rec + ')'),
@@ -366,6 +368,7 @@ const setState = async (p, args) => { await writeFixture(p, args); await p.reloa
         if (width === 1500) await p.screenshot({ path: path.join(SHOTS, `${width}-${mode}-${L}-full.png`), fullPage: true });
       }
       if (width === 1500) { await setState(p, { L: 27, mode: 'advanced', fx: 'clean' });
+        await p.evaluate(() => { document.getElementById('srcCard').open = true; }); await p.waitForSelector('#srcBody .srcg', { state: 'attached' }); /* lists load on open (0.9 P23) */
         await p.evaluate(() => { document.querySelectorAll('#srcCard details, #confCard details, #srcCard, #confCard').forEach(d => { if (d.tagName === 'DETAILS') d.open = true; }); (document.getElementById('srcCard')).scrollIntoView(); });
         await p.waitForTimeout(200); await (await p.$('#srcCard')).screenshot({ path: path.join(SHOTS, 'sources-open.png') }).catch(() => {});
         await (await p.$('#confCard')).screenshot({ path: path.join(SHOTS, 'confidence-open.png') }).catch(() => {}); }

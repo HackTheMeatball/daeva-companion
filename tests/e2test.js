@@ -203,7 +203,9 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
   await setState(p, { L: 27, q: 'Preparations for Restoration', extra: { stLv: { "Triniel's Dagger": 9 }, stShards: 50 }, ticks: { 'g27:0': true } });
   const sp = await p.evaluate(() => stPlan().map(s => s.x.name + ' ' + s.L));
   ok('stigma upgrades: Triniel\'s Dagger to 10, then Illusive Clone toward 20', sp[0] === "Triniel's Dagger 10" && sp[1] === 'Illusive Clone 2' && sp[sp.length - 1] === 'Illusive Clone 20' && sp.length === 20, sp);
-  /* 9. Sources card: every URL in the data files is listed; plain links (no nofollow) */
+  /* 9. Sources card: every URL in the data files is listed once the card opens (0.9 P23: the lists load then); plain links (no nofollow) */
+  ok('Sources card: no link list before it opens (they load on open)', await p.evaluate(() => !document.getElementById('srcCard').open && !document.querySelector('#srcBody a')));
+  await p.evaluate(() => { document.getElementById('srcCard').open = true; }); await p.waitForSelector('#srcBody .srcg', { state: 'attached' });
   const links = await p.evaluate(() => [...document.querySelectorAll('#srcBody a')].map(a => [a.href, a.rel]));
   const hrefs = new Set(links.map(x => x[0]));
   const dataUrls = V1.dataUrls;   /* every URL in the v2 data records and sources.json pages */

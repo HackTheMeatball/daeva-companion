@@ -171,6 +171,15 @@ const checkReport = (label, m, want) => {
     ok('footer: Sources link + plain (dofollow) Metabot link', foot.links.some(l => l[0] === 'Sources' && l[1] === '#srcCard') && mb && /^https:\/\/metabot\.gg\//.test(mb[1]) && !/nofollow/.test(mb[2] || ''), foot.links);
     await p.click('#srcLink'); await p.waitForTimeout(150);
     ok('footer: the Sources link opens the Sources card', await p.evaluate(() => document.getElementById('srcCard').open));
+    /* 0.9 P23 (docs/research/2026-10-sources-credit.md conditions 1 and 4): the lists load when the card opens; then every
+       URL of the class's SOURCES has an <a> to that page with none of rel nofollow / sponsored / ugc, label unchanged */
+    await p.waitForSelector('#srcBody .srcg', { state: 'attached' });
+    const card = await p.evaluate(() => { const as = [...document.querySelectorAll('#srcBody a')].map(a => [a.getAttribute('href'), a.getAttribute('rel') || '', a.textContent]);
+      return { stub: SOURCES, lists: self.DAEVA_SOURCES, as, intro: document.querySelector('#srcBody .src-intro').textContent }; });
+    { const bad = (card.lists || []).flatMap(g => g.links).filter(([u, l]) => !card.as.some(([h, r, t]) => h === u && !/\b(nofollow|sponsored|ugc)\b/.test(r) && (t === l || l.endsWith(': ' + t))));
+      const n = (card.lists || []).reduce((t, g) => t + g.links.length, 0);
+      ok(`Sources card, opened: every one of its ${n} URLs has a plain <a> (no nofollow / sponsored / ugc), label unchanged`, n > 100 && !bad.length && card.as.length === n, bad.slice(0, 5));
+      ok('Sources card: the count line stands from load (stub n = the lists\' link count)', card.stub.n === n && card.intro.includes(String(n)), { stub: card.stub, intro: card.intro }); }
     ok('all icons load (no broken images)', await p.evaluate(() => [...document.images].filter(i => i.complete && i.naturalWidth === 0 && i.getAttribute('src')).map(i => i.getAttribute('src'))).then(x => !x.length), await p.evaluate(() => [...document.images].filter(i => i.complete && i.naturalWidth === 0).map(i => i.getAttribute('src'))));
     /* export without window.claude: visible button, plain Blob download of the saved state */
     await writeSave(p, { checks: { 'g22:0': true }, level: 27, open: {}, quest: 'Preparations for Restoration' });
@@ -202,6 +211,15 @@ const checkReport = (label, m, want) => {
       file: performance.getEntriesByType('resource').map(e => new URL(e.name).pathname).filter(x => /\/packs\/[\w.-]+\.js$/.test(x)), html: [...document.scripts].filter(s => s.src).map(s => new URL(s.src).pathname) }));
     ok('offline: the current character\'s class chunk (packs/<id>.<hash>.js) loads from the service worker cache', offChunk.pack === offChunk.pack2 && offChunk.tables > 0 && offChunk.file.length === 1
       && offChunk.html.some(x => x === offChunk.file[0]) && fs.readFileSync(path.join(CFG.ROOT, 'dist', 'sw.js'), 'utf8').includes(`"${offChunk.file[0].slice(1)}"`), offChunk);
+    /* 0.9 P23: the Sources lists are a file of their own (dist/sources/<id>.<hash>.js), precached: the card opens offline */
+    {
+      await p.evaluate(() => { document.getElementById('srcCard').open = true; });
+      const got = await p.waitForSelector('#srcBody .srcg', { state: 'attached', timeout: 5000 }).then(() => true, () => false);
+      const offSrc = await p.evaluate(() => ({ rows: document.querySelectorAll('#srcBody .srcg').length, links: document.querySelectorAll('#srcBody a').length, src: SOURCES.src,
+        file: performance.getEntriesByType('resource').map(e => new URL(e.name).pathname).filter(x => /\/sources\/[\w.-]+\.js$/.test(x)) }));
+      ok('offline: a reload opens Sources from the cache (sources/<id>.<hash>.js, precached by sw.js)', got && offSrc.rows > 0 && offSrc.links === (await p.evaluate(() => SOURCES.n))
+        && offSrc.file.length === 1 && offSrc.file[0] === '/' + offSrc.src && fs.readFileSync(path.join(CFG.ROOT, 'dist', 'sw.js'), 'utf8').includes(`"${offSrc.src}"`), offSrc);
+    }
     /* 0.8 P6: the sync line is a chunk of its own (dist/sync.<hash>.js), precached; with sync shown (the test flag) it
        mounts offline too */
     {
@@ -239,6 +257,33 @@ const checkReport = (label, m, want) => {
     ok('404: status 404 with the styled page and a link home', r404.status() === 404 && /Off the route/.test(await p.innerText('h1')) && await p.getAttribute('a.btn', 'href') === '/');
     const robots = await (await p.request.get(CFG.BASE + '/robots.txt')).text(), cname = await (await p.request.get(CFG.BASE + '/CNAME')).text();
     ok('robots.txt allows all + sitemap; CNAME is daevacompanion.com', /Allow: \//.test(robots) && /Sitemap: https:\/\/daevacompanion\.com\/sitemap\.xml/.test(robots) && cname.trim() === 'daevacompanion.com', { robots, cname });
+    await ctx.close();
+  }
+
+  /* 2c. the sources page (0.9 P23, docs/research/2026-10-sources-credit.md conditions 2 and 4): with script off, the card's
+     plain link reaches sources.html; it has every URL of data/DATA_SOURCES.md as an <a> with none of rel nofollow /
+     sponsored / ugc, carries DATA_SOURCES.md's notice, the unofficial line, thegameswiki's licence named and linked, and the
+     sitemap lists it */
+  {
+    const ctx = await b.newContext({ javaScriptEnabled: false, serviceWorkers: 'block' }), p = await ctx.newPage();
+    const md = fs.readFileSync(path.join(CFG.ROOT, 'data', 'DATA_SOURCES.md'), 'utf8');
+    const want = [...md.matchAll(/^\| \[(?:[^\]\\]|\\.)*\]\((https?:\/\/[^\s)]+(?:\([^\s)]*\)[^\s)]*)*)\) \| /gm)].map(m => m[1]), total = Number((md.match(/^(\d+) URLs · /m) || [])[1]);
+    const mdNotice = (() => { const L = md.split('\n'), i = L.findIndex(l => l.startsWith('Only facts were taken')); return i < 0 ? '' : L.slice(i, L.indexOf('', i)).join(' ').replace(/`/g, ''); })();
+    await p.goto(CFG.CUR);
+    const link = await p.evaluate(() => { const a = document.querySelector('#srcCard a[href="sources.html"]'); return a && { rel: a.getAttribute('rel'), target: a.getAttribute('target'), text: a.textContent }; });
+    ok('sources page: the Sources card has a plain link to sources.html in its markup (no script needed)', !!link && !link.rel && !link.target, link);
+    await p.evaluate(() => { document.getElementById('srcCard').open = true; });
+    const res = await Promise.all([p.waitForNavigation(), p.click('#srcCard a[href="sources.html"]')]).then(([r]) => r, () => null);
+    const pg = await p.evaluate(() => ({ url: location.pathname, as: [...document.querySelectorAll('a')].map(a => [a.getAttribute('href'), a.getAttribute('rel') || '']), text: document.body.innerText.replace(/\s+/g, ' '),
+      scripts: document.scripts.length, lic: [...document.querySelectorAll('section')].filter(s => /thegameswiki/.test(s.querySelector('h2').textContent)).map(s => [s.querySelector('.lic') && s.querySelector('.lic').textContent, (s.querySelector('.lic a') || {}).href]) }));
+    ok('sources page: reached from the card\'s link with script off (200, no script on the page)', !!res && res.status() === 200 && pg.url === '/sources.html' && pg.scripts === 0, { status: res && res.status(), url: pg.url, scripts: pg.scripts });
+    const bad = want.filter(u => !pg.as.some(([h, r]) => h === u && !/\b(nofollow|sponsored|ugc)\b/.test(r)));
+    ok(`sources page: every one of DATA_SOURCES.md's ${total} URLs has a plain <a> (no nofollow / sponsored / ugc)`, want.length === total && total > 500 && !bad.length && pg.as.every(([, r]) => !/\b(nofollow|sponsored|ugc)\b/.test(r)), bad.slice(0, 5));
+    ok('sources page: DATA_SOURCES.md\'s notice, word for word (thegameswiki CC BY-NC-SA 4.0, no endorsement)', !!mdNotice && pg.text.includes(mdNotice) && /thegameswiki quotations are CC BY-NC-SA 4\.0/.test(mdNotice) && /implies no endorsement/.test(mdNotice), mdNotice);
+    ok('sources page: "unofficial" and "not affiliated with or endorsed by NCSoft"', /unofficial/.test(pg.text) && /not affiliated with or endorsed by NCSoft/.test(pg.text));
+    ok('sources page: thegameswiki\'s licence named and linked beside its links (CC BY-NC-SA 4.0)', pg.lic.length === 1 && /CC BY-NC-SA 4\.0/.test(pg.lic[0][0] || '') && pg.lic[0][1] === 'https://creativecommons.org/licenses/by-nc-sa/4.0/', pg.lic);
+    const sitemap = await (await p.request.get(CFG.BASE + '/sitemap.xml')).text();
+    ok('sitemap.xml lists the sources page', sitemap.includes('<loc>https://daevacompanion.com/sources.html</loc>'), sitemap);
     await ctx.close();
   }
 

@@ -142,7 +142,12 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   const names = Object.keys(gen).filter(n => !unused.includes(n));
   ok('#11 the tables left out of the page are the unused ones only (none the page code reads)', unused.length <= 6 && await p.evaluate(ns => ns.every(n => { try { eval(n); return false; } catch (e) { return e instanceof ReferenceError; } }), unused), unused);
   const genWant = JSON.stringify(Object.fromEntries(names.map(n => [n, gen[n]])));
-  const have = await p.evaluate(ns => JSON.stringify(Object.fromEntries(ns.map(n => [n, eval(n)]))), names);
+  /* 0.9 P23: SOURCES on the page is a stub { n, src }; the lists are the file src, loaded when the Sources card opens
+     (self.DAEVA_SOURCES), so that is the value compared, and the stub's n is their link count */
+  await p.evaluate(() => { document.getElementById('srcCard').open = true; }); await p.waitForSelector('#srcBody .srcg', { state: 'attached' });
+  const stub = await p.evaluate(() => SOURCES);
+  ok('#11 SOURCES in the page: a stub with the link count and its sources/<id>.<hash>.js file', stub.n === gen.SOURCES.reduce((t, g) => t + g.links.length, 0) && /^sources\/[\w-]+\.[0-9a-f]{8}\.js$/.test(stub.src), stub);
+  const have = await p.evaluate(ns => JSON.stringify(Object.fromEntries(ns.map(n => [n, n === 'SOURCES' ? self.DAEVA_SOURCES : eval(n)]))), names);
   ok('#11 page carries the current generated data (the page has its values)', names.length >= 14 && have === genWant, { names: names.length, same: have === genWant });
 
   /* #12 Sources card */

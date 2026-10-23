@@ -40,7 +40,7 @@ import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { gzipSync } from 'node:zlib';
 import { build, transform } from 'esbuild';
-import { classChunk, dropTables, genAll, genModule, genResult, generatedData, generatedNames, pruneTables, splitClasses, staleGenerated, unusedTables } from './generated-data.mjs';
+import { classChunk, dropTables, genAll, genModule, genResult, generatedData, generatedNames, lazyTables, pruneTables, splitClasses, staleGenerated, unusedTables } from './generated-data.mjs';
 import { DEFAULT_PACK } from '../tools/gen/packs.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -85,6 +85,12 @@ pruneTables(unusedTables());
 splitClasses();
 const CLASS_PACKS = genAll().packs;
 if (!CLASS_PACKS.includes(DEFAULT_PACK)) die(`the default pack ${DEFAULT_PACK} is not a guide pack below data/packs`);
+/* the Sources card's link lists (0.9 P23, docs/ARCHITECTURE.md §4): each class's SOURCES is a file of its own,
+   sources/<id>.<hash>.js (precached), which sets self.DAEVA_SOURCES; the class chunk carries only { n, src }, and the card
+   (src/cards/sources.js) loads the file when it first opens. Every URL is also on sources.html, readable with no script. */
+const SRC_LISTS = Object.fromEntries(CLASS_PACKS.map(id => [id, `self.DAEVA_SOURCES=${JSON.stringify(genAll().tables[id].SOURCES)};\n`]));
+const sourcesFile = id => `sources/${id.replace(/\//g, '-')}.${createHash('sha256').update(SRC_LISTS[id]).digest('hex').slice(0, 8)}.js`;
+lazyTables({ SOURCES: id => ({ n: genAll().tables[id].SOURCES.reduce((t, g) => t + g.links.length, 0), src: sourcesFile(id) }) });
 const SAVE_KEY = (readFileSync(P('src/core/state.js'), 'utf8').match(/^export const KEY = "([\w-]+)";$/m) || [])[1] || die('src/core/state.js: no `export const KEY = "…";`');
 const minChunk = async id => (await transform(classChunk(id), { loader: 'js', minifyWhitespace: true, minifySyntax: true, minifyIdentifiers: false, charset: 'utf8', legalComments: 'inline' })
   .catch(x => die(`class chunk ${id}: ${x.message}`))).code;
@@ -287,6 +293,83 @@ if (/__APP_(VERSION|BUILD)__|__SYNC_CHUNK__/.test(web)) die('dist/index.html sti
 if (!web.includes(SYNC_FILE)) die(`dist/index.html does not name the sync chunk ${SYNC_FILE}`);
 if (!web.startsWith('<!doctype html>')) die('dist/index.html must start with <!doctype html>');
 
+/* the sources page (0.9 P23, docs/research/2026-10-sources-credit.md condition 2): dist/sources.html lists every URL of
+   data/DATA_SOURCES.md (all classes) as a plain link, label as there, by site in its order, with no script, so the
+   per-page credit links stay crawlable while the card loads its lists on open. Its notice is DATA_SOURCES.md's paragraph
+   (written by tools/gen from the data, never retyped here); a site whose data/packs/aion2/sources.json record names a
+   Creative Commons licence gets that licence, named and linked, beside its links. The Sources card links the page;
+   public/sitemap.xml lists it. */
+const sourcesPage = () => {
+  const md = readFileSync(P('data/DATA_SOURCES.md'), 'utf8'), lines = md.split('\n'), esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+  const at = lines.findIndex(l => l.startsWith('Only facts were taken'));
+  if (at < 0) die('data/DATA_SOURCES.md: no notice paragraph ("Only facts were taken …")');
+  const notice = lines.slice(at, lines.indexOf('', at)).join(' ');
+  const total = Number((md.match(/^(\d+) URLs · /m) || [])[1]) || die('data/DATA_SOURCES.md: no "<n> URLs · …" line');
+  const sites = [];
+  for (const l of lines) {
+    const h = l.match(/^## (.+) \((\d+)\)$/), row = l.match(/^\| \[((?:[^\]\\]|\\.)*)\]\((https?:\/\/[^\s)]+(?:\([^\s)]*\)[^\s)]*)*)\) \| /);
+    if (h) sites.push({ name: h[1], n: Number(h[2]), links: [] });
+    else if (l.startsWith('## ')) break; /* the generated reports after the site lists */
+    else if (row) sites.at(-1).links.push([row[2], row[1].replace(/\\(.)/g, '$1')]);
+  }
+  for (const s of sites) if (s.links.length !== s.n) die(`data/DATA_SOURCES.md: site "${s.name}" says ${s.n} URLs, ${s.links.length} rows read`);
+  const urls = sites.flatMap(s => s.links.map(x => x[0]));
+  if (urls.length !== total || new Set(urls).size !== total) die(`data/DATA_SOURCES.md: ${total} URLs, ${urls.length} rows read (${new Set(urls).size} distinct)`);
+  const recs = JSON.parse(readFileSync(P('data/packs/aion2/sources.json'), 'utf8')).records;
+  const host = u => new URL(u).hostname.replace(/^www\./, '');
+  const licence = s => { const r = recs.find(r => s.links.some(([u]) => (r.hosts || []).some(h => host(u) === h || host(u).endsWith('.' + h))));
+    const m = r && r.licence && /^CC-((?:BY|NC|SA|ND)(?:-(?:BY|NC|SA|ND))*)-(\d\.\d)$/.exec(r.licence.id);
+    return m ? `<p class="lic">${esc(r.name)} pages are licensed <a href="https://creativecommons.org/licenses/${m[1].toLowerCase()}/${m[2]}/">CC ${m[1]} ${m[2]}</a>.</p>` : ''; };
+  const md2html = t => esc(t).replace(/`([^`]+)`/g, '<code>$1</code>').replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>');
+  const css = readCss('styles/fonts.css', new Set()) + `:root{--bg:#110c13;--panel:#1a1320;--line:#33263c;--fg:#ece4ee;--muted:#9f90a8;--accent:#d0506f;--display:"Marcellus SC","Palatino Linotype",Georgia,serif;--body:"Figtree","Segoe UI",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,Consolas,monospace;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 var(--body)}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 48px}
+h1{font:400 30px/1.15 var(--display);margin:8px 0 10px}
+h2{font:400 20px/1.2 var(--display);margin:0 0 8px}
+h2 span{font:600 12px var(--mono);color:var(--muted);margin-left:8px}
+p{margin:0 0 12px;color:var(--muted)}
+code{font:13px var(--mono)}
+section{border-top:1px solid var(--line);padding:16px 0 8px}
+ul{columns:2 260px;margin:0;padding-left:18px;font-size:13.5px}
+li{margin-bottom:6px;break-inside:avoid}
+a{color:var(--fg);text-decoration-color:var(--accent);text-underline-offset:3px;overflow-wrap:anywhere}
+.back{font:600 13px var(--mono)}
+.lic{font-size:13px}
+`;
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sources · Daeva Companion</title>
+<meta name="description" content="Every page the data of Daeva Companion, an unofficial companion app for AION 2, comes from.">
+<link rel="canonical" href="https://daevacompanion.com/sources.html">
+<meta name="theme-color" content="#110c13">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+${css}</style>
+</head>
+<body>
+<main>
+<p class="back"><a href="./">← Daeva Companion</a></p>
+<h1>Sources</h1>
+<p>Daeva Companion is an unofficial fan-made companion app for AION 2, not affiliated with or endorsed by NCSoft (NC Corporation). These are the ${total} pages its game data comes from, for every class, grouped by site.</p>
+<p class="notice">${md2html(notice)}</p>
+${sites.map(s => `<section>
+<h2>${esc(s.name)}<span>${s.n}</span></h2>
+${licence(s)}<ul>
+${s.links.map(([u, l]) => `<li><a href="${esc(u)}">${esc(l)}</a></li>`).join('\n')}
+</ul>
+</section>`).join('\n')}
+</main>
+</body>
+</html>
+`;
+};
+const SOURCES_PAGE = sourcesPage();
+if (/<script/i.test(SOURCES_PAGE)) die('dist/sources.html must work with no script');
+
 /* output */
 rmSync(DIST, { recursive: true, force: true }); mkdirSync(DIST, { recursive: true });
 cpSync(P('public'), DIST, { recursive: true });
@@ -295,12 +378,16 @@ writeFileSync(join(DIST, 'index.html'), web);
 mkdirSync(join(DIST, 'packs'));
 for (const id of CLASS_PACKS) writeFileSync(join(DIST, chunkFile(id)), chunks[id]);
 writeFileSync(join(DIST, SYNC_FILE), syncJs);
+mkdirSync(join(DIST, 'sources'));
+for (const id of CLASS_PACKS) writeFileSync(join(DIST, sourcesFile(id)), SRC_LISTS[id]);
+writeFileSync(join(DIST, 'sources.html'), SOURCES_PAGE);
 
-/* service worker: build id = hash of everything it caches; the class chunks and the sync chunk are precached (offline after
-   the first visit) */
+/* service worker: build id = hash of everything it caches; the class chunks, the Sources lists and the sync chunk are
+   precached (offline after the first visit) */
 const files = walk(DIST).map(f => relative(DIST, f).split('\\').join('/')).sort();
-const precache = ['./', ...files.filter(f => f === 'index.html' || f === 'manifest.webmanifest' || f === 'favicon.svg' || /^(assets\/icons|icons)\/.+\.png$/.test(f) || /^assets\/icons\/.+\.webp$/.test(f) || /^assets\/fonts\/.+\.woff2$/.test(f) || /^packs\/[\w.-]+\.js$/.test(f) || f === SYNC_FILE)];
+const precache = ['./', ...files.filter(f => f === 'index.html' || f === 'manifest.webmanifest' || f === 'favicon.svg' || /^(assets\/icons|icons)\/.+\.png$/.test(f) || /^assets\/icons\/.+\.webp$/.test(f) || /^assets\/fonts\/.+\.woff2$/.test(f) || /^(packs|sources)\/[\w.-]+\.js$/.test(f) || f === SYNC_FILE)];
 for (const id of CLASS_PACKS) if (!precache.includes(chunkFile(id))) die(`class chunk ${chunkFile(id)} is not precached`);
+for (const id of CLASS_PACKS) if (!precache.includes(sourcesFile(id))) die(`Sources lists ${sourcesFile(id)} are not precached`);
 if (!precache.includes(SYNC_FILE)) die(`sync chunk ${SYNC_FILE} is not precached`);
 const h = createHash('sha256');
 for (const f of files) h.update(f + '\0').update(readFileSync(join(DIST, f)));
@@ -316,6 +403,8 @@ console.log(`build ${BUILD} · v${VERSION}`);
 console.log(`  dist/index.html            ${kb(join(DIST, 'index.html'))} · ${walk(DIST).length} files · precache ${precache.length}`);
 for (const id of CLASS_PACKS) console.log(`  ${('dist/' + chunkFile(id)).padEnd(26)} ${kb(join(DIST, chunkFile(id)))} · class chunk of ${id} (${genAll().perClass.length} tables; ${genAll().shared.length} shared in index.html)`);
 console.log(`  ${('dist/' + SYNC_FILE).padEnd(26)} ${kb(join(DIST, SYNC_FILE))} · sync chunk (src/${SYNC_ENTRY}; loaded only when sync is shown, not in the page budget)`);
+console.log(`  dist/sources/*.js           ${CLASS_PACKS.length} files, largest ${Math.max(...CLASS_PACKS.map(id => statSync(join(DIST, sourcesFile(id))).size / 1024)).toFixed(1)} KB · Sources lists (loaded when the card opens, not in the page budget)`);
+console.log(`  dist/sources.html          ${kb(join(DIST, 'sources.html'))} · every source URL, no script`);
 
 /* page budgets (0.4 P7): about 1.3x the 0.3.0 numbers; a PR that raises one says why (docs/ARCHITECTURE.md §4). The element
    budget is checked by the `site` suite. The site page is dist/index.html plus its largest class chunk (0.6 P2): what a
