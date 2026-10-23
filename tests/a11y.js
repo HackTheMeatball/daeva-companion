@@ -347,9 +347,9 @@ async function load(p, state, mode) {
       return b.height > 30 || b.height < 24 || b.top < c.bottom || b.left < c.left - 1 || b.right > c.right + 1 || k.tagName !== 'BUTTON' ? k.textContent : null; }).filter(Boolean);
     const named = cells.filter(c => !c.classList.contains('empty')), cols = ['Q', 'E', 'T'];
     const unnamed = named.filter(c => { const g = c.getAttribute('aria-label') || '', nm = c.querySelector('.nm').textContent;
-      return c.getAttribute('role') !== 'group' || c.tabIndex !== 0 || !g.startsWith(nm + ', ') || !cols.some(k => g.includes(', ' + k + ','))
+      return c.getAttribute('role') !== 'group' || c.tabIndex > 0 || !c.hasAttribute('tabindex') || !g.startsWith(nm + ', ') || !cols.some(k => g.includes(', ' + k + ','))
         || c.dataset.tip !== nm + ' · ' + g.slice(nm.length + 2); }).map(c => c.textContent);
-    return { n: cells.length, hs, notSquare, shown, icoSmall, noIco, unnamed, keys: keys.map(k => k.firstChild.textContent), keyBad,
+    return { n: cells.length, hs, notSquare, shown, icoSmall, noIco, unnamed, stops: named.filter(c => c.tabIndex === 0).length, keys: keys.map(k => k.firstChild.textContent), keyBad,
       marked: keys.filter(k => /†/.test(k.textContent + getComputedStyle(k, '::after').content)).map(k => k.textContent),
       head: (h => !!h && h === v.firstElementChild && h.getBoundingClientRect().bottom <= cells[0].getBoundingClientRect().top + 0.5 ? h.textContent : '')(v.querySelector(':scope > .kv-sugg')),
       lmbBelow: !!lmb && lmb.getBoundingClientRect().top >= keys[0].getBoundingClientRect().bottom,
@@ -365,6 +365,9 @@ async function load(p, state, mode) {
     ok(`keys ${id}: no skill name is drawn in a box (it's the accessible name and the tooltip)`, !kv.shown.length, kv.shown);
     ok(`keys ${id}: every filled cell shows its icon, filling the box`, !kv.noIco.length && !kv.icoSmall.length, kv);
     ok(`keys ${id}: every filled cell is focusable, its accessible name and tooltip carry its name, key and row`, !kv.unnamed.length, kv.unnamed);
+    /* 0.9 P22b (#855 builder note): the grid is one Tab stop (roving tabindex, the arrows move), so Tab reaches the key chips
+       after one stop instead of twelve (was: every filled cell tabindex 0) */
+    ok(`keys ${id}: the grid's boxes are one Tab stop`, kv.stops === 1, kv.stops);
     /* 0.8 P14 (#503): the game's columns (research-387-macro): Q, E and T (the macro's stack), all three the guide's
        suggested binding, said once in a line heading the grid (Design Lead on #565: no † per chip); left click (the
        game's default) its own line under them, then the game's default keys */
@@ -390,6 +393,26 @@ async function load(p, state, mode) {
         drawer: document.getElementById('statDrawer').textContent };
     });
     ok(`${id}: one macro, headed "Macro on right click" with no step count (one step)`, r.head === 'Macro on right click', r.head);
+    /* 0.9 P22b (#855): on desktop the open fold is the wide Key setup panel: "Key setup · Lv N" heading, the grid left and the
+       macro right, the Rotation hidden; Tab from the grid's one stop reaches the chips; Esc folds it back into the drawer
+       (focus on the "Key setup ↑" summary, the drawer still open), and opening the summary again brings it back */
+    r = await p.evaluate(() => { const d = document.getElementById('statDrawer'), b = s => document.querySelector(s).getBoundingClientRect();
+      return { wide: d.classList.contains('kv-wide'), w: Math.round(b('#sdPanel').width), head: [...d.querySelector('.sd-head').children].filter(e => !e.hidden).map(e => e.textContent).join(' '),
+        sideBySide: b('#kvMacro').left >= b('#stackViz').right, rot: getComputedStyle(document.getElementById('rotPlay')).display, up: getComputedStyle(document.querySelector('.kv-fold .kv-up')).display }; });
+    ok(`${id}: the open Key setup is the wide panel (up to 820 px), headed "Key setup Lv 27", grid left and macro right, the Rotation hidden`,
+      r.wide && r.w > 700 && r.w <= 820 && /^Key setup Lv 27 Back to Build ×$/.test(r.head.trim()) && r.sideBySide && r.rot === 'none' && r.up === 'inline', r);
+    await p.focus('#stackViz > .sk[tabindex="0"]'); await p.keyboard.press('ArrowRight'); await p.keyboard.press('ArrowUp'); await p.waitForTimeout(30);
+    r = await p.evaluate(() => { const a = document.activeElement; return { lbl: a.getAttribute('aria-label'), stops: document.querySelectorAll('#stackViz > .sk[tabindex="0"]').length }; });
+    ok(`${id}: the arrow keys move between the grid's boxes, keeping one Tab stop`, /, (Q|E|T), row \d/.test(r.lbl || '') && r.stops === 1, r);
+    await p.keyboard.press('Tab'); await p.waitForTimeout(30);
+    r = await p.evaluate(() => document.activeElement.dataset.col);
+    ok(`${id}: one Tab from the grid reaches the first key chip`, r === 'Q', r);
+    await p.keyboard.press('Escape'); await p.waitForTimeout(80);
+    r = await p.evaluate(() => { const d = document.getElementById('statDrawer'); return { wide: d.classList.contains('kv-wide'), open: d.classList.contains('open'), f: document.activeElement.tagName, head: d.querySelector('.sd-head h2').textContent }; });
+    ok(`${id}: Esc folds the panel back into the drawer (still open, focus on the Key setup summary)`, !r.wide && r.open && r.f === 'SUMMARY' && r.head === 'Stat priority', r);
+    await p.keyboard.press('Enter'); await p.waitForTimeout(120);
+    r = await p.evaluate(() => ({ wide: document.getElementById('statDrawer').classList.contains('kv-wide'), f: document.activeElement.id }));
+    ok(`${id}: Enter on "Key setup ↑" opens the panel again, focus on Back to Build`, r.wide && r.f === 'kvBack', r);
     ok(`${id}: its one step names the T key and Quick Use 2, the whole stack, row 0 first, no delay`, r.steps.length === 1 && r.steps[0] === 'T: Quick Use 2 · the whole T stack, row 0 first', r.steps);
     /* the how-to is a numbered list with bold lead-ins, make then bind (Design Lead on #853, rev 2.2 §3: was two lines) */
     ok(`${id}: the numbered how-to: make (the 10 ms default, no 2+ steps line), then put it on right click`, r.fine.length === 2 && r.lead.join('|') === 'Make the macro:|Put it on right click'
@@ -440,7 +463,48 @@ async function load(p, state, mode) {
     await p.waitForTimeout(300);
     r = await p.evaluate(() => document.querySelector('#stackViz [data-col="Q"]').getAttribute('aria-label'));
     ok(`${id}: a saved key with a quote falls back to the suggestion`, r === 'Q: change the key for this stack', r);
+    /* 0.9 P22b (#855 builder note): only keys the game can bind (D3) are bound; a media key pressed while listening binds
+       nothing (was: silently dropped on read when longer than 12 characters) */
+    await p.focus(chip('Q')); await p.keyboard.press('Enter'); await p.keyboard.press('AudioVolumeUp'); await p.waitForTimeout(80);
+    r = await p.evaluate(() => { const s = JSON.parse(localStorage.getItem('companion-save-v6')); return { keys: s.chars[s.current].keyBinds, listen: !!document.querySelector('#stackViz .kv-key.listen') }; });
+    ok(`${id}: a key the game can't bind (AudioVolumeUp) is refused while listening`, JSON.stringify(r.keys || {}) === '{"Q":"\\""}' && r.listen, r);
+    await p.keyboard.press('Escape');
   };
+  /* 0.9 P22b (#855; frame 388-key-listen-390): on a phone a key chip opens the picker of bindable keys. By keyboard: Enter
+     opens it with focus on the column's key, every key named, keys another stack holds say so; Esc closes it and not the
+     drawer, focus back on the chip; picking a free key binds it; a held key asks first; "Other key" refuses a key the game
+     can't bind */
+  {
+    const { ctx, p } = await page(390, { isMobile: true, hasTouch: true });
+    await load(p, typeof STATES.lv27 === 'function' ? STATES.lv27() : STATES.lv27, 'advanced');
+    await p.evaluate(() => { const d = document.getElementById('statDrawer'); if (!d.classList.contains('open')) document.getElementById('tabBuild').click(); document.querySelector('#statDrawer details.kv-fold').open = true; });
+    await p.waitForTimeout(500);
+    const id = 'keys picker lv27 390px', chip = col => `#stackViz [data-col="${col}"]`;
+    await p.focus(chip('E')); await p.keyboard.press('Enter'); await p.waitForTimeout(80);
+    let r = await p.evaluate(() => { const k = document.getElementById('kvPick'); return k && { head: k.querySelector('#kvPickH').textContent, f: document.activeElement.dataset.pick, exp: document.querySelector('#stackViz [data-col="E"]').getAttribute('aria-expanded'),
+      names: [...k.querySelectorAll('.kv-pk')].map(b => b.getAttribute('aria-label')), wide: document.getElementById('statDrawer').classList.contains('kv-wide'),
+      inView: (b => b.top >= 0 && b.bottom <= innerHeight)(k.getBoundingClientRect()) }; });
+    ok(`${id}: Enter on the E chip opens the picker headed "Key for the E stack", focus on E, the chip expanded, no desktop panel`, !!r && r.head === 'Key for the E stack' && r.f === 'E' && r.exp === 'true' && !r.wide && r.inView, r);
+    ok(`${id}: every key in the picker has an accessible name; Q and T say which stack holds them`, !!r && r.names.length === 14 && r.names.every(Boolean)
+      && r.names.includes('Q, holds the Q stack') && r.names.includes('T, holds the right-click stack') && r.names.includes('R') && r.names.includes('Right click'), r && r.names);
+    await p.keyboard.press('Escape'); await p.waitForTimeout(80);
+    r = await p.evaluate(() => ({ pick: !!document.getElementById('kvPick'), open: document.getElementById('statDrawer').classList.contains('open'), f: document.activeElement.dataset.col }));
+    ok(`${id}: Esc closes the picker, not the drawer, focus back on the chip`, !r.pick && r.open && r.f === 'E', r);
+    await p.keyboard.press('Enter'); await p.waitForTimeout(80); await p.click('#kvPick [data-pick="R"]'); await p.waitForTimeout(120);
+    r = await p.evaluate(() => { const s = JSON.parse(localStorage.getItem('companion-save-v6')); return { keys: s.chars[s.current].keyBinds, pick: !!document.getElementById('kvPick'), chip: document.querySelector('#stackViz [data-col="E"]').firstChild.textContent, f: document.activeElement.dataset.col }; });
+    ok(`${id}: picking R binds E's column to R and closes the picker`, JSON.stringify(r.keys) === '{"E":"R"}' && !r.pick && r.chip === 'R' && r.f === 'E', r);
+    await p.click(chip('Q')); await p.waitForTimeout(80); await p.click('#kvPick [data-pick="T"]'); await p.waitForTimeout(80);
+    r = await p.evaluate(() => document.getElementById('kvHint').textContent);
+    ok(`${id}: picking a key another stack holds asks first`, /^T already holds the right-click stack\. Swap them Pick another$/.test(r), r);
+    await p.click('#kvHint [data-kv="other"]'); await p.waitForTimeout(80);
+    await p.fill('#kvOther', 'volume'); await p.press('#kvOther', 'Enter'); await p.waitForTimeout(80);
+    r = await p.evaluate(() => ({ pick: !!document.getElementById('kvPick'), err: (document.getElementById('kvOtherErr') || {}).textContent || '', inv: document.getElementById('kvOther').getAttribute('aria-invalid') }));
+    ok(`${id}: "Pick another" reopens the picker, and "Other key" refuses a key the game can't bind`, r.pick && /isn't a key the game can bind/.test(r.err) && r.inv === 'true', r);
+    await p.fill('#kvOther', 'f5'); await p.press('#kvOther', 'Enter'); await p.waitForTimeout(120);
+    r = await p.evaluate(() => { const s = JSON.parse(localStorage.getItem('companion-save-v6')); return s.chars[s.current].keyBinds; });
+    ok(`${id}: "Other key" binds a typed key the game takes (f5 → F5)`, JSON.stringify(r) === '{"E":"R","Q":"F5"}', r);
+    await ctx.close();
+  }
   /* Fixture macro (window.__macros, the page's test hook; no class's data has these cases yet): a macro on Q of three
      steps, one a Delay other than 10 ms, one a lone skill */
   {

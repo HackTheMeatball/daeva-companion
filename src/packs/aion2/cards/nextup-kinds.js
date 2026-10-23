@@ -28,6 +28,7 @@ import { MAP_ICO, rqTicked, snoozeToggle } from "../../../cards/milestones.js";
 import { capFirst, renderNow } from "../../../cards/nextup.js";
 import { travelAdviceOn } from "../nextup.js";
 import { keyHint } from "../hotkeys.js";
+import { boundKey } from "../keybinds.js";
 import { cuLeft, cuSpecs, kibMark, rqStIco, spReach } from "./shared.js";
 import { slotsReachedOf } from "../requirements.js";
 import { itemLinkIcos, itemQty, stNote, stTag, stWord } from "../data/markup.js";
@@ -126,7 +127,8 @@ export const aion2NowRenderers = {
   boardcost: a => ({ ico: "◆", t: `Check <b>${dvShort(a.dn.t)}</b>'s cost${stTag(a.dn.st)} on ${a.dn.board}`, sub: `You have ${a.dLeft} crystals; type its cost to see if you can buy it`, btn: "Enter cost", act: a.act, row: keyHint("daevanion") }),
   stwait: a => ({ ico: stIco(a.nx.name, "st-img") || "✧", t: `Equip <b>${a.nx.name}</b>${stPlanTag(a.nx)}`, sub: `Stigma slot ${a.nx.n} is open · needs 1 shard${a.at ? ` (+1 at Lv ${a.at})` : ""}`, tag: "Needs 1 shard", act: a.act }),
   /* the E row is the line's point: on a one-line phone row the start ("Stigma slot N is open") is cut, never the row */
-  stequip: a => { const eTxt = a.r < 0 ? "" : `<span class="ns-tail">&nbsp;· then put it on E, row ${a.r}${a.r === 0 ? " (fires first)" : ""}</span>`;
+  /* the E chip is the player's key for the E stack (keyBinds, 0.9 P22b #855), as in the Key setup grid and the Rotation */
+  stequip: a => { const eTxt = a.r < 0 ? "" : `<span class="ns-tail">&nbsp;· then put it on <kbd class="keychip" data-kvcol="E">${boundKey("E")}</kbd>, row ${a.r}${a.r === 0 ? " (fires first)" : ""}</span>`;
     return { ico: stIco(a.nx.name, "st-img") || "✧", t: `Equip <b>${a.nx.name}</b>${stPlanTag(a.nx)}`, sub: `<span class="ns-lead">Stigma slot ${a.nx.n} is open</span>${eTxt}`, btn: "Equipped", act: a.act, done: true }; },
   stup: a => ({ ico: stIco(a.up.x.name, "st-img") || "✧", t: `Upgrade <b>${a.up.x.name} ${a.up.L - 1} → ${a.up.L}</b>${stTag(STIGMA_ST)}`, sub: `${a.up.cost} of your ${a.shards} shards`, btn: "Upgraded", act: a.act, done: true }),
   sd: a => { const p = a.pick, L = a.loc, pin = `<b>${p.it.name}</b>${pinLink(mapFocus(p.it))}`;

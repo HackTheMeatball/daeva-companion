@@ -3,7 +3,7 @@
   <div class="sd-scrim" id="sdScrim" aria-hidden="true"></div>
   <div class="sd-panel" id="sdPanel">
     <button type="button" class="sd-grab" id="sdGrab" aria-label="Close"></button>
-    <div class="sd-head"><h2>Stat priority</h2><button type="button" class="sd-close" id="sdClose" aria-label="Close">×</button></div>
+    <div class="sd-head"><h2>Stat priority</h2><span class="lvtag" id="kvLv" hidden></span><button type="button" class="linkbtn kv-back" id="kvBack" hidden>Back to Build</button><button type="button" class="sd-close" id="sdClose" aria-label="Close">×</button></div>
         <div class="tiers" id="statSeq"></div>
         <p class="fine tline" id="statNote">B board · G gear. Only stats two or more sources rank high; order inside a tier varies.</p>
     <div class="sd-rot">
@@ -16,14 +16,21 @@
         <p class="fine tline" id="rotNote"></p>
         <div class="rot-how" id="rotHow" hidden></div>
         <div class="tfoot">
-        <details class="mini">
-          <summary>Key setup</summary>
+        <details class="mini kv-fold">
+          <summary>Key setup<span class="kv-up" aria-hidden="true"> ↑</span></summary>
+          <div class="kv-body">
+          <div class="kv-left">
           <div class="stackviz" id="stackViz"></div>
           <p class="fine kv-hint" id="kvHint" aria-live="polite"></p>
+          <div class="kv-pickbox" id="kvPickBox"></div>
+          </div>
+          <div class="kv-right">
           <div class="kv-macro" id="kvMacro"></div>
           <p class="fine tline">Without the macro, each click fires one skill from the stack, so you'd have to keep clicking. Press K to open this grid in game and put each skill in the row shown. Row 0 is tried first; anything on cooldown or not ready is skipped. Quick Slice stays alone on left click: with no cooldown it would block everything above it in a stack.</p>
           <p class="fine tline">Right click fires the first ready skill, row 0 first, so Heart Gore jumps in whenever a crit opens it. Left click (Quick Slice) restores the MP Savage Roar spends.</p>
           <p class="fine tline">Row order and the E stack are the guide's inference (Heart Gore first because it only opens after a crit; Insignia Explosion after the builders because it scales with stacks). Test on a training dummy; if a skill never fires, move it down a row.</p>
+          </div>
+          </div>
         </details>
         </div>
     </div>

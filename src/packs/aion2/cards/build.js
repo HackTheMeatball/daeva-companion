@@ -8,61 +8,114 @@ import { E_BEFORE_Q, E_NOTE, E_ORDER, E_ST, GUIDE_KEYS, HAS_KEYS, KEYS, KEYS_ST,
 import { eShift, stTag } from "../data/markup.js";
 import { TIPS } from "../data/tips.js";
 import { rotKeys } from "../requirements.js";
+import { KV_MOUSE, boundKey as kvKeyOf, kvBindable, kvNorm } from "../keybinds.js";
 import { aion2State as state, aion2Save as save, aion2Update as update, aion2STIGMA_SLOTS as STIGMA_SLOTS, aion2StIco as stIco, aion2SpMini as spMini, aion2Ini as ini } from "./page.js";
 
 /* Your own keys (0.9 P22, #388; docs/design/0.9-keys/README.md): char.keyBinds maps a Key setup column's suggested key (Q, E,
-   T; a default-keys build's own keys) to the key the player uses for it. Absent, empty, not a string or holding a character
-   HTML would read (KV_BAD; the key goes into markup and attributes): the suggestion. */
-const KV_BAD = /[<>&"'`]/;
-const kvKeyOf = col => { const m = char(state).keyBinds, k = m && typeof m === "object" && !Array.isArray(m) ? m[col] : null;
-  return typeof k === "string" && k.trim() && k.length <= 12 && !KV_BAD.test(k) ? k : col; };
+   T; a default-keys build's own keys) to the key the player uses for it (src/packs/aion2/keybinds.js: only keys the game
+   can bind, D3; anything else reads as the suggestion and is never bound). */
 const kvMine = col => kvKeyOf(col) !== col;
-/* the chip being rebound (its column) and a pending kvClash { col, key, other }; neither is saved */
-let kvListen = null, kvClash = null;
+/* the chip being rebound (its column), a pending kvClash { col, key, other } and, on a phone, the column whose key picker
+   is open (kvPick, 0.9 P22b #855) with the "Other key" box's refusal (kvPickErr); none is saved */
+let kvListen = null, kvClash = null, kvPick = null, kvPickErr = "";
+/* a phone (the drawer's bottom-sheet width): a chip opens the picker; wider, it listens for a key press */
+const kvPhone = () => !!(window.matchMedia && matchMedia("(max-width: 600px)").matches);
 const chipHTML = (col, cls = "") => kvListen === col
   ? `<button type="button" class="kv-key listen${cls}" data-col="${col}" aria-label="${col} stack: press a key">Press a key</button>`
-  : `<button type="button" class="kv-key${cls}${kvMine(col) ? " mine" : ""}" data-col="${col}" aria-label="${kvKeyOf(col)}: change the key for this stack">${kvKeyOf(col)}<span class="kv-caret" aria-hidden="true">▾</span></button>`;
+  : `<button type="button" class="kv-key${cls}${kvMine(col) ? " mine" : ""}" data-col="${col}" aria-label="${kvKeyOf(col)}: change the key for this stack"${kvPick === col ? ` aria-expanded="true" aria-controls="kvPick"` : ""}>${kvKeyOf(col)}<span class="kv-caret" aria-hidden="true">▾</span></button>`;
+/* a column's name in the hint and the picker: the guide's T is the right-click stack */
+const colName = c => GUIDE_KEYS && c === "T" ? "right-click" : c;
 /* the hint under the grid: listening, a kvClash, or "Back to suggested keys" once a key is yours */
 function hintHTML(cols) {
-  if (kvClash) return `${kvClash.key} already holds the ${GUIDE_KEYS && kvClash.other === "T" ? "right-click" : kvClash.other} stack. <button type="button" class="linkbtn" data-kv="swap">Swap them</button> <button type="button" class="linkbtn" data-kv="other">Pick another</button>`;
+  if (kvClash) return `${kvClash.key} already holds the ${colName(kvClash.other)} stack. <button type="button" class="linkbtn" data-kv="swap">Swap them</button> <button type="button" class="linkbtn" data-kv="other">Pick another</button>`;
   if (kvListen) return "Press the key you use for this stack in game. Esc cancels.";
   return cols.some(kvMine) ? `<button type="button" class="linkbtn" data-kv="reset">Back to suggested keys</button>` : "";
 }
-let kvCols = [];
-const setKeys = m => { const keys = Object.fromEntries(Object.entries(m).filter(([c, k]) => k !== c));
-  if (Object.keys(keys).length) char(state).keyBinds = keys; else delete char(state).keyBinds; save(); };
-/* a key pressed while listening: Esc cancels; a key another column holds asks first (the kvClash state); Tab moves focus
-   on, which cancels (onKeysFocusOut); a modifier alone, a key KV_BAD refuses or one over 12 characters (kvKeyOf
-   wouldn't show it) is skipped */
+let kvCols = [], kvTop = {};
+/* The phone's key picker (docs/design/0.9-keys/README.md #388, frame 388-key-listen-390): the keys AION 2 binds by default
+   for the skill slots (D3: Q, E, R, T, 1–8, the two mouse buttons) and "Other key" for any other key the game takes
+   (kvNorm). A key another column holds names that stack's first skill; picking it asks first (the clash state). */
+const KV_PICK = ["Q", "E", "R", "T", "1", "2", "3", "4", "5", "6", "7", "8", ...KV_MOUSE];
+function pickHTML() {
+  if (!kvPick) return "";
+  const col = kvPick, cur = kvKeyOf(col);
+  const btn = k => { const o = kvCols.find(c => c !== col && kvKeyOf(c) === k), sub = o ? (colName(o) === "right-click" ? "right click" : kvTop[o] || `${o} stack`) : "";
+    return `<button type="button" class="kv-pk${k === cur ? " cur" : ""}" data-pick="${k}" aria-pressed="${k === cur}" aria-label="${k}${o ? `, holds the ${colName(o)} stack` : ""}">${k}${sub ? `<small aria-hidden="true">${sub}</small>` : ""}</button>`; };
+  return `<div class="kv-pick" id="kvPick" role="group" aria-labelledby="kvPickH"><p class="kv-pick-h" id="kvPickH">Key for the ${colName(col)} stack</p>` +
+    `<div class="kv-pk-grid">${KV_PICK.map(btn).join("")}</div>` +
+    `<form class="kv-other" data-kvform="1"><label for="kvOther">Other key</label><input id="kvOther" type="text" maxlength="11" autocomplete="off" autocapitalize="characters" spellcheck="false"${kvPickErr ? ` aria-invalid="true" aria-describedby="kvOtherErr"` : ""}><button type="submit" class="linkbtn">Use it</button></form>` +
+    (kvPickErr ? `<p class="fine kv-err" id="kvOtherErr">${kvPickErr}</p>` : "") +
+    `<p class="fine">The keys you can bind in game. A mouse button needs AION 2 control mode. <button type="button" class="linkbtn" data-kv="close">Cancel</button></p></div>`;
+}
+const setKeys = m => { const keys = Object.fromEntries(Object.entries(m).filter(([c, k]) => k !== c && kvBindable(k)));
+  if (Object.keys(keys).length) char(state).keyBinds = keys; else delete char(state).keyBinds; save(); update(); };
+/* a key for a column (pressed, picked or typed): one another column holds asks first (the kvClash state) */
+function kvAssign(col, key) {
+  const other = kvCols.find(c => c !== col && kvKeyOf(c) === key);
+  if (other) kvClash = { col, key, other };
+  else if (key !== kvKeyOf(col)) setKeys({ ...(char(state).keyBinds || {}), [col]: key });
+}
+/* a key pressed while listening: Esc cancels; Tab moves focus on, which cancels (onKeysFocusOut); a modifier alone or a key
+   the game can't bind (kvNorm: a media key, Enter) is skipped. With the picker open, Esc closes it (not the drawer). */
 function onListenKey(e) {
+  if (kvPick && e.key === "Escape") { e.preventDefault(); e.stopImmediatePropagation(); const col = kvPick; kvPick = null; kvPickErr = ""; renderRotation(); focusChip(col); return; }
   if (!kvListen || e.key === "Tab") return;
   e.preventDefault(); e.stopImmediatePropagation();
-  if (["Shift", "Control", "Alt", "Meta"].includes(e.key) || KV_BAD.test(e.key) || e.key.length > 12) return;
+  const key = e.key === "Escape" ? "" : kvNorm(e.key);
+  if (e.key !== "Escape" && !key) return;
   const col = kvListen; kvListen = null;
-  if (e.key !== "Escape") {
-    const key = e.key === " " ? "Space" : e.key.length === 1 ? e.key.toUpperCase() : e.key;
-    const other = kvCols.find(c => c !== col && kvKeyOf(c) === key);
-    if (other) kvClash = { col, key, other };
-    else setKeys({ ...(char(state).keyBinds || {}), [col]: key });
-  }
+  if (key) kvAssign(col, key);
   renderRotation(); focusChip(col);
 }
+const focusPick = () => { const el = document.querySelector("#kvPick .kv-pk.cur") || document.querySelector("#kvPick .kv-pk"); if (el) el.focus({ preventScroll: false }); };
 function onKeysClick(e) {
-  const chip = e.target.closest("[data-col]"), act = e.target.closest("[data-kv]"), box = e.target.closest("#stackViz > .sk[data-tip]");
+  const chip = e.target.closest("[data-col]"), act = e.target.closest("[data-kv]"), box = e.target.closest("#stackViz > .sk[data-tip]"), pick = e.target.closest("[data-pick]");
   /* a tap on a key box opens its tooltip (focus shows it; mobile Safari doesn't focus a tapped span by itself) */
   if (box) { box.focus({ preventScroll: true }); return; }
+  if (chip && kvPhone()) { const col = chip.dataset.col; kvPick = kvPick === col ? null : col; kvPickErr = ""; kvListen = null; kvClash = null; renderRotation();
+    if (kvPick) focusPick(); else focusChip(col); return; }
   if (chip) { kvListen = chip.dataset.col; kvClash = null; renderRotation(); focusChip(kvListen); return; }
+  if (pick && kvPick) { const col = kvPick; kvPick = null; kvPickErr = ""; kvAssign(col, pick.dataset.pick); renderRotation(); focusChip(col); return; }
   if (!act) return;
-  const a = act.dataset.kv, c = kvClash; kvClash = null;
+  const a = act.dataset.kv, c = kvClash, open = kvPick; kvClash = null;
+  if (a === "close") { kvPick = null; kvPickErr = ""; renderRotation(); focusChip(open); return; }
   if (a === "swap" && c) setKeys({ ...(char(state).keyBinds || {}), [c.col]: c.key, [c.other]: kvKeyOf(c.col) });
-  if (a === "other" && c) kvListen = c.col;
+  if (a === "other" && c) { if (kvPhone()) { kvPick = c.col; renderRotation(); focusPick(); return; } kvListen = c.col; }
   if (a === "reset") setKeys({});
   renderRotation(); focusChip(c ? c.col : kvCols[0]);
+}
+/* the picker's "Other key" box: a key the game binds is used (kvAssign), anything else is refused there */
+function onKeysSubmit(e) {
+  if (!e.target.closest("[data-kvform]") || !kvPick) return;
+  e.preventDefault();
+  const col = kvPick, key = kvNorm(document.getElementById("kvOther").value);
+  if (!key) { kvPickErr = "That isn't a key the game can bind. Use a letter, a digit, F1–F12, Space or a mouse button."; renderRotation(); const i = document.getElementById("kvOther"); if (i) i.focus(); return; }
+  kvPick = null; kvPickErr = ""; kvAssign(col, key); renderRotation(); focusChip(col);
+}
+/* The grid is one Tab stop (0.9 P22b, #855 builder note): the 12 boxes would put 12 stops before the key chips, so only one
+   box is in the Tab order (the last one focused, else the first) and the arrow keys move between them, Up and Down within
+   a column; a tap still focuses a box (its tooltip). */
+function kvRove(el) { const cells = [...el.querySelectorAll(":scope > .sk[data-tip]")]; cells.forEach((c, i) => { c.tabIndex = i ? -1 : 0; }); }
+function onGridKey(e) {
+  const c = e.target.closest && e.target.closest("#stackViz > .sk[data-tip]"), n = kvCols.length; if (!c || !n) return;
+  const all = [...c.parentElement.querySelectorAll(":scope > .sk")], i = all.indexOf(c), filled = all.filter(x => x.dataset.tip);
+  let to = null;
+  if (e.key === "Home" || e.key === "End") to = e.key === "Home" ? filled[0] : filled[filled.length - 1];
+  else if (e.key === "ArrowLeft" || e.key === "ArrowRight") to = filled[filled.indexOf(c) + (e.key === "ArrowLeft" ? -1 : 1)];
+  else if (e.key === "ArrowUp" || e.key === "ArrowDown") { const d = e.key === "ArrowUp" ? -n : n;
+    for (let j = i + d; j >= 0 && j < all.length && !to; j += d) if (all[j].dataset.tip) to = all[j]; }
+  else return;
+  e.preventDefault();
+  if (to) to.focus({ preventScroll: false });
+}
+function onGridFocus(e) {
+  const c = e.target.closest && e.target.closest("#stackViz > .sk[data-tip]"); if (!c) return;
+  for (const x of c.parentElement.querySelectorAll(":scope > .sk[data-tip]")) x.tabIndex = x === c ? 0 : -1;
 }
 /* listening ends when focus leaves the listening chip (a click elsewhere, Tab) or the drawer closes, so no later key press
    anywhere is taken. Focus moving to another chip is left to its click (a re-render now would swallow it); otherwise
    checked a tick later, as a re-render replaces the chip and focusChip refocuses its successor. */
-const kvCancel = () => { if (!kvListen && !kvClash) return; kvListen = null; kvClash = null; renderRotation(); };
+const kvCancel = () => { if (!kvListen && !kvClash && !kvPick) return; kvListen = null; kvClash = null; kvPick = null; kvPickErr = ""; renderRotation(); };
 function onKeysFocusOut(e) {
   if (!kvListen || (e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest("#stackViz [data-col]"))) return;
   setTimeout(() => { const a = document.activeElement;
@@ -110,14 +163,21 @@ function renderStacks(lv) {
      default. The game's defaults for the skills learned by lv are listed under the grid. */
   const k = rotKeys(char(state), lv), lmb = (KEYS.find(x => x.key === "Left click") || { rows: [] }).rows.filter(r => lv >= r.lv).map(r => r.n);
   const cols = [["Q", k.q], ["E", E_STACK(lv)], ["T", k.rmb]];
-  kvCols = cols.map(([key]) => key);
+  kvCols = cols.map(([key]) => key); kvTop = Object.fromEntries(cols.map(([key, rows]) => [key, (rows.find(Boolean) || "").replace(/\*/g, "")]));
   const yours = kvCols.some(kvMine), ks = kvCols.map(kvKeyOf);
   setHTML(document.getElementById("stackViz"),
     `<p class="fine muted kv-sugg">${yours ? "Your keys" : "Suggested keys"}: ${ks[0]}, ${ks[1]} and ${ks[2]} (${ks[2]} holds the stack the right-click macro fires). Move the skills there yourself.${E_ST ? ` The stigma order on ${ks[1]} is unsure:` + stTag(E_ST) : ""}</p>` +
     [3, 2, 1, 0].map(r => `<i class="rn">${r}</i>` + cols.map(([key, rows], i) => cell(rows[r], key, r, tipSide(i, cols.length)).replace('class="sk', `class="sk${r === 0 ? " r0" : ""}`)).join("")).join("") +
     `<span></span>` + cols.map(([key]) => chipHTML(key)).join("") +
     lmb.map(n => `<p class="lmb">Left click: <span class="sk">${gridIco(n)}<span class="nm">${n}</span></span></p>`).join("") + defaultKeysNote(lv) + stLaterHTML());
+  kvAfter(lv);
+}
+/* after either grid: one Tab stop for its boxes, the hint, the phone's picker, the panel's level and the macro */
+function kvAfter(lv) {
+  kvRove(document.getElementById("stackViz"));
   setHTML(document.getElementById("kvHint"), hintHTML(kvCols));
+  const pb = document.getElementById("kvPickBox"); if (pb) setHTML(pb, pickHTML());
+  const kl = document.getElementById("kvLv"); if (kl) kl.textContent = `Lv ${lv}`;
   renderMacro(lv);
 }
 /* The macro as steps (0.9 P22, docs/design/0.9-keys-macro.md §2): one block per macro in the data (MACROS), headed with
@@ -170,13 +230,12 @@ function renderDefaultKeys(lv, fresh, cell) {
   const k = rotKeys(char(state), lv), cols = k.keys.filter(x => !x.single), singles = k.keys.filter(x => x.single && x.rows[0]);
   const depth = Math.max(0, ...cols.map(x => x.rows.length)), el = document.getElementById("stackViz");
   el.style.gridTemplateColumns = `12px repeat(${cols.length}, minmax(0, 1fr))`;
-  kvCols = cols.map(x => x.key);
+  kvCols = cols.map(x => x.key); kvTop = Object.fromEntries(cols.map(x => [x.key, x.rows.find(Boolean) || ""]));
   setHTML(el, [...Array(depth).keys()].reverse().map(r => `<i class="rn">${r}</i>` + cols.map((x, i) => cell(x.rows[r], x.key, r, tipSide(i, cols.length)).replace('class="sk', `class="sk${r === 0 ? " r0" : ""}`)).join("")).join("") +
     `<span></span>` + cols.map(x => chipHTML(x.key, / click$/.test(kvKeyOf(x.key)) ? " mouse" : "")).join("") +
     singles.map(x => `<p class="lmb">${x.key}: <span class="sk${fresh.has(x.rows[0]) ? " new" : ""}">${gridIco(x.rows[0])}<span class="nm">${x.rows[0]}</span></span></p>`).join("") +
     `<p class="fine tline kv-note">The game's default keys${stTag(KEYS_ST) && "," + stTag(KEYS_ST)}. Row 0 is tried first; a skill on cooldown or not ready is skipped. A skill shows here from the level you learn it.</p>`);
-  setHTML(document.getElementById("kvHint"), hintHTML(kvCols));
-  renderMacro(lv);
+  kvAfter(lv);
 }
 /* Stigmas still to come: where each will go on E when you add it (in the order the slots open). */
 function stLaterHTML() {
@@ -228,7 +287,8 @@ function rotNewNote(lv) {
   setHTML(document.getElementById("rotNote"), nw.length ? `<b class="rot-new">New</b> ${nw.map(x => `put ${ico(x.n, x.stig)}<b>${x.n}</b> on ${rotWhere(x)}`).join("; ")}. The key grid below shows the full setup; closing this panel clears this note.` : "");
   const tb = document.getElementById("sdNew"); if (tb) tb.hidden = !nw.length;
   const bt = document.getElementById("tabBuild"); if (bt) bt.classList.toggle("has-new", !!nw.length);
-  if (nw.length) { const ks = document.querySelector("#statDrawer details.mini"); if (ks) ks.open = true; }
+  /* on a phone the fold opens on a new placement; on desktop the fold is the Key setup panel, which would cover this note */
+  if (nw.length && kvPhone()) { const ks = document.querySelector("#statDrawer details.mini"); if (ks) ks.open = true; }
   setHTML(document.getElementById("statSeq"), statSeqHTML());
   renderStacks(lv);
 }
@@ -236,7 +296,7 @@ function rotNewNote(lv) {
    "Right click fires" line. The Assassin's play steps, its left click and its macro text (build.html) are not this build's. */
 function renderDefaultRotation(lv, keys) {
   const rot = document.querySelector("#statDrawer .sd-rot");
-  for (const el of rot.querySelectorAll(":scope > .playsteps, :scope > .rmbline, details > .tline")) el.style.display = "none";
+  for (const el of rot.querySelectorAll(":scope > .playsteps, :scope > .rmbline, details .kv-right > .tline")) el.style.display = "none";
   let box = rot.querySelector(":scope > .rot-keys");
   if (!box) { box = document.createElement("div"); box.className = "rot-keys"; rot.querySelector(":scope > .ns-head").after(box); }
   setHTML(box, keys.filter(x => !x.single && x.rows.some(Boolean)).map(x => `<div class="rmbline"><span class="khead">${x.key} fires</span><ol class="chain">${x.rows.filter(Boolean).map(n => `<li><span class="dot"></span><span>${spMini(n)}${n}</span></li>`).join("")}</ol></div>`).join(""));
@@ -252,6 +312,9 @@ function aion2BuildMount() {
   /* rebinding (0.9 P22, #388): a chip listens for the next key; capture, so Esc cancels here before it closes the drawer */
   document.getElementById("statDrawer").addEventListener("click", onKeysClick);
   document.getElementById("statDrawer").addEventListener("focusout", onKeysFocusOut);
+  document.getElementById("statDrawer").addEventListener("submit", onKeysSubmit);
+  document.getElementById("stackViz").addEventListener("keydown", onGridKey);
+  document.getElementById("stackViz").addEventListener("focusin", onGridFocus);
   addEventListener("keydown", onListenKey, true);
   /* Stat priority drawer: a tab pinned to the right edge; open state remembered.
      It starts level with the top of the cards row and sticks 16px from the top once you scroll past it. */
@@ -267,7 +330,24 @@ function aion2BuildMount() {
     const sheetQ = window.matchMedia ? matchMedia("(max-width: 600px)") : { matches: false };
     barTab.textContent = sideTab.querySelector(".sd-lbl").textContent;
     const tab = { setAttribute: (k, v) => { sideTab.setAttribute(k, v); barTab.setAttribute(k, v); }, focus: o => (sheetQ.matches ? barTab : sideTab).focus(o) };
+    /* Key setup's desktop panel (0.9 P22b, #855; docs/design/0.9-keys/README.md §11, frames 11-sheet-names-1500 and
+       12-sheet-fill-1500): wider than 600 px the Key setup fold's summary reads "Key setup ↑", and opening it turns the
+       drawer into the wide panel (kv-wide, build.css): "Key setup · Lv N" heading, the grid on the left, the macro block
+       and the notes on the right, no dimming. Esc or "Back to Build" folds it back into the drawer; × closes both. On a
+       phone it stays the drawer's fold (option B). Not saved: the drawer always opens on the Build view. */
+    const fold = d.querySelector("details.kv-fold"), head = d.querySelector(".sd-head h2"), kvLv = document.getElementById("kvLv"), back = document.getElementById("kvBack");
+    const wide = () => { const on = !sheetQ.matches && fold.open && d.classList.contains("open");
+      if (on === d.classList.contains("kv-wide")) return;
+      d.classList.toggle("kv-wide", on); head.textContent = on ? "Key setup" : "Stat priority"; kvLv.hidden = back.hidden = !on;
+      document.getElementById("sdPanel").scrollTop = 0;
+      if (on) requestAnimationFrame(() => back.focus({ preventScroll: true })); };
+    const unwide = () => { fold.open = false; wide(); fold.querySelector("summary").focus({ preventScroll: true }); };
+    fold.addEventListener("toggle", wide);
+    back.addEventListener("click", unwide);
+    if (sheetQ.addEventListener) sheetQ.addEventListener("change", () => { kvCancel(); wide(); });
     const set = (o, viaKey) => { const was = d.classList.contains("open"); d.classList.toggle("open", o); tab.setAttribute("aria-expanded", String(o)); state.statOpen = o;
+      if (!o && !sheetQ.matches) fold.open = false;
+      wide();
       /* Focus moves into the panel when it opens and back to the tab when it closes. */
       if (o && !was) requestAnimationFrame(() => document.getElementById("sdClose").focus({ preventScroll: true }));
       /* (also after a scrim tap, which leaves focus on the page, and after Escape with focus on Level up in the bar) */
@@ -278,7 +358,9 @@ function aion2BuildMount() {
     if (state.statOpen) { d.classList.add("open"); tab.setAttribute("aria-expanded", "true"); }
     for (const t of [sideTab, barTab]) t.addEventListener("click", () => set(!d.classList.contains("open")));
     for (const id of ["sdClose", "sdGrab", "sdScrim"]) document.getElementById(id).addEventListener("click", () => set(false));
-    document.addEventListener("keydown", e => { if (e.key === "Escape" && d.classList.contains("open")) set(false, sheetQ.matches); });
+    document.addEventListener("keydown", e => { if (e.key !== "Escape" || !d.classList.contains("open")) return;
+      if (d.classList.contains("kv-wide")) { kvCancel(); unwide(); return; }
+      set(false, sheetQ.matches); });
   })();
 }
 

@@ -14,7 +14,15 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
 
   /* #1 Equip ticks "Put X on E" (Next up, Stigmas card, milestone row). The one-time eputSync1 migration for pre-E4
      saves is gone with save v5 (0.4 P3c): no pre-0.4 save is read again, so its checks were removed with it. */
+  /* 0.9 P22b (#855): Next up's hint chip for the E stack ("then put it on E, row 0") follows keyBinds, as the Key setup grid
+     and the Rotation do */
+  const eChips = () => p.evaluate(() => [...document.querySelectorAll('#nowStar .keychip[data-kvcol]')].map(k => k.dataset.kvcol + '=' + k.textContent));
+  await set(28, `s.checks['g27:0'] = false; s.checks['g27:1'] = false; s.stShards = 3; s.keyBinds = { E: 'R', T: 'E' };`);
+  r = await eChips();
+  ok('P22b: with E rebound to R, the Next up stigma hint chip reads R', r.length > 0 && r.every(x => x === 'E=R'), r);
   await set(28, `s.checks['g27:0'] = false; s.checks['g27:1'] = false; s.stShards = 3;`);
+  r = await eChips();
+  ok('P22b: with no keyBinds, the Next up stigma hint chip reads E', r.length > 0 && r.every(x => x === 'E=E'), r);
   await p.click('#nowStar [data-now="stequip"]'); await p.waitForTimeout(1600);
   r = await p.evaluate(() => ({ eq: !!char(state).checks['g27:0'], put: !!char(state).checks['g27:1'], box: document.querySelector('#gates input[data-k="g27:1"]').checked }));
   ok('#1 Next up "Equipped" ticks slot 2 and its "Put on E" step', r.eq && r.put && r.box, r);
