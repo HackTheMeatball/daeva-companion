@@ -13,6 +13,68 @@ artifact (`vNNN`) and are kept in their original form.
 
 Draft: the release sets the date and the summary.
 
+### Added
+
+- Catch-up for late starts: joining at a high level shows one row per build skill with its target level and specialty,
+  and one undoable "Done" per skill. Daevanion and Stigmas get the same: "Mark bought" for an open board's guide nodes
+  and "Mark equipped" for the stigmas, plus a Respec menu per board (and for all boards) and a Respec on the Stigmas
+  card, each with Undo (P19, P20).
+- A "how it plays" text under the rotation in the Build drawer: the opener, the loop and what to hold for (P18).
+- Daevanion and Stigmas Respec buttons show in Basic (F7).
+- Skill steps in Next up name the specialty to pick ("opens its specialty: …"), and say when a pick is kept after a
+  Respec (F8).
+- Every skill has a labelled specialty pick in its core slot 2, shown as a tag with the alternative in the tooltip
+  (F2). A pick that is not open yet reads "Guide pick: … at skill Lv N" (F2).
+- Rotation icons for the Gladiator and the Ranger (F5); icons for Mocking Blade, Explosion Trap and three more Assassin
+  skills.
+- Daevanion tip: the Ariel board is named as an endgame board, fed only from Expedition (Hard), after the 2026-10-21
+  patch (P34).
+
+### Changed
+
+- Live as merged: the items here that came from 0.8.1 (F1–F5, F7–F11, #585) and the save reset (P2) went live on the
+  site as they merged, because every push to main deploys. The save reset went live on 2026-10-21 (#734).
+- One view: the Basic / Advanced switch is gone. Each card shows its essentials, and what only Advanced showed is in a
+  fold that stays closed until you open it and remembers that. For a late start, old "Missed" chores fold into one
+  "early steps you probably did" row with one undoable "All done" (P21).
+- Raising the level by hand far past your story quest asks which story quest you are on, and Next up never points at a
+  locked card (P7).
+- Every choice point has a recommendation for all eight classes, with its label where the data is not verified
+  (P15, P1).
+- Every build value that is not verified carries its label: board and stigma plans, specialty picks, skill order and
+  turn-in zones (P1).
+- Daevanion board plans show the point cost per board and pre-fill the cost box, for all eight classes (P16, F1).
+- Specialty rows sit where the plan's skill levels and board nodes actually reach the slot's level (F3).
+- The Assassin's E stack fires Savage Fang before Triniel's Dagger (P17).
+- Key setup names the game's twelve skill quickslots (Quick Use 1–12, with Left click / R and Right click / T as
+  second keys), and a macro can hold up to 20 steps.
+- Respec tips follow the owner's screens: the Stigmas reset was free at Lv 39, and the Daevanion reset is per board
+  (P36).
+- Small text and colour fixes: the Respec info button has its own accessible name, one "Spent" colour at every width,
+  Next up keeps its key hint's row placement on phones, and the E grid lists only equipped stigmas (P8).
+- The Skills hint counts from the points you have while the hero skill is not yet bought (F8).
+- The link preview reads "unofficial companion app for AION 2" without naming classes (#585).
+
+### Fixed
+
+- The page header follows the class you pick on the welcome card at once, the Undo tooltip reads "back to pick up", and
+  each regional quest card shows its icon legend once (F4).
+- The Next up stack fits the card you scrolled to after an unrelated tick (F11).
+- Assassin Daevanion plan: the Combat Speed corner, the Zikel corner order and the Ambush and Exploit Weakness rows on
+  the way to the Vaizel corner (F1).
+
+### Data
+
+- Assassin Daevanion board costs (Nezekan 52, Zikel 47, Vaizel 39) from the owner's screens, with a check of every cost
+  against the cheapest path (F1).
+- Board paths and node costs for the other seven classes, and the Spiritmaster's Cold Shock notes follow the owner's
+  tooltip.
+- Quoted source text in the data was replaced with our own paraphrase (F9, F10).
+- The Assassin's Defiance specialty cites the Assassin's own page, and eleven learn levels and three story quest levels
+  cite their game-database pages.
+- A world bosses collection (8 bosses) and the stigma maximum level of 40 marked disputed.
+- Every shipped icon has its provenance row.
+
 ### Saved progress
 
 - Saves reset in this version. Progress is now kept under the key `companion-save-v6`; saves from 0.4 to 0.8
