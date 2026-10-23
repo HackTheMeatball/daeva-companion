@@ -407,7 +407,7 @@
   ],
   "random/L28-q69-all-B-stready": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Equip Illusive Clone inferred","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Illusive Clone inferred","s":"Stigma slot 2 is open · then put it on E , row 0 (fires first)","c":"primary \"Equipped\" stequip"},
     {"t":"Story: Mirror of Greed","s":"Needs Lv 37: you're 28. Level up first. Meanwhile: Urugugu Canyon (Lv 28+, item level 300)","c":"","bd":"Bind Steel Hammer Merchants HQ on the way 86 m from Crobakhi bind:kib:steel-hammer-merchants-hq"}
   ],
   "random/L28-q74-all-A-stfull": [
@@ -417,7 +417,7 @@
   ],
   "random/L28-q79-all-A-stready": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Equip Illusive Clone inferred","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
+    {"t":"Equip Illusive Clone inferred","s":"Stigma slot 2 is open · then put it on E , row 0 (fires first)","c":"primary \"Equipped\" stequip"},
     {"t":"Story: High Priest's Fafnite","s":"Needs Lv 43: you're 28. Level up first. Meanwhile: Urugugu Canyon (Lv 28+, item level 300)","c":""}
   ],
   "random/L28-q81-before-B-stfull": [

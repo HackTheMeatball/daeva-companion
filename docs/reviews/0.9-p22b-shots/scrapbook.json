@@ -1,0 +1,6 @@
+[
+  { "case": "keysetup-lv27-1500", "kind": "before-after", "title": "Key setup gets its own wide panel",
+    "caption": "On desktop, Key setup now opens as a wide panel: the grid on the left, the macro and notes on the right. Esc or Back to Build returns to the drawer." },
+  { "case": "keypicker-lv27-390", "kind": "screenshot", "title": "Pick a key on a phone",
+    "caption": "At level 27 on a phone, tapping the E key opens a picker of keys you can bind in game. Keys another stack uses say which one, and you can type any other key." }
+]

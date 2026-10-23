@@ -35,27 +35,61 @@
 .stackviz > .sk:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 .stackviz .lmb .sk { display: inline-flex; align-items: center; gap: var(--space-6); vertical-align: middle; }
 .stackviz .lmb .sk .kv-ico { width: 24px; height: 24px; }
-.stackviz .kv-key { justify-self: center; min-width: 32px; box-sizing: border-box; padding: var(--space-2) var(--space-8); border: 1px solid var(--line); border-bottom-width: 2px; border-radius: var(--radius-6); background: var(--panel-2); font: 600 12px var(--mono); color: var(--fg); text-align: center; white-space: nowrap; }
-.stackviz .kv-key.mouse { font-size: 11px; padding-inline: var(--space-4); }
+:is(.stackviz, .kv-defs) .kv-key { justify-self: center; min-width: 32px; box-sizing: border-box; padding: var(--space-2) var(--space-8); border: 1px solid var(--line); border-bottom-width: 2px; border-radius: var(--radius-6); background: var(--panel-2); font: 600 12px var(--mono); color: var(--fg); text-align: center; white-space: nowrap; }
+:is(.stackviz, .kv-defs) .kv-key.mouse { font-size: 11px; padding-inline: var(--space-4); }
 /* #388: a chip is a button (a caret says so); your own key gets the accent edge; listening reads "Press a key" */
 .stackviz button.kv-key { cursor: pointer; min-height: 28px; } /* a tap target of 24 px or more (rev 2.2 §5) */
 .stackviz button.kv-key:hover { border-color: var(--muted); }
 .stackviz .kv-key.mine { border-color: var(--accent); }
-.stackviz .kv-key.listen { border-color: var(--accent); color: var(--accent); font-weight: 500; }
+.stackviz .kv-key.listen { border-color: var(--accent); color: var(--accent-text); font-weight: 500; }
 .stackviz .kv-caret { margin-left: var(--space-3); font-size: 11px; color: var(--muted); }
 .kv-hint:empty { display: none; }
+/* The phone's key picker (0.9 P22b, #855; frame 388-key-listen-390): under the grid, held at the sheet's bottom edge while
+   the grid scrolls above it; four keys a row, a key another stack holds names it under the key. Sticky stops at the
+   sheet's padding, so the bottom offset takes that padding back (the sheet's own bottom already clears the tab bar and the
+   safe area) and nothing scrolls under the picker. */
+.kv-pickbox:empty { display: none; }
+.kv-pickbox { position: sticky; bottom: calc(-1 * var(--space-16)); z-index: 3; margin: var(--space-8) calc(-1 * var(--space-16)) 0; padding: var(--space-12) var(--space-16); background: var(--panel); border-top: 1px solid var(--line); box-shadow: var(--shadow-float); }
+.kv-pick-h { margin: 0 0 var(--space-8); font-size: 14px; color: var(--fg); }
+.kv-pk-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-6); }
+.kv-pk { display: grid; place-items: center; align-content: center; gap: var(--space-1); min-height: 44px; padding: var(--space-4); border: 1px solid var(--line); border-radius: var(--radius-6); background: var(--panel-2); color: var(--fg); font: 600 13px var(--mono); cursor: pointer; }
+.kv-pk small { font: 500 11px var(--body); color: var(--muted); max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.kv-pk.cur { border-color: var(--accent); color: var(--accent-text); }
+.kv-pk:hover { border-color: var(--muted); }
+.kv-other { display: flex; align-items: center; gap: var(--space-8); margin-top: var(--space-10); font-size: 13px; color: var(--muted); }
+.kv-other input { width: 7em; min-height: 36px; box-sizing: border-box; padding: var(--space-2) var(--space-8); border: 1px solid var(--line); border-radius: var(--radius-6); background: var(--panel-2); color: var(--fg); font: 500 16px var(--mono); }
+.kv-pick .fine { margin: var(--space-8) 0 0; }
+.kv-pick .kv-err { color: var(--fg); }
+/* Key setup's desktop panel (0.9 P22b, #855; docs/design/0.9-keys/README.md §11): the fold's summary reads "Key setup ↑"
+   wider than 600 px; opened, the drawer widens (up to 820 px, 60% of the window, no dimming) and shows only Key setup, the
+   grid's column on the left hugging the grid, the macro block and the notes on the right */
+.kv-up, .kv-back[hidden] { display: none; }
+@media (min-width: 601px) {
+  .kv-up { display: inline; }
+  .statdrawer.open.kv-wide .sd-panel { width: min(820px, 60vw); max-height: calc(100vh - var(--sd-top, 16px) - 16px); max-height: calc(100dvh - var(--sd-top, 16px) - 16px); }
+  .statdrawer.kv-wide .sd-panel > :not(.sd-head, .sd-rot), .statdrawer.kv-wide .sd-rot > :not(.tfoot), .statdrawer.kv-wide .kv-fold > summary { display: none; }
+  .statdrawer.kv-wide .sd-rot { margin-top: 0; padding-top: 0; border-top: 0; }
+  .statdrawer.kv-wide .sd-rot .tfoot { margin-top: 0; }
+  .statdrawer.kv-wide .sd-head { justify-content: flex-start; gap: var(--space-8); }
+  .statdrawer.kv-wide .sd-head .sd-close { margin-left: var(--space-4); }
+  .statdrawer.kv-wide .kv-back { margin-left: auto; }
+  .statdrawer.kv-wide .kv-body { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: var(--space-24); align-items: start; }
+  .statdrawer.kv-wide .kv-left .stackviz { margin-top: 0; }
+  .statdrawer.kv-wide .kv-right .kv-mac:first-child { margin-top: 0; }
+}
 .kv-mac .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 /* the game's default keys (0.7 P11): the one-row keys' lines and the note under the grid span it */
 .stackviz .kv-note { grid-column: 1 / -1; margin: var(--space-6) 0 0; }
 /* the Assassin's grid heading: Q, E and T are the guide's suggested keys (0.8 P14) */
 .stackviz .kv-sugg { grid-column: 1 / -1; margin: 0 0 var(--space-4); }
-/* the Assassin's defaults under the grid (0.8 P14): one muted line per key, the grid's key chip, then its skills */
-.stackviz .kv-defs { margin-top: var(--space-12); }
-.stackviz .kv-defs ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: var(--space-4) var(--space-8); }
+/* the Assassin's defaults under the grid (0.8 P14), in the wide panel's right column (0.9 P22b, README §11): one muted
+   line per key, the grid's key chip, then its skills */
+:is(.stackviz, .kv-right) .kv-defs { margin-top: var(--space-12); }
+.kv-defs ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: var(--space-4) var(--space-8); }
 /* the chips share one column, so the skill names start on one line */
-.stackviz .kv-defs li { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: baseline; font-size: 12.5px; color: var(--muted); }
-.stackviz .kv-defs li .kv-key { justify-self: start; font-size: 11px; padding-block: 0; }
-.stackviz .kv-defs .fine { margin-top: var(--space-8); }
+.kv-defs li { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: baseline; font-size: 12.5px; color: var(--muted); }
+.kv-defs li .kv-key { justify-self: start; font-size: 11px; padding-block: 0; }
+.kv-defs .fine { margin-top: var(--space-8); }
 .playsteps { margin: 0; padding-left: var(--space-20); display: grid; gap: var(--space-4); font-size: 14px; }
 .playsteps b { font-family: var(--mono); font-size: 12px; background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--radius-5); padding: var(--space-1) var(--space-6); margin-right: var(--space-4); }
 /* the macro as steps (0.9 P22): the old macro-steps list's top margin, kept for the block; its how-to is the old

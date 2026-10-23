@@ -92,7 +92,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "behind/L25-q39-from10-miss2-s1-A": [
-    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E , row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 5 open at your level"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
@@ -101,7 +101,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "behind/L25-q39-from10-miss2-s1-B": [
-    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E , row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 5 open at your level"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
@@ -110,7 +110,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "behind/L25-q39-from10-miss2-s2-A": [
-    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E , row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 5 open at your level"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
@@ -119,7 +119,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "behind/L25-q39-from10-miss2-s2-B": [
-    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E , row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 5 open at your level"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
@@ -146,7 +146,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "behind/L25-q39-from10-miss3-s1-A": [
-    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E , row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 5 open at your level"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
@@ -155,7 +155,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "behind/L25-q39-from10-miss3-s1-B": [
-    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E , row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 5 open at your level"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
@@ -164,7 +164,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "behind/L25-q39-from10-miss3-s2-A": [
-    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E , row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 5 open at your level"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
@@ -173,7 +173,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "behind/L25-q39-from10-miss3-s2-B": [
-    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E , row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 5 open at your level"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
@@ -200,7 +200,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "behind/L25-q39-from10-miss4-s1-A": [
-    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E , row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 5 open at your level"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
@@ -209,7 +209,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "behind/L25-q39-from10-miss4-s1-B": [
-    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E , row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 5 open at your level"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
@@ -218,7 +218,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "behind/L25-q39-from10-miss4-s2-A": [
-    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E , row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 5 open at your level"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
@@ -227,7 +227,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "behind/L25-q39-from10-miss4-s2-B": [
-    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E , row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 5 open at your level"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
@@ -278,7 +278,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "behind/L25-q39-from20-miss2-s1-A": [
-    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E , row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 5 open at your level"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
@@ -287,7 +287,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "behind/L25-q39-from20-miss2-s1-B": [
-    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E , row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 5 open at your level"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
@@ -296,7 +296,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "behind/L25-q39-from20-miss2-s2-A": [
-    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E , row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 5 open at your level"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
@@ -305,7 +305,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "behind/L25-q39-from20-miss2-s2-B": [
-    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E , row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 5 open at your level"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
@@ -332,7 +332,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "behind/L25-q39-from20-miss3-s1-A": [
-    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E , row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 5 open at your level"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
@@ -341,7 +341,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "behind/L25-q39-from20-miss3-s1-B": [
-    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E , row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 5 open at your level"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
@@ -350,7 +350,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "behind/L25-q39-from20-miss3-s2-A": [
-    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E , row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 5 open at your level"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
@@ -359,7 +359,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "behind/L25-q39-from20-miss3-s2-B": [
-    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E , row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 5 open at your level"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
@@ -386,7 +386,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "behind/L25-q39-from20-miss4-s1-A": [
-    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E , row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 5 open at your level"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
@@ -395,7 +395,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "behind/L25-q39-from20-miss4-s1-B": [
-    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E , row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 5 open at your level"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
@@ -404,7 +404,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "behind/L25-q39-from20-miss4-s2-A": [
-    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E , row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 5 open at your level"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
@@ -413,7 +413,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "behind/L25-q39-from20-miss4-s2-B": [
-    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
+    {"t":"Equip Triniel's Dagger inferred","s":"Stigma slot 1 is open · then put it on E , row 0 (fires first)","c":"primary \"Equipped\" stequip","b":"Lv 25–26"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk : Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals , +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 5 open at your level"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk : Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
