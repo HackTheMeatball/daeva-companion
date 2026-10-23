@@ -4,6 +4,16 @@ These rules bind every thread. The ledger ([docs/kaizen/ledger.csv](../kaizen/le
 
 Each rule below is copied word for word from issue #114 (its body as of Oct 20, 3:48 PM ET); in it, "this issue", "here", "above" and "below" mean #114 and its sections. A rule added later (COM-17 on) names its own source in its italic line.
 
+## Clocks
+
+- **A clock's cadence lives in its ledger row** (amends CLK-01 to CLK-04 and HC-06, no new id; Kaizen batch-0.9 item
+  46, Gale; routed by the coordinator 2026-10-22T11:20Z): every self-re-arming clock (a scheduled trigger or wake that
+  sets its own next run) names its ledger id and cadence in the prompt it re-arms with, for example `CLK-01: 20 min
+  while a claude/ PR is open or a build runs, 3 h idle`, and re-arms from that row, never from memory or an earlier
+  prompt. A clock with no row gets one before it runs. Gus's PR check re-armed every 30 minutes from 2026-10-21 to
+  2026-10-22 11:29Z against CLK-01's 20 (Watchdog (Mike)'s read of the trigger history: 35 of 35 gaps from Oct 21 15:20Z
+  to Oct 22 11:09Z were 31 to 50 minutes), because the stored prompt said 30 and nothing tied it to the row.
+
 ## Communication
 
 ### COM-01
@@ -169,6 +179,32 @@ gets the work) is about hand-offs and stays as is._
   Macros is Todd (was Werner), replacing Better Call Saul-only names given the same evening; Rules Steward picked Ted
   and Todd on the coordinator's ask.
 
+### COM-21
+
+_Owner, project chat 2026-10-22 12:53:10Z (cmsg_01UNirAFgxf3jC8kQS8uvvHBFnYQN72LyjG14jCSGJbzo8): "Every role or thread
+needs to check with you and org design before handing off work". Narrow reading confirmed 12:55:01Z
+(cmsg_01UNirAFgxf3jC8kQS8uvvHBRL9CRjzSC7H34kuWFHNctk): "No I agree with you", to the coordinator's "the check covers
+real hand-offs (new owner or new builder) and not routine reviews or syncs". Routed by the coordinator 12:53Z and
+12:54Z; one-hop design by Org Design (Nacho), the owner; written by the Rules Steward (Francesca). The three checks
+(owner, capacity, conflict of interest) are the coordinator's answer to Isaac's 6:50 PM ET Oct 20 "Every delegation
+needs to be thought through", until now kept only in the coordinator's notes._
+
+- **A hand-off is checked with the coordinator and Org Design first.** A hand-off moves owned work to a different role:
+  a To-do or issue owner, a PR's HOLD owner, a duty, a deliverable, or a new thread or one-off started to do the work.
+  Not hand-offs: a review request to a named gate, a relay, an event on work already assigned, and a route the rules fix
+  (kickoff, and a partial build's hold once item 47 lands).
+  - **One hop:** the role handing off sends the coordinator four lines (item; from → to; why; the receiver's open
+    items) and waits. The coordinator logs it with the existing three checks (owner per Who does what, capacity,
+    conflict of interest) and asks Org Design in the same step; the handing role never messages Org Design separately.
+  - **Pre-backed routes:** a hand-off to the ledger or Who-does-what owner is backed by Org Design in advance and logged
+    "Org Design: pre-backed". Org Design answers BACKED or REDIRECT live only when the receiver isn't the listed owner,
+    it creates a new duty, the receiver would gain more than 2 new duties in a day, or it touches an independent role
+    or an owner-held limit.
+  - **Stall risk:** Org Design's cap of 60 messages a day can make a live check the slow step. The fix is a wider
+    pre-backed route, never a hand-off without the check (Org Design, 2026-10-22).
+  - **Starting a thread or one-off is the coordinator's** (DEC-20261020-hiring); a role that needs a builder or helper
+    asks the coordinator, never starts its own.
+
 ## Kaizen
 
 ### KZ-19
@@ -229,16 +265,6 @@ _From #114 "Merge rule (AUTO since 2026-10-16 10:32Z, #115)"._
     message or by the GitHub read in a write Huell is already making. So #846 (merged 09:01Z) waited for Build Pipeline
     (Gus)'s 09:34Z PR check, and #851 (merged 10:52:56Z) for the 11:09Z one. Gus's PR check (CLK-01) stays the backstop,
     and Huell's diff on each sync makes a duplicate line harmless.
-
-### Clocks
-
-- **A clock's cadence lives in its ledger row** (amends CLK-01 to CLK-04 and HC-06, no new id; Kaizen batch-0.9 item
-  46, Gale; routed by the coordinator 2026-10-22T11:20Z): every self-re-arming clock (a scheduled trigger or wake that
-  sets its own next run) names its ledger id and cadence in the prompt it re-arms with, for example `CLK-01: 20 min
-  while a claude/ PR is open or a build runs, 3 h idle`, and re-arms from that row, never from memory or an earlier
-  prompt. A clock with no row gets one before it runs. Gus's PR check re-armed every 30 minutes from 2026-10-21 to
-  2026-10-22 11:29Z against CLK-01's 20 (Watchdog (Mike)'s read of the trigger history: 35 of 35 gaps from Oct 21 15:20Z
-  to Oct 22 11:09Z were 31 to 50 minutes), because the stored prompt said 30 and nothing tied it to the row.
 
 ## Pipeline
 

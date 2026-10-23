@@ -31,8 +31,10 @@ _From #114 "Health check (owner design, 2026-10-17 5:51 AM ET; replaces the plan
   - **a clock off its cadence** (amends HC-01, no new id; Kaizen batch-0.9 item 46; routed by the coordinator
     2026-10-22T11:20Z): beyond checking that each clock is alive, read each clock's fire times from the trigger list
     (completed triggers included: `last_fired_at`, `created_at`, `run_once_at`) and compare the latest fire-to-fire gap
-    with the cadence in its ledger row (CLK-01 to CLK-04, HC-06; where a row gives two cadences, such as CLK-01's 20 min busy and 3 h idle, the cadence for the state when the clock last re-armed, which is the earlier fire of the pair). A gap over 1.5 times the row's cadence (over 30 min
-    for CLK-01's 20) gets one #221 row, Kind `clock-drift`, and a message to the clock's owner. This is part of the
+    with the cadence in its ledger row (CLK-01 to CLK-04, HC-06; where a row gives two cadences, such as CLK-01's 20 min
+    busy and 3 h idle, the cadence for the state when the clock last re-armed, read from the trigger's `created_at`,
+    which is usually within a minute of the earlier fire of the pair). A gap over 1.5 times the row's cadence (over 30
+    min for CLK-01's 20) gets one #221 row, Kind `clock-drift`, and a message to the clock's owner. This is part of the
     same read and adds no clock or turn. A liveness-only check missed Gus's 30-minute re-arm for about 20 h (Mike,
     2026-10-22 11:22Z); at 20 minutes the measured gaps are about 21 to 25 minutes, so 1.5 times leaves 5 minutes of
     margin.

@@ -25,7 +25,7 @@ already in flight, then closes, and routing of new outside reviews stays paused.
 - **I own:**
   - the trigger call on unplanned changes (incident fast paths, Isaac's asks, mid-cycle rule and process edits):
     does this change need an outside review, and which kind; every call is logged, "no review" included;
-  - the brief for each review I call, filled mechanically from the fixed template (`audit-1.0/fresh-reviewers.md`);
+  - the brief for each review I call, filled mechanically from the fixed template ([`docs/reviews/governance-fresh-review-brief.md`](../reviews/governance-fresh-review-brief.md) for a governance review, homed 2026-10-22; it replaces `audit-1.0/fresh-reviewers.md` for those);
   - handing the brief to the coordinator, who starts the one-off reviewer thread with it verbatim;
   - `reviews/broker-log.md` in the shared folder: each call, its brief, the reviewer and the verdict;
   - closing the reviewer thread once its verdict is recorded on the PR or in its review file;
