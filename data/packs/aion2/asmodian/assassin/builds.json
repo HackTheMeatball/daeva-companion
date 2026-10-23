@@ -1364,6 +1364,19 @@
             ]
           }
         ],
+        "macros": [
+          {
+            "quickslot": "Quick Use 2",
+            "rows": [
+              {
+                "minLv": 1,
+                "steps": [
+                  { "slot": "Quick Use 2" }
+                ]
+              }
+            ]
+          }
+        ],
         "eOrder": [
           "stigma:assassin:illusive-clone",
           "stigma:assassin:swift-contract",

@@ -59,6 +59,10 @@ export const aion2Pack = definePack({
     /* the 10-second undo of a board node (local) */
     dvLast: "local", dvLastAt: "local",
     rotSeen: "register",
+    /* the player's own keys (0.9 P22, #388): an object, the Key setup column's suggested key → the player's key; absent, empty
+       or unknown entries fall back to the suggestion (src/packs/aion2/cards/build.js kvKeyOf). One register: the newer
+       binding wins as a whole, so a merge never leaves two columns on one key */
+    keyBinds: "register",
   },
   character: { pack: PACK, class: CLASS },
   /* the names are the class records' (data/packs/aion2/classes/<class>/class.json; tests/core/chars.test.mjs) */

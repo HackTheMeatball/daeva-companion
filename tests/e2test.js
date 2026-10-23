@@ -177,7 +177,7 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
   /* Old wording V1 flagged (drop / rewrite) that has no exact "old" in claims.json, checked by phrase. */
   const PHRASES = { C02: 'gains one level every 3 character levels', C04: '~99%', C06: 'Reset close: run it at 1,000', C07: 'Potential Stones, Stigma Shards and Daevanion resources', C08: 'gear score 700', C09: ['worth far more at 45', 'banked Shugo Festival keys', 'Bank them', 'Leave the festival alone'],
     C10: 'Story dungeon around Lv 37', C11: 'pays rewards 7 times', C13: ['come from nowhere else', 'come only from Strongholds'], C15: ['Reroll toward', 'reroll a mission', 'gear parts'], C16: ['Inven', 'Unconfirmed (one source)', '380–6,000'],
-    C18: '<b>Cash shop is cosmetic</b>', C19: ['Weekly Command scrolls', 'Reroll if rewards lack'], C20: ['"Accuracy"', '"Double Chance"', '["Accuracy", "Critical Damage Boost"]'], C21: ['Quick Use 2', 'delay 10 ms', '30–50 ms'],
+    C18: '<b>Cash shop is cosmetic</b>', C19: ['Weekly Command scrolls', 'Reroll if rewards lack'], C20: ['"Accuracy"', '"Double Chance"', '["Accuracy", "Critical Damage Boost"]'], C21: ['delay 10 ms', '30–50 ms'],
     C22: ['Azphel points', 'arena and battlefield'], C23: ['9,280 Enhance Stones each', 'resets it to +0'], C24: '100% success).', C25: 'Safe Haven or Nornir Assembly', C01: ['free until Lv 31', 'Experiment freely until 31', 'respec is free until 31'],
     C28c: 'Skycoach). Leveling order', C28e: 'Metabot calls its reading an interpretation', C28h: 'exact unlock level for most regional quests' };
   Object.entries(PHRASES).forEach(([id, ps]) => [].concat(ps).forEach(x => { if (SRC.includes(x)) oldGone.push(id + ': ' + x); }));
@@ -187,7 +187,11 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
       since 0.6 P2 the table is a property of the class chunk's object (STAT_TIERS:<value>) */
     const min = require('esbuild').transformSync('x=' + t.replace(/^const STAT_TIERS = /, '').replace(/;$/, ''), { minifySyntax: true, minifyWhitespace: true }).code.replace(/^x=/, '').replace(/;\s*$/, '');
     ok('C20: stat tiers are exactly V1\'s', SRC.includes(t) || SRC.includes(t.replace(/^const /, 'var ')) || SRC.includes('STAT_TIERS=' + min) || SRC.includes('STAT_TIERS:' + min)); }
-  ok('C21: macro step without "Quick Use 2", with the short-delay wording', SRC.includes('Step 1 = the right-click macro slot (the right-click stack). If ready skills get skipped, add a short delay.'));
+  /* 0.9 P22 replaced V1's one-line macro step with the macro drawn as steps (docs/design/0.9-keys-macro.md §2): the step
+     names its slot as the game's Macro window does ("Quick Use 2", skill-bar facts 1, 11), and the delay advice is the
+     game's 10 ms default with "raise it there" (facts 12, 12a) */
+  ok('C21: the macro is drawn as steps, with the default-delay wording', SRC.includes("<b>Make the macro:</b> press K, open Macro (top right), then Add Macro, one step per line above. Each step's Delay starts at ")
+    && SRC.includes(" ms, the game's default; if ready skills get skipped, raise it there.") && !SRC.includes('Step 1 = the right-click macro slot'));
   /* 8. Build data */
   const bd = await p.evaluate(() => ({ plan: STIGMA_PLAN, extra: SP_SKILLS.filter(s => s.extra).map(s => s.n), vz: DV_NODES().filter(n => n.board === 'Vaizel').map(n => n.k + '=' + n.t), tr: DV_NODES().filter(n => n.board === 'Triniel').map(n => n.k + '=' + n.t), flat: SP_STEPS.filter(x => x.s.n === 'Defense Break').map(x => x.req), msExtra: GATES.some(g => g.items.some(it => /^sp:(Assault Stance|Impact Hit|Flash Slice|Storm Rampage|Defense Break|Determination|Heightened Sixth Sense):/.test(it.k || ''))) }));
   ok('stigma plan TD / IC / Swift Contract / Savage Fang', bd.plan.join('|') === "Triniel's Dagger|Illusive Clone|Swift Contract|Savage Fang", bd.plan);

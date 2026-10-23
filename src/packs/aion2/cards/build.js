@@ -4,12 +4,71 @@
 import { char } from "../../../core/state.js";
 import { setHTML } from "../../../core/cards.js";
 import { activePack, packClasses } from "../../../core/pack.js";
-import { E_BEFORE_Q, E_NOTE, E_ORDER, E_ST, GUIDE_KEYS, HAS_KEYS, KEYS, KEYS_ST, SP_ICONS, STAT_NOTE, STAT_SRC, STAT_TIERS, STIGMA_ICON } from "../data/build.js";
+import { E_BEFORE_Q, E_NOTE, E_ORDER, E_ST, GUIDE_KEYS, HAS_KEYS, KEYS, KEYS_ST, MACROS, SLOT_KEYS, SP_ICONS, STAT_NOTE, STAT_SRC, STAT_TIERS, STIGMA_ICON, macroStepsAt } from "../data/build.js";
 import { eShift, stTag } from "../data/markup.js";
 import { TIPS } from "../data/tips.js";
 import { rotKeys } from "../requirements.js";
 import { aion2State as state, aion2Save as save, aion2Update as update, aion2STIGMA_SLOTS as STIGMA_SLOTS, aion2StIco as stIco, aion2SpMini as spMini, aion2Ini as ini } from "./page.js";
 
+/* Your own keys (0.9 P22, #388; docs/design/0.9-keys/README.md): char.keyBinds maps a Key setup column's suggested key (Q, E,
+   T; a default-keys build's own keys) to the key the player uses for it. Absent, empty, not a string or holding a character
+   HTML would read (KV_BAD; the key goes into markup and attributes): the suggestion. */
+const KV_BAD = /[<>&"'`]/;
+const kvKeyOf = col => { const m = char(state).keyBinds, k = m && typeof m === "object" && !Array.isArray(m) ? m[col] : null;
+  return typeof k === "string" && k.trim() && k.length <= 12 && !KV_BAD.test(k) ? k : col; };
+const kvMine = col => kvKeyOf(col) !== col;
+/* the chip being rebound (its column) and a pending kvClash { col, key, other }; neither is saved */
+let kvListen = null, kvClash = null;
+const chipHTML = (col, cls = "") => kvListen === col
+  ? `<button type="button" class="kv-key listen${cls}" data-col="${col}" aria-label="${col} stack: press a key">Press a key</button>`
+  : `<button type="button" class="kv-key${cls}${kvMine(col) ? " mine" : ""}" data-col="${col}" aria-label="${kvKeyOf(col)}: change the key for this stack">${kvKeyOf(col)}<span class="kv-caret" aria-hidden="true">▾</span></button>`;
+/* the hint under the grid: listening, a kvClash, or "Back to suggested keys" once a key is yours */
+function hintHTML(cols) {
+  if (kvClash) return `${kvClash.key} already holds the ${GUIDE_KEYS && kvClash.other === "T" ? "right-click" : kvClash.other} stack. <button type="button" class="linkbtn" data-kv="swap">Swap them</button> <button type="button" class="linkbtn" data-kv="other">Pick another</button>`;
+  if (kvListen) return "Press the key you use for this stack in game. Esc cancels.";
+  return cols.some(kvMine) ? `<button type="button" class="linkbtn" data-kv="reset">Back to suggested keys</button>` : "";
+}
+let kvCols = [];
+const setKeys = m => { const keys = Object.fromEntries(Object.entries(m).filter(([c, k]) => k !== c));
+  if (Object.keys(keys).length) char(state).keyBinds = keys; else delete char(state).keyBinds; save(); };
+/* a key pressed while listening: Esc cancels; a key another column holds asks first (the kvClash state); Tab moves focus
+   on, which cancels (onKeysFocusOut); a modifier alone, a key KV_BAD refuses or one over 12 characters (kvKeyOf
+   wouldn't show it) is skipped */
+function onListenKey(e) {
+  if (!kvListen || e.key === "Tab") return;
+  e.preventDefault(); e.stopImmediatePropagation();
+  if (["Shift", "Control", "Alt", "Meta"].includes(e.key) || KV_BAD.test(e.key) || e.key.length > 12) return;
+  const col = kvListen; kvListen = null;
+  if (e.key !== "Escape") {
+    const key = e.key === " " ? "Space" : e.key.length === 1 ? e.key.toUpperCase() : e.key;
+    const other = kvCols.find(c => c !== col && kvKeyOf(c) === key);
+    if (other) kvClash = { col, key, other };
+    else setKeys({ ...(char(state).keyBinds || {}), [col]: key });
+  }
+  renderRotation(); focusChip(col);
+}
+function onKeysClick(e) {
+  const chip = e.target.closest("[data-col]"), act = e.target.closest("[data-kv]"), box = e.target.closest("#stackViz > .sk[data-tip]");
+  /* a tap on a key box opens its tooltip (focus shows it; mobile Safari doesn't focus a tapped span by itself) */
+  if (box) { box.focus({ preventScroll: true }); return; }
+  if (chip) { kvListen = chip.dataset.col; kvClash = null; renderRotation(); focusChip(kvListen); return; }
+  if (!act) return;
+  const a = act.dataset.kv, c = kvClash; kvClash = null;
+  if (a === "swap" && c) setKeys({ ...(char(state).keyBinds || {}), [c.col]: c.key, [c.other]: kvKeyOf(c.col) });
+  if (a === "other" && c) kvListen = c.col;
+  if (a === "reset") setKeys({});
+  renderRotation(); focusChip(c ? c.col : kvCols[0]);
+}
+/* listening ends when focus leaves the listening chip (a click elsewhere, Tab) or the drawer closes, so no later key press
+   anywhere is taken. Focus moving to another chip is left to its click (a re-render now would swallow it); otherwise
+   checked a tick later, as a re-render replaces the chip and focusChip refocuses its successor. */
+const kvCancel = () => { if (!kvListen && !kvClash) return; kvListen = null; kvClash = null; renderRotation(); };
+function onKeysFocusOut(e) {
+  if (!kvListen || (e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest("#stackViz [data-col]"))) return;
+  setTimeout(() => { const a = document.activeElement;
+    if (kvListen && !(a && a.matches && a.matches(`#stackViz [data-col="${kvListen}"]`))) { kvListen = null; renderRotation(); } }, 0);
+}
+const focusChip = col => { const el = col && document.querySelector(`#stackViz [data-col="${col}"]`); if (el) el.focus({ preventScroll: true }); };
 const statSeqHTML = () => STAT_TIERS.map((t, i) => `<div class="tier"><span class="tier-n">Tier ${i + 1}</span><div class="seq">${t.map(x => `<span>${x}<em class="src">${STAT_SRC[x] || ""}</em></span>`).join("")}</div></div>`).join("");
 /* The keys at lv hold only what the guide says you have there (rotKeys, src/core/requirements.js: the Skills card's
    unlock rule for skills, the slot levels for stigmas). E_STACK marks stigmas with "*". The grid's E holds only the
@@ -29,14 +88,19 @@ const rotMarkSeen = () => { char(state).rotSeen = rotNow(char(state).level).map(
    attribute so the cell's text stays the name. */
 const gridIco = (n, stig) => { const src = (stig ? STIGMA_ICON : SP_ICONS)[n];
   return src ? `<img class="kv-ico" src="${src}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">` : `<span class="kv-ico ini" aria-hidden="true" data-ini="${ini(n)}"></span>`; };
-const rotWhere = x => `${x.at || x.key}${x.single ? "" : `, row ${x.r}${x.r === 0 ? " (fires first)" : ""}`}`;
+const tipSide = (i, n) => i < (n - 1) / 2 ? " tip-l" : i > (n - 1) / 2 ? " tip-r" : "";
+const rotWhere = x => `${kvKeyOf(x.at || x.key)}${x.single ? "" : `, row ${x.r}${x.r === 0 ? " (fires first)" : ""}`}`;
 function renderStacks(lv) {
   if (!char(state).rotSeen || !char(state).rotSeen.every(k => k.split(":").length === 3)) rotMarkSeen(); /* first run: nothing counts as new */
   const fresh = new Set(rotNew(lv).map(x => x.n));
   /* Each filled cell is a labelled group naming its key and row, so a screen reader needn't wait for the key chips
      after the last cell to learn which column a skill is in. */
-  const cell = (n, key, r) => { if (!n) return `<span class="sk empty"></span>`; const nm = n.replace(/\*/g, ""), stig = n.includes("*");
-    return `<span class="sk${stig ? " stig" : ""}${fresh.has(nm) ? " new" : ""}" role="group" aria-label="${nm}, ${key}${r === 0 ? ", row 0 (fires first)" : ", row " + r}">${gridIco(nm, stig)}<span class="nm">${nm}</span></span>`; };
+  /* The icon fills the box (0.9 P22, note 12); the name is the box's accessible name and its tooltip, on hover or focus
+     (tap focuses it on a phone) */
+  /* the tooltip opens toward the grid's middle (0.9 P22 rev 2.2): left-half columns anchor it at their left edge,
+     right-half ones at their right edge, a middle column centres it, so it stays on screen at 360 and 260 px (tipSide) */
+  const cell = (n, key, r, side = "") => { if (!n) return `<span class="sk empty"></span>`; const nm = n.replace(/\*/g, ""), stig = n.includes("*"), where = `${kvKeyOf(key)}${r === 0 ? ", row 0 (fires first)" : ", row " + r}`;
+    return `<span class="sk${stig ? " stig" : ""}${fresh.has(nm) ? " new" : ""}${side}" role="group" tabindex="0" aria-label="${nm}, ${where}" data-tip="${nm} · ${where}">${gridIco(nm, stig)}<span class="nm">${nm}</span></span>`; };
   if (KEYS.length && !GUIDE_KEYS) return renderDefaultKeys(lv, fresh, cell);
   /* One grid (0.6.2 P18, like the game's K window): shared row numbers on the left, one column per key, each cell the
      skill's icon with its name under it, and the key chips under their columns (row 0 at the bottom, as in the game's bar).
@@ -46,11 +110,48 @@ function renderStacks(lv) {
      default. The game's defaults for the skills learned by lv are listed under the grid. */
   const k = rotKeys(char(state), lv), lmb = (KEYS.find(x => x.key === "Left click") || { rows: [] }).rows.filter(r => lv >= r.lv).map(r => r.n);
   const cols = [["Q", k.q], ["E", E_STACK(lv)], ["T", k.rmb]];
+  kvCols = cols.map(([key]) => key);
+  const yours = kvCols.some(kvMine), ks = kvCols.map(kvKeyOf);
   setHTML(document.getElementById("stackViz"),
-    `<p class="fine muted kv-sugg">Suggested keys: Q, E and T (T holds the stack the right-click macro fires). Move the skills there yourself.${E_ST ? " The stigma order on E is unsure:" + stTag(E_ST) : ""}</p>` +
-    [3, 2, 1, 0].map(r => `<i class="rn">${r}</i>` + cols.map(([key, rows]) => cell(rows[r], key, r).replace('class="sk', `class="sk${r === 0 ? " r0" : ""}`)).join("")).join("") +
-    `<span></span>` + cols.map(([key]) => `<span class="kv-key">${key}</span>`).join("") +
+    `<p class="fine muted kv-sugg">${yours ? "Your keys" : "Suggested keys"}: ${ks[0]}, ${ks[1]} and ${ks[2]} (${ks[2]} holds the stack the right-click macro fires). Move the skills there yourself.${E_ST ? ` The stigma order on ${ks[1]} is unsure:` + stTag(E_ST) : ""}</p>` +
+    [3, 2, 1, 0].map(r => `<i class="rn">${r}</i>` + cols.map(([key, rows], i) => cell(rows[r], key, r, tipSide(i, cols.length)).replace('class="sk', `class="sk${r === 0 ? " r0" : ""}`)).join("")).join("") +
+    `<span></span>` + cols.map(([key]) => chipHTML(key)).join("") +
     lmb.map(n => `<p class="lmb">Left click: <span class="sk">${gridIco(n)}<span class="nm">${n}</span></span></p>`).join("") + defaultKeysNote(lv) + stLaterHTML());
+  setHTML(document.getElementById("kvHint"), hintHTML(kvCols));
+  renderMacro(lv);
+}
+/* The macro as steps (0.9 P22, docs/design/0.9-keys-macro.md §2): one block per macro in the data (MACROS), headed with
+   the key it sits on; one numbered row per step at lv: a slot step fires that slot's whole stack (its key chip and the
+   slot's game name), a skill step one skill. A step whose slot holds nothing yet isn't drawn; a Delay shows only when the
+   data carries another value than the game's 10 ms (skill-bar facts 5–7, 12, 12a). No macro in the data, no block. */
+const MACRO_DELAY_MS = 10, MACRO_MAX = 20;
+const keyWord = k => / click$/.test(k) ? k.toLowerCase() : k;
+/* Test hook (tests/a11y.js): fixture macros (MACROS' shape) set by the runner before the page loads, for the cases no
+   class's data has yet (a Delay other than 10 ms, 2+ steps, a macro off right click); the page runs with MACROS. */
+const macrosNow = () => Array.isArray(window.__macros) ? window.__macros : MACROS;
+function renderMacro(lv) {
+  const el = document.getElementById("kvMacro"); if (!el) return;
+  const k = rotKeys(char(state), lv);
+  /* the grid column a slot step fires: the slot's second key when the macro takes its first (right click → T) */
+  const colOf = (slot, m) => { const [a, b] = SLOT_KEYS(slot); return slot === m.quickslot && b ? b : a; };
+  /* the stack a slot step fires: the guide's grid columns (Quick Use 2 / 7 / 8 = right click / Q / E, the Assassin's
+     keyStacks), else the game's default keys (KEYS). A class whose own stacks sit on other slots needs them added here. */
+  const stackOf = slot => slot === "Quick Use 2" ? k.rmb : slot === "Quick Use 7" ? k.q : slot === "Quick Use 8" ? E_STACK(lv)
+    : ((KEYS.find(x => x.key === SLOT_KEYS(slot)[0]) || { rows: [] }).rows.filter(r => lv >= r.lv).map(r => r.n));
+  const delay = st => st.delayMs !== undefined && st.delayMs !== MACRO_DELAY_MS ? ` <span class="muted">· Delay ${st.delayMs} ms</span>` : "";
+  setHTML(el, macrosNow().map(m => {
+    const steps = macroStepsAt(m, lv).filter(st => st.skill || stackOf(st.slot).length).map(st => {
+      if (st.skill) return `<li>${spMini(st.skill)}${st.skill} <span class="muted">· one skill</span>${delay(st)}</li>`;
+      const key = kvKeyOf(colOf(st.slot, m));
+      return `<li><b>${key}</b><span class="vh">: </span>${st.slot} <span class="muted">· the whole ${keyWord(key)} stack, row 0 first</span>${delay(st)}</li>`; });
+    if (!steps.length) return "";
+    const on = keyWord(SLOT_KEYS(m.quickslot)[0]), n = steps.length;
+    return `<div class="kv-mac"><span class="khead">Macro on ${on}${n > 1 ? ` · ${n} steps` : ""}</span><ol class="playsteps">${steps.join("")}</ol>` +
+      /* the how-to as a numbered walk-through with bold lead-ins, make then bind (owner-ok Q5; 0.9-keys-macro.md rev 2.2 §3) */
+      `<ol class="fine macro-steps">` +
+      `<li><b>Make the macro:</b> press K, open Macro (top right), then Add Macro, one step per line above. Each step's Delay starts at ${MACRO_DELAY_MS} ms, the game's default; if ready skills get skipped, raise it there.${n > 1 ? ` Up to ${MACRO_MAX} steps. Left click can only be the last step.` : ""}</li>` +
+      `<li><b>Put it on ${on}</b> (this guide's choice, not a rule): Esc, Key Settings, General, Gameplay, Macro (no key by default, single source), press ${on} and confirm moving it from its current key (only in the current control mode, not AION 1 mode).</li></ol></div>`;
+  }).join(""));
 }
 /* Under the guide's grid: the game's default keys of the skills learned by lv (KEYS), one line per key with the grid's
    key chip (Design Lead on #565: a list, not a paragraph), then the macro's place. That the macro moves the default
@@ -69,18 +170,21 @@ function renderDefaultKeys(lv, fresh, cell) {
   const k = rotKeys(char(state), lv), cols = k.keys.filter(x => !x.single), singles = k.keys.filter(x => x.single && x.rows[0]);
   const depth = Math.max(0, ...cols.map(x => x.rows.length)), el = document.getElementById("stackViz");
   el.style.gridTemplateColumns = `12px repeat(${cols.length}, minmax(0, 1fr))`;
-  setHTML(el, [...Array(depth).keys()].reverse().map(r => `<i class="rn">${r}</i>` + cols.map(x => cell(x.rows[r], x.key, r).replace('class="sk', `class="sk${r === 0 ? " r0" : ""}`)).join("")).join("") +
-    `<span></span>` + cols.map(x => `<span class="kv-key${/ click$/.test(x.key) ? " mouse" : ""}">${x.key}</span>`).join("") +
+  kvCols = cols.map(x => x.key);
+  setHTML(el, [...Array(depth).keys()].reverse().map(r => `<i class="rn">${r}</i>` + cols.map((x, i) => cell(x.rows[r], x.key, r, tipSide(i, cols.length)).replace('class="sk', `class="sk${r === 0 ? " r0" : ""}`)).join("")).join("") +
+    `<span></span>` + cols.map(x => chipHTML(x.key, / click$/.test(kvKeyOf(x.key)) ? " mouse" : "")).join("") +
     singles.map(x => `<p class="lmb">${x.key}: <span class="sk${fresh.has(x.rows[0]) ? " new" : ""}">${gridIco(x.rows[0])}<span class="nm">${x.rows[0]}</span></span></p>`).join("") +
     `<p class="fine tline kv-note">The game's default keys${stTag(KEYS_ST) && "," + stTag(KEYS_ST)}. Row 0 is tried first; a skill on cooldown or not ready is skipped. A skill shows here from the level you learn it.</p>`);
+  setHTML(document.getElementById("kvHint"), hintHTML(kvCols));
+  renderMacro(lv);
 }
 /* Stigmas still to come: where each will go on E when you add it (in the order the slots open). */
 function stLaterHTML() {
   const sl = STIGMA_SLOTS(), have = sl.filter(x => char(state).checks[x.k]).map(x => x.name), todo = sl.filter(x => !char(state).checks[x.k]).sort((a, b) => a.lv - b.lv);
   if (!todo.length) return "";
   const cur = [...have], rows = todo.map(x => { cur.push(x.name); const order = E_ORDER.filter(n => cur.includes(n)), r = order.indexOf(x.name), shift = eShift(order, r);
-    return `<li><span class="sk ghost">${stIco(x.name, "st-mini")}${x.name}</span><span class="lt-lv">Lv ${x.lv}</span><span class="lt-where">E, row ${r}${r === 0 ? " (fires first)" : ""}${shift ? ` · ${shift}` : ""}</span></li>`; }).join("");
-  return `<div class="st-later"><span class="khead">Coming to E</span><ul>${rows}</ul></div>`;
+    return `<li><span class="sk ghost">${stIco(x.name, "st-mini")}${x.name}</span><span class="lt-lv">Lv ${x.lv}</span><span class="lt-where">${kvKeyOf("E")}, row ${r}${r === 0 ? " (fires first)" : ""}${shift ? ` · ${shift}` : ""}</span></li>`; }).join("");
+  return `<div class="st-later"><span class="khead">Coming to ${kvKeyOf("E")}</span><ul>${rows}</ul></div>`;
 }
 /* The icon (or initials) before a name: skills as in the chain, stigmas (E) with their own art. Decorative: the name is the text. */
 const ico = (n, stig) => stig ? stIco(n, "st-mini") : spMini(n);
@@ -108,10 +212,11 @@ function renderRotation() {
   const steps = [];
   /* Q and E are the guide's suggested binding, not the game's defaults: the Key setup grid's heading line says so once */
   /* the buffs' order is the disputed part of the E stack (0.9 P17, C21b): its label sits on this step */
-  if (before.length) steps.push(`<b>E</b> ${before.map(n => nameIco(n, true)).join(" + ")}${E_NOTE ? " " + E_NOTE : ""}${stTag(E_ST)}`);
-  if (q.length) steps.push(`<b>Q</b> ${nameIco(q[0])} to get behind the target`);
-  if (after.length) steps.push(`<b>E</b> ${after.map(n => nameIco(n, true)).join(", then ")}`);
-  steps.push(`<b>Hold</b> right + left click`);
+  if (before.length) steps.push(`<b>${kvKeyOf("E")}</b> ${before.map(n => nameIco(n, true)).join(" + ")}${E_NOTE ? " " + E_NOTE : ""}${stTag(E_ST)}`);
+  if (q.length) steps.push(`<b>${kvKeyOf("Q")}</b> ${nameIco(q[0])} to get behind the target`);
+  if (after.length) steps.push(`<b>${kvKeyOf("E")}</b> ${after.map(n => nameIco(n, true)).join(", then ")}`);
+  /* the warning the Key setup fold's old third line held (0.9 P22, docs/design/0.9-keys-macro.md §1; skill-bar fact 10) */
+  steps.push(`<b>Hold</b> right + left click <span class="muted">· right click alone drains MP (your test)</span>`);
   document.getElementById("rotLv").textContent = `at Lv ${lv}`;
   setHTML(document.getElementById("rotPlay"), steps.map(x => `<li>${x}</li>`).join(""));
   setHTML(document.getElementById("rotChain"), rmb.map((n, i) => `<li><span class="dot"></span><span>${spMini(n)}${n}</span></li>`).join(""));
@@ -131,7 +236,7 @@ function rotNewNote(lv) {
    "Right click fires" line. The Assassin's play steps, its left click and its macro text (build.html) are not this build's. */
 function renderDefaultRotation(lv, keys) {
   const rot = document.querySelector("#statDrawer .sd-rot");
-  for (const el of rot.querySelectorAll(":scope > .playsteps, :scope > .rmbline, .macro-steps, details > .tline")) el.style.display = "none";
+  for (const el of rot.querySelectorAll(":scope > .playsteps, :scope > .rmbline, details > .tline")) el.style.display = "none";
   let box = rot.querySelector(":scope > .rot-keys");
   if (!box) { box = document.createElement("div"); box.className = "rot-keys"; rot.querySelector(":scope > .ns-head").after(box); }
   setHTML(box, keys.filter(x => !x.single && x.rows.some(Boolean)).map(x => `<div class="rmbline"><span class="khead">${x.key} fires</span><ol class="chain">${x.rows.filter(Boolean).map(n => `<li><span class="dot"></span><span>${spMini(n)}${n}</span></li>`).join("")}</ol></div>`).join(""));
@@ -144,6 +249,10 @@ function aion2BuildMount() {
      class's header is left as the shell has it */
   { const cur = packClasses().find(x => x.pack === char(state).pack);
     if (cur && cur.class !== activePack().character.class) for (const el of document.querySelectorAll(".eyebrow > span:first-child, h1")) el.textContent = el.textContent.replace("Assassin", cur.name); }
+  /* rebinding (0.9 P22, #388): a chip listens for the next key; capture, so Esc cancels here before it closes the drawer */
+  document.getElementById("statDrawer").addEventListener("click", onKeysClick);
+  document.getElementById("statDrawer").addEventListener("focusout", onKeysFocusOut);
+  addEventListener("keydown", onListenKey, true);
   /* Stat priority drawer: a tab pinned to the right edge; open state remembered.
      It starts level with the top of the cards row and sticks 16px from the top once you scroll past it. */
   (() => {
@@ -164,6 +273,7 @@ function aion2BuildMount() {
       /* (also after a scrim tap, which leaves focus on the page, and after Escape with focus on Level up in the bar) */
       if (!o && was && (viaKey || d.contains(document.activeElement) || document.activeElement === document.body)) tab.focus({ preventScroll: true });
       /* Closing the panel after seeing a new key placement counts as done. */
+      if (!o) kvCancel();
       if (was && !o && rotNew(char(state).level).length) { rotMarkSeen(); update(); } else save(); };
     if (state.statOpen) { d.classList.add("open"); tab.setAttribute("aria-expanded", "true"); }
     for (const t of [sideTab, barTab]) t.addEventListener("click", () => set(!d.classList.contains("open")));
