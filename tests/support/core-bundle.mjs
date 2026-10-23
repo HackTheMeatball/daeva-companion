@@ -5,11 +5,14 @@ import { readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { build } from 'esbuild';
-import { generatedData } from '../../scripts/generated-data.mjs';
+import { generatedDataFor } from '../../scripts/generated-data.mjs';
+import { DEFAULT_PACK } from '../../tools/gen/packs.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 
-export async function coreBundle() {
+/* pack (0.9 P12): the guide pack whose tables the bundle holds (default: the default class), as the page holds them once
+   that class's chunk loaded; mutate: a seeded data edit for that pack (scripts/generated-data.mjs generatedDataFor) */
+export async function coreBundle({ pack = DEFAULT_PACK, mutate = null } = {}) {
   const CORE = readdirSync(join(ROOT, 'src/core')).filter(f => f.endsWith('.js')).sort();
   const PACK = readdirSync(join(ROOT, 'src/packs/aion2')).filter(f => f.endsWith('.js')).sort();
   /* the engine's cards (0.4 P4a): their specs, without a DOM */
@@ -33,7 +36,7 @@ export async function coreBundle() {
     '__usePack(__aion2Pack);',
   ].join('\n');
   const r = await build({ stdin: { contents: ENTRY, resolveDir: join(ROOT, 'src'), loader: 'js', sourcefile: 'core-entry.js' },
-    bundle: true, write: false, format: 'esm', platform: 'neutral', treeShaking: false, logLevel: 'silent', plugins: [generatedData] });
+    bundle: true, write: false, format: 'esm', platform: 'neutral', treeShaking: false, logLevel: 'silent', plugins: [generatedDataFor(pack, { mutate })] });
   /* platform "neutral": a core module that reached for a browser or Node API would fail here or in the checks */
   return import('data:text/javascript;base64,' + Buffer.from(r.outputFiles[0].text).toString('base64'));
 }

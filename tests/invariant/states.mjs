@@ -29,15 +29,20 @@ const pad = (n, w = 2) => String(n).padStart(w, '0');
 export const catalogOf = M => new Function('QUESTS', 'QUEST_NAME', 'QUEST_STEPS', 'GATES', 'STEPS', 'RQ', 'AREA_ITEMS', 'SP_STEPS', 'STIGMA_PLAN', 'STIGMA_SLOTS', 'DV_NODES', 'GUIDE_CLASSES', `return (${catalogInPage})();`)(
   M.QUESTS, M.QUEST_NAME, M.QUEST_STEPS, M.GATES, M.STEPS, M.RQ, M.AREA_ITEMS, M.SP_STEPS, M.STIGMA_PLAN, () => M.stigmaSlots({}), M.DV_NODES, M.aion2Pack.classes);
 
-export function makeStates(M, { root, seed }) {
-  const C = catalogOf(M), NQ = C.quests.length, out = new Map();
-  const fixtures = fixtureStates(); /* the flat fixtures (tests/fixtures/*.flat.json) under their old state ids */
-  for (const s of generate(C, { fixtures, all: true })) out.set('golden/' + s.id, { id: 'golden/' + s.id, raw: s.raw });
+/* 0.9 P12: every other class (cls, its guide pack) gets CLASS_TOTAL states of its own, from its own catalog (the core
+   bundle of its pack): no golden part; the targeted story states at the quest's own level only (Advanced, Basic every
+   other quest); the Daevanion, story-end and skill targets as above; the seeded random rest. Each character is that class. */
+export const CLASS_TOTAL = 1000;
+
+export function makeStates(M, { root, seed, cls = null, pack = null }) {
+  const C = catalogOf(M), NQ = C.quests.length, out = new Map(), total = cls ? CLASS_TOTAL : TOTAL;
+  if (!cls) { const fixtures = fixtureStates(); /* the flat fixtures (tests/fixtures/*.flat.json) under their old state ids */
+    for (const s of generate(C, { fixtures, all: true })) out.set('golden/' + s.id, { id: 'golden/' + s.id, raw: s.raw }); }
 
   /* every trackable save key, and the ones whose record can also be done without a tick (a stored false there is the
      "ticked-but-derived-false" case): completesWith beyond "tick", and the Ascension steps (wrapper rule, §5) */
-  /* the guide steps: the shared Asmodian guide's and the Assassin's (0.6 P3), in id order */
-  const steps = ['data/packs/aion2/asmodian/guide/steps.json', 'data/packs/aion2/asmodian/assassin/guide/steps.json']
+  /* the guide steps: the shared Asmodian guide's and the class's (0.6 P3), in id order */
+  const steps = ['data/packs/aion2/asmodian/guide/steps.json', `data/packs/aion2/asmodian/${cls || 'assassin'}/guide/steps.json`]
     .flatMap(f => JSON.parse(readFileSync(join(root, f), 'utf8')).records).sort((a, b) => (a.id < b.id ? -1 : 1));
   const derivable = steps.filter(s => s.completesWith.some(e => e !== 'tick') || s.ascensionQuest).map(s => s.key);
   const keys = [...new Set([...C.gates.flatMap(g => g.items.filter(it => !it.sub && !it.hidden).map(it => it.k)), ...C.steps.flatMap(s => s.items),
@@ -48,7 +53,8 @@ export function makeStates(M, { root, seed }) {
     ...C.rq.map(q => ['rq:' + q.id, { lv: q.rec, story: q.story }]), ...C.areas.map(x => [x.k, { lv: x.lv }]), ...C.sp.map(x => [x.k, { lv: x.req }])]);
   const keptUp = (lv, qi) => Object.fromEntries(keys.filter(k => { const x = levelOf.get(k); return x && x.lv < lv && (!x.story || (qi >= 0 && qi >= qIdx(x.story))); }).map(k => [k, true]));
   const base = (lv, qi, checks, mode) => ({ checks, level: lv, quest: qi >= 0 ? C.quests[qi][1] : '', open: {}, mode, ...FLAGS });
-  const add = (id, st) => { if (!out.has(id)) out.set(id, { id, raw: storedText(st) }); };
+  const asClass = raw => { if (!cls) return raw; const s = JSON.parse(raw); for (const c of Object.values(s.chars)) Object.assign(c, { pack, class: cls }); return JSON.stringify(s); };
+  const add = (id, st) => { if (!out.has(id)) out.set(id, { id, raw: asClass(storedText(st)) }); };
   /* on track: the last quest whose level is ≤ lv */
   const onTrack = lv => C.quests.reduce((a, q, j) => q[0] <= lv ? j : a, -1);
   const qid = qi => qi < 0 ? 'qxx' : 'q' + pad(qi);
@@ -56,7 +62,7 @@ export function makeStates(M, { root, seed }) {
   /* 2. targeted */
   for (let qi = -1; qi < NQ; qi++) {
     const ql = qi < 0 ? 12 : C.quests[qi][0];
-    for (const lv of [...new Set([Math.max(1, ql - 1), ql, 45])]) for (const t of ['none', 'all', 'dfalse']) for (const mode of ['advanced', 'basic']) {
+    for (const lv of cls ? [ql] : [...new Set([Math.max(1, ql - 1), ql, 45])]) for (const t of ['none', 'all', 'dfalse']) for (const mode of cls ? [qi % 2 ? 'basic' : 'advanced'] : ['advanced', 'basic']) {
       const checks = t === 'none' ? {} : t === 'all' ? Object.fromEntries(keys.map(k => [k, true])) : { ...keptUp(lv, qi), ...Object.fromEntries(derivable.map(k => [k, false])) };
       add(`target/story/L${pad(lv)}-${qid(qi)}-${t}-${mode === 'basic' ? 'B' : 'A'}`, base(lv, qi, checks, mode));
     }
@@ -96,7 +102,8 @@ export function makeStates(M, { root, seed }) {
 
   /* 3. seeded random, to TOTAL */
   const R = mulberry32(seed), pick = xs => xs[Math.floor(R() * xs.length)];
-  for (let i = 0; out.size < TOTAL; i++) {
+  if (out.size >= total) throw new Error(`states: ${out.size} targeted states leave no random one (total ${total})`);
+  for (let i = 0; out.size < total; i++) {
     const lv = 1 + Math.floor(R() * 45), qi = R() < 0.06 ? -1 : Math.floor(R() * NQ), p = pick([0, 0.2, 0.5, 0.8, 0.95, 1]), mode = R() < 0.5 ? 'advanced' : 'basic';
     const kept = R() < 0.4, salt = `${seed}|${i}|`;
     const checks = kept ? keptUp(lv, qi) : Object.fromEntries(keys.filter(k => fnv(salt + k) < p).map(k => [k, true]));

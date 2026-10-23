@@ -5,6 +5,8 @@
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
 
+import { pinnedNodes } from './next-up.test.mjs';
+
 const { fnv } = createRequire(import.meta.url)('../golden/states.js');
 
 const sig = bs => bs.map(b => b.kind === 'level' ? `level ${b.need}` : b.kind === 'story' ? `story ${b.quest} ahead ${b.ahead}` : b.kind === 'skill' ? `skill ${b.skill} ${b.need} have ${b.have}` : `done ${b.of}`).sort().join(' · ');
@@ -14,6 +16,8 @@ export default (test, M, X) => {
   /* the app's evaluator options and the oracle that judges them (E4: derived, the wrapper proposals, the follow-up rule) */
   const APP = { derived: true, followUps: true };
   const N = M.GATE_GRAPH.nodes;
+  /* 0.9 P12: the oracle's nodes the app lacks, pinned per class in next-up.test.mjs KNOWN_NODES (checked there) */
+  const PIN = pinnedNodes(X.cls);
   const loaded = [];
 
   test(`${states.length} states loaded, migrated and deep-frozen`, () => {
@@ -88,7 +92,7 @@ export default (test, M, X) => {
   const MODES = [{ derived: false }, { derived: true }, { derived: true, app: true }];
   const compare = (graph, list) => {
     const diffs = new Map(), bad = (k, id, d) => { const x = diffs.get(k) || { n: 0, ex: `${id} (${d})` }; x.n++; diffs.set(k, x); };
-    const ids = O.ids;
+    const ids = O.ids.filter(n => !PIN.has(n));
     list.forEach(({ id, c }) => { for (const mode of withDerived(id) ? MODES : MODES.slice(0, 1)) {
       const { derived } = mode, tag = mode.app ? 'app' : derived;
       const ev = M.evaluate(c, { derived, ...(mode.app ? { apply: APP_APPLY, followUps: true } : {}), ...(graph ? { graph } : {}) });
@@ -121,6 +125,7 @@ export default (test, M, X) => {
     for (const { id, c } of list) {
       const ev = M.gatesOf(c), o = OA.at(c, APP);
       for (const n of O.ids) {
+        if (PIN.has(n)) continue;
         const e = ev.node(n), ch = M.blockerChain(e, ev); if (!ch) continue;
         texts++;
         for (const x of ch.names) if (o.node(x).done) note5(`${n} names done ${x}`, id, ch.text);
@@ -140,7 +145,7 @@ export default (test, M, X) => {
         if (pos >= 0 && L.ahead !== i - pos + (L.turnIn ? 1 : 0)) note5(`${g.id} line ahead`, id, `${L.ahead} vs ${i - pos}`);
       }
     }
-    assert.ok(X.only || (texts > 10000 && lines > 1000), `checked ${texts} texts, ${lines} lines`);
+    assert.ok(X.only || (texts > 10000 * X.scale && lines > 1000 * X.scale), `checked ${texts} texts, ${lines} lines`);
     assert.deepEqual([...bad].slice(0, 12).map(([k, x]) => `${k} · ${x.n}×, e.g. ${x.ex}`), [], `${bad.size} differences (${texts} texts, ${lines} lines in ${list.length} states)`);
   });
 
