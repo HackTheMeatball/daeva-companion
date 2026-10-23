@@ -345,7 +345,7 @@ jobs:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           prompt: ${{ needs.decide.outputs.prompt }}
           # The CI run or review that started this was made by the Claude app or by this workflow, not a person.
-          allowed_bots: "claude,github-actions"
+          allowed_bots: "claude,github-actions,daeva-team-bot"
           additional_permissions: |
             actions: read
           claude_args: |
