@@ -294,11 +294,14 @@ if (!web.includes(SYNC_FILE)) die(`dist/index.html does not name the sync chunk 
 if (!web.startsWith('<!doctype html>')) die('dist/index.html must start with <!doctype html>');
 
 /* the sources page (0.9 P23, docs/research/2026-10-sources-credit.md condition 2): dist/sources.html lists every URL of
-   data/DATA_SOURCES.md (all classes) as a plain link, label as there, by site in its order, with no script, so the
+   data/DATA_SOURCES.md (all classes) as a plain link, by site in its order, with no script, so the
    per-page credit links stay crawlable while the card loads its lists on open. Its notice is DATA_SOURCES.md's paragraph
    (written by tools/gen from the data, never retyped here); a site whose data/packs/aion2/sources.json record names a
    Creative Commons licence gets that licence, named and linked, beside its links. The Sources card links the page;
-   public/sitemap.xml lists it. */
+   public/sitemap.xml lists it. Labels are DATA_SOURCES.md's, except where a label repeats within a site (Design Lead
+   local review): there each link adds the path segments its group's URLs don't share, minus words already in the label,
+   e.g. "Metabot: Build (Chanter)", "Metabot: Chanter (Daevanion)"; a label still repeated stops the build. The tokens
+   are app.css's :root block, read at build time (no colour or font is retyped here). */
 const sourcesPage = () => {
   const md = readFileSync(P('data/DATA_SOURCES.md'), 'utf8'), lines = md.split('\n'), esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
   const at = lines.findIndex(l => l.startsWith('Only facts were taken'));
@@ -313,6 +316,19 @@ const sourcesPage = () => {
     else if (row) sites.at(-1).links.push([row[2], row[1].replace(/\\(.)/g, '$1')]);
   }
   for (const s of sites) if (s.links.length !== s.n) die(`data/DATA_SOURCES.md: site "${s.name}" says ${s.n} URLs, ${s.links.length} rows read`);
+  const title = t => t.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+  for (const s of sites) {
+    const groups = new Map();
+    for (const x of s.links) groups.set(x[1], [...(groups.get(x[1]) || []), x]);
+    for (const [label, g] of groups) {
+      if (g.length < 2) continue;
+      const segs = g.map(([u]) => new URL(u).pathname.split('/').filter(Boolean)), words = new Set(label.toLowerCase().split(/[^a-z0-9]+/));
+      const extra = segs.map(p => p.filter(x => !segs.every(q => q.includes(x))).map(x => x.split('-').filter(w => !words.has(w)).join('-')).filter(Boolean).map(title).join(', '));
+      g.forEach((x, i) => { if (extra[i]) x[1] = `${label} (${extra[i]})`; });
+    }
+    const seen = new Set();
+    for (const [u, l] of s.links) { if (seen.has(l)) die(`sources page: label "${l}" repeats within ${s.name} (${u})`); seen.add(l); }
+  }
   const urls = sites.flatMap(s => s.links.map(x => x[0]));
   if (urls.length !== total || new Set(urls).size !== total) die(`data/DATA_SOURCES.md: ${total} URLs, ${urls.length} rows read (${new Set(urls).size} distinct)`);
   const recs = JSON.parse(readFileSync(P('data/packs/aion2/sources.json'), 'utf8')).records;
@@ -321,7 +337,8 @@ const sourcesPage = () => {
     const m = r && r.licence && /^CC-((?:BY|NC|SA|ND)(?:-(?:BY|NC|SA|ND))*)-(\d\.\d)$/.exec(r.licence.id);
     return m ? `<p class="lic">${esc(r.name)} pages are licensed <a href="https://creativecommons.org/licenses/${m[1].toLowerCase()}/${m[2]}/">CC ${m[1]} ${m[2]}</a>.</p>` : ''; };
   const md2html = t => esc(t).replace(/`([^`]+)`/g, '<code>$1</code>').replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>');
-  const css = readCss('styles/fonts.css', new Set()) + `:root{--bg:#110c13;--panel:#1a1320;--line:#33263c;--fg:#ece4ee;--muted:#9f90a8;--accent:#d0506f;--display:"Marcellus SC","Palatino Linotype",Georgia,serif;--body:"Figtree","Segoe UI",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,Consolas,monospace;color-scheme:dark}
+  const tokens = (readFileSync(P('src/styles/app.css'), 'utf8').match(/^:root \{\n[\s\S]*?\n\}\n/m) || [])[0] || die('src/styles/app.css: no top-level ":root {" block');
+  const css = readCss('styles/fonts.css', new Set()) + plainCss('styles/app.css', tokens) + `:root{color-scheme:dark}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 var(--body)}
 main{max-width:1100px;margin:0 auto;padding:24px 16px 48px}

@@ -262,7 +262,7 @@ const checkReport = (label, m, want) => {
 
   /* 2c. the sources page (0.9 P23, docs/research/2026-10-sources-credit.md conditions 2 and 4): with script off, the card's
      plain link reaches sources.html; it has every URL of data/DATA_SOURCES.md as an <a> with none of rel nofollow /
-     sponsored / ugc, carries DATA_SOURCES.md's notice, the unofficial line, thegameswiki's licence named and linked, and the
+     sponsored / ugc and every link text unique (Design Lead local review), carries DATA_SOURCES.md's notice, the unofficial line, thegameswiki's licence named and linked, and the
      sitemap lists it */
   {
     const ctx = await b.newContext({ javaScriptEnabled: false, serviceWorkers: 'block' }), p = await ctx.newPage();
@@ -275,10 +275,11 @@ const checkReport = (label, m, want) => {
     await p.evaluate(() => { document.getElementById('srcCard').open = true; });
     const res = await Promise.all([p.waitForNavigation(), p.click('#srcCard a[href="sources.html"]')]).then(([r]) => r, () => null);
     const pg = await p.evaluate(() => ({ url: location.pathname, as: [...document.querySelectorAll('a')].map(a => [a.getAttribute('href'), a.getAttribute('rel') || '']), text: document.body.innerText.replace(/\s+/g, ' '),
-      scripts: document.scripts.length, lic: [...document.querySelectorAll('section')].filter(s => /thegameswiki/.test(s.querySelector('h2').textContent)).map(s => [s.querySelector('.lic') && s.querySelector('.lic').textContent, (s.querySelector('.lic a') || {}).href]) }));
+      scripts: document.scripts.length, dup: [...document.querySelectorAll('a')].map(a => a.textContent).filter((t, i, all) => all.indexOf(t) !== i), lic: [...document.querySelectorAll('section')].filter(s => /thegameswiki/.test(s.querySelector('h2').textContent)).map(s => [s.querySelector('.lic') && s.querySelector('.lic').textContent, (s.querySelector('.lic a') || {}).href]) }));
     ok('sources page: reached from the card\'s link with script off (200, no script on the page)', !!res && res.status() === 200 && pg.url === '/sources.html' && pg.scripts === 0, { status: res && res.status(), url: pg.url, scripts: pg.scripts });
     const bad = want.filter(u => !pg.as.some(([h, r]) => h === u && !/\b(nofollow|sponsored|ugc)\b/.test(r)));
     ok(`sources page: every one of DATA_SOURCES.md's ${total} URLs has a plain <a> (no nofollow / sponsored / ugc)`, want.length === total && total > 500 && !bad.length && pg.as.every(([, r]) => !/\b(nofollow|sponsored|ugc)\b/.test(r)), bad.slice(0, 5));
+    ok('sources page: every link text is unique (a label repeated within a site names its page: "Metabot: Build (Chanter)", "Metabot: Chanter (Daevanion)")', !pg.dup.length && pg.as.some(([h]) => h === 'https://metabot.gg/en/aion-2/classes/chanter/build'), [...new Set(pg.dup)].slice(0, 5));
     ok('sources page: DATA_SOURCES.md\'s notice, word for word (thegameswiki CC BY-NC-SA 4.0, no endorsement)', !!mdNotice && pg.text.includes(mdNotice) && /thegameswiki quotations are CC BY-NC-SA 4\.0/.test(mdNotice) && /implies no endorsement/.test(mdNotice), mdNotice);
     ok('sources page: "unofficial" and "not affiliated with or endorsed by NCSoft"', /unofficial/.test(pg.text) && /not affiliated with or endorsed by NCSoft/.test(pg.text));
     ok('sources page: thegameswiki\'s licence named and linked beside its links (CC BY-NC-SA 4.0)', pg.lic.length === 1 && /CC BY-NC-SA 4\.0/.test(pg.lic[0][0] || '') && pg.lic[0][1] === 'https://creativecommons.org/licenses/by-nc-sa/4.0/', pg.lic);
