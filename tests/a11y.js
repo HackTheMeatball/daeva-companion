@@ -466,11 +466,11 @@ async function load(p, state, mode) {
     await p.waitForTimeout(300);
     r = await p.evaluate(() => document.querySelector('#stackViz [data-col="Q"]').getAttribute('aria-label'));
     ok(`${id}: a saved key with a quote falls back to the suggestion`, r === 'Q: change the key for this stack', r);
-    /* 0.9 P22b (#855 builder note): only keys the game can bind (D3) are bound; a media key pressed while listening binds
-       nothing (was: silently dropped on read when longer than 12 characters) */
-    await p.focus(chip('Q')); await p.keyboard.press('Enter'); await p.keyboard.press('AudioVolumeUp'); await p.waitForTimeout(80);
+    /* 0.9 P22b (#855 builder note): only keys in the bindable set (keybinds.js, D3) are bound; another key pressed while
+       listening binds nothing (was: silently dropped on read when longer than 12 characters) */
+    await p.focus(chip('Q')); await p.keyboard.press('Enter'); await p.keyboard.press('Insert'); await p.waitForTimeout(80);
     r = await p.evaluate(() => { const s = JSON.parse(localStorage.getItem('companion-save-v6')); return { keys: s.chars[s.current].keyBinds, listen: !!document.querySelector('#stackViz .kv-key.listen') }; });
-    ok(`${id}: a key the game can't bind (AudioVolumeUp) is refused while listening`, JSON.stringify(r.keys || {}) === '{"Q":"\\""}' && r.listen, r);
+    ok(`${id}: a key outside the bindable set (Insert) is refused while listening`, JSON.stringify(r.keys || {}) === '{"Q":"\\""}' && r.listen, r);
     await p.keyboard.press('Escape');
   };
   /* 0.9 P22b (#855; frame 388-key-listen-390): on a phone a key chip opens the picker of bindable keys. By keyboard: Enter
