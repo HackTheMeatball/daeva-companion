@@ -281,8 +281,9 @@ check(relAt > 0 && /if \(releasing\) \{ core\.info\(`#\$\{pr\.number\}: \$\{rele
 const nb = yml.match(/\/\/ NAMED-CHECK START[^\n]*\n([\s\S]*?)\n\s*\/\/ NAMED-CHECK END/);
 check(!!nb, 'auto-merge.yml has the NAMED-CHECK block');
 const namedLogs = [];
-const namedBlocker = new Function('owner', 'core', 'V', nb[1] + '\nreturn namedBlocker;')('HackTheMeatball',
-  { info: (s) => namedLogs.push(s), notice: (s) => namedLogs.push(s) }, V);
+// ROSTER null (team.csv unread) for the existing cases; the E10 cases below build one with main's roster.
+const namedBlocker = new Function('owner', 'core', 'V', 'ROSTER', nb[1] + '\nreturn namedBlocker;')('HackTheMeatball',
+  { info: (s) => namedLogs.push(s), notice: (s) => namedLogs.push(s) }, V, null);
 const OWNER = 'HackTheMeatball', NEW = 'f00dfeed1234';
 check(namedBlocker([REVIEW], SHA) === '', 'no named verdict -> no wait');
 check(/CHANGES from francesca/.test(namedBlocker([c(OWNER, 'VERDICT: CHANGES (reviewer: Francesca) on abc1234: the rule text contradicts LEDGER.', 6), REVIEW], SHA)),
@@ -573,8 +574,24 @@ check(!/\.filter\(\(p\) => [^\n]*\n[^\n]*l\.name === 'hold'/.test(yml.slice(yml.
 
 // Reviewers: names off the roster (#741, Walter): "Legal sign-off per Chuck's ruling" waited 84 min with no word.
 const RO = V.roster(readFileSync(join(ROOT, 'docs', 'kaizen', 'team.csv'), 'utf8'));
-check(['chuck', 'gus', 'lydia', 'francesca', 'howard', 'gale', 'walter', 'jane', 'gretchen', 'design lead', 'game data check', 'fresh review'].every((x) => RO.has(x))
+check(['chuck', 'gus', 'lydia', 'francesca', 'gale', 'walter', 'jane', 'gretchen', 'design lead', 'game data check', 'fresh review'].every((x) => RO.has(x))
   && !RO.has('skyler') && !RO.has('hank'), "roster: team.csv's active rows and the gate names; a closed (Skyler) or folded (Hank) role is off it (Nacho, 2026-10-21)");
+// E10 (2026-10-22): a seat whose never_does bars verdicts or gate lines is off the roster, by name: Gomez (Team Audit closed,
+// Review Broker active, both barred), Howard (Code Review: "post a line any gate parses"), Nacho and Ernesto ("gate lines").
+check(['gomez', 'howard', 'nacho', 'ernesto'].every((x) => !RO.has(x)), 'roster: seats whose charter bars verdicts or gate lines are off it (E10: Gomez, Howard, Nacho, Ernesto)');
+const RG = V.roster('name,role,status,never_does\nAmy,X,active,"merge, or post a verdict"\nAmy,Y,active,push code\nBo,Z,active,"post gate lines"\nCy,W,closed,\nDi,V,active,\n');
+check(RG.has('amy') && !RG.has('bo') && !RG.has('cy') && RG.has('di') && V.roster('name,role,status\nAmy,X,active\n').has('amy'),
+  'roster: a name stays on when any active row of it may post gate lines; a barred-only, closed or no never_does column reads as before');
+const namedE10 = new Function('owner', 'core', 'V', 'ROSTER', nb[1] + '\nreturn namedBlocker;')('HackTheMeatball',
+  { info: (s) => namedLogs.push(s), notice: (s) => namedLogs.push(s) }, V, RO);
+const B856 = 'Review: standing\nReviewers: walter, gus, gomez';
+const ok856 = [c(OWNER, 'VERDICT: OK (reviewer: walter) on abc1234', 6), c(OWNER, 'VERDICT: OK (reviewer: gus) on abc1234', 7), REVIEW];
+check(/waits on gomez to approve abc1234/.test(namedE10([...ok856, c(OWNER, 'VERDICT: OK (reviewer: gomez) on abc1234', 8)], SHA, B856))
+  && namedLogs.some((l) => /VERDICT by gomez not counted/.test(l)), 'E10: a gomez approval naming the head does not count, so #856 would have waited (and the run says why)');
+check(/CHANGES from gomez/.test(namedE10([...ok856, c(OWNER, 'VERDICT: CHANGES (reviewer: gomez) on abc1234', 8)], SHA, 'Review: standing')),
+  'E10: a CHANGES by an off-roster name still blocks (only approvals are refused)');
+check(namedE10(ok856, SHA, 'Review: standing\nReviewers: walter, gus') === '' && namedBlocker([...ok856, c(OWNER, 'VERDICT: OK (reviewer: gomez) on abc1234', 8)], SHA, B856) === '',
+  'E10: on-roster approvals pass; with team.csv unread (ROSTER null) the gate reads verdicts as before');
 const RC = V.roster('name,role,status,note\nAmy,X,active,"a, quoted ""note"""\nBo,Y,closed,\nCy,Z,folded,"Amy, later"\n');
 check(RC.has('amy') && !RC.has('bo') && !RC.has('cy') && V.unknownReviewers('Reviewers: Amy, Bo', RC) + '' === 'bo', 'roster: a quoted CSV field with commas and quotes does not shift the status column');
 const B741 = "Reviewers: gretchen (DATA OK on the Build sources text); Legal sign-off per Chuck's ruling";
