@@ -63,7 +63,8 @@ let fail = 0; const ok = (n, c, d) => { console.log((c ? 'ok   ' : 'FAIL ') + n 
   /* P2-12 / P2-3 wording */
   r = await p.evaluate(() => ({ sp: document.getElementById('spLv').innerText, st: document.getElementById('stLvNote').innerText, hint: (document.querySelector('#spHero .sphint') || {}).innerText || '', bar: ((document.querySelector('#spHero .dvbar-l') || {}).innerText || '').replace(/\s+/g, ' ') }));
   ok('P2-12/P2-3 wording', /earned from levels/.test(r.sp) && /earned from levels/.test(r.st) && (!r.hint || /^(\+\d+ more your points cover|\d+ more unlocked · \d+ pts? left)$/.test(r.hint)) /* E4 #5 wording */ && (!r.bar || / of \d+ pts?$/.test(r.bar)), r);
-  /* P2-8 / P2-7 */
+  /* P2-8 / P2-7 (the Sources rows load when the card opens, 0.9 P23) */
+  await p.evaluate(() => { document.getElementById('srcCard').open = true; }); await p.waitForSelector('#srcBody .srcg', { state: 'attached' });
   r = await p.evaluate(() => ({ disputed: CONF.find(c => c.g === 'Disputed').items.some(x => /Not verified/.test(x)), unv: (CONF.find(c => c.g === 'Unverified') || { items: [] }).items, rows: [...document.querySelectorAll('#srcBody .srcg > summary .src-site')].map(x => x.textContent) }));
   ok('P2-8 unverified item not under Disputed', !r.disputed && r.unv.length === 1, r);
   ok('P2-7 Sources: one row per site, Metabot first, sites not repeated', r.rows[0] === 'Metabot' && new Set(r.rows).size === r.rows.length, r.rows);

@@ -53,7 +53,12 @@ export const genAll = () => {
   return (all = a);
 };
 export const splitClasses = () => { perClass = new Set(genAll().perClass); };
-export const classChunk = id => chunkOf(genAll(), id, { omit: pruned, nulls: dropped });
+/* Tables loaded on demand (0.9 P23: SOURCES, the Sources card's link lists): lazyTables({ NAME: id => stub }) leaves NAME out
+   of the class chunk, which sets it to the stub instead (for SOURCES: { n: the link count, src: the file holding the table }). */
+let lazy = {};
+export const lazyTables = m => { lazy = m; };
+export const classChunk = id => chunkOf(genAll(), id, { omit: new Set([...pruned, ...Object.keys(lazy)]), nulls: dropped }) +
+  Object.entries(lazy).filter(([n]) => !pruned.has(n)).map(([n, stub]) => `if(self.DAEVA_PACK===${JSON.stringify(id)})self.DAEVA_CLASS.${n}=${JSON.stringify(stub(id))};\n`).join('');
 /* The tables of generated.js are served in name order (0.6 P1). They are independent `export const` lines, so the order is
    free; gzip only matches text within 32 KB, and of the orders tried (generator, name, size up, size down) this one came out
    smallest. Re-check with `node scripts/build.mjs --sizes` if a data change moves the page gzip size by more than ~100 B. */

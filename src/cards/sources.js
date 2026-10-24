@@ -12,11 +12,33 @@ export function renderConfidence(el, { CONF }) {
   const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
   el.querySelector("#confBody").innerHTML = CONF.map(c => `<p><b>${c.g}</b> · ${c.sub}</p><ul class="conf">${c.items.map(x => `<li>${esc(x)}</li>`).join("")}</ul>`).join("");
 }
-/* Sources: the intro, then one row per site */
+/* Sources: the intro, then one row per site. On the site SOURCES is a stub { n, src } (0.9 P23): the class chunk holds only
+   the link count, and the lists are a file of their own (src, precached by sw.js) that sets self.DAEVA_SOURCES; it loads
+   the first time the card opens (or at once when the card is open at load). Where SOURCES is the table itself (the Node
+   tests) the rows draw at once. The card's plain link to sources.html (every URL, no script) stands in its markup. */
 export function renderSources(el, { SOURCES, SRC_SITE }) {
   const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
-  el.querySelector("#srcBody").innerHTML = `<p class="fine src-intro">${esc(activePack().text.sourcesIntro || "").replace("{n}", SOURCES.reduce((t, g) => t + g.links.length, 0))}</p>` +
-    (() => { /* One row per site: how many pages and what they back; the page list opens per site. Sites with one page share a row. */
+  const body = el.querySelector("#srcBody"), n = Array.isArray(SOURCES) ? SOURCES.reduce((t, g) => t + g.links.length, 0) : SOURCES.n;
+  const intro = `<p class="fine src-intro">${esc(activePack().text.sourcesIntro || "").replace("{n}", n)}</p>`;
+  body.innerHTML = Array.isArray(SOURCES) ? intro + sourceRows(SOURCES, SRC_SITE) : intro;
+  if (Array.isArray(SOURCES)) return;
+  let phase = 0; /* 0 not loaded, 1 loading, 2 drawn */
+  const load = () => {
+    if (phase || !el.open) return;
+    phase = 1;
+    const s = document.createElement("script");
+    s.src = SOURCES.src;
+    s.onload = () => { phase = 2; body.insertAdjacentHTML("beforeend", sourceRows(self.DAEVA_SOURCES, SRC_SITE)); };
+    s.onerror = () => { phase = 0; s.remove(); }; /* offline with no cached copy: the next open tries again */
+    document.head.appendChild(s);
+  };
+  el.addEventListener("toggle", load);
+  load();
+}
+/* One row per site: how many pages and what they back; the page list opens per site. Sites with one page share a row. */
+function sourceRows(SOURCES, SRC_SITE) {
+  const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
+  return (() => {
       const host = u => u.replace(/^https?:\/\/(www\.)?/, "").split("/")[0], name = h => { const k = Object.keys(SRC_SITE).find(d => h.endsWith(d)); return k ? SRC_SITE[k] : h; };
       const by = new Map();
       SOURCES.forEach(g => g.links.forEach(([u, l]) => { const n = name(host(u)); if (!by.has(n)) by.set(n, { n, links: [], what: [] }); const x = by.get(n); x.links.push([u, l]); if (!x.what.includes(g.t)) x.what.push(g.t); }));
